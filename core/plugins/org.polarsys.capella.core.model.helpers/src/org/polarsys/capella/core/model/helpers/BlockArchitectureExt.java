@@ -27,30 +27,30 @@ import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
+import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.ArchitectureAllocation;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentContext;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
-import org.polarsys.capella.core.data.ctx.Actor;
-import org.polarsys.capella.core.data.ctx.ActorPkg;
 import org.polarsys.capella.core.data.ctx.CtxFactory;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
+import org.polarsys.capella.core.data.ctx.Mission;
 import org.polarsys.capella.core.data.ctx.OperationalAnalysisRealization;
-import org.polarsys.capella.core.data.ctx.System;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
-import org.polarsys.capella.core.data.ctx.SystemContext;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
+import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.ctx.SystemFunctionPkg;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
+import org.polarsys.capella.core.data.epbs.ConfigurationItemPkg;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
-import org.polarsys.capella.core.data.epbs.EPBSContext;
 import org.polarsys.capella.core.data.epbs.EpbsFactory;
 import org.polarsys.capella.core.data.epbs.EpbsPackage;
 import org.polarsys.capella.core.data.epbs.PhysicalArchitectureRealization;
@@ -58,42 +58,33 @@ import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionPkg;
-import org.polarsys.capella.core.data.helpers.ctx.services.ActorPkgExt;
 import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.InformationFactory;
 import org.polarsys.capella.core.data.la.LaFactory;
 import org.polarsys.capella.core.data.la.LaPackage;
-import org.polarsys.capella.core.data.la.LogicalActor;
-import org.polarsys.capella.core.data.la.LogicalActorPkg;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.la.LogicalContext;
+import org.polarsys.capella.core.data.la.LogicalComponentPkg;
 import org.polarsys.capella.core.data.la.LogicalFunction;
 import org.polarsys.capella.core.data.la.LogicalFunctionPkg;
 import org.polarsys.capella.core.data.la.SystemAnalysisRealization;
-import org.polarsys.capella.core.data.oa.Entity;
-import org.polarsys.capella.core.data.oa.EntityPkg;
 import org.polarsys.capella.core.data.oa.OaFactory;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.OperationalActivityPkg;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
-import org.polarsys.capella.core.data.oa.OperationalContext;
 import org.polarsys.capella.core.data.pa.LogicalArchitectureRealization;
 import org.polarsys.capella.core.data.pa.PaFactory;
 import org.polarsys.capella.core.data.pa.PaPackage;
-import org.polarsys.capella.core.data.pa.PhysicalActor;
-import org.polarsys.capella.core.data.pa.PhysicalActorPkg;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
-import org.polarsys.capella.core.data.pa.PhysicalContext;
+import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
 import org.polarsys.capella.core.data.requirement.RequirementFactory;
 import org.polarsys.capella.core.data.requirement.RequirementsPkg;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
-import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 
 /**
  */
@@ -103,44 +94,61 @@ public class BlockArchitectureExt {
     // To hide the implicit public one.
   }
 
-	public enum Type {OA, SA, LA, PA, EPBS}
-	public enum FunctionType {SYSTEM_FUNCTION, DUPLICATE, GATHER, ROUTE, SELECT, SPLIT};
-	public enum FunctionPortType {IN_FUNCTION_PORT, OUT_FUNCTION_PORT};
-	public enum ComponentPortType {IN_FLOW_PORT, OUT_FLOW_PORT, IN_OUT_FLOW_PORT, STANDARD_PORT, PHYSICAL_PORT};
-	public enum LinkDirection {SOURCE, TARGET};
-	public enum ConfigurationItemType {COTS, CS, HW, INTERFACE, NDI, PRIME_ITEM, SYSTEM};
-	
-	public static Type getBlockArchitectureType(BlockArchitecture block) {
-		if (block instanceof OperationalAnalysis)
-			return Type.OA;
-		else if (block instanceof SystemAnalysis)
-			return Type.SA;
-		else if (block instanceof LogicalArchitecture)
-			return Type.LA;
-		else if (block instanceof PhysicalArchitecture)
-			return Type.PA;
-		else if (block instanceof EPBSArchitecture)
-			return Type.EPBS;
-		return null;
-	}
-	
-	public static BlockArchitecture getBlockArchitecture(Type type, Project project) {		
-		SystemEngineering system = SystemEngineeringExt.getSystemEngineering(project);
-		switch (type) {
-			case OA:
-				return SystemEngineeringExt.getOperationalAnalysis(system);
-			case SA:
-				return SystemEngineeringExt.getSystemAnalysis(system);
-			case LA:
-				return SystemEngineeringExt.getLogicalArchitecture(system);
-			case PA:
-				return SystemEngineeringExt.getPhysicalArchitecture(system);
-			case EPBS:
-				return SystemEngineeringExt.getEPBSArchitecture(system);				
-			default:
-				return null;
-		}
-	}
+  public enum Type {
+    OA, SA, LA, PA, EPBS
+  }
+
+  public enum FunctionType {
+    SYSTEM_FUNCTION, DUPLICATE, GATHER, ROUTE, SELECT, SPLIT
+  };
+
+  public enum FunctionPortType {
+    IN_FUNCTION_PORT, OUT_FUNCTION_PORT
+  };
+
+  public enum ComponentPortType {
+    IN_FLOW_PORT, OUT_FLOW_PORT, IN_OUT_FLOW_PORT, STANDARD_PORT, PHYSICAL_PORT
+  };
+
+  public enum LinkDirection {
+    SOURCE, TARGET
+  };
+
+  public enum ConfigurationItemType {
+    COTS, CS, HW, INTERFACE, NDI, PRIME_ITEM, SYSTEM
+  };
+
+  public static Type getBlockArchitectureType(BlockArchitecture block) {
+    if (block instanceof OperationalAnalysis)
+      return Type.OA;
+    else if (block instanceof SystemAnalysis)
+      return Type.SA;
+    else if (block instanceof LogicalArchitecture)
+      return Type.LA;
+    else if (block instanceof PhysicalArchitecture)
+      return Type.PA;
+    else if (block instanceof EPBSArchitecture)
+      return Type.EPBS;
+    return null;
+  }
+
+  public static BlockArchitecture getBlockArchitecture(Type type, Project project) {
+    SystemEngineering system = SystemEngineeringExt.getSystemEngineering(project);
+    switch (type) {
+    case OA:
+      return SystemEngineeringExt.getOperationalAnalysis(system);
+    case SA:
+      return SystemEngineeringExt.getSystemAnalysis(system);
+    case LA:
+      return SystemEngineeringExt.getLogicalArchitecture(system);
+    case PA:
+      return SystemEngineeringExt.getPhysicalArchitecture(system);
+    case EPBS:
+      return SystemEngineeringExt.getEPBSArchitecture(system);
+    default:
+      return null;
+    }
+  }
 
   /**
    * Return the block architecture from the given type in the given project
@@ -273,7 +281,7 @@ public class BlockArchitectureExt {
    */
   public static List<BlockArchitecture> getPreviousBlockArchitectures(final BlockArchitecture anArchitecture) {
     List<BlockArchitecture> returnedList = new ArrayList<>();
-    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(anArchitecture);
+    SystemEngineering sysEng = SystemEngineeringExt.getSystemEngineering(anArchitecture);
     OperationalAnalysis oa = SystemEngineeringExt.getOwnedOperationalAnalysis(sysEng);
     if ((oa != null) && anArchitecture.equals(oa)) {
       return returnedList;
@@ -330,51 +338,60 @@ public class BlockArchitectureExt {
   /**
    * Retrieve the actor pkg from the given architecture
    */
-  public static Structure getActorPkg(BlockArchitecture blockArchitecture1, boolean create) {
+  public static ComponentPkg getActorPkg(BlockArchitecture architecture, boolean create) {
+    return getComponentPkg(architecture, create);
+  }
 
-    if (blockArchitecture1 instanceof SystemAnalysis) {
-      SystemAnalysis architecture = (SystemAnalysis) blockArchitecture1;
+  public static ComponentPkg getComponentPkg(BlockArchitecture blockArchitecture, boolean create) {
+    if (blockArchitecture instanceof SystemAnalysis) {
+      SystemAnalysis architecture = (SystemAnalysis) blockArchitecture;
 
-      if ((architecture.getOwnedActorPkg() == null) && create) {
-        // to externalize when constants in skeleton will be into helpers.
-        ActorPkg pkg = CtxFactory.eINSTANCE.createActorPkg(NamingConstants.CreateSysAnalysisCmd_actors_pkg_name);
-        architecture.setOwnedActorPkg(pkg);
+      if ((architecture.getOwnedSystemComponentPkg() == null) && create) {
+        SystemComponentPkg pkg = CtxFactory.eINSTANCE
+            .createSystemComponentPkg(NamingConstants.CreateSysAnalysisCmd_actors_pkg_name);
+        architecture.setOwnedSystemComponentPkg(pkg);
       }
-      return architecture.getOwnedActorPkg();
+      return architecture.getOwnedSystemComponentPkg();
 
-    } else if (blockArchitecture1 instanceof LogicalArchitecture) {
-      LogicalArchitecture architecture = (LogicalArchitecture) blockArchitecture1;
+    } else if (blockArchitecture instanceof LogicalArchitecture) {
+      LogicalArchitecture architecture = (LogicalArchitecture) blockArchitecture;
 
-      if ((architecture.getOwnedLogicalActorPkg() == null) && create) {
-        // to externalize when constants in skeleton will be into helpers.
-        LogicalActorPkg pkg = LaFactory.eINSTANCE
-            .createLogicalActorPkg(NamingConstants.CreateLogicalArchCmd_actors_pkg_name);
-        architecture.setOwnedLogicalActorPkg(pkg);
+      if ((architecture.getOwnedLogicalComponentPkg() == null) && create) {
+        LogicalComponentPkg pkg = LaFactory.eINSTANCE
+            .createLogicalComponentPkg(NamingConstants.CreateLogicalArchCmd_actors_pkg_name);
+        architecture.setOwnedLogicalComponentPkg(pkg);
       }
-      return architecture.getOwnedLogicalActorPkg();
+      return architecture.getOwnedLogicalComponentPkg();
 
-    } else if (blockArchitecture1 instanceof PhysicalArchitecture) {
-      PhysicalArchitecture architecture = (PhysicalArchitecture) blockArchitecture1;
+    } else if (blockArchitecture instanceof PhysicalArchitecture) {
+      PhysicalArchitecture architecture = (PhysicalArchitecture) blockArchitecture;
 
-      if ((architecture.getOwnedPhysicalActorPkg() == null) && create) {
-        // to externalize when constants in skeleton will be into helpers.
-        PhysicalActorPkg pkg = PaFactory.eINSTANCE
-            .createPhysicalActorPkg(NamingConstants.CreatePhysicalArchCmd_actors_pkg_name);
-        architecture.setOwnedPhysicalActorPkg(pkg);
+      if ((architecture.getOwnedPhysicalComponentPkg() == null) && create) {
+        PhysicalComponentPkg pkg = PaFactory.eINSTANCE
+            .createPhysicalComponentPkg(NamingConstants.CreatePhysicalArchCmd_actors_pkg_name);
+        architecture.setOwnedPhysicalComponentPkg(pkg);
       }
-      return architecture.getOwnedPhysicalActorPkg();
+      return architecture.getOwnedPhysicalComponentPkg();
+
+    } else if (blockArchitecture instanceof EPBSArchitecture) {
+      EPBSArchitecture architecture = (EPBSArchitecture) blockArchitecture;
+
+      if ((architecture.getOwnedConfigurationItemPkg() == null) && create) {
+        ConfigurationItemPkg pkg = EpbsFactory.eINSTANCE
+            .createConfigurationItemPkg(NamingConstants.CreateEPBSArchCmd_configurationItemPkg_name);
+        architecture.setOwnedConfigurationItemPkg(pkg);
+      }
+      return architecture.getOwnedConfigurationItemPkg();
     }
 
     return null;
   }
 
-  /**
-   * Returns whether the element use a default ActorPkg name
-   */
-  public static boolean isDefaultNameActorPkg(AbstractNamedElement pkg) {
+  public static boolean isDefaultNameComponentPkg(AbstractNamedElement pkg) {
     return NamingConstants.CreateSysAnalysisCmd_actors_pkg_name.equals(pkg.getName())
         || NamingConstants.CreateLogicalArchCmd_actors_pkg_name.equals(pkg.getName())
-        || NamingConstants.CreatePhysicalArchCmd_actors_pkg_name.equals(pkg.getName());
+        || NamingConstants.CreatePhysicalArchCmd_actors_pkg_name.equals(pkg.getName())
+        || NamingConstants.CreateEPBSArchCmd_configurationItemPkg_name.equals(pkg.getName());
   }
 
   /**
@@ -506,7 +523,7 @@ public class BlockArchitectureExt {
   /**
    * Return the context related to the architecture Create if not exist
    */
-  public static Component getContext(BlockArchitecture architecture) {
+  public static ComponentPkg getContext(BlockArchitecture architecture) {
     return getContext(architecture, true);
   }
 
@@ -517,48 +534,8 @@ public class BlockArchitectureExt {
    *          Never null in normal phases
    * @return
    */
-  public static Component getContext(BlockArchitecture architecture, boolean create) {
-
-    Component context = null;
-
-    if (architecture instanceof OperationalAnalysis) {
-      context = ((OperationalAnalysis) architecture).getOwnedOperationalContext();
-      if ((context == null) && create) {
-        context = OaFactory.eINSTANCE
-            .createOperationalContext(NamingConstants.CreateOpAnalysisCmd_operational_context_name);
-        ((OperationalAnalysis) architecture).setOwnedOperationalContext((OperationalContext) context);
-      }
-
-    } else if (architecture instanceof SystemAnalysis) {
-      context = ((SystemAnalysis) architecture).getOwnedSystemContext();
-      if ((context == null) && create) {
-        context = CtxFactory.eINSTANCE.createSystemContext(NamingConstants.CreateSysAnalysisCmd_system_context_name);
-        ((SystemAnalysis) architecture).setOwnedSystemContext((SystemContext) context);
-      }
-
-    } else if (architecture instanceof LogicalArchitecture) {
-      context = ((LogicalArchitecture) architecture).getOwnedLogicalContext();
-      if ((context == null) && create) {
-        context = LaFactory.eINSTANCE.createLogicalContext(NamingConstants.CreateLogicalArchCmd_logicalContext_name);
-        ((LogicalArchitecture) architecture).setOwnedLogicalContext((LogicalContext) context);
-      }
-
-    } else if (architecture instanceof PhysicalArchitecture) {
-      context = ((PhysicalArchitecture) architecture).getOwnedPhysicalContext();
-      if ((context == null) && create) {
-        context = PaFactory.eINSTANCE.createPhysicalContext(NamingConstants.CreatePhysicalArchCmd_physicalContext_name);
-        ((PhysicalArchitecture) architecture).setOwnedPhysicalContext((PhysicalContext) context);
-      }
-
-    } else if (architecture instanceof EPBSArchitecture) {
-      context = ((EPBSArchitecture) architecture).getOwnedEPBSContext();
-      if ((context == null) && create) {
-        context = EpbsFactory.eINSTANCE.createEPBSContext(NamingConstants.CreateEPBSArchCmd_epbsContext_name);
-        ((EPBSArchitecture) architecture).setOwnedEPBSContext((EPBSContext) context);
-      }
-    }
-
-    return context;
+  public static ComponentPkg getContext(BlockArchitecture architecture, boolean create) {
+    return getComponentPkg(architecture, create);
   }
 
   /**
@@ -686,36 +663,40 @@ public class BlockArchitectureExt {
    * @param create
    * @return
    */
-  public static Component getFirstComponent(ModellingArchitecture architecture, boolean create) {
+  public static Component getFirstComponent(BlockArchitecture architecture, boolean create) {
     Component first = null;
 
     if (architecture instanceof SystemAnalysis) {
-      first = ((SystemAnalysis) architecture).getOwnedSystem();
+      first = ((SystemAnalysis) architecture).getSystem();
       if ((first == null) && create) {
-        first = CtxFactory.eINSTANCE.createSystem(NamingConstants.CreateSysAnalysisCmd_system_name);
-        ((SystemAnalysis) architecture).setOwnedSystem((System) first);
+        first = CtxFactory.eINSTANCE.createSystemComponent(NamingConstants.CreateSysAnalysisCmd_system_name);
+        ((SystemComponentPkg) getComponentPkg(architecture, true)).getOwnedSystemComponents()
+            .add((SystemComponent) first);
       }
 
     } else if (architecture instanceof LogicalArchitecture) {
-      first = ((LogicalArchitecture) architecture).getOwnedLogicalComponent();
+      first = ((LogicalArchitecture) architecture).getSystem();
       if ((first == null) && create) {
         first = LaFactory.eINSTANCE.createLogicalComponent(NamingConstants.CreateLogicalArchCmd_logicalComponent_name);
-        ((LogicalArchitecture) architecture).setOwnedLogicalComponent((LogicalComponent) first);
+        ((LogicalComponentPkg) getComponentPkg(architecture, true)).getOwnedLogicalComponents()
+            .add((LogicalComponent) first);
       }
 
     } else if (architecture instanceof PhysicalArchitecture) {
-      first = ((PhysicalArchitecture) architecture).getOwnedPhysicalComponent();
+      first = ((PhysicalArchitecture) architecture).getSystem();
       if ((first == null) && create) {
         first = PaFactory.eINSTANCE
             .createPhysicalComponent(NamingConstants.CreatePhysicalArchCmd_physicalComponent_name);
-        ((PhysicalArchitecture) architecture).setOwnedPhysicalComponent((PhysicalComponent) first);
+        ((PhysicalComponentPkg) getComponentPkg(architecture, true)).getOwnedPhysicalComponents()
+            .add((PhysicalComponent) first);
       }
 
     } else if (architecture instanceof EPBSArchitecture) {
-      first = ((EPBSArchitecture) architecture).getOwnedConfigurationItem();
+      first = ((EPBSArchitecture) architecture).getSystem();
       if ((first == null) && create) {
         first = EpbsFactory.eINSTANCE.createConfigurationItem(NamingConstants.CreateEPBSArchCmd_configurationItem_name);
-        ((EPBSArchitecture) architecture).setOwnedConfigurationItem((ConfigurationItem) first);
+        ((ConfigurationItemPkg) getComponentPkg(architecture, true)).getOwnedConfigurationItems()
+            .add((ConfigurationItem) first);
       }
     }
 
@@ -738,7 +719,7 @@ public class BlockArchitectureExt {
    * @param architecture
    * @return
    */
-  public static Component getFirstComponent(ModellingArchitecture architecture) {
+  public static Component getFirstComponent(BlockArchitecture architecture) {
     return getFirstComponent(architecture, true);
   }
 
@@ -753,133 +734,14 @@ public class BlockArchitectureExt {
   }
 
   /**
-   * Retrieve Components from BlockArchitecture Layer + look for available modes and states
-   * 
-   * @param blockArch
-   * @param availableElements
-   */
-  public static void getAllStatesAndModesFromBlockArchitecture(BlockArchitecture blockArch,
-      List<CapellaElement> availableElements) {
-    if (null != blockArch) {
-      if (blockArch instanceof OperationalAnalysis) {
-        getAllStatesAndModesFromOperationalAnalysisLayer(blockArch, availableElements);
-      } else if (blockArch instanceof SystemAnalysis) {
-        getAllStatesAndModesFromSystemAnalysisLayer(blockArch, availableElements);
-      } else if (blockArch instanceof LogicalArchitecture) {
-        getAllStatesAndModesFromLogicalLayer(blockArch, availableElements);
-      } else if (blockArch instanceof PhysicalArchitecture) {
-        getAllStatesAndModesFromPhysicalLayer(blockArch, availableElements);
-      } else if (blockArch instanceof EPBSArchitecture) {
-        getAllStatesAndModesFromEPBSLayer(blockArch, availableElements);
-      }
-    }
-  }
-
-  /**
-   * Retrieve Components from OperationalAnalysis Layer + look for available modes and states
-   * 
-   * @param blockArch
-   * @param availableElements
-   */
-  public static void getAllStatesAndModesFromOperationalAnalysisLayer(BlockArchitecture blockArch,
-      List<CapellaElement> availableElements) {
-    OperationalAnalysis oa = (OperationalAnalysis) blockArch;
-    // Entities
-    EntityPkg ownedEntityPkg = oa.getOwnedEntityPkg();
-    List<Entity> allEntity = OperationalAnalysisExt.getAllEntity(ownedEntityPkg);
-    for (Entity entity : allEntity) {
-      availableElements.addAll(ComponentExt.getAllStatesAndModesFromComponent(entity));
-    }
-  }
-
-  /**
    * Retrieve Components from SystemAnslysis Layer + look for available modes and states
    * 
    * @param blockArch
    * @param availableElements
    */
-  public static void getAllStatesAndModesFromSystemAnalysisLayer(BlockArchitecture blockArch,
-      List<CapellaElement> availableElements) {
-    SystemAnalysis ca = (SystemAnalysis) blockArch;
-    // System Context
-    SystemContext ownedSystemContext = ca.getOwnedSystemContext();
-    availableElements.addAll(ComponentExt.getAllStatesAndModesFromComponent(ownedSystemContext));
-    // System
-    System ownedSystem = ca.getOwnedSystem();
-    availableElements.addAll(ComponentExt.getAllStatesAndModesFromComponent(ownedSystem));
-    // Actors
-    ActorPkg ownedActorPkg = ca.getOwnedActorPkg();
-    List<Actor> allActors = ActorPkgExt.getAllActors(ownedActorPkg);
-    for (Actor actor : allActors) {
-      availableElements.addAll(ComponentExt.getAllStatesAndModesFromComponent(actor));
-    }
-  }
-
-  /**
-   * Retrieve Components from Logical layer + look for available modes and states
-   * 
-   * @param blockArch
-   * @param availableElements
-   */
-  public static void getAllStatesAndModesFromLogicalLayer(BlockArchitecture blockArch,
-      List<CapellaElement> availableElements) {
-    LogicalArchitecture logArch = (LogicalArchitecture) blockArch;
-    // LogicalContext
-    LogicalContext ownedLogicalContext = logArch.getOwnedLogicalContext();
-    availableElements.addAll(ComponentExt.getAllStatesAndModesFromComponent(ownedLogicalContext));
-    // LogicalComponent
-    List<LogicalComponent> allLCsFromLogicalArchitectureLayer = LogicalArchitectureExt
-        .getAllLCsFromLogicalArchitectureLayer(logArch);
-    for (LogicalComponent logicalComponent : allLCsFromLogicalArchitectureLayer) {
-      availableElements.addAll(ComponentExt.getAllStatesAndModesFromComponent(logicalComponent));
-    }
-    // LogicalActor
-    List<LogicalActor> allLAsFromLAPkg = LogicalActorPkgExt.getAllLAsFromLAPkg(logArch.getOwnedLogicalActorPkg());
-    for (LogicalActor logicalActor : allLAsFromLAPkg) {
-      availableElements.addAll(ComponentExt.getAllStatesAndModesFromComponent(logicalActor));
-    }
-  }
-
-  /**
-   * Retrieve Components from Physical layer + look for available modes and states
-   * 
-   * @param blockArch
-   * @param availableElements
-   */
-  public static void getAllStatesAndModesFromPhysicalLayer(BlockArchitecture blockArch,
-      List<CapellaElement> availableElements) {
-    PhysicalArchitecture phyArch = (PhysicalArchitecture) blockArch;
-    // PhysicalContext
-    PhysicalContext ownedPhysicalContext = phyArch.getOwnedPhysicalContext();
-    availableElements.addAll(ComponentExt.getAllStatesAndModesFromComponent(ownedPhysicalContext));
-    // PhysicalComponent
-    List<PhysicalComponent> allPhysicalComponents = PhysicalArchitectureExt.getAllPhysicalComponents(phyArch);
-    for (PhysicalComponent physicalComponent : allPhysicalComponents) {
-      availableElements.addAll(ComponentExt.getAllStatesAndModesFromComponent(physicalComponent));
-    }
-    // LogicalActor
-    List<PhysicalActor> allPAsFromPAPkg = PhysicalActorPkgExt.getAllPAsFromPAPkg((phyArch.getOwnedPhysicalActorPkg()));
-    for (PhysicalActor physicalActor : allPAsFromPAPkg) {
-      availableElements.addAll(ComponentExt.getAllStatesAndModesFromComponent(physicalActor));
-    }
-  }
-
-  /**
-   * Retrieve Components form EPBS Layer + look for available modes and states
-   * 
-   * @param blockArch
-   * @param availableElements
-   */
-  public static void getAllStatesAndModesFromEPBSLayer(BlockArchitecture blockArch,
-      List<CapellaElement> availableElements) {
-    EPBSArchitecture epbsArch = (EPBSArchitecture) blockArch;
-    // EPBSContext
-    EPBSContext ownedEPBSContext = epbsArch.getOwnedEPBSContext();
-    availableElements.addAll(ComponentExt.getAllStatesAndModesFromComponent(ownedEPBSContext));
-    // Configuration Item
-    List<ConfigurationItem> allConfigurationItems = SystemEngineeringExt.getAllConfigurationItems(epbsArch);
-    for (ConfigurationItem configurationItem : allConfigurationItems) {
-      availableElements.addAll(ComponentExt.getAllStatesAndModesFromComponent(configurationItem));
+  public static void getAllStatesAndModes(BlockArchitecture blockArch, List<CapellaElement> availableElements) {
+    for (Component component : getAllComponents(blockArch)) {
+      availableElements.addAll(ComponentExt.getAllStatesAndModesFromComponent(component));
     }
   }
 
@@ -892,142 +754,11 @@ public class BlockArchitectureExt {
   public static Collection<Component> getAllComponents(BlockArchitecture blockArch) {
     Collection<Component> result = new ArrayList<>();
     if (null != blockArch) {
-      Set<EObject> epbsSet = EObjectExt.getAll(blockArch, CsPackage.Literals.COMPONENT);
-      for (EObject cp : epbsSet) {
-        if (cp instanceof Component) {
-          result.add((Component) cp);
-        }
+      for (EObject cp : EObjectExt.getAll(blockArch, CsPackage.Literals.COMPONENT)) {
+        result.add((Component) cp);
       }
     }
     return result;
-  }
-
-  /**
-   * Get all components from BlockArchitecture
-   * 
-   * @param blockArch
-   * @param availableElements
-   */
-  public static void getAllComponentsFromBlockArchitecture(BlockArchitecture blockArch,
-      List<CapellaElement> availableElements) {
-    if (null != blockArch) {
-      if (blockArch instanceof OperationalAnalysis) {
-        getAllComponentsFromOA(blockArch, availableElements);
-      } else if (blockArch instanceof SystemAnalysis) {
-        getAllComponentsFromSA(blockArch, availableElements);
-      } else if (blockArch instanceof LogicalArchitecture) {
-        getAllComponentsFromLA(blockArch, availableElements);
-      } else if (blockArch instanceof PhysicalArchitecture) {
-        getAllComponentsFromPA(blockArch, availableElements);
-      } else if (blockArch instanceof EPBSArchitecture) {
-        getAllComponentsFromEPBS(blockArch, availableElements);
-      }
-    }
-  }
-
-  /**
-   * Get all components from OperationalAnalysis
-   * 
-   * @param blockArch
-   * @param availableElements
-   */
-  public static void getAllComponentsFromOA(BlockArchitecture blockArch, List<CapellaElement> availableElements) {
-    if (blockArch instanceof OperationalAnalysis) {
-      OperationalAnalysis arch = (OperationalAnalysis) blockArch;
-      // OperationalContext
-      OperationalContext context = arch.getOwnedOperationalContext();
-      if (null != context) {
-        availableElements.add(context);
-      }
-      // Entity
-      availableElements.addAll(OperationalAnalysisExt.getAllEntity(arch));
-    }
-  }
-
-  /**
-   * Get all components from SystemAnalysis
-   * 
-   * @param blockArch
-   * @param availableElements
-   */
-  public static void getAllComponentsFromSA(BlockArchitecture blockArch, List<CapellaElement> availableElements) {
-    if (blockArch instanceof SystemAnalysis) {
-      SystemAnalysis ca = (SystemAnalysis) blockArch;
-      // System Context
-      SystemContext ownedSystemContext = ca.getOwnedSystemContext();
-      if (null != ownedSystemContext) {
-        availableElements.add(ownedSystemContext);
-      }
-      // System
-      System ownedSystem = ca.getOwnedSystem();
-      if (null != ownedSystem) {
-        availableElements.add(ownedSystem);
-      }
-      // Actors
-      ActorPkg ownedActorPkg = ca.getOwnedActorPkg();
-      availableElements.addAll(ActorPkgExt.getAllActors(ownedActorPkg));
-    }
-  }
-
-  /**
-   * Get all components from LogicalArchitecture
-   * 
-   * @param blockArch
-   * @param availableElements
-   */
-  public static void getAllComponentsFromLA(BlockArchitecture blockArch, List<CapellaElement> availableElements) {
-    if (blockArch instanceof LogicalArchitecture) {
-      LogicalArchitecture logArch = (LogicalArchitecture) blockArch;
-      // LogicalContext
-      LogicalContext ownedLogicalContext = logArch.getOwnedLogicalContext();
-      if (null != ownedLogicalContext) {
-        availableElements.add(ownedLogicalContext);
-      }
-      // LogicalComponent
-      availableElements.addAll(LogicalArchitectureExt.getAllLCsFromLogicalArchitectureLayer(logArch));
-      // LogicalActor
-      availableElements.addAll(LogicalActorPkgExt.getAllLAsFromLAPkg(logArch.getOwnedLogicalActorPkg()));
-    }
-  }
-
-  /**
-   * Get all components from PhysicalArchitecture
-   * 
-   * @param blockArch
-   * @param availableElements
-   */
-  public static void getAllComponentsFromPA(BlockArchitecture blockArch, List<CapellaElement> availableElements) {
-    if (blockArch instanceof PhysicalArchitecture) {
-      PhysicalArchitecture phyArch = (PhysicalArchitecture) blockArch;
-      // PhysicalContext
-      PhysicalContext ownedPhysicalContext = phyArch.getOwnedPhysicalContext();
-      if (null != ownedPhysicalContext) {
-        availableElements.add(ownedPhysicalContext);
-      }
-      // PhysicalComponent
-      availableElements.addAll(PhysicalArchitectureExt.getAllPhysicalComponents(phyArch));
-      // LogicalActor
-      availableElements.addAll(PhysicalActorPkgExt.getAllPAsFromPAPkg((phyArch.getOwnedPhysicalActorPkg())));
-    }
-  }
-
-  /**
-   * Get all components from EPBSArchitecture
-   * 
-   * @param blockArch
-   * @param availableElements
-   */
-  public static void getAllComponentsFromEPBS(BlockArchitecture blockArch, List<CapellaElement> availableElements) {
-    if (blockArch instanceof EPBSArchitecture) {
-      EPBSArchitecture epbsArch = (EPBSArchitecture) blockArch;
-      // EPBSContext
-      EPBSContext ownedEPBSContext = epbsArch.getOwnedEPBSContext();
-      if (null != ownedEPBSContext) {
-        availableElements.add(ownedEPBSContext);
-      }
-      // Configuration Item
-      availableElements.addAll(SystemEngineeringExt.getAllConfigurationItems(epbsArch));
-    }
   }
 
   /**
@@ -1036,65 +767,8 @@ public class BlockArchitectureExt {
    * @param architecture
    * @return List<Component>
    */
-  public static List<Component> getFirstComponents(ModellingArchitecture architecture) {
-    List<Component> result = new ArrayList<>(1);
-
-    if (architecture instanceof OperationalAnalysis) {
-      OperationalAnalysis archi = (OperationalAnalysis) architecture;
-      // Entity
-      EntityPkg ownedEntityPkg = archi.getOwnedEntityPkg();
-      result.addAll(ownedEntityPkg.getOwnedEntities());
-
-    }
-    if (architecture instanceof SystemAnalysis) {
-      SystemAnalysis arch = (SystemAnalysis) architecture;
-      // System
-      System ownedSystem = arch.getOwnedSystem();
-      if (null != ownedSystem) {
-        result.add(ownedSystem);
-      }
-      // System Actor
-      ActorPkg ownedActorPkg = arch.getOwnedActorPkg();
-      if (null != ownedActorPkg) {
-        result.addAll(ownedActorPkg.getOwnedActors());
-      }
-
-    } else if (architecture instanceof LogicalArchitecture) {
-      LogicalArchitecture arch = (LogicalArchitecture) architecture;
-      // LogicalComponent
-      LogicalComponent lc = arch.getOwnedLogicalComponent();
-      if (null != lc) {
-        result.add(lc);
-      }
-      // Logical Actor
-      LogicalActorPkg ownedActorPkg = arch.getOwnedLogicalActorPkg();
-      if (null != ownedActorPkg) {
-        result.addAll(ownedActorPkg.getOwnedLogicalActors());
-      }
-
-    } else if (architecture instanceof PhysicalArchitecture) {
-      PhysicalArchitecture arch = (PhysicalArchitecture) architecture;
-      // LogicalComponent
-      PhysicalComponent pc = arch.getOwnedPhysicalComponent();
-      if (null != pc) {
-        result.add(pc);
-      }
-      // Logical Actor
-      PhysicalActorPkg ownedActorPkg = arch.getOwnedPhysicalActorPkg();
-      if (null != ownedActorPkg) {
-        result.addAll(ownedActorPkg.getOwnedPhysicalActors());
-      }
-
-    } else if (architecture instanceof EPBSArchitecture) {
-      EPBSArchitecture arch = (EPBSArchitecture) architecture;
-      // LogicalComponent
-      ConfigurationItem ci = arch.getOwnedConfigurationItem();
-      if (null != ci) {
-        result.add(ci);
-      }
-    }
-
-    return result;
+  public static List<Component> getFirstComponents(BlockArchitecture architecture) {
+    return ComponentPkgExt.getOwnedComponents(getComponentPkg(architecture, false));
   }
 
   /**
@@ -1106,13 +780,8 @@ public class BlockArchitectureExt {
    */
   public static List<BlockArchitecture> getPreviousBlockArchitecture(final BlockArchitecture anArchitecture) {
     List<BlockArchitecture> result = new ArrayList<>();
-
+    
     if (null != anArchitecture) {
-      // oa does not have any previous arch
-      if (anArchitecture instanceof OperationalAnalysis) {
-        return result;
-      }
-
       // functional way according to model
       result.addAll(getPreviousBlockArchitectureByFunctinoalWay(anArchitecture));
 
@@ -1131,7 +800,7 @@ public class BlockArchitectureExt {
    * @param anArchitecture
    * @return
    */
-  public static List<BlockArchitecture> getPreviousBlockArchitectureByFunctinoalWay(
+  private static List<BlockArchitecture> getPreviousBlockArchitectureByFunctinoalWay(
       final BlockArchitecture anArchitecture) {
     List<BlockArchitecture> result = new ArrayList<>();
     if (anArchitecture instanceof SystemAnalysis) {
@@ -1183,11 +852,11 @@ public class BlockArchitectureExt {
    * @param anArchitecture
    * @return
    */
-  public static List<BlockArchitecture> getPreviousBlockArchitectureByClassicWay(
+  private static List<BlockArchitecture> getPreviousBlockArchitectureByClassicWay(
       final BlockArchitecture anArchitecture) {
     List<BlockArchitecture> result = new ArrayList<>();
     if (null != anArchitecture) {
-      SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(anArchitecture);
+      SystemEngineering sysEng = SystemEngineeringExt.getSystemEngineering(anArchitecture);
 
       if (anArchitecture instanceof SystemAnalysis) {
         OperationalAnalysis oa = SystemEngineeringExt.getOwnedOperationalAnalysis(sysEng);
@@ -1216,18 +885,48 @@ public class BlockArchitectureExt {
   }
 
   /**
+   * Gets all the {@link Missions} from SystemEng
+   * @param element the {@link CapellaElement}
+   * @return list of CapabilitySpecificationUseCase
+   */
+  public static List<Mission> getAllMissions(SystemAnalysis element) {
+    List<Mission> result = new ArrayList<Mission>();
+    if (null != element) {
+      Set<EObject> missions = EObjectExt.getAll(element, CtxPackage.Literals.MISSION);
+      for (EObject obj : missions) {
+        result.add((Mission) obj);
+      }
+    }
+    return result;
+  }
+  /**
    * Return all the constraint
    * 
    * @param anElement
    * @return
    */
-  public static List<EObject> getAllConstraints(EObject anElement) {
-    List<EObject> result = new ArrayList<>();
+  public static List<Constraint> getAllConstraints(EObject anElement) {
+    List<Constraint> result = new ArrayList<>();
     if (null == anElement) {
       return result;
     }
     for (EObject obj : EObjectExt.getAll(anElement, CapellacorePackage.Literals.CONSTRAINT)) {
-      result.add(obj);
+      if (obj instanceof Constraint) {
+        result.add((Constraint) obj);
+      }
+    }
+    return result;
+  }
+  
+  public static List<Interface> getAllInterfaces(BlockArchitecture anElement) {
+    List<Interface> result = new ArrayList<>();
+    if (null == anElement) {
+      return result;
+    }
+    for (EObject obj : EObjectExt.getAll(anElement, CsPackage.Literals.INTERFACE)) {
+      if (obj instanceof Interface) {
+        result.add((Interface) obj);
+      }
     }
     return result;
   }

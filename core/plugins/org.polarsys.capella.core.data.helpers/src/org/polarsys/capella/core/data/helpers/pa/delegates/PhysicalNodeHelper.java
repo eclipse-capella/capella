@@ -15,9 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.polarsys.capella.core.data.information.Partition;
+import org.polarsys.capella.core.data.capellacore.Feature;
 import org.polarsys.capella.core.data.capellacore.Type;
+import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.PhysicalNode;
 
@@ -52,15 +52,15 @@ public class PhysicalNodeHelper {
 
   protected List<PhysicalNode> getSubPhysicalNodes(PhysicalNode element) {
     List<PhysicalNode> ret = new ArrayList<>();
-
-    for (Partition thePartition : element.getOwnedPartitions()) {
-      Type representedElement = thePartition.getType();
-      // we need to be invariant
-      if ((null != representedElement) && representedElement.eClass().equals(PaPackage.Literals.PHYSICAL_NODE)) {
-        ret.add((PhysicalNode) representedElement);
+    for (Feature feature : element.getOwnedFeatures()) {
+      if (feature instanceof Part) {
+        Type type = ((Part) feature).getType();
+        // we need to be invariant
+        if ((null != type) && type.eClass().equals(PaPackage.Literals.PHYSICAL_NODE)) {
+          ret.add((PhysicalNode) type);
+        }
       }
     }
-
     return ret;
   }
 }

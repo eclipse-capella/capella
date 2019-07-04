@@ -14,8 +14,8 @@ import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.ConfigurationItemKind;
+import org.polarsys.capella.core.data.epbs.ConfigurationItemPkg;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
-import org.polarsys.capella.core.data.epbs.EPBSContext;
 import org.polarsys.capella.core.data.epbs.EpbsFactory;
 import org.polarsys.capella.core.data.epbs.PhysicalArchitectureRealization;
 import org.polarsys.capella.core.data.epbs.PhysicalArtifactRealization;
@@ -62,16 +62,15 @@ public class CreateEPBSArchiCmd extends AbstractReadWriteCommand {
     // Builds the root element of the EPBS architecture.
     epbsArchitecture = EpbsFactory.eINSTANCE.createEPBSArchitecture(architectureName);
 
+    ConfigurationItemPkg cipkg = EpbsFactory.eINSTANCE.createConfigurationItemPkg(NamingConstants.CreateEPBSArchCmd_configurationItemPkg_name);
+    epbsArchitecture.setOwnedConfigurationItemPkg(cipkg);
+    
     ConfigurationItem ci = EpbsFactory.eINSTANCE.createConfigurationItem(NamingConstants.CreateEPBSArchCmd_configurationItem_name);
     ci.setKind(ConfigurationItemKind.SYSTEM_CI);
-    epbsArchitecture.setOwnedConfigurationItem(ci);
-
-    // Builds the epbs context structure skeleton.
-    EPBSContext epbsContext = EpbsFactory.eINSTANCE.createEPBSContext(NamingConstants.CreateEPBSArchCmd_epbsContext_name);
-    epbsArchitecture.setOwnedEPBSContext(epbsContext);
+    cipkg.getOwnedConfigurationItems().add(ci);
 
     Part epbsRootPart = CsFactory.eINSTANCE.createPart(ci.getName());
-    epbsContext.getOwnedFeatures().add(epbsRootPart);
+    cipkg.getOwnedParts().add(epbsRootPart);
     epbsRootPart.setAbstractType(ci);
     
     // Build the physical component realization.
@@ -90,8 +89,7 @@ public class CreateEPBSArchiCmd extends AbstractReadWriteCommand {
     }
 
     // Builds the capabilities realizations structure skeleton.
-    CapabilityRealizationPkg capaRealisationPkg =
-                                                  LaFactory.eINSTANCE.createCapabilityRealizationPkg(NamingConstants.CreateCommonCmd_capability_realisation_pkg_name);
+    CapabilityRealizationPkg capaRealisationPkg = LaFactory.eINSTANCE.createCapabilityRealizationPkg(NamingConstants.CreateCommonCmd_capability_realisation_pkg_name);
     epbsArchitecture.setOwnedAbstractCapabilityPkg(capaRealisationPkg);
     
     // Attaches the EPBS architecture to its parent system engineering.

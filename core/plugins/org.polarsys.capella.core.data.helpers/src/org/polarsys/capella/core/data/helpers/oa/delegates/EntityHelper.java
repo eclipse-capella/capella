@@ -13,31 +13,26 @@ package org.polarsys.capella.core.data.helpers.oa.delegates;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentAllocation;
-import org.polarsys.capella.core.data.ctx.Actor;
-import org.polarsys.capella.core.data.ctx.OperationalActorRealization;
-import org.polarsys.capella.core.data.ctx.OperationalEntityRealization;
-import org.polarsys.capella.core.data.ctx.System;
-import org.polarsys.capella.core.data.fa.AbstractFunction;
-import org.polarsys.capella.core.data.helpers.cs.delegates.ComponentHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.InvolvedElementHelper;
-import org.polarsys.capella.core.data.information.Partition;
+import org.polarsys.capella.common.data.helpers.modellingcore.delegates.InformationsExchangerHelper;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.core.data.capellacore.Feature;
 import org.polarsys.capella.core.data.capellacore.Involvement;
 import org.polarsys.capella.core.data.capellacore.Type;
+import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
+import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.InvolvedElementHelper;
+import org.polarsys.capella.core.data.helpers.cs.delegates.ComponentHelper;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.EntityOperationalCapabilityInvolvement;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
-import org.polarsys.capella.core.data.oa.OperationalActor;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
 import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.data.oa.RoleAllocation;
-import org.polarsys.capella.common.data.helpers.modellingcore.delegates.InformationsExchangerHelper;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 
 public class EntityHelper {
 	private static EntityHelper instance;
@@ -63,12 +58,10 @@ public class EntityHelper {
       ret = getAllocatedOperationalActivities(element);
     } else if (feature.equals(OaPackage.Literals.ENTITY__INVOLVING_OPERATIONAL_CAPABILITIES)) {
       ret = getInvolvingOperationalCapabilities(element);
-    } else if (feature.equals(OaPackage.Literals.ENTITY__REALIZING_SYSTEMS)) {
-      ret = getRealizingSystems(element);
     } else if (feature.equals(OaPackage.Literals.ENTITY__ALLOCATED_ROLES)) {
       ret = getAllocatedRoles(element);
-    } else if (feature.equals(OaPackage.Literals.ENTITY__REALIZING_ACTORS)) {
-      ret = getRealizingActors(element);
+    } else if (feature.equals(OaPackage.Literals.ENTITY__REALIZING_SYSTEM_COMPONENTS)) {
+      ret = getRealizingSystemComponents(element);
 		}
 
 		// no helper found... searching in super classes...
@@ -96,17 +89,17 @@ public class EntityHelper {
 		return ret;
 	}
 
-	protected List<Entity> getSubEntities(Entity element) {
-		List<Entity> ret = new ArrayList<>();
-
-		for (Partition thePartition : element.getOwnedPartitions()) {
-			Type representedElement = thePartition.getType();
-			if (representedElement instanceof Entity) {
-				ret.add((Entity) representedElement);
-			}
-		}
-		return ret;
-	}
+  protected List<Entity> getSubEntities(Entity element) {
+    List<Entity> ret = new ArrayList<>();
+    for (Feature feature : element.getOwnedFeatures()) {
+      if (feature instanceof Part) {
+        Type type = ((Part) feature).getType();
+        if (type instanceof Entity)
+          ret.add((Entity) type);
+      }
+    }
+    return ret;
+  }
 
   protected List<OperationalActivity> getAllocatedOperationalActivities(Entity element) {
     List<OperationalActivity> ret = new ArrayList<>();
@@ -131,32 +124,9 @@ public class EntityHelper {
     return ret;
   }
 
-  protected List<System> getRealizingSystems(Entity element) {
-    List<System> ret = new ArrayList<>();
-    for (AbstractTrace trace : element.getIncomingTraces()) {
-      if ((trace instanceof OperationalEntityRealization) || (trace instanceof OperationalActorRealization)) {
-        Component cpnt = ((ComponentAllocation)trace).getAllocatingComponent();
-        if (cpnt instanceof System) {
-          ret.add((System) cpnt);
-        }
-      }
-    }
-    return ret;
-  }
-
-  protected List<Actor> getRealizingActors(Entity element) {
-    List<Actor> ret = new ArrayList<>();
-    if (!(element instanceof OperationalActor)) {
-      for (AbstractTrace trace : element.getIncomingTraces()) {
-        if (trace instanceof OperationalEntityRealization) {
-          Component cpnt = ((ComponentAllocation)trace).getAllocatingComponent();
-          if (cpnt instanceof Actor) {
-            ret.add((Actor) cpnt);
-          }
-        }
-      }
-    }
-    return ret;
+  protected List<SystemComponent> getRealizingSystemComponents(Entity element) {
+    return element.getRealizingComponents().stream().filter(SystemComponent.class::isInstance)
+        .map(SystemComponent.class::cast).collect(Collectors.toList());
   }
 
   protected List<Role> getAllocatedRoles(Entity element) {

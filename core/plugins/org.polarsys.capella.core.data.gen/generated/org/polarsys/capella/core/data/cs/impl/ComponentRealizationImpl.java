@@ -39,7 +39,7 @@ import org.polarsys.capella.core.data.cs.CsPackage;
  *
  * @generated
  */
-public abstract class ComponentRealizationImpl extends AllocationImpl implements ComponentRealization {
+public class ComponentRealizationImpl extends AllocationImpl implements ComponentRealization {
 
 
 

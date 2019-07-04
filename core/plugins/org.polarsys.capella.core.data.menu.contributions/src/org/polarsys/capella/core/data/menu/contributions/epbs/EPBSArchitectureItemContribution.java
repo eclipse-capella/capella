@@ -15,14 +15,20 @@ import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
-
-import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
-import org.polarsys.capella.core.data.epbs.EpbsPackage;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.model.skeleton.helpers.EPBSStructureHelper;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
+import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
+import org.polarsys.capella.core.data.epbs.EpbsPackage;
+import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
+import org.polarsys.capella.core.data.pa.PhysicalComponent;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
+import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
+import org.polarsys.capella.core.model.skeleton.impl.cmd.CreateEPBSArchiCmd;
 
 public class EPBSArchitectureItemContribution implements IMDEMenuItemContribution {
 
@@ -44,7 +50,15 @@ public class EPBSArchitectureItemContribution implements IMDEMenuItemContributio
    */
   public Command executionContribution(EditingDomain editingDomain, ModelElement containerElement, ModelElement createdElement, EStructuralFeature feature) {
     if ((createdElement instanceof EPBSArchitecture) && (containerElement instanceof SystemEngineering)) {
-      return EPBSStructureHelper.getEPBSArchitectureCreationCmd(editingDomain, (SystemEngineering) containerElement, (EPBSArchitecture) createdElement);
+      SystemEngineering engineering = (SystemEngineering) containerElement;
+      PhysicalArchitecture architecture = SystemEngineeringExt.getPhysicalArchitecture(engineering);
+      return new RecordingCommand((TransactionalEditingDomain) editingDomain) {
+        @Override
+        protected void doExecute() {
+          new CreateEPBSArchiCmd(engineering, NamingConstants.CreateEPBSArchCmd_name, architecture,
+              (PhysicalComponent) BlockArchitectureExt.getFirstComponent(architecture, false)).run();
+        }
+      };
     }
     return new IdentityCommand();
   }

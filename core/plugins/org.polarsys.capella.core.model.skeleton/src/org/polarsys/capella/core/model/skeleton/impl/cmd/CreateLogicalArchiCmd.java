@@ -11,11 +11,14 @@
 
 package org.polarsys.capella.core.model.skeleton.impl.cmd;
 
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
+import org.polarsys.capella.core.data.cs.ComponentRealization;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.ctx.System;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.fa.FaFactory;
 import org.polarsys.capella.core.data.fa.FunctionRealization;
@@ -23,18 +26,14 @@ import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.information.InformationFactory;
 import org.polarsys.capella.core.data.la.CapabilityRealizationPkg;
 import org.polarsys.capella.core.data.la.LaFactory;
-import org.polarsys.capella.core.data.la.LogicalActorPkg;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.la.LogicalContext;
+import org.polarsys.capella.core.data.la.LogicalComponentPkg;
 import org.polarsys.capella.core.data.la.LogicalFunction;
 import org.polarsys.capella.core.data.la.LogicalFunctionPkg;
 import org.polarsys.capella.core.data.la.SystemAnalysisRealization;
-import org.polarsys.capella.core.data.la.SystemRealization;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
 import org.polarsys.capella.core.model.skeleton.Messages;
-import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 
 /**
  * The command allowing to create the logical architecture structure skeleton.
@@ -48,7 +47,7 @@ public class CreateLogicalArchiCmd extends AbstractReadWriteCommand {
   // The system function.
   private SystemFunction _systemFunction;
   // The system.
-  private System _system;
+  private SystemComponent _system;
 
   // The System Analysis.
   private SystemAnalysis _ctxArchitecture;
@@ -68,7 +67,7 @@ public class CreateLogicalArchiCmd extends AbstractReadWriteCommand {
    * @param system_p The system.
    */
   public CreateLogicalArchiCmd(SystemEngineering systemEng_p, String architectureName_p, SystemAnalysis ctxArchitecture_p,
-      SystemFunction systemFunction_p, System system_p) {
+      SystemFunction systemFunction_p, SystemComponent system_p) {
     _architectureName = architectureName_p;
 
     _ctxArchitecture = ctxArchitecture_p;
@@ -106,28 +105,24 @@ public class CreateLogicalArchiCmd extends AbstractReadWriteCommand {
     DataPkg dataPkg = InformationFactory.eINSTANCE.createDataPkg(NamingConstants.CreateCommonCmd_data_pkg_name);
     _logicalArchitecture.setOwnedDataPkg(dataPkg);
 
+    // Builds the logical actors structure skeleton.
+    LogicalComponentPkg logicalComponentsPkg = LaFactory.eINSTANCE.createLogicalComponentPkg(NamingConstants.CreateLogicalArchCmd_actors_pkg_name);
+    _logicalArchitecture.setOwnedLogicalComponentPkg(logicalComponentsPkg);
+
     // Builds the logical components structure skeleton.
     _rootComponent = LaFactory.eINSTANCE.createLogicalComponent(NamingConstants.CreateLogicalArchCmd_logicalComponent_name);
-    _logicalArchitecture.setOwnedLogicalComponent(_rootComponent);
-
-    // Builds the logical context structure skeleton.
-    LogicalContext logicalContext = LaFactory.eINSTANCE.createLogicalContext(NamingConstants.CreateLogicalArchCmd_logicalContext_name);
-    _logicalArchitecture.setOwnedLogicalContext(logicalContext);
+    logicalComponentsPkg.getOwnedLogicalComponents().add(_rootComponent);
 
     Part logicalRootPart = CsFactory.eINSTANCE.createPart(_rootComponent.getName());
-    logicalContext.getOwnedFeatures().add(logicalRootPart);
+    logicalComponentsPkg.getOwnedParts().add(logicalRootPart);
     logicalRootPart.setAbstractType(_rootComponent);
 
-    SystemRealization systemRealisation = LaFactory.eINSTANCE.createSystemRealization();
-    _rootComponent.getOwnedSystemRealizations().add(systemRealisation);
+    ComponentRealization systemRealisation = CsFactory.eINSTANCE.createComponentRealization();
+    _rootComponent.getOwnedComponentRealizations().add(systemRealisation);
     systemRealisation.setSourceElement(_rootComponent);
     if (null != _system) {
       systemRealisation.setTargetElement(_system);
     }
-
-    // Builds the logical actors structure skeleton.
-    LogicalActorPkg logicalActorsPkg = LaFactory.eINSTANCE.createLogicalActorPkg(NamingConstants.CreateLogicalArchCmd_actors_pkg_name);
-    _logicalArchitecture.setOwnedLogicalActorPkg(logicalActorsPkg);
 
     // Links the System Analysis to the current logical architecture.
     SystemAnalysisRealization ctxArchitectureRealisation = LaFactory.eINSTANCE.createSystemAnalysisRealization();

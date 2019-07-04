@@ -16,7 +16,10 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.polarsys.capella.common.data.helpers.modellingcore.delegates.AbstractTypeHelper;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
@@ -28,12 +31,7 @@ import org.polarsys.capella.core.data.fa.ComponentExchangeRealization;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.helpers.information.delegates.AbstractEventOperationHelper;
-import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.information.Port;
-import org.polarsys.capella.common.data.helpers.modellingcore.delegates.AbstractTypeHelper;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
-import org.polarsys.capella.common.helpers.EObjectExt;
 
 public class ComponentExchangeHelper {
   private static ComponentExchangeHelper instance;
@@ -139,10 +137,7 @@ public class ComponentExchangeHelper {
   protected Part getSourcePart(ComponentExchange element) {
     InformationsExchanger source = element.getSource();
     if (source instanceof ComponentExchangeEnd) {
-      Partition partition = ((ComponentExchangeEnd) source).getPart();
-      if (partition instanceof Part) {
-        return (Part) partition;
-      }
+      return ((ComponentExchangeEnd) source).getPart();
     } else if (source instanceof Part) {
       return (Part) source;
     }
@@ -162,10 +157,7 @@ public class ComponentExchangeHelper {
   protected Part getTargetPart(ComponentExchange element) {
     InformationsExchanger target = element.getTarget();
     if (target instanceof ComponentExchangeEnd) {
-      Partition partition = ((ComponentExchangeEnd) target).getPart();
-      if (partition instanceof Part) {
-        return (Part) partition;
-      }
+      return ((ComponentExchangeEnd) target).getPart();
     } else if (target instanceof Part) {
       return (Part) target;
     }

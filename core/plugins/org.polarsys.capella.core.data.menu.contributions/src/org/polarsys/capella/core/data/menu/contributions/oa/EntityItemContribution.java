@@ -24,19 +24,17 @@ import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.command.CreateChildCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-
-import org.polarsys.capella.common.helpers.EcoreUtil2;
-import org.polarsys.capella.core.data.cs.CsFactory;
-import org.polarsys.capella.core.data.information.PartitionableElement;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-import org.polarsys.capella.core.data.oa.Entity;
-import org.polarsys.capella.core.data.oa.OaPackage;
-import org.polarsys.capella.core.data.oa.OperationalActor;
-import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.CsFactory;
+import org.polarsys.capella.core.data.oa.Entity;
+import org.polarsys.capella.core.data.oa.OaPackage;
+import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 
 public class EntityItemContribution implements IMDEMenuItemContribution {
 
@@ -44,7 +42,7 @@ public class EntityItemContribution implements IMDEMenuItemContribution {
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
    */
   public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
-    return !(modelElement instanceof OperationalActor);
+    return !(modelElement instanceof Component && ((Component)modelElement).isActor());
   }
 
   /**
@@ -53,13 +51,13 @@ public class EntityItemContribution implements IMDEMenuItemContribution {
   public Command executionContribution(final EditingDomain editingDomain, ModelElement containerElement, final ModelElement createdElement,
       EStructuralFeature feature) {
     if (createdElement instanceof Entity) {
-      if (((PartitionableElement) createdElement).getRepresentingPartitions().size() == 0) {
+      if (((Component) createdElement).getRepresentingParts().size() == 0) {
         EObject partOwner =
             (containerElement instanceof Entity) ? containerElement : EcoreUtil2.getFirstContainer(containerElement, OaPackage.Literals.ENTITY);
         if (partOwner == null) {
           EObject pkg = EcoreUtil2.getFirstContainer(containerElement, OaPackage.Literals.OPERATIONAL_ANALYSIS);
           if (pkg != null) {
-            partOwner = ((OperationalAnalysis) pkg).getOwnedOperationalContext();
+            partOwner = ((OperationalAnalysis) pkg).getOwnedEntityPkg();
           }
         }
 

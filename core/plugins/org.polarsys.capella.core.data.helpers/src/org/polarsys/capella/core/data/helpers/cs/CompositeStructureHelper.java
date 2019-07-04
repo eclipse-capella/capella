@@ -16,12 +16,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.common.model.helpers.HelperNotFoundException;
 import org.polarsys.capella.common.model.helpers.IHelper;
-import org.polarsys.capella.core.data.cs.AbstractActor;
-import org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.cs.ArchitectureAllocation;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentAllocation;
+import org.polarsys.capella.core.data.cs.ComponentRealization;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfaceAllocation;
@@ -40,16 +38,13 @@ import org.polarsys.capella.core.data.cs.PhysicalPathRealization;
 import org.polarsys.capella.core.data.cs.PhysicalPathReference;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.cs.PhysicalPortRealization;
-import org.polarsys.capella.core.data.cs.SystemComponent;
-import org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInvolvement;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedElementHelper;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.StructureHelper;
-import org.polarsys.capella.core.data.helpers.cs.delegates.AbstractActorHelper;
-import org.polarsys.capella.core.data.helpers.cs.delegates.ActorCapabilityRealizationInvolvementHelper;
 import org.polarsys.capella.core.data.helpers.cs.delegates.ArchitectureAllocationHelper;
 import org.polarsys.capella.core.data.helpers.cs.delegates.BlockArchitectureHelper;
-import org.polarsys.capella.core.data.helpers.cs.delegates.ComponentAllocationHelper;
 import org.polarsys.capella.core.data.helpers.cs.delegates.ComponentHelper;
+import org.polarsys.capella.core.data.helpers.cs.delegates.ComponentRealizationHelper;
 import org.polarsys.capella.core.data.helpers.cs.delegates.ExchangeItemAllocationHelper;
 import org.polarsys.capella.core.data.helpers.cs.delegates.InterfaceAllocationHelper;
 import org.polarsys.capella.core.data.helpers.cs.delegates.InterfaceAllocatorHelper;
@@ -66,7 +61,6 @@ import org.polarsys.capella.core.data.helpers.cs.delegates.PhysicalPathRealizati
 import org.polarsys.capella.core.data.helpers.cs.delegates.PhysicalPathReferenceHelper;
 import org.polarsys.capella.core.data.helpers.cs.delegates.PhysicalPortHelper;
 import org.polarsys.capella.core.data.helpers.cs.delegates.PhysicalPortRealizationHelper;
-import org.polarsys.capella.core.data.helpers.cs.delegates.SystemComponentCapabilityRealizationInvolvementHelper;
 import org.polarsys.capella.core.data.helpers.cs.delegates.SystemComponentHelper;
 
 public class CompositeStructureHelper implements IHelper {
@@ -99,22 +93,14 @@ public class CompositeStructureHelper implements IHelper {
       ret = InterfaceAllocatorHelper.getInstance().doSwitch((InterfaceAllocator) object, feature);
     } else if (object instanceof InterfaceAllocation) {
       ret = InterfaceAllocationHelper.getInstance().doSwitch((InterfaceAllocation) object, feature);
-    } else if (object instanceof ComponentAllocation) {
-      ret = ComponentAllocationHelper.getInstance().doSwitch((ComponentAllocation) object, feature);
     } else if (object instanceof ArchitectureAllocation) {
       ret = ArchitectureAllocationHelper.getInstance().doSwitch((ArchitectureAllocation) object, feature);
-    } else if (object instanceof AbstractActor) {
-      ret = AbstractActorHelper.getInstance().doSwitch((AbstractActor) object, feature);
     } else if (object instanceof InterfaceImplementation) {
       ret = InterfaceImplementationHelper.getInstance().doSwitch((InterfaceImplementation) object, feature);
     } else if (object instanceof InterfaceUse) {
       ret = InterfaceUseHelper.getInstance().doSwitch((InterfaceUse) object, feature);
     } else if (object instanceof InterfacePkg) {
       ret = StructureHelper.getInstance().doSwitch((InterfacePkg) object, feature);
-    } else if (object instanceof ActorCapabilityRealizationInvolvement) {
-      ret = ActorCapabilityRealizationInvolvementHelper.getInstance().doSwitch((ActorCapabilityRealizationInvolvement) object, feature);
-    } else if (object instanceof SystemComponentCapabilityRealizationInvolvement) {
-      ret = SystemComponentCapabilityRealizationInvolvementHelper.getInstance().doSwitch((SystemComponentCapabilityRealizationInvolvement) object, feature);
     } else if (object instanceof ExchangeItemAllocation) {
       ret = ExchangeItemAllocationHelper.getInstance().doSwitch((ExchangeItemAllocation) object, feature);
     } else if (object instanceof PhysicalLink) {
@@ -137,6 +123,8 @@ public class CompositeStructureHelper implements IHelper {
       ret = PhysicalPathRealizationHelper.getInstance().doSwitch((PhysicalPathRealization) object, feature);
     } else if (object instanceof PhysicalPortRealization) {
       ret = PhysicalPortRealizationHelper.getInstance().doSwitch((PhysicalPortRealization) object, feature);
+    } else if (object instanceof ComponentRealization) {
+      ret = ComponentRealizationHelper.getInstance().doSwitch((ComponentRealization) object, feature);
     }
 
     if (null != ret || feature.getUpperBound() == 1)

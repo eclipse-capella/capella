@@ -54,7 +54,6 @@ public class ProtectedElementsPreferences extends AbstractPreferencesInitializer
    */
   @Override
   public void initializeDefaultPreferences() {
-
     // Project
     initializeDefaultProtectedElementPreference(CapellamodellerPackage.Literals.PROJECT, 0);
     // SystemEngineering
@@ -69,18 +68,6 @@ public class ProtectedElementsPreferences extends AbstractPreferencesInitializer
     initializeDefaultProtectedElementPreference(PaPackage.Literals.PHYSICAL_ARCHITECTURE, 5);
     // EPBSArchitecture
     initializeDefaultProtectedElementPreference(EpbsPackage.Literals.EPBS_ARCHITECTURE, 6);
-    // OperationalContext
-    initializeDefaultProtectedElementPreference(OaPackage.Literals.OPERATIONAL_CONTEXT, 7);
-    // SystemContext
-    initializeDefaultProtectedElementPreference(CtxPackage.Literals.SYSTEM_CONTEXT, 8);
-    // LogicalContext
-    initializeDefaultProtectedElementPreference(LaPackage.Literals.LOGICAL_CONTEXT, 9);
-    // PhysicalContext
-    initializeDefaultProtectedElementPreference(PaPackage.Literals.PHYSICAL_CONTEXT, 10);
-    // PhysicalContext
-    initializeDefaultProtectedElementPreference(EpbsPackage.Literals.EPBS_CONTEXT, 11);
-    // System
-    initializeDefaultProtectedElementPreference(CtxPackage.Literals.SYSTEM, 12);
   }
 
   /**

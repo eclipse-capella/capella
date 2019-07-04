@@ -15,8 +15,9 @@ import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.data.ctx.System;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
@@ -92,10 +93,8 @@ public class SkeletonServicesImpl implements ISkeletonServices {
         SystemAnalysis contextArchitecture = _currentCtxArchitectureCmd.getSystemAnalysis();
 
         // 4 - Builds the logical architecture structure skeleton.
-        SystemFunction systemFunction = null;
-        System system = null;
-        systemFunction = _currentCtxArchitectureCmd.getSystemFunction();
-        system = _currentCtxArchitectureCmd.getSystem();
+        SystemFunction systemFunction = _currentCtxArchitectureCmd.getSystemFunction();
+        SystemComponent system = _currentCtxArchitectureCmd.getSystem();
 
         // Call the command allowing to create the logical architecture structure skeleton.
         _currentLogicalArchitectureCmd =
@@ -105,10 +104,8 @@ public class SkeletonServicesImpl implements ISkeletonServices {
         LogicalArchitecture logicalArchitecture = _currentLogicalArchitectureCmd.getLogicalArchitecture();
 
         // 5 - Builds the physical architecture.
-        LogicalComponent logicalComponent = null;
-        LogicalFunction logicalFunction = null;
-        logicalComponent = _currentLogicalArchitectureCmd.getLogicalComponent();
-        logicalFunction = _currentLogicalArchitectureCmd.getLogicalFunction();
+        LogicalComponent logicalComponent = _currentLogicalArchitectureCmd.getLogicalComponent();
+        LogicalFunction logicalFunction = _currentLogicalArchitectureCmd.getLogicalFunction();
 
         // Call the command allowing to create the physical architecture structure skeleton.
         _currentPhysicalArchitectureCmd =
@@ -174,10 +171,10 @@ public class SkeletonServicesImpl implements ISkeletonServices {
   /**
    * @see org.polarsys.capella.core.model.skeleton.ISkeletonServices#doLogicalArchitecture(org.polarsys.capella.core.data.capellamodeller.SystemEngineering,
    *      org.polarsys.capella.core.data.ctx.SystemAnalysis, org.polarsys.capella.core.data.ctx.SystemFunction,
-   *      org.polarsys.capella.core.data.ctx.System)
+   *      org.polarsys.capella.core.data.ctx.SystemComponent)
    */
   public LogicalArchitecture doLogicalArchitecture(SystemEngineering systemEng_p, SystemAnalysis ctxArchitecture_p, SystemFunction systemFunction_p,
-      System system_p) {
+      SystemComponent system_p) {
     // Call the command allowing to create the logical architecture structure skeleton.
     String packageName = NamingConstants.SkeletonServicesImpl_package_name_logicalArchitecture;
     _currentLogicalArchitectureCmd = new CreateLogicalArchiCmd(systemEng_p, packageName, ctxArchitecture_p, systemFunction_p, system_p);

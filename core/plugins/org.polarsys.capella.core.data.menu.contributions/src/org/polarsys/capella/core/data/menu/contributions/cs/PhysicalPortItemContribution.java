@@ -14,19 +14,17 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
-
-import org.polarsys.capella.core.data.cs.AbstractActor;
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.menu.dynamic.CreationHelper;
+import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
-import org.polarsys.capella.core.data.ctx.System;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.menu.dynamic.CreationHelper;
-import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
 
 public class PhysicalPortItemContribution implements IMDEMenuItemContribution {
 
@@ -34,8 +32,7 @@ public class PhysicalPortItemContribution implements IMDEMenuItemContribution {
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
    */
   public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
-    if ((modelElement instanceof AbstractActor)
-      || (modelElement instanceof System)
+    if ((modelElement instanceof Component && ((Component) modelElement).isActor())
       || ((modelElement instanceof LogicalComponent) && ComponentExt.isComponentRoot(modelElement))
       || ((modelElement instanceof PhysicalComponent) && ((PhysicalComponent) modelElement).getNature().equals(PhysicalComponentNature.NODE)))
     {

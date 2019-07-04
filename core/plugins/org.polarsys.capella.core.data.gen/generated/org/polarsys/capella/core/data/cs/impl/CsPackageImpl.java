@@ -35,7 +35,6 @@ import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.BlockArchitecturePkg;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentArchitecture;
-import org.polarsys.capella.core.data.cs.ComponentContext;
 import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.ComponentRealization;
 import org.polarsys.capella.core.data.cs.CsFactory;
@@ -210,13 +209,6 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * @generated
 	 */
 	private EClass interfaceAllocatorEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass componentContextEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -638,7 +630,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getComponent_IsActor() {
+	public EAttribute getComponent_Actor() {
 		return (EAttribute)componentEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -647,7 +639,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getComponent_IsHuman() {
+	public EAttribute getComponent_Human() {
 		return (EAttribute)componentEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -710,7 +702,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getComponent_ProvisionedComponentAllocations() {
+	public EReference getComponent_OwnedComponentRealizations() {
 		return (EReference)componentEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -719,7 +711,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getComponent_ProvisioningComponentAllocations() {
+	public EReference getComponent_RealizedComponents() {
 		return (EReference)componentEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -728,7 +720,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getComponent_OwnedComponentRealizations() {
+	public EReference getComponent_RealizingComponents() {
 		return (EReference)componentEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -737,7 +729,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getComponent_RealizedComponents() {
+	public EReference getComponent_ProvidedInterfaces() {
 		return (EReference)componentEClass.getEStructuralFeatures().get(11);
 	}
 
@@ -746,7 +738,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getComponent_RealizingComponents() {
+	public EReference getComponent_RequiredInterfaces() {
 		return (EReference)componentEClass.getEStructuralFeatures().get(12);
 	}
 
@@ -755,7 +747,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getComponent_ProvidedInterfaces() {
+	public EReference getComponent_ContainedComponentPorts() {
 		return (EReference)componentEClass.getEStructuralFeatures().get(13);
 	}
 
@@ -764,7 +756,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getComponent_RequiredInterfaces() {
+	public EReference getComponent_ContainedParts() {
 		return (EReference)componentEClass.getEStructuralFeatures().get(14);
 	}
 
@@ -773,7 +765,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getComponent_ContainedComponentPorts() {
+	public EReference getComponent_ContainedPhysicalPorts() {
 		return (EReference)componentEClass.getEStructuralFeatures().get(15);
 	}
 
@@ -782,7 +774,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getComponent_ContainedParts() {
+	public EReference getComponent_OwnedPhysicalPath() {
 		return (EReference)componentEClass.getEStructuralFeatures().get(16);
 	}
 
@@ -791,7 +783,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getComponent_ContainedPhysicalPorts() {
+	public EReference getComponent_OwnedPhysicalLinks() {
 		return (EReference)componentEClass.getEStructuralFeatures().get(17);
 	}
 
@@ -800,7 +792,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getComponent_OwnedPhysicalPath() {
+	public EReference getComponent_OwnedPhysicalLinkCategories() {
 		return (EReference)componentEClass.getEStructuralFeatures().get(18);
 	}
 
@@ -809,26 +801,8 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getComponent_OwnedPhysicalLinks() {
-		return (EReference)componentEClass.getEStructuralFeatures().get(19);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getComponent_OwnedPhysicalLinkCategories() {
-		return (EReference)componentEClass.getEStructuralFeatures().get(20);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getComponent_RepresentingParts() {
-		return (EReference)componentEClass.getEStructuralFeatures().get(21);
+		return (EReference)componentEClass.getEStructuralFeatures().get(19);
 	}
 
 	/**
@@ -1306,15 +1280,6 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 */
 	public EReference getInterfaceAllocator_AllocatedInterfaces() {
 		return (EReference)interfaceAllocatorEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getComponentContext() {
-		return componentContextEClass;
 	}
 
 	/**
@@ -1889,16 +1854,14 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		componentArchitectureEClass = createEClass(COMPONENT_ARCHITECTURE);
 
 		componentEClass = createEClass(COMPONENT);
-		createEAttribute(componentEClass, COMPONENT__IS_ACTOR);
-		createEAttribute(componentEClass, COMPONENT__IS_HUMAN);
+		createEAttribute(componentEClass, COMPONENT__ACTOR);
+		createEAttribute(componentEClass, COMPONENT__HUMAN);
 		createEReference(componentEClass, COMPONENT__OWNED_INTERFACE_USES);
 		createEReference(componentEClass, COMPONENT__USED_INTERFACE_LINKS);
 		createEReference(componentEClass, COMPONENT__USED_INTERFACES);
 		createEReference(componentEClass, COMPONENT__OWNED_INTERFACE_IMPLEMENTATIONS);
 		createEReference(componentEClass, COMPONENT__IMPLEMENTED_INTERFACE_LINKS);
 		createEReference(componentEClass, COMPONENT__IMPLEMENTED_INTERFACES);
-		createEReference(componentEClass, COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS);
-		createEReference(componentEClass, COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS);
 		createEReference(componentEClass, COMPONENT__OWNED_COMPONENT_REALIZATIONS);
 		createEReference(componentEClass, COMPONENT__REALIZED_COMPONENTS);
 		createEReference(componentEClass, COMPONENT__REALIZING_COMPONENTS);
@@ -1975,8 +1938,6 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		createEReference(interfaceAllocatorEClass, INTERFACE_ALLOCATOR__OWNED_INTERFACE_ALLOCATIONS);
 		createEReference(interfaceAllocatorEClass, INTERFACE_ALLOCATOR__PROVISIONED_INTERFACE_ALLOCATIONS);
 		createEReference(interfaceAllocatorEClass, INTERFACE_ALLOCATOR__ALLOCATED_INTERFACES);
-
-		componentContextEClass = createEClass(COMPONENT_CONTEXT);
 
 		exchangeItemAllocationEClass = createEClass(EXCHANGE_ITEM_ALLOCATION);
 		createEAttribute(exchangeItemAllocationEClass, EXCHANGE_ITEM_ALLOCATION__SEND_PROTOCOL);
@@ -2121,7 +2082,6 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		requiredInterfaceLinkEClass.getESuperTypes().add(theCapellacorePackage.getRelationship());
 		interfaceAllocationEClass.getESuperTypes().add(theCapellacorePackage.getAllocation());
 		interfaceAllocatorEClass.getESuperTypes().add(theCapellacorePackage.getCapellaElement());
-		componentContextEClass.getESuperTypes().add(this.getComponent());
 		exchangeItemAllocationEClass.getESuperTypes().add(theCapellacorePackage.getRelationship());
 		exchangeItemAllocationEClass.getESuperTypes().add(theInformationPackage.getAbstractEventOperation());
 		exchangeItemAllocationEClass.getESuperTypes().add(theModellingcorePackage.getFinalizableElement());
@@ -2176,16 +2136,14 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		initEClass(componentArchitectureEClass, ComponentArchitecture.class, "ComponentArchitecture", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
 		initEClass(componentEClass, Component.class, "Component", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getComponent_IsActor(), ecorePackage.getEBoolean(), "isActor", "false", 1, 1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-		initEAttribute(getComponent_IsHuman(), ecorePackage.getEBoolean(), "isHuman", "false", 1, 1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+		initEAttribute(getComponent_Actor(), ecorePackage.getEBoolean(), "actor", "false", 1, 1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+		initEAttribute(getComponent_Human(), ecorePackage.getEBoolean(), "human", "false", 1, 1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
 		initEReference(getComponent_OwnedInterfaceUses(), this.getInterfaceUse(), null, "ownedInterfaceUses", null, 0, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getComponent_UsedInterfaceLinks(), this.getInterfaceUse(), this.getInterfaceUse_InterfaceUser(), "usedInterfaceLinks", null, 0, -1, Component.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getComponent_UsedInterfaces(), this.getInterface(), this.getInterface_UserComponents(), "usedInterfaces", null, 0, -1, Component.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getComponent_OwnedInterfaceImplementations(), this.getInterfaceImplementation(), null, "ownedInterfaceImplementations", null, 0, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getComponent_ImplementedInterfaceLinks(), this.getInterfaceImplementation(), this.getInterfaceImplementation_InterfaceImplementor(), "implementedInterfaceLinks", null, 0, -1, Component.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getComponent_ImplementedInterfaces(), this.getInterface(), this.getInterface_ImplementorComponents(), "implementedInterfaces", null, 0, -1, Component.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getComponent_ProvisionedComponentAllocations(), this.getComponentRealization(), this.getComponentRealization_RealizingComponent(), "provisionedComponentAllocations", null, 0, -1, Component.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getComponent_ProvisioningComponentAllocations(), this.getComponentRealization(), this.getComponentRealization_RealizedComponent(), "provisioningComponentAllocations", null, 0, -1, Component.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getComponent_OwnedComponentRealizations(), this.getComponentRealization(), null, "ownedComponentRealizations", null, 0, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getComponent_RealizedComponents(), this.getComponent(), null, "realizedComponents", null, 0, -1, Component.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getComponent_RealizingComponents(), this.getComponent(), null, "realizingComponents", null, 0, -1, Component.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -2211,9 +2169,9 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		initEReference(getArchitectureAllocation_AllocatedArchitecture(), this.getBlockArchitecture(), this.getBlockArchitecture_ProvisioningArchitectureAllocations(), "allocatedArchitecture", null, 1, 1, ArchitectureAllocation.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getArchitectureAllocation_AllocatingArchitecture(), this.getBlockArchitecture(), this.getBlockArchitecture_ProvisionedArchitectureAllocations(), "allocatingArchitecture", null, 1, 1, ArchitectureAllocation.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(componentRealizationEClass, ComponentRealization.class, "ComponentRealization", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getComponentRealization_RealizedComponent(), this.getComponent(), this.getComponent_ProvisioningComponentAllocations(), "realizedComponent", null, 0, 1, ComponentRealization.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getComponentRealization_RealizingComponent(), this.getComponent(), this.getComponent_ProvisionedComponentAllocations(), "realizingComponent", null, 0, 1, ComponentRealization.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(componentRealizationEClass, ComponentRealization.class, "ComponentRealization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getComponentRealization_RealizedComponent(), this.getComponent(), null, "realizedComponent", null, 0, 1, ComponentRealization.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getComponentRealization_RealizingComponent(), this.getComponent(), null, "realizingComponent", null, 0, 1, ComponentRealization.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(interfacePkgEClass, InterfacePkg.class, "InterfacePkg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getInterfacePkg_OwnedInterfaces(), this.getInterface(), null, "ownedInterfaces", null, 0, -1, InterfacePkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -2262,8 +2220,6 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		initEReference(getInterfaceAllocator_OwnedInterfaceAllocations(), this.getInterfaceAllocation(), null, "ownedInterfaceAllocations", null, 0, -1, InterfaceAllocator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getInterfaceAllocator_ProvisionedInterfaceAllocations(), this.getInterfaceAllocation(), this.getInterfaceAllocation_AllocatingInterfaceAllocator(), "provisionedInterfaceAllocations", null, 0, -1, InterfaceAllocator.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getInterfaceAllocator_AllocatedInterfaces(), this.getInterface(), null, "allocatedInterfaces", null, 0, -1, InterfaceAllocator.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		initEClass(componentContextEClass, ComponentContext.class, "ComponentContext", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
 		initEClass(exchangeItemAllocationEClass, ExchangeItemAllocation.class, "ExchangeItemAllocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(getExchangeItemAllocation_SendProtocol(), theCommunicationPackage.getCommunicationLinkProtocol(), "sendProtocol", null, 0, 1, ExchangeItemAllocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -2340,7 +2296,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		initEClass(physicalPortRealizationEClass, PhysicalPortRealization.class, "PhysicalPortRealization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
 		initEClass(componentPkgEClass, ComponentPkg.class, "ComponentPkg", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getComponentPkg_OwnedParts(), this.getPart(), null, "ownedParts", null, 0, -1, ComponentPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getComponentPkg_OwnedParts(), this.getPart(), null, "ownedParts", null, 0, -1, ComponentPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		// Create resource
 		createResource(eNS_URI);
@@ -2552,7 +2508,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getComponent_IsActor(), 
+		  (getComponent_Actor(), 
 		   source, 
 		   new String[] {
 			 "description", "Indicates if the Component is an Actor", //$NON-NLS-1$ //$NON-NLS-2$
@@ -2560,7 +2516,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getComponent_IsHuman(), 
+		  (getComponent_Human(), 
 		   source, 
 		   new String[] {
 			 "description", "Indicates whether the Component is a Human", //$NON-NLS-1$ //$NON-NLS-2$
@@ -2612,22 +2568,6 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		   source, 
 		   new String[] {
 			 "description", "(automatically computed) direct references to the Interfaces being implemented by this component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getComponent_ProvisionedComponentAllocations(), 
-		   source, 
-		   new String[] {
-			 "description", "(automatically computed) list of allocation links made from this component to other components\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getComponent_ProvisioningComponentAllocations(), 
-		   source, 
-		   new String[] {
-			 "description", "(automatically computed) list of allocation links from other components, to this component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
@@ -3086,18 +3026,6 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (componentContextEClass, 
-		   source, 
-		   new String[] {
-			 "description", "Base class for specific SystemContext, LogicalContext, PhysicalContext\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a (abstract)", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "system,logical,physical", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (exchangeItemAllocationEClass, 
 		   source, 
 		   new String[] {
@@ -3483,7 +3411,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		  (getComponentPkg_OwnedParts(), 
 		   source, 
 		   new String[] {
-			 "description", "the Parts included in this package", //$NON-NLS-1$ //$NON-NLS-2$
+			 "description", "Parts stored in this Component Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
@@ -3538,12 +3466,12 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getComponent_IsActor(), 
+		  (getComponent_Actor(), 
 		   source, 
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getComponent_IsHuman(), 
+		  (getComponent_Human(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -4152,22 +4080,6 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getComponent_ProvisionedComponentAllocations(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getComponent_ProvisioningComponentAllocations(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (getComponent_RealizedComponents(), 
 		   source, 
 		   new String[] {
@@ -4650,15 +4562,6 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (componentContextEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (exchangeItemAllocationEClass, 
 		   source, 
 		   new String[] {
@@ -5040,14 +4943,6 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		   new String[] {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "base metaclass in UML/SysML profile ", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getComponentPkg_OwnedParts(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
@@ -5921,20 +5816,6 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		   new String[] {
 			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
 			 "viatra.expression", "implementedInterfaceLinks.implementedInterface" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getComponent_ProvisionedComponentAllocations(), 
-		   source, 
-		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "outgoingTraces" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getComponent_ProvisioningComponentAllocations(), 
-		   source, 
-		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "incomingTraces" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponent_RealizedComponents(), 

@@ -19,7 +19,7 @@ import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.exceptions.QueryException;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.information.Partition;
+import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 
 /**
@@ -31,12 +31,13 @@ public class GetBrotherComponents extends AbstractQuery {
     Component component = (Component) input;
     Collection<Component> components = new java.util.HashSet<Component>();
     // Add components which are brothers of component-parts
-    for (Partition part : component.getRepresentingPartitions()) {
+    for (Part part : component.getRepresentingParts()) {
       Component container = ComponentExt.getDirectParent(part);
       if (container != null) {
-        Component ownerPart = container;
-        for (Partition partition : ownerPart.getOwnedPartitions()) {
-          components.add((Component) partition.getType());
+        for (Part containerPart : container.getContainedParts()) {
+          if (containerPart.getType() instanceof Component) {
+            components.add((Component) containerPart.getType());
+          }
         }
       }
     }

@@ -25,7 +25,6 @@ import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EObjectExt;
-import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
@@ -41,17 +40,13 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.capellacore.Namespace;
 import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.data.cs.Block;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentAllocation;
 import org.polarsys.capella.core.data.cs.ComponentArchitecture;
+import org.polarsys.capella.core.data.cs.ComponentRealization;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.CapabilityPkg;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
-import org.polarsys.capella.core.data.ctx.Mission;
-import org.polarsys.capella.core.data.ctx.MissionPkg;
-import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.epbs.EpbsPackage;
@@ -63,7 +58,6 @@ import org.polarsys.capella.core.data.helpers.ctx.services.CapabilityPkgExt;
 import org.polarsys.capella.core.data.helpers.la.services.CapabilityRealizationPkgExt;
 import org.polarsys.capella.core.data.information.ExchangeItemRealization;
 import org.polarsys.capella.core.data.information.InformationRealization;
-import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.information.PortRealization;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityRealization;
 import org.polarsys.capella.core.data.interaction.ScenarioRealization;
@@ -71,9 +65,7 @@ import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.data.la.CapabilityRealizationPkg;
 import org.polarsys.capella.core.data.la.ContextInterfaceRealization;
 import org.polarsys.capella.core.data.la.LaPackage;
-import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.la.LogicalComponentPkg;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.pa.LogicalInterfaceRealization;
 import org.polarsys.capella.core.data.pa.PaPackage;
@@ -141,49 +133,30 @@ public class CapellaElementExt {
   }
 
   /**
-   * Gets list of AspectPkgs in LogicalArchitecture (recursively from its LCs, LCPkgs.)
-   * @param logArch the Logical Architecture
-   * @return list of AspectPkg
+   * Gets the aspect package of the capella element
+   * @param element the {@link CapellaElement}
+   * @return the {@link AspectPkg}
    */
-  static public List<AbstractCapabilityPkg> getAbstractCapabilityPkgs(LogicalArchitecture logArch) {
-    List<AbstractCapabilityPkg> list = new ArrayList<AbstractCapabilityPkg>(1);
-    if (null != logArch) {
-      list.add(logArch.getOwnedAbstractCapabilityPkg());
-      list.add(logArch.getOwnedLogicalComponent().getOwnedAbstractCapabilityPkg());
-      list.addAll(getAbstractCapabilityPkgs(logArch.getOwnedLogicalComponentPkg()));
-    }
-    return list;
-  }
+  static public AbstractCapabilityPkg getOwnedAbstractCapabilityPkg(CapellaElement element) {
+    AbstractCapabilityPkg aspectPkg = null;
 
-  /**
-   * Gets list of AspectPkgs in LogicalComponentPkg (recursively from its subLCPkgs, LCs.)
-   * @param lcPkg the LogicalComponentPkg
-   * @return list of AspectPkg
-   */
-  static public List<AbstractCapabilityPkg> getAbstractCapabilityPkgs(LogicalComponentPkg lcPkg) {
-    List<AbstractCapabilityPkg> list = new ArrayList<AbstractCapabilityPkg>(1);
-    if (null != lcPkg) {
-      for (LogicalComponent alc : lcPkg.getOwnedLogicalComponents()) {
-        list.add(alc.getOwnedAbstractCapabilityPkg());
+    if (null != element) {
+
+      if (element instanceof PhysicalComponent) {
+        PhysicalArchitecture arch = SystemEngineeringExt.getPhysicalArchitecture(element);
+        if (null != arch) {
+          aspectPkg = arch.getOwnedAbstractCapabilityPkg();
+        }
+      } else if (element instanceof ConfigurationItem) {
+        EPBSArchitecture arch = SystemEngineeringExt.getEPBSArchitecture(element);
+        if (null != arch) {
+          aspectPkg = arch.getOwnedAbstractCapabilityPkg();
+        }
+      } else if (element instanceof ComponentArchitecture) {
+        aspectPkg = ((ComponentArchitecture) element).getOwnedAbstractCapabilityPkg();
       }
     }
-    return list;
-  }
-
-  /**
-   * Gets list of AspectPkgs in AbstractPhysicalComponent (recursively)
-   * @param component the AbstractPhysicalComponent
-   * @return list of AspectPkg
-   */
-  static public List<AbstractCapabilityPkg> getAbstractCapabilityPkgs(PhysicalComponent component) {
-    List<AbstractCapabilityPkg> list = new ArrayList<AbstractCapabilityPkg>(1);
-    if (null != component) {
-      list.add(component.getOwnedAbstractCapabilityPkg());
-      for (Partition part : ComponentExt.getSubParts(component)) {
-        list.add(((Block) part.getType()).getOwnedAbstractCapabilityPkg());
-      }
-    }
-    return list;
+    return aspectPkg;
   }
 
   /**
@@ -277,68 +250,7 @@ public class CapellaElementExt {
     return list;
   }
 
-  /**
-   * Gets all the {@link Missions} from SystemEng
-   * @param element the {@link CapellaElement}
-   * @return list of CapabilitySpecificationUseCase
-   */
-  static public List<Mission> getAllMissions(SystemEngineering element) {
-    List<Mission> list = new ArrayList<Mission>();
-    if (null != element) {
-      SystemAnalysis arch = SystemEngineeringExt.getOwnedSystemAnalysis(element);
-      list = getAllMissionsFromSystemAnalysis(arch);
-
-    }
-
-    return list;
-  }
-
-  /**
-   * @param ownedMissionPkg
-   * @return list of missions
-   */
-  private static List<Mission> getAllMissionsFromMissionPkg(MissionPkg ownedMissionPkg) {
-
-    List<Mission> list = new ArrayList<Mission>(1);
-    if (null != ownedMissionPkg) {
-      list.addAll(ownedMissionPkg.getOwnedMissions());
-      for (MissionPkg subClassPkg : ownedMissionPkg.getOwnedMissionPkgs()) {
-        list.addAll(getAllMissionsFromMissionPkg(subClassPkg));
-      }
-    }
-    return list;
-  }
-
-  /**
-   * @param arch
-   * @return list of missions
-   */
-  private static List<Mission> getAllMissionsFromSystemAnalysis(SystemAnalysis arch) {
-    MissionPkg ownedMissionPkg = arch.getOwnedMissionPkg();
-    return getAllMissionsFromMissionPkg(ownedMissionPkg);
-  }
-
-  /**
-   * Gets list of AspectPkgs in LogicalComponent (recursively from its subLCs, LCDcmps, LCPkgs.)
-   * @param component the LogicalComponent
-   * @return list of AspectPkg
-   */
-  static public List<AbstractCapabilityPkg> getAspectPkgs(LogicalComponent component) {
-    List<AbstractCapabilityPkg> list = new ArrayList<AbstractCapabilityPkg>(1);
-    if (null != component) {
-      list.add(component.getOwnedAbstractCapabilityPkg());
-      for (LogicalComponent alc : component.getSubLogicalComponents()) {
-        list.addAll(getAspectPkgs(alc));
-      }
-      for (LogicalArchitecture logArch : component.getOwnedLogicalArchitectures()) {
-        list.addAll(getAbstractCapabilityPkgs(logArch));
-      }
-      for (LogicalComponentPkg lcPkg : component.getOwnedLogicalComponentPkgs()) {
-        list.addAll(getAbstractCapabilityPkgs(lcPkg));
-      }
-    }
-    return list;
-  }
+  
 
   /**
    * Gets the full path from a named element.
@@ -404,33 +316,6 @@ public class CapellaElementExt {
   }
 
   /**
-   * Gets the aspect package of the capella element
-   * @param element the {@link CapellaElement}
-   * @return the {@link AspectPkg}
-   */
-  static public AbstractCapabilityPkg getOwnedAbstractCapabilityPkg(CapellaElement element) {
-    AbstractCapabilityPkg aspectPkg = null;
-
-    if (null != element) {
-
-      if (element instanceof PhysicalComponent) {
-        PhysicalArchitecture arch = SystemEngineeringExt.getPhysicalArchitecture(element);
-        if (null != arch) {
-          aspectPkg = arch.getOwnedAbstractCapabilityPkg();
-        }
-      } else if (element instanceof ConfigurationItem) {
-        EPBSArchitecture arch = SystemEngineeringExt.getEPBSArchitecture(element);
-        if (null != arch) {
-          aspectPkg = arch.getOwnedAbstractCapabilityPkg();
-        }
-      } else if (element instanceof ComponentArchitecture) {
-        aspectPkg = ((ComponentArchitecture) element).getOwnedAbstractCapabilityPkg();
-      }
-    }
-    return aspectPkg;
-  }
-
-  /**
    * @param name
    * @param elt the element which path will be calculated
    * @param cls
@@ -446,23 +331,6 @@ public class CapellaElementExt {
     }
 
     return name;
-  }
-
-  /**
-   *
-   */
-  private static CapellaElement getRecursiveRoot(CapellaElement elt, EClass cls) {
-    EObject container = elt;
-    if (container != null) {
-      if ((cls != null) && (cls.isSuperTypeOf(container.eClass()))) {
-        return (CapellaElement) container;
-      }
-      container = container.eContainer();
-      if ((container != null) && (container instanceof CapellaElement)) {
-        return getRecursiveRoot((CapellaElement) container, cls);
-      }
-    }
-    return null;
   }
 
   /**
@@ -503,26 +371,6 @@ public class CapellaElementExt {
       return elt;
     }
     return null;
-  }
-
-  /**
-   *
-   */
-  public static CapellaElement getRoot(CapellaElement elt) {
-    return getRecursiveRoot(elt, CapellamodellerPackage.Literals.PROJECT);
-  }
-
-  /**
-   * @param eObject
-   * @deprecated use BlockArchitectureExt.getRootBlockArchitecture instead
-   */
-  @Deprecated
-  public static ModellingArchitecture getArchi(EObject eObject) {
-    EObject e = eObject;
-    while (!(e instanceof ModellingArchitecture)) {
-      e = e.eContainer();
-    }
-    return (ModellingArchitecture) e;
   }
 
   public static boolean isLegalArchitecture(ModellingArchitecture interfArchi, ModellingArchitecture componentArchi) {
@@ -608,7 +456,7 @@ public class CapellaElementExt {
       return false;
     }
 
-    if (abstractTrace instanceof ComponentAllocation) {
+    if (abstractTrace instanceof ComponentRealization) {
       return true;
     } else if (abstractTrace instanceof FunctionRealization) {
       return true;

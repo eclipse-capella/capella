@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.helpers.cs.services;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -27,11 +29,7 @@ import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalLinkEnd;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
-import org.polarsys.capella.core.data.information.Partition;
-import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.information.Port;
-
-import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 /**
  */
 public class PhysicalLinkExt {
@@ -168,9 +166,11 @@ public class PhysicalLinkExt {
     if (source instanceof PhysicalLinkEnd) {
       return ((PhysicalLinkEnd) source).getPart();
     } else if (source instanceof Port) {
-      PartitionableElement container = (PartitionableElement) source.eContainer();
-      for (Partition aPartition : container.getRepresentingPartitions()) {
-        return ((Part) aPartition);
+      EObject eContainer = source.eContainer();
+      if (eContainer instanceof Component) {
+        for (Part part : ((Component) eContainer).getRepresentingParts()) {
+          return part;
+        }
       }
     }
     return null;
@@ -188,10 +188,8 @@ public class PhysicalLinkExt {
     Component sourceComponent = getSourceComponent(link);
     if (sourceComponent != null) {
       ArrayList<Part> result = new ArrayList<>();
-      for (Partition partition : sourceComponent.getRepresentingPartitions()) {
-        if (partition instanceof Part) {
-          result.add((Part) partition);
-        }
+      for (Part aPart : sourceComponent.getRepresentingParts()) {
+        result.add(aPart);
       }
       return result;
     }
@@ -203,9 +201,11 @@ public class PhysicalLinkExt {
     if (target instanceof PhysicalLinkEnd) {
       return ((PhysicalLinkEnd) target).getPart();
     } else if (target instanceof Port) {
-      PartitionableElement container = (PartitionableElement) target.eContainer();
-      for (Partition aPartition : container.getRepresentingPartitions()) {
-        return ((Part) aPartition);
+      EObject eContainer = target.eContainer();
+      if (eContainer instanceof Component) {
+        for (Part part : ((Component) eContainer).getRepresentingParts()) {
+          return part;
+        }
       }
     }
     return null;
@@ -223,10 +223,8 @@ public class PhysicalLinkExt {
     Component targetComponent = getTargetComponent(link);
     if (targetComponent != null) {
       ArrayList<Part> result = new ArrayList<>();
-      for (Partition partition : targetComponent.getRepresentingPartitions()) {
-        if (partition instanceof Part) {
-          result.add((Part) partition);
-        }
+      for (Part aPart : targetComponent.getRepresentingParts()) {
+        result.add(aPart);
       }
       return result;
     }

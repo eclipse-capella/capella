@@ -22,6 +22,7 @@ import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
@@ -32,8 +33,6 @@ import org.polarsys.capella.core.data.helpers.interaction.services.SequenceMessa
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.information.InformationPackage;
-import org.polarsys.capella.core.data.information.Partition;
-import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.interaction.AbstractEnd;
 import org.polarsys.capella.core.data.interaction.Event;
 import org.polarsys.capella.core.data.interaction.EventReceiptOperation;
@@ -113,9 +112,9 @@ public class ScenarioHelper {
       List<? extends EObject> availables =
           Query.retrieveTransformedElements(role.getRepresentedInstance(), transfo_p, InformationPackage.Literals.ABSTRACT_INSTANCE);
       if ((availables.size() == 0) && (role.getRepresentedInstance() instanceof Part)) {
-        for (PartitionableElement element : (List<PartitionableElement>) Query.retrieveTransformedElements(role.getRepresentedInstance().getAbstractType(),
-            transfo_p, InformationPackage.Literals.PARTITIONABLE_ELEMENT)) {
-          availables.addAll((List) element.getRepresentingPartitions());
+        for (Component element : (List<Component>) Query.retrieveTransformedElements(role.getRepresentedInstance().getAbstractType(),
+            transfo_p, CsPackage.Literals.COMPONENT)) {
+          availables.addAll((List) element.getRepresentingParts());
         }
       }
 
@@ -188,7 +187,7 @@ public class ScenarioHelper {
                           EObjectLabelProviderHelper.getMetaclassLabel(operation_p, true) });
 
     EObject context = (isSource ? message.getSendingEnd() : message.getReceivingEnd());
-    return (Partition) resolver.resolve(operation_p, (List) partBounds, CommonScenarioHelper.getTitle(transfo_p), messageTxt, false, transfo_p,
+    return (Part) resolver.resolve(operation_p, (List) partBounds, CommonScenarioHelper.getTitle(transfo_p), messageTxt, false, transfo_p,
         new EObject[] { message, operation_p, context }).get(0);
   }
 
@@ -278,7 +277,7 @@ public class ScenarioHelper {
           if (partBound != null) {
             partBounds.add(partBound);
           } else if (typeBound != null) {
-            partBounds.addAll(typeBound.getRepresentingPartitions());
+            partBounds.addAll(typeBound.getRepresentingParts());
           }
         }
 
@@ -290,7 +289,7 @@ public class ScenarioHelper {
           if (partBound != null) {
             partBounds.add(partBound);
           } else if (typeBound != null) {
-            partBounds.addAll(typeBound.getRepresentingPartitions());
+            partBounds.addAll(typeBound.getRepresentingParts());
           }
         }
 
@@ -315,8 +314,8 @@ public class ScenarioHelper {
         if (function != null) {
           if (shouldRetrieveAllocating) {
             for (ComponentFunctionalAllocation allocation : function.getComponentFunctionalAllocations()) {
-              if ((allocation.getBlock() != null) && (allocation.getBlock() instanceof PartitionableElement)) {
-                partBounds.addAll(((PartitionableElement) allocation.getBlock()).getRepresentingPartitions());
+              if ((allocation.getBlock() != null) && (allocation.getBlock() instanceof Component)) {
+                partBounds.addAll(((Component) allocation.getBlock()).getRepresentingParts());
               }
             }
 
@@ -326,7 +325,7 @@ public class ScenarioHelper {
                 if (allocatingRole != null) {
                   for (RoleAllocation roleAllocation : allocatingRole.getRoleAllocations()) {
                     if (roleAllocation.getEntity() != null) {
-                      partBounds.addAll(((PartitionableElement) roleAllocation.getEntity()).getRepresentingPartitions());
+                      partBounds.addAll(roleAllocation.getEntity().getRepresentingParts());
                     }
                   }
                 }

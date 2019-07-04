@@ -20,10 +20,8 @@ import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EObjectExt;
-import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
@@ -35,12 +33,8 @@ import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentAllocation;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
-import org.polarsys.capella.core.data.ctx.Actor;
-import org.polarsys.capella.core.data.ctx.CtxPackage;
-import org.polarsys.capella.core.data.ctx.System;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
@@ -49,7 +43,6 @@ import org.polarsys.capella.core.data.epbs.EpbsPackage;
 import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.information.InformationPackage;
-import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.information.datavalue.DataValue;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.data.la.LaPackage;
@@ -57,14 +50,11 @@ import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalArchitecturePkg;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
-import org.polarsys.capella.core.data.pa.AbstractPhysicalComponent;
 import org.polarsys.capella.core.data.pa.PaPackage;
-import org.polarsys.capella.core.data.pa.PhysicalActor;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecturePkg;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
-import org.polarsys.capella.core.data.pa.PhysicalContext;
 import org.polarsys.capella.core.data.pa.deployment.AbstractPhysicalInstance;
 import org.polarsys.capella.core.data.pa.deployment.DeploymentPackage;
 import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
@@ -117,38 +107,6 @@ public class SystemEngineeringExt {
       lcList.add((LogicalComponent) obj);
     }
     return lcList;
-  }
-
-  /**
-   * This method retrieves all the physical components from the model.
-   * @param currentElement
-   * @return List<PhysicalComponent>
-   */
-  public static List<AbstractPhysicalComponent> getAllAbstractPhysicalComponents(CapellaElement currentElement) {
-    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement);
-
-    PhysicalArchitecture physArch = SystemEngineeringExt.getOwnedPhysicalArchitecture(sysEng);
-    Set<EObject> pcSet = EObjectExt.getAll(physArch, PaPackage.Literals.ABSTRACT_PHYSICAL_COMPONENT);
-    List<AbstractPhysicalComponent> pcList = new ArrayList<AbstractPhysicalComponent>();
-    for (EObject obj : pcSet) {
-      pcList.add((AbstractPhysicalComponent) obj);
-    }
-    return pcList;
-  }
-
-  /**
-   * This method retrieves all the actors from the model.
-   * @param currentElement
-   * @return List<Actor>
-   */
-  public static List<Actor> getAllActors(CapellaElement currentElement) {
-    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement);
-    Set<EObject> actorsSet = EObjectExt.getAll(sysEng, CtxPackage.Literals.ACTOR);
-    List<Actor> actorsList = new ArrayList<Actor>();
-    for (EObject obj : actorsSet) {
-      actorsList.add((Actor) obj);
-    }
-    return actorsList;
   }
 
   /**
@@ -230,6 +188,7 @@ public class SystemEngineeringExt {
     return capabilityRealizationsList;
   }
 
+  
   /**
    * This method retrieves all the epbs components from the model.
    * @param currentElement
@@ -409,22 +368,6 @@ public class SystemEngineeringExt {
     return pcList;
   }
 
-  /**
-   * This method retrieves all the physical components from the model.
-   * @param currentElement
-   * @return List<PhysicalComponent>
-   */
-  public static List<PhysicalActor> getAllPhysicalActors(CapellaElement currentElement) {
-    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement);
-
-    PhysicalArchitecture physArch = SystemEngineeringExt.getOwnedPhysicalArchitecture(sysEng);
-    Set<EObject> pcSet = EObjectExt.getAll(physArch, PaPackage.Literals.PHYSICAL_ACTOR);
-    List<PhysicalActor> pcList = new ArrayList<PhysicalActor>();
-    for (EObject obj : pcSet) {
-      pcList.add((PhysicalActor) obj);
-    }
-    return pcList;
-  }
   /**
    * This method retrieves all the physical components from the model by nature.
    * @param currentElement
@@ -748,21 +691,6 @@ public class SystemEngineeringExt {
 	  return BlockArchitectureExt.getRootBlockArchitecture(modelElement);
   }
 
-  /**
-   * Return the 'RootLogicalComponent' for 'LogicalArchitecture' Layer given in parameter
-   */
-  public static LogicalComponent getRootLogicalComponent(LogicalArchitecture LA) {
-    System system = getSystem(LA);
-
-    for (LogicalComponent rootComponent : getRootLogicalComponentsForCurrentSystem(system)) {
-      if (EcoreUtil2.isContainedBy(rootComponent, LA)) {
-        return rootComponent;
-      }
-    }
-
-    return null;
-  }
-
 
   /**
    * @param systemEn SystemEngineering
@@ -777,36 +705,6 @@ public class SystemEngineeringExt {
       }
     }
     return allPackages;
-  }
-
-  /**
-   * Return All 'RootLogicalComponent' existing in all LogicalArchitecture layer(s) defined for the 'System' given in parameter
-   */
-  public static List<LogicalComponent> getRootLogicalComponentsForCurrentSystem(System system) {
-    List<LogicalComponent> rootComponentList = new ArrayList<LogicalComponent>();
-    for (ComponentAllocation componentAllocation : system.getProvisioningComponentAllocations()) {
-      Component cpnt = componentAllocation.getAllocatingComponent();
-      if (cpnt instanceof LogicalComponent) {
-        rootComponentList.add((LogicalComponent) cpnt);
-      }
-    }
-    return rootComponentList;
-  }
-
-  /**
-   * Return the 'RootPhysicalComponent' for 'PhysicalArchitecture' Layer given in parameter
-   */
-  public static PhysicalComponent getRootPhysicalComponent(PhysicalArchitecture PA) {
-    PhysicalContext context = PA.getOwnedPhysicalContext();
-    if (context != null) {
-      for (Partition partition : context.getOwnedPartitions()) {
-        AbstractType type = partition.getAbstractType();
-        if (type instanceof PhysicalComponent) {
-          return (PhysicalComponent) type;
-        }
-      }
-    }
-    return null;
   }
 
   public static SharedPkg getSharedPkg(CapellaElement modelElement) {
@@ -858,7 +756,7 @@ public class SystemEngineeringExt {
    * @param currentElement
    * @return System
    */
-  public static System getSystem(CapellaElement currentElement) {
+  public static Component getSystem(CapellaElement currentElement) {
     SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement);
     if (sysEng != null) {
       return getSystem(sysEng);
@@ -871,11 +769,11 @@ public class SystemEngineeringExt {
    * @param currentElement
    * @return System
    */
-  public static System getSystem(SystemEngineering currentElement) {
+  public static Component getSystem(SystemEngineering currentElement) {
     if (currentElement != null) {
       SystemAnalysis ca = SystemEngineeringExt.getOwnedSystemAnalysis(currentElement);
       if (ca != null) {
-        return ca.getOwnedSystem();
+        return ca.getSystem();
       }
     }
     return null;

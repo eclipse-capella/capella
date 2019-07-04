@@ -123,7 +123,7 @@ public class CapellaComplementaryScopeRetriever implements IScopeRetriever {
       result.add(((Part) element).getAbstractType());
     }
     if (element instanceof Component) {
-      result.addAll(((Component) element).getRepresentingPartitions());
+      result.addAll(((Component) element).getRepresentingParts());
     }
 
     return result;

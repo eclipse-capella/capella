@@ -20,6 +20,7 @@ import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.exceptions.QueryException;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 
@@ -29,8 +30,9 @@ public class GetAllActors extends AbstractQuery {
   public List<Object> execute(Object input, IQueryContext context) throws QueryException {
     List<Object> returnedActors = new ArrayList<Object>();
     for (BlockArchitecture aBlockArchitecture : BlockArchitectureExt.getRootAndPreviousBlockArchitectures((EObject) input)) {
-      for (EObject anActor : EObjectExt.getAll(aBlockArchitecture, CsPackage.Literals.ABSTRACT_ACTOR)) {
-        returnedActors.add(anActor);
+      for (EObject anActor : EObjectExt.getAll(aBlockArchitecture, CsPackage.Literals.COMPONENT)) {
+        if (((Component) anActor).isActor())
+          returnedActors.add(anActor);
       }
     }
     return returnedActors;

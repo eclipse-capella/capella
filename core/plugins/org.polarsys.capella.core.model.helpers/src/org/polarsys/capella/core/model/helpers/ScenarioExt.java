@@ -37,16 +37,12 @@ import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
 import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.Block;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.cs.SystemComponent;
-import org.polarsys.capella.core.data.ctx.Actor;
-import org.polarsys.capella.core.data.ctx.System;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
@@ -60,7 +56,6 @@ import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.ExchangeItemInstance;
 import org.polarsys.capella.core.data.information.ExchangeMechanism;
-import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.information.communication.CommunicationLink;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkKind;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkProtocol;
@@ -79,7 +74,6 @@ import org.polarsys.capella.core.data.interaction.ScenarioKind;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.data.interaction.StateFragment;
 import org.polarsys.capella.core.data.interaction.TimeLapse;
-import org.polarsys.capella.core.data.interaction.impl.InstanceRoleImpl;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.oa.ActivityAllocation;
@@ -301,38 +295,6 @@ public class ScenarioExt {
    * @param scenario
    * @return
    */
-  public static System getOwnedSystem(Scenario scenario) {
-    System system = null;
-
-    for (Component cpnt : getOwnedComponents(scenario)) {
-      if (cpnt instanceof System) {
-        system = (System) cpnt;
-      }
-    }
-
-    return system;
-  }
-
-  /**
-   * @param scenario
-   * @return
-   */
-  public static List<Actor> getOwnedActors(Scenario scenario) {
-    List<Actor> actorSet = new ArrayList<>();
-
-    for (Component cpnt : getOwnedComponents(scenario)) {
-      if (cpnt instanceof Actor) {
-        actorSet.add((Actor) cpnt);
-      }
-    }
-
-    return actorSet;
-  }
-
-  /**
-   * @param scenario
-   * @return
-   */
   public static List<LogicalComponent> getOwnedLogicalComponents(Scenario scenario) {
     List<LogicalComponent> logicalComponentSet = new ArrayList<>();
 
@@ -375,22 +337,6 @@ public class ScenarioExt {
     }
 
     return configurationItemSet;
-  }
-
-  /**
-   * @param scenario
-   * @return
-   */
-  public static List<SystemComponent> getOwnedSystemComponents(Scenario scenario) {
-    List<SystemComponent> systemComponentSet = new ArrayList<>();
-
-    for (Component cpnt : getOwnedComponents(scenario)) {
-      if (cpnt instanceof SystemComponent) {
-        systemComponentSet.add((SystemComponent) cpnt);
-      }
-    }
-
-    return systemComponentSet;
   }
 
   public static List<Component> getOwnedComponents(Scenario scenario) {
@@ -913,18 +859,18 @@ public class ScenarioExt {
       if (arch != null) {
         BlockArchitecture architecture = (BlockArchitecture) arch;
         if (architecture instanceof LogicalArchitecture) {
-          rootComponent = ((LogicalArchitecture) architecture).getOwnedLogicalComponent();
+          rootComponent = ((LogicalArchitecture) architecture).getSystem();
           if (rootComponent != null) {
             getAllOwnedPart(result, rootComponent, filter);
-            if (!rootComponent.getRepresentingPartitions().isEmpty()) {
-              result.add(((Part) rootComponent.getRepresentingPartitions().get(0)));
+            if (!rootComponent.getRepresentingParts().isEmpty()) {
+              result.add(((Part) rootComponent.getRepresentingParts().get(0)));
             }
             return result;
           }
         } else if (architecture instanceof PhysicalArchitecture) {
-          rootComponent = ((PhysicalArchitecture) architecture).getOwnedPhysicalComponent();
+          rootComponent = ((PhysicalArchitecture) architecture).getSystem();
         } else if (architecture instanceof EPBSArchitecture) {
-          rootComponent = ((EPBSArchitecture) architecture).getOwnedConfigurationItem();
+          rootComponent = ((EPBSArchitecture) architecture).getSystem();
         }
         if (rootComponent != null) {
           getAllOwnedPart(result, rootComponent, filter);
@@ -956,11 +902,11 @@ public class ScenarioExt {
       if (arch != null) {
         BlockArchitecture architecture = (BlockArchitecture) arch;
         if (architecture instanceof LogicalArchitecture) {
-          rootComponent = ((LogicalArchitecture) architecture).getOwnedLogicalComponent();
+          rootComponent = ((LogicalArchitecture) architecture).getSystem();
         } else if (architecture instanceof PhysicalArchitecture) {
-          rootComponent = ((PhysicalArchitecture) architecture).getOwnedPhysicalComponent();
+          rootComponent = ((PhysicalArchitecture) architecture).getSystem();
         } else if (architecture instanceof EPBSArchitecture) {
-          rootComponent = ((EPBSArchitecture) architecture).getOwnedConfigurationItem();
+          rootComponent = ((EPBSArchitecture) architecture).getSystem();
         }
         if (rootComponent != null) {
           getAllOwnedPart(result, rootComponent, filter);
@@ -980,21 +926,21 @@ public class ScenarioExt {
    *          the parts we don't want to see.
    */
   private static void getAllOwnedPart(Collection<Part> result, Component rootComponent, Collection<Part> filter) {
-    EList<Partition> ownedPartitions = rootComponent.getOwnedPartitions();
-    for (Partition partition : ownedPartitions) {
-      if (partition instanceof Part && !filter.contains(partition)) {
-        result.add((Part) partition);
-        if (partition.getAbstractType() instanceof Component) {
-          getAllOwnedPart(result, (Component) partition.getAbstractType(), filter);
+    EList<Part> ownedParts = rootComponent.getContainedParts();
+    for (Part part : ownedParts) {
+      if (!filter.contains(part)) {
+        result.add((Part) part);
+        if (part.getAbstractType() instanceof Component) {
+          getAllOwnedPart(result, (Component) part.getAbstractType(), filter);
         }
       }
     }
   }
 
-  public static List<AbstractActor> getAllActors(final EObject any) {
+  public static List<Component> getAllActors(final EObject any) {
     ModellingArchitecture architecture = (ModellingArchitecture) EcoreUtil2.getFirstContainer(any,
         CapellacorePackage.Literals.MODELLING_ARCHITECTURE);
-    final List<AbstractActor> result = new LinkedList<>();
+    final List<Component> result = new LinkedList<>();
     // in the case of an epbs architecture, we must use the physical actors
     if (architecture instanceof EPBSArchitecture) {
       SystemEngineering se = (SystemEngineering) architecture.eContainer();
@@ -1007,8 +953,8 @@ public class ScenarioExt {
     final Iterator<EObject> iterContents = architecture.eAllContents();
     while (iterContents.hasNext()) {
       final EObject next = iterContents.next();
-      if (next instanceof AbstractActor) {
-        result.add((AbstractActor) next);
+      if (next instanceof Component && ((Component) next).isActor()) {
+        result.add((Component) next);
       }
     }
 
@@ -1029,10 +975,10 @@ public class ScenarioExt {
         CapellacorePackage.Literals.MODELLING_ARCHITECTURE);
     Component rootComponent = null;
     if (architecture instanceof LogicalArchitecture) {
-      rootComponent = ((LogicalArchitecture) architecture).getOwnedLogicalComponent();
+      rootComponent = ((LogicalArchitecture) architecture).getSystem();
     }
     if (architecture instanceof PhysicalArchitecture) {
-      rootComponent = ((PhysicalArchitecture) architecture).getOwnedPhysicalComponent();
+      rootComponent = ((PhysicalArchitecture) architecture).getSystem();
     }
     final List<Part> result = new LinkedList<>();
     if (architecture != null) {

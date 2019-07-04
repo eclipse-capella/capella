@@ -27,12 +27,12 @@ import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.mdsofa.common.misc.Couple;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.capellacore.AbstractDependenciesPkg;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
 import org.polarsys.capella.core.data.capellacore.Generalization;
 import org.polarsys.capella.core.data.capellacore.Relationship;
-import org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
@@ -40,8 +40,7 @@ import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfaceImplementation;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
 import org.polarsys.capella.core.data.cs.InterfaceUse;
-import org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInvolvement;
-import org.polarsys.capella.core.data.ctx.Actor;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.helpers.capellacore.services.GeneralizableElementExt;
@@ -124,15 +123,14 @@ public class InterfaceExt {
    * @param interf the interface whose implementer actors will be retrieved
    * @return List<Actor> the implementer actors
    */
-  public static List<Actor> getImplementerActors(Interface interf) {
-    List<Actor> implementerActors = new ArrayList<Actor>();
-    List<Component> implementerComponents = interf.getImplementorComponents();
-    for (Component cpnt : implementerComponents) {
-      if (cpnt instanceof Actor) {
-        implementerActors.add((Actor) cpnt);
+  public static List<SystemComponent> getImplementerSystemComponents(Interface interf) {
+    List<SystemComponent> result = new ArrayList<SystemComponent>();
+    for (Component cpnt : interf.getImplementorComponents()) {
+      if (cpnt instanceof SystemComponent) {
+        result.add((SystemComponent) cpnt);
       }
     }
-    return implementerActors;
+    return result;
   }
 
   /**
@@ -141,14 +139,13 @@ public class InterfaceExt {
    * @return List<PhysicalComponent> the implementer epbs components
    */
   public static List<ConfigurationItem> getImplementerEPBSComponents(Interface interf) {
-    List<ConfigurationItem> implementerEPBSComponents = new ArrayList<ConfigurationItem>();
-    List<Component> implementerComponents = interf.getImplementorComponents();
-    for (Component cpnt : implementerComponents) {
+    List<ConfigurationItem> result = new ArrayList<ConfigurationItem>();
+    for (Component cpnt : interf.getImplementorComponents()) {
       if (cpnt instanceof ConfigurationItem) {
-        implementerEPBSComponents.add((ConfigurationItem) cpnt);
+        result.add((ConfigurationItem) cpnt);
       }
     }
-    return implementerEPBSComponents;
+    return result;
   }
 
   /**
@@ -157,14 +154,13 @@ public class InterfaceExt {
    * @return List<LogicalComponent> the implementer logical components
    */
   public static List<LogicalComponent> getImplementerLogicalComponents(Interface interf) {
-    List<LogicalComponent> implementerLogicalComponents = new ArrayList<LogicalComponent>();
-    List<Component> implementerComponents = interf.getImplementorComponents();
-    for (Component cpnt : implementerComponents) {
+    List<LogicalComponent> result = new ArrayList<LogicalComponent>();
+    for (Component cpnt : interf.getImplementorComponents()) {
       if (cpnt instanceof LogicalComponent) {
-        implementerLogicalComponents.add((LogicalComponent) cpnt);
+        result.add((LogicalComponent) cpnt);
       }
     }
-    return implementerLogicalComponents;
+    return result;
   }
 
   /**
@@ -173,14 +169,13 @@ public class InterfaceExt {
    * @return List<PhysicalComponent> the implementer physical components
    */
   public static List<PhysicalComponent> getImplementerPhysicalComponents(Interface interf) {
-    List<PhysicalComponent> implementerPhysicalComponents = new ArrayList<PhysicalComponent>();
-    List<Component> implementerComponents = interf.getImplementorComponents();
-    for (Component cpnt : implementerComponents) {
+    List<PhysicalComponent> result = new ArrayList<PhysicalComponent>();
+    for (Component cpnt : interf.getImplementorComponents()) {
       if (cpnt instanceof PhysicalComponent) {
-        implementerPhysicalComponents.add((PhysicalComponent) cpnt);
+        result.add((PhysicalComponent) cpnt);
       }
     }
-    return implementerPhysicalComponents;
+    return result;
   }
 
   /**
@@ -390,15 +385,14 @@ public class InterfaceExt {
    * @param interf the interface whose user actors will be retrieved
    * @return List<Actor> the user actors
    */
-  public static List<Actor> getUserActors(Interface interf) {
-    List<Actor> userActors = new ArrayList<Actor>();
-    List<Component> userComponents = interf.getUserComponents();
-    for (Component cpnt : userComponents) {
-      if (cpnt instanceof Actor) {
-        userActors.add((Actor) cpnt);
+  public static List<SystemComponent> getUserSystemComponents(Interface interf) {
+    List<SystemComponent> result = new ArrayList<SystemComponent>();
+    for (Component cpnt : interf.getUserComponents()) {
+      if (cpnt instanceof SystemComponent) {
+        result.add((SystemComponent) cpnt);
       }
     }
-    return userActors;
+    return result;
   }
 
   /**
@@ -407,14 +401,13 @@ public class InterfaceExt {
    * @return List<PhysicalComponent> the user epbs components
    */
   public static List<ConfigurationItem> getUserEPBSComponents(Interface interf) {
-    List<ConfigurationItem> userEPBSComponents = new ArrayList<ConfigurationItem>();
-    List<Component> userComponents = interf.getUserComponents();
-    for (Component cpnt : userComponents) {
+    List<ConfigurationItem> result = new ArrayList<ConfigurationItem>();
+    for (Component cpnt : interf.getUserComponents()) {
       if (cpnt instanceof ConfigurationItem) {
-        userEPBSComponents.add((ConfigurationItem) cpnt);
+        result.add((ConfigurationItem) cpnt);
       }
     }
-    return userEPBSComponents;
+    return result;
   }
 
   /**
@@ -423,14 +416,13 @@ public class InterfaceExt {
    * @return List<LogicalComponent> the user logical components
    */
   public static List<LogicalComponent> getUserLogicalComponents(Interface interf) {
-    List<LogicalComponent> userLogicalComponents = new ArrayList<LogicalComponent>();
-    List<Component> userComponents = interf.getUserComponents();
-    for (Component cpnt : userComponents) {
+    List<LogicalComponent> result = new ArrayList<LogicalComponent>();
+    for (Component cpnt : interf.getUserComponents()) {
       if (cpnt instanceof LogicalComponent) {
-        userLogicalComponents.add((LogicalComponent) cpnt);
+        result.add((LogicalComponent) cpnt);
       }
     }
-    return userLogicalComponents;
+    return result;
   }
 
   /**
@@ -439,14 +431,13 @@ public class InterfaceExt {
    * @return List<PhysicalComponent> the user physical components
    */
   public static List<PhysicalComponent> getUserPhysicalComponents(Interface interf) {
-    List<PhysicalComponent> userPhysicalComponents = new ArrayList<PhysicalComponent>();
-    List<Component> userComponents = interf.getUserComponents();
-    for (Component cpnt : userComponents) {
+    List<PhysicalComponent> result = new ArrayList<PhysicalComponent>();
+    for (Component cpnt : interf.getUserComponents()) {
       if (cpnt instanceof PhysicalComponent) {
-        userPhysicalComponents.add((PhysicalComponent) cpnt);
+        result.add((PhysicalComponent) cpnt);
       }
     }
-    return userPhysicalComponents;
+    return result;
   }
 
   /**
@@ -521,10 +512,8 @@ public class InterfaceExt {
         return ((InterfaceImplementation) element).getImplementedInterface();
       } else if (element instanceof InterfaceUse) {
         return ((InterfaceUse) element).getUsedInterface();
-      } else if (element instanceof SystemComponentCapabilityRealizationInvolvement) {
-        return ((SystemComponentCapabilityRealizationInvolvement) element).getInvolved();
-      } else if (element instanceof ActorCapabilityRealizationInvolvement) {
-        return ((ActorCapabilityRealizationInvolvement) element).getInvolved();
+      } else if (element instanceof CapabilityRealizationInvolvement) {
+        return ((CapabilityRealizationInvolvement) element).getInvolved();
       } else if (element instanceof AbstractCapabilityExtend) {
         return ((AbstractCapabilityExtend) element).getExtended();
       } else if (element instanceof AbstractCapabilityInclude) {

@@ -15,14 +15,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.core.data.cs.AbstractPhysicalArtifact;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.EpbsPackage;
 import org.polarsys.capella.core.data.epbs.PhysicalArtifactRealization;
-import org.polarsys.capella.core.data.helpers.cs.delegates.SystemComponentHelper;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.core.data.helpers.capellacommon.delegates.CapabilityRealizationInvolvedElementHelper;
+import org.polarsys.capella.core.data.helpers.cs.delegates.ComponentHelper;
 
 public class ConfigurationItemHelper {
   private static ConfigurationItemHelper instance;
@@ -46,7 +46,10 @@ public class ConfigurationItemHelper {
 
     // no helper found... searching in super classes...
     if (null == ret) {
-      ret = SystemComponentHelper.getInstance().doSwitch(element, feature);
+      ret = ComponentHelper.getInstance().doSwitch(element, feature);
+    }
+    if (null == ret) {
+      ret = CapabilityRealizationInvolvedElementHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;

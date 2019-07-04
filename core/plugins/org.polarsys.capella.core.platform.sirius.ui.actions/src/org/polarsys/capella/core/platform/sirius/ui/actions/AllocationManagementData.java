@@ -30,10 +30,10 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentContext;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
+import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.FaPackage;
@@ -213,15 +213,15 @@ public class AllocationManagementData {
         return result;
       }
       // add all components from current architecture to temp list
-      BlockArchitectureExt.getAllComponentsFromBlockArchitecture(arch, temp);
+      temp.addAll(BlockArchitectureExt.getAllComponents(arch));
       // remove first component from temp list
       Component firstComponent = BlockArchitectureExt.getFirstComponent(arch);
-      if (!(firstComponent instanceof org.polarsys.capella.core.data.ctx.System)) {
+      if (!(arch instanceof SystemAnalysis)) {
         temp.remove(firstComponent);
       }
       // filter ComponentContext from temp list... and add to result list
       for (CapellaElement capellaElement : temp) {
-        if (!(capellaElement instanceof ComponentContext) && isNotNodePhysicalComponent(capellaElement)) {
+        if (isNotNodePhysicalComponent(capellaElement)) {
           result.add(capellaElement);
         }
       }
@@ -276,7 +276,7 @@ public class AllocationManagementData {
     if (!nonDeployedPCParts.isEmpty()) {
       BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture(nonDeployedPCParts.get(0));
       if ((null != arch) && (arch instanceof PhysicalArchitecture)) {
-        BlockArchitectureExt.getAllComponentsFromPA(arch, components);
+        components.addAll(BlockArchitectureExt.getAllComponents(arch));
         if (components.isEmpty()) {
           return components;
         }
@@ -284,7 +284,7 @@ public class AllocationManagementData {
         Component firstComponent = BlockArchitectureExt.getFirstComponent(arch);
         components.remove(firstComponent);
         for (CapellaElement capellaElement : components) {
-          if ((capellaElement instanceof PhysicalComponent) && !(capellaElement instanceof ComponentContext)) {
+          if (capellaElement instanceof PhysicalComponent) {
             PhysicalComponent comp = (PhysicalComponent) capellaElement;
             EList<AbstractTypedElement> parts = comp.getAbstractTypedElements();
             for (AbstractTypedElement abstractTypedElement : parts) {

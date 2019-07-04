@@ -15,12 +15,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.InvolvedElementHelper;
 import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement;
 import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacore.Involvement;
+import org.polarsys.capella.core.data.capellacore.InvolverElement;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.InvolvedElementHelper;
+import org.polarsys.capella.core.data.la.CapabilityRealization;
 
 
 public class CapabilityRealizationInvolvedElementHelper {
@@ -39,9 +40,11 @@ public class CapabilityRealizationInvolvedElementHelper {
 	public Object doSwitch(CapabilityRealizationInvolvedElement element, EStructuralFeature feature){
 		Object ret = null;
 
-		if (feature.equals(CapellacommonPackage.Literals.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS)) {
-			ret = getInvolvingCapabilityRealizationInvolvements(  element);
-		}
+		if (feature.equals(CapellacommonPackage.Literals.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__CAPABILITY_REALIZATION_INVOLVEMENTS)) {
+			ret = getCapabilityRealizationInvolvements(element);
+		} else if (feature.equals(CapellacommonPackage.Literals.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATIONS)) {
+      ret = getInvolvingCapabilityRealizations(element);
+    }
 
 		// no helper found... searching in super classes...
 		if(null == ret) {
@@ -50,8 +53,8 @@ public class CapabilityRealizationInvolvedElementHelper {
 
 		return ret;
 	}
-
-	protected List <CapabilityRealizationInvolvement> getInvolvingCapabilityRealizationInvolvements(CapabilityRealizationInvolvedElement element){
+	
+	protected List<CapabilityRealizationInvolvement> getCapabilityRealizationInvolvements(CapabilityRealizationInvolvedElement element){
 		List<CapabilityRealizationInvolvement> ret = new ArrayList<> ();
 		for (Involvement involvement : element.getInvolvingInvolvements()) {
 			if(involvement instanceof CapabilityRealizationInvolvement){
@@ -60,4 +63,14 @@ public class CapabilityRealizationInvolvedElementHelper {
 		}
 		return ret;
 	}
+	
+  protected List<CapabilityRealization> getInvolvingCapabilityRealizations(CapabilityRealizationInvolvedElement element){
+    List<CapabilityRealization> ret = new ArrayList<> ();
+    for (CapabilityRealizationInvolvement involvement : element.getCapabilityRealizationInvolvements()) {
+      InvolverElement involver = involvement.getInvolver();
+      if (involver instanceof CapabilityRealization)
+        ret.add((CapabilityRealization) involver);
+    }
+    return ret;
+  }
 }

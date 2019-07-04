@@ -15,14 +15,16 @@ import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
-
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
-import org.polarsys.capella.core.model.skeleton.helpers.OAStructureHelper;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
+import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
+import org.polarsys.capella.core.model.skeleton.impl.cmd.CreateOpAnalysisCmd;
 
 /**
  */
@@ -46,7 +48,13 @@ public class OperationalAnalysisItemContribution implements IMDEMenuItemContribu
    */
   public Command executionContribution(EditingDomain editingDomain, ModelElement containerElement, ModelElement createdElement, EStructuralFeature feature) {
     if (createdElement instanceof OperationalAnalysis) {
-      return OAStructureHelper.getOperationalAnalysisCreationCmd(editingDomain, (OperationalAnalysis) createdElement);
+      SystemEngineering engineering = (SystemEngineering) containerElement;
+      return new RecordingCommand((TransactionalEditingDomain) editingDomain) {
+        @Override
+        protected void doExecute() {
+          new CreateOpAnalysisCmd(engineering, NamingConstants.CreateOpAnalysisCmd_name).run();
+        }
+      };
     }
     return new IdentityCommand();
   }

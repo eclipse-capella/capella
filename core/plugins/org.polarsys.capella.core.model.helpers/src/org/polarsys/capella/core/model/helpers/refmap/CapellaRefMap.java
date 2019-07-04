@@ -168,24 +168,15 @@ public class CapellaRefMap {
       mapping.put(new KPair(FaPackage.Literals.FUNCTION_OUTPUT_PORT, FaPackage.Literals.FUNCTION_OUTPUT_PORT), new VPair(
           new EClass[] { InformationPackage.Literals.PORT_REALIZATION }, new EReference[] { InformationPackage.Literals.PORT__OWNED_PORT_REALIZATIONS }));
 
-      // component realizations
-      mapping.put(new KPair(CtxPackage.Literals.ACTOR, OaPackage.Literals.OPERATIONAL_ACTOR), new VPair(
-          new EClass[] { CtxPackage.Literals.OPERATIONAL_ACTOR_REALIZATION },
-          new EReference[] { CtxPackage.Literals.ACTOR__OWNED_OPERATIONAL_ACTOR_REALIZATIONS }));
-      mapping.put(new KPair(CtxPackage.Literals.ACTOR, OaPackage.Literals.ENTITY), new VPair(
-          new EClass[] { CtxPackage.Literals.OPERATIONAL_ENTITY_REALIZATION },
-          new EReference[] { CtxPackage.Literals.ACTOR__OWNED_OPERATIONAL_ENTITY_REALIZATIONS }));
-      mapping
-          .put(new KPair(LaPackage.Literals.LOGICAL_ACTOR, CtxPackage.Literals.ACTOR), new VPair(new EClass[] { LaPackage.Literals.SYSTEM_ACTOR_REALIZATION },
-              new EReference[] { LaPackage.Literals.LOGICAL_ACTOR__OWNED_SYSTEM_ACTOR_REALIZATIONS }));
-      mapping.put(new KPair(PaPackage.Literals.PHYSICAL_ACTOR, LaPackage.Literals.LOGICAL_ACTOR), new VPair(
-          new EClass[] { PaPackage.Literals.LOGICAL_ACTOR_REALIZATION },
-          new EReference[] { PaPackage.Literals.PHYSICAL_ACTOR__OWNED_LOGICAL_ACTOR_REALIZATIONS }));
-      mapping.put(new KPair(CtxPackage.Literals.SYSTEM, OaPackage.Literals.ENTITY), new VPair(
-          new EClass[] { CtxPackage.Literals.OPERATIONAL_ENTITY_REALIZATION }, new EReference[] { CtxPackage.Literals.SYSTEM__OWNED_ENTITY_REALIZATIONS }));
-      mapping.put(new KPair(PaPackage.Literals.PHYSICAL_COMPONENT, LaPackage.Literals.LOGICAL_COMPONENT), new VPair(
-          new EClass[] { PaPackage.Literals.LOGICAL_COMPONENT_REALIZATION },
-          new EReference[] { PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_REALIZATIONS }));
+      mapping.put(new KPair(CtxPackage.Literals.SYSTEM_COMPONENT, OaPackage.Literals.ENTITY),
+          new VPair(new EClass[] { CsPackage.Literals.COMPONENT_REALIZATION },
+              new EReference[] { CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS }));
+      mapping.put(new KPair(LaPackage.Literals.LOGICAL_COMPONENT, CtxPackage.Literals.SYSTEM_COMPONENT),
+          new VPair(new EClass[] { CsPackage.Literals.COMPONENT_REALIZATION },
+              new EReference[] { CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS }));
+      mapping.put(new KPair(PaPackage.Literals.PHYSICAL_COMPONENT, LaPackage.Literals.LOGICAL_COMPONENT),
+          new VPair(new EClass[] { CsPackage.Literals.COMPONENT_REALIZATION },
+              new EReference[] { CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS }));
     }
 
     return mapping;

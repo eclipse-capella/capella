@@ -12,11 +12,10 @@
 package org.polarsys.capella.core.model.helpers.queries.filters;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.common.queries.filters.IQueryFilter;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
+import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.Interface;
 
 /**
  */
@@ -31,7 +30,7 @@ public class PreviousInterfacesForUseFilter implements IQueryFilter {
   @Override
   public boolean keepElement(Object object1, IQueryContext iQueryContext1) {
     Interface inte = (Interface) object1;
-    EList<Component> lcs = component.getAllocatedComponents();
+    EList<Component> lcs = component.getRealizedComponents();
     if (lcs.isEmpty()) {
       return true;
     }

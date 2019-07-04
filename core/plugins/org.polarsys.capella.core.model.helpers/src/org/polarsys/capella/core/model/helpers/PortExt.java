@@ -23,14 +23,17 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.data.activity.ActivityNode;
+import org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
-import org.polarsys.capella.core.data.cs.SystemComponent;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
@@ -47,10 +50,6 @@ import org.polarsys.capella.core.data.information.InformationFactory;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.data.information.PortAllocation;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
-import org.polarsys.capella.common.data.activity.ActivityNode;
-import org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 
 /**
  * The port extension.

@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.model.helpers;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -25,7 +27,7 @@ import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentArchitecture;
-import org.polarsys.capella.core.data.cs.ComponentContext;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.DeployableElement;
 import org.polarsys.capella.core.data.cs.DeploymentTarget;
 import org.polarsys.capella.core.data.cs.Part;
@@ -33,13 +35,9 @@ import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeEnd;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionalExt;
-import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
-import org.polarsys.capella.core.data.pa.AbstractPhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink;
-
-import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 
 /**
  * Part helpers
@@ -47,22 +45,20 @@ import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 public class PartExt {
   /*
    * Associate the Part (part) to the AbstractType(abstractType) Object given in Parameter and store the Part into
-   * Context package in layer given in parameter (componentArchitecture)
+   * package in layer given in parameter (componentArchitecture)
    */
   public static void addPart(AbstractType abstractType, Part part, ComponentArchitecture componentArchitecture) {
-    ComponentContext componentCtx = null;
-
+    ComponentPkg componentPkg = null;
     if (componentArchitecture instanceof SystemAnalysis) {
-      componentCtx = ((SystemAnalysis) componentArchitecture).getOwnedSystemContext();
+      componentPkg = ((SystemAnalysis) componentArchitecture).getOwnedSystemComponentPkg();
     } else if (componentArchitecture instanceof LogicalArchitecture) {
-      componentCtx = ((LogicalArchitecture) componentArchitecture).getOwnedLogicalContext();
+      componentPkg = ((LogicalArchitecture) componentArchitecture).getOwnedLogicalComponentPkg();
     } else if (componentArchitecture instanceof PhysicalArchitecture) {
-      componentCtx = ((PhysicalArchitecture) componentArchitecture).getOwnedPhysicalContext();
+      componentPkg = ((PhysicalArchitecture) componentArchitecture).getOwnedPhysicalComponentPkg();
     }
-
-    if (componentCtx != null) {
+    if (componentPkg != null) {
       part.setAbstractType(abstractType);
-      componentCtx.getOwnedFeatures().add(part);
+      componentPkg.getOwnedParts().add(part);
     }
   }
 
@@ -92,9 +88,9 @@ public class PartExt {
   /**
    * Returns components related to given parts.
    */
-  public static List<Component> getComponentsOfParts(Collection<? extends Partition> parts) {
+  public static List<Component> getComponentsOfParts(Collection<Part> parts) {
     ArrayList<Component> components = new ArrayList<Component>();
-    for (Partition part : parts) {
+    for (Part part : parts) {
       if (part.getAbstractType() instanceof Component) {
         components.add((Component) (part.getAbstractType()));
       }
@@ -246,17 +242,13 @@ public class PartExt {
   }
 
   public static List<Part> getAllPartsFromBlockArch(BlockArchitecture architecture) {
-
-    List<CapellaElement> components = new ArrayList<CapellaElement>();
     List<Part> result = new ArrayList<Part>();
-    BlockArchitectureExt.getAllComponentsFromBlockArchitecture(architecture, components);
-    for (CapellaElement aComponent : components) {
+    Collection<Component> allComponents = BlockArchitectureExt.getAllComponents(architecture);
+    for (CapellaElement aComponent : allComponents) {
       if (aComponent instanceof Component) {
         Component currentComponent = (Component) aComponent;
-        for (Partition aPartition : currentComponent.getRepresentingPartitions()) {
-          if (aPartition instanceof Part) {
-            result.add((Part) aPartition);
-          }
+        for (Part part : currentComponent.getRepresentingParts()) {
+          result.add(part);
         }
       }
     }
@@ -264,17 +256,11 @@ public class PartExt {
   }
 
   public static List<Part> getAllPartsFromPhysicalArchitecture(PhysicalArchitecture blockArch) {
-    List<CapellaElement> components = new ArrayList<>();
     List<Part> result = new ArrayList<>();
-    BlockArchitectureExt.getAllComponentsFromPA(blockArch, components);
-    for (CapellaElement aComponent : components) {
-      if (aComponent instanceof AbstractPhysicalComponent) {
-        AbstractPhysicalComponent currentComponent = (AbstractPhysicalComponent) aComponent;
-        for (Partition aPartition : currentComponent.getRepresentingPartitions()) {
-          if (aPartition instanceof Part) {
-            result.add((Part) aPartition);
-          }
-        }
+    Collection<Component> allComponents = BlockArchitectureExt.getAllComponents(blockArch);
+    for (Component aComponent : allComponents) {
+      for (Part part : aComponent.getRepresentingParts()) {
+        result.add(part);
       }
     }
     return result;
@@ -288,10 +274,10 @@ public class PartExt {
   @SuppressWarnings({ "unchecked", "rawtypes" })
   public static Collection<Part> getFirstPartAncestors(Part currentPart) {
     LinkedList<Part> parents = new LinkedList<>();
-    parents.addAll((Collection)getCache(PartExt::getDeployingElements, currentPart));
+    parents.addAll((Collection) getCache(PartExt::getDeployingElements, currentPart));
     Component directParent = ComponentExt.getDirectParent(currentPart);
     if (null != directParent) {
-      parents.addAll((Collection) directParent.getRepresentingPartitions());
+      parents.addAll((Collection) directParent.getRepresentingParts());
     }
     return parents;
   }

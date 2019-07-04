@@ -15,20 +15,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.polarsys.capella.core.data.cs.AbstractActor;
-import org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement;
-import org.polarsys.capella.core.data.cs.SystemComponent;
-import org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInvolvement;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement;
+import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.helpers.interaction.delegates.AbstractCapabilityHelper;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityRealization;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.data.la.LaPackage;
-import org.polarsys.capella.core.data.capellacore.InvolvedElement;
-import org.polarsys.capella.core.data.capellacore.Involvement;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 
 public class CapabilityRealizationHelper {
 	private static CapabilityRealizationHelper instance;
@@ -46,15 +41,9 @@ public class CapabilityRealizationHelper {
 	public Object doSwitch(CapabilityRealization element, EStructuralFeature feature) {
 		Object ret = null;
 
-		if (feature.equals(LaPackage.Literals.CAPABILITY_REALIZATION__INVOLVED_SYSTEM_COMPONENTS)) {
-			ret = getInvolvedSystemComponents(element);
-		} else if (feature.equals(LaPackage.Literals.CAPABILITY_REALIZATION__INVOLVED_ACTORS)) {
-			ret = getInvolvedActors(element);
-		} else if (feature.equals(LaPackage.Literals.CAPABILITY_REALIZATION__PARTICIPATING_SYSTEM_COMPONENTS)) {
-			ret = getParticitpatingSystemComponents(element);
-		} else if (feature.equals(LaPackage.Literals.CAPABILITY_REALIZATION__PARTICIPATING_ACTORS)) {
-			ret = getParticitpatingActors(element);
-    } else if (feature.equals(LaPackage.Literals.CAPABILITY_REALIZATION__REALIZED_CAPABILITIES)) {
+		if (feature.equals(LaPackage.Literals.CAPABILITY_REALIZATION__INVOLVED_COMPONENTS)) {
+			ret = getInvolvedComponents(element);
+		} else if (feature.equals(LaPackage.Literals.CAPABILITY_REALIZATION__REALIZED_CAPABILITIES)) {
       ret = getRealizedCapabilities(element);
     } else if (feature.equals(LaPackage.Literals.CAPABILITY_REALIZATION__REALIZED_CAPABILITY_REALIZATIONS)) {
       ret = getRealizedCapabilityRealizations(element);
@@ -70,47 +59,17 @@ public class CapabilityRealizationHelper {
 		return ret;
 	}
 
-	protected List<SystemComponentCapabilityRealizationInvolvement> getInvolvedSystemComponents(CapabilityRealization element) {
-		List <SystemComponentCapabilityRealizationInvolvement> ret = new ArrayList<>();
-		for (Involvement involvement : element.getInvolvedInvolvements()) {
-			if (involvement instanceof SystemComponentCapabilityRealizationInvolvement) {
-				ret.add((SystemComponentCapabilityRealizationInvolvement) involvement);
-			}
-		}
-		return ret;
-	}
-
-	protected List<ActorCapabilityRealizationInvolvement> getInvolvedActors(CapabilityRealization element) {
-		List <ActorCapabilityRealizationInvolvement> ret = new ArrayList<>();
-		for (Involvement involvement : element.getInvolvedInvolvements()) {
-			if (involvement instanceof ActorCapabilityRealizationInvolvement) {
-				ret.add((ActorCapabilityRealizationInvolvement) involvement);
-			}
-		}
-		return ret;
-	}
-
-	protected List<SystemComponent> getParticitpatingSystemComponents(CapabilityRealization element) {
-		List<SystemComponent> ret = new ArrayList<>();
-		for (SystemComponentCapabilityRealizationInvolvement involvement : element.getInvolvedSystemComponents()) {
-			InvolvedElement comp = involvement.getInvolved();
-			if(comp instanceof SystemComponent) {
-				ret.add((SystemComponent) comp);
-			}
-		}
-		return ret;
-	}
-
-	protected List<AbstractActor> getParticitpatingActors(CapabilityRealization element) {
-		List<AbstractActor> ret = new ArrayList<>();
-		for (ActorCapabilityRealizationInvolvement involvement : element.getInvolvedActors()) {
-			InvolvedElement comp = involvement.getInvolved();
-			if(comp instanceof AbstractActor) {
-				ret.add((AbstractActor) comp);
-			}
-		}
-		return ret;
-	}
+  protected List<CapabilityRealizationInvolvedElement> getInvolvedComponents(CapabilityRealization element) {
+    List<CapabilityRealizationInvolvedElement> ret = new ArrayList<>();
+    for (CapabilityRealizationInvolvement involvement : element.getOwnedCapabilityRealizationInvolvements()) {
+      CapabilityRealizationInvolvedElement involvedCapabilityRealizationInvolvedElement = involvement
+          .getInvolvedCapabilityRealizationInvolvedElement();
+      if (null != involvedCapabilityRealizationInvolvedElement) {
+        ret.add(involvedCapabilityRealizationInvolvedElement);
+      }
+    }
+    return ret;
+  }
 
   protected List<Capability> getRealizedCapabilities(CapabilityRealization element) {
     List <Capability> ret = new ArrayList<>();

@@ -11,8 +11,6 @@
 package org.polarsys.capella.core.re.rules.cs;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
@@ -36,11 +34,11 @@ public class PartRule extends org.polarsys.capella.core.transition.system.rules.
     Part part = (Part) result_p;
     if (part != null) {
       Component cps = (Component) part.getAbstractType();
-      if (!(cps instanceof AbstractActor) && (!(cps.eContainer() instanceof BlockArchitecture))) {
-        return BlockArchitectureExt.getFirstComponent(target);
+      if (cps.isActor() && BlockArchitectureExt.isRootComponent(cps)) {
+        return BlockArchitectureExt.getComponentPkg(target, true);
       }
     }
-    return BlockArchitectureExt.getContext(target);
+    return BlockArchitectureExt.getFirstComponent(target);
   }
 
 }

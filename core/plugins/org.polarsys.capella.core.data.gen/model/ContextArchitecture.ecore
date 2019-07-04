@@ -1048,7 +1048,7 @@
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SystemComponent" eSuperTypes="CompositeStructure.ecore#//Component">
+  <eClassifiers xsi:type="ecore:EClass" name="SystemComponent" eSuperTypes="CompositeStructure.ecore#//Component CapellaCore.ecore#//InvolvedElement">
     <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
       <details key="Label" value="SystemComponent"/>
     </eAnnotations>

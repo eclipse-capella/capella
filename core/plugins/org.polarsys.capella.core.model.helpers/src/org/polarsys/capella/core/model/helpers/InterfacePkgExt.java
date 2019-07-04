@@ -36,10 +36,10 @@ import org.polarsys.capella.core.data.cs.ComponentArchitecture;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.helpers.information.services.ExchangeItemExt;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.sharedmodel.GenericPkg;
 import org.polarsys.capella.core.model.helpers.queries.QueryIdentifierConstants;
 
 /**
@@ -103,7 +103,7 @@ public class InterfacePkgExt {
     List<Interface> list = new ArrayList<Interface>(1);
     Object container = component.eContainer();
     if (isLayerVisibilityRequired) {
-      if (container instanceof org.polarsys.capella.core.data.ctx.System) {
+      if (container instanceof SystemComponent && !((SystemComponent) container).isActor()) {
         return list;// return if System has come in the recursion level
       } else if (container instanceof SystemEngineering) {
         return list; // return if SystemEngineering has come in the recursion
@@ -141,7 +141,7 @@ public class InterfacePkgExt {
     List<Interface> list = new ArrayList<Interface>(1);
     Object container = compArch.eContainer();
     if (isLayerVisibilityRequired) {
-      if (container instanceof org.polarsys.capella.core.data.ctx.System) {
+      if (container instanceof SystemComponent && !((SystemComponent) container).isActor()) {
         return list;// return if System has come in the recursion level
       } else if (container instanceof SystemEngineering) {
         return list; // return if SystemEngineering has come in the recursion
@@ -163,7 +163,7 @@ public class InterfacePkgExt {
     List<Interface> list = new ArrayList<Interface>(1);
     Object container = compArch.eContainer();
     if (isLayerVisibilityRequired) {
-      if (container instanceof org.polarsys.capella.core.data.ctx.System) {
+      if (container instanceof SystemComponent && !((SystemComponent) container).isActor()) {
         return list;// return if System has come in the recursion level
       } else if (container instanceof SystemEngineering) {
         return list; // return if SystemEngineering has come in the recursion
@@ -285,36 +285,6 @@ public class InterfacePkgExt {
       }
       for (InterfacePkg subInterfacePkg : interfacePkg.getOwnedInterfacePkgs()) {
         interfaceList.addAll(getAllInterfacesFiltered(subInterfacePkg, component, usedFlag));
-      }
-    }
-    return interfaceList;
-  }
-
-  /**
-   * Gets all the interfaces in <code>interfacePkg_p</code> and all its sub packages. Checks whether <code>component</code> already uses the interface, if
-   * used flag is true, or checks if <code>component</code> already implements this interface.
-   * @param genericPkg the Interface Package
-   * @param component the component to be checked for use or implementation
-   * @param usedFlag flag for "used" or "implemented"
-   * @return list of interfaces
-   */
-  static public List<Interface> getAllInterfacesFiltered(GenericPkg genericPkg, Component component, boolean usedFlag) {
-    List<Interface> interfaceList = new ArrayList<Interface>();
-    if (genericPkg != null) {
-      GenericPkgExt.getAllInterfaces(genericPkg);
-      for (Interface inter : GenericPkgExt.getAllInterfaces(genericPkg)) {
-        if (null != component) {
-          if (usedFlag) {
-            if (ComponentExt.isUsingInterface(component, inter)) {
-              continue;
-            }
-          } else {
-            if (ComponentExt.isImplementingInterface(component, inter)) {
-              continue;
-            }
-          }
-        }
-        interfaceList.add(inter);
       }
     }
     return interfaceList;

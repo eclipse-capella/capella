@@ -28,10 +28,8 @@ import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
@@ -44,7 +42,6 @@ import org.polarsys.capella.core.data.fa.FaFactory;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.fa.OrientationPortKind;
-import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.data.information.PortAllocation;
 import org.polarsys.capella.core.data.oa.CommunicationMean;
@@ -210,7 +207,7 @@ public final class ComponentExchangeExt {
     InformationsExchanger source = connection.getSource();
     // connection end
     if (source instanceof ComponentExchangeEnd) {
-      Partition part = ((ComponentExchangeEnd) source).getPart();
+      Part part = ((ComponentExchangeEnd) source).getPart();
       if (null != part) {
         AbstractType abstractType = part.getType();
         if ((null != abstractType) && (abstractType instanceof Component)) {
@@ -254,7 +251,7 @@ public final class ComponentExchangeExt {
     InformationsExchanger target = connection.getTarget();
     // connection end
     if (target instanceof ComponentExchangeEnd) {
-      Partition part = ((ComponentExchangeEnd) target).getPart();
+      Part part = ((ComponentExchangeEnd) target).getPart();
       if (null != part) {
         AbstractType abstractType = part.getType();
         if ((null != abstractType) && (abstractType instanceof Component)) {
@@ -298,7 +295,7 @@ public final class ComponentExchangeExt {
   public static boolean isLinkToAnActor(ComponentExchange connection) {
     Component source = getSourceComponent(connection);
     Component target = getTargetComponent(connection);
-    return (source != null) && (target != null) && ((source instanceof AbstractActor) || (target instanceof AbstractActor));
+    return (source != null) && (target != null) && (source.isActor() || target.isActor());
   }
 
   /**
@@ -309,7 +306,7 @@ public final class ComponentExchangeExt {
   public static boolean isNotLinkToAnActor(ComponentExchange connection) {
     Component source = getSourceComponent(connection);
     Component target = getTargetComponent(connection);
-    return (source != null) && (target != null) && !((source instanceof AbstractActor) || (target instanceof AbstractActor));
+    return (source != null) && (target != null) && !source.isActor() && !target.isActor();
   }
 
   /**

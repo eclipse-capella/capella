@@ -14,9 +14,12 @@ package org.polarsys.capella.core.data.cs.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
@@ -38,7 +41,7 @@ import org.polarsys.capella.core.data.fa.impl.AbstractFunctionalStructureImpl;
 public abstract class ComponentPkgImpl extends AbstractFunctionalStructureImpl implements ComponentPkg {
 
 	/**
-	 * The cached value of the '{@link #getOwnedParts() <em>Owned Parts</em>}' reference list.
+	 * The cached value of the '{@link #getOwnedParts() <em>Owned Parts</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getOwnedParts()
@@ -46,9 +49,6 @@ public abstract class ComponentPkgImpl extends AbstractFunctionalStructureImpl i
 	 * @ordered
 	 */
 	protected EList<Part> ownedParts;
-
-
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -71,10 +71,6 @@ public abstract class ComponentPkgImpl extends AbstractFunctionalStructureImpl i
 		return CsPackage.Literals.COMPONENT_PKG;
 	}
 
-
-
-
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -84,12 +80,24 @@ public abstract class ComponentPkgImpl extends AbstractFunctionalStructureImpl i
 	public EList<Part> getOwnedParts() {
 
 		if (ownedParts == null) {
-			ownedParts = new EObjectResolvingEList<Part>(Part.class, this, CsPackage.COMPONENT_PKG__OWNED_PARTS);
+			ownedParts = new EObjectContainmentEList.Resolving<Part>(Part.class, this, CsPackage.COMPONENT_PKG__OWNED_PARTS);
 		}
 		return ownedParts;
 	}
 
-
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case CsPackage.COMPONENT_PKG__OWNED_PARTS:
+				return ((InternalEList<?>)getOwnedParts()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -122,7 +130,6 @@ public abstract class ComponentPkgImpl extends AbstractFunctionalStructureImpl i
 		super.eSet(featureID, newValue);
 	}
 
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -137,8 +144,6 @@ public abstract class ComponentPkgImpl extends AbstractFunctionalStructureImpl i
 		}
 		super.eUnset(featureID);
 	}
-
-
 
 	/**
 	 * <!-- begin-user-doc -->

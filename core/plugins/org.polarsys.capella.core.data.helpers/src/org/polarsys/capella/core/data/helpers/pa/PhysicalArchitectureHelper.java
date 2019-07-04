@@ -21,28 +21,19 @@ import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedElement
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.RelationshipHelper;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.StructureHelper;
 import org.polarsys.capella.core.data.helpers.pa.delegates.ComponentInstanceHelper;
-import org.polarsys.capella.core.data.helpers.pa.delegates.LogicalActorRealizationHelper;
 import org.polarsys.capella.core.data.helpers.pa.delegates.LogicalArchitectureRealizationHelper;
-import org.polarsys.capella.core.data.helpers.pa.delegates.LogicalComponentRealizationHelper;
 import org.polarsys.capella.core.data.helpers.pa.delegates.LogicalInterfaceRealizationHelper;
 import org.polarsys.capella.core.data.helpers.pa.delegates.PaArchitectureHelper;
-import org.polarsys.capella.core.data.helpers.pa.delegates.PhysicalActorHelper;
 import org.polarsys.capella.core.data.helpers.pa.delegates.PhysicalComponentHelper;
-import org.polarsys.capella.core.data.helpers.pa.delegates.PhysicalContextHelper;
 import org.polarsys.capella.core.data.helpers.pa.delegates.PhysicalFunctionHelper;
 import org.polarsys.capella.core.data.helpers.pa.delegates.PhysicalNodeHelper;
 import org.polarsys.capella.core.data.helpers.pa.delegates.PortInstanceHelper;
-import org.polarsys.capella.core.data.pa.LogicalActorRealization;
 import org.polarsys.capella.core.data.pa.LogicalArchitectureRealization;
-import org.polarsys.capella.core.data.pa.LogicalComponentRealization;
 import org.polarsys.capella.core.data.pa.LogicalInterfaceRealization;
-import org.polarsys.capella.core.data.pa.PhysicalActor;
-import org.polarsys.capella.core.data.pa.PhysicalActorPkg;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecturePkg;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
-import org.polarsys.capella.core.data.pa.PhysicalContext;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
 import org.polarsys.capella.core.data.pa.PhysicalNode;
@@ -69,35 +60,20 @@ public class PhysicalArchitectureHelper implements IHelper {
 		else if (object instanceof PhysicalComponent) {
 			ret = PhysicalComponentHelper.getInstance().doSwitch((PhysicalComponent) object, feature);
 		}
-		else if (object instanceof PhysicalContext) {
-			ret = PhysicalContextHelper.getInstance().doSwitch((PhysicalContext) object, feature);
-		}
-		else if (object instanceof PhysicalActor) {
-			ret = PhysicalActorHelper.getInstance().doSwitch((PhysicalActor) object, feature);
-		}
 		else if (object instanceof PhysicalFunction) {
 			ret = PhysicalFunctionHelper.getInstance().doSwitch((PhysicalFunction) object, feature);
 		}
 		else if (object instanceof LogicalArchitectureRealization) {
 			ret = LogicalArchitectureRealizationHelper.getInstance().doSwitch((LogicalArchitectureRealization) object, feature);
 		}
-		else if (object instanceof LogicalComponentRealization) {
-			ret = LogicalComponentRealizationHelper.getInstance().doSwitch((LogicalComponentRealization) object, feature);
-		}
 		else if (object instanceof LogicalInterfaceRealization) {
 			ret = LogicalInterfaceRealizationHelper.getInstance().doSwitch((LogicalInterfaceRealization) object, feature);
 		}
-		else if (object instanceof LogicalActorRealization) {
-			ret = LogicalActorRealizationHelper.getInstance().doSwitch((LogicalActorRealization) object, feature);
-		}
-    else if (object instanceof PhysicalFunctionPkg) {
+		else if (object instanceof PhysicalFunctionPkg) {
       ret = StructureHelper.getInstance().doSwitch((PhysicalFunctionPkg) object, feature);
     }
     else if (object instanceof PhysicalComponentPkg) {
       ret = StructureHelper.getInstance().doSwitch((PhysicalComponentPkg) object, feature);
-    }
-    else if (object instanceof PhysicalActorPkg) {
-      ret = StructureHelper.getInstance().doSwitch((PhysicalActorPkg) object, feature);
     }
     else if (object instanceof TypeDeploymentLink) {
       ret = RelationshipHelper.getInstance().doSwitch((TypeDeploymentLink) object, feature);

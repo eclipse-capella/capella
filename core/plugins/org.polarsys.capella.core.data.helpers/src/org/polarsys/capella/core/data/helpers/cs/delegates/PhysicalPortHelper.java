@@ -15,18 +15,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.polarsys.capella.common.data.helpers.modellingcore.delegates.InformationsExchangerHelper;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.cs.PhysicalPortRealization;
 import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.fa.ComponentPortAllocation;
-import org.polarsys.capella.core.data.helpers.information.delegates.PartitionHelper;
 import org.polarsys.capella.core.data.helpers.information.delegates.PortHelper;
 import org.polarsys.capella.core.data.information.Port;
-import org.polarsys.capella.common.data.helpers.modellingcore.delegates.InformationsExchangerHelper;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 
 public class PhysicalPortHelper {
 	private static PhysicalPortHelper instance;
@@ -62,9 +60,6 @@ public class PhysicalPortHelper {
     if (null == ret) {
       ret = InformationsExchangerHelper.getInstance().doSwitch(element, feature);
     }
-		if (null == ret) {
-			ret = PartitionHelper.getInstance().doSwitch(element, feature);
-		}
 		if (null == ret) {
 			ret = PortHelper.getInstance().doSwitch(element, feature);
 		}

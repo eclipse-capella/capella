@@ -10,17 +10,11 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.sirius.ui;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Predicate;
-
 import org.eclipse.core.expressions.PropertyTester;
-import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.ui.actions.ModelAdaptation;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentContext;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
@@ -123,8 +117,7 @@ public class ActionPropertyTester extends PropertyTester {
     }
 
     if (element instanceof Component) {
-
-      if (!((element instanceof ConfigurationItem) || (element instanceof ComponentContext))) {
+      if (!(element instanceof ConfigurationItem)) {
         result = true;
       }
     }

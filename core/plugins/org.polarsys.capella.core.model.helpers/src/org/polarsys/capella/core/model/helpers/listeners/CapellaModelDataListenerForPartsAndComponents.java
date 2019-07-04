@@ -23,8 +23,8 @@ import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.core.data.capellacore.Type;
-import org.polarsys.capella.core.data.information.Partition;
-import org.polarsys.capella.core.data.information.PartitionableElement;
+import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.Scenario;
@@ -68,19 +68,19 @@ public class CapellaModelDataListenerForPartsAndComponents extends CapellaModelD
         if (!TriStateBoolean.True
             .equals(CapellaProjectHelper.isReusableComponentsDriven((ModelElement) notifier))) {
  
-          if (notifier instanceof PartitionableElement) {
-            for (final Partition part : ((PartitionableElement) notifier).getRepresentingPartitions()) {
+          if (notifier instanceof Component) {
+            for (final Part part : ((Component) notifier).getRepresentingParts()) {
               synchronizeName(part, value);
             }
 
-          } else if (notifier instanceof Partition) {
-            final Type type = ((Partition) notifier).getType();
+          } else if (notifier instanceof Part) {
+            final Type type = ((Part) notifier).getType();
             synchronizeName(type, value);
           }
         }
 
-        if (notifier instanceof Partition) {
-          final Partition partition = ((Partition) notifier);
+        if (notifier instanceof Part) {
+          final Part partition = ((Part) notifier);
 
           // only sync unique per-scenario instanceroles
           Collection<EObject> representingInstanceRoles = EObjectExt.getReferencers(partition, InteractionPackage.Literals.INSTANCE_ROLE,
@@ -120,8 +120,8 @@ public class CapellaModelDataListenerForPartsAndComponents extends CapellaModelD
         if (!TriStateBoolean.False.equals(CapellaProjectHelper.isReusableComponentsDriven((ModelElement) notifier))) {
           return;
         }
-        if ((notifier instanceof Partition) && (value instanceof AbstractType)) {
-          final Partition part = (Partition) notifier;
+        if ((notifier instanceof Part) && (value instanceof AbstractType)) {
+          final Part part = (Part) notifier;
           final AbstractType type = (AbstractType) value;
           synchronizeName(part, type.getName());
         }
@@ -147,7 +147,7 @@ public class CapellaModelDataListenerForPartsAndComponents extends CapellaModelD
    * @param name
    */
   @Deprecated
-  protected void renameInstanceRole(Partition part, String name) {
+  protected void renameInstanceRole(Part part, String name) {
     for (EObject role : EObjectExt.getReferencers(part, InteractionPackage.Literals.INSTANCE_ROLE,
         InteractionPackage.Literals.INSTANCE_ROLE__REPRESENTED_INSTANCE)) {
       synchronizeName((InstanceRole)role, name);

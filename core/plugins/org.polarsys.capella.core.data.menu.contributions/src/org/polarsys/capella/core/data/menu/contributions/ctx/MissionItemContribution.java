@@ -24,19 +24,18 @@ import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.command.CreateChildCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
-import org.polarsys.capella.core.data.ctx.CtxFactory;
-import org.polarsys.capella.core.data.ctx.CtxPackage;
-import org.polarsys.capella.core.data.ctx.Mission;
-import org.polarsys.capella.core.data.ctx.System;
-import org.polarsys.capella.core.data.ctx.SystemAnalysis;
+import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
+import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.ctx.CtxFactory;
+import org.polarsys.capella.core.data.ctx.CtxPackage;
+import org.polarsys.capella.core.data.ctx.Mission;
+import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
 
 public class MissionItemContribution implements IMDEMenuItemContribution {
 
@@ -46,20 +45,19 @@ public class MissionItemContribution implements IMDEMenuItemContribution {
   public Command executionContribution(final EditingDomain editingDomain, ModelElement containerElement, final ModelElement createdElement,
       EStructuralFeature feature) {
     if (createdElement instanceof Mission) {
-      final Mission mission = (Mission) createdElement;
       // Links the mission to the System
       SystemEngineering sysEng = (SystemEngineering) EcoreUtil2.getFirstContainer(containerElement, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING);
       if (sysEng != null) {
         SystemAnalysis ca = SystemEngineeringExt.getOwnedSystemAnalysis(sysEng);
         if (ca != null) {
-          final System sys = ca.getOwnedSystem();
+          Component sys = ca.getSystem();
           if (sys != null) {
             CompoundCommand cmd = new CompoundCommand();
 
             // Creates the mission supplier link.
             final Command createLinkCmd =
                 CreateChildCommand.create(editingDomain, createdElement, new CommandParameter(createdElement,
-                    CtxPackage.Literals.MISSION__OWNED_SYSTEM_MISSION_INVOLVEMENT, CtxFactory.eINSTANCE.createSystemMissionInvolvement()),
+                    CtxPackage.Literals.MISSION__OWNED_MISSION_INVOLVEMENTS, CtxFactory.eINSTANCE.createMissionInvolvement()),
                     Collections.EMPTY_LIST);
             cmd.append(createLinkCmd);
 

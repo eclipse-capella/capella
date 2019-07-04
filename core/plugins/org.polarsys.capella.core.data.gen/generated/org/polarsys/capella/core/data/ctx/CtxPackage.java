@@ -4684,7 +4684,7 @@ public interface CtxPackage extends EPackage {
 	int SYSTEM_COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_REALIZATIONS = CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_REALIZATIONS;
 
 	/**
-	 * The feature id for the '<em><b>Owned Parts</b></em>' reference list.
+	 * The feature id for the '<em><b>Owned Parts</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -5270,22 +5270,22 @@ public interface CtxPackage extends EPackage {
 	int SYSTEM_COMPONENT__TRANSMIT = CsPackage.COMPONENT__TRANSMIT;
 
 	/**
-	 * The feature id for the '<em><b>Is Actor</b></em>' attribute.
+	 * The feature id for the '<em><b>Actor</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_COMPONENT__IS_ACTOR = CsPackage.COMPONENT__IS_ACTOR;
+	int SYSTEM_COMPONENT__ACTOR = CsPackage.COMPONENT__ACTOR;
 
 	/**
-	 * The feature id for the '<em><b>Is Human</b></em>' attribute.
+	 * The feature id for the '<em><b>Human</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_COMPONENT__IS_HUMAN = CsPackage.COMPONENT__IS_HUMAN;
+	int SYSTEM_COMPONENT__HUMAN = CsPackage.COMPONENT__HUMAN;
 
 	/**
 	 * The feature id for the '<em><b>Owned Interface Uses</b></em>' containment reference list.
@@ -5340,24 +5340,6 @@ public interface CtxPackage extends EPackage {
 	 * @ordered
 	 */
 	int SYSTEM_COMPONENT__IMPLEMENTED_INTERFACES = CsPackage.COMPONENT__IMPLEMENTED_INTERFACES;
-
-	/**
-	 * The feature id for the '<em><b>Provisioned Component Allocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SYSTEM_COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS = CsPackage.COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Provisioning Component Allocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SYSTEM_COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS = CsPackage.COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Owned Component Realizations</b></em>' containment reference list.
@@ -5468,13 +5450,22 @@ public interface CtxPackage extends EPackage {
 	int SYSTEM_COMPONENT__REPRESENTING_PARTS = CsPackage.COMPONENT__REPRESENTING_PARTS;
 
 	/**
+	 * The feature id for the '<em><b>Involving Involvements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_COMPONENT__INVOLVING_INVOLVEMENTS = CsPackage.COMPONENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Data Component</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_COMPONENT__DATA_COMPONENT = CsPackage.COMPONENT_FEATURE_COUNT + 0;
+	int SYSTEM_COMPONENT__DATA_COMPONENT = CsPackage.COMPONENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Data Type</b></em>' reference list.
@@ -5483,7 +5474,7 @@ public interface CtxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_COMPONENT__DATA_TYPE = CsPackage.COMPONENT_FEATURE_COUNT + 1;
+	int SYSTEM_COMPONENT__DATA_TYPE = CsPackage.COMPONENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Involving Capabilities</b></em>' reference list.
@@ -5492,7 +5483,7 @@ public interface CtxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_COMPONENT__INVOLVING_CAPABILITIES = CsPackage.COMPONENT_FEATURE_COUNT + 2;
+	int SYSTEM_COMPONENT__INVOLVING_CAPABILITIES = CsPackage.COMPONENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Capability Involvements</b></em>' reference list.
@@ -5501,7 +5492,7 @@ public interface CtxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_COMPONENT__CAPABILITY_INVOLVEMENTS = CsPackage.COMPONENT_FEATURE_COUNT + 3;
+	int SYSTEM_COMPONENT__CAPABILITY_INVOLVEMENTS = CsPackage.COMPONENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Involving Missions</b></em>' reference list.
@@ -5510,7 +5501,7 @@ public interface CtxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_COMPONENT__INVOLVING_MISSIONS = CsPackage.COMPONENT_FEATURE_COUNT + 4;
+	int SYSTEM_COMPONENT__INVOLVING_MISSIONS = CsPackage.COMPONENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Mission Involvements</b></em>' reference list.
@@ -5519,7 +5510,7 @@ public interface CtxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_COMPONENT__MISSION_INVOLVEMENTS = CsPackage.COMPONENT_FEATURE_COUNT + 5;
+	int SYSTEM_COMPONENT__MISSION_INVOLVEMENTS = CsPackage.COMPONENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Realized Entities</b></em>' reference list.
@@ -5528,7 +5519,7 @@ public interface CtxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_COMPONENT__REALIZED_ENTITIES = CsPackage.COMPONENT_FEATURE_COUNT + 6;
+	int SYSTEM_COMPONENT__REALIZED_ENTITIES = CsPackage.COMPONENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Realizing Logical Components</b></em>' reference list.
@@ -5537,7 +5528,7 @@ public interface CtxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_COMPONENT__REALIZING_LOGICAL_COMPONENTS = CsPackage.COMPONENT_FEATURE_COUNT + 7;
+	int SYSTEM_COMPONENT__REALIZING_LOGICAL_COMPONENTS = CsPackage.COMPONENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The number of structural features of the '<em>System Component</em>' class.
@@ -5546,7 +5537,7 @@ public interface CtxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_COMPONENT_FEATURE_COUNT = CsPackage.COMPONENT_FEATURE_COUNT + 8;
+	int SYSTEM_COMPONENT_FEATURE_COUNT = CsPackage.COMPONENT_FEATURE_COUNT + 9;
 
 	/**
 	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.ctx.SystemAnalysis <em>System Analysis</em>}'.

@@ -53,6 +53,8 @@ import org.polarsys.capella.core.data.cs.BlockArchitecturePkg;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentArchitecture;
 import org.polarsys.capella.core.data.cs.ComponentPkg;
+import org.polarsys.capella.core.data.cs.DeployableElement;
+import org.polarsys.capella.core.data.cs.DeploymentTarget;
 import org.polarsys.capella.core.data.cs.InterfaceAllocation;
 import org.polarsys.capella.core.data.cs.InterfaceAllocator;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
@@ -230,6 +232,8 @@ public class PaSwitch<T> extends Switch<T> {
 				if (result == null) result = caseAbstractPhysicalArtifact(physicalComponent);
 				if (result == null) result = caseComponent(physicalComponent);
 				if (result == null) result = caseCapabilityRealizationInvolvedElement(physicalComponent);
+				if (result == null) result = caseDeployableElement(physicalComponent);
+				if (result == null) result = caseDeploymentTarget(physicalComponent);
 				if (result == null) result = caseBlock(physicalComponent);
 				if (result == null) result = caseClassifier(physicalComponent);
 				if (result == null) result = caseInterfaceAllocator(physicalComponent);
@@ -278,6 +282,8 @@ public class PaSwitch<T> extends Switch<T> {
 				if (result == null) result = caseAbstractPhysicalArtifact(physicalNode);
 				if (result == null) result = caseComponent(physicalNode);
 				if (result == null) result = caseCapabilityRealizationInvolvedElement(physicalNode);
+				if (result == null) result = caseDeployableElement(physicalNode);
+				if (result == null) result = caseDeploymentTarget(physicalNode);
 				if (result == null) result = caseBlock(physicalNode);
 				if (result == null) result = caseClassifier(physicalNode);
 				if (result == null) result = caseInterfaceAllocator(physicalNode);
@@ -1059,21 +1065,6 @@ public class PaSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Generalizable Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Generalizable Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseGeneralizableElement(GeneralizableElement object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Classifier</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1085,6 +1076,21 @@ public class PaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseClassifier(Classifier object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Generalizable Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Generalizable Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGeneralizableElement(GeneralizableElement object) {
 		return null;
 	}
 
@@ -1145,6 +1151,36 @@ public class PaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseCapabilityRealizationInvolvedElement(CapabilityRealizationInvolvedElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Deployable Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Deployable Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDeployableElement(DeployableElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Deployment Target</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Deployment Target</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDeploymentTarget(DeploymentTarget object) {
 		return null;
 	}
 

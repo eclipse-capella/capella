@@ -11,45 +11,43 @@
 
 package org.polarsys.capella.core.model.helpers;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.Feature;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentRealization;
+import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.ctx.System;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.epbs.PhysicalArtifactRealization;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentPort;
-import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.pa.LogicalComponentRealization;
-import org.polarsys.capella.core.data.pa.PaFactory;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
-import org.polarsys.capella.core.data.pa.PhysicalArchitecturePkg;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.data.pa.deployment.DeploymentFactory;
 import org.polarsys.capella.core.data.pa.deployment.TypeDeploymentLink;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
-
-import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 
 /**
  * PhysicalComponent helpers
@@ -91,10 +89,10 @@ public class PhysicalComponentExt {
    * @param logicalComponent component to be implemented
    */
   public static void addImplementedLogicalComponent(PhysicalComponent physicalComponent, LogicalComponent logicalComponent) {
-    LogicalComponentRealization impl = PaFactory.eINSTANCE.createLogicalComponentRealization();
+    ComponentRealization impl = CsFactory.eINSTANCE.createComponentRealization();
     impl.setTargetElement(logicalComponent);
     impl.setSourceElement(physicalComponent);
-    physicalComponent.getOwnedLogicalComponentRealizations().add(impl);
+    physicalComponent.getOwnedComponentRealizations().add(impl);
   }
 
   /**
@@ -181,10 +179,12 @@ public class PhysicalComponentExt {
    * @param isFilterRequired flag for checking filters
    * @return list of LCs
    */
-  public static List<CapellaElement> getLCsFromLogicalArchitecture(LogicalArchitecture logArch, PhysicalComponent currentPC, boolean isFilterRequired) {
+  public static List<CapellaElement> getLCsFromLogicalArchitecture(LogicalArchitecture logArch,
+      PhysicalComponent currentPC, boolean isFilterRequired) {
     List<CapellaElement> list = new ArrayList<CapellaElement>(1);
     if (null != logArch) {
-      for (LogicalComponent lc : LogicalArchitectureExt.getAllLCsFromLogicalArchitectureLayer(logArch)) {
+      for (LogicalComponent lc : BlockArchitectureExt.getAllComponents(logArch).stream()
+          .filter(LogicalComponent.class::isInstance).map(LogicalComponent.class::cast).collect(Collectors.toList())) {
         if (isFilterRequired) {
           if (hasImplementedLC(currentPC, lc)) {
             continue;
@@ -225,7 +225,7 @@ public class PhysicalComponentExt {
       // Case : Scenario contained by PhysicalArchitecture (not under a Physical Component)
       // Retrieve the Root Physical Component
       PhysicalArchitecture pa = (PhysicalArchitecture) EcoreUtil2.getFirstContainer(scenario, PaPackage.Literals.PHYSICAL_ARCHITECTURE);
-      containerPc = SystemEngineeringExt.getRootPhysicalComponent(pa);
+      containerPc = (PhysicalComponent) SystemEngineeringExt.getSystem(pa);
     }
 
     return containerPc;
@@ -238,17 +238,10 @@ public class PhysicalComponentExt {
    */
   public static List<Interface> getProvidedInterfaces(PhysicalComponent component) {
     List<Interface> providedItfList = new ArrayList<Interface>(1);
-    List<Partition> exposedPorts = component.getOwnedPartitions();
-
     providedItfList.addAll(component.getImplementedInterfaces());
-
-    for (Partition port : exposedPorts) {
-      if (port instanceof ComponentPort) {
-        ComponentPort stdPort = (ComponentPort) port;
-        providedItfList.addAll(PortExt.getProvidedInterfaces(stdPort));
-      }
+    for (ComponentPort port : component.getContainedComponentPorts()) {
+      providedItfList.addAll(PortExt.getProvidedInterfaces(port));
     }
-
     return providedItfList;
   }
 
@@ -283,41 +276,6 @@ public class PhysicalComponentExt {
     return null;
   }
 
-  /**
-   * @param component
-   * @return
-   */
-  private static Component getRecursiveParentContainer(PhysicalArchitecture component) {
-    Component cpnt = null;
-    EObject container = component.eContainer();
-
-    if (container instanceof System) {
-      cpnt = (System) container;
-    } else if (container instanceof PhysicalComponent) {
-      // added here if PhysicalComponent is decomposed into LCDcmps, which
-      // is a PhysicalArchitecture
-      cpnt = (PhysicalComponent) container;
-    } else if (container instanceof PhysicalArchitecturePkg) {
-      cpnt = getRecursiveParentContainer((PhysicalArchitecturePkg) container);
-    }
-
-    return cpnt;
-  }
-
-  /**
-   * @param component
-   * @return
-   */
-  private static Component getRecursiveParentContainer(PhysicalArchitecturePkg component) {
-    Component cpnt = null;
-    EObject container = component.eContainer();
-
-    if (container instanceof System) {
-      cpnt = (System) container;
-    }
-
-    return cpnt;
-  }
 
   /**
    * @param component
@@ -326,10 +284,7 @@ public class PhysicalComponentExt {
   private static Component getRecursiveParentContainer(PhysicalComponent component) {
     Component cpnt = null;
     EObject container = component.eContainer();
-
-    if (container instanceof PhysicalArchitecture) {
-      cpnt = getRecursiveParentContainer((PhysicalArchitecture) container);
-    } else if (container instanceof PhysicalComponentPkg) {
+    if (container instanceof PhysicalComponentPkg) {
       cpnt = getRecursiveParentContainer((PhysicalComponentPkg) container);
     } else if (container instanceof PhysicalComponent) {
       cpnt = (PhysicalComponent) container;
@@ -345,10 +300,7 @@ public class PhysicalComponentExt {
   private static Component getRecursiveParentContainer(PhysicalComponentPkg componentPkg) {
     Component cpnt = null;
     EObject container = componentPkg.eContainer();
-
-    if (container instanceof PhysicalArchitecture) {
-      cpnt = getRecursiveParentContainer((PhysicalArchitecture) container);
-    } else if (container instanceof PhysicalComponentPkg) {
+    if (container instanceof PhysicalComponentPkg) {
       cpnt = getRecursiveParentContainer((PhysicalComponentPkg) container);
     } else if (container instanceof PhysicalComponent) {
       cpnt = (PhysicalComponent) container;
@@ -359,22 +311,17 @@ public class PhysicalComponentExt {
 
   /**
    * Returns ALL required interfaces including used interfaces and all the required interfaces trough standard ports
-   * @param component current component
+   * 
+   * @param component
+   *          current component
    * @return returns all the required interfaces of the current component
    */
   public static List<Interface> getRequiredInterfaces(PhysicalComponent component) {
     List<Interface> requiredItfList = new ArrayList<Interface>(1);
-    List<Partition> exposedPorts = component.getOwnedPartitions();
-
     requiredItfList.addAll(component.getUsedInterfaces());
-
-    for (Partition port : exposedPorts) {
-      if (port instanceof ComponentPort) {
-        ComponentPort stdPort = (ComponentPort) port;
-        requiredItfList.addAll(PortExt.getRequiredInterfaces(stdPort));
-      }
+    for (ComponentPort port : component.getContainedComponentPorts()) {
+      requiredItfList.addAll(PortExt.getRequiredInterfaces(port));
     }
-
     return requiredItfList;
   }
 
@@ -386,8 +333,8 @@ public class PhysicalComponentExt {
    */
   static public boolean hasImplementedLC(PhysicalComponent currentPC, LogicalComponent lc) {
     boolean flag = false;
-    for (LogicalComponentRealization lcImpl : currentPC.getOwnedLogicalComponentRealizations()) {
-      if (lcImpl.getAllocatedComponent().equals(lc)) {
+    for (ComponentRealization lcImpl : currentPC.getOwnedComponentRealizations()) {
+      if (lcImpl.getRealizedComponent().equals(lc)) {
         flag = true;
         break;
       }
@@ -443,17 +390,16 @@ public class PhysicalComponentExt {
    * @param logicalComponent the implemented logical component
    */
   public static void removeImplementedLogicalComponent(PhysicalComponent physicalComponent, LogicalComponent logicalComponent) {
-    LogicalComponentRealization implementLink = null;
-    ListIterator<LogicalComponentRealization> it = physicalComponent.getLogicalComponentRealizations().listIterator();
+    ComponentRealization implementLink = null;
+    ListIterator<ComponentRealization> it = physicalComponent.getOwnedComponentRealizations().listIterator();
     while (it.hasNext()) {
-      LogicalComponentRealization lnk = it.next();
-      if (lnk.getAllocatedComponent().equals(logicalComponent)) {
+      ComponentRealization lnk = it.next();
+      if (lnk.getRealizedComponent().equals(logicalComponent)) {
         implementLink = lnk;
       }
     }
     if (implementLink != null) {
-      physicalComponent.getLogicalComponentRealizations().remove(implementLink);
-      physicalComponent.getOwnedLogicalComponentRealizations().remove(implementLink);
+      physicalComponent.getOwnedComponentRealizations().remove(implementLink);
       implementLink.destroy();
     }
   }

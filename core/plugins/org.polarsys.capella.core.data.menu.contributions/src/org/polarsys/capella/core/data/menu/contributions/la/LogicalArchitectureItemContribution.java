@@ -15,14 +15,21 @@ import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
-
-import org.polarsys.capella.core.data.la.LaPackage;
-import org.polarsys.capella.core.data.la.LogicalArchitecture;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.model.skeleton.helpers.LAStructureHelper;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
+import org.polarsys.capella.core.data.ctx.SystemAnalysis;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
+import org.polarsys.capella.core.data.ctx.SystemFunction;
+import org.polarsys.capella.core.data.la.LaPackage;
+import org.polarsys.capella.core.data.la.LogicalArchitecture;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
+import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
+import org.polarsys.capella.core.model.skeleton.impl.cmd.CreateLogicalArchiCmd;
 
 public class LogicalArchitectureItemContribution implements IMDEMenuItemContribution {
 
@@ -30,10 +37,8 @@ public class LogicalArchitectureItemContribution implements IMDEMenuItemContribu
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
    */
   public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
-    if ((modelElement instanceof SystemEngineering)
-      && LaPackage.Literals.LOGICAL_ARCHITECTURE.equals(cls)
-      && CapellacorePackage.Literals.ABSTRACT_MODELLING_STRUCTURE__OWNED_ARCHITECTURES.equals(feature))
-    {
+    if ((modelElement instanceof SystemEngineering) && LaPackage.Literals.LOGICAL_ARCHITECTURE.equals(cls)
+        && CapellacorePackage.Literals.ABSTRACT_MODELLING_STRUCTURE__OWNED_ARCHITECTURES.equals(feature)) {
       return ((SystemEngineering) modelElement).getContainedLogicalArchitectures().isEmpty();
     }
     return false;
@@ -42,9 +47,19 @@ public class LogicalArchitectureItemContribution implements IMDEMenuItemContribu
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#executionContribution()
    */
-  public Command executionContribution(EditingDomain editingDomain, ModelElement containerElement, ModelElement createdElement, EStructuralFeature feature) {
+  public Command executionContribution(EditingDomain editingDomain, ModelElement containerElement,
+      ModelElement createdElement, EStructuralFeature feature) {
     if ((createdElement instanceof LogicalArchitecture) && (containerElement instanceof SystemEngineering)) {
-      return LAStructureHelper.getLogicalArchitectureCreationCmd(editingDomain, (SystemEngineering) containerElement, (LogicalArchitecture) createdElement);
+      SystemEngineering engineering = (SystemEngineering) containerElement;
+      SystemAnalysis architecture = SystemEngineeringExt.getSystemAnalysis(engineering);
+      return new RecordingCommand((TransactionalEditingDomain) editingDomain) {
+        @Override
+        protected void doExecute() {
+          new CreateLogicalArchiCmd(engineering, NamingConstants.CreateLogicalArchCmd_name, architecture,
+              (SystemFunction) BlockArchitectureExt.getRootFunction(architecture, false),
+              (SystemComponent) BlockArchitectureExt.getFirstComponent(architecture, false)).run();
+        }
+      };
     }
     return new IdentityCommand();
   }

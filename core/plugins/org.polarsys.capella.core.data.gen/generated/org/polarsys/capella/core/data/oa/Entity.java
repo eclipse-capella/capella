@@ -13,6 +13,7 @@ package org.polarsys.capella.core.data.oa;
 import org.eclipse.emf.common.util.EList;
 import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.core.data.capellacore.InvolvedElement;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,6 +34,7 @@ import org.polarsys.capella.core.data.capellacore.InvolvedElement;
  *   <li>{@link org.polarsys.capella.core.data.oa.Entity#getAllocatedOperationalActivities <em>Allocated Operational Activities</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.Entity#getAllocatedRoles <em>Allocated Roles</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.Entity#getInvolvingOperationalCapabilities <em>Involving Operational Capabilities</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.oa.Entity#getRealizingSystemComponents <em>Realizing System Components</em>}</li>
  * </ul>
  *
  * @see org.polarsys.capella.core.data.oa.OaPackage#getEntity()
@@ -320,6 +322,33 @@ public interface Entity extends AbstractConceptItem, InformationsExchanger, Invo
 	 */
 
 	EList<OperationalCapability> getInvolvingOperationalCapabilities();
+
+
+
+
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Realizing System Components</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.SystemComponent}.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Realizing System Components</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Realizing System Components</em>' reference list.
+	 * @see org.polarsys.capella.core.data.oa.OaPackage#getEntity_RealizingSystemComponents()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='System Components that realize this Entity' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Entity.involvingInvolvements(self, eoci);\r\nEntityOperationalCapabilityInvolvement.capability(eoci, target);'"
+	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+	 * @generated
+	 */
+
+	EList<SystemComponent> getRealizingSystemComponents();
 
 
 

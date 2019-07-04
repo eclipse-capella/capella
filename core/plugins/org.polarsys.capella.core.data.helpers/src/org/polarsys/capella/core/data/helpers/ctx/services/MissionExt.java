@@ -13,12 +13,13 @@ package org.polarsys.capella.core.data.helpers.ctx.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-import org.polarsys.capella.core.data.ctx.Actor;
-import org.polarsys.capella.core.data.ctx.ActorMissionInvolvement;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.CapabilityExploitation;
 import org.polarsys.capella.core.data.ctx.Mission;
+import org.polarsys.capella.core.data.ctx.MissionInvolvement;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 
 /**
  * Mission helpers
@@ -45,45 +46,20 @@ public class MissionExt {
 		return exploitedCapabilities;
 	}
 
-	/**
-	 * This method retrieves the involved actors.
-	 * 
-	 * @param mission
-	 *            the mission whose contributing actors will be retrieved
-	 * @return the contributing actors
-	 */
-	public static List<Actor> getInvolvedActors(Mission mission) {
-		List<Actor> involvedActors = new ArrayList<>();
-		List<ActorMissionInvolvement> contributionSet = mission.getInvolvedActors();
-		for (ActorMissionInvolvement involvement : contributionSet) {
-			Actor actor = involvement.getActor();
-			if(actor != null) {
-			  involvedActors.add(actor);			  
-			}
-		}
-		return involvedActors;
-	}
 
 	/**
 	 * @param mission
 	 *            The mission.
-	 * @param actors
-	 *            The actors to remove.
+	 * @param systemComponent
+	 *            The SystemComponent to remove.
 	 */
-	public static void removeInvolvedActors(Mission mission, List<Actor> actors) {
-		List<ActorMissionInvolvement> removedLinks = new ArrayList<>();
-
-		for (Object involvement : mission.getInvolvedActors()) {
-			ActorMissionInvolvement actorInvolvement = (ActorMissionInvolvement) involvement;
-			if (actors.contains(actorInvolvement.getActor())) {
-				removedLinks.add(actorInvolvement);
-			}
-		}
-
-		for (ActorMissionInvolvement actorMissionInvolvement : removedLinks) {
-			actorMissionInvolvement.destroy();
-		}
-	}
+  public static void removeInvolvedSystemComponent(Mission mission, SystemComponent component) {
+    List<MissionInvolvement> missionInvolvementsToRemove = mission.getOwnedMissionInvolvements().stream()
+        .filter(involvement -> involvement.getSystemComponent() == component).collect(Collectors.toList());
+    for (MissionInvolvement involvement : missionInvolvementsToRemove) {
+      involvement.destroy();
+    }
+  }
 
 	/**
 	 * @param mission

@@ -2459,22 +2459,22 @@ public interface LaPackage extends EPackage {
 	int LOGICAL_COMPONENT__TRANSMIT = CsPackage.COMPONENT__TRANSMIT;
 
 	/**
-	 * The feature id for the '<em><b>Is Actor</b></em>' attribute.
+	 * The feature id for the '<em><b>Actor</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LOGICAL_COMPONENT__IS_ACTOR = CsPackage.COMPONENT__IS_ACTOR;
+	int LOGICAL_COMPONENT__ACTOR = CsPackage.COMPONENT__ACTOR;
 
 	/**
-	 * The feature id for the '<em><b>Is Human</b></em>' attribute.
+	 * The feature id for the '<em><b>Human</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LOGICAL_COMPONENT__IS_HUMAN = CsPackage.COMPONENT__IS_HUMAN;
+	int LOGICAL_COMPONENT__HUMAN = CsPackage.COMPONENT__HUMAN;
 
 	/**
 	 * The feature id for the '<em><b>Owned Interface Uses</b></em>' containment reference list.
@@ -2529,24 +2529,6 @@ public interface LaPackage extends EPackage {
 	 * @ordered
 	 */
 	int LOGICAL_COMPONENT__IMPLEMENTED_INTERFACES = CsPackage.COMPONENT__IMPLEMENTED_INTERFACES;
-
-	/**
-	 * The feature id for the '<em><b>Provisioned Component Allocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOGICAL_COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS = CsPackage.COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Provisioning Component Allocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOGICAL_COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS = CsPackage.COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Owned Component Realizations</b></em>' containment reference list.
@@ -3045,7 +3027,7 @@ public interface LaPackage extends EPackage {
 	int LOGICAL_COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_REALIZATIONS = CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_REALIZATIONS;
 
 	/**
-	 * The feature id for the '<em><b>Owned Parts</b></em>' reference list.
+	 * The feature id for the '<em><b>Owned Parts</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

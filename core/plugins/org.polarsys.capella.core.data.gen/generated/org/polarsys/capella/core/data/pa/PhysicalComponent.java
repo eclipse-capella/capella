@@ -15,6 +15,8 @@ import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolve
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.AbstractPhysicalArtifact;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.DeployableElement;
+import org.polarsys.capella.core.data.cs.DeploymentTarget;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 
 /**
@@ -46,7 +48,7 @@ import org.polarsys.capella.core.data.la.LogicalComponent;
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='SysML::Blocks::Block' explanation='cannot map to uml::Component, which is not part of UML4SysML' constraints='none'"
  * @generated
  */
-public interface PhysicalComponent extends AbstractPhysicalArtifact, Component, CapabilityRealizationInvolvedElement {
+public interface PhysicalComponent extends AbstractPhysicalArtifact, Component, CapabilityRealizationInvolvedElement, DeployableElement, DeploymentTarget {
 
 
 

@@ -54,6 +54,8 @@ import org.polarsys.capella.core.data.cs.BlockArchitecturePkg;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentArchitecture;
 import org.polarsys.capella.core.data.cs.ComponentPkg;
+import org.polarsys.capella.core.data.cs.DeployableElement;
+import org.polarsys.capella.core.data.cs.DeploymentTarget;
 import org.polarsys.capella.core.data.cs.InterfaceAllocation;
 import org.polarsys.capella.core.data.cs.InterfaceAllocator;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
@@ -355,6 +357,14 @@ public class PaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseCapabilityRealizationInvolvedElement(CapabilityRealizationInvolvedElement object) {
 				return createCapabilityRealizationInvolvedElementAdapter();
+			}
+			@Override
+			public Adapter caseDeployableElement(DeployableElement object) {
+				return createDeployableElementAdapter();
+			}
+			@Override
+			public Adapter caseDeploymentTarget(DeploymentTarget object) {
+				return createDeploymentTargetAdapter();
 			}
 			@Override
 			public Adapter caseAbstractFunctionalStructure(AbstractFunctionalStructure object) {
@@ -1085,20 +1095,6 @@ public class PaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacore.GeneralizableElement <em>Generalizable Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.capellacore.GeneralizableElement
-	 * @generated
-	 */
-	public Adapter createGeneralizableElementAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacore.Classifier <em>Classifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -1109,6 +1105,20 @@ public class PaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createClassifierAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacore.GeneralizableElement <em>Generalizable Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.capellacore.GeneralizableElement
+	 * @generated
+	 */
+	public Adapter createGeneralizableElementAdapter() {
 		return null;
 	}
 
@@ -1165,6 +1175,34 @@ public class PaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCapabilityRealizationInvolvedElementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.cs.DeployableElement <em>Deployable Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.cs.DeployableElement
+	 * @generated
+	 */
+	public Adapter createDeployableElementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.cs.DeploymentTarget <em>Deployment Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.cs.DeploymentTarget
+	 * @generated
+	 */
+	public Adapter createDeploymentTargetAdapter() {
 		return null;
 	}
 

@@ -11,9 +11,9 @@
 
 package org.polarsys.capella.core.model.helpers.queries.filters;
 
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.common.queries.filters.IQueryFilter;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
+import org.polarsys.capella.core.data.cs.Component;
 
 /**
  */
@@ -21,7 +21,7 @@ public class KeepRealActorsFilter implements IQueryFilter {
 
   @Override
   public boolean keepElement(Object element, IQueryContext context) {
-    if (element instanceof AbstractActor) {
+    if (element instanceof Component && ((Component) element).isActor()) {
       return true;
     }
     return false;

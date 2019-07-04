@@ -400,7 +400,7 @@
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PhysicalComponent" eSuperTypes="CompositeStructure.ecore#//AbstractPhysicalArtifact CompositeStructure.ecore#//Component CapellaCommon.ecore#//CapabilityRealizationInvolvedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="PhysicalComponent" eSuperTypes="CompositeStructure.ecore#//AbstractPhysicalArtifact CompositeStructure.ecore#//Component CapellaCommon.ecore#//CapabilityRealizationInvolvedElement CompositeStructure.ecore#//DeployableElement CompositeStructure.ecore#//DeploymentTarget">
     <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
       <details key="Label" value="PhysicalComponent"/>
     </eAnnotations>
@@ -631,8 +631,8 @@
       <details key="constraints" value="none"/>
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedComponents" upperBound="-1"
-        eType="#//PhysicalComponent" containment="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPhysicalComponents"
+        upperBound="-1" eType="#//PhysicalComponent" containment="true">
       <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
         <details key="featureName" value="packagedElement"/>
         <details key="featureOwner" value="Package"/>

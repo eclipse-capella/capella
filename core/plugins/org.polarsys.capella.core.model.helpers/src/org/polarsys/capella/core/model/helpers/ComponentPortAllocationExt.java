@@ -16,17 +16,15 @@ import java.util.Collection;
 import java.util.Collections;
 
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.fa.ComponentPortAllocation;
 import org.polarsys.capella.core.data.fa.ComponentPortAllocationEnd;
-import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.information.Port;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 
 /**
  *
@@ -180,7 +178,7 @@ public class ComponentPortAllocationExt {
     TraceableElement source = connection.getSourceElement();
     // connection end
     if (source instanceof ComponentPortAllocationEnd) {
-      Partition part = ((ComponentPortAllocationEnd) source).getPart();
+      Part part = ((ComponentPortAllocationEnd) source).getPart();
       if (null != part) {
         AbstractType abstractType = part.getType();
         if ((null != abstractType) && (abstractType instanceof Component)) {
@@ -223,7 +221,7 @@ public class ComponentPortAllocationExt {
     TraceableElement target = connection.getTargetElement();
     // connection end
     if (target instanceof ComponentPortAllocationEnd) {
-      Partition part = ((ComponentPortAllocationEnd) target).getPart();
+      Part part = ((ComponentPortAllocationEnd) target).getPart();
       if (null != part) {
         AbstractType abstractType = part.getType();
         if ((null != abstractType) && (abstractType instanceof Component)) {

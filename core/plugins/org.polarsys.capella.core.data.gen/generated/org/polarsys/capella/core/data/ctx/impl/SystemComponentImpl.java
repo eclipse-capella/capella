@@ -26,7 +26,10 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.polarsys.capella.common.model.helpers.IHelper;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.Classifier;
+import org.polarsys.capella.core.data.capellacore.InvolvedElement;
+import org.polarsys.capella.core.data.capellacore.Involvement;
 import org.polarsys.capella.core.data.cs.impl.ComponentImpl;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.CapabilityInvolvement;
@@ -45,6 +48,7 @@ import org.polarsys.capella.core.data.oa.Entity;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemComponentImpl#getInvolvingInvolvements <em>Involving Involvements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemComponentImpl#isDataComponent <em>Data Component</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemComponentImpl#getDataType <em>Data Type</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemComponentImpl#getInvolvingCapabilities <em>Involving Capabilities</em>}</li>
@@ -136,6 +140,49 @@ public class SystemComponentImpl extends ComponentImpl implements SystemComponen
 
 
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public EList<Involvement> getInvolvingInvolvements() {
+
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS, annotation);
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<Involvement> resultAsList = (Collection<Involvement>) result;
+		return new EcoreEList.UnmodifiableEList<Involvement>(this, CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -467,6 +514,8 @@ public class SystemComponentImpl extends ComponentImpl implements SystemComponen
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case CtxPackage.SYSTEM_COMPONENT__INVOLVING_INVOLVEMENTS:
+				return getInvolvingInvolvements();
 			case CtxPackage.SYSTEM_COMPONENT__DATA_COMPONENT:
 				return isDataComponent();
 			case CtxPackage.SYSTEM_COMPONENT__DATA_TYPE:
@@ -536,6 +585,8 @@ public class SystemComponentImpl extends ComponentImpl implements SystemComponen
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case CtxPackage.SYSTEM_COMPONENT__INVOLVING_INVOLVEMENTS:
+				return !getInvolvingInvolvements().isEmpty();
 			case CtxPackage.SYSTEM_COMPONENT__DATA_COMPONENT:
 				return dataComponent != DATA_COMPONENT_EDEFAULT;
 			case CtxPackage.SYSTEM_COMPONENT__DATA_TYPE:
@@ -556,6 +607,38 @@ public class SystemComponentImpl extends ComponentImpl implements SystemComponen
 		return super.eIsSet(featureID);
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == InvolvedElement.class) {
+			switch (derivedFeatureID) {
+				case CtxPackage.SYSTEM_COMPONENT__INVOLVING_INVOLVEMENTS: return CapellacorePackage.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == InvolvedElement.class) {
+			switch (baseFeatureID) {
+				case CapellacorePackage.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS: return CtxPackage.SYSTEM_COMPONENT__INVOLVING_INVOLVEMENTS;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -35,15 +35,14 @@ import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.cs.AbstractPathInvolvedElement;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentAllocation;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfaceImplementation;
 import org.polarsys.capella.core.data.cs.InterfaceUse;
 import org.polarsys.capella.core.data.cs.PhysicalPathInvolvement;
-import org.polarsys.capella.core.data.ctx.Actor;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.Mission;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
 import org.polarsys.capella.core.data.fa.ExchangeCategory;
@@ -191,13 +190,13 @@ public class NavigationAdvisor {
    */
   List<EObject> handleAbstractFunctionNavigation(AbstractFunction function) {
     List<EObject> allocationBlocks = new ArrayList<>();
-    
+
     if (FunctionExt.isLeaf(function)) {
       allocationBlocks.addAll(function.getAllocationBlocks());
     } else {
       allocationBlocks.addAll(AbstractFunctionExt.getMotherFunctionAllocation(function));
     }
-    
+
     return allocationBlocks;
   }
 
@@ -232,22 +231,6 @@ public class NavigationAdvisor {
   }
 
   /**
-   * Handle {@link Actor} navigation.
-   * 
-   * @param actor
-   * @return a list mapped to {@link Actor#getContributedCapabilities()}, {@link Actor#getContributedMissions()},
-   *         {@link Actor#getSubActors()}, {@link Actor#getSuperActors()}
-   */
-  List<EObject> handleActorNavigation(Actor actor) {
-    ArrayList<EObject> nagivations = new ArrayList<EObject>(1);
-    nagivations.addAll(actor.getContributedCapabilities());
-    nagivations.addAll(actor.getContributedMissions());
-    nagivations.addAll(actor.getSub());
-    nagivations.addAll(actor.getSuper());
-    return nagivations;
-  }
-
-  /**
    * Handle {@link BooleanReference} navigation.
    * 
    * @param reference
@@ -275,7 +258,7 @@ public class NavigationAdvisor {
    */
   List<EObject> handleCapabilityNavigation(Capability capability) {
     ArrayList<EObject> nagivations = new ArrayList<EObject>(1);
-    nagivations.addAll(capability.getParticipatingActors());
+    nagivations.addAll(capability.getInvolvedSystemComponents());
     nagivations.addAll(capability.getPurposeMissions());
     return nagivations;
   }
@@ -319,19 +302,18 @@ public class NavigationAdvisor {
    *         {@link Component#getUsedInterfaces()}, {@link Component#getRequiredInterfaces()} and realized components
    */
   List<EObject> handleComponentNavigation(Component component) {
-    ArrayList<EObject> nagivations = new ArrayList<EObject>(1);
+    ArrayList<EObject> nagivations = new ArrayList<EObject>();
     nagivations.addAll(component.getImplementedInterfaces());
     nagivations.addAll(component.getProvidedInterfaces());
     nagivations.addAll(component.getUsedInterfaces());
     nagivations.addAll(component.getRequiredInterfaces());
-
-    for (AbstractTrace trace : component.getOutgoingTraces()) {
-      if (trace instanceof ComponentAllocation) {
-        if (null != trace.getTargetElement()) {
-          nagivations.add(trace.getTargetElement());
-        }
-      }
+    if (component instanceof SystemComponent) {
+      nagivations.addAll(((SystemComponent) component).getInvolvingCapabilities());
+      nagivations.addAll(((SystemComponent) component).getInvolvingMissions());
     }
+    nagivations.addAll(component.getSub());
+    nagivations.addAll(component.getSuper());
+    nagivations.addAll(component.getRealizedComponents());
     return nagivations;
   }
 
@@ -515,7 +497,7 @@ public class NavigationAdvisor {
    */
   List<EObject> handleMissionNavigation(Mission mission) {
     ArrayList<EObject> nagivations = new ArrayList<EObject>(1);
-    nagivations.addAll(mission.getParticipatingActors());
+    nagivations.addAll(mission.getInvolvedSystemComponents());
     nagivations.addAll(mission.getExploitedCapabilities());
     return nagivations;
   }
@@ -809,12 +791,6 @@ public class NavigationAdvisor {
       __handledNavigations.put(Capability.class, new AbstractModelElementRunnable() {
         public void run() {
           setResult(handleCapabilityNavigation((Capability) getElement()));
-        }
-      });
-      // Actor navigations.
-      __handledNavigations.put(Actor.class, new AbstractModelElementRunnable() {
-        public void run() {
-          setResult(handleActorNavigation((Actor) getElement()));
         }
       });
       // Mission navigations.

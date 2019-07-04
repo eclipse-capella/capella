@@ -26,7 +26,6 @@ import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContex
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.common.re.handlers.location.DefaultLocationHandler;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.model.helpers.move.CapellaMoveHelper;
@@ -41,14 +40,17 @@ public class CapellaLocationHandler extends DefaultLocationHandler {
   final Collection<SpecificPackageLocationAdapter> adapters = new ArrayList<SpecificPackageLocationAdapter>();
 
   @Override
-  protected Supplier<EObject> getSpecificPackage(CatalogElementLink link, CatalogElementLink oppositeLink, IContext context) {
+  protected Supplier<EObject> getSpecificPackage(CatalogElementLink link, CatalogElementLink oppositeLink,
+      IContext context) {
 
     CatalogElement rpl = link.getSource();
-    SpecificPackageLocationAdapter adapter = (SpecificPackageLocationAdapter) EcoreUtil.getExistingAdapter(rpl, SpecificPackageLocationAdapter.class);
+    SpecificPackageLocationAdapter adapter = (SpecificPackageLocationAdapter) EcoreUtil.getExistingAdapter(rpl,
+        SpecificPackageLocationAdapter.class);
 
     if (adapter == null) {
       String scope = (String) context.get(ITransitionConstants.OPTIONS_SCOPE);
-      IPropertyContext propertyContext = ((IPropertyHandler) OptionsHandlerHelper.getInstance(context)).getPropertyContext(context, scope);
+      IPropertyContext propertyContext = ((IPropertyHandler) OptionsHandlerHelper.getInstance(context))
+          .getPropertyContext(context, scope);
       Resource rplResource = EcoreUtil.getRootContainer(rpl).eResource();
       adapter = new SpecificPackageLocationAdapter(propertyContext, rplResource);
       rpl.eAdapters().add(adapter);
@@ -94,10 +96,14 @@ public class CapellaLocationHandler extends DefaultLocationHandler {
   }
 
   @Override
-  protected boolean isInitialSelectionValidContainer(EObject selection_p, CatalogElementLink link_p, IContext context_p) {
+  protected boolean isInitialSelectionValidContainer(EObject selection_p, CatalogElementLink link_p,
+      IContext context_p) {
 
-    if ((link_p.getTarget() instanceof Part) && (((Part) link_p.getTarget()).getAbstractType() instanceof AbstractActor)) {
-      return false;
+    if ((link_p.getTarget() instanceof Part)) {
+      Component type = ((Component) ((Part) link_p.getTarget()).getAbstractType());
+      if (type != null && type.isActor()) {
+        return false;
+      }
     }
     if ((link_p.getTarget() instanceof Component) && (selection_p instanceof Part)) {
       return false;

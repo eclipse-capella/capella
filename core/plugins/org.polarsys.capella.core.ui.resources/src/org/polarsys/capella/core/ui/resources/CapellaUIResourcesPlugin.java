@@ -14,9 +14,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.osgi.framework.BundleContext;
-
 import org.polarsys.capella.common.ui.services.AbstractUIActivator;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentPort;
@@ -31,7 +29,6 @@ import org.polarsys.capella.core.data.information.communication.CommunicationLin
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -129,17 +126,7 @@ public class CapellaUIResourcesPlugin extends AbstractUIActivator {
         eClassName = "PhysicalComponentNode"; //$NON-NLS-1$
       }
     } else if (eobject_p instanceof Part) {
-      AbstractType type = ((Part) eobject_p).getAbstractType();
-      if (type instanceof AbstractActor) {
-        eClassName = "Part_AbstractActor"; //$NON-NLS-1$
-      } else if (type instanceof PhysicalComponent) {
-        if (PhysicalComponentNature.BEHAVIOR.equals(((PhysicalComponent) type).getNature())) {
-          eClassName = "Part_PCBehaviour"; //$NON-NLS-1$
-        }
-        else if (PhysicalComponentNature.NODE.equals(((PhysicalComponent) type).getNature())) {
-          eClassName = "Part_PCNode"; //$NON-NLS-1$
-        }
-      }
+      eClassName = "Part"; //$NON-NLS-1$
     } else if (eobject_p instanceof CommunicationLink) {
       CommunicationLinkKind kind = ((CommunicationLink) eobject_p).getKind();
       if (CommunicationLinkKind.PRODUCE.equals(kind)) {

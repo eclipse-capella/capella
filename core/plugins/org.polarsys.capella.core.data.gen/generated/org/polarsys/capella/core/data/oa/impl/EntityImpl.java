@@ -35,6 +35,7 @@ import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.capellacore.Involvement;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.oa.CommunicationMean;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.Location;
@@ -67,6 +68,7 @@ import org.polarsys.capella.core.data.oa.RoleAllocation;
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.EntityImpl#getAllocatedOperationalActivities <em>Allocated Operational Activities</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.EntityImpl#getAllocatedRoles <em>Allocated Roles</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.EntityImpl#getInvolvingOperationalCapabilities <em>Involving Operational Capabilities</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.oa.impl.EntityImpl#getRealizingSystemComponents <em>Realizing System Components</em>}</li>
  * </ul>
  *
  * @generated
@@ -762,6 +764,49 @@ public class EntityImpl extends AbstractConceptItemImpl implements Entity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+
+	public EList<SystemComponent> getRealizingSystemComponents() {
+
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = OaPackage.Literals.ENTITY__REALIZING_SYSTEM_COMPONENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, OaPackage.Literals.ENTITY__REALIZING_SYSTEM_COMPONENTS, annotation);
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<SystemComponent> resultAsList = (Collection<SystemComponent>) result;
+		return new EcoreEList.UnmodifiableEList<SystemComponent>(this, OaPackage.Literals.ENTITY__REALIZING_SYSTEM_COMPONENTS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -812,6 +857,8 @@ public class EntityImpl extends AbstractConceptItemImpl implements Entity {
 				return getAllocatedRoles();
 			case OaPackage.ENTITY__INVOLVING_OPERATIONAL_CAPABILITIES:
 				return getInvolvingOperationalCapabilities();
+			case OaPackage.ENTITY__REALIZING_SYSTEM_COMPONENTS:
+				return getRealizingSystemComponents();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -914,6 +961,8 @@ public class EntityImpl extends AbstractConceptItemImpl implements Entity {
 				return !getAllocatedRoles().isEmpty();
 			case OaPackage.ENTITY__INVOLVING_OPERATIONAL_CAPABILITIES:
 				return !getInvolvingOperationalCapabilities().isEmpty();
+			case OaPackage.ENTITY__REALIZING_SYSTEM_COMPONENTS:
+				return !getRealizingSystemComponents().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

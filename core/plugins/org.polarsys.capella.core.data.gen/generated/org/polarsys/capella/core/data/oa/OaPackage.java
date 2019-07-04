@@ -5163,7 +5163,7 @@ public interface OaPackage extends EPackage {
 	int ENTITY_PKG__OWNED_COMPONENT_EXCHANGE_REALIZATIONS = CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_REALIZATIONS;
 
 	/**
-	 * The feature id for the '<em><b>Owned Parts</b></em>' reference list.
+	 * The feature id for the '<em><b>Owned Parts</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -5767,22 +5767,22 @@ public interface OaPackage extends EPackage {
 	int ABSTRACT_CONCEPT_ITEM__TRANSMIT = CsPackage.COMPONENT__TRANSMIT;
 
 	/**
-	 * The feature id for the '<em><b>Is Actor</b></em>' attribute.
+	 * The feature id for the '<em><b>Actor</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_CONCEPT_ITEM__IS_ACTOR = CsPackage.COMPONENT__IS_ACTOR;
+	int ABSTRACT_CONCEPT_ITEM__ACTOR = CsPackage.COMPONENT__ACTOR;
 
 	/**
-	 * The feature id for the '<em><b>Is Human</b></em>' attribute.
+	 * The feature id for the '<em><b>Human</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_CONCEPT_ITEM__IS_HUMAN = CsPackage.COMPONENT__IS_HUMAN;
+	int ABSTRACT_CONCEPT_ITEM__HUMAN = CsPackage.COMPONENT__HUMAN;
 
 	/**
 	 * The feature id for the '<em><b>Owned Interface Uses</b></em>' containment reference list.
@@ -5837,24 +5837,6 @@ public interface OaPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_CONCEPT_ITEM__IMPLEMENTED_INTERFACES = CsPackage.COMPONENT__IMPLEMENTED_INTERFACES;
-
-	/**
-	 * The feature id for the '<em><b>Provisioned Component Allocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_CONCEPT_ITEM__PROVISIONED_COMPONENT_ALLOCATIONS = CsPackage.COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Provisioning Component Allocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_CONCEPT_ITEM__PROVISIONING_COMPONENT_ALLOCATIONS = CsPackage.COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Owned Component Realizations</b></em>' containment reference list.
@@ -6533,22 +6515,22 @@ public interface OaPackage extends EPackage {
 	int ENTITY__TRANSMIT = ABSTRACT_CONCEPT_ITEM__TRANSMIT;
 
 	/**
-	 * The feature id for the '<em><b>Is Actor</b></em>' attribute.
+	 * The feature id for the '<em><b>Actor</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY__IS_ACTOR = ABSTRACT_CONCEPT_ITEM__IS_ACTOR;
+	int ENTITY__ACTOR = ABSTRACT_CONCEPT_ITEM__ACTOR;
 
 	/**
-	 * The feature id for the '<em><b>Is Human</b></em>' attribute.
+	 * The feature id for the '<em><b>Human</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY__IS_HUMAN = ABSTRACT_CONCEPT_ITEM__IS_HUMAN;
+	int ENTITY__HUMAN = ABSTRACT_CONCEPT_ITEM__HUMAN;
 
 	/**
 	 * The feature id for the '<em><b>Owned Interface Uses</b></em>' containment reference list.
@@ -6603,24 +6585,6 @@ public interface OaPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENTITY__IMPLEMENTED_INTERFACES = ABSTRACT_CONCEPT_ITEM__IMPLEMENTED_INTERFACES;
-
-	/**
-	 * The feature id for the '<em><b>Provisioned Component Allocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY__PROVISIONED_COMPONENT_ALLOCATIONS = ABSTRACT_CONCEPT_ITEM__PROVISIONED_COMPONENT_ALLOCATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Provisioning Component Allocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY__PROVISIONING_COMPONENT_ALLOCATIONS = ABSTRACT_CONCEPT_ITEM__PROVISIONING_COMPONENT_ALLOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Owned Component Realizations</b></em>' containment reference list.
@@ -6866,13 +6830,22 @@ public interface OaPackage extends EPackage {
 	int ENTITY__INVOLVING_OPERATIONAL_CAPABILITIES = ABSTRACT_CONCEPT_ITEM_FEATURE_COUNT + 13;
 
 	/**
+	 * The feature id for the '<em><b>Realizing System Components</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY__REALIZING_SYSTEM_COMPONENTS = ABSTRACT_CONCEPT_ITEM_FEATURE_COUNT + 14;
+
+	/**
 	 * The number of structural features of the '<em>Entity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_FEATURE_COUNT = ABSTRACT_CONCEPT_ITEM_FEATURE_COUNT + 14;
+	int ENTITY_FEATURE_COUNT = ABSTRACT_CONCEPT_ITEM_FEATURE_COUNT + 15;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.oa.impl.ConceptPkgImpl <em>Concept Pkg</em>}' class.
@@ -9269,22 +9242,22 @@ public interface OaPackage extends EPackage {
 	int LOCATION__TRANSMIT = ABSTRACT_CONCEPT_ITEM__TRANSMIT;
 
 	/**
-	 * The feature id for the '<em><b>Is Actor</b></em>' attribute.
+	 * The feature id for the '<em><b>Actor</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LOCATION__IS_ACTOR = ABSTRACT_CONCEPT_ITEM__IS_ACTOR;
+	int LOCATION__ACTOR = ABSTRACT_CONCEPT_ITEM__ACTOR;
 
 	/**
-	 * The feature id for the '<em><b>Is Human</b></em>' attribute.
+	 * The feature id for the '<em><b>Human</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LOCATION__IS_HUMAN = ABSTRACT_CONCEPT_ITEM__IS_HUMAN;
+	int LOCATION__HUMAN = ABSTRACT_CONCEPT_ITEM__HUMAN;
 
 	/**
 	 * The feature id for the '<em><b>Owned Interface Uses</b></em>' containment reference list.
@@ -9339,24 +9312,6 @@ public interface OaPackage extends EPackage {
 	 * @ordered
 	 */
 	int LOCATION__IMPLEMENTED_INTERFACES = ABSTRACT_CONCEPT_ITEM__IMPLEMENTED_INTERFACES;
-
-	/**
-	 * The feature id for the '<em><b>Provisioned Component Allocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOCATION__PROVISIONED_COMPONENT_ALLOCATIONS = ABSTRACT_CONCEPT_ITEM__PROVISIONED_COMPONENT_ALLOCATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Provisioning Component Allocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOCATION__PROVISIONING_COMPONENT_ALLOCATIONS = ABSTRACT_CONCEPT_ITEM__PROVISIONING_COMPONENT_ALLOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Owned Component Realizations</b></em>' containment reference list.
@@ -10053,22 +10008,22 @@ public interface OaPackage extends EPackage {
 	int CAPABILITY_CONFIGURATION__TRANSMIT = ABSTRACT_CONCEPT_ITEM__TRANSMIT;
 
 	/**
-	 * The feature id for the '<em><b>Is Actor</b></em>' attribute.
+	 * The feature id for the '<em><b>Actor</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_CONFIGURATION__IS_ACTOR = ABSTRACT_CONCEPT_ITEM__IS_ACTOR;
+	int CAPABILITY_CONFIGURATION__ACTOR = ABSTRACT_CONCEPT_ITEM__ACTOR;
 
 	/**
-	 * The feature id for the '<em><b>Is Human</b></em>' attribute.
+	 * The feature id for the '<em><b>Human</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_CONFIGURATION__IS_HUMAN = ABSTRACT_CONCEPT_ITEM__IS_HUMAN;
+	int CAPABILITY_CONFIGURATION__HUMAN = ABSTRACT_CONCEPT_ITEM__HUMAN;
 
 	/**
 	 * The feature id for the '<em><b>Owned Interface Uses</b></em>' containment reference list.
@@ -10123,24 +10078,6 @@ public interface OaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPABILITY_CONFIGURATION__IMPLEMENTED_INTERFACES = ABSTRACT_CONCEPT_ITEM__IMPLEMENTED_INTERFACES;
-
-	/**
-	 * The feature id for the '<em><b>Provisioned Component Allocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CAPABILITY_CONFIGURATION__PROVISIONED_COMPONENT_ALLOCATIONS = ABSTRACT_CONCEPT_ITEM__PROVISIONED_COMPONENT_ALLOCATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Provisioning Component Allocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CAPABILITY_CONFIGURATION__PROVISIONING_COMPONENT_ALLOCATIONS = ABSTRACT_CONCEPT_ITEM__PROVISIONING_COMPONENT_ALLOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Owned Component Realizations</b></em>' containment reference list.
@@ -11795,6 +11732,17 @@ public interface OaPackage extends EPackage {
 	EReference getEntity_InvolvingOperationalCapabilities();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.polarsys.capella.core.data.oa.Entity#getRealizingSystemComponents <em>Realizing System Components</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Realizing System Components</em>'.
+	 * @see org.polarsys.capella.core.data.oa.Entity#getRealizingSystemComponents()
+	 * @see #getEntity()
+	 * @generated
+	 */
+	EReference getEntity_RealizingSystemComponents();
+
+	/**
 	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.oa.ConceptPkg <em>Concept Pkg</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -12804,6 +12752,14 @@ public interface OaPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ENTITY__INVOLVING_OPERATIONAL_CAPABILITIES = eINSTANCE.getEntity_InvolvingOperationalCapabilities();
+
+		/**
+		 * The meta object literal for the '<em><b>Realizing System Components</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENTITY__REALIZING_SYSTEM_COMPONENTS = eINSTANCE.getEntity_RealizingSystemComponents();
 
 		/**
 		 * The meta object literal for the '{@link org.polarsys.capella.core.data.oa.impl.ConceptPkgImpl <em>Concept Pkg</em>}' class.

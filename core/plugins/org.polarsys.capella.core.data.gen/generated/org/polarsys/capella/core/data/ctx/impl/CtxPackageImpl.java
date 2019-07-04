@@ -1040,6 +1040,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 		operationalAnalysisRealizationEClass.getESuperTypes().add(theCsPackage.getArchitectureAllocation());
 		systemComponentPkgEClass.getESuperTypes().add(theCsPackage.getComponentPkg());
 		systemComponentEClass.getESuperTypes().add(theCsPackage.getComponent());
+		systemComponentEClass.getESuperTypes().add(theCapellacorePackage.getInvolvedElement());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(systemAnalysisEClass, SystemAnalysis.class, "SystemAnalysis", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$

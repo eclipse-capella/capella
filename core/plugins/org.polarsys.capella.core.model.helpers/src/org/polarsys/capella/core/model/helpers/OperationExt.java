@@ -119,9 +119,6 @@ public class OperationExt {
       if (null != arch) {
         if (arch instanceof LogicalArchitecture) {
           list.add(((LogicalArchitecture) arch).getOwnedDataPkg());
-          for (LogicalArchitecture logArch : LogicalArchitectureExt.getAllLogicalArchitectures((LogicalArchitecture) arch)) {
-            list.add(logArch.getOwnedDataPkg());
-          }
         } else if (arch instanceof PhysicalArchitecture) {
           list.add(((PhysicalArchitecture) arch).getOwnedDataPkg());
         } else if (arch instanceof EPBSArchitecture) {
@@ -172,20 +169,12 @@ public class OperationExt {
         BlockArchitecture arch = InterfacePkgExt.getRootBlockArchitecture(interfacePkg);
         if (null != arch) {
           if (arch instanceof LogicalArchitecture) {
-            list.addAll(LogicalArchitectureExt.getAllInterfacesInLogicalArchitecture((LogicalArchitecture) arch));
+            list.addAll(BlockArchitectureExt.getAllInterfaces((LogicalArchitecture) arch));
           } else if (arch instanceof PhysicalArchitecture) {
             list.addAll(PhysicalArchitectureExt.getAllInterfaces(arch, null, false));
          // FIXME : update to SystemAnalysis
           } else if (arch instanceof SystemAnalysis) {
             list.addAll(InterfacePkgExt.getAllInterfaces(((SystemAnalysis) arch).getOwnedInterfacePkg()));
-          }
-        }
-        // TODO Do the same for SharedAssetsPkg
-        // ComponentArchitecture is null; Get the SharedPkg
-        SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(operation);
-        if (null != sysEng) {
-          for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(operation)) {
-        	  list.addAll(GenericPkgExt.getAllInterfaces(sharedPkg.getOwnedGenericPkg()));
           }
         }
       }

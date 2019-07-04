@@ -15,19 +15,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation;
 import org.polarsys.capella.core.data.fa.FunctionRealization;
 import org.polarsys.capella.core.data.helpers.fa.delegates.AbstractFunctionHelper;
 import org.polarsys.capella.core.data.la.LaPackage;
-import org.polarsys.capella.core.data.la.LogicalActor;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalFunction;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 
 public class LogicalFunctionHelper {
   private static LogicalFunctionHelper instance;
@@ -46,10 +44,8 @@ public class LogicalFunctionHelper {
   public Object doSwitch(LogicalFunction element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature.equals(LaPackage.Literals.LOGICAL_FUNCTION__ALLOCATOR_LOGICAL_ACTORS)) {
-      ret = getAllocatorLogicalActors(element);
-    } else if (feature.equals(LaPackage.Literals.LOGICAL_FUNCTION__ALLOCATOR_LOGICAL_COMPONENTS)) {
-      ret = getAllocatorLogicalComponents(element);
+    if (feature.equals(LaPackage.Literals.LOGICAL_FUNCTION__ALLOCATING_LOGICAL_COMPONENTS)) {
+      ret = getAllocatingLogicalComponents(element);
     } else if (feature.equals(LaPackage.Literals.LOGICAL_FUNCTION__REALIZED_SYSTEM_FUNCTIONS)) {
       ret = getRealizedSystemFunctions(element);
     } else if (feature.equals(LaPackage.Literals.LOGICAL_FUNCTION__REALIZING_PHYSICAL_FUNCTIONS)) {
@@ -68,20 +64,7 @@ public class LogicalFunctionHelper {
     return ret;
   }
 
-  protected List<LogicalActor> getAllocatorLogicalActors(LogicalFunction element) {
-    List<LogicalActor> ret = new ArrayList<>();
-    for (AbstractTrace trace : element.getIncomingTraces()) {
-      if (trace instanceof ComponentFunctionalAllocation) {
-        TraceableElement src = trace.getSourceElement();
-        if (src instanceof LogicalActor) {
-          ret.add((LogicalActor) src);
-        }
-      }
-    }
-    return ret;
-  }
-
-  protected List<LogicalComponent> getAllocatorLogicalComponents(LogicalFunction element) {
+  protected List<LogicalComponent> getAllocatingLogicalComponents(LogicalFunction element) {
     List<LogicalComponent> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ComponentFunctionalAllocation) {

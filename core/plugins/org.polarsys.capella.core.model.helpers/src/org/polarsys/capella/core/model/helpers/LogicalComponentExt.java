@@ -16,27 +16,21 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Interface;
-import org.polarsys.capella.core.data.ctx.System;
-import org.polarsys.capella.core.data.ctx.SystemAnalysis;
-import org.polarsys.capella.core.data.information.Partition;
+import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
-import org.polarsys.capella.core.data.la.LogicalArchitecturePkg;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalComponentPkg;
-import org.polarsys.capella.core.data.capellacore.Classifier;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
 
 /**
  * LogicalComponent helpers
@@ -59,7 +53,7 @@ public class LogicalComponentExt {
         list.addAll(LogicalComponentPkgExt.getAllInterfacesInLogicalComponentPkg(lcPkg));
       }
       for (LogicalArchitecture logArch : logicalComponent1.getOwnedLogicalArchitectures()) {
-        list.addAll(LogicalArchitectureExt.getAllInterfacesInLogicalArchitecture(logArch));
+        list.addAll(BlockArchitectureExt.getAllInterfaces(logArch));
       }
     }
     return list;
@@ -103,11 +97,6 @@ public class LogicalComponentExt {
       LogicalComponent parentLC = (LogicalComponent) parentComponent;
       list.addAll(CapellaElementExt.getAllCapabilityRealizationsFromAbstractCapabilityPkg(parentLC.getOwnedAbstractCapabilityPkg()));
       list.addAll(getCapabilityRealizationUseCaseFromLCParentHierarchy(parentLC));
-    } else if (parentComponent instanceof System) {
-      SystemAnalysis ca = (SystemAnalysis) ((System) parentComponent).eContainer();
-      if ((null != ca) && !ca.equals(arch)) {
-        list.addAll(CapellaElementExt.getAllCapabilityRealizationsFromAbstractCapabilityPkg(ca.getOwnedAbstractCapabilityPkg()));
-      }
     }
     return list;
   }
@@ -117,8 +106,8 @@ public class LogicalComponentExt {
    */
   public static List<LogicalComponent> getDecompositionLogicalComponentInvolved(LogicalComponent lc) {
     List<LogicalComponent> decompLcInvolved = new ArrayList<LogicalComponent>();
-    for (Partition partition : lc.getOwnedPartitions()) {
-      AbstractType currentLc = partition.getAbstractType();
+    for (Part part : lc.getContainedParts()) {
+      AbstractType currentLc = part.getAbstractType();
       if ((currentLc instanceof LogicalComponent) && !decompLcInvolved.contains(currentLc)) {
         decompLcInvolved.add((LogicalComponent) currentLc);
       }
@@ -150,7 +139,7 @@ public class LogicalComponentExt {
     // The result list.
     List<PhysicalComponent> implementorsList = new ArrayList<PhysicalComponent>();
 
-    EList<?> eImplementors = component.getAllocatingComponents();
+    EList<?> eImplementors = component.getRealizingComponents();
     for (Object object : eImplementors) {
       PhysicalComponent implementorPC = (PhysicalComponent) object;
       if (null != implementorPC) {
@@ -181,11 +170,6 @@ public class LogicalComponentExt {
       LogicalComponent parentLC = (LogicalComponent) parentComponent;
       list.addAll(InterfacePkgExt.getAllInterfaces(parentLC.getOwnedInterfacePkg()));
       list.addAll(getInterfacesFromLCParentHierarchy(parentLC));
-    } else if (parentComponent instanceof System) {
-      SystemAnalysis ca = (SystemAnalysis) ((System) parentComponent).eContainer();
-      if ((null != ca) && !ca.equals(arch)) {
-        list.addAll(InterfacePkgExt.getAllInterfaces(ca.getOwnedInterfacePkg()));
-      }
     }
 
     return list;
@@ -221,7 +205,7 @@ public class LogicalComponentExt {
         list.addAll(getInterfacesFromLogicalComponent(lc, currentLC, usedFlag));
       }
       for (LogicalArchitecture logArch : logicalComponent.getOwnedLogicalArchitectures()) {
-        list.addAll(LogicalArchitectureExt.getAllInterfacesInLogicalArchitecture(logArch, currentLC, usedFlag));
+        list.addAll(BlockArchitectureExt.getAllInterfaces(logArch));
       }
     }
     return list;
@@ -294,7 +278,7 @@ public class LogicalComponentExt {
       // Case : Scenario contained by LogicalArchitecture (not under a Logical Component)
       // Retrieve the Root Logical Component (from System)
       LogicalArchitecture la = (LogicalArchitecture) EcoreUtil2.getFirstContainer(scenario, LaPackage.Literals.LOGICAL_ARCHITECTURE);
-      containerLc = SystemEngineeringExt.getRootLogicalComponent(la);
+      containerLc = (LogicalComponent) la.getSystem();
     }
 
     return containerLc;
@@ -302,8 +286,8 @@ public class LogicalComponentExt {
 
   private static LogicalComponent getParentComponent(LogicalComponent component) {
     LogicalComponent parentComponent = null;
-    for (Partition partition : component.getRepresentingPartitions()) {
-      Classifier ownerClassifier = (Classifier) partition.eContainer();
+    for (Part part : component.getRepresentingParts()) {
+      EObject ownerClassifier = part.eContainer();
       if (ownerClassifier instanceof LogicalComponent) {
         parentComponent = (LogicalComponent) ownerClassifier;
       }
@@ -340,48 +324,10 @@ public class LogicalComponentExt {
    * @param component
    * @return
    */
-  private static Component getRecursiveParentContainer(LogicalArchitecture component) {
-    Component cpnt = null;
-    EObject container = component.eContainer();
-
-    if (container instanceof SystemEngineering) {
-      cpnt = SystemEngineeringExt.getSystem((SystemEngineering) container);
-    } else if (container instanceof LogicalComponent) {
-      // added here if LogicalComponent is decomposed into LCDcmps, which is a LogicalArchitecture
-      cpnt = (LogicalComponent) container;
-    } else if (container instanceof LogicalArchitecturePkg) {
-      cpnt = getRecursiveParentContainer((LogicalArchitecturePkg) container);
-    }
-
-    return cpnt;
-  }
-
-  /**
-   * @param component
-   * @return
-   */
-  private static Component getRecursiveParentContainer(LogicalArchitecturePkg component) {
-    Component cpnt = null;
-    EObject container = component.eContainer();
-
-    if (container instanceof SystemEngineering) {
-      cpnt = SystemEngineeringExt.getSystem((SystemEngineering) container);
-    }
-
-    return cpnt;
-  }
-
-  /**
-   * @param component
-   * @return
-   */
   private static Component getRecursiveParentContainer(LogicalComponent component) {
     Component cpnt = null;
     EObject container = component.eContainer();
-
-    if (container instanceof LogicalArchitecture) {
-      cpnt = getRecursiveParentContainer((LogicalArchitecture) container);
-    } else if (container instanceof LogicalComponentPkg) {
+    if (container instanceof LogicalComponentPkg) {
       cpnt = getRecursiveParentContainer((LogicalComponentPkg) container);
     } else if (container instanceof LogicalComponent) {
       cpnt = (LogicalComponent) container;
@@ -397,15 +343,11 @@ public class LogicalComponentExt {
   private static Component getRecursiveParentContainer(LogicalComponentPkg componentPkg) {
     Component cpnt = null;
     EObject container = componentPkg.eContainer();
-
-    if (container instanceof LogicalArchitecture) {
-      cpnt = getRecursiveParentContainer((LogicalArchitecture) container);
-    } else if (container instanceof LogicalComponentPkg) {
+    if (container instanceof LogicalComponentPkg) {
       cpnt = getRecursiveParentContainer((LogicalComponentPkg) container);
     } else if (container instanceof LogicalComponent) {
       cpnt = (LogicalComponent) container;
     }
-
     return cpnt;
   }
 

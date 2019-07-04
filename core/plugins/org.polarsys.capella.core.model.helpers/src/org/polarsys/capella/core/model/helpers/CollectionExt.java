@@ -69,10 +69,7 @@ public class CollectionExt {
           if (arch instanceof LogicalArchitecture) {
             list.addAll(DataPkgExt.getAllTypesFromDataPkg(((LogicalArchitecture) arch).getOwnedDataPkg()));
             // Add all the interfaces
-            list.addAll(LogicalArchitectureExt.getAllInterfacesInLogicalArchitecture((LogicalArchitecture) arch));
-            for (LogicalArchitecture logArch : LogicalArchitectureExt.getAllLogicalArchitectures((LogicalArchitecture) arch)) {
-              list.addAll(DataPkgExt.getAllTypesFromDataPkg(logArch.getOwnedDataPkg()));
-            }
+            list.addAll(BlockArchitectureExt.getAllInterfaces((LogicalArchitecture) arch));
           } else if (arch instanceof PhysicalArchitecture) {
             list.addAll(DataPkgExt.getAllTypesFromDataPkg(((PhysicalArchitecture) arch).getOwnedDataPkg()));
             list.addAll(PhysicalArchitectureExt.getAllInterfaces(arch, null, false));

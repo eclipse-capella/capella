@@ -41,6 +41,10 @@ public class PredefinedTypesHelper {
   // Visibility for all predefined types
   private static final VisibilityKind __PREDEFINED_TYPE_VISIBILITY = VisibilityKind.PUBLIC;
 
+  protected static final String __ZERO_VALUE = "0"; //$NON-NLS-1$
+  protected static final String __ONE_VALUE = "1"; //$NON-NLS-1$
+  protected static final String __8BITS_MAX_VALUE = "255"; //$NON-NLS-1$
+
   /**
    * Fills the DataPkg with basic instances of subclasses of DataType
    */
@@ -50,30 +54,30 @@ public class PredefinedTypesHelper {
     dtRootPkg_p.getOwnedDataPkgs().add(dtRootPkg);
 
     NumericType unsignedShort = newNumericType(NamingConstants.PredefinedTypesCmd_unsignedShort_name, true, NumericTypeKind.INTEGER,
-      true, newLiteralNumericValue(__MIN_NAME, PredefinedTypesNewHelper.__ZERO_VALUE), false, null);
+      true, newLiteralNumericValue(__MIN_NAME, __ZERO_VALUE), false, null);
 
     // Predefined data types
     List<DataType> predefinedDataTypes = dtRootPkg.getOwnedDataTypes();
     predefinedDataTypes.add(newPredefinedBoolean());
     predefinedDataTypes.add(newNumericType(NamingConstants.PredefinedTypesCmd_byte_name, true, NumericTypeKind.INTEGER,
-      true, newLiteralNumericValue(__MIN_NAME, PredefinedTypesNewHelper.__ZERO_VALUE), true, newLiteralNumericValue(__MAX_NAME, PredefinedTypesNewHelper.__8BITS_MAX_VALUE)));
+      true, newLiteralNumericValue(__MIN_NAME, __ZERO_VALUE), true, newLiteralNumericValue(__MAX_NAME, __8BITS_MAX_VALUE)));
     predefinedDataTypes.add(newPredefinedChar(unsignedShort));
     predefinedDataTypes.add(newNumericType(NamingConstants.PredefinedTypesCmd_double_name, false, NumericTypeKind.FLOAT));
     predefinedDataTypes.add(newNumericType(NamingConstants.PredefinedTypesCmd_float_name, false, NumericTypeKind.FLOAT));
     predefinedDataTypes.add(newNumericType(NamingConstants.PredefinedTypesCmd_hexadecimal_name, true, NumericTypeKind.INTEGER,
-      true, newLiteralNumericValue(__MIN_NAME, PredefinedTypesNewHelper.__ZERO_VALUE), true, newHexadecimalMaxValue()));
+      true, newLiteralNumericValue(__MIN_NAME, __ZERO_VALUE), true, newHexadecimalMaxValue()));
     predefinedDataTypes.add(newNumericType(NamingConstants.PredefinedTypesCmd_integer_name, true, NumericTypeKind.INTEGER));
     predefinedDataTypes.add(newNumericType(NamingConstants.PredefinedTypesCmd_long_name, true, NumericTypeKind.INTEGER));
     predefinedDataTypes.add(newNumericType(NamingConstants.PredefinedTypesCmd_longLong_name, true, NumericTypeKind.INTEGER));
     predefinedDataTypes.add(newNumericType(NamingConstants.PredefinedTypesCmd_short_name, true, NumericTypeKind.INTEGER));
     predefinedDataTypes.add(newPredefinedString(NamingConstants.PredefinedTypesCmd_string_name));
     predefinedDataTypes.add(newNumericType(NamingConstants.PredefinedTypesCmd_unsignedInteger_name, true, NumericTypeKind.INTEGER,
-      true, newLiteralNumericValue(__MIN_NAME, PredefinedTypesNewHelper.__ZERO_VALUE), false, null));
+      true, newLiteralNumericValue(__MIN_NAME, __ZERO_VALUE), false, null));
     predefinedDataTypes.add(unsignedShort);
     predefinedDataTypes.add(newNumericType(NamingConstants.PredefinedTypesCmd_unsignedLong_name, true, NumericTypeKind.INTEGER,
-      true, newLiteralNumericValue(__MIN_NAME, PredefinedTypesNewHelper.__ZERO_VALUE), false, null));
+      true, newLiteralNumericValue(__MIN_NAME, __ZERO_VALUE), false, null));
     predefinedDataTypes.add(newNumericType(NamingConstants.PredefinedTypesCmd_unsignedLongLong_name, true, NumericTypeKind.INTEGER,
-      true, newLiteralNumericValue(__MIN_NAME, PredefinedTypesNewHelper.__ZERO_VALUE), false, null));
+      true, newLiteralNumericValue(__MIN_NAME, __ZERO_VALUE), false, null));
   }
 
   private static BooleanType newPredefinedBoolean() {
@@ -133,8 +137,8 @@ public class PredefinedTypesHelper {
    */
   private static StringType newPredefinedChar(NumericType cardType_p) {
     StringType result = newPredefinedString(NamingConstants.PredefinedTypesCmd_char_name);
-    result.setOwnedMinLength(newLiteralNumericValue(__MIN_LENGTH_NAME, PredefinedTypesNewHelper.__ONE_VALUE, cardType_p));
-    result.setOwnedMaxLength(newLiteralNumericValue(__MAX_LENGTH_NAME, PredefinedTypesNewHelper.__ONE_VALUE, cardType_p));
+    result.setOwnedMinLength(newLiteralNumericValue(__MIN_LENGTH_NAME, __ONE_VALUE, cardType_p));
+    result.setOwnedMaxLength(newLiteralNumericValue(__MAX_LENGTH_NAME, __ONE_VALUE, cardType_p));
     return result;
   }
 

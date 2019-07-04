@@ -51,20 +51,12 @@
             id="org.polarsys.capella.core.data.menu.contributions.ctx.CapabilityItemContribution">
       </MDEMenuItemContribution>
       <MDEMenuItemContribution
-            class="org.polarsys.capella.core.data.menu.contributions.ctx.ActorItemContribution"
-            id="org.polarsys.capella.core.data.menu.contributions.ctx.ActorItemContribution">
-      </MDEMenuItemContribution>
-      <MDEMenuItemContribution
             class="org.polarsys.capella.core.data.menu.contributions.ctx.MissionItemContribution"
             id="org.polarsys.capella.core.data.menu.contributions.ctx.MissionItemContribution">
       </MDEMenuItemContribution>
       <MDEMenuItemContribution
             class="org.polarsys.capella.core.data.menu.contributions.ctx.SystemAnalysisItemContribution"
             id="org.polarsys.capella.core.data.menu.contributions.ctx.SystemAnalysisItemContribution">
-      </MDEMenuItemContribution>
-      <MDEMenuItemContribution
-            class="org.polarsys.capella.core.data.menu.contributions.ctx.ActorPkgItemContribution"
-            id="org.polarsys.capella.core.data.menu.contributions.ctx.ActorPkgItemContribution">
       </MDEMenuItemContribution>
       <MDEMenuItemContribution
             class="org.polarsys.capella.core.data.menu.contributions.ctx.CapabilityPkgItemContribution"
@@ -305,16 +297,8 @@
             id="org.polarsys.capella.core.data.menu.contributions.la.LogicalComponentPkgItemContribution">
       </MDEMenuItemContribution>
       <MDEMenuItemContribution
-            class="org.polarsys.capella.core.data.menu.contributions.la.LogicalActorItemContribution"
-            id="org.polarsys.capella.core.data.menu.contributions.la.LogicalActorItemContribution">
-      </MDEMenuItemContribution>
-      <MDEMenuItemContribution
             class="org.polarsys.capella.core.data.menu.contributions.la.LogicalArchitectureItemContribution"
             id="org.polarsys.capella.core.data.menu.contributions.la.LogicalArchitectureItemContribution">
-      </MDEMenuItemContribution>
-      <MDEMenuItemContribution
-            class="org.polarsys.capella.core.data.menu.contributions.la.LogicalActorPkgItemContribution"
-            id="org.polarsys.capella.core.data.menu.contributions.la.LogicalActorPkgItemContribution">
       </MDEMenuItemContribution>
       <MDEMenuItemContribution
             class="org.polarsys.capella.core.data.menu.contributions.la.LogicalArchitecturePkgItemContribution"
@@ -441,10 +425,6 @@
             id="org.polarsys.capella.core.data.menu.contributions.oa.EntityItemContribution">
       </MDEMenuItemContribution>
       <MDEMenuItemContribution
-            class="org.polarsys.capella.core.data.menu.contributions.oa.OperationalActorItemContribution"
-            id="org.polarsys.capella.core.data.menu.contributions.oa.OperationalActorItemContribution">
-      </MDEMenuItemContribution>
-      <MDEMenuItemContribution
             class="org.polarsys.capella.core.data.menu.contributions.oa.OperationalAnalysisItemContribution"
             id="org.polarsys.capella.core.data.menu.contributions.oa.OperationalAnalysisItemContribution">
       </MDEMenuItemContribution>
@@ -499,14 +479,6 @@
    </extension>
    <extension name="pa" point="org.polarsys.capella.common.menu.dynamic.MDEMenuItemContribution">
       <MDEMenuItemContribution
-            class="org.polarsys.capella.core.data.menu.contributions.pa.AbstractPhysicalComponentItemContribution"
-            id="org.polarsys.capella.core.data.menu.contributions.pa.AbstractPhysicalComponentItemContribution">
-      </MDEMenuItemContribution>
-      <MDEMenuItemContribution
-            class="org.polarsys.capella.core.data.menu.contributions.pa.PhysicalActorItemContribution"
-            id="org.polarsys.capella.core.data.menu.contributions.pa.PhysicalActorItemContribution">
-      </MDEMenuItemContribution>
-      <MDEMenuItemContribution
             class="org.polarsys.capella.core.data.menu.contributions.pa.PhysicalArchitectureItemContribution"
             id="org.polarsys.capella.core.data.menu.contributions.pa.PhysicalArchitectureItemContribution">
       </MDEMenuItemContribution>
@@ -525,10 +497,6 @@
       <MDEMenuItemContribution
             class="org.polarsys.capella.core.data.menu.contributions.pa.PhysicalArchitecturePkgItemContribution"
             id="org.polarsys.capella.core.data.menu.contributions.pa.PhysicalArchitecturePkgItemContribution">
-      </MDEMenuItemContribution>
-      <MDEMenuItemContribution
-            class="org.polarsys.capella.core.data.menu.contributions.pa.PhysicalActorPkgItemContribution"
-            id="org.polarsys.capella.core.data.menu.contributions.pa.PhysicalActorPkgItemContribution">
       </MDEMenuItemContribution>
       <MDEMenuItemContribution
             class="org.polarsys.capella.core.data.menu.contributions.pa.PhysicalFunctionItemContribution"

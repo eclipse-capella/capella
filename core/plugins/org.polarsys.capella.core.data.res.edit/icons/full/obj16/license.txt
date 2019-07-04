@@ -59,7 +59,7 @@ These followings icons are made available under the terms of the Eclipse Public 
 /icons/full/obj16/EnumerationPropertyValue.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/EnumerationPropertyValue.gif
 /icons/full/obj16/CommunicationLinkAccess.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/CommunicationLinkAccess.gif
 /icons/full/obj16/ExchangeItemData.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/ExchangeItemData.gif
-/icons/full/obj16/ActorPkg.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/fldr_obj.gif
+/icons/full/obj16/SystemComponentPkg.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/fldr_obj.gif
 /icons/full/obj16/CapabilityConfiguration.gif - org.eclipse.emf.edit - org.eclipse.emf.edit/icons/full/obj16/Item.gif
 /icons/full/obj16/SystemEngineeringInLibrary.gif - org.polarsys.capella.core.data.res.edit/icons/full/obj16/SystemEngineeringInLibrary.gif
 /icons/full/obj16/OperationalProcess.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/OperationalProcess.gif
@@ -139,7 +139,7 @@ These followings icons are made available under the terms of the Eclipse Public 
 /icons/full/obj16/StandardPort.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/StandardPort.gif
 /icons/full/obj16/ActorCapabilityInvolvement.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/ActorCapabilityInvolvement.gif
 /icons/full/obj16/OperationalEntityRealization.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/OperationalEntityRealization.gif
-/icons/full/obj16/System.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/System.gif
+/icons/full/obj16/SystemComponent.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/SystemComponent.gif
 /icons/full/obj16/DeploymentConfiguration.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/DeploymentConfiguration.gif
 /icons/full/obj16/ComponentInstance.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/ComponentInstance.gif
 /icons/full/obj16/EPBSArchitecture.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/elcl16/pack_empty_co.gif

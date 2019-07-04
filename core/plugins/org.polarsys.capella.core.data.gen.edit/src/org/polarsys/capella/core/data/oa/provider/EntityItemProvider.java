@@ -118,6 +118,7 @@ public class EntityItemProvider
 			addAllocatedOperationalActivitiesPropertyDescriptor(object);
 			addAllocatedRolesPropertyDescriptor(object);
 			addInvolvingOperationalCapabilitiesPropertyDescriptor(object);
+			addRealizingSystemComponentsPropertyDescriptor(object);
 		}
 		// begin-extension-code
 		checkChildCreationExtender(object);
@@ -411,6 +412,33 @@ public class EntityItemProvider
 				 getString("_UI_Entity_involvingOperationalCapabilities_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Entity_involvingOperationalCapabilities_feature", "_UI_Entity_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 OaPackage.Literals.ENTITY__INVOLVING_OPERATIONAL_CAPABILITIES,
+				 false,
+				 false,
+				 false,
+				 null,
+				 null,
+		// begin-extension-code
+				 null));
+		// end-extension-code
+	}
+
+	/**
+	 * This adds a property descriptor for the Realizing System Components feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRealizingSystemComponentsPropertyDescriptor(Object object) {
+
+		// begin-extension-code
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Entity_realizingSystemComponents_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Entity_realizingSystemComponents_feature", "_UI_Entity_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 OaPackage.Literals.ENTITY__REALIZING_SYSTEM_COMPONENTS,
 				 false,
 				 false,
 				 false,

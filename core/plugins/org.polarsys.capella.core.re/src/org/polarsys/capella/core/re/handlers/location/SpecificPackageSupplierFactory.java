@@ -33,7 +33,6 @@ import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyType;
 import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
 import org.polarsys.capella.core.data.capellacore.PropertyValuePkg;
-import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.capellacore.util.CapellacoreSwitch;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
@@ -41,14 +40,14 @@ import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
 import org.polarsys.capella.core.data.cs.util.CsSwitch;
-import org.polarsys.capella.core.data.ctx.Actor;
-import org.polarsys.capella.core.data.ctx.ActorPkg;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.CapabilityPkg;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.Mission;
 import org.polarsys.capella.core.data.ctx.MissionPkg;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
+import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.ctx.SystemFunctionPkg;
 import org.polarsys.capella.core.data.ctx.util.CtxSwitch;
@@ -72,8 +71,6 @@ import org.polarsys.capella.core.data.information.util.InformationSwitch;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.data.la.CapabilityRealizationPkg;
 import org.polarsys.capella.core.data.la.LaPackage;
-import org.polarsys.capella.core.data.la.LogicalActor;
-import org.polarsys.capella.core.data.la.LogicalActorPkg;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalComponentPkg;
@@ -86,7 +83,6 @@ import org.polarsys.capella.core.data.oa.OaFactory;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.OperationalActivityPkg;
-import org.polarsys.capella.core.data.oa.OperationalActor;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
 import org.polarsys.capella.core.data.oa.OperationalCapabilityPkg;
@@ -94,8 +90,6 @@ import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.data.oa.RolePkg;
 import org.polarsys.capella.core.data.oa.util.OaSwitch;
 import org.polarsys.capella.core.data.pa.PaPackage;
-import org.polarsys.capella.core.data.pa.PhysicalActor;
-import org.polarsys.capella.core.data.pa.PhysicalActorPkg;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
@@ -237,16 +231,6 @@ public class SpecificPackageSupplierFactory {
       return getCapabilityRealizationPkg();
     }
 
-    @Override
-    public Supplier<EObject> caseLogicalActorPkg(LogicalActorPkg object) {
-      return getLogicalActorPkg();
-    }
-
-    @Override
-    public Supplier<EObject> caseLogicalActor(LogicalActor object) {
-      return getLogicalActorPkg();
-    }
-
   }
 
   class Pa extends PaSwitch<Supplier<EObject>> {
@@ -269,17 +253,6 @@ public class SpecificPackageSupplierFactory {
     @Override
     public Supplier<EObject> casePhysicalComponentPkg(PhysicalComponentPkg object) {
       return getPhysicalComponentPkg();
-    }
-
-
-    @Override
-    public Supplier<EObject> casePhysicalActorPkg(PhysicalActorPkg object) {
-      return getPhysicalActorPkg();
-    }
-
-    @Override
-    public Supplier<EObject> casePhysicalActor(PhysicalActor object) {
-      return getPhysicalActorPkg();
     }
 
   }
@@ -340,11 +313,6 @@ public class SpecificPackageSupplierFactory {
       return getEntityPkg();
     }
 
-    @Override
-    public Supplier<EObject> caseOperationalActor(OperationalActor object) {
-      return getEntityPkg();
-    }
-
   }
 
   class Ctx extends CtxSwitch<Supplier<EObject>> {
@@ -360,15 +328,15 @@ public class SpecificPackageSupplierFactory {
     }
 
     @Override
-    public Supplier<EObject> caseActor(Actor object) {
-      return getActorPkg();
+    public Supplier<EObject> caseSystemComponentPkg(SystemComponentPkg object) {
+      return getSystemComponentPkg();
     }
-
+  
     @Override
-    public Supplier<EObject> caseActorPkg(ActorPkg object) {
-      return getActorPkg();
+    public Supplier<EObject> caseSystemComponent(SystemComponent object) {
+      return getSystemComponentPkg();
     }
-
+    
     @Override
     public Supplier<EObject> caseMission(Mission object) {
       return getMissionPkg();
@@ -523,9 +491,9 @@ public class SpecificPackageSupplierFactory {
     return getSpecificPackageSupplier(interfacePkg, CsPackage.Literals.INTERFACE_PKG__OWNED_INTERFACE_PKGS);
   }
 
-  private Supplier<EObject> getActorPkg(){
-    Structure actorPkg = BlockArchitectureExt.getActorPkg(destinationBlock, true);
-    return getSpecificPackageSupplier(actorPkg, CtxPackage.Literals.ACTOR_PKG__OWNED_ACTOR_PKGS);
+  private Supplier<EObject> getSystemComponentPkg(){
+    SystemComponentPkg componentPkg = (SystemComponentPkg)BlockArchitectureExt.getComponentPkg(destinationBlock, true);
+    return getSpecificPackageSupplier(componentPkg, CtxPackage.Literals.SYSTEM_COMPONENT_PKG__OWNED_SYSTEM_COMPONENT_PKGS);
   }
 
   private Supplier<EObject> getSystemFunctionPkg(){
@@ -541,14 +509,8 @@ public class SpecificPackageSupplierFactory {
     return null;
   }
 
-  private Supplier<EObject> getPhysicalActorPkg(){
-    Structure actorPkg = BlockArchitectureExt.getActorPkg(destinationBlock, true);
-    return getSpecificPackageSupplier(actorPkg, PaPackage.Literals.PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTOR_PKGS);
-  }
-
-
   private Supplier<EObject> getPhysicalComponentPkg(){
-    PhysicalComponent rootComponent = ((PhysicalArchitecture) destinationBlock).getOwnedPhysicalComponent();
+    PhysicalComponent rootComponent = (PhysicalComponent)((PhysicalArchitecture) destinationBlock).getSystem();
     return getSpecificPackageSupplier(rootComponent, PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_PHYSICAL_COMPONENT_PKGS);
   }
 
@@ -558,13 +520,8 @@ public class SpecificPackageSupplierFactory {
   }
 
   private Supplier<EObject> getLogicalComponentPkg(){
-    LogicalComponent rootComponent = ((LogicalArchitecture) destinationBlock).getOwnedLogicalComponent();
+    LogicalComponent rootComponent = (LogicalComponent)((LogicalArchitecture) destinationBlock).getSystem();
     return getSpecificPackageSupplier(rootComponent, LaPackage.Literals.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_PKGS);
-  }
-
-  private Supplier<EObject> getLogicalActorPkg(){
-    Structure actorPkg = BlockArchitectureExt.getActorPkg(destinationBlock, true);
-    return getSpecificPackageSupplier(actorPkg, LaPackage.Literals.LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTOR_PKGS);
   }
 
   private Supplier<EObject> getOperationalCapabilityPkg(){

@@ -36,7 +36,8 @@ public class ConfigurationItemExt {
    */
   static public boolean hasImplementedPC(ConfigurationItem configItem, PhysicalComponent pc) {
     boolean flag = false;
-    for (Component cpnt : configItem.getAllocatedComponents()) {
+    //TODO EPIC
+    for (Component cpnt : configItem.getRealizedComponents()) {
       if (cpnt.equals(pc)) {
         flag = true;
         break;

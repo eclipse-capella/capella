@@ -44,7 +44,7 @@ import org.eclipse.emf.transaction.ResourceSetListener;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.osgi.util.NLS;
-import org.polarsys.capella.core.data.information.InformationPackage;
+import org.polarsys.capella.core.data.cs.CsPackage;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Iterators;
@@ -81,7 +81,7 @@ public class Stage {
     @Override
     public boolean test(EReference t) {
       return !t.isDerived() ||
-          t == InformationPackage.Literals.PARTITIONABLE_ELEMENT__REPRESENTING_PARTITIONS;
+          t == CsPackage.Literals.COMPONENT__REPRESENTING_PARTS;
     }
   };
 

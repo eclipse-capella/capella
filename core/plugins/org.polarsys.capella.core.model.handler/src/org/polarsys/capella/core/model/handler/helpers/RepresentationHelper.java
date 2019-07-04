@@ -46,7 +46,7 @@ import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.utils.RunnableWithBooleanResult;
-import org.polarsys.capella.core.data.cs.AbstractActor;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.shared.id.handler.IScope;
 
@@ -132,9 +132,9 @@ public class RepresentationHelper {
     // The semantic element itself needs to be checked
     semanticElementsToCheck.add(semanticElement);
 
-    // For an AbstractActor, we want to see representations related to its allocated functions.
-    if (semanticElement instanceof AbstractActor) {
-      semanticElementsToCheck.addAll(((AbstractActor) semanticElement).getAllocatedFunctions());
+    // For a Component, we want to see representations related to its allocated functions.
+    if (semanticElement instanceof Component) {
+      semanticElementsToCheck.addAll(((Component) semanticElement).getAllocatedFunctions());
     }
 
     Session session = SessionManager.INSTANCE.getSession(semanticElement);

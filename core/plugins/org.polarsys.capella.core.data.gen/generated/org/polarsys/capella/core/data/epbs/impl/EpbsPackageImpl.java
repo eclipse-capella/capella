@@ -389,8 +389,17 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getConfigurationItem_AllocatedPhysicalArtifacts() {
+	public EReference getConfigurationItem_OwnedPhysicalArtifactRealizations() {
 		return (EReference)configurationItemEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConfigurationItem_AllocatedPhysicalArtifacts() {
+		return (EReference)configurationItemEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -485,6 +494,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 		createEAttribute(configurationItemEClass, CONFIGURATION_ITEM__KIND);
 		createEReference(configurationItemEClass, CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEMS);
 		createEReference(configurationItemEClass, CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEM_PKGS);
+		createEReference(configurationItemEClass, CONFIGURATION_ITEM__OWNED_PHYSICAL_ARTIFACT_REALIZATIONS);
 		createEReference(configurationItemEClass, CONFIGURATION_ITEM__ALLOCATED_PHYSICAL_ARTIFACTS);
 
 		physicalArchitectureRealizationEClass = createEClass(PHYSICAL_ARCHITECTURE_REALIZATION);
@@ -560,6 +570,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 		initEAttribute(getConfigurationItem_Kind(), this.getConfigurationItemKind(), "kind", "Unset", 0, 1, ConfigurationItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
 		initEReference(getConfigurationItem_OwnedConfigurationItems(), this.getConfigurationItem(), null, "ownedConfigurationItems", null, 0, -1, ConfigurationItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getConfigurationItem_OwnedConfigurationItemPkgs(), this.getConfigurationItemPkg(), null, "ownedConfigurationItemPkgs", null, 0, -1, ConfigurationItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getConfigurationItem_OwnedPhysicalArtifactRealizations(), this.getPhysicalArtifactRealization(), null, "ownedPhysicalArtifactRealizations", null, 0, -1, ConfigurationItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getConfigurationItem_AllocatedPhysicalArtifacts(), theCsPackage.getAbstractPhysicalArtifact(), theCsPackage.getAbstractPhysicalArtifact_AllocatorConfigurationItems(), "allocatedPhysicalArtifacts", null, 0, -1, ConfigurationItem.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(physicalArchitectureRealizationEClass, PhysicalArchitectureRealization.class, "PhysicalArchitectureRealization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -731,6 +742,14 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 		   source, 
 		   new String[] {
 			 "description", "the sub-(configuration item) packages owned by this component", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getConfigurationItem_OwnedPhysicalArtifactRealizations(), 
+		   source, 
+		   new String[] {
+			 "description", "Physical Artifact Realization links owned by this Configuration Item", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
@@ -935,6 +954,11 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 		   });	
 		addAnnotation
 		  (getConfigurationItem_OwnedConfigurationItemPkgs(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getConfigurationItem_OwnedPhysicalArtifactRealizations(), 
 		   source, 
 		   new String[] {
 		   });	

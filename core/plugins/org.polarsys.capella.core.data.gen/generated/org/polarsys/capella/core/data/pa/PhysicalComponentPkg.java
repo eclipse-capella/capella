@@ -25,7 +25,7 @@ import org.polarsys.capella.core.data.information.KeyPart;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalComponentPkg#getOwnedComponents <em>Owned Components</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalComponentPkg#getOwnedPhysicalComponents <em>Owned Physical Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalComponentPkg#getOwnedPhysicalComponentPkgs <em>Owned Physical Component Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalComponentPkg#getOwnedKeyParts <em>Owned Key Parts</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalComponentPkg#getOwnedDeployments <em>Owned Deployments</em>}</li>
@@ -45,17 +45,17 @@ public interface PhysicalComponentPkg extends ComponentPkg, AssociationPkg {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Components</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Owned Physical Components</b></em>' containment reference list.
 	 * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalComponent}.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Owned Components</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Owned Physical Components</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Components</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponentPkg_OwnedComponents()
+	 * @return the value of the '<em>Owned Physical Components</em>' containment reference list.
+	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponentPkg_OwnedPhysicalComponents()
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedComponents'"
@@ -64,7 +64,7 @@ public interface PhysicalComponentPkg extends ComponentPkg, AssociationPkg {
 	 * @generated
 	 */
 
-	EList<PhysicalComponent> getOwnedComponents();
+	EList<PhysicalComponent> getOwnedPhysicalComponents();
 
 
 

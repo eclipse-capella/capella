@@ -83,16 +83,14 @@ import org.polarsys.capella.core.data.information.communication.CommunicationPac
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getAccess <em>Access</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getAcquire <em>Acquire</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getTransmit <em>Transmit</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#isIsActor <em>Is Actor</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#isIsHuman <em>Is Human</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#isActor <em>Actor</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#isHuman <em>Human</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getOwnedInterfaceUses <em>Owned Interface Uses</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getUsedInterfaceLinks <em>Used Interface Links</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getUsedInterfaces <em>Used Interfaces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getOwnedInterfaceImplementations <em>Owned Interface Implementations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getImplementedInterfaceLinks <em>Implemented Interface Links</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getImplementedInterfaces <em>Implemented Interfaces</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getProvisionedComponentAllocations <em>Provisioned Component Allocations</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getProvisioningComponentAllocations <em>Provisioning Component Allocations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getOwnedComponentRealizations <em>Owned Component Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getRealizedComponents <em>Realized Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getRealizingComponents <em>Realizing Components</em>}</li>
@@ -276,44 +274,92 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 
 
 	/**
-	 * The default value of the '{@link #isIsActor() <em>Is Actor</em>}' attribute.
+	 * The default value of the '{@link #isActor() <em>Actor</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsActor()
+	 * @see #isActor()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_ACTOR_EDEFAULT = false;
+	protected static final boolean ACTOR_EDEFAULT = false;
+
+
+
+
+
+
+
+
+
+
+
+
 
 	/**
-	 * The cached value of the '{@link #isIsActor() <em>Is Actor</em>}' attribute.
+	 * The cached value of the '{@link #isActor() <em>Actor</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsActor()
+	 * @see #isActor()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isActor = IS_ACTOR_EDEFAULT;
+	protected boolean actor = ACTOR_EDEFAULT;
+
+
+
+
+
+
+
+
+
+
+
+
 
 	/**
-	 * The default value of the '{@link #isIsHuman() <em>Is Human</em>}' attribute.
+	 * The default value of the '{@link #isHuman() <em>Human</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsHuman()
+	 * @see #isHuman()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_HUMAN_EDEFAULT = false;
+	protected static final boolean HUMAN_EDEFAULT = false;
+
+
+
+
+
+
+
+
+
+
+
+
 
 	/**
-	 * The cached value of the '{@link #isIsHuman() <em>Is Human</em>}' attribute.
+	 * The cached value of the '{@link #isHuman() <em>Human</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsHuman()
+	 * @see #isHuman()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isHuman = IS_HUMAN_EDEFAULT;
+	protected boolean human = HUMAN_EDEFAULT;
+
+
+
+
+
+
+
+
+
+
+
+
 
 	/**
 	 * The cached value of the '{@link #getOwnedInterfaceUses() <em>Owned Interface Uses</em>}' containment reference list.
@@ -483,6 +529,63 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 
 
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public EList<Feature> getOwnedFeatures() {
+
+		if (ownedFeatures == null) {
+			ownedFeatures = new EObjectContainmentEList.Resolving<Feature>(Feature.class, this, CsPackage.COMPONENT__OWNED_FEATURES);
+		}
+		return ownedFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public EList<Property> getContainedProperties() {
+
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = CapellacorePackage.Literals.CLASSIFIER__CONTAINED_PROPERTIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, CapellacorePackage.Literals.CLASSIFIER__CONTAINED_PROPERTIES, annotation);
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<Property> resultAsList = (Collection<Property>) result;
+		return new EcoreEList.UnmodifiableEList<Property>(this, CapellacorePackage.Literals.CLASSIFIER__CONTAINED_PROPERTIES, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -689,63 +792,6 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<GeneralizableElement> resultAsList = (Collection<GeneralizableElement>) result;
 		return new EcoreEList.UnmodifiableEList<GeneralizableElement>(this, CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUB, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public EList<Feature> getOwnedFeatures() {
-
-		if (ownedFeatures == null) {
-			ownedFeatures = new EObjectContainmentEList.Resolving<Feature>(Feature.class, this, CsPackage.COMPONENT__OWNED_FEATURES);
-		}
-		return ownedFeatures;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public EList<Property> getContainedProperties() {
-
-
-    Object result = null;
-    // Helper that can get value for current feature.
-    IHelper helper = null;
-    // If current object is adaptable, ask it to get its IHelper.
-    if (this instanceof IAdaptable) {
-    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
-    }
-    if (null == helper) {
-      // No helper found yet.
-      // Ask the platform to get the adapter 'IHelper.class' for current object.
-      IAdapterManager adapterManager = Platform.getAdapterManager();
-      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
-    }
-    if (null == helper) {
-      EPackage package_l = eClass().getEPackage();
-      // Get the root package of the owner package.
-      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
-    } 
-    // A helper is found, let's use it. 
-    EAnnotation annotation = CapellacorePackage.Literals.CLASSIFIER__CONTAINED_PROPERTIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, CapellacorePackage.Literals.CLASSIFIER__CONTAINED_PROPERTIES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Property> resultAsList = (Collection<Property>) result;
-		return new EcoreEList.UnmodifiableEList<Property>(this, CapellacorePackage.Literals.CLASSIFIER__CONTAINED_PROPERTIES, resultAsList.size(), resultAsList.toArray());
 		} catch (ClassCastException exception) {
 	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
@@ -1359,9 +1405,9 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 	 * @generated
 	 */
 
-	public boolean isIsActor() {
+	public boolean isActor() {
 
-		return isActor;
+		return actor;
 	}
 
 	/**
@@ -1370,12 +1416,12 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 	 * @generated
 	 */
 
-	public void setIsActor(boolean newIsActor) {
+	public void setActor(boolean newActor) {
 
-		boolean oldIsActor = isActor;
-		isActor = newIsActor;
+		boolean oldActor = actor;
+		actor = newActor;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.COMPONENT__IS_ACTOR, oldIsActor, isActor));
+			eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.COMPONENT__ACTOR, oldActor, actor));
 
 	}
 
@@ -1385,9 +1431,9 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 	 * @generated
 	 */
 
-	public boolean isIsHuman() {
+	public boolean isHuman() {
 
-		return isHuman;
+		return human;
 	}
 
 	/**
@@ -1396,12 +1442,12 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 	 * @generated
 	 */
 
-	public void setIsHuman(boolean newIsHuman) {
+	public void setHuman(boolean newHuman) {
 
-		boolean oldIsHuman = isHuman;
-		isHuman = newIsHuman;
+		boolean oldHuman = human;
+		human = newHuman;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.COMPONENT__IS_HUMAN, oldIsHuman, isHuman));
+			eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.COMPONENT__HUMAN, oldHuman, human));
 
 	}
 
@@ -1618,100 +1664,6 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		@SuppressWarnings("unchecked")
 		Collection<Interface> resultAsList = (Collection<Interface>) result;
 		return new EcoreEList.UnmodifiableEList<Interface>(this, CsPackage.Literals.COMPONENT__IMPLEMENTED_INTERFACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public EList<ComponentRealization> getProvisionedComponentAllocations() {
-
-
-    Object result = null;
-    // Helper that can get value for current feature.
-    IHelper helper = null;
-    // If current object is adaptable, ask it to get its IHelper.
-    if (this instanceof IAdaptable) {
-    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
-    }
-    if (null == helper) {
-      // No helper found yet.
-      // Ask the platform to get the adapter 'IHelper.class' for current object.
-      IAdapterManager adapterManager = Platform.getAdapterManager();
-      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
-    }
-    if (null == helper) {
-      EPackage package_l = eClass().getEPackage();
-      // Get the root package of the owner package.
-      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
-    } 
-    // A helper is found, let's use it. 
-    EAnnotation annotation = CsPackage.Literals.COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, CsPackage.Literals.COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<ComponentRealization> resultAsList = (Collection<ComponentRealization>) result;
-		return new EcoreEList.UnmodifiableEList<ComponentRealization>(this, CsPackage.Literals.COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public EList<ComponentRealization> getProvisioningComponentAllocations() {
-
-
-    Object result = null;
-    // Helper that can get value for current feature.
-    IHelper helper = null;
-    // If current object is adaptable, ask it to get its IHelper.
-    if (this instanceof IAdaptable) {
-    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
-    }
-    if (null == helper) {
-      // No helper found yet.
-      // Ask the platform to get the adapter 'IHelper.class' for current object.
-      IAdapterManager adapterManager = Platform.getAdapterManager();
-      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
-    }
-    if (null == helper) {
-      EPackage package_l = eClass().getEPackage();
-      // Get the root package of the owner package.
-      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
-    } 
-    // A helper is found, let's use it. 
-    EAnnotation annotation = CsPackage.Literals.COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, CsPackage.Literals.COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<ComponentRealization> resultAsList = (Collection<ComponentRealization>) result;
-		return new EcoreEList.UnmodifiableEList<ComponentRealization>(this, CsPackage.Literals.COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
 		} catch (ClassCastException exception) {
 	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
@@ -2209,10 +2161,10 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 				return getAcquire();
 			case CsPackage.COMPONENT__TRANSMIT:
 				return getTransmit();
-			case CsPackage.COMPONENT__IS_ACTOR:
-				return isIsActor();
-			case CsPackage.COMPONENT__IS_HUMAN:
-				return isIsHuman();
+			case CsPackage.COMPONENT__ACTOR:
+				return isActor();
+			case CsPackage.COMPONENT__HUMAN:
+				return isHuman();
 			case CsPackage.COMPONENT__OWNED_INTERFACE_USES:
 				return getOwnedInterfaceUses();
 			case CsPackage.COMPONENT__USED_INTERFACE_LINKS:
@@ -2225,10 +2177,6 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 				return getImplementedInterfaceLinks();
 			case CsPackage.COMPONENT__IMPLEMENTED_INTERFACES:
 				return getImplementedInterfaces();
-			case CsPackage.COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS:
-				return getProvisionedComponentAllocations();
-			case CsPackage.COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS:
-				return getProvisioningComponentAllocations();
 			case CsPackage.COMPONENT__OWNED_COMPONENT_REALIZATIONS:
 				return getOwnedComponentRealizations();
 			case CsPackage.COMPONENT__REALIZED_COMPONENTS:
@@ -2285,11 +2233,11 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 				getOwnedCommunicationLinks().clear();
 				getOwnedCommunicationLinks().addAll((Collection<? extends CommunicationLink>)newValue);
 				return;
-			case CsPackage.COMPONENT__IS_ACTOR:
-					setIsActor((Boolean)newValue);
+			case CsPackage.COMPONENT__ACTOR:
+					setActor((Boolean)newValue);
 				return;
-			case CsPackage.COMPONENT__IS_HUMAN:
-					setIsHuman((Boolean)newValue);
+			case CsPackage.COMPONENT__HUMAN:
+					setHuman((Boolean)newValue);
 				return;
 			case CsPackage.COMPONENT__OWNED_INTERFACE_USES:
 				getOwnedInterfaceUses().clear();
@@ -2347,11 +2295,11 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 			case CsPackage.COMPONENT__OWNED_COMMUNICATION_LINKS:
 				getOwnedCommunicationLinks().clear();
 				return;
-			case CsPackage.COMPONENT__IS_ACTOR:
-				setIsActor(IS_ACTOR_EDEFAULT);
+			case CsPackage.COMPONENT__ACTOR:
+				setActor(ACTOR_EDEFAULT);
 				return;
-			case CsPackage.COMPONENT__IS_HUMAN:
-				setIsHuman(IS_HUMAN_EDEFAULT);
+			case CsPackage.COMPONENT__HUMAN:
+				setHuman(HUMAN_EDEFAULT);
 				return;
 			case CsPackage.COMPONENT__OWNED_INTERFACE_USES:
 				getOwnedInterfaceUses().clear();
@@ -2432,10 +2380,10 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 				return !getAcquire().isEmpty();
 			case CsPackage.COMPONENT__TRANSMIT:
 				return !getTransmit().isEmpty();
-			case CsPackage.COMPONENT__IS_ACTOR:
-				return isActor != IS_ACTOR_EDEFAULT;
-			case CsPackage.COMPONENT__IS_HUMAN:
-				return isHuman != IS_HUMAN_EDEFAULT;
+			case CsPackage.COMPONENT__ACTOR:
+				return actor != ACTOR_EDEFAULT;
+			case CsPackage.COMPONENT__HUMAN:
+				return human != HUMAN_EDEFAULT;
 			case CsPackage.COMPONENT__OWNED_INTERFACE_USES:
 				return ownedInterfaceUses != null && !ownedInterfaceUses.isEmpty();
 			case CsPackage.COMPONENT__USED_INTERFACE_LINKS:
@@ -2448,10 +2396,6 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 				return !getImplementedInterfaceLinks().isEmpty();
 			case CsPackage.COMPONENT__IMPLEMENTED_INTERFACES:
 				return !getImplementedInterfaces().isEmpty();
-			case CsPackage.COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS:
-				return !getProvisionedComponentAllocations().isEmpty();
-			case CsPackage.COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS:
-				return !getProvisioningComponentAllocations().isEmpty();
 			case CsPackage.COMPONENT__OWNED_COMPONENT_REALIZATIONS:
 				return ownedComponentRealizations != null && !ownedComponentRealizations.isEmpty();
 			case CsPackage.COMPONENT__REALIZED_COMPONENTS:
@@ -2597,10 +2541,10 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (abstract: "); //$NON-NLS-1$
 		result.append(abstract_);
-		result.append(", isActor: "); //$NON-NLS-1$
-		result.append(isActor);
-		result.append(", isHuman: "); //$NON-NLS-1$
-		result.append(isHuman);
+		result.append(", actor: "); //$NON-NLS-1$
+		result.append(actor);
+		result.append(", human: "); //$NON-NLS-1$
+		result.append(human);
 		result.append(')');
 		return result.toString();
 	}

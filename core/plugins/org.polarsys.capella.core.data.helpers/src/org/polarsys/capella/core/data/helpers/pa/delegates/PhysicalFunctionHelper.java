@@ -15,18 +15,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation;
 import org.polarsys.capella.core.data.fa.FunctionRealization;
 import org.polarsys.capella.core.data.helpers.fa.delegates.AbstractFunctionHelper;
 import org.polarsys.capella.core.data.la.LogicalFunction;
 import org.polarsys.capella.core.data.pa.PaPackage;
-import org.polarsys.capella.core.data.pa.PhysicalActor;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 
 public class PhysicalFunctionHelper {
   private static PhysicalFunctionHelper instance;
@@ -45,10 +43,8 @@ public class PhysicalFunctionHelper {
   public Object doSwitch(PhysicalFunction element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature.equals(PaPackage.Literals.PHYSICAL_FUNCTION__ALLOCATOR_PHYSICAL_ACTORS)) {
-      ret = getAllocatorPhysicalActors(element);
-    } else if (feature.equals(PaPackage.Literals.PHYSICAL_FUNCTION__ALLOCATOR_PHYSICAL_COMPONENTS)) {
-      ret = getAllocatorPhysicalComponents(element);
+    if (feature.equals(PaPackage.Literals.PHYSICAL_FUNCTION__ALLOCATING_PHYSICAL_COMPONENTS)) {
+      ret = getAllocatingPhysicalComponents(element);
     } else if (feature.equals(PaPackage.Literals.PHYSICAL_FUNCTION__REALIZED_LOGICAL_FUNCTIONS)) {
       ret = getRealizedLogicalFunctions(element);
     } else if (feature.equals(PaPackage.Literals.PHYSICAL_FUNCTION__CONTAINED_PHYSICAL_FUNCTIONS)) {
@@ -65,20 +61,7 @@ public class PhysicalFunctionHelper {
     return ret;
   }
 
-  protected List<PhysicalActor> getAllocatorPhysicalActors(PhysicalFunction element) {
-    List<PhysicalActor> ret = new ArrayList<>();
-    for (AbstractTrace trace : element.getIncomingTraces()) {
-      if (trace instanceof ComponentFunctionalAllocation) {
-        TraceableElement src = trace.getSourceElement();
-        if (src instanceof PhysicalActor) {
-          ret.add((PhysicalActor) src);
-        }
-      }
-    }
-    return ret;
-  }
-
-  protected List<PhysicalComponent> getAllocatorPhysicalComponents(PhysicalFunction element) {
+  protected List<PhysicalComponent> getAllocatingPhysicalComponents(PhysicalFunction element) {
     List<PhysicalComponent> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ComponentFunctionalAllocation) {

@@ -29,13 +29,11 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonFactory;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.Type;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
@@ -51,8 +49,6 @@ import org.polarsys.capella.core.data.interaction.InteractionFactory;
 import org.polarsys.capella.core.data.la.LaFactory;
 import org.polarsys.capella.core.data.oa.OaFactory;
 import org.polarsys.capella.core.data.pa.PaFactory;
-import org.polarsys.capella.core.data.pa.PhysicalComponent;
-import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.data.pa.deployment.DeploymentFactory;
 import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
 
@@ -415,28 +411,9 @@ public class PartItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object getImageGen(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Part")); //$NON-NLS-1$
-	}
-
-	/**
-	 * This returns Part.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 */
 	@Override
 	public Object getImage(Object object) {
-	  AbstractType type = ((Part) object).getAbstractType();
-	  if (type instanceof PhysicalComponent && ((PhysicalComponent) type).getNature().equals(PhysicalComponentNature.NODE)) {
-	    return overlayImage(object, getResourceLocator().getImage("full/obj16/Part_PCNode")); //$NON-NLS-1$
-	  }
-	  else if (type instanceof PhysicalComponent && ((PhysicalComponent) type).getNature().equals(PhysicalComponentNature.BEHAVIOR)) {
-	    return overlayImage(object, getResourceLocator().getImage("full/obj16/Part_PCBehaviour")); //$NON-NLS-1$
-	  }
-	  else if (type instanceof AbstractActor) {
-	    return overlayImage(object, getResourceLocator().getImage("full/obj16/Part_AbstractActor")); //$NON-NLS-1$
-	  }
-	  return overlayImage(object, getResourceLocator().getImage("full/obj16/Part")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Part")); //$NON-NLS-1$
 	}
 
 	/**

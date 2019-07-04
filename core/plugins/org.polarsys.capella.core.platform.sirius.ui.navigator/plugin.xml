@@ -666,56 +666,24 @@
       </commonFilter>
       <commonFilter
             activeByDefault="true"
-            description="Hides all Capella actor capability and mission involvements"
-            id="capella.project.explorer.filters.actorcapabilitymissioninvolvement"
-            name="Actor Capability and Mission Involvements">
-         <filterExpression>
-            <or>
-               <instanceof
-                     value="org.polarsys.capella.core.data.ctx.ActorCapabilityInvolvement">
-               </instanceof>
-               <instanceof
-                     value="org.polarsys.capella.core.data.ctx.ActorMissionInvolvement">
-               </instanceof>
-            </or>
-         </filterExpression>
-      </commonFilter>
-      <commonFilter
-            activeByDefault="true"
             description="Hides all Capella system capability and mission involvements"
             id="capella.project.explorer.filters.systemcapabilitymissioninvolvement"
-            name="System Capability and Mission Involvements">
+            name="Capability and Mission Involvements">
          <filterExpression>
             <or>
                <instanceof
-                     value="org.polarsys.capella.core.data.ctx.SystemCapabilityInvolvement">
+                     value="org.polarsys.capella.core.data.ctx.CapabilityInvolvement">
                </instanceof>
                <instanceof
-                     value="org.polarsys.capella.core.data.ctx.SystemMissionInvolvement">
+                     value="org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement">
+               </instanceof>
+               <instanceof
+                     value="org.polarsys.capella.core.data.ctx.MissionInvolvement">
+               </instanceof>
+               <instanceof
+                     value="org.polarsys.capella.core.data.oa.EntityOperationalCapabilityInvolvement">
                </instanceof>
             </or>
-         </filterExpression>
-      </commonFilter>
-      <commonFilter
-            activeByDefault="true"
-            description="Hides all Capella capability realization involvements"
-            id="capella.project.explorer.filters.capabilityrealizationinvolvement"
-            name="Capability Realization Involvements">
-         <filterExpression>
-           <instanceof
-                 value="org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement">
-           </instanceof>
-         </filterExpression>
-      </commonFilter>
-      <commonFilter
-            activeByDefault="true"
-            description="Hides all Capella entity operational capability involvements"
-            id="capella.project.explorer.filters.entityoperationalcapabilityinvolvement"
-            name="Entity Operational Capability Involvements">
-         <filterExpression>
-           <instanceof
-                 value="org.polarsys.capella.core.data.oa.EntityOperationalCapabilityInvolvement">
-           </instanceof>
          </filterExpression>
       </commonFilter>
       <commonFilter
@@ -841,17 +809,6 @@
          <filterExpression>
             <instanceof
                   value="org.polarsys.capella.core.data.cs.Part">
-            </instanceof>
-         </filterExpression>
-      </commonFilter>
-      <commonFilter
-            activeByDefault="false"
-            description="Hides all Capella contexts."
-            id="capella.project.explorer.filters.context"
-            name="Contexts">
-         <filterExpression>
-            <instanceof
-                  value="org.polarsys.capella.core.data.cs.ComponentContext">
             </instanceof>
          </filterExpression>
       </commonFilter>

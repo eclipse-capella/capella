@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.projection.scenario.fs2es.handlers;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -21,12 +23,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
 import org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.information.AbstractInstance;
-import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.oa.ActivityAllocation;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
@@ -42,17 +44,15 @@ import org.polarsys.capella.core.tiger.IResolver;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.TransfoException;
 
-import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
-
 public class ScenarioFS2ESHandler extends ScenarioHorizontalHandler {
 
-  private Collection<PartitionableElement> getAllocatingBlocks(AbstractFunction function) {
-    Collection<PartitionableElement> allocatingBlocks = new HashSet<>();
+  private Collection<Component> getAllocatingBlocks(AbstractFunction function) {
+    Collection<Component> allocatingBlocks = new HashSet<>();
     // Retrieve all related parts
     for (ComponentFunctionalAllocation allocation : function.getComponentFunctionalAllocations()) {
       AbstractFunctionalBlock block = allocation.getBlock();
-      if (block instanceof PartitionableElement) {
-        PartitionableElement element = (PartitionableElement) block;
+      if (block instanceof Component) {
+        Component element = (Component) block;
         allocatingBlocks.add(element);
       }
     }
@@ -84,13 +84,13 @@ public class ScenarioFS2ESHandler extends ScenarioHorizontalHandler {
     int nbAllocation = 0;
 
     // Retrieve allocating blocks for the given function
-    Collection<PartitionableElement> allocatingBlocks = getAllocatingBlocks(function);
+    Collection<Component> allocatingBlocks = getAllocatingBlocks(function);
 
     // if all leaf functions are allocated to the same component, we use it
     Iterator<AbstractFunction> leafs = getCache(FunctionExt::getAllLeafAbstractFunctions, function).iterator();
     if (leafs.hasNext()) {
       AbstractFunction leaf = leafs.next();
-      Collection<PartitionableElement> leafAllocatingBlocks = getAllocatingBlocks(leaf);
+      Collection<Component> leafAllocatingBlocks = getAllocatingBlocks(leaf);
       while (leafs.hasNext() && (leafAllocatingBlocks.size() > 0)) {
         leaf = leafs.next();
         leafAllocatingBlocks.retainAll(getAllocatingBlocks(leaf));
@@ -99,10 +99,10 @@ public class ScenarioFS2ESHandler extends ScenarioHorizontalHandler {
     }
 
     // Retrieve all related parts
-    for (PartitionableElement element : allocatingBlocks) {
-      if (element.getRepresentingPartitions().size() > 0) {
+    for (Component element : allocatingBlocks) {
+      if (element.getRepresentingParts().size() > 0) {
         nbAllocation++;
-        elements.addAll(element.getRepresentingPartitions());
+        elements.addAll(element.getRepresentingParts());
       }
     }
 

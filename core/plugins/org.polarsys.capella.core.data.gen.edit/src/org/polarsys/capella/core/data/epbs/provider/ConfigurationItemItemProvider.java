@@ -111,14 +111,12 @@ public class ConfigurationItemItemProvider extends CapabilityRealizationInvolved
 			addAccessPropertyDescriptor(object);
 			addAcquirePropertyDescriptor(object);
 			addTransmitPropertyDescriptor(object);
-			addIsActorPropertyDescriptor(object);
-			addIsHumanPropertyDescriptor(object);
+			addActorPropertyDescriptor(object);
+			addHumanPropertyDescriptor(object);
 			addUsedInterfaceLinksPropertyDescriptor(object);
 			addUsedInterfacesPropertyDescriptor(object);
 			addImplementedInterfaceLinksPropertyDescriptor(object);
 			addImplementedInterfacesPropertyDescriptor(object);
-			addProvisionedComponentAllocationsPropertyDescriptor(object);
-			addProvisioningComponentAllocationsPropertyDescriptor(object);
 			addRealizedComponentsPropertyDescriptor(object);
 			addRealizingComponentsPropertyDescriptor(object);
 			addProvidedInterfacesPropertyDescriptor(object);
@@ -381,6 +379,33 @@ public class ConfigurationItemItemProvider extends CapabilityRealizationInvolved
 	}
 
 	/**
+	 * This adds a property descriptor for the Contained Properties feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addContainedPropertiesPropertyDescriptor(Object object) {
+
+		// begin-extension-code
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Classifier_containedProperties_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Classifier_containedProperties_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 CapellacorePackage.Literals.CLASSIFIER__CONTAINED_PROPERTIES,
+				 false,
+				 false,
+				 false,
+				 null,
+				 null,
+		// begin-extension-code
+				 null));
+		// end-extension-code
+	}
+
+	/**
 	 * This adds a property descriptor for the Abstract feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -505,33 +530,6 @@ public class ConfigurationItemItemProvider extends CapabilityRealizationInvolved
 				 getString("_UI_GeneralizableElement_sub_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_GeneralizableElement_sub_feature", "_UI_GeneralizableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUB,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
-
-	/**
-	 * This adds a property descriptor for the Contained Properties feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addContainedPropertiesPropertyDescriptor(Object object) {
-
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Classifier_containedProperties_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Classifier_containedProperties_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CapellacorePackage.Literals.CLASSIFIER__CONTAINED_PROPERTIES,
 				 false,
 				 false,
 				 false,
@@ -867,12 +865,12 @@ public class ConfigurationItemItemProvider extends CapabilityRealizationInvolved
 	}
 
 	/**
-	 * This adds a property descriptor for the Is Actor feature.
+	 * This adds a property descriptor for the Actor feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addIsActorPropertyDescriptor(Object object) {
+	protected void addActorPropertyDescriptor(Object object) {
 
 		// begin-extension-code
 		itemPropertyDescriptors.add
@@ -880,9 +878,9 @@ public class ConfigurationItemItemProvider extends CapabilityRealizationInvolved
 		// end-extension-code
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Component_isActor_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Component_isActor_feature", "_UI_Component_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CsPackage.Literals.COMPONENT__IS_ACTOR,
+				 getString("_UI_Component_actor_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Component_actor_feature", "_UI_Component_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 CsPackage.Literals.COMPONENT__ACTOR,
 				 true,
 				 false,
 				 false,
@@ -894,12 +892,12 @@ public class ConfigurationItemItemProvider extends CapabilityRealizationInvolved
 	}
 
 	/**
-	 * This adds a property descriptor for the Is Human feature.
+	 * This adds a property descriptor for the Human feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addIsHumanPropertyDescriptor(Object object) {
+	protected void addHumanPropertyDescriptor(Object object) {
 
 		// begin-extension-code
 		itemPropertyDescriptors.add
@@ -907,9 +905,9 @@ public class ConfigurationItemItemProvider extends CapabilityRealizationInvolved
 		// end-extension-code
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Component_isHuman_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Component_isHuman_feature", "_UI_Component_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CsPackage.Literals.COMPONENT__IS_HUMAN,
+				 getString("_UI_Component_human_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Component_human_feature", "_UI_Component_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 CsPackage.Literals.COMPONENT__HUMAN,
 				 true,
 				 false,
 				 false,
@@ -1018,60 +1016,6 @@ public class ConfigurationItemItemProvider extends CapabilityRealizationInvolved
 				 getString("_UI_Component_implementedInterfaces_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Component_implementedInterfaces_feature", "_UI_Component_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 CsPackage.Literals.COMPONENT__IMPLEMENTED_INTERFACES,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
-
-	/**
-	 * This adds a property descriptor for the Provisioned Component Allocations feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addProvisionedComponentAllocationsPropertyDescriptor(Object object) {
-
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Component_provisionedComponentAllocations_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Component_provisionedComponentAllocations_feature", "_UI_Component_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CsPackage.Literals.COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
-
-	/**
-	 * This adds a property descriptor for the Provisioning Component Allocations feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addProvisioningComponentAllocationsPropertyDescriptor(Object object) {
-
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Component_provisioningComponentAllocations_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Component_provisioningComponentAllocations_feature", "_UI_Component_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CsPackage.Literals.COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS,
 				 false,
 				 false,
 				 false,
@@ -1412,6 +1356,7 @@ public class ConfigurationItemItemProvider extends CapabilityRealizationInvolved
 			childrenFeatures.add(CsPackage.Literals.COMPONENT__OWNED_PHYSICAL_LINK_CATEGORIES);
 			childrenFeatures.add(EpbsPackage.Literals.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEMS);
 			childrenFeatures.add(EpbsPackage.Literals.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEM_PKGS);
+			childrenFeatures.add(EpbsPackage.Literals.CONFIGURATION_ITEM__OWNED_PHYSICAL_ARTIFACT_REALIZATIONS);
 		}
 		return childrenFeatures;
 	}
@@ -1492,8 +1437,8 @@ public class ConfigurationItemItemProvider extends CapabilityRealizationInvolved
 		switch (notification.getFeatureID(ConfigurationItem.class)) {
 			case EpbsPackage.CONFIGURATION_ITEM__NAME:
 			case EpbsPackage.CONFIGURATION_ITEM__ABSTRACT:
-			case EpbsPackage.CONFIGURATION_ITEM__IS_ACTOR:
-			case EpbsPackage.CONFIGURATION_ITEM__IS_HUMAN:
+			case EpbsPackage.CONFIGURATION_ITEM__ACTOR:
+			case EpbsPackage.CONFIGURATION_ITEM__HUMAN:
 			case EpbsPackage.CONFIGURATION_ITEM__ITEM_IDENTIFIER:
 			case EpbsPackage.CONFIGURATION_ITEM__KIND:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
@@ -1519,6 +1464,7 @@ public class ConfigurationItemItemProvider extends CapabilityRealizationInvolved
 			case EpbsPackage.CONFIGURATION_ITEM__OWNED_PHYSICAL_LINK_CATEGORIES:
 			case EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEMS:
 			case EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEM_PKGS:
+			case EpbsPackage.CONFIGURATION_ITEM__OWNED_PHYSICAL_ARTIFACT_REALIZATIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -1970,6 +1916,18 @@ public class ConfigurationItemItemProvider extends CapabilityRealizationInvolved
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
+                        (CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS,
+                         CsFactory.eINSTANCE.createComponentRealization());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
                         (CsPackage.Literals.COMPONENT__OWNED_PHYSICAL_PATH,
                          CsFactory.eINSTANCE.createPhysicalPath());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
@@ -2020,6 +1978,18 @@ public class ConfigurationItemItemProvider extends CapabilityRealizationInvolved
                     CommandParameter commandParameter = createChildParameter
                         (EpbsPackage.Literals.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEM_PKGS,
                          EpbsFactory.eINSTANCE.createConfigurationItemPkg());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (EpbsPackage.Literals.CONFIGURATION_ITEM__OWNED_PHYSICAL_ARTIFACT_REALIZATIONS,
+                         EpbsFactory.eINSTANCE.createPhysicalArtifactRealization());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }

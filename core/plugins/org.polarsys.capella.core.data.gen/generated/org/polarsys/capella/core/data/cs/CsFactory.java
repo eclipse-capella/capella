@@ -39,6 +39,15 @@ public interface CsFactory extends EFactory {
 	Part createPart();
 
 	/**
+	 * Returns a new object of class '<em>Component Realization</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Component Realization</em>'.
+	 * @generated
+	 */
+	ComponentRealization createComponentRealization();
+
+	/**
 	 * Returns a new object of class '<em>Interface Pkg</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

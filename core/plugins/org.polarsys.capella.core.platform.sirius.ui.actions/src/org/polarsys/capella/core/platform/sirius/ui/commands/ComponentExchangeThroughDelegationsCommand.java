@@ -73,11 +73,11 @@ public class ComponentExchangeThroughDelegationsCommand extends AbstractFixComma
 
       if (sourcePart == null) {
         Component sourceComponent = ComponentExchangeExt.getSourceComponent(exchange);
-        sourcePart = (Part) sourceComponent.getRepresentingPartitions().get(0);
+        sourcePart = sourceComponent.getRepresentingParts().get(0);
       }
       if (targetPart == null) {
         Component targetComponent = ComponentExchangeExt.getTargetComponent(exchange);
-        targetPart = (Part) targetComponent.getRepresentingPartitions().get(0);
+        targetPart = targetComponent.getRepresentingParts().get(0);
       }
 
       if ((sourcePort == null) || (sourcePort instanceof ComponentPort)) {

@@ -22,11 +22,10 @@ import org.polarsys.capella.core.data.capellamodeller.ModelRoot;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
-import org.polarsys.capella.core.data.information.Partition;
-import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
@@ -40,9 +39,9 @@ public class QueryExt {
   /**
    * Returns owned parts with the given eclass type.
    */
-  public static List<Part> getParts(PartitionableElement element_p, EClass eClass_p, EClass excludeEClass_p) {
+  public static List<Part> getParts(Component element_p, EClass eClass_p, EClass excludeEClass_p) {
     List<Part> parts = new ArrayList<Part>();
-    for (Partition part : ComponentExt.getSubParts(element_p)) {
+    for (Part part : ComponentExt.getSubParts(element_p)) {
       if ((part instanceof Part) && eClass_p.isInstance(part.getAbstractType())
           && (!((excludeEClass_p != null) && excludeEClass_p.isInstance(part.getAbstractType())))) {
         parts.add((Part) part);

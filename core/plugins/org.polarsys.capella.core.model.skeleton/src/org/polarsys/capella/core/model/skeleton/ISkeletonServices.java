@@ -11,15 +11,15 @@
 
 package org.polarsys.capella.core.model.skeleton;
 
-import org.polarsys.capella.core.data.ctx.System;
+import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalFunction;
-import org.polarsys.capella.core.data.capellamodeller.Project;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
@@ -65,7 +65,7 @@ public interface ISkeletonServices {
    * @return The logical architecture skeleton.
    */
   public LogicalArchitecture doLogicalArchitecture(SystemEngineering systemEng_p, SystemAnalysis ctxArchitecture_p, SystemFunction systemFunction_p,
-      System system_p);
+      SystemComponent system_p);
 
   /**
    * Does the physical architecture skeleton.

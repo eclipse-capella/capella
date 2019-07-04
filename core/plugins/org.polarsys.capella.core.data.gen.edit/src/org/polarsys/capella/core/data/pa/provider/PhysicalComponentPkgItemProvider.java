@@ -124,7 +124,7 @@ public class PhysicalComponentPkgItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(InformationPackage.Literals.ASSOCIATION_PKG__OWNED_ASSOCIATIONS);
-			childrenFeatures.add(PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_COMPONENTS);
+			childrenFeatures.add(PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS);
 			childrenFeatures.add(PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENT_PKGS);
 			childrenFeatures.add(PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_KEY_PARTS);
 			childrenFeatures.add(PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_DEPLOYMENTS);
@@ -196,7 +196,7 @@ public class PhysicalComponentPkgItemProvider
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case PaPackage.PHYSICAL_COMPONENT_PKG__OWNED_ASSOCIATIONS:
-			case PaPackage.PHYSICAL_COMPONENT_PKG__OWNED_COMPONENTS:
+			case PaPackage.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS:
 			case PaPackage.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENT_PKGS:
 			case PaPackage.PHYSICAL_COMPONENT_PKG__OWNED_KEY_PARTS:
 			case PaPackage.PHYSICAL_COMPONENT_PKG__OWNED_DEPLOYMENTS:
@@ -233,7 +233,7 @@ public class PhysicalComponentPkgItemProvider
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_COMPONENTS,
+                        (PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS,
                          PaFactory.eINSTANCE.createPhysicalComponent());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -245,7 +245,7 @@ public class PhysicalComponentPkgItemProvider
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_COMPONENTS,
+                        (PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS,
                          PaFactory.eINSTANCE.createPhysicalNode());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      

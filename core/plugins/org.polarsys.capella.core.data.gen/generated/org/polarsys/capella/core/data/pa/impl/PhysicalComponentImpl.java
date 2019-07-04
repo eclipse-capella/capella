@@ -58,6 +58,8 @@ import org.polarsys.capella.core.data.cs.Block;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentRealization;
 import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.capella.core.data.cs.DeployableElement;
+import org.polarsys.capella.core.data.cs.DeploymentTarget;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfaceAllocation;
 import org.polarsys.capella.core.data.cs.InterfaceAllocator;
@@ -142,16 +144,14 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl#getAccess <em>Access</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl#getAcquire <em>Acquire</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl#getTransmit <em>Transmit</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl#isIsActor <em>Is Actor</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl#isIsHuman <em>Is Human</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl#isActor <em>Actor</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl#isHuman <em>Human</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl#getOwnedInterfaceUses <em>Owned Interface Uses</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl#getUsedInterfaceLinks <em>Used Interface Links</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl#getUsedInterfaces <em>Used Interfaces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl#getOwnedInterfaceImplementations <em>Owned Interface Implementations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl#getImplementedInterfaceLinks <em>Implemented Interface Links</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl#getImplementedInterfaces <em>Implemented Interfaces</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl#getProvisionedComponentAllocations <em>Provisioned Component Allocations</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl#getProvisioningComponentAllocations <em>Provisioning Component Allocations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl#getOwnedComponentRealizations <em>Owned Component Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl#getRealizedComponents <em>Realized Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl#getRealizingComponents <em>Realizing Components</em>}</li>
@@ -167,6 +167,8 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl#getInvolvingInvolvements <em>Involving Involvements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl#getCapabilityRealizationInvolvements <em>Capability Realization Involvements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl#getInvolvingCapabilityRealizations <em>Involving Capability Realizations</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl#getDeployingLinks <em>Deploying Links</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl#getDeploymentLinks <em>Deployment Links</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl#getKind <em>Kind</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl#getNature <em>Nature</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl#getOwnedDeploymentLinks <em>Owned Deployment Links</em>}</li>
@@ -455,56 +457,56 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 
 
 	/**
-	 * The default value of the '{@link #isIsActor() <em>Is Actor</em>}' attribute.
+	 * The default value of the '{@link #isActor() <em>Actor</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsActor()
+	 * @see #isActor()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_ACTOR_EDEFAULT = false;
+	protected static final boolean ACTOR_EDEFAULT = false;
 
 
 
 
 
 	/**
-	 * The cached value of the '{@link #isIsActor() <em>Is Actor</em>}' attribute.
+	 * The cached value of the '{@link #isActor() <em>Actor</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsActor()
+	 * @see #isActor()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isActor = IS_ACTOR_EDEFAULT;
+	protected boolean actor = ACTOR_EDEFAULT;
 
 
 
 
 
 	/**
-	 * The default value of the '{@link #isIsHuman() <em>Is Human</em>}' attribute.
+	 * The default value of the '{@link #isHuman() <em>Human</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsHuman()
+	 * @see #isHuman()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_HUMAN_EDEFAULT = false;
+	protected static final boolean HUMAN_EDEFAULT = false;
 
 
 
 
 
 	/**
-	 * The cached value of the '{@link #isIsHuman() <em>Is Human</em>}' attribute.
+	 * The cached value of the '{@link #isHuman() <em>Human</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsHuman()
+	 * @see #isHuman()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isHuman = IS_HUMAN_EDEFAULT;
+	protected boolean human = HUMAN_EDEFAULT;
 
 
 
@@ -1361,6 +1363,63 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 	 * @generated
 	 */
 
+	public EList<Feature> getOwnedFeatures() {
+
+		if (ownedFeatures == null) {
+			ownedFeatures = new EObjectContainmentEList.Resolving<Feature>(Feature.class, this, PaPackage.PHYSICAL_COMPONENT__OWNED_FEATURES);
+		}
+		return ownedFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public EList<Property> getContainedProperties() {
+
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = CapellacorePackage.Literals.CLASSIFIER__CONTAINED_PROPERTIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, CapellacorePackage.Literals.CLASSIFIER__CONTAINED_PROPERTIES, annotation);
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<Property> resultAsList = (Collection<Property>) result;
+		return new EcoreEList.UnmodifiableEList<Property>(this, CapellacorePackage.Literals.CLASSIFIER__CONTAINED_PROPERTIES, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
 	public boolean isAbstract() {
 
 		return abstract_;
@@ -1560,63 +1619,6 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 		@SuppressWarnings("unchecked")
 		Collection<GeneralizableElement> resultAsList = (Collection<GeneralizableElement>) result;
 		return new EcoreEList.UnmodifiableEList<GeneralizableElement>(this, CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUB, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public EList<Feature> getOwnedFeatures() {
-
-		if (ownedFeatures == null) {
-			ownedFeatures = new EObjectContainmentEList.Resolving<Feature>(Feature.class, this, PaPackage.PHYSICAL_COMPONENT__OWNED_FEATURES);
-		}
-		return ownedFeatures;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public EList<Property> getContainedProperties() {
-
-
-    Object result = null;
-    // Helper that can get value for current feature.
-    IHelper helper = null;
-    // If current object is adaptable, ask it to get its IHelper.
-    if (this instanceof IAdaptable) {
-    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
-    }
-    if (null == helper) {
-      // No helper found yet.
-      // Ask the platform to get the adapter 'IHelper.class' for current object.
-      IAdapterManager adapterManager = Platform.getAdapterManager();
-      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
-    }
-    if (null == helper) {
-      EPackage package_l = eClass().getEPackage();
-      // Get the root package of the owner package.
-      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
-    } 
-    // A helper is found, let's use it. 
-    EAnnotation annotation = CapellacorePackage.Literals.CLASSIFIER__CONTAINED_PROPERTIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, CapellacorePackage.Literals.CLASSIFIER__CONTAINED_PROPERTIES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Property> resultAsList = (Collection<Property>) result;
-		return new EcoreEList.UnmodifiableEList<Property>(this, CapellacorePackage.Literals.CLASSIFIER__CONTAINED_PROPERTIES, resultAsList.size(), resultAsList.toArray());
 		} catch (ClassCastException exception) {
 	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
@@ -2174,9 +2176,9 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 	 * @generated
 	 */
 
-	public boolean isIsActor() {
+	public boolean isActor() {
 
-		return isActor;
+		return actor;
 	}
 
 	/**
@@ -2185,12 +2187,12 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 	 * @generated
 	 */
 
-	public void setIsActor(boolean newIsActor) {
+	public void setActor(boolean newActor) {
 
-		boolean oldIsActor = isActor;
-		isActor = newIsActor;
+		boolean oldActor = actor;
+		actor = newActor;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PaPackage.PHYSICAL_COMPONENT__IS_ACTOR, oldIsActor, isActor));
+			eNotify(new ENotificationImpl(this, Notification.SET, PaPackage.PHYSICAL_COMPONENT__ACTOR, oldActor, actor));
 
 	}
 
@@ -2200,9 +2202,9 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 	 * @generated
 	 */
 
-	public boolean isIsHuman() {
+	public boolean isHuman() {
 
-		return isHuman;
+		return human;
 	}
 
 	/**
@@ -2211,12 +2213,12 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 	 * @generated
 	 */
 
-	public void setIsHuman(boolean newIsHuman) {
+	public void setHuman(boolean newHuman) {
 
-		boolean oldIsHuman = isHuman;
-		isHuman = newIsHuman;
+		boolean oldHuman = human;
+		human = newHuman;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PaPackage.PHYSICAL_COMPONENT__IS_HUMAN, oldIsHuman, isHuman));
+			eNotify(new ENotificationImpl(this, Notification.SET, PaPackage.PHYSICAL_COMPONENT__HUMAN, oldHuman, human));
 
 	}
 
@@ -2413,92 +2415,6 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 		@SuppressWarnings("unchecked")
 		Collection<Interface> resultAsList = (Collection<Interface>) result;
 		return new EcoreEList.UnmodifiableEList<Interface>(this, CsPackage.Literals.COMPONENT__IMPLEMENTED_INTERFACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public EList<ComponentRealization> getProvisionedComponentAllocations() {
-
-
-    Object result = null;
-    // Helper that can get value for current feature.
-    IHelper helper = null;
-    // If current object is adaptable, ask it to get its IHelper.
-    if (this instanceof IAdaptable) {
-    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
-    }
-    if (null == helper) {
-      // No helper found yet.
-      // Ask the platform to get the adapter 'IHelper.class' for current object.
-      IAdapterManager adapterManager = Platform.getAdapterManager();
-      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
-    }
-    if (null == helper) {
-      EPackage package_l = eClass().getEPackage();
-      // Get the root package of the owner package.
-      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
-    } 
-    // A helper is found, let's use it. 
-    EAnnotation annotation = CsPackage.Literals.COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, CsPackage.Literals.COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<ComponentRealization> resultAsList = (Collection<ComponentRealization>) result;
-		return new EcoreEList.UnmodifiableEList<ComponentRealization>(this, CsPackage.Literals.COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public EList<ComponentRealization> getProvisioningComponentAllocations() {
-
-
-    Object result = null;
-    // Helper that can get value for current feature.
-    IHelper helper = null;
-    // If current object is adaptable, ask it to get its IHelper.
-    if (this instanceof IAdaptable) {
-    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
-    }
-    if (null == helper) {
-      // No helper found yet.
-      // Ask the platform to get the adapter 'IHelper.class' for current object.
-      IAdapterManager adapterManager = Platform.getAdapterManager();
-      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
-    }
-    if (null == helper) {
-      EPackage package_l = eClass().getEPackage();
-      // Get the root package of the owner package.
-      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
-    } 
-    // A helper is found, let's use it. 
-    EAnnotation annotation = CsPackage.Literals.COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, CsPackage.Literals.COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<ComponentRealization> resultAsList = (Collection<ComponentRealization>) result;
-		return new EcoreEList.UnmodifiableEList<ComponentRealization>(this, CsPackage.Literals.COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
 		} catch (ClassCastException exception) {
 	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
@@ -2999,6 +2915,92 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 		@SuppressWarnings("unchecked")
 		Collection<CapabilityRealization> resultAsList = (Collection<CapabilityRealization>) result;
 		return new EcoreEList.UnmodifiableEList<CapabilityRealization>(this, CapellacommonPackage.Literals.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public EList<AbstractDeploymentLink> getDeployingLinks() {
+
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = CsPackage.Literals.DEPLOYABLE_ELEMENT__DEPLOYING_LINKS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, CsPackage.Literals.DEPLOYABLE_ELEMENT__DEPLOYING_LINKS, annotation);
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<AbstractDeploymentLink> resultAsList = (Collection<AbstractDeploymentLink>) result;
+		return new EcoreEList.UnmodifiableEList<AbstractDeploymentLink>(this, CsPackage.Literals.DEPLOYABLE_ELEMENT__DEPLOYING_LINKS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public EList<AbstractDeploymentLink> getDeploymentLinks() {
+
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = CsPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, CsPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS, annotation);
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<AbstractDeploymentLink> resultAsList = (Collection<AbstractDeploymentLink>) result;
+		return new EcoreEList.UnmodifiableEList<AbstractDeploymentLink>(this, CsPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS, resultAsList.size(), resultAsList.toArray());
 		} catch (ClassCastException exception) {
 	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
@@ -3537,10 +3539,10 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 				return getAcquire();
 			case PaPackage.PHYSICAL_COMPONENT__TRANSMIT:
 				return getTransmit();
-			case PaPackage.PHYSICAL_COMPONENT__IS_ACTOR:
-				return isIsActor();
-			case PaPackage.PHYSICAL_COMPONENT__IS_HUMAN:
-				return isIsHuman();
+			case PaPackage.PHYSICAL_COMPONENT__ACTOR:
+				return isActor();
+			case PaPackage.PHYSICAL_COMPONENT__HUMAN:
+				return isHuman();
 			case PaPackage.PHYSICAL_COMPONENT__OWNED_INTERFACE_USES:
 				return getOwnedInterfaceUses();
 			case PaPackage.PHYSICAL_COMPONENT__USED_INTERFACE_LINKS:
@@ -3553,10 +3555,6 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 				return getImplementedInterfaceLinks();
 			case PaPackage.PHYSICAL_COMPONENT__IMPLEMENTED_INTERFACES:
 				return getImplementedInterfaces();
-			case PaPackage.PHYSICAL_COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS:
-				return getProvisionedComponentAllocations();
-			case PaPackage.PHYSICAL_COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS:
-				return getProvisioningComponentAllocations();
 			case PaPackage.PHYSICAL_COMPONENT__OWNED_COMPONENT_REALIZATIONS:
 				return getOwnedComponentRealizations();
 			case PaPackage.PHYSICAL_COMPONENT__REALIZED_COMPONENTS:
@@ -3587,6 +3585,10 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 				return getCapabilityRealizationInvolvements();
 			case PaPackage.PHYSICAL_COMPONENT__INVOLVING_CAPABILITY_REALIZATIONS:
 				return getInvolvingCapabilityRealizations();
+			case PaPackage.PHYSICAL_COMPONENT__DEPLOYING_LINKS:
+				return getDeployingLinks();
+			case PaPackage.PHYSICAL_COMPONENT__DEPLOYMENT_LINKS:
+				return getDeploymentLinks();
 			case PaPackage.PHYSICAL_COMPONENT__KIND:
 				return getKind();
 			case PaPackage.PHYSICAL_COMPONENT__NATURE:
@@ -3685,11 +3687,11 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 				getOwnedCommunicationLinks().clear();
 				getOwnedCommunicationLinks().addAll((Collection<? extends CommunicationLink>)newValue);
 				return;
-			case PaPackage.PHYSICAL_COMPONENT__IS_ACTOR:
-					setIsActor((Boolean)newValue);
+			case PaPackage.PHYSICAL_COMPONENT__ACTOR:
+					setActor((Boolean)newValue);
 				return;
-			case PaPackage.PHYSICAL_COMPONENT__IS_HUMAN:
-					setIsHuman((Boolean)newValue);
+			case PaPackage.PHYSICAL_COMPONENT__HUMAN:
+					setHuman((Boolean)newValue);
 				return;
 			case PaPackage.PHYSICAL_COMPONENT__OWNED_INTERFACE_USES:
 				getOwnedInterfaceUses().clear();
@@ -3801,11 +3803,11 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 			case PaPackage.PHYSICAL_COMPONENT__OWNED_COMMUNICATION_LINKS:
 				getOwnedCommunicationLinks().clear();
 				return;
-			case PaPackage.PHYSICAL_COMPONENT__IS_ACTOR:
-				setIsActor(IS_ACTOR_EDEFAULT);
+			case PaPackage.PHYSICAL_COMPONENT__ACTOR:
+				setActor(ACTOR_EDEFAULT);
 				return;
-			case PaPackage.PHYSICAL_COMPONENT__IS_HUMAN:
-				setIsHuman(IS_HUMAN_EDEFAULT);
+			case PaPackage.PHYSICAL_COMPONENT__HUMAN:
+				setHuman(HUMAN_EDEFAULT);
 				return;
 			case PaPackage.PHYSICAL_COMPONENT__OWNED_INTERFACE_USES:
 				getOwnedInterfaceUses().clear();
@@ -3937,10 +3939,10 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 				return !getAcquire().isEmpty();
 			case PaPackage.PHYSICAL_COMPONENT__TRANSMIT:
 				return !getTransmit().isEmpty();
-			case PaPackage.PHYSICAL_COMPONENT__IS_ACTOR:
-				return isActor != IS_ACTOR_EDEFAULT;
-			case PaPackage.PHYSICAL_COMPONENT__IS_HUMAN:
-				return isHuman != IS_HUMAN_EDEFAULT;
+			case PaPackage.PHYSICAL_COMPONENT__ACTOR:
+				return actor != ACTOR_EDEFAULT;
+			case PaPackage.PHYSICAL_COMPONENT__HUMAN:
+				return human != HUMAN_EDEFAULT;
 			case PaPackage.PHYSICAL_COMPONENT__OWNED_INTERFACE_USES:
 				return ownedInterfaceUses != null && !ownedInterfaceUses.isEmpty();
 			case PaPackage.PHYSICAL_COMPONENT__USED_INTERFACE_LINKS:
@@ -3953,10 +3955,6 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 				return !getImplementedInterfaceLinks().isEmpty();
 			case PaPackage.PHYSICAL_COMPONENT__IMPLEMENTED_INTERFACES:
 				return !getImplementedInterfaces().isEmpty();
-			case PaPackage.PHYSICAL_COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS:
-				return !getProvisionedComponentAllocations().isEmpty();
-			case PaPackage.PHYSICAL_COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS:
-				return !getProvisioningComponentAllocations().isEmpty();
 			case PaPackage.PHYSICAL_COMPONENT__OWNED_COMPONENT_REALIZATIONS:
 				return ownedComponentRealizations != null && !ownedComponentRealizations.isEmpty();
 			case PaPackage.PHYSICAL_COMPONENT__REALIZED_COMPONENTS:
@@ -3987,6 +3985,10 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 				return !getCapabilityRealizationInvolvements().isEmpty();
 			case PaPackage.PHYSICAL_COMPONENT__INVOLVING_CAPABILITY_REALIZATIONS:
 				return !getInvolvingCapabilityRealizations().isEmpty();
+			case PaPackage.PHYSICAL_COMPONENT__DEPLOYING_LINKS:
+				return !getDeployingLinks().isEmpty();
+			case PaPackage.PHYSICAL_COMPONENT__DEPLOYMENT_LINKS:
+				return !getDeploymentLinks().isEmpty();
 			case PaPackage.PHYSICAL_COMPONENT__KIND:
 				return kind != KIND_EDEFAULT;
 			case PaPackage.PHYSICAL_COMPONENT__NATURE:
@@ -4123,16 +4125,14 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 		}
 		if (baseClass == Component.class) {
 			switch (derivedFeatureID) {
-				case PaPackage.PHYSICAL_COMPONENT__IS_ACTOR: return CsPackage.COMPONENT__IS_ACTOR;
-				case PaPackage.PHYSICAL_COMPONENT__IS_HUMAN: return CsPackage.COMPONENT__IS_HUMAN;
+				case PaPackage.PHYSICAL_COMPONENT__ACTOR: return CsPackage.COMPONENT__ACTOR;
+				case PaPackage.PHYSICAL_COMPONENT__HUMAN: return CsPackage.COMPONENT__HUMAN;
 				case PaPackage.PHYSICAL_COMPONENT__OWNED_INTERFACE_USES: return CsPackage.COMPONENT__OWNED_INTERFACE_USES;
 				case PaPackage.PHYSICAL_COMPONENT__USED_INTERFACE_LINKS: return CsPackage.COMPONENT__USED_INTERFACE_LINKS;
 				case PaPackage.PHYSICAL_COMPONENT__USED_INTERFACES: return CsPackage.COMPONENT__USED_INTERFACES;
 				case PaPackage.PHYSICAL_COMPONENT__OWNED_INTERFACE_IMPLEMENTATIONS: return CsPackage.COMPONENT__OWNED_INTERFACE_IMPLEMENTATIONS;
 				case PaPackage.PHYSICAL_COMPONENT__IMPLEMENTED_INTERFACE_LINKS: return CsPackage.COMPONENT__IMPLEMENTED_INTERFACE_LINKS;
 				case PaPackage.PHYSICAL_COMPONENT__IMPLEMENTED_INTERFACES: return CsPackage.COMPONENT__IMPLEMENTED_INTERFACES;
-				case PaPackage.PHYSICAL_COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS: return CsPackage.COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS;
-				case PaPackage.PHYSICAL_COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS: return CsPackage.COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS;
 				case PaPackage.PHYSICAL_COMPONENT__OWNED_COMPONENT_REALIZATIONS: return CsPackage.COMPONENT__OWNED_COMPONENT_REALIZATIONS;
 				case PaPackage.PHYSICAL_COMPONENT__REALIZED_COMPONENTS: return CsPackage.COMPONENT__REALIZED_COMPONENTS;
 				case PaPackage.PHYSICAL_COMPONENT__REALIZING_COMPONENTS: return CsPackage.COMPONENT__REALIZING_COMPONENTS;
@@ -4158,6 +4158,18 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 			switch (derivedFeatureID) {
 				case PaPackage.PHYSICAL_COMPONENT__CAPABILITY_REALIZATION_INVOLVEMENTS: return CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__CAPABILITY_REALIZATION_INVOLVEMENTS;
 				case PaPackage.PHYSICAL_COMPONENT__INVOLVING_CAPABILITY_REALIZATIONS: return CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATIONS;
+				default: return -1;
+			}
+		}
+		if (baseClass == DeployableElement.class) {
+			switch (derivedFeatureID) {
+				case PaPackage.PHYSICAL_COMPONENT__DEPLOYING_LINKS: return CsPackage.DEPLOYABLE_ELEMENT__DEPLOYING_LINKS;
+				default: return -1;
+			}
+		}
+		if (baseClass == DeploymentTarget.class) {
+			switch (derivedFeatureID) {
+				case PaPackage.PHYSICAL_COMPONENT__DEPLOYMENT_LINKS: return CsPackage.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS;
 				default: return -1;
 			}
 		}
@@ -4273,16 +4285,14 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 		}
 		if (baseClass == Component.class) {
 			switch (baseFeatureID) {
-				case CsPackage.COMPONENT__IS_ACTOR: return PaPackage.PHYSICAL_COMPONENT__IS_ACTOR;
-				case CsPackage.COMPONENT__IS_HUMAN: return PaPackage.PHYSICAL_COMPONENT__IS_HUMAN;
+				case CsPackage.COMPONENT__ACTOR: return PaPackage.PHYSICAL_COMPONENT__ACTOR;
+				case CsPackage.COMPONENT__HUMAN: return PaPackage.PHYSICAL_COMPONENT__HUMAN;
 				case CsPackage.COMPONENT__OWNED_INTERFACE_USES: return PaPackage.PHYSICAL_COMPONENT__OWNED_INTERFACE_USES;
 				case CsPackage.COMPONENT__USED_INTERFACE_LINKS: return PaPackage.PHYSICAL_COMPONENT__USED_INTERFACE_LINKS;
 				case CsPackage.COMPONENT__USED_INTERFACES: return PaPackage.PHYSICAL_COMPONENT__USED_INTERFACES;
 				case CsPackage.COMPONENT__OWNED_INTERFACE_IMPLEMENTATIONS: return PaPackage.PHYSICAL_COMPONENT__OWNED_INTERFACE_IMPLEMENTATIONS;
 				case CsPackage.COMPONENT__IMPLEMENTED_INTERFACE_LINKS: return PaPackage.PHYSICAL_COMPONENT__IMPLEMENTED_INTERFACE_LINKS;
 				case CsPackage.COMPONENT__IMPLEMENTED_INTERFACES: return PaPackage.PHYSICAL_COMPONENT__IMPLEMENTED_INTERFACES;
-				case CsPackage.COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS: return PaPackage.PHYSICAL_COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS;
-				case CsPackage.COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS: return PaPackage.PHYSICAL_COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS;
 				case CsPackage.COMPONENT__OWNED_COMPONENT_REALIZATIONS: return PaPackage.PHYSICAL_COMPONENT__OWNED_COMPONENT_REALIZATIONS;
 				case CsPackage.COMPONENT__REALIZED_COMPONENTS: return PaPackage.PHYSICAL_COMPONENT__REALIZED_COMPONENTS;
 				case CsPackage.COMPONENT__REALIZING_COMPONENTS: return PaPackage.PHYSICAL_COMPONENT__REALIZING_COMPONENTS;
@@ -4311,6 +4321,18 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 				default: return -1;
 			}
 		}
+		if (baseClass == DeployableElement.class) {
+			switch (baseFeatureID) {
+				case CsPackage.DEPLOYABLE_ELEMENT__DEPLOYING_LINKS: return PaPackage.PHYSICAL_COMPONENT__DEPLOYING_LINKS;
+				default: return -1;
+			}
+		}
+		if (baseClass == DeploymentTarget.class) {
+			switch (baseFeatureID) {
+				case CsPackage.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS: return PaPackage.PHYSICAL_COMPONENT__DEPLOYMENT_LINKS;
+				default: return -1;
+			}
+		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
@@ -4328,10 +4350,10 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 		result.append(name);
 		result.append(", abstract: "); //$NON-NLS-1$
 		result.append(abstract_);
-		result.append(", isActor: "); //$NON-NLS-1$
-		result.append(isActor);
-		result.append(", isHuman: "); //$NON-NLS-1$
-		result.append(isHuman);
+		result.append(", actor: "); //$NON-NLS-1$
+		result.append(actor);
+		result.append(", human: "); //$NON-NLS-1$
+		result.append(human);
 		result.append(", kind: "); //$NON-NLS-1$
 		result.append(kind);
 		result.append(", nature: "); //$NON-NLS-1$

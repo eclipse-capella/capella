@@ -42,8 +42,6 @@ import org.polarsys.capella.core.data.helpers.information.delegates.ExchangeItem
 import org.polarsys.capella.core.data.helpers.information.delegates.ExchangeItemRealizationHelper;
 import org.polarsys.capella.core.data.helpers.information.delegates.OpaqueExpressionHelper;
 import org.polarsys.capella.core.data.helpers.information.delegates.OperationAllocationHelper;
-import org.polarsys.capella.core.data.helpers.information.delegates.PartitionHelper;
-import org.polarsys.capella.core.data.helpers.information.delegates.PartitionableElementHelper;
 import org.polarsys.capella.core.data.helpers.information.delegates.PortAllocationHelper;
 import org.polarsys.capella.core.data.helpers.information.delegates.PortHelper;
 import org.polarsys.capella.core.data.helpers.information.delegates.PortRealizationHelper;
@@ -63,8 +61,6 @@ import org.polarsys.capella.core.data.information.InformationRealization;
 import org.polarsys.capella.core.data.information.KeyPart;
 import org.polarsys.capella.core.data.information.OperationAllocation;
 import org.polarsys.capella.core.data.information.Parameter;
-import org.polarsys.capella.core.data.information.Partition;
-import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.data.information.PortAllocation;
 import org.polarsys.capella.core.data.information.PortRealization;
@@ -110,16 +106,12 @@ public class InformationHelper implements IHelper {
       ret = AbstractInstanceHelper.getInstance().doSwitch((ExchangeItemInstance) object, feature);
     } else if (object instanceof SignalInstance) {
       ret = AbstractInstanceHelper.getInstance().doSwitch((SignalInstance) object, feature);
-    } else if (object instanceof Partition) {
-      ret = PartitionHelper.getInstance().doSwitch((Partition) object, feature);
     } else if (object instanceof Port) {
       ret = PortHelper.getInstance().doSwitch((Port) object, feature);
     } else if (object instanceof PortRealization) {
       ret = PortRealizationHelper.getInstance().doSwitch((PortRealization) object, feature);
     } else if (object instanceof PortAllocation) {
       ret = PortAllocationHelper.getInstance().doSwitch((PortAllocation) object, feature);
-    } else if (object instanceof PartitionableElement) {
-      ret = PartitionableElementHelper.getInstance().doSwitch((PartitionableElement) object, feature);
     } else if (object instanceof Property) {
       ret = PropertyHelper.getInstance().doSwitch((Property) object, feature);
     } else if (object instanceof Association) {

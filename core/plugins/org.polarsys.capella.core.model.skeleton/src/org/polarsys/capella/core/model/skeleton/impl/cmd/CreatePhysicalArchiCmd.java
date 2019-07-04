@@ -10,6 +10,9 @@
  *******************************************************************************/
 package org.polarsys.capella.core.model.skeleton.impl.cmd;
 
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
+import org.polarsys.capella.core.data.cs.ComponentRealization;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
 import org.polarsys.capella.core.data.cs.Part;
@@ -22,19 +25,15 @@ import org.polarsys.capella.core.data.la.LaFactory;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalFunction;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.pa.LogicalArchitectureRealization;
-import org.polarsys.capella.core.data.pa.LogicalComponentRealization;
 import org.polarsys.capella.core.data.pa.PaFactory;
-import org.polarsys.capella.core.data.pa.PhysicalActorPkg;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
-import org.polarsys.capella.core.data.pa.PhysicalContext;
+import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
 import org.polarsys.capella.core.model.skeleton.Messages;
-import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 
 /**
  * The command allowing to create the physical architecture structure skeleton.
@@ -105,24 +104,20 @@ public class CreatePhysicalArchiCmd extends AbstractReadWriteCommand {
     physicalArchitecture.setOwnedDataPkg(dataPkg);
 
     // Builds the physical actors structure skeleton.
-    PhysicalActorPkg actorsPkg = PaFactory.eINSTANCE.createPhysicalActorPkg(NamingConstants.CreatePhysicalArchCmd_actors_pkg_name);
-    physicalArchitecture.setOwnedPhysicalActorPkg(actorsPkg);
+    PhysicalComponentPkg componentPkg = PaFactory.eINSTANCE.createPhysicalComponentPkg(NamingConstants.CreatePhysicalArchCmd_actors_pkg_name);
+    physicalArchitecture.setOwnedPhysicalComponentPkg(componentPkg);
 
     // Builds the physical components structure skeleton.
     physicalComponent = PaFactory.eINSTANCE.createPhysicalComponent(NamingConstants.CreatePhysicalArchCmd_physicalComponent_name);
-    physicalArchitecture.setOwnedPhysicalComponent(physicalComponent);
-
-    // Builds the logical context structure skeleton.
-    PhysicalContext physicalContext = PaFactory.eINSTANCE.createPhysicalContext(NamingConstants.CreatePhysicalArchCmd_physicalContext_name);
-    physicalArchitecture.setOwnedPhysicalContext(physicalContext);
+    componentPkg.getOwnedPhysicalComponents().add(physicalComponent);
 
     Part physicalRootPart = CsFactory.eINSTANCE.createPart(physicalComponent.getName());
-    physicalContext.getOwnedFeatures().add(physicalRootPart);
+    componentPkg.getOwnedParts().add(physicalRootPart);
     physicalRootPart.setAbstractType(physicalComponent);
 
     // Build the logical component realization.
-    LogicalComponentRealization logicalComponentRealisation = PaFactory.eINSTANCE.createLogicalComponentRealization();
-    physicalComponent.getOwnedLogicalComponentRealizations().add(logicalComponentRealisation);
+    ComponentRealization logicalComponentRealisation = CsFactory.eINSTANCE.createComponentRealization();
+    physicalComponent.getOwnedComponentRealizations().add(logicalComponentRealisation);
     logicalComponentRealisation.setSourceElement(physicalComponent);
     if (null != logicalComponent) {
       logicalComponentRealisation.setTargetElement(logicalComponent);

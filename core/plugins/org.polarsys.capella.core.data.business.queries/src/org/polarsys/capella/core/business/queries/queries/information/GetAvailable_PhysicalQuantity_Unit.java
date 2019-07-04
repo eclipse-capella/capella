@@ -136,12 +136,6 @@ public class GetAvailable_PhysicalQuantity_Unit extends AbstractQuery {
           availableElements.add(unit);
         }
       }
-      GenericPkg pkg = sharedPkg.getOwnedGenericPkg();
-      if (pkg != null) {
-        for (Unit unit : GenericPkgExt.getAllUnits(pkg)) {
-          availableElements.add(unit);
-        }
-      }
     }
     return availableElements;
   }

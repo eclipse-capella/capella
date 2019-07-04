@@ -24,16 +24,14 @@ import org.polarsys.capella.core.data.information.communication.CommunicationLin
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.polarsys.capella.core.data.cs.Component#isIsActor <em>Is Actor</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.cs.Component#isIsHuman <em>Is Human</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.cs.Component#isActor <em>Actor</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.cs.Component#isHuman <em>Human</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.Component#getOwnedInterfaceUses <em>Owned Interface Uses</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.Component#getUsedInterfaceLinks <em>Used Interface Links</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.Component#getUsedInterfaces <em>Used Interfaces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.Component#getOwnedInterfaceImplementations <em>Owned Interface Implementations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.Component#getImplementedInterfaceLinks <em>Implemented Interface Links</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.Component#getImplementedInterfaces <em>Implemented Interfaces</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.cs.Component#getProvisionedComponentAllocations <em>Provisioned Component Allocations</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.cs.Component#getProvisioningComponentAllocations <em>Provisioning Component Allocations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.Component#getOwnedComponentRealizations <em>Owned Component Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.Component#getRealizedComponents <em>Realized Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.Component#getRealizingComponents <em>Realizing Components</em>}</li>
@@ -63,24 +61,24 @@ public interface Component extends Block, Classifier, InterfaceAllocator, Commun
 
 
 	/**
-	 * Returns the value of the '<em><b>Is Actor</b></em>' attribute.
+	 * Returns the value of the '<em><b>Actor</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Is Actor</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Actor</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Is Actor</em>' attribute.
-	 * @see #setIsActor(boolean)
-	 * @see org.polarsys.capella.core.data.cs.CsPackage#getComponent_IsActor()
+	 * @return the value of the '<em>Actor</em>' attribute.
+	 * @see #setActor(boolean)
+	 * @see org.polarsys.capella.core.data.cs.CsPackage#getComponent_Actor()
 	 * @model default="false" required="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Indicates if the Component is an Actor' constraints='none' comment/notes='none'"
 	 * @generated
 	 */
 
-	boolean isIsActor();
+	boolean isActor();
 
 
 
@@ -89,16 +87,16 @@ public interface Component extends Block, Classifier, InterfaceAllocator, Commun
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.cs.Component#isIsActor <em>Is Actor</em>}' attribute.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.cs.Component#isActor <em>Actor</em>}' attribute.
 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Is Actor</em>' attribute.
-	 * @see #isIsActor()
+	 * @param value the new value of the '<em>Actor</em>' attribute.
+	 * @see #isActor()
 	 * @generated
 	 */
 
-	void setIsActor(boolean value);
+	void setActor(boolean value);
 
 
 
@@ -107,24 +105,24 @@ public interface Component extends Block, Classifier, InterfaceAllocator, Commun
 
 
 	/**
-	 * Returns the value of the '<em><b>Is Human</b></em>' attribute.
+	 * Returns the value of the '<em><b>Human</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Is Human</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Human</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Is Human</em>' attribute.
-	 * @see #setIsHuman(boolean)
-	 * @see org.polarsys.capella.core.data.cs.CsPackage#getComponent_IsHuman()
+	 * @return the value of the '<em>Human</em>' attribute.
+	 * @see #setHuman(boolean)
+	 * @see org.polarsys.capella.core.data.cs.CsPackage#getComponent_Human()
 	 * @model default="false" required="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Indicates whether the Component is a Human' constraints='none' comment/notes='none'"
 	 * @generated
 	 */
 
-	boolean isIsHuman();
+	boolean isHuman();
 
 
 
@@ -133,16 +131,16 @@ public interface Component extends Block, Classifier, InterfaceAllocator, Commun
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.cs.Component#isIsHuman <em>Is Human</em>}' attribute.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.cs.Component#isHuman <em>Human</em>}' attribute.
 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Is Human</em>' attribute.
-	 * @see #isIsHuman()
+	 * @param value the new value of the '<em>Human</em>' attribute.
+	 * @see #isHuman()
 	 * @generated
 	 */
 
-	void setIsHuman(boolean value);
+	void setHuman(boolean value);
 
 
 
@@ -319,64 +317,6 @@ public interface Component extends Block, Classifier, InterfaceAllocator, Commun
 	 */
 
 	EList<Interface> getImplementedInterfaces();
-
-
-
-
-
-
-
-	/**
-	 * Returns the value of the '<em><b>Provisioned Component Allocations</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.ComponentRealization}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.cs.ComponentRealization#getRealizingComponent <em>Realizing Component</em>}'.
-
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Provisioned Component Allocations</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Provisioned Component Allocations</em>' reference list.
-	 * @see org.polarsys.capella.core.data.cs.CsPackage#getComponent_ProvisionedComponentAllocations()
-	 * @see org.polarsys.capella.core.data.cs.ComponentRealization#getRealizingComponent
-	 * @model opposite="realizingComponent" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outgoingTraces'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) list of allocation links made from this component to other components\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
-
-	EList<ComponentRealization> getProvisionedComponentAllocations();
-
-
-
-
-
-
-
-	/**
-	 * Returns the value of the '<em><b>Provisioning Component Allocations</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.ComponentRealization}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.cs.ComponentRealization#getRealizedComponent <em>Realized Component</em>}'.
-
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Provisioning Component Allocations</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Provisioning Component Allocations</em>' reference list.
-	 * @see org.polarsys.capella.core.data.cs.CsPackage#getComponent_ProvisioningComponentAllocations()
-	 * @see org.polarsys.capella.core.data.cs.ComponentRealization#getRealizedComponent
-	 * @model opposite="realizedComponent" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='incomingTraces'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) list of allocation links from other components, to this component\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
-
-	EList<ComponentRealization> getProvisioningComponentAllocations();
 
 
 

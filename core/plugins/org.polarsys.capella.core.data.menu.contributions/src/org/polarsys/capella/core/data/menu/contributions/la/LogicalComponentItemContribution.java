@@ -24,18 +24,17 @@ import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.command.CreateChildCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-
-import org.polarsys.capella.common.helpers.EcoreUtil2;
-import org.polarsys.capella.core.data.cs.CsFactory;
-import org.polarsys.capella.core.data.information.PartitionableElement;
-import org.polarsys.capella.core.data.la.LaPackage;
-import org.polarsys.capella.core.data.la.LogicalArchitecture;
-import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.CsFactory;
+import org.polarsys.capella.core.data.la.LaPackage;
+import org.polarsys.capella.core.data.la.LogicalArchitecture;
+import org.polarsys.capella.core.data.la.LogicalComponent;
 
 public class LogicalComponentItemContribution implements IMDEMenuItemContribution {
   /**
@@ -44,14 +43,14 @@ public class LogicalComponentItemContribution implements IMDEMenuItemContributio
   public Command executionContribution(final EditingDomain editingDomain, ModelElement containerElement, final ModelElement createdElement,
       EStructuralFeature feature) {
     if (createdElement instanceof LogicalComponent) {
-      if (((PartitionableElement) createdElement).getRepresentingPartitions().size() == 0) {
+      if (((Component) createdElement).getRepresentingParts().size() == 0) {
         EObject partOwner =
             (containerElement instanceof LogicalComponent) ? containerElement : EcoreUtil2.getFirstContainer(containerElement,
                 LaPackage.Literals.LOGICAL_COMPONENT);
         if (partOwner == null) {
           EObject arch = EcoreUtil2.getFirstContainer(containerElement, LaPackage.Literals.LOGICAL_ARCHITECTURE);
           if (arch != null) {
-            partOwner = ((LogicalArchitecture) arch).getOwnedLogicalContext();
+            partOwner = ((LogicalArchitecture) arch).getOwnedLogicalComponentPkg();
           }
         }
 

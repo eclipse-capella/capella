@@ -2010,22 +2010,22 @@ public interface CsPackage extends EPackage {
 	int COMPONENT__TRANSMIT = BLOCK_FEATURE_COUNT + 21;
 
 	/**
-	 * The feature id for the '<em><b>Is Actor</b></em>' attribute.
+	 * The feature id for the '<em><b>Actor</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT__IS_ACTOR = BLOCK_FEATURE_COUNT + 22;
+	int COMPONENT__ACTOR = BLOCK_FEATURE_COUNT + 22;
 
 	/**
-	 * The feature id for the '<em><b>Is Human</b></em>' attribute.
+	 * The feature id for the '<em><b>Human</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT__IS_HUMAN = BLOCK_FEATURE_COUNT + 23;
+	int COMPONENT__HUMAN = BLOCK_FEATURE_COUNT + 23;
 
 	/**
 	 * The feature id for the '<em><b>Owned Interface Uses</b></em>' containment reference list.
@@ -2082,31 +2082,13 @@ public interface CsPackage extends EPackage {
 	int COMPONENT__IMPLEMENTED_INTERFACES = BLOCK_FEATURE_COUNT + 29;
 
 	/**
-	 * The feature id for the '<em><b>Provisioned Component Allocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS = BLOCK_FEATURE_COUNT + 30;
-
-	/**
-	 * The feature id for the '<em><b>Provisioning Component Allocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS = BLOCK_FEATURE_COUNT + 31;
-
-	/**
 	 * The feature id for the '<em><b>Owned Component Realizations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT__OWNED_COMPONENT_REALIZATIONS = BLOCK_FEATURE_COUNT + 32;
+	int COMPONENT__OWNED_COMPONENT_REALIZATIONS = BLOCK_FEATURE_COUNT + 30;
 
 	/**
 	 * The feature id for the '<em><b>Realized Components</b></em>' reference list.
@@ -2115,7 +2097,7 @@ public interface CsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT__REALIZED_COMPONENTS = BLOCK_FEATURE_COUNT + 33;
+	int COMPONENT__REALIZED_COMPONENTS = BLOCK_FEATURE_COUNT + 31;
 
 	/**
 	 * The feature id for the '<em><b>Realizing Components</b></em>' reference list.
@@ -2124,7 +2106,7 @@ public interface CsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT__REALIZING_COMPONENTS = BLOCK_FEATURE_COUNT + 34;
+	int COMPONENT__REALIZING_COMPONENTS = BLOCK_FEATURE_COUNT + 32;
 
 	/**
 	 * The feature id for the '<em><b>Provided Interfaces</b></em>' reference list.
@@ -2133,7 +2115,7 @@ public interface CsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT__PROVIDED_INTERFACES = BLOCK_FEATURE_COUNT + 35;
+	int COMPONENT__PROVIDED_INTERFACES = BLOCK_FEATURE_COUNT + 33;
 
 	/**
 	 * The feature id for the '<em><b>Required Interfaces</b></em>' reference list.
@@ -2142,7 +2124,7 @@ public interface CsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT__REQUIRED_INTERFACES = BLOCK_FEATURE_COUNT + 36;
+	int COMPONENT__REQUIRED_INTERFACES = BLOCK_FEATURE_COUNT + 34;
 
 	/**
 	 * The feature id for the '<em><b>Contained Component Ports</b></em>' reference list.
@@ -2151,7 +2133,7 @@ public interface CsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT__CONTAINED_COMPONENT_PORTS = BLOCK_FEATURE_COUNT + 37;
+	int COMPONENT__CONTAINED_COMPONENT_PORTS = BLOCK_FEATURE_COUNT + 35;
 
 	/**
 	 * The feature id for the '<em><b>Contained Parts</b></em>' reference list.
@@ -2160,7 +2142,7 @@ public interface CsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT__CONTAINED_PARTS = BLOCK_FEATURE_COUNT + 38;
+	int COMPONENT__CONTAINED_PARTS = BLOCK_FEATURE_COUNT + 36;
 
 	/**
 	 * The feature id for the '<em><b>Contained Physical Ports</b></em>' reference list.
@@ -2169,7 +2151,7 @@ public interface CsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT__CONTAINED_PHYSICAL_PORTS = BLOCK_FEATURE_COUNT + 39;
+	int COMPONENT__CONTAINED_PHYSICAL_PORTS = BLOCK_FEATURE_COUNT + 37;
 
 	/**
 	 * The feature id for the '<em><b>Owned Physical Path</b></em>' containment reference list.
@@ -2178,7 +2160,7 @@ public interface CsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT__OWNED_PHYSICAL_PATH = BLOCK_FEATURE_COUNT + 40;
+	int COMPONENT__OWNED_PHYSICAL_PATH = BLOCK_FEATURE_COUNT + 38;
 
 	/**
 	 * The feature id for the '<em><b>Owned Physical Links</b></em>' containment reference list.
@@ -2187,7 +2169,7 @@ public interface CsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT__OWNED_PHYSICAL_LINKS = BLOCK_FEATURE_COUNT + 41;
+	int COMPONENT__OWNED_PHYSICAL_LINKS = BLOCK_FEATURE_COUNT + 39;
 
 	/**
 	 * The feature id for the '<em><b>Owned Physical Link Categories</b></em>' containment reference list.
@@ -2196,7 +2178,7 @@ public interface CsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT__OWNED_PHYSICAL_LINK_CATEGORIES = BLOCK_FEATURE_COUNT + 42;
+	int COMPONENT__OWNED_PHYSICAL_LINK_CATEGORIES = BLOCK_FEATURE_COUNT + 40;
 
 	/**
 	 * The feature id for the '<em><b>Representing Parts</b></em>' reference list.
@@ -2205,7 +2187,7 @@ public interface CsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT__REPRESENTING_PARTS = BLOCK_FEATURE_COUNT + 43;
+	int COMPONENT__REPRESENTING_PARTS = BLOCK_FEATURE_COUNT + 41;
 
 	/**
 	 * The number of structural features of the '<em>Component</em>' class.
@@ -2214,7 +2196,7 @@ public interface CsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_FEATURE_COUNT = BLOCK_FEATURE_COUNT + 44;
+	int COMPONENT_FEATURE_COUNT = BLOCK_FEATURE_COUNT + 42;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.cs.impl.PartImpl <em>Part</em>}' class.
@@ -5450,763 +5432,6 @@ public interface CsPackage extends EPackage {
 	int INTERFACE_ALLOCATOR_FEATURE_COUNT = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The meta object id for the '{@link org.polarsys.capella.core.data.cs.impl.ComponentContextImpl <em>Component Context</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.polarsys.capella.core.data.cs.impl.ComponentContextImpl
-	 * @see org.polarsys.capella.core.data.cs.impl.CsPackageImpl#getComponentContext()
-	 * @generated
-	 */
-	int COMPONENT_CONTEXT = 16;
-
-	/**
-	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__OWNED_EXTENSIONS = COMPONENT__OWNED_EXTENSIONS;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__ID = COMPONENT__ID;
-
-	/**
-	 * The feature id for the '<em><b>Sid</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__SID = COMPONENT__SID;
-
-	/**
-	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__CONSTRAINTS = COMPONENT__CONSTRAINTS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__OWNED_CONSTRAINTS = COMPONENT__OWNED_CONSTRAINTS;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__NAME = COMPONENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__ABSTRACT_TYPED_ELEMENTS = COMPONENT__ABSTRACT_TYPED_ELEMENTS;
-
-	/**
-	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__INCOMING_TRACES = COMPONENT__INCOMING_TRACES;
-
-	/**
-	 * The feature id for the '<em><b>Outgoing Traces</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__OUTGOING_TRACES = COMPONENT__OUTGOING_TRACES;
-
-	/**
-	 * The feature id for the '<em><b>Visible In Doc</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__VISIBLE_IN_DOC = COMPONENT__VISIBLE_IN_DOC;
-
-	/**
-	 * The feature id for the '<em><b>Visible In LM</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__VISIBLE_IN_LM = COMPONENT__VISIBLE_IN_LM;
-
-	/**
-	 * The feature id for the '<em><b>Summary</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__SUMMARY = COMPONENT__SUMMARY;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__DESCRIPTION = COMPONENT__DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Review</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__REVIEW = COMPONENT__REVIEW;
-
-	/**
-	 * The feature id for the '<em><b>Owned Property Values</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__OWNED_PROPERTY_VALUES = COMPONENT__OWNED_PROPERTY_VALUES;
-
-	/**
-	 * The feature id for the '<em><b>Owned Enumeration Property Types</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__OWNED_ENUMERATION_PROPERTY_TYPES = COMPONENT__OWNED_ENUMERATION_PROPERTY_TYPES;
-
-	/**
-	 * The feature id for the '<em><b>Applied Property Values</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__APPLIED_PROPERTY_VALUES = COMPONENT__APPLIED_PROPERTY_VALUES;
-
-	/**
-	 * The feature id for the '<em><b>Owned Property Value Groups</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__OWNED_PROPERTY_VALUE_GROUPS = COMPONENT__OWNED_PROPERTY_VALUE_GROUPS;
-
-	/**
-	 * The feature id for the '<em><b>Applied Property Value Groups</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__APPLIED_PROPERTY_VALUE_GROUPS = COMPONENT__APPLIED_PROPERTY_VALUE_GROUPS;
-
-	/**
-	 * The feature id for the '<em><b>Status</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__STATUS = COMPONENT__STATUS;
-
-	/**
-	 * The feature id for the '<em><b>Features</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__FEATURES = COMPONENT__FEATURES;
-
-	/**
-	 * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__APPLIED_REQUIREMENTS = COMPONENT__APPLIED_REQUIREMENTS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__OWNED_TRACES = COMPONENT__OWNED_TRACES;
-
-	/**
-	 * The feature id for the '<em><b>Contained Generic Traces</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__CONTAINED_GENERIC_TRACES = COMPONENT__CONTAINED_GENERIC_TRACES;
-
-	/**
-	 * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__CONTAINED_REQUIREMENTS_TRACES = COMPONENT__CONTAINED_REQUIREMENTS_TRACES;
-
-	/**
-	 * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__NAMING_RULES = COMPONENT__NAMING_RULES;
-
-	/**
-	 * The feature id for the '<em><b>Typed Elements</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__TYPED_ELEMENTS = COMPONENT__TYPED_ELEMENTS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Functional Allocation</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__OWNED_FUNCTIONAL_ALLOCATION = COMPONENT__OWNED_FUNCTIONAL_ALLOCATION;
-
-	/**
-	 * The feature id for the '<em><b>Owned Component Exchanges</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__OWNED_COMPONENT_EXCHANGES = COMPONENT__OWNED_COMPONENT_EXCHANGES;
-
-	/**
-	 * The feature id for the '<em><b>Owned Component Exchange Categories</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__OWNED_COMPONENT_EXCHANGE_CATEGORIES = COMPONENT__OWNED_COMPONENT_EXCHANGE_CATEGORIES;
-
-	/**
-	 * The feature id for the '<em><b>Functional Allocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__FUNCTIONAL_ALLOCATIONS = COMPONENT__FUNCTIONAL_ALLOCATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Allocated Functions</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__ALLOCATED_FUNCTIONS = COMPONENT__ALLOCATED_FUNCTIONS;
-
-	/**
-	 * The feature id for the '<em><b>In Exchange Links</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__IN_EXCHANGE_LINKS = COMPONENT__IN_EXCHANGE_LINKS;
-
-	/**
-	 * The feature id for the '<em><b>Out Exchange Links</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__OUT_EXCHANGE_LINKS = COMPONENT__OUT_EXCHANGE_LINKS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Abstract Capability Pkg</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__OWNED_ABSTRACT_CAPABILITY_PKG = COMPONENT__OWNED_ABSTRACT_CAPABILITY_PKG;
-
-	/**
-	 * The feature id for the '<em><b>Owned Interface Pkg</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__OWNED_INTERFACE_PKG = COMPONENT__OWNED_INTERFACE_PKG;
-
-	/**
-	 * The feature id for the '<em><b>Owned Data Pkg</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__OWNED_DATA_PKG = COMPONENT__OWNED_DATA_PKG;
-
-	/**
-	 * The feature id for the '<em><b>Owned State Machines</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__OWNED_STATE_MACHINES = COMPONENT__OWNED_STATE_MACHINES;
-
-	/**
-	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__ABSTRACT = COMPONENT__ABSTRACT;
-
-	/**
-	 * The feature id for the '<em><b>Owned Generalizations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__OWNED_GENERALIZATIONS = COMPONENT__OWNED_GENERALIZATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Super Generalizations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__SUPER_GENERALIZATIONS = COMPONENT__SUPER_GENERALIZATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Sub Generalizations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__SUB_GENERALIZATIONS = COMPONENT__SUB_GENERALIZATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Super</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__SUPER = COMPONENT__SUPER;
-
-	/**
-	 * The feature id for the '<em><b>Sub</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__SUB = COMPONENT__SUB;
-
-	/**
-	 * The feature id for the '<em><b>Owned Features</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__OWNED_FEATURES = COMPONENT__OWNED_FEATURES;
-
-	/**
-	 * The feature id for the '<em><b>Contained Properties</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__CONTAINED_PROPERTIES = COMPONENT__CONTAINED_PROPERTIES;
-
-	/**
-	 * The feature id for the '<em><b>Owned Interface Allocations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__OWNED_INTERFACE_ALLOCATIONS = COMPONENT__OWNED_INTERFACE_ALLOCATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Provisioned Interface Allocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__PROVISIONED_INTERFACE_ALLOCATIONS = COMPONENT__PROVISIONED_INTERFACE_ALLOCATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Allocated Interfaces</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__ALLOCATED_INTERFACES = COMPONENT__ALLOCATED_INTERFACES;
-
-	/**
-	 * The feature id for the '<em><b>Owned Communication Links</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__OWNED_COMMUNICATION_LINKS = COMPONENT__OWNED_COMMUNICATION_LINKS;
-
-	/**
-	 * The feature id for the '<em><b>Produce</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__PRODUCE = COMPONENT__PRODUCE;
-
-	/**
-	 * The feature id for the '<em><b>Consume</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__CONSUME = COMPONENT__CONSUME;
-
-	/**
-	 * The feature id for the '<em><b>Send</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__SEND = COMPONENT__SEND;
-
-	/**
-	 * The feature id for the '<em><b>Receive</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__RECEIVE = COMPONENT__RECEIVE;
-
-	/**
-	 * The feature id for the '<em><b>Call</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__CALL = COMPONENT__CALL;
-
-	/**
-	 * The feature id for the '<em><b>Execute</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__EXECUTE = COMPONENT__EXECUTE;
-
-	/**
-	 * The feature id for the '<em><b>Write</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__WRITE = COMPONENT__WRITE;
-
-	/**
-	 * The feature id for the '<em><b>Access</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__ACCESS = COMPONENT__ACCESS;
-
-	/**
-	 * The feature id for the '<em><b>Acquire</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__ACQUIRE = COMPONENT__ACQUIRE;
-
-	/**
-	 * The feature id for the '<em><b>Transmit</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__TRANSMIT = COMPONENT__TRANSMIT;
-
-	/**
-	 * The feature id for the '<em><b>Is Actor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__IS_ACTOR = COMPONENT__IS_ACTOR;
-
-	/**
-	 * The feature id for the '<em><b>Is Human</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__IS_HUMAN = COMPONENT__IS_HUMAN;
-
-	/**
-	 * The feature id for the '<em><b>Owned Interface Uses</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__OWNED_INTERFACE_USES = COMPONENT__OWNED_INTERFACE_USES;
-
-	/**
-	 * The feature id for the '<em><b>Used Interface Links</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__USED_INTERFACE_LINKS = COMPONENT__USED_INTERFACE_LINKS;
-
-	/**
-	 * The feature id for the '<em><b>Used Interfaces</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__USED_INTERFACES = COMPONENT__USED_INTERFACES;
-
-	/**
-	 * The feature id for the '<em><b>Owned Interface Implementations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__OWNED_INTERFACE_IMPLEMENTATIONS = COMPONENT__OWNED_INTERFACE_IMPLEMENTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Implemented Interface Links</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__IMPLEMENTED_INTERFACE_LINKS = COMPONENT__IMPLEMENTED_INTERFACE_LINKS;
-
-	/**
-	 * The feature id for the '<em><b>Implemented Interfaces</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__IMPLEMENTED_INTERFACES = COMPONENT__IMPLEMENTED_INTERFACES;
-
-	/**
-	 * The feature id for the '<em><b>Provisioned Component Allocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__PROVISIONED_COMPONENT_ALLOCATIONS = COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Provisioning Component Allocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__PROVISIONING_COMPONENT_ALLOCATIONS = COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Component Realizations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__OWNED_COMPONENT_REALIZATIONS = COMPONENT__OWNED_COMPONENT_REALIZATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Realized Components</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__REALIZED_COMPONENTS = COMPONENT__REALIZED_COMPONENTS;
-
-	/**
-	 * The feature id for the '<em><b>Realizing Components</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__REALIZING_COMPONENTS = COMPONENT__REALIZING_COMPONENTS;
-
-	/**
-	 * The feature id for the '<em><b>Provided Interfaces</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__PROVIDED_INTERFACES = COMPONENT__PROVIDED_INTERFACES;
-
-	/**
-	 * The feature id for the '<em><b>Required Interfaces</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__REQUIRED_INTERFACES = COMPONENT__REQUIRED_INTERFACES;
-
-	/**
-	 * The feature id for the '<em><b>Contained Component Ports</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__CONTAINED_COMPONENT_PORTS = COMPONENT__CONTAINED_COMPONENT_PORTS;
-
-	/**
-	 * The feature id for the '<em><b>Contained Parts</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__CONTAINED_PARTS = COMPONENT__CONTAINED_PARTS;
-
-	/**
-	 * The feature id for the '<em><b>Contained Physical Ports</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__CONTAINED_PHYSICAL_PORTS = COMPONENT__CONTAINED_PHYSICAL_PORTS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Physical Path</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__OWNED_PHYSICAL_PATH = COMPONENT__OWNED_PHYSICAL_PATH;
-
-	/**
-	 * The feature id for the '<em><b>Owned Physical Links</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__OWNED_PHYSICAL_LINKS = COMPONENT__OWNED_PHYSICAL_LINKS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Physical Link Categories</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__OWNED_PHYSICAL_LINK_CATEGORIES = COMPONENT__OWNED_PHYSICAL_LINK_CATEGORIES;
-
-	/**
-	 * The feature id for the '<em><b>Representing Parts</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT__REPRESENTING_PARTS = COMPONENT__REPRESENTING_PARTS;
-
-	/**
-	 * The number of structural features of the '<em>Component Context</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONTEXT_FEATURE_COUNT = COMPONENT_FEATURE_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.cs.impl.ExchangeItemAllocationImpl <em>Exchange Item Allocation</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6214,7 +5439,7 @@ public interface CsPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.cs.impl.CsPackageImpl#getExchangeItemAllocation()
 	 * @generated
 	 */
-	int EXCHANGE_ITEM_ALLOCATION = 17;
+	int EXCHANGE_ITEM_ALLOCATION = 16;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -6485,7 +5710,7 @@ public interface CsPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.cs.impl.CsPackageImpl#getDeployableElement()
 	 * @generated
 	 */
-	int DEPLOYABLE_ELEMENT = 18;
+	int DEPLOYABLE_ELEMENT = 17;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -6702,7 +5927,7 @@ public interface CsPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.cs.impl.CsPackageImpl#getDeploymentTarget()
 	 * @generated
 	 */
-	int DEPLOYMENT_TARGET = 19;
+	int DEPLOYMENT_TARGET = 18;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -6919,7 +6144,7 @@ public interface CsPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.cs.impl.CsPackageImpl#getAbstractDeploymentLink()
 	 * @generated
 	 */
-	int ABSTRACT_DEPLOYMENT_LINK = 20;
+	int ABSTRACT_DEPLOYMENT_LINK = 19;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -7145,7 +6370,7 @@ public interface CsPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.cs.impl.CsPackageImpl#getAbstractPathInvolvedElement()
 	 * @generated
 	 */
-	int ABSTRACT_PATH_INVOLVED_ELEMENT = 21;
+	int ABSTRACT_PATH_INVOLVED_ELEMENT = 20;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -7353,7 +6578,7 @@ public interface CsPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.cs.impl.CsPackageImpl#getAbstractPhysicalArtifact()
 	 * @generated
 	 */
-	int ABSTRACT_PHYSICAL_ARTIFACT = 22;
+	int ABSTRACT_PHYSICAL_ARTIFACT = 21;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -7561,7 +6786,7 @@ public interface CsPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.cs.impl.CsPackageImpl#getAbstractPhysicalLinkEnd()
 	 * @generated
 	 */
-	int ABSTRACT_PHYSICAL_LINK_END = 23;
+	int ABSTRACT_PHYSICAL_LINK_END = 22;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -7769,7 +6994,7 @@ public interface CsPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.cs.impl.CsPackageImpl#getAbstractPhysicalPathLink()
 	 * @generated
 	 */
-	int ABSTRACT_PHYSICAL_PATH_LINK = 24;
+	int ABSTRACT_PHYSICAL_PATH_LINK = 23;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -7995,7 +7220,7 @@ public interface CsPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.cs.impl.CsPackageImpl#getPhysicalLink()
 	 * @generated
 	 */
-	int PHYSICAL_LINK = 25;
+	int PHYSICAL_LINK = 24;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -8320,7 +7545,7 @@ public interface CsPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.cs.impl.CsPackageImpl#getPhysicalLinkCategory()
 	 * @generated
 	 */
-	int PHYSICAL_LINK_CATEGORY = 26;
+	int PHYSICAL_LINK_CATEGORY = 25;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -8537,7 +7762,7 @@ public interface CsPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.cs.impl.CsPackageImpl#getPhysicalLinkEnd()
 	 * @generated
 	 */
-	int PHYSICAL_LINK_END = 27;
+	int PHYSICAL_LINK_END = 26;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -8763,7 +7988,7 @@ public interface CsPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.cs.impl.CsPackageImpl#getPhysicalLinkRealization()
 	 * @generated
 	 */
-	int PHYSICAL_LINK_REALIZATION = 28;
+	int PHYSICAL_LINK_REALIZATION = 27;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -8989,7 +8214,7 @@ public interface CsPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.cs.impl.CsPackageImpl#getPhysicalPath()
 	 * @generated
 	 */
-	int PHYSICAL_PATH = 29;
+	int PHYSICAL_PATH = 28;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -9287,7 +8512,7 @@ public interface CsPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.cs.impl.CsPackageImpl#getPhysicalPathInvolvement()
 	 * @generated
 	 */
-	int PHYSICAL_PATH_INVOLVEMENT = 30;
+	int PHYSICAL_PATH_INVOLVEMENT = 29;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -9549,7 +8774,7 @@ public interface CsPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.cs.impl.CsPackageImpl#getPhysicalPathReference()
 	 * @generated
 	 */
-	int PHYSICAL_PATH_REFERENCE = 31;
+	int PHYSICAL_PATH_REFERENCE = 30;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -9820,7 +9045,7 @@ public interface CsPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.cs.impl.CsPackageImpl#getPhysicalPathRealization()
 	 * @generated
 	 */
-	int PHYSICAL_PATH_REALIZATION = 32;
+	int PHYSICAL_PATH_REALIZATION = 31;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -10046,7 +9271,7 @@ public interface CsPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.cs.impl.CsPackageImpl#getPhysicalPort()
 	 * @generated
 	 */
-	int PHYSICAL_PORT = 33;
+	int PHYSICAL_PORT = 32;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -10632,7 +9857,7 @@ public interface CsPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.cs.impl.CsPackageImpl#getPhysicalPortRealization()
 	 * @generated
 	 */
-	int PHYSICAL_PORT_REALIZATION = 34;
+	int PHYSICAL_PORT_REALIZATION = 33;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -10859,7 +10084,7 @@ public interface CsPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.cs.impl.CsPackageImpl#getComponentPkg()
 	 * @generated
 	 */
-	int COMPONENT_PKG = 35;
+	int COMPONENT_PKG = 34;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -11141,7 +10366,7 @@ public interface CsPackage extends EPackage {
 	int COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_REALIZATIONS = FaPackage.ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_COMPONENT_EXCHANGE_REALIZATIONS;
 
 	/**
-	 * The feature id for the '<em><b>Owned Parts</b></em>' reference list.
+	 * The feature id for the '<em><b>Owned Parts</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -11353,26 +10578,26 @@ public interface CsPackage extends EPackage {
 	EClass getComponent();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.polarsys.capella.core.data.cs.Component#isIsActor <em>Is Actor</em>}'.
+	 * Returns the meta object for the attribute '{@link org.polarsys.capella.core.data.cs.Component#isActor <em>Actor</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Is Actor</em>'.
-	 * @see org.polarsys.capella.core.data.cs.Component#isIsActor()
+	 * @return the meta object for the attribute '<em>Actor</em>'.
+	 * @see org.polarsys.capella.core.data.cs.Component#isActor()
 	 * @see #getComponent()
 	 * @generated
 	 */
-	EAttribute getComponent_IsActor();
+	EAttribute getComponent_Actor();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.polarsys.capella.core.data.cs.Component#isIsHuman <em>Is Human</em>}'.
+	 * Returns the meta object for the attribute '{@link org.polarsys.capella.core.data.cs.Component#isHuman <em>Human</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Is Human</em>'.
-	 * @see org.polarsys.capella.core.data.cs.Component#isIsHuman()
+	 * @return the meta object for the attribute '<em>Human</em>'.
+	 * @see org.polarsys.capella.core.data.cs.Component#isHuman()
 	 * @see #getComponent()
 	 * @generated
 	 */
-	EAttribute getComponent_IsHuman();
+	EAttribute getComponent_Human();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.polarsys.capella.core.data.cs.Component#getOwnedInterfaceUses <em>Owned Interface Uses</em>}'.
@@ -11439,28 +10664,6 @@ public interface CsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getComponent_ImplementedInterfaces();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.polarsys.capella.core.data.cs.Component#getProvisionedComponentAllocations <em>Provisioned Component Allocations</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Provisioned Component Allocations</em>'.
-	 * @see org.polarsys.capella.core.data.cs.Component#getProvisionedComponentAllocations()
-	 * @see #getComponent()
-	 * @generated
-	 */
-	EReference getComponent_ProvisionedComponentAllocations();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.polarsys.capella.core.data.cs.Component#getProvisioningComponentAllocations <em>Provisioning Component Allocations</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Provisioning Component Allocations</em>'.
-	 * @see org.polarsys.capella.core.data.cs.Component#getProvisioningComponentAllocations()
-	 * @see #getComponent()
-	 * @generated
-	 */
-	EReference getComponent_ProvisioningComponentAllocations();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.polarsys.capella.core.data.cs.Component#getOwnedComponentRealizations <em>Owned Component Realizations</em>}'.
@@ -12167,16 +11370,6 @@ public interface CsPackage extends EPackage {
 	EReference getInterfaceAllocator_AllocatedInterfaces();
 
 	/**
-	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.cs.ComponentContext <em>Component Context</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Component Context</em>'.
-	 * @see org.polarsys.capella.core.data.cs.ComponentContext
-	 * @generated
-	 */
-	EClass getComponentContext();
-
-	/**
 	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.cs.ExchangeItemAllocation <em>Exchange Item Allocation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -12785,10 +11978,10 @@ public interface CsPackage extends EPackage {
 	EClass getComponentPkg();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.polarsys.capella.core.data.cs.ComponentPkg#getOwnedParts <em>Owned Parts</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.polarsys.capella.core.data.cs.ComponentPkg#getOwnedParts <em>Owned Parts</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Owned Parts</em>'.
+	 * @return the meta object for the containment reference list '<em>Owned Parts</em>'.
 	 * @see org.polarsys.capella.core.data.cs.ComponentPkg#getOwnedParts()
 	 * @see #getComponentPkg()
 	 * @generated
@@ -12972,20 +12165,20 @@ public interface CsPackage extends EPackage {
 		EClass COMPONENT = eINSTANCE.getComponent();
 
 		/**
-		 * The meta object literal for the '<em><b>Is Actor</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Actor</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute COMPONENT__IS_ACTOR = eINSTANCE.getComponent_IsActor();
+		EAttribute COMPONENT__ACTOR = eINSTANCE.getComponent_Actor();
 
 		/**
-		 * The meta object literal for the '<em><b>Is Human</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Human</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute COMPONENT__IS_HUMAN = eINSTANCE.getComponent_IsHuman();
+		EAttribute COMPONENT__HUMAN = eINSTANCE.getComponent_Human();
 
 		/**
 		 * The meta object literal for the '<em><b>Owned Interface Uses</b></em>' containment reference list feature.
@@ -13034,22 +12227,6 @@ public interface CsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference COMPONENT__IMPLEMENTED_INTERFACES = eINSTANCE.getComponent_ImplementedInterfaces();
-
-		/**
-		 * The meta object literal for the '<em><b>Provisioned Component Allocations</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS = eINSTANCE.getComponent_ProvisionedComponentAllocations();
-
-		/**
-		 * The meta object literal for the '<em><b>Provisioning Component Allocations</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS = eINSTANCE.getComponent_ProvisioningComponentAllocations();
 
 		/**
 		 * The meta object literal for the '<em><b>Owned Component Realizations</b></em>' containment reference list feature.
@@ -13594,16 +12771,6 @@ public interface CsPackage extends EPackage {
 		EReference INTERFACE_ALLOCATOR__ALLOCATED_INTERFACES = eINSTANCE.getInterfaceAllocator_AllocatedInterfaces();
 
 		/**
-		 * The meta object literal for the '{@link org.polarsys.capella.core.data.cs.impl.ComponentContextImpl <em>Component Context</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.polarsys.capella.core.data.cs.impl.ComponentContextImpl
-		 * @see org.polarsys.capella.core.data.cs.impl.CsPackageImpl#getComponentContext()
-		 * @generated
-		 */
-		EClass COMPONENT_CONTEXT = eINSTANCE.getComponentContext();
-
-		/**
 		 * The meta object literal for the '{@link org.polarsys.capella.core.data.cs.impl.ExchangeItemAllocationImpl <em>Exchange Item Allocation</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -14098,7 +13265,7 @@ public interface CsPackage extends EPackage {
 		EClass COMPONENT_PKG = eINSTANCE.getComponentPkg();
 
 		/**
-		 * The meta object literal for the '<em><b>Owned Parts</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Owned Parts</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

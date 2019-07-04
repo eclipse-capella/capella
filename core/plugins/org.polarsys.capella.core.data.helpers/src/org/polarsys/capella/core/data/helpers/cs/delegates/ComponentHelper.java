@@ -15,9 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.core.data.capellacore.Feature;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentAllocation;
+import org.polarsys.capella.core.data.cs.ComponentRealization;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfaceImplementation;
@@ -25,12 +26,9 @@ import org.polarsys.capella.core.data.cs.InterfaceUse;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.fa.ComponentPort;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.ClassifierHelper;
 import org.polarsys.capella.core.data.helpers.fa.delegates.AbstractFunctionalBlockHelper;
 import org.polarsys.capella.core.data.helpers.information.delegates.CommunicationLinkExchangerHelper;
-import org.polarsys.capella.core.data.helpers.information.delegates.PartitionableElementHelper;
-import org.polarsys.capella.core.data.information.Partition;
-import org.polarsys.capella.core.data.capellacore.Feature;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 
 public class ComponentHelper {
   private static ComponentHelper instance;
@@ -49,14 +47,10 @@ public class ComponentHelper {
   public Object doSwitch(Component element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature.equals(CsPackage.Literals.COMPONENT__ALLOCATED_COMPONENTS)) {
-      ret = getAllocatedComponents(element);
-    } else if (feature.equals(CsPackage.Literals.COMPONENT__ALLOCATING_COMPONENTS)) {
-      ret = getAllocatingComponents(element);
-    } else if (feature.equals(CsPackage.Literals.COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS)) {
-      ret = getProvisionedComponentAllocations(element);
-    } else if (feature.equals(CsPackage.Literals.COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS)) {
-      ret = getProvisioningComponentAllocations(element);
+    if (feature.equals(CsPackage.Literals.COMPONENT__REALIZED_COMPONENTS)) {
+      ret = getRealizedComponents(element);
+    } else if (feature.equals(CsPackage.Literals.COMPONENT__REALIZING_COMPONENTS)) {
+      ret = getRealizingComponents(element);
     } else if (feature.equals(CsPackage.Literals.COMPONENT__PROVIDED_INTERFACES)) {
       ret = getProvidedInterfaces(element);
     } else if (feature.equals(CsPackage.Literals.COMPONENT__REQUIRED_INTERFACES)) {
@@ -82,10 +76,10 @@ public class ComponentHelper {
       ret = AbstractFunctionalBlockHelper.getInstance().doSwitch(element, feature);
     }
     if (null == ret) {
-      ret = InterfaceAllocatorHelper.getInstance().doSwitch(element, feature);
+      ret = ClassifierHelper.getInstance().doSwitch(element, feature);
     }
     if (null == ret) {
-      ret = PartitionableElementHelper.getInstance().doSwitch(element, feature);
+      ret = InterfaceAllocatorHelper.getInstance().doSwitch(element, feature);
     }
     if (null == ret) {
       ret = CommunicationLinkExchangerHelper.getInstance().doSwitch(element, feature);
@@ -94,43 +88,21 @@ public class ComponentHelper {
     return ret;
   }
 
-  protected List<ComponentAllocation> getProvisionedComponentAllocations(Component element) {
-    List<ComponentAllocation> ret = new ArrayList<>();
+  protected List<Component> getRealizedComponents(Component element) {
+    List<Component> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
-      if (trace instanceof ComponentAllocation) {
-        ret.add((ComponentAllocation) trace);
+      if (trace instanceof ComponentRealization) {
+        ret.add(((ComponentRealization) trace).getRealizedComponent());
       }
     }
     return ret;
   }
 
-  protected List<ComponentAllocation> getProvisioningComponentAllocations(Component element) {
-    List<ComponentAllocation> ret = new ArrayList<>();
+  protected List<Component> getRealizingComponents(Component element) {
+    List<Component> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
-      if (trace instanceof ComponentAllocation) {
-        ret.add((ComponentAllocation) trace);
-      }
-    }
-    return ret;
-  }
-
-  protected List<Component> getAllocatedComponents(Component element) {
-    List<Component> ret = new ArrayList<>();
-    for (ComponentAllocation componentAllocation : element.getProvisionedComponentAllocations()) {
-      Component cpnt = componentAllocation.getAllocatedComponent();
-      if (null != cpnt) {
-        ret.add(cpnt);
-      }
-    }
-    return ret;
-  }
-
-  protected List<Component> getAllocatingComponents(Component element) {
-    List<Component> ret = new ArrayList<>();
-    for (ComponentAllocation componentAllocation : element.getProvisioningComponentAllocations()) {
-      Component cpnt = componentAllocation.getAllocatingComponent();
-      if (null != cpnt) {
-        ret.add(cpnt);
+      if (trace instanceof ComponentRealization) {
+        ret.add(((ComponentRealization) trace).getRealizingComponent());
       }
     }
     return ret;
@@ -138,9 +110,9 @@ public class ComponentHelper {
 
   protected List<Interface> getProvidedInterfaces(Component element) {
     List<Interface> ret = new ArrayList<>();
-    for (Partition partition : element.getOwnedPartitions()) {
-      if (partition instanceof ComponentPort) {
-        ret.addAll(((ComponentPort) partition).getProvidedInterfaces());
+    for (Feature feature : element.getOwnedFeatures()) {
+      if (feature instanceof ComponentPort) {
+        ret.addAll(((ComponentPort) feature).getProvidedInterfaces());
       }
     }
     return ret;
@@ -148,9 +120,9 @@ public class ComponentHelper {
 
   protected List<Interface> getRequiredInterfaces(Component element) {
     List<Interface> ret = new ArrayList<>();
-    for (Partition partition : element.getOwnedPartitions()) {
-      if (partition instanceof ComponentPort) {
-        ret.addAll(((ComponentPort) partition).getRequiredInterfaces());
+    for (Feature feature : element.getOwnedFeatures()) {
+      if (feature instanceof ComponentPort) {
+        ret.addAll(((ComponentPort) feature).getRequiredInterfaces());
       }
     }
     return ret;

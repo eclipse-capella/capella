@@ -26,9 +26,9 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
-import org.polarsys.capella.core.data.ctx.System;
+import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
-import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.InteractionFactory;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
@@ -49,10 +49,10 @@ public class ScenarioItemContribution implements IMDEMenuItemContribution {
         BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture(scenario);
         if (arch instanceof SystemAnalysis) {
           SystemAnalysis ca = (SystemAnalysis) arch;
-          System sys = ca.getOwnedSystem();
+          Component sys = ca.getSystem();
           if (sys != null) {
-            Partition inst = null;
-            for (Partition cpntInst : sys.getRepresentingPartitions()) {
+            Part inst = null;
+            for (Part cpntInst : sys.getRepresentingParts()) {
               inst = cpntInst;
             }
 
@@ -67,7 +67,7 @@ public class ScenarioItemContribution implements IMDEMenuItemContribution {
 
               if (shouldCreate) {
 
-                final Partition instance = inst;
+                final Part instance = inst;
                 CompoundCommand cmd = new CompoundCommand();
 
                 // Creates the instance role.

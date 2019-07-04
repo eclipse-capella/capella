@@ -15,25 +15,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.common.helpers.EObjectExt;
-import org.polarsys.capella.core.data.cs.BlockArchitecture;
-import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.fa.AbstractFunction;
-import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
 import org.polarsys.capella.core.data.capellacore.Structure;
+import org.polarsys.capella.core.data.cs.BlockArchitecture;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.oa.CommunicationMean;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.EntityPkg;
 import org.polarsys.capella.core.data.oa.OaPackage;
-import org.polarsys.capella.core.data.oa.OperationalActivity;
-import org.polarsys.capella.core.data.oa.OperationalActivityPkg;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
-import org.polarsys.capella.core.data.oa.OperationalContext;
 import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.data.oa.RolePkg;
 
@@ -64,51 +57,6 @@ public class OperationalAnalysisExt {
     return list;
   }
 
-  static public List<AbstractFunction> getAllFunctions(BlockArchitecture arch) {
-    List<AbstractFunction> list = new ArrayList<AbstractFunction>(1);
-    if (null != arch) {
-      FunctionPkg functionPkg = arch.getOwnedFunctionPkg();
-      if ((functionPkg != null) && (functionPkg instanceof OperationalActivityPkg)) {
-        list = getAllFunctionsFromOperationalActivityPkg((OperationalActivityPkg) functionPkg);
-      }
-    }
-    return list;
-  }
-
-  static public List<AbstractFunction> getAllFunctionsFromOperationalActivityPkg(OperationalActivityPkg sysFunPkg) {
-    List<AbstractFunction> list = new ArrayList<AbstractFunction>(1);
-    if (null != sysFunPkg) {
-      EList<OperationalActivity> ownedOperationalActivities = sysFunPkg.getOwnedOperationalActivities();
-      // owned function of SystemFunctionPkg
-      list.addAll(ownedOperationalActivities);
-      // owned function of Function
-      for (AbstractFunction function : ownedOperationalActivities) {
-        list.addAll(getAllFunctionsFromFunction(function));
-      }
-      // owned function of (subPkg of sysFunPkg) SystemFunctionPkg
-      for (OperationalActivityPkg ownedOperActiPkg : sysFunPkg.getOwnedOperationalActivityPkgs()) {
-        list.addAll(getAllFunctionsFromOperationalActivityPkg(ownedOperActiPkg));
-      }
-    }
-
-    return list;
-  }
-
-  static public List<AbstractFunction> getAllFunctionsFromFunction(AbstractFunction fun) {
-    List<AbstractFunction> list = new ArrayList<AbstractFunction>(1);
-    if (null != fun) {
-      EList<AbstractFunction> ownedSystemFunctions = fun.getOwnedFunctions();
-      for (AbstractFunction abstractFunction : ownedSystemFunctions) {
-        list.add(abstractFunction);
-      }
-      // owned function of function
-      for (AbstractFunction function : ownedSystemFunctions) {
-        list.addAll(getAllFunctionsFromFunction(function));
-      }
-    }
-
-    return list;
-  }
 
   public static List<Entity> getAllEntity(EntityPkg ownedEntityPkg) {
     List<Entity> list = new ArrayList<Entity>(1);
@@ -174,15 +122,7 @@ public class OperationalAnalysisExt {
           list.add((CommunicationMean) object);
         }
       }
-      // get all communication means from operational context
-      OperationalContext context = arch.getOwnedOperationalContext();
-      if (null != context) {
-        for (EObject object : EObjectExt.getAll(context, OaPackage.Literals.COMMUNICATION_MEAN)) {
-          list.add((CommunicationMean) object);
-        }
-      }
     }
-
     return list;
   }
 

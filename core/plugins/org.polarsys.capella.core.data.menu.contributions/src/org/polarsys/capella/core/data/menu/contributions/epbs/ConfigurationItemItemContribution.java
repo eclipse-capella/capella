@@ -24,20 +24,19 @@ import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.command.CreateChildCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.menu.dynamic.CreationHelper;
+import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.ConfigurationItemKind;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.epbs.EpbsPackage;
-import org.polarsys.capella.core.data.information.PartitionableElement;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.menu.dynamic.CreationHelper;
-import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
 
 public class ConfigurationItemItemContribution implements IMDEMenuItemContribution {
 
@@ -53,13 +52,13 @@ public class ConfigurationItemItemContribution implements IMDEMenuItemContributi
       if (partOwner == null) {
         EObject arch = EcoreUtil2.getFirstContainer(containerElement, EpbsPackage.Literals.EPBS_ARCHITECTURE);
         if (arch != null) {
-          partOwner = ((EPBSArchitecture) arch).getOwnedEPBSContext();
+          partOwner = ((EPBSArchitecture) arch).getOwnedConfigurationItemPkg();
         }
       }
 
       CompoundCommand cmd = new CompoundCommand();
 
-      if (((PartitionableElement) createdElement).getRepresentingPartitions().size() == 0) {
+      if (((Component) createdElement).getRepresentingParts().size() == 0) {
 
         if (partOwner != null) {
 

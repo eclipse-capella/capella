@@ -41,7 +41,7 @@ import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentPkgImpl#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentPkgImpl#getOwnedAssociations <em>Owned Associations</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentPkgImpl#getOwnedComponents <em>Owned Components</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentPkgImpl#getOwnedPhysicalComponents <em>Owned Physical Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentPkgImpl#getOwnedPhysicalComponentPkgs <em>Owned Physical Component Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentPkgImpl#getOwnedKeyParts <em>Owned Key Parts</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalComponentPkgImpl#getOwnedDeployments <em>Owned Deployments</em>}</li>
@@ -82,18 +82,14 @@ public class PhysicalComponentPkgImpl extends ComponentPkgImpl implements Physic
 	protected EList<Association> ownedAssociations;
 
 	/**
-	 * The cached value of the '{@link #getOwnedComponents() <em>Owned Components</em>}' containment reference list.
+	 * The cached value of the '{@link #getOwnedPhysicalComponents() <em>Owned Physical Components</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedComponents()
+	 * @see #getOwnedPhysicalComponents()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<PhysicalComponent> ownedComponents;
-
-
-
-
+	protected EList<PhysicalComponent> ownedPhysicalComponents;
 
 	/**
 	 * The cached value of the '{@link #getOwnedPhysicalComponentPkgs() <em>Owned Physical Component Pkgs</em>}' containment reference list.
@@ -207,17 +203,13 @@ public class PhysicalComponentPkgImpl extends ComponentPkgImpl implements Physic
 	 * @generated
 	 */
 
-	public EList<PhysicalComponent> getOwnedComponents() {
+	public EList<PhysicalComponent> getOwnedPhysicalComponents() {
 
-		if (ownedComponents == null) {
-			ownedComponents = new EObjectContainmentEList.Resolving<PhysicalComponent>(PhysicalComponent.class, this, PaPackage.PHYSICAL_COMPONENT_PKG__OWNED_COMPONENTS);
+		if (ownedPhysicalComponents == null) {
+			ownedPhysicalComponents = new EObjectContainmentEList.Resolving<PhysicalComponent>(PhysicalComponent.class, this, PaPackage.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS);
 		}
-		return ownedComponents;
+		return ownedPhysicalComponents;
 	}
-
-
-
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -281,8 +273,8 @@ public class PhysicalComponentPkgImpl extends ComponentPkgImpl implements Physic
 		switch (featureID) {
 			case PaPackage.PHYSICAL_COMPONENT_PKG__OWNED_ASSOCIATIONS:
 				return ((InternalEList<?>)getOwnedAssociations()).basicRemove(otherEnd, msgs);
-			case PaPackage.PHYSICAL_COMPONENT_PKG__OWNED_COMPONENTS:
-				return ((InternalEList<?>)getOwnedComponents()).basicRemove(otherEnd, msgs);
+			case PaPackage.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS:
+				return ((InternalEList<?>)getOwnedPhysicalComponents()).basicRemove(otherEnd, msgs);
 			case PaPackage.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENT_PKGS:
 				return ((InternalEList<?>)getOwnedPhysicalComponentPkgs()).basicRemove(otherEnd, msgs);
 			case PaPackage.PHYSICAL_COMPONENT_PKG__OWNED_KEY_PARTS:
@@ -305,8 +297,8 @@ public class PhysicalComponentPkgImpl extends ComponentPkgImpl implements Physic
 				return getVisibility();
 			case PaPackage.PHYSICAL_COMPONENT_PKG__OWNED_ASSOCIATIONS:
 				return getOwnedAssociations();
-			case PaPackage.PHYSICAL_COMPONENT_PKG__OWNED_COMPONENTS:
-				return getOwnedComponents();
+			case PaPackage.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS:
+				return getOwnedPhysicalComponents();
 			case PaPackage.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENT_PKGS:
 				return getOwnedPhysicalComponentPkgs();
 			case PaPackage.PHYSICAL_COMPONENT_PKG__OWNED_KEY_PARTS:
@@ -333,9 +325,9 @@ public class PhysicalComponentPkgImpl extends ComponentPkgImpl implements Physic
 				getOwnedAssociations().clear();
 				getOwnedAssociations().addAll((Collection<? extends Association>)newValue);
 				return;
-			case PaPackage.PHYSICAL_COMPONENT_PKG__OWNED_COMPONENTS:
-				getOwnedComponents().clear();
-				getOwnedComponents().addAll((Collection<? extends PhysicalComponent>)newValue);
+			case PaPackage.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS:
+				getOwnedPhysicalComponents().clear();
+				getOwnedPhysicalComponents().addAll((Collection<? extends PhysicalComponent>)newValue);
 				return;
 			case PaPackage.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENT_PKGS:
 				getOwnedPhysicalComponentPkgs().clear();
@@ -368,8 +360,8 @@ public class PhysicalComponentPkgImpl extends ComponentPkgImpl implements Physic
 			case PaPackage.PHYSICAL_COMPONENT_PKG__OWNED_ASSOCIATIONS:
 				getOwnedAssociations().clear();
 				return;
-			case PaPackage.PHYSICAL_COMPONENT_PKG__OWNED_COMPONENTS:
-				getOwnedComponents().clear();
+			case PaPackage.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS:
+				getOwnedPhysicalComponents().clear();
 				return;
 			case PaPackage.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENT_PKGS:
 				getOwnedPhysicalComponentPkgs().clear();
@@ -398,8 +390,8 @@ public class PhysicalComponentPkgImpl extends ComponentPkgImpl implements Physic
 				return visibility != VISIBILITY_EDEFAULT;
 			case PaPackage.PHYSICAL_COMPONENT_PKG__OWNED_ASSOCIATIONS:
 				return ownedAssociations != null && !ownedAssociations.isEmpty();
-			case PaPackage.PHYSICAL_COMPONENT_PKG__OWNED_COMPONENTS:
-				return ownedComponents != null && !ownedComponents.isEmpty();
+			case PaPackage.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS:
+				return ownedPhysicalComponents != null && !ownedPhysicalComponents.isEmpty();
 			case PaPackage.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENT_PKGS:
 				return ownedPhysicalComponentPkgs != null && !ownedPhysicalComponentPkgs.isEmpty();
 			case PaPackage.PHYSICAL_COMPONENT_PKG__OWNED_KEY_PARTS:

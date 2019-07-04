@@ -36,24 +36,20 @@ import org.polarsys.capella.core.data.fa.AbstractFunctionalStructure;
 
 public interface ComponentPkg extends AbstractFunctionalStructure {
 
-
-
-
-
 	/**
-	 * Returns the value of the '<em><b>Owned Parts</b></em>' reference list.
+	 * Returns the value of the '<em><b>Owned Parts</b></em>' containment reference list.
 	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.Part}.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Owned Parts</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Owned Parts</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Parts</em>' reference list.
+	 * @return the value of the '<em>Owned Parts</em>' containment reference list.
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getComponentPkg_OwnedParts()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Parts included in this package' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 * @model containment="true" resolveProxies="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Parts stored in this Component Package' constraints='none' comment/notes='none'"
 	 * @generated
 	 */
 

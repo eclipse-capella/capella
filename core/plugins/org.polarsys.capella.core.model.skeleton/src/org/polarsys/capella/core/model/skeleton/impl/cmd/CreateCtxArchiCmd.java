@@ -11,33 +11,32 @@
 
 package org.polarsys.capella.core.model.skeleton.impl.cmd;
 
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.core.data.capellacommon.CapellacommonFactory;
+import org.polarsys.capella.core.data.capellacommon.Region;
+import org.polarsys.capella.core.data.capellacommon.StateMachine;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.ctx.ActorPkg;
 import org.polarsys.capella.core.data.ctx.CapabilityPkg;
 import org.polarsys.capella.core.data.ctx.CtxFactory;
 import org.polarsys.capella.core.data.ctx.MissionPkg;
 import org.polarsys.capella.core.data.ctx.OperationalAnalysisRealization;
-import org.polarsys.capella.core.data.ctx.System;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
-import org.polarsys.capella.core.data.ctx.SystemContext;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
+import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.ctx.SystemFunctionPkg;
 import org.polarsys.capella.core.data.fa.FaFactory;
 import org.polarsys.capella.core.data.fa.FunctionRealization;
 import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.information.InformationFactory;
-import org.polarsys.capella.core.data.capellacommon.CapellacommonFactory;
-import org.polarsys.capella.core.data.capellacommon.Region;
-import org.polarsys.capella.core.data.capellacommon.StateMachine;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
 import org.polarsys.capella.core.model.skeleton.Messages;
 import org.polarsys.capella.core.model.skeleton.helpers.PredefinedTypesHelper;
-import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 
 /**
  * The command allowing to create the System Analysis structure skeleton.
@@ -56,9 +55,7 @@ public class CreateCtxArchiCmd extends AbstractReadWriteCommand {
   // The system function.
   private SystemFunction _systemFunction;
   // The system.
-  private SystemContext _systemContext;
-  // The system.
-  private System _system;
+  private SystemComponent _system;
   // The function realization.
   private FunctionRealization _functionRealisation;
   // The operational analysis realization.
@@ -119,19 +116,15 @@ public class CreateCtxArchiCmd extends AbstractReadWriteCommand {
     _SystemAnalysis.setOwnedDataPkg(dataPkg);
 
     // Builds the actors structure skeleton.
-    ActorPkg actorPkg = CtxFactory.eINSTANCE.createActorPkg(NamingConstants.CreateSysAnalysisCmd_actors_pkg_name);
-    _SystemAnalysis.setOwnedActorPkg(actorPkg);
-
-    // Builds the system context structure skeleton.
-    _systemContext = CtxFactory.eINSTANCE.createSystemContext(NamingConstants.CreateSysAnalysisCmd_system_context_name);
-    _SystemAnalysis.setOwnedSystemContext(_systemContext);
+    SystemComponentPkg componentPkg = CtxFactory.eINSTANCE.createSystemComponentPkg(NamingConstants.CreateSysAnalysisCmd_actors_pkg_name);
+    _SystemAnalysis.setOwnedSystemComponentPkg(componentPkg);
 
     // Builds the system structure skeleton.
-    _system = CtxFactory.eINSTANCE.createSystem(NamingConstants.CreateSysAnalysisCmd_system_name);
-    _SystemAnalysis.setOwnedSystem(_system);
+    _system = CtxFactory.eINSTANCE.createSystemComponent(NamingConstants.CreateSysAnalysisCmd_system_name);
+    componentPkg.getOwnedSystemComponents().add(_system);
 
     Part systemPart = CsFactory.eINSTANCE.createPart(_system.getName());
-    _systemContext.getOwnedFeatures().add(systemPart);
+    componentPkg.getOwnedParts().add(systemPart);
     systemPart.setAbstractType(_system);
 
     StateMachine stateMachine = CapellacommonFactory.eINSTANCE.createStateMachine(NamingConstants.CreateSysAnalysisCmd_system_statemachine_name);
@@ -173,7 +166,7 @@ public class CreateCtxArchiCmd extends AbstractReadWriteCommand {
    * Gets the system.
    * @return the system.
    */
-  public System getSystem() {
+  public SystemComponent getSystem() {
     return _system;
   }
 

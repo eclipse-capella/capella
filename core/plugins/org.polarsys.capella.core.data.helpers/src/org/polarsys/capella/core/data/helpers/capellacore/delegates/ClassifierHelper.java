@@ -15,12 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.polarsys.capella.core.data.information.InformationPackage;
-import org.polarsys.capella.core.data.information.Property;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.Classifier;
 import org.polarsys.capella.core.data.capellacore.Feature;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.information.InformationPackage;
+import org.polarsys.capella.core.data.information.Property;
 
 public class ClassifierHelper {
 	private static ClassifierHelper instance;

@@ -15,24 +15,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.polarsys.capella.core.data.ctx.Actor;
-import org.polarsys.capella.core.data.ctx.ActorCapabilityInvolvement;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.CapabilityExploitation;
+import org.polarsys.capella.core.data.ctx.CapabilityInvolvement;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.Mission;
-import org.polarsys.capella.core.data.ctx.System;
-import org.polarsys.capella.core.data.ctx.SystemCapabilityInvolvement;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.helpers.interaction.delegates.AbstractCapabilityHelper;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityRealization;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
-import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
-import org.polarsys.capella.core.data.capellacore.Involvement;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.helpers.EObjectExt;
 
 public class CapabilityHelper {
 	private static CapabilityHelper instance;
@@ -50,23 +45,17 @@ public class CapabilityHelper {
 	public Object doSwitch(Capability element, EStructuralFeature feature) {
 		Object ret = null;
 
-		if (feature.equals(CtxPackage.Literals.CAPABILITY__INVOLVED_ACTORS)) {
-			ret = getInvolvedActors(element);
-		} else if (feature.equals(CtxPackage.Literals.CAPABILITY__INVOLVED_SYSTEM)) {
-			ret = getInvolvedSystem(element);
-		} else if (feature.equals(CtxPackage.Literals.CAPABILITY__PURPOSE_MISSIONS)) {
+		if (feature.equals(CtxPackage.Literals.CAPABILITY__PURPOSE_MISSIONS)) {
 			ret = getPurposeMissions(element);
-		} else if (feature.equals(CtxPackage.Literals.CAPABILITY__PARTICIPATING_ACTORS)) {
-			ret = getParticipatingActors(element);
-		} else if (feature.equals(CtxPackage.Literals.CAPABILITY__PARTICIPATING_SYSTEM)) {
-			ret = getParticipatingSystem(element);
-    } else if (feature.equals(CtxPackage.Literals.CAPABILITY__REALIZED_OPERATIONAL_CAPABILITIES)) {
+		} else if (feature.equals(CtxPackage.Literals.CAPABILITY__PURPOSES)) {
+      ret = getPurposes(element);
+    } else if (feature.equals(CtxPackage.Literals.CAPABILITY__INVOLVED_SYSTEM_COMPONENTS)) {
+			ret = getInvolvedSystemComponents(element);
+		} else if (feature.equals(CtxPackage.Literals.CAPABILITY__REALIZED_OPERATIONAL_CAPABILITIES)) {
       ret = getRealizedOperationalCapabilities(element);
     } else if (feature.equals(CtxPackage.Literals.CAPABILITY__REALIZING_CAPABILITY_REALIZATIONS)) {
       ret = getRealizingCapabilityRealizations(element);
-		} else if (feature.equals(CtxPackage.Literals.CAPABILITY__PURPOSES)) {
-      ret = getPurposes(element);
-    }
+		}
 
 		// no helper found... searching in super classes...
 		if(null == ret) {
@@ -78,20 +67,6 @@ public class CapabilityHelper {
 
 	protected List<CapabilityExploitation> getPurposes(Capability element) {
 	  return EObjectExt.getReferencers(element, CtxPackage.Literals.CAPABILITY_EXPLOITATION__CAPABILITY);
-	}
-  
-  protected List<ActorCapabilityInvolvement> getInvolvedActors(Capability element) {
-		List <ActorCapabilityInvolvement> ret = new ArrayList<>();
-		for (Involvement involvement : element.getInvolvedInvolvements()) {
-			if (involvement instanceof ActorCapabilityInvolvement) {
-				ret.add((ActorCapabilityInvolvement) involvement);
-			}
-		}
-		return ret;
-	}
-
-	protected SystemCapabilityInvolvement getInvolvedSystem(Capability element) {
-		return element.getOwnedSystemCapabilityInvolvement();
 	}
 
 	protected List<Mission> getPurposeMissions(Capability element) {
@@ -105,24 +80,16 @@ public class CapabilityHelper {
 		return ret;
 	}
 
-	protected System getParticipatingSystem(Capability element) {
-		SystemCapabilityInvolvement involvement = element.getOwnedSystemCapabilityInvolvement();
-		if (null != involvement){
-			return involvement.getSystem();
-		}
-		return null;
-	}
-
-	protected List<Actor> getParticipatingActors(Capability element) {
-		List <Actor> ret = new ArrayList<>();
-		for (ActorCapabilityInvolvement involvement : element.getInvolvedActors()) {
-			Actor actor = involvement.getActor();
-			if(null != actor){
-				ret.add(actor);
-			}
-		}
-		return ret;
-	}
+  protected List<SystemComponent> getInvolvedSystemComponents(Capability element) {
+    List<SystemComponent> ret = new ArrayList<>();
+    for (CapabilityInvolvement involvement : element.getOwnedCapabilityInvolvements()) {
+      SystemComponent systemComponent = involvement.getSystemComponent();
+      if (null != systemComponent) {
+        ret.add(systemComponent);
+      }
+    }
+    return ret;
+  }
 
   protected List<OperationalCapability> getRealizedOperationalCapabilities(Capability element) {
     List <OperationalCapability> ret = new ArrayList<>();

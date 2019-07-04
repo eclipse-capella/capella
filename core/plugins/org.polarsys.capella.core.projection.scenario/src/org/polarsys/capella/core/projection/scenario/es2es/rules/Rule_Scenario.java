@@ -17,8 +17,7 @@ import java.util.List;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
-
-import org.polarsys.capella.core.data.cs.AbstractActor;
+import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
@@ -37,7 +36,6 @@ import org.polarsys.capella.core.tiger.helpers.Query;
 import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
 import org.polarsys.capella.core.tiger.impl.TransfoEngine;
 import org.polarsys.capella.core.transition.system.topdown.commands.TransitionCommandHelper;
-import org.polarsys.capella.common.ef.command.ICommand;
 
 /**
  */
@@ -66,7 +64,7 @@ public class Rule_Scenario extends CommonRule {
         ICommand command = null;
 
         if (CapellaLayerCheckingExt.isInContextLayer(type)) {
-          if (type instanceof AbstractActor) {
+          if (type.isActor()) {
             command = TransitionCommandHelper.getInstance().getActorTransitionCommand(elements, monitor);
 
           } else {
@@ -75,7 +73,7 @@ public class Rule_Scenario extends CommonRule {
           }
 
         } else if (CapellaLayerCheckingExt.isInLogicalLayer(type)) {
-          if (type instanceof AbstractActor) {
+          if (type.isActor()) {
             command = TransitionCommandHelper.getInstance().getActorTransitionCommand(elements, monitor);
 
           } else {

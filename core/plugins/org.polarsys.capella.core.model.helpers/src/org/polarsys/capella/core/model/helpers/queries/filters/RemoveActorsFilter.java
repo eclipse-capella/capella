@@ -13,7 +13,6 @@ package org.polarsys.capella.core.model.helpers.queries.filters;
 
 import org.polarsys.capella.common.queries.filters.IQueryFilter;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 
@@ -29,10 +28,10 @@ public class RemoveActorsFilter implements IQueryFilter {
 			element = ((Part) element).getAbstractType();
 		}
 
-		if (!(element instanceof AbstractActor) && (element instanceof Component)) {
-			return true;
-		}
-		return false;
+    if (element instanceof Component && !((Component) element).isActor()) {
+      return true;
+    }
+    return false;
 	}
 
 }

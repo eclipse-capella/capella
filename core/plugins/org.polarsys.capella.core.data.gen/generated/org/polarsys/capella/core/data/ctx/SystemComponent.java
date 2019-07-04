@@ -14,6 +14,7 @@ package org.polarsys.capella.core.data.ctx;
 
 import org.eclipse.emf.common.util.EList;
 import org.polarsys.capella.core.data.capellacore.Classifier;
+import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.oa.Entity;
@@ -46,7 +47,7 @@ import org.polarsys.capella.core.data.oa.Entity;
  * @generated
  */
 
-public interface SystemComponent extends Component {
+public interface SystemComponent extends Component, InvolvedElement {
 
 
 

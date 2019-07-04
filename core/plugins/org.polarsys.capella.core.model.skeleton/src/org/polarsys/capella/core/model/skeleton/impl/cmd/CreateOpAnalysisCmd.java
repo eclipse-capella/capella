@@ -11,22 +11,21 @@
 
 package org.polarsys.capella.core.model.skeleton.impl.cmd;
 
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
 import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.information.InformationFactory;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.oa.EntityPkg;
 import org.polarsys.capella.core.data.oa.OaFactory;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.OperationalActivityPkg;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.oa.OperationalCapabilityPkg;
-import org.polarsys.capella.core.data.oa.OperationalContext;
 import org.polarsys.capella.core.data.oa.RolePkg;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
 import org.polarsys.capella.core.model.skeleton.Messages;
-import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 
 /**
  * The command allowing to create the operational analysis structure skeleton.
@@ -36,8 +35,6 @@ public class CreateOpAnalysisCmd extends AbstractReadWriteCommand {
   private String _architectureName;
   // The operational analysis.
   private OperationalAnalysis _operationalAnalysis;
-  // The operational context.
-  private OperationalContext _operationalContext;
   // The root operational activity.
   private OperationalActivity _rootOperationalActivity;
   // The system engineering.
@@ -88,10 +85,6 @@ public class CreateOpAnalysisCmd extends AbstractReadWriteCommand {
     // Builds the entities structure skeleton.
     EntityPkg entitiesPkg = OaFactory.eINSTANCE.createEntityPkg(NamingConstants.CreateOpAnalysisCmd_operationalEntities_pkg_name);
     _operationalAnalysis.setOwnedEntityPkg(entitiesPkg);
-
-    // Builds the operational context structure skeleton.
-    _operationalContext = OaFactory.eINSTANCE.createOperationalContext(NamingConstants.CreateOpAnalysisCmd_operational_context_name);
-    _operationalAnalysis.setOwnedOperationalContext(_operationalContext);
 
     // Attaches the element to its parent system engineering.
     _systemEng.getOwnedArchitectures().add(_operationalAnalysis);

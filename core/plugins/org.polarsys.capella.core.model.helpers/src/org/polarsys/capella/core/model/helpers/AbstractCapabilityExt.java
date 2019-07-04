@@ -14,19 +14,19 @@ package org.polarsys.capella.core.model.helpers;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
+import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.ctx.Capability;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
-import org.polarsys.capella.core.data.fa.FaFactory;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
-import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
 import org.polarsys.capella.core.data.helpers.ctx.services.CapabilityExt;
 import org.polarsys.capella.core.data.helpers.ctx.services.OperationalCapabilityExt;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
@@ -38,8 +38,6 @@ import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
-import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
-import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 
 /**
  * AbstractCapability helpers
@@ -54,8 +52,8 @@ public class AbstractCapabilityExt {
   public static void addInvolvedComponent(AbstractCapability capability, Component component) {
     if (capability instanceof OperationalCapability && component instanceof Entity) {
       OperationalCapabilityExt.addInvolvedEntity((OperationalCapability) capability, (Entity) component);
-    } else if (capability instanceof Capability) {
-      CapabilityExt.addInvolvedComponent((Capability) capability, component);
+    } else if (capability instanceof Capability && component instanceof SystemComponent) {
+      CapabilityExt.addInvolvedSystemComponent((Capability) capability, (SystemComponent) component);
     } else if (capability instanceof CapabilityRealization) {
       CapabilityRealizationExt.addInvolvedComponent((CapabilityRealization) capability, component);
     }
@@ -85,15 +83,14 @@ public class AbstractCapabilityExt {
    */
   public static List<Component> getInvolvedComponents(AbstractCapability capability) {
     List<Component> involvedComponents = new ArrayList<Component>();
-
     if (capability instanceof OperationalCapability) {
-      involvedComponents.addAll(OperationalCapabilityExt.getInvolvedEntities((OperationalCapability)capability));
+      involvedComponents.addAll(OperationalCapabilityExt.getInvolvedEntities((OperationalCapability) capability));
     } else if (capability instanceof Capability) {
-      involvedComponents.addAll(CapabilityExt.getInvolvedComponents((Capability) capability));
+      involvedComponents.addAll(CapabilityExt.getInvolvedSystemComponents((Capability) capability));
     } else if (capability instanceof CapabilityRealization) {
-      involvedComponents.addAll(CapabilityRealizationExt.getInvolvedComponents((CapabilityRealization) capability));
+      involvedComponents.addAll(((CapabilityRealization) capability).getInvolvedComponents().stream()
+          .filter(Component.class::isInstance).map(Component.class::cast).collect(Collectors.toList()));
     }
-
     return involvedComponents;
   }
 
@@ -118,8 +115,8 @@ public class AbstractCapabilityExt {
    * @param component the non involved component
    */
   public static void removeInvolvedComponent(AbstractCapability capability, Component component) {
-    if (capability instanceof Capability) {
-      CapabilityExt.removeInvolvedComponent((Capability) capability, component);
+    if (capability instanceof Capability && component instanceof SystemComponent) {
+      CapabilityExt.removeInvolvedSystemComponent((Capability) capability, (SystemComponent) component);
     } else if (capability instanceof CapabilityRealization) {
       CapabilityRealizationExt.removeInvolvedComponent((CapabilityRealization) capability, component);
     }

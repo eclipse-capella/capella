@@ -1060,6 +1060,15 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getEntity_RealizingSystemComponents() {
+		return (EReference)entityEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getConceptPkg() {
 		return conceptPkgEClass;
 	}
@@ -1493,6 +1502,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 		createEReference(entityEClass, ENTITY__ALLOCATED_OPERATIONAL_ACTIVITIES);
 		createEReference(entityEClass, ENTITY__ALLOCATED_ROLES);
 		createEReference(entityEClass, ENTITY__INVOLVING_OPERATIONAL_CAPABILITIES);
+		createEReference(entityEClass, ENTITY__REALIZING_SYSTEM_COMPONENTS);
 
 		conceptPkgEClass = createEClass(CONCEPT_PKG);
 		createEReference(conceptPkgEClass, CONCEPT_PKG__OWNED_CONCEPT_PKGS);
@@ -1704,6 +1714,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 		initEReference(getEntity_AllocatedOperationalActivities(), this.getOperationalActivity(), this.getOperationalActivity_AllocatorEntities(), "allocatedOperationalActivities", null, 0, -1, Entity.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getEntity_AllocatedRoles(), this.getRole(), null, "allocatedRoles", null, 0, -1, Entity.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getEntity_InvolvingOperationalCapabilities(), this.getOperationalCapability(), null, "involvingOperationalCapabilities", null, 0, -1, Entity.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getEntity_RealizingSystemComponents(), theCtxPackage.getSystemComponent(), null, "realizingSystemComponents", null, 0, -1, Entity.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(conceptPkgEClass, ConceptPkg.class, "ConceptPkg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getConceptPkg_OwnedConceptPkgs(), this.getConceptPkg(), null, "ownedConceptPkgs", null, 0, -1, ConceptPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -2329,6 +2340,14 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
+		  (getEntity_RealizingSystemComponents(), 
+		   source, 
+		   new String[] {
+			 "description", "System Components that realize this Entity", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
 		  (conceptPkgEClass, 
 		   source, 
 		   new String[] {
@@ -2859,6 +2878,12 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 		   });	
 		addAnnotation
 		  (getEntity_InvolvingOperationalCapabilities(), 
+		   source, 
+		   new String[] {
+			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getEntity_RealizingSystemComponents(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
@@ -4007,6 +4032,13 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 		   });	
 		addAnnotation
 		  (getEntity_InvolvingOperationalCapabilities(), 
+		   source, 
+		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "Entity.involvingInvolvements(self, eoci);\r\nEntityOperationalCapabilityInvolvement.capability(eoci, target);" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getEntity_RealizingSystemComponents(), 
 		   source, 
 		   new String[] {
 			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$

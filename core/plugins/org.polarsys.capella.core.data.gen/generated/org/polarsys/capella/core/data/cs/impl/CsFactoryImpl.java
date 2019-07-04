@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.polarsys.capella.common.lib.IdGenerator;
+import org.polarsys.capella.core.data.cs.ComponentRealization;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
@@ -80,6 +81,7 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case CsPackage.PART: return createPart();
+			case CsPackage.COMPONENT_REALIZATION: return createComponentRealization();
 			case CsPackage.INTERFACE_PKG: return createInterfacePkg();
 			case CsPackage.INTERFACE: return createInterface();
 			case CsPackage.INTERFACE_IMPLEMENTATION: return createInterfaceImplementation();
@@ -114,6 +116,22 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 
     //end-capella-code
 		return part;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ComponentRealization createComponentRealization() {
+		ComponentRealizationImpl componentRealization = new ComponentRealizationImpl();
+    //begin-capella-code
+
+    componentRealization.setId(IdGenerator.createId());
+
+
+    //end-capella-code
+		return componentRealization;
 	}
 
 	/**

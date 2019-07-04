@@ -15,10 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.polarsys.capella.core.data.ctx.Actor;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
-import org.polarsys.capella.core.data.ctx.System;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation;
@@ -26,8 +26,6 @@ import org.polarsys.capella.core.data.fa.FunctionRealization;
 import org.polarsys.capella.core.data.helpers.fa.delegates.AbstractFunctionHelper;
 import org.polarsys.capella.core.data.la.LogicalFunction;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 
 public class SystemFunctionHelper {
   private static SystemFunctionHelper instance;
@@ -46,10 +44,8 @@ public class SystemFunctionHelper {
   public Object doSwitch(SystemFunction element, EStructuralFeature feature) {
     Object ret = null;
 
-    if (feature.equals(CtxPackage.Literals.SYSTEM_FUNCTION__ALLOCATOR_ACTORS)) {
-      ret = getAllocatorActors(element);
-    } else if (feature.equals(CtxPackage.Literals.SYSTEM_FUNCTION__ALLOCATOR_SYSTEMS)) {
-      ret = getAllocatorSystems(element);
+    if (feature.equals(CtxPackage.Literals.SYSTEM_FUNCTION__ALLOCATING_SYSTEM_COMPONENTS)) {
+      ret = getAllocatingSystemComponents(element);
     } else if (feature.equals(CtxPackage.Literals.SYSTEM_FUNCTION__REALIZED_OPERATIONAL_ACTIVITIES)) {
       ret = getRealizedOperationalActivities(element);
     } else if (feature.equals(CtxPackage.Literals.SYSTEM_FUNCTION__REALIZING_LOGICAL_FUNCTIONS)) {
@@ -68,26 +64,13 @@ public class SystemFunctionHelper {
     return ret;
   }
 
-  protected List<Actor> getAllocatorActors(SystemFunction element) {
-    List<Actor> ret = new ArrayList<>();
+  protected List<SystemComponent> getAllocatingSystemComponents(SystemFunction element) {
+    List<SystemComponent> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ComponentFunctionalAllocation) {
         TraceableElement src = trace.getSourceElement();
-        if (src instanceof Actor) {
-          ret.add((Actor) src);
-        }
-      }
-    }
-    return ret;
-  }
-
-  protected List<System> getAllocatorSystems(SystemFunction element) {
-    List<System> ret = new ArrayList<>();
-    for (AbstractTrace trace : element.getIncomingTraces()) {
-      if (trace instanceof ComponentFunctionalAllocation) {
-        TraceableElement src = trace.getSourceElement();
-        if (src instanceof System) {
-          ret.add((System) src);
+        if (src instanceof SystemComponent) {
+          ret.add((SystemComponent) src);
         }
       }
     }

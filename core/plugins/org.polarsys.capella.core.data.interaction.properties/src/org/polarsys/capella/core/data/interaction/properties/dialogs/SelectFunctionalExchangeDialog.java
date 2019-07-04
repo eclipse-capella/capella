@@ -74,9 +74,9 @@ import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.OaFactory;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.Role;
-import org.polarsys.capella.core.data.pa.AbstractPhysicalComponent;
 import org.polarsys.capella.core.data.pa.PaFactory;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
+import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
@@ -442,15 +442,15 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
 
     boolean isPhysicalComponentSorceOrTarget =
         (sourceComponent != null) && (targetComponent != null)
-            && ((sourceComponent instanceof AbstractPhysicalComponent) && (targetComponent instanceof AbstractPhysicalComponent));
+            && ((sourceComponent instanceof PhysicalComponent) && (targetComponent instanceof PhysicalComponent));
     BlockArchitecture sourceBlockArchitecture = ComponentExt.getRootBlockArchitecture(sourceComponent);
     BlockArchitecture targetBlockArchitecture = ComponentExt.getRootBlockArchitecture(targetComponent);
     boolean isPhysicalArchitecture =
         (sourceBlockArchitecture != null) && (targetBlockArchitecture != null) && (sourceBlockArchitecture instanceof PhysicalArchitecture)
             && (targetBlockArchitecture instanceof PhysicalArchitecture);
     if (isPhysicalComponentSorceOrTarget && isPhysicalArchitecture) {
-      AbstractPhysicalComponent sourcePhysicalComponent = (AbstractPhysicalComponent) sourceComponent;
-      AbstractPhysicalComponent targetPhysicalComponent = (AbstractPhysicalComponent) targetComponent;
+      PhysicalComponent sourcePhysicalComponent = (PhysicalComponent) sourceComponent;
+      PhysicalComponent targetPhysicalComponent = (PhysicalComponent) targetComponent;
       boolean isNodeSourceOrTarget =
           sourcePhysicalComponent.getNature().equals(PhysicalComponentNature.NODE) || targetPhysicalComponent.getNature().equals(PhysicalComponentNature.NODE);
       disableInputText(headerGroup, !isNodeSourceOrTarget);

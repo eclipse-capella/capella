@@ -14,14 +14,10 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
-
-import org.polarsys.capella.core.data.cs.CsPackage;
-import org.polarsys.capella.core.data.ctx.System;
-import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.pa.PhysicalComponent;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
+import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 
 public class PhysicalLinkCategoryItemContribution implements IMDEMenuItemContribution {
 
@@ -29,13 +25,7 @@ public class PhysicalLinkCategoryItemContribution implements IMDEMenuItemContrib
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
    */
   public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
-    if ((modelElement instanceof System)
-      || ((modelElement instanceof LogicalComponent) && ComponentExt.isComponentRoot(modelElement))
-      || ((modelElement instanceof PhysicalComponent) && ComponentExt.isComponentRoot(modelElement)))
-    {
-      return true;
-    }
-    return false;
+    return ComponentExt.isComponentRoot(modelElement);
   }
 
   /**

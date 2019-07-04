@@ -12,16 +12,22 @@
 package org.polarsys.capella.core.model.helpers;
 
 import org.eclipse.emf.common.util.EList;
-
+import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
+import org.polarsys.capella.core.data.capellacommon.Region;
+import org.polarsys.capella.core.data.capellacommon.StateMachine;
+import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
+import org.polarsys.capella.core.data.capellamodeller.ModelRoot;
+import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.Block;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.ComponentArchitecture;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
-import org.polarsys.capella.core.data.ctx.ActorPkg;
 import org.polarsys.capella.core.data.ctx.CapabilityPkg;
 import org.polarsys.capella.core.data.ctx.MissionPkg;
-import org.polarsys.capella.core.data.ctx.System;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.ctx.SystemFunctionPkg;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
@@ -31,25 +37,17 @@ import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.information.datatype.BooleanType;
 import org.polarsys.capella.core.data.information.datatype.DataType;
 import org.polarsys.capella.core.data.la.CapabilityRealizationPkg;
-import org.polarsys.capella.core.data.la.LogicalActorPkg;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
+import org.polarsys.capella.core.data.la.LogicalComponentPkg;
 import org.polarsys.capella.core.data.la.LogicalFunction;
 import org.polarsys.capella.core.data.la.LogicalFunctionPkg;
-import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
-import org.polarsys.capella.core.data.capellacommon.Region;
-import org.polarsys.capella.core.data.capellacommon.StateMachine;
-import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
-import org.polarsys.capella.core.data.capellamodeller.ModelRoot;
-import org.polarsys.capella.core.data.capellamodeller.Project;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.EntityPkg;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.OperationalActivityPkg;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.oa.OperationalCapabilityPkg;
-import org.polarsys.capella.core.data.oa.OperationalContext;
 import org.polarsys.capella.core.data.oa.RolePkg;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
@@ -104,7 +102,7 @@ public class ModelQueryHelper {
   static public ConfigurationItem getEpbsSystem(Project project) {
     EPBSArchitecture epbsArchitecture = getEPBSArchitecture(project);
     if (epbsArchitecture != null) {
-      return epbsArchitecture.getOwnedConfigurationItem();
+      return (ConfigurationItem)epbsArchitecture.getSystem();
     }
     return null;
   }
@@ -125,10 +123,10 @@ public class ModelQueryHelper {
     return null;
   }
 
-  static public LogicalActorPkg getLogicalActorPkg(Project project) {
+  static public LogicalComponentPkg getLogicalComponentPkg(Project project) {
     LogicalArchitecture logicalArchitecture = getLogicalArchitecture(project);
     if (logicalArchitecture != null) {
-      return logicalArchitecture.getOwnedLogicalActorPkg();
+      return logicalArchitecture.getOwnedLogicalComponentPkg();
     }
     return null;
   }
@@ -156,7 +154,7 @@ public class ModelQueryHelper {
   static public LogicalComponent getLogicalSystem(Project project) {
     LogicalArchitecture logicalArchitecture = getLogicalArchitecture(project);
     if (logicalArchitecture != null) {
-      return logicalArchitecture.getOwnedLogicalComponent();
+      return (LogicalComponent)logicalArchitecture.getSystem();
     }
     return null;
   }
@@ -215,15 +213,6 @@ public class ModelQueryHelper {
     return result;
   }
 
-  static public OperationalContext getOperationalContext(Project project) {
-    OperationalContext result = null;
-    OperationalAnalysis operationalAnalysis = getOperationalAnalysis(project);
-    if (operationalAnalysis != null) {
-      result = operationalAnalysis.getOwnedOperationalContext();
-    }
-    return result;
-  }
-
   static public CapabilityRealizationPkg getPACapabilityRealizationPkg(Project project) {
     PhysicalArchitecture physicalArchitecture = getPhysicalArchitecture(project);
     if (physicalArchitecture != null) {
@@ -263,7 +252,7 @@ public class ModelQueryHelper {
   static public PhysicalComponent getPhysicalSystem(Project project) {
     PhysicalArchitecture physicalArchitecture = getPhysicalArchitecture(project);
     if (physicalArchitecture != null) {
-      return physicalArchitecture.getOwnedPhysicalComponent();
+      return (PhysicalComponent)physicalArchitecture.getSystem();
     }
     return null;
   }
@@ -271,7 +260,7 @@ public class ModelQueryHelper {
   static public ConfigurationItem getRootConfigurationItem(Project project) {
     EPBSArchitecture epbsArchitecture = getEPBSArchitecture(project);
     if (epbsArchitecture != null) {
-      return epbsArchitecture.getOwnedConfigurationItem();
+      return (ConfigurationItem)epbsArchitecture.getSystem();
     }
     return null;
   }
@@ -397,18 +386,18 @@ public class ModelQueryHelper {
     return null;
   }
 
-  static public System getSystem(Project project) {
+  static public SystemComponent getSystem(Project project) {
     SystemAnalysis systemAnalysis = getSystemAnalysis(project);
     if (systemAnalysis != null) {
-      return systemAnalysis.getOwnedSystem();
+      return (SystemComponent)systemAnalysis.getSystem();
     }
     return null;
   }
 
-  static public ActorPkg getSystemActorPkg(Project project) {
+  static public ComponentPkg getSystemComponentPkg(Project project) {
     SystemAnalysis systemAnalysis = getSystemAnalysis(project);
     if (systemAnalysis != null) {
-      return systemAnalysis.getOwnedActorPkg();
+      return systemAnalysis.getOwnedSystemComponentPkg();
     }
     return null;
   }
@@ -512,7 +501,7 @@ public class ModelQueryHelper {
   }
 
   static public Region getSystemStateMachineRegion(Project project) {
-    System system = getSystem(project);
+    SystemComponent system = getSystem(project);
     if (system != null) {
       return getStateMachineRegion(system);
     }

@@ -21,23 +21,15 @@ import org.polarsys.capella.core.data.helpers.capellacore.delegates.StructureHel
 import org.polarsys.capella.core.data.helpers.la.delegates.CapabilityRealizationHelper;
 import org.polarsys.capella.core.data.helpers.la.delegates.ContextInterfaceRealizationHelper;
 import org.polarsys.capella.core.data.helpers.la.delegates.LaArchitectureHelper;
-import org.polarsys.capella.core.data.helpers.la.delegates.LogicalActorHelper;
 import org.polarsys.capella.core.data.helpers.la.delegates.LogicalComponentHelper;
-import org.polarsys.capella.core.data.helpers.la.delegates.LogicalContextHelper;
 import org.polarsys.capella.core.data.helpers.la.delegates.LogicalFunctionHelper;
-import org.polarsys.capella.core.data.helpers.la.delegates.SystemActorRealizationHelper;
 import org.polarsys.capella.core.data.helpers.la.delegates.SystemAnalysisRealizationHelper;
-import org.polarsys.capella.core.data.helpers.la.delegates.SystemRealizationHelper;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.data.la.ContextInterfaceRealization;
-import org.polarsys.capella.core.data.la.LogicalActor;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.la.LogicalContext;
 import org.polarsys.capella.core.data.la.LogicalFunction;
-import org.polarsys.capella.core.data.la.SystemActorRealization;
 import org.polarsys.capella.core.data.la.SystemAnalysisRealization;
-import org.polarsys.capella.core.data.la.SystemRealization;
 
 public class LogicalArchitectureHelper implements IHelper {
 
@@ -46,9 +38,6 @@ public class LogicalArchitectureHelper implements IHelper {
 
 		if (object instanceof LogicalArchitecture) {
 			ret = LaArchitectureHelper.getInstance().doSwitch((LogicalArchitecture) object, feature);
-		}
-		else if (object instanceof LogicalContext) {
-			ret = LogicalContextHelper.getInstance().doSwitch((LogicalContext) object, feature);
 		}
 		else if (object instanceof LogicalComponent) {
 			ret = LogicalComponentHelper.getInstance().doSwitch((LogicalComponent) object, feature);
@@ -61,15 +50,6 @@ public class LogicalArchitectureHelper implements IHelper {
 		}
 		else if (object instanceof ContextInterfaceRealization) {
 			ret = ContextInterfaceRealizationHelper.getInstance().doSwitch((ContextInterfaceRealization) object, feature);
-		}
-		else if (object instanceof SystemRealization) {
-			ret = SystemRealizationHelper.getInstance().doSwitch((SystemRealization) object, feature);
-		}
-		else if (object instanceof LogicalActor) {
-			ret = LogicalActorHelper.getInstance().doSwitch((LogicalActor) object, feature);
-		}
-		else if (object instanceof SystemActorRealization) {
-			ret = SystemActorRealizationHelper.getInstance().doSwitch((SystemActorRealization) object, feature);
 		}
 		else if (object instanceof CapabilityRealization) {
 			ret = CapabilityRealizationHelper.getInstance().doSwitch((CapabilityRealization) object, feature);

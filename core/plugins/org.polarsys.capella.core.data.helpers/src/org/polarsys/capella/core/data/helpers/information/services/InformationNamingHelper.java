@@ -29,8 +29,8 @@ public class InformationNamingHelper {
       String propertyName = element.getName();
       if (propertyName != null) {
         EObject container = element.eContainer();
-        if (container instanceof Classifier) {
-          Classifier propertyContainer = (Classifier) container;
+        if (container instanceof AbstractNamedElement) {
+          AbstractNamedElement propertyContainer = (AbstractNamedElement) container;
           if (propertyContainer.getName() != null) {
             return propertyContainer.getName() + "::" + propertyName; //$NON-NLS-1$
           }

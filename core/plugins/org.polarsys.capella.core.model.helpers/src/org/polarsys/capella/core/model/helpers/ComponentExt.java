@@ -37,6 +37,9 @@ import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement;
+import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement;
+import org.polarsys.capella.core.data.capellacommon.CapellacommonFactory;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.capellacommon.StateMachine;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -44,11 +47,10 @@ import org.polarsys.capella.core.data.capellacore.Feature;
 import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
 import org.polarsys.capella.core.data.capellacore.Relationship;
 import org.polarsys.capella.core.data.capellacore.Structure;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentArchitecture;
-import org.polarsys.capella.core.data.cs.ComponentContext;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.DeploymentTarget;
@@ -59,10 +61,8 @@ import org.polarsys.capella.core.data.cs.InterfacePkg;
 import org.polarsys.capella.core.data.cs.InterfaceUse;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
-import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.ConfigurationItemPkg;
-import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeEnd;
@@ -74,7 +74,6 @@ import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.fa.OrientationPortKind;
 import org.polarsys.capella.core.data.helpers.capellacore.services.GeneralizableElementExt;
-import org.polarsys.capella.core.data.helpers.ctx.services.ActorPkgExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionalExt;
 import org.polarsys.capella.core.data.information.AbstractInstance;
@@ -82,8 +81,6 @@ import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.ExchangeItemInstance;
 import org.polarsys.capella.core.data.information.InformationFactory;
-import org.polarsys.capella.core.data.information.Partition;
-import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.data.information.communication.CommunicationFactory;
 import org.polarsys.capella.core.data.information.communication.CommunicationLink;
@@ -91,14 +88,11 @@ import org.polarsys.capella.core.data.interaction.Execution;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.MessageKind;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
-import org.polarsys.capella.core.data.la.LogicalArchitecture;
+import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalComponentPkg;
 import org.polarsys.capella.core.data.oa.CommunicationMean;
 import org.polarsys.capella.core.data.oa.Entity;
-import org.polarsys.capella.core.data.oa.EntityPkg;
-import org.polarsys.capella.core.data.oa.OperationalAnalysis;
-import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
@@ -133,11 +127,9 @@ public class ComponentExt {
   public static void addProvidedInterface(Component component, Interface interf) {
     ComponentPort stdPort = null;
     if ((component != null) && (interf != null)) {
-      for (Partition partition : component.getOwnedPartitions()) {
-        if (partition instanceof ComponentPort) {
-          stdPort = (ComponentPort) partition;
-          break;
-        }
+      for (ComponentPort componentPort : component.getContainedComponentPorts()) {
+        stdPort = componentPort;
+        break;
       }
       if (null == stdPort) {
         stdPort = PortExt.createStandardPort();
@@ -153,18 +145,16 @@ public class ComponentExt {
   public static void addRequiredInterface(Component component, Interface interf) {
     ComponentPort stdPort = null;
     if ((component != null) && (interf != null)) {
-      for (Partition partition : component.getOwnedPartitions()) {
-        if (partition instanceof ComponentPort) {
-          stdPort = (ComponentPort) partition;
-          break;
-        }
+      for (ComponentPort componentPort : component.getContainedComponentPorts()) {
+        stdPort = componentPort;
+        break;
       }
-      if (null == stdPort) {
-        stdPort = PortExt.createStandardPort();
-        component.getOwnedFeatures().add(stdPort);
-      }
-      stdPort.getRequiredInterfaces().add(interf);
     }
+    if (null == stdPort) {
+      stdPort = PortExt.createStandardPort();
+      component.getOwnedFeatures().add(stdPort);
+    }
+    stdPort.getRequiredInterfaces().add(interf);
   }
 
   /**
@@ -698,10 +688,8 @@ public class ComponentExt {
   public static Collection<Part> getAllSubUsedParts(Component component, boolean useDeploymentLinks) {
     Collection<Part> result = new HashSet<Part>();
 
-    for (Partition partition : component.getRepresentingPartitions()) {
-      if (partition instanceof Part) {
-        result.add((Part) partition);
-      }
+    for (Part part : component.getRepresentingParts()) {
+      result.add(part);
     }
 
     return getAllSubUsedParts(result, useDeploymentLinks);
@@ -954,19 +942,6 @@ public class ComponentExt {
     return list;
   }
 
-  /**
-   * Return the Part list involved in decomposition for the Component given in parameter
-   */
-  public static List<Part> getDecompositionPartInvolved(Component lc) {
-    List<Part> decompPartInvolved = new ArrayList<Part>();
-    for (Partition partition : lc.getOwnedPartitions()) {
-      AbstractType currentLc = partition.getAbstractType();
-      if ((currentLc instanceof Component) && !decompPartInvolved.contains(partition)) {
-        decompPartInvolved.add((Part) partition);
-      }
-    }
-    return decompPartInvolved;
-  }
 
   /**
    * @return the list of Component direct common parent for componentA and componentB.
@@ -986,7 +961,7 @@ public class ComponentExt {
   /**
    * @return component owning the the part given in parameter
    */
-  public static Component getDirectParent(Partition part) {
+  public static Component getDirectParent(Part part) {
     return (Component) EcoreUtil2.getFirstContainer(part, CsPackage.Literals.COMPONENT);
   }
 
@@ -996,8 +971,8 @@ public class ComponentExt {
   public static List<Component> getDirectParents(Component component) {
     List<Component> parentsComponents = new ArrayList<Component>();
 
-    for (Partition partition : component.getRepresentingPartitions()) {
-      Component partitionanableElt = (Component) EcoreUtil2.getFirstContainer(partition, CsPackage.Literals.COMPONENT);
+    for (Part part : component.getRepresentingParts()) {
+      Component partitionanableElt = (Component) EcoreUtil2.getFirstContainer(part, CsPackage.Literals.COMPONENT);
       parentsComponents.add(partitionanableElt);
     }
     return parentsComponents;
@@ -1384,14 +1359,12 @@ public class ComponentExt {
   @Deprecated
   public static Component getParent(Component component) {
     Component parent = null;
-    for (Partition aPartition : component.getRepresentingPartitions()) {
-      if (aPartition instanceof Part) {
-        PartitionableElement ownerElement = getDirectParent(aPartition);
-        if ((null == ownerElement) || !(ownerElement instanceof Component)) {
-          return parent;
-        }
-        return (Component) ownerElement;
+    for (Part part : component.getRepresentingParts()) {
+      Component ownerElement = getDirectParent(part);
+      if (null == ownerElement) {
+        return parent;
       }
+      return ownerElement;
     }
     return parent;
   }
@@ -1401,12 +1374,10 @@ public class ComponentExt {
    */
   public static Collection<Component> getComponentAncestors(Component component) {
     Collection<Component> result = new HashSet<Component>();
-    for (Partition partition : component.getRepresentingPartitions()) {
-      if (partition instanceof Part) {
-        for (Part componentAncestor : ComponentExt.getPartAncestors((Part) partition)) {
-          if (componentAncestor.getAbstractType() instanceof Component) {
-            result.add((Component) componentAncestor.getAbstractType());
-          }
+    for (Part part : component.getRepresentingParts()) {
+      for (Part componentAncestor : ComponentExt.getPartAncestors(part)) {
+        if (componentAncestor.getAbstractType() instanceof Component) {
+          result.add((Component) componentAncestor.getAbstractType());
         }
       }
     }
@@ -1424,19 +1395,19 @@ public class ComponentExt {
   public static Collection<Part> getPartAncestors(Part child, boolean addGeneralizationOfParents) {
     Collection<Part> result = new ArrayList<Part>();
     HashSet<Part> visited = new HashSet<Part>();
-    LinkedList<Partition> toVisit = new LinkedList<Partition>();
+    LinkedList<Part> toVisit = new LinkedList<>();
 
     if (child != null) {
       toVisit.add(child);
 
       while (toVisit.size() > 0) {
-        Partition visit = toVisit.removeFirst();
+        Part visit = toVisit.removeFirst();
 
         if (visit instanceof Part) {
           Part pvisit = (Part) visit;
 
-          EObject parent = getDirectParent(pvisit);
-          if ((parent != null) && (parent instanceof PartitionableElement)) {
+          Component parent = getDirectParent(pvisit);
+          if (parent != null) {
             List<EObject> container = new ArrayList<EObject>();
             container.add(parent);
 
@@ -1448,15 +1419,12 @@ public class ComponentExt {
             }
 
             for (EObject element : container) {
-              if (element instanceof PartitionableElement) {
-                for (Partition partition : ((PartitionableElement) element).getRepresentingPartitions()) {
-                  if (partition instanceof Part) {
-                    Part part = (Part) partition;
-                    if (!visited.contains(part)) {
-                      toVisit.addLast(part);
-                      result.add(part);
-                      visited.add(part);
-                    }
+              if (element instanceof Component) {
+                for (Part part : ((Component) element).getRepresentingParts()) {
+                  if (!visited.contains(part)) {
+                    toVisit.addLast(part);
+                    result.add(part);
+                    visited.add(part);
                   }
                 }
               }
@@ -1486,7 +1454,7 @@ public class ComponentExt {
     List<EObject> result = new LinkedList<>();
 
     if (eobject instanceof Component) {
-      for (Partition part : ((Component) eobject).getRepresentingPartitions()) {
+      for (Part part : ((Component) eobject).getRepresentingParts()) {
         result.add(part);
       }
 
@@ -1644,29 +1612,12 @@ public class ComponentExt {
    */
   static public List<? extends Component> getSubDefinedActors(BlockArchitecture architecture) {
     List<Component> elements = new ArrayList<>();
-
-    Component component = BlockArchitectureExt.getContext(architecture, false);
-    if (component != null) {
-      for (Component compo : getSubDefinedComponents(component)) {
-        if (compo instanceof AbstractActor) {
-          elements.add(compo);
-        }
+    for (Component compo : getSubDefinedComponents(architecture)) {
+      if (compo.isActor()) {
+        elements.add(compo);
       }
     }
-
-    if (architecture instanceof SystemAnalysis) {
-      elements.addAll(ActorPkgExt.getAllActors(((SystemAnalysis) architecture).getOwnedActorPkg()));
-
-    } else if (architecture instanceof LogicalArchitecture) {
-      elements.addAll(ActorPkgExt.getAllActors(((LogicalArchitecture) architecture).getOwnedLogicalActorPkg()));
-
-    } else if (architecture instanceof PhysicalArchitecture) {
-      elements.addAll(ActorPkgExt.getAllActors(((PhysicalArchitecture) architecture).getOwnedPhysicalActorPkg()));
-
-    }
-
     return elements;
-
   }
 
   /**
@@ -1674,22 +1625,22 @@ public class ComponentExt {
    */
   static public List<Component> getSubDefinedComponents(Component object) {
     List<Component> elements = new ArrayList<Component>();
-
-    if (object instanceof LogicalComponent) {
+    if (object instanceof Entity) {
+      elements.addAll(((Entity) object).getOwnedEntities());
+    } else if (object instanceof LogicalComponent) {
       elements.addAll(((LogicalComponent) object).getOwnedLogicalComponents());
       for (LogicalComponentPkg pkg : ((LogicalComponent) object).getOwnedLogicalComponentPkgs()) {
-        getSubDefinedComponents(pkg, elements);
+        elements.addAll(ComponentPkgExt.getOwnedComponents(pkg));
       }
-
     } else if (object instanceof PhysicalComponent) {
       elements.addAll(((PhysicalComponent) object).getOwnedPhysicalComponents());
       for (PhysicalComponentPkg pkg : ((PhysicalComponent) object).getOwnedPhysicalComponentPkgs()) {
-        getSubDefinedComponents(pkg, elements);
+        elements.addAll(ComponentPkgExt.getOwnedComponents(pkg));
       }
     } else if (object instanceof ConfigurationItem) {
       elements.addAll(((ConfigurationItem) object).getOwnedConfigurationItems());
       for (ConfigurationItemPkg pkg : ((ConfigurationItem) object).getOwnedConfigurationItemPkgs()) {
-        getSubDefinedComponents(pkg, elements);
+        elements.addAll(ComponentPkgExt.getOwnedComponents(pkg));
       }
     }
 
@@ -1703,87 +1654,11 @@ public class ComponentExt {
   }
 
   /**
-   * Fill the collection with components defined into the physical component package.
-   */
-  static private void getSubDefinedComponents(ConfigurationItemPkg compoPkg, Collection<Component> components) {
-    if (compoPkg == null) {
-      return;
-    }
-    components.addAll(compoPkg.getOwnedConfigurationItems());
-    for (ConfigurationItemPkg pkg : compoPkg.getOwnedConfigurationItemPkgs()) {
-      getSubDefinedComponents(pkg, components);
-    }
-  }
-
-  /**
-   * Fill the collection with components defined into the logical component package.
-   */
-  static private void getSubDefinedComponents(LogicalComponentPkg compoPkg, Collection<Component> components) {
-    if (compoPkg == null) {
-      return;
-    }
-    components.addAll(compoPkg.getOwnedLogicalComponents());
-    for (LogicalComponentPkg pkg : compoPkg.getOwnedLogicalComponentPkgs()) {
-      getSubDefinedComponents(pkg, components);
-    }
-  }
-
-  /**
    * Returns components defined into the architecture.
    */
-  static public List<Component> getSubDefinedComponents(BlockArchitecture object) {
-    List<Component> elements = new ArrayList<Component>();
-    Component component = BlockArchitectureExt.getContext(object, false);
-    if (component != null) {
-      elements.addAll(getSubDefinedComponents(component));
-    }
-
-    if (object instanceof OperationalAnalysis) {
-      getSubDefinedComponents(((OperationalAnalysis) object).getOwnedEntityPkg(), elements);
-    }
-    if (object instanceof SystemAnalysis) {
-      elements.add(((SystemAnalysis) object).getOwnedSystem());
-
-    } else if (object instanceof LogicalArchitecture) {
-      elements.add(((LogicalArchitecture) object).getOwnedLogicalComponent());
-      getSubDefinedComponents(((LogicalArchitecture) object).getOwnedLogicalComponentPkg(), elements);
-
-    } else if (object instanceof PhysicalArchitecture) {
-      elements.add(((PhysicalArchitecture) object).getOwnedPhysicalComponent());
-      getSubDefinedComponents(((PhysicalArchitecture) object).getOwnedPhysicalComponentPkg(), elements);
-
-    } else if (object instanceof EPBSArchitecture) {
-      elements.add(((EPBSArchitecture) object).getOwnedConfigurationItem());
-      getSubDefinedComponents(((EPBSArchitecture) object).getOwnedConfigurationItemPkg(), elements);
-    }
-
-    return elements;
-  }
-
-  /**
-   * Fill the collection with components defined into the physical component package.
-   */
-  static private void getSubDefinedComponents(EntityPkg entityPkg, Collection<Component> components) {
-    if (entityPkg == null) {
-      return;
-    }
-    components.addAll(entityPkg.getOwnedEntities());
-    for (EntityPkg pkg : entityPkg.getOwnedEntityPkgs()) {
-      getSubDefinedComponents(pkg, components);
-    }
-  }
-
-  /**
-   * Fill the collection with components defined into the physical component package.
-   */
-  static private void getSubDefinedComponents(PhysicalComponentPkg compoPkg, Collection<Component> components) {
-    if (compoPkg == null) {
-      return;
-    }
-    components.addAll(compoPkg.getOwnedComponents());
-    for (PhysicalComponentPkg pkg : compoPkg.getOwnedPhysicalComponentPkgs()) {
-      getSubDefinedComponents(pkg, components);
-    }
+  static public List<Component> getSubDefinedComponents(BlockArchitecture blockArchitecture) {
+    ComponentPkg componentPkg = BlockArchitectureExt.getComponentPkg(blockArchitecture, false);
+    return ComponentPkgExt.getOwnedComponents(componentPkg);
   }
 
   /**
@@ -1804,14 +1679,13 @@ public class ComponentExt {
   /**
    * Returns sub part used by the component (have a part)
    */
-  public static List<Part> getSubParts(PartitionableElement component) {
+  public static List<Part> getSubParts(Component component) {
     List<Part> result = new ArrayList<Part>();
-    for (Partition partition : component.getOwnedPartitions()) {
-      if (partition instanceof Part) {
-        result.add((Part) partition);
+    for (Feature feature : component.getOwnedFeatures()) {
+      if (feature instanceof Part) {
+        result.add((Part) feature);
       }
     }
-    // Add also part owned by component pks when available
     return result;
   }
 
@@ -1820,12 +1694,9 @@ public class ComponentExt {
    */
   public static List<Part> getSubParts(Component component, boolean useDeploymentLinks) {
     List<Part> result = new ArrayList<Part>();
-
     if (useDeploymentLinks) {
-      for (Partition partition : component.getRepresentingPartitions()) {
-        if (partition instanceof Part) {
-          result.addAll(PartExt.getDeployedParts((Part) partition));
-        }
+      for (Part part : component.getRepresentingParts()) {
+        result.addAll(PartExt.getDeployedParts(part));
       }
     }
     result.addAll(getSubParts(component));
@@ -1860,10 +1731,8 @@ public class ComponentExt {
   public static Collection<Part> getRepresentingParts(Component component) {
     ArrayList<Part> result = new ArrayList<Part>();
     if (component != null) {
-      for (Partition partition : component.getRepresentingPartitions()) {
-        if (partition instanceof Part) {
-          result.add((Part) partition);
-        }
+      for (Part part : component.getRepresentingParts()) {
+        result.add(part);
       }
     }
     return result;
@@ -2026,20 +1895,6 @@ public class ComponentExt {
           }
         }
       }
-
-    }
-
-    else if (ancestor instanceof ComponentContext) {
-      ComponentContext cContext = (ComponentContext) ancestor;
-      for (Partition partition : ComponentExt.getSubParts(cContext)) {
-        if (partition.getAbstractType() instanceof Component) {
-          Component current = (Component) partition.getAbstractType();
-          if ((current == child) || isComponentAncestor(current, child)) {
-            result = true;
-            break;
-          }
-        }
-      }
     }
 
     return result;
@@ -2071,7 +1926,7 @@ public class ComponentExt {
     if (e.isEmpty()) {
       EObject parent = ComponentExt.getDirectParent(currentPart);
       if (parent instanceof Component) {
-        parents.addAll((Collection) ((Component) parent).getRepresentingPartitions());
+        parents.addAll(((Component) parent).getRepresentingParts());
       }
     }
     return parents;
@@ -2110,7 +1965,7 @@ public class ComponentExt {
       if ((sourceContainer != null) && (sourceContainer instanceof Component)) {
         EObject sourceContainer2 = EcoreUtil2.getFirstContainer(sourceContainer, CsPackage.Literals.COMPONENT);
         if ((sourceContainer2 != null) && (sourceContainer2 instanceof Component)) {
-          deployingSource.addAll(((PartitionableElement) sourceContainer).getRepresentingPartitions());
+          deployingSource.addAll(((Component) sourceContainer).getRepresentingParts());
         }
       }
     }
@@ -2123,7 +1978,7 @@ public class ComponentExt {
       if ((targetContainer != null) && (targetContainer instanceof Component)) {
         EObject targetContainer2 = EcoreUtil2.getFirstContainer(targetContainer, CsPackage.Literals.COMPONENT);
         if ((targetContainer2 != null) && (targetContainer2 instanceof Component)) {
-          deployingTarget.addAll(((PartitionableElement) targetContainer).getRepresentingPartitions());
+          deployingTarget.addAll(((Component) targetContainer).getRepresentingParts());
         }
       }
     }
@@ -2140,14 +1995,7 @@ public class ComponentExt {
    * This method evaluates if a Component is a composite or not.
    */
   public static boolean isComposite(Component component) {
-    for (Partition partition : component.getOwnedPartitions()) {
-      if (partition instanceof Part) {
-        if ((partition.getType() == null) || (partition.getType() instanceof Component)) {
-          return true;
-        }
-      }
-    }
-    return false;
+    return !component.getContainedParts().isEmpty();
   }
 
   /**
@@ -2439,13 +2287,9 @@ public class ComponentExt {
    * This method remove an provide interface.
    */
   public static void removeProvidedInterface(Component component, Interface interf) {
-    ComponentPort stdPort = null;
-    for (Partition partition : component.getOwnedPartitions()) {
-      if ((partition instanceof ComponentPort)
-          && ((ComponentPort) partition).getProvidedInterfaces().contains(interf)) {
-        stdPort = (ComponentPort) partition;
-        stdPort.getProvidedInterfaces().remove(interf);
-        break;
+    for (ComponentPort port : component.getContainedComponentPorts()) {
+      if (port.getProvidedInterfaces().contains(interf)) {
+        port.getProvidedInterfaces().remove(interf);
       }
     }
   }
@@ -2454,13 +2298,9 @@ public class ComponentExt {
    * This method remove an require interface.
    */
   public static void removeRequiredInterface(Component component, Interface interf) {
-    ComponentPort stdPort = null;
-    for (Partition partition : component.getOwnedPartitions()) {
-      if ((partition instanceof ComponentPort)
-          && ((ComponentPort) partition).getRequiredInterfaces().contains(interf)) {
-        stdPort = (ComponentPort) partition;
-        stdPort.getRequiredInterfaces().remove(interf);
-        break;
+    for (ComponentPort port : component.getContainedComponentPorts()) {
+      if (port.getRequiredInterfaces().contains(interf)) {
+        port.getRequiredInterfaces().remove(interf);
       }
     }
   }
@@ -2487,20 +2327,20 @@ public class ComponentExt {
     }
   }
 
-  public static List<PartitionableElement> getAllPartitionableElementAncestors(PartitionableElement current) {
-    List<PartitionableElement> result = new ArrayList<PartitionableElement>();
-    List<Partition> representingPartitions = current.getRepresentingPartitions();
-    List<PartitionableElement> ancestors = new ArrayList<PartitionableElement>();
-    for (Partition partition : representingPartitions) {
-      Component parent = getDirectParent(partition);
+  public static List<Component> getAllPartitionableElementAncestors(Component current) {
+    List<Component> result = new ArrayList<Component>();
+    List<Part> representingPartitions = current.getRepresentingParts();
+    List<Component> ancestors = new ArrayList<Component>();
+    for (Part part : representingPartitions) {
+      Component parent = getDirectParent(part);
       if (parent != null) {
         ancestors.add(parent);
       }
     }
     result.addAll(ancestors);
 
-    for (PartitionableElement partitionableElement : ancestors) {
-      result.addAll(getAllPartitionableElementAncestors(partitionableElement));
+    for (Component component : ancestors) {
+      result.addAll(getAllPartitionableElementAncestors(component));
     }
 
     return result;
@@ -2668,18 +2508,16 @@ public class ComponentExt {
       return ctx.createSuccessStatus();
     }
 
-    EList<Partition> ownedPartitions = lcomp.getOwnedPartitions();
-    Iterator<Partition> iterator = ownedPartitions.iterator();
+    EList<Part> ownedParts = lcomp.getContainedParts();
+    Iterator<Part> iterator = ownedParts.iterator();
     while (iterator.hasNext()) {
-      Partition next = iterator.next();
-      if (next instanceof Part) {
-        Part part = (Part) next;
-        AbstractType abstractType = part.getAbstractType();
-        if (abstractType instanceof LogicalComponent) {
-          LogicalComponent lson = (LogicalComponent) abstractType;
-          if (lson.getRequiredInterfaces().contains(itf) || lson.getUsedInterfaces().contains(itf)) {
-            found = true;
-          }
+      Part next = iterator.next();
+      Part part = (Part) next;
+      AbstractType abstractType = part.getAbstractType();
+      if (abstractType instanceof LogicalComponent) {
+        LogicalComponent lson = (LogicalComponent) abstractType;
+        if (lson.getRequiredInterfaces().contains(itf) || lson.getUsedInterfaces().contains(itf)) {
+          found = true;
         }
       }
     }
@@ -2697,18 +2535,16 @@ public class ComponentExt {
       return ctx.createSuccessStatus();
     }
 
-    EList<Partition> ownedPartitions = lcomp.getOwnedPartitions();
-    Iterator<Partition> iterator = ownedPartitions.iterator();
+    EList<Part> ownedParts = lcomp.getContainedParts();
+    Iterator<Part> iterator = ownedParts.iterator();
     while (iterator.hasNext()) {
-      Partition next = iterator.next();
-      if (next instanceof Part) {
-        Part part = (Part) next;
-        AbstractType abstractType = part.getAbstractType();
-        if (abstractType instanceof Component) {
-          Component lson = (Component) abstractType;
-          if (lson.getProvidedInterfaces().contains(itf) || lson.getImplementedInterfaces().contains(itf)) {
-            found = true;
-          }
+      Part next = iterator.next();
+      Part part = (Part) next;
+      AbstractType abstractType = part.getAbstractType();
+      if (abstractType instanceof Component) {
+        Component lson = (Component) abstractType;
+        if (lson.getProvidedInterfaces().contains(itf) || lson.getImplementedInterfaces().contains(itf)) {
+          found = true;
         }
       }
     }
@@ -2718,4 +2554,82 @@ public class ComponentExt {
     return ctx.createSuccessStatus();
   }
 
+  /**
+   * Checks whether a capability realization is involved with the component
+   * 
+   * 
+   * @param component
+   *          the component
+   * @param capabilityRealization
+   *          the capability realization
+   * @return true if the capability realization is involved with the component
+   */
+  static public boolean isRealizationInvolved(CapabilityRealizationInvolvedElement component,
+      CapabilityRealization capabilityRealization) {
+    return component.getInvolvingCapabilityRealizations().contains(capabilityRealization);
+  }
+
+  /**
+   * This method removes an involved actor.
+   * 
+   * @param cpnt
+   *          the actor in which the capability will not be involved to
+   * @param capabilityUseCase_p
+   *          the non involved capability
+   */
+  public static void removeInvolvedCapabilityRealisationUseCase(CapabilityRealizationInvolvedElement cpnt,
+      CapabilityRealization capabilityRealisation) {
+    CapabilityRealizationInvolvement systemCapabilityInvolvement = null;
+    ListIterator<CapabilityRealizationInvolvement> it = cpnt.getCapabilityRealizationInvolvements().listIterator();
+    while (it.hasNext()) {
+      CapabilityRealizationInvolvement inv = it.next();
+      if (inv.getInvolver().equals(capabilityRealisation)) {
+        systemCapabilityInvolvement = inv;
+      }
+    }
+    if (systemCapabilityInvolvement != null) {
+      systemCapabilityInvolvement.destroy();
+    }
+  }
+
+  /**
+   * This method adds an involved capability.
+   * 
+   * @param cpnt
+   *          the actor in which the capability will be involved to
+   * @param capabilityUseCase_p
+   *          the involved capability
+   */
+  public static void addInvolvedCapabilityRealisation(CapabilityRealizationInvolvedElement cpnt,
+      CapabilityRealization capabilityRealisation) {
+    if ((cpnt != null) && (capabilityRealisation != null)) {
+      if (!cpnt.getInvolvingCapabilityRealizations().contains(capabilityRealisation)) {
+        CapabilityRealizationInvolvement capabilityInv = CapellacommonFactory.eINSTANCE
+            .createCapabilityRealizationInvolvement();
+        capabilityInv.setInvolved(cpnt);
+        capabilityRealisation.getOwnedCapabilityRealizationInvolvements().add(capabilityInv);
+      }
+    }
+  }
+
+  /**
+   * Gets a filtered list of {@link CapabilityRealizationUseCase} from the capella element
+   *
+   * @param currentComponent
+   *          the SystemComponent to be filtered
+   * @param element
+   *          the capella element from which list of CapabilityRealizationUseCases to be got
+   * @return list of filtered CapabilityRealizationUseCases
+   */
+  public static List<CapellaElement> getCapabilityRealizationUseCasesFiltered(
+      CapabilityRealizationInvolvedElement currentComponent, CapellaElement element) {
+    List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
+    for (CapabilityRealization capabilityRealization : CapellaElementExt
+        .getAllCapabilityRealizationInvolvedWith(element)) {
+      if (isRealizationInvolved(currentComponent, capabilityRealization))
+        continue;
+      availableElements.add(capabilityRealization);
+    }
+    return availableElements;
+  }
 }

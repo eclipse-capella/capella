@@ -583,7 +583,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPhysicalComponentPkg_OwnedComponents() {
+	public EReference getPhysicalComponentPkg_OwnedPhysicalComponents() {
 		return (EReference)physicalComponentPkgEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -735,7 +735,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 		createEReference(physicalComponentEClass, PHYSICAL_COMPONENT__DEPLOYING_PHYSICAL_COMPONENTS);
 
 		physicalComponentPkgEClass = createEClass(PHYSICAL_COMPONENT_PKG);
-		createEReference(physicalComponentPkgEClass, PHYSICAL_COMPONENT_PKG__OWNED_COMPONENTS);
+		createEReference(physicalComponentPkgEClass, PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS);
 		createEReference(physicalComponentPkgEClass, PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENT_PKGS);
 		createEReference(physicalComponentPkgEClass, PHYSICAL_COMPONENT_PKG__OWNED_KEY_PARTS);
 		createEReference(physicalComponentPkgEClass, PHYSICAL_COMPONENT_PKG__OWNED_DEPLOYMENTS);
@@ -799,6 +799,8 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 		physicalComponentEClass.getESuperTypes().add(theCsPackage.getAbstractPhysicalArtifact());
 		physicalComponentEClass.getESuperTypes().add(theCsPackage.getComponent());
 		physicalComponentEClass.getESuperTypes().add(theCapellacommonPackage.getCapabilityRealizationInvolvedElement());
+		physicalComponentEClass.getESuperTypes().add(theCsPackage.getDeployableElement());
+		physicalComponentEClass.getESuperTypes().add(theCsPackage.getDeploymentTarget());
 		physicalComponentPkgEClass.getESuperTypes().add(theCsPackage.getComponentPkg());
 		physicalComponentPkgEClass.getESuperTypes().add(theInformationPackage.getAssociationPkg());
 		physicalNodeEClass.getESuperTypes().add(this.getPhysicalComponent());
@@ -845,7 +847,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 		initEReference(getPhysicalComponent_DeployingPhysicalComponents(), this.getPhysicalComponent(), null, "deployingPhysicalComponents", null, 0, -1, PhysicalComponent.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(physicalComponentPkgEClass, PhysicalComponentPkg.class, "PhysicalComponentPkg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getPhysicalComponentPkg_OwnedComponents(), this.getPhysicalComponent(), null, "ownedComponents", null, 0, -1, PhysicalComponentPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getPhysicalComponentPkg_OwnedPhysicalComponents(), this.getPhysicalComponent(), null, "ownedPhysicalComponents", null, 0, -1, PhysicalComponentPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getPhysicalComponentPkg_OwnedPhysicalComponentPkgs(), this.getPhysicalComponentPkg(), null, "ownedPhysicalComponentPkgs", null, 0, -1, PhysicalComponentPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getPhysicalComponentPkg_OwnedKeyParts(), theInformationPackage.getKeyPart(), null, "ownedKeyParts", null, 0, -1, PhysicalComponentPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getPhysicalComponentPkg_OwnedDeployments(), theCsPackage.getAbstractDeploymentLink(), null, "ownedDeployments", null, 0, -1, PhysicalComponentPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -1141,7 +1143,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getPhysicalComponentPkg_OwnedComponents(), 
+		  (getPhysicalComponentPkg_OwnedPhysicalComponents(), 
 		   source, 
 		   new String[] {
 			 "description", "the physical components stored in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
@@ -1532,7 +1534,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getPhysicalComponentPkg_OwnedComponents(), 
+		  (getPhysicalComponentPkg_OwnedPhysicalComponents(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -1648,7 +1650,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 			 "Label", "PhysicalComponentPkg" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getPhysicalComponentPkg_OwnedComponents(), 
+		  (getPhysicalComponentPkg_OwnedPhysicalComponents(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedComponents" //$NON-NLS-1$ //$NON-NLS-2$
@@ -1771,7 +1773,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 			 "stereotype", "eng.PhysicalComponentPkg" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getPhysicalComponentPkg_OwnedComponents(), 
+		  (getPhysicalComponentPkg_OwnedPhysicalComponents(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
@@ -2178,7 +2180,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getPhysicalComponentPkg_OwnedComponents(), 
+		  (getPhysicalComponentPkg_OwnedPhysicalComponents(), 
 		   source, 
 		   new String[] {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
@@ -2437,7 +2439,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getPhysicalComponentPkg_OwnedComponents(), 
+		  (getPhysicalComponentPkg_OwnedPhysicalComponents(), 
 		   source, 
 		   new String[] {
 		   });	

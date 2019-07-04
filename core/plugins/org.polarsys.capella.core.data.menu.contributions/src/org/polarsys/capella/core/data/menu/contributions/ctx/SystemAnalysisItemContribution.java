@@ -15,14 +15,20 @@ import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
-
-import org.polarsys.capella.core.data.ctx.CtxPackage;
-import org.polarsys.capella.core.data.ctx.SystemAnalysis;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.model.skeleton.helpers.SAStructureHelper;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
+import org.polarsys.capella.core.data.ctx.CtxPackage;
+import org.polarsys.capella.core.data.ctx.SystemAnalysis;
+import org.polarsys.capella.core.data.oa.OperationalActivity;
+import org.polarsys.capella.core.data.oa.OperationalAnalysis;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
+import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
+import org.polarsys.capella.core.model.skeleton.impl.cmd.CreateCtxArchiCmd;
 
 /**
  */
@@ -46,7 +52,15 @@ public class SystemAnalysisItemContribution implements IMDEMenuItemContribution 
    */
   public Command executionContribution(EditingDomain editingDomain, ModelElement containerElement, ModelElement createdElement, EStructuralFeature feature) {
     if ((createdElement instanceof SystemAnalysis) && (containerElement instanceof SystemEngineering)) {
-      return SAStructureHelper.getSystemAnalysisCreationCmd(editingDomain, (SystemEngineering) containerElement, (SystemAnalysis) createdElement);
+      SystemEngineering engineering = (SystemEngineering) containerElement;
+      OperationalAnalysis architecture = SystemEngineeringExt.getOperationalAnalysis(engineering);
+      return new RecordingCommand((TransactionalEditingDomain) editingDomain) {
+        @Override
+        protected void doExecute() {
+          new CreateCtxArchiCmd(engineering, NamingConstants.CreateSysAnalysisCmd_name, architecture,
+              (OperationalActivity) BlockArchitectureExt.getRootFunction(architecture, false)).run();
+        }
+      };
     }
     return new IdentityCommand();
   }

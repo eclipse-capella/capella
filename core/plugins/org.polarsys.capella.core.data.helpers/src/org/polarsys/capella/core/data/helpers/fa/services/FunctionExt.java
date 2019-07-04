@@ -27,8 +27,8 @@ import org.polarsys.capella.common.data.activity.OutputPin;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
@@ -594,15 +594,15 @@ public class FunctionExt {
 		if (null == element) {
 			return false;
 		}
-		// check if not ActorFunction
-		EList<AbstractFunctionalBlock> allocationBlocks = element.getAllocationBlocks();
-		for (AbstractFunctionalBlock abstractFunctionalBlock : allocationBlocks) {
-			if (abstractFunctionalBlock instanceof AbstractActor) {
-				return false;
-			}
-		}
-		return FunctionKind.FUNCTION.equals(element.getKind());
-	}
+    // check if not ActorFunction
+    EList<AbstractFunctionalBlock> allocationBlocks = element.getAllocationBlocks();
+    for (AbstractFunctionalBlock abstractFunctionalBlock : allocationBlocks) {
+      if (abstractFunctionalBlock instanceof Component && ((Component) abstractFunctionalBlock).isActor()) {
+        return false;
+      }
+    }
+    return FunctionKind.FUNCTION.equals(element.getKind());
+  }
 
 	/**
 	 * is [FUNCTIONKIND = FUNCTION] with few Actor allocation and not of kind
@@ -613,15 +613,15 @@ public class FunctionExt {
 	 */
 	public static boolean isActorFunction(AbstractFunction element) {
 		if (null == element) {
-			return false;
-		}
-		// check if ActorFunction
-		EList<AbstractFunctionalBlock> allocationBlocks = element.getAllocationBlocks();
-		for (AbstractFunctionalBlock abstractFunctionalBlock : allocationBlocks) {
-			if (abstractFunctionalBlock instanceof AbstractActor) {
-				return true;
-			}
-		}
+      return false;
+    }
+    // check if ActorFunction
+    EList<AbstractFunctionalBlock> allocationBlocks = element.getAllocationBlocks();
+    for (AbstractFunctionalBlock abstractFunctionalBlock : allocationBlocks) {
+      if (abstractFunctionalBlock instanceof Component && ((Component) abstractFunctionalBlock).isActor()) {
+        return true;
+      }
+    }
 		return false;
 	}
 

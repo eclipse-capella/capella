@@ -19,12 +19,10 @@ import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
-import org.polarsys.capella.core.data.epbs.EPBSContext;
 import org.polarsys.capella.core.data.epbs.PhysicalArchitectureRealization;
 import org.polarsys.capella.core.data.epbs.PhysicalArtifactRealization;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.StructureHelper;
 import org.polarsys.capella.core.data.helpers.epbs.delegates.ConfigurationItemHelper;
-import org.polarsys.capella.core.data.helpers.epbs.delegates.EPBSContextHelper;
 import org.polarsys.capella.core.data.helpers.epbs.delegates.EpbsArchitectureHelper;
 import org.polarsys.capella.core.data.helpers.epbs.delegates.PhysicalArchitectureRealizationHelper;
 import org.polarsys.capella.core.data.helpers.epbs.delegates.PhysicalArtifactRealizationHelper;
@@ -40,9 +38,6 @@ public class EPBSArchitectureHelper implements IHelper {
 		else if (object instanceof ConfigurationItem) {
 			ret = ConfigurationItemHelper.getInstance().doSwitch((ConfigurationItem) object, feature);
 		}
-    else if (object instanceof EPBSContext) {
-      ret = EPBSContextHelper.getInstance().doSwitch((EPBSContext) object, feature);
-    }
 		else if (object instanceof PhysicalArtifactRealization) {
 			ret = PhysicalArtifactRealizationHelper.getInstance().doSwitch((PhysicalArtifactRealization)object, feature);
 		}

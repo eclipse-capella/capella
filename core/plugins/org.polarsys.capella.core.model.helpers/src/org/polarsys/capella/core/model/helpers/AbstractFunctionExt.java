@@ -30,7 +30,6 @@ import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentContext;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
@@ -46,7 +45,6 @@ import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.helpers.capellacore.services.GeneralizableElementExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.information.ExchangeItem;
-import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.oa.ActivityAllocation;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.Role;
@@ -145,7 +143,7 @@ public class AbstractFunctionExt {
     List<AbstractFunction> srcAllocatedFuns = new ArrayList<AbstractFunction>(1);
     List<AbstractFunction> tarAllocatedFuns = new ArrayList<AbstractFunction>(1);
 
-    if ((sourceBlock instanceof PartitionableElement) && (targetBlock instanceof PartitionableElement)) {
+    if ((sourceBlock instanceof Component) && (targetBlock instanceof Component)) {
       // get allocated function for current source and target
       srcAllocatedFuns.addAll(sourceBlock.getAllocatedFunctions());
       tarAllocatedFuns.addAll(targetBlock.getAllocatedFunctions());
@@ -468,7 +466,7 @@ public class AbstractFunctionExt {
     }
     // Get common ancestor of all Components allocation leaves.
     Component commonAncestor = ComponentExt.getFirstCommonComponentAncestor(allAllocatingComponents);
-    if (commonAncestor == null || commonAncestor instanceof ComponentContext) {
+    if (commonAncestor == null) {
       return Collections.emptyList();
     }
     return Collections.singletonList(commonAncestor);

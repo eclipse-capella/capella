@@ -69,6 +69,7 @@ import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.ConfigurationItemKind;
 import org.polarsys.capella.core.data.epbs.ConfigurationItemPkg;
 import org.polarsys.capella.core.data.epbs.EpbsPackage;
+import org.polarsys.capella.core.data.epbs.PhysicalArtifactRealization;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
@@ -132,16 +133,14 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#getAccess <em>Access</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#getAcquire <em>Acquire</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#getTransmit <em>Transmit</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#isIsActor <em>Is Actor</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#isIsHuman <em>Is Human</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#isActor <em>Actor</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#isHuman <em>Human</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#getOwnedInterfaceUses <em>Owned Interface Uses</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#getUsedInterfaceLinks <em>Used Interface Links</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#getUsedInterfaces <em>Used Interfaces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#getOwnedInterfaceImplementations <em>Owned Interface Implementations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#getImplementedInterfaceLinks <em>Implemented Interface Links</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#getImplementedInterfaces <em>Implemented Interfaces</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#getProvisionedComponentAllocations <em>Provisioned Component Allocations</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#getProvisioningComponentAllocations <em>Provisioning Component Allocations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#getOwnedComponentRealizations <em>Owned Component Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#getRealizedComponents <em>Realized Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#getRealizingComponents <em>Realizing Components</em>}</li>
@@ -158,6 +157,7 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#getKind <em>Kind</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#getOwnedConfigurationItems <em>Owned Configuration Items</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#getOwnedConfigurationItemPkgs <em>Owned Configuration Item Pkgs</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#getOwnedPhysicalArtifactRealizations <em>Owned Physical Artifact Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.ConfigurationItemImpl#getAllocatedPhysicalArtifacts <em>Allocated Physical Artifacts</em>}</li>
  * </ul>
  *
@@ -356,44 +356,44 @@ public class ConfigurationItemImpl extends CapabilityRealizationInvolvedElementI
 	protected EList<CommunicationLink> ownedCommunicationLinks;
 
 	/**
-	 * The default value of the '{@link #isIsActor() <em>Is Actor</em>}' attribute.
+	 * The default value of the '{@link #isActor() <em>Actor</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsActor()
+	 * @see #isActor()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_ACTOR_EDEFAULT = false;
+	protected static final boolean ACTOR_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsActor() <em>Is Actor</em>}' attribute.
+	 * The cached value of the '{@link #isActor() <em>Actor</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsActor()
+	 * @see #isActor()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isActor = IS_ACTOR_EDEFAULT;
+	protected boolean actor = ACTOR_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isIsHuman() <em>Is Human</em>}' attribute.
+	 * The default value of the '{@link #isHuman() <em>Human</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsHuman()
+	 * @see #isHuman()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_HUMAN_EDEFAULT = false;
+	protected static final boolean HUMAN_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsHuman() <em>Is Human</em>}' attribute.
+	 * The cached value of the '{@link #isHuman() <em>Human</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsHuman()
+	 * @see #isHuman()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isHuman = IS_HUMAN_EDEFAULT;
+	protected boolean human = HUMAN_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getOwnedInterfaceUses() <em>Owned Interface Uses</em>}' containment reference list.
@@ -536,6 +536,20 @@ public class ConfigurationItemImpl extends CapabilityRealizationInvolvedElementI
 	 * @ordered
 	 */
 	protected EList<ConfigurationItemPkg> ownedConfigurationItemPkgs;
+
+
+
+
+
+	/**
+	 * The cached value of the '{@link #getOwnedPhysicalArtifactRealizations() <em>Owned Physical Artifact Realizations</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedPhysicalArtifactRealizations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<PhysicalArtifactRealization> ownedPhysicalArtifactRealizations;
 
 
 
@@ -1196,6 +1210,63 @@ public class ConfigurationItemImpl extends CapabilityRealizationInvolvedElementI
 	 * @generated
 	 */
 
+	public EList<Feature> getOwnedFeatures() {
+
+		if (ownedFeatures == null) {
+			ownedFeatures = new EObjectContainmentEList.Resolving<Feature>(Feature.class, this, EpbsPackage.CONFIGURATION_ITEM__OWNED_FEATURES);
+		}
+		return ownedFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public EList<Property> getContainedProperties() {
+
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = CapellacorePackage.Literals.CLASSIFIER__CONTAINED_PROPERTIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, CapellacorePackage.Literals.CLASSIFIER__CONTAINED_PROPERTIES, annotation);
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<Property> resultAsList = (Collection<Property>) result;
+		return new EcoreEList.UnmodifiableEList<Property>(this, CapellacorePackage.Literals.CLASSIFIER__CONTAINED_PROPERTIES, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
 	public boolean isAbstract() {
 
 		return abstract_;
@@ -1395,63 +1466,6 @@ public class ConfigurationItemImpl extends CapabilityRealizationInvolvedElementI
 		@SuppressWarnings("unchecked")
 		Collection<GeneralizableElement> resultAsList = (Collection<GeneralizableElement>) result;
 		return new EcoreEList.UnmodifiableEList<GeneralizableElement>(this, CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUB, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public EList<Feature> getOwnedFeatures() {
-
-		if (ownedFeatures == null) {
-			ownedFeatures = new EObjectContainmentEList.Resolving<Feature>(Feature.class, this, EpbsPackage.CONFIGURATION_ITEM__OWNED_FEATURES);
-		}
-		return ownedFeatures;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public EList<Property> getContainedProperties() {
-
-
-    Object result = null;
-    // Helper that can get value for current feature.
-    IHelper helper = null;
-    // If current object is adaptable, ask it to get its IHelper.
-    if (this instanceof IAdaptable) {
-    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
-    }
-    if (null == helper) {
-      // No helper found yet.
-      // Ask the platform to get the adapter 'IHelper.class' for current object.
-      IAdapterManager adapterManager = Platform.getAdapterManager();
-      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
-    }
-    if (null == helper) {
-      EPackage package_l = eClass().getEPackage();
-      // Get the root package of the owner package.
-      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
-    } 
-    // A helper is found, let's use it. 
-    EAnnotation annotation = CapellacorePackage.Literals.CLASSIFIER__CONTAINED_PROPERTIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, CapellacorePackage.Literals.CLASSIFIER__CONTAINED_PROPERTIES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Property> resultAsList = (Collection<Property>) result;
-		return new EcoreEList.UnmodifiableEList<Property>(this, CapellacorePackage.Literals.CLASSIFIER__CONTAINED_PROPERTIES, resultAsList.size(), resultAsList.toArray());
 		} catch (ClassCastException exception) {
 	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
@@ -2009,9 +2023,9 @@ public class ConfigurationItemImpl extends CapabilityRealizationInvolvedElementI
 	 * @generated
 	 */
 
-	public boolean isIsActor() {
+	public boolean isActor() {
 
-		return isActor;
+		return actor;
 	}
 
 	/**
@@ -2020,12 +2034,12 @@ public class ConfigurationItemImpl extends CapabilityRealizationInvolvedElementI
 	 * @generated
 	 */
 
-	public void setIsActor(boolean newIsActor) {
+	public void setActor(boolean newActor) {
 
-		boolean oldIsActor = isActor;
-		isActor = newIsActor;
+		boolean oldActor = actor;
+		actor = newActor;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EpbsPackage.CONFIGURATION_ITEM__IS_ACTOR, oldIsActor, isActor));
+			eNotify(new ENotificationImpl(this, Notification.SET, EpbsPackage.CONFIGURATION_ITEM__ACTOR, oldActor, actor));
 
 	}
 
@@ -2035,9 +2049,9 @@ public class ConfigurationItemImpl extends CapabilityRealizationInvolvedElementI
 	 * @generated
 	 */
 
-	public boolean isIsHuman() {
+	public boolean isHuman() {
 
-		return isHuman;
+		return human;
 	}
 
 	/**
@@ -2046,12 +2060,12 @@ public class ConfigurationItemImpl extends CapabilityRealizationInvolvedElementI
 	 * @generated
 	 */
 
-	public void setIsHuman(boolean newIsHuman) {
+	public void setHuman(boolean newHuman) {
 
-		boolean oldIsHuman = isHuman;
-		isHuman = newIsHuman;
+		boolean oldHuman = human;
+		human = newHuman;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EpbsPackage.CONFIGURATION_ITEM__IS_HUMAN, oldIsHuman, isHuman));
+			eNotify(new ENotificationImpl(this, Notification.SET, EpbsPackage.CONFIGURATION_ITEM__HUMAN, oldHuman, human));
 
 	}
 
@@ -2248,92 +2262,6 @@ public class ConfigurationItemImpl extends CapabilityRealizationInvolvedElementI
 		@SuppressWarnings("unchecked")
 		Collection<Interface> resultAsList = (Collection<Interface>) result;
 		return new EcoreEList.UnmodifiableEList<Interface>(this, CsPackage.Literals.COMPONENT__IMPLEMENTED_INTERFACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public EList<ComponentRealization> getProvisionedComponentAllocations() {
-
-
-    Object result = null;
-    // Helper that can get value for current feature.
-    IHelper helper = null;
-    // If current object is adaptable, ask it to get its IHelper.
-    if (this instanceof IAdaptable) {
-    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
-    }
-    if (null == helper) {
-      // No helper found yet.
-      // Ask the platform to get the adapter 'IHelper.class' for current object.
-      IAdapterManager adapterManager = Platform.getAdapterManager();
-      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
-    }
-    if (null == helper) {
-      EPackage package_l = eClass().getEPackage();
-      // Get the root package of the owner package.
-      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
-    } 
-    // A helper is found, let's use it. 
-    EAnnotation annotation = CsPackage.Literals.COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, CsPackage.Literals.COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<ComponentRealization> resultAsList = (Collection<ComponentRealization>) result;
-		return new EcoreEList.UnmodifiableEList<ComponentRealization>(this, CsPackage.Literals.COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public EList<ComponentRealization> getProvisioningComponentAllocations() {
-
-
-    Object result = null;
-    // Helper that can get value for current feature.
-    IHelper helper = null;
-    // If current object is adaptable, ask it to get its IHelper.
-    if (this instanceof IAdaptable) {
-    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
-    }
-    if (null == helper) {
-      // No helper found yet.
-      // Ask the platform to get the adapter 'IHelper.class' for current object.
-      IAdapterManager adapterManager = Platform.getAdapterManager();
-      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
-    }
-    if (null == helper) {
-      EPackage package_l = eClass().getEPackage();
-      // Get the root package of the owner package.
-      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
-    } 
-    // A helper is found, let's use it. 
-    EAnnotation annotation = CsPackage.Literals.COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, CsPackage.Literals.COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<ComponentRealization> resultAsList = (Collection<ComponentRealization>) result;
-		return new EcoreEList.UnmodifiableEList<ComponentRealization>(this, CsPackage.Literals.COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
 		} catch (ClassCastException exception) {
 	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
@@ -2818,6 +2746,20 @@ public class ConfigurationItemImpl extends CapabilityRealizationInvolvedElementI
 	 * @generated
 	 */
 
+	public EList<PhysicalArtifactRealization> getOwnedPhysicalArtifactRealizations() {
+
+		if (ownedPhysicalArtifactRealizations == null) {
+			ownedPhysicalArtifactRealizations = new EObjectContainmentEList.Resolving<PhysicalArtifactRealization>(PhysicalArtifactRealization.class, this, EpbsPackage.CONFIGURATION_ITEM__OWNED_PHYSICAL_ARTIFACT_REALIZATIONS);
+		}
+		return ownedPhysicalArtifactRealizations;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
 	public EList<AbstractPhysicalArtifact> getAllocatedPhysicalArtifacts() {
 
 
@@ -2907,6 +2849,8 @@ public class ConfigurationItemImpl extends CapabilityRealizationInvolvedElementI
 				return ((InternalEList<?>)getOwnedConfigurationItems()).basicRemove(otherEnd, msgs);
 			case EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEM_PKGS:
 				return ((InternalEList<?>)getOwnedConfigurationItemPkgs()).basicRemove(otherEnd, msgs);
+			case EpbsPackage.CONFIGURATION_ITEM__OWNED_PHYSICAL_ARTIFACT_REALIZATIONS:
+				return ((InternalEList<?>)getOwnedPhysicalArtifactRealizations()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -3002,10 +2946,10 @@ public class ConfigurationItemImpl extends CapabilityRealizationInvolvedElementI
 				return getAcquire();
 			case EpbsPackage.CONFIGURATION_ITEM__TRANSMIT:
 				return getTransmit();
-			case EpbsPackage.CONFIGURATION_ITEM__IS_ACTOR:
-				return isIsActor();
-			case EpbsPackage.CONFIGURATION_ITEM__IS_HUMAN:
-				return isIsHuman();
+			case EpbsPackage.CONFIGURATION_ITEM__ACTOR:
+				return isActor();
+			case EpbsPackage.CONFIGURATION_ITEM__HUMAN:
+				return isHuman();
 			case EpbsPackage.CONFIGURATION_ITEM__OWNED_INTERFACE_USES:
 				return getOwnedInterfaceUses();
 			case EpbsPackage.CONFIGURATION_ITEM__USED_INTERFACE_LINKS:
@@ -3018,10 +2962,6 @@ public class ConfigurationItemImpl extends CapabilityRealizationInvolvedElementI
 				return getImplementedInterfaceLinks();
 			case EpbsPackage.CONFIGURATION_ITEM__IMPLEMENTED_INTERFACES:
 				return getImplementedInterfaces();
-			case EpbsPackage.CONFIGURATION_ITEM__PROVISIONED_COMPONENT_ALLOCATIONS:
-				return getProvisionedComponentAllocations();
-			case EpbsPackage.CONFIGURATION_ITEM__PROVISIONING_COMPONENT_ALLOCATIONS:
-				return getProvisioningComponentAllocations();
 			case EpbsPackage.CONFIGURATION_ITEM__OWNED_COMPONENT_REALIZATIONS:
 				return getOwnedComponentRealizations();
 			case EpbsPackage.CONFIGURATION_ITEM__REALIZED_COMPONENTS:
@@ -3054,6 +2994,8 @@ public class ConfigurationItemImpl extends CapabilityRealizationInvolvedElementI
 				return getOwnedConfigurationItems();
 			case EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEM_PKGS:
 				return getOwnedConfigurationItemPkgs();
+			case EpbsPackage.CONFIGURATION_ITEM__OWNED_PHYSICAL_ARTIFACT_REALIZATIONS:
+				return getOwnedPhysicalArtifactRealizations();
 			case EpbsPackage.CONFIGURATION_ITEM__ALLOCATED_PHYSICAL_ARTIFACTS:
 				return getAllocatedPhysicalArtifacts();
 		}
@@ -3132,11 +3074,11 @@ public class ConfigurationItemImpl extends CapabilityRealizationInvolvedElementI
 				getOwnedCommunicationLinks().clear();
 				getOwnedCommunicationLinks().addAll((Collection<? extends CommunicationLink>)newValue);
 				return;
-			case EpbsPackage.CONFIGURATION_ITEM__IS_ACTOR:
-					setIsActor((Boolean)newValue);
+			case EpbsPackage.CONFIGURATION_ITEM__ACTOR:
+					setActor((Boolean)newValue);
 				return;
-			case EpbsPackage.CONFIGURATION_ITEM__IS_HUMAN:
-					setIsHuman((Boolean)newValue);
+			case EpbsPackage.CONFIGURATION_ITEM__HUMAN:
+					setHuman((Boolean)newValue);
 				return;
 			case EpbsPackage.CONFIGURATION_ITEM__OWNED_INTERFACE_USES:
 				getOwnedInterfaceUses().clear();
@@ -3179,6 +3121,10 @@ public class ConfigurationItemImpl extends CapabilityRealizationInvolvedElementI
 			case EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEM_PKGS:
 				getOwnedConfigurationItemPkgs().clear();
 				getOwnedConfigurationItemPkgs().addAll((Collection<? extends ConfigurationItemPkg>)newValue);
+				return;
+			case EpbsPackage.CONFIGURATION_ITEM__OWNED_PHYSICAL_ARTIFACT_REALIZATIONS:
+				getOwnedPhysicalArtifactRealizations().clear();
+				getOwnedPhysicalArtifactRealizations().addAll((Collection<? extends PhysicalArtifactRealization>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -3244,11 +3190,11 @@ public class ConfigurationItemImpl extends CapabilityRealizationInvolvedElementI
 			case EpbsPackage.CONFIGURATION_ITEM__OWNED_COMMUNICATION_LINKS:
 				getOwnedCommunicationLinks().clear();
 				return;
-			case EpbsPackage.CONFIGURATION_ITEM__IS_ACTOR:
-				setIsActor(IS_ACTOR_EDEFAULT);
+			case EpbsPackage.CONFIGURATION_ITEM__ACTOR:
+				setActor(ACTOR_EDEFAULT);
 				return;
-			case EpbsPackage.CONFIGURATION_ITEM__IS_HUMAN:
-				setIsHuman(IS_HUMAN_EDEFAULT);
+			case EpbsPackage.CONFIGURATION_ITEM__HUMAN:
+				setHuman(HUMAN_EDEFAULT);
 				return;
 			case EpbsPackage.CONFIGURATION_ITEM__OWNED_INTERFACE_USES:
 				getOwnedInterfaceUses().clear();
@@ -3282,6 +3228,9 @@ public class ConfigurationItemImpl extends CapabilityRealizationInvolvedElementI
 				return;
 			case EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEM_PKGS:
 				getOwnedConfigurationItemPkgs().clear();
+				return;
+			case EpbsPackage.CONFIGURATION_ITEM__OWNED_PHYSICAL_ARTIFACT_REALIZATIONS:
+				getOwnedPhysicalArtifactRealizations().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -3377,10 +3326,10 @@ public class ConfigurationItemImpl extends CapabilityRealizationInvolvedElementI
 				return !getAcquire().isEmpty();
 			case EpbsPackage.CONFIGURATION_ITEM__TRANSMIT:
 				return !getTransmit().isEmpty();
-			case EpbsPackage.CONFIGURATION_ITEM__IS_ACTOR:
-				return isActor != IS_ACTOR_EDEFAULT;
-			case EpbsPackage.CONFIGURATION_ITEM__IS_HUMAN:
-				return isHuman != IS_HUMAN_EDEFAULT;
+			case EpbsPackage.CONFIGURATION_ITEM__ACTOR:
+				return actor != ACTOR_EDEFAULT;
+			case EpbsPackage.CONFIGURATION_ITEM__HUMAN:
+				return human != HUMAN_EDEFAULT;
 			case EpbsPackage.CONFIGURATION_ITEM__OWNED_INTERFACE_USES:
 				return ownedInterfaceUses != null && !ownedInterfaceUses.isEmpty();
 			case EpbsPackage.CONFIGURATION_ITEM__USED_INTERFACE_LINKS:
@@ -3393,10 +3342,6 @@ public class ConfigurationItemImpl extends CapabilityRealizationInvolvedElementI
 				return !getImplementedInterfaceLinks().isEmpty();
 			case EpbsPackage.CONFIGURATION_ITEM__IMPLEMENTED_INTERFACES:
 				return !getImplementedInterfaces().isEmpty();
-			case EpbsPackage.CONFIGURATION_ITEM__PROVISIONED_COMPONENT_ALLOCATIONS:
-				return !getProvisionedComponentAllocations().isEmpty();
-			case EpbsPackage.CONFIGURATION_ITEM__PROVISIONING_COMPONENT_ALLOCATIONS:
-				return !getProvisioningComponentAllocations().isEmpty();
 			case EpbsPackage.CONFIGURATION_ITEM__OWNED_COMPONENT_REALIZATIONS:
 				return ownedComponentRealizations != null && !ownedComponentRealizations.isEmpty();
 			case EpbsPackage.CONFIGURATION_ITEM__REALIZED_COMPONENTS:
@@ -3429,6 +3374,8 @@ public class ConfigurationItemImpl extends CapabilityRealizationInvolvedElementI
 				return ownedConfigurationItems != null && !ownedConfigurationItems.isEmpty();
 			case EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEM_PKGS:
 				return ownedConfigurationItemPkgs != null && !ownedConfigurationItemPkgs.isEmpty();
+			case EpbsPackage.CONFIGURATION_ITEM__OWNED_PHYSICAL_ARTIFACT_REALIZATIONS:
+				return ownedPhysicalArtifactRealizations != null && !ownedPhysicalArtifactRealizations.isEmpty();
 			case EpbsPackage.CONFIGURATION_ITEM__ALLOCATED_PHYSICAL_ARTIFACTS:
 				return !getAllocatedPhysicalArtifacts().isEmpty();
 		}
@@ -3545,16 +3492,14 @@ public class ConfigurationItemImpl extends CapabilityRealizationInvolvedElementI
 		}
 		if (baseClass == Component.class) {
 			switch (derivedFeatureID) {
-				case EpbsPackage.CONFIGURATION_ITEM__IS_ACTOR: return CsPackage.COMPONENT__IS_ACTOR;
-				case EpbsPackage.CONFIGURATION_ITEM__IS_HUMAN: return CsPackage.COMPONENT__IS_HUMAN;
+				case EpbsPackage.CONFIGURATION_ITEM__ACTOR: return CsPackage.COMPONENT__ACTOR;
+				case EpbsPackage.CONFIGURATION_ITEM__HUMAN: return CsPackage.COMPONENT__HUMAN;
 				case EpbsPackage.CONFIGURATION_ITEM__OWNED_INTERFACE_USES: return CsPackage.COMPONENT__OWNED_INTERFACE_USES;
 				case EpbsPackage.CONFIGURATION_ITEM__USED_INTERFACE_LINKS: return CsPackage.COMPONENT__USED_INTERFACE_LINKS;
 				case EpbsPackage.CONFIGURATION_ITEM__USED_INTERFACES: return CsPackage.COMPONENT__USED_INTERFACES;
 				case EpbsPackage.CONFIGURATION_ITEM__OWNED_INTERFACE_IMPLEMENTATIONS: return CsPackage.COMPONENT__OWNED_INTERFACE_IMPLEMENTATIONS;
 				case EpbsPackage.CONFIGURATION_ITEM__IMPLEMENTED_INTERFACE_LINKS: return CsPackage.COMPONENT__IMPLEMENTED_INTERFACE_LINKS;
 				case EpbsPackage.CONFIGURATION_ITEM__IMPLEMENTED_INTERFACES: return CsPackage.COMPONENT__IMPLEMENTED_INTERFACES;
-				case EpbsPackage.CONFIGURATION_ITEM__PROVISIONED_COMPONENT_ALLOCATIONS: return CsPackage.COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS;
-				case EpbsPackage.CONFIGURATION_ITEM__PROVISIONING_COMPONENT_ALLOCATIONS: return CsPackage.COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS;
 				case EpbsPackage.CONFIGURATION_ITEM__OWNED_COMPONENT_REALIZATIONS: return CsPackage.COMPONENT__OWNED_COMPONENT_REALIZATIONS;
 				case EpbsPackage.CONFIGURATION_ITEM__REALIZED_COMPONENTS: return CsPackage.COMPONENT__REALIZED_COMPONENTS;
 				case EpbsPackage.CONFIGURATION_ITEM__REALIZING_COMPONENTS: return CsPackage.COMPONENT__REALIZING_COMPONENTS;
@@ -3682,16 +3627,14 @@ public class ConfigurationItemImpl extends CapabilityRealizationInvolvedElementI
 		}
 		if (baseClass == Component.class) {
 			switch (baseFeatureID) {
-				case CsPackage.COMPONENT__IS_ACTOR: return EpbsPackage.CONFIGURATION_ITEM__IS_ACTOR;
-				case CsPackage.COMPONENT__IS_HUMAN: return EpbsPackage.CONFIGURATION_ITEM__IS_HUMAN;
+				case CsPackage.COMPONENT__ACTOR: return EpbsPackage.CONFIGURATION_ITEM__ACTOR;
+				case CsPackage.COMPONENT__HUMAN: return EpbsPackage.CONFIGURATION_ITEM__HUMAN;
 				case CsPackage.COMPONENT__OWNED_INTERFACE_USES: return EpbsPackage.CONFIGURATION_ITEM__OWNED_INTERFACE_USES;
 				case CsPackage.COMPONENT__USED_INTERFACE_LINKS: return EpbsPackage.CONFIGURATION_ITEM__USED_INTERFACE_LINKS;
 				case CsPackage.COMPONENT__USED_INTERFACES: return EpbsPackage.CONFIGURATION_ITEM__USED_INTERFACES;
 				case CsPackage.COMPONENT__OWNED_INTERFACE_IMPLEMENTATIONS: return EpbsPackage.CONFIGURATION_ITEM__OWNED_INTERFACE_IMPLEMENTATIONS;
 				case CsPackage.COMPONENT__IMPLEMENTED_INTERFACE_LINKS: return EpbsPackage.CONFIGURATION_ITEM__IMPLEMENTED_INTERFACE_LINKS;
 				case CsPackage.COMPONENT__IMPLEMENTED_INTERFACES: return EpbsPackage.CONFIGURATION_ITEM__IMPLEMENTED_INTERFACES;
-				case CsPackage.COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS: return EpbsPackage.CONFIGURATION_ITEM__PROVISIONED_COMPONENT_ALLOCATIONS;
-				case CsPackage.COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS: return EpbsPackage.CONFIGURATION_ITEM__PROVISIONING_COMPONENT_ALLOCATIONS;
 				case CsPackage.COMPONENT__OWNED_COMPONENT_REALIZATIONS: return EpbsPackage.CONFIGURATION_ITEM__OWNED_COMPONENT_REALIZATIONS;
 				case CsPackage.COMPONENT__REALIZED_COMPONENTS: return EpbsPackage.CONFIGURATION_ITEM__REALIZED_COMPONENTS;
 				case CsPackage.COMPONENT__REALIZING_COMPONENTS: return EpbsPackage.CONFIGURATION_ITEM__REALIZING_COMPONENTS;
@@ -3724,10 +3667,10 @@ public class ConfigurationItemImpl extends CapabilityRealizationInvolvedElementI
 		result.append(name);
 		result.append(", abstract: "); //$NON-NLS-1$
 		result.append(abstract_);
-		result.append(", isActor: "); //$NON-NLS-1$
-		result.append(isActor);
-		result.append(", isHuman: "); //$NON-NLS-1$
-		result.append(isHuman);
+		result.append(", actor: "); //$NON-NLS-1$
+		result.append(actor);
+		result.append(", human: "); //$NON-NLS-1$
+		result.append(human);
 		result.append(", itemIdentifier: "); //$NON-NLS-1$
 		result.append(itemIdentifier);
 		result.append(", kind: "); //$NON-NLS-1$

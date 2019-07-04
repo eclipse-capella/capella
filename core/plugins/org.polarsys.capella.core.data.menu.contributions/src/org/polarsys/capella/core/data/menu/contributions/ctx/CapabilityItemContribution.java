@@ -23,47 +23,46 @@ import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.command.CreateChildCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.CtxFactory;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
-import org.polarsys.capella.core.data.ctx.System;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.epbs.EpbsPackage;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.la.LaPackage;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
 
 public class CapabilityItemContribution implements IMDEMenuItemContribution {
 
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#executionContribution()
    */
-  public Command executionContribution(final EditingDomain editingDomain, ModelElement containerElement, final ModelElement createdElement,
-      EStructuralFeature feature) {
+  public Command executionContribution(final EditingDomain editingDomain, ModelElement containerElement,
+      final ModelElement createdElement, EStructuralFeature feature) {
     if (createdElement instanceof Capability) {
-      final Capability capability = (Capability) createdElement;
       // Links the capability to the System
-      SystemEngineering sysEng = (SystemEngineering) EcoreUtil2.getFirstContainer(containerElement, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING);
+      SystemEngineering sysEng = (SystemEngineering) EcoreUtil2.getFirstContainer(containerElement,
+          CapellamodellerPackage.Literals.SYSTEM_ENGINEERING);
       if (sysEng != null) {
         SystemAnalysis ca = SystemEngineeringExt.getOwnedSystemAnalysis(sysEng);
         if (ca != null) {
-          final System sys = ca.getOwnedSystem();
+          Component sys = ca.getSystem();
           if (sys != null) {
             CompoundCommand cmd = new CompoundCommand();
 
             // Creates the capability supplier link.
-            final Command createLinkCmd =
-                CreateChildCommand.create(editingDomain, createdElement, new CommandParameter(createdElement,
-                    CtxPackage.Literals.CAPABILITY__OWNED_SYSTEM_CAPABILITY_INVOLVEMENT, CtxFactory.eINSTANCE.createSystemCapabilityInvolvement()),
-                    Collections.EMPTY_LIST);
+            final Command createLinkCmd = CreateChildCommand.create(editingDomain, createdElement,
+                new CommandParameter(createdElement, CtxPackage.Literals.CAPABILITY__OWNED_CAPABILITY_INVOLVEMENTS,
+                    CtxFactory.eINSTANCE.createCapabilityInvolvement()),
+                Collections.EMPTY_LIST);
             cmd.append(createLinkCmd);
 
             // Sets the linked system.
@@ -74,7 +73,8 @@ public class CapabilityItemContribution implements IMDEMenuItemContribution {
                 if (res.size() == 1) {
                   Object createdObj = res.iterator().next();
                   if (createdObj instanceof EObject) {
-                    return new SetCommand(editingDomain, (EObject) createdObj, CapellacorePackage.Literals.INVOLVEMENT__INVOLVED, sys);
+                    return new SetCommand(editingDomain, (EObject) createdObj,
+                        CapellacorePackage.Literals.INVOLVEMENT__INVOLVED, sys);
                   }
                 }
                 return null;
@@ -102,8 +102,8 @@ public class CapabilityItemContribution implements IMDEMenuItemContribution {
    */
   public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
     return (!EcoreUtil2.isContainedBy(modelElement, LaPackage.Literals.LOGICAL_ARCHITECTURE)
-            && !EcoreUtil2.isContainedBy(modelElement, PaPackage.Literals.PHYSICAL_ARCHITECTURE)
-            && !EcoreUtil2.isContainedBy(modelElement, EpbsPackage.Literals.EPBS_ARCHITECTURE) && !EcoreUtil2.isContainedBy(modelElement,
-        FaPackage.Literals.FUNCTION_PKG));
+        && !EcoreUtil2.isContainedBy(modelElement, PaPackage.Literals.PHYSICAL_ARCHITECTURE)
+        && !EcoreUtil2.isContainedBy(modelElement, EpbsPackage.Literals.EPBS_ARCHITECTURE)
+        && !EcoreUtil2.isContainedBy(modelElement, FaPackage.Literals.FUNCTION_PKG));
   }
 }

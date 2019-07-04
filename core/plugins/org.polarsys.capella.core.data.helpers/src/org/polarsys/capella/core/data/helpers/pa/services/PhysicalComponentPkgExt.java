@@ -32,7 +32,7 @@ public class PhysicalComponentPkgExt {
 		List<PhysicalComponent> components = new ArrayList<>(1);
 		List<PhysicalComponentPkg> pkgs = currentElement.getOwnedPhysicalComponentPkgs();
 
-		components.addAll(currentElement.getOwnedComponents());
+		components.addAll(currentElement.getOwnedPhysicalComponents());
 
 		for (PhysicalComponentPkg physicalComponentPkg : pkgs) {
 			components.addAll(PhysicalComponentPkgExt.getAllPhysicalComponents(physicalComponentPkg));

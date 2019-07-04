@@ -13,25 +13,17 @@ package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.common.helpers.EObjectExt;
-import org.polarsys.capella.common.helpers.query.MDEQueries;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
-import org.polarsys.capella.core.data.fa.AbstractFunction;
-import org.polarsys.capella.core.data.fa.FunctionPkg;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecturePkg;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
-import org.polarsys.capella.core.data.pa.PhysicalFunction;
-import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
 
 /**
  * PhysicalArchitecture helpers
@@ -69,47 +61,6 @@ public class PhysicalArchitectureExt {
   }
 
   /**
-   * This method retrieves all the physical components from the model.
-   * @param currentElement
-   * @return List<PhysicalComponent>
-   */
-  public static List<PhysicalComponent> getAllPhysicalComponents(PhysicalArchitecture currentElement) {
-    Set<EObject> pcSet = MDEQueries.getInstance().getAllQueries().getAll(currentElement, PhysicalComponent.class);
-    List<PhysicalComponent> pcList = new ArrayList<PhysicalComponent>();
-    for (EObject obj : pcSet) {
-      pcList.add((PhysicalComponent) obj);
-    }
-    return pcList;
-  }
-
-  /**
-   * Gets all the interfaces from the PhysicalArchitecture Packages of System
-   * @param systemEngineering the {@link System}
-   * @param currentPC the current PhysicalComponent
-   * @param usedFlag flag to check interface is used/implemented
-   * @return list of interfaces
-   */
-  @Deprecated
-  // use BlockArchitectureExt.getAllInterfaces(...) instead
-  public static List<CapellaElement> getOwnedInterfacesFromPhysicalLayerFiltered(SystemEngineering systemEngineering, PhysicalComponent currentPC,
-      boolean usedFlag) {
-    List<CapellaElement> list = new ArrayList<CapellaElement>(1);
-    PhysicalArchitecturePkg physicalArchitecturePkg = SystemEngineeringExt.getOwnedPhysicalArchitecturePkg(systemEngineering);
-    if (null != physicalArchitecturePkg) {
-      for (PhysicalArchitecture physicalArchitecture : physicalArchitecturePkg.getOwnedPhysicalArchitectures()) {
-        if (null != physicalArchitecture) {
-          list.addAll(getAllInterfaces(physicalArchitecture, currentPC, usedFlag));
-        }
-      }
-    }
-    PhysicalArchitecture physicalArchitecture = SystemEngineeringExt.getOwnedPhysicalArchitecture(systemEngineering);
-    if (null != physicalArchitecture) {
-      list.addAll(getAllInterfaces(physicalArchitecture, currentPC, usedFlag));
-    }
-    return list;
-  }
-
-  /**
    * Gets all the CapabilityRealizationUseCases from the PhysicalArchitecture Packages of System
    * @param systemEngineering the {@link System}
    * @param currentPC the current PhysicalComponent
@@ -124,7 +75,7 @@ public class PhysicalArchitectureExt {
       for (PhysicalArchitecture physicalArch : physicalArchPkg.getOwnedPhysicalArchitectures()) {
         if (null != physicalArch) {
           if (isFilterRequired) {
-            list.addAll(SystemComponentExt.getCapabilityRealizationUseCasesFiltered(currentPC, physicalArch));
+            list.addAll(ComponentExt.getCapabilityRealizationUseCasesFiltered(currentPC, physicalArch));
           } else {
             list.addAll(CapellaElementExt.getAllCapabilityRealizationInvolvedWith(physicalArch));
           }
@@ -134,117 +85,9 @@ public class PhysicalArchitectureExt {
     PhysicalArchitecture physicalArch = SystemEngineeringExt.getOwnedPhysicalArchitecture(systemEngineering);
     if (null != physicalArch) {
       if (isFilterRequired) {
-        list.addAll(SystemComponentExt.getCapabilityRealizationUseCasesFiltered(currentPC, physicalArch));
+        list.addAll(ComponentExt.getCapabilityRealizationUseCasesFiltered(currentPC, physicalArch));
       } else {
         list.addAll(CapellaElementExt.getAllCapabilityRealizationInvolvedWith(physicalArch));
-      }
-    }
-    return list;
-  }
-
-  /**
-   * Gets the parent SystemEngineering of a Physical Architecture
-   * @param currentPhysicalArchitecture
-   * @return the parent {@link SystemEngineering}
-   */
-  public static SystemEngineering getParentSystemEngineering(PhysicalArchitecture currentPhysicalArchitecture) {
-    if (null != currentPhysicalArchitecture) {
-      Object container = currentPhysicalArchitecture.eContainer();
-      if (container instanceof PhysicalArchitecturePkg) {
-        container = ((PhysicalArchitecturePkg) container).eContainer();
-      }
-      if (container instanceof SystemEngineering) {
-        return (SystemEngineering) container;
-      }
-    }
-    return null;
-  }
-
-  static public List<AbstractFunction> getAllFunctions(BlockArchitecture arch) {
-    List<AbstractFunction> list = new ArrayList<AbstractFunction>(1);
-    if (null != arch) {
-      FunctionPkg functionPkg = arch.getOwnedFunctionPkg();
-      if ((functionPkg != null) && (functionPkg instanceof PhysicalFunctionPkg)) {
-        list = getAllFunctionsFromFunctionPkg((PhysicalFunctionPkg) functionPkg);
-      }
-    }
-    return list;
-  }
-
-  static public List<AbstractFunction> getAllAbstractFunctions(BlockArchitecture arch) {
-    List<AbstractFunction> list = new ArrayList<AbstractFunction>(1);
-    if (null != arch) {
-      FunctionPkg functionPkg = arch.getOwnedFunctionPkg();
-      if ((functionPkg != null) && (functionPkg instanceof PhysicalFunctionPkg)) {
-        list = getAllFunctionsFromAbstractFunctionPkg((PhysicalFunctionPkg) functionPkg);
-      }
-
-    }
-
-    return list;
-  }
-
-  static public List<AbstractFunction> getAllFunctionsFromFunctionPkg(PhysicalFunctionPkg sysFunPkg) {
-    List<AbstractFunction> list = new ArrayList<AbstractFunction>(1);
-    if (null != sysFunPkg) {
-      EList<PhysicalFunction> ownedFunctions = sysFunPkg.getOwnedPhysicalFunctions();
-      // owned function of SystemFunctionPkg
-      list.addAll(ownedFunctions);
-      // owned function of Function
-      for (AbstractFunction function : ownedFunctions) {
-        list.addAll(getAllFunctionsFromFunction(function));
-      }
-      // owned function of (subPkg of sysFunPkg) SystemFunctionPkg
-      for (PhysicalFunctionPkg ownedFunctionPkg : sysFunPkg.getOwnedPhysicalFunctionPkgs()) {
-        list.addAll(getAllFunctionsFromFunctionPkg(ownedFunctionPkg));
-      }
-    }
-    return list;
-  }
-
-  static public List<AbstractFunction> getAllFunctionsFromAbstractFunctionPkg(PhysicalFunctionPkg sysFunPkg) {
-    List<AbstractFunction> list = new ArrayList<AbstractFunction>(1);
-    if (null != sysFunPkg) {
-      EList<PhysicalFunction> ownedFunctions = sysFunPkg.getOwnedPhysicalFunctions();
-      // owned function of SystemFunctionPkg
-      list.addAll(ownedFunctions);
-      // owned function of Function
-      for (AbstractFunction function : ownedFunctions) {
-        list.addAll(getAllFunctionsFromAbstracrtFunction(function));
-      }
-      // owned function of (subPkg of sysFunPkg) SystemFunctionPkg
-      for (PhysicalFunctionPkg ownedFunctionPkg : sysFunPkg.getOwnedPhysicalFunctionPkgs()) {
-        list.addAll(getAllFunctionsFromAbstractFunctionPkg(ownedFunctionPkg));
-      }
-    }
-    return list;
-  }
-
-  static public List<AbstractFunction> getAllFunctionsFromFunction(AbstractFunction fun) {
-    List<AbstractFunction> list = new ArrayList<AbstractFunction>(1);
-    if (null != fun) {
-      EList<AbstractFunction> ownedSystemFunctions = fun.getOwnedFunctions();
-      for (AbstractFunction abstractFunction : ownedSystemFunctions) {
-        list.add(abstractFunction);
-      }
-      // owned function of function
-      for (AbstractFunction function : ownedSystemFunctions) {
-        list.addAll(getAllFunctionsFromFunction(function));
-      }
-    }
-    return list;
-  }
-
-  static public List<AbstractFunction> getAllFunctionsFromAbstracrtFunction(AbstractFunction fun) {
-    List<AbstractFunction> list = new ArrayList<AbstractFunction>(1);
-    if (null != fun) {
-      EList<AbstractFunction> ownedSystemFunctions = fun.getOwnedFunctions();
-      for (AbstractFunction abstractFunction : ownedSystemFunctions) {
-        list.add(abstractFunction);
-      }
-      // owned function of function
-      for (AbstractFunction function : ownedSystemFunctions) {
-        list.addAll(getAllFunctionsFromAbstracrtFunction(function));
       }
     }
     return list;

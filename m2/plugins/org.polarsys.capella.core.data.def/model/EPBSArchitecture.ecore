@@ -316,6 +316,15 @@
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPhysicalArtifactRealizations"
+        upperBound="-1" eType="#//PhysicalArtifactRealization" containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Physical Artifact Realization links owned by this Configuration Item"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatedPhysicalArtifacts"
         ordered="false" upperBound="-1" eType="ecore:EClass CompositeStructure.ecore#//AbstractPhysicalArtifact"
         changeable="false" volatile="true" transient="true" derived="true" eOpposite="CompositeStructure.ecore#//AbstractPhysicalArtifact/allocatorConfigurationItems">

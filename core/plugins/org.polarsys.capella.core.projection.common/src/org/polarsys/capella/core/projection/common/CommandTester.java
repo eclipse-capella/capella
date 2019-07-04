@@ -32,54 +32,7 @@ public class CommandTester extends PropertyTester {
         if (value.startsWith("transition")) { //$NON-NLS-1$
           value = value.substring(10);
 
-          if (value.equals("Functional")) { //$NON-NLS-1$
-            return TransitionHelper.getService().isFunctionalTransitionAvailable(element);
-
-          } else if (value.equals("Interface")) { //$NON-NLS-1$
-            return TransitionHelper.getService().isInterfaceTransitionAvailable(element);
-
-          } else if (value.equals("StateMachine")) { //$NON-NLS-1$
-            return TransitionHelper.getService().isStateMachineTransitionAvailable(element);
-
-          } else if (value.equals("Data")) { //$NON-NLS-1$
-            return TransitionHelper.getService().isDataTransitionAvailable(element);
-
-          } else if (value.equals("PropertyValue")) { //$NON-NLS-1$
-            return TransitionHelper.getService().isPropertyValueTransitionAvailable(element);
-
-          } else if (value.equals("ExchangeItem")) { //$NON-NLS-1$
-            return TransitionHelper.getService().isExchangeItemTransitionAvailable(element);
-
-          } else if (value.equals("Actor")) { //$NON-NLS-1$
-            return TransitionHelper.getService().isActorTransitionAvailable(element);
-
-          } else if (value.equals("System")) { //$NON-NLS-1$
-            return TransitionHelper.getService().isSystemTransitionAvailable(element);
-
-          } else if (value.equals("LC2PC")) { //$NON-NLS-1$
-            return TransitionHelper.getService().isLC2PCTransitionAvailable(element);
-
-          } else if (value.equals("OE2Actor")) { //$NON-NLS-1$
-            return TransitionHelper.getService().isOE2ActorTransitionAvailable(element);
-
-          } else if (value.equals("OE2System")) { //$NON-NLS-1$
-            return TransitionHelper.getService().isOE2SystemTransitionAvailable(element);
-
-          } else if (value.equals("Capability")) { //$NON-NLS-1$
-            return TransitionHelper.getService().isCapabilityTransitionAvailable(element);
-
-          } else if (value.equals("OC2SM")) { //$NON-NLS-1$
-            return TransitionHelper.getService().isOC2SMTransitionAvailable(element);
-
-          } else if (value.equals("OA2SC")) { //$NON-NLS-1$
-            return TransitionHelper.getService().isOA2SCTransitionAvailable(element);
-
-          } else if (value.equals("OA2SM")) { //$NON-NLS-1$
-            return TransitionHelper.getService().isOA2SMTransitionAvailable(element);
-
-          }
-
-          else if (value.equals("ES2ES-OASA")) { //$NON-NLS-1$
+          if (value.equals("ES2ES-OASA")) { //$NON-NLS-1$
             return TransitionHelper.getService().isES2ESForOASATransitionAvailable(element);
 
           } else if (value.equals("ES2ES-SALA")) { //$NON-NLS-1$

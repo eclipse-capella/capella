@@ -44,7 +44,6 @@ import org.polarsys.capella.core.data.fa.FunctionInputPort;
 import org.polarsys.capella.core.data.fa.FunctionOutputPort;
 import org.polarsys.capella.core.data.fa.FunctionPort;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
-import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
@@ -302,8 +301,8 @@ public class ConnectedCatalogElementsScope implements SparseModelScope.AttachHan
       if (connection.getSource() instanceof ComponentPort) {
         leftPorts.add((ComponentPort) connection.getSource());
       } else if (connection.getSource() instanceof ComponentExchangeEnd) {
-        Partition x = ((ComponentExchangeEnd) connection.getSource()).getPart();
-        if (x instanceof Part) {
+        Part x = ((ComponentExchangeEnd) connection.getSource()).getPart();
+        if (x != null) {
           leftComponentExchangeEnds.add((ComponentExchangeEnd) connection.getSource());
           leftPorts.add(((ComponentExchangeEnd) connection.getSource()).getPort());
           leftParts.add((Part) x);
@@ -316,8 +315,8 @@ public class ConnectedCatalogElementsScope implements SparseModelScope.AttachHan
       if (connection.getTarget() instanceof ComponentPort) {
         rightPorts.add((ComponentPort) connection.getTarget());
       } else if (connection.getTarget() instanceof ComponentExchangeEnd) {
-        Partition x = ((ComponentExchangeEnd) connection.getTarget()).getPart();
-        if (x instanceof Part) {
+        Part x = ((ComponentExchangeEnd) connection.getTarget()).getPart();
+        if (x != null) {
           rightPorts.add(((ComponentExchangeEnd) connection.getTarget()).getPort());
           rightComponentExchangeEnds.add(((ComponentExchangeEnd) connection.getTarget()));
           rightParts.add((Part) x);

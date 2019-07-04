@@ -1144,6 +1144,22 @@
         <details key="excludefrom" value="xmlpivot"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="realizingSystemComponents"
+        upperBound="-1" eType="ecore:EClass ContextArchitecture.ecore#//SystemComponent"
+        changeable="false" volatile="true" transient="true" derived="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="System Components that realize this Entity"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="Entity.involvingInvolvements(self, eoci);&#xD;&#xA;EntityOperationalCapabilityInvolvement.capability(eoci, target);"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic">
+        <details key="excludefrom" value="xmlpivot"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ConceptPkg" eSuperTypes="CapellaCore.ecore#//Structure">
     <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">

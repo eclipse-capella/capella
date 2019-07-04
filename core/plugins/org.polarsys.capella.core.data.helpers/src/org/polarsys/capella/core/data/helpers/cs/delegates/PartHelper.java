@@ -15,7 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.polarsys.capella.common.data.helpers.modellingcore.delegates.InformationsExchangerHelper;
+import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
@@ -23,9 +24,7 @@ import org.polarsys.capella.core.data.cs.DeployableElement;
 import org.polarsys.capella.core.data.cs.DeploymentTarget;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.helpers.information.delegates.PartitionHelper;
-import org.polarsys.capella.core.data.capellacore.Type;
-import org.polarsys.capella.common.data.helpers.modellingcore.delegates.InformationsExchangerHelper;
+import org.polarsys.capella.core.data.helpers.information.delegates.AbstractInstanceHelper;
 
 public class PartHelper {
   private static PartHelper instance;
@@ -55,7 +54,7 @@ public class PartHelper {
 
     // no helper found... searching in super classes...
     if (null == ret) {
-      ret = PartitionHelper.getInstance().doSwitch(element, feature);
+      ret = AbstractInstanceHelper.getInstance().doSwitch(element, feature);
     }
     if (null == ret) {
       ret = InformationsExchangerHelper.getInstance().doSwitch(element, feature);

@@ -14,8 +14,6 @@ package org.polarsys.capella.core.data.helpers.capellacore.services;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.core.data.information.Partition;
-import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 
 public class CapellaElementExt {
@@ -36,28 +34,5 @@ public class CapellaElementExt {
       }
     }
     return listResult;
-  }
-
-  /**
-   * Get all recursive Partitions
-   * @param current a <code>PartitionableElement<code>
-   * @return list of <code>PartitionableElement<code>
-   */
-  public static List<PartitionableElement> getAllDescendants(PartitionableElement current) {
-    List<PartitionableElement> result = new ArrayList<>();
-    List<Partition> ownedPartitions = current.getOwnedPartitions();
-    List<PartitionableElement> children = new ArrayList<>();
-    for (Partition partition : ownedPartitions) {
-      if (partition.getAbstractType() instanceof PartitionableElement) {
-        children.add((PartitionableElement) partition.getAbstractType());
-      }
-    }
-    result.addAll(children);
-
-    for (PartitionableElement partitionableElement : children) {
-      result.addAll(getAllDescendants(partitionableElement));
-    }
-
-    return result;
   }
 }

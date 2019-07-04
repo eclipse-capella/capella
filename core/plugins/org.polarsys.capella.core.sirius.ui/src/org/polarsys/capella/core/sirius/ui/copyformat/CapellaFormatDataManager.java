@@ -202,8 +202,8 @@ public class CapellaFormatDataManager extends AbstractSiriusFormatDataManager im
 
     if (result instanceof Entity) {
       Entity entity = (Entity) result;
-      if (!entity.getRepresentingPartitions().isEmpty()) {
-        result = entity.getRepresentingPartitions().get(0);
+      if (!entity.getRepresentingParts().isEmpty()) {
+        result = entity.getRepresentingParts().get(0);
       }
     }
 

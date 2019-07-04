@@ -18,7 +18,10 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.polarsys.capella.common.data.helpers.modellingcore.delegates.InformationsExchangerHelper;
+import org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeEnd;
@@ -28,15 +31,11 @@ import org.polarsys.capella.core.data.fa.ComponentPortAllocation;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionPort;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionalExt;
-import org.polarsys.capella.core.data.helpers.information.delegates.PartitionHelper;
 import org.polarsys.capella.core.data.helpers.information.delegates.PortHelper;
+import org.polarsys.capella.core.data.helpers.information.delegates.PropertyHelper;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.data.information.PortAllocation;
 import org.polarsys.capella.core.data.information.PortRealization;
-import org.polarsys.capella.common.data.helpers.modellingcore.delegates.InformationsExchangerHelper;
-import org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 
 public class ComponentPortHelper {
   private static ComponentPortHelper instance;
@@ -79,7 +78,7 @@ public class ComponentPortHelper {
       ret = InformationsExchangerHelper.getInstance().doSwitch(element, feature);
     }
     if (null == ret) {
-      ret = PartitionHelper.getInstance().doSwitch(element, feature);
+      ret = PropertyHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;

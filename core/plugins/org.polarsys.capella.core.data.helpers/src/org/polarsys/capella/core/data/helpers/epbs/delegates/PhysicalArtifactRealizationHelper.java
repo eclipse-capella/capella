@@ -12,9 +12,12 @@
 package org.polarsys.capella.core.data.helpers.epbs.delegates;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.core.data.cs.AbstractPhysicalArtifact;
+import org.polarsys.capella.core.data.epbs.ConfigurationItem;
+import org.polarsys.capella.core.data.epbs.EpbsPackage;
 import org.polarsys.capella.core.data.epbs.PhysicalArtifactRealization;
-import org.polarsys.capella.core.data.helpers.cs.delegates.ComponentAllocationHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.AllocationHelper;
 
 public class PhysicalArtifactRealizationHelper {
   private static PhysicalArtifactRealizationHelper instance;
@@ -31,8 +34,33 @@ public class PhysicalArtifactRealizationHelper {
   }
 
   public Object doSwitch(PhysicalArtifactRealization element, EStructuralFeature feature) {
+    Object ret = null;
+
+    if (feature.equals(EpbsPackage.Literals.PHYSICAL_ARTIFACT_REALIZATION__REALIZED_PHYSICAL_ARTIFACT)) {
+      ret = getRealizedPhysicalArtifact(element);
+    } else if (feature.equals(EpbsPackage.Literals.PHYSICAL_ARTIFACT_REALIZATION__REALIZING_CONFIGURATION_ITEM)) {
+      ret = getRealizingConfigurationItem(element);
+    }
 
     // no helper found... searching in super classes...
-	  return ComponentAllocationHelper.getInstance().doSwitch(element, feature);
+    if (null == ret) {
+      ret = AllocationHelper.getInstance().doSwitch(element, feature);
+    }
+
+    return ret;
+  }
+  
+  protected AbstractPhysicalArtifact getRealizedPhysicalArtifact(PhysicalArtifactRealization element) {
+    TraceableElement ret = element.getTargetElement();
+    if (null != ret && ret instanceof AbstractPhysicalArtifact)
+      return (AbstractPhysicalArtifact) ret;
+    return null;
+  }
+
+  protected ConfigurationItem getRealizingConfigurationItem(PhysicalArtifactRealization element) {
+    TraceableElement ret = element.getSourceElement();
+    if (null != ret && ret instanceof ConfigurationItem)
+      return (ConfigurationItem) ret;
+    return null;
   }
 }

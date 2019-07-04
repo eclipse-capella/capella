@@ -116,6 +116,29 @@ public class CsItemProviderAdapterFactory extends CsAdapterFactory implements Co
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.cs.ComponentRealization} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ComponentRealizationItemProvider componentRealizationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.cs.ComponentRealization}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createComponentRealizationAdapter() {
+		if (componentRealizationItemProvider == null) {
+			componentRealizationItemProvider = new ComponentRealizationItemProvider(this);
+		}
+
+		return componentRealizationItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.cs.InterfacePkg} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -587,6 +610,7 @@ public class CsItemProviderAdapterFactory extends CsAdapterFactory implements Co
 	 */
 	public void dispose() {
 		if (partItemProvider != null) partItemProvider.dispose();
+		if (componentRealizationItemProvider != null) componentRealizationItemProvider.dispose();
 		if (interfacePkgItemProvider != null) interfacePkgItemProvider.dispose();
 		if (interfaceItemProvider != null) interfaceItemProvider.dispose();
 		if (interfaceImplementationItemProvider != null) interfaceImplementationItemProvider.dispose();

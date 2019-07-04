@@ -47,10 +47,10 @@ public class PhysicalLinkSelection implements ILinkSelection {
     Part contextPart = null;
     if (context instanceof Component){
       Component contextComponent = (Component) context;
-      if (contextComponent.getRepresentingPartitions().isEmpty()){
+      if (contextComponent.getRepresentingParts().isEmpty()){
         return null;
       }
-      contextPart = (Part) contextComponent.getRepresentingPartitions().get(0);
+      contextPart = (Part) contextComponent.getRepresentingParts().get(0);
     }
     else {
       contextPart = (Part) context;

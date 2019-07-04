@@ -108,6 +108,8 @@ public class NamingConstants extends NLS {
 	public static String CreateEPBSArchCmd_name;
 	public static String CreateEPBSArchCmd_epbsContext_name;
 	public static String CreateEPBSArchCmd_configurationItem_name;
+  public static String CreateEPBSArchCmd_configurationItemPkg_name;
+	
 
 	// Predefined Types
 	public static String PredefinedTypesCmd_boolean_name;

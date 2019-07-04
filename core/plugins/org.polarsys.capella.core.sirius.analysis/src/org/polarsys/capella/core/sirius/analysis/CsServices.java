@@ -5785,7 +5785,8 @@ public class CsServices {
   public Collection<CapabilityRealization> getCRBShowHideCapabilityRealizations(EObject context) {
     Collection<CapabilityRealization> elements = new ArrayList<>();
     if (context instanceof CapellaElement) {
-      elements.addAll(CapabilityRealizationExt.getAllCapabilityRealizationOfOneLayer((CapellaElement) context));
+      BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture(context);
+      elements.addAll(CapabilityRealizationExt.getAllCapabilityRealizations(arch));
     }
     return elements;
   }

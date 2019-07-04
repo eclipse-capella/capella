@@ -28,6 +28,7 @@ import org.polarsys.capella.core.data.cs.Component;
  *   <li>{@link org.polarsys.capella.core.data.epbs.ConfigurationItem#getKind <em>Kind</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.ConfigurationItem#getOwnedConfigurationItems <em>Owned Configuration Items</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.ConfigurationItem#getOwnedConfigurationItemPkgs <em>Owned Configuration Item Pkgs</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.epbs.ConfigurationItem#getOwnedPhysicalArtifactRealizations <em>Owned Physical Artifact Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.ConfigurationItem#getAllocatedPhysicalArtifacts <em>Allocated Physical Artifacts</em>}</li>
  * </ul>
  *
@@ -178,6 +179,28 @@ public interface ConfigurationItem extends CapabilityRealizationInvolvedElement,
 
 
 
+
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Owned Physical Artifact Realizations</b></em>' containment reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.epbs.PhysicalArtifactRealization}.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Owned Physical Artifact Realizations</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Owned Physical Artifact Realizations</em>' containment reference list.
+	 * @see org.polarsys.capella.core.data.epbs.EpbsPackage#getConfigurationItem_OwnedPhysicalArtifactRealizations()
+	 * @model containment="true" resolveProxies="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Physical Artifact Realization links owned by this Configuration Item' constraints='none' comment/notes='none'"
+	 * @generated
+	 */
+
+	EList<PhysicalArtifactRealization> getOwnedPhysicalArtifactRealizations();
 
 
 

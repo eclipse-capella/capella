@@ -54,7 +54,6 @@ import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.BlockArchitecturePkg;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentArchitecture;
-import org.polarsys.capella.core.data.cs.ComponentContext;
 import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.ComponentRealization;
 import org.polarsys.capella.core.data.cs.CsPackage;
@@ -428,31 +427,6 @@ public class CsSwitch<T> extends Switch<T> {
 				if (result == null) result = caseModelElement(interfaceAllocator);
 				if (result == null) result = caseExtensibleElement(interfaceAllocator);
 				if (result == null) result = caseElement(interfaceAllocator);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CsPackage.COMPONENT_CONTEXT: {
-				ComponentContext componentContext = (ComponentContext)theEObject;
-				T result = caseComponentContext(componentContext);
-				if (result == null) result = caseComponent(componentContext);
-				if (result == null) result = caseBlock(componentContext);
-				if (result == null) result = caseClassifier(componentContext);
-				if (result == null) result = caseInterfaceAllocator(componentContext);
-				if (result == null) result = caseCommunicationLinkExchanger(componentContext);
-				if (result == null) result = caseAbstractFunctionalBlock(componentContext);
-				if (result == null) result = caseGeneralizableElement(componentContext);
-				if (result == null) result = caseModellingBlock(componentContext);
-				if (result == null) result = caseType(componentContext);
-				if (result == null) result = caseAbstractType(componentContext);
-				if (result == null) result = caseNamespace(componentContext);
-				if (result == null) result = caseNamedElement(componentContext);
-				if (result == null) result = caseAbstractNamedElement(componentContext);
-				if (result == null) result = caseCapellaElement(componentContext);
-				if (result == null) result = caseExtensibleElement(componentContext);
-				if (result == null) result = caseTraceableElement(componentContext);
-				if (result == null) result = casePublishableElement(componentContext);
-				if (result == null) result = caseModelElement(componentContext);
-				if (result == null) result = caseElement(componentContext);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -997,21 +971,6 @@ public class CsSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Component Context</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Component Context</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseComponentContext(ComponentContext object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Exchange Item Allocation</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1552,21 +1511,6 @@ public class CsSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Generalizable Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Generalizable Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseGeneralizableElement(GeneralizableElement object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Classifier</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1578,6 +1522,21 @@ public class CsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseClassifier(Classifier object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Generalizable Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Generalizable Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGeneralizableElement(GeneralizableElement object) {
 		return null;
 	}
 

@@ -2477,22 +2477,22 @@ public interface PaPackage extends EPackage {
 	int PHYSICAL_COMPONENT__TRANSMIT = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 39;
 
 	/**
-	 * The feature id for the '<em><b>Is Actor</b></em>' attribute.
+	 * The feature id for the '<em><b>Actor</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PHYSICAL_COMPONENT__IS_ACTOR = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 40;
+	int PHYSICAL_COMPONENT__ACTOR = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 40;
 
 	/**
-	 * The feature id for the '<em><b>Is Human</b></em>' attribute.
+	 * The feature id for the '<em><b>Human</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PHYSICAL_COMPONENT__IS_HUMAN = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 41;
+	int PHYSICAL_COMPONENT__HUMAN = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 41;
 
 	/**
 	 * The feature id for the '<em><b>Owned Interface Uses</b></em>' containment reference list.
@@ -2549,31 +2549,13 @@ public interface PaPackage extends EPackage {
 	int PHYSICAL_COMPONENT__IMPLEMENTED_INTERFACES = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 47;
 
 	/**
-	 * The feature id for the '<em><b>Provisioned Component Allocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PHYSICAL_COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 48;
-
-	/**
-	 * The feature id for the '<em><b>Provisioning Component Allocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PHYSICAL_COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 49;
-
-	/**
 	 * The feature id for the '<em><b>Owned Component Realizations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PHYSICAL_COMPONENT__OWNED_COMPONENT_REALIZATIONS = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 50;
+	int PHYSICAL_COMPONENT__OWNED_COMPONENT_REALIZATIONS = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 48;
 
 	/**
 	 * The feature id for the '<em><b>Realized Components</b></em>' reference list.
@@ -2582,7 +2564,7 @@ public interface PaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PHYSICAL_COMPONENT__REALIZED_COMPONENTS = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 51;
+	int PHYSICAL_COMPONENT__REALIZED_COMPONENTS = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 49;
 
 	/**
 	 * The feature id for the '<em><b>Realizing Components</b></em>' reference list.
@@ -2591,7 +2573,7 @@ public interface PaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PHYSICAL_COMPONENT__REALIZING_COMPONENTS = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 52;
+	int PHYSICAL_COMPONENT__REALIZING_COMPONENTS = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 50;
 
 	/**
 	 * The feature id for the '<em><b>Provided Interfaces</b></em>' reference list.
@@ -2600,7 +2582,7 @@ public interface PaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PHYSICAL_COMPONENT__PROVIDED_INTERFACES = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 53;
+	int PHYSICAL_COMPONENT__PROVIDED_INTERFACES = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 51;
 
 	/**
 	 * The feature id for the '<em><b>Required Interfaces</b></em>' reference list.
@@ -2609,7 +2591,7 @@ public interface PaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PHYSICAL_COMPONENT__REQUIRED_INTERFACES = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 54;
+	int PHYSICAL_COMPONENT__REQUIRED_INTERFACES = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 52;
 
 	/**
 	 * The feature id for the '<em><b>Contained Component Ports</b></em>' reference list.
@@ -2618,7 +2600,7 @@ public interface PaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PHYSICAL_COMPONENT__CONTAINED_COMPONENT_PORTS = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 55;
+	int PHYSICAL_COMPONENT__CONTAINED_COMPONENT_PORTS = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 53;
 
 	/**
 	 * The feature id for the '<em><b>Contained Parts</b></em>' reference list.
@@ -2627,7 +2609,7 @@ public interface PaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PHYSICAL_COMPONENT__CONTAINED_PARTS = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 56;
+	int PHYSICAL_COMPONENT__CONTAINED_PARTS = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 54;
 
 	/**
 	 * The feature id for the '<em><b>Contained Physical Ports</b></em>' reference list.
@@ -2636,7 +2618,7 @@ public interface PaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PHYSICAL_COMPONENT__CONTAINED_PHYSICAL_PORTS = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 57;
+	int PHYSICAL_COMPONENT__CONTAINED_PHYSICAL_PORTS = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 55;
 
 	/**
 	 * The feature id for the '<em><b>Owned Physical Path</b></em>' containment reference list.
@@ -2645,7 +2627,7 @@ public interface PaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PHYSICAL_COMPONENT__OWNED_PHYSICAL_PATH = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 58;
+	int PHYSICAL_COMPONENT__OWNED_PHYSICAL_PATH = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 56;
 
 	/**
 	 * The feature id for the '<em><b>Owned Physical Links</b></em>' containment reference list.
@@ -2654,7 +2636,7 @@ public interface PaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PHYSICAL_COMPONENT__OWNED_PHYSICAL_LINKS = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 59;
+	int PHYSICAL_COMPONENT__OWNED_PHYSICAL_LINKS = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 57;
 
 	/**
 	 * The feature id for the '<em><b>Owned Physical Link Categories</b></em>' containment reference list.
@@ -2663,7 +2645,7 @@ public interface PaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PHYSICAL_COMPONENT__OWNED_PHYSICAL_LINK_CATEGORIES = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 60;
+	int PHYSICAL_COMPONENT__OWNED_PHYSICAL_LINK_CATEGORIES = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 58;
 
 	/**
 	 * The feature id for the '<em><b>Representing Parts</b></em>' reference list.
@@ -2672,7 +2654,7 @@ public interface PaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PHYSICAL_COMPONENT__REPRESENTING_PARTS = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 61;
+	int PHYSICAL_COMPONENT__REPRESENTING_PARTS = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 59;
 
 	/**
 	 * The feature id for the '<em><b>Involving Involvements</b></em>' reference list.
@@ -2681,7 +2663,7 @@ public interface PaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PHYSICAL_COMPONENT__INVOLVING_INVOLVEMENTS = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 62;
+	int PHYSICAL_COMPONENT__INVOLVING_INVOLVEMENTS = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 60;
 
 	/**
 	 * The feature id for the '<em><b>Capability Realization Involvements</b></em>' reference list.
@@ -2690,7 +2672,7 @@ public interface PaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PHYSICAL_COMPONENT__CAPABILITY_REALIZATION_INVOLVEMENTS = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 63;
+	int PHYSICAL_COMPONENT__CAPABILITY_REALIZATION_INVOLVEMENTS = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 61;
 
 	/**
 	 * The feature id for the '<em><b>Involving Capability Realizations</b></em>' reference list.
@@ -2699,7 +2681,25 @@ public interface PaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PHYSICAL_COMPONENT__INVOLVING_CAPABILITY_REALIZATIONS = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 64;
+	int PHYSICAL_COMPONENT__INVOLVING_CAPABILITY_REALIZATIONS = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 62;
+
+	/**
+	 * The feature id for the '<em><b>Deploying Links</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHYSICAL_COMPONENT__DEPLOYING_LINKS = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 63;
+
+	/**
+	 * The feature id for the '<em><b>Deployment Links</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHYSICAL_COMPONENT__DEPLOYMENT_LINKS = CsPackage.ABSTRACT_PHYSICAL_ARTIFACT_FEATURE_COUNT + 64;
 
 	/**
 	 * The feature id for the '<em><b>Kind</b></em>' attribute.
@@ -3099,7 +3099,7 @@ public interface PaPackage extends EPackage {
 	int PHYSICAL_COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_REALIZATIONS = CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_REALIZATIONS;
 
 	/**
-	 * The feature id for the '<em><b>Owned Parts</b></em>' reference list.
+	 * The feature id for the '<em><b>Owned Parts</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3126,13 +3126,13 @@ public interface PaPackage extends EPackage {
 	int PHYSICAL_COMPONENT_PKG__OWNED_ASSOCIATIONS = CsPackage.COMPONENT_PKG_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Owned Components</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Owned Physical Components</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PHYSICAL_COMPONENT_PKG__OWNED_COMPONENTS = CsPackage.COMPONENT_PKG_FEATURE_COUNT + 2;
+	int PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS = CsPackage.COMPONENT_PKG_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Owned Physical Component Pkgs</b></em>' containment reference list.
@@ -3730,22 +3730,22 @@ public interface PaPackage extends EPackage {
 	int PHYSICAL_NODE__TRANSMIT = PHYSICAL_COMPONENT__TRANSMIT;
 
 	/**
-	 * The feature id for the '<em><b>Is Actor</b></em>' attribute.
+	 * The feature id for the '<em><b>Actor</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PHYSICAL_NODE__IS_ACTOR = PHYSICAL_COMPONENT__IS_ACTOR;
+	int PHYSICAL_NODE__ACTOR = PHYSICAL_COMPONENT__ACTOR;
 
 	/**
-	 * The feature id for the '<em><b>Is Human</b></em>' attribute.
+	 * The feature id for the '<em><b>Human</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PHYSICAL_NODE__IS_HUMAN = PHYSICAL_COMPONENT__IS_HUMAN;
+	int PHYSICAL_NODE__HUMAN = PHYSICAL_COMPONENT__HUMAN;
 
 	/**
 	 * The feature id for the '<em><b>Owned Interface Uses</b></em>' containment reference list.
@@ -3800,24 +3800,6 @@ public interface PaPackage extends EPackage {
 	 * @ordered
 	 */
 	int PHYSICAL_NODE__IMPLEMENTED_INTERFACES = PHYSICAL_COMPONENT__IMPLEMENTED_INTERFACES;
-
-	/**
-	 * The feature id for the '<em><b>Provisioned Component Allocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PHYSICAL_NODE__PROVISIONED_COMPONENT_ALLOCATIONS = PHYSICAL_COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Provisioning Component Allocations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PHYSICAL_NODE__PROVISIONING_COMPONENT_ALLOCATIONS = PHYSICAL_COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Owned Component Realizations</b></em>' containment reference list.
@@ -3953,6 +3935,24 @@ public interface PaPackage extends EPackage {
 	 * @ordered
 	 */
 	int PHYSICAL_NODE__INVOLVING_CAPABILITY_REALIZATIONS = PHYSICAL_COMPONENT__INVOLVING_CAPABILITY_REALIZATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Deploying Links</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHYSICAL_NODE__DEPLOYING_LINKS = PHYSICAL_COMPONENT__DEPLOYING_LINKS;
+
+	/**
+	 * The feature id for the '<em><b>Deployment Links</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHYSICAL_NODE__DEPLOYMENT_LINKS = PHYSICAL_COMPONENT__DEPLOYMENT_LINKS;
 
 	/**
 	 * The feature id for the '<em><b>Kind</b></em>' attribute.
@@ -4949,15 +4949,15 @@ public interface PaPackage extends EPackage {
 	EClass getPhysicalComponentPkg();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.polarsys.capella.core.data.pa.PhysicalComponentPkg#getOwnedComponents <em>Owned Components</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.polarsys.capella.core.data.pa.PhysicalComponentPkg#getOwnedPhysicalComponents <em>Owned Physical Components</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Owned Components</em>'.
-	 * @see org.polarsys.capella.core.data.pa.PhysicalComponentPkg#getOwnedComponents()
+	 * @return the meta object for the containment reference list '<em>Owned Physical Components</em>'.
+	 * @see org.polarsys.capella.core.data.pa.PhysicalComponentPkg#getOwnedPhysicalComponents()
 	 * @see #getPhysicalComponentPkg()
 	 * @generated
 	 */
-	EReference getPhysicalComponentPkg_OwnedComponents();
+	EReference getPhysicalComponentPkg_OwnedPhysicalComponents();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.polarsys.capella.core.data.pa.PhysicalComponentPkg#getOwnedPhysicalComponentPkgs <em>Owned Physical Component Pkgs</em>}'.
@@ -5360,12 +5360,12 @@ public interface PaPackage extends EPackage {
 		EClass PHYSICAL_COMPONENT_PKG = eINSTANCE.getPhysicalComponentPkg();
 
 		/**
-		 * The meta object literal for the '<em><b>Owned Components</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Owned Physical Components</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PHYSICAL_COMPONENT_PKG__OWNED_COMPONENTS = eINSTANCE.getPhysicalComponentPkg_OwnedComponents();
+		EReference PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS = eINSTANCE.getPhysicalComponentPkg_OwnedPhysicalComponents();
 
 		/**
 		 * The meta object literal for the '<em><b>Owned Physical Component Pkgs</b></em>' containment reference list feature.

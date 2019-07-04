@@ -26,9 +26,7 @@ import org.polarsys.capella.core.data.helpers.oa.delegates.EntityHelper;
 import org.polarsys.capella.core.data.helpers.oa.delegates.EntityOperationalCapabilityInvolvementHelper;
 import org.polarsys.capella.core.data.helpers.oa.delegates.OpAnalysisHelper;
 import org.polarsys.capella.core.data.helpers.oa.delegates.OperationalActivityHelper;
-import org.polarsys.capella.core.data.helpers.oa.delegates.OperationalActorHelper;
 import org.polarsys.capella.core.data.helpers.oa.delegates.OperationalCapabilityHelper;
-import org.polarsys.capella.core.data.helpers.oa.delegates.OperationalContextHelper;
 import org.polarsys.capella.core.data.helpers.oa.delegates.OperationalProcessHelper;
 import org.polarsys.capella.core.data.helpers.oa.delegates.RoleAllocationHelper;
 import org.polarsys.capella.core.data.helpers.oa.delegates.RoleHelper;
@@ -48,11 +46,9 @@ import org.polarsys.capella.core.data.oa.ItemInConcept;
 import org.polarsys.capella.core.data.oa.Location;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.OperationalActivityPkg;
-import org.polarsys.capella.core.data.oa.OperationalActor;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
 import org.polarsys.capella.core.data.oa.OperationalCapabilityPkg;
-import org.polarsys.capella.core.data.oa.OperationalContext;
 import org.polarsys.capella.core.data.oa.OperationalProcess;
 import org.polarsys.capella.core.data.oa.OperationalScenario;
 import org.polarsys.capella.core.data.oa.OrganisationalUnit;
@@ -82,10 +78,7 @@ public class OperationalAnalysisHelper implements IHelper {
 		else if(object instanceof Swimlane){
 			ret = SwimlaneHelper.getInstance().doSwitch((Swimlane) object, feature);
 		}
-    else if (object instanceof OperationalActor) {
-      ret = OperationalActorHelper.getInstance().doSwitch((OperationalActor) object, feature);
-    }
-		else if (object instanceof Entity) {
+    else if (object instanceof Entity) {
 			ret = EntityHelper.getInstance().doSwitch((Entity) object, feature);
 		}
 		else if (object instanceof Role) {
@@ -150,9 +143,6 @@ public class OperationalAnalysisHelper implements IHelper {
     }
     else if(object instanceof EntityOperationalCapabilityInvolvement) {
       ret = EntityOperationalCapabilityInvolvementHelper.getInstance().doSwitch((EntityOperationalCapabilityInvolvement) object, feature);
-    }
-    else if(object instanceof OperationalContext) {
-      ret = OperationalContextHelper.getInstance().doSwitch((OperationalContext) object, feature);
     }
     else if(object instanceof OperationalScenario) {
       ret = NamedElementHelper.getInstance().doSwitch((OperationalScenario) object, feature);
