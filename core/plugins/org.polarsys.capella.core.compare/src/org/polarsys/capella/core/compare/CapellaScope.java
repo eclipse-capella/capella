@@ -35,6 +35,8 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.bundle.FeatureHelper;
 import org.polarsys.capella.common.libraries.LibrariesPackage;
@@ -323,4 +325,17 @@ public class CapellaScope extends SiriusScope {
     return result;
   }
   
+  // TODO remove this override when the following bug is fixed in EMF DiffMerge
+  // (https://bugs.eclipse.org/bugs/show_bug.cgi?id=548907)
+  @Override
+  public EObject getContainer(EObject element) {
+    if (element instanceof DRepresentationDescriptor) {
+      DRepresentationDescriptor representationDescriptor = (DRepresentationDescriptor) element;
+      DRepresentation representation = representationDescriptor.getRepresentation();
+      if (representation != null) {
+        _idToDescriptor.put(representation.getUid(), representationDescriptor);
+      }
+    }
+    return super.getContainer(element);
+  }
 }
