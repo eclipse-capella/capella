@@ -1,0 +1,56 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _g9A5sJ83EemSfqu8lzVLOw
+Element-Name: SearchWithOptions
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: __hlMEJ8zEemSfqu8lzVLOw
+Runtime-Version: 2.5.0.201906250740
+Save-Time: 7/5/19 5:32 PM
+Testcase-Type: ecl
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+with [get-view "Capella Project Explorer"] {
+    get-tree | select "SearchWithOptions/SearchWithOptions.aird" | double-click
+    
+}
+with [get-view "Capella Project Explorer" | get-editbox] {
+    set-text "foo And bar"
+    key-type Enter
+}
+get-view "Capella Project Explorer" | get-tree | get-item 
+    -path "SearchWithOptions/SearchWithOptions.aird/SearchWithOptions/Operational Analysis/Operational Activities/Foo And Bar" 
+    | get-property "getText()" | equals "Foo And Bar" | verify-true
+
+// Activate case sensitive option, no match is found    
+get-button "View Menu" | click
+get-view "Capella Project Explorer" | get-menu -path "Search Options/Case Sensitive" | click
+
+get-view "Capella Project Explorer" | get-tree | get-property itemCount | equals 0 | verify-true
+
+get-button "View Menu" | click
+with [get-view "Capella Project Explorer" | get-editbox] {
+    set-text "Foo And Bar"
+    key-type Enter
+}
+
+get-view "Capella Project Explorer" | get-tree | get-item 
+    -path "SearchWithOptions/SearchWithOptions.aird/SearchWithOptions/Operational Analysis/Operational Activities/Foo And Bar" 
+    | get-property "getText()" | equals "Foo And Bar" | verify-true
+    
+// Activate Search In Description option    
+get-button "View Menu" | click
+get-view "Capella Project Explorer" | get-menu -path "Search Options/In Description" | click
+with [get-view "Capella Project Explorer" | get-tree] {
+    get-item 
+        -path "SearchWithOptions/SearchWithOptions.aird/SearchWithOptions/Physical Architecture/Physical Functions/Root Physical Function/LookMeInDocumentation" 
+        | get-property "getText()" | equals LookMeInDocumentation | verify-true
+    get-item 
+        -path "SearchWithOptions/SearchWithOptions.aird/SearchWithOptions/Physical Architecture/LookMeInDescription" 
+        | get-property "getText()" | equals LookMeInDescription | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
