@@ -14,8 +14,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
+import org.polarsys.capella.test.diagram.filters.ju.DefaultActivatedFilterTestCase;
 
-public class HideSequencingInformationForOAB extends FiltersForOAB {
+public class HideSequencingInformationForOAB extends DefaultActivatedFilterTestCase {
 
   @Override
   protected String getFilterName() {
@@ -27,4 +28,13 @@ public class HideSequencingInformationForOAB extends FiltersForOAB {
     return Arrays.asList(new String[] {});
   }
 
+  @Override
+  protected String getTestProjectName() {
+    return "StandardDiagramFiltersModel";
+  }
+
+  @Override
+  protected String getDiagramName() {
+    return "[OAB] Operational Architecture Blank";
+  }
 }
