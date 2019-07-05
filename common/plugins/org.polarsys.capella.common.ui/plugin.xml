@@ -28,4 +28,36 @@
             type="java.lang.Object">
       </propertyTester>
    </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+            class="org.eclipse.ui.internal.dialogs.EmptyPreferencePage"
+            id="org.polarsys.capella.common.ui.preferences.export"
+            name="%Export_Page_Name"
+            objectClass="org.eclipse.core.resources.IProject">
+      </page>
+      <page
+            category="org.polarsys.capella.common.ui.preferences.export"
+            class="org.polarsys.capella.common.ui.preferences.ExportCSVPreferencePage"
+            id="org.polarsys.capella.common.ui.preferences.exportcsv"
+            name="%Export_CSV_Page_Name"
+            objectClass="org.eclipse.core.resources.IProject">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+            class="org.eclipse.ui.internal.dialogs.EmptyPreferencePage"
+            id="org.polarsys.capella.common.ui.preferences.export"
+            name="%Export_Page_Name">
+      </page>
+      <page
+            category="org.polarsys.capella.common.ui.preferences.export"
+            class="org.polarsys.capella.common.ui.preferences.ExportCSVPreferencePage"
+            id="org.polarsys.capella.common.ui.preferences.exportcsv"
+            name="%Export_CSV_Page_Name">
+      </page>
+   </extension>
 </plugin>

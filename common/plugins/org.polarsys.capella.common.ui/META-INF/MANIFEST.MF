@@ -16,8 +16,11 @@ Require-Bundle: org.eclipse.help,
  org.eclipse.e4.core.di,
  org.eclipse.e4.ui.workbench,
  org.eclipse.e4.core.contexts,
- org.polarsys.capella.core.model.handler
+ org.polarsys.capella.core.model.handler,
+ org.polarsys.capella.core.model.preferences,
+ org.polarsys.capella.core.preferences
 Export-Package: org.polarsys.capella.common.ui,
+ org.polarsys.capella.common.ui.preferences,
  org.polarsys.capella.common.ui.providers,
  org.polarsys.capella.common.ui.services,
  org.polarsys.capella.common.ui.services.commands,
