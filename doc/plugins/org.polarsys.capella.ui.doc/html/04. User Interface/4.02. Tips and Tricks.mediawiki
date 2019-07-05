@@ -114,10 +114,10 @@ Editors and views can be moved in the same way with a simple drag and drop :
 * While still dragging the part, drop cursors appear indicating the 	possibility to dock the part
 * Release the mouse button to dock the part.
  
-[[Image:Images/4.02.%20Tips%20and%20Tricks_html_m4a1c7e6.png|344x166px]]
+[[Image:Images/4.02.%20Tips%20and%20Tricks_html_m4a1c7e6.png]]
 
  
-[[Image:Images/4.02.%20Tips%20and%20Tricks_html_m7ecbe661.png|426x188px]]
+[[Image:Images/4.02.%20Tips%20and%20Tricks_html_m7ecbe661.png]]
 
  
 <br>
@@ -219,32 +219,4 @@ In the diagram editor, it is possible to go from one diagram to the other using 
  
 [[Image:Images/4.02.%20Tips%20and%20Tricks_html_22ef5f2.png|689x276px]]
 
- 
-<br>
-<br>
-
- 
-<br>
-<br>
-
-            
-{| border="1"
-|-
-| 
-<br>
-
- 
-|-
-| 
-<br>
-
- 
-| 
-<br>
-
- 
-|} 
-<br>
-<br>
-
-    
+   

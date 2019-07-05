@@ -43,7 +43,7 @@ Exporting a Project is the best way to package all the resources of a Model.
 Using the contextual menu from the Project Explorer, select &ldquo;Export&rdquo;.
 
  
-[[Image:Images/3.4.%20How%20to%20copy%20or%20export%20a%20Melody%20Advance%20Project_html_5a54683d.png|330x300px]]
+[[Image:Images/3.4.%20How%20to%20copy%20or%20export%20a%20Melody%20Advance%20Project_html_5a54683d.png]]
 
  
 A dialog opens. Select &ldquo;General / Archive File&rdquo;.
