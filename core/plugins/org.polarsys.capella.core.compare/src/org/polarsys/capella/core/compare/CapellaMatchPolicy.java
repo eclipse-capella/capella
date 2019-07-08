@@ -39,9 +39,10 @@ import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
 import org.polarsys.capella.core.data.capellamodeller.Library;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
+import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentAllocation;
-import org.polarsys.capella.core.data.cs.ComponentContext;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
+import org.polarsys.capella.core.data.cs.ComponentRealization;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.InterfaceImplementation;
 import org.polarsys.capella.core.data.cs.InterfaceUse;
@@ -51,6 +52,7 @@ import org.polarsys.capella.core.data.cs.PhysicalLinkEnd;
 import org.polarsys.capella.core.data.ctx.CapabilityExploitation;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.epbs.EpbsPackage;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
@@ -74,6 +76,7 @@ import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
 import org.polarsys.kitalpha.ad.metadata.metadata.ViewpointReference;
 
@@ -610,12 +613,6 @@ public class CapellaMatchPolicy extends SiriusMatchPolicy {
           LaPackage.eINSTANCE.getLogicalArchitecture(),
           PaPackage.eINSTANCE.getPhysicalArchitecture(),
           EpbsPackage.eINSTANCE.getEPBSArchitecture(),
-          // Contexts
-          OaPackage.eINSTANCE.getOperationalContext(),
-          CtxPackage.eINSTANCE.getSystemContext(),
-          LaPackage.eINSTANCE.getLogicalContext(),
-          PaPackage.eINSTANCE.getPhysicalContext(),
-          EpbsPackage.eINSTANCE.getEPBSContext(),
           // Libraries
           LibrariesPackage.eINSTANCE.getModelInformation()
           );
@@ -843,9 +840,20 @@ public class CapellaMatchPolicy extends SiriusMatchPolicy {
    * @param element_p a potentially null element
    * @param scope_p a non-null scope that covers element_p
    */
-  protected boolean isSystemComponent(EObject element_p, IModelScope scope_p) {
-    return element_p instanceof Component &&
-        getContainer(element_p, scope_p) instanceof ModellingArchitecture;
+  protected boolean isRootComponent(EObject element_p, IModelScope scope_p) {
+    
+    if (element_p instanceof Component) {
+      Object container = getContainer(element_p, scope_p);
+      if (container instanceof ComponentPkg) {
+        EObject container2 = getContainer((ComponentPkg) container, scope_p);
+        if (container2 instanceof BlockArchitecture) {
+          if (element_p.equals(((BlockArchitecture) container2).getSystem())) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
   }
   
   /**
@@ -855,10 +863,10 @@ public class CapellaMatchPolicy extends SiriusMatchPolicy {
    */
   protected boolean isSystemComponentAllocation(EObject element_p, IModelScope scope_p) {
     boolean result = false;
-    if (element_p instanceof ComponentAllocation) {
-      ComponentAllocation allocation = (ComponentAllocation)element_p;
-      result = isSystemComponent(allocation.getAllocatedComponent(), scope_p) &&
-          isSystemComponent(allocation.getAllocatingComponent(), scope_p);
+    if (element_p instanceof ComponentRealization) {
+      ComponentRealization allocation = (ComponentRealization)element_p;
+      result = isRootComponent(allocation.getRealizedComponent(), scope_p) &&
+          isRootComponent(allocation.getRealizingComponent(), scope_p);
     }
     return result;
   }
@@ -870,10 +878,9 @@ public class CapellaMatchPolicy extends SiriusMatchPolicy {
    */
   protected boolean isSystemComponentPart(EObject element_p, IModelScope scope_p) {
     boolean result = false;
-    if (element_p instanceof Part &&
-        getContainer(element_p, scope_p) instanceof ComponentContext) {
-      Part part = (Part)element_p;
-      result = isSystemComponent(part.getType(), scope_p);
+    if (element_p instanceof Part) {
+      Part part = (Part) element_p;
+      result = isRootComponent(part.getType(), scope_p);
     }
     return result;
   }
@@ -887,8 +894,8 @@ public class CapellaMatchPolicy extends SiriusMatchPolicy {
     boolean result = false;
     if (element_p instanceof StateMachine) {
       EObject container = getContainer(element_p, scope_p);
-      result = container instanceof org.polarsys.capella.core.data.ctx.System &&
-          isSystemComponent(container, scope_p) && isUniqueSiblingOfItsType(element_p, scope_p);
+      result = container instanceof SystemComponent &&
+          isRootComponent(container, scope_p) && isUniqueSiblingOfItsType(element_p, scope_p);
     }
     return result;
   }

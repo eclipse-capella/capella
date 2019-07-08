@@ -33,7 +33,7 @@ public class PhysicalPortItemContribution implements IMDEMenuItemContribution {
    */
   public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
     if ((modelElement instanceof Component && ((Component) modelElement).isActor())
-      || ((modelElement instanceof LogicalComponent) && ComponentExt.isComponentRoot(modelElement))
+      || (ComponentExt.isComponentRoot(modelElement))
       || ((modelElement instanceof PhysicalComponent) && ((PhysicalComponent) modelElement).getNature().equals(PhysicalComponentNature.NODE)))
     {
       return true;

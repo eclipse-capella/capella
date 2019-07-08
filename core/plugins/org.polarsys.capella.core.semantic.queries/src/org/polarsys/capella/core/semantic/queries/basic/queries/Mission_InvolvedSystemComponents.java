@@ -14,34 +14,33 @@ package org.polarsys.capella.core.semantic.queries.basic.queries;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.core.data.cs.SystemComponent;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.data.ctx.Mission;
 import org.polarsys.capella.common.helpers.query.IQuery;
 
 /**
  *
  */
-public class SystemComponent_componentPorts implements IQuery {
+public class Mission_InvolvedSystemComponents implements IQuery {
 
 	/**
 	 * 
 	 */
-	public SystemComponent_componentPorts() {
+	public Mission_InvolvedSystemComponents() {
     // do nothing
 	}
 
 	/** 
 	 *  
-	 * current.componentPorts
+	 * current.participatingActors
 	 * 
 	 * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
 	 */
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-  public List<Object> compute(Object object) {
-		if (object instanceof SystemComponent) {
-			SystemComponent lc = (SystemComponent) object;
-			return (List)ComponentExt.getOwnedComponentPort(lc);
+	public List<Object> compute(Object object) {
+		List<Object> result = new ArrayList<Object>();
+		if (object instanceof Mission) {
+			Mission m = (Mission) object;
+			result.addAll(m.getInvolvedSystemComponents());
 		}
-		return new ArrayList<Object>(0);
+		return result;
 	}
 }

@@ -14,36 +14,29 @@ package org.polarsys.capella.core.semantic.queries.basic.queries;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.common.util.EList;
-
-import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.common.helpers.query.IQuery;
+import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 
 /**
- * PC realized LCs
+ * 
  */
-public class PhysicalComponent_realizedLogicalComponent implements IQuery {
+
+/**
+ *
+ */
+public class Component_SubDefinedComponents implements IQuery {
 
   /**
-	 * 
-	 */
-  public PhysicalComponent_realizedLogicalComponent() {
-    // do nothing
-  }
-
-  /**
-   * current.logicalComponentRealisations.allocatedComponent
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
   public List<Object> compute(Object object) {
     List<Object> result = new ArrayList<Object>();
+
     if (object instanceof Component) {
-      Component c = (Component) object;
-      EList<Component> allocatedComponents = c.getAllocatedComponents();
-      if (!allocatedComponents.isEmpty()) {
-        result.addAll(allocatedComponents);
-      }
+      result.addAll(ComponentExt.getSubDefinedComponents((Component)object));
     }
+
     return result;
   }
 

@@ -21,6 +21,7 @@ public class NamingConstants extends NLS {
 
 	private static final String BUNDLE_NAME = "org.polarsys.capella.core.model.helpers.naming.messages"; //$NON-NLS-1$
 
+
 	public static String TerminatePseudoState_Name;
 	public static String ShallowHistoryPseudoState_Name;
 	public static String JoinPseudoState_Name;
@@ -70,6 +71,7 @@ public class NamingConstants extends NLS {
 
 	// Operational Analysis
 	public static String CreateOpAnalysisCmd_name;
+  public static String CreateOaAnalysisCmd_entity_name;
 	public static String CreateOpAnalysisCmd_operationalActivity_root_name;
 	public static String CreateOpAnalysisCmd_operationalActivities_pkg_name;
 	public static String CreateOpAnalysisCmd_operationalCapabilities_pkg_name;

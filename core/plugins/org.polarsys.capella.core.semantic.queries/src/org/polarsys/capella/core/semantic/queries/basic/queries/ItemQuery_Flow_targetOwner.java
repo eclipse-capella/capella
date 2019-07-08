@@ -15,16 +15,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.cs.PhysicalPort;
-import org.polarsys.capella.core.data.cs.SystemComponent;
-import org.polarsys.capella.core.data.fa.ComponentExchange;
-import org.polarsys.capella.core.data.fa.ComponentPort;
-import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 import org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow;
 import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.common.helpers.query.IQuery;
+import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.cs.PhysicalPort;
+import org.polarsys.capella.core.data.fa.ComponentExchange;
+import org.polarsys.capella.core.data.fa.ComponentPort;
+import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 
 /**
  *
@@ -58,7 +57,7 @@ public class ItemQuery_Flow_targetOwner implements IQuery {
           InformationsExchanger target = f.getTarget();
           if (null != target &&   (target instanceof ComponentPort || target instanceof PhysicalPort)) {
             EObject eContainer = target.eContainer();
-            if (null != eContainer && eContainer instanceof SystemComponent) {
+            if (null != eContainer && eContainer instanceof Component) {
               result.add(eContainer);    
             }
           }

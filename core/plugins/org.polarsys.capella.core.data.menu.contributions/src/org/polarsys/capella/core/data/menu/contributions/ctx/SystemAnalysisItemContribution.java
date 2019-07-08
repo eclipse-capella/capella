@@ -38,10 +38,8 @@ public class SystemAnalysisItemContribution implements IMDEMenuItemContribution 
    * @see org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution#selectionContribution()
    */
   public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
-    if ((modelElement instanceof SystemEngineering)
-      && CtxPackage.Literals.SYSTEM_ANALYSIS.equals(cls)
-      && CapellacorePackage.Literals.ABSTRACT_MODELLING_STRUCTURE__OWNED_ARCHITECTURES.equals(feature))
-    {
+    if ((modelElement instanceof SystemEngineering) && CtxPackage.Literals.SYSTEM_ANALYSIS.equals(cls)
+        && CapellacorePackage.Literals.ABSTRACT_MODELLING_STRUCTURE__OWNED_ARCHITECTURES.equals(feature)) {
       return ((SystemEngineering) modelElement).getContainedSystemAnalysis().isEmpty();
     }
     return false;
@@ -50,7 +48,8 @@ public class SystemAnalysisItemContribution implements IMDEMenuItemContribution 
   /**
    * @see org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution#executionContribution()
    */
-  public Command executionContribution(EditingDomain editingDomain, ModelElement containerElement, ModelElement createdElement, EStructuralFeature feature) {
+  public Command executionContribution(EditingDomain editingDomain, ModelElement containerElement,
+      ModelElement createdElement, EStructuralFeature feature) {
     if ((createdElement instanceof SystemAnalysis) && (containerElement instanceof SystemEngineering)) {
       SystemEngineering engineering = (SystemEngineering) containerElement;
       OperationalAnalysis architecture = SystemEngineeringExt.getOperationalAnalysis(engineering);
@@ -58,7 +57,8 @@ public class SystemAnalysisItemContribution implements IMDEMenuItemContribution 
         @Override
         protected void doExecute() {
           new CreateCtxArchiCmd(engineering, NamingConstants.CreateSysAnalysisCmd_name, architecture,
-              (OperationalActivity) BlockArchitectureExt.getRootFunction(architecture, false)).run();
+              (OperationalActivity) BlockArchitectureExt.getRootFunction(architecture, false),
+              (SystemAnalysis) createdElement).run();
         }
       };
     }

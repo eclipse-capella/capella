@@ -14,10 +14,10 @@ package org.polarsys.capella.core.semantic.queries.basic.queries;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.core.data.fa.ComponentExchangeEnd;
-import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.helpers.query.IQuery;
+import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.fa.ComponentExchangeEnd;
 
 /**
  * This query returns connection end Part -> Component if any
@@ -39,7 +39,7 @@ public class ConnectionEndComponent implements IQuery {
     List<Object> result = new ArrayList<Object>();
     if (object instanceof ComponentExchangeEnd) {
       ComponentExchangeEnd p = (ComponentExchangeEnd) object;
-      Partition part = p.getPart();
+      Part part = p.getPart();
       if (null != part) {
         AbstractType abstractType = part.getAbstractType();
         if (abstractType != null) {

@@ -57,7 +57,8 @@ public class LogicalArchitectureItemContribution implements IMDEMenuItemContribu
         protected void doExecute() {
           new CreateLogicalArchiCmd(engineering, NamingConstants.CreateLogicalArchCmd_name, architecture,
               (SystemFunction) BlockArchitectureExt.getRootFunction(architecture, false),
-              (SystemComponent) BlockArchitectureExt.getFirstComponent(architecture, false)).run();
+              (SystemComponent) BlockArchitectureExt.getFirstComponent(architecture, false),
+              (LogicalArchitecture) createdElement).run();
         }
       };
     }

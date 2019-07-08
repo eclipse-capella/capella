@@ -14,20 +14,13 @@ package org.polarsys.capella.core.semantic.queries.basic.queries;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.common.helpers.query.IQuery;
+import org.polarsys.capella.core.data.cs.Component;
 
 /**
  * Return Allocating component
  */
-public class LogicalComponent_realizingPhysicalComponents implements IQuery {
-
-  /**
-	 * 
-	 */
-  public LogicalComponent_realizingPhysicalComponents() {
-    // do nothing
-  }
+public class Component_RealizedComponents implements IQuery {
 
   /**
    * current.allocatingComponents (via logicalComponentRealization on PhysicalComponent)
@@ -37,7 +30,7 @@ public class LogicalComponent_realizingPhysicalComponents implements IQuery {
     List<Object> result = new ArrayList<Object>();
     if (object instanceof Component) {
       Component lc = (Component) object;
-      result.addAll(lc.getAllocatingComponents());
+      result.addAll(lc.getRealizedComponents());
     }
     return result;
   }

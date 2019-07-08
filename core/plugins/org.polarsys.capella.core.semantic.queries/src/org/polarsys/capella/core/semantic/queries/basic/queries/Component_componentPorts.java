@@ -14,33 +14,34 @@ package org.polarsys.capella.core.semantic.queries.basic.queries;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.core.data.ctx.Mission;
 import org.polarsys.capella.common.helpers.query.IQuery;
+import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 
 /**
  *
  */
-public class Mission_participatingActors implements IQuery {
+public class Component_componentPorts implements IQuery {
 
 	/**
 	 * 
 	 */
-	public Mission_participatingActors() {
+	public Component_componentPorts() {
     // do nothing
 	}
 
 	/** 
 	 *  
-	 * current.participatingActors
+	 * current.componentPorts
 	 * 
 	 * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
 	 */
-	public List<Object> compute(Object object) {
-		List<Object> result = new ArrayList<Object>();
-		if (object instanceof Mission) {
-			Mission m = (Mission) object;
-			result.addAll(m.getParticipatingActors());
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+  public List<Object> compute(Object object) {
+		if (object instanceof Component) {
+		  Component lc = (Component) object;
+			return (List)ComponentExt.getOwnedComponentPort(lc);
 		}
-		return result;
+		return new ArrayList<Object>(0);
 	}
 }

@@ -16,14 +16,13 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.common.helpers.query.IQuery;
 
 /**
- * Return realized Capability
+ * Return realized CR
  */
-public class CRRealizedCapability implements IQuery {
+public class CapabilityRealization_RealizedCapabilityRealization implements IQuery {
 
   /**
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
@@ -32,9 +31,9 @@ public class CRRealizedCapability implements IQuery {
     List<Object> result = new ArrayList<Object>();
     if (object instanceof CapabilityRealization) {
       CapabilityRealization capa = (CapabilityRealization) object;
-      EList<Capability> rc = capa.getRealizedCapabilities();
-      if (!rc.isEmpty()) {
-        result.addAll(rc);
+      EList<CapabilityRealization> rcr = capa.getRealizedCapabilityRealizations();
+      if (!rcr.isEmpty()) {
+        result.addAll(rcr);
       }
     }
     return result;

@@ -14,28 +14,25 @@ package org.polarsys.capella.core.semantic.queries.basic.queries;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.common.util.EList;
-
-import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.common.helpers.query.IQuery;
+import org.polarsys.capella.core.data.cs.Component;
 
 /**
- * Return realized CR
+ * Return Allocating component
  */
-public class CRRealizedCR implements IQuery {
+public class Component_RealizingComponents implements IQuery {
 
   /**
+   * current.allocatingComponents (via logicalComponentRealization on PhysicalComponent)
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
   public List<Object> compute(Object object) {
     List<Object> result = new ArrayList<Object>();
-    if (object instanceof CapabilityRealization) {
-      CapabilityRealization capa = (CapabilityRealization) object;
-      EList<CapabilityRealization> rcr = capa.getRealizedCapabilityRealizations();
-      if (!rcr.isEmpty()) {
-        result.addAll(rcr);
-      }
+    if (object instanceof Component) {
+      Component lc = (Component) object;
+      result.addAll(lc.getRealizingComponents());
     }
     return result;
   }
+
 }

@@ -31,7 +31,6 @@ import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyValue;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.AbstractPhysicalLinkEnd;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
@@ -42,9 +41,8 @@ import org.polarsys.capella.core.data.cs.DeployableElement;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalLinkEnd;
-import org.polarsys.capella.core.data.cs.SystemComponent;
-import org.polarsys.capella.core.data.ctx.Actor;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
@@ -68,14 +66,12 @@ import org.polarsys.capella.core.data.interaction.AbstractEnd;
 import org.polarsys.capella.core.data.interaction.Execution;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
-import org.polarsys.capella.core.data.la.LogicalActor;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalFunction;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
-import org.polarsys.capella.core.data.pa.PhysicalActor;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
@@ -103,8 +99,8 @@ public class BusinessHelper {
   }
 
   /**
-   * Create semantic elements which are implicitly coupled with the given semantic element in the context of its given semantic context and representation
-   * context
+   * Create semantic elements which are implicitly coupled with the given semantic element in the context of its given
+   * semantic context and representation context
    */
   public Collection<EObject> addImplicitElements(EObject element, Object context, DSemanticDecorator graphicalContext) {
     Collection<EObject> result = new HashSet<>();
@@ -124,22 +120,26 @@ public class BusinessHelper {
         result.add(addition);
         // Special case: in PABs, behavioral component within a node component
         // also requires a deployment link
-        if ((graphicalTarget instanceof Part) && (container instanceof PhysicalComponent) && (container.eContainer() instanceof PhysicalComponent)
-            && // container is not a root
-            (element instanceof PhysicalComponent) && (((PhysicalComponent) container).getNature() == PhysicalComponentNature.NODE)
+        if ((graphicalTarget instanceof Part) && (container instanceof PhysicalComponent)
+            && (container.eContainer() instanceof PhysicalComponent) && // container is not a root
+            (element instanceof PhysicalComponent)
+            && (((PhysicalComponent) container).getNature() == PhysicalComponentNature.NODE)
             && (((PhysicalComponent) element).getNature() == PhysicalComponentNature.BEHAVIOR)) {
           deployPhysicalPartOn(addition, (Part) graphicalTarget);
         }
       }
-    } else if ((element instanceof Part) && (graphicalTarget instanceof Part) && (((Part) element).getAbstractType() instanceof PhysicalComponent)
-               && (((Part) graphicalTarget).getAbstractType() instanceof PhysicalComponent)
-               && (((PhysicalComponent) ((Part) element).getAbstractType()).getNature() == PhysicalComponentNature.BEHAVIOR)
-               && (((PhysicalComponent) ((Part) graphicalTarget).getAbstractType()).getNature() == PhysicalComponentNature.NODE)) {
-      EList<Part> deployingParts = ((Part)element).getDeployingParts();
+    } else if ((element instanceof Part) && (graphicalTarget instanceof Part)
+        && (((Part) element).getAbstractType() instanceof PhysicalComponent)
+        && (((Part) graphicalTarget).getAbstractType() instanceof PhysicalComponent)
+        && (((PhysicalComponent) ((Part) element).getAbstractType()).getNature() == PhysicalComponentNature.BEHAVIOR)
+        && (((PhysicalComponent) ((Part) graphicalTarget).getAbstractType())
+            .getNature() == PhysicalComponentNature.NODE)) {
+      EList<Part> deployingParts = ((Part) element).getDeployingParts();
       boolean isAllocated = !deployingParts.isEmpty();
       if (!isAllocated)
         deployPhysicalPartOn((Part) element, (Part) graphicalTarget);
-    } else if ((element instanceof AbstractFunction) && ((context instanceof Component) || (graphicalTarget instanceof Part))) {
+    } else if ((element instanceof AbstractFunction)
+        && ((context instanceof Component) || (graphicalTarget instanceof Part))) {
       // A function within a component triggers the creation of an allocation
       // if there exists none
       AbstractFunction function = (AbstractFunction) element;
@@ -184,14 +184,17 @@ public class BusinessHelper {
       }
     } else if ((element instanceof EnumerationLiteral) && (context instanceof Enumeration)) {
       ((EnumerationLiteral) element).setAbstractType((AbstractType) context);
-    } 
+    }
     return result;
   }
 
   /**
    * Deploy the given part on the given location part
-   * @param element a non-null part typed by a behavior physical component
-   * @param location a non-null part typed by a node physical component
+   * 
+   * @param element
+   *          a non-null part typed by a behavior physical component
+   * @param location
+   *          a non-null part typed by a node physical component
    */
   private void deployPhysicalPartOn(Part element, Part location) {
     PartDeploymentLink link = DeploymentFactory.eINSTANCE.createPartDeploymentLink();
@@ -219,7 +222,8 @@ public class BusinessHelper {
   }
 
   /**
-   * Return semantic elements which are implicitly coupled with the given semantic element in the context of their given representation context
+   * Return semantic elements which are implicitly coupled with the given semantic element in the context of their given
+   * representation context
    */
   public Set<EObject> getImplicitElements(EObject element, Object context) {
     Set<EObject> result = new HashSet<>();
@@ -274,15 +278,17 @@ public class BusinessHelper {
   }
 
   /**
-   * Return whether the given reference with isMany==true has a fixed multiplicity and should therefore not be used for adding elements
+   * Return whether the given reference with isMany==true has a fixed multiplicity and should therefore not be used for
+   * adding elements
    */
   private boolean hasFixedCardinality(EReference reference) {
-    return (CsPackage.eINSTANCE.getPhysicalLink_LinkEnds() == reference) || (InformationPackage.eINSTANCE.getAssociation_NavigableMembers() == reference);
+    return (CsPackage.eINSTANCE.getPhysicalLink_LinkEnds() == reference)
+        || (InformationPackage.eINSTANCE.getAssociation_NavigableMembers() == reference);
   }
 
   /**
-   * Return whether the given element is meaningful when considered within the given set of elements or their children only, i.e., when separated from anything
-   * outside those elements.
+   * Return whether the given element is meaningful when considered within the given set of elements or their children
+   * only, i.e., when separated from anything outside those elements.
    */
   public boolean isMeaningfulWithin(EObject element, Collection<? extends EObject> contexts) {
     // EnumerationPropertyValues never meaningful for the moment
@@ -340,7 +346,7 @@ public class BusinessHelper {
       Property property = (Property) element;
       AbstractType propertyType = property.getAbstractType();
       if (propertyType instanceof org.polarsys.capella.core.data.information.Class) {
-    	  org.polarsys.capella.core.data.information.Class propertyClass = (org.polarsys.capella.core.data.information.Class) propertyType;
+        org.polarsys.capella.core.data.information.Class propertyClass = (org.polarsys.capella.core.data.information.Class) propertyType;
         EObject propertyContainer = property.eContainer();
         if (!propertyClass.isIsPrimitive() && contexts.contains(propertyContainer)
             && (propertyContainer instanceof org.polarsys.capella.core.data.information.Class)) {
@@ -414,9 +420,10 @@ public class BusinessHelper {
     }
     // *** Parts of type Component
     else if ((toStore instanceof Part) && (((Part) toStore).getAbstractType() instanceof Component)
-             && ((container instanceof Part) || (container instanceof Component))) {
+        && ((container instanceof Part) || (container instanceof Component))) {
       Component toStoreType = (Component) ((Part) toStore).getAbstractType();
-      Component containerType = container instanceof Component ? (Component) container : (Component) ((Part) container).getAbstractType();
+      Component containerType = container instanceof Component ? (Component) container
+          : (Component) ((Part) container).getAbstractType();
       result = componentsMatchForStorage(containerType, toStoreType);
     }
     return result;
@@ -428,11 +435,11 @@ public class BusinessHelper {
   private boolean componentsMatchForStorage(Component container, Component toStore) {
     BlockArchitecture architecture = getBlockArchitecture(container);
     if (architecture instanceof LogicalArchitecture) {
-      return (toStore instanceof LogicalComponent) || (toStore instanceof LogicalActor);
+      return (toStore instanceof LogicalComponent);
     } else if (architecture instanceof PhysicalArchitecture) {
-      return (toStore instanceof PhysicalComponent) || (toStore instanceof PhysicalActor);
+      return (toStore instanceof PhysicalComponent);
     } else if (architecture instanceof SystemAnalysis) {
-      return (toStore instanceof SystemComponent) || (toStore instanceof Actor);
+      return (toStore instanceof SystemComponent);
     } else if (architecture instanceof OperationalAnalysis) {
       return toStore instanceof Entity;
     } else if (architecture instanceof EPBSArchitecture) {
@@ -456,7 +463,9 @@ public class BusinessHelper {
 
   /**
    * Return whether multiparts are allowed (reuse of types)
-   * @param element an element that defines a project context
+   * 
+   * @param element
+   *          an element that defines a project context
    */
   private boolean isMultipartAllowed(EObject element) {
     return TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven((ModelElement) element));
@@ -464,7 +473,9 @@ public class BusinessHelper {
 
   /**
    * Return whether multiple deployments are allowed
-   * @param element an element that defines a project context
+   * 
+   * @param element
+   *          an element that defines a project context
    */
   private boolean isMultipleDeploymentAllowed(EObject element) {
     return CapellaModelPreferencesPlugin.getDefault().isMultipleDeploymentAllowed();
@@ -474,14 +485,23 @@ public class BusinessHelper {
    * Return whether the storage location of the given element can be derived from other elements it depends upon
    */
   public boolean storageCanBeDerived(EObject element) {
-    return (element instanceof FunctionalExchange) || (element instanceof ComponentExchange) || (element instanceof PhysicalLink)
-           || ((element instanceof Part) && (((Part) element).getType() instanceof AbstractActor));
+    if (element instanceof FunctionalExchange || element instanceof ComponentExchange
+        || element instanceof PhysicalLink) {
+      return true;
+    }
+    if (element instanceof Part) {
+      AbstractType type = ((Part) element).getType();
+      return (type instanceof Component && ((Component) type).isActor());
+    }
+    return false;
   }
 
   /**
-   * Derive the storage location of the given element based on the already defined storage locations for the given additional elements
+   * Derive the storage location of the given element based on the already defined storage locations for the given
+   * additional elements
    */
-  public StorageLocation deriveStorage(EObject element, List<? extends StorageLocation> locations, List<? extends EObject> peers) {
+  public StorageLocation deriveStorage(EObject element, List<? extends StorageLocation> locations,
+      List<? extends EObject> peers) {
     assert locations.size() == peers.size();
     StorageLocation result = null;
     ModelElement container = null;
@@ -522,9 +542,11 @@ public class BusinessHelper {
 
   /**
    * Helper method for deriveStorage: case where storage is derived from the ends of a link/exchange
+   * 
    * @return the computed storage element, if any
    */
-  private ModelElement deriveLinkStorage(EObject source, EObject target, List<? extends StorageLocation> locations, List<? extends EObject> peers) {
+  private ModelElement deriveLinkStorage(EObject source, EObject target, List<? extends StorageLocation> locations,
+      List<? extends EObject> peers) {
     ModelElement result = null;
     EObject sourceElement = getLinkDerivationReferenceElement(source);
     EObject targetElement = getLinkDerivationReferenceElement(target);
@@ -544,7 +566,9 @@ public class BusinessHelper {
   }
 
   /**
-   * From the given non-null end of a link, return the associated element which must be used for deriving a storage for the link
+   * From the given non-null end of a link, return the associated element which must be used for deriving a storage for
+   * the link
+   * 
    * @return a non-null element
    */
   private EObject getLinkDerivationReferenceElement(EObject element) {
@@ -570,8 +594,11 @@ public class BusinessHelper {
   }
 
   /**
-   * Return whether the given reference must be updated when its values are duplicated, i.e., whether the duplicates must be referenced too
-   * @param reference a reference such that QueryUtil.supportsAddition(reference)
+   * Return whether the given reference must be updated when its values are duplicated, i.e., whether the duplicates
+   * must be referenced too
+   * 
+   * @param reference
+   *          a reference such that QueryUtil.supportsAddition(reference)
    */
   public boolean updateWithDuplicatedValues(EReference reference) {
     return !hasFixedCardinality(reference) && !NON_UPDATING_FEATURES.contains(reference);
@@ -580,9 +607,12 @@ public class BusinessHelper {
   /**
    * The set of references which should not be updated when their values are duplicated
    */
-  private static final Collection<EReference> NON_UPDATING_FEATURES = Arrays.<EReference> asList(InformationPackage.eINSTANCE.getPort_ProvidedInterfaces(),
-      InformationPackage.eINSTANCE.getPort_RequiredInterfaces(), CapellacorePackage.eINSTANCE.getAbstractPropertyValue_ValuedElements(),
-      CapellacorePackage.eINSTANCE.getPropertyValueGroup_ValuedElements(), CapellacorePackage.eINSTANCE.getCapellaElement_AppliedPropertyValues(),
+  private static final Collection<EReference> NON_UPDATING_FEATURES = Arrays.<EReference> asList(
+      InformationPackage.eINSTANCE.getPort_ProvidedInterfaces(),
+      InformationPackage.eINSTANCE.getPort_RequiredInterfaces(),
+      CapellacorePackage.eINSTANCE.getAbstractPropertyValue_ValuedElements(),
+      CapellacorePackage.eINSTANCE.getPropertyValueGroup_ValuedElements(),
+      CapellacorePackage.eINSTANCE.getCapellaElement_AppliedPropertyValues(),
       CapellacorePackage.eINSTANCE.getCapellaElement_AppliedPropertyValueGroups());
 
 }

@@ -14,19 +14,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.polarsys.capella.common.helpers.query.IQuery;
-import org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement;
-import org.polarsys.capella.core.data.la.CapabilityRealization;
+import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement;
 
-public class CapabilityRealization_involvedActors implements IQuery {
+public class CapabilityRealizationInvolvedElement_InvolvingCapabilityRealizations implements IQuery {
 
 	@Override
 	public List<Object> compute(Object object) {
 		List<Object> result = new ArrayList<Object>();
-	    if (object instanceof CapabilityRealization) {
-	    	CapabilityRealization capabilityRealization = (	CapabilityRealization) object;
-	    	for (ActorCapabilityRealizationInvolvement involvement : capabilityRealization.getInvolvedActors()) {
-	    		result.add(involvement.getInvolved());
-	    	}
+	    if (object instanceof CapabilityRealizationInvolvedElement) {
+	      CapabilityRealizationInvolvedElement component = (CapabilityRealizationInvolvedElement) object;
+	      result.addAll(component.getInvolvingCapabilityRealizations());
 	    }
 	    return result;
 	}

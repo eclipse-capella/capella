@@ -13,8 +13,7 @@ package org.polarsys.capella.core.semantic.queries.basic.queries.utils;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.core.data.cs.AbstractActor;
-import org.polarsys.capella.core.data.oa.OperationalActor;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 
 /**
  * This class provides some utility methods to filter queries results
@@ -28,7 +27,7 @@ public class QueriesFilters {
   public static List<Object> filterListToRemoveActors(List<Object> objects) {
     List<Object> returnValue = new ArrayList<Object>();
     for (Object obj : objects) {
-      if (!(obj instanceof AbstractActor || obj instanceof OperationalActor)) {
+      if (!ComponentExt.isActor(obj)) {
         returnValue.add(obj);
       }
     }
@@ -43,7 +42,7 @@ public class QueriesFilters {
   public static List<Object> filterListToGetOnlyActors(List<Object> objects) {
     List<Object> returnValue = new ArrayList<Object>();
     for (Object obj : objects) {
-      if ((obj instanceof AbstractActor || obj instanceof OperationalActor)) {
+      if (ComponentExt.isActor(obj)) {
         returnValue.add(obj);
       }
     }

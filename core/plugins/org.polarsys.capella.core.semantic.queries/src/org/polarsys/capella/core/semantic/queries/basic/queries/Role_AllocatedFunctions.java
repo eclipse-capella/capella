@@ -15,28 +15,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.polarsys.capella.common.helpers.query.IQuery;
-import org.polarsys.capella.core.model.helpers.AbstractFunctionExt;
-import org.polarsys.capella.core.semantic.queries.basic.queries.utils.QueriesFilters;
-
+import org.polarsys.capella.core.data.oa.Role;
 
 /**
- * Allows to get the allocation blocks (Entity(!OpeartionalActor), System, LC, PC) of an abstract function.
- * 
- * 
+ * Return allocated function of current Component or Role
  */
-public class FunctionAllocatingComponent implements IQuery {
+public class Role_AllocatedFunctions implements IQuery {
 
-  public FunctionAllocatingComponent() {
-    // does nothing
+  /**
+   * 
+   */
+  public Role_AllocatedFunctions() {
+    // do nothing
   }
 
   /**
+   * current.allocatedFunctions
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
-  public List<Object> compute(Object object_p) {
+  public List<Object> compute(Object object) {
     List<Object> result = new ArrayList<Object>();
-    result.addAll(AbstractFunctionExt.getAllocationBlocks(object_p));
-    return QueriesFilters.filterListToRemoveActors(result);
+    if (object instanceof Role) {
+      Role role = (Role) object;
+      result.addAll(role.getAllocatedOperationalActivities());
+    }
+    return result;
   }
-  
+
 }

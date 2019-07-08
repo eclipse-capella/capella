@@ -10,20 +10,20 @@
  *******************************************************************************/
 package org.polarsys.capella.core.semantic.queries.basic.queries;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import org.polarsys.capella.common.helpers.query.IQuery;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
-
-import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 
 /**
  * Return incoming or outgoing component exchanges of given AbstractActor, System, LC or PC
@@ -46,7 +46,7 @@ public abstract class AbstractComponentFilteredComponentExchange implements IQue
         }
       }
     }
-    
+
     return result;
   }
 
@@ -55,16 +55,16 @@ public abstract class AbstractComponentFilteredComponentExchange implements IQue
   }
 
   protected Collection<ComponentExchange> getExchanges(Object object) {
-    return getCache(ComponentExt::getAllRelatedComponentExchange, (Component)object);
+    return getCache(ComponentExt::getAllRelatedComponentExchange, (Component) object);
   }
 
   /**
    * check for valid exchanges that can have component exchanges
    */
   public boolean isValidComponentForComponentExchanges(Object object) {
-    return object instanceof AbstractActor || object instanceof org.polarsys.capella.core.data.ctx.System
-        || object instanceof LogicalComponent || (object instanceof PhysicalComponent
-            && ((PhysicalComponent) object).getNature() != PhysicalComponentNature.NODE);
+    return (object instanceof Component && ((Component) object).isActor()) || //
+        (object instanceof SystemComponent || object instanceof LogicalComponent || (object instanceof PhysicalComponent
+            && ((PhysicalComponent) object).getNature() != PhysicalComponentNature.NODE));
   }
 
 }

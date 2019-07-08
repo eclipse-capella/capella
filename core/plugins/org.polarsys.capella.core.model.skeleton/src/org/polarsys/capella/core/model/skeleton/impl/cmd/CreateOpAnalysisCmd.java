@@ -42,36 +42,50 @@ public class CreateOpAnalysisCmd extends AbstractReadWriteCommand {
 
   /**
    * Constructs the command to create an operational analysis structure skeleton.
-   * @param systemEng_p The parent system engineering.
-   * @param architectureName_p The architecture name.
+   * 
+   * @param systemEng_p
+   *          The parent system engineering.
+   * @param architectureName_p
+   *          The architecture name.
    */
   public CreateOpAnalysisCmd(SystemEngineering systemEng_p, String architectureName_p) {
     _systemEng = systemEng_p;
     _architectureName = architectureName_p;
   }
 
+  public CreateOpAnalysisCmd(SystemEngineering systemEng_p, String architectureName_p, OperationalAnalysis createdElement) {
+    this(systemEng_p, architectureName_p);
+    _operationalAnalysis = createdElement;
+  }
+  
   /**
    * @see java.lang.Runnable#run()
    */
   public void run() {
-    // 1 - Builds the operational analysis root element.
-    _operationalAnalysis = OaFactory.eINSTANCE.createOperationalAnalysis(_architectureName);
+    if (_operationalAnalysis == null) {
+      // 1 - Builds the operational analysis root element.
+      _operationalAnalysis = OaFactory.eINSTANCE.createOperationalAnalysis();
+      _systemEng.getOwnedArchitectures().add(_operationalAnalysis);
+    }
+    _operationalAnalysis.setName(_architectureName);
 
     // Builds the operational activities structure skeleton.
-    OperationalActivityPkg activitiesPkg =
-                                           OaFactory.eINSTANCE.createOperationalActivityPkg(NamingConstants.CreateOpAnalysisCmd_operationalActivities_pkg_name);
+    OperationalActivityPkg activitiesPkg = OaFactory.eINSTANCE
+        .createOperationalActivityPkg(NamingConstants.CreateOpAnalysisCmd_operationalActivities_pkg_name);
     _operationalAnalysis.setOwnedFunctionPkg(activitiesPkg);
 
-    _rootOperationalActivity = OaFactory.eINSTANCE.createOperationalActivity(NamingConstants.CreateOpAnalysisCmd_operationalActivity_root_name);
+    _rootOperationalActivity = OaFactory.eINSTANCE
+        .createOperationalActivity(NamingConstants.CreateOpAnalysisCmd_operationalActivity_root_name);
     activitiesPkg.getOwnedOperationalActivities().add(_rootOperationalActivity);
 
     // Builds the operational capabilities structure skeleton.
-    OperationalCapabilityPkg capabilitiesPkg =
-                                           OaFactory.eINSTANCE.createOperationalCapabilityPkg(NamingConstants.CreateOpAnalysisCmd_operationalCapabilities_pkg_name);
+    OperationalCapabilityPkg capabilitiesPkg = OaFactory.eINSTANCE
+        .createOperationalCapabilityPkg(NamingConstants.CreateOpAnalysisCmd_operationalCapabilities_pkg_name);
     _operationalAnalysis.setOwnedAbstractCapabilityPkg(capabilitiesPkg);
 
     // Builds the interfaces structure skeleton.
-    InterfacePkg interfacesPkg = CsFactory.eINSTANCE.createInterfacePkg(NamingConstants.CreateCommonCmd_interfaces_pkg_name);
+    InterfacePkg interfacesPkg = CsFactory.eINSTANCE
+        .createInterfacePkg(NamingConstants.CreateCommonCmd_interfaces_pkg_name);
     _operationalAnalysis.setOwnedInterfacePkg(interfacesPkg);
 
     // Builds the data structure skeleton.
@@ -83,11 +97,10 @@ public class CreateOpAnalysisCmd extends AbstractReadWriteCommand {
     _operationalAnalysis.setOwnedRolePkg(rolesPkg);
 
     // Builds the entities structure skeleton.
-    EntityPkg entitiesPkg = OaFactory.eINSTANCE.createEntityPkg(NamingConstants.CreateOpAnalysisCmd_operationalEntities_pkg_name);
+    EntityPkg entitiesPkg = OaFactory.eINSTANCE
+        .createEntityPkg(NamingConstants.CreateOpAnalysisCmd_operationalEntities_pkg_name);
     _operationalAnalysis.setOwnedEntityPkg(entitiesPkg);
 
-    // Attaches the element to its parent system engineering.
-    _systemEng.getOwnedArchitectures().add(_operationalAnalysis);
   }
 
   /**
@@ -100,6 +113,7 @@ public class CreateOpAnalysisCmd extends AbstractReadWriteCommand {
 
   /**
    * Gets the operational analysis structure skeleton.
+   * 
    * @return The operational analysis structure skeleton.
    */
   public OperationalAnalysis getOperationalAnalysis() {
@@ -108,6 +122,7 @@ public class CreateOpAnalysisCmd extends AbstractReadWriteCommand {
 
   /**
    * Gets the root operational activity.
+   * 
    * @return The root operational activity.
    */
   public OperationalActivity getRootOperationalActivity() {

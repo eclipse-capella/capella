@@ -36,10 +36,8 @@ public class EPBSArchitectureItemContribution implements IMDEMenuItemContributio
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
    */
   public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
-    if ((modelElement instanceof SystemEngineering)
-      && EpbsPackage.Literals.EPBS_ARCHITECTURE.equals(cls)
-      && CapellacorePackage.Literals.ABSTRACT_MODELLING_STRUCTURE__OWNED_ARCHITECTURES.equals(feature))
-    {
+    if ((modelElement instanceof SystemEngineering) && EpbsPackage.Literals.EPBS_ARCHITECTURE.equals(cls)
+        && CapellacorePackage.Literals.ABSTRACT_MODELLING_STRUCTURE__OWNED_ARCHITECTURES.equals(feature)) {
       return ((SystemEngineering) modelElement).getContainedEPBSArchitectures().isEmpty();
     }
     return false;
@@ -48,7 +46,8 @@ public class EPBSArchitectureItemContribution implements IMDEMenuItemContributio
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#executionContribution()
    */
-  public Command executionContribution(EditingDomain editingDomain, ModelElement containerElement, ModelElement createdElement, EStructuralFeature feature) {
+  public Command executionContribution(EditingDomain editingDomain, ModelElement containerElement,
+      ModelElement createdElement, EStructuralFeature feature) {
     if ((createdElement instanceof EPBSArchitecture) && (containerElement instanceof SystemEngineering)) {
       SystemEngineering engineering = (SystemEngineering) containerElement;
       PhysicalArchitecture architecture = SystemEngineeringExt.getPhysicalArchitecture(engineering);
@@ -56,7 +55,8 @@ public class EPBSArchitectureItemContribution implements IMDEMenuItemContributio
         @Override
         protected void doExecute() {
           new CreateEPBSArchiCmd(engineering, NamingConstants.CreateEPBSArchCmd_name, architecture,
-              (PhysicalComponent) BlockArchitectureExt.getFirstComponent(architecture, false)).run();
+              (PhysicalComponent) BlockArchitectureExt.getFirstComponent(architecture, false),
+              (EPBSArchitecture) createdElement).run();
         }
       };
     }

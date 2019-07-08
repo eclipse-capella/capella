@@ -16,14 +16,14 @@ import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
 
 /**
- * Return incoming physical links of current physical component and physical actor
+ * Return outgoing physical links of current physical component and physical actor
  */
-public class AbstractPhysicalComponentIncomingPhysicalLink extends AbsAbstractPhysicalComponentPhysicalLink {
+public class PhysicalComponent_OutgoingPhysicalLinks extends AbsAbstractPhysicalComponentPhysicalLink {
 
   /** 
-   * 
-   */
-  public AbstractPhysicalComponentIncomingPhysicalLink() {
+	   * 
+	   */
+  public PhysicalComponent_OutgoingPhysicalLinks() {
     // do nothing
   }
 
@@ -31,7 +31,7 @@ public class AbstractPhysicalComponentIncomingPhysicalLink extends AbsAbstractPh
   @Override
   public EObject getRequiredComponent(PhysicalLink physicalLink) {
     if (null != physicalLink) {
-      return PhysicalLinkExt.getTargetComponent(physicalLink);
+      return PhysicalLinkExt.getSourceComponent(physicalLink);
     }
 
     return null;

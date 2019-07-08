@@ -65,30 +65,48 @@ public class CreateCtxArchiCmd extends AbstractReadWriteCommand {
 
   /**
    * Constructs the command allowing to create the System Analysis structure skeleton.
-   * @param systemEng_p The system engineering.
-   * @param architectureName_p The architecture name.
-   * @param opAnalysis_p The operational analysis.
-   * @param opActivity_p The operational activity.
+   * 
+   * @param systemEng_p
+   *          The system engineering.
+   * @param architectureName_p
+   *          The architecture name.
+   * @param opAnalysis_p
+   *          The operational analysis.
+   * @param opActivity_p
+   *          The operational activity.
    */
-  public CreateCtxArchiCmd(SystemEngineering systemEng_p, String architectureName_p, OperationalAnalysis opAnalysis_p, OperationalActivity opActivity_p) {
+  public CreateCtxArchiCmd(SystemEngineering systemEng_p, String architectureName_p, OperationalAnalysis opAnalysis_p,
+      OperationalActivity opActivity_p) {
     _architectureName = architectureName_p;
     _opActivity = opActivity_p;
     _opAnalysis = opAnalysis_p;
     _systemEng = systemEng_p;
   }
 
+  public CreateCtxArchiCmd(SystemEngineering engineering, String createSysAnalysisCmd_name,
+      OperationalAnalysis architecture, OperationalActivity rootFunction, SystemAnalysis createdElement) {
+    this(engineering, createSysAnalysisCmd_name, architecture, rootFunction);
+    _SystemAnalysis = createdElement;
+  }
+
   /**
    * @see java.lang.Runnable#run()
    */
   public void run() {
-    // Builds the System Analysis root element.
-    _SystemAnalysis = CtxFactory.eINSTANCE.createSystemAnalysis(_architectureName);
+    if (_SystemAnalysis == null) {
+      // Builds the System Analysis root element.
+      _SystemAnalysis = CtxFactory.eINSTANCE.createSystemAnalysis();
+      _systemEng.getOwnedArchitectures().add(_SystemAnalysis);
+    }
+    _SystemAnalysis.setName(_architectureName);
 
     // Builds the system function structure skeleton.
-    SystemFunctionPkg systemFunctionPkg = CtxFactory.eINSTANCE.createSystemFunctionPkg(NamingConstants.CreateSysAnalysisCmd_system_functions_pkg_name);
+    SystemFunctionPkg systemFunctionPkg = CtxFactory.eINSTANCE
+        .createSystemFunctionPkg(NamingConstants.CreateSysAnalysisCmd_system_functions_pkg_name);
     _SystemAnalysis.setOwnedFunctionPkg(systemFunctionPkg);
 
-    _systemFunction = CtxFactory.eINSTANCE.createSystemFunction(NamingConstants.CreateSysAnalysisCmd_system_function_root_name);
+    _systemFunction = CtxFactory.eINSTANCE
+        .createSystemFunction(NamingConstants.CreateSysAnalysisCmd_system_function_root_name);
     systemFunctionPkg.getOwnedSystemFunctions().add(_systemFunction);
 
     if (null != _opActivity) {
@@ -99,15 +117,18 @@ public class CreateCtxArchiCmd extends AbstractReadWriteCommand {
     }
 
     // Builds the missions structure skeleton.
-    MissionPkg missionsPkg = CtxFactory.eINSTANCE.createMissionPkg(NamingConstants.CreateSysAnalysisCmd_missions_pkg_name);
+    MissionPkg missionsPkg = CtxFactory.eINSTANCE
+        .createMissionPkg(NamingConstants.CreateSysAnalysisCmd_missions_pkg_name);
     _SystemAnalysis.setOwnedMissionPkg(missionsPkg);
 
     // Builds the capabilities structure skeleton.
-    CapabilityPkg capabilitiesPkg = CtxFactory.eINSTANCE.createCapabilityPkg(NamingConstants.CreateSysAnalysisCmd_capabilities_pkg_name);
+    CapabilityPkg capabilitiesPkg = CtxFactory.eINSTANCE
+        .createCapabilityPkg(NamingConstants.CreateSysAnalysisCmd_capabilities_pkg_name);
     _SystemAnalysis.setOwnedAbstractCapabilityPkg(capabilitiesPkg);
 
     // Builds the interfaces structure skeleton.
-    InterfacePkg interfacesPkg = CsFactory.eINSTANCE.createInterfacePkg(NamingConstants.CreateCommonCmd_interfaces_pkg_name);
+    InterfacePkg interfacesPkg = CsFactory.eINSTANCE
+        .createInterfacePkg(NamingConstants.CreateCommonCmd_interfaces_pkg_name);
     _SystemAnalysis.setOwnedInterfacePkg(interfacesPkg);
 
     // Builds the data structure skeleton.
@@ -116,7 +137,8 @@ public class CreateCtxArchiCmd extends AbstractReadWriteCommand {
     _SystemAnalysis.setOwnedDataPkg(dataPkg);
 
     // Builds the actors structure skeleton.
-    SystemComponentPkg componentPkg = CtxFactory.eINSTANCE.createSystemComponentPkg(NamingConstants.CreateSysAnalysisCmd_actors_pkg_name);
+    SystemComponentPkg componentPkg = CtxFactory.eINSTANCE
+        .createSystemComponentPkg(NamingConstants.CreateSysAnalysisCmd_actors_pkg_name);
     _SystemAnalysis.setOwnedSystemComponentPkg(componentPkg);
 
     // Builds the system structure skeleton.
@@ -127,7 +149,8 @@ public class CreateCtxArchiCmd extends AbstractReadWriteCommand {
     componentPkg.getOwnedParts().add(systemPart);
     systemPart.setAbstractType(_system);
 
-    StateMachine stateMachine = CapellacommonFactory.eINSTANCE.createStateMachine(NamingConstants.CreateSysAnalysisCmd_system_statemachine_name);
+    StateMachine stateMachine = CapellacommonFactory.eINSTANCE
+        .createStateMachine(NamingConstants.CreateSysAnalysisCmd_system_statemachine_name);
     _system.getOwnedStateMachines().add(stateMachine);
 
     Region region = CapellacommonFactory.eINSTANCE.createRegion(NamingConstants.Region_DefaultRegion);
@@ -142,12 +165,11 @@ public class CreateCtxArchiCmd extends AbstractReadWriteCommand {
       _opAnalysisRealisation.setTargetElement(_opAnalysis);
     }
 
-    // Attaches the System Analysis to its parent system engineering.
-    _systemEng.getOwnedArchitectures().add(_SystemAnalysis);
   }
 
   /**
    * Gets the System Analysis structure skeleton.
+   * 
    * @return The System Analysis skeleton.
    */
   public SystemAnalysis getSystemAnalysis() {
@@ -156,6 +178,7 @@ public class CreateCtxArchiCmd extends AbstractReadWriteCommand {
 
   /**
    * Gets the system function.
+   * 
    * @return The system function.
    */
   public SystemFunction getSystemFunction() {
@@ -164,6 +187,7 @@ public class CreateCtxArchiCmd extends AbstractReadWriteCommand {
 
   /**
    * Gets the system.
+   * 
    * @return the system.
    */
   public SystemComponent getSystem() {
@@ -172,6 +196,7 @@ public class CreateCtxArchiCmd extends AbstractReadWriteCommand {
 
   /**
    * Gets the function realization.
+   * 
    * @return The function realization.
    */
   public FunctionRealization getFunctionRealization() {
@@ -180,6 +205,7 @@ public class CreateCtxArchiCmd extends AbstractReadWriteCommand {
 
   /**
    * Gets the operational analysis realization.
+   * 
    * @return The operational analysis realization.
    */
   public OperationalAnalysisRealization getOpAnalysisRealization() {

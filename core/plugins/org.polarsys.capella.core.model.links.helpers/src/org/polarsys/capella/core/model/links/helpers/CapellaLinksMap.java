@@ -84,21 +84,13 @@ public class CapellaLinksMap {
       addMapping(OaPackage.Literals.ENTITY, OaPackage.Literals.OPERATIONAL_ACTIVITY, FaPackage.Literals.COMPONENT_FUNCTIONAL_ALLOCATION,
           FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_FUNCTIONAL_ALLOCATION);
       // SA
-      addMapping(CtxPackage.Literals.ACTOR, CtxPackage.Literals.SYSTEM_FUNCTION, FaPackage.Literals.COMPONENT_FUNCTIONAL_ALLOCATION,
-          FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_FUNCTIONAL_ALLOCATION);
-      addMapping(CtxPackage.Literals.SYSTEM, CtxPackage.Literals.SYSTEM_FUNCTION, FaPackage.Literals.COMPONENT_FUNCTIONAL_ALLOCATION,
+      addMapping(CtxPackage.Literals.SYSTEM_COMPONENT, CtxPackage.Literals.SYSTEM_FUNCTION, FaPackage.Literals.COMPONENT_FUNCTIONAL_ALLOCATION,
           FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_FUNCTIONAL_ALLOCATION);
       // LA
-      addMapping(LaPackage.Literals.LOGICAL_ACTOR, LaPackage.Literals.LOGICAL_FUNCTION, FaPackage.Literals.COMPONENT_FUNCTIONAL_ALLOCATION,
-          FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_FUNCTIONAL_ALLOCATION);
       addMapping(LaPackage.Literals.LOGICAL_COMPONENT, LaPackage.Literals.LOGICAL_FUNCTION, FaPackage.Literals.COMPONENT_FUNCTIONAL_ALLOCATION,
           FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_FUNCTIONAL_ALLOCATION);
       // PA
-      addMapping(PaPackage.Literals.PHYSICAL_ACTOR, PaPackage.Literals.PHYSICAL_FUNCTION, FaPackage.Literals.COMPONENT_FUNCTIONAL_ALLOCATION,
-          FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_FUNCTIONAL_ALLOCATION);
       addMapping(PaPackage.Literals.PHYSICAL_COMPONENT, PaPackage.Literals.PHYSICAL_FUNCTION, FaPackage.Literals.COMPONENT_FUNCTIONAL_ALLOCATION,
-          FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_FUNCTIONAL_ALLOCATION);
-      addMapping(PaPackage.Literals.PHYSICAL_NODE, PaPackage.Literals.PHYSICAL_FUNCTION, FaPackage.Literals.COMPONENT_FUNCTIONAL_ALLOCATION,
           FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_FUNCTIONAL_ALLOCATION);
 
       // Exchange item allocation.

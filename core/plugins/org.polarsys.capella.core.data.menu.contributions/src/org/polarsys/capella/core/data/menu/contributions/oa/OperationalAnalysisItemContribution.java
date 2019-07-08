@@ -52,7 +52,7 @@ public class OperationalAnalysisItemContribution implements IMDEMenuItemContribu
       return new RecordingCommand((TransactionalEditingDomain) editingDomain) {
         @Override
         protected void doExecute() {
-          new CreateOpAnalysisCmd(engineering, NamingConstants.CreateOpAnalysisCmd_name).run();
+          new CreateOpAnalysisCmd(engineering, NamingConstants.CreateOpAnalysisCmd_name, (OperationalAnalysis)createdElement).run();
         }
       };
     }

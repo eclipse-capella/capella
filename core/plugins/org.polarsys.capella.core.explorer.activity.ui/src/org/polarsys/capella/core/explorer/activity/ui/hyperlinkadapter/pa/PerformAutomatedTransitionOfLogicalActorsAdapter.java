@@ -46,7 +46,7 @@ public class PerformAutomatedTransitionOfLogicalActorsAdapter extends AbstractCa
   @Override
   protected ModelElement getModelElement(EObject rootSemanticModel) {
     if (rootSemanticModel instanceof Project) {
-      return ModelQueryHelper.getLogicalActorPkg((Project) rootSemanticModel);
+      return ModelQueryHelper.getLogicalComponentPkg((Project) rootSemanticModel);
     }
     return null;
   }

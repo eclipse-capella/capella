@@ -46,7 +46,7 @@ public class PerformAutomatedTransitionOfSystemActorsAdapter extends AbstractCap
   @Override
   protected ModelElement getModelElement(EObject rootSemanticModel) {
     if (rootSemanticModel instanceof Project) {
-      return ModelQueryHelper.getSystemActorPkg((Project) rootSemanticModel);
+      return ModelQueryHelper.getSystemComponentPkg((Project) rootSemanticModel);
     }
     return null;
   }

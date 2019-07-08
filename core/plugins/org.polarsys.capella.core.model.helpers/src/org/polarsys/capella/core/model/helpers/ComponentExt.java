@@ -1820,6 +1820,19 @@ public class ComponentExt {
   }
 
   /**
+   * Returns whether the given component is considered as an actor
+   */
+  public static boolean isActor(Object object) {
+    Object component = object;
+    if (object instanceof Part) {
+      component = ((Part) object).getAbstractType();
+    }
+    if (component instanceof Component && ((Component) component).isActor()) {
+      return true;
+    }
+    return false;
+  }
+  /**
    * Returns whether component used or require the exchange item by related interfaces
    */
   public static boolean isAnImplementedOrProvidedExchangeItem(Component component, AbstractExchangeItem exchangeItem) {

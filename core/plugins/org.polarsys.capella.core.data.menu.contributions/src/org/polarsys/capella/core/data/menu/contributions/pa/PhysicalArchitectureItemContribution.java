@@ -57,7 +57,8 @@ public class PhysicalArchitectureItemContribution implements IMDEMenuItemContrib
         protected void doExecute() {
           new CreatePhysicalArchiCmd(engineering, NamingConstants.CreatePhysicalArchCmd_name, architecture,
               (LogicalComponent) BlockArchitectureExt.getFirstComponent(architecture, false),
-              (LogicalFunction) BlockArchitectureExt.getRootFunction(architecture, false)).run();
+              (LogicalFunction) BlockArchitectureExt.getRootFunction(architecture, false),
+              (PhysicalArchitecture) createdElement).run();
         }
       };
     }

@@ -15,43 +15,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 
-import org.polarsys.capella.common.helpers.EcoreUtil2;
-import org.polarsys.capella.core.data.cs.SystemComponent;
-import org.polarsys.capella.core.data.information.Partition;
-import org.polarsys.capella.core.data.la.LaPackage;
-import org.polarsys.capella.core.data.la.LogicalComponent;
+import org.polarsys.capella.core.data.ctx.Capability;
+import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.common.helpers.query.IQuery;
 
 /**
- *
+ * Return realized Capability
  */
-public class SystemComponent_referencingComponent implements IQuery {
+public class CapabilityRealization_RealizedCapability implements IQuery {
 
   /**
-   * 
-   */
-  public SystemComponent_referencingComponent() {
-    // do nothing
-  }
-
-  /**
-   * 
-   * representingPartitions.ownerElement
-   * 
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
   public List<Object> compute(Object object) {
     List<Object> result = new ArrayList<Object>();
-    if (object instanceof SystemComponent) {
-      SystemComponent lc = (SystemComponent) object;
-      EList<Partition> parts = lc.getRepresentingPartitions();
-      for (Partition part : parts) {
-        EObject res = EcoreUtil2.getFirstContainer(part, LaPackage.Literals.LOGICAL_COMPONENT);
-        if ((res != null) && (res instanceof LogicalComponent)) {
-          result.add(res);
-        }
+    if (object instanceof CapabilityRealization) {
+      CapabilityRealization capa = (CapabilityRealization) object;
+      EList<Capability> rc = capa.getRealizedCapabilities();
+      if (!rc.isEmpty()) {
+        result.addAll(rc);
       }
     }
     return result;

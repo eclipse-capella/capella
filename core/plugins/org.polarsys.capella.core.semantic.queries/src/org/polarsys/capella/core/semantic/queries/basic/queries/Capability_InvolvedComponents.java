@@ -13,24 +13,20 @@ package org.polarsys.capella.core.semantic.queries.basic.queries;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement;
-import org.polarsys.capella.core.data.ctx.Actor;
-import org.polarsys.capella.core.data.ctx.ActorCapabilityInvolvement;
+import org.polarsys.capella.common.helpers.query.IQuery;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
-import org.polarsys.capella.core.data.capellacore.InvolvedElement;
-import org.polarsys.capella.common.helpers.query.IQuery;
 
 /**
  * Return Involved Actor of current AbstractCapability
  */
-public class Capability_participatingActors implements IQuery {
+public class Capability_InvolvedComponents implements IQuery {
 
   /**
    * 
    */
-  public Capability_participatingActors() {
+  public Capability_InvolvedComponents() {
     // do nothing
   }
 
@@ -43,22 +39,12 @@ public class Capability_participatingActors implements IQuery {
     if (object instanceof AbstractCapability) {
       if (object instanceof Capability) {
         Capability cap = (Capability) object;
-        for (ActorCapabilityInvolvement involment : cap.getInvolvedActors()) {
-          Actor actor = involment.getActor();
-          if (null != actor) {
-            result.add(actor);
-          }
-        }
-      } else if (object instanceof CapabilityRealization) {
-        CapabilityRealization capReal = (CapabilityRealization) object;
-        for (ActorCapabilityRealizationInvolvement involment : capReal.getInvolvedActors()) {
-          InvolvedElement involved = involment.getInvolved();
-          if (null != involved && involved instanceof Actor) {
-            result.add(involved);
-          }
-        }
-      }
+        result.addAll(cap.getInvolvedSystemComponents());
 
+      } else if (object instanceof CapabilityRealization) {
+        CapabilityRealization cap = (CapabilityRealization) object;
+        result.addAll(cap.getInvolvedComponents());
+      }
     }
     return result;
   }

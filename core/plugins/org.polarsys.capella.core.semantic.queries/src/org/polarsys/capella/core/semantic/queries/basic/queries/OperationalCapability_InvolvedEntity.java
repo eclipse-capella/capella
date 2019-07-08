@@ -17,35 +17,28 @@ import java.util.List;
 import org.eclipse.emf.common.util.EList;
 
 import org.polarsys.capella.core.data.oa.Entity;
-import org.polarsys.capella.core.data.oa.Role;
-import org.polarsys.capella.core.data.oa.RoleAllocation;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.core.data.oa.EntityOperationalCapabilityInvolvement;
+import org.polarsys.capella.core.data.oa.OperationalCapability;
 import org.polarsys.capella.common.helpers.query.IQuery;
 
 /**
- * Returns Allocating Entities of current Role
+ * Return Involved Entities of current Operational Capability
+ *
  */
-public class RoleAllocatingOperationalEntity implements IQuery {
+public class OperationalCapability_InvolvedEntity implements IQuery {
 
-  public RoleAllocatingOperationalEntity() {
-    // does nothing
-  }
-
-  /**
+  /** 
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
   public List<Object> compute(Object object) {
     List<Object> result = new ArrayList<Object>();
-    if (object instanceof Role) {
-      Role e = (Role) object;
-      EList<AbstractTrace> traces = e.getIncomingTraces();
-      for (AbstractTrace abstractTrace : traces) {
-        if (abstractTrace instanceof RoleAllocation) {
-          RoleAllocation link = (RoleAllocation) abstractTrace;
-          Entity element = link.getEntity();
-          if (null != element) {
-            result.add(element);
-          }
+    if (object instanceof OperationalCapability) {
+      OperationalCapability capa = (OperationalCapability) object;
+      EList<EntityOperationalCapabilityInvolvement> involves = capa.getOwnedEntityOperationalCapabilityInvolvements(); 
+      for (EntityOperationalCapabilityInvolvement involve : involves) {
+        Entity entity = involve.getEntity();
+        if (null != entity) {
+          result.add(entity);
         }
       }
     }

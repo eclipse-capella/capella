@@ -107,7 +107,7 @@ public class DiagramBusinessHelper {
         if (isLab(diagram)) {
           // In a LAB, new elements in the diagram background are stored in the
           // root Logical Component
-          EObject rootLc = getLogicalArchitecture(diagram.getTarget()).getOwnedLogicalComponent();
+          EObject rootLc = getLogicalArchitecture(diagram.getTarget()).getSystem();
           if (null != rootLc) result = rootLc;
         } else {
           // The diagram's target is represented within the diagram:

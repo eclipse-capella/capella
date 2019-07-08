@@ -60,14 +60,20 @@ public class CreateLogicalArchiCmd extends AbstractReadWriteCommand {
 
   /**
    * Constructs the command allowing to create the logical architecture structure skeleton.
-   * @param systemEng_p The parent system engineering.
-   * @param architectureName_p The architecture name.
-   * @param ctxArchitecture_p The System Analysis.
-   * @param systemFunction_p The system function.
-   * @param system_p The system.
+   * 
+   * @param systemEng_p
+   *          The parent system engineering.
+   * @param architectureName_p
+   *          The architecture name.
+   * @param ctxArchitecture_p
+   *          The System Analysis.
+   * @param systemFunction_p
+   *          The system function.
+   * @param system_p
+   *          The system.
    */
-  public CreateLogicalArchiCmd(SystemEngineering systemEng_p, String architectureName_p, SystemAnalysis ctxArchitecture_p,
-      SystemFunction systemFunction_p, SystemComponent system_p) {
+  public CreateLogicalArchiCmd(SystemEngineering systemEng_p, String architectureName_p,
+      SystemAnalysis ctxArchitecture_p, SystemFunction systemFunction_p, SystemComponent system_p) {
     _architectureName = architectureName_p;
 
     _ctxArchitecture = ctxArchitecture_p;
@@ -76,29 +82,43 @@ public class CreateLogicalArchiCmd extends AbstractReadWriteCommand {
     _systemEng = systemEng_p;
   }
 
+  public CreateLogicalArchiCmd(SystemEngineering systemEng_p, String architectureName_p,
+      SystemAnalysis ctxArchitecture_p, SystemFunction systemFunction_p, SystemComponent system_p,
+      LogicalArchitecture createdElement) {
+    this(systemEng_p, architectureName_p, ctxArchitecture_p, systemFunction_p, system_p);
+    _logicalArchitecture = createdElement;
+  }
+
   /**
    * @see java.lang.Runnable#run()
    */
   public void run() {
-    // Builds the logical architecture root element.
-    _logicalArchitecture = LaFactory.eINSTANCE.createLogicalArchitecture(_architectureName);
+    if (_logicalArchitecture == null) {
+      // Builds the logical architecture root element.
+      _logicalArchitecture = LaFactory.eINSTANCE.createLogicalArchitecture();
+      _systemEng.getOwnedArchitectures().add(_logicalArchitecture);
+    }
+    _logicalArchitecture.setName(_architectureName);
 
     // Builds the logical functions structure skeleton.
-    LogicalFunctionPkg logicalFunctionPkg = LaFactory.eINSTANCE.createLogicalFunctionPkg(NamingConstants.CreateLogicalArchCmd_logicalFunctions_pkg_name);
+    LogicalFunctionPkg logicalFunctionPkg = LaFactory.eINSTANCE
+        .createLogicalFunctionPkg(NamingConstants.CreateLogicalArchCmd_logicalFunctions_pkg_name);
     _logicalArchitecture.setOwnedFunctionPkg(logicalFunctionPkg);
 
-    _logicalFunction = LaFactory.eINSTANCE.createLogicalFunction(NamingConstants.CreateLogicalArchCmd_logicalFunction_root_name);
+    _logicalFunction = LaFactory.eINSTANCE
+        .createLogicalFunction(NamingConstants.CreateLogicalArchCmd_logicalFunction_root_name);
     logicalFunctionPkg.getOwnedLogicalFunctions().add(_logicalFunction);
 
-    FunctionRealization functionRealisation = FaFactory.eINSTANCE.createFunctionRealization();
-    _logicalFunction.getOwnedFunctionRealizations().add(functionRealisation);
-    functionRealisation.setSourceElement(_logicalFunction);
     if (null != _systemFunction) {
+      FunctionRealization functionRealisation = FaFactory.eINSTANCE.createFunctionRealization();
+      _logicalFunction.getOwnedFunctionRealizations().add(functionRealisation);
+      functionRealisation.setSourceElement(_logicalFunction);
       functionRealisation.setTargetElement(_systemFunction);
     }
 
     // Builds the interfaces structure skeleton.
-    InterfacePkg interfacesPkg = CsFactory.eINSTANCE.createInterfacePkg(NamingConstants.CreateCommonCmd_interfaces_pkg_name);
+    InterfacePkg interfacesPkg = CsFactory.eINSTANCE
+        .createInterfacePkg(NamingConstants.CreateCommonCmd_interfaces_pkg_name);
     _logicalArchitecture.setOwnedInterfacePkg(interfacesPkg);
 
     // Builds the data structure skeleton.
@@ -106,44 +126,44 @@ public class CreateLogicalArchiCmd extends AbstractReadWriteCommand {
     _logicalArchitecture.setOwnedDataPkg(dataPkg);
 
     // Builds the logical actors structure skeleton.
-    LogicalComponentPkg logicalComponentsPkg = LaFactory.eINSTANCE.createLogicalComponentPkg(NamingConstants.CreateLogicalArchCmd_actors_pkg_name);
+    LogicalComponentPkg logicalComponentsPkg = LaFactory.eINSTANCE
+        .createLogicalComponentPkg(NamingConstants.CreateLogicalArchCmd_actors_pkg_name);
     _logicalArchitecture.setOwnedLogicalComponentPkg(logicalComponentsPkg);
 
     // Builds the logical components structure skeleton.
-    _rootComponent = LaFactory.eINSTANCE.createLogicalComponent(NamingConstants.CreateLogicalArchCmd_logicalComponent_name);
+    _rootComponent = LaFactory.eINSTANCE
+        .createLogicalComponent(NamingConstants.CreateLogicalArchCmd_logicalComponent_name);
     logicalComponentsPkg.getOwnedLogicalComponents().add(_rootComponent);
 
     Part logicalRootPart = CsFactory.eINSTANCE.createPart(_rootComponent.getName());
     logicalComponentsPkg.getOwnedParts().add(logicalRootPart);
     logicalRootPart.setAbstractType(_rootComponent);
 
-    ComponentRealization systemRealisation = CsFactory.eINSTANCE.createComponentRealization();
-    _rootComponent.getOwnedComponentRealizations().add(systemRealisation);
-    systemRealisation.setSourceElement(_rootComponent);
     if (null != _system) {
+      ComponentRealization systemRealisation = CsFactory.eINSTANCE.createComponentRealization();
+      _rootComponent.getOwnedComponentRealizations().add(systemRealisation);
+      systemRealisation.setSourceElement(_rootComponent);
       systemRealisation.setTargetElement(_system);
     }
 
     // Links the System Analysis to the current logical architecture.
-    SystemAnalysisRealization ctxArchitectureRealisation = LaFactory.eINSTANCE.createSystemAnalysisRealization();
-    _logicalArchitecture.getOwnedSystemAnalysisRealizations().add(ctxArchitectureRealisation);
-    ctxArchitectureRealisation.setSourceElement(_logicalArchitecture);
     if (null != _ctxArchitecture) {
+      SystemAnalysisRealization ctxArchitectureRealisation = LaFactory.eINSTANCE.createSystemAnalysisRealization();
+      _logicalArchitecture.getOwnedSystemAnalysisRealizations().add(ctxArchitectureRealisation);
+      ctxArchitectureRealisation.setSourceElement(_logicalArchitecture);
       ctxArchitectureRealisation.setTargetElement(_ctxArchitecture);
     }
 
-
     // Builds the capabilities realizations structure skeleton.
-    CapabilityRealizationPkg capaRealisationPkg =
-        LaFactory.eINSTANCE.createCapabilityRealizationPkg(NamingConstants.CreateCommonCmd_capability_realisation_pkg_name);
+    CapabilityRealizationPkg capaRealisationPkg = LaFactory.eINSTANCE
+        .createCapabilityRealizationPkg(NamingConstants.CreateCommonCmd_capability_realisation_pkg_name);
     _logicalArchitecture.setOwnedAbstractCapabilityPkg(capaRealisationPkg);
 
-    // Attaches the logical architecture to its parent system engineering.
-    _systemEng.getOwnedArchitectures().add(_logicalArchitecture);
   }
 
   /**
    * Gets the logical architecture.
+   * 
    * @return The logical architecture.
    */
   public LogicalArchitecture getLogicalArchitecture() {
@@ -152,6 +172,7 @@ public class CreateLogicalArchiCmd extends AbstractReadWriteCommand {
 
   /**
    * Gets the logical function.
+   * 
    * @return The logical function.
    */
   public LogicalFunction getLogicalFunction() {
@@ -160,6 +181,7 @@ public class CreateLogicalArchiCmd extends AbstractReadWriteCommand {
 
   /**
    * Gets the logical component.
+   * 
    * @return The logical component.
    */
   public LogicalComponent getLogicalComponent() {

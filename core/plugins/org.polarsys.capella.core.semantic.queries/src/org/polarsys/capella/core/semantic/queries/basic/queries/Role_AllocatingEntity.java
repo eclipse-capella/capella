@@ -16,24 +16,37 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.polarsys.capella.core.data.la.CapabilityRealization;
+import org.polarsys.capella.core.data.oa.Entity;
+import org.polarsys.capella.core.data.oa.Role;
+import org.polarsys.capella.core.data.oa.RoleAllocation;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.helpers.query.IQuery;
 
 /**
- * Return realizing CR
+ * Returns Allocating Entities of current Role
  */
-public class CRRealizingCR implements IQuery {
+public class Role_AllocatingEntity implements IQuery {
+
+  public Role_AllocatingEntity() {
+    // does nothing
+  }
 
   /**
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
   public List<Object> compute(Object object) {
     List<Object> result = new ArrayList<Object>();
-    if (object instanceof CapabilityRealization) {
-      CapabilityRealization capa = (CapabilityRealization) object;
-      EList<CapabilityRealization> rcr = capa.getRealizingCapabilityRealizations();
-      if (!rcr.isEmpty()) {
-        result.addAll(rcr);
+    if (object instanceof Role) {
+      Role e = (Role) object;
+      EList<AbstractTrace> traces = e.getIncomingTraces();
+      for (AbstractTrace abstractTrace : traces) {
+        if (abstractTrace instanceof RoleAllocation) {
+          RoleAllocation link = (RoleAllocation) abstractTrace;
+          Entity element = link.getEntity();
+          if (null != element) {
+            result.add(element);
+          }
+        }
       }
     }
     return result;

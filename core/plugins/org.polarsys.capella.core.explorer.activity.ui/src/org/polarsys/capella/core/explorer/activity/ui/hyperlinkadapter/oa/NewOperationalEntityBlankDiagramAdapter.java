@@ -13,7 +13,9 @@ package org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.oa;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.AbstractCapellaNewDiagramHyperlinkAdapter;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ModelQueryHelper;
+import org.polarsys.capella.core.model.helpers.ProjectExt;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 
 /**
@@ -22,18 +24,18 @@ import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 public class NewOperationalEntityBlankDiagramAdapter extends AbstractCapellaNewDiagramHyperlinkAdapter {
 
 
-	public NewOperationalEntityBlankDiagramAdapter() {
-		super();
-	}
+  public NewOperationalEntityBlankDiagramAdapter() {
+    super();
+  }
 
-	@Override
-	public String getRepresentationName() {
-		return IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME;
-	}
+  @Override
+  public String getRepresentationName() {
+    return IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME;
+  }
 
-	@Override
-	protected EObject getModelElement(EObject rootSemanticModel) {
-		return ModelQueryHelper.getOperationalContext((Project) rootSemanticModel);
-	}
+  @Override
+  protected EObject getModelElement(EObject rootSemanticModel) {
+    return BlockArchitectureExt.getComponentPkg(ModelQueryHelper.getOperationalAnalysis(ProjectExt.getProject(rootSemanticModel)), true);
+  }
 
 }

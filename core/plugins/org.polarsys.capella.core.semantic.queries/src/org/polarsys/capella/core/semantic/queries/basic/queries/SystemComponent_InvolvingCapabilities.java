@@ -13,38 +13,33 @@ package org.polarsys.capella.core.semantic.queries.basic.queries;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.common.util.EList;
-
-import org.polarsys.capella.core.data.ctx.Actor;
-import org.polarsys.capella.core.data.ctx.Mission;
 import org.polarsys.capella.common.helpers.query.IQuery;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 
 /**
  *
  */
-public class Actor_contributedMissions implements IQuery {
+public class SystemComponent_InvolvingCapabilities implements IQuery {
 
-	/**
-	 * 
-	 */
-	public Actor_contributedMissions() {
+  /**
+   * 
+   */
+  public SystemComponent_InvolvingCapabilities() {
     // do nothing
-	}
+  }
 
-	/** 
-	 *  
-	 * current.contributedMissions
-	 * 
-	 * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
-	 */
-	public List<Object> compute(Object object) {
-		List<Object> result = new ArrayList<Object>();
-		if (object instanceof Actor) {
-			Actor c = (Actor) object;
-			EList<Mission> contributedMissions = c.getContributedMissions();
-			if(!contributedMissions.isEmpty())
-				result.addAll(contributedMissions);
-		}
-		return result;
-	}
+  /**
+   * 
+   * current.contributedCapabilities
+   * 
+   * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
+   */
+  public List<Object> compute(Object object) {
+    List<Object> result = new ArrayList<Object>();
+    if (object instanceof SystemComponent) {
+      SystemComponent c = (SystemComponent) object;
+      result.addAll(c.getInvolvingCapabilities());
+    }
+    return result;
+  }
 }

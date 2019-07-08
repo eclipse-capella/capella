@@ -14,39 +14,34 @@ package org.polarsys.capella.core.semantic.queries.basic.queries;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.common.util.EList;
-
-import org.polarsys.capella.core.data.ctx.CapabilityExploitation;
-import org.polarsys.capella.core.data.ctx.Mission;
 import org.polarsys.capella.common.helpers.query.IQuery;
+import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 
 /**
  *
  */
-public class Mission_exploitedCapabilities implements IQuery {
+public class Component_componentBreakdown implements IQuery {
 
 	/**
 	 * 
 	 */
-	public Mission_exploitedCapabilities() {
-    // do nothing
+	public Component_componentBreakdown() {
+	  // do nothing
 	}
 
-	/** 
-	 *  
-	 * current.ownedCapabilityExploitations.capability
+	/**
+	 * 
+	 * ownedPartitions: ownedPartitions.representedElement
 	 * 
 	 * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
 	 */
 	public List<Object> compute(Object object) {
 		List<Object> result = new ArrayList<Object>();
-		if (object instanceof Mission) {
-			Mission m = (Mission) object;
-			EList<CapabilityExploitation> ce = m.getOwnedCapabilityExploitations();
-			for (CapabilityExploitation capabilityExploitation : ce) {
-				result.add(capabilityExploitation.getCapability());
-			}
+		if (object instanceof Component) {
+      result.addAll(ComponentExt.getSubUsedComponents((Component) object));
 		}
 		return result;
 	}
+
 }

@@ -27,7 +27,6 @@ import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentContext;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.Part;
@@ -64,7 +63,7 @@ public class ContextualDiagramHelper {
   public static ContextualDiagramHelper instance;
 
   protected ContextualDiagramHelper() {
-    //Nothing here
+    // Nothing here
   }
 
   public static ContextualDiagramHelper getService() {
@@ -73,11 +72,12 @@ public class ContextualDiagramHelper {
     }
     return instance;
   }
-  
+
   /**
    * Retrieve whether the representation can be a contextualizedElements based diagram.
+   * 
    * @param representation
-   * @return 
+   * @return
    */
   public boolean isContextualRepresentation(DRepresentationDescriptor representation) {
     if (representation instanceof DRepresentationDescriptor) {
@@ -85,10 +85,10 @@ public class ContextualDiagramHelper {
       if (description != null) {
         if (description.getName() != null) {
           return description.getName().endsWith(DiagramDescriptionConstants.INTERACTION_BLANK_DIAGRAM_NAME)
-                 || description.getName().endsWith(DiagramDescriptionConstants.ARCHITECTURE_BLANK_DIAGRAM_NAME)
-                 || description.getName().endsWith(DiagramDescriptionConstants.ENTITY_BLANK_DIAGRAM_NAME)
-                 || description.getName().endsWith(DiagramDescriptionConstants.DATA_FLOW_BLANK_DIAGRAM_NAME)
-                 || description.getName().endsWith(DiagramDescriptionConstants.CLASS_BLANK_DIAGRAM_NAME);
+              || description.getName().endsWith(DiagramDescriptionConstants.ARCHITECTURE_BLANK_DIAGRAM_NAME)
+              || description.getName().endsWith(DiagramDescriptionConstants.ENTITY_BLANK_DIAGRAM_NAME)
+              || description.getName().endsWith(DiagramDescriptionConstants.DATA_FLOW_BLANK_DIAGRAM_NAME)
+              || description.getName().endsWith(DiagramDescriptionConstants.CLASS_BLANK_DIAGRAM_NAME);
         }
       }
     }
@@ -96,7 +96,8 @@ public class ContextualDiagramHelper {
   }
 
   public boolean hasContextualElements(DRepresentationDescriptor representation) {
-    DAnnotation annotation = DAnnotationHelper.getAnnotation(IRepresentationAnnotationConstants.ContextualElements, representation, false);
+    DAnnotation annotation = DAnnotationHelper.getAnnotation(IRepresentationAnnotationConstants.ContextualElements,
+        representation, false);
     if (annotation != null) {
       return (annotation.getReferences() != null) && !annotation.getReferences().isEmpty();
     }
@@ -105,13 +106,15 @@ public class ContextualDiagramHelper {
 
   /**
    * Retrieve contextualElements according to the string-based annotation of the given representation
+   * 
    * @param representation
    * @param elements
    */
   public List<EObject> getContextualElements(DRepresentationDescriptor representation) {
     ArrayList<EObject> result = new ArrayList<EObject>();
     if (representation != null) {
-      DAnnotation annotation = DAnnotationHelper.getAnnotation(IRepresentationAnnotationConstants.ContextualElements, representation, false);
+      DAnnotation annotation = DAnnotationHelper.getAnnotation(IRepresentationAnnotationConstants.ContextualElements,
+          representation, false);
       if (annotation != null) {
         return new ArrayList<EObject>(annotation.getReferences());
       }
@@ -121,6 +124,7 @@ public class ContextualDiagramHelper {
 
   /**
    * Set the contextualElement string-based annotation of the given representation for given elements
+   * 
    * @param representation
    * @param elements
    */
@@ -130,7 +134,8 @@ public class ContextualDiagramHelper {
         DAnnotationHelper.deleteAnnotation(IRepresentationAnnotationConstants.ContextualElements, representation);
 
       } else {
-        DAnnotation annotation = DAnnotationHelper.getAnnotation(IRepresentationAnnotationConstants.ContextualElements, representation, true);
+        DAnnotation annotation = DAnnotationHelper.getAnnotation(IRepresentationAnnotationConstants.ContextualElements,
+            representation, true);
         annotation.getReferences().clear();
         annotation.getReferences().addAll(elements);
       }
@@ -150,11 +155,12 @@ public class ContextualDiagramHelper {
       }
 
       String name = representation.getDescription().getName();
-      if (name.endsWith(DiagramDescriptionConstants.ARCHITECTURE_BLANK_DIAGRAM_NAME) || name.endsWith(DiagramDescriptionConstants.ENTITY_BLANK_DIAGRAM_NAME)) {
+      if (name.endsWith(DiagramDescriptionConstants.ARCHITECTURE_BLANK_DIAGRAM_NAME)
+          || name.endsWith(DiagramDescriptionConstants.ENTITY_BLANK_DIAGRAM_NAME)) {
         return getABAvailableContextualElements(representation);
 
       } else if (name.endsWith(DiagramDescriptionConstants.DATA_FLOW_BLANK_DIAGRAM_NAME)
-                 || name.endsWith(DiagramDescriptionConstants.INTERACTION_BLANK_DIAGRAM_NAME)) {
+          || name.endsWith(DiagramDescriptionConstants.INTERACTION_BLANK_DIAGRAM_NAME)) {
         return getDFAvailableContextualElements(representation);
 
       } else if (name.endsWith(DiagramDescriptionConstants.CLASS_BLANK_DIAGRAM_NAME)) {
@@ -172,10 +178,11 @@ public class ContextualDiagramHelper {
     Collection<EObject> result = new HashSet<EObject>();
     EObject target = diagram.getTarget();
 
-    BlockArchitecture architecture = (BlockArchitecture) EcoreUtil2.getFirstContainer(target, CsPackage.Literals.BLOCK_ARCHITECTURE);
+    BlockArchitecture architecture = (BlockArchitecture) EcoreUtil2.getFirstContainer(target,
+        CsPackage.Literals.BLOCK_ARCHITECTURE);
     if (architecture != null) {
 
-      //Retrieve all functional chains and available state/modes
+      // Retrieve all functional chains and available state/modes
       FunctionPkg fpkg = BlockArchitectureExt.getFunctionPkg(architecture, false);
       if (fpkg != null) {
         for (AbstractFunction function : FunctionPkgExt.getAllAbstractFunctions(fpkg)) {
@@ -186,29 +193,26 @@ public class ContextualDiagramHelper {
 
       AbstractCapabilityPkg cpkg = BlockArchitectureExt.getAbstractCapabilityPkg(architecture);
       if (cpkg != null) {
-        //Retrieve all functional chains
+        // Retrieve all functional chains
         for (AbstractCapability capability : AbstractCapabilityPkgExt.getAllAbstractCapabilities(cpkg)) {
           result.addAll(capability.getOwnedFunctionalChains());
         }
-        //Retrieve all ab scenarios
+        // Retrieve all ab scenarios
         for (Scenario scenario : AbstractCapabilityPkgExt.getAllScenarios(cpkg)) {
           if (isABContextualScenario(scenario, architecture)) {
             result.add(scenario);
           }
         }
 
-        //Retrieve all components and actors (parts if multiparts)
+        // Retrieve all components and actors (parts if multiparts)
         boolean multiPart = TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(architecture));
         boolean isOA = (CapellaLayerCheckingExt.isAOrInOperationalAnalysisLayer(architecture));
 
         for (Component component : BlockArchitectureExt.getAllComponents(architecture)) {
-          boolean valid = !(component instanceof ComponentContext);
-          if (valid) {
-            if (multiPart && !isOA) {
-              result.addAll(getCache(ComponentExt::getRepresentingParts, component));
-            } else {
-              result.add(component);
-            }
+          if (multiPart && !isOA) {
+            result.addAll(getCache(ComponentExt::getRepresentingParts, component));
+          } else {
+            result.add(component);
           }
         }
       }
@@ -268,10 +272,11 @@ public class ContextualDiagramHelper {
     Collection<EObject> result = new HashSet<EObject>();
     EObject target = diagram.getTarget();
 
-    BlockArchitecture architecture = (BlockArchitecture) EcoreUtil2.getFirstContainer(target, CsPackage.Literals.BLOCK_ARCHITECTURE);
+    BlockArchitecture architecture = (BlockArchitecture) EcoreUtil2.getFirstContainer(target,
+        CsPackage.Literals.BLOCK_ARCHITECTURE);
     if (architecture != null) {
 
-      //Retrieve all functions / functional chains and available state/modes
+      // Retrieve all functions / functional chains and available state/modes
       FunctionPkg fpkg = BlockArchitectureExt.getFunctionPkg(architecture, false);
       if (fpkg != null) {
         for (AbstractFunction function : FunctionPkgExt.getAllAbstractFunctions(fpkg)) {
@@ -283,11 +288,11 @@ public class ContextualDiagramHelper {
 
       AbstractCapabilityPkg cpkg = BlockArchitectureExt.getAbstractCapabilityPkg(architecture);
       if (cpkg != null) {
-        //Retrieve all functional chains
+        // Retrieve all functional chains
         for (AbstractCapability capability : AbstractCapabilityPkgExt.getAllAbstractCapabilities(cpkg)) {
           result.addAll(capability.getOwnedFunctionalChains());
         }
-        //Retrieve all functional scenarios
+        // Retrieve all functional scenarios
         for (Scenario scenario : AbstractCapabilityPkgExt.getAllScenarios(cpkg)) {
           if (isDFContextualScenario(scenario, architecture)) {
             result.add(scenario);
@@ -328,11 +333,13 @@ public class ContextualDiagramHelper {
 
   /**
    * Retrieve related elements for a scenario and a given architecture (functions and functional exchanges)
+   * 
    * @param scenario
    * @param sourceArchitecture
    * @return
    */
-  public Collection<? extends EObject> getInsertScenariosRelatedElements(Scenario scenario, BlockArchitecture sourceArchitecture) {
+  public Collection<? extends EObject> getInsertScenariosRelatedElements(Scenario scenario,
+      BlockArchitecture sourceArchitecture) {
     Collection<EObject> result = new HashSet<EObject>();
 
     for (InstanceRole role : scenario.getOwnedInstanceRoles()) {
@@ -341,7 +348,8 @@ public class ContextualDiagramHelper {
         BlockArchitecture targetArchitecture = BlockArchitectureExt.getRootBlockArchitecture(instance);
         if (sourceArchitecture.equals(targetArchitecture)) {
 
-          if (CapellaLayerCheckingExt.isAOrInOperationalAnalysisLayer(sourceArchitecture) && (instance instanceof Part)) {
+          if (CapellaLayerCheckingExt.isAOrInOperationalAnalysisLayer(sourceArchitecture)
+              && (instance instanceof Part)) {
 
             result.add(instance.getAbstractType());
           } else {
@@ -366,7 +374,8 @@ public class ContextualDiagramHelper {
         StateFragment fragment = (StateFragment) timeLapse;
 
         if ((fragment.getRelatedAbstractFunction() != null)) {
-          BlockArchitecture targetArchitecture = BlockArchitectureExt.getRootBlockArchitecture(fragment.getRelatedAbstractFunction());
+          BlockArchitecture targetArchitecture = BlockArchitectureExt
+              .getRootBlockArchitecture(fragment.getRelatedAbstractFunction());
           if (sourceArchitecture.equals(targetArchitecture)) {
             result.add(fragment.getRelatedAbstractFunction());
           }
@@ -384,7 +393,8 @@ public class ContextualDiagramHelper {
     Collection<EObject> result = new HashSet<EObject>();
     EObject target = diagram.getTarget();
 
-    BlockArchitecture architecture = (BlockArchitecture) EcoreUtil2.getFirstContainer(target, CsPackage.Literals.BLOCK_ARCHITECTURE);
+    BlockArchitecture architecture = (BlockArchitecture) EcoreUtil2.getFirstContainer(target,
+        CsPackage.Literals.BLOCK_ARCHITECTURE);
     if (architecture != null) {
       TreeIterator<EObject> objects = architecture.eAllContents();
       while (objects.hasNext()) {

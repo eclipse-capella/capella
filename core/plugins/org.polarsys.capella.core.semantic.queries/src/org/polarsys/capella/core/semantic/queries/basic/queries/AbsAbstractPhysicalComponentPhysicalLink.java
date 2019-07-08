@@ -10,18 +10,17 @@
  *******************************************************************************/
 package org.polarsys.capella.core.semantic.queries.basic.queries;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.helpers.query.IQuery;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
-import org.polarsys.capella.core.data.pa.AbstractPhysicalComponent;
-import org.polarsys.capella.common.helpers.query.IQuery;
-
-import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+import org.polarsys.capella.core.data.pa.PhysicalComponent;
 
 /**
  * Return outgoing or incoming physical links of current physical component and physical actor
@@ -42,8 +41,8 @@ public abstract class AbsAbstractPhysicalComponentPhysicalLink implements IQuery
   @Override
   public List<Object> compute(Object object) {
     List<Object> result = new ArrayList<>();
-    if (object instanceof AbstractPhysicalComponent) {
-      AbstractPhysicalComponent absPhyComp = (AbstractPhysicalComponent) object;
+    if (object instanceof PhysicalComponent) {
+      PhysicalComponent absPhyComp = (PhysicalComponent) object;
       Collection<PhysicalLink> allRelatedPhysicalLinks = getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, absPhyComp);
       for (PhysicalLink physicalLink : allRelatedPhysicalLinks) {
         result.add(physicalLink);

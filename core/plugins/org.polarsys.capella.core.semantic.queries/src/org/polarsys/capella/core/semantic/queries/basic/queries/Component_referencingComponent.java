@@ -19,25 +19,21 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 
 /**
- * Allows to get the parent of a component in the semantic browser
- * 
- * 
+ *
  */
-public class Component_parentComponent implements IQuery {
+public class Component_referencingComponent implements IQuery {
 
   /**
    * 
-   * ownerComponent
+   * representingPartitions.ownerElement
    * 
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
   public List<Object> compute(Object object) {
     List<Object> result = new ArrayList<Object>();
     if (object instanceof Component) {
-      Component lc = (Component) object;
-      result.addAll(ComponentExt.getDirectParents(lc));
+      result.addAll(ComponentExt.getDirectParents((Component) object));
     }
     return result;
   }
-
 }

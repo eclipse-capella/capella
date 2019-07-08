@@ -13,33 +13,33 @@ package org.polarsys.capella.core.semantic.queries.basic.queries;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.common.util.EList;
-
-import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.semantic.queries.basic.queries.utils.QueriesFilters;
 import org.polarsys.capella.common.helpers.query.IQuery;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 
 /**
- * Allows to get the Realized actors of an actor
+ *
  */
-public class Actor_RealizedActors implements IQuery {
+public class SystemComponent_InvolvingMissions implements IQuery {
 
-  public Actor_RealizedActors() {
-    // does nothing
+  /**
+   * 
+   */
+  public SystemComponent_InvolvingMissions() {
+    // do nothing
   }
 
   /**
+   * 
+   * current.contributedMissions
+   * 
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
   public List<Object> compute(Object object) {
     List<Object> result = new ArrayList<Object>();
-    if (object instanceof Component) {
-      Component c = (Component) object;
-      EList<Component> allocatedComponents = c.getAllocatedComponents();
-      if (!allocatedComponents.isEmpty()) {
-        result.addAll(allocatedComponents);
-      }
+    if (object instanceof SystemComponent) {
+      SystemComponent c = (SystemComponent) object;
+      result.addAll(c.getInvolvingMissions());
     }
-    return QueriesFilters.filterListToGetOnlyActors(result);
+    return result;
   }
 }

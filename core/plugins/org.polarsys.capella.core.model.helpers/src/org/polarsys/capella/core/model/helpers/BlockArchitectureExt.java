@@ -666,7 +666,15 @@ public class BlockArchitectureExt {
   public static Component getFirstComponent(BlockArchitecture architecture, boolean create) {
     Component first = null;
 
-    if (architecture instanceof SystemAnalysis) {
+    if (architecture instanceof OperationalAnalysis) {
+      first = ((OperationalAnalysis) architecture).getSystem();
+      if ((first == null) && create) {
+        first = OaFactory.eINSTANCE.createEntity(NamingConstants.CreateOaAnalysisCmd_entity_name);
+        ((SystemComponentPkg) getComponentPkg(architecture, true)).getOwnedSystemComponents()
+            .add((SystemComponent) first);
+      }
+
+    } else  if (architecture instanceof SystemAnalysis) {
       first = ((SystemAnalysis) architecture).getSystem();
       if ((first == null) && create) {
         first = CtxFactory.eINSTANCE.createSystemComponent(NamingConstants.CreateSysAnalysisCmd_system_name);

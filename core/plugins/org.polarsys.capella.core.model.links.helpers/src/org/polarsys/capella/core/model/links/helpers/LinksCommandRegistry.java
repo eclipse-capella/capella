@@ -322,7 +322,7 @@ public class LinksCommandRegistry {
 		if (null == __instance) {
 			__instance = new LinksCommandRegistry();
 			__instance._commandScopeToCommand.put(new CommandScope(
-					CsPackage.Literals.COMPONENT_ALLOCATION, null),
+					CsPackage.Literals.COMPONENT_REALIZATION, null),
 					CreateRealizationLinksCommand.class);
 			__instance._commandScopeToCommand.put(new CommandScope(
 					FaPackage.Literals.COMPONENT_FUNCTIONAL_ALLOCATION, null),

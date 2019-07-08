@@ -512,7 +512,7 @@
             isTopLevel="true"
             name="Communication Link">
          <availableForType
-               class="org.polarsys.capella.core.data.cs.SystemComponent">
+               class="org.polarsys.capella.core.data.cs.Component">
          </availableForType>
          <targetBrowserId
                id="ReferencedElementBrowser">
@@ -529,18 +529,18 @@
          </itemQueries>
       </category>
       <category
-            id="org.polarsys.capella.core.semantic.queries.SystemComponent_ComponentBreakdown"
+            id="org.polarsys.capella.core.semantic.queries.Component_ComponentBreakdown"
             isTopLevel="true"
             name="Component Breakdown">
          <targetBrowserId
                id="CurrentElementBrowser">
          </targetBrowserId>
          <availableForType
-               class="org.polarsys.capella.core.data.cs.SystemComponent">
+               class="org.polarsys.capella.core.data.cs.Component">
          </availableForType>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.SystemComponent_componentBreakdown">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Component_componentBreakdown">
             </basicQuery>
          </categoryQuery>
       </category>
@@ -561,50 +561,49 @@
          </categoryQuery>
       </category>
       <category
-            id="org.polarsys.capella.core.semantic.queries.SystemComponent_referencingComponents"
+            id="org.polarsys.capella.core.semantic.queries.Component_referencingComponents"
             isTopLevel="true"
             name="Referencing Components">
          <targetBrowserId
                id="ReferencingElementBrowser">
          </targetBrowserId>
          <availableForType
-               class="org.polarsys.capella.core.data.cs.SystemComponent">
+               class="org.polarsys.capella.core.data.cs.Component">
          </availableForType>
          <categoryQuery>
             <navigationQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.SystemComponent_referencingComponent">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Component_referencingComponent">
             </navigationQuery>
          </categoryQuery>
       </category>
       <category
-            id="org.polarsys.capella.core.semantic.queries.Component_ownedComponents"
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.Component_SubDefinedComponents"
             isTopLevel="true"
             name="Owned Components">
          <targetBrowserId
                id="CurrentElementBrowser">
          </targetBrowserId>
          <availableForType
-               class="org.polarsys.capella.core.data.cs.SystemComponent">
+               class="org.polarsys.capella.core.data.cs.Component">
          </availableForType>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.SystemComponent_ownedComponents">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Component_SubDefinedComponents">
             </basicQuery>
          </categoryQuery>
       </category>
       <category
-            id="org.polarsys.capella.core.semantic.queries.SystemComponent_componentPorts"
+            id="org.polarsys.capella.core.semantic.queries.Component_componentPorts"
             isTopLevel="true"
             name="Component Ports">
          <availableForType
-               class="org.polarsys.capella.core.data.cs.SystemComponent">
+               class="org.polarsys.capella.core.data.cs.Component">
          </availableForType>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.SystemComponent_componentPorts">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Component_componentPorts">
             </basicQuery>
          </categoryQuery>
-         
          <itemQueries>
             <basicQuery
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.ComponentPort_relatedInterfaces">
@@ -614,22 +613,6 @@
          <targetBrowserId
                id="ReferencingElementBrowser">
          </targetBrowserId>
-      </category>
-       <category
-            id="org.polarsys.capella.core.semantic.queries.SystemComponent_CapabilityRealizationParticipation"
-            isTopLevel="true"
-            name="CapabilityRealization Participation">
-         <availableForType
-               class="org.polarsys.capella.core.data.cs.SystemComponent">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencingElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.SystemComponent_capabilityRealizationParticipation">
-            </basicQuery>
-         </categoryQuery>
       </category>
       <category
             id="org.polarsys.capella.core.semantic.queries.Component_implementedInterfaces"
@@ -664,18 +647,18 @@
          </categoryQuery>
       </category>
       <category
-            id="org.polarsys.capella.core.semantic.queries.SystemComponentInvolvingCapabilityRealizations"
+            id="org.polarsys.capella.core.semantic.queries.ComponentInvolvingCapabilityRealizations"
             isTopLevel="true"
             name="Involving Capability Realizations">
          <availableForType
-               class="org.polarsys.capella.core.data.cs.SystemComponent">
+               class="org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement">
          </availableForType>
          <targetBrowserId
                id="ReferencingElementBrowser">
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.SystemComponentInvolvingCapabilityRealizations">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapabilityRealizationInvolvedElement_InvolvingCapabilityRealizations">
             </basicQuery>
          </categoryQuery>
       </category>
@@ -683,7 +666,7 @@
             id="------------- Logical Component -----------">
       </category>
       <category
-            id="org.polarsys.capella.core.semantic.queries.LogicalComponent_realizingPhysicalComponents"
+            id="org.polarsys.capella.core.semantic.queries.LogicalComponent_RealizingPhysicalComponents"
             isTopLevel="true"
             name="Realizing Physical Components">
          <targetBrowserId
@@ -694,12 +677,12 @@
          </availableForType>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.LogicalComponent_realizingPhysicalComponents">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Component_RealizingComponents">
             </basicQuery>
          </categoryQuery>
       </category>
       <category
-            id="org.polarsys.capella.core.semantic.queries.PhysicalComponent_realizedSystem"
+            id="org.polarsys.capella.core.semantic.queries.LogicalComponent_RealizedSystemComponent"
             isTopLevel="true"
             name="Realized System">
          <targetBrowserId
@@ -710,7 +693,7 @@
          </availableForType>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalComponent_realizedLogicalComponent">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Component_RealizedComponents">
             </basicQuery>
          </categoryQuery>
       </category>
@@ -914,9 +897,9 @@
          </categoryQuery>
       </category>
       <category
-            id="org.polarsys.capella.core.semantic.queries.PhysicalComponent_allocatingConfigurationItems"
+            id="org.polarsys.capella.core.semantic.queries.PhysicalComponent_RealizingConfigurationItems"
             isTopLevel="true"
-            name="Allocating Configuration Items">
+            name="Realizing Configuration Items">
          <targetBrowserId
                id="ReferencingElementBrowser">
          </targetBrowserId>
@@ -925,12 +908,12 @@
          </availableForType>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalComponent_allocatingConfigurationItems">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Component_RealizingComponents">
             </basicQuery>
          </categoryQuery>
       </category>
       <category
-            id="org.polarsys.capella.core.semantic.queries.PhysicalComponent_realizedLogicalComponent"
+            id="org.polarsys.capella.core.semantic.queries.PhysicalComponent_RealizedLogicalComponent"
             isTopLevel="true"
             name="Realized Logical Component">
          <targetBrowserId
@@ -941,7 +924,7 @@
          </availableForType>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalComponent_realizedLogicalComponent">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Component_RealizedComponents">
             </basicQuery>
          </categoryQuery>
       </category>
@@ -1642,58 +1625,41 @@
          </categoryQuery>
       </category>
       <category
-            id="---------- Actor  ---------">
+            id="---------- SystemComponent  ---------">
       </category>
-      
 
-      
       <category
-            id="org.polarsys.capella.core.semantic.queries.Actor_contributedMissions"
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.SystemComponent_InvolvingMissions"
             isTopLevel="true"
             name="Involving Missions">
          <availableForType
-               class="org.polarsys.capella.core.data.ctx.Actor">
+               class="org.polarsys.capella.core.data.ctx.SystemComponent">
          </availableForType>
          <targetBrowserId
                id="ReferencingElementBrowser">
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Actor_contributedMissions">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.SystemComponent_InvolvingMissions">
             </basicQuery>
          </categoryQuery>
       </category>
       
       <category
-            id="org.polarsys.capella.core.semantic.queries.ActorAllocatingCapabilities"
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.SystemComponent_InvolvingCapabilities"
             isTopLevel="true"
             name="Involving Capabilities">
          <availableForType
-               class="org.polarsys.capella.core.data.cs.AbstractActor">
+               class="org.polarsys.capella.core.data.ctx.SystemComponent">
          </availableForType>
          <targetBrowserId
                id="ReferencingElementBrowser">
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ActorAllocatingCapabilities">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.SystemComponent_InvolvingCapabilities">
             </basicQuery>
          </categoryQuery>
-      </category>
-      <category
-            id="org.polarsys.capella.core.semantic.queries.basic.queries.ActorAllocatingCapabilityRealizations"
-            isTopLevel="true"
-            name="Involving Capability Realizations">
-         <availableForType
-               class="org.polarsys.capella.core.data.cs.AbstractActor">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencingElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ActorAllocatingCapabilityRealizations">
-            </basicQuery></categoryQuery>
       </category>
            
       <category
@@ -3298,38 +3264,6 @@
             </basicQuery>
          </categoryQuery>
       </category>
-      <!--category
-            id="org.polarsys.capella.core.semantic.queries.FunctionAllocatingComponent_pfcn"
-            isTopLevel="true"
-            name="Allocating Physical Component">
-         <availableForType
-               class="org.polarsys.capella.core.data.capellacommon.ControlNode">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencingElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ControlNodeAllocatingPhysicalComponent">
-            </basicQuery>
-         </categoryQuery>
-      </category>
-      <category
-            id="org.polarsys.capella.core.semantic.queries.FunctionAllocatingActor_pfcn"
-            isTopLevel="true"
-            name="Allocating Physical Actor">
-         <availableForType
-               class="org.polarsys.capella.core.data.capellacommon.ControlNode">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencingElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ControlNodeAllocatingPhysicalActor">
-            </basicQuery>
-         </categoryQuery>
-      </category-->
       <category
             id="org.polarsys.capella.core.semantic.queries.AbstractFunction_incomingInteraction_pf"
             isTopLevel="true"
@@ -3495,38 +3429,6 @@
             </basicQuery>
          </categoryQuery>
       </category>
-      <!--category
-            id="org.polarsys.capella.core.semantic.queries.FunctionAllocatingComponent_lfcn"
-            isTopLevel="true"
-            name="Allocating Logical Component">
-         <availableForType
-               class="org.polarsys.capella.core.data.capellacommon.ControlNode">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencingElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ControlNodeAllocatingLogicalComponent">
-            </basicQuery>
-         </categoryQuery>
-      </category>
-      <category
-            id="org.polarsys.capella.core.semantic.queries.FunctionAllocatingActor_lfcn"
-            isTopLevel="true"
-            name="Allocating Logical Actor">
-         <availableForType
-               class="org.polarsys.capella.core.data.capellacommon.ControlNode">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencingElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ControlNodeAllocatingLogicalActor">
-            </basicQuery>
-         </categoryQuery>
-      </category-->
       <category
             id="org.polarsys.capella.core.semantic.queries.AbstractFunction_incomingInteraction_lf"
             isTopLevel="true"
@@ -3694,38 +3596,6 @@
             </basicQuery>
          </categoryQuery>
       </category>
-      <!--category
-            id="org.polarsys.capella.core.semantic.queries.FunctionAllocatingComponent_sfcn"
-            isTopLevel="true"
-            name="Allocating System">
-         <availableForType
-               class="org.polarsys.capella.core.data.capellacommon.ControlNode">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencingElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ControlNodeAllocatingSystem">
-            </basicQuery>
-         </categoryQuery>
-      </category>
-      <category
-            id="org.polarsys.capella.core.semantic.queries.FunctionAllocatingActor_sfcn"
-            isTopLevel="true"
-            name="Allocating Actor">
-         <availableForType
-               class="org.polarsys.capella.core.data.capellacommon.ControlNode">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencingElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ControlNodeAllocatingActor">
-            </basicQuery>
-         </categoryQuery>
-      </category-->
       <category
             id="org.polarsys.capella.core.semantic.queries.AbstractFunction_incomingInteraction_sf"
             isTopLevel="true"
@@ -3891,54 +3761,6 @@
             </basicQuery>
          </categoryQuery>
       </category>
-      <!--category
-            id="org.polarsys.capella.core.semantic.queries.FunctionAllocatingComponent_oacn"
-            isTopLevel="true"
-            name="Allocating Entity">
-         <availableForType
-               class="org.polarsys.capella.core.data.capellacommon.ControlNode">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencingElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ControlNodeAllocatingEntity">
-            </basicQuery>
-         </categoryQuery>
-      </category>
-      <category
-            id="org.polarsys.capella.core.semantic.queries.FunctionAllocatingActor_oacn"
-            isTopLevel="true"
-            name="Allocating Operational Actor">
-         <availableForType
-               class="org.polarsys.capella.core.data.capellacommon.ControlNode">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencingElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ControlNodeAllocatingOperationalActor">
-            </basicQuery>
-         </categoryQuery>
-      </category>
-      <category
-            id="org.polarsys.capella.core.semantic.queries.OperationActivityAllocatingRole_oacn"
-            isTopLevel="true"
-            name="Allocating Role">
-         <availableForType
-               class="org.polarsys.capella.core.data.capellacommon.ControlNode">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencingElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ControlNodeAllocatingRole">
-            </basicQuery>
-         </categoryQuery>
-      </category-->
       <category
             id="org.polarsys.capella.core.semantic.queries.AbstractFunction_incomingInteraction_oa"
             isTopLevel="true"
@@ -4043,7 +3865,7 @@
             id="---------- Entity ----------NEW">
       </category>
             <category
-            id="org.polarsys.capella.core.semantic.queries.SystemComponent_implementedFunctions_En"
+            id="org.polarsys.capella.core.semantic.queries.Entity_AllocatedFunction"
             isTopLevel="true"
             name="Allocated Operational Activities">
          <availableForType
@@ -4054,7 +3876,7 @@
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Component_implementedFunctions">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Component_AllocatedFunctions">
             </basicQuery>
          </categoryQuery>
       </category>
@@ -4091,9 +3913,9 @@
          </categoryQuery>
       </category>
             <category
-                  id="capella.semantic.queries.Actir_RefiningEntity_realizingAcor_Entity"
+                  id="capella.semantic.queries.Entity_RealizingComponents"
                   isTopLevel="true"
-                  name="Realizing Actors">
+                  name="Realizing System Components">
                <availableForType
                      class="org.polarsys.capella.core.data.oa.Entity">
                </availableForType>
@@ -4102,50 +3924,15 @@
                </targetBrowserId>
                <categoryQuery>
                   <basicQuery
-                        class="org.polarsys.capella.core.semantic.queries.basic.queries.Actor_RefiningActors">
+                        class="org.polarsys.capella.core.semantic.queries.basic.queries.Component_RealizingComponents">
                   </basicQuery>
                </categoryQuery>
             </category>
-            <category
-                  id="capella.semantic.queries.Actir_RefiningEntity_realizingAcor_System"
-                  isTopLevel="true"
-                  name="Realizing System">
-               <availableForType
-                     class="org.polarsys.capella.core.data.oa.Entity">
-               </availableForType>
-               <targetBrowserId
-                     id="ReferencingElementBrowser">
-               </targetBrowserId>
-               <categoryQuery>
-                  <basicQuery
-                        class="org.polarsys.capella.core.semantic.queries.basic.queries.Entity_RefiningSystem">
-                  </basicQuery>
-               </categoryQuery>
-            </category>
-      <category
-            id="---------- Operational Actor ----------NEW">
-      </category>
-      <!--category
-            id="org.polarsys.capella.core.semantic.queries.SystemComponent_implementedFunctions_OA"
-            isTopLevel="true"
-            name="Allocated Operational Activities">
-         <availableForType
-               class="org.polarsys.capella.core.data.oa.OperationalActor">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencedElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Component_implementedFunctions">
-            </basicQuery>
-         </categoryQuery>
-      </category-->
       <category
             id="---------- Role ----------NEW">
       </category>
       <category
-            id="org.polarsys.capella.core.semantic.queries.SystemComponent_implementedFunctions_role"
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.Role_AllocatedFunctions"
             isTopLevel="true"
             name="Allocated Operational Activities">
          <availableForType
@@ -4156,13 +3943,13 @@
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Component_implementedFunctions">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Role_AllocatedFunctions">
             </basicQuery>
          </categoryQuery>
       </category>
 
       <category
-            id="org.polarsys.capella.core.semantic.queries.RoleAllocatingOperationalEntity"
+            id="org.polarsys.capella.core.semantic.queries.RoleAllocating_Entity"
             isTopLevel="true"
             name="Allocating Entities">
          <availableForType
@@ -4173,7 +3960,7 @@
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.RoleAllocatingOperationalEntity">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Role_AllocatingEntity">
             </basicQuery>
          </categoryQuery>
       </category>
@@ -4181,18 +3968,18 @@
             id="---------- System ----------NEW">
       </category>
       <category
-            id="org.polarsys.capella.core.semantic.queries.SystemComponent_implementedFunctions_sys"
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.Component_AllocatedFunctions"
             isTopLevel="true"
             name="Allocated System Functions">
          <availableForType
-               class="org.polarsys.capella.core.data.ctx.System">
+               class="org.polarsys.capella.core.data.ctx.SystemComponent">
          </availableForType>
          <targetBrowserId
                id="ReferencedElementBrowser">
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Component_implementedFunctions">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Component_AllocatedFunctions">
             </basicQuery>
          </categoryQuery>
       </category>
@@ -4200,67 +3987,18 @@
             id="---------- Actor ----------NEW">
       </category>
       <category
-            id="org.polarsys.capella.core.semantic.queries.SystemComponent_implementedFunctions_act"
-            isTopLevel="true"
-            name="Allocated System Functions">
-         <availableForType
-               class="org.polarsys.capella.core.data.ctx.Actor">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencedElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Component_implementedFunctions">
-            </basicQuery>
-         </categoryQuery>
-      </category>
-      <category
-            id="org.polarsys.capella.core.semantic.queries.Actor_AllocatedComponents_sysred"
-            isTopLevel="true"
-            name="Realized Operational Actors">
-         <availableForType
-               class="org.polarsys.capella.core.data.ctx.Actor">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencedElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Actor_RealizedActors">
-            </basicQuery>
-         </categoryQuery>
-      </category>
-
-      <category
-            id="capella.semantic.queries.Actor_RefiningOperationalActor_sysring"
-            isTopLevel="true"
-            name="Realizing Logical Actors">
-         <availableForType
-               class="org.polarsys.capella.core.data.ctx.Actor">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencingElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Actor_RefiningActors">
-            </basicQuery>
-         </categoryQuery>
-      </category>
-            <category
-            id="org.polarsys.capella.core.semantic.queries.ActorRealizedEntities"
+            id="org.polarsys.capella.core.semantic.queries.SystemComponent_RealizedComponents"
             isTopLevel="true"
             name="Realized Operational Entities">
          <availableForType
-               class="org.polarsys.capella.core.data.ctx.Actor">
+               class="org.polarsys.capella.core.data.ctx.SystemComponent">
          </availableForType>
          <targetBrowserId
                id="ReferencedElementBrowser">
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ActorRealizedEntities"></basicQuery>
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Component_RealizedComponents"></basicQuery>
          </categoryQuery>
       </category>
       <category
@@ -4268,7 +4006,7 @@
       </category>
       
       <category
-            id="org.polarsys.capella.core.semantic.queries.SystemComponent_implementedFunctions_log"
+            id="org.polarsys.capella.core.semantic.queries.LogicalComponent_AllocatedFunction"
             isTopLevel="true"
             name="Allocated Logical Functions">
          <availableForType
@@ -4279,68 +4017,16 @@
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Component_implementedFunctions">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Component_AllocatedFunctions">
             </basicQuery>
          </categoryQuery>
       </category>
       
       <category
-            id="---------- Logical Actor ----------NEW">
-      </category>
-      <category
-            id="org.polarsys.capella.core.semantic.queries.SystemComponent_implementedFunctions_logAct"
-            isTopLevel="true"
-            name="Allocated Logical Functions">
-         <availableForType
-               class="org.polarsys.capella.core.data.la.LogicalActor">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencedElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Component_implementedFunctions">
-            </basicQuery>
-         </categoryQuery>
-      </category>
-      <category
-            id="org.polarsys.capella.core.semantic.queries.Actor_AllocatedComponents_lared"
-            isTopLevel="true"
-            name="Realized Actors">
-         <availableForType
-               class="org.polarsys.capella.core.data.la.LogicalActor">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencedElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Actor_RealizedActors">
-            </basicQuery>
-         </categoryQuery>
-      </category>
-
-      <category
-            id="capella.semantic.queries.Actor_RefiningOperationalActor_laring"
-            isTopLevel="true"
-            name="Realizing Physical Actors">
-         <availableForType
-               class="org.polarsys.capella.core.data.la.LogicalActor">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencingElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Actor_RefiningActors">
-            </basicQuery>
-         </categoryQuery>
-      </category>
-      <category
             id="---------- Physical Commponent ----------NEW">
       </category>
       <category
-            id="org.polarsys.capella.core.semantic.queries.SystemComponent_implementedFunctions_phy"
+            id="org.polarsys.capella.core.semantic.queries.PhysicalComponent_AllocatedFunction"
             isTopLevel="true"
             name="Allocated Physical Functions">
          <availableForType
@@ -4351,135 +4037,14 @@
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Component_implementedFunctions">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Component_AllocatedFunctions">
             </basicQuery>
          </categoryQuery>
       </category>
-      <category
-            id="---------- Physical Actor ----------NEW">
-      </category>
-      <category
-            id="org.polarsys.capella.core.semantic.queries.SystemComponent_implementedFunctions_phyAct"
-            isTopLevel="true"
-            name="Allocated Physical Functions">
-         <availableForType
-               class="org.polarsys.capella.core.data.pa.PhysicalActor">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencedElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Component_implementedFunctions">
-            </basicQuery>
-         </categoryQuery>
-      </category>
-
-
-
       
-      
-      
-            <category
-            id="org.polarsys.capella.core.semantic.queries.Actor_AllocatedComponents_pared"
-            isTopLevel="true"
-            name="Realized Logical Actors">
-         <availableForType
-               class="org.polarsys.capella.core.data.pa.PhysicalActor">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencedElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Actor_RealizedActors">
-            </basicQuery>
-         </categoryQuery>
-      </category>
       <category
             id="---------- Control Node ----------NEW">
       </category>
-      <!--category
-            id="org.polarsys.capella.core.semantic.queries.ControlNodeOALevelIncomingInteraction_oa"
-            isTopLevel="true"
-            name="Incoming Interactions">
-         <availableForType
-               class="org.polarsys.capella.core.data.capellacommon.ControlNode">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencingElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ControlNodeOALevelIncomingInteraction"></basicQuery></categoryQuery>
-         <itemQueries>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ItemQuery_Pin_sourceOwner">
-            </basicQuery>
-         </itemQueries>
-      </category>
-      <category
-            id="org.polarsys.capella.core.semantic.queries.ControlNodeOALevelOutgoingInteraction_oa"
-            isTopLevel="true"
-            name="Outgoing Interactions">
-         <availableForType
-               class="org.polarsys.capella.core.data.capellacommon.ControlNode">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencedElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ControlNodeOALevelOutgoingInteraction"></basicQuery>
-         </categoryQuery>
-         <itemQueries>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ItemQuery_Pin_targetOwner">
-            </basicQuery>
-         </itemQueries>
-      </category>
-      <category
-            id="org.polarsys.capella.core.semantic.queries.ControlNodeDefaultLevelIncomingInteraction_def"
-            isTopLevel="true"
-            name="Incoming Functional Exchanges">
-         <availableForType
-               class="org.polarsys.capella.core.data.capellacommon.ControlNode">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencingElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ControlNodeDefaultLevelIncomingInteraction">
-            </basicQuery>
-         </categoryQuery>
-         <itemQueries>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ItemQuery_Pin_sourceOwner">
-            </basicQuery>
-         </itemQueries>
-      </category>
-      <category
-            id="org.polarsys.capella.core.semantic.queries.basic.queries.ControlNodeDefaultLevelOutgoingInteraction_def"
-            isTopLevel="true"
-            name="Outgoing Functional Exchanges">
-         <availableForType
-               class="org.polarsys.capella.core.data.capellacommon.ControlNode">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencedElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ControlNodeDefaultLevelOutgoingInteraction">
-            </basicQuery>
-         </categoryQuery>
-         <itemQueries>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ItemQuery_Pin_targetOwner">
-            </basicQuery>
-         </itemQueries>
-      </category-->
       <category
             id="---------- Component  ------">
       </category>
@@ -4612,14 +4177,14 @@
             isTopLevel="true"
             name="Physical Links">
          <availableForType
-               class="org.polarsys.capella.core.data.pa.AbstractPhysicalComponent">
+               class="org.polarsys.capella.core.data.pa.PhysicalComponent">
          </availableForType>
          <targetBrowserId
                id="ReferencingElementBrowser">
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.AbstractPhysicalComponentOutgoingPhysicalLink">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalComponent_OutgoingPhysicalLinks">
             </basicQuery>
          </categoryQuery>
          <itemQueries>
@@ -4633,14 +4198,14 @@
             isTopLevel="true"
             name="Physical Links">
          <availableForType
-               class="org.polarsys.capella.core.data.pa.AbstractPhysicalComponent">
+               class="org.polarsys.capella.core.data.pa.PhysicalComponent">
          </availableForType>
          <targetBrowserId
                id="ReferencedElementBrowser">
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.AbstractPhysicalComponentIncomingPhysicalLink"></basicQuery></categoryQuery>
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalComponent_IncomingPhysicalLinks"></basicQuery></categoryQuery>
          <itemQueries>
             <basicQuery
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalLinkSourceAndTarget"></basicQuery></itemQueries>
@@ -4650,7 +4215,7 @@
             isTopLevel="true"
             name="Internal Physical Links (computed)">
          <availableForType
-               class="org.polarsys.capella.core.data.pa.AbstractPhysicalComponent">
+               class="org.polarsys.capella.core.data.pa.PhysicalComponent">
          </availableForType>
          <targetBrowserId
                id="ReferencedElementBrowser">
@@ -4667,7 +4232,7 @@
             isTopLevel="true"
             name="Internal Physical Links (computed)">
          <availableForType
-               class="org.polarsys.capella.core.data.pa.AbstractPhysicalComponent">
+               class="org.polarsys.capella.core.data.pa.PhysicalComponent">
          </availableForType>
          <targetBrowserId
                id="ReferencingElementBrowser">
@@ -6145,9 +5710,9 @@
          </itemQueries>
       </category>
       <category
-            id="org.polarsys.capella.core.semantic.queries.Capability_participatingActors1"
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.Capability_InvolvedComponents"
             isTopLevel="true"
-            name="Involved Actors">
+            name="Involved Components">
          <availableForType
                class="org.polarsys.capella.core.data.interaction.AbstractCapability">
          </availableForType>
@@ -6156,7 +5721,7 @@
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Capability_participatingActors">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Capability_InvolvedComponents">
             </basicQuery>
          </categoryQuery>
       </category>
@@ -6164,7 +5729,7 @@
             id="----------- Operational Capability ----------">
       </category>
       <category
-            id="org.polarsys.capella.core.semantic.queries.OperationalCapabilityInvolvedEntity"
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.OperationalCapability_InvolvedEntity"
             isTopLevel="true"
             name="Involved Entities">
          <availableForType
@@ -6175,7 +5740,7 @@
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.OperationalCapabilityInvolvedEntity">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.OperationalCapability_InvolvedEntity">
             </basicQuery>
          </categoryQuery>
       </category>
@@ -6346,42 +5911,10 @@
          </categoryQuery>
       </category>
       <category
-            id="org.polarsys.capella.core.semantic.queries.CapabilityRealization_involvedActors"
-            isTopLevel="true"
-            name="Involved Actors">
-         <availableForType
-               class="org.polarsys.capella.core.data.la.CapabilityRealization">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencedElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapabilityRealization_involvedActors">
-            </basicQuery>
-         </categoryQuery>
-      </category>
-      <category
-            id="org.polarsys.capella.core.semantic.queries.CapabilityRealization_involvedComponents"
-            isTopLevel="true"
-            name="Involved Components">
-         <availableForType
-               class="org.polarsys.capella.core.data.la.CapabilityRealization">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencedElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapabilityRealization_involvedComponents">
-            </basicQuery>
-         </categoryQuery>
-      </category>
-      <category
             id="---------- Mission  ---------">
       </category>
       <category
-            id="org.polarsys.capella.core.semantic.queries.Mission_exploitedCapabilities"
+            id="org.polarsys.capella.core.semantic.queries.Mission_ExploitedCapabilities"
             isTopLevel="true"
             name="Exploited Capabilities">
          <availableForType
@@ -6392,14 +5925,14 @@
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Mission_exploitedCapabilities">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Mission_ExploitedCapabilities">
             </basicQuery>
          </categoryQuery>
       </category>
       <category
-            id="org.polarsys.capella.core.semantic.queries.Mission_participatingActors1"
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.Mission_InvolvedSystemComponents"
             isTopLevel="true"
-            name="Involved Actors">
+            name="Involved System Components">
          <availableForType
                class="org.polarsys.capella.core.data.ctx.Mission">
          </availableForType>
@@ -6408,7 +5941,7 @@
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Mission_participatingActors">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Mission_InvolvedSystemComponents">
             </basicQuery>
          </categoryQuery>
       </category>
@@ -6833,22 +6366,6 @@
             </basicQuery>
          </categoryQuery>
       </category>
-      <!--category
-            id="org.polarsys.capella.core.semantic.queries.Component.ComponentReferencingScenarioFunction"
-            isTopLevel="true"
-            name="Scenarios">
-         <availableForType
-               class="org.polarsys.capella.core.data.capellacommon.ControlNode">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencingElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaElementReferencingScenario">
-            </basicQuery>
-         </categoryQuery>
-      </category-->
       <category
             id="org.polarsys.capella.core.semantic.queries.Component.ComponentReferencingScenarioCompExc"
             isTopLevel="true"
@@ -7130,50 +6647,18 @@
             isTopLevel="false">
       </category>
       <category
-            id="org.polarsys.capella.core.semantic.queries.System_RealizedOperationalActors"
-            isTopLevel="true"
-            name="Realized Operational Actors">
-         <availableForType
-               class="org.polarsys.capella.core.data.ctx.System">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencedElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Actor_RealizedActors">
-            </basicQuery>
-         </categoryQuery>
-      </category>
-      <category
-            id="org.polarsys.capella.core.semantic.queries.System_RealizedOperationalEntity"
-            isTopLevel="true"
-            name="Realized Operational Entities">
-         <availableForType
-               class="org.polarsys.capella.core.data.ctx.System">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencedElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ActorRealizedEntities">
-            </basicQuery>
-         </categoryQuery>
-      </category>
-      <category
-            id="org.polarsys.capella.core.semantic.queries.System_realizingLCs"
+            id="org.polarsys.capella.core.semantic.queries.SystemComponent_RealizingLogicalComponent"
             isTopLevel="true"
             name="Realizing Logical Components">
          <targetBrowserId
                id="ReferencingElementBrowser">
          </targetBrowserId>
          <availableForType
-               class="org.polarsys.capella.core.data.ctx.System">
+               class="org.polarsys.capella.core.data.ctx.SystemComponent">
          </availableForType>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.LogicalComponent_realizingPhysicalComponents">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Component_RealizingComponents">
             </basicQuery>
          </categoryQuery>
       </category>
@@ -7241,7 +6726,7 @@
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CRRealizedCapability">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapabilityRealization_RealizedCapability">
             </basicQuery>
          </categoryQuery>
       </category>
@@ -7257,7 +6742,7 @@
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CRRealizedCR">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapabilityRealization_RealizedCapabilityRealization">
             </basicQuery>
          </categoryQuery>
       </category>
@@ -7273,7 +6758,7 @@
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CRRealizingCR">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapabilityRealization_RealizingCapabilityRealization">
             </basicQuery>
          </categoryQuery>
       </category>

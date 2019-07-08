@@ -57,14 +57,20 @@ public class CreatePhysicalArchiCmd extends AbstractReadWriteCommand {
 
   /**
    * Constructs the command allowing to create the physical architecture structure skeleton.
-   * @param systemEng The parent system engineering.
-   * @param architectureName The architecture name.
-   * @param logicalArchitecture The logical architecture.
-   * @param logicalComponent The logical component.
-   * @param logicalFunction The logical function.
+   * 
+   * @param systemEng
+   *          The parent system engineering.
+   * @param architectureName
+   *          The architecture name.
+   * @param logicalArchitecture
+   *          The logical architecture.
+   * @param logicalComponent
+   *          The logical component.
+   * @param logicalFunction
+   *          The logical function.
    */
-  public CreatePhysicalArchiCmd(SystemEngineering systemEng, String architectureName, LogicalArchitecture logicalArchitecture,
-      LogicalComponent logicalComponent, LogicalFunction logicalFunction) {
+  public CreatePhysicalArchiCmd(SystemEngineering systemEng, String architectureName,
+      LogicalArchitecture logicalArchitecture, LogicalComponent logicalComponent, LogicalFunction logicalFunction) {
     this.architectureName = architectureName;
     this.logicalFunction = logicalFunction;
     this.logicalComponent = logicalComponent;
@@ -72,43 +78,57 @@ public class CreatePhysicalArchiCmd extends AbstractReadWriteCommand {
     this.systemEng = systemEng;
   }
 
+  public CreatePhysicalArchiCmd(SystemEngineering systemEng, String architectureName,
+      LogicalArchitecture logicalArchitecture, LogicalComponent logicalComponent, LogicalFunction logicalFunction,
+      PhysicalArchitecture createdElement) {
+    this(systemEng, architectureName, logicalArchitecture, logicalComponent, logicalFunction);
+    this.physicalArchitecture = createdElement;
+  }
+
   /**
    * @see java.lang.Runnable#run()
    */
   public void run() {
-    // Builds the physical architecture root element.
-    physicalArchitecture = PaFactory.eINSTANCE.createPhysicalArchitecture(architectureName);
+    if (physicalArchitecture == null) {
+      // Builds the physical architecture root element.
+      physicalArchitecture = PaFactory.eINSTANCE.createPhysicalArchitecture();
+      systemEng.getOwnedArchitectures().add(physicalArchitecture);
+    }
+    physicalArchitecture.setName(architectureName);
 
     // Builds the physical functions structure skeleton.
-    PhysicalFunctionPkg physicalFunctionPkg =
-        PaFactory.eINSTANCE.createPhysicalFunctionPkg(NamingConstants.CreatePhysicalArchCmd_physicalFunctions_pkg_name);
+    PhysicalFunctionPkg physicalFunctionPkg = PaFactory.eINSTANCE
+        .createPhysicalFunctionPkg(NamingConstants.CreatePhysicalArchCmd_physicalFunctions_pkg_name);
     physicalArchitecture.setOwnedFunctionPkg(physicalFunctionPkg);
 
-    PhysicalFunction physicalFunction = PaFactory.eINSTANCE.createPhysicalFunction(NamingConstants.CreatePhysicalArchCmd_physicalFunction_root_name);
+    PhysicalFunction physicalFunction = PaFactory.eINSTANCE
+        .createPhysicalFunction(NamingConstants.CreatePhysicalArchCmd_physicalFunction_root_name);
     physicalFunctionPkg.getOwnedPhysicalFunctions().add(physicalFunction);
 
-    FunctionRealization functionRealisation = FaFactory.eINSTANCE.createFunctionRealization();
-    physicalFunction.getOwnedFunctionRealizations().add(functionRealisation);
-    functionRealisation.setSourceElement(physicalFunction);
     if (null != logicalFunction) {
+      FunctionRealization functionRealisation = FaFactory.eINSTANCE.createFunctionRealization();
+      physicalFunction.getOwnedFunctionRealizations().add(functionRealisation);
+      functionRealisation.setSourceElement(physicalFunction);
       functionRealisation.setTargetElement(logicalFunction);
     }
 
     // Builds the interfaces structure skeleton.
-    InterfacePkg interfacesPkg = CsFactory.eINSTANCE.createInterfacePkg(NamingConstants.CreateCommonCmd_interfaces_pkg_name);
+    InterfacePkg interfacesPkg = CsFactory.eINSTANCE
+        .createInterfacePkg(NamingConstants.CreateCommonCmd_interfaces_pkg_name);
     physicalArchitecture.setOwnedInterfacePkg(interfacesPkg);
-
 
     // Builds the data structure skeleton.
     DataPkg dataPkg = InformationFactory.eINSTANCE.createDataPkg(NamingConstants.CreateCommonCmd_data_pkg_name);
     physicalArchitecture.setOwnedDataPkg(dataPkg);
 
     // Builds the physical actors structure skeleton.
-    PhysicalComponentPkg componentPkg = PaFactory.eINSTANCE.createPhysicalComponentPkg(NamingConstants.CreatePhysicalArchCmd_actors_pkg_name);
+    PhysicalComponentPkg componentPkg = PaFactory.eINSTANCE
+        .createPhysicalComponentPkg(NamingConstants.CreatePhysicalArchCmd_actors_pkg_name);
     physicalArchitecture.setOwnedPhysicalComponentPkg(componentPkg);
 
     // Builds the physical components structure skeleton.
-    physicalComponent = PaFactory.eINSTANCE.createPhysicalComponent(NamingConstants.CreatePhysicalArchCmd_physicalComponent_name);
+    physicalComponent = PaFactory.eINSTANCE
+        .createPhysicalComponent(NamingConstants.CreatePhysicalArchCmd_physicalComponent_name);
     componentPkg.getOwnedPhysicalComponents().add(physicalComponent);
 
     Part physicalRootPart = CsFactory.eINSTANCE.createPart(physicalComponent.getName());
@@ -116,32 +136,32 @@ public class CreatePhysicalArchiCmd extends AbstractReadWriteCommand {
     physicalRootPart.setAbstractType(physicalComponent);
 
     // Build the logical component realization.
-    ComponentRealization logicalComponentRealisation = CsFactory.eINSTANCE.createComponentRealization();
-    physicalComponent.getOwnedComponentRealizations().add(logicalComponentRealisation);
-    logicalComponentRealisation.setSourceElement(physicalComponent);
     if (null != logicalComponent) {
+      ComponentRealization logicalComponentRealisation = CsFactory.eINSTANCE.createComponentRealization();
+      physicalComponent.getOwnedComponentRealizations().add(logicalComponentRealisation);
+      logicalComponentRealisation.setSourceElement(physicalComponent);
       logicalComponentRealisation.setTargetElement(logicalComponent);
     }
 
     // Build the logical architecture realization.
-    LogicalArchitectureRealization logicalArchiRealisation = PaFactory.eINSTANCE.createLogicalArchitectureRealization();
-    physicalArchitecture.getOwnedLogicalArchitectureRealizations().add(logicalArchiRealisation);
-    logicalArchiRealisation.setSourceElement(physicalArchitecture);
     if (null != logicalArchitecture) {
+      LogicalArchitectureRealization logicalArchiRealisation = PaFactory.eINSTANCE
+          .createLogicalArchitectureRealization();
+      physicalArchitecture.getOwnedLogicalArchitectureRealizations().add(logicalArchiRealisation);
+      logicalArchiRealisation.setSourceElement(physicalArchitecture);
       logicalArchiRealisation.setTargetElement(logicalArchitecture);
     }
 
     // Builds the capabilities realizations structure skeleton.
-    CapabilityRealizationPkg capaRealisationPkg =
-        LaFactory.eINSTANCE.createCapabilityRealizationPkg(NamingConstants.CreateCommonCmd_capability_realisation_pkg_name);
+    CapabilityRealizationPkg capaRealisationPkg = LaFactory.eINSTANCE
+        .createCapabilityRealizationPkg(NamingConstants.CreateCommonCmd_capability_realisation_pkg_name);
     physicalArchitecture.setOwnedAbstractCapabilityPkg(capaRealisationPkg);
 
-    // Attaches the physical architecture to its parent system engineering.
-    systemEng.getOwnedArchitectures().add(physicalArchitecture);
   }
 
   /**
    * Gets the physical architecture.
+   * 
    * @return The physical architecture.
    */
   public PhysicalArchitecture getPhysicalArchitecture() {
@@ -154,7 +174,7 @@ public class CreatePhysicalArchiCmd extends AbstractReadWriteCommand {
   public PhysicalComponent getPhysicalComponent() {
     return physicalComponent;
   }
-  
+
   /**
    * @see org.polarsys.capella.common.ef.command.AbstractCommand#getName()
    */

@@ -14,16 +14,9 @@ package org.polarsys.capella.core.semantic.queries.basic.queries;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.core.data.ctx.Actor;
-import org.polarsys.capella.core.data.ctx.SystemFunction;
-import org.polarsys.capella.core.data.la.LogicalActor;
-import org.polarsys.capella.core.data.la.LogicalFunction;
-import org.polarsys.capella.core.data.oa.OperationalActivity;
-import org.polarsys.capella.core.data.oa.OperationalActor;
-import org.polarsys.capella.core.data.pa.PhysicalActor;
-import org.polarsys.capella.core.data.pa.PhysicalFunction;
-import org.polarsys.capella.core.model.helpers.AbstractFunctionExt;
 import org.polarsys.capella.common.helpers.query.IQuery;
+import org.polarsys.capella.core.model.helpers.AbstractFunctionExt;
+import org.polarsys.capella.core.semantic.queries.basic.queries.utils.QueriesFilters;
 
 
 /**
@@ -31,7 +24,7 @@ import org.polarsys.capella.common.helpers.query.IQuery;
  * 
  * 
  */
-public class FunctionAllocatingActor   implements IQuery{
+public class FunctionAllocatingActor implements IQuery{
 
   public FunctionAllocatingActor() {
     // does nothing
@@ -42,34 +35,8 @@ public class FunctionAllocatingActor   implements IQuery{
    */
   public List<Object> compute(Object object_p) {
     List<Object> result = new ArrayList<Object>();
-    if (object_p instanceof OperationalActivity) {
-      for (Object object : AbstractFunctionExt.getAllocationBlocks(object_p)) {
-        if (object instanceof OperationalActor) {
-          result.add(object);
-        }
-      }
-    }else  if (object_p instanceof SystemFunction) {
-      for (Object object : AbstractFunctionExt.getAllocationBlocks(object_p)) {
-        if (object instanceof Actor) {
-          result.add(object);
-        }
-      }
-      
-    } else if (object_p instanceof LogicalFunction) {
-      for (Object object : AbstractFunctionExt.getAllocationBlocks(object_p)) {
-        if (object instanceof LogicalActor) {
-          result.add(object);
-        }
-      }
-    }else if (object_p instanceof PhysicalFunction ) {
-      for (Object object : AbstractFunctionExt.getAllocationBlocks(object_p)) {
-        if (object instanceof PhysicalActor) {
-          result.add(object);
-        }
-      }
-    }
-    
-    return result;
+    result.addAll(AbstractFunctionExt.getAllocationBlocks(object_p));
+    return QueriesFilters.filterListToGetOnlyActors(result);
   }
   
 }

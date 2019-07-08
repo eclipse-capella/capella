@@ -979,13 +979,13 @@ public class LCDecompositionOperations implements DecompositionModelListener {
     boolean flag = true;
     for (DecompositionComponent comp : decomposition.getTargetComponents()) {
       Object obj = comp.getValue();
-      if ((obj != null) && obj.equals(logArch.getOwnedLogicalComponent())) {
+      if ((obj != null) && obj.equals(logArch.getSystem())) {
         flag = false;
         break;
       }
     }
     if (flag) {
-      removedComponents.add(logArch.getOwnedLogicalComponent());
+      removedComponents.add((LogicalComponent)logArch.getSystem());
     }
     return removedComponents;
   }

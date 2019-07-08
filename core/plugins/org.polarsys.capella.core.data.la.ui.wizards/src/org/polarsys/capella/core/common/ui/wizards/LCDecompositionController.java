@@ -169,7 +169,7 @@ public class LCDecompositionController {
     decomp.setName(logicalArchitecture.getName());
     decomp.setValue(logicalArchitecture);
 
-    DecompositionComponent comp = createDecompositionComponent(logicalArchitecture.getOwnedLogicalComponent());
+    DecompositionComponent comp = createDecompositionComponent((LogicalComponent)logicalArchitecture.getSystem());
     comp.setParentDecomposition(decomp);
     decomp.addTargetComponent(comp);
 

@@ -24,10 +24,6 @@ import org.polarsys.capella.common.helpers.query.IQuery;
  */
 public class Component_AllocatedFunctions implements IQuery {
 
-  public Component_AllocatedFunctions() {
-    // does nothing
-  }
-
   /**
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
