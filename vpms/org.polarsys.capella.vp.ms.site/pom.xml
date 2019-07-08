@@ -16,13 +16,13 @@
 	<parent>
 		<groupId>org.polarsys</groupId>
 		<artifactId>org.polarsys.capella.addon.vpms</artifactId>
-		<version>0.12.0-SNAPSHOT</version>
+		<version>0.12.1-SNAPSHOT</version>
 		
 	</parent>
 
 	<artifactId>org.polarsys.capella.vpms.site</artifactId>
 	<packaging>eclipse-repository</packaging>
-	<version>0.12.0-SNAPSHOT</version>
+	<version>0.12.1-SNAPSHOT</version>
 
 	<properties>
 		<packagedSiteName>vpms</packagedSiteName>

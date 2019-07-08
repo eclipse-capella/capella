@@ -21,38 +21,6 @@
     </component>
   </extension>
   <extension
-        point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders">
-     <paletteProvider
-           class="org.eclipse.gmf.runtime.diagram.ui.providers.DefaultPaletteProvider">
-        <Priority
-              name="Highest">
-        </Priority>
-        <contribution>
-        <predefinedEntry
-                 id="standardGroup/zoomInTool"            
-                 remove="true">
-           </predefinedEntry>
-           <predefinedEntry
-                 id="standardGroup/noteStack/textTool"                 
-                 remove="true">
-           </predefinedEntry>
-           <predefinedEntry
-                 id="standardGroup/noteStack/noteTool"
-                 remove="true">
-           </predefinedEntry>
-           <predefinedEntry
-                 id="Classes/DataPkg"
-                 remove="true">
-           </predefinedEntry>
-
-
-        </contribution>
-        <editor
-              id="org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorID">
-        </editor>
-     </paletteProvider>
-  </extension>
-  <extension
         point="org.eclipse.sirius.refreshExtensionProvider">
      <refreshExtensionProvider
            priority="normal"

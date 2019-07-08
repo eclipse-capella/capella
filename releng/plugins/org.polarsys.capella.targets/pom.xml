@@ -33,8 +33,8 @@
 	</licenses>
 
 	<properties>
-		<tycho-version>0.25.0</tycho-version>
-		<tycho-extras-version>0.25.0</tycho-extras-version>
+		<tycho-version>1.4.0</tycho-version>
+		<tycho-extras-version>1.4.0</tycho-extras-version>
 		<targetPlatform.name>capella.target-definition.targetplatform</targetPlatform.name>
 		<converterApplication.name>fr.obeo.releng.targetplatform.targetPlatform.converter</converterApplication.name>
 		<targetPlatform.id>full</targetPlatform.id>
