@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _oe2gEKdwEeeauqwgHGcTiA
-Runtime-Version: 2.3.0.201712190725
-Save-Time: 1/23/18 2:29 PM
+Runtime-Version: 2.5.0.201906250740
+Save-Time: 7/4/19 3:16 PM
 Testcase-Type: ecl
 Verifications: _SMwS0Kd3EeeauqwgHGcTiA
 
@@ -17,9 +17,9 @@ Entry-Name: .content
 
 with [get-view "Capella Project Explorer"] {
     get-tree | select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | double-click
-    with [get-group "Select a name to find" | get-editbox -after [get-label "? = any character, * = any string"]] {
-        set-text Class
-        key-type Enter
-    }
+}
+with [get-view "Capella Project Explorer" | get-editbox] {
+    set-text Class
+    key-type Enter
 }
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

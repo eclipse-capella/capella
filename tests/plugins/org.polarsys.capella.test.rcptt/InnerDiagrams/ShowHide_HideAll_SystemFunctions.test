@@ -44,7 +44,7 @@ with [get-editor "[SDFB] Root System Function1"] {
     }
 }
 with [get-window "Transfer Dialog"] {
-    get-group "Select a name to find" | get-editbox -after [get-label "? = any character, * = any string"] | set-focus
+    get-editbox | click-text
     get-button "<<" | click
     get-button OK | click
 }
