@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.platform.sirius.ui.navigator.view;
 
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.common.ui.toolkit.widgets.filter.CapellaPatternFilter;
@@ -25,26 +26,25 @@ public class CapellaCommonNavigatorPatternFilter extends CapellaPatternFilter {
 
   @Override
   protected String getText(Viewer viewer, Object element) {
-    String text = super.getText(viewer, element);
     if (isSearchInDescriptionEnabled) {
-      if (element instanceof CapellaElement) {
-        text += " ";
-        text += ((CapellaElement) element).getDescription();
-      }
-      // TODO: if in the next release of sirius, documentation attribute is moved to DRepresentationDescriptor,
-      // we can simplify here
-      if (element instanceof DRepresentationDescriptor) {
-        DRepresentation representation = ((DRepresentationDescriptor) element).getRepresentation();
-        if (representation != null) {
-          text += " ";
-          text += representation.getDocumentation();
-        }
-      }
-      if (element instanceof DRepresentation) {
-        text += " ";
-        text += ((DRepresentation) element).getDocumentation();
-      }
+      return super.getText(viewer, element) + " " + getDescription(element);
     }
-    return text;
+    return super.getText(viewer, element);
+  }
+  
+  private String getDescription(Object element) {
+    if (element instanceof CapellaElement) {
+      return ((CapellaElement) element).getDescription();
+    }
+    if (element instanceof DRepresentation) {
+      return ((DRepresentation) element).getDocumentation();
+    }
+    if (element instanceof DRepresentationDescriptor) {
+      return getDescription(((DRepresentationDescriptor) element).getRepresentation());
+    }
+    if (element instanceof ItemWrapper) {
+      return getDescription(((ItemWrapper) element).getWrappedObject());
+    }
+    return "";
   }
 }
