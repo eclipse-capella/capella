@@ -11,7 +11,7 @@ Require-Bundle: org.polarsys.capella.core.validation,
  com.google.guava;bundle-version="11.0.2",
  org.polarsys.capella.core.data.business.queries,
  org.polarsys.capella.common.queries,
- org.polarsys.capella.core.libraries.extendedQueries,
+ org.polarsys.capella.core.libraries,
  org.polarsys.capella.core.sirius.analysis
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

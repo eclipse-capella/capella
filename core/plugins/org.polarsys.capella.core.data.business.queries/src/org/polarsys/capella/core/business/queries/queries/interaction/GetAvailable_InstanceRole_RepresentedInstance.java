@@ -22,7 +22,6 @@ import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
@@ -33,7 +32,6 @@ import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionPkgExt;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.ExchangeItemInstance;
-import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.ScenarioKind;
@@ -108,7 +106,7 @@ public class GetAvailable_InstanceRole_RepresentedInstance extends AbstractQuery
   private List<CapellaElement> getAvailableElementsForComponents(Scenario scenario) {
     List<CapellaElement> result = new ArrayList<CapellaElement>();
     result.addAll(ScenarioExt.getAllAvailableParts(scenario, Collections.emptyList()));
-    for (AbstractActor aa : ScenarioExt.getAllActors(scenario)) {
+    for (Component aa : ScenarioExt.getAllActors(scenario)) {
       for (AbstractTypedElement ate : aa.getAbstractTypedElements()) {
         if ((ate instanceof Part)) {
           result.add((Part) ate);
@@ -120,7 +118,7 @@ public class GetAvailable_InstanceRole_RepresentedInstance extends AbstractQuery
     BlockArchitecture ba = BlockArchitectureExt.getRootBlockArchitecture(scenario);
     for (EObject e : ba.eContents()) {
       if (e instanceof Component) {
-        for (Partition te : ((Component) e).getRepresentingPartitions()) {
+        for (Part te : ((Component) e).getRepresentingParts()) {
           if (te instanceof Part) {
             result.add(te);
           }

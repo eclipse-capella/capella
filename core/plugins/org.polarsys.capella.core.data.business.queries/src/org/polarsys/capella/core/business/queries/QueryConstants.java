@@ -10,539 +10,788 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries;
 
+import static org.polarsys.capella.common.queries.QuerySchema.getQueryIdentifier;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_AbstractStateProperties__Lib;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_ChangeEvent_Expression;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_ChoicePseudoState_StateRealizations;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_FinalState_AvailableInStates;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_FinalState_StateRealizations;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_ForkPseudoState_StateRealizations;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_InitialPseudoState_StateRealizations;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_JoinPseudoState_StateRealizations;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_Mode_AvailableInStates;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_Mode_ReferencedStates;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_Mode_StateRealizations;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_StateTransitionEffect__Lib;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_StateTransitionTrigger__Lib;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_StateTransition_StateTransitionRealizations;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_State_AvailableInStates;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_State_ReferencedStates;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_State_StateRealizations;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_TerminatePseudoState_StateRealizations;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_TimeEvent_Expression;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_AbstractStateProperties;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_ChangeEvent_Expression;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_ChoicePseudoState_StateRealizations;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_FinalState_AvailableInStates;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_FinalState_StateRealizations;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_ForkPseudoState_StateRealizations;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_InitialPseudoState_StateRealizations;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_JoinPseudoState_StateRealizations;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_Mode_AvailableInStates;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_Mode_ReferencedStates;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_Mode_StateRealizations;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_StateTransitionEffect;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_StateTransitionTrigger;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_StateTransition_StateTransitionRealizations;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_State_AvailableInStates;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_State_ReferencedStates;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_State_StateRealizations;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_TerminatePseudoState_StateRealizations;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_TimeEvent_Expression;
+import org.polarsys.capella.core.business.queries.queries.capellacore.GetAvailable_CapellaElement_AppliedPropertyValueGroups;
+import org.polarsys.capella.core.business.queries.queries.capellacore.GetAvailable_CapellaElement_AppliedPropertyValueGroups__Lib;
+import org.polarsys.capella.core.business.queries.queries.capellacore.GetAvailable_CapellaElement_AppliedPropertyValues;
+import org.polarsys.capella.core.business.queries.queries.capellacore.GetAvailable_CapellaElement_AppliedPropertyValues__Lib;
+import org.polarsys.capella.core.business.queries.queries.capellacore.GetAvailable_CapellaElement_Status;
+import org.polarsys.capella.core.business.queries.queries.capellacore.GetAvailable_Constraint_ConstrainedElements;
+import org.polarsys.capella.core.business.queries.queries.capellacore.GetAvailable_EnumerationPropertyValue_Type;
+import org.polarsys.capella.core.business.queries.queries.capellacore.GetAvailable_EnumerationPropertyValue_Value;
+import org.polarsys.capella.core.business.queries.queries.capellacore.GetCurrent_CapellaElement_AppliedPropertyValueGroups;
+import org.polarsys.capella.core.business.queries.queries.capellacore.GetCurrent_CapellaElement_AppliedPropertyValues;
+import org.polarsys.capella.core.business.queries.queries.capellacore.GetCurrent_CapellaElement_Status;
+import org.polarsys.capella.core.business.queries.queries.capellacore.GetCurrent_Constraint_ConstrainedElements;
+import org.polarsys.capella.core.business.queries.queries.capellacore.GetCurrent_EnumerationPropertyValue_Type;
+import org.polarsys.capella.core.business.queries.queries.capellacore.GetCurrent_EnumerationPropertyValue_Value;
+import org.polarsys.capella.core.business.queries.queries.capellamodeller.GetAvailable_SystemEngineering_ReusedSharedPkg;
+import org.polarsys.capella.core.business.queries.queries.capellamodeller.GetCurrent_SystemEngineering_ReusedSharedPkg;
+import org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_ExchangeItemAllocation_AllocatedItem;
+import org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_InterfaceImplementation_ImplementedInterface;
+import org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_InterfaceUse_UsedInterface;
+import org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_Interface_InheritedInterfaces__Lib;
+import org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_Part_DeployedElements__Lib;
+import org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_Part_TypePorts;
+import org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_Part_Type__Lib;
+import org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_PhysicalLinkCategory_Links;
+import org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_PhysicalLink_AllocatedComponentExchanges;
+import org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_PhysicalLink_Categories;
+import org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_PhysicalLink_RealizedPhysicalLinks;
+import org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_PhysicalPath_AllocatedComponentExchanges;
+import org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_PhysicalPath_RealizedPhysicalPaths;
+import org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_PhysicalPort_AllocatedComponentPorts;
+import org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_PhysicalPort_AllocatedFunctionPorts;
+import org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_PhysicalPort_RealizedPhysicalPorts;
+import org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_Component_ImplementedInterfaces;
+import org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_ExchangeItemAllocation_AllocatedItem;
+import org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_InterfaceImpl_ImplementedInterface;
+import org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_InterfaceUse_UsedInterface;
+import org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_Interface_ExchangeItems;
+import org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_Interface_InheritedInterfaces;
+import org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_Part_DeployedElements;
+import org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_Part_MaxCardinality;
+import org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_Part_MinCardinality;
+import org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_Part_Type;
+import org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_Part_TypePorts;
+import org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_PhysicalLinkCategory_Links;
+import org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_PhysicalLink_AllocatedComponentExchanges;
+import org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_PhysicalLink_Categories;
+import org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_PhysicalLink_RealizedPhysicalLinks;
+import org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_PhysicalPath_AllocatedComponentExchanges;
+import org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_PhysicalPath_RealizedPhysicalPaths;
+import org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_PhysicalPort_AllocatedComponentPorts;
+import org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_PhysicalPort_AllocatedFunctionPorts;
+import org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_PhysicalPort_RealizedPhysicalPorts;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_Capability_AvailableInStates;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_Capability_ExtendedCapabilities;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_Capability_IncludedCapabilities;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_Capability_InheritedCapabilities;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_Capability_InvolvedAbstractFunctions;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_Capability_InvolvedFunctionalChains;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_Capability_InvolvedSystemComponents;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_Capability_RealizedCapabilities;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_Mission_ExploitedCapabilities;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_Mission_InvolvedSystemComponents;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_SystemComponent_ImplementedInterfaces__Lib;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_SystemComponent_InvolvingCapabilities;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_SystemComponent_RealizedEntities;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_SystemComponent_Super;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_SystemFunction_AvailableInstates;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_SystemFunction_RealizedFunctions;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_Capability_AvailableInStates;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_Capability_ExtendedCapabilities;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_Capability_IncludedCapabilities;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_Capability_InheritedCapabilities;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_Capability_InvolvedAbstractFunctions;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_Capability_InvolvedFunctionalChains;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_Capability_InvolvedSystemComponents;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_Capability_RealizedCapabilities;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_Mission_IncludedCapabilities;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_Mission_InvolvedSystemComponents;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_SystemComponent_ImplementedInterfaces;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_SystemComponent_InvolvingCapabilities;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_SystemComponent_Super;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_SystemComponent_UsedInterfaces;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_SystemFunction_AvailableInstates;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_SystemFunction_RealizedFunctions;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_System_RealizedEntities;
+import org.polarsys.capella.core.business.queries.queries.epbs.GetAvailable_ConfigurationItem_ImplementedInterfaces__Lib;
+import org.polarsys.capella.core.business.queries.queries.epbs.GetAvailable_ConfigurationItem_InvolvingCapabilityRealizations;
+import org.polarsys.capella.core.business.queries.queries.epbs.GetAvailable_ConfigurationItem_RealizedPhysicalArtifacts;
+import org.polarsys.capella.core.business.queries.queries.epbs.GetAvailable_ConfigurationItem_UsedInterfaces__Lib;
+import org.polarsys.capella.core.business.queries.queries.epbs.GetAvailable_EPBSArchitecture_AllocatedPhysicalArchitecture;
+import org.polarsys.capella.core.business.queries.queries.epbs.GetCurrent_ConfigurationItem_ImplementedInterfaces;
+import org.polarsys.capella.core.business.queries.queries.epbs.GetCurrent_ConfigurationItem_InvolvingCapabilityRealizations;
+import org.polarsys.capella.core.business.queries.queries.epbs.GetCurrent_ConfigurationItem_RealizedPhysicalArtifacts;
+import org.polarsys.capella.core.business.queries.queries.epbs.GetCurrent_ConfigurationItem_UsedInterfaces;
+import org.polarsys.capella.core.business.queries.queries.epbs.GetCurrent_EPBSArchitecture_AllocatedPhysicalArchitecture;
+import org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_AbstractFunctionalBlock_AllocatedFunctions;
+import org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_ComponentExchangeCategory_Exchanges;
+import org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_ComponentExchange_AllocatedFunctionalExchanges;
+import org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_ComponentExchange_Categories;
+import org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_ComponentExchange_RealizedComponentExchanges;
+import org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_ComponentPort_AllocatedPort;
+import org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_ComponentPort_ConnectedPorts;
+import org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_ComponentPort_RealizedComponentPort;
+import org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_ComponentPort_Type;
+import org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_ExchangeCategory_Exchanges;
+import org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_FunctionInputPort_ProvidedInterface;
+import org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_FunctionInputPort_RealizedFunctionInputPort;
+import org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_FunctionInputPort_RequiredInterface;
+import org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_FunctionOutputPort_ProvidedInterface;
+import org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_FunctionOutputPort_RealizedFunctionOutputPort;
+import org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_FunctionOutputPort_RequiredInterface;
+import org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_FunctionalChainInvolvementLink_ExchangeItems;
+import org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_FunctionalChain_AvailableInStates;
+import org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_FunctionalChain_RealizedFunctionalChains;
+import org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_FunctionalExchange_Categories;
+import org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_FunctionalExchange_FunctionalExchangeRealizations;
+import org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_SequenceLink_Links;
+import org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_AbstractFunctionalBlock_AllocatedFunctions;
+import org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_ComponentExchangeCategory_Exchanges;
+import org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_ComponentExchange_AllocatedFunctionalExchanges;
+import org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_ComponentExchange_Categories;
+import org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_ComponentExchange_ConvoyedInformations;
+import org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_ComponentExchange_RealizedComponentExchanges;
+import org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_ComponentPort_AllocatedPort;
+import org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_ComponentPort_ConnectedPorts;
+import org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_ComponentPort_MaxCardinality;
+import org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_ComponentPort_MinCardinality;
+import org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_ComponentPort_ProvidedInterfaces;
+import org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_ComponentPort_RealizedComponentPort;
+import org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_ComponentPort_RequiredInterfaces;
+import org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_ComponentPort_Type;
+import org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_ExchangeCategory_Exchanges;
+import org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionInputPort_InComingExchangeItems;
+import org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionInputPort_ProvidedInterface;
+import org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionInputPort_RealizedFunctionInputPort;
+import org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionInputPort_RequiredInterface;
+import org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionOutputPort_OutGoingExchangeItems;
+import org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionOutputPort_ProvidedInterface;
+import org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionOutputPort_RealizedFunctionOutputPort;
+import org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionOutputPort_RequiredInterface;
+import org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionalChainInvolvementLink_ExchangeItems;
+import org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionalChain_AvailableInStates;
+import org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionalChain_RealizedFunctionalChains;
+import org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionalExchange_Categories;
+import org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionalExchange_ExchangeItems;
+import org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionalExchange_FunctionalExchangeRealizations;
+import org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_SequenceLink_Links;
+import org.polarsys.capella.core.business.queries.queries.information.*;
+import org.polarsys.capella.core.business.queries.queries.interaction.GetAvailable_InstanceRole_RepresentedInstance__Lib;
+import org.polarsys.capella.core.business.queries.queries.interaction.GetAvailable_InteractionUse_ReferencedScenario;
+import org.polarsys.capella.core.business.queries.queries.interaction.GetAvailable_Scenario_RealizedScenario;
+import org.polarsys.capella.core.business.queries.queries.interaction.GetAvailable_SequenceMessage_ExchangedItems;
+import org.polarsys.capella.core.business.queries.queries.interaction.GetAvailable_SequenceMessage_InvokedOperation;
+import org.polarsys.capella.core.business.queries.queries.interaction.GetAvailable_SequenceMessage_ServiceInterface__Lib;
+import org.polarsys.capella.core.business.queries.queries.interaction.GetAvailable_StateFragment_RelatedAbstractFunction;
+import org.polarsys.capella.core.business.queries.queries.interaction.GetAvailable_StateFragment_RelatedAbstractState;
+import org.polarsys.capella.core.business.queries.queries.interaction.GetCurrent_InstanceRole_RepresentedInstance;
+import org.polarsys.capella.core.business.queries.queries.interaction.GetCurrent_InteractionUse_ReferencedScenario;
+import org.polarsys.capella.core.business.queries.queries.interaction.GetCurrent_Scenario_RealizedScenario;
+import org.polarsys.capella.core.business.queries.queries.interaction.GetCurrent_SequenceMessage_ExchangedItems;
+import org.polarsys.capella.core.business.queries.queries.interaction.GetCurrent_SequenceMessage_InvokedOperation;
+import org.polarsys.capella.core.business.queries.queries.interaction.GetCurrent_SequenceMessage_ServiceInterface;
+import org.polarsys.capella.core.business.queries.queries.interaction.GetCurrent_StateFragment_RelatedAbstractFunction;
+import org.polarsys.capella.core.business.queries.queries.interaction.GetCurrent_StateFragment_RelatedAbstractState;
+import org.polarsys.capella.core.business.queries.queries.la.GetAvailable_CapabilityRealization_AvailableInStates;
+import org.polarsys.capella.core.business.queries.queries.la.GetAvailable_CapabilityRealization_InheritedCapabilities;
+import org.polarsys.capella.core.business.queries.queries.la.GetAvailable_CapabilityRealization_InvolvedAbstractFunctions;
+import org.polarsys.capella.core.business.queries.queries.la.GetAvailable_CapabilityRealization_InvolvedComponents;
+import org.polarsys.capella.core.business.queries.queries.la.GetAvailable_CapabilityRealization_InvolvedFunctionalChains;
+import org.polarsys.capella.core.business.queries.queries.la.GetAvailable_CapabilityRealization_RealizedCapabilities;
+import org.polarsys.capella.core.business.queries.queries.la.GetAvailable_LogicalComponentShortcut_ReferencedLC;
+import org.polarsys.capella.core.business.queries.queries.la.GetAvailable_LogicalComponent_ImplementedInterfaces__Lib;
+import org.polarsys.capella.core.business.queries.queries.la.GetAvailable_LogicalComponent_InvolvingCapabilityRealizations;
+import org.polarsys.capella.core.business.queries.queries.la.GetAvailable_LogicalComponent_RealizedComponents;
+import org.polarsys.capella.core.business.queries.queries.la.GetAvailable_LogicalComponent_Super;
+import org.polarsys.capella.core.business.queries.queries.la.GetAvailable_LogicalComponent_Super__Lib;
+import org.polarsys.capella.core.business.queries.queries.la.GetAvailable_LogicalComponent_UsedInterfaces__Lib;
+import org.polarsys.capella.core.business.queries.queries.la.GetAvailable_LogicalFunction_AvailableInstates;
+import org.polarsys.capella.core.business.queries.queries.la.GetAvailable_LogicalFunction_RealizedFunctions;
+import org.polarsys.capella.core.business.queries.queries.la.GetCurrent_CapabilityRealization_AvailableInStates;
+import org.polarsys.capella.core.business.queries.queries.la.GetCurrent_CapabilityRealization_InheritedCapabilities;
+import org.polarsys.capella.core.business.queries.queries.la.GetCurrent_CapabilityRealization_InvolvedAbstractFunctions;
+import org.polarsys.capella.core.business.queries.queries.la.GetCurrent_CapabilityRealization_InvolvedComponents;
+import org.polarsys.capella.core.business.queries.queries.la.GetCurrent_CapabilityRealization_InvolvedFunctionalChains;
+import org.polarsys.capella.core.business.queries.queries.la.GetCurrent_CapabilityRealization_RealizedCapabilities;
+import org.polarsys.capella.core.business.queries.queries.la.GetCurrent_LogicalComponentShortcut_ReferencedLC;
+import org.polarsys.capella.core.business.queries.queries.la.GetCurrent_LogicalComponent_ImplementedInterfaces;
+import org.polarsys.capella.core.business.queries.queries.la.GetCurrent_LogicalComponent_InvolvingCapabilityRealizations;
+import org.polarsys.capella.core.business.queries.queries.la.GetCurrent_LogicalComponent_RealizedComponents;
+import org.polarsys.capella.core.business.queries.queries.la.GetCurrent_LogicalComponent_Super;
+import org.polarsys.capella.core.business.queries.queries.la.GetCurrent_LogicalComponent_UsedInterfaces;
+import org.polarsys.capella.core.business.queries.queries.la.GetCurrent_LogicalFunction_AvailableInstates;
+import org.polarsys.capella.core.business.queries.queries.la.GetCurrent_LogicalFunction_RealizedFunctions;
+import org.polarsys.capella.core.business.queries.queries.oa.GetAvailable_CommunicationMean_AllocatedFunctionalExchanges;
+import org.polarsys.capella.core.business.queries.queries.oa.GetAvailable_Entity_AllocatedRoles;
+import org.polarsys.capella.core.business.queries.queries.oa.GetAvailable_OperationalActivity_AvailableInstates;
+import org.polarsys.capella.core.business.queries.queries.oa.GetAvailable_OperationalCapability_AvailableInStates;
+import org.polarsys.capella.core.business.queries.queries.oa.GetAvailable_OperationalCapability_InheritedCapabilities;
+import org.polarsys.capella.core.business.queries.queries.oa.GetAvailable_OperationalCapability_InvolvedActivity;
+import org.polarsys.capella.core.business.queries.queries.oa.GetAvailable_OperationalCapability_InvolvedEntities;
+import org.polarsys.capella.core.business.queries.queries.oa.GetAvailable_OperationalCapability_InvolvedOperationalProcess;
+import org.polarsys.capella.core.business.queries.queries.oa.GetAvailable_OperationalProcess_AvailableInStates;
+import org.polarsys.capella.core.business.queries.queries.oa.GetAvailable_Role_AllocatedActivities;
+import org.polarsys.capella.core.business.queries.queries.oa.GetCurrent_CommunicationMean_AllocatedFunctionalExchanges;
+import org.polarsys.capella.core.business.queries.queries.oa.GetCurrent_Entity_AllocatedRoles;
+import org.polarsys.capella.core.business.queries.queries.oa.GetCurrent_OperationalActivity_AvailableInstates;
+import org.polarsys.capella.core.business.queries.queries.oa.GetCurrent_OperationalCapability_AvailableInStates;
+import org.polarsys.capella.core.business.queries.queries.oa.GetCurrent_OperationalCapability_InheritedCapabilities;
+import org.polarsys.capella.core.business.queries.queries.oa.GetCurrent_OperationalCapability_InvolvedActivity;
+import org.polarsys.capella.core.business.queries.queries.oa.GetCurrent_OperationalCapability_InvolvedEntities;
+import org.polarsys.capella.core.business.queries.queries.oa.GetCurrent_OperationalCapability_InvolvedOperationalProcess;
+import org.polarsys.capella.core.business.queries.queries.oa.GetCurrent_OperationalProcess_AvailableInStates;
+import org.polarsys.capella.core.business.queries.queries.oa.GetCurrent_Role_AllocatedActivities;
+import org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_ComponentInstance_Deployers;
+import org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_ComponentInstance_Deployments;
+import org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_DeployConf_Deployments;
+import org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalArchitecture_AllocatedLogicalArchitecture;
+import org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalComp_Deployers;
+import org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalComp_Deployments;
+import org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalComponent_DeployedComponents;
+import org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalComponent_ImplementedInterfaces__Lib;
+import org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalComponent_InvolvingCapabilityRealizations;
+import org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalComponent_RealizedComponents;
+import org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalComponent_Super;
+import org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalComponent_Super__Lib;
+import org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalComponent_UsedInterfaces__Lib;
+import org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalFunction_AvailableInstates;
+import org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalFunction_RealizedFunctions;
+import org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalInterface_InheritedInterfaces;
+import org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalNode_Deployers;
+import org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalNode_Deployments;
+import org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_ComponentInstance_Deployers;
+import org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_ComponentInstance_Deployments;
+import org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_DeployConf_Deployments;
+import org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalArchitecture_AllocatedLogicalArchitecture;
+import org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalComp_Deployers;
+import org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalComp_Deployments;
+import org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalComponent_DeployedComponents;
+import org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalComponent_ImplementedInterfaces;
+import org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalComponent_InvolvingCapabilityRealizations;
+import org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalComponent_RealizedComponents;
+import org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalComponent_Super;
+import org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalComponent_UsedInterfaces;
+import org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalFunction_AvailableInstates;
+import org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalFunction_RealizedFunctions;
+import org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalInterface_InheritedInterfaces;
+import org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalNode_Deployers;
+import org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalNode_Deployments;
+
 public class QueryConstants {
 
-  public static final String ECLASS_PARAMETER = "theClass"; //$NON-NLS-1$
+  public static final String ECLASS_PARAMETER = "theClass";
+  public static final String ESTRUCTURAL_FEATURE_PARAMETER = "theStructuralFeature";
 
-  public static final String GET_AVAILABLE__ABSTRACT_EXPRESSION_VALUE__OPERAND___LIB = "GetAvailable_AbstractExpressionValue_Operand__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__ABSTRACT_EXPRESSION_VALUE__TYPE___LIB = "GetAvailable_AbstractExpressionValue_Type__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__ABSTRACT_STATE_PROPERTIES___LIB = "GetAvailable_AbstractStateProperties__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__ACTIVITY_EDGE__SOURCE = "GetAvailable_ActivityEdge_Source"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__ACTIVITY_EDGE__TARGET = "GetAvailable_ActivityEdge_Target"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__ACTOR__IMPLEMENTED_INTERFACES___LIB = "GetAvailable_Actor_ImplementedInterfaces__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__ACTOR__INHERITED_ACTORS = "GetAvailable_Actor_InheritedActors"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__ACTOR__INTERACTING_CAPABILITIES = "GetAvailable_Actor_InteractingCapabilities"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__ACTOR__REALIZED_CAPABILITIES = "GetAvailable_Actor_RealizedCapabilities"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__ACTOR__REALIZED_OPERATIONAL_ACTORS = "GetAvailable_Actor_RealizedOperationalActors"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__ACTOR__REALIZED_OPERATIONAL_ENTITIES = "GetAvailable_Actor_RealizedOperationalEntities"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__ACTOR__USED_INTERFACES___LIB = "GetAvailable_Actor_UsedInterfaces__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__BOOLEAN_TYPE__DEFAULT_VALUE___LIB = "GetAvailable_BooleanType_DefaultValue__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__BOOLEAN_TYPE__INHERITED_BOOLEAN_TYPE___LIB = "GetAvailable_BooleanType_InheritedBooleanType__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__BOOLEAN_TYPE__PROPERTY = "GetAvailable_BooleanType_Property"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__BOOLEAN_TYPE__REALIZED_BOOLEAN_TYPE = "GetAvailable_BooleanType_RealizedBooleanType"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CAPABILITY_REALIZATION__ACTOR_CAPABILITY_REALIZATION = "GetAvailable_CapabilityRealization_ActorCapabilityRealization"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CAPABILITY_REALIZATION__AVAILABLE_IN_STATES = "GetAvailable_CapabilityRealization_AvailableInStates"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CAPABILITY_REALIZATION__COMPONENT_CAPABILITY_REALIZATION = "GetAvailable_CapabilityRealization_ComponentCapabilityRealization"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CAPABILITY_REALIZATION__INHERITED_CAPABILITIES = "GetAvailable_CapabilityRealization_InheritedCapabilities"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CAPABILITY_REALIZATION__INTERACTING_COMPONENTS = "GetAvailable_CapabilityRealization_InteractingComponents"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CAPABILITY_REALIZATION__INVOLVED_ABSTRACT_FUNCTIONS = "GetAvailable_CapabilityRealization_InvolvedAbstractFunctions"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CAPABILITY_REALIZATION__INVOLVED_FUNCTIONAL_CHAINS = "GetAvailable_CapabilityRealization_InvolvedFunctionalChains"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CAPABILITY_REALIZATION__REALIZED_CAPABILITIES = "GetAvailable_CapabilityRealization_RealizedCapabilities"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CAPABILITY__AVAILABLE_IN_STATES = "GetAvailable_Capability_AvailableInStates"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CAPABILITY__EXTENDED_CAPABILITIES = "GetAvailable_Capability_ExtendedCapabilities"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CAPABILITY__INCLUDED_CAPABILITIES = "GetAvailable_Capability_IncludedCapabilities"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CAPABILITY__INHERITED_CAPABILITIES = "GetAvailable_Capability_InheritedCapabilities"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CAPABILITY__INTERACTING_ACTORS = "GetAvailable_Capability_InteractingActors"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CAPABILITY__INVOLVED_ABSTRACT_FUNCTIONS = "GetAvailable_Capability_InvolvedAbstractFunctions"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CAPABILITY__INVOLVED_FUNCTIONAL_CHAINS = "GetAvailable_Capability_InvolvedFunctionalChains"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CAPABILITY__REALIZED_CAPABILITIES = "GetAvailable_Capability_RealizedCapabilities"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS = "GetAvailable_CapellaElement_AppliedPropertyValueGroups"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS_LIB = "GetAvailable_CapellaElement_AppliedPropertyValueGroups_Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUES = "GetAvailable_CapellaElement_AppliedPropertyValues"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUES_LIB = "GetAvailable_CapellaElement_AppliedPropertyValues_Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CAPELLA_ELEMENT__STATUS = "GetAvailable_CapellaElement_Status"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CHANGE_EVENT__EXPRESSION = "GetAvailable_ChangeEvent_Expression"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CHOICE_PSEUDO_STATE__STATE_REALIZATIONS = "GetAvailable_ChoicePseudoState_StateRealizations"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CLASS__INHERITED_CLASSES___LIB = "GetAvailable_Class_InheritedClasses__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CLASS__REALIZED_CLASSES = "GetAvailable_Class_RealizedClasses"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__COLLECTION__DEFAULT_VALUE = "GetAvailable_Collection_DefaultValue"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__COLLECTION__INDEX = "GetAvailable_Collection_Index"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__COLLECTION__INHERITED_COLLECTION___LIB = "GetAvailable_Collection_InheritedCollection__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__COLLECTION__MAX_VALUE = "GetAvailable_Collection_MaxValue"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__COLLECTION__MIN_VALUE = "GetAvailable_Collection_MinValue"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__COLLECTION__NULL_VALUE = "GetAvailable_Collection_NullValue"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__COLLECTION__TYPE___LIB = "GetAvailable_Collection_Type__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__COMMUNICATION_LINK__EXCHANGE_ITEMS = "GetAvailable_CommunicationLink_ExchangeItems"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__COMMUNICATION_MEAN__FUNCTIONAL_EXCHANGES = "GetAvailable_CommunicationMean_FunctionalExchanges"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__COMPONENT_EXCHANGE_CATEGORY__EXCHANGES = "GetAvailable_ComponentExchangeCategory_Exchanges"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__COMPONENT_EXCHANGE__CATEGORIES = "GetAvailable_ComponentExchange_Categories"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__COMPONENT_INSTANCE__DEPLOYERS = "GetAvailable_ComponentInstance_Deployers"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__COMPONENT_INSTANCE__DEPLOYMENTS = "GetAvailable_ComponentInstance_Deployments"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__ABSTRACT_FUNCTIONAL_BLOCK__ALLOCATED_FUNCTIONS = "GetAvailable_AbstractFunctionalBlock_AllocatedFunctions"; //$NON-NLS-1$
-  public static final String GET_CURRENT__ABSTRACT_FUNCTIONAL_BLOCK__ALLOCATED_FUNCTIONS = "GetCurrent_AbstractFunctionalBlock_AllocatedFunctions"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__COMPONENT_PORT__ALLOCATED_PORT = "GetAvailable_ComponentPort_AllocatedPort"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__COMPONENT_PORT__CONNECTED_PORTS = "GetAvailable_ComponentPort_ConnectedPorts"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__COMPONENT_PORT__MAX_CARDINALITY = "GetAvailable_ComponentPort_MaxCardinality"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__COMPONENT_PORT__MIN_CARDINALITY = "GetAvailable_ComponentPort_MinCardinality"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__COMPONENT_PORT__PROVIDED_INTERFACES___LIB = "GetAvailable_ComponentPort_ProvidedInterfaces__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__COMPONENT_PORT__REALIZED_COMPONENT_PORT = "GetAvailable_ComponentPort_RealizedComponentPort"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__COMPONENT_PORT__REQUIRED_INTERFACES___LIB = "GetAvailable_ComponentPort_RequiredInterfaces__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__COMPONENT_PORT__TYPE = "GetAvailable_ComponentPort_Type"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__COMPONENT__IMPLEMENTED_INTERFACES = "GetAvailable_Component_ImplementedInterfaces"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CONFIGURATION_ITEM__IMPLEMENTED_INTERFACES___LIB = "GetAvailable_ConfigurationItem_ImplementedInterfaces__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CONFIGURATION_ITEM__IMPLEMENTED_P_C = "GetAvailable_ConfigurationItem_ImplementedPC"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CONFIGURATION_ITEM__INVOLVED_REALIZATION = "GetAvailable_ConfigurationItem_InvolvedRealization"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CONFIGURATION_ITEM__USED_INTERFACES___LIB = "GetAvailable_ConfigurationItem_UsedInterfaces__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CONNECTION__CONNECTION_FUNCTIONAL_EXCHANGE_ALLOCATIONS = "GetAvailable_Connection_ConnectionFunctionalExchangeAllocations"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CONNECTION__CONNECTION_REALIZATIONS = "GetAvailable_Connection_ConnectionRealizations"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CONNECTION__CONVOYED_INFORMATION___LIB = "GetAvailable_Connection_ConvoyedInformation__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__CONSTRAINT__CONSTRAINED_ELEMENTS = "GetAvailable_Constraint_ConstrainedElements"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__DATA_VALUE__ABSTRACT_TYPE___LIB = "GetAvailable_DataValue_AbstractType__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__DEPLOY_CONF__DEPLOYMENTS = "GetAvailable_DeployConf_Deployments"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__E_P_B_S_ARCHITECTURE__ALLOCATED_PHYSICAL_ARCHITECTURE = "GetAvailable_EPBSArchitecture_AllocatedPhysicalArchitecture"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__ENTITY__ALLOCATED_ROLES = "GetAvailable_Entity_AllocatedRoles"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__ENUMERATION_LITERAL_ABSTRACT_TYPE = "GetAvailable_EnumerationLiteralAbstractType"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__ENUMERATION_LITERAL_DOMAIN_VALUE___LIB = "GetAvailable_EnumerationLiteralDomainValue__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__ENUMERATION_PROPERTY_VALUE__TYPE = "GetAvailable_EnumerationPropertyValue_Type"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__ENUMERATION_PROPERTY_VALUE_TYPE__LIB = "GetAvailable_EnumerationPropertyValue_Type__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__ENUMERATION_PROPERTY_VALUE__VALUE = "GetAvailable_EnumerationPropertyValue_Value"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__ENUMERATION__DEFAULT_VALUE___LIB = "GetAvailable_Enumeration_DefaultValue__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__ENUMERATION__DOMAIN_TYPE___LIB = "GetAvailable_Enumeration_DomainType__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__ENUMERATION__INHERITED_ENUMERATION___LIB = "GetAvailable_Enumeration_InheritedEnumeration__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__ENUMERATION__REALIZED_ENUMERATION = "GetAvailable_Enumeration_RealizedEnumeration"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__EXCEPTION__INHERITED_EXCEPTION = "GetAvailable_Exception_InheritedException"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__EXCHANGE_CATEGORY__EXCHANGES = "GetAvailable_ExchangeCategory_Exchanges"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM = "GetAvailable_ExchangeItemAllocation_AllocatedItem"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__EXCHANGE_ITEM_ELEMENT__REFERENCED_PROPERTIES = "GetAvailable_ExchangeItemElement_ReferencedProperties"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__EXCHANGE_ITEM_ELEMENT__TYPE___LIB = "GetAvailable_ExchangeItemElement_Type__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__EXCHANGE_ITEM__INHERITED_EXCHANGE_ITEM___LIB = "GetAvailable_ExchangeItem_InheritedExchangeItem__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__EXCHANGE_ITEM__REALIZED_INFORMATIONS = "GetAvailable_ExchangeItem_RealizedInformations"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__FINAL_STATE__AVAILABLE_IN_STATES = "GetAvailable_FinalState_AvailableInStates"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__FINAL_STATE__STATE_REALIZATIONS = "GetAvailable_FinalState_StateRealizations"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__FORK_PSEUDO_STATE__STATE_REALIZATIONS = "GetAvailable_ForkPseudoState_StateRealizations"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__FUNCTION_INPUT_PORT__IN_COMING_EXCHANGE_ITEMS___LIB = "GetAvailable_FunctionInputPort_InComingExchangeItems__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__FUNCTION_INPUT_PORT__PROVIDED_INTERFACE = "GetAvailable_FunctionInputPort_ProvidedInterface"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__FUNCTION_INPUT_PORT__REALIZED_FUNCTION_INPUT_PORT = "GetAvailable_FunctionInputPort_RealizedFunctionInputPort"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__FUNCTION_INPUT_PORT__REQUIRED_INTERFACE = "GetAvailable_FunctionInputPort_RequiredInterface"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__FUNCTION_OUTPUT_PORT__OUT_GOING_EXCHANGE_ITEMS___LIB = "GetAvailable_FunctionOutputPort_OutGoingExchangeItems__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__FUNCTION_OUTPUT_PORT__PROVIDED_INTERFACE = "GetAvailable_FunctionOutputPort_ProvidedInterface"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__FUNCTION_OUTPUT_PORT__REALIZED_FUNCTION_OUTPUT_PORT = "GetAvailable_FunctionOutputPort_RealizedFunctionOutputPort"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__FUNCTION_OUTPUT_PORT__REQUIRED_INTERFACE = "GetAvailable_FunctionOutputPort_RequiredInterface"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__EXCHANGE_ITEMS = "GetAvailable_FunctionalChainInvolvementLink_ExchangeItems"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__FUNCTIONAL_CHAIN__AVAILABLE_IN_STATES = "GetAvailable_FunctionalChain_AvailableInStates"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__FUNCTIONAL_CHAIN__REALIZED_FUNCTIONAL_CHAINS = "GetAvailable_FunctionalChain_RealizedFunctionalChains"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__FUNCTIONAL_EXCHANGE__CATEGORIES = "GetAvailable_FunctionalExchange_Categories"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__FUNCTIONAL_EXCHANGE__EXCHANGE_ITEMS___LIB = "GetAvailable_FunctionalExchange_ExchangeItems__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__FUNCTIONAL_EXCHANGE__SOURCE = "GetAvailable_FunctionalExchange_Source"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__FUNCTIONAL_EXCHANGE__TARGET = "GetAvailable_FunctionalExchange_Target"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__FUNCTIONAL_EXCHANGE__FUNCTIONAL_EXCHANGE_REALIZATIONS = "GetAvailable_FunctionalExchange_FunctionalExchangeRealizations"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__GENERIC__REFERENCED_PROPERTY___LIB = "GetAvailable_Generic_ReferencedProperty__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__GENERIC__REFERENCED_VALUE___LIB = "GetAvailable_Generic_ReferencedValue__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__INITIAL_PSEUDO_STATE__STATE_REALIZATIONS = "GetAvailable_InitialPseudoState_StateRealizations"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__INSTANCE_ROLE__REPRESENTED_INSTANCE___LIB = "GetAvailable_InstanceRole_RepresentedInstance__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__INTERACTION_USE__REFERENCED_SCENARIO = "GetAvailable_InteractionUse_ReferencedScenario"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__INTERFACE_IMPLEMENTATION__IMPLEMENTED_INTERFACE = "GetAvailable_InterfaceImplementation_ImplementedInterface"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__INTERFACE_USE__USED_INTERFACE = "GetAvailable_InterfaceUse_UsedInterface"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__INTERFACE__EXCHANGE_ITEMS___LIB = "GetAvailable_Interface_ExchangeItems__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__INTERFACE__INHERITED_INTERFACES___LIB = "GetAvailable_Interface_InheritedInterfaces__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__JOIN_PSEUDO_STATE__STATE_REALIZATIONS = "GetAvailable_JoinPseudoState_StateRealizations"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__LITERAL_BOOLEAN_VALUE__ABSTRACT_TYPE = "GetAvailable_LiteralBooleanValue_AbstractType"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__LITERAL_NUMERIC_VALUE__ABSTRACT_TYPE___LIB = "GetAvailable_LiteralNumericValue_AbstractType__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__LITERAL_STRING_VALUE__ABSTRACT_TYPE___LIB = "GetAvailable_LiteralStringValue_AbstractType__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__LOGICAL_ACTOR__ACTOR_REALIZATION = "GetAvailable_LogicalActor_ActorRealization"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__LOGICAL_ACTOR__IMPL_INTERFACES___LIB = "GetAvailable_LogicalActor_ImplInterfaces__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__LOGICAL_ACTOR__INHERITED_ACTORS___LIB = "GetAvailable_LogicalActor_InheritedActors__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__LOGICAL_ACTOR__USED_INTERFACES___LIB = "GetAvailable_LogicalActor_UsedInterfaces__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__LOGICAL_COMPONENT_SHORTCUT__REFERENCED_L_C = "GetAvailable_LogicalComponentShortcut_ReferencedLC"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__LOGICAL_COMPONENT__IMPLEMENTED_INTERFACES___LIB = "GetAvailable_LogicalComponent_ImplementedInterfaces__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__LOGICAL_COMPONENT__INVOLVED_REALIZATIONS = "GetAvailable_LogicalComponent_InvolvedRealizations"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__LOGICAL_COMPONENT__USED_INTERFACES___LIB = "GetAvailable_LogicalComponent_UsedInterfaces__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__LOGICAL_FUNCTION__AVAILABLE_INSTATES = "GetAvailable_LogicalFunction_AvailableInstates"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__LOGICAL_FUNCTION__FUNCTIONAL_REALIZATION = "GetAvailable_LogicalFunction_FunctionalRealization"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__MESSAGE__INHERITED_MESSAGE = "GetAvailable_Message_InheritedMessage"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__MISSION__INCLUDED_CAPABILITIES = "GetAvailable_Mission_IncludedCapabilities"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__MISSION__INTERACTING_ACTORS = "GetAvailable_Mission_InteractingActors"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__MODE__AVAILABLE_IN_STATES = "GetAvailable_Mode_AvailableInStates"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__MODE__REFERENCED_STATES = "GetAvailable_Mode_ReferencedStates"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__MODE__STATE_REALIZATIONS = "GetAvailable_Mode_StateRealizations"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__NUMERIC_TYPE__DEFAULT_VALUE___LIB = "GetAvailable_NumericType_DefaultValue__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__NUMERIC_TYPE__INHERITED_NUMERIC_TYPE___LIB = "GetAvailable_NumericType_InheritedNumericType__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__NUMERIC_TYPE__NULL_VALUE___LIB = "GetAvailable_NumericType_NullValue__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__NUMERIC_TYPE__PROPERTY = "GetAvailable_NumericType_Property"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__NUMERIC_TYPE__REALIZED_NUMERIC_TYPE = "GetAvailable_NumericType_RealizedNumericType"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__NUMERIC_VALUE__TYPE = "GetAvailable_NumericValue_Type"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__NUMERIC_VALUE__UNIT___LIB = "GetAvailable_NumericValue_Unit__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__OPERATIONAL_ACTIVITY__AVAILABLE_INSTATES = "GetAvailable_OperationalActivity_AvailableInstates"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__OPERATIONAL_CAPABILITY__AVAILABLE_IN_STATES = "GetAvailable_OperationalCapability_AvailableInStates"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__OPERATIONAL_CAPABILITY__INHERITED_CAPABILITIES = "GetAvailable_OperationalCapability_InheritedCapabilities"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__OPERATIONAL_CAPABILITY__INVOLVED_ACTIVITY = "GetAvailable_OperationalCapability_InvolvedActivity"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__OPERATIONAL_CAPABILITY__INVOLVED_ENTITIES = "GetAvailable_OperationalCapability_InvolvedEntities"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__OPERATIONAL_CAPABILITY__INVOLVED_OPERATIONAL_PROCESS = "GetAvailable_OperationalCapability_InvolvedOperationalProcess"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__OPERATIONAL_PROCESS__AVAILABLE_IN_STATES = "GetAvailable_OperationalProcess_AvailableInStates"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PARAMETER__MAX_CARDINALITY = "GetAvailable_Parameter_MaxCardinality"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PARAMETER__MIN_CARDINALITY = "GetAvailable_Parameter_MinCardinality"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PARAMETER__TYPE = "GetAvailable_Parameter_Type"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PART__DEPLOYED_ELEMENTS___LIB = "GetAvailable_Part_DeployedElements__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PART__TYPE_PORTS = "GetAvailable_Part_TypePorts"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PART__TYPE___LIB = "GetAvailable_Part_Type__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_ACTOR__IMPLEMENTED_INTERFACES___LIB = "GetAvailable_PhysicalActor_ImplementedInterfaces__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_ACTOR__INHERITED_ACTORS___LIB = "GetAvailable_PhysicalActor_InheritedActors__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_ACTOR__INTERACTING_CAPABILITIES = "GetAvailable_PhysicalActor_InteractingCapabilities"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_ACTOR__LOGICAL_ACTOR_REALIZATION = "GetAvailable_PhysicalActor_LogicalActorRealization"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_ACTOR__REALIZED_CAPABILITIES = "GetAvailable_PhysicalActor_RealizedCapabilities"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_ACTOR__USED_INTERFACES___LIB = "GetAvailable_PhysicalActor_UsedInterfaces__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_ARCHITECTURE__ALLOCATED_LOGICAL_ARCHITECTURE = "GetAvailable_PhysicalArchitecture_AllocatedLogicalArchitecture"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_COMP__DEFINE_REALIZATIONS = "GetAvailable_PhysicalComp_DefineRealizations"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_COMP__DEPLOYERS = "GetAvailable_PhysicalComp_Deployers"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_COMP__DEPLOYMENTS = "GetAvailable_PhysicalComp_Deployments"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_COMP__IMPLEMENTED_INTERFACE___LIB = "GetAvailable_PhysicalComp_ImplementedInterface__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_COMP__IMPLEMENTED_L_C_S = "GetAvailable_PhysicalComp_ImplementedLCS"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_COMP__USED_INTERFACE___LIB = "GetAvailable_PhysicalComp_UsedInterface__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_COMPONENT__DEPLOYED_COMPONENTS = "GetAvailable_PhysicalComponent_DeployedComponents"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_COMPONENT__LOGICAL_COMPONENT_REALIZATION = "GetAvailable_PhysicalComponent_LogicalComponentRealization"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_FUNCTION__AVAILABLE_INSTATES = "GetAvailable_PhysicalFunction_AvailableInstates"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_FUNCTION__FUNCTIONAL_REALIZATION = "GetAvailable_PhysicalFunction_FunctionalRealization"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_INTERFACE__INHERITED_INTERFACES = "GetAvailable_PhysicalInterface_InheritedInterfaces"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_LINK_CATEGORY__LINKS = "GetAvailable_PhysicalLinkCategory_Links"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_LINK__ALLOCATED_COMPONENT_EXCHANGES = "GetAvailable_PhysicalLink_AllocatedComponentExchanges"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_LINK__CATEGORIES = "GetAvailable_PhysicalLink_Categories"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_LINK__REALIZED_PHYSICAL_LINKS = "GetAvailable_PhysicalLink_RealizedPhysicalLinks"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_NODE__DEFINE_REALIZATIONS = "GetAvailable_PhysicalNode_DefineRealizations"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_NODE__DEPLOYERS = "GetAvailable_PhysicalNode_Deployers"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_NODE__DEPLOYMENTS = "GetAvailable_PhysicalNode_Deployments"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_NODE__IMPLEMENTED_INTERFACE = "GetAvailable_PhysicalNode_ImplementedInterface"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_NODE__IMPLEMENTED_L_C_S = "GetAvailable_PhysicalNode_ImplementedLCS"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_NODE__USED_INTERFACE = "GetAvailable_PhysicalNode_UsedInterface"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_PATH__ALLOCATED_COMPONENT_EXCHANGES = "GetAvailable_PhysicalPath_AllocatedComponentExchanges"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_PATH__REALIZED_PHYSICAL_PATHS = "GetAvailable_PhysicalPath_RealizedPhysicalPaths"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_PORT__ALLOCATED_COMPONENT_PORTS = "GetAvailable_PhysicalPort_AllocatedComponentPorts"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_PORT__ALLOCATED_FUNCTION_PORTS = "GetAvailable_PhysicalPort_AllocatedFunctionPorts"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_PORT__REALIZED_PHYSICAL_PORTS = "GetAvailable_PhysicalPort_RealizedPhysicalPorts"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_QUANTITY__INHERITED_TYPE___LIB = "GetAvailable_PhysicalQuantity_InheritedType__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_QUANTITY__PROPERTY = "GetAvailable_PhysicalQuantity_Property"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_QUANTITY__REALIZED_PHYSICAL_QUANTITY = "GetAvailable_PhysicalQuantity_RealizedPhysicalQuantity"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PHYSICAL_QUANTITY__UNIT___LIB = "GetAvailable_PhysicalQuantity_Unit__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PROPERTY__CARDINALITY___LIB = "GetAvailable_Property_Cardinality__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PROPERTY__NULL_VALUE___LIB = "GetAvailable_Property_NullValue__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__PROPERTY__TYPE___LIB = "GetAvailable_Property_Type__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__ROLE__ALLOCATED_ACTIVITIES = "GetAvailable_Role_AllocatedActivities"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__SCENARIO__REALIZED_SCENARIO = "GetAvailable_Scenario_RealizedScenario"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__SEQUENCE_LINK_LINKS = "GetAvailable_SequenceLink_Links";
-  public static final String GET_AVAILABLE__SEQUENCE_MESSAGE__EXCHANGED_ITEMS = "GetAvailable_SequenceMessage_ExchangedItems"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__SEQUENCE_MESSAGE__INVOKED_OPERATION = "GetAvailable_SequenceMessage_InvokedOperation"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__SEQUENCE_MESSAGE__SERVICE_INTERFACE___LIB = "GetAvailable_SequenceMessage_ServiceInterface__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__SERVICE__EXCHANGE_ITEM_REALIZATION = "GetAvailable_Service_ExchangeItemRealization"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__SERVICE__REFERENCED_MESSAGE = "GetAvailable_Service_ReferencedMessage"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__SERVICE__THROWN_EXCEPTION = "GetAvailable_Service_ThrownException"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__SIGNAL__INHERITED_SIGNALS = "GetAvailable_Signal_InheritedSignals"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__STATE_FRAGMENT__RELATED_ABSTRACT_FUNCTION = "GetAvailable_StateFragment_RelatedAbstractFunction"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__STATE_FRAGMENT__RELATED_ABSTRACT_STATE = "GetAvailable_StateFragment_RelatedAbstractState"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__STATE_TRANSITION_EFFECT___LIB = "GetAvailable_StateTransitionEffect__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__STATE_TRANSITION_TRIGGER___LIB = "GetAvailable_StateTransitionTrigger__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__STATE_TRANSITION__STATE_TRANSITION_REALIZATIONS = "GetAvailable_StateTransition_StateTransitionRealizations"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__STATE__AVAILABLE_IN_STATES = "GetAvailable_State_AvailableInStates"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__STATE__REFERENCED_STATES = "GetAvailable_State_ReferencedStates"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__STATE__STATE_REALIZATIONS = "GetAvailable_State_StateRealizations"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__STRING_TYPE__DEFAULT_VALUE___LIB = "GetAvailable_StringType_DefaultValue__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__STRING_TYPE__INHERITED_STRING_TYPE = "GetAvailable_StringType_InheritedStringType"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__STRING_TYPE__NULL_VALUE___LIB = "GetAvailable_StringType_NullValue__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__STRING_TYPE__PROPERTY = "GetAvailable_StringType_Property"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__STRING_TYPE__REALIZED_STRING_TYPE = "GetAvailable_StringType_RealizedStringType"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__STRING_VALUE__TYPE = "GetAvailable_StringValue_Type"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__SYSTEM_ENGINEERING__REUSED_SHARED_PKG = "GetAvailable_SystemEngineering_ReusedSharedPkg"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__SYSTEM_FUNCTION__AVAILABLE_INSTATES = "GetAvailable_SystemFunction_AvailableInstates"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__SYSTEM_FUNCTION__FUNCTION_REALIZATION = "GetAvailable_SystemFunction_FunctionRealization"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__SYSTEM__IMPLEMENTED_INTERFACES___LIB = "GetAvailable_System_ImplementedInterfaces__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__SYSTEM__REALIZED_OPERATIONAL_ENTITIES = "GetAvailable_System_RealizedOperationalEntities"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__SYSTEM__USED_INTERFACES___LIB = "GetAvailable_System_UsedInterfaces__Lib"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__TERMINATE_PSEUDO_STATE__STATE_REALIZATIONS = "GetAvailable_TerminatePseudoState_StateRealizations"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__TIME_EVENT__EXPRESSION = "GetAvailable_TimeEvent_Expression"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__UNION_PROPERTY__QUALIFIERS = "GetAvailable_UnionProperty_Qualifiers"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__UNION__DEFAULT_PROPERTY = "GetAvailable_Union_DefaultProperty"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__UNION__DISCRIMINANT = "GetAvailable_Union_Discriminant"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__UNION__DISCRIMINANT_TYPE = "GetAvailable_Union_DiscriminantType"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__UNION__INHERITED_CLASSES = "GetAvailable_Union_InheritedClasses"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__VALUE_PART__REFERENCED_PROPERTY = "GetAvailable_ValuePart_ReferencedProperty"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__ABSTRACT_EXPRESSION_VALUE__TYPE___LIB = "GetAvailable_AbstractExpressionValue_Type__Lib";
+  public static final String GET_AVAILABLE__COMPONENT_EXCHANGE__CONVOYED_INFORMATIONS___LIB = "GetAvailable_ComponentExchange_ConvoyedInformations__Lib";
+  public static final String GET_AVAILABLE__ENUMERATION__DOMAIN_TYPE___LIB = "GetAvailable_Enumeration_DomainType__Lib";
+  public static final String GET_AVAILABLE__EXCHANGE_ITEM__INHERITED_EXCHANGE_ITEM___LIB = "GetAvailable_ExchangeItem_InheritedExchangeItem__Lib";
+  public static final String GET_AVAILABLE__FUNCTION_INPUT_PORT__IN_COMING_EXCHANGE_ITEMS___LIB = "GetAvailable_FunctionInputPort_InComingExchangeItems__Lib";
+  public static final String GET_AVAILABLE__FUNCTION_OUTPUT_PORT__OUT_GOING_EXCHANGE_ITEMS___LIB = "GetAvailable_FunctionOutputPort_OutGoingExchangeItems__Lib";
+  public static final String GET_AVAILABLE__FUNCTIONAL_EXCHANGE__EXCHANGE_ITEMS___LIB = "GetAvailable_FunctionalExchange_ExchangeItems__Lib";
+  public static final String GET_AVAILABLE__INTERFACE__EXCHANGE_ITEMS___LIB = "GetAvailable_Interface_ExchangeItems__Lib";
+  public static final String GET_AVAILABLE__LITERAL_NUMERIC_VALUE__ABSTRACT_TYPE___LIB = "GetAvailable_LiteralNumericValue_AbstractType__Lib";
+  public static final String GET_AVAILABLE__LITERAL_STRING_VALUE__ABSTRACT_TYPE___LIB = "GetAvailable_LiteralStringValue_AbstractType__Lib";
+  public static final String GET_AVAILABLE__SYSTEM_COMPONENT__USED_INTERFACES___LIB = "GetAvailable_Component_UsedInterfaces__Lib";
+  public static final String GET_AVAILABLE__COMPONENT_PORT__PROVIDED_INTERFACES___LIB = "GetAvailable_ComponentPort_ProvidedInterfaces__Lib";
+  public static final String GET_AVAILABLE__COMPONENT_PORT__REQUIRED_INTERFACES___LIB = "GetAvailable_ComponentPort_RequiredInterfaces__Lib";
+  public static final String GET_AVAILABLE__COMMUNICATION_LINK__EXCHANGE_ITEM___LIB = "GetAvailable_CommunicationLink_ExchangeItem__Lib";
+  public static final String GET_AVAILABLE__STATE_TRANSITION__EFFECT___LIB = "GetAvailable_StateTransitionEffect__Lib";
+  
+  public static final String GET_AVAILABLE__ABSTRACT_EXPRESSION_VALUE__OPERAND___LIB = getQueryIdentifier(GetAvailable_AbstractExpressionValue_Operand__Lib.class);
+  public static final String GET_AVAILABLE__ABSTRACT_STATE_PROPERTIES___LIB = getQueryIdentifier(GetAvailable_AbstractStateProperties__Lib.class);
+  public static final String GET_AVAILABLE__BOOLEAN_TYPE__DEFAULT_VALUE___LIB = getQueryIdentifier(GetAvailable_BooleanType_DefaultValue__Lib.class);
+  public static final String GET_AVAILABLE__BOOLEAN_TYPE__INHERITED_BOOLEAN_TYPE___LIB = getQueryIdentifier(GetAvailable_BooleanType_InheritedBooleanType__Lib.class);
+  public static final String GET_AVAILABLE__CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUES___LIB = getQueryIdentifier(GetAvailable_CapellaElement_AppliedPropertyValues__Lib.class);
+  public static final String GET_AVAILABLE__CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS___LIB = getQueryIdentifier(GetAvailable_CapellaElement_AppliedPropertyValueGroups__Lib.class);
+  public static final String GET_AVAILABLE__CLASS__INHERITED_CLASSES___LIB = getQueryIdentifier(GetAvailable_Class_InheritedClasses__Lib.class);
+  public static final String GET_AVAILABLE__COLLECTION__INHERITED_COLLECTION___LIB = getQueryIdentifier(GetAvailable_Collection_InheritedCollection__Lib.class);
+  public static final String GET_AVAILABLE__COLLECTION__TYPE___LIB = getQueryIdentifier(GetAvailable_Collection_Type__Lib.class);
+  public static final String GET_AVAILABLE__DATA_VALUE__ABSTRACT_TYPE___LIB = getQueryIdentifier(GetAvailable_DataValue_AbstractType__Lib.class);
+  public static final String GET_AVAILABLE__ENUMERATION_LITERAL_DOMAIN_VALUE___LIB = getQueryIdentifier(GetAvailable_EnumerationLiteralDomainValue__Lib.class);
+  public static final String GET_AVAILABLE__ENUMERATION_PROPERTY_VALUE_TYPE__LIB = getQueryIdentifier(GetAvailable_EnumerationPropertyValue_Type__Lib.class);
+  public static final String GET_AVAILABLE__ENUMERATION__DEFAULT_VALUE___LIB = getQueryIdentifier(GetAvailable_Enumeration_DefaultValue__Lib.class);
+  public static final String GET_AVAILABLE__ENUMERATION__INHERITED_ENUMERATION___LIB = getQueryIdentifier(GetAvailable_Enumeration_InheritedEnumeration__Lib.class);
+  public static final String GET_AVAILABLE__EXCHANGE_ITEM_ELEMENT__TYPE___LIB = getQueryIdentifier(GetAvailable_ExchangeItemElement_Type__Lib.class);
+  public static final String GET_AVAILABLE__GENERIC__REFERENCED_PROPERTY___LIB = getQueryIdentifier(GetAvailable_Generic_ReferencedProperty__Lib.class);
+  public static final String GET_AVAILABLE__GENERIC__REFERENCED_VALUE___LIB = getQueryIdentifier(GetAvailable_Generic_ReferencedValue__Lib.class);
+  public static final String GET_AVAILABLE__INSTANCE_ROLE__REPRESENTED_INSTANCE___LIB = getQueryIdentifier(GetAvailable_InstanceRole_RepresentedInstance__Lib.class);
+  public static final String GET_AVAILABLE__INTERFACE__INHERITED_INTERFACES___LIB = getQueryIdentifier(GetAvailable_Interface_InheritedInterfaces__Lib.class);
+  public static final String GET_AVAILABLE__LOGICAL_COMPONENT__SUPER___LIB = getQueryIdentifier(GetAvailable_LogicalComponent_Super__Lib.class);
+  public static final String GET_AVAILABLE__NUMERIC_VALUE__UNIT___LIB = getQueryIdentifier(GetAvailable_NumericValue_Unit__Lib.class);
+  public static final String GET_AVAILABLE__NUMERIC_TYPE__DEFAULT_VALUE___LIB = getQueryIdentifier(GetAvailable_NumericType_DefaultValue__Lib.class);
+  public static final String GET_AVAILABLE__NUMERIC_TYPE__INHERITED_NUMERIC_TYPE___LIB = getQueryIdentifier(GetAvailable_NumericType_InheritedNumericType__Lib.class);
+  public static final String GET_AVAILABLE__NUMERIC_TYPE__NULL_VALUE___LIB = getQueryIdentifier(GetAvailable_NumericType_NullValue__Lib.class);
+  public static final String GET_AVAILABLE__PART__TYPE___LIB = getQueryIdentifier(GetAvailable_Part_Type__Lib.class);
+  public static final String GET_AVAILABLE__PART__DEPLOYED_ELEMENTS___LIB = getQueryIdentifier(GetAvailable_Part_DeployedElements__Lib.class);
+  public static final String GET_AVAILABLE__PHYSICAL_COMPONENT__SUPER___LIB = getQueryIdentifier(GetAvailable_PhysicalComponent_Super__Lib.class);
+  public static final String GET_AVAILABLE__PHYSICAL_QUANTITY__INHERITED_TYPE___LIB = getQueryIdentifier(GetAvailable_PhysicalQuantity_InheritedType__Lib.class);
+  public static final String GET_AVAILABLE__PHYSICAL_QUANTITY__UNIT___LIB = getQueryIdentifier(GetAvailable_PhysicalQuantity_Unit__Lib.class);
+  public static final String GET_AVAILABLE__PROPERTY__CARDINALITY___LIB = getQueryIdentifier(GetAvailable_Property_Cardinality__Lib.class);
+  public static final String GET_AVAILABLE__PROPERTY__NULL_VALUE___LIB = getQueryIdentifier(GetAvailable_Property_NullValue__Lib.class);
+  public static final String GET_AVAILABLE__PROPERTY__TYPE___LIB = getQueryIdentifier(GetAvailable_Property_Type__Lib.class);
+  public static final String GET_AVAILABLE__SEQUENCE_MESSAGE__SERVICE_INTERFACE___LIB = getQueryIdentifier(GetAvailable_SequenceMessage_ServiceInterface__Lib.class);
+  public static final String GET_AVAILABLE__STATE_TRANSITION_EFFECT___LIB = getQueryIdentifier(GetAvailable_StateTransitionEffect__Lib.class);
+  public static final String GET_AVAILABLE__STATE_TRANSITION_TRIGGER___LIB = getQueryIdentifier(GetAvailable_StateTransitionTrigger__Lib.class);
+  public static final String GET_AVAILABLE__STRING_TYPE__DEFAULT_VALUE___LIB = getQueryIdentifier(GetAvailable_StringType_DefaultValue__Lib.class);
+  public static final String GET_AVAILABLE__STRING_TYPE__NULL_VALUE___LIB = getQueryIdentifier(GetAvailable_StringType_NullValue__Lib.class);
 
-  public static final String GET_CURRENT__ABSTRACT_STATE_PROPERTIES = "GetCurrent_AbstractStateProperties"; //$NON-NLS-1$
-  public static final String GET_CURRENT__ACTIVITY_EDGE__SOURCE = "GetCurrent_ActivityEdge_Source"; //$NON-NLS-1$
-  public static final String GET_CURRENT__ACTIVITY_EDGE__TARGET = "GetCurrent_ActivityEdge_Target"; //$NON-NLS-1$
-  public static final String GET_CURRENT__ACTOR__IMPLEMENTED_INTERFACES = "GetCurrent_Actor_ImplementedInterfaces"; //$NON-NLS-1$
-  public static final String GET_CURRENT__ACTOR__INHERITED_ACTORS = "GetCurrent_Actor_InheritedActors"; //$NON-NLS-1$
-  public static final String GET_CURRENT__ACTOR__INTERACTING_CAPABILITIES = "GetCurrent_Actor_InteractingCapabilities"; //$NON-NLS-1$
-  public static final String GET_CURRENT__ACTOR__REALIZED_CAPABILITIES = "GetCurrent_Actor_RealizedCapabilities"; //$NON-NLS-1$
-  public static final String GET_CURRENT__ACTOR__REALIZED_OPERATIONAL_ACTORS = "GetCurrent_Actor_RealizedOperationalActors"; //$NON-NLS-1$
-  public static final String GET_CURRENT__ACTOR__REALIZED_OPERATIONAL_ENTITIES = "GetCurrent_Actor_RealizedOperationalEntities"; //$NON-NLS-1$
-  public static final String GET_CURRENT__ACTOR__USED_INTERFACES = "GetCurrent_Actor_UsedInterfaces"; //$NON-NLS-1$
-  public static final String GET_CURRENT__BINARY_EXPRESSION__LEFT_OPERAND = "GetCurrent_BinaryExpression_LeftOperand"; //$NON-NLS-1$
-  public static final String GET_CURRENT__BINARY_EXPRESSION__RIGHT_OPERAND = "GetCurrent_BinaryExpression_RightOperand"; //$NON-NLS-1$
-  public static final String GET_CURRENT__BINARY_EXPRESSION__TYPE = "GetCurrent_BinaryExpression_Type"; //$NON-NLS-1$
-  public static final String GET_CURRENT__BINARY_EXPRESSION__UNIT = "GetCurrent_BinaryExpression_Unit"; //$NON-NLS-1$
-  public static final String GET_CURRENT__BOOLEAN_REFERENCE__ABSTRACT_TYPE = "GetCurrent_BooleanReference_AbstractType"; //$NON-NLS-1$
-  public static final String GET_CURRENT__BOOLEAN_REFERENCE__REFERENCED_PROPERTY = "GetCurrent_BooleanReference_ReferencedProperty"; //$NON-NLS-1$
-  public static final String GET_CURRENT__BOOLEAN_REFERENCE__REFERENCED_VALUE = "GetCurrent_BooleanReference_ReferencedValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__BOOLEAN_TYPE__DEFAULT_VALUE = "GetCurrent_BooleanType_DefaultValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__BOOLEAN_TYPE__INHERITED_BOOLEAN_TYPE = "GetCurrent_BooleanType_InheritedBooleanType"; //$NON-NLS-1$
-  public static final String GET_CURRENT__BOOLEAN_TYPE__PROPERTY = "GetCurrent_BooleanType_Property"; //$NON-NLS-1$
-  public static final String GET_CURRENT__BOOLEAN_TYPE__REALIZED_BOOLEAN_TYPE = "GetCurrent_BooleanType_RealizedBooleanType"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CAPABILITY_REALIZATION__ACTOR_CAPABILITY_REALIZATION = "GetCurrent_CapabilityRealization_ActorCapabilityRealization"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CAPABILITY_REALIZATION__AVAILABLE_IN_STATES = "GetCurrent_CapabilityRealization_AvailableInStates"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CAPABILITY_REALIZATION__COMPONENT_CAPABILITY_REALIZATION = "GetCurrent_CapabilityRealization_ComponentCapabilityRealization"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CAPABILITY_REALIZATION__INHERITED_CAPABILITIES = "GetCurrent_CapabilityRealization_InheritedCapabilities"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CAPABILITY_REALIZATION__INTERACTING_COMPONENTS = "GetCurrent_CapabilityRealization_InteractingComponents"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CAPABILITY_REALIZATION__INVOLVED_ABSTRACT_FUNCTIONS = "GetCurrent_CapabilityRealization_InvolvedAbstractFunctions"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CAPABILITY_REALIZATION__INVOLVED_FUNCTIONAL_CHAINS = "GetCurrent_CapabilityRealization_InvolvedFunctionalChains"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CAPABILITY_REALIZATION__REALIZED_CAPABILITIES = "GetCurrent_CapabilityRealization_RealizedCapabilities"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CAPABILITY__AVAILABLE_IN_STATES = "GetCurrent_Capability_AvailableInStates"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CAPABILITY__EXTENDED_CAPABILITIES = "GetCurrent_Capability_ExtendedCapabilities"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CAPABILITY__INCLUDED_CAPABILITIES = "GetCurrent_Capability_IncludedCapabilities"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CAPABILITY__INHERITED_CAPABILITIES = "GetCurrent_Capability_InheritedCapabilities"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CAPABILITY__INTERACTING_ACTORS = "GetCurrent_Capability_InteractingActors"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CAPABILITY__INVOLVED_ABSTRACT_FUNCTIONS = "GetCurrent_Capability_InvolvedAbstractFunctions"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CAPABILITY__INVOLVED_FUNCTIONAL_CHAINS = "GetCurrent_Capability_InvolvedFunctionalChains"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CAPABILITY__REALIZED_CAPABILITIES = "GetCurrent_Capability_RealizedCapabilities"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS = "GetCurrent_CapellaElement_AppliedPropertyValueGroups"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUES = "GetCurrent_CapellaElement_AppliedPropertyValues"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CAPELLA_ELEMENT__STATUS = "GetCurrent_CapellaElement_Status"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CHANGE_EVENT__EXPRESSION = "GetCurrent_ChangeEvent_Expression"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CHOICE_PSEUDO_STATE__STATE_REALIZATIONS = "GetCurrent_ChoicePseudoState_StateRealizations"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CLASS__INHERITED_CLASSES = "GetCurrent_Class_InheritedClasses"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CLASS__REALIZED_CLASSES = "GetCurrent_Class_RealizedClasses"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COLLECTION_VALUE_REF_REFERENCED_PROPERTY = "GetCurrent_CollectionValueRefReferencedProperty"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COLLECTION_VALUE_REF_REFERENCED_VALUE = "GetCurrent_CollectionValueRefReferencedValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COLLECTION_VALUE_REFERENCE_TYPE = "GetCurrent_CollectionValueReferenceType"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COLLECTION_VALUE__TYPE = "GetCurrent_CollectionValue_Type"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COLLECTION__DEFAULT_VALUE = "GetCurrent_Collection_DefaultValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COLLECTION__INDEX = "GetCurrent_Collection_Index"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COLLECTION__INHERITED_COLLECTION = "GetCurrent_Collection_InheritedCollection"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COLLECTION__MAX_CARDINALITY = "GetCurrent_Collection_MaxCardinality"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COLLECTION__MAX_VALUE = "GetCurrent_Collection_MaxValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COLLECTION__MIN_CARDINALITY = "GetCurrent_Collection_MinCardinality"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COLLECTION__MIN_VALUE = "GetCurrent_Collection_MinValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COLLECTION__NULL_VALUE = "GetCurrent_Collection_NullValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COLLECTION__TYPE = "GetCurrent_Collection_Type"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COMMUNICATION_LINK__EXCHANGE_ITEMS = "GetCurrent_CommunicationLink_ExchangeItems"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COMMUNICATION_MEAN__FUNCTIONAL_EXCHANGES = "GetCurrent_CommunicationMean_FunctionalExchanges"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COMPLEX_VALUE_REF_REFERENCED_PROPERTY = "GetCurrent_ComplexValueRefReferencedProperty"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COMPLEX_VALUE_REF_REFERENCED_VALUE = "GetCurrent_ComplexValueRefReferencedValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COMPLEX_VALUE_REFERENCE_TYPE = "GetCurrent_ComplexValueReferenceType"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COMPLEX_VALUE__TYPE = "GetCurrent_ComplexValue_Type"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COMPONENT_EXCHANGE_CATEGORY__EXCHANGES = "GetCurrent_ComponentExchangeCategory_Exchanges"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COMPONENT_EXCHANGE__CATEGORIES = "GetCurrent_ComponentExchange_Categories"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COMPONENT_INSTANCE__DEPLOYERS = "GetCurrent_ComponentInstance_Deployers"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COMPONENT_INSTANCE__DEPLOYMENTS = "GetCurrent_ComponentInstance_Deployments"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COMPONENT_PORT__ALLOCATED_PORT = "GetCurrent_ComponentPort_AllocatedPort"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COMPONENT_PORT__CONNECTED_PORTS = "GetCurrent_ComponentPort_ConnectedPorts"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COMPONENT_PORT__MAX_CARDINALITY = "GetCurrent_ComponentPort_MaxCardinality"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COMPONENT_PORT__MIN_CARDINALITY = "GetCurrent_ComponentPort_MinCardinality"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COMPONENT_PORT__PROVIDED_INTERFACES = "GetCurrent_ComponentPort_ProvidedInterfaces"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COMPONENT_PORT__REALIZED_COMPONENT_PORT = "GetCurrent_ComponentPort_RealizedComponentPort"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COMPONENT_PORT__REQUIRED_INTERFACES = "GetCurrent_ComponentPort_RequiredInterfaces"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COMPONENT_PORT__TYPE = "GetCurrent_ComponentPort_Type"; //$NON-NLS-1$
-  public static final String GET_CURRENT__COMPONENT__IMPLEMENTED_INTERFACES = "GetCurrent_Component_ImplementedInterfaces"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CONFIGURATION_ITEM__IMPLEMENTED_INTERFACES = "GetCurrent_ConfigurationItem_ImplementedInterfaces"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CONFIGURATION_ITEM__IMPLEMENTED_P_C = "GetCurrent_ConfigurationItem_ImplementedPC"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CONFIGURATION_ITEM__INVOLVED_REALIZATION = "GetCurrent_ConfigurationItem_InvolvedRealization"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CONFIGURATION_ITEM__USED_INTERFACES = "GetCurrent_ConfigurationItem_UsedInterfaces"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CONNECTION__CONNECTION_FUNCTIONAL_EXCHANGE_ALLOCATIONS = "GetCurrent_Connection_ConnectionFunctionalExchangeAllocations"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CONNECTION__CONNECTION_REALIZATIONS = "GetCurrent_Connection_ConnectionRealizations"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CONNECTION__CONVOYED_INFORMATION = "GetCurrent_Connection_ConvoyedInformation"; //$NON-NLS-1$
-  public static final String GET_CURRENT__CONSTRAINT__CONSTRAINED_ELEMENTS = "GetCurrent_Constraint_ConstrainedElements"; //$NON-NLS-1$
-  public static final String GET_CURRENT__DEPLOY_CONF__DEPLOYMENTS = "GetCurrent_DeployConf_Deployments"; //$NON-NLS-1$
-  public static final String GET_CURRENT__E_P_B_S_ARCHITECTURE__ALLOCATED_PHYSICAL_ARCHITECTURE = "GetCurrent_EPBSArchitecture_AllocatedPhysicalArchitecture"; //$NON-NLS-1$
-  public static final String GET_CURRENT__ENTITY__ALLOCATED_ROLES = "GetCurrent_Entity_AllocatedRoles"; //$NON-NLS-1$
-  public static final String GET_CURRENT__ENUMERATION_LITERAL_ABSTRACT_TYPE = "GetCurrent_EnumerationLiteralAbstractType"; //$NON-NLS-1$
-  public static final String GET_CURRENT__ENUMERATION_LITERAL_DOMAIN_VALUE = "GetCurrent_EnumerationLiteralDomainValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__ENUMERATION_PROPERTY_VALUE__TYPE = "GetCurrent_EnumerationPropertyValue_Type"; //$NON-NLS-1$
-  public static final String GET_CURRENT__ENUMERATION_PROPERTY_VALUE__VALUE = "GetCurrent_EnumerationPropertyValue_Value"; //$NON-NLS-1$
-  public static final String GET_CURRENT__ENUMERATION_REFERENCE__ABSTRACT_TYPE = "GetCurrent_EnumerationReference_AbstractType"; //$NON-NLS-1$
-  public static final String GET_CURRENT__ENUMERATION_REFERENCE__REFERENCED_PROPERTY = "GetCurrent_EnumerationReference_ReferencedProperty"; //$NON-NLS-1$
-  public static final String GET_CURRENT__ENUMERATION_REFERENCE__REFERENCED_VALUE = "GetCurrent_EnumerationReference_ReferencedValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__ENUMERATION__DEFAULT_VALUE = "GetCurrent_Enumeration_DefaultValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__ENUMERATION__DOMAIN_TYPE = "GetCurrent_Enumeration_DomainType"; //$NON-NLS-1$
-  public static final String GET_CURRENT__ENUMERATION__INHERITED_ENUMERATION = "GetCurrent_Enumeration_InheritedEnumeration"; //$NON-NLS-1$
-  public static final String GET_CURRENT__ENUMERATION__MAX_VALUE = "GetCurrent_Enumeration_MaxValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__ENUMERATION__MIN_VALUE = "GetCurrent_Enumeration_MinValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__ENUMERATION__NULL_VALUE = "GetCurrent_Enumeration_NullValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__ENUMERATION__REALIZED_ENUMERATION = "GetCurrent_Enumeration_RealizedEnumeration"; //$NON-NLS-1$
-  public static final String GET_CURRENT__EXCEPTION__INHERITED_EXCEPTION = "GetCurrent_Exception_InheritedException"; //$NON-NLS-1$
-  public static final String GET_CURRENT__EXCHANGE_CATEGORY__EXCHANGES = "GetCurrent_ExchangeCategory_Exchanges"; //$NON-NLS-1$
-  public static final String GET_CURRENT__EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM = "GetCurrent_ExchangeItemAllocation_AllocatedItem"; //$NON-NLS-1$
-  public static final String GET_CURRENT__EXCHANGE_ITEM_ELEMENT_MAX_CARD = "GetCurrent_ExchangeItemElementMaxCard"; //$NON-NLS-1$
-  public static final String GET_CURRENT__EXCHANGE_ITEM_ELEMENT_MIN_CARD = "GetCurrent_ExchangeItemElementMinCard"; //$NON-NLS-1$
-  public static final String GET_CURRENT__EXCHANGE_ITEM_ELEMENT__REFERENCED_PROPERTIES = "GetCurrent_ExchangeItemElement_ReferencedProperties"; //$NON-NLS-1$
-  public static final String GET_CURRENT__EXCHANGE_ITEM_ELEMENT__TYPE = "GetCurrent_ExchangeItemElement_Type"; //$NON-NLS-1$
-  public static final String GET_CURRENT__EXCHANGE_ITEM__INHERITED_EXCHANGE_ITEM = "GetCurrent_ExchangeItem_InheritedExchangeItem"; //$NON-NLS-1$
-  public static final String GET_CURRENT__EXCHANGE_ITEM__REALIZED_INFORMATIONS = "GetCurrent_ExchangeItem_RealizedInformations"; //$NON-NLS-1$
-  public static final String GET_CURRENT__FINAL_STATE__AVAILABLE_IN_STATES = "GetCurrent_FinalState_AvailableInStates"; //$NON-NLS-1$
-  public static final String GET_CURRENT__FINAL_STATE__STATE_REALIZATIONS = "GetCurrent_FinalState_StateRealizations"; //$NON-NLS-1$
-  public static final String GET_CURRENT__FORK_PSEUDO_STATE__STATE_REALIZATIONS = "GetCurrent_ForkPseudoState_StateRealizations"; //$NON-NLS-1$
-  public static final String GET_CURRENT__FUNCTION_INPUT_PORT__IN_COMING_EXCHANGE_ITEMS = "GetCurrent_FunctionInputPort_InComingExchangeItems"; //$NON-NLS-1$
-  public static final String GET_CURRENT__FUNCTION_INPUT_PORT__PROVIDED_INTERFACE = "GetCurrent_FunctionInputPort_ProvidedInterface"; //$NON-NLS-1$
-  public static final String GET_CURRENT__FUNCTION_INPUT_PORT__REALIZED_FUNCTION_INPUT_PORT = "GetCurrent_FunctionInputPort_RealizedFunctionInputPort"; //$NON-NLS-1$
-  public static final String GET_CURRENT__FUNCTION_INPUT_PORT__REQUIRED_INTERFACE = "GetCurrent_FunctionInputPort_RequiredInterface"; //$NON-NLS-1$
-  public static final String GET_CURRENT__FUNCTION_OUTPUT_PORT__OUT_GOING_EXCHANGE_ITEMS = "GetCurrent_FunctionOutputPort_OutGoingExchangeItems"; //$NON-NLS-1$
-  public static final String GET_CURRENT__FUNCTION_OUTPUT_PORT__PROVIDED_INTERFACE = "GetCurrent_FunctionOutputPort_ProvidedInterface"; //$NON-NLS-1$
-  public static final String GET_CURRENT__FUNCTION_OUTPUT_PORT__REALIZED_FUNCTION_OUTPUT_PORT = "GetCurrent_FunctionOutputPort_RealizedFunctionOutputPort"; //$NON-NLS-1$
-  public static final String GET_CURRENT__FUNCTION_OUTPUT_PORT__REQUIRED_INTERFACE = "GetCurrent_FunctionOutputPort_RequiredInterface"; //$NON-NLS-1$
-  public static final String GET_CURRENT__FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__EXCHANGE_ITEMS = "GetCurrent_FunctionalChainInvolvementLink_ExchangeItems"; //$NON-NLS-1$
-  public static final String GET_CURRENT__FUNCTIONAL_CHAIN__AVAILABLE_IN_STATES = "GetCurrent_FunctionalChain_AvailableInStates"; //$NON-NLS-1$
-  public static final String GET_CURRENT__FUNCTIONAL_CHAIN__REALIZED_FUNCTIONAL_CHAINS = "GetCurrent_FunctionalChain_RealizedFunctionalChains"; //$NON-NLS-1$
-  public static final String GET_CURRENT__FUNCTIONAL_EXCHANGE__CATEGORIES = "GetCurrent_FunctionalExchange_Categories"; //$NON-NLS-1$
-  public static final String GET_CURRENT__FUNCTIONAL_EXCHANGE__EXCHANGE_ITEMS = "GetCurrent_FunctionalExchange_ExchangeItems"; //$NON-NLS-1$
-  public static final String GET_CURRENT__FUNCTIONAL_EXCHANGE__FUNCTIONAL_EXCHANGE_REALIZATIONS = "GetCurrent_FunctionalExchange_FunctionalExchangeRealizations"; //$NON-NLS-1$
-  public static final String GET_CURRENT__INITIAL_PSEUDO_STATE__STATE_REALIZATIONS = "GetCurrent_InitialPseudoState_StateRealizations"; //$NON-NLS-1$
-  public static final String GET_CURRENT__INSTANCE_ROLE__REPRESENTED_INSTANCE = "GetCurrent_InstanceRole_RepresentedInstance"; //$NON-NLS-1$
-  public static final String GET_CURRENT__INTERACTION_USE__REFERENCED_SCENARIO = "GetCurrent_InteractionUse_ReferencedScenario"; //$NON-NLS-1$
-  public static final String GET_CURRENT__INTERFACE_IMPL__IMPLEMENTED_INTERFACE = "GetCurrent_InterfaceImpl_ImplementedInterface"; //$NON-NLS-1$
-  public static final String GET_CURRENT__INTERFACE_USE__USED_INTERFACE = "GetCurrent_InterfaceUse_UsedInterface"; //$NON-NLS-1$
-  public static final String GET_CURRENT__INTERFACE__EXCHANGE_ITEMS = "GetCurrent_Interface_ExchangeItems"; //$NON-NLS-1$
-  public static final String GET_CURRENT__INTERFACE__INHERITED_INTERFACES = "GetCurrent_Interface_InheritedInterfaces"; //$NON-NLS-1$
-  public static final String GET_CURRENT__JOIN_PSEUDO_STATE__STATE_REALIZATIONS = "GetCurrent_JoinPseudoState_StateRealizations"; //$NON-NLS-1$
-  public static final String GET_CURRENT__LITERAL_BOOLEAN_VALUE__ABSTRACT_TYPE = "GetCurrent_LiteralBooleanValue_AbstractType"; //$NON-NLS-1$
-  public static final String GET_CURRENT__LITERAL_NUMERIC_VALUE__ABSTRACT_TYPE = "GetCurrent_LiteralNumericValue_AbstractType"; //$NON-NLS-1$
-  public static final String GET_CURRENT__LITERAL_NUMERIC_VALUE__UNIT = "GetCurrent_LiteralNumericValue_Unit"; //$NON-NLS-1$
-  public static final String GET_CURRENT__LITERAL_STRING_VALUE__ABSTRACT_TYPE = "GetCurrent_LiteralStringValue_AbstractType"; //$NON-NLS-1$
-  public static final String GET_CURRENT__LOGICAL_ACTOR__ACTOR_REALIZATION = "GetCurrent_LogicalActor_ActorRealization"; //$NON-NLS-1$
-  public static final String GET_CURRENT__LOGICAL_ACTOR__IMPL_INTERFACES = "GetCurrent_LogicalActor_ImplInterfaces"; //$NON-NLS-1$
-  public static final String GET_CURRENT__LOGICAL_ACTOR__INHERITED_ACTORS = "GetCurrent_LogicalActor_InheritedActors"; //$NON-NLS-1$
-  public static final String GET_CURRENT__LOGICAL_ACTOR__USED_INTERFACES = "GetCurrent_LogicalActor_UsedInterfaces"; //$NON-NLS-1$
-  public static final String GET_CURRENT__LOGICAL_COMPONENT_SHORTCUT__REFERENCED_L_C = "GetCurrent_LogicalComponentShortcut_ReferencedLC"; //$NON-NLS-1$
-  public static final String GET_CURRENT__LOGICAL_COMPONENT__IMPLEMENTED_INTERFACES = "GetCurrent_LogicalComponent_ImplementedInterfaces"; //$NON-NLS-1$
-  public static final String GET_CURRENT__LOGICAL_COMPONENT__INVOLVED_REALIZATIONS = "GetCurrent_LogicalComponent_InvolvedRealizations"; //$NON-NLS-1$
-  public static final String GET_CURRENT__LOGICAL_COMPONENT__USED_INTERFACES = "GetCurrent_LogicalComponent_UsedInterfaces"; //$NON-NLS-1$
-  public static final String GET_CURRENT__LOGICAL_FUNCTION__AVAILABLE_INSTATES = "GetCurrent_LogicalFunction_AvailableInstates"; //$NON-NLS-1$
-  public static final String GET_CURRENT__LOGICAL_FUNCTION__FUNCTIONAL_REALIZATION = "GetCurrent_LogicalFunction_FunctionalRealization"; //$NON-NLS-1$
-  public static final String GET_CURRENT__MESSAGE__INHERITED_MESSAGE = "GetCurrent_Message_InheritedMessage"; //$NON-NLS-1$
-  public static final String GET_CURRENT__MISSION__INCLUDED_CAPABILITIES = "GetCurrent_Mission_IncludedCapabilities"; //$NON-NLS-1$
-  public static final String GET_CURRENT__MISSION__INTERACTING_ACTORS = "GetCurrent_Mission_InteractingActors"; //$NON-NLS-1$
-  public static final String GET_CURRENT__MODE__AVAILABLE_IN_STATES = "GetCurrent_Mode_AvailableInStates"; //$NON-NLS-1$
-  public static final String GET_CURRENT__MODE__REFERENCED_STATES = "GetCurrent_Mode_ReferencedStates"; //$NON-NLS-1$
-  public static final String GET_CURRENT__MODE__STATE_REALIZATIONS = "GetCurrent_Mode_StateRealizations"; //$NON-NLS-1$
-  public static final String GET_CURRENT__NUMERIC_REFERENCE__ABSTRACT_TYPE = "GetCurrent_NumericReference_AbstractType"; //$NON-NLS-1$
-  public static final String GET_CURRENT__NUMERIC_REFERENCE__REFERENCED_PROPERTY = "GetCurrent_NumericReference_ReferencedProperty"; //$NON-NLS-1$
-  public static final String GET_CURRENT__NUMERIC_REFERENCE__REFERENCED_VALUE = "GetCurrent_NumericReference_ReferencedValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__NUMERIC_TYPE__DEFAULT_VALUE = "GetCurrent_NumericType_DefaultValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__NUMERIC_TYPE__INHERITED_NUMERIC_TYPE = "GetCurrent_NumericType_InheritedNumericType"; //$NON-NLS-1$
-  public static final String GET_CURRENT__NUMERIC_TYPE__MAX_VALUE = "GetCurrent_NumericType_MaxValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__NUMERIC_TYPE__MIN_VALUE = "GetCurrent_NumericType_MinValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__NUMERIC_TYPE__NULL_VALUE = "GetCurrent_NumericType_NullValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__NUMERIC_TYPE__PROPERTY = "GetCurrent_NumericType_Property"; //$NON-NLS-1$
-  public static final String GET_CURRENT__NUMERIC_TYPE__REALIZED_NUMERIC_TYPE = "GetCurrent_NumericType_RealizedNumericType"; //$NON-NLS-1$
-  public static final String GET_CURRENT__NUMERIC_VALUE_REFERENCE__UNIT = "GetCurrent_NumericValueReference_Unit"; //$NON-NLS-1$
-  public static final String GET_CURRENT__NUMERIC_VALUE__TYPE = "GetCurrent_NumericValue_Type"; //$NON-NLS-1$
-  public static final String GET_CURRENT__OPERATIONAL_ACTIVITY__AVAILABLE_INSTATES = "GetCurrent_OperationalActivity_AvailableInstates"; //$NON-NLS-1$
-  public static final String GET_CURRENT__OPERATIONAL_CAPABILITY__AVAILABLE_IN_STATES = "GetCurrent_OperationalCapability_AvailableInStates"; //$NON-NLS-1$
-  public static final String GET_CURRENT__OPERATIONAL_CAPABILITY__INHERITED_CAPABILITIES = "GetCurrent_OperationalCapability_InheritedCapabilities"; //$NON-NLS-1$
-  public static final String GET_CURRENT__OPERATIONAL_CAPABILITY__INVOLVED_ACTIVITY = "GetCurrent_OperationalCapability_InvolvedActivity"; //$NON-NLS-1$
-  public static final String GET_CURRENT__OPERATIONAL_CAPABILITY__INVOLVED_ENTITIES = "GetCurrent_OperationalCapability_InvolvedEntities"; //$NON-NLS-1$
-  public static final String GET_CURRENT__OPERATIONAL_CAPABILITY__INVOLVED_OPERATIONAL_PROCESS = "GetCurrent_OperationalCapability_InvolvedOperationalProcess"; //$NON-NLS-1$
-  public static final String GET_CURRENT__OPERATIONAL_PROCESS__AVAILABLE_IN_STATES = "GetCurrent_OperationalProcess_AvailableInStates"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PARAMETER__DEFAULT_VALUE = "GetCurrent_Parameter_DefaultValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PARAMETER__MAX_VALUE = "GetCurrent_Parameter_MaxValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PARAMETER__MIN_VALUE = "GetCurrent_Parameter_MinValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PARAMETER__MAX_CARDINALITY = "GetCurrent_Parameter_MaxCardinality"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PARAMETER__MIN_CARDINALITY = "GetCurrent_Parameter_MinCardinality"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PARAMETER__NULL_VALUE = "GetCurrent_Parameter_NullValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PARAMETER__TYPE = "GetCurrent_Parameter_Type"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PART__DEPLOYED_ELEMENTS = "GetCurrent_Part_DeployedElements"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PART__MAX_CARDINALITY = "GetCurrent_Part_MaxCardinality"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PART__MIN_CARDINALITY = "GetCurrent_Part_MinCardinality"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PART__TYPE = "GetCurrent_Part_Type"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PART__TYPE_PORTS = "GetCurrent_Part_TypePorts"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_ACTOR__IMPLEMENTED_INTERFACES = "GetCurrent_PhysicalActor_ImplementedInterfaces"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_ACTOR__INHERITED_ACTORS = "GetCurrent_PhysicalActor_InheritedActors"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_ACTOR__INTERACTING_CAPABILITIES = "GetCurrent_PhysicalActor_InteractingCapabilities"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_ACTOR__LOGICAL_ACTOR_REALIZATION = "GetCurrent_PhysicalActor_LogicalActorRealization"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_ACTOR__REALIZED_CAPABILITIES = "GetCurrent_PhysicalActor_RealizedCapabilities"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_ACTOR__USED_INTERFACES = "GetCurrent_PhysicalActor_UsedInterfaces"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_ARCHITECTURE__ALLOCATED_LOGICAL_ARCHITECTURE = "GetCurrent_PhysicalArchitecture_AllocatedLogicalArchitecture"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_COMP__DEFINE_REALIZATIONS = "GetCurrent_PhysicalComp_DefineRealizations"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_COMP__DEPLOYERS = "GetCurrent_PhysicalComp_Deployers"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_COMP__DEPLOYMENTS = "GetCurrent_PhysicalComp_Deployments"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_COMP__IMPLEMENTED_INTERFACE = "GetCurrent_PhysicalComp_ImplementedInterface"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_COMP__IMPLEMENTED_L_C_S = "GetCurrent_PhysicalComp_ImplementedLCS"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_COMP__USED_INTERFACE = "GetCurrent_PhysicalComp_UsedInterface"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_COMPONENT__DEPLOYED_COMPONENTS = "GetCurrent_PhysicalComponent_DeployedComponents"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_COMPONENT__LOGICAL_COMPONENT_REALIZATION = "GetCurrent_PhysicalComponent_LogicalComponentRealization"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_FUNCTION__AVAILABLE_INSTATES = "GetCurrent_PhysicalFunction_AvailableInstates"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_FUNCTION__FUNCTIONAL_REALIZATION = "GetCurrent_PhysicalFunction_FunctionalRealization"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_INTERFACE__INHERITED_INTERFACES = "GetCurrent_PhysicalInterface_InheritedInterfaces"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_LINK_CATEGORY__LINKS = "GetCurrent_PhysicalLinkCategory_Links"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_LINK__ALLOCATED_COMPONENT_EXCHANGES = "GetCurrent_PhysicalLink_AllocatedComponentExchanges"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_LINK__CATEGORIES = "GetCurrent_PhysicalLink_Categories"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_LINK__REALIZED_PHYSICAL_LINKS = "GetCurrent_PhysicalLink_RealizedPhysicalLinks"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_NODE__DEFINE_REALIZATIONS = "GetCurrent_PhysicalNode_DefineRealizations"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_NODE__DEPLOYERS = "GetCurrent_PhysicalNode_Deployers"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_NODE__DEPLOYMENTS = "GetCurrent_PhysicalNode_Deployments"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_NODE__IMPLEMENTED_INTERFACE = "GetCurrent_PhysicalNode_ImplementedInterface"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_NODE__IMPLEMENTED_L_C_S = "GetCurrent_PhysicalNode_ImplementedLCS"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_NODE__USED_INTERFACE = "GetCurrent_PhysicalNode_UsedInterface"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_PATH__ALLOCATED_COMPONENT_EXCHANGES = "GetCurrent_PhysicalPath_AllocatedComponentExchanges"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_PATH__REALIZED_PHYSICAL_PATHS = "GetCurrent_PhysicalPath_RealizedPhysicalPaths"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_PORT__ALLOCATED_COMPONENT_PORTS = "GetCurrent_PhysicalPort_AllocatedComponentPorts"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_PORT__ALLOCATED_FUNCTION_PORTS = "GetCurrent_PhysicalPort_AllocatedFunctionPorts"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_PORT__REALIZED_PHYSICAL_PORTS = "GetCurrent_PhysicalPort_RealizedPhysicalPorts"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_QUANTITY__DEFAULT_VALUE = "GetCurrent_PhysicalQuantity_DefaultValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_QUANTITY__INHERITED_TYPE = "GetCurrent_PhysicalQuantity_InheritedType"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_QUANTITY__MAX_VALUE = "GetCurrent_PhysicalQuantity_MaxValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_QUANTITY__MIN_VALUE = "GetCurrent_PhysicalQuantity_MinValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_QUANTITY__NULL_VALUE = "GetCurrent_PhysicalQuantity_NullValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_QUANTITY__PROPERTY = "GetCurrent_PhysicalQuantity_Property"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_QUANTITY__REALIZED_PHYSICAL_QUANTITY = "GetCurrent_PhysicalQuantity_RealizedPhysicalQuantity"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PHYSICAL_QUANTITY__UNIT = "GetCurrent_PhysicalQuantity_Unit"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PROPERTY__DEFAULT_VALUE = "GetCurrent_Property_DefaultValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PROPERTY__MAX_CARDINALITY = "GetCurrent_Property_MaxCardinality"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PROPERTY__MAX_LENGTH = "GetCurrent_Property_MaxLength"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PROPERTY__MAX_VALUE = "GetCurrent_Property_MaxValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PROPERTY__MIN_CARDINALITY = "GetCurrent_Property_MinCardinality"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PROPERTY__MIN_LENGTH = "GetCurrent_Property_MinLength"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PROPERTY__MIN_VALUE = "GetCurrent_Property_MinValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PROPERTY__NULL_VALUE = "GetCurrent_Property_NullValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__PROPERTY__TYPE = "GetCurrent_Property_Type"; //$NON-NLS-1$
-  public static final String GET_CURRENT__ROLE__ALLOCATED_ACTIVITIES = "GetCurrent_Role_AllocatedActivities"; //$NON-NLS-1$
-  public static final String GET_CURRENT__SCENARIO__REALIZED_SCENARIO = "GetCurrent_Scenario_RealizedScenario"; //$NON-NLS-1$
-  public static final String GET_CURRENT__SEQUENCE_LINK_LINKS = "GetCurrent_SequenceLink_Links"; //$NON-NLS-1$
-  public static final String GET_CURRENT__SEQUENCE_MESSAGE__EXCHANGED_ITEMS = "GetCurrent_SequenceMessage_ExchangedItems"; //$NON-NLS-1$
-  public static final String GET_CURRENT__SEQUENCE_MESSAGE__INVOKED_OPERATION = "GetCurrent_SequenceMessage_InvokedOperation"; //$NON-NLS-1$
-  public static final String GET_CURRENT__SEQUENCE_MESSAGE__SERVICE_INTERFACE = "GetCurrent_SequenceMessage_ServiceInterface"; //$NON-NLS-1$
-  public static final String GET_CURRENT__SERVICE__EXCHANGE_ITEM_REALIZATION = "GetCurrent_Service_ExchangeItemRealization"; //$NON-NLS-1$
-  public static final String GET_CURRENT__SERVICE__REFERENCED_MESSAGE = "GetCurrent_Service_ReferencedMessage"; //$NON-NLS-1$
-  public static final String GET_CURRENT__SERVICE__THROWN_EXCEPTION = "GetCurrent_Service_ThrownException"; //$NON-NLS-1$
-  public static final String GET_CURRENT__SIGNAL__INHERITED_SIGNALS = "GetCurrent_Signal_InheritedSignals"; //$NON-NLS-1$
-  public static final String GET_CURRENT__STATE_FRAGMENT__RELATED_ABSTRACT_FUNCTION = "GetCurrent_StateFragment_RelatedAbstractFunction"; //$NON-NLS-1$
-  public static final String GET_CURRENT__STATE_FRAGMENT__RELATED_ABSTRACT_STATE = "GetCurrent_StateFragment_RelatedAbstractState"; //$NON-NLS-1$
-  public static final String GET_CURRENT__STATE_TRANSITION_EFFECT = "GetCurrent_StateTransitionEffect"; //$NON-NLS-1$
-  public static final String GET_CURRENT__STATE_TRANSITION_TRIGGER = "GetCurrent_StateTransitionTrigger"; //$NON-NLS-1$
-  public static final String GET_CURRENT__STATE_TRANSITION__STATE_TRANSITION_REALIZATIONS = "GetCurrent_StateTransition_StateTransitionRealizations"; //$NON-NLS-1$
-  public static final String GET_CURRENT__STATE__AVAILABLE_IN_STATES = "GetCurrent_State_AvailableInStates"; //$NON-NLS-1$
-  public static final String GET_CURRENT__STATE__REFERENCED_STATES = "GetCurrent_State_ReferencedStates"; //$NON-NLS-1$
-  public static final String GET_CURRENT__STATE__STATE_REALIZATIONS = "GetCurrent_State_StateRealizations"; //$NON-NLS-1$
-  public static final String GET_CURRENT__STRING_REFERENCE__ABSTRACT_TYPE = "GetCurrent_StringReference_AbstractType"; //$NON-NLS-1$
-  public static final String GET_CURRENT__STRING_REFERENCE__REFERENCED_PROPERTY = "GetCurrent_StringReference_ReferencedProperty"; //$NON-NLS-1$
-  public static final String GET_CURRENT__STRING_REFERENCE__REFERENCED_VALUE = "GetCurrent_StringReference_ReferencedValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__STRING_TYPE__DEFAULT_VALUE = "GetCurrent_StringType_DefaultValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__STRING_TYPE__INHERITED_STRING_TYPE = "GetCurrent_StringType_InheritedStringType"; //$NON-NLS-1$
-  public static final String GET_CURRENT__STRING_TYPE__MAX_LENGTH = "GetCurrent_StringType_MaxLength"; //$NON-NLS-1$
-  public static final String GET_CURRENT__STRING_TYPE__MIN_LENGTH = "GetCurrent_StringType_MinLength"; //$NON-NLS-1$
-  public static final String GET_CURRENT__STRING_TYPE__NULL_VALUE = "GetCurrent_StringType_NullValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__STRING_TYPE__PROPERTY = "GetCurrent_StringType_Property"; //$NON-NLS-1$
-  public static final String GET_CURRENT__STRING_TYPE__REALIZED_STRING_TYPE = "GetCurrent_StringType_RealizedStringType"; //$NON-NLS-1$
-  public static final String GET_CURRENT__STRING_VALUE__TYPE = "GetCurrent_StringValue_Type"; //$NON-NLS-1$
-  public static final String GET_CURRENT__SYSTEM_ENGINEERING__REUSED_SHARED_PKG = "GetCurrent_SystemEngineering_ReusedSharedPkg"; //$NON-NLS-1$
-  public static final String GET_CURRENT__SYSTEM_FUNCTION__AVAILABLE_INSTATES = "GetCurrent_SystemFunction_AvailableInstates"; //$NON-NLS-1$
-  public static final String GET_CURRENT__SYSTEM_FUNCTION__FUNCTION_REALIZATION = "GetCurrent_SystemFunction_FunctionRealization"; //$NON-NLS-1$
-  public static final String GET_CURRENT__SYSTEM__IMPLEMENTED_INTERFACES = "GetCurrent_System_ImplementedInterfaces"; //$NON-NLS-1$
-  public static final String GET_CURRENT__SYSTEM__REALIZED_OPERATIONAL_ENTITIES = "GetCurrent_System_RealizedOperationalEntities"; //$NON-NLS-1$
-  public static final String GET_CURRENT__SYSTEM__USED_INTERFACES = "GetCurrent_System_UsedInterfaces"; //$NON-NLS-1$
-  public static final String GET_CURRENT__TERMINATE_PSEUDO_STATE__STATE_REALIZATIONS = "GetCurrent_TerminatePseudoState_StateRealizations"; //$NON-NLS-1$
-  public static final String GET_CURRENT__TIME_EVENT__EXPRESSION = "GetCurrent_TimeEvent_Expression"; //$NON-NLS-1$
-  public static final String GET_CURRENT__UNARY_EXPRESSION__OPERAND = "GetCurrent_UnaryExpression_Operand"; //$NON-NLS-1$
-  public static final String GET_CURRENT__UNARY_EXPRESSION__TYPE = "GetCurrent_UnaryExpression_Type"; //$NON-NLS-1$
-  public static final String GET_CURRENT__UNARY_EXPRESSION__UNIT = "GetCurrent_UnaryExpression_Unit"; //$NON-NLS-1$
-  public static final String GET_CURRENT__UNION_PROPERTY__DEFAULT_VALUE = "GetCurrent_UnionProperty_DefaultValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__UNION_PROPERTY__MAX_CARDINALITY = "GetCurrent_UnionProperty_MaxCardinality"; //$NON-NLS-1$
-  public static final String GET_CURRENT__UNION_PROPERTY__MAX_LENGTH = "GetCurrent_UnionProperty_MaxLength"; //$NON-NLS-1$
-  public static final String GET_CURRENT__UNION_PROPERTY__MAX_VALUE = "GetCurrent_UnionProperty_MaxValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__UNION_PROPERTY__MIN_CARDINALITY = "GetCurrent_UnionProperty_MinCardinality"; //$NON-NLS-1$
-  public static final String GET_CURRENT__UNION_PROPERTY__MIN_LENGTH = "GetCurrent_UnionProperty_MinLength"; //$NON-NLS-1$
-  public static final String GET_CURRENT__UNION_PROPERTY__MIN_VALUE = "GetCurrent_UnionProperty_MinValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__UNION_PROPERTY__NULL_VALUE = "GetCurrent_UnionProperty_NullValue"; //$NON-NLS-1$
-  public static final String GET_CURRENT__UNION_PROPERTY__QUALIFIERS = "GetCurrent_UnionProperty_Qualifiers"; //$NON-NLS-1$
-  public static final String GET_CURRENT__UNION_PROPERTY__TYPE = "GetCurrent_UnionProperty_Type"; //$NON-NLS-1$
-  public static final String GET_CURRENT__UNION__DEFAULT_PROPERTY = "GetCurrent_Union_DefaultProperty"; //$NON-NLS-1$
-  public static final String GET_CURRENT__UNION__DISCRIMINANT = "GetCurrent_Union_Discriminant"; //$NON-NLS-1$
-  public static final String GET_CURRENT__UNION__DISCRIMINANT_TYPE = "GetCurrent_Union_DiscriminantType"; //$NON-NLS-1$
-  public static final String GET_CURRENT__UNION__INHERITED_CLASSES = "GetCurrent_Union_InheritedClasses"; //$NON-NLS-1$
-  public static final String GET_CURRENT__VALUE_PART__REFERENCED_PROPERTY = "GetCurrent_ValuePart_ReferencedProperty"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__SYSTEM_COMPONENT__IMPLEMENTED_INTERFACES___LIB = getQueryIdentifier(GetAvailable_SystemComponent_ImplementedInterfaces__Lib.class);
+  public static final String GET_AVAILABLE__LOGICAL_COMPONENT__IMPLEMENTED_INTERFACES___LIB = getQueryIdentifier(GetAvailable_LogicalComponent_ImplementedInterfaces__Lib.class);
+  public static final String GET_AVAILABLE__LOGICAL_COMPONENT__USED_INTERFACES___LIB = getQueryIdentifier(GetAvailable_LogicalComponent_UsedInterfaces__Lib.class);
+  public static final String GET_AVAILABLE__PHYSICAL_COMPONENT__IMPLEMENTED_INTERFACES___LIB = getQueryIdentifier(GetAvailable_PhysicalComponent_ImplementedInterfaces__Lib.class);
+  public static final String GET_AVAILABLE__PHYSICAL_COMPONENT__USED_INTERFACES___LIB = getQueryIdentifier(GetAvailable_PhysicalComponent_UsedInterfaces__Lib.class);
+  public static final String GET_AVAILABLE__CONFIGURATION_ITEM__IMPLEMENTED_INTERFACES___LIB = getQueryIdentifier(GetAvailable_ConfigurationItem_ImplementedInterfaces__Lib.class);
+  public static final String GET_AVAILABLE__CONFIGURATION_ITEM__USED_INTERFACES___LIB = getQueryIdentifier(GetAvailable_ConfigurationItem_UsedInterfaces__Lib.class);
+  
+  
+  
+  public static final String GET_AVAILABLE__SYSTEM_COMPONENT__SUPER = getQueryIdentifier(GetAvailable_SystemComponent_Super.class);
+  public static final String GET_AVAILABLE__LOGICAL_COMPONENT__SUPER = getQueryIdentifier(GetAvailable_LogicalComponent_Super.class);
+  public static final String GET_AVAILABLE__PHYSICAL_COMPONENT__SUPER = getQueryIdentifier(GetAvailable_PhysicalComponent_Super.class);
+  public static final String GET_AVAILABLE__SYSTEM_COMPONENT__INVOLVING_CAPABILITIES = getQueryIdentifier(GetAvailable_SystemComponent_InvolvingCapabilities.class);
+  public static final String GET_AVAILABLE__BOOLEAN_TYPE__PROPERTY = getQueryIdentifier(GetAvailable_BooleanType_Property.class);
+  public static final String GET_AVAILABLE__BOOLEAN_TYPE__REALIZED_BOOLEAN_TYPE = getQueryIdentifier(GetAvailable_BooleanType_RealizedBooleanType.class);
+  public static final String GET_AVAILABLE__CAPABILITY_REALIZATION__AVAILABLE_IN_STATES = getQueryIdentifier(GetAvailable_CapabilityRealization_AvailableInStates.class);
+  public static final String GET_AVAILABLE__CAPABILITY_REALIZATION__INHERITED_CAPABILITIES = getQueryIdentifier(GetAvailable_CapabilityRealization_InheritedCapabilities.class);
+  public static final String GET_AVAILABLE__CAPABILITY_REALIZATION__INVOLVED_COMPONENTS = getQueryIdentifier(GetAvailable_CapabilityRealization_InvolvedComponents.class);
+  public static final String GET_AVAILABLE__CAPABILITY_REALIZATION__INVOLVED_ABSTRACT_FUNCTIONS = getQueryIdentifier(GetAvailable_CapabilityRealization_InvolvedAbstractFunctions.class);
+  public static final String GET_AVAILABLE__CAPABILITY_REALIZATION__INVOLVED_FUNCTIONAL_CHAINS = getQueryIdentifier(GetAvailable_CapabilityRealization_InvolvedFunctionalChains.class);
+  public static final String GET_AVAILABLE__CAPABILITY_REALIZATION__REALIZED_CAPABILITIES = getQueryIdentifier(GetAvailable_CapabilityRealization_RealizedCapabilities.class);
+  public static final String GET_AVAILABLE__CAPABILITY__AVAILABLE_IN_STATES = getQueryIdentifier(GetAvailable_Capability_AvailableInStates.class);
+  public static final String GET_AVAILABLE__CAPABILITY__EXTENDED_CAPABILITIES = getQueryIdentifier(GetAvailable_Capability_ExtendedCapabilities.class);
+  public static final String GET_AVAILABLE__CAPABILITY__INCLUDED_CAPABILITIES = getQueryIdentifier(GetAvailable_Capability_IncludedCapabilities.class);
+  public static final String GET_AVAILABLE__CAPABILITY__INHERITED_CAPABILITIES = getQueryIdentifier(GetAvailable_Capability_InheritedCapabilities.class);
+  public static final String GET_AVAILABLE__CAPABILITY__INVOLVED_SYSTEM_COMPONENTS = getQueryIdentifier(GetAvailable_Capability_InvolvedSystemComponents.class);
+  public static final String GET_AVAILABLE__CAPABILITY__INVOLVED_ABSTRACT_FUNCTIONS = getQueryIdentifier(GetAvailable_Capability_InvolvedAbstractFunctions.class);
+  public static final String GET_AVAILABLE__CAPABILITY__INVOLVED_FUNCTIONAL_CHAINS = getQueryIdentifier(GetAvailable_Capability_InvolvedFunctionalChains.class);
+  public static final String GET_AVAILABLE__CAPABILITY__REALIZED_CAPABILITIES = getQueryIdentifier(GetAvailable_Capability_RealizedCapabilities.class);
+  public static final String GET_AVAILABLE__CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS = getQueryIdentifier(GetAvailable_CapellaElement_AppliedPropertyValueGroups.class);
+  public static final String GET_AVAILABLE__CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUES = getQueryIdentifier(GetAvailable_CapellaElement_AppliedPropertyValues.class);
+  public static final String GET_AVAILABLE__CAPELLA_ELEMENT__STATUS = getQueryIdentifier(GetAvailable_CapellaElement_Status.class);
+  public static final String GET_AVAILABLE__CHANGE_EVENT__EXPRESSION = getQueryIdentifier(GetAvailable_ChangeEvent_Expression.class);
+  public static final String GET_AVAILABLE__CHOICE_PSEUDO_STATE__STATE_REALIZATIONS = getQueryIdentifier(GetAvailable_ChoicePseudoState_StateRealizations.class);
+  public static final String GET_AVAILABLE__CLASS__REALIZED_CLASSES = getQueryIdentifier(GetAvailable_Class_RealizedClasses.class);
+  public static final String GET_AVAILABLE__COLLECTION__DEFAULT_VALUE = getQueryIdentifier(GetAvailable_Collection_DefaultValue.class);
+  public static final String GET_AVAILABLE__COLLECTION__INDEX = getQueryIdentifier(GetAvailable_Collection_Index.class);
+  public static final String GET_AVAILABLE__COLLECTION__MAX_VALUE = getQueryIdentifier(GetAvailable_Collection_MaxValue.class);
+  public static final String GET_AVAILABLE__COLLECTION__MIN_VALUE = getQueryIdentifier(GetAvailable_Collection_MinValue.class);
+  public static final String GET_AVAILABLE__COLLECTION__NULL_VALUE = getQueryIdentifier(GetAvailable_Collection_NullValue.class);
+  public static final String GET_AVAILABLE__COMMUNICATION_LINK__EXCHANGE_ITEMS = getQueryIdentifier(GetAvailable_CommunicationLink_ExchangeItems.class);
+  public static final String GET_AVAILABLE__COMMUNICATION_MEAN__ALLOCATED_FUNCTIONAL_EXCHANGES = getQueryIdentifier(GetAvailable_CommunicationMean_AllocatedFunctionalExchanges.class);
+  public static final String GET_AVAILABLE__COMPONENT_EXCHANGE_CATEGORY__EXCHANGES = getQueryIdentifier(GetAvailable_ComponentExchangeCategory_Exchanges.class);
+  public static final String GET_AVAILABLE__COMPONENT_EXCHANGE__CATEGORIES = getQueryIdentifier(GetAvailable_ComponentExchange_Categories.class);
+  public static final String GET_AVAILABLE__COMPONENT_INSTANCE__DEPLOYERS = getQueryIdentifier(GetAvailable_ComponentInstance_Deployers.class);
+  public static final String GET_AVAILABLE__COMPONENT_INSTANCE__DEPLOYMENTS = getQueryIdentifier(GetAvailable_ComponentInstance_Deployments.class);
+  public static final String GET_AVAILABLE__ABSTRACT_FUNCTIONAL_BLOCK__ALLOCATED_FUNCTIONS = getQueryIdentifier(GetAvailable_AbstractFunctionalBlock_AllocatedFunctions.class);
+  public static final String GET_AVAILABLE__COMPONENT_PORT__ALLOCATED_PORT = getQueryIdentifier(GetAvailable_ComponentPort_AllocatedPort.class);
+  public static final String GET_AVAILABLE__COMPONENT_PORT__CONNECTED_PORTS = getQueryIdentifier(GetAvailable_ComponentPort_ConnectedPorts.class);
+  public static final String GET_AVAILABLE__COMPONENT_PORT__REALIZED_COMPONENT_PORT = getQueryIdentifier(GetAvailable_ComponentPort_RealizedComponentPort.class);
+  public static final String GET_AVAILABLE__COMPONENT_PORT__TYPE = getQueryIdentifier(GetAvailable_ComponentPort_Type.class);
+  public static final String GET_AVAILABLE__CONFIGURATION_ITEM__REALIZED_PHYSICAL_ARTIFACTS = getQueryIdentifier(GetAvailable_ConfigurationItem_RealizedPhysicalArtifacts.class);
+  public static final String GET_AVAILABLE__CONFIGURATION_ITEM__INVOLVING_CAPABILITY_REALIZATIONS = getQueryIdentifier(GetAvailable_ConfigurationItem_InvolvingCapabilityRealizations.class);
+  public static final String GET_AVAILABLE__COMPONENT_EXCHANGE__ALLOCATED_FUNCTIONAL_EXCHANGES = getQueryIdentifier(GetAvailable_ComponentExchange_AllocatedFunctionalExchanges.class);
+  public static final String GET_AVAILABLE__COMPONENT_EXCHANGE__REALIZED_COMPONENT_EXCHANGES = getQueryIdentifier(GetAvailable_ComponentExchange_RealizedComponentExchanges.class);
+  public static final String GET_AVAILABLE__CONSTRAINT__CONSTRAINED_ELEMENTS = getQueryIdentifier(GetAvailable_Constraint_ConstrainedElements.class);
+  public static final String GET_AVAILABLE__DEPLOY_CONF__DEPLOYMENTS = getQueryIdentifier(GetAvailable_DeployConf_Deployments.class);
+  public static final String GET_AVAILABLE__E_P_B_S_ARCHITECTURE__ALLOCATED_PHYSICAL_ARCHITECTURE = getQueryIdentifier(GetAvailable_EPBSArchitecture_AllocatedPhysicalArchitecture.class);
+  public static final String GET_AVAILABLE__ENTITY__ALLOCATED_ROLES = getQueryIdentifier(GetAvailable_Entity_AllocatedRoles.class);
+  public static final String GET_AVAILABLE__ENUMERATION_LITERAL_ABSTRACT_TYPE = getQueryIdentifier(GetAvailable_EnumerationLiteralAbstractType.class);
+  public static final String GET_AVAILABLE__ENUMERATION_PROPERTY_VALUE__TYPE = getQueryIdentifier(GetAvailable_EnumerationPropertyValue_Type.class);
+  public static final String GET_AVAILABLE__ENUMERATION_PROPERTY_VALUE__VALUE = getQueryIdentifier(GetAvailable_EnumerationPropertyValue_Value.class);
+  public static final String GET_AVAILABLE__ENUMERATION__REALIZED_ENUMERATION = getQueryIdentifier(GetAvailable_Enumeration_RealizedEnumeration.class);
+  public static final String GET_AVAILABLE__EXCEPTION__INHERITED_EXCEPTION = getQueryIdentifier(GetAvailable_Exception_InheritedException.class);
+  public static final String GET_AVAILABLE__EXCHANGE_CATEGORY__EXCHANGES = getQueryIdentifier(GetAvailable_ExchangeCategory_Exchanges.class);
+  public static final String GET_AVAILABLE__EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM = getQueryIdentifier(GetAvailable_ExchangeItemAllocation_AllocatedItem.class);
+  public static final String GET_AVAILABLE__EXCHANGE_ITEM_ELEMENT__REFERENCED_PROPERTIES = getQueryIdentifier(GetAvailable_ExchangeItemElement_ReferencedProperties.class);
+  public static final String GET_AVAILABLE__EXCHANGE_ITEM__REALIZED_INFORMATIONS = getQueryIdentifier(GetAvailable_ExchangeItem_RealizedInformations.class);
+  public static final String GET_AVAILABLE__FINAL_STATE__AVAILABLE_IN_STATES = getQueryIdentifier(GetAvailable_FinalState_AvailableInStates.class);
+  public static final String GET_AVAILABLE__FINAL_STATE__STATE_REALIZATIONS = getQueryIdentifier(GetAvailable_FinalState_StateRealizations.class);
+  public static final String GET_AVAILABLE__FORK_PSEUDO_STATE__STATE_REALIZATIONS = getQueryIdentifier(GetAvailable_ForkPseudoState_StateRealizations.class);
+  public static final String GET_AVAILABLE__FUNCTION_INPUT_PORT__PROVIDED_INTERFACE = getQueryIdentifier(GetAvailable_FunctionInputPort_ProvidedInterface.class);
+  public static final String GET_AVAILABLE__FUNCTION_INPUT_PORT__REALIZED_FUNCTION_INPUT_PORT = getQueryIdentifier(GetAvailable_FunctionInputPort_RealizedFunctionInputPort.class);
+  public static final String GET_AVAILABLE__FUNCTION_INPUT_PORT__REQUIRED_INTERFACE = getQueryIdentifier(GetAvailable_FunctionInputPort_RequiredInterface.class);
+  public static final String GET_AVAILABLE__FUNCTION_OUTPUT_PORT__PROVIDED_INTERFACE = getQueryIdentifier(GetAvailable_FunctionOutputPort_ProvidedInterface.class);
+  public static final String GET_AVAILABLE__FUNCTION_OUTPUT_PORT__REALIZED_FUNCTION_OUTPUT_PORT = getQueryIdentifier(GetAvailable_FunctionOutputPort_RealizedFunctionOutputPort.class);
+  public static final String GET_AVAILABLE__FUNCTION_OUTPUT_PORT__REQUIRED_INTERFACE = getQueryIdentifier(GetAvailable_FunctionOutputPort_RequiredInterface.class);
+  public static final String GET_AVAILABLE__FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__EXCHANGE_ITEMS = getQueryIdentifier(GetAvailable_FunctionalChainInvolvementLink_ExchangeItems.class);
+  public static final String GET_AVAILABLE__FUNCTIONAL_CHAIN__AVAILABLE_IN_STATES = getQueryIdentifier(GetAvailable_FunctionalChain_AvailableInStates.class);
+  public static final String GET_AVAILABLE__FUNCTIONAL_CHAIN__REALIZED_FUNCTIONAL_CHAINS = getQueryIdentifier(GetAvailable_FunctionalChain_RealizedFunctionalChains.class);
+  public static final String GET_AVAILABLE__FUNCTIONAL_EXCHANGE__CATEGORIES = getQueryIdentifier(GetAvailable_FunctionalExchange_Categories.class);
+  public static final String GET_AVAILABLE__FUNCTIONAL_EXCHANGE__FUNCTIONAL_EXCHANGE_REALIZATIONS = getQueryIdentifier(GetAvailable_FunctionalExchange_FunctionalExchangeRealizations.class);
+  public static final String GET_AVAILABLE__INITIAL_PSEUDO_STATE__STATE_REALIZATIONS = getQueryIdentifier(GetAvailable_InitialPseudoState_StateRealizations.class);
+  public static final String GET_AVAILABLE__INTERACTION_USE__REFERENCED_SCENARIO = getQueryIdentifier(GetAvailable_InteractionUse_ReferencedScenario.class);
+  public static final String GET_AVAILABLE__INTERFACE_IMPLEMENTATION__IMPLEMENTED_INTERFACE = getQueryIdentifier(GetAvailable_InterfaceImplementation_ImplementedInterface.class);
+  public static final String GET_AVAILABLE__INTERFACE_USE__USED_INTERFACE = getQueryIdentifier(GetAvailable_InterfaceUse_UsedInterface.class);
+  public static final String GET_AVAILABLE__JOIN_PSEUDO_STATE__STATE_REALIZATIONS = getQueryIdentifier(GetAvailable_JoinPseudoState_StateRealizations.class);
+  public static final String GET_AVAILABLE__LITERAL_BOOLEAN_VALUE__ABSTRACT_TYPE = getQueryIdentifier(GetAvailable_LiteralBooleanValue_AbstractType.class);
+  public static final String GET_AVAILABLE__LOGICAL_COMPONENT_SHORTCUT__REFERENCED_L_C = getQueryIdentifier(GetAvailable_LogicalComponentShortcut_ReferencedLC.class);
+  public static final String GET_AVAILABLE__LOGICAL_COMPONENT__INVOLVING_CAPABILITY_REALIZATIONS = getQueryIdentifier(GetAvailable_LogicalComponent_InvolvingCapabilityRealizations.class);
+  public static final String GET_AVAILABLE__LOGICAL_FUNCTION__AVAILABLE_INSTATES = getQueryIdentifier(GetAvailable_LogicalFunction_AvailableInstates.class);
+  public static final String GET_AVAILABLE__LOGICAL_FUNCTION__REALIZED_FUNCTIONS = getQueryIdentifier(GetAvailable_LogicalFunction_RealizedFunctions.class);
+  public static final String GET_AVAILABLE__MESSAGE__INHERITED_MESSAGE = getQueryIdentifier(GetAvailable_Message_InheritedMessage.class);
+  public static final String GET_AVAILABLE__MISSION__EXPLOITED_CAPABILITIES = getQueryIdentifier(GetAvailable_Mission_ExploitedCapabilities.class);
+  public static final String GET_AVAILABLE__MISSION__INVOLVED_SYSTEM_COMPONENTS = getQueryIdentifier(GetAvailable_Mission_InvolvedSystemComponents.class);
+  public static final String GET_AVAILABLE__MODE__AVAILABLE_IN_STATES = getQueryIdentifier(GetAvailable_Mode_AvailableInStates.class);
+  public static final String GET_AVAILABLE__MODE__REFERENCED_STATES = getQueryIdentifier(GetAvailable_Mode_ReferencedStates.class);
+  public static final String GET_AVAILABLE__MODE__STATE_REALIZATIONS = getQueryIdentifier(GetAvailable_Mode_StateRealizations.class);
+  public static final String GET_AVAILABLE__NUMERIC_TYPE__PROPERTY = getQueryIdentifier(GetAvailable_NumericType_Property.class);
+  public static final String GET_AVAILABLE__NUMERIC_TYPE__REALIZED_NUMERIC_TYPE = getQueryIdentifier(GetAvailable_NumericType_RealizedNumericType.class);
+  public static final String GET_AVAILABLE__NUMERIC_VALUE__TYPE = getQueryIdentifier(GetAvailable_NumericValue_Type.class);
+  public static final String GET_AVAILABLE__OPERATIONAL_ACTIVITY__AVAILABLE_IN_STATES = getQueryIdentifier(GetAvailable_OperationalActivity_AvailableInstates.class);
+  public static final String GET_AVAILABLE__OPERATIONAL_CAPABILITY__AVAILABLE_IN_STATES = getQueryIdentifier(GetAvailable_OperationalCapability_AvailableInStates.class);
+  public static final String GET_AVAILABLE__OPERATIONAL_CAPABILITY__INHERITED_CAPABILITIES = getQueryIdentifier(GetAvailable_OperationalCapability_InheritedCapabilities.class);
+  public static final String GET_AVAILABLE__OPERATIONAL_CAPABILITY__INVOLVED_ACTIVITY = getQueryIdentifier(GetAvailable_OperationalCapability_InvolvedActivity.class);
+  public static final String GET_AVAILABLE__OPERATIONAL_CAPABILITY__INVOLVED_ENTITIES = getQueryIdentifier(GetAvailable_OperationalCapability_InvolvedEntities.class);
+  public static final String GET_AVAILABLE__OPERATIONAL_CAPABILITY__INVOLVED_OPERATIONAL_PROCESS = getQueryIdentifier(GetAvailable_OperationalCapability_InvolvedOperationalProcess.class);
+  public static final String GET_AVAILABLE__OPERATIONAL_PROCESS__AVAILABLE_IN_STATES = getQueryIdentifier(GetAvailable_OperationalProcess_AvailableInStates.class);
+  public static final String GET_AVAILABLE__PARAMETER__TYPE = getQueryIdentifier(GetAvailable_Parameter_Type.class);
+  public static final String GET_AVAILABLE__PART__TYPE_PORTS = getQueryIdentifier(GetAvailable_Part_TypePorts.class);
+  public static final String GET_AVAILABLE__PHYSICAL_COMPONENT__INVOLVING_CAPABILITY_REALIZATIONS = getQueryIdentifier(GetAvailable_PhysicalComponent_InvolvingCapabilityRealizations.class);
+  public static final String GET_AVAILABLE__PHYSICAL_ARCHITECTURE__ALLOCATED_LOGICAL_ARCHITECTURE = getQueryIdentifier(GetAvailable_PhysicalArchitecture_AllocatedLogicalArchitecture.class);
+  public static final String GET_AVAILABLE__PHYSICAL_COMP__DEPLOYERS = getQueryIdentifier(GetAvailable_PhysicalComp_Deployers.class);
+  public static final String GET_AVAILABLE__PHYSICAL_COMP__DEPLOYMENTS = getQueryIdentifier(GetAvailable_PhysicalComp_Deployments.class);
+  public static final String GET_AVAILABLE__PHYSICAL_COMPONENT__DEPLOYED_COMPONENTS = getQueryIdentifier(GetAvailable_PhysicalComponent_DeployedComponents.class);
+  public static final String GET_AVAILABLE__LOGICAL_COMPONENT__REALIZED_COMPONENTS = getQueryIdentifier(GetAvailable_LogicalComponent_RealizedComponents.class);
+  public static final String GET_AVAILABLE__PHYSICAL_COMPONENT__REALIZED_COMPONENTS = getQueryIdentifier(GetAvailable_PhysicalComponent_RealizedComponents.class);
+  public static final String GET_AVAILABLE__PHYSICAL_FUNCTION__AVAILABLE_INSTATES = getQueryIdentifier(GetAvailable_PhysicalFunction_AvailableInstates.class);
+  public static final String GET_AVAILABLE__PHYSICAL_FUNCTION__REALIZED_FUNCTIONS = getQueryIdentifier(GetAvailable_PhysicalFunction_RealizedFunctions.class);
+  public static final String GET_AVAILABLE__PHYSICAL_INTERFACE__INHERITED_INTERFACES = getQueryIdentifier(GetAvailable_PhysicalInterface_InheritedInterfaces.class);
+  public static final String GET_AVAILABLE__PHYSICAL_LINK_CATEGORY__LINKS = getQueryIdentifier(GetAvailable_PhysicalLinkCategory_Links.class);
+  public static final String GET_AVAILABLE__PHYSICAL_LINK__ALLOCATED_COMPONENT_EXCHANGES = getQueryIdentifier(GetAvailable_PhysicalLink_AllocatedComponentExchanges.class);
+  public static final String GET_AVAILABLE__PHYSICAL_LINK__CATEGORIES = getQueryIdentifier(GetAvailable_PhysicalLink_Categories.class);
+  public static final String GET_AVAILABLE__PHYSICAL_LINK__REALIZED_PHYSICAL_LINKS = getQueryIdentifier(GetAvailable_PhysicalLink_RealizedPhysicalLinks.class);
+  public static final String GET_AVAILABLE__PHYSICAL_NODE__DEPLOYERS = getQueryIdentifier(GetAvailable_PhysicalNode_Deployers.class);
+  public static final String GET_AVAILABLE__PHYSICAL_NODE__DEPLOYMENTS = getQueryIdentifier(GetAvailable_PhysicalNode_Deployments.class);
+  public static final String GET_AVAILABLE__PHYSICAL_PATH__ALLOCATED_COMPONENT_EXCHANGES = getQueryIdentifier(GetAvailable_PhysicalPath_AllocatedComponentExchanges.class);
+  public static final String GET_AVAILABLE__PHYSICAL_PATH__REALIZED_PHYSICAL_PATHS = getQueryIdentifier(GetAvailable_PhysicalPath_RealizedPhysicalPaths.class);
+  public static final String GET_AVAILABLE__PHYSICAL_PORT__ALLOCATED_COMPONENT_PORTS = getQueryIdentifier(GetAvailable_PhysicalPort_AllocatedComponentPorts.class);
+  public static final String GET_AVAILABLE__PHYSICAL_PORT__ALLOCATED_FUNCTION_PORTS = getQueryIdentifier(GetAvailable_PhysicalPort_AllocatedFunctionPorts.class);
+  public static final String GET_AVAILABLE__PHYSICAL_PORT__REALIZED_PHYSICAL_PORTS = getQueryIdentifier(GetAvailable_PhysicalPort_RealizedPhysicalPorts.class);
+  public static final String GET_AVAILABLE__PHYSICAL_QUANTITY__PROPERTY = getQueryIdentifier(GetAvailable_PhysicalQuantity_Property.class);
+  public static final String GET_AVAILABLE__PHYSICAL_QUANTITY__REALIZED_PHYSICAL_QUANTITY = getQueryIdentifier(GetAvailable_PhysicalQuantity_RealizedPhysicalQuantity.class);
+  public static final String GET_AVAILABLE__ROLE__ALLOCATED_ACTIVITIES = getQueryIdentifier(GetAvailable_Role_AllocatedActivities.class);
+  public static final String GET_AVAILABLE__SCENARIO__REALIZED_SCENARIO = getQueryIdentifier(GetAvailable_Scenario_RealizedScenario.class);
+  public static final String GET_AVAILABLE__SEQUENCE_LINK_LINKS = getQueryIdentifier(GetAvailable_SequenceLink_Links.class);
+  public static final String GET_AVAILABLE__SEQUENCE_MESSAGE__EXCHANGED_ITEMS = getQueryIdentifier(GetAvailable_SequenceMessage_ExchangedItems.class);
+  public static final String GET_AVAILABLE__SEQUENCE_MESSAGE__INVOKED_OPERATION = getQueryIdentifier(GetAvailable_SequenceMessage_InvokedOperation.class);
+  public static final String GET_AVAILABLE__SERVICE__EXCHANGE_ITEM_REALIZATION = getQueryIdentifier(GetAvailable_Service_ExchangeItemRealization.class);
+  public static final String GET_AVAILABLE__SERVICE__REFERENCED_MESSAGE = getQueryIdentifier(GetAvailable_Service_ReferencedMessage.class);
+  public static final String GET_AVAILABLE__SERVICE__THROWN_EXCEPTION = getQueryIdentifier(GetAvailable_Service_ThrownException.class);
+  public static final String GET_AVAILABLE__SIGNAL__INHERITED_SIGNALS = getQueryIdentifier(GetAvailable_Signal_InheritedSignals.class);
+  public static final String GET_AVAILABLE__STATE_FRAGMENT__RELATED_ABSTRACT_FUNCTION = getQueryIdentifier(GetAvailable_StateFragment_RelatedAbstractFunction.class);
+  public static final String GET_AVAILABLE__STATE_FRAGMENT__RELATED_ABSTRACT_STATE = getQueryIdentifier(GetAvailable_StateFragment_RelatedAbstractState.class);
+  public static final String GET_AVAILABLE__STATE_TRANSITION__STATE_TRANSITION_REALIZATIONS = getQueryIdentifier(GetAvailable_StateTransition_StateTransitionRealizations.class);
+  public static final String GET_AVAILABLE__STATE__AVAILABLE_IN_STATES = getQueryIdentifier(GetAvailable_State_AvailableInStates.class);
+  public static final String GET_AVAILABLE__STATE__REFERENCED_STATES = getQueryIdentifier(GetAvailable_State_ReferencedStates.class);
+  public static final String GET_AVAILABLE__STATE__STATE_REALIZATIONS = getQueryIdentifier(GetAvailable_State_StateRealizations.class);
+  public static final String GET_AVAILABLE__STRING_TYPE__INHERITED_STRING_TYPE = getQueryIdentifier(GetAvailable_StringType_InheritedStringType.class);
+  public static final String GET_AVAILABLE__STRING_TYPE__PROPERTY = getQueryIdentifier(GetAvailable_StringType_Property.class);
+  public static final String GET_AVAILABLE__STRING_TYPE__REALIZED_STRING_TYPE = getQueryIdentifier(GetAvailable_StringType_RealizedStringType.class);
+  public static final String GET_AVAILABLE__STRING_VALUE__TYPE = getQueryIdentifier(GetAvailable_StringValue_Type.class);
+  public static final String GET_AVAILABLE__SYSTEM_ENGINEERING__REUSED_SHARED_PKG = getQueryIdentifier(GetAvailable_SystemEngineering_ReusedSharedPkg.class);
+  public static final String GET_AVAILABLE__SYSTEM_FUNCTION__AVAILABLE_INSTATES = getQueryIdentifier(GetAvailable_SystemFunction_AvailableInstates.class);
+  public static final String GET_AVAILABLE__SYSTEM_FUNCTION__REALIZED_FUNCTIONS = getQueryIdentifier(GetAvailable_SystemFunction_RealizedFunctions.class);
+  public static final String GET_AVAILABLE__SYSTEM_COMPONENT__REALIZED_ENTITIES = getQueryIdentifier(GetAvailable_SystemComponent_RealizedEntities.class);
+  public static final String GET_AVAILABLE__TERMINATE_PSEUDO_STATE__STATE_REALIZATIONS = getQueryIdentifier(GetAvailable_TerminatePseudoState_StateRealizations.class);
+  public static final String GET_AVAILABLE__TIME_EVENT__EXPRESSION = getQueryIdentifier(GetAvailable_TimeEvent_Expression.class);
+  public static final String GET_AVAILABLE__UNION_PROPERTY__QUALIFIERS = getQueryIdentifier(GetAvailable_UnionProperty_Qualifiers.class);
+  public static final String GET_AVAILABLE__UNION__DEFAULT_PROPERTY = getQueryIdentifier(GetAvailable_Union_DefaultProperty.class);
+  public static final String GET_AVAILABLE__UNION__DISCRIMINANT = getQueryIdentifier(GetAvailable_Union_Discriminant.class);
+  public static final String GET_AVAILABLE__UNION__DISCRIMINANT_TYPE = getQueryIdentifier(GetAvailable_Union_DiscriminantType.class);
+  public static final String GET_AVAILABLE__UNION__INHERITED_CLASSES = getQueryIdentifier(GetAvailable_Union_InheritedClasses.class);
+  public static final String GET_AVAILABLE__VALUE_PART__REFERENCED_PROPERTY = getQueryIdentifier(GetAvailable_ValuePart_ReferencedProperty.class);
+
+  public static final String GET_CURRENT__ABSTRACT_FUNCTIONAL_BLOCK__ALLOCATED_FUNCTIONS = getQueryIdentifier(GetCurrent_AbstractFunctionalBlock_AllocatedFunctions.class);
+  public static final String GET_CURRENT__ABSTRACT_STATE_PROPERTIES = getQueryIdentifier(GetCurrent_AbstractStateProperties.class);
+  public static final String GET_CURRENT__SYSTEM_COMPONENT__SUPER = getQueryIdentifier(GetCurrent_SystemComponent_Super.class);
+  public static final String GET_CURRENT__SYSTEM_COMPONENT__INVOLVING_CAPABILITIES = getQueryIdentifier(GetCurrent_SystemComponent_InvolvingCapabilities.class);
+  public static final String GET_CURRENT__BINARY_EXPRESSION__LEFT_OPERAND = getQueryIdentifier(GetCurrent_BinaryExpression_LeftOperand.class);
+  public static final String GET_CURRENT__BINARY_EXPRESSION__RIGHT_OPERAND = getQueryIdentifier(GetCurrent_BinaryExpression_RightOperand.class);
+  public static final String GET_CURRENT__BINARY_EXPRESSION__TYPE = getQueryIdentifier(GetCurrent_BinaryExpression_Type.class);
+  public static final String GET_CURRENT__BINARY_EXPRESSION__UNIT = getQueryIdentifier(GetCurrent_BinaryExpression_Unit.class);
+  public static final String GET_CURRENT__BOOLEAN_REFERENCE__ABSTRACT_TYPE = getQueryIdentifier(GetCurrent_BooleanReference_AbstractType.class);
+  public static final String GET_CURRENT__BOOLEAN_REFERENCE__REFERENCED_PROPERTY = getQueryIdentifier(GetCurrent_BooleanReference_ReferencedProperty.class);
+  public static final String GET_CURRENT__BOOLEAN_REFERENCE__REFERENCED_VALUE = getQueryIdentifier(GetCurrent_BooleanReference_ReferencedValue.class);
+  public static final String GET_CURRENT__BOOLEAN_TYPE__DEFAULT_VALUE = getQueryIdentifier(GetCurrent_BooleanType_DefaultValue.class);
+  public static final String GET_CURRENT__BOOLEAN_TYPE__INHERITED_BOOLEAN_TYPE = getQueryIdentifier(GetCurrent_BooleanType_InheritedBooleanType.class);
+  public static final String GET_CURRENT__BOOLEAN_TYPE__PROPERTY = getQueryIdentifier(GetCurrent_BooleanType_Property.class);
+  public static final String GET_CURRENT__BOOLEAN_TYPE__REALIZED_BOOLEAN_TYPE = getQueryIdentifier(GetCurrent_BooleanType_RealizedBooleanType.class);
+  public static final String GET_CURRENT__CAPABILITY_REALIZATION__AVAILABLE_IN_STATES = getQueryIdentifier(GetCurrent_CapabilityRealization_AvailableInStates.class);
+  public static final String GET_CURRENT__CAPABILITY_REALIZATION__INHERITED_CAPABILITIES = getQueryIdentifier(GetCurrent_CapabilityRealization_InheritedCapabilities.class);
+  public static final String GET_CURRENT__CAPABILITY_REALIZATION__INVOLVED_COMPONENTS = getQueryIdentifier(GetCurrent_CapabilityRealization_InvolvedComponents.class);
+  public static final String GET_CURRENT__CAPABILITY_REALIZATION__INVOLVED_ABSTRACT_FUNCTIONS = getQueryIdentifier(GetCurrent_CapabilityRealization_InvolvedAbstractFunctions.class);
+  public static final String GET_CURRENT__CAPABILITY_REALIZATION__INVOLVED_FUNCTIONAL_CHAINS = getQueryIdentifier(GetCurrent_CapabilityRealization_InvolvedFunctionalChains.class);
+  public static final String GET_CURRENT__CAPABILITY_REALIZATION__REALIZED_CAPABILITIES = getQueryIdentifier(GetCurrent_CapabilityRealization_RealizedCapabilities.class);
+  public static final String GET_CURRENT__CAPABILITY__AVAILABLE_IN_STATES = getQueryIdentifier(GetCurrent_Capability_AvailableInStates.class);
+  public static final String GET_CURRENT__CAPABILITY__EXTENDED_CAPABILITIES = getQueryIdentifier(GetCurrent_Capability_ExtendedCapabilities.class);
+  public static final String GET_CURRENT__CAPABILITY__INCLUDED_CAPABILITIES = getQueryIdentifier(GetCurrent_Capability_IncludedCapabilities.class);
+  public static final String GET_CURRENT__CAPABILITY__INHERITED_CAPABILITIES = getQueryIdentifier(GetCurrent_Capability_InheritedCapabilities.class);
+  public static final String GET_CURRENT__CAPABILITY__INVOLVED_SYSTEM_COMPONENTS = getQueryIdentifier(GetCurrent_Capability_InvolvedSystemComponents.class);
+  public static final String GET_CURRENT__CAPABILITY__INVOLVED_ABSTRACT_FUNCTIONS = getQueryIdentifier(GetCurrent_Capability_InvolvedAbstractFunctions.class);
+  public static final String GET_CURRENT__CAPABILITY__INVOLVED_FUNCTIONAL_CHAINS = getQueryIdentifier(GetCurrent_Capability_InvolvedFunctionalChains.class);
+  public static final String GET_CURRENT__CAPABILITY__REALIZED_CAPABILITIES = getQueryIdentifier(GetCurrent_Capability_RealizedCapabilities.class);
+  public static final String GET_CURRENT__CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS = getQueryIdentifier(GetCurrent_CapellaElement_AppliedPropertyValueGroups.class);
+  public static final String GET_CURRENT__CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUES = getQueryIdentifier(GetCurrent_CapellaElement_AppliedPropertyValues.class);
+  public static final String GET_CURRENT__CAPELLA_ELEMENT__STATUS = getQueryIdentifier(GetCurrent_CapellaElement_Status.class);
+  public static final String GET_CURRENT__CHANGE_EVENT__EXPRESSION = getQueryIdentifier(GetCurrent_ChangeEvent_Expression.class);
+  public static final String GET_CURRENT__CHOICE_PSEUDO_STATE__STATE_REALIZATIONS = getQueryIdentifier(GetCurrent_ChoicePseudoState_StateRealizations.class);
+  public static final String GET_CURRENT__CLASS__INHERITED_CLASSES = getQueryIdentifier(GetCurrent_Class_InheritedClasses.class);
+  public static final String GET_CURRENT__CLASS__REALIZED_CLASSES = getQueryIdentifier(GetCurrent_Class_RealizedClasses.class);
+  public static final String GET_CURRENT__COLLECTION_VALUE_REF_REFERENCED_PROPERTY = getQueryIdentifier(GetCurrent_CollectionValueRefReferencedProperty.class);
+  public static final String GET_CURRENT__COLLECTION_VALUE_REF_REFERENCED_VALUE = getQueryIdentifier(GetCurrent_CollectionValueRefReferencedValue.class);
+  public static final String GET_CURRENT__COLLECTION_VALUE_REFERENCE_TYPE = getQueryIdentifier(GetCurrent_CollectionValueReferenceType.class);
+  public static final String GET_CURRENT__COLLECTION_VALUE__TYPE = getQueryIdentifier(GetCurrent_CollectionValue_Type.class);
+  public static final String GET_CURRENT__COLLECTION__DEFAULT_VALUE = getQueryIdentifier(GetCurrent_Collection_DefaultValue.class);
+  public static final String GET_CURRENT__COLLECTION__INDEX = getQueryIdentifier(GetCurrent_Collection_Index.class);
+  public static final String GET_CURRENT__COLLECTION__INHERITED_COLLECTION = getQueryIdentifier(GetCurrent_Collection_InheritedCollection.class);
+  public static final String GET_CURRENT__COLLECTION__MAX_CARDINALITY = getQueryIdentifier(GetCurrent_Collection_MaxCardinality.class);
+  public static final String GET_CURRENT__COLLECTION__MAX_VALUE = getQueryIdentifier(GetCurrent_Collection_MaxValue.class);
+  public static final String GET_CURRENT__COLLECTION__MIN_CARDINALITY = getQueryIdentifier(GetCurrent_Collection_MinCardinality.class);
+  public static final String GET_CURRENT__COLLECTION__MIN_VALUE = getQueryIdentifier(GetCurrent_Collection_MinValue.class);
+  public static final String GET_CURRENT__COLLECTION__NULL_VALUE = getQueryIdentifier(GetCurrent_Collection_NullValue.class);
+  public static final String GET_CURRENT__COLLECTION__TYPE = getQueryIdentifier(GetCurrent_Collection_Type.class);
+  public static final String GET_CURRENT__COMMUNICATION_LINK__EXCHANGE_ITEMS = getQueryIdentifier(GetCurrent_CommunicationLink_ExchangeItems.class);
+  public static final String GET_CURRENT__COMMUNICATION_MEAN__ALLOCATED_FUNCTIONAL_EXCHANGES = getQueryIdentifier(GetCurrent_CommunicationMean_AllocatedFunctionalExchanges.class);
+  public static final String GET_CURRENT__COMPLEX_VALUE_REF_REFERENCED_PROPERTY = getQueryIdentifier(GetCurrent_ComplexValueRefReferencedProperty.class);
+  public static final String GET_CURRENT__COMPLEX_VALUE_REF_REFERENCED_VALUE = getQueryIdentifier(GetCurrent_ComplexValueRefReferencedValue.class);
+  public static final String GET_CURRENT__COMPLEX_VALUE_REFERENCE_TYPE = getQueryIdentifier(GetCurrent_ComplexValueReferenceType.class);
+  public static final String GET_CURRENT__COMPLEX_VALUE__TYPE = getQueryIdentifier(GetCurrent_ComplexValue_Type.class);
+  public static final String GET_CURRENT__COMPONENT_EXCHANGE_CATEGORY__EXCHANGES = getQueryIdentifier(GetCurrent_ComponentExchangeCategory_Exchanges.class);
+  public static final String GET_CURRENT__COMPONENT_EXCHANGE__CATEGORIES = getQueryIdentifier(GetCurrent_ComponentExchange_Categories.class);
+  public static final String GET_CURRENT__COMPONENT_INSTANCE__DEPLOYERS = getQueryIdentifier(GetCurrent_ComponentInstance_Deployers.class);
+  public static final String GET_CURRENT__COMPONENT_INSTANCE__DEPLOYMENTS = getQueryIdentifier(GetCurrent_ComponentInstance_Deployments.class);
+  public static final String GET_CURRENT__COMPONENT_PORT__ALLOCATED_PORT = getQueryIdentifier(GetCurrent_ComponentPort_AllocatedPort.class);
+  public static final String GET_CURRENT__COMPONENT_PORT__CONNECTED_PORTS = getQueryIdentifier(GetCurrent_ComponentPort_ConnectedPorts.class);
+  public static final String GET_CURRENT__COMPONENT_PORT__MAX_CARDINALITY = getQueryIdentifier(GetCurrent_ComponentPort_MaxCardinality.class);
+  public static final String GET_CURRENT__COMPONENT_PORT__MIN_CARDINALITY = getQueryIdentifier(GetCurrent_ComponentPort_MinCardinality.class);
+  public static final String GET_CURRENT__COMPONENT_PORT__PROVIDED_INTERFACES = getQueryIdentifier(GetCurrent_ComponentPort_ProvidedInterfaces.class);
+  public static final String GET_CURRENT__COMPONENT_PORT__REALIZED_COMPONENT_PORT = getQueryIdentifier(GetCurrent_ComponentPort_RealizedComponentPort.class);
+  public static final String GET_CURRENT__COMPONENT_PORT__REQUIRED_INTERFACES = getQueryIdentifier(GetCurrent_ComponentPort_RequiredInterfaces.class);
+  public static final String GET_CURRENT__COMPONENT_PORT__TYPE = getQueryIdentifier(GetCurrent_ComponentPort_Type.class);
+  public static final String GET_CURRENT__COMPONENT__IMPLEMENTED_INTERFACES = getQueryIdentifier(GetCurrent_Component_ImplementedInterfaces.class);
+  public static final String GET_CURRENT__CONFIGURATION_ITEM__IMPLEMENTED_INTERFACES = getQueryIdentifier(GetCurrent_ConfigurationItem_ImplementedInterfaces.class);
+  public static final String GET_CURRENT__CONFIGURATION_ITEM__REALIZED_PHYSICAL_ARTIFACTS = getQueryIdentifier(GetCurrent_ConfigurationItem_RealizedPhysicalArtifacts.class);
+  public static final String GET_CURRENT__CONFIGURATION_ITEM__INVOLVING_CAPABILITY_REALIZATIONS = getQueryIdentifier(GetCurrent_ConfigurationItem_InvolvingCapabilityRealizations.class);
+  public static final String GET_CURRENT__CONFIGURATION_ITEM__USED_INTERFACES = getQueryIdentifier(GetCurrent_ConfigurationItem_UsedInterfaces.class);
+  public static final String GET_CURRENT__COMPONENT_EXCHANGE__ALLOCATED_FUNCTIONAL_EXCHANGES = getQueryIdentifier(GetCurrent_ComponentExchange_AllocatedFunctionalExchanges.class);
+  public static final String GET_CURRENT__COMPONENT_EXCHANGE__REALIZED_COMPONENT_EXCHANGES = getQueryIdentifier(GetCurrent_ComponentExchange_RealizedComponentExchanges.class);
+  public static final String GET_CURRENT__COMPONENT_EXCHANGE__CONVOYED_INFORMATIONS = getQueryIdentifier(GetCurrent_ComponentExchange_ConvoyedInformations.class);
+  public static final String GET_CURRENT__CONSTRAINT__CONSTRAINED_ELEMENTS = getQueryIdentifier(GetCurrent_Constraint_ConstrainedElements.class);
+  public static final String GET_CURRENT__DEPLOY_CONF__DEPLOYMENTS = getQueryIdentifier(GetCurrent_DeployConf_Deployments.class);
+  public static final String GET_CURRENT__E_P_B_S_ARCHITECTURE__ALLOCATED_PHYSICAL_ARCHITECTURE = getQueryIdentifier(GetCurrent_EPBSArchitecture_AllocatedPhysicalArchitecture.class);
+  public static final String GET_CURRENT__ENTITY__ALLOCATED_ROLES = getQueryIdentifier(GetCurrent_Entity_AllocatedRoles.class);
+  public static final String GET_CURRENT__ENUMERATION_LITERAL_ABSTRACT_TYPE = getQueryIdentifier(GetCurrent_EnumerationLiteralAbstractType.class);
+  public static final String GET_CURRENT__ENUMERATION_LITERAL_DOMAIN_VALUE = getQueryIdentifier(GetCurrent_EnumerationLiteralDomainValue.class);
+  public static final String GET_CURRENT__ENUMERATION_PROPERTY_VALUE__TYPE = getQueryIdentifier(GetCurrent_EnumerationPropertyValue_Type.class);
+  public static final String GET_CURRENT__ENUMERATION_PROPERTY_VALUE__VALUE = getQueryIdentifier(GetCurrent_EnumerationPropertyValue_Value.class);
+  public static final String GET_CURRENT__ENUMERATION_REFERENCE__ABSTRACT_TYPE = getQueryIdentifier(GetCurrent_EnumerationReference_AbstractType.class);
+  public static final String GET_CURRENT__ENUMERATION_REFERENCE__REFERENCED_PROPERTY = getQueryIdentifier(GetCurrent_EnumerationReference_ReferencedProperty.class);
+  public static final String GET_CURRENT__ENUMERATION_REFERENCE__REFERENCED_VALUE = getQueryIdentifier(GetCurrent_EnumerationReference_ReferencedValue.class);
+  public static final String GET_CURRENT__ENUMERATION__DEFAULT_VALUE = getQueryIdentifier(GetCurrent_Enumeration_DefaultValue.class);
+  public static final String GET_CURRENT__ENUMERATION__DOMAIN_TYPE = getQueryIdentifier(GetCurrent_Enumeration_DomainType.class);
+  public static final String GET_CURRENT__ENUMERATION__INHERITED_ENUMERATION = getQueryIdentifier(GetCurrent_Enumeration_InheritedEnumeration.class);
+  public static final String GET_CURRENT__ENUMERATION__MAX_VALUE = getQueryIdentifier(GetCurrent_Enumeration_MaxValue.class);
+  public static final String GET_CURRENT__ENUMERATION__MIN_VALUE = getQueryIdentifier(GetCurrent_Enumeration_MinValue.class);
+  public static final String GET_CURRENT__ENUMERATION__NULL_VALUE = getQueryIdentifier(GetCurrent_Enumeration_NullValue.class);
+  public static final String GET_CURRENT__ENUMERATION__REALIZED_ENUMERATION = getQueryIdentifier(GetCurrent_Enumeration_RealizedEnumeration.class);
+  public static final String GET_CURRENT__EXCEPTION__INHERITED_EXCEPTION = getQueryIdentifier(GetCurrent_Exception_InheritedException.class);
+  public static final String GET_CURRENT__EXCHANGE_CATEGORY__EXCHANGES = getQueryIdentifier(GetCurrent_ExchangeCategory_Exchanges.class);
+  public static final String GET_CURRENT__EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM = getQueryIdentifier(GetCurrent_ExchangeItemAllocation_AllocatedItem.class);
+  public static final String GET_CURRENT__EXCHANGE_ITEM_ELEMENT_MAX_CARD = getQueryIdentifier(GetCurrent_ExchangeItemElementMaxCard.class);
+  public static final String GET_CURRENT__EXCHANGE_ITEM_ELEMENT_MIN_CARD = getQueryIdentifier(GetCurrent_ExchangeItemElementMinCard.class);
+  public static final String GET_CURRENT__EXCHANGE_ITEM_ELEMENT__REFERENCED_PROPERTIES = getQueryIdentifier(GetCurrent_ExchangeItemElement_ReferencedProperties.class);
+  public static final String GET_CURRENT__EXCHANGE_ITEM_ELEMENT__TYPE = getQueryIdentifier(GetCurrent_ExchangeItemElement_Type.class);
+  public static final String GET_CURRENT__EXCHANGE_ITEM__INHERITED_EXCHANGE_ITEM = getQueryIdentifier(GetCurrent_ExchangeItem_InheritedExchangeItem.class);
+  public static final String GET_CURRENT__EXCHANGE_ITEM__REALIZED_INFORMATIONS = getQueryIdentifier(GetCurrent_ExchangeItem_RealizedInformations.class);
+  public static final String GET_CURRENT__FINAL_STATE__AVAILABLE_IN_STATES = getQueryIdentifier(GetCurrent_FinalState_AvailableInStates.class);
+  public static final String GET_CURRENT__FINAL_STATE__STATE_REALIZATIONS = getQueryIdentifier(GetCurrent_FinalState_StateRealizations.class);
+  public static final String GET_CURRENT__FORK_PSEUDO_STATE__STATE_REALIZATIONS = getQueryIdentifier(GetCurrent_ForkPseudoState_StateRealizations.class);
+  public static final String GET_CURRENT__FUNCTION_INPUT_PORT__IN_COMING_EXCHANGE_ITEMS = getQueryIdentifier(GetCurrent_FunctionInputPort_InComingExchangeItems.class);
+  public static final String GET_CURRENT__FUNCTION_INPUT_PORT__PROVIDED_INTERFACE = getQueryIdentifier(GetCurrent_FunctionInputPort_ProvidedInterface.class);
+  public static final String GET_CURRENT__FUNCTION_INPUT_PORT__REALIZED_FUNCTION_INPUT_PORT = getQueryIdentifier(GetCurrent_FunctionInputPort_RealizedFunctionInputPort.class);
+  public static final String GET_CURRENT__FUNCTION_INPUT_PORT__REQUIRED_INTERFACE = getQueryIdentifier(GetCurrent_FunctionInputPort_RequiredInterface.class);
+  public static final String GET_CURRENT__FUNCTION_OUTPUT_PORT__OUT_GOING_EXCHANGE_ITEMS = getQueryIdentifier(GetCurrent_FunctionOutputPort_OutGoingExchangeItems.class);
+  public static final String GET_CURRENT__FUNCTION_OUTPUT_PORT__PROVIDED_INTERFACE = getQueryIdentifier(GetCurrent_FunctionOutputPort_ProvidedInterface.class);
+  public static final String GET_CURRENT__FUNCTION_OUTPUT_PORT__REALIZED_FUNCTION_OUTPUT_PORT = getQueryIdentifier(GetCurrent_FunctionOutputPort_RealizedFunctionOutputPort.class);
+  public static final String GET_CURRENT__FUNCTION_OUTPUT_PORT__REQUIRED_INTERFACE = getQueryIdentifier(GetCurrent_FunctionOutputPort_RequiredInterface.class);
+  public static final String GET_CURRENT__FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__EXCHANGE_ITEMS = getQueryIdentifier(GetCurrent_FunctionalChainInvolvementLink_ExchangeItems.class);
+  public static final String GET_CURRENT__FUNCTIONAL_CHAIN__AVAILABLE_IN_STATES = getQueryIdentifier(GetCurrent_FunctionalChain_AvailableInStates.class);
+  public static final String GET_CURRENT__FUNCTIONAL_CHAIN__REALIZED_FUNCTIONAL_CHAINS = getQueryIdentifier(GetCurrent_FunctionalChain_RealizedFunctionalChains.class);
+  public static final String GET_CURRENT__FUNCTIONAL_EXCHANGE__CATEGORIES = getQueryIdentifier(GetCurrent_FunctionalExchange_Categories.class);
+  public static final String GET_CURRENT__FUNCTIONAL_EXCHANGE__EXCHANGE_ITEMS = getQueryIdentifier(GetCurrent_FunctionalExchange_ExchangeItems.class);
+  public static final String GET_CURRENT__FUNCTIONAL_EXCHANGE__FUNCTIONAL_EXCHANGE_REALIZATIONS = getQueryIdentifier(GetCurrent_FunctionalExchange_FunctionalExchangeRealizations.class);
+  public static final String GET_CURRENT__INITIAL_PSEUDO_STATE__STATE_REALIZATIONS = getQueryIdentifier(GetCurrent_InitialPseudoState_StateRealizations.class);
+  public static final String GET_CURRENT__INSTANCE_ROLE__REPRESENTED_INSTANCE = getQueryIdentifier(GetCurrent_InstanceRole_RepresentedInstance.class);
+  public static final String GET_CURRENT__INTERACTION_USE__REFERENCED_SCENARIO = getQueryIdentifier(GetCurrent_InteractionUse_ReferencedScenario.class);
+  public static final String GET_CURRENT__INTERFACE_IMPL__IMPLEMENTED_INTERFACE = getQueryIdentifier(GetCurrent_InterfaceImpl_ImplementedInterface.class);
+  public static final String GET_CURRENT__INTERFACE_USE__USED_INTERFACE = getQueryIdentifier(GetCurrent_InterfaceUse_UsedInterface.class);
+  public static final String GET_CURRENT__INTERFACE__EXCHANGE_ITEMS = getQueryIdentifier(GetCurrent_Interface_ExchangeItems.class);
+  public static final String GET_CURRENT__INTERFACE__INHERITED_INTERFACES = getQueryIdentifier(GetCurrent_Interface_InheritedInterfaces.class);
+  public static final String GET_CURRENT__JOIN_PSEUDO_STATE__STATE_REALIZATIONS = getQueryIdentifier(GetCurrent_JoinPseudoState_StateRealizations.class);
+  public static final String GET_CURRENT__LITERAL_BOOLEAN_VALUE__ABSTRACT_TYPE = getQueryIdentifier(GetCurrent_LiteralBooleanValue_AbstractType.class);
+  public static final String GET_CURRENT__LITERAL_NUMERIC_VALUE__ABSTRACT_TYPE = getQueryIdentifier(GetCurrent_LiteralNumericValue_AbstractType.class);
+  public static final String GET_CURRENT__LITERAL_NUMERIC_VALUE__UNIT = getQueryIdentifier(GetCurrent_LiteralNumericValue_Unit.class);
+  public static final String GET_CURRENT__LITERAL_STRING_VALUE__ABSTRACT_TYPE = getQueryIdentifier(GetCurrent_LiteralStringValue_AbstractType.class);
+  public static final String GET_CURRENT__LOGICAL_COMPONENT__SUPER = getQueryIdentifier(GetCurrent_LogicalComponent_Super.class);
+  public static final String GET_CURRENT__LOGICAL_COMPONENT_SHORTCUT__REFERENCED_L_C = getQueryIdentifier(GetCurrent_LogicalComponentShortcut_ReferencedLC.class);
+  public static final String GET_CURRENT__LOGICAL_COMPONENT__IMPLEMENTED_INTERFACES = getQueryIdentifier(GetCurrent_LogicalComponent_ImplementedInterfaces.class);
+  public static final String GET_CURRENT__LOGICAL_COMPONENT__INVOLVING_CAPABILITY_REALIZATIONS = getQueryIdentifier(GetCurrent_LogicalComponent_InvolvingCapabilityRealizations.class);
+  public static final String GET_CURRENT__LOGICAL_COMPONENT__USED_INTERFACES = getQueryIdentifier(GetCurrent_LogicalComponent_UsedInterfaces.class);
+  public static final String GET_CURRENT__LOGICAL_FUNCTION__AVAILABLE_INSTATES = getQueryIdentifier(GetCurrent_LogicalFunction_AvailableInstates.class);
+  public static final String GET_CURRENT__LOGICAL_FUNCTION__REALIZED_FUNCTIONS = getQueryIdentifier(GetCurrent_LogicalFunction_RealizedFunctions.class);
+  public static final String GET_CURRENT__MESSAGE__INHERITED_MESSAGE = getQueryIdentifier(GetCurrent_Message_InheritedMessage.class);
+  public static final String GET_CURRENT__MISSION__EXPLOITED_CAPABILITIES = getQueryIdentifier(GetCurrent_Mission_IncludedCapabilities.class);
+  public static final String GET_CURRENT__MISSION__INVOLVED_SYSTEM_COMPONENTS = getQueryIdentifier(GetCurrent_Mission_InvolvedSystemComponents.class);
+  public static final String GET_CURRENT__MODE__AVAILABLE_IN_STATES = getQueryIdentifier(GetCurrent_Mode_AvailableInStates.class);
+  public static final String GET_CURRENT__MODE__REFERENCED_STATES = getQueryIdentifier(GetCurrent_Mode_ReferencedStates.class);
+  public static final String GET_CURRENT__MODE__STATE_REALIZATIONS = getQueryIdentifier(GetCurrent_Mode_StateRealizations.class);
+  public static final String GET_CURRENT__NUMERIC_REFERENCE__ABSTRACT_TYPE = getQueryIdentifier(GetCurrent_NumericReference_AbstractType.class);
+  public static final String GET_CURRENT__NUMERIC_REFERENCE__REFERENCED_PROPERTY = getQueryIdentifier(GetCurrent_NumericReference_ReferencedProperty.class);
+  public static final String GET_CURRENT__NUMERIC_REFERENCE__REFERENCED_VALUE = getQueryIdentifier(GetCurrent_NumericReference_ReferencedValue.class);
+  public static final String GET_CURRENT__NUMERIC_TYPE__DEFAULT_VALUE = getQueryIdentifier(GetCurrent_NumericType_DefaultValue.class);
+  public static final String GET_CURRENT__NUMERIC_TYPE__INHERITED_NUMERIC_TYPE = getQueryIdentifier(GetCurrent_NumericType_InheritedNumericType.class);
+  public static final String GET_CURRENT__NUMERIC_TYPE__MAX_VALUE = getQueryIdentifier(GetCurrent_NumericType_MaxValue.class);
+  public static final String GET_CURRENT__NUMERIC_TYPE__MIN_VALUE = getQueryIdentifier(GetCurrent_NumericType_MinValue.class);
+  public static final String GET_CURRENT__NUMERIC_TYPE__NULL_VALUE = getQueryIdentifier(GetCurrent_NumericType_NullValue.class);
+  public static final String GET_CURRENT__NUMERIC_TYPE__PROPERTY = getQueryIdentifier(GetCurrent_NumericType_Property.class);
+  public static final String GET_CURRENT__NUMERIC_TYPE__REALIZED_NUMERIC_TYPE = getQueryIdentifier(GetCurrent_NumericType_RealizedNumericType.class);
+  public static final String GET_CURRENT__NUMERIC_VALUE_REFERENCE__UNIT = getQueryIdentifier(GetCurrent_NumericValueReference_Unit.class);
+  public static final String GET_CURRENT__NUMERIC_VALUE__TYPE = getQueryIdentifier(GetCurrent_NumericValue_Type.class);
+  public static final String GET_CURRENT__OPERATIONAL_ACTIVITY__AVAILABLE_IN_STATES = getQueryIdentifier(GetCurrent_OperationalActivity_AvailableInstates.class);
+  public static final String GET_CURRENT__OPERATIONAL_CAPABILITY__AVAILABLE_IN_STATES = getQueryIdentifier(GetCurrent_OperationalCapability_AvailableInStates.class);
+  public static final String GET_CURRENT__OPERATIONAL_CAPABILITY__INHERITED_CAPABILITIES = getQueryIdentifier(GetCurrent_OperationalCapability_InheritedCapabilities.class);
+  public static final String GET_CURRENT__OPERATIONAL_CAPABILITY__INVOLVED_ACTIVITY = getQueryIdentifier(GetCurrent_OperationalCapability_InvolvedActivity.class);
+  public static final String GET_CURRENT__OPERATIONAL_CAPABILITY__INVOLVED_ENTITIES = getQueryIdentifier(GetCurrent_OperationalCapability_InvolvedEntities.class);
+  public static final String GET_CURRENT__OPERATIONAL_CAPABILITY__INVOLVED_OPERATIONAL_PROCESS = getQueryIdentifier(GetCurrent_OperationalCapability_InvolvedOperationalProcess.class);
+  public static final String GET_CURRENT__OPERATIONAL_PROCESS__AVAILABLE_IN_STATES = getQueryIdentifier(GetCurrent_OperationalProcess_AvailableInStates.class);
+  public static final String GET_CURRENT__PARAMETER__DEFAULT_VALUE = getQueryIdentifier(GetCurrent_Parameter_DefaultValue.class);
+  public static final String GET_CURRENT__PARAMETER__MAX_VALUE = getQueryIdentifier(GetCurrent_Parameter_MaxValue.class);
+  public static final String GET_CURRENT__PARAMETER__MIN_VALUE = getQueryIdentifier(GetCurrent_Parameter_MinValue.class);
+  public static final String GET_CURRENT__PARAMETER__MAX_CARDINALITY = getQueryIdentifier(GetCurrent_Parameter_MaxCardinality.class);
+  public static final String GET_CURRENT__PARAMETER__MIN_CARDINALITY = getQueryIdentifier(GetCurrent_Parameter_MinCardinality.class);
+  public static final String GET_CURRENT__PARAMETER__NULL_VALUE = getQueryIdentifier(GetCurrent_Parameter_NullValue.class);
+  public static final String GET_CURRENT__PARAMETER__TYPE = getQueryIdentifier(GetCurrent_Parameter_Type.class);
+  public static final String GET_CURRENT__PART__DEPLOYED_ELEMENTS = getQueryIdentifier(GetCurrent_Part_DeployedElements.class);
+  public static final String GET_CURRENT__PART__MAX_CARDINALITY = getQueryIdentifier(GetCurrent_Part_MaxCardinality.class);
+  public static final String GET_CURRENT__PART__MIN_CARDINALITY = getQueryIdentifier(GetCurrent_Part_MinCardinality.class);
+  public static final String GET_CURRENT__PART__TYPE = getQueryIdentifier(GetCurrent_Part_Type.class);
+  public static final String GET_CURRENT__PART__TYPE_PORTS = getQueryIdentifier(GetCurrent_Part_TypePorts.class);
+  public static final String GET_CURRENT__PHYSICAL_COMPONENT__SUPER = getQueryIdentifier(GetCurrent_PhysicalComponent_Super.class);
+  public static final String GET_CURRENT__PHYSICAL_COMPONENT__INVOLVING_CAPABILITY_REALIZATIONS = getQueryIdentifier(GetCurrent_PhysicalComponent_InvolvingCapabilityRealizations.class);
+  public static final String GET_CURRENT__PHYSICAL_ARCHITECTURE__ALLOCATED_LOGICAL_ARCHITECTURE = getQueryIdentifier(GetCurrent_PhysicalArchitecture_AllocatedLogicalArchitecture.class);
+  public static final String GET_CURRENT__PHYSICAL_COMP__DEPLOYERS = getQueryIdentifier(GetCurrent_PhysicalComp_Deployers.class);
+  public static final String GET_CURRENT__PHYSICAL_COMP__DEPLOYMENTS = getQueryIdentifier(GetCurrent_PhysicalComp_Deployments.class);
+  public static final String GET_CURRENT__PHYSICAL_COMPONENT__IMPLEMENTED_INTERFACES = getQueryIdentifier(GetCurrent_PhysicalComponent_ImplementedInterfaces.class);
+  public static final String GET_CURRENT__PHYSICAL_COMPONENT__USED_INTERFACES = getQueryIdentifier(GetCurrent_PhysicalComponent_UsedInterfaces.class);
+  public static final String GET_CURRENT__PHYSICAL_COMPONENT__DEPLOYED_COMPONENTS = getQueryIdentifier(GetCurrent_PhysicalComponent_DeployedComponents.class);
+  public static final String GET_CURRENT__LOGICAL_COMPONENT__REALIZED_COMPONENTS = getQueryIdentifier(GetCurrent_LogicalComponent_RealizedComponents.class);
+  public static final String GET_CURRENT__PHYSICAL_COMPONENT__REALIZED_COMPONENTS = getQueryIdentifier(GetCurrent_PhysicalComponent_RealizedComponents.class);
+  public static final String GET_CURRENT__PHYSICAL_FUNCTION__AVAILABLE_INSTATES = getQueryIdentifier(GetCurrent_PhysicalFunction_AvailableInstates.class);
+  public static final String GET_CURRENT__PHYSICAL_FUNCTION__REALIZED_FUNCTIONS = getQueryIdentifier(GetCurrent_PhysicalFunction_RealizedFunctions.class);
+  public static final String GET_CURRENT__PHYSICAL_INTERFACE__INHERITED_INTERFACES = getQueryIdentifier(GetCurrent_PhysicalInterface_InheritedInterfaces.class);
+  public static final String GET_CURRENT__PHYSICAL_LINK_CATEGORY__LINKS = getQueryIdentifier(GetCurrent_PhysicalLinkCategory_Links.class);
+  public static final String GET_CURRENT__PHYSICAL_LINK__ALLOCATED_COMPONENT_EXCHANGES = getQueryIdentifier(GetCurrent_PhysicalLink_AllocatedComponentExchanges.class);
+  public static final String GET_CURRENT__PHYSICAL_LINK__CATEGORIES = getQueryIdentifier(GetCurrent_PhysicalLink_Categories.class);
+  public static final String GET_CURRENT__PHYSICAL_LINK__REALIZED_PHYSICAL_LINKS = getQueryIdentifier(GetCurrent_PhysicalLink_RealizedPhysicalLinks.class);
+  public static final String GET_CURRENT__PHYSICAL_NODE__DEPLOYERS = getQueryIdentifier(GetCurrent_PhysicalNode_Deployers.class);
+  public static final String GET_CURRENT__PHYSICAL_NODE__DEPLOYMENTS = getQueryIdentifier(GetCurrent_PhysicalNode_Deployments.class);
+  public static final String GET_CURRENT__PHYSICAL_PATH__ALLOCATED_COMPONENT_EXCHANGES = getQueryIdentifier(GetCurrent_PhysicalPath_AllocatedComponentExchanges.class);
+  public static final String GET_CURRENT__PHYSICAL_PATH__REALIZED_PHYSICAL_PATHS = getQueryIdentifier(GetCurrent_PhysicalPath_RealizedPhysicalPaths.class);
+  public static final String GET_CURRENT__PHYSICAL_PORT__ALLOCATED_COMPONENT_PORTS = getQueryIdentifier(GetCurrent_PhysicalPort_AllocatedComponentPorts.class);
+  public static final String GET_CURRENT__PHYSICAL_PORT__ALLOCATED_FUNCTION_PORTS = getQueryIdentifier(GetCurrent_PhysicalPort_AllocatedFunctionPorts.class);
+  public static final String GET_CURRENT__PHYSICAL_PORT__REALIZED_PHYSICAL_PORTS = getQueryIdentifier(GetCurrent_PhysicalPort_RealizedPhysicalPorts.class);
+  public static final String GET_CURRENT__PHYSICAL_QUANTITY__DEFAULT_VALUE = getQueryIdentifier(GetCurrent_PhysicalQuantity_DefaultValue.class);
+  public static final String GET_CURRENT__PHYSICAL_QUANTITY__INHERITED_TYPE = getQueryIdentifier(GetCurrent_PhysicalQuantity_InheritedType.class);
+  public static final String GET_CURRENT__PHYSICAL_QUANTITY__MAX_VALUE = getQueryIdentifier(GetCurrent_PhysicalQuantity_MaxValue.class);
+  public static final String GET_CURRENT__PHYSICAL_QUANTITY__MIN_VALUE = getQueryIdentifier(GetCurrent_PhysicalQuantity_MinValue.class);
+  public static final String GET_CURRENT__PHYSICAL_QUANTITY__NULL_VALUE = getQueryIdentifier(GetCurrent_PhysicalQuantity_NullValue.class);
+  public static final String GET_CURRENT__PHYSICAL_QUANTITY__PROPERTY = getQueryIdentifier(GetCurrent_PhysicalQuantity_Property.class);
+  public static final String GET_CURRENT__PHYSICAL_QUANTITY__REALIZED_PHYSICAL_QUANTITY = getQueryIdentifier(GetCurrent_PhysicalQuantity_RealizedPhysicalQuantity.class);
+  public static final String GET_CURRENT__PHYSICAL_QUANTITY__UNIT = getQueryIdentifier(GetCurrent_PhysicalQuantity_Unit.class);
+  public static final String GET_CURRENT__PROPERTY__DEFAULT_VALUE = getQueryIdentifier(GetCurrent_Property_DefaultValue.class);
+  public static final String GET_CURRENT__PROPERTY__MAX_CARDINALITY = getQueryIdentifier(GetCurrent_Property_MaxCardinality.class);
+  public static final String GET_CURRENT__PROPERTY__MAX_LENGTH = getQueryIdentifier(GetCurrent_Property_MaxLength.class);
+  public static final String GET_CURRENT__PROPERTY__MAX_VALUE = getQueryIdentifier(GetCurrent_Property_MaxValue.class);
+  public static final String GET_CURRENT__PROPERTY__MIN_CARDINALITY = getQueryIdentifier(GetCurrent_Property_MinCardinality.class);
+  public static final String GET_CURRENT__PROPERTY__MIN_LENGTH = getQueryIdentifier(GetCurrent_Property_MinLength.class);
+  public static final String GET_CURRENT__PROPERTY__MIN_VALUE = getQueryIdentifier(GetCurrent_Property_MinValue.class);
+  public static final String GET_CURRENT__PROPERTY__NULL_VALUE = getQueryIdentifier(GetCurrent_Property_NullValue.class);
+  public static final String GET_CURRENT__PROPERTY__TYPE = getQueryIdentifier(GetCurrent_Property_Type.class);
+  public static final String GET_CURRENT__ROLE__ALLOCATED_ACTIVITIES = getQueryIdentifier(GetCurrent_Role_AllocatedActivities.class);
+  public static final String GET_CURRENT__SCENARIO__REALIZED_SCENARIO = getQueryIdentifier(GetCurrent_Scenario_RealizedScenario.class);
+  public static final String GET_CURRENT__SEQUENCE_LINK_LINKS = getQueryIdentifier(GetCurrent_SequenceLink_Links.class);
+  public static final String GET_CURRENT__SEQUENCE_MESSAGE__EXCHANGED_ITEMS = getQueryIdentifier(GetCurrent_SequenceMessage_ExchangedItems.class);
+  public static final String GET_CURRENT__SEQUENCE_MESSAGE__INVOKED_OPERATION = getQueryIdentifier(GetCurrent_SequenceMessage_InvokedOperation.class);
+  public static final String GET_CURRENT__SEQUENCE_MESSAGE__SERVICE_INTERFACE = getQueryIdentifier(GetCurrent_SequenceMessage_ServiceInterface.class);
+  public static final String GET_CURRENT__SERVICE__EXCHANGE_ITEM_REALIZATION = getQueryIdentifier(GetCurrent_Service_ExchangeItemRealization.class);
+  public static final String GET_CURRENT__SERVICE__REFERENCED_MESSAGE = getQueryIdentifier(GetCurrent_Service_ReferencedMessage.class);
+  public static final String GET_CURRENT__SERVICE__THROWN_EXCEPTION = getQueryIdentifier(GetCurrent_Service_ThrownException.class);
+  public static final String GET_CURRENT__SIGNAL__INHERITED_SIGNALS = getQueryIdentifier(GetCurrent_Signal_InheritedSignals.class);
+  public static final String GET_CURRENT__STATE_FRAGMENT__RELATED_ABSTRACT_FUNCTION = getQueryIdentifier(GetCurrent_StateFragment_RelatedAbstractFunction.class);
+  public static final String GET_CURRENT__STATE_FRAGMENT__RELATED_ABSTRACT_STATE = getQueryIdentifier(GetCurrent_StateFragment_RelatedAbstractState.class);
+  public static final String GET_CURRENT__STATE_TRANSITION_EFFECT = getQueryIdentifier(GetCurrent_StateTransitionEffect.class);
+  public static final String GET_CURRENT__STATE_TRANSITION_TRIGGER = getQueryIdentifier(GetCurrent_StateTransitionTrigger.class);
+  public static final String GET_CURRENT__STATE_TRANSITION__STATE_TRANSITION_REALIZATIONS = getQueryIdentifier(GetCurrent_StateTransition_StateTransitionRealizations.class);
+  public static final String GET_CURRENT__STATE__AVAILABLE_IN_STATES = getQueryIdentifier(GetCurrent_State_AvailableInStates.class);
+  public static final String GET_CURRENT__STATE__REFERENCED_STATES = getQueryIdentifier(GetCurrent_State_ReferencedStates.class);
+  public static final String GET_CURRENT__STATE__STATE_REALIZATIONS = getQueryIdentifier(GetCurrent_State_StateRealizations.class);
+  public static final String GET_CURRENT__STRING_REFERENCE__ABSTRACT_TYPE = getQueryIdentifier(GetCurrent_StringReference_AbstractType.class);
+  public static final String GET_CURRENT__STRING_REFERENCE__REFERENCED_PROPERTY = getQueryIdentifier(GetCurrent_StringReference_ReferencedProperty.class);
+  public static final String GET_CURRENT__STRING_REFERENCE__REFERENCED_VALUE = getQueryIdentifier(GetCurrent_StringReference_ReferencedValue.class);
+  public static final String GET_CURRENT__STRING_TYPE__DEFAULT_VALUE = getQueryIdentifier(GetCurrent_StringType_DefaultValue.class);
+  public static final String GET_CURRENT__STRING_TYPE__INHERITED_STRING_TYPE = getQueryIdentifier(GetCurrent_StringType_InheritedStringType.class);
+  public static final String GET_CURRENT__STRING_TYPE__MAX_LENGTH = getQueryIdentifier(GetCurrent_StringType_MaxLength.class);
+  public static final String GET_CURRENT__STRING_TYPE__MIN_LENGTH = getQueryIdentifier(GetCurrent_StringType_MinLength.class);
+  public static final String GET_CURRENT__STRING_TYPE__NULL_VALUE = getQueryIdentifier(GetCurrent_StringType_NullValue.class);
+  public static final String GET_CURRENT__STRING_TYPE__PROPERTY = getQueryIdentifier(GetCurrent_StringType_Property.class);
+  public static final String GET_CURRENT__STRING_TYPE__REALIZED_STRING_TYPE = getQueryIdentifier(GetCurrent_StringType_RealizedStringType.class);
+  public static final String GET_CURRENT__STRING_VALUE__TYPE = getQueryIdentifier(GetCurrent_StringValue_Type.class);
+  public static final String GET_CURRENT__SYSTEM_ENGINEERING__REUSED_SHARED_PKG = getQueryIdentifier(GetCurrent_SystemEngineering_ReusedSharedPkg.class);
+  public static final String GET_CURRENT__SYSTEM_FUNCTION__AVAILABLE_INSTATES = getQueryIdentifier(GetCurrent_SystemFunction_AvailableInstates.class);
+  public static final String GET_CURRENT__SYSTEM_FUNCTION__REALIZED_FUNCTIONS = getQueryIdentifier(GetCurrent_SystemFunction_RealizedFunctions.class);
+  public static final String GET_CURRENT__SYSTEM_COMPONENT__IMPLEMENTED_INTERFACES = getQueryIdentifier(GetCurrent_SystemComponent_ImplementedInterfaces.class);
+  public static final String GET_CURRENT__SYSTEM_COMPONENT__REALIZED_ENTITIES = getQueryIdentifier(GetCurrent_System_RealizedEntities.class);
+  public static final String GET_CURRENT__SYSTEM_COMPONENT__USED_INTERFACES = getQueryIdentifier(GetCurrent_SystemComponent_UsedInterfaces.class);
+  public static final String GET_CURRENT__TERMINATE_PSEUDO_STATE__STATE_REALIZATIONS = getQueryIdentifier(GetCurrent_TerminatePseudoState_StateRealizations.class);
+  public static final String GET_CURRENT__TIME_EVENT__EXPRESSION = getQueryIdentifier(GetCurrent_TimeEvent_Expression.class);
+  public static final String GET_CURRENT__UNARY_EXPRESSION__OPERAND = getQueryIdentifier(GetCurrent_UnaryExpression_Operand.class);
+  public static final String GET_CURRENT__UNARY_EXPRESSION__TYPE = getQueryIdentifier(GetCurrent_UnaryExpression_Type.class);
+  public static final String GET_CURRENT__UNARY_EXPRESSION__UNIT = getQueryIdentifier(GetCurrent_UnaryExpression_Unit.class);
+  public static final String GET_CURRENT__UNION_PROPERTY__DEFAULT_VALUE = getQueryIdentifier(GetCurrent_UnionProperty_DefaultValue.class);
+  public static final String GET_CURRENT__UNION_PROPERTY__MAX_CARDINALITY = getQueryIdentifier(GetCurrent_UnionProperty_MaxCardinality.class);
+  public static final String GET_CURRENT__UNION_PROPERTY__MAX_LENGTH = getQueryIdentifier(GetCurrent_UnionProperty_MaxLength.class);
+  public static final String GET_CURRENT__UNION_PROPERTY__MAX_VALUE = getQueryIdentifier(GetCurrent_UnionProperty_MaxValue.class);
+  public static final String GET_CURRENT__UNION_PROPERTY__MIN_CARDINALITY = getQueryIdentifier(GetCurrent_UnionProperty_MinCardinality.class);
+  public static final String GET_CURRENT__UNION_PROPERTY__MIN_LENGTH = getQueryIdentifier(GetCurrent_UnionProperty_MinLength.class);
+  public static final String GET_CURRENT__UNION_PROPERTY__MIN_VALUE = getQueryIdentifier(GetCurrent_UnionProperty_MinValue.class);
+  public static final String GET_CURRENT__UNION_PROPERTY__NULL_VALUE = getQueryIdentifier(GetCurrent_UnionProperty_NullValue.class);
+  public static final String GET_CURRENT__UNION_PROPERTY__QUALIFIERS = getQueryIdentifier(GetCurrent_UnionProperty_Qualifiers.class);
+  public static final String GET_CURRENT__UNION_PROPERTY__TYPE = getQueryIdentifier(GetCurrent_UnionProperty_Type.class);
+  public static final String GET_CURRENT__UNION__DEFAULT_PROPERTY = getQueryIdentifier(GetCurrent_Union_DefaultProperty.class);
+  public static final String GET_CURRENT__UNION__DISCRIMINANT = getQueryIdentifier(GetCurrent_Union_Discriminant.class);
+  public static final String GET_CURRENT__UNION__DISCRIMINANT_TYPE = getQueryIdentifier(GetCurrent_Union_DiscriminantType.class);
+  public static final String GET_CURRENT__UNION__INHERITED_CLASSES = getQueryIdentifier(GetCurrent_Union_InheritedClasses.class);
+  public static final String GET_CURRENT__VALUE_PART__REFERENCED_PROPERTY = getQueryIdentifier(GetCurrent_ValuePart_ReferencedProperty.class);
 }

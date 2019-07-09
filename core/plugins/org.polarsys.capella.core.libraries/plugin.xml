@@ -96,4 +96,39 @@
             class="org.polarsys.capella.core.libraries.provider.LibAwareReadOnlySectionHandler">
       </readOnlySectionHandler>
    </extension>
+   
+   <extension point="org.polarsys.capella.common.queries.query">
+  
+    <querySpecification queryIdentifier="GetAllDataPkgsForLib" extendedQueryIdentifier="GetAllDataPkgs">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.queries.GenericGetForLibWithCorrespondingArchitectureElement" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAllDataTypesForLib" extendedQueryIdentifier="GetAllDataTypes">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.queries.GenericGetForLibWithCorrespondingArchitectureElement" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAllClassesForLib" extendedQueryIdentifier="GetAllClasses">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.queries.GenericGetForLibWithCorrespondingArchitectureElement" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAllCollectionsForLib" extendedQueryIdentifier="GetAllCollections">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.queries.GenericGetForLibWithCorrespondingArchitectureElement" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetDataValuesForLib" extendedQueryIdentifier="GetDataValues">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.queries.GenericGetForLibWithCorrespondingArchitectureElement" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAllInterfacesForLib" extendedQueryIdentifier="GetAllInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.queries.GenericGetForLibWithCorrespondingArchitectureElement" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAllInterfacePcksForLib" extendedQueryIdentifier="GetAllInterfacePcks">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.queries.GenericGetForLibWithCorrespondingArchitectureElement" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAllExchangeItemsForLib" extendedQueryIdentifier="GetAllExchangeItems">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.queries.GenericGetForLibWithCorrespondingArchitectureElement" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAllRealizablePhysicalArtefacts__Lib" extendedQueryIdentifier="GetAllRealizablePhysicalArtefacts">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.queries.GenericGetForLibWithCorrespondingArchitectureElement" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailableArchitecturesForLib" extendedQueryIdentifier="GetAvailableArchitectures">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.queries.GenericGetForLibWithCorrespondingArchitectureElement" />
+    </querySpecification>
+    
+  </extension>
 </plugin>

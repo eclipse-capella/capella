@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -24,13 +23,11 @@ import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.information.ExchangeItemElement;
-import org.polarsys.capella.core.data.sharedmodel.GenericPkg;
 import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.DataPkgExt;
-import org.polarsys.capella.core.model.helpers.GenericPkgExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 import org.polarsys.capella.core.model.utils.ListExt;
@@ -77,7 +74,6 @@ public class GetAvailable_ExchangeItemElement_Type extends AbstractQuery {
         availableElements.addAll(getRule_MQRY_Parameter_Type_11(parameter));
         availableElements.addAll(getRule_MQRY_Parameter_Type_12(parameter));
       }
-      availableElements.addAll(getRule_MQRY_Parameter_Type_15(parameter, systemEngineering));
     }
     availableElements = ListExt.removeDuplicates(availableElements);
     return availableElements;
@@ -104,38 +100,6 @@ public class GetAvailable_ExchangeItemElement_Type extends AbstractQuery {
       }
     }
     return allAllocatedDatas;
-  }
-
-  private List<EObject> getRule_MQRY_Parameter_Type_15(ExchangeItemElement currenParameter, SystemEngineering systemEngineering) {
-    List<EObject> availableElements = new ArrayList<EObject>(1);
-    AbstractType type = currenParameter.getType();
-    for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering)) {
-      DataPkg dataPkg = sharedPkg.getOwnedDataPkg();
-      if (dataPkg != null) {
-        for (EObject element : DataPkgExt.getAllTypesFromDataPkgForPropsNParams(dataPkg)) {
-          if (element.equals(type)) {
-            continue;
-          }
-          availableElements.add(element);
-        }
-      }
-      GenericPkg pkg = sharedPkg.getOwnedGenericPkg();
-      if (pkg != null) {
-        for (CapellaElement element : GenericPkgExt.getAllDataTypes(pkg)) {
-          if (element.equals(type)) {
-            continue;
-          }
-          availableElements.add(element);
-        }
-        for (CapellaElement element : GenericPkgExt.getAllClasses(pkg)) {
-          if (element.equals(type)) {
-            continue;
-          }
-          availableElements.add(element);
-        }
-      }
-    }
-    return availableElements;
   }
 
 }

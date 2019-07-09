@@ -14,15 +14,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.pa.PaPackage;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.deployment.DeploymentConfiguration;
-import org.polarsys.capella.core.model.helpers.PhysicalArchitectureExt;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.utils.ListExt;
 
 public class GetAvailable_DeployConf_Deployments extends AbstractQuery {
@@ -54,11 +53,12 @@ public class GetAvailable_DeployConf_Deployments extends AbstractQuery {
 	 */
 	private List<CapellaElement> getRule_MQRY_DeployConf_Deployments_11(DeploymentConfiguration deployment) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		PhysicalArchitecture pa = (PhysicalArchitecture) EcoreUtil2.getFirstContainer(deployment, PaPackage.Literals.PHYSICAL_ARCHITECTURE);
+		PhysicalArchitecture pa = (PhysicalArchitecture) BlockArchitectureExt.getRootBlockArchitecture(deployment);
 		if (null != pa) {
-			List<PhysicalComponent> comps = PhysicalArchitectureExt.getAllPhysicalComponents(pa);
-			for (PhysicalComponent theComp : comps) {
-				availableElements.addAll(theComp.getDeploymentLinks());
+			for (Component theComp : BlockArchitectureExt.getAllComponents(pa)) {
+			  if (theComp instanceof PhysicalComponent) {
+				availableElements.addAll(((PhysicalComponent)theComp).getDeploymentLinks());
+			  }
 			}
 		}
 		return availableElements;

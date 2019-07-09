@@ -30,7 +30,7 @@ import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 
 
-public class FunctionalExchange_Target extends AbstractFunctionalExchangeItems implements IBusinessQuery {
+public class FunctionalExchange_Target implements IBusinessQuery {
 
   @Override
   public List<EObject> getAvailableElements(EObject element) {

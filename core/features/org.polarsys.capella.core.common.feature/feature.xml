@@ -91,13 +91,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.polarsys.capella.core.queries.helpers"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.polarsys.capella.common.id.handler"
          download-size="0"
          install-size="0"

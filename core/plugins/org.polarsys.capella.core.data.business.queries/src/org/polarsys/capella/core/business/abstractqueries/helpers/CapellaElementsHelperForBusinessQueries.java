@@ -64,12 +64,12 @@ import org.polarsys.capella.core.data.information.datavalue.EnumerationReference
 import org.polarsys.capella.core.data.information.datavalue.LiteralBooleanValue;
 import org.polarsys.capella.core.data.information.datavalue.NumericValue;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
+import org.polarsys.capella.core.libraries.queries.QueryExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.DataPkgExt;
 import org.polarsys.capella.core.model.helpers.DataValueExt;
 import org.polarsys.capella.core.model.helpers.ProjectExt;
 import org.polarsys.capella.core.model.utils.EClassExt;
-import org.polarsys.capella.core.queries.helpers.QueryExt;
 
 /**
  * This class is a helper whose purpose is to give some utility methods for the business queries involving capella

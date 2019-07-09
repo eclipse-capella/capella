@@ -24,25 +24,10 @@ import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.ctx.CtxPackage;
-import org.polarsys.capella.core.data.ctx.SystemAnalysis;
-import org.polarsys.capella.core.data.ctx.SystemContext;
-import org.polarsys.capella.core.data.epbs.ConfigurationItem;
-import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
-import org.polarsys.capella.core.data.epbs.EPBSContext;
-import org.polarsys.capella.core.data.la.LaPackage;
-import org.polarsys.capella.core.data.la.LogicalArchitecture;
-import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.la.LogicalContext;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.EntityPkg;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
-import org.polarsys.capella.core.data.oa.OperationalContext;
-import org.polarsys.capella.core.data.pa.PaPackage;
-import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
-import org.polarsys.capella.core.data.pa.PhysicalComponent;
-import org.polarsys.capella.core.data.pa.PhysicalContext;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 
@@ -77,37 +62,11 @@ public class GetAvailable_Part_Type extends AbstractQuery {
             }
           }
         }
-      } else if (container instanceof OperationalContext) {
-        setOfAvailableElements = EObjectExt.getAll(arch, OaPackage.Literals.ENTITY);
-      } else if (container instanceof SystemContext) {
-        setOfAvailableElements = EObjectExt.getAll(arch, CtxPackage.Literals.ACTOR);
-        setOfAvailableElements.add(((SystemAnalysis) arch).getOwnedSystem());
-      } else if (container instanceof LogicalContext) {
-        setOfAvailableElements = EObjectExt.getAll(arch, LaPackage.Literals.LOGICAL_ACTOR);
-        setOfAvailableElements.add(((LogicalArchitecture) arch).getOwnedLogicalComponent());
-      } else if (container instanceof PhysicalContext) {
-        setOfAvailableElements = EObjectExt.getAll(arch, PaPackage.Literals.PHYSICAL_ACTOR);
-        setOfAvailableElements.add(((PhysicalArchitecture) arch).getOwnedPhysicalComponent());
-      } else if (container instanceof EPBSContext) {
-        setOfAvailableElements.add(((EPBSArchitecture) arch).getOwnedConfigurationItem());
-      } else if (container instanceof LogicalComponent) {
-        java.util.Collection<EObject> availableComponentsByNamespaceOfParts = ComponentExt.getAvailableComponentsByNamespaceOfParts((Part) element);
+      } else {
+        java.util.Collection<EObject> availableComponentsByNamespaceOfParts = ComponentExt
+            .getAvailableComponentsByNamespaceOfParts((Part) element);
         for (EObject anObject : availableComponentsByNamespaceOfParts) {
-          if (!EcoreUtil.isAncestor(anObject, element) && (anObject instanceof LogicalComponent)) {
-            setOfAvailableElements.add(anObject);
-          }
-        }
-      } else if (container instanceof PhysicalComponent) {
-        java.util.Collection<EObject> availableComponentsByNamespaceOfParts = ComponentExt.getAvailableComponentsByNamespaceOfParts((Part) element);
-        for (EObject anObject : availableComponentsByNamespaceOfParts) {
-          if (!EcoreUtil.isAncestor(anObject, element) && (anObject instanceof PhysicalComponent)) {
-            setOfAvailableElements.add(anObject);
-          }
-        }
-      } else if (container instanceof ConfigurationItem) {
-        java.util.Collection<EObject> availableComponentsByNamespaceOfParts = ComponentExt.getAvailableComponentsByNamespaceOfParts((Part) element);
-        for (EObject anObject : availableComponentsByNamespaceOfParts) {
-          if (!EcoreUtil.isAncestor(anObject, element) && (anObject instanceof ConfigurationItem)) {
+          if (!EcoreUtil.isAncestor(anObject, element)) {
             setOfAvailableElements.add(anObject);
           }
         }

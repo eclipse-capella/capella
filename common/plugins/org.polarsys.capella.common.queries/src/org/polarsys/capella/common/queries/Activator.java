@@ -12,6 +12,7 @@ package org.polarsys.capella.common.queries;
 
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 
 /**
  * The activator class controls the plug-in life cycle

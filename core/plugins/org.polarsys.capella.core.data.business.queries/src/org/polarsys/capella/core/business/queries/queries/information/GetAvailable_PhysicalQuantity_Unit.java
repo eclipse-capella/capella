@@ -29,10 +29,8 @@ import org.polarsys.capella.core.data.information.datatype.PhysicalQuantity;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
-import org.polarsys.capella.core.data.sharedmodel.GenericPkg;
 import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
 import org.polarsys.capella.core.model.helpers.DataPkgExt;
-import org.polarsys.capella.core.model.helpers.GenericPkgExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 import org.polarsys.capella.core.model.utils.ListExt;
@@ -85,7 +83,6 @@ public class GetAvailable_PhysicalQuantity_Unit extends AbstractQuery {
         availableElements.addAll(getRule_MQRY_PhysicalDimension_DefaultUnit_11(currentPhysicalDimension));
         availableElements.addAll(getRule_MQRY_PhysicalDimension_DefaultUnit_12(currentPhysicalDimension));
       }
-      availableElements.addAll(getRule_MQRY_PhysicalDimension_DefaultUnit_13(currentPhysicalDimension, systemEngineering));
     }
     availableElements = ListExt.removeDuplicates(availableElements);
     return availableElements;
@@ -124,19 +121,6 @@ public class GetAvailable_PhysicalQuantity_Unit extends AbstractQuery {
       }
     }
     availableElements.addAll(getRule_MQRY_PhysicalDimension_DefaultUnit_12_1(currentPhysicalDimension));
-    return availableElements;
-  }
-
-  private List<CapellaElement> getRule_MQRY_PhysicalDimension_DefaultUnit_13(PhysicalQuantity currentPhysicalDimension, SystemEngineering systemEngineering) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering)) {
-      DataPkg dataPkg = sharedPkg.getOwnedDataPkg();
-      if (null != dataPkg) {
-        for (Unit unit : DataPkgExt.getAllUnits(dataPkg)) {
-          availableElements.add(unit);
-        }
-      }
-    }
     return availableElements;
   }
 

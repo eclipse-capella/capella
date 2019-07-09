@@ -31,11 +31,9 @@ import org.polarsys.capella.core.data.information.datatype.DataType;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
-import org.polarsys.capella.core.data.sharedmodel.GenericPkg;
 import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
 import org.polarsys.capella.core.model.helpers.ClassExt;
 import org.polarsys.capella.core.model.helpers.DataPkgExt;
-import org.polarsys.capella.core.model.helpers.GenericPkgExt;
 import org.polarsys.capella.core.model.helpers.StructureExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
@@ -79,7 +77,6 @@ public class GetAvailable_Union_DiscriminantType extends AbstractQuery {
 				availableElements.addAll(getRule_MQRY_Union_Descriminant_11(union));
 				availableElements.addAll(getRule_MQRY_Union_Descriminant_12(union));
 			}
-			availableElements.addAll(getRule_MQRY_Union_Descriminant_13(union, systemEngineering));
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
 		return availableElements;
@@ -131,33 +128,6 @@ public class GetAvailable_Union_DiscriminantType extends AbstractQuery {
 			}
 		}
 		availableElements.addAll(getRule_MQRY_Union_Descriminant_12_1(currentUnion));
-		return availableElements;
-	}
-
-	private List<CapellaElement> getRule_MQRY_Union_Descriminant_13(Union currentUnion, SystemEngineering systemEngineering) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		UnionProperty disc = currentUnion.getDiscriminant();
-		Type type = null;
-		if (disc != null)
-			type = disc.getType();
-		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering)) {
-			DataPkg dataPkg = sharedPkg.getOwnedDataPkg();
-			if (dataPkg != null) {
-				for (DataType element : DataPkgExt.getAllDataTypes(dataPkg)) {
-					if (null != type && type.equals(element))
-						continue;
-					availableElements.add(element);
-				}
-			}
-			GenericPkg pkg = sharedPkg.getOwnedGenericPkg();
-			if (pkg != null) {
-				for (CapellaElement element : GenericPkgExt.getAllDataTypes(pkg)) {
-					if (null != type && type.equals(element))
-						continue;
-					availableElements.add(element);
-				}
-			}
-		}
 		return availableElements;
 	}
 

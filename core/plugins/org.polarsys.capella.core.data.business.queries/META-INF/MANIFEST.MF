@@ -13,7 +13,6 @@ Require-Bundle: org.polarsys.capella.core.model.helpers;visibility:=reexport,
  org.polarsys.capella.common,
  org.polarsys.capella.common.libraries,
  org.polarsys.capella.core.libraries,
- org.polarsys.capella.core.queries.helpers,
  org.polarsys.capella.common.libraries.gen
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.business.abstractqueries,

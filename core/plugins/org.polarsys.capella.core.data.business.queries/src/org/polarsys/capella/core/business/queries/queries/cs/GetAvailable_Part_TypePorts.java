@@ -46,7 +46,7 @@ public class GetAvailable_Part_TypePorts extends AbstractQuery {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
 		PhysicalComponent pc = (PhysicalComponent) currentPhysicalPart.getType();
 		if (pc != null) {
-			availableElements.addAll(pc.getOwnedPartitions());
+			availableElements.addAll(pc.getContainedParts());
 		}
 		return availableElements;
 	}

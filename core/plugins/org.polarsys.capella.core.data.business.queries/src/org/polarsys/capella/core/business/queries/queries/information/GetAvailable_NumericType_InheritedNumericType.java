@@ -164,7 +164,7 @@ public class GetAvailable_NumericType_InheritedNumericType extends AbstractQuery
     }
 
     if (null != currentCpnt) {
-      for (Component allocatedCpnt : currentCpnt.getAllocatedComponents()) {
+      for (Component allocatedCpnt : currentCpnt.getRealizedComponents()) {
         List<Component> componentHierarchy = CapellaElementExt.getComponentHierarchy(allocatedCpnt);
         componentHierarchy.add(allocatedCpnt);
 

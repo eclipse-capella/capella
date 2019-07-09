@@ -22,13 +22,9 @@ import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.ComponentArchitecture;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
-import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.information.Service;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
-import org.polarsys.capella.core.data.sharedmodel.GenericPkg;
 import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
-import org.polarsys.capella.core.model.helpers.DataPkgExt;
-import org.polarsys.capella.core.model.helpers.GenericPkgExt;
 import org.polarsys.capella.core.model.helpers.ServiceExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
@@ -95,7 +91,6 @@ public class GetAvailable_Service_ThrownException extends AbstractQuery {
 				availableElements.addAll(getRule_MQRY_Service_Throw_11(currentService));
 				availableElements.addAll(getRule_MQRY_Service_Throw_12(currentService));
 			}
-			availableElements.addAll(getRule_MQRY_Service_Throw_13(currentService, systemEngineering));
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
 		return availableElements;
@@ -112,21 +107,6 @@ public class GetAvailable_Service_ThrownException extends AbstractQuery {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
 		availableElements.addAll(ServiceExt.getFilteredExceptions(currentService, ServiceExt.getExceptionsFromParentHierarchy(currentService)));
 		availableElements.addAll(getRule_MQRY_Service_Throw_12_1(currentService));
-		return availableElements;
-	}
-
-	private List<CapellaElement> getRule_MQRY_Service_Throw_13(Service currentService, SystemEngineering systemEngineering) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering)) {
-			GenericPkg pkg = sharedPkg.getOwnedGenericPkg();
-			if (pkg != null) {
-				availableElements.addAll(ServiceExt.getFilteredExceptions(currentService, GenericPkgExt.getAllExceptions(pkg)));
-			}
-			DataPkg dataPkg = sharedPkg.getOwnedDataPkg();
-			if (dataPkg != null) {
-				availableElements.addAll(ServiceExt.getFilteredExceptions(currentService, DataPkgExt.getAllExceptions(dataPkg)));
-			}
-		}
 		return availableElements;
 	}
 

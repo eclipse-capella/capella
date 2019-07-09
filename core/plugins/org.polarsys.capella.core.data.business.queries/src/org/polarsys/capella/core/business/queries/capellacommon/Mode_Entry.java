@@ -46,7 +46,7 @@ public class Mode_Entry extends AbstractState_Properties implements IBusinessQue
 	public List<EObject> getAvailableElements(EObject element) {
 	    QueryContext context = new QueryContext();
 	    context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass()); 
-	    context.putValue("theStructuralFeature", getEStructuralFeatures().get(0)); //$NON-NLS-1$
+	    context.putValue(QueryConstants.ESTRUCTURAL_FEATURE_PARAMETER, getEStructuralFeatures().get(0)); //$NON-NLS-1$
 	    return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__ABSTRACT_STATE_PROPERTIES___LIB, element, context);
   }
 
@@ -56,7 +56,7 @@ public class Mode_Entry extends AbstractState_Properties implements IBusinessQue
     //return RefactorDebugger.callAndTestQuery("GetCurrent_AbstractStateProperties", element, getOldCurrentElements(element, false), getEClass(), getClass());//$NON-NLS-1$
     QueryContext context = new QueryContext();
     context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass()); 
-    context.putValue("theStructuralFeature", getEStructuralFeatures().get(0)); //$NON-NLS-1$
+    context.putValue(QueryConstants.ESTRUCTURAL_FEATURE_PARAMETER, getEStructuralFeatures().get(0)); //$NON-NLS-1$
     return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__ABSTRACT_STATE_PROPERTIES, element, context);
   }
 }

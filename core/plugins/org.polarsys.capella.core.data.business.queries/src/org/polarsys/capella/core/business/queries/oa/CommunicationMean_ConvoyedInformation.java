@@ -52,14 +52,14 @@ public class CommunicationMean_ConvoyedInformation implements IBusinessQuery {
 	public List<EObject> getAvailableElements(EObject element) {
 		QueryContext context = new QueryContext();
 		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
-		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__CONNECTION__CONVOYED_INFORMATION___LIB, element, context);
+		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__COMPONENT_EXCHANGE__CONVOYED_INFORMATIONS___LIB, element, context);
 	}
 
 	@Override
 	public List<EObject> getCurrentElements(EObject element, boolean onlyGenerated) {
 		QueryContext context = new QueryContext();
 		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
-		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__CONNECTION__CONVOYED_INFORMATION, element, context);
+		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__COMPONENT_EXCHANGE__CONVOYED_INFORMATIONS, element, context);
 	}  
   
 }

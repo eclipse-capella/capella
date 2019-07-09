@@ -25,9 +25,7 @@ import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
 import org.polarsys.capella.core.data.helpers.capellacore.services.GeneralizableElementExt;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.sharedmodel.GenericPkg;
 import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
-import org.polarsys.capella.core.model.helpers.GenericPkgExt;
 import org.polarsys.capella.core.model.helpers.InterfaceExt;
 import org.polarsys.capella.core.model.helpers.InterfacePkgExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
@@ -86,7 +84,6 @@ public class GetAvailable_PhysicalInterface_InheritedInterfaces extends Abstract
 				availableElements.addAll(getRule_MQRY_Interface_Inherited_12((Interface) element, systemEngineering));
 				availableElements.addAll(getRule_MQRY_Interface_Inherited_13((Interface) element, systemEngineering));
 			}
-			availableElements.addAll(getRule_MQRY_Interface_Inherited_14((Interface) element, systemEngineering));
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
 		availableElements.remove(element);
@@ -164,28 +161,6 @@ public class GetAvailable_PhysicalInterface_InheritedInterfaces extends Abstract
 			if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentInterface).contains(inter)
 					&& !GeneralizableElementExt.getAllSuperGeneralizableElements(inter).contains(currentInterface)) {
 				availableElements.add(inter);
-			}
-		}
-		return availableElements;
-	}
-
-	/** 
-	 * All the Interfaces contained by the Shared Package (and all of its
-	 * sub-packages).
-	 */
-	private List<CapellaElement> getRule_MQRY_Interface_Inherited_14(Interface currentInterface, SystemEngineering systemEngineering) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering)) {
-			GenericPkg pkg = sharedPkg.getOwnedGenericPkg();
-			if (pkg != null) {
-				for (Interface inter : GenericPkgExt.getAllInterfaces(pkg)) {
-					if ((inter == null) || (inter.equals(currentInterface)))
-						continue;
-					if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentInterface).contains(inter)
-							&& !GeneralizableElementExt.getAllSuperGeneralizableElements(inter).contains(currentInterface)) {
-						availableElements.add(inter);
-					}
-				}
 			}
 		}
 		return availableElements;

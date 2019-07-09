@@ -90,7 +90,6 @@
         <module>org.polarsys.capella.core.diagram.helpers</module>
         <module>org.polarsys.capella.core.flexibility.wizards</module>
         <module>org.polarsys.capella.core.libraries</module>
-        <module>org.polarsys.capella.core.libraries.extendedQueries</module>
         <module>org.polarsys.capella.core.libraries.ui</module>
         <module>org.polarsys.capella.core.linkedtext.ui</module>
         <module>org.polarsys.capella.core.menu.dynamic</module>
@@ -119,7 +118,6 @@
         <module>org.polarsys.capella.core.projection.exchanges</module>
         <module>org.polarsys.capella.core.projection.interfaces</module>
         <module>org.polarsys.capella.core.projection.scenario</module>
-        <module>org.polarsys.capella.core.queries.helpers</module>
         <module>org.polarsys.capella.core.re</module>
         <module>org.polarsys.capella.core.re.project</module>
         <module>org.polarsys.capella.core.re.ui</module>

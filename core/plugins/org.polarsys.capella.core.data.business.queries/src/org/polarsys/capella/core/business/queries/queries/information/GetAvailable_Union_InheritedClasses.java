@@ -25,11 +25,9 @@ import org.polarsys.capella.core.data.helpers.capellacore.services.Generalizable
 import org.polarsys.capella.core.data.information.Class;
 import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.information.Union;
-import org.polarsys.capella.core.data.sharedmodel.GenericPkg;
 import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
 import org.polarsys.capella.core.model.helpers.ClassExt;
 import org.polarsys.capella.core.model.helpers.DataPkgExt;
-import org.polarsys.capella.core.model.helpers.GenericPkgExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 import org.polarsys.capella.core.model.utils.ListExt;
@@ -84,7 +82,6 @@ public class GetAvailable_Union_InheritedClasses extends AbstractQuery {
 				availableElements.addAll(getRule_MQRY_Class_Inherited_12((Class) element, systemEngineering));
 				availableElements.addAll(getRule_MQRY_Class_Inherited_13((Class) element, systemEngineering));
 			}
-			availableElements.addAll(getRule_MQRY_Class_Inherited_14((Class) element, systemEngineering));
 		}
 
 		availableElements = ListExt.removeDuplicates(availableElements);
@@ -168,41 +165,6 @@ public class GetAvailable_Union_InheritedClasses extends AbstractQuery {
 					continue;
 				if (!GeneralizableElementExt.getAllSuperGeneralizableElements(clazz).contains(currentClass)) {
 					availableElements.add(clazz);
-				}
-			}
-		}
-
-		return availableElements;
-	}
-
-	/**
-	 * All the Classes contained by the Shared Package (and all of its
-	 * sub-packages).
-	 */
-	private List<CapellaElement> getRule_MQRY_Class_Inherited_14(Class currentClass, SystemEngineering systemEngineering) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-
-		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering)) {
-			GenericPkg pkg = sharedPkg.getOwnedGenericPkg();
-			if (pkg != null) {
-				for (Class clazz : GenericPkgExt.getAllClasses(pkg)) {
-					if ((!currentClass.isIsPrimitive() && clazz.isIsPrimitive()) || (currentClass.isIsPrimitive() && !clazz.isIsPrimitive()) || (clazz == null) || (clazz.equals(currentClass)))
-						continue;
-					if (!GeneralizableElementExt.getAllSuperGeneralizableElements(clazz).contains(currentClass)) {
-						availableElements.add(clazz);
-					}
-				}
-			}
-
-			if (sharedPkg.getOwnedDataPkg() != null) {
-				if (sharedPkg.getOwnedDataPkg() != null) {
-					for (Class clazz : DataPkgExt.getAllClasses(sharedPkg.getOwnedDataPkg())) {
-						if ((!currentClass.isIsPrimitive() && clazz.isIsPrimitive()) || (currentClass.isIsPrimitive() && !clazz.isIsPrimitive()) || (clazz == null) || (clazz.equals(currentClass)))
-							continue;
-						if (!GeneralizableElementExt.getAllSuperGeneralizableElements(clazz).contains(currentClass)) {
-							availableElements.add(clazz);
-						}
-					}
 				}
 			}
 		}

@@ -25,10 +25,8 @@ import org.polarsys.capella.core.data.helpers.capellacore.services.Generalizable
 import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.information.communication.Message;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.sharedmodel.GenericPkg;
 import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
 import org.polarsys.capella.core.model.helpers.DataPkgExt;
-import org.polarsys.capella.core.model.helpers.GenericPkgExt;
 import org.polarsys.capella.core.model.helpers.MessageExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
@@ -96,7 +94,6 @@ public class GetAvailable_Message_InheritedMessage extends AbstractQuery {
 				availableElements.addAll(getRule_MQRY_Message_Inherited_12(currentMessage));
 				availableElements.addAll(getRule_MQRY_Message_Inherited_13(currentMessage));
 			}
-			availableElements.addAll(getRule_MQRY_Message_Inherited_14(currentMessage, systemEngineering));
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
 		return availableElements;
@@ -166,35 +163,6 @@ public class GetAvailable_Message_InheritedMessage extends AbstractQuery {
 				if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentMessage).contains(message)
 						&& !GeneralizableElementExt.getAllSuperGeneralizableElements(message).contains(currentMessage)) {
 					availableElements.add(message);
-				}
-			}
-		}
-		return availableElements;
-	}
-
-	private List<CapellaElement> getRule_MQRY_Message_Inherited_14(Message currentMessage, SystemEngineering systemEngineering) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering)) {
-			DataPkg dataPkg = sharedPkg.getOwnedDataPkg();
-			if (null != dataPkg) {
-				for (Message message : DataPkgExt.getAllMessages(dataPkg)) {
-					if ((message == null) || (message.equals(currentMessage)))
-						continue;
-					if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentMessage).contains(message)
-							&& !GeneralizableElementExt.getAllSuperGeneralizableElements(message).contains(currentMessage)) {
-						availableElements.add(message);
-					}
-				}
-			}
-			GenericPkg pkg = sharedPkg.getOwnedGenericPkg();
-			if (pkg != null) {
-				for (Message message : GenericPkgExt.getAllMessages(pkg)) {
-					if ((message == null) || (message.equals(currentMessage)))
-						continue;
-					if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentMessage).contains(message)
-							&& !GeneralizableElementExt.getAllSuperGeneralizableElements(message).contains(currentMessage)) {
-						availableElements.add(message);
-					}
 				}
 			}
 		}

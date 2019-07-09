@@ -25,11 +25,9 @@ import org.polarsys.capella.core.data.helpers.capellacore.services.Generalizable
 import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.information.communication.Exception;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.sharedmodel.GenericPkg;
 import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
 import org.polarsys.capella.core.model.helpers.DataPkgExt;
 import org.polarsys.capella.core.model.helpers.ExceptionExt;
-import org.polarsys.capella.core.model.helpers.GenericPkgExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 import org.polarsys.capella.core.model.utils.ListExt;
@@ -98,7 +96,6 @@ public class GetAvailable_Exception_InheritedException extends AbstractQuery {
 				availableElements.addAll(getRule_MQRY_Exception_Inherited_12(exception));
 				availableElements.addAll(getRule_MQRY_Exception_Inherited_13(exception));
 			}
-			availableElements.addAll(getRule_MQRY_Exception_Inherited_14(exception, systemEngineering));
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
 		return availableElements;
@@ -168,35 +165,6 @@ public class GetAvailable_Exception_InheritedException extends AbstractQuery {
 				if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentException).contains(exception)
 						&& !GeneralizableElementExt.getAllSuperGeneralizableElements(exception).contains(currentException)) {
 					availableElements.add(exception);
-				}
-			}
-		}
-		return availableElements;
-	}
-
-	private List<CapellaElement> getRule_MQRY_Exception_Inherited_14(Exception currentException, SystemEngineering systemEngineering) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering)) {
-			DataPkg dataPkg = sharedPkg.getOwnedDataPkg();
-			if (null != dataPkg) {
-				for (Exception exception : DataPkgExt.getAllExceptions(dataPkg)) {
-					if ((exception == null) || (exception.equals(currentException)))
-						continue;
-					if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentException).contains(exception)
-							&& !GeneralizableElementExt.getAllSuperGeneralizableElements(exception).contains(currentException)) {
-						availableElements.add(exception);
-					}
-				}
-			}
-			GenericPkg pkg = sharedPkg.getOwnedGenericPkg();
-			if (pkg != null) {
-				for (Exception exception : GenericPkgExt.getAllExceptions(pkg)) {
-					if ((exception == null) || (exception.equals(currentException)))
-						continue;
-					if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentException).contains(exception)
-							&& !GeneralizableElementExt.getAllSuperGeneralizableElements(exception).contains(currentException)) {
-						availableElements.add(exception);
-					}
 				}
 			}
 		}

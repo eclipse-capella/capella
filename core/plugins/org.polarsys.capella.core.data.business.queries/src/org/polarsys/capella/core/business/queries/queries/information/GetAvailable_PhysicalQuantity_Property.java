@@ -28,19 +28,14 @@ import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.information.Property;
-import org.polarsys.capella.core.data.information.communication.Exception;
-import org.polarsys.capella.core.data.information.communication.Message;
-import org.polarsys.capella.core.data.information.communication.Signal;
 import org.polarsys.capella.core.data.information.datatype.DataType;
 import org.polarsys.capella.core.data.information.datatype.PhysicalQuantity;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
-import org.polarsys.capella.core.data.sharedmodel.GenericPkg;
 import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
 import org.polarsys.capella.core.model.helpers.DataPkgExt;
 import org.polarsys.capella.core.model.helpers.DataValueExt;
-import org.polarsys.capella.core.model.helpers.GenericPkgExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 import org.polarsys.capella.core.model.utils.ListExt;
@@ -79,7 +74,6 @@ public class GetAvailable_PhysicalQuantity_Property extends AbstractQuery {
 			if (!isElementFromSharedPkg) {
 				availableElements.addAll(getRule_MQRY_BooleanValue_Type_11(currentBooleanType));
 			}
-			availableElements.addAll(getRule_MQRY_BooleanValue_Type_13(currentBooleanType, systemEngineering));
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
 		return availableElements;
@@ -92,28 +86,6 @@ public class GetAvailable_PhysicalQuantity_Property extends AbstractQuery {
 			getAllPropertyFromDataPkg(availableElements, dataPkg, currentBooleanType);
 		}
 		availableElements.addAll(getRule_MQRY_BooleanValue_Type_11_1(currentBooleanType));
-		return availableElements;
-	}
-
-	private List<CapellaElement> getRule_MQRY_BooleanValue_Type_13(PhysicalQuantity currentBooleanType, SystemEngineering systemEngineering) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering)) {
-			GenericPkg pkg = sharedPkg.getOwnedGenericPkg();
-			if (pkg != null) {
-				for (org.polarsys.capella.core.data.information.Class object : GenericPkgExt.getAllClasses(pkg)) {
-					getAllPropertiesFromClassifier(availableElements, object, currentBooleanType);
-				}
-				for (Exception object : GenericPkgExt.getAllExceptions(pkg)) {
-					getAllPropertiesFromClassifier(availableElements, object, currentBooleanType);
-				}
-				for (Message object : GenericPkgExt.getAllMessages(pkg)) {
-					getAllPropertiesFromClassifier(availableElements, object, currentBooleanType);
-				}
-				for (Signal object : GenericPkgExt.getAllSignals(pkg)) {
-					getAllPropertiesFromClassifier(availableElements, object, currentBooleanType);
-				}
-			}
-		}
 		return availableElements;
 	}
 

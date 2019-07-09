@@ -67,7 +67,7 @@ public class GetAvailable_StringType_NullValue extends AbstractQuery {
     Component currentCpnt =
         (element instanceof Component) ? (Component) element : (Component) EcoreUtil2.getFirstContainer(element, CsPackage.Literals.COMPONENT);
     if (currentCpnt != null) {
-      for (Component allocatedCpnt : currentCpnt.getAllocatedComponents()) {
+      for (Component allocatedCpnt : currentCpnt.getRealizedComponents()) {
         List<Component> componentHierarchy = CapellaElementExt.getComponentHierarchy(allocatedCpnt);
         componentHierarchy.add(allocatedCpnt);
         for (Component cpnt : componentHierarchy) {

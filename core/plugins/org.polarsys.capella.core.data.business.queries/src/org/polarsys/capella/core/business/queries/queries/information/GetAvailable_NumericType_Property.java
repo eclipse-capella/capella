@@ -131,7 +131,7 @@ public class GetAvailable_NumericType_Property extends AbstractQuery {
 			currentCpnt = (Component) EcoreUtil2.getFirstContainer(element, CsPackage.Literals.COMPONENT);
 		}
 		if (null != currentCpnt) {
-			for (Component allocatedCpnt : currentCpnt.getAllocatedComponents()) {
+			for (Component allocatedCpnt : currentCpnt.getRealizedComponents()) {
 				List<Component> componentHierarchy = CapellaElementExt.getComponentHierarchy(allocatedCpnt);
 				componentHierarchy.add(allocatedCpnt);
 				for (Component cpnt : componentHierarchy) {

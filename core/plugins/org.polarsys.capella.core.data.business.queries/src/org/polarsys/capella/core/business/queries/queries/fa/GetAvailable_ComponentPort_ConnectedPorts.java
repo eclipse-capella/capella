@@ -25,64 +25,63 @@ import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionalExt;
-import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.model.helpers.PortExt;
 import org.polarsys.capella.core.model.utils.ListExt;
 
 public class GetAvailable_ComponentPort_ConnectedPorts extends AbstractQuery {
 
-	private ComponentPort thePort;
-	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@Override
-	public List<Object> execute(Object input, IQueryContext context) {
-		CapellaElement capellaElement = (CapellaElement) input;
-		List<EObject> availableElements = getAvailableElements(capellaElement);
-		return (List) availableElements;
-	}
+  private ComponentPort thePort;
 
-	public List<EObject> getAvailableElements(CapellaElement element) {
-		List<EObject> availableElements = new ArrayList<EObject>();
-		if (element instanceof Part) {
-			Part property = (Part) element;
-			availableElements.addAll(getRule_MQRY_StandardPort_ConnectedPorts_11(property));
-		}
-		availableElements = ListExt.removeDuplicates(availableElements);
-		availableElements.remove(thePort);
-		return availableElements;
-	}
+  @SuppressWarnings({ "rawtypes", "unchecked" })
+  @Override
+  public List<Object> execute(Object input, IQueryContext context) {
+    CapellaElement capellaElement = (CapellaElement) input;
+    List<EObject> availableElements = getAvailableElements(capellaElement);
+    return (List) availableElements;
+  }
 
-	private List<CapellaElement> getRule_MQRY_StandardPort_ConnectedPorts_11(Part currentPhysicalPart) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(CsPackage.Literals.PART, CapellacorePackage.Literals.TYPED_ELEMENT__TYPE);
-		if (query != null) {
-			List<EObject> pcs = query.getAvailableElements(currentPhysicalPart);
-			pcs.add(currentPhysicalPart.eContainer());
-			List<Partition> allports = new ArrayList<Partition>(1);
-			for (EObject capellaElement : pcs) {
-				if (capellaElement instanceof PhysicalComponent) {
-					PhysicalComponent pc = (PhysicalComponent) capellaElement;
-					allports.addAll(pc.getOwnedPartitions());
-				}
-			}
-			for (Partition port : allports) {
-				if (port instanceof ComponentPort && !PortExt.isNotCompatibleWith((ComponentPort) port, thePort)) {
-					availableElements.add(port);
-				}
-			}
-		}
-		return availableElements;
-	}
+  public List<EObject> getAvailableElements(CapellaElement element) {
+    List<EObject> availableElements = new ArrayList<EObject>();
+    if (element instanceof Part) {
+      Part property = (Part) element;
+      availableElements.addAll(getRule_MQRY_StandardPort_ConnectedPorts_11(property));
+    }
+    availableElements = ListExt.removeDuplicates(availableElements);
+    availableElements.remove(thePort);
+    return availableElements;
+  }
 
-	public List<EObject> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
-		List<EObject> currentElements = new ArrayList<EObject>(1);
-		if (element instanceof Part && thePort != null) {
-			for (ComponentExchange connection : thePort.getComponentExchanges()) {
-				currentElements.addAll(FunctionalExt.getRelatedPorts(connection));
-			}
-		}
-		return ListExt.removeDuplicates(currentElements);
-	}
+  private List<CapellaElement> getRule_MQRY_StandardPort_ConnectedPorts_11(Part currentPhysicalPart) {
+    List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
+    IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(CsPackage.Literals.PART,
+        CapellacorePackage.Literals.TYPED_ELEMENT__TYPE);
+    if (query != null) {
+      List<EObject> pcs = query.getAvailableElements(currentPhysicalPart);
+      pcs.add(currentPhysicalPart.eContainer());
+      for (EObject capellaElement : pcs) {
+        if (capellaElement instanceof PhysicalComponent) {
+          PhysicalComponent pc = (PhysicalComponent) capellaElement;
+          for (ComponentPort port : pc.getContainedComponentPorts()) {
+            if (!PortExt.isNotCompatibleWith((ComponentPort) port, thePort)) {
+              availableElements.add(port);
+            }
+          }
+        }
+      }
+
+    }
+    return availableElements;
+  }
+
+  public List<EObject> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
+    List<EObject> currentElements = new ArrayList<EObject>(1);
+    if (element instanceof Part && thePort != null) {
+      for (ComponentExchange connection : thePort.getComponentExchanges()) {
+        currentElements.addAll(FunctionalExt.getRelatedPorts(connection));
+      }
+    }
+    return ListExt.removeDuplicates(currentElements);
+  }
 
 }

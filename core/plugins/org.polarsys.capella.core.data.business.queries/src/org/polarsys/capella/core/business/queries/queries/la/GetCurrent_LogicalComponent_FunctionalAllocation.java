@@ -13,17 +13,10 @@ package org.polarsys.capella.core.business.queries.queries.la;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.data.fa.AbstractFunction;
-import org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation;
-import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
+import org.polarsys.capella.core.data.cs.Component;
 
 public class GetCurrent_LogicalComponent_FunctionalAllocation extends AbstractQuery {
 
@@ -31,33 +24,10 @@ public class GetCurrent_LogicalComponent_FunctionalAllocation extends AbstractQu
 	@Override
 	public List<Object> execute(Object input, IQueryContext context) {
 		CapellaElement capellaElement = (CapellaElement) input;
-		List<CapellaElement> currentElements = getCurrentElements(capellaElement, false);
-		return (List) currentElements;
+		List<Object> currentElements = new ArrayList<Object>();
+    if (capellaElement instanceof Component) {
+      currentElements.addAll(((Component) capellaElement).getAllocatedFunctions());
+    }
+    return currentElements;
 	}
-
-	/** 
-	 * <p>
-	 * Gets all the owned FunctionalAllocation of the system.
-	 * </p>
-	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getCurrentElements(EObject,boolean)
-	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
-		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
-		if (null == systemEngineering) {
-			return currentElements;
-		}
-		if (element instanceof LogicalComponent) {
-			LogicalComponent system = (LogicalComponent) element;
-			EList<ComponentFunctionalAllocation> ownedFunctionalAllocation = system.getOwnedFunctionalAllocation();
-			for (ComponentFunctionalAllocation componentFunctionalAllocation : ownedFunctionalAllocation) {
-				TraceableElement targetElement = componentFunctionalAllocation.getTargetElement();
-				if (targetElement instanceof AbstractFunction) {
-					currentElements.add((CapellaElement) targetElement);
-				}
-			}
-		}
-		return currentElements;
-	}
-
 }

@@ -389,7 +389,7 @@
                extendedQueryIdentifier="CapellaGetAllCatalogPkgQuery"
                queryIdentifier="GetAllCatalogPkgsForLib">
                
-            <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.extendedqueries.GenericGetForLibWithSystemEngineering"></queryAlgorithm>
+            <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.queries.GenericGetForLibWithSystemEngineering"></queryAlgorithm>
          </querySpecification>
          
          <querySpecification
@@ -401,7 +401,7 @@
                extendedQueryIdentifier="CapellaGetAllCatalogElementsQuery"
                queryIdentifier="GetAllCatalogElementsForLib">
                
-            <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.extendedqueries.GenericGetForLibWithSystemEngineering"></queryAlgorithm>
+            <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.queries.GenericGetForLibWithSystemEngineering"></queryAlgorithm>
          </querySpecification>
          
          
@@ -415,7 +415,7 @@
                extendedQueryIdentifier="CapellaGetAllCompliancyDefinitionsQuery"
                queryIdentifier="GetAllCompliancyDefinitionsQueryForLib">
                
-            <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.extendedqueries.GenericGetForLibWithSystemEngineering"></queryAlgorithm>
+            <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.queries.GenericGetForLibWithSystemEngineering"></queryAlgorithm>
          </querySpecification>
          
          

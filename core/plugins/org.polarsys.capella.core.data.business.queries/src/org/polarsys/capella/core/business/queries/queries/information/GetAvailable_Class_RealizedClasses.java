@@ -21,11 +21,9 @@ import org.polarsys.capella.core.data.capellacore.ReuseLink;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.information.Class;
-import org.polarsys.capella.core.data.sharedmodel.GenericPkg;
 import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.DataPkgExt;
-import org.polarsys.capella.core.model.helpers.GenericPkgExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 import org.polarsys.capella.core.model.utils.ListExt;
@@ -63,7 +61,6 @@ public class GetAvailable_Class_RealizedClasses extends AbstractQuery {
 			if (!isClassFromSharedPkg) {
 				availableElements.addAll(getRule_MQRY_Class_Realized_11(element));
 			}
-			availableElements.addAll(getRule_MQRY_Class_Realized_12((Class) element, systemEngineering));
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
 		availableElements.remove(element);
@@ -80,30 +77,6 @@ public class GetAvailable_Class_RealizedClasses extends AbstractQuery {
 			for (BlockArchitecture previousBlockArchitecture : BlockArchitectureExt.getPreviousBlockArchitectures(currentBlockArchitecture)) {
 				for (Class clazz : DataPkgExt.getAllClasses(previousBlockArchitecture.getOwnedDataPkg())) {
 					availableElements.add(clazz);
-				}
-			}
-		}
-		return availableElements;
-	}
-
-	/** 
-	 * All the Classes contained by the Shared Package (and all of its
-	 * sub-packages).
-	 */
-	private List<CapellaElement> getRule_MQRY_Class_Realized_12(Class currentClass, SystemEngineering systemEngineering) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering)) {
-			GenericPkg pkg = sharedPkg.getOwnedGenericPkg();
-			if (pkg != null) {
-				for (Class clazz : GenericPkgExt.getAllClasses(pkg)) {
-					availableElements.add(clazz);
-				}
-			}
-			if (sharedPkg.getOwnedDataPkg() != null) {
-				if (sharedPkg.getOwnedDataPkg() != null) {
-					for (Class clazz : DataPkgExt.getAllClasses(sharedPkg.getOwnedDataPkg())) {
-						availableElements.add(clazz);
-					}
 				}
 			}
 		}

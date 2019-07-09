@@ -17,6 +17,8 @@ import org.eclipse.emf.ecore.EReference;
 import org.polarsys.capella.common.data.behavior.AbstractEvent;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
+import org.polarsys.capella.core.business.queries.QueryConstants;
+import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 
@@ -26,19 +28,19 @@ public class GetCurrent_AbstractStateProperties extends AbstractQuery {
   public List<Object> execute(Object input, IQueryContext context) {
     List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
 
-    Object property = context.getValue("theStructuralFeature");
-    EReference ref=(EReference) property;
-    if (ref.getName()=="doActivity"){
+    Object property = context.getValue(QueryConstants.ESTRUCTURAL_FEATURE_PARAMETER);
+    EReference ref= (EReference) property;
+    if (CapellacommonPackage.Literals.STATE__DO_ACTIVITY.equals(ref)) {
       for (AbstractEvent evt : ((State) input).getDoActivity()) {
         currentElements.add((CapellaElement) evt);
       }
-    }
-    if (ref.getName()=="entry"){
+      
+    } else if (CapellacommonPackage.Literals.STATE__ENTRY.equals(ref)){
       for (AbstractEvent evt : ((State) input).getEntry()) {
         currentElements.add((CapellaElement) evt);
       }
-    }
-    if (ref.getName()=="exit"){
+      
+    } else if (CapellacommonPackage.Literals.STATE__EXIT.equals(ref)){
       for (AbstractEvent evt : ((State) input).getExit()) {
         currentElements.add((CapellaElement) evt);
       }

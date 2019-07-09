@@ -24,7 +24,7 @@ import org.polarsys.capella.core.data.fa.FaPackage;
 
 /**
  */
-public class FunctionInputPort_InComingExchangeItems extends AbstractFunctionalExchangeItems implements IBusinessQuery {
+public class FunctionInputPort_InComingExchangeItems implements IBusinessQuery {
 
 	@Override
 	public List<EObject> getAvailableElements(EObject element) {

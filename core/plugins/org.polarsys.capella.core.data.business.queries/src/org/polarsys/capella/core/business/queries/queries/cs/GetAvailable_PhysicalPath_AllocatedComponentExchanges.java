@@ -20,16 +20,14 @@ import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.AbstractPathInvolvedElement;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.DeployableElement;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalPath;
 import org.polarsys.capella.core.data.cs.PhysicalPathInvolvement;
-import org.polarsys.capella.core.data.ctx.System;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.pa.PhysicalActor;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.LogicalComponentExt;
@@ -116,11 +114,11 @@ public class GetAvailable_PhysicalPath_AllocatedComponentExchanges extends Abstr
     targetComponents.add(targetComponent);
 
     for (Component component : sourceComponents) {
-      if (component instanceof System) {
+      if (component instanceof SystemComponent) {
         sourceDeployedElements.add(component);
       } else if (component instanceof LogicalComponent) {
         sourceDeployedElements.addAll(LogicalComponentExt.getAllSubComponents((LogicalComponent) component));
-      } else if (component instanceof PhysicalComponent || component instanceof PhysicalActor) {
+      } else if (component instanceof PhysicalComponent) {
         // get deployed Components of source
         for (AbstractTypedElement abstractTypedElement : component.getAbstractTypedElements()) {
           if (abstractTypedElement instanceof Part) {
@@ -135,18 +133,14 @@ public class GetAvailable_PhysicalPath_AllocatedComponentExchanges extends Abstr
           }
         }
       }
-      // if type is an actor add to list
-      if (component instanceof AbstractActor){
-        sourceDeployedElements.add(component);
-      }
     }  
 
     for (Component component : targetComponents) {
-      if (component instanceof System) {
+      if (component instanceof SystemComponent) {
         targetDeployedElements.add(component);
       } else if (component instanceof LogicalComponent) {
         targetDeployedElements.addAll(LogicalComponentExt.getAllSubComponents((LogicalComponent) component));
-      } else if (component instanceof PhysicalComponent || component instanceof PhysicalActor) {
+      } else if (component instanceof PhysicalComponent) {
         // get deployed Components of target
         for (AbstractTypedElement abstractTypedElement : component.getAbstractTypedElements()) {
           if (abstractTypedElement instanceof Part) {
@@ -160,10 +154,6 @@ public class GetAvailable_PhysicalPath_AllocatedComponentExchanges extends Abstr
             }
           }
         }
-      }
-      // if type is an actor add to list
-      if (component instanceof AbstractActor) {
-        targetDeployedElements.add(component);
       }
     }
 

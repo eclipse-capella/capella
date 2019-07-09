@@ -54,40 +54,10 @@ public class GetAvailable_Capability_RealizedCapabilities extends AbstractQuery 
 		BlockArchitecture currentBlockArchitecture = SystemEngineeringExt.getRootBlockArchitecture(ele);
 		if (currentBlockArchitecture != null) {
 			for (BlockArchitecture previousBlockArchitecture : BlockArchitectureExt.getPreviousBlockArchitecture(currentBlockArchitecture)) {
-				availableElements.addAll(getElementsFromBlockArchitecture(previousBlockArchitecture));
+				availableElements.addAll(BlockArchitectureExt.getAllCapabilities(previousBlockArchitecture));
 			}
 		}
 		return availableElements;
-	}
-
-	/** 
-	 * @param arch
-	 * @return
-	 */
-	private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		TreeIterator<Object> allContents = EcoreUtil.getAllContents(arch, true);
-		while (allContents.hasNext()) {
-			Object object = allContents.next();
-			if (object instanceof AbstractCapability) {
-				availableElements.add((CapellaElement) object);
-			}
-		}
-		return availableElements;
-	}
-
-	/** 
-	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getCurrentElements(EObject,boolean)
-	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
-		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-		if (element instanceof AbstractCapability) {
-			AbstractCapability ele = (AbstractCapability) element;
-			for (AbstractCapabilityRealization realization : ele.getOwnedAbstractCapabilityRealizations()) {
-				currentElements.add(realization.getRealizedCapability());
-			}
-		}
-		return currentElements;
 	}
 
 }

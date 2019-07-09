@@ -42,13 +42,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.polarsys.capella.core.libraries.extendedQueries"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.polarsys.capella.common.flexibility.properties"
          download-size="0"
          install-size="0"

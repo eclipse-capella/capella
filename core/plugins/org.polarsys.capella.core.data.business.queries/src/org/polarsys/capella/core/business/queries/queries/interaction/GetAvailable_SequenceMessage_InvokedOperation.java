@@ -19,7 +19,6 @@ import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.interaction.MessageEnd;
-import org.polarsys.capella.core.data.interaction.MessageKind;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.model.helpers.ScenarioExt;
 

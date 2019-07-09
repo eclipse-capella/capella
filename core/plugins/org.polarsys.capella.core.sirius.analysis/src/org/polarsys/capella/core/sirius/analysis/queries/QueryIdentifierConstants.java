@@ -10,19 +10,36 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis.queries;
 
+import static org.polarsys.capella.common.queries.QuerySchema.getQueryIdentifier;
+import org.polarsys.capella.core.sirius.analysis.queries.csServices.GetABInsertActor__Lib;
+import org.polarsys.capella.core.sirius.analysis.queries.csServices.GetCCEIShowHideActors__Lib;
+import org.polarsys.capella.core.sirius.analysis.queries.csServices.GetCCEIShowHideComponent__Lib;
 import org.polarsys.capella.core.sirius.analysis.queries.csServices.GetCCIIInsertComponent;
+import org.polarsys.capella.core.sirius.analysis.queries.csServices.GetCCIIShowHideComponent__Lib;
 import org.polarsys.capella.core.sirius.analysis.queries.csServices.GetIBShowHideComponent;
+import org.polarsys.capella.core.sirius.analysis.queries.csServices.GetIBShowHideComponent__Lib;
 import org.polarsys.capella.core.sirius.analysis.queries.interactionServices.GetISScopeInsertActors;
+import org.polarsys.capella.core.sirius.analysis.queries.interactionServices.GetISScopeInsertActors__Lib;
 import org.polarsys.capella.core.sirius.analysis.queries.interactionServices.GetISScopeInsertComponents;
+import org.polarsys.capella.core.sirius.analysis.queries.interactionServices.GetISScopeInsertComponents__Lib;
 
 /**
  * 
  */
 public interface QueryIdentifierConstants {
-  String GET_CCE_INSERT_INTERFACE = GetCCEIInsertInterface.class.getSimpleName();
-  String GET_AVAILABLE_ARCHITECTURES = GetAvailableArchitectures.class.getSimpleName();
-  String GET_IB_SHOW_HIDE_COMPONENTS = GetIBShowHideComponent.class.getSimpleName();
-  String GET_CCII_Insert_Component = GetCCIIInsertComponent.class.getSimpleName();
-  String GET_IS_SCOPE_INSERT_ACTORS = GetISScopeInsertActors.class.getSimpleName();
-  String GET_IS_SCOPE_INSERT_COMPONENTS = GetISScopeInsertComponents.class.getSimpleName();
+  String GET_CCE_INSERT_INTERFACE = getQueryIdentifier(GetCCEIInsertInterface.class);
+  String GET_AVAILABLE_ARCHITECTURES = getQueryIdentifier(GetAvailableArchitectures.class);
+  String GET_IB_SHOW_HIDE_COMPONENTS = getQueryIdentifier(GetIBShowHideComponent.class);
+  String GET_CCII_Insert_Component = getQueryIdentifier(GetCCIIInsertComponent.class);
+  String GET_IS_SCOPE_INSERT_ACTORS = getQueryIdentifier(GetISScopeInsertActors.class);
+  String GET_IS_SCOPE_INSERT_COMPONENTS = getQueryIdentifier(GetISScopeInsertComponents.class);
+
+  String GET_CCII_SHOW_HIDE_COMPONENTS_FOR_LIB = getQueryIdentifier(GetCCIIShowHideComponent__Lib.class);
+  String GET_CCEI_SHOW_HIDE_ACTORS_FOR_LIB = getQueryIdentifier(GetCCEIShowHideActors__Lib.class);
+  String GET_CCEI_SHOW_HIDE_COMPONENTS_FOR_LIB = getQueryIdentifier(GetCCEIShowHideComponent__Lib.class);
+  String GET_IB_SHOW_HIDE_COMPONENTS_FOR_LIB = getQueryIdentifier(GetIBShowHideComponent__Lib.class);
+  String GET_AB_INSERT_ACTOR_FOR_LIB = getQueryIdentifier(GetABInsertActor__Lib.class);
+  String GET_IS_SCOPE_INSERT_ACTORS_FOR_LIB = getQueryIdentifier(GetISScopeInsertActors__Lib.class);
+  String GET_IS_SCOPE_INSERT_COMPONENTS_FOR_LIB = getQueryIdentifier(GetISScopeInsertComponents__Lib.class);
+
 }

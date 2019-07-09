@@ -26,10 +26,8 @@ import org.polarsys.capella.core.data.helpers.capellacore.services.Generalizable
 import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.information.communication.Signal;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.sharedmodel.GenericPkg;
 import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
 import org.polarsys.capella.core.model.helpers.DataPkgExt;
-import org.polarsys.capella.core.model.helpers.GenericPkgExt;
 import org.polarsys.capella.core.model.helpers.SignalExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
@@ -83,7 +81,6 @@ public class GetAvailable_Signal_InheritedSignals extends AbstractQuery {
 				availableElements.addAll(getRule_MQRY_Signal_Inherited_12((Signal) element, systemEngineering));
 				availableElements.addAll(getRule_MQRY_Signal_Inherited_13((Signal) element, systemEngineering));
 			}
-			availableElements.addAll(getRule_MQRY_Signal_Inherited_14((Signal) element, systemEngineering));
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
 		availableElements.remove(element);
@@ -167,38 +164,6 @@ public class GetAvailable_Signal_InheritedSignals extends AbstractQuery {
 			if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentSignal).contains(signal)
 					&& !GeneralizableElementExt.getAllSuperGeneralizableElements(signal).contains(currentSignal)) {
 				availableElements.add(signal);
-			}
-		}
-		return availableElements;
-	}
-
-	/** 
-	 * All the Signals contained by the Shared Package (and all of its
-	 * sub-packages).
-	 */
-	private List<CapellaElement> getRule_MQRY_Signal_Inherited_14(Signal currentSignal, SystemEngineering systemEngineering) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering)) {
-			GenericPkg pkg = sharedPkg.getOwnedGenericPkg();
-			if (pkg != null) {
-				for (Signal signal : GenericPkgExt.getAllSignals(pkg)) {
-					if ((signal == null) || (signal.equals(currentSignal)))
-						continue;
-					if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentSignal).contains(signal)
-							&& !GeneralizableElementExt.getAllSuperGeneralizableElements(signal).contains(currentSignal)) {
-						availableElements.add(signal);
-					}
-				}
-			}
-			if (sharedPkg.getOwnedDataPkg() != null) {
-				for (Signal signal : DataPkgExt.getAllSignals(sharedPkg.getOwnedDataPkg())) {
-					if ((signal == null) || (signal.equals(currentSignal)))
-						continue;
-					if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentSignal).contains(signal)
-							&& !GeneralizableElementExt.getAllSuperGeneralizableElements(signal).contains(currentSignal)) {
-						availableElements.add(signal);
-					}
-				}
 			}
 		}
 		return availableElements;

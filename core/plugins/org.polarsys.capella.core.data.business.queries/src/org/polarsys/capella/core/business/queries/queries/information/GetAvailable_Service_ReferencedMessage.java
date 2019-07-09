@@ -22,13 +22,9 @@ import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.ComponentArchitecture;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
-import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.information.Service;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
-import org.polarsys.capella.core.data.sharedmodel.GenericPkg;
 import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
-import org.polarsys.capella.core.model.helpers.DataPkgExt;
-import org.polarsys.capella.core.model.helpers.GenericPkgExt;
 import org.polarsys.capella.core.model.helpers.ServiceExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
@@ -71,7 +67,6 @@ public class GetAvailable_Service_ReferencedMessage extends AbstractQuery {
 				availableElements.addAll(getRule_MQRY_Service_Ref_11(currentService));
 				availableElements.addAll(getRule_MQRY_Service_Ref_12(currentService));
 			}
-			availableElements.addAll(getRule_MQRY_Service_Ref_13(currentService, systemEngineering));
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
 		return availableElements;
@@ -101,26 +96,6 @@ public class GetAvailable_Service_ReferencedMessage extends AbstractQuery {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
 		availableElements.addAll(ServiceExt.getFilteredMessages(currentService, ServiceExt.getMessagesFromParentHierarchy(currentService)));
 		availableElements.addAll(getRule_MQRY_Service_Ref_12_1(currentService));
-		return availableElements;
-	}
-
-	/** 
-	 * All the Messages contained by the Message Package (and all of its
-	 * subpackages) of the SharedPkg
-	 * @return
-	 */
-	private List<CapellaElement> getRule_MQRY_Service_Ref_13(Service currentService, SystemEngineering sysEng) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(sysEng)) {
-			GenericPkg pkg = sharedPkg.getOwnedGenericPkg();
-			if (pkg != null) {
-				availableElements.addAll(ServiceExt.getFilteredMessages(currentService, GenericPkgExt.getAllMessages(pkg)));
-			}
-			DataPkg dataPkg = sharedPkg.getOwnedDataPkg();
-			if (dataPkg != null) {
-				availableElements.addAll(ServiceExt.getFilteredMessages(currentService, DataPkgExt.getAllMessages(dataPkg)));
-			}
-		}
 		return availableElements;
 	}
 

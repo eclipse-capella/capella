@@ -521,7 +521,38 @@
           queryIdentifier="GetAllRealizablePhysicalArtefacts">
        <queryAlgorithm
              algorithm="org.polarsys.capella.core.sirius.analysis.queries.configurationItemServices.GetAllRealizablePhysicalArtefacts"></queryAlgorithm>
-    </querySpecification>    
+    </querySpecification> 
+
+
+
+
+    <querySpecification queryIdentifier="GetABShowHideActor">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.sirius.analysis.queries.GetABShowHideActor" />
+    </querySpecification>
+    
+    
+    <querySpecification queryIdentifier="GetCCIIInsertComponent__Lib" extendedQueryIdentifier="GetCCIIInsertComponent">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.queries.GenericGetForLibWithCorrespondingArchitectureElement" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetABInsertActor__Lib" extendedQueryIdentifier="GetABInsertActor">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.sirius.analysis.queries.csServices.GetABInsertActor__Lib" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCCEIInsertInterfaceForLib" extendedQueryIdentifier="GetCCEIInsertInterface">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.sirius.analysis.queries.csServices.GetCCEIInsertInterfaceForLib" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCCEIShowHideActors__Lib" extendedQueryIdentifier="GetCCEIShowHideActors">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.sirius.analysis.queries.csServices.GetCCEIShowHideActors__Lib" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCCEIShowHideComponent__Lib" extendedQueryIdentifier="GetBrotherComponents">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.sirius.analysis.queries.csServices.GetCCEIShowHideComponent__Lib" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCCIIShowHideComponent__Lib" extendedQueryIdentifier="GetCCIIShowHideComponent">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.sirius.analysis.queries.csServices.GetCCIIShowHideComponent__Lib" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetIBShowHideComponent__Lib" extendedQueryIdentifier="GetIBShowHideComponent">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.sirius.analysis.queries.csServices.GetIBShowHideComponent__Lib" />
+    </querySpecification>
+      
  </extension>
  <extension
        point="org.eclipse.ui.preferencePages">

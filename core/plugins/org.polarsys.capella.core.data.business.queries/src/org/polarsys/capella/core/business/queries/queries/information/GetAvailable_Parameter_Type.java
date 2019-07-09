@@ -32,10 +32,8 @@ import org.polarsys.capella.core.data.information.Service;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
-import org.polarsys.capella.core.data.sharedmodel.GenericPkg;
 import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
 import org.polarsys.capella.core.model.helpers.DataPkgExt;
-import org.polarsys.capella.core.model.helpers.GenericPkgExt;
 import org.polarsys.capella.core.model.helpers.InterfacePkgExt;
 import org.polarsys.capella.core.model.helpers.OperationExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
@@ -108,10 +106,6 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
           availableElements.addAll(getRule_MQRY_Parameter_Type_13(parameter));
           availableElements.addAll(getRule_MQRY_Parameter_Type_14(parameter));
         }
-      }
-      availableElements.addAll(getRule_MQRY_Parameter_Type_15(parameter, systemEngineering));
-      if (!isFromService) {
-        availableElements.addAll(getRule_MQRY_Parameter_Type_16(parameter, systemEngineering));
       }
     }
     availableElements = ListExt.removeDuplicates(availableElements);
@@ -187,45 +181,6 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
         availableElements.add(element);
       }
       availableElements.addAll(getRule_MQRY_Parameter_Type_14_1(currentParameter));
-    }
-    return availableElements;
-  }
-
-  private List<EObject> getRule_MQRY_Parameter_Type_15(Parameter currenParameter, SystemEngineering systemEngineering) {
-    List<EObject> availableElements = new ArrayList<EObject>(1);
-    for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering)) {
-      DataPkg dataPkg = sharedPkg.getOwnedDataPkg();
-      if (dataPkg != null) {
-        for (EObject element : DataPkgExt.getAllTypesFromDataPkgForPropsNParams(dataPkg)) {
-          availableElements.add(element);
-        }
-      }
-      GenericPkg pkg = sharedPkg.getOwnedGenericPkg();
-      if (pkg != null) {
-        for (CapellaElement element : GenericPkgExt.getAllDataTypes(pkg)) {
-          availableElements.add(element);
-        }
-        for (CapellaElement element : GenericPkgExt.getAllClasses(pkg)) {
-          availableElements.add(element);
-        }
-        for (CapellaElement element : GenericPkgExt.getAllInterfaces(pkg)) {
-          availableElements.add(element);
-        }
-      }
-    }
-    return availableElements;
-  }
-
-  private List<CapellaElement> getRule_MQRY_Parameter_Type_16(Parameter currenParameter,
-      SystemEngineering systemEngineering) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering)) {
-      GenericPkg pkg = sharedPkg.getOwnedGenericPkg();
-      if (pkg != null) {
-        for (CapellaElement element : GenericPkgExt.getAllInterfaces(pkg)) {
-          availableElements.add(element);
-        }
-      }
     }
     return availableElements;
   }

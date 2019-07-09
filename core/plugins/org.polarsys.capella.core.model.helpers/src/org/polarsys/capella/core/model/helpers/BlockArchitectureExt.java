@@ -61,6 +61,8 @@ import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.InformationFactory;
+import org.polarsys.capella.core.data.interaction.AbstractCapability;
+import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.la.LaFactory;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
@@ -753,6 +755,14 @@ public class BlockArchitectureExt {
     }
   }
 
+  public static List<EObject> getAllStatesAndModes(BlockArchitecture blockArch) {
+    List<EObject> availableElements = new ArrayList<EObject>();
+    for (Component component : getAllComponents(blockArch)) {
+      availableElements.addAll(ComponentExt.getAllStatesAndModesFromComponent(component));
+    }
+    return availableElements;
+  }
+  
   /**
    * Returns all defined components from the given architecture
    * 
@@ -892,6 +902,22 @@ public class BlockArchitectureExt {
     return result;
   }
 
+  /**
+   * Gets all the {@link Missions} from SystemEng
+   * @param element the {@link CapellaElement}
+   * @return list of CapabilitySpecificationUseCase
+   */
+  public static List<AbstractCapability> getAllCapabilities(BlockArchitecture element) {
+    List<AbstractCapability> result = new ArrayList<AbstractCapability>();
+    if (null != element) {
+      Set<EObject> capabilities = EObjectExt.getAll(element, InteractionPackage.Literals.ABSTRACT_CAPABILITY);
+      for (EObject obj : capabilities) {
+        result.add((AbstractCapability) obj);
+      }
+    }
+    return result;
+  }
+  
   /**
    * Gets all the {@link Missions} from SystemEng
    * @param element the {@link CapellaElement}
