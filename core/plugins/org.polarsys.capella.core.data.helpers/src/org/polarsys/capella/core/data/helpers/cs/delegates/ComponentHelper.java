@@ -17,6 +17,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.core.data.capellacore.Feature;
+import org.polarsys.capella.core.data.capellacore.TypedElement;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentRealization;
 import org.polarsys.capella.core.data.cs.CsPackage;
@@ -69,6 +70,8 @@ public class ComponentHelper {
       ret = getContainedParts(element);
     } else if (feature.equals(CsPackage.Literals.COMPONENT__CONTAINED_PHYSICAL_PORTS)) {
       ret = getContainedPhysicalPorts(element);
+    } else if (feature.equals(CsPackage.Literals.COMPONENT__REPRESENTING_PARTS)) {
+      ret = getRepresentingParts(element);
     }
 
     // no helper found... searching in super classes...
@@ -183,6 +186,17 @@ public class ComponentHelper {
     for (Feature feature : element.getOwnedFeatures()) {
       if (feature instanceof PhysicalPort) {
         ret.add((PhysicalPort) feature);
+      }
+    }
+    return ret;
+  }
+  
+  protected List<Part> getRepresentingParts(Component element) {
+    List<TypedElement> typedElements = element.getTypedElements();
+    List<Part> ret = new ArrayList<Part>();
+    for (TypedElement typedElement : typedElements) {
+      if (typedElement instanceof Part) {
+        ret.add((Part) typedElement);
       }
     }
     return ret;

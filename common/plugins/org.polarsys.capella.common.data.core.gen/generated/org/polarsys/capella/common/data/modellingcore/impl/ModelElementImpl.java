@@ -42,6 +42,7 @@ import org.polarsys.kitalpha.emde.model.impl.ExtensibleElementImpl;
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.impl.ModelElementImpl#getSid <em>Sid</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.impl.ModelElementImpl#getConstraints <em>Constraints</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.impl.ModelElementImpl#getOwnedConstraints <em>Owned Constraints</em>}</li>
+ *   <li>{@link org.polarsys.capella.common.data.modellingcore.impl.ModelElementImpl#getOwnedMigratedElements <em>Owned Migrated Elements</em>}</li>
  * </ul>
  *
  * @generated
@@ -107,6 +108,19 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
 	 * @ordered
 	 */
 	protected EList<AbstractConstraint> ownedConstraints;
+
+
+
+
+	/**
+	 * The cached value of the '{@link #getOwnedMigratedElements() <em>Owned Migrated Elements</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedMigratedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ModelElement> ownedMigratedElements;
 
 
 
@@ -255,6 +269,20 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
 
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public EList<ModelElement> getOwnedMigratedElements() {
+
+		if (ownedMigratedElements == null) {
+			ownedMigratedElements = new EObjectContainmentEList.Resolving<ModelElement>(ModelElement.class, this, ModellingcorePackage.MODEL_ELEMENT__OWNED_MIGRATED_ELEMENTS);
+		}
+		return ownedMigratedElements;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -311,6 +339,8 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
 		switch (featureID) {
 			case ModellingcorePackage.MODEL_ELEMENT__OWNED_CONSTRAINTS:
 				return ((InternalEList<?>)getOwnedConstraints()).basicRemove(otherEnd, msgs);
+			case ModellingcorePackage.MODEL_ELEMENT__OWNED_MIGRATED_ELEMENTS:
+				return ((InternalEList<?>)getOwnedMigratedElements()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -330,6 +360,8 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
 				return getConstraints();
 			case ModellingcorePackage.MODEL_ELEMENT__OWNED_CONSTRAINTS:
 				return getOwnedConstraints();
+			case ModellingcorePackage.MODEL_ELEMENT__OWNED_MIGRATED_ELEMENTS:
+				return getOwnedMigratedElements();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -352,6 +384,10 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
 				getOwnedConstraints().clear();
 				getOwnedConstraints().addAll((Collection<? extends AbstractConstraint>)newValue);
 				return;
+			case ModellingcorePackage.MODEL_ELEMENT__OWNED_MIGRATED_ELEMENTS:
+				getOwnedMigratedElements().clear();
+				getOwnedMigratedElements().addAll((Collection<? extends ModelElement>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -372,6 +408,9 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
 				return;
 			case ModellingcorePackage.MODEL_ELEMENT__OWNED_CONSTRAINTS:
 				getOwnedConstraints().clear();
+				return;
+			case ModellingcorePackage.MODEL_ELEMENT__OWNED_MIGRATED_ELEMENTS:
+				getOwnedMigratedElements().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -394,6 +433,8 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
 				return !getConstraints().isEmpty();
 			case ModellingcorePackage.MODEL_ELEMENT__OWNED_CONSTRAINTS:
 				return ownedConstraints != null && !ownedConstraints.isEmpty();
+			case ModellingcorePackage.MODEL_ELEMENT__OWNED_MIGRATED_ELEMENTS:
+				return ownedMigratedElements != null && !ownedMigratedElements.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

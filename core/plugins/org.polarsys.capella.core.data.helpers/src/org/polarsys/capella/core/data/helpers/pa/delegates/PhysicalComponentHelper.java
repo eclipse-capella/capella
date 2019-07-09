@@ -31,6 +31,8 @@ import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.helpers.capellacommon.delegates.CapabilityRealizationInvolvedElementHelper;
 import org.polarsys.capella.core.data.helpers.cs.delegates.AbstractPhysicalArtifactHelper;
 import org.polarsys.capella.core.data.helpers.cs.delegates.ComponentHelper;
+import org.polarsys.capella.core.data.helpers.cs.delegates.DeployableElementHelper;
+import org.polarsys.capella.core.data.helpers.cs.delegates.DeploymentTargetHelper;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.pa.LogicalInterfaceRealization;
 import org.polarsys.capella.core.data.pa.PaPackage;
@@ -76,6 +78,12 @@ public class PhysicalComponentHelper {
     }
     if (null == ret) {
       ret = CapabilityRealizationInvolvedElementHelper.getInstance().doSwitch(element, feature);
+    }
+    if (null == ret) {
+      ret = DeployableElementHelper.getInstance().doSwitch(element, feature);
+    }
+    if (null == ret) {
+      ret = DeploymentTargetHelper.getInstance().doSwitch(element, feature);
     }
     
     return ret;

@@ -25,6 +25,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ModellingCore.ecore#//ModelElement/sid"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ModellingCore.ecore#//ModelElement/constraints"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ModellingCore.ecore#//ModelElement/ownedConstraints"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ModellingCore.ecore#//ModelElement/ownedMigratedElements"/>
       <genOperations ecoreOperation="ModellingCore.ecore#//ModelElement/destroy"/>
       <genOperations ecoreOperation="ModellingCore.ecore#//ModelElement/getFullLabel"/>
       <genOperations ecoreOperation="ModellingCore.ecore#//ModelElement/getLabel"/>

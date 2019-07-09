@@ -155,6 +155,7 @@ public class ModelElementItemProvider extends ExtensibleElementItemProvider impl
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_CONSTRAINTS);
+			childrenFeatures.add(ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_MIGRATED_ELEMENTS);
 		}
 		return childrenFeatures;
 	}
@@ -227,6 +228,7 @@ public class ModelElementItemProvider extends ExtensibleElementItemProvider impl
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ModellingcorePackage.MODEL_ELEMENT__OWNED_CONSTRAINTS:
+			case ModellingcorePackage.MODEL_ELEMENT__OWNED_MIGRATED_ELEMENTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}

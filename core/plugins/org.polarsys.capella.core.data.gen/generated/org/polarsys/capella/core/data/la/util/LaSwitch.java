@@ -60,7 +60,6 @@ import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalChainContainer;
-import org.polarsys.capella.core.data.fa.AbstractFunctionalStructure;
 import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.information.MultiplicityElement;
@@ -257,7 +256,6 @@ public class LaSwitch<T> extends Switch<T> {
 				LogicalComponentPkg logicalComponentPkg = (LogicalComponentPkg)theEObject;
 				T result = caseLogicalComponentPkg(logicalComponentPkg);
 				if (result == null) result = caseComponentPkg(logicalComponentPkg);
-				if (result == null) result = caseAbstractFunctionalStructure(logicalComponentPkg);
 				if (result == null) result = caseStructure(logicalComponentPkg);
 				if (result == null) result = caseNamespace(logicalComponentPkg);
 				if (result == null) result = caseNamedElement(logicalComponentPkg);
@@ -1167,21 +1165,6 @@ public class LaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseCapabilityRealizationInvolvedElement(CapabilityRealizationInvolvedElement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Abstract Functional Structure</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Abstract Functional Structure</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAbstractFunctionalStructure(AbstractFunctionalStructure object) {
 		return null;
 	}
 

@@ -2875,6 +2875,13 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 			 "viatra.expression", "subFunctions" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
+		  (getCapabilityInvolvement_SystemComponent(), 
+		   source, 
+		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "involved" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
 		  (getCapabilityInvolvement_Capability(), 
 		   source, 
 		   new String[] {

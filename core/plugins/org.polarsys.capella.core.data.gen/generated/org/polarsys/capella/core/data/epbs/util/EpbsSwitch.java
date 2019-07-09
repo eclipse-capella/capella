@@ -51,7 +51,6 @@ import org.polarsys.capella.core.data.epbs.PhysicalArchitectureRealization;
 import org.polarsys.capella.core.data.epbs.PhysicalArtifactRealization;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
-import org.polarsys.capella.core.data.fa.AbstractFunctionalStructure;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkExchanger;
 import org.polarsys.kitalpha.emde.model.Element;
 import org.polarsys.kitalpha.emde.model.ExtensibleElement;
@@ -155,7 +154,6 @@ public class EpbsSwitch<T> extends Switch<T> {
 				ConfigurationItemPkg configurationItemPkg = (ConfigurationItemPkg)theEObject;
 				T result = caseConfigurationItemPkg(configurationItemPkg);
 				if (result == null) result = caseComponentPkg(configurationItemPkg);
-				if (result == null) result = caseAbstractFunctionalStructure(configurationItemPkg);
 				if (result == null) result = caseStructure(configurationItemPkg);
 				if (result == null) result = caseNamespace(configurationItemPkg);
 				if (result == null) result = caseNamedElement(configurationItemPkg);
@@ -560,21 +558,6 @@ public class EpbsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseComponentArchitecture(ComponentArchitecture object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Abstract Functional Structure</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Abstract Functional Structure</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAbstractFunctionalStructure(AbstractFunctionalStructure object) {
 		return null;
 	}
 

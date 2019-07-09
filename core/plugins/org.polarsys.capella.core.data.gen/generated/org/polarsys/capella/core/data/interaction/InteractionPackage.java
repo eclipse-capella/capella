@@ -123,6 +123,15 @@ public interface InteractionPackage extends EPackage {
 	int SEQUENCE_MESSAGE__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_MESSAGE__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.NAMED_ELEMENT__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -428,6 +437,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int SCENARIO__OWNED_CONSTRAINTS = CapellacorePackage.NAMESPACE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENARIO__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.NAMESPACE__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -854,6 +872,15 @@ public interface InteractionPackage extends EPackage {
 	int INTERACTION_FRAGMENT__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERACTION_FRAGMENT__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.NAMED_ELEMENT__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1069,6 +1096,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_END__OWNED_CONSTRAINTS = INTERACTION_FRAGMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_END__OWNED_MIGRATED_ELEMENTS = INTERACTION_FRAGMENT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1304,6 +1340,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int MESSAGE_END__OWNED_CONSTRAINTS = ABSTRACT_END__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_END__OWNED_MIGRATED_ELEMENTS = ABSTRACT_END__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1550,6 +1595,15 @@ public interface InteractionPackage extends EPackage {
 	int TIME_LAPSE__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_LAPSE__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.NAMED_ELEMENT__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1774,6 +1828,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXECUTION__OWNED_CONSTRAINTS = TIME_LAPSE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION__OWNED_MIGRATED_ELEMENTS = TIME_LAPSE__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2009,6 +2072,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXECUTION_END__OWNED_CONSTRAINTS = ABSTRACT_END__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_END__OWNED_MIGRATED_ELEMENTS = ABSTRACT_END__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2255,6 +2327,15 @@ public interface InteractionPackage extends EPackage {
 	int EVENT__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.NAMED_ELEMENT__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2470,6 +2551,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int CREATION_EVENT__OWNED_CONSTRAINTS = EVENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CREATION_EVENT__OWNED_MIGRATED_ELEMENTS = EVENT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2689,6 +2779,15 @@ public interface InteractionPackage extends EPackage {
 	int DESTRUCTION_EVENT__OWNED_CONSTRAINTS = EVENT__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DESTRUCTION_EVENT__OWNED_MIGRATED_ELEMENTS = EVENT__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2906,6 +3005,15 @@ public interface InteractionPackage extends EPackage {
 	int EXECUTION_EVENT__OWNED_CONSTRAINTS = EVENT__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_EVENT__OWNED_MIGRATED_ELEMENTS = EVENT__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3121,6 +3229,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int INSTANCE_ROLE__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_ROLE__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.NAMED_ELEMENT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3349,6 +3466,15 @@ public interface InteractionPackage extends EPackage {
 	int EVENT_RECEIPT_OPERATION__OWNED_CONSTRAINTS = EVENT__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_RECEIPT_OPERATION__OWNED_MIGRATED_ELEMENTS = EVENT__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3573,6 +3699,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT_SENT_OPERATION__OWNED_CONSTRAINTS = EVENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_SENT_OPERATION__OWNED_MIGRATED_ELEMENTS = EVENT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3801,6 +3936,15 @@ public interface InteractionPackage extends EPackage {
 	int MERGE_LINK__OWNED_CONSTRAINTS = CapellacorePackage.TRACE__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MERGE_LINK__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.TRACE__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4027,6 +4171,15 @@ public interface InteractionPackage extends EPackage {
 	int REFINEMENT_LINK__OWNED_CONSTRAINTS = CapellacorePackage.TRACE__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFINEMENT_LINK__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.TRACE__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4251,6 +4404,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_CAPABILITY_REALIZATION__OWNED_CONSTRAINTS = CapellacorePackage.ALLOCATION__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CAPABILITY_REALIZATION__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.ALLOCATION__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -4495,6 +4657,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_CAPABILITY__OWNED_CONSTRAINTS = CapellacorePackage.STRUCTURE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CAPABILITY__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.STRUCTURE__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4984,6 +5155,15 @@ public interface InteractionPackage extends EPackage {
 	int ABSTRACT_CAPABILITY_EXTEND__OWNED_CONSTRAINTS = CapellacorePackage.RELATIONSHIP__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CAPABILITY_EXTEND__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.RELATIONSHIP__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5217,6 +5397,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_CAPABILITY_EXTENSION_POINT__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_RELATIONSHIP__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CAPABILITY_EXTENSION_POINT__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.NAMED_RELATIONSHIP__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -5463,6 +5652,15 @@ public interface InteractionPackage extends EPackage {
 	int ABSTRACT_CAPABILITY_GENERALIZATION__OWNED_CONSTRAINTS = CapellacorePackage.RELATIONSHIP__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CAPABILITY_GENERALIZATION__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.RELATIONSHIP__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5689,6 +5887,15 @@ public interface InteractionPackage extends EPackage {
 	int ABSTRACT_CAPABILITY_INCLUDE__OWNED_CONSTRAINTS = CapellacorePackage.RELATIONSHIP__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CAPABILITY_INCLUDE__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.RELATIONSHIP__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5913,6 +6120,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTERACTION_STATE__OWNED_CONSTRAINTS = INTERACTION_FRAGMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERACTION_STATE__OWNED_MIGRATED_ELEMENTS = INTERACTION_FRAGMENT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -6159,6 +6375,15 @@ public interface InteractionPackage extends EPackage {
 	int ABSTRACT_FRAGMENT__OWNED_CONSTRAINTS = TIME_LAPSE__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_FRAGMENT__OWNED_MIGRATED_ELEMENTS = TIME_LAPSE__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6392,6 +6617,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTERACTION_USE__OWNED_CONSTRAINTS = ABSTRACT_FRAGMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERACTION_USE__OWNED_MIGRATED_ELEMENTS = ABSTRACT_FRAGMENT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -6645,6 +6879,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMBINED_FRAGMENT__OWNED_CONSTRAINTS = ABSTRACT_FRAGMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMBINED_FRAGMENT__OWNED_MIGRATED_ELEMENTS = ABSTRACT_FRAGMENT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -6909,6 +7152,15 @@ public interface InteractionPackage extends EPackage {
 	int GATE__OWNED_CONSTRAINTS = MESSAGE_END__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GATE__OWNED_MIGRATED_ELEMENTS = MESSAGE_END__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7153,6 +7405,15 @@ public interface InteractionPackage extends EPackage {
 	int INTERACTION_OPERAND__OWNED_CONSTRAINTS = INTERACTION_FRAGMENT__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERACTION_OPERAND__OWNED_MIGRATED_ELEMENTS = INTERACTION_FRAGMENT__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7388,6 +7649,15 @@ public interface InteractionPackage extends EPackage {
 	int FRAGMENT_END__OWNED_CONSTRAINTS = INTERACTION_FRAGMENT__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FRAGMENT_END__OWNED_MIGRATED_ELEMENTS = INTERACTION_FRAGMENT__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7612,6 +7882,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__OWNED_CONSTRAINTS = CapellacorePackage.INVOLVEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.INVOLVEMENT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -7858,6 +8137,15 @@ public interface InteractionPackage extends EPackage {
 	int ABSTRACT_FUNCTION_ABSTRACT_CAPABILITY_INVOLVEMENT__OWNED_CONSTRAINTS = CapellacorePackage.INVOLVEMENT__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_FUNCTION_ABSTRACT_CAPABILITY_INVOLVEMENT__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.INVOLVEMENT__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8100,6 +8388,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int SCENARIO_REALIZATION__OWNED_CONSTRAINTS = CapellacorePackage.ALLOCATION__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENARIO_REALIZATION__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.ALLOCATION__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -8346,6 +8643,15 @@ public interface InteractionPackage extends EPackage {
 	int STATE_FRAGMENT__OWNED_CONSTRAINTS = TIME_LAPSE__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_FRAGMENT__OWNED_MIGRATED_ELEMENTS = TIME_LAPSE__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8590,6 +8896,15 @@ public interface InteractionPackage extends EPackage {
 	int ARM_TIMER_EVENT__OWNED_CONSTRAINTS = EVENT__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARM_TIMER_EVENT__OWNED_MIGRATED_ELEMENTS = EVENT__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8807,6 +9122,15 @@ public interface InteractionPackage extends EPackage {
 	int CANCEL_TIMER_EVENT__OWNED_CONSTRAINTS = EVENT__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CANCEL_TIMER_EVENT__OWNED_MIGRATED_ELEMENTS = EVENT__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9022,6 +9346,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONSTRAINT_DURATION__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT_DURATION__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.NAMED_ELEMENT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -9257,6 +9590,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int SEQUENCE_MESSAGE_VALUATION__OWNED_CONSTRAINTS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_MESSAGE_VALUATION__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.

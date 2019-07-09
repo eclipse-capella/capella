@@ -124,6 +124,15 @@ public interface ActivityPackage extends EPackage {
 	int ABSTRACT_ACTIVITY__OWNED_CONSTRAINTS = BehaviorPackage.ABSTRACT_BEHAVIOR__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_ACTIVITY__OWNED_MIGRATED_ELEMENTS = BehaviorPackage.ABSTRACT_BEHAVIOR__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -296,6 +305,15 @@ public interface ActivityPackage extends EPackage {
 	int EXCEPTION_HANDLER__OWNED_CONSTRAINTS = ModellingcorePackage.MODEL_ELEMENT__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCEPTION_HANDLER__OWNED_MIGRATED_ELEMENTS = ModellingcorePackage.MODEL_ELEMENT__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Protected Node</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -396,6 +414,15 @@ public interface ActivityPackage extends EPackage {
 	int ACTIVITY_GROUP__OWNED_CONSTRAINTS = ModellingcorePackage.MODEL_ELEMENT__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_GROUP__OWNED_MIGRATED_ELEMENTS = ModellingcorePackage.MODEL_ELEMENT__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Super Group</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -494,6 +521,15 @@ public interface ActivityPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTERRUPTIBLE_ACTIVITY_REGION__OWNED_CONSTRAINTS = ACTIVITY_GROUP__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERRUPTIBLE_ACTIVITY_REGION__OWNED_MIGRATED_ELEMENTS = ACTIVITY_GROUP__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Super Group</b></em>' container reference.
@@ -603,6 +639,15 @@ public interface ActivityPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACTIVITY_EDGE__OWNED_CONSTRAINTS = ModellingcorePackage.ABSTRACT_RELATIONSHIP__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_EDGE__OWNED_MIGRATED_ELEMENTS = ModellingcorePackage.ABSTRACT_RELATIONSHIP__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -777,6 +822,15 @@ public interface ActivityPackage extends EPackage {
 	int CONTROL_FLOW__OWNED_CONSTRAINTS = ACTIVITY_EDGE__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_FLOW__OWNED_MIGRATED_ELEMENTS = ACTIVITY_EDGE__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -947,6 +1001,15 @@ public interface ActivityPackage extends EPackage {
 	 * @ordered
 	 */
 	int OBJECT_FLOW__OWNED_CONSTRAINTS = ACTIVITY_EDGE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECT_FLOW__OWNED_MIGRATED_ELEMENTS = ACTIVITY_EDGE__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -1157,6 +1220,15 @@ public interface ActivityPackage extends EPackage {
 	int ACTIVITY_PARTITION__OWNED_CONSTRAINTS = ACTIVITY_GROUP__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_PARTITION__OWNED_MIGRATED_ELEMENTS = ACTIVITY_GROUP__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Super Group</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1311,6 +1383,15 @@ public interface ActivityPackage extends EPackage {
 	int ACTIVITY_EXCHANGE__OWNED_CONSTRAINTS = ModellingcorePackage.ABSTRACT_INFORMATION_FLOW__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_EXCHANGE__OWNED_MIGRATED_ELEMENTS = ModellingcorePackage.ABSTRACT_INFORMATION_FLOW__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1438,6 +1519,15 @@ public interface ActivityPackage extends EPackage {
 	int ACTIVITY_NODE__OWNED_CONSTRAINTS = ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_NODE__OWNED_MIGRATED_ELEMENTS = ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1554,6 +1644,15 @@ public interface ActivityPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXECUTABLE_NODE__OWNED_CONSTRAINTS = ACTIVITY_NODE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTABLE_NODE__OWNED_MIGRATED_ELEMENTS = ACTIVITY_NODE__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1681,6 +1780,15 @@ public interface ActivityPackage extends EPackage {
 	 * @ordered
 	 */
 	int STRUCTURED_ACTIVITY_NODE__OWNED_CONSTRAINTS = ACTIVITY_GROUP__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_ACTIVITY_NODE__OWNED_MIGRATED_ELEMENTS = ACTIVITY_GROUP__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Super Group</b></em>' container reference.
@@ -1891,6 +1999,15 @@ public interface ActivityPackage extends EPackage {
 	int ABSTRACT_ACTION__OWNED_CONSTRAINTS = EXECUTABLE_NODE__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_ACTION__OWNED_MIGRATED_ELEMENTS = EXECUTABLE_NODE__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2061,6 +2178,15 @@ public interface ActivityPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACCEPT_EVENT_ACTION__OWNED_CONSTRAINTS = ABSTRACT_ACTION__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_EVENT_ACTION__OWNED_MIGRATED_ELEMENTS = ABSTRACT_ACTION__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2253,6 +2379,15 @@ public interface ActivityPackage extends EPackage {
 	int INVOCATION_ACTION__OWNED_CONSTRAINTS = ABSTRACT_ACTION__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INVOCATION_ACTION__OWNED_MIGRATED_ELEMENTS = ABSTRACT_ACTION__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2432,6 +2567,15 @@ public interface ActivityPackage extends EPackage {
 	 * @ordered
 	 */
 	int SEND_SIGNAL_ACTION__OWNED_CONSTRAINTS = INVOCATION_ACTION__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEND_SIGNAL_ACTION__OWNED_MIGRATED_ELEMENTS = INVOCATION_ACTION__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2633,6 +2777,15 @@ public interface ActivityPackage extends EPackage {
 	int CALL_ACTION__OWNED_CONSTRAINTS = INVOCATION_ACTION__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_ACTION__OWNED_MIGRATED_ELEMENTS = INVOCATION_ACTION__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2821,6 +2974,15 @@ public interface ActivityPackage extends EPackage {
 	 * @ordered
 	 */
 	int CALL_BEHAVIOR_ACTION__OWNED_CONSTRAINTS = CALL_ACTION__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_BEHAVIOR_ACTION__OWNED_MIGRATED_ELEMENTS = CALL_ACTION__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3022,6 +3184,15 @@ public interface ActivityPackage extends EPackage {
 	int OBJECT_NODE__OWNED_CONSTRAINTS = ACTIVITY_NODE__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECT_NODE__OWNED_MIGRATED_ELEMENTS = ACTIVITY_NODE__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3201,6 +3372,15 @@ public interface ActivityPackage extends EPackage {
 	 * @ordered
 	 */
 	int PIN__OWNED_CONSTRAINTS = OBJECT_NODE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIN__OWNED_MIGRATED_ELEMENTS = OBJECT_NODE__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3391,6 +3571,15 @@ public interface ActivityPackage extends EPackage {
 	 * @ordered
 	 */
 	int INPUT_PIN__OWNED_CONSTRAINTS = PIN__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__OWNED_MIGRATED_ELEMENTS = PIN__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3590,6 +3779,15 @@ public interface ActivityPackage extends EPackage {
 	 * @ordered
 	 */
 	int VALUE_PIN__OWNED_CONSTRAINTS = INPUT_PIN__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__OWNED_MIGRATED_ELEMENTS = INPUT_PIN__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3798,6 +3996,15 @@ public interface ActivityPackage extends EPackage {
 	 * @ordered
 	 */
 	int OUTPUT_PIN__OWNED_CONSTRAINTS = PIN__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__OWNED_MIGRATED_ELEMENTS = PIN__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.

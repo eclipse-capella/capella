@@ -25,7 +25,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.polarsys.capella.common.model.helpers.IHelper;
@@ -488,19 +487,6 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 	 * @ordered
 	 */
 	protected EList<PhysicalLinkCategory> ownedPhysicalLinkCategories;
-
-
-
-
-	/**
-	 * The cached value of the '{@link #getRepresentingParts() <em>Representing Parts</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRepresentingParts()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Part> representingParts;
 
 
 
@@ -2071,10 +2057,39 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 
 	public EList<Part> getRepresentingParts() {
 
-		if (representingParts == null) {
-			representingParts = new EObjectResolvingEList<Part>(Part.class, this, CsPackage.COMPONENT__REPRESENTING_PARTS);
-		}
-		return representingParts;
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = CsPackage.Literals.COMPONENT__REPRESENTING_PARTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, CsPackage.Literals.COMPONENT__REPRESENTING_PARTS, annotation);
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<Part> resultAsList = (Collection<Part>) result;
+		return new EcoreEList.UnmodifiableEList<Part>(this, CsPackage.Literals.COMPONENT__REPRESENTING_PARTS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
 	}
 
 	/**
@@ -2263,10 +2278,6 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 				getOwnedPhysicalLinkCategories().clear();
 				getOwnedPhysicalLinkCategories().addAll((Collection<? extends PhysicalLinkCategory>)newValue);
 				return;
-			case CsPackage.COMPONENT__REPRESENTING_PARTS:
-				getRepresentingParts().clear();
-				getRepresentingParts().addAll((Collection<? extends Part>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -2318,9 +2329,6 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 				return;
 			case CsPackage.COMPONENT__OWNED_PHYSICAL_LINK_CATEGORIES:
 				getOwnedPhysicalLinkCategories().clear();
-				return;
-			case CsPackage.COMPONENT__REPRESENTING_PARTS:
-				getRepresentingParts().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -2419,7 +2427,7 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 			case CsPackage.COMPONENT__OWNED_PHYSICAL_LINK_CATEGORIES:
 				return ownedPhysicalLinkCategories != null && !ownedPhysicalLinkCategories.isEmpty();
 			case CsPackage.COMPONENT__REPRESENTING_PARTS:
-				return representingParts != null && !representingParts.isEmpty();
+				return !getRepresentingParts().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

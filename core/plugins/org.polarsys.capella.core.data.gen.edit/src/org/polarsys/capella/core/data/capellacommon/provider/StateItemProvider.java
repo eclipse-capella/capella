@@ -35,6 +35,7 @@ import org.polarsys.capella.core.data.capellacommon.CapellacommonFactory;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.capellacore.CapellacoreFactory;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
 
 /**
@@ -495,7 +496,14 @@ public class StateItemProvider
 
 		boolean qualify =
 			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_CONSTRAINTS ||
-			childFeature == CapellacommonPackage.Literals.STATE__STATE_INVARIANT;
+			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_MIGRATED_ELEMENTS ||
+			childFeature == CapellacommonPackage.Literals.STATE__STATE_INVARIANT ||
+			childFeature == CapellacommonPackage.Literals.STATE__OWNED_REGIONS ||
+			childFeature == CapellacommonPackage.Literals.STATE__OWNED_CONNECTION_POINTS ||
+			childFeature == CapellacommonPackage.Literals.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS ||
+			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUES ||
+			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES ||
+			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS;
 
 		if (qualify) {
 			return getString

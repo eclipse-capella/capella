@@ -123,6 +123,15 @@ public interface DatavaluePackage extends EPackage {
 	int DATA_VALUE__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_VALUE__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.NAMED_ELEMENT__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -356,6 +365,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_VALUE_CONTAINER__OWNED_CONSTRAINTS = CapellacorePackage.STRUCTURE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_VALUE_CONTAINER__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.STRUCTURE__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -620,6 +638,15 @@ public interface DatavaluePackage extends EPackage {
 	int ABSTRACT_BOOLEAN_VALUE__OWNED_CONSTRAINTS = DATA_VALUE__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BOOLEAN_VALUE__OWNED_MIGRATED_ELEMENTS = DATA_VALUE__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -862,6 +889,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int LITERAL_BOOLEAN_VALUE__OWNED_CONSTRAINTS = ABSTRACT_BOOLEAN_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_BOOLEAN_VALUE__OWNED_MIGRATED_ELEMENTS = ABSTRACT_BOOLEAN_VALUE__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1115,6 +1151,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int BOOLEAN_REFERENCE__OWNED_CONSTRAINTS = ABSTRACT_BOOLEAN_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_REFERENCE__OWNED_MIGRATED_ELEMENTS = ABSTRACT_BOOLEAN_VALUE__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1379,6 +1424,15 @@ public interface DatavaluePackage extends EPackage {
 	int ABSTRACT_ENUMERATION_VALUE__OWNED_CONSTRAINTS = DATA_VALUE__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_ENUMERATION_VALUE__OWNED_MIGRATED_ELEMENTS = DATA_VALUE__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1621,6 +1675,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int ENUMERATION_LITERAL__OWNED_CONSTRAINTS = ABSTRACT_ENUMERATION_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENUMERATION_LITERAL__OWNED_MIGRATED_ELEMENTS = ABSTRACT_ENUMERATION_VALUE__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1874,6 +1937,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int ENUMERATION_REFERENCE__OWNED_CONSTRAINTS = ABSTRACT_ENUMERATION_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENUMERATION_REFERENCE__OWNED_MIGRATED_ELEMENTS = ABSTRACT_ENUMERATION_VALUE__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2138,6 +2210,15 @@ public interface DatavaluePackage extends EPackage {
 	int ABSTRACT_STRING_VALUE__OWNED_CONSTRAINTS = DATA_VALUE__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_STRING_VALUE__OWNED_MIGRATED_ELEMENTS = DATA_VALUE__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2380,6 +2461,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int LITERAL_STRING_VALUE__OWNED_CONSTRAINTS = ABSTRACT_STRING_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_STRING_VALUE__OWNED_MIGRATED_ELEMENTS = ABSTRACT_STRING_VALUE__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2633,6 +2723,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int STRING_REFERENCE__OWNED_CONSTRAINTS = ABSTRACT_STRING_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_REFERENCE__OWNED_MIGRATED_ELEMENTS = ABSTRACT_STRING_VALUE__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2897,6 +2996,15 @@ public interface DatavaluePackage extends EPackage {
 	int NUMERIC_VALUE__OWNED_CONSTRAINTS = DATA_VALUE__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NUMERIC_VALUE__OWNED_MIGRATED_ELEMENTS = DATA_VALUE__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3148,6 +3256,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int LITERAL_NUMERIC_VALUE__OWNED_CONSTRAINTS = NUMERIC_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_NUMERIC_VALUE__OWNED_MIGRATED_ELEMENTS = NUMERIC_VALUE__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3410,6 +3527,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int NUMERIC_REFERENCE__OWNED_CONSTRAINTS = NUMERIC_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NUMERIC_REFERENCE__OWNED_MIGRATED_ELEMENTS = NUMERIC_VALUE__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3683,6 +3809,15 @@ public interface DatavaluePackage extends EPackage {
 	int ABSTRACT_COMPLEX_VALUE__OWNED_CONSTRAINTS = DATA_VALUE__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_COMPLEX_VALUE__OWNED_MIGRATED_ELEMENTS = DATA_VALUE__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3925,6 +4060,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPLEX_VALUE__OWNED_CONSTRAINTS = ABSTRACT_COMPLEX_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPLEX_VALUE__OWNED_MIGRATED_ELEMENTS = ABSTRACT_COMPLEX_VALUE__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4178,6 +4322,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPLEX_VALUE_REFERENCE__OWNED_CONSTRAINTS = ABSTRACT_COMPLEX_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPLEX_VALUE_REFERENCE__OWNED_MIGRATED_ELEMENTS = ABSTRACT_COMPLEX_VALUE__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4442,6 +4595,15 @@ public interface DatavaluePackage extends EPackage {
 	int VALUE_PART__OWNED_CONSTRAINTS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PART__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4657,6 +4819,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_EXPRESSION_VALUE__OWNED_CONSTRAINTS = ABSTRACT_BOOLEAN_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_EXPRESSION_VALUE__OWNED_MIGRATED_ELEMENTS = ABSTRACT_BOOLEAN_VALUE__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4973,6 +5144,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int BINARY_EXPRESSION__OWNED_CONSTRAINTS = ABSTRACT_EXPRESSION_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_EXPRESSION__OWNED_MIGRATED_ELEMENTS = ABSTRACT_EXPRESSION_VALUE__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -5318,6 +5498,15 @@ public interface DatavaluePackage extends EPackage {
 	int UNARY_EXPRESSION__OWNED_CONSTRAINTS = ABSTRACT_EXPRESSION_VALUE__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_EXPRESSION__OWNED_MIGRATED_ELEMENTS = ABSTRACT_EXPRESSION_VALUE__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5650,6 +5839,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int OPAQUE_EXPRESSION__OWNED_CONSTRAINTS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPAQUE_EXPRESSION__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.

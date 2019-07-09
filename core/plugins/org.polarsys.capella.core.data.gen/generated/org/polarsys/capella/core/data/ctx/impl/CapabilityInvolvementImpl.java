@@ -233,10 +233,36 @@ public class CapabilityInvolvementImpl extends RelationshipImpl implements Capab
 	public SystemComponent basicGetSystemComponent() {
 
 
-		// TODO: implement this method to return the 'System Component' reference
-		// Ensure that you remove @generated or mark it @generated NOT
-			
-		throw new UnsupportedOperationException();
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = CtxPackage.Literals.CAPABILITY_INVOLVEMENT__SYSTEM_COMPONENT.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, CtxPackage.Literals.CAPABILITY_INVOLVEMENT__SYSTEM_COMPONENT, annotation);
+		
+		try {
+			return (SystemComponent) result;
+	  } catch (ClassCastException exception) {
+	     exception.printStackTrace();
+	    return null;
+	  }
+		
 	}
 
 

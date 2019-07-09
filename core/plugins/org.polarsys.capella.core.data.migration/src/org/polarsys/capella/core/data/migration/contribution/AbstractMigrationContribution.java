@@ -201,4 +201,15 @@ public class AbstractMigrationContribution implements IMigrationContribution {
   public void unaryStartMigrationExecute(ExecutionManager executionManager, Resource resource, MigrationContext context) {
 
   }
+
+  @Override
+  public EStructuralFeature getFeature(EObject object, String prefix, String name, boolean isElement) {
+    return null;
+  }
+
+  @Override
+  public void updateCreatedObject(EObject peekObject, EObject eObject, String typeQName, EStructuralFeature feature,
+      XMLResource resource, XMLHelper helper, MigrationContext context) {
+    
+  }
 }

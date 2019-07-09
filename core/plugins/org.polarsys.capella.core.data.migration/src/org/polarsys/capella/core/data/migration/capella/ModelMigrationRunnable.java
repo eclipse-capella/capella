@@ -177,6 +177,14 @@ public class ModelMigrationRunnable extends ContributoryMigrationRunnable {
       @Override
       protected DefaultHandler makeDefaultHandler() {
         return new SAXExtensionXMIHandler(resource, helper, options) {
+          @Override
+          protected EStructuralFeature getFeature(EObject object, String prefix, String name, boolean isElement) {
+            EStructuralFeature feature = MigrationHelpers.getInstance().getFeature(object, prefix, name, isElement);
+            if (feature != null) {
+              return feature;
+            }
+            return super.getFeature(object, prefix, name, isElement);
+          }
           /*
            * (non-Javadoc)
            * @see org.eclipse.emf.ecore.xmi.impl.XMIHandler#startElement(java.lang.String, java.lang.String, java.lang.String, org.xml.sax.Attributes)
@@ -426,8 +434,11 @@ public class ModelMigrationRunnable extends ContributoryMigrationRunnable {
             if (migratedQName != null) {
               qName = migratedQName;
             }
-
-            return super.createObjectFromTypeName(peekObject, qName, feature);
+            
+            EObject eObject = super.createObjectFromTypeName(peekObject, qName, feature);
+            MigrationHelpers.getInstance().updateCreatedObject(peekObject, eObject, typeQName, feature, resource, helper, context);
+            
+            return eObject;
           }
 
           /**

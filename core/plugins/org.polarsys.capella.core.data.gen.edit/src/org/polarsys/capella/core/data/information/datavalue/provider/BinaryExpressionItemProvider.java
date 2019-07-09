@@ -31,7 +31,9 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.information.InformationFactory;
 import org.polarsys.capella.core.data.information.datavalue.BinaryExpression;
 import org.polarsys.capella.core.data.information.datavalue.DatavalueFactory;
@@ -581,8 +583,13 @@ public class BinaryExpressionItemProvider extends AbstractExpressionValueItemPro
 		Object childObject = child;
 
 		boolean qualify =
+			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_CONSTRAINTS ||
+			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_MIGRATED_ELEMENTS ||
 			childFeature == DatavaluePackage.Literals.BINARY_EXPRESSION__OWNED_LEFT_OPERAND ||
-			childFeature == DatavaluePackage.Literals.BINARY_EXPRESSION__OWNED_RIGHT_OPERAND;
+			childFeature == DatavaluePackage.Literals.BINARY_EXPRESSION__OWNED_RIGHT_OPERAND ||
+			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUES ||
+			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES ||
+			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS;
 
 		if (qualify) {
 			return getString

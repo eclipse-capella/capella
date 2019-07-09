@@ -126,6 +126,15 @@ public interface FaPackage extends EPackage {
 	int ABSTRACT_FUNCTIONAL_ARCHITECTURE__OWNED_CONSTRAINTS = CapellacorePackage.MODELLING_ARCHITECTURE__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_FUNCTIONAL_ARCHITECTURE__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.MODELLING_ARCHITECTURE__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -378,304 +387,6 @@ public interface FaPackage extends EPackage {
 	int ABSTRACT_FUNCTIONAL_ARCHITECTURE_FEATURE_COUNT = CapellacorePackage.MODELLING_ARCHITECTURE_FEATURE_COUNT + 6;
 
 	/**
-	 * The meta object id for the '{@link org.polarsys.capella.core.data.fa.impl.AbstractFunctionalStructureImpl <em>Abstract Functional Structure</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.polarsys.capella.core.data.fa.impl.AbstractFunctionalStructureImpl
-	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getAbstractFunctionalStructure()
-	 * @generated
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE = 1;
-
-	/**
-	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_EXTENSIONS = CapellacorePackage.STRUCTURE__OWNED_EXTENSIONS;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__ID = CapellacorePackage.STRUCTURE__ID;
-
-	/**
-	 * The feature id for the '<em><b>Sid</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__SID = CapellacorePackage.STRUCTURE__SID;
-
-	/**
-	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__CONSTRAINTS = CapellacorePackage.STRUCTURE__CONSTRAINTS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_CONSTRAINTS = CapellacorePackage.STRUCTURE__OWNED_CONSTRAINTS;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__NAME = CapellacorePackage.STRUCTURE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__INCOMING_TRACES = CapellacorePackage.STRUCTURE__INCOMING_TRACES;
-
-	/**
-	 * The feature id for the '<em><b>Outgoing Traces</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__OUTGOING_TRACES = CapellacorePackage.STRUCTURE__OUTGOING_TRACES;
-
-	/**
-	 * The feature id for the '<em><b>Visible In Doc</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__VISIBLE_IN_DOC = CapellacorePackage.STRUCTURE__VISIBLE_IN_DOC;
-
-	/**
-	 * The feature id for the '<em><b>Visible In LM</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__VISIBLE_IN_LM = CapellacorePackage.STRUCTURE__VISIBLE_IN_LM;
-
-	/**
-	 * The feature id for the '<em><b>Summary</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__SUMMARY = CapellacorePackage.STRUCTURE__SUMMARY;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__DESCRIPTION = CapellacorePackage.STRUCTURE__DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Review</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__REVIEW = CapellacorePackage.STRUCTURE__REVIEW;
-
-	/**
-	 * The feature id for the '<em><b>Owned Property Values</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_PROPERTY_VALUES = CapellacorePackage.STRUCTURE__OWNED_PROPERTY_VALUES;
-
-	/**
-	 * The feature id for the '<em><b>Owned Enumeration Property Types</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_ENUMERATION_PROPERTY_TYPES = CapellacorePackage.STRUCTURE__OWNED_ENUMERATION_PROPERTY_TYPES;
-
-	/**
-	 * The feature id for the '<em><b>Applied Property Values</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__APPLIED_PROPERTY_VALUES = CapellacorePackage.STRUCTURE__APPLIED_PROPERTY_VALUES;
-
-	/**
-	 * The feature id for the '<em><b>Owned Property Value Groups</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_PROPERTY_VALUE_GROUPS = CapellacorePackage.STRUCTURE__OWNED_PROPERTY_VALUE_GROUPS;
-
-	/**
-	 * The feature id for the '<em><b>Applied Property Value Groups</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__APPLIED_PROPERTY_VALUE_GROUPS = CapellacorePackage.STRUCTURE__APPLIED_PROPERTY_VALUE_GROUPS;
-
-	/**
-	 * The feature id for the '<em><b>Status</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__STATUS = CapellacorePackage.STRUCTURE__STATUS;
-
-	/**
-	 * The feature id for the '<em><b>Features</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__FEATURES = CapellacorePackage.STRUCTURE__FEATURES;
-
-	/**
-	 * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__APPLIED_REQUIREMENTS = CapellacorePackage.STRUCTURE__APPLIED_REQUIREMENTS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_TRACES = CapellacorePackage.STRUCTURE__OWNED_TRACES;
-
-	/**
-	 * The feature id for the '<em><b>Contained Generic Traces</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__CONTAINED_GENERIC_TRACES = CapellacorePackage.STRUCTURE__CONTAINED_GENERIC_TRACES;
-
-	/**
-	 * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__CONTAINED_REQUIREMENTS_TRACES = CapellacorePackage.STRUCTURE__CONTAINED_REQUIREMENTS_TRACES;
-
-	/**
-	 * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__NAMING_RULES = CapellacorePackage.STRUCTURE__NAMING_RULES;
-
-	/**
-	 * The feature id for the '<em><b>Owned Property Value Pkgs</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_PROPERTY_VALUE_PKGS = CapellacorePackage.STRUCTURE__OWNED_PROPERTY_VALUE_PKGS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Component Exchanges</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_COMPONENT_EXCHANGES = CapellacorePackage.STRUCTURE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Owned Component Exchange Categories</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_COMPONENT_EXCHANGE_CATEGORIES = CapellacorePackage.STRUCTURE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Owned Functional Links</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_FUNCTIONAL_LINKS = CapellacorePackage.STRUCTURE_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Owned Functional Allocations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_FUNCTIONAL_ALLOCATIONS = CapellacorePackage.STRUCTURE_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Owned Component Exchange Realizations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_COMPONENT_EXCHANGE_REALIZATIONS = CapellacorePackage.STRUCTURE_FEATURE_COUNT + 4;
-
-	/**
-	 * The number of structural features of the '<em>Abstract Functional Structure</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE_FEATURE_COUNT = CapellacorePackage.STRUCTURE_FEATURE_COUNT + 5;
-
-	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.fa.impl.AbstractFunctionalBlockImpl <em>Abstract Functional Block</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -683,7 +394,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getAbstractFunctionalBlock()
 	 * @generated
 	 */
-	int ABSTRACT_FUNCTIONAL_BLOCK = 2;
+	int ABSTRACT_FUNCTIONAL_BLOCK = 1;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -729,6 +440,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_FUNCTIONAL_BLOCK__OWNED_CONSTRAINTS = CapellacorePackage.MODELLING_BLOCK__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_FUNCTIONAL_BLOCK__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.MODELLING_BLOCK__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1008,7 +728,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getFunctionPkg()
 	 * @generated
 	 */
-	int FUNCTION_PKG = 3;
+	int FUNCTION_PKG = 2;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -1054,6 +774,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTION_PKG__OWNED_CONSTRAINTS = CapellacorePackage.STRUCTURE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION_PKG__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.STRUCTURE__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1306,7 +1035,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getFunctionSpecification()
 	 * @generated
 	 */
-	int FUNCTION_SPECIFICATION = 4;
+	int FUNCTION_SPECIFICATION = 3;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -1352,6 +1081,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTION_SPECIFICATION__OWNED_CONSTRAINTS = CapellacorePackage.NAMESPACE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION_SPECIFICATION__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.NAMESPACE__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1667,7 +1405,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getExchangeCategory()
 	 * @generated
 	 */
-	int EXCHANGE_CATEGORY = 5;
+	int EXCHANGE_CATEGORY = 4;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -1713,6 +1451,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXCHANGE_CATEGORY__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCHANGE_CATEGORY__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.NAMED_ELEMENT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1884,7 +1631,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getExchangeLink()
 	 * @generated
 	 */
-	int EXCHANGE_LINK = 6;
+	int EXCHANGE_LINK = 5;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -1930,6 +1677,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXCHANGE_LINK__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_RELATIONSHIP__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCHANGE_LINK__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.NAMED_RELATIONSHIP__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -2155,7 +1911,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getExchangeContainment()
 	 * @generated
 	 */
-	int EXCHANGE_CONTAINMENT = 7;
+	int EXCHANGE_CONTAINMENT = 6;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -2201,6 +1957,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXCHANGE_CONTAINMENT__OWNED_CONSTRAINTS = CapellacorePackage.RELATIONSHIP__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCHANGE_CONTAINMENT__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.RELATIONSHIP__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -2381,7 +2146,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getExchangeSpecification()
 	 * @generated
 	 */
-	int EXCHANGE_SPECIFICATION = 8;
+	int EXCHANGE_SPECIFICATION = 7;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -2427,6 +2192,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXCHANGE_SPECIFICATION__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCHANGE_SPECIFICATION__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.NAMED_ELEMENT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2679,7 +2453,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getFunctionalExchangeSpecification()
 	 * @generated
 	 */
-	int FUNCTIONAL_EXCHANGE_SPECIFICATION = 9;
+	int FUNCTIONAL_EXCHANGE_SPECIFICATION = 8;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -2725,6 +2499,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTIONAL_EXCHANGE_SPECIFICATION__OWNED_CONSTRAINTS = EXCHANGE_SPECIFICATION__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_EXCHANGE_SPECIFICATION__OWNED_MIGRATED_ELEMENTS = EXCHANGE_SPECIFICATION__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2986,7 +2769,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getFunctionalChain()
 	 * @generated
 	 */
-	int FUNCTIONAL_CHAIN = 10;
+	int FUNCTIONAL_CHAIN = 9;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -3032,6 +2815,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTIONAL_CHAIN__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.NAMED_ELEMENT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3383,7 +3175,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getAbstractFunctionalChainContainer()
 	 * @generated
 	 */
-	int ABSTRACT_FUNCTIONAL_CHAIN_CONTAINER = 11;
+	int ABSTRACT_FUNCTIONAL_CHAIN_CONTAINER = 10;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -3429,6 +3221,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_FUNCTIONAL_CHAIN_CONTAINER__OWNED_CONSTRAINTS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_FUNCTIONAL_CHAIN_CONTAINER__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -3591,7 +3392,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getFunctionalChainInvolvement()
 	 * @generated
 	 */
-	int FUNCTIONAL_CHAIN_INVOLVEMENT = 12;
+	int FUNCTIONAL_CHAIN_INVOLVEMENT = 11;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -3637,6 +3438,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTIONAL_CHAIN_INVOLVEMENT__OWNED_CONSTRAINTS = CapellacorePackage.INVOLVEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.INVOLVEMENT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -3844,7 +3654,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getFunctionalChainReference()
 	 * @generated
 	 */
-	int FUNCTIONAL_CHAIN_REFERENCE = 13;
+	int FUNCTIONAL_CHAIN_REFERENCE = 12;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -3890,6 +3700,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTIONAL_CHAIN_REFERENCE__OWNED_CONSTRAINTS = FUNCTIONAL_CHAIN_INVOLVEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_REFERENCE__OWNED_MIGRATED_ELEMENTS = FUNCTIONAL_CHAIN_INVOLVEMENT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -4106,7 +3925,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getFunctionPort()
 	 * @generated
 	 */
-	int FUNCTION_PORT = 24;
+	int FUNCTION_PORT = 23;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -4152,6 +3971,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTION_PORT__OWNED_CONSTRAINTS = InformationPackage.PORT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION_PORT__OWNED_MIGRATED_ELEMENTS = InformationPackage.PORT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4458,7 +4286,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getFunctionInputPort()
 	 * @generated
 	 */
-	int FUNCTION_INPUT_PORT = 14;
+	int FUNCTION_INPUT_PORT = 13;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -4504,6 +4332,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTION_INPUT_PORT__OWNED_CONSTRAINTS = FUNCTION_PORT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION_INPUT_PORT__OWNED_MIGRATED_ELEMENTS = FUNCTION_PORT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4945,7 +4782,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getFunctionOutputPort()
 	 * @generated
 	 */
-	int FUNCTION_OUTPUT_PORT = 15;
+	int FUNCTION_OUTPUT_PORT = 14;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -4991,6 +4828,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTION_OUTPUT_PORT__OWNED_CONSTRAINTS = FUNCTION_PORT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION_OUTPUT_PORT__OWNED_MIGRATED_ELEMENTS = FUNCTION_PORT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -5423,7 +5269,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getAbstractFunctionAllocation()
 	 * @generated
 	 */
-	int ABSTRACT_FUNCTION_ALLOCATION = 16;
+	int ABSTRACT_FUNCTION_ALLOCATION = 15;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -5469,6 +5315,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_FUNCTION_ALLOCATION__OWNED_CONSTRAINTS = CapellacorePackage.ALLOCATION__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_FUNCTION_ALLOCATION__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.ALLOCATION__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -5649,7 +5504,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getComponentFunctionalAllocation()
 	 * @generated
 	 */
-	int COMPONENT_FUNCTIONAL_ALLOCATION = 17;
+	int COMPONENT_FUNCTIONAL_ALLOCATION = 16;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -5695,6 +5550,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT_FUNCTIONAL_ALLOCATION__OWNED_CONSTRAINTS = ABSTRACT_FUNCTION_ALLOCATION__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_FUNCTIONAL_ALLOCATION__OWNED_MIGRATED_ELEMENTS = ABSTRACT_FUNCTION_ALLOCATION__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -5893,7 +5757,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getFunctionalChainRealization()
 	 * @generated
 	 */
-	int FUNCTIONAL_CHAIN_REALIZATION = 18;
+	int FUNCTIONAL_CHAIN_REALIZATION = 17;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -5939,6 +5803,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTIONAL_CHAIN_REALIZATION__OWNED_CONSTRAINTS = CapellacorePackage.ALLOCATION__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_REALIZATION__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.ALLOCATION__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -6119,7 +5992,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getExchangeSpecificationRealization()
 	 * @generated
 	 */
-	int EXCHANGE_SPECIFICATION_REALIZATION = 19;
+	int EXCHANGE_SPECIFICATION_REALIZATION = 18;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -6165,6 +6038,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXCHANGE_SPECIFICATION_REALIZATION__OWNED_CONSTRAINTS = CapellacorePackage.ALLOCATION__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCHANGE_SPECIFICATION_REALIZATION__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.ALLOCATION__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -6363,7 +6245,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getFunctionalExchangeRealization()
 	 * @generated
 	 */
-	int FUNCTIONAL_EXCHANGE_REALIZATION = 20;
+	int FUNCTIONAL_EXCHANGE_REALIZATION = 19;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -6409,6 +6291,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTIONAL_EXCHANGE_REALIZATION__OWNED_CONSTRAINTS = CapellacorePackage.ALLOCATION__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_EXCHANGE_REALIZATION__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.ALLOCATION__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -6607,7 +6498,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getFunctionRealization()
 	 * @generated
 	 */
-	int FUNCTION_REALIZATION = 21;
+	int FUNCTION_REALIZATION = 20;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -6653,6 +6544,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTION_REALIZATION__OWNED_CONSTRAINTS = ABSTRACT_FUNCTION_ALLOCATION__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION_REALIZATION__OWNED_MIGRATED_ELEMENTS = ABSTRACT_FUNCTION_ALLOCATION__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -6851,7 +6751,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getFunctionalExchange()
 	 * @generated
 	 */
-	int FUNCTIONAL_EXCHANGE = 22;
+	int FUNCTIONAL_EXCHANGE = 21;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -6897,6 +6797,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTIONAL_EXCHANGE__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_EXCHANGE__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.NAMED_ELEMENT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -7347,7 +7256,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getAbstractFunction()
 	 * @generated
 	 */
-	int ABSTRACT_FUNCTION = 23;
+	int ABSTRACT_FUNCTION = 22;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -7393,6 +7302,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_FUNCTION__OWNED_CONSTRAINTS = CapellacorePackage.NAMESPACE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_FUNCTION__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.NAMESPACE__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -8104,7 +8022,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getComponentExchange()
 	 * @generated
 	 */
-	int COMPONENT_EXCHANGE = 25;
+	int COMPONENT_EXCHANGE = 24;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -8150,6 +8068,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT_EXCHANGE__OWNED_CONSTRAINTS = BehaviorPackage.ABSTRACT_EVENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_EXCHANGE__OWNED_MIGRATED_ELEMENTS = BehaviorPackage.ABSTRACT_EVENT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -8573,7 +8500,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getComponentExchangeAllocation()
 	 * @generated
 	 */
-	int COMPONENT_EXCHANGE_ALLOCATION = 26;
+	int COMPONENT_EXCHANGE_ALLOCATION = 25;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -8619,6 +8546,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT_EXCHANGE_ALLOCATION__OWNED_CONSTRAINTS = CapellacorePackage.ALLOCATION__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_EXCHANGE_ALLOCATION__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.ALLOCATION__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -8817,7 +8753,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getComponentExchangeAllocator()
 	 * @generated
 	 */
-	int COMPONENT_EXCHANGE_ALLOCATOR = 27;
+	int COMPONENT_EXCHANGE_ALLOCATOR = 26;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -8863,6 +8799,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT_EXCHANGE_ALLOCATOR__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_EXCHANGE_ALLOCATOR__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.NAMED_ELEMENT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -9043,7 +8988,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getComponentExchangeCategory()
 	 * @generated
 	 */
-	int COMPONENT_EXCHANGE_CATEGORY = 28;
+	int COMPONENT_EXCHANGE_CATEGORY = 27;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -9089,6 +9034,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT_EXCHANGE_CATEGORY__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_EXCHANGE_CATEGORY__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.NAMED_ELEMENT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -9260,7 +9214,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getComponentExchangeEnd()
 	 * @generated
 	 */
-	int COMPONENT_EXCHANGE_END = 29;
+	int COMPONENT_EXCHANGE_END = 28;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -9306,6 +9260,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT_EXCHANGE_END__OWNED_CONSTRAINTS = ModellingcorePackage.INFORMATIONS_EXCHANGER__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_EXCHANGE_END__OWNED_MIGRATED_ELEMENTS = ModellingcorePackage.INFORMATIONS_EXCHANGER__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Information Flows</b></em>' reference list.
@@ -9504,7 +9467,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getComponentExchangeFunctionalExchangeAllocation()
 	 * @generated
 	 */
-	int COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION = 30;
+	int COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION = 29;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -9550,6 +9513,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION__OWNED_CONSTRAINTS = ABSTRACT_FUNCTION_ALLOCATION__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION__OWNED_MIGRATED_ELEMENTS = ABSTRACT_FUNCTION_ALLOCATION__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -9748,7 +9720,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getComponentExchangeRealization()
 	 * @generated
 	 */
-	int COMPONENT_EXCHANGE_REALIZATION = 31;
+	int COMPONENT_EXCHANGE_REALIZATION = 30;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -9794,6 +9766,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT_EXCHANGE_REALIZATION__OWNED_CONSTRAINTS = EXCHANGE_SPECIFICATION_REALIZATION__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_EXCHANGE_REALIZATION__OWNED_MIGRATED_ELEMENTS = EXCHANGE_SPECIFICATION_REALIZATION__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -10010,7 +9991,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getComponentPort()
 	 * @generated
 	 */
-	int COMPONENT_PORT = 32;
+	int COMPONENT_PORT = 31;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -10056,6 +10037,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT_PORT__OWNED_CONSTRAINTS = InformationPackage.PORT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PORT__OWNED_MIGRATED_ELEMENTS = InformationPackage.PORT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -10614,7 +10604,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getComponentPortAllocation()
 	 * @generated
 	 */
-	int COMPONENT_PORT_ALLOCATION = 33;
+	int COMPONENT_PORT_ALLOCATION = 32;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -10660,6 +10650,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT_PORT_ALLOCATION__OWNED_CONSTRAINTS = CapellacorePackage.ALLOCATION__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PORT_ALLOCATION__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.ALLOCATION__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -10867,7 +10866,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getComponentPortAllocationEnd()
 	 * @generated
 	 */
-	int COMPONENT_PORT_ALLOCATION_END = 34;
+	int COMPONENT_PORT_ALLOCATION_END = 33;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -10913,6 +10912,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT_PORT_ALLOCATION_END__OWNED_CONSTRAINTS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PORT_ALLOCATION_END__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -11093,7 +11101,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getFunctionalChainInvolvementLink()
 	 * @generated
 	 */
-	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK = 35;
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK = 34;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -11139,6 +11147,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__OWNED_CONSTRAINTS = FUNCTIONAL_CHAIN_INVOLVEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__OWNED_MIGRATED_ELEMENTS = FUNCTIONAL_CHAIN_INVOLVEMENT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -11400,7 +11417,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getSequenceLink()
 	 * @generated
 	 */
-	int SEQUENCE_LINK = 36;
+	int SEQUENCE_LINK = 35;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -11446,6 +11463,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SEQUENCE_LINK__OWNED_CONSTRAINTS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -11653,7 +11679,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getSequenceLinkEnd()
 	 * @generated
 	 */
-	int SEQUENCE_LINK_END = 37;
+	int SEQUENCE_LINK_END = 36;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -11699,6 +11725,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SEQUENCE_LINK_END__OWNED_CONSTRAINTS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK_END__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -11852,7 +11887,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getFunctionalChainInvolvementFunction()
 	 * @generated
 	 */
-	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION = 38;
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION = 37;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -11898,6 +11933,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__OWNED_CONSTRAINTS = FUNCTIONAL_CHAIN_INVOLVEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__OWNED_MIGRATED_ELEMENTS = FUNCTIONAL_CHAIN_INVOLVEMENT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -12123,7 +12167,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getControlNode()
 	 * @generated
 	 */
-	int CONTROL_NODE = 39;
+	int CONTROL_NODE = 38;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -12169,6 +12213,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTROL_NODE__OWNED_CONSTRAINTS = SEQUENCE_LINK_END__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_NODE__OWNED_MIGRATED_ELEMENTS = SEQUENCE_LINK_END__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -12331,7 +12384,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getReferenceHierarchyContext()
 	 * @generated
 	 */
-	int REFERENCE_HIERARCHY_CONTEXT = 40;
+	int REFERENCE_HIERARCHY_CONTEXT = 39;
 
 	/**
 	 * The feature id for the '<em><b>Source Reference Hierarchy</b></em>' reference list.
@@ -12368,7 +12421,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getFunctionalChainKind()
 	 * @generated
 	 */
-	int FUNCTIONAL_CHAIN_KIND = 41;
+	int FUNCTIONAL_CHAIN_KIND = 40;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.fa.FunctionKind <em>Function Kind</em>}' enum.
@@ -12378,7 +12431,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getFunctionKind()
 	 * @generated
 	 */
-	int FUNCTION_KIND = 42;
+	int FUNCTION_KIND = 41;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.fa.ComponentExchangeKind <em>Component Exchange Kind</em>}' enum.
@@ -12388,7 +12441,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getComponentExchangeKind()
 	 * @generated
 	 */
-	int COMPONENT_EXCHANGE_KIND = 43;
+	int COMPONENT_EXCHANGE_KIND = 42;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.fa.ComponentPortKind <em>Component Port Kind</em>}' enum.
@@ -12398,7 +12451,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getComponentPortKind()
 	 * @generated
 	 */
-	int COMPONENT_PORT_KIND = 44;
+	int COMPONENT_PORT_KIND = 43;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.fa.OrientationPortKind <em>Orientation Port Kind</em>}' enum.
@@ -12408,7 +12461,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getOrientationPortKind()
 	 * @generated
 	 */
-	int ORIENTATION_PORT_KIND = 45;
+	int ORIENTATION_PORT_KIND = 44;
 
 
 	/**
@@ -12419,7 +12472,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getControlNodeKind()
 	 * @generated
 	 */
-	int CONTROL_NODE_KIND = 46;
+	int CONTROL_NODE_KIND = 45;
 
 
 	/**
@@ -12497,71 +12550,6 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAbstractFunctionalArchitecture_OwnedComponentExchangeRealizations();
-
-	/**
-	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.fa.AbstractFunctionalStructure <em>Abstract Functional Structure</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Abstract Functional Structure</em>'.
-	 * @see org.polarsys.capella.core.data.fa.AbstractFunctionalStructure
-	 * @generated
-	 */
-	EClass getAbstractFunctionalStructure();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.polarsys.capella.core.data.fa.AbstractFunctionalStructure#getOwnedComponentExchanges <em>Owned Component Exchanges</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Owned Component Exchanges</em>'.
-	 * @see org.polarsys.capella.core.data.fa.AbstractFunctionalStructure#getOwnedComponentExchanges()
-	 * @see #getAbstractFunctionalStructure()
-	 * @generated
-	 */
-	EReference getAbstractFunctionalStructure_OwnedComponentExchanges();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.polarsys.capella.core.data.fa.AbstractFunctionalStructure#getOwnedComponentExchangeCategories <em>Owned Component Exchange Categories</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Owned Component Exchange Categories</em>'.
-	 * @see org.polarsys.capella.core.data.fa.AbstractFunctionalStructure#getOwnedComponentExchangeCategories()
-	 * @see #getAbstractFunctionalStructure()
-	 * @generated
-	 */
-	EReference getAbstractFunctionalStructure_OwnedComponentExchangeCategories();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.polarsys.capella.core.data.fa.AbstractFunctionalStructure#getOwnedFunctionalLinks <em>Owned Functional Links</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Owned Functional Links</em>'.
-	 * @see org.polarsys.capella.core.data.fa.AbstractFunctionalStructure#getOwnedFunctionalLinks()
-	 * @see #getAbstractFunctionalStructure()
-	 * @generated
-	 */
-	EReference getAbstractFunctionalStructure_OwnedFunctionalLinks();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.polarsys.capella.core.data.fa.AbstractFunctionalStructure#getOwnedFunctionalAllocations <em>Owned Functional Allocations</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Owned Functional Allocations</em>'.
-	 * @see org.polarsys.capella.core.data.fa.AbstractFunctionalStructure#getOwnedFunctionalAllocations()
-	 * @see #getAbstractFunctionalStructure()
-	 * @generated
-	 */
-	EReference getAbstractFunctionalStructure_OwnedFunctionalAllocations();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.polarsys.capella.core.data.fa.AbstractFunctionalStructure#getOwnedComponentExchangeRealizations <em>Owned Component Exchange Realizations</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Owned Component Exchange Realizations</em>'.
-	 * @see org.polarsys.capella.core.data.fa.AbstractFunctionalStructure#getOwnedComponentExchangeRealizations()
-	 * @see #getAbstractFunctionalStructure()
-	 * @generated
-	 */
-	EReference getAbstractFunctionalStructure_OwnedComponentExchangeRealizations();
 
 	/**
 	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.fa.AbstractFunctionalBlock <em>Abstract Functional Block</em>}'.
@@ -14786,56 +14774,6 @@ public interface FaPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ABSTRACT_FUNCTIONAL_ARCHITECTURE__OWNED_COMPONENT_EXCHANGE_REALIZATIONS = eINSTANCE.getAbstractFunctionalArchitecture_OwnedComponentExchangeRealizations();
-
-		/**
-		 * The meta object literal for the '{@link org.polarsys.capella.core.data.fa.impl.AbstractFunctionalStructureImpl <em>Abstract Functional Structure</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.polarsys.capella.core.data.fa.impl.AbstractFunctionalStructureImpl
-		 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getAbstractFunctionalStructure()
-		 * @generated
-		 */
-		EClass ABSTRACT_FUNCTIONAL_STRUCTURE = eINSTANCE.getAbstractFunctionalStructure();
-
-		/**
-		 * The meta object literal for the '<em><b>Owned Component Exchanges</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_COMPONENT_EXCHANGES = eINSTANCE.getAbstractFunctionalStructure_OwnedComponentExchanges();
-
-		/**
-		 * The meta object literal for the '<em><b>Owned Component Exchange Categories</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_COMPONENT_EXCHANGE_CATEGORIES = eINSTANCE.getAbstractFunctionalStructure_OwnedComponentExchangeCategories();
-
-		/**
-		 * The meta object literal for the '<em><b>Owned Functional Links</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_FUNCTIONAL_LINKS = eINSTANCE.getAbstractFunctionalStructure_OwnedFunctionalLinks();
-
-		/**
-		 * The meta object literal for the '<em><b>Owned Functional Allocations</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_FUNCTIONAL_ALLOCATIONS = eINSTANCE.getAbstractFunctionalStructure_OwnedFunctionalAllocations();
-
-		/**
-		 * The meta object literal for the '<em><b>Owned Component Exchange Realizations</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_COMPONENT_EXCHANGE_REALIZATIONS = eINSTANCE.getAbstractFunctionalStructure_OwnedComponentExchangeRealizations();
 
 		/**
 		 * The meta object literal for the '{@link org.polarsys.capella.core.data.fa.impl.AbstractFunctionalBlockImpl <em>Abstract Functional Block</em>}' class.

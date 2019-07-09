@@ -470,6 +470,10 @@
         <details key="constraints" value="none"/>
         <details key="comment/notes" value="none"/>
       </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="involved"/>
+      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="capability" lowerBound="1"
         eType="#//Capability" changeable="false" volatile="true" transient="true"

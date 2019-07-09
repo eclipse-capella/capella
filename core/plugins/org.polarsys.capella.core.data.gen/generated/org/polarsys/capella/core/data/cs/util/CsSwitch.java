@@ -81,7 +81,6 @@ import org.polarsys.capella.core.data.cs.ProvidedInterfaceLink;
 import org.polarsys.capella.core.data.cs.RequiredInterfaceLink;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
-import org.polarsys.capella.core.data.fa.AbstractFunctionalStructure;
 import org.polarsys.capella.core.data.fa.ComponentExchangeAllocator;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
 import org.polarsys.capella.core.data.information.AbstractInstance;
@@ -712,7 +711,6 @@ public class CsSwitch<T> extends Switch<T> {
 			case CsPackage.COMPONENT_PKG: {
 				ComponentPkg componentPkg = (ComponentPkg)theEObject;
 				T result = caseComponentPkg(componentPkg);
-				if (result == null) result = caseAbstractFunctionalStructure(componentPkg);
 				if (result == null) result = caseStructure(componentPkg);
 				if (result == null) result = caseNamespace(componentPkg);
 				if (result == null) result = caseNamedElement(componentPkg);
@@ -1882,21 +1880,6 @@ public class CsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T casePort(Port object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Abstract Functional Structure</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Abstract Functional Structure</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAbstractFunctionalStructure(AbstractFunctionalStructure object) {
 		return null;
 	}
 

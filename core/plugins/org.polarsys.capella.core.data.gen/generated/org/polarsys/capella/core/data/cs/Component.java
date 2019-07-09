@@ -630,7 +630,8 @@ public interface Component extends Block, Classifier, InterfaceAllocator, Commun
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Representing Parts</em>' reference list.
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getComponent_RepresentingParts()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Parts that represent this Component' constraints='none' comment/notes='none'"
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Parts that represent this Component' constraints='none' comment/notes='none'"
 	 * @generated
 	 */
 

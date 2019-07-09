@@ -460,4 +460,21 @@ public class MigrationHelpers implements IMigrationContribution {
 
   }
 
+  @Override
+  public EStructuralFeature getFeature(EObject object, String prefix, String name, boolean isElement) {
+    for (IMigrationContribution migration : migrations) {
+      EStructuralFeature newFeature = migration.getFeature(object, prefix, name, isElement);
+      if (newFeature != null) {
+        return newFeature;
+      }
+    }
+    return null;
+  }
+
+  public void updateCreatedObject(EObject peekObject, EObject eObject, String typeQName, EStructuralFeature feature,
+      XMLResource resource, XMLHelper helper, MigrationContext context) {
+    for (IMigrationContribution migration : migrations) {
+      migration.updateCreatedObject(peekObject, eObject, typeQName, feature, resource, helper, context);
+    }
+  }
 }

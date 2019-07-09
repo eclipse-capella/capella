@@ -69,7 +69,12 @@ public interface IMigrationContribution {
    * This methods allows to retrieve another feature for the given feature
    */
   EStructuralFeature getFeature(EObject peekObject, EStructuralFeature feature, Resource resource, MigrationContext context);
-
+  
+  /**
+   * This methods allows to retrieve another feature for the given feature
+   */
+  EStructuralFeature getFeature(EObject object, String prefix, String name, boolean isElement);
+  
   /**
    * This method allows to retrieve another value for the given object and the given feature
    */
@@ -157,5 +162,8 @@ public interface IMigrationContribution {
    * This method is a notification to let contribution know that the given helper will be used for the given resource
    */
   void createdXMLHelper(XMLResource resource, XMLHelper result);
+
+  void updateCreatedObject(EObject peekObject, EObject eObject, String typeQName, EStructuralFeature feature,
+      XMLResource resource, XMLHelper helper, MigrationContext context);
 
 }

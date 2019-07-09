@@ -82,7 +82,6 @@ import org.polarsys.capella.core.data.cs.ProvidedInterfaceLink;
 import org.polarsys.capella.core.data.cs.RequiredInterfaceLink;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
-import org.polarsys.capella.core.data.fa.AbstractFunctionalStructure;
 import org.polarsys.capella.core.data.fa.ComponentExchangeAllocator;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
 import org.polarsys.capella.core.data.information.AbstractInstance;
@@ -457,10 +456,6 @@ public class CsAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter casePort(Port object) {
 				return createPortAdapter();
-			}
-			@Override
-			public Adapter caseAbstractFunctionalStructure(AbstractFunctionalStructure object) {
-				return createAbstractFunctionalStructureAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -1557,20 +1552,6 @@ public class CsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPortAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.fa.AbstractFunctionalStructure <em>Abstract Functional Structure</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.fa.AbstractFunctionalStructure
-	 * @generated
-	 */
-	public Adapter createAbstractFunctionalStructureAdapter() {
 		return null;
 	}
 

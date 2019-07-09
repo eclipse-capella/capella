@@ -122,6 +122,15 @@ public interface RequirementPackage extends EPackage {
 	int REQUIREMENTS_PKG__OWNED_CONSTRAINTS = CapellacorePackage.STRUCTURE__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIREMENTS_PKG__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.STRUCTURE__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -411,6 +420,15 @@ public interface RequirementPackage extends EPackage {
 	int REQUIREMENTS_TRACE__OWNED_CONSTRAINTS = CapellacorePackage.TRACE__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIREMENTS_TRACE__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.TRACE__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -653,6 +671,15 @@ public interface RequirementPackage extends EPackage {
 	 * @ordered
 	 */
 	int REQUIREMENT__OWNED_CONSTRAINTS = CapellacorePackage.NAMESPACE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIREMENT__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.NAMESPACE__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -971,6 +998,15 @@ public interface RequirementPackage extends EPackage {
 	int SYSTEM_FUNCTIONAL_INTERFACE_REQUIREMENT__OWNED_CONSTRAINTS = REQUIREMENT__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_FUNCTIONAL_INTERFACE_REQUIREMENT__OWNED_MIGRATED_ELEMENTS = REQUIREMENT__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1285,6 +1321,15 @@ public interface RequirementPackage extends EPackage {
 	 * @ordered
 	 */
 	int SYSTEM_FUNCTIONAL_REQUIREMENT__OWNED_CONSTRAINTS = REQUIREMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_FUNCTIONAL_REQUIREMENT__OWNED_MIGRATED_ELEMENTS = REQUIREMENT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1603,6 +1648,15 @@ public interface RequirementPackage extends EPackage {
 	int SYSTEM_NON_FUNCTIONAL_INTERFACE_REQUIREMENT__OWNED_CONSTRAINTS = REQUIREMENT__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_NON_FUNCTIONAL_INTERFACE_REQUIREMENT__OWNED_MIGRATED_ELEMENTS = REQUIREMENT__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1919,6 +1973,15 @@ public interface RequirementPackage extends EPackage {
 	int SYSTEM_NON_FUNCTIONAL_REQUIREMENT__OWNED_CONSTRAINTS = REQUIREMENT__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_NON_FUNCTIONAL_REQUIREMENT__OWNED_MIGRATED_ELEMENTS = REQUIREMENT__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2233,6 +2296,15 @@ public interface RequirementPackage extends EPackage {
 	 * @ordered
 	 */
 	int SYSTEM_USER_REQUIREMENT__OWNED_CONSTRAINTS = REQUIREMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_USER_REQUIREMENT__OWNED_MIGRATED_ELEMENTS = REQUIREMENT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.

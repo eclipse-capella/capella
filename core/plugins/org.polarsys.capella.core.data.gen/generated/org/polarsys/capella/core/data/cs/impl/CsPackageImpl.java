@@ -1809,6 +1809,78 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getComponentPkg_OwnedComponentExchanges() {
+		return (EReference)componentPkgEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getComponentPkg_OwnedComponentExchangeCategories() {
+		return (EReference)componentPkgEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getComponentPkg_OwnedFunctionalLinks() {
+		return (EReference)componentPkgEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getComponentPkg_OwnedFunctionalAllocations() {
+		return (EReference)componentPkgEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getComponentPkg_OwnedComponentExchangeRealizations() {
+		return (EReference)componentPkgEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getComponentPkg_OwnedPhysicalLinks() {
+		return (EReference)componentPkgEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getComponentPkg_OwnedPhysicalLinkCategories() {
+		return (EReference)componentPkgEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getComponentPkg_OwnedStateMachines() {
+		return (EReference)componentPkgEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CsFactory getCsFactory() {
 		return (CsFactory)getEFactoryInstance();
 	}
@@ -2015,6 +2087,14 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 
 		componentPkgEClass = createEClass(COMPONENT_PKG);
 		createEReference(componentPkgEClass, COMPONENT_PKG__OWNED_PARTS);
+		createEReference(componentPkgEClass, COMPONENT_PKG__OWNED_COMPONENT_EXCHANGES);
+		createEReference(componentPkgEClass, COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_CATEGORIES);
+		createEReference(componentPkgEClass, COMPONENT_PKG__OWNED_FUNCTIONAL_LINKS);
+		createEReference(componentPkgEClass, COMPONENT_PKG__OWNED_FUNCTIONAL_ALLOCATIONS);
+		createEReference(componentPkgEClass, COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_REALIZATIONS);
+		createEReference(componentPkgEClass, COMPONENT_PKG__OWNED_PHYSICAL_LINKS);
+		createEReference(componentPkgEClass, COMPONENT_PKG__OWNED_PHYSICAL_LINK_CATEGORIES);
+		createEReference(componentPkgEClass, COMPONENT_PKG__OWNED_STATE_MACHINES);
 	}
 
 	/**
@@ -2111,7 +2191,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		physicalPortEClass.getESuperTypes().add(this.getAbstractPhysicalLinkEnd());
 		physicalPortEClass.getESuperTypes().add(theInformationPackage.getProperty());
 		physicalPortRealizationEClass.getESuperTypes().add(theCapellacorePackage.getAllocation());
-		componentPkgEClass.getESuperTypes().add(theFaPackage.getAbstractFunctionalStructure());
+		componentPkgEClass.getESuperTypes().add(theCapellacorePackage.getStructure());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(blockArchitecturePkgEClass, BlockArchitecturePkg.class, "BlockArchitecturePkg", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -2155,7 +2235,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		initEReference(getComponent_OwnedPhysicalPath(), this.getPhysicalPath(), null, "ownedPhysicalPath", null, 0, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getComponent_OwnedPhysicalLinks(), this.getPhysicalLink(), null, "ownedPhysicalLinks", null, 0, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getComponent_OwnedPhysicalLinkCategories(), this.getPhysicalLinkCategory(), null, "ownedPhysicalLinkCategories", null, 0, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getComponent_RepresentingParts(), this.getPart(), null, "representingParts", null, 0, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getComponent_RepresentingParts(), this.getPart(), null, "representingParts", null, 0, -1, Component.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(partEClass, Part.class, "Part", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getPart_ProvidedInterfaces(), this.getInterface(), null, "providedInterfaces", null, 0, -1, Part.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -2297,6 +2377,14 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 
 		initEClass(componentPkgEClass, ComponentPkg.class, "ComponentPkg", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getComponentPkg_OwnedParts(), this.getPart(), null, "ownedParts", null, 0, -1, ComponentPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getComponentPkg_OwnedComponentExchanges(), theFaPackage.getComponentExchange(), null, "ownedComponentExchanges", null, 0, -1, ComponentPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getComponentPkg_OwnedComponentExchangeCategories(), theFaPackage.getComponentExchangeCategory(), null, "ownedComponentExchangeCategories", null, 0, -1, ComponentPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getComponentPkg_OwnedFunctionalLinks(), theFaPackage.getExchangeLink(), null, "ownedFunctionalLinks", null, 0, -1, ComponentPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getComponentPkg_OwnedFunctionalAllocations(), theFaPackage.getComponentFunctionalAllocation(), null, "ownedFunctionalAllocations", null, 0, -1, ComponentPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getComponentPkg_OwnedComponentExchangeRealizations(), theFaPackage.getComponentExchangeRealization(), null, "ownedComponentExchangeRealizations", null, 0, -1, ComponentPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getComponentPkg_OwnedPhysicalLinks(), this.getPhysicalLink(), null, "ownedPhysicalLinks", null, 0, -1, ComponentPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getComponentPkg_OwnedPhysicalLinkCategories(), this.getPhysicalLinkCategory(), null, "ownedPhysicalLinkCategories", null, 0, -1, ComponentPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getComponentPkg_OwnedStateMachines(), theCapellacommonPackage.getStateMachine(), null, "ownedStateMachines", null, 0, -1, ComponentPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		// Create resource
 		createResource(eNS_URI);
@@ -3414,6 +3502,70 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "description", "Parts stored in this Component Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getComponentPkg_OwnedComponentExchanges(), 
+		   source, 
+		   new String[] {
+			 "description", "the connections between components, contained in this structure\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getComponentPkg_OwnedComponentExchangeCategories(), 
+		   source, 
+		   new String[] {
+			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getComponentPkg_OwnedFunctionalLinks(), 
+		   source, 
+		   new String[] {
+			 "description", "the (functional) exchange links defined in the context of this structure\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getComponentPkg_OwnedFunctionalAllocations(), 
+		   source, 
+		   new String[] {
+			 "description", "the list of component <=> function allocation links defined in this structure\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getComponentPkg_OwnedComponentExchangeRealizations(), 
+		   source, 
+		   new String[] {
+			 "description", "the list of realizations links between component exchanges, defined in this structure\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getComponentPkg_OwnedPhysicalLinks(), 
+		   source, 
+		   new String[] {
+			 "description", "Physical Links contained in this Component Package", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getComponentPkg_OwnedPhysicalLinkCategories(), 
+		   source, 
+		   new String[] {
+			 "description", "Physical Links contained in this Component Package", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getComponentPkg_OwnedStateMachines(), 
+		   source, 
+		   new String[] {
+			 "description", "Physical Links contained in this Component Package", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -3857,6 +4009,31 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		   });	
 		addAnnotation
 		  (getComponentPkg_OwnedParts(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getComponentPkg_OwnedComponentExchanges(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getComponentPkg_OwnedComponentExchangeCategories(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getComponentPkg_OwnedPhysicalLinks(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getComponentPkg_OwnedPhysicalLinkCategories(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getComponentPkg_OwnedStateMachines(), 
 		   source, 
 		   new String[] {
 		   });
@@ -4945,6 +5122,38 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "base metaclass in UML/SysML profile ", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getComponentPkg_OwnedComponentExchanges(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "uml::Package::packagedElement elements on which ComponentExchange stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getComponentPkg_OwnedFunctionalLinks(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "uml::Package::packagedElement elements on which ExchangeLink stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getComponentPkg_OwnedFunctionalAllocations(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "uml::Package::packagedElement elements on which ComponentFunctionalAllocation stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getComponentPkg_OwnedComponentExchangeRealizations(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "uml::Package::packagedElement elements on which ComponentExchangeRealisation stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -5261,6 +5470,12 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		   source, 
 		   new String[] {
 			 "Label", "part" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getComponentPkg_OwnedFunctionalLinks(), 
+		   source, 
+		   new String[] {
+			 "Label", "ownedFunctionalLinks" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -5565,6 +5780,27 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		   new String[] {
 			 "featureName", "partWithPort", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "ConnectorEnd" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getComponentPkg_OwnedComponentExchanges(), 
+		   source, 
+		   new String[] {
+			 "featureName", "ownedConnector", //$NON-NLS-1$ //$NON-NLS-2$
+			 "featureOwner", "StructuredClassifier" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getComponentPkg_OwnedFunctionalLinks(), 
+		   source, 
+		   new String[] {
+			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "featureOwner", "Component" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getComponentPkg_OwnedComponentExchangeRealizations(), 
+		   source, 
+		   new String[] {
+			 "featureName", "ownedConnector", //$NON-NLS-1$ //$NON-NLS-2$
+			 "featureOwner", "StructuredClassifier" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -5745,6 +5981,11 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		  (getPhysicalLinkEnd_Part(), 
 		   source, 
 		   new String[] {
+		   });	
+		addAnnotation
+		  (getComponentPkg_OwnedFunctionalLinks(), 
+		   source, 
+		   new String[] {
 		   });
 	}
 
@@ -5865,6 +6106,11 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		   new String[] {
 			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
 			 "viatra.expression", "ownedFeatures" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getComponent_RepresentingParts(), 
+		   source, 
+		   new String[] {
 		   });	
 		addAnnotation
 		  (getPart_ProvidedInterfaces(), 

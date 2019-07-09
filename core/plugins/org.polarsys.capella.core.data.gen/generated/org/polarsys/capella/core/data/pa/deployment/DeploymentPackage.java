@@ -122,6 +122,15 @@ public interface DeploymentPackage extends EPackage {
 	int ABSTRACT_PHYSICAL_INSTANCE__OWNED_CONSTRAINTS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_PHYSICAL_INSTANCE__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -319,6 +328,15 @@ public interface DeploymentPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT_INSTANCE__OWNED_CONSTRAINTS = ABSTRACT_PHYSICAL_INSTANCE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_INSTANCE__OWNED_MIGRATED_ELEMENTS = ABSTRACT_PHYSICAL_INSTANCE__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -583,6 +601,15 @@ public interface DeploymentPackage extends EPackage {
 	int CONNECTION_INSTANCE__OWNED_CONSTRAINTS = ABSTRACT_PHYSICAL_INSTANCE__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION_INSTANCE__OWNED_MIGRATED_ELEMENTS = ABSTRACT_PHYSICAL_INSTANCE__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -798,6 +825,15 @@ public interface DeploymentPackage extends EPackage {
 	 * @ordered
 	 */
 	int DEPLOYMENT_ASPECT__OWNED_CONSTRAINTS = CapellacorePackage.STRUCTURE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT_ASPECT__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.STRUCTURE__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1071,6 +1107,15 @@ public interface DeploymentPackage extends EPackage {
 	int DEPLOYMENT_CONFIGURATION__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT_CONFIGURATION__OWNED_MIGRATED_ELEMENTS = CapellacorePackage.NAMED_ELEMENT__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1295,6 +1340,15 @@ public interface DeploymentPackage extends EPackage {
 	 * @ordered
 	 */
 	int INSTANCE_DEPLOYMENT_LINK__OWNED_CONSTRAINTS = CsPackage.ABSTRACT_DEPLOYMENT_LINK__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_DEPLOYMENT_LINK__OWNED_MIGRATED_ELEMENTS = CsPackage.ABSTRACT_DEPLOYMENT_LINK__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -1523,6 +1577,15 @@ public interface DeploymentPackage extends EPackage {
 	int PART_DEPLOYMENT_LINK__OWNED_CONSTRAINTS = CsPackage.ABSTRACT_DEPLOYMENT_LINK__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PART_DEPLOYMENT_LINK__OWNED_MIGRATED_ELEMENTS = CsPackage.ABSTRACT_DEPLOYMENT_LINK__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1749,6 +1812,15 @@ public interface DeploymentPackage extends EPackage {
 	int PORT_INSTANCE__OWNED_CONSTRAINTS = ABSTRACT_PHYSICAL_INSTANCE__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT_INSTANCE__OWNED_MIGRATED_ELEMENTS = ABSTRACT_PHYSICAL_INSTANCE__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1973,6 +2045,15 @@ public interface DeploymentPackage extends EPackage {
 	 * @ordered
 	 */
 	int TYPE_DEPLOYMENT_LINK__OWNED_CONSTRAINTS = CsPackage.ABSTRACT_DEPLOYMENT_LINK__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_DEPLOYMENT_LINK__OWNED_MIGRATED_ELEMENTS = CsPackage.ABSTRACT_DEPLOYMENT_LINK__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.

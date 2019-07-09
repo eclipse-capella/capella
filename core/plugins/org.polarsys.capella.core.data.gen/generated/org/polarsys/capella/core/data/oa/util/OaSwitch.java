@@ -61,7 +61,6 @@ import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalChainContainer;
-import org.polarsys.capella.core.data.fa.AbstractFunctionalStructure;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ExchangeSpecification;
 import org.polarsys.capella.core.data.fa.FunctionPkg;
@@ -400,7 +399,6 @@ public class OaSwitch<T> extends Switch<T> {
 				EntityPkg entityPkg = (EntityPkg)theEObject;
 				T result = caseEntityPkg(entityPkg);
 				if (result == null) result = caseComponentPkg(entityPkg);
-				if (result == null) result = caseAbstractFunctionalStructure(entityPkg);
 				if (result == null) result = caseStructure(entityPkg);
 				if (result == null) result = caseNamespace(entityPkg);
 				if (result == null) result = caseNamedElement(entityPkg);
@@ -1723,21 +1721,6 @@ public class OaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseAllocation(Allocation object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Abstract Functional Structure</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Abstract Functional Structure</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAbstractFunctionalStructure(AbstractFunctionalStructure object) {
 		return null;
 	}
 

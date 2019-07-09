@@ -19,7 +19,9 @@ import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.CapabilityExploitation;
+import org.polarsys.capella.core.data.ctx.CapabilityInvolvement;
 import org.polarsys.capella.core.data.ctx.Mission;
+import org.polarsys.capella.core.data.ctx.MissionInvolvement;
 import org.polarsys.capella.core.data.ctx.OperationalAnalysisRealization;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.ctx.SystemCommunication;
@@ -32,7 +34,9 @@ import org.polarsys.capella.core.data.helpers.capellacore.delegates.StructureHel
 import org.polarsys.capella.core.data.helpers.cs.delegates.SystemComponentHelper;
 import org.polarsys.capella.core.data.helpers.ctx.delegates.CapabilityExploitationHelper;
 import org.polarsys.capella.core.data.helpers.ctx.delegates.CapabilityHelper;
+import org.polarsys.capella.core.data.helpers.ctx.delegates.CapabilityInvolvementHelper;
 import org.polarsys.capella.core.data.helpers.ctx.delegates.MissionHelper;
+import org.polarsys.capella.core.data.helpers.ctx.delegates.MissionInvolvementHelper;
 import org.polarsys.capella.core.data.helpers.ctx.delegates.OperationalAnalysisRealizationHelper;
 import org.polarsys.capella.core.data.helpers.ctx.delegates.SysAnalysisHelper;
 import org.polarsys.capella.core.data.helpers.ctx.delegates.SystemFunctionHelper;
@@ -71,6 +75,12 @@ public class SystemAnalysisHelper implements IHelper {
     }
     else if (object instanceof SystemComponent) {
       ret = SystemComponentHelper.getInstance().doSwitch((SystemComponent) object, feature);
+    }
+    else if (object instanceof CapabilityInvolvement) {
+      ret = CapabilityInvolvementHelper.getInstance().doSwitch((CapabilityInvolvement) object, feature);
+    }
+    else if (object instanceof MissionInvolvement) {
+      ret = MissionInvolvementHelper.getInstance().doSwitch((MissionInvolvement) object, feature);
     }
 
 		if(null != ret || feature.getUpperBound() == 1)

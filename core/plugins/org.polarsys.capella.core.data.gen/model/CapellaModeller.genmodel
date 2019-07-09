@@ -1221,7 +1221,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompositeStructure.ecore#//Component/ownedPhysicalPath"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompositeStructure.ecore#//Component/ownedPhysicalLinks"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompositeStructure.ecore#//Component/ownedPhysicalLinkCategories"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CompositeStructure.ecore#//Component/representingParts"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//Component/representingParts"/>
     </genClasses>
     <genClasses ecoreClass="CompositeStructure.ecore#//Part">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//Part/providedInterfaces"/>
@@ -1358,6 +1358,14 @@
     <genClasses ecoreClass="CompositeStructure.ecore#//PhysicalPortRealization"/>
     <genClasses image="false" ecoreClass="CompositeStructure.ecore#//ComponentPkg">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompositeStructure.ecore#//ComponentPkg/ownedParts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompositeStructure.ecore#//ComponentPkg/ownedComponentExchanges"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompositeStructure.ecore#//ComponentPkg/ownedComponentExchangeCategories"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompositeStructure.ecore#//ComponentPkg/ownedFunctionalLinks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompositeStructure.ecore#//ComponentPkg/ownedFunctionalAllocations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompositeStructure.ecore#//ComponentPkg/ownedComponentExchangeRealizations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompositeStructure.ecore#//ComponentPkg/ownedPhysicalLinks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompositeStructure.ecore#//ComponentPkg/ownedPhysicalLinkCategories"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompositeStructure.ecore#//ComponentPkg/ownedStateMachines"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="Fa" basePackage="org.polarsys.capella.core.data" resource="XMI"
@@ -1404,13 +1412,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//AbstractFunctionalArchitecture/ownedFunctionalLinks"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//AbstractFunctionalArchitecture/ownedFunctionalAllocations"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//AbstractFunctionalArchitecture/ownedComponentExchangeRealizations"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="FunctionalAnalysis.ecore#//AbstractFunctionalStructure">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//AbstractFunctionalStructure/ownedComponentExchanges"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//AbstractFunctionalStructure/ownedComponentExchangeCategories"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//AbstractFunctionalStructure/ownedFunctionalLinks"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//AbstractFunctionalStructure/ownedFunctionalAllocations"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//AbstractFunctionalStructure/ownedComponentExchangeRealizations"/>
     </genClasses>
     <genClasses image="false" ecoreClass="FunctionalAnalysis.ecore#//AbstractFunctionalBlock">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//AbstractFunctionalBlock/ownedFunctionalAllocation"/>

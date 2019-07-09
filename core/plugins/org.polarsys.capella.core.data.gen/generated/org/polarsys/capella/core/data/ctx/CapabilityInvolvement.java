@@ -55,6 +55,7 @@ public interface CapabilityInvolvement extends Involvement {
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getCapabilityInvolvement_SystemComponent()
 	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to a system component that is involved in the system capability.' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involved'"
 	 * @generated
 	 */
 

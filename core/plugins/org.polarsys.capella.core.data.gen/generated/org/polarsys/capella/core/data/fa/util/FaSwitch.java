@@ -60,7 +60,6 @@ import org.polarsys.capella.core.data.fa.AbstractFunctionAllocation;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalChainContainer;
-import org.polarsys.capella.core.data.fa.AbstractFunctionalStructure;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeAllocation;
 import org.polarsys.capella.core.data.fa.ComponentExchangeAllocator;
@@ -176,22 +175,6 @@ public class FaSwitch<T> extends Switch<T> {
 				if (result == null) result = caseModelElement(abstractFunctionalArchitecture);
 				if (result == null) result = caseExtensibleElement(abstractFunctionalArchitecture);
 				if (result == null) result = caseElement(abstractFunctionalArchitecture);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case FaPackage.ABSTRACT_FUNCTIONAL_STRUCTURE: {
-				AbstractFunctionalStructure abstractFunctionalStructure = (AbstractFunctionalStructure)theEObject;
-				T result = caseAbstractFunctionalStructure(abstractFunctionalStructure);
-				if (result == null) result = caseStructure(abstractFunctionalStructure);
-				if (result == null) result = caseNamespace(abstractFunctionalStructure);
-				if (result == null) result = caseNamedElement(abstractFunctionalStructure);
-				if (result == null) result = caseAbstractNamedElement(abstractFunctionalStructure);
-				if (result == null) result = caseCapellaElement(abstractFunctionalStructure);
-				if (result == null) result = caseTraceableElement(abstractFunctionalStructure);
-				if (result == null) result = casePublishableElement(abstractFunctionalStructure);
-				if (result == null) result = caseModelElement(abstractFunctionalStructure);
-				if (result == null) result = caseExtensibleElement(abstractFunctionalStructure);
-				if (result == null) result = caseElement(abstractFunctionalStructure);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -860,21 +843,6 @@ public class FaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseAbstractFunctionalArchitecture(AbstractFunctionalArchitecture object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Abstract Functional Structure</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Abstract Functional Structure</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAbstractFunctionalStructure(AbstractFunctionalStructure object) {
 		return null;
 	}
 

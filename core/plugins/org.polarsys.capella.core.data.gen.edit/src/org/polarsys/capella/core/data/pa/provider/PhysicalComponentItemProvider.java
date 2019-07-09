@@ -1245,9 +1245,9 @@ public class PhysicalComponentItemProvider extends AbstractPhysicalArtifactItemP
 				 getString("_UI_Component_representingParts_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Component_representingParts_feature", "_UI_Component_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 CsPackage.Literals.COMPONENT__REPRESENTING_PARTS,
-				 true,
 				 false,
-				 true,
+				 false,
+				 false,
 				 null,
 				 null,
 		// begin-extension-code
@@ -2316,6 +2316,54 @@ public class PhysicalComponentItemProvider extends AbstractPhysicalArtifactItemP
                 // end-extension-code
 
 
+	}
+
+		/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify =
+			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_CONSTRAINTS ||
+			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_MIGRATED_ELEMENTS ||
+			childFeature == CapellacorePackage.Literals.CLASSIFIER__OWNED_FEATURES ||
+			childFeature == PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_PHYSICAL_COMPONENTS ||
+			childFeature == PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_PHYSICAL_COMPONENT_PKGS ||
+			childFeature == CsPackage.Literals.INTERFACE_ALLOCATOR__OWNED_INTERFACE_ALLOCATIONS ||
+			childFeature == CapellacorePackage.Literals.NAMESPACE__NAMING_RULES ||
+			childFeature == CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__OWNED_GENERALIZATIONS ||
+			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUES ||
+			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES ||
+			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS ||
+			childFeature == CsPackage.Literals.BLOCK__OWNED_ABSTRACT_CAPABILITY_PKG ||
+			childFeature == FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_COMPONENT_EXCHANGES ||
+			childFeature == PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_LINKS ||
+			childFeature == CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES ||
+			childFeature == CsPackage.Literals.BLOCK__OWNED_STATE_MACHINES ||
+			childFeature == CsPackage.Literals.BLOCK__OWNED_DATA_PKG ||
+			childFeature == CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__OWNED_COMMUNICATION_LINKS ||
+			childFeature == CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS ||
+			childFeature == CsPackage.Literals.BLOCK__OWNED_INTERFACE_PKG ||
+			childFeature == CsPackage.Literals.COMPONENT__OWNED_INTERFACE_IMPLEMENTATIONS ||
+			childFeature == CsPackage.Literals.COMPONENT__OWNED_INTERFACE_USES ||
+			childFeature == CsPackage.Literals.COMPONENT__OWNED_PHYSICAL_LINKS ||
+			childFeature == CsPackage.Literals.COMPONENT__OWNED_PHYSICAL_LINK_CATEGORIES ||
+			childFeature == CsPackage.Literals.COMPONENT__OWNED_PHYSICAL_PATH ||
+			childFeature == FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_FUNCTIONAL_ALLOCATION ||
+			childFeature == FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_COMPONENT_EXCHANGE_CATEGORIES;
+
+		if (qualify) {
+			return getString
+				("_UI_CreateChild_text2", //$NON-NLS-1$
+				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 		/**

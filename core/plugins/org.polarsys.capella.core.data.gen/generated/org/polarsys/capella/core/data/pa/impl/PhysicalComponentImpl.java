@@ -597,20 +597,6 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 
 
 	/**
-	 * The cached value of the '{@link #getRepresentingParts() <em>Representing Parts</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRepresentingParts()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Part> representingParts;
-
-
-
-
-
-	/**
 	 * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2787,10 +2773,39 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 
 	public EList<Part> getRepresentingParts() {
 
-		if (representingParts == null) {
-			representingParts = new EObjectResolvingEList<Part>(Part.class, this, PaPackage.PHYSICAL_COMPONENT__REPRESENTING_PARTS);
-		}
-		return representingParts;
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = CsPackage.Literals.COMPONENT__REPRESENTING_PARTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, CsPackage.Literals.COMPONENT__REPRESENTING_PARTS, annotation);
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<Part> resultAsList = (Collection<Part>) result;
+		return new EcoreEList.UnmodifiableEList<Part>(this, CsPackage.Literals.COMPONENT__REPRESENTING_PARTS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
 	}
 
 	/**
@@ -3717,10 +3732,6 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 				getOwnedPhysicalLinkCategories().clear();
 				getOwnedPhysicalLinkCategories().addAll((Collection<? extends PhysicalLinkCategory>)newValue);
 				return;
-			case PaPackage.PHYSICAL_COMPONENT__REPRESENTING_PARTS:
-				getRepresentingParts().clear();
-				getRepresentingParts().addAll((Collection<? extends Part>)newValue);
-				return;
 			case PaPackage.PHYSICAL_COMPONENT__KIND:
 					setKind((PhysicalComponentKind)newValue);
 				return;
@@ -3826,9 +3837,6 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 				return;
 			case PaPackage.PHYSICAL_COMPONENT__OWNED_PHYSICAL_LINK_CATEGORIES:
 				getOwnedPhysicalLinkCategories().clear();
-				return;
-			case PaPackage.PHYSICAL_COMPONENT__REPRESENTING_PARTS:
-				getRepresentingParts().clear();
 				return;
 			case PaPackage.PHYSICAL_COMPONENT__KIND:
 				setKind(KIND_EDEFAULT);
@@ -3978,7 +3986,7 @@ public class PhysicalComponentImpl extends AbstractPhysicalArtifactImpl implemen
 			case PaPackage.PHYSICAL_COMPONENT__OWNED_PHYSICAL_LINK_CATEGORIES:
 				return ownedPhysicalLinkCategories != null && !ownedPhysicalLinkCategories.isEmpty();
 			case PaPackage.PHYSICAL_COMPONENT__REPRESENTING_PARTS:
-				return representingParts != null && !representingParts.isEmpty();
+				return !getRepresentingParts().isEmpty();
 			case PaPackage.PHYSICAL_COMPONENT__INVOLVING_INVOLVEMENTS:
 				return !getInvolvingInvolvements().isEmpty();
 			case PaPackage.PHYSICAL_COMPONENT__CAPABILITY_REALIZATION_INVOLVEMENTS:

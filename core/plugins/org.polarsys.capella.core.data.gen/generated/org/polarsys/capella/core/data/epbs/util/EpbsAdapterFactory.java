@@ -52,7 +52,6 @@ import org.polarsys.capella.core.data.epbs.PhysicalArchitectureRealization;
 import org.polarsys.capella.core.data.epbs.PhysicalArtifactRealization;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
-import org.polarsys.capella.core.data.fa.AbstractFunctionalStructure;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkExchanger;
 import org.polarsys.kitalpha.emde.model.Element;
 import org.polarsys.kitalpha.emde.model.ExtensibleElement;
@@ -200,10 +199,6 @@ public class EpbsAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseComponentArchitecture(ComponentArchitecture object) {
 				return createComponentArchitectureAdapter();
-			}
-			@Override
-			public Adapter caseAbstractFunctionalStructure(AbstractFunctionalStructure object) {
-				return createAbstractFunctionalStructureAdapter();
 			}
 			@Override
 			public Adapter caseComponentPkg(ComponentPkg object) {
@@ -602,20 +597,6 @@ public class EpbsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createComponentArchitectureAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.fa.AbstractFunctionalStructure <em>Abstract Functional Structure</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.fa.AbstractFunctionalStructure
-	 * @generated
-	 */
-	public Adapter createAbstractFunctionalStructureAdapter() {
 		return null;
 	}
 

@@ -293,6 +293,15 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getModelElement_OwnedMigratedElements() {
+		return (EReference)modelElementEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAbstractRelationship() {
 		return abstractRelationshipEClass;
 	}
@@ -789,6 +798,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 		createEAttribute(modelElementEClass, MODEL_ELEMENT__SID);
 		createEReference(modelElementEClass, MODEL_ELEMENT__CONSTRAINTS);
 		createEReference(modelElementEClass, MODEL_ELEMENT__OWNED_CONSTRAINTS);
+		createEReference(modelElementEClass, MODEL_ELEMENT__OWNED_MIGRATED_ELEMENTS);
 
 		abstractRelationshipEClass = createEClass(ABSTRACT_RELATIONSHIP);
 		createEReference(abstractRelationshipEClass, ABSTRACT_RELATIONSHIP__REALIZED_FLOW);
@@ -917,6 +927,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 		initEAttribute(getModelElement_Sid(), ecorePackage.getEString(), "sid", null, 0, 1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getModelElement_Constraints(), this.getAbstractConstraint(), null, "constraints", null, 0, -1, ModelElement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getModelElement_OwnedConstraints(), this.getAbstractConstraint(), null, "ownedConstraints", null, 0, -1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getModelElement_OwnedMigratedElements(), this.getModelElement(), null, "ownedMigratedElements", null, 0, -1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		addEOperation(modelElementEClass, null, "destroy", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
@@ -1180,6 +1191,14 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 		   source, 
 		   new String[] {
 			 "description", "the constraints that are stored/owned by this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getModelElement_OwnedMigratedElements(), 
+		   source, 
+		   new String[] {
+			 "description", "Temporary migrated elements for the purpose of model migration.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	

@@ -122,6 +122,15 @@ public interface BehaviorPackage extends EPackage {
 	int ABSTRACT_BEHAVIOR__OWNED_CONSTRAINTS = ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BEHAVIOR__OWNED_MIGRATED_ELEMENTS = ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -222,6 +231,15 @@ public interface BehaviorPackage extends EPackage {
 	int ABSTRACT_SIGNAL__OWNED_CONSTRAINTS = ModellingcorePackage.ABSTRACT_TYPE__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_SIGNAL__OWNED_MIGRATED_ELEMENTS = ModellingcorePackage.ABSTRACT_TYPE__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -304,6 +322,15 @@ public interface BehaviorPackage extends EPackage {
 	int ABSTRACT_EVENT__OWNED_CONSTRAINTS = ModellingcorePackage.ABSTRACT_TYPE__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_EVENT__OWNED_MIGRATED_ELEMENTS = ModellingcorePackage.ABSTRACT_TYPE__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -384,6 +411,15 @@ public interface BehaviorPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_TIME_EVENT__OWNED_CONSTRAINTS = ABSTRACT_EVENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_TIME_EVENT__OWNED_MIGRATED_ELEMENTS = ABSTRACT_EVENT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -486,6 +522,15 @@ public interface BehaviorPackage extends EPackage {
 	int ABSTRACT_MESSAGE_EVENT__OWNED_CONSTRAINTS = ABSTRACT_EVENT__OWNED_CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_MESSAGE_EVENT__OWNED_MIGRATED_ELEMENTS = ABSTRACT_EVENT__OWNED_MIGRATED_ELEMENTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -566,6 +611,15 @@ public interface BehaviorPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_SIGNAL_EVENT__OWNED_CONSTRAINTS = ABSTRACT_MESSAGE_EVENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_SIGNAL_EVENT__OWNED_MIGRATED_ELEMENTS = ABSTRACT_MESSAGE_EVENT__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -657,6 +711,15 @@ public interface BehaviorPackage extends EPackage {
 	 * @ordered
 	 */
 	int TIME_EXPRESSION__OWNED_CONSTRAINTS = ModellingcorePackage.VALUE_SPECIFICATION__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_EXPRESSION__OWNED_MIGRATED_ELEMENTS = ModellingcorePackage.VALUE_SPECIFICATION__OWNED_MIGRATED_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.

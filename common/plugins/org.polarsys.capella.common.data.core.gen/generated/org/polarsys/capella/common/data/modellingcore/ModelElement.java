@@ -26,6 +26,7 @@ import org.polarsys.kitalpha.emde.model.ExtensibleElement;
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.ModelElement#getSid <em>Sid</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.ModelElement#getConstraints <em>Constraints</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.ModelElement#getOwnedConstraints <em>Owned Constraints</em>}</li>
+ *   <li>{@link org.polarsys.capella.common.data.modellingcore.ModelElement#getOwnedMigratedElements <em>Owned Migrated Elements</em>}</li>
  * </ul>
  *
  * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getModelElement()
@@ -168,6 +169,28 @@ public interface ModelElement extends ExtensibleElement {
 	 */
 
 	EList<AbstractConstraint> getOwnedConstraints();
+
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Owned Migrated Elements</b></em>' containment reference list.
+	 * The list contents are of type {@link org.polarsys.capella.common.data.modellingcore.ModelElement}.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Owned Migrated Elements</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Owned Migrated Elements</em>' containment reference list.
+	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getModelElement_OwnedMigratedElements()
+	 * @model containment="true" resolveProxies="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Temporary migrated elements for the purpose of model migration.' constraints='none' comment/notes='none'"
+	 * @generated
+	 */
+
+	EList<ModelElement> getOwnedMigratedElements();
 
 
 

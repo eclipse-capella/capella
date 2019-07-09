@@ -36,7 +36,6 @@ import org.polarsys.capella.core.data.fa.AbstractFunctionAllocation;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalChainContainer;
-import org.polarsys.capella.core.data.fa.AbstractFunctionalStructure;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeAllocation;
 import org.polarsys.capella.core.data.fa.ComponentExchangeAllocator;
@@ -117,13 +116,6 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 	 * @generated
 	 */
 	private EClass abstractFunctionalArchitectureEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass abstractFunctionalStructureEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -621,60 +613,6 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 	 */
 	public EReference getAbstractFunctionalArchitecture_OwnedComponentExchangeRealizations() {
 		return (EReference)abstractFunctionalArchitectureEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getAbstractFunctionalStructure() {
-		return abstractFunctionalStructureEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAbstractFunctionalStructure_OwnedComponentExchanges() {
-		return (EReference)abstractFunctionalStructureEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAbstractFunctionalStructure_OwnedComponentExchangeCategories() {
-		return (EReference)abstractFunctionalStructureEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAbstractFunctionalStructure_OwnedFunctionalLinks() {
-		return (EReference)abstractFunctionalStructureEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAbstractFunctionalStructure_OwnedFunctionalAllocations() {
-		return (EReference)abstractFunctionalStructureEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAbstractFunctionalStructure_OwnedComponentExchangeRealizations() {
-		return (EReference)abstractFunctionalStructureEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -2504,13 +2442,6 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 		createEReference(abstractFunctionalArchitectureEClass, ABSTRACT_FUNCTIONAL_ARCHITECTURE__OWNED_FUNCTIONAL_ALLOCATIONS);
 		createEReference(abstractFunctionalArchitectureEClass, ABSTRACT_FUNCTIONAL_ARCHITECTURE__OWNED_COMPONENT_EXCHANGE_REALIZATIONS);
 
-		abstractFunctionalStructureEClass = createEClass(ABSTRACT_FUNCTIONAL_STRUCTURE);
-		createEReference(abstractFunctionalStructureEClass, ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_COMPONENT_EXCHANGES);
-		createEReference(abstractFunctionalStructureEClass, ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_COMPONENT_EXCHANGE_CATEGORIES);
-		createEReference(abstractFunctionalStructureEClass, ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_FUNCTIONAL_LINKS);
-		createEReference(abstractFunctionalStructureEClass, ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_FUNCTIONAL_ALLOCATIONS);
-		createEReference(abstractFunctionalStructureEClass, ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_COMPONENT_EXCHANGE_REALIZATIONS);
-
 		abstractFunctionalBlockEClass = createEClass(ABSTRACT_FUNCTIONAL_BLOCK);
 		createEReference(abstractFunctionalBlockEClass, ABSTRACT_FUNCTIONAL_BLOCK__OWNED_FUNCTIONAL_ALLOCATION);
 		createEReference(abstractFunctionalBlockEClass, ABSTRACT_FUNCTIONAL_BLOCK__OWNED_COMPONENT_EXCHANGES);
@@ -2792,7 +2723,6 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 
 		// Add supertypes to classes
 		abstractFunctionalArchitectureEClass.getESuperTypes().add(theCapellacorePackage.getModellingArchitecture());
-		abstractFunctionalStructureEClass.getESuperTypes().add(theCapellacorePackage.getStructure());
 		abstractFunctionalBlockEClass.getESuperTypes().add(theCapellacorePackage.getModellingBlock());
 		functionPkgEClass.getESuperTypes().add(theCapellacorePackage.getStructure());
 		functionSpecificationEClass.getESuperTypes().add(theCapellacorePackage.getNamespace());
@@ -2867,13 +2797,6 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 		initEReference(getAbstractFunctionalArchitecture_OwnedFunctionalLinks(), this.getExchangeLink(), null, "ownedFunctionalLinks", null, 0, -1, AbstractFunctionalArchitecture.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getAbstractFunctionalArchitecture_OwnedFunctionalAllocations(), this.getComponentFunctionalAllocation(), null, "ownedFunctionalAllocations", null, 0, -1, AbstractFunctionalArchitecture.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getAbstractFunctionalArchitecture_OwnedComponentExchangeRealizations(), this.getComponentExchangeRealization(), null, "ownedComponentExchangeRealizations", null, 0, -1, AbstractFunctionalArchitecture.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		initEClass(abstractFunctionalStructureEClass, AbstractFunctionalStructure.class, "AbstractFunctionalStructure", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getAbstractFunctionalStructure_OwnedComponentExchanges(), this.getComponentExchange(), null, "ownedComponentExchanges", null, 0, -1, AbstractFunctionalStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getAbstractFunctionalStructure_OwnedComponentExchangeCategories(), this.getComponentExchangeCategory(), null, "ownedComponentExchangeCategories", null, 0, -1, AbstractFunctionalStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getAbstractFunctionalStructure_OwnedFunctionalLinks(), this.getExchangeLink(), null, "ownedFunctionalLinks", null, 0, -1, AbstractFunctionalStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getAbstractFunctionalStructure_OwnedFunctionalAllocations(), this.getComponentFunctionalAllocation(), null, "ownedFunctionalAllocations", null, 0, -1, AbstractFunctionalStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getAbstractFunctionalStructure_OwnedComponentExchangeRealizations(), this.getComponentExchangeRealization(), null, "ownedComponentExchangeRealizations", null, 0, -1, AbstractFunctionalStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(abstractFunctionalBlockEClass, AbstractFunctionalBlock.class, "AbstractFunctionalBlock", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getAbstractFunctionalBlock_OwnedFunctionalAllocation(), this.getComponentFunctionalAllocation(), null, "ownedFunctionalAllocation", null, 0, -1, AbstractFunctionalBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -3243,58 +3166,6 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 		   source, 
 		   new String[] {
 			 "description", "the list of component exchange realizations contained directly under this functional architecture\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (abstractFunctionalStructureEClass, 
-		   source, 
-		   new String[] {
-			 "description", "a specialized structure containing links of a functional nature between components\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational,system,logical,physical,epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractFunctionalStructure_OwnedComponentExchanges(), 
-		   source, 
-		   new String[] {
-			 "description", "the connections between components, contained in this structure\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractFunctionalStructure_OwnedComponentExchangeCategories(), 
-		   source, 
-		   new String[] {
-			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractFunctionalStructure_OwnedFunctionalLinks(), 
-		   source, 
-		   new String[] {
-			 "description", "the (functional) exchange links defined in the context of this structure\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractFunctionalStructure_OwnedFunctionalAllocations(), 
-		   source, 
-		   new String[] {
-			 "description", "the list of component <=> function allocation links defined in this structure\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractFunctionalStructure_OwnedComponentExchangeRealizations(), 
-		   source, 
-		   new String[] {
-			 "description", "the list of realizations links between component exchanges, defined in this structure\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
@@ -4845,16 +4716,6 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getAbstractFunctionalStructure_OwnedComponentExchanges(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getAbstractFunctionalStructure_OwnedComponentExchangeCategories(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
 		  (getAbstractFunctionalBlock_OwnedComponentExchanges(), 
 		   source, 
 		   new String[] {
@@ -5437,47 +5298,6 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 		   });	
 		addAnnotation
 		  (getAbstractFunctionalArchitecture_OwnedComponentExchangeRealizations(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::packagedElement elements on which ComponentExchangeRealisation stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (abstractFunctionalStructureEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractFunctionalStructure_OwnedComponentExchanges(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::packagedElement elements on which ComponentExchange stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractFunctionalStructure_OwnedFunctionalLinks(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::packagedElement elements on which ExchangeLink stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractFunctionalStructure_OwnedFunctionalAllocations(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::packagedElement elements on which ComponentFunctionalAllocation stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractFunctionalStructure_OwnedComponentExchangeRealizations(), 
 		   source, 
 		   new String[] {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
@@ -7165,27 +6985,6 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "featureOwner", "StructuredClassifier" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getAbstractFunctionalStructure_OwnedComponentExchanges(), 
-		   source, 
-		   new String[] {
-			 "featureName", "ownedConnector", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "StructuredClassifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractFunctionalStructure_OwnedFunctionalLinks(), 
-		   source, 
-		   new String[] {
-			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Component" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractFunctionalStructure_OwnedComponentExchangeRealizations(), 
-		   source, 
-		   new String[] {
-			 "featureName", "ownedConnector", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "StructuredClassifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (getAbstractFunctionalBlock_OwnedComponentExchanges(), 
 		   source, 
 		   new String[] {
@@ -7415,12 +7214,6 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 		   });	
 		addAnnotation
 		  (getAbstractFunctionalArchitecture_OwnedFunctionalLinks(), 
-		   source, 
-		   new String[] {
-			 "Label", "ownedFunctionalLinks" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractFunctionalStructure_OwnedFunctionalLinks(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedFunctionalLinks" //$NON-NLS-1$ //$NON-NLS-2$
@@ -7700,11 +7493,6 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 		   });	
 		addAnnotation
 		  (getAbstractFunctionalArchitecture_OwnedFunctionalLinks(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getAbstractFunctionalStructure_OwnedFunctionalLinks(), 
 		   source, 
 		   new String[] {
 		   });	

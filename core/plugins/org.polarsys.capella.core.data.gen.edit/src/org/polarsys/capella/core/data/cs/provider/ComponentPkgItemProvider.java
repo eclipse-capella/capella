@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.command.CopyCommand.Helper;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -30,11 +31,19 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
+import org.polarsys.capella.core.data.capellacommon.CapellacommonFactory;
+import org.polarsys.capella.core.data.capellacore.CapellacoreFactory;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellacore.provider.NamedElementItemProvider;
 import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.CsPackage;
-import org.polarsys.capella.core.data.fa.provider.AbstractFunctionalStructureItemProvider;
+import org.polarsys.capella.core.data.fa.FaFactory;
+import org.polarsys.capella.core.data.interaction.InteractionFactory;
+import org.polarsys.capella.core.data.oa.OaFactory;
+import org.polarsys.capella.core.data.requirement.RequirementFactory;
 import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
 
 /**
@@ -44,7 +53,7 @@ import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
  * @generated
  */
 public class ComponentPkgItemProvider
-	extends AbstractFunctionalStructureItemProvider
+	extends NamedElementItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -72,11 +81,67 @@ public class ComponentPkgItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addContainedGenericTracesPropertyDescriptor(object);
+			addContainedRequirementsTracesPropertyDescriptor(object);
 		}
 		// begin-extension-code
 		checkChildCreationExtender(object);
 		// end-extension-code
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Contained Generic Traces feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addContainedGenericTracesPropertyDescriptor(Object object) {
+
+		// begin-extension-code
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Namespace_containedGenericTraces_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Namespace_containedGenericTraces_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES,
+				 false,
+				 false,
+				 false,
+				 null,
+				 null,
+		// begin-extension-code
+				 null));
+		// end-extension-code
+	}
+
+	/**
+	 * This adds a property descriptor for the Contained Requirements Traces feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addContainedRequirementsTracesPropertyDescriptor(Object object) {
+
+		// begin-extension-code
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Namespace_containedRequirementsTraces_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Namespace_containedRequirementsTraces_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES,
+				 false,
+				 false,
+				 false,
+				 null,
+				 null,
+		// begin-extension-code
+				 null));
+		// end-extension-code
 	}
 
 	/**
@@ -91,7 +156,18 @@ public class ComponentPkgItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
+			childrenFeatures.add(CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES);
+			childrenFeatures.add(CapellacorePackage.Literals.NAMESPACE__NAMING_RULES);
+			childrenFeatures.add(CapellacorePackage.Literals.STRUCTURE__OWNED_PROPERTY_VALUE_PKGS);
 			childrenFeatures.add(CsPackage.Literals.COMPONENT_PKG__OWNED_PARTS);
+			childrenFeatures.add(CsPackage.Literals.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGES);
+			childrenFeatures.add(CsPackage.Literals.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_CATEGORIES);
+			childrenFeatures.add(CsPackage.Literals.COMPONENT_PKG__OWNED_FUNCTIONAL_LINKS);
+			childrenFeatures.add(CsPackage.Literals.COMPONENT_PKG__OWNED_FUNCTIONAL_ALLOCATIONS);
+			childrenFeatures.add(CsPackage.Literals.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_REALIZATIONS);
+			childrenFeatures.add(CsPackage.Literals.COMPONENT_PKG__OWNED_PHYSICAL_LINKS);
+			childrenFeatures.add(CsPackage.Literals.COMPONENT_PKG__OWNED_PHYSICAL_LINK_CATEGORIES);
+			childrenFeatures.add(CsPackage.Literals.COMPONENT_PKG__OWNED_STATE_MACHINES);
 		}
 		return childrenFeatures;
 	}
@@ -146,7 +222,18 @@ public class ComponentPkgItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ComponentPkg.class)) {
+			case CsPackage.COMPONENT_PKG__OWNED_TRACES:
+			case CsPackage.COMPONENT_PKG__NAMING_RULES:
+			case CsPackage.COMPONENT_PKG__OWNED_PROPERTY_VALUE_PKGS:
 			case CsPackage.COMPONENT_PKG__OWNED_PARTS:
+			case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGES:
+			case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_CATEGORIES:
+			case CsPackage.COMPONENT_PKG__OWNED_FUNCTIONAL_LINKS:
+			case CsPackage.COMPONENT_PKG__OWNED_FUNCTIONAL_ALLOCATIONS:
+			case CsPackage.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_REALIZATIONS:
+			case CsPackage.COMPONENT_PKG__OWNED_PHYSICAL_LINKS:
+			case CsPackage.COMPONENT_PKG__OWNED_PHYSICAL_LINK_CATEGORIES:
+			case CsPackage.COMPONENT_PKG__OWNED_STATE_MACHINES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -166,6 +253,102 @@ public class ComponentPkgItemProvider
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
+                        (CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES,
+                         RequirementFactory.eINSTANCE.createRequirementsTrace());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES,
+                         CapellacommonFactory.eINSTANCE.createGenericTrace());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES,
+                         CapellacommonFactory.eINSTANCE.createTransfoLink());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES,
+                         CapellacommonFactory.eINSTANCE.createJustificationLink());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES,
+                         InteractionFactory.eINSTANCE.createMergeLink());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES,
+                         InteractionFactory.eINSTANCE.createRefinementLink());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacorePackage.Literals.NAMESPACE__NAMING_RULES,
+                         CapellacoreFactory.eINSTANCE.createNamingRule());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacorePackage.Literals.STRUCTURE__OWNED_PROPERTY_VALUE_PKGS,
+                         CapellacoreFactory.eINSTANCE.createPropertyValuePkg());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
                         (CsPackage.Literals.COMPONENT_PKG__OWNED_PARTS,
                          CsFactory.eINSTANCE.createPart());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
@@ -175,6 +358,152 @@ public class ComponentPkgItemProvider
                 // end-extension-code
 
 
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CsPackage.Literals.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGES,
+                         OaFactory.eINSTANCE.createCommunicationMean());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CsPackage.Literals.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGES,
+                         FaFactory.eINSTANCE.createComponentExchange());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CsPackage.Literals.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_CATEGORIES,
+                         FaFactory.eINSTANCE.createComponentExchangeCategory());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CsPackage.Literals.COMPONENT_PKG__OWNED_FUNCTIONAL_LINKS,
+                         FaFactory.eINSTANCE.createExchangeLink());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CsPackage.Literals.COMPONENT_PKG__OWNED_FUNCTIONAL_ALLOCATIONS,
+                         FaFactory.eINSTANCE.createComponentFunctionalAllocation());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CsPackage.Literals.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_REALIZATIONS,
+                         FaFactory.eINSTANCE.createComponentExchangeRealization());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CsPackage.Literals.COMPONENT_PKG__OWNED_PHYSICAL_LINKS,
+                         CsFactory.eINSTANCE.createPhysicalLink());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CsPackage.Literals.COMPONENT_PKG__OWNED_PHYSICAL_LINK_CATEGORIES,
+                         CsFactory.eINSTANCE.createPhysicalLinkCategory());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CsPackage.Literals.COMPONENT_PKG__OWNED_STATE_MACHINES,
+                         CapellacommonFactory.eINSTANCE.createStateMachine());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify =
+			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_CONSTRAINTS ||
+			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_MIGRATED_ELEMENTS ||
+			childFeature == CsPackage.Literals.COMPONENT_PKG__OWNED_PARTS ||
+			childFeature == CsPackage.Literals.COMPONENT_PKG__OWNED_PHYSICAL_LINKS ||
+			childFeature == CsPackage.Literals.COMPONENT_PKG__OWNED_PHYSICAL_LINK_CATEGORIES ||
+			childFeature == CapellacorePackage.Literals.NAMESPACE__NAMING_RULES ||
+			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUES ||
+			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES ||
+			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS ||
+			childFeature == CapellacorePackage.Literals.STRUCTURE__OWNED_PROPERTY_VALUE_PKGS ||
+			childFeature == CsPackage.Literals.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGES ||
+			childFeature == CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES ||
+			childFeature == CsPackage.Literals.COMPONENT_PKG__OWNED_STATE_MACHINES ||
+			childFeature == CsPackage.Literals.COMPONENT_PKG__OWNED_FUNCTIONAL_LINKS ||
+			childFeature == CsPackage.Literals.COMPONENT_PKG__OWNED_FUNCTIONAL_ALLOCATIONS ||
+			childFeature == CsPackage.Literals.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_CATEGORIES ||
+			childFeature == CsPackage.Literals.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_REALIZATIONS;
+
+		if (qualify) {
+			return getString
+				("_UI_CreateChild_text2", //$NON-NLS-1$
+				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	// begin-capella-code

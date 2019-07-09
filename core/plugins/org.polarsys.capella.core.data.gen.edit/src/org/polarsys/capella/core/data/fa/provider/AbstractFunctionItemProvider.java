@@ -2672,8 +2672,22 @@ public class AbstractFunctionItemProvider
 
 		boolean qualify =
 			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_CONSTRAINTS ||
+			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_MIGRATED_ELEMENTS ||
 			childFeature == ActivityPackage.Literals.ABSTRACT_ACTION__LOCAL_PRECONDITION ||
 			childFeature == ActivityPackage.Literals.ABSTRACT_ACTION__LOCAL_POSTCONDITION ||
+			childFeature == FaPackage.Literals.ABSTRACT_FUNCTIONAL_CHAIN_CONTAINER__OWNED_FUNCTIONAL_CHAINS ||
+			childFeature == ActivityPackage.Literals.ABSTRACT_ACTION__INPUTS ||
+			childFeature == ActivityPackage.Literals.INVOCATION_ACTION__ARGUMENTS ||
+			childFeature == ActivityPackage.Literals.ABSTRACT_ACTION__OUTPUTS ||
+			childFeature == ActivityPackage.Literals.CALL_ACTION__RESULTS ||
+			childFeature == FaPackage.Literals.ABSTRACT_FUNCTION__OWNED_FUNCTION_REALIZATIONS ||
+			childFeature == FaPackage.Literals.ABSTRACT_FUNCTION__OWNED_FUNCTIONAL_EXCHANGES ||
+			childFeature == CapellacorePackage.Literals.NAMESPACE__NAMING_RULES ||
+			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUES ||
+			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES ||
+			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS ||
+			childFeature == FaPackage.Literals.ABSTRACT_FUNCTION__OWNED_FUNCTIONS ||
+			childFeature == CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES ||
 			childFeature == InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_DEFAULT_VALUE ||
 			childFeature == InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE ||
 			childFeature == InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MAX_VALUE ||
@@ -2681,11 +2695,7 @@ public class AbstractFunctionItemProvider
 			childFeature == InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_CARD ||
 			childFeature == InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_LENGTH ||
 			childFeature == InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MAX_CARD ||
-			childFeature == InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MAX_LENGTH ||
-			childFeature == ActivityPackage.Literals.ABSTRACT_ACTION__INPUTS ||
-			childFeature == ActivityPackage.Literals.INVOCATION_ACTION__ARGUMENTS ||
-			childFeature == ActivityPackage.Literals.ABSTRACT_ACTION__OUTPUTS ||
-			childFeature == ActivityPackage.Literals.CALL_ACTION__RESULTS;
+			childFeature == InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MAX_LENGTH;
 
 		if (qualify) {
 			return getString
