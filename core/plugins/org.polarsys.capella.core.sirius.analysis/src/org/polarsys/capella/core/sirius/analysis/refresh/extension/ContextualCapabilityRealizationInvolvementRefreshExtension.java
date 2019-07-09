@@ -29,7 +29,7 @@ import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 
-public class ContextualCapabilityRealizationInvolvementRefreshExtension extends AbstractCacheAwareRefreshExtension {
+public class ContextualCapabilityRealizationInvolvementRefreshExtension extends RefreshExtension {
 
   @Override
   public void beforeRefresh(DDiagram diagram) {

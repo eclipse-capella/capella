@@ -32,8 +32,8 @@ import org.polarsys.capella.core.sirius.analysis.cache.FunctionalChainCache;
 /**
  * 
  */
-//TODO : merge this refresh extension with component Architecture Refresh Extension 
-public class EntityArchitectureBlankRefreshExtension extends AbstractCacheAwareRefreshExtension {
+// TODO : merge this refresh extension with component Architecture Refresh Extension
+public class EntityArchitectureBlankRefreshExtension extends RefreshExtension {
 
   /**
    * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#beforeRefresh(org.eclipse.sirius.DDiagram)
@@ -43,19 +43,20 @@ public class EntityArchitectureBlankRefreshExtension extends AbstractCacheAwareR
     super.beforeRefresh(diagram);
 
     FunctionalChainCache.getInstance().reset();
-    
+
     DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
     Collection<EObject> contextualElements = ContextualDiagramHelper.getService().getContextualElements(descriptor);
 
     DDiagramContents context = FaServices.getFaServices().getDDiagramContents(diagram);
-    
+
     // -------------------------------------
     // Show in diagram related contextual elements
     // -------------------------------------
     try {
       CsServices.getService().showABContextualElements(context, contextualElements);
     } catch (Exception e) {
-      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnContextualElements, e);
+      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM)
+          .error(Messages.RefreshExtension_ErrorOnContextualElements, e);
     }
 
     // -------------------------------------
@@ -76,7 +77,8 @@ public class EntityArchitectureBlankRefreshExtension extends AbstractCacheAwareR
     try {
       FunctionalChainServices.getFunctionalChainServices().updateFunctionalChainStyles(diagram);
     } catch (Exception e) {
-      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdateFunctionalChainStyle, e);
+      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM)
+          .error(Messages.RefreshExtension_ErrorOnUpdateFunctionalChainStyle, e);
     }
 
     FunctionalChainCache.getInstance().reset();
@@ -90,7 +92,8 @@ public class EntityArchitectureBlankRefreshExtension extends AbstractCacheAwareR
    */
   public ContainerMapping getComponentMapping(DDiagram diagram) {
     if (diagram.getDescription().getName().equals(IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
-      return DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.OAB_ENTITY_MAPPING_NAME);
+      return DiagramServices.getDiagramServices().getContainerMapping(diagram,
+          IMappingNameConstants.OAB_ENTITY_MAPPING_NAME);
     }
 
     return null;

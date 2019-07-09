@@ -36,7 +36,7 @@ import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
  * Extended refresh to display the content of the focused module.
  * 
  */
-public class ContextualComponentExternalInterfacesRefreshExtension extends AbstractCacheAwareRefreshExtension {
+public class ContextualComponentExternalInterfacesRefreshExtension extends RefreshExtension {
 
   /**
    * {@inheritDoc}

@@ -91,4 +91,8 @@ public class Cache {
     cachedResult.clear();
   }
 
+  public Set<Object> getCacheKeys() {
+    return cachedResult.keySet();
+  }
+
 }

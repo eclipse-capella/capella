@@ -11,8 +11,10 @@
 
 package org.polarsys.capella.core.data.helpers.cache;
 
+import java.util.Set;
 import java.util.function.BiFunction;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class ModelCache {
 
@@ -94,6 +96,23 @@ public class ModelCache {
    */
   public static boolean isEnabled() {
     return enabled;
+  }
+
+  /**
+   * 
+   * @return only the CachedFunctionKey keys
+   */
+  public static Set<CachedFunctionKey> getCachedFunctionKeys() {
+    return cache.getCacheKeys().stream().filter(CachedFunctionKey.class::isInstance).map(key -> (CachedFunctionKey) key)
+        .collect(Collectors.toSet());
+  }
+
+  /**
+   * 
+   * @return all the Cache Keys
+   */
+  public static Set<Object> getCacheKeys() {
+    return cache.getCacheKeys();
   }
 
   /**

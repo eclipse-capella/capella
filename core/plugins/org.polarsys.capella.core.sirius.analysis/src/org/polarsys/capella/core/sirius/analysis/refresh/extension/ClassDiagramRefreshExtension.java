@@ -28,7 +28,7 @@ import org.polarsys.capella.core.sirius.analysis.InformationServices;
 
 /**
  */
-public class ClassDiagramRefreshExtension extends AbstractCacheAwareRefreshExtension {
+public class ClassDiagramRefreshExtension extends RefreshExtension {
 
   /**
    * @see org.polarsys.capella.core.sirius.analysis.refresh.extension.AbstractRefreshExtension#getListOfMappingsToMove(org.eclipse.sirius.DDiagram)
@@ -36,17 +36,28 @@ public class ClassDiagramRefreshExtension extends AbstractCacheAwareRefreshExten
   @Override
   protected List<AbstractNodeMapping> getListOfMappingsToMove(DDiagram diagram) {
     List<AbstractNodeMapping> returnedList = new ArrayList<>();
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CDB_DATA_PKG_MAPPING_NAME));
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CDB_INTERFACE_PKG_MAPPING_NAME));
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CDB_CLASS_MAPPING_NAME));
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CDB_ENUMERATION_MAPPING_NAME));
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CDB_COLLECTION_MAPPING_NAME));
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CDB_DATA_TYPE_MAPPING_NAME));
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CDB_BOOLEAN_TYPE_MAPPING_NAME));
-    returnedList.add(DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.CDB_EXCHANGE_ITEM_MAPPING_NAME));
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CDB_INTERFACE_MAPPING_NAME));
-    returnedList.add(DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.CDB_DATAVALUE_MAPPING_NAME));
-    returnedList.add(DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.CDB_UNIT_MAPPING_NAME));
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram,
+        IMappingNameConstants.CDB_DATA_PKG_MAPPING_NAME));
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram,
+        IMappingNameConstants.CDB_INTERFACE_PKG_MAPPING_NAME));
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram,
+        IMappingNameConstants.CDB_CLASS_MAPPING_NAME));
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram,
+        IMappingNameConstants.CDB_ENUMERATION_MAPPING_NAME));
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram,
+        IMappingNameConstants.CDB_COLLECTION_MAPPING_NAME));
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram,
+        IMappingNameConstants.CDB_DATA_TYPE_MAPPING_NAME));
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram,
+        IMappingNameConstants.CDB_BOOLEAN_TYPE_MAPPING_NAME));
+    returnedList.add(DiagramServices.getDiagramServices().getNodeMapping(diagram,
+        IMappingNameConstants.CDB_EXCHANGE_ITEM_MAPPING_NAME));
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram,
+        IMappingNameConstants.CDB_INTERFACE_MAPPING_NAME));
+    returnedList.add(
+        DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.CDB_DATAVALUE_MAPPING_NAME));
+    returnedList
+        .add(DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.CDB_UNIT_MAPPING_NAME));
     return returnedList;
   }
 
@@ -56,7 +67,7 @@ public class ClassDiagramRefreshExtension extends AbstractCacheAwareRefreshExten
   @Override
   public void beforeRefresh(DDiagram diagram) {
     super.beforeRefresh(diagram);
-    
+
     // -------------------------------------
     // Show in diagram related contextual elements
     // -------------------------------------
@@ -67,7 +78,8 @@ public class ClassDiagramRefreshExtension extends AbstractCacheAwareRefreshExten
       InformationServices.getService().showCDBContextualElements(diagram, contextualElements);
 
     } catch (Exception e) {
-      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnContextualElements, e);
+      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM)
+          .error(Messages.RefreshExtension_ErrorOnContextualElements, e);
     }
 
     // -------------------------------------

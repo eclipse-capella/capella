@@ -17,7 +17,7 @@ import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 
-public class EntityPartRefreshExtension extends AbstractCacheAwareRefreshExtension {
+public class EntityPartRefreshExtension extends RefreshExtension {
 
   /**
    * <b>Before Refresh</b>

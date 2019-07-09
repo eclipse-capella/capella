@@ -25,7 +25,7 @@ import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
  * Extended refresh to display the content of the focused module.
  * 
  */
-public class CapabilityRealizationBlankRefreshExtension extends AbstractCacheAwareRefreshExtension {
+public class CapabilityRealizationBlankRefreshExtension extends RefreshExtension {
 
   /**
    * @see org.polarsys.capella.core.sirius.analysis.refresh.extension.AbstractRefreshExtension#getListOfMappingsToMove(org.eclipse.sirius.DDiagram)

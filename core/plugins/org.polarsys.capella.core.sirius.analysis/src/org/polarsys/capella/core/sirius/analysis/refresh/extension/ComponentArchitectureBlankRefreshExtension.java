@@ -56,7 +56,7 @@ import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 import org.polarsys.capella.core.sirius.analysis.helpers.FilterHelper;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
-public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwareRefreshExtension {
+public class ComponentArchitectureBlankRefreshExtension extends RefreshExtension {
 
   private final List<String> monitoredFilters = Arrays.asList(IMappingNameConstants.HIDE_CE_BY_DELEGATION,
       IMappingNameConstants.HIDE_CE_BY_GROUP, IMappingNameConstants.HIDE_CE_BY_GROUP_ORIENTED,

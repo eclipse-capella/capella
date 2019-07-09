@@ -21,7 +21,7 @@ import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 /**
  *
  */
-public class PackageDependenciesRefreshExtension extends AbstractCacheAwareRefreshExtension {
+public class PackageDependenciesRefreshExtension extends RefreshExtension {
 
   /**
    * @see org.polarsys.capella.core.sirius.analysis.refresh.extension.AbstractRefreshExtension#getListOfMappingsToMove(org.eclipse.sirius.DDiagram)
@@ -29,8 +29,10 @@ public class PackageDependenciesRefreshExtension extends AbstractCacheAwareRefre
   @Override
   protected List<AbstractNodeMapping> getListOfMappingsToMove(DDiagram diagram) {
     List<AbstractNodeMapping> returnedList = new ArrayList<>();
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CDB_DATA_PKG_MAPPING_NAME));
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CDB_INTERFACE_PKG_MAPPING_NAME));
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram,
+        IMappingNameConstants.CDB_DATA_PKG_MAPPING_NAME));
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram,
+        IMappingNameConstants.CDB_INTERFACE_PKG_MAPPING_NAME));
     return returnedList;
   }
 
@@ -39,8 +41,7 @@ public class PackageDependenciesRefreshExtension extends AbstractCacheAwareRefre
    */
   @Override
   public void beforeRefresh(DDiagram dDiagram) {
-    super.beforeRefresh(dDiagram);
-    
+
     reorderElements(dDiagram);
   }
 }

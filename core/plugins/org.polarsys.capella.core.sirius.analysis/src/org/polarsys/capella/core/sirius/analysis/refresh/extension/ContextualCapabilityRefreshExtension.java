@@ -33,7 +33,7 @@ import org.polarsys.capella.core.sirius.analysis.CapellaServices;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 
-public class ContextualCapabilityRefreshExtension extends AbstractCacheAwareRefreshExtension {
+public class ContextualCapabilityRefreshExtension extends RefreshExtension {
 
   @Override
   public void beforeRefresh(DDiagram diagram) {

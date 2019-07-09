@@ -32,7 +32,7 @@ import org.polarsys.capella.core.sirius.analysis.cache.FunctionalChainCache;
 /**
  *
  */
-public class DataFlowBlankRefreshExtension extends AbstractCacheAwareRefreshExtension {
+public class DataFlowBlankRefreshExtension extends RefreshExtension {
 
   /**
    * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#postRefresh(org.eclipse.sirius.DDiagram)
@@ -42,7 +42,7 @@ public class DataFlowBlankRefreshExtension extends AbstractCacheAwareRefreshExte
     super.beforeRefresh(diagram);
 
     FunctionalChainCache.getInstance().reset();
-    
+
     // -------------------------------------
     // Show in diagram related contextual elements
     // -------------------------------------
@@ -54,13 +54,15 @@ public class DataFlowBlankRefreshExtension extends AbstractCacheAwareRefreshExte
       FaServices.getFaServices().showDFContextualElements(context, contextualElements);
 
     } catch (Exception e) {
-      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnContextualElements, e);
+      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM)
+          .error(Messages.RefreshExtension_ErrorOnContextualElements, e);
     }
-    
+
     try {
       updateFunctionalExchangeCategories(context);
     } catch (Exception e) {
-      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdateFECategories, e);
+      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM)
+          .error(Messages.RefreshExtension_ErrorOnUpdateFECategories, e);
     }
     // -------------------------------------
     // Commit elements
@@ -69,7 +71,8 @@ public class DataFlowBlankRefreshExtension extends AbstractCacheAwareRefreshExte
     try {
       context.commitDeferredActions();
     } catch (Exception e) {
-      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnCommitDeferredActions, e);
+      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM)
+          .error(Messages.RefreshExtension_ErrorOnCommitDeferredActions, e);
     }
 
     // -------------------------------------
@@ -92,11 +95,12 @@ public class DataFlowBlankRefreshExtension extends AbstractCacheAwareRefreshExte
     try {
       FunctionalChainServices.getFunctionalChainServices().updateFunctionalChainStyles(diagram);
     } catch (Exception e) {
-      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdateFunctionalChainStyle, e);
+      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM)
+          .error(Messages.RefreshExtension_ErrorOnUpdateFunctionalChainStyle, e);
     }
 
     FunctionalChainCache.getInstance().reset();
-    
+
     super.postRefresh(diagram);
   }
 

@@ -22,6 +22,7 @@ import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
+import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.data.helpers.modellingcore.utils.HoldingResourceFilter;
@@ -32,7 +33,7 @@ import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 /**
  *
  */
-public abstract class AbstractRefreshExtension {
+public class RefreshExtension implements IRefreshExtension {
 
   /**
    * Returns whether the DSemanticDecorator holds a null target or a target hold by the holding resource
@@ -151,6 +152,16 @@ public abstract class AbstractRefreshExtension {
       }
     }
     return false;
+  }
+
+  @Override
+  public void beforeRefresh(DDiagram dDiagram) {
+    // nothing
+  }
+
+  @Override
+  public void postRefresh(DDiagram dDiagram) {
+    // nothing
   }
 
 }

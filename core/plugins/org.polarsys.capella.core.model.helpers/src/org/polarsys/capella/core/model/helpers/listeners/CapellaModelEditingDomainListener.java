@@ -16,6 +16,7 @@ import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.ef.domain.IEditingDomainListener;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
+import org.polarsys.capella.core.data.helpers.cache.ModelCache;
 
 /**
  *
@@ -28,6 +29,7 @@ public class CapellaModelEditingDomainListener extends ResourceSetListenerImpl i
   private CapellaModelDataListenerForSequenceMessages _dataListenerForSequenceMessages;
   private CapellaModelDataListenerForPartsAndComponents _dataListenerForPartsAndComponents;
   private CapellaModelDataListenerForExchangeItemsAndCommunicationLinks _dataListenerForExchangeItemsAndCommunicationLinks;
+  private CapellaModelDataListenerForCache _dataListenerForCache;
 
   /**
    * @see org.polarsys.capella.common.ef.domain.IEditingDomainListener#createdEditingDomain(EditingDomain)
@@ -54,7 +56,19 @@ public class CapellaModelEditingDomainListener extends ResourceSetListenerImpl i
     loadDataListenerForExchangeItemsAndCommunicationLinks(editingDomain);
     loadDataListenerForPartsAndComponents(editingDomain);
     loadDataListenerForAbstractStates(editingDomain);
+    loadDataListenerForCache(editingDomain);
 
+  }
+
+  private void loadDataListenerForCache(SemanticEditingDomain editingDomain) {
+    if (_dataListenerForCache == null) {
+      if (editingDomain.getDataNotifier() != null) {
+        ModelCache.enable();
+        _dataListenerForCache = new CapellaModelDataListenerForCache();
+        editingDomain.getDataNotifier().addAdapter(AbstractNamedElement.class, _dataListenerForCache);
+
+      }
+    }
   }
 
   /**

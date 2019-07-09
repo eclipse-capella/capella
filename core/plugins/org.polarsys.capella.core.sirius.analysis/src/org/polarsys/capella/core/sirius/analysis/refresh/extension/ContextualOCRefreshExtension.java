@@ -28,7 +28,7 @@ import org.polarsys.capella.core.data.oa.OperationalCapability;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 
-public class ContextualOCRefreshExtension extends AbstractCacheAwareRefreshExtension {
+public class ContextualOCRefreshExtension extends RefreshExtension {
 
   @Override
   protected List<AbstractNodeMapping> getListOfMappingsToMove(DDiagram diagram) {

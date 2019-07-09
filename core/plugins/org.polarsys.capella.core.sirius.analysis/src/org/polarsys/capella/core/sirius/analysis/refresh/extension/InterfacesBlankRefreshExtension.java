@@ -21,7 +21,7 @@ import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 /**
  * Extended refresh to display the content of the focused module.
  */
-public class InterfacesBlankRefreshExtension extends AbstractCacheAwareRefreshExtension {
+public class InterfacesBlankRefreshExtension extends RefreshExtension {
 
   /**
    * @see org.polarsys.capella.core.sirius.analysis.refresh.extension.AbstractRefreshExtension#getListOfMappingsToMove(org.eclipse.sirius.DDiagram)
@@ -29,20 +29,24 @@ public class InterfacesBlankRefreshExtension extends AbstractCacheAwareRefreshEx
   @Override
   protected List<AbstractNodeMapping> getListOfMappingsToMove(DDiagram diagram) {
     List<AbstractNodeMapping> returnedList = new ArrayList<>();
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.IDB_COMPONENT_MAPPING_NAME));
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.IDB_INTERFACE_MAPPING_NAME));
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.IDB_EXCHANGE_ITEM_MAPPING_NAME));
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram,
+        IMappingNameConstants.IDB_COMPONENT_MAPPING_NAME));
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram,
+        IMappingNameConstants.IDB_INTERFACE_MAPPING_NAME));
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram,
+        IMappingNameConstants.IDB_EXCHANGE_ITEM_MAPPING_NAME));
     return returnedList;
   }
 
   /**
    * {@inheritDoc}
+   * 
    * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#beforeRefresh(org.eclipse.sirius.DDiagram)
    */
   @Override
   public void beforeRefresh(DDiagram diagram) {
     super.beforeRefresh(diagram);
-    
+
     reorderElements(diagram);
   }
 }

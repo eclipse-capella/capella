@@ -35,14 +35,14 @@ import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 
 /**
  */
-public class BreakdownRefreshExtension extends AbstractCacheAwareRefreshExtension {
+public class BreakdownRefreshExtension extends RefreshExtension {
 
   /**
    * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#beforeRefresh(org.eclipse.sirius.DDiagram)
    */
+
   @Override
   public void beforeRefresh(DDiagram dDiagram) {
-
     super.beforeRefresh(dDiagram);
     repairCollapsedElements(dDiagram);
   }
@@ -233,4 +233,5 @@ public class BreakdownRefreshExtension extends AbstractCacheAwareRefreshExtensio
 
     return visitedObjects;
   }
+
 }

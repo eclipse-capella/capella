@@ -28,8 +28,8 @@ import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
  * Extended refresh to display the content of the focused module.
  * 
  */
-public class ContextualComponentDetailedInterfacesRefreshExtension extends AbstractCacheAwareRefreshExtension {
- 
+public class ContextualComponentDetailedInterfacesRefreshExtension extends RefreshExtension {
+
   /**
    * {@inheritDoc}
    * 
@@ -38,32 +38,34 @@ public class ContextualComponentDetailedInterfacesRefreshExtension extends Abstr
   @Override
   public void beforeRefresh(DDiagram diagram) {
     super.beforeRefresh(diagram);
-    
-    if (((DSemanticDecorator) diagram).getTarget()==null) {
-      //avoid refresh on dirty diagram
+
+    if (((DSemanticDecorator) diagram).getTarget() == null) {
+      // avoid refresh on dirty diagram
       return;
     }
 
     final Component component = (Component) ((DSemanticDecorator) diagram).getTarget();
     Set<EObject> targets = DiagramServices.getDiagramServices().getSetOfDiagramElementsTarget(diagram);
-    
-    //Add related interfaces on the diagram
-    ContainerMapping interfaceMapping = DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CCDI_INTERFACE); 
+
+    // Add related interfaces on the diagram
+    ContainerMapping interfaceMapping = DiagramServices.getDiagramServices().getContainerMapping(diagram,
+        IMappingNameConstants.CCDI_INTERFACE);
     for (final Interface itf : CsServices.getService().getRelatedInterfaces(component)) {
       if (!targets.contains(itf)) {
         DiagramServices.getDiagramServices().createAbstractDNodeContainer(interfaceMapping, itf, diagram, diagram);
       }
     }
-    
-    //Add related exchange items on the diagram
-    ContainerMapping exchangeItemMapping = DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CCDI_EXCHANGE_ITEM_MAPPING_NAME); 
+
+    // Add related exchange items on the diagram
+    ContainerMapping exchangeItemMapping = DiagramServices.getDiagramServices().getContainerMapping(diagram,
+        IMappingNameConstants.CCDI_EXCHANGE_ITEM_MAPPING_NAME);
     for (final CommunicationLink link : CsServices.getService().getRelatedCommunicationLinks(component)) {
       AbstractExchangeItem item = link.getExchangeItem();
-      if (item!=null && !targets.contains(item)) {
+      if (item != null && !targets.contains(item)) {
         DiagramServices.getDiagramServices().createAbstractDNodeContainer(exchangeItemMapping, item, diagram, diagram);
         targets.add(item);
       }
     }
-    
+
   }
 }

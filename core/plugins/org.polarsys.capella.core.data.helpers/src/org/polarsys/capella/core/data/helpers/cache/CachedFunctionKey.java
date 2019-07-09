@@ -48,4 +48,7 @@ public class CachedFunctionKey {
         .append(Arrays.toString(values)).append(ICommonConstants.PARENTHESIS_CLOSE_CHARACTER).toString();
   }
 
+  public Object[] getValues() {
+    return values;
+  }
 }
