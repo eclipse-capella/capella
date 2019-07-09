@@ -571,7 +571,7 @@
       <description>Capella master development</description>
     </stream>
     <stream
-        name="1.3.x"
+        name="v1.3.x"
         label="">
       <setupTask
           xsi:type="setup:VariableTask"
@@ -601,7 +601,7 @@
               name="org.polarsys.kitalpha.resourcereuse.emfscheme.ui.feature.feature.group"/>
         </targlet>
       </setupTask>
-      <description>Capella master development</description>
+      <description>Capella v1.3.x development</description>
     </stream>
     <stream
         name="v1.2.x"
