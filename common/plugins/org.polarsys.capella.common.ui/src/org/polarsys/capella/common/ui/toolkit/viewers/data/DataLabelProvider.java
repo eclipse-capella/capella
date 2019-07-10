@@ -11,8 +11,6 @@
 
 package org.polarsys.capella.common.ui.toolkit.viewers.data;
 
-import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.jface.viewers.IFontProvider;
 import org.eclipse.jface.viewers.StructuredViewer;
@@ -21,7 +19,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.Display;
-
 import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 
 /**
@@ -31,23 +28,6 @@ import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 public class DataLabelProvider extends MDEAdapterFactoryLabelProvider implements IColorProvider, IFontProvider {
   private TreeViewer _viewer;
   private Font _invalidElementFont;
-
-  /**
-   * Constructor.
-   * @param adapterFactory
-   */
-  public DataLabelProvider(AdapterFactory adapterFactory) {
-    super(adapterFactory);
-  }
-
-  /**
-   * Constructor.
-   * @param editingDomain
-   * @param adapterFactory
-   */
-  public DataLabelProvider(TransactionalEditingDomain editingDomain, AdapterFactory adapterFactory) {
-    super(editingDomain, adapterFactory);
-  }
 
   /**
    * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider#dispose()

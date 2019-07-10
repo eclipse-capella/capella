@@ -18,18 +18,15 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.AbstractTreeViewer;
 import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.ui.toolkit.dialogs.TransferTreeListDialog;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.DataLabelProvider;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
-import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 import org.polarsys.capella.core.ui.properties.providers.CapellaTransfertViewerLabelProvider;
 
@@ -72,8 +69,8 @@ public class SelectElementsFromTransferWizard extends AbstractExternalJavaAction
 
     if (!scope.isEmpty() && (scope.iterator().next() instanceof InstanceRole)) {
       dialog = new TransferTreeListDialog(getShell(), Messages.SelectElementFromListWizard_Title, wizardMessage,
-          new IRDataLabelProvider(TransactionHelper.getEditingDomain(scope)),
-          new IRDataLabelProvider(TransactionHelper.getEditingDomain(scope)), leftViewerExpandLevel,
+          new IRDataLabelProvider(),
+          new IRDataLabelProvider(), leftViewerExpandLevel,
           rightViewerExpandLevel);
     } else {
       dialog = new TransferTreeListDialog(getShell(), Messages.SelectElementFromListWizard_Title, wizardMessage,
@@ -124,17 +121,6 @@ public class SelectElementsFromTransferWizard extends AbstractExternalJavaAction
    * A datalabelProvider specific for the case instanceRoles
    */
   class IRDataLabelProvider extends DataLabelProvider {
-
-    /**
-     * Default constructor
-     */
-    public IRDataLabelProvider(TransactionalEditingDomain editingDomain) {
-      super(editingDomain, CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
-    }
-
-    /**
-     * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider#getText(java.lang.Object)
-     */
     @Override
     public String getText(Object object) {
       if (object instanceof InstanceRole) {

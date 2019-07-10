@@ -16,6 +16,7 @@ import java.util.Collection;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
@@ -25,7 +26,6 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IMarkerResolution2;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
-import org.polarsys.capella.common.ui.services.helper.EObjectImageProviderHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.ShowInDiagramAction;
 
 /**
@@ -81,7 +81,7 @@ public class OpenAndShowInDiagramResolver implements IMarkerResolution2 {
     String representationClassName = EObjectLabelProviderHelper.getMetaclassLabel(targetingRepresentation, false);
     label = MessageFormat.format(QUICK_FIX_LABEL_PATTERN, representationName, representationClassName);
 
-    image = EObjectImageProviderHelper.getImage(targetingRepresentation);
+    image = ExtendedImageRegistry.getInstance().getImage(EObjectLabelProviderHelper.getImage(targetingRepresentation));
     this.modelElementToSelectInDiagram = modelElementToSelectInDiagram;
   }
 

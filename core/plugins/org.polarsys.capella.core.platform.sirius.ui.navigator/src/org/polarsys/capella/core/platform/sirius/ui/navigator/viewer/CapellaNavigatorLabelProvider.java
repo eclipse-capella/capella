@@ -10,24 +10,20 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.sirius.ui.navigator.viewer;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Optional;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.jface.viewers.IFontProvider;
-import org.eclipse.sirius.business.api.query.DRepresentationQuery;
+import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator;
-import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
@@ -37,7 +33,6 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.SystemColors;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
@@ -49,42 +44,33 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.model.IWorkbenchAdapter;
 import org.eclipse.ui.navigator.IDescriptionProvider;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.model.copypaste.SharedCutPasteClipboard;
 import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
-import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 
-/**
- * The Capella navigator label provider.
- */
 public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvider
-    implements IDescriptionProvider, IFontProvider, IColorProvider {
+    implements ILabelProvider, IDescriptionProvider, IFontProvider, IColorProvider {
 
   private static final String STATUS_LINE_PATH_SEPARATOR = "::"; //$NON-NLS-1$
 
-  private Font _italicFont;
-  
+  private Font italicFont;
+
   private static final String DISABLED_REPRESENTATION_SUFFIX = "_disabled"; //$NON-NLS-1$
-
-  /**
-   * Constructs the Capella navigator label provider.
-   */
+  
   public CapellaNavigatorLabelProvider() {
-    super(CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
-  }
-
-  public CapellaNavigatorLabelProvider(AdapterFactory adapterFact) {
-    super(adapterFact);
-  }
-
-  public CapellaNavigatorLabelProvider(TransactionalEditingDomain editingDomain, AdapterFactory adapterFact) {
-    super(editingDomain, adapterFact);
+    super();
+    Font currentFont = Display.getCurrent().getSystemFont();
+    FontData[] datas = currentFont.getFontData();
+    datas[0].setStyle(SWT.ITALIC);
+    italicFont = new Font(currentFont.getDevice(), datas);
   }
 
   /**
@@ -217,136 +203,52 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
     return super.getForeground(element);
   }
 
-  /**
-   * @see org.eclipse.ui.navigator.IDescriptionProvider#getDescription(java.lang.Object)
-   */
   @Override
   public String getDescription(Object element) {
-    String result = ICommonConstants.EMPTY_STRING;
-    String slash = String.valueOf(ICommonConstants.SLASH_CHARACTER);
-
     if (element instanceof ModelElement) {
+      String slash = String.valueOf(ICommonConstants.SLASH_CHARACTER);
       ModelElement modelElement = (ModelElement) element;
       String path = modelElement.getFullLabel();
       if (path.startsWith(slash)) {
         path = path.substring(1);
       }
-      result = path.replaceAll(slash, STATUS_LINE_PATH_SEPARATOR);
-
-    } else if (element instanceof DRepresentation || element instanceof DRepresentationDescriptor) {
-      if (element instanceof DRepresentation) {
-        element = (new DRepresentationQuery((DRepresentation) element)).getRepresentationDescriptor();
-      }
-
-      ArrayList<String> values = new ArrayList<>(2);
-
-      Object modelElement = ((DRepresentationDescriptor) element).getTarget();
-      if (null != modelElement) {
-        values.add(getDescription(modelElement));
-      }
-
-      String representationName = ((DRepresentationDescriptor) element).getName();
-      if (null != representationName) {
-        values.add(representationName + getSiriusMessage((DRepresentationDescriptor) element));
-      }
-
-      result = String.join(STATUS_LINE_PATH_SEPARATOR, values);
-
-    } else if (element instanceof ItemWrapper) {
-      // Adapts the representation into a Capella element (it returns its Capella container).
-      ItemWrapper item = (ItemWrapper) element;
-      Object wrappedObject = item.getWrappedObject();
-      String description = getDescription(wrappedObject);
-      result = description;
-
-    } else if (element instanceof Viewpoint) {
-      Viewpoint viewpoint = (Viewpoint) element;
-      result = viewpoint.getName();
-
-    } else if (element instanceof RepresentationDescription) {
-      RepresentationDescription description = (RepresentationDescription) element;
-      String representationDescPath = description.getName();
-      EObject container = description.eContainer();
-      while (null != container) {
-        String containerPath = getDescription(container);
-        if (null != containerPath) {
-          representationDescPath = containerPath.concat(STATUS_LINE_PATH_SEPARATOR).concat(representationDescPath);
-        }
-        container = container.eContainer();
-      }
-      result = representationDescPath;
-
-    } else if (element instanceof EObject) {
-      String path = getText(element);
-      EObject container = ((EObject) element).eContainer();
-
-      while (null != container) {
-        String containerPath = getDescription(container);
-        if (null != containerPath) {
-          path = containerPath.concat(STATUS_LINE_PATH_SEPARATOR).concat(path);
-        }
-        if (containerPath != null && containerPath.contains(STATUS_LINE_PATH_SEPARATOR)) {
-          container = null;
-        } else {
-          container = container.eContainer();
-        }
-      }
-      result = path;
+      return path.replaceAll(slash, STATUS_LINE_PATH_SEPARATOR);
     }
-    return result;
-  }
-
-  private String getSiriusMessage(DRepresentationDescriptor element) {
-    String result = ICommonConstants.EMPTY_STRING;
-
-    if (!RepresentationHelper.isValid((DRepresentationDescriptor)element)) {
-      return " (Invalid)";
-
-    } else if (!element.isLoadedRepresentation()) {
-      result = " (Not Loaded)";
-
-    } else {
-      DRepresentation representation = element.getRepresentation();
-      if (representation instanceof DDiagram) {
-        if (((DDiagram) representation).isSynchronized()) {
-          result = " (Synchronized)";
-        } else {
-          result = " (Unsynchronized)";
-        }
-      }
+    
+    // Handle firstly for representation
+    EObject eObject = CapellaAdapterHelper.resolveEObject(element);
+    if (eObject instanceof DRepresentation) {
+      DRepresentationDescriptor descriptor = RepresentationHelper
+          .getRepresentationDescriptor((DRepresentation) eObject);
+      return RepresentationHelper.getRepresentationFullPathText(descriptor);
+    }
+    
+    if (eObject instanceof DRepresentationDescriptor) {
+      return RepresentationHelper.getRepresentationFullPathText((DRepresentationDescriptor) eObject);
     }
 
-    return result;
+    // Handle then for semantic element
+    EObject semanticElement = CapellaAdapterHelper.resolveSemanticObject(element, true);
+    if (semanticElement != null) {
+      return EObjectLabelProviderHelper.getFullPathText(semanticElement);
+    }
+    return "";
   }
 
-  /**
-   * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider#dispose()
-   */
   @Override
   public void dispose() {
-    if ((null != _italicFont) && !_italicFont.isDisposed()) {
-      _italicFont.dispose();
-      _italicFont = null;
+    if ((null != italicFont) && !italicFont.isDisposed()) {
+      italicFont.dispose();
+      italicFont = null;
     }
     super.dispose();
   }
 
-  /**
-   * @see org.eclipse.jface.viewers.IFontProvider#getFont(java.lang.Object)
-   */
   @Override
   public Font getFont(Object element) {
-    Font currentFont = Display.getCurrent().getSystemFont();
-    
     if (element instanceof Part || SharedCutPasteClipboard.getCutClipboard().isObjectCut(element)) {
-      if (_italicFont == null) {
-        FontData[] datas = currentFont.getFontData();
-        datas[0].setStyle(SWT.ITALIC);
-        _italicFont = new Font(currentFont.getDevice(), datas);
-      }
-      return _italicFont;
+      return italicFont;
     }
-    return currentFont;
+    return super.getFont(element);
   }
-  
 }

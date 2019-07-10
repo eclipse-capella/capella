@@ -16,7 +16,6 @@ import java.util.Collection;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -37,33 +36,15 @@ import org.polarsys.capella.core.data.oa.CommunicationMean;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
-import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 
-/**
- */
 public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
 
   private static String PATTERN1 = " [{0} -> {1}]{2}"; //$NON-NLS-1$
   private static String UNAMED = "<unnamed>"; //$NON-NLS-1$
   
-  private boolean disableLabelComputation;
-
-  /**
-   * Default constructor
-   */
-  public CapellaTransfertViewerLabelProvider() {
-    this(null);
-  }
-
-  /**
-   * Default constructor
-   */
-  public CapellaTransfertViewerLabelProvider(TransactionalEditingDomain editingDomain) {
-    super(editingDomain, CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
-    disableLabelComputation = CapellaUIPropertiesPlugin.getDefault().isDisableLabelComputation();
-  }
+  private boolean disableLabelComputation = CapellaUIPropertiesPlugin.getDefault().isDisableLabelComputation();
 
   /**
    * {@inheritDoc}

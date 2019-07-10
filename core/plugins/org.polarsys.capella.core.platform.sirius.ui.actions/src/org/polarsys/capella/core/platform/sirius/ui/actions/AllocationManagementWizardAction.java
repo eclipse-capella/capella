@@ -9,7 +9,6 @@
  *    Thales - initial API and implementation
  *******************************************************************************/
 
-
 package org.polarsys.capella.core.platform.sirius.ui.actions;
 
 import java.util.ArrayList;
@@ -23,15 +22,11 @@ import org.eclipse.ui.IActionDelegate;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.ef.command.AbstractReadOnlyCommand;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
-import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.ui.actions.AbstractTigAction;
 import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.platform.sirius.ui.actions.AllocationManagementData.AllocationSelectionType;
 
-/**
- */
 public class AllocationManagementWizardAction extends AbstractTigAction {
 
   /**
@@ -89,10 +84,7 @@ public class AllocationManagementWizardAction extends AbstractTigAction {
         // Open a Transfer Dialog.
         SelectElementsDialog dialog =
             new SelectElementsDialog(getActiveShell(),
-            	TransactionHelper.getEditingDomain(availableElements),
-            	CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
-                Messages.AllocationManagementWizardAction_Title, _dataInstance.getDataMessage(), availableElements,
-                _dataInstance.isMultiSelection(contextualMenuSelections), null);
+            	Messages.AllocationManagementWizardAction_Title, _dataInstance.getDataMessage(), availableElements);
         if (Window.OK == dialog.open()) {
           final List<EObject> wizardSelections = new ArrayList<EObject>();
           List<? extends EObject> result = dialog.getResult();

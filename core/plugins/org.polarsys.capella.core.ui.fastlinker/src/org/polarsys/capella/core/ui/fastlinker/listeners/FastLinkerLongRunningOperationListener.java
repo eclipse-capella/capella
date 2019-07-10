@@ -50,7 +50,7 @@ public class FastLinkerLongRunningOperationListener implements ILongRunningListe
 				// Get active page view references.
 				IViewReference[] viewReferences = workbench.getActiveWorkbenchWindow().getActivePage().getViewReferences();
 				for (IViewReference viewReference : viewReferences) {
-					if (result[0].ID.equals(viewReference.getId())) {
+					if (FastLinkerView.VIEW_ID.equals(viewReference.getId())) {
 						try {
 							result[0] = FastLinkerView.class.cast(viewReference.getView(false));
 						} catch (Exception e) {

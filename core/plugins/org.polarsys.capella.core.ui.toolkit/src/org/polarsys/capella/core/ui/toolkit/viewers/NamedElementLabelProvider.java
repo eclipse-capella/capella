@@ -10,31 +10,17 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.toolkit.viewers;
 
-import org.eclipse.jface.viewers.IColorProvider;
-
-import org.polarsys.capella.common.helpers.StringExt;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.helpers.StringExt;
+import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 
-/**
- * The named element label provider.
- */
-public class NamedElementLabelProvider extends CapellaElementLabelProvider implements IColorProvider {
+public class NamedElementLabelProvider extends MDEAdapterFactoryLabelProvider {
 
-  /**
-   * Constructs the named element label provider.
-   */
-  public NamedElementLabelProvider() {
-    // Do nothing.
-  }
-
-  /**
-   * @see org.eclipse.jface.viewers.LabelProvider#getText(java.lang.Object)
-   */
   @Override
-  public String getText(Object element_p) {
-    if (element_p instanceof AbstractNamedElement) {
-      String name = ((AbstractNamedElement) element_p).getName();
-      String path = ((AbstractNamedElement) element_p).getFullLabel();
+  public String getText(Object element) {
+    if (element instanceof AbstractNamedElement) {
+      String name = ((AbstractNamedElement) element).getName();
+      String path = ((AbstractNamedElement) element).getFullLabel();
       if (path.startsWith("/")) { //$NON-NLS-1$
         path = path.substring(1);
       }
@@ -43,6 +29,6 @@ public class NamedElementLabelProvider extends CapellaElementLabelProvider imple
 
       return name + " - " + path; //$NON-NLS-1$
     }
-    return super.getText(element_p);
+    return super.getText(element);
   }
 }

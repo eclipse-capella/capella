@@ -34,6 +34,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.resource.AirdResource;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
@@ -41,7 +42,9 @@ import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.utils.RunnableWithBooleanResult;
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
@@ -439,4 +442,34 @@ public class RepresentationHelper {
   public static boolean isValid(DRepresentationDescriptor descriptor) {
     return new DRepresentationDescriptorQuery(descriptor).isRepresentationValid();
   }
+  
+  public static String getRepresentationStatusText(DRepresentationDescriptor element) {
+    String result = ICommonConstants.EMPTY_STRING;
+
+    if (!new DRepresentationDescriptorQuery((DRepresentationDescriptor) element).isRepresentationValid()) {
+      return "(Invalid)";
+    } else if (!element.isLoadedRepresentation()) {
+      result = "(Not Loaded)";
+    } else {
+      DRepresentation representation = element.getRepresentation();
+      if (representation instanceof DDiagram) {
+        if (((DDiagram) representation).isSynchronized()) {
+          result = "(Synchronized)";
+        } else {
+          result = "(Unsynchronized)";
+        }
+      }
+    }
+    return result;
+  }
+  
+  
+  public static String getRepresentationFullPathText(DRepresentationDescriptor descriptor) {
+    EObject semanticElement = descriptor.getTarget();
+    String fullPathText = EObjectLabelProviderHelper.getFullPathText(semanticElement);
+    fullPathText += EObjectLabelProviderHelper.FULL_PATH_SEPARATOR + descriptor.getName();
+    fullPathText += " " + RepresentationHelper.getRepresentationStatusText(descriptor);
+    return fullPathText;
+  }
+  
 }

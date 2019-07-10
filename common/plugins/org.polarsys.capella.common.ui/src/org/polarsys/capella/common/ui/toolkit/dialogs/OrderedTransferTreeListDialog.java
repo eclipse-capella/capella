@@ -13,15 +13,12 @@ package org.polarsys.capella.common.ui.toolkit.dialogs;
 
 import java.util.List;
 
-import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
-
 import org.polarsys.capella.common.ui.toolkit.viewers.data.AbstractData;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.DataLabelProvider;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.MultipleValidElementsTreeData;
@@ -33,28 +30,11 @@ import org.polarsys.capella.common.ui.toolkit.widgets.handler.SelectionChangedHa
  * Dialog that displays a {@link OrderedTransferTreeListViewer}
  */
 public class OrderedTransferTreeListDialog extends TransferTreeListDialog {
-  /**
-   * Constructor.
-   * @param parentShell
-   * @param editingDomain
-   * @param adapterFactory
-   * @param dialogTitle
-   * @param dialogMessage
-   */
-  public OrderedTransferTreeListDialog(Shell parentShell, TransactionalEditingDomain editingDomain, AdapterFactory adapterFactory, String dialogTitle, String dialogMessage) {
-    super(parentShell, dialogTitle, dialogMessage, editingDomain, adapterFactory);
+
+  public OrderedTransferTreeListDialog(Shell parentShell, String dialogTitle, String dialogMessage) {
+    super(parentShell, dialogTitle, dialogMessage);
   }
 
-  /**
-   * Constructor.
-   * @param parentShell
-   * @param dialogTitle
-   * @param dialogMessage
-   * @param leftLabelProvider
-   * @param rightLabelProvider
-   * @param leftViewerStyle
-   * @param rightViewerStyle
-   */
   public OrderedTransferTreeListDialog(Shell parentShell, String dialogTitle, String dialogMessage,
     DataLabelProvider leftLabelProvider, DataLabelProvider rightLabelProvider,
     int leftViewerStyle, int rightViewerStyle)

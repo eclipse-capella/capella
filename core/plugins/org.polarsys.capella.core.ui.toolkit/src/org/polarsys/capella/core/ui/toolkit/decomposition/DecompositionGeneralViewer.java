@@ -279,7 +279,7 @@ public class DecompositionGeneralViewer extends FieldsViewer implements IDecompo
    * @param model_p
    */
   private void populateTree(DecompositionModel model_p) {
-    _sourceTreeViewer.setLabelProvider(new DecompositionLabelProvider(true, _decompositionModel.getImgRegistry()));
+    _sourceTreeViewer.setLabelProvider(new DecompositionLabelProvider(true));
 
     if (_isLeftNRight) {
       int decompSize = _decompositionModel.getDecompositions().size();

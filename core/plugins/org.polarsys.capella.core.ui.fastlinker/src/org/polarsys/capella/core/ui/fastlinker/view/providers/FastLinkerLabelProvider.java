@@ -19,64 +19,67 @@ import org.eclipse.swt.graphics.Image;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.CapellaNavigatorLabelProvider;
 import org.polarsys.capella.core.ui.fastlinker.FastLinkerManager;
 
+// TODO: should it inherit simply MDEAdapterFactoryLabelProvider
 public class FastLinkerLabelProvider extends CapellaNavigatorLabelProvider {
+  
+  @Override
+  public Image getImage(Object object) {
+    if (object instanceof Collection) {
+      Collection<?> collection = (Collection<?>) object;
 
-	@Override
-	public Image getImage(Object object) {
-		if (object instanceof Collection) {
-			Collection<?> collection = (Collection<?>)object;
-			if (collection.isEmpty())
-				return null;
-			else if (collection.size() == 1)
-				return super
-						.getImage(collection.iterator().next());
-			else {
-				Object next = collection.iterator().next();
-				EClass eClass = ((EObject) next).eClass();
-				Iterator<?> it = collection.iterator();
-				while (it.hasNext()) {
-					Object current = it.next();
-					if (current instanceof EObject) {
-						if (!((EObject) current).eClass().equals(eClass))
-							return null;
-					} else {
-						return null;
-					}
-					return super.getImage(collection.iterator()
-							.next());
-				}
-			}
-		}
-		return super.getImage(object);
-	}
+      if (collection.isEmpty()) {
+        return null;
+      }
 
-	@Override
-	public String getText(Object object) {
-		if (object instanceof Collection) {
-			if (((Collection) object).isEmpty())
-				return null;
-			if (((Collection) object).size() == 1)
-				return super.getText(((Collection) object).iterator().next());
-			else {
-				EClass eClass = FastLinkerManager.getCommonType((Collection) object);
-				if (eClass != null) {
-				Iterator it = ((Collection) object).iterator();
-				String array = "";
-				while (it.hasNext()) {
-					Object current = it.next();
-					if (current instanceof EObject) {
-						
-						array += ", " + super.getText(current);
-					} else {
-						return null;
-					}
+      if (collection.size() == 1) {
+        return super.getImage(collection.iterator().next());
+      }
 
-				}
-				return eClass.getName() + " [ " + array.substring(2) + " ]";
-				}
-			}
-		}
-		return super.getText(object);
-	}
+      Object next = collection.iterator().next();
+      EClass eClass = ((EObject) next).eClass();
+      Iterator<?> it = collection.iterator();
+      while (it.hasNext()) {
+        Object current = it.next();
+        if (current instanceof EObject) {
+          if (!((EObject) current).eClass().equals(eClass))
+            return null;
+        } else {
+          return null;
+        }
+        return super.getImage(collection.iterator().next());
+      }
+    }
+    return super.getImage(object);
+  }
+
+  @Override
+  public String getText(Object object) {
+    if (object instanceof Collection) {
+      Collection<?> collection = (Collection<?>) object;
+
+      if (collection.isEmpty()) {
+        return null;
+      }
+      if (collection.size() == 1) {
+        return super.getText(collection.iterator().next());
+      }
+      EClass eClass = FastLinkerManager.getCommonType((Collection<? extends EObject>) collection);
+      if (eClass != null) {
+        Iterator<?> it = collection.iterator();
+        String array = "";
+        while (it.hasNext()) {
+          Object current = it.next();
+          if (current instanceof EObject) {
+
+            array += ", " + super.getText(current);
+          } else {
+            return null;
+          }
+        }
+        return eClass.getName() + " [ " + array.substring(2) + " ]";
+      }
+    }
+    return super.getText(object);
+  }
 
 }

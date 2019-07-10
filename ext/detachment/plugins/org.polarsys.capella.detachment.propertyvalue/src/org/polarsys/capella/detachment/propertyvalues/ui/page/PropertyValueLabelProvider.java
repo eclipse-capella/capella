@@ -12,28 +12,19 @@ package org.polarsys.capella.detachment.propertyvalues.ui.page;
 
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.model.label.LabelRetriever;
-import org.polarsys.capella.core.ui.toolkit.viewers.CapellaElementLabelProvider;
+import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 
-public class PropertyValueLabelProvider extends CapellaElementLabelProvider {
-	
-	@Override
-	public String getColumnText(Object element, int columnIndex) {
-		
-		switch (columnIndex){
-		case 0:
-		{
-			
-			return LabelRetriever.getLabel((EObject)element);
-		}
-		case 1:
-		{
-			return LabelRetriever.getFullLabel((EObject)element);
-		}
-		default:
-		{
-			//do nothing
-		}
-		}
-		return null;
-	}
+public class PropertyValueLabelProvider extends MDEAdapterFactoryLabelProvider {
+
+  @Override
+  public String getColumnText(Object element, int columnIndex) {
+
+    if (columnIndex == 0) {
+      return LabelRetriever.getLabel((EObject) element);
+    }
+    if (columnIndex == 1) {
+      return LabelRetriever.getFullLabel((EObject) element);
+    }
+    return null;
+  }
 }

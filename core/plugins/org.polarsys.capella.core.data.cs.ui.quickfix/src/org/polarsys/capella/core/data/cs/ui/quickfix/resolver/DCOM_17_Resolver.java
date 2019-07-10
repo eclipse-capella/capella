@@ -17,12 +17,11 @@ import java.util.Set;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
-import org.polarsys.capella.common.ui.services.helper.EObjectImageProviderHelper;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Interface;
@@ -35,9 +34,6 @@ import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.NavigateAc
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
 
-/**
- *
- */
 public class DCOM_17_Resolver  extends AbstractCapellaMarkerResolution {
 
 	  /**
@@ -88,7 +84,7 @@ public class DCOM_17_Resolver  extends AbstractCapellaMarkerResolution {
 		    // Create a navigate action that enables this navigation.
 	        NavigateAction action = new NavigateAction(abstractExchangeItemToAdd, capellaCommonNavigator.getCommonViewer());
 	        action.setText(EObjectLabelProviderHelper.getText(abstractExchangeItemToAdd));
-	        action.setImageDescriptor(ImageDescriptor.createFromImage(EObjectImageProviderHelper.getImage(abstractExchangeItemToAdd)));
+	        action.setImageDescriptor(ExtendedImageRegistry.getInstance().getImageDescriptor(EObjectLabelProviderHelper.getImage(abstractExchangeItemToAdd)));
 		    action.run();
 	}
 	

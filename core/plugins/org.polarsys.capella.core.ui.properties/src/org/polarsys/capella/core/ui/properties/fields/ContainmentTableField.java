@@ -15,12 +15,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.ColumnViewer;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -43,8 +41,6 @@ import org.polarsys.capella.core.ui.properties.viewers.TableDelegatedViewer;
 import org.polarsys.capella.core.ui.toolkit.actions.move.MoveDownAction;
 import org.polarsys.capella.core.ui.toolkit.actions.move.MoveUpAction;
 
-/**
- */
 public class ContainmentTableField extends AbstractStructuredRepresentationField {
 
   protected EReference _referencerFeature;
@@ -248,19 +244,8 @@ public class ContainmentTableField extends AbstractStructuredRepresentationField
     return availableElements;
   }
 
-  /**
-   * Get the selection element dialog.<br>
-   * Default implementation returns a {@link SelectElementsDialog} that only allows the end-user to select elements.
-   * @param parentShell
-   * @param editingDomain
-   * @param adapterFactory
-   * @param dialogTitle
-   * @param dialogMessage
-   * @param displayedElements
-   * @return
-   */
-  protected SelectElementsDialog getSelectionElementDialog(Shell parentShell, TransactionalEditingDomain editingDomain, AdapterFactory adapterFactory,
+  protected SelectElementsDialog getSelectionElementDialog(Shell parentShell,
       String dialogTitle, String dialogMessage, List<? extends EObject> displayedElements) {
-    return new SelectElementsDialog(parentShell, editingDomain, adapterFactory, dialogTitle, dialogMessage, displayedElements, true, null);
+    return new SelectElementsDialog(parentShell, dialogTitle, dialogMessage, displayedElements);
   }
 }

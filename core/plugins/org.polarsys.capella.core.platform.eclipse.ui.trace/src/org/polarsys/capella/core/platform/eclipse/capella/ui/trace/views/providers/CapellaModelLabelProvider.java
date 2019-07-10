@@ -16,16 +16,11 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.messages.TraceUtil;
-import org.polarsys.capella.core.ui.toolkit.viewers.CapellaElementLabelProvider;
+import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 
-/**
- */
-public class CapellaModelLabelProvider extends CapellaElementLabelProvider implements IColorProvider {
+public class CapellaModelLabelProvider extends MDEAdapterFactoryLabelProvider implements IColorProvider {
 
-	/**
-	 * 
-	 */
 	private CapellaElement _currentElement;
 	private boolean _isNewTrace = false;
 
@@ -33,7 +28,7 @@ public class CapellaModelLabelProvider extends CapellaElementLabelProvider imple
 	 * @param currentNamedElement_p
 	 */
 	public CapellaModelLabelProvider(CapellaElement currentNamedElement_p) {
-		super(currentNamedElement_p);
+		super();
 		_currentElement = currentNamedElement_p;
 	}
 
@@ -42,7 +37,7 @@ public class CapellaModelLabelProvider extends CapellaElementLabelProvider imple
 	 * @param isNewTrace_p
 	 */
 	public CapellaModelLabelProvider(CapellaElement currentNamedElement_p, boolean isNewTrace_p) {
-		super(currentNamedElement_p);
+		super();
 		_currentElement = currentNamedElement_p;
 		_isNewTrace = isNewTrace_p;
 	}

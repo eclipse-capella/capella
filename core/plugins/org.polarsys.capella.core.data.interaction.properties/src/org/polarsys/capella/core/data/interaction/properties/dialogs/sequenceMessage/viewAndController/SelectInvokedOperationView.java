@@ -13,9 +13,7 @@ package org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMe
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.viewers.AbstractTreeViewer;
 import org.eclipse.jface.viewers.ISelection;
@@ -77,8 +75,6 @@ public class SelectInvokedOperationView extends SelectElementsDialog {
 
 	public SelectInvokedOperationView(
 			Shell parentShell, 
-			TransactionalEditingDomain editingDomain, 
-			AdapterFactory adapterFactory, 
 			String dialogTitle, 
 			String dialogMessage, 
 			ISelectInvokedOperationModel model,
@@ -87,7 +83,7 @@ public class SelectInvokedOperationView extends SelectElementsDialog {
 		super(
 				parentShell, 
 				new DataContentProvider(),
-				new SelectInvokedOperationLabelProvider(editingDomain, adapterFactory, model),	
+				new SelectInvokedOperationLabelProvider(model),	
 				dialogTitle, 
 				dialogMessage, 
 				model.getPossibleElements(),

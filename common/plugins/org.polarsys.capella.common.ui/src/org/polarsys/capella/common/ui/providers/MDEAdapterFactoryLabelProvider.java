@@ -12,15 +12,13 @@
 package org.polarsys.capella.common.ui.providers;
 
 import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.swt.graphics.Image;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.common.ui.MdeCommonUiActivator;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 
-/**
- */
-public class MDEAdapterFactoryLabelProvider extends CapellaTransactionalAdapterFactoryLabelProvider {
+public class MDEAdapterFactoryLabelProvider extends AdapterFactoryLabelProvider {
   /**
    * Delegated label provider (shared for all instances).
    */
@@ -31,26 +29,12 @@ public class MDEAdapterFactoryLabelProvider extends CapellaTransactionalAdapterF
    */
   private static boolean __alreadyLookup;
 
-  /**
-   * Constructor.
-   * @param adapterFactory
-   */
-  public MDEAdapterFactoryLabelProvider(AdapterFactory adapterFactory) {
-    super(adapterFactory);
+  // By default, we use the AdapterFactory from CapellaAdapterFactoryProvider
+  // If other AdapterFactory is needed, there is a public method MDEAdapterFactoryLabelProvider.setAdapterFactory()
+  public MDEAdapterFactoryLabelProvider() {
+    super(CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
   }
 
-  /**
-   * Constructor.
-   * @param editingDomain
-   * @param adapterFactory
-   */
-  public MDEAdapterFactoryLabelProvider(TransactionalEditingDomain editingDomain, AdapterFactory adapterFactory) {
-    super(editingDomain, adapterFactory);
-  }
-
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public Image getImage(Object object) {
     Image result = super.getImage(object);
@@ -64,9 +48,6 @@ public class MDEAdapterFactoryLabelProvider extends CapellaTransactionalAdapterF
     return result;
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public String getText(Object object) {
     String text = super.getText(object);
@@ -80,9 +61,6 @@ public class MDEAdapterFactoryLabelProvider extends CapellaTransactionalAdapterF
     return text;
   }
 
-  /**
-   * Get the unique {@link ILabelProviderDelegation}.
-   */
   protected ILabelProviderDelegation getDelegatedLabelProvider() {
     if (!__alreadyLookup && (null == __delegatedLabelProvider)) {
       // Load ITabbedPropertiesLabelProviderDelegation contributor if any.

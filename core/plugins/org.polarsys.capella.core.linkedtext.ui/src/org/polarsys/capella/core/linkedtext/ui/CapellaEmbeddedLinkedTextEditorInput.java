@@ -12,9 +12,7 @@ package org.polarsys.capella.core.linkedtext.ui;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.ValueSpecification;
@@ -61,23 +59,20 @@ public abstract class CapellaEmbeddedLinkedTextEditorInput implements LinkedText
   @Override
   public ILabelProvider getLabelProvider() {
     if (labelProvider == null && documentBase != null) {
-      AdapterFactoryEditingDomain domain = (AdapterFactoryEditingDomain) AdapterFactoryEditingDomain.getEditingDomainFor(documentBase);
-      if(domain != null) {
-        labelProvider = new MDEAdapterFactoryLabelProvider((TransactionalEditingDomain) domain, domain.getAdapterFactory()) {
-          @Override
-          public String getText(Object object) {
-            if (object instanceof AbstractNamedElement) {
-              String name = ((AbstractNamedElement) object).getName();
-              if ((name != null) && (name.length() > 0)) {
-                return name;
-              }
-              return "[Unnamed " + ((EObject) object).eClass().getName() + "]"; //$NON-NLS-1$ //$NON-NLS-2$
+      labelProvider = new MDEAdapterFactoryLabelProvider() {
+        @Override
+        public String getText(Object object) {
+          if (object instanceof AbstractNamedElement) {
+            String name = ((AbstractNamedElement) object).getName();
+            if ((name != null) && (name.length() > 0)) {
+              return name;
             }
-            return super.getText(object);
+            return "[Unnamed " + ((EObject) object).eClass().getName() + "]"; //$NON-NLS-1$ //$NON-NLS-2$
           }
-        };
-        ((AdapterFactoryLabelProvider) labelProvider).setFireLabelUpdateNotifications(true);        
-      }
+          return super.getText(object);
+        }
+      };
+      ((AdapterFactoryLabelProvider) labelProvider).setFireLabelUpdateNotifications(true);        
     }
     return labelProvider;
   }

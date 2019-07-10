@@ -14,9 +14,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
@@ -79,22 +77,17 @@ public class SelectOrCreateFunctionalExchangeDialog extends SelectElementsDialog
   String newFEName = "";
 
   Shell parentShell;
-  TransactionalEditingDomain editingDomain;
-  AdapterFactory adapterFactory;
 
   Set<AbstractFunction> availableSourceFunctions;
   Set<AbstractFunction> availableTargetFunctions;
 
-  public SelectOrCreateFunctionalExchangeDialog(Shell parentShell, TransactionalEditingDomain editingDomain,
-      AdapterFactory adapterFactory, Set<FunctionalExchange> availableFEs,
+  public SelectOrCreateFunctionalExchangeDialog(Shell parentShell, Set<FunctionalExchange> availableFEs,
       Set<AbstractFunction> availableSourceFunctions, Set<AbstractFunction> availableTargetFunctions) {
-    super(parentShell, editingDomain, adapterFactory, "Select or create Functional Exchange", "Select or create Functional Exchange", availableFEs);
+    super(parentShell, "Select or create Functional Exchange", "Select or create Functional Exchange", availableFEs);
     this.availableFCILinks = availableFEs;
     this.availableFCIFunctions = availableSourceFunctions;
 
     this.parentShell = parentShell;
-    this.editingDomain = editingDomain;
-    this.adapterFactory = adapterFactory;
 
     this.availableSourceFunctions = availableSourceFunctions;
     this.availableTargetFunctions = availableTargetFunctions;
@@ -202,8 +195,7 @@ public class SelectOrCreateFunctionalExchangeDialog extends SelectElementsDialog
   }
   
   private AbstractFunction selectAbstractFunction(Set<AbstractFunction> availableSourceFunctions2, String mesage) {
-    SelectElementsDialog dialog = new SelectElementsDialog(parentShell, editingDomain, adapterFactory,
-        "Select a Function", mesage, availableSourceFunctions2);
+    SelectElementsDialog dialog = new SelectElementsDialog(parentShell, "Select a Function", mesage, availableSourceFunctions2);
     if (dialog.open() == OK) {
       EObject selectedElement = dialog.getResult().stream().findFirst().orElse(null);
       if (selectedElement instanceof AbstractFunction) {

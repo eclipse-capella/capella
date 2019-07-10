@@ -14,20 +14,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.swt.graphics.Image;
-
-import org.polarsys.capella.core.ui.toolkit.viewers.CapellaElementLabelProvider;
+import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 import org.polarsys.capella.core.refinement.framework.ui.model.SelectionItemNode;
 
-/**
- */
-public class SelectionLabelProvider extends CapellaElementLabelProvider {
-
-	/**
-	 * Constructor
-	 */
-	public SelectionLabelProvider() {
-		super();
-	}
+public class SelectionLabelProvider extends MDEAdapterFactoryLabelProvider {
 
 	/**
 	 * @see ILabelProvider#getImage(Object)

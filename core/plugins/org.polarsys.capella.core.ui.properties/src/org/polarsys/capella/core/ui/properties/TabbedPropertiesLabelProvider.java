@@ -23,20 +23,13 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.common.ui.business.api.views.properties.tabbed.ILabelProviderProvider;
 import org.eclipse.swt.graphics.Image;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
+import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
-import org.polarsys.capella.core.ui.toolkit.viewers.CapellaElementLabelProvider;
 
 /**
  * This class handles title label for tabbed properties.
  */
-public class TabbedPropertiesLabelProvider extends CapellaElementLabelProvider implements ILabelProviderProvider {
-
-  /**
-   * Constructor
-   */
-  public TabbedPropertiesLabelProvider() {
-    super();
-  }
+public class TabbedPropertiesLabelProvider extends MDEAdapterFactoryLabelProvider implements ILabelProviderProvider {
 
   /**
    * This method overrides the AdapterFactoryLabelProvider getText method in order to obtain the desired label values. The returned string will have the

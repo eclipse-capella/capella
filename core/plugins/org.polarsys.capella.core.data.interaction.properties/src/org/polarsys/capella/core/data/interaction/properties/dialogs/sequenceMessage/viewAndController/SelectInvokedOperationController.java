@@ -21,7 +21,6 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Button;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
-import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.information.ExchangeItem;
@@ -30,7 +29,6 @@ import org.polarsys.capella.core.data.interaction.MessageKind;
 import org.polarsys.capella.core.data.interaction.properties.dialogs.Messages;
 import org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMessage.model.SelectInvokedOperationModel;
 import org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMessage.model.communications.AbstractCommunication;
-import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 
 public class SelectInvokedOperationController {
 
@@ -148,8 +146,7 @@ public class SelectInvokedOperationController {
       @Override
       public void widgetSelected(SelectionEvent event) {
         SelectElementsDialog selectInterfaceDialog =
-            new SelectElementsDialog(view.getTheParentShell(), TransactionHelper.getEditingDomain(model.getInterfaces(false, false)),
-                CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(), Messages.SelectOperationDialog_SelectInterfaceDialog_Title,
+            new SelectElementsDialog(view.getTheParentShell(), Messages.SelectOperationDialog_SelectInterfaceDialog_Title,
                 Messages.SelectOperationDialog_SelectInterfaceDialog_Message, model.getInterfaces(true, false));
         if (Window.OK == selectInterfaceDialog.open()) {
           AbstractNamedElement selectedInterface = (AbstractNamedElement) selectInterfaceDialog.getResult().get(0);

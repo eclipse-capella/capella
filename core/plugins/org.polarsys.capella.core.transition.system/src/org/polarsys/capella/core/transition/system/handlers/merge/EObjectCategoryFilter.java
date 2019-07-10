@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.osgi.util.NLS;
-import org.polarsys.capella.common.ui.services.helper.EObjectImageProviderHelper;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.model.handler.helpers.HoldingResourceHelper;
@@ -50,7 +49,7 @@ public class EObjectCategoryFilter extends CategoryFilter {
       EObject obj = ((EPackage) iconClazz.eContainer()).getEFactoryInstance().create(iconClazz);
       adapt(obj);
       res.getContents().add(obj);
-      this.image = EObjectImageProviderHelper.getImage(obj);
+      this.image = EObjectLabelProviderHelper.getImage(obj);
       this.name = EObjectLabelProviderHelper.getMetaclassLabel(obj, false);
       this.description = NLS.bind(Messages.EObjectCategoryFilter_Description, this.name);
       this.id = getId() + "." + iconClazz.getName(); //$NON-NLS-1$

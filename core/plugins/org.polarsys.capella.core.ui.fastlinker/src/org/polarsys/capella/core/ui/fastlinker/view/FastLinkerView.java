@@ -24,16 +24,13 @@ import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.util.LocalSelectionTransfer;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DropTarget;
 import org.eclipse.swt.dnd.DropTargetAdapter;
 import org.eclipse.swt.dnd.DropTargetEvent;
-import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -58,27 +55,16 @@ import org.polarsys.capella.core.ui.fastlinker.view.providers.FastLinkerLabelPro
 import org.polarsys.capella.core.ui.properties.CapellaTabbedPropertySheetPage;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 
-/**
- * The FastLinker graphical view.
- */
 public class FastLinkerView extends ViewPart implements ITabbedPropertySheetPageContributor, IEditingDomainProvider {
 
-  /**
-   * The Capella project explorer view identifier.
-   */
-  public static final String ID = "org.polarsys.capella.core.ui.fastlinker.view"; //$NON-NLS-1$ 
-
-  /**
-   * The FastLinker pin menu creator.
-   */
   protected class PinDropDownMenuCreator implements IMenuCreator {
     private Menu menu;
 
     @SuppressWarnings("rawtypes")
 	protected MenuItem createPinMenuItem(Menu parentMenu, final Collection modelElement, Collection<EObject> pinnedElement) {
       MenuItem menuItem = new MenuItem(parentMenu, SWT.CHECK);
-      menuItem.setImage(capellaNavigatorLabelProvider.getImage(modelElement));
-      menuItem.setText(capellaNavigatorLabelProvider.getText(modelElement));
+      menuItem.setImage(fastLinkerLabelProvider.getImage(modelElement));
+      menuItem.setText(fastLinkerLabelProvider.getText(modelElement));
       menuItem.setSelection(modelElement == pinnedElement);
       menuItem.addSelectionListener(new SelectionAdapter() {
         @Override
@@ -127,7 +113,7 @@ public class FastLinkerView extends ViewPart implements ITabbedPropertySheetPage
 
   protected FastLinkerFigureCanvas fastLinkerFigureCanvas;
 
-  protected FastLinkerLabelProvider capellaNavigatorLabelProvider;
+  protected FastLinkerLabelProvider fastLinkerLabelProvider;
 
   protected Action pinElementAction;
 
@@ -156,9 +142,9 @@ public class FastLinkerView extends ViewPart implements ITabbedPropertySheetPage
     };
 
     String firstElementName =
-        capellaNavigatorLabelProvider.getText(FastLinkerActivator.getDefault().getFastLinkerManager().getCurrentState().getFirstElement());
+        fastLinkerLabelProvider.getText(FastLinkerActivator.getDefault().getFastLinkerManager().getCurrentState().getFirstElement());
     String secondElementName =
-        capellaNavigatorLabelProvider.getText(FastLinkerActivator.getDefault().getFastLinkerManager().getCurrentState().getSecondElement());
+        fastLinkerLabelProvider.getText(FastLinkerActivator.getDefault().getFastLinkerManager().getCurrentState().getSecondElement());
     Menu myMenu = new Menu(fastLinkerFigureCanvas);
     if (!firstToSecondCommands.isEmpty() && !secondToFirstCommands.isEmpty()) {
       // Create first to second sub menu.
@@ -194,9 +180,6 @@ public class FastLinkerView extends ViewPart implements ITabbedPropertySheetPage
     return selectedCommand[0];
   }
 
-  /**
-   * Create view actions.
-   */
   protected void createActions() {
     IToolBarManager toolBarManager = getViewSite().getActionBars().getToolBarManager();
     // Clear action.
@@ -207,10 +190,6 @@ public class FastLinkerView extends ViewPart implements ITabbedPropertySheetPage
     toolBarManager.add(pinElementAction);
   }
 
-  /**
-   * Clear action creation.
-   * @return
-   */
   protected Action createClearAction() {
     Action action = new Action(Messages.FastLinkerView_Action_ClearView_Text) {
       @Override
@@ -223,42 +202,22 @@ public class FastLinkerView extends ViewPart implements ITabbedPropertySheetPage
     return action;
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public void createPartControl(Composite parent) {
     parent.setLayout(new FillLayout());
     // Label provider for status bar.
-    capellaNavigatorLabelProvider = new FastLinkerLabelProvider();
+    fastLinkerLabelProvider = new FastLinkerLabelProvider();
 
     fastLinkerFigureCanvas = new FastLinkerFigureCanvas(parent, SWT.NONE);
-    fastLinkerFigureCanvas.addSelectionChangedListener(new ISelectionChangedListener() {
-      /**
-       * {@inheritDoc}
-       */
-      @Override
-      public void selectionChanged(SelectionChangedEvent event) {
-        refreshPropertyPage(event.getSelectionProvider());
-        updateStatusBar(getFirstModelElementFromSelection(event.getSelection()));
-      }
+    fastLinkerFigureCanvas.addSelectionChangedListener(event -> {
+      refreshPropertyPage(event.getSelectionProvider());
+      updateStatusBar(getFirstModelElementFromSelection(event.getSelection()));
     });
-    fastLinkerFigureCanvas.addDoubleClickListener(new IDoubleClickListener() {
-      /**
-       * {@inheritDoc}
-       */
-      @SuppressWarnings("rawtypes")
-  	  @Override
-      public void doubleClick(SelectionChangedEvent event) {
-       Collection doubleClickedModelElement = getFirstModelElementFromSelection(event
-								.getSelection());
-						if (null != doubleClickedModelElement
-								&& !doubleClickedModelElement.isEmpty()) {
-							CapellaUIPropertiesPlugin.getDefault().openWizard(
-									(EObject) doubleClickedModelElement
-											.iterator().next());// TODO only for
-																// MA3
-						}
+    fastLinkerFigureCanvas.addDoubleClickListener(event -> {
+      Collection<?> doubleClickedModelElement = getFirstModelElementFromSelection(event.getSelection());
+      if (null != doubleClickedModelElement && !doubleClickedModelElement.isEmpty()) {
+        // TODO only forMA3
+        CapellaUIPropertiesPlugin.getDefault().openWizard((EObject) doubleClickedModelElement.iterator().next());
       }
     });
 
@@ -270,7 +229,7 @@ public class FastLinkerView extends ViewPart implements ITabbedPropertySheetPage
     // Allow data to be copied or moved to the drop target
     int operations = DND.DROP_MOVE;
     DropTarget target = new DropTarget(fastLinkerFigureCanvas, operations);
-    target.setTransfer(new Transfer[] { LocalSelectionTransfer.getTransfer() });
+    target.setTransfer(LocalSelectionTransfer.getTransfer());
     target.addDropListener(new DropTargetAdapter() {
       @SuppressWarnings("rawtypes")
 	  @Override
@@ -291,10 +250,6 @@ public class FastLinkerView extends ViewPart implements ITabbedPropertySheetPage
     update();
   }
 
-  /**
-   * Pin/Unpin action creation.
-   * @return
-   */
   protected Action createPinElementAction() {
     Action action = new Action(Messages.FastLinkerView_Action_PinUnpinSelectedElement_Text, IAction.AS_DROP_DOWN_MENU) {
       /**
@@ -328,9 +283,6 @@ public class FastLinkerView extends ViewPart implements ITabbedPropertySheetPage
     }
   }
 
-  /**
-   * @see org.eclipse.ui.navigator.CommonNavigator#getAdapter(java.lang.Class)
-   */
   @SuppressWarnings("rawtypes")
   @Override
   public Object getAdapter(Class adapter) {
@@ -340,17 +292,11 @@ public class FastLinkerView extends ViewPart implements ITabbedPropertySheetPage
     return super.getAdapter(adapter);
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public String getContributorId() {
     return CapellaUIPropertiesPlugin.PROPERTIES_CONTRIBUTOR;
   }
 
-  /**
-   * @see org.eclipse.emf.edit.domain.IEditingDomainProvider#getEditingDomain()
-   */
   @Override
   public EditingDomain getEditingDomain() {
 	ISelection selection = fastLinkerFigureCanvas.getSelection();
@@ -378,27 +324,18 @@ public class FastLinkerView extends ViewPart implements ITabbedPropertySheetPage
 			if (!(firstElement instanceof ModelElement)) {
 				return null;
 			}
-		return (Collection) firstElements;
+		return firstElements;
 	}
 
-  /**
-   * Gets the property sheet page.
-   */
   protected TabbedPropertySheetPage getPropertySheetPage() {
     if (null == propertySheetPage) {
       propertySheetPage = new CapellaTabbedPropertySheetPage(this) {
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public void dispose() {
           super.dispose();
           propertySheetPage = null;
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public void init(IPageSite pageSite) {
           super.init(pageSite);
@@ -409,12 +346,6 @@ public class FastLinkerView extends ViewPart implements ITabbedPropertySheetPage
     return propertySheetPage;
   }
 
-  /**
-   * Initialize a context menu for given viewer.
-   * @param menuManagerText
-   * @param menuManagerId
-   * @param viewer
-   */
   private void initializeContextMenu() {
     MenuManager menuManager = new MenuManager("FastLinkerPopupMenu", VIEW_ID); //$NON-NLS-1$
     menuManager.setRemoveAllWhenShown(true);
@@ -437,9 +368,6 @@ public class FastLinkerView extends ViewPart implements ITabbedPropertySheetPage
     }
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public void setFocus() {
     // Give focus to the figure canvas (if omitted, RuntimeExceptions can be raised because of recursive view activations).
@@ -467,8 +395,14 @@ public class FastLinkerView extends ViewPart implements ITabbedPropertySheetPage
    * @param elementToDisplay
    */
   public void updateStatusBar(Object elementToDisplay) {
-    Image elementImage = capellaNavigatorLabelProvider.getImage(elementToDisplay);
-    String elementDescription = capellaNavigatorLabelProvider.getDescription(elementToDisplay);
+    Image elementImage = fastLinkerLabelProvider.getImage(elementToDisplay);
+    String elementDescription = fastLinkerLabelProvider.getDescription(elementToDisplay);
     getViewSite().getActionBars().getStatusLineManager().setMessage(elementImage, elementDescription);
+  }
+  
+  @Override
+  public void dispose() {
+    super.dispose();
+    fastLinkerLabelProvider.dispose();
   }
 }

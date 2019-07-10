@@ -11,9 +11,9 @@
 package org.polarsys.capella.core.platform.sirius.ui.navigator.actions;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -29,7 +29,6 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.IShowInTarget;
 import org.eclipse.ui.part.ShowInContext;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
-import org.polarsys.capella.common.ui.services.helper.EObjectImageProviderHelper;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
@@ -73,7 +72,7 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
     goToAction.shouldIgnoreWorkbenchPartSite(true);
 
     if (useElementIcon) {
-      action.setImageDescriptor(ImageDescriptor.createFromImage(EObjectImageProviderHelper.getImage(referenced)));
+      action.setImageDescriptor(ExtendedImageRegistry.getInstance().getImageDescriptor(EObjectLabelProviderHelper.getImage(referenced)));
     } else {
       action.setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor("capella_16.png"));
     }

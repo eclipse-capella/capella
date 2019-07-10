@@ -14,14 +14,12 @@ import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
-import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.ui.toolkit.dialogs.CheckboxTreeDialog;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
@@ -109,8 +107,7 @@ public class SelectElementsFromCheckBoxWizard extends AbstractExternalJavaAction
 
     // Create a checkBox dialog.
     CheckboxTreeDialog<ExchangeCategory, AbstractFunction> dialog = new CheckboxTreeDialog<ExchangeCategory, AbstractFunction>(getShell(),
-        "Select Elements To Show", wizardMessage, //$NON-NLS-1$
-        (AdapterFactoryEditingDomain) TransactionHelper.getEditingDomain(context));
+        "Select Elements To Show", wizardMessage);
     dialog.setInput((Map) scope, (Map) initialSelection);
 
     if (Window.OK == dialog.open()) {

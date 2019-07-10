@@ -47,7 +47,7 @@ public class ProgressMonitoringLabelProvider extends MDEAdapterFactoryLabelProvi
    *          must be a {@link SWT#COLOR} constant.
    */
   public ProgressMonitoringLabelProvider(TreeViewer viewer, int foregroundColorForReferencingElements) {
-    super(CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
+    super();
     _foregroundColor = foregroundColorForReferencingElements;
     _viewer = viewer;
   }

@@ -28,6 +28,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.emf.validation.model.Category;
 import org.eclipse.emf.validation.service.IConstraintDescriptor;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
@@ -50,9 +51,9 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.views.markers.MarkerViewUtil;
 import org.eclipse.ui.views.markers.WorkbenchMarkerResolution;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.helpers.validation.ConstraintStatusDiagnostic;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.common.ui.services.helper.EObjectImageProviderHelper;
 
 class MarkerViewColumns {
 
@@ -423,7 +424,7 @@ class MarkerViewColumns {
             IMarker marker = (IMarker) element;
             List<EObject> elements = MarkerViewHelper.getModelElementsFromMarker(marker);
             if (elements.size() > 0) {
-              return EObjectImageProviderHelper.getImage(elements.get(0));
+              return ExtendedImageRegistry.getInstance().getImage(EObjectLabelProviderHelper.getImage(elements.get(0)));
             }
           } else if (element instanceof SeverityLevel) {
             return ((SeverityLevel) element).getImage();

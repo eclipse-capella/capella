@@ -43,7 +43,6 @@ import org.polarsys.capella.common.ui.toolkit.viewers.TreeAndListViewer;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.DataContentProvider;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
-import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.validation.ui.ide.messages.QuickfixMessages;
 
 public class EObjectNavigatorDialog extends AbstractMessageDialogWithViewer {
@@ -79,7 +78,7 @@ public class EObjectNavigatorDialog extends AbstractMessageDialogWithViewer {
      * @param foregroundColorForReferencingElements must be a {@link SWT#COLOR} constant.
      */
     public ImpactAnalysisLabelProvider(TreeViewer viewer, int foregroundColorForReferencingElements) {
-      super(CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
+      super();
       foregroundColor = foregroundColorForReferencingElements;
       this.viewer = viewer;
     }

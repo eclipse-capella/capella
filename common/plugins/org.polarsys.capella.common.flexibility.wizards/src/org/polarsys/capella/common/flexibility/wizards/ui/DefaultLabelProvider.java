@@ -25,11 +25,7 @@ import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 import org.polarsys.capella.common.flexibility.wizards.constants.ICommonConstants;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
-import org.polarsys.capella.common.ui.services.helper.EObjectImageProviderHelper;
 
-/**
- *
- */
 public class DefaultLabelProvider implements ILabelProvider, IColorProvider, IFontProvider {
 
   private ILabelProvider _labelProvider = null;
@@ -64,7 +60,7 @@ public class DefaultLabelProvider implements ILabelProvider, IColorProvider, IFo
       }
     }
     if (object instanceof EObject) {
-      return EObjectImageProviderHelper.getImage((EObject) object);
+      return ExtendedImageRegistry.getInstance().getImage(EObjectLabelProviderHelper.getImage((EObject) object));
     }
     return null;
 

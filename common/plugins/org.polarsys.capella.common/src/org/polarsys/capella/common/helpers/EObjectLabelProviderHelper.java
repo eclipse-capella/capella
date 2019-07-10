@@ -49,9 +49,14 @@ public class EObjectLabelProviderHelper {
    * Suffix used in label rendering if requested.
    */
   private static final String METACLASS_DISPLAY_SUFFIX = "] "; //$NON-NLS-1$
+  /**
+   * Separator used by getFullPath
+   */
+  public static final String FULL_PATH_SEPARATOR = "::"; //$NON-NLS-1$
 
   /**
    * Get the generated item provider for given object.
+   * 
    * @param object
    * @return<code>null</code> if one of parameters is <code>null</code> or if no provider is found.
    */
@@ -60,7 +65,8 @@ public class EObjectLabelProviderHelper {
     if (null == object) {
       return null;
     }
-    AdapterFactoryEditingDomain editingDomain = (AdapterFactoryEditingDomain) AdapterFactoryEditingDomain.getEditingDomainFor(object);
+    AdapterFactoryEditingDomain editingDomain = (AdapterFactoryEditingDomain) AdapterFactoryEditingDomain
+        .getEditingDomainFor(object);
     // Precondition.
     if (null == editingDomain) {
       return null;
@@ -70,9 +76,11 @@ public class EObjectLabelProviderHelper {
 
   /**
    * Get the label for given object based on generated item provider.
+   * 
    * @param object
    * @return<code>null</code> if one of parameters is <code>null</code> or if no label is found.
-   * @since 1.2.1, this method have a replacement with better performances, Please use EObjectExt.getText() instead until bugzilla 2036 is solved
+   * @since 1.2.1, this method have a replacement with better performances, Please use EObjectExt.getText() instead
+   *        until bugzilla 2036 is solved
    */
   public static String getText(EObject object) {
     IItemLabelProvider provider = getItemLabelProvider(object);
@@ -86,8 +94,10 @@ public class EObjectLabelProviderHelper {
 
   /**
    * Get the metaclass label (emitted by EMF Edit generation) for given object.
+   * 
    * @param object
-   * @param addBrackets if <code>true</code> the returned label is surrounded by brackets.
+   * @param addBrackets
+   *          if <code>true</code> the returned label is surrounded by brackets.
    * @return <code>null</code> if one of parameters is <code>null</code> or if no label is found.
    */
   public static String getMetaclassLabel(EObject object, boolean addBrackets) {
@@ -105,24 +115,25 @@ public class EObjectLabelProviderHelper {
     }
     return label;
   }
-  
+
   /**
-   * Get the ItemProviderAdapter associated to the AdapterFactoryEditingDomain of the given EObject.
-   * returns null if object is not attached to an EditingDomain
+   * Get the ItemProviderAdapter associated to the AdapterFactoryEditingDomain of the given EObject. returns null if
+   * object is not attached to an EditingDomain
    */
   public static ItemProviderAdapter getItemProvider(EObject object) {
     // Precondition.
     if (null == object) {
       return null;
     }
-    AdapterFactoryEditingDomain editingDomain = (AdapterFactoryEditingDomain) AdapterFactoryEditingDomain.getEditingDomainFor(object);
+    AdapterFactoryEditingDomain editingDomain = (AdapterFactoryEditingDomain) AdapterFactoryEditingDomain
+        .getEditingDomainFor(object);
     // Precondition.
     if (null == editingDomain) {
       return null;
     }
     return getItemProvider(object, editingDomain.getAdapterFactory());
   }
-  
+
   /**
    * Get the item provider adapter for the given object and given adapter factory
    */
@@ -131,7 +142,8 @@ public class EObjectLabelProviderHelper {
     if (null == object) {
       return null;
     }
-    // Adaptation to ItemProviderAdapter returns null due to EMF Edit generated ItemProviderAdapterFactory that do not support this type.
+    // Adaptation to ItemProviderAdapter returns null due to EMF Edit generated ItemProviderAdapterFactory that do not
+    // support this type.
     // So, we adapt to IItemLabelProvider and then we cast...
     Adapter adapter = factory.adapt(object, IItemLabelProvider.class);
     if (adapter instanceof ItemProviderDecorator) {
@@ -142,10 +154,10 @@ public class EObjectLabelProviderHelper {
     }
     return (ItemProviderAdapter) adapter;
   }
-  
 
   /**
    * Get the metaclass label (emitted by EMF Edit generation) for given object according given editing domain.
+   * 
    * @param cls
    * @param provider
    * @return <code>null</code> if one of parameters is <code>null</code> or if no label is found.
@@ -158,8 +170,7 @@ public class EObjectLabelProviderHelper {
     }
     try {
       label = provider.getString(GENERATED_KEY_PREFIX + cls.getName() + METACLASS_GENERATED_KEY_SUFFIX);
-    }
-    catch (MissingResourceException e) {
+    } catch (MissingResourceException e) {
       label = "<<MissingResourceException>> [" + cls.getName() + "]"; //$NON-NLS-1$ //$NON-NLS-2$
     }
     return label;
@@ -167,6 +178,7 @@ public class EObjectLabelProviderHelper {
 
   /**
    * Get the metaclass label (emitted by EMF Edit generation) for given object according given editing domain.
+   * 
    * @param feature
    * @param provider
    * @return <code>null</code> if one of parameters is <code>null</code> or if no label is found.
@@ -177,11 +189,12 @@ public class EObjectLabelProviderHelper {
     if ((null == feature) || (null == provider)) {
       return label;
     }
-    String featureKey = feature.getEContainingClass().getName() + ICommonConstants.UNDERSCORE_CHARACTER + feature.getName();
+    String featureKey = feature.getEContainingClass().getName() + ICommonConstants.UNDERSCORE_CHARACTER
+        + feature.getName();
     label = provider.getString(GENERATED_KEY_PREFIX + featureKey + FEATURE_GENERATED_KEY_SUFFIX);
     return label;
   }
-  
+
   /**
    * Retrieve a readable text of the element
    */
@@ -207,13 +220,38 @@ public class EObjectLabelProviderHelper {
   }
 
   /**
-   * Retrieve a readable text of the element. May be an Object or a Collection of objects. 
+   * Retrieve a readable text of the element. May be an Object or a Collection of objects.
    */
   public static String getText(Object object) {
     StringBuilder buffer = new StringBuilder();
     getText(object, buffer);
     return buffer.toString();
   }
-  
-  
+
+  /**
+   * Get the image for given object based on generated item provider.
+   * 
+   * To get Image, call {@link ExtendedImageRegistry#getImage(Object)} on the result of this method. To get
+   * ImageDescriptor, call {@link ExtendedImageRegistry#getImageDescriptor(Object)} on the result of this method.
+   * 
+   * @param object
+   * @return<code>null</code> if one of parameters is <code>null</code> or if no image is found.
+   */
+  public static Object getImage(EObject object) {
+    IItemLabelProvider provider = getItemLabelProvider(object);
+    if (null != provider) {
+      return provider.getImage(object);
+    }
+    return null;
+  }
+
+  public static String getFullPathText(EObject element) {
+    String path = getText(element);
+    EObject container = element.eContainer();
+    while (null != container) {
+      path = getText(container).concat(FULL_PATH_SEPARATOR).concat(path);
+      container = container.eContainer();
+    }
+    return path;
+  }
 }

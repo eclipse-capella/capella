@@ -16,7 +16,6 @@ import java.util.HashSet;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
@@ -28,7 +27,6 @@ import org.polarsys.capella.common.flexibility.properties.schema.IRestraintPrope
 import org.polarsys.capella.common.flexibility.wizards.renderer.BrowseRenderer;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
 import org.polarsys.capella.common.flexibility.wizards.ui.DefaultLabelProvider;
-import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -65,11 +63,9 @@ public class SharedElementsRenderer extends BrowseRenderer {
 
         SelectElementsDialog dialog =
             new SelectElementsDialog(shell,
-            	TransactionHelper.getEditingDomain(scope),
-            	((AdapterFactoryEditingDomain) TransactionHelper.getEditingDomain(scope)).getAdapterFactory(),
             	"External elements", //$NON-NLS-1$
               "External elements referenced", //$NON-NLS-1$
-              new ArrayList<EObject>(scope), false, null);
+              new ArrayList<EObject>(scope));
         dialog.open();
       } else {
         super.proceedBrowse(shell, context);

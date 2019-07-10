@@ -48,7 +48,7 @@ public class DependencyLabelProvider extends CapellaTransfertViewerLabelProvider
    * @param subject the subject itself
    */
   public DependencyLabelProvider(Collection<?> dependencies, Collection<?> inverseDependencies, Object subject) {
-	super();
+    super();
     this.dependencies = dependencies;
     this.inverseDependencies = inverseDependencies;
     this.subject = subject;

@@ -15,7 +15,6 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.jface.viewers.ColumnViewer;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -25,6 +24,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonFactory;
@@ -47,11 +47,7 @@ import org.polarsys.capella.core.ui.properties.helpers.DialogHelper;
 import org.polarsys.capella.core.ui.properties.helpers.NamingHelper;
 import org.polarsys.capella.core.ui.properties.viewers.TableDelegatedViewer;
 import org.polarsys.capella.core.ui.toolkit.ToolkitPlugin;
-import org.polarsys.capella.core.ui.toolkit.viewers.CapellaElementLabelProvider;
 
-/**
- *
- */
 public class StateTransitionTriggerField extends ContainmentTableField {
 
   private Button _timeEventBtn;
@@ -252,10 +248,7 @@ public class StateTransitionTriggerField extends ContainmentTableField {
     @Override
     public void createContainer(Composite subarent) {
       super.createContainer(subarent);
-      _columnViewer.setLabelProvider(new CapellaElementLabelProvider() {
-        /**
-         * {@inheritDoc}
-         */
+      _columnViewer.setLabelProvider(new MDEAdapterFactoryLabelProvider() {
         @Override
         public final String getColumnText(final Object object, final int columnIndex) {
           final String customText = getCustomText(object, columnIndex);
@@ -263,13 +256,8 @@ public class StateTransitionTriggerField extends ContainmentTableField {
           if (customText == null) {
             return super.getColumnText(object, columnIndex);
           }
-
-          return run(object, new RunnableWithResult.Impl<String>() {
-            @Override
-            public void run() {
-              setResult(customText);
-            }
-          });
+          
+          return customText;
         }
       });
     }

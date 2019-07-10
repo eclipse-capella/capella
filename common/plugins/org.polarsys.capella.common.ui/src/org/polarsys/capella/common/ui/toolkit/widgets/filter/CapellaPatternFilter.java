@@ -10,13 +10,11 @@
  *******************************************************************************/
 package org.polarsys.capella.common.ui.toolkit.widgets.filter;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.ui.dialogs.PatternFilter;
 import org.eclipse.ui.internal.misc.StringMatcher;
-import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 
 public class CapellaPatternFilter extends PatternFilter {
   private String pattern;
@@ -26,14 +24,6 @@ public class CapellaPatternFilter extends PatternFilter {
   private boolean caseSensitiveEnabled = false;
 
   protected String getText(Viewer viewer, Object element) {
-    // By comparing with the previous implementation, using EObjectLabelProviderHelper for model element is much more
-    // faster than label provider.
-    // TODO: If for a given element, EObjectLabelProviderHelper and default labelProvider return 2 different texts, what
-    // will happen? LabelProvider returns a text that is displayed to user but EObjectLabelProviderHelper returns the
-    // text that matches the search, it is incoherent, isn't it?
-    if (element instanceof EObject) {
-      return EObjectLabelProviderHelper.getText(element);
-    }
     return ((ILabelProvider) ((StructuredViewer) viewer).getLabelProvider()).getText(element);
   }
 

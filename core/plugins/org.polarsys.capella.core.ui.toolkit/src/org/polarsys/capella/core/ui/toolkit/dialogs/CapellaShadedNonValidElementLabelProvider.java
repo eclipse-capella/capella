@@ -24,110 +24,90 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
-
-import org.polarsys.capella.core.ui.toolkit.viewers.CapellaElementLabelProvider;
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
+import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.information.Operation;
 import org.polarsys.capella.core.data.information.Parameter;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
 
-/**
- * The named element label provider.
- */
-public class CapellaShadedNonValidElementLabelProvider extends CapellaElementLabelProvider implements IColorProvider, IFontProvider {
+public class CapellaShadedNonValidElementLabelProvider extends MDEAdapterFactoryLabelProvider implements IColorProvider, IFontProvider {
 
-  protected Font _font;
-  protected Color _invalidColor;
-  protected Color _validColor;
-  protected boolean _isValidElementsSet = false;
-  protected List<EObject> _validElements = new ArrayList<EObject>(0);
+  protected Font font = new Font(Display.getDefault(), "Arial", 9, SWT.NORMAL | SWT.ITALIC);
+  protected Color invalidColor = Display.getDefault().getSystemColor(SWT.COLOR_DARK_GRAY);
+  protected Color validColor = Display.getDefault().getSystemColor(SWT.COLOR_BLACK);
+  protected boolean isValidElementsSet = false;
+  protected List<EObject> validElements = new ArrayList<>(0);
 
-  /**
-   * Constructs the named element label provider.
-   */
-  public CapellaShadedNonValidElementLabelProvider() {
-    // Do nothing.
-  }
 
   @Override
   public void dispose() {
-    if (null != _font) {
-      _font.dispose();
+    if (null != font) {
+      font.dispose();
     }
     super.dispose();
   }
 
-  /**
-   * @see org.eclipse.jface.viewers.LabelProvider#getText(java.lang.Object)
-   */
   @SuppressWarnings("unchecked")
   @Override
-  public String getText(Object element_p) {
-    if (element_p instanceof AbstractNamedElement) {
-      String eleMentName = ((AbstractNamedElement) element_p).getName();
+  public String getText(Object element) {
+    if (element instanceof AbstractNamedElement) {
+      String elementName = ((AbstractNamedElement) element).getName();
 
-      if (element_p instanceof Part) {
-        Part partEle = (Part) element_p;
+      if (element instanceof Part) {
+        Part partEle = (Part) element;
         AbstractType abstractType = partEle.getAbstractType();
         if (abstractType != null) {
           String typeName = abstractType.getName();
           if (typeName != null) {
-            eleMentName = eleMentName + ": " + typeName; //$NON-NLS-1$
+            elementName = elementName + ": " + typeName; //$NON-NLS-1$
           } else {
-            eleMentName = eleMentName + ": <undefined>"; //$NON-NLS-1$
+            elementName = elementName + ": <undefined>"; //$NON-NLS-1$
           }
         } else {
-          eleMentName = eleMentName + ": <undefined>"; //$NON-NLS-1$
+          elementName = elementName + ": <undefined>"; //$NON-NLS-1$
         }
-      } else if (element_p instanceof Operation) {
-        Operation operation = (Operation) element_p;
+      } else if (element instanceof Operation) {
+        Operation operation = (Operation) element;
         EList<Parameter> parameters = operation.getOwnedParameters();
         if (!parameters.isEmpty()) {
-          eleMentName = eleMentName + "("; //$NON-NLS-1$
+          elementName = elementName + "("; //$NON-NLS-1$
           for (Iterator iter = parameters.iterator(); iter.hasNext();) {
             Parameter parameter = (Parameter) iter.next();
-            eleMentName = eleMentName + " " + parameter.getName(); //$NON-NLS-1$
+            elementName = elementName + " " + parameter.getName(); //$NON-NLS-1$
             if (iter.hasNext()) {
-              eleMentName = eleMentName + ","; //$NON-NLS-1$
+              elementName = elementName + ","; //$NON-NLS-1$
             }
           }
-          eleMentName = eleMentName + " )";//$NON-NLS-1$
+          elementName = elementName + " )";//$NON-NLS-1$
         } else {
-          eleMentName = eleMentName + " ()";//$NON-NLS-1$
+          elementName = elementName + " ()";//$NON-NLS-1$
         }
 
       }
-      return eleMentName;
-    } else if (element_p instanceof Entry) {
-      Entry<Integer, EObject> entry = (Entry<Integer, EObject>) element_p;
+      return elementName;
+    } else if (element instanceof Entry) {
+      Entry<Integer, EObject> entry = (Entry<Integer, EObject>) element;
       EObject key = entry.getValue();
       if (key != null && key instanceof AbstractNamedElement) {
-        String name = ((AbstractNamedElement) key).getName();
-        return name;
+        return ((AbstractNamedElement) key).getName();
       }
     }
-    return super.getText(element_p);
+    return super.getText(element);
   }
 
   @SuppressWarnings("unchecked")
-  public Font getFont(Object element_p) {
-    if (element_p instanceof AbstractNamedElement) {
-      if (_isValidElementsSet && !_validElements.contains(element_p)) {
-        if (null == _font) {
-          _font = createInvalidElementFont();
-        }
-        return _font;
+  public Font getFont(Object element) {
+    if (element instanceof AbstractNamedElement) {
+      if (isValidElementsSet && !validElements.contains(element)) {
+        return font;
       }
-    } else if (element_p instanceof Entry) {
-      Entry<Integer, EObject> entry = (Entry<Integer, EObject>) element_p;
+    } else if (element instanceof Entry) {
+      Entry<Integer, EObject> entry = (Entry<Integer, EObject>) element;
       EObject key = entry.getValue();
-      if (key != null && key instanceof AbstractNamedElement) {
-        if (_isValidElementsSet && !_validElements.contains(key)) {
-          if (null == _font) {
-            _font = createInvalidElementFont();
-          }
-          return _font;
+      if (key instanceof AbstractNamedElement) {
+        if (isValidElementsSet && !validElements.contains(key)) {
+          return font;
         }
       }
     }
@@ -135,17 +115,7 @@ public class CapellaShadedNonValidElementLabelProvider extends CapellaElementLab
     return null;
   }
 
-  /**
-   * Create invalid element font.
-   */
-  protected Font createInvalidElementFont() {
-    return new Font(Display.getDefault(), "Arial", 9, SWT.NORMAL | SWT.ITALIC); //$NON-NLS-1$
-  }
-
-  /**
-   * @see org.eclipse.jface.viewers.IColorProvider#getBackground(java.lang.Object)
-   */
-  public Color getBackground(Object element_p) {
+  public Color getBackground(Object element) {
     return null;
   }
 
@@ -153,43 +123,33 @@ public class CapellaShadedNonValidElementLabelProvider extends CapellaElementLab
    * @see org.eclipse.jface.viewers.IColorProvider#getForeground(java.lang.Object)
    */
   @SuppressWarnings("unchecked")
-  public Color getForeground(Object element_p) {
-    if (element_p instanceof AbstractNamedElement) {
-      return getValidForeGround(element_p);
-    } else if (element_p instanceof Entry) {
-      Entry<Integer, EObject> entry = (Entry<Integer, EObject>) element_p;
+  public Color getForeground(Object element) {
+    if (element instanceof AbstractNamedElement) {
+      return getValidForeGround(element);
+    } else if (element instanceof Entry) {
+      Entry<Integer, EObject> entry = (Entry<Integer, EObject>) element;
       EObject key = entry.getValue();
       if (key != null && key instanceof AbstractNamedElement) {
         return getValidForeGround(key);
       }
     }
-    return _validColor;
+    return validColor;
   }
 
-  /**
-   * @param element_p
-   * @return
-   */
-  protected Color getValidForeGround(Object element_p) {
-    if (_isValidElementsSet && !_validElements.contains(element_p)) {
-      if (null == _invalidColor) {
-        _invalidColor = Display.getDefault().getSystemColor(SWT.COLOR_DARK_GRAY);
-      }
-      return _invalidColor;
+  protected Color getValidForeGround(Object element) {
+    if (isValidElementsSet && !validElements.contains(element)) {
+      return invalidColor;
     }
-    if (null == _validColor) {
-      _validColor = Display.getDefault().getSystemColor(SWT.COLOR_BLACK);
-    }
-    return _validColor;
+    return validColor;
   }
 
   public List<EObject> get_notValidList() {
-    return _validElements;
+    return validElements;
   }
 
   public void set_ValidList(List<EObject> validList) {
-    _isValidElementsSet = true;
-    _validElements = validList;
+    isValidElementsSet = true;
+    validElements = validList;
   }
 
   @SuppressWarnings("unchecked")
@@ -197,16 +157,16 @@ public class CapellaShadedNonValidElementLabelProvider extends CapellaElementLab
   /**
    * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider#getImage(java.lang.Object)
    */
-  public Image getImage(Object element_p) {
-    if (element_p instanceof AbstractNamedElement) {
-      return super.getImage(element_p);
-    } else if (element_p instanceof Entry) {
-      Entry<Integer, EObject> entry = (Entry<Integer, EObject>) element_p;
+  public Image getImage(Object element) {
+    if (element instanceof AbstractNamedElement) {
+      return super.getImage(element);
+    } else if (element instanceof Entry) {
+      Entry<Integer, EObject> entry = (Entry<Integer, EObject>) element;
       EObject key = entry.getValue();
       if (key != null && key instanceof AbstractNamedElement) {
         return super.getImage(key);
       }
     }
-    return super.getImage(element_p);
+    return super.getImage(element);
   }
 }

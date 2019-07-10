@@ -41,7 +41,8 @@ Require-Bundle: org.eclipse.amalgam.explorer.activity.ui,
  org.polarsys.capella.common.tools.report.appenders.file,
  org.polarsys.capella.common.tools.report.appenders.usage;visibility:=reexport,
  org.eclipse.jface,
- org.eclipse.ui.workbench
+ org.eclipse.ui.workbench,
+ org.polarsys.capella.common
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.polarsys.capella.core.platform.sirius.ui.navigator.actions,

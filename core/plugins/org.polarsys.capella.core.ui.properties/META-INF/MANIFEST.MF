@@ -28,7 +28,8 @@ Require-Bundle: org.polarsys.capella.core.ui.toolkit;visibility:=reexport,
  org.eclipse.sirius.diagram.ui,
  org.polarsys.kitalpha.ad.services,
  org.polarsys.capella.core.linkedtext.ui,
- org.polarsys.capella.common.linkedtext.ui
+ org.polarsys.capella.common.linkedtext.ui,
+ org.polarsys.capella.common.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.ui.properties,

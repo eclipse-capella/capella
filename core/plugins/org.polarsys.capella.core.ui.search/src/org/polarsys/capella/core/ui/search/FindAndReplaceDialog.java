@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -52,7 +51,6 @@ import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerVi
 import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.model.utils.saxparser.WriteCapellaElementDescriptionSAXParser;
 import org.polarsys.capella.core.ui.toolkit.dialogs.ImpactAnalysisDialog;
 import org.polarsys.kitalpha.emde.model.Element;
@@ -62,8 +60,6 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
 import com.google.common.collect.Sets.SetView;
 
-/**
- */
 public class FindAndReplaceDialog extends SelectElementsDialog {
 
   private static final String SPACE = " "; //$NON-NLS-1$
@@ -99,6 +95,7 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
 
   private boolean ignoreCase;
 
+  // TODO: this is not used anywhere? To remove?
   private Predicate<CapellaElement> isDescriptionMatchingByWords;
 
   /**
@@ -109,9 +106,8 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
    * @wbp.parser.constructor
    */
   protected FindAndReplaceDialog(Shell parentShell, Collection<? extends EObject> elements, int treeViewerExpandLevel) {
-    super(parentShell, TransactionHelper.getEditingDomain(elements), CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
-          org.polarsys.capella.core.ui.search.Messages.FindAndReplaceDialog_title,
-          org.polarsys.capella.core.ui.search.Messages.FindAndReplaceDialog_dialogMessage, elements, true, null, treeViewerExpandLevel);
+    super(parentShell, org.polarsys.capella.core.ui.search.Messages.FindAndReplaceDialog_title,
+          org.polarsys.capella.core.ui.search.Messages.FindAndReplaceDialog_dialogMessage, elements);
 
   }
 

@@ -14,67 +14,65 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.gmf.runtime.common.core.service.IOperation;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.ui.tools.internal.providers.SiriusStatusLineContributionItemProvider;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IWorkbenchPage;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.LocateInCapellaExplorerAction;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.CapellaNavigatorLabelProvider;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
+import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 
 public class CapellaStatusLineContributionItemProvider extends SiriusStatusLineContributionItemProvider {
 
   public class CapellaStatusLineMessageContributionItem extends SiriusStatusLineMessageContributionItem {
     @Override
     public String getText(Object element) {
-      CapellaNavigatorLabelProvider semanticBrowserLabelProvider = new CapellaNavigatorLabelProvider(
-          CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
-
       if (element instanceof IStructuredSelection) {
         element = ((IStructuredSelection) element).getFirstElement();
       }
-      
-      if (element instanceof IGraphicalEditPart)
-        element = LocateInCapellaExplorerAction.getElement(element);
 
-      if (element != null && element instanceof EObject) {
-        return semanticBrowserLabelProvider.getDescription(element);
+      // Handle firstly for representation
+      EObject eObject = CapellaAdapterHelper.resolveEObject(element);
+      if (eObject instanceof DRepresentation) {
+        DRepresentationDescriptor descriptor = RepresentationHelper
+            .getRepresentationDescriptor((DRepresentation) eObject);
+        return RepresentationHelper.getRepresentationFullPathText(descriptor);
       }
 
-      return ICommonConstants.EMPTY_STRING;
-    }
+      if (eObject instanceof DRepresentationDescriptor) {
+        return RepresentationHelper.getRepresentationFullPathText((DRepresentationDescriptor) eObject);
+      }
 
+      // Handle for semantic element
+      EObject semanticElement = CapellaAdapterHelper.resolveSemanticObject(element, true);
+      if (semanticElement != null) {
+        return EObjectLabelProviderHelper.getFullPathText(semanticElement);
+      }
+      return "";
+    }
 
     @Override
     public Image getImage(Object element) {
-      CapellaNavigatorLabelProvider semanticBrowserLabelProvider = new CapellaNavigatorLabelProvider(
-          CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
       if (element instanceof IStructuredSelection) {
         element = ((IStructuredSelection) element).getFirstElement();
       }
-
-      if (element instanceof IGraphicalEditPart) {
-        element = LocateInCapellaExplorerAction.getElement(element);
-      }
-
-      if (element != null && element instanceof EObject) {
-        return semanticBrowserLabelProvider.getImage(element);
+      element = CapellaAdapterHelper.resolveSemanticObject(element, true);
+      if (element instanceof EObject) {
+        return ExtendedImageRegistry.getInstance().getImage(EObjectLabelProviderHelper.getImage((EObject) element));
       }
       return null;
     }
 
   }
 
-  public CapellaStatusLineContributionItemProvider() {
-  }
-
   @Override
   public List<IContributionItem> getStatusLineContributionItems(IWorkbenchPage workbenchPage) {
-    List<IContributionItem> a = new ArrayList<IContributionItem>(1);
+    List<IContributionItem> a = new ArrayList<>(1);
     a.add(new CapellaStatusLineMessageContributionItem());
     return a;
   }

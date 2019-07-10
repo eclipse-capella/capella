@@ -16,7 +16,6 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.window.Window;
 import org.eclipse.ui.PlatformUI;
-import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
@@ -35,13 +34,9 @@ import org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMes
 import org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMessage.viewAndController.SelectInvokedOperationView;
 import org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMessage.viewAndController.SelectOperationDialogForSharedDataAndEvent;
 import org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMessage.viewAndController.SelectOperationDialogForSharedDataAndEvent.ElementSupportedType;
-import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
-import org.polarsys.capella.core.model.utils.CollectionExt;
 import org.polarsys.capella.core.ui.toolkit.helpers.Messages;
 
-/**
- */
 public class DialogProvider {
   public static final String FUNCTIONAL_EXCHANGE_FUNCTION = "FEF"; //$NON-NLS-1$
   public static final String FUNCTIONAL_EXCHANGE_TYPE = "FE"; //$NON-NLS-1$
@@ -95,8 +90,6 @@ public class DialogProvider {
   		// Open a selection dialog to get the related operation.
   		SelectOperationDialogForSharedDataAndEvent dialog =
   				new SelectOperationDialogForSharedDataAndEvent(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-  						TransactionHelper.getEditingDomain(CollectionExt.mergeCollections(available, whole)),
-  						CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
   						Messages.SelectionDialogHelper_MessageCreation_Title, Messages.AffectToMessage_SelectionOperationDialog_Message, whole, available, sourceIR, targetIR,
   						messageKind, ElementSupportedType.OPERATION);
   		if (Window.OK == dialog.open()) {
@@ -115,8 +108,6 @@ public class DialogProvider {
   		SelectInvokedOperationController controller = new SelectInvokedOperationController(model);
   		SelectElementsDialog dialog =
   				new SelectInvokedOperationView(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-  						TransactionHelper.getEditingDomain(sourceIR),
-  						CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
   						Messages.SelectionDialogHelper_MessageCreation_Title + dialogTitleAddition,
   						Messages.AffectToMessage_SelectionOperationDialog_Message, 
   						model,
@@ -151,8 +142,6 @@ public class DialogProvider {
       availableExchanges.addAll(DataFlowHelper.getAvailableFonctionalExchanges(sourceIR, targetIR));
       dialog =
           new SelectFunctionalExchangeDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-              TransactionHelper.getEditingDomain(availableExchanges),
-              CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
               Messages.SelectionDialogHelper_MessageCreation_Title, selectionExchangeMessage, availableExchanges, message, sourceIR, targetIR,
               DataflowDialogCreationType.FUNCTIONAL_EXCHANGE);
     } else if (COMPONENT_EXCHANGE_TYPE.equals(echangeType)) {
@@ -166,16 +155,12 @@ public class DialogProvider {
         
       dialog =
           new SelectFunctionalExchangeDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-              TransactionHelper.getEditingDomain(availableExchanges),
-              CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
               Messages.SelectionDialogHelper_MessageCreation_Title, selectionExchangeMessage, availableExchanges, message, sourceIR, targetIR,
               DataflowDialogCreationType.COMPONENT_EXCHANGE);
     } else if (FUNCTIONAL_EXCHANGE_FUNCTION.equals(echangeType)) {      
       availableExchanges.addAll(DataFlowHelper.getAvailableFonctionalExchangesFromFunctions(sourceIR, targetIR));
       dialog =
           new SelectFunctionalExchangeDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-              TransactionHelper.getEditingDomain(availableExchanges),
-              CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
               Messages.SelectionDialogHelper_MessageCreation_Title, selectionExchangeMessage, availableExchanges, message, sourceIR, targetIR,
               DataflowDialogCreationType.FUNCTIONAL_EXCHANGE_SCENARIO);
     }

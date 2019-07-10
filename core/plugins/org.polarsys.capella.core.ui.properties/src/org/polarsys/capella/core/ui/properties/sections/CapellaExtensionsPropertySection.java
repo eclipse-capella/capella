@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.IFilter;
 import org.eclipse.jface.viewers.ISelection;
@@ -26,21 +27,23 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
-import org.polarsys.capella.common.ui.services.helper.EObjectImageProviderHelper;
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.core.data.cs.CsPackage;
-import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.capellacore.BooleanPropertyValue;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyValue;
 import org.polarsys.capella.core.data.capellacore.FloatPropertyValue;
 import org.polarsys.capella.core.data.capellacore.IntegerPropertyValue;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
 import org.polarsys.capella.core.data.capellacore.StringPropertyValue;
+import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
@@ -51,19 +54,12 @@ import org.polarsys.capella.core.ui.properties.fields.ReferenceTableField;
 import org.polarsys.capella.core.ui.properties.viewers.AbstractPropertyValueCellEditorProvider;
 import org.polarsys.capella.core.ui.properties.viewers.TableDelegatedViewer;
 import org.polarsys.capella.core.ui.properties.viewers.TreeDelegatedViewer;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 
-/**
- */
 public class CapellaExtensionsPropertySection extends AbstractSection implements IFilter {
 
   private ReferenceTableField _appliedPropertyValuesTableField;
   private ReferenceTableField _appliedPropertyValueGroupsTableField;
 
-  /**
-   */
   protected class NameColumnLabelProvider extends ColumnLabelProvider {
     /**
      * {@inheritDoc}
@@ -82,14 +78,12 @@ public class CapellaExtensionsPropertySection extends AbstractSection implements
     @Override
     public Image getImage(Object element) {
       if (element instanceof EObject) {
-        return EObjectImageProviderHelper.getImage((EObject) element);
+        return ExtendedImageRegistry.getInstance().getImage(EObjectLabelProviderHelper.getImage((EObject) element));
       }
       return super.getImage(element);
     }
   }
 
-  /**
-   */
   protected class SummaryColumnLabelProvider extends ColumnLabelProvider {
     /**
      * {@inheritDoc}
@@ -103,8 +97,6 @@ public class CapellaExtensionsPropertySection extends AbstractSection implements
     }
   }
 
-  /**
-   */
   protected class ValueColumnLabelProvider extends ColumnLabelProvider {
     /**
      * {@inheritDoc}

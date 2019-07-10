@@ -213,8 +213,9 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
       @Override
       protected List<EObject> openTransferDialog(Button button, List<EObject> currentElements,
           List<EObject> availableElements, String title, String message) {
-        DataLabelProvider leftLabelProvider =  new CapellaTransfertViewerLabelProvider(TransactionHelper.getEditingDomain(availableElements));
-        DataLabelProvider rightLabelProvider =  new CapellaTransfertViewerLabelProvider(TransactionHelper.getEditingDomain(currentElements));
+        // TODO: Can ILabelProvider be reused?
+        DataLabelProvider leftLabelProvider =  new CapellaTransfertViewerLabelProvider();
+        DataLabelProvider rightLabelProvider =  new CapellaTransfertViewerLabelProvider();
         boolean expandLeftViewer = CapellaUIPropertiesPlugin.getDefault().isAllowedExpandLeftViewerContent();
         boolean expandRightViewer = CapellaUIPropertiesPlugin.getDefault().isAllowedExpandRightViewerContent();
         return SelectionDialogHelper.multiplePropertyTransfertDialogWizard(

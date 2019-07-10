@@ -32,6 +32,7 @@ import org.eclipse.emf.edit.provider.IChangeNotifier;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ItemProviderDecorator;
+import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -44,7 +45,6 @@ import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.ui.menu.dynamic.DynamicCreateChildAction;
 import org.polarsys.capella.common.ui.menu.dynamic.utils.ContributionItemComparator;
-import org.polarsys.capella.common.ui.services.helper.EObjectImageProviderHelper;
 import org.polarsys.capella.core.data.capellacommon.FinalState;
 import org.polarsys.capella.core.data.capellacommon.Region;
 import org.polarsys.capella.core.data.capellacommon.State;
@@ -376,7 +376,7 @@ public class DynamicCreationAction extends DynamicModelElementAction {
       setText(getMetaclassLabel(eClass, object));
 
       if (getImageDescriptor() == null) {
-        ImageDescriptor imageDescriptor = EObjectImageProviderHelper.getImageDescriptor(object);
+        ImageDescriptor imageDescriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(EObjectLabelProviderHelper.getImage(object));
         if (null != imageDescriptor) {
           setImageDescriptor(imageDescriptor);
         } else {

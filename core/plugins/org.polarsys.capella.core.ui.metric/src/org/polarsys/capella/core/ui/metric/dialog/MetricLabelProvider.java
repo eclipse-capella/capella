@@ -13,11 +13,11 @@ package org.polarsys.capella.core.ui.metric.dialog;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.gmf.runtime.diagram.ui.commands.CreateOrSelectElementCommand.LabelProvider;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.swt.graphics.Image;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
-import org.polarsys.capella.common.ui.services.helper.EObjectImageProviderHelper;
 import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.ui.metric.core.MetricTree;
 
@@ -76,7 +76,7 @@ public class MetricLabelProvider extends LabelProvider implements ITableLabelPro
         IItemLabelProvider.class);
 
     if (null != itemProvider) {
-      return EObjectImageProviderHelper.getImageFromObject(itemProvider.getImage(eobject));
+      return ExtendedImageRegistry.getInstance().getImage(itemProvider.getImage(eobject));
     }
     return null;
   }

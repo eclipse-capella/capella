@@ -20,8 +20,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.util.Util;
 import org.eclipse.jface.viewers.CheckboxTreeViewer;
 import org.eclipse.jface.viewers.TreeNode;
@@ -181,12 +179,8 @@ public class CheckboxTreeDialog<T extends EObject, U extends EObject> extends Ab
    * Internal usage only.
    */
   class LabelProvider extends MDEAdapterFactoryLabelProvider {
-    /**
-     * Constructor.
-     */
-    @SuppressWarnings("synthetic-access")
     LabelProvider() {
-      super((TransactionalEditingDomain) _editingDomain, _editingDomain.getAdapterFactory());
+      super();
     }
 
     /**
@@ -223,7 +217,6 @@ public class CheckboxTreeDialog<T extends EObject, U extends EObject> extends Ab
   }
 
   private RegExpCheckboxTreeViewer _checkboxTreeViewer;
-  private AdapterFactoryEditingDomain _editingDomain;
   private Map<T, Collection<U>> _results;
   private List<ElementNode> _rootNodes;
 
@@ -233,9 +226,8 @@ public class CheckboxTreeDialog<T extends EObject, U extends EObject> extends Ab
    * @param title
    * @param message
    */
-  public CheckboxTreeDialog(Shell parentShell, String title, String message, AdapterFactoryEditingDomain editingDomain) {
+  public CheckboxTreeDialog(Shell parentShell, String title, String message) {
     super(parentShell, title, message, Messages.CheckboxTreeDialog_Window_Title);
-    _editingDomain = editingDomain;
   }
 
   /**

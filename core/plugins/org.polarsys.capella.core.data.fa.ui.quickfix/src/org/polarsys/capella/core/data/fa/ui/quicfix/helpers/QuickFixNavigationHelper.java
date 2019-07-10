@@ -10,11 +10,10 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.fa.ui.quicfix.helpers;
 
-import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
-import org.polarsys.capella.common.ui.services.helper.EObjectImageProviderHelper;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.NavigateAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
@@ -27,7 +26,7 @@ public class QuickFixNavigationHelper {
     // Create a navigate action that enables this navigation.
     NavigateAction action = new NavigateAction(abstractExchangeItemToAdd, capellaCommonNavigator.getCommonViewer());
     action.setText(EObjectLabelProviderHelper.getText(abstractExchangeItemToAdd));
-    action.setImageDescriptor(ImageDescriptor.createFromImage(EObjectImageProviderHelper
+    action.setImageDescriptor(ExtendedImageRegistry.getInstance().getImageDescriptor(EObjectLabelProviderHelper
         .getImage(abstractExchangeItemToAdd)));
     action.run();
   }

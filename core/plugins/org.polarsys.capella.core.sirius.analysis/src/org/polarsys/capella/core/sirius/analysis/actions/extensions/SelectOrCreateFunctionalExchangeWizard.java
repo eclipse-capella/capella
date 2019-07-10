@@ -16,12 +16,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.swt.widgets.Shell;
@@ -29,7 +25,6 @@ import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
-import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
 import org.polarsys.capella.core.sirius.analysis.FunctionalChainServices;
 import org.polarsys.capella.core.sirius.analysis.accelerators.SelectOrCreateFunctionalExchangeDialog;
@@ -48,8 +43,6 @@ public class SelectOrCreateFunctionalExchangeWizard extends AbstractExternalJava
   protected Set<AbstractFunction> availableSourceFunctions;
   protected Set<AbstractFunction> availableTargetFunctions;
 
-  protected TransactionalEditingDomain ted;
-  protected AdapterFactory adapterFactory;
   protected Shell currentShell;
 
   @Override
@@ -75,10 +68,6 @@ public class SelectOrCreateFunctionalExchangeWizard extends AbstractExternalJava
       return;
     }
 
-    Session session = SessionManager.INSTANCE.getSession(seqLinkEdge.getTarget());
-    this.ted = session.getTransactionalEditingDomain();
-    this.adapterFactory = CapellaAdapterFactoryProvider.getInstance().getAdapterFactory();
-
     availableSourceFunctions = fcsInstance.getFunctionsFromFCIFDNodes(availableSourceFCIFViews);
     availableTargetFunctions = fcsInstance.getFunctionsFromFCIFDNodes(availableTargetFCIFViews);
 
@@ -98,8 +87,7 @@ public class SelectOrCreateFunctionalExchangeWizard extends AbstractExternalJava
 
   protected void selectOrCreateFunctionalExchangeData(Set<FunctionalExchange> availableFEs) {
 
-    SelectOrCreateFunctionalExchangeDialog dialog = new SelectOrCreateFunctionalExchangeDialog(this.currentShell, ted,
-        adapterFactory, availableFEs, availableSourceFunctions, availableTargetFunctions);
+    SelectOrCreateFunctionalExchangeDialog dialog = new SelectOrCreateFunctionalExchangeDialog(this.currentShell, availableFEs, availableSourceFunctions, availableTargetFunctions);
     int returnCode = dialog.open();
 
     NewFEData newFEData = null;

@@ -14,18 +14,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.viewers.AbstractTreeViewer;
-import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IContentProvider;
-import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
@@ -37,6 +31,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.internal.keys.model.ModelElement;
+import org.polarsys.capella.common.helpers.selection.ILinkSelection;
 import org.polarsys.capella.common.ui.toolkit.viewers.IViewerStyle;
 import org.polarsys.capella.common.ui.toolkit.viewers.TreeAndListViewer;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.AbstractData;
@@ -62,6 +57,7 @@ public class SelectElementsDialog extends AbstractViewerDialog {
   /**
    * Displayed elements.
    */
+  //TODO Why ? extends EObject
   private Collection<? extends Object> _displayedElements;
   /**
    * Label provider used to render tree elements.
@@ -82,6 +78,7 @@ public class SelectElementsDialog extends AbstractViewerDialog {
   /**
    * Selected objects as result.
    */
+  //TODO Why ? extends EObject
   private List<? extends EObject> _result;
 
   /**
@@ -94,85 +91,28 @@ public class SelectElementsDialog extends AbstractViewerDialog {
    */
   private int _treeViewerExpandLevel;
 
-  /**
-   * Constructor.<br>
-   * Instantiate a dialog with no context and mono selection capable.
-   * @param parentShell
-   * @param editingDomain
-   * @param adapterFactory
-   * @param dialogTitle
-   * @param dialogMessage
-   * @param displayedElements
-   */
-  // 1
-  public SelectElementsDialog(Shell parentShell, TransactionalEditingDomain editingDomain, AdapterFactory adapterFactory, String dialogTitle,
+  public SelectElementsDialog(Shell parentShell, String dialogTitle,
       String dialogMessage, Collection<? extends Object> displayedElements) {
-    this(parentShell, editingDomain, adapterFactory, dialogTitle, dialogMessage, displayedElements, false, null);
+    this(parentShell, dialogTitle, dialogMessage, displayedElements, false, null);
   }
   
-  /**
-   * Constructor.<br>
-   * @param parentShell
-   * @param editingDomain
-   * @param adapterFactory
-   * @param dialogTitle
-   * @param dialogMessage
-   * @param displayedElements
-   * @param multiSelection whether or not this dialog is multi selection capable.
-   * @param context optional parameter, to set an undefined context to {@link ILinkSelection} contribution, set {@link #UNDEFINED_CONTEXT}.
-   */
-  public SelectElementsDialog(Shell parentShell, TransactionalEditingDomain editingDomain, AdapterFactory adapterFactory, String dialogTitle,
+  public SelectElementsDialog(Shell parentShell, String dialogTitle,
       String dialogMessage, Collection<? extends Object> displayedElements, boolean multiSelection, Object context) {
-    this(parentShell, new DataLabelProvider(editingDomain, adapterFactory), dialogTitle, dialogMessage, displayedElements, multiSelection,
+    this(parentShell, new DataLabelProvider(), dialogTitle, dialogMessage, displayedElements, multiSelection,
          context, AbstractTreeViewer.ALL_LEVELS);
   }
 
-  /**
-   * Constructor.<br>
-   * @param parentShell
-   * @param editingDomain
-   * @param adapterFactory
-   * @param dialogTitle
-   * @param dialogMessage
-   * @param displayedElements
-   * @param multiSelection whether or not this dialog is multi selection capable.
-   * @param context optional parameter, to set an undefined context to {@link ILinkSelection} contribution, set {@link #UNDEFINED_CONTEXT}.
-   * @param treeViewerExpandLevel
-   */
-  public SelectElementsDialog(Shell parentShell, TransactionalEditingDomain editingDomain, AdapterFactory adapterFactory, String dialogTitle,
+  public SelectElementsDialog(Shell parentShell, String dialogTitle,
       String dialogMessage, Collection<? extends Object> displayedElements, boolean multiSelection, Object context, int treeViewerExpandLevel) {
-    this(parentShell, new DataLabelProvider(editingDomain, adapterFactory), dialogTitle, dialogMessage, displayedElements, multiSelection,
+    this(parentShell, new DataLabelProvider(), dialogTitle, dialogMessage, displayedElements, multiSelection,
          context, treeViewerExpandLevel);
   }
 
-  /**
-   * Constructor.<br>
-   * @param parentShell
-   * @param labelProvider
-   * @param dialogTitle
-   * @param dialogMessage
-   * @param displayedElements
-   * @param multiSelection whether or not this dialog is multi selection capable.
-   * @param context optional parameter, to set an undefined context to {@link ILinkSelection} contribution, set {@link #UNDEFINED_CONTEXT}.
-   * @param
-   */
   public SelectElementsDialog(Shell parentShell, DataLabelProvider labelProvider, String dialogTitle, String dialogMessage,
       Collection<? extends Object> displayedElements, boolean multiSelection, Object context, int treeViewerExpandLevel) {
   	this(parentShell, new DataContentProvider(), labelProvider, dialogTitle, dialogMessage, displayedElements, multiSelection, context, treeViewerExpandLevel);
   }
 
-  /**
-   * Constructor.<br>
-   * @param parentShell
-   * @param contentProvider
-   * @param labelProvider
-   * @param dialogTitle
-   * @param dialogMessage
-   * @param displayedElements
-   * @param multiSelection whether or not this dialog is multi selection capable.
-   * @param context optional parameter, to set an undefined context to {@link ILinkSelection} contribution, set {@link #UNDEFINED_CONTEXT}.
-   * @param
-   */
   public SelectElementsDialog(Shell parentShell, IContentProvider contentProvider, DataLabelProvider labelProvider, String dialogTitle, String dialogMessage,
       Collection<? extends Object> displayedElements, boolean multiSelection, Object context, int treeViewerExpandLevel) {
     super(parentShell, dialogTitle, dialogMessage, Messages.SelectElementsDialog_Shell_Title);
@@ -185,11 +125,9 @@ public class SelectElementsDialog extends AbstractViewerDialog {
     if (null != displayedElements) {
       _displayedElements = displayedElements;
     } else {
-      _displayedElements = new ArrayList<Object>(0);
+      _displayedElements = new ArrayList<>(0);
     }
   }
-
-  
 
   /**
    * Handle initial display.<br>
@@ -222,7 +160,6 @@ public class SelectElementsDialog extends AbstractViewerDialog {
        * Overridden to set the viewer in the label provider at creation time.
        * @see org.polarsys.capella.common.ui.toolkit.viewers.TreeAndListViewer#doClientViewer(org.eclipse.swt.widgets.Composite)
        */
-      @SuppressWarnings("synthetic-access")
       @Override
       protected TreeViewer doClientViewer(Composite prt) {
         TreeViewer clientViewer = super.doClientViewer(prt);
@@ -243,31 +180,25 @@ public class SelectElementsDialog extends AbstractViewerDialog {
   
   protected void addSelectionChangedListener() {
   	TreeViewer clientViewer = _viewer.getClientViewer();
-    ISelectionChangedListener viewerSelectionChangedListener = new ISelectionChangedListener() {
-      public void selectionChanged(SelectionChangedEvent event) {
-        // Handle the selection itself.
-        IStructuredSelection selection = (IStructuredSelection) event.getSelection();
-        // Update the buttons state according to the selection.
-        updateButtons(selection);
-      }
-    };
-    clientViewer.addSelectionChangedListener(viewerSelectionChangedListener);  	
+    clientViewer.addSelectionChangedListener(event -> {
+      // Handle the selection itself.
+      IStructuredSelection selection = (IStructuredSelection) event.getSelection();
+      // Update the buttons state according to the selection.
+      updateButtons(selection);
+    });  	
   }
   
   protected void addDoubleCLickListener() {
   	TreeViewer clientViewer = _viewer.getClientViewer();
-  	IDoubleClickListener viewerDoubleClickListener = new IDoubleClickListener() {
-      public void doubleClick(DoubleClickEvent event) {
-        ISelection selection = event.getSelection();
-        if ((null != selection) && !selection.isEmpty() && (selection instanceof IStructuredSelection)) {
-          Object doubleClickedElement = ((StructuredSelection) selection).getFirstElement();
-          if (((AbstractData) event.getViewer().getInput()).isValid(doubleClickedElement)) {
-            okPressed();
-          }
+    clientViewer.addDoubleClickListener(event -> {
+      ISelection selection = event.getSelection();
+      if ((null != selection) && !selection.isEmpty() && (selection instanceof IStructuredSelection)) {
+        Object doubleClickedElement = ((StructuredSelection) selection).getFirstElement();
+        if (((AbstractData) event.getViewer().getInput()).isValid(doubleClickedElement)) {
+          okPressed();
         }
       }
-    };
-    clientViewer.addDoubleClickListener(viewerDoubleClickListener);  	
+    });  	
   }
 
   /**
@@ -322,6 +253,7 @@ public class SelectElementsDialog extends AbstractViewerDialog {
    */
   @Override
   public List<? extends EObject> getResult() {
+    // TODO Why ? extends EObject
     return _result;
   }
 
@@ -347,6 +279,7 @@ public class SelectElementsDialog extends AbstractViewerDialog {
    */
   @SuppressWarnings("unchecked")
   protected List<? extends EObject> handleResult() {
+    // TODO Why ? extends EObject
     return new ArrayList<EObject>(((IStructuredSelection) _viewer.getClientViewer().getSelection()).toList());
   }
 

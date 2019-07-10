@@ -16,12 +16,10 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.AbstractTreeViewer;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.TreeSelection;
@@ -45,7 +43,6 @@ import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
-import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
 import org.polarsys.capella.common.ui.toolkit.dialogs.TransferTreeListDialog;
@@ -84,14 +81,12 @@ import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
-import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
-import org.polarsys.capella.core.model.utils.CollectionExt;
 import org.polarsys.capella.core.ui.properties.providers.CapellaTransfertViewerLabelProvider;
 import org.polarsys.capella.core.ui.toolkit.ToolkitPlugin;
 
@@ -136,12 +131,9 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
     @SuppressWarnings("synthetic-access")
     public void widgetSelected(SelectionEvent e) {
       List<? extends EObject> availableElements = getAvailableElements();
-      List<? extends EObject> currentElements = getCurrentElements();
       TransferTreeListDialog dialog =
           new TransferTreeListDialog(getShell(), Messages.ExchangeDialog_ExchangeItemSelectionWizardTitle,
-              Messages.ExchangeDialog_ExchangeItemSelectionWizardMessage,
-              TransactionHelper.getEditingDomain(CollectionExt.mergeCollections(availableElements, currentElements)),
-              CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
+              Messages.ExchangeDialog_ExchangeItemSelectionWizardMessage);
       dialog.setLeftInput(availableElements, null);
       dialog.setRightInput(getCurrentElements(), null);
 
@@ -274,8 +266,7 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
     public void widgetSelected(SelectionEvent e) {
       Collection<? extends EObject> functions = getAccessibleFunctions(_function);
       SelectElementsDialog selectFunctionDialog =
-          new SelectElementsDialog(getParentShell(), TransactionHelper.getEditingDomain(functions), CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
-              Messages.SelectOperationDialog_SelectInterfaceDialog_Title, Messages.SelectOperationDialog_SelectInterfaceDialog_Message,
+          new SelectElementsDialog(getParentShell(), Messages.SelectOperationDialog_SelectInterfaceDialog_Title, Messages.SelectOperationDialog_SelectInterfaceDialog_Message,
               functions);
       if (Window.OK == selectFunctionDialog.open()) {
         AbstractNamedElement selectedFunc = (AbstractNamedElement) selectFunctionDialog.getResult().get(0);
@@ -316,19 +307,7 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
   private InstanceRole _targetIR;
   private InstanceRole _sourceIR;
 
-  /**
-   * @param parentShell
-   * @param editingDomain
-   * @param adapterFactory
-   * @param dialogTitle
-   * @param dialogMessage
-   * @param displayedElements
-   * @param message
-   * @param sourceIR
-   * @param targetIR
-   * @param creationType
-   */
-  public SelectFunctionalExchangeDialog(Shell parentShell, TransactionalEditingDomain editingDomain, AdapterFactory adapterFactory, String dialogTitle,
+  public SelectFunctionalExchangeDialog(Shell parentShell, String dialogTitle,
       String dialogMessage, List<? extends EObject> displayedElements, SequenceMessage message, InstanceRole sourceIR, InstanceRole targetIR,
       DataflowDialogCreationType creationType) {
     super(parentShell, new CapellaTransfertViewerLabelProvider(), dialogTitle, dialogMessage, displayedElements, false, null,
@@ -341,9 +320,6 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
     _targetIR = targetIR;
   }
 
-  /**
-   * 
-   */
   private void configureSelectExchangeButtonHandler() {
     SelectionAdapter listener = new SelectionAdapter() {
       /**

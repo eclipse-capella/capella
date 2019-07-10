@@ -30,6 +30,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 import org.polarsys.capella.common.ui.toolkit.dialogs.AbstractMessageDialogWithViewer;
 import org.polarsys.capella.common.ui.toolkit.viewers.AbstractContextMenuFiller;
 import org.polarsys.capella.common.ui.toolkit.viewers.IViewerStyle;
@@ -37,7 +38,6 @@ import org.polarsys.capella.common.ui.toolkit.viewers.TreeAndListViewer;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.DataContentProvider;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
-import org.polarsys.capella.core.ui.toolkit.viewers.CapellaElementLabelProvider;
 
 /**
  * Impact Analysis Tool dialog.
@@ -49,7 +49,7 @@ public class ImpactAnalysisDialog extends AbstractMessageDialogWithViewer {
   /**
    * Impact analysis label provider.
    */
-  protected class ImpactAnalysisLabelProvider extends CapellaElementLabelProvider implements IColorProvider {
+  protected class ImpactAnalysisLabelProvider extends MDEAdapterFactoryLabelProvider implements IColorProvider {
     /**
      * Foreground color for referencing elements.
      */
@@ -333,9 +333,9 @@ public class ImpactAnalysisDialog extends AbstractMessageDialogWithViewer {
 
   /**
    * Set a context menu manager filler.
-   * @param filler_p
+   * @param filler
    */
-  public void setContextMenuManagerFiller(AbstractContextMenuFiller filler_p) {
-    _contextMenuManagerFiller = filler_p;
+  public void setContextMenuManagerFiller(AbstractContextMenuFiller filler) {
+    _contextMenuManagerFiller = filler;
   }
 }

@@ -12,9 +12,7 @@ package org.polarsys.capella.common.ui.toolkit.dialogs;
 
 import java.util.List;
 
-import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.AbstractTreeViewer;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ITreeContentProvider;
@@ -24,6 +22,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
+import org.polarsys.capella.common.helpers.selection.ILinkSelection;
 import org.polarsys.capella.common.mdsofa.common.misc.Couple;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.AbstractData;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.DataContentProvider;
@@ -117,35 +116,14 @@ public class TransferTreeListDialog extends AbstractViewerDialog {
    */
   protected final int TRANSFER_TREE_STYLE = AbstractTransferViewer2.SINGLE_SELECTION_VIEWER | AbstractTransferViewer2.ALL_WIDGETS;
 
-  /**
-   * Constructor.<br>
-   * DEFAULT_TREE_VIEWER_STYLE is used for both left and right viewers.
-   * @param parentShell
-   * @param dialogTitle
-   * @param dialogMessage
-   * @param editingDomains
-   * @param adapterFactory
-   */
-  public TransferTreeListDialog(Shell parentShell, String dialogTitle, String dialogMessage, TransactionalEditingDomain editingDomain, AdapterFactory adapterFactory) {
+  public TransferTreeListDialog(Shell parentShell, String dialogTitle, String dialogMessage) {
     this(parentShell, dialogTitle, dialogMessage,
-      new DataLabelProvider(editingDomain, adapterFactory),
-      new DataLabelProvider(editingDomain, adapterFactory),
+      new DataLabelProvider(),
+      new DataLabelProvider(),
       DEFAULT_TREE_VIEWER_STYLE, DEFAULT_TREE_VIEWER_STYLE,
       AbstractTreeViewer.ALL_LEVELS, AbstractTreeViewer.ALL_LEVELS);
   }
 
-  /**
-   * Constructor.
-   * @param parentShell
-   * @param leftLabelProvider
-   * @param rightLabelProvider
-   * @param leftViewerStyle
-   * @param rightViewerStyle
-   * @param dialogTitle
-   * @param dialogMessage
-   * @param leftViewerExpandLevel
-   * @param rightViewerExpandLevel
-   */
   protected TransferTreeListDialog(Shell parentShell, String dialogTitle, String dialogMessage,
     DataLabelProvider leftLabelProvider, DataLabelProvider rightLabelProvider,
     int leftViewerStyle, int rightViewerStyle, int leftViewerExpandLevel, int rightViewerExpandLevel)
@@ -162,13 +140,7 @@ public class TransferTreeListDialog extends AbstractViewerDialog {
   }
 
   /**
-   * Constructor.<br>
    * DEFAULT_TREE_VIEWER_STYLE is used for both left and right viewers.
-   * @param parentShell
-   * @param dialogTitle
-   * @param dialogMessage
-   * @param leftLabelProvider
-   * @param rightLabelProvider
    */
   public TransferTreeListDialog(Shell parentShell, String dialogTitle, String dialogMessage,
     DataLabelProvider leftLabelProvider, DataLabelProvider rightLabelProvider)
@@ -180,15 +152,7 @@ public class TransferTreeListDialog extends AbstractViewerDialog {
   }
 
   /**
-   * Constructor.<br>
    * DEFAULT_TREE_VIEWER_STYLE is used for both left and right viewers.
-   * @param parentShell
-   * @param dialogTitle
-   * @param dialogMessage
-   * @param leftLabelProvider
-   * @param rightLabelProvider
-   * @param leftViewerExpandLevel
-   * @param rightViewerExpandLevel
    */
   public TransferTreeListDialog(Shell parentShell, String dialogTitle, String dialogMessage,
     DataLabelProvider leftLabelProvider, DataLabelProvider rightLabelProvider,

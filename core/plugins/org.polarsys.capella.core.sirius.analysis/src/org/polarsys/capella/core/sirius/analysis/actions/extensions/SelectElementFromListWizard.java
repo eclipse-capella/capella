@@ -22,7 +22,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.AbstractTreeViewer;
 import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
-import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
@@ -50,7 +49,7 @@ public class SelectElementFromListWizard extends AbstractExternalJavaAction {
     boolean expandViewer = CapellaUIPropertiesPlugin.getDefault().isAllowedExpandSingleViewerContent();
     int viewerExpandLevel = expandViewer ? AbstractTreeViewer.ALL_LEVELS : 0;
     SelectElementsDialog selectionDialog = new SelectElementsDialog(getShell(),
-    		new CapellaTransfertViewerLabelProvider(TransactionHelper.getEditingDomain(context)),
+    		new CapellaTransfertViewerLabelProvider(),
             Messages.SelectElementFromListWizard_Title,
             wizardMessage,
             new ArrayList<EObject>(scope),

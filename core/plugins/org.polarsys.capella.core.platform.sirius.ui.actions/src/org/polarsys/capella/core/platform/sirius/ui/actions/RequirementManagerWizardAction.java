@@ -8,8 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
-
 package org.polarsys.capella.core.platform.sirius.ui.actions;
 
 import java.util.ArrayList;
@@ -24,7 +22,6 @@ import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.ef.command.AbstractReadOnlyCommand;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
-import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.helper.MiscHelper;
 import org.polarsys.capella.common.ui.actions.AbstractTigAction;
 import org.polarsys.capella.common.ui.toolkit.dialogs.TransferTreeListDialog;
@@ -34,11 +31,7 @@ import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.Namespace;
 import org.polarsys.capella.core.data.requirement.RequirementFactory;
 import org.polarsys.capella.core.data.requirement.RequirementsTrace;
-import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
-import org.polarsys.capella.core.model.utils.CollectionExt;
 
-/**
- */
 public class RequirementManagerWizardAction extends AbstractTigAction {
   /**
    * @see org.polarsys.capella.core.platform.sirius.ui.actions.AbstractTigAction#getSelectedElement()
@@ -108,12 +101,8 @@ public class RequirementManagerWizardAction extends AbstractTigAction {
     };
     getExecutionManager().execute(collectElementsCommand);
     // Open a Transfer Dialog.
-    TransferTreeListDialog dialog =
-      new TransferTreeListDialog(getActiveShell(),
-        Messages.RequirementManagerWizardAction_Title,
-        Messages.RequirementManagerWizardAction_Message,
-        TransactionHelper.getEditingDomain(CollectionExt.mergeCollections(availableElements, currentElements)),
-        CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
+    TransferTreeListDialog dialog = new TransferTreeListDialog(getActiveShell(),
+        Messages.RequirementManagerWizardAction_Title, Messages.RequirementManagerWizardAction_Message);
     dialog.setLeftInput(availableElements, null /* no context */);
     dialog.setRightInput(currentElements, null /* no context */);
     if (Window.OK == dialog.open()) {

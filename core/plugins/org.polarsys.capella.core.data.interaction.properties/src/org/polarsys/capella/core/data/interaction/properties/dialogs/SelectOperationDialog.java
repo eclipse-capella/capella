@@ -15,11 +15,9 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
@@ -41,7 +39,6 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
 import org.polarsys.capella.common.ui.toolkit.viewers.IViewerStyle;
@@ -70,7 +67,6 @@ import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.MessageKind;
 import org.polarsys.capella.core.data.interaction.properties.controllers.InterfaceHelper;
-import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.InterfaceExt;
 import org.polarsys.capella.core.ui.toolkit.ToolkitPlugin;
@@ -130,24 +126,10 @@ public class SelectOperationDialog extends SelectElementsDialog {
   private InstanceRole _targetIR;
   private MessageKind _messageKind;
 
-  /**
-   * Constructor.
-   * @param parentShell
-   * @param editingDomain
-   * @param adapterFactory
-   * @param dialogTitle
-   * @param dialogMessage
-   * @param wholeElements
-   * @param restrictedElements
-   * @param sourceIR
-   * @param targetIR
-   * @param messageKind
-   * @param type
-   */
-  public SelectOperationDialog(Shell parentShell, TransactionalEditingDomain editingDomain, AdapterFactory adapterFactory, String dialogTitle,
+  public SelectOperationDialog(Shell parentShell, String dialogTitle,
       String dialogMessage, List<? extends EObject> wholeElements, List<? extends EObject> restrictedElements, InstanceRole sourceIR,
       InstanceRole targetIR, MessageKind messageKind, ElementSupportedType type) {
-    super(parentShell, editingDomain, adapterFactory, dialogTitle, dialogMessage, wholeElements);
+    super(parentShell, dialogTitle, dialogMessage, wholeElements);
     _sourceIR = sourceIR;
     _targetIR = targetIR;
     _elementSupportedType = type;
@@ -272,8 +254,7 @@ public class SelectOperationDialog extends SelectElementsDialog {
       public void widgetSelected(SelectionEvent event) {
     	Collection<EObject> interfaces = getAvailableInterfaces();
         SelectElementsDialog selectInterfaceDialog =
-            new SelectElementsDialog(getParentShell(), TransactionHelper.getEditingDomain(interfaces), CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
-                Messages.SelectOperationDialog_SelectInterfaceDialog_Title, Messages.SelectOperationDialog_SelectInterfaceDialog_Message,
+            new SelectElementsDialog(getParentShell(), Messages.SelectOperationDialog_SelectInterfaceDialog_Title, Messages.SelectOperationDialog_SelectInterfaceDialog_Message,
                 interfaces);
         if (Window.OK == selectInterfaceDialog.open()) {
           AbstractNamedElement selectedInterface = (AbstractNamedElement) selectInterfaceDialog.getResult().get(0);

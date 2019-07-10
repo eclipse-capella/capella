@@ -10,47 +10,29 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.providers;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.swt.graphics.Image;
+import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 import org.polarsys.capella.core.data.capellacore.Trace;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.messages.TraceNameHelper;
-import org.polarsys.capella.core.ui.toolkit.viewers.CapellaElementLabelProvider;
 
 /**
  * <code>ElementLabelProvider</code> is the label provider of
  * {@link org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.providers.SourceElementContentProvider}
  * 
  */
-public class ElementLabelProvider extends CapellaElementLabelProvider {
+public class ElementLabelProvider extends MDEAdapterFactoryLabelProvider {
 
-	/**
-	 * Constructor
-	 * 
-	 * @param eobject_p object from which the editing domain will be retrieved
-	 */
-	public ElementLabelProvider(EObject eobject_p) {
-		super(eobject_p);
-	}
-
-	/**
-	 * @see org.eclipse.jface.viewers.LabelProvider#getImage(java.lang.Object)
-	 */
-	@Override
-	public Image getImage(Object element_p) {
-		return super.getImage(element_p);
-	}
 
 	/**
 	 * @see org.eclipse.jface.viewers.LabelProvider#getText(java.lang.Object)
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public String getText(Object element_p) {
-		if (element_p instanceof Class) {
-			return TraceNameHelper.getTraceNameFromClass((Class<? extends Trace>) element_p);
-		} else if (element_p instanceof Trace) {
+	public String getText(Object element) {
+		if (element instanceof Class) {
+			return TraceNameHelper.getTraceNameFromClass((Class<? extends Trace>) element);
+		} else if (element instanceof Trace) {
 			return ""; //$NON-NLS-1$
 		}
-		return super.getText(element_p);
+		return super.getText(element);
 	}
 }

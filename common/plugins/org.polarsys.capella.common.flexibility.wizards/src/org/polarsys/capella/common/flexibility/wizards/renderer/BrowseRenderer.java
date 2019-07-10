@@ -30,14 +30,9 @@ import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContex
 import org.polarsys.capella.common.flexibility.properties.schema.IRestraintProperty;
 import org.polarsys.capella.common.flexibility.wizards.Activator;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
-import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
 import org.polarsys.capella.common.ui.toolkit.dialogs.TransferTreeListDialog;
-import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
-import org.polarsys.capella.core.model.utils.CollectionExt;
 
-/**
- */
 public class BrowseRenderer extends TextRenderer {
 
   ToolItem browse;
@@ -155,10 +150,9 @@ public class BrowseRenderer extends TextRenderer {
         scope.remove(null);
 
         SelectElementsDialog dialog =
-            new SelectElementsDialog(shell, TransactionHelper.getEditingDomain(scope), CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
-                "Selection wizard", //$NON-NLS-1$
+            new SelectElementsDialog(shell, "Selection wizard", //$NON-NLS-1$
                 "Select element.", //$NON-NLS-1$
-                new ArrayList<EObject>(scope), false, null);
+                new ArrayList<EObject>(scope));
         if (dialog.open() == Window.OK) {
           List<?> dialogResult = dialog.getResult();
           if (dialogResult != null) {
@@ -178,11 +172,7 @@ public class BrowseRenderer extends TextRenderer {
         right.addAll(current);
         right.remove(null);
 
-        Collection<EObject> list = CollectionExt.mergeCollections(left, right);
-
-        TransferTreeListDialog dialog = new TransferTreeListDialog(shell, "Selection wizard", //$NON-NLS-1$
-            "Select elements.", //$NON-NLS-1$
-            TransactionHelper.getEditingDomain(list), CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
+        TransferTreeListDialog dialog = new TransferTreeListDialog(shell, "Selection wizard", "Select elements.");//$NON-NLS-2$
         dialog.setLeftInput(new ArrayList<EObject>(left), null);
         dialog.setRightInput(new ArrayList<EObject>(right), null);
         if (dialog.open() == Window.OK) {

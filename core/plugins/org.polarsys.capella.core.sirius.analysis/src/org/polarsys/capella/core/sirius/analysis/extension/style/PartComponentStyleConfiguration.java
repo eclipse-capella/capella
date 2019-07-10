@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.sirius.analysis.extension.style;
 
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
@@ -20,7 +21,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.SimpleStyle
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.swt.graphics.Image;
-import org.polarsys.capella.common.ui.services.helper.EObjectImageProviderHelper;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
@@ -42,7 +42,7 @@ public class PartComponentStyleConfiguration extends SimpleStyleConfiguration im
         Part part = (Part) representationElement.getTarget();
         IItemLabelProvider provider = (IItemLabelProvider) CapellaAdapterFactoryProvider.getInstance()
             .getAdapterFactory().adapt(part.getType(), IItemLabelProvider.class);
-        return EObjectImageProviderHelper.getImageFromObject(provider.getImage(part.getType()));
+        return ExtendedImageRegistry.getInstance().getImage(provider.getImage(part.getType()));
       }
     }
     return super.getLabelIcon(representationElement, editPart);

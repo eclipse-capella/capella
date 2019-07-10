@@ -33,7 +33,6 @@ import org.eclipse.sirius.ui.business.api.session.analysis.SmartDialogAnalysisSe
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
@@ -43,7 +42,6 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.FilteredItemsSelectionDialog;
 import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 import org.polarsys.capella.core.sirius.ui.SiriusUIPlugin;
-import org.polarsys.capella.common.helpers.TransactionHelper;
 
 /**
  * Capella specific analysis selector.
@@ -110,7 +108,7 @@ public class CapellaAnalysisSelector extends SmartDialogAnalysisSelector {
       final List<DAnalysis> bestCandidates_p, final DAnalysis bestCandidate_p) {
 
     final ILabelProvider labelProvider =
-        new MDEAdapterFactoryLabelProvider(TransactionHelper.getEditingDomain(representation_p), SiriusEditPlugin.getPlugin().getItemProvidersAdapterFactory()) {
+        new MDEAdapterFactoryLabelProvider() {
           @Override
           public String getText(final Object object_p) {
             if (object_p instanceof DAnalysis) {

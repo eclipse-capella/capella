@@ -27,22 +27,16 @@ import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.swt.widgets.Widget;
-
-import org.polarsys.capella.core.ui.toolkit.viewers.CapellaElementLabelProvider;
+import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 import org.polarsys.capella.core.validation.CapellaValidationActivator;
 import org.polarsys.capella.core.validation.utils.ValidationHelper;
 
-/**
- * 
- */
-public class EIAllocationLabelProvider extends CapellaElementLabelProvider implements IBaseLabelProvider, IColorProvider, IFontProvider {
-  /** */
+public class EIAllocationLabelProvider extends MDEAdapterFactoryLabelProvider implements IBaseLabelProvider, IColorProvider, IFontProvider {
   protected final boolean isSourceViewer;
   private final EIAllocationTreeViewer treeViewer;
   private LinkManager linkManager;
   private Font startedLinkElementFont;
 
-  /** */
   private IConstraintFilter _filter = new IConstraintFilter() {
     @Override
     public boolean accept(IConstraintDescriptor constraint, EObject target) {
@@ -50,12 +44,11 @@ public class EIAllocationLabelProvider extends CapellaElementLabelProvider imple
     }
   };
 
-  /** */
   private static final String prefix = "org.polarsys.capella.core.data.fa.validation."; //$NON-NLS-1$
-  /** */
+
   protected List<IConstraintDescriptor> _srcDesc = getConstraintDescriptors(Arrays.asList(
     new String[]{prefix+"TC_DF_10",prefix+"TC_DF_11",prefix+"TC_DF_12",prefix+"TC_DF_13",prefix+"TC_DF_14"})); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$;
-  /** */
+
   protected List<IConstraintDescriptor> _tgtDesc = getConstraintDescriptors(Arrays.asList(
     new String[]{prefix+"TC_DF_11",prefix+"TC_DF_12",prefix+"TC_DF_13",prefix+"TC_DF_14"})); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //;
 

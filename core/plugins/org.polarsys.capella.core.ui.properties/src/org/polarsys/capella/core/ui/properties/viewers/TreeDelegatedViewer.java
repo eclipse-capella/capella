@@ -25,11 +25,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
+import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
-import org.polarsys.capella.core.ui.toolkit.viewers.CapellaElementLabelProvider;
 
-/**
- */
 public class TreeDelegatedViewer extends AbstractDelegatedViewer {
 
   protected Tree _tree;
@@ -62,7 +60,7 @@ public class TreeDelegatedViewer extends AbstractDelegatedViewer {
     // Create the tree viewer for created tree.
     _columnViewer = new TreeViewer(_tree);
     _columnViewer.setContentProvider(new AdapterFactoryContentProvider(CapellaAdapterFactoryProvider.getInstance().getAdapterFactory()));
-    _columnViewer.setLabelProvider(new CapellaElementLabelProvider());
+    _columnViewer.setLabelProvider(new MDEAdapterFactoryLabelProvider());
 
     addViewerListeners();
 

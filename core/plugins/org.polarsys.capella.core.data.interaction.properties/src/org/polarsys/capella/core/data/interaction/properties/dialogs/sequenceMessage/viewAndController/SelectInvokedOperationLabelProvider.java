@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMessage.viewAndController;
 
-import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.swt.graphics.Image;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.DataLabelProvider;
 import org.polarsys.capella.core.data.cs.Interface;
@@ -20,15 +18,14 @@ import org.polarsys.capella.core.data.information.communication.CommunicationLin
 import org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMessage.model.ISelectInvokedOperationModel;
 import org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMessage.model.algorithms.CompatibilityDefinition;
 import org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMessage.model.communications.AbstractCommunication;
-import org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMessage.model.communications.InterfaceCommunication;
 import org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMessage.model.communications.LinkCommunication;
 
 public class SelectInvokedOperationLabelProvider extends DataLabelProvider {
 
 	protected ISelectInvokedOperationModel model;
 	
-	public SelectInvokedOperationLabelProvider(TransactionalEditingDomain editingDomain, AdapterFactory adapterFactory, ISelectInvokedOperationModel model) {
-		super(editingDomain, adapterFactory);
+	public SelectInvokedOperationLabelProvider(ISelectInvokedOperationModel model) {
+		super();
 		this.model = model;
 	}
 	

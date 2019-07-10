@@ -20,6 +20,7 @@ import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IStatusLineManager;
 import org.eclipse.jface.action.MenuManager;
@@ -45,6 +46,8 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.BusyIndicator;
 import org.eclipse.swt.custom.SashForm;
@@ -81,7 +84,6 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.helpers.TransactionHelper;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
@@ -98,10 +100,10 @@ import org.polarsys.capella.common.ui.toolkit.browser.model.ISemanticBrowserMode
 import org.polarsys.capella.common.ui.toolkit.browser.view.ISemanticBrowserViewPart;
 import org.polarsys.capella.common.ui.toolkit.viewers.DelegateSelectionProviderWrapper;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
-import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
+import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
 import org.polarsys.capella.core.model.handler.provider.IReadOnlyListener;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.CapellaNavigatorLabelProvider;
 import org.polarsys.capella.core.ui.properties.CapellaTabbedPropertySheetPage;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 import org.polarsys.capella.core.ui.semantic.browser.CapellaBrowserActivator;
@@ -880,15 +882,29 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
       Object selectedElement = ((IStructuredSelection) selection).getFirstElement();
       IStatusLineManager statusLineManager = getViewSite().getActionBars().getStatusLineManager();
 
-      if (selectedElement instanceof EObject) {
-        CapellaNavigatorLabelProvider semanticBrowserLabelProvider = new CapellaNavigatorLabelProvider(
-            CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
-        Image image = semanticBrowserLabelProvider.getImage(selectedElement);
-        String text = semanticBrowserLabelProvider.getDescription(selectedElement);
-        statusLineManager.setMessage(image, text);
+      Image image = null;
+      String text = null;
+
+      // Handle firstly for representation
+      EObject eObject = CapellaAdapterHelper.resolveEObject(selectedElement);
+      if (selectedElement instanceof DRepresentation) {
+        DRepresentationDescriptor descriptor = RepresentationHelper
+            .getRepresentationDescriptor((DRepresentation) selectedElement);
+        text = RepresentationHelper.getRepresentationFullPathText(descriptor);
+        image = ExtendedImageRegistry.getInstance().getImage(EObjectLabelProviderHelper.getImage(eObject));
+      } else if (selectedElement instanceof DRepresentationDescriptor) {
+        text = RepresentationHelper.getRepresentationFullPathText((DRepresentationDescriptor) selectedElement);
+        image = ExtendedImageRegistry.getInstance().getImage(EObjectLabelProviderHelper.getImage(eObject));
       } else {
-        statusLineManager.setMessage(null, ICommonConstants.EMPTY_STRING);
+        // Handle then semantic element
+        EObject semanticElement = CapellaAdapterHelper.resolveSemanticObject(selectedElement, true);
+        if (semanticElement != null) {
+          text = EObjectLabelProviderHelper.getFullPathText(semanticElement);
+          image = ExtendedImageRegistry.getInstance().getImage(EObjectLabelProviderHelper.getImage(semanticElement));
+        }
       }
+
+      statusLineManager.setMessage(image, text);
     }
   }
 

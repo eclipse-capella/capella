@@ -14,11 +14,11 @@ import java.text.MessageFormat;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IMarkerResolution2;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
-import org.polarsys.capella.common.ui.services.helper.EObjectImageProviderHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.LocateInCapellaExplorerAction;
 
 /**
@@ -55,7 +55,7 @@ public class CapellaElementGoToResolver implements IMarkerResolution2 {
         MessageFormat.format(QUICK_FIX_LABEL_PATTERN, elementToGoToDescription, modelElementName,
             modelElementClassName);
     // Image.
-    image = EObjectImageProviderHelper.getImage(modelElement);
+    image = ExtendedImageRegistry.getInstance().getImage(EObjectLabelProviderHelper.getImage(modelElement));
 
     this.modelElement = modelElement;
   }

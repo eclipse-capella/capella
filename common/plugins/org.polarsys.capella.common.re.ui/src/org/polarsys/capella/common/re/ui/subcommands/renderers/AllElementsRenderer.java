@@ -22,14 +22,8 @@ import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
-/**
- *
- */
 public class AllElementsRenderer extends SelectListRenderer {
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   protected IContentProvider createContentProvider(IRendererContext context) {
     IContext ctx = ((IContext) context.getPropertyContext().getSourceAsList(IContext.class).iterator().next());
@@ -39,14 +33,9 @@ public class AllElementsRenderer extends SelectListRenderer {
 
   @Override
   protected ILabelProvider createLabelProvider(IRendererContext context) {
-    IContext ctx = ((IContext) context.getPropertyContext().getSourceAsList(IContext.class).iterator().next());
-    TransactionalEditingDomain domain = (TransactionalEditingDomain) ctx.get(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN);
-    return new MDEAdapterFactoryLabelProvider(((AdapterFactoryEditingDomain) domain).getAdapterFactory());
+    return new MDEAdapterFactoryLabelProvider();
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   protected Object createInput(IProperty property, IRendererContext context) {
     return context.getPropertyContext().getCurrentValue(property);

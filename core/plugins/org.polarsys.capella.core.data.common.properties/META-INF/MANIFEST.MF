@@ -7,7 +7,8 @@ Bundle-Activator: org.polarsys.capella.core.data.common.properties.CommonPropert
 Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.core.data.core.properties;visibility:=reexport,
  org.polarsys.capella.common.linkedtext.ui,
- org.polarsys.capella.core.linkedtext.ui
+ org.polarsys.capella.core.linkedtext.ui,
+ org.polarsys.capella.common.ui
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.data.common.properties,
  org.polarsys.capella.core.data.common.properties.controllers,

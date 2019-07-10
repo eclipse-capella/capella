@@ -10,11 +10,11 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.semantic.browser.label.provider;
 
-import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.jface.viewers.IFontProvider;
+import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.jface.viewers.IToolTipProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
@@ -22,47 +22,37 @@ import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
+import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 import org.polarsys.capella.common.ui.toolkit.browser.category.ICategory;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.BrowserElementWrapper;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.CategoryWrapper;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.EObjectWrapper;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.CapellaNavigatorLabelProvider;
 import org.polarsys.capella.core.ui.semantic.browser.CapellaBrowserActivator;
 import org.polarsys.capella.core.ui.semantic.browser.IImageKeys;
 
-/**
- */
-public class SemanticBrowserLabelProvider extends CapellaNavigatorLabelProvider implements IColorProvider, IFontProvider {
+public class SemanticBrowserLabelProvider extends MDEAdapterFactoryLabelProvider implements ILabelProvider, IColorProvider, IFontProvider, IToolTipProvider {
   /**
    * The font used for category, to not forget to dispose it
    */
   private Font _font;
 
-  public SemanticBrowserLabelProvider(AdapterFactory adapterFactory_p) {
-    super(adapterFactory_p);
-  }
-
-  public SemanticBrowserLabelProvider(TransactionalEditingDomain editingDomain_p, AdapterFactory adapterFactory_p) {
-    super(editingDomain_p, adapterFactory_p);
-  }
-
   /**
    * @see org.eclipse.jface.viewers.ILabelProvider#getImage(java.lang.Object)
    */
   @Override
-  public Image getImage(Object element_p) {
+  public Image getImage(Object element) {
     // Precondition.
-    if (null == element_p) {
+    if (null == element) {
       return null;
     }
     // Initialize with the category image.
     Image result = CapellaBrowserActivator.getDefault().getImage(IImageKeys.IMG_CATEGORY);
     EObject modelElement = null;
     // Find out a model element from given element.
-    if (element_p instanceof EObjectWrapper) {
-      modelElement = (EObject) ((EObjectWrapper) element_p).getElement();
-    } else if (element_p instanceof EObject) {
-      modelElement = (EObject) element_p;
+    if (element instanceof EObjectWrapper) {
+      modelElement = (EObject) ((EObjectWrapper) element).getElement();
+    } else if (element instanceof EObject) {
+      modelElement = (EObject) element;
     }
     // If a model element was found, get its image.
     if (null != modelElement) {
@@ -71,25 +61,22 @@ public class SemanticBrowserLabelProvider extends CapellaNavigatorLabelProvider 
     return result;
   }
 
-  /**
-   * @see org.eclipse.jface.viewers.ILabelProvider#getText(java.lang.Object)
-   */
   @Override
-  public String getText(Object element_p) {
+  public String getText(Object element) {
     String result = null;
     // Precondition.
-    if (null == element_p) {
+    if (null == element) {
       return result;
     }
-    if (element_p instanceof CategoryWrapper) {
-      Object modelElement = ((BrowserElementWrapper) element_p).getElement();
+    if (element instanceof CategoryWrapper) {
+      Object modelElement = ((BrowserElementWrapper) element).getElement();
       result = ((ICategory) modelElement).getName();
     } else {
       Object modelElement = null;
-      if (element_p instanceof EObjectWrapper) {
-        modelElement = ((BrowserElementWrapper) element_p).getElement();
+      if (element instanceof EObjectWrapper) {
+        modelElement = ((BrowserElementWrapper) element).getElement();
       } else {
-        modelElement = element_p;
+        modelElement = element;
       }
       result = super.getText(modelElement);
     }
@@ -129,8 +116,8 @@ public class SemanticBrowserLabelProvider extends CapellaNavigatorLabelProvider 
    * @see org.eclipse.jface.viewers.IColorProvider#getForeground(java.lang.Object)
    */
   @Override
-  public Color getForeground(Object element_p) {
-    if (element_p instanceof CategoryWrapper) {
+  public Color getForeground(Object element) {
+    if (element instanceof CategoryWrapper) {
       return PlatformUI.getWorkbench().getDisplay().getSystemColor(SWT.COLOR_BLACK);
     }
     return null;
@@ -140,8 +127,8 @@ public class SemanticBrowserLabelProvider extends CapellaNavigatorLabelProvider 
    * @see org.eclipse.jface.viewers.IFontProvider#getFont(java.lang.Object)
    */
   @Override
-  public Font getFont(Object element_p) {
-    if (element_p instanceof CategoryWrapper) {
+  public Font getFont(Object element) {
+    if (element instanceof CategoryWrapper) {
       if (null == _font) {
         Display defaultDisplay = Display.getDefault();
         Font result = defaultDisplay.getSystemFont();
@@ -154,7 +141,10 @@ public class SemanticBrowserLabelProvider extends CapellaNavigatorLabelProvider 
     return null;
   }
 
-  public String getToolTipText(Object element_p) {
+
+  @Override
+  public String getToolTipText(Object element) {
     return null;
   }
+
 }

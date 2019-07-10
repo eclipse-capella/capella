@@ -300,7 +300,7 @@ public class TraceTreeViewer implements IDoubleClickListener {
       _treeViewer.setContentProvider(_targetEltContentProvider);
     }
 
-    _treeViewer.setLabelProvider(new ElementLabelProvider(_currentNamedElement));
+    _treeViewer.setLabelProvider(new ElementLabelProvider());
     _treeViewer.setInput(_currentNamedElement);
     _treeViewer.addDoubleClickListener(this);
     _treeViewer.expandAll();

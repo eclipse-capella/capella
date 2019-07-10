@@ -13,7 +13,6 @@ package org.polarsys.capella.core.ui.toolkit.decomposition;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.jface.viewers.IBaseLabelProvider;
 import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.jface.viewers.IFontProvider;
@@ -24,6 +23,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
+import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.information.communication.CommunicationLink;
 import org.polarsys.capella.core.data.information.communication.provider.CommunicationItemProviderAdapterFactory;
@@ -31,14 +31,8 @@ import org.polarsys.capella.core.data.information.communication.provider.Communi
 import org.polarsys.capella.core.data.la.LaFactory;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.ui.toolkit.Activator;
-import org.polarsys.capella.core.ui.toolkit.viewers.CapellaElementLabelProvider;
-//import org.polarsys.capella.core.projection.preferences.ProjectionPreferences;
 
-/**
- * Class <code>DecompositionLabelProvider</code> provides the label for <code>DecompositionGeneralViewer</code>
- * 
- */
-public class DecompositionLabelProvider extends CapellaElementLabelProvider implements IBaseLabelProvider,
+public class DecompositionLabelProvider extends MDEAdapterFactoryLabelProvider implements IBaseLabelProvider,
     IColorProvider, IFontProvider {// extends ColumnLabelProvider
   private boolean _sourceViewer;
   private Font boldFont = new Font(Display.getCurrent(), "Verdana", 8, SWT.BOLD); //$NON-NLS-1$;
@@ -51,10 +45,8 @@ public class DecompositionLabelProvider extends CapellaElementLabelProvider impl
       Messages.getString("LCDecomp.interface.icon.LCInterfaceUse")); //$NON-NLS-1$
   Image useImage = useImageDescriptorFromPlugin.createImage();
 
-  /**
-   * @param flag
-   */
-  public DecompositionLabelProvider(boolean flag, ImageRegistry imgRegistry) {
+  public DecompositionLabelProvider(boolean flag) {
+    super();
     setSourceViewer(flag);
   }
 

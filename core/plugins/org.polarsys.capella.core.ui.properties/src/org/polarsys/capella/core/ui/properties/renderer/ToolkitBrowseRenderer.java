@@ -22,19 +22,11 @@ import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContex
 import org.polarsys.capella.common.flexibility.properties.schema.IRestraintProperty;
 import org.polarsys.capella.common.flexibility.wizards.renderer.BrowseRenderer;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
-import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
 import org.polarsys.capella.common.ui.toolkit.dialogs.TransferTreeListDialog;
-import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
-import org.polarsys.capella.core.model.utils.CollectionExt;
 
-/**
- */
 public class ToolkitBrowseRenderer extends BrowseRenderer {
 
-  /**
-   * @param shell
-   */
   @SuppressWarnings({ "unchecked", "rawtypes" })
   @Override
   protected void proceedBrowse(Shell shell, IRendererContext context) {
@@ -50,13 +42,9 @@ public class ToolkitBrowseRenderer extends BrowseRenderer {
         scope.addAll((Collection) restraintProperty.getChoiceValues(propertyContext));
         scope.remove(null);
 
-        SelectElementsDialog dialog =
-            new SelectElementsDialog(shell,
-            	TransactionHelper.getEditingDomain(scope),
-            	CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
-            	"Selection wizard", //$NON-NLS-1$
-                "Select element.", //$NON-NLS-1$
-                new ArrayList<EObject>(scope), false, null);
+        SelectElementsDialog dialog = new SelectElementsDialog(shell, "Selection wizard", //$NON-NLS-1$
+            "Select element.", //$NON-NLS-1$
+            new ArrayList<EObject>(scope));
         dialog.open();
 
         List<?> dialogResult = dialog.getResult();
@@ -64,20 +52,18 @@ public class ToolkitBrowseRenderer extends BrowseRenderer {
         updatedValue(property, context, dialogResult.get(0));
 
       } else {
-    	Collection<EObject> current = (Collection) propertyContext.getCurrentValue(restraintProperty);
-    	Collection<EObject> left = new HashSet<EObject>();
-    	left.addAll((Collection) restraintProperty.getValue(propertyContext));
-    	left.addAll((Collection) restraintProperty.getChoiceValues(propertyContext));
-    	left.removeAll(current);
-    	left.remove(null);
-    	Collection<EObject> right = new HashSet<EObject>();
-    	right.addAll(current);
-    	right.remove(null);
-    	  
+        Collection<EObject> current = (Collection) propertyContext.getCurrentValue(restraintProperty);
+        Collection<EObject> left = new HashSet<EObject>();
+        left.addAll((Collection) restraintProperty.getValue(propertyContext));
+        left.addAll((Collection) restraintProperty.getChoiceValues(propertyContext));
+        left.removeAll(current);
+        left.remove(null);
+        Collection<EObject> right = new HashSet<EObject>();
+        right.addAll(current);
+        right.remove(null);
+
         TransferTreeListDialog dialog = new TransferTreeListDialog(shell, "Selection wizard", //$NON-NLS-1$
-            "Select elements.", //$NON-NLS-1$
-            TransactionHelper.getEditingDomain(CollectionExt.mergeCollections(left, right)),
-            CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
+            "Select elements.");
 
         dialog.setLeftInput(new ArrayList<EObject>(left), null);
         dialog.setRightInput(new ArrayList<EObject>(right), null);

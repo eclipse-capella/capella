@@ -23,11 +23,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
+import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 
-import org.polarsys.capella.core.ui.toolkit.viewers.CapellaElementLabelProvider;
-
-/**
- */
 public class TableDelegatedViewer extends AbstractDelegatedViewer {
 
   protected Table _table;
@@ -60,7 +57,7 @@ public class TableDelegatedViewer extends AbstractDelegatedViewer {
     // Create the table viewer for created table.
     _columnViewer = new TableViewer(_table);
     _columnViewer.setContentProvider(new ArrayContentProvider());
-    _columnViewer.setLabelProvider(new CapellaElementLabelProvider());
+    _columnViewer.setLabelProvider(new MDEAdapterFactoryLabelProvider());
 
     addViewerListeners();
 

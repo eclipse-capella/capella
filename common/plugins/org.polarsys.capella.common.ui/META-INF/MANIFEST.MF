@@ -15,7 +15,8 @@ Require-Bundle: org.eclipse.help,
  org.eclipse.ui.navigator;visibility:=reexport,
  org.eclipse.e4.core.di,
  org.eclipse.e4.ui.workbench,
- org.eclipse.e4.core.contexts
+ org.eclipse.e4.core.contexts,
+ org.polarsys.capella.core.model.handler
 Export-Package: org.polarsys.capella.common.ui,
  org.polarsys.capella.common.ui.providers,
  org.polarsys.capella.common.ui.services,
