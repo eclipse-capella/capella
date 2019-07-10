@@ -186,8 +186,6 @@
       <repository
           url="http://download.eclipse.org/eclipse/updates/4.6"/>
       <repository
-          url="https://download.eclipse.org/kitalpha/updates/nightly/sdk/1.4.x/"/>
-      <repository
           url="http://download.eclipse.org/releases/photon"/>
       <repository
           url="http://download.eclipse.org/releases/mars"/>
