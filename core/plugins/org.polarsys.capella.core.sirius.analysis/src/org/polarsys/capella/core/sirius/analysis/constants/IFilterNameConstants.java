@@ -31,6 +31,7 @@ public interface IFilterNameConstants {
   String FILTER_CC_HIDE_ACTORS = "Hide Actors"; //$NON-NLS-1$
   String FILTER_CC_HIDE_ACTOR_INVOLVEMENTS = "Hide Actor Involvements"; //$NON-NLS-1$
   String FILTER_CC_HIDE_ACTOR_GENERALIZATIONS = "Hide Actor Generalizations"; //$NON-NLS-1$
+  String FILTER_CC_HIDE_PROPERTY_VALUES = "Hide Property Values";
 
   // CDB filters - Class Diagram Blank
   String FILTER_CDB_HIDE_PROPERTIES = "Hide Properties"; //$NON-NLS-1$
@@ -106,6 +107,7 @@ public interface IFilterNameConstants {
   String FILTER_CM_HIDE_ACTORS = "Hide Actors"; //$NON-NLS-1$
   String FILTER_CM_HIDE_ACTOR_INVOLVEMENTS = "Hide Actor Involvements"; //$NON-NLS-1$
   String FILTER_CM_HIDE_ACTOR_GENERALIZATIONS = "Hide Actor Generalizations"; //$NON-NLS-1$
+  String FILTER_CM_HIDE_PROPERTY_VALUES = "Hide Property Values";
 
   // CRB filters - Capability Realization Blank
   String FILTER_CRB_HIDE_CAPABILITY_REALIZATIONS = "Hide Capability Realizations"; //$NON-NLS-1$
@@ -310,6 +312,7 @@ public interface IFilterNameConstants {
   String FILTER_MB_HIDE_ACTORS = "Hide Actors"; //$NON-NLS-1$
   String FILTER_MB_HIDE_ACTOR_INVOLVEMENTS = "Hide Actor Involvements"; //$NON-NLS-1$
   String FILTER_MB_HIDE_ACTOR_GENERALIZATIONS = "Hide Actor Generalizations"; //$NON-NLS-1$
+  String FILTER_MB_HIDE_PROPERTY_VALUES = "Hide Property Values";
 
   // MCB filters - Mission Capabilities Blank
   String FILTER_MCB_HIDE_CAPABILITIES = "Hide Capabilities"; //$NON-NLS-1$
@@ -321,6 +324,7 @@ public interface IFilterNameConstants {
   String FILTER_MCB_HIDE_ACTOR_MISSION_INVOLVEMENTS = "Hide Actor Mission Involvements"; //$NON-NLS-1$
   String FILTER_MCB_HIDE_ACTOR_CAPABILITY_INVOLVEMENTS = "Hide Actor Capability Involvements"; //$NON-NLS-1$
   String FILTER_MCB_HIDE_ACTOR_GENERALIZATIONS = "Hide Actor Generalizations"; //$NON-NLS-1$
+  String FILTER_MCB_HIDE_PROPERTY_VALUES = "Hide Property Values";
 
   // M&S filters - Modes and States
   String FILTER_MS_HIDE_INTERNAL_STATES = "Hide Internal States"; //$NON-NLS-1$
@@ -345,7 +349,6 @@ public interface IFilterNameConstants {
   String FILTER_OAB_HIDE_CROSS_INTEREACTIONS_OF_ROLES = "Hide cross Interactions of Roles"; //$NON-NLS-1$
   String FILTER_OAB_HIDE_PROPERTY_VALUES = "Hide Property Values";
   String FILTER_OAB_HIDE_SEQUENCING_INFORMATION = "Hide Sequencing Information";
-  
 
   // filter id
   String FILTER_OAB_SHOW_EXCHANGE_ITEMS_ON_INTERACTIONS_ID = "Show ExchangeItems"; //$NON-NLS-1$
@@ -531,6 +534,8 @@ public interface IFilterNameConstants {
   String FILTER_SAB_HIDE_SIMPLIFIED_GROUPED_COMPONENT_EXCHANGES = "Hide Simplified Grouped Component Exchanges"; //$NON-NLS-1$
   String FILTER_SAB_HIDE_SIMPLIFIED_GROUPED_COMPONENT_EXCHANGES_ID = FILTER_XAB_HIDE_SIMPLIFIED_GROUP_OF_COMPONENT_EXCHANGES_ID; // $NON-NLS-1$
   String FILTER_SAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES = FILTER_XAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES; // $NON-NLS-1$
+  String FILTER_SAB_HIDE_PROPERTY_VALUES = "Hide Property Values";
+  String FILTER_SAB_HIDE_SEQUENCING_INFORMATION = "Hide Sequencing Information";
 
   // filter id
   String FILTER_SAB_HIDE_COMPONENT_EXCHANGES_ID = "Hide Connections"; //$NON-NLS-1$
@@ -550,6 +555,7 @@ public interface IFilterNameConstants {
   String FILTER_SDFB_SHOW_FUNCTIONAL_EXCHANGES_EXCHANGEITEMS = "Show FE [EI1, EI2]"; //$NON-NLS-1$
   String FILTER_SDFB_SHOW_FUNCTIONAL_EXCHANGES_PARAMETERS = "Show FE (type1, type2, type3)";//$NON-NLS-1$
   String FILTER_SDFB_SHOW_FUNCTIONAL_EXCHANGES_EXCHANGEITEMS_PARAMETERS = "Show FE [EI1(param1:type1, param2:type2), EI2(param3:type3)]"; //$NON-NLS-1$
+  String FILTER_SDFB_HIDE_PROPERTY_VALUES = "Hide Property Values";
 
   // filter id
   String FILTER_SDFB_SHOW_EXCHANGEITEMS_ID = "Show ExchangeItems"; //$NON-NLS-1$
@@ -560,6 +566,7 @@ public interface IFilterNameConstants {
 
   // SFBD filters - System Function Breakdown
   String FILTER_SFBD_HIDE_CONTROL_NODES = "Hide Control Nodes";//$NON-NLS-1$
+  String FILTER_SFBD_HIDE_PROPERTY_VALUES = "Hide Property Values";
 
   // Exchange Context filters
   String FILTER_SHOW_EXCHANGE_CONTEXT_ID = "ShowExchangeContext"; //$NON-NLS-1$
