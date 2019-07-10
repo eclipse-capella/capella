@@ -181,10 +181,6 @@
           name="org.eclipse.emf.sdk.feature.group"/>
       <requirement
           name="org.eclipse.releng.tools.feature.group"/>
-      <requirement
-          name="org.eclipse.egf.sdk.feature.group"/>
-      <requirement
-          name="org.polarsys.kitalpha.emde.sdk.feature.feature.group"/>
       <repository
           url="http://download.eclipse.org/releases/neon"/>
       <repository
