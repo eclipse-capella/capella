@@ -8,21 +8,16 @@ Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.tiger,
  org.polarsys.capella.core.projection.common,
- org.polarsys.capella.core.projection.misc,
  org.polarsys.capella.core.projection.exchanges,
  org.polarsys.capella.core.projection.interfaces,
- org.polarsys.capella.core.projection.preferences,
- org.polarsys.capella.core.projection.logicalfunction,
- org.polarsys.capella.core.projection.operationalactivity,
- org.polarsys.capella.core.projection.systemfunction,
- org.polarsys.capella.core.projection.actors.ctx2la,
- org.polarsys.capella.core.projection.actors.la2pa,
- org.polarsys.capella.core.projection.actors.oa2ctx,
- org.polarsys.capella.core.projection.lc2pc.breakdownstrategy,
- org.polarsys.capella.core.projection.lc2pc.leafstrategy,
  org.polarsys.capella.core.transition.system.topdown;visibility:=reexport,
- org.polarsys.capella.core.projection.statemachine
+ org.eclipse.ui.workbench,
+ org.eclipse.jface,
+ org.polarsys.capella.core.ui.toolkit,
+ org.polarsys.capella.core.diagram.helpers
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Export-Package: org.polarsys.capella.core.projection.scenario
+Export-Package: org.polarsys.capella.core.projection.scenario,
+ org.polarsys.capella.core.projection.scenario.es.transition.commands,
+ org.polarsys.capella.core.projection.scenario.fs.transition.commands
 Bundle-Localization: plugin

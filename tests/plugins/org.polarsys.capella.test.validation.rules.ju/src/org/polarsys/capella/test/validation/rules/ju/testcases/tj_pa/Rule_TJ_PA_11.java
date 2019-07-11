@@ -13,11 +13,10 @@ package org.polarsys.capella.test.validation.rules.ju.testcases.tj_pa;
 import java.util.Arrays;
 import java.util.List;
 
-import org.eclipse.core.runtime.preferences.IEclipsePreferences;
-import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.ecore.EClass;
 import org.polarsys.capella.core.data.cs.CsPackage;
-import org.polarsys.capella.core.model.preferences.IProjectionPreferences;
+import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
+import org.polarsys.capella.core.transition.system.topdown.preferences.PreferenceHelper;
 import org.polarsys.capella.test.framework.api.OracleDefinition;
 import org.polarsys.capella.test.validation.rules.ju.testcases.AbstractRulesOnTransitionTest;
 
@@ -33,10 +32,8 @@ public class Rule_TJ_PA_11 extends AbstractRulesOnTransitionTest {
 	 */
 	@Override
 	protected void setUp() throws Exception {
-		IEclipsePreferences preferences = InstanceScope.INSTANCE
-				.getNode(IProjectionPreferences.PREFS_PROJECTION_ID);
-		preferences.putBoolean(
-				IProjectionPreferences.PREFS_INTERFACE_PROJECTION, true);
+	  PreferenceHelper preferenceHelper = PreferenceHelper.getInstance();
+	  preferenceHelper.setBooleanValue(ITopDownConstants.OPTIONS_TRANSITION__INTERFACE, true);
 		super.setUp();
 	}
 

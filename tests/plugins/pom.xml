@@ -43,7 +43,6 @@
         <module>org.polarsys.capella.test.fastlinker.ju</module>
         <module>org.polarsys.capella.test.framework</module>
         <module>org.polarsys.capella.test.library.ju</module>
-        <module>org.polarsys.capella.test.merge.ju</module>
         <module>org.polarsys.capella.test.model.ju</module>
         <module>org.polarsys.capella.test.navigator.ju</module>
         <module>org.polarsys.capella.test.migration.ju</module>
@@ -53,7 +52,6 @@
         <module>org.polarsys.capella.test.projection.ju</module>
         <module>org.polarsys.capella.test.re.updateconnections.ju</module>
         <module>org.polarsys.capella.test.recrpl.ju</module>
-        <module>org.polarsys.capella.test.refinement.ju</module>
         <module>org.polarsys.capella.test.semantic.queries.ju</module>
         <module>org.polarsys.capella.test.suite.inui.ju</module>
         <module>org.polarsys.capella.test.suite.local.ju</module>

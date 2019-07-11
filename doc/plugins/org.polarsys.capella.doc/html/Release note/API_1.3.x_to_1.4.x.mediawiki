@@ -1,3 +1,4 @@
+<<<<<<< Upstream, based on origin/master
 = API changes from Capella 1.3.x to 1.4.x =
 
 Please also refer to  [[../help/topic/org.eclipse.sirius.doc/doc/Release_Notes.html|Sirius Release Notes]].
@@ -14,3 +15,11 @@ For better integration with Eclipse in the future and for better user experience
 * The search is case insensitive
 
 As a reminder, the filtered tree is used in the '''Capella Project Explorer''' view and many others wizards like '''Transfer Dialog''', '''Replicable Elements Dialog''', '''Delete Dialog''', etc
+
+=== Refinement plug-ins have been removed; Projection plug-ins have been refactored ===
+
+All plug-ins org.polarsys.capella.core.refinement.** have been completely removed because they were deprecated.
+
+org.polarsys.capella.core.projection.** have been refactored in the following way:
+* Only scenario/exchanges/interfaces/common plug-ins remain;
+* Classes from commands plug-in have been moved to their appropriate packages.

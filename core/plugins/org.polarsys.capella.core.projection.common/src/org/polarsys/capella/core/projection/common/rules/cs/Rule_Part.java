@@ -34,6 +34,7 @@ import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.projection.common.CapellaEngine;
 import org.polarsys.capella.core.projection.common.ProjectionMessages;
 import org.polarsys.capella.core.projection.common.context.IContext;
 import org.polarsys.capella.core.projection.common.handlers.attachment.AttachmentHelper;
@@ -41,7 +42,6 @@ import org.polarsys.capella.core.projection.common.handlers.transformation.Trans
 import org.polarsys.capella.core.projection.common.rules.core.Rule_CapellaElement;
 import org.polarsys.capella.core.tiger.helpers.Query;
 import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
-import org.polarsys.capella.core.transfo.misc.CapellaEngine;
 
 /**
  */

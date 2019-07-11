@@ -14,12 +14,13 @@ import java.util.Collection;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
-import org.polarsys.capella.core.projection.commands.ESFtoESBCommand;
-import org.polarsys.capella.core.projection.commands.ESToISCommand;
-import org.polarsys.capella.core.projection.commands.EStoESCommand;
-import org.polarsys.capella.core.projection.commands.FSToESCommand;
-import org.polarsys.capella.core.projection.commands.FStoFSCommand;
-import org.polarsys.capella.core.projection.commands.GenerateInterfacesCommand;
+import org.polarsys.capella.common.ef.command.ICommand;
+import org.polarsys.capella.core.projection.interfaces.generateInterfaces.GenerateInterfacesCommand;
+import org.polarsys.capella.core.projection.scenario.es.transition.commands.ESFtoESBCommand;
+import org.polarsys.capella.core.projection.scenario.es.transition.commands.ESToISCommand;
+import org.polarsys.capella.core.projection.scenario.es.transition.commands.EStoESCommand;
+import org.polarsys.capella.core.projection.scenario.fs.transition.commands.FSToESCommand;
+import org.polarsys.capella.core.projection.scenario.fs.transition.commands.FStoFSCommand;
 
 /**
  */
@@ -46,27 +47,27 @@ public abstract class TopDownTransitionTestCase extends TransitionTestCase {
   }
 
   public void performGenerateInterfacesCommand(Collection<EObject> elements) {
-    executeCommand(new GenerateInterfacesCommand(elements));
+    executeCommand((ICommand) new GenerateInterfacesCommand(elements));
   }
 
   public void performESFtoESBTransition(Collection<EObject> elements) {
-    executeCommand(new ESFtoESBCommand(elements));
+    executeCommand((ICommand) new ESFtoESBCommand(elements));
   }
 
   public void performEStoESTransition(Collection<EObject> elements) {
-    executeCommand(new EStoESCommand(elements));
+    executeCommand((ICommand) new EStoESCommand(elements));
   }
 
   public void performEStoISTransition(Collection<EObject> elements) {
-    executeCommand(new ESToISCommand(elements));
+    executeCommand((ICommand) new ESToISCommand(elements));
   }
 
   public void performFStoFSTransition(Collection<EObject> elements) {
-    executeCommand(new FStoFSCommand(elements));
+    executeCommand((ICommand) new FStoFSCommand(elements));
   }
 
   public void performFStoESTransition(Collection<EObject> elements) {
-    executeCommand(new FSToESCommand(elements));
+    executeCommand((ICommand) new FSToESCommand(elements));
   }
 
   public void performOCtoSMTransition(Collection<EObject> elements) {

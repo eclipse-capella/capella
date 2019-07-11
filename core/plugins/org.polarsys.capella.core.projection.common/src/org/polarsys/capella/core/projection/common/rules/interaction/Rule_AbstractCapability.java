@@ -23,11 +23,11 @@ import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.projection.common.CapellaEngine;
 import org.polarsys.capella.core.projection.common.context.IContext;
 import org.polarsys.capella.core.projection.common.handlers.attachment.AttachmentHelper;
 import org.polarsys.capella.core.projection.common.rules.core.Rule_CapellaElement;
 import org.polarsys.capella.core.tiger.ITransfo;
-import org.polarsys.capella.core.transfo.misc.CapellaEngine;
 
 /**
  */

@@ -53,22 +53,22 @@ import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
-import org.polarsys.capella.core.model.preferences.IProjectionPreferences;
+import org.polarsys.capella.core.projection.common.CapellaEngine;
 import org.polarsys.capella.core.projection.common.ProjectionMessages;
 import org.polarsys.capella.core.projection.common.context.IContext;
 import org.polarsys.capella.core.projection.common.handlers.transformation.TransformationHandlerHelper;
 import org.polarsys.capella.core.projection.common.rules.core.Rule_CapellaElement;
-import org.polarsys.capella.core.projection.preferences.ProjectionPreferencesPlugin;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.helpers.Query;
 import org.polarsys.capella.core.tiger.impl.TransfoEngine;
-import org.polarsys.capella.core.transfo.misc.CapellaEngine;
+import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
+import org.polarsys.capella.core.transition.system.topdown.preferences.PreferenceHelper;
 
 public class Rule_Component extends Rule_CapellaElement {
 
-  protected boolean _isItfProjectionHandle = IProjectionPreferences.DEFAULT_INTERFACE_PROJECTION.booleanValue();
+  protected boolean _isItfProjectionHandle = ITopDownConstants.OPTIONS_TRANSITION__INTERFACE_DEFAULT;
 
-  protected boolean _isStateMachineProjectionHandle = IProjectionPreferences.DEFAULT_STATE_MACHINE_PROJECTION.booleanValue();
+  protected boolean _isStateMachineProjectionHandle = ITopDownConstants.OPTIONS_TRANSITION__STATE_MACHINE_DEFAULT;
 
   protected List<Interface> alreadyTransitioned;
 
@@ -242,8 +242,11 @@ public class Rule_Component extends Rule_CapellaElement {
 
   @Override
   public List<EObject> retrieveRelatedElements_(EObject element_p, ITransfo transfo_p) {
-    _isItfProjectionHandle = ProjectionPreferencesPlugin.getDefault().transitionInterfaceWhileComponentTransition();
-    _isStateMachineProjectionHandle = ProjectionPreferencesPlugin.getDefault().transitionStateMachineWhileComponentTransition();
+    
+    PreferenceHelper preferenceHelper = PreferenceHelper.getInstance();
+    
+    _isItfProjectionHandle = preferenceHelper.transitionInterfaceWhileComponentTransition();
+    _isStateMachineProjectionHandle = preferenceHelper.transitionStateMachineWhileComponentTransition();
     return super.retrieveRelatedElements_(element_p, transfo_p);
   }
 

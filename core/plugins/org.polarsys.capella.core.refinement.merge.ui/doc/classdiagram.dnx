@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--xtools2_universal_type_manager-->
-<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
-<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.0/notation" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.2/Umlnotation" xmi:id="_eJbn8L7GEdy7nYfpB5Do2Q" type="Class" name="classdiagram.dnx">
-  <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_eJbn8b7GEdy7nYfpB5Do2Q"/>
-  <element xsi:nil="true"/>
-</notation:Diagram>

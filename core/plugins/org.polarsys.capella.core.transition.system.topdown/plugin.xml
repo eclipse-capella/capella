@@ -66,7 +66,7 @@
                id="log.enabled"
                name="%transition.log.name"
                description="%transition.log.description">
-               <parameter id="scope" value="org.polarsys.capella.core.projection.preferences"></parameter>
+               <parameter id="scope" value="org.polarsys.capella.core.transition.system.topdown.preferences"></parameter>
                <parameter
                      id="default"
                      value="true">
@@ -80,7 +80,7 @@
                id="interface.mode"
                name="%transition.interface.name"
                description="%transition.interface.description">
-               <parameter id="scope" value="org.polarsys.capella.core.projection.preferences"></parameter>
+               <parameter id="scope" value="org.polarsys.capella.core.transition.system.topdown.preferences"></parameter>
                <parameter
                      id="default"
                      value="false">
@@ -94,7 +94,7 @@
                id="projection.exchangeItems"
                name="%transition.exchangeItem.name"
                description="%transition.exchangeItem.description">
-               <parameter id="scope" value="org.polarsys.capella.core.projection.preferences"></parameter>
+               <parameter id="scope" value="org.polarsys.capella.core.transition.system.topdown.preferences"></parameter>
                <parameter
                      id="default"
                      value="false">
@@ -108,7 +108,7 @@
                id="projection.dataType"
                name="%transition.dataType.name"
                description="%transition.dataType.description">
-               <parameter id="scope" value="org.polarsys.capella.core.projection.preferences"></parameter>
+               <parameter id="scope" value="org.polarsys.capella.core.transition.system.topdown.preferences"></parameter>
                <parameter
                      id="default"
                      value="false">
@@ -122,7 +122,7 @@
                id="projection.component.stateMachine"
                name="%transition.stateMachine.name"
                description="%transition.stateMachine.description">
-               <parameter id="scope" value="org.polarsys.capella.core.projection.preferences"></parameter>
+               <parameter id="scope" value="org.polarsys.capella.core.transition.system.topdown.preferences"></parameter>
                <parameter
                      id="default"
                      value="false">
@@ -136,7 +136,7 @@
                id="projection.functional"
                name="%transition.function.name"
                description="%transition.function.description">
-               <parameter id="scope" value="org.polarsys.capella.core.projection.preferences"></parameter>
+               <parameter id="scope" value="org.polarsys.capella.core.transition.system.topdown.preferences"></parameter>
                <parameter
                      id="default"
                      value="true">
@@ -150,7 +150,7 @@
                id="transition.system.scope.appliedPropertyValues"
                name="%transition.system.scope.appliedPropertyValues.name"
                description="%transition.system.scope.appliedPropertyValues.description">
-               <parameter id="scope" value="org.polarsys.capella.core.projection.preferences" />
+               <parameter id="scope" value="org.polarsys.capella.core.transition.system.topdown.preferences" />
                <parameter id="default" value="true" />
          </property>
          
@@ -161,7 +161,7 @@
                id="transition.system.scope.ownedPropertyValues"
                name="%transition.system.scope.ownedPropertyValues.name"
                description="%transition.system.scope.ownedPropertyValues.description">
-               <parameter id="scope" value="org.polarsys.capella.core.projection.preferences" />
+               <parameter id="scope" value="org.polarsys.capella.core.transition.system.topdown.preferences" />
                <parameter id="default" value="true" />
          </property>
          
@@ -173,7 +173,7 @@
                id="projection.propertyValue.appliedPropertyValues"
                name="%transition.propertyValue.appliedPropertyValues.name"
                description="%transition.propertyValue.appliedPropertyValues.description">
-               <parameter id="scope" value="org.polarsys.capella.core.projection.preferences"></parameter>
+               <parameter id="scope" value="org.polarsys.capella.core.transition.system.topdown.preferences"></parameter>
                <parameter
                      id="default"
                      value="true">
@@ -187,7 +187,7 @@
                id="projection.propertyValue.involvedElements"
                name="%transition.propertyValue.involvedElements.name"
                description="%transition.propertyValue.involvedElements.description">
-               <parameter id="scope" value="org.polarsys.capella.core.projection.preferences"></parameter>
+               <parameter id="scope" value="org.polarsys.capella.core.transition.system.topdown.preferences"></parameter>
                <parameter
                      id="default"
                      value="false">
@@ -290,7 +290,7 @@
                id="projection.interfaces.propagateEI"
                name="%projection.interfaces.propagateEI"
                description="%projection.interfaces.propagateEI.description">
-               <parameter id="scope" value="org.polarsys.capella.core.projection.preferences"></parameter>
+               <parameter id="scope" value="org.polarsys.capella.core.transition.system.topdown.preferences"></parameter>
                <parameter
                      id="default"
                      value="true">
@@ -304,7 +304,7 @@
                id="projection.interfaces.createCE"
                name="%projection.interfaces.createCE"
                description="%projection.interfaces.createCE.description">
-               <parameter id="scope" value="org.polarsys.capella.core.projection.preferences"></parameter>
+               <parameter id="scope" value="org.polarsys.capella.core.transition.system.topdown.preferences"></parameter>
                <parameter
                      id="default"
                      value="false">
@@ -320,7 +320,7 @@
                description="%transition.fc2fs.sequence.message.strategy.description">
             <parameter
                   id="scope"
-                  value="org.polarsys.capella.core.projection.preferences">
+                  value="org.polarsys.capella.core.transition.system.topdown.preferences">
             </parameter>
             <parameter
                   id="default"
@@ -350,7 +350,7 @@
                description="%transition.op2oas.sequence.message.strategy.description">
             <parameter
                   id="scope"
-                  value="org.polarsys.capella.core.projection.preferences">
+                  value="org.polarsys.capella.core.transition.system.topdown.preferences">
             </parameter>
             <parameter
                   id="default"
@@ -387,7 +387,7 @@
                description="%transition.lcpc.description">
             <parameter
                   id="scope"
-                  value="org.polarsys.capella.core.projection.preferences">
+                  value="org.polarsys.capella.core.transition.system.topdown.preferences">
             </parameter>
             <parameter
                   id="default"

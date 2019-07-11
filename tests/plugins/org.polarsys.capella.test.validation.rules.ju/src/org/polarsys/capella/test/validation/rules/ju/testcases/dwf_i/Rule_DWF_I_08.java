@@ -13,11 +13,10 @@ package org.polarsys.capella.test.validation.rules.ju.testcases.dwf_i;
 import java.util.Arrays;
 import java.util.List;
 
-import org.eclipse.core.runtime.preferences.IEclipsePreferences;
-import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.ecore.EClass;
 import org.polarsys.capella.core.data.fa.FaPackage;
-import org.polarsys.capella.core.model.preferences.IProjectionPreferences;
+import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
+import org.polarsys.capella.core.transition.system.topdown.preferences.PreferenceHelper;
 import org.polarsys.capella.test.framework.api.OracleDefinition;
 import org.polarsys.capella.test.validation.rules.ju.testcases.AbstractRulesOnDesignTest;
 
@@ -34,10 +33,8 @@ public class Rule_DWF_I_08 extends AbstractRulesOnDesignTest {
 	@Override
   protected void setUp() throws Exception {
 		super.setUp();
-		IEclipsePreferences preferences = InstanceScope.INSTANCE
-				.getNode(IProjectionPreferences.PREFS_PROJECTION_ID);
-		preferences.putBoolean(
-				IProjectionPreferences.PREFS_INTERFACE_PROJECTION, true);
+		PreferenceHelper preferenceHelper = PreferenceHelper.getInstance();
+    preferenceHelper.setBooleanValue(ITopDownConstants.OPTIONS_TRANSITION__INTERFACE, true);
 	}
 
 	/**
@@ -47,10 +44,8 @@ public class Rule_DWF_I_08 extends AbstractRulesOnDesignTest {
 	@Override
   protected void tearDown() throws Exception {
 		super.tearDown();
-		IEclipsePreferences preferences = InstanceScope.INSTANCE
-				.getNode(IProjectionPreferences.PREFS_PROJECTION_ID);
-		preferences.putBoolean(
-				IProjectionPreferences.PREFS_INTERFACE_PROJECTION, false);
+		PreferenceHelper preferenceHelper = PreferenceHelper.getInstance();
+    preferenceHelper.setBooleanValue(ITopDownConstants.OPTIONS_TRANSITION__INTERFACE, false);
 	}
 
 	/**

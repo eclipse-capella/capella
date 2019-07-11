@@ -36,16 +36,10 @@
          <rule rulename="Rule_ActorCapabilityInvolvement"/>
          <rule rulename="Rule_AbstractFunctionAbstractCapabilityInvolvement"/>
          <rule rulename="Rule_FunctionalChainAbstractCapabilityInvolvement"/>
-         
-      <sharedRuleset bundle="org.polarsys.capella.core.projection.interfaces"
-       rulepackage="org.polarsys.capella.core.projection.interfaces.rules">
-          <rule rulename="Rule_Component"/> <!-- Load the component allocation -->
-      </sharedRuleset>
       
       <sharedContext context="org.polarsys.capella.core.projection.functional.realization"/>
       <sharedContext context="org.polarsys.capella.core.projection.interfaces.definition"/>
       <sharedContext context="capella.statemachine.rules"/>
-      <sharedContext context="org.polarsys.capella.core.projection.data.rules"/>
       
       </ruleset>
    
@@ -74,7 +68,6 @@
    <ruleset
       context="org.polarsys.capella.core.projection.global">
       
-   	<sharedContext context="org.polarsys.capella.core.projection.data"/>
    	<sharedContext context="org.polarsys.capella.core.projection.scenario.es2es"/>
    	<sharedContext context="capella.statemachine.rules"/>
    	<sharedContext context="org.polarsys.capella.core.projection.capability"/>
@@ -85,6 +78,29 @@
       <sharedContext context="capella.operationalactivities.rules"/>
       <sharedContext context="capella.systemfunction.rules"/>
    </ruleset>
+   </extension>
+   
+   <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+   
+         <propertyTester
+             id="org.polarsys.capella.core.platform.sirius.ui.property.projectionMode"
+             type="org.polarsys.capella.common.data.modellingcore.ModelElement"
+             namespace="org.polarsys.capella.core.platform.sirius.ui"
+             properties="projectionMode"
+             class="org.polarsys.capella.core.projection.common.CommandTester"
+         >
+         </propertyTester>    
+         
+         <propertyTester
+             id="org.polarsys.capella.core.platform.sirius.ui.property.graphicalProjectionMode"
+             type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"
+             namespace="org.polarsys.capella.core.platform.sirius.ui"
+             properties="projectionMode"
+             class="org.polarsys.capella.core.projection.common.CommandTester"
+         >
+         </propertyTester>
+         
    </extension>
   
 </plugin>

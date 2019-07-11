@@ -106,19 +106,6 @@ public class CapellaModelPreferencesPlugin extends Plugin {
   }
 
   /**
-   * Get the interface projection mode. <br>
-   * <br>
-   *
-   * @link {@link IProjectionPreferences#PREFS_INTERFACE_PROJECTION} value <code>true or false</code>
-   * @return boolean value
-   */
-  public boolean isInterfaceProjectionHandle() {
-    IEclipsePreferences preferences = new InstanceScope().getNode(IProjectionPreferences.PREFS_PROJECTION_ID);
-    return preferences.getBoolean(IProjectionPreferences.PREFS_INTERFACE_PROJECTION,
-        IProjectionPreferences.DEFAULT_INTERFACE_PROJECTION.booleanValue());
-  }
-
-  /**
    * Get the Allow Reuse of components Strategy current preference value. <br>
    * <br>
    *

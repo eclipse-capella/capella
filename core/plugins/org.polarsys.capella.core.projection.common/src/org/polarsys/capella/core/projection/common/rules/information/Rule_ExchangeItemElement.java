@@ -20,7 +20,7 @@ import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.projection.common.context.IContext;
 import org.polarsys.capella.core.projection.common.handlers.attachment.AttachmentHelper;
 import org.polarsys.capella.core.projection.common.rules.core.Rule_CapellaElement;
-import org.polarsys.capella.core.projection.preferences.ProjectionPreferencesPlugin;
+import org.polarsys.capella.core.transition.system.topdown.preferences.PreferenceHelper;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 
 /**
@@ -46,7 +46,9 @@ public class Rule_ExchangeItemElement extends Rule_CapellaElement {
     ExchangeItemElement eie = (ExchangeItemElement) source_p;
 
     if (eie.getAbstractType() != null) {
-      if (ProjectionPreferencesPlugin.getDefault().transitionDatatypeWhileExchangeItemTransition()) {
+      
+      PreferenceHelper preferenceHelper = PreferenceHelper.getInstance();
+      if (preferenceHelper.transitionDatatypeWhileExchangeItemTransition()) {
         result_p.add(eie.getAbstractType());
       }
     }

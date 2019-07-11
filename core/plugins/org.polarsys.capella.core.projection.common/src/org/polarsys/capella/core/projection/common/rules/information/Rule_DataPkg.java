@@ -24,12 +24,12 @@ import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.projection.common.CapellaEngine;
 import org.polarsys.capella.core.projection.common.ProjectionMessages;
 import org.polarsys.capella.core.projection.common.context.IContext;
 import org.polarsys.capella.core.projection.common.handlers.log.LogHelper;
 import org.polarsys.capella.core.projection.common.rules.core.Rule_CapellaElement;
 import org.polarsys.capella.core.tiger.helpers.Query;
-import org.polarsys.capella.core.transfo.misc.CapellaEngine;
 
 public class Rule_DataPkg extends Rule_CapellaElement {
 

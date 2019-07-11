@@ -13,28 +13,6 @@
 <plugin>
   <extension
          point="org.polarsys.capella.core.tiger">
-  <ruleset
-            context="org.polarsys.capella.core.projection.interfaces.definition"
-            rulepackage="org.polarsys.capella.core.projection.interfaces.rules"
-            transfolink="org.polarsys.capella.core.projection.common.ProjectionTraceLinkProvider">
-      
-      <rule rulename="Rule_Interface"/>
-      <rule rulename="Rule_InterfacePkg"/>
-      <rule rulename="Rule_LogicalInterface"/>
-      
-      <sharedRuleset bundle="org.polarsys.capella.core.projection.common"
-       rulepackage="org.polarsys.capella.core.projection.common.rules.cs">
-          <rule rulename="Rule_Generalization"/>
-      </sharedRuleset>
-      
-      <sharedRuleset bundle="org.polarsys.capella.core.projection.common"
-       rulepackage="org.polarsys.capella.core.projection.common.rules.information">
-          <rule rulename="Rule_ExchangeItem"/>
-          <rule rulename="Rule_ExchangeItemAllocation"/>
-          <rule rulename="Rule_ExchangeItemElement"/>
-      </sharedRuleset>
-      
-   </ruleset>
    
    <ruleset
             context="org.polarsys.capella.core.projection.interfaces.generation"
@@ -56,18 +34,6 @@
             rulename="Rule_ComponentPort">
       </rule>
 
-   </ruleset>
-   
-   <ruleset
-            context="org.polarsys.capella.core.projection.interfaces.rules"
-            rulepackage="org.polarsys.capella.core.projection.interfaces.rules"
-            transfolink="org.polarsys.capella.core.projection.common.ProjectionTraceLinkProvider">
-      
-      <rule rulename="Rule_Component"/>
-      
-      <sharedContext context="org.polarsys.capella.core.projection.interfaces.definition"/>
-      <sharedContext context="org.polarsys.capella.core.projection.data.rules"/>
-      
    </ruleset>
    
    </extension>
@@ -102,4 +68,48 @@ This rule produces Errors for missing or unused Exchange Items on Interfaces gen
         </constraints>
      </constraintProvider>
   </extension>
+  
+  <extension point="org.eclipse.ui.commands">
+  
+  		<command
+               defaultHandler="org.polarsys.capella.core.projection.interfaces.generateInterfaces.GenerateInterfacesHandler"
+               id="org.polarsys.capella.core.transfo.commands.actions.GenerateInterfacesAction"
+               name="%generateInterfaces_label"
+               >
+         </command>
+         
+         
+      </extension>
+      
+      <extension
+            point="org.eclipse.ui.commandImages">
+            
+            <image
+               commandId="org.polarsys.capella.core.transfo.commands.actions.GenerateInterfacesAction"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif">
+         </image>
+      </extension>
+      
+      <extension
+            point="org.eclipse.ui.menus">
+            
+         <menuContribution allPopups="true"
+            locationURI="popup:org.polarsys.capella.core.accelerators?after=additions">
+             <command  commandId="org.polarsys.capella.core.transfo.commands.actions.GenerateInterfacesAction" >
+         <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate ifEmpty="false">
+                        <test
+			                  forcePluginActivation="true"
+			                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+			                  value="generateInterfaces">
+			            </test>
+                </iterate>
+            </with>
+         </visibleWhen> 
+         </command> 
+         
+         
+         </menuContribution>
+      </extension>
 </plugin>

@@ -18,7 +18,6 @@ import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
 
 import org.polarsys.capella.core.tiger.TransfoException;
-import org.polarsys.capella.core.transfo.misc.CapellaEngine;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 
 /**

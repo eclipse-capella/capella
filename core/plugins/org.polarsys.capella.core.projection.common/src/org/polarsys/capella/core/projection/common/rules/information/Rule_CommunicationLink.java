@@ -20,7 +20,7 @@ import org.polarsys.capella.core.data.information.communication.CommunicationPac
 import org.polarsys.capella.core.projection.common.context.IContext;
 import org.polarsys.capella.core.projection.common.handlers.attachment.AttachmentHelper;
 import org.polarsys.capella.core.projection.common.rules.core.Rule_CapellaElement;
-import org.polarsys.capella.core.projection.preferences.ProjectionPreferencesPlugin;
+import org.polarsys.capella.core.transition.system.topdown.preferences.PreferenceHelper;
 
 /**
  */
@@ -41,7 +41,9 @@ public class Rule_CommunicationLink extends Rule_CapellaElement {
 
     CommunicationLink sourceElement = (CommunicationLink) source_p;
     if (sourceElement.getExchangeItem() != null) {
-      if (ProjectionPreferencesPlugin.getDefault().transitionExchangeItemWhileComponentTransition()) {
+      
+      PreferenceHelper preferenceHelper = PreferenceHelper.getInstance();
+      if (preferenceHelper.transitionExchangeItemWhileComponentTransition()) {
         result_p.add(sourceElement);
       }
     }

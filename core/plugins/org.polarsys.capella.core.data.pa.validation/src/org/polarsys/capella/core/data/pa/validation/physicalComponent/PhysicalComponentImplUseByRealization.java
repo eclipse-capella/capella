@@ -24,7 +24,7 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
+import org.polarsys.capella.core.transition.system.topdown.preferences.PreferenceHelper;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
@@ -44,7 +44,8 @@ public class PhysicalComponentImplUseByRealization extends AbstractValidationRul
       if (eObj instanceof PhysicalComponent) {
         PhysicalComponent physicalComponent = (PhysicalComponent) eObj;
         // continue if the preference transition of interface is active
-        if (!CapellaModelPreferencesPlugin.getDefault().isInterfaceProjectionHandle()) {
+        PreferenceHelper preferenceHelper = PreferenceHelper.getInstance();
+        if (!preferenceHelper.transitionInterfaceWhileComponentTransition()) {
 	        List<Component> allocatedComponents = physicalComponent.getAllocatedComponents();
 	        if (allocatedComponents.isEmpty()) {
 	            // collect all the used, provided, required and implemented interfaces
@@ -75,7 +76,7 @@ public class PhysicalComponentImplUseByRealization extends AbstractValidationRul
       					}
       				}
 	            if (!otherLevelInterfaces.isEmpty()) {
-	            	return createFailureStatus(ctx_p, new Object[] { physicalComponent.getName(),otherInterfaceNames.toString() });	
+	            	return ctx_p.createFailureStatus(ctx_p, new Object[] { physicalComponent.getName(),otherInterfaceNames.toString() });	
 				}
 	      	    
 			}
