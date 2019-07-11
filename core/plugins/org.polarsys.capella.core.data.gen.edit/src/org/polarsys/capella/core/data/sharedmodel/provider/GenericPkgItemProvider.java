@@ -3368,15 +3368,14 @@ public class GenericPkgItemProvider
 
 		boolean qualify =
 			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_CONSTRAINTS ||
-			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_MIGRATED_ELEMENTS ||
 			childFeature == SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS ||
-			childFeature == SharedmodelPackage.Literals.GENERIC_PKG__SUB_GENERIC_PKGS ||
-			childFeature == CapellacorePackage.Literals.NAMESPACE__NAMING_RULES ||
 			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUES ||
 			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES ||
 			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS ||
+			childFeature == CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES ||
+			childFeature == CapellacorePackage.Literals.NAMESPACE__NAMING_RULES ||
 			childFeature == CapellacorePackage.Literals.STRUCTURE__OWNED_PROPERTY_VALUE_PKGS ||
-			childFeature == CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES;
+			childFeature == SharedmodelPackage.Literals.GENERIC_PKG__SUB_GENERIC_PKGS;
 
 		if (qualify) {
 			return getString

@@ -29,13 +29,10 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.ctx.CtxFactory;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.SystemFunctionPkg;
-import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.provider.FunctionPkgItemProvider;
 import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
 
@@ -201,42 +198,6 @@ public class SystemFunctionPkgItemProvider
                 // end-extension-code
 
 
-	}
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
-
-		boolean qualify =
-			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_CONSTRAINTS ||
-			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_MIGRATED_ELEMENTS ||
-			childFeature == CtxPackage.Literals.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTIONS ||
-			childFeature == CtxPackage.Literals.SYSTEM_FUNCTION_PKG__OWNED_SYSTEM_FUNCTION_PKGS ||
-			childFeature == CapellacorePackage.Literals.NAMESPACE__NAMING_RULES ||
-			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUES ||
-			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES ||
-			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS ||
-			childFeature == CapellacorePackage.Literals.STRUCTURE__OWNED_PROPERTY_VALUE_PKGS ||
-			childFeature == CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES ||
-			childFeature == FaPackage.Literals.FUNCTION_PKG__OWNED_FUNCTION_SPECIFICATIONS ||
-			childFeature == FaPackage.Literals.FUNCTION_PKG__OWNED_CATEGORIES ||
-			childFeature == FaPackage.Literals.FUNCTION_PKG__OWNED_FUNCTIONAL_LINKS ||
-			childFeature == FaPackage.Literals.FUNCTION_PKG__OWNED_EXCHANGES ||
-			childFeature == FaPackage.Literals.FUNCTION_PKG__OWNED_EXCHANGE_SPECIFICATION_REALIZATIONS;
-
-		if (qualify) {
-			return getString
-				("_UI_CreateChild_text2", //$NON-NLS-1$
-				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	// begin-capella-code

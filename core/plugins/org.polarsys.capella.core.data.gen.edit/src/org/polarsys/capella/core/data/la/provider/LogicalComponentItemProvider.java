@@ -30,14 +30,10 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.provider.ComponentItemProvider;
-import org.polarsys.capella.core.data.fa.FaPackage;
-import org.polarsys.capella.core.data.information.communication.CommunicationPackage;
 import org.polarsys.capella.core.data.la.LaFactory;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.la.LogicalComponent;
@@ -415,54 +411,6 @@ public class LogicalComponentItemProvider
                 // end-extension-code
 
 
-	}
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
-
-		boolean qualify =
-			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_CONSTRAINTS ||
-			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_MIGRATED_ELEMENTS ||
-			childFeature == LaPackage.Literals.LOGICAL_COMPONENT__OWNED_LOGICAL_ARCHITECTURES ||
-			childFeature == CapellacorePackage.Literals.CLASSIFIER__OWNED_FEATURES ||
-			childFeature == LaPackage.Literals.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENTS ||
-			childFeature == LaPackage.Literals.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_PKGS ||
-			childFeature == CsPackage.Literals.BLOCK__OWNED_ABSTRACT_CAPABILITY_PKG ||
-			childFeature == CsPackage.Literals.INTERFACE_ALLOCATOR__OWNED_INTERFACE_ALLOCATIONS ||
-			childFeature == CapellacorePackage.Literals.NAMESPACE__NAMING_RULES ||
-			childFeature == CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__OWNED_GENERALIZATIONS ||
-			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUES ||
-			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES ||
-			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS ||
-			childFeature == FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_COMPONENT_EXCHANGES ||
-			childFeature == CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES ||
-			childFeature == CsPackage.Literals.BLOCK__OWNED_STATE_MACHINES ||
-			childFeature == CsPackage.Literals.BLOCK__OWNED_DATA_PKG ||
-			childFeature == CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__OWNED_COMMUNICATION_LINKS ||
-			childFeature == CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS ||
-			childFeature == CsPackage.Literals.BLOCK__OWNED_INTERFACE_PKG ||
-			childFeature == CsPackage.Literals.COMPONENT__OWNED_INTERFACE_IMPLEMENTATIONS ||
-			childFeature == CsPackage.Literals.COMPONENT__OWNED_INTERFACE_USES ||
-			childFeature == CsPackage.Literals.COMPONENT__OWNED_PHYSICAL_LINKS ||
-			childFeature == CsPackage.Literals.COMPONENT__OWNED_PHYSICAL_LINK_CATEGORIES ||
-			childFeature == CsPackage.Literals.COMPONENT__OWNED_PHYSICAL_PATH ||
-			childFeature == FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_FUNCTIONAL_ALLOCATION ||
-			childFeature == FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_COMPONENT_EXCHANGE_CATEGORIES;
-
-		if (qualify) {
-			return getString
-				("_UI_CreateChild_text2", //$NON-NLS-1$
-				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	// begin-capella-code

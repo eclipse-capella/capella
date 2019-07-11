@@ -33,9 +33,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.fa.FaPackage;
-import org.polarsys.capella.core.data.information.communication.CommunicationPackage;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.OaFactory;
 import org.polarsys.capella.core.data.oa.OaPackage;
@@ -599,33 +597,8 @@ public class EntityItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_CONSTRAINTS ||
-			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_MIGRATED_ELEMENTS ||
-			childFeature == CapellacorePackage.Literals.CLASSIFIER__OWNED_FEATURES ||
-			childFeature == CsPackage.Literals.BLOCK__OWNED_ABSTRACT_CAPABILITY_PKG ||
-			childFeature == OaPackage.Literals.ENTITY__OWNED_ROLE_ALLOCATIONS ||
-			childFeature == OaPackage.Literals.ENTITY__OWNED_ENTITIES ||
 			childFeature == FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_COMPONENT_EXCHANGES ||
-			childFeature == OaPackage.Literals.ENTITY__OWNED_COMMUNICATION_MEANS ||
-			childFeature == CapellacorePackage.Literals.NAMESPACE__NAMING_RULES ||
-			childFeature == CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__OWNED_GENERALIZATIONS ||
-			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUES ||
-			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES ||
-			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS ||
-			childFeature == CsPackage.Literals.INTERFACE_ALLOCATOR__OWNED_INTERFACE_ALLOCATIONS ||
-			childFeature == CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES ||
-			childFeature == CsPackage.Literals.BLOCK__OWNED_STATE_MACHINES ||
-			childFeature == CsPackage.Literals.BLOCK__OWNED_DATA_PKG ||
-			childFeature == CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__OWNED_COMMUNICATION_LINKS ||
-			childFeature == CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS ||
-			childFeature == CsPackage.Literals.BLOCK__OWNED_INTERFACE_PKG ||
-			childFeature == CsPackage.Literals.COMPONENT__OWNED_INTERFACE_IMPLEMENTATIONS ||
-			childFeature == CsPackage.Literals.COMPONENT__OWNED_INTERFACE_USES ||
-			childFeature == CsPackage.Literals.COMPONENT__OWNED_PHYSICAL_LINKS ||
-			childFeature == CsPackage.Literals.COMPONENT__OWNED_PHYSICAL_LINK_CATEGORIES ||
-			childFeature == CsPackage.Literals.COMPONENT__OWNED_PHYSICAL_PATH ||
-			childFeature == FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_FUNCTIONAL_ALLOCATION ||
-			childFeature == FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_COMPONENT_EXCHANGE_CATEGORIES;
+			childFeature == OaPackage.Literals.ENTITY__OWNED_COMMUNICATION_MEANS;
 
 		if (qualify) {
 			return getString

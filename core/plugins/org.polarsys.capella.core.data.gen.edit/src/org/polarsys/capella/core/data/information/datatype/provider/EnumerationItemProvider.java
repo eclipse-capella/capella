@@ -30,9 +30,7 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.information.datatype.DatatypePackage;
 import org.polarsys.capella.core.data.information.datatype.Enumeration;
 import org.polarsys.capella.core.data.information.datavalue.DatavalueFactory;
@@ -461,17 +459,7 @@ public class EnumerationItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_CONSTRAINTS ||
-			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_MIGRATED_ELEMENTS ||
-			childFeature == CapellacorePackage.Literals.NAMESPACE__NAMING_RULES ||
-			childFeature == CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__OWNED_GENERALIZATIONS ||
-			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUES ||
-			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES ||
-			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS ||
-			childFeature == CapellacorePackage.Literals.STRUCTURE__OWNED_PROPERTY_VALUE_PKGS ||
-			childFeature == CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES ||
 			childFeature == DatavaluePackage.Literals.DATA_VALUE_CONTAINER__OWNED_DATA_VALUES ||
-			childFeature == DatatypePackage.Literals.DATA_TYPE__OWNED_INFORMATION_REALIZATIONS ||
 			childFeature == DatatypePackage.Literals.ENUMERATION__OWNED_LITERALS ||
 			childFeature == DatatypePackage.Literals.ENUMERATION__OWNED_DEFAULT_VALUE ||
 			childFeature == DatatypePackage.Literals.ENUMERATION__OWNED_NULL_VALUE ||

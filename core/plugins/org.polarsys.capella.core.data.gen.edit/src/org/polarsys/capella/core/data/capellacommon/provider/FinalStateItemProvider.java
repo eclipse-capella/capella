@@ -30,7 +30,6 @@ import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.FinalState;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 
 /**
  * This is the item provider adapter for a {@link org.polarsys.capella.core.data.capellacommon.FinalState} object.
@@ -147,14 +146,7 @@ public class FinalStateItemProvider
 
 		boolean qualify =
 			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_CONSTRAINTS ||
-			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_MIGRATED_ELEMENTS ||
-			childFeature == CapellacommonPackage.Literals.STATE__STATE_INVARIANT ||
-			childFeature == CapellacommonPackage.Literals.STATE__OWNED_REGIONS ||
-			childFeature == CapellacommonPackage.Literals.STATE__OWNED_CONNECTION_POINTS ||
-			childFeature == CapellacommonPackage.Literals.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS ||
-			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUES ||
-			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES ||
-			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS;
+			childFeature == CapellacommonPackage.Literals.STATE__STATE_INVARIANT;
 
 		if (qualify) {
 			return getString

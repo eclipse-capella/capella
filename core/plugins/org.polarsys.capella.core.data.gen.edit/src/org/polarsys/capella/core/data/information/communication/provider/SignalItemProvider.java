@@ -29,13 +29,11 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.information.communication.CommunicationFactory;
 import org.polarsys.capella.core.data.information.communication.CommunicationPackage;
 import org.polarsys.capella.core.data.information.communication.Signal;
-import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
 import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
 
 /**
@@ -200,19 +198,8 @@ public class SignalItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_CONSTRAINTS ||
-			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_MIGRATED_ELEMENTS ||
 			childFeature == CapellacorePackage.Literals.CLASSIFIER__OWNED_FEATURES ||
-			childFeature == CommunicationPackage.Literals.SIGNAL__SIGNAL_INSTANCES ||
-			childFeature == CapellacorePackage.Literals.NAMESPACE__NAMING_RULES ||
-			childFeature == CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__OWNED_GENERALIZATIONS ||
-			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUES ||
-			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES ||
-			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS ||
-			childFeature == CapellacorePackage.Literals.STRUCTURE__OWNED_PROPERTY_VALUE_PKGS ||
-			childFeature == CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES ||
-			childFeature == CommunicationPackage.Literals.COMMUNICATION_ITEM__OWNED_STATE_MACHINES ||
-			childFeature == DatavaluePackage.Literals.DATA_VALUE_CONTAINER__OWNED_DATA_VALUES;
+			childFeature == CommunicationPackage.Literals.SIGNAL__SIGNAL_INSTANCES;
 
 		if (qualify) {
 			return getString

@@ -31,7 +31,6 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonFactory;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
@@ -647,49 +646,6 @@ public class DataPkgItemProvider
                 // end-extension-code
 
 
-	}
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
-
-		boolean qualify =
-			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_CONSTRAINTS ||
-			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_MIGRATED_ELEMENTS ||
-			childFeature == InformationPackage.Literals.ASSOCIATION_PKG__OWNED_ASSOCIATIONS ||
-			childFeature == InformationPackage.Literals.DATA_PKG__OWNED_CLASSES ||
-			childFeature == InformationPackage.Literals.DATA_PKG__OWNED_COLLECTIONS ||
-			childFeature == DatavaluePackage.Literals.DATA_VALUE_CONTAINER__OWNED_DATA_VALUES ||
-			childFeature == InformationPackage.Literals.DATA_PKG__OWNED_DATA_PKGS ||
-			childFeature == InformationPackage.Literals.DATA_PKG__OWNED_KEY_PARTS ||
-			childFeature == InformationPackage.Literals.DATA_PKG__OWNED_UNITS ||
-			childFeature == CapellacorePackage.Literals.ABSTRACT_EXCHANGE_ITEM_PKG__OWNED_EXCHANGE_ITEMS ||
-			childFeature == CapellacorePackage.Literals.NAMESPACE__NAMING_RULES ||
-			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUES ||
-			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES ||
-			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS ||
-			childFeature == CapellacorePackage.Literals.STRUCTURE__OWNED_PROPERTY_VALUE_PKGS ||
-			childFeature == CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES ||
-			childFeature == InformationPackage.Literals.DATA_PKG__OWNED_STATE_EVENTS ||
-			childFeature == InformationPackage.Literals.DATA_PKG__OWNED_EXCEPTIONS ||
-			childFeature == InformationPackage.Literals.DATA_PKG__OWNED_MESSAGES ||
-			childFeature == CommunicationPackage.Literals.MESSAGE_REFERENCE_PKG__OWNED_MESSAGE_REFERENCES ||
-			childFeature == InformationPackage.Literals.DATA_PKG__OWNED_SIGNALS ||
-			childFeature == InformationPackage.Literals.DATA_PKG__OWNED_DATA_TYPES;
-
-		if (qualify) {
-			return getString
-				("_UI_CreateChild_text2", //$NON-NLS-1$
-				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	// begin-capella-code

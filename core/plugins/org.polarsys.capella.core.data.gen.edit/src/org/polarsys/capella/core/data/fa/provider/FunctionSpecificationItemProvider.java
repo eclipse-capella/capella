@@ -33,7 +33,6 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.polarsys.capella.common.data.activity.ActivityPackage;
 import org.polarsys.capella.common.data.behavior.BehaviorPackage;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonFactory;
 import org.polarsys.capella.core.data.capellacore.CapellacoreFactory;
@@ -727,17 +726,8 @@ public class FunctionSpecificationItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_CONSTRAINTS ||
-			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_MIGRATED_ELEMENTS ||
 			childFeature == ActivityPackage.Literals.ABSTRACT_ACTIVITY__OWNED_NODES ||
-			childFeature == FaPackage.Literals.FUNCTION_SPECIFICATION__OWNED_FUNCTION_PORTS ||
-			childFeature == ActivityPackage.Literals.ABSTRACT_ACTIVITY__OWNED_EDGES ||
-			childFeature == CapellacorePackage.Literals.NAMESPACE__NAMING_RULES ||
-			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUES ||
-			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES ||
-			childFeature == CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS ||
-			childFeature == ActivityPackage.Literals.ABSTRACT_ACTIVITY__OWNED_GROUPS ||
-			childFeature == CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES;
+			childFeature == FaPackage.Literals.FUNCTION_SPECIFICATION__OWNED_FUNCTION_PORTS;
 
 		if (qualify) {
 			return getString

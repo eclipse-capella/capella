@@ -21,6 +21,8 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.egf.core.producer.InvocationException;
 import org.eclipse.egf.ftask.producer.context.ITaskProductionContext;
 import org.eclipse.egf.ftask.producer.invocation.ITaskProduction;
+import org.eclipse.emf.codegen.ecore.genmodel.GenClass;
+import org.eclipse.emf.codegen.ecore.genmodel.GenFeature;
 import org.eclipse.emf.codegen.ecore.genmodel.GenJDKLevel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
@@ -37,7 +39,6 @@ public class GenerateGenModelsTask implements ITaskProduction {
 	public void doExecute(ITaskProductionContext productionContext,
 			IProgressMonitor monitor) throws InvocationException {
 		List<GenModel> genModels = new ArrayList<GenModel>();
-		
 		generateGenModel(genModels, "/org.polarsys.capella.common.data.def/model/ModellingCore.ecore", "org.polarsys.capella.common.data.core.gen", "org.polarsys.capella.common.data");
 		generateGenModel(genModels, "/org.polarsys.capella.common.data.def/model/Behavior.ecore", "org.polarsys.capella.common.data.behavior.gen", "org.polarsys.capella.common.data");
 		generateGenModel(genModels, "/org.polarsys.capella.common.data.def/model/Activity.ecore", "org.polarsys.capella.common.data.activity.gen", "org.polarsys.capella.common.data");
@@ -65,6 +66,24 @@ public class GenerateGenModelsTask implements ITaskProduction {
 					for (GenPackage pack:genModel_p.getGenPackages()) {
 						if ("Capellamodeller".equals(pack.getPrefix())) {
 							pack.setFileExtensions("melodymodeller");
+						}
+					}
+				}
+				
+				// Add a customization to set "Create Child" attribute of the feature
+				// ownedMigratedElements to false
+				if ("ModellingCore".equals(genModel_p.getModelName())) {
+					for (GenPackage pack : genModel_p.getGenPackages()) {
+						if ("Modellingcore".equals(pack.getPrefix())) {
+							for (GenClass genClass : pack.getGenClasses()) {
+								if ("ModelElement".equals(genClass.getEcoreClass().getName())) {
+									for (GenFeature genFeature : genClass.getGenFeatures()) {
+										if ("ownedMigratedElements".equals(genFeature.getEcoreFeature().getName())) {
+											genFeature.setCreateChild(false);
+										}
+									}
+								}
+							}
 						}
 					}
 				}

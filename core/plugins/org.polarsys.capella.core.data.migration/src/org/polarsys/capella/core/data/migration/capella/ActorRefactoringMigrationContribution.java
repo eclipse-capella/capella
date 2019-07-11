@@ -31,6 +31,7 @@ import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.core.data.capellacommon.TransfoLink;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
 import org.polarsys.capella.core.data.cs.Part;
@@ -232,6 +233,8 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
   private List<String> oldActorTypes = Arrays.asList("org.polarsys.capella.core.data.oa:OperationalActor",
       "org.polarsys.capella.core.data.ctx:Actor", "org.polarsys.capella.core.data.la:LogicalActor",
       "org.polarsys.capella.core.data.pa:PhysicalActor");
+  
+  private String operationalContextId, systemContextId, logicalContextId, physicalContextId, ePBSContextId;
 
   @Override
   public EStructuralFeature getFeature(EObject object, String prefix, String name, boolean isElement) {
@@ -252,13 +255,29 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
     }
     return super.getQName(peekObject, typeQName, feature, resource, helper, context);
   }
-
+  
   @Override
   public void updateCreatedObject(EObject peekObject, EObject eObject, String typeQName, EStructuralFeature feature,
       XMLResource resource, XMLHelper helper, MigrationContext context) {
     // Actor become Component of Actor type
     if (oldActorTypes.contains(typeQName) && eObject instanceof Component) {
       ((Component) eObject).setActor(true);
+    }
+    // Store old contexts' ids
+    else if ("org.polarsys.capella.core.data.oa:OperationalContext".equals(typeQName) && eObject instanceof EntityPkg) {
+      operationalContextId = ((EntityPkg) eObject).getId();
+    } else if ("org.polarsys.capella.core.data.ctx:SystemContext".equals(typeQName)
+        && eObject instanceof SystemComponentPkg) {
+      systemContextId = ((SystemComponentPkg) eObject).getId();
+    } else if ("org.polarsys.capella.core.data.la:LogicalContext".equals(typeQName)
+        && eObject instanceof LogicalComponentPkg) {
+      logicalContextId = ((LogicalComponentPkg) eObject).getId();
+    } else if ("org.polarsys.capella.core.data.pa:PhysicalContext".equals(typeQName)
+        && eObject instanceof PhysicalComponentPkg) {
+      physicalContextId = ((PhysicalComponentPkg) eObject).getId();
+    } else if ("org.polarsys.capella.core.data.epbs:EPBSContext".equals(typeQName)
+        && eObject instanceof ConfigurationItemPkg) {
+      ePBSContextId = ((ConfigurationItemPkg) eObject).getId();
     }
     super.updateCreatedObject(peekObject, eObject, typeQName, feature, resource, helper, context);
   }
@@ -311,7 +330,9 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
    */
   protected void reorganizeEPBSArchitecture(BlockArchitecture architecture, EPBSArchitecture epbs) {
     if (!epbs.getOwnedMigratedElements().isEmpty()) {
-      BlockArchitectureExt.getComponentPkg(architecture, true);
+      ComponentPkg componentPkg = BlockArchitectureExt.getComponentPkg(architecture, true);
+      if (ePBSContextId != null)
+        componentPkg.setId(ePBSContextId);
       epbs.getOwnedConfigurationItemPkg().getOwnedConfigurationItems().addAll(epbs.getOwnedMigratedElements().stream()
           .filter(ConfigurationItem.class::isInstance).map(ConfigurationItem.class::cast).collect(Collectors.toList()));
       epbs.getOwnedMigratedElements().stream().filter(ConfigurationItemPkg.class::isInstance)
@@ -347,7 +368,9 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
    */
   protected void reorganizePhysicalArchitecture(PhysicalArchitecture pa) {
     if (!pa.getOwnedMigratedElements().isEmpty()) {
-      BlockArchitectureExt.getComponentPkg(pa, true);
+      ComponentPkg componentPkg = BlockArchitectureExt.getComponentPkg(pa, true);
+      if (physicalContextId != null)
+        componentPkg.setId(physicalContextId);
       pa.getOwnedPhysicalComponentPkg().getOwnedPhysicalComponents().addAll(pa.getOwnedMigratedElements().stream()
           .filter(PhysicalComponent.class::isInstance).map(PhysicalComponent.class::cast).collect(Collectors.toList()));
       pa.getOwnedMigratedElements().stream().filter(PhysicalComponentPkg.class::isInstance)
@@ -373,7 +396,9 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
    */
   protected void reorganizeLogicalArchitecture(LogicalArchitecture la) {
     if (!la.getOwnedMigratedElements().isEmpty()) {
-      BlockArchitectureExt.getComponentPkg(la, true);
+      ComponentPkg componentPkg = BlockArchitectureExt.getComponentPkg(la, true);
+      if (logicalContextId != null)
+        componentPkg.setId(logicalContextId);
       la.getOwnedLogicalComponentPkg().getOwnedLogicalComponents().addAll(la.getOwnedMigratedElements().stream()
           .filter(LogicalComponent.class::isInstance).map(LogicalComponent.class::cast).collect(Collectors.toList()));
       la.getOwnedMigratedElements().stream().filter(LogicalComponentPkg.class::isInstance)
@@ -398,7 +423,9 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
    */
   protected void reorganizeSystemAnalysis(SystemAnalysis sa) {
     if (!sa.getOwnedMigratedElements().isEmpty()) {
-      BlockArchitectureExt.getComponentPkg(sa, true);
+      ComponentPkg componentPkg = BlockArchitectureExt.getComponentPkg(sa, true);
+      if (systemContextId != null)
+        componentPkg.setId(systemContextId);
       sa.getOwnedSystemComponentPkg().getOwnedSystemComponents().addAll(sa.getOwnedMigratedElements().stream()
           .filter(SystemComponent.class::isInstance).map(SystemComponent.class::cast).collect(Collectors.toList()));
       sa.getOwnedMigratedElements().stream().filter(SystemComponentPkg.class::isInstance)
@@ -422,7 +449,9 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
    */
   protected void reorganizeOperationalAnalysis(OperationalAnalysis oa) {
     if (!oa.getOwnedMigratedElements().isEmpty()) {
-      BlockArchitectureExt.getComponentPkg(oa, true);
+      ComponentPkg componentPkg = BlockArchitectureExt.getComponentPkg(oa, true);
+      if (operationalContextId != null)
+        componentPkg.setId(operationalContextId);
       oa.getOwnedMigratedElements().stream().filter(EntityPkg.class::isInstance)
           .forEach(modelElement -> fusionContainmentReferences(modelElement, oa.getOwnedEntityPkg()));
       oa.getOwnedDataPkg().getOwnedDataPkgs().addAll(oa.getOwnedEntityPkg().getOwnedMigratedElements().stream()
@@ -480,5 +509,15 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
       return true;
     }
     return super.ignoreSetFeatureValue(peekObject, feature, value, position, resource, context);
+  }
+
+  @Override
+  public void dispose(MigrationContext context) {
+    operationalContextId = null;
+    systemContextId = null;
+    logicalContextId = null;
+    physicalContextId = null;
+    ePBSContextId = null;
+    super.dispose(context);
   }
 }
