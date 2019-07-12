@@ -21,8 +21,8 @@ public class SABDiagramFiltersTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<>();
-    // tests.add(new CollapseComponentPortsForSAB());
-    // tests.add(new CollapseFunctionPortsForSAB());
+    tests.add(new CollapseComponentPortsForSAB());
+    tests.add(new CollapseFunctionPortsForSAB());
     tests.add(new HideAllocatedFunctionalExchangesForSAB());
     tests.add(new HideAllocatedFunctionPortsForSAB());
     tests.add(new HideComponentExchangesForSAB());

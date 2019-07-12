@@ -18,17 +18,21 @@ import java.util.Hashtable;
 import java.util.List;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.AppliedCompositeFilters;
+import org.eclipse.sirius.diagram.CollapseFilter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.GraphicalFilter;
 import org.eclipse.sirius.diagram.business.api.query.CompositeFilterDescriptionQuery;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
+import org.eclipse.sirius.diagram.description.filter.Filter;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
+import org.eclipse.sirius.diagram.description.filter.MappingFilter;
 import org.junit.Assert;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
@@ -97,11 +101,27 @@ public abstract class DiagramObjectFilterTestCase extends NonDirtyTestCase {
         diagram);// test case check
   }
 
+  public EList<DiagramElementMapping> getHiddenMappingsForCollapseFilters(CompositeFilterDescriptionQuery filterQuery) {
+    EList<DiagramElementMapping> result = new BasicEList<DiagramElementMapping>();
+    for (Filter filter : filterQuery.getCollapseFilters()) {
+      if (filter instanceof MappingFilter) {
+        result.addAll(((MappingFilter) filter).getMappings());
+      }
+
+    }
+    return result;
+  }
+
   private void getCurrentFilterMappings() {
 
     FilterDescription currentFilter = DiagramHelper.getFilterForDiagram(diagram, filterName);
     CompositeFilterDescriptionQuery filterQuery = new CompositeFilterDescriptionQuery(
         (CompositeFilterDescription) currentFilter);
+
+    for (DiagramElementMapping hiddenMapping : getHiddenMappingsForCollapseFilters(filterQuery)) {
+      filteredMappingNames.add(hiddenMapping.getName());
+    }
+
     for (DiagramElementMapping hiddenMapping : filterQuery.getHiddenMappings()) {
       filteredMappingNames.add(hiddenMapping.getName());
     }
@@ -133,7 +153,7 @@ public abstract class DiagramObjectFilterTestCase extends NonDirtyTestCase {
 
     getCurrentDiagram();
     getCurrentFilterMappings();
-    
+
     setFilteredObjectMaps();
 
     for (String id : filteredObjetIDs) {
@@ -143,7 +163,7 @@ public abstract class DiagramObjectFilterTestCase extends NonDirtyTestCase {
       }
     }
   }
-  
+
   protected void setFilteredObjectMaps() {
     for (DDiagramElement elt : diagram.getDiagramElements()) {
 
@@ -201,6 +221,9 @@ public abstract class DiagramObjectFilterTestCase extends NonDirtyTestCase {
             return true;
           }
         }
+      }
+      if (gFilter instanceof CollapseFilter) {
+        return true;
       }
     }
     return false;

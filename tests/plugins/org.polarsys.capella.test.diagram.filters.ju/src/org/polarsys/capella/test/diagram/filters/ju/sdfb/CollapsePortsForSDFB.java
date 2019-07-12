@@ -24,7 +24,9 @@ public class CollapsePortsForSDFB extends FiltersForSDFB {
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] {});
+    return Arrays.asList(new String[] { FUNCTION_OUTPUT_PORT_1_ID, FUNCTION_OUTPUT_PORT_2_ID, FUNCTION_OUTPUT_PORT_3_ID,
+        FUNCTION_INPUT_PORT_1_ID, FUNCTION_INPUT_PORT_2_ID, FUNCTION_INPUT_PORT_3_ID,
+        FUNCTION_PORT_WITHOUT_EXCHANGES_ID, EXCHANGE_CATEGORY_ID });
   }
 
 }

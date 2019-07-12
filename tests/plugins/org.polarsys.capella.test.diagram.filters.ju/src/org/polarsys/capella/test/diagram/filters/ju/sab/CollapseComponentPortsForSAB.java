@@ -24,7 +24,8 @@ public class CollapseComponentPortsForSAB extends FiltersForSAB {
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { COMPONENT_PORT_1_ID, COMPONENT_PORT_2_ID });
+    return Arrays.asList(new String[] { COMPONENT_PORT_1_ID, COMPONENT_PORT_2_ID, COMPONENT_PORT_WITHOUT_EXCHANGES_ID,
+        PORT_ALLOCATION_TO_FOP_1_ID, PORT_ALLOCATION_TO_FIP_1_ID });
   }
 
 }
