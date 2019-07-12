@@ -21,7 +21,7 @@ public class SDFBDiagramFiltersTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<>();
-    // tests.add(new CollapsePortsForSDFB());
+    tests.add(new CollapsePortsForSDFB());
     tests.add(new HideExchangeCategoriesForSDFB());
     tests.add(new HideFunctionalExchangesForSDFB());
     tests.add(new HideFunctionalExchangesNamesForSDFB());

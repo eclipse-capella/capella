@@ -15,12 +15,25 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.test.diagram.filters.ju.cc.CCDiagramFiltersTestSuite;
+import org.polarsys.capella.test.diagram.filters.ju.cdb.CDBDiagramFiltersTestSuite;
+import org.polarsys.capella.test.diagram.filters.ju.cdi.CDIDiagramFiltersTestSuite;
+import org.polarsys.capella.test.diagram.filters.ju.cei.CEIDiagramFiltersTestSuite;
+import org.polarsys.capella.test.diagram.filters.ju.cii.CIIDiagramFiltersTestSuite;
 import org.polarsys.capella.test.diagram.filters.ju.cm.CMDiagramFiltersTestSuite;
+import org.polarsys.capella.test.diagram.filters.ju.coc.COCDiagramFiltersTestSuite;
+import org.polarsys.capella.test.diagram.filters.ju.crb.CRBDiagramFiltersTestSuite;
+import org.polarsys.capella.test.diagram.filters.ju.idb.IDBDiagramFiltersTestSuite;
 import org.polarsys.capella.test.diagram.filters.ju.mb.MBDiagramFiltersTestSuite;
 import org.polarsys.capella.test.diagram.filters.ju.mcb.MCBDiagramFiltersTestSuite;
+import org.polarsys.capella.test.diagram.filters.ju.oab.OABDiagramFiltersTestSuite;
+import org.polarsys.capella.test.diagram.filters.ju.ocb.OCBDiagramFiltersTestSuite;
+import org.polarsys.capella.test.diagram.filters.ju.orb.ORBDiagramFiltersTestSuite;
 import org.polarsys.capella.test.diagram.filters.ju.sab.SABDiagramFiltersTestSuite;
 import org.polarsys.capella.test.diagram.filters.ju.sdfb.SDFBDiagramFiltersTestSuite;
 import org.polarsys.capella.test.diagram.filters.ju.sfbd.SFBDDiagramFiltersTestSuite;
+import org.polarsys.capella.test.diagram.filters.ju.xab.XABDiagramFiltersTestSuite;
+import org.polarsys.capella.test.diagram.filters.ju.xdfb.XDFBDiagramFiltersTestSuite;
+import org.polarsys.capella.test.diagram.filters.ju.xfcd.XFCDDiagramFiltersTestSuite;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
@@ -49,21 +62,21 @@ public class DiagramFiltersTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
-    // tests.add(new CEIDiagramFiltersTestSuite());
-    // tests.add(new CDBDiagramFiltersTestSuite());
-    // tests.add(new CRBDiagramFiltersTestSuite());
-    // tests.add(new XFCDDiagramFiltersTestSuite());
-    // tests.add(new XABDiagramFiltersTestSuite());
-    // tests.add(new CDIDiagramFiltersTestSuite());
-    // tests.add(new CEIDiagramFiltersTestSuite());
-    // tests.add(new CIIDiagramFiltersTestSuite());
-    // tests.add(new IDBDiagramFiltersTestSuite());
-    // tests.add(new XDFBDiagramFiltersTestSuite());
-    //
-    // tests.add(new OABDiagramFiltersTestSuite());
-    // tests.add(new COCDiagramFiltersTestSuite());
-    // tests.add(new ORBDiagramFiltersTestSuite());
-    // tests.add(new OCBDiagramFiltersTestSuite());
+    tests.add(new CEIDiagramFiltersTestSuite());
+    tests.add(new CDBDiagramFiltersTestSuite());
+    tests.add(new CRBDiagramFiltersTestSuite());
+    tests.add(new XFCDDiagramFiltersTestSuite());
+    tests.add(new XABDiagramFiltersTestSuite());
+    tests.add(new CDIDiagramFiltersTestSuite());
+    tests.add(new CEIDiagramFiltersTestSuite());
+    tests.add(new CIIDiagramFiltersTestSuite());
+    tests.add(new IDBDiagramFiltersTestSuite());
+    tests.add(new XDFBDiagramFiltersTestSuite());
+
+    tests.add(new OABDiagramFiltersTestSuite());
+    tests.add(new COCDiagramFiltersTestSuite());
+    tests.add(new ORBDiagramFiltersTestSuite());
+    tests.add(new OCBDiagramFiltersTestSuite());
 
     tests.add(new CCDiagramFiltersTestSuite());
     tests.add(new CMDiagramFiltersTestSuite());
