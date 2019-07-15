@@ -15,13 +15,8 @@ import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
-import org.polarsys.capella.test.diagram.common.ju.context.SequenceDiagram.InsertRemoveInstanceRoleTool;
-import org.polarsys.capella.test.diagram.common.ju.context.SequenceDiagram.InsertRemovePartTool;
-import org.polarsys.capella.test.diagram.common.ju.context.SequenceDiagram.InsertRemoveStateFragmentAbstractFunctionTool;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
-import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
-import org.polarsys.capella.test.diagram.common.ju.step.tools.sequence.TimerCreationTool;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
 public class FSDiagram extends SequenceDiagram {
@@ -29,14 +24,14 @@ public class FSDiagram extends SequenceDiagram {
   public FSDiagram(BlockArchitectureExt.Type type, SessionContext context, DDiagram diagram) {
     super(type, context, diagram);
   }
-  
+
   public static FSDiagram createDiagram(SessionContext executionContext, String targetIdentifier) {
     BlockArchitecture architecture = BlockArchitectureExt
         .getRootBlockArchitecture(executionContext.getSemanticElement(targetIdentifier));
     final BlockArchitectureExt.Type type = BlockArchitectureExt.getBlockArchitectureType(architecture);
-    
+
     String name = IDiagramNameConstants.FUNCTIONAL_SCENARIO;
-    if(type == BlockArchitectureExt.Type.OA) {
+    if (type == BlockArchitectureExt.Type.OA) {
       name = IDiagramNameConstants.OPERATIONAL_ACTIVITY_INTERACTION_SCENARIO_DIAGRAM_NAME;
     }
     return (FSDiagram) new CreateDiagramStep(executionContext, targetIdentifier, name) {
@@ -47,7 +42,8 @@ public class FSDiagram extends SequenceDiagram {
     }.run().open();
   }
 
-  public static FSDiagram openDiagram(SessionContext executionContext, String name, final BlockArchitectureExt.Type type) {
+  public static FSDiagram openDiagram(SessionContext executionContext, String name,
+      final BlockArchitectureExt.Type type) {
     return (FSDiagram) new OpenDiagramStep(executionContext, name) {
       @Override
       public DiagramContext getResult() {
@@ -55,25 +51,23 @@ public class FSDiagram extends SequenceDiagram {
       }
     }.run().open();
   }
-  
+
   public String createFunction() {
-    return createNodeElement(getDiagramId(), IToolNameConstants.TOOL_CREATE_FUNCTION);
+    return createNodeElement(getDiagramId(), getFunctionToolId(type));
   }
-  
+
   public String createFunction(String containerId) {
-    return createNodeElement(containerId, IToolNameConstants.TOOL_CREATE_FUNCTION);
+    return createNodeElement(containerId, getFunctionToolId(type));
   }
-  
+
   public void insertFunction(String id) {
-    //new InsertRemoveTool(this, IToolNameConstants.TOOL_INSERT_REMOVE_FUNCTIONS).insert(id);
     new InsertRemoveInstanceRoleTool(this, IToolNameConstants.TOOL_INSERT_REMOVE_FUNCTIONS).insert(id);
   }
-  
+
   public void removeFunction(String id) {
-    //new InsertRemoveTool(this, IToolNameConstants.TOOL_INSERT_REMOVE_FUNCTIONS).remove(id);
     new InsertRemoveInstanceRoleTool(this, IToolNameConstants.TOOL_INSERT_REMOVE_FUNCTIONS).remove(id);
   }
-  
+
   public String createFunction(BlockArchitectureExt.FunctionType functionType) {
     String name = "";
     switch (functionType) {
@@ -93,18 +87,31 @@ public class FSDiagram extends SequenceDiagram {
       name = IToolNameConstants.TOOL_CREATE_FUNCTION_SPLIT;
       break;
     default:
-      name = IToolNameConstants.TOOL_CREATE_FUNCTION;
+      name = getFunctionToolId(type);
       break;
     }
     return createNodeElement(getDiagramId(), name);
   }
-  
+
+  private String getFunctionToolId(BlockArchitectureExt.Type type) {
+    switch (type) {
+    case SA:
+      return IToolNameConstants.TOOL_SCENARIO_SYSTEM_FUNCTION;
+    case LA:
+      return IToolNameConstants.TOOL_SCENARIO_LOGICAL_FUNCTION;
+    case PA:
+      return IToolNameConstants.TOOL_SCENARIO_PHYSICAL_FUNCTION;
+    default:
+      return IToolNameConstants.TOOL_CREATE_FUNCTION;
+    }
+  }
+
   // Unsupported opperations
   @Override
   public void addMultipleLifeLinesForExistingComponent(String id) {
     throw new UnsupportedOperationException();
   }
-  
+
   @Override
   public void createArmTimer(String source, String target) {
     throw new UnsupportedOperationException();
@@ -114,7 +121,7 @@ public class FSDiagram extends SequenceDiagram {
   public void cancelArmTimer(String source, String target) {
     throw new UnsupportedOperationException();
   }
-  
+
   @Override
   public String createActor() {
     throw new UnsupportedOperationException();
@@ -129,7 +136,7 @@ public class FSDiagram extends SequenceDiagram {
   public void removeActor(String id) {
     throw new UnsupportedOperationException();
   }
-  
+
   @Override
   public String insertAllocatedFunction(String containerId, String id) {
     throw new UnsupportedOperationException();

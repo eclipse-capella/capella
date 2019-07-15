@@ -54,8 +54,7 @@ public class NonAbusiveTestCase2 extends FragmentModelTestFramework {
     DiagramContext diag = new OpenDiagramStep(context, diag_SF121_SDFB).run();
 
     new AbstractToolFragmentModifTest(context,
-        new CreateContainerTool(diag, IToolNameConstants.TOOL_SDFB_CREATE_SYSTEM_FUNCTION,
-            diag.getDiagramId())) {
+        new CreateContainerTool(diag, IToolNameConstants.TOOL_CREATE_FUNCTION, diag.getDiagramId())) {
 
       @Override
       protected Set<IFile> getExpectedFilesToBeModified() {
@@ -115,15 +114,11 @@ public class NonAbusiveTestCase2 extends FragmentModelTestFramework {
     _airdFile = FileHelper.getPlatformFile(getCurrentProjectName() + SLASH_CHARACTER + FragmentationMessages.airdName);
     _m2File = FileHelper.getPlatformFile(getCurrentProjectName() + SLASH_CHARACTER + FragmentationMessages.m2Name);
 
-    _SF11aird = FileHelper
-        .getPlatformFile(
-            getCurrentProjectName() + ICommonConstants.SLASH_CHARACTER + FragmentationMessages.fragmentsFolder
-                + ICommonConstants.SLASH_CHARACTER + SF11airdName);
+    _SF11aird = FileHelper.getPlatformFile(getCurrentProjectName() + ICommonConstants.SLASH_CHARACTER
+        + FragmentationMessages.fragmentsFolder + ICommonConstants.SLASH_CHARACTER + SF11airdName);
 
-    _SF11m2 = FileHelper
-        .getPlatformFile(
-            getCurrentProjectName() + ICommonConstants.SLASH_CHARACTER + FragmentationMessages.fragmentsFolder
-                + ICommonConstants.SLASH_CHARACTER + SF11m2Name);
+    _SF11m2 = FileHelper.getPlatformFile(getCurrentProjectName() + ICommonConstants.SLASH_CHARACTER
+        + FragmentationMessages.fragmentsFolder + ICommonConstants.SLASH_CHARACTER + SF11m2Name);
 
     _SF12aird = FileHelper.getPlatformFile(getCurrentProjectName() + ICommonConstants.SLASH_CHARACTER
         + FragmentationMessages.fragmentsFolder + ICommonConstants.SLASH_CHARACTER + SF12airdName);

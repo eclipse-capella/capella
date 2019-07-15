@@ -103,17 +103,7 @@ public class XDFBDiagram extends CommonDiagram {
   @Deprecated
   public void createFunction(String elementId, String containerId) {
 
-    String name = null;
-    if (type == Type.OA) {
-      name = IToolNameConstants.TOOL_OAIB_CREATE_OPERATIONAL_ACTIVITY;
-    } else if (type == Type.SA) {
-      name = IToolNameConstants.TOOL_SDFB_CREATE_SYSTEM_FUNCTION;
-    } else if (type == Type.LA) {
-      name = IToolNameConstants.TOOL_LDFB_CREATE_LOGICAL_FUNCTION;
-    } else if (type == Type.PA) {
-      name = IToolNameConstants.TOOL_PDFB_CREATE_PHYSICAL_FUNCTION;
-    }
-    new CreateContainerTool(this, name, containerId, elementId).run();
+    new CreateContainerTool(this, IToolNameConstants.TOOL_CREATE_FUNCTION, containerId, elementId).run();
   }
 
   @Deprecated
@@ -153,17 +143,8 @@ public class XDFBDiagram extends CommonDiagram {
   @Deprecated
   public void createFunctionalExchange(String id, String sourceViewId, String targetViewId, String newSourceIdentifier,
       String newTargetIdentifier) {
-    String name = null;
-    if (type == Type.OA) {
-      name = IToolNameConstants.TOOL_OAIB_CREATE_INTERACTION;
-    } else if (type == Type.SA) {
-      name = IToolNameConstants.TOOL_SDFB_CREATE_FUNCTIONAL_EXCHANGE;
-    } else if (type == Type.LA) {
-      name = IToolNameConstants.TOOL_LDFB_CREATE_FUNCTIONAL_EXCHANGE;
-    } else if (type == Type.PA) {
-      name = IToolNameConstants.TOOL_PDFB_CREATE_FUNCTIONAL_EXCHANGE;
-    }
-    new CreateDEdgeTool(this, name, sourceViewId, targetViewId, id, newSourceIdentifier, newTargetIdentifier).run();
+    new CreateDEdgeTool(this, IToolNameConstants.TOOL_CREATE_FUNCTIONAL_EXCHANGE, sourceViewId, targetViewId, id,
+        newSourceIdentifier, newTargetIdentifier).run();
   }
 
   @Deprecated

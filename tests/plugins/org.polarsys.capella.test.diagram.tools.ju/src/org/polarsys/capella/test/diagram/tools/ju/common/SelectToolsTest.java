@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 
+import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.AbstractDNode;
@@ -64,6 +65,16 @@ public class SelectToolsTest extends AbstractDiagramTestCase {
   }
 
   protected void testCommonTools(DDiagram rep) {
+
+    // TODO this is a temporary DIRTY FIX and will be removed once filters are migrated
+
+    s.getTransactionalEditingDomain().getCommandStack()
+        .execute(new RecordingCommand(s.getTransactionalEditingDomain()) {
+          @Override
+          protected void doExecute() {
+            rep.getActivatedFilters().clear();
+          }
+        });
 
     CommonDiagram cd = new CommonDiagram(sc, rep);
     DiagramContext dc = cd.open();

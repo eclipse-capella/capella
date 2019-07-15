@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
+import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 import org.polarsys.capella.test.diagram.filters.ju.DiagramObjectFilterTestCase;
 
@@ -32,20 +33,20 @@ public class HideFunctionalExchangesTestCase extends DiagramObjectFilterTestCase
 
   @Override
   protected String getFilterName() {
-    return "Hide Functional Exchanges";
+    return IFilterNameConstants.FILTER_SDFB_HIDE_FUNCTIONAL_EXCHANGES;
   }
 
   @Override
   protected List<String> getFilteredObjetIDs() {
     return Arrays.asList("ad7c0244-0750-43a3-b419-b14a7a5f1185", "d31f4c61-c647-4768-9986-d6c8fde6b700");
   }
-  
+
   @Override
   public void test() {
     super.test();
 
     DDiagram diagram = (DDiagram) DiagramHelper.getDRepresentation(session, diagramName);
-    DiagramHelper.refreshDiagram(diagram);    
+    DiagramHelper.refreshDiagram(diagram);
 
     // Assert that internal link is removed
     // Our diagram should have 2 filtered edges which are the two functional exchanges.
@@ -55,7 +56,7 @@ public class HideFunctionalExchangesTestCase extends DiagramObjectFilterTestCase
     for (DEdge edge : diagram.getEdges()) {
       assertTrue(DiagramHelper.isDiagramElementFiltered(edge));
     }
-    
+
     // Check that total elements are 10
     assertEquals(10, diagram.getDiagramElements().size());
   }

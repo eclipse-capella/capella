@@ -115,22 +115,8 @@ public class XABDiagram extends CommonDiagram {
     return ((CapellaElement) element.getTarget()).getId();
   }
 
-  public String getToolNameFunction() {
-    String name = null;
-    if (type == Type.OA) {
-      name = IToolNameConstants.TOOL_OAB_CREATE_OPERATIONAL_ACTIVITY;
-    } else if (type == Type.SA) {
-      name = IToolNameConstants.TOOL_SAB_CREATE_SYSTEM_FUNCTION;
-    } else if (type == Type.LA) {
-      name = IToolNameConstants.TOOL_LAB_CREATE_LOGICAL_FUNCTION;
-    } else if (type == Type.PA) {
-      name = IToolNameConstants.TOOL_PAB_CREATE_PHYSICAL_FUNCTION;
-    }
-    return name;
-  }
-
   public String createFunction(String id, String containerId) {
-    DNode element = new CreateNodeTool(this, getToolNameFunction(), containerId, id).run();
+    DNode element = new CreateNodeTool(this, IToolNameConstants.TOOL_CREATE_FUNCTION, containerId, id).run();
     return ((CapellaElement) element.getTarget()).getId();
   }
 
@@ -138,7 +124,7 @@ public class XABDiagram extends CommonDiagram {
     String name = null;
     switch (functionType) {
     case SYSTEM_FUNCTION:
-      name = getToolNameFunction();
+      name = IToolNameConstants.TOOL_CREATE_FUNCTION;
       break;
     case DUPLICATE:
       name = IToolNameConstants.TOOL_XAB_CREATE_DUPLICATE;
@@ -300,13 +286,7 @@ public class XABDiagram extends CommonDiagram {
   }
 
   public void createFunctionalExchange(String idSource, String idTarget, String id) {
-    String name = null;
-    if (type == Type.OA) {
-      name = IToolNameConstants.TOOL_OAB_CREATE_INTERACTION;
-    } else {
-      name = IToolNameConstants.TOOL_XAB_CREATE_FUNCTIONAL_EXCHANGE;
-    }
-    new CreateDEdgeTool(this, name, idSource, idTarget, id).run();
+    new CreateDEdgeTool(this, IToolNameConstants.TOOL_XAB_CREATE_FUNCTIONAL_EXCHANGE, idSource, idTarget, id).run();
   }
 
   public void createPhysicalLink(String idSource, String idTarget, String id) {

@@ -22,6 +22,7 @@ public class ToolProviderHelper {
 
   /**
    * Retrieve the tool's name to create an actor
+   * 
    * @param diagram_p
    * @return
    */
@@ -54,6 +55,7 @@ public class ToolProviderHelper {
 
   /**
    * Retrieve the tool's name to create a component
+   * 
    * @param diagram_p
    * @return
    */
@@ -67,7 +69,7 @@ public class ToolProviderHelper {
     }
     return null;
   }
-  
+
   public static String getTollCreateNodePC(DDiagram diagram_p) {
     if (DDiagramHelper.isSAB(diagram_p)) {
       return "TOOL_SAB_CREATE_NODE_PHYSICAL_COMPONENT DOES NOT EXIST YES";
@@ -78,7 +80,7 @@ public class ToolProviderHelper {
     }
     return null;
   }
-  
+
   public static String getToolCreatePhysicalLink(DDiagram diagram_p) {
     if (DDiagramHelper.isSAB(diagram_p)) {
       return IToolNameConstants.TOOL_SAB_CREATE_PHYSICAL_LINK;
@@ -89,7 +91,7 @@ public class ToolProviderHelper {
     }
     return null;
   }
-  
+
   public static String getToolCreatePhysicalPort(DDiagram diagram_p) {
     if (DDiagramHelper.isSAB(diagram_p)) {
       return IToolNameConstants.TOOL_SAB_CREATE_PHYSICAL_PORT;
@@ -100,7 +102,7 @@ public class ToolProviderHelper {
     }
     return null;
   }
-  
+
   public static String getToolReconnectPLSource(DDiagram diagram_p) {
     if (DDiagramHelper.isSAB(diagram_p)) {
       return IToolNameConstants.TOOL_SAB_RECONNECT_PHYSICALLINK_SOURCE_ID;
@@ -111,7 +113,7 @@ public class ToolProviderHelper {
     }
     return null;
   }
-  
+
   public static String getToolReconnectPLTarget(DDiagram diagram_p) {
     if (DDiagramHelper.isSAB(diagram_p)) {
       return IToolNameConstants.TOOL_SAB_RECONNECT_PHYSICALLINK_TARGET_ID;
@@ -125,6 +127,7 @@ public class ToolProviderHelper {
 
   /**
    * Retrieve the tool's name to create a component exchange
+   * 
    * @param diagram_p
    * @return
    */
@@ -143,6 +146,7 @@ public class ToolProviderHelper {
 
   /**
    * Retrieve the tool's name to reconnect a component exchange source
+   * 
    * @param diagram_p
    * @return
    */
@@ -169,6 +173,7 @@ public class ToolProviderHelper {
 
   /**
    * Retrieve the tool's name to reconnect a component exchange target
+   * 
    * @param diagram_p
    * @return
    */
@@ -195,6 +200,7 @@ public class ToolProviderHelper {
 
   /**
    * Retrieve the tool's name to create a component exchange with delegations
+   * 
    * @param diagram_p
    * @return
    */
@@ -209,10 +215,12 @@ public class ToolProviderHelper {
 
   /**
    * Retrieve the tool's name to create a component exchange
+   * 
    * @param diagram_p
    * @return
    */
-  public static String getToolCreateComponentPort(DDiagram diagram_p, ComponentPortKind flow_p, OrientationPortKind in_p) {
+  public static String getToolCreateComponentPort(DDiagram diagram_p, ComponentPortKind flow_p,
+      OrientationPortKind in_p) {
     if (DDiagramHelper.isSAB(diagram_p)) {
       if (flow_p == ComponentPortKind.FLOW) {
         if (in_p == OrientationPortKind.IN) {
@@ -272,6 +280,7 @@ public class ToolProviderHelper {
 
   /**
    * Retrieve the tool's name to create a delegation
+   * 
    * @param diagram_p
    * @return
    */
@@ -286,6 +295,7 @@ public class ToolProviderHelper {
 
   /**
    * Returns the tool's name of the create functional chain
+   * 
    * @param view_p
    * @return
    */
@@ -308,32 +318,6 @@ public class ToolProviderHelper {
       return IToolNameConstants.TOOL_PDFB_CREATE_FUNCTIONAL_CHAIN;
     }
 
-    return null;
-  }
-
-  /**
-   * Retrieve the tool's name to create a function
-   * @param diagram_p
-   * @return
-   */
-  public static String getToolCreateFunction(DDiagram diagram_p) {
-    if (DDiagramHelper.isOAIB(diagram_p)) {
-      return IToolNameConstants.TOOL_OAIB_CREATE_OPERATIONAL_ACTIVITY;
-    } else if (DDiagramHelper.isSDFB(diagram_p)) {
-      return IToolNameConstants.TOOL_SDFB_CREATE_SYSTEM_FUNCTION;
-    } else if (DDiagramHelper.isLDFB(diagram_p)) {
-      return IToolNameConstants.TOOL_LDFB_CREATE_LOGICAL_FUNCTION;
-    } else if (DDiagramHelper.isPDFB(diagram_p)) {
-      return IToolNameConstants.TOOL_PDFB_CREATE_PHYSICAL_FUNCTION;
-    } else if (DDiagramHelper.isOAB(diagram_p)) {
-      return IToolNameConstants.TOOL_OAB_CREATE_OPERATIONAL_ACTIVITY;
-    } else if (DDiagramHelper.isSAB(diagram_p)) {
-      return IToolNameConstants.TOOL_SAB_CREATE_SYSTEM_FUNCTION;
-    } else if (DDiagramHelper.isLAB(diagram_p)) {
-      return IToolNameConstants.TOOL_LAB_CREATE_LOGICAL_FUNCTION;
-    } else if (DDiagramHelper.isPAB(diagram_p)) {
-      return IToolNameConstants.TOOL_PAB_CREATE_PHYSICAL_FUNCTION;
-    }
     return null;
   }
 
@@ -372,33 +356,8 @@ public class ToolProviderHelper {
   }
 
   /**
-   * Retrieve the tool's name to create a functional exchange
-   * @param diagram_p
-   * @return
-   */
-  public static String getToolCreateFunctionalExchange(DDiagram diagram_p) {
-    if (DDiagramHelper.isOAIB(diagram_p)) {
-      return IToolNameConstants.TOOL_OAIB_CREATE_INTERACTION;
-    } else if (DDiagramHelper.isSDFB(diagram_p)) {
-      return IToolNameConstants.TOOL_SDFB_CREATE_FUNCTIONAL_EXCHANGE;
-    } else if (DDiagramHelper.isLDFB(diagram_p)) {
-      return IToolNameConstants.TOOL_LDFB_CREATE_FUNCTIONAL_EXCHANGE;
-    } else if (DDiagramHelper.isPDFB(diagram_p)) {
-      return IToolNameConstants.TOOL_PDFB_CREATE_FUNCTIONAL_EXCHANGE;
-    } else if (DDiagramHelper.isOAB(diagram_p)) {
-      return IToolNameConstants.TOOL_OAB_CREATE_INTERACTION;
-    } else if (DDiagramHelper.isSAB(diagram_p)) {
-      return IToolNameConstants.TOOL_SAB_CREATE_FUNCTIONAL_EXCHANGE;
-    } else if (DDiagramHelper.isLAB(diagram_p)) {
-      return IToolNameConstants.TOOL_LAB_CREATE_FUNCTIONAL_EXCHANGE;
-    } else if (DDiagramHelper.isPAB(diagram_p)) {
-      return IToolNameConstants.TOOL_PAB_CREATE_FUNCTIONAL_EXCHANGE;
-    }
-    return null;
-  }
-
-  /**
    * Retrieve the tool's name to reconnect a functional exchange
+   * 
    * @param diagram_p
    * @return
    */
@@ -425,6 +384,7 @@ public class ToolProviderHelper {
 
   /**
    * Returns the tool's name of the insert remove function
+   * 
    * @param view_p
    * @return
    */
@@ -451,6 +411,7 @@ public class ToolProviderHelper {
 
   /**
    * Returns the tool's name of the insert remove function
+   * 
    * @param view_p
    * @return
    */
@@ -477,6 +438,7 @@ public class ToolProviderHelper {
 
   /**
    * Returns the tool's name of the insert remove function
+   * 
    * @param view_p
    * @return
    */
@@ -519,6 +481,7 @@ public class ToolProviderHelper {
 
   /**
    * retrieve the tool name to create capability
+   * 
    * @param diagram_p
    * @return
    */
@@ -535,6 +498,7 @@ public class ToolProviderHelper {
 
   /**
    * retrieve the tool name to create involvement
+   * 
    * @param diagram_p
    * @return
    */
@@ -551,6 +515,7 @@ public class ToolProviderHelper {
 
   /**
    * retrieve the tool name to create extends
+   * 
    * @param diagram_p
    * @return
    */
@@ -567,6 +532,7 @@ public class ToolProviderHelper {
 
   /**
    * retrieve the tool name to create includes
+   * 
    * @param diagram_p
    * @return
    */
@@ -583,6 +549,7 @@ public class ToolProviderHelper {
 
   /**
    * retrieve the tool name to create capability generalization
+   * 
    * @param diagram_p
    * @return
    */
@@ -599,6 +566,7 @@ public class ToolProviderHelper {
 
   /**
    * retrieve the tool name to create actor generalization
+   * 
    * @param diagram_p
    * @return
    */
@@ -627,7 +595,6 @@ public class ToolProviderHelper {
     }
     return null;
   }
-
 
   public static String getToolCreateClass(DDiagram diagram_p) {
     if (DDiagramHelper.isCDB(diagram_p)) {

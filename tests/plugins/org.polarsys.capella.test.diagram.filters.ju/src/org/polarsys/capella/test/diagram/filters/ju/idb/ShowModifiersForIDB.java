@@ -13,11 +13,11 @@ package org.polarsys.capella.test.diagram.filters.ju.idb;
 import java.util.Arrays;
 import java.util.List;
 
+import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 import org.polarsys.capella.test.diagram.filters.ju.LabelFilterTestCase;
 
 public class ShowModifiersForIDB extends LabelFilterTestCase {
 
-  private final String FILTER_IDB_SHOW_MODIFIERS = "Show Modifiers";
   private final String EXCHANGE_ITEM_ELEMENT_ID = "3058fb2d-53e1-403d-97e1-32f3d52da32f";
 
   @Override
@@ -32,7 +32,7 @@ public class ShowModifiersForIDB extends LabelFilterTestCase {
 
   @Override
   protected String getFilterName() {
-    return FILTER_IDB_SHOW_MODIFIERS;
+    return IFilterNameConstants.FILTER_IDB_SHOW_MODIFIERS;
   }
 
   @Override

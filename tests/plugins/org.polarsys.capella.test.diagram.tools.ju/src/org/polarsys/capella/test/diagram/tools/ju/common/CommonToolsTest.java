@@ -13,6 +13,7 @@ package org.polarsys.capella.test.diagram.tools.ju.common;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -24,6 +25,7 @@ import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.core.data.capellacore.BooleanPropertyValue;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacoreFactory;
@@ -88,13 +90,26 @@ public class CommonToolsTest extends AbstractDiagramTestCase {
 
     for (DRepresentation rep : DialectManager.INSTANCE.getAllRepresentations(s)) {
       if (rep instanceof DDiagram) {
+
+        System.err.println(EObjectExt.getText(rep));
         testCommonTools((DDiagram) rep);
+
       }
     }
 
   }
 
   private void testCommonTools(DDiagram rep) {
+
+    // TODO this is a temporary DIRTY FIX and will be removed once filters are migrated
+
+    s.getTransactionalEditingDomain().getCommandStack()
+        .execute(new RecordingCommand(s.getTransactionalEditingDomain()) {
+          @Override
+          protected void doExecute() {
+            rep.getActivatedFilters().clear();
+          }
+        });
 
     CommonDiagram cd = new CommonDiagram(sc, rep);
     DiagramContext dc = cd.open();
@@ -130,7 +145,8 @@ public class CommonToolsTest extends AbstractDiagramTestCase {
 
       // just make sure the filter was copy/pasted across all diagrams.
       boolean pvFilterPresent = false;
-      for (FilterDescription fd : rep.getDescription().getFilters()) {
+      List<FilterDescription> filters = rep.getDescription().getFilters();
+      for (FilterDescription fd : filters) {
         if (IFilterNameConstants.FILTER_COMMON_HIDE_PV.equals(fd.getName())) {
           pvFilterPresent = true;
           break;

@@ -24,7 +24,7 @@ public class HideControlNodesForPFBD extends FiltersForPFBD {
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { CONTROL_NODE_1_ID, CONTROL_NODE_2_ID });
+    return Arrays.asList(CONTROL_NODE_1_ID, CONTROL_NODE_2_ID, CONTROL_NODE_3_ID);
   }
 
 }

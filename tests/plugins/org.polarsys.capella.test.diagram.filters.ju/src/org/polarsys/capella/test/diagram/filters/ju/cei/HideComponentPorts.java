@@ -23,6 +23,11 @@ public class HideComponentPorts extends DiagramObjectFilterTestCase {
   private final String STANDARD_COMPONENT_PORT_ID = "ad590566-fb37-46a8-9f7b-3c57353a9fb7";
   private final String IN_OUT_COMPONENT_PORT_ID = "e7c3f00c-9761-4145-99a3-fc764fdcc500";
 
+  private final String PORT_1 = "a12d10e7-469c-4001-a0c6-4e652401259d";
+  private final String PORT_2 = "f9db1445-3e2d-42c3-bcc5-29baef84a03e";
+  private final String PORT_3 = "1a066a3b-2893-47d9-acdb-2a0e2bb6c686";
+  private final String PORT_4 = "ad590566-fb37-46a8-9f7b-3c57353a9fb7";
+
   @Override
   protected String getTestProjectName() {
     return "StandardDiagramFiltersModel"; //$NON-NLS-1$
@@ -40,7 +45,7 @@ public class HideComponentPorts extends DiagramObjectFilterTestCase {
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { IN_COMPONENT_PORT_ID, OUT_COMPONENT_PORT_ID, STANDARD_COMPONENT_PORT_ID,
-        IN_OUT_COMPONENT_PORT_ID });
+    return Arrays.asList(IN_COMPONENT_PORT_ID, OUT_COMPONENT_PORT_ID, STANDARD_COMPONENT_PORT_ID,
+        IN_OUT_COMPONENT_PORT_ID, PORT_1, PORT_2, PORT_3, PORT_4);
   }
 }

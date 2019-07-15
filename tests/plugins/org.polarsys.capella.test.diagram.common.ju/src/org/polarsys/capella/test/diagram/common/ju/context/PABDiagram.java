@@ -65,45 +65,46 @@ public class PABDiagram extends XABDiagram {
     new CreateContainerTool(this, IToolNameConstants.TOOL_PAB_DEPLOY_NODE_PC, containerId, id).run();
   }
 
-  public void removeBehaviorComponent(String id, String containerId) {
-    new InsertRemoveTool(this, new String[] { IToolNameConstants.TOOL_PAB_INSERT_REMOVE_COMPONENTS_MONOPART,
-        IToolNameConstants.TOOL_PAB_INSERT_REMOVE_BEHAVIOR_PCS }, containerId).remove(id);
-  }
-
   public void removeDeployedBehaviorComponent(String id, String containerId) {
-    new InsertRemoveTool(this, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_DEPLOYED_PCS, containerId).remove(id);
+    new InsertRemoveTool(this, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_DEPLOYED_BEHAVIOUR_PCS, containerId)
+        .remove(id);
   }
 
   public void insertDeployedBehaviorComponent(String id, String containerId) {
-    new InsertRemoveTool(this, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_DEPLOYED_PCS, containerId).insert(id);
+    new InsertRemoveTool(this, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_DEPLOYED_BEHAVIOUR_PCS, containerId)
+        .insert(id);
   }
 
   public void removeDeployedNodeComponent(String id, String containerId) {
-    new InsertRemoveTool(this, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_DEPLOYED_PCS, containerId).remove(id);
+    new InsertRemoveTool(this, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_DEPLOYED_NODE_PCS, containerId).remove(id);
   }
 
   public void insertDeployedNodeComponent(String id, String containerId) {
-    new InsertRemoveTool(this, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_DEPLOYED_PCS, containerId).insert(id);
+    new InsertRemoveTool(this, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_DEPLOYED_NODE_PCS, containerId).insert(id);
   }
 
   public void removeNodeComponent(String id, String containerId) {
-    new InsertRemoveTool(this, new String[] { IToolNameConstants.TOOL_PAB_INSERT_REMOVE_COMPONENTS_MONOPART,
-        IToolNameConstants.TOOL_PAB_INSERT_REMOVE_NODE_PCS }, containerId).remove(id);
+    new InsertRemoveTool(this, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_NODE_COMPONENTS_MONOPART, containerId)
+        .remove(id);
   }
 
   public void insertNodeComponent(String id, String containerId) {
-    new InsertRemoveTool(this, new String[] { IToolNameConstants.TOOL_PAB_INSERT_REMOVE_COMPONENTS_MONOPART,
-        IToolNameConstants.TOOL_PAB_INSERT_REMOVE_NODE_PCS }, containerId).insert(id);
+    new InsertRemoveTool(this, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_NODE_COMPONENTS_MONOPART, containerId)
+        .insert(id);
   }
 
   public void reuseBehaviorComponent(String id, String containerId) {
     new InsertRemoveTool(this, new String[] { IToolNameConstants.TOOL_PAB_REUSE_BEHAVIOR_PC }, containerId).insert(id);
   }
 
-  public void insertBehaviorComponent(String id, String containerId) {
-    new InsertRemoveTool(this, new String[] { IToolNameConstants.TOOL_PAB_INSERT_REMOVE_COMPONENTS_MONOPART,
-        IToolNameConstants.TOOL_PAB_INSERT_REMOVE_BEHAVIOR_PCS }, containerId).insert(id);
+  public void removeBehaviorComponent(String id, String containerId) {
+    new InsertRemoveTool(this, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_BEHAVIOUR_COMPONENTS_MONOPART, containerId)
+        .remove(id);
+  }
 
+  public void insertBehaviorComponent(String id, String containerId) {
+    new InsertRemoveTool(this, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_BEHAVIOUR_COMPONENTS_MONOPART, containerId)
+        .insert(id);
   }
 
   public void createComponentPortAllocation(String sourceId, String targetId) {
@@ -121,8 +122,7 @@ public class PABDiagram extends XABDiagram {
   }
 
   public void manageManageNodePCsDeployment(String id, String containerId) {
-    new InsertRemoveTool(this, new String[] { IToolNameConstants.TOOL_PAB_INSERT_REMOVE_COMPONENTS_MONOPART,
-        IToolNameConstants.TOOL_PAB_MANAGE_NODE_COMP_DEPLOYMENT }, containerId).insert(id);
+    new InsertRemoveTool(this, IToolNameConstants.TOOL_PAB_MANAGE_NODE_COMP_DEPLOYMENT, containerId).insert(id);
   }
 
   public void manageBehaviorPCsDeployment(String id, String containerId) {

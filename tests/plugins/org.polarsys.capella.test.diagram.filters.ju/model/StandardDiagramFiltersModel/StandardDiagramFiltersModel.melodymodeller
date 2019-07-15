@@ -2,7 +2,7 @@
 
 <!--Capella_Version_1.4.0-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:libraries_1.3.0="http://www.polarsys.org/capella/common/libraries/1.3.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:libraries="http://www.polarsys.org/capella/common/libraries/1.4.0"
     xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.4.0"
     xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.4.0"
     xmlns:org.polarsys.capella.core.data.capellamodeller="http://www.polarsys.org/capella/core/modeller/1.4.0"
@@ -21,6 +21,7 @@
     xmlns:org.polarsys.capella.core.data.pa.deployment="http://www.polarsys.org/capella/core/pa/deployment/1.4.0"
     id="4b0b002e-ace5-41bc-a05f-f50c1fe0a870"
     name="StandardDiagramFiltersModel">
+  <ownedExtensions xsi:type="libraries:ModelInformation" id="24b73335-6743-4493-a96a-1e96d2a2c7a0"/>
   <ownedEnumerationPropertyTypes xsi:type="org.polarsys.capella.core.data.capellacore:EnumerationPropertyType"
       id="888c8462-df9f-4745-8785-f780b0c7b407" name="ProgressStatus">
     <ownedLiterals xsi:type="org.polarsys.capella.core.data.capellacore:EnumerationPropertyLiteral"
@@ -1564,5 +1565,4 @@
           sourceElement="#9a844b85-9005-4ef6-b1d0-5147c08362c0"/>
     </ownedArchitectures>
   </ownedModelRoots>
-  <ownedExtensions xsi:type="libraries_1.3.0:ModelInformation" id="24b73335-6743-4493-a96a-1e96d2a2c7a0"/>
 </org.polarsys.capella.core.data.capellamodeller:Project>

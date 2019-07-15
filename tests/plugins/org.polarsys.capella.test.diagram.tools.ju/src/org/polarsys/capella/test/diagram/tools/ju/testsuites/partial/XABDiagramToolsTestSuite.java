@@ -90,10 +90,11 @@ public class XABDiagramToolsTestSuite extends BasicTestSuite {
     return new XABDiagramToolsTestSuite();
   }
 
+  @Override
   public List<String> getRequiredTestModels() {
     return Arrays.asList("XABDiagrams", "EmptyProject");
   }
-  
+
   /**
    * @see org.polarsys.capella.test.framework.api.BasicTestSuite#getTests()
    */
@@ -104,7 +105,7 @@ public class XABDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new DragAndDropFunction());
     tests.add(new SwitchComponentExchangesCategories());
     tests.add(new ConstraintRename());
-    
+
     tests.add(new CreateNodePCGroup());
     tests.add(new CreatePhysicalPath());
     tests.add(new CreatePhysicalLink());
@@ -119,7 +120,7 @@ public class XABDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new ShowHidePhysicalPath());
 
     tests.add(new DiagramPartIcon());
-    
+
     tests.add(new CreateBehaviorPCGroup());
     tests.add(new CreateComponent());
     tests.add(new CreateComponentExchangeGroup());

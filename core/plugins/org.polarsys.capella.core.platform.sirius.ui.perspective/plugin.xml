@@ -87,6 +87,86 @@
 	 </activity>
 	 <!-- This contribution is used to hide the Sirius's close contextual menu in Capella perspective -->
 	 <activityPatternBinding activityId="org.polarsys.capella.core.perspective.hidden.activity" isEqualityPattern="true" pattern="org.eclipse.sirius.ui.editor/org.eclipse.sirius.ui.closeSessionMenuContribution"/>
+  	 <category
+               description="The single capella test category"
+               id="org.polarsys.capella.rcp.activities.capellaCategory"
+               name="Capella Category">
+       </category>
+       <activity
+             description="Binds contributions that are not associated to any other capella activity"
+             id="org.polarsys.capella.rcp.activities.sampleActivity"
+             name="Capella Example Activity">
+       </activity>
+       <activity
+             description="Transitions"
+             id="org.polarsys.capella.rcp.activities.transition"
+             name="Transitions">
+       </activity>
+       <activity
+             id="org.polarsys.capella.rcp.activities.pattern"
+             name="Modeling Pattern">
+       </activity>
+       <activity
+             description="Replicable Elements"
+             id="org.polarsys.capella.rcp.activities.re"
+             name="Replicable Elements">
+       </activity>
+       <activity
+             description="Enables support for capella libraries"
+             id="org.polarsys.capella.rcp.activities.libraries"
+             name="Libraries">
+       </activity>
+       <defaultEnablement id="org.polarsys.capella.rcp.activities.sampleActivity"/>
+       <defaultEnablement id="org.polarsys.capella.rcp.activities.pattern"/>
+       <defaultEnablement id="org.polarsys.capella.rcp.activities.transition"/>
+       <defaultEnablement id="org.polarsys.capella.rcp.activities.re"/>
+       <defaultEnablement id="org.polarsys.capella.rcp.activities.libraries"/>
+       <categoryActivityBinding
+             activityId="org.polarsys.capella.rcp.activities.sampleActivity"
+             categoryId="org.polarsys.capella.rcp.activities.capellaCategory">
+       </categoryActivityBinding>
+        <categoryActivityBinding
+             activityId="org.polarsys.capella.rcp.activities.transition"
+             categoryId="org.polarsys.capella.rcp.activities.capellaCategory">
+       </categoryActivityBinding>
+        <categoryActivityBinding
+             activityId="org.polarsys.capella.rcp.activities.re"
+             categoryId="org.polarsys.capella.rcp.activities.capellaCategory">
+       </categoryActivityBinding>
+        <categoryActivityBinding
+             activityId="org.polarsys.capella.rcp.activities.pattern"
+             categoryId="org.polarsys.capella.rcp.activities.capellaCategory">
+       </categoryActivityBinding>
+         <categoryActivityBinding
+             activityId="org.polarsys.capella.rcp.activities.libraries"
+             categoryId="org.polarsys.capella.rcp.activities.capellaCategory">
+       </categoryActivityBinding>
+       <activityPatternBinding
+            activityId="org.polarsys.capella.rcp.activities.transition"
+            isEqualityPattern="false"
+            pattern="org\.polarsys\.capella\.core\.transition.*">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="org.polarsys.capella.rcp.activities.transition"
+            isEqualityPattern="false"
+            pattern="org\.polarsys\.capella\.core\.projection.*">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="org.polarsys.capella.rcp.activities.re"
+            pattern="org\.polarsys\.capella\.common\.re\..*">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="org.polarsys.capella.rcp.activities.pattern"
+            isEqualityPattern="false"
+            pattern="org\.polarsys\.capella\.patterns\.ui/.*">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="org.polarsys.capella.rcp.activities.libraries"
+            pattern="org\.polarsys\.capella\.core\.libraries\.ui/.*">
+      </activityPatternBinding>
+      <defaultEnablement
+            id="org.polarsys.capella.rcp.activities.libraries">
+      </defaultEnablement>
    </extension>
    
    <!--extension point="org.eclipse.ui.splashHandlers">
@@ -125,5 +205,13 @@
          <appStart
                class="org.polarsys.capella.core.platform.sirius.ui.AcceleratorConfigurationInitializer">
          </appStart>
+      </extension>
+      <extension
+            point="org.eclipse.ui.services">
+         <serviceFactory
+               factoryClass="org.polarsys.capella.core.platform.sirius.ui.services.PlatformSiriusServiceFactory">
+            <service
+                  serviceClass="org.polarsys.capella.core.platform.sirius.ui.services.IElementIdentifierService"></service>
+         </serviceFactory>
       </extension>
 </plugin>

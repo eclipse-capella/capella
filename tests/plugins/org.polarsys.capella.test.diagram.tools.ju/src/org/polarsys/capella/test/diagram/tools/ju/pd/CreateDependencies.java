@@ -46,8 +46,6 @@ public class CreateDependencies extends CDBCommunication {
   private static final String DATAPKG_3 = "3";
   private static final String DATAPKG_3_1 = "3_1";
 
-  private static final String TOOL_CDB_CREATE_DATA_PACKAGE = "DataPkg";
-
   @Override
   protected void testCDB() {
     testDependencies();
@@ -71,7 +69,8 @@ public class CreateDependencies extends CDBCommunication {
     new OpenDiagramStep(diagramContext).run();
 
     DDiagramElementContainer diagramElement = new CreateAbstractDNodeTool<DDiagramElementContainer>(diagramContext,
-        TOOL_CDB_CREATE_DATA_PACKAGE, diagramContext.getDiagramId(), DATAPKG_1, DDiagramElementContainer.class).run();
+        IToolNameConstants.TOOL_CDB_CREATE_DATA_PACKAGE, diagramContext.getDiagramId(), DATAPKG_1,
+        DDiagramElementContainer.class).run();
     ExecutionManager executionManager = TransactionHelper.getExecutionManager(diagramElement.getTarget());
     setName(executionManager, (NamedElement) diagramElement.getTarget(), DATAPKG_1);
 
@@ -80,8 +79,8 @@ public class CreateDependencies extends CDBCommunication {
             .run();
     setName(executionManager, (NamedElement) diagramElement.getTarget(), GenericModel.CLASS_4);
 
-    diagramElement = new CreateAbstractDNodeTool<DDiagramElementContainer>(diagramContext, TOOL_CDB_CREATE_DATA_PACKAGE,
-        DATAPKG_1, DATAPKG_1_1, DDiagramElementContainer.class).run();
+    diagramElement = new CreateAbstractDNodeTool<DDiagramElementContainer>(diagramContext,
+        IToolNameConstants.TOOL_CDB_CREATE_DATA_PACKAGE, DATAPKG_1, DATAPKG_1_1, DDiagramElementContainer.class).run();
     setName(executionManager, (NamedElement) diagramElement.getTarget(), DATAPKG_1_1);
 
     diagramElement = new CreateAbstractDNodeTool<DDiagramElementContainer>(diagramContext,
@@ -89,22 +88,24 @@ public class CreateDependencies extends CDBCommunication {
             .run();
     setName(executionManager, (NamedElement) diagramElement.getTarget(), GenericModel.CLASS_1);
 
-    diagramElement = new CreateAbstractDNodeTool<DDiagramElementContainer>(diagramContext, TOOL_CDB_CREATE_DATA_PACKAGE,
-        diagramContext.getDiagramId(), DATAPKG_2, DDiagramElementContainer.class).run();
+    diagramElement = new CreateAbstractDNodeTool<DDiagramElementContainer>(diagramContext,
+        IToolNameConstants.TOOL_CDB_CREATE_DATA_PACKAGE, diagramContext.getDiagramId(), DATAPKG_2,
+        DDiagramElementContainer.class).run();
     setName(executionManager, (NamedElement) diagramElement.getTarget(), DATAPKG_2);
-    diagramElement = new CreateAbstractDNodeTool<DDiagramElementContainer>(diagramContext, TOOL_CDB_CREATE_DATA_PACKAGE,
-        DATAPKG_2, DATAPKG_2_1, DDiagramElementContainer.class).run();
+    diagramElement = new CreateAbstractDNodeTool<DDiagramElementContainer>(diagramContext,
+        IToolNameConstants.TOOL_CDB_CREATE_DATA_PACKAGE, DATAPKG_2, DATAPKG_2_1, DDiagramElementContainer.class).run();
     setName(executionManager, (NamedElement) diagramElement.getTarget(), DATAPKG_2_1);
     diagramElement = new CreateAbstractDNodeTool<DDiagramElementContainer>(diagramContext,
         IToolNameConstants.TOOL_CDB_CREATE_CLASS, DATAPKG_2_1, GenericModel.CLASS_2, DDiagramElementContainer.class)
             .run();
     setName(executionManager, (NamedElement) diagramElement.getTarget(), GenericModel.CLASS_2);
 
-    diagramElement = new CreateAbstractDNodeTool<DDiagramElementContainer>(diagramContext, TOOL_CDB_CREATE_DATA_PACKAGE,
-        diagramContext.getDiagramId(), DATAPKG_3, DDiagramElementContainer.class).run();
+    diagramElement = new CreateAbstractDNodeTool<DDiagramElementContainer>(diagramContext,
+        IToolNameConstants.TOOL_CDB_CREATE_DATA_PACKAGE, diagramContext.getDiagramId(), DATAPKG_3,
+        DDiagramElementContainer.class).run();
     setName(executionManager, (NamedElement) diagramElement.getTarget(), DATAPKG_3);
-    diagramElement = new CreateAbstractDNodeTool<DDiagramElementContainer>(diagramContext, TOOL_CDB_CREATE_DATA_PACKAGE,
-        DATAPKG_3, DATAPKG_3_1, DDiagramElementContainer.class).run();
+    diagramElement = new CreateAbstractDNodeTool<DDiagramElementContainer>(diagramContext,
+        IToolNameConstants.TOOL_CDB_CREATE_DATA_PACKAGE, DATAPKG_3, DATAPKG_3_1, DDiagramElementContainer.class).run();
     setName(executionManager, (NamedElement) diagramElement.getTarget(), DATAPKG_3_1);
     diagramElement = new CreateAbstractDNodeTool<DDiagramElementContainer>(diagramContext,
         IToolNameConstants.TOOL_CDB_CREATE_CLASS, DATAPKG_3_1, GenericModel.CLASS_3, DDiagramElementContainer.class)
