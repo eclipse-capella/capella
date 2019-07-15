@@ -25,7 +25,7 @@ location eclipse "http://download.eclipse.org/releases/2019-06" {
 	org.eclipse.viatra.query.sdk.feature.source.feature.group
 }
 
-location sirius "https://download.eclipse.org/sirius/updates/releases/6.2.1/2019-06" {
+location sirius "https://download.eclipse.org/sirius/updates/stable/6.3.0-S20190716-100145/2019-06" {
 	org.eclipse.sirius.doc.feature.feature.group
 	org.eclipse.sirius.doc.feature.source.feature.group
 	org.eclipse.sirius.runtime.feature.group
