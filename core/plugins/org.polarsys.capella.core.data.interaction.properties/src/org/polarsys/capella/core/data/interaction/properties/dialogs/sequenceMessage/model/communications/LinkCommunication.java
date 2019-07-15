@@ -12,6 +12,7 @@ package org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMe
 
 import org.eclipse.emf.common.util.EList;
 import org.polarsys.capella.common.data.modellingcore.AbstractConstraint;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.communication.CommunicationLink;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkKind;
@@ -75,5 +76,10 @@ public class LinkCommunication extends AbstractCommunication implements Communic
   public EList<AbstractConstraint> getOwnedConstraints(){
 	  return getRepresentativeElement().getOwnedConstraints();
 	}
+
+  @Override
+  public EList<ModelElement> getOwnedMigratedElements() {
+    return getRepresentativeElement().getOwnedMigratedElements();
+  }
 
 }

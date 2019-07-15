@@ -8,23 +8,23 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.data.oa.properties.sections;
+package org.polarsys.capella.core.data.ctx.properties.sections;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.polarsys.capella.core.data.core.properties.sections.NamedElementSection;
-import org.polarsys.capella.core.data.oa.OaPackage;
+import org.polarsys.capella.core.data.core.properties.sections.StructureSection;
+import org.polarsys.capella.core.data.ctx.CtxPackage;
 
 /**
- * The OperationalContext section.
+ * The ActorPkg section.
  */
-public class OperationalContextSection extends NamedElementSection {
+public class SystemComponentPkgSection extends StructureSection {
   /**
    * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
    */
   @Override
   public boolean select(Object toTest) {
     EObject eObjectToTest = super.selection(toTest);
-    return ((eObjectToTest != null) && (eObjectToTest.eClass() == OaPackage.eINSTANCE.getOperationalContext()));
+    return ((eObjectToTest != null) && (eObjectToTest.eClass() == CtxPackage.eINSTANCE.getSystemComponentPkg()));
   }
 }

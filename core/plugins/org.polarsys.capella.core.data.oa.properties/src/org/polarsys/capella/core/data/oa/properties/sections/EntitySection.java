@@ -68,7 +68,7 @@ public class EntitySection extends NamedElementSection {
   @Override
   public boolean select(Object toTest) {
     EObject eObjectToTest = super.selection(toTest);
-    return ((eObjectToTest != null) && (eObjectToTest.eClass() == OaPackage.eINSTANCE.getEntity()) && (eObjectToTest.eClass() != OaPackage.eINSTANCE.getOperationalActor()));
+    return ((eObjectToTest != null) && (eObjectToTest.eClass() == OaPackage.eINSTANCE.getEntity()));
   }
 
   /**

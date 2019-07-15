@@ -16,15 +16,15 @@ import org.polarsys.capella.core.data.core.properties.sections.CapellaElementSec
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 
 /**
- * The ActorMissionInvolvement section.
+ * The SystemCapabilityInvolvement section.
  */
-public class ActorMissionInvolvementSection extends CapellaElementSection {
+public class CapabilityInvolvementSection extends CapellaElementSection {
   /**
    * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
    */
   @Override
   public boolean select(Object toTest) {
     EObject eObjectToTest = super.selection(toTest);
-    return ((eObjectToTest != null) && (eObjectToTest.eClass() == CtxPackage.eINSTANCE.getActorMissionInvolvement()));
+    return CtxPackage.Literals.CAPABILITY_INVOLVEMENT.isInstance(eObjectToTest);
   }
 }

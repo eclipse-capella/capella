@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.data.la.properties.controllers;
+package org.polarsys.capella.core.data.ctx.properties.controllers;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,23 +16,23 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
-import org.polarsys.capella.core.data.la.LaFactory;
-import org.polarsys.capella.core.data.la.LaPackage;
-import org.polarsys.capella.core.data.la.SystemActorRealization;
+import org.polarsys.capella.core.data.capellacore.InvolvedElement;
+import org.polarsys.capella.core.data.ctx.CtxFactory;
+import org.polarsys.capella.core.data.ctx.CtxPackage;
+import org.polarsys.capella.core.data.ctx.MissionInvolvement;
 import org.polarsys.capella.core.ui.properties.controllers.AbstractMultipleSemanticFieldController;
 
 /**
  */
-public class LogicalActor_RealizedActorsController extends AbstractMultipleSemanticFieldController {
+public class Mission_InvolvedSystemComponentsController extends AbstractMultipleSemanticFieldController {
   /**
    * {@inheritDoc}
    */
   @Override
   protected IBusinessQuery getReadOpenValuesQuery(EObject semanticElement) {
-    return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), LaPackage.Literals.LOGICAL_ACTOR__OWNED_SYSTEM_ACTOR_REALIZATIONS);
+    return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), CtxPackage.Literals.MISSION__INVOLVED_SYSTEM_COMPONENTS);
   }
 
   /**
@@ -45,8 +45,8 @@ public class LogicalActor_RealizedActorsController extends AbstractMultipleSeman
     Object lst = semanticElement.eGet(semanticFeature);
     if (lst instanceof Collection<?>) {
       for (Object obj : (Collection<?>) lst) {
-        if (obj instanceof SystemActorRealization) {
-          values.add(((SystemActorRealization) obj).getTargetElement());
+        if (obj instanceof MissionInvolvement) {
+          values.add(((MissionInvolvement) obj).getInvolved());
         }
       }
     }
@@ -60,9 +60,8 @@ public class LogicalActor_RealizedActorsController extends AbstractMultipleSeman
   @SuppressWarnings("unchecked")
   @Override
   protected void doAddOperationInWriteOpenValues(EObject semanticElement, EStructuralFeature semanticFeature, EObject object) {
-    SystemActorRealization link = LaFactory.eINSTANCE.createSystemActorRealization();
-    link.setSourceElement((TraceableElement) semanticElement);
-    link.setTargetElement((TraceableElement) object);
+    MissionInvolvement link = CtxFactory.eINSTANCE.createMissionInvolvement();
+    link.setInvolved((InvolvedElement) object);
     ((List<EObject>) semanticElement.eGet(semanticFeature)).add(link);
   }
 
@@ -77,8 +76,8 @@ public class LogicalActor_RealizedActorsController extends AbstractMultipleSeman
   protected void doRemoveOperationInWriteOpenValues(EObject semanticElement, EStructuralFeature semanticFeature, EObject object) {
     EObject linkToRemove = null;
     for (EObject obj : (List<EObject>) semanticElement.eGet(semanticFeature)) {
-      if ((obj instanceof SystemActorRealization)
-        && ((SystemActorRealization) obj).getTargetElement().equals(object))
+      if ((obj instanceof MissionInvolvement)
+        && ((MissionInvolvement) obj).getInvolved().equals(object))
       {
         linkToRemove = obj;
       }

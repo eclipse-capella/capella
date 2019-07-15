@@ -19,7 +19,6 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilitySection;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.la.properties.Messages;
-import org.polarsys.capella.core.data.la.properties.controllers.CapabilityRealization_InvolvedActorsController;
 import org.polarsys.capella.core.data.la.properties.controllers.CapabilityRealization_InvolvedComponentsController;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
@@ -29,7 +28,6 @@ import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
  */
 public class CapabilityRealizationSection extends AbstractCapabilitySection {
 
-  private MultipleSemanticField involvedActorsField;
   private MultipleSemanticField involvedComponentsField;
 
   /**
@@ -40,10 +38,6 @@ public class CapabilityRealizationSection extends AbstractCapabilitySection {
     super.createControls(parent, aTabbedPropertySheetPage);
 
     boolean displayedInWizard = isDisplayedInWizard();
-
-    involvedActorsField = new MultipleSemanticField(getReferencesGroup(),
-        Messages.getString("CapabilityRealizationSection_InvolvedActors_Label"), getWidgetFactory(), new CapabilityRealization_InvolvedActorsController()); //$NON-NLS-1$
-    involvedActorsField.setDisplayedInWizard(displayedInWizard);
 
     involvedComponentsField = new MultipleSemanticField(getReferencesGroup(),
         Messages.getString("CapabilityRealizationSection_InvolvedComponents_Label"), getWidgetFactory(), new CapabilityRealization_InvolvedComponentsController()); //$NON-NLS-1$
@@ -57,8 +51,7 @@ public class CapabilityRealizationSection extends AbstractCapabilitySection {
   public void loadData(EObject capellaElement) {
     super.loadData(capellaElement);
 
-    involvedActorsField.loadData(capellaElement, LaPackage.eINSTANCE.getCapabilityRealization_OwnedActorCapabilityRealizations());
-    involvedComponentsField.loadData(capellaElement, LaPackage.eINSTANCE.getCapabilityRealization_OwnedSystemComponentCapabilityRealizations());
+    involvedComponentsField.loadData(capellaElement, LaPackage.eINSTANCE.getCapabilityRealization_OwnedCapabilityRealizationInvolvements());
   }
 
   /**
@@ -78,7 +71,6 @@ public class CapabilityRealizationSection extends AbstractCapabilitySection {
     List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
 
     fields.addAll(super.getSemanticFields());
-    fields.add(involvedActorsField);
     fields.add(involvedComponentsField);
 
     return fields;

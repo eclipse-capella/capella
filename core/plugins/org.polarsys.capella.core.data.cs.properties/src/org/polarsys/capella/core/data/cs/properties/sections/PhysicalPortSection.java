@@ -22,7 +22,7 @@ import org.polarsys.capella.core.data.cs.properties.controllers.RealizedPhysical
 import org.polarsys.capella.core.data.fa.properties.controllers.AllocatedComponentPortsController;
 import org.polarsys.capella.core.data.fa.properties.controllers.AllocatedFunctionPortsController;
 import org.polarsys.capella.core.data.information.InformationPackage;
-import org.polarsys.capella.core.data.pa.PhysicalActor;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
 
@@ -70,7 +70,7 @@ public class PhysicalPortSection extends NamedElementSection {
     }
     if (null != _allocatedFunctionPorts) {
       EObject owner = capellaElement.eContainer();
-      if (owner instanceof PhysicalActor) {
+      if (ComponentExt.isActor(owner)) {
         _allocatedFunctionPorts.loadData(capellaElement, InformationPackage.Literals.PORT__OWNED_PORT_ALLOCATIONS);
         _allocatedFunctionPorts.setVisible(true);
       } else {

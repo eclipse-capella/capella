@@ -18,7 +18,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.properties.Messages;
-import org.polarsys.capella.core.data.ctx.properties.controllers.Capability_InvolvedActorsController;
+import org.polarsys.capella.core.data.ctx.properties.controllers.Capability_InvolvedSystemComponentsController;
 import org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilitySection;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
@@ -28,7 +28,7 @@ import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
  */
 public class CapabilitySection extends AbstractCapabilitySection {
 
-  private MultipleSemanticField _involvedActorsField;
+  private MultipleSemanticField _involvedSystemComponentsField;
 
   /**
    * {@inheritDoc}
@@ -39,9 +39,9 @@ public class CapabilitySection extends AbstractCapabilitySection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    _involvedActorsField = new MultipleSemanticField(getReferencesGroup(),
-        Messages.getString("CapabilitySection_InvolvedActors_Label"), getWidgetFactory(), new Capability_InvolvedActorsController()); //$NON-NLS-1$
-    _involvedActorsField.setDisplayedInWizard(displayedInWizard);
+    _involvedSystemComponentsField = new MultipleSemanticField(getReferencesGroup(),
+        Messages.getString("CapabilitySection_InvolvedSystemComponents_Label"), getWidgetFactory(), new Capability_InvolvedSystemComponentsController()); //$NON-NLS-1$
+    _involvedSystemComponentsField.setDisplayedInWizard(displayedInWizard);
   }
 
   /**
@@ -51,7 +51,7 @@ public class CapabilitySection extends AbstractCapabilitySection {
   public void loadData(EObject capellaElement) {
     super.loadData(capellaElement);
 
-    _involvedActorsField.loadData(capellaElement, CtxPackage.eINSTANCE.getCapability_OwnedActorCapabilityInvolvements());
+    _involvedSystemComponentsField.loadData(capellaElement, CtxPackage.Literals.CAPABILITY__INVOLVED_SYSTEM_COMPONENTS);
   }
 
   /**
@@ -60,7 +60,7 @@ public class CapabilitySection extends AbstractCapabilitySection {
   @Override
   public boolean select(Object toTest) {
     EObject eObjectToTest = super.selection(toTest);
-    return ((eObjectToTest != null) && (eObjectToTest.eClass() == CtxPackage.eINSTANCE.getCapability()));
+    return ((eObjectToTest != null) && (eObjectToTest.eClass() == CtxPackage.Literals.CAPABILITY));
   }
 
   /**
@@ -71,7 +71,7 @@ public class CapabilitySection extends AbstractCapabilitySection {
     List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
 
     fields.addAll(super.getSemanticFields());
-    fields.add(_involvedActorsField);
+    fields.add(_involvedSystemComponentsField);
 
     return fields;
   }

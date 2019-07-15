@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries.la;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -22,6 +23,7 @@ import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.QueryConstants;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.la.LaPackage;
+import org.polarsys.capella.core.data.pa.PaPackage;
 
 /**
  */
@@ -34,7 +36,11 @@ public class LogicalComponent_RealizedComponents implements IBusinessQuery {
 
 	@Override
 	public List<EReference> getEStructuralFeatures() {
-		return Collections.singletonList(CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS);
+    List<EReference> returnedList = new ArrayList<EReference>();
+    returnedList.add(CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS);
+    returnedList.add(CsPackage.Literals.COMPONENT__REALIZED_COMPONENTS);
+    returnedList.add(LaPackage.Literals.LOGICAL_COMPONENT__REALIZED_SYSTEM_COMPONENTS);
+    return returnedList;
 	}
 
 	@Override

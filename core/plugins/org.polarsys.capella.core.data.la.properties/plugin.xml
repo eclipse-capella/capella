@@ -38,23 +38,6 @@
             </input>
          </propertySection>
          <propertySection
-               class="org.polarsys.capella.core.data.la.properties.sections.LogicalActorPkgSection"
-               id="org.polarsys.capella.core.data.la.properties.sections.LogicalActorPkgSection"
-               tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.la.LogicalActorPkg">
-            </input>
-         </propertySection>
-         <propertySection
-               class="org.polarsys.capella.core.data.la.properties.sections.LogicalActorSection"
-               filter="org.polarsys.capella.core.data.la.properties.sections.LogicalActorSection"
-               id="org.polarsys.capella.core.data.la.properties.sections.LogicalActorSection"
-               tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.la.LogicalActor">
-            </input>
-         </propertySection>
-         <propertySection
                class="org.polarsys.capella.core.data.la.properties.sections.LogicalArchitecturePkgSection"
                id="org.polarsys.capella.core.data.la.properties.sections.LogicalArchitecturePkgSection"
                tab="BaseCapella">
@@ -88,14 +71,6 @@
             </input>
          </propertySection>
          <propertySection
-               class="org.polarsys.capella.core.data.la.properties.sections.LogicalContextSection"
-               id="org.polarsys.capella.core.data.la.properties.sections.LogicalContextSection"
-               tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.la.LogicalContext">
-            </input>
-         </propertySection>
-         <propertySection
                class="org.polarsys.capella.core.data.la.properties.sections.LogicalFunctionPkgSection"
                id="org.polarsys.capella.core.data.la.properties.sections.LogicalFunctionPkgSection"
                tab="BaseCapella">
@@ -112,27 +87,11 @@
             </input>
          </propertySection>
          <propertySection
-               class="org.polarsys.capella.core.data.la.properties.sections.SystemActorRealizationSection"
-               id="org.polarsys.capella.core.data.la.properties.sections.SystemActorRealizationSection"
-               tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.la.SystemActorRealization">
-            </input>
-         </propertySection>
-         <propertySection
                class="org.polarsys.capella.core.data.la.properties.sections.SystemAnalysisRealizationSection"
                id="org.polarsys.capella.core.data.la.properties.sections.SystemAnalysisRealizationSection"
                tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.la.SystemAnalysisRealization">
-            </input>
-         </propertySection>
-         <propertySection
-               class="org.polarsys.capella.core.data.la.properties.sections.SystemRealizationSection"
-               id="org.polarsys.capella.core.data.la.properties.sections.SystemRealizationSection"
-               tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.la.SystemRealization">
             </input>
          </propertySection>
       </propertySections>
@@ -158,18 +117,6 @@
                tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
-               class="org.polarsys.capella.core.data.la.properties.sections.LogicalActorPkgSection"
-               filter="org.polarsys.capella.core.data.la.properties.sections.LogicalActorPkgSection"
-               id="org.polarsys.capella.core.data.la.properties.sections.LogicalActorPkgSection"
-               tab="BaseSiriusDiagram">
-         </propertySection>
-         <propertySection
-               class="org.polarsys.capella.core.data.la.properties.sections.LogicalActorSection"
-               filter="org.polarsys.capella.core.data.la.properties.sections.LogicalActorSection"
-               id="org.polarsys.capella.core.data.la.properties.sections.LogicalActorSection"
-               tab="BaseSiriusDiagram">
-         </propertySection>
-         <propertySection
                class="org.polarsys.capella.core.data.la.properties.sections.LogicalArchitecturePkgSection"
                filter="org.polarsys.capella.core.data.la.properties.sections.LogicalArchitecturePkgSection"
                id="org.polarsys.capella.core.data.la.properties.sections.LogicalArchitecturePkgSection"
@@ -194,12 +141,6 @@
                tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
-               class="org.polarsys.capella.core.data.la.properties.sections.LogicalContextSection"
-               filter="org.polarsys.capella.core.data.la.properties.sections.LogicalContextSection"
-               id="org.polarsys.capella.core.data.la.properties.sections.LogicalContextSection"
-               tab="BaseSiriusDiagram">
-         </propertySection>
-         <propertySection
                class="org.polarsys.capella.core.data.la.properties.sections.LogicalFunctionPkgSection"
                filter="org.polarsys.capella.core.data.la.properties.sections.LogicalFunctionPkgSection"
                id="org.polarsys.capella.core.data.la.properties.sections.LogicalFunctionPkgSection"
@@ -212,21 +153,9 @@
                tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
-               class="org.polarsys.capella.core.data.la.properties.sections.SystemActorRealizationSection"
-               filter="org.polarsys.capella.core.data.la.properties.sections.SystemActorRealizationSection"
-               id="org.polarsys.capella.core.data.la.properties.sections.SystemActorRealizationSection"
-               tab="BaseSiriusDiagram">
-         </propertySection>
-         <propertySection
                class="org.polarsys.capella.core.data.la.properties.sections.SystemAnalysisRealizationSection"
                filter="org.polarsys.capella.core.data.la.properties.sections.SystemAnalysisRealizationSection"
                id="org.polarsys.capella.core.data.la.properties.sections.SystemAnalysisRealizationSection"
-               tab="BaseSiriusDiagram">
-         </propertySection>
-         <propertySection
-               class="org.polarsys.capella.core.data.la.properties.sections.SystemRealizationSection"
-               filter="org.polarsys.capella.core.data.la.properties.sections.SystemRealizationSection"
-               id="org.polarsys.capella.core.data.la.properties.sections.SystemRealizationSection"
                tab="BaseSiriusDiagram">
          </propertySection>
       </propertySections>
@@ -252,18 +181,6 @@
                tab="BaseSiriusTable">
          </propertySection>
          <propertySection
-               class="org.polarsys.capella.core.data.la.properties.sections.LogicalActorPkgSection"
-               filter="org.polarsys.capella.core.data.la.properties.sections.LogicalActorPkgSection"
-               id="org.polarsys.capella.core.data.la.properties.sections.LogicalActorPkgSection"
-               tab="BaseSiriusTable">
-         </propertySection>
-         <propertySection
-               class="org.polarsys.capella.core.data.la.properties.sections.LogicalActorSection"
-               filter="org.polarsys.capella.core.data.la.properties.sections.LogicalActorSection"
-               id="org.polarsys.capella.core.data.la.properties.sections.LogicalActorSection"
-               tab="BaseSiriusTable">
-         </propertySection>
-         <propertySection
                class="org.polarsys.capella.core.data.la.properties.sections.LogicalArchitecturePkgSection"
                filter="org.polarsys.capella.core.data.la.properties.sections.LogicalArchitecturePkgSection"
                id="org.polarsys.capella.core.data.la.properties.sections.LogicalArchitecturePkgSection"
@@ -288,12 +205,6 @@
                tab="BaseSiriusTable">
          </propertySection>
          <propertySection
-               class="org.polarsys.capella.core.data.la.properties.sections.LogicalContextSection"
-               filter="org.polarsys.capella.core.data.la.properties.sections.LogicalContextSection"
-               id="org.polarsys.capella.core.data.la.properties.sections.LogicalContextSection"
-               tab="BaseSiriusTable">
-         </propertySection>
-         <propertySection
                class="org.polarsys.capella.core.data.la.properties.sections.LogicalFunctionPkgSection"
                filter="org.polarsys.capella.core.data.la.properties.sections.LogicalFunctionPkgSection"
                id="org.polarsys.capella.core.data.la.properties.sections.LogicalFunctionPkgSection"
@@ -306,21 +217,9 @@
                tab="BaseSiriusTable">
          </propertySection>
          <propertySection
-               class="org.polarsys.capella.core.data.la.properties.sections.SystemActorRealizationSection"
-               filter="org.polarsys.capella.core.data.la.properties.sections.SystemActorRealizationSection"
-               id="org.polarsys.capella.core.data.la.properties.sections.SystemActorRealizationSection"
-               tab="BaseSiriusTable">
-         </propertySection>
-         <propertySection
                class="org.polarsys.capella.core.data.la.properties.sections.SystemAnalysisRealizationSection"
                filter="org.polarsys.capella.core.data.la.properties.sections.SystemAnalysisRealizationSection"
                id="org.polarsys.capella.core.data.la.properties.sections.SystemAnalysisRealizationSection"
-               tab="BaseSiriusTable">
-         </propertySection>
-         <propertySection
-               class="org.polarsys.capella.core.data.la.properties.sections.SystemRealizationSection"
-               filter="org.polarsys.capella.core.data.la.properties.sections.SystemRealizationSection"
-               id="org.polarsys.capella.core.data.la.properties.sections.SystemRealizationSection"
                tab="BaseSiriusTable">
          </propertySection>
       </propertySections>

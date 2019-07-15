@@ -20,7 +20,7 @@ import org.polarsys.capella.core.data.core.properties.sections.NamedElementSecti
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.properties.Messages;
 import org.polarsys.capella.core.data.ctx.properties.controllers.Mission_ExploitedCapabilitiesController;
-import org.polarsys.capella.core.data.ctx.properties.controllers.Mission_InvolvedActorsController;
+import org.polarsys.capella.core.data.ctx.properties.controllers.Mission_InvolvedSystemComponentsController;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
 
@@ -29,7 +29,7 @@ import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
  */
 public class MissionSection extends NamedElementSection {
 
-  private MultipleSemanticField _involvedActorsField;
+  private MultipleSemanticField _involvedSystemComponentsField;
   private MultipleSemanticField _exploitedCapabilitiesField;
 
   /**
@@ -41,9 +41,9 @@ public class MissionSection extends NamedElementSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    _involvedActorsField = new MultipleSemanticField(getReferencesGroup(),
-        Messages.getString("MissionSection_InvolvedActors_Label"), getWidgetFactory(), new Mission_InvolvedActorsController()); //$NON-NLS-1$
-    _involvedActorsField.setDisplayedInWizard(displayedInWizard);
+    _involvedSystemComponentsField = new MultipleSemanticField(getReferencesGroup(),
+        Messages.getString("MissionSection_InvolvedSystemComponents_Label"), getWidgetFactory(), new Mission_InvolvedSystemComponentsController()); //$NON-NLS-1$
+    _involvedSystemComponentsField.setDisplayedInWizard(displayedInWizard);
 
     _exploitedCapabilitiesField = new MultipleSemanticField(getReferencesGroup(),
         Messages.getString("MissionSection_ExploitedCapabilities_Label"), getWidgetFactory(), new Mission_ExploitedCapabilitiesController()); //$NON-NLS-1$
@@ -57,8 +57,8 @@ public class MissionSection extends NamedElementSection {
   public void loadData(EObject capellaElement) {
     super.loadData(capellaElement);
 
-    _involvedActorsField.loadData(capellaElement, CtxPackage.eINSTANCE.getMission_OwnedActorMissionInvolvements());
-    _exploitedCapabilitiesField.loadData(capellaElement, CtxPackage.eINSTANCE.getMission_OwnedCapabilityExploitations());
+    _involvedSystemComponentsField.loadData(capellaElement, CtxPackage.Literals.MISSION__OWNED_MISSION_INVOLVEMENTS);
+    _exploitedCapabilitiesField.loadData(capellaElement, CtxPackage.Literals.MISSION__OWNED_CAPABILITY_EXPLOITATIONS);
   }
 
   /**
@@ -79,7 +79,7 @@ public class MissionSection extends NamedElementSection {
 
     fields.addAll(super.getSemanticFields());
     fields.add(_exploitedCapabilitiesField);
-    fields.add(_involvedActorsField);
+    fields.add(_involvedSystemComponentsField);
 
     return fields;
   }

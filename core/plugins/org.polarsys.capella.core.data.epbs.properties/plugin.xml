@@ -50,15 +50,6 @@
             </input>
          </propertySection>
          <propertySection
-               class="org.polarsys.capella.core.data.epbs.properties.sections.EPBSContextSection"
-               filter="org.polarsys.capella.core.data.epbs.properties.sections.EPBSContextSection"
-               id="org.polarsys.capella.core.data.epbs.properties.sections.EPBSContextSection"
-               tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.epbs.EPBSContext">
-            </input>
-         </propertySection>
-         <propertySection
                class="org.polarsys.capella.core.data.epbs.properties.sections.PhysicalArchitectureRealizationSection"
                filter="org.polarsys.capella.core.data.epbs.properties.sections.PhysicalArchitectureRealizationSection"
                id="org.polarsys.capella.core.data.epbs.properties.sections.PhysicalArchitectureRealizationSection"
@@ -105,12 +96,6 @@
                tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
-               class="org.polarsys.capella.core.data.epbs.properties.sections.EPBSContextSection"
-               filter="org.polarsys.capella.core.data.epbs.properties.sections.EPBSContextSection"
-               id="org.polarsys.capella.core.data.epbs.properties.sections.EPBSContextSection"
-               tab="BaseSiriusDiagram">
-         </propertySection>
-         <propertySection
                class="org.polarsys.capella.core.data.epbs.properties.sections.PhysicalArchitectureRealizationSection"
                filter="org.polarsys.capella.core.data.epbs.properties.sections.PhysicalArchitectureRealizationSection"
                id="org.polarsys.capella.core.data.epbs.properties.sections.PhysicalArchitectureRealizationSection"
@@ -148,12 +133,6 @@
                class="org.polarsys.capella.core.data.epbs.properties.sections.EPBSArchitectureSection"
                filter="org.polarsys.capella.core.data.epbs.properties.sections.EPBSArchitectureSection"
                id="org.polarsys.capella.core.data.epbs.properties.sections.EPBSArchitectureSection"
-               tab="BaseSiriusTable">
-         </propertySection>
-         <propertySection
-               class="org.polarsys.capella.core.data.epbs.properties.sections.EPBSContextSection"
-               filter="org.polarsys.capella.core.data.epbs.properties.sections.EPBSContextSection"
-               id="org.polarsys.capella.core.data.epbs.properties.sections.EPBSContextSection"
                tab="BaseSiriusTable">
          </propertySection>
          <propertySection

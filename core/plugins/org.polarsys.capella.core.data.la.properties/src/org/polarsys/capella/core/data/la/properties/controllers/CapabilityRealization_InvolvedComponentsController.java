@@ -18,10 +18,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
+import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement;
+import org.polarsys.capella.core.data.capellacommon.CapellacommonFactory;
 import org.polarsys.capella.core.data.capellacore.InvolvedElement;
-import org.polarsys.capella.core.data.capellacore.InvolverElement;
-import org.polarsys.capella.core.data.cs.CsFactory;
-import org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.ui.properties.controllers.AbstractMultipleSemanticFieldController;
 
@@ -33,7 +32,7 @@ public class CapabilityRealization_InvolvedComponentsController extends Abstract
    */
   @Override
   protected IBusinessQuery getReadOpenValuesQuery(EObject semanticElement) {
-    return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), LaPackage.Literals.CAPABILITY_REALIZATION__OWNED_SYSTEM_COMPONENT_CAPABILITY_REALIZATIONS);
+    return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), LaPackage.Literals.CAPABILITY_REALIZATION__INVOLVED_COMPONENTS);
   }
 
   /**
@@ -46,8 +45,8 @@ public class CapabilityRealization_InvolvedComponentsController extends Abstract
     Object lst = semanticElement.eGet(semanticFeature);
     if (lst instanceof Collection<?>) {
       for (Object obj : (Collection<?>) lst) {
-        if (obj instanceof SystemComponentCapabilityRealizationInvolvement) {
-          values.add(((SystemComponentCapabilityRealizationInvolvement) obj).getInvolved());
+        if (obj instanceof CapabilityRealizationInvolvement) {
+          values.add(((CapabilityRealizationInvolvement) obj).getInvolved());
         }
       }
     }
@@ -61,7 +60,7 @@ public class CapabilityRealization_InvolvedComponentsController extends Abstract
   @SuppressWarnings("unchecked")
   @Override
   protected void doAddOperationInWriteOpenValues(EObject semanticElement, EStructuralFeature semanticFeature, EObject object) {
-    SystemComponentCapabilityRealizationInvolvement link = CsFactory.eINSTANCE.createSystemComponentCapabilityRealizationInvolvement();
+    CapabilityRealizationInvolvement link = CapellacommonFactory.eINSTANCE.createCapabilityRealizationInvolvement();
     link.setInvolved((InvolvedElement) object);
     ((List<EObject>) semanticElement.eGet(semanticFeature)).add(link);
   }
@@ -77,8 +76,8 @@ public class CapabilityRealization_InvolvedComponentsController extends Abstract
   protected void doRemoveOperationInWriteOpenValues(EObject semanticElement, EStructuralFeature semanticFeature, EObject object) {
     EObject linkToRemove = null;
     for (EObject obj : (List<EObject>) semanticElement.eGet(semanticFeature)) {
-      if ((obj instanceof SystemComponentCapabilityRealizationInvolvement)
-        && ((SystemComponentCapabilityRealizationInvolvement) obj).getInvolved().equals(object))
+      if ((obj instanceof CapabilityRealizationInvolvement)
+        && ((CapabilityRealizationInvolvement) obj).getInvolved().equals(object))
       {
         linkToRemove = obj;
       }

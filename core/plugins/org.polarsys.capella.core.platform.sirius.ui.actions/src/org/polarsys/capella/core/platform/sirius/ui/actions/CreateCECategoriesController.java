@@ -19,8 +19,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
+import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
-import org.polarsys.capella.core.data.fa.AbstractFunctionalStructure;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeCategory;
 import org.polarsys.capella.core.data.fa.FaFactory;
@@ -33,7 +34,7 @@ public class CreateCECategoriesController extends CreateCategoriesController {
    */
   @Override
   public void createAndAttachCategory(List<EObject> selection, String categoryNameToUse) {
-    List<EClass> containerEClasses = Arrays.asList(FaPackage.eINSTANCE.getAbstractFunctionalBlock(), FaPackage.eINSTANCE.getAbstractFunctionalStructure());
+    List<EClass> containerEClasses = Arrays.asList(FaPackage.eINSTANCE.getAbstractFunctionalBlock(), CsPackage.eINSTANCE.getComponentPkg());
     EObject categoryContainer = getBestContainerForCategory(selection, containerEClasses);
     if (isNullOrNotInstanceOf(categoryContainer, containerEClasses)) {
       return;
@@ -55,8 +56,8 @@ public class CreateCECategoriesController extends CreateCategoriesController {
       if (categoryContainer instanceof AbstractFunctionalBlock) {
         ((AbstractFunctionalBlock) categoryContainer).getOwnedComponentExchangeCategories().add(exchangeCategory);
       }
-      if (categoryContainer instanceof AbstractFunctionalStructure) {
-        ((AbstractFunctionalStructure) categoryContainer).getOwnedComponentExchangeCategories().add(exchangeCategory);
+      if (categoryContainer instanceof ComponentPkg) {
+        ((ComponentPkg) categoryContainer).getOwnedComponentExchangeCategories().add(exchangeCategory);
       }
 
       for (EObject ce : selection) {
@@ -77,9 +78,9 @@ public class CreateCECategoriesController extends CreateCategoriesController {
     String defaultName;
     EStructuralFeature feature = null;
     if (container instanceof AbstractFunctionalBlock) {
-      feature = FaPackage.eINSTANCE.getAbstractFunctionalBlock_OwnedComponentExchangeCategories();
-    } else if (container instanceof AbstractFunctionalStructure) {
-      feature = FaPackage.eINSTANCE.getAbstractFunctionalStructure_OwnedComponentExchangeCategories();
+      feature = FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_COMPONENT_EXCHANGE_CATEGORIES;
+    } else if (container instanceof ComponentPkg) {
+      feature = CsPackage.Literals.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGE_CATEGORIES;
     }
     // create the category
     ComponentExchangeCategory exchangeCategory = FaFactory.eINSTANCE.createComponentExchangeCategory();

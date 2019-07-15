@@ -22,7 +22,7 @@ import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.properties.Messages;
 import org.polarsys.capella.core.data.cs.properties.controllers.DeployedComponentsController;
 import org.polarsys.capella.core.data.information.properties.sections.MultiplicityElementSection;
-import org.polarsys.capella.core.data.pa.AbstractPhysicalComponent;
+import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
 
@@ -62,7 +62,7 @@ public class PartSection extends MultiplicityElementSection {
 
     if (capellaElement instanceof Part) {
       AbstractType type = ((Part) capellaElement).getAbstractType();
-      if (type instanceof AbstractPhysicalComponent) {
+      if (type instanceof PhysicalComponent) {
         deployedComponentsField.loadData(capellaElement, CsPackage.eINSTANCE.getPart_OwnedDeploymentLinks());
         deployedComponentsField.setVisible(true);
       } else {

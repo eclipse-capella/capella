@@ -29,6 +29,7 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
@@ -489,7 +490,7 @@ public final class ComponentExchangeExt {
     if ((container != null) && !(container instanceof AbstractFunctionalBlock)) {
       container =
           EcoreUtil2.getFirstContainer(container,
-              Arrays.asList(FaPackage.eINSTANCE.getAbstractFunctionalBlock(), FaPackage.eINSTANCE.getAbstractFunctionalStructure()));
+              Arrays.asList(FaPackage.eINSTANCE.getAbstractFunctionalBlock(), CsPackage.eINSTANCE.getComponentPkg()));
     }
     if ((container == null) || !(container instanceof AbstractFunctionalBlock)) {
       container = BlockArchitectureExt.getContext(ComponentExt.getRootBlockArchitecture(sourcePart));

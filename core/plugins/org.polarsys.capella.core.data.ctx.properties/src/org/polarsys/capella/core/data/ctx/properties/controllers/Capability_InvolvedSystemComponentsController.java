@@ -19,21 +19,20 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.data.capellacore.InvolvedElement;
-import org.polarsys.capella.core.data.capellacore.InvolverElement;
-import org.polarsys.capella.core.data.ctx.ActorMissionInvolvement;
+import org.polarsys.capella.core.data.ctx.CapabilityInvolvement;
 import org.polarsys.capella.core.data.ctx.CtxFactory;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.ui.properties.controllers.AbstractMultipleSemanticFieldController;
 
 /**
  */
-public class Mission_InvolvedActorsController extends AbstractMultipleSemanticFieldController {
+public class Capability_InvolvedSystemComponentsController extends AbstractMultipleSemanticFieldController {
   /**
    * {@inheritDoc}
    */
   @Override
   protected IBusinessQuery getReadOpenValuesQuery(EObject semanticElement) {
-    return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), CtxPackage.Literals.MISSION__OWNED_ACTOR_MISSION_INVOLVEMENTS);
+    return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), CtxPackage.Literals.CAPABILITY__INVOLVED_SYSTEM_COMPONENTS);
   }
 
   /**
@@ -46,8 +45,8 @@ public class Mission_InvolvedActorsController extends AbstractMultipleSemanticFi
     Object lst = semanticElement.eGet(semanticFeature);
     if (lst instanceof Collection<?>) {
       for (Object obj : (Collection<?>) lst) {
-        if (obj instanceof ActorMissionInvolvement) {
-          values.add(((ActorMissionInvolvement) obj).getInvolved());
+        if (obj instanceof CapabilityInvolvement) {
+          values.add(((CapabilityInvolvement) obj).getInvolved());
         }
       }
     }
@@ -61,7 +60,7 @@ public class Mission_InvolvedActorsController extends AbstractMultipleSemanticFi
   @SuppressWarnings("unchecked")
   @Override
   protected void doAddOperationInWriteOpenValues(EObject semanticElement, EStructuralFeature semanticFeature, EObject object) {
-    ActorMissionInvolvement link = CtxFactory.eINSTANCE.createActorMissionInvolvement();
+    CapabilityInvolvement link = CtxFactory.eINSTANCE.createCapabilityInvolvement();
     link.setInvolved((InvolvedElement) object);
     ((List<EObject>) semanticElement.eGet(semanticFeature)).add(link);
   }
@@ -77,8 +76,8 @@ public class Mission_InvolvedActorsController extends AbstractMultipleSemanticFi
   protected void doRemoveOperationInWriteOpenValues(EObject semanticElement, EStructuralFeature semanticFeature, EObject object) {
     EObject linkToRemove = null;
     for (EObject obj : (List<EObject>) semanticElement.eGet(semanticFeature)) {
-      if ((obj instanceof ActorMissionInvolvement)
-        && ((ActorMissionInvolvement) obj).getInvolved().equals(object))
+      if ((obj instanceof CapabilityInvolvement)
+        && ((CapabilityInvolvement) obj).getInvolved().equals(object))
       {
         linkToRemove = obj;
       }

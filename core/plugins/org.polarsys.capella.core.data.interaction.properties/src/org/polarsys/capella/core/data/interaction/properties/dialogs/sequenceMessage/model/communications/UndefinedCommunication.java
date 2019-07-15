@@ -13,6 +13,7 @@ package org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMe
 import org.eclipse.emf.common.util.EList;
 import org.polarsys.capella.common.data.modellingcore.AbstractConstraint;
 import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.data.capellacommon.GenericTrace;
 import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
 import org.polarsys.capella.core.data.capellacore.Generalization;
@@ -178,5 +179,10 @@ public class UndefinedCommunication extends AbstractCommunication implements Exc
 	public EList<Operation> getRealizingOperations() {
 		return getRepresentativeElement().getRealizingOperations();
 	}
+
+  @Override
+  public EList<ModelElement> getOwnedMigratedElements() {
+    return getRepresentativeElement().getOwnedMigratedElements();
+  }
 
 }

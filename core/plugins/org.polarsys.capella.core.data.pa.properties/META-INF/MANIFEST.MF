@@ -9,7 +9,6 @@ Require-Bundle: org.polarsys.capella.core.data.cs.properties;visibility:=reexpor
  org.polarsys.capella.core.data.fa.properties;visibility:=reexport
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.data.pa.properties,
- org.polarsys.capella.core.data.pa.properties.controllers,
  org.polarsys.capella.core.data.pa.properties.fields,
  org.polarsys.capella.core.data.pa.properties.sections
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

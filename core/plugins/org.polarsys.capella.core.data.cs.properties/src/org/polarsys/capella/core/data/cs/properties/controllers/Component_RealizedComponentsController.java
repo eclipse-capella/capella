@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.data.pa.properties.controllers;
+package org.polarsys.capella.core.data.cs.properties.controllers;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,20 +19,20 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
-import org.polarsys.capella.core.data.pa.LogicalComponentRealization;
-import org.polarsys.capella.core.data.pa.PaFactory;
-import org.polarsys.capella.core.data.pa.PaPackage;
+import org.polarsys.capella.core.data.cs.ComponentRealization;
+import org.polarsys.capella.core.data.cs.CsFactory;
+import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.ui.properties.controllers.AbstractMultipleSemanticFieldController;
 
 /**
  */
-public class RealizedLogicalComponentsController extends AbstractMultipleSemanticFieldController {
+public class Component_RealizedComponentsController extends AbstractMultipleSemanticFieldController {
   /**
    * {@inheritDoc}
    */
   @Override
   protected IBusinessQuery getReadOpenValuesQuery(EObject semanticElement) {
-    return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_REALIZATIONS);
+    return BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), CsPackage.Literals.COMPONENT__REALIZED_COMPONENTS);
   }
 
   /**
@@ -45,8 +45,8 @@ public class RealizedLogicalComponentsController extends AbstractMultipleSemanti
     Object lst = semanticElement.eGet(semanticFeature);
     if (lst instanceof Collection<?>) {
       for (Object obj : (Collection<?>) lst) {
-        if (obj instanceof LogicalComponentRealization) {
-          values.add(((LogicalComponentRealization) obj).getTargetElement());
+        if (obj instanceof ComponentRealization) {
+          values.add(((ComponentRealization) obj).getTargetElement());
         }
       }
     }
@@ -60,7 +60,7 @@ public class RealizedLogicalComponentsController extends AbstractMultipleSemanti
   @SuppressWarnings("unchecked")
   @Override
   protected void doAddOperationInWriteOpenValues(EObject semanticElement, EStructuralFeature semanticFeature, EObject object) {
-    LogicalComponentRealization link = PaFactory.eINSTANCE.createLogicalComponentRealization();
+    ComponentRealization link = CsFactory.eINSTANCE.createComponentRealization();
     link.setSourceElement((TraceableElement) semanticElement);
     link.setTargetElement((TraceableElement) object);
     ((List<EObject>) semanticElement.eGet(semanticFeature)).add(link);
@@ -77,8 +77,8 @@ public class RealizedLogicalComponentsController extends AbstractMultipleSemanti
   protected void doRemoveOperationInWriteOpenValues(EObject semanticElement, EStructuralFeature semanticFeature, EObject object) {
     EObject linkToRemove = null;
     for (EObject obj : (List<EObject>) semanticElement.eGet(semanticFeature)) {
-      if ((obj instanceof LogicalComponentRealization)
-        && ((LogicalComponentRealization) obj).getTargetElement().equals(object))
+      if ((obj instanceof ComponentRealization)
+        && ((ComponentRealization) obj).getTargetElement().equals(object))
       {
         linkToRemove = obj;
       }

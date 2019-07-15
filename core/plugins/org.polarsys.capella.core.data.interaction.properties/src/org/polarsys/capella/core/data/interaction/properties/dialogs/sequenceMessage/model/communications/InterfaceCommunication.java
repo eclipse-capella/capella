@@ -13,6 +13,7 @@ package org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMe
 import org.eclipse.emf.common.util.EList;
 import org.polarsys.capella.common.data.modellingcore.AbstractConstraint;
 import org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.information.ExchangeItem;
@@ -114,4 +115,9 @@ public class InterfaceCommunication extends AbstractCommunication implements Exc
 	public Interface getAllocatingInterface() {
 		return getRepresentativeElement().getAllocatingInterface();
 	}
+
+  @Override
+  public EList<ModelElement> getOwnedMigratedElements() {
+    return getRepresentativeElement().getOwnedMigratedElements();
+  }
 }

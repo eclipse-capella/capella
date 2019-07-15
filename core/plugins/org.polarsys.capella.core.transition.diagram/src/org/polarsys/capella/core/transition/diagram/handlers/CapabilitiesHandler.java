@@ -15,9 +15,9 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.ctx.Mission;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramNamingConstants;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
@@ -99,7 +99,7 @@ public class CapabilitiesHandler extends AbstractDiagramHandler {
           }
 
         } else if (IMappingNameConstants.OCB_OPERATIONAL_ENTITY_MAPPING_NAME.equals(mappingName)) {
-          if (target_p instanceof AbstractActor) {
+          if (target_p instanceof SystemComponent) {
             targetMappingName = IMappingNameConstants.MCB_COMPONENT_MAPPING_NAME;
           }
 

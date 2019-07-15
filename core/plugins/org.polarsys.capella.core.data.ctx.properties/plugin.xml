@@ -14,36 +14,27 @@
    <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
       <propertySections contributorId="org.polarsys.capella.core.data.capellamodeller.properties">
          <propertySection
-               class="org.polarsys.capella.core.data.ctx.properties.sections.ActorCapabilityInvolvementSection"
-               id="org.polarsys.capella.core.data.ctx.properties.sections.ActorCapabilityInvolvementSection"
+               class="org.polarsys.capella.core.data.ctx.properties.sections.CapabilityInvolvementSection"
+               id="org.polarsys.capella.core.data.ctx.properties.sections.CapabilityInvolvementSection"
                tab="BaseCapella">
             <input
-                  type="org.polarsys.capella.core.data.ctx.ActorCapabilityInvolvement">
+                  type="org.polarsys.capella.core.data.ctx.CapabilityInvolvement">
             </input>
          </propertySection>
          <propertySection
-               class="org.polarsys.capella.core.data.ctx.properties.sections.ActorMissionInvolvementSection"
-               id="org.polarsys.capella.core.data.ctx.properties.sections.ActorMissionInvolvementSection"
+               class="org.polarsys.capella.core.data.ctx.properties.sections.MissionInvolvementSection"
+               id="org.polarsys.capella.core.data.ctx.properties.sections.MissionInvolvementSection"
                tab="BaseCapella">
             <input
-                  type="org.polarsys.capella.core.data.ctx.ActorMissionInvolvement">
+                  type="org.polarsys.capella.core.data.ctx.MissionInvolvement">
             </input>
          </propertySection>
          <propertySection
-               class="org.polarsys.capella.core.data.ctx.properties.sections.ActorPkgSection"
-               id="org.polarsys.capella.core.data.ctx.properties.sections.ActorPkgSection"
+               class="org.polarsys.capella.core.data.ctx.properties.sections.SystemComponentPkgSection"
+               id="org.polarsys.capella.core.data.ctx.properties.sections.SystemComponentPkgSection"
                tab="BaseCapella">
             <input
-                  type="org.polarsys.capella.core.data.ctx.ActorPkg">
-            </input>
-         </propertySection>
-         <propertySection
-               class="org.polarsys.capella.core.data.ctx.properties.sections.ActorSection"
-               filter="org.polarsys.capella.core.data.ctx.properties.sections.ActorSection"
-               id="org.polarsys.capella.core.data.ctx.properties.sections.ActorSection"
-               tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.ctx.Actor">
+                  type="org.polarsys.capella.core.data.ctx.SystemComponentPkg">
             </input>
          </propertySection>
          <propertySection
@@ -79,27 +70,11 @@
             </input>
          </propertySection>
          <propertySection
-               class="org.polarsys.capella.core.data.ctx.properties.sections.OperationalActorRealizationSection"
-               id="org.polarsys.capella.core.data.ctx.properties.sections.OperationalActorRealizationSection"
-               tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.ctx.OperationalActorRealization">
-            </input>
-         </propertySection>
-         <propertySection
                class="org.polarsys.capella.core.data.ctx.properties.sections.OperationalAnalysisRealizationSection"
                id="org.polarsys.capella.core.data.ctx.properties.sections.OperationalAnalysisRealizationSection"
                tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.ctx.OperationalAnalysisRealization">
-            </input>
-         </propertySection>
-         <propertySection
-               class="org.polarsys.capella.core.data.ctx.properties.sections.OperationalEntityRealizationSection"
-               id="org.polarsys.capella.core.data.ctx.properties.sections.OperationalEntityRealizationSection"
-               tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.ctx.OperationalEntityRealization">
             </input>
          </propertySection>
          <propertySection
@@ -119,14 +94,6 @@
             </input>
          </propertySection>
          <propertySection
-               class="org.polarsys.capella.core.data.ctx.properties.sections.SystemCapabilityInvolvementSection"
-               id="org.polarsys.capella.core.data.ctx.properties.sections.SystemCapabilityInvolvementSection"
-               tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.ctx.SystemCapabilityInvolvement">
-            </input>
-         </propertySection>
-         <propertySection
                class="org.polarsys.capella.core.data.ctx.properties.sections.SystemCommunicationHookSection"
                id="org.polarsys.capella.core.data.ctx.properties.sections.SystemCommunicationHookSection"
                tab="BaseCapella">
@@ -140,14 +107,6 @@
                tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.ctx.SystemCommunication">
-            </input>
-         </propertySection>
-         <propertySection
-               class="org.polarsys.capella.core.data.ctx.properties.sections.SystemContextSection"
-               id="org.polarsys.capella.core.data.ctx.properties.sections.SystemContextSection"
-               tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.ctx.SystemContext">
             </input>
          </propertySection>
          <propertySection
@@ -167,20 +126,12 @@
             </input>
          </propertySection>
          <propertySection
-               class="org.polarsys.capella.core.data.ctx.properties.sections.SystemMissionInvolvementSection"
-               id="org.polarsys.capella.core.data.ctx.properties.sections.SystemMissionInvolvementSection"
+               class="org.polarsys.capella.core.data.ctx.properties.sections.SystemComponentSection"
+               filter="org.polarsys.capella.core.data.ctx.properties.sections.SystemComponentSection"
+               id="org.polarsys.capella.core.data.ctx.properties.sections.SystemComponentSection"
                tab="BaseCapella">
             <input
-                  type="org.polarsys.capella.core.data.ctx.SystemMissionInvolvement">
-            </input>
-         </propertySection>
-         <propertySection
-               class="org.polarsys.capella.core.data.ctx.properties.sections.SystemSection"
-               filter="org.polarsys.capella.core.data.ctx.properties.sections.SystemSection"
-               id="org.polarsys.capella.core.data.ctx.properties.sections.SystemSection"
-               tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.ctx.System">
+                  type="org.polarsys.capella.core.data.ctx.SystemComponent">
             </input>
          </propertySection>
       </propertySections>
@@ -188,27 +139,21 @@
    <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">      
 	  <propertySections contributorId="org.eclipse.sirius.diagram.ui">
          <propertySection
-               class="org.polarsys.capella.core.data.ctx.properties.sections.ActorCapabilityInvolvementSection"
-               filter="org.polarsys.capella.core.data.ctx.properties.sections.ActorCapabilityInvolvementSection"
-               id="org.polarsys.capella.core.data.ctx.properties.sections.ActorCapabilityInvolvementSection"
+               class="org.polarsys.capella.core.data.ctx.properties.sections.CapabilityInvolvementSection"
+               filter="org.polarsys.capella.core.data.ctx.properties.sections.CapabilityInvolvementSection"
+               id="org.polarsys.capella.core.data.ctx.properties.sections.CapabilityInvolvementSection"
                tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
-               class="org.polarsys.capella.core.data.ctx.properties.sections.ActorMissionInvolvementSection"
-               filter="org.polarsys.capella.core.data.ctx.properties.sections.ActorMissionInvolvementSection"
-               id="org.polarsys.capella.core.data.ctx.properties.sections.ActorMissionInvolvementSection"
+               class="org.polarsys.capella.core.data.ctx.properties.sections.MissionInvolvementSection"
+               filter="org.polarsys.capella.core.data.ctx.properties.sections.MissionInvolvementSection"
+               id="org.polarsys.capella.core.data.ctx.properties.sections.MissionInvolvementSection"
                tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
-               class="org.polarsys.capella.core.data.ctx.properties.sections.ActorPkgSection"
-               filter="org.polarsys.capella.core.data.ctx.properties.sections.ActorPkgSection"
+               class="org.polarsys.capella.core.data.ctx.properties.sections.SystemComponentPkgSection"
+               filter="org.polarsys.capella.core.data.ctx.properties.sections.SystemComponentPkgSection"
                id="org.polarsys.capella.core.data.ctx.properties.sections.ActorPkgSection"
-               tab="BaseSiriusDiagram">
-         </propertySection>
-         <propertySection
-               class="org.polarsys.capella.core.data.ctx.properties.sections.ActorSection"
-               filter="org.polarsys.capella.core.data.ctx.properties.sections.ActorSection"
-               id="org.polarsys.capella.core.data.ctx.properties.sections.ActorSection"
                tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
@@ -236,21 +181,9 @@
                tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
-               class="org.polarsys.capella.core.data.ctx.properties.sections.OperationalActorRealizationSection"
-               filter="org.polarsys.capella.core.data.ctx.properties.sections.OperationalActorRealizationSection"
-               id="org.polarsys.capella.core.data.ctx.properties.sections.OperationalActorRealizationSection"
-               tab="BaseSiriusDiagram">
-         </propertySection>
-         <propertySection
                class="org.polarsys.capella.core.data.ctx.properties.sections.OperationalAnalysisRealizationSection"
                filter="org.polarsys.capella.core.data.ctx.properties.sections.OperationalAnalysisRealizationSection"
                id="org.polarsys.capella.core.data.ctx.properties.sections.OperationalAnalysisRealizationSection"
-               tab="BaseSiriusDiagram">
-         </propertySection>
-         <propertySection
-               class="org.polarsys.capella.core.data.ctx.properties.sections.OperationalEntityRealizationSection"
-               filter="org.polarsys.capella.core.data.ctx.properties.sections.OperationalEntityRealizationSection"
-               id="org.polarsys.capella.core.data.ctx.properties.sections.OperationalEntityRealizationSection"
                tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
@@ -266,12 +199,6 @@
                tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
-               class="org.polarsys.capella.core.data.ctx.properties.sections.SystemCapabilityInvolvementSection"
-               filter="org.polarsys.capella.core.data.ctx.properties.sections.SystemCapabilityInvolvementSection"
-               id="org.polarsys.capella.core.data.ctx.properties.sections.SystemCapabilityInvolvementSection"
-               tab="BaseSiriusDiagram">
-         </propertySection>
-         <propertySection
                class="org.polarsys.capella.core.data.ctx.properties.sections.SystemCommunicationHookSection"
                filter="org.polarsys.capella.core.data.ctx.properties.sections.SystemCommunicationHookSection"
                id="org.polarsys.capella.core.data.ctx.properties.sections.SystemCommunicationHookSection"
@@ -281,12 +208,6 @@
                class="org.polarsys.capella.core.data.ctx.properties.sections.SystemCommunicationSection"
                filter="org.polarsys.capella.core.data.ctx.properties.sections.SystemCommunicationSection"
                id="org.polarsys.capella.core.data.ctx.properties.sections.SystemCommunicationSection"
-               tab="BaseSiriusDiagram">
-         </propertySection>
-         <propertySection
-               class="org.polarsys.capella.core.data.ctx.properties.sections.SystemContextSection"
-               filter="org.polarsys.capella.core.data.ctx.properties.sections.SystemContextSection"
-               id="org.polarsys.capella.core.data.ctx.properties.sections.SystemContextSection"
                tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
@@ -302,15 +223,9 @@
                tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
-               class="org.polarsys.capella.core.data.ctx.properties.sections.SystemMissionInvolvementSection"
-               filter="org.polarsys.capella.core.data.ctx.properties.sections.SystemMissionInvolvementSection"
-               id="org.polarsys.capella.core.data.ctx.properties.sections.SystemMissionInvolvementSection"
-               tab="BaseSiriusDiagram">
-         </propertySection>
-         <propertySection
-               class="org.polarsys.capella.core.data.ctx.properties.sections.SystemSection"
-               filter="org.polarsys.capella.core.data.ctx.properties.sections.SystemSection"
-               id="org.polarsys.capella.core.data.ctx.properties.sections.SystemSection"
+               class="org.polarsys.capella.core.data.ctx.properties.sections.SystemComponentSection"
+               filter="org.polarsys.capella.core.data.ctx.properties.sections.SystemComponentSection"
+               id="org.polarsys.capella.core.data.ctx.properties.sections.SystemComponentSection"
                tab="BaseSiriusDiagram">
          </propertySection>
       </propertySections>
@@ -318,27 +233,21 @@
    <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">      
 	  <propertySections contributorId="org.eclipse.sirius.table.ui.EditorID">
          <propertySection
-               class="org.polarsys.capella.core.data.ctx.properties.sections.ActorCapabilityInvolvementSection"
-               filter="org.polarsys.capella.core.data.ctx.properties.sections.ActorCapabilityInvolvementSection"
-               id="org.polarsys.capella.core.data.ctx.properties.sections.ActorCapabilityInvolvementSection"
+               class="org.polarsys.capella.core.data.ctx.properties.sections.CapabilityInvolvementSection"
+               filter="org.polarsys.capella.core.data.ctx.properties.sections.CapabilityInvolvementSection"
+               id="org.polarsys.capella.core.data.ctx.properties.sections.CapabilityInvolvementSection"
                tab="BaseSiriusTable">
          </propertySection>
          <propertySection
-               class="org.polarsys.capella.core.data.ctx.properties.sections.ActorMissionInvolvementSection"
-               filter="org.polarsys.capella.core.data.ctx.properties.sections.ActorMissionInvolvementSection"
-               id="org.polarsys.capella.core.data.ctx.properties.sections.ActorMissionInvolvementSection"
+               class="org.polarsys.capella.core.data.ctx.properties.sections.MissionInvolvementSection"
+               filter="org.polarsys.capella.core.data.ctx.properties.sections.MissionInvolvementSection"
+               id="org.polarsys.capella.core.data.ctx.properties.sections.MissionInvolvementSection"
                tab="BaseSiriusTable">
          </propertySection>
          <propertySection
-               class="org.polarsys.capella.core.data.ctx.properties.sections.ActorPkgSection"
-               filter="org.polarsys.capella.core.data.ctx.properties.sections.ActorPkgSection"
+               class="org.polarsys.capella.core.data.ctx.properties.sections.SystemComponentPkgSection"
+               filter="org.polarsys.capella.core.data.ctx.properties.sections.SystemComponentPkgSection"
                id="org.polarsys.capella.core.data.ctx.properties.sections.ActorPkgSection"
-               tab="BaseSiriusTable">
-         </propertySection>
-         <propertySection
-               class="org.polarsys.capella.core.data.ctx.properties.sections.ActorSection"
-               filter="org.polarsys.capella.core.data.ctx.properties.sections.ActorSection"
-               id="org.polarsys.capella.core.data.ctx.properties.sections.ActorSection"
                tab="BaseSiriusTable">
          </propertySection>
          <propertySection
@@ -366,21 +275,9 @@
                tab="BaseSiriusTable">
          </propertySection>
          <propertySection
-               class="org.polarsys.capella.core.data.ctx.properties.sections.OperationalActorRealizationSection"
-               filter="org.polarsys.capella.core.data.ctx.properties.sections.OperationalActorRealizationSection"
-               id="org.polarsys.capella.core.data.ctx.properties.sections.OperationalActorRealizationSection"
-               tab="BaseSiriusTable">
-         </propertySection>
-         <propertySection
                class="org.polarsys.capella.core.data.ctx.properties.sections.OperationalAnalysisRealizationSection"
                filter="org.polarsys.capella.core.data.ctx.properties.sections.OperationalAnalysisRealizationSection"
                id="org.polarsys.capella.core.data.ctx.properties.sections.OperationalAnalysisRealizationSection"
-               tab="BaseSiriusTable">
-         </propertySection>
-         <propertySection
-               class="org.polarsys.capella.core.data.ctx.properties.sections.OperationalEntityRealizationSection"
-               filter="org.polarsys.capella.core.data.ctx.properties.sections.OperationalEntityRealizationSection"
-               id="org.polarsys.capella.core.data.ctx.properties.sections.OperationalEntityRealizationSection"
                tab="BaseSiriusTable">
          </propertySection>
          <propertySection
@@ -396,12 +293,6 @@
                tab="BaseSiriusTable">
          </propertySection>
          <propertySection
-               class="org.polarsys.capella.core.data.ctx.properties.sections.SystemCapabilityInvolvementSection"
-               filter="org.polarsys.capella.core.data.ctx.properties.sections.SystemCapabilityInvolvementSection"
-               id="org.polarsys.capella.core.data.ctx.properties.sections.SystemCapabilityInvolvementSection"
-               tab="BaseSiriusTable">
-         </propertySection>
-         <propertySection
                class="org.polarsys.capella.core.data.ctx.properties.sections.SystemCommunicationHookSection"
                filter="org.polarsys.capella.core.data.ctx.properties.sections.SystemCommunicationHookSection"
                id="org.polarsys.capella.core.data.ctx.properties.sections.SystemCommunicationHookSection"
@@ -411,12 +302,6 @@
                class="org.polarsys.capella.core.data.ctx.properties.sections.SystemCommunicationSection"
                filter="org.polarsys.capella.core.data.ctx.properties.sections.SystemCommunicationSection"
                id="org.polarsys.capella.core.data.ctx.properties.sections.SystemCommunicationSection"
-               tab="BaseSiriusTable">
-         </propertySection>
-         <propertySection
-               class="org.polarsys.capella.core.data.ctx.properties.sections.SystemContextSection"
-               filter="org.polarsys.capella.core.data.ctx.properties.sections.SystemContextSection"
-               id="org.polarsys.capella.core.data.ctx.properties.sections.SystemContextSection"
                tab="BaseSiriusTable">
          </propertySection>
          <propertySection
@@ -432,15 +317,9 @@
                tab="BaseSiriusTable">
          </propertySection>
          <propertySection
-               class="org.polarsys.capella.core.data.ctx.properties.sections.SystemMissionInvolvementSection"
-               filter="org.polarsys.capella.core.data.ctx.properties.sections.SystemMissionInvolvementSection"
-               id="org.polarsys.capella.core.data.ctx.properties.sections.SystemMissionInvolvementSection"
-               tab="BaseSiriusTable">
-         </propertySection>
-         <propertySection
-               class="org.polarsys.capella.core.data.ctx.properties.sections.SystemSection"
-               filter="org.polarsys.capella.core.data.ctx.properties.sections.SystemSection"
-               id="org.polarsys.capella.core.data.ctx.properties.sections.SystemSection"
+               class="org.polarsys.capella.core.data.ctx.properties.sections.SystemComponentSection"
+               filter="org.polarsys.capella.core.data.ctx.properties.sections.SystemComponentSection"
+               id="org.polarsys.capella.core.data.ctx.properties.sections.SystemComponentSection"
                tab="BaseSiriusTable">
          </propertySection>
       </propertySections>

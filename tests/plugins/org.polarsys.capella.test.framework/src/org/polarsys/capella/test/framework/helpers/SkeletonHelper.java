@@ -23,15 +23,14 @@ import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.ctx.Actor;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.ctx.SystemFunctionPkg;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.InformationPackage;
-import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.information.communication.CommunicationLink;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkKind;
 import org.polarsys.capella.core.data.information.communication.CommunicationPackage;
@@ -130,7 +129,7 @@ public class SkeletonHelper {
     }
   }
 
-  public static void createActorPkg(String containerId, String elementId, SessionContext context) {
+  public static void createComponentPkg(String containerId, String elementId, SessionContext context) {
     EObject container = context.getSemanticElement(containerId);
 
     if (container instanceof OperationalAnalysis) {
@@ -138,16 +137,16 @@ public class SkeletonHelper {
           OaPackage.Literals.ENTITY_PKG, NamingConstants.CreateOpAnalysisCmd_operationalEntities_pkg_name, context);
 
     } else if (container instanceof SystemAnalysis) {
-      createObject(elementId, containerId, CtxPackage.Literals.SYSTEM_ANALYSIS__OWNED_ACTOR_PKG,
-          CtxPackage.Literals.ACTOR_PKG, NamingConstants.CreateSysAnalysisCmd_actors_pkg_name, context);
+      createObject(elementId, containerId, CtxPackage.Literals.SYSTEM_ANALYSIS__OWNED_SYSTEM_COMPONENT_PKG,
+          CtxPackage.Literals.SYSTEM_COMPONENT_PKG, NamingConstants.CreateSysAnalysisCmd_actors_pkg_name, context);
 
     } else if (container instanceof LogicalArchitecture) {
-      createObject(elementId, containerId, LaPackage.Literals.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_ACTOR_PKG,
-          LaPackage.Literals.LOGICAL_ACTOR_PKG, NamingConstants.CreateLogicalArchCmd_actors_pkg_name, context);
+      createObject(elementId, containerId, LaPackage.Literals.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT_PKG,
+          LaPackage.Literals.LOGICAL_COMPONENT_PKG, NamingConstants.CreateLogicalArchCmd_actors_pkg_name, context);
 
     } else if (container instanceof PhysicalArchitecture) {
-      createObject(elementId, containerId, PaPackage.Literals.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_ACTOR_PKG,
-          PaPackage.Literals.PHYSICAL_ACTOR_PKG, NamingConstants.CreatePhysicalArchCmd_actors_pkg_name, context);
+      createObject(elementId, containerId, PaPackage.Literals.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG,
+          PaPackage.Literals.PHYSICAL_COMPONENT_PKG, NamingConstants.CreatePhysicalArchCmd_actors_pkg_name, context);
     }
   }
 
@@ -366,10 +365,10 @@ public class SkeletonHelper {
 
   public static void createActor(final String containerId, final String elementId, String partId,
       final SessionContext context) {
-    createObject(elementId, containerId, CtxPackage.Literals.ACTOR_PKG__OWNED_ACTORS, CtxPackage.Literals.ACTOR,
+    createObject(elementId, containerId, CtxPackage.Literals.SYSTEM_COMPONENT_PKG__OWNED_SYSTEM_COMPONENTS, CtxPackage.Literals.SYSTEM_COMPONENT,
         elementId, context);
 
-    Part part = (Part) ((Actor) context.getSemanticElement(elementId)).getRepresentingPartitions().get(0);
+    Part part = (Part) ((SystemComponent) context.getSemanticElement(elementId)).getRepresentingParts().get(0);
     context.putSemanticElement(partId, part);
   }
 
@@ -382,7 +381,7 @@ public class SkeletonHelper {
       @Override
       public void run() {
         InstanceRole role = context.getSemanticElement(elementId);
-        Partition part = context.getSemanticElement(instanceId);
+        Part part = context.getSemanticElement(instanceId);
         role.setRepresentedInstance(part);
       }
     });

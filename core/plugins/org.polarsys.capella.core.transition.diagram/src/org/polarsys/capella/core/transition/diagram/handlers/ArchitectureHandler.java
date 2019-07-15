@@ -27,7 +27,6 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
@@ -194,14 +193,6 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
 
         } else if (IMappingNameConstants.OAB_ENTITY_MAPPING_NAME.equals(mappingName)) {
           targetMappingName = IMappingNameConstants.SAB_SYSTEM_MAPPING_NAME;
-          if (target_p instanceof AbstractActor) {
-            targetMappingName = IMappingNameConstants.SAB_ACTOR_MAPPING_NAME;
-          }
-          if (target_p instanceof Part) {
-            if ((((Part) target_p).getAbstractType() != null) && (((Part) target_p).getAbstractType() instanceof AbstractActor)) {
-              targetMappingName = IMappingNameConstants.SAB_ACTOR_MAPPING_NAME;
-            }
-          }
 
         } else if (IMappingNameConstants.OAB_FUNCTIONAL_EXCHANGE_MAPPING_NAME.equals(mappingName)) {
           targetMappingName = IMappingNameConstants.SAB_FUNCTIONAL_EXCHANGE_MAPPING_NAME;

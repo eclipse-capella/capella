@@ -23,7 +23,6 @@ import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.Feature;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
@@ -46,7 +45,6 @@ import org.polarsys.capella.core.data.interaction.MessageEnd;
 import org.polarsys.capella.core.data.interaction.MessageKind;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
-import org.polarsys.capella.core.model.helpers.ActorExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.InterfaceExt;
 import org.polarsys.capella.core.model.helpers.ScenarioExt;
@@ -327,12 +325,7 @@ public class InterfaceHelper {
 
     // Builds the client and provider interfaces lists regarding their types
     if (client != null) {
-      if (client.getAbstractType() instanceof AbstractActor) {
-        List<AbstractActor> ancestors = ActorExt.getAncestors((AbstractActor) client.getAbstractType());
-        for (AbstractActor actor : ancestors) {
-          clientUsedAndRequiredInterfaces.addAll(InterfaceExt.getAllSuperGeneralizableElements(getUsedAndRequiredInterfaces(actor)));
-        }
-      } else if (client.getAbstractType() instanceof Component) {
+      if (client.getAbstractType() instanceof Component) {
         for (Component component : ComponentExt.getAllAncestors((Component) client.getAbstractType())) {
           clientUsedAndRequiredInterfaces.addAll(InterfaceExt.getAllSuperGeneralizableElements(getUsedAndRequiredInterfaces(component)));
         }
@@ -347,12 +340,7 @@ public class InterfaceHelper {
       }
     }
     if (provider != null) {
-      if (provider.getAbstractType() instanceof AbstractActor) {
-        List<AbstractActor> ancestors = ActorExt.getAncestors((AbstractActor) provider.getAbstractType());
-        for (AbstractActor actor : ancestors) {
-          providerImplementedAndProvidedInterfaces.addAll(InterfaceExt.getAllSuperGeneralizableElements(getImplementedAndProvidedInterfaces(actor)));
-        }
-      } else if (provider.getAbstractType() instanceof Component) {
+      if (provider.getAbstractType() instanceof Component) {
         for (Component component : ComponentExt.getAllAncestors((Component) provider.getAbstractType())) {
           providerImplementedAndProvidedInterfaces.addAll(InterfaceExt.getAllSuperGeneralizableElements(getImplementedAndProvidedInterfaces(component)));
         }

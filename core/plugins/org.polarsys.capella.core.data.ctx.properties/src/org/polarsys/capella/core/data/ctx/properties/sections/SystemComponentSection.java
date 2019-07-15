@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.data.la.properties.sections;
+package org.polarsys.capella.core.data.ctx.properties.sections;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,19 +16,27 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
+import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.capella.core.data.cs.properties.controllers.Component_RealizedComponentsController;
 import org.polarsys.capella.core.data.cs.properties.sections.ComponentSection;
-import org.polarsys.capella.core.data.la.LaPackage;
-import org.polarsys.capella.core.data.la.properties.Messages;
-import org.polarsys.capella.core.data.la.properties.controllers.LogicalActor_RealizedActorsController;
+import org.polarsys.capella.core.data.ctx.CtxPackage;
+import org.polarsys.capella.core.data.ctx.properties.Messages;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
 
 /**
- * The LogicalActor section.
+ * The System section.
  */
-public class LogicalActorSection extends ComponentSection {
+public class SystemComponentSection extends ComponentSection {
 
-  private MultipleSemanticField realizedActors;
+  private MultipleSemanticField _realizedOperationalEntities;
+
+  /**
+   * Default constructor.
+   */
+  public SystemComponentSection() {
+    super(true, true, true, true, true);
+  }
 
   /**
    * {@inheritDoc}
@@ -39,9 +47,9 @@ public class LogicalActorSection extends ComponentSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    realizedActors = new MultipleSemanticField(getReferencesGroup(),
-        Messages.getString("LogicalActorSection_RealizedActors_Label"), getWidgetFactory(), new LogicalActor_RealizedActorsController()); //$NON-NLS-1$
-    realizedActors.setDisplayedInWizard(displayedInWizard);
+    _realizedOperationalEntities = new MultipleSemanticField(getReferencesGroup(),
+        Messages.getString("SystemComponentSection_RealizedOperationalEntities_Label"), getWidgetFactory(), new Component_RealizedComponentsController()); //$NON-NLS-1$
+    _realizedOperationalEntities.setDisplayedInWizard(displayedInWizard);
   }
 
   /**
@@ -51,7 +59,7 @@ public class LogicalActorSection extends ComponentSection {
   public void loadData(EObject capellaElement) {
     super.loadData(capellaElement);
 
-    realizedActors.loadData(capellaElement, LaPackage.Literals.LOGICAL_ACTOR__OWNED_SYSTEM_ACTOR_REALIZATIONS);
+    _realizedOperationalEntities.loadData(capellaElement, CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS);
   }
 
   /**
@@ -60,7 +68,7 @@ public class LogicalActorSection extends ComponentSection {
   @Override
   public boolean select(Object toTest) {
     EObject eObjectToTest = super.selection(toTest);
-    return ((eObjectToTest != null) && (eObjectToTest.eClass() == LaPackage.eINSTANCE.getLogicalActor()));
+    return (CtxPackage.Literals.SYSTEM_COMPONENT.isInstance(eObjectToTest));
   }
 
   /**
@@ -71,7 +79,7 @@ public class LogicalActorSection extends ComponentSection {
     List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
 
     fields.addAll(super.getSemanticFields());
-    fields.add(realizedActors);
+    fields.add(_realizedOperationalEntities);
 
     return fields;
   }

@@ -17,7 +17,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
@@ -46,11 +45,7 @@ import org.polarsys.capella.common.ui.toolkit.viewers.TreeAndListViewer;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentContext;
-import org.polarsys.capella.core.data.cs.CsFactory;
-import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
@@ -97,7 +92,8 @@ public class SelectOperationDialog extends SelectElementsDialog {
    */
   private Text _operationText;
   /**
-   * Text field used to store the name and the interface (through widget data) instance that will have a new operation.<br>
+   * Text field used to store the name and the interface (through widget data) instance that will have a new
+   * operation.<br>
    * If getData returns <code>null</code>, a new interface must be created with entered name.
    */
   private Text _interfaceText;
@@ -139,6 +135,7 @@ public class SelectOperationDialog extends SelectElementsDialog {
 
   /**
    * Configure a handler for the button that enable / disable the creation operation button.
+   * 
    * @param enableCreationButton
    */
   private void configureEnableCreationButtonHandler() {
@@ -177,7 +174,8 @@ public class SelectOperationDialog extends SelectElementsDialog {
 
     }
     enabledCreationInterface = enabledCreationOperation;
-    enabledCreationInterface |= ((getAnExchangeItemSelected() != null) && (getAnExchangeItemSelected() instanceof ExchangeItem));
+    enabledCreationInterface |= ((getAnExchangeItemSelected() != null)
+        && (getAnExchangeItemSelected() instanceof ExchangeItem));
 
     if (_operationText != null) {
       _eiTypeGroup.setEnabled(enabledCreationInterface);
@@ -209,6 +207,7 @@ public class SelectOperationDialog extends SelectElementsDialog {
 
   /**
    * Updates radio button following the message type
+   * 
    * @param enabledCreationOperation
    */
   private void updateRadioButtons(boolean enabledCreationOperation) {
@@ -235,9 +234,8 @@ public class SelectOperationDialog extends SelectElementsDialog {
   }
 
   private List<EObject> getAvailableInterfaces() {
-    IBusinessQuery query =
-        BusinessQueriesProvider.getInstance().getContribution(InteractionPackage.Literals.SEQUENCE_MESSAGE,
-            InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_END);
+    IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(
+        InteractionPackage.Literals.SEQUENCE_MESSAGE, InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_END);
     return query.getAvailableElements(_sourceIR);
   }
 
@@ -267,15 +265,17 @@ public class SelectOperationDialog extends SelectElementsDialog {
 
   /**
    * Create creation operation widgets.
+   * 
    * @param parent
    */
   private void createCreationOperationPart(Composite parent) {
     // Add a group surrounding the create operation part.
     final Group treeViewerPartGroup = new Group(parent, SWT.NONE);
     treeViewerPartGroup.setLayoutData(new GridData(GridData.FILL, GridData.BEGINNING, true, true));
-    treeViewerPartGroup.setLayout(new GridLayout(3, false)); /*
-                                                              * 3 columns one for the label, one the text and the last one for the button
-                                                              */
+    treeViewerPartGroup.setLayout(
+        new GridLayout(3, false)); /*
+                                    * 3 columns one for the label, one the text and the last one for the button
+                                    */
     treeViewerPartGroup.setText(Messages.SelectOperationDialog_CreateNewExchangeItem);
 
     _enableCreationButton = new Button(treeViewerPartGroup, SWT.CHECK);
@@ -306,9 +306,10 @@ public class SelectOperationDialog extends SelectElementsDialog {
     _eiTypeGroup = new Group(treeViewerPartGroup, SWT.NONE);
     _eiTypeGroup.setText(Messages.SelectOperationDialog_2);
     _eiTypeGroup.setLayoutData(new GridData(GridData.FILL, GridData.BEGINNING, true, true));
-    _eiTypeGroup.setLayout(new GridLayout(5, false)); /*
-                                                       * 4 columns one for the label, one the text and the last one for the button
-                                                       */
+    _eiTypeGroup.setLayout(
+        new GridLayout(5, false)); /*
+                                    * 4 columns one for the label, one the text and the last one for the button
+                                    */
     _eventRadioButton = new Button(_eiTypeGroup, SWT.RADIO);
     _eventRadioButton.setText(Messages.SelectOperationDialog_3);
 
@@ -330,6 +331,7 @@ public class SelectOperationDialog extends SelectElementsDialog {
 
   /**
    * Create creation operation widgets.
+   * 
    * @param parent
    */
   private void createInterfacePart(Composite parent) {
@@ -337,9 +339,10 @@ public class SelectOperationDialog extends SelectElementsDialog {
     final Group treeViewerPartGroup = new Group(parent, SWT.NONE);
     treeViewerPartGroup.setText(Messages.SelectOperationDialog_CreateOrSelectInterface);
     treeViewerPartGroup.setLayoutData(new GridData(GridData.FILL, GridData.BEGINNING, true, true));
-    treeViewerPartGroup.setLayout(new GridLayout(3, false)); /*
-                                                              * 3 columns one for the label, one the text and the last one for the button
-                                                              */
+    treeViewerPartGroup.setLayout(
+        new GridLayout(3, false)); /*
+                                    * 3 columns one for the label, one the text and the last one for the button
+                                    */
 
     // Create a text field to host the Interface name.
     createLabel(treeViewerPartGroup, Messages.SelectOperationDialog_Interface_Title);
@@ -358,7 +361,8 @@ public class SelectOperationDialog extends SelectElementsDialog {
     _interfaceText.addModifyListener(modifyListener);
 
     _selectInterfaceButton = new Button(treeViewerPartGroup, SWT.PUSH);
-    _selectInterfaceButton.setImage(ToolkitPlugin.getDefault().getImageRegistry().get(ToolkitPlugin.BROWSE_IMAGE_ITEM_ID));
+    _selectInterfaceButton
+        .setImage(ToolkitPlugin.getDefault().getImageRegistry().get(ToolkitPlugin.BROWSE_IMAGE_ITEM_ID));
 
     List<EObject> accessiblesInterfaces = getAvailableInterfaces();
     // filtering accessible interfaces to select one used/implemented by
@@ -378,7 +382,7 @@ public class SelectOperationDialog extends SelectElementsDialog {
 
     if (bestInterface == null) {
       // component-> component default name is "source to target"
-      // else  is EI_Interface
+      // else is EI_Interface
       StringBuilder builder = new StringBuilder();
       if ((_sourceIR != null) && (_sourceIR.getRepresentedInstance() instanceof ExchangeItemInstance)) {
         builder.append(_sourceIR.getName());
@@ -470,61 +474,16 @@ public class SelectOperationDialog extends SelectElementsDialog {
     layoutData.horizontalSpan = 3;
     _createPortsButton.setLayoutData(layoutData);
   }
-
-  /**
-   * Create an {@link Interface} for related to given sequence message with specified name.
-   * @param sequenceMessage
-   * @param interfaceName
-   */
-  private Interface createInterface(String interfaceName) {
-    Interface result = CsFactory.eINSTANCE.createInterface(interfaceName);
-
-    EObject src = _sourceIR != null ? _sourceIR.getRepresentedInstance().eContainer() : null;
-    EObject tgt = _targetIR != null ? _targetIR.getRepresentedInstance().eContainer() : null;
-
-    EObject container = null;
-
-    if ((src != null) && (tgt != null) && (src instanceof Component) && (tgt instanceof Component)) {
-      container = ComponentExt.getFirstCommonComponentAncestor(src, tgt);
-    }
-    if ((container == null) || (container instanceof ComponentContext)) {
-      if (_sourceIR != null) {
-        container = ComponentExt.getRootBlockArchitecture(_sourceIR);
-      } else {
-        container = ComponentExt.getRootBlockArchitecture(_targetIR);
-      }
-    }
-
-    // Retrieve or create an interface pkg into the container
-    EReference referenceInterfacePkg = null;
-    if (container instanceof BlockArchitecture) {
-      referenceInterfacePkg = CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_INTERFACE_PKG;
-    } else {
-      referenceInterfacePkg = CsPackage.Literals.BLOCK__OWNED_INTERFACE_PKG;
-    }
-
-    if (container.eGet(referenceInterfacePkg) == null) {
-      container.eSet(referenceInterfacePkg, CsFactory.eINSTANCE.createInterfacePkg(Messages.SelectOperationDialog_InterfacePkgName8));
-    }
-
-    // Set the interface into the pkg
-    InterfacePkg pkg = (InterfacePkg) container.eGet(referenceInterfacePkg);
-    pkg.getOwnedInterfaces().add(result);
-
-    org.polarsys.capella.core.model.helpers.CapellaElementExt.creationService(result);
-    result.setName(interfaceName);
-
-    return result;
-  }
-
+  
   /**
    * Gets or create the selected interface.
+   * 
    * @return the selected interface
    */
   private Interface getOrCreateInterface() {
     Interface selectedInterface = (Interface) _interfaceText.getData();
     if ((null == selectedInterface) || !(selectedInterface.getName().equals(_interfaceText.getText()))) {
-      selectedInterface = createInterface(_interfaceText.getText());
+      selectedInterface = CreationAlgorithms.INSTANCE.createInterface(_interfaceText.getText(), _sourceIR, _targetIR, false);
       _interfaceText.setData(selectedInterface);
     }
     return selectedInterface;
@@ -532,6 +491,7 @@ public class SelectOperationDialog extends SelectElementsDialog {
 
   /**
    * Create a new operation based on values entered by the end-user.
+   * 
    * @return
    */
   private ExchangeItem createExchangeItem() {
@@ -570,6 +530,7 @@ public class SelectOperationDialog extends SelectElementsDialog {
 
   /**
    * Allocate the exchange item to the interface selected
+   * 
    * @param getAnExchangeItemSelected
    * @return
    */
@@ -592,13 +553,15 @@ public class SelectOperationDialog extends SelectElementsDialog {
   }
 
   /**
-   * Initialize given ExchangeItemAllocation with information from the CommunicationLink (if one is available) or with information deduced from the message
-   * itself.
+   * Initialize given ExchangeItemAllocation with information from the CommunicationLink (if one is available) or with
+   * information deduced from the message itself.
+   * 
    * @param exchangeItem
    * @param result
    * @return
    */
-  private ExchangeItemAllocation allocateExchangeItemForSharedData(ExchangeItem exchangeItem, ExchangeItemAllocation result) {
+  private ExchangeItemAllocation allocateExchangeItemForSharedData(ExchangeItem exchangeItem,
+      ExchangeItemAllocation result) {
 
     Component component;
     ExchangeItem ei;
@@ -637,14 +600,18 @@ public class SelectOperationDialog extends SelectElementsDialog {
       // A communication link found -> use it to configure the ExchangeItemAllocation.
       CommunicationLinkKind communicationLinkKind = communicationLink.getKind();
       CommunicationLinkProtocol communicationLinkProtocol = communicationLink.getProtocol();
-      if ((CommunicationLinkKind.SEND == communicationLinkKind) || (CommunicationLinkKind.PRODUCE == communicationLinkKind)
-          || (CommunicationLinkKind.CALL == communicationLinkKind) || (CommunicationLinkKind.WRITE == communicationLinkKind)
+      if ((CommunicationLinkKind.SEND == communicationLinkKind)
+          || (CommunicationLinkKind.PRODUCE == communicationLinkKind)
+          || (CommunicationLinkKind.CALL == communicationLinkKind)
+          || (CommunicationLinkKind.WRITE == communicationLinkKind)
           || (CommunicationLinkKind.TRANSMIT == communicationLinkKind)) {
         // Actually, only WRITE should be tested since we are in a SharedData case.
         result.setSendProtocol(communicationLinkProtocol);
-      } else if ((CommunicationLinkKind.RECEIVE == communicationLinkKind) || (CommunicationLinkKind.CONSUME == communicationLinkKind)
-                 || (CommunicationLinkKind.EXECUTE == communicationLinkKind) || (CommunicationLinkKind.ACCESS == communicationLinkKind)
-                 || (CommunicationLinkKind.ACQUIRE == communicationLinkKind)) {
+      } else if ((CommunicationLinkKind.RECEIVE == communicationLinkKind)
+          || (CommunicationLinkKind.CONSUME == communicationLinkKind)
+          || (CommunicationLinkKind.EXECUTE == communicationLinkKind)
+          || (CommunicationLinkKind.ACCESS == communicationLinkKind)
+          || (CommunicationLinkKind.ACQUIRE == communicationLinkKind)) {
         // Actually, only ACCESS should be tested since we are in a SharedData case.
         result.setReceiveProtocol(communicationLinkProtocol);
       }
@@ -655,12 +622,14 @@ public class SelectOperationDialog extends SelectElementsDialog {
 
   /**
    * Create the restricted tree viewer button to display or not restricted interfaces.
+   * 
    * @param control
    */
   private void createRestrictedTreeViewerButton(Composite parent) {
     _restrictedInterfaceFilter = new ViewerFilter() {
       /**
-       * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+       * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object,
+       *      java.lang.Object)
        */
       @SuppressWarnings("synthetic-access")
       @Override
@@ -670,7 +639,8 @@ public class SelectOperationDialog extends SelectElementsDialog {
         } else if (element instanceof AbstractEventOperation) {
           return true; // this is not the filter which decides
         } else if (element instanceof CapellaElement) {
-          // Recursive case: this element should only be displayed if its direct or indirect "contained" contains one of _restrictedElement
+          // Recursive case: this element should only be displayed if its direct or indirect "contained" contains one of
+          // _restrictedElement
           TreeIterator<EObject> iterator = ((CapellaElement) element).eAllContents();
           while (iterator.hasNext()) {
             EObject obj = iterator.next();
@@ -795,7 +765,8 @@ public class SelectOperationDialog extends SelectElementsDialog {
         } else if (element instanceof AbstractEventOperation) {
           return _restrictedElements.contains(element);
         } else if (element instanceof CapellaElement) {
-          //Recursive case: this element should only be displayed if its direct or indirect "contained" contains one of _restrictedElement
+          // Recursive case: this element should only be displayed if its direct or indirect "contained" contains one of
+          // _restrictedElement
           TreeIterator<EObject> iterator = ((CapellaElement) element).eAllContents();
           while (iterator.hasNext()) {
             EObject obj = iterator.next();
@@ -853,17 +824,19 @@ public class SelectOperationDialog extends SelectElementsDialog {
     _isPortStrategy = _createPortsButton.getSelection();
 
     // If not checked, the end-user has selected an existing operation.
-    if ((_elementSupportedType == ElementSupportedType.EXCHANGE)
-        || ((_enableCreationButton != null) && !_enableCreationButton.getSelection() && (getAnExchangeItemSelected == null))) {
+    if ((_elementSupportedType == ElementSupportedType.EXCHANGE) || ((_enableCreationButton != null)
+        && !_enableCreationButton.getSelection() && (getAnExchangeItemSelected == null))) {
       return super.handleResult();
     }
 
-    if ((getAnExchangeItemSelected instanceof ExchangeItemAllocation) && ((_enableCreationButton == null) || !_enableCreationButton.getSelection())) {
+    if ((getAnExchangeItemSelected instanceof ExchangeItemAllocation)
+        && ((_enableCreationButton == null) || !_enableCreationButton.getSelection())) {
       return Collections.singletonList(getAnExchangeItemSelected);
     }
     // It's an exchangeItem
     ExchangeItemAllocation allocation;
-    if ((getAnExchangeItemSelected != null) && ((_enableCreationButton == null) || !_enableCreationButton.getSelection())) {
+    if ((getAnExchangeItemSelected != null)
+        && ((_enableCreationButton == null) || !_enableCreationButton.getSelection())) {
       allocation = allocateExchangeItem((ExchangeItem) getAnExchangeItemSelected);
     } else {
       allocation = allocateExchangeItem(createExchangeItem());
@@ -905,8 +878,8 @@ public class SelectOperationDialog extends SelectElementsDialog {
 
     // If not checked, or no selection of exchangeItem in the list, the
     // end-user has selected an existing allocation.
-    if ((_elementSupportedType == ElementSupportedType.EXCHANGE)
-        || ((_enableCreationButton != null) && !_enableCreationButton.getSelection() && (getAnExchangeItemSelected == null))) {
+    if ((_elementSupportedType == ElementSupportedType.EXCHANGE) || ((_enableCreationButton != null)
+        && !_enableCreationButton.getSelection() && (getAnExchangeItemSelected == null))) {
       return super.isOkToClose(selection);
     }
 

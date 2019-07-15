@@ -149,15 +149,6 @@
             </input>
          </propertySection>
          <propertySection
-               class="org.polarsys.capella.core.data.oa.properties.sections.OperationalActorSection"
-               filter="org.polarsys.capella.core.data.oa.properties.sections.OperationalActorSection"
-               id="org.polarsys.capella.core.data.oa.properties.sections.OperationalActorSection"
-               tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.oa.OperationalActor">
-            </input>
-         </propertySection>
-         <propertySection
                class="org.polarsys.capella.core.data.oa.properties.sections.OperationalAnalysisSection"
                filter="org.polarsys.capella.core.data.oa.properties.sections.OperationalAnalysisSection"
                id="org.polarsys.capella.core.data.oa.properties.sections.OperationalAnalysisSection"
@@ -182,15 +173,6 @@
                tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.oa.OperationalCapability">
-            </input>
-         </propertySection>
-         <propertySection
-               class="org.polarsys.capella.core.data.oa.properties.sections.OperationalContextSection"
-               filter="org.polarsys.capella.core.data.oa.properties.sections.OperationalContextSection"
-               id="org.polarsys.capella.core.data.oa.properties.sections.OperationalContextSection"
-               tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.oa.OperationalContext">
             </input>
          </propertySection>
          <propertySection
@@ -360,12 +342,6 @@
                tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
-               class="org.polarsys.capella.core.data.oa.properties.sections.OperationalActorSection"
-               filter="org.polarsys.capella.core.data.oa.properties.sections.OperationalActorSection"
-               id="org.polarsys.capella.core.data.oa.properties.sections.OperationalActorSection"
-               tab="BaseSiriusDiagram">
-         </propertySection>
-         <propertySection
                class="org.polarsys.capella.core.data.oa.properties.sections.OperationalAnalysisSection"
                filter="org.polarsys.capella.core.data.oa.properties.sections.OperationalAnalysisSection"
                id="org.polarsys.capella.core.data.oa.properties.sections.OperationalAnalysisSection"
@@ -381,12 +357,6 @@
                class="org.polarsys.capella.core.data.oa.properties.sections.OperationalCapabilitySection"
                filter="org.polarsys.capella.core.data.oa.properties.sections.OperationalCapabilitySection"
                id="org.polarsys.capella.core.data.oa.properties.sections.OperationalCapabilitySection"
-               tab="BaseSiriusDiagram">
-         </propertySection>
-         <propertySection
-               class="org.polarsys.capella.core.data.oa.properties.sections.OperationalContextSection"
-               filter="org.polarsys.capella.core.data.oa.properties.sections.OperationalContextSection"
-               id="org.polarsys.capella.core.data.oa.properties.sections.OperationalContextSection"
                tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
@@ -532,12 +502,6 @@
                tab="BaseSiriusTable">
          </propertySection>
          <propertySection
-               class="org.polarsys.capella.core.data.oa.properties.sections.OperationalActorSection"
-               filter="org.polarsys.capella.core.data.oa.properties.sections.OperationalActorSection"
-               id="org.polarsys.capella.core.data.oa.properties.sections.OperationalActorSection"
-               tab="BaseSiriusTable">
-         </propertySection>
-         <propertySection
                class="org.polarsys.capella.core.data.oa.properties.sections.OperationalAnalysisSection"
                filter="org.polarsys.capella.core.data.oa.properties.sections.OperationalAnalysisSection"
                id="org.polarsys.capella.core.data.oa.properties.sections.OperationalAnalysisSection"
@@ -553,12 +517,6 @@
                class="org.polarsys.capella.core.data.oa.properties.sections.OperationalCapabilitySection"
                filter="org.polarsys.capella.core.data.oa.properties.sections.OperationalCapabilitySection"
                id="org.polarsys.capella.core.data.oa.properties.sections.OperationalCapabilitySection"
-               tab="BaseSiriusTable">
-         </propertySection>
-         <propertySection
-               class="org.polarsys.capella.core.data.oa.properties.sections.OperationalContextSection"
-               filter="org.polarsys.capella.core.data.oa.properties.sections.OperationalContextSection"
-               id="org.polarsys.capella.core.data.oa.properties.sections.OperationalContextSection"
                tab="BaseSiriusTable">
          </propertySection>
          <propertySection
