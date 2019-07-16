@@ -10,8 +10,12 @@
  *******************************************************************************/
 package org.polarsys.capella.test.framework.api;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.eclipse.core.commands.operations.IUndoContext;
 import org.eclipse.emf.common.command.CommandStack;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.common.ef.internal.command.WorkspaceCommandStackImpl;
 
@@ -19,26 +23,37 @@ import org.polarsys.capella.common.ef.internal.command.WorkspaceCommandStackImpl
  * A test case that discard all changes to the test model at the end of test case.
  */
 public abstract class NonDirtyTestCase extends BasicTestCase {
+
+  private Set<String> modelsWithModifiedUndoContexts = new HashSet<>();
+
   @Override
   protected Session getSession(String relativeModelPath) {
     Session session = super.getSession(relativeModelPath);
-    setUndoContextLimit(session);
+    if (session != null && !modelsWithModifiedUndoContexts.contains(relativeModelPath)) {
+      setUndoContextLimit(session);
+      modelsWithModifiedUndoContexts.add(relativeModelPath);
+    }
+
     return session;
   }
-  
+
   protected void setUndoContextLimit(Session session) {
-    WorkspaceCommandStackImpl commandStack = (WorkspaceCommandStackImpl) session.getTransactionalEditingDomain()
-        .getCommandStack();
-    IUndoContext undoContext = commandStack.getDefaultUndoContext();
-    commandStack.getOperationHistory().setLimit(undoContext, 10000);
+    TransactionalEditingDomain transactionalEditingDomain = session.getTransactionalEditingDomain();
+    if (transactionalEditingDomain != null) {
+      WorkspaceCommandStackImpl commandStack = (WorkspaceCommandStackImpl) transactionalEditingDomain.getCommandStack();
+      if (commandStack != null) {
+        IUndoContext undoContext = commandStack.getDefaultUndoContext();
+        commandStack.getOperationHistory().setLimit(undoContext, 10000);
+      }
+    }
   }
-  
+
   @Override
   protected void tearDown() throws Exception {
     undoAllChanges();
     super.tearDown();
   }
-  
+
   protected void undoAllChanges() {
     for (String testModel : getRequiredTestModels()) {
       Session session = getSession(testModel);
