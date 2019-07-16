@@ -16,7 +16,7 @@
 	<name>Capella</name>
 	<groupId>org.polarsys</groupId>
 	<artifactId>org.polarsys.capella</artifactId>
-	<version>1.3.1-SNAPSHOT</version>
+	<version>1.3.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -50,7 +50,7 @@
 		<sonar.jacoco.itReportPath>${project.basedir}/../../../target/jacoco-it.exec</sonar.jacoco.itReportPath>
 		<sonar.java.source>8</sonar.java.source>
 
-		<!-- Default target-platform-path (other values: canary, headless) -->
+		<!-- Default target-platform-path -->
 		<target-platform-path>full</target-platform-path>
 	</properties>
 
@@ -75,7 +75,7 @@
 						<artifact>
 							<groupId>org.polarsys</groupId>
 							<artifactId>org.polarsys.capella</artifactId>
-							<version>1.3.1-SNAPSHOT</version>
+							<version>1.3.2-SNAPSHOT</version>
 							<classifier>releng/plugins/org.polarsys.capella.targets/${target-platform-path}/capella.target-definition</classifier>
 						</artifact>
 					</target>
@@ -318,71 +318,6 @@
 				<module>tests/plugins</module>
 
 				<module>releng/plugins/org.polarsys.capella.test.site</module>
-			</modules>
-		</profile>
-		<profile>
-			<id>nightly</id>
-			<properties>
-				<packagedSiteName>org.polarsys.capella.rcp.product</packagedSiteName>
-				<target-platform-path>nightly</target-platform-path>
-			</properties>
-			<modules>
-				<module>common/features/org.polarsys.capella.common.feature</module>
-				<module>common/features/org.polarsys.capella.common.ui.feature</module>
-				<module>common/plugins</module>
-				
-				<module>core/features</module>
-				<module>core/plugins</module>
-				
-				<module>doc/features/org.polarsys.capella.doc.feature</module>
-				<module>doc/plugins</module>
-				
-				<module>ext/detachment/features/org.polarsys.capella.detachment.feature</module>
-				<module>ext/detachment/plugins/org.polarsys.capella.detachment.propertyvalue</module>
-				<module>ext/detachment/plugins/org.polarsys.capella.detachment.version.precondition</module>
-				<module>legacy/plugins/org.polarsys.capella.common.mdsofa.common</module>
-				
-				<module>patterns/features/org.polarsys.capella.patterns.feature</module>
-				<module>patterns/plugins/org.polarsys.capella.patterns</module>
-				<module>patterns/plugins/org.polarsys.capella.patterns.obfuscator</module>
-				<module>patterns/plugins/org.polarsys.capella.patterns.ui</module>
-				<module>patterns/plugins/org.polarsys.capella.patterns.migration</module>
-				
-				<module>releng/features/org.polarsys.capella.rcp.feature</module>
-				<module>releng/plugins/org.polarsys.capella.rcp</module>
-				<module>releng/plugins/org.polarsys.capella.rcp.product</module>
-				<module>releng/plugins/org.polarsys.capella.rcp.site</module>
-
-				<!-- Tests -->
-				<module>tests/features/org.polarsys.capella.test.feature</module>
-				<module>tests/plugins</module>
-				<module>releng/plugins/org.polarsys.capella.test.site</module>
-			</modules>
-		</profile>
-		<profile>
-			<id>headless</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<properties>
-				<packagedSiteName>org.polarsys.capella.headless.product</packagedSiteName>
-				<target-platform-path>headless</target-platform-path>
-			</properties>
-			<modules>
-				<!-- common bundles -->
-				<module>common/features/org.polarsys.capella.common.feature</module>
-				<module>common/plugins</module>
-				
-				<module>legacy/plugins/org.polarsys.capella.common.mdsofa.common</module>
-
-				<!-- core bundles -->
-		        <module>core/features/org.polarsys.capella.core.common.feature</module>
-				<module>core/plugins</module>
-
-				<!-- releng bundles -->
-				<module>releng/features/org.polarsys.capella.headless.feature</module>
-				<module>releng/plugins/org.polarsys.capella.headless.product</module>
-				<module>releng/plugins/org.polarsys.capella.headless.site</module>
 			</modules>
 		</profile>
 		<profile>

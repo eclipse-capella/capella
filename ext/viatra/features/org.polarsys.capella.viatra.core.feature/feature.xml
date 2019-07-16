@@ -13,7 +13,7 @@
 <feature
       id="org.polarsys.capella.viatra.core.feature"
       label="%featureName"
-      version="1.3.1.qualifier"
+      version="1.3.2.qualifier"
       provider-name="%providerName">
 
    <description url="http://www.example.com/description">

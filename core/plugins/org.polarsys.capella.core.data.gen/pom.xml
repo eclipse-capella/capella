@@ -15,13 +15,13 @@
   <parent>
     <groupId>org.polarsys</groupId>
     <artifactId>org.polarsys.capella.core.plugins</artifactId>
-    <version>1.3.1-SNAPSHOT</version>
+    <version>1.3.2-SNAPSHOT</version>
   </parent>
   <properties>
     <sonar.skip>true</sonar.skip>
   </properties>
   <groupId>org.polarsys</groupId>
   <artifactId>org.polarsys.capella.core.data.gen</artifactId>
-  <version>1.3.1-SNAPSHOT</version>
+  <version>1.3.2-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
 </project>

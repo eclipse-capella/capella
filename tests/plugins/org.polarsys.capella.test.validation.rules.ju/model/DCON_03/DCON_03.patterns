@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_1.3.1-->
+<!--Capella_Version_1.3.2-->
 <org.eclipse.emf.diffmerge.patterns.core:PatternRepository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.eclipse.emf.diffmerge.patterns.core="http://org.eclipse.com/emf/diffmerge/patterns/core/1.0.0"
     xmlns:org.eclipse.emf.diffmerge.patterns.templates="http://org.eclipse.com/emf/diffmerge/patterns/templates/1.0.0"
