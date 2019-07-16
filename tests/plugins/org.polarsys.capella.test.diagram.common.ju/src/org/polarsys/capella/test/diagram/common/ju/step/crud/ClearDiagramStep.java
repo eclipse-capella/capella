@@ -52,7 +52,7 @@ public class ClearDiagramStep extends AbstractDiagramStep<DiagramContext> {
           DiagramHelper.removeView(element);
         }
         boolean ret = getDiagramContext().getDiagram().getOwnedDiagramElements().isEmpty();
-        Assert.assertTrue(NLS.bind(Messages.emptyDiagram, new Object[] { getDiagramContext().getDiagram().getName() }),
+        Assert.assertTrue(NLS.bind(Messages.emptyDiagram, new Object[] { getDiagramContext().getDiagramDescriptor().getName() }),
             ret);
       }
     });

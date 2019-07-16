@@ -71,8 +71,10 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Assert;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.ui.toolkit.viewers.menu.ModalContextMenuExtender;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.shared.id.handler.IdManager;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 import org.polarsys.capella.test.diagram.layout.ju.layout.DiagramLayout;
@@ -98,7 +100,7 @@ public class CompareLayoutManager {
   public DiagramLayout getCurrentLayout(Session session, DDiagram representation) {
     DiagramLayout layout = LayoutFactory.eINSTANCE.createDiagramLayout();
     DDiagram currentDiagram = (DDiagram) representation;
-    layout.setName(currentDiagram.getName());
+    layout.setName(EObjectExt.getText(currentDiagram));
     layout.setId(IdManager.getInstance().getId((((DSemanticDecorator) currentDiagram).getTarget())));
     layout.setSynchronized(representation.isSynchronized());
     layout.setDescription(representation.getDescription().getName());

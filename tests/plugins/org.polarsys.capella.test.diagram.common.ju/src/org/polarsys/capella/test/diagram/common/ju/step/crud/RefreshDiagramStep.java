@@ -46,7 +46,7 @@ public class RefreshDiagramStep extends AbstractDiagramStep<DiagramContext> {
       public void run() {
         boolean ret = DiagramHelper.refreshDiagram(getDiagramContext().getDiagram());
         Assert.assertTrue(
-            NLS.bind(Messages.failToRefreshDiagram, new Object[] { getDiagramContext().getDiagram().getName() }), ret);
+            NLS.bind(Messages.failToRefreshDiagram, new Object[] { getDiagramContext().getDiagramDescriptor().getName() }), ret);
       }
     });
   }

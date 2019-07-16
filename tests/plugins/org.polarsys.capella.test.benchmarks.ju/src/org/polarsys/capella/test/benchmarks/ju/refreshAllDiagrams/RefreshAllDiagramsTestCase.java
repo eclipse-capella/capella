@@ -21,6 +21,7 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IWorkbenchPage;
 import org.polarsys.capella.common.lib.Memory;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.test.benchmarks.ju.testcases.AbstractBenchmarkTestCase;
 import org.polarsys.capella.test.benchmarks.ju.utils.MemoryLogger;
 
@@ -36,7 +37,7 @@ public class RefreshAllDiagramsTestCase extends AbstractBenchmarkTestCase {
 
     for (DRepresentation rep : representationsToRefresh) {
       IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, rep, new NullProgressMonitor());
-      assertNotNull("Unable to open editor " + rep.getName(), editor);
+      assertNotNull("Unable to open editor " + RepresentationHelper.getRepresentationDescriptor(rep), editor);
       closeEditor(editor);
     }
 

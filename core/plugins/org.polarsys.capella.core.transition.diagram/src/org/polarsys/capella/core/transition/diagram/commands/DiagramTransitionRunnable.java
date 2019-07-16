@@ -50,7 +50,6 @@ import org.eclipse.gmf.runtime.notation.Style;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.osgi.util.NLS;
-import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.helper.task.DeleteDRepresentationTask;
@@ -78,11 +77,11 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.format.data.extension.FormatDataManagerRegistry;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.swt.widgets.Shell;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.common.utils.RunnableWithBooleanResult;
@@ -90,8 +89,6 @@ import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
-import org.polarsys.capella.core.diagram.helpers.traceability.DiagramTraceabilityHelper;
-import org.polarsys.capella.core.diagram.helpers.traceability.IDiagramTraceability;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
@@ -102,13 +99,14 @@ import org.polarsys.capella.core.sirius.analysis.ShapeUtil;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.diagram.Activator;
+import org.polarsys.capella.core.transition.diagram.commands.DiagramTransitionRunnable.ExtendedViewRefactorHelper;
 import org.polarsys.capella.core.transition.diagram.handlers.DiagramDescriptionHelper;
 import org.polarsys.capella.core.transition.diagram.helpers.TraceabilityHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
- * A transition of diagram cannot be made into only one transactional command.
- * In fact, GMF is registered to be processing visibility update after each transaction.
+ * A transition of diagram cannot be made into only one transactional command. In fact, GMF is registered to be
+ * processing visibility update after each transaction.
  */
 public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagram> {
 
@@ -226,8 +224,10 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
    * @param diagram
    */
   protected IStatus proceedDiagram(final DRepresentation diagram, final IProgressMonitor monitor) {
-    monitor.beginTask(NLS.bind("Diagram Initialization - {0}", diagram.getName()), 3);
-    monitor.setTaskName(NLS.bind("Diagram Initialization - {0}", diagram.getName()));
+    String diagramName = EObjectExt.getText(diagram);
+
+    monitor.beginTask(NLS.bind("Diagram Initialization - {0}", diagramName), 3);
+    monitor.setTaskName(NLS.bind("Diagram Initialization - {0}", diagramName));
 
     final IContext context = getContext();
 
@@ -236,13 +236,13 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
     }
     context.put(SOURCE_DIAGRAM, diagram);
 
-    //Retrieve semantic target of diagram
+    // Retrieve semantic target of diagram
     final EObject sourceSemantic = ((DSemanticDecorator) diagram).getTarget();
     if ((sourceSemantic == null) || sourceSemantic.eIsProxy()) {
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Diagram with invalid semantic target");
     }
 
-    //Retrieve the current session
+    // Retrieve the current session
     final Session session = DiagramHelper.getService().getSession(diagram);
     if (session == null) {
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Cannot retrieve session from the given diagram");
@@ -251,7 +251,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
     context.put(ITransitionConstants.TRANSITION_SOURCE_EDITING_DOMAIN, session.getTransactionalEditingDomain());
     context.put(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN, session.getTransactionalEditingDomain());
 
-    //Retrieve the current description
+    // Retrieve the current description
     final RepresentationDescription description = DiagramHelper.getService().getDescription(diagram);
     if ((description == null) || description.eIsProxy()) {
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Invalid source diagram (maybe a missing viewpoint)");
@@ -262,14 +262,14 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
 
     IStatus status = Status.OK_STATUS;
 
-    //Copy layout cannot copy layout of hidden elements, we need to run two commands !
-    status = runCommand(session, NLS.bind("{0} - {1} (1/3)", getName(), diagram.getName()), new RunnableWithBooleanResult() {
+    // Copy layout cannot copy layout of hidden elements, we need to run two commands !
+    status = runCommand(session, NLS.bind("{0} - {1} (1/3)", getName(), diagramName), new RunnableWithBooleanResult() {
       @Override
       public void run() {
 
         IStatus result = Status.OK_STATUS;
 
-        //Retrieve or initialize target diagram
+        // Retrieve or initialize target diagram
         result = retrieveTargetDiagram(diagram, session, sourceSemantic, description, monitor);
         if (!result.isOK()) {
           setStatus(result);
@@ -278,21 +278,21 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
 
         DRepresentation targetDiagram = (DRepresentation) getContext().get(TARGET_DIAGRAM);
 
-        //Initialize diagram (filters and others shared elements)
+        // Initialize diagram (filters and others shared elements)
         result = initializeDiagrams(diagram, targetDiagram);
         if (!result.isOK()) {
           setStatus(result);
           return;
         }
 
-        //Synchronize elements in diagram
+        // Synchronize elements in diagram
         result = synchronizeDiagrams(diagram, targetDiagram);
         if (!result.isOK()) {
           setStatus(result);
           return;
         }
 
-        //Reveal hidden elements
+        // Reveal hidden elements
         revealHiddenElements((DSemanticDiagram) diagram, (DSemanticDiagram) targetDiagram);
 
         setStatus(result);
@@ -306,33 +306,33 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
       return status;
     }
 
-    status = runCommand(session, NLS.bind("{0} - {1} (2/3)", getName(), diagram.getName()), new RunnableWithBooleanResult() {
+    status = runCommand(session, NLS.bind("{0} - {1} (2/3)", getName(), diagramName), new RunnableWithBooleanResult() {
       @Override
       public void run() {
         DRepresentation targetDiagram = (DRepresentation) getContext().get(TARGET_DIAGRAM);
 
-        //Copy Layout of elements and GMF contents
+        // Copy Layout of elements and GMF contents
         copyDDiagramLayout((DSemanticDiagram) diagram, (DSemanticDiagram) targetDiagram, session, getShell());
 
         setStatus(Status.OK_STATUS);
       }
     });
 
-    status = runCommand(session, NLS.bind("{0} - {1} (3/3)", getName(), diagram.getName()), new RunnableWithBooleanResult() {
+    status = runCommand(session, NLS.bind("{0} - {1} (3/3)", getName(), diagramName), new RunnableWithBooleanResult() {
       @Override
       public void run() {
         DRepresentation targetDiagram = (DRepresentation) getContext().get(TARGET_DIAGRAM);
 
-        //Copy Layout of elements and GMF contents
+        // Copy Layout of elements and GMF contents
         rearrangeDDiagramLayout((DSemanticDiagram) diagram, (DSemanticDiagram) targetDiagram, session, getShell());
 
-        //Restore hidden elements
+        // Restore hidden elements
         restoreHiddenElements((DSemanticDiagram) diagram);
 
-        //Perform a refresh on target diagram
+        // Perform a refresh on target diagram
         CapellaServices.getService().forceRefresh((DDiagram) targetDiagram);
 
-        //Finalize diagrams
+        // Finalize diagrams
         finalizeDiagram(diagram, targetDiagram);
 
         setStatus(Status.OK_STATUS);
@@ -351,17 +351,17 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
     if (targetDiagram == null) {
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Invalid target diagram");
     }
-    return new Status(IStatus.OK, Activator.PLUGIN_ID, NLS.bind("Diagram initialized - {0}", targetDiagram.getName()));
+    return new Status(IStatus.OK, Activator.PLUGIN_ID, NLS.bind("Diagram initialized - {0}", diagramName));
   }
 
   /**
    * @param diagram
-   * @param description 
-   * @param sourceSemantic 
-   * @param session 
+   * @param description
+   * @param sourceSemantic
+   * @param session
    */
-  protected IStatus retrieveTargetDiagram(DRepresentation diagram, Session session, EObject sourceSemantic, RepresentationDescription description,
-      IProgressMonitor monitor) {
+  protected IStatus retrieveTargetDiagram(DRepresentation diagram, Session session, EObject sourceSemantic,
+      RepresentationDescription description, IProgressMonitor monitor) {
 
     IContext context = getContext();
     EObject targetSemantic = null;
@@ -381,27 +381,31 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
       }
     }
 
-    //Retrieve a valid target and the transformed description
+    // Retrieve a valid target and the transformed description
     if (allocatingDescription == null) {
-      allocatingDescription = DiagramDescriptionHelper.getService(getContext()).getTargetDescription(context, session, description);
+      allocatingDescription = DiagramDescriptionHelper.getService(getContext()).getTargetDescription(context, session,
+          description);
     }
     if ((allocatingDescription == null) || allocatingDescription.eIsProxy()) {
-      return (new Status(IStatus.ERROR, Activator.PLUGIN_ID, NLS.bind("Diagram ''{0}'' is not yet supported by diagram initialization", diagram.getName())));
+      return (new Status(IStatus.ERROR, Activator.PLUGIN_ID,
+          NLS.bind("Diagram ''{0}'' is not yet supported by diagram initialization", EObjectExt.getText(diagram))));
     }
     context.put(TARGET_DESCRIPTION, allocatingDescription);
 
-    //Retrieve target semantic of diagram
+    // Retrieve target semantic of diagram
     if (targetSemantic == null) {
       targetSemantic = getTargetSemantic(sourceSemantic, description, allocatingDescription);
     }
     if (targetSemantic == null) {
-      return (new Status(IStatus.ERROR, Activator.PLUGIN_ID, "No semantic element has been found to put the created diagram"));
+      return (new Status(IStatus.ERROR, Activator.PLUGIN_ID,
+          "No semantic element has been found to put the created diagram"));
     }
 
-    //Create a target diagram
+    // Create a target diagram
     if (targetDiagram == null) {
       String name = DiagramDescriptionHelper.getService(context).getTargetName(context, diagram, allocatingDescription);
-      targetDiagram = DiagramHelper.getService().createDRepresentation(name, targetSemantic, allocatingDescription, session, monitor);
+      targetDiagram = DiagramHelper.getService().createDRepresentation(name, targetSemantic, allocatingDescription,
+          session, monitor);
       getContext().put(TARGET_DIAGRAM, targetDiagram);
     }
 
@@ -446,41 +450,43 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
    * @param diagram
    */
   private IStatus rollbackDiagram(final DRepresentation diagram) {
-    //Retrieve the current session
+    // Retrieve the current session
     final Session session = DiagramHelper.getService().getSession(diagram);
     if (session == null) {
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Cannot retrieve session from the given diagram");
     }
 
-    IStatus status = runCommand(session, NLS.bind("{0} - {1} (2/2)", getName(), diagram.getName()), new RunnableWithBooleanResult() {
-      @Override
-      public void run() {
-        DRepresentation targetDiagram = (DRepresentation) getContext().get(TARGET_DIAGRAM);
-
-        try {
-          //Restore hidden elements
-          restoreHiddenElements((DSemanticDiagram) diagram);
-        } finally {
-
-          try {
-            if (!(getContext().exists(DIAGRAM_CREATION) && Boolean.FALSE.equals(getContext().get(DIAGRAM_CREATION)))) {
-              //Delete diagram
-              deleteDiagram(targetDiagram);
-            }
-          } finally {
+    IStatus status = runCommand(session, NLS.bind("{0} - {1} (2/2)", getName(), EObjectExt.getText(diagram)),
+        new RunnableWithBooleanResult() {
+          @Override
+          public void run() {
+            DRepresentation targetDiagram = (DRepresentation) getContext().get(TARGET_DIAGRAM);
 
             try {
-              //Clean diagram elements
-              finalizeDiagram(diagram, targetDiagram);
-
+              // Restore hidden elements
+              restoreHiddenElements((DSemanticDiagram) diagram);
             } finally {
-              setStatus(Status.OK_STATUS);
-            }
-          }
-        }
 
-      }
-    });
+              try {
+                if (!(getContext().exists(DIAGRAM_CREATION)
+                    && Boolean.FALSE.equals(getContext().get(DIAGRAM_CREATION)))) {
+                  // Delete diagram
+                  deleteDiagram(targetDiagram);
+                }
+              } finally {
+
+                try {
+                  // Clean diagram elements
+                  finalizeDiagram(diagram, targetDiagram);
+
+                } finally {
+                  setStatus(Status.OK_STATUS);
+                }
+              }
+            }
+
+          }
+        });
 
     return status;
   }
@@ -489,7 +495,8 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
    * @param targetDiagram
    */
   protected void deleteDiagram(DRepresentation targetDiagram) {
-    DeleteDRepresentationTask task = new DeleteDRepresentationTask(targetDiagram);
+    DeleteDRepresentationTask task = new DeleteDRepresentationTask(
+        RepresentationHelper.getRepresentationDescriptor(targetDiagram));
     task.execute();
   }
 
@@ -507,10 +514,10 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
 
       tgtDiagram.setSynchronized(false);
 
-      //Activate all compatible filters between both diagrams
+      // Activate all compatible filters between both diagrams
       for (FilterDescription description : srcDiagram.getActivatedFilters()) {
-        FilterDescription filterDescription =
-            DiagramDescriptionHelper.getService(getContext()).getTargetFilterDescription(getContext(), (DiagramDescription) sourceDescription,
+        FilterDescription filterDescription = DiagramDescriptionHelper.getService(getContext())
+            .getTargetFilterDescription(getContext(), (DiagramDescription) sourceDescription,
                 (DiagramDescription) targetDescription, description);
         if (filterDescription != null) {
           tgtDiagram.getActivatedFilters().add(filterDescription);
@@ -534,32 +541,36 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
       HashMapSet<DSemanticDecorator, DSemanticDecorator> map = getTargetViews(getContext());
       map.put((DSemanticDecorator) sourceContents.getDDiagram(), (DSemanticDecorator) targetContents.getDDiagram());
 
-      DiagramDescription sourceDescription = (DiagramDescription) DiagramHelper.getService().getDescription(sourceDiagram);
-      DiagramDescription targetDescription = (DiagramDescription) DiagramHelper.getService().getDescription(targetDiagram);
+      DiagramDescription sourceDescription = (DiagramDescription) DiagramHelper.getService()
+          .getDescription(sourceDiagram);
+      DiagramDescription targetDescription = (DiagramDescription) DiagramHelper.getService()
+          .getDescription(targetDiagram);
 
-      //For all nodes
+      // For all nodes
       for (DDiagramElement element : sourceContents.getDiagramElements()) {
         if (element instanceof AbstractDNode) {
           EObject sourceSemantic = element.getTarget();
           EObject semanticSource = sourceSemantic;
 
-          if ((sourceSemantic instanceof Part) && (((Part) sourceSemantic).getAbstractType().eContainer() instanceof BlockArchitecture)) {
-        	  semanticSource = ((Part) sourceSemantic).getAbstractType();
-        	  }
+          if ((sourceSemantic instanceof Part)
+              && (((Part) sourceSemantic).getAbstractType().eContainer() instanceof BlockArchitecture)) {
+            semanticSource = ((Part) sourceSemantic).getAbstractType();
+          }
           for (EObject semanticTarget : getTargetSemantics(semanticSource, sourceDescription, targetDescription)) {
-        	  EObject targetSemantic= semanticTarget;
-        	  if ((semanticTarget instanceof Component) && (semanticTarget.eContainer() instanceof BlockArchitecture)) {
-        		  for (Part part: getCache(ComponentExt::getRepresentingParts, (Component) semanticTarget)) {
-        		  targetSemantic = part;
-        		  break;
-        		  }
-        	  }
-            DiagramElementMapping mapping =
-                DiagramDescriptionHelper.getService(getContext()).getTargetMapping(getContext(), sourceDescription, targetDescription,
-                    element.getDiagramElementMapping(), semanticSource, semanticTarget);
+            EObject targetSemantic = semanticTarget;
+            if ((semanticTarget instanceof Component) && (semanticTarget.eContainer() instanceof BlockArchitecture)) {
+              for (Part part : getCache(ComponentExt::getRepresentingParts, (Component) semanticTarget)) {
+                targetSemantic = part;
+                break;
+              }
+            }
+            DiagramElementMapping mapping = DiagramDescriptionHelper.getService(getContext()).getTargetMapping(
+                getContext(), sourceDescription, targetDescription, element.getDiagramElementMapping(), semanticSource,
+                semanticTarget);
 
             if ((mapping != null) && (mapping instanceof AbstractNodeMapping)) {
-              for (DDiagramElement target : getNodes(sourceDescription, mapping, targetContents, targetSemantic, element)) {
+              for (DDiagramElement target : getNodes(sourceDescription, mapping, targetContents, targetSemantic,
+                  element)) {
                 map.put(element, target);
                 copyElementView(element, target);
               }
@@ -569,18 +580,19 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
         }
       }
 
-      //For all edges
+      // For all edges
       for (DDiagramElement element : sourceContents.getDiagramElements()) {
         if (element instanceof DEdge) {
           EObject sourceSemantic = element.getTarget();
           for (EObject targetSemantic : getTargetSemantics(sourceSemantic, sourceDescription, targetDescription)) {
-            DiagramElementMapping mapping =
-                DiagramDescriptionHelper.getService(getContext()).getTargetMapping(getContext(), sourceDescription, targetDescription,
-                    element.getDiagramElementMapping(), sourceSemantic, targetSemantic);
+            DiagramElementMapping mapping = DiagramDescriptionHelper.getService(getContext()).getTargetMapping(
+                getContext(), sourceDescription, targetDescription, element.getDiagramElementMapping(), sourceSemantic,
+                targetSemantic);
 
             if ((mapping != null) && (mapping instanceof EdgeMapping)) {
 
-              for (DDiagramElement target : getEdges(sourceDescription, mapping, targetContents, targetSemantic, element)) {
+              for (DDiagramElement target : getEdges(sourceDescription, mapping, targetContents, targetSemantic,
+                  element)) {
                 map.put(element, target);
                 copyElementView(element, target);
               }
@@ -602,8 +614,8 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
    * @param element
    * @return
    */
-  protected Collection<DDiagramElement> getEdges(DiagramDescription sourceDescription, DiagramElementMapping mapping, DDiagramContents targetContents,
-      EObject targetSemantic, DDiagramElement element) {
+  protected Collection<DDiagramElement> getEdges(DiagramDescription sourceDescription, DiagramElementMapping mapping,
+      DDiagramContents targetContents, EObject targetSemantic, DDiagramElement element) {
     DEdge edge = (DEdge) element;
     Collection<DDiagramElement> targetViews = new ArrayList<DDiagramElement>();
 
@@ -626,9 +638,8 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
           continue;
         }
 
-        DDiagramElement targetView =
-            DiagramDescriptionHelper.getService(getContext()).showEdge(getContext(), sourceDescription, targetContents, (EdgeMapping) mapping,
-                sourceNode, targetNode, targetSemantic);
+        DDiagramElement targetView = DiagramDescriptionHelper.getService(getContext()).showEdge(getContext(),
+            sourceDescription, targetContents, (EdgeMapping) mapping, sourceNode, targetNode, targetSemantic);
 
         if (targetView != null) {
           map.put(element, targetView);
@@ -647,8 +658,8 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
    * @param targetSemantic
    * @return
    */
-  protected Collection<DDiagramElement> getNodes(DiagramDescription sourceDescription, DiagramElementMapping mapping, DDiagramContents targetContents,
-      EObject targetSemantic, DDiagramElement sourceView) {
+  protected Collection<DDiagramElement> getNodes(DiagramDescription sourceDescription, DiagramElementMapping mapping,
+      DDiagramContents targetContents, EObject targetSemantic, DDiagramElement sourceView) {
 
     Collection<DDiagramElement> targetViews = new ArrayList<DDiagramElement>();
 
@@ -665,16 +676,16 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
         continue;
       }
 
-      DSemanticDecorator targetView =
-          DiagramDescriptionHelper.getService(getContext()).showNode(getContext(), sourceDescription, targetContents, (AbstractNodeMapping) mapping,
-              containerNode, targetSemantic);
+      DSemanticDecorator targetView = DiagramDescriptionHelper.getService(getContext()).showNode(getContext(),
+          sourceDescription, targetContents, (AbstractNodeMapping) mapping, containerNode, targetSemantic);
 
       if (targetView == null) {
 
-        if ((targetSemantic instanceof Part) && !(((Part)targetSemantic).getAbstractType().eContainer() instanceof BlockArchitecture)) {
+        if ((targetSemantic instanceof Part)
+            && !(((Part) targetSemantic).getAbstractType().eContainer() instanceof BlockArchitecture)) {
           if (((Part) targetSemantic).getAbstractType() instanceof Component) {
-            if (BlockArchitectureExt.getFirstComponent(BlockArchitectureExt.getRootBlockArchitecture(targetSemantic)).equals(
-                ((Part) targetSemantic).getAbstractType())) {
+            if (BlockArchitectureExt.getFirstComponent(BlockArchitectureExt.getRootBlockArchitecture(targetSemantic))
+                .equals(((Part) targetSemantic).getAbstractType())) {
               map.put(sourceView, (DSemanticDecorator) targetContents.getDDiagram());
             }
           }
@@ -735,6 +746,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
 
   /**
    * Create edit parts for the given GMF diagram
+   * 
    * @param diagram
    * @param shell
    * @return
@@ -760,18 +772,20 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
 
     /*
      * This method is overridden to use Sirius's EObjectQuery.getInverseReferences instead of EMFCoreUtil.getReferencers
-     * since the latter initializes GMF's CrossReferenceAdapter which creates bugs when the session is closed (see Bug 1754)
+     * since the latter initializes GMF's CrossReferenceAdapter which creates bugs when the session is closed (see Bug
+     * 1754)
      */
     @Override
     public Collection getReferencingViews(EObject element) {
-      Collection<EObject> views = new EObjectQuery(element).getInverseReferences(NotationPackage.eINSTANCE.getView_Element());
-      
+      Collection<EObject> views = new EObjectQuery(element)
+          .getInverseReferences(NotationPackage.eINSTANCE.getView_Element());
+
       // remove subviews since they will be refactored with their parent
       for (Iterator i = views.iterator(); i.hasNext();) {
         View view = (View) i.next();
-        
+
         EObject parent = null;
-        while ((parent = view.eContainer()) instanceof View) { 
+        while ((parent = view.eContainer()) instanceof View) {
           if (views.contains(parent)) {
             i.remove();
             break;
@@ -796,6 +810,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
 
   /**
    * Load GMF diagram and perform a sync if necessary
+   * 
    * @param diagram
    * @param session
    * @param sync
@@ -804,11 +819,13 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
   Diagram loadGMF(DSemanticDiagram diagram, Session session, boolean sync) {
     Collection<?> sourceDiagrams = helperViewer.getReferencingViews(diagram);
     if (!sourceDiagrams.isEmpty()) {
-      //Initialize GMF diagram
+      // Initialize GMF diagram
       Diagram diagramGMF = (Diagram) sourceDiagrams.iterator().next();
       if (sync) {
-        CanonicalSynchronizer sourceSynchronizer = CanonicalSynchronizerFactory.INSTANCE.createCanonicalSynchronizer(diagramGMF);
-        Command sourceSynchronizerCommand = new SynchronizeGMFModelCommand(session.getTransactionalEditingDomain(), sourceSynchronizer);
+        CanonicalSynchronizer sourceSynchronizer = CanonicalSynchronizerFactory.INSTANCE
+            .createCanonicalSynchronizer(diagramGMF);
+        Command sourceSynchronizerCommand = new SynchronizeGMFModelCommand(session.getTransactionalEditingDomain(),
+            sourceSynchronizer);
         sourceSynchronizerCommand.execute();
       }
 
@@ -820,7 +837,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
   protected void revealHiddenElements(DSemanticDiagram sourceDiagram, DSemanticDiagram targetDiagram) {
     HashMapSet<DSemanticDecorator, DSemanticDecorator> views = getTargetViews(getContext());
 
-    //Reveal all hidden elements
+    // Reveal all hidden elements
     HashMapSet<DSemanticDecorator, DSemanticDecorator> hiddens = getHiddenSourceViews(getContext());
     for (DSemanticDecorator sourceView : views.keySet()) {
       if (sourceView instanceof DDiagramElement) {
@@ -835,7 +852,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
   protected void restoreHiddenElements(DSemanticDiagram sourceDiagram) {
     HashMapSet<DSemanticDecorator, DSemanticDecorator> views = getTargetViews(getContext());
 
-    //Hide all hidden elements
+    // Hide all hidden elements
     HashMapSet<DSemanticDecorator, DSemanticDecorator> hiddens = getHiddenSourceViews(getContext());
     for (DSemanticDecorator sourceView : hiddens.keySet()) {
       if (sourceView instanceof DDiagramElement) {
@@ -864,11 +881,13 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
 
   }
 
-  protected void rearrangeDDiagramLayout(DSemanticDiagram sourceDiagram, DSemanticDiagram targetDiagram, Session session, Shell shell) {
+  protected void rearrangeDDiagramLayout(DSemanticDiagram sourceDiagram, DSemanticDiagram targetDiagram,
+      Session session, Shell shell) {
 
     HashMapSet<DSemanticDecorator, DSemanticDecorator> views = getTargetViews(getContext());
 
-    //For each view, if multiple view have been created, we move them with PADDING to avoid multiple views at the same location
+    // For each view, if multiple view have been created, we move them with PADDING to avoid multiple views at the same
+    // location
     for (DSemanticDecorator sourceView : views.keySet()) {
       Collection<DSemanticDecorator> targetViews = views.get(sourceView);
       if (targetViews.size() > 1) {
@@ -882,7 +901,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
           if (!sourceDiagrams.isEmpty()) {
             for (Object view : sourceDiagrams) {
 
-              //Add padding on Nodes
+              // Add padding on Nodes
               if (view instanceof Node) {
                 Node sview = (Node) view;
                 LayoutConstraint targetConstraint = (sview.getLayoutConstraint());
@@ -895,7 +914,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
                 }
               }
 
-              //Add padding on Edges bendpoints
+              // Add padding on Edges bendpoints
               if (view instanceof Edge) {
                 Edge sview = (Edge) view;
                 Bendpoints bendpoints = sview.getBendpoints();
@@ -906,8 +925,8 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
                   for (Object point : bps.getPoints()) {
                     if (point instanceof RelativeBendpoint) {
                       RelativeBendpoint bp = (RelativeBendpoint) point;
-                      RelativeBendpoint bpE =
-                          new RelativeBendpoint(bp.getSourceX() + padding, bp.getSourceY() + padding, bp.getTargetX() + padding, bp.getTargetY() + padding);
+                      RelativeBendpoint bpE = new RelativeBendpoint(bp.getSourceX() + padding,
+                          bp.getSourceY() + padding, bp.getTargetX() + padding, bp.getTargetY() + padding);
                       cl.add(bpE);
                     }
                   }
@@ -924,7 +943,8 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
 
   }
 
-  protected void copyDDiagramLayout(DSemanticDiagram sourceDiagram, DSemanticDiagram targetDiagram, Session session, Shell shell) {
+  protected void copyDDiagramLayout(DSemanticDiagram sourceDiagram, DSemanticDiagram targetDiagram, Session session,
+      Shell shell) {
 
     Diagram srcDiagram = loadGMF(sourceDiagram, session, false);
     Diagram tgtDiagram = loadGMF(targetDiagram, session, true);
@@ -932,61 +952,63 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
     final DiagramEditPart sourceEditPart = loadEditParts(srcDiagram, shell);
     final DiagramEditPart targetEditPart = loadEditParts(tgtDiagram, shell);
 
-    //Store layout of source diagram
+    // Store layout of source diagram
     List<SiriusFormatDataManager> mgrs = FormatDataManagerRegistry.getSiriusFormatDataManagers(sourceDiagram);
     if (!mgrs.isEmpty()) {
       try {
         mgrs.iterator().next().storeFormatData(sourceEditPart);
       } catch (Exception e) {
-        //Nothing. if we are not able to store a layout, it's ok.
+        // Nothing. if we are not able to store a layout, it's ok.
       }
     }
 
-    //Restore layout into target diagram
+    // Restore layout into target diagram
     mgrs = FormatDataManagerRegistry.getSiriusFormatDataManagers(targetDiagram);
     if (!mgrs.isEmpty()) {
       try {
         mgrs.iterator().next().applyLayout(targetEditPart);
       } catch (Exception e) {
-        //Nothing. if we are not able to apply a layout, it's ok.
+        // Nothing. if we are not able to apply a layout, it's ok.
       }
     }
 
-    //Clear layout of source diagram
+    // Clear layout of source diagram
     mgrs = FormatDataManagerRegistry.getSiriusFormatDataManagers(sourceDiagram);
     if (!mgrs.isEmpty()) {
       try {
         mgrs.iterator().next().clearFormatData();
       } catch (Exception e) {
-        //Nothing. if we are not able to store a layout, it's ok.
+        // Nothing. if we are not able to store a layout, it's ok.
       }
     }
 
-    //--- Sirius SHARED DATA : Clean to avoid ArrangeLayout on diagram opening ---//
+    // --- Sirius SHARED DATA : Clean to avoid ArrangeLayout on diagram opening ---//
     cleanArrangeLayout(targetDiagram);
 
     copyNotes(srcDiagram, tgtDiagram, sourceEditPart, targetEditPart);
   }
 
   /**
-   * This method should not exists.
-   * Prevent an ArrangeLayout on diagram opening by removing some shared informations stored
+   * This method should not exists. Prevent an ArrangeLayout on diagram opening by removing some shared informations
+   * stored
    */
   protected void cleanArrangeLayout(DSemanticDiagram targetDiagram) {
 
-    //Perform an empty arrange layout on target diagram.
+    // Perform an empty arrange layout on target diagram.
     new DiagramDialectArrangeOperation().arrange(null, targetDiagram);
 
-    //Clean ArrangeLayout shared map to avoid ArrageLayout on opening
+    // Clean ArrangeLayout shared map to avoid ArrageLayout on opening
     SiriusLayoutDataManager.INSTANCE.getCreatedViewsToLayout().clear();
   }
 
   /**
    * Copy GMF notes from source diagram to target diagram
+   * 
    * @param sourceDiagram
    * @param targetDiagram
    */
-  void copyNotes(Diagram sourceDiagram, Diagram targetDiagram, DiagramEditPart sourceEditPart, DiagramEditPart targetEditPart) {
+  void copyNotes(Diagram sourceDiagram, Diagram targetDiagram, DiagramEditPart sourceEditPart,
+      DiagramEditPart targetEditPart) {
     LinkedList<EObject> childs = new LinkedList<EObject>();
     if (sourceDiagram.getChildren().size() > 0) {
       childs.addAll(sourceDiagram.getChildren());
@@ -997,13 +1019,15 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
       if (child instanceof View) {
         View viewChild = (View) child;
         if (DiagramNotationType.NOTE.getSemanticHint().equals(viewChild.getType())) {
-          CreateViewRequest request = CreateViewRequestFactory.getCreateShapeRequest(DiagramNotationType.NOTE, DiagramUIPlugin.DIAGRAM_PREFERENCES_HINT);
+          CreateViewRequest request = CreateViewRequestFactory.getCreateShapeRequest(DiagramNotationType.NOTE,
+              DiagramUIPlugin.DIAGRAM_PREFERENCES_HINT);
           if ((request != null) && request.getViewDescriptors().iterator().hasNext()) {
             targetEditPart.getCommand(request).execute();
             ViewDescriptor descriptor = request.getViewDescriptors().iterator().next();
             View view = (View) descriptor.getAdapter(View.class);
             helperViewer.copyViewChildren(viewChild, view);
-            helperViewer.copyViewStyle(viewChild, view, view.getStyle(NotationPackage.Literals.SHAPE_STYLE), Collections.emptyList());
+            helperViewer.copyViewStyle(viewChild, view, view.getStyle(NotationPackage.Literals.SHAPE_STYLE),
+                Collections.emptyList());
             helperViewer.copyViewAppearance(viewChild, view, Collections.emptyList());
 
             if ((viewChild instanceof Node) && (view instanceof Node)) {
@@ -1013,7 +1037,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
 
               if ((style != null) && (style instanceof ShapeStyle)) {
                 ShapeStyle shapeStyle = (ShapeStyle) style;
-                //Copy old gmf note styles
+                // Copy old gmf note styles
                 if (view instanceof Shape) {
                   Shape targetShape = (Shape) view;
                   targetShape.setDescription(shapeStyle.getDescription());
@@ -1062,10 +1086,11 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
    * @param allocatingDescription
    * @return
    */
-  protected EObject getTargetSemantic(EObject sourceSemantic, RepresentationDescription sourceDescription, RepresentationDescription allocatingDescription) {
+  protected EObject getTargetSemantic(EObject sourceSemantic, RepresentationDescription sourceDescription,
+      RepresentationDescription allocatingDescription) {
     if (sourceSemantic instanceof TraceableElement) {
-      EObject target =
-          DiagramDescriptionHelper.getService(getContext()).getTargetSemantic(getContext(), sourceSemantic, sourceDescription, allocatingDescription);
+      EObject target = DiagramDescriptionHelper.getService(getContext()).getTargetSemantic(getContext(), sourceSemantic,
+          sourceDescription, allocatingDescription);
       if (target != null) {
         return target;
       }
@@ -1081,8 +1106,8 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
   protected Collection<EObject> getTargetSemantics(EObject sourceSemantic, RepresentationDescription sourceDescription,
       RepresentationDescription targetDescription) {
     if (sourceSemantic instanceof TraceableElement) {
-      Collection<EObject> target =
-          DiagramDescriptionHelper.getService(getContext()).getTargetSemantics(getContext(), sourceSemantic, sourceDescription, targetDescription);
+      Collection<EObject> target = DiagramDescriptionHelper.getService(getContext()).getTargetSemantics(getContext(),
+          sourceSemantic, sourceDescription, targetDescription);
       if (!target.isEmpty()) {
         return target;
       }

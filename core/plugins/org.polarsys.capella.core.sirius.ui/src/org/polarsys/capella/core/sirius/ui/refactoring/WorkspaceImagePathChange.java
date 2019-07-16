@@ -31,6 +31,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.Messages;
 import org.polarsys.capella.common.ef.ExecutionManager;
@@ -120,12 +121,12 @@ public class WorkspaceImagePathChange extends Change {
               && (position > 0 || position == 0 && !ResourceHelper.collectImageFiles(container).isEmpty())) {
             // Get all diagrams from the session
             pm.subTask(org.polarsys.capella.core.sirius.ui.internal.Messages.collecting_diagrams);
-            Collection<DRepresentation> allRepresentations = DialectManager.INSTANCE.getAllRepresentations(session);
+            Collection<DRepresentationDescriptor> descriptors = DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
             // Update the workspace images for each diagram
-            for (DRepresentation diagram : allRepresentations) {
+            for (DRepresentationDescriptor descriptor : descriptors) {
               pm.subTask(
-                  NLS.bind(org.polarsys.capella.core.sirius.ui.internal.Messages.updating_diagram, diagram.getName()));
-              updateWorkspaceImagePath(diagram);
+                  NLS.bind(org.polarsys.capella.core.sirius.ui.internal.Messages.updating_diagram, descriptor.getName()));
+              updateWorkspaceImagePath(descriptor.getRepresentation());
             }
           }
           // If it's an IProject rename => rename Capella model objects: Project & SystemEngineering
@@ -157,9 +158,9 @@ public class WorkspaceImagePathChange extends Change {
     session.save(pm);
   }
 
-  private void updateWorkspaceImagePath(DRepresentation diagram) {
-    if (diagram != null) {
-      for (DRepresentationElement element : diagram.getOwnedRepresentationElements()) {
+  private void updateWorkspaceImagePath(DRepresentation representation) {
+    if (representation != null) {
+      for (DRepresentationElement element : representation.getOwnedRepresentationElements()) {
         Iterator<EObject> iterator = element.eAllContents();
         while (iterator.hasNext()) {
           EObject eObject = iterator.next();

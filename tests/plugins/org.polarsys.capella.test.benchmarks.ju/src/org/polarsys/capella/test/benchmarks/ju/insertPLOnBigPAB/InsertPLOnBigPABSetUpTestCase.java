@@ -15,6 +15,7 @@ import java.util.List;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.Type;
 import org.polarsys.capella.test.benchmarks.ju.testcases.AbstractSetUpTestCase;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
@@ -45,7 +46,7 @@ public class InsertPLOnBigPABSetUpTestCase extends AbstractSetUpTestCase {
 
     String bigPABName = getBigPABName();
     DRepresentation dRepresentation = DiagramHelper.getDRepresentation(session, bigPABName);
-    XABDiagram pab = XABDiagram.openDiagram(context, ((DDiagram) dRepresentation).getName(), Type.PA);
+    XABDiagram pab = XABDiagram.openDiagram(context, RepresentationHelper.getRepresentationDescriptor(dRepresentation).getName(), Type.PA);
     contexts.add(pab);
 
   }

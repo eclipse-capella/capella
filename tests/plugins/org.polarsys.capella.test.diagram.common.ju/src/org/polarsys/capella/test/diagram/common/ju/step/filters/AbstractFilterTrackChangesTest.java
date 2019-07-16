@@ -20,7 +20,9 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.junit.Assert;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.step.AbstractDiagramStepWithDelta;
 
@@ -67,12 +69,12 @@ public abstract class AbstractFilterTrackChangesTest extends AbstractDiagramStep
       // A new filter have been created
       setOfActualFilters.removeAll(expectedFiltersSet);
       Assert.assertTrue(MessageFormat.format(Messages.newFilterCreationDetected, setOfActualFilters.toString(),
-          getDiagramContext().getDiagram().getName()), false);
+          getDiagramContext().getDiagramDescriptor().getName()), false);
     } else if (setOfActualFilters.size() < expectedFiltersSet.size()) {
       // A filter have been deleted from diagram
       expectedFiltersSet.removeAll(setOfActualFilters);
       Assert.assertTrue(MessageFormat.format(Messages.filterRemovalDetected, expectedFiltersSet.toString(),
-          getDiagramContext().getDiagram().getName()), false);
+          getDiagramContext().getDiagramDescriptor().getName()), false);
     }
 
     boolean haveSameFilters = setOfActualFilters.equals(expectedFiltersSet);
@@ -83,7 +85,7 @@ public abstract class AbstractFilterTrackChangesTest extends AbstractDiagramStep
       List<String> origineFilterList = new ArrayList<String>(setOfActualFilters);
       origineFilterList.removeAll(expectedFiltersSet);
 
-      Assert.fail(MessageFormat.format(Messages.renamedFiltersFound, getDiagramContext().getDiagram().getName(),
+      Assert.fail(MessageFormat.format(Messages.renamedFiltersFound, getDiagramContext().getDiagramDescriptor().getName(),
           origineFilterList.toString(), renamingFilterList.toString()));
     }
     super.postRunTest();
@@ -119,7 +121,7 @@ public abstract class AbstractFilterTrackChangesTest extends AbstractDiagramStep
     }
 
     Assert.assertTrue(MessageFormat.format(Messages.duplicatedFilterIDDetected, listOfDuplicated.toString(),
-        getDiagramContext().getDiagram().getName()), listOfDuplicated.isEmpty());
+        EObjectExt.getText(getDiagramContext().getDiagram())), listOfDuplicated.isEmpty());
 
     return setOfActualFilters;
   }

@@ -59,7 +59,7 @@ public class ChangeFilter extends AbstractDiagramStep<DDiagramElement> {
       filterDescription = FilterOnDiagramHelper.removeFilterOnDiagram(getDiagramContext().getDiagram(), filterName);
     }
     Assert.assertNotNull(MessageFormat.format("Filter \"{0}\" not found for diagram \"{1}\"", filterName,
-        getDiagramContext().getDiagram().getName()), filterDescription);
+        getDiagramContext().getDiagramDescriptor().getName()), filterDescription);
 
     // Count hidden elements
     int numberOfHiddenElements = 0;

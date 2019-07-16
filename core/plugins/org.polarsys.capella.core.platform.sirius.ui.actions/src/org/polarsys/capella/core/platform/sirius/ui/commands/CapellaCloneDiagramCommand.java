@@ -166,27 +166,20 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
       // Copy all the Dannotation of DRepresentationDescriptor
       Collection<DAnnotation> results = SiriusCopierHelper.copyAllWithNoUidDuplication(descriptor.getEAnnotations());
 
-      DRepresentation representation = descriptor.getRepresentation();
-      if (representation instanceof DSemanticDecorator) {
-        // Get target semantic element.
-        EObject target = ((DSemanticDecorator) representation).getTarget();
-        // Get session.
-        Session session = SessionManager.INSTANCE.getSession(target);
-        // Copy representation.
-        DRepresentation copyRepresentation = DialectManager.INSTANCE.copyRepresentation(representation,
-            getCloneName(representation, session), session, null);
-        DRepresentationDescriptor copyRepresentationDescriptor = RepresentationHelper
-            .getRepresentationDescriptor(session, copyRepresentation);
-        if (copyRepresentationDescriptor != null) {
-          // put the list of copy Dannotation in the copied DRepresentationDescriptor
-          copyRepresentationDescriptor.getEAnnotations().addAll(results);
-          // Retain copied reference.
-          _clones.add(copyRepresentationDescriptor);
-        }
-      } else {
-        CapellaActionsActivator activator = CapellaActionsActivator.getDefault();
-        activator.getLog().log(new Status(IStatus.WARNING, activator.getPluginId(),
-            "Clone is not supported for " + representation.getName())); //$NON-NLS-1$
+      // Get target semantic element.
+      EObject target = descriptor.getTarget();
+      // Get session.
+      Session session = SessionManager.INSTANCE.getSession(target);
+      // Copy representation.
+      DRepresentation copyRepresentation = DialectManager.INSTANCE.copyRepresentation(descriptor,
+          getCloneName(descriptor, session), session, null);
+      DRepresentationDescriptor copyRepresentationDescriptor = RepresentationHelper.getRepresentationDescriptor(session,
+          copyRepresentation);
+      if (copyRepresentationDescriptor != null) {
+        // put the list of copy Dannotation in the copied DRepresentationDescriptor
+        copyRepresentationDescriptor.getEAnnotations().addAll(results);
+        // Retain copied reference.
+        _clones.add(copyRepresentationDescriptor);
       }
     }
   }
@@ -197,7 +190,7 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
    * @param representation
    * @return
    */
-  protected String getCloneName(DRepresentation representation, Session session) {
+  protected String getCloneName(DRepresentationDescriptor representation, Session session) {
     String message = Messages.CapellaCloneDiagramCommand_CloneName_Prefix;
     String cloneName = StringHelper.formatMessage(message,
         new Object[] { ICommonConstants.EMPTY_STRING, representation.getName() });

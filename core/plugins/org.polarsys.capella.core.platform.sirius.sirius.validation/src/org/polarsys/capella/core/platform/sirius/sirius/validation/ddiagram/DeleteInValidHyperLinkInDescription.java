@@ -19,12 +19,10 @@ import javax.xml.parsers.SAXParserFactory;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.utils.saxparser.IConstantValidation;
 import org.polarsys.capella.core.model.utils.saxparser.SaxParserHelper;
 import org.xml.sax.Attributes;
@@ -44,23 +42,6 @@ public class DeleteInValidHyperLinkInDescription {
   public DeleteInValidHyperLinkInDescription() {
     __description = null;
     _currentElementDescription = null;
-  }
-
-  protected String getName(EObject object_p) {
-    String result = null;
-    if (null != object_p) {
-      result = CapellaElementExt.getName(object_p);
-      if ((null == result) || result.isEmpty()) {
-        if (object_p instanceof DRepresentation) {
-          DRepresentation res = (DRepresentation) object_p;
-          String repName = res.getName();
-          if (null != repName) {
-            result = repName;
-          }
-        }
-      }
-    }
-    return result;
   }
 
   public boolean updateDescription(List<EObject> modelElements) {

@@ -32,6 +32,7 @@ import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.junit.Assert;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
@@ -79,7 +80,7 @@ public class DiagramContext {
   public DiagramContext(SessionContext context, DDiagram diagram) {
 
     this.diagram = diagram;
-    diagramIdentifier = diagram.getName();
+    diagramIdentifier = EObjectExt.getText(diagram);
     diagramType = diagram.getDescription().getName();
     sessionContext = context;
   }

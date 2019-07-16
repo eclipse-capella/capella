@@ -17,6 +17,7 @@ import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
@@ -50,24 +51,15 @@ public class I_22_Resolver extends AbstractCapellaMarkerResolution {
              */
             @Override
             protected String getName(EObject object_p) {
-              String result = super.getName(object_p);
-              if ((null == result) || result.isEmpty()) {
-                if (object_p instanceof DRepresentation) {
-                  DRepresentation res = (DRepresentation) object_p;
-                  String repName = res.getName();
-                  if (null != repName) {
-                    result = repName;
-                  }
-                }
-              }
-              return result;
+              return CapellaElementInDescriptionNameCheck.getName(object_p);
             }
+            
             /**
              * {@inheritDoc}
              */
             @Override
              protected boolean managedObject(EObject object_p) {
-              return super.managedObject(object_p) || (object_p instanceof DRepresentation);
+              return super.managedObject(object_p) || (object_p instanceof DRepresentationDescriptor);
             }
           };
           flag[0] = writeDescription.updateDescription(modelElements);

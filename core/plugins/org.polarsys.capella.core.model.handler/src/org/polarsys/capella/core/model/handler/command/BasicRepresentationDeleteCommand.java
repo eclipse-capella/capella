@@ -64,11 +64,8 @@ public class BasicRepresentationDeleteCommand extends RecordingCommand {
     try {
       monitor.beginTask(description, descriptors.size());
       for (DRepresentationDescriptor descriptor : descriptors) {
-
-        if (descriptor.getName() != null) {
-          monitor.setTaskName(
-              NLS.bind(Messages.DeleteRepresentationCommand_DeleteRepresentationCommandText, descriptor.getName()));
-        }
+        monitor.setTaskName(
+            NLS.bind(Messages.DeleteRepresentationCommand_DeleteRepresentationCommandText, descriptor.getName()));
         Session session = null;
         EObject targetElement = descriptor.getTarget();
         if (null != targetElement) {
@@ -87,14 +84,14 @@ public class BasicRepresentationDeleteCommand extends RecordingCommand {
             // Notify changes.
             SessionManager.INSTANCE.notifyRepresentationDeleted(session);
           }
-          
+
         } else {
           StringBuilder loggerMessage = new StringBuilder(
               "DeleteRepresentationAction.DeleteRepresentationCommand.doExecute(..) _ "); //$NON-NLS-1$
           loggerMessage.append("unable to find a session for ").append(descriptor.toString()); //$NON-NLS-1$
           logger.error(new EmbeddedMessage(loggerMessage.toString(), IReportManagerDefaultComponents.UI));
         }
-        
+
         monitor.worked(1);
       }
     } finally {

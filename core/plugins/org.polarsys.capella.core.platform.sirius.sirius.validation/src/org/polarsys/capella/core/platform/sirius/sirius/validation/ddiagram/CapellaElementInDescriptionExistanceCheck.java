@@ -19,11 +19,9 @@ import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.IValidationContext;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.utils.saxparser.IConstantValidation;
 import org.polarsys.capella.core.model.utils.saxparser.SaxParserHelper;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
@@ -39,44 +37,43 @@ import org.xml.sax.helpers.DefaultHandler;
 public class CapellaElementInDescriptionExistanceCheck extends AbstractValidationRule {
 
   public final class LocalDefaultHandler extends DefaultHandler {
-		private final CapellaElement capellaElement;
-		private final IStatus[] result;
-		private final IValidationContext ctx;
+    private final CapellaElement capellaElement;
+    private final IStatus[] result;
+    private final IValidationContext ctx;
 
-		public LocalDefaultHandler(CapellaElement capellaElement,
-				IStatus[] result, IValidationContext ctx) {
-			this.capellaElement = capellaElement;
-			this.result = result;
-			this.ctx = ctx;
-		}
+    public LocalDefaultHandler(CapellaElement capellaElement, IStatus[] result, IValidationContext ctx) {
+      this.capellaElement = capellaElement;
+      this.result = result;
+      this.ctx = ctx;
+    }
 
-		@Override
-		public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-		  // if a tag : look for hyperLink to capella element or diagram
-		  if (qName.equalsIgnoreCase(IConstantValidation.XHTML_A_TAG)) {
-		    for (int i = 0; i < attributes.getLength(); i++) {
-		      // above filter state the image source (which could be relative or absolute path)
-		      String attValue = attributes.getValue(i);
-		      String attName = attributes.getQName(i);
+    @Override
+    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+      // if a tag : look for hyperLink to capella element or diagram
+      if (qName.equalsIgnoreCase(IConstantValidation.XHTML_A_TAG)) {
+        for (int i = 0; i < attributes.getLength(); i++) {
+          // above filter state the image source (which could be relative or absolute path)
+          String attValue = attributes.getValue(i);
+          String attName = attributes.getQName(i);
 
-		      if ((null != attValue) && !attValue.isEmpty() && qName.equalsIgnoreCase(IConstantValidation.XHTML_A_TAG)
-		          && attName.equalsIgnoreCase(IConstantValidation.XHTML_HREF_ATT)) {
-		        // get id
-		        // get element
-		          EObject eObject = SaxParserHelper.getEObjectFromHrefAttribute(capellaElement, attValue);
+          if ((null != attValue) && !attValue.isEmpty() && qName.equalsIgnoreCase(IConstantValidation.XHTML_A_TAG)
+              && attName.equalsIgnoreCase(IConstantValidation.XHTML_HREF_ATT)) {
+            // get id
+            // get element
+            EObject eObject = SaxParserHelper.getEObjectFromHrefAttribute(capellaElement, attValue);
 
-		          if (null == eObject) {
-		            // element does not exist in the resource
-		            result[0] = ctx.createFailureStatus();
-		            break;
-		          }
-		      }
-		    }
-		  }
-		}
-	}
+            if (null == eObject) {
+              // element does not exist in the resource
+              result[0] = ctx.createFailureStatus();
+              break;
+            }
+          }
+        }
+      }
+    }
+  }
 
-protected Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.VALIDATION);
+  protected Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.VALIDATION);
   protected StringBuilder desc = null;
 
   @Override
@@ -116,10 +113,10 @@ protected Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportM
           StringBuilder loggerMessage = new StringBuilder("Invalid description format"); //$NON-NLS-1$
           logger.debug(loggerMessage.toString(), exception_p);
         } finally {
-        	if (reader!=null && saxParser!=null){
-                reader.close();
-                saxParser.reset();
-        	}
+          if (reader != null && saxParser != null) {
+            reader.close();
+            saxParser.reset();
+          }
         }
       }
     }
@@ -130,22 +127,5 @@ protected Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportM
     return ctx.createSuccessStatus();
   }
 
-  /**
-   * 
-   */
-  protected String getName(EObject object) {
-    String result = null;
-    if (null != object) {
-      result = CapellaElementExt.getName(object);
-      if (null == result || result.isEmpty() && (object instanceof DRepresentation)) {
-        DRepresentation res = (DRepresentation) object;
-        String repName = res.getName();
-        if (null != repName) {
-          result = repName;
-        }
-      }
-    }
-    return result;
-  }
 
 }

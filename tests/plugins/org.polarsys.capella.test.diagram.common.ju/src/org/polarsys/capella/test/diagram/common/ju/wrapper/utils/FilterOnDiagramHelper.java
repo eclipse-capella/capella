@@ -37,6 +37,7 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.junit.Assert;
 import org.polarsys.capella.common.ef.command.AbstractCommand;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.test.framework.helpers.TestHelper;
 
@@ -107,7 +108,7 @@ public class FilterOnDiagramHelper {
   public static FilterDescription applyFilterOnDiagram(final DDiagram diagram, String filterName) {
     final FilterDescription filterDescription = getFilterDescription(diagram, filterName);
     Assert.assertNotNull(
-        MessageFormat.format("Filter \"{0}\" can not be found for diagram \"{1}\"", filterName, diagram.getName()),
+        MessageFormat.format("Filter \"{0}\" can not be found for diagram \"{1}\"", filterName, EObjectExt.getText(diagram)),
         filterDescription);
     // Add the filter to the activated filters list & Refresh the diagram
     AbstractCommand cmd = new AbstractReadWriteCommand() {
@@ -305,7 +306,7 @@ public class FilterOnDiagramHelper {
   public static FilterDescription removeFilterOnDiagram(final DDiagram diagram, String filterName) {
     final FilterDescription filterDescription = getFilterDescription(diagram, filterName);
     Assert.assertNotNull(
-        MessageFormat.format("Filter \"{0}\" can not be found for diagram \"{1}\"", filterName, diagram.getName()),
+        MessageFormat.format("Filter \"{0}\" can not be found for diagram \"{1}\"", filterName, EObjectExt.getText(diagram)),
         filterDescription);
     AbstractCommand cmd = new AbstractReadWriteCommand() {
       @Override

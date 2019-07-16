@@ -19,8 +19,10 @@ import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.junit.Assert;
 import org.polarsys.capella.common.ef.command.AbstractCommand;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.core.diagram.helpers.DAnnotationHelper;
 import org.polarsys.capella.core.diagram.helpers.IRepresentationAnnotationConstants;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
@@ -250,7 +252,7 @@ public class ShowHideComponentExchanges extends EmptyProject {
    */
   protected void activateFilter(DDiagram diagram, String filterName) {
     FilterDescription filter = DiagramHelper.getFilterForDiagram(diagram, filterName);
-    Assert.assertNotNull(MessageFormat.format(HelperMessages.filterNotFound, filterName, diagram.getName()), filter);
+    Assert.assertNotNull(MessageFormat.format(HelperMessages.filterNotFound, filterName, EObjectExt.getText(diagram)), filter);
     DiagramHelper.addFilterInDiagram(diagram, filter);
   }
   
@@ -265,7 +267,7 @@ public class ShowHideComponentExchanges extends EmptyProject {
    */
   protected void assertFilterActive(DDiagram diagram, String filterName){
     FilterDescription filter = DiagramHelper.getFilterForDiagram(diagram, filterName);
-    Assert.assertNotNull(MessageFormat.format(HelperMessages.filterNotFound, filterName, diagram.getName()), filter);
+    Assert.assertNotNull(MessageFormat.format(HelperMessages.filterNotFound, filterName, EObjectExt.getText(diagram)), filter);
     EList<FilterDescription> activatedFilters = diagram.getActivatedFilters();
     assertTrue(activatedFilters.contains(filter));
   }

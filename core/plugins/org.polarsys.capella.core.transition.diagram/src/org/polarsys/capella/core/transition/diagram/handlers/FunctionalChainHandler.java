@@ -20,6 +20,7 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramNamingConstants;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -115,8 +116,7 @@ public class FunctionalChainHandler extends AbstractDiagramHandler {
    */
   @Override
   public String getTargetName(IContext context_p, DRepresentation diagram_p, RepresentationDescription targetDescription_p) {
-    String name = diagram_p.getName();
-
+    String name = RepresentationHelper.getRepresentationDescriptor(diagram_p).getName();
     name = name.replace(DiagramNamingConstants.FUNCTIONAL_CHAIN_DIAGRAM_LOGICAL_NAME, DiagramNamingConstants.FUNCTIONAL_CHAIN_DIAGRAM_PHYSICAL_NAME);
     name = name.replace(DiagramNamingConstants.FUNCTIONAL_CHAIN_DIAGRAM_SYSTEM_NAME, DiagramNamingConstants.FUNCTIONAL_CHAIN_DIAGRAM_LOGICAL_NAME);
     name = name.replace(DiagramNamingConstants.OPERATIONAL_PROCESS_DESCRIPTION_DIAGRAM_NAME, DiagramNamingConstants.FUNCTIONAL_CHAIN_DIAGRAM_SYSTEM_NAME);

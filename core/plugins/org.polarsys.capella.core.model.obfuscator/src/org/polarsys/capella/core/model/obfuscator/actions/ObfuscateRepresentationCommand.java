@@ -34,6 +34,7 @@ import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
@@ -45,33 +46,35 @@ import org.polarsys.capella.core.model.obfuscator.ObfuscatorHelper;
  */
 public class ObfuscateRepresentationCommand extends AbstractReadWriteCommand {
 
-  private DRepresentation _representation;
+  private DRepresentationDescriptor descriptor;
 
-  public ObfuscateRepresentationCommand(DRepresentation representation_p) {
-    _representation = representation_p;
+  public ObfuscateRepresentationCommand(DRepresentationDescriptor descriptor) {
+    this.descriptor = descriptor;
   }
 
   public void run() {
-    if (_representation != null) {
-      obfuscateDRepresentation(_representation);
-      _representation = null;
+    if (descriptor != null) {
+      obfuscateDRepresentation(descriptor);
+      descriptor = null;
     }
   }
 
-  protected void obfuscateDRepresentation(DRepresentation representation_p) {
-    representation_p.setName(ObfuscatorHelper.generateUnreadableString(_representation.getName()));
-    representation_p.setDocumentation(ObfuscatorHelper.generateUnreadableString(_representation.getDocumentation()));
-    obfuscateGMFDiagram(representation_p);
-    obfuscateRepresentationElements(representation_p);
-
+  protected void obfuscateDRepresentation(DRepresentationDescriptor descriptor) {
+    descriptor.setName(ObfuscatorHelper.generateUnreadableString(descriptor.getName()));
+    descriptor.setDocumentation(ObfuscatorHelper.generateUnreadableString(descriptor.getDocumentation()));
+    DRepresentation representation = descriptor.getRepresentation();
+    if (representation != null) {
+      obfuscateGMFDiagram(representation);
+      obfuscateRepresentationElements(representation);
+    }
   }
 
   /**
    * Obfuscate the GMF diagram of the current representation
-   * @param representation_p
+   * @param representation
    */
-  protected void obfuscateGMFDiagram(DRepresentation representation_p) {
-    for (EObject diag : getOpposites(representation_p, NotationPackage.eINSTANCE.getView_Element())) {
+  protected void obfuscateGMFDiagram(DRepresentation representation) {
+    for (EObject diag : getOpposites(representation, NotationPackage.eINSTANCE.getView_Element())) {
       if ((diag != null) && (diag instanceof Diagram)) {
         Diagram diagram = (Diagram) diag;
         for (Object child : diagram.getPersistedChildren()) {
@@ -90,11 +93,11 @@ public class ObfuscateRepresentationCommand extends AbstractReadWriteCommand {
   /**
    * Obfuscate a node and its children
    */
-  protected void obfuscateNode(Node parent_p) {
-    if (parent_p == null) {
+  protected void obfuscateNode(Node parent) {
+    if (parent == null) {
       return;
     }
-    for (Object child : parent_p.getPersistedChildren()) {
+    for (Object child : parent.getPersistedChildren()) {
       if (child != null) {
         if (child instanceof Shape) {
           obfuscateShape((Shape) child);
@@ -104,9 +107,9 @@ public class ObfuscateRepresentationCommand extends AbstractReadWriteCommand {
       }
     }
 
-    if (parent_p.getElement() == null) {
+    if (parent.getElement() == null) {
       // for capella 1.X notes
-      Style style = parent_p.getStyle(NotationPackage.Literals.SHAPE_STYLE);
+      Style style = parent.getStyle(NotationPackage.Literals.SHAPE_STYLE);
       if (style instanceof ShapeStyle) {
         ShapeStyle ss = (ShapeStyle) style;
         ss.setDescription(ObfuscatorHelper.generateUnreadableString(ss.getDescription()));
@@ -117,18 +120,18 @@ public class ObfuscateRepresentationCommand extends AbstractReadWriteCommand {
   /**
    * Obfuscate a shape and its children
    */
-  protected void obfuscateShape(Shape shape_p) {
-    if (shape_p == null) {
+  protected void obfuscateShape(Shape shape) {
+    if (shape == null) {
       return;
     }
-    shape_p.setDescription(ObfuscatorHelper.generateUnreadableString(shape_p.getDescription()));
+    shape.setDescription(ObfuscatorHelper.generateUnreadableString(shape.getDescription()));
   }
 
   /**
    * Obfuscate all representation elements from a given representation_p
    */
-  protected void obfuscateRepresentationElements(DRepresentation representation_p) {
-    TreeIterator<EObject> content = representation_p.eAllContents();
+  protected void obfuscateRepresentationElements(DRepresentation representation) {
+    TreeIterator<EObject> content = representation.eAllContents();
     while (content.hasNext()) {
       EObject object = content.next();
       if ((object == null) || object.eIsProxy()) {
@@ -187,8 +190,8 @@ public class ObfuscateRepresentationCommand extends AbstractReadWriteCommand {
   /**
    * Obfuscate a DDiagramElement
    */
-  protected void obfuscateDDiagramElement(DDiagramElement object_p) {
-    DDiagramElement dElement = object_p;
+  protected void obfuscateDDiagramElement(DDiagramElement object) {
+    DDiagramElement dElement = object;
     EObject target = dElement.getTarget();
 
     // Update tooltip if any
@@ -311,17 +314,17 @@ public class ObfuscateRepresentationCommand extends AbstractReadWriteCommand {
 
   /**
    * Navigate the non-navigable opposite of a reference
-   * @param element_p a potentially null element
-   * @param ref_p a non-null reference
+   * @param element a potentially null element
+   * @param ref a non-null reference
    * @return a non-null, potentially empty, unmodifiable ordered set
    */
-  protected List<EObject> getOpposites(EObject element_p, EReference ref_p) {
+  protected List<EObject> getOpposites(EObject element, EReference ref) {
     List<EObject> result = new UniqueEList<EObject>();
-    ECrossReferenceAdapter referencer = getGlobalReferencer(element_p);
+    ECrossReferenceAdapter referencer = getGlobalReferencer(element);
     if (referencer != null) {
-      Collection<Setting> settings = referencer.getNonNavigableInverseReferences(element_p);
+      Collection<Setting> settings = referencer.getNonNavigableInverseReferences(element);
       for (Setting setting : settings) {
-        if (ref_p.equals(setting.getEStructuralFeature())) {
+        if (ref.equals(setting.getEStructuralFeature())) {
           result.add(setting.getEObject());
         }
       }
@@ -329,9 +332,9 @@ public class ObfuscateRepresentationCommand extends AbstractReadWriteCommand {
     return Collections.unmodifiableList(result);
   }
 
-  protected ECrossReferenceAdapter getGlobalReferencer(EObject elementInSession_p) {
+  protected ECrossReferenceAdapter getGlobalReferencer(EObject elementInSession) {
     ECrossReferenceAdapter result = null;
-    EObject semanticElement = ((DSemanticDecorator) elementInSession_p).getTarget();
+    EObject semanticElement = ((DSemanticDecorator) elementInSession).getTarget();
     if (semanticElement != null) {
       Session session = SessionManager.INSTANCE.getSession(semanticElement);
       if (session != null) {

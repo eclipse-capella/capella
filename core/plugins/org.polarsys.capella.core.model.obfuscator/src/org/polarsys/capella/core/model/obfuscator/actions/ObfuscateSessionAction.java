@@ -24,6 +24,7 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
 import org.polarsys.capella.common.ef.ExecutionManager;
@@ -79,8 +80,8 @@ public class ObfuscateSessionAction extends BaseSelectionListenerAction {
           obfuscateSemanticResource(resource, executionManager);
       }
       // Obfuscate all representations.
-      for (DRepresentation representation : DialectManager.INSTANCE.getAllRepresentations(session)) {
-        obfuscateRepresentation(representation, executionManager);
+      for (DRepresentationDescriptor descriptor : DialectManager.INSTANCE.getAllRepresentationDescriptors(session)) {
+        obfuscateRepresentation(descriptor, executionManager);
       }
 
       // obfuscation additional resources through extension point.
@@ -158,9 +159,8 @@ public class ObfuscateSessionAction extends BaseSelectionListenerAction {
    * @param representation_p
    * @param executionManager_p
    */
-  protected void obfuscateRepresentation(final DRepresentation representation_p, ExecutionManager executionManager_p) {
-    // Perform modifications in a command to be TED compliant.
-    executionManager_p.execute(new ObfuscateRepresentationCommand(representation_p));
+  protected void obfuscateRepresentation(DRepresentationDescriptor descriptor_p, ExecutionManager executionManager_p) {
+    executionManager_p.execute(new ObfuscateRepresentationCommand(descriptor_p));
   }
 
   /**
@@ -169,8 +169,7 @@ public class ObfuscateSessionAction extends BaseSelectionListenerAction {
    * @param resource_p
    * @param executionManager_p
    */
-  protected void obfuscateSemanticResource(final Resource resource_p, ExecutionManager executionManager_p) {
-    // Perform modifications in a command to be TED compliant.
+  protected void obfuscateSemanticResource(Resource resource_p, ExecutionManager executionManager_p) {
     executionManager_p.execute(new ObfuscateSemanticResourceCommand(resource_p));
   }
 

@@ -80,6 +80,7 @@ import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.ef.command.AbstractCommand;
 import org.polarsys.capella.common.ef.command.AbstractNonDirtyingCommand;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.mdsofa.common.helper.FileHelper;
 import org.polarsys.capella.core.diagram.helpers.ContextualDiagramHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
@@ -143,16 +144,16 @@ public class DiagramHelper {
    * @return <code>null</code> if an error occurred.
    */
   public static DRepresentation getDRepresentation(final Session session, final String name) {
-    DRepresentation result = null;
-    Collection<DRepresentation> dRepresentations = DialectManager.INSTANCE.getAllRepresentations(session);
-    Iterator<DRepresentation> it = dRepresentations.iterator();
+    DRepresentationDescriptor result = null;
+    Collection<DRepresentationDescriptor> dRepresentations = DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
+    Iterator<DRepresentationDescriptor> it = dRepresentations.iterator();
     while (it.hasNext() && (null == result)) {
       result = it.next();
       if (!result.getName().equals(name)) {
         result = null;
       }
     }
-    return result;
+    return result.getRepresentation();
   }
 
   /**
@@ -169,8 +170,8 @@ public class DiagramHelper {
     DRepresentation result = null;
     EStructuralFeature featureToCompare = ModellingcorePackage.Literals.MODEL_ELEMENT__ID;
 
-    Collection<DRepresentation> dRepresentations = DialectManager.INSTANCE.getAllRepresentations(session);
-    for (DRepresentation dRepresentation : dRepresentations) {
+    Collection<DRepresentationDescriptor> dRepresentations = DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
+    for (DRepresentationDescriptor dRepresentation : dRepresentations) {
       // find DReprensentation with the given diagram name
       if (dRepresentation.getName().equals(name)) {
         DSemanticDiagram dRepresentationDiagram = (DSemanticDiagram) dRepresentation;
@@ -179,7 +180,7 @@ public class DiagramHelper {
         if (semanticTarget.eGet(featureToCompare).equals(id)) {
           // if the diagram id is the same than the given id, the
           // current DRepresentation is the right one
-          result = dRepresentation;
+          result = dRepresentation.getRepresentation();
         }
       }
     }
@@ -220,13 +221,13 @@ public class DiagramHelper {
   public static DRepresentation getDRepresentation(final Session session, final String name,
       final String platformSpecificElementId) {
     DRepresentation result = null;
-    Collection<DRepresentation> dRepresentations = DialectManager.INSTANCE.getAllRepresentations(session);
-    Iterator<DRepresentation> it = dRepresentations.iterator();
+    Collection<DRepresentationDescriptor> dRepresentations = DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
+    Iterator<DRepresentationDescriptor> it = dRepresentations.iterator();
     while (it.hasNext()) {
-      DRepresentation next = it.next();
+      DRepresentationDescriptor next = it.next();
       if (next.getName().equalsIgnoreCase(name)
           && next.eResource().getURIFragment(next).equalsIgnoreCase(platformSpecificElementId)) {
-        result = next;
+        result = next.getRepresentation();
         break;
       }
     }
@@ -657,7 +658,7 @@ public class DiagramHelper {
    */
   public static void checkIsSynchronized(DDiagram diagram) {
     boolean isSynchronized = diagram.isSynchronized();
-    Assert.assertTrue(MessageFormat.format(Messages.failedIsSynchronized, diagram.getName()), isSynchronized);
+    Assert.assertTrue(MessageFormat.format(Messages.failedIsSynchronized, EObjectExt.getText(diagram)), isSynchronized);
   }
 
   /**
@@ -668,7 +669,7 @@ public class DiagramHelper {
    */
   public static void checkIsUnSynchronized(DDiagram diagram) {
     boolean isUnSynchronized = !(diagram.isSynchronized());
-    Assert.assertTrue(MessageFormat.format(Messages.failedIsUnSynchronized, diagram.getName()), isUnSynchronized);
+    Assert.assertTrue(MessageFormat.format(Messages.failedIsUnSynchronized, EObjectExt.getText(diagram)), isUnSynchronized);
   }
 
   /**
@@ -828,11 +829,11 @@ public class DiagramHelper {
   public static void checkDiagramContextualElements(DDiagram diagram, List<EObject> expectedContextualElementsList) {
     DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
     boolean hasContextualElements = ContextualDiagramHelper.getService().hasContextualElements(descriptor);
-    Assert.assertTrue(MessageFormat.format(Messages.noContextualElement, diagram.getName()), hasContextualElements);
+    Assert.assertTrue(MessageFormat.format(Messages.noContextualElement, EObjectExt.getText(diagram)), hasContextualElements);
     List<EObject> contextualElements = ContextualDiagramHelper.getService().getContextualElements(descriptor);
     int expectedNumberOfContextualElements = expectedContextualElementsList.size();
     boolean sameSize = contextualElements.size() == expectedNumberOfContextualElements;
-    Assert.assertTrue(MessageFormat.format(Messages.wrongNumberOfContextualElement, diagram.getName(),
+    Assert.assertTrue(MessageFormat.format(Messages.wrongNumberOfContextualElement, EObjectExt.getText(diagram),
         contextualElements.size(), expectedNumberOfContextualElements), sameSize);
     boolean sameElements = contextualElements.containsAll(expectedContextualElementsList)
         && expectedContextualElementsList.containsAll(contextualElements);
@@ -928,7 +929,7 @@ public class DiagramHelper {
       Assert.assertTrue(
           NLS.bind(errMsg,
               new Object[] { current instanceof AbstractNamedElement ? ((AbstractNamedElement) current).getName()
-                  : current.eClass().getName(), diagram.getName() }),
+                  : current.eClass().getName(), EObjectExt.getText(diagram) }),
           shouldBeAvailable ? eObject != null : eObject == null);
     }
   }
@@ -946,7 +947,7 @@ public class DiagramHelper {
       Assert.assertTrue(
           NLS.bind(errMsg,
               new Object[] { current instanceof AbstractNamedElement ? ((AbstractNamedElement) current).getName()
-                  : current.eClass().getName(), diagram.getName() }),
+                  : current.eClass().getName(), EObjectExt.getText(diagram) }),
           shouldBeAvailable ? eObject != null : eObject == null);
     }
   }

@@ -23,7 +23,9 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.junit.Assert;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ODesignHelper;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.SiriusElementHelper;
@@ -109,7 +111,7 @@ public class CheckDiagramDirtyStateOnOpeningTestCase extends BasicTestCase {
     DiagramHelper.opendiagramEditor(session, dRepresentation);
     if (mustBeRefreshed || dRepresentation.getOwnedRepresentationElements().isEmpty()) {
       boolean ret = DiagramHelper.refreshDiagram((DDiagram) dRepresentation);
-      Assert.assertTrue(NLS.bind(Messages.failToRefreshDiagram, new Object[] { getName(), dRepresentation.getName() }), ret);
+      Assert.assertTrue(NLS.bind(Messages.failToRefreshDiagram, new Object[] { getName(), EObjectExt.getText(dRepresentation) }), ret);
     }
 
     // Let's check the state of the diagram

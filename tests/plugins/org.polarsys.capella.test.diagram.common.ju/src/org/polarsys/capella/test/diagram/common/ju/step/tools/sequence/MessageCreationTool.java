@@ -20,12 +20,14 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.interaction.MessageKind;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.headless.HeadlessResultOpProvider;
 import org.polarsys.capella.test.diagram.common.ju.headless.IHeadlessResult;
@@ -114,7 +116,7 @@ public class MessageCreationTool extends CreateDEdgeTool {
     if (_newIdentifier != null) {
       exchangeToAdd = getExecutionContext().getSemanticElement(_newIdentifier);
       NLS.bind(CommonTestMessages.objectRepresentationNotAvailableOnDiagram,
-          EObjectLabelProviderHelper.getText(exchangeToAdd), diagram.getName());
+          EObjectLabelProviderHelper.getText(exchangeToAdd), EObjectExt.getText(diagram));
     } else {
       failMessage = "Message Creation postconditions failed";
     }

@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.apache.log4j.Logger;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
@@ -33,25 +32,26 @@ import org.polarsys.capella.common.tools.report.config.registry.ReportManagerReg
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 
 /**
- * This command removes non visible elements. This includes hidden elements but also non visible elements like a FunctionalExchange between a visible Function
- * and a hidden one.<br>
+ * This command removes non visible elements. This includes hidden elements but also non visible elements like a
+ * FunctionalExchange between a visible Function and a hidden one.<br>
  * There is two operating modes: <br>
- * - if {@link RemoveHiddenElementsCommand#_doUnsynchronizeDiagrams} = true then all elements with "Unsynchronizable" and "Not synchronized" mappings will be
- * removed from diagrams.<br>
- * - if {@link RemoveHiddenElementsCommand#_doUnsynchronizeDiagrams} = false then only elements with "Not synchronized" mappings will be removed from diagrams.
+ * - if {@link RemoveHiddenElementsCommand#_doUnsynchronizeDiagrams} = true then all elements with "Unsynchronizable"
+ * and "Not synchronized" mappings will be removed from diagrams.<br>
+ * - if {@link RemoveHiddenElementsCommand#_doUnsynchronizeDiagrams} = false then only elements with "Not synchronized"
+ * mappings will be removed from diagrams.
  */
 public class RemoveHiddenElementsCommand extends AbstractReadWriteCommand implements ICommand {
   private Collection<DRepresentationDescriptor> representationsToClean;
   private Logger _logger;
   private boolean _doUnsynchronizeDiagrams;
 
-  public RemoveHiddenElementsCommand(Collection<DRepresentationDescriptor> representationsToRefresh_p, ExecutionManager executionManager,
-      boolean doUnsynchronizeDiagrams_p) {
+  public RemoveHiddenElementsCommand(Collection<DRepresentationDescriptor> representationsToRefresh_p,
+      ExecutionManager executionManager, boolean doUnsynchronizeDiagrams_p) {
     representationsToClean = representationsToRefresh_p;
     _doUnsynchronizeDiagrams = doUnsynchronizeDiagrams_p;
 
   }
-  
+
   @Override
   public String getName() {
     return "Remove hidden elements";
@@ -62,12 +62,13 @@ public class RemoveHiddenElementsCommand extends AbstractReadWriteCommand implem
    */
   @Override
   public void run() {
-    _logger = ReportManagerRegistry.getInstance().subscribe(getName()); //$NON-NLS-1$
+    _logger = ReportManagerRegistry.getInstance().subscribe(getName()); // $NON-NLS-1$
     deleteHidden(representationsToClean);
   }
 
   /**
    * Removes non visible elements see {@link RemoveHiddenElementsCommand} Processes only diagrams
+   * 
    * @param selection_p
    */
   private void deleteHidden(Collection<DRepresentationDescriptor> selection_p) {
@@ -88,7 +89,6 @@ public class RemoveHiddenElementsCommand extends AbstractReadWriteCommand implem
         if (!element.isVisible()) {
           elements.add(element);
         }
-
       }
       if (_doUnsynchronizeDiagrams) {
         diagram.setSynchronized(false);
@@ -115,13 +115,14 @@ public class RemoveHiddenElementsCommand extends AbstractReadWriteCommand implem
         if (count > 1) {
           sb.append("s"); //$NON-NLS-1$
         }
-        _logger.info("Removing " + count + sb + " from diagram: " + diagram.getName()); //$NON-NLS-1$ //$NON-NLS-2$
+        _logger.info("Removing " + count + sb + " from diagram: " + descriptor.getName()); //$NON-NLS-1$ //$NON-NLS-2$
       }
     }
   }
 
   /**
    * Returns true if the mapping is Not synchronized
+   * 
    * @param mapping_p
    */
   public static boolean isNotSynchronizedMapping(DiagramElementMapping mapping_p) {
@@ -133,11 +134,12 @@ public class RemoveHiddenElementsCommand extends AbstractReadWriteCommand implem
 
   /**
    * Removes element from diagram
+   * 
    * @param element
    */
   private void removeDiagramElt(DDiagramElement element) {
     if ((element instanceof DDiagram) || (element instanceof DDiagramElementContainer)) {
-      DiagramServices.getDiagramServices().removeContainerView((EObject) element);
+      DiagramServices.getDiagramServices().removeContainerView(element);
 
     } else if (element instanceof DNode) {
       DiagramServices.getDiagramServices().removeNodeView((DNode) element);

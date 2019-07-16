@@ -20,9 +20,11 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.utils.saxparser.IConstantValidation;
 import org.polarsys.capella.core.model.utils.saxparser.SaxParserHelper;
@@ -41,6 +43,21 @@ public class CapellaElementInDescriptionNameCheck extends AbstractValidationRule
   protected Logger _logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.VALIDATION);
   protected StringBuilder _description = null;
 
+  public static String getName(EObject object) {
+    String result = null;
+    if (null != object) {
+      result = CapellaElementExt.getName(object);
+      if (object instanceof DRepresentation) {
+        DRepresentation res = (DRepresentation) object;
+        object = RepresentationHelper.getRepresentationDescriptor(res);
+      }
+      if (object instanceof DRepresentationDescriptor) {
+        result = ((DRepresentationDescriptor)object).getName();
+      }
+    }
+    return result;
+  }
+  
   @Override
   public IStatus validate(final IValidationContext ctx) {
     EObject target = ctx.getTarget();
@@ -87,7 +104,7 @@ public class CapellaElementInDescriptionNameCheck extends AbstractValidationRule
 
                     EObject eObject = SaxParserHelper.getEObjectFromHrefAttribute(capellaElement, attValue);
 
-                    if ((null != eObject) && ((eObject instanceof CapellaElement) || (eObject instanceof DRepresentation))) {
+                    if ((null != eObject) && ((eObject instanceof CapellaElement) || (eObject instanceof DRepresentationDescriptor) || (eObject instanceof DRepresentation))) {
                       elementFound = eObject;
                       // once found discontinue
                       break;
@@ -161,23 +178,4 @@ public class CapellaElementInDescriptionNameCheck extends AbstractValidationRule
     return ctx.createSuccessStatus();
   }
 
-  /**
-   * 
-   */
-  protected String getName(EObject object) {
-    String result = null;
-    if (null != object) {
-      result = CapellaElementExt.getName(object);
-      if ((null == result) || result.isEmpty()) {
-        if (object instanceof DRepresentation) {
-          DRepresentation res = (DRepresentation) object;
-          String repName = res.getName();
-          if (null != repName) {
-            result = repName;
-          }
-        }
-      }
-    }
-    return result;
-  }
 }

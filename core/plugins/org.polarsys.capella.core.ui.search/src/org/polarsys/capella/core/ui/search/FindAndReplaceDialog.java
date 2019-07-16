@@ -28,6 +28,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -321,8 +322,8 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
       @Override
       protected String getName(EObject object) {
         String result = super.getName(object);
-        if ((null == result || result.isEmpty()) && object instanceof DRepresentation) {
-          DRepresentation res = (DRepresentation) object;
+        if ((null == result || result.isEmpty()) && object instanceof DRepresentationDescriptor) {
+          DRepresentationDescriptor res = (DRepresentationDescriptor) object;
           String repName = res.getName();
           if (null != repName) {
             result = repName;
@@ -336,7 +337,7 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
        */
       @Override
       protected boolean managedObject(EObject object) {
-        return super.managedObject(object) || (object instanceof DRepresentation);
+        return super.managedObject(object) || (object instanceof DRepresentationDescriptor);
       }
     };
     ICommand updateHyperlinksCommand = new AbstractReadWriteCommand() {

@@ -16,6 +16,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.common.ui.toolkit.widgets.filter.CapellaPatternFilter;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 
 public class CapellaCommonNavigatorPatternFilter extends CapellaPatternFilter {
   boolean isSearchInDescriptionEnabled = false;
@@ -35,14 +36,14 @@ public class CapellaCommonNavigatorPatternFilter extends CapellaPatternFilter {
   private String getDescription(Object element) {
     if (element instanceof CapellaElement) {
       return ((CapellaElement) element).getDescription();
-    }
-    if (element instanceof DRepresentation) {
-      return ((DRepresentation) element).getDocumentation();
-    }
-    if (element instanceof DRepresentationDescriptor) {
-      return getDescription(((DRepresentationDescriptor) element).getRepresentation());
-    }
-    if (element instanceof ItemWrapper) {
+      
+    } else if (element instanceof DRepresentationDescriptor) {
+      return ((DRepresentationDescriptor) element).getDocumentation();
+      
+    } else if (element instanceof DRepresentation) {
+      return getDescription(RepresentationHelper.getRepresentationDescriptor((DRepresentation)element));
+      
+    } else if (element instanceof ItemWrapper) {
       return getDescription(((ItemWrapper) element).getWrappedObject());
     }
     return "";

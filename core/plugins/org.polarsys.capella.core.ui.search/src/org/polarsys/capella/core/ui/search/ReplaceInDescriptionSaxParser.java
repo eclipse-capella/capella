@@ -18,6 +18,7 @@ import javax.xml.parsers.SAXParserFactory;
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -49,8 +50,8 @@ public class ReplaceInDescriptionSaxParser {
     String result = null;
     if (null != object) {
       result = CapellaElementExt.getName(object);
-      if ((null == result || result.isEmpty()) && object instanceof DRepresentation) {
-        DRepresentation res = (DRepresentation) object;
+      if ((null == result || result.isEmpty()) && object instanceof DRepresentationDescriptor) {
+        DRepresentationDescriptor res = (DRepresentationDescriptor) object;
         String repName = res.getName();
         if (null != repName) {
           result = repName;

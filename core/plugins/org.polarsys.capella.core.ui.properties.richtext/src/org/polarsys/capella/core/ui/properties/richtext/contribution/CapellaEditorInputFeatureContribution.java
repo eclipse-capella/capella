@@ -25,7 +25,7 @@ public class CapellaEditorInputFeatureContribution implements EditorInputFeature
   public List<EStructuralFeature> getTitleChangingFeatures() {
     List<EStructuralFeature> features = new ArrayList<>();
     features.add(ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME);
-    features.add(ViewpointPackage.Literals.DREPRESENTATION__NAME);
+    features.add(ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__NAME);
     return features;
   }
 

@@ -16,6 +16,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.junit.Assert;
+import org.polarsys.capella.common.helpers.EObjectExt;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.step.Messages;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
@@ -73,7 +75,7 @@ public class OpenDiagramStep extends AbstractTestStep<DiagramContext> {
     DiagramHelper.opendiagramEditor(getExecutionContext().getSession(), diagram);
     if (_mustBeRefreshed || diagram.getOwnedRepresentationElements().isEmpty()) {
       boolean ret = DiagramHelper.refreshDiagram(diagram);
-      Assert.assertTrue(NLS.bind(Messages.failToRefreshDiagram, new Object[] { diagram.getName() }), ret);
+      Assert.assertTrue(NLS.bind(Messages.failToRefreshDiagram, new Object[] { EObjectExt.getText(diagram) }), ret);
     }
   }
 
@@ -82,8 +84,7 @@ public class OpenDiagramStep extends AbstractTestStep<DiagramContext> {
    */
   @Override
   public DiagramContext getResult() {
-
-    String diagramIdentifier = diagram.getName();
+    String diagramIdentifier = EObjectExt.getText(diagram);
     Map<String, EObject> semanticMap = getExecutionContext().getSemanticObjectMap();
 
     if (semanticMap.containsKey(diagramIdentifier) && this.diagramContext != null) {

@@ -53,6 +53,7 @@ import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.Style;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.platform.sirius.clipboard.Activator;
 import org.polarsys.capella.core.platform.sirius.clipboard.Messages;
@@ -242,9 +243,8 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
     if (pasteTarget instanceof DDiagram) {
       DDiagram diagram = (DDiagram) pasteTarget;
       if (!abstractNodeMappingApplicabilityTester.canCreateIn(diagram)) {
-
         String statusMessage = NLS.bind(Messages.CapellaDiagramPasteAction_InvalidDiagramTarget,
-            new String[] { elementName, elementTargetType, diagram.getName() });
+            new String[] { elementName, elementTargetType, EObjectExt.getText(diagram) });
         return new Status(Status.WARNING, Activator.PLUGIN_ID, statusMessage);
       }
 

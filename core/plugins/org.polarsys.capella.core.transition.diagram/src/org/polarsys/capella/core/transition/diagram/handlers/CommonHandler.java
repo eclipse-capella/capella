@@ -20,6 +20,7 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramDescriptionConstants;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
@@ -144,7 +145,7 @@ public class CommonHandler extends AbstractDiagramHandler {
    */
   @Override
   public String getTargetName(IContext context, DRepresentation diagram, RepresentationDescription targetDescription) {
-    String name = diagram.getName();
+    String name = RepresentationHelper.getRepresentationDescriptor(diagram).getName();
     return name;
   }
 

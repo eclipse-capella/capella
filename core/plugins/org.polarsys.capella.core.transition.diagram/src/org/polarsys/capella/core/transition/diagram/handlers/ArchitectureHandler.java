@@ -36,6 +36,7 @@ import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramNamingConstants;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.sirius.analysis.ABServices;
@@ -381,7 +382,7 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
   @Override
   public String getTargetName(IContext context_p, DRepresentation diagram_p, RepresentationDescription targetDescription_p) {
     RepresentationDescription description = DiagramHelper.getService().getDescription(diagram_p);
-    String name = diagram_p.getName();
+    String name = RepresentationHelper.getRepresentationDescriptor(diagram_p).getName();
     name = name.replace(description.getName(), targetDescription_p.getName());
 
     if (DiagramHelper.getService().isA(description, IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {

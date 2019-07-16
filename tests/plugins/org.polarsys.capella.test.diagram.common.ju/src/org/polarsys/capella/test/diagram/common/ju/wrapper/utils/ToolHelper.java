@@ -47,9 +47,9 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.ui.IEditorPart;
 import org.junit.Assert;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.sirius.analysis.tool.StringUtil;
-import org.polarsys.capella.test.diagram.common.ju.wrapper.AbstractToolWrapper;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.OperationActionToolDescriptionWrapper;
 import org.polarsys.capella.test.framework.helpers.GuiActions;
 
@@ -293,7 +293,7 @@ public class ToolHelper {
           Collection<DSemanticDecorator> selectedViews = DialectUIManager.INSTANCE.getSelection((DialectEditor) part);
 
           boolean isValid = result.containsAll(selectedViews) && selectedViews.containsAll(result);
-          Assert.assertTrue(MessageFormat.format(Messages.failedSelectedElements, diagram.getName(),
+          Assert.assertTrue(MessageFormat.format(Messages.failedSelectedElements, EObjectExt.getText(diagram),
               toolWrapper.getTool().getName(), selectedViews.size()), isValid);
         }
 

@@ -16,6 +16,7 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.Type;
 import org.polarsys.capella.core.sirius.analysis.helpers.DDiagramHelper;
 import org.polarsys.capella.test.benchmarks.ju.testcases.AbstractSetUpTestCase;
@@ -42,7 +43,7 @@ public class InsertPLOnPABSetUpTestCase extends AbstractSetUpTestCase {
     SessionContext context = new SessionContext(session);
     for (DRepresentation rep : DialectManager.INSTANCE.getAllRepresentations(session)) {
       if (rep instanceof DDiagram && DDiagramHelper.isPAB((DDiagram) rep)) {
-        XABDiagram pab = XABDiagram.openDiagram(context, ((DDiagram) rep).getName(), Type.PA);
+        XABDiagram pab = XABDiagram.openDiagram(context, RepresentationHelper.getRepresentationDescriptor(rep).getName(), Type.PA);
         pab.createActor(GenericModel.ACTOR_1);
         pab.createActor(GenericModel.ACTOR_2);
         contexts.add(pab);
