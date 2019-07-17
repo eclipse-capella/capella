@@ -15,35 +15,29 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
-import org.polarsys.capella.core.data.cs.AbstractActor;
-import org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentAllocation;
+import org.polarsys.capella.core.data.cs.ComponentRealization;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.cs.SystemComponent;
-import org.polarsys.capella.core.data.ctx.ActorCapabilityInvolvement;
 import org.polarsys.capella.core.data.ctx.Capability;
+import org.polarsys.capella.core.data.ctx.CapabilityInvolvement;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
-import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.RefinementLink;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
-import org.polarsys.capella.core.data.la.LogicalActor;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.la.SystemActorRealization;
-import org.polarsys.capella.core.data.pa.LogicalActorRealization;
-import org.polarsys.capella.core.data.pa.PhysicalActor;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
@@ -59,7 +53,7 @@ public class InteractionAspectService {
   /**
    * Retrive all actors accessible for the any object used in common.odesign, context.odesign
    */
-  public List<AbstractActor> getAllActors(final EObject any) {
+  public List<Component> getAllActors(final EObject any) {
     return ScenarioExt.getAllActors(any);
   }
 
@@ -92,19 +86,19 @@ public class InteractionAspectService {
       Component rootComponent = null;
       if (arch != null) {
         if (architecture instanceof LogicalArchitecture) {
-          rootComponent = ((LogicalArchitecture) architecture).getOwnedLogicalComponent();
+          rootComponent = ((LogicalArchitecture) architecture).getSystem();
           if (rootComponent != null) {
             getOwnedPart(result, rootComponent, filter);
-            if (!rootComponent.getRepresentingPartitions().isEmpty()) {
-              result.add(((Part) rootComponent.getRepresentingPartitions().get(0)));
+            if (!rootComponent.getRepresentingParts().isEmpty()) {
+              result.add(((Part) rootComponent.getRepresentingParts().get(0)));
             }
             return result;
           }
         } else if (architecture instanceof PhysicalArchitecture) {
-          rootComponent = ((PhysicalArchitecture) architecture).getOwnedPhysicalComponent();
+          rootComponent = ((PhysicalArchitecture) architecture).getSystem();
 
         } else if (architecture instanceof EPBSArchitecture) {
-          rootComponent = ((EPBSArchitecture) architecture).getOwnedConfigurationItem();
+          rootComponent = ((EPBSArchitecture) architecture).getSystem();
         }
         if (rootComponent != null) {
           getOwnedPart(result, rootComponent, filter);
@@ -141,18 +135,15 @@ public class InteractionAspectService {
    * @param filter the parts we don't want to see.
    */
   private void getOwnedPart(Collection<Part> result, Component rootComponent, Collection<Part> filter) {
-    EList<Partition> ownedPartitions = rootComponent.getOwnedPartitions();
-    for (Partition partition : ownedPartitions) {
-      if (partition instanceof Part) {
-        if (!filter.contains(partition)) {
-          result.add((Part) partition);
-          // recursion, in the case physical;
-          AbstractType type = partition.getAbstractType();
-          if (type instanceof PhysicalComponent) {
-            PhysicalComponent pc = (PhysicalComponent) type;
-            getOwnedPart(result, pc, filter);
-          }
-
+    EList<Part> ownedPartitions = rootComponent.getContainedParts();
+    for (Part partition : ownedPartitions) {
+      if (!filter.contains(partition)) {
+        result.add((Part) partition);
+        // recursion, in the case physical;
+        AbstractType type = partition.getAbstractType();
+        if (type instanceof PhysicalComponent) {
+          PhysicalComponent pc = (PhysicalComponent) type;
+          getOwnedPart(result, pc, filter);
         }
       }
     }
@@ -274,19 +265,21 @@ public class InteractionAspectService {
   /**
    * used in logical.odesign
    */
-  public List<AbstractActor> getAllRefinedActors(final CapabilityRealization context) {
-    List<AbstractActor> result = new ArrayList<AbstractActor>();
+  public List<Component> getAllRefinedActors(final CapabilityRealization context) {
+    List<Component> result = new ArrayList<>();
 
     List<CapabilityRealization> capabilities = getRefinedCapabilityRealizations(context);
-    if(capabilities != null){
-        for (CapabilityRealization capabilityRealization : capabilities) {
-        	      result.addAll(capabilityRealization.getParticipatingActors());
-        }    	
+    if (capabilities != null) {
+      for (CapabilityRealization capabilityRealization : capabilities) {
+        result.addAll(capabilityRealization.getInvolvedComponents().stream().filter(e -> ComponentExt.isActor(e))
+            .map(Component.class::cast).collect(Collectors.toList()));
+      }
     }
 
     Capability capa = (Capability) getRefinedCapabality(context);
-    if(capa != null){
-        result.addAll(capa.getParticipatingActors());
+    if (capa != null) {
+      result.addAll(capa.getInvolvedSystemComponents().stream().filter(e -> ComponentExt.isActor(e))
+          .collect(Collectors.toList()));
     }
     
     return result;
@@ -297,14 +290,15 @@ public class InteractionAspectService {
    * @param context
    * @return
    */
-  public List<ActorCapabilityInvolvement> getRefinedInvolvedActors(final CapabilityRealization context) {
+  public List<CapabilityInvolvement> getRefinedInvolvedActors(final CapabilityRealization context) {
     EList<AbstractTrace> outgoingTraces = context.getOutgoingTraces();
     for (AbstractTrace abstractTrace : outgoingTraces) {
       if (abstractTrace instanceof RefinementLink) {
         TraceableElement targetElement = abstractTrace.getTargetElement();
         if (targetElement instanceof Capability) {
           Capability cap = (Capability) targetElement;
-          return cap.getInvolvedActors();
+          return cap.getOwnedCapabilityInvolvements().stream().filter(inv -> ComponentExt.isActor(inv.getInvolved()))
+              .collect(Collectors.toList());
         } else if (targetElement instanceof CapabilityRealization) {
           return getRefinedInvolvedActors((CapabilityRealization) targetElement);
         }
@@ -318,8 +312,8 @@ public class InteractionAspectService {
    * @param context
    * @return
    */
-  public List<SystemComponent> getOwnedSystemComponents(final SystemComponent context) {
-    List<SystemComponent> list = new ArrayList<SystemComponent>();
+  public List<Component> getOwnedComponents(final Component context) {
+    List<Component> list = new ArrayList<>();
 
     ModellingArchitecture architecture = SystemEngineeringExt.findArchitecture(context);
     if (architecture != null) {
@@ -327,8 +321,8 @@ public class InteractionAspectService {
           || ((architecture instanceof PhysicalArchitecture) && (context instanceof PhysicalComponent))) {
 
         for (Component component : ComponentExt.getSubDefinedComponents(context)) {
-          if (component instanceof SystemComponent) {
-            list.add((SystemComponent) component);
+          if (component instanceof Component) {
+            list.add((Component) component);
           }
         }
       }
@@ -340,17 +334,16 @@ public class InteractionAspectService {
   /**
    * Used in logical.odesign
    */
-  public List<ActorCapabilityRealizationInvolvement> getInvolvedActorsForCapabilityRealizations(CapabilityRealization context) {
-    List<ActorCapabilityRealizationInvolvement> result = new ArrayList<ActorCapabilityRealizationInvolvement>();
+  public List<CapabilityRealizationInvolvement> getInvolvedActorsForCapabilityRealizations(
+      CapabilityRealization context) {
+    List<CapabilityRealizationInvolvement> result = new ArrayList<CapabilityRealizationInvolvement>();
 
     List<CapabilityRealization> capabilities = getRefinedCapabilityRealizations(context);
-    if(capabilities != null){
-        for (CapabilityRealization capabilityRealization : capabilities) {
-            result.addAll(capabilityRealization.getOwnedActorCapabilityRealizations());
-          }
-    	
+    if (capabilities != null) {
+      for (CapabilityRealization capabilityRealization : capabilities) {
+        result.addAll(capabilityRealization.getOwnedCapabilityRealizationInvolvements());
+      }
     }
-
     return result;
   }
 
@@ -388,25 +381,14 @@ public class InteractionAspectService {
    * @param context
    * @return
    */
-  public List<ComponentAllocation> getActorsAllocationLinks(final CapabilityRealization context) {
-    List<ComponentAllocation> result = new ArrayList<ComponentAllocation>();
-    List<AbstractActor> actors = getAllRefinedActors(context);
-    for (AbstractActor abstractActor : actors) {
-      if (abstractActor instanceof PhysicalActor) {
-        PhysicalActor pa = (PhysicalActor) abstractActor;
-        for (LogicalActorRealization lar : pa.getOwnedLogicalActorRealizations()) {
-          if (actors.contains(lar.getAllocatedComponent())) {
-            result.add(lar);
-          }
+  public List<ComponentRealization> getActorsAllocationLinks(final CapabilityRealization context) {
+    List<ComponentRealization> result = new ArrayList<ComponentRealization>();
+    List<Component> actors = getAllRefinedActors(context);
+    for (Component actor : actors) {
+      for (ComponentRealization lar : actor.getOwnedComponentRealizations()) {
+        if (actors.contains(lar.getRealizedComponent())) {
+          result.add(lar);
         }
-      } else if (abstractActor instanceof LogicalActor) {
-        LogicalActor la = (LogicalActor) abstractActor;
-        for (SystemActorRealization sar : la.getOwnedSystemActorRealizations()) {
-          if (actors.contains(sar.getAllocatedComponent())) {
-            result.add(sar);
-          }
-        }
-
       }
     }
     return result;

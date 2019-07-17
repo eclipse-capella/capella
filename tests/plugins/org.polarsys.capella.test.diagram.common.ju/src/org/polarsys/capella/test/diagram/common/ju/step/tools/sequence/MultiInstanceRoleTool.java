@@ -27,12 +27,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.hamcrest.Matcher;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
@@ -72,7 +72,7 @@ public final class MultiInstanceRoleTool extends AbstractToolStep<InstanceRole> 
       diagramDescriptionName = anyOf(equalTo(IDiagramNameConstants.INTERFACE_SCENARIO),
           equalTo(IDiagramNameConstants.DATA_FLOW_SCENARIO_DIAGRAM_NAME));
 
-      if (part.getAbstractType() instanceof AbstractActor) {
+      if (ComponentExt.isActor(part.getAbstractType())) {
         toolName = IToolNameConstants.TOOL_SCENARIO_MULTI_INSTANCEROLE_ACTOR;
       } else {
         toolName = IToolNameConstants.TOOL_SCENARIO_MULTI_INSTANCEROLE_COMPONENT;

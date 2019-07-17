@@ -45,6 +45,6 @@ public class ComponentExchangeRule extends org.polarsys.capella.core.transition.
     if (ComponentExchangeExt.isLinkToAnActor(exchange)) {
       return BlockArchitectureExt.getComponentPkg(target, true);
     }
-    return BlockArchitectureExt.getFirstComponent(target);
+    return BlockArchitectureExt.getOrCreateSystem(target);
   }
 }

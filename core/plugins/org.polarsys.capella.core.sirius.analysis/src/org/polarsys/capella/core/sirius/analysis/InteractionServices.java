@@ -16,6 +16,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -28,18 +29,19 @@ import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement;
 import org.polarsys.capella.core.data.capellacore.Generalization;
 import org.polarsys.capella.core.data.capellacore.Involvement;
 import org.polarsys.capella.core.data.capellacore.InvolverElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.ctx.Actor;
-import org.polarsys.capella.core.data.ctx.ActorCapabilityInvolvement;
-import org.polarsys.capella.core.data.ctx.ActorMissionInvolvement;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.CapabilityExploitation;
+import org.polarsys.capella.core.data.ctx.CapabilityInvolvement;
 import org.polarsys.capella.core.data.ctx.Mission;
+import org.polarsys.capella.core.data.ctx.MissionInvolvement;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization;
@@ -49,8 +51,9 @@ import org.polarsys.capella.core.data.oa.CommunicationMean;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.EntityOperationalCapabilityInvolvement;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
-import org.polarsys.capella.core.libraries.extendedqueries.QueryIdentifierConstants;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.sirius.analysis.queries.QueryIdentifierConstants;
 
 /**
  */
@@ -143,8 +146,9 @@ public class InteractionServices {
 
         if (addCapabilityManagement) {
           if (capa instanceof Capability) {
-            for (ActorCapabilityInvolvement involvement : ((Capability) capa).getInvolvedActors()) {
-              result.add(involvement.getActor());
+            for (CapabilityInvolvement involvement : ((Capability) capa).getOwnedCapabilityInvolvements()) {
+              if (ComponentExt.isActor(involvement.getSystemComponent()))
+                result.add(involvement.getSystemComponent());
             }
           } else if (capa instanceof OperationalCapability) {
             EList<EntityOperationalCapabilityInvolvement> ownedEntityOperationalCapabilityInvolvements =
@@ -176,7 +180,8 @@ public class InteractionServices {
         // We retrieve all wanted edges
         if (addCapabilityManagement) {
           if (capa instanceof Capability) {
-            result.addAll(((Capability) capa).getInvolvedActors());
+            result.addAll(((Capability) capa).getOwnedCapabilityInvolvements().stream()
+                .filter(inv -> ComponentExt.isActor(inv.getInvolved())).collect(Collectors.toList()));
           } else if (capa instanceof OperationalCapability) {
             result.addAll(((OperationalCapability) capa).getOwnedEntityOperationalCapabilityInvolvements());
           }
@@ -191,55 +196,6 @@ public class InteractionServices {
         if (capa instanceof Capability) {
           result.addAll(((Capability) capa).getPurposes());
         }
-      }
-
-    } else if (source instanceof Actor) {
-      Actor actor = (Actor) source;
-
-      // In synchronized mode, edges will be automatically created, so we create only wanted nodes
-      if (diag.isSynchronized()) {
-
-        result.addAll(actor.getSub());
-        result.addAll(actor.getSuper());
-
-        if (addCapabilityManagement) {
-          result.addAll(actor.getContributedCapabilities());
-        }
-        if (addActorMissionInvolvement) {
-          result.addAll(actor.getContributedMissions());
-        }
-
-      } else {
-        result.addAll(actor.getSubGeneralizations()); // filter actors
-        result.addAll(actor.getSuperGeneralizations());
-
-        if (addCapabilityManagement) {
-          result.addAll(actor.getParticipationsInCapabilities());
-        }
-        if (addActorMissionInvolvement) {
-          result.addAll(actor.getParticipationsInMissions());
-        }
-      }
-
-    } else if (source instanceof Mission) {
-      Mission mission = (Mission) source;
-
-      // In synchronized mode, edges will be automatically created, so we create only wanted nodes
-      if (diag.isSynchronized()) {
-        result.addAll(mission.getExploitedCapabilities());
-
-        if (addActorMissionInvolvement) {
-          for (ActorMissionInvolvement involvement : mission.getInvolvedActors()) {
-            result.add(involvement.getActor());
-          }
-        }
-
-      } else {
-
-        if (addActorMissionInvolvement) {
-          result.addAll(mission.getInvolvedActors());
-        }
-        result.addAll(mission.getOwnedCapabilityExploitations());
       }
 
     } else if (source instanceof Entity) {
@@ -263,6 +219,68 @@ public class InteractionServices {
         }
       }
 
+    } else if (ComponentExt.isActor(source)) {
+      Component actor = (Component) source;
+
+      // In synchronized mode, edges will be automatically created, so we create only wanted nodes
+      if (diag.isSynchronized()) {
+
+        result.addAll(actor.getSub());
+        result.addAll(actor.getSuper());
+
+        if (addCapabilityManagement) {
+          if (actor instanceof SystemComponent) {
+            result.addAll(((SystemComponent) actor).getInvolvingCapabilities());
+          }
+          else if (actor instanceof CapabilityRealizationInvolvedElement) {
+            result.addAll(((CapabilityRealizationInvolvedElement) actor).getInvolvingCapabilityRealizations());
+          }
+        }
+        if (addActorMissionInvolvement) {
+          if (actor instanceof SystemComponent) {
+            result.addAll(((SystemComponent) actor).getInvolvingMissions());
+          }
+        }
+
+      } else {
+        result.addAll(actor.getSubGeneralizations()); // filter actors
+        result.addAll(actor.getSuperGeneralizations());
+
+        if (addCapabilityManagement) {
+          if (actor instanceof SystemComponent) {
+            result.addAll(((SystemComponent) actor).getCapabilityInvolvements());
+          }
+          else if (actor instanceof CapabilityRealizationInvolvedElement) {
+            result.addAll(((CapabilityRealizationInvolvedElement) actor).getCapabilityRealizationInvolvements());
+          }
+        }
+        if (addActorMissionInvolvement) {
+          if (actor instanceof SystemComponent) {
+            result.addAll(((SystemComponent) actor).getMissionInvolvements());
+          }
+        }
+      }
+
+    } else if (source instanceof Mission) {
+      Mission mission = (Mission) source;
+      // In synchronized mode, edges will be automatically created, so we create only wanted nodes
+      if (diag.isSynchronized()) {
+        result.addAll(mission.getExploitedCapabilities());
+        if (addActorMissionInvolvement) {
+          for (MissionInvolvement involvement : mission.getOwnedMissionInvolvements()) {
+            if (ComponentExt.isActor(involvement.getSystemComponent()))
+              result.add(involvement.getSystemComponent());
+          }
+        }
+
+      } else {
+        if (addActorMissionInvolvement) {
+          result.addAll(mission.getOwnedMissionInvolvements().stream()
+              .filter(inv -> ComponentExt.isActor(inv.getSystemComponent())).collect(Collectors.toList()));
+        }
+        result.addAll(mission.getOwnedCapabilityExploitations());
+      }
+
     }
 
     return result;
@@ -278,7 +296,7 @@ public class InteractionServices {
 
     String mappingName = null;
     if (IDiagramNameConstants.CONTEXTUAL_CAPABILITY_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
-      if (object instanceof ActorCapabilityInvolvement) {
+      if (object instanceof CapabilityInvolvement) {
         mappingName = IMappingNameConstants.CC_ACTOR_INVOLVEMENT;
       } else if (object instanceof CapabilityExploitation) {
         mappingName = IMappingNameConstants.CC_CAPABILITY_EXPLOITATION;
@@ -296,7 +314,7 @@ public class InteractionServices {
         mappingName = IMappingNameConstants.CM_CAPABILITY_EXPLOITATION;
       } else if (object instanceof Generalization) {
         mappingName = IMappingNameConstants.CM_ACTOR_GENERALIZATION;
-      } else if (object instanceof ActorMissionInvolvement) {
+      } else if (object instanceof MissionInvolvement) {
         mappingName = IMappingNameConstants.CM_ACTOR_MISSION_INVOLVEMENT;
       }
     } else if (IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
@@ -304,11 +322,11 @@ public class InteractionServices {
         mappingName = IMappingNameConstants.MB_CAPABILITY_EXPLOITATION;
       } else if (object instanceof Generalization) {
         mappingName = IMappingNameConstants.MB_ACTOR_GENERALIZATION;
-      } else if (object instanceof ActorMissionInvolvement) {
+      } else if (object instanceof MissionInvolvement) {
         mappingName = IMappingNameConstants.MB_ACTOR_MISSION_INVOLVEMENT;
       }
     } else if (IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
-      if (object instanceof ActorCapabilityInvolvement) {
+      if (object instanceof CapabilityInvolvement) {
         mappingName = IMappingNameConstants.MCB_ACTOR_INVOLVEMENT;
       } else if (object instanceof CapabilityExploitation) {
         mappingName = IMappingNameConstants.MCB_CAPABILITY_EXPLOITATION;
@@ -320,7 +338,7 @@ public class InteractionServices {
         mappingName = IMappingNameConstants.MCB_ABSTRACT_CAPABILITY_GENERALIZATION;
       } else if (object instanceof Generalization) {
         mappingName = IMappingNameConstants.MCB_ACTOR_GENERALIZATION;
-      } else if (object instanceof ActorMissionInvolvement) {
+      } else if (object instanceof MissionInvolvement) {
         mappingName = IMappingNameConstants.MCB_ACTOR_MISSION_INVOLVEMENT;
       }
     } else if (IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {

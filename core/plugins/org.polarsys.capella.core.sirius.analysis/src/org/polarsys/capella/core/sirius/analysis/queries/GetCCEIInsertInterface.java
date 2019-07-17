@@ -20,6 +20,7 @@ import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
+import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.sirius.analysis.CsServices;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.exceptions.QueryException;
@@ -74,7 +75,8 @@ public class GetCCEIInsertInterface extends AbstractQuery {
     } else if (object instanceof EPBSArchitecture) {
 
       interfaces.addAll(CsServices.getService().getSubDefinedInterfaces((BlockArchitecture) object));
-      components.addAll(CsServices.getService().getAllSubUsedComponents(CsServices.getService().getContext((EPBSArchitecture) object)));
+      components.addAll(PartExt
+          .getComponentsOfParts((CsServices.getService().getContext((EPBSArchitecture) object)).getOwnedParts()));
 
       // For all components, add all linked interfaces
       for (EObject subObject : components) {

@@ -176,14 +176,8 @@ public class ShowHideService {
     } else if (LaPackage.Literals.CAPABILITY_REALIZATION.getName().equals(eClass)) {
       return LaPackage.Literals.CAPABILITY_REALIZATION;
 
-    } else if (CsPackage.Literals.ABSTRACT_ACTOR.getName().equals(eClass)) {
-      return CsPackage.Literals.ABSTRACT_ACTOR;
-
     } else if (CtxPackage.Literals.MISSION.getName().equals(eClass)) {
       return CtxPackage.Literals.MISSION;
-
-    } else if (OaPackage.Literals.OPERATIONAL_ACTOR.getName().equals(eClass)) {
-      return OaPackage.Literals.OPERATIONAL_ACTOR;
 
     } else if (OaPackage.Literals.ENTITY.getName().equals(eClass)) {
       return OaPackage.Literals.ENTITY;
@@ -191,8 +185,6 @@ public class ShowHideService {
     } else if (CsPackage.Literals.COMPONENT.getName().equals(eClass)) {
       return CsPackage.Literals.COMPONENT;
 
-    } else if (CsPackage.Literals.SYSTEM_COMPONENT.getName().equals(eClass)) {
-      return CsPackage.Literals.SYSTEM_COMPONENT;
     }
 
     return null;
@@ -205,10 +197,6 @@ public class ShowHideService {
    */
   public DiagramElementMapping getMapping(EClass eClass, DDiagram diagram) {
     if (IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
-      if (CsPackage.Literals.ABSTRACT_ACTOR.isSuperTypeOf(eClass)) {
-        return DiagramServices.getDiagramServices().getNodeMapping(diagram,
-            IMappingNameConstants.MCB_COMPONENT_MAPPING_NAME);
-      }
       if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.isSuperTypeOf(eClass)) {
         return DiagramServices.getDiagramServices().getNodeMapping(diagram,
             IMappingNameConstants.MCB_CAPABILITY_MAPPING_NAME);
@@ -219,10 +207,6 @@ public class ShowHideService {
       }
 
     } else if (IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
-      if (CsPackage.Literals.ABSTRACT_ACTOR.isSuperTypeOf(eClass)) {
-        return DiagramServices.getDiagramServices().getNodeMapping(diagram,
-            IMappingNameConstants.MB_COMPONENT_MAPPING_NAME);
-      }
       if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.isSuperTypeOf(eClass)) {
         return DiagramServices.getDiagramServices().getNodeMapping(diagram,
             IMappingNameConstants.MB_CAPABILITY_MAPPING_NAME);
@@ -233,10 +217,6 @@ public class ShowHideService {
       }
 
     } else if (IDiagramNameConstants.CONTEXTUAL_CAPABILITY_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
-      if (CsPackage.Literals.ABSTRACT_ACTOR.isSuperTypeOf(eClass)) {
-        return DiagramServices.getDiagramServices().getNodeMapping(diagram,
-            IMappingNameConstants.CC_COMPONENT_MAPPING_NAME);
-      }
       if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.isSuperTypeOf(eClass)) {
         return DiagramServices.getDiagramServices().getNodeMapping(diagram,
             IMappingNameConstants.CC_CAPABILITY_MAPPING_NAME);
@@ -247,10 +227,6 @@ public class ShowHideService {
       }
 
     } else if (IDiagramNameConstants.CONTEXTUAL_MISSION_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
-      if (CsPackage.Literals.ABSTRACT_ACTOR.isSuperTypeOf(eClass)) {
-        return DiagramServices.getDiagramServices().getNodeMapping(diagram,
-            IMappingNameConstants.CM_COMPONENT_MAPPING_NAME);
-      }
       if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.isSuperTypeOf(eClass)) {
         return DiagramServices.getDiagramServices().getNodeMapping(diagram,
             IMappingNameConstants.CM_CAPABILITY_MAPPING_NAME);
@@ -258,10 +234,6 @@ public class ShowHideService {
 
     } else if (IDiagramNameConstants.CONTEXTUAL_OPERATIONAL_CAPABILITIES__DIAGRAM_NAME
         .equals(diagram.getDescription().getName())) {
-      if (OaPackage.Literals.OPERATIONAL_ACTOR.isSuperTypeOf(eClass)) {
-        return DiagramServices.getDiagramServices().getContainerMapping(diagram,
-            IMappingNameConstants.COC_ENTITY_MAPPING_NAME);
-      }
       if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.isSuperTypeOf(eClass)) {
         return DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.COC_OC_MAPPING_NAME);
       }
@@ -272,10 +244,6 @@ public class ShowHideService {
 
     } else if (IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME
         .equals(diagram.getDescription().getName())) {
-      if (OaPackage.Literals.OPERATIONAL_ACTOR.isSuperTypeOf(eClass)) {
-        return DiagramServices.getDiagramServices().getContainerMapping(diagram,
-            IMappingNameConstants.OCB_OPERATIONAL_ENTITY_MAPPING_NAME);
-      }
       if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.isSuperTypeOf(eClass)) {
         return DiagramServices.getDiagramServices().getNodeMapping(diagram,
             IMappingNameConstants.OCB_OPERATIONAL_CAPABILITY_MAPPING_NAME);
@@ -286,10 +254,6 @@ public class ShowHideService {
       }
 
     } else if (IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK.equals(diagram.getDescription().getName())) {
-      if (CsPackage.Literals.ABSTRACT_ACTOR.isSuperTypeOf(eClass)) {
-        return DiagramServices.getDiagramServices().getContainerMapping(diagram,
-            IMappingNameConstants.CRB_COMPONENT_MAPPING);
-      }
       if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.isSuperTypeOf(eClass)) {
         return DiagramServices.getDiagramServices().getNodeMapping(diagram,
             IMappingNameConstants.CRB_CAPABILITY_REALIZATION_MAPPING);
@@ -301,10 +265,7 @@ public class ShowHideService {
 
     } else if (IDiagramNameConstants.CONTEXTUAL_CAPABILITY_REALIZATION_INVOLVEMENT
         .equals(diagram.getDescription().getName())) {
-      if (CsPackage.Literals.ABSTRACT_ACTOR.isSuperTypeOf(eClass)) {
-        return DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.CCRI_ACTOR);
-
-      } else if (CsPackage.Literals.SYSTEM_COMPONENT.isSuperTypeOf(eClass)) {
+      if (CsPackage.Literals.COMPONENT.isSuperTypeOf(eClass)) {
         return DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.CCRI_COMPONENT);
 
       } else if (LaPackage.Literals.CAPABILITY_REALIZATION.isSuperTypeOf(eClass)) {
@@ -320,8 +281,6 @@ public class ShowHideService {
     if (IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
       if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.equals(type)) {
         return ContextServices.getServices().getMCBCapabilities((DSemanticDecorator) diagram);
-      } else if (CsPackage.Literals.ABSTRACT_ACTOR.equals(type)) {
-        return ContextServices.getServices().getMCBActors(view);
       } else if (CtxPackage.Literals.MISSION.equals(type)) {
         return ContextServices.getServices().getMCBMissions((DSemanticDecorator) diagram);
       }
@@ -329,8 +288,6 @@ public class ShowHideService {
     } else if (IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
       if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.equals(type)) {
         return ContextServices.getServices().getMBCapabilities((DSemanticDecorator) diagram);
-      } else if (CsPackage.Literals.ABSTRACT_ACTOR.equals(type)) {
-        return ContextServices.getServices().getMBActors(view);
       } else if (CtxPackage.Literals.MISSION.equals(type)) {
         return ContextServices.getServices().getMBMissions((DSemanticDecorator) diagram);
       }
@@ -338,24 +295,18 @@ public class ShowHideService {
     } else if (IDiagramNameConstants.CONTEXTUAL_CAPABILITY_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
       if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.equals(type)) {
         return ContextServices.getServices().getCCCapabilities((DSemanticDecorator) diagram);
-      } else if (CsPackage.Literals.ABSTRACT_ACTOR.equals(type)) {
-        return ContextServices.getServices().getCCActors(view);
       } else if (CtxPackage.Literals.MISSION.equals(type)) {
         return ContextServices.getServices().getCCMissions((DSemanticDecorator) diagram);
       }
     } else if (IDiagramNameConstants.CONTEXTUAL_MISSION_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
       if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.equals(type)) {
         return ContextServices.getServices().getCMCapabilities((DSemanticDecorator) diagram);
-      } else if (CsPackage.Literals.ABSTRACT_ACTOR.equals(type)) {
-        return ContextServices.getServices().getCMActors(view);
       }
 
     } else if (IDiagramNameConstants.CONTEXTUAL_OPERATIONAL_CAPABILITIES__DIAGRAM_NAME
         .equals(diagram.getDescription().getName())) {
       if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.equals(type)) {
         return ContextServices.getServices().getCOCCapabilities((DSemanticDecorator) diagram);
-      } else if (OaPackage.Literals.OPERATIONAL_ACTOR.equals(type)) {
-        return ContextServices.getServices().getCOCActors(view);
       } else if (OaPackage.Literals.ENTITY.equals(type)) {
         return ContextServices.getServices().getCOCEntities(view);
       }
@@ -364,8 +315,6 @@ public class ShowHideService {
         .equals(diagram.getDescription().getName())) {
       if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.equals(type)) {
         return ContextServices.getServices().getOCBCapabilities((DSemanticDecorator) diagram);
-      } else if (OaPackage.Literals.OPERATIONAL_ACTOR.equals(type)) {
-        return ContextServices.getServices().getOCBActors(view);
       } else if (OaPackage.Literals.ENTITY.equals(type)) {
         return ContextServices.getServices().getOCBEntities(view);
       }
@@ -373,17 +322,13 @@ public class ShowHideService {
     } else if (IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK.equals(diagram.getDescription().getName())) {
       if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.equals(type)) {
         return ContextServices.getServices().getCRBCapabilities((DSemanticDecorator) diagram);
-      } else if (CsPackage.Literals.ABSTRACT_ACTOR.equals(type)) {
-        return ContextServices.getServices().getCRBActors(view);
       } else if (CsPackage.Literals.COMPONENT.equals(type)) {
         return ContextServices.getServices().getCRBComponents(view);
       }
 
     } else if (IDiagramNameConstants.CONTEXTUAL_CAPABILITY_REALIZATION_INVOLVEMENT
         .equals(diagram.getDescription().getName())) {
-      if (CsPackage.Literals.ABSTRACT_ACTOR.equals(type)) {
-        return ContextServices.getServices().getCRIActors(view);
-      } else if (CsPackage.Literals.SYSTEM_COMPONENT.equals(type)) {
+      if (CsPackage.Literals.COMPONENT.equals(type)) {
         return ContextServices.getServices().getCRIComponents(view);
       } else if (LaPackage.Literals.CAPABILITY_REALIZATION.equals(type)) {
         return ContextServices.getServices().getCRICapabilityRealizations(view);

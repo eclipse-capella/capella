@@ -15,22 +15,18 @@ import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.HideLabelFilter;
-import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.Classifier;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
@@ -43,7 +39,6 @@ import org.polarsys.capella.core.data.information.Collection;
 import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.InformationPackage;
-import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.model.helpers.AssociationExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
@@ -90,7 +85,7 @@ public class DragAndDropServices {
     return CapellaServices.getService().isChild(((DSemanticDecorator) targetContainerView).getTarget(), semanticObjectToDrop);
   }
 
-  public boolean partitionableElementCanBeDropped(PartitionableElement semanticObjectToDrop, EObject targetContainerView) {
+  public boolean partitionableElementCanBeDropped(Component semanticObjectToDrop, EObject targetContainerView) {
     DSemanticDiagram currentDiagram = (DSemanticDiagram) CapellaServices.getService().getDiagramContainer(targetContainerView);
 
     if ((currentDiagram.getTarget() != null)
@@ -105,7 +100,7 @@ public class DragAndDropServices {
         return true;
       }
       if (currentDiagram.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-        if (CapellaServices.getService().getAllAncestors((PartitionableElement) currentDiagram.getTarget()).contains(semanticObjectToDrop)) {
+        if (CapellaServices.getService().getAllAncestors((Component) currentDiagram.getTarget()).contains(semanticObjectToDrop)) {
           return false;
         }
       }
@@ -134,7 +129,7 @@ public class DragAndDropServices {
     DSemanticDecorator decorator = (DSemanticDecorator) targetContainerView;
 
     if (!CsServices.getService().isMultipartMode((ModelElement) semanticObjectToDrop)) {
-      PartitionableElement type = (PartitionableElement) CsServices.getService().getComponentType(
+      Component type = (Component) CsServices.getService().getComponentType(
           (Part) semanticObjectToDrop);
       return CsServices.getService().getABShowHideComponent(decorator).contains(type);
     }
@@ -181,7 +176,7 @@ public class DragAndDropServices {
   public boolean isValidIDDndInterfaceFromDiagram(EObject element, DSemanticDecorator newViewContainer) {
     if (newViewContainer instanceof DDiagramElement) {
       if (newViewContainer.getTarget() != null) {
-        return !(newViewContainer.getTarget() instanceof AbstractActor);
+        return !(ComponentExt.isActor(newViewContainer.getTarget()));
       }
       return false;
     }
@@ -308,7 +303,7 @@ public class DragAndDropServices {
         if (newViewContainer instanceof DDiagramElement) {
           if (newViewContainer.getTarget() instanceof Component) {
             if (newViewContainer.getTarget() != null) {
-              return !(newViewContainer.getTarget() instanceof AbstractActor);
+              return !(ComponentExt.isActor(newViewContainer.getTarget()));
             }
           }
           if (newViewContainer.getTarget() instanceof Interface) {
@@ -423,8 +418,6 @@ public class DragAndDropServices {
    * @param newViewContainer
    */
   public EObject dndIDComponentPortFromModel(EObject element, DSemanticDecorator newViewContainer) {
-    IInterpreter interpreter = InterpreterUtil.getInterpreter(element);
-    Object result = interpreter.getVariable(IInterpreterSiriusVariables.VIEW);
     // here result is null, view is not created yet. A workaround can be FutureTask ??
     forceHideLabelAfterDndComponentPortFromModel(element, newViewContainer);
     return element;
@@ -515,11 +508,11 @@ public class DragAndDropServices {
 
   public boolean isValidIDDndComponentFromDiagram(EObject element, DSemanticDecorator newViewContainer, EObject oldContainer) {
     EObject newContainer = CsServices.getService().getIBTarget(newViewContainer);
-    if (element instanceof AbstractActor) {
+    if (ComponentExt.isActor(element)) {
       return false;
     }
     if (newContainer instanceof BlockArchitecture) {
-      return element instanceof AbstractActor;
+      return (ComponentExt.isActor(element));
     }
     if ((newContainer instanceof Part) && (element instanceof Part)) {
       return ABServices.getService().isValidDndComponent((Part) element, (Part) newContainer);

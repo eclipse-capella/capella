@@ -50,7 +50,6 @@ import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsFactory;
@@ -79,7 +78,6 @@ import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionPkgExt;
 import org.polarsys.capella.core.data.information.InformationFactory;
-import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.data.information.PortAllocation;
 import org.polarsys.capella.core.data.interaction.Scenario;
@@ -88,7 +86,7 @@ import org.polarsys.capella.core.data.oa.CommunicationMean;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.Role;
-import org.polarsys.capella.core.data.pa.AbstractPhysicalComponent;
+import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.diagram.helpers.ContextualDiagramHelper;
 import org.polarsys.capella.core.model.helpers.AbstractCapabilityPkgExt;
@@ -251,9 +249,9 @@ public class ABServices {
       }
 
       // for all exchanges related to owned childs, move them to the ancestor (copied from odesign specification)
-      List<PartitionableElement> listChild = CapellaServices.getService().getAllDescendants(component);
+      List<Component> listChild = CapellaServices.getService().getAllDescendants(component);
       listChild.add(component);
-      for (PartitionableElement child : listChild) {
+      for (Component child : listChild) {
         if (child instanceof Component) {
           Component componentChild = (Component) child;
           for (ComponentPort port : ComponentExt.getOwnedComponentPort(componentChild)) {
@@ -1258,17 +1256,17 @@ public class ABServices {
     }
 
     EObject type = CsServices.getService().getComponentType(containerView);
-    if ((type == null) || !(type instanceof AbstractPhysicalComponent)) {
+    if ((type == null) || !(type instanceof PhysicalComponent)) {
       return false;
     }
 
     // Deploy Node is allowed on NODE and UNSET, but not on Actor
-    AbstractPhysicalComponent pcType = (AbstractPhysicalComponent) type;
+    PhysicalComponent pcType = (PhysicalComponent) type;
     if (PhysicalComponentNature.BEHAVIOR.equals(pcType.getNature())) {
       return false;
     }
 
-    if (pcType instanceof AbstractActor) {
+    if (ComponentExt.isActor(pcType)) {
       return false;
     }
 
@@ -1295,17 +1293,17 @@ public class ABServices {
     }
 
     EObject type = CsServices.getService().getComponentType(containerView);
-    if ((type == null) || !(type instanceof AbstractPhysicalComponent)) {
+    if ((type == null) || !(type instanceof PhysicalComponent)) {
       return false;
     }
 
     // Deploy Behavior is allowed on BEHAVIOR and UNSET, but not on Actor
-    AbstractPhysicalComponent pcType = (AbstractPhysicalComponent) type;
+    PhysicalComponent pcType = (PhysicalComponent) type;
     if (PhysicalComponentNature.NODE.equals(pcType.getNature())) {
       return false;
     }
 
-    if (pcType instanceof AbstractActor) {
+    if (ComponentExt.isActor(pcType)) {
       return false;
     }
 
@@ -1327,12 +1325,12 @@ public class ABServices {
     }
 
     EObject type = CsServices.getService().getComponentType(containerView);
-    if ((type == null) || !(type instanceof AbstractPhysicalComponent)) {
+    if ((type == null) || !(type instanceof PhysicalComponent)) {
       return false;
     }
 
     // Deploy Node is allowed only on NODE (not actor UNSET for instance)
-    AbstractPhysicalComponent pcType = (AbstractPhysicalComponent) type;
+    PhysicalComponent pcType = (PhysicalComponent) type;
     if (!PhysicalComponentNature.NODE.equals(pcType.getNature())) {
       return false;
     }
@@ -1346,7 +1344,7 @@ public class ABServices {
     }
 
     EObject type = CsServices.getService().getComponentType(containerView);
-    if ((type == null) || !(type instanceof AbstractPhysicalComponent)) {
+    if ((type == null) || !(type instanceof PhysicalComponent)) {
       return false;
     }
 
@@ -1786,11 +1784,6 @@ public class ABServices {
     }
     if (sourceViews.isEmpty()) {
       DiagramElementMapping mapping = content
-          .getMapping(MappingConstantsHelper.getMappingABComponent(CsPackage.Literals.ABSTRACT_ACTOR, currentDiagram));
-      for (DDiagramElement element : content.getDiagramElements(mapping)) {
-        sourceViews.add(element);
-      }
-      mapping = content
           .getMapping(MappingConstantsHelper.getMappingABComponent(CsPackage.Literals.COMPONENT, currentDiagram));
       for (DDiagramElement element : content.getDiagramElements(mapping)) {
         sourceViews.add(element);
@@ -1841,11 +1834,6 @@ public class ABServices {
     }
     if (sourceViews.isEmpty()) {
       DiagramElementMapping mapping = content
-          .getMapping(MappingConstantsHelper.getMappingABComponent(CsPackage.Literals.ABSTRACT_ACTOR, currentDiagram));
-      for (DDiagramElement element : content.getDiagramElements(mapping)) {
-        sourceViews.add(element);
-      }
-      mapping = content
           .getMapping(MappingConstantsHelper.getMappingABComponent(CsPackage.Literals.COMPONENT, currentDiagram));
       for (DDiagramElement element : content.getDiagramElements(mapping)) {
         sourceViews.add(element);

@@ -78,7 +78,7 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
       container = EcoreUtil2.getFirstContainer(container, PaPackage.Literals.PHYSICAL_COMPONENT);
     }
     if ((container == null) || !(container instanceof Component)) {
-      container = BlockArchitectureExt.getFirstComponent(ComponentExt.getRootBlockArchitecture(sourcePart));
+      container = BlockArchitectureExt.getOrCreateSystem(ComponentExt.getRootBlockArchitecture(sourcePart));
     }
     return (Component) container;
   }
@@ -117,7 +117,7 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
       container = EcoreUtil2.getFirstContainer(container, FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK);
     }
     if ((container == null) || !(container instanceof AbstractFunctionalBlock)) {
-      container = BlockArchitectureExt.getFirstComponent(ComponentExt.getRootBlockArchitecture(sourcePart));
+      container = BlockArchitectureExt.getOrCreateSystem(ComponentExt.getRootBlockArchitecture(sourcePart));
     }
     return (AbstractFunctionalBlock) container;
   }

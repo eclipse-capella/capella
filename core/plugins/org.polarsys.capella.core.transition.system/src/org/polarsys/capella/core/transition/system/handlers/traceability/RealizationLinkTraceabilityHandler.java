@@ -416,26 +416,9 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler
               InformationPackage.Literals.PORT_REALIZATION, InformationPackage.Literals.PORT__OWNED_PORT_REALIZATIONS));
 
       // component realizations
-      mapping.add(new RealizationLinkMapping(OaPackage.Literals.OPERATIONAL_ACTOR, CtxPackage.Literals.ACTOR,
-          CtxPackage.Literals.OPERATIONAL_ACTOR_REALIZATION,
-          CtxPackage.Literals.ACTOR__OWNED_OPERATIONAL_ACTOR_REALIZATIONS));
-      mapping.add(new RealizationLinkMapping(OaPackage.Literals.ENTITY, CtxPackage.Literals.ACTOR,
-          CtxPackage.Literals.OPERATIONAL_ENTITY_REALIZATION,
-          CtxPackage.Literals.ACTOR__OWNED_OPERATIONAL_ENTITY_REALIZATIONS));
-      mapping.add(new RealizationLinkMapping(CtxPackage.Literals.ACTOR, LaPackage.Literals.LOGICAL_ACTOR,
-          LaPackage.Literals.SYSTEM_ACTOR_REALIZATION,
-          LaPackage.Literals.LOGICAL_ACTOR__OWNED_SYSTEM_ACTOR_REALIZATIONS));
-      mapping.add(new RealizationLinkMapping(LaPackage.Literals.LOGICAL_ACTOR, PaPackage.Literals.PHYSICAL_ACTOR,
-          PaPackage.Literals.LOGICAL_ACTOR_REALIZATION,
-          PaPackage.Literals.PHYSICAL_ACTOR__OWNED_LOGICAL_ACTOR_REALIZATIONS));
-      mapping.add(new RealizationLinkMapping(OaPackage.Literals.ENTITY, CtxPackage.Literals.SYSTEM,
-          CtxPackage.Literals.OPERATIONAL_ENTITY_REALIZATION, CtxPackage.Literals.SYSTEM__OWNED_ENTITY_REALIZATIONS));
-      mapping.add(new RealizationLinkMapping(CtxPackage.Literals.SYSTEM, LaPackage.Literals.LOGICAL_COMPONENT,
-          LaPackage.Literals.SYSTEM_REALIZATION, LaPackage.Literals.LOGICAL_COMPONENT__OWNED_SYSTEM_REALIZATIONS));
-
-      mapping.add(new RealizationLinkMapping(LaPackage.Literals.LOGICAL_COMPONENT,
-          PaPackage.Literals.PHYSICAL_COMPONENT, PaPackage.Literals.LOGICAL_COMPONENT_REALIZATION,
-          PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(CsPackage.Literals.COMPONENT, CsPackage.Literals.COMPONENT,
+          CsPackage.Literals.COMPONENT_REALIZATION,
+          CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS));
 
       // Architectures
       mapping.add(new RealizationLinkMapping(OaPackage.Literals.OPERATIONAL_ANALYSIS,
@@ -582,8 +565,8 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler
    */
   private EObject adaptTracedElement(EObject sourceElement, TraceableElement object) {
     if (sourceElement instanceof Part && object instanceof Component
-        && ((Component) object).getRepresentingPartitions().size() == 1) {
-      return ((Component) object).getRepresentingPartitions().get(0);
+        && ((Component) object).getRepresentingParts().size() == 1) {
+      return ((Component) object).getRepresentingParts().get(0);
     }
     return object;
   }
@@ -682,7 +665,6 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler
   public void notifyChanged(INotifyChangeEvent event, IContext context) {
 
     Collection<RealizationLinkMapping> map = getMappings(context);
-    HashMap<EClass, EStructuralFeature> refs = new HashMap<EClass, EStructuralFeature>();
 
     for (AbstractTrace realizationLink : getRealizationLinks(context)) {
       EObject sourceElement = realizationLink.getSourceElement();

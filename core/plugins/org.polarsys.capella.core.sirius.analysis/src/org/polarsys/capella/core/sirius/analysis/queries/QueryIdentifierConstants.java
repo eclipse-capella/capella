@@ -12,6 +12,7 @@ package org.polarsys.capella.core.sirius.analysis.queries;
 
 import static org.polarsys.capella.common.queries.QuerySchema.getQueryIdentifier;
 import org.polarsys.capella.core.sirius.analysis.queries.csServices.GetABInsertActor__Lib;
+import org.polarsys.capella.core.sirius.analysis.queries.csServices.GetCCEIInsertInterfaceForLib;
 import org.polarsys.capella.core.sirius.analysis.queries.csServices.GetCCEIShowHideActors__Lib;
 import org.polarsys.capella.core.sirius.analysis.queries.csServices.GetCCEIShowHideComponent__Lib;
 import org.polarsys.capella.core.sirius.analysis.queries.csServices.GetCCIIInsertComponent;
@@ -34,6 +35,7 @@ public interface QueryIdentifierConstants {
   String GET_IS_SCOPE_INSERT_ACTORS = getQueryIdentifier(GetISScopeInsertActors.class);
   String GET_IS_SCOPE_INSERT_COMPONENTS = getQueryIdentifier(GetISScopeInsertComponents.class);
 
+  String GET_CCE_INSERT_INTERFACE_FOR_LIB = getQueryIdentifier(GetCCEIInsertInterfaceForLib.class);
   String GET_CCII_SHOW_HIDE_COMPONENTS_FOR_LIB = getQueryIdentifier(GetCCIIShowHideComponent__Lib.class);
   String GET_CCEI_SHOW_HIDE_ACTORS_FOR_LIB = getQueryIdentifier(GetCCEIShowHideActors__Lib.class);
   String GET_CCEI_SHOW_HIDE_COMPONENTS_FOR_LIB = getQueryIdentifier(GetCCEIShowHideComponent__Lib.class);

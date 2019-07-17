@@ -73,7 +73,7 @@ public class ShowHideABComponent extends AbstractShowHide {
           result.add(targetContainer);
 
           // Remove all parts of root component
-          result.remove((BlockArchitectureExt.getFirstComponent(BlockArchitectureExt
+          result.remove((BlockArchitectureExt.getOrCreateSystem(BlockArchitectureExt
               .getRootBlockArchitecture(semantic_p))));
 
         }
@@ -97,8 +97,8 @@ public class ShowHideABComponent extends AbstractShowHide {
       }
 
       // Remove all parts of root component
-      result2.removeAll((BlockArchitectureExt.getFirstComponent(BlockArchitectureExt
-          .getRootBlockArchitecture(semantic_p)).getRepresentingPartitions()));
+      result2.removeAll((BlockArchitectureExt.getOrCreateSystem(BlockArchitectureExt
+          .getRootBlockArchitecture(semantic_p)).getRepresentingParts()));
       // Retrains to already visible containers, to use the existing container displayed instead of display all
       // available container. if none visible, we add element to diagram, not reveal parent
 

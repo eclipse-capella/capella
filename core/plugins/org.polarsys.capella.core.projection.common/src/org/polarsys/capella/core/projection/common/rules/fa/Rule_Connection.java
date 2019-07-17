@@ -115,7 +115,7 @@ public class Rule_Connection extends Rule_CapellaElement {
     //Returns always the system component.
     BlockArchitecture sourceArchitecture = BlockArchitectureExt.getRootBlockArchitecture(element_p);
     if (sourceArchitecture instanceof OperationalAnalysis) {
-      return BlockArchitectureExt.getFirstComponent(sourceArchitecture);
+      return BlockArchitectureExt.getOrCreateSystem(sourceArchitecture);
     }
 
     //Returns the related context
@@ -150,7 +150,7 @@ public class Rule_Connection extends Rule_CapellaElement {
   @Override
   protected EObject getDefaultContainer(EObject element_p, EObject result_p, IContext context_p) {
     BlockArchitecture architecture = (BlockArchitecture) context_p.get(CapellaEngine.TRANSFO_TARGET_CONTAINER);
-    return BlockArchitectureExt.getFirstComponent(architecture);
+    return BlockArchitectureExt.getOrCreateSystem(architecture);
   }
 
   /**

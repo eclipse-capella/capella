@@ -212,7 +212,7 @@ public class Rule_Component extends Rule_CapellaElement {
     if (sourceContainer instanceof Component) {
       BlockArchitecture architecture = (BlockArchitecture) context_p.get(CapellaEngine.TRANSFO_TARGET_CONTAINER);
       if (architecture != null) {
-        Component rootComponent = BlockArchitectureExt.getFirstComponent(architecture);
+        Component rootComponent = BlockArchitectureExt.getOrCreateSystem(architecture);
         return rootComponent;
       }
     }

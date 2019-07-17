@@ -29,6 +29,7 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
@@ -398,12 +399,12 @@ public final class ComponentExchangeExt {
    * @param container
    * @return
    */
-  public static boolean attachTo(ComponentExchange exchange, AbstractFunctionalBlock container) {
+  public static boolean attachTo(ComponentExchange exchange, CapellaElement container) {
     if ((container != null) && !container.equals(exchange.eContainer())) {
       if ((container instanceof Entity) && (exchange instanceof CommunicationMean)) {
         ((Entity) container).getOwnedCommunicationMeans().add((CommunicationMean) exchange);
-      } else {
-        (container).getOwnedComponentExchanges().add(exchange);
+      } else if (container instanceof ComponentPkg) {
+        ((ComponentPkg) container).getOwnedComponentExchanges().add(exchange);
       }
       return true;
     }
@@ -425,7 +426,7 @@ public final class ComponentExchangeExt {
    * @param targetPart a part or a component
    * @return a not null element
    */
-  public static AbstractFunctionalBlock getDefaultContainer(CapellaElement sourcePart, CapellaElement targetPart) {
+  public static CapellaElement getDefaultContainer(CapellaElement sourcePart, CapellaElement targetPart) {
     EObject container = ComponentExt.getFirstCommonComponentAncestor(sourcePart, targetPart);
     if ((container != null) && !(container instanceof AbstractFunctionalBlock)) {
       container = EcoreUtil2.getFirstContainer(container, FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK);
@@ -433,7 +434,7 @@ public final class ComponentExchangeExt {
     if ((container == null) || !(container instanceof AbstractFunctionalBlock)) {
       container = BlockArchitectureExt.getContext(ComponentExt.getRootBlockArchitecture(sourcePart));
     }
-    return (AbstractFunctionalBlock) container;
+    return (CapellaElement) container;
   }
 
   /**
@@ -442,7 +443,7 @@ public final class ComponentExchangeExt {
    * @param exchange
    * @return a not null element
    */
-  public static AbstractFunctionalBlock getDefaultContainer(ComponentExchange exchange) {
+  public static CapellaElement getDefaultContainer(ComponentExchange exchange) {
     CapellaElement source = ComponentExchangeExt.getSourceComponent(exchange);
     Collection<Part> parts = ComponentExchangeExt.getSourceParts(exchange);
     if (!parts.isEmpty()) {

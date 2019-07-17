@@ -684,8 +684,8 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
         if ((targetSemantic instanceof Part)
             && !(((Part) targetSemantic).getAbstractType().eContainer() instanceof BlockArchitecture)) {
           if (((Part) targetSemantic).getAbstractType() instanceof Component) {
-            if (BlockArchitectureExt.getFirstComponent(BlockArchitectureExt.getRootBlockArchitecture(targetSemantic))
-                .equals(((Part) targetSemantic).getAbstractType())) {
+            if (BlockArchitectureExt.getOrCreateSystem(BlockArchitectureExt.getRootBlockArchitecture(targetSemantic)).equals(
+                ((Part) targetSemantic).getAbstractType())) {
               map.put(sourceView, (DSemanticDecorator) targetContents.getDDiagram());
             }
           }

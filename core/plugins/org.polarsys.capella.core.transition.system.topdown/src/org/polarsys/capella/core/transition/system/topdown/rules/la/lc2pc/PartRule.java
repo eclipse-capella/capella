@@ -84,7 +84,7 @@ public class PartRule extends org.polarsys.capella.core.transition.system.rules.
             element_p, result_p);
 
     if (!(element_p.eContainer() instanceof ComponentContext)) {
-      return BlockArchitectureExt.getFirstComponent(target);
+      return BlockArchitectureExt.getOrCreateSystem(target);
     }
     return BlockArchitectureExt.getContext(target);
 
@@ -126,7 +126,7 @@ public class PartRule extends org.polarsys.capella.core.transition.system.rules.
 
       BlockArchitecture target =
           (BlockArchitecture) TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(root, context_p, CsPackage.Literals.BLOCK_ARCHITECTURE);
-      Component cps = BlockArchitectureExt.getFirstComponent(target);
+      Component cps = BlockArchitectureExt.getOrCreateSystem(target);
       Collection<Part> parts = getCache(ComponentExt::getRepresentingParts, cps);
       if (!parts.isEmpty()) {
         return parts.iterator().next();

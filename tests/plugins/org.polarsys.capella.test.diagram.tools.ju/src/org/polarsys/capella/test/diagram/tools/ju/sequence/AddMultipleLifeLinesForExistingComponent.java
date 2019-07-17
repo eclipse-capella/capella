@@ -12,8 +12,8 @@ package org.polarsys.capella.test.diagram.tools.ju.sequence;
 
 import java.util.List;
 
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.ctx.impl.SystemImpl;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.test.diagram.common.ju.context.SequenceDiagram;
 
@@ -35,7 +35,7 @@ public class AddMultipleLifeLinesForExistingComponent extends SequenceTest {
       if(diagram.getDiagramBlockArchitecture() == BlockArchitectureExt.Type.OA) {
         diagram.addMultipleLifeLinesForExistingComponent(part.getId());
       }
-      else if (part.getAbstractType() instanceof SystemImpl) {
+      else if (part.getAbstractType() instanceof Component) {
         diagram.addMultipleLifeLinesForExistingComponent(part.getId());
       }
     }

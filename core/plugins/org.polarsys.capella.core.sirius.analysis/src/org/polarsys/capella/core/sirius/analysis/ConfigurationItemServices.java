@@ -42,14 +42,17 @@ public class ConfigurationItemServices {
 
   /**
    * get all the available PhyscialComponent, PhysicalLinks, and PhysicalPorts from PhyscialArchitecture
-   * @param context : is a CongurationItem
+   * 
+   * @param context
+   *          : is a CongurationItem
    * @return list of Eobject
    */
   public List<EObject> getAllRealizablePhysicalArtefacts(CapellaElement context) {
     return QueryInterpretor.executeQuery("GetAllRealizablePhysicalArtefacts__Lib", context, new QueryContext());//$NON-NLS-1$
-  }  
+  }
 
-  public boolean isParentContainedInDiagram(PhysicalPort context, List<PhysicalComponent> allPhysicalComponentInDiagram) {
+  public boolean isParentContainedInDiagram(PhysicalPort context,
+      List<PhysicalComponent> allPhysicalComponentInDiagram) {
 
     EObject container = context.eContainer();
     if ((null != container) && allPhysicalComponentInDiagram.contains(container)) {
@@ -81,8 +84,8 @@ public class ConfigurationItemServices {
 
     if (null == owner) {
       EPBSArchitecture architecture = ((EPBSArchitecture) BlockArchitectureExt.getRootBlockArchitecture(container));
-      if (architecture.getOwnedConfigurationItem() != null) {
-        owner = architecture.getOwnedConfigurationItem();
+      if (architecture.getSystem() != null) {
+        owner = architecture.getSystem();
       } else {
         owner = architecture;
       }
@@ -98,7 +101,7 @@ public class ConfigurationItemServices {
         } else if (owner instanceof ConfigurationItemPkg) {
           ((ConfigurationItemPkg) owner).getOwnedConfigurationItems().add(item);
         } else if (owner instanceof EPBSArchitecture) {
-          ((EPBSArchitecture) owner).setOwnedConfigurationItem(item);
+          ((EPBSArchitecture) owner).getOwnedConfigurationItemPkg().getOwnedConfigurationItems().add(item);
         }
         CapellaServices.getService().creationService(item);
       }

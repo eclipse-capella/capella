@@ -71,6 +71,7 @@ import org.polarsys.capella.core.data.la.LogicalComponentPkg;
 import org.polarsys.capella.core.data.la.LogicalFunction;
 import org.polarsys.capella.core.data.la.LogicalFunctionPkg;
 import org.polarsys.capella.core.data.la.SystemAnalysisRealization;
+import org.polarsys.capella.core.data.oa.EntityPkg;
 import org.polarsys.capella.core.data.oa.OaFactory;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
@@ -345,7 +346,17 @@ public class BlockArchitectureExt {
   }
 
   public static ComponentPkg getComponentPkg(BlockArchitecture blockArchitecture, boolean create) {
-    if (blockArchitecture instanceof SystemAnalysis) {
+    if (blockArchitecture instanceof OperationalAnalysis) {
+      OperationalAnalysis architecture = (OperationalAnalysis) blockArchitecture;
+
+      if ((architecture.getOwnedEntityPkg() == null) && create) {
+        EntityPkg pkg = OaFactory.eINSTANCE
+            .createEntityPkg(NamingConstants.CreateOpAnalysisCmd_operationalEntities_pkg_name);
+        architecture.setOwnedEntityPkg(pkg);
+      }
+      return architecture.getOwnedEntityPkg();
+
+    } else if (blockArchitecture instanceof SystemAnalysis) {
       SystemAnalysis architecture = (SystemAnalysis) blockArchitecture;
 
       if ((architecture.getOwnedSystemComponentPkg() == null) && create) {
@@ -724,12 +735,12 @@ public class BlockArchitectureExt {
   }
 
   /**
-   * Return the main component of the phase
+   * Return the system of the phase or create it if not exist
    * 
    * @param architecture
    * @return
    */
-  public static Component getFirstComponent(BlockArchitecture architecture) {
+  public static Component getOrCreateSystem(BlockArchitecture architecture) {
     return getFirstComponent(architecture, true);
   }
 

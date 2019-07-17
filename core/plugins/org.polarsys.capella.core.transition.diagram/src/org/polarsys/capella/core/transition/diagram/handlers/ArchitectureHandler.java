@@ -74,7 +74,7 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
       AbstractNodeMapping mapping_p, DSemanticDecorator containerNode_p, EObject targetSemantic_p) {
     if (targetSemantic_p instanceof Part) {
       if (((Part) targetSemantic_p).getAbstractType() instanceof Component) {
-        if (BlockArchitectureExt.getFirstComponent(BlockArchitectureExt.getRootBlockArchitecture(targetSemantic_p)).equals(
+        if (BlockArchitectureExt.getOrCreateSystem(BlockArchitectureExt.getRootBlockArchitecture(targetSemantic_p)).equals(
             ((Part) targetSemantic_p).getAbstractType())) {
           return null;
         }
@@ -428,13 +428,13 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
       return BlockArchitectureExt.getContext(root_p);
 
     } else if (DiagramHelper.getService().isA(description_p, IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      return BlockArchitectureExt.getFirstComponent(root_p);
+      return BlockArchitectureExt.getOrCreateSystem(root_p);
 
     } else if (DiagramHelper.getService().isA(description_p, IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      return BlockArchitectureExt.getFirstComponent(root_p);
+      return BlockArchitectureExt.getOrCreateSystem(root_p);
 
     } else if (DiagramHelper.getService().isA(description_p, IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      return BlockArchitectureExt.getFirstComponent(root_p);
+      return BlockArchitectureExt.getOrCreateSystem(root_p);
     }
 
     return null;

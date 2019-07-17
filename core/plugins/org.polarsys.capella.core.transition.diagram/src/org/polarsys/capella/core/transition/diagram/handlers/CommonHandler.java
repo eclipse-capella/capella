@@ -160,16 +160,16 @@ public class CommonHandler extends AbstractDiagramHandler {
       return BlockArchitectureExt.getDataPkg(root);
 
     } else if (DiagramHelper.getService().isA(description, IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME)) {
-      return BlockArchitectureExt.getFirstComponent(root);
+      return BlockArchitectureExt.getOrCreateSystem(root);
 
     } else if (DiagramHelper.getService().isA(description, IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME)) {
-      return BlockArchitectureExt.getFirstComponent(root);
+      return BlockArchitectureExt.getOrCreateSystem(root);
 
     } else if (DiagramHelper.getService().isA(description, IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME)) {
-      return BlockArchitectureExt.getFirstComponent(root);
+      return BlockArchitectureExt.getOrCreateSystem(root);
 
     } else if (DiagramHelper.getService().isA(description, IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME)) {
-      return BlockArchitectureExt.getFirstComponent(root);
+      return BlockArchitectureExt.getOrCreateSystem(root);
 
     }
 

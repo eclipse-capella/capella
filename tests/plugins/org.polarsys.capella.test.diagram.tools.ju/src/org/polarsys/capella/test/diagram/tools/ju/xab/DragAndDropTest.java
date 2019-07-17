@@ -13,7 +13,7 @@ package org.polarsys.capella.test.diagram.tools.ju.xab;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.common.data.activity.OutputPin;
-import org.polarsys.capella.core.data.cs.AbstractActor;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
@@ -58,7 +58,7 @@ public class DragAndDropTest extends XABDiagramsProject {
       String actor3 = diagram.createActor(GenericModel.ACTOR_3);
       diagram.createPhysicalLink(actor1, actor3, GenericModel.LA_1);
       Part partActor1Obj = diagram.getSessionContext().getSemanticElement(actor1);
-      AbstractActor actor1Obj = (AbstractActor) partActor1Obj.getAbstractType();
+      Component actor1Obj = (Component) partActor1Obj.getAbstractType();
       PhysicalPort physicalPort = (PhysicalPort) actor1Obj.getOwnedFeatures().iterator().next();
       diagram.dragAndDropPhysicalPort(physicalPort.getId(), actor2);
 

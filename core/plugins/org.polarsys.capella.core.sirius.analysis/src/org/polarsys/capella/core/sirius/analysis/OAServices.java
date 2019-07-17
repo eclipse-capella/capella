@@ -42,7 +42,6 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
-import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.oa.ActivityAllocation;
 import org.polarsys.capella.core.data.oa.CommunicationMean;
 import org.polarsys.capella.core.data.oa.Entity;
@@ -50,11 +49,9 @@ import org.polarsys.capella.core.data.oa.EntityPkg;
 import org.polarsys.capella.core.data.oa.OaFactory;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
-import org.polarsys.capella.core.data.oa.OperationalActor;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
 import org.polarsys.capella.core.data.oa.OperationalCapabilityPkg;
-import org.polarsys.capella.core.data.oa.OperationalContext;
 import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.data.oa.RoleAllocation;
 import org.polarsys.capella.core.data.oa.RolePkg;
@@ -87,19 +84,17 @@ public class OAServices {
     List<Entity> roots = new ArrayList<Entity>();
     List<EObject> result = new ArrayList<EObject>();
 
-    if (eObject instanceof OperationalContext) {
-      roots.addAll(getRootEntityPkg(eObject).getOwnedEntities());
-    } else if (eObject instanceof Entity) {
+    if (eObject instanceof Entity) {
       roots.add((Entity) eObject);
     } else if (eObject instanceof EntityPkg) {
       roots.addAll(((EntityPkg) eObject).getOwnedEntities());
     }
 
     for (Entity entity : roots) {
-      if ((entity.getRepresentingPartitions().size() > 0) && !result.contains(entity)) {
+      if ((entity.getRepresentingParts().size() > 0) && !result.contains(entity)) {
         result.add(entity);
       }
-      for (PartitionableElement pe : CapellaServices.getService().getAllDescendants(entity)) {
+      for (Component pe : CapellaServices.getService().getAllDescendants(entity)) {
         if (!result.contains(pe)) {
           result.add(pe);
         }
@@ -291,12 +286,12 @@ public class OAServices {
 
   public Collection<? extends Component> getOEBEntities(DSemanticDecorator view) {
     EObject target = view.getTarget();
-    if ((target instanceof Entity) || (target instanceof EntityPkg) || (target instanceof OperationalContext)
-        || (target instanceof OperationalActor)) {
+    if ((target instanceof Entity) || (target instanceof EntityPkg)
+        || (target instanceof Entity && ((Component) target).isActor())) {
       target = getOEBTarget(view);
-      if (target instanceof OperationalContext) {
+      if (target instanceof EntityPkg) {
         target = getRootEntityPkg(BlockArchitectureExt.getRootBlockArchitecture(target));
-      } else if (target instanceof OperationalActor) {
+      } else if (target instanceof Entity && ((Component) target).isActor()) {
         // eContainer of operational Actor is either Entity or EntityPkg
         target = target.eContainer();
       }
@@ -540,9 +535,6 @@ public class OAServices {
       if (container instanceof EntityPkg) {
         EntityPkg entityPkg = (EntityPkg) container;
         entityPkg.getOwnedEntities().add(entity);
-      } else if (container instanceof OperationalContext) {
-        EntityPkg entityPkg = getRootEntityPkg(container);
-        entityPkg.getOwnedEntities().add(entity);
       } else if (container instanceof Entity) {
         Entity entityContainer = (Entity) container;
         entityContainer.getOwnedEntities().add(entity);
@@ -553,15 +545,12 @@ public class OAServices {
     return entity;
   }
 
-  public OperationalActor createOperationalActor(EObject container) {
+  public Entity createOperationalActor(EObject container) {
 
-    OperationalActor actor = OaFactory.eINSTANCE.createOperationalActor();
+    Entity actor = OaFactory.eINSTANCE.createEntity();
     if (actor != null) {
       if (container instanceof EntityPkg) {
         EntityPkg entityPkg = (EntityPkg) container;
-        entityPkg.getOwnedEntities().add(actor);
-      } else if (container instanceof OperationalContext) {
-        EntityPkg entityPkg = getRootEntityPkg(container);
         entityPkg.getOwnedEntities().add(actor);
       } else if (container instanceof Entity) {
         Entity entityContainer = (Entity) container;
@@ -570,6 +559,7 @@ public class OAServices {
       CapellaServices.getService().creationService(actor);
     }
 
+    actor.setActor(true);
     return actor;
   }
 

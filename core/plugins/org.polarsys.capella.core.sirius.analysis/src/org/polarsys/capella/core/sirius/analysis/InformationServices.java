@@ -21,6 +21,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -59,6 +60,8 @@ import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.ui.toolkit.dialogs.TransferTreeListDialog;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
+import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement;
+import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.capellacore.AbstractDependenciesPkg;
 import org.polarsys.capella.core.data.capellacore.AbstractExchangeItemPkg;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -67,26 +70,22 @@ import org.polarsys.capella.core.data.capellacore.Classifier;
 import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
 import org.polarsys.capella.core.data.capellacore.Generalization;
-import org.polarsys.capella.core.data.cs.AbstractActor;
-import org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement;
+import org.polarsys.capella.core.data.capellacore.InvolvedElement;
+import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentArchitecture;
-import org.polarsys.capella.core.data.cs.ComponentContext;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfaceImplementation;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
 import org.polarsys.capella.core.data.cs.InterfaceUse;
-import org.polarsys.capella.core.data.cs.SystemComponent;
-import org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInvolvement;
-import org.polarsys.capella.core.data.ctx.ActorPkg;
+import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
-import org.polarsys.capella.core.data.ctx.SystemContext;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.ConfigurationItemPkg;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
-import org.polarsys.capella.core.data.epbs.EPBSContext;
-import org.polarsys.capella.core.data.fa.AbstractFunctionalStructure;
 import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.fa.ExchangeCategory;
 import org.polarsys.capella.core.data.helpers.information.services.CommunicationLinkExt;
@@ -131,25 +130,21 @@ import org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityInclude;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
-import org.polarsys.capella.core.data.la.LogicalActorPkg;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalComponentPkg;
-import org.polarsys.capella.core.data.la.LogicalContext;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.EntityPkg;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
-import org.polarsys.capella.core.data.oa.OperationalContext;
-import org.polarsys.capella.core.data.pa.PhysicalActorPkg;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
-import org.polarsys.capella.core.data.pa.PhysicalContext;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramDescriptionConstants;
-import org.polarsys.capella.core.libraries.extendedqueries.QueryIdentifierConstants;
+import org.polarsys.capella.core.libraries.queries.QueryIdentifierConstants;
 import org.polarsys.capella.core.model.helpers.AbstractDependenciesPkgExt;
 import org.polarsys.capella.core.model.helpers.AbstractExchangeItemPkgExt;
 import org.polarsys.capella.core.model.helpers.AssociationExt;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.DataPkgExt;
 import org.polarsys.capella.core.model.helpers.DataTypeExt;
@@ -2657,18 +2652,11 @@ public class InformationServices {
     EObject target = ((DSemanticDecorator) context).getTarget();
     if (target instanceof CapabilityRealization) {
       CapabilityRealization element = (CapabilityRealization) target;
-      // involvement Systemcomponent
-      EList<SystemComponentCapabilityRealizationInvolvement> systemCapRealInvols = element
-          .getOwnedSystemComponentCapabilityRealizations();
-      if (!systemCapRealInvols.isEmpty()) {
-        result.addAll(systemCapRealInvols);
+      EList<CapabilityRealizationInvolvement> capRealInvols = element.getOwnedCapabilityRealizationInvolvements();
+      if (!capRealInvols.isEmpty()) {
+        result.addAll(capRealInvols);
       }
-      // involvement Actor
-      EList<ActorCapabilityRealizationInvolvement> ownedActorCapabilityRealizations = element
-          .getOwnedActorCapabilityRealizations();
-      if (!ownedActorCapabilityRealizations.isEmpty()) {
-        result.addAll(ownedActorCapabilityRealizations);
-      }
+
       // extends
       EList<AbstractCapability> extendedCapabilities = element.getExtendedAbstractCapabilities();
       if (!extendedCapabilities.isEmpty()) {
@@ -2699,9 +2687,8 @@ public class InformationServices {
           }
         }
       }
-    } else if (target instanceof AbstractActor) {
-      AbstractActor element = (AbstractActor) target;
-      // Actor generalization
+    } else if (target instanceof Component) {
+      Component element = (Component) target;
       EList<Generalization> ownedGeneralizations = element.getOwnedGeneralizations();
       if (!ownedGeneralizations.isEmpty()) {
         result.addAll(ownedGeneralizations);
@@ -2719,7 +2706,7 @@ public class InformationServices {
     EObject sourceTarget = ((DSemanticDecorator) sourceView).getTarget();
     if ((null != sourceTarget) && (null != diagramContainer)) {
       List<CapellaElement> availableLinksForCRBDiagram = getAvailableLinksForCRBDiagram(sourceView);
-      if ((sourceTarget instanceof CapabilityRealization) || (sourceTarget instanceof AbstractActor)) {
+      if ((sourceTarget instanceof CapabilityRealization) || (sourceTarget instanceof Component)) {
         // add edges from diagram
         for (CapellaElement capellaElement : availableLinksForCRBDiagram) {
           if (DiagramServices.getDiagramServices().isOnDiagram(diagramContainer, capellaElement)) {
@@ -2757,7 +2744,7 @@ public class InformationServices {
         existingElements.removeAll(selectedElements);
       }
       List<DEdge> edges = new ArrayList<>();
-      if ((sourceTarget instanceof CapabilityRealization) || (sourceTarget instanceof AbstractActor)) {
+      if ((sourceTarget instanceof CapabilityRealization) || (sourceTarget instanceof Component)) {
         // remove use and implementation links
         for (DEdge representation : diagram.getEdges()) {
           EObject target = representation.getTarget();
@@ -2791,8 +2778,7 @@ public class InformationServices {
     if (selectedElements != null) {
       for (EObject selectedElement : selectedElements) {
         // when sourceView is Component
-        if ((selectedElement instanceof SystemComponentCapabilityRealizationInvolvement)
-            || (selectedElement instanceof ActorCapabilityRealizationInvolvement)
+        if ((selectedElement instanceof CapabilityRealizationInvolvement)
             || (selectedElement instanceof AbstractCapabilityExtend)
             || (selectedElement instanceof AbstractCapabilityInclude)
             || (selectedElement instanceof AbstractCapabilityGeneralization)
@@ -2811,25 +2797,14 @@ public class InformationServices {
    * @return
    */
   public List<CapellaElement> getAvailableLinksForCRIDiagram(EObject context) {
-
     List<CapellaElement> result = new ArrayList<>();
     EObject target = ((DSemanticDecorator) context).getTarget();
-
     if (target instanceof CapabilityRealization) {
-
       CapabilityRealization element = (CapabilityRealization) target;
-
-      // involvement System Component
-      EList<SystemComponentCapabilityRealizationInvolvement> systemCapRealInvols = element
-          .getOwnedSystemComponentCapabilityRealizations();
-      if (!systemCapRealInvols.isEmpty()) {
-        result.addAll(systemCapRealInvols);
-      }
-      // involvement Actor
-      EList<ActorCapabilityRealizationInvolvement> ownedActorCapabilityRealizations = element
-          .getOwnedActorCapabilityRealizations();
-      if (!ownedActorCapabilityRealizations.isEmpty()) {
-        result.addAll(ownedActorCapabilityRealizations);
+      EList<CapabilityRealizationInvolvement> capRealInvols = element
+          .getOwnedCapabilityRealizationInvolvements();
+      if (!capRealInvols.isEmpty()) {
+        result.addAll(capRealInvols);
       }
     }
     return result;
@@ -2845,7 +2820,7 @@ public class InformationServices {
     EObject sourceTarget = ((DSemanticDecorator) sourceView).getTarget();
     if ((null != sourceTarget) && (null != diagramContainer)) {
       List<CapellaElement> availableLinksForCRIDiagram = getAvailableLinksForCRIDiagram(sourceView);
-      if ((sourceTarget instanceof CapabilityRealization) || (sourceTarget instanceof AbstractActor)) {
+      if ((sourceTarget instanceof CapabilityRealization) || (sourceTarget instanceof Component)) {
         // add edges from diagram
         for (CapellaElement capellaElement : availableLinksForCRIDiagram) {
           if (DiagramServices.getDiagramServices().isOnDiagram(diagramContainer, capellaElement)) {
@@ -2877,7 +2852,7 @@ public class InformationServices {
         existingElements.removeAll(selectedElements);
       }
       List<DEdge> edges = new ArrayList<>();
-      if ((sourceTarget instanceof CapabilityRealization) || (sourceTarget instanceof AbstractActor)) {
+      if ((sourceTarget instanceof CapabilityRealization) || (sourceTarget instanceof Component)) {
         // remove use and implementation links
         for (DEdge representation : diagram.getEdges()) {
           EObject target = representation.getTarget();
@@ -2893,9 +2868,9 @@ public class InformationServices {
           }
         }
       }
-      
+
       for (DEdge edge : edges) {
-        
+
         diagramServices.removeEdgeView(edge);
       }
     }
@@ -2905,8 +2880,7 @@ public class InformationServices {
     if (selectedElements != null) {
       for (EObject selectedElement : selectedElements) {
         // when sourceView is Component
-        if ((selectedElement instanceof SystemComponentCapabilityRealizationInvolvement)
-            || (selectedElement instanceof ActorCapabilityRealizationInvolvement)) {
+        if (selectedElement instanceof CapabilityRealizationInvolvement) {
           // create edge view and target if needed
           createEdgeViewWithTargetViewIfNeeded(sourceView, diagram, selectedElement);
         }
@@ -2928,7 +2902,7 @@ public class InformationServices {
     }
     DiagramServices diagramServices = DiagramServices.getDiagramServices();
     if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK)) {
-      if ((targetElement instanceof AbstractActor) || (targetElement instanceof Component)) {
+      if (targetElement instanceof Component) {
         actualMapping = diagramServices.getContainerMapping(diagram, IMappingNameConstants.CRB_COMPONENT_MAPPING);
       } else if (targetElement instanceof CapabilityRealization) {
         actualMapping = diagramServices.getNodeMapping(diagram,
@@ -2940,9 +2914,9 @@ public class InformationServices {
     } else if (diagram.getDescription().getName()
         .equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_CAPABILITY_REALIZATION_INVOLVEMENT)) {
 
-      if (targetElement instanceof AbstractActor) {
+      if (targetElement instanceof Component && ComponentExt.isActor(targetElement)) {
         actualMapping = diagramServices.getNodeMapping(diagram, IMappingNameConstants.CCRI_ACTOR);
-      } else if (targetElement instanceof SystemComponent) {
+      } else if (targetElement instanceof Component && !ComponentExt.isActor(targetElement)) {
         actualMapping = diagramServices.getNodeMapping(diagram, IMappingNameConstants.CCRI_COMPONENT);
       }
     }
@@ -2962,8 +2936,7 @@ public class InformationServices {
     }
     // CAPABILITY REALIZATION BLANK Diagram
     if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK)) {
-      if ((element instanceof SystemComponentCapabilityRealizationInvolvement)
-          || (element instanceof ActorCapabilityRealizationInvolvement)) {
+      if (element instanceof CapabilityRealizationInvolvement) {
         result.add(DiagramServices.getDiagramServices().getEdgeMapping(diagram,
             IMappingNameConstants.CRB_INVOLVEMENT_MAPPING));
       } else if (element instanceof AbstractCapabilityExtend) {
@@ -3005,12 +2978,9 @@ public class InformationServices {
     if (diagram.getDescription().getName()
         .equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_CAPABILITY_REALIZATION_INVOLVEMENT)) {
 
-      if (element instanceof SystemComponentCapabilityRealizationInvolvement) {
+      if (element instanceof CapabilityRealizationInvolvement) {
         result.add(DiagramServices.getDiagramServices().getEdgeMapping(diagram,
             IMappingNameConstants.CCRI_CAPABILITY_REALIZATION_INVOLVEMENT));
-      } else if (element instanceof ActorCapabilityRealizationInvolvement) {
-        result.add(
-            DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.CCRI_CAPABILITY_REALIZATION_INVOLVEMENT));
       }
     }
 
@@ -3161,24 +3131,14 @@ public class InformationServices {
   private String getSymbol(AbstractNamedElement context) {
     if (context instanceof Entity) {
       return "[E]"; //$NON-NLS-1$
-    } else if (context instanceof OperationalContext) {
-      return "[OC]";//$NON-NLS-1$
-    } else if (context instanceof org.polarsys.capella.core.data.ctx.System) {
+    } else if (context instanceof SystemComponent) {
       return "[S]";//$NON-NLS-1$
-    } else if (context instanceof SystemContext) {
-      return "[SC]";//$NON-NLS-1$
     } else if (context instanceof LogicalComponent) {
       return "[LS]";//$NON-NLS-1$
-    } else if (context instanceof LogicalContext) {
-      return "[LC]";//$NON-NLS-1$
     } else if (context instanceof PhysicalComponent) {
       return "[PS]";//$NON-NLS-1$
-    } else if (context instanceof PhysicalContext) {
-      return "[PC]";//$NON-NLS-1$
     } else if (context instanceof ConfigurationItem) {
       return "[CI]";//$NON-NLS-1$
-    } else if (context instanceof EPBSContext) {
-      return "[EPBSC]";//$NON-NLS-1$
     } else if (context instanceof OperationalAnalysis) {
       return "[OA]";//$NON-NLS-1$
     } else if (context instanceof SystemAnalysis) {
@@ -3191,12 +3151,6 @@ public class InformationServices {
       return "[EPBSA]";//$NON-NLS-1$
     } else if (context instanceof EntityPkg) {
       return "[EPkg]";//$NON-NLS-1$
-    } else if (context instanceof ActorPkg) {
-      return "[APkg]";//$NON-NLS-1$
-    } else if (context instanceof LogicalActorPkg) {
-      return "[LAPkg]";//$NON-NLS-1$
-    } else if (context instanceof PhysicalActorPkg) {
-      return "[PAPkg]";//$NON-NLS-1$
     } else if (context instanceof LogicalComponentPkg) {
       return "[PAPkg]";//$NON-NLS-1$
     } else if (context instanceof PhysicalComponentPkg) {
@@ -3214,16 +3168,12 @@ public class InformationServices {
    * @return
    */
   private boolean isRoot(AbstractNamedElement context) {
-    if (context instanceof org.polarsys.capella.core.data.ctx.System) {
-      return true;
-    } else if ((context instanceof LogicalComponent) || (context instanceof PhysicalComponent)
-        || (context instanceof ConfigurationItem)) {
+    if (context instanceof Component && !ComponentExt.isActor(context)) {
       return ComponentExt.isComponentRoot(context);
-    } else if ((context instanceof ComponentContext) || (context instanceof ComponentArchitecture)
+    } else if ((context instanceof ComponentArchitecture)
         || (context instanceof OperationalAnalysis)) {
       return true;
-    } else if ((context instanceof ActorPkg) || (context instanceof AbstractFunctionalStructure)
-        || (context instanceof ConfigurationItemPkg)) {
+    } else if (context instanceof ComponentPkg) {
       EObject eContainer = context.eContainer();
       if ((null != eContainer)
           && ((eContainer instanceof ComponentArchitecture) || (eContainer instanceof OperationalAnalysis))) {
@@ -3617,5 +3567,4 @@ public class InformationServices {
     }
     return str;
   }
-
 }

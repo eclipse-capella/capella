@@ -215,7 +215,7 @@ public class AllocationManagementData {
       // add all components from current architecture to temp list
       temp.addAll(BlockArchitectureExt.getAllComponents(arch));
       // remove first component from temp list
-      Component firstComponent = BlockArchitectureExt.getFirstComponent(arch);
+      Component firstComponent = BlockArchitectureExt.getOrCreateSystem(arch);
       if (!(arch instanceof SystemAnalysis)) {
         temp.remove(firstComponent);
       }
@@ -281,7 +281,7 @@ public class AllocationManagementData {
           return components;
         }
         // remove first component
-        Component firstComponent = BlockArchitectureExt.getFirstComponent(arch);
+        Component firstComponent = BlockArchitectureExt.getOrCreateSystem(arch);
         components.remove(firstComponent);
         for (CapellaElement capellaElement : components) {
           if (capellaElement instanceof PhysicalComponent) {

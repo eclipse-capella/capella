@@ -57,7 +57,7 @@ public class PartRule extends org.polarsys.capella.core.transition.system.rules.
 
       BlockArchitecture target =
           (BlockArchitecture) TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(root, context_p, CsPackage.Literals.BLOCK_ARCHITECTURE);
-      Component cps = BlockArchitectureExt.getFirstComponent(target);
+      Component cps = BlockArchitectureExt.getOrCreateSystem(target);
       Collection<Part> parts = getCache(ComponentExt::getRepresentingParts, cps);
       if (!parts.isEmpty()) {
         return parts.iterator().next();

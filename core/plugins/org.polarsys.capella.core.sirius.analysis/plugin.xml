@@ -155,6 +155,10 @@
             id="org.polarsys.capella.core.sirius.analysis.actions.extensions.ShowHideMSMStates">
       </javaActions>
       <javaActions
+            actionClass="org.polarsys.capella.core.sirius.analysis.actions.extensions.ShowHideMCComponents"
+            id="org.polarsys.capella.core.sirius.analysis.actions.extensions.ShowHideMCComponents">
+      </javaActions>
+      <javaActions
             actionClass="org.polarsys.capella.core.sirius.analysis.actions.extensions.ShowHideMSMTransitions"
             id="org.polarsys.capella.core.sirius.analysis.actions.extensions.ShowHideMSMTransitions">
       </javaActions>

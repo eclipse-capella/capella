@@ -31,7 +31,9 @@ import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.CsFactory;
+import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
@@ -58,11 +60,14 @@ public class PhysicalComponentItemContribution implements IMDEMenuItemContributi
         CompoundCommand cmd = new CompoundCommand();
 
         if (((Component) createdElement).getRepresentingParts().size() == 0) {
-
+          EStructuralFeature ownedPartFeature = CapellacorePackage.Literals.CLASSIFIER__OWNED_FEATURES;
+          if (partOwner instanceof ComponentPkg) {
+            ownedPartFeature = CsPackage.Literals.COMPONENT_PKG__OWNED_PARTS;
+          }
           // Creates the part.
           final Command createPartCmd =
               CreateChildCommand.create(editingDomain, partOwner, new CommandParameter(createdElement,
-                  CapellacorePackage.Literals.CLASSIFIER__OWNED_FEATURES, CsFactory.eINSTANCE.createPart()), Collections.EMPTY_LIST);
+                  ownedPartFeature, CsFactory.eINSTANCE.createPart()), Collections.EMPTY_LIST);
           cmd.append(createPartCmd);
 
           // Sets the part name.

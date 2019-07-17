@@ -106,11 +106,10 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
 import org.polarsys.capella.core.data.capellacore.Relationship;
 import org.polarsys.capella.core.data.capellacore.Type;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentContext;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.DeployableElement;
@@ -122,11 +121,10 @@ import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalLinkCategory;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
-import org.polarsys.capella.core.data.ctx.ActorPkg;
 import org.polarsys.capella.core.data.ctx.CtxFactory;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
-import org.polarsys.capella.core.data.ctx.System;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
+import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
@@ -152,8 +150,6 @@ import org.polarsys.capella.core.data.helpers.information.services.ExchangeItemE
 import org.polarsys.capella.core.data.information.Association;
 import org.polarsys.capella.core.data.information.Class;
 import org.polarsys.capella.core.data.information.ExchangeItem;
-import org.polarsys.capella.core.data.information.Partition;
-import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.data.information.PortAllocation;
 import org.polarsys.capella.core.data.information.Property;
@@ -170,8 +166,6 @@ import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.data.la.LaFactory;
 import org.polarsys.capella.core.data.la.LaPackage;
-import org.polarsys.capella.core.data.la.LogicalActor;
-import org.polarsys.capella.core.data.la.LogicalActorPkg;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalComponentPkg;
@@ -180,10 +174,8 @@ import org.polarsys.capella.core.data.oa.EntityPkg;
 import org.polarsys.capella.core.data.oa.OaFactory;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
-import org.polarsys.capella.core.data.pa.AbstractPhysicalComponent;
 import org.polarsys.capella.core.data.pa.PaFactory;
 import org.polarsys.capella.core.data.pa.PaPackage;
-import org.polarsys.capella.core.data.pa.PhysicalActorPkg;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
@@ -193,7 +185,6 @@ import org.polarsys.capella.core.diagram.helpers.ContextualDiagramHelper;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.diagram.helpers.traceability.DiagramTraceabilityHelper;
 import org.polarsys.capella.core.diagram.helpers.traceability.IDiagramTraceability;
-import org.polarsys.capella.core.libraries.extendedqueries.QueryIdentifierConstants;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
@@ -205,6 +196,7 @@ import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeCategoryExt;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.ComponentPkgExt;
 import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
 import org.polarsys.capella.core.model.helpers.InterfaceExt;
 import org.polarsys.capella.core.model.helpers.InterfacePkgExt;
@@ -218,6 +210,7 @@ import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.helpers.FilterHelper;
+import org.polarsys.capella.core.sirius.analysis.queries.QueryIdentifierConstants;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -711,13 +704,13 @@ public class CsServices {
     Collection<Component> containers = new java.util.HashSet<>();
 
     // Access to all container of parts
-    for (Partition partition : component.getRepresentingPartitions()) {
-      EObject parent = getParentContainer(partition);
+    for (Part part : component.getRepresentingParts()) {
+      EObject parent = getParentContainer(part);
       if (parent instanceof Component) {
         containers.add((Component) parent);
       }
 
-      for (DeploymentTarget deploment : getCache(PartExt::getDeployingElements, (Part) partition)) {
+      for (DeploymentTarget deploment : getCache(PartExt::getDeployingElements, part)) {
         if (deploment instanceof Part) {
           AbstractType type = (((Part) deploment)).getAbstractType();
           if (type instanceof Component) {
@@ -923,17 +916,17 @@ public class CsServices {
     Collection<Interface> interfaces = new ArrayList<>();
 
     // Add interfaces from allocated components
-    if (subComponent.getAllocatedComponents() != null) {
+    if (subComponent.getRealizedComponents() != null) {
       LinkedList<Component> allocateds = new LinkedList<>();
-      for (Component allocated : subComponent.getAllocatedComponents()) {
+      for (Component allocated : subComponent.getRealizedComponents()) {
         allocateds.add(allocated); // addAll can throw an exception
       }
 
       while (!allocateds.isEmpty()) {
         Component allocated = allocateds.removeFirst();
         interfaces.addAll(getSubDefinedInterfaces(allocated));
-        if (allocated.getAllocatedComponents() != null) {
-          for (Component suballocated : allocated.getAllocatedComponents()) {
+        if (allocated.getRealizedComponents() != null) {
+          for (Component suballocated : allocated.getRealizedComponents()) {
             allocateds.add(suballocated);
           }
         }
@@ -950,9 +943,9 @@ public class CsServices {
     Collection<Interface> interfaces = new ArrayList<>();
 
     // Add interfaces from allocated components
-    if (subComponent.getAllocatedComponents() != null) {
+    if (subComponent.getRealizedComponents() != null) {
       LinkedList<Component> allocateds = new LinkedList<>();
-      for (Component allocated : subComponent.getAllocatedComponents()) {
+      for (Component allocated : subComponent.getRealizedComponents()) {
         allocateds.add(allocated); // addAll can throw an exception
       }
 
@@ -1014,7 +1007,7 @@ public class CsServices {
   /**
    * Returns the current context of a component.
    */
-  public Component getContext(Component component) {
+  public CapellaElement getContext(Component component) {
     EObject parent = getParentContainer(component);
 
     if (parent instanceof BlockArchitecture) {
@@ -1027,7 +1020,7 @@ public class CsServices {
   /**
    * Returns the current context of a component.
    */
-  public Component getContext(Part part) {
+  public CapellaElement getContext(Part part) {
     EObject parent = getParentContainer(part);
 
     if (parent instanceof BlockArchitecture) {
@@ -1040,7 +1033,7 @@ public class CsServices {
   /**
    * Returns the current context of an architecture.
    */
-  public Component getContext(BlockArchitecture architecture) {
+  public ComponentPkg getContext(BlockArchitecture architecture) {
     return BlockArchitectureExt.getContext(architecture);
   }
 
@@ -1049,7 +1042,7 @@ public class CsServices {
    * namespace which haven't part) CCII-Insert-Component.
    */
   public Collection<Component> getCCIIInsertComponent(Component component) {
-    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_CCII_INSERT_COMPONENTS_FOR_LIB, component);
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_CCII_SHOW_HIDE_COMPONENTS_FOR_LIB, component);
   }
 
   /**
@@ -1078,9 +1071,10 @@ public class CsServices {
   public Collection<Component> filterNotActors(Collection<? extends EObject> components) {
     Collection<Component> result = new java.util.ArrayList<>();
     for (EObject sub : components) {
-      if ((!(sub instanceof AbstractActor)) && (sub instanceof Component)) {
-        if (!result.contains(sub)) {
-          result.add((Component) sub);
+      if (sub instanceof Component) {
+        Component component = (Component) sub;
+        if (!component.isActor() && !result.contains(sub)) {
+          result.add(component);
         }
       }
     }
@@ -1094,8 +1088,11 @@ public class CsServices {
   public Collection<Component> filterActors(Collection<? extends EObject> components) {
     Collection<Component> result = new java.util.ArrayList<>();
     for (EObject sub : components) {
-      if ((sub instanceof AbstractActor)) {
-        result.add((AbstractActor) sub);
+      if ((sub instanceof Component)) {
+        Component component = (Component) sub;
+        if (component.isActor()) {
+          result.add(component);
+        }
       }
     }
     return result;
@@ -1128,7 +1125,7 @@ public class CsServices {
     components.addAll(ComponentExt.getSubDefinedActors(getArchitecture(component)));
 
     // Remove component from existing part
-    components.removeAll(ComponentExt.getSubUsedComponents(getContext(getArchitecture(component))));
+    components.removeAll(PartExt.getComponentsOfParts(getContext(getArchitecture(component)).getOwnedParts()));
 
     // Remove current component and remove all containers of current component
     components.remove(component);
@@ -1173,12 +1170,12 @@ public class CsServices {
     Collection<Component> components = new java.util.HashSet<>();
 
     // Add components which are brothers of component-parts
-    for (Partition part : component.getRepresentingPartitions()) {
+    for (Part part : component.getRepresentingParts()) {
       Component container = ComponentExt.getDirectParent(part);
       if (container != null) {
         Component ownerPart = container;
-        for (Partition partition : ownerPart.getOwnedPartitions()) {
-          components.add((Component) partition.getType());
+        for (Part siblingPart : ownerPart.getContainedParts()) {
+          components.add((Component) siblingPart.getType());
         }
       }
     }
@@ -1246,7 +1243,7 @@ public class CsServices {
     // In multipart mode or in EPBS Architecture Blank, we display parts
     if (isMultipartMode((ModelElement) target) || (getComponentType(decorator) instanceof ConfigurationItem)) {
 
-      Collection<Partition> components = new ArrayList<>();
+      Collection<Part> components = new ArrayList<>();
 
       Component targetComponent = null;
 
@@ -1259,14 +1256,14 @@ public class CsServices {
 
       if (decorator instanceof DDiagram) {
         if (targetComponent != null) {
-          components.addAll(getParts(targetComponent, CsPackage.Literals.COMPONENT, CsPackage.Literals.ABSTRACT_ACTOR));
-          components.addAll(targetComponent.getRepresentingPartitions());
+          components.addAll(getParts(targetComponent, CsPackage.Literals.COMPONENT, CsPackage.Literals.COMPONENT));
+          components.addAll(targetComponent.getRepresentingParts());
         } else if (target instanceof BlockArchitecture) {
           components.addAll(getParts(getContext((BlockArchitecture) target), CsPackage.Literals.COMPONENT,
-              CsPackage.Literals.ABSTRACT_ACTOR));
+              CsPackage.Literals.COMPONENT));
         }
       } else if (targetComponent != null) {
-        components.addAll(getParts(targetComponent, CsPackage.Literals.COMPONENT, CsPackage.Literals.ABSTRACT_ACTOR));
+        components.addAll(getParts(targetComponent, CsPackage.Literals.COMPONENT, CsPackage.Literals.COMPONENT));
       }
 
       return components;
@@ -1316,18 +1313,15 @@ public class CsServices {
    */
   public EObject getABTarget(DSemanticDecorator decorator) {
     if (decorator instanceof DDiagram) {
-      if (decorator.getTarget() instanceof AbstractActor) {
+      if (ComponentExt.isActor(decorator.getTarget())) {
         return getParentContainer(decorator.getTarget());
       }
 
       ContainerMapping cMapping = FaServices.getFaServices().getMappingABComponent(CsPackage.Literals.COMPONENT,
           (DDiagram) decorator);
-      ContainerMapping aMapping = FaServices.getFaServices().getMappingABComponent(CsPackage.Literals.ABSTRACT_ACTOR,
-          (DDiagram) decorator);
 
       for (DDiagramElement element : ((DDiagram) decorator).getOwnedDiagramElements()) {
-        if ((DiagramServices.getDiagramServices().isMapping(element, cMapping))
-            || (DiagramServices.getDiagramServices().isMapping(element, aMapping))) {
+        if (DiagramServices.getDiagramServices().isMapping(element, cMapping)) {
           if (element.getTarget() == decorator.getTarget()) {
             return getParentContainer(decorator.getTarget());
           }
@@ -1347,7 +1341,7 @@ public class CsServices {
    */
   public EObject getIBTarget(DSemanticDecorator decorator) {
     if (decorator instanceof DDiagram) {
-      if ((decorator.getTarget() instanceof AbstractActor) || (decorator.getTarget() instanceof System)) {
+      if ((decorator.getTarget() instanceof Entity && ((Component) decorator.getTarget()).isActor()) || (decorator.getTarget() instanceof Component && !((Component) decorator.getTarget()).isActor())) {
         return getParentContainer(decorator.getTarget());
       }
       for (DDiagramElement element : ((DDiagram) decorator).getOwnedDiagramElements()) {
@@ -1616,9 +1610,9 @@ public class CsServices {
 
     if (CapellaModelPreferencesPlugin.getDefault().isComponentInheritanceAllowed() && (source instanceof Component)
         && (target instanceof Component)) {
-      if ((source instanceof AbstractActor) && (target instanceof AbstractActor)) {
+      if ((((Component) source).isActor()) && (((Component) target).isActor())) {
         return source.getClass().equals(target.getClass());
-      } else if (!(source instanceof AbstractActor) && !(target instanceof AbstractActor)) {
+      } else if (!(((Component) source).isActor()) && !(((Component) target).isActor())) {
         if (!getCache(ComponentExt::getAllSubUsedAndDeployedComponents, (Component) source).contains(target)
             && !getCache(ComponentExt::getAllSubUsedAndDeployedComponents, (Component) target).contains(source)) {
           /*
@@ -1660,10 +1654,10 @@ public class CsServices {
         || (target instanceof ConfigurationItem)) {
       return false;
     }
-    if ((source instanceof LogicalActor) && (target instanceof Component)) {
+    if ((source instanceof Component) && (((Component) source).isActor()) && (target instanceof Component)) {
       return true;
     }
-    if ((target instanceof LogicalActor) && (source instanceof Component)) {
+    if ((target instanceof Component) && (((Component) target).isActor()) && (source instanceof Component)) {
       return true;
     }
     if (source instanceof ComponentPort) {
@@ -1672,10 +1666,10 @@ public class CsServices {
     if (target instanceof ComponentPort) {
       target = target.eContainer();
     }
-    if ((source instanceof LogicalActor) && (target instanceof Component)) {
+    if ((source instanceof Component) && (((Component) source).isActor()) && (target instanceof Component)) {
       return true;
     }
-    if ((target instanceof LogicalActor) && (source instanceof Component)) {
+    if ((target instanceof Component) && (((Component) target).isActor()) && (source instanceof Component)) {
       return true;
     }
 
@@ -2168,7 +2162,7 @@ public class CsServices {
    * Returns a unique name for a part If there is no part with its type name, use the type name otherwise, add to type
    * name a final sequence with number
    */
-  public static String getPartUniqueName(Partition part) {
+  public static String getPartUniqueName(Part part) {
     int i = 0;
     boolean isCorrectlyNamed = false;
     AbstractType type = part.getAbstractType();
@@ -2337,7 +2331,7 @@ public class CsServices {
    * Returns whether given element is an abstract actor or a not-node physical component
    */
   protected boolean isAbstractActorOrNotNodeComponent(EObject source) {
-    return ((source instanceof AbstractActor) || ((source instanceof PhysicalComponent)
+    return ((source instanceof Component && ((Component) source).isActor()) || ((source instanceof PhysicalComponent)
         && (((PhysicalComponent) source).getNature() != PhysicalComponentNature.NODE)));
   }
 
@@ -2345,7 +2339,7 @@ public class CsServices {
    * Returns whether given element is an abstract actor or a node physical component
    */
   protected boolean isAbstractActorOrNodeComponent(EObject source) {
-    return ((source instanceof AbstractActor) || ((source instanceof PhysicalComponent)
+    return ((source instanceof Component && ((Component) source).isActor()) || ((source instanceof PhysicalComponent)
         && (((PhysicalComponent) source).getNature() == PhysicalComponentNature.NODE)));
   }
 
@@ -2462,17 +2456,17 @@ public class CsServices {
     if ((source == null) || (target == null)) {
       return false;
 
-    } else if ((source instanceof AbstractPhysicalComponent) && (target instanceof AbstractPhysicalComponent)) {
+    } else if ((source instanceof PhysicalComponent) && (target instanceof PhysicalComponent)) {
       return (isAbstractActorOrNotNodeComponent(source) && isAbstractActorOrNotNodeComponent(target));
     }
     return false;
   }
 
-  public Component getFirstComponent(ModellingArchitecture architecture) {
-    return BlockArchitectureExt.getFirstComponent(architecture);
+  public Component getFirstComponent(BlockArchitecture architecture) {
+    return BlockArchitectureExt.getOrCreateSystem(architecture);
   }
 
-  public List<Component> getFirstComponents(ModellingArchitecture architecture) {
+  public List<Component> getFirstComponents(BlockArchitecture architecture) {
     return BlockArchitectureExt.getFirstComponents(architecture);
   }
 
@@ -2606,7 +2600,7 @@ public class CsServices {
           ((PhysicalArchitecture) container).setOwnedPhysicalComponentPkg(pkg);
         }
 
-        containerFeature = PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_COMPONENTS;
+        containerFeature = PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS;
         containerObject = pkg;
 
       }
@@ -2671,49 +2665,49 @@ public class CsServices {
 
     if (container instanceof LogicalArchitecture) {
 
-      element = LaFactory.eINSTANCE.createLogicalActor();
+      element = LaFactory.eINSTANCE.createLogicalComponent();
       namePrefix = "LA "; //$NON-NLS-1$
 
-      LogicalActorPkg pkg = ((LogicalArchitecture) container).getOwnedLogicalActorPkg();
+      LogicalComponentPkg pkg = ((LogicalArchitecture) container).getOwnedLogicalComponentPkg();
       if (pkg == null) {
-        pkg = LaFactory.eINSTANCE.createLogicalActorPkg();
-        ((LogicalArchitecture) container).setOwnedLogicalActorPkg(pkg);
+        pkg = LaFactory.eINSTANCE.createLogicalComponentPkg();
+        ((LogicalArchitecture) container).setOwnedLogicalComponentPkg(pkg);
       }
 
-      containerFeature = LaPackage.Literals.LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTORS;
+      containerFeature = LaPackage.Literals.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENTS;
       containerObject = pkg;
 
     } else if (container instanceof PhysicalArchitecture) {
 
-      element = PaFactory.eINSTANCE.createPhysicalActor();
+      element = PaFactory.eINSTANCE.createPhysicalComponent();
       namePrefix = "PA "; //$NON-NLS-1$
 
-      PhysicalActorPkg pkg = ((PhysicalArchitecture) container).getOwnedPhysicalActorPkg();
+      PhysicalComponentPkg pkg = ((PhysicalArchitecture) container).getOwnedPhysicalComponentPkg();
       if (pkg == null) {
-        pkg = PaFactory.eINSTANCE.createPhysicalActorPkg();
-        ((PhysicalArchitecture) container).setOwnedPhysicalActorPkg(pkg);
+        pkg = PaFactory.eINSTANCE.createPhysicalComponentPkg();
+        ((PhysicalArchitecture) container).setOwnedPhysicalComponentPkg(pkg);
       }
 
-      containerFeature = PaPackage.Literals.PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTORS;
+      containerFeature = PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS;
       containerObject = pkg;
 
     } else if (container instanceof SystemAnalysis) {
 
-      element = CtxFactory.eINSTANCE.createActor();
+      element = CtxFactory.eINSTANCE.createSystemComponent();
       namePrefix = "A "; //$NON-NLS-1$
 
-      ActorPkg pkg = ((SystemAnalysis) container).getOwnedActorPkg();
+      SystemComponentPkg pkg = ((SystemAnalysis) container).getOwnedSystemComponentPkg();
       if (pkg == null) {
-        pkg = CtxFactory.eINSTANCE.createActorPkg();
-        ((SystemAnalysis) container).setOwnedActorPkg(pkg);
+        pkg = CtxFactory.eINSTANCE.createSystemComponentPkg();
+        ((SystemAnalysis) container).setOwnedSystemComponentPkg(pkg);
       }
 
-      containerFeature = CtxPackage.Literals.ACTOR_PKG__OWNED_ACTORS;
+      containerFeature = CtxPackage.Literals.SYSTEM_COMPONENT_PKG__OWNED_SYSTEM_COMPONENTS;
       containerObject = pkg;
 
     } else if (container instanceof OperationalAnalysis) {
 
-      element = OaFactory.eINSTANCE.createOperationalActor();
+      element = OaFactory.eINSTANCE.createEntity();
       namePrefix = "OperationalActor "; //$NON-NLS-1$
 
       EntityPkg pkg = ((OperationalAnalysis) container).getOwnedEntityPkg();
@@ -2731,7 +2725,7 @@ public class CsServices {
     }
 
     if ((element != null) && (containerObject != null) && (containerFeature != null)) {
-      ((EList) containerObject.eGet(containerFeature)).add(element);
+      ((EList<Component>) containerObject.eGet(containerFeature)).add(element);
 
       if (creationService) {
         CapellaServices.getService().creationService(element);
@@ -2743,6 +2737,9 @@ public class CsServices {
     if (nameVariable != null) {
       InterpreterUtil.getInterpreter(container).setVariable(nameVariable, element);
     }
+    
+    element.setActor(true);
+    element.setHuman(true);
     return element;
   }
 
@@ -2771,7 +2768,7 @@ public class CsServices {
         result.add(element);
         if (element instanceof Component) {
           Component comp = (Component) element;
-          for (Partition part : comp.getRepresentingPartitions()) {
+          for (Part part : comp.getRepresentingParts()) {
             result.add(part);
           }
         }
@@ -2782,7 +2779,7 @@ public class CsServices {
         result.add(element);
         if (element instanceof Component) {
           Component comp = (Component) element;
-          for (Partition part : comp.getRepresentingPartitions()) {
+          for (Part part : comp.getRepresentingParts()) {
             result.add(part);
           }
         }
@@ -4039,7 +4036,7 @@ public class CsServices {
     List<EObject> result = new ArrayList<>();
 
     if ((element instanceof Part) && (((Part) element).getAbstractType() != null)) {
-      for (Partition part : ((PartitionableElement) (((Part) element).getAbstractType())).getRepresentingPartitions()) {
+      for (Part part : ((Component) (((Part) element).getAbstractType())).getRepresentingParts()) {
         if (part instanceof Part) {
           result.add(getParentContainer(part));
         }
@@ -4537,7 +4534,7 @@ public class CsServices {
 
     } else if (element instanceof Component) {
       elements.add(element);
-      elements.addAll(((Component) element).getRepresentingPartitions());
+      elements.addAll(((Component) element).getRepresentingParts());
     }
     return elements;
   }
@@ -4581,21 +4578,27 @@ public class CsServices {
    * Returns components which can be inserted into the given component in the LAB Diagram
    */
   public Collection<? extends Component> getABInsertComponent(Component component) {
-    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_CCII_INSERT_COMPONENTS_FOR_LIB, component);
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_CCII_SHOW_HIDE_COMPONENTS_FOR_LIB, component);
   }
 
   public Collection<? extends NamedElement> getABShowHideActor(DSemanticDecorator view) {
     Component component = (Component) getComponentType(view);
     BlockArchitecture architecture = getArchitecture(component);
-    return getParts(getContext(architecture), CsPackage.Literals.ABSTRACT_ACTOR, null);
+    return getParts(getContext(architecture), CsPackage.Literals.COMPONENT, null);
   }
 
   /**
    * Returns owned parts with the given eclass type
    */
-  protected List<Part> getParts(PartitionableElement element, EClass eClass, EClass excludeEClass) {
+  protected List<Part> getParts(CapellaElement element, EClass eClass, EClass excludeEClass) {
     List<Part> parts = new ArrayList<>();
-    for (Partition part : ComponentExt.getSubParts(element)) {
+    List<Part> subParts = new ArrayList<>();
+    if (element instanceof Component) {
+      subParts = ComponentExt.getSubParts((Component) element);
+    } else if (element instanceof ComponentPkg) {
+      subParts = ((ComponentPkg) element).getOwnedParts();
+    }
+    for (Part part : subParts) {
       if ((part instanceof Part) && eClass.isInstance(part.getAbstractType())
           && (!((excludeEClass != null) && excludeEClass.isInstance(part.getAbstractType())))) {
         parts.add((Part) part);
@@ -4966,12 +4969,12 @@ public class CsServices {
    * @param rootComponent
    */
   public void createRepresentingPartIfNone(Component component) {
-    if (component.getRepresentingPartitions().isEmpty()) {
+    if (component.getRepresentingParts().isEmpty()) {
       Part part = CsFactory.eINSTANCE.createPart();
       EObject parentContainer = getParentContainer(component);
       if (parentContainer instanceof BlockArchitecture) {
-        Component context = getContext((BlockArchitecture) parentContainer);
-        context.getOwnedFeatures().add(part);
+        ComponentPkg context = getContext((BlockArchitecture) parentContainer);
+        context.getOwnedParts().add(part);
       } else if (parentContainer instanceof Component) {
         ((Component) parentContainer).getOwnedFeatures().add(part);
       }
@@ -5527,15 +5530,7 @@ public class CsServices {
    * @return : list of components
    */
   public List<CapellaElement> getAllComponentFromBlockArchitecture(EObject context, BlockArchitecture arch) {
-    List<CapellaElement> tempResult = new ArrayList<>();
-    List<CapellaElement> result = new ArrayList<>();
-    BlockArchitectureExt.getAllComponentsFromBlockArchitecture(arch, tempResult);
-    for (CapellaElement capellaElement : tempResult) {
-      if (!(capellaElement instanceof ComponentContext)) {
-        result.add(capellaElement);
-      }
-    }
-    return result;
+    return BlockArchitectureExt.getAllComponents(arch).stream().collect(Collectors.toList());
   }
 
   /**
@@ -5557,7 +5552,7 @@ public class CsServices {
     // collect all the visible abstractActor element from the diagram
     for (DDiagramElement aNode : DiagramServices.getDiagramServices().getDiagramElements(diagram)) {
       EObject target = aNode.getTarget();
-      if ((aNode instanceof AbstractDNode) && (target != null) && (target instanceof AbstractActor)) {
+      if ((aNode instanceof AbstractDNode) && (target != null) && (target instanceof Component && ((Component) target).isActor())) {
         visibleElements.put((CapellaElement) target, (AbstractDNode) aNode);
       }
     }
@@ -5637,7 +5632,7 @@ public class CsServices {
 
     String mappingName = ""; //$NON-NLS-1$
     if (IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK.equals(diagram.getDescription().getName())
-        && element instanceof AbstractActor) {
+        && element instanceof Component && ((Component) element).isActor()) {
       mappingName = IMappingNameConstants.CRB_COMPONENT_MAPPING;
     }
     return DiagramServices.getDiagramServices().getContainerMapping(diagram, mappingName);
@@ -5757,7 +5752,7 @@ public class CsServices {
     if (parentContainer instanceof Component) {
       return getSubComponents(parentContainer);
     } else if (parentContainer instanceof BlockArchitecture) {
-      Component firstComponent = BlockArchitectureExt.getFirstComponent((ModellingArchitecture) parentContainer);
+      Component firstComponent = BlockArchitectureExt.getOrCreateSystem((BlockArchitecture) parentContainer);
       if (null != firstComponent) {
         return getSubComponents(firstComponent);
       }
@@ -5822,7 +5817,7 @@ public class CsServices {
     return false;
   }
 
-  public List<EObject> getConstraintToInsertInDiagram(EObject context) {
+  public List<? extends EObject> getConstraintToInsertInDiagram(EObject context) {
     List<EObject> result = new ArrayList<>(0);
 
     if (context instanceof DDiagram) {
@@ -6784,5 +6779,9 @@ public class CsServices {
       return ((FunctionalChainInvolvementFunction) target).getInvolved();
     }
     return null;
+  }
+  
+  public boolean isActor(EObject context) {
+    return (context instanceof Component && ComponentExt.isActor(context));
   }
 }

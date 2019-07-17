@@ -2476,7 +2476,6 @@
           <targetMapping xsi:type="description_1:NodeMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState']"/>
           <targetMapping xsi:type="description_1:EdgeMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@edgeMappings[name='MSM_Transition']"/>
           <targetMapping xsi:type="description_1:NodeMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Component']"/>
-          <targetMapping xsi:type="description_1:NodeMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Actor']"/>
           <targetMapping xsi:type="description_1:EdgeMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@edgeMappings[name='CCRI%20involvement']"/>
           <targetMapping xsi:type="description_1:ContainerMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@containerMappings[name='FC_FunctionalChainReference']"/>
           <targetMapping xsi:type="description_1:ContainerMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@containerMappings[name='FC_FunctionalChainReference']/@subContainerMappings[name='FC_FunctionalChainStacked']"/>
@@ -12110,13 +12109,7 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <nodeMappings name="CCRI Actor" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" createElements="false" domainClass="AbstractActor">
-          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.png">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-          </style>
-        </nodeMappings>
-        <nodeMappings name="CCRI Component" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" createElements="false" domainClass="SystemComponent">
+        <nodeMappings name="CCRI Component" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" createElements="false" domainClass="Component">
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Physical%20Component%20Breakdown']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Physical%20Architecture%20Blank']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20Detailed%20Interfaces']"/>
@@ -12126,6 +12119,12 @@
           <detailDescriptions xsi:type="description_3:TableCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Delegations']/@ownedRepresentationCreationDescriptions[name='Interface%20delegations']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Logical%20Component%20Breakdown']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Logical%20Architecture%20Blank']"/>
+          <conditionnalStyles predicateExpression="aql:self.isActor()">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:self.eClass().name = 'LogicalComponent'">
             <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/LogicalComponent.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -12151,7 +12150,7 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <edgeMappings name="CCRI involvement" label="CCRI Involvement" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20CapabilityRealization']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Actor'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Component']" targetFinderExpression="feature:involved" sourceFinderExpression="feature:involver" domainClass="CapabilityRealizationInvolvement" useDomainElement="true">
+        <edgeMappings name="CCRI involvement" label="CCRI Involvement" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20CapabilityRealization']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Component']" targetFinderExpression="feature:involved" sourceFinderExpression="feature:involver" domainClass="CapabilityRealizationInvolvement" useDomainElement="true">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
@@ -12171,23 +12170,29 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Logical Actor / Physical Actor (and creates a Part in the Context element of the current level)" name="actor" label="Actor" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Actor']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Actor.gif">
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Logical Actor / Physical Actor (and creates a Part in the Context element of the current level)" name="actor" label="Actor" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Actor.gif">
             <filters precondition="aql:(self.target.eContainerOrSelf(epbs::EPBSArchitecture)->size() != 0)"/>
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.getArchitecture()">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedPhysicalActorPkg->size() > 0">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.ownedPhysicalActorPkg">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalActor" referenceName="ownedPhysicalActors" variableName="actor">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(la::LogicalArchitecture)">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.ownedLogicalComponentPkg">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponent" referenceName="ownedLogicalComponents" variableName="la">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedLogicalActorPkg->size() > 0">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.ownedLogicalActorPkg">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalActor" referenceName="ownedLogicalActors">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalArchitecture)">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.ownedPhysicalComponentPkg">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents" variableName="pa">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
@@ -12198,34 +12203,28 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.getArchitecture()">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedPhysicalComponent->size() > 0">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.ownedPhysicalComponent">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="nature" valueExpression="BEHAVIOR"/>
-                    </subModelOperations>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.getArchitecture().system">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponent)">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="nature" valueExpression="BEHAVIOR"/>
                   </subModelOperations>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedLogicalComponent->size() > 0">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.ownedLogicalComponent">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponent" referenceName="ownedLogicalComponents">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
-                    </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(la::LogicalComponent)">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponent" referenceName="ownedLogicalComponents">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                   </subModelOperations>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedConfigurationItem->size() > 0">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.ownedConfigurationItem">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ConfigurationItem" referenceName="ownedConfigurationItems">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="SystemCI"/>
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
-                    </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(epbs::ConfigurationItem)">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ConfigurationItem" referenceName="ownedConfigurationItems">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="SystemCI"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a new Involvement relationship between the source Capability Realization and the target Component/Actor." name="involvement" label="Involvement" precondition="aql:not ((self.isActorInvolvedWithCapability(preSource, preTarget)) or (self.isSystemComponentInvolvedWithCapability(preSource, preTarget)))" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@edgeMappings[name='CCRI%20involvement']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Use.gif">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a new Involvement relationship between the source Capability Realization and the target Component/Actor." name="involvement" label="Involvement" precondition="aql:not self.isComponentInvolvedWithCapability(preSource, preTarget))" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@edgeMappings[name='CCRI%20involvement']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Use.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -12233,15 +12232,8 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source">
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:source.oclIsKindOf(la::CapabilityRealization)">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:target.oclIsKindOf(cs::AbstractActor)">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ActorCapabilityRealizationInvolvement" referenceName="ownedActorCapabilityRealizations">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="aql:target"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (target.oclIsKindOf(cs::AbstractActor))">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SystemComponentCapabilityRealizationInvolvement" referenceName="ownedSystemComponentCapabilityRealizations">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="aql:target"/>
-                    </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="CapabilityRealizationInvolvement" referenceName="ownedCapabilityRealizationInvolvements">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="aql:target"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -12249,14 +12241,27 @@
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Actors" name="actors" label="Actors" precondition="aql:elementView->filter(diagram::DDiagram)->size() > 0" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <filters precondition="aql:(self.target.eContainerOrSelf(epbs::EPBSArchitecture)->size() != 0)"/>
-            <element name="element">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="AbstractActor"/>
-            </element>
-            <elementView name="elementView"/>
+            <element name="element"/>
+            <elementView name="elementView">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="visibleActors" computationExpression="aql:self.void2Null(elementView.getDisplayedNodeActors())"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="visibleActorViews" computationExpression="aql:self.void2Null(elementView.getDisplayedActorNodeViews())"/>
+            </elementView>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.genericSelectElements()">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (resultVariable = 'WIZARD_CANCELED')">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.genericShowHideElements()"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectActors" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                  <parameters name="context" value="aql:elementView"/>
+                  <parameters name="scope" value="aql:self.void2Null(elementView.getMCBActors())"/>
+                  <parameters name="resultVariable" value="selectedActors"/>
+                  <parameters name="wizardMessage" value="aql:'Select actors to show in ' + element.name + '.'"/>
+                  <parameters name="initialSelection" value="aql:visibleActors"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selectedActors = 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="ShowHideActors" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.ShowHideMCComponents">
+                    <parameters name="view" value="aql:elementView"/>
+                    <parameters name="selected components" value="aql:self.void2Null(selectedActors)"/>
+                    <parameters name="components" value="aql:visibleActors"/>
+                    <parameters name="visible component views" value="aql:visibleActorViews"/>
+                  </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -12264,14 +12269,27 @@
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Components" name="components" label="Components" precondition="aql:elementView->filter(diagram::DDiagram)->size() > 0" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <filters precondition="aql:(self.target.eContainerOrSelf(epbs::EPBSArchitecture)->size() != 0)"/>
-            <element name="element">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="SystemComponent"/>
-            </element>
-            <elementView name="elementView"/>
+            <element name="element"/>
+            <elementView name="elementView">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="visibleComponents" computationExpression="aql:self.void2Null(elementView.getDisplayedNodeComponents())"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="visibleComponentViews" computationExpression="aql:self.void2Null(elementView.getDisplayedComponentNodeViews())"/>
+            </elementView>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.genericSelectElements()">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (resultVariable = 'WIZARD_CANCELED')">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.genericShowHideElements()"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectComponents" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                  <parameters name="context" value="aql:elementView"/>
+                  <parameters name="scope" value="aql:self.void2Null(elementView.getCRBComponents())"/>
+                  <parameters name="resultVariable" value="selectedComponents"/>
+                  <parameters name="wizardMessage" value="aql:'Select components to show in ' + element.name + '.'"/>
+                  <parameters name="initialSelection" value="aql:visibleComponents"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selectedComponents = 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="ShowHideComponents" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.ShowHideMCComponents">
+                    <parameters name="view" value="aql:elementView"/>
+                    <parameters name="selected components" value="aql:self.void2Null(selectedComponents)"/>
+                    <parameters name="visible components" value="aql:visibleComponents"/>
+                    <parameters name="visible component views" value="aql:visibleComponentViews"/>
+                  </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -12445,10 +12463,10 @@
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@edgeMappings[name='CRB%20Cap%20Generalization']"/>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.components.filter" label="Hide Components">
-        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']" semanticConditionExpression="aql:self.oclIsKindOf(cs::AbstractActor)"/>
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']" semanticConditionExpression="aql:self.isActor()"/>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.actors.filter" label="Hide Actors">
-        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']" semanticConditionExpression="aql:not (self.oclIsKindOf(cs::AbstractActor))"/>
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']" semanticConditionExpression="aql:not self.isActor()"/>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.actor.generalizations.filter" label="Hide Actor Generalizations">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@edgeMappings[name='CRB%20Actor%20Generalization']"/>
@@ -12514,6 +12532,23 @@
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Logical%20Component%20Breakdown']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Logical%20Architecture%20Blank']"/>
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
+          <conditionnalStyles predicateExpression="aql:(self.isActor() = true) and (self = container)">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']">
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:(self.isActor() = true) and (self.isAbstract() = false)">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:(self.isActor() = true) and (self.isAbstract() = true)">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']">
+              <labelFormat>italic</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'LogicalComponent') and (self = container)">
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
               <labelFormat>bold</labelFormat>
@@ -12525,23 +12560,6 @@
           <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'LogicalComponent') and (self.isAbstract() = true)">
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
               <labelFormat>italic</labelFormat>
-            </style>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:(self->filter(cs::AbstractActor)->size() > 0) and (self = container)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']">
-              <labelFormat>bold</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </style>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:(self->filter(cs::AbstractActor)->size() > 0) and (self.isAbstract() = false)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </style>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:(self->filter(cs::AbstractActor)->size() > 0) and (self.isAbstract() = true)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']">
-              <labelFormat>italic</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self->filter(epbs::ConfigurationItem)->size() > 0) and (self = container)">
@@ -12626,7 +12644,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Logical / Physical Component (and creates a Part in the selected Container Component)" name="component" label="Component" precondition="aql:(self.oclIsKindOf(cs::Component) or self.oclIsKindOf(la::CapabilityRealizationPkg)) and not (self.oclIsKindOf(cs::AbstractActor))" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/System.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Logical / Physical Component (and creates a Part in the selected Container Component)" name="component" label="Component" precondition="aql:(self.oclIsKindOf(cs::Component) or self.oclIsKindOf(la::CapabilityRealizationPkg)) and (self.isActor() = false)" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/System.gif">
             <filters precondition="aql:self.target.eContainerOrSelf(epbs::EPBSArchitecture)->size() != 0" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)">
               <listeners domainClass="Component" featureName="ownedInterfaceUses"/>
             </filters>
@@ -12786,7 +12804,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="Configuration Items">
-            <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Configuration Item with kind COTS (Commercial Off The Shelf)." name="cots" label="COTS" precondition="aql:(self.oclIsKindOf(cs::Component) or self.oclIsKindOf(la::CapabilityRealizationPkg)) and not (self.oclIsKindOf(cs::AbstractActor))" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/System.gif">
+            <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Configuration Item with kind COTS (Commercial Off The Shelf)." name="cots" label="COTS" precondition="aql:(self.oclIsKindOf(cs::Component) or self.oclIsKindOf(la::CapabilityRealizationPkg)) and not (self.isActor())" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/System.gif">
               <filters precondition="aql:self.target.eContainerOrSelf(epbs::EPBSArchitecture)->size() = 0" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)">
                 <listeners domainClass="Component" featureName="ownedInterfaceUses"/>
               </filters>
@@ -12803,7 +12821,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Configuration Item with kind CS (Computer Software) ." name="cs" label="CS" precondition="aql:(self.oclIsKindOf(cs::Component) or self.oclIsKindOf(la::CapabilityRealizationPkg)) and not (self.oclIsKindOf(cs::AbstractActor))" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/System.gif">
+            <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Configuration Item with kind CS (Computer Software) ." name="cs" label="CS" precondition="aql:(self.oclIsKindOf(cs::Component) or self.oclIsKindOf(la::CapabilityRealizationPkg)) and not (self.isActor())" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/System.gif">
               <filters precondition="aql:self.target.eContainerOrSelf(epbs::EPBSArchitecture)->size() = 0" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)">
                 <listeners domainClass="Component" featureName="ownedInterfaceUses"/>
               </filters>
@@ -12820,7 +12838,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Configuration Item with kind HW (Hardware) ." name="hw" label="HW" precondition="aql:(self.oclIsKindOf(cs::Component) or self.oclIsKindOf(la::CapabilityRealizationPkg)) and not (self.oclIsKindOf(cs::AbstractActor))" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/System.gif">
+            <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Configuration Item with kind HW (Hardware) ." name="hw" label="HW" precondition="aql:(self.oclIsKindOf(cs::Component) or self.oclIsKindOf(la::CapabilityRealizationPkg)) and not (self.isActor())" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/System.gif">
               <filters precondition="aql:self.target.eContainerOrSelf(epbs::EPBSArchitecture)->size() = 0" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)">
                 <listeners domainClass="Component" featureName="ownedInterfaceUses"/>
               </filters>
@@ -12837,7 +12855,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Configuration Item with kind Interface." name="interface" label="Interface" precondition="aql:(self.oclIsKindOf(cs::Component) or self.oclIsKindOf(la::CapabilityRealizationPkg)) and not (self.oclIsKindOf(cs::AbstractActor))" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/System.gif">
+            <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Configuration Item with kind Interface." name="interface" label="Interface" precondition="aql:(self.oclIsKindOf(cs::Component) or self.oclIsKindOf(la::CapabilityRealizationPkg)) and not (self.isActor())" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/System.gif">
               <filters precondition="aql:self.target.eContainerOrSelf(epbs::EPBSArchitecture)->size() = 0" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)">
                 <listeners domainClass="Component" featureName="ownedInterfaceUses"/>
               </filters>
@@ -12854,7 +12872,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Configuration Item with kind NDI (Not Developed Item) ." name="ndi" label="NDI" precondition="aql:(self.oclIsKindOf(cs::Component) or self.oclIsKindOf(la::CapabilityRealizationPkg)) and not (self.oclIsKindOf(cs::AbstractActor))" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/System.gif">
+            <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Configuration Item with kind NDI (Not Developed Item) ." name="ndi" label="NDI" precondition="aql:(self.oclIsKindOf(cs::Component) or self.oclIsKindOf(la::CapabilityRealizationPkg)) and not (self.isActor())" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/System.gif">
               <filters precondition="aql:self.target.eContainerOrSelf(epbs::EPBSArchitecture)->size() = 0" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)">
                 <listeners domainClass="Component" featureName="ownedInterfaceUses"/>
               </filters>
@@ -12871,7 +12889,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Configuration Item with kind Prime Item." name="prime.item" label="Prime Item" precondition="aql:(self.oclIsKindOf(cs::Component) or self.oclIsKindOf(la::CapabilityRealizationPkg)) and not (self.oclIsKindOf(cs::AbstractActor))" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/System.gif">
+            <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Configuration Item with kind Prime Item." name="prime.item" label="Prime Item" precondition="aql:(self.oclIsKindOf(cs::Component) or self.oclIsKindOf(la::CapabilityRealizationPkg)) and not (self.isActor())" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/System.gif">
               <filters precondition="aql:self.target.eContainerOrSelf(epbs::EPBSArchitecture)->size() = 0" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)">
                 <listeners domainClass="Component" featureName="ownedInterfaceUses"/>
               </filters>
@@ -12888,7 +12906,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Configuration Item with kind System." name="system" label="System" precondition="aql:(self.oclIsKindOf(cs::Component) or self.oclIsKindOf(la::CapabilityRealizationPkg)) and not (self.oclIsKindOf(cs::AbstractActor))" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/System.gif">
+            <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Configuration Item with kind System." name="system" label="System" precondition="aql:(self.oclIsKindOf(cs::Component) or self.oclIsKindOf(la::CapabilityRealizationPkg)) and not (self.isActor())" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/System.gif">
               <filters precondition="aql:self.target.eContainerOrSelf(epbs::EPBSArchitecture)->size() = 0" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)">
                 <listeners domainClass="Component" featureName="ownedInterfaceUses"/>
               </filters>
@@ -12928,15 +12946,8 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:target.oclIsKindOf(cs::AbstractActor)">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ActorCapabilityRealizationInvolvement" referenceName="ownedActorCapabilityRealizations">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="aql:target"/>
-                  </subModelOperations>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (target.oclIsKindOf(cs::AbstractActor))">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SystemComponentCapabilityRealizationInvolvement" referenceName="ownedSystemComponentCapabilityRealizations">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="aql:target"/>
-                  </subModelOperations>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="CapabilityRealizationInvolvement" referenceName="ownedCapabilityRealizationInvolvements">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="aql:target"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -12978,7 +12989,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a new Generalization relationship between the source and target Actors." name="actor.generalization" label="Actor Generalization" precondition="aql:self.isGeneralizable(preSource,preTarget) and not (preSource.superGeneralizations.super->includes(preTarget)) and preSource.oclIsKindOf(cs::AbstractActor) and preTarget.oclIsKindOf(cs::AbstractActor)" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@edgeMappings[name='CRB%20Actor%20Generalization']">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a new Generalization relationship between the source and target Actors." name="actor.generalization" label="Actor Generalization" precondition="aql:self.isGeneralizable(preSource,preTarget) and not (preSource.superGeneralizations.super->includes(preTarget)) and (preSource.isActor() = true) and (preTarget.isActor() = true)" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@edgeMappings[name='CRB%20Actor%20Generalization']">
             <filters precondition="aql:self.target.eContainerOrSelf(epbs::EPBSArchitecture)->size() != 0" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)">
               <listeners domainClass="Component" featureName="ownedInterfaceUses"/>
             </filters>
@@ -13009,35 +13020,61 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="components" label="Components" precondition="aql:(self.oclIsKindOf(cs::Component) or self.oclIsKindOf(la::CapabilityRealizationPkg)) and not (self.oclIsKindOf(cs::AbstractActor))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-            <element name="element">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="Component"/>
-            </element>
-            <elementView name="elementView"/>
+          <ownedTools xsi:type="tool_1:ToolDescription" name="components" label="Components" precondition="aql:(self.oclIsKindOf(cs::Component) or self.oclIsKindOf(la::CapabilityRealizationPkg)) and not (self.isActor())" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <element name="element"/>
+            <elementView name="elementView">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="visibleComponents" computationExpression="aql:self.void2Null(elementView.getDisplayedContainerComponents())"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="visibleComponentViews" computationExpression="aql:self.void2Null(elementView.getDisplayedComponentContainerViews())"/>
+            </elementView>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.genericSelectElements()">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (resultVariable = 'WIZARD_CANCELED')">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.genericShowHideElements()"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectComponents" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                  <parameters name="context" value="aql:elementView"/>
+                  <parameters name="scope" value="aql:self.void2Null(elementView.getCRBComponents())"/>
+                  <parameters name="resultVariable" value="selectedComponents"/>
+                  <parameters name="wizardMessage" value="aql:'Select components to show in ' + element.name + '.'"/>
+                  <parameters name="initialSelection" value="aql:visibleComponents"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selectedComponents = 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="ShowHideComponents" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.ShowHideMCComponents">
+                    <parameters name="view" value="aql:elementView"/>
+                    <parameters name="selected components" value="aql:self.void2Null(selectedComponents)"/>
+                    <parameters name="visible components" value="aql:visibleComponents"/>
+                    <parameters name="visible component views" value="aql:visibleComponentViews"/>
+                  </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolDescription" name="actors" label="Actors" precondition="aql:elementView->filter(diagram::DDiagram)->size() > 0" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-            <element name="element">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="AbstractActor"/>
-            </element>
-            <elementView name="elementView"/>
+            <element name="element"/>
+            <elementView name="elementView">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="visibleActors" computationExpression="aql:self.void2Null(elementView.getDisplayedContainerActors())"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="visibleActorViews" computationExpression="aql:self.void2Null(elementView.getDisplayedActorContainerViews())"/>
+            </elementView>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.genericSelectElements()">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (resultVariable = 'WIZARD_CANCELED')">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.genericShowHideElements()"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectActors" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                  <parameters name="context" value="aql:elementView"/>
+                  <parameters name="scope" value="aql:self.void2Null(elementView.getMCBActors())"/>
+                  <parameters name="resultVariable" value="selectedActors"/>
+                  <parameters name="wizardMessage" value="aql:'Select actors to show in ' + element.name + '.'"/>
+                  <parameters name="initialSelection" value="aql:visibleActors"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selectedActors = 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="ShowHideActors" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.ShowHideMCComponents">
+                    <parameters name="view" value="aql:elementView"/>
+                    <parameters name="selected components" value="aql:self.void2Null(selectedActors)"/>
+                    <parameters name="components" value="aql:visibleActors"/>
+                    <parameters name="visible component views" value="aql:visibleActorViews"/>
+                  </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Relationships" name="relationships" label="Relationships" precondition="aql:not (elementView.oclIsKindOf(diagram::DDiagram)) and (self.oclIsKindOf(la::CapabilityRealization) or self.oclIsKindOf(cs::AbstractActor))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Relationships" name="relationships" label="Relationships" precondition="aql:not (elementView.oclIsKindOf(diagram::DDiagram)) and (self.oclIsKindOf(la::CapabilityRealization) or (self.isActor())" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -19036,7 +19073,7 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:self.involved.hasAllocationBlocks()">
+          <conditionnalStyles predicateExpression="aql:self.involved.isAllocatedInActor()">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="aql:self.involved.name" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>

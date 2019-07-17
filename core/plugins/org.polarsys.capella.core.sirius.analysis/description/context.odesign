@@ -63,7 +63,7 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <nodeMappings name="ActorNode" navigationDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20CM%20to%20SAB']" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="" createElements="false" domainClass="Actor">
+        <nodeMappings name="ActorNode" navigationDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20CM%20to%20SAB']" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" createElements="false" domainClass="ctx::SystemComponent">
           <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -88,7 +88,7 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="ActMissInv" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticCandidatesExpression="service:diagram.getMBMissionInvolvementSemanticCandidates" semanticElements="aql:null" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='MissionNode']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='ActorNode']" targetFinderExpression="feature:actor" sourceFinderExpression="feature:mission" targetExpression="" domainClass="ActorMissionInvolvement" useDomainElement="true">
+        <edgeMappings name="ActMissInv" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticCandidatesExpression="service:diagram.getMBMissionInvolvementSemanticCandidates" semanticElements="aql:null" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='MissionNode']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='ActorNode']" targetFinderExpression="feature:systemComponent" sourceFinderExpression="feature:mission" targetExpression="" domainClass="MissionInvolvement" useDomainElement="true">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
@@ -123,9 +123,12 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.ancestors()->filter(ctx::SystemAnalysis).ownedActorPkg->first()">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Actor" referenceName="ownedActors" variableName="actor">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.ancestors()->filter(ctx::SystemAnalysis).ownedSystemComponentPkg->first()">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ctx::SystemComponent" referenceName="ownedSystemComponents" variableName="actor">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -163,14 +166,14 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="actor.involvement" label="Actor Involvement" precondition="aql:preSource.eInverse('mission')->filter(ctx::ActorMissionInvolvement)->select(x | x.actor = preTarget)->size() = 0" edgeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@edgeMappings[name='ActMissInv']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Use.gif">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="actor.involvement" label="Actor Involvement" precondition="aql:preSource.eInverse('mission')->filter(ctx::MissionInvolvement)->select(x | x.systemComponent = preTarget)->size() = 0" edgeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@edgeMappings[name='ActMissInv']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Use.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ActorMissionInvolvement" referenceName="ownedActorMissionInvolvements">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="MissionInvolvement" referenceName="ownedMissionInvolvements">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="aql:target"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -190,20 +193,6 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="actors" label="Actors" precondition="aql:elementView->filter(diagram::DDiagram)->size() > 0" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-            <element name="element">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="AbstractActor"/>
-            </element>
-            <elementView name="elementView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.genericSelectElements()">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (resultVariable = 'WIZARD_CANCELED')">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.genericShowHideElements()"/>
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool_1:ToolDescription" name="capabilities" label="Capabilities" precondition="aql:elementView->filter(diagram::DDiagram)->size() > 0" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="AbstractCapability"/>
@@ -218,7 +207,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Relationships" name="relationships" label="Relationships" precondition="aql:elementView.getDiagramContainer() != elementView and (self.oclIsKindOf(ctx::Actor) or self.oclIsKindOf(ctx::Mission) or self.oclIsKindOf(interaction::AbstractCapability))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Relationships" name="relationships" label="Relationships" precondition="aql:elementView.getDiagramContainer() != elementView and self.isActor() or self.oclIsKindOf(ctx::Mission) or self.oclIsKindOf(interaction::AbstractCapability))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -313,7 +302,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Actors From Project Explorer" precondition="aql:element.oclIsKindOf(ctx::Actor) and element.canBeDropped(newViewContainer)" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='ActorNode']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Actors From Project Explorer" precondition="aql:element.oclIsKindOf(cs::Component) and element.isActor() and element.canBeDropped(newViewContainer)" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='ActorNode']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -354,6 +343,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
+          <reusedTools xsi:type="tool_1:ToolDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='actors']"/>
         </toolSections>
         <toolSections name="Common">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="Constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
@@ -481,7 +471,7 @@
         </filters>
       </filters>
       <defaultLayer name="default layer Functional Missions 2">
-        <nodeMappings name="ActorNode2" navigationDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20MB%20to%20SAB']" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit2']" semanticCandidatesExpression="" createElements="false" domainClass="Actor">
+        <nodeMappings name="ActorNode2" navigationDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20MB%20to%20SAB']" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit2']" semanticCandidatesExpression="" createElements="false" domainClass="ctx::SystemComponent">
           <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -512,7 +502,7 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="ActMissInv2" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticCandidatesExpression="service:diagram.getMBMissionInvolvementSemanticCandidates" semanticElements="aql:null" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='MissionNode2']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode2']" targetFinderExpression="feature:actor" sourceFinderExpression="feature:mission" targetExpression="" domainClass="ActorMissionInvolvement" useDomainElement="true">
+        <edgeMappings name="ActMissInv2" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticCandidatesExpression="service:diagram.getMBMissionInvolvementSemanticCandidates" semanticElements="aql:null" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='MissionNode2']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode2']" targetFinderExpression="feature:systemComponent" sourceFinderExpression="feature:mission" targetExpression="" domainClass="ctx::MissionInvolvement" useDomainElement="true">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
@@ -547,9 +537,12 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.ancestors()->filter(ctx::SystemAnalysis).ownedActorPkg->first()">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Actor" referenceName="ownedActors" variableName="actor">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.ancestors()->filter(ctx::SystemAnalysis).ownedSystemComponentPkg->first()">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ctx::SystemComponent" referenceName="ownedSystemComponents" variableName="actor">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -605,14 +598,14 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a new Involvement relationship between the source Mission / Capability and the target System Actor" name="actor.involvement" label="Actor Involvement" precondition="aql:preSource.eInverse('mission')->filter(ctx::ActorMissionInvolvement)->select(x | x.actor = preTarget)->size() = 0" edgeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@edgeMappings[name='ActMissInv2']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Use.gif">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a new Involvement relationship between the source Mission / Capability and the target System Actor" name="actor.involvement" label="Actor Involvement" precondition="aql:preSource.eInverse('mission')->filter(ctx::MissionInvolvement)->select(x | x.systemComponent = preTarget)->size() = 0" edgeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@edgeMappings[name='ActMissInv2']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Use.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ActorMissionInvolvement" referenceName="ownedActorMissionInvolvements">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="MissionInvolvement" referenceName="ownedMissionInvolvements">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="aql:target"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -628,20 +621,6 @@
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacore.Generalization" referenceName="ownedGeneralizations">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="aql:target"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="sub" valueExpression="aql:source"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="actors" label="Actors" precondition="aql:elementView->filter(diagram::DDiagram)->size() > 0" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-            <element name="element">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="AbstractActor"/>
-            </element>
-            <elementView name="elementView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.genericSelectElements()">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (resultVariable = 'WIZARD_CANCELED')">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.genericShowHideElements()"/>
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -674,7 +653,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Relationships" name="relationships" label="Relationships" precondition="aql:elementView.getDiagramContainer() != elementView and (self.oclIsKindOf(ctx::Actor) or self.oclIsKindOf(ctx::Mission) or self.oclIsKindOf(interaction::AbstractCapability))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Relationships" name="relationships" label="Relationships" precondition="aql:elementView.getDiagramContainer() != elementView and (self.isActor() or self.oclIsKindOf(ctx::Mission) or self.oclIsKindOf(interaction::AbstractCapability))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -764,7 +743,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Actors From Project Explorer" precondition="aql:element.oclIsKindOf(ctx::Actor) and element.canBeDropped(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode2']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Actors From Project Explorer" precondition="aql:element.isActor() and element.canBeDropped(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode2']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -805,6 +784,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
+          <reusedTools xsi:type="tool_1:ToolDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='actors']"/>
         </toolSections>
         <toolSections name="Common">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="Constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
@@ -954,7 +934,7 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <nodeMappings name="ActorNode3" navigationDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20CC%20to%20SAB']" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit3']" semanticCandidatesExpression="" createElements="false" domainClass="Actor">
+        <nodeMappings name="ActorNode3" navigationDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20CC%20to%20SAB']" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit3']" semanticCandidatesExpression="" createElements="false" domainClass="ctx::SystemComponent">
           <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -966,7 +946,7 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="ActCapInv3" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticCandidatesExpression="service:diagram.getMBCapabilityInvolvementSemanticCandidates" semanticElements="aql:self" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='Capability3']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='ActorNode3']" targetFinderExpression="feature:actor" sourceFinderExpression="feature:capability" targetExpression="" domainClass="ActorCapabilityInvolvement" useDomainElement="true">
+        <edgeMappings name="ActCapInv3" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticCandidatesExpression="service:diagram.getMBCapabilityInvolvementSemanticCandidates" semanticElements="aql:self" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='Capability3']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='ActorNode3']" targetFinderExpression="feature:systemComponent" sourceFinderExpression="feature:capability" targetExpression="" domainClass="CapabilityInvolvement" useDomainElement="true">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
@@ -1025,9 +1005,12 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.ancestors()->filter(ctx::SystemAnalysis).ownedActorPkg->first()">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Actor" referenceName="ownedActors" variableName="actor">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.ancestors()->filter(ctx::SystemAnalysis).ownedSystemComponentPkg->first()">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ctx::SystemComponent" referenceName="ownedSystemComponents" variableName="actor">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -1076,14 +1059,14 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Create a new Actor Capability Involvement relationship between the Source Capability and Target Actor." name="involved.actor" label="Involved Actor" precondition="aql:not (preSource.ownedActorCapabilityInvolvements.actor->includes(preTarget))" edgeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@edgeMappings[name='ActCapInv3']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Use.gif">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Create a new Actor Capability Involvement relationship between the Source Capability and Target Actor." name="involved.actor" label="Involved Actor" precondition="aql:not (preSource.ownedCapabilityInvolvements.systemComponent->includes(preTarget))" edgeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@edgeMappings[name='ActCapInv3']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Use.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ActorCapabilityInvolvement" referenceName="ownedActorCapabilityInvolvements">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="CapabilityInvolvement" referenceName="ownedCapabilityInvolvements">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="aql:target"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -1140,20 +1123,6 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="actors" label="Actors" precondition="aql:elementView->filter(diagram::DDiagram)->size() > 0" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-            <element name="element">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="AbstractActor"/>
-            </element>
-            <elementView name="elementView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.genericSelectElements()">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (resultVariable = 'WIZARD_CANCELED')">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.genericShowHideElements()"/>
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool_1:ToolDescription" name="capabilities" label="Capabilities" precondition="aql:elementView->filter(diagram::DDiagram)->size() > 0" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="AbstractCapability"/>
@@ -1182,7 +1151,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Relationships" name="relationships" label="Relationships" precondition="aql:elementView.getDiagramContainer() != elementView and (self.oclIsKindOf(ctx::Actor) or self.oclIsKindOf(ctx::Mission) or self.oclIsKindOf(interaction::AbstractCapability))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Relationships" name="relationships" label="Relationships" precondition="aql:elementView.getDiagramContainer() != elementView and (self.isActor() or self.oclIsKindOf(ctx::Mission) or self.oclIsKindOf(interaction::AbstractCapability))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1277,7 +1246,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Actors From Project Explorer" precondition="aql:element.oclIsKindOf(ctx::Actor) and element.canBeDropped(newViewContainer)" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='ActorNode3']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Actors From Project Explorer" precondition="aql:element.isActor() and element.canBeDropped(newViewContainer)" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='ActorNode3']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -1336,6 +1305,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
+          <reusedTools xsi:type="tool_1:ToolDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='actors']"/>
         </toolSections>
         <toolSections name="Common">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="Constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
@@ -1491,7 +1461,7 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="ActorNode4" navigationDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20MCB%20to%20SAB']" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="" createElements="false" domainClass="Actor">
+        <nodeMappings name="ActorNode4" navigationDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20MCB%20to%20SAB']" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="" createElements="false" domainClass="ctx::SystemComponent">
           <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1503,7 +1473,7 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="ActCapInv4" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticCandidatesExpression="service:diagram.getMBCapabilityInvolvementSemanticCandidates" semanticElements="aql:self" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='CapabilityNode4']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode4']" targetFinderExpression="feature:actor" sourceFinderExpression="feature:capability" targetExpression="" domainClass="ActorCapabilityInvolvement" useDomainElement="true">
+        <edgeMappings name="ActCapInv4" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticCandidatesExpression="service:diagram.getMBCapabilityInvolvementSemanticCandidates" semanticElements="aql:self" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='CapabilityNode4']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode4']" targetFinderExpression="feature:systemComponent" sourceFinderExpression="feature:capability" targetExpression="" domainClass="CapabilityInvolvement" useDomainElement="true">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
@@ -1551,7 +1521,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="ActMissInv3" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticCandidatesExpression="service:diagram.getMBMissionInvolvementSemanticCandidates" semanticElements="aql:self" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='MissionNode4']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode4']" targetFinderExpression="feature:actor" sourceFinderExpression="feature:mission" domainClass="ActorMissionInvolvement" useDomainElement="true">
+        <edgeMappings name="ActMissInv3" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticCandidatesExpression="service:diagram.getMBMissionInvolvementSemanticCandidates" semanticElements="aql:self" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='MissionNode4']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode4']" targetFinderExpression="feature:systemComponent" sourceFinderExpression="feature:mission" domainClass="MissionInvolvement" useDomainElement="true">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
@@ -1570,9 +1540,12 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.ancestors()->filter(ctx::SystemAnalysis).ownedActorPkg->first()">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Actor" referenceName="ownedActors" variableName="actor">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.ancestors()->filter(ctx::SystemAnalysis).ownedSystemComponentPkg->first()">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ctx::SystemComponent" referenceName="ownedSystemComponents" variableName="actor">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -1629,12 +1602,12 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source">
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:source.oclIsKindOf(ctx::Mission)">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ActorMissionInvolvement" referenceName="ownedActorMissionInvolvements">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="MissionInvolvement" referenceName="ownedMissionInvolvements">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="aql:target"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:source.oclIsKindOf(ctx::Capability)">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ActorCapabilityInvolvement" referenceName="ownedActorCapabilityInvolvements">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="CapabilityInvolvement" referenceName="ownedCapabilityInvolvements">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="aql:target"/>
                   </subModelOperations>
                 </subModelOperations>
@@ -1692,20 +1665,6 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="actors" label="Actors" precondition="aql:elementView->filter(diagram::DDiagram)->size() > 0" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-            <element name="element">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="AbstractActor"/>
-            </element>
-            <elementView name="elementView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.genericSelectElements()">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (resultVariable = 'WIZARD_CANCELED')">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.genericShowHideElements()"/>
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool_1:ToolDescription" name="capabilities" label="Capabilities" precondition="aql:elementView->filter(diagram::DDiagram)->size() > 0" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="AbstractCapability"/>
@@ -1734,7 +1693,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Relationships. Create or delete graphical objects corresponding to already existing Exploitation / Extension / Inclusion / Generalization relationships. Removing a Relationship graphical object from the diagram does not delete the Relationship from the model. This tool does not modify the semantic model." name="relationships" label="Relationships" precondition="aql:elementView.getDiagramContainer() != elementView and (self.oclIsKindOf(ctx::Actor) or self.oclIsKindOf(ctx::Mission) or self.oclIsKindOf(interaction::AbstractCapability))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Relationships. Create or delete graphical objects corresponding to already existing Exploitation / Extension / Inclusion / Generalization relationships. Removing a Relationship graphical object from the diagram does not delete the Relationship from the model. This tool does not modify the semantic model." name="relationships" label="Relationships" precondition="aql:elementView.getDiagramContainer() != elementView and (self.isActor() or self.oclIsKindOf(ctx::Mission) or self.oclIsKindOf(interaction::AbstractCapability))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1824,7 +1783,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Actors From Project Explorer" precondition="aql:element.oclIsKindOf(ctx::Actor) and element.canBeDropped(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode4']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Actors From Project Explorer" precondition="aql:element.isActor() and element.canBeDropped(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode4']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -1919,6 +1878,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
+          <reusedTools xsi:type="tool_1:ToolDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='actors']"/>
         </toolSections>
         <toolSections name="Common">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="Constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
@@ -2169,7 +2129,7 @@
               <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xBD_ControlNode']"/>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="service:hasAllocationBlocks()">
+          <conditionnalStyles predicateExpression="service:isAllocatedInActor()">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -2611,7 +2571,7 @@
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xDFB_Function_Green_Label']"/>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="service:hasAllocationBlocks()">
+          <conditionnalStyles predicateExpression="service:isAllocatedInActor()">
             <style xsi:type="style:FlatContainerStyleDescription" arcWidth="18" arcHeight="18" borderSizeComputationExpression="1" labelExpression="aql:view.computeFunctionLabel()" roundedCorner="true" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']"/>
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']"/>
@@ -2636,7 +2596,7 @@
         <reusedMappings xsi:type="description_1:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
         <toolSections name="Functions">
           <ownedTools xsi:type="tool:ToolGroup" name="SystemFunctions">
-            <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new System Function" name="function" label="System Function" precondition="aql:containerView.isValidCreationDFFunction() and (container.oclIsKindOf(ctx::Capability) or container.allocationBlocks->filter(cs::AbstractActor)->size() = 0)" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']">
+            <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new System Function" name="function" label="System Function" precondition="aql:containerView.isValidCreationDFFunction() and (container.oclIsKindOf(ctx::Capability) or container.allocationBlocks->filter(cs::Component)->select(c | c.isActor())->size() = 0)" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>

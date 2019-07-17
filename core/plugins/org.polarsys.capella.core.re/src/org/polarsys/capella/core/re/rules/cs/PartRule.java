@@ -38,7 +38,7 @@ public class PartRule extends org.polarsys.capella.core.transition.system.rules.
         return BlockArchitectureExt.getComponentPkg(target, true);
       }
     }
-    return BlockArchitectureExt.getFirstComponent(target);
+    return BlockArchitectureExt.getOrCreateSystem(target);
   }
 
 }

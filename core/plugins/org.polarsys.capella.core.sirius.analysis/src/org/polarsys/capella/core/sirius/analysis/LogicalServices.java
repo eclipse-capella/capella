@@ -16,8 +16,8 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.capellacore.InvolvedElement;
-import org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.interaction.RefinementLink;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.data.la.LaFactory;
@@ -66,7 +66,7 @@ public class LogicalServices {
    */
   public List<InvolvedElement> getSystemComponentInvolvmentOnRefinedRecursively(CapabilityRealization capabilityRealization_p) {
     List<InvolvedElement> returnedList = new ArrayList<InvolvedElement>();
-    for (SystemComponentCapabilityRealizationInvolvement anInvolvement : capabilityRealization_p.getInvolvedSystemComponents()) {
+    for (CapabilityRealizationInvolvement anInvolvement : capabilityRealization_p.getOwnedCapabilityRealizationInvolvements()) {
       if (anInvolvement.getInvolved() != null) {
         returnedList.add(anInvolvement.getInvolved());
       }
@@ -79,9 +79,9 @@ public class LogicalServices {
     return returnedList;
   }
 
-  public List<SystemComponentCapabilityRealizationInvolvement> getInvolvmentLinkOnRefinedRecursively(CapabilityRealization capabilityRealization_p) {
-    List<SystemComponentCapabilityRealizationInvolvement> returnedList = new ArrayList<SystemComponentCapabilityRealizationInvolvement>();
-    returnedList.addAll(capabilityRealization_p.getInvolvedSystemComponents());
+  public List<CapabilityRealizationInvolvement> getInvolvmentLinkOnRefinedRecursively(CapabilityRealization capabilityRealization_p) {
+    List<CapabilityRealizationInvolvement> returnedList = new ArrayList<>();
+    returnedList.addAll(capabilityRealization_p.getOwnedCapabilityRealizationInvolvements());
     for (AbstractTrace aTrace : capabilityRealization_p.getIncomingTraces()) {
       if ((aTrace instanceof RefinementLink) && (aTrace.getSourceElement() != null)) {
         returnedList.addAll(getInvolvmentLinkOnRefinedRecursively((CapabilityRealization) aTrace.getSourceElement()));

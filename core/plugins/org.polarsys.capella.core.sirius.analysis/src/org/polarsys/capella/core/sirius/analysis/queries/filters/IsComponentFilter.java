@@ -12,21 +12,15 @@ package org.polarsys.capella.core.sirius.analysis.queries.filters;
 
 import org.polarsys.capella.common.queries.filters.IQueryFilter;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.oa.Entity;
-import org.polarsys.capella.core.data.oa.OperationalActor;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 
 public class IsComponentFilter implements IQueryFilter {
 
   @Override
   public boolean keepElement(Object element, IQueryContext context) {
-	  if (element instanceof Entity) {
-		  return !(element instanceof OperationalActor);
-	  }
-	  if (element instanceof Component) {
-		  return !(element instanceof AbstractActor);
-	  }
+    if (element instanceof Component && !ComponentExt.isActor(element))
+      return true;
     return false;
   }
 

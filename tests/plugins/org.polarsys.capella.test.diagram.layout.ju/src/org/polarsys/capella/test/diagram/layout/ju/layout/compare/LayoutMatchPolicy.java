@@ -175,8 +175,8 @@ public class LayoutMatchPolicy extends DefaultMatchPolicy {
         if (!p.isEmpty()) {
           addMatch(object, p.get(0).getTargetElement());
           if (object instanceof Component) {
-            addMatch(((Component) object).getRepresentingPartitions().get(0),
-                ((Component) p.get(0).getTargetElement()).getRepresentingPartitions().get(0));
+            addMatch(((Component) object).getRepresentingParts().get(0),
+                ((Component) p.get(0).getTargetElement()).getRepresentingParts().get(0));
           }
         }
       }

@@ -75,7 +75,7 @@ public class ComponentRule extends AbstractCapellaElementRule {
       EObject root = TransformationHandlerHelper.getInstance(context).getLevelElement(element, context);
       BlockArchitecture target =
           (BlockArchitecture) TransformationHandlerHelper.getInstance(context).getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE);
-      return BlockArchitectureExt.getFirstComponent(target);
+      return BlockArchitectureExt.getOrCreateSystem(target);
     }
 
     EObject result = super.transformDirectElement(element, context);

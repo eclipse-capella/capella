@@ -468,7 +468,7 @@ public class XABDiagram extends CommonDiagram {
       if ((element instanceof Part) && (scopeElement instanceof Component)) {
         result.add(((Part) element).getAbstractType());
       } else if ((element instanceof Component) && (scopeElement instanceof Part)) {
-        result.add(((Component) element).getRepresentingPartitions().get(0));
+        result.add(((Component) element).getRepresentingParts().get(0));
       } else {
         result.add(element);
       }

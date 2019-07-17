@@ -143,8 +143,8 @@ import org.polarsys.capella.core.model.helpers.ExchangeItemExt;
 import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
 import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
 import org.polarsys.capella.core.model.helpers.PartExt;
-import org.polarsys.capella.core.model.helpers.PhysicalArchitectureExt;
 import org.polarsys.capella.core.model.helpers.PortExt;
+import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
 import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.showhide.AbstractShowHide;
@@ -360,12 +360,12 @@ public class FaServices {
 
   @Deprecated
   public Collection<ComponentExchange> getDisplayedComponentExchanges(DNodeContainer selectedElement) {
-    return Collections.EMPTY_SET;
+    return Collections.emptySet();
   }
 
   @Deprecated
   public Collection<ComponentExchange> getAvailableComponentExchangesToInsert(DNodeContainer context) {
-    return Collections.EMPTY_SET;
+    return Collections.emptySet();
   }
 
   /**
@@ -716,17 +716,6 @@ public class FaServices {
   public ContainerMapping getMappingDFFunction(AbstractFunction function, DDiagram diagram) {
     String mappingName = MappingConstantsHelper.getMappingDFFunction(diagram);
     return DiagramServices.getDiagramServices().getContainerMapping(diagram, mappingName);
-  }
-
-  /**
-   * Returns mapping on data flow diagrams for the given abstract function
-   * 
-   * @param function
-   * @param diagram
-   * @return
-   */
-  private DiagramElementMapping getMappingDFAbstractFunction(AbstractFunction function, DDiagram diagram) {
-    return getMappingDFFunction(function, diagram);
   }
 
   /**
@@ -2785,16 +2774,16 @@ public class FaServices {
 
     if (sourcePart == null) {
       EObject sourceComponent = CsServices.getService().getComponentType(sourceView);
-      if (sourceComponent instanceof Component && !((Component) sourceComponent).getRepresentingPartitions().isEmpty()
-          && (((Component) sourceComponent).getRepresentingPartitions().get(0) instanceof Part)) {
-        sourcePart = (Part) ((Component) sourceComponent).getRepresentingPartitions().get(0);
+      if (sourceComponent instanceof Component && !((Component) sourceComponent).getRepresentingParts().isEmpty()
+          && (((Component) sourceComponent).getRepresentingParts().get(0) instanceof Part)) {
+        sourcePart = (Part) ((Component) sourceComponent).getRepresentingParts().get(0);
       }
     }
     if (targetPart == null) {
       EObject targetComponent = CsServices.getService().getComponentType(targetView);
-      if (targetComponent instanceof Component && !((Component) targetComponent).getRepresentingPartitions().isEmpty()
-          && (((Component) targetComponent).getRepresentingPartitions().get(0) instanceof Part)) {
-        targetPart = (Part) ((Component) targetComponent).getRepresentingPartitions().get(0);
+      if (targetComponent instanceof Component && !((Component) targetComponent).getRepresentingParts().isEmpty()
+          && (((Component) targetComponent).getRepresentingParts().get(0) instanceof Part)) {
+        targetPart = (Part) ((Component) targetComponent).getRepresentingParts().get(0);
       }
     }
     if ((sourcePart == null) || (targetPart == null)) {
@@ -3233,7 +3222,7 @@ public class FaServices {
 
     EObject container = ComponentExt.getFirstCommonComponentAncestor(source, target);
     if ((container == null) || !(container instanceof PhysicalComponent)) {
-      container = BlockArchitectureExt.getFirstComponent(ComponentExt.getRootBlockArchitecture(exchange));
+      container = BlockArchitectureExt.getOrCreateSystem(ComponentExt.getRootBlockArchitecture(exchange));
     }
 
     if (container != exchange.eContainer()) {
@@ -4374,8 +4363,7 @@ public class FaServices {
 
     // Collect all physical artifacts
     List<CapellaElement> physicalArtifacts = new ArrayList<>(0);
-    List<PhysicalComponent> allPhysicalComponents = PhysicalArchitectureExt
-        .getAllPhysicalComponents((PhysicalArchitecture) arch);
+    List<PhysicalComponent> allPhysicalComponents = SystemEngineeringExt.getAllPhysicalComponents((PhysicalArchitecture) arch);
     for (PhysicalComponent physicalComponent : allPhysicalComponents) {
       physicalArtifacts.add(physicalComponent);
       // collect all physical links

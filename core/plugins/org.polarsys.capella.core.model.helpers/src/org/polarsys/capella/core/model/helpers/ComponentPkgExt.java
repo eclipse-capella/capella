@@ -3,6 +3,7 @@ package org.polarsys.capella.core.model.helpers;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentPkg;
@@ -56,6 +57,11 @@ public class ComponentPkgExt {
       }
     }
     return components;
+  }
+
+  public static List<Component> getAllActors(ComponentPkg componentPkg) {
+    return getOwnedComponents(componentPkg).stream().filter(comp -> ComponentExt.isActor(comp))
+        .collect(Collectors.toList());
   }
 
 }

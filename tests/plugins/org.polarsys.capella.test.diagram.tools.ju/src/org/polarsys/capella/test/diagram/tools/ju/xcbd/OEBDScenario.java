@@ -34,7 +34,7 @@ public class OEBDScenario extends EmptyProject {
     diagram.createComponent(GenericModel.ENTITY_2, 2, ICommonConstants.EMPTY_STRING, diagram.getDiagramId(),
         diagram.getDiagramId());
 
-    diagram.createComponent(GenericModel.ACTOR_1, 2, OaPackage.Literals.OPERATIONAL_ACTOR.getName(),
+    diagram.createComponent(GenericModel.ACTOR_1, 2, OaPackage.Literals.ENTITY.getName(),
         diagram.getDiagramId(), diagram.getDiagramId());
 
     diagram.createCContainedIn(GenericModel.ENTITY_2, GenericModel.ENTITY_1_1);

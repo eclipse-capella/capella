@@ -27,11 +27,13 @@ import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.libraries.queries.QueryExt;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.model.helpers.queries.QueryIdentifierConstants;
 
 @ExtendingQuery (extendingQuery = GetABInsertActor.class)
@@ -49,10 +51,10 @@ public class GetABInsertActor__Lib extends AbstractQuery {
     }
     BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture((EObject) input);
     if (!TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(architecture))) {
-      Component ctx = BlockArchitectureExt.getContext(architecture);
+      ComponentPkg ctx = BlockArchitectureExt.getContext(architecture);
       if (ctx != null) {
         // Remove component from existing part
-        components.removeAll(QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_SUB_USED_COMPONENTS, ctx, new QueryContext()));
+        components.removeAll(PartExt.getComponentsOfParts(ctx.getOwnedParts()));
       }
     }
     return new ArrayList<>(components);

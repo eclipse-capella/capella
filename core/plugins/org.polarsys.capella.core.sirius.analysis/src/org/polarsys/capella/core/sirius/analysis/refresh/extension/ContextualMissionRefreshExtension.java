@@ -22,10 +22,12 @@ import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
-import org.polarsys.capella.core.data.ctx.Actor;
-import org.polarsys.capella.core.data.ctx.ActorMissionInvolvement;
+import org.polarsys.capella.core.data.capellacore.InvolvedElement;
+import org.polarsys.capella.core.data.capellacore.Involvement;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.Mission;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 
@@ -39,7 +41,7 @@ public class ContextualMissionRefreshExtension extends AbstractCacheAwareRefresh
       // avoid refresh on dirty diagram
       return;
     }
-    List<Actor> actors = new LinkedList<>();
+    List<Component> actors = new LinkedList<>();
     List<Capability> capabilities = new LinkedList<>();
     List<Mission> missions = new LinkedList<>();
 
@@ -52,11 +54,15 @@ public class ContextualMissionRefreshExtension extends AbstractCacheAwareRefresh
 
     final Mission currentMission = (Mission) ((DSemanticDecorator) diagram).getTarget();
 
-    for (ActorMissionInvolvement inv : currentMission.getInvolvedActors()) {
-      actors.add(inv.getActor());
-      for (GeneralizableElement elt : inv.getActor().getSuper()) {
-        if (elt instanceof Actor) {
-          actors.add((Actor) elt);
+    for (Involvement inv : currentMission.getInvolvedInvolvements()) {
+      InvolvedElement involved = inv.getInvolved();
+      if (ComponentExt.isActor(involved)) {
+        Component actor = (Component) involved;
+        actors.add(actor);
+        for (GeneralizableElement elt : actor.getSuper()) {
+          if (ComponentExt.isActor(elt)) {
+            actors.add((Component) elt);
+          }
         }
       }
     }
@@ -68,7 +74,7 @@ public class ContextualMissionRefreshExtension extends AbstractCacheAwareRefresh
 
     // node creation
 
-    for (final Actor actor : actors) {
+    for (final Component actor : actors) {
       if (!DiagramServices.getDiagramServices().isOnDiagram(diagram, actor)) {
         final DDiagramElement container = nodeMappingHelper.createNode((INodeMappingExt) actorNodeMapping, actor,
             currentMission, diagram);

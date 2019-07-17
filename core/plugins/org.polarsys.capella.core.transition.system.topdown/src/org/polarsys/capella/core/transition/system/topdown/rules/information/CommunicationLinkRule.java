@@ -48,7 +48,7 @@ public class CommunicationLinkRule extends AbstractCapellaElementRule {
     BlockArchitecture target =
         (BlockArchitecture) TransformationHandlerHelper.getInstance(context).getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE,
             element, result);
-    return BlockArchitectureExt.getFirstComponent(target);
+    return BlockArchitectureExt.getOrCreateSystem(target);
   }
 
   @Override

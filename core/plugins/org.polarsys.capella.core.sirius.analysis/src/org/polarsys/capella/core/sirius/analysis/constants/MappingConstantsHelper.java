@@ -18,6 +18,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.ctx.CtxPackage;
+import org.polarsys.capella.core.data.interaction.InteractionPackage;
+import org.polarsys.capella.core.data.la.LaPackage;
+import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.sirius.analysis.CsServices;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
@@ -592,8 +596,9 @@ public class MappingConstantsHelper {
     return getMappingABComponent(clazz, diagram);
   }
 
+  // TODO EPIC ACTORS
   public static String getMappingABComponent(EClass clazz_p, DDiagram diagram) {
-    EClass absActor = CsPackage.Literals.ABSTRACT_ACTOR;
+    EClass absActor = CsPackage.Literals.COMPONENT;
 
     String description = diagram.getDescription().getName();
     String mappingName = null;
@@ -772,6 +777,84 @@ public class MappingConstantsHelper {
     }
 
     return mappingNames;
+  }
+  
+  public static String getMappingCapability(EClass eClass, DDiagram diagram) {
+    if (IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
+      if (CsPackage.Literals.COMPONENT.isSuperTypeOf(eClass)) {
+        return IMappingNameConstants.MCB_COMPONENT_MAPPING_NAME;
+      }
+      if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.isSuperTypeOf(eClass)) {
+        return IMappingNameConstants.MCB_CAPABILITY_MAPPING_NAME;
+      }
+      if (CtxPackage.Literals.MISSION.isSuperTypeOf(eClass)) {
+        return IMappingNameConstants.MCB_MISSION_MAPPING_NAME;
+      }
+    } else if (IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
+      if (CsPackage.Literals.COMPONENT.isSuperTypeOf(eClass)) {
+        return IMappingNameConstants.MB_COMPONENT_MAPPING_NAME;
+      }
+      if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.isSuperTypeOf(eClass)) {
+        return IMappingNameConstants.MB_CAPABILITY_MAPPING_NAME;
+      }
+      if (CtxPackage.Literals.MISSION.isSuperTypeOf(eClass)) {
+        return IMappingNameConstants.MB_MISSION_MAPPING_NAME;
+      }
+
+    } else if (IDiagramNameConstants.CONTEXTUAL_CAPABILITY_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
+      if (CsPackage.Literals.COMPONENT.isSuperTypeOf(eClass)) {
+        return IMappingNameConstants.CC_COMPONENT_MAPPING_NAME;
+      }
+      if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.isSuperTypeOf(eClass)) {
+        return IMappingNameConstants.CC_CAPABILITY_MAPPING_NAME;
+      }
+      if (CtxPackage.Literals.MISSION.isSuperTypeOf(eClass)) {
+        return IMappingNameConstants.CC_MISSION_MAPPING_NAME;
+      }
+
+    } else if (IDiagramNameConstants.CONTEXTUAL_MISSION_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
+      if (CsPackage.Literals.COMPONENT.isSuperTypeOf(eClass)) {
+        return IMappingNameConstants.CM_COMPONENT_MAPPING_NAME;
+      }
+      if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.isSuperTypeOf(eClass)) {
+        return IMappingNameConstants.CM_CAPABILITY_MAPPING_NAME;
+      }
+
+    } else if (IDiagramNameConstants.CONTEXTUAL_OPERATIONAL_CAPABILITIES__DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
+      if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.isSuperTypeOf(eClass)) {
+        return IMappingNameConstants.COC_OC_MAPPING_NAME;
+      }
+      if (OaPackage.Literals.ENTITY.isSuperTypeOf(eClass)) {
+        return IMappingNameConstants.COC_ENTITY_MAPPING_NAME;
+      }
+
+    } else if (IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
+      if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.isSuperTypeOf(eClass)) {
+        return IMappingNameConstants.OCB_OPERATIONAL_CAPABILITY_MAPPING_NAME;
+      }
+      if (OaPackage.Literals.ENTITY.isSuperTypeOf(eClass)) {
+        return IMappingNameConstants.OCB_OPERATIONAL_ENTITY_MAPPING_NAME;
+      }
+
+    } else if (IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK.equals(diagram.getDescription().getName())) {
+      if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.isSuperTypeOf(eClass)) {
+        return IMappingNameConstants.CRB_CAPABILITY_REALIZATION_MAPPING;
+      }
+      if (CsPackage.Literals.COMPONENT.isSuperTypeOf(eClass)) {
+        return IMappingNameConstants.CRB_COMPONENT_MAPPING;
+      }
+
+    } else if (IDiagramNameConstants.CONTEXTUAL_CAPABILITY_REALIZATION_INVOLVEMENT
+        .equals(diagram.getDescription().getName())) {
+      if (CsPackage.Literals.COMPONENT.isSuperTypeOf(eClass)) {
+        return IMappingNameConstants.CCRI_COMPONENT;
+      } else if (LaPackage.Literals.CAPABILITY_REALIZATION.isSuperTypeOf(eClass)) {
+        return IMappingNameConstants.CCRI_CAPABILITY_REALIZATION;
+      }
+    }
+    return null;
   }
 
   /**

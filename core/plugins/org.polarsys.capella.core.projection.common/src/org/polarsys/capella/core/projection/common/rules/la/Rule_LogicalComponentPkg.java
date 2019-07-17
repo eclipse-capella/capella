@@ -93,7 +93,7 @@ public class Rule_LogicalComponentPkg extends Rule_CapellaElement {
   protected EObject getDefaultContainer(EObject element_p, EObject result_p, IContext context_p) {
     BlockArchitecture architecture = (BlockArchitecture) context_p.get(CapellaEngine.TRANSFO_TARGET_CONTAINER);
     if (architecture != null) {
-      return BlockArchitectureExt.getFirstComponent(architecture);
+      return BlockArchitectureExt.getOrCreateSystem(architecture);
     }
     return super.getDefaultContainer(element_p, result_p, context_p);
   }

@@ -166,7 +166,7 @@ public class XBreakdownDiagram extends CommonDiagram {
       final String realContainerId) {
     String name = null;
     if (type == Type.OA) {
-      if (OaPackage.Literals.OPERATIONAL_ACTOR.getName().equals(kind)) {
+      if (OaPackage.Literals.ENTITY.getName().equals(kind)) {
         name = IToolNameConstants.TOOL_OEB_CREATE_OA;
       } else {
         name = IToolNameConstants.TOOL_OEB_CREATE_OE;

@@ -93,6 +93,7 @@ import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFact
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
+import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.Classifier;
@@ -108,15 +109,19 @@ import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.Block;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.DeployableElement;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.CapabilityExploitation;
+import org.polarsys.capella.core.data.ctx.CapabilityInvolvement;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.Mission;
+import org.polarsys.capella.core.data.ctx.MissionInvolvement;
 import org.polarsys.capella.core.data.ctx.MissionPkg;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
@@ -128,7 +133,6 @@ import org.polarsys.capella.core.data.fa.FunctionOutputPort;
 import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
-import org.polarsys.capella.core.data.helpers.ctx.services.ActorPkgExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionPkgExt;
 import org.polarsys.capella.core.data.information.AbstractInstance;
@@ -155,22 +159,20 @@ import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.data.interaction.StateFragment;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
-import org.polarsys.capella.core.data.la.LogicalActor;
-import org.polarsys.capella.core.data.la.LogicalActorPkg;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
+import org.polarsys.capella.core.data.la.LogicalComponent;
+import org.polarsys.capella.core.data.la.LogicalComponentPkg;
 import org.polarsys.capella.core.data.oa.ActivityAllocation;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
 import org.polarsys.capella.core.data.oa.Role;
-import org.polarsys.capella.core.data.pa.AbstractPhysicalComponent;
-import org.polarsys.capella.core.data.pa.PhysicalActor;
-import org.polarsys.capella.core.data.pa.PhysicalActorPkg;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
+import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
-import org.polarsys.capella.core.libraries.extendedqueries.QueryIdentifierConstants;
+import org.polarsys.capella.core.libraries.queries.QueryIdentifierConstants;
 import org.polarsys.capella.core.linkedtext.ui.CapellaEmbeddedLinkedTextEditorInput;
 import org.polarsys.capella.core.model.helpers.AbstractFunctionExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
@@ -178,6 +180,7 @@ import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
 import org.polarsys.capella.core.model.helpers.PartExt;
+import org.polarsys.capella.core.model.helpers.ScenarioExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
 import org.polarsys.capella.core.sirius.analysis.tool.StringUtil;
@@ -485,8 +488,8 @@ public class CapellaServices {
     return scope;
   }
 
-  public List<Actor> getAllActors(ActorPkg actorPkg) {
-    return ActorPkgExt.getAllActors(actorPkg);
+  public List<Component> getAllActors(ComponentPkg actorPkg) {
+    return ScenarioExt.getAllActors(actorPkg);
   }
 
   /**
@@ -515,24 +518,11 @@ public class CapellaServices {
    * @param current
    * @return
    */
-  public List<PartitionableElement> getAllAncestors(final EObject context, PartitionableElement current) {
+  public List<Component> getAllAncestors(final EObject context, Component current) {
     return getAllAncestors(current);
   }
 
-  List<PartitionableElement> getAllAncestors(Partition current) {
-    List<PartitionableElement> result = new ArrayList<>();
-    List<PartitionableElement> ancestors = new ArrayList<>();
-    ancestors.add((PartitionableElement) current.eContainer());
-    result.addAll(ancestors);
-
-    for (PartitionableElement partitionableElement : ancestors) {
-      result.addAll(getAllAncestors(partitionableElement));
-    }
-
-    return result;
-  }
-
-  List<PartitionableElement> getAllAncestors(PartitionableElement current) {
+  List<Component> getAllAncestors(Component current) {
     return ComponentExt.getAllPartitionableElementAncestors(current);
   }
 
@@ -615,20 +605,20 @@ public class CapellaServices {
    * @param current
    * @return
    */
-  public List<PartitionableElement> getAllDescendants(PartitionableElement current) {
-    List<PartitionableElement> result = new ArrayList<>();
+  public List<Component> getAllDescendants(Component current) {
+    List<Component> result = new ArrayList<>();
     List<Part> ownedPartitions = ComponentExt.getSubParts(current);
-    List<PartitionableElement> children = new ArrayList<>();
+    List<Component> children = new ArrayList<>();
 
     for (Part partition : ownedPartitions) {
-      if (partition.getAbstractType() instanceof PartitionableElement) {
-        PartitionableElement pa = (PartitionableElement) partition.getAbstractType();
+      if (partition.getAbstractType() instanceof Component) {
+        Component pa = (Component) partition.getAbstractType();
         children.add(pa);
       }
     }
     result.addAll(children);
 
-    for (PartitionableElement partitionableElement : children) {
+    for (Component partitionableElement : children) {
       result.addAll(getAllDescendants(partitionableElement));
     }
 
@@ -703,12 +693,12 @@ public class CapellaServices {
     return result;
   }
 
-  public List<LogicalActor> getAllLogicalActors(LogicalActorPkg logicalActorPkg) {
-    return ActorPkgExt.getAllActors(logicalActorPkg);
+  public List<LogicalComponent> getAllLogicalActors(LogicalComponentPkg logicalActorPkg) {
+    return (List) ScenarioExt.getAllActors(logicalActorPkg);
   }
 
-  public List<PhysicalActor> getAllphysicalActors(PhysicalActorPkg physicalActorPkg) {
-    return ActorPkgExt.getAllActors(physicalActorPkg);
+  public List<PhysicalComponent> getAllphysicalActors(PhysicalComponentPkg physicalActorPkg) {
+    return (List) ScenarioExt.getAllActors(physicalActorPkg);
   }
 
   /**
@@ -722,7 +712,7 @@ public class CapellaServices {
     EList<PortAllocation> result = new BasicEList<>();
     Collection<Component> subLCsFromRoot = BlockArchitectureExt
         .getAllComponents(BlockArchitectureExt.getRootBlockArchitecture(context));
-    for (PartitionableElement partitionableElement : subLCsFromRoot) {
+    for (Component partitionableElement : subLCsFromRoot) {
       EList<Feature> ownedFeatures = partitionableElement.getOwnedFeatures();
       for (Feature feature : ownedFeatures) {
         if (feature instanceof Port) {
@@ -749,7 +739,7 @@ public class CapellaServices {
 
     Collection<Component> enclosedComponents = BlockArchitectureExt
         .getAllComponents(BlockArchitectureExt.getRootBlockArchitecture(context));
-    for (PartitionableElement partitionableElement : enclosedComponents) {
+    for (Component partitionableElement : enclosedComponents) {
       EList<Feature> ownedFeatures = partitionableElement.getOwnedFeatures();
       for (Feature feature : ownedFeatures) {
         if (feature instanceof Port) {
@@ -1375,18 +1365,18 @@ public class CapellaServices {
     while (!(container instanceof Component) && !(container instanceof ModellingArchitecture)) {
       container = container.eContainer();
     }
-    if (container instanceof SystemComponent) {
+    if (container instanceof Component) {
       return container;
     } else if (container instanceof LogicalArchitecture) {
       LogicalArchitecture la = (LogicalArchitecture) container;
-      return la.getOwnedLogicalComponent();
+      return la.getSystem();
 
     } else if (container instanceof PhysicalArchitecture) {
       PhysicalArchitecture pa = (PhysicalArchitecture) container;
-      return pa.getOwnedPhysicalComponent();
+      return pa.getSystem();
     } else if (container instanceof EPBSArchitecture) {
       EPBSArchitecture ea = (EPBSArchitecture) container;
-      return ea.getOwnedConfigurationItem();
+      return ea.getSystem();
     }
     return null;
   }
@@ -1671,8 +1661,8 @@ public class CapellaServices {
         deployedElements.add(deployedElement);
       }
     }
-    List<PartitionableElement> allDescendants = getAllDescendants(context);
-    for (PartitionableElement partitionableElement : allDescendants) {
+    List<Component> allDescendants = getAllDescendants(context);
+    for (Component partitionableElement : allDescendants) {
       if (partitionableElement instanceof PhysicalComponent) {
         for (AbstractDeploymentLink abstractDeployment : ((PhysicalComponent) partitionableElement)
             .getOwnedDeploymentLinks()) {
@@ -1694,8 +1684,8 @@ public class CapellaServices {
         functionalAllocations.add(traceableElement);
       }
     }
-    List<PartitionableElement> allDescendants = getAllDescendants(context);
-    for (PartitionableElement partitionableElement : allDescendants) {
+    List<Component> allDescendants = getAllDescendants(context);
+    for (Component partitionableElement : allDescendants) {
       if (partitionableElement instanceof PhysicalComponent) {
         for (ComponentFunctionalAllocation abstractDeployment : ((PhysicalComponent) partitionableElement)
             .getOwnedFunctionalAllocation()) {
@@ -2080,11 +2070,14 @@ public class CapellaServices {
     return visibles;
   }
 
-  public boolean hasAllocationBlocks(final AbstractFunction context) {
+  public boolean isAllocatedInActor(final AbstractFunction context) {
     EList<AbstractFunctionalBlock> allocationBlocks = context.getAllocationBlocks();
     for (AbstractFunctionalBlock abstractFunctionalBlock : allocationBlocks) {
-      if (abstractFunctionalBlock instanceof AbstractActor) {
-        return true;
+      if (abstractFunctionalBlock instanceof Component) {
+        Component component = (Component) abstractFunctionalBlock;
+        if (component.isActor()) {
+          return true;
+        }
       }
     }
     return false;
@@ -2478,8 +2471,8 @@ public class CapellaServices {
     boolean isNodeComponent = (ownerBlockArchitecture instanceof PhysicalArchitecture);
     Component instanceRoleComponent = instanceRole == null ? null
         : (Component) instanceRole.getRepresentedInstance().getAbstractType();
-    if (instanceRoleComponent instanceof AbstractPhysicalComponent) {
-      AbstractPhysicalComponent sourcePhysicalComponent = (AbstractPhysicalComponent) instanceRoleComponent;
+    if (instanceRoleComponent instanceof PhysicalComponent) {
+      PhysicalComponent sourcePhysicalComponent = (PhysicalComponent) instanceRoleComponent;
       isNodeComponent = isNodeComponent && sourcePhysicalComponent.getNature().equals(PhysicalComponentNature.NODE);
     }
 
@@ -2598,7 +2591,7 @@ public class CapellaServices {
 
     if (preSource instanceof Capability) {
       Capability cap = (Capability) preSource;
-      EList<ActorCapabilityInvolvement> ownedActInvol = cap.getOwnedActorCapabilityInvolvements();
+      EList<CapabilityInvolvement> ownedActInvol = cap.getOwnedCapabilityInvolvements();
       if (!ownedActInvol.isEmpty()) {
         if (ownedActInvol.contains(preTarget)) {
           return true;
@@ -2606,7 +2599,7 @@ public class CapellaServices {
       }
     } else if (preSource instanceof Mission) {
       Mission mis = (Mission) preSource;
-      EList<ActorMissionInvolvement> ownedActInvol = mis.getOwnedActorMissionInvolvements();
+      EList<MissionInvolvement> ownedActInvol = mis.getOwnedMissionInvolvements();
       if (!ownedActInvol.isEmpty()) {
         if (ownedActInvol.contains(preTarget)) {
           return true;
@@ -2633,18 +2626,29 @@ public class CapellaServices {
       return false;
     }
 
-    EList<AbstractActor> involvedActors = new BasicEList<>();
+    EList<Component> involvedActors = new BasicEList<>();
 
     // Logical and Physical Levels
     if (sourceCapability instanceof CapabilityRealization) {
 
-      involvedActors.addAll(((CapabilityRealization) sourceCapability).getParticipatingActors());
+      for (CapabilityRealizationInvolvedElement element : ((CapabilityRealization) sourceCapability).getInvolvedComponents()) {
+        if (element instanceof Component) {
+          Component component = (Component) element;
+          if (ComponentExt.isActor(component)) {
+            involvedActors.add(component);
+          }
+        }
+      }
     }
 
     // System Analysis level
     else if (sourceCapability instanceof Capability) {
 
-      involvedActors.addAll(((Capability) sourceCapability).getParticipatingActors());
+      for (SystemComponent component : ((Capability) sourceCapability).getInvolvedSystemComponents()) {
+        if (ComponentExt.isActor(component)) {
+          involvedActors.add(component);
+        }
+      }
     }
 
     if (!involvedActors.isEmpty()) {
@@ -2666,7 +2670,7 @@ public class CapellaServices {
    *          - The SystemComponent target of the involvement link
    * @return
    */
-  public boolean isSystemComponentInvolvedWithCapability(EObject context, EObject sourceCapability,
+  public boolean isComponentInvolvedWithCapability(EObject context, EObject sourceCapability,
       EObject involvementTarget) {
 
     if ((sourceCapability == null) || (involvementTarget == null)) {
@@ -2674,14 +2678,7 @@ public class CapellaServices {
     }
 
     if (sourceCapability instanceof CapabilityRealization) {
-
-      CapabilityRealization capRealization = (CapabilityRealization) sourceCapability;
-      EList<SystemComponent> involvedComponents = capRealization.getParticipatingSystemComponents();
-      if (!involvedComponents.isEmpty()) {
-        if (involvedComponents.contains(involvementTarget)) {
-          return true;
-        }
-      }
+      return ((CapabilityRealization) sourceCapability).getInvolvedComponents().contains(involvementTarget);
     }
 
     return false;

@@ -36,7 +36,7 @@ public class ComponentExchange_Location extends AbstractValidationRule {
 
     if (eType == EMFEventType.NULL) {
       if (eObj instanceof ComponentExchange) {
-        AbstractNamedElement container = ComponentExchangeExt.getDefaultContainer((ComponentExchange) eObj);
+        AbstractNamedElement container = (AbstractNamedElement) ComponentExchangeExt.getDefaultContainer((ComponentExchange) eObj);
         if ((container != null) && !(container.equals(eObj.eContainer()))) {
           return createFailureStatus(ctx, new Object[] { ((ComponentExchange) eObj).getName(), container.getName() });
         }
