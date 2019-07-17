@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.BasicEMap.Entry;
 import org.eclipse.emf.diffmerge.api.scopes.IModelScope;
 import org.eclipse.emf.diffmerge.sirius.SiriusMatchPolicy;
 import org.eclipse.emf.diffmerge.structures.common.comparable.ComparableTreeMap;
@@ -690,6 +691,31 @@ public class CapellaMatchPolicy extends SiriusMatchPolicy {
             result = false;
             break;
           }
+        }
+      }
+    }
+    return result;
+  }
+  
+  // TODO remove this override when the following bug is fixed in EMF DiffMerge
+  // (https://bugs.eclipse.org/bugs/show_bug.cgi?id=549331)
+  @Override
+  protected String getMapEntrySemanticID(EObject entry_p, IModelScope scope_p) {
+    String result = null;
+    // Based on container ID, key and value
+    if (entry_p instanceof Entry) {
+      EObject container = getContainer(entry_p, scope_p);
+      if (container != null) {
+        String containerID = getMatchID(container, scope_p);
+        if (containerID != null) {
+          Map<String, String> map = new ComparableTreeMap<String, String>();
+          Entry<?, ?> asEntry = (Entry<?, ?>) entry_p;
+          Object key = asEntry.getKey();
+          Object value = asEntry.getValue();
+          map.put(SEMANTIC_ID_CONTAINER_PROPERTY, containerID);
+          map.put(SEMANTIC_ID_ENTRY_KEY_PROPERTY, key == null? null: key.toString());
+          map.put(SEMANTIC_ID_ENTRY_VALUE_PROPERTY, value == null? null: value.toString());
+          result = map.toString();
         }
       }
     }
