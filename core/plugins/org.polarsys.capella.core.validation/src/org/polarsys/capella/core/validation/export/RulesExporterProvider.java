@@ -17,7 +17,7 @@ import org.polarsys.capella.common.helpers.export.AbstractExporter;
 import org.polarsys.capella.common.helpers.export.CSVExporter;
 import org.polarsys.capella.common.helpers.export.IExporterProvider;
 import org.polarsys.capella.common.helpers.export.TXTExporter;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.ui.preferences.IExportCSVPreferences;
 
 /**
  * Common exporter for Rules
@@ -27,11 +27,12 @@ public class RulesExporterProvider implements IExporterProvider {
   /**
    * @see org.polarsys.capella.common.helpers.export.IExporterProvider#getAvailableExporter()
    */
+  @Override
   public List<AbstractExporter> getAvailableExporter() {
 
     List<AbstractExporter> list = new ArrayList<AbstractExporter>();
     
-    list.add(new CSVExporter(ICommonConstants.SEMICOLON_CHARACTER));
+    list.add(new CSVExporter(IExportCSVPreferences.INSTANCE.getDelimiterCurrentValue()));
     list.add(new TXTExporter());
     
     return list;
