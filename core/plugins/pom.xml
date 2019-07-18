@@ -199,31 +199,5 @@
         <module>org.polarsys.capella.core.explorer.activity.ui.richtext</module>
       </modules>
     </profile>
-    <profile>
-      <id>headless</id>
-      <activation>
-        <activeByDefault>false</activeByDefault>
-      </activation>
-      <modules>
-      	<module>org.polarsys.capella.core.af.integration</module>
-        <module>org.polarsys.capella.core.application</module>
-        <module>org.polarsys.capella.core.commandline.core</module>
-        <module>org.polarsys.capella.core.data.business.queries</module>
-        <module>org.polarsys.capella.core.data.gen</module>
-        <module>org.polarsys.capella.core.data.gen.edit</module>
-        <module>org.polarsys.capella.core.data.gen.edit.decorators</module>
-        <module>org.polarsys.capella.core.data.helpers</module>
-        <module>org.polarsys.capella.core.diagram.helpers</module>
-        <module>org.polarsys.capella.core.libraries</module>
-        <module>org.polarsys.capella.core.model.handler</module>
-        <module>org.polarsys.capella.core.model.helpers</module>
-        <module>org.polarsys.capella.core.model.preferences</module>
-        <module>org.polarsys.capella.core.model.semantic</module>
-        <module>org.polarsys.capella.core.model.skeleton</module>
-        <module>org.polarsys.capella.core.preferences</module>
-        <module>org.polarsys.capella.core.queries.helpers</module>
-        <module>org.polarsys.capella.core.semantic.queries</module>
-      </modules>
-    </profile>
-  </profiles>
+   </profiles>
 </project>
