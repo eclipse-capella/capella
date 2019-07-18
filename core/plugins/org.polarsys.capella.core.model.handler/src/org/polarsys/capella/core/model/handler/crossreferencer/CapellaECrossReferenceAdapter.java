@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,14 +23,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.polarsys.capella.common.platform.sirius.ted.SemanticCrossReferencer;
+import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter;
 import org.polarsys.capella.common.platform.sirius.ted.SiriusSessionListener;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 
 /**
  * An {@link ECrossReferenceAdapter} that only takes capella resources into account.
  */
-public class CapellaECrossReferenceAdapter extends SemanticCrossReferencer  {
+public class CapellaECrossReferenceAdapter extends SiriusCrossReferenceAdapter {
 
   class CapellaInverseCrossReferencer extends InverseCrossReferencer {
     /**
@@ -252,7 +252,7 @@ public class CapellaECrossReferenceAdapter extends SemanticCrossReferencer  {
       return false;
     }
 
-    if (!isResolveProxyEnabled()) {
+        if (!resolveProxyEnabled) {
       return false;
     }
 

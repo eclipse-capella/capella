@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -45,6 +45,7 @@ import org.eclipse.emf.transaction.impl.TransactionChangeRecorder;
 import org.eclipse.emf.transaction.impl.TransactionalEditingDomainImpl;
 import org.eclipse.emf.workspace.ResourceUndoContext;
 import org.eclipse.emf.workspace.WorkspaceEditingDomainFactory;
+import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter;
 import org.polarsys.capella.common.ef.domain.IEditingDomainListener;
 import org.polarsys.capella.common.ef.internal.command.WorkspaceCommandStackImpl;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
@@ -75,7 +76,7 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
      * 
      * @return
      */
-    public SemanticCrossReferencer getCrossReferencer(EditingDomain editingDomain);
+        public SiriusCrossReferenceAdapter getCrossReferencer(EditingDomain editingDomain);
 
   }
 
@@ -396,7 +397,7 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
      * 
      * @return
      */
-    public SemanticCrossReferencer getCrossReferencer() {
+        public SiriusCrossReferenceAdapter getCrossReferencer() {
       SemanticResourceSet semanticResourceSet = getResourceSet();
       if (semanticResourceSet != null) {
         return semanticResourceSet.getCrossReferencer();
@@ -497,7 +498,7 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
     /**
      * General purpose cross referencer.
      */
-    private SemanticCrossReferencer crossReferencer;
+        private SiriusCrossReferenceAdapter crossReferencer;
     /**
      * Data notifier.
      */
@@ -553,7 +554,7 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
      * 
      * @return
      */
-    protected SemanticCrossReferencer getCrossReferencer() {
+        protected SiriusCrossReferenceAdapter getCrossReferencer() {
       return crossReferencer;
     }
 
@@ -570,6 +571,7 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
      * 
      * @see org.eclipse.emf.edit.domain.IEditingDomainProvider#getEditingDomain()
      */
+    @Override
     public EditingDomain getEditingDomain() {
       return editingDomain;
     }

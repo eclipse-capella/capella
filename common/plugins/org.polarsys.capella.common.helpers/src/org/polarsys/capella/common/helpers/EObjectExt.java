@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,9 +26,9 @@ import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter;
 import org.polarsys.capella.common.helpers.query.MDEQueries;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.common.platform.sirius.ted.SemanticCrossReferencer;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 
 /**
@@ -119,7 +119,7 @@ public class EObjectExt extends EcoreUtil2 {
       SemanticEditingDomain editingDomain, boolean ignoreDerivedFeature) {
     List<T> result = new ArrayList<T>();
 
-    SemanticCrossReferencer crossReferencer = editingDomain.getCrossReferencer();
+        SiriusCrossReferenceAdapter crossReferencer = editingDomain.getCrossReferencer();
     if (eRef == null) {
       Collection<Setting> inverseReferences = crossReferencer.getInverseReferences(eObjectRef,
           editingDomain.getCrossReferencer().isResolveProxyEnabled());

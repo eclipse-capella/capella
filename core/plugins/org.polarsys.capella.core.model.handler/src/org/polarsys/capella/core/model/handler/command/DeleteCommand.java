@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,7 +30,7 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.polarsys.capella.common.platform.sirius.ted.SemanticCrossReferencer;
+import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter;
 
 /**
  * A model command that deletes given elements, along with their references.<br>
@@ -151,7 +151,7 @@ public class DeleteCommand extends CompoundCommand {
 
 	protected ECrossReferenceAdapter getECrossReferencerAdapter() {
     for (Adapter adapter : editingDomain.getResourceSet().eAdapters()) {
-      if (adapter instanceof SemanticCrossReferencer) {
+            if (adapter instanceof SiriusCrossReferenceAdapter) {
         return (ECrossReferenceAdapter) adapter;
       }
     }

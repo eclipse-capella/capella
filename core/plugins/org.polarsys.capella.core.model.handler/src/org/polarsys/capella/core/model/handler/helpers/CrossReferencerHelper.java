@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,7 +26,6 @@ import org.polarsys.capella.common.ef.command.AbstractReadOnlyCommand;
 import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.helpers.TransactionHelper;
-import org.polarsys.capella.common.platform.sirius.ted.SemanticCrossReferencer;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 
 /**
@@ -51,7 +50,8 @@ public class CrossReferencerHelper {
       /**
        * @see java.lang.Runnable#run()
        */
-      public void run() {
+      @Override
+    public void run() {
         // Get the cross referencer.
         ECrossReferenceAdapter crossReferencer = ((SemanticEditingDomain) TransactionHelper.getEditingDomain(referencedElement)).getCrossReferencer();
         referencingElements.addAll(EcoreUtil2.getReferencingElements(referencedElement, crossReferencer));

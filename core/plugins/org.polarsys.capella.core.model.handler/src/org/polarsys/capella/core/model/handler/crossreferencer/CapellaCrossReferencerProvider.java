@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,7 @@ package org.polarsys.capella.core.model.handler.crossreferencer;
 
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.polarsys.capella.common.platform.sirius.ted.SemanticCrossReferencer;
+import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.ICrossReferencerProvider;
 
 /**
@@ -21,11 +21,12 @@ import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFact
  */
 public class CapellaCrossReferencerProvider implements ICrossReferencerProvider {
 
-  /**
-   * @see org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.ICrossReferencerProvider#getCrossReferencer()
-   */
-  public SemanticCrossReferencer getCrossReferencer(EditingDomain editingDomain) {
-    return new CapellaECrossReferenceAdapter(editingDomain);
-  }
+    /**
+     * @see org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.ICrossReferencerProvider#getCrossReferencer()
+     */
+    @Override
+    public SiriusCrossReferenceAdapter getCrossReferencer(EditingDomain editingDomain) {
+        return new CapellaECrossReferenceAdapter(editingDomain);
+    }
 
 }

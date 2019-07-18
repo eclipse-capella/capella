@@ -28,9 +28,9 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.helpers.TransactionHelper;
-import org.polarsys.capella.common.platform.sirius.ted.SemanticCrossReferencer;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
@@ -125,7 +125,7 @@ public class FunctionalChainMigrationContribution extends AbstractMigrationContr
     TransactionalEditingDomain domain = TransactionHelper.getEditingDomain(fciLink);
     if (domain instanceof SemanticEditingDomain) {
       SemanticEditingDomain editingDomain = (SemanticEditingDomain) domain;
-      SemanticCrossReferencer crossReferencer = editingDomain.getCrossReferencer();
+            SiriusCrossReferenceAdapter crossReferencer = editingDomain.getCrossReferencer();
       Collection<Setting> inverseReferences = crossReferencer.getInverseReferences(fciLink,
           editingDomain.getCrossReferencer().isResolveProxyEnabled());
       for (Setting setting : inverseReferences) {
