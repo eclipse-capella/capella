@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<vp:Viewpoint xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:vp="http://www.polarsys.org/kitalpha/ad/viewpoint/1.0.0" name="Capella" id="org.polarsys.capella.core.viewpoint" vpid="capella" version="1.3.1">
+<vp:Viewpoint xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:vp="http://www.polarsys.org/kitalpha/ad/viewpoint/1.0.0" name="Capella" id="org.polarsys.capella.core.viewpoint" vpid="capella" version="1.3.2">
   <metamodel/>
   <representation/>
 </vp:Viewpoint>

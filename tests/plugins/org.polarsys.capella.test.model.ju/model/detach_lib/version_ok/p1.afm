@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_1.3.1-->
+<!--Capella_Version_1.3.2-->
 <metadata:Metadata xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:metadata="http://www.polarsys.org/kitalpha/ad/metadata/1.0.0" id="_N5CnUH8QEeaitfKJsZ85kg">
   <viewpointReferences xsi:type="metadata:ViewpointReference" id="_N5EcgH8QEeaitfKJsZ85kg"
-      vpId="org.polarsys.capella.core.viewpoint" version="1.3.1"/>
+      vpId="org.polarsys.capella.core.viewpoint" version="1.3.2"/>
 </metadata:Metadata>

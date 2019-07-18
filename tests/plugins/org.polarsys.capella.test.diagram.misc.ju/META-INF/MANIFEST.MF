@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.test.diagram.misc.ju
-Bundle-Version: 1.3.1.qualifier
+Bundle-Version: 1.3.2.qualifier
 Bundle-Activator: org.polarsys.capella.test.diagram.misc.ju.TestDiagramMiscPlugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
