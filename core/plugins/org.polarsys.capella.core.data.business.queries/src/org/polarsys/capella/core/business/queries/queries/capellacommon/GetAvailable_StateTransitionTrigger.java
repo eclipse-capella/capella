@@ -27,11 +27,11 @@ import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
-import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
+import static org.polarsys.capella.core.data.helpers.DataHelpers.FunctionExt;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.Operation;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 
 public class GetAvailable_StateTransitionTrigger extends AbstractQuery {

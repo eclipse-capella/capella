@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis;
 
-
 public class LaServices {
 
   private static LaServices instance = new LaServices();

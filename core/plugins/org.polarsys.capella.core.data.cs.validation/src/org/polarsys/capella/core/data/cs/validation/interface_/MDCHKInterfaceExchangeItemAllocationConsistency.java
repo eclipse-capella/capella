@@ -26,7 +26,7 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.model.helpers.AbstractFunctionExt;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.InterfaceExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;

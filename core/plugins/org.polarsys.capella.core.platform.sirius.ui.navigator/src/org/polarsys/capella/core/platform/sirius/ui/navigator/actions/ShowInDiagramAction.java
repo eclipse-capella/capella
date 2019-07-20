@@ -46,7 +46,7 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.platform.sirius.clipboard.util.LayerUtil;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
@@ -124,7 +124,7 @@ public class ShowInDiagramAction extends BaseSelectionListenerAction implements 
         Collection<DDiagramElement> currentViewElements = Collections.emptyList();
 
         if (semanticElement instanceof Component) {
-          currentViewElements = getCache(ComponentExt::getRepresentingParts, (Component) semanticElement) //
+          currentViewElements = ComponentExt.getRepresentingParts((Component) semanticElement) //
               .stream() //
               .flatMap(part -> getDDiagramElements(diagram, part))//
               .collect(Collectors.toList());

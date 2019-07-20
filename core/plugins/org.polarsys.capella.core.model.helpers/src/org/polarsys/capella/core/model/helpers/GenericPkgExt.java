@@ -14,6 +14,7 @@ package org.polarsys.capella.core.model.helpers;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
 import org.polarsys.capella.core.data.ctx.Actor;
@@ -28,7 +29,6 @@ import org.polarsys.capella.core.data.information.communication.Message;
 import org.polarsys.capella.core.data.information.communication.Signal;
 import org.polarsys.capella.core.data.information.datatype.DataType;
 import org.polarsys.capella.core.data.information.datavalue.DataValue;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.sharedmodel.GenericPkg;
 
 /**

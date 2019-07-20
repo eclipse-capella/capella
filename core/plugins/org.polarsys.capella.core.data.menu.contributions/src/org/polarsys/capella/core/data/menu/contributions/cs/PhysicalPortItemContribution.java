@@ -21,7 +21,7 @@ import org.polarsys.capella.core.data.ctx.System;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;

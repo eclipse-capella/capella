@@ -25,7 +25,7 @@ import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.SystemFunctionPkg;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FaPackage;
-import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
+import static org.polarsys.capella.core.data.helpers.DataHelpers.FunctionExt;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.la.LogicalFunctionPkg;
 import org.polarsys.capella.core.data.oa.OaPackage;
@@ -76,7 +76,7 @@ public class Rule_Function extends Rule_AbstractFunction {
   protected int getNbUntransitionedSubFunctions(AbstractFunction function, ITransfo transfo_p) {
     if (!map.containsKey(function)) {
       int nb = 0;
-      for (AbstractFunction sub : getCache(FunctionExt::getFirstLevelAbstractFunctions, function)) {
+      for (AbstractFunction sub : FunctionExt.getFirstLevelAbstractFunctions(function)) {
         boolean isTransform = Query.isElementTransformed(sub, transfo_p);
         if (FunctionExt.isLeaf(sub) && !isTransform) {
           nb++;

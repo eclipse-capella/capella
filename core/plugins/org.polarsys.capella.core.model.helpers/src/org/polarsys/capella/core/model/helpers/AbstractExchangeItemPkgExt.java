@@ -14,10 +14,10 @@ package org.polarsys.capella.core.model.helpers;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
+import org.polarsys.capella.core.data.capellacore.AbstractExchangeItemPkg;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
 import org.polarsys.capella.core.data.information.DataPkg;
-import org.polarsys.capella.core.data.capellacore.AbstractExchangeItemPkg;
-import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
 
 /**
  *

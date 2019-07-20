@@ -20,7 +20,7 @@ import org.polarsys.capella.core.data.capellamodeller.provider.CapellaModellerEd
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.fa.FunctionKind;
 import org.polarsys.capella.core.data.gen.edit.decorators.ItemProviderAdapterDecorator;
-import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
+import static org.polarsys.capella.core.data.helpers.DataHelpers.FunctionExt;
 
 public class SystemFunctionItemProviderDecorator extends
 		ItemProviderAdapterDecorator implements IEditingDomainItemProvider,

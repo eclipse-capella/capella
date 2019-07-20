@@ -10,6 +10,10 @@
  *******************************************************************************/
 package org.polarsys.capella.core.model.helpers;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.PartExt;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -39,18 +43,18 @@ import org.polarsys.capella.core.data.pa.AbstractPhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink;
 
-import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
-
 /**
  * Part helpers
  */
-public class PartExt {
+public class PartExt implements IPartExt {
   /*
    * Associate the Part (part) to the AbstractType(abstractType) Object given in Parameter and store the Part into
    * Context package in layer given in parameter (componentArchitecture)
    */
-  public static void addPart(AbstractType abstractType, Part part, ComponentArchitecture componentArchitecture) {
+  @Override
+  public void addPart(AbstractType abstractType, Part part, ComponentArchitecture componentArchitecture) {
     ComponentContext componentCtx = null;
+    
 
     if (componentArchitecture instanceof SystemAnalysis) {
       componentCtx = ((SystemAnalysis) componentArchitecture).getOwnedSystemContext();
@@ -73,7 +77,8 @@ public class PartExt {
    * @param part
    * @return
    */
-  public static final List<ComponentExchange> getComponentExchanges(Part part) {
+  @Override
+  public final List<ComponentExchange> getComponentExchanges(Part part) {
     List<ComponentExchange> componentExchanges = new ArrayList<>();
     for (AbstractInformationFlow flow : part.getInformationFlows()) {
       if (flow instanceof ComponentExchange) {
@@ -92,7 +97,8 @@ public class PartExt {
   /**
    * Returns components related to given parts.
    */
-  public static List<Component> getComponentsOfParts(Collection<? extends Partition> parts) {
+  @Override
+  public List<Component> getComponentsOfParts(Collection<? extends Partition> parts) {
     ArrayList<Component> components = new ArrayList<Component>();
     for (Partition part : parts) {
       if (part.getAbstractType() instanceof Component) {
@@ -106,11 +112,13 @@ public class PartExt {
    * Returns sub components of the component which are used (have a part).
    */
 
-  public static List<Part> getSubUsedParts(Part part) {
+  @Override
+  public List<Part> getSubUsedParts(Part part) {
     return ComponentExt.getSubParts(((Component) part.getAbstractType()));
   }
 
-  public static List<Part> getSubUsedAndDeployedParts(Part part) {
+  @Override
+  public List<Part> getSubUsedAndDeployedParts(Part part) {
     List<Part> result = new ArrayList<Part>();
     result.addAll(PartExt.getDeployedParts(part));
     if (part.getAbstractType() != null) {
@@ -119,11 +127,13 @@ public class PartExt {
     return result;
   }
 
-  public static List<Component> getSubUsedAndDeployedComponentsOfPart(Part part) {
+  @Override
+  public List<Component> getSubUsedAndDeployedComponentsOfPart(Part part) {
     return getComponentsOfParts(getSubUsedAndDeployedParts(part));
   }
 
-  public static List<DeployableElement> getDeployedElements(Part part) {
+  @Override
+  public List<DeployableElement> getDeployedElements(Part part) {
     List<DeployableElement> result = new ArrayList<DeployableElement>(1);
 
     EList<AbstractDeploymentLink> deployments = part.getDeploymentLinks();
@@ -140,7 +150,8 @@ public class PartExt {
     return result;
   }
 
-  public static List<Part> getDeployedParts(Part part) {
+  @Override
+  public List<Part> getDeployedParts(Part part) {
     List<Part> result = new ArrayList<Part>();
 
     for (DeployableElement element : PartExt.getDeployedElements(part)) {
@@ -159,7 +170,8 @@ public class PartExt {
    *          : a model element
    * @return list of deployable element
    */
-  public static List<DeployableElement> getAllDeployableElements(Part part) {
+  @Override
+  public List<DeployableElement> getAllDeployableElements(Part part) {
     List<DeployableElement> result = new ArrayList<DeployableElement>(1);
     List<Part> parts = new ArrayList<Part>(1);
 
@@ -183,7 +195,8 @@ public class PartExt {
     return result;
   }
 
-  public static boolean isDeploying(Part partDeployer, Part deployed) {
+  @Override
+  public boolean isDeploying(Part partDeployer, Part deployed) {
 
     EList<AbstractDeploymentLink> deployments = partDeployer.getDeploymentLinks();
     for (AbstractDeploymentLink abstractDeployment : deployments) {
@@ -199,7 +212,8 @@ public class PartExt {
     return false;
   }
 
-  public static List<DeploymentTarget> getDeployingElements(Part part) {
+  @Override
+  public List<DeploymentTarget> getDeployingElements(Part part) {
     List<DeploymentTarget> result = new ArrayList<DeploymentTarget>(1);
 
     EList<AbstractDeploymentLink> deployingLinks = part.getDeployingLinks();
@@ -223,7 +237,8 @@ public class PartExt {
    *          : a model element
    * @return : list of deployable Component
    */
-  public static List<Component> getAllDeployableComponents(Component component) {
+  @Override
+  public List<Component> getAllDeployableComponents(Component component) {
     List<Component> result = new ArrayList<Component>(1);
 
     // get deployed Component of source
@@ -245,7 +260,8 @@ public class PartExt {
     return result;
   }
 
-  public static List<Part> getAllPartsFromBlockArch(BlockArchitecture architecture) {
+  @Override
+  public List<Part> getAllPartsFromBlockArch(BlockArchitecture architecture) {
 
     List<CapellaElement> components = new ArrayList<CapellaElement>();
     List<Part> result = new ArrayList<Part>();
@@ -263,7 +279,8 @@ public class PartExt {
     return result;
   }
 
-  public static List<Part> getAllPartsFromPhysicalArchitecture(PhysicalArchitecture blockArch) {
+  @Override
+  public List<Part> getAllPartsFromPhysicalArchitecture(PhysicalArchitecture blockArch) {
     List<CapellaElement> components = new ArrayList<>();
     List<Part> result = new ArrayList<>();
     BlockArchitectureExt.getAllComponentsFromPA(blockArch, components);
@@ -285,10 +302,11 @@ public class PartExt {
    * 
    * @param currentPart
    */
+  @Override
   @SuppressWarnings({ "unchecked", "rawtypes" })
-  public static Collection<Part> getFirstPartAncestors(Part currentPart) {
+  public Collection<Part> getFirstPartAncestors(Part currentPart) {
     LinkedList<Part> parents = new LinkedList<>();
-    parents.addAll((Collection)getCache(PartExt::getDeployingElements, currentPart));
+    parents.addAll((Collection)PartExt.getDeployingElements(currentPart));
     Component directParent = ComponentExt.getDirectParent(currentPart);
     if (null != directParent) {
       parents.addAll((Collection) directParent.getRepresentingPartitions());

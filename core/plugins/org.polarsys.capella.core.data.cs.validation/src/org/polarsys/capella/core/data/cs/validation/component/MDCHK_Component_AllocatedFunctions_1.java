@@ -19,7 +19,7 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.ctx.System;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
-import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
+import static org.polarsys.capella.core.data.helpers.DataHelpers.FunctionExt;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalFunction;
 import org.polarsys.capella.core.data.oa.Entity;

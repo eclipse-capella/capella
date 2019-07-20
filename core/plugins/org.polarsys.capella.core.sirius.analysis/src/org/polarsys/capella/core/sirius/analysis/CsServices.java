@@ -204,11 +204,11 @@ import org.polarsys.capella.core.model.helpers.CapabilityRealizationExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeCategoryExt;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
 import org.polarsys.capella.core.model.helpers.InterfaceExt;
 import org.polarsys.capella.core.model.helpers.InterfacePkgExt;
-import org.polarsys.capella.core.model.helpers.PartExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.PartExt;
 import org.polarsys.capella.core.model.helpers.PhysicalLinkCategoryExt;
 import org.polarsys.capella.core.model.helpers.PortExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
@@ -717,7 +717,7 @@ public class CsServices {
         containers.add((Component) parent);
       }
 
-      for (DeploymentTarget deploment : getCache(PartExt::getDeployingElements, (Part) partition)) {
+      for (DeploymentTarget deploment : PartExt.getDeployingElements((Part) partition)) {
         if (deploment instanceof Part) {
           AbstractType type = (((Part) deploment)).getAbstractType();
           if (type instanceof Component) {
@@ -745,7 +745,7 @@ public class CsServices {
       containers.add((Component) parent);
     }
 
-    for (DeploymentTarget deploment : getCache(PartExt::getDeployingElements, part)) {
+    for (DeploymentTarget deploment : PartExt.getDeployingElements(part)) {
       if (deploment instanceof Part) {
         AbstractType type = (((Part) deploment)).getAbstractType();
         if (type instanceof Component) {
@@ -1619,8 +1619,8 @@ public class CsServices {
       if ((source instanceof AbstractActor) && (target instanceof AbstractActor)) {
         return source.getClass().equals(target.getClass());
       } else if (!(source instanceof AbstractActor) && !(target instanceof AbstractActor)) {
-        if (!getCache(ComponentExt::getAllSubUsedAndDeployedComponents, (Component) source).contains(target)
-            && !getCache(ComponentExt::getAllSubUsedAndDeployedComponents, (Component) target).contains(source)) {
+        if (!ComponentExt.getAllSubUsedAndDeployedComponents((Component) source).contains(target)
+            && !ComponentExt.getAllSubUsedAndDeployedComponents((Component) target).contains(source)) {
           /*
            * if (source instanceof PhysicalComponent && target instanceof PhysicalComponent) { return
            * ((PhysicalComponent) source).getNature().equals(((PhysicalComponent) target).getNature()); }
@@ -2917,7 +2917,7 @@ public class CsServices {
       Component sourceComponent = (Component) ((Part) related).getAbstractType();
 
       Collection<ComponentExchange> relatedExchanges = new HashSet<>();
-      relatedExchanges.addAll(getCache(ComponentExt::getAllRelatedComponentExchange, sourcePart));
+      relatedExchanges.addAll(ComponentExt.getAllRelatedComponentExchange(sourcePart));
       relatedExchanges.addAll(ComponentExt.getAllRelatedComponentExchange(sourceComponent, false));
 
       for (ComponentExchange relatedExchange : relatedExchanges) {
@@ -2925,7 +2925,7 @@ public class CsServices {
           EObject src = getSourcePart(relatedExchange);
           if (src == null) {
             semantics.addAll(
-                getCache(ComponentExt::getRepresentingParts, ComponentExchangeExt.getSourceComponent(relatedExchange)));
+                ComponentExt.getRepresentingParts(ComponentExchangeExt.getSourceComponent(relatedExchange)));
           } else {
             semantics.add(src);
           }
@@ -2933,7 +2933,7 @@ public class CsServices {
           EObject target = getTargetPart(relatedExchange);
           if (target == null) {
             semantics.addAll(
-                getCache(ComponentExt::getRepresentingParts, ComponentExchangeExt.getTargetComponent(relatedExchange)));
+                ComponentExt.getRepresentingParts(ComponentExchangeExt.getTargetComponent(relatedExchange)));
           } else {
             semantics.add(src);
           }
@@ -2971,7 +2971,7 @@ public class CsServices {
 
     // Retrieve all related component exchange from source
     Collection<CapellaElement> sources = new ArrayList<>();
-    for (CapellaElement element : getCache(ComponentExt::getAllRelatedComponentExchange, sourcePart)) {
+    for (CapellaElement element : ComponentExt.getAllRelatedComponentExchange(sourcePart)) {
       if (!sources.contains(element)) {
         sources.add(element);
       }
@@ -4730,7 +4730,7 @@ public class CsServices {
           contextualParts.add(contextualElement);
 
         } else if (contextualElement instanceof Component) {
-          Collection<Part> parts = getCache(ComponentExt::getRepresentingParts, (Component) contextualElement);
+          Collection<Part> parts = ComponentExt.getRepresentingParts((Component) contextualElement);
           contextualParts.addAll(parts);
 
         } else if (contextualElement instanceof Part) {
@@ -6366,10 +6366,10 @@ public class CsServices {
           result.addAll(ComponentExt.getAllRelatedComponentExchange(part, true));
         }
       } else if (target instanceof Component) {
-        result.addAll(getCache(ComponentExt::getAllRelatedComponentExchange, (Component) target));
+        result.addAll(ComponentExt.getAllRelatedComponentExchange((Component) target));
         Collection<Component> allSubUsedComponents = ComponentExt.getAllSubUsedComponents((Component) target);
         for (Component component : allSubUsedComponents) {
-          result.addAll(getCache(ComponentExt::getAllRelatedComponentExchange, component));
+          result.addAll(ComponentExt.getAllRelatedComponentExchange(component));
         }
       }
     }
@@ -6398,13 +6398,13 @@ public class CsServices {
     for (DDiagramElement dNode : context.getDiagramElements()) {
       EObject target = dNode.getTarget();
       if (target instanceof Part) {
-        result.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, (Part) target));
+        result.addAll(PhysicalLinkExt.getAllRelatedPhysicalLinks((Part) target));
         Collection<Part> allSubUsedParts = ComponentExt.getAllSubUsedParts((Part) target, true);
         for (Part part : allSubUsedParts) {
-          result.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, part));
+          result.addAll(PhysicalLinkExt.getAllRelatedPhysicalLinks(part));
         }
       } else if (target instanceof Component) {
-        result.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, (Component) target));
+        result.addAll(PhysicalLinkExt.getAllRelatedPhysicalLinks((Component) target));
         Collection<Component> allSubUsedComponents = ComponentExt.getAllSubUsedComponents((Component) target);
         for (Component component : allSubUsedComponents) {
           result.addAll(PhysicalLinkExt.getAllRelatedPhysicalLinks(component));
@@ -6655,8 +6655,7 @@ public class CsServices {
           result.add(source);
         }
         if (source.eContainer() instanceof Component) {
-          Collection<Part> representingParts = getCache(ComponentExt::getRepresentingParts,
-              (Component) source.eContainer());
+          Collection<Part> representingParts = ComponentExt.getRepresentingParts((Component) source.eContainer());
           if (!representingParts.isEmpty()) {
             Part portParent = representingParts.iterator().next();
             result.addAll(getVisibleEdgeEnds(diagram, portParent, false));
@@ -6685,7 +6684,7 @@ public class CsServices {
       toHandle.add(mainPart);
     }
     addRelevantParts(diagram, mainPart, toHandle);
-    for (DeploymentTarget element : getCache(PartExt::getDeployingElements, mainPart)) {
+    for (DeploymentTarget element : PartExt.getDeployingElements(mainPart)) {
       if (!isChildView(diagram, mainPart, element)) {
         toHandle.add(element);
       }
@@ -6717,7 +6716,7 @@ public class CsServices {
   }
 
   private void addRelevantParts(DDiagram diagram, Part mainPart, List<DeploymentTarget> toHandle) {
-    Iterator<Part> parts = getCache(ComponentExt::getRepresentingParts, (Component) mainPart.eContainer()).iterator();
+    Iterator<Part> parts = ComponentExt.getRepresentingParts((Component) mainPart.eContainer()).iterator();
     while (parts.hasNext()) {
       Part parentPart = parts.next();
       Collection<DSemanticDecorator> diagramElements = DiagramServices.getDiagramServices().getDiagramElements(diagram,

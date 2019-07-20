@@ -17,7 +17,7 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
 

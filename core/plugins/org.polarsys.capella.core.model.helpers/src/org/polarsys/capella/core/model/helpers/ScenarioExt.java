@@ -10,6 +10,7 @@
  *******************************************************************************/
 
 package org.polarsys.capella.core.model.helpers;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -79,7 +80,6 @@ import org.polarsys.capella.core.data.interaction.ScenarioKind;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.data.interaction.StateFragment;
 import org.polarsys.capella.core.data.interaction.TimeLapse;
-import org.polarsys.capella.core.data.interaction.impl.InstanceRoleImpl;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.oa.ActivityAllocation;

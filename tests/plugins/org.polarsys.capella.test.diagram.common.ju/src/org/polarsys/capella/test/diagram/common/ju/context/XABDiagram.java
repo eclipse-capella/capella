@@ -29,7 +29,7 @@ import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.FunctionPort
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.FunctionType;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.LinkDirection;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.Type;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.actions.extensions.AbstractExternalJavaAction;
 import org.polarsys.capella.core.sirius.analysis.constants.IDNDToolNameConstants;

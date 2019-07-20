@@ -35,7 +35,7 @@ import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.model.helpers.AbstractCapabilityPkgExt;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.LogicalComponentExt;
 import org.polarsys.capella.core.model.helpers.RefinementLinkExt;
 import org.polarsys.capella.core.model.helpers.ScenarioExt;

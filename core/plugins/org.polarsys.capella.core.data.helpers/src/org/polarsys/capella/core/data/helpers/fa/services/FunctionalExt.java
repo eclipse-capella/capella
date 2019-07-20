@@ -36,6 +36,7 @@ import org.polarsys.capella.core.data.fa.FunctionSpecification;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
+import static org.polarsys.capella.core.data.helpers.DataHelpers.*;
 
 /**
  * Helper for functional analysis aspects.

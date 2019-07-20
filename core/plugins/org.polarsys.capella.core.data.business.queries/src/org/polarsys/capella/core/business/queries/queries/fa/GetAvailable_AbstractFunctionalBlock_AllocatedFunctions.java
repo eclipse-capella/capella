@@ -21,7 +21,7 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
-import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
+import static org.polarsys.capella.core.data.helpers.DataHelpers.FunctionExt;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
@@ -58,7 +58,7 @@ public class GetAvailable_AbstractFunctionalBlock_AllocatedFunctions extends Abs
     List<CapellaElement> availableElements = new ArrayList<>(1);
     BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture(lc);
     if (arch != null) {
-      List<AbstractFunction> allLeafFunctions = new ArrayList<>(getCache(FunctionExt::getAllLeafAbstractFunctions, arch));
+      List<AbstractFunction> allLeafFunctions = new ArrayList<>(FunctionExt.getAllLeafAbstractFunctions(arch));
       List<AbstractFunction> listTORemove = new ArrayList<>();
 
       // Remove already allocated functions, but not those that are already allocated to the target

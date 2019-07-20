@@ -24,7 +24,7 @@ import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.transition.common.handlers.transformation.TransformationHandlerHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -58,7 +58,7 @@ public class PartRule extends org.polarsys.capella.core.transition.system.rules.
       BlockArchitecture target =
           (BlockArchitecture) TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(root, context_p, CsPackage.Literals.BLOCK_ARCHITECTURE);
       Component cps = BlockArchitectureExt.getFirstComponent(target);
-      Collection<Part> parts = getCache(ComponentExt::getRepresentingParts, cps);
+      Collection<Part> parts = ComponentExt.getRepresentingParts(cps);
       if (!parts.isEmpty()) {
         return parts.iterator().next();
       }

@@ -10,6 +10,8 @@
  *******************************************************************************/
 
 package org.polarsys.capella.core.model.helpers;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.PartExt;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -47,9 +49,10 @@ import org.polarsys.capella.core.data.pa.PaPackage;
 
 /**
  */
-public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt {
+public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt implements IPhysicalLinkExt {
 
-  public static boolean attachTo(PhysicalLink link, Component container) {
+  @Override
+  public boolean attachTo(PhysicalLink link, Component container) {
     if ((container != null) && !container.equals(link.eContainer())) {
       (container).getOwnedPhysicalLinks().add(link);
       return true;
@@ -62,7 +65,8 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
    * @param link
    * @return whether the physical link has been moved
    */
-  public static boolean attachToDefaultContainer(PhysicalLink link) {
+  @Override
+  public boolean attachToDefaultContainer(PhysicalLink link) {
     return attachTo(link, getDefaultContainer(link));
   }
 
@@ -72,7 +76,8 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
    * @param targetPart a part or a component
    * @return a not null element
    */
-  public static Component getDefaultContainer(CapellaElement sourcePart, CapellaElement targetPart) {
+  @Override
+  public Component getDefaultContainer(CapellaElement sourcePart, CapellaElement targetPart) {
     EObject container = ComponentExt.getFirstCommonComponentAncestor(sourcePart, targetPart);
     if ((container != null) && !(container instanceof Component)) {
       container = EcoreUtil2.getFirstContainer(container, PaPackage.Literals.PHYSICAL_COMPONENT);
@@ -89,7 +94,8 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
    * @param link
    * @return a not null element
    */
-  public static Component getDefaultContainer(PhysicalLink link) {
+  @Override
+  public Component getDefaultContainer(PhysicalLink link) {
     CapellaElement source = org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getSourceComponent(link);
     Collection<Part> parts = org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getSourceParts(link);
     if (!parts.isEmpty()) {
@@ -111,7 +117,8 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
    * @param targetPart
    * @return
    */
-  public static AbstractFunctionalBlock getDefaultContainerForCategory(CapellaElement sourcePart, CapellaElement targetPart) {
+  @Override
+  public AbstractFunctionalBlock getDefaultContainerForCategory(CapellaElement sourcePart, CapellaElement targetPart) {
     EObject container = ComponentExt.getFirstCommonComponentAncestor(sourcePart, targetPart);
     if ((container != null) && !(container instanceof AbstractFunctionalBlock)) {
       container = EcoreUtil2.getFirstContainer(container, FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK);
@@ -127,7 +134,8 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
    * deleted parts)
    * @param link
    */
-  public static AbstractFunctionalBlock getDefaultContainerForCategory(PhysicalLink link) {
+  @Override
+  public AbstractFunctionalBlock getDefaultContainerForCategory(PhysicalLink link) {
     CapellaElement source = org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getSourceComponent(link);
     Collection<Part> parts = org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getSourceParts(link);
     if (!parts.isEmpty()) {
@@ -143,7 +151,8 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
     return getDefaultContainerForCategory(source, target);
   }
 
-  public static boolean isDelegation(PhysicalLink link) {
+  @Override
+  public boolean isDelegation(PhysicalLink link) {
 
     Collection<Part> sourceParts = org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getSourceParts(link);
     Collection<Part> targetParts = org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getTargetParts(link);
@@ -173,7 +182,8 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
    * @param pLink
    * @param cExchange
    */
-  public static void synchronizeAllocations(PhysicalLink pLink, ComponentExchange cExchange) {
+  @Override
+  public void synchronizeAllocations(PhysicalLink pLink, ComponentExchange cExchange) {
     Port ceSource = ComponentExchangeExt.getSourcePort(cExchange);
     Port ceTarget = ComponentExchangeExt.getTargetPort(cExchange);
     if ((ceSource instanceof ComponentPort) && (ceTarget instanceof ComponentPort)) {
@@ -186,7 +196,8 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
    * @param ceSource
    * @param ceTarget
    */
-  private static void synchronizeAllocations(PhysicalLink pLink, ComponentPort ceSource, ComponentPort ceTarget) {
+  @Override
+  public void synchronizeAllocations(PhysicalLink pLink, ComponentPort ceSource, ComponentPort ceTarget) {
     synchronizeAllocations(getPhysicalPortFrom(pLink, ceSource), ceSource);
     synchronizeAllocations(getPhysicalPortFrom(pLink, ceTarget), ceTarget);
   }
@@ -195,7 +206,8 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
    * @param pPort
    * @param cPort
    */
-  protected static void synchronizeAllocations(PhysicalPort pPort, ComponentPort cPort) {
+  @Override
+  public void synchronizeAllocations(PhysicalPort pPort, ComponentPort cPort) {
     if ((null == pPort) || (null == cPort)) {
       return;
     }
@@ -205,7 +217,8 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
     }
   }
 
-  public static List<ModelElement> evaluateImpactsOfUnsynchronizeAllocations(PhysicalLink pLink, ComponentExchange cExchange, boolean forceCleaning) {
+  @Override
+  public List<ModelElement> evaluateImpactsOfUnsynchronizeAllocations(PhysicalLink pLink, ComponentExchange cExchange, boolean forceCleaning) {
     List<ModelElement> result = new ArrayList<>();
     Port ceSource = ComponentExchangeExt.getSourcePort(cExchange);
     Port ceTarget = ComponentExchangeExt.getTargetPort(cExchange);
@@ -221,7 +234,8 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
    * @param ceTarget
    * @param forceCleaning
    */
-  private static List<ModelElement> unsynchronizeAllocations(PhysicalLink pLink, ComponentPort ceSource, ComponentPort ceTarget, boolean forceCleaning) {
+  @Override
+  public List<ModelElement> unsynchronizeAllocations(PhysicalLink pLink, ComponentPort ceSource, ComponentPort ceTarget, boolean forceCleaning) {
     List<ModelElement> result = new ArrayList<>();
     if (forceCleaning || getExchangesFrom(pLink, ceSource).isEmpty()) {
       result.addAll(unsynchronizeAllocations(getPhysicalPortFrom(pLink, ceSource), ceSource));
@@ -236,7 +250,8 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
    * @param pPort
    * @param cPort
    */
-  protected static List<ModelElement> unsynchronizeAllocations(PhysicalPort pPort, ComponentPort cPort) {
+  @Override
+  public List<ModelElement> unsynchronizeAllocations(PhysicalPort pPort, ComponentPort cPort) {
     List<ModelElement> result = new ArrayList<>();
     if ((null != pPort) && (null != cPort)) {
       ComponentPortAllocation allocation = getComponentPortAllocation(pPort, cPort);
@@ -252,7 +267,8 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
    * @param pPort
    * @param cPort
    */
-  private static ComponentPortAllocation getComponentPortAllocation(PhysicalPort pPort, ComponentPort cPort) {
+  @Override
+  public ComponentPortAllocation getComponentPortAllocation(PhysicalPort pPort, ComponentPort cPort) {
     for (AbstractTrace trace : pPort.getOutgoingTraces()) {
       if (trace instanceof ComponentPortAllocation && cPort.equals(trace.getTargetElement())) {
         return (ComponentPortAllocation) trace;
@@ -267,7 +283,8 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
    * @param cPort
    * @return
    */
-  protected static List<ComponentExchange> getExchangesFrom(ComponentExchangeAllocator cpntAllocator, InformationsExchanger cPort) {
+  @Override
+  public List<ComponentExchange> getExchangesFrom(ComponentExchangeAllocator cpntAllocator, InformationsExchanger cPort) {
     List<ComponentExchange> result = new ArrayList<>();
     if (null != cPort) {
       for (ComponentExchange exchange : cpntAllocator.getAllocatedComponentExchanges()) {
@@ -288,7 +305,8 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
    * @param cPort
    * @return
    */
-  protected static PhysicalPort getPhysicalPortFrom(PhysicalLink pLink, InformationsExchanger cPort) {
+  @Override
+  public PhysicalPort getPhysicalPortFrom(PhysicalLink pLink, InformationsExchanger cPort) {
     EObject cPortOwner = cPort.eContainer();
     if (cPortOwner instanceof AbstractType) {
       for (AbstractTypedElement elt : ((AbstractType) cPortOwner).getAbstractTypedElements()) {
@@ -326,7 +344,8 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
    * @param pPort
    * @param cPort
    */
-  private static void createComponentPortAllocation(PhysicalPort pPort, ComponentPort cPort) {
+  @Override
+  public void createComponentPortAllocation(PhysicalPort pPort, ComponentPort cPort) {
     ComponentPortAllocation allocation = FaFactory.eINSTANCE.createComponentPortAllocation();
     allocation.setSourceElement(pPort);
     allocation.setTargetElement(cPort);
@@ -339,7 +358,8 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
    * @param pl
    * @return the physical links that are delegated from the given physical link (on both ports)
    */
-  public static Collection<PhysicalLink> getDelegatedPhysicalLinks(PhysicalLink pl) {
+  @Override
+  public Collection<PhysicalLink> getDelegatedPhysicalLinks(PhysicalLink pl) {
     Set<PhysicalLink> delegatedPhysicalLinks = new HashSet<>();
     PhysicalPort sourcePhysicalPort = pl.getSourcePhysicalPort();
     PhysicalPort targetPhysicalPort = pl.getTargetPhysicalPort();

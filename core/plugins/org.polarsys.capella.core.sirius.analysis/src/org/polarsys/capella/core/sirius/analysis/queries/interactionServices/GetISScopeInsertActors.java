@@ -18,7 +18,7 @@ import java.util.List;
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.queries.QueryIdentifierConstants;
 import org.polarsys.capella.core.model.utils.ListExt;
 import org.polarsys.capella.common.queries.AbstractQuery;
@@ -35,7 +35,7 @@ public class GetISScopeInsertActors extends AbstractQuery {
     List<Part> parts = new ArrayList<>();
     List<AbstractActor> actors = QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_SUB_DEFINED_ACTORS, architecture, new QueryContext());
     for (AbstractActor actor : actors) {
-      parts.addAll(getCache(ComponentExt::getRepresentingParts, actor));
+      parts.addAll(ComponentExt.getRepresentingParts(actor));
     }
     return (List) ListExt.removeDuplicates((List) parts);
   }

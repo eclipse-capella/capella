@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.libraries.extendedqueries.interactionServices;
 
 import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -25,7 +26,6 @@ import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.queries.QueryIdentifierConstants;
 import org.polarsys.capella.core.model.helpers.queries.filters.RemoveActorsFilter;
 import org.polarsys.capella.core.queries.helpers.QueryExt;
@@ -43,7 +43,7 @@ public class GetISScopeInsertComponents__Lib extends AbstractQuery {
       List<Component> components = QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_COMPONENTS, correspondingInput, context);
       components = QueryInterpretor.executeFilter(components, new RemoveActorsFilter());
       for (Component component : components) {
-        result.addAll(getCache(ComponentExt::getRepresentingParts, component));
+        result.addAll(ComponentExt.getRepresentingParts(component));
       }
     }
     return result;

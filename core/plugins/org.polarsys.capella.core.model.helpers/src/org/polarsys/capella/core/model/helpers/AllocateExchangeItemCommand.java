@@ -10,12 +10,13 @@
  *******************************************************************************/
 package org.polarsys.capella.core.model.helpers;
 
+import static org.polarsys.capella.core.model.helpers.ExchangeItemAllocator.allocate;
+
 import java.util.Collection;
 
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.polarsys.capella.core.data.information.ExchangeItem;
-import static org.polarsys.capella.core.model.helpers.ExchangeItemAllocator.allocate;
 
 
 public class AllocateExchangeItemCommand extends RecordingCommand {

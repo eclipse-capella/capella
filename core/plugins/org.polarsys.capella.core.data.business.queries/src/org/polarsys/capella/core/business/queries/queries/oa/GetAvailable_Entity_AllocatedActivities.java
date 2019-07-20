@@ -23,7 +23,7 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation;
 import org.polarsys.capella.core.data.fa.FaPackage;
-import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
+import static org.polarsys.capella.core.data.helpers.DataHelpers.FunctionExt;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
@@ -59,7 +59,7 @@ public class GetAvailable_Entity_AllocatedActivities extends AbstractQuery {
 		List<CapellaElement> availableElements = new ArrayList<>();
 		BlockArchitecture currentBlockArchitecture = SystemEngineeringExt.getRootBlockArchitecture(ele);
 		if (currentBlockArchitecture != null) {
-			availableElements.addAll(getCache(FunctionExt::getAllLeafAbstractFunctions, currentBlockArchitecture));
+			availableElements.addAll(FunctionExt.getAllLeafAbstractFunctions(currentBlockArchitecture));
 		}
 		List<CapellaElement> listToRemove = new ArrayList<>();
 		for (CapellaElement activity : availableElements) {

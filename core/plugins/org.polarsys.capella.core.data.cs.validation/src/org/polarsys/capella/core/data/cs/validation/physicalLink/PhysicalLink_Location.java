@@ -16,7 +16,7 @@ import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 
 import org.polarsys.capella.core.data.cs.PhysicalLink;
-import org.polarsys.capella.core.model.helpers.PhysicalLinkExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.PhysicalLinkExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 

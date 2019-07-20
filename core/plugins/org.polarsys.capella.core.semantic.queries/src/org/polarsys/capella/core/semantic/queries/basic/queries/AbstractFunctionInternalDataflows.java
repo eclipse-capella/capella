@@ -21,7 +21,7 @@ import org.polarsys.capella.common.helpers.query.IQuery;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FunctionPort;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
-import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
+import static org.polarsys.capella.core.data.helpers.DataHelpers.FunctionExt;
 /**
  * 
  * Return all the outGoing Functional Exchanges whose target is not 
@@ -46,7 +46,7 @@ public abstract class AbstractFunctionInternalDataflows implements IQuery {
     if (object instanceof AbstractFunction) {
       AbstractFunction currentFunction = (AbstractFunction) object;
       // collect all the sub functions recursively 
-      List<AbstractFunction> subfunctions = new ArrayList<>(getCache(FunctionExt::getAllAbstractFunctions, currentFunction));
+      List<AbstractFunction> subfunctions = new ArrayList<>(FunctionExt.getAllAbstractFunctions(currentFunction));
       // remove the current function
       subfunctions.remove(currentFunction);
       for (AbstractFunction subfunction : subfunctions) {

@@ -81,7 +81,7 @@ import org.polarsys.capella.core.model.handler.command.IDeleteHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
-import org.polarsys.capella.core.model.helpers.PhysicalLinkExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.PhysicalLinkExt;
 import org.polarsys.capella.core.model.helpers.PhysicalPathExt;
 import org.polarsys.capella.core.model.helpers.SequenceLinkEndExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;

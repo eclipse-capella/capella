@@ -9,8 +9,9 @@
  *    Thales - initial API and implementation
  *******************************************************************************/
 package org.polarsys.capella.core.model.helpers;
-
-import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+import static org.polarsys.capella.core.data.helpers.DataHelpers.FunctionExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.PartExt;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -44,7 +45,6 @@ import org.polarsys.capella.core.data.fa.FunctionOutputPort;
 import org.polarsys.capella.core.data.fa.FunctionPort;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.helpers.capellacore.services.GeneralizableElementExt;
-import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.oa.ActivityAllocation;
@@ -452,7 +452,7 @@ public class AbstractFunctionExt {
       return motherFunctionAllocatingComponents;
     }
     // Get all leaves functions of the motherFunction
-    List<AbstractFunction> leaves = getCache(FunctionExt::getAllLeafAbstractFunctions, motherFunction);
+    List<AbstractFunction> leaves = FunctionExt.getAllLeafAbstractFunctions(motherFunction);
     if (null == leaves || leaves.isEmpty()) {
       return Collections.emptyList();
     }
@@ -487,7 +487,7 @@ public class AbstractFunctionExt {
       return motherFunctionAllocatingComponents;
     }
     // Get all owned functions of the motherFunction
-    List<AbstractFunction> owned = getCache(FunctionExt::getAllAbstractFunctions, motherFunction);
+    List<AbstractFunction> owned = FunctionExt.getAllAbstractFunctions(motherFunction);
     if (null == owned || owned.isEmpty()) {
       return Collections.emptyList();
     }
@@ -558,8 +558,8 @@ public class AbstractFunctionExt {
    */
   public static List<OperationalActivity> getAllLeafOperationalActivities(OperationalActivity activity) {
     List<OperationalActivity> result = new ArrayList<>();
-    for (AbstractFunction abstractFunction : getCache(FunctionExt::getAllAbstractFunctions, activity)) {
-      if (org.polarsys.capella.core.data.helpers.fa.services.FunctionExt.isLeaf(abstractFunction)
+    for (AbstractFunction abstractFunction : FunctionExt.getAllAbstractFunctions(activity)) {
+      if (FunctionExt.isLeaf(abstractFunction)
           && (abstractFunction instanceof OperationalActivity)) {
         result.add((OperationalActivity) abstractFunction);
       }

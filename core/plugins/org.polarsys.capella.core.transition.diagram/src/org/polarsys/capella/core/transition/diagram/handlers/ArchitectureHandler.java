@@ -38,7 +38,7 @@ import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramNamingConstants;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.sirius.analysis.ABServices;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
@@ -140,7 +140,7 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
 
       for (EObject traced : result) {
         if (traced instanceof Component) {
-          for (Part part : getCache(ComponentExt::getRepresentingParts, (Component) traced)) {
+          for (Part part : ComponentExt.getRepresentingParts((Component) traced)) {
             result2.add(part);
             break;
           }

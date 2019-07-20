@@ -18,7 +18,7 @@ import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalLinkCategory;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.information.Port;
-import org.polarsys.capella.core.model.helpers.PhysicalLinkExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.PhysicalLinkExt;
 import org.polarsys.capella.common.helpers.query.IQuery;
 
 /**

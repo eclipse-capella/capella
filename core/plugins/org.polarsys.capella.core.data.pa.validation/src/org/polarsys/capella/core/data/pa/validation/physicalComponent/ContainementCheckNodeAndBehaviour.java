@@ -19,7 +19,7 @@ import org.eclipse.emf.validation.IValidationContext;
 
 import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.PhysicalComponentExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;

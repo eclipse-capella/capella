@@ -53,7 +53,7 @@ import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.helpers.AbstractCapabilityPkgExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.ScenarioExt;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
 
@@ -205,7 +205,7 @@ public class ContextualDiagramHelper {
           boolean valid = !(component instanceof ComponentContext);
           if (valid) {
             if (multiPart && !isOA) {
-              result.addAll(getCache(ComponentExt::getRepresentingParts, component));
+              result.addAll(ComponentExt.getRepresentingParts(component));
             } else {
               result.add(component);
             }

@@ -44,11 +44,12 @@ import org.polarsys.capella.core.data.fa.FunctionInputPort;
 import org.polarsys.capella.core.data.fa.FunctionOutputPort;
 import org.polarsys.capella.core.data.fa.FunctionPort;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
+import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
 import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
-import org.polarsys.capella.core.model.helpers.PhysicalLinkExt;
+import org.polarsys.capella.core.model.helpers.ModelHelpers;
 
 /**
  * This class finds all connections and their ports between two catalog elements. Only ports wich are part of a
@@ -220,7 +221,7 @@ public class ConnectedCatalogElementsScope implements SparseModelScope.AttachHan
       PhysicalLink sourcePL = (PhysicalLink) source;
       EObject out = getRoleElement(targetRole, sourcePL.getSourcePhysicalPort(), mapping);
       EObject in = getRoleElement(targetRole, sourcePL.getTargetPhysicalPort(), mapping);
-      Component container = PhysicalLinkExt.getDefaultContainer((CapellaElement) out.eContainer(),
+      Component container = ModelHelpers.PhysicalLinkExt.getDefaultContainer((CapellaElement) out.eContainer(),
           (CapellaElement) in.eContainer());
       container.getOwnedPhysicalLinks().add((PhysicalLink) toAttach);
     }

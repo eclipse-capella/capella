@@ -78,6 +78,7 @@ file_export_version=3.0
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.codeComplete.staticFinalFieldPrefixes=
 /instance/org.eclipse.jdt.ui/cleanup.qualify_static_method_accesses_with_declaring_class=false
 /instance/org.eclipse.jdt.ui/cleanup_settings_version=2
+/instance/org.eclipse.jdt.ui/content_assist_favorite_static_members=org.junit.Assert.*;org.junit.Assume.*;org.junit.jupiter.api.Assertions.*;org.junit.jupiter.api.Assumptions.*;org.junit.jupiter.api.DynamicContainer.*;org.junit.jupiter.api.DynamicTest.*;org.polarsys.capella.core.model.helpers.ModelHelpers.*;org.polarsys.capella.core.data.helpers.DataHelpers.*
 /instance/org.eclipse.jdt.ui/cleanup.make_type_abstract_if_missing_method=false
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.problem.assertIdentifier=error
 /instance/org.eclipse.jdt.ui/cleanup.remove_unused_local_variables=false

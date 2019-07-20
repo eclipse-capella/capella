@@ -111,7 +111,7 @@ import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.fa.OrientationPortKind;
 import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
-import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
+import static org.polarsys.capella.core.data.helpers.DataHelpers.FunctionExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionPkgExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionalExt;
 import org.polarsys.capella.core.data.information.ExchangeItem;
@@ -139,11 +139,11 @@ import org.polarsys.capella.core.model.helpers.AbstractFunctionExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.ExchangeItemExt;
 import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
 import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
-import org.polarsys.capella.core.model.helpers.PartExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.PartExt;
 import org.polarsys.capella.core.model.helpers.PhysicalArchitectureExt;
 import org.polarsys.capella.core.model.helpers.PortExt;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
@@ -264,7 +264,7 @@ public class FaServices {
 
     if (context.getTarget() instanceof AbstractFunction) {
       selectedFunction = (AbstractFunction) context.getTarget();
-      for (AbstractFunction currentFunction : getCache(FunctionExt::getAllAbstractFunctions, selectedFunction)) {
+      for (AbstractFunction currentFunction : FunctionExt.getAllAbstractFunctions(selectedFunction)) {
         allFunctionalExchanges.addAll(FunctionExt.getIncomingExchange(currentFunction));
         allFunctionalExchanges.addAll(FunctionExt.getOutGoingExchange(currentFunction));
       }
@@ -766,7 +766,7 @@ public class FaServices {
     }
     if ((null != target) && (current instanceof DNodeContainer) && (target instanceof AbstractFunction)) {
       currentFunction = (AbstractFunction) target;
-      returnedFunctions.addAll(getCache(FunctionExt::getAllAbstractFunctions, currentFunction));
+      returnedFunctions.addAll(FunctionExt.getAllAbstractFunctions(currentFunction));
     }
     DDiagram currentDiagram = CapellaServices.getService().getDiagramContainer(current);
     for (AbstractDNode aContainer : currentDiagram.getContainers()) {
@@ -1286,7 +1286,7 @@ public class FaServices {
    * @return
    */
   public Collection<AbstractFunction> getFirstLevelAbstractFunctions(AbstractFunction function) {
-    return getCache(FunctionExt::getFirstLevelAbstractFunctions, function);
+    return FunctionExt.getFirstLevelAbstractFunctions(function);
   }
 
   /**
@@ -2144,7 +2144,7 @@ public class FaServices {
   }
 
   public Collection<AbstractFunction> getAllAbstractFunctions(AbstractFunction root) {
-    return getCache(FunctionExt::getAllAbstractFunctions, root);
+    return FunctionExt.getAllAbstractFunctions(root);
   }
 
   public Collection<AbstractFunction> getAllAbstractFunctions(BlockArchitecture root) {
@@ -2298,7 +2298,7 @@ public class FaServices {
     if (oldContainer.equals(newContainer)) {
       return function;
     }
-    Collection<AbstractFunction> functions = getCache(FunctionExt::getAllAbstractFunctions, function);
+    Collection<AbstractFunction> functions = FunctionExt.getAllAbstractFunctions(function);
 
     Component oldComponent = null;
     Component newComponent = null;
@@ -2939,7 +2939,7 @@ public class FaServices {
 
     // Retrieve all related component exchanges
     if (componentOrPart instanceof Component) {
-      relatedExchanges.addAll(getCache(ComponentExt::getAllRelatedComponentExchange, (Component) componentOrPart));
+      relatedExchanges.addAll(ComponentExt.getAllRelatedComponentExchange((Component) componentOrPart));
 
     } else if (componentOrPart instanceof Part) {
       Part part = (Part) componentOrPart;
@@ -3257,7 +3257,7 @@ public class FaServices {
    *          the given flowPort
    */
   protected void updateExchanges(PhysicalPort port, Part oldPart, Part newPart) {
-    for (PhysicalLink exchange : getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, port)) {
+    for (PhysicalLink exchange : PhysicalLinkExt.getAllRelatedPhysicalLinks(port)) {
       if (!exchange.getOwnedPhysicalLinkEnds().isEmpty()) {
         for (PhysicalLinkEnd anEnd : exchange.getOwnedPhysicalLinkEnds()) {
           if (anEnd.getPort().equals(port) && anEnd.getPart().equals(oldPart)) {
@@ -4248,7 +4248,7 @@ public class FaServices {
    * @return : List of leaf Functions
    */
   public List<AbstractFunction> getAllLeafAbstractFunctions(BlockArchitecture arch) {
-    return getCache(FunctionExt::getAllLeafAbstractFunctions, arch);
+    return FunctionExt.getAllLeafAbstractFunctions(arch);
   }
 
   public AbstractFunction getOutgoingAbstractFunction(FunctionalExchange fe) {
@@ -4314,7 +4314,7 @@ public class FaServices {
    * Return all the leaf functions from given Block Architecture
    */
   public List<AbstractFunction> getAllLeafFunctions(BlockArchitecture blockArchitecture) {
-    List<AbstractFunction> allAbstractFunctions = getCache(FunctionExt::getAllLeafAbstractFunctions, blockArchitecture);
+    List<AbstractFunction> allAbstractFunctions = FunctionExt.getAllLeafAbstractFunctions(blockArchitecture);
     if (!allAbstractFunctions.isEmpty()) {
       return allAbstractFunctions;
     }
@@ -4842,8 +4842,7 @@ public class FaServices {
       if (contextualElement instanceof AbstractFunction) {
         contextualFunctions.add((AbstractFunction) contextualElement);
 
-        for (AbstractFunction function : getCache(FunctionExt::getAllAbstractFunctions,
-            (AbstractFunction) contextualElement)) {
+        for (AbstractFunction function : FunctionExt.getAllAbstractFunctions((AbstractFunction) contextualElement)) {
           for (FunctionalExchange exchange : FunctionExt.getIncomingExchange(function)) {
             AbstractFunction source = FunctionalExchangeExt.getSourceFunction(exchange);
             AbstractFunction target = FunctionalExchangeExt.getTargetFunction(exchange);
@@ -4941,7 +4940,7 @@ public class FaServices {
       private boolean isVisible(EObject brother, EObject brother2) {
         EObject parent = brother.eContainer();
         if ((parent instanceof AbstractFunction) && (brother2 instanceof AbstractFunction)) {
-          if (getCache(FunctionExt::getFirstLevelAbstractFunctions, (AbstractFunction) parent).contains(brother2)) {
+          if (FunctionExt.getFirstLevelAbstractFunctions((AbstractFunction) parent).contains(brother2)) {
             return true;
           }
         }
@@ -4986,7 +4985,7 @@ public class FaServices {
     if ((element == null) || isLeaf(element)) {
       return false;
     }
-    List<AbstractFunction> leaves = getCache(FunctionExt::getAllLeafAbstractFunctions, element);
+    List<AbstractFunction> leaves = FunctionExt.getAllLeafAbstractFunctions(element);
     i = leaves.size();
     for (AbstractFunction af : leaves) {
       if (FunctionExt.isActorFunction(af)) {
@@ -5189,7 +5188,7 @@ public class FaServices {
     for (AbstractFunction targetFunction : abstractFunctions) {
 
       Map<ExchangeCategory, Set<Map.Entry<AbstractFunction, AbstractFunction>>> categoryToSourceTargetMap = getExchangeCategoryToSourceTargetMap(
-          getCache(FunctionExt::getAllExchanges, targetFunction));
+          FunctionExt.getAllExchanges(targetFunction));
 
       for (Entry<ExchangeCategory, Set<Map.Entry<AbstractFunction, AbstractFunction>>> entry : categoryToSourceTargetMap
           .entrySet()) {
@@ -5229,7 +5228,7 @@ public class FaServices {
     DiagramContext ctx = showHideExchangeCategoryService.new DiagramContext();
 
     for (AbstractFunction targetFunction : abstractFunctions) {
-      List<FunctionalExchange> allExchanges = getCache(FunctionExt::getAllExchanges, targetFunction);
+      List<FunctionalExchange> allExchanges = FunctionExt.getAllExchanges(targetFunction);
       Map<ExchangeCategory, Set<Map.Entry<AbstractFunction, AbstractFunction>>> categoryToSourceTargetMap = getExchangeCategoryToSourceTargetMap(
           allExchanges);
 

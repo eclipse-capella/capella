@@ -27,6 +27,7 @@ import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalLinkEnd;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
+import org.polarsys.capella.core.data.helpers.cache.CacheResult;
 import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.information.Port;
@@ -37,6 +38,7 @@ import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 public class PhysicalLinkExt {
   
 
+  @CacheResult
   public static Collection<PhysicalLinkEnd> getRelatedPhysicalLinkEnds(Port element) {
     HashSet<PhysicalLinkEnd> result = new HashSet<>();
     List<EReference> refs = new ArrayList<>();
@@ -49,6 +51,7 @@ public class PhysicalLinkExt {
     return result;
   }
 
+  @CacheResult
   public static Collection<PhysicalLinkEnd> getRelatedPhysicalLinkEnds(Part element) {
     HashSet<PhysicalLinkEnd> result = new HashSet<>();
     List<EReference> refs = new ArrayList<>();
@@ -67,6 +70,7 @@ public class PhysicalLinkExt {
    * @param element
    * @return
    */
+  @CacheResult
   public static Collection<PhysicalLink> getAllRelatedPhysicalLinks(PhysicalPort element) {
     HashSet<PhysicalLink> result = new HashSet<>();
     result.addAll(element.getInvolvedLinks());
@@ -78,11 +82,12 @@ public class PhysicalLinkExt {
     return result;
   }
 
+  @CacheResult
   public static Collection<PhysicalLink> getAllRelatedPhysicalLinks(Component element) {
     HashSet<PhysicalLink> result = new HashSet<>();
 
     for (PhysicalPort port : element.getContainedPhysicalPorts()) {
-      result.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, (PhysicalPort) port));
+      result.addAll(PhysicalLinkExt.getAllRelatedPhysicalLinks((PhysicalPort) port));
     }
 
     return result;
@@ -95,6 +100,7 @@ public class PhysicalLinkExt {
    * @param part
    * @return
    */
+  @CacheResult
   public static final List<PhysicalLink> getPhysicalLinks(Part part) {
     List<PhysicalLink> result = new ArrayList<>();
     for (AbstractInformationFlow flow : part.getInformationFlows()) {
@@ -114,12 +120,13 @@ public class PhysicalLinkExt {
    * @param element
    * @return
    */
+  @CacheResult
   public static Collection<PhysicalLink> getAllRelatedPhysicalLinks(Part element) {
     HashSet<PhysicalLink> result = new HashSet<>();
 
     if (element.getAbstractType() instanceof Component) {
       Component component = ((Component) element.getAbstractType());
-      result.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, component));
+      result.addAll(PhysicalLinkExt.getAllRelatedPhysicalLinks(component));
     }
 
     for (PhysicalLinkEnd end : getRelatedPhysicalLinkEnds(element)) {
@@ -129,6 +136,7 @@ public class PhysicalLinkExt {
     return result;
   }
 
+  @CacheResult
   public static EObject getSource(PhysicalLink link) {
     if (!link.getLinkEnds().isEmpty()) {
       return link.getLinkEnds().get(0);
@@ -136,6 +144,7 @@ public class PhysicalLinkExt {
     return null;
   }
 
+  @CacheResult
   public static EObject getTarget(PhysicalLink link) {
     if (link.getLinkEnds().size() > 1) {
       return link.getLinkEnds().get(1);
@@ -143,6 +152,7 @@ public class PhysicalLinkExt {
     return null;
   }
 
+  @CacheResult
   public static Port getSourcePort(PhysicalLink link) {
     EObject source = getSource(link);
     if (source instanceof PhysicalLinkEnd) {
@@ -153,6 +163,7 @@ public class PhysicalLinkExt {
     return null;
   }
 
+  @CacheResult
   public static Port getTargetPort(PhysicalLink link) {
     EObject target = getTarget(link);
     if (target instanceof PhysicalLinkEnd) {
@@ -163,6 +174,7 @@ public class PhysicalLinkExt {
     return null;
   }
 
+  @CacheResult
   public static Part getSourcePart(PhysicalLink link) {
     EObject source = getSource(link);
     if (source instanceof PhysicalLinkEnd) {
@@ -180,6 +192,7 @@ public class PhysicalLinkExt {
    * Returns source Parts of the physical link If physical link is related to one part, returns a singleton of related
    * part. If physical link is related to a component, returns representing parts of the component
    */
+  @CacheResult
   public static Collection<Part> getSourceParts(PhysicalLink link) {
     Part part = getSourcePart(link);
     if (part != null) {
@@ -198,6 +211,7 @@ public class PhysicalLinkExt {
     return Collections.emptyList();
   }
 
+  @CacheResult
   public static Part getTargetPart(PhysicalLink link) {
     EObject target = getTarget(link);
     if (target instanceof PhysicalLinkEnd) {
@@ -215,6 +229,7 @@ public class PhysicalLinkExt {
    * Returns target Parts of the physical link If physical link is related to one part, returns a singleton of related
    * part. If physical link is related to a component, returns representing parts of the component
    */
+  @CacheResult
   public static Collection<Part> getTargetParts(PhysicalLink link) {
     Part part = getTargetPart(link);
     if (part != null) {
@@ -233,6 +248,7 @@ public class PhysicalLinkExt {
     return Collections.emptyList();
   }
 
+  @CacheResult
   public static Component getSourceComponent(PhysicalLink link) {
     Port sourcePort = getSourcePort(link);
     if (null != sourcePort) {
@@ -244,6 +260,7 @@ public class PhysicalLinkExt {
     return null;
   }
 
+  @CacheResult
   public static Component getTargetComponent(PhysicalLink link) {
     Port sourcePort = getTargetPort(link);
     if (null != sourcePort) {
@@ -260,6 +277,7 @@ public class PhysicalLinkExt {
    * @param link2
    * @return the common Part of link1 and link2
    */
+  @CacheResult
   public static Part getCommonPart(PhysicalLink link1, PhysicalLink link2) {
     Part sourceLink1Part = getSourcePart(link1);
     Part targetLink1Part = getTargetPart(link1);
@@ -278,6 +296,7 @@ public class PhysicalLinkExt {
    * @param end
    * @return
    */
+  @CacheResult
   public static PhysicalPort getRelatedPort(AbstractPhysicalLinkEnd end) {
     if (end instanceof PhysicalPort) {
       return (PhysicalPort) end;

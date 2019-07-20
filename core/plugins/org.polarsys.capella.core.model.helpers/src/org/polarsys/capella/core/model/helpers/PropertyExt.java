@@ -14,11 +14,11 @@ package org.polarsys.capella.core.model.helpers;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
-import org.polarsys.capella.core.data.information.Association;
-import org.polarsys.capella.core.data.information.Property;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.information.Association;
+import org.polarsys.capella.core.data.information.Property;
 
 /**
  */

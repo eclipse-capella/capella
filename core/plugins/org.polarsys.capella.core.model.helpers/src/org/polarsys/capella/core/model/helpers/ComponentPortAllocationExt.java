@@ -9,14 +9,14 @@
  *    Thales - initial API and implementation
  *******************************************************************************/
 package org.polarsys.capella.core.model.helpers;
-
-import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 
 import java.util.Collection;
 import java.util.Collections;
 
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
@@ -25,8 +25,6 @@ import org.polarsys.capella.core.data.fa.ComponentPortAllocation;
 import org.polarsys.capella.core.data.fa.ComponentPortAllocationEnd;
 import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.information.Port;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 
 /**
  *
@@ -100,7 +98,7 @@ public class ComponentPortAllocationExt {
     }
     Component sourceComponent = getSourceComponent(connection);
     if (sourceComponent != null) {
-      return getCache(ComponentExt::getRepresentingParts, sourceComponent);
+      return ComponentExt.getRepresentingParts(sourceComponent);
     }
     return Collections.emptyList();
   }
@@ -133,7 +131,7 @@ public class ComponentPortAllocationExt {
     }
     Component targetComponent = getTargetComponent(connection);
     if (targetComponent != null) {
-      return getCache(ComponentExt::getRepresentingParts, targetComponent);
+      return ComponentExt.getRepresentingParts(targetComponent);
     }
     return Collections.emptyList();
   }

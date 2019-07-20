@@ -10,7 +10,9 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis;
 
+import static org.polarsys.capella.core.data.helpers.DataHelpers.FunctionExt;
 import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -76,7 +78,6 @@ import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.fa.OrientationPortKind;
 import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
-import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionPkgExt;
 import org.polarsys.capella.core.data.information.InformationFactory;
 import org.polarsys.capella.core.data.information.PartitionableElement;
@@ -94,7 +95,6 @@ import org.polarsys.capella.core.diagram.helpers.ContextualDiagramHelper;
 import org.polarsys.capella.core.model.helpers.AbstractCapabilityPkgExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.ComponentPortAllocationExt;
 import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
 import org.polarsys.capella.core.model.helpers.PortExt;
@@ -235,7 +235,7 @@ public class ABServices {
         newComponent.getOwnedFeatures().add((Part) pcMoved);
         component = (Component) ((Part) pcMoved).getType();
       } else if (pcMoved instanceof Component) {
-        for (Part part : getCache(ComponentExt::getRepresentingParts, (Component) pcMoved)) {
+        for (Part part : ComponentExt.getRepresentingParts((Component) pcMoved)) {
           if (!newComponent.equals(part.eContainer())) {
             newComponent.getOwnedFeatures().add(part);
           }
@@ -479,7 +479,7 @@ public class ABServices {
       physicalLink.getLinkEnds().remove(oldPort);
     }
 
-    org.polarsys.capella.core.model.helpers.PhysicalLinkExt.attachToDefaultContainer(physicalLink);
+    org.polarsys.capella.core.model.helpers.ModelHelpers.PhysicalLinkExt.attachToDefaultContainer(physicalLink);
   }
 
   /**
@@ -526,7 +526,7 @@ public class ABServices {
    * @return
    */
   public boolean isValidDndComponent(Part source, Component target) {
-    for (Part part : getCache(ComponentExt::getRepresentingParts, target)) {
+    for (Part part : ComponentExt.getRepresentingParts(target)) {
       Collection<Part> parts = ComponentExt.getPartAncestors(part);
       if (parts.contains(source)) {
         return false;
@@ -1388,13 +1388,13 @@ public class ABServices {
     Collection<EObject> cSource = new ArrayList<>(category.getExchanges());
 
     List<FunctionalExchange> allSourceExchanges = new ArrayList<>();
-    for (AbstractFunction currentFunction : getCache(FunctionExt::getAllAbstractFunctions, source)) {
+    for (AbstractFunction currentFunction : FunctionExt.getAllAbstractFunctions(source)) {
       allSourceExchanges.addAll(FunctionExt.getOutGoingExchange(currentFunction));
       allSourceExchanges.addAll(FunctionExt.getOutGoingExchange(currentFunction));
     }
 
     List<FunctionalExchange> allTargetExchanges = new ArrayList<>();
-    for (AbstractFunction currentFunction : getCache(FunctionExt::getAllAbstractFunctions, target)) {
+    for (AbstractFunction currentFunction : FunctionExt.getAllAbstractFunctions(target)) {
       allTargetExchanges.addAll(FunctionExt.getIncomingExchange(currentFunction));
       allTargetExchanges.addAll(FunctionExt.getIncomingExchange(currentFunction));
     }
@@ -1409,7 +1409,7 @@ public class ABServices {
     Collection<EObject> cSource = new ArrayList<>(category.getExchanges());
 
     List<FunctionalExchange> allSourceExchanges = new ArrayList<>();
-    for (AbstractFunction currentFunction : getCache(FunctionExt::getAllAbstractFunctions, source)) {
+    for (AbstractFunction currentFunction : FunctionExt.getAllAbstractFunctions(source)) {
       allSourceExchanges.addAll(FunctionExt.getOutGoingExchange(currentFunction));
       allSourceExchanges.addAll(FunctionExt.getOutGoingExchange(currentFunction));
     }
@@ -1422,7 +1422,7 @@ public class ABServices {
     Collection<EObject> cSource = new ArrayList<>(category.getExchanges());
 
     List<FunctionalExchange> allSourceExchanges = new ArrayList<>();
-    for (AbstractFunction currentFunction : getCache(FunctionExt::getAllAbstractFunctions, target)) {
+    for (AbstractFunction currentFunction : FunctionExt.getAllAbstractFunctions(target)) {
       allSourceExchanges.addAll(FunctionExt.getIncomingExchange(currentFunction));
       allSourceExchanges.addAll(FunctionExt.getIncomingExchange(currentFunction));
     }
@@ -1434,10 +1434,8 @@ public class ABServices {
 
   public boolean isComponentCategoryWithoutExchange(ComponentExchangeCategory category, Part source, Part target) {
     Collection<ComponentExchange> exchanges = new ArrayList<>(category.getExchanges());
-    Collection<ComponentExchange> sourceRelatedComponentExchanges = getCache(
-        ComponentExt::getAllRelatedComponentExchange, source);
-    Collection<ComponentExchange> targetRelatedComponentExchanges = getCache(
-        ComponentExt::getAllRelatedComponentExchange, target);
+    Collection<ComponentExchange> sourceRelatedComponentExchanges = ComponentExt.getAllRelatedComponentExchange(source);
+    Collection<ComponentExchange> targetRelatedComponentExchanges = ComponentExt.getAllRelatedComponentExchange(target);
     sourceRelatedComponentExchanges.retainAll(targetRelatedComponentExchanges);
     exchanges.retainAll(sourceRelatedComponentExchanges);
     return !exchanges.isEmpty();
@@ -2056,7 +2054,7 @@ public class ABServices {
       return;
     }
     // Display a mix-category/delegation ONLY at the first level of delegation
-    if (!org.polarsys.capella.core.model.helpers.PhysicalLinkExt.isDelegation(exchange)) {
+    if (!org.polarsys.capella.core.model.helpers.ModelHelpers.PhysicalLinkExt.isDelegation(exchange)) {
       for (EObject element : getPhysicalLinkDelegationsForCategory(sourcePort, category)) {
         if (element instanceof PhysicalLink) {
           PhysicalLink delegation = (PhysicalLink) element;
@@ -2229,7 +2227,7 @@ public class ABServices {
 
   public Collection<PhysicalLink> getRelatedPhysicalLinks(EObject part) {
     if (part instanceof Part) {
-      return getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, (Part) part);
+      return PhysicalLinkExt.getAllRelatedPhysicalLinks((Part) part);
     }
     return Collections.emptyList();
   }
@@ -2266,17 +2264,17 @@ public class ABServices {
       return ComponentExt.getAllRelatedComponentExchange((Part) element, true);
 
     } else if (element instanceof Component) {
-      return getCache(ComponentExt::getAllRelatedComponentExchange, (Component) element);
+      return ComponentExt.getAllRelatedComponentExchange((Component) element);
     }
     return Collections.emptyList();
   }
 
   public Collection<PhysicalLink> getRelatedPhysicalLink(EObject element) {
     if (element instanceof Part) {
-      return getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, (Part) element);
+      return PhysicalLinkExt.getAllRelatedPhysicalLinks((Part) element);
 
     } else if (element instanceof Component) {
-      return getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, (Component) element);
+      return PhysicalLinkExt.getAllRelatedPhysicalLinks((Component) element);
     }
     return Collections.emptyList();
   }
@@ -3223,9 +3221,9 @@ public class ABServices {
       if (dNode instanceof AbstractDNode) {
         EObject target = dNode.getTarget();
         if (target instanceof Part) {
-          result.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, (Part) target));
+          result.addAll(PhysicalLinkExt.getAllRelatedPhysicalLinks((Part) target));
         } else if (target instanceof Component) {
-          result.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, (Component) target));
+          result.addAll(PhysicalLinkExt.getAllRelatedPhysicalLinks((Component) target));
         }
       }
     }
@@ -3241,7 +3239,7 @@ public class ABServices {
       if (target instanceof Part) {
         result.addAll(ComponentExt.getAllRelatedComponentExchange((Part) target, true));
       } else if (target instanceof Component) {
-        result.addAll(getCache(ComponentExt::getAllRelatedComponentExchange, (Component) target));
+        result.addAll(ComponentExt.getAllRelatedComponentExchange((Component) target));
       }
     }
 

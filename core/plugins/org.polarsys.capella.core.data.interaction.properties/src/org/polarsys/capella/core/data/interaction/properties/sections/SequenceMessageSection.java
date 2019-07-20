@@ -39,7 +39,7 @@ import org.polarsys.capella.core.data.interaction.properties.controllers.Interfa
 import org.polarsys.capella.core.data.interaction.properties.controllers.SequenceMessageController;
 import org.polarsys.capella.core.data.interaction.properties.dialogs.DialogProvider;
 import org.polarsys.capella.core.data.interaction.properties.fields.MessageKindGroup;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.ScenarioExt;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.ConstraintReferenceGroup;

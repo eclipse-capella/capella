@@ -11,8 +11,10 @@
 
 package org.polarsys.capella.core.model.helpers;
 
-import org.eclipse.emf.ecore.EObject;
+import static org.polarsys.capella.core.data.helpers.DataHelpers.FunctionExt;
 
+import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.common.data.activity.ActivityNode;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FaFactory;
@@ -21,9 +23,7 @@ import org.polarsys.capella.core.data.fa.FunctionInputPort;
 import org.polarsys.capella.core.data.fa.FunctionOutputPort;
 import org.polarsys.capella.core.data.fa.FunctionPort;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
-import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
-import org.polarsys.capella.common.data.activity.ActivityNode;
 
 /**
  *

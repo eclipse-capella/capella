@@ -14,10 +14,10 @@ package org.polarsys.capella.core.model.helpers;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalComponentPkg;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 
 
 /**

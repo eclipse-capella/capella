@@ -30,7 +30,7 @@ import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.model.helpers.AbstractFunctionExt;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.PortExt;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
 import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
@@ -71,7 +71,7 @@ public class ShowHideFunction extends ShowHideABRole {
           } else if (block instanceof Role) {
             result.add((Role) block);
           } else if (block instanceof Component) {
-            result.addAll(getCache(ComponentExt::getRepresentingParts, (Component) block));
+            result.addAll(ComponentExt.getRepresentingParts((Component) block));
           }
         }
 

@@ -10,23 +10,21 @@
  *******************************************************************************/
 package org.polarsys.capella.core.libraries.extendedqueries.interactionServices;
 
-import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.ILibraryManager;
+import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.cs.AbstractActor;
-import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.queries.QueryIdentifierConstants;
 import org.polarsys.capella.core.queries.helpers.QueryExt;
 
@@ -42,7 +40,7 @@ public class GetISScopeInsertActors__Lib extends AbstractQuery {
       EObject correspondingInput = QueryExt.getCorrespondingElementInLibrary(element, (CapellaModel) library);
       List<AbstractActor> actors = QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_ACTORS, correspondingInput, context);
       for (AbstractActor actor : actors) {
-        result.addAll(getCache(ComponentExt::getRepresentingParts, actor));
+        result.addAll(ComponentExt.getRepresentingParts(actor));
       }
     }
     return result;

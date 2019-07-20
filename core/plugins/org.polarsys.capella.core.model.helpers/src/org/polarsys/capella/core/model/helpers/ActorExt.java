@@ -14,8 +14,8 @@ package org.polarsys.capella.core.model.helpers;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
+import org.polarsys.capella.core.data.cs.AbstractActor;
 
 /**
  */

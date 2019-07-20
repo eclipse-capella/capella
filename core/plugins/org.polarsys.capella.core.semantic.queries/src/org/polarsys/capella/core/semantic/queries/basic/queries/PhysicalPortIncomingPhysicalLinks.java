@@ -42,7 +42,7 @@ public class PhysicalPortIncomingPhysicalLinks  implements IQuery {
 		List<Object> result = new ArrayList<>();
 		if (object instanceof PhysicalPort) {
 		  PhysicalPort currentPort = (PhysicalPort) object;
-		  Collection<PhysicalLink> links = getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, currentPort);
+		  Collection<PhysicalLink> links = PhysicalLinkExt.getAllRelatedPhysicalLinks(currentPort);
 		  if (!links.isEmpty()) {
 			result.addAll(links);
 		  }

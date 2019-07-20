@@ -25,7 +25,7 @@ import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.oa.CommunicationMean;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.PortExt;
 import org.polarsys.capella.core.sirius.analysis.CsServices;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
@@ -108,7 +108,7 @@ public class ShowHideABComponentExchange extends ShowHideFunctionalExchange {
 
     } else if (lastContext.getValue() instanceof ComponentPort) {
       ComponentPort port = (ComponentPort) lastContext.getValue();
-      value.putAll(CONTAINER, (Collection<EObject>) (Collection<? extends EObject>) getCache(ComponentExt::getRepresentingParts, PortExt.getRelatedComponent(port)));
+      value.putAll(CONTAINER, (Collection<EObject>) (Collection<? extends EObject>) ComponentExt.getRepresentingParts(PortExt.getRelatedComponent(port)));
     }
 
     return value;

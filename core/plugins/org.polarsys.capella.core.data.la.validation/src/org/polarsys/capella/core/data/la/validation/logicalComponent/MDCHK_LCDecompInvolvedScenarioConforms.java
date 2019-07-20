@@ -28,7 +28,7 @@ import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.model.helpers.AbstractCapabilityPkgExt;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.LogicalComponentExt;
 import org.polarsys.capella.core.model.helpers.RefinementLinkExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;

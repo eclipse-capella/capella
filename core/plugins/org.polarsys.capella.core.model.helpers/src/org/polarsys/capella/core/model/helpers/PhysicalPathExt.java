@@ -46,12 +46,11 @@ import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentPort;
+import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.model.helpers.refmap.Pair;
-
-import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 /**
  */
 public class PhysicalPathExt {
@@ -335,7 +334,7 @@ public class PhysicalPathExt {
     }
 
     for (Part function : targetFunctions) {
-      targetExchanges.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, function));
+      targetExchanges.addAll(PhysicalLinkExt.getAllRelatedPhysicalLinks(function));
     }
     return targetExchanges;
   }
@@ -359,7 +358,7 @@ public class PhysicalPathExt {
     }
 
     for (Part function : targetFunctions) {
-      targetExchanges.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, function));
+      targetExchanges.addAll(PhysicalLinkExt.getAllRelatedPhysicalLinks(function));
     }
     return targetExchanges;
   }
@@ -383,7 +382,7 @@ public class PhysicalPathExt {
     }
 
     for (Part function : sourceFunctions) {
-      sourceExchanges.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, function));
+      sourceExchanges.addAll(PhysicalLinkExt.getAllRelatedPhysicalLinks(function));
     }
 
     return sourceExchanges;
@@ -421,7 +420,7 @@ public class PhysicalPathExt {
     targetFunctions.addAll(getFlatPhysicalPathFirstParts(path));
 
     for (Part function : targetFunctions) {
-      targetExchanges.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, function));
+      targetExchanges.addAll(PhysicalLinkExt.getAllRelatedPhysicalLinks(function));
     }
     return targetExchanges;
   }
@@ -434,7 +433,7 @@ public class PhysicalPathExt {
     targetFunctions.addAll(getFlatPhysicalPathLastParts(path));
 
     for (Part function : targetFunctions) {
-      targetExchanges.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, function));
+      targetExchanges.addAll(PhysicalLinkExt.getAllRelatedPhysicalLinks(function));
     }
     return targetExchanges;
   }
@@ -838,8 +837,8 @@ public class PhysicalPathExt {
    * @param ceTarget
    */
   private static void synchronizeAllocations(PhysicalPath pPath, ComponentPort ceSource, ComponentPort ceTarget) {
-    PhysicalLinkExt.synchronizeAllocations(getPhysicalPortFrom(pPath, ceSource), ceSource);
-    PhysicalLinkExt.synchronizeAllocations(getPhysicalPortFrom(pPath, ceTarget), ceTarget);
+    ModelHelpers.PhysicalLinkExt.synchronizeAllocations(getPhysicalPortFrom(pPath, ceSource), ceSource);
+    ModelHelpers.PhysicalLinkExt.synchronizeAllocations(getPhysicalPortFrom(pPath, ceTarget), ceTarget);
   }
 
   /**
@@ -866,11 +865,11 @@ public class PhysicalPathExt {
    */
   private static List<ModelElement> unsynchronizeAllocations(PhysicalPath pPath, ComponentPort ceSource, ComponentPort ceTarget, boolean forceCleaning) {
     List<ModelElement> result = new ArrayList<>();
-    if (forceCleaning || PhysicalLinkExt.getExchangesFrom(pPath, ceSource).isEmpty()) {
-      result.addAll(PhysicalLinkExt.unsynchronizeAllocations(getPhysicalPortFrom(pPath, ceSource), ceSource));
+    if (forceCleaning || ModelHelpers.PhysicalLinkExt.getExchangesFrom(pPath, ceSource).isEmpty()) {
+      result.addAll(ModelHelpers.PhysicalLinkExt.unsynchronizeAllocations(getPhysicalPortFrom(pPath, ceSource), ceSource));
     }
-    if (forceCleaning || PhysicalLinkExt.getExchangesFrom(pPath, ceTarget).isEmpty()) {
-      result.addAll(PhysicalLinkExt.unsynchronizeAllocations(getPhysicalPortFrom(pPath, ceTarget), ceTarget));
+    if (forceCleaning || ModelHelpers.PhysicalLinkExt.getExchangesFrom(pPath, ceTarget).isEmpty()) {
+      result.addAll(ModelHelpers.PhysicalLinkExt.unsynchronizeAllocations(getPhysicalPortFrom(pPath, ceTarget), ceTarget));
     }
     return result;
   }
@@ -922,7 +921,7 @@ public class PhysicalPathExt {
     }
 
     for (PhysicalLink link : terminalLinks) {
-      PhysicalPort port = PhysicalLinkExt.getPhysicalPortFrom(link, cPort);
+      PhysicalPort port = ModelHelpers.PhysicalLinkExt.getPhysicalPortFrom(link, cPort);
       if (null != port) {
         return port;
       }
@@ -930,3 +929,4 @@ public class PhysicalPathExt {
     return null;
   }
 }
+

@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.properties.controllers.AllocatedComponentExchangesController;
-import org.polarsys.capella.core.model.helpers.PhysicalLinkExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.PhysicalLinkExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 
 /**

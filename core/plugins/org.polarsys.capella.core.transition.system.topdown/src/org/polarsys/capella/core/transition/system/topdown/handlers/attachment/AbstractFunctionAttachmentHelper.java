@@ -16,7 +16,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 
 import org.polarsys.capella.core.data.fa.AbstractFunction;
-import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
+import static org.polarsys.capella.core.data.helpers.DataHelpers.FunctionExt;
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
 import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
 import org.polarsys.capella.core.transition.system.topdown.handlers.transformation.TopDownTransformationHelper;
@@ -57,7 +57,7 @@ public class AbstractFunctionAttachmentHelper implements IHandler {
 
     if (!map.containsKey(function_p)) {
       int nb = 0;
-      for (AbstractFunction sub : getCache(FunctionExt::getFirstLevelAbstractFunctions, function_p)) {
+      for (AbstractFunction sub : FunctionExt.getFirstLevelAbstractFunctions(function_p)) {
 
         if (FunctionExt.isLeaf(sub)) {
           boolean isTransform = TopDownTransformationHelper.getInstance(context_p).isTracedInTarget(sub, context_p);

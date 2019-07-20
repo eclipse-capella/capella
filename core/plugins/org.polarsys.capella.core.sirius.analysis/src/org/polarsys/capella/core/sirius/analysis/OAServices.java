@@ -41,7 +41,7 @@ import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
-import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
+import static org.polarsys.capella.core.data.helpers.DataHelpers.FunctionExt;
 import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.oa.ActivityAllocation;
 import org.polarsys.capella.core.data.oa.CommunicationMean;
@@ -59,7 +59,7 @@ import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.data.oa.RoleAllocation;
 import org.polarsys.capella.core.data.oa.RolePkg;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
 import org.polarsys.capella.core.model.helpers.OperationalAnalysisExt;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
@@ -181,7 +181,7 @@ public class OAServices {
       list.addAll(getOutgoingAndIncomingExchanges(oa));
 
       // get all children
-      List<AbstractFunction> allAbstractFunctions = getCache(FunctionExt::getAllAbstractFunctions, oa);
+      List<AbstractFunction> allAbstractFunctions = FunctionExt.getAllAbstractFunctions(oa);
       for (AbstractFunction abstractFunction : allAbstractFunctions) {
         list.addAll(getOutgoingAndIncomingExchanges(abstractFunction));
       }

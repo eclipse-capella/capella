@@ -25,6 +25,7 @@ import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.la.LogicalFunctionPkg;
 import org.polarsys.capella.core.data.oa.OperationalActivityPkg;
 import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
+import static org.polarsys.capella.core.data.helpers.DataHelpers.*;
 
 /**
  */
@@ -90,7 +91,7 @@ public class FunctionPkgExt {
     returnedList.add(functionPkg);
 
     for (AbstractFunction aFunction : getOwnedFunctions(functionPkg)) {
-      returnedList.addAll(getCache(FunctionExt::getAllFunctionPkgs, aFunction));
+      returnedList.addAll(FunctionExt.getAllFunctionPkgs(aFunction));
     }
 
     for (FunctionPkg aFunctionPkg : getOwnedFunctionPkgs(functionPkg)) {
@@ -143,7 +144,7 @@ public class FunctionPkgExt {
 
     if (functionPkg != null) {
       for (AbstractFunction aFunction : getOwnedFunctions(functionPkg)) {
-        returnedList.addAll(getCache(FunctionExt::getAllAbstractFunctions, aFunction));
+        returnedList.addAll(FunctionExt.getAllAbstractFunctions(aFunction));
       }
 
       for (FunctionPkg aFunctionPkg : getOwnedFunctionPkgs(functionPkg)) {

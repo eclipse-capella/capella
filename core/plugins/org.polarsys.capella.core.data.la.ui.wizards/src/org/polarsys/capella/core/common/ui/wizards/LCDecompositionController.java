@@ -26,7 +26,7 @@ import org.polarsys.capella.core.data.information.communication.CommunicationLin
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkProtocol;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 import org.polarsys.capella.core.ui.toolkit.decomposition.Decomposition;
 import org.polarsys.capella.core.ui.toolkit.decomposition.DecompositionComponent;

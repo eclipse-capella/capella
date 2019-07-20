@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
-import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
+import static org.polarsys.capella.core.data.helpers.DataHelpers.FunctionExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
@@ -35,7 +35,7 @@ public class AbstractFunction_LeafFunctionKind extends AbstractValidationRule {
 
     if (eType == EMFEventType.NULL && eObj instanceof AbstractFunction) {
       AbstractFunction function = (AbstractFunction) eObj;
-      if (FunctionExt.isControlNode(function) && getCache(FunctionExt::getAllAbstractFunctions, function).size() > 1) {
+      if (FunctionExt.isControlNode(function) && FunctionExt.getAllAbstractFunctions(function).size() > 1) {
         return ctx.createFailureStatus(CapellaElementExt.getName(eObj), function.getKind().getName());
       }
     }

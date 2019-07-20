@@ -21,7 +21,7 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.model.utils.ListExt;
 
 /**
@@ -43,7 +43,7 @@ public class ComponentInternalOutgoingComponentExchanges extends ComponentOutgoi
         }
       }
     }
-    usedParts.addAll(getCache(ComponentExt::getRepresentingParts, (Component) object));
+    usedParts.addAll(ComponentExt.getRepresentingParts((Component) object));
 
     List<ComponentExchange> result = new ArrayList<>();
 

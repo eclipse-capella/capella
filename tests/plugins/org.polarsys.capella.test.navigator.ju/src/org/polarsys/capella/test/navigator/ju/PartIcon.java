@@ -26,7 +26,7 @@ import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.ProjectApproach;
 import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.ProjectExt;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 import org.polarsys.capella.test.navigator.ju.model.NavigatorEmptyProject;

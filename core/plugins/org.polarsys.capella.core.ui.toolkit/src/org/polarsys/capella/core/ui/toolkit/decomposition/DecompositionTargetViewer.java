@@ -56,7 +56,7 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.ui.toolkit.ToolkitPlugin;
 import org.polarsys.capella.core.ui.toolkit.viewers.NamedElementFullLabelProvider;
 import org.polarsys.capella.core.ui.toolkit.viewers.NamedElementLabelProvider;

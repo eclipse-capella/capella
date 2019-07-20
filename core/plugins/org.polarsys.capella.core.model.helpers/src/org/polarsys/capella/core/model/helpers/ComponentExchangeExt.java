@@ -10,8 +10,7 @@
  *******************************************************************************/
 
 package org.polarsys.capella.core.model.helpers;
-
-import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,7 +30,6 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
@@ -125,7 +123,7 @@ public final class ComponentExchangeExt {
     }
     Component sourceComponent = getSourceComponent(connection);
     if (sourceComponent != null) {
-      return getCache(ComponentExt::getRepresentingParts, sourceComponent);
+      return ComponentExt.getRepresentingParts(sourceComponent);
     }
     return Collections.emptyList();
   }
@@ -170,7 +168,7 @@ public final class ComponentExchangeExt {
     }
     Component targetComponent = getTargetComponent(connection);
     if (targetComponent != null) {
-      return getCache(ComponentExt::getRepresentingParts, targetComponent);
+      return ComponentExt.getRepresentingParts(targetComponent);
     }
     return Collections.emptyList();
   }
@@ -759,7 +757,7 @@ public final class ComponentExchangeExt {
     Port componentExcSource = ce.getSourcePort();
     if (componentExcSource instanceof ComponentPort) {
       Component sourceComponent = (Component) componentExcSource.eContainer();
-      if (getCache(ComponentExt::getRepresentingParts, sourceComponent).contains(sourcePart)) {
+      if (ComponentExt.getRepresentingParts(sourceComponent).contains(sourcePart)) {
         return (ComponentPort) componentExcSource;
       }
 
@@ -767,7 +765,7 @@ public final class ComponentExchangeExt {
     Port componentExcTarget = ce.getTargetPort();
     if (componentExcTarget instanceof ComponentPort) {
       Component targetComponent = (Component) componentExcTarget.eContainer();
-      if (getCache(ComponentExt::getRepresentingParts, targetComponent).contains(sourcePart)) {
+      if (ComponentExt.getRepresentingParts(targetComponent).contains(sourcePart)) {
         //
       }
       return (ComponentPort) componentExcTarget;

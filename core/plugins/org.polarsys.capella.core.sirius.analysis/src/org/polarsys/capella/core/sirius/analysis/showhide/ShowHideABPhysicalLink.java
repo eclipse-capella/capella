@@ -21,7 +21,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.PortExt;
 import org.polarsys.capella.core.sirius.analysis.CsServices;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
@@ -67,7 +67,7 @@ public class ShowHideABPhysicalLink extends ShowHideABComponentExchange {
 
     } else if (lastContext.getValue() instanceof PhysicalPort) {
       PhysicalPort port = (PhysicalPort) lastContext.getValue();
-      value.putAll(CONTAINER, (Collection<EObject>) (Collection<? extends EObject>) getCache(ComponentExt::getRepresentingParts, PortExt.getRelatedComponent(port)));
+      value.putAll(CONTAINER, (Collection<EObject>) (Collection<? extends EObject>) ComponentExt.getRepresentingParts(PortExt.getRelatedComponent(port)));
     }
 
     return value;

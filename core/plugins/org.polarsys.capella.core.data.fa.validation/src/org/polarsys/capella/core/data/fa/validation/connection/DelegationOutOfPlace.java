@@ -21,7 +21,7 @@ import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeKind;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
-import org.polarsys.capella.core.model.helpers.PartExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.PartExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**

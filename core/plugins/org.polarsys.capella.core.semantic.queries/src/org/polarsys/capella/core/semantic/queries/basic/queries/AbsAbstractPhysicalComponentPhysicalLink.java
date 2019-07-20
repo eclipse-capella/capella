@@ -44,7 +44,7 @@ public abstract class AbsAbstractPhysicalComponentPhysicalLink implements IQuery
     List<Object> result = new ArrayList<>();
     if (object instanceof AbstractPhysicalComponent) {
       AbstractPhysicalComponent absPhyComp = (AbstractPhysicalComponent) object;
-      Collection<PhysicalLink> allRelatedPhysicalLinks = getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, absPhyComp);
+      Collection<PhysicalLink> allRelatedPhysicalLinks = PhysicalLinkExt.getAllRelatedPhysicalLinks(absPhyComp);
       for (PhysicalLink physicalLink : allRelatedPhysicalLinks) {
         result.add(physicalLink);
       }

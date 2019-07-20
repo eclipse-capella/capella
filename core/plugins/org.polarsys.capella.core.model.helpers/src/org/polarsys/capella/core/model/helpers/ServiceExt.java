@@ -14,6 +14,8 @@ package org.polarsys.capella.core.model.helpers;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.polarsys.capella.core.data.capellacore.Classifier;
+import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentArchitecture;
 import org.polarsys.capella.core.data.cs.Interface;
@@ -25,8 +27,6 @@ import org.polarsys.capella.core.data.information.communication.Exception;
 import org.polarsys.capella.core.data.information.communication.Message;
 import org.polarsys.capella.core.data.information.communication.MessageReference;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.capellacore.Classifier;
-import org.polarsys.capella.core.data.capellacore.Structure;
 
 /**
  */

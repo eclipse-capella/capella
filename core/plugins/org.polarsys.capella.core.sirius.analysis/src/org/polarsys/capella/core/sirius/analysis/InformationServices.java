@@ -150,7 +150,7 @@ import org.polarsys.capella.core.libraries.extendedqueries.QueryIdentifierConsta
 import org.polarsys.capella.core.model.helpers.AbstractDependenciesPkgExt;
 import org.polarsys.capella.core.model.helpers.AbstractExchangeItemPkgExt;
 import org.polarsys.capella.core.model.helpers.AssociationExt;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.DataPkgExt;
 import org.polarsys.capella.core.model.helpers.DataTypeExt;
 import org.polarsys.capella.core.model.helpers.ExchangeItemExt;

@@ -27,7 +27,7 @@ import org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMes
 import org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMessage.model.communications.InterfaceCommunication;
 import org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMessage.model.communications.LinkCommunication;
 import org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMessage.model.communications.UndefinedCommunication;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.ExchangeItemExt;
 
 public class SelectionAlgorithms {

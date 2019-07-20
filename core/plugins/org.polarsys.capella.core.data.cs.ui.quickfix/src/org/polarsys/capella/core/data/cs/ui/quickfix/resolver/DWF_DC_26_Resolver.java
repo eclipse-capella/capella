@@ -11,7 +11,7 @@
 package org.polarsys.capella.core.data.cs.ui.quickfix.resolver;
 
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.PhysicalComponentExt;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractDeleteCommandResolver;
 

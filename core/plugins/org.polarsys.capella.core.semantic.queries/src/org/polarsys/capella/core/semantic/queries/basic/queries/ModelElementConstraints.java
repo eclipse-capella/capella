@@ -27,7 +27,7 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.query.IQuery;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 
 /**
  * Return the constraint of current model element
@@ -70,7 +70,7 @@ public class ModelElementConstraints implements IQuery {
    */
   private Set<AbstractConstraint> compute(Component component) {
     Set<AbstractConstraint> result = new HashSet<>();
-    Collection<Part> parts = getCache(ComponentExt::getRepresentingParts, component);
+    Collection<Part> parts = ComponentExt.getRepresentingParts(component);
     for (AbstractTypedElement part : parts) {
       for (AbstractConstraint constraint : part.getConstraints())
         result.add(constraint);

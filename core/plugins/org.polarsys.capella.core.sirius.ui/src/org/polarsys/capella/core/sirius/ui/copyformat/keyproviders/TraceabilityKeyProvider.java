@@ -29,7 +29,7 @@ import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.fa.FunctionalExchangeRealization;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.data.information.PortRealization;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.sirius.ui.copyformat.AbstractCapellaFormatDataKey;
 import org.polarsys.capella.core.sirius.ui.copyformat.CapellaTraceabilityFormatDataKey;
 
@@ -68,7 +68,7 @@ public class TraceabilityKeyProvider implements IKeyProvider {
         for (AbstractTrace trace : ((TraceableElement) (((Part) semantic).getAbstractType())).getOutgoingTraces()) {
           if (isValidTrace(trace)) {
             keys.add(new CapellaTraceabilityFormatDataKey(mKey, trace.getTargetElement()));
-            for (Part part : getCache(ComponentExt::getRepresentingParts, (Component) trace.getTargetElement())) {
+            for (Part part : ComponentExt.getRepresentingParts((Component) trace.getTargetElement())) {
               keys.add(new CapellaTraceabilityFormatDataKey(mKey, part));
             }
           }

@@ -89,8 +89,8 @@ import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.data.pa.deployment.DeploymentFactory;
 import org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
-import org.polarsys.capella.core.model.helpers.PartExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.PartExt;
 import org.polarsys.capella.core.model.helpers.PhysicalComponentExt;
 import org.polarsys.capella.core.model.helpers.PhysicalPathExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
@@ -474,7 +474,7 @@ public class PhysicalServices {
     }
 
     // Attach to parent
-    org.polarsys.capella.core.model.helpers.PhysicalLinkExt.attachToDefaultContainer(exchange);
+    org.polarsys.capella.core.model.helpers.ModelHelpers.PhysicalLinkExt.attachToDefaultContainer(exchange);
 
     CapellaServices.getService().creationService(exchange);
     DiagramServices.getDiagramServices().createEdge(FaServices.getFaServices().getMappingABPhysicalLink(diagram),
@@ -1350,8 +1350,8 @@ public class PhysicalServices {
 
   public List<PhysicalLink> getAvailablePhysicaLinks(PhysicalPath path, Part source, Part target) {
     List<PhysicalLink> returnedPhysicalLinks = new ArrayList<>();
-    Collection<PhysicalLink> incoming = getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, target);
-    Collection<PhysicalLink> outgoing = getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, source);
+    Collection<PhysicalLink> incoming = PhysicalLinkExt.getAllRelatedPhysicalLinks(target);
+    Collection<PhysicalLink> outgoing = PhysicalLinkExt.getAllRelatedPhysicalLinks(source);
     List<AbstractPathInvolvedElement> involvedElements = PhysicalPathExt.getInvolvedElements(path);
     for (PhysicalLink aPhysicalLink : incoming) {
       if (outgoing.contains(aPhysicalLink) && !involvedElements.contains(aPhysicalLink)) {

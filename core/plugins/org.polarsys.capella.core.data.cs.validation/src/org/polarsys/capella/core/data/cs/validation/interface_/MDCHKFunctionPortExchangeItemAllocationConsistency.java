@@ -24,7 +24,7 @@ import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.fa.FunctionPort;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionPortExt;
 import org.polarsys.capella.core.data.information.ExchangeItem;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.InterfaceExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;

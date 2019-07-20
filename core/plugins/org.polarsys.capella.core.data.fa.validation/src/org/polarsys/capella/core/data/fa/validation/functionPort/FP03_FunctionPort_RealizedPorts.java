@@ -14,7 +14,7 @@ import org.eclipse.emf.validation.IValidationContext;
 
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FunctionPort;
-import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
+import static org.polarsys.capella.core.data.helpers.DataHelpers.FunctionExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionPortExt;
 
 /**

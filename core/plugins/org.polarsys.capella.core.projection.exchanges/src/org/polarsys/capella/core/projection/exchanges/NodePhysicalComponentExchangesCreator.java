@@ -42,10 +42,10 @@ import org.polarsys.capella.core.data.pa.PhysicalActor;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
-import org.polarsys.capella.core.model.helpers.PartExt;
-import org.polarsys.capella.core.model.helpers.PhysicalLinkExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.PartExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.PhysicalLinkExt;
 import org.polarsys.capella.core.model.helpers.PortExt;
 import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
@@ -178,7 +178,7 @@ public class NodePhysicalComponentExchangesCreator extends DefaultExchangesCreat
                   //For all parts, find the deploying component
                   for (Partition partition : ((AbstractPhysicalComponent) container).getRepresentingPartitions()) {
                     if (partition instanceof Part) {
-                      for (DeploymentTarget deploying : getCache(PartExt::getDeployingElements, (Part) partition)) {
+                      for (DeploymentTarget deploying : PartExt.getDeployingElements((Part) partition)) {
                         if (deploying instanceof Part) {
                           Part deployingPart = (Part) deploying;
                           if ((deployingPart.getAbstractType() != null) && (deployingPart.getAbstractType() instanceof AbstractPhysicalComponent)) {

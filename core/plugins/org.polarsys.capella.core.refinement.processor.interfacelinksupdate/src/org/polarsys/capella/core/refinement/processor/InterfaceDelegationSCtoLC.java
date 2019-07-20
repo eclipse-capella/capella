@@ -36,7 +36,7 @@ import org.polarsys.capella.core.data.information.PortRealization;
 import org.polarsys.capella.core.data.la.LogicalActor;
 import org.polarsys.capella.core.data.la.LogicalActorPkg;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
 
 public class InterfaceDelegationSCtoLC {

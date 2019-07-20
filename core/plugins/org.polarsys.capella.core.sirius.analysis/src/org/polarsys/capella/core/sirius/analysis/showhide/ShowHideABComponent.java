@@ -27,8 +27,8 @@ import org.polarsys.capella.core.data.cs.DeploymentTarget;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
-import org.polarsys.capella.core.model.helpers.PartExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.PartExt;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
 import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
@@ -66,7 +66,7 @@ public class ShowHideABComponent extends AbstractShowHide {
     Collection<EObject> result = new ArrayList<EObject>();
     if (lastContext.getValue() instanceof Entity) {
       Entity entity = (Entity) lastContext.getValue();
-      Collection<Part> parts = getCache(ComponentExt::getRepresentingParts, entity);
+      Collection<Part> parts = ComponentExt.getRepresentingParts(entity);
       if (parts.size() > 0) {
         EObject targetContainer = EcoreUtil2.getFirstContainer(parts.iterator().next(), CsPackage.Literals.COMPONENT);
         if (targetContainer instanceof Entity) {
@@ -87,7 +87,7 @@ public class ShowHideABComponent extends AbstractShowHide {
       Collection<EObject> result3 = new HashSet<EObject>();
 
       if (containsDeployment) {
-        result3.addAll(getCache(PartExt::getDeployingElements, part));
+        result3.addAll(PartExt.getDeployingElements(part));
       }
 
       Collection<EObject> result2 = new HashSet<EObject>();
@@ -174,7 +174,7 @@ public class ShowHideABComponent extends AbstractShowHide {
     if ((originCouple_p.getAncestor() != null)) {
       if ((originCouple_p.getValue() instanceof Part)
           && (originCouple_p.getAncestor().getElement().getValue() instanceof Part)) {
-        if (!getCache(PartExt::getDeployingElements, (Part) originCouple_p.getAncestor().getElement().getValue()).contains(
+        if (!PartExt.getDeployingElements((Part) originCouple_p.getAncestor().getElement().getValue()).contains(
             (originCouple_p.getValue()))) {
           return true;
         }
@@ -197,7 +197,7 @@ public class ShowHideABComponent extends AbstractShowHide {
 
     } else if (semantic instanceof Part) {
       Part part = (Part) semantic;
-      List<DeploymentTarget> deployingElements = getCache(PartExt::getDeployingElements, part);
+      List<DeploymentTarget> deployingElements = PartExt.getDeployingElements(part);
       if (containsDeployment && !deployingElements.isEmpty()) {
         Collection<DSemanticDecorator> targetViews = relatedViews.get(CONTAINER);
         if (!targetViews.isEmpty() && deployingElements.contains((targetViews.iterator().next().getTarget()))) {

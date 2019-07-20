@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.polarsys.capella.core.data.cs.SystemComponent;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.common.helpers.query.IQuery;
 
 /**

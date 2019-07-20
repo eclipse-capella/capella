@@ -30,7 +30,7 @@ import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.options.OptionsHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.selection.EClassSelectionContext;
@@ -127,7 +127,7 @@ public class PartRule extends org.polarsys.capella.core.transition.system.rules.
       BlockArchitecture target =
           (BlockArchitecture) TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(root, context_p, CsPackage.Literals.BLOCK_ARCHITECTURE);
       Component cps = BlockArchitectureExt.getFirstComponent(target);
-      Collection<Part> parts = getCache(ComponentExt::getRepresentingParts, cps);
+      Collection<Part> parts = ComponentExt.getRepresentingParts(cps);
       if (!parts.isEmpty()) {
         return parts.iterator().next();
       }

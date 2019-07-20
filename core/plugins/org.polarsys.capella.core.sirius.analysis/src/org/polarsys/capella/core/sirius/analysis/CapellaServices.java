@@ -135,7 +135,7 @@ import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.helpers.ctx.services.ActorPkgExt;
-import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
+import static org.polarsys.capella.core.data.helpers.DataHelpers.FunctionExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionPkgExt;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.information.AggregationKind;
@@ -183,9 +183,9 @@ import org.polarsys.capella.core.linkedtext.ui.CapellaEmbeddedLinkedTextEditorIn
 import org.polarsys.capella.core.model.helpers.AbstractFunctionExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
-import org.polarsys.capella.core.model.helpers.PartExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.PartExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
 import org.polarsys.capella.core.sirius.analysis.tool.StringUtil;
@@ -1115,7 +1115,7 @@ public class CapellaServices {
       }
 
     }
-    returnedFunctions.addAll(getCache(FunctionExt::getAllAbstractFunctions, rootFunction));
+    returnedFunctions.addAll(FunctionExt.getAllAbstractFunctions(rootFunction));
     returnedFunctions.removeAll(ownedNodes);
 
     if (allGraphicalContainers != null) {
@@ -2130,7 +2130,7 @@ public class CapellaServices {
     if (container instanceof Component) {
       Component component = (Component) container;
       allocatedFunctions.addAll(component.getAllocatedFunctions());
-      for (Component subComponent : getCache(ComponentExt::getAllSubUsedAndDeployedComponents, component)) {
+      for (Component subComponent : ComponentExt.getAllSubUsedAndDeployedComponents(component)) {
         allocatedFunctions.addAll(subComponent.getAllocatedFunctions());
       }
     }
@@ -2267,7 +2267,7 @@ public class CapellaServices {
         return false;
       }
     } else {
-      List<AbstractFunction> allLeaves = getCache(FunctionExt::getAllLeafAbstractFunctions, function);
+      List<AbstractFunction> allLeaves = FunctionExt.getAllLeafAbstractFunctions(function);
       for (AbstractFunction leaf : allLeaves) {
         List<Component> allocatingComponent = getCache(AbstractFunctionExt::getAllocatingComponents, leaf);
         if (allocatingComponent.size() != 1 || allocatingComponent.get(0) != container) {
@@ -2296,8 +2296,8 @@ public class CapellaServices {
         return allocatingComponents.stream().allMatch(comp -> comp != container);
       }
     } else {
-      List<AbstractFunction> allLeaves = getCache(FunctionExt::getAllLeafAbstractFunctions, function);
-      List<Component> subComponents = getCache(ComponentExt::getAllSubUsedAndDeployedComponents, container);
+      List<AbstractFunction> allLeaves = FunctionExt.getAllLeafAbstractFunctions(function);
+      List<Component> subComponents = ComponentExt.getAllSubUsedAndDeployedComponents(container);
       for (AbstractFunction leaf : allLeaves) {
         List<Component> allocatingComponents = getCache(AbstractFunctionExt::getAllocatingComponents, leaf);
         if (allocatingComponents.stream().noneMatch(comp -> comp != container && subComponents.contains(comp))) {

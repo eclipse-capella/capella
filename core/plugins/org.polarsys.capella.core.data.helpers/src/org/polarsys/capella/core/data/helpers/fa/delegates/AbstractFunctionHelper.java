@@ -26,7 +26,7 @@ import org.polarsys.capella.core.data.fa.FunctionRealization;
 import org.polarsys.capella.core.data.fa.FunctionSpecification;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
-import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
+import static org.polarsys.capella.core.data.helpers.DataHelpers.FunctionExt;
 import org.polarsys.capella.core.data.helpers.information.delegates.AbstractInstanceHelper;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.InvolvedElementHelper;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamespaceHelper;
@@ -177,7 +177,7 @@ public class AbstractFunctionHelper {
   }
 
   protected List<AbstractFunction> getSubFunctions(AbstractFunction element) {
-    return (List<AbstractFunction>) getCache(FunctionExt::getFirstLevelAbstractFunctions, element);
+    return (List<AbstractFunction>) FunctionExt.getFirstLevelAbstractFunctions(element);
   }
 
   protected List<FunctionalChain> getInvolvingFunctionalChains(AbstractFunction element) {

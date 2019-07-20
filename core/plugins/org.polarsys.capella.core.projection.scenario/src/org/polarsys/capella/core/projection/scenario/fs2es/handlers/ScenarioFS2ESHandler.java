@@ -24,7 +24,7 @@ import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
 import org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation;
-import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
+import static org.polarsys.capella.core.data.helpers.DataHelpers.FunctionExt;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
@@ -87,7 +87,7 @@ public class ScenarioFS2ESHandler extends ScenarioHorizontalHandler {
     Collection<PartitionableElement> allocatingBlocks = getAllocatingBlocks(function);
 
     // if all leaf functions are allocated to the same component, we use it
-    Iterator<AbstractFunction> leafs = getCache(FunctionExt::getAllLeafAbstractFunctions, function).iterator();
+    Iterator<AbstractFunction> leafs = FunctionExt.getAllLeafAbstractFunctions(function).iterator();
     if (leafs.hasNext()) {
       AbstractFunction leaf = leafs.next();
       Collection<PartitionableElement> leafAllocatingBlocks = getAllocatingBlocks(leaf);

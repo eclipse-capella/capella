@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.diagram.commands;
 
-import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -91,7 +89,7 @@ import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.sirius.analysis.CapellaServices;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
@@ -541,32 +539,29 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
       HashMapSet<DSemanticDecorator, DSemanticDecorator> map = getTargetViews(getContext());
       map.put((DSemanticDecorator) sourceContents.getDDiagram(), (DSemanticDecorator) targetContents.getDDiagram());
 
-      DiagramDescription sourceDescription = (DiagramDescription) DiagramHelper.getService()
-          .getDescription(sourceDiagram);
-      DiagramDescription targetDescription = (DiagramDescription) DiagramHelper.getService()
-          .getDescription(targetDiagram);
+      DiagramDescription sourceDescription = (DiagramDescription) DiagramHelper.getService().getDescription(sourceDiagram);
+      DiagramDescription targetDescription = (DiagramDescription) DiagramHelper.getService().getDescription(targetDiagram);
 
-      // For all nodes
+      //For all nodes
       for (DDiagramElement element : sourceContents.getDiagramElements()) {
         if (element instanceof AbstractDNode) {
           EObject sourceSemantic = element.getTarget();
           EObject semanticSource = sourceSemantic;
 
-          if ((sourceSemantic instanceof Part)
-              && (((Part) sourceSemantic).getAbstractType().eContainer() instanceof BlockArchitecture)) {
-            semanticSource = ((Part) sourceSemantic).getAbstractType();
-          }
+          if ((sourceSemantic instanceof Part) && (((Part) sourceSemantic).getAbstractType().eContainer() instanceof BlockArchitecture)) {
+        	  semanticSource = ((Part) sourceSemantic).getAbstractType();
+        	  }
           for (EObject semanticTarget : getTargetSemantics(semanticSource, sourceDescription, targetDescription)) {
-            EObject targetSemantic = semanticTarget;
-            if ((semanticTarget instanceof Component) && (semanticTarget.eContainer() instanceof BlockArchitecture)) {
-              for (Part part : getCache(ComponentExt::getRepresentingParts, (Component) semanticTarget)) {
-                targetSemantic = part;
-                break;
-              }
-            }
-            DiagramElementMapping mapping = DiagramDescriptionHelper.getService(getContext()).getTargetMapping(
-                getContext(), sourceDescription, targetDescription, element.getDiagramElementMapping(), semanticSource,
-                semanticTarget);
+        	  EObject targetSemantic= semanticTarget;
+        	  if ((semanticTarget instanceof Component) && (semanticTarget.eContainer() instanceof BlockArchitecture)) {
+        		  for (Part part: ComponentExt.getRepresentingParts((Component) semanticTarget)) {
+        		  targetSemantic = part;
+        		  break;
+        		  }
+        	  }
+            DiagramElementMapping mapping =
+                DiagramDescriptionHelper.getService(getContext()).getTargetMapping(getContext(), sourceDescription, targetDescription,
+                    element.getDiagramElementMapping(), semanticSource, semanticTarget);
 
             if ((mapping != null) && (mapping instanceof AbstractNodeMapping)) {
               for (DDiagramElement target : getNodes(sourceDescription, mapping, targetContents, targetSemantic,

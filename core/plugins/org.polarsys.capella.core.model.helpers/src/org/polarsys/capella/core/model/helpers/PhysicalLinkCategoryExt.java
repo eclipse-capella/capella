@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.model.helpers;
 
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.PhysicalLinkExt;
+
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;

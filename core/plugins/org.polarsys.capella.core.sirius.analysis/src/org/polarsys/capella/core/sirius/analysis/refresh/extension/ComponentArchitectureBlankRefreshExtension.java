@@ -41,7 +41,7 @@ import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.diagram.helpers.ContextualDiagramHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
-import org.polarsys.capella.core.model.helpers.PartExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.PartExt;
 import org.polarsys.capella.core.sirius.analysis.ABServices;
 import org.polarsys.capella.core.sirius.analysis.CsServices;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
@@ -263,7 +263,7 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
         if (object instanceof Part && context instanceof DNodeContainer) {
           EObject contextPart = ((DNodeContainer) context).getTarget();
           if (CsServices.getService().isDeployed((DNodeContainer) context)) {
-            parents.addAll(getCache(PartExt::getDeployingElements, (Part) object));
+            parents.addAll(PartExt.getDeployingElements((Part) object));
           } else {
             parents.add(CsServices.getService().getParentContainer(object));
           }

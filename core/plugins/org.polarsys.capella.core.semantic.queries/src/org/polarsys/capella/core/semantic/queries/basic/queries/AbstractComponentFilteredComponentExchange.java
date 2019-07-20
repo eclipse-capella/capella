@@ -21,7 +21,7 @@ import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 
 import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 
@@ -55,7 +55,7 @@ public abstract class AbstractComponentFilteredComponentExchange implements IQue
   }
 
   protected Collection<ComponentExchange> getExchanges(Object object) {
-    return getCache(ComponentExt::getAllRelatedComponentExchange, (Component)object);
+    return ComponentExt.getAllRelatedComponentExchange((Component)object);
   }
 
   /**

@@ -22,7 +22,7 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
 import org.polarsys.capella.core.model.utils.ListExt;
 
 public class PhysicalComponent_InternalPhysicalLinks implements IQuery {
@@ -45,9 +45,9 @@ public class PhysicalComponent_InternalPhysicalLinks implements IQuery {
       Component seletectedComponent = (Component) object;
       Collection<Part> usedParts = ComponentExt.getAllSubUsedParts(seletectedComponent, true);
       for (Part part : usedParts) {
-        allPLs.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, part));
+        allPLs.addAll(PhysicalLinkExt.getAllRelatedPhysicalLinks(part));
       }
-      usedParts.addAll(getCache(ComponentExt::getRepresentingParts, seletectedComponent));
+      usedParts.addAll(ComponentExt.getRepresentingParts(seletectedComponent));
       
       // If source or target is one of the used parts or representing parts, filter
       for (PhysicalLink pl : allPLs) {

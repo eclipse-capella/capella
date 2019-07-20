@@ -19,7 +19,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.polarsys.capella.core.data.capellamodeller.provider.CapellaModellerEditPlugin;
 import org.polarsys.capella.core.data.fa.FunctionKind;
 import org.polarsys.capella.core.data.gen.edit.decorators.ItemProviderAdapterDecorator;
-import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
+import static org.polarsys.capella.core.data.helpers.DataHelpers.FunctionExt;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
 
 public class PhysicalFunctionItemProviderDecorator extends

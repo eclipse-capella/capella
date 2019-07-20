@@ -45,7 +45,7 @@ public abstract class AbstractPhysicalPortPhysicalLinks implements IQuery {
 		List<Object> result = new ArrayList<>();
 		if (object instanceof PhysicalPort) {
 		  PhysicalPort currentPort = (PhysicalPort) object;
-		  Collection<PhysicalLink> links = getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, currentPort);
+		  Collection<PhysicalLink> links = PhysicalLinkExt.getAllRelatedPhysicalLinks(currentPort);
 		  for (PhysicalLink physicalLink : links) {
         Port port = getSourcePortFromLink(physicalLink);
         if (null != port && port.equals(currentPort)) {

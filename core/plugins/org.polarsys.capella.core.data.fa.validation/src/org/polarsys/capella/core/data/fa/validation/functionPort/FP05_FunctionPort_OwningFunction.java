@@ -20,7 +20,7 @@ import org.eclipse.emf.validation.model.ConstraintStatus;
 
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FunctionPort;
-import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
+import static org.polarsys.capella.core.data.helpers.DataHelpers.FunctionExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionPortExt;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;

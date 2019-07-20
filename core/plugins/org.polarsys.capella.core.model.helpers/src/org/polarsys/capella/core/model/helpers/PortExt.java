@@ -10,8 +10,9 @@
  *******************************************************************************/
 
 package org.polarsys.capella.core.model.helpers;
-
-import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+import static org.polarsys.capella.core.data.helpers.DataHelpers.FunctionExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.ComponentExt;
+import static org.polarsys.capella.core.model.helpers.ModelHelpers.PartExt;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -23,7 +24,10 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.data.activity.ActivityNode;
+import org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Interface;
@@ -42,15 +46,10 @@ import org.polarsys.capella.core.data.fa.ExchangeSpecification;
 import org.polarsys.capella.core.data.fa.FaFactory;
 import org.polarsys.capella.core.data.fa.FunctionPort;
 import org.polarsys.capella.core.data.fa.OrientationPortKind;
-import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.information.InformationFactory;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.data.information.PortAllocation;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
-import org.polarsys.capella.common.data.activity.ActivityNode;
-import org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 
 /**
  * The port extension.
@@ -838,7 +837,7 @@ public class PortExt {
     Collection<PhysicalLink> links = new HashSet<>();
 
     Component component = PortExt.getRelatedComponent(port);
-    Collection<Part> parts = getCache(ComponentExt::getRepresentingParts, component);
+    Collection<Part> parts = ComponentExt.getRepresentingParts(component);
 
     for (PhysicalLink link : port.getInvolvedLinks()) {
       Collection<Part> sourceParts = org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getSourceParts(link);
@@ -890,7 +889,7 @@ public class PortExt {
     Collection<PhysicalLink> links = new HashSet<>();
 
     Component component = PortExt.getRelatedComponent(port);
-    Collection<Part> parts = getCache(ComponentExt::getRepresentingParts, component);
+    Collection<Part> parts = ComponentExt.getRepresentingParts(component);
 
     for (PhysicalLink link : port.getInvolvedLinks()) {
       Collection<Part> sourceParts = org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getSourceParts(link);
