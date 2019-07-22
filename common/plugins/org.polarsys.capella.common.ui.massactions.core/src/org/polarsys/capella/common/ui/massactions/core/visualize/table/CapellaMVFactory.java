@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,24 +10,14 @@
  *******************************************************************************/
 package org.polarsys.capella.common.ui.massactions.core.visualize.table;
 
-import org.eclipse.swt.widgets.Composite;
-import org.polarsys.kitalpha.massactions.visualize.table.MVTable;
+import org.eclipse.nebula.widgets.nattable.NatTable;
+import org.eclipse.nebula.widgets.nattable.config.IConfigRegistry;
+import org.polarsys.kitalpha.massactions.visualize.config.MVConfiguration;
 import org.polarsys.kitalpha.massactions.visualize.table.factory.MVFactory;
 
-/**
- * A Capella Mass Visualization extension of the default {@link MVTable}.
- * 
- * @author Sandu Postaru
- *
- */
-public class CapellaMVTable extends MVTable {
-
-  public CapellaMVTable(Composite parentView) {
-    super(parentView);
-  }
-
+public class CapellaMVFactory extends MVFactory {
   @Override
-  public MVFactory createMAFactory() {
-    return new CapellaMVFactory();
+  public MVConfiguration createConfiguration(NatTable natTable, IConfigRegistry configRegistry) {
+    return new CapellaMVConfiguration(natTable, configRegistry);
   }
 }

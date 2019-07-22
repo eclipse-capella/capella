@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,24 +10,14 @@
  *******************************************************************************/
 package org.polarsys.capella.common.ui.massactions.core.edit.table;
 
-import org.eclipse.swt.widgets.Composite;
-import org.polarsys.kitalpha.massactions.core.table.factory.IMAFactory;
-import org.polarsys.kitalpha.massactions.edit.table.METable;
+import org.eclipse.nebula.widgets.nattable.NatTable;
+import org.eclipse.nebula.widgets.nattable.config.IConfigRegistry;
+import org.polarsys.kitalpha.massactions.edit.config.MEConfiguration;
+import org.polarsys.kitalpha.massactions.edit.table.factory.MEFactory;
 
-/**
- * An Capella Mass Edition extension of the default {@link METable}.
- * 
- * @author Sandu Postaru
- *
- */
-public class CapellaMETable extends METable {
-
-  public CapellaMETable(Composite parentView) {
-    super(parentView);
-  }
-
+public class CapellaMEFactory extends MEFactory {
   @Override
-  public IMAFactory createMAFactory() {
-    return new CapellaMEFactory();
+  public MEConfiguration createConfiguration(NatTable natTable, IConfigRegistry configRegistry) {
+    return new CapellaMEConfiguration(natTable, configRegistry);
   }
 }
