@@ -14,21 +14,17 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
-
-import org.polarsys.capella.core.data.ctx.Actor;
-import org.polarsys.capella.core.data.ctx.System;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation;
-import org.polarsys.capella.core.data.la.LogicalActor;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalFunction;
-import org.polarsys.capella.core.data.pa.PhysicalActor;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 
 /**
  * Checks allocation consistency between functions and components.
@@ -48,9 +44,9 @@ public class MDCHK_Function_ComponentFunctionAllocation extends AbstractValidati
         for (AbstractTrace trace : function.getIncomingTraces()) {
           TraceableElement sourceElement = trace.getSourceElement();
           if (trace instanceof ComponentFunctionalAllocation) {
-            if ((function instanceof LogicalFunction && !(sourceElement instanceof LogicalComponent || sourceElement instanceof LogicalActor))
-                || (function instanceof SystemFunction && !(sourceElement instanceof System || sourceElement instanceof Actor))
-                || (function instanceof PhysicalFunction && !(sourceElement instanceof PhysicalComponent || sourceElement instanceof PhysicalActor))) {
+            if ((function instanceof LogicalFunction && !(sourceElement instanceof LogicalComponent))
+                || (function instanceof SystemFunction && !(sourceElement instanceof SystemComponent))
+                || (function instanceof PhysicalFunction && !(sourceElement instanceof PhysicalComponent))) {
               return createFailureStatus(ctx, new Object[] { function.getName() });
             }
           }

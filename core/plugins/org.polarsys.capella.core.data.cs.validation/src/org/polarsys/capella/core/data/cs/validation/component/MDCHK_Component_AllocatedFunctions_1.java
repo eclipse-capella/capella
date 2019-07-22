@@ -14,9 +14,8 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
-
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.ctx.System;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
@@ -58,17 +57,17 @@ public class MDCHK_Component_AllocatedFunctions_1 extends AbstractValidationRule
           if (!FunctionExt.isLeaf(fct)) {
             return createFailureStatus(ctx,
                 new Object[] { cpnt.getName() + TYPE_PREFIX + cpnt.eClass().getName() + TYPE_SUFFIX
-                               + Messages.getString("MDCHK_Component_AllocatedFunctions_1.allocateNonLeafFunction") + fct.getName() + DOT }); //$NON-NLS-1$
-          } else if ((cpnt instanceof Entity && !(fct instanceof OperationalActivity)) || (cpnt instanceof System && !(fct instanceof SystemFunction))
-                     || (cpnt instanceof LogicalComponent && !(fct instanceof LogicalFunction))
-                     || (cpnt instanceof PhysicalComponent && !(fct instanceof PhysicalFunction))) {
-            return createFailureStatus(
-                ctx,
-                new Object[] { cpnt.getName()
-                               + TYPE_PREFIX
-                               + cpnt.eClass().getName()
-                               + TYPE_SUFFIX
-                               + Messages.getString("MDCHK_Component_AllocatedFunctions_1.allocatesFunction") + fct.getFullLabel() + TYPE_PREFIX + fct.eClass().getName() + TYPE_SUFFIX + Messages.getString("MDCHK_Component_AllocatedFunctions_1.whichIsNotFromTheSameLevel") }); //$NON-NLS-1$ //$NON-NLS-2$
+                    + Messages.getString("MDCHK_Component_AllocatedFunctions_1.allocateNonLeafFunction") + fct.getName() //$NON-NLS-1$
+                    + DOT });
+          } else if ((cpnt instanceof Entity && !(fct instanceof OperationalActivity))
+              || (cpnt instanceof SystemComponent && !(fct instanceof SystemFunction))
+              || (cpnt instanceof LogicalComponent && !(fct instanceof LogicalFunction))
+              || (cpnt instanceof PhysicalComponent && !(fct instanceof PhysicalFunction))) {
+            return createFailureStatus(ctx,
+                new Object[] { cpnt.getName() + TYPE_PREFIX + cpnt.eClass().getName() + TYPE_SUFFIX
+                    + Messages.getString("MDCHK_Component_AllocatedFunctions_1.allocatesFunction") + fct.getFullLabel() //$NON-NLS-1$
+                    + TYPE_PREFIX + fct.eClass().getName() + TYPE_SUFFIX
+                    + Messages.getString("MDCHK_Component_AllocatedFunctions_1.whichIsNotFromTheSameLevel") }); //$NON-NLS-1$
           }
         }
       }

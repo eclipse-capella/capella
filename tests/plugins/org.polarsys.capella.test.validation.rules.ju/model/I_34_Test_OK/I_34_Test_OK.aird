@@ -179,8 +179,8 @@
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='CapabilityNode4']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_BeSNYLxEEeSC5uxsBRe41Q" name="Actor 1" incomingEdges="_m7-gAHQ-Eea1QKmGa7FbBw _m81boHQ-Eea1QKmGa7FbBw" width="7" height="7" resizeKind="NSEW">
-      <target xmi:type="org.polarsys.capella.core.data.ctx:Actor" href="I_34_Test_OK.melodymodeller#2a7cb7b0-3776-4262-b603-dda0348f634d"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:Actor" href="I_34_Test_OK.melodymodeller#2a7cb7b0-3776-4262-b603-dda0348f634d"/>
+      <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="I_34_Test_OK.melodymodeller#2a7cb7b0-3776-4262-b603-dda0348f634d"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="I_34_Test_OK.melodymodeller#2a7cb7b0-3776-4262-b603-dda0348f634d"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -190,8 +190,8 @@
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode4']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_m7-gAHQ-Eea1QKmGa7FbBw" sourceNode="_BHKt4LxEEeSC5uxsBRe41Q" targetNode="_BeSNYLxEEeSC5uxsBRe41Q">
-      <target xmi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement" href="fragments/SA-Capabilities-Capability_Fragmented.melodyfragment#c1c4a78f-5960-4520-95e2-191a7baa2792"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement" href="fragments/SA-Capabilities-Capability_Fragmented.melodyfragment#c1c4a78f-5960-4520-95e2-191a7baa2792"/>
+      <target xmi:type="org.polarsys.capella.core.data.ctx:CapabilityInvolvement" href="fragments/SA-Capabilities-Capability_Fragmented.melodyfragment#c1c4a78f-5960-4520-95e2-191a7baa2792"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:CapabilityInvolvement" href="fragments/SA-Capabilities-Capability_Fragmented.melodyfragment#c1c4a78f-5960-4520-95e2-191a7baa2792"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_m800kHQ-Eea1QKmGa7FbBw" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@edgeMappings[name='ActCapInv4']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_m800kXQ-Eea1QKmGa7FbBw"/>
@@ -199,8 +199,8 @@
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@edgeMappings[name='ActCapInv4']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_m81boHQ-Eea1QKmGa7FbBw" sourceNode="_oJiEQLxGEeSC5uxsBRe41Q" targetNode="_BeSNYLxEEeSC5uxsBRe41Q">
-      <target xmi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement" href="I_34_Test_OK.melodymodeller#84db4283-06c4-4842-a5bd-8a7265f82b90"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement" href="I_34_Test_OK.melodymodeller#84db4283-06c4-4842-a5bd-8a7265f82b90"/>
+      <target xmi:type="org.polarsys.capella.core.data.ctx:CapabilityInvolvement" href="I_34_Test_OK.melodymodeller#84db4283-06c4-4842-a5bd-8a7265f82b90"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:CapabilityInvolvement" href="I_34_Test_OK.melodymodeller#84db4283-06c4-4842-a5bd-8a7265f82b90"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_m81boXQ-Eea1QKmGa7FbBw" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@edgeMappings[name='ActCapInv4']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_m81bonQ-Eea1QKmGa7FbBw"/>

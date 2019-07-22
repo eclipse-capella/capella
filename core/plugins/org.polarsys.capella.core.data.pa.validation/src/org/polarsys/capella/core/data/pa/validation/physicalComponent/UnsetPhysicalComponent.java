@@ -14,6 +14,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
+import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
@@ -35,7 +36,8 @@ public class UnsetPhysicalComponent extends AbstractValidationRule {
     if (eType == EMFEventType.NULL) {
       if (eObj instanceof PhysicalComponent) {
         PhysicalComponent currentElement = (PhysicalComponent) eObj;
-        if (currentElement != SystemEngineeringExt.getRootPhysicalComponent(SystemEngineeringExt.getPhysicalArchitecture(currentElement))) {
+        PhysicalArchitecture architecture = SystemEngineeringExt.getPhysicalArchitecture(currentElement);
+        if (currentElement != architecture.getSystem()) {
         	if (currentElement.getNature() == PhysicalComponentNature.UNSET) {
             	return ctx.createFailureStatus(CapellaElementExt.getValidationRuleMessagePrefix(currentElement)
                         + "must not be of nature UNSET."); //$NON-NLS-1$

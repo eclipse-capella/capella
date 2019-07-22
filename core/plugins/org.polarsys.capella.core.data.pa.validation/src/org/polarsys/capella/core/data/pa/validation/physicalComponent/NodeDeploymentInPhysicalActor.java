@@ -11,14 +11,12 @@
 package org.polarsys.capella.core.data.pa.validation.physicalComponent;
 
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
-
-import org.polarsys.capella.core.data.pa.PhysicalActor;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.PhysicalComponentExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
@@ -38,10 +36,11 @@ public class NodeDeploymentInPhysicalActor extends AbstractValidationRule {
       if (eObj instanceof PhysicalComponent) {
         PhysicalComponent currentElement = (PhysicalComponent) eObj;
         if (PhysicalComponentExt.isNode(currentElement)) {
-          EList<PhysicalActor> deployingPhysicalActors = currentElement.getDeployingPhysicalActors();
-          if (!deployingPhysicalActors.isEmpty()) {
-            return ctx.createFailureStatus(CapellaElementExt.getValidationRuleMessagePrefix(currentElement)
-                                           + "of nature NODE can't be deployed on PhysicalActor"); //$NON-NLS-1$
+          for (PhysicalComponent deploying : currentElement.getDeployingPhysicalComponents()) {
+            if (ComponentExt.isActor(deploying)) {
+              return ctx.createFailureStatus(CapellaElementExt.getValidationRuleMessagePrefix(currentElement)
+                  + "of nature NODE can't be deployed on PhysicalActor"); //$NON-NLS-1$
+            }
           }
         }
       }

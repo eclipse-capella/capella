@@ -13,8 +13,6 @@ package org.polarsys.capella.test.validation.rules.ju.testsuites.main;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.Test;
-
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.validation.rules.ju.testcases.dc_cl.DCCLRulesTestSuite;
@@ -24,6 +22,8 @@ import org.polarsys.capella.test.validation.rules.ju.testsuites.partial.RulesOnD
 import org.polarsys.capella.test.validation.rules.ju.testsuites.partial.RulesOnIntegrityTestSuite;
 import org.polarsys.capella.test.validation.rules.ju.testsuites.partial.RulesOnQualityTestSuite;
 import org.polarsys.capella.test.validation.rules.ju.testsuites.partial.RulesOnTransitionTestSuite;
+
+import junit.framework.Test;
 
 public class ValidationRulesTestSuite extends BasicTestSuite {
 

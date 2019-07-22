@@ -43,8 +43,6 @@ public class InterfaceAndExchangeItemsLocationConsistency extends AbstractValida
     EObject eObj = ctx.getTarget();
     Component source = null;
 
-    List<EReference> targetFeatures = null;
-
     IStatus status = ctx.createSuccessStatus();
     MultiStatus mstatus = new MultiStatus(status.getPlugin(), status.getCode(), status.getMessage(), status.getException());
 

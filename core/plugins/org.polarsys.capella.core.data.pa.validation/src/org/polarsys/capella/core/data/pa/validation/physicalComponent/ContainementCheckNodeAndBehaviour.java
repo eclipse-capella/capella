@@ -16,11 +16,10 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
-
-import org.polarsys.capella.core.data.information.PartitionableElement;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.PhysicalComponentExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
@@ -40,8 +39,8 @@ public class ContainementCheckNodeAndBehaviour extends AbstractValidationRule {
       if (eObj instanceof PhysicalComponent) {
         PhysicalComponent currentElement = (PhysicalComponent) eObj;
         if (PhysicalComponentExt.isNode(currentElement)) {
-          List<PartitionableElement> allAncestors = ComponentExt.getAllPartitionableElementAncestors(currentElement);
-          for (PartitionableElement component : allAncestors) {
+          List<Component> allAncestors = ComponentExt.getAllPartitionableElementAncestors(currentElement);
+          for (Component component : allAncestors) {
             if (component instanceof PhysicalComponent) {
               PhysicalComponent comp = (PhysicalComponent) component;
               if (PhysicalComponentExt.isBehaviour(comp)) {
@@ -51,8 +50,8 @@ public class ContainementCheckNodeAndBehaviour extends AbstractValidationRule {
             }
           }
         } else if (PhysicalComponentExt.isBehaviour(currentElement)) {
-          List<PartitionableElement> allAncestors = ComponentExt.getAllPartitionableElementAncestors(currentElement);
-          for (PartitionableElement component : allAncestors) {
+          List<Component> allAncestors = ComponentExt.getAllPartitionableElementAncestors(currentElement);
+          for (Component component : allAncestors) {
             if (component instanceof PhysicalComponent) {
               PhysicalComponent comp = (PhysicalComponent) component;
               if (PhysicalComponentExt.isNode(comp)) {

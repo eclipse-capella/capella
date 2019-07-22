@@ -62,6 +62,7 @@ import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.OperationalAnalysisExt;
 
 /**
  * This class takes care of the migration of the Actor refactoring work. Here are some basic migration steps: 1)
@@ -233,9 +234,9 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
   private List<String> oldActorTypes = Arrays.asList("org.polarsys.capella.core.data.oa:OperationalActor",
       "org.polarsys.capella.core.data.ctx:Actor", "org.polarsys.capella.core.data.la:LogicalActor",
       "org.polarsys.capella.core.data.pa:PhysicalActor");
-  
-  private String operationalContextId, systemContextId, logicalContextId, physicalContextId, ePBSContextId;
 
+  private String operationalContextId, systemContextId, logicalContextId, physicalContextId, ePBSContextId;
+  
   @Override
   public EStructuralFeature getFeature(EObject object, String prefix, String name, boolean isElement) {
     UnknownEStructuralFeature featureToTest = new UnknownEStructuralFeature(object.eClass(), name);
@@ -255,7 +256,7 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
     }
     return super.getQName(peekObject, typeQName, feature, resource, helper, context);
   }
-  
+
   @Override
   public void updateCreatedObject(EObject peekObject, EObject eObject, String typeQName, EStructuralFeature feature,
       XMLResource resource, XMLHelper helper, MigrationContext context) {
@@ -317,8 +318,12 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
       reorganizePhysicalArchitecture(pa);
     } else if (architecture instanceof EPBSArchitecture) {
       EPBSArchitecture epbs = (EPBSArchitecture) architecture;
-      reorganizeEPBSArchitecture(architecture, epbs);
+      reorganizeEPBSArchitecture(epbs);
     }
+  }
+
+  protected <T> List<T> filter(List<?> objects, Class<?> clazz) {
+    return (List) objects.stream().filter(clazz::isInstance).map(clazz::cast).collect(Collectors.toList());
   }
 
   /**
@@ -328,34 +333,38 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
    * 
    * @param epbs
    */
-  protected void reorganizeEPBSArchitecture(BlockArchitecture architecture, EPBSArchitecture epbs) {
+  protected void reorganizeEPBSArchitecture(EPBSArchitecture epbs) {
     if (!epbs.getOwnedMigratedElements().isEmpty()) {
-      ComponentPkg componentPkg = BlockArchitectureExt.getComponentPkg(architecture, true);
+      ComponentPkg componentPkg = BlockArchitectureExt.getComponentPkg(epbs, true);
       if (ePBSContextId != null)
         componentPkg.setId(ePBSContextId);
-      epbs.getOwnedConfigurationItemPkg().getOwnedConfigurationItems().addAll(epbs.getOwnedMigratedElements().stream()
-          .filter(ConfigurationItem.class::isInstance).map(ConfigurationItem.class::cast).collect(Collectors.toList()));
+
       epbs.getOwnedMigratedElements().stream().filter(ConfigurationItemPkg.class::isInstance)
-          .forEach(modelElement -> fusionContainmentReferences(modelElement, epbs.getOwnedConfigurationItemPkg()));
-
-      List<DataPkg> migratedDataPkg = epbs.getOwnedConfigurationItemPkg().getOwnedMigratedElements().stream()
-          .filter(DataPkg.class::isInstance).map(DataPkg.class::cast).collect(Collectors.toList());
-      if (!migratedDataPkg.isEmpty()) {
-        BlockArchitectureExt.getDataPkg(architecture, true);
-        epbs.getOwnedDataPkg().getOwnedDataPkgs().addAll(migratedDataPkg);
+          .forEach(modelElement -> fusionContainmentReferences(modelElement,
+              ((ConfigurationItemPkg) BlockArchitectureExt.getComponentPkg(epbs, true))));
+      
+      List<ConfigurationItem> items = filter(epbs.getOwnedMigratedElements(), ConfigurationItem.class);
+      if (!items.isEmpty()) {
+        epbs.getOwnedConfigurationItemPkg().getOwnedConfigurationItems().addAll(items);
       }
 
-      List<InterfacePkg> migratedInterfacePkg = epbs.getOwnedConfigurationItemPkg().getOwnedMigratedElements().stream()
-          .filter(InterfacePkg.class::isInstance).map(InterfacePkg.class::cast).collect(Collectors.toList());
-      if (!migratedInterfacePkg.isEmpty()) {
-        BlockArchitectureExt.getInterfacePkg(architecture, true);
-        epbs.getOwnedInterfacePkg().getOwnedInterfacePkgs().addAll(migratedInterfacePkg);
+      List<DataPkg> dataPkgs = filter(epbs.getOwnedConfigurationItemPkg().getOwnedMigratedElements(), DataPkg.class);
+      if (!dataPkgs.isEmpty()) {
+        BlockArchitectureExt.getDataPkg(epbs, true).getOwnedDataPkgs().addAll(dataPkgs);
       }
 
-      ((CapabilityRealizationPkg) epbs.getOwnedAbstractCapabilityPkg()).getOwnedCapabilityRealizationPkgs()
-          .addAll(epbs.getOwnedConfigurationItemPkg().getOwnedMigratedElements().stream()
-              .filter(CapabilityRealizationPkg.class::isInstance).map(CapabilityRealizationPkg.class::cast)
-              .collect(Collectors.toList()));
+      List<InterfacePkg> interfacePkgs = filter(epbs.getOwnedConfigurationItemPkg().getOwnedMigratedElements(),
+          InterfacePkg.class);
+      if (!interfacePkgs.isEmpty()) {
+        BlockArchitectureExt.getInterfacePkg(epbs, true).getOwnedInterfacePkgs().addAll(interfacePkgs);
+      }
+
+      List<CapabilityRealizationPkg> capabilityPkgs = filter(
+          epbs.getOwnedConfigurationItemPkg().getOwnedMigratedElements(), CapabilityRealizationPkg.class);
+      if (!capabilityPkgs.isEmpty() && BlockArchitectureExt.getAbstractCapabilityPkg(epbs) instanceof CapabilityRealizationPkg) {
+        ((CapabilityRealizationPkg) BlockArchitectureExt.getAbstractCapabilityPkg(epbs))
+            .getOwnedCapabilityRealizationPkgs().addAll(capabilityPkgs);
+      }
     }
   }
 
@@ -371,19 +380,32 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
       ComponentPkg componentPkg = BlockArchitectureExt.getComponentPkg(pa, true);
       if (physicalContextId != null)
         componentPkg.setId(physicalContextId);
-      pa.getOwnedPhysicalComponentPkg().getOwnedPhysicalComponents().addAll(pa.getOwnedMigratedElements().stream()
-          .filter(PhysicalComponent.class::isInstance).map(PhysicalComponent.class::cast).collect(Collectors.toList()));
+
       pa.getOwnedMigratedElements().stream().filter(PhysicalComponentPkg.class::isInstance)
           .forEach(modelElement -> fusionContainmentReferences(modelElement, pa.getOwnedPhysicalComponentPkg()));
-      pa.getOwnedDataPkg().getOwnedDataPkgs().addAll(pa.getOwnedPhysicalComponentPkg().getOwnedMigratedElements()
-          .stream().filter(DataPkg.class::isInstance).map(DataPkg.class::cast).collect(Collectors.toList()));
-      pa.getOwnedInterfacePkg().getOwnedInterfacePkgs()
-          .addAll(pa.getOwnedPhysicalComponentPkg().getOwnedMigratedElements().stream()
-              .filter(InterfacePkg.class::isInstance).map(InterfacePkg.class::cast).collect(Collectors.toList()));
-      ((CapabilityRealizationPkg) pa.getOwnedAbstractCapabilityPkg()).getOwnedCapabilityRealizationPkgs()
-          .addAll(pa.getOwnedPhysicalComponentPkg().getOwnedMigratedElements().stream()
-              .filter(CapabilityRealizationPkg.class::isInstance).map(CapabilityRealizationPkg.class::cast)
-              .collect(Collectors.toList()));
+
+      List<PhysicalComponent> items = filter(pa.getOwnedMigratedElements(), PhysicalComponent.class);
+      if (!items.isEmpty()) {
+        pa.getOwnedPhysicalComponentPkg().getOwnedPhysicalComponents().addAll(items);
+      }
+
+      List<DataPkg> dataPkgs = filter(pa.getOwnedPhysicalComponentPkg().getOwnedMigratedElements(), DataPkg.class);
+      if (!dataPkgs.isEmpty()) {
+        BlockArchitectureExt.getDataPkg(pa).getOwnedDataPkgs().addAll(dataPkgs);
+      }
+
+      List<InterfacePkg> interfacePkgs = filter(pa.getOwnedPhysicalComponentPkg().getOwnedMigratedElements(),
+          InterfacePkg.class);
+      if (!interfacePkgs.isEmpty()) {
+        BlockArchitectureExt.getInterfacePkg(pa).getOwnedInterfacePkgs().addAll(interfacePkgs);
+      }
+
+      List<CapabilityRealizationPkg> capabilityPkgs = filter(
+          pa.getOwnedPhysicalComponentPkg().getOwnedMigratedElements(), CapabilityRealizationPkg.class);
+      if (!capabilityPkgs.isEmpty() && BlockArchitectureExt.getAbstractCapabilityPkg(pa) instanceof CapabilityRealizationPkg) {
+        ((CapabilityRealizationPkg) BlockArchitectureExt.getAbstractCapabilityPkg(pa))
+            .getOwnedCapabilityRealizationPkgs().addAll(capabilityPkgs);
+      }
     }
   }
 
@@ -399,19 +421,32 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
       ComponentPkg componentPkg = BlockArchitectureExt.getComponentPkg(la, true);
       if (logicalContextId != null)
         componentPkg.setId(logicalContextId);
-      la.getOwnedLogicalComponentPkg().getOwnedLogicalComponents().addAll(la.getOwnedMigratedElements().stream()
-          .filter(LogicalComponent.class::isInstance).map(LogicalComponent.class::cast).collect(Collectors.toList()));
+
       la.getOwnedMigratedElements().stream().filter(LogicalComponentPkg.class::isInstance)
           .forEach(modelElement -> fusionContainmentReferences(modelElement, la.getOwnedLogicalComponentPkg()));
-      la.getOwnedDataPkg().getOwnedDataPkgs().addAll(la.getOwnedLogicalComponentPkg().getOwnedMigratedElements()
-          .stream().filter(DataPkg.class::isInstance).map(DataPkg.class::cast).collect(Collectors.toList()));
-      la.getOwnedInterfacePkg().getOwnedInterfacePkgs()
-          .addAll(la.getOwnedLogicalComponentPkg().getOwnedMigratedElements().stream()
-              .filter(InterfacePkg.class::isInstance).map(InterfacePkg.class::cast).collect(Collectors.toList()));
-      ((CapabilityRealizationPkg) la.getOwnedAbstractCapabilityPkg()).getOwnedCapabilityRealizationPkgs()
-          .addAll(la.getOwnedLogicalComponentPkg().getOwnedMigratedElements().stream()
-              .filter(CapabilityRealizationPkg.class::isInstance).map(CapabilityRealizationPkg.class::cast)
-              .collect(Collectors.toList()));
+
+      List<LogicalComponent> items = filter(la.getOwnedMigratedElements(), LogicalComponent.class);
+      if (!items.isEmpty()) {
+        la.getOwnedLogicalComponentPkg().getOwnedLogicalComponents().addAll(items);
+      }
+
+      List<DataPkg> dataPkgs = filter(la.getOwnedLogicalComponentPkg().getOwnedMigratedElements(), DataPkg.class);
+      if (!dataPkgs.isEmpty()) {
+        BlockArchitectureExt.getDataPkg(la).getOwnedDataPkgs().addAll(dataPkgs);
+      }
+
+      List<InterfacePkg> interfacePkgs = filter(la.getOwnedLogicalComponentPkg().getOwnedMigratedElements(),
+          InterfacePkg.class);
+      if (!interfacePkgs.isEmpty()) {
+        BlockArchitectureExt.getInterfacePkg(la).getOwnedInterfacePkgs().addAll(interfacePkgs);
+      }
+
+      List<CapabilityRealizationPkg> capabilityPkgs = filter(
+          la.getOwnedLogicalComponentPkg().getOwnedMigratedElements(), CapabilityRealizationPkg.class);
+      if (!capabilityPkgs.isEmpty() && BlockArchitectureExt.getAbstractCapabilityPkg(la) instanceof CapabilityRealizationPkg) {
+        ((CapabilityRealizationPkg) BlockArchitectureExt.getAbstractCapabilityPkg(la))
+            .getOwnedCapabilityRealizationPkgs().addAll(capabilityPkgs);
+      }
     }
   }
 
@@ -426,18 +461,31 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
       ComponentPkg componentPkg = BlockArchitectureExt.getComponentPkg(sa, true);
       if (systemContextId != null)
         componentPkg.setId(systemContextId);
-      sa.getOwnedSystemComponentPkg().getOwnedSystemComponents().addAll(sa.getOwnedMigratedElements().stream()
-          .filter(SystemComponent.class::isInstance).map(SystemComponent.class::cast).collect(Collectors.toList()));
+
       sa.getOwnedMigratedElements().stream().filter(SystemComponentPkg.class::isInstance)
           .forEach(modelElement -> fusionContainmentReferences(modelElement, sa.getOwnedSystemComponentPkg()));
-      sa.getOwnedDataPkg().getOwnedDataPkgs().addAll(sa.getOwnedSystemComponentPkg().getOwnedMigratedElements().stream()
-          .filter(DataPkg.class::isInstance).map(DataPkg.class::cast).collect(Collectors.toList()));
-      sa.getOwnedInterfacePkg().getOwnedInterfacePkgs()
-          .addAll(sa.getOwnedSystemComponentPkg().getOwnedMigratedElements().stream()
-              .filter(InterfacePkg.class::isInstance).map(InterfacePkg.class::cast).collect(Collectors.toList()));
-      ((CapabilityPkg) sa.getOwnedAbstractCapabilityPkg()).getOwnedCapabilityPkgs()
-          .addAll(sa.getOwnedSystemComponentPkg().getOwnedMigratedElements().stream()
-              .filter(CapabilityPkg.class::isInstance).map(CapabilityPkg.class::cast).collect(Collectors.toList()));
+
+      List<SystemComponent> items = filter(sa.getOwnedMigratedElements(), SystemComponent.class);
+      if (!items.isEmpty()) {
+        sa.getOwnedSystemComponentPkg().getOwnedSystemComponents().addAll(items);
+      }
+      List<DataPkg> dataPkgs = filter(sa.getOwnedSystemComponentPkg().getOwnedMigratedElements(), DataPkg.class);
+      if (!dataPkgs.isEmpty()) {
+        BlockArchitectureExt.getDataPkg(sa).getOwnedDataPkgs().addAll(dataPkgs);
+      }
+
+      List<InterfacePkg> interfacePkgs = filter(sa.getOwnedSystemComponentPkg().getOwnedMigratedElements(),
+          InterfacePkg.class);
+      if (!interfacePkgs.isEmpty()) {
+        BlockArchitectureExt.getInterfacePkg(sa).getOwnedInterfacePkgs().addAll(interfacePkgs);
+      }
+
+      List<CapabilityPkg> capabilityPkgs = filter(sa.getOwnedSystemComponentPkg().getOwnedMigratedElements(),
+          CapabilityPkg.class);
+      if (!capabilityPkgs.isEmpty() && BlockArchitectureExt.getAbstractCapabilityPkg(sa) instanceof CapabilityPkg) {
+        ((CapabilityPkg) BlockArchitectureExt.getAbstractCapabilityPkg(sa)).getOwnedCapabilityPkgs()
+            .addAll(capabilityPkgs);
+      }
     }
   }
 
@@ -452,16 +500,26 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
       ComponentPkg componentPkg = BlockArchitectureExt.getComponentPkg(oa, true);
       if (operationalContextId != null)
         componentPkg.setId(operationalContextId);
+
       oa.getOwnedMigratedElements().stream().filter(EntityPkg.class::isInstance)
           .forEach(modelElement -> fusionContainmentReferences(modelElement, oa.getOwnedEntityPkg()));
-      oa.getOwnedDataPkg().getOwnedDataPkgs().addAll(oa.getOwnedEntityPkg().getOwnedMigratedElements().stream()
-          .filter(DataPkg.class::isInstance).map(DataPkg.class::cast).collect(Collectors.toList()));
-      oa.getOwnedInterfacePkg().getOwnedInterfacePkgs().addAll(oa.getOwnedEntityPkg().getOwnedMigratedElements()
-          .stream().filter(InterfacePkg.class::isInstance).map(InterfacePkg.class::cast).collect(Collectors.toList()));
-      ((OperationalCapabilityPkg) oa.getOwnedAbstractCapabilityPkg()).getOwnedOperationalCapabilityPkgs()
-          .addAll(oa.getOwnedEntityPkg().getOwnedMigratedElements().stream()
-              .filter(OperationalCapabilityPkg.class::isInstance).map(OperationalCapabilityPkg.class::cast)
-              .collect(Collectors.toList()));
+
+      List<DataPkg> dataPkgs = filter(oa.getOwnedEntityPkg().getOwnedMigratedElements(), DataPkg.class);
+      if (!dataPkgs.isEmpty()) {
+        BlockArchitectureExt.getDataPkg(oa).getOwnedDataPkgs().addAll(dataPkgs);
+      }
+
+      List<InterfacePkg> interfacePkgs = filter(oa.getOwnedEntityPkg().getOwnedMigratedElements(), InterfacePkg.class);
+      if (!interfacePkgs.isEmpty()) {
+        BlockArchitectureExt.getInterfacePkg(oa).getOwnedInterfacePkgs().addAll(interfacePkgs);
+      }
+
+      List<OperationalCapabilityPkg> capabilityPkgs = filter(oa.getOwnedEntityPkg().getOwnedMigratedElements(),
+          OperationalCapabilityPkg.class);
+      if (!capabilityPkgs.isEmpty()) {
+        ((OperationalCapabilityPkg) BlockArchitectureExt.getAbstractCapabilityPkg(oa))
+            .getOwnedOperationalCapabilityPkgs().addAll(capabilityPkgs);
+      }
     }
   }
 
@@ -508,9 +566,13 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
     if (feature == CsPackage.Literals.COMPONENT_PKG__OWNED_PARTS && !(value instanceof Part)) {
       return true;
     }
+    if (feature == ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE
+        && (value instanceof ComponentPkg)) {
+      return true;
+    }
     return super.ignoreSetFeatureValue(peekObject, feature, value, position, resource, context);
   }
-
+  
   @Override
   public void dispose(MigrationContext context) {
     operationalContextId = null;

@@ -13,6 +13,7 @@ package org.polarsys.capella.test.validation.rules.ju.testcases.i;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
+import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.pa.PaFactory;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
@@ -31,7 +32,7 @@ public class Rule_I_37_38_PhysicalLink extends Rule_I37_38{
 
     executeCommand(() -> {
 
-      PhysicalComponent rootPC = projectSkeleton.getPhysicalArchitecture().getOwnedPhysicalComponent();
+      PhysicalComponent rootPC = (PhysicalComponent)projectSkeleton.getPhysicalArchitecture().getSystem();
 
       pc1 = PaFactory.eINSTANCE.createPhysicalComponent();
       rootPC.getOwnedPhysicalComponents().add(pc1);
@@ -56,7 +57,7 @@ public class Rule_I_37_38_PhysicalLink extends Rule_I37_38{
       pl.getLinkEnds().add(pp1);
       pl.getLinkEnds().add(pp2);
 
-      libraryRootComponent = librarySkeleton.getPhysicalArchitecture().getOwnedPhysicalComponent();
+      libraryRootComponent = (PhysicalComponent)librarySkeleton.getPhysicalArchitecture().getSystem();
 
     });
 

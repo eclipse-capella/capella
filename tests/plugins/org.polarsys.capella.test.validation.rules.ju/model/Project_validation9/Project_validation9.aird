@@ -7,7 +7,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_C2vVAHQvEeamAMxs9g9ZYQ" name="[IDB] System - Interfaces Diagram Blank" repPath="#_DVco4BQHEeSbjJMOqU-XlA">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
-        <target xmi:type="org.polarsys.capella.core.data.ctx:System" href="Project_validation9.melodymodeller#863c9584-8a1c-4927-9c23-386e49accf61"/>
+        <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="Project_validation9.melodymodeller#863c9584-8a1c-4927-9c23-386e49accf61"/>
       </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_C2vVAXQvEeamAMxs9g9ZYQ" name="[CDB] Data - Class Diagram Blank" repPath="#_tyiZsBQJEeSbjJMOqU-XlA">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']"/>
@@ -1068,7 +1068,7 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_DVco4RQHEeSbjJMOqU-XlA"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.ctx:System" href="Project_validation9.melodymodeller#863c9584-8a1c-4927-9c23-386e49accf61"/>
+    <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="Project_validation9.melodymodeller#863c9584-8a1c-4927-9c23-386e49accf61"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_tyiZsBQJEeSbjJMOqU-XlA" name="[CDB] Data - Class Diagram Blank">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_tyiZshQJEeSbjJMOqU-XlA" source="GMF_DIAGRAMS">

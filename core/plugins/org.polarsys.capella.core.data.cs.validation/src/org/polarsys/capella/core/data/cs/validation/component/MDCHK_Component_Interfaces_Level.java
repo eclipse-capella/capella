@@ -13,10 +13,10 @@ package org.polarsys.capella.core.data.cs.validation.component;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.IValidationContext;
-
+import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Interface;
-import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
@@ -28,14 +28,14 @@ public class MDCHK_Component_Interfaces_Level extends AbstractValidationRule {
 		if (eObj instanceof Interface) {
 			Interface interf = (Interface) eObj;
 			
-			ModellingArchitecture iArchi = CapellaElementExt.getArchi(interf);
+			ModellingArchitecture iArchi = BlockArchitectureExt.getRootBlockArchitecture(interf);
 			for (Component component : interf.getUserComponents()) {
-				ModellingArchitecture cArchi = CapellaElementExt.getArchi(component);
+				ModellingArchitecture cArchi = BlockArchitectureExt.getRootBlockArchitecture(component);
 				if (!CapellaElementExt.isLegalArchitecture(iArchi, cArchi))
 					return fail(component, interf, ctx);
 			}
 			for (Component component : interf.getImplementorComponents()) {
-				ModellingArchitecture cArchi = CapellaElementExt.getArchi(component);
+				ModellingArchitecture cArchi = BlockArchitectureExt.getRootBlockArchitecture(component);
 				if (!CapellaElementExt.isLegalArchitecture(iArchi, cArchi))
 					return fail(component, interf, ctx);
 			}
@@ -54,7 +54,7 @@ public class MDCHK_Component_Interfaces_Level extends AbstractValidationRule {
 	private IStatus fail(Component cpnt, Interface interf,
 			IValidationContext context) {
 		return createFailureStatus(context, new Object[] { cpnt.getName(),
-				interf.getName(), CapellaElementExt.getArchi(interf).eClass().getName() });
+				interf.getName(), BlockArchitectureExt.getRootBlockArchitecture(interf).eClass().getName() });
 	}
 
 

@@ -38,7 +38,7 @@ public class Rule_I_37_38_ComponentFunctionalAllocation extends Rule_I37_38{
       projectRootFunction.getOwnedFunctions().add(lf1);
 
       lc = LaFactory.eINSTANCE.createLogicalComponent();
-      projectSkeleton.getLogicalArchitecture().getOwnedLogicalComponent().getOwnedLogicalComponents().add(lc);
+      ((LogicalComponent)projectSkeleton.getLogicalArchitecture().getSystem()).getOwnedLogicalComponents().add(lc);
 
       allocate(lf1).on(lc);
 

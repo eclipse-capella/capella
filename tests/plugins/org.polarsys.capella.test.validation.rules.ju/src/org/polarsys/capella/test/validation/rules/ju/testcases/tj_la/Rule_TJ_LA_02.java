@@ -12,6 +12,7 @@ package org.polarsys.capella.test.validation.rules.ju.testcases.tj_la;
 
 import java.util.Arrays;
 import java.util.List;
+
 import org.eclipse.emf.ecore.EClass;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.test.framework.api.OracleDefinition;

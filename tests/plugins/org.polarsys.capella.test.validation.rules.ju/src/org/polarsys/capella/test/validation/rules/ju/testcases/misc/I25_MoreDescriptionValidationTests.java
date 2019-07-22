@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.test.validation.rules.ju.testcases.misc;
 
-import java.util.List;
-
 import org.polarsys.capella.common.helpers.validation.xml.XHTMLEntities;
 import org.polarsys.capella.core.data.core.validation.constraint.DWF_D_31;
 import org.polarsys.capella.test.framework.api.BasicTestCase;

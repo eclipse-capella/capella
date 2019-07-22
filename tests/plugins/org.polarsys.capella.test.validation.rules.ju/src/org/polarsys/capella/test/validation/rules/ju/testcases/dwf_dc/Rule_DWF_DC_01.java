@@ -12,8 +12,9 @@ package org.polarsys.capella.test.validation.rules.ju.testcases.dwf_dc;
 
 import java.util.Arrays;
 import java.util.List;
+
 import org.eclipse.emf.ecore.EClass;
-import org.polarsys.capella.core.data.information.InformationPackage;
+import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.test.framework.api.OracleDefinition;
 import org.polarsys.capella.test.validation.rules.ju.testcases.AbstractRulesOnDesignTest;
 
@@ -28,7 +29,7 @@ public class Rule_DWF_DC_01 extends AbstractRulesOnDesignTest {
 	 * @generated
 	 */
 	protected EClass getTargetedEClass() {
-		return InformationPackage.Literals.PARTITIONABLE_ELEMENT;
+		return CsPackage.Literals.COMPONENT;
 	}
 
 	/**
@@ -36,7 +37,7 @@ public class Rule_DWF_DC_01 extends AbstractRulesOnDesignTest {
 	 * @generated
 	 */
 	protected String getRuleID() {
-		return "org.polarsys.capella.core.data.information.validation.DWF_DC_01";
+		return "org.polarsys.capella.core.data.cs.validation.DWF_DC_01";
 	}
 
 	/**

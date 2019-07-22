@@ -15,18 +15,20 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.TreeIterator;
-
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement;
+import org.polarsys.capella.core.data.capellacommon.CapellacommonFactory;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfaceImplementation;
 import org.polarsys.capella.core.data.cs.InterfaceUse;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.cs.SystemComponent;
 import org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.ctx.Actor;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.PhysicalArtifactRealization;
 import org.polarsys.capella.core.data.information.AbstractInstance;
@@ -37,7 +39,6 @@ import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.data.la.LaFactory;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.pa.LogicalComponentRealization;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.model.helpers.AbstractCapabilityExt;
@@ -50,11 +51,14 @@ import org.polarsys.capella.core.model.helpers.RefinementLinkExt;
 public class ContextQuery {
 
   private ContextQuery() {
-	// To hide the implicit public one.
+    // To hide the implicit public one.
   }
+
   /**
    * Builds the merged capability realization
-   * @param capabilityRealization The source capability realization
+   * 
+   * @param capabilityRealization
+   *          The source capability realization
    * @return The new capability realization
    */
   public static CapabilityRealization buildMergedCapability(CapabilityRealization capabilityRealization) {
@@ -63,19 +67,10 @@ public class ContextQuery {
     List<Component> components = findInvolvedComponentOfCapabilityRealizations(capabilityRealization);
 
     for (Component component : components) {
-      if (component instanceof Actor) {
-        Actor actor = (Actor) component;
-        ActorCapabilityRealizationInvolvement involvement = CsFactory.eINSTANCE.createActorCapabilityRealizationInvolvement();
-        involvement.setInvolved(actor);
-        cr.getOwnedActorCapabilityRealizations().add(involvement);
-      }
-
-      if (component instanceof LogicalComponent) {
-        LogicalComponent logicalComponent = (LogicalComponent) component;
-        SystemComponentCapabilityRealizationInvolvement involvement = CsFactory.eINSTANCE.createSystemComponentCapabilityRealizationInvolvement();
-        involvement.setInvolved(logicalComponent);
-        cr.getOwnedSystemComponentCapabilityRealizations().add(involvement);
-      }
+      CapabilityRealizationInvolvement involvement = CapellacommonFactory.eINSTANCE
+          .createCapabilityRealizationInvolvement();
+      involvement.setInvolved((InvolvedElement) component);
+      cr.getOwnedCapabilityRealizationInvolvements().add(involvement);
     }
 
     return cr;
@@ -83,8 +78,11 @@ public class ContextQuery {
 
   /**
    * Specifies whether a component is the parent of one of the components in the list
-   * @param component The element to be tested
-   * @param componentList The component list
+   * 
+   * @param component
+   *          The element to be tested
+   * @param componentList
+   *          The component list
    * @return <code>true</code> if it is the case
    */
   private static boolean containsSubComponent(Component component, List<Component> componentList) {
@@ -97,40 +95,17 @@ public class ContextQuery {
     return false;
   }
 
-  /**
-   * Finds the external actors which are communicating with the source element of the bridge transformation.
-   * @param transfoSource The source element
-   * @return The list of external actors
-   * @see #findExternalComponentTransfoSourceList(SystemComponent)
-   */
-  public static List<Actor> findActorTransfoSourceList(SystemComponent transfoSource) {
-    List<Actor> actorTransfoSourceList = new ArrayList<>();
-
-    List<SystemComponentCapabilityRealizationInvolvement> involvements1 = transfoSource.getParticipationsInCapabilityRealizations();
-
-    // Looks for use cases that the source element is involved in
-    for (SystemComponentCapabilityRealizationInvolvement involvement1 : involvements1) {
-      CapabilityRealization usecase = (CapabilityRealization) involvement1.getInvolvedCapabilityRealizationInvolvedElement();
-
-      List<ActorCapabilityRealizationInvolvement> involvements2 = usecase.getInvolvedActors();
-
-      // For each use case, get the actors that are involved in
-      for (ActorCapabilityRealizationInvolvement involvement2 : involvements2) {
-        Actor actor = (Actor) involvement2.getInvolver();
-        actorTransfoSourceList.add(actor);
-      }
-    }
-
-    return actorTransfoSourceList;
-  }
 
   /**
    * Finds the CapabilityRealizations of a Component
-   * @param component The component
+   * 
+   * @param component
+   *          The component
    * @return The list of realization
    */
   public static List<CapabilityRealization> findCapabilityRealizationsOfComponent(Component component) {
-    List<SystemComponentCapabilityRealizationInvolvement> involvements = ((SystemComponent) component).getParticipationsInCapabilityRealizations();
+    List<SystemComponentCapabilityRealizationInvolvement> involvements = ((SystemComponent) component)
+        .getParticipationsInCapabilityRealizations();
     List<CapabilityRealization> capabilityRealizations = new ArrayList<>();
     for (SystemComponentCapabilityRealizationInvolvement involvement : involvements) {
       capabilityRealizations.add((CapabilityRealization) involvement.getInvolved());
@@ -140,7 +115,9 @@ public class ContextQuery {
 
   /**
    * Finds the component instances of a component
-   * @param component The component
+   * 
+   * @param component
+   *          The component
    * @return The component instance list
    */
   public static List<Part> findComponentInstanceList(Component component) {
@@ -162,7 +139,9 @@ public class ContextQuery {
 
   /**
    * Finds the component instances of a component list
-   * @param componentList The component list
+   * 
+   * @param componentList
+   *          The component list
    * @return The component instances
    */
   public static List<Part> findComponentInstanceList(List<? extends Component> componentList) {
@@ -174,19 +153,22 @@ public class ContextQuery {
     return componentInstanceList;
   }
 
-  public static void findContext(Component transfoSource, List<Actor> exportedActorList, List<Component> exportedExternalComponentList,
-      List<CapabilityRealization> exportedCapabilityRealizationList, List<ActorCapabilityRealizationInvolvement> exportedActorInvolvementList,
-      List<SystemComponentCapabilityRealizationInvolvement> exportedComponentSystemInvolvementList, List<InterfaceUse> exportedInterfaceUseList,
-      List<InterfaceImplementation> exportedInterfaceImplList, List<Interface> exportedInterfaceList) {
+  public static void findContext(Component transfoSource, List<Actor> exportedActorList,
+      List<Component> exportedExternalComponentList, List<CapabilityRealization> exportedCapabilityRealizationList,
+      List<ActorCapabilityRealizationInvolvement> exportedActorInvolvementList,
+      List<SystemComponentCapabilityRealizationInvolvement> exportedComponentSystemInvolvementList,
+      List<InterfaceUse> exportedInterfaceUseList, List<InterfaceImplementation> exportedInterfaceImplList,
+      List<Interface> exportedInterfaceList) {
     List<Component> internalComponents = new ArrayList<>();
     internalComponents.add(transfoSource);
-    findContext(transfoSource, exportedActorList, exportedExternalComponentList, internalComponents, exportedCapabilityRealizationList,
-        exportedActorInvolvementList, exportedComponentSystemInvolvementList, exportedInterfaceUseList, exportedInterfaceImplList,
-        exportedInterfaceList);
+    findContext(transfoSource, exportedActorList, exportedExternalComponentList, internalComponents,
+        exportedCapabilityRealizationList, exportedActorInvolvementList, exportedComponentSystemInvolvementList,
+        exportedInterfaceUseList, exportedInterfaceImplList, exportedInterfaceList);
   }
 
   /**
    * Finds the logical context
+   * 
    * @param component
    * @param internalComponents
    * @param externalComponents
@@ -194,11 +176,13 @@ public class ContextQuery {
    * @param interfaceImplList
    * @param interfaceUsedList
    */
-  public static void findContext(Component transfoSource, List<Actor> exportedActorList, List<Component> exportedExternalComponentList,
-      List<Component> exportedInternalComponentList, List<CapabilityRealization> exportedCapabilityRealizationList,
+  public static void findContext(Component transfoSource, List<Actor> exportedActorList,
+      List<Component> exportedExternalComponentList, List<Component> exportedInternalComponentList,
+      List<CapabilityRealization> exportedCapabilityRealizationList,
       List<ActorCapabilityRealizationInvolvement> exportedActorInvolvementList,
-      List<SystemComponentCapabilityRealizationInvolvement> exportedComponentSystemInvolvementList, List<InterfaceUse> exportedInterfaceUseList,
-      List<InterfaceImplementation> exportedInterfaceImplList, List<Interface> exportedInterfaceList) {
+      List<SystemComponentCapabilityRealizationInvolvement> exportedComponentSystemInvolvementList,
+      List<InterfaceUse> exportedInterfaceUseList, List<InterfaceImplementation> exportedInterfaceImplList,
+      List<Interface> exportedInterfaceList) {
 
     List<Component> internalComponentsList = new ArrayList<>();
 
@@ -215,34 +199,48 @@ public class ContextQuery {
     for (CapabilityRealization capabilityRealization : capabilityRealizationList) {
       List<Component> involvedComponents = findInvolvedComponentOfCapabilityRealizations(capabilityRealization);
 
-      findExternalComponents(internalComponentsList, involvedComponents, capabilityRealization, exportedExternalComponentList, exportedActorList,
-          exportedCapabilityRealizationList, exportedActorInvolvementList, exportedComponentSystemInvolvementList, exportedInterfaceUseList,
+      findExternalComponents(internalComponentsList, involvedComponents, capabilityRealization,
+          exportedExternalComponentList, exportedActorList, exportedCapabilityRealizationList,
+          exportedActorInvolvementList, exportedComponentSystemInvolvementList, exportedInterfaceUseList,
           exportedInterfaceImplList, exportedInterfaceList);
     }
   }
 
   /**
    * Finds the context of the Bridge transformation
-   * @param transfoSource The element to be exported through the bridge
-   * @param exportedActorList [Output] The actors to be exported
-   * @param exportedExternalComponentList [Output] The external component to be exported
-   * @param exportedCapabilityRealizationUseCaseList [Output] The Usecases to be exported
-   * @param exportedInterfaceUseList [Output] The interface uses to be exported
-   * @param exportedInterfaceImplList [Output] The interface impls to be exported
-   * @param exportedInterfaceList [Output] The interfaces to be exported
+   * 
+   * @param transfoSource
+   *          The element to be exported through the bridge
+   * @param exportedActorList
+   *          [Output] The actors to be exported
+   * @param exportedExternalComponentList
+   *          [Output] The external component to be exported
+   * @param exportedCapabilityRealizationUseCaseList
+   *          [Output] The Usecases to be exported
+   * @param exportedInterfaceUseList
+   *          [Output] The interface uses to be exported
+   * @param exportedInterfaceImplList
+   *          [Output] The interface impls to be exported
+   * @param exportedInterfaceList
+   *          [Output] The interfaces to be exported
    */
-  public static void findDirectContext(SystemComponent transfoSource, List<Actor> exportedActorList, List<Component> exportedExternalComponentList,
-      List<CapabilityRealization> exportedCapabilityRealizationList, List<ActorCapabilityRealizationInvolvement> exportedActorInvolvementList,
-      List<SystemComponentCapabilityRealizationInvolvement> exportedComponentSystemInvolvementList, List<InterfaceUse> exportedInterfaceUseList,
-      List<InterfaceImplementation> exportedInterfaceImplList, List<Interface> exportedInterfaceList) {
+  public static void findDirectContext(SystemComponent transfoSource, List<Actor> exportedActorList,
+      List<Component> exportedExternalComponentList, List<CapabilityRealization> exportedCapabilityRealizationList,
+      List<ActorCapabilityRealizationInvolvement> exportedActorInvolvementList,
+      List<SystemComponentCapabilityRealizationInvolvement> exportedComponentSystemInvolvementList,
+      List<InterfaceUse> exportedInterfaceUseList, List<InterfaceImplementation> exportedInterfaceImplList,
+      List<Interface> exportedInterfaceList) {
 
-    List<SystemComponentCapabilityRealizationInvolvement> systemInvolvements = transfoSource.getParticipationsInCapabilityRealizations();
+    List<SystemComponentCapabilityRealizationInvolvement> systemInvolvements = transfoSource
+        .getParticipationsInCapabilityRealizations();
 
     for (SystemComponentCapabilityRealizationInvolvement systemInvolvement : systemInvolvements) {
-      CapabilityRealization useCase = (CapabilityRealization) systemInvolvement.getInvolvedCapabilityRealizationInvolvedElement();
+      CapabilityRealization useCase = (CapabilityRealization) systemInvolvement
+          .getInvolvedCapabilityRealizationInvolvedElement();
 
       List<ActorCapabilityRealizationInvolvement> actorInvolvements = useCase.getInvolvedActors();
-      List<SystemComponentCapabilityRealizationInvolvement> systemComponentInvolvements = useCase.getInvolvedSystemComponents();
+      List<SystemComponentCapabilityRealizationInvolvement> systemComponentInvolvements = useCase
+          .getInvolvedSystemComponents();
 
       boolean possibleExchangeFounded = false;
 
@@ -252,7 +250,8 @@ public class ContextQuery {
 
       for (ActorCapabilityRealizationInvolvement actorInvolvement : actorInvolvements) {
         Actor actor = (Actor) actorInvolvement.getInvolver();
-        if (findPossibleExchangeByInterface(transfoSource, actor, exportedInterfaceUses, exportedInterfaceImpls, exportedInterfaces)) {
+        if (findPossibleExchangeByInterface(transfoSource, actor, exportedInterfaceUses, exportedInterfaceImpls,
+            exportedInterfaces)) {
           exportedActorList.add(actor);
           exportedActorInvolvementList.add(actorInvolvement);
           exportedInterfaceUseList.addAll(exportedInterfaceUses);
@@ -268,7 +267,8 @@ public class ContextQuery {
 
       for (SystemComponentCapabilityRealizationInvolvement systemComponentInvolvement : systemComponentInvolvements) {
         SystemComponent systemComponent = (SystemComponent) systemComponentInvolvement.getInvolver();
-        if (findPossibleExchangeByInterface(transfoSource, systemComponent, exportedInterfaceUses, exportedInterfaceImpls, exportedInterfaces)) {
+        if (findPossibleExchangeByInterface(transfoSource, systemComponent, exportedInterfaceUses,
+            exportedInterfaceImpls, exportedInterfaces)) {
           exportedExternalComponentList.add(systemComponent);
           exportedComponentSystemInvolvementList.add(systemComponentInvolvement);
           exportedInterfaceUseList.addAll(exportedInterfaceUses);
@@ -289,12 +289,17 @@ public class ContextQuery {
   }
 
   /**
-   * Finds the scenarios of a list of capability realization use cases with participants specified by the component instance list in parameter
-   * @param capabilityRealizationUseCaseList The capability realization use cases
-   * @param componentInstanceList The list of component instance
+   * Finds the scenarios of a list of capability realization use cases with participants specified by the component
+   * instance list in parameter
+   * 
+   * @param capabilityRealizationUseCaseList
+   *          The capability realization use cases
+   * @param componentInstanceList
+   *          The list of component instance
    * @return
    */
-  public static List<Scenario> findDirectScenarioList(List<CapabilityRealization> capabilityRealizationList, List<Part> componentInstanceList) {
+  public static List<Scenario> findDirectScenarioList(List<CapabilityRealization> capabilityRealizationList,
+      List<Part> componentInstanceList) {
     List<Scenario> exportedScenarioList = new ArrayList<>();
 
     // 1- Parse the use cases
@@ -330,30 +335,44 @@ public class ContextQuery {
   }
 
   /**
-   * Finds the external components of an interaction involving the internal components and a list of possible involved components. This is possible by the
-   * impl/used interface relationships.
-   * @param internalComponents The internal components
-   * @param involvedComponents The involved components
-   * @param capabilityRealization [Output] The capability realization list
-   * @param externalComponents [Output]
-   * @param externalActors [Output]
-   * @param exportedCapabilityRealizationUseCaseList [Output] The capability realization
-   * @param exportedActorInvolvementList [Output] The actor involvement list
-   * @param exportedComponentSystemInvolvementList [Output] The component involvement list
-   * @param exportedInterfaceUseList [Output] The interface use list
-   * @param exportedInterfaceImplList [Output] The interface implementation list
-   * @param exportedInterfaceList [Output] The interface list
+   * Finds the external components of an interaction involving the internal components and a list of possible involved
+   * components. This is possible by the impl/used interface relationships.
+   * 
+   * @param internalComponents
+   *          The internal components
+   * @param involvedComponents
+   *          The involved components
+   * @param capabilityRealization
+   *          [Output] The capability realization list
+   * @param externalComponents
+   *          [Output]
+   * @param externalActors
+   *          [Output]
+   * @param exportedCapabilityRealizationUseCaseList
+   *          [Output] The capability realization
+   * @param exportedActorInvolvementList
+   *          [Output] The actor involvement list
+   * @param exportedComponentSystemInvolvementList
+   *          [Output] The component involvement list
+   * @param exportedInterfaceUseList
+   *          [Output] The interface use list
+   * @param exportedInterfaceImplList
+   *          [Output] The interface implementation list
+   * @param exportedInterfaceList
+   *          [Output] The interface list
    */
   public static void findExternalComponents(List<Component> internalComponents, List<Component> involvedComponents,
       CapabilityRealization capabilityRealization, List<Component> externalComponents, List<Actor> externalActors,
-      List<CapabilityRealization> exportedCapabilityRealizationList, List<ActorCapabilityRealizationInvolvement> exportedActorInvolvementList,
-      List<SystemComponentCapabilityRealizationInvolvement> exportedComponentSystemInvolvementList, List<InterfaceUse> exportedInterfaceUseList,
-      List<InterfaceImplementation> exportedInterfaceImplList, List<Interface> exportedInterfaceList) {
+      List<CapabilityRealization> exportedCapabilityRealizationList,
+      List<ActorCapabilityRealizationInvolvement> exportedActorInvolvementList,
+      List<SystemComponentCapabilityRealizationInvolvement> exportedComponentSystemInvolvementList,
+      List<InterfaceUse> exportedInterfaceUseList, List<InterfaceImplementation> exportedInterfaceImplList,
+      List<Interface> exportedInterfaceList) {
     for (Component internalComponent : internalComponents) {
       for (Component involvedComponent : involvedComponents) {
 
-        if (findPossibleExchangeByInterface(internalComponent, involvedComponent, exportedInterfaceUseList, exportedInterfaceImplList,
-            exportedInterfaceList)) {
+        if (findPossibleExchangeByInterface(internalComponent, involvedComponent, exportedInterfaceUseList,
+            exportedInterfaceImplList, exportedInterfaceList)) {
           if (!externalComponents.contains(involvedComponent) && !internalComponents.contains(involvedComponent)) {
             if (involvedComponent instanceof Actor) {
               if (!externalActors.contains(involvedComponent)) {
@@ -368,7 +387,8 @@ public class ContextQuery {
                 }
 
                 // 2- Add unique
-                if (!externalComponents.contains(involvedComponent) && !containsSubComponent(involvedComponent, externalComponents)) {
+                if (!externalComponents.contains(involvedComponent)
+                    && !containsSubComponent(involvedComponent, externalComponents)) {
                   externalComponents.add(involvedComponent);
                 }
               }
@@ -385,18 +405,22 @@ public class ContextQuery {
 
   /**
    * Finds the external components which are communicating with the source of the bridge transformation.
-   * @param transfoSource The source element
+   * 
+   * @param transfoSource
+   *          The source element
    * @return The list of external components
    * @see #findActorTransfoSourceList(SystemComponent)
    */
   public static List<SystemComponent> findExternalComponentTransfoSourceList(SystemComponent transfoSource) {
     List<SystemComponent> externalComponentTransfoSourceList = new ArrayList<>();
 
-    List<SystemComponentCapabilityRealizationInvolvement> involvements1 = transfoSource.getParticipationsInCapabilityRealizations();
+    List<SystemComponentCapabilityRealizationInvolvement> involvements1 = transfoSource
+        .getParticipationsInCapabilityRealizations();
 
     // Looks for usecases that the source element is involved in
     for (SystemComponentCapabilityRealizationInvolvement involvement1 : involvements1) {
-      CapabilityRealization usecase = (CapabilityRealization) involvement1.getInvolvedCapabilityRealizationInvolvedElement();
+      CapabilityRealization usecase = (CapabilityRealization) involvement1
+          .getInvolvedCapabilityRealizationInvolvedElement();
 
       // For each use case, get the other components that are involved in
       List<SystemComponentCapabilityRealizationInvolvement> involvements2 = usecase.getInvolvedSystemComponents();
@@ -420,10 +444,12 @@ public class ContextQuery {
    * <li>Find the top of the Capability tree in the Context</li>
    * <li>Find the involved SystemComponent</li>
    * </ul>
+   * 
    * @param capabilityRealization
    * @return
    */
-  public static List<Component> findInvolvedComponentOfCapabilityRealizations(CapabilityRealization capabilityRealization) {
+  public static List<Component> findInvolvedComponentOfCapabilityRealizations(
+      CapabilityRealization capabilityRealization) {
     // 1- Get the Capability at the top of the CapabilityRealization tree
     CapabilityRealization currentCapability = findRootCapabilityRealization(capabilityRealization);
     List<Component> involvedComponents = new ArrayList<>();
@@ -446,7 +472,8 @@ public class ContextQuery {
       }
     }
 
-    List<CapellaElement> elements = RefinementLinkExt.getRefinementRelatedSourceElements(currentCapability, LaPackage.Literals.CAPABILITY_REALIZATION);
+    List<CapellaElement> elements = RefinementLinkExt.getRefinementRelatedSourceElements(currentCapability,
+        LaPackage.Literals.CAPABILITY_REALIZATION);
 
     List<AbstractCapability> agenda = new ArrayList<>();
     agenda.add((CapabilityRealization) elements.get(0));
@@ -454,9 +481,11 @@ public class ContextQuery {
     AbstractCapability currentCapabilityRealization = null;
     while (!agenda.isEmpty()) {
       currentCapabilityRealization = agenda.get(0);
-      elements = RefinementLinkExt.getRefinementRelatedSourceElements(currentCapabilityRealization, LaPackage.Literals.CAPABILITY_REALIZATION);
+      elements = RefinementLinkExt.getRefinementRelatedSourceElements(currentCapabilityRealization,
+          LaPackage.Literals.CAPABILITY_REALIZATION);
 
-      List<SystemComponent> newSystemComponents = CapabilityRealizationExt.getInvolvedSystemComponents(((CapabilityRealization) currentCapabilityRealization));
+      List<SystemComponent> newSystemComponents = CapabilityRealizationExt
+          .getInvolvedSystemComponents(((CapabilityRealization) currentCapabilityRealization));
 
       for (Component newSystemComponent : newSystemComponents) {
         if ((newSystemComponent instanceof LogicalComponent) || (newSystemComponent instanceof Actor)) {
@@ -484,22 +513,27 @@ public class ContextQuery {
   }
 
   /**
-   * Finds the logical components of a configuration item. The algorithm go through the physical architecture layer to get the logical components.
-   * @param configurationItem The configuration item to be founded
+   * Finds the logical components of a configuration item. The algorithm go through the physical architecture layer to
+   * get the logical components.
+   * 
+   * @param configurationItem
+   *          The configuration item to be founded
    * @return The list of logical components.
    */
   public static List<LogicalComponent> findLogicalComponentsOfCI(ConfigurationItem configurationItem) {
     List<LogicalComponent> logicalComponents = new ArrayList<>();
     List<PhysicalComponent> physicalComponents = new ArrayList<>();
 
-    for (PhysicalArtifactRealization physicalComponentRealization : configurationItem.getOwnedPhysicalArtifactRealizations()) {
+    for (PhysicalArtifactRealization physicalComponentRealization : configurationItem
+        .getOwnedPhysicalArtifactRealizations()) {
       if (physicalComponentRealization.getTargetElement() instanceof PhysicalComponent) {
         physicalComponents.add((PhysicalComponent) physicalComponentRealization.getTargetElement());
       }
     }
 
     for (PhysicalComponent physicalComponent : physicalComponents) {
-      List<LogicalComponentRealization> logicalComponentImplementationList = physicalComponent.getLogicalComponentRealizations();
+      List<LogicalComponentRealization> logicalComponentImplementationList = physicalComponent
+          .getLogicalComponentRealizations();
       for (LogicalComponentRealization logicalComponentImplementation : logicalComponentImplementationList) {
         logicalComponents.add((LogicalComponent) logicalComponentImplementation.getAllocatedComponent());
       }
@@ -510,8 +544,11 @@ public class ContextQuery {
 
   /**
    * Retrieves a parent of the component in the list, null of none
-   * @param component The component to be tested
-   * @param componentList The list of component
+   * 
+   * @param component
+   *          The component to be tested
+   * @param componentList
+   *          The list of component
    * @return The parent founded in the list or <code>null</code> if none
    */
   private static Component findParentComponentInList(Component component, List<Component> componentList) {
@@ -529,6 +566,7 @@ public class ContextQuery {
 
   /**
    * Finds a possible exchange between the sourceComponent and the external one
+   * 
    * @param sourceComponent
    * @param externalComponent
    * @param exportedInterfaceUseList
@@ -537,7 +575,8 @@ public class ContextQuery {
    * @return <code>true</code> if there is a possible exchange
    */
   public static boolean findPossibleExchangeByInterface(Component sourceComponent, Component externalComponent,
-      List<InterfaceUse> exportedInterfaceUseList, List<InterfaceImplementation> exportedInterfaceImplList, List<Interface> exportedInterfaceList) {
+      List<InterfaceUse> exportedInterfaceUseList, List<InterfaceImplementation> exportedInterfaceImplList,
+      List<Interface> exportedInterfaceList) {
 
     if (externalComponent == sourceComponent) {
       return false;
@@ -601,14 +640,17 @@ public class ContextQuery {
 
   /**
    * Finds the root capability realization of a capability realization
-   * @param capabilityRealization The capability realization
+   * 
+   * @param capabilityRealization
+   *          The capability realization
    * @return The 'root'
    */
   private static CapabilityRealization findRootCapabilityRealization(CapabilityRealization capabilityRealization) {
     CapabilityRealization currentCapability = capabilityRealization;
     boolean done = false;
     while ((currentCapability != null) && !done) {
-      List<CapellaElement> elements = RefinementLinkExt.getRefinementRelatedTargetElements(currentCapability, LaPackage.Literals.CAPABILITY_REALIZATION);
+      List<CapellaElement> elements = RefinementLinkExt.getRefinementRelatedTargetElements(currentCapability,
+          LaPackage.Literals.CAPABILITY_REALIZATION);
       if (elements.isEmpty()) {
         done = true;
       } else {
@@ -621,11 +663,14 @@ public class ContextQuery {
 
   /**
    * Finds the CapabilityRealizations of a Component
-   * @param component The component
+   * 
+   * @param component
+   *          The component
    * @return The list of realization
    */
   public static List<CapabilityRealization> findRootCapabilityRealizationsOfComponent(Component component) {
-    List<SystemComponentCapabilityRealizationInvolvement> involvements = ((SystemComponent) component).getParticipationsInCapabilityRealizations();
+    List<SystemComponentCapabilityRealizationInvolvement> involvements = ((SystemComponent) component)
+        .getParticipationsInCapabilityRealizations();
     List<CapabilityRealization> capabilityRealizations = new ArrayList<>();
     for (SystemComponentCapabilityRealizationInvolvement involvement : involvements) {
       CapabilityRealization rootCapabilityRealization = (CapabilityRealization) involvement.getInvolved();
@@ -635,12 +680,17 @@ public class ContextQuery {
   }
 
   /**
-   * Finds the scenarios of a list of capability realization use cases with participants specified by the component instance list in parameter
-   * @param capabilityRealizationUseCaseList The capability realization use cases
-   * @param componentInstanceList The list of component instance
+   * Finds the scenarios of a list of capability realization use cases with participants specified by the component
+   * instance list in parameter
+   * 
+   * @param capabilityRealizationUseCaseList
+   *          The capability realization use cases
+   * @param componentInstanceList
+   *          The list of component instance
    * @return
    */
-  public static List<Scenario> findScenarioList(List<CapabilityRealization> capabilityRealizationUseCaseList, List<Part> componentInstanceList) {
+  public static List<Scenario> findScenarioList(List<CapabilityRealization> capabilityRealizationUseCaseList,
+      List<Part> componentInstanceList) {
     List<Scenario> exportedScenarioList = new ArrayList<>();
 
     // 1- Parse the use cases
@@ -680,19 +730,27 @@ public class ContextQuery {
   }
 
   /**
-   * Finds the use/implement interface relationships and interfaces that are involved in communication with the source element of the transformation. <br/>
+   * Finds the use/implement interface relationships and interfaces that are involved in communication with the source
+   * element of the transformation. <br/>
    * They will be exported in the bridge transformation. <br/>
    * <br/>
    * <b>NOTE:</b> The interfaces are also returned (but they are computable using relationships).<br/>
    * <br/>
-   * @param transfoSource The source element of the bridge transformation
-   * @param externalComponents The external system components (components and actors)
-   * @param exportedInterfaceUseList [Output] The 'use interface' relationships
-   * @param exportedInterfaceImplList [Output] The 'implement interface' relationships
-   * @param exportedInterfaceList [Output] The interfaces
+   * 
+   * @param transfoSource
+   *          The source element of the bridge transformation
+   * @param externalComponents
+   *          The external system components (components and actors)
+   * @param exportedInterfaceUseList
+   *          [Output] The 'use interface' relationships
+   * @param exportedInterfaceImplList
+   *          [Output] The 'implement interface' relationships
+   * @param exportedInterfaceList
+   *          [Output] The interfaces
    */
-  public static void findUseImplementationInterfaceForExport(SystemComponent transfoSource, List<Component> externalComponents,
-      List<InterfaceUse> exportedInterfaceUseList, List<InterfaceImplementation> exportedInterfaceImplList, List<Interface> exportedInterfaceList) {
+  public static void findUseImplementationInterfaceForExport(SystemComponent transfoSource,
+      List<Component> externalComponents, List<InterfaceUse> exportedInterfaceUseList,
+      List<InterfaceImplementation> exportedInterfaceImplList, List<Interface> exportedInterfaceList) {
 
     // /////////////////////////////////////////////////////////////////
     // I n t e r f a c e U s e

@@ -24,10 +24,11 @@ import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.emf.validation.model.ConstraintStatus;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.ctx.System;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
 import org.polarsys.capella.core.model.helpers.AbstractCapabilityExt;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 public class MDCHK_Capability_Components_Involved extends AbstractValidationRule {
@@ -47,7 +48,7 @@ public class MDCHK_Capability_Components_Involved extends AbstractValidationRule
         Set<Component> involvedComponents = new HashSet<Component>(
             AbstractCapabilityExt.getInvolvedComponents(capability));
         for (Component element : involvedComponents) {
-          if (!(element instanceof System)) {
+          if (!(element instanceof SystemComponent && !ComponentExt.isActor(element))) {
             if (!isComponentInFunctionalChain(element, capability) && !isComponentInScenario(element, capability)) {
               addCtxStatus(statuses, ctx, eObj, capability, element);
             }

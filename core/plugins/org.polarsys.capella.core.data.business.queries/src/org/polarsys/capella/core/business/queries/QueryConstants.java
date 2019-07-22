@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.business.queries;
 
 import static org.polarsys.capella.common.queries.QuerySchema.getQueryIdentifier;
+
 import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_AbstractStateProperties__Lib;
 import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_ChangeEvent_Expression;
 import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_ChoicePseudoState_StateRealizations;
@@ -115,6 +116,7 @@ import org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_Syste
 import org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_SystemComponent_InvolvingCapabilities;
 import org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_SystemComponent_RealizedEntities;
 import org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_SystemComponent_Super;
+import org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_SystemComponent_UsedInterfaces__Lib;
 import org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_SystemFunction_AvailableInstates;
 import org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_SystemFunction_RealizedFunctions;
 import org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_Capability_AvailableInStates;
@@ -313,7 +315,6 @@ public class QueryConstants {
   public static final String GET_AVAILABLE__INTERFACE__EXCHANGE_ITEMS___LIB = "GetAvailable_Interface_ExchangeItems__Lib";
   public static final String GET_AVAILABLE__LITERAL_NUMERIC_VALUE__ABSTRACT_TYPE___LIB = "GetAvailable_LiteralNumericValue_AbstractType__Lib";
   public static final String GET_AVAILABLE__LITERAL_STRING_VALUE__ABSTRACT_TYPE___LIB = "GetAvailable_LiteralStringValue_AbstractType__Lib";
-  public static final String GET_AVAILABLE__SYSTEM_COMPONENT__USED_INTERFACES___LIB = "GetAvailable_Component_UsedInterfaces__Lib";
   public static final String GET_AVAILABLE__COMPONENT_PORT__PROVIDED_INTERFACES___LIB = "GetAvailable_ComponentPort_ProvidedInterfaces__Lib";
   public static final String GET_AVAILABLE__COMPONENT_PORT__REQUIRED_INTERFACES___LIB = "GetAvailable_ComponentPort_RequiredInterfaces__Lib";
   public static final String GET_AVAILABLE__COMMUNICATION_LINK__EXCHANGE_ITEM___LIB = "GetAvailable_CommunicationLink_ExchangeItem__Lib";
@@ -358,6 +359,7 @@ public class QueryConstants {
   public static final String GET_AVAILABLE__STRING_TYPE__NULL_VALUE___LIB = getQueryIdentifier(GetAvailable_StringType_NullValue__Lib.class);
 
   public static final String GET_AVAILABLE__SYSTEM_COMPONENT__IMPLEMENTED_INTERFACES___LIB = getQueryIdentifier(GetAvailable_SystemComponent_ImplementedInterfaces__Lib.class);
+  public static final String GET_AVAILABLE__SYSTEM_COMPONENT__USED_INTERFACES___LIB = getQueryIdentifier(GetAvailable_SystemComponent_UsedInterfaces__Lib.class);
   public static final String GET_AVAILABLE__LOGICAL_COMPONENT__IMPLEMENTED_INTERFACES___LIB = getQueryIdentifier(GetAvailable_LogicalComponent_ImplementedInterfaces__Lib.class);
   public static final String GET_AVAILABLE__LOGICAL_COMPONENT__USED_INTERFACES___LIB = getQueryIdentifier(GetAvailable_LogicalComponent_UsedInterfaces__Lib.class);
   public static final String GET_AVAILABLE__PHYSICAL_COMPONENT__IMPLEMENTED_INTERFACES___LIB = getQueryIdentifier(GetAvailable_PhysicalComponent_ImplementedInterfaces__Lib.class);

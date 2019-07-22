@@ -46,8 +46,8 @@ public class PhysicalComponentImplUseByRealization extends AbstractValidationRul
         // continue if the preference transition of interface is active
         PreferenceHelper preferenceHelper = PreferenceHelper.getInstance();
         if (!preferenceHelper.transitionInterfaceWhileComponentTransition()) {
-	        List<Component> allocatedComponents = physicalComponent.getAllocatedComponents();
-	        if (allocatedComponents.isEmpty()) {
+	        List<Component> realizedComponents = physicalComponent.getRealizedComponents();
+	        if (realizedComponents.isEmpty()) {
 	            // collect all the used, provided, required and implemented interfaces
 	            List<Interface> allInterface = new ArrayList<Interface>(1);
 	            allInterface.addAll(physicalComponent.getUsedInterfaces());

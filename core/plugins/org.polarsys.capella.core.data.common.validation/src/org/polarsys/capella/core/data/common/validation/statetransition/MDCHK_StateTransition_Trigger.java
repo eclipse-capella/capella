@@ -22,10 +22,10 @@ import org.polarsys.capella.common.data.behavior.AbstractEvent;
 import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.core.business.queries.QueryConstants;
 import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_StateTransitionTrigger;
+import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_StateTransitionTrigger__Lib;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.StateTransition;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.libraries.extendedqueries.capellacommon.GetAvailable_StateTransitionTrigger__Lib;
 
 public class MDCHK_StateTransition_Trigger extends AbstractModelConstraint {
 
@@ -40,8 +40,8 @@ public class MDCHK_StateTransition_Trigger extends AbstractModelConstraint {
     elements.addAll(libElements);
     for (AbstractEvent trigger : triggers) {
       if (!elements.contains(trigger)) {
-        return ctx.createFailureStatus(new Object[] { ((StateTransition) ctx.getTarget()).getTarget().getName(),
-            trigger });
+        return ctx
+            .createFailureStatus(new Object[] { ((StateTransition) ctx.getTarget()).getTarget().getName(), trigger });
       }
     }
     return ctx.createSuccessStatus();

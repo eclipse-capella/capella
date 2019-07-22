@@ -13,8 +13,6 @@ package org.polarsys.capella.test.validation.rules.ju.testsuites.partial;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.Test;
-
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.validation.rules.ju.testcases.misc.Bug2438TestCase;
@@ -29,6 +27,8 @@ import org.polarsys.capella.test.validation.rules.ju.testcases.misc.PackageCycle
 import org.polarsys.capella.test.validation.rules.ju.testcases.misc.PackageCycle4Test;
 import org.polarsys.capella.test.validation.rules.ju.testcases.misc.PackageCycle5Test;
 import org.polarsys.capella.test.validation.rules.ju.testcases.misc.PackageCycle6Test;
+
+import junit.framework.Test;
 
 public class MiscTestSuite extends BasicTestSuite {
 

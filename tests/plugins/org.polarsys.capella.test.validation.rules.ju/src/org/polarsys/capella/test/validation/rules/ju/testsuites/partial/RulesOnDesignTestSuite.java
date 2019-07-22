@@ -14,8 +14,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import junit.framework.Test;
-
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.validation.rules.ju.testcases.dcom.DCOMRulesTestSuite;
@@ -29,6 +27,8 @@ import org.polarsys.capella.test.validation.rules.ju.testcases.dwf_ds.DWFDSRules
 import org.polarsys.capella.test.validation.rules.ju.testcases.dwf_i.DWFIRulesTestSuite;
 import org.polarsys.capella.test.validation.rules.ju.testcases.dwf_sm.DWFSMRulesTestSuite;
 import org.polarsys.capella.test.validation.rules.ju.testcases.dwf_uc.DWFUCRulesTestSuite;
+
+import junit.framework.Test;
 
 public class RulesOnDesignTestSuite extends BasicTestSuite {
 

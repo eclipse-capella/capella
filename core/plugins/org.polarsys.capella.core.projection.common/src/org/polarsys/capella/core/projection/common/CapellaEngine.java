@@ -109,7 +109,7 @@ public class CapellaEngine extends TransfoEngine {
       TraceableElement tgt = transfoLink.getTargetElement();
 
       if (!isSemantiklyLinked(src, LaPackage.Literals.LOGICAL_COMPONENT, tgt, PaPackage.Literals.PHYSICAL_COMPONENT,
-          PaPackage.Literals.LOGICAL_COMPONENT_REALIZATION)
+          CsPackage.Literals.COMPONENT_REALIZATION)
           || !isSemantiklyLinked(src, FaPackage.Literals.COMPONENT_EXCHANGE, tgt, FaPackage.Literals.COMPONENT_EXCHANGE,
               FaPackage.Literals.COMPONENT_EXCHANGE_REALIZATION)
           || !isSemantiklyLinked(src, FaPackage.Literals.FUNCTIONAL_EXCHANGE, tgt, FaPackage.Literals.FUNCTIONAL_EXCHANGE,

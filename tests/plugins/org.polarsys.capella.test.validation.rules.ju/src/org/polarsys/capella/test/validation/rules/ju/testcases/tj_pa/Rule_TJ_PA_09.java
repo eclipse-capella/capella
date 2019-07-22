@@ -12,6 +12,7 @@ package org.polarsys.capella.test.validation.rules.ju.testcases.tj_pa;
 
 import java.util.Arrays;
 import java.util.List;
+
 import org.eclipse.emf.ecore.EClass;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.test.framework.api.OracleDefinition;

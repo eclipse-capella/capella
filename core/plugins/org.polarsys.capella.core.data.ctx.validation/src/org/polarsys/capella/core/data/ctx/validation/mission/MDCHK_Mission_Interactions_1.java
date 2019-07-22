@@ -14,9 +14,8 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
-
 import org.polarsys.capella.core.data.ctx.Mission;
-import org.polarsys.capella.core.data.helpers.ctx.services.MissionExt;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 public class MDCHK_Mission_Interactions_1 extends AbstractValidationRule {
@@ -31,8 +30,7 @@ public class MDCHK_Mission_Interactions_1 extends AbstractValidationRule {
     if (eType == EMFEventType.NULL) {
       if (eObj instanceof Mission) {
         Mission mission = (Mission) eObj;
-
-        if (MissionExt.getInvolvedActors(mission).size() == 0) {
+        if (mission.getInvolvedSystemComponents().stream().noneMatch(x -> ComponentExt.isActor(x))) {
           return createFailureStatus(ctx, new Object[] { mission.getName() });
         }
       }

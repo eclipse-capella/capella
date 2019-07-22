@@ -14,10 +14,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import junit.framework.Test;
-
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+
+import junit.framework.Test;
 
 public class TJLARulesTestSuite extends BasicTestSuite {
 
@@ -36,10 +36,8 @@ public class TJLARulesTestSuite extends BasicTestSuite {
 		tests.add(new Rule_TJ_LA_01());
     tests.add(new Rule_TJ_LA_02());
 		tests.add(new Rule_TJ_LA_03());
-		tests.add(new Rule_TJ_LA_04());
 		tests.add(new Rule_TJ_LA_05());
 		tests.add(new Rule_TJ_LA_06());
-		tests.add(new Rule_TJ_LA_07());
 		return tests;
 	}
 

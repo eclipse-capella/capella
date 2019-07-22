@@ -11,8 +11,10 @@
 package org.polarsys.capella.core.data.cs.provider;
 
 import java.util.Arrays;
+import java.util.Collection;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -31,6 +33,7 @@ public class PartItemProviderDecorator extends ItemProviderAdapterDecorator impl
     super(adapterFactory);
   }
 
+  
   @Override
   public Object getImage(Object object) {
     AbstractType type = ((Part) object).getAbstractType();

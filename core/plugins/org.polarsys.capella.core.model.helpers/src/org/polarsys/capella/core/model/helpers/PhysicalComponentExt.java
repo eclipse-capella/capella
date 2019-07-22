@@ -381,7 +381,7 @@ public class PhysicalComponentExt {
     }
 
     // Last PhysicalComponent hierarchy detection
-    return (!EcoreUtil2.isContainedBy(element, PaPackage.Literals.PHYSICAL_COMPONENT));
+    return BlockArchitectureExt.isRootComponent((PhysicalComponent)element);
   }
 
   /**

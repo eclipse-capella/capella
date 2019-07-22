@@ -580,19 +580,6 @@ If an Association is on SystemArchitecture layer. It should not associate with a
                </target>
             </constraint>
          </constraints>
-         <constraints categories="capella.category/design/well-formedness/components">
-            <constraint class="org.polarsys.capella.core.data.information.validation.partionableelement.MDCHK_PartionableElementCyle" id="DWF_DC_01" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DC_01 - Partitions cycles check" severity="ERROR" statusCode="1">
-               <message>
-                  Partitions cycle: {0} (Partitionable Element) contains at a certain depth a partition typed by {1} (Partitionable Element) and {1} (Partitionable Element) 
-contains the partition {2} (Partitionable Element)  typed by {0} (Partitionable Element).
-               </message>
-               <description>
-                  This validation rule ensures that a partition of an element cannot have a partition typed by this element. Thus it avoids"partitions cycles".
-               </description>
-               <target class="PartitionableElement">
-               </target>
-            </constraint>
-         </constraints>
       </constraintProvider>
      <constraintProvider>
         <package namespaceUri="http://www.polarsys.org/capella/core/information/datavalue/1.4.0">

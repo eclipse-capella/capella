@@ -12,6 +12,7 @@ package org.polarsys.capella.test.validation.rules.ju.testcases.tj_pa;
 
 import java.util.Arrays;
 import java.util.List;
+
 import org.eclipse.emf.ecore.EClass;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.test.framework.api.OracleDefinition;
@@ -28,7 +29,7 @@ public class Rule_TJ_PA_10 extends AbstractRulesOnTransitionTest {
 	 * @generated
 	 */
 	protected EClass getTargetedEClass() {
-		return PaPackage.Literals.PHYSICAL_ACTOR;
+		return PaPackage.Literals.PHYSICAL_COMPONENT;
 	}
 
 	/**

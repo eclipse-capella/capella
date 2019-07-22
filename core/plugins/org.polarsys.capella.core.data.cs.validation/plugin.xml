@@ -318,8 +318,25 @@ If an ExchangeItemAllocation is on SystemArchitecture layer. It should not alloc
          </constraints>
          <constraints
                categories="capella.category/design/well-formedness/components">
+            <constraint class="org.polarsys.capella.core.data.cs.validation.component.MDCHK_ComponentCycle" 
+            	id="DWF_DC_01" 
+            	isEnabledByDefault="true" 
+            	lang="Java" mode="Batch" 
+            	name="DWF_DC_01 - Partitions cycles check" 
+            	severity="ERROR" 
+            	statusCode="1">
+               <message>
+                  Part cycle: {0} (Component) contains at a certain depth a part typed by {1} (Component) and {1} (Component) 
+contains the part {2} (Component) typed by {0} (Component).
+               </message>
+               <description>
+                  This validation rule ensures that a partition of an element cannot have a partition typed by this element. Thus it avoids"partitions cycles".
+               </description>
+               <target class="Component">
+               </target>
+            </constraint>
             <constraint
-                  class="org.polarsys.capella.core.data.cs.validation.part.PartAccessibleType"
+                  class="org.polarsys.capella.core.data.cs.validation.part.Part_AccessibleType"
                   id="DWF_DC_05"
                   isEnabledByDefault="true"
                   lang="java"
@@ -397,26 +414,26 @@ BehaviourPC=Physical Component of nature BEHAVIOUR
                </target>
             </constraint>
             <constraint
-                  class="org.polarsys.capella.core.data.cs.validation.componentcontext.MDCHK_ComponentContext_AbstractActor_Part"
+                  class="org.polarsys.capella.core.data.cs.validation.part.Part_AbstractType"
                   id="DWF_DC_07"
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_DC_07 - Contexts Abstract Actor Parts Check"
+                  name="DWF_DC_07 - Part typed by an Abstract Type"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} (Component Context) has a part typed by {1} which is abstract.
+                  {0} (Part) is typed by {1} which is abstract.
                </message>
                <description>
-                  This rule checks that a Component Context cannot have a part typed by an abstract type.
+                  This rule checks that a Part is typed by an abstract type.
                </description>
                <target
-                     class="ComponentContext">
+                     class="Part">
                </target>
             </constraint>
             <constraint
-                  class="org.polarsys.capella.core.data.cs.validation.part.MDCHK_Part_PartType"
+                  class="org.polarsys.capella.core.data.cs.validation.part.Part_NullType"
                   id="DWF_DC_08"
                   isEnabledByDefault="true"
                   lang="java"
@@ -454,22 +471,22 @@ BehaviourPC=Physical Component of nature BEHAVIOUR
                </target>
             </constraint>
             <constraint
-                  class="org.polarsys.capella.core.data.cs.validation.part.MDCHK_Part_PartLocation"
+                  class="org.polarsys.capella.core.data.cs.validation.part.Part_LocationConsistency"
                   id="DWF_DC_10"
                   isEnabledByDefault="true"
                   lang="java"
                   mode="Batch"
-                  name="DWF_DC_10 - Actors Part Locations Check "
+                  name="DWF_DC_10 - Actor Part Location"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  Part {0} representing {1} ({2}) should not have the owner: {3} ({4}).
+                  Part {0} representing Actor {1} ({2}) should not have the owner: {3} ({4}).
                </message>
                <target
                      class="Part">
                </target>
                <description>
-                  This rule checks the parts locations for actors and root components.
+                  This rule checks the parts and their type are located in the same architecture.
                </description>
             </constraint>
             <constraint
@@ -518,9 +535,47 @@ BehaviourPC=Physical Component of nature BEHAVIOUR
                <target class="PhysicalLink">
                </target>
             </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.component.Component_GeneralizationItself"
+                  id="DWF_CA_05"
+                  isEnabledByDefault="true"
+                  lang="java"
+                  mode="Batch"
+                  name="DWF_CA_05 - Component self generalization"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0} (Component) generalizes itself.
+               </message>
+               <target
+                     class="Component">
+               </target>
+               <description>
+                  This rule ensures that a Component cannot generalize itself.
+               </description>
+            </constraint>
          </constraints>
          <constraints
                categories="capella.category/integrity">
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.component.ComponentRealization_Consistency"
+                  id="I_05"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_05 - Component Realization consistency"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  Realization consistency error: the Component Realization with {0} ({1}) as source and {2} ({3}) as target is inconsistent.
+               </message>
+               <target
+                     class="Component">
+               </target>
+               <description>
+                  This rule ensures that Component Realization Realizations always have consistent Source and Target.
+               </description>
+            </constraint>
             <constraint
                   class="org.polarsys.capella.core.data.cs.validation.component.MDCHK_Component_MultipleUseOrImplementationOfSameItfCheck"
                   id="I_16"
@@ -541,7 +596,7 @@ BehaviourPC=Physical Component of nature BEHAVIOUR
                </target>
             </constraint>
             <constraint
-                  class="org.polarsys.capella.core.data.cs.validation.part.MDCHK_ComponentContextPartitions"
+                  class="org.polarsys.capella.core.data.cs.validation.part.ComponentPkg_RootComponentPart"
                   id="I_17"
                   isEnabledByDefault="true"
                   lang="Java"
@@ -556,7 +611,7 @@ BehaviourPC=Physical Component of nature BEHAVIOUR
                   This rule checks that context packages contain at least one component (the root component) of the correct level.
                </description>
                <target
-                     class="ComponentContext">
+                     class="ComponentPkg">
                </target>
             </constraint>
             <constraint
@@ -666,7 +721,7 @@ BehaviourPC=Physical Component of nature BEHAVIOUR
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DCOM_07 - Interface used one sub component at least"
+                  name="DCOM_07 - Interface used by one sub logical componentat least"
                   severity="WARNING"
                   statusCode="1">
                <message>
@@ -685,7 +740,7 @@ BehaviourPC=Physical Component of nature BEHAVIOUR
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DCOM_08 - Interface implemented by one component"
+                  name="DCOM_08 - Interface implemented by one logical component"
                   severity="WARNING"
                   statusCode="1">
                <message>

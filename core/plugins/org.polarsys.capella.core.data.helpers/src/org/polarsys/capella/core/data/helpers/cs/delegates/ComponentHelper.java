@@ -95,7 +95,10 @@ public class ComponentHelper {
     List<Component> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof ComponentRealization) {
-        ret.add(((ComponentRealization) trace).getRealizedComponent());
+        Component cpnt = ((ComponentRealization) trace).getRealizedComponent();
+        if (null != cpnt) {
+          ret.add(cpnt);
+        }
       }
     }
     return ret;
@@ -105,7 +108,10 @@ public class ComponentHelper {
     List<Component> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ComponentRealization) {
-        ret.add(((ComponentRealization) trace).getRealizingComponent());
+        Component cpnt = ((ComponentRealization) trace).getRealizingComponent();
+        if (null != cpnt) {
+          ret.add(cpnt);
+        }
       }
     }
     return ret;

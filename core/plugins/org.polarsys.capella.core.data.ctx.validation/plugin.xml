@@ -96,26 +96,7 @@
             </description>
          </constraint>
          <constraint
-               class="org.polarsys.capella.core.data.ctx.validation.actor.MDCHK_Actor_Generalization"
-               id="DWF_CA_05"
-               isEnabledByDefault="true"
-               lang="java"
-               mode="Batch"
-               name="DWF_CA_05 - Actor self generalization"
-               severity="ERROR"
-               statusCode="1">
-            <message>
-               {0} (Actor) generalizes itself.
-            </message>
-            <target
-                  class="Actor">
-            </target>
-            <description>
-               This rule ensures that an actor cannot generalize itself.
-            </description>
-         </constraint>
-         <constraint
-               class="org.polarsys.capella.core.data.ctx.validation.actor.MDCHK_ActorInvolvedMissionsAndCapabilityConforms"
+               class="org.polarsys.capella.core.data.ctx.validation.systemComponent.SystemComponent_InvolvedMissionsAndCapabilitiesConforms"
                id="DWF_CA_06"
                isEnabledByDefault="true"
                lang="Java"
@@ -130,14 +111,14 @@
                This rule checks that the current Actor is involved with the Mission, and then involved in any of its Capabilities.
             </description>
             <target
-                  class="Actor">
+                  class="SystemComponent">
             </target>
          </constraint>
       </constraints>
       <constraints
             categories="capella.category/design/completeness">
          <constraint
-               class="org.polarsys.capella.core.data.ctx.validation.system.MDCHK_SystemDelegationConforms_2"
+               class="org.polarsys.capella.core.data.ctx.validation.system.MDCHK_SystemUsedInterfacesDelegation"
                id="DCOM_14"
                isEnabledByDefault="true"
                lang="Java"
@@ -152,11 +133,11 @@
                This rule checks that a System delegates its Implemented Interface.
             </description>
             <target
-                  class="System">
+                  class="SystemComponent">
             </target>
          </constraint>
          <constraint
-               class="org.polarsys.capella.core.data.ctx.validation.system.MDCHK_SystemDelegationConforms_1"
+               class="org.polarsys.capella.core.data.ctx.validation.system.MDCHK_SystemImplementedInterfacesDelegation"
                id="DCOM_10"
                isEnabledByDefault="true"
                lang="Java"
@@ -171,7 +152,7 @@
                This rule checks that a System delegates its used Interface
             </description>
             <target
-                  class="System">
+                  class="SystemComponent">
             </target>
          </constraint>
       </constraints>
@@ -240,45 +221,45 @@
                isEnabledByDefault="true"
                lang="Java"
                mode="Batch"
-               name="DCOV_05 - Actor involvement in a mission check"
+               name="DCOV_05 - System Component involvement in a mission check"
                severity="WARNING"
                statusCode="1">
             <message>
-               {0} (Actor) is not involved in {1} (Mission), although it is involved in {2}
+               {0} (System Component) is not involved in {1} (Mission), although it is involved in {2}
             </message>
             <description>
-               This rule checks that an Actor is involved in at least one Mission.
+               This rule checks that an System Component is involved in at least one Mission.
             </description>
             <target
                   class="Mission">
             </target>
          </constraint>
          <constraint
-               class="org.polarsys.capella.core.data.ctx.validation.actor.MDCHK_Actor_Participations_1"
+               class="org.polarsys.capella.core.data.ctx.validation.systemComponent.SystemComponent_InvolvingCapabilities"
                id="DCOV_06"
                isEnabledByDefault="true"
                lang="Java"
                mode="Batch"
-               name="DCOV_06 - Actor participation in capabilities minimal number"
+               name="DCOV_06 - System Component participation in capabilities minimal number"
                severity="WARNING"
                statusCode="1">
             <message>
-               {0} (Actor) is not involved in any Capability.
+               {0} (System Component) is not involved in any Capability.
             </message>
             <description>
-               This rule checks that the minimum number of participation from an Actor towards a Capability is one.
+               This rule checks that the minimum number of participation from a Component towards a Capability is one.
             </description>
             <target
-                  class="Actor">
+                  class="SystemComponent">
             </target>
          </constraint>
          <constraint
-               class="org.polarsys.capella.core.data.ctx.validation.capability.MDCHK_Capability_Interactions_1"
+               class="org.polarsys.capella.core.data.ctx.validation.capability.Capability_InvolvingActors"
                id="DCOV_07"
                isEnabledByDefault="true"
                lang="Java"
                mode="Batch"
-               name="DCOV_07 - Capability interation with actors check"
+               name="DCOV_07 - Capability interation with actors"
                severity="WARNING"
                statusCode="1">
             <message>
@@ -292,22 +273,22 @@
             </target>
          </constraint>
          <constraint
-               class="org.polarsys.capella.core.data.ctx.validation.actor.MDCHK_ActorInvolvedCapabilityConforms"
+               class="org.polarsys.capella.core.data.ctx.validation.systemComponent.SystemComponent_CapabilityAndScenarioConforms"
                id="DCOV_08"
                isEnabledByDefault="true"
                lang="Java"
                mode="Batch"
-               name="DCOV_08 - Actor involvement in at least one scenario related to the capabilities it participates"
+               name="DCOV_08 - System Component involvement in at least one scenario related to the capabilities it participates"
                severity="WARNING"
                statusCode="1">
             <message>
-               {0} (Actor) is declared to be involved in {1} (Capability Realization) but it does not appear in any of its Scenario(s).
+               {0} (System Component) is declared to be involved in {1} (Capability) but it does not appear in any of its Scenario(s).
             </message>
             <description>
-               This rule checks that the current Actor involved with capabilities appears in at least one scenario related to the capabilities it participates.
+               This rule checks that the current Component involved with capabilities appears in at least one scenario related to the capabilities it participates.
             </description>
             <target
-                  class="Actor">
+                  class="SystemComponent">
             </target>
          </constraint>
       </constraints>
@@ -352,26 +333,7 @@
             </target>
          </constraint>
          <constraint
-               class="org.polarsys.capella.core.data.ctx.validation.system.MDCHK_System_Realization"
-               id="TJ_LA_04"
-               isEnabledByDefault="true"
-               lang="Java"
-               mode="Batch"
-               name="TJ_LA_04 - System Realization"
-               severity="ERROR"
-               statusCode="1">
-            <message>
-               Realization consistency error for {0}.
-            </message>
-            <target
-                  class="System">
-            </target>
-            <description>
-               This rule checks the realization consistency between Logical Component and System.
-            </description>
-         </constraint>
-         <constraint
-               class="org.polarsys.capella.core.data.ctx.validation.ca.MDCHK_CA_CARealization"
+               class="org.polarsys.capella.core.data.ctx.validation.systemAnalysis.MDCHK_CA_CARealization"
                id="TJ_LA_05"
                lang="Java"
                mode="Batch"
@@ -390,68 +352,46 @@
          </constraint>
       </constraints>
       <constraints
-            categories="capella.category/integrity">
-         <constraint
-               class="org.polarsys.capella.core.data.ctx.validation.actor.SystemActorRealizationConsistency"
-               id="I_04"
-               isEnabledByDefault="true"
-               lang="Java"
-               mode="Batch"
-               name="I_04 - System Actor Realizationtion"
-               severity="WARNING"
-               statusCode="1">
-            <message>
-               {0}
-            </message>
-            <target
-                  class="Actor">
-            </target>
-            <description>
-               This rule Ensures that System Actor always realizes an Entity (that is aslo an Operational Actor).
-            </description>
-         </constraint>
-      </constraints>
-      <constraints
             categories="capella.category/transition/justification/logical_architecture">
          <constraint
-               class="org.polarsys.capella.core.data.ctx.validation.actor.SystemActorRealizedByLogicalActor"
+               class="org.polarsys.capella.core.data.ctx.validation.systemComponent.SystemComponent_RealizingLogicalComponent"
                id="TJ_LA_06"
                isEnabledByDefault="true"
                lang="Java"
                mode="Batch"
-               name="TJ_LA_06 - System Actor Realized by Logical Actor"
+               name="TJ_LA_06 - System Component Realized by Logical Component"
                severity="WARNING"
                statusCode="1">
             <message>
                {0}
             </message>
             <description>
-               This rule ensures that an Actor is realized by at least one Logical Actor.
+               This rule ensures that an System Component is realized by at least one Logical Component.
             </description>
             <target
-                  class="Actor">
+                  class="SystemComponent">
             </target>
          </constraint>
       </constraints>
       <constraints
             categories="capella.category/transition/justification/system_analysis">
          <constraint
-               class="org.polarsys.capella.core.data.ctx.validation.actor.SystemActorEntityRealization"
+               class="org.polarsys.capella.core.data.ctx.validation.systemComponent.SystemComponent_RealizedEntity"
                id="TJ_SA_02"
                isEnabledByDefault="true"
                lang="Java"
                mode="Batch"
-               name="TJ_SA_02 - System Actor to Entity Realization"
+               name="TJ_SA_02 - System Component to Entity Realization"
                severity="WARNING"
                statusCode="1">
             <message>
                {0}
             </message>
             <target
-                  class="Actor">
+                  class="SystemComponent">
             </target>
             <description>
-               This rule ensures that an Actor Realizes at least one Entity.
+               This rule ensures that a System Component Realizes at least one Entity.
             </description>
          </constraint>
       </constraints>

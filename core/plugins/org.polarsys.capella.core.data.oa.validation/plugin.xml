@@ -83,19 +83,19 @@
                </target>
             </constraint>
             <constraint
-                  class="org.polarsys.capella.core.data.oa.validation.operationalActivity.EntityRealizedByActor"
+                  class="org.polarsys.capella.core.data.oa.validation.entity.Entity_RealizedSystemComponents"
                   id="TJ_SA_03"
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="TJ_SA_03 - Entity Realized by System Actor"
+                  name="TJ_SA_03 - Entity Realized by System Component"
                   severity="WARNING"
                   statusCode="1">
                <message>
                   {0}
                </message>
                <description>
-                  This rule checks that an Entity is realized by at least one System Actor.
+                  This rule checks that an Entity is realized by at least one System Component.
                </description>
                <target
                      class="Entity">
@@ -121,25 +121,6 @@
                </target>
                <description>
                   This rule ensures that Operational Analysis Realization links targeting Operational Analysis instances have System Analysis instances as source.
-               </description>
-            </constraint>
-            <constraint
-                  class="org.polarsys.capella.core.data.oa.validation.operationalActivity.MDCHK_OperationalEntity_Realization"
-                  id="I_05"
-                  isEnabledByDefault="true"
-                  lang="Java"
-                  mode="Batch"
-                  name="I_05 - Operational Entity Realization"
-                  severity="ERROR"
-                  statusCode="1">
-               <message>
-                  Realization consistency error: the Operational Entity with {0} ({1}) as source and {2} ({3}) as target is inconsistant.
-               </message>
-               <target
-                     class="Entity">
-               </target>
-               <description>
-                  This rule ensures that Operational Entities Realizations always have Actor or System instances as source and Operational Entity instances as target.
                </description>
             </constraint>
          </constraints>

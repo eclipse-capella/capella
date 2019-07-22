@@ -394,7 +394,7 @@
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_-TkCICKkEeKsRIUHLBjAyg" name="OK_LA">
       <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="RulesOnQualityTest.melodymodeller#0833db52-79c0-417b-befb-8296e0936ab0"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="RulesOnQualityTest.melodymodeller#0833db52-79c0-417b-befb-8296e0936ab0"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="RulesOnQualityTest.melodymodeller#2fdd0e47-123a-4bf4-8079-e2606fe3ea3e"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="RulesOnQualityTest.melodymodeller#2fdd0e47-123a-4bf4-8079-e2606fe3ea3e"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_-TkCISKkEeKsRIUHLBjAyg" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="218,253,255" foregroundColor="198,230,255">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='Logical%20Actors']/@style"/>
       </ownedStyle>
@@ -403,7 +403,7 @@
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_-oizoCKkEeKsRIUHLBjAyg" name="Actor_without_Description">
       <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="RulesOnQualityTest.melodymodeller#2944e839-6fa2-4cfa-af9c-c543e7f533cd"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="RulesOnQualityTest.melodymodeller#2944e839-6fa2-4cfa-af9c-c543e7f533cd"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="RulesOnQualityTest.melodymodeller#986f9dab-a224-40b0-b83c-ab5fdd8291b3"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="RulesOnQualityTest.melodymodeller#986f9dab-a224-40b0-b83c-ab5fdd8291b3"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_-oizoSKkEeKsRIUHLBjAyg" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="218,253,255" foregroundColor="198,230,255">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='Logical%20Actors']/@style"/>
       </ownedStyle>
@@ -786,7 +786,7 @@
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_slNKACKkEeKsRIUHLBjAyg" name="OK_PA">
       <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="RulesOnQualityTest.melodymodeller#9f1516aa-ae53-4d0f-87f8-19b6fd32573a"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="RulesOnQualityTest.melodymodeller#9f1516aa-ae53-4d0f-87f8-19b6fd32573a"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalActor" href="RulesOnQualityTest.melodymodeller#f2ee15c5-a76d-437e-a697-d93c3fc9ecd2"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="RulesOnQualityTest.melodymodeller#f2ee15c5-a76d-437e-a697-d93c3fc9ecd2"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_slNKASKkEeKsRIUHLBjAyg" labelColor="74,74,151" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="218,253,255" foregroundColor="198,230,255">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Actor']/@style"/>
       </ownedStyle>
@@ -795,7 +795,7 @@
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_tG1QYCKkEeKsRIUHLBjAyg" name="Actor_without_Summary">
       <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="RulesOnQualityTest.melodymodeller#6046bf45-5538-4b38-9be8-f91008f84872"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="RulesOnQualityTest.melodymodeller#6046bf45-5538-4b38-9be8-f91008f84872"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalActor" href="RulesOnQualityTest.melodymodeller#d559c246-8315-41a1-9011-86abc30f4849"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="RulesOnQualityTest.melodymodeller#d559c246-8315-41a1-9011-86abc30f4849"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_tG1QYSKkEeKsRIUHLBjAyg" labelColor="74,74,151" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="218,253,255" foregroundColor="198,230,255">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Actor']/@style"/>
       </ownedStyle>

@@ -29,12 +29,12 @@ import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalLinkEnd;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
-import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeAllocation;
 import org.polarsys.capella.core.data.fa.ComponentExchangeEnd;
@@ -211,8 +211,12 @@ public class ConnectedCatalogElementsScope implements SparseModelScope.AttachHan
         targetCETarget = (CapellaElement) targetCESource.eContainer();
       }
 
-      AbstractFunctionalBlock container = ComponentExchangeExt.getDefaultContainer(targetCESource, targetCETarget);
-      container.getOwnedComponentExchanges().add((ComponentExchange) toAttach);
+      CapellaElement container = ComponentExchangeExt.getDefaultContainer(targetCESource, targetCETarget);
+      if (container instanceof ComponentPkg) {
+        ((ComponentPkg)container).getOwnedComponentExchanges().add((ComponentExchange) toAttach);
+      } else if (container instanceof Component) {
+        ((Component)container).getOwnedComponentExchanges().add((ComponentExchange) toAttach);
+      }
     }
 
     if (toAttach instanceof PhysicalLink) {

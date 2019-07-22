@@ -10,23 +10,14 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.la.validation.logicalComponent;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
-
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.pa.LogicalComponentRealization;
-import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 
 /**
  * This check insures that a leaf Logical Component is realized by at least one Physical Component.
@@ -44,21 +35,10 @@ public class MDCHK_LogicalComponent_Realization_1 extends AbstractValidationRule
         LogicalComponent logCpnt = (LogicalComponent) eObj;
         // The verification is done only if the Logical Component is a leaf
         // Gets the sub owned parts:
-        EList<Partition> ownedPartitions = logCpnt.getOwnedPartitions();
-        // will store the owned parts only because the ownedPartitions feature for example store function ports
-        List<Part> ownedParts = new ArrayList<Part>();
-        Iterator<Partition> iterator = ownedPartitions.iterator();
-        while (iterator.hasNext()) {
-          Partition next = iterator.next();
-          if (next instanceof Part) {
-            ownedParts.add((Part) next);
-          }
-        }
+        EList<Part> ownedParts = logCpnt.getContainedParts();
         if (ownedParts.size() == 0) {
-          for (AbstractTrace trace : logCpnt.getIncomingTraces()) {
-            if ((trace instanceof LogicalComponentRealization) && (trace.getSourceElement() instanceof PhysicalComponent)) {
-              return ctx.createSuccessStatus();
-            }
+          if (!logCpnt.getRealizingPhysicalComponents().isEmpty()) {
+            return ctx.createSuccessStatus();
           }
           return createFailureStatus(ctx, new Object[] { logCpnt.getName() });
         }

@@ -12,8 +12,9 @@ package org.polarsys.capella.test.validation.rules.ju.testcases.dwf_ca;
 
 import java.util.Arrays;
 import java.util.List;
+
 import org.eclipse.emf.ecore.EClass;
-import org.polarsys.capella.core.data.ctx.CtxPackage;
+import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.test.framework.api.OracleDefinition;
 import org.polarsys.capella.test.validation.rules.ju.testcases.AbstractRulesOnDesignTest;
 
@@ -28,7 +29,7 @@ public class Rule_DWF_CA_05 extends AbstractRulesOnDesignTest {
 	 * @generated
 	 */
 	protected EClass getTargetedEClass() {
-		return CtxPackage.Literals.ACTOR;
+		return CsPackage.Literals.COMPONENT;
 	}
 
 	/**
@@ -36,7 +37,7 @@ public class Rule_DWF_CA_05 extends AbstractRulesOnDesignTest {
 	 * @generated
 	 */
 	protected String getRuleID() {
-		return "org.polarsys.capella.core.data.ctx.validation.DWF_CA_05";
+		return "org.polarsys.capella.core.data.cs.validation.DWF_CA_05";
 	}
 
 	/**

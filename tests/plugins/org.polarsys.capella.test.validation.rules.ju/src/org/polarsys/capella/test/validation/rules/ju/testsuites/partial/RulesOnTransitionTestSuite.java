@@ -14,8 +14,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import junit.framework.Test;
-
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.validation.rules.ju.testcases.tc_dc.TCDCRulesTestSuite;
@@ -28,6 +26,8 @@ import org.polarsys.capella.test.validation.rules.ju.testcases.tj_g.TJGRulesTest
 import org.polarsys.capella.test.validation.rules.ju.testcases.tj_la.TJLARulesTestSuite;
 import org.polarsys.capella.test.validation.rules.ju.testcases.tj_pa.TJPARulesTestSuite;
 import org.polarsys.capella.test.validation.rules.ju.testcases.tj_sa.TJSARulesTestSuite;
+
+import junit.framework.Test;
 
 public class RulesOnTransitionTestSuite extends BasicTestSuite {
 

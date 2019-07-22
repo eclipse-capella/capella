@@ -35,9 +35,6 @@ public class IRulesTestSuite extends BasicTestSuite {
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new Rule_I_01());
-    tests.add(new Rule_I_03());
-    tests.add(new Rule_I_04());
-    tests.add(new Rule_I_05());
     tests.add(new Rule_I_06());
     tests.add(new Rule_I_07());
     tests.add(new Rule_I_09());

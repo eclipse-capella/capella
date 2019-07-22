@@ -10,22 +10,13 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.la.validation.logicalComponent;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
-
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentAllocation;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.pa.LogicalComponentRealization;
-import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
@@ -42,37 +33,11 @@ public class MDCHK_LogicalComponent_Realization_2 extends AbstractValidationRule
 
     if (eType == EMFEventType.NULL) {
       if (eObj instanceof LogicalComponent) {
-        // current element
         LogicalComponent lc = (LogicalComponent) eObj;
-        // list of providing component allocation
-        EList<ComponentAllocation> provisioningComponentAllocations = lc.getProvisioningComponentAllocations();
-        // collect all the allocating 'PhysicalComponent'
-        List<PhysicalComponent> allocatingComponents = new ArrayList<PhysicalComponent>();
-        String pcs = ICommonConstants.EMPTY_STRING;
-        Iterator<ComponentAllocation> iterator = provisioningComponentAllocations.iterator();
-
-        while (iterator.hasNext()) {
-          ComponentAllocation componentAllocation = iterator.next();
-          // filter 'LogicalComponentRealization'
-          if (componentAllocation instanceof LogicalComponentRealization) {
-            Component allocatingComponent = componentAllocation.getAllocatingComponent();
-            // add to list if allocatingComponent is instance of 'PhysicalComponent'
-            if (allocatingComponent instanceof PhysicalComponent) {
-              allocatingComponents.add((PhysicalComponent) allocatingComponent);
-              pcs = pcs + allocatingComponent.getName();
-              if (iterator.hasNext()) {
-                pcs = pcs + ", "; //$NON-NLS-1$
-              }
-            }
-          }
+        if (lc.getRealizingPhysicalComponents().size() > 1) {
+          return ctx.createFailureStatus(lc.getName(),
+              lc.getRealizingPhysicalComponents().stream().map(x -> x.getName()).collect(Collectors.joining(", ")));
         }
-
-        // return failure message if there is more then one 'PhysicalComponent' realizing current 'LogicalComponent'
-        if (allocatingComponents.size() > 1) {
-          // create and return failure message
-          return createFailureStatus(ctx, new Object[] { lc.getName(), pcs });
-        }
-
       }
     }
     return ctx.createSuccessStatus();

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.IStatus;
@@ -27,6 +28,7 @@ import org.eclipse.emf.validation.service.IBatchValidator;
 import org.eclipse.emf.validation.service.IConstraintDescriptor;
 import org.eclipse.emf.validation.service.IConstraintFilter;
 import org.eclipse.emf.validation.service.ModelValidationService;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
@@ -104,7 +106,7 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
     if (ruleID != null) {
       ruleDescriptor = registry.getDescriptor(ruleID);
       if (ruleDescriptor == null) {
-        throw new InternalError("rule for ID " + ruleID + " does not exist. Test can not be performed"); //$NON-NLS-1$//$NON-NLS-2$
+        throw new InternalError("Rule " + ruleID + " does not exist. Test can not be performed"); //$NON-NLS-1$//$NON-NLS-2$
       }
 
       if (!ruleDescriptor.isEnabled()) {
@@ -185,12 +187,8 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
       }
       // check all objects to be validated before throwing a message
       if (!failedObjects.isEmpty()) {
-        String message = "Validation rule " + ruleID + " has detected an error on object(s): \n"; //$NON-NLS-1$ //$NON-NLS-2$
-        for (EObject elt : failedObjects) {
-          message += " - " + getId(elt) + "\n"; //$NON-NLS-1$ //$NON-NLS-2$
-        }
-        message += "while it must not be the case.";
-        fail(message);
+        String objects = failedObjects.stream().map(elt -> " - " + getId(elt)).collect(Collectors.joining("\n"));
+        fail(NLS.bind("Validation rule {0} has detected an error on object(s): \n{1}\nwhile it must not be the case.", ruleID, objects));
       }
       // check that some errors has not been detected according to the number of error occurences for each object in
       // error
@@ -202,7 +200,6 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
         } else if (nbFoundErrors > nbExpectedErrors) {
           fail("Validation rule " + ruleID + " has detected " + nbFoundErrors + " error(s) instead of " + nbExpectedErrors + " error(s) on object " + oracleDef.getObjectID()); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
         }
-
       }
       
       if(getCheckQuickFix()) {

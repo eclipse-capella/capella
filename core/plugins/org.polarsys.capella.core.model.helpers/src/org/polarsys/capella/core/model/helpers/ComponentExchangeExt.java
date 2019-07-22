@@ -405,6 +405,8 @@ public final class ComponentExchangeExt {
         ((Entity) container).getOwnedCommunicationMeans().add((CommunicationMean) exchange);
       } else if (container instanceof ComponentPkg) {
         ((ComponentPkg) container).getOwnedComponentExchanges().add(exchange);
+      } else if (container instanceof Component) {
+        ((Component) container).getOwnedComponentExchanges().add(exchange);
       }
       return true;
     }
@@ -432,7 +434,7 @@ public final class ComponentExchangeExt {
       container = EcoreUtil2.getFirstContainer(container, FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK);
     }
     if ((container == null) || !(container instanceof AbstractFunctionalBlock)) {
-      container = BlockArchitectureExt.getContext(ComponentExt.getRootBlockArchitecture(sourcePart));
+      container = BlockArchitectureExt.getComponentPkg(ComponentExt.getRootBlockArchitecture(sourcePart), true);
     }
     return (CapellaElement) container;
   }

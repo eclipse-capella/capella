@@ -16,7 +16,7 @@
          <package namespaceUri="http://www.polarsys.org/capella/core/interaction/1.4.0">
          </package>
          <constraints categories="capella.category/design/well-formedness/scenarios">
-            <constraint class="org.polarsys.capella.core.data.interaction.validation.interaction_use.MDCHK_InteractionUse_ReferencedScenario_1" id="DWF_DS_01" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_01 - InteractionUse referenced scenario check" severity="WARNING" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.interaction.validation.interactionUse.MDCHK_InteractionUse_ReferencedScenario_1" id="DWF_DS_01" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_01 - InteractionUse referenced scenario check" severity="WARNING" statusCode="1">
                <message>
                   {0} (InteractionUse) do not reference any scenario.
                </message>
@@ -40,7 +40,7 @@
                <param name="group" value="MERGE">
                </param>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.interaction.validation.sequence_message.MDCHK_SequenceMessage_InvokedOperation_1" id="DWF_DS_03" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_03 - Scenario sequence message invoked operations check 1" severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.interaction.validation.sequenceMessage.MDCHK_SequenceMessage_InvokedOperation_1" id="DWF_DS_03" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_03 - Scenario sequence message invoked operations check 1" severity="ERROR" statusCode="1">
                <message>
                   {0} (SequenceMessage) has an invalid invoked {1}.
                </message>
@@ -52,7 +52,7 @@
                <param name="group" value="MERGE">
                </param>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.interaction.validation.sequence_message.MDCHK_SequenceMessage_InvokedOperation_2" id="DWF_DS_04" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_04 - Scenario sequence message invoked operations check 2" severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.interaction.validation.sequenceMessage.MDCHK_SequenceMessage_InvokedOperation_2" id="DWF_DS_04" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_04 - Scenario sequence message invoked operations check 2" severity="ERROR" statusCode="1">
                <message>
                   {0} ({1}) in {2} ({3}) has an operation that doesn&apos;t fit implemented/provided and used/required interfaces.
                </message>
@@ -64,7 +64,7 @@
                <param name="group" value="MERGE">
                </param>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.interaction.validation.sequence_message.MDCHK_SequenceMessage_ComponentsFiliationJustification" id="DWF_DS_05" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_05 - Scenario sequence messages justification check 1" severity="WARNING" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.interaction.validation.sequenceMessage.MDCHK_SequenceMessage_ComponentsFiliationJustification" id="DWF_DS_05" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_05 - Scenario sequence messages justification check 1" severity="WARNING" statusCode="1">
                <message>
                   {0} (SequenceMessage) has no justification in sender/receiver Components terms in according with {1} (SequenceMessage).
                </message>
@@ -76,7 +76,7 @@
                <param name="group" value="MERGE">
                </param>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.interaction.validation.sequence_message.MDCHK_SequenceMessage_OperationJustification" id="DWF_DS_06" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_06 - Scenario sequence messages justification check 2" severity="WARNING" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.interaction.validation.sequenceMessage.MDCHK_SequenceMessage_OperationJustification" id="DWF_DS_06" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_06 - Scenario sequence messages justification check 2" severity="WARNING" statusCode="1">
                <message>
                   {0} (SequenceMessage) has no justification in Operation terms in according with {1} (SequenceMessage).
                </message>
@@ -88,7 +88,7 @@
                <param name="group" value="MERGE">
                </param>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.interaction.validation.sequence_message.MDCHK_SequenceMessage_NotNullInvokedOperation" id="DWF_DS_07" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_07 - Sequence Messages not null invoked operation check" severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.interaction.validation.sequenceMessage.MDCHK_SequenceMessage_NotNullInvokedOperation" id="DWF_DS_07" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_07 - Sequence Messages not null invoked operation check" severity="ERROR" statusCode="1">
                <message>
                   {0} ({1}) in {2} ({3}) has a null invoked operation.
                </message>
@@ -108,7 +108,7 @@
                <target class="Scenario">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.interaction.validation.sequence_message.SequenceMessageExchangeItems" id="DWF_DS_09" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_09 - Sequence message allocated exchange items" severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.interaction.validation.sequenceMessage.SequenceMessageExchangeItems" id="DWF_DS_09" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_09 - Sequence message allocated exchange items" severity="ERROR" statusCode="1">
                <message>
                   {0} (SequenceMessage) allocates {1}(ExchangeItem) which {2} not allocated by invoked operation of current sequence message.
                </message>
@@ -145,7 +145,7 @@ Whatever the level, UNSET Scenarios raise an error.
                <target class="Scenario">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.interaction.validation.sequence_message.MDCHK_SequenceMessage_NameValidation" id="DWF_DS_12" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_12 - Scenario sequence messages and operations / functional exchanges consistency" severity="WARNING" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.interaction.validation.sequenceMessage.MDCHK_SequenceMessage_NameValidation" id="DWF_DS_12" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_12 - Scenario sequence messages and operations / functional exchanges consistency" severity="WARNING" statusCode="1">
                <message>
                   {0} (SequenceMessage) should have the same name as {1} ({2}).
                </message>
@@ -155,7 +155,7 @@ Whatever the level, UNSET Scenarios raise an error.
                <target class="SequenceMessage">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.interaction.validation.sequence_message.MDCHK_SequenceMessage_TimerReflexive" id="DWF_DS_13" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_13 - Timer must be a reflexive message" severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.interaction.validation.sequenceMessage.MDCHK_SequenceMessage_TimerReflexive" id="DWF_DS_13" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_13 - Timer must be a reflexive message" severity="ERROR" statusCode="1">
                <message>
                   The timer sequence message {0} is not a reflexive message.
                </message>
@@ -165,7 +165,7 @@ Whatever the level, UNSET Scenarios raise an error.
                <target class="SequenceMessage">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.interaction.validation.sequence_message.MDCHK_SequenceMessage_CancelTimer" id="DWF_DS_14" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_14 - A cancel timer must be within an arm timer" severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.interaction.validation.sequenceMessage.MDCHK_SequenceMessage_CancelTimer" id="DWF_DS_14" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_14 - A cancel timer must be within an arm timer" severity="ERROR" statusCode="1">
                <message>
                   The {0} cancel timer message must be within an arm timer message.
                </message>
@@ -175,7 +175,7 @@ Whatever the level, UNSET Scenarios raise an error.
                   This rule checks that a cancel timer message is within an arm timer message.
                </description>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.interaction.validation.sequence_message.MDCHK_SequenceMessage_ReadSharedData" id="DWF_DS_15" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_15 - a shared data READ must be within an execution" severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.interaction.validation.sequenceMessage.MDCHK_SequenceMessage_ReadSharedData" id="DWF_DS_15" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_15 - a shared data READ must be within an execution" severity="ERROR" statusCode="1">
                <message>
                   the READ message between {0} and {1}  must be within an execution.
                </message>
@@ -185,7 +185,7 @@ Whatever the level, UNSET Scenarios raise an error.
                   This rule checks that a shared data READ is within an execution.
                </description>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.interaction.validation.sequence_message.MDCHK_SequenceMessage_Kind" id="DWF_DS_17" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_17 - A sequence message kind must be coherent with its transmission protocol" severity="WARNING" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.interaction.validation.sequenceMessage.MDCHK_SequenceMessage_Kind" id="DWF_DS_17" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_17 - A sequence message kind must be coherent with its transmission protocol" severity="WARNING" statusCode="1">
                <message>
                   The kind of the sequence message {0} must be coherent with its transmission protocol.
                </message>
@@ -195,7 +195,7 @@ Whatever the level, UNSET Scenarios raise an error.
                   This rule checks that a sequence message kind is coherent with its transmission protocol.
                </description>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.interaction.validation.sequence_message.MDCHK_SequenceMessage_ES_OES_InvokedOperation" id="DWF_DS_18" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_18 - OES/ES Sequence Messages consistency check" severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.interaction.validation.sequenceMessage.MDCHK_SequenceMessage_ES_OES_InvokedOperation" id="DWF_DS_18" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_18 - OES/ES Sequence Messages consistency check" severity="ERROR" statusCode="1">
                <message>
                   {0} ({1}) in {2} ({3}) is inconsistent ({4}).
                </message>
@@ -205,7 +205,7 @@ Whatever the level, UNSET Scenarios raise an error.
                <target class="SequenceMessage">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.interaction.validation.sequence_message.MDCHK_SequenceMessage_FS_OAS_InvokedOperation" id="DWF_DS_19" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_19 - OAS/FS Sequence Messages consistency check" severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.interaction.validation.sequenceMessage.MDCHK_SequenceMessage_FS_OAS_InvokedOperation" id="DWF_DS_19" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_19 - OAS/FS Sequence Messages consistency check" severity="ERROR" statusCode="1">
                <message>
                   {0} ({1})  in {2} ({3}) is inconsistent ({4}).
                </message>
@@ -270,7 +270,7 @@ Whatever the level, UNSET Scenarios raise an error.
                <param name="group" value="MERGE">
                </param>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.interaction.validation.sequence_message.MDCHK_SequenceMessage_UnlinkJustification" id="TC_DS_02" isEnabledByDefault="true" lang="Java" mode="Batch" name="TC_DS_02 - Scenario sequence messages unliked check" severity="WARNING" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.interaction.validation.sequenceMessage.MDCHK_SequenceMessage_UnlinkJustification" id="TC_DS_02" isEnabledByDefault="true" lang="Java" mode="Batch" name="TC_DS_02 - Scenario sequence messages unliked check" severity="WARNING" statusCode="1">
                <message>
                   {0} (SequenceMessage) has no justify by refinement tracability link with a sequenceMessage in {1} (Scenario).
                </message>
@@ -299,7 +299,7 @@ If Scenario resides in SystemAnalysis layer. It should be relalized by a Scenari
             </constraint>
          </constraints>
          <constraints categories="capella.category/design/well-formedness/use_cases">
-            <constraint class="org.polarsys.capella.core.data.interaction.validation.scenario.AbstractCapabilityRealizationCheck" id="DWF_UC_02" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_UC_02 - Abstract Capability Realization Check" severity="WARNING" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.interaction.validation.abstractCapability.AbstractCapability_Realization" id="DWF_UC_02" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_UC_02 - Abstract Capability Realization Check" severity="WARNING" statusCode="1">
                <message>
                   {0}
                </message>

@@ -184,7 +184,7 @@ NodePC=Physical Component of nature NODE
          <constraints
                categories="capella.category/integrity">
             <constraint
-                  class="org.polarsys.capella.core.data.pa.validation.physicalActor.MDCHK_PhysicalActor_ActorRealization"
+                  class="org.polarsys.capella.core.data.pa.validation.physicalComponent.PhysicalComponent_RealizedLogicalComponents"
                   id="I_06"
                   isEnabledByDefault="true"
                   lang="Java"
@@ -196,7 +196,7 @@ NodePC=Physical Component of nature NODE
                   {0}
                </message>
                <target
-                     class="PhysicalActor">
+                     class="PhysicalComponent">
                </target>
                <description>
                  This rule Ensures that Physical Actor always realizes a Logical Actor.
@@ -248,26 +248,7 @@ This rule is only evaluated if the transition preference&quot;Transit Interfaces
                </target>
             </constraint>
             <constraint
-                  class="org.polarsys.capella.core.data.pa.validation.physicalComponent.MDCHK_PhysicalComponent_LogicalComponentRealization"
-                  id="TJ_PA_08"
-                  isEnabledByDefault="true"
-                  lang="Java"
-                  mode="Batch"
-                  name="TJ_PA_08 - Logical Component Realization"
-                  severity="ERROR"
-                  statusCode="1">
-               <message>
-                  Realization consistency error for {0}.
-               </message>
-               <target
-                     class="PhysicalComponent">
-               </target>
-               <description>
-                  This rule checks the realization consistency between logical components and physical components.
-               </description>
-            </constraint>
-            <constraint
-                  class="org.polarsys.capella.core.data.pa.validation.physicalActor.PhysicalActor_LogicalActor_ActorRealization"
+                  class="org.polarsys.capella.core.data.pa.validation.physicalComponent.PhysicalComponent_RealizedLogicalComponents"
                   id="TJ_PA_10"
                   isEnabledByDefault="true"
                   lang="Java"
@@ -279,7 +260,7 @@ This rule is only evaluated if the transition preference&quot;Transit Interfaces
                   {0} (Physical Actor) does not realize any Logical Actor.
                </message>
                <target
-                     class="PhysicalActor">
+                     class="PhysicalComponent">
                </target>
                <description>
                   This rule ensures that a Physical Actor realizes at least one Logical Actor.

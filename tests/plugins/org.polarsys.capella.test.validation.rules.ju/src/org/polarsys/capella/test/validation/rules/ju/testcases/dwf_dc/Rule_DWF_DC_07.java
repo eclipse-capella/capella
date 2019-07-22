@@ -12,6 +12,7 @@ package org.polarsys.capella.test.validation.rules.ju.testcases.dwf_dc;
 
 import java.util.Arrays;
 import java.util.List;
+
 import org.eclipse.emf.ecore.EClass;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.test.framework.api.OracleDefinition;
@@ -28,7 +29,7 @@ public class Rule_DWF_DC_07 extends AbstractRulesOnDesignTest {
 	 * @generated
 	 */
 	protected EClass getTargetedEClass() {
-		return CsPackage.Literals.COMPONENT_CONTEXT;
+		return CsPackage.Literals.PART;
 	}
 
 	/**
@@ -45,8 +46,8 @@ public class Rule_DWF_DC_07 extends AbstractRulesOnDesignTest {
 	 */
 	protected List<String> getScopeDefinition() {
 		return Arrays.asList(new String[] {
-				"a804ab02-8044-411d-8657-cc27550033e0",
-				"880288cb-c648-4f82-97a0-aadbc373f97d" });
+				"45e901d2-3c93-466a-bd7c-7c6bba421b8f",
+				"f390918c-5918-4eb5-abad-001484faaaa3" });
 	}
 
 	/**
@@ -55,6 +56,6 @@ public class Rule_DWF_DC_07 extends AbstractRulesOnDesignTest {
 	 */
 	protected List<OracleDefinition> getOracleDefinitions() {
 		return Arrays.asList(new OracleDefinition[] { new OracleDefinition(
-				"880288cb-c648-4f82-97a0-aadbc373f97d", 1) });
+				"f390918c-5918-4eb5-abad-001484faaaa3", 1) });
 	}
 }

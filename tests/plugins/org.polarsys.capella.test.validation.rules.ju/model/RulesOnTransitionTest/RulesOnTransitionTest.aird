@@ -123,7 +123,7 @@
       </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7UnQvEeamAMxs9g9ZYQ" name="[SAB] System - System Architecture Blank" repPath="#_RnA0ICdYEeKqwrAw6_Z-EA">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']"/>
-        <target xmi:type="org.polarsys.capella.core.data.ctx:System" href="RulesOnTransitionTest.melodymodeller#cd4f5e29-f016-479b-abc3-a904f508914a"/>
+        <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="RulesOnTransitionTest.melodymodeller#cd4f5e29-f016-479b-abc3-a904f508914a"/>
       </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7U3QvEeamAMxs9g9ZYQ" name="[SDFB] Root System Function - System Data Flow Blank" repPath="#_kFr4YCgoEeKKpYsDnorq1A">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']"/>
@@ -135,7 +135,7 @@
       </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7VXQvEeamAMxs9g9ZYQ" name="[SAB] System - System Architecture Blank" repPath="#_RAepMCjEEeK_kc7qud1bpg">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']"/>
-        <target xmi:type="org.polarsys.capella.core.data.ctx:System" href="RulesOnTransitionTest.melodymodeller#2f1b9be5-bff9-44e4-b936-f75ecc258926"/>
+        <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="RulesOnTransitionTest.melodymodeller#2f1b9be5-bff9-44e4-b936-f75ecc258926"/>
       </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sni7VnQvEeamAMxs9g9ZYQ" name="[SDFB] Root System Function - System Data Flow Blank" repPath="#_VmPbYDIwEeKjIqJlNPd2Ow">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']"/>
@@ -535,7 +535,7 @@
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_SFgG8CdYEeKqwrAw6_Z-EA" name="A 1" outgoingEdges="_S_fhQHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="RulesOnTransitionTest.melodymodeller#d67f665f-6636-4b73-9b53-50cc145c7c1b"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="RulesOnTransitionTest.melodymodeller#d67f665f-6636-4b73-9b53-50cc145c7c1b"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:Actor" href="RulesOnTransitionTest.melodymodeller#3319bbf0-3140-421a-8552-e2b1f5347b42"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="RulesOnTransitionTest.melodymodeller#3319bbf0-3140-421a-8552-e2b1f5347b42"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_S_IU4HQvEeamAMxs9g9ZYQ" name="CP 1" outgoingEdges="_S_VJMHQvEeamAMxs9g9ZYQ" width="1" height="1">
         <target xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="RulesOnTransitionTest.melodymodeller#3c8333ee-a906-4301-a96b-f7d905c7c4f1"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="RulesOnTransitionTest.melodymodeller#3c8333ee-a906-4301-a96b-f7d905c7c4f1"/>
@@ -553,7 +553,7 @@
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_SawlQCdYEeKqwrAw6_Z-EA" name="A 2" incomingEdges="_S_fhQHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="RulesOnTransitionTest.melodymodeller#550a6515-90c6-4ed4-94c5-82e30db4f02d"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="RulesOnTransitionTest.melodymodeller#550a6515-90c6-4ed4-94c5-82e30db4f02d"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:Actor" href="RulesOnTransitionTest.melodymodeller#81976804-9583-4905-8cf9-4be52033f8d2"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="RulesOnTransitionTest.melodymodeller#81976804-9583-4905-8cf9-4be52033f8d2"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_S_I78XQvEeamAMxs9g9ZYQ" name="CP 1" incomingEdges="_S_VJMHQvEeamAMxs9g9ZYQ" width="1" height="1">
         <target xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="RulesOnTransitionTest.melodymodeller#ed6429e5-4d38-425a-822f-3b2e14ee7d49"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="RulesOnTransitionTest.melodymodeller#ed6429e5-4d38-425a-822f-3b2e14ee7d49"/>
@@ -571,7 +571,7 @@
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_S_JjAnQvEeamAMxs9g9ZYQ" name="System">
       <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="RulesOnTransitionTest.melodymodeller#e35af8e5-c9b5-46a8-a478-b29cdc91eda4"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="RulesOnTransitionTest.melodymodeller#e35af8e5-c9b5-46a8-a478-b29cdc91eda4"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:System" href="RulesOnTransitionTest.melodymodeller#cd4f5e29-f016-479b-abc3-a904f508914a"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="RulesOnTransitionTest.melodymodeller#cd4f5e29-f016-479b-abc3-a904f508914a"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_S_KKEHQvEeamAMxs9g9ZYQ" labelColor="74,74,151" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="195,230,255" foregroundColor="150,177,218">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20System']/@style"/>
       </ownedStyle>
@@ -600,7 +600,7 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@filters[name='Hide%20Simplified%20Oriented%20Grouped%20Component%20Exchanges']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_RnA0JydYEeKqwrAw6_Z-EA"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.ctx:System" href="RulesOnTransitionTest.melodymodeller#cd4f5e29-f016-479b-abc3-a904f508914a"/>
+    <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="RulesOnTransitionTest.melodymodeller#cd4f5e29-f016-479b-abc3-a904f508914a"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_kFr4YCgoEeKKpYsDnorq1A" name="[SDFB] Root System Function - System Data Flow Blank">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_kFr4YigoEeKKpYsDnorq1A" source="GMF_DIAGRAMS">
@@ -1060,7 +1060,7 @@
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_SZHQECjEEeK_kc7qud1bpg" name="A 1" incomingEdges="_TARkYHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="RulesOnTransitionTest.melodymodeller#83e64b08-3b74-4f83-b0bd-6ebeb6917b96"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="RulesOnTransitionTest.melodymodeller#83e64b08-3b74-4f83-b0bd-6ebeb6917b96"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:Actor" href="RulesOnTransitionTest.melodymodeller#233c667d-df8e-42af-87aa-827acacb2eb9"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="RulesOnTransitionTest.melodymodeller#233c667d-df8e-42af-87aa-827acacb2eb9"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_S_5J4HQvEeamAMxs9g9ZYQ" name="CP 1" incomingEdges="_TAGlQHQvEeamAMxs9g9ZYQ" width="1" height="1">
         <target xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="RulesOnTransitionTest.melodymodeller#f0ed1dfd-0838-4c98-80da-7acebe561b84"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="RulesOnTransitionTest.melodymodeller#f0ed1dfd-0838-4c98-80da-7acebe561b84"/>
@@ -1087,7 +1087,7 @@
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_S_6YAHQvEeamAMxs9g9ZYQ" name="System" outgoingEdges="_TARkYHQvEeamAMxs9g9ZYQ">
       <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="RulesOnTransitionTest.melodymodeller#c22da024-1a45-4016-a2f9-9e0d2d8be5d0"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="RulesOnTransitionTest.melodymodeller#c22da024-1a45-4016-a2f9-9e0d2d8be5d0"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:System" href="RulesOnTransitionTest.melodymodeller#2f1b9be5-bff9-44e4-b936-f75ecc258926"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="RulesOnTransitionTest.melodymodeller#2f1b9be5-bff9-44e4-b936-f75ecc258926"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_S_6_EHQvEeamAMxs9g9ZYQ" name="CP 1" outgoingEdges="_TAGlQHQvEeamAMxs9g9ZYQ" width="1" height="1">
         <target xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="RulesOnTransitionTest.melodymodeller#1d6342fe-4423-4ca9-a17b-95ea42d41c3d"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="RulesOnTransitionTest.melodymodeller#1d6342fe-4423-4ca9-a17b-95ea42d41c3d"/>
@@ -1144,7 +1144,7 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@filters[name='Hide%20Simplified%20Oriented%20Grouped%20Component%20Exchanges']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_RAepNyjEEeK_kc7qud1bpg"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.ctx:System" href="RulesOnTransitionTest.melodymodeller#2f1b9be5-bff9-44e4-b936-f75ecc258926"/>
+    <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="RulesOnTransitionTest.melodymodeller#2f1b9be5-bff9-44e4-b936-f75ecc258926"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_VmPbYDIwEeKjIqJlNPd2Ow" name="[SDFB] Root System Function - System Data Flow Blank">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_VmPbYjIwEeKjIqJlNPd2Ow" source="GMF_DIAGRAMS">
@@ -1440,7 +1440,7 @@
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_vWGVgCNuEeKGQ5Vaqd_ErA" name="LA 1">
       <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="RulesOnTransitionTest.melodymodeller#0eefac6d-0c86-4ca3-9df8-0e491df4550d"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="RulesOnTransitionTest.melodymodeller#0eefac6d-0c86-4ca3-9df8-0e491df4550d"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="RulesOnTransitionTest.melodymodeller#298653c1-3a7e-4a17-81e1-f986a82c89b5"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="RulesOnTransitionTest.melodymodeller#298653c1-3a7e-4a17-81e1-f986a82c89b5"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_S4orUHQvEeamAMxs9g9ZYQ" name="CP 1" incomingEdges="_S41foHQvEeamAMxs9g9ZYQ" width="1" height="1">
         <target xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="RulesOnTransitionTest.melodymodeller#17c7e58b-1bab-49b0-ad7f-087027f85dd2"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="RulesOnTransitionTest.melodymodeller#17c7e58b-1bab-49b0-ad7f-087027f85dd2"/>
@@ -2372,7 +2372,7 @@
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_j-g5cCdkEeKqwrAw6_Z-EA" name="LA 1">
       <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="RulesOnTransitionTest.melodymodeller#f7261011-9638-4b31-9d2a-371f86e2f56a"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="RulesOnTransitionTest.melodymodeller#f7261011-9638-4b31-9d2a-371f86e2f56a"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="RulesOnTransitionTest.melodymodeller#93c21c73-1c54-4300-a8bc-9745bc1fa39c"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="RulesOnTransitionTest.melodymodeller#93c21c73-1c54-4300-a8bc-9745bc1fa39c"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_S6MxkHQvEeamAMxs9g9ZYQ" name="CP 1" incomingEdges="_S6Y-0HQvEeamAMxs9g9ZYQ" width="1" height="1">
         <target xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="RulesOnTransitionTest.melodymodeller#caf3db9c-a445-4489-9c9d-e205b8a8f87d"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="RulesOnTransitionTest.melodymodeller#caf3db9c-a445-4489-9c9d-e205b8a8f87d"/>
@@ -2393,7 +2393,7 @@
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_kdab8CdkEeKqwrAw6_Z-EA" name="LA 2">
       <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="RulesOnTransitionTest.melodymodeller#8f9ec864-8e36-4ca8-884e-5b5e252e020c"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="RulesOnTransitionTest.melodymodeller#8f9ec864-8e36-4ca8-884e-5b5e252e020c"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="RulesOnTransitionTest.melodymodeller#a5a7b001-1484-433b-b03c-1323b254cf18"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="RulesOnTransitionTest.melodymodeller#a5a7b001-1484-433b-b03c-1323b254cf18"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_S6NYonQvEeamAMxs9g9ZYQ" name="CP 1" incomingEdges="_S6Zl4nQvEeamAMxs9g9ZYQ" width="1" height="1">
         <target xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="RulesOnTransitionTest.melodymodeller#5d2e1dac-f270-47e8-9c6a-df66bb206518"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="RulesOnTransitionTest.melodymodeller#5d2e1dac-f270-47e8-9c6a-df66bb206518"/>
@@ -2835,7 +2835,7 @@
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_ajhFsCjEEeK_kc7qud1bpg" name="LA 1">
       <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="RulesOnTransitionTest.melodymodeller#02ab1459-796c-4be3-9f7a-6653100a6437"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="RulesOnTransitionTest.melodymodeller#02ab1459-796c-4be3-9f7a-6653100a6437"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="RulesOnTransitionTest.melodymodeller#ee18826e-8f50-4c4c-a574-9f7273995490"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="RulesOnTransitionTest.melodymodeller#ee18826e-8f50-4c4c-a574-9f7273995490"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_S6-NoHQvEeamAMxs9g9ZYQ" name="CP 1" incomingEdges="_S7Jz0HQvEeamAMxs9g9ZYQ" width="1" height="1">
         <target xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="RulesOnTransitionTest.melodymodeller#0fc678bc-a305-4c5f-a5a6-fc4aa5fdd978"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="RulesOnTransitionTest.melodymodeller#0fc678bc-a305-4c5f-a5a6-fc4aa5fdd978"/>

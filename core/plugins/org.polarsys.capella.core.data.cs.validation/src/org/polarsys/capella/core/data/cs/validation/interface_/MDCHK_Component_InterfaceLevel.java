@@ -15,10 +15,10 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.validation.IValidationContext;
-
+import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Interface;
-import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
@@ -33,9 +33,9 @@ public class MDCHK_Component_InterfaceLevel extends AbstractValidationRule {
 		interfaces.addAll(component.getRequiredInterfaces());
 		interfaces.addAll(component.getProvidedInterfaces());
 			
-		ModellingArchitecture cArchi = CapellaElementExt.getArchi(component);
+		ModellingArchitecture cArchi = BlockArchitectureExt.getRootBlockArchitecture(component);
 		for (Interface itf : interfaces) {
-			ModellingArchitecture iArchi = CapellaElementExt.getArchi(itf);
+			ModellingArchitecture iArchi = BlockArchitectureExt.getRootBlockArchitecture(itf);
 			if (!CapellaElementExt.isLegalArchitecture(iArchi, cArchi)) 
 				return createFailureStatus(ctx, new Object []{component.getName(), component.eClass().getName(), itf.getName(), iArchi.getName()});
 		}

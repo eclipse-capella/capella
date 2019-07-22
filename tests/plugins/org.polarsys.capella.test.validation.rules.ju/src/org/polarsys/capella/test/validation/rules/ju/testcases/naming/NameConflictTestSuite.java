@@ -13,10 +13,10 @@ package org.polarsys.capella.test.validation.rules.ju.testcases.naming;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.Test;
-
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+
+import junit.framework.Test;
 
 public class NameConflictTestSuite extends BasicTestSuite {
 

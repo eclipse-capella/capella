@@ -687,7 +687,7 @@ public class BlockArchitectureExt {
             .add((SystemComponent) first);
       }
 
-    } else  if (architecture instanceof SystemAnalysis) {
+    } else if (architecture instanceof SystemAnalysis) {
       first = ((SystemAnalysis) architecture).getSystem();
       if ((first == null) && create) {
         first = CtxFactory.eINSTANCE.createSystemComponent(NamingConstants.CreateSysAnalysisCmd_system_name);
@@ -751,7 +751,8 @@ public class BlockArchitectureExt {
    * @return
    */
   public static boolean isRootComponent(Component component) {
-    return component.eContainer() instanceof BlockArchitecture;
+    return !ComponentExt.isActor(component) && component.eContainer() instanceof ComponentPkg
+        && component.eContainer().eContainer() instanceof BlockArchitecture;
   }
 
   /**
@@ -773,7 +774,7 @@ public class BlockArchitectureExt {
     }
     return availableElements;
   }
-  
+
   /**
    * Returns all defined components from the given architecture
    * 
@@ -809,7 +810,7 @@ public class BlockArchitectureExt {
    */
   public static List<BlockArchitecture> getPreviousBlockArchitecture(final BlockArchitecture anArchitecture) {
     List<BlockArchitecture> result = new ArrayList<>();
-    
+
     if (null != anArchitecture) {
       // functional way according to model
       result.addAll(getPreviousBlockArchitectureByFunctinoalWay(anArchitecture));
@@ -915,7 +916,9 @@ public class BlockArchitectureExt {
 
   /**
    * Gets all the {@link Missions} from SystemEng
-   * @param element the {@link CapellaElement}
+   * 
+   * @param element
+   *          the {@link CapellaElement}
    * @return list of CapabilitySpecificationUseCase
    */
   public static List<AbstractCapability> getAllCapabilities(BlockArchitecture element) {
@@ -928,10 +931,12 @@ public class BlockArchitectureExt {
     }
     return result;
   }
-  
+
   /**
    * Gets all the {@link Missions} from SystemEng
-   * @param element the {@link CapellaElement}
+   * 
+   * @param element
+   *          the {@link CapellaElement}
    * @return list of CapabilitySpecificationUseCase
    */
   public static List<Mission> getAllMissions(SystemAnalysis element) {
@@ -944,6 +949,7 @@ public class BlockArchitectureExt {
     }
     return result;
   }
+
   /**
    * Return all the constraint
    * 
@@ -962,7 +968,7 @@ public class BlockArchitectureExt {
     }
     return result;
   }
-  
+
   public static List<Interface> getAllInterfaces(BlockArchitecture anElement) {
     List<Interface> result = new ArrayList<>();
     if (null == anElement) {

@@ -31,7 +31,7 @@ public class Rule_I_37_38_ComponentExchange extends Rule_I37_38{
 
     executeCommand(() -> {
 
-      LogicalComponent rootLC = projectSkeleton.getLogicalArchitecture().getOwnedLogicalComponent();
+      LogicalComponent rootLC = (LogicalComponent)projectSkeleton.getLogicalArchitecture().getSystem();
 
       lc1 = LaFactory.eINSTANCE.createLogicalComponent();
       rootLC.getOwnedLogicalComponents().add(lc1);
@@ -47,7 +47,7 @@ public class Rule_I_37_38_ComponentExchange extends Rule_I37_38{
 
       ce = ComponentExchangeExt.createComponentExchange(sourcePart, null, targetPart, null, null, null, null, null, null, false);
 
-      libraryRootComponent = librarySkeleton.getLogicalArchitecture().getOwnedLogicalComponent();
+      libraryRootComponent = (LogicalComponent)librarySkeleton.getLogicalArchitecture().getSystem();
 
     });
 

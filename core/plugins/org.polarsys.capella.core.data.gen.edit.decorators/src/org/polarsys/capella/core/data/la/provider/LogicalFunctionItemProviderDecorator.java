@@ -10,7 +10,10 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.la.provider;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
@@ -30,7 +33,7 @@ public class LogicalFunctionItemProviderDecorator extends
 	public LogicalFunctionItemProviderDecorator(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
-
+  
 	@Override
 	public Object getImage(Object object) {
 		LogicalFunction fct = (LogicalFunction) object;

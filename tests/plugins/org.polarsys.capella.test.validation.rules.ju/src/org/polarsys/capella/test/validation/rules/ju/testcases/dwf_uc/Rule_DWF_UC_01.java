@@ -12,6 +12,7 @@ package org.polarsys.capella.test.validation.rules.ju.testcases.dwf_uc;
 
 import java.util.Arrays;
 import java.util.List;
+
 import org.eclipse.emf.ecore.EClass;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.test.framework.api.OracleDefinition;

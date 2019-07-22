@@ -10,7 +10,6 @@ Require-Bundle: org.polarsys.capella.core.data.business.queries,
  org.polarsys.capella.common.queries,
  org.polarsys.capella.core.transition.system.topdown
 Export-Package: org.polarsys.capella.core.data.cs.validation.component,
- org.polarsys.capella.core.data.cs.validation.componentcontext,
  org.polarsys.capella.core.data.cs.validation.interfacePkg,
  org.polarsys.capella.core.data.cs.validation.interface_,
  org.polarsys.capella.core.data.cs.validation.part,

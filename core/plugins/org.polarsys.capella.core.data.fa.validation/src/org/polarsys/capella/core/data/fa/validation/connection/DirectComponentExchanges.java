@@ -20,7 +20,6 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeKind;
-import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
@@ -54,7 +53,7 @@ public class DirectComponentExchanges extends AbstractValidationRule {
               if (sourcePart == null) {
                 Component sourceComponent = ComponentExchangeExt.getSourceComponent(exchange);
                 if (sourceComponent != null) {
-                  List<Partition> partitions = sourceComponent.getRepresentingPartitions();
+                  List<Part> partitions = sourceComponent.getRepresentingParts();
                   if (!partitions.isEmpty()) {
                 	sourcePart = (Part) partitions.get(0);
                   }
@@ -63,7 +62,7 @@ public class DirectComponentExchanges extends AbstractValidationRule {
               if (targetPart == null) {
                 Component targetComponent = ComponentExchangeExt.getTargetComponent(exchange);
                 if (targetComponent != null) {
-                  List<Partition> partitions = targetComponent.getRepresentingPartitions();
+                  List<Part> partitions = targetComponent.getRepresentingParts();
                   if (!partitions.isEmpty()) {
                     targetPart = (Part) partitions.get(0);
                   }

@@ -58,25 +58,6 @@
                </target>
             </constraint>
             <constraint
-                  class="org.polarsys.capella.core.data.la.validation.logicalActor.LogicalActorRealizedByPhysicalActor"
-                  id="TJ_PA_03"
-                  isEnabledByDefault="true"
-                  lang="Java"
-                  mode="Batch"
-                  name="TJ_PA_03 - Logical Actor Realized by Physical Actor"
-                  severity="WARNING"
-                  statusCode="1">
-               <message>
-                  {0} (Logical Actor) is not realized by any Physical Actor.
-               </message>
-               <target
-                     class="LogicalActor">
-               </target>
-               <description>
-                  This rule ensures that a Logical Actor is realized by at least one Physical Actor.
-               </description>
-            </constraint>
-            <constraint
                   class="org.polarsys.capella.core.data.la.validation.logicalFunction.MDCHK_LogicalFunction_Realization_1"
                   id="TJ_PA_04"
                   isEnabledByDefault="true"
@@ -261,28 +242,6 @@
             </constraint>
          </constraints>
          <constraints
-               categories="capella.category/integrity">
-            <constraint
-                  class="org.polarsys.capella.core.data.la.validation.logicalActor.MDCHK_LogicalActor_ActorRealization"
-                  id="I_03"
-                  isEnabledByDefault="true"
-                  lang="Java"
-                  mode="Batch"
-                  name="I_03 - Logical Actor Realization"
-                  severity="WARNING"
-                  statusCode="1">
-               <message>
-                  {0}
-               </message>
-               <target
-                     class="LogicalActor">
-               </target>
-               <description>
-                  This rule Ensures that Logical Actor always realizes a Sytem Actor.
-               </description>
-            </constraint>
-         </constraints>
-         <constraints
                categories="capella.category/transition/justification/logical_architecture">
             <constraint
                   class="org.polarsys.capella.core.data.la.validation.capabilityRealization.MDCHK_CapabilityRealization_Refinement_1"
@@ -302,25 +261,6 @@
                <target
                      class="CapabilityRealization">
                </target>
-            </constraint>
-            <constraint
-                  class="org.polarsys.capella.core.data.la.validation.logicalActor.LogicalActor_PhysicalActor_ActorRealization"
-                  id="TJ_LA_07"
-                  isEnabledByDefault="true"
-                  lang="Java"
-                  mode="Batch"
-                  name="TJ_LA_07 - Logical Actor to System Actor Realization"
-                  severity="WARNING"
-                  statusCode="1">
-               <message>
-                  {0}
-               </message>
-               <target
-                     class="LogicalActor">
-               </target>
-               <description>
-                  This rule ensures that a Logical Actor realizes at least one System Actor.
-               </description>
             </constraint>
          </constraints>
          <constraints

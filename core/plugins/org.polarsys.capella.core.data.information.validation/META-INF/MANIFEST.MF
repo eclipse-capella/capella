@@ -16,7 +16,6 @@ Export-Package: org.polarsys.capella.core.data.information.validation.associatio
  org.polarsys.capella.core.data.information.validation.information,
  org.polarsys.capella.core.data.information.validation.operation,
  org.polarsys.capella.core.data.information.validation.parameter,
- org.polarsys.capella.core.data.information.validation.partionableelement,
  org.polarsys.capella.core.data.information.validation.port,
  org.polarsys.capella.core.data.information.validation.property,
  org.polarsys.capella.core.data.information.validation.union
