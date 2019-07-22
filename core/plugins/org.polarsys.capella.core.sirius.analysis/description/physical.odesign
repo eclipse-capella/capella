@@ -64,7 +64,7 @@
       </intersection>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Physical Components - Requirements" domainClass="PhysicalArchitecture">
-      <ownedLineMappings name="Physical Component 2" domainClass="PhysicalComponent" semanticCandidatesExpression="aql:self.ownedPhysicalComponent.subPhysicalComponents" headerLabelExpression="feature:name">
+      <ownedLineMappings name="Physical Component 2" domainClass="PhysicalComponent" semanticCandidatesExpression="aql:self.ownedPhysicalComponentPkg.ownedPhysicalComponents.subPhysicalComponents" headerLabelExpression="feature:name">
         <ownedSubLines name="Sub Physical Component 2" reusedSubLines="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Components%20-%20Requirements']/@ownedLineMappings[name='Physical%20Component%202']/@ownedSubLines[name='Sub%20Physical%20Component%202']" reusedInMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Components%20-%20Requirements']/@ownedLineMappings[name='Physical%20Component%202']/@ownedSubLines[name='Sub%20Physical%20Component%202']" domainClass="PhysicalComponent" semanticCandidatesExpression="feature:subPhysicalComponents" headerLabelExpression="feature:name">
           <delete name="No delete" precondition="false">
             <variables name="element" documentation="The currently edited element."/>
@@ -176,7 +176,7 @@
       </intersection>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Physical Components - Logical Components" domainClass="PhysicalArchitecture">
-      <ownedLineMappings name="Physical Components 1" domainClass="PhysicalComponent" semanticCandidatesExpression="aql:self.ownedPhysicalComponent.subPhysicalComponents" headerLabelExpression="feature:name">
+      <ownedLineMappings name="Physical Components 1" domainClass="PhysicalComponent" semanticCandidatesExpression="aql:self.ownedPhysicalComponentPkg.ownedPhysicalComponents.subPhysicalComponents" headerLabelExpression="feature:name">
         <ownedSubLines name="Sub Physical Component 1" reusedSubLines="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Components%20-%20Logical%20Components']/@ownedLineMappings[name='Physical%20Components%201']/@ownedSubLines[name='Sub%20Physical%20Component%201']" reusedInMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Components%20-%20Logical%20Components']/@ownedLineMappings[name='Physical%20Components%201']/@ownedSubLines[name='Sub%20Physical%20Component%201']" domainClass="PhysicalComponent" semanticCandidatesExpression="feature:subPhysicalComponents" headerLabelExpression="feature:name">
           <delete name="No delete" precondition="false">
             <variables name="element" documentation="The currently edited element."/>
@@ -194,7 +194,7 @@
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
         </delete>
       </ownedColumnMappings>
-      <intersection name="Logical Component Realisations" canEdit="" lineMapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Components%20-%20Logical%20Components']/@ownedLineMappings[name='Physical%20Components%201'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Components%20-%20Logical%20Components']/@ownedLineMappings[name='Physical%20Components%201']/@ownedSubLines[name='Sub%20Physical%20Component%201']" columnMapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Components%20-%20Logical%20Components']/@ownedColumnMappings.0" labelExpression="X" useDomainClass="true" columnFinderExpression="aql:self.allocatedComponent->filter(la::LogicalComponent)" lineFinderExpression="aql:self.allocatingComponent->filter(pa::PhysicalComponent)" domainClass="LogicalComponentRealization">
+      <intersection name="Logical Component Realisations" canEdit="" lineMapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Components%20-%20Logical%20Components']/@ownedLineMappings[name='Physical%20Components%201'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Components%20-%20Logical%20Components']/@ownedLineMappings[name='Physical%20Components%201']/@ownedSubLines[name='Sub%20Physical%20Component%201']" columnMapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Components%20-%20Logical%20Components']/@ownedColumnMappings.0" labelExpression="X" useDomainClass="true" columnFinderExpression="aql:self.realizedComponent->filter(la::LogicalComponent)" lineFinderExpression="aql:self.realizingComponent->filter(pa::PhysicalComponent)" domainClass="ComponentRealization">
         <directEdit>
           <variables name="table" documentation="The current DTable."/>
           <variables name="line" documentation="The DLine of the current DCell."/>
@@ -202,8 +202,8 @@
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool:If" conditionExpression="aql:arg0 = '' and lineSemantic.ownedLogicalComponentRealizations->select(ownedLogicalComponentRealization | ownedLogicalComponentRealization.allocatedComponent = columnSemantic and ownedLogicalComponentRealization.allocatingComponent = lineSemantic)->size() > 0">
-            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:lineSemantic.ownedLogicalComponentRealizations->select(ownedLogicalComponentRealization | ownedLogicalComponentRealization.allocatedComponent = columnSemantic and ownedLogicalComponentRealization.allocatingComponent = lineSemantic)->first()">
+          <firstModelOperation xsi:type="tool:If" conditionExpression="aql:arg0 = '' and lineSemantic.ownedComponentRealizations->select(ownedComponentRealization | ownedComponentRealization.realizedComponent = columnSemantic and ownedComponentRealization.realizingComponent = lineSemantic)->size() > 0">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:lineSemantic.ownedComponentRealizations->select(ownedComponentRealization | ownedComponentRealization.realizedComponent = columnSemantic and ownedComponentRealization.realizingComponent = lineSemantic)->first()">
               <subModelOperations xsi:type="tool:RemoveElement"/>
             </subModelOperations>
           </firstModelOperation>
@@ -215,7 +215,7 @@
           <variables name="root" documentation="The semantic root element of the table."/>
           <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="aql:lineSemantic">
             <subModelOperations xsi:type="tool:If" conditionExpression="aql:arg0 = 'X'">
-              <subModelOperations xsi:type="tool:CreateInstance" typeName="LogicalComponentRealization" referenceName="ownedLogicalComponentRealizations">
+              <subModelOperations xsi:type="tool:CreateInstance" typeName="ComponentRealization" referenceName="ownedComponentRealizations">
                 <subModelOperations xsi:type="tool:SetValue" featureName="sourceElement" valueExpression="aql:lineSemantic"/>
                 <subModelOperations xsi:type="tool:SetValue" featureName="targetElement" valueExpression="aql:columnSemantic"/>
               </subModelOperations>
@@ -226,7 +226,7 @@
       </intersection>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Physical Components - Physical Functions" label="Physical Components/Actors - Physical Functions" domainClass="PhysicalArchitecture">
-      <ownedLineMappings name="Physical Components 3" domainClass="Component" semanticCandidatesExpression="aql:self.makeUnion(self.ownedPhysicalComponent.subPhysicalComponents, self.ownedPhysicalActorPkg.getAllphysicalActors())" headerLabelExpression="feature:name">
+      <ownedLineMappings name="Physical Components 3" domainClass="Component" semanticCandidatesExpression="aql:self.makeUnion(self.ownedPhysicalComponentPkg.ownedPhysicalComponents.subPhysicalComponents, self.ownedPhysicalComponentPkg.getAllActors())" headerLabelExpression="feature:name">
         <ownedSubLines name="Sub Physical Component 3" reusedSubLines="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Components%20-%20Physical%20Functions']/@ownedLineMappings[name='Physical%20Components%203']/@ownedSubLines[name='Sub%20Physical%20Component%203']" reusedInMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Components%20-%20Physical%20Functions']/@ownedLineMappings[name='Physical%20Components%203']/@ownedSubLines[name='Sub%20Physical%20Component%203']" domainClass="PhysicalComponent" semanticCandidatesExpression="feature:subPhysicalComponents" headerLabelExpression="feature:name">
           <delete name="No delete" precondition="false">
             <variables name="element" documentation="The currently edited element."/>
@@ -4351,19 +4351,19 @@
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Physical Actor - Logical Actor" label="Physical Actors - Logical Actors" domainClass="PhysicalArchitecture">
-      <ownedLineMappings name="PALA Physical Actor Line" domainClass="PhysicalActor" semanticCandidatesExpression="aql:self.eAllContents()->filter(pa::PhysicalActor)">
+      <ownedLineMappings name="PALA Physical Actor Line" domainClass="PhysicalComponent" semanticCandidatesExpression="aql:self.ownedPhysicalComponentPkg.getAllActors()">
         <delete name="No delete" precondition="false">
           <variables name="element" documentation="The currently edited element."/>
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
         </delete>
       </ownedLineMappings>
-      <ownedColumnMappings name="PALA Logical Actor column" initialWidth="50" domainClass="LogicalActor" semanticCandidatesExpression="aql:self.precedingSibling->filter(cs::BlockArchitecture)->last().eAllContents()->filter(la::LogicalActor)">
+      <ownedColumnMappings name="PALA Logical Actor column" initialWidth="50" domainClass="LogicalComponent" semanticCandidatesExpression="aql:self.precedingSibling->filter(cs::BlockArchitecture)->last().eAllContents()->filter(cs::Component)->select(c | c.isActor())">
         <delete name="No delete" precondition="false">
           <variables name="element" documentation="The currently edited element."/>
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
         </delete>
       </ownedColumnMappings>
-      <intersection name="PALA Actor Realisation" lineMapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Actor%20-%20Logical%20Actor']/@ownedLineMappings[name='PALA%20Physical%20Actor%20Line']" columnMapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Actor%20-%20Logical%20Actor']/@ownedColumnMappings.0" labelExpression="X" useDomainClass="true" columnFinderExpression="feature:targetElement" lineFinderExpression="feature:sourceElement" domainClass="LogicalActorRealization">
+      <intersection name="PALA Actor Realisation" lineMapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Actor%20-%20Logical%20Actor']/@ownedLineMappings[name='PALA%20Physical%20Actor%20Line']" columnMapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Actor%20-%20Logical%20Actor']/@ownedColumnMappings.0" labelExpression="X" useDomainClass="true" columnFinderExpression="feature:targetElement" lineFinderExpression="feature:sourceElement" domainClass="ComponentRealization">
         <directEdit>
           <variables name="table" documentation="The current DTable."/>
           <variables name="line" documentation="The DLine of the current DCell."/>
