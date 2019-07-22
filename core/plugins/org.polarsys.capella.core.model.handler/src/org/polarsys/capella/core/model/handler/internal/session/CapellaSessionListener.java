@@ -28,7 +28,7 @@ public class CapellaSessionListener extends SessionManagerListener.Stub {
         switch (notification_p) {
         case SessionListener.OPENING:
 
-            if (Boolean.valueOf(System.getProperty("org.polarsys.capella.core.session.saving.policy.old)", "true"))) { // $NON-NLS-1$ //$NON-NLS-2$
+            if (Boolean.valueOf(System.getProperty("org.polarsys.capella.core.session.saving.policy.old)", "false"))) { // $NON-NLS-1$ //$NON-NLS-2$
                 // Set a custom implementation of the saving policy to avoid temporary file creation to detect real
                 // changes.
                 updatedSession_p.setSavingPolicy(new CapellaSavingPolicy(updatedSession_p.getTransactionalEditingDomain()));
