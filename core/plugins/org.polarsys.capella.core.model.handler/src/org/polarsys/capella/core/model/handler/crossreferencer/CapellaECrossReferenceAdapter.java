@@ -252,10 +252,6 @@ public class CapellaECrossReferenceAdapter extends SiriusCrossReferenceAdapter {
       return false;
     }
 
-        if (!resolveProxyEnabled) {
-      return false;
-    }
-
     return super.resolve();
   }
 }
