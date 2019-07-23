@@ -30,11 +30,11 @@ import org.polarsys.capella.core.data.la.LaFactory;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.oa.OperationalCapabilityPkg;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.projection.common.CapellaEngine;
 import org.polarsys.capella.core.projection.common.ProjectionMessages;
 import org.polarsys.capella.core.projection.common.context.IContext;
 import org.polarsys.capella.core.projection.common.handlers.log.LogHelper;
 import org.polarsys.capella.core.projection.common.rules.core.Rule_CapellaElement;
-import org.polarsys.capella.core.transfo.misc.CapellaEngine;
 
 /**
  */

@@ -15,13 +15,13 @@ import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.ScenarioKind;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.projection.common.CapellaEngine;
 import org.polarsys.capella.core.projection.common.TransitionHelper;
 import org.polarsys.capella.core.projection.common.context.IContext;
 import org.polarsys.capella.core.projection.scenario.fs2es.handlers.ScenarioFS2ESHandler;
 import org.polarsys.capella.core.projection.scenario.handlers.IScenarioHandler;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.impl.TransfoEngine;
-import org.polarsys.capella.core.transfo.misc.CapellaEngine;
 
 /**
  */

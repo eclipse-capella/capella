@@ -42,10 +42,10 @@ import org.polarsys.capella.core.data.fa.FunctionPort;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.model.handler.helpers.HoldingResourceHelper;
 import org.polarsys.capella.core.model.helpers.PortExt;
-import org.polarsys.capella.core.projection.commands.GenerateInterfacesCommand;
 import org.polarsys.capella.core.projection.common.AbstractTransform;
 import org.polarsys.capella.core.projection.interfaces.InterfaceGeneration;
 import org.polarsys.capella.core.projection.interfaces.InterfaceGenerationPreferences;
+import org.polarsys.capella.core.projection.interfaces.generateInterfaces.GenerateInterfacesCommand;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 import org.polarsys.capella.test.framework.helpers.TestHelper;
 

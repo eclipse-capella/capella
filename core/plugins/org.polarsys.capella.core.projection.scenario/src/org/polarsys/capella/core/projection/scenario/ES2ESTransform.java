@@ -16,12 +16,12 @@ import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.projection.common.CapellaEngine;
 import org.polarsys.capella.core.projection.common.context.IContext;
 import org.polarsys.capella.core.projection.scenario.es2es.handlers.ScenarioES2ESHandler;
 import org.polarsys.capella.core.projection.scenario.handlers.IScenarioHandler;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.impl.TransfoEngine;
-import org.polarsys.capella.core.transfo.misc.CapellaEngine;
 
 /**
  */

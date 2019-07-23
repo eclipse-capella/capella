@@ -18,35 +18,7 @@
             class="org.polarsys.capella.core.transition.system.topdown.ui.preferences.TopDownPreferenceInitializer">
       </initializer>
    </extension>
-   
-   <extension
-         point="org.eclipse.ui.preferencePages">
-      <page
-            category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
-            class="org.polarsys.capella.core.transition.system.topdown.ui.preferences.TopDownPreferencePage"
-            id="org.polarsys.capella.core.projection.preferences.ProjectionPreferencePage"
-            name="Transitions/Generation">
-      </page>
-   </extension>
-   
-      <extension
-         point="org.eclipse.ui.propertyPages">
-      <page
-            category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
-            class="org.polarsys.capella.core.transition.system.topdown.ui.preferences.TopDownPreferencePage"
-            id="org.polarsys.capella.core.projection.preferences.ProjectionPreferencePage"
-            objectClass="org.eclipse.core.resources.IProject"
-            name="Transitions/Generation">
-            <enabledWhen>
-                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
-            </enabledWhen>
-            
-      </page>
-   </extension>
-   
-   
-   
-   
+
    <extension
          point="org.polarsys.capella.common.flexibility.wizards">
       

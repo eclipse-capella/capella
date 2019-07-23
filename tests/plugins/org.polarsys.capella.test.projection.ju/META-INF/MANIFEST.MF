@@ -7,7 +7,6 @@ Bundle-Activator: org.polarsys.capella.test.projection.ju.ProjectionTestActivato
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.polarsys.capella.test.framework,
- org.polarsys.capella.core.projection.commands,
  org.polarsys.capella.core.validation,
  org.polarsys.capella.core.data.fa.validation,
  org.polarsys.capella.core.projection.common,

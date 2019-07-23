@@ -7,7 +7,8 @@ Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.polarsys.capella.core.validation,
  org.apache.commons.lang,
- org.polarsys.capella.core.sirius.analysis
+ org.polarsys.capella.core.sirius.analysis,
+ org.polarsys.capella.core.transition.system.topdown
 Export-Package: org.polarsys.capella.core.data.fa.validation,
  org.polarsys.capella.core.data.fa.validation.componentPort,
  org.polarsys.capella.core.data.fa.validation.connection,

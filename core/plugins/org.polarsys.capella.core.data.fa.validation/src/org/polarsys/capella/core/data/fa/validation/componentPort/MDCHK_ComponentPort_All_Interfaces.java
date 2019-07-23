@@ -23,8 +23,8 @@ import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
+import org.polarsys.capella.core.transition.system.topdown.preferences.PreferenceHelper;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 
@@ -46,7 +46,8 @@ public class MDCHK_ComponentPort_All_Interfaces extends AbstractValidationRule {
       if (eObj instanceof ComponentPort) {
  
         // continue if the preference transition of interface is active
-        if (CapellaModelPreferencesPlugin.getDefault().isInterfaceProjectionHandle()) {
+        PreferenceHelper preferenceHelper = PreferenceHelper.getInstance();
+        if (preferenceHelper.transitionInterfaceWhileComponentTransition()) {
           // standard port
           ComponentPort standardPort = (ComponentPort) eObj;
           BlockArchitecture blockArchitecture = SystemEngineeringExt.getRootBlockArchitecture(standardPort);
@@ -64,7 +65,7 @@ public class MDCHK_ComponentPort_All_Interfaces extends AbstractValidationRule {
           // check weather interface provided/required is not of the level other then physical
           for (Interface myInterface : allInterface) {
             if (!EcoreUtil2.isContainedBy(myInterface, blockArchitecture.eClass())) { 
-              return createFailureStatus(ctx, new Object[] { standardPort.getName() });
+              return ctx.createFailureStatus(ctx, new Object[] { standardPort.getName() });
             }
           }
         } 

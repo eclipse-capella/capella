@@ -28,16 +28,16 @@ import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.projection.common.CapellaEngine;
 import org.polarsys.capella.core.projection.common.ProjectionMessages;
 import org.polarsys.capella.core.projection.common.context.IContext;
 import org.polarsys.capella.core.projection.common.handlers.attachment.AttachmentHelper;
 import org.polarsys.capella.core.projection.common.handlers.transformation.TransformationHandlerHelper;
 import org.polarsys.capella.core.projection.common.rules.core.Rule_CapellaElement;
-import org.polarsys.capella.core.projection.preferences.ProjectionPreferencesPlugin;
 import org.polarsys.capella.core.tiger.helpers.Query;
 import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
 import org.polarsys.capella.core.tiger.impl.TransfoEngine;
-import org.polarsys.capella.core.transfo.misc.CapellaEngine;
+import org.polarsys.capella.core.transition.system.topdown.preferences.PreferenceHelper;
 
 /**
  */
@@ -68,7 +68,9 @@ public class Rule_Connection extends Rule_CapellaElement {
       result_p.addAll(sourceElement.getOwnedComponentExchangeFunctionalExchangeAllocations());
 
       if (sourceElement.getConvoyedInformations().size() > 0) {
-        if (ProjectionPreferencesPlugin.getDefault().transitionExchangeItemWhileFunctionalTransition()) {
+        
+        PreferenceHelper projectionHelper = PreferenceHelper.getInstance();
+        if (projectionHelper.transitionExchangeItemWhileFunctionalTransition()) {
           result_p.addAll(sourceElement.getConvoyedInformations());
         }
       }

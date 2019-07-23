@@ -27,9 +27,9 @@ import org.polarsys.capella.core.projection.common.context.IContext;
 import org.polarsys.capella.core.projection.common.handlers.traceability.TraceabilityHandlerHelper;
 import org.polarsys.capella.core.projection.common.handlers.transformation.TransformationHandlerHelper;
 import org.polarsys.capella.core.projection.common.rules.core.Rule_CapellaElement;
-import org.polarsys.capella.core.projection.preferences.ProjectionPreferencesPlugin;
 import org.polarsys.capella.core.tiger.helpers.Query;
 import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
+import org.polarsys.capella.core.transition.system.topdown.preferences.PreferenceHelper;
 
 /**
  */
@@ -104,7 +104,9 @@ public class Rule_FunctionalExchange extends Rule_CapellaElement {
     FunctionalExchange sourceElement = (FunctionalExchange) source_p;
 
     if (sourceElement.getExchangedItems().size() > 0) {
-      if (ProjectionPreferencesPlugin.getDefault().transitionExchangeItemWhileFunctionalTransition()) {
+      
+      PreferenceHelper preferencesHelper = PreferenceHelper.getInstance();
+      if (preferencesHelper.transitionExchangeItemWhileFunctionalTransition()) {
         result_p.addAll(sourceElement.getExchangedItems());
       }
     }

@@ -20,16 +20,16 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.libraries.model.ICapellaModel;
 import org.polarsys.capella.core.libraries.utils.ScopeModelWrapper;
-import org.polarsys.capella.core.projection.commands.ESToISCommand;
+import org.polarsys.capella.core.projection.scenario.es.transition.commands.ESToISCommand;
 import org.polarsys.capella.core.sirius.ui.actions.NewRepresentationAction;
 import org.polarsys.capella.shared.id.handler.IScope;
 import org.polarsys.capella.shared.id.handler.IdManager;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
-
 /**
  * This test case tests the label of the dialog that creates new diagrams
  */
@@ -71,7 +71,7 @@ public class NewDiagramDialogLabel extends BasicTestCase {
     Session session = getSessionForTestModel(getRequiredTestModels().get(0));
 
     //Execute a transition from ES to IS
-    TransactionHelper.getExecutionManager(scenario3).execute(new ESToISCommand(Arrays.asList(scenario3)));
+    TransactionHelper.getExecutionManager(scenario3).execute((ICommand) new ESToISCommand(Arrays.asList(scenario3)));
     //Get the transformed scenario to test
     final EObject transformedScenario = capability.getOwnedScenarios().get(1);
 

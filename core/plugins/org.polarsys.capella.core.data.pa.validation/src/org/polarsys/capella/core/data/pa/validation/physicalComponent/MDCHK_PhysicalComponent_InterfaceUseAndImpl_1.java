@@ -27,7 +27,7 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.model.helpers.InterfaceExt;
 import org.polarsys.capella.core.model.helpers.InterfacePkgExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
+import org.polarsys.capella.core.transition.system.topdown.preferences.PreferenceHelper;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
@@ -47,7 +47,8 @@ public class MDCHK_PhysicalComponent_InterfaceUseAndImpl_1 extends AbstractValid
       if (eObj instanceof PhysicalComponent) {
         PhysicalComponent physicalComponent = (PhysicalComponent) eObj;
         // continue if the preference transition of interface is not active
-        if (!CapellaModelPreferencesPlugin.getDefault().isInterfaceProjectionHandle()) {
+        PreferenceHelper preferenceHelper = PreferenceHelper.getInstance();
+        if (!preferenceHelper.transitionInterfaceWhileComponentTransition()) {
 	        // collect realized Logical Component
 	        List<LogicalComponent> realizedComponent = new ArrayList<LogicalComponent>(1);
 	        realizedComponent = physicalComponent.getRealizedLogicalComponents();

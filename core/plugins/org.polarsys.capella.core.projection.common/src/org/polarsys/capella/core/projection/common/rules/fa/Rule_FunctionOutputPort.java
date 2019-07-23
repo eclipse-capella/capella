@@ -25,7 +25,7 @@ import org.polarsys.capella.core.projection.common.context.IContext;
 import org.polarsys.capella.core.projection.common.handlers.attachment.AttachmentHelper;
 import org.polarsys.capella.core.projection.common.handlers.transformation.TransformationHandlerHelper;
 import org.polarsys.capella.core.projection.common.rules.core.Rule_CapellaElement;
-import org.polarsys.capella.core.projection.preferences.ProjectionPreferencesPlugin;
+import org.polarsys.capella.core.transition.system.topdown.preferences.PreferenceHelper;
 import org.polarsys.capella.common.data.activity.ActivityPackage;
 
 /**
@@ -80,7 +80,9 @@ public class Rule_FunctionOutputPort extends Rule_CapellaElement {
     result_p.addAll(sourceElement.getOutgoing());
 
     if (sourceElement.getOutgoingExchangeItems().size() > 0) {
-      if (ProjectionPreferencesPlugin.getDefault().transitionExchangeItemWhileFunctionalTransition()) {
+      
+      PreferenceHelper preferenceHelper = PreferenceHelper.getInstance();
+      if (preferenceHelper.transitionExchangeItemWhileFunctionalTransition()) {
         result_p.addAll(sourceElement.getOutgoingExchangeItems());
       }
     }

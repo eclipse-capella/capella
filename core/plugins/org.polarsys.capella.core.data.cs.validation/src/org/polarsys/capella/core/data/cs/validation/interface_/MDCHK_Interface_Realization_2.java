@@ -20,7 +20,7 @@ import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfaceAllocation;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.pa.PaPackage;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
+import org.polarsys.capella.core.transition.system.topdown.preferences.PreferenceHelper;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 
@@ -38,7 +38,9 @@ public class MDCHK_Interface_Realization_2 extends AbstractValidationRule {
 
     if (eType == EMFEventType.NULL) {
       // continue if preference 'transition of interface' is active
-      if (CapellaModelPreferencesPlugin.getDefault().isInterfaceProjectionHandle()) {
+      
+      PreferenceHelper preferenceHelper = PreferenceHelper.getInstance();
+      if (preferenceHelper.transitionInterfaceWhileComponentTransition()) {
         if ((eObj instanceof Interface) && EcoreUtil2.isContainedBy(eObj, LaPackage.Literals.LOGICAL_ARCHITECTURE)) {
           Interface itf = (Interface) eObj;
 
@@ -49,7 +51,7 @@ public class MDCHK_Interface_Realization_2 extends AbstractValidationRule {
             }
           }
 
-          return createFailureStatus(ctx, new Object[] { itf.getName() });
+          return ctx.createFailureStatus(ctx, new Object[] { itf.getName() });
         }        
       }
     }

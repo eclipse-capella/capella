@@ -105,7 +105,6 @@
         <module>org.polarsys.capella.core.platform.eclipse.ui.trace</module>
         <module>org.polarsys.capella.core.platform.sirius.adapter</module>
         <module>org.polarsys.capella.core.platform.sirius.clipboard</module>
-        <module>org.polarsys.capella.core.platform.sirius.refinement.processor</module>
         <module>org.polarsys.capella.core.platform.sirius.sirius.validation</module>
         <module>org.polarsys.capella.core.platform.sirius.ui.actions</module>
         <module>org.polarsys.capella.core.platform.sirius.ui.menu</module>
@@ -115,29 +114,11 @@
         <module>org.polarsys.capella.core.platform.sirius.ui.services</module>
         <module>org.polarsys.capella.core.preferences</module>
         <module>org.polarsys.capella.core.preferences.project.configuration</module>
-        <module>org.polarsys.capella.core.projection.actors.ctx2la</module>
-        <module>org.polarsys.capella.core.projection.actors.la2pa</module>
-        <module>org.polarsys.capella.core.projection.actors.oa2ctx</module>
-        <module>org.polarsys.capella.core.projection.actorsandinterfaces.ctx2la</module>
-        <module>org.polarsys.capella.core.projection.commands</module>
         <module>org.polarsys.capella.core.projection.common</module>
         <module>org.polarsys.capella.core.projection.common.ui</module>
-        <module>org.polarsys.capella.core.projection.data</module>
         <module>org.polarsys.capella.core.projection.exchanges</module>
         <module>org.polarsys.capella.core.projection.interfaces</module>
-        <module>org.polarsys.capella.core.projection.interfaces.ctx2la</module>
-        <module>org.polarsys.capella.core.projection.interfaces.ctx2pa</module>
-        <module>org.polarsys.capella.core.projection.interfaces.la2pa</module>
-        <module>org.polarsys.capella.core.projection.lc2pc.breakdownstrategy</module>
-        <module>org.polarsys.capella.core.projection.lc2pc.leafstrategy</module>
-        <module>org.polarsys.capella.core.projection.logicalfunction</module>
-        <module>org.polarsys.capella.core.projection.misc</module>
-        <module>org.polarsys.capella.core.projection.operationalactivity</module>
-        <module>org.polarsys.capella.core.projection.operationalcapability</module>
-        <module>org.polarsys.capella.core.projection.preferences</module>
         <module>org.polarsys.capella.core.projection.scenario</module>
-        <module>org.polarsys.capella.core.projection.statemachine</module>
-        <module>org.polarsys.capella.core.projection.systemfunction</module>
         <module>org.polarsys.capella.core.queries.helpers</module>
         <module>org.polarsys.capella.core.re</module>
         <module>org.polarsys.capella.core.re.project</module>
@@ -145,25 +126,6 @@
         <module>org.polarsys.capella.core.re.ui.quickfix</module>
         <module>org.polarsys.capella.core.re.updateconnections.ui</module>
         <module>org.polarsys.capella.core.re.validation</module>
-        <module>org.polarsys.capella.core.refinement.commands</module>
-        <module>org.polarsys.capella.core.refinement.framework</module>
-        <module>org.polarsys.capella.core.refinement.framework.ui</module>
-        <module>org.polarsys.capella.core.refinement.mapper.broadcastpattern</module>
-        <module>org.polarsys.capella.core.refinement.mapper.standard</module>
-        <module>org.polarsys.capella.core.refinement.merge</module>
-        <module>org.polarsys.capella.core.refinement.merge.ui</module>
-        <module>org.polarsys.capella.core.refinement.preferences</module>
-        <module>org.polarsys.capella.core.refinement.preferences.ui</module>
-        <module>org.polarsys.capella.core.refinement.processor.actorprojection</module>
-        <module>org.polarsys.capella.core.refinement.processor.interfacelinksupdate</module>
-        <module>org.polarsys.capella.core.refinement.processor.realizationsupdate</module>
-        <module>org.polarsys.capella.core.refinement.processor.structuresynchronization</module>
-        <module>org.polarsys.capella.core.refinement.resolver.standard</module>
-        <module>org.polarsys.capella.core.refinement.resolver.uiselection</module>
-        <module>org.polarsys.capella.core.refinement.scenario</module>
-        <module>org.polarsys.capella.core.refinement.scheduler.standard</module>
-        <module>org.polarsys.capella.core.refinement.static</module>
-        <module>org.polarsys.capella.core.refinement.subscenario</module>
         <module>org.polarsys.capella.core.semantic.queries</module>
         <module>org.polarsys.capella.core.semantic.queries.sirius</module>
         <module>org.polarsys.capella.core.sequencediag.specific</module>

@@ -7,9 +7,13 @@ Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.polarsys.capella.core.model.helpers,
  org.polarsys.capella.core.tiger;visibility:=reexport,
- org.polarsys.capella.core.projection.misc,
  org.polarsys.capella.core.model.preferences,
- org.polarsys.capella.core.projection.preferences
+ org.polarsys.capella.core.transition.system.topdown,
+ org.eclipse.ui.workbench,
+ org.polarsys.capella.common.tools.report.appenders.reportlogview,
+ org.polarsys.capella.core.platform.sirius.ui.actions,
+ org.eclipse.core.expressions,
+ org.polarsys.capella.common.tools.report.appenders.usage
 Export-Package: org.polarsys.capella.core.projection.common,
  org.polarsys.capella.core.projection.common.constants,
  org.polarsys.capella.core.projection.common.context,

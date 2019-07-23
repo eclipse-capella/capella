@@ -22,14 +22,14 @@ public class InterfaceGenerationPreferences {
    * functional exchanges to the generated component exchange?
    */
   public boolean isGenerateComponentExchanges() {
-    return new PreferenceHelper().generateInterfacesCreateComponentExchange();
+    return PreferenceHelper.getInstance().generateInterfacesCreateComponentExchange();
   }
 
   /**
    * Should the generator propagate exchange items for all transformed functional exchanges to its function ports.
    */
   public boolean isPropagateExchangeItemsToFunctionPorts() {
-    return new PreferenceHelper().generateInterfacesPropagateExchangeItems();
+    return PreferenceHelper.getInstance().generateInterfacesPropagateExchangeItems();
   }
   
   /**

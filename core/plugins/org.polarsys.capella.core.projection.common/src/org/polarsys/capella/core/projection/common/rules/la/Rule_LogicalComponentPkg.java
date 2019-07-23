@@ -25,10 +25,10 @@ import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.projection.common.CapellaEngine;
 import org.polarsys.capella.core.projection.common.context.IContext;
 import org.polarsys.capella.core.projection.common.rules.core.Rule_CapellaElement;
 import org.polarsys.capella.core.tiger.helpers.Query;
-import org.polarsys.capella.core.transfo.misc.CapellaEngine;
 
 /**
  */

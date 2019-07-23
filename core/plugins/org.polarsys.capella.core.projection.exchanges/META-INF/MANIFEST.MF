@@ -8,8 +8,11 @@ Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.tiger,
  org.polarsys.capella.core.projection.common,
- org.polarsys.capella.core.projection.misc,
- org.polarsys.capella.core.model.preferences
+ org.polarsys.capella.core.model.preferences,
+ org.polarsys.capella.common.ui,
+ org.eclipse.sirius.diagram,
+ org.polarsys.capella.core.sirius.ui,
+ org.polarsys.capella.core.platform.sirius.ui.actions
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.projection.exchanges

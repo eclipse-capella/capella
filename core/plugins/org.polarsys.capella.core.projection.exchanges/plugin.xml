@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+  Copyright (c) 2019 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+-->
+<plugin>
+   <extension
+         point="org.eclipse.ui.commands">
+         
+          
+         <!--  Generation accelerators commands -->
+          
+         <command
+               defaultHandler="org.polarsys.capella.core.projection.exchanges.handlers.GenerateConnectionsHandler"
+               id="org.polarsys.capella.core.sirius.menus.graphical.generateComponentExchanges"
+               name="%generateComponentExchanges_label"
+               >
+         </command>
+         
+          <command
+               defaultHandler="org.polarsys.capella.core.projection.exchanges.handlers.GenerateConnectionsHandler"
+               id="org.polarsys.capella.core.sirius.menus.graphical.generateCommunicationMeans"
+               name="%generateCommunicationMeans_label"
+               >
+         </command>
+         
+          <command
+               defaultHandler="org.polarsys.capella.core.projection.exchanges.handlers.GenerateLinksHandler"
+               id="org.polarsys.capella.core.transfo.commands.actions.generatePhysicalLinks"
+               name="%generatePhysicalLinks_label"
+               >
+         </command>
+         
+          <command
+               defaultHandler="org.polarsys.capella.core.projection.exchanges.handlers.GenerateConnectionsHandler"
+               id="org.polarsys.capella.core.transfo.commands.actions.generatePhysicalLinksComponentExchanges"
+               name="%generatePhysicalLinksComponentExchanges_label"
+               >
+         </command>
+   </extension>
+   
+   <extension
+            point="org.eclipse.ui.commandImages">
+         <image
+               commandId="org.polarsys.capella.core.sirius.menus.graphical.generateComponentExchanges"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif">
+         </image>
+         
+         <image
+               commandId="org.polarsys.capella.core.sirius.menus.graphical.generateCommunicationMeans"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif">
+         </image>
+         
+         <image
+               commandId="org.polarsys.capella.core.transfo.commands.actions.generatePhysicalLinks"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif">
+         </image>
+         
+         <image
+               commandId="org.polarsys.capella.core.transfo.commands.actions.generatePhysicalLinksComponentExchanges"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif">
+         </image>
+  </extension>
+  
+  <extension
+            point="org.eclipse.ui.menus">
+            
+         <menuContribution allPopups="true"
+            locationURI="popup:org.polarsys.capella.core.accelerators?after=additions">
+            
+            
+         <command  commandId="org.polarsys.capella.core.sirius.menus.graphical.generateComponentExchanges" >
+         <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate ifEmpty="false">
+                        <test
+			                  forcePluginActivation="true"
+			                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+			                  value="generateComponentExchanges">
+			            </test>
+                </iterate>
+            </with>
+         </visibleWhen> 
+         </command> 
+         
+         
+         <command  commandId="org.polarsys.capella.core.sirius.menus.graphical.generateCommunicationMeans" >
+         <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate ifEmpty="false">
+                        <test
+			                  forcePluginActivation="true"
+			                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+			                  value="generateCommunicationMeans">
+			            </test>
+                </iterate>
+            </with>
+         </visibleWhen> 
+         </command> 
+         
+         
+         <command  commandId="org.polarsys.capella.core.transfo.commands.actions.generatePhysicalLinks" >
+         <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate ifEmpty="false">
+                        <test
+			                  forcePluginActivation="true"
+			                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+			                  value="generatePhysicalLinks">
+			            </test>
+                </iterate>
+            </with>
+         </visibleWhen> 
+         </command> 
+         
+         
+         
+         
+         <command  commandId="org.polarsys.capella.core.transfo.commands.actions.generatePhysicalLinksComponentExchanges" >
+         <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate ifEmpty="false">
+                        <test
+			                  forcePluginActivation="true"
+			                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+			                  value="generatePhysicalLinksComponentExchanges">
+			            </test>
+                </iterate>
+            </with>
+         </visibleWhen> 
+         </command> 
+    </menuContribution>
+</extension>
+
+</plugin>

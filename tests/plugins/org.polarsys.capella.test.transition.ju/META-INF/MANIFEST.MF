@@ -13,7 +13,9 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.platform.sirius.ui.actions,
  org.eclipse.emf.diffmerge,
  org.polarsys.capella.core.transition.system.topdown,
- org.polarsys.capella.core.projection.commands
+ org.polarsys.capella.core.projection.scenario,
+ org.polarsys.capella.core.projection.interfaces,
+ org.polarsys.capella.core.projection.common
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName

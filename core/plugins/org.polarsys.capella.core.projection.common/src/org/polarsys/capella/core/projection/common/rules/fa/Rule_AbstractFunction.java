@@ -25,13 +25,13 @@ import org.polarsys.capella.core.data.capellacommon.AbstractState;
 import org.polarsys.capella.core.data.capellacommon.AbstractStateRealization;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.projection.common.CapellaEngine;
 import org.polarsys.capella.core.projection.common.context.IContext;
 import org.polarsys.capella.core.projection.common.handlers.attachment.AttachmentHelper;
 import org.polarsys.capella.core.projection.common.handlers.traceability.TraceabilityHandlerHelper;
 import org.polarsys.capella.core.projection.common.handlers.transformation.TransformationHandlerHelper;
 import org.polarsys.capella.core.projection.common.rules.core.Rule_CapellaElement;
 import org.polarsys.capella.core.tiger.helpers.Query;
-import org.polarsys.capella.core.transfo.misc.CapellaEngine;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 
 public abstract class Rule_AbstractFunction extends Rule_CapellaElement {

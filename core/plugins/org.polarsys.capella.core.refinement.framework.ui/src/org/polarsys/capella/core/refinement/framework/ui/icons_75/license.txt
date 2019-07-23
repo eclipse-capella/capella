@@ -1,7 +1,0 @@
-These followings icons are made available under the terms of the Eclipse Public License v1.0
- which accompanies this distribution, and is available at
- http://www.eclipse.org/legal/epl-v10.html
-
-<icon file path> - <original eclipse plug-in> - <original file path>
-
-/src/org/polarsys/capella/core/refinement/framework/ui/icons_75/Scenario.png - org.polarsys.capella.core.refinement.framework.ui - org.polarsys.capella.core.refinement.framework.ui/src/org/polarsys/capella/core/refinement/framework/ui/icons_75/Scenario.png

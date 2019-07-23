@@ -20,8 +20,8 @@ import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.projection.common.context.IContext;
 import org.polarsys.capella.core.projection.common.handlers.attachment.AttachmentHelper;
 import org.polarsys.capella.core.projection.common.rules.core.Rule_CapellaElement;
-import org.polarsys.capella.core.projection.preferences.ProjectionPreferencesPlugin;
 import org.polarsys.capella.core.tiger.impl.TransfoEngine;
+import org.polarsys.capella.core.transition.system.topdown.preferences.PreferenceHelper;
 import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
 
 /**
@@ -51,7 +51,9 @@ public class Rule_ExchangeItemAllocation extends Rule_CapellaElement {
     ExchangeItemAllocation sourceElement = (ExchangeItemAllocation) source_p;
     AbstractExchangeItem item = sourceElement.getAllocatedItem();
     if (item != null) {
-      if (ProjectionPreferencesPlugin.getDefault().transitionExchangeItemWhileInterfaceTransition()) {
+      
+      PreferenceHelper preferenceHelper = PreferenceHelper.getInstance();
+      if (preferenceHelper.transitionExchangeItemWhileInterfaceTransition()) {
         result_p.add(sourceElement.getAllocatedItem());
       }
     }

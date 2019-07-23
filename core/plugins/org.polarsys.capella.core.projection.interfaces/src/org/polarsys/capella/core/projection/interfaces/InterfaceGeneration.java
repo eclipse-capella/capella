@@ -21,6 +21,7 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.projection.common.AbstractTransform;
+import org.polarsys.capella.core.projection.common.CapellaEngine;
 import org.polarsys.capella.core.projection.common.ProjectionEngine;
 import org.polarsys.capella.core.projection.interfaces.generateInterfaces.InterfaceGenerationResult;
 import org.polarsys.capella.core.tiger.ITransfo;
@@ -29,7 +30,6 @@ import org.polarsys.capella.core.tiger.ITransfoRuleBase;
 import org.polarsys.capella.core.tiger.impl.Transfo;
 import org.polarsys.capella.core.tiger.impl.TransfoEngine;
 import org.polarsys.capella.core.tiger.impl.TransfoRule;
-import org.polarsys.capella.core.transfo.misc.CapellaEngine;
 
 /**
  */

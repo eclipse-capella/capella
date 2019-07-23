@@ -48,6 +48,31 @@ public class ITopDownConstants {
 
   public static final String OPTIONS_TRANSITION__FUNCTIONAL = "projection.functional";
   public static final Boolean OPTIONS_TRANSITION__FUNCTIONAL_DEFAULT = Boolean.TRUE;
+  
+  public static final String OPTIONS_INTERFACEGEN_PROPAGATE_EXCHANGE_ITEMS = "projection.interfaces.propagateEI";
+  public static final String OPTIONS_INTERFACEGEN_CREATE_COMPONENT_EXCHANGE = "projection.interfaces.createCE";
+  
+  /**
+   * FC2FS Scenario Initialization preference
+   */
+  public static final String OPTIONS_FC2FS_SEQUENCE_MESSAGE_STRATEGY = "transition.fc2fs.sequence.message.strategy";
+
+  public static final String OPTIONS_FC2FS_MESSAGE_ONE_WAY = "fc2fs.msg.one.way";
+
+  public static final String OPTIONS_FC2FS_MESSAGE_WITH_REPLY = "fc2fs.msg.with.reply";
+
+  public static final String OPTIONS_FC2FS_SEQUENCE_MESSAGE_STRATEGY_DEFAULT = OPTIONS_FC2FS_MESSAGE_ONE_WAY;
+
+  /**
+   * OP2OAS Scenario Initialization preference
+   */
+  public static final String OPTIONS_OP2OAS_SEQUENCE_MESSAGE_STRATEGY = "transition.op2oas.sequence.message.strategy";
+
+  public static final String OPTIONS_OP2OAS_MESSAGE_ONE_WAY = "op2oas.msg.one.way";
+
+  public static final String OPTIONS_OP2OAS_MESSAGE_WITH_REPLY = "op2oas.msg.with.reply";
+
+  public static final String OPTIONS_OP2OAS_SEQUENCE_MESSAGE_STRATEGY_DEFAULT = OPTIONS_OP2OAS_MESSAGE_ONE_WAY;
 
   public static final String OPTIONS_LOG = "log.enabled";
   public static final Boolean OPTIONS_LOG__DEFAULT = Boolean.TRUE;
