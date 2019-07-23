@@ -285,7 +285,7 @@ public class RepresentationHelper {
   public static Collection<Resource> getSemanticResources(DRepresentationDescriptor representation) {
 
     if (representation != null) {
-      EObject root = ((DRepresentationDescriptor) representation).getTarget();
+      EObject root = representation.getTarget();
       // if session is opened, return all defined resources from session
       if (root != null) {
         Collection<Resource> resources = new HashSet<Resource>();
@@ -364,7 +364,7 @@ public class RepresentationHelper {
   public static DRepresentationDescriptor getRepresentationDescriptor(DRepresentation representation) {
     return new DRepresentationQuery(representation).getRepresentationDescriptor();
   }
-  
+
   /**
    * Get the representation descriptor whose UID or repPath equals to the parameter id.
    */
@@ -373,18 +373,19 @@ public class RepresentationHelper {
     List<Resource> capellaSemanticResources = capellaSemanticResourceScope.getResources();
     Resource resource = capellaSemanticResources.stream().findFirst().orElse(null);
     Session session = SessionManager.INSTANCE.getSession(resource);
-    Collection<DRepresentationDescriptor> representationDescriptors = DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
+    Collection<DRepresentationDescriptor> representationDescriptors = DialectManager.INSTANCE
+        .getAllRepresentationDescriptors(session);
     for (DRepresentationDescriptor representationDescriptor : representationDescriptors) {
-      
+
       String descriptorFragment;
       try {
         descriptorFragment = representationDescriptor.getRepPath().getResourceURI().fragment();
       } catch (NullPointerException e) {
         descriptorFragment = "";
       }
-      
+
       String descriptorUid = representationDescriptor.getUid();
-      
+
       if (id.equals(descriptorFragment) || id.equals(descriptorUid)) {
         return representationDescriptor;
       }
@@ -414,10 +415,10 @@ public class RepresentationHelper {
   }
 
   /**
-   * Returns all representation descriptors containing an annotation referencing at least one element of
-   * the given list
+   * Returns all representation descriptors containing an annotation referencing at least one element of the given list
    */
-  public static Collection<DRepresentationDescriptor> getAllRepresentationDescriptorsAnnotatedBy(List<EObject> objects) {
+  public static Collection<DRepresentationDescriptor> getAllRepresentationDescriptorsAnnotatedBy(
+      List<EObject> objects) {
     Collection<DRepresentationDescriptor> result = new ArrayList<DRepresentationDescriptor>();
     if (!objects.isEmpty()) {
       Session session = SessionManager.INSTANCE.getSession(objects.iterator().next());
@@ -437,16 +438,17 @@ public class RepresentationHelper {
 
   /**
    * Returns whether the given descriptor is valid
+   * 
    * @see org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery.isRepresentationValid
    */
   public static boolean isValid(DRepresentationDescriptor descriptor) {
     return new DRepresentationDescriptorQuery(descriptor).isRepresentationValid();
   }
-  
+
   public static String getRepresentationStatusText(DRepresentationDescriptor element) {
     String result = ICommonConstants.EMPTY_STRING;
 
-    if (!new DRepresentationDescriptorQuery((DRepresentationDescriptor) element).isRepresentationValid()) {
+    if (!new DRepresentationDescriptorQuery(element).isRepresentationValid()) {
       return "(Invalid)";
     } else if (!element.isLoadedRepresentation()) {
       result = "(Not Loaded)";
@@ -462,14 +464,18 @@ public class RepresentationHelper {
     }
     return result;
   }
-  
-  
+
   public static String getRepresentationFullPathText(DRepresentationDescriptor descriptor) {
+    String fullPathText = "";
     EObject semanticElement = descriptor.getTarget();
-    String fullPathText = EObjectLabelProviderHelper.getFullPathText(semanticElement);
-    fullPathText += EObjectLabelProviderHelper.FULL_PATH_SEPARATOR + descriptor.getName();
-    fullPathText += " " + RepresentationHelper.getRepresentationStatusText(descriptor);
+
+    if (semanticElement != null) {
+      fullPathText += EObjectLabelProviderHelper.getFullPathText(semanticElement);
+    }
+
+    fullPathText += EObjectLabelProviderHelper.FULL_PATH_SEPARATOR + descriptor.getName() + " "
+        + RepresentationHelper.getRepresentationStatusText(descriptor);
     return fullPathText;
   }
-  
+
 }

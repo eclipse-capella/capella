@@ -17,9 +17,7 @@ import java.util.List;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.navigator.IDescriptionProvider;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 
 /**
@@ -35,21 +33,17 @@ public class NavigatorStatusLineRepresentation extends BasicTestCase {
   @Override
   public void test() throws Exception {
 
-    CapellaCommonNavigator navigator = (CapellaCommonNavigator) PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-        .getActivePage().findView(CapellaCommonNavigator.ID);
-
     Session session = getSession("emptyDiagram");
-    Collection<DRepresentationDescriptor> descriptors = DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
+    Collection<DRepresentationDescriptor> descriptors = DialectManager.INSTANCE
+        .getAllRepresentationDescriptors(session);
 
-    //On all invalid representations, it shall display an (Invalid) tag
-    IDescriptionProvider provider = navigator.getNavigatorContentService().createCommonDescriptionProvider();
+    // On all invalid representations, it shall display an (Invalid) tag
     for (DRepresentationDescriptor descriptor : descriptors) {
       if (!descriptor.getName().contains("Valid")) {
-        String description = provider.getDescription(descriptor);
+        String description = RepresentationHelper.getRepresentationFullPathText(descriptor);
         assertTrue("Status line doesn't display Invalid status", description.endsWith("(Invalid)"));
       }
     }
-
   }
 
 }
