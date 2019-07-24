@@ -15,7 +15,7 @@ Content-Type: text/ecl
 Entry-Name: .content
 
 get-button "View Menu" | click
-get-view "Capella Project Explorer" | get-menu "Filters and Customization..." | click
+get-view "Project Explorer" | get-menu "Filters and Customization..." | click
 with [get-window "Filters and Customization"] {
     get-tab-folder | get-tab-item "Pre-set filters" | click
     get-editbox -after [get-label "Select the filters to apply (matching items will be hidden):"] | set-text comp
@@ -25,7 +25,7 @@ get-window "Filters and Customization" | get-table | get-item -path "Component E
     | equals true | verify-true
     
 get-window "Filters and Customization" | get-button OK | click
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | double-click
     select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Logical Architecture/IFE System/\\[LAB\\] IFE System - All Components, CEs" 
         | double-click
@@ -47,11 +47,11 @@ with [get-editor "[LAB] IFE System - All Components, CEs"] {
                 mouse-release 62 70 button3 2097152 -height 259 -width 137
             }
         }
-        get-menu -path "Show in Capella Explorer" | click
+        get-menu -path "Show in Project Explorer" | click
     }
 }
 
-get-window "Show in Capella Project Explorer" | get-button Yes | click
+get-window "Show in Project Explorer" | get-button Yes | click
 with [get-editor "[LAB] IFE System - All Components, CEs" | get-diagram -index 1 | get-edit-part 
     -name "[LAB] IFE System - All Components, CEs" | get-edit-part -name "IFE System" | get-edit-part 
     -className DNodeContainerViewNodeContainerCompartmentEditPart] {
@@ -71,13 +71,13 @@ with [get-editor "[LAB] IFE System - All Components, CEs" | get-diagram -index 1
 }
 
 
-get-view "Capella Project Explorer" | get-tree | get-item 
+get-view "Project Explorer" | get-tree | get-item 
     -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Logical Architecture/IFE System/Streaming Protocol" 
     | get-property selected | equals true | verify-true
     
-get-view "Capella Project Explorer" | click
+get-view "Project Explorer" | click
 get-button "View Menu" | click
-get-view "Capella Project Explorer" | get-menu "Filters and Customization..." | click
+get-view "Project Explorer" | get-menu "Filters and Customization..." | click
 with [get-window "Filters and Customization"] {
     get-tab-folder | get-tab-item "Pre-set filters" | click
     get-editbox -after [get-label "Select the filters to apply (matching items will be hidden):"] | set-text co

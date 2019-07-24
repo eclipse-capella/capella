@@ -22,12 +22,12 @@ Entry-Name: .description
 Content-Type: text/ecl
 Entry-Name: .content
 
-get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
+get-view "Project Explorer" | get-tree | get-menu "New/Capella Project" | click
 with [get-window "New Capella Project"] {
     get-editbox | set-text P1
     get-button Finish | click
 }
-get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
+get-view "Project Explorer" | get-tree | get-menu "New/Capella Project" | click
 with [get-window "New Capella Project"] {
     get-editbox | set-text P2
     get-button Finish | click

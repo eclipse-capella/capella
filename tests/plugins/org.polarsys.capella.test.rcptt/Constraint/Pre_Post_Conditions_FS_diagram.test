@@ -22,21 +22,21 @@ Content-Type: text/ecl
 Entry-Name: .content
 
 // Create a Capella Project
-get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
+get-view "Project Explorer" | get-tree | get-menu "New/Capella Project" | click
 with [get-window "New Capella Project"] {
     get-editbox | set-text Project
     get-button Finish | click
 }
 
 // Create Contraint under "MA_Project01::MA_Project01::System Analysis::Capabilities"
-get-view "Capella Project Explorer" | get-tree | select "Project/Project.aird/Project/System Analysis/Capabilities" 
+get-view "Project Explorer" | get-tree | select "Project/Project.aird/Project/System Analysis/Capabilities" 
     | get-menu "Add Capella Element/Constraint" | click
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | get-item "Project/\\*Project.aird/Project/System Analysis/Capabilities/\\[Constraint\\]" 
     | get-property childCount | equals 1 | verify-true
 
 // Set an OpaqueExpression with a text
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "Project/*Project.aird/Project/System Analysis/Capabilities/[Constraint]/[Opaque Expression]"
 with [get-view Properties] {
     click
@@ -56,17 +56,17 @@ with [get-view Properties | get-section Property | get-group "" -index 1 | get-t
 }
 
 // Create a new Capability element
-get-view "Capella Project Explorer" | get-tree | select "Project/Project.aird/Project/System Analysis/Capabilities" 
+get-view "Project Explorer" | get-tree | select "Project/Project.aird/Project/System Analysis/Capabilities" 
     | get-menu "Add Capella Element/Capability" | click
     
 // Create a Function Scenario
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "Project/*Project.aird/Project/System Analysis/Capabilities/Capability 1" 
     | get-menu "New Diagram \\/ Table.../Function Scenario" | click
 get-window "New Function Scenario" | get-button OK | click
 
 // Set Precondition on scenario
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "Project/*Project.aird/Project/System Analysis/Capabilities/Capability 1/[FS] Capability 1"
     
 get-view Properties | get-section Property | get-group -index 2 | get-button "Browse available elements" | click

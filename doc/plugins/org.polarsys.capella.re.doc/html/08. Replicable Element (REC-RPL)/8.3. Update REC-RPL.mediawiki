@@ -47,7 +47,7 @@ In the wizard "Update REC from selection" select one or more REC elements and pr
  
 [[Image:Images/8.3.%20add_remove_suffix.png|81x90px]]
 
-It is also possible to do the same via properties view by selecting "Catalog Element Link" contained by REC in Capella Explorer.
+It is also possible to do the same via properties view by selecting "Catalog Element Link" contained by REC in Project Explorer.
 
 [[Image:Images/8.3.%20add_remove_suffix_via_properties_view.png|255x136px]]
  

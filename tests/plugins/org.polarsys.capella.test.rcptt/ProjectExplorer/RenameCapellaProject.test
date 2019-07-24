@@ -14,7 +14,7 @@ Testcase-Type: ecl
 Content-Type: text/plain
 Entry-Name: .description
 
- From Capella Explorer :
+ From Project Explorer :
 - Right-click project and run rename action
 - Enter a new name
 - Open the SDFB diagram
@@ -24,18 +24,18 @@ Entry-Name: .description
 Content-Type: text/ecl
 Entry-Name: .content
 
-// Select the project in the Capella Project Explorer and press F2 to rename it
-get-view "Capella Project Explorer" | get-tree | select renameTest | key-type F2
+// Select the project in the Project Explorer and press F2 to rename it
+get-view "Project Explorer" | get-tree | select renameTest | key-type F2
 with [get-window "Rename Resource"] {
     get-editbox -after [get-label "New name:"] | set-text renameTest1
     get-button OK | click
 }
 
 // Open the session
-get-view "Capella Project Explorer" | get-tree | select "renameTest1/renameTest.aird" | double-click
+get-view "Project Explorer" | get-tree | select "renameTest1/renameTest.aird" | double-click
 
 // Select the SDFB diagram in the renamed project and open it
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "renameTest1/renameTest.aird/renameTest1/System Analysis/System Functions/Root System Function/\\[SDFB\\] Root System Function" 
     | double-click
 with [get-editor "[SDFB] Root System Function" | get-diagram -index 1] {
@@ -52,7 +52,7 @@ with [get-editor "[SDFB] Root System Function" | get-diagram -index 1] {
             mouse-release 364 23 button3 2097152 -height 40 -width 551
         }
     }
-    get-menu -path "Show in Capella Explorer" | click
+    get-menu -path "Show in Project Explorer" | click
     with [get-edit-part -name "[SDFB] Root System Function"] {
         
     }

@@ -23,14 +23,14 @@ Entry-Name: .description
 Content-Type: text/ecl
 Entry-Name: .content
 
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | double-click
 get-menu -path "Window/Show View/Other..." | click
 with [get-window "Show View"] {
     get-editbox | set-text "Mass Visualization"
     get-tree | select "Capella/Mass Visualization" | double-click
 }
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/VOD Movie Selections" "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Displayed VOD Movie Data"
     get-menu -path "Send to Mass Visualization View/Mass Visualization" | click
 }
@@ -48,7 +48,7 @@ with [get-view "Mass Visualization" | get-canvas] {
     get-property "getLayer().getGridLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getRowCount()" 
         | equals 2 | verify-true
 }
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/Entertain with IFE System" "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/Perform Cabin Management Activities"
     get-menu -path "Send to Mass Visualization View/Mass Visualization" | click
 }
@@ -84,7 +84,7 @@ with [get-view "Fast Linker" | get-canvas] {
     mouse-move 178 28 -height 145 -width 244
     mouse-exit 246 22 -height 145 -width 244
 }
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/VOD Movie Selections" "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Displayed VOD Movie Data"
     get-menu -path "Send to Mass Visualization View/Mass Visualization" | click
     select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/Perform Cabin Management Activities" 

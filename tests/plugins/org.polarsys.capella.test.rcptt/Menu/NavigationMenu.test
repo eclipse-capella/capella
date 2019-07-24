@@ -20,11 +20,11 @@ Delete a SystemFunction which has a SDFB diagram. The tree which appears in the 
 Content-Type: text/ecl
 Entry-Name: .content
 
-get-view "Capella Project Explorer" | get-tree
+get-view "Project Explorer" | get-tree
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | double-click
 
 
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Logical Architecture/Logical Functions/Root Logical Function" 
     | get-menu -path "Validate Model" | click
     
@@ -32,7 +32,7 @@ get-window "Validation Problems" | get-button OK | click
 
 
 
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Operational Analysis"
     get-menu -path "Show in Semantic Browser" | get-property enablement | equals true | verify-true
     get-menu -path "Copy Qualified Name" | get-property enablement | equals true | verify-true
@@ -42,27 +42,27 @@ with [get-view "Capella Project Explorer" | get-tree] {
 
 //Check that after a transition, the menu is still available on the same element
 
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/Perform Cabin Management Activities" 
     | get-menu -path "Transitions/Functional Transition" | click
 get-window "Progress Information" | get-window "Functional Transition" | get-button Cancel | click
-get-view "Capella Project Explorer" | get-tree | get-menu -path "Transitions/Functional Transition" 
+get-view "Project Explorer" | get-tree | get-menu -path "Transitions/Functional Transition" 
     | get-property enablement | equals true | verify-true
 
 
 
 //Check that after a transition, the navigation menus are here and working
 
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/Perform Cabin Management Activities" 
     | get-menu -path "Transitions/Functional Transition" | click
 get-window "Progress Information" | get-window "Functional Transition" | get-tree 
     | select "In-Flight Entertainment System (12)/In-Flight Entertainment System (12)/Logical Architecture (12)" | get-menu 
-    -path "Show in Capella Explorer" | click
+    -path "Show in Project Explorer" | click
     
 get-window "Progress Information" | get-window "Functional Transition" | get-button Cancel | click
 
-get-view "Capella Project Explorer" | get-tree | get-item 
+get-view "Project Explorer" | get-tree | get-item 
     -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Logical Architecture" 
     | get-property selected | equals true | verify-true
     
@@ -70,7 +70,7 @@ get-view "Capella Project Explorer" | get-tree | get-item
  
 //Check validation on model
 
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Logical Architecture/Logical Functions/Root Logical Function" 
     | get-menu -path "Validate Model" | click
     
@@ -79,7 +79,7 @@ get-window "Validation Problems" | get-button OK | click
 
 // Check menus on project explorer
 
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Operational Analysis"
     get-menu -path "Show in Semantic Browser" | get-property enablement | equals true | verify-true
     get-menu -path "Copy Qualified Name" | get-property enablement | equals true | verify-true
@@ -88,7 +88,7 @@ with [get-view "Capella Project Explorer" | get-tree] {
 
 // Menus on Impact Analysis
 
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis" 
     | get-menu -path "Show Impact Analysis..." | click
     
@@ -97,50 +97,50 @@ with [get-window "Impact Analysis"] {
     get-tree | select "In-Flight Entertainment System/In-Flight Entertainment System/Logical Architecture"
 }
 with [get-window "Impact Analysis" | get-tree] {
-    get-menu -path "Show in Capella Explorer" | get-property enablement | equals true | verify-true
+    get-menu -path "Show in Project Explorer" | get-property enablement | equals true | verify-true
     get-menu -path "Show in Semantic Browser" | get-property enablement | equals true | verify-true
 }
 
 get-window "Impact Analysis" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System/Logical Architecture/\\[System Analysis Realization\\] to System Analysis"
-get-window "Impact Analysis" | get-tree | get-menu -path "Show Related Element(s) in Capella Explorer/Show all" | get-property enablement | equals true | verify-true
+get-window "Impact Analysis" | get-tree | get-menu -path "Show Related Element(s) in Project Explorer/Show all" | get-property enablement | equals true | verify-true
 get-window "Impact Analysis" | get-button OK | click
 
 // Menu on Semantic Browser
 
 get-view "Semantic Browser" | click
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/IFE System"
 with [get-view "Semantic Browser"] {
     get-button "Link content to workbench selection events" | click
     get-tree | select "Realizing Logical Components/IFE System"
 }
 
-get-view "Semantic Browser" | get-tree | get-menu -path "Show in Capella Explorer" | get-property enablement | equals true | verify-true
+get-view "Semantic Browser" | get-tree | get-menu -path "Show in Project Explorer" | get-property enablement | equals true | verify-true
 get-view "Semantic Browser" | get-tree | get-menu -path "Copy Qualified Name" | get-property enablement | equals true | verify-true
     
 // Menus Wizards
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/IFE System"
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     get-menu -path "Wizards/Requirement Manager" | get-property enablement | equals true | verify-true
     get-menu -path "Wizards/Trace Manager" | get-property enablement | equals true | verify-true
 }
 
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Logical Architecture/IFE System/Aircraft Front Servers"
-get-view "Capella Project Explorer" | get-tree | get-menu -path "Wizards/Logical Component Decomposition" | get-property enablement | equals true | verify-true
+get-view "Project Explorer" | get-tree | get-menu -path "Wizards/Logical Component Decomposition" | get-property enablement | equals true | verify-true
 
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Logical Architecture/Logical Functions/Root Logical Function/Perform Cabin Management Activities"
-get-view "Capella Project Explorer" | get-tree | get-menu -path "Wizards/Function Port and EI Traceability Wizard" | get-property enablement | equals true | verify-true
+get-view "Project Explorer" | get-tree | get-menu -path "Wizards/Function Port and EI Traceability Wizard" | get-property enablement | equals true | verify-true
 
 with [get-view "Fast Linker" | get-canvas] {
     mouse-enter 290 235 -height 274 -width 393
     mouse-move 290 235 -height 274 -width 393
     mouse-exit 350 310 -height 274 -width 393
 }
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Logical Architecture/Logical Functions/Root Logical Function/\\[LDFB\\] Top Level Functions" 
     | double-click
 with [get-editor "[LDFB] Top Level Functions" | get-diagram -index 1 | get-edit-part 
@@ -159,7 +159,7 @@ with [get-editor "[LDFB] Top Level Functions" | get-diagram -index 1 | get-edit-
         -className DNodeContainerViewNodeContainerCompartmentEditPart | mouse-move 41 425 -height 531 -width 89
 }
 with [get-editor "[LDFB] Top Level Functions" | get-diagram -index 1] {
-    get-menu -path "Show in Capella Explorer" | get-property enablement | equals true | verify-true
+    get-menu -path "Show in Project Explorer" | get-property enablement | equals true | verify-true
     get-menu -path "Show in Semantic Browser" | get-property enablement | equals true | verify-true
 }
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

@@ -20,7 +20,7 @@ Delete a SystemFunction which has a SDFB diagram. The tree which appears in the 
 Content-Type: text/ecl
 Entry-Name: .content
 
-get-view "Capella Project Explorer" | get-tree
+get-view "Project Explorer" | get-tree
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | double-click
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/IFE System/Manage Passenger Services Lifecycle" 
     | get-menu Delete | click

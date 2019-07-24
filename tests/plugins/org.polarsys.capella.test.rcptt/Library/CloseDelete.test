@@ -14,41 +14,41 @@ Content-Type: text/ecl
 Entry-Name: .content
 
 // Create a new Capella Project
-get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
+get-view "Project Explorer" | get-tree | get-menu "New/Capella Project" | click
 with [get-window "New Capella Project"] {
     get-editbox | set-text Project
     get-button Finish | click
 }
 
 // Create a new Capella Library 1
-get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Library" | click
+get-view "Project Explorer" | get-tree | get-menu "New/Capella Library" | click
 with [get-window "New Capella Library"] {
     get-editbox | set-text Lib1
     get-button Finish | click
 }
 
 // Create a new Capella Library 2
-get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Library" | click
+get-view "Project Explorer" | get-tree | get-menu "New/Capella Library" | click
 with [get-window "New Capella Library"] {
     get-editbox | set-text Lib2
     get-button Finish | click
 }
 
 // Make the project references to the two created libraries. 
-get-view "Capella Project Explorer" | get-tree | select "Project/Project.aird" 
+get-view "Project Explorer" | get-tree | select "Project/Project.aird" 
     | get-menu "Libraries/Manage references" | click
 with [get-window -class PropertyDialog] {
     get-table | get-item "Lib1.melodymodeller" | check
     get-table | get-item "Lib2.melodymodeller" | check
     get-button OK | click
 }
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     get-item "Project/Project.aird/Lib1" | get-property caption | equals Lib1 | verify-true
     get-item "Project/Project.aird/Lib2" | get-property caption | equals Lib2 | verify-true
 }
 
 //Select LIB1.aird, LIB2.aird and PROJECT.aird. Close the 3 sessions at the same time
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "Lib1/Lib1.aird" "Lib2/Lib2.aird" "Project/Project.aird"
     get-menu Close | click
 }
@@ -62,24 +62,24 @@ with [get-view "Capella Project Explorer" | get-tree] {
 
     
 // Open Lib1, open Lib2, open Project
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "Lib1/Lib1.aird" | double-click
     select "Lib2/Lib2.aird" | double-click
     select "Project/Project.aird" | double-click
 }
 // Close session Lib1, session Lib2, session Project
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "Lib1/Lib1.aird" | get-menu Close | click
     select "Lib2/Lib2.aird" | get-menu Close | click
     select "Project/Project.aird" | get-menu Close | click
 }
 //Select LIB1.aird, LIB2.aird and PROJECT.aird. Open the 3 sessions at the same time
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "Lib1/Lib1.aird" "Lib2/Lib2.aird" "Project/Project.aird"
     get-menu "Open Session" | click
 }
 
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     get-item "Lib1/Lib1.aird/Lib1" | get-property caption | equals Lib1 | verify-true
     get-item "Lib2/Lib2.aird/Lib2" | get-property caption | equals Lib2 | verify-true
     get-item "Project/Project.aird/Project" | get-property caption | equals Project | verify-true
@@ -88,7 +88,7 @@ with [get-view "Capella Project Explorer" | get-tree] {
 }
 
 // Close session Project, Lib1, session Lib2
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "Project/Project.aird" | get-menu Close | click
     select "Lib1/Lib1.aird" | get-menu Close | click
     select "Lib2/Lib2.aird" | get-menu Close | click
@@ -102,31 +102,31 @@ with [get-view "Capella Project Explorer" | get-tree] {
 //    | get-property "getChildren().Control[1].getChildren().Control[0].getItemCount()" | equals 0 | verify-true
 
 //Select LIB1.aird, LIB2.aird and PROJECT.aird. Open the 3 sessions at the same time
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "Lib1/Lib1.aird" "Lib2/Lib2.aird" "Project/Project.aird"
     get-menu "Open Session" | click
 }
 
 // Close the Lib1 Project, Lib1 project is closed, Project session is closed
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select Lib1 | get-menu "Close Project" | click
 }
 
-get-view "Capella Project Explorer" | get-tree | select Lib1
-with [get-view "Capella Project Explorer" | get-tree] {
+get-view "Project Explorer" | get-tree | select Lib1
+with [get-view "Project Explorer" | get-tree] {
     get-menu "Open Project" | get-property caption | equals "Op&en Project" | verify-true
     get-menu "Open Project" | get-property enablement | equals true | verify-true
 }
 
-get-view "Capella Project Explorer" | get-tree | select Project
-with [get-view "Capella Project Explorer" | get-tree] {
+get-view "Project Explorer" | get-tree | select Project
+with [get-view "Project Explorer" | get-tree] {
     get-menu "Close Project" | get-property caption | equals "Clo&se Project" | verify-true
     get-menu "Close Project" | get-property enablement | equals true | verify-true
     get-item Project | get-property childCount | equals 3 | verify-true
 }
 
-get-view "Capella Project Explorer" | get-tree | select "Project/Project.aird"
-with [get-view "Capella Project Explorer" | get-tree] {
+get-view "Project Explorer" | get-tree | select "Project/Project.aird"
+with [get-view "Project Explorer" | get-tree] {
     get-menu "Open Session" | get-property caption | equals "Open Session" | verify-true
     get-menu "Open Session" | get-property enablement | equals true | verify-true
 }
@@ -137,7 +137,7 @@ with [get-view "Capella Project Explorer" | get-tree] {
 // An Operational Activty is created in LIB1. Save and Save All buttons are available.
 
 
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select Lib1 | double-click
     select "Lib1/Lib1.aird" | double-click
     select "Project/Project.aird" | double-click
@@ -150,25 +150,25 @@ get-button "Save All (M1+M2+S)" | get-property enablement | equals true | verify
 
 // Close LIB1 project
 //A save pop-up warns LIB1 session has been modified and asks whether save changes. Confirm the changes. 
-get-view "Capella Project Explorer" | get-tree | select Lib1 | get-menu "Close Project" | click
+get-view "Project Explorer" | get-tree | select Lib1 | get-menu "Close Project" | click
 get-window Save | get-button Yes | click
 
 //LIB1 project is closed. PROJECT session is closed. 
 //
 // Open LIB1 project and open LIB1 session Open PROJECT session"
 // Activity is here in the project
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select Lib1 | double-click
     select "Lib1/Lib1.aird" | double-click
     select "Project/Project.aird" | double-click
 }
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | get-item "Project/Project.aird/Lib1/Operational Analysis/Operational Activities/Root Operational Activity/OperationalActivity 1" 
     | get-property caption | equals "OperationalActivity 1" | verify-true
     
     
 
-get-view "Capella Project Explorer" | get-tree | select "Project/Project.aird" | get-menu "Libraries/Manage references" 
+get-view "Project Explorer" | get-tree | select "Project/Project.aird" | get-menu "Libraries/Manage references" 
     | click
 with [get-window -class PropertyDialog] {
     with [get-table] {
@@ -180,14 +180,14 @@ with [get-window -class PropertyDialog] {
 
 
 /** 
-get-view "Capella Project Explorer" | get-tree | select Lib1 | get-menu Delete | click
+get-view "Project Explorer" | get-tree | select Lib1 | get-menu Delete | click
 
 with [get-window "Delete Resources"] {
     get-button "Delete project contents on disk (cannot be undone)" | check
     get-button OK | click
 }
 
-get-view "Capella Project Explorer" | get-tree | select Project | get-menu Delete | click
+get-view "Project Explorer" | get-tree | select Project | get-menu Delete | click
 
 wait -ms 2000
 

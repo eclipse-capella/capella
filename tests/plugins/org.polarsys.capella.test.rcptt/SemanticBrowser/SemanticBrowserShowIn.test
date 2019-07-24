@@ -25,7 +25,7 @@ Tests the Show in Semantic Browser command
 Content-Type: text/ecl
 Entry-Name: .content
 
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | double-click
 
 // enable the Link content option if disabled
@@ -35,14 +35,14 @@ if [get-view "Semantic Browser" | get-button "Link content to workbench selectio
 
 
 // Show in Semantic Browser menu option
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Operational Analysis/Operational Activities/Root Operational Activity/Adapt Entertainment Service" 
     | get-menu -path "Show in Semantic Browser" | click
 get-view "Semantic Browser" | get-tree -after [get-label "Current Element"] | get-item 
     -path "Adapt Entertainment Service" | get-property caption | equals "Adapt Entertainment Service" | verify-true
 
 // F9 shortcut
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Operational Analysis/Operational Activities/Root Operational Activity/[OABD] All Activities" 
     | key-type F9
 get-view "Semantic Browser" | get-tree -after [get-label "Current Element"] | get-item 
@@ -61,14 +61,14 @@ if [get-view "Semantic Browser" | get-button "Link content to workbench selectio
 }
     
 // Show in Semantic Browser menu option
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Operational Analysis/Operational Activities/Root Operational Activity/Adapt Entertainment Service" 
     | get-menu -path "Show in Semantic Browser" | click
 get-view "Semantic Browser" | get-tree -after [get-label "Current Element"] | get-item 
     -path "Adapt Entertainment Service" | get-property caption | equals "Adapt Entertainment Service" | verify-true
 
 // F9 shortcut
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Operational Analysis/Operational Activities/Root Operational Activity/Update Digital Media Offer" 
     | key-type F9
 get-view "Semantic Browser" | get-tree -after [get-label "Current Element"] | get-item 

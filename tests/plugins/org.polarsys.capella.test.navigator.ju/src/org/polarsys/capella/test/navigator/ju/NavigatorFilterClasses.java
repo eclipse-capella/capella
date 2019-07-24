@@ -21,7 +21,7 @@ import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommon
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 
 /**
- * This class instanciates all filters on Capella Project Explorer to detect if some filters classes have been deleted
+ * This class instanciates all filters on Project Explorer to detect if some filters classes have been deleted
  * without removing the filter
  */
 public class NavigatorFilterClasses extends BasicTestCase {

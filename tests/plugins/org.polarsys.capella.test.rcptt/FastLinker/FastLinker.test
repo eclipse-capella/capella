@@ -15,7 +15,7 @@ Entry-Name: .content
 
 //Create a project
 
-get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
+get-view "Project Explorer" | get-tree | get-menu "New/Capella Project" | click
 with [get-window "New Capella Project"] {
     get-editbox | set-text project
     get-button Finish | click
@@ -25,7 +25,7 @@ with [get-window "New Capella Project"] {
 get-menu "Window/Show View/Fast Linker" | click
 
 //Create Class and Union
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "project/project.aird/project/System Analysis/Data" | get-menu "Add Capella Element/Class" | click
     select "project/*project.aird/project/System Analysis/Data" | get-menu "Add Capella Element/Union" | click
 }
@@ -37,7 +37,7 @@ with [get-view "Fast Linker" | get-canvas] {
 }
 
 //Drag them into Fast Linker
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "project/*project.aird/project/System Analysis/Data/Class 1" "project/*project.aird/project/System Analysis/Data/Union 2"
     get-item "project/\\*project.aird/project/System Analysis/Data/Union 2" | drag-start 9 6
 }
@@ -48,9 +48,9 @@ with [get-view "Fast Linker" | get-canvas] {
     drag-accept 200 83 -detail move
 }
 
-get-view "Capella Project Explorer" | get-tree | drag-set-data
+get-view "Project Explorer" | get-tree | drag-set-data
 get-view "Fast Linker" | get-canvas | drop 200 83 -detail move
-get-view "Capella Project Explorer" | get-tree | drag-end -detail move
+get-view "Project Explorer" | get-tree | drag-end -detail move
 with [get-view "Fast Linker" | get-canvas] {
     mouse-enter 200 83 -height 272 -width 392
     mouse-move 200 83 -height 272 -width 392
@@ -89,7 +89,7 @@ get-eclipse-window | key-type ESC
 
 
 //Create two Class
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "project/*project.aird/project/System Analysis/Data" | get-menu "Add Capella Element/Class" | click
     select "project/*project.aird/project/System Analysis/Data" | get-menu "Add Capella Element/Class" | click
     select "project/*project.aird/project/System Analysis/Data/Class 3" "project/*project.aird/project/System Analysis/Data/Class 4"
@@ -105,9 +105,9 @@ with [get-view "Fast Linker" | get-canvas] {
     drag-accept 226 167 -detail move
 }
 
-get-view "Capella Project Explorer" | get-tree | drag-set-data
+get-view "Project Explorer" | get-tree | drag-set-data
 get-view "Fast Linker" | get-canvas | drop 226 167 -detail move
-get-view "Capella Project Explorer" | get-tree | drag-end -detail move
+get-view "Project Explorer" | get-tree | drag-end -detail move
 with [get-view "Fast Linker" | get-canvas] {
     get-property "getContents().getChildren().Label[0].getText()" | equals "Class [ Class 3, Class 4 ]" | verify-true
     get-property "getContents().getChildren().Label[1].getText()" | equals "Class [ Class 1, Union 2 ]" | verify-true
@@ -117,16 +117,16 @@ with [get-view "Fast Linker" | get-canvas] {
 
 
 
-get-view "Capella Project Explorer" | get-tree | drag-set-data
+get-view "Project Explorer" | get-tree | drag-set-data
 with [get-view "Fast Linker" | get-canvas] {
     drop 243 50 -detail move
     get-menu "Class [ Class 1, Union 2 ] -> Class [ Class 3, Class 4 ]/Association" | click
 }
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     drag-end -detail move
     select "project/*project.aird/project/System Analysis/Data/Class 1"
 }
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     get-item "project/\\*project.aird/project/System Analysis/Data/Class 1/ class 3 : Class 3" | get-property caption 
         | equals "class 3 : Class 3" | verify-true
     get-item "project/\\*project.aird/project/System Analysis/Data/Class 1/ class 4 : Class 4" | get-property caption 

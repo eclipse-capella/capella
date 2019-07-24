@@ -14,7 +14,7 @@ Testcase-Type: ecl
 Content-Type: text/ecl
 Entry-Name: .content
 
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "EOLE_AF/EOLE_AF.aird" | double-click
     select "EOLE_AF/EOLE_AF.aird/EOLE_AF/System Analysis" | key-type "M1+M2+f"
 }
@@ -70,7 +70,7 @@ with [get-view Information | get-tree] {
     get-item "Impacted element names: 5" | get-property caption | equals "Impacted element names: 5" | verify-true
 }
 
-get-view "Capella Project Explorer" | get-tree | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/System Analysis" 
+get-view "Project Explorer" | get-tree | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/System Analysis" 
     | key-type "M1+M2+f"
 with [get-window "Selection Dialog"] {
     get-combo -after [get-label "Find:"] | set-text "a*"

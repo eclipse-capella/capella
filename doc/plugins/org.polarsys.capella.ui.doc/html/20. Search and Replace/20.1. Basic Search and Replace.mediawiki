@@ -6,7 +6,7 @@
 Capella provides contextual search &amp; replace on model elements. Several options are provided to enable fine grained search &amp; replace on Capella models.
 
  
-To open the Search &amp; Replace window dialog, select a Capella element in Capella Project Explorer and click on''''' Ctrl+Shift+F'''''. You can also use the contextual &ldquo;Search and Replace&rdquo; menu or the magnifying glass toolbar menu.
+To open the Search &amp; Replace window dialog, select a Capella element in Project Explorer and click on''''' Ctrl+Shift+F'''''. You can also use the contextual &ldquo;Search and Replace&rdquo; menu or the magnifying glass toolbar menu.
 
  
 [[Image:Images/20.1.%20Basic%20Search%20&%20Replace_html_m55039b91.png|900x520px]]

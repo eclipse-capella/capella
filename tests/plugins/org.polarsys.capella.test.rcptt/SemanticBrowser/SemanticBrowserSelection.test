@@ -24,7 +24,7 @@ Tests the syncronization of the Semantic Browser with the current Workbench sele
 Content-Type: text/ecl
 Entry-Name: .content
 
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | double-click
 
 // enable the Link content option if disabled
@@ -33,12 +33,12 @@ if [get-view "Semantic Browser" | get-button "Link content to workbench selectio
 }
 
 // Check that the current selection is syncronized with the Semantic Browser
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis"
 get-view "Semantic Browser" | get-tree -after [get-label "Current Element"] | get-item -path "System Analysis" 
     | get-property caption | equals "System Analysis" | verify-true
 
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function"
 with [get-view "Semantic Browser"] {
     get-tree | get-item -path "Realizing Logical Functions/Root Logical Function" | get-property caption 
@@ -63,17 +63,17 @@ if [get-view "Semantic Browser" | get-button "Link content to workbench selectio
 
 
 // Check that the current selection is NOT syncronized with the Semantic Browser by default, but only when REFRESH is forced
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/VOD Movie Selections"
 get-view "Semantic Browser" | get-tree -after [get-label "Current Element"] | get-property "getItems().length" 
     | equals 0 | verify-true
     
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/Data"
 get-view "Semantic Browser" | get-tree -after [get-label "Current Element"] | get-property "getItems().length" 
     | equals 0 | verify-true
     
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function"
 get-view "Semantic Browser" | get-tree -after [get-label "Current Element"] | get-property "getItems().length" 
     | equals 0 | verify-true

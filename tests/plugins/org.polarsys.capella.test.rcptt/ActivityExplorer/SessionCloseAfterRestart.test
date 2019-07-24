@@ -24,7 +24,7 @@ Content-Type: text/ecl
 Entry-Name: .content
 
 // Create a new project
-get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
+get-view "Project Explorer" | get-tree | get-menu "New/Capella Project" | click
 with [get-window "New Capella Project"] {
     get-editbox | set-text TestProject
     get-button Finish | click
@@ -36,7 +36,7 @@ wait-until-eclipse-is-ready
 prepare-AUT-after-restart
 
 // Close the session
-get-view "Capella Project Explorer" | get-tree | select "TestProject/TestProject.aird" | get-menu Close | click
+get-view "Project Explorer" | get-tree | select "TestProject/TestProject.aird" | get-menu Close | click
 
 // Check that Activity Explorer has been closed
 verify-error {get-editor TestProject}

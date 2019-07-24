@@ -28,10 +28,10 @@ Content-Type: text/ecl
 Entry-Name: .content
 
 // Open the session
-get-view "Capella Project Explorer" | get-tree | select "CopyPasteNoDuplicate/CopyPasteNoDuplicate.aird" | double-click
+get-view "Project Explorer" | get-tree | select "CopyPasteNoDuplicate/CopyPasteNoDuplicate.aird" | double-click
 
 // Select the SDFB diagram in the project and open it
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "CopyPasteNoDuplicate/CopyPasteNoDuplicate.aird/CopyPasteNoDuplicate/System Analysis/System Functions/Root System Function/\\[SDFB\\] Root System Function" 
     | double-click
 

@@ -22,7 +22,7 @@ Entry-Name: .description
 Content-Type: text/ecl
 Entry-Name: .content
 
-get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
+get-view "Project Explorer" | get-tree | get-menu "New/Capella Project" | click
 with [get-window "New Capella Project"] {
     with [get-editbox] {
         set-text Diagram
@@ -52,7 +52,7 @@ get-button "Save All (M1+M2+S)" | click
 get-tab-folder -index 2 | get-tab-item DiagramViewerTest | click
 with [get-editor DiagramViewerTest | get-section "Diagrams Viewer" | get-tree] {
     select "Operational Analysis/Operational Entity Breakdown/[OEBD] Operational Context" 
-        | get-menu "Show in Capella Explorer" | click
+        | get-menu "Show in Project Explorer" | click
     select "Operational Analysis/Operational Entity Breakdown/[OEBD] Operational Context" | get-menu Open | click
 }
 get-editor "[OEBD] Operational Context" | get-diagram -index 1 | get-edit-part -name "[OEBD] Operational Context" 

@@ -22,7 +22,7 @@ In that case a dialog is showed up to inform the user that "there is not any rep
 Content-Type: text/ecl
 Entry-Name: .content
 
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "RefreshAllSubRepresentation_Empty/RefreshAllSubRepresentation_Empty.aird" | double-click
     select "RefreshAllSubRepresentation_Empty/RefreshAllSubRepresentation_Empty.aird" | get-menu 
         -path "Refresh All Sub Representations" | click

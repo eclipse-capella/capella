@@ -23,7 +23,7 @@ Entry-Name: .description
 Content-Type: text/ecl
 Entry-Name: .content
 
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | double-click
 get-menu -path "Window/Show View/Other..." | click
 with [get-window "Show View"] {
@@ -32,7 +32,7 @@ with [get-window "Show View"] {
 }
 
 // add first batch of elements
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Displayed Imposed Video Data" "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/VOD Movie Selections" "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Displayed VOD Movie Data"
     get-item 
         -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Displayed VOD Movie Data" 
@@ -63,7 +63,7 @@ with [get-view "Capella Project Explorer" | get-tree] {
         | drag-exit
 }
 
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Displayed Imposed Video Data" "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/VOD Movie Selections" "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Displayed VOD Movie Data"
     get-item 
         -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/VOD Movie Selections" 
@@ -76,9 +76,9 @@ with [get-view "Mass Visualization" | get-control Any -index 2] {
     drag-accept 497 87 -detail move
 }
 
-get-view "Capella Project Explorer" | get-tree | drag-set-data
+get-view "Project Explorer" | get-tree | drag-set-data
 get-view "Mass Visualization" | get-control Any -index 2 | drop 497 87 -detail move
-get-view "Capella Project Explorer" | get-tree | drag-end -detail move
+get-view "Project Explorer" | get-tree | drag-end -detail move
 
 // verify that the added elements are added in the table
 with [get-view "Mass Visualization" | get-canvas] {
@@ -101,7 +101,7 @@ with [get-view "Mass Visualization" | get-canvas] {
 }
 
 // add new elements
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/Entertain with IFE System" "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/Perform Cabin Management Activities"
     get-item 
         -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/Entertain with IFE System" 
@@ -117,7 +117,7 @@ with [get-view "Capella Project Explorer" | get-tree] {
         | drag-exit
 }
 
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/Entertain with IFE System" "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/Perform Cabin Management Activities"
     get-item 
         -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/Perform Cabin Management Activities" 
@@ -141,7 +141,7 @@ with [get-view "Mass Visualization" | get-control Any -index 2] {
     drag-exit
     drag-accept 102 87 -detail move
 }
-get-view "Capella Project Explorer" | get-tree | drag-set-data
+get-view "Project Explorer" | get-tree | drag-set-data
 get-view "Mass Visualization" | get-control Any -index 2 | drop 102 87 -detail move
 
 
@@ -174,8 +174,8 @@ with [get-view "Mass Visualization" | get-canvas] {
 }
 
 // add elements that are already present in the table
-get-view "Capella Project Explorer" | get-tree | drag-end -detail move
-with [get-view "Capella Project Explorer" | get-tree] {
+get-view "Project Explorer" | get-tree | drag-end -detail move
+with [get-view "Project Explorer" | get-tree] {
     select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/Entertain with IFE System" "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/Perform Cabin Management Activities"
     get-item 
         -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/Perform Cabin Management Activities" 
@@ -187,12 +187,12 @@ with [get-view "Mass Visualization" | get-control Any -index 2] {
     drag-exit
     drag-accept 482 105 -detail move
 }
-get-view "Capella Project Explorer" | get-tree | drag-set-data
+get-view "Project Explorer" | get-tree | drag-set-data
 get-view "Mass Visualization" | get-control Any -index 2 | drop 482 105 -detail move
-get-view "Capella Project Explorer" | get-tree | drag-end -detail move
+get-view "Project Explorer" | get-tree | drag-end -detail move
 
 // test that since they were already present, they have not been added
-get-view "Capella Project Explorer" | get-tree | drag-end -detail move
+get-view "Project Explorer" | get-tree | drag-end -detail move
 with [get-view "Mass Visualization" | get-canvas] {
     get-property "getLayer().getGridLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().ExchangeCategoryImpl[0].getClassName()" 
         | equals "org.polarsys.capella.core.data.fa.impl.ExchangeCategoryImpl" | verify-true

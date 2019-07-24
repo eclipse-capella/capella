@@ -16,14 +16,14 @@ Entry-Name: .content
 //This test checks Merge All button and Apply button.
 
 // Create new Capella Project
-get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
+get-view "Project Explorer" | get-tree | get-menu "New/Capella Project" | click
 with [get-window "New Capella Project"] {
     get-editbox | set-text project
     get-button Finish | click
 }
 
 //Create a function and perform a transition of it.
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "project/project.aird/project/System Analysis/System Functions/Root System Function" | get-menu 
         -path "Add Capella Element/System Function" | click
     select "project/*project.aird/project/System Analysis/System Functions/Root System Function" | get-menu 

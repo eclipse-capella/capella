@@ -15,10 +15,10 @@ Verifications: _SMwS0Kd3EeeauqwgHGcTiA
 Content-Type: text/ecl
 Entry-Name: .content
 
-with [get-view "Capella Project Explorer"] {
+with [get-view "Project Explorer"] {
     get-tree | select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | double-click
 }
-with [get-view "Capella Project Explorer" | get-editbox] {
+with [get-view "Project Explorer" | get-editbox] {
     set-text Class
     key-type Enter
 }

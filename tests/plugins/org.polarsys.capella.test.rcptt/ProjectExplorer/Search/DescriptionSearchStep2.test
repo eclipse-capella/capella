@@ -15,15 +15,15 @@ Verifications: _qRDgwKkhEeeSmv39_ZyjNw
 Content-Type: text/ecl
 Entry-Name: .content
 
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | double-click
-with [get-view "Capella Project Explorer" | get-editbox] {
+with [get-view "Project Explorer" | get-editbox] {
     set-text search
     key-type Enter
 }
 get-button "View Menu" | click
-get-view "Capella Project Explorer" | get-menu -path "Search Options/In Description" | click
-with [get-view "Capella Project Explorer" | get-editbox] {
+get-view "Project Explorer" | get-menu -path "Search Options/In Description" | click
+with [get-view "Project Explorer" | get-editbox] {
     set-text ""
     key-type Enter
 }

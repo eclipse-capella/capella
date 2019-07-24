@@ -22,7 +22,7 @@ Case 3: Constraint with no OpaqueExpression
 Content-Type: text/ecl
 Entry-Name: .content
 
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "ConstraintEdition/ConstraintEdition.aird" | double-click
     select [get-item "ConstraintEdition/ConstraintEdition.aird/ConstraintEdition/System Analysis/System/System State Machine/Default Region" 
         | get-item "Transition 3"]
@@ -39,7 +39,7 @@ with [get-view Properties | get-section Property | get-group "" -index 1 | get-t
 	type-text "True"
 	key-type Enter
 }
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select [get-item "ConstraintEdition/*ConstraintEdition.aird/ConstraintEdition/System Analysis/System/System State Machine/Default Region" 
     | get-item "Transition 3" | get-item "[Constraint]/[Opaque Expression]"]
 

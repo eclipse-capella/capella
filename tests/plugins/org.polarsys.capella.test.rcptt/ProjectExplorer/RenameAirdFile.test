@@ -14,7 +14,7 @@ Testcase-Type: ecl
 Content-Type: text/plain
 Entry-Name: .description
 
- From Capella Explorer :
+ From Project Explorer :
 - Right-click .aird file and run rename action 
 - Enter a new name
 => Verify that the new name of .aird file and the new name of .afm file are updated
@@ -23,14 +23,14 @@ Entry-Name: .description
 Content-Type: text/ecl
 Entry-Name: .content
 
-// // Select the .aird file in the Capella Project Explorer and press F2 to rename it
-with [get-view "Capella Project Explorer" | get-tree] {
+// // Select the .aird file in the Project Explorer and press F2 to rename it
+with [get-view "Project Explorer" | get-tree] {
 	select "renameTest 1  2/renameTest 1  2.aird" | key-type F2
 	with [get-editbox] {
 		set-text "renameTest12.aird"
 	}
 }
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     get-item -path "renameTest 1  2/renameTest12.aird" | get-property "getText()" | equals "renameTest12.aird" 
         | verify-true
     get-item -path "renameTest 1  2/renameTest12.afm" | get-property "getText()" | equals "renameTest12.afm" 

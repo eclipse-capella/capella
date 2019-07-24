@@ -20,7 +20,7 @@ Insert all the SystemFunctions in the model into the diagram and check if there 
 Content-Type: text/ecl
 Entry-Name: .content
 
-get-view "Capella Project Explorer" | get-tree
+get-view "Project Explorer" | get-tree
     | select "MultipleFunctions/MultipleFunctions.aird" | double-click
     | select "MultipleFunctions/MultipleFunctions.aird/MultipleFunctions/System Analysis/System Functions/Root System Function/[SDFB] Root System Function" 
     | double-click

@@ -20,7 +20,7 @@ DnD a CapellaElement in the project explorer.
 Content-Type: text/ecl
 Entry-Name: .content
 
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "EOLE_AF/EOLE_AF.aird" | double-click
     select "EOLE_AF/EOLE_AF.aird/EOLE_AF/System Analysis/System Functions/Root System Function/Collect meteo data"
     get-item "EOLE_AF/EOLE_AF.aird/EOLE_AF/System Analysis/System Functions/Root System Function/Collect meteo data" 
@@ -38,9 +38,9 @@ with [get-view "Capella Project Explorer" | get-tree] {
         | drop 31 13 -detail move
     drag-end -detail move
 }
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/System Analysis/System Functions/Root System Function/Elaborate current situation"
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | get-item "EOLE_AF/\\*EOLE_AF.aird/EOLE_AF/System Analysis/System Functions/Root System Function/Elaborate current situation" 
     | get-property childCount | equals 1 | verify-true
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

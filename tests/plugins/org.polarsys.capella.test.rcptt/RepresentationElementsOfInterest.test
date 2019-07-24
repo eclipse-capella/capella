@@ -14,7 +14,7 @@ Testcase-Type: ecl
 Content-Type: text/ecl
 Entry-Name: .content
 
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "EOLE_AF/EOLE_AF.aird" | double-click
     select "EOLE_AF/EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/\\[LAB\\] Logical System - Logical Architecture Blank" 
         | double-click
@@ -32,7 +32,7 @@ with [get-window "Transfer Dialog"] {
     }
     get-button OK | click
 }
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/[LAB] Logical System - Logical Architecture Blank"
 
 // Click the refresh button on the view semantic browser
@@ -43,11 +43,11 @@ with [get-view "Semantic Browser"] {
 
 get-view "Semantic Browser" | get-tree -after [get-label "Referenced Elements"] 
     | select "Elements of Interest/Forecaster"
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Actors/Atmosphere"
 get-view "Semantic Browser" | get-tree 
     | select "Element of Interest for Diagram/[LAB] Logical System - Logical Architecture Blank"
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Actors/Forecaster"
 get-view "Semantic Browser" | get-tree 
     | select "Element of Interest for Diagram/[LAB] Logical System - Logical Architecture Blank"

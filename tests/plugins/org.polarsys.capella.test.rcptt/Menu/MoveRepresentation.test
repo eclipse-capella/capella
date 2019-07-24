@@ -15,14 +15,14 @@ Content-Type: text/ecl
 Entry-Name: .content
 
 // Open the project and the diagram
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "Bug2242/Bug2242.aird" | double-click
     select "Bug2242/Bug2242.aird/Bug2242/Operational Analysis/Operational Activities/Root Operational Activity/Diagram 1" 
         | double-click
     select "Bug2242/Bug2242.aird/Bug2242/Operational Analysis/Operational Activities/Root Operational Activity/Diagram 1"
 }
 // Select the diagram and then check the menu Move Diagrams contain 3 items.
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     get-menu -path "Move Diagrams/Move to platform:\\/resource\\/Bug2242\\/Bug2242.aird" | get-property caption 
         | equals "Move to platform:/resource/Bug2242/Bug2242.aird" | verify-true
  	get-menu -path "Move Diagrams/Move to platform:\\/resource\\/Bug2242\\/Bug2242.aird" 
@@ -46,7 +46,7 @@ with [get-view "Capella Project Explorer" | get-tree] {
 }
 
 // Move the diagram to resource Bug2242.aird
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "Bug2242/Bug2242.aird/Bug2242/Operational Analysis/Operational Activities/Root Operational Activity/Diagram 1" 
     | get-menu -path "Move Diagrams/Move to platform:\\/resource\\/Bug2242\\/Bug2242.aird" | click
     
@@ -55,7 +55,7 @@ get-button "Save All (M1+M2+S)" | click
 
 // Select the diagram on the explorer then check in the tab Expert of view Properties. 
 get-view Properties | click
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "Bug2242/Bug2242.aird/Bug2242/Operational Analysis/Operational Activities/Root Operational Activity/Diagram 1"
 get-view Properties | get-property-tab Expert | click
 with [get-view Properties | get-tree] {

@@ -62,7 +62,7 @@ This tutorial provides a step by step walk-through of the Capella Git Adapter.
 ==== Put the Capella project under source control on the Git Repository ====
 
 *Now, switch back to the Capella perspective ("Capella" button in the top right-hand corner) and create a new Capella Project.
-*Right-click the project in the Capella Project Explorer > Team > Share Project...<br><br>
+*Right-click the project in the Project Explorer > Team > Share Project...<br><br>
 :-[[Image:images/ShareProject.png]]
 <br>
 *Select Git and click Next.<br><br>
@@ -74,7 +74,7 @@ This tutorial provides a step by step walk-through of the Capella Git Adapter.
 
 ==== Commit the project ====
 
-*Right-click the project in the Capella Project Explorer > Team > Commit...<br><br>
+*Right-click the project in the Project Explorer > Team > Commit...<br><br>
 :-[[Image:images/Commit.png|530x800px]]
 <br>
 *Type "Initial commit" in the message field, select all files, click "Commit".A "master" branch is being created.<br><br>

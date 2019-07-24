@@ -14,24 +14,24 @@ Testcase-Type: ecl
 Content-Type: text/plain
 Entry-Name: .description
 
-Create a diagram and check that it's visible in the Capella Explorer and can be selected
+Create a diagram and check that it's visible in the Project Explorer and can be selected
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
 Content-Type: text/ecl
 Entry-Name: .content
 
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | double-click
     select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Operational Analysis/Operational Activities/Root Operational Activity" 
     | get-menu -path "New Diagram \\/ Table.../Operational Activity Breakdown" | click
     get-window "New Operational Activity Breakdown" | get-button OK | click
     get-editor "[OABD] Root Operational Activity" | get-diagram -index 1 | get-edit-part 
     -name "[OABD] Root Operational Activity" | mouse-move 43 199 -height 599 -width 2050
-    get-view "Capella Project Explorer" | get-tree 
+    get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/*In-Flight Entertainment System.aird/In-Flight Entertainment System/Operational Analysis/Operational Activities/Root Operational Activity/[OABD] Root Operational Activity"
 }
 
-get-view "Capella Project Explorer" | get-tree | get-item 
+get-view "Project Explorer" | get-tree | get-item 
     -path "In-Flight Entertainment System/\\*In-Flight Entertainment System.aird/In-Flight Entertainment System/Operational Analysis/Operational Activities/Root Operational Activity/\\[OABD\\] Root Operational Activity" 
     | get-property selected | equals true | verify-true
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

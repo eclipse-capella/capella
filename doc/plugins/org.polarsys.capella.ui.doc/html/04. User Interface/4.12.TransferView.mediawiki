@@ -7,7 +7,7 @@ When the Transfer View (Window->Show View->Transfer) is opened for the first tim
 
 [[Image:Images//9.5_MoveElementsView_1.png]] 
 
-1. The Selection Area shows all elements that should be moved in '''bold'''. Drag/Drop model elements from the Capella Project Explorer over this area to fill the view. If the dropped element has children, the children will be moved together with the selected element. Another way to add elements to the Transfer View Selection Area is via the ''Send To Transfer View'' context menu. To remove a selected element from the view, the ''Unstage Element'' ([[Image:Images//9.5_MoveElementsView_unstage.png|21x20px]]) action can be selected either via the context menu of the selection tree, or in the selection tree toolbar to the right side of the tree.
+1. The Selection Area shows all elements that should be moved in '''bold'''. Drag/Drop model elements from the Project Explorer over this area to fill the view. If the dropped element has children, the children will be moved together with the selected element. Another way to add elements to the Transfer View Selection Area is via the ''Send To Transfer View'' context menu. To remove a selected element from the view, the ''Unstage Element'' ([[Image:Images//9.5_MoveElementsView_unstage.png|21x20px]]) action can be selected either via the context menu of the selection tree, or in the selection tree toolbar to the right side of the tree.
 
 2. The Destination Area shows the possible destinations for elements in the selection area. To set a new destination for a selected element, drag/drop the element from the selection area over a suitable parent in the destination area. Elements in the selection area for which a destination element has been selected will appear in green. To clear an already set destination for a selected element, use the ''Clear Parent'' ([[Image:Images//9.5_MoveElementsView_unstage.png|21x20px]]) action either via the Destination tree context menu, or the corresponding toolbar button to the right side of the tree.
 
@@ -78,9 +78,9 @@ A step by step example is given to demonstrate the Transfer View workflow. The i
 
 Suppose these elements are in a project that references a library with read-write access policy.
 
-(For demonstration purposes, do not use the ''Send to Transfer View'' action in this Example. Locate the elements in the Capella Project Explorer instead. To see Parts and Functional Exchanges, deactivate the corresponding filters through the Capella Project Explorer view menu.) 
+(For demonstration purposes, do not use the ''Send to Transfer View'' action in this Example. Locate the elements in the Project Explorer instead. To see Parts and Functional Exchanges, deactivate the corresponding filters through the Project Explorer view menu.) 
 
-The first step is to drag elements from the Capella Project Explorer and drop them onto the stage area on the left side of the Transfer view. To demonstrate the iterative workflow, start by adding only two Logical Components LC1 and LC2 to the stage area. The stage area will now look like this:
+The first step is to drag elements from the Project Explorer and drop them onto the stage area on the left side of the Transfer view. To demonstrate the iterative workflow, start by adding only two Logical Components LC1 and LC2 to the stage area. The stage area will now look like this:
 
 [[Image:Images//9.5_MoveElementsView_example1_2.png]]
 

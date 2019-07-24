@@ -27,7 +27,7 @@ import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.LocateInCa
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 
 /**
- * Handler to locate active part selection in Capella Project Explorer.
+ * Handler to locate active part selection in Project Explorer.
  */
 public class LocateInCapellaExplorerHandler extends AbstractLocateInViewPartHandler {
   /**

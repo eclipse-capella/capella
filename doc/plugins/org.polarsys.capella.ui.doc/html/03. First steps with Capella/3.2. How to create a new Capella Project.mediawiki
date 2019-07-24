@@ -1,7 +1,7 @@
             
 = How to Create a New Capella Project? =
  
-When starting Capella for the first time, it is necessary to create a new project in which a model will be initialized. A dedicated wizard is provided. In the Capella Project Explorer View, right click on the background and select New Capella Project&hellip;
+When starting Capella for the first time, it is necessary to create a new project in which a model will be initialized. A dedicated wizard is provided. In the Project Explorer View, right click on the background and select New Capella Project&hellip;
 
  
 [[Image:Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_m2f6e72b2.png]]

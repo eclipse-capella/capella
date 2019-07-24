@@ -45,7 +45,7 @@ import com.google.common.base.Predicate;
 
 /**
  * An embedded LinkedTextEditor specialized for Capella. It enhances the common 
- * editor by providing a hyperlink detector that opens elements in the capella project explorer,
+ * editor by providing a hyperlink detector that opens elements in the project explorer,
  * and by specializing the content assistant, proposing only AbstractNamedElements,
  * including those that are available through direct or indirect library references.
  */

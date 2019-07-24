@@ -36,7 +36,7 @@ get-window "Modeling Patterns" | get-button OK | click
 get-button "Save All (M1+M2+S)" | click
 
 // Assert that model elements are correclty instantiated with '_2' suffix
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
 	get-item "patterns_1/patterns_1.aird/patterns_1/Logical Architecture/Logical Functions/Root Logical Function/LF_A_2"
 		| get-property caption | equals LF_A_2 | verify-true
 	get-item "patterns_1/patterns_1.aird/patterns_1/Logical Architecture/Logical Functions/Root Logical Function/" +
@@ -103,6 +103,6 @@ with [get-editor "[LAB] Logical System" | get-diagram -index 1 | get-edit-part -
     get-property "element.ownedStyle.borderColor" | equals "74,74,151" | verify-true
 }
 
-get-view "Capella Project Explorer" | get-tree | select "patterns_1/*patterns_1.aird" | get-menu Close | click
+get-view "Project Explorer" | get-tree | select "patterns_1/*patterns_1.aird" | get-menu Close | click
 get-window Save | get-button Yes | click
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

@@ -14,38 +14,38 @@ Testcase-Type: ecl
 Content-Type: text/ecl
 Entry-Name: .content
 
-with [get-view "Capella Project Explorer"] {
+with [get-view "Project Explorer"] {
     get-tree | select "SearchWithOptions/SearchWithOptions.aird" | double-click
     
 }
-with [get-view "Capella Project Explorer" | get-editbox] {
+with [get-view "Project Explorer" | get-editbox] {
     set-text "foo And bar"
     key-type Enter
 }
-get-view "Capella Project Explorer" | get-tree | get-item 
+get-view "Project Explorer" | get-tree | get-item 
     -path "SearchWithOptions/SearchWithOptions.aird/SearchWithOptions/Operational Analysis/Operational Activities/Foo And Bar" 
     | get-property "getText()" | equals "Foo And Bar" | verify-true
 
 // Activate case sensitive option, no match is found    
 get-button "View Menu" | click
-get-view "Capella Project Explorer" | get-menu -path "Search Options/Case Sensitive" | click
+get-view "Project Explorer" | get-menu -path "Search Options/Case Sensitive" | click
 
-get-view "Capella Project Explorer" | get-tree | get-property itemCount | equals 0 | verify-true
+get-view "Project Explorer" | get-tree | get-property itemCount | equals 0 | verify-true
 
 get-button "View Menu" | click
-with [get-view "Capella Project Explorer" | get-editbox] {
+with [get-view "Project Explorer" | get-editbox] {
     set-text "Foo And Bar"
     key-type Enter
 }
 
-get-view "Capella Project Explorer" | get-tree | get-item 
+get-view "Project Explorer" | get-tree | get-item 
     -path "SearchWithOptions/SearchWithOptions.aird/SearchWithOptions/Operational Analysis/Operational Activities/Foo And Bar" 
     | get-property "getText()" | equals "Foo And Bar" | verify-true
     
 // Activate Search In Description option    
 get-button "View Menu" | click
-get-view "Capella Project Explorer" | get-menu -path "Search Options/In Description" | click
-with [get-view "Capella Project Explorer" | get-tree] {
+get-view "Project Explorer" | get-menu -path "Search Options/In Description" | click
+with [get-view "Project Explorer" | get-tree] {
     get-item 
         -path "SearchWithOptions/SearchWithOptions.aird/SearchWithOptions/Physical Architecture/Physical Functions/Root Physical Function/LookMeInDocumentation" 
         | get-property "getText()" | equals LookMeInDocumentation | verify-true

@@ -26,12 +26,12 @@ Test scenario:
 Content-Type: text/ecl
 Entry-Name: .content
 
-get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
+get-view "Project Explorer" | get-tree | get-menu "New/Capella Project" | click
 with [get-window "New Capella Project"] {
     get-editbox | set-text Project
     get-button Finish | click
 }
-get-view "Capella Project Explorer" | get-tree | select "Project/Project.aird" | get-menu Close | click
+get-view "Project Explorer" | get-tree | select "Project/Project.aird" | get-menu Close | click
 get-preferences-menu | click
 with [get-window Preferences] {
     get-tree | select "Activity Explorer/Management"
@@ -41,8 +41,8 @@ with [get-window Preferences] {
     }
     get-button "Apply and Close" | click
 }
-get-view "Capella Project Explorer" | get-tree | select "Project/Project.aird" | get-menu "Open Session" | click
-get-view "Capella Project Explorer" | get-tree | select "Project/Project.aird" | get-menu "Open Activity Explorer" 
+get-view "Project Explorer" | get-tree | select "Project/Project.aird" | get-menu "Open Session" | click
+get-view "Project Explorer" | get-tree | select "Project/Project.aird" | get-menu "Open Activity Explorer" 
     | click
 
 with [get-editor "Project" | get-tab-folder] {

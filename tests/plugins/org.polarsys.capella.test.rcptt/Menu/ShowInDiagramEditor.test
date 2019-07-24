@@ -20,12 +20,12 @@ This test validates the menu item: Show in Diagram Editor F1à
 Content-Type: text/ecl
 Entry-Name: .content
 
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | double-click
 }
 
 // Verify the menu is not showing in the diagram representation editor
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Operational Analysis/Operational Activities/Root Operational Activity/\\[OABD\\] All Activities" 
         | double-click
 }
@@ -35,7 +35,7 @@ with [get-editor "[OABD] All Activities" | get-diagram -index 1] {
 }
 
 // Verify the menu is not showing in the table representation editor
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions - Operational Activities" 
     | get-menu -path Open | click
 
@@ -44,7 +44,7 @@ with [get-editor "System Functions - Operational Activities"] {
 }
 
 // Functionality test
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Operational Analysis/Operational Activities/Root Operational Activity/Broadcast Safety Instructions Movie/\\[OPD\\] Broadcast Safety Instructions Movie" 
     | double-click
     
@@ -79,7 +79,7 @@ get-editor "[OPD] Broadcast Safety Instructions Movie" | get-diagram -index 1 | 
     -name "[OPD] Broadcast Safety Instructions Movie" | get-property childrenCount | equals 5 | verify-true
 
 // Select the Project Explorer elements and show in diagram editor
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "In-Flight Entertainment System/*In-Flight Entertainment System.aird/In-Flight Entertainment System/Operational Analysis/Operational Activities/Root Operational Activity/Play Imposed Movie" "In-Flight Entertainment System/*In-Flight Entertainment System.aird/In-Flight Entertainment System/Operational Analysis/Operational Activities/Root Operational Activity/Broadcast Movies"
     get-menu -path "Show in Diagram Editor" | click
 }

@@ -14,18 +14,18 @@ Testcase-Type: ecl
 Content-Type: text/ecl
 Entry-Name: .content
 
-get-view "Capella Project Explorer" | get-tree | select A | get-menu "Migration/Migrate Project toward current version" 
+get-view "Project Explorer" | get-tree | select A | get-menu "Migration/Migrate Project toward current version" 
     | click
 //wait 10000
 get-window "Model Migration"  | get-button OK | click
-get-view "Capella Project Explorer" | get-tree | select "A/A.aird" | double-click
-get-view "Capella Project Explorer" | get-tree | select "A/A.aird/A/Logical Architecture/Logical System/LC5_ 1 : LC5_ 1"
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree | select "A/A.aird" | double-click
+get-view "Project Explorer" | get-tree | select "A/A.aird/A/Logical Architecture/Logical System/LC5_ 1 : LC5_ 1"
+get-view "Project Explorer" | get-tree 
     | get-item "A/A.aird/A/Logical Architecture/Logical System/LC5_ 1 : LC5_ 1" | get-property caption 
     | equals "LC5_ 1 : LC5_ 1" | verify-true
-get-view "Capella Project Explorer" | get-tree | select "A/A.afm"
+get-view "Project Explorer" | get-tree | select "A/A.afm"
 
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     get-item "A/A.aird/A/Logical Architecture/Logical System/LC5_ 1" | get-property caption | equals "LC5_ 1" 
         | verify-true
     get-item "A/A.aird/A/Logical Architecture/Logical System/LC5_ 1" | get-property "image.path" 

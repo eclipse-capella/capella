@@ -15,7 +15,7 @@ Content-Type: text/ecl
 Entry-Name: .content
 
 // Open the project
-get-view "Capella Project Explorer" | get-tree | select "Bug2242/Bug2242.aird" | double-click
+get-view "Project Explorer" | get-tree | select "Bug2242/Bug2242.aird" | double-click
 // Select the view Activity Explorer
 with [get-editor Bug2242] {
     get-tab-folder | get-tab-item "System Analysis" | click
@@ -54,7 +54,7 @@ get-editor Bug2242 | get-section "Diagrams Viewer" | get-tree
 get-button "Save All (M1+M2+S)" | click
 
 // Verify the result in the view properties / tab Expert
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "Bug2242/Bug2242.aird/Bug2242/System Analysis/System Functions/Root System Function/Diagram2"
 with [get-view Properties] {
     click

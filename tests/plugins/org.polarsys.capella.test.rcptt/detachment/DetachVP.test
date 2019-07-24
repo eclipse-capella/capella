@@ -32,7 +32,7 @@ with [get-window Preferences] {
 wait 3000
 
 //Launch Detach, uncheck the VP and Launch Detach
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "basicVP/basicVP.aird" | get-menu "Model Detachment" | click
     select "basicVP/basicVP.aird" | get-menu "Model Detachment" | click
 }
@@ -50,7 +50,7 @@ get-window "Detachment..." | get-button OK | click
 wait 1000
 
 //Open Session
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "basicVP/basicVP.aird" | get-menu "Open Session" | click
     select "basicVP/basicVP.aird/Representations per category/Physical Architecture/Physical Architecture Blank/[PAB] Physical System (all)" 
         | get-menu Open | click

@@ -14,7 +14,7 @@ The Fast Linker View enables to create links between elements of the opened Cape
 There are several ways to send elements in the Fast Linker:
 
  
-* Drag &amp; Drop from viewers (Capella Project Explorer, 	Semantic Browser),
+* Drag &amp; Drop from viewers (Project Explorer, 	Semantic Browser),
 * Contextual menu (Viewers and Diagrams), with the &ldquo;Send to Fast 	Linker View&rdquo; command,
  
 [[Image:Images/4.11_Fast_Linker_1.png|450x130px]]

@@ -27,7 +27,7 @@ Content-Type: text/ecl
 Entry-Name: .content
 
 // Create a new project
-get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
+get-view "Project Explorer" | get-tree | get-menu "New/Capella Project" | click
 with [get-window "New Capella Project"] {
     get-editbox | set-text test
     get-button Finish | click
@@ -35,7 +35,7 @@ with [get-window "New Capella Project"] {
 // Close the Activity Explorer
 get-editor test | close
 // Open the Activity Explorer
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "test/test.aird" | get-menu "Open Activity Explorer" | click
     // Create a new diagram
     select "test/test.aird/test/System Analysis/System Functions/Root System Function" 
@@ -48,7 +48,7 @@ get-tab-folder -index 2 | get-tab-item "*test" | click
 get-editor test | close
 get-window "Save Resource" | get-button "Don't Save" | click
 // Open the Activity Explorer
-get-view "Capella Project Explorer" | get-tree | select "test/*test.aird" | get-menu "Open Activity Explorer" | click
+get-view "Project Explorer" | get-tree | select "test/*test.aird" | get-menu "Open Activity Explorer" | click
 // Close the Activity Explorer
 get-editor test | close
 get-window "Save Resource" | get-button "Don't Save" | click

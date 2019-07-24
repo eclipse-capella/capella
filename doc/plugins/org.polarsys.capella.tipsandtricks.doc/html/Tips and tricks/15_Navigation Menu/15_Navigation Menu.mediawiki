@@ -1,11 +1,11 @@
 =Navigation Menu=
-The navigation menu consists of several useful menu items that enables navigating an element between different views. For instance, from a selected graphical element on the diagram editor, users can navigate easily to its associated semantic element on the Capella Project Explorer. 
+The navigation menu consists of several useful menu items that enables navigating an element between different views. For instance, from a selected graphical element on the diagram editor, users can navigate easily to its associated semantic element on the Project Explorer. 
 
 The navigation menu is available for most of the views. However, based on the type of selected element and the active view, the menu can display with different items. 
 
 {| class="wikitable"
 |-
-|Select a '''Capella element''' on the '''Capella Project Explorer''' view
+|Select a '''Capella element''' on the '''Project Explorer''' view
 |Select a '''graphical element''' on a scenario '''diagram editor'''
 |-
 |[[File:../../Images/Tips81.png|thumbnail|550px]]
@@ -21,7 +21,7 @@ The navigation menu is available for most of the views. However, based on the ty
 |Action
 |-
 |[[Image:../../Images/IconShowInExplorer.png]]
-|''Show in Capella Explorer''
+|''Show in Project Explorer''
 |'''F8'''
 |
 * Open the '''Project Explorer''' view if not already opened and highlight the selected element in the explorer's tree.
@@ -33,7 +33,7 @@ The navigation menu is available for most of the views. However, based on the ty
 |Open the '''Semantic Browser''' view if not already opened and refresh the view based on the selected element.
 |-
 |[[Image:../../Images/IconShowInExplorer.png]]
-|''Show Related Element(s) in Capella Explorer''
+|''Show Related Element(s) in Project Explorer''
 |'''F7'''
 |
 * A sub-menu action is created for each related element.

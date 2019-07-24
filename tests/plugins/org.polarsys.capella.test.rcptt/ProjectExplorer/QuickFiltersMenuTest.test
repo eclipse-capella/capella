@@ -15,10 +15,10 @@ Content-Type: text/ecl
 Entry-Name: .content
 
 get-button "View Menu" | click
-get-view "Capella Project Explorer" | get-menu -path "Quick Filters/Select All Filters" | click
+get-view "Project Explorer" | get-menu -path "Quick Filters/Select All Filters" | click
 
 get-button "View Menu" | click
-get-view "Capella Project Explorer" | get-menu "Filters and Customization..." | click
+get-view "Project Explorer" | get-menu "Filters and Customization..." | click
 with [get-window "Filters and Customization"] {
     get-tab-folder | get-tab-item "Pre-set filters" | click
     with [get-table] {
@@ -76,10 +76,10 @@ with [get-window "Filters and Customization"] {
 
 
 get-button "View Menu" | click
-get-view "Capella Project Explorer" | get-menu -path "Quick Filters/Deselect All Filters" | click
+get-view "Project Explorer" | get-menu -path "Quick Filters/Deselect All Filters" | click
 
 get-button "View Menu" | click
-get-view "Capella Project Explorer" | get-menu "Filters and Customization..." | click
+get-view "Project Explorer" | get-menu "Filters and Customization..." | click
 with [get-window "Filters and Customization"] {
     get-tab-folder | get-tab-item "Pre-set filters" | click
     with [get-table] {
@@ -137,10 +137,10 @@ with [get-window "Filters and Customization"] {
 
 
 get-button "View Menu" | click
-get-view "Capella Project Explorer" | get-menu -path "Quick Filters/Select Default Filters" | click
+get-view "Project Explorer" | get-menu -path "Quick Filters/Select Default Filters" | click
 
 get-button "View Menu" | click
-get-view "Capella Project Explorer" | get-menu "Filters and Customization..." | click
+get-view "Project Explorer" | get-menu "Filters and Customization..." | click
 with [get-window "Filters and Customization"] {
     get-tab-folder | get-tab-item "Pre-set filters" | click
     with [get-table] {

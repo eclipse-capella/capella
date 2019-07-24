@@ -14,7 +14,7 @@ Testcase-Type: ecl
 Content-Type: text/plain
 Entry-Name: .description
 
- From Capella Explorer :
+ From Project Explorer :
 - Open the SDFB diagram
 - ctrl+x on a diagram element
 - command should be disable on diagram element and nothing should happen
@@ -25,10 +25,10 @@ Content-Type: text/ecl
 Entry-Name: .content
 
 // Open the session
-get-view "Capella Project Explorer" | get-tree | select "renameTest/renameTest.aird" | double-click
+get-view "Project Explorer" | get-tree | select "renameTest/renameTest.aird" | double-click
 
 // Select the SDFB diagram in the renamed project and open it
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "renameTest/renameTest.aird/renameTest/System Analysis/System Functions/Root System Function/\\[SDFB\\] Root System Function" 
     | double-click
 with [get-editor "[SDFB] Root System Function" | get-diagram -index 1] {
