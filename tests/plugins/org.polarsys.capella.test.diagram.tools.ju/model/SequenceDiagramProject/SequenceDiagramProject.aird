@@ -242,18 +242,18 @@
       <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="SequenceDiagramProject.melodymodeller#85df78ab-5c17-4df4-94ad-76ffcb793ea1"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="SequenceDiagramProject.melodymodeller#85df78ab-5c17-4df4-94ad-76ffcb793ea1"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="SequenceDiagramProject.melodymodeller#148f62ef-77db-48f3-becd-eb9de464a9d3"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:System" href="SequenceDiagramProject.melodymodeller#b121dd59-9d3f-4c21-94ae-87e957aaa2a9"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="SequenceDiagramProject.melodymodeller#b121dd59-9d3f-4c21-94ae-87e957aaa2a9"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_pL3GYJjUEemfg6TIgqOEsA" x="50" y="50" height="50" width="150"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_pEX-UJjUEemfg6TIgqOEsA" width="1" height="40" resizeKind="NSEW">
         <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="SequenceDiagramProject.melodymodeller#85df78ab-5c17-4df4-94ad-76ffcb793ea1"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="SequenceDiagramProject.melodymodeller#85df78ab-5c17-4df4-94ad-76ffcb793ea1"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="SequenceDiagramProject.melodymodeller#148f62ef-77db-48f3-becd-eb9de464a9d3"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:System" href="SequenceDiagramProject.melodymodeller#b121dd59-9d3f-4c21-94ae-87e957aaa2a9"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="SequenceDiagramProject.melodymodeller#b121dd59-9d3f-4c21-94ae-87e957aaa2a9"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_pEbosJjUEemfg6TIgqOEsA" width="1" height="1">
           <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="SequenceDiagramProject.melodymodeller#85df78ab-5c17-4df4-94ad-76ffcb793ea1"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="SequenceDiagramProject.melodymodeller#85df78ab-5c17-4df4-94ad-76ffcb793ea1"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="SequenceDiagramProject.melodymodeller#148f62ef-77db-48f3-becd-eb9de464a9d3"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:System" href="SequenceDiagramProject.melodymodeller#b121dd59-9d3f-4c21-94ae-87e957aaa2a9"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="SequenceDiagramProject.melodymodeller#b121dd59-9d3f-4c21-94ae-87e957aaa2a9"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_pEcPwJjUEemfg6TIgqOEsA" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='endOfLifeDF']/@style"/>
           </ownedStyle>
@@ -453,18 +453,18 @@
       <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="SequenceDiagramProject.melodymodeller#2b44dd98-a2e2-4d27-b3fa-f21df9dbad16"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="SequenceDiagramProject.melodymodeller#2b44dd98-a2e2-4d27-b3fa-f21df9dbad16"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="SequenceDiagramProject.melodymodeller#148f62ef-77db-48f3-becd-eb9de464a9d3"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:System" href="SequenceDiagramProject.melodymodeller#b121dd59-9d3f-4c21-94ae-87e957aaa2a9"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="SequenceDiagramProject.melodymodeller#b121dd59-9d3f-4c21-94ae-87e957aaa2a9"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_p8XWQJjUEemfg6TIgqOEsA" x="50" y="50" height="50" width="150"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_p1EbcJjUEemfg6TIgqOEsA" width="1" height="40" resizeKind="NSEW">
         <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="SequenceDiagramProject.melodymodeller#2b44dd98-a2e2-4d27-b3fa-f21df9dbad16"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="SequenceDiagramProject.melodymodeller#2b44dd98-a2e2-4d27-b3fa-f21df9dbad16"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="SequenceDiagramProject.melodymodeller#148f62ef-77db-48f3-becd-eb9de464a9d3"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:System" href="SequenceDiagramProject.melodymodeller#b121dd59-9d3f-4c21-94ae-87e957aaa2a9"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="SequenceDiagramProject.melodymodeller#b121dd59-9d3f-4c21-94ae-87e957aaa2a9"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_p1FCgJjUEemfg6TIgqOEsA" width="1" height="1">
           <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="SequenceDiagramProject.melodymodeller#2b44dd98-a2e2-4d27-b3fa-f21df9dbad16"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="SequenceDiagramProject.melodymodeller#2b44dd98-a2e2-4d27-b3fa-f21df9dbad16"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="SequenceDiagramProject.melodymodeller#148f62ef-77db-48f3-becd-eb9de464a9d3"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:System" href="SequenceDiagramProject.melodymodeller#b121dd59-9d3f-4c21-94ae-87e957aaa2a9"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="SequenceDiagramProject.melodymodeller#b121dd59-9d3f-4c21-94ae-87e957aaa2a9"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_p1FCgZjUEemfg6TIgqOEsA" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='endOfLife']/@style"/>
           </ownedStyle>

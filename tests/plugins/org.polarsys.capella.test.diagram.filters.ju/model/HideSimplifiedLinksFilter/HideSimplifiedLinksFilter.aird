@@ -14,7 +14,7 @@
       </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_hA7Dw1-FEemwreRg971p-w" name="[SAB] Sequencing Information Filter Test" repPath="#_hAxSwF-FEemwreRg971p-w">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']"/>
-        <target xmi:type="org.polarsys.capella.core.data.ctx:System" href="HideSimplifiedLinksFilter.melodymodeller#15822f8d-9272-4485-84ca-a8f9451bb47d"/>
+        <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="HideSimplifiedLinksFilter.melodymodeller#15822f8d-9272-4485-84ca-a8f9451bb47d"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_Jd9vkGhyEeeJA6TBVgWePQ">
@@ -129,7 +129,7 @@
       </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_gJgeJV-GEemwreRg971p-w" name="[OAB] Sequencing Information Filter Test" repPath="#_gJgeIF-GEemwreRg971p-w" changeId="7943fd0c-d2e5-44bb-b88c-231f9915d1b1">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']"/>
-        <target xmi:type="org.polarsys.capella.core.data.oa:OperationalContext" href="HideSimplifiedLinksFilter.melodymodeller#6af42940-490d-4362-91da-c1133538d9a0"/>
+        <target xmi:type="org.polarsys.capella.core.data.oa:EntityPkg" href="HideSimplifiedLinksFilter.melodymodeller#6af42940-490d-4362-91da-c1133538d9a0"/>
       </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_W0Ue72AfEemr5-k8hCPnLA" name="[OPD] Filters Test Diagram" repPath="#_W0Bj8GAfEemr5-k8hCPnLA" changeId="55d2b013-e1db-41f8-a2a3-5d1fd5bea9d6">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Process%20Description']"/>
@@ -388,7 +388,7 @@
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_5q5VQGi6Eeebs7nnmYDsrA" name="LA 1">
       <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="HideSimplifiedLinksFilter.melodymodeller#22dc0101-d766-4647-aa8e-21ca3fe148c6"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="HideSimplifiedLinksFilter.melodymodeller#22dc0101-d766-4647-aa8e-21ca3fe148c6"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="HideSimplifiedLinksFilter.melodymodeller#09ea9211-da7f-4991-bc68-ee99402c20e3"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="HideSimplifiedLinksFilter.melodymodeller#09ea9211-da7f-4991-bc68-ee99402c20e3"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -567,7 +567,7 @@
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_EtTdUGi8Eeebs7nnmYDsrA" name="PA 1">
       <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="HideSimplifiedLinksFilter.melodymodeller#9074b47c-74a7-45f1-ad5f-c709a41f9cc0"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="HideSimplifiedLinksFilter.melodymodeller#9074b47c-74a7-45f1-ad5f-c709a41f9cc0"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalActor" href="HideSimplifiedLinksFilter.melodymodeller#491a096d-6205-41e6-b874-c93a315b8076"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="HideSimplifiedLinksFilter.melodymodeller#491a096d-6205-41e6-b874-c93a315b8076"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_X9acEGi8Eeebs7nnmYDsrA" name="CP 1" outgoingEdges="_fIXm4Gi8Eeebs7nnmYDsrA" width="1" height="1">
         <target xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="HideSimplifiedLinksFilter.melodymodeller#4d46dca8-fdfe-46c3-933d-e7399907dbf1"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.fa:ComponentPort" href="HideSimplifiedLinksFilter.melodymodeller#4d46dca8-fdfe-46c3-933d-e7399907dbf1"/>
@@ -794,7 +794,7 @@
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_JEUEYGi9Eeebs7nnmYDsrA" name="PA 2">
       <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="HideSimplifiedLinksFilter.melodymodeller#8c1e5bc7-85f4-4d34-b837-21c5e30484f5"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="HideSimplifiedLinksFilter.melodymodeller#8c1e5bc7-85f4-4d34-b837-21c5e30484f5"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalActor" href="HideSimplifiedLinksFilter.melodymodeller#a68adc4a-c925-40d6-a646-f324b14dfea6"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="HideSimplifiedLinksFilter.melodymodeller#a68adc4a-c925-40d6-a646-f324b14dfea6"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_M_Ge8Gi9Eeebs7nnmYDsrA" name="PP 1" outgoingEdges="_bitSUGi9Eeebs7nnmYDsrA" width="1" height="1">
         <target xmi:type="org.polarsys.capella.core.data.cs:PhysicalPort" href="HideSimplifiedLinksFilter.melodymodeller#0769440e-1b16-451e-b2c0-bded6389f6ad"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.cs:PhysicalPort" href="HideSimplifiedLinksFilter.melodymodeller#0769440e-1b16-451e-b2c0-bded6389f6ad"/>
@@ -4720,7 +4720,7 @@
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_hAxSwl-FEemwreRg971p-w" name="System">
       <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="HideSimplifiedLinksFilter.melodymodeller#171a7893-5e6d-4d75-b306-74315855c92a"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="HideSimplifiedLinksFilter.melodymodeller#171a7893-5e6d-4d75-b306-74315855c92a"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:System" href="HideSimplifiedLinksFilter.melodymodeller#15822f8d-9272-4485-84ca-a8f9451bb47d"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="HideSimplifiedLinksFilter.melodymodeller#15822f8d-9272-4485-84ca-a8f9451bb47d"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -5002,7 +5002,7 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@filters[name='hide.sequencing.information.filter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_hAxSwV-FEemwreRg971p-w"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.ctx:System" href="HideSimplifiedLinksFilter.melodymodeller#15822f8d-9272-4485-84ca-a8f9451bb47d"/>
+    <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="HideSimplifiedLinksFilter.melodymodeller#15822f8d-9272-4485-84ca-a8f9451bb47d"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_Qt-kQF-GEemwreRg971p-w" name="[OAIB] Root Operational Activity">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_Qt-kQl-GEemwreRg971p-w" source="DANNOTATION_CUSTOMIZATION_KEY">
@@ -6741,7 +6741,7 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@filters[name='hide.sequencing.information.filter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_gJgeIV-GEemwreRg971p-w"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.oa:OperationalContext" href="HideSimplifiedLinksFilter.melodymodeller#6af42940-490d-4362-91da-c1133538d9a0"/>
+    <target xmi:type="org.polarsys.capella.core.data.oa:EntityPkg" href="HideSimplifiedLinksFilter.melodymodeller#6af42940-490d-4362-91da-c1133538d9a0"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_uX8V8F-KEemwreRg971p-w" name="[LAB] Sequencing Information Filter Test">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_uYPQ4F-KEemwreRg971p-w" source="DANNOTATION_CUSTOMIZATION_KEY">

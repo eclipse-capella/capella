@@ -37,8 +37,6 @@ import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultCompon
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.fa.ExchangeCategory;
-import org.polarsys.capella.core.data.information.Partition;
-import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.diagram.helpers.ContextualDiagramHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.helpers.PartExt;
@@ -166,7 +164,7 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
         Component rootComponent = (Component) root;
         CsServices.getService().createRepresentingPartIfNone(rootComponent);
         if (!CsServices.getService().isMultipartMode(rootComponent)) {
-          root = rootComponent.getRepresentingPartitions().get(0);
+          root = rootComponent.getRepresentingParts().get(0);
         }
 
       } else if (root instanceof Part) {
@@ -277,7 +275,7 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
     HashMapSet<AbstractType, DNodeContainer> typeViews = new HashMapSet<>();
 
     // All displayed elements in the diagram
-    HashMapSet<Partition, DNodeContainer> partViews = new HashMapSet<>();
+    HashMapSet<Part, DNodeContainer> partViews = new HashMapSet<>();
 
     // Diagram elements to be moved
     Set<DNodeContainer> toBeMoved = new HashSet<>();
@@ -379,8 +377,8 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
         }
         visitedParents.add(parent);
 
-        if (parent instanceof PartitionableElement) {
-          PartitionableElement parentElement = (PartitionableElement) parent;
+        if (parent instanceof Component) {
+          Component parentElement = (Component) parent;
           if (typeViews.get(parentElement).size() == 1) {
             // Add the part in the first partView which haven't the part
             for (DNodeContainer container : typeViews.get(parentElement)) {
@@ -394,10 +392,8 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
           }
 
           if (!isAdded && !toBeDeleted) {
-            for (Partition partition : parentElement.getRepresentingPartitions()) {
-              if (partition instanceof Part) {
-                parents.addAll(content.getParents(partition, aContainer));
-              }
+            for (Part part : parentElement.getRepresentingParts()) {
+              parents.addAll(content.getParents(part, aContainer));
             }
           }
 

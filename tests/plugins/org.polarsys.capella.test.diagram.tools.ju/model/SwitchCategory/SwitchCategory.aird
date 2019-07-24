@@ -152,7 +152,7 @@
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_fsxEMAC3EeanCtga4ho_cQ" name="LA 2">
       <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="SwitchCategory.melodymodeller#9aa3bcbd-2c7d-486e-aaa0-56053dc0bdab"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="SwitchCategory.melodymodeller#9aa3bcbd-2c7d-486e-aaa0-56053dc0bdab"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="SwitchCategory.melodymodeller#57d91158-08c3-4d27-8878-c0a2d802d1cf"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="SwitchCategory.melodymodeller#57d91158-08c3-4d27-8878-c0a2d802d1cf"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_fsxEMQC3EeanCtga4ho_cQ" borderSize="1" borderSizeComputationExpression="1" borderColor="74,74,151" backgroundStyle="GradientTopToBottom" backgroundColor="218,253,255" foregroundColor="198,230,255">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='Logical%20Actors']/@style"/>
       </ownedStyle>

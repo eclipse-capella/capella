@@ -63,7 +63,7 @@
         </create>
       </intersection>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Operational Entity Breakdown" titleExpression="aql:'[OEBD] ' + self.name" domainClass="Component" preconditionExpression="aql:(self.oclIsKindOf(oa::Entity) and not (self.oclIsKindOf(oa::OperationalActor))) or self.oclIsKindOf(oa::OperationalContext) or self.oclIsKindOf(oa::EntityPkg)">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Operational Entity Breakdown" titleExpression="aql:'[OEBD] ' + self.name" domainClass="Component" preconditionExpression="aql:(self.oclIsKindOf(oa::Entity) and not self.oclAsType(oa::Entity).isActor()) or self.oclIsKindOf(oa::EntityPkg)">
       <dropDescriptions href="#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
       <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
@@ -147,7 +147,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Operational Actor in the target Entity" name="operational.actor" label="Operational Actor" precondition="aql:not (container.oclIsKindOf(oa::OperationalActor))" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/OperationalActor.gif" extraMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Operational Actor in the target Entity" name="operational.actor" label="Operational Actor" precondition="aql:not (container.oclIsKindOf(oa::Entity) ans self.isActor())" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/OperationalActor.gif" extraMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -2028,7 +2028,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Operational Role Blank" titleExpression="aql:'[ORB] ' + self.name" domainClass="Component" preconditionExpression="aql:(self.oclIsKindOf(oa::Entity) and not (self.oclIsKindOf(oa::OperationalActor))) or self.oclIsKindOf(oa::OperationalContext) or self.oclIsKindOf(oa::EntityPkg)">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Operational Role Blank" titleExpression="aql:'[ORB] ' + self.name" domainClass="Component" preconditionExpression="aql:(self.oclIsKindOf(oa::Entity) and not self.isActor()) or self.oclIsKindOf(oa::EntityPkg)">
       <dropDescriptions href="#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
       <dropDescriptions href="#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Role%20From%20Project%20Explorer']"/>
       <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
@@ -2784,7 +2784,8 @@
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.eContainerOrSelf(cs::BlockArchitecture)">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self->filter(oa::OperationalAnalysis)->size() != 0">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.ownedEntityPkg">
-                      <subModelOperations xsi:type="tool:CreateInstance" typeName="OperationalActor" referenceName="ownedEntities" variableName="actor">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="Entity" referenceName="ownedEntities" variableName="actor">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="actor" valueExpression="true"/>
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
