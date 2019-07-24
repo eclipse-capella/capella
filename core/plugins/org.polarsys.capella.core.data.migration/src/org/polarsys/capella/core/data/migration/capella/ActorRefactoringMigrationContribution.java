@@ -65,188 +65,234 @@ import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.OperationalAnalysisExt;
 
 /**
- * This class takes care of the migration of the Actor refactoring work. Here are some basic migration steps: 1)
- * Unknowned features ({@link ActorRefactoringMigrationContribution#unknownedFeatures}) are temporarily stored via the
- * ownedMigratedElements feature. 2) Renamed features are processed via
- * ({@link ActorRefactoringMigrationContribution#oldFeature2NewFeature}). 3) New types are processed via
- * ({@link ActorRefactoringMigrationContribution#oldType2NewType}). 4) After all elements are migrated, they are
- * reorganized via ({@link ActorRefactoringMigrationContribution#reorganizeMigratedElements}).
+ * This class takes care of the migration of the Actor refactoring work. Here are some basic migration steps:
+ * 
+ * 1) Unknowned features ({@link ActorRefactoringMigrationContribution#UNKNOWNED_FEATURES}) are temporarily stored via
+ * the ownedMigratedElements feature.
+ * 
+ * 2) Renamed features are processed via ({@link ActorRefactoringMigrationContribution#OLD_FEATURE_2_NEW_FEATURE}).
+ * 
+ * 3) New types are processed via ({@link ActorRefactoringMigrationContribution#OLD_TYPE_2_NEW_TYPE}).
+ * 
+ * 4) After all elements are migrated, they are reorganized via
+ * ({@link ActorRefactoringMigrationContribution#reorganizeMigratedElements}).
  * 
  */
 public class ActorRefactoringMigrationContribution extends AbstractMigrationContribution {
-  private List<UnknownEStructuralFeature> unknownedFeatures = Arrays.asList(
-      // System
-      new UnknownEStructuralFeature(CtxPackage.Literals.SYSTEM_ANALYSIS, "ownedSystem"),
-      new UnknownEStructuralFeature(LaPackage.Literals.LOGICAL_ARCHITECTURE, "ownedLogicalComponent"),
-      new UnknownEStructuralFeature(PaPackage.Literals.PHYSICAL_ARCHITECTURE, "ownedPhysicalComponent"),
-      new UnknownEStructuralFeature(EpbsPackage.Literals.EPBS_ARCHITECTURE, "ownedConfigurationItem"),
+  private static final List<UnknownEStructuralFeature> UNKNOWNED_FEATURES = new ArrayList<>();
+  static {
+    UNKNOWNED_FEATURES.add(new UnknownEStructuralFeature(CtxPackage.Literals.SYSTEM_ANALYSIS, "ownedSystem"));
+    UNKNOWNED_FEATURES
+        .add(new UnknownEStructuralFeature(LaPackage.Literals.LOGICAL_ARCHITECTURE, "ownedLogicalComponent"));
+    UNKNOWNED_FEATURES
+        .add(new UnknownEStructuralFeature(PaPackage.Literals.PHYSICAL_ARCHITECTURE, "ownedPhysicalComponent"));
+    UNKNOWNED_FEATURES
+        .add(new UnknownEStructuralFeature(EpbsPackage.Literals.EPBS_ARCHITECTURE, "ownedConfigurationItem"));
 
-      // System context
-      new UnknownEStructuralFeature(OaPackage.Literals.OPERATIONAL_ANALYSIS, "ownedOperationalContext"),
-      new UnknownEStructuralFeature(CtxPackage.Literals.SYSTEM_ANALYSIS, "ownedSystemContext"),
-      new UnknownEStructuralFeature(LaPackage.Literals.LOGICAL_ARCHITECTURE, "ownedLogicalContext"),
-      new UnknownEStructuralFeature(PaPackage.Literals.PHYSICAL_ARCHITECTURE, "ownedPhysicalContext"),
-      new UnknownEStructuralFeature(EpbsPackage.Literals.EPBS_ARCHITECTURE, "ownedEPBSContext"),
+    // System context
+    UNKNOWNED_FEATURES
+        .add(new UnknownEStructuralFeature(OaPackage.Literals.OPERATIONAL_ANALYSIS, "ownedOperationalContext"));
+    UNKNOWNED_FEATURES.add(new UnknownEStructuralFeature(CtxPackage.Literals.SYSTEM_ANALYSIS, "ownedSystemContext"));
+    UNKNOWNED_FEATURES
+        .add(new UnknownEStructuralFeature(LaPackage.Literals.LOGICAL_ARCHITECTURE, "ownedLogicalContext"));
+    UNKNOWNED_FEATURES
+        .add(new UnknownEStructuralFeature(PaPackage.Literals.PHYSICAL_ARCHITECTURE, "ownedPhysicalContext"));
+    UNKNOWNED_FEATURES.add(new UnknownEStructuralFeature(EpbsPackage.Literals.EPBS_ARCHITECTURE, "ownedEPBSContext"));
 
-      // Actor pkg
-      new UnknownEStructuralFeature(CtxPackage.Literals.SYSTEM_ANALYSIS, "ownedActorPkg"),
-      new UnknownEStructuralFeature(LaPackage.Literals.LOGICAL_ARCHITECTURE, "ownedLogicalActorPkg"),
-      new UnknownEStructuralFeature(PaPackage.Literals.PHYSICAL_ARCHITECTURE, "ownedPhysicalActorPkg"),
+    // Actor pkg
+    UNKNOWNED_FEATURES.add(new UnknownEStructuralFeature(CtxPackage.Literals.SYSTEM_ANALYSIS, "ownedActorPkg"));
+    UNKNOWNED_FEATURES
+        .add(new UnknownEStructuralFeature(LaPackage.Literals.LOGICAL_ARCHITECTURE, "ownedLogicalActorPkg"));
+    UNKNOWNED_FEATURES
+        .add(new UnknownEStructuralFeature(PaPackage.Literals.PHYSICAL_ARCHITECTURE, "ownedPhysicalActorPkg"));
 
-      // Context's DataPkg
-      new UnknownEStructuralFeature(OaPackage.Literals.ENTITY_PKG, "ownedDataPkg"),
-      new UnknownEStructuralFeature(CtxPackage.Literals.SYSTEM_COMPONENT_PKG, "ownedDataPkg"),
-      new UnknownEStructuralFeature(LaPackage.Literals.LOGICAL_COMPONENT_PKG, "ownedDataPkg"),
-      new UnknownEStructuralFeature(PaPackage.Literals.PHYSICAL_COMPONENT_PKG, "ownedDataPkg"),
-      new UnknownEStructuralFeature(EpbsPackage.Literals.CONFIGURATION_ITEM_PKG, "ownedDataPkg"),
+    // Context's DataPkg
+    UNKNOWNED_FEATURES.add(new UnknownEStructuralFeature(OaPackage.Literals.ENTITY_PKG, "ownedDataPkg"));
+    UNKNOWNED_FEATURES.add(new UnknownEStructuralFeature(CtxPackage.Literals.SYSTEM_COMPONENT_PKG, "ownedDataPkg"));
+    UNKNOWNED_FEATURES.add(new UnknownEStructuralFeature(LaPackage.Literals.LOGICAL_COMPONENT_PKG, "ownedDataPkg"));
+    UNKNOWNED_FEATURES.add(new UnknownEStructuralFeature(PaPackage.Literals.PHYSICAL_COMPONENT_PKG, "ownedDataPkg"));
+    UNKNOWNED_FEATURES.add(new UnknownEStructuralFeature(EpbsPackage.Literals.CONFIGURATION_ITEM_PKG, "ownedDataPkg"));
 
-      // Context's InterfacePkg
-      new UnknownEStructuralFeature(OaPackage.Literals.ENTITY_PKG, "ownedInterfacePkg"),
-      new UnknownEStructuralFeature(CtxPackage.Literals.SYSTEM_COMPONENT_PKG, "ownedInterfacePkg"),
-      new UnknownEStructuralFeature(LaPackage.Literals.LOGICAL_COMPONENT_PKG, "ownedInterfacePkg"),
-      new UnknownEStructuralFeature(PaPackage.Literals.PHYSICAL_COMPONENT_PKG, "ownedInterfacePkg"),
-      new UnknownEStructuralFeature(EpbsPackage.Literals.CONFIGURATION_ITEM_PKG, "ownedInterfacePkg"),
+    // Context's InterfacePkg
+    UNKNOWNED_FEATURES.add(new UnknownEStructuralFeature(OaPackage.Literals.ENTITY_PKG, "ownedInterfacePkg"));
+    UNKNOWNED_FEATURES
+        .add(new UnknownEStructuralFeature(CtxPackage.Literals.SYSTEM_COMPONENT_PKG, "ownedInterfacePkg"));
+    UNKNOWNED_FEATURES
+        .add(new UnknownEStructuralFeature(LaPackage.Literals.LOGICAL_COMPONENT_PKG, "ownedInterfacePkg"));
+    UNKNOWNED_FEATURES
+        .add(new UnknownEStructuralFeature(PaPackage.Literals.PHYSICAL_COMPONENT_PKG, "ownedInterfacePkg"));
+    UNKNOWNED_FEATURES
+        .add(new UnknownEStructuralFeature(EpbsPackage.Literals.CONFIGURATION_ITEM_PKG, "ownedInterfacePkg"));
 
-      // Context's CapabilityPkg
-      new UnknownEStructuralFeature(OaPackage.Literals.ENTITY_PKG, "ownedAbstractCapabilityPkg"),
-      new UnknownEStructuralFeature(CtxPackage.Literals.SYSTEM_COMPONENT_PKG, "ownedAbstractCapabilityPkg"),
-      new UnknownEStructuralFeature(LaPackage.Literals.LOGICAL_COMPONENT_PKG, "ownedAbstractCapabilityPkg"),
-      new UnknownEStructuralFeature(PaPackage.Literals.PHYSICAL_COMPONENT_PKG, "ownedAbstractCapabilityPkg"),
-      new UnknownEStructuralFeature(EpbsPackage.Literals.CONFIGURATION_ITEM_PKG, "ownedAbstractCapabilityPkg"));
+    // Context's CapabilityPkg
+    UNKNOWNED_FEATURES.add(new UnknownEStructuralFeature(OaPackage.Literals.ENTITY_PKG, "ownedAbstractCapabilityPkg"));
+    UNKNOWNED_FEATURES
+        .add(new UnknownEStructuralFeature(CtxPackage.Literals.SYSTEM_COMPONENT_PKG, "ownedAbstractCapabilityPkg"));
+    UNKNOWNED_FEATURES
+        .add(new UnknownEStructuralFeature(LaPackage.Literals.LOGICAL_COMPONENT_PKG, "ownedAbstractCapabilityPkg"));
+    UNKNOWNED_FEATURES
+        .add(new UnknownEStructuralFeature(PaPackage.Literals.PHYSICAL_COMPONENT_PKG, "ownedAbstractCapabilityPkg"));
+    UNKNOWNED_FEATURES
+        .add(new UnknownEStructuralFeature(EpbsPackage.Literals.CONFIGURATION_ITEM_PKG, "ownedAbstractCapabilityPkg"));
+  }
 
-  private Map<UnknownEStructuralFeature, EStructuralFeature> oldFeature2NewFeature = new HashMap<UnknownEStructuralFeature, EStructuralFeature>() {
-    {
-      // Realization links
-      put(new UnknownEStructuralFeature(CtxPackage.Literals.SYSTEM_COMPONENT, "ownedOperationalActorRealizations"),
-          CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS);
-      put(new UnknownEStructuralFeature(CtxPackage.Literals.SYSTEM_COMPONENT, "ownedOperationalEntityRealizations"),
-          CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS);
-      put(new UnknownEStructuralFeature(LaPackage.Literals.LOGICAL_COMPONENT, "ownedSystemActorRealizations"),
-          CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS);
-      put(new UnknownEStructuralFeature(LaPackage.Literals.LOGICAL_COMPONENT, "ownedSystemRealizations"),
-          CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS);
-      put(new UnknownEStructuralFeature(PaPackage.Literals.PHYSICAL_COMPONENT, "ownedLogicalActorRealizations"),
-          CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS);
-      put(new UnknownEStructuralFeature(PaPackage.Literals.PHYSICAL_COMPONENT, "ownedLogicalComponentRealizations"),
-          CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS);
+  private static final Map<UnknownEStructuralFeature, EStructuralFeature> OLD_FEATURE_2_NEW_FEATURE = new HashMap<>();
+  static {
+    OLD_FEATURE_2_NEW_FEATURE.put(
+        new UnknownEStructuralFeature(CtxPackage.Literals.SYSTEM_COMPONENT, "ownedOperationalActorRealizations"),
+        CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS);
+    OLD_FEATURE_2_NEW_FEATURE.put(
+        new UnknownEStructuralFeature(CtxPackage.Literals.SYSTEM_COMPONENT, "ownedOperationalEntityRealizations"),
+        CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS);
+    OLD_FEATURE_2_NEW_FEATURE.put(
+        new UnknownEStructuralFeature(LaPackage.Literals.LOGICAL_COMPONENT, "ownedSystemActorRealizations"),
+        CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS);
+    OLD_FEATURE_2_NEW_FEATURE.put(
+        new UnknownEStructuralFeature(LaPackage.Literals.LOGICAL_COMPONENT, "ownedSystemRealizations"),
+        CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS);
+    OLD_FEATURE_2_NEW_FEATURE.put(
+        new UnknownEStructuralFeature(PaPackage.Literals.PHYSICAL_COMPONENT, "ownedLogicalActorRealizations"),
+        CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS);
+    OLD_FEATURE_2_NEW_FEATURE.put(
+        new UnknownEStructuralFeature(PaPackage.Literals.PHYSICAL_COMPONENT, "ownedLogicalComponentRealizations"),
+        CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS);
 
-      // Part
-      put(new UnknownEStructuralFeature(OaPackage.Literals.ENTITY_PKG, "ownedFeatures"),
-          CsPackage.Literals.COMPONENT_PKG__OWNED_PARTS);
-      put(new UnknownEStructuralFeature(CtxPackage.Literals.SYSTEM_COMPONENT_PKG, "ownedFeatures"),
-          CsPackage.Literals.COMPONENT_PKG__OWNED_PARTS);
-      put(new UnknownEStructuralFeature(LaPackage.Literals.LOGICAL_COMPONENT_PKG, "ownedFeatures"),
-          CsPackage.Literals.COMPONENT_PKG__OWNED_PARTS);
-      put(new UnknownEStructuralFeature(PaPackage.Literals.PHYSICAL_COMPONENT_PKG, "ownedFeatures"),
-          CsPackage.Literals.COMPONENT_PKG__OWNED_PARTS);
-      put(new UnknownEStructuralFeature(EpbsPackage.Literals.CONFIGURATION_ITEM_PKG, "ownedFeatures"),
-          CsPackage.Literals.COMPONENT_PKG__OWNED_PARTS);
+    // Part
+    OLD_FEATURE_2_NEW_FEATURE.put(new UnknownEStructuralFeature(OaPackage.Literals.ENTITY_PKG, "ownedFeatures"),
+        CsPackage.Literals.COMPONENT_PKG__OWNED_PARTS);
+    OLD_FEATURE_2_NEW_FEATURE.put(new UnknownEStructuralFeature(CtxPackage.Literals.SYSTEM_COMPONENT_PKG, "ownedFeatures"),
+        CsPackage.Literals.COMPONENT_PKG__OWNED_PARTS);
+    OLD_FEATURE_2_NEW_FEATURE.put(new UnknownEStructuralFeature(LaPackage.Literals.LOGICAL_COMPONENT_PKG, "ownedFeatures"),
+        CsPackage.Literals.COMPONENT_PKG__OWNED_PARTS);
+    OLD_FEATURE_2_NEW_FEATURE.put(new UnknownEStructuralFeature(PaPackage.Literals.PHYSICAL_COMPONENT_PKG, "ownedFeatures"),
+        CsPackage.Literals.COMPONENT_PKG__OWNED_PARTS);
+    OLD_FEATURE_2_NEW_FEATURE.put(
+        new UnknownEStructuralFeature(EpbsPackage.Literals.CONFIGURATION_ITEM_PKG, "ownedFeatures"),
+        CsPackage.Literals.COMPONENT_PKG__OWNED_PARTS);
 
-      // Actor
-      put(new UnknownEStructuralFeature(CtxPackage.Literals.SYSTEM_COMPONENT_PKG, "ownedActors"),
-          CtxPackage.Literals.SYSTEM_COMPONENT_PKG__OWNED_SYSTEM_COMPONENTS);
-      put(new UnknownEStructuralFeature(LaPackage.Literals.LOGICAL_COMPONENT_PKG, "ownedLogicalActors"),
-          LaPackage.Literals.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENTS);
-      put(new UnknownEStructuralFeature(PaPackage.Literals.PHYSICAL_COMPONENT_PKG, "ownedPhysicalActors"),
+    // Actor
+    OLD_FEATURE_2_NEW_FEATURE.put(new UnknownEStructuralFeature(CtxPackage.Literals.SYSTEM_COMPONENT_PKG, "ownedActors"),
+        CtxPackage.Literals.SYSTEM_COMPONENT_PKG__OWNED_SYSTEM_COMPONENTS);
+    OLD_FEATURE_2_NEW_FEATURE.put(
+        new UnknownEStructuralFeature(LaPackage.Literals.LOGICAL_COMPONENT_PKG, "ownedLogicalActors"),
+        LaPackage.Literals.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENTS);
+    OLD_FEATURE_2_NEW_FEATURE.put(
+        new UnknownEStructuralFeature(PaPackage.Literals.PHYSICAL_COMPONENT_PKG, "ownedPhysicalActors"),
+        PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS);
+    // Physical Components
+    OLD_FEATURE_2_NEW_FEATURE.put(new UnknownEStructuralFeature(PaPackage.Literals.PHYSICAL_COMPONENT_PKG, "ownedComponents"),
           PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS);
-      // Physical Components
-      put(new UnknownEStructuralFeature(PaPackage.Literals.PHYSICAL_COMPONENT_PKG, "ownedComponents"),
-          PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS);
-      
-      // Capability/Mission Involvements
-      put(new UnknownEStructuralFeature(CtxPackage.Literals.CAPABILITY_INVOLVEMENT, "actor"),
-          CtxPackage.Literals.CAPABILITY_INVOLVEMENT__SYSTEM_COMPONENT);
-      put(new UnknownEStructuralFeature(CtxPackage.Literals.CAPABILITY, "ownedActorCapabilityInvolvements"),
-          CtxPackage.Literals.CAPABILITY__OWNED_CAPABILITY_INVOLVEMENTS);
-      put(new UnknownEStructuralFeature(CtxPackage.Literals.CAPABILITY, "ownedSystemCapabilityInvolvement"),
-          CtxPackage.Literals.CAPABILITY__OWNED_CAPABILITY_INVOLVEMENTS);
-      put(new UnknownEStructuralFeature(CtxPackage.Literals.MISSION_INVOLVEMENT, "actor"),
-          CtxPackage.Literals.MISSION_INVOLVEMENT__SYSTEM_COMPONENT);
-      put(new UnknownEStructuralFeature(CtxPackage.Literals.MISSION, "ownedActorMissionInvolvements"),
-          CtxPackage.Literals.MISSION__OWNED_MISSION_INVOLVEMENTS);
-      put(new UnknownEStructuralFeature(CtxPackage.Literals.MISSION, "ownedSystemMissionInvolvement"),
-          CtxPackage.Literals.MISSION__OWNED_MISSION_INVOLVEMENTS);
+    // Capability/Mission Involvements
+    OLD_FEATURE_2_NEW_FEATURE.put(new UnknownEStructuralFeature(CtxPackage.Literals.CAPABILITY_INVOLVEMENT, "actor"),
+        CtxPackage.Literals.CAPABILITY_INVOLVEMENT__SYSTEM_COMPONENT);
+    OLD_FEATURE_2_NEW_FEATURE.put(
+        new UnknownEStructuralFeature(CtxPackage.Literals.CAPABILITY, "ownedActorCapabilityInvolvements"),
+        CtxPackage.Literals.CAPABILITY__OWNED_CAPABILITY_INVOLVEMENTS);
+    OLD_FEATURE_2_NEW_FEATURE.put(
+        new UnknownEStructuralFeature(CtxPackage.Literals.CAPABILITY, "ownedSystemCapabilityInvolvement"),
+        CtxPackage.Literals.CAPABILITY__OWNED_CAPABILITY_INVOLVEMENTS);
+    OLD_FEATURE_2_NEW_FEATURE.put(new UnknownEStructuralFeature(CtxPackage.Literals.MISSION_INVOLVEMENT, "actor"),
+        CtxPackage.Literals.MISSION_INVOLVEMENT__SYSTEM_COMPONENT);
+    OLD_FEATURE_2_NEW_FEATURE.put(
+        new UnknownEStructuralFeature(CtxPackage.Literals.MISSION, "ownedActorMissionInvolvements"),
+        CtxPackage.Literals.MISSION__OWNED_MISSION_INVOLVEMENTS);
+    OLD_FEATURE_2_NEW_FEATURE.put(
+        new UnknownEStructuralFeature(CtxPackage.Literals.MISSION, "ownedSystemMissionInvolvement"),
+        CtxPackage.Literals.MISSION__OWNED_MISSION_INVOLVEMENTS);
 
-      // Capability Realization Involvements
-      put(new UnknownEStructuralFeature(LaPackage.Literals.CAPABILITY_REALIZATION, "ownedActorCapabilityRealizations"),
-          LaPackage.Literals.CAPABILITY_REALIZATION__OWNED_CAPABILITY_REALIZATION_INVOLVEMENTS);
-      put(new UnknownEStructuralFeature(LaPackage.Literals.CAPABILITY_REALIZATION,
-          "ownedSystemComponentCapabilityRealizations"),
-          LaPackage.Literals.CAPABILITY_REALIZATION__OWNED_CAPABILITY_REALIZATION_INVOLVEMENTS);
-    }
-  };
+    // Capability Realization Involvements
+    OLD_FEATURE_2_NEW_FEATURE.put(
+        new UnknownEStructuralFeature(LaPackage.Literals.CAPABILITY_REALIZATION, "ownedActorCapabilityRealizations"),
+        LaPackage.Literals.CAPABILITY_REALIZATION__OWNED_CAPABILITY_REALIZATION_INVOLVEMENTS);
+    OLD_FEATURE_2_NEW_FEATURE.put(
+        new UnknownEStructuralFeature(LaPackage.Literals.CAPABILITY_REALIZATION,
+            "ownedSystemComponentCapabilityRealizations"),
+        LaPackage.Literals.CAPABILITY_REALIZATION__OWNED_CAPABILITY_REALIZATION_INVOLVEMENTS);
+  }
 
-  private Map<String, String> oldType2NewType = new HashMap<String, String>() {
-    {
-      // Context to Package
-      put("org.polarsys.capella.core.data.oa:OperationalContext", "org.polarsys.capella.core.data.oa:EntityPkg");
-      put("org.polarsys.capella.core.data.ctx:SystemContext", "org.polarsys.capella.core.data.ctx:SystemComponentPkg");
-      put("org.polarsys.capella.core.data.la:LogicalContext", "org.polarsys.capella.core.data.la:LogicalComponentPkg");
-      put("org.polarsys.capella.core.data.pa:PhysicalContext",
-          "org.polarsys.capella.core.data.pa:PhysicalComponentPkg");
-      put("org.polarsys.capella.core.data.epbs:EPBSContext",
-          "org.polarsys.capella.core.data.epbs:ConfigurationItemPkg");
+  private static final Map<String, String> OLD_TYPE_2_NEW_TYPE = new HashMap<>();
+  static {
+    // Context to Package
+    OLD_TYPE_2_NEW_TYPE.put("org.polarsys.capella.core.data.oa:OperationalContext",
+        "org.polarsys.capella.core.data.oa:EntityPkg");
+    OLD_TYPE_2_NEW_TYPE.put("org.polarsys.capella.core.data.ctx:SystemContext",
+        "org.polarsys.capella.core.data.ctx:SystemComponentPkg");
+    OLD_TYPE_2_NEW_TYPE.put("org.polarsys.capella.core.data.la:LogicalContext",
+        "org.polarsys.capella.core.data.la:LogicalComponentPkg");
+    OLD_TYPE_2_NEW_TYPE.put("org.polarsys.capella.core.data.pa:PhysicalContext",
+        "org.polarsys.capella.core.data.pa:PhysicalComponentPkg");
+    OLD_TYPE_2_NEW_TYPE.put("org.polarsys.capella.core.data.epbs:EPBSContext",
+        "org.polarsys.capella.core.data.epbs:ConfigurationItemPkg");
 
-      // Actor package
-      put("org.polarsys.capella.core.data.ctx:ActorPkg", "org.polarsys.capella.core.data.ctx:SystemComponentPkg");
-      put("org.polarsys.capella.core.data.la:LogicalActorPkg", "org.polarsys.capella.core.data.la:LogicalComponentPkg");
-      put("org.polarsys.capella.core.data.pa:PhysicalActorPkg",
-          "org.polarsys.capella.core.data.pa:PhysicalComponentPkg");
+    // Actor package
+    OLD_TYPE_2_NEW_TYPE.put("org.polarsys.capella.core.data.ctx:ActorPkg",
+        "org.polarsys.capella.core.data.ctx:SystemComponentPkg");
+    OLD_TYPE_2_NEW_TYPE.put("org.polarsys.capella.core.data.la:LogicalActorPkg",
+        "org.polarsys.capella.core.data.la:LogicalComponentPkg");
+    OLD_TYPE_2_NEW_TYPE.put("org.polarsys.capella.core.data.pa:PhysicalActorPkg",
+        "org.polarsys.capella.core.data.pa:PhysicalComponentPkg");
 
-      // Realization links
-      put("org.polarsys.capella.core.data.ctx:OperationalActorRealization",
-          "org.polarsys.capella.core.data.cs:ComponentRealization");
-      put("org.polarsys.capella.core.data.ctx:OperationalEntityRealization",
-          "org.polarsys.capella.core.data.cs:ComponentRealization");
-      put("org.polarsys.capella.core.data.la:SystemActorRealization",
-          "org.polarsys.capella.core.data.cs:ComponentRealization");
-      put("org.polarsys.capella.core.data.la:SystemRealization",
-          "org.polarsys.capella.core.data.cs:ComponentRealization");
-      put("org.polarsys.capella.core.data.pa:LogicalActorRealization",
-          "org.polarsys.capella.core.data.cs:ComponentRealization");
-      put("org.polarsys.capella.core.data.pa:LogicalComponentRealization",
-          "org.polarsys.capella.core.data.cs:ComponentRealization");
+    // Realization links
+    OLD_TYPE_2_NEW_TYPE.put("org.polarsys.capella.core.data.ctx:OperationalActorRealization",
+        "org.polarsys.capella.core.data.cs:ComponentRealization");
+    OLD_TYPE_2_NEW_TYPE.put("org.polarsys.capella.core.data.ctx:OperationalEntityRealization",
+        "org.polarsys.capella.core.data.cs:ComponentRealization");
+    OLD_TYPE_2_NEW_TYPE.put("org.polarsys.capella.core.data.la:SystemActorRealization",
+        "org.polarsys.capella.core.data.cs:ComponentRealization");
+    OLD_TYPE_2_NEW_TYPE.put("org.polarsys.capella.core.data.la:SystemRealization",
+        "org.polarsys.capella.core.data.cs:ComponentRealization");
+    OLD_TYPE_2_NEW_TYPE.put("org.polarsys.capella.core.data.pa:LogicalActorRealization",
+        "org.polarsys.capella.core.data.cs:ComponentRealization");
+    OLD_TYPE_2_NEW_TYPE.put("org.polarsys.capella.core.data.pa:LogicalComponentRealization",
+        "org.polarsys.capella.core.data.cs:ComponentRealization");
 
-      // System
-      put("org.polarsys.capella.core.data.ctx:System", "org.polarsys.capella.core.data.ctx:SystemComponent");
+    // System
+    OLD_TYPE_2_NEW_TYPE.put("org.polarsys.capella.core.data.ctx:System",
+        "org.polarsys.capella.core.data.ctx:SystemComponent");
 
-      // Actors
-      put("org.polarsys.capella.core.data.oa:OperationalActor", "org.polarsys.capella.core.data.oa:Entity");
-      put("org.polarsys.capella.core.data.ctx:Actor", "org.polarsys.capella.core.data.ctx:SystemComponent");
-      put("org.polarsys.capella.core.data.la:LogicalActor", "org.polarsys.capella.core.data.la:LogicalComponent");
-      put("org.polarsys.capella.core.data.pa:PhysicalActor", "org.polarsys.capella.core.data.pa:PhysicalComponent");
+    // Actors
+    OLD_TYPE_2_NEW_TYPE.put("org.polarsys.capella.core.data.oa:OperationalActor",
+        "org.polarsys.capella.core.data.oa:Entity");
+    OLD_TYPE_2_NEW_TYPE.put("org.polarsys.capella.core.data.ctx:Actor",
+        "org.polarsys.capella.core.data.ctx:SystemComponent");
+    OLD_TYPE_2_NEW_TYPE.put("org.polarsys.capella.core.data.la:LogicalActor",
+        "org.polarsys.capella.core.data.la:LogicalComponent");
+    OLD_TYPE_2_NEW_TYPE.put("org.polarsys.capella.core.data.pa:PhysicalActor",
+        "org.polarsys.capella.core.data.pa:PhysicalComponent");
 
-      // Capability/Mission Involvements
-      put("org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement",
-          "org.polarsys.capella.core.data.ctx:CapabilityInvolvement");
-      put("org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement",
-          "org.polarsys.capella.core.data.ctx:CapabilityInvolvement");
-      put("org.polarsys.capella.core.data.ctx:ActorMissionInvolvement",
-          "org.polarsys.capella.core.data.ctx:MissionInvolvement");
-      put("org.polarsys.capella.core.data.ctx:SystemMissionInvolvement",
-          "org.polarsys.capella.core.data.ctx:MissionInvolvement");
+    // Capability/Mission Involvements
+    OLD_TYPE_2_NEW_TYPE.put("org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement",
+        "org.polarsys.capella.core.data.ctx:CapabilityInvolvement");
+    OLD_TYPE_2_NEW_TYPE.put("org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement",
+        "org.polarsys.capella.core.data.ctx:CapabilityInvolvement");
+    OLD_TYPE_2_NEW_TYPE.put("org.polarsys.capella.core.data.ctx:ActorMissionInvolvement",
+        "org.polarsys.capella.core.data.ctx:MissionInvolvement");
+    OLD_TYPE_2_NEW_TYPE.put("org.polarsys.capella.core.data.ctx:SystemMissionInvolvement",
+        "org.polarsys.capella.core.data.ctx:MissionInvolvement");
 
-      // Capability Realization Involvements
-      put("org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement",
-          "org.polarsys.capella.core.data.capellacommon:CapabilityRealizationInvolvement");
-      put("org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement",
-          "org.polarsys.capella.core.data.capellacommon:CapabilityRealizationInvolvement");
-    }
-  };
+    // Capability Realization Involvements
+    OLD_TYPE_2_NEW_TYPE.put("org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement",
+        "org.polarsys.capella.core.data.capellacommon:CapabilityRealizationInvolvement");
+    OLD_TYPE_2_NEW_TYPE.put("org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement",
+        "org.polarsys.capella.core.data.capellacommon:CapabilityRealizationInvolvement");
+  }
 
-  private List<String> oldActorTypes = Arrays.asList("org.polarsys.capella.core.data.oa:OperationalActor",
-      "org.polarsys.capella.core.data.ctx:Actor", "org.polarsys.capella.core.data.la:LogicalActor",
-      "org.polarsys.capella.core.data.pa:PhysicalActor");
+  private static final List<String> OLD_ACTOR_TYPES = Arrays.asList( //
+      "org.polarsys.capella.core.data.oa:OperationalActor", //
+      "org.polarsys.capella.core.data.ctx:Actor", //
+      "org.polarsys.capella.core.data.la:LogicalActor", //
+      "org.polarsys.capella.core.data.pa:PhysicalActor" //
+  );
 
   private String operationalContextId, systemContextId, logicalContextId, physicalContextId, ePBSContextId;
   
   @Override
   public EStructuralFeature getFeature(EObject object, String prefix, String name, boolean isElement) {
     UnknownEStructuralFeature featureToTest = new UnknownEStructuralFeature(object.eClass(), name);
-    if (unknownedFeatures.contains(featureToTest)) {
+    if (UNKNOWNED_FEATURES.contains(featureToTest)) {
       return ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_MIGRATED_ELEMENTS;
-    } else if (oldFeature2NewFeature.containsKey(featureToTest)) {
-      return oldFeature2NewFeature.get(featureToTest);
+    } else if (OLD_FEATURE_2_NEW_FEATURE.containsKey(featureToTest)) {
+      return OLD_FEATURE_2_NEW_FEATURE.get(featureToTest);
     }
     return super.getFeature(object, prefix, name, isElement);
   }
@@ -254,8 +300,8 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
   @Override
   public String getQName(EObject peekObject, String typeQName, EStructuralFeature feature, Resource resource,
       XMLHelper helper, MigrationContext context) {
-    if (oldType2NewType.containsKey(typeQName)) {
-      return oldType2NewType.get(typeQName);
+    if (OLD_TYPE_2_NEW_TYPE.containsKey(typeQName)) {
+      return OLD_TYPE_2_NEW_TYPE.get(typeQName);
     }
     return super.getQName(peekObject, typeQName, feature, resource, helper, context);
   }
@@ -264,8 +310,9 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
   public void updateCreatedObject(EObject peekObject, EObject eObject, String typeQName, EStructuralFeature feature,
       XMLResource resource, XMLHelper helper, MigrationContext context) {
     // Actor become Component of Actor type
-    if (oldActorTypes.contains(typeQName) && eObject instanceof Component) {
+    if (OLD_ACTOR_TYPES.contains(typeQName) && eObject instanceof Component) {
       ((Component) eObject).setActor(true);
+      ((Component) eObject).setHuman(true);
     }
     // Store old contexts' ids
     else if ("org.polarsys.capella.core.data.oa:OperationalContext".equals(typeQName) && eObject instanceof EntityPkg) {
@@ -330,9 +377,12 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
   }
 
   /**
-   * 1) Move the migrated EPBS System to the Configuration Item Pkg. 2) Move the migrated EPBS Context to Configuration
-   * Item Pkg. 3) Move Physical Context's DataPkg, InterfacePkg, CapabilityRealizationPkg (if exist) to corresponding
-   * packages. If the packages do not exist, create them.
+   * 1) Move the migrated EPBS System to the Configuration Item Pkg.
+   * 
+   * 2) Move the migrated EPBS Context to Configuration Item Pkg.
+   * 
+   * 3) Move Physical Context's DataPkg, InterfacePkg, CapabilityRealizationPkg (if exist) to corresponding packages. If
+   * the packages do not exist, create them.
    * 
    * @param epbs
    */
@@ -372,9 +422,11 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
   }
 
   /**
-   * 1) Move the migrated Physical System to the Physical Component Pkg. 2) Move the migrated Physical Context to
-   * Physical Component Pkg. 3) Move Physical Context's DataPkg, InterfacePkg, CapabilityRealizationPkg (if exist) to
-   * corresponding packages.
+   * 1) Move the migrated Physical System to the Physical Component Pkg.
+   * 
+   * 2) Move the migrated Physical Context to Physical Component Pkg.
+   * 
+   * 3) Move Physical Context's DataPkg, InterfacePkg, CapabilityRealizationPkg (if exist) to corresponding packages.
    * 
    * @param la
    */
@@ -413,9 +465,11 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
   }
 
   /**
-   * 1) Move the migrated Logical System to the Logical Component Pkg. 2) Move the migrated Logical Context to Logical
-   * Component Pkg. 3) Move Logical Context's DataPkg, InterfacePkg, CapabilityRealizationPkg (if exist) to
-   * corresponding packages.
+   * 1) Move the migrated Logical System to the Logical Component Pkg.
+   * 
+   * 2) Move the migrated Logical Context to Logical Component Pkg.
+   * 
+   * 3) Move Logical Context's DataPkg, InterfacePkg, CapabilityRealizationPkg (if exist) to corresponding packages.
    * 
    * @param la
    */
@@ -454,8 +508,11 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
   }
 
   /**
-   * 1) Move the migrated System to the System Component Pkg. 2) Move the migrated System Context to System Component
-   * Pkg. 3) Move System Context's DataPkg, InterfacePkg, CapabilityPkg (if exist) to corresponding packages.
+   * 1) Move the migrated System to the System Component Pkg.
+   * 
+   * 2) Move the migrated System Context to System Component Pkg.
+   * 
+   * 3) Move System Context's DataPkg, InterfacePkg, CapabilityPkg (if exist) to corresponding packages.
    * 
    * @param sa
    */
@@ -493,8 +550,9 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
   }
 
   /**
-   * 1) Move migrated Operational Context to Entity Pkg. 2) Move OperationalContext's DataPkg, InterfacePkg,
-   * OperationalCapabilityPkg (if exist) to corresponding packages.
+   * 1) Move migrated Operational Context to Entity Pkg.
+   * 
+   * 2) Move OperationalContext's DataPkg, InterfacePkg, OperationalCapabilityPkg (if exist) to corresponding packages.
    * 
    * @param oa
    */
@@ -527,8 +585,11 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
   }
 
   /**
-   * 1) Move migrated elements into the right container (e.g. System to Component Package). 2) Clear temporarily
-   * OwnedMigratedElements feature. 3) Delete dangling TransfoLinks (e.g. Transfo Link to old Actors).
+   * 1) Move migrated elements into the right container (e.g. System to Component Package).
+   * 
+   * 2) Clear temporarily OwnedMigratedElements feature.
+   * 
+   * 3) Delete dangling TransfoLinks (e.g. Transfo Link to old Actors).
    * 
    * @param resource
    */
