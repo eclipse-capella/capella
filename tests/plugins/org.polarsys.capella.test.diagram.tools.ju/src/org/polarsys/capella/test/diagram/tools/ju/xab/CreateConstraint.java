@@ -12,7 +12,6 @@ package org.polarsys.capella.test.diagram.tools.ju.xab;
 
 import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-
 import org.polarsys.capella.test.diagram.common.ju.context.XABDiagram;
 import org.polarsys.capella.test.framework.context.SessionContext;
 import org.polarsys.capella.test.framework.model.GenericModel;

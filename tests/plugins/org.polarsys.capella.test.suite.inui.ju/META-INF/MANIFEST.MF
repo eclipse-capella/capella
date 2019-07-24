@@ -10,5 +10,6 @@ Bundle-Localization: plugin
 Require-Bundle: org.polarsys.capella.test.suites.ju,
  org.apache.xerces,
  org.polarsys.capella.test.platform.ju,
- org.polarsys.capella.test.benchmarks.ju
+ org.polarsys.capella.test.benchmarks.ju,
+ org.polarsys.capella.test.fragmentation
 Export-Package: org.polarsys.capella.test.suite.inui.ju

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.test.framework.actions.headless;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -18,11 +19,9 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.tools.api.control.SiriusControlHandler;
 import org.eclipse.sirius.ui.tools.api.control.SiriusUncontrolHandler;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.swt.widgets.Shell;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
@@ -30,8 +29,6 @@ import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.model.label.LabelRetriever;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.sirius.ui.actions.DesignerControlAction;
-
-import com.google.common.collect.Lists;
 
 /**
  * FIXME Copied from plugin tests.fragment.ju. All this kind of headless stuff
@@ -42,7 +39,7 @@ import com.google.common.collect.Lists;
 public class DesignerControlActionForTest extends DesignerControlAction {
 
   /** For fragmentation purpose */
-  protected List<DRepresentation> _dRepresentationsToMove = null;
+  protected List<DRepresentationDescriptor> _dRepresentationsToMove = null;
 
   /** For unfragmentation purpose */
   protected boolean _shouldUncontrolRepresentations;
@@ -55,15 +52,13 @@ public class DesignerControlActionForTest extends DesignerControlAction {
   }
 
   /** Write accessor */
-  final public void setDRepresentationsToMove(List<DRepresentation> dRepresentations_p) {
+  final public void setDRepresentationDescriptorsToMove(List<DRepresentationDescriptor> dRepresentations_p) {
     _dRepresentationsToMove = dRepresentations_p;
-    return;
   }
 
   /** Write accessor */
   final public void setShouldUncontrolRepresentations(boolean value_p) {
     _shouldUncontrolRepresentations = value_p;
-    return;
   }
 
   @Override
@@ -163,21 +158,10 @@ public class DesignerControlActionForTest extends DesignerControlAction {
       }
 
       @Override
-      protected Collection<DRepresentationDescriptor> getRepresentationDescriptorsToMove(Shell shell_p, Session session_p,
-          EObject semanticRoot_p) throws InterruptedException {
-          Collection<DRepresentationDescriptor> repDescriptors = Lists.newArrayList();
-          if (_dRepresentationsToMove!=null){
-            for (DRepresentation dRep : _dRepresentationsToMove) {
-              DRepresentationDescriptor repDesc = new DRepresentationQuery(dRep).getRepresentationDescriptor();
-              if (repDesc!=null) {
-                  repDescriptors.add(repDesc);
-              }
-            }
-          }
-          
-        return repDescriptors;
+      protected Collection<DRepresentationDescriptor> getRepresentationDescriptorsToMove(Shell shell_p,
+          Session session_p, EObject semanticRoot_p) throws InterruptedException {
+        return null == _dRepresentationsToMove ? new ArrayList<DRepresentationDescriptor>() : _dRepresentationsToMove;
       }
-
     };
     siriusControlHandler.performControl(shell__p, _eObject, new NullProgressMonitor());
 
