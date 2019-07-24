@@ -52,4 +52,12 @@
         </item>
      </category>
   </extension>
+  <extension
+        point="org.eclipse.ui.services">
+     <serviceFactory
+           factoryClass="org.polarsys.capella.core.menu.dynamic.services.DynamicServiceFactory">
+        <service
+              serviceClass="org.polarsys.capella.common.menu.dynamic.util.INamePrefixService"></service>
+     </serviceFactory>
+  </extension>
 </plugin>

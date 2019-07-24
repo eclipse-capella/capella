@@ -7,7 +7,8 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.polarsys.capella.core.data.gen.edit;visibility:=reexport,
  org.polarsys.capella.core.model.handler,
  org.polarsys.capella.core.data.helpers,
- org.polarsys.capella.core.ui.toolkit
+ org.polarsys.capella.core.ui.toolkit,
+ org.polarsys.capella.common.menu.dynamic
 Export-Package: org.polarsys.capella.core.data.capellacommon.provider,
  org.polarsys.capella.core.data.capellacore.provider,
  org.polarsys.capella.core.data.capellamodeller.provider,

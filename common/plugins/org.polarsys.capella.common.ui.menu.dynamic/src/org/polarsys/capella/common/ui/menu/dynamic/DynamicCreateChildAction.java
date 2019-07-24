@@ -36,19 +36,20 @@ import org.polarsys.capella.common.menu.dynamic.contributions.ActionContribution
 import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
 
 /**
- * An extended child creation action that takes the Capella creation service
- * into account. 
+ * An extended child creation action that takes the Capella creation service into account.
+ * 
  * @see org.polarsys.capella.common.menu.dynamic.CreationHelper
  */
 public class DynamicCreateChildAction extends CreateChildAction {
   /**
    * Constructor.
+   * 
    * @param editingDomain
    * @param selection
    * @param descriptor
    */
   public DynamicCreateChildAction(EditingDomain editingDomain, ISelection selection, Object descriptor) {
-    super((IWorkbenchPart)null, selection, descriptor);
+    super((IWorkbenchPart) null, selection, descriptor);
     this.editingDomain = editingDomain;
   }
 
@@ -62,7 +63,8 @@ public class DynamicCreateChildAction extends CreateChildAction {
     EClass objectClass = ((EObject) ((CommandParameter) descriptor).getValue()).eClass();
     EStructuralFeature feature = getFeature();
 
-    for (IMDEMenuItemContribution contribution : ActionContributionProvider.getInstance().getAllActionContributions(objectClass)) {
+    for (IMDEMenuItemContribution contribution : ActionContributionProvider.getInstance()
+        .getAllActionContributions(objectClass)) {
       selection &= contribution.selectionContribution((ModelElement) owner, objectClass, feature);
       if (!selection)
         break;
@@ -72,6 +74,7 @@ public class DynamicCreateChildAction extends CreateChildAction {
 
   /**
    * Is this action executable (i.e underlying command is executable) ?
+   * 
    * @return
    */
   public boolean isExecutable() {
@@ -110,9 +113,8 @@ public class DynamicCreateChildAction extends CreateChildAction {
         if (collection.size() == 1) {
           Object createdElement = collection.iterator().next();
           if (createdElement instanceof AbstractNamedElement) {
-            StrictCompoundCommand scc =
-                CreationHelper.getAdditionnalCommand(editingDomain, (AbstractNamedElement) createdElement, getOwner(),
-                    ((EObject) ((CommandParameter) descriptor).getValue()).eClass(), getFeature());
+            StrictCompoundCommand scc = CreationHelper.getAdditionnalCommand(editingDomain,
+                (AbstractNamedElement) createdElement, getOwner(), (CommandParameter) descriptor, getFeature());
             if (scc != null) {
               return scc;
             }

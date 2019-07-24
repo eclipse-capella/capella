@@ -43,6 +43,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.polarsys.capella.common.helpers.EObjectCouple;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.menu.dynamic.util.DynamicCommandParameter;
 import org.polarsys.capella.common.ui.menu.dynamic.DynamicCreateChildAction;
 import org.polarsys.capella.common.ui.menu.dynamic.utils.ContributionItemComparator;
 import org.polarsys.capella.core.data.capellacommon.FinalState;
@@ -67,7 +68,7 @@ public class DynamicCreationAction extends DynamicModelElementAction {
   /**
    * Contribution item comparator.
    */
-  private ContributionItemComparator _contributionItemComparator;
+  private ContributionItemComparator contributionItemComparator;
 
   /**
    * Constructor.
@@ -77,7 +78,7 @@ public class DynamicCreationAction extends DynamicModelElementAction {
    */
   public DynamicCreationAction(Shell shell, ISelectionProvider selectionProvider) {
     super(shell, selectionProvider);
-    _contributionItemComparator = new ContributionItemComparator();
+    contributionItemComparator = new ContributionItemComparator();
   }
 
   /**
@@ -94,15 +95,20 @@ public class DynamicCreationAction extends DynamicModelElementAction {
   @SuppressWarnings("unchecked")
   protected Collection<CommandParameter> getFilteredNewChildDescriptors(EditingDomain editingDomain,
       EObject modelElement) {
-    Map<EObjectCouple, CommandParameter> filteredNewChildDescriptors = new HashMap<EObjectCouple, CommandParameter>();
+    Map<EObjectCouple, CommandParameter> filteredNewChildDescriptors = new HashMap<>();
+    Set<CommandParameter> dynamicDescriptors = new HashSet<>();
 
     Collection<CommandParameter> newChildDescriptors = (Collection<CommandParameter>) editingDomain
         .getNewChildDescriptors(modelElement, null);
     ISelection selection = new StructuredSelection(modelElement);
 
     for (CommandParameter cmd : newChildDescriptors) {
-      EObjectCouple key = new EObjectCouple(cmd.getEReference(), (cmd.getEValue()).eClass());
-      filteredNewChildDescriptors.put(key, cmd);
+      if (cmd instanceof DynamicCommandParameter) {
+        dynamicDescriptors.add((cmd));
+      } else {
+        EObjectCouple key = new EObjectCouple(cmd.getEReference(), (cmd.getEValue()).eClass());
+        filteredNewChildDescriptors.put(key, cmd);
+      }
       cmd.setOwner(selection);
     }
 
@@ -122,7 +128,8 @@ public class DynamicCreationAction extends DynamicModelElementAction {
       }
     }
 
-    return filteredNewChildDescriptors.values();
+    dynamicDescriptors.addAll(filteredNewChildDescriptors.values());
+    return dynamicDescriptors;
   }
 
   /**
@@ -189,12 +196,10 @@ public class DynamicCreationAction extends DynamicModelElementAction {
       @Override
       public boolean isValid() {
         Object value = getValue();
-        return (!(value instanceof Relationship) || (value instanceof CommunicationMean) || (value instanceof FunctionalChainInvolvement))
-            && !(value instanceof Structure)
-            && !(value instanceof AbstractPropertyValue)
-            && !(value instanceof EnumerationPropertyType)
-            && !(value instanceof PropertyValueGroup)
-            && !(value instanceof ElementExtension);
+        return (!(value instanceof Relationship) || (value instanceof CommunicationMean)
+            || (value instanceof FunctionalChainInvolvement)) && !(value instanceof Structure)
+            && !(value instanceof AbstractPropertyValue) && !(value instanceof EnumerationPropertyType)
+            && !(value instanceof PropertyValueGroup) && !(value instanceof ElementExtension);
       }
     });
   }
@@ -210,38 +215,48 @@ public class DynamicCreationAction extends DynamicModelElementAction {
    */
   protected Collection<IContributionItem> generateCreateChildActions(Collection<CommandParameter> descriptors,
       EditingDomain editingDomain, AbstractCondition condition) {
-    TreeSet<IContributionItem> contributionItems = new TreeSet<IContributionItem>(_contributionItemComparator);
+    TreeSet<IContributionItem> contributionItems = new TreeSet<>(contributionItemComparator);
+
     if (null != descriptors) {
       // Map to store descriptors by type.
-      Map<EClass, Set<CommandParameter>> descriptorsSortedByType = new HashMap<EClass, Set<CommandParameter>>();
+      Map<EClass, Set<CommandParameter>> descriptorsSortedByType = new HashMap<>();
+
       // Map to store descriptors by feature.
-      Map<EReference, Set<CommandParameter>> descriptorsSortedByFeature = new HashMap<EReference, Set<CommandParameter>>();
+      Map<EReference, Set<CommandParameter>> descriptorsSortedByFeature = new HashMap<>();
+
       // Set of features displayed as sub menu managers.
-      Set<EReference> featuresDisplayedAsSubMenuManager = new HashSet<EReference>(0);
+      Set<EReference> featuresDisplayedAsSubMenuManager = new HashSet<>(0);
+
       for (CommandParameter descriptor : descriptors) {
         // Handle feature
         EReference feature = descriptor.getEReference();
         Set<CommandParameter> featureDescriptors = descriptorsSortedByFeature.get(feature);
+
         if (null == featureDescriptors) {
-          featureDescriptors = new HashSet<CommandParameter>(1);
+          featureDescriptors = new HashSet<>(1);
           descriptorsSortedByFeature.put(feature, featureDescriptors);
         }
+
         // Add the current descriptor for this feature.
         featureDescriptors.add(descriptor);
 
         // Handle eClass
         EClass eClass = descriptor.getEValue().eClass();
         Set<CommandParameter> typeDescriptors = descriptorsSortedByType.get(eClass);
+
         if (null == typeDescriptors) {
-          typeDescriptors = new HashSet<CommandParameter>(1);
+          typeDescriptors = new HashSet<>(1);
           descriptorsSortedByType.put(eClass, typeDescriptors);
         }
+
         // Add the current descriptor for this type.
         typeDescriptors.add(descriptor);
 
         // More than one descriptors for this type, mark underlying feature to
         // display it as sub menu managers.
-        if ((typeDescriptors.size() > 1) && (featureDescriptors.size() > 1)) {
+        if ((typeDescriptors.size() > 1) && (featureDescriptors.size() > 1)
+            && typeDescriptors.stream().noneMatch(DynamicCommandParameter.class::isInstance)
+            && featureDescriptors.stream().noneMatch(DynamicCommandParameter.class::isInstance)) {
           featuresDisplayedAsSubMenuManager.add(feature);
         }
       }
@@ -250,22 +265,29 @@ public class DynamicCreationAction extends DynamicModelElementAction {
       // according to features that should be displayed as sub menu manager.
       for (CommandParameter descriptor : descriptors) {
         EReference reference = descriptor.getEReference();
+
         if (featuresDisplayedAsSubMenuManager.contains(reference)) {
           // fill in as a sub menu manager.
           Set<CommandParameter> featureDescriptors = descriptorsSortedByFeature.get(reference);
+
           // Create a menu manager for this feature.
           MenuManager featureMenuManager = new MenuManager(getFeatureLabel(reference, descriptor.getEValue()));
+
           // Add it in the resulting list.
           contributionItems.add(featureMenuManager);
+
           // Create the list of available action items.
-          TreeSet<IContributionItem> actionItems = new TreeSet<IContributionItem>(_contributionItemComparator);
+          TreeSet<IContributionItem> actionItems = new TreeSet<>(contributionItemComparator);
+
           for (CommandParameter featureDescriptor : featureDescriptors) {
             fillContributionItems(editingDomain, condition, actionItems, featureDescriptor);
           }
+
           // Add them in feature menu manager.
           for (IContributionItem dynamicItem : actionItems) {
             featureMenuManager.add(dynamicItem);
           }
+
         } else {
           // Fill in resulting list with a standalone descriptor.
           fillContributionItems(editingDomain, condition, contributionItems, descriptor);
@@ -286,13 +308,14 @@ public class DynamicCreationAction extends DynamicModelElementAction {
    */
   protected void fillContributionItems(EditingDomain editingDomain, AbstractCondition condition,
       TreeSet<IContributionItem> items, CommandParameter descriptor) {
-    // Set the condition value.
+
     condition.setValue(descriptor.getValue());
-    // Create a "create child action" if condition is fulfilled.
+
     if (condition.isValid()) {
-      DynamicCreateChildAction action = createChildAction(editingDomain, (ISelection) descriptor.getOwner(), descriptor);
+      DynamicCreateChildAction action = createChildAction(editingDomain, (ISelection) descriptor.getOwner(),
+          descriptor);
+
       if (action.isExecutable() && action.isEnabled()) {
-        // Add it if enable and executable.
         items.add(new DynamicActionContributionItem(action));
       }
     }
@@ -372,8 +395,14 @@ public class DynamicCreationAction extends DynamicModelElementAction {
       super.configureAction(selection_);
 
       EObject object = ((CommandParameter) descriptor).getEValue();
-      EClass eClass = object.eClass();
-      setText(getMetaclassLabel(eClass, object));
+
+      if (descriptor instanceof DynamicCommandParameter) {
+        DynamicCommandParameter richCommandParameter = (DynamicCommandParameter) descriptor;
+        setText(richCommandParameter.getLabel());
+      } else {
+        EClass eClass = object.eClass();
+        setText(getMetaclassLabel(eClass, object));
+      }
 
       if (getImageDescriptor() == null) {
         ImageDescriptor imageDescriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(EObjectLabelProviderHelper.getImage(object));
@@ -396,7 +425,8 @@ public class DynamicCreationAction extends DynamicModelElementAction {
         Object owner = collection.iterator().next();
         if (descriptor instanceof CommandParameter) {
           CommandParameter param = ((CommandParameter) descriptor);
-          if (owner instanceof Region && param.getValue() instanceof State && !(param.getValue() instanceof FinalState)) {
+          if (owner instanceof Region && param.getValue() instanceof State
+              && !(param.getValue() instanceof FinalState)) {
             if (!MoveHelper.getInstance().canMoveModeState((State) param.getValue(), (Region) owner))
               return UnexecutableCommand.INSTANCE;
           }
@@ -411,7 +441,7 @@ public class DynamicCreationAction extends DynamicModelElementAction {
    * Condition used to drive a behavior.
    */
   protected abstract class AbstractCondition {
-    private Object _value;
+    private Object value;
 
     /**
      * Whether or not this condition is valid.
@@ -426,7 +456,7 @@ public class DynamicCreationAction extends DynamicModelElementAction {
      * @param value
      */
     public void setValue(Object value) {
-      _value = value;
+      this.value = value;
     }
 
     /**
@@ -435,7 +465,7 @@ public class DynamicCreationAction extends DynamicModelElementAction {
      * @return the value
      */
     protected Object getValue() {
-      return _value;
+      return this.value;
     }
   }
 }

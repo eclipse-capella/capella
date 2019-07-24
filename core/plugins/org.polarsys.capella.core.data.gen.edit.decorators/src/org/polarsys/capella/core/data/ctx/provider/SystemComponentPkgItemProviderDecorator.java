@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.data.pa.provider;
+package org.polarsys.capella.core.data.ctx.provider;
 
 import java.util.Collection;
 
@@ -20,28 +20,17 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.polarsys.capella.common.menu.dynamic.util.DynamicCommandParameter;
-import org.polarsys.capella.core.data.capellamodeller.provider.CapellaModellerEditPlugin;
+import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.gen.edit.decorators.ItemProviderAdapterDecorator;
 import org.polarsys.capella.core.data.gen.edit.decorators.Messages;
-import org.polarsys.capella.core.data.pa.PaPackage;
-import org.polarsys.capella.core.data.pa.PhysicalComponent;
-import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.model.helpers.ActorExt;
 
-public class PhysicalComponentItemProviderDecorator extends ItemProviderAdapterDecorator
+public class SystemComponentPkgItemProviderDecorator extends ItemProviderAdapterDecorator
     implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
     IItemPropertySource {
-  public PhysicalComponentItemProviderDecorator(AdapterFactory adapterFactory) {
-    super(adapterFactory);
-  }
 
-  @Override
-  public Object getImage(Object object) {
-    PhysicalComponent pc = (PhysicalComponent) object;
-    if (pc.getNature().equals(PhysicalComponentNature.NODE)) {
-      return overlayImage(object, CapellaModellerEditPlugin.INSTANCE.getImage("full/obj16/PhysicalComponentNode")); //$NON-NLS-1$
-    }
-    return overlayImage(object, CapellaModellerEditPlugin.INSTANCE.getImage("full/obj16/PhysicalComponent")); //$NON-NLS-1$
+  public SystemComponentPkgItemProviderDecorator(AdapterFactory adapterFactory) {
+    super(adapterFactory);
   }
 
   @SuppressWarnings("unchecked")
@@ -50,19 +39,11 @@ public class PhysicalComponentItemProviderDecorator extends ItemProviderAdapterD
     Collection<Object> newChildDescriptors = (Collection<Object>) super.getNewChildDescriptors(object, editingDomain,
         sibling);
 
-    PhysicalComponent container = (PhysicalComponent) object;
+    DynamicCommandParameter descriptor = new DynamicCommandParameter(null,
+        CtxPackage.Literals.SYSTEM_COMPONENT_PKG__OWNED_SYSTEM_COMPONENTS, ActorExt.createSystemActor(),
+        Messages.CreationMenuLabel_SystemActor);
 
-    if (ActorExt.canContainSubPhysicalActor(container)) {
-      PhysicalComponent actor = ActorExt.createPhysicalActor();
-      actor.setKind(container.getKind());
-
-      DynamicCommandParameter descriptor = new DynamicCommandParameter(null,
-
-          PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_PHYSICAL_COMPONENTS, actor,
-          Messages.CreationMenuLabel_PhysicalActor);
-
-      newChildDescriptors.add(descriptor);
-    }
+    newChildDescriptors.add(descriptor);
 
     return newChildDescriptors;
   }

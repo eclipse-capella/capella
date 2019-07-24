@@ -14,21 +14,24 @@ import org.eclipse.emf.edit.provider.IItemProviderDecorator;
 import org.polarsys.capella.core.data.gen.edit.decorators.CustomDecoratorAdapterFactory;
 import org.polarsys.capella.core.data.gen.edit.decorators.ForwardingItemProviderAdapterDecorator;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
+import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
 
 public class PaItemProviderDecoratorAdapterFactory extends CustomDecoratorAdapterFactory {
 
-	public PaItemProviderDecoratorAdapterFactory() {
-		super(new PaItemProviderAdapterFactory());
-	}
+  public PaItemProviderDecoratorAdapterFactory() {
+    super(new PaItemProviderAdapterFactory());
+  }
 
-	@Override
-	protected IItemProviderDecorator createItemProviderDecorator(Object target, Object Type) {
-		if (target instanceof PhysicalComponent) {
-			return new PhysicalComponentItemProviderDecorator(this);
-		} else if (target instanceof PhysicalFunction) {
-			return new PhysicalFunctionItemProviderDecorator(this);
-		}
-		return new ForwardingItemProviderAdapterDecorator(this);
-	}
+  @Override
+  protected IItemProviderDecorator createItemProviderDecorator(Object target, Object Type) {
+    if (target instanceof PhysicalComponent) {
+      return new PhysicalComponentItemProviderDecorator(this);
+    } else if (target instanceof PhysicalFunction) {
+      return new PhysicalFunctionItemProviderDecorator(this);
+    } else if (target instanceof PhysicalComponentPkg) {
+      return new PhysicalComponentPkgItemProviderDecorator(this);
+    }
+    return new ForwardingItemProviderAdapterDecorator(this);
+  }
 }
