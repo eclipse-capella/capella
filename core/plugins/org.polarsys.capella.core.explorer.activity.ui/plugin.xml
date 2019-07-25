@@ -421,17 +421,6 @@
                
             </Description>
             <Activity
-                  class="org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.sa.PerformAutomatedSyncOfSystemInterfacesAndPortsAdapter"
-                  id="org.polarsys.capella.core.explorer.activity.ui.section.sa.sync.system.interfaces.ports"
-                  image="icons/full/ctool/transition.png"
-                  index="1"
-                  name="%SystemAnalysisActivityExplorerPage_PerformAutomatedTransitionOfSystem_Title">
-               <Description>
-                  %SystemAnalysisActivityExplorerPage_PerformAutomatedTransitionOfSystem_Description
-                  
-               </Description>
-            </Activity>
-            <Activity
                   class="org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.sa.NewDetailedInterfaceDiagramOnSystemAdapter"
                   id="org.polarsys.capella.core.explorer.activity.ui.section.sa.sync.system.interfaces.ports"
                   image="icons/full/ctool/detailed-interface-diagram.png"
@@ -687,16 +676,6 @@
                
             </Description>
             <Activity
-                  class="org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.la.PerformAutomatedTransitionOfSystemAdapter"
-                  id="org.polarsys.capella.core.explorer.activity.ui.la.automated.sync.system.interfaces.ports"
-                  image="icons/full/ctool/transition.png"
-                  index="1"
-                  name="%LogicalArchitectureActivityExplorerPage_PerformAutomatedTransitionOfSystem_Title">
-               <Description>
-                  %LogicalArchitectureActivityExplorerPage_PerformAutomatedTransitionOfSystem_Description
-               </Description>
-            </Activity>
-            <Activity
                   class="org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.la.NewInternalInterfaceDiagramOnLSAdapter"
                   id="org.polarsys.capella.core.explorer.activity.ui.la.internal.interfaces.logical.system.component"
                   image="icons/full/ctool/internal-interface-diagram.png"
@@ -724,16 +703,6 @@
                   name="%LogicalArchitectureActivityExplorerPage_PerformTransitionOfCapabilities_Title">
                <Description>
                   %LogicalArchitectureActivityExplorerPage_PerformTransitionOfCapabilities_Description
-               </Description>
-            </Activity>
-            <Activity
-                  class="org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.la.ExecuteGlobalRefinementOfAllSaCapabilitiesAnsScenarioAdapter"
-                  id="org.polarsys.capella.core.explorer.activity.ui.la.global.refinement.all.system.capabilities.scenarios"
-                  image="icons/full/ctool/transition.png"
-                  index="2"
-                  name="%LogicalArchitectureActivityExplorerPage_ExecuteGlobalRefinementOfAllSaCapabilitiesAndScenario_Title">
-               <Description>
-               		%LogicalArchitectureActivityExplorerPage_ExecuteGlobalRefinementOfAllSaCapabilitiesAndScenario_Description
                </Description>
             </Activity>
             <Activity
@@ -1012,16 +981,6 @@
                </Description>
             </Activity>
             <Activity
-                  class="org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.pa.ExecuteGlobalRefinementOfAllSaCapabilitiesAndScenarioAdapter"
-                  id="org.polarsys.capella.core.explorer.activity.ui.pa.global.refinement.logical.architecture.capabilities.scenarios"
-                  image="icons/full/ctool/transition.png"
-                  index="2"
-                  name="%PhysicalArchitectureActivityExplorerPage_ExecuteGlobalRefinementOfAllSaCapabilitiesAndScenario_Title">
-               <Description>
-               	%PhysicalArchitectureActivityExplorerPage_ExecuteGlobalRefinementOfAllSaCapabilitiesAndScenario_Description
-               </Description>
-            </Activity>
-            <Activity
                   class="org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.pa.NewScenarioDiagramAdapter"
                   id="org.polarsys.capella.core.explorer.activity.ui.pa.interface.scenario"
                   image="icons/full/ctool/interface-scenario.png"
@@ -1138,25 +1097,6 @@
                   image="icons/full/ctool/matrix.png"
                   index="3"
                   name="%EpbsArchitectureActivityExplorerPage_CreateTraceabilityMatrixAction_Title">
-               <Description>
-               </Description>
-            </Activity>
-         </Section>
-         <Section
-               expanded="false"
-               filtering="true"
-               id="org.polarsys.capella.core.explorer.activity.ui.section.epbs.define.deduce.interface.scenarios"
-               index="2"
-               name="%EpbsArchitectureActivityExplorerPage_RefineSystemCapabilityToEpbsArchitectureSection_Title">
-            <Description>
-               %EpbsArchitectureActivityExplorerPage_RefineSystemCapabilityToEpbsArchitectureSection_Description
-            </Description>
-            <Activity
-                  class="org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.epbs.ExecuteLogicalScenarioRefinementToCapabilityScenarioAdapter"
-                  id="org.polarsys.capella.core.explorer.activity.ui.epbs.execute.physical.scenario.refinement.selected.capability"
-                  image="icons/full/ctool/transition.png"
-                  index="1"
-                  name="%EpbsArchitectureActivityExplorerPage_ExecuteLogicalScenarioRefinementToCapabilityScenarioAction_Title">
                <Description>
                </Description>
             </Activity>
