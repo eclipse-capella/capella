@@ -63,7 +63,7 @@
         </create>
       </intersection>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Operational Entity Breakdown" titleExpression="aql:'[OEBD] ' + self.name" domainClass="Component" preconditionExpression="aql:(self.oclIsKindOf(oa::Entity) and not self.oclAsType(oa::Entity).isActor()) or self.oclIsKindOf(oa::EntityPkg)">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Operational Entity Breakdown" titleExpression="aql:'[OEBD] ' + self.name" domainClass="Component" preconditionExpression="aql:(self.oclIsKindOf(oa::Entity) and not (self.isActor())) or self.oclIsKindOf(oa::EntityPkg)">
       <dropDescriptions href="#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
       <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
@@ -169,7 +169,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.dndABDComponent(source.eContainer(),target)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="changeContainer" precondition="aql:not (target.oclIsKindOf(oa::OperationalActor)) and element.isValidDndABDComponent(targetView)" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="changeContainer" precondition="aql:not (target.isActor()) and element.isValidDndABDComponent(targetView)" forceRefresh="true">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -728,7 +728,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Operational Entity Blank" label="Operational Architecture Blank" titleExpression="aql:'[OAB] ' + self.name" domainClass="Component" preconditionExpression="aql:self.oclIsKindOf(oa::Entity) or self.oclIsKindOf(oa::OperationalContext) or self.oclIsKindOf(oa::EntityPkg)" defaultConcern="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@concerns/@ownedConcernDescriptions.0">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Operational Entity Blank" label="Operational Architecture Blank" titleExpression="aql:'[OAB] ' + self.name" domainClass="NamedElement" preconditionExpression="aql:self.oclIsKindOf(oa::Entity) or self.oclIsKindOf(oa::EntityPkg)" defaultConcern="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@concerns/@ownedConcernDescriptions.0">
       <dropDescriptions href="#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Entities%20From%20Project%20Explorer']"/>
       <dropDescriptions href="#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
       <dropDescriptions href="#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20Entitiy']"/>
@@ -764,7 +764,7 @@
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@subContainerMappings[name='OAB_subRoles']"/>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.operational.actors.filter" label="Hide Operational Actors">
-        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']" semanticConditionExpression="aql:not (self.oclIsKindOf(oa::OperationalActor))"/>
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']" semanticConditionExpression="aql:not (self.isActor())"/>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.interactions.filter" label="Hide Interactions">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@edgeMappings[name='OAB%20Interaction']"/>
@@ -907,13 +907,13 @@
         <reusedMappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
         <toolSections name="Entities">
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Operational Entity" name="operational.entity" label="Operational Entity" precondition="aql:not (container.oclIsKindOf(oa::OperationalActor)) or containerView.oclIsKindOf(diagram::DDiagram)" containerMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Entity.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Operational Entity" name="operational.entity" label="Operational Entity" precondition="aql:containerView.canCreateABComponent()" containerMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Entity.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getOEBTarget()">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(oa::Entity) and not (self.oclIsKindOf(oa::OperationalActor))">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getABTarget()">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(oa::Entity)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="Entity" referenceName="ownedEntities" variableName="entity">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
@@ -925,13 +925,6 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (self.oclIsKindOf(oa::Entity)) and not (self.oclIsKindOf(oa::EntityPkg))">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.getRootEntityPkg()">
-                      <subModelOperations xsi:type="tool:CreateInstance" typeName="Entity" referenceName="ownedEntities" variableName="entity">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
-                      </subModelOperations>
-                    </subModelOperations>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(oa::OperationalActor)">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.eContainer()">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="Entity" referenceName="ownedEntities" variableName="entity">
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
@@ -941,36 +934,14 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Operational Actor" name="operational.actor" label="Operational Actor" precondition="aql:not (container.oclIsKindOf(oa::OperationalActor)) or containerView.oclIsKindOf(diagram::DDiagram)" containerMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/OperationalActor.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Operational Actor" name="operational.actor" label="Operational Actor" precondition="aql:containerView.canCreateABActor()" containerMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/OperationalActor.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getOEBTarget()">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(oa::Entity) and not (self.oclIsKindOf(oa::OperationalActor))">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="OperationalActor" referenceName="ownedEntities" variableName="entity">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(oa::EntityPkg)">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="OperationalActor" referenceName="ownedEntities" variableName="entity">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (self.oclIsKindOf(oa::Entity)) and not (self.oclIsKindOf(oa::EntityPkg))">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.getRootEntityPkg()">
-                      <subModelOperations xsi:type="tool:CreateInstance" typeName="OperationalActor" referenceName="ownedEntities" variableName="entity">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
-                      </subModelOperations>
-                    </subModelOperations>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(oa::OperationalActor)">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.eContainer()">
-                      <subModelOperations xsi:type="tool:CreateInstance" typeName="OperationalActor" referenceName="ownedEntities" variableName="entity">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
-                      </subModelOperations>
-                    </subModelOperations>
-                  </subModelOperations>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getABActorTarget().createActor()">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
+                  <parameters name="context" value="aql:self"/>
+                  <parameters name="scope" value="aql:self"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -985,17 +956,17 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="Show Hide Entity">
-            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Insert/Remove Operational Entities. Create or delete graphical objects corresponding to already existing Operational Entities. Removing an Operational Entity graphical object from the diagram does not delete the Operational Entity from the model. This tool does not modify the semantic model." name="operational.entities" label="Operational Entities" precondition="aql:not (container.oclIsKindOf(oa::OperationalActor)) or containerView.oclIsKindOf(diagram::DDiagram)" containerMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Insert/Remove Operational Entities. Create or delete graphical objects corresponding to already existing Operational Entities. Removing an Operational Entity graphical object from the diagram does not delete the Operational Entity from the model. This tool does not modify the semantic model." name="operational.entities" label="Operational Entities" precondition="aql:not (container.isActor()) or containerView.oclIsKindOf(diagram::DDiagram)" containerMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <variable name="container"/>
               <viewVariable name="containerView">
                 <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:containerView.getDiagramContainer()"/>
-                <subVariables xsi:type="tool:AcceleoVariable" name="componentsInDiagram" computationExpression="aql:self.void2Null(containerView.containers.target->filter(oa::Entity)->select(x | not (x.oclIsKindOf(oa::OperationalActor))))"/>
+                <subVariables xsi:type="tool:AcceleoVariable" name="componentsInDiagram" computationExpression="aql:self.void2Null(containerView.containers.target->filter(oa::Entity)->select(x | not (x.isActor())))"/>
               </viewVariable>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getOEBTarget()">
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectSubComponent" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                     <parameters name="context" value="aql:containerView.getOEBTarget()"/>
-                    <parameters name="scope" value="aql:self.void2Null(containerView.getAvailableEntitiesToInsert()->select(x | not (x.oclIsKindOf(oa::OperationalActor))))"/>
+                    <parameters name="scope" value="aql:self.void2Null(containerView.getAvailableEntitiesToInsert()->select(x | not (x.isActor())))"/>
                     <parameters name="resultVariable" value="selection"/>
                     <parameters name="wizardMessage" value="aql:'Select Operational Entities to show in ' + container.name + '.'"/>
                     <parameters name="initialSelection" value="aql:componentsInDiagram"/>
@@ -1024,17 +995,17 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Insert/Remove Operational Actors. Create or delete graphical objects corresponding to already existing Operational Actors. Removing an Operational Actor graphical object from the diagram does not delete the Operational Actor from the model. This tool does not modify the semantic model." name="operational.actors" label="Operational Actors" precondition="aql:not (container.oclIsKindOf(oa::OperationalActor)) or containerView.oclIsKindOf(diagram::DDiagram)" containerMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Insert/Remove Operational Actors. Create or delete graphical objects corresponding to already existing Operational Actors. Removing an Operational Actor graphical object from the diagram does not delete the Operational Actor from the model. This tool does not modify the semantic model." name="operational.actors" label="Operational Actors" precondition="aql:not (container.isActor()) or containerView.oclIsKindOf(diagram::DDiagram)" containerMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <variable name="container"/>
               <viewVariable name="containerView">
                 <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:containerView.getDiagramContainer()"/>
-                <subVariables xsi:type="tool:AcceleoVariable" name="componentsInDiagram" computationExpression="aql:self.void2Null(containerView.containers.target->filter(oa::OperationalActor))"/>
+                <subVariables xsi:type="tool:AcceleoVariable" name="componentsInDiagram" computationExpression="aql:self.void2Null(containerView.containers.target->filter(oa::Entity)->select(x | x.isActor()))"/>
               </viewVariable>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getOEBTarget()">
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectSubComponent" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                     <parameters name="context" value="aql:containerView.getOEBTarget()"/>
-                    <parameters name="scope" value="aql:containerView.getAvailableEntitiesToInsert()->select(x | x.oclIsKindOf(oa::OperationalActor))"/>
+                    <parameters name="scope" value="aql:containerView.getAvailableEntitiesToInsert()->select(x | x.isActor())"/>
                     <parameters name="resultVariable" value="selection"/>
                     <parameters name="wizardMessage" value="aql:'Select Operational Actors to show in ' + container.name + '.'"/>
                     <parameters name="initialSelection" value="aql:componentsInDiagram"/>
@@ -1168,7 +1139,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="DnD Entitiy" precondition="aql:element.oclIsKindOf(oa::OperationalActor) or (element.oclIsKindOf(oa::Entity) and not (newViewContainer.target.oclIsKindOf(oa::OperationalActor)))" mappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']" moveEdges="true">
+          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="DnD Entitiy" precondition="aql:element.isActor() or (element.oclIsKindOf(oa::Entity) and not (newViewContainer.target.isActor()))" mappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']" moveEdges="true">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -6045,27 +6016,27 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getOEBTarget()">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(oa::Entity)">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="oa::Entity" referenceName="ownedEntities" variableName="entity">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="actor" valueExpression="true"/>
-                        <subModelOperations xsi:type="tool:SetValue" featureName="human" valueExpression="true"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createActor()">
+                      <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
+                        <parameters name="context" value="aql:self"/>
+                        <parameters name="scope" value="aql:self"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(oa::EntityPkg)">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="oa::Entity" referenceName="ownedEntities" variableName="entity">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="actor" valueExpression="true"/>
-                        <subModelOperations xsi:type="tool:SetValue" featureName="human" valueExpression="true"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createActor()">
+                      <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
+                        <parameters name="context" value="aql:self"/>
+                        <parameters name="scope" value="aql:self"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (self.oclIsKindOf(oa::Entity)) and not (self.oclIsKindOf(oa::EntityPkg))">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.getRootEntityPkg()">
-                      <subModelOperations xsi:type="tool:CreateInstance" typeName="oa::Entity" referenceName="ownedEntities" variableName="entity">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()">
-                          <subModelOperations xsi:type="tool:SetValue" featureName="actor" valueExpression="true"/>
-                          <subModelOperations xsi:type="tool:SetValue" featureName="human" valueExpression="true"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createActor()">
+                        <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
+                          <parameters name="context" value="aql:self"/>
+                          <parameters name="scope" value="aql:self"/>
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>

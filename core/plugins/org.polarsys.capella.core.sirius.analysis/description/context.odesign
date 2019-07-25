@@ -123,12 +123,10 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.ancestors()->filter(ctx::SystemAnalysis).ownedSystemComponentPkg->first()">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ctx::SystemComponent" referenceName="ownedSystemComponents" variableName="actor">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
-                  </subModelOperations>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.eContainerOrSelf(cs::BlockArchitecture).createActor()">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
+                  <parameters name="context" value="aql:self"/>
+                  <parameters name="scope" value="aql:self"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -537,12 +535,10 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.ancestors()->filter(ctx::SystemAnalysis).ownedSystemComponentPkg->first()">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ctx::SystemComponent" referenceName="ownedSystemComponents" variableName="actor">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
-                  </subModelOperations>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.eContainerOrSelf(cs::BlockArchitecture).createActor()">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
+                  <parameters name="context" value="aql:self"/>
+                  <parameters name="scope" value="aql:self"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -1005,12 +1001,10 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.ancestors()->filter(ctx::SystemAnalysis).ownedSystemComponentPkg->first()">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ctx::SystemComponent" referenceName="ownedSystemComponents" variableName="actor">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
-                  </subModelOperations>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.eContainerOrSelf(cs::BlockArchitecture).createActor()">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
+                  <parameters name="context" value="aql:self"/>
+                  <parameters name="scope" value="aql:self"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -1540,12 +1534,10 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.ancestors()->filter(ctx::SystemAnalysis).ownedSystemComponentPkg->first()">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ctx::SystemComponent" referenceName="ownedSystemComponents" variableName="actor">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
-                  </subModelOperations>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.eContainerOrSelf(cs::BlockArchitecture).createActor()">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
+                  <parameters name="context" value="aql:self"/>
+                  <parameters name="scope" value="aql:self"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -3177,7 +3169,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="System Architecture Blank" titleExpression="aql:'[SAB] ' + self.name" domainClass="NamedElement" preconditionExpression="aql:self.oclIsKindOf(ctx::System) or (self.oclIsKindOf(cs::Part) and self.getComponentType().oclIsKindOf(ctx::System))" defaultConcern="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@concerns/@ownedConcernDescriptions.0">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="System Architecture Blank" titleExpression="aql:'[SAB] ' + self.name" domainClass="NamedElement" preconditionExpression="aql:self.oclIsKindOf(ctx::SystemComponentPkg) or (self.oclIsKindOf(ctx::SystemComponent) and not self.isActor())" defaultConcern="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@concerns/@ownedConcernDescriptions.0">
       <dropDescriptions href="#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
       <dropDescriptions href="#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Actors%20From%20Project%20Explorer']"/>
       <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
@@ -3641,7 +3633,7 @@
             <foregroundColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
           </style>
         </containerMappings>
-        <containerMappings name="System System" navigationDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20SAB%20to%20SAB'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20SAB%20to%20IDB'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20SAB%20to%20CCII'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20SAB%20to%20CCEI'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20SAB%20to%20CCDI'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20SAB%20to%20CSA']" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='change%20name']" semanticCandidatesExpression="aql:self.typedElements->filter(cs::Part)->first()" semanticElements="service:getPartSemanticElements()" synchronizationLock="true" domainClass="cs.Part" reusedBorderedNodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_ComponentCategory_Pin'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_PhysicalCategory_Pin'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_PhysicalPort']" dropDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20AB%20ComponentPort'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20AB%20AbstractFunction%20Allocation'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20Function%20Allocation%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20PhysicalPort']" reusedNodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='CA%20Dummy'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Node']">
+        <containerMappings name="System System" navigationDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20SAB%20to%20SAB'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20SAB%20to%20IDB'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20SAB%20to%20CCII'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20SAB%20to%20CCEI'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20SAB%20to%20CCDI'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20SAB%20to%20CSA']" preconditionExpression="aql:not self.isActor()" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='change%20name']" semanticCandidatesExpression="aql:self.makeUnion(self.typedElements->filter(cs::Part)->first(), self.ownedParts->first())" semanticElements="service:getPartSemanticElements()" synchronizationLock="true" domainClass="cs.Part" reusedBorderedNodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_ComponentCategory_Pin'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_PhysicalCategory_Pin'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_PhysicalPort']" dropDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20AB%20ComponentPort'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20AB%20AbstractFunction%20Allocation'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20Function%20Allocation%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20PhysicalPort']" reusedNodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='CA%20Dummy'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Node']">
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20System%20Actors']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='System%20Architecture%20Blank']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20Detailed%20Interfaces']"/>
@@ -3663,17 +3655,17 @@
         <reusedMappings xsi:type="description_1:NodeMapping" href="oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
         <toolSections name="Components">
           <ownedTools xsi:type="tool:ToolGroup" name="Actor">
-            <tools xsi:type="tool:ContainerCreationDescription" documentation="Create an Actor and its Part" name="actor" label="Actor" precondition="aql:containerView.oclIsKindOf(diagram::DDiagram)" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Actor.gif">
+            <tools xsi:type="tool:ContainerCreationDescription" documentation="Create an Actor and its Part" name="actor" label="Actor" precondition="aql:containerView.canCreateABActor()" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Actor.gif">
               <variable name="container">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.getArchitecture()">
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.getABTarget().getComponentType()">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createActor('actor')"/>
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.getArchitecture().getContext()">
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:actor != null">
-                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:actor != null">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(ctx::SystemComponentPkg)">
+                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="cs.Part" referenceName="ownedParts" variableName="part">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="abstractType" valueExpression="aql:actor"/>
                       </subModelOperations>
@@ -3703,10 +3695,12 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:components != 'WIZARD_CANCELED'">
                     <subModelOperations xsi:type="tool_1:For" expression="aql:components">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerType.getArchitecture().getContext()">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
-                          <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
-                          <subModelOperations xsi:type="tool_1:SetValue" featureName="abstractType" valueExpression="aql:i"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.getABTarget().getComponentType()">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(ctx::SystemComponentPkg)">
+                          <subModelOperations xsi:type="tool_1:CreateInstance" typeName="cs.Part" referenceName="ownedParts" variableName="part">
+                            <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
+                            <subModelOperations xsi:type="tool_1:SetValue" featureName="abstractType" valueExpression="aql:i"/>
+                          </subModelOperations>
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
@@ -3878,7 +3872,7 @@
                   <parameters name="context" value="aql:container"/>
                   <parameters name="scope" value="aql:scope"/>
                   <parameters name="resultVariable" value="selection"/>
-                  <parameters name="wizardMessage" value="aql:'Select Sub Components to show in ' + container.name + '.'"/>
+                  <parameters name="wizardMessage" value="aql:'Select Sub Actors to show in ' + container.name + '.'"/>
                   <parameters name="initialSelection" value="aql:self.void2Null(self.getIntersection(ownedNodeContainer->select(x | x.visible).target,scope))"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selection = 'WIZARD_CANCELED')">
@@ -4284,7 +4278,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Actors From Project Explorer" precondition="aql:element.getComponentType().oclIsKindOf(cs::AbstractActor) and element.canBeDropped(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Actors From Project Explorer" precondition="aql:element.isActor() and element.canBeDropped(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -4955,7 +4949,7 @@
         </customization>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Contextual System Actors" titleExpression="aql:'[CSA] ' + self.name" domainClass="System">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Contextual System Actors" titleExpression="aql:'[CSA] ' + self.name" domainClass="ctx::SystemComponent" preconditionExpression="aql:not self.isActor()">
       <dropDescriptions href="#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
       <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
       <metamodel href="../../../plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
@@ -4986,7 +4980,7 @@
         </filters>
       </filters>
       <defaultLayer name="default">
-        <nodeMappings name="SC_System" navigationDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20CSA%20to%20SAB']" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='No%20Delete']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='Context%20Rename%20Part']" semanticCandidatesExpression="aql:self" domainClass="System">
+        <nodeMappings name="SC_System" navigationDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20CSA%20to%20SAB']" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='No%20Delete']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='Context%20Rename%20Part']" semanticCandidatesExpression="aql:self" domainClass="ctx::SystemComponent">
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20System%20Actors']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='System%20Architecture%20Blank']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20Detailed%20Interfaces']"/>
@@ -5006,13 +5000,13 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <nodeMappings name="SC_Actor" navigationDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20CSA%20to%20SAB']" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='Context%20Rename%20Part']" semanticCandidatesExpression="aql:self.eContainerOrSelf(ctx::SystemAnalysis).ownedSystemContext.ownedPartitions.abstractType->filter(ctx::Actor)" domainClass="Actor">
+        <nodeMappings name="SC_Actor" navigationDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20CSA%20to%20SAB']" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='Context%20Rename%20Part']" semanticCandidatesExpression="aql:self.eContainerOrSelf(ctx::SystemAnalysis).ownedSystemComponentPkg.ownedSystemComponents->select(c | c.isActor())" domainClass="ctx::SystemComponent">
           <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="SC_System_Actor" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='change%20name']" semanticCandidatesExpression="aql:self.eContainerOrSelf(ctx::SystemAnalysis).ownedSystemContext.ownedPartitions->select(ownedPartition | ownedPartition.abstractType->filter(ctx::Actor)->size() > 0)" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_System']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_Actor']" targetFinderExpression="feature:abstractType" sourceFinderExpression="aql:self.eContainerOrSelf(ctx::SystemAnalysis).ownedSystem" domainClass="cs.Part" useDomainElement="true">
+        <edgeMappings name="SC_System_Actor" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='change%20name']" semanticCandidatesExpression="aql:self.eContainerOrSelf(ctx::SystemAnalysis).ownedSystemComponentPkg.ownedParts->select(part | part.isActor())" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_System']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_Actor']" targetFinderExpression="feature:abstractType" sourceFinderExpression="aql:self.eContainerOrSelf(ctx::SystemAnalysis).ownedSystemComponentPkg.ownedSystemComponents" domainClass="cs.Part" useDomainElement="true">
           <style targetArrow="NoDecoration">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription labelExpression="aql:self.computePartLabelMultiPartOnly()">
@@ -5020,7 +5014,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="actorGeneralization5" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticCandidatesExpression="aql:self.eContainerOrSelf(ctx::SystemAnalysis).ownedActorPkg.eAllContents()->filter(capellacore::Generalization)" semanticElements="aql:self" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_Actor']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_Actor']" targetFinderExpression="feature:super" sourceFinderExpression="feature:eContainer" domainClass="Generalization" useDomainElement="true" reconnections="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Target'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Source']">
+        <edgeMappings name="actorGeneralization5" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticCandidatesExpression="aql:self.eContainerOrSelf(ctx::SystemAnalysis).ownedSystemComponentPkg.eAllContents()->filter(capellacore::Generalization)" semanticElements="aql:self" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_Actor']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_Actor']" targetFinderExpression="feature:super" sourceFinderExpression="feature:eContainer" domainClass="Generalization" useDomainElement="true" reconnections="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Target'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Source']">
           <style lineStyle="dot" targetArrow="InputClosedArrow">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
@@ -5039,16 +5033,15 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.eContainer(ctx::SystemAnalysis).ownedActorPkg.createCtxActor()">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.eContainerOrSelf(cs::BlockArchitecture).createActor()">
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
-                  <parameters name="context" value="aql:container"/>
+                  <parameters name="context" value="aql:self"/>
                   <parameters name="scope" value="aql:self"/>
-                  <parameters name="containerViewExpression" value="aql:containerView.getDiagramContainer()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Contextual System Actors" precondition="aql:self.oclIsKindOf(ctx::System)" titleExpression="aql:'[CSA] ' + self.name" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Contextual System Actors" precondition="aql:self.oclIsKindOf(ctx::SystemComponent)" titleExpression="aql:'[CSA] ' + self.name" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>

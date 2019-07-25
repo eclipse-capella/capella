@@ -12175,26 +12175,10 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.getArchitecture()">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(la::LogicalArchitecture)">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.ownedLogicalComponentPkg">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponent" referenceName="ownedLogicalComponents" variableName="la">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
-                      </subModelOperations>
-                    </subModelOperations>
-                  </subModelOperations>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalArchitecture)">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.ownedPhysicalComponentPkg">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents" variableName="pa">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
-                      </subModelOperations>
-                    </subModelOperations>
-                  </subModelOperations>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.eContainerOrSelf(cs::BlockArchitecture).createActor()">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
+                  <parameters name="context" value="aql:self"/>
+                  <parameters name="scope" value="aql:self"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>

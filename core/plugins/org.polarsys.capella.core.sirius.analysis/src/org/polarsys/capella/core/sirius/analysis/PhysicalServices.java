@@ -57,7 +57,6 @@ import org.polarsys.capella.core.commands.preferences.service.ScopedCapellaPrefe
 import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.InvolvedElement;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.AbstractPathInvolvedElement;
 import org.polarsys.capella.core.data.cs.AbstractPhysicalLinkEnd;
@@ -73,16 +72,13 @@ import org.polarsys.capella.core.data.cs.PhysicalPath;
 import org.polarsys.capella.core.data.cs.PhysicalPathInvolvement;
 import org.polarsys.capella.core.data.cs.PhysicalPathReference;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
-import org.polarsys.capella.core.data.ctx.System;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.fa.ComponentPortAllocation;
 import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
-import org.polarsys.capella.core.data.information.PartitionableElement;
-import org.polarsys.capella.core.data.la.LogicalArchitecture;
-import org.polarsys.capella.core.data.pa.AbstractPhysicalComponent;
+import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.pa.PaFactory;
 import org.polarsys.capella.core.data.pa.PaPackage;
-import org.polarsys.capella.core.data.pa.PhysicalActor;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
@@ -270,8 +266,8 @@ public class PhysicalServices {
     BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(target);
     Collection<Part> parts = new HashSet<>();
     for (Part part : PartExt.getAllPartsFromPhysicalArchitecture((PhysicalArchitecture) architecture)) {
-      if (part.getAbstractType() instanceof AbstractPhysicalComponent) {
-        if (PhysicalComponentNature.NODE.equals(((AbstractPhysicalComponent) part.getAbstractType()).getNature())) {
+      if (part.getAbstractType() instanceof PhysicalComponent) {
+        if (PhysicalComponentNature.NODE.equals(((PhysicalComponent) part.getAbstractType()).getNature())) {
           parts.add(part);
         }
       }
@@ -495,7 +491,7 @@ public class PhysicalServices {
       }
       Part sourcePath;
       if (canBeInvolvedInPhysicalPath(source)) {
-        sourcePath = (Part) ((PartitionableElement) source).getRepresentingPartitions().get(0);
+        sourcePath = (Part) ((Component) source).getRepresentingParts().get(0);
       } else {
         sourcePath = (Part) source;
       }
@@ -512,12 +508,8 @@ public class PhysicalServices {
   }
 
   public boolean canHavePhysicalPort(EObject source) {
-    return ((source instanceof AbstractPhysicalComponent) || (source instanceof AbstractActor)
-        || (source instanceof System) || ((source instanceof Component) && isLogicalSystemComponent(source)));
-  }
-
-  private boolean isLogicalSystemComponent(EObject source) {
-    return source.eContainer() instanceof LogicalArchitecture;
+    return ((source instanceof SystemComponent) || (source instanceof LogicalComponent)
+        || (source instanceof PhysicalComponent));
   }
 
   /**
@@ -752,7 +744,7 @@ public class PhysicalServices {
 
   public boolean isPhysicalActor(Part part) {
     EObject componentType = CsServices.getService().getComponentType(part);
-    return componentType instanceof PhysicalActor;
+    return ComponentExt.isActor(componentType);
   }
 
   public void updateInternalPhysicalPaths(DDiagram diagram) {
@@ -1316,10 +1308,8 @@ public class PhysicalServices {
     return involvement.getPreviousInvolvements();
   }
 
-  public List<CapellaElement> getAllComponentsFromPhysicalArchitecture(PhysicalArchitecture arch) {
-    List<CapellaElement> returnedList = new ArrayList<>();
-    BlockArchitectureExt.getAllComponentsFromPA(arch, returnedList);
-    return returnedList;
+  public Collection<? extends CapellaElement> getAllComponentsFromPhysicalArchitecture(PhysicalArchitecture arch) {
+    return BlockArchitectureExt.getAllComponents(arch);
   }
 
   public boolean isAnEdgeInvolvementAvailableInPPD(final EObject context, final PhysicalPathInvolvement source,

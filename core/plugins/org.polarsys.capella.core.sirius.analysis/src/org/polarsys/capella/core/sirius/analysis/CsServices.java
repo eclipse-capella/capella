@@ -641,6 +641,33 @@ public class CsServices {
   }
 
   /**
+   * Returns the nearest semantic parent component of the element
+   * 
+   * @param current
+   *          the current element
+   *        isActorContext
+   *          whether we are looking the parent of an actor
+   * @return the parent component or block architecture
+   */
+  public EObject getSemanticParentContainer(EObject current, boolean isActorContext) {
+    EObject object = current;
+    for (object = current.eContainer(); object != null; object = object.eContainer()) {
+      if (object instanceof BlockArchitecture) {
+        return object;
+      }
+      if (isActorContext) {
+        if (ComponentExt.canCreateABActor(object)) {
+          return object;
+        }
+      } else {
+        if (ComponentExt.canCreateABComponent(object)) {
+          return object;
+        }
+      }
+    }
+    return null;
+  }
+  /**
    * Returns the list of parent component or block architecture of the element.
    * 
    * @param current
@@ -1234,6 +1261,10 @@ public class CsServices {
     return filterNotActors(components);
   }
 
+  public Collection<? extends CapellaElement> getABShowHidePureComponent(DSemanticDecorator decorator) {
+    return getABShowHideComponent(decorator).stream()
+        .filter(part -> !ComponentExt.isActor(part)).collect(Collectors.toList());
+  }
   /**
    * Returns available components which are accessible AB-Show-Hide-Component.
    */
@@ -1256,7 +1287,7 @@ public class CsServices {
 
       if (decorator instanceof DDiagram) {
         if (targetComponent != null) {
-          components.addAll(getParts(targetComponent, CsPackage.Literals.COMPONENT, CsPackage.Literals.COMPONENT));
+          components.addAll(getParts(targetComponent, CsPackage.Literals.COMPONENT, null));
           components.addAll(targetComponent.getRepresentingParts());
         } else if (target instanceof BlockArchitecture) {
           components.addAll(getParts(getContext((BlockArchitecture) target), CsPackage.Literals.COMPONENT,
@@ -1270,25 +1301,26 @@ public class CsServices {
     }
 
     // Mono part, we return all components contained in the part.
-    Component root = (Component) getComponentType(decorator);
+    ModelElement root = (ModelElement) getComponentType(decorator);
     boolean fromDiagram = decorator instanceof DDiagram;
 
     if (fromDiagram) {
       BlockArchitecture architecture = ComponentExt.getRootBlockArchitecture(root);
       return CsServices.getService().getAllSubDefinedComponents(architecture);
-    }
-
-    Part part = (Part) decorator.getTarget();
-    Collection<Component> rsult = PartExt.getComponentsOfParts(ComponentExt.getAllSubUsedParts(root, false));
-    // Add all children of deployed components
-    for (DeployableElement deployed : PartExt.getDeployedElements(part)) {
-      if ((deployed instanceof Part) && (((Part) deployed).getAbstractType() instanceof Component)) {
-        rsult.addAll(PartExt.getComponentsOfParts(
-            ComponentExt.getAllSubUsedParts((Component) ((Part) deployed).getAbstractType(), false)));
+    } else if (root instanceof Component) {
+      Part part = (Part) decorator.getTarget();
+      Collection<Component> rsult = PartExt
+          .getComponentsOfParts(ComponentExt.getAllSubUsedParts((Component) root, false));
+      // Add all children of deployed components
+      for (DeployableElement deployed : PartExt.getDeployedElements(part)) {
+        if ((deployed instanceof Part) && (((Part) deployed).getAbstractType() instanceof Component)) {
+          rsult.addAll(PartExt.getComponentsOfParts(
+              ComponentExt.getAllSubUsedParts((Component) ((Part) deployed).getAbstractType(), false)));
+        }
       }
+      return rsult;
     }
-    return rsult;
-
+    return Collections.emptyList();
   }
 
   /**
@@ -1309,33 +1341,99 @@ public class CsServices {
   }
 
   /**
-   * Gets the AB target.
+   * Gets the AB target to create
    */
   public EObject getABTarget(DSemanticDecorator decorator) {
     if (decorator instanceof DDiagram) {
-      if (ComponentExt.isActor(decorator.getTarget())) {
-        return getParentContainer(decorator.getTarget());
-      }
-
-      ContainerMapping cMapping = FaServices.getFaServices().getMappingABComponent(CsPackage.Literals.COMPONENT,
+      ContainerMapping cMapping = FaServices.getFaServices().getMappingABComponent(decorator.getTarget(),
           (DDiagram) decorator);
-
       for (DDiagramElement element : ((DDiagram) decorator).getOwnedDiagramElements()) {
         if (DiagramServices.getDiagramServices().isMapping(element, cMapping)) {
+          // If the target of the diagram is present in the diagram, we create new elements in the target's container
           if (element.getTarget() == decorator.getTarget()) {
-            return getParentContainer(decorator.getTarget());
+            return getSemanticParentContainer(decorator.getTarget(), false);
           }
           if ((element.getTarget() instanceof Part)
               && (((Part) element.getTarget()).getAbstractType() == decorator.getTarget())) {
-            return getParentContainer(decorator.getTarget());
+            return getSemanticParentContainer(decorator.getTarget(), false);
           }
         }
       }
-      return decorator.getTarget();
+      if (canCreateABComponent((decorator))) {
+        return decorator.getTarget();
+      }
+      // We find the nearest container to store the element
+      return getSemanticParentContainer(decorator.getTarget(), false);
     }
     return decorator.getTarget();
   }
+  
+  /**
+   * Gets the AB target to create an actor
+   */
+  public EObject getABActorTarget(DSemanticDecorator decorator) {
+    if (decorator instanceof DDiagram) {
+      ContainerMapping cMapping = FaServices.getFaServices().getMappingABComponent(decorator.getTarget(),
+          (DDiagram) decorator);
+      for (DDiagramElement element : ((DDiagram) decorator).getOwnedDiagramElements()) {
+        if (DiagramServices.getDiagramServices().isMapping(element, cMapping)) {
+          // If the target of the diagram is present in the diagram, we create new elements in the target's container
+          if (element.getTarget() == decorator.getTarget()) {
+            return getSemanticParentContainer(decorator.getTarget(), true);
+          }
+          if ((element.getTarget() instanceof Part)
+              && (((Part) element.getTarget()).getAbstractType() == decorator.getTarget())) {
+            return getSemanticParentContainer(decorator.getTarget(), true);
+          }
+        }
+      }
+      if (canCreateABActor((decorator))) {
+        return decorator.getTarget();
+      }
+      // We find the nearest container to store the actor
+      return getSemanticParentContainer(decorator.getTarget(), true);
+    }
+    return decorator.getTarget();
+  }
+  
+  /**
+   * 
+   * @param decorator
+   * @return whether the target of the diagram is present in the diagram
+   */
+  public boolean isABTargetPresent(DSemanticDecorator decorator) {
+    if (decorator instanceof DDiagram) {
+      ContainerMapping cMapping = FaServices.getFaServices().getMappingABComponent(decorator.getTarget(),
+          (DDiagram) decorator);
+      for (DDiagramElement element : ((DDiagram) decorator).getOwnedDiagramElements()) {
+        if (DiagramServices.getDiagramServices().isMapping(element, cMapping)) {
+          if (element.getTarget() == decorator.getTarget()) {
+            return true;
+          }
+          if ((element.getTarget() instanceof Part)
+              && (((Part) element.getTarget()).getAbstractType() == decorator.getTarget())) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
+  
+  /**
+   * Can we create a component to a graphical element?
+   */
+  public boolean canCreateABComponent(DSemanticDecorator decorator) {
+    return ComponentExt.canCreateABComponent(decorator.getTarget());
+  }
 
+  /**
+   * Can we create an actor to a graphical element?
+   */
+  public boolean canCreateABActor(DSemanticDecorator decorator) {
+    return ComponentExt.canCreateABActor(decorator.getTarget());
+  }
+  
   /**
    * Gets the iB target.
    */
@@ -1868,8 +1966,13 @@ public class CsServices {
   /**
    * Returns sub components of the component which are used (have a part).
    */
-  public List<Component> getSubUsedComponents(Component component) {
-    return ComponentExt.getSubUsedComponents(component);
+  public List<Component> getSubUsedComponents(CapellaElement capellaElement) {
+    if (capellaElement instanceof Component) {
+      return ComponentExt.getSubUsedComponents((Component) capellaElement);
+    } else if (capellaElement instanceof ComponentPkg) {
+      return ComponentPkgExt.getSubUsedComponents((ComponentPkg) capellaElement);
+    }
+    return Collections.emptyList();
   }
 
   /**
@@ -2507,6 +2610,9 @@ public class CsServices {
       if (targetView.getTarget() instanceof AbstractPropertyValue) {
         return getComponentType((DSemanticDecorator) targetView.eContainer());
       }
+      if (targetView.getTarget() instanceof ComponentPkg) {
+        return targetView.getTarget();
+      }
     }
     return null;
   }
@@ -2526,6 +2632,8 @@ public class CsServices {
       return getComponentType((Port) target);
     } else if (target instanceof Part) {
       return getComponentType((Part) target);
+    } else if (target instanceof ComponentPkg) {
+      return target;
     }
 
     return null;
@@ -2556,73 +2664,94 @@ public class CsServices {
    * @param nameVariable
    *          interpreter-variable which will be store the new created component
    */
-  @SuppressWarnings("unchecked")
-  public void createComponent(EObject container, String nameVariable) {
+  public Component createComponent(EObject container, String nameVariable) {
+    String namePrefix = "";
+    if ((container instanceof LogicalComponent) || (container instanceof LogicalComponentPkg)
+        || (container instanceof LogicalArchitecture)) {
+      namePrefix = "LC ";
+    } else if ((container instanceof PhysicalComponent) || (container instanceof PhysicalComponentPkg)
+        || (container instanceof PhysicalArchitecture)) {
+      namePrefix = "PC ";
+    } else if ((container instanceof Entity) || (container instanceof EntityPkg)
+        || (container instanceof OperationalAnalysis)) {
+      namePrefix = "Entity ";
+    } else if ((container instanceof SystemComponentPkg) || (container instanceof SystemAnalysis)) {
+      namePrefix = "System ";
+    }
+    return createComponent(container, nameVariable, namePrefix);
+  }
+  
+  private Component createComponent(EObject container, String nameVariable, String namePrefix) {
     Component element = null;
     EStructuralFeature containerFeature = null;
     EObject containerObject = null;
-    String namePrefix = ""; //$NON-NLS-1$
-
-    if ((container instanceof LogicalComponent) || (container instanceof LogicalArchitecture)) {
-
+    if ((container instanceof LogicalComponent) || (container instanceof LogicalComponentPkg)
+        || (container instanceof LogicalArchitecture)) {
       element = LaFactory.eINSTANCE.createLogicalComponent();
-      namePrefix = "LC "; //$NON-NLS-1$
-
       if (container instanceof LogicalComponent) {
         containerFeature = LaPackage.Literals.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENTS;
         containerObject = container;
-
+      } else if (container instanceof LogicalComponentPkg) {
+        containerFeature = LaPackage.Literals.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENTS;
+        containerObject = container;
       } else if (container instanceof LogicalArchitecture) {
         LogicalComponentPkg pkg = ((LogicalArchitecture) container).getOwnedLogicalComponentPkg();
         if (pkg == null) {
           pkg = LaFactory.eINSTANCE.createLogicalComponentPkg();
           ((LogicalArchitecture) container).setOwnedLogicalComponentPkg(pkg);
         }
-
         containerFeature = LaPackage.Literals.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENTS;
         containerObject = pkg;
-
       }
-
-    } else if ((container instanceof PhysicalComponent) || (container instanceof PhysicalArchitecture)) {
-
+    } else if ((container instanceof PhysicalComponent) || (container instanceof PhysicalComponentPkg)
+        || (container instanceof PhysicalArchitecture)) {
       element = PaFactory.eINSTANCE.createPhysicalComponent();
-      namePrefix = "PC "; //$NON-NLS-1$
-
       if (container instanceof PhysicalComponent) {
         containerFeature = PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_PHYSICAL_COMPONENTS;
         containerObject = container;
-
+      } else if (container instanceof PhysicalComponentPkg) {
+        containerFeature = PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS;
+        containerObject = container;
       } else if (container instanceof PhysicalArchitecture) {
         PhysicalComponentPkg pkg = ((PhysicalArchitecture) container).getOwnedPhysicalComponentPkg();
         if (pkg == null) {
           pkg = PaFactory.eINSTANCE.createPhysicalComponentPkg();
           ((PhysicalArchitecture) container).setOwnedPhysicalComponentPkg(pkg);
         }
-
         containerFeature = PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS;
         containerObject = pkg;
-
       }
-    } else if ((container instanceof EntityPkg) || (container instanceof OperationalAnalysis)) {
-
+    } else if ((container instanceof Entity) || (container instanceof EntityPkg)
+        || (container instanceof OperationalAnalysis)) {
       element = OaFactory.eINSTANCE.createEntity();
-      namePrefix = "Entity "; //$NON-NLS-1$
-
-      if (container instanceof EntityPkg) {
+      if (container instanceof Entity) {
+        containerFeature = OaPackage.Literals.ENTITY__OWNED_ENTITIES;
+        containerObject = container;
+      } else if (container instanceof EntityPkg) {
         containerFeature = OaPackage.Literals.ENTITY_PKG__OWNED_ENTITIES;
         containerObject = container;
-
       } else if (container instanceof OperationalAnalysis) {
         EntityPkg pkg = ((OperationalAnalysis) container).getOwnedEntityPkg();
         if (pkg == null) {
           pkg = OaFactory.eINSTANCE.createEntityPkg();
           ((OperationalAnalysis) container).setOwnedEntityPkg(pkg);
         }
-
         containerFeature = OaPackage.Literals.ENTITY_PKG__OWNED_ENTITIES;
         containerObject = pkg;
-
+      }
+    } else if ((container instanceof SystemComponentPkg) || (container instanceof SystemAnalysis)) {
+      element = CtxFactory.eINSTANCE.createSystemComponent();
+      if (container instanceof SystemComponentPkg) {
+        containerFeature = CtxPackage.Literals.SYSTEM_COMPONENT_PKG__OWNED_SYSTEM_COMPONENTS;
+        containerObject = container;
+      } else if (container instanceof SystemAnalysis) {
+        SystemComponentPkg pkg = ((SystemAnalysis) container).getOwnedSystemComponentPkg();
+        if (pkg == null) {
+          pkg = CtxFactory.eINSTANCE.createSystemComponentPkg();
+          ((SystemAnalysis) container).setOwnedSystemComponentPkg(pkg);
+        }
+        containerFeature = CtxPackage.Literals.SYSTEM_COMPONENT_PKG__OWNED_SYSTEM_COMPONENTS;
+        containerObject = pkg;
       }
     }
 
@@ -2634,6 +2763,7 @@ public class CsServices {
     if (nameVariable != null) {
       InterpreterUtil.getInterpreter(container).setVariable(nameVariable, element);
     }
+    return element;
   }
 
   /**
@@ -2642,11 +2772,11 @@ public class CsServices {
    * @param nameVariable
    *          interpreter-variable which will be store the new created actor (create service is not called.)
    */
-  public Component createActor(ModellingArchitecture container, String nameVariable) {
+  public Component createActor(CapellaElement container, String nameVariable) {
     return createActor(container, false, nameVariable);
   }
-
-  public Component createActor(ModellingArchitecture container) {
+  
+  public Component createActor(CapellaElement container) {
     return createActor(container, true, null);
   }
 
@@ -2656,91 +2786,27 @@ public class CsServices {
    * @param nameVariable
    *          interpreter-variable which will be store the new created actor (create service is not called.)
    */
-  @SuppressWarnings("unchecked")
-  public Component createActor(ModellingArchitecture container, boolean creationService, String nameVariable) {
-    Component element = null;
-    EStructuralFeature containerFeature = null;
-    EObject containerObject = null;
-    String namePrefix = ""; //$NON-NLS-1$
-
-    if (container instanceof LogicalArchitecture) {
-
-      element = LaFactory.eINSTANCE.createLogicalComponent();
-      namePrefix = "LA "; //$NON-NLS-1$
-
-      LogicalComponentPkg pkg = ((LogicalArchitecture) container).getOwnedLogicalComponentPkg();
-      if (pkg == null) {
-        pkg = LaFactory.eINSTANCE.createLogicalComponentPkg();
-        ((LogicalArchitecture) container).setOwnedLogicalComponentPkg(pkg);
-      }
-
-      containerFeature = LaPackage.Literals.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENTS;
-      containerObject = pkg;
-
-    } else if (container instanceof PhysicalArchitecture) {
-
-      element = PaFactory.eINSTANCE.createPhysicalComponent();
-      namePrefix = "PA "; //$NON-NLS-1$
-
-      PhysicalComponentPkg pkg = ((PhysicalArchitecture) container).getOwnedPhysicalComponentPkg();
-      if (pkg == null) {
-        pkg = PaFactory.eINSTANCE.createPhysicalComponentPkg();
-        ((PhysicalArchitecture) container).setOwnedPhysicalComponentPkg(pkg);
-      }
-
-      containerFeature = PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS;
-      containerObject = pkg;
-
-    } else if (container instanceof SystemAnalysis) {
-
-      element = CtxFactory.eINSTANCE.createSystemComponent();
-      namePrefix = "A "; //$NON-NLS-1$
-
-      SystemComponentPkg pkg = ((SystemAnalysis) container).getOwnedSystemComponentPkg();
-      if (pkg == null) {
-        pkg = CtxFactory.eINSTANCE.createSystemComponentPkg();
-        ((SystemAnalysis) container).setOwnedSystemComponentPkg(pkg);
-      }
-
-      containerFeature = CtxPackage.Literals.SYSTEM_COMPONENT_PKG__OWNED_SYSTEM_COMPONENTS;
-      containerObject = pkg;
-
-    } else if (container instanceof OperationalAnalysis) {
-
-      element = OaFactory.eINSTANCE.createEntity();
-      namePrefix = "OperationalActor "; //$NON-NLS-1$
-
-      EntityPkg pkg = ((OperationalAnalysis) container).getOwnedEntityPkg();
-      if (pkg == null) {
-        pkg = OaFactory.eINSTANCE.createEntityPkg();
-        ((OperationalAnalysis) container).setOwnedEntityPkg(pkg);
-      }
-      if (pkg.getOwnedEntities().isEmpty()) {
-        Entity root = OaFactory.eINSTANCE.createEntity();
-        pkg.getOwnedEntities().add(root);
-      }
-      containerFeature = OaPackage.Literals.ENTITY_PKG__OWNED_ENTITIES;
-      containerObject = pkg;
-
+  public Component createActor(CapellaElement container, boolean creationService, String nameVariable) {
+    String namePrefix = "";
+    if ((container instanceof LogicalComponent) || (container instanceof LogicalComponentPkg)
+        || (container instanceof LogicalArchitecture)) {
+      namePrefix = "LA ";
+    } else if ((container instanceof PhysicalComponent) || (container instanceof PhysicalComponentPkg)
+        || (container instanceof PhysicalArchitecture)) {
+      namePrefix = "PA ";
+    } else if ((container instanceof Entity) || (container instanceof EntityPkg)
+        || (container instanceof OperationalAnalysis)) {
+      namePrefix = "OperationalActor ";
+    } else if ((container instanceof SystemComponentPkg) || (container instanceof SystemAnalysis)) {
+      namePrefix = "A ";
     }
-
-    if ((element != null) && (containerObject != null) && (containerFeature != null)) {
-      ((EList<Component>) containerObject.eGet(containerFeature)).add(element);
-
-      if (creationService) {
-        CapellaServices.getService().creationService(element);
-      }
-
-      element.setName(CapellaServices.getService().getUniqueName(element, namePrefix));
+    Component component = createComponent(container, nameVariable, namePrefix);
+    component.setActor(true);
+    component.setHuman(true);
+    if (creationService) {
+      CapellaServices.getService().creationService(component, namePrefix);
     }
-
-    if (nameVariable != null) {
-      InterpreterUtil.getInterpreter(container).setVariable(nameVariable, element);
-    }
-    
-    element.setActor(true);
-    element.setHuman(true);
-    return element;
+    return component;
   }
 
   /**
@@ -4570,21 +4636,20 @@ public class CsServices {
   /**
    * Returns actors which should be inserted into the architecture of the component in the LAB diagram
    */
-  public Collection<? extends Component> getABInsertActor(Component component) {
-    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_AB_INSERT_ACTOR_FOR_LIB, component);
+  public Collection<? extends Component> getABInsertActor(CapellaElement capellaElement) {
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_AB_INSERT_ACTOR_FOR_LIB, capellaElement);
   }
 
   /**
    * Returns components which can be inserted into the given component in the LAB Diagram
    */
-  public Collection<? extends Component> getABInsertComponent(Component component) {
-    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_CCII_SHOW_HIDE_COMPONENTS_FOR_LIB, component);
+  public Collection<? extends Component> getABInsertComponent(CapellaElement capellaElement) {
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_CCII_SHOW_HIDE_COMPONENTS_FOR_LIB, capellaElement);
   }
 
-  public Collection<? extends NamedElement> getABShowHideActor(DSemanticDecorator view) {
-    Component component = (Component) getComponentType(view);
-    BlockArchitecture architecture = getArchitecture(component);
-    return getParts(getContext(architecture), CsPackage.Literals.COMPONENT, null);
+  public Collection<? extends CapellaElement> getABShowHideActor(DSemanticDecorator view) {
+    return getABShowHideComponent(view).stream().filter(comp -> ComponentExt.isActor(comp))
+        .flatMap(comp -> ((Component) comp).getRepresentingParts().stream()).collect(Collectors.toList());
   }
 
   /**
@@ -6713,24 +6778,26 @@ public class CsServices {
   }
 
   private void addRelevantParts(DDiagram diagram, Part mainPart, List<DeploymentTarget> toHandle) {
-    Iterator<Part> parts = getCache(ComponentExt::getRepresentingParts, (Component) mainPart.eContainer()).iterator();
-    while (parts.hasNext()) {
-      Part parentPart = parts.next();
-      Collection<DSemanticDecorator> diagramElements = DiagramServices.getDiagramServices().getDiagramElements(diagram,
-          parentPart);
-      int foundCount = 0;
-      for (DSemanticDecorator diagElt : diagramElements) {
-        if (diagElt instanceof DNodeContainer) {
-          DNodeContainer node = (DNodeContainer) diagElt;
-          for (DDiagramElement elt : node.getOwnedDiagramElements()) {
-            if (mainPart.equals(elt.getTarget()) && elt.isVisible()) {
-              foundCount++;
+    if (mainPart.eContainer() instanceof Component) {
+      Iterator<Part> parts = getCache(ComponentExt::getRepresentingParts, (Component) mainPart.eContainer()).iterator();
+      while (parts.hasNext()) {
+        Part parentPart = parts.next();
+        Collection<DSemanticDecorator> diagramElements = DiagramServices.getDiagramServices()
+            .getDiagramElements(diagram, parentPart);
+        int foundCount = 0;
+        for (DSemanticDecorator diagElt : diagramElements) {
+          if (diagElt instanceof DNodeContainer) {
+            DNodeContainer node = (DNodeContainer) diagElt;
+            for (DDiagramElement elt : node.getOwnedDiagramElements()) {
+              if (mainPart.equals(elt.getTarget()) && elt.isVisible()) {
+                foundCount++;
+              }
             }
           }
         }
-      }
-      if (diagramElements.size() != foundCount) {
-        toHandle.add(parentPart);
+        if (diagramElements.size() != foundCount) {
+          toHandle.add(parentPart);
+        }
       }
     }
   }
@@ -6782,6 +6849,6 @@ public class CsServices {
   }
   
   public boolean isActor(EObject context) {
-    return (context instanceof Component && ComponentExt.isActor(context));
+    return ComponentExt.isActor(context);
   }
 }

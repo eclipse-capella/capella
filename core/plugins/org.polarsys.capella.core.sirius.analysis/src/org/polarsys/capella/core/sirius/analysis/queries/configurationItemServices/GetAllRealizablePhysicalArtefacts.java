@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.sirius.analysis.queries.configurationItemServices;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
@@ -20,12 +21,13 @@ import org.polarsys.capella.common.queries.exceptions.QueryException;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.Feature;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.epbs.PhysicalArchitectureRealization;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
-import org.polarsys.capella.core.data.pa.PhysicalComponent;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.PhysicalArchitectureExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 
@@ -45,11 +47,11 @@ public class GetAllRealizablePhysicalArtefacts extends AbstractQuery {
         BlockArchitecture allocatedArchitecture = physicalArchitectureRealization.getAllocatedArchitecture();
         if ((null != allocatedArchitecture) && (allocatedArchitecture instanceof PhysicalArchitecture)) {
           // retrieve all PhysicalComponents
-          List<PhysicalComponent> allPhysicalComponents = PhysicalArchitectureExt.getAllPhysicalComponents((PhysicalArchitecture) allocatedArchitecture);
+          Collection<Component> allPhysicalComponents = BlockArchitectureExt.getAllComponents((PhysicalArchitecture) allocatedArchitecture);
           // add all PhysicalComponents to result
           result.addAll(allPhysicalComponents);
 
-          for (PhysicalComponent physicalComponent : allPhysicalComponents) {
+          for (Component physicalComponent : allPhysicalComponents) {
             // retrieve all PhysicalPorts
             EList<Feature> ownedFeatures = physicalComponent.getOwnedFeatures();
             for (Feature feature : ownedFeatures) {

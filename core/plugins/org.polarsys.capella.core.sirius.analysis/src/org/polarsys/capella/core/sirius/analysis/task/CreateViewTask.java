@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis.task;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -305,7 +306,7 @@ public class CreateViewTask extends AbstractCommandTask {
     } else if (mapping instanceof AbstractNodeMapping) {
       domainClass = ((AbstractNodeMapping) mapping).getDomainClass();
     }
-    return StringUtil.lastSegment(domainClass, '.');
+    return StringUtil.lastSegment(domainClass, Arrays.asList(".", "::"));
   }
 
   /**

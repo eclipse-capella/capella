@@ -61,6 +61,7 @@ import org.polarsys.capella.core.data.cs.InterfacePkg;
 import org.polarsys.capella.core.data.cs.InterfaceUse;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.ConfigurationItemPkg;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
@@ -1681,11 +1682,8 @@ public class ComponentExt {
    */
   public static List<Part> getSubParts(Component component) {
     List<Part> result = new ArrayList<Part>();
-    for (Feature feature : component.getOwnedFeatures()) {
-      if (feature instanceof Part) {
-        result.add((Part) feature);
-      }
-    }
+    result.addAll(component.getContainedParts());
+    getContainedComponentPkgs(component).stream().forEach(pkg -> result.addAll(ComponentPkgExt.getSubParts(pkg)));
     return result;
   }
 
@@ -2644,5 +2642,84 @@ public class ComponentExt {
       availableElements.add(capabilityRealization);
     }
     return availableElements;
+  }
+  
+  /**
+   * 
+   * @param component
+   * @return component packages contained in this component
+   */
+  public static List<ComponentPkg> getContainedComponentPkgs(Component component) {
+    List<ComponentPkg> componentPkgs = new ArrayList<>();
+    if (component == null) {
+      return Collections.emptyList();
+    }
+    if (component instanceof LogicalComponent) {
+      LogicalComponent logicalComponent = (LogicalComponent) component;
+      componentPkgs.addAll(logicalComponent.getOwnedLogicalComponentPkgs());
+    } else if (component instanceof PhysicalComponent) {
+      PhysicalComponent physicalComponent = (PhysicalComponent) component;
+      componentPkgs.addAll(physicalComponent.getOwnedPhysicalComponentPkgs());
+    } else if (component instanceof ConfigurationItem) {
+      ConfigurationItem configurationItemComponent = (ConfigurationItem) component;
+      componentPkgs.addAll(configurationItemComponent.getOwnedConfigurationItemPkgs());
+    }
+    return componentPkgs;
+  }
+
+  /**
+   * 
+   * @param component
+   * @param target
+   * @return whether a component can be created in the target element
+   */
+  public static boolean canCreateABComponent(EObject target) {
+    if (target instanceof Component) {
+      Component targetComponent = (Component) target;
+      if (!targetComponent.isActor() && targetComponent.isHuman()) {
+        return false;
+      }
+      if ((targetComponent instanceof Entity || targetComponent instanceof SystemComponent
+          || targetComponent instanceof LogicalComponent) && ComponentExt.isActor(targetComponent)) {
+        return false;
+      }
+    } else if (target instanceof ComponentPkg) {
+      ComponentPkg targetComponentPkg = (ComponentPkg) target;
+      Component parentComponent = ComponentPkgExt.getParentComponent(targetComponentPkg);
+      if (parentComponent == null) {
+        return true;
+      }
+      return canCreateABComponent(parentComponent);
+    }
+    return true;
+  }
+
+  /**
+   * 
+   * @param component
+   * @param target
+   * @return whether an actor can be created in the target element
+   */
+  public static boolean canCreateABActor(EObject target) {
+    if (target instanceof Component) {
+      Component targetComponent = (Component) target;
+      if (!targetComponent.isActor() && targetComponent.isHuman()) {
+        return false;
+      }
+      if (targetComponent instanceof Entity) {
+        return false;
+      } else if ((targetComponent instanceof SystemComponent || targetComponent instanceof LogicalComponent)
+          && !ComponentExt.isActor(targetComponent)) {
+        return false;
+      }
+    } else if (target instanceof ComponentPkg) {
+      ComponentPkg targetComponentPkg = (ComponentPkg) target;
+      Component parentComponent = ComponentPkgExt.getParentComponent(targetComponentPkg);
+      if (parentComponent == null) {
+        return true;
+      }
+      return canCreateABActor(parentComponent);
+    }
+    return true;
   }
 }

@@ -25,7 +25,6 @@ import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.libraries.queries.QueryExt;
 import org.polarsys.capella.core.model.helpers.queries.QueryIdentifierConstants;
-import org.polarsys.capella.core.model.helpers.queries.filters.RemoveContextFilter;
 
 @ExtendingQuery (extendingQuery = GetCCIIShowHideComponent.class)
 public class GetCCIIShowHideComponent__Lib extends AbstractQuery {
@@ -40,7 +39,6 @@ public class GetCCIIShowHideComponent__Lib extends AbstractQuery {
       EObject correspondingInput = QueryExt.getCorrespondingElementInLibrary(element, (CapellaModel) library);
       result.addAll(QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_COMPONENTS, correspondingInput, context));
     }
-    result = QueryInterpretor.executeFilter(result, new RemoveContextFilter());
     return result;
   }
 }

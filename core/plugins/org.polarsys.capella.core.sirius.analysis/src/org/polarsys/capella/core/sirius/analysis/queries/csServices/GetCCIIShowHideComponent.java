@@ -20,7 +20,9 @@ import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.ComponentPkgExt;
 import org.polarsys.capella.core.model.helpers.queries.filters.RemoveActorsFilter;
 
 public class GetCCIIShowHideComponent extends AbstractQuery {
@@ -43,6 +45,9 @@ public class GetCCIIShowHideComponent extends AbstractQuery {
     } else if (target instanceof Component) {
       components.addAll(ComponentExt.getSubDefinedComponents((Component) target));
       components.addAll(ComponentExt.getSubUsedComponents((Component) target));
+    } else if (target instanceof ComponentPkg) {
+      components.addAll(ComponentPkgExt.getOwnedComponents((ComponentPkg) target));
+      components.addAll(ComponentPkgExt.getSubUsedComponents((ComponentPkg) target));
     }
 
     components.remove(target);

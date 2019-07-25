@@ -5,8 +5,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentPkg;
+import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
 import org.polarsys.capella.core.data.epbs.ConfigurationItemPkg;
 import org.polarsys.capella.core.data.la.LogicalComponentPkg;
@@ -63,5 +66,58 @@ public class ComponentPkgExt {
     return getOwnedComponents(componentPkg).stream().filter(comp -> ComponentExt.isActor(comp))
         .collect(Collectors.toList());
   }
-
+  
+  public static List<Component> getSubUsedComponents(ComponentPkg componentPkg) {
+    return PartExt.getComponentsOfParts(componentPkg.getOwnedParts());
+  }
+  
+  /**
+   * Returns sub parts of a component package
+   */
+  public static List<Part> getSubParts(ComponentPkg componentPkg) {
+    List<Part> result = new ArrayList<Part>();
+    result.addAll(componentPkg.getOwnedParts());
+    getContainedComponentPkgs(componentPkg).stream().forEach(pkg -> result.addAll(ComponentPkgExt.getSubParts(pkg)));
+    return result;
+  }
+  
+  /**
+   * 
+   * @param componentPkg
+   * @return component packages contained in this component
+   */
+  public static List<ComponentPkg> getContainedComponentPkgs(ComponentPkg componentPkg) {
+    List<ComponentPkg> componentPkgs = new ArrayList<>();
+    if (componentPkg == null) {
+      return Collections.emptyList();
+    }
+    if (componentPkg instanceof EntityPkg) {
+      componentPkgs.addAll(((EntityPkg) componentPkg).getOwnedEntityPkgs());
+    } else if (componentPkg instanceof SystemComponentPkg) {
+      componentPkgs.addAll(((SystemComponentPkg) componentPkg).getOwnedSystemComponentPkgs());
+    } else if (componentPkg instanceof LogicalComponentPkg) {
+      componentPkgs.addAll(((LogicalComponentPkg) componentPkg).getOwnedLogicalComponentPkgs());
+    } else if (componentPkg instanceof PhysicalComponentPkg) {
+      componentPkgs.addAll(((PhysicalComponentPkg) componentPkg).getOwnedPhysicalComponentPkgs());
+    } else if (componentPkg instanceof ConfigurationItemPkg) {
+      componentPkgs.addAll(((ConfigurationItemPkg) componentPkg).getOwnedConfigurationItemPkgs());
+    }
+    return componentPkgs;
+  }
+  
+  /**
+   * 
+   * @param componentPkg
+   * @return the nearest Component containing this package, null if it's not contained in a component
+   */
+  public static Component getParentComponent(ComponentPkg componentPkg) {
+    for (EObject object = componentPkg.eContainer(); object != null; object = object.eContainer()) {
+      if (object instanceof BlockArchitecture) {
+        return null;
+      } else if (object instanceof Component) {
+        return (Component) object;
+      }
+    }
+    return null;
+  }
 }

@@ -23,6 +23,7 @@ import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
@@ -34,13 +35,15 @@ public class GetABInsertActor extends AbstractQuery {
   public List<Object> execute(Object input, IQueryContext qContext) throws QueryException {
     Collection<? extends Component> components = new HashSet<>();
     BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture((EObject) input);
-    components.addAll((List) QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_SUB_DEFINED_ACTORS, architecture, new QueryContext()));
+    components.addAll((List) QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_SUB_DEFINED_ACTORS,
+        architecture, new QueryContext()));
     // if is not multi part model
     if (!TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(architecture))) {
-      Component context = BlockArchitectureExt.getContext(architecture);
+      ComponentPkg context = BlockArchitectureExt.getContext(architecture);
       if (context != null) {
         // Remove component from existing part
-        components.removeAll(QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_SUB_USED_COMPONENTS, context, new QueryContext()));
+        components.removeAll(QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_SUB_USED_COMPONENTS, context,
+            new QueryContext()));
       }
     }
     return new ArrayList<>(components);

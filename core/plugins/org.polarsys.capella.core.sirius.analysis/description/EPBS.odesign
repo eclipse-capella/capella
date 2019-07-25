@@ -228,7 +228,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.createCOTSCI()">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                   <parameters name="context" value="aql:container"/>
-                  <parameters name="scope" value="aql:self.representingPartitions->last()"/>
+                  <parameters name="scope" value="aql:self.representingParts->last()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -240,7 +240,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.createCSCI()">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                   <parameters name="context" value="aql:container"/>
-                  <parameters name="scope" value="aql:self.representingPartitions->last()"/>
+                  <parameters name="scope" value="aql:self.representingParts->last()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -252,7 +252,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.createHWCI()">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                   <parameters name="context" value="aql:container"/>
-                  <parameters name="scope" value="aql:self.representingPartitions->last()"/>
+                  <parameters name="scope" value="aql:self.representingParts->last()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -264,7 +264,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.createInterfaceCI()">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                   <parameters name="context" value="aql:container"/>
-                  <parameters name="scope" value="aql:self.representingPartitions->last()"/>
+                  <parameters name="scope" value="aql:self.representingParts->last()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -276,7 +276,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.createNDICI()">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                   <parameters name="context" value="aql:container"/>
-                  <parameters name="scope" value="aql:self.representingPartitions->last()"/>
+                  <parameters name="scope" value="aql:self.representingParts->last()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -288,7 +288,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.createPrimeItemCI()">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                   <parameters name="context" value="aql:container"/>
-                  <parameters name="scope" value="aql:self.representingPartitions->last()"/>
+                  <parameters name="scope" value="aql:self.representingParts->last()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -300,7 +300,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.createSystemCI()">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                   <parameters name="context" value="aql:container"/>
-                  <parameters name="scope" value="aql:self.representingPartitions->last()"/>
+                  <parameters name="scope" value="aql:self.representingParts->last()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>

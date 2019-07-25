@@ -32,7 +32,6 @@ import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
@@ -152,51 +151,27 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
    */
   protected void updateTargetDiagram(DDiagram diagram, boolean hasContextualElements) {
 
-    if (!IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
-      // In architecture blank,
-      // in one part mode or when diagram is applied to one part, the part should be displayed
+    // In architecture blank,
+    // in one part mode or when diagram is applied to one part, the part should be displayed
 
-      // getting the root of the diagram
-      EObject root = ((DSemanticDecorator) diagram).getTarget();
+    // getting the root of the diagram
+    EObject root = ((DSemanticDecorator) diagram).getTarget();
 
-      // create a default part if none
-      if (root instanceof Component) {
-        Component rootComponent = (Component) root;
-        CsServices.getService().createRepresentingPartIfNone(rootComponent);
-        if (!CsServices.getService().isMultipartMode(rootComponent)) {
-          root = rootComponent.getRepresentingParts().get(0);
-        }
-
-      } else if (root instanceof Part) {
-        // replace the diagram in the component if one-part-mode and diagram previously
-        // settled to the part
-        if (!CsServices.getService().isMultipartMode((Part) root)) {
-          EObject type = CsServices.getService().getComponentType((Part) root);
-          if (type instanceof Component) {
-            ((DSemanticDiagram) diagram).setTarget(type);
-          }
-        }
+    // create a default part if none
+    if (root instanceof Component) {
+      Component rootComponent = (Component) root;
+      CsServices.getService().createRepresentingPartIfNone(rootComponent);
+      if (!CsServices.getService().isMultipartMode(rootComponent)) {
+        root = rootComponent.getRepresentingParts().get(0);
       }
 
-      // -------------------------------------
-      // Show the root element in SAB-LAB
-      // -------------------------------------
-
-      if ((root instanceof ModelElement) && !(root instanceof Component)
-          && (diagram.getOwnedDiagramElements().isEmpty())) {
-        if (!CsServices.getService().isMultipartMode((ModelElement) root)
-            && diagram.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)
-            && !DiagramServices.getDiagramServices().isOnDiagram(diagram, root) && (!hasContextualElements)) {
-          // Instantiate the container in the diagram for the component
-          ContainerMapping componentMapping = FaServices.getFaServices().getMappingABComponent(root, diagram);
-          DiagramServices.getDiagramServices().createContainer(componentMapping, root, diagram, diagram);
-
-        } else if (diagram.getDescription().getName()
-            .equals(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)
-            && !DiagramServices.getDiagramServices().isOnDiagram(diagram, root)) {
-          // Instantiate the container in the diagram for the component
-          ContainerMapping componentMapping = FaServices.getFaServices().getMappingABComponent(root, diagram);
-          DiagramServices.getDiagramServices().createContainer(componentMapping, root, diagram, diagram);
+    } else if (root instanceof Part) {
+      // replace the diagram in the component if one-part-mode and diagram previously
+      // settled to the part
+      if (!CsServices.getService().isMultipartMode((Part) root)) {
+        EObject type = CsServices.getService().getComponentType((Part) root);
+        if (type instanceof Component) {
+          ((DSemanticDiagram) diagram).setTarget(type);
         }
       }
     }

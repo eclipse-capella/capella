@@ -70,6 +70,10 @@
             class="org.polarsys.capella.core.data.menu.contributions.ctx.SystemFunctionPkgItemContribution"
             id="org.polarsys.capella.core.data.menu.contributions.ctx.SystemFunctionPkgItemContribution">
       </MDEMenuItemContribution>
+      <MDEMenuItemContribution
+            class="org.polarsys.capella.core.data.menu.contributions.ctx.SystemComponentItemContribution"
+            id="org.polarsys.capella.core.data.menu.contributions.ctx.SystemComponentItemContribution">
+      </MDEMenuItemContribution>
    </extension>
    <extension name="epbs" point="org.polarsys.capella.common.menu.dynamic.MDEMenuItemContribution">
       <MDEMenuItemContribution

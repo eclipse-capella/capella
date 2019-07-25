@@ -24,6 +24,7 @@ import org.polarsys.capella.core.diagram.helpers.DAnnotationHelper;
 import org.polarsys.capella.core.diagram.helpers.IRepresentationAnnotationConstants;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.Type;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.context.PABDiagram;
@@ -126,6 +127,9 @@ public class ShowHideComponentExchanges extends EmptyProject {
     XABDiagram xab = XABDiagram.createDiagram(context, idSource);
     activateComponentExchangeFilters(xab);
     
+    if (xab.getDiagramType() == Type.LA)
+      xab.insertComponent(LA__LOGICAL_CONTEXT__PART_LOGICAL_SYSTEM__LOGICAL_SYSTEM);
+    
     xab.createActor(GenericModel.LA_1);
     xab.createActor(GenericModel.LA_2);
 
@@ -143,6 +147,9 @@ public class ShowHideComponentExchanges extends EmptyProject {
   protected void testOnLogicalComponents(SessionContext context, String idSource) {
     XABDiagram xab = XABDiagram.createDiagram(context, idSource);
     activateComponentExchangeFilters(xab);
+    
+    if (xab.getDiagramType() == Type.LA)
+      xab.insertComponent(LA__LOGICAL_CONTEXT__PART_LOGICAL_SYSTEM__LOGICAL_SYSTEM);
     
     xab.createComponent(GenericModel.LC_1, LA__LOGICAL_CONTEXT__PART_LOGICAL_SYSTEM__LOGICAL_SYSTEM);
     xab.createComponent(GenericModel.LC_2, LA__LOGICAL_CONTEXT__PART_LOGICAL_SYSTEM__LOGICAL_SYSTEM);

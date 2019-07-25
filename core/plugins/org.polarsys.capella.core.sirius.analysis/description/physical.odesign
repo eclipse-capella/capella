@@ -1769,7 +1769,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Physical Architecture Blank" titleExpression="aql:'[PAB] ' + self.name" domainClass="NamedElement" preconditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponent) or (self.oclIsKindOf(cs::Part) and self.getComponentType().oclIsKindOf(pa::PhysicalComponent))" defaultConcern="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@concerns/@ownedConcernDescriptions.0">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Physical Architecture Blank" titleExpression="aql:'[PAB] ' + self.name" domainClass="NamedElement" preconditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponentPkg) or self.oclIsKindOf(pa::PhysicalComponent) or (self.oclIsKindOf(cs::Part) and self.getComponentType().oclIsKindOf(pa::PhysicalComponent))" defaultConcern="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@concerns/@ownedConcernDescriptions.0">
       <dropDescriptions href="#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20AB%20Component']"/>
       <dropDescriptions href="#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
       <dropDescriptions href="#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Actors%20From%20Project%20Explorer']"/>
@@ -2233,7 +2233,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="PAB_PC" navigationDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20PAB'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20IDB'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20CCII'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20CCEI'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20CCDI'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20PCB']" preconditionExpression="aql:not (self.getComponentType().oclIsKindOf(cs::AbstractActor))" deletionDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20SF']" labelDirectEdit="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='edit%20name']" semanticCandidatesExpression="" createElements="false" semanticElements="service:getPartSemanticElements()" domainClass="cs.Part" dropDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.2/@ownedTools[name='D%26D%20Function%20Allocation%20From%20Project%20Explorer'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20AB%20Deployment'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.2/@ownedTools[name='DnD%20AB%20AbstractFunction%20Allocation'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20AB%20Component'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20AB%20ComponentPort'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Components%20From%20Project%20Explorer'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20PhysicalPort']" reusedNodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_ControlFunction'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_Dummy']" reusedContainerMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']">
+        <containerMappings name="PAB_PC" navigationDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20PAB'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20IDB'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20CCII'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20CCEI'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20CCDI'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20PCB']" preconditionExpression="aql:not (self.isActor())" deletionDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20SF']" labelDirectEdit="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='edit%20name']" semanticCandidatesExpression="" createElements="false" semanticElements="service:getPartSemanticElements()" domainClass="cs.Part" dropDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.2/@ownedTools[name='D%26D%20Function%20Allocation%20From%20Project%20Explorer'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20AB%20Deployment'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.2/@ownedTools[name='DnD%20AB%20AbstractFunction%20Allocation'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20AB%20Component'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20AB%20ComponentPort'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Components%20From%20Project%20Explorer'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20PhysicalPort']" reusedNodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_ControlFunction'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_Dummy']" reusedContainerMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Actor']">
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Physical%20Component%20Breakdown']"/>
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Physical%20Architecture%20Blank']"/>
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20Detailed%20Interfaces']"/>
@@ -2339,7 +2339,7 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <containerMappings name="PAB_Actor" navigationDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20PAB'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20IDB'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20CCII'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20CCEI'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20CCDI'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20PCB']" preconditionExpression="aql:self.getComponentType().oclIsKindOf(cs::AbstractActor)" deletionDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20SF']" labelDirectEdit="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='edit%20name']" semanticCandidatesExpression="" createElements="false" semanticElements="service:getPartSemanticElements()" domainClass="cs.Part" reusedBorderedNodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@borderedNodeMappings[name='PAB_Port'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@borderedNodeMappings[name='PAB_ComponentCategory_Pin'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@borderedNodeMappings[name='PAB_PhysicalCategory_Pin']" dropDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20AB%20Deployment'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20AB%20ComponentPort'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.2/@ownedTools[name='DnD%20AB%20AbstractFunction%20Allocation'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.2/@ownedTools[name='D%26D%20Function%20Allocation%20From%20Project%20Explorer'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20PhysicalPort']" reusedNodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_Dummy'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_ControlFunction']" reusedContainerMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']">
+        <containerMappings name="PAB_Actor" navigationDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20PAB'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20IDB'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20CCII'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20CCEI'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20CCDI'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20PCB']" preconditionExpression="aql:self.isActor()" deletionDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20SF']" labelDirectEdit="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='edit%20name']" semanticCandidatesExpression="" createElements="false" semanticElements="service:getPartSemanticElements()" domainClass="cs.Part" reusedBorderedNodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@borderedNodeMappings[name='PAB_Port'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@borderedNodeMappings[name='PAB_ComponentCategory_Pin'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@borderedNodeMappings[name='PAB_PhysicalCategory_Pin']" dropDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20AB%20Deployment'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20AB%20ComponentPort'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.2/@ownedTools[name='DnD%20AB%20AbstractFunction%20Allocation'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.2/@ownedTools[name='D%26D%20Function%20Allocation%20From%20Project%20Explorer'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20PhysicalPort']" reusedNodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_Dummy'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_ControlFunction']" reusedContainerMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Actor']">
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20Detailed%20Interfaces']"/>
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20External%20Interfaces']"/>
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20Internal%20Interfaces']"/>
@@ -2370,7 +2370,7 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <containerMappings name="PAB_Deployment" navigationDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20PAB'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20IDB'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20CCII'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20CCEI'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20CCDI'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20PCB']" preconditionExpression="aql:containerView->filter(diagram::DNodeContainer)->size() > 0" deletionDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20SF']" labelDirectEdit="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='edit%20name']" semanticCandidatesExpression="service:getDeployedComponents()" createElements="false" domainClass="cs.DeployableElement" reusedBorderedNodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@borderedNodeMappings[name='PAB_Port'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@borderedNodeMappings[name='PAB_ComponentCategory_Pin'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@borderedNodeMappings[name='PAB_PhysicalCategory_Pin']" dropDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.2/@ownedTools[name='D%26D%20Function%20Allocation%20From%20Project%20Explorer'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20AB%20Deployment'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.2/@ownedTools[name='DnD%20AB%20AbstractFunction%20Allocation'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20AB%20ComponentPort'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20AB%20Component']" reusedNodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_ControlFunction'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_Dummy']" reusedContainerMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']">
+        <containerMappings name="PAB_Deployment" navigationDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20PAB'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20IDB'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20CCII'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20CCEI'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20CCDI'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PAB%20to%20PCB']" preconditionExpression="aql:containerView->filter(diagram::DNodeContainer)->size() > 0" deletionDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20SF']" labelDirectEdit="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='edit%20name']" semanticCandidatesExpression="service:getDeployedComponents()" createElements="false" domainClass="cs.DeployableElement" reusedBorderedNodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@borderedNodeMappings[name='PAB_Port'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@borderedNodeMappings[name='PAB_ComponentCategory_Pin'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@borderedNodeMappings[name='PAB_PhysicalCategory_Pin']" dropDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.2/@ownedTools[name='D%26D%20Function%20Allocation%20From%20Project%20Explorer'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20AB%20Deployment'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.2/@ownedTools[name='DnD%20AB%20AbstractFunction%20Allocation'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20AB%20ComponentPort'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20AB%20Component']" reusedNodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_ControlFunction'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_Dummy']" reusedContainerMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Actor']">
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Physical%20Component%20Breakdown']"/>
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Physical%20Architecture%20Blank']"/>
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20Detailed%20Interfaces']"/>
@@ -2417,9 +2417,17 @@
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:component">
                       <subModelOperations xsi:type="tool:SetValue" featureName="nature" valueExpression="aql:nature"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:component"/>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponent)">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:component"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponentPkg)">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedParts" variableName="part">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:component"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -2448,17 +2456,15 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:components != 'WIZARD_CANCELED'">
                     <subModelOperations xsi:type="tool:For" expression="aql:components">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerTarget.oclIsKindOf(cs::BlockArchitecture)">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerTarget.getContext()">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.eContainer()">
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponent)">
                           <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
                             <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                             <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:i"/>
                           </subModelOperations>
                         </subModelOperations>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (containerTarget.oclIsKindOf(cs::BlockArchitecture))">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType">
-                          <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponentPkg)">
+                          <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedParts" variableName="part">
                             <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                             <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:i"/>
                           </subModelOperations>
@@ -2477,19 +2483,33 @@
               </variable>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.eContainerOrSelf(pa::PhysicalArchitecture).ownedPhysicalComponent">
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getABTarget().getComponentType()">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createComponent('component')"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:component">
                     <subModelOperations xsi:type="tool:SetValue" featureName="nature" valueExpression="aql:nature"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:component"/>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponent)">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:component"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="PartDeploymentLink" referenceName="ownedDeploymentLinks" variableName="tdl">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="deployedElement" valueExpression="aql:component.representingParts->at(1)"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="location" valueExpression="aql:container"/>
+                      </subModelOperations>
+                    </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="PartDeploymentLink" referenceName="ownedDeploymentLinks" variableName="tdl">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="deployedElement" valueExpression="aql:component.representingPartitions->at(1)"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="location" valueExpression="aql:container"/>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponentPkg)">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedParts" variableName="part">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:component"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="PartDeploymentLink" referenceName="ownedDeployments" variableName="tdl">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="deployedElement" valueExpression="aql:component.representingParts->at(1)"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="location" valueExpression="aql:container"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -2497,17 +2517,23 @@
             </tools>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="Physical Actor">
-            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Physical Actor with a Kind NODE  and a Part typed by this Physical Actor. The Part is created in the Physical Context Element." name="physical.actor" label="Physical Actor" precondition="aql:containerView.oclIsKindOf(diagram::DDiagram)" containerMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Actor']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PhysicalActor.gif">
+            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Physical Actor with a Kind NODE  and a Part typed by this Physical Actor. The Part is created in the Physical Context Element." name="physical.actor" label="Physical Actor" containerMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Actor']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PhysicalActor.gif">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.getArchitecture()">
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getABActorTarget().getComponentType()">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createActor('actor')"/>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.getArchitecture().getContext()">
-                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:actor != null">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:actor != null">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponent)">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:actor"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponentPkg)">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedParts" variableName="part">
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:actor"/>
                       </subModelOperations>
@@ -2537,10 +2563,18 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:components != 'WIZARD_CANCELED'">
                     <subModelOperations xsi:type="tool:For" expression="aql:components">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType.getArchitecture().getContext()">
-                        <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
-                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
-                          <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:i"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.eContainer()">
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponent)">
+                          <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
+                            <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:i"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponentPkg)">
+                          <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedParts" variableName="part">
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
+                            <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:i"/>
+                          </subModelOperations>
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
@@ -2683,7 +2717,7 @@
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selection)">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (componentsInDiagram->includes(i))">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.representingPartitions->filter(cs::Part)->first()">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.representingParts->filter(cs::Part)->first()">
                           <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']" containerViewExpression="aql:containerView"/>
                         </subModelOperations>
                       </subModelOperations>
@@ -2700,7 +2734,7 @@
               <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:containerView.eContainerOrSelf(diagram::DDiagram)"/>
               <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:containerView.target.getComponentType()"/>
               <subVariables xsi:type="tool:AcceleoVariable" name="scope" computationExpression="aql:containerView.getABShowHideActor()"/>
-              <subVariables xsi:type="tool:AcceleoVariable" name="ownedNodeContainer" computationExpression="aql:self.void2Null(containerView.eAllContents()->filter(diagram::DNodeContainer))"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="actorsInDiagram" computationExpression="aql:self.void2Null(self.getIntersection(containerView.containers->select(container | container.visible).target->filter(cs::Part),containerView.getABShowHideActor()))"/>
             </viewVariable>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType">
@@ -2708,32 +2742,22 @@
                   <parameters name="context" value="aql:container"/>
                   <parameters name="scope" value="aql:scope"/>
                   <parameters name="resultVariable" value="selection"/>
-                  <parameters name="wizardMessage" value="aql:'Select Sub Components to show in ' + container.name + '.'"/>
-                  <parameters name="initialSelection" value="aql:self.void2Null(self.getIntersection(ownedNodeContainer->select(x | x.visible).target,scope))"/>
+                  <parameters name="wizardMessage" value="aql:'Select Sub Actors to show in ' + container.name + '.'"/>
+                  <parameters name="initialSelection" value="aql:actorsInDiagram"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection = 'WIZARD_CANCELED')">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
-                    <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(self.makeDiff(self.getIntersection((self.makeUnion(ownedNodeContainer->select(x | x.visible).target, diagram.target)),scope), selection))">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:ownedNodeContainer->select(x | x.target = i)->size() > 0">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:ownedNodeContainer->select(x | x.target = i)->first()">
+                    <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(self.makeDiff(actorsInDiagram, containerView.target.getComponentType()))">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection->includes(i))">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.containers->select(container | (container.target.oclIsKindOf(cs::Part)) and (container.target = i))->first()">
                           <subModelOperations xsi:type="tool:DeleteView"/>
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selection)">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:ownedNodeContainer->select(x | x.target = i)->size() > 0">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:ownedNodeContainer->select(x | x.target = i).show()->first()"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:ownedNodeContainer->select(x | x.target = i)->size() = 0">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i">
-                          <subModelOperations xsi:type="tool:If" conditionExpression="aql:(self.makeUnion(ownedNodeContainer, containerView))->select(x | (x.target = i.eContainer() or x.target.type = i.eContainer()))->isEmpty()">
-                            <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerView.oclIsKindOf(diagram::DDiagram)">
-                              <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Actor']" containerViewExpression="aql:containerView"/>
-                            </subModelOperations>
-                          </subModelOperations>
-                          <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (self.makeUnion(ownedNodeContainer, containerView))->select(x | (x.target = i.eContainer() or x.target.type = i.eContainer()))->isEmpty()">
-                            <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Actor']" containerViewExpression="aql:(self.makeUnion(ownedNodeContainer, containerView))->select(x | (x.target = i.eContainer() or x.target.type = i.eContainer()))->first()"/>
-                          </subModelOperations>
+                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (actorsInDiagram->includes(i))">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.representingParts->filter(cs::Part)->first()">
+                          <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Actor']" containerViewExpression="aql:containerView"/>
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
@@ -2970,7 +2994,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="DnD AB ComponentPort" precondition="aql:self.oclIsKindOf(fa::ComponentPort) and (self.eContainer().getComponentType() != newViewContainer.target.getComponentType()) and (newViewContainer.target.getComponentType().oclIsKindOf(cs::AbstractActor) or newViewContainer.target.getComponentType().nature != pa::PhysicalComponentNature::NODE)" mappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@borderedNodeMappings[name='PAB_Port']" moveEdges="true">
+          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="DnD AB ComponentPort" precondition="aql:self.oclIsKindOf(fa::ComponentPort) and (self.eContainer().getComponentType() != newViewContainer.target.getComponentType()) and (newViewContainer.target.isActor() or newViewContainer.target.getComponentType().nature != pa::PhysicalComponentNature::NODE)" mappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@borderedNodeMappings[name='PAB_Port']" moveEdges="true">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -2979,7 +3003,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.dndABComponentPort(oldSemanticContainer,newSemanticContainer)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="D&amp;D PhysicalPort" precondition="aql:self.oclIsKindOf(cs::PhysicalPort) and (self.eContainer().getComponentType() != newViewContainer.target.getComponentType()) and (newViewContainer.target.getComponentType().oclIsKindOf(cs::AbstractActor) or newViewContainer.target.getComponentType().nature = pa::PhysicalComponentNature::NODE)" mappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@borderedNodeMappings[name='PAB_Port']" moveEdges="true">
+          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="D&amp;D PhysicalPort" precondition="aql:self.oclIsKindOf(cs::PhysicalPort) and (self.eContainer().getComponentType() != newViewContainer.target.getComponentType()) and (newViewContainer.target.isActor() or newViewContainer.target.getComponentType().nature = pa::PhysicalComponentNature::NODE)" mappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@borderedNodeMappings[name='PAB_Port']" moveEdges="true">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -3054,7 +3078,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="D&amp;D Actors From Project Explorer" precondition="aql:element.getComponentType().oclIsKindOf(cs::AbstractActor) and element.canBeDropped(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Actor']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="D&amp;D Actors From Project Explorer" precondition="aql:element.isActor() and element.canBeDropped(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Actor']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -3063,7 +3087,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="D&amp;D Components From Project Explorer" precondition="aql:element.getComponentType().oclIsKindOf(cs::Component) and not (element.getComponentType().oclIsKindOf(cs::AbstractActor)) and element.partitionableElementCanBeDropped(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="D&amp;D Components From Project Explorer" precondition="aql:element.getComponentType().oclIsKindOf(cs::Component) and not (element.isActor()) and element.partitionableElementCanBeDropped(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -3212,19 +3236,33 @@
               </variable>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.eContainerOrSelf(pa::PhysicalArchitecture).ownedPhysicalComponent">
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getABTarget().getComponentType()">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createComponent('component')"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:component">
                     <subModelOperations xsi:type="tool:SetValue" featureName="nature" valueExpression="aql:nature"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:component"/>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponent)">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:component"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="PartDeploymentLink" referenceName="ownedDeploymentLinks" variableName="tdl">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="deployedElement" valueExpression="aql:component.representingParts->at(1)"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="location" valueExpression="aql:container"/>
+                      </subModelOperations>
+                    </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="PartDeploymentLink" referenceName="ownedDeploymentLinks" variableName="tdl">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="deployedElement" valueExpression="aql:component.representingPartitions->at(1)"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="location" valueExpression="aql:container"/>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponentPkg)">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedParts" variableName="part">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:component"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="PartDeploymentLink" referenceName="ownedDeployments" variableName="tdl">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="deployedElement" valueExpression="aql:component.representingParts->at(1)"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="location" valueExpression="aql:container"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -3243,9 +3281,17 @@
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:component">
                       <subModelOperations xsi:type="tool:SetValue" featureName="nature" valueExpression="aql:nature"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:component"/>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponent)">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:component"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponentPkg)">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedParts" variableName="part">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:component"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -3532,7 +3578,7 @@
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selection)">
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (componentsInDiagram->includes(i))">
-                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.representingPartitions->filter(cs::Part)->first()">
+                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.representingParts->filter(cs::Part)->first()">
                             <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']" containerViewExpression="aql:containerView"/>
                           </subModelOperations>
                         </subModelOperations>
@@ -4543,7 +4589,7 @@
                   <parameters name="wizardMessage" value="aql:'Select a Component to involve in ' + container.name + '.'"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:selectedComponents != 'WIZARD_CANCELED'">
-                  <subModelOperations xsi:type="tool:For" expression="aql:selectedComponents->filter(cs::Component).representingPartitions" iteratorName="selectedPart">
+                  <subModelOperations xsi:type="tool:For" expression="aql:selectedComponents->filter(cs::Component).representingParts" iteratorName="selectedPart">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="PhysicalPathInvolvement" referenceName="ownedPhysicalPathInvolvements">
                         <subModelOperations xsi:type="tool:SetValue" featureName="involved" valueExpression="aql:selectedPart"/>

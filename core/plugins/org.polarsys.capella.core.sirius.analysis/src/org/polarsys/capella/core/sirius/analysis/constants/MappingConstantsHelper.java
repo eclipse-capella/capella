@@ -11,6 +11,8 @@
 package org.polarsys.capella.core.sirius.analysis.constants;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
@@ -22,6 +24,7 @@ import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.oa.OaPackage;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.sirius.analysis.CsServices;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
@@ -583,47 +586,54 @@ public class MappingConstantsHelper {
     return mappingName;
   }
 
-  public static String getMappingABComponent(EObject component_p, DDiagram diagram) {
-    EObject component = component_p;
-    if ((component != null) && (component instanceof Part)) {
-      component = CsServices.getService().getComponentType((Part) component_p);
+  public static String getMappingABComponent(EObject eObject, DDiagram diagram) {
+    EObject component = eObject;
+    if ((eObject != null) && (eObject instanceof Part)) {
+      component = CsServices.getService().getComponentType((Part) eObject);
     }
-
-    EClass clazz = CsPackage.Literals.COMPONENT;
-    if (component != null) {
-      clazz = component.eClass();
-    }
-    return getMappingABComponent(clazz, diagram);
-  }
-
-  // TODO EPIC ACTORS
-  public static String getMappingABComponent(EClass clazz_p, DDiagram diagram) {
-    EClass absActor = CsPackage.Literals.COMPONENT;
-
-    String description = diagram.getDescription().getName();
     String mappingName = null;
-    if (equals(description, IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      mappingName = IMappingNameConstants.PAB_PHYSICAL_COMPONENT_MAPPING_NAME;
-      if (absActor.isSuperTypeOf(clazz_p)) {
-        mappingName = IMappingNameConstants.PAB_PHYSICAL_ACTOR_MAPPING_NAME;
-      }
-    } else if (equals(description, IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      mappingName = IMappingNameConstants.LAB_LOGICAL_COMPONENT_MAPPING_NAME;
-      if (absActor.isSuperTypeOf(clazz_p)) {
-        mappingName = IMappingNameConstants.LAB_LOGICAL_ACTOR_MAPPING_NAME;
-      }
-    } else if (equals(description, IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      mappingName = IMappingNameConstants.SAB_SYSTEM_MAPPING_NAME;
-      if (absActor.isSuperTypeOf(clazz_p)) {
-        mappingName = IMappingNameConstants.SAB_ACTOR_MAPPING_NAME;
-      }
-    } else if (equals(description, IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
-      mappingName = IMappingNameConstants.OAB_ENTITY_MAPPING_NAME;
-      if (absActor.isSuperTypeOf(clazz_p)) {
+    if (component != null) {
+      String description = diagram.getDescription().getName();
+      if (equals(description, IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+        mappingName = IMappingNameConstants.PAB_PHYSICAL_COMPONENT_MAPPING_NAME;
+        if (ComponentExt.isActor(component)) {
+          mappingName = IMappingNameConstants.PAB_PHYSICAL_ACTOR_MAPPING_NAME;
+        }
+      } else if (equals(description, IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+        mappingName = IMappingNameConstants.LAB_LOGICAL_COMPONENT_MAPPING_NAME;
+        if (ComponentExt.isActor(component)) {
+          mappingName = IMappingNameConstants.LAB_LOGICAL_ACTOR_MAPPING_NAME;
+        }
+      } else if (equals(description, IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+        mappingName = IMappingNameConstants.SAB_SYSTEM_MAPPING_NAME;
+        if (ComponentExt.isActor(component)) {
+          mappingName = IMappingNameConstants.SAB_ACTOR_MAPPING_NAME;
+        }
+      } else if (equals(description, IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
         mappingName = IMappingNameConstants.OAB_ENTITY_MAPPING_NAME;
+        if (ComponentExt.isActor(component)) {
+          mappingName = IMappingNameConstants.OAB_ENTITY_MAPPING_NAME;
+        }
       }
     }
     return mappingName;
+  }
+
+  public static List<String> getMappingsABComponent(DDiagram diagram) {
+    String description = diagram.getDescription().getName();
+    if (equals(description, IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+      return Arrays.asList(IMappingNameConstants.PAB_PHYSICAL_COMPONENT_MAPPING_NAME,
+          IMappingNameConstants.PAB_PHYSICAL_ACTOR_MAPPING_NAME);
+    } else if (equals(description, IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+      return Arrays.asList(IMappingNameConstants.LAB_LOGICAL_COMPONENT_MAPPING_NAME,
+          IMappingNameConstants.LAB_LOGICAL_ACTOR_MAPPING_NAME);
+    } else if (equals(description, IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+      return Arrays.asList(IMappingNameConstants.SAB_SYSTEM_MAPPING_NAME, IMappingNameConstants.SAB_ACTOR_MAPPING_NAME);
+    } else if (equals(description, IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
+      return Arrays.asList(IMappingNameConstants.OAB_ENTITY_MAPPING_NAME,
+          IMappingNameConstants.OAB_ENTITY_MAPPING_NAME);
+    }
+    return Collections.emptyList();
   }
 
   public static String getMappingABRole(DDiagram diagram) {

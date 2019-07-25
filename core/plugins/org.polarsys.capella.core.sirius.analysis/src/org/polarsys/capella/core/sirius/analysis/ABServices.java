@@ -88,6 +88,7 @@ import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
+import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.diagram.helpers.ContextualDiagramHelper;
 import org.polarsys.capella.core.model.helpers.AbstractCapabilityPkgExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
@@ -1255,24 +1256,20 @@ public class ABServices {
       return false;
     }
 
+    if (!CsServices.getService().canCreateABComponent(containerView))
+      return false;
+    
     EObject type = CsServices.getService().getComponentType(containerView);
-    if ((type == null) || !(type instanceof PhysicalComponent)) {
+    if ((type == null) || !(type instanceof PhysicalComponent || type instanceof PhysicalComponentPkg)) {
       return false;
     }
 
     // Deploy Node is allowed on NODE and UNSET, but not on Actor
-    PhysicalComponent pcType = (PhysicalComponent) type;
-    if (PhysicalComponentNature.BEHAVIOR.equals(pcType.getNature())) {
-      return false;
-    }
-
-    if (ComponentExt.isActor(pcType)) {
-      return false;
-    }
-
-    if (((containerView instanceof DDiagram)
-        && (CsServices.getService().getABTarget(containerView) instanceof BlockArchitecture))) {
-      return false;
+    if (type instanceof PhysicalComponent) {
+      PhysicalComponent pcType = (PhysicalComponent) type;
+      if (PhysicalComponentNature.BEHAVIOR.equals(pcType.getNature())) {
+        return false;
+      }
     }
 
     return true;
@@ -1292,6 +1289,9 @@ public class ABServices {
       return false;
     }
 
+    if (!CsServices.getService().canCreateABComponent(containerView))
+      return false;
+    
     EObject type = CsServices.getService().getComponentType(containerView);
     if ((type == null) || !(type instanceof PhysicalComponent)) {
       return false;
@@ -1300,15 +1300,6 @@ public class ABServices {
     // Deploy Behavior is allowed on BEHAVIOR and UNSET, but not on Actor
     PhysicalComponent pcType = (PhysicalComponent) type;
     if (PhysicalComponentNature.NODE.equals(pcType.getNature())) {
-      return false;
-    }
-
-    if (ComponentExt.isActor(pcType)) {
-      return false;
-    }
-
-    if (((containerView instanceof DDiagram)
-        && (CsServices.getService().getABTarget(containerView) instanceof BlockArchitecture))) {
       return false;
     }
 
@@ -1324,6 +1315,9 @@ public class ABServices {
       return false;
     }
 
+    if (!CsServices.getService().canCreateABComponent(containerView))
+      return false;
+    
     EObject type = CsServices.getService().getComponentType(containerView);
     if ((type == null) || !(type instanceof PhysicalComponent)) {
       return false;
@@ -1783,16 +1777,17 @@ public class ABServices {
       sourceViews.add((DDiagramElement) context);
     }
     if (sourceViews.isEmpty()) {
-      DiagramElementMapping mapping = content
-          .getMapping(MappingConstantsHelper.getMappingABComponent(CsPackage.Literals.COMPONENT, currentDiagram));
-      for (DDiagramElement element : content.getDiagramElements(mapping)) {
-        sourceViews.add(element);
-      }
-      if (currentDiagram.getDescription().getName()
-          .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-        mapping = content.getMapping(MappingConstantsHelper.getMappingABDeployedElement(currentDiagram));
+      for (String mappingName : MappingConstantsHelper.getMappingsABComponent(currentDiagram)) {
+        DiagramElementMapping mapping = content.getMapping(mappingName);
         for (DDiagramElement element : content.getDiagramElements(mapping)) {
           sourceViews.add(element);
+        }
+        if (currentDiagram.getDescription().getName()
+            .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+          mapping = content.getMapping(MappingConstantsHelper.getMappingABDeployedElement(currentDiagram));
+          for (DDiagramElement element : content.getDiagramElements(mapping)) {
+            sourceViews.add(element);
+          }
         }
       }
     }
@@ -1833,16 +1828,17 @@ public class ABServices {
       sourceViews.add((DDiagramElement) context);
     }
     if (sourceViews.isEmpty()) {
-      DiagramElementMapping mapping = content
-          .getMapping(MappingConstantsHelper.getMappingABComponent(CsPackage.Literals.COMPONENT, currentDiagram));
-      for (DDiagramElement element : content.getDiagramElements(mapping)) {
-        sourceViews.add(element);
-      }
-      if (currentDiagram.getDescription().getName()
-          .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-        mapping = content.getMapping(MappingConstantsHelper.getMappingABDeployedElement(currentDiagram));
+      for (String mappingName : MappingConstantsHelper.getMappingsABComponent(currentDiagram)) {
+        DiagramElementMapping mapping = content.getMapping(mappingName);
         for (DDiagramElement element : content.getDiagramElements(mapping)) {
           sourceViews.add(element);
+        }
+        if (currentDiagram.getDescription().getName()
+            .equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+          mapping = content.getMapping(MappingConstantsHelper.getMappingABDeployedElement(currentDiagram));
+          for (DDiagramElement element : content.getDiagramElements(mapping)) {
+            sourceViews.add(element);
+          }
         }
       }
 

@@ -11,6 +11,7 @@
 package org.polarsys.capella.test.diagram.tools.ju.xab;
 
 import org.eclipse.sirius.business.api.session.Session;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.Type;
 import org.polarsys.capella.test.diagram.common.ju.context.XABDiagram;
 import org.polarsys.capella.test.diagram.tools.ju.model.EmptyProject;
 import org.polarsys.capella.test.framework.context.SessionContext;
@@ -32,6 +33,9 @@ public class CreateFunctionalChain extends EmptyProject {
   protected void testChain(SessionContext context, String idSource) {
     XABDiagram diagram = XABDiagram.createDiagram(context, idSource);
 
+    if (diagram.getDiagramType() == Type.LA)
+      diagram.insertComponent(LA__LOGICAL_CONTEXT__PART_LOGICAL_SYSTEM__LOGICAL_SYSTEM);
+    
     diagram.createActor(GenericModel.LA_1);
     diagram.createActor(GenericModel.LA_2);
     diagram.createActor(GenericModel.LA_3);

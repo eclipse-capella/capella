@@ -509,15 +509,8 @@ public class FaServices {
 
   }
 
-  @Deprecated
-  public ContainerMapping getMappingABComponent(EObject component, DDiagram diagram) {
-    String mappingName = MappingConstantsHelper.getMappingABComponent(component, diagram);
-    return DiagramServices.getDiagramServices().getContainerMapping(diagram, mappingName);
-  }
-
-  @Deprecated
-  public ContainerMapping getMappingABComponent(EClass clazz, DDiagram diagram) {
-    String mappingName = MappingConstantsHelper.getMappingABComponent(clazz, diagram);
+  public ContainerMapping getMappingABComponent(EObject eObject, DDiagram diagram) {
+    String mappingName = MappingConstantsHelper.getMappingABComponent(eObject, diagram);
     return DiagramServices.getDiagramServices().getContainerMapping(diagram, mappingName);
   }
 

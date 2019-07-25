@@ -122,7 +122,7 @@ public class OAServices {
     }
     return decorator.getTarget();
   }
-
+  
   /**
    * Retrieve the root role pkg, create one if required
    */

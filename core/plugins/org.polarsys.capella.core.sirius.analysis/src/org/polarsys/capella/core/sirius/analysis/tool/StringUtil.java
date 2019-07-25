@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis.tool;
 
+import java.util.List;
+
 /**
  * Useful operations and constants for {@link String}s.
  *
@@ -55,14 +57,16 @@ public final class StringUtil {
    * @param separator
    * @return
    */
-  public static String lastSegment(String string, char separator) {
+  public static String lastSegment(String string, List<String> separators) {
     if (string == null) {
       return null;
     }
 
-    int lastIndex = string.lastIndexOf(separator);
-    if (lastIndex < string.length()) {
-      return string.substring(lastIndex + 1);
+    for (String separator : separators) {
+      int lastIndex = string.lastIndexOf(separator);
+      if (lastIndex != -1) {
+        return string.substring(lastIndex + separator.length());
+      }
     }
     return string;
   }
