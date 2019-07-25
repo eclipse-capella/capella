@@ -69,7 +69,7 @@ public abstract class FiltersForCII extends DiagramObjectFilterTestCase {
   protected final String LOGICAL_COMPONENT_1_COMPONENT_PORT_1_ID = "f5af609b-a9d8-4457-b72b-4e77c54a637c";
 
   protected final String LOGICAL_SYSTEM_TO_INTERFACE_1_REQUIRE_PORT_ID = "1c767656-007a-48e0-aa38-46942fbf5e45";
-  protected final String LOGICAL_SYSTEM_TO_INTERFACE_1_PROVIDE_PORT_ID = "0826225a-5478-4201-8ec4-a567364d89a3";
+  protected final String LOGICAL_SYSTEM_TO_INTERFACE_1_PROVIDE_PORT_ID = "b76c2468-20f7-4502-b913-2adb107a8862";
   protected final String LOGICAL_SYSTEM_TO_INTERFACE_1_USE_LINK_ID = "89cd9df8-3c99-424f-855b-9dd456f62b61";
   protected final String LOGICAL_SYSTEM_TO_INTERFACE_1_IMPLEMENT_LINK_ID = "f99a3a8b-249c-4305-a543-0cff17cd0145";
 
@@ -83,6 +83,7 @@ public abstract class FiltersForCII extends DiagramObjectFilterTestCase {
 
   protected final String EXCHANGE_ITEM_ALLOCATION_ID = "a5192baa-9db5-4976-8a37-f7032018f79d";
   protected final String PORT_DELEGATION_ID = "83e6665a-5733-4222-904a-a8f78bd86439";
+  protected final String PORT_DELEGATION_2_ID = "4481098a-9330-4c4d-bcbb-fbb8c017acbf";
 
   protected final String LOGICAL_COMPONENT_1_PROVIDE_ID = "c6caadf9-73ca-446c-bad2-5430bd74dd4f";
   protected final String LOGICAL_COMPONENT_1_REQUIRE_ID = "69a09066-15d4-4446-99e3-7d427042f72e";
@@ -90,6 +91,10 @@ public abstract class FiltersForCII extends DiagramObjectFilterTestCase {
   protected final String DELEGATED_USE_ID = "39a576a9-de05-4ace-8204-f197003bcc0f";
   protected final String DELEGATED_PROVIDE_ID = "f9db1445-3e2d-42c3-bcc5-29baef84a03e";
   protected final String DELEGATED_REQUIRE_ID = "1a066a3b-2893-47d9-acdb-2a0e2bb6c686";
+
+  protected final String COMPONENT_PORT_1_ID = "a3baa533-de38-4934-9e7b-5b6ea94ba6ed";
+  protected final String COMPONENT_PORT_6_ID = "790c935f-36fa-4b1c-90fb-520a445a0428";
+  protected final String COMPONENT_PORT_7_ID = "a948be04-293a-4cbe-8feb-b6f673c58409";
 
   @Override
   protected String getTestProjectName() {

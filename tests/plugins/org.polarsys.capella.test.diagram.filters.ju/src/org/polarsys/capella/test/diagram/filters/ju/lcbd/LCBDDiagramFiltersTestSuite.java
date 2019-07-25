@@ -8,23 +8,22 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.filters.ju.cii;
+package org.polarsys.capella.test.diagram.filters.ju.lcbd;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
+import org.polarsys.capella.test.framework.api.BasicTestArtefact;
+import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
-public class HidePortDelegationsForCII extends FiltersForCII {
-
-  @Override
-  protected String getFilterName() {
-    return IFilterNameConstants.FILTER_LCCII_HIDE_PORT_DELEGATIONS;
-  }
+public class LCBDDiagramFiltersTestSuite extends BasicTestSuite {
 
   @Override
-  protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { PORT_DELEGATION_ID, PORT_DELEGATION_2_ID });
+  protected List<BasicTestArtefact> getTests() {
+    List<BasicTestArtefact> tests = new ArrayList<>();
+    tests.add(new HideRootContainerForLCBD());
+    tests.add(new HidePropertyValuesForLCBD());
+    return tests;
   }
 
 }

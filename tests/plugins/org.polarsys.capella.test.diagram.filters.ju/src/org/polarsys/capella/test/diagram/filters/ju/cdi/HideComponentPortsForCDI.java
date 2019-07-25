@@ -24,7 +24,7 @@ public class HideComponentPortsForCDI extends FiltersForCDI {
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { REQUIRES_LINK_ID, PROVIDES_LINK_ID });
+    return Arrays.asList(new String[] { REQUIRES_LINK_ID, PROVIDES_LINK_ID, COMPONENT_PORT_6_ID, COMPONENT_PORT_7_ID });
   }
 
 }

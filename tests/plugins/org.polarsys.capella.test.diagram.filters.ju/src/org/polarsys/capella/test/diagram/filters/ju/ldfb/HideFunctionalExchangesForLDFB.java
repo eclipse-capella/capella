@@ -8,23 +8,23 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.filters.ju.cii;
+package org.polarsys.capella.test.diagram.filters.ju.ldfb;
 
 import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 
-public class HidePortDelegationsForCII extends FiltersForCII {
+public class HideFunctionalExchangesForLDFB extends FiltersForLDFB {
 
   @Override
   protected String getFilterName() {
-    return IFilterNameConstants.FILTER_LCCII_HIDE_PORT_DELEGATIONS;
+    return IFilterNameConstants.FILTER_LDFB_HIDE_FUNCTIONAL_EXCHANGES;
   }
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { PORT_DELEGATION_ID, PORT_DELEGATION_2_ID });
+    return Arrays.asList(new String[] { FUNCTIONAL_EXCHANGE_3_ID, FUNCTIONAL_EXCHANGE_5_ID, EXCHANGE_CATEGORY_ID });
   }
 
 }
