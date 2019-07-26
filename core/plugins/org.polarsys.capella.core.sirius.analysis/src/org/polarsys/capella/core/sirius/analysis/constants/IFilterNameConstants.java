@@ -244,6 +244,8 @@ public interface IFilterNameConstants {
   String FILTER_LAB_HIDE_SIMPLIFIED_GROUP_OF_COMPONENT_EXCHANGES_ID = FILTER_XAB_HIDE_SIMPLIFIED_GROUP_OF_COMPONENT_EXCHANGES_ID; // $NON-NLS-1$
   String FILTER_LAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES = FILTER_XAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES; // $NON-NLS-1$
   String FILTER_LAB_HIDE_PHYSICAL_LINKS_NAME = "Hide Physical Links names"; //$NON-NLS-1$
+  String FILTER_LAB_HIDE_PROPERTY_VALUES = "Hide Property Values";
+  String FILTER_LAB_HIDE_SEQUENCING_INFORMATION = "Hide Sequencing Information";
 
   String FILTER_XAB_HIDE_COMPUTED_CE = "Hide Computed Component Exchanges"; //$NON-NLS-1$
   String FILTER_XAB_HIDE_COMPUTED_PL = "Hide Computed Physical Links"; //$NON-NLS-1$
@@ -261,6 +263,7 @@ public interface IFilterNameConstants {
   // LCBD Filters
   String FILTER_LCBD_HIDE_CONTAINMENT_LINKS = "Hide containment links";//$NON-NLS-1$
   String FILTER_LCBD_HIDE_ROOT_CONTAINER = "Hide root container";//$NON-NLS-1$
+  String FILTER_LCBD_HIDE_PROPERTY_VALUES = "Hide Property Values";
 
   // LCCII filters - Logical Component Contextual Component Internal
   // Interfaces
@@ -295,6 +298,7 @@ public interface IFilterNameConstants {
   String FILTER_LDFB_SHOW_FUNCTIONAL_EXCHANGES_EXCHANGEITEMS = "Show FE [EI1, EI2]"; //$NON-NLS-1$
   String FILTER_LDFB_SHOW_FUNCTIONAL_EXCHANGES_PARAMETERS = "Show FE (type1, type2, type3)";//$NON-NLS-1$
   String FILTER_LDFB_SHOW_FUNCTIONAL_EXCHANGES_EXCHANGEITEMS_PARAMETERS = "Show FE [EI1(param1:type1, param2:type2), EI2(param3:type3)]"; //$NON-NLS-1$
+  String FILTER_LDFB_HIDE_PROPERTY_VALUES = "Hide Property Values";
 
   String FILTER_LDFB_SHOW_EXCHANGEITEMS_ID = "Show ExchangeItems"; //$NON-NLS-1$
   String FILTER_LDFB_SHOW_EXCHANGEITEMS_PARAMETERS_ID = "Show ExchangeItems parameters"; //$NON-NLS-1$
@@ -304,6 +308,7 @@ public interface IFilterNameConstants {
 
   // LFBD Filters
   String FILTER_LFBD_HIDE_CONTROL_NODES = "Hide Control Nodes";//$NON-NLS-1$
+  String FILTER_LFBD_HIDE_PROPERTY_VALUES = "Hide Property Values";
 
   // MB filters - Missions Blank
   String FILTER_MB_HIDE_CAPABILITIES = "Hide Capabilities"; //$NON-NLS-1$

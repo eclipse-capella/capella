@@ -8,23 +8,25 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.filters.ju.cii;
+package org.polarsys.capella.test.diagram.filters.ju.lab;
 
 import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 
-public class HidePortDelegationsForCII extends FiltersForCII {
+public class CollapseComponentPortsForLAB extends FiltersForLAB {
 
   @Override
   protected String getFilterName() {
-    return IFilterNameConstants.FILTER_LCCII_HIDE_PORT_DELEGATIONS;
+    return IFilterNameConstants.FILTER_LAB_COLLAPSE_COMPONENT_PORTS;
   }
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { PORT_DELEGATION_ID, PORT_DELEGATION_2_ID });
+    return Arrays
+        .asList(new String[] { COMPONENT_PORT_1_ID, COMPONENT_PORT_2_ID, COMPONENT_PORT_3_ID, COMPONENT_PORT_4_ID,
+            COMPONENT_PORT_WITHOUT_EXCHANGES_ID, PORT_ALLOCATION_TO_FOP_1_ID, PORT_ALLOCATION_TO_FIP_1_ID });
   }
 
 }

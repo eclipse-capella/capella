@@ -8,23 +8,23 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.filters.ju.cii;
+package org.polarsys.capella.test.diagram.filters.ju.lcbd;
 
-import java.util.Arrays;
-import java.util.List;
+import org.polarsys.capella.test.diagram.filters.ju.DiagramObjectFilterTestCase;
 
-import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
+public abstract class FiltersForLCBD extends DiagramObjectFilterTestCase {
 
-public class HidePortDelegationsForCII extends FiltersForCII {
+  protected final String PROPERTY_VALUES_ID = "7d725b80-73fe-4fcf-b151-3d9b6a58380d";
+  protected final String ROOT_CONTAINER_ID = "2a67d691-dfac-4878-8727-4e3fdadeaa4b";
 
   @Override
-  protected String getFilterName() {
-    return IFilterNameConstants.FILTER_LCCII_HIDE_PORT_DELEGATIONS;
+  protected String getTestProjectName() {
+    return "StandardDiagramFiltersModel";
   }
 
   @Override
-  protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { PORT_DELEGATION_ID, PORT_DELEGATION_2_ID });
+  protected String getDiagramName() {
+    return "[LCBD] LC 4";
   }
 
 }

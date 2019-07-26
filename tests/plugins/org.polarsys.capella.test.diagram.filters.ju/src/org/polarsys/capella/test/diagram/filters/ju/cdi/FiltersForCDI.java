@@ -24,9 +24,11 @@ public abstract class FiltersForCDI extends DiagramObjectFilterTestCase {
   protected final String IMPLEMENTS_LINK_ID = "f99a3a8b-249c-4305-a543-0cff17cd0145";
   protected final String USES_LINK_ID = "89cd9df8-3c99-424f-855b-9dd456f62b61";
   protected final String REQUIRES_LINK_ID = "1c767656-007a-48e0-aa38-46942fbf5e45";
-  protected final String PROVIDES_LINK_ID = "0826225a-5478-4201-8ec4-a567364d89a3";
+  protected final String PROVIDES_LINK_ID = "b76c2468-20f7-4502-b913-2adb107a8862";
   protected final String GENERALIZATION_LINK_ID = "415a3482-120d-4f4c-8ad9-6e6a3a6041da";
   protected final String PROPERTY_VALUE_ID = "19989dcf-c73e-4808-9375-4f7a3ca48a7e";
+  protected final String COMPONENT_PORT_6_ID = "790c935f-36fa-4b1c-90fb-520a445a0428";
+  protected final String COMPONENT_PORT_7_ID = "a948be04-293a-4cbe-8feb-b6f673c58409";
 
   @Override
   protected String getTestProjectName() {
