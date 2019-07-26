@@ -37,6 +37,7 @@ import org.polarsys.capella.test.model.ju.testcase.dialoglabel.NewDiagramDialogL
 import org.polarsys.capella.test.model.ju.testcases.datalisteners.DataListenerTestSuite;
 import org.polarsys.capella.test.model.ju.testcases.delete.DeleteElementTestSuite;
 import org.polarsys.capella.test.model.ju.testcases.interfacescenario.message.ISMessage;
+import org.polarsys.capella.test.model.ju.testsuites.partial.PatternsTestSuite;
 
 import junit.framework.Test;
 
@@ -77,6 +78,7 @@ public class ModelTestSuite extends BasicTestSuite {
     tests.add(new TypeDerivedFeaturesTest());
     tests.add(new TraceableElementDerivedFeaturesTest());
     tests.add(new DerivedFeatureTestCase());
+    tests.add(new PatternsTestSuite());
     return tests;
   }
 
