@@ -149,7 +149,10 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
           LaPackage.Literals.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENTS);
       put(new UnknownEStructuralFeature(PaPackage.Literals.PHYSICAL_COMPONENT_PKG, "ownedPhysicalActors"),
           PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS);
-
+      // Physical Components
+      put(new UnknownEStructuralFeature(PaPackage.Literals.PHYSICAL_COMPONENT_PKG, "ownedComponents"),
+          PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS);
+      
       // Capability/Mission Involvements
       put(new UnknownEStructuralFeature(CtxPackage.Literals.CAPABILITY_INVOLVEMENT, "actor"),
           CtxPackage.Literals.CAPABILITY_INVOLVEMENT__SYSTEM_COMPONENT);
