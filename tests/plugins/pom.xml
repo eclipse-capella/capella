@@ -62,6 +62,7 @@
         <module>org.polarsys.capella.test.richtext.ju</module>
         <module>org.polarsys.capella.test.doc.ju</module>
         <module>org.polarsys.capella.test.benchmarks.ju</module>
+		<module>org.polarsys.capella.test.fragmentation</module>
       </modules>
     </profile>
   </profiles>

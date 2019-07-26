@@ -13,7 +13,6 @@ package org.polarsys.capella.test.framework.helpers;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 
 import org.eclipse.amalgam.explorer.activity.ui.ActivityExplorerActivator;
@@ -49,10 +48,10 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.commands.ICommandService;
 import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.progress.UIJob;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.explorer.activity.ui.actions.OpenActivityExplorerAction;
 import org.polarsys.capella.core.model.obfuscator.actions.ObfuscateSessionAction;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaCloneDiagramCommand;
-import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaCopyCommand;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaCopyToClipboardCommand;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaPasteCommand;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.RenameResourceAction;
@@ -63,6 +62,7 @@ import org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.RefreshDi
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 import org.polarsys.capella.core.platform.sirius.ui.project.NewProjectWizard;
 import org.polarsys.capella.core.sirius.ui.actions.OpenSessionAction;
+import org.polarsys.capella.test.framework.actions.headless.DesignerControlActionForTest;
 import org.polarsys.capella.test.framework.actions.headless.HeadlessCloseSessionAction;
 import org.polarsys.capella.test.framework.actions.headless.HeadlessNewProjectWizard;
 import org.polarsys.capella.test.framework.actions.headless.HeadlessWizardDialog;
@@ -454,5 +454,47 @@ public class GuiActions {
       return false;
     }
     
+  }
+
+  /**
+   * Fragment the given element.
+   * 
+   * @param element
+   *          the capella element to fragment
+   */
+  public void fragment(CapellaElement element) {
+    fragment(element, null);
+  }
+
+  /**
+   * Fragment the given element and representations.
+   * 
+   * @param element
+   *          the capella element to fragment
+   * @param dRepresentationList_p
+   *          list of DRepresentions to fragment
+   * 
+   */
+  public void fragment(CapellaElement element, List<DRepresentationDescriptor> dRepresentationList_p) {
+    DesignerControlActionForTest action = new DesignerControlActionForTest();
+    action.selectionChanged(new StructuredSelection(element));
+    if (dRepresentationList_p != null)
+      action.setDRepresentationDescriptorsToMove(dRepresentationList_p);
+    action.run();
+  }
+
+  /**
+   * Unfragment the given element.
+   * 
+   * @param element
+   *          the capella element to fragment
+   * @param bShouldUncontrolRepresentations_p,
+   *          if yes, DRepresentions will be unfragmented too
+   */
+  public void unfragment(CapellaElement element, boolean bShouldUncontrolRepresentations_p) {
+    DesignerControlActionForTest action = new DesignerControlActionForTest();
+    action.selectionChanged(new StructuredSelection(element));
+    action.setShouldUncontrolRepresentations(bShouldUncontrolRepresentations_p);
+    action.run();
   }
 }
