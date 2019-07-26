@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.test.platform.ju.testsuites;
 
-import java.io.File;
-import java.io.FileFilter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +20,7 @@ import org.polarsys.capella.test.platform.ju.testcases.CapellaCheckAcceleo2NotUs
 import org.polarsys.capella.test.platform.ju.testcases.CapellaDefaultEditorEnabled;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaPlatformVersionNotNull;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaSiriusCustomisationEnabled;
+import org.polarsys.capella.test.platform.ju.testcases.ExportCSVPreferencesTest;
 import org.polarsys.capella.test.platform.ju.testcases.InvalidRepresentationDescriptorAdapterFactory;
 import org.polarsys.capella.test.platform.ju.testcases.PropertiesWizardIconTest;
 import org.polarsys.capella.test.platform.ju.testcases.ViatraSurrogateAllDerivedFeaturesImplemented;
@@ -54,6 +53,7 @@ public class PlatformTestSuite extends BasicTestSuite {
     tests.add(new ViatraSurrogateAllDerivedFeaturesImplemented());
     tests.add(new CapellaCheckAcceleo2NotUsed());
     tests.add(new PropertiesWizardIconTest());
+    tests.add(new ExportCSVPreferencesTest());
     return tests;
   }
   
