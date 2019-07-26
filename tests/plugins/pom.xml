@@ -63,6 +63,7 @@
         <module>org.polarsys.capella.test.doc.ju</module>
         <module>org.polarsys.capella.test.benchmarks.ju</module>
 		<module>org.polarsys.capella.test.fragmentation</module>
+		<module>org.polarsys.capella.test.odesign</module>
       </modules>
     </profile>
   </profiles>
