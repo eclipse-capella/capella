@@ -31,6 +31,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
 import org.polarsys.capella.core.model.handler.provider.IReadOnlySectionHandler;
 import org.polarsys.capella.core.ui.properties.descriptions.fields.CapellaElementDescriptionGroup;
@@ -44,8 +45,8 @@ import org.polarsys.capella.core.ui.properties.sections.AbstractSection;
  * @author Joao Barata
  */
 public class DiagramDescriptionPropertySection extends AbstractSection {
-  private WeakReference<DRepresentation> _representation;
-  protected CapellaElementDescriptionGroup _descriptionGroup;
+  private WeakReference<DRepresentationDescriptor> representationDescriptor;
+  protected CapellaElementDescriptionGroup descriptionGroup;
 
   /**
    * {@inheritDoc}
@@ -66,11 +67,12 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
 
   /**
    * Create description widget.
+   * 
    * @param widgetFactory
    * @param textGroup
    */
   protected void createDescriptionWidget(TabbedPropertySheetWidgetFactory widgetFactory, Composite parent) {
-    _descriptionGroup = new CapellaElementDescriptionGroup(parent, widgetFactory);
+    descriptionGroup = new CapellaElementDescriptionGroup(parent, widgetFactory);
   }
 
   /**
@@ -80,14 +82,14 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
   public void dispose() {
     super.dispose();
 
-    if (null != _representation) {
-      _representation.clear();
-      _representation = null;
+    if (null != representationDescriptor) {
+      representationDescriptor.clear();
+      representationDescriptor = null;
     }
 
-    if (null != _descriptionGroup) {
-      _descriptionGroup.dispose();
-      _descriptionGroup = null;
+    if (null != descriptionGroup) {
+      descriptionGroup.dispose();
+      descriptionGroup = null;
     }
   }
 
@@ -105,7 +107,7 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
         // Get the command.
         Command command = ((EMFCommandOperation) operation).getCommand();
         // Is the current melody element involved in this command ?
-        if (command.getAffectedObjects().contains(_representation)) {
+        if (command.getAffectedObjects().contains(representationDescriptor)) {
           // If so, let's refresh the content.
           refresh();
         }
@@ -118,22 +120,23 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
    */
   public void loadData() {
     // Register as operation history listener the first time capella element is set.
-    if (null == _representation.get()) {
+    if (null == representationDescriptor.get()) {
       // This operation history listener is used to force refreshes when undo / redo operations are performed.
       OperationHistoryFactory.getOperationHistory().addOperationHistoryListener(this);
     }
-    register(_representation.get());
+    register(representationDescriptor.get());
 
     // Disable the section if the element is read only.
     IReadOnlySectionHandler roHandler = CapellaReadOnlyHelper.getReadOnlySectionHandler();
-    if ((roHandler != null) && roHandler.isLockedByOthers(_representation.get())) {
+    if ((roHandler != null) && roHandler.isLockedByOthers(representationDescriptor.get())) {
       setEnabled(false);
     } else {
       setEnabled(true);
     }
 
-	if (_descriptionGroup != null) {
-      _descriptionGroup.loadData(_representation.get(), DescriptionPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION);
+    if (descriptionGroup != null) {
+      descriptionGroup.loadData(representationDescriptor.get(),
+          DescriptionPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION);
     }
   }
 
@@ -150,7 +153,8 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
    */
   @Override
   public boolean select(Object toTest) {
-    return (toTest instanceof DRepresentationDescriptor) || (toTest instanceof DRepresentation) || (toTest instanceof IDDiagramEditPart);
+    return (toTest instanceof DRepresentationDescriptor) || (toTest instanceof DRepresentation)
+        || (toTest instanceof IDDiagramEditPart);
   }
 
   /**
@@ -161,22 +165,30 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
     if (!selection.isEmpty()) {
       if (selection instanceof IStructuredSelection) {
         Object firstElement = ((IStructuredSelection) selection).getFirstElement();
-
-        if (firstElement instanceof DRepresentationDescriptor) {
-          firstElement = ((DRepresentationDescriptor) firstElement).getRepresentation();
-        }
-
-        if (firstElement instanceof DRepresentation) {
-          _representation = new WeakReference<DRepresentation>((DRepresentation) firstElement);
-        } else if (firstElement instanceof IDDiagramEditPart) {
-          IDDiagramEditPart diagramEditPart = (IDDiagramEditPart) firstElement;
-          _representation = new WeakReference<DRepresentation>((DRepresentation) ((Diagram) diagramEditPart.getModel()).getElement());
-        } else {
-          _representation = null;
-        }
+        representationDescriptor = getRepresentationDescriptor(firstElement);
       }
       loadData();
     }
+  }
+
+  protected WeakReference<DRepresentationDescriptor> getRepresentationDescriptor(Object firstElement) {
+    if (firstElement instanceof DRepresentationDescriptor) {
+      return new WeakReference<>((DRepresentationDescriptor) firstElement);
+
+    } else if (firstElement instanceof DRepresentation) {
+      DRepresentationDescriptor descriptor = RepresentationHelper
+          .getRepresentationDescriptor((DRepresentation) firstElement);
+      return new WeakReference<>(descriptor);
+
+    } else if (firstElement instanceof IDDiagramEditPart) {
+      IDDiagramEditPart diagramEditPart = (IDDiagramEditPart) firstElement;
+      Diagram diagram = (Diagram) diagramEditPart.getModel();
+      DRepresentation representation = (DRepresentation) diagram.getElement();
+      DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(representation);
+
+      return new WeakReference<>(descriptor);
+    }
+    return null;
   }
 
   /**
@@ -186,8 +198,8 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
   public void setEnabled(boolean enabled) {
     super.setEnabled(enabled);
 
-    if (null != _descriptionGroup) {
-      _descriptionGroup.setEnabled(enabled);
+    if (null != descriptionGroup) {
+      descriptionGroup.setEnabled(enabled);
     }
   }
 
