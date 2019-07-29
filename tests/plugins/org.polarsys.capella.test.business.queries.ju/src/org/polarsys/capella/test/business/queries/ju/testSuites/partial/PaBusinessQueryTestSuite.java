@@ -13,23 +13,18 @@ package org.polarsys.capella.test.business.queries.ju.testSuites.partial;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalActor_FunctionalAllocation;
-import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalActor_ImplementedInterfaces;
-import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalActor_InheritedActors;
-import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalActor_InteractingCapabilities;
-import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalActor_LogicalActorRealization;
-import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalActor_UsedInterfaces;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalArchitecture_AllocatedLogicalArchitecture;
-import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComp_DefineRealizations;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComp_Deployers;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComp_Deployments;
-import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComp_ImplementedInterface;
-import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComp_UsedInterface;
+import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComponent_AllocatedFunctions;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComponent_DeployedComponents;
-import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComponent_FunctionalAllocation;
-import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComponent_LogicalComponentRealization;
+import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComponent_ImplementedInterfaces;
+import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComponent_InvolvingCapabilityRealizations;
+import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComponent_RealizedComponents;
+import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComponent_Super;
+import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalComponent_UsedInterfaces;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalFunction_AvailableInstates;
-import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalFunction_FunctionalRealization;
+import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.pa.PhysicalFunction_RealizedFunctions;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
@@ -50,24 +45,18 @@ public class PaBusinessQueryTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
-    tests.add(new PhysicalActor_FunctionalAllocation());
-    tests.add(new PhysicalActor_ImplementedInterfaces());
-    tests.add(new PhysicalActor_InheritedActors());
-    tests.add(new PhysicalActor_InteractingCapabilities());
-    tests.add(new PhysicalActor_LogicalActorRealization());
-    tests.add(new PhysicalActor_UsedInterfaces());
     tests.add(new PhysicalArchitecture_AllocatedLogicalArchitecture());
-    tests.add(new PhysicalComp_DefineRealizations());
+    tests.add(new PhysicalComponent_Super());
+    tests.add(new PhysicalComponent_InvolvingCapabilityRealizations());
     tests.add(new PhysicalComp_Deployers());
     tests.add(new PhysicalComp_Deployments());
-    tests.add(new PhysicalComp_ImplementedInterface());
-    //tests.add(new PhysicalComp_ImplementedLCS());
-    tests.add(new PhysicalComp_UsedInterface());
+    tests.add(new PhysicalComponent_ImplementedInterfaces());
+    tests.add(new PhysicalComponent_UsedInterfaces());
     tests.add(new PhysicalComponent_DeployedComponents());
-    tests.add(new PhysicalComponent_FunctionalAllocation());
-    tests.add(new PhysicalComponent_LogicalComponentRealization());
+    tests.add(new PhysicalComponent_AllocatedFunctions());
+    tests.add(new PhysicalComponent_RealizedComponents());
     tests.add(new PhysicalFunction_AvailableInstates());
-    tests.add(new PhysicalFunction_FunctionalRealization());    
+    tests.add(new PhysicalFunction_RealizedFunctions());
     return tests;
   }
 }

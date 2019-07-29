@@ -54,7 +54,8 @@ public class GetAvailable_PhysicalComponent_UsedInterfaces extends AbstractQuery
         availableElements.addAll(allInterfaces);
         EList<Component> lcs = currentPC.getRealizedComponents();
         if (lcs.isEmpty()) {
-          allInterfaces = QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_INTERFACES, currentPC, context);
+          currentBlock = BlockArchitectureExt.getPreviousBlockArchitecture(currentBlock).get(0);
+          allInterfaces = QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_INTERFACES, currentBlock, context);
           availableElements.addAll(allInterfaces);
         } else {
           for (Component logicalComponent : lcs) {

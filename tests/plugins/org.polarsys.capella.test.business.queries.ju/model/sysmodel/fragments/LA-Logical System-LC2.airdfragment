@@ -383,13 +383,13 @@
       <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#02c84445-1da7-44fd-b30a-16e8c138c3ce"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#02c84445-1da7-44fd-b30a-16e8c138c3ce"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="../sysmodel.melodymodeller#45f40cef-b1e7-4aaf-9bba-5193d36fc028"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="../sysmodel.melodymodeller#72f5a360-f681-45c3-a62c-a47e22be4c4b"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="../sysmodel.melodymodeller#72f5a360-f681-45c3-a62c-a47e22be4c4b"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_8hx3o1irEeK8gZ1oFNfINw" x="590" y="50" height="50" width="100"/>
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_MkYFdHTTEea2zdoadWNr2A" width="1" height="40" resizeKind="NSEW">
         <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#02c84445-1da7-44fd-b30a-16e8c138c3ce"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#02c84445-1da7-44fd-b30a-16e8c138c3ce"/>
         <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="../sysmodel.melodymodeller#45f40cef-b1e7-4aaf-9bba-5193d36fc028"/>
-        <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="../sysmodel.melodymodeller#72f5a360-f681-45c3-a62c-a47e22be4c4b"/>
+        <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="../sysmodel.melodymodeller#72f5a360-f681-45c3-a62c-a47e22be4c4b"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_MkYFdnTTEea2zdoadWNr2A" incomingEdges="_MkYFg3TTEea2zdoadWNr2A" width="1" height="3" resizeKind="NSEW">
           <target xmi:type="org.polarsys.capella.core.data.interaction:Execution" href="LA-Logical%20System-LC2.melodyfragment#ac59b12a-8cee-4461-a068-4c5dfdad502c"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:Execution" href="LA-Logical%20System-LC2.melodyfragment#ac59b12a-8cee-4461-a068-4c5dfdad502c"/>
@@ -406,7 +406,7 @@
           <target xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#02c84445-1da7-44fd-b30a-16e8c138c3ce"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.interaction:InstanceRole" href="LA-Logical%20System-LC2.melodyfragment#02c84445-1da7-44fd-b30a-16e8c138c3ce"/>
           <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="../sysmodel.melodymodeller#45f40cef-b1e7-4aaf-9bba-5193d36fc028"/>
-          <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="../sysmodel.melodymodeller#72f5a360-f681-45c3-a62c-a47e22be4c4b"/>
+          <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="../sysmodel.melodymodeller#72f5a360-f681-45c3-a62c-a47e22be4c4b"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_MkYFeXTTEea2zdoadWNr2A" showIcon="false" labelPosition="node" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/handlelifeline.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='endOfLife']/@style"/>
           </ownedStyle>

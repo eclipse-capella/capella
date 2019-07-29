@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
+import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.Constraint;
@@ -762,16 +763,12 @@ public class BlockArchitectureExt {
    * @param availableElements
    */
   public static void getAllStatesAndModes(BlockArchitecture blockArch, List<CapellaElement> availableElements) {
-    for (Component component : getAllComponents(blockArch)) {
-      availableElements.addAll(ComponentExt.getAllStatesAndModesFromComponent(component));
-    }
+    availableElements.addAll((List)EObjectExt.getAll(blockArch, CapellacommonPackage.Literals.STATE));
   }
 
   public static List<EObject> getAllStatesAndModes(BlockArchitecture blockArch) {
     List<EObject> availableElements = new ArrayList<EObject>();
-    for (Component component : getAllComponents(blockArch)) {
-      availableElements.addAll(ComponentExt.getAllStatesAndModesFromComponent(component));
-    }
+    availableElements.addAll(EObjectExt.getAll(blockArch, CapellacommonPackage.Literals.STATE));
     return availableElements;
   }
 

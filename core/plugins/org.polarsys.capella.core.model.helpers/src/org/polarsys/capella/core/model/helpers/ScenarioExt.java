@@ -368,7 +368,7 @@ public class ScenarioExt {
 
     return partSet;
   }
-  
+
   /**
    * @param scenario
    * @return list of components which have allocated functions involved in the given scenario
@@ -896,18 +896,12 @@ public class ScenarioExt {
     if (component != null) {
       Component comp = (Component) component;
       getAllOwnedPart(result, comp, filter);
+      
     } else {
       EObject arch = EcoreUtil2.getFirstContainer(any, CsPackage.Literals.BLOCK_ARCHITECTURE);
-      Component rootComponent = null;
       if (arch != null) {
         BlockArchitecture architecture = (BlockArchitecture) arch;
-        if (architecture instanceof LogicalArchitecture) {
-          rootComponent = ((LogicalArchitecture) architecture).getSystem();
-        } else if (architecture instanceof PhysicalArchitecture) {
-          rootComponent = ((PhysicalArchitecture) architecture).getSystem();
-        } else if (architecture instanceof EPBSArchitecture) {
-          rootComponent = ((EPBSArchitecture) architecture).getSystem();
-        }
+        Component rootComponent = architecture.getSystem();
         if (rootComponent != null) {
           getAllOwnedPart(result, rootComponent, filter);
         }
@@ -1127,7 +1121,6 @@ public class ScenarioExt {
     }
     return false;
   }
-  
 
   /**
    * @param obj

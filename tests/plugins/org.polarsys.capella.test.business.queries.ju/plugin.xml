@@ -31,6 +31,24 @@
 	</extension>
 	
 	<extension
+	      point="org.eclipse.core.runtime.adapters">
+	   <factory
+	         adaptableType="org.polarsys.capella.test.business.queries.ju.QueryResult"
+	         class="org.polarsys.capella.test.business.queries.ju.QueryAdapterFactory">
+	      <adapter
+	            type="org.polarsys.kitalpha.emde.model.Element">
+	      </adapter>
+	   </factory>
+	   <factory
+	         adaptableType="org.polarsys.capella.test.business.queries.ju.ResultItem"
+	         class="org.polarsys.capella.test.business.queries.ju.QueryAdapterFactory">
+	      <adapter
+	            type="org.polarsys.kitalpha.emde.model.Element">
+	      </adapter>
+	   </factory>
+	</extension>
+	
+	<extension
 	      point="org.eclipse.ui.commands">
 	      <command
              id="org.polarsys.capella.test.sortQueries"
@@ -44,5 +62,30 @@
              defaultHandler="org.polarsys.capella.test.business.queries.ju.handlers.GenerateQueriesHandler">
 	      </command>
 	</extension>
+ <extension
+       point="org.eclipse.ui.views">
+    <view
+          category="org.polarsys.capella.views.category"
+          class="org.polarsys.capella.test.business.queries.ju.views.BqViewPart"
+          id="org.polarsys.capella.test.business.queries.ju.view"
+          name="Business Query"
+          restorable="true">
+    </view>
+ </extension>
+ 
+ <extension
+	      point="org.eclipse.ui.menus">
+        
+       <menuContribution
+                locationURI="popup:org.polarsys.capella.test.business.queries.ju.view?after=additions">
+               
+              <separator name="group.showIn" visible="true" />
+              <separator name="group.sendTo" visible="true" />
+              
+       </menuContribution>
+       
+	</extension>
+	
+	
 	
 </plugin>

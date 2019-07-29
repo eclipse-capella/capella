@@ -10,13 +10,13 @@
  *******************************************************************************/
 package org.polarsys.capella.test.business.queries.ju;
 
-import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
+import org.polarsys.capella.common.ui.services.AbstractUIActivator;
 
 /**
  * The activator class controls the plug-in life cycle
  */
-public class TestBusinessQueriesPlugin extends Plugin {
+public class TestBusinessQueriesPlugin extends AbstractUIActivator {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.polarsys.capella.test.business.queries.ju"; //$NON-NLS-1$

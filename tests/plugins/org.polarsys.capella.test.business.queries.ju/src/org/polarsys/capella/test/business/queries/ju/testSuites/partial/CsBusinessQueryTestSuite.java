@@ -13,7 +13,6 @@ package org.polarsys.capella.test.business.queries.ju.testSuites.partial;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.cs.Component_ImplementedInterfaces;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.cs.ExchangeItemAllocation_AllocatedItem;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.cs.InterfaceImpl_ImplementedInterface;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.cs.InterfaceUse_UsedInterface;
@@ -53,7 +52,6 @@ public class CsBusinessQueryTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
-    tests.add(new Component_ImplementedInterfaces());
     tests.add(new ExchangeItemAllocation_AllocatedItem());
     tests.add(new Interface_ExchangeItems());
     tests.add(new Interface_InheritedInterfaces());

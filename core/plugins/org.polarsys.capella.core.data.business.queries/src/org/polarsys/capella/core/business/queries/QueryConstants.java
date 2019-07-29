@@ -23,8 +23,6 @@ import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvail
 import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_Mode_AvailableInStates;
 import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_Mode_ReferencedStates;
 import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_Mode_StateRealizations;
-import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_StateTransitionEffect__Lib;
-import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_StateTransitionTrigger__Lib;
 import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_StateTransition_StateTransitionRealizations;
 import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_State_AvailableInStates;
 import org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_State_ReferencedStates;
@@ -319,6 +317,8 @@ public class QueryConstants {
   public static final String GET_AVAILABLE__COMPONENT_PORT__REQUIRED_INTERFACES___LIB = "GetAvailable_ComponentPort_RequiredInterfaces__Lib";
   public static final String GET_AVAILABLE__COMMUNICATION_LINK__EXCHANGE_ITEM___LIB = "GetAvailable_CommunicationLink_ExchangeItem__Lib";
   public static final String GET_AVAILABLE__STATE_TRANSITION__EFFECT___LIB = "GetAvailable_StateTransitionEffect__Lib";
+  public static final String GET_AVAILABLE__STATE_TRANSITION_EFFECT___LIB = "GetAvailable_StateTransitionEffect__Lib";
+  public static final String GET_AVAILABLE__STATE_TRANSITION_TRIGGER___LIB = "GetAvailable_StateTransitionTrigger__Lib";
   
   public static final String GET_AVAILABLE__ABSTRACT_EXPRESSION_VALUE__OPERAND___LIB = getQueryIdentifier(GetAvailable_AbstractExpressionValue_Operand__Lib.class);
   public static final String GET_AVAILABLE__ABSTRACT_STATE_PROPERTIES___LIB = getQueryIdentifier(GetAvailable_AbstractStateProperties__Lib.class);
@@ -353,8 +353,6 @@ public class QueryConstants {
   public static final String GET_AVAILABLE__PROPERTY__NULL_VALUE___LIB = getQueryIdentifier(GetAvailable_Property_NullValue__Lib.class);
   public static final String GET_AVAILABLE__PROPERTY__TYPE___LIB = getQueryIdentifier(GetAvailable_Property_Type__Lib.class);
   public static final String GET_AVAILABLE__SEQUENCE_MESSAGE__SERVICE_INTERFACE___LIB = getQueryIdentifier(GetAvailable_SequenceMessage_ServiceInterface__Lib.class);
-  public static final String GET_AVAILABLE__STATE_TRANSITION_EFFECT___LIB = getQueryIdentifier(GetAvailable_StateTransitionEffect__Lib.class);
-  public static final String GET_AVAILABLE__STATE_TRANSITION_TRIGGER___LIB = getQueryIdentifier(GetAvailable_StateTransitionTrigger__Lib.class);
   public static final String GET_AVAILABLE__STRING_TYPE__DEFAULT_VALUE___LIB = getQueryIdentifier(GetAvailable_StringType_DefaultValue__Lib.class);
   public static final String GET_AVAILABLE__STRING_TYPE__NULL_VALUE___LIB = getQueryIdentifier(GetAvailable_StringType_NullValue__Lib.class);
 

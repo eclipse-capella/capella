@@ -63,7 +63,7 @@ public class BQTestHelpers {
     try {
       return (T) loadClass(bundle, queryIdentifier).getConstructors()[0].newInstance();
     } catch (Exception e) {
-      e.printStackTrace();
+      System.err.println(e.getMessage());
       return null;
     }
   }

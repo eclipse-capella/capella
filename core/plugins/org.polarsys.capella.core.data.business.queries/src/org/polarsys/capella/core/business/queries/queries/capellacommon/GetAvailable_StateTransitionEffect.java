@@ -23,11 +23,13 @@ import org.polarsys.capella.core.data.capellacommon.StateTransition;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.information.Class;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.Operation;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.ComponentPkgExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 
 public class GetAvailable_StateTransitionEffect extends AbstractQuery {
@@ -48,11 +50,16 @@ public class GetAvailable_StateTransitionEffect extends AbstractQuery {
         }
       }
       EObject eContainer = inputElement.eContainer();
-      while (eContainer != null && !(eContainer instanceof Component) && !(eContainer instanceof Class)) {
+      while (eContainer != null && !(eContainer instanceof Component) && !(eContainer instanceof ComponentPkg) && !(eContainer instanceof Class)) {
         eContainer = eContainer.eContainer();
       }
       if ((eContainer instanceof Component) && (inputElement instanceof StateTransition)) {
         availableElements.addAll(getElementsFromComponentAndSubComponents((Component) eContainer));
+      }
+      if ((eContainer instanceof ComponentPkg) && (inputElement instanceof StateTransition)) {
+        for (Component component: ComponentPkgExt.getOwnedComponents((ComponentPkg)eContainer)) {
+          availableElements.addAll(getElementsFromComponentAndSubComponents((Component) component));
+        }
       }
     }
     return availableElements;

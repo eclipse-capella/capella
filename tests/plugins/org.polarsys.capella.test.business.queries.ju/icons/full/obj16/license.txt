@@ -1,0 +1,10 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+error_tsk.png - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/error_tsk.png
+add_obj.png - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/add_obj.png
+delete_edit.png - org.eclipse.ui - org.eclipse.ui/icons/full/etool16/delete_edit.png
+test.png - org.eclipse.ui - org.eclipse.pde.ui/icons/obj16/test.png

@@ -46,21 +46,10 @@ public class GetAvailable_Part_Type extends AbstractQuery {
     BlockArchitecture arch = SystemEngineeringExt.getRootBlockArchitecture(element);
     Set<EObject> setOfAvailableElements = new HashSet<EObject>();
     if (element instanceof Part) {
-      if (container instanceof Entity) {
+      if (arch instanceof OperationalAnalysis) {
         setOfAvailableElements = EObjectExt.getAll(arch, OaPackage.Literals.ENTITY);
         if (setOfAvailableElements.contains(container)) {
           setOfAvailableElements.remove(container);
-        }
-        OperationalAnalysis archAnalysis = (OperationalAnalysis) arch;
-        EntityPkg ownedEntityPkg = archAnalysis.getOwnedEntityPkg();
-        if (null != ownedEntityPkg) {
-          EList<Entity> ownedEntities = ownedEntityPkg.getOwnedEntities();
-          if ((ownedEntities != null) && !ownedEntities.isEmpty()) {
-            Entity rootEntity = ownedEntities.get(0);
-            if (setOfAvailableElements.contains(rootEntity)) {
-              setOfAvailableElements.remove(rootEntity);
-            }
-          }
         }
       } else {
         java.util.Collection<EObject> availableComponentsByNamespaceOfParts = ComponentExt

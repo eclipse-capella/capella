@@ -83,7 +83,7 @@
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.Capability_InheritedCapabilities" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.Capability_InvolvedAbstractFunctions" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.Capability_InvolvedFunctionalChains" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.Capability_InvolvedSystemComponent" />
+<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.Capability_InvolvedSystemComponents" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.Capability_RealizedCapabilities" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.Mission_ExploitedCapabilities" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.Mission_InvolvedSystemComponents" />
@@ -313,6 +313,7 @@
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.oa.CommunicationMean_ConvoyedInformation" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.oa.Entity_AllocatedActivities" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.oa.Entity_AllocatedRoles" />
+<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.oa.OperationalActivity_AvailableInStates" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.oa.OperationalCapability_AvailableInStates" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.oa.OperationalCapability_InheritedCapabilities" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.oa.OperationalCapability_InvolvedActivity" />
@@ -381,14 +382,8 @@
     <querySpecification queryIdentifier="GetAvailable_StateTransitionEffect">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_StateTransitionEffect" />
     </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_StateTransitionEffect__Lib" extendedQueryIdentifier="GetAvailable_StateTransitionEffect">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_StateTransitionEffect__Lib" />
-    </querySpecification>
     <querySpecification queryIdentifier="GetAvailable_StateTransitionTrigger">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_StateTransitionTrigger" />
-    </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_StateTransitionTrigger__Lib" extendedQueryIdentifier="GetAvailable_StateTransitionTrigger">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_StateTransitionTrigger__Lib" />
     </querySpecification>
     <querySpecification queryIdentifier="GetAvailable_StateTransition_StateTransitionRealizations">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_StateTransition_StateTransitionRealizations" />
@@ -1984,6 +1979,12 @@
       <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.queries.GenericGetForLibWithCorrespondingArchitectureElement" />
     </querySpecification>
     <querySpecification queryIdentifier="GetAvailable_ExchangeItem_InheritedExchangeItem__Lib" extendedQueryIdentifier="GetAvailable_ExchangeItem_InheritedExchangeItem">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.queries.GenericGetForLibWithCorrespondingArchitectureElement" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_StateTransitionEffect__Lib" extendedQueryIdentifier="GetAvailable_StateTransitionEffect">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.queries.GenericGetForLibWithCorrespondingArchitectureElement" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_StateTransitionTrigger__Lib" extendedQueryIdentifier="GetAvailable_StateTransitionTrigger">
       <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.queries.GenericGetForLibWithCorrespondingArchitectureElement" />
     </querySpecification>
   

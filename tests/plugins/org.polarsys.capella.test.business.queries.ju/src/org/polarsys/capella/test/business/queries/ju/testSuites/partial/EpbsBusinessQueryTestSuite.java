@@ -16,8 +16,8 @@ import java.util.List;
 import junit.framework.Test;
 
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.epbs.ConfigurationItem_ImplementedInterfaces;
-import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.epbs.ConfigurationItem_ImplementedPC;
-import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.epbs.ConfigurationItem_InvolvedRealization;
+import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.epbs.ConfigurationItem_RealizedPhysicalArtifacts;
+import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.epbs.ConfigurationItem_InvolvingCapabilityRealizations;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.epbs.ConfigurationItem_UsedInterfaces;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.epbs.EPBSArchitecture_AllocatedPhysicalArchitecture;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
@@ -39,8 +39,8 @@ public class EpbsBusinessQueryTestSuite extends BasicTestSuite {
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new ConfigurationItem_ImplementedInterfaces());
-    tests.add(new ConfigurationItem_ImplementedPC());
-    tests.add(new ConfigurationItem_InvolvedRealization());
+    tests.add(new ConfigurationItem_RealizedPhysicalArtifacts());
+    tests.add(new ConfigurationItem_InvolvingCapabilityRealizations());
     tests.add(new ConfigurationItem_UsedInterfaces());
     tests.add(new EPBSArchitecture_AllocatedPhysicalArchitecture());    
     return tests;

@@ -22,9 +22,9 @@ import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.Compo
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.ComponentPort_RealizedComponentPort;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.ComponentPort_RequiredInterfaces;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.ComponentPort_Type;
-import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.Connection_ConnectionFunctionalExchangeAllocations;
-import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.Connection_ConnectionRealizations;
-import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.Connection_ConvoyedInformation;
+import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.ComponentExchange_AllocatedFunctionalExchanges;
+import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.ComponentExchange_RealizedComponentExchanges;
+import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.ComponentExchange_ConvoyedInformations;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.ExchangeCategory_Exchanges;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.FunctionInputPort_InComingExchangeItems;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.FunctionInputPort_ProvidedInterface;
@@ -72,9 +72,9 @@ public class FaBusinessQueryTestSuite extends BasicTestSuite {
     tests.add(new ComponentPort_RealizedComponentPort());
     tests.add(new ComponentPort_RequiredInterfaces());
     tests.add(new ComponentPort_Type());
-    tests.add(new Connection_ConnectionFunctionalExchangeAllocations());
-    tests.add(new Connection_ConnectionRealizations());
-    tests.add(new Connection_ConvoyedInformation());
+    tests.add(new ComponentExchange_AllocatedFunctionalExchanges());
+    tests.add(new ComponentExchange_RealizedComponentExchanges());
+    tests.add(new ComponentExchange_ConvoyedInformations());
     tests.add(new ExchangeCategory_Exchanges());
     tests.add(new FunctionalChain_AvailableInStates());
     tests.add(new FunctionalChain_RealizedFunctionalChains());

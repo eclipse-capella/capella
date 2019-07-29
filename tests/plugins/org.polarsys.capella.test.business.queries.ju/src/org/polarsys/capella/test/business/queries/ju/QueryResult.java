@@ -12,12 +12,20 @@ package org.polarsys.capella.test.business.queries.ju;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.business.api.session.Session;
+import org.osgi.framework.FrameworkUtil;
+import org.polarsys.capella.core.business.queries.IBusinessQuery;
+import org.polarsys.capella.core.model.handler.helpers.SemanticResourcesScope;
+import org.polarsys.capella.shared.id.handler.IScope;
 import org.polarsys.capella.shared.id.handler.IdManager;
 
 /**
@@ -31,6 +39,8 @@ public class QueryResult {
   protected String inputId;
   protected List<String> resultIds;
 
+  protected Optional<IBusinessQuery> query = null;
+  
   protected QueryResult() {
     resultIds = new ArrayList<String>();
   }
@@ -39,6 +49,22 @@ public class QueryResult {
     queryIdentifier = queryIdentifier_p;
     inputId = inputId_p;
     resultIds = resultIds_p;
+  }
+
+  public IBusinessQuery getBusinessQuery() {
+    if (query == null) {
+      IBusinessQuery businessQuery = BQTestHelpers.instanciateBQ(FrameworkUtil.getBundle(getClass()), getQuery());
+      query = Optional.ofNullable(businessQuery);
+    }
+    return query.isPresent() ? query.get() : null;
+  }
+
+  public String getQuery() {
+    return queryIdentifier.split("-")[0];
+  }
+
+  public String getQueryKind() {
+    return queryIdentifier.split("-")[1];
   }
 
   public String getQueryIdentifier() {
@@ -191,5 +217,40 @@ public class QueryResult {
     return queryResult.queryIdentifier.equals(queryIdentifier) && queryResult.inputId.equals(inputId)
         && (queryResult.resultIds == null && resultIds == null || queryResult.resultIds != null && resultIds != null
             && new LinkedHashSet<String>(queryResult.resultIds).equals(new LinkedHashSet<String>(resultIds)));
+  }
+
+  public Collection<ResultItem> getResults(Session session) {
+    IScope capellaSemanticResourceScope = new SemanticResourcesScope(
+        session.getTransactionalEditingDomain().getResourceSet());
+
+    ArrayList<ResultItem> result = new ArrayList<>();
+    IBusinessQuery query = getBusinessQuery();
+    EObject input = (EObject) IdManager.getInstance().getEObject(getInputId(), capellaSemanticResourceScope);
+
+    if (input != null && query != null) {
+      ArrayList<EObject> queryResult = new ArrayList<>();
+      if (getQueryKind().equals(BQTestConstants.GET_AVAILABLE_METHOD_NAME)) {
+        queryResult.addAll(query.getAvailableElements(input));
+      } else {
+        queryResult.addAll(query.getCurrentElements(input, false));
+      }
+
+      for (String exp : getResultIds()) {
+        EObject expected = (EObject) IdManager.getInstance().getEObject(exp, capellaSemanticResourceScope);
+        if (queryResult.contains(expected)) {
+          result.add(new ResultItem(this, expected, exp, ResultItem.Kind.OK));
+        } else if (!queryResult.contains(expected)) {
+          result.add(new ResultItem(this, expected, exp, ResultItem.Kind.MISSING));
+        }
+      }
+
+      for (EObject current : queryResult) {
+        String id = EcoreUtil.getID(current);
+        if (!getResultIds().contains(id)) {
+          result.add(new ResultItem(this, current, id, ResultItem.Kind.ADDED));
+        }
+      }
+    }
+    return result;
   }
 }

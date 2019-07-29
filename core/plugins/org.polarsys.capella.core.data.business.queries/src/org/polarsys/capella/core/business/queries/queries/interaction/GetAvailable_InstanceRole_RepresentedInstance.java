@@ -60,7 +60,7 @@ public class GetAvailable_InstanceRole_RepresentedInstance extends AbstractQuery
           if (new OnlySharedDataOrEventOrUnsetFilter().keepElement(ei, context)) {
             availableElements.addAll(ei.getOwnedExchangeItemInstances());
           }
-        }      
+        }
       }
 
       SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(capellaElement);
@@ -89,13 +89,13 @@ public class GetAvailable_InstanceRole_RepresentedInstance extends AbstractQuery
    */
   private List<CapellaElement> getAvailableElementsForFunctionalScenario(Scenario scenario) {
     List<CapellaElement> result = new ArrayList<CapellaElement>();
-    AbstractFunctionalArchitecture archi =
-        (AbstractFunctionalArchitecture) EcoreUtil2.getFirstContainer(scenario, FaPackage.Literals.ABSTRACT_FUNCTIONAL_ARCHITECTURE);
+    AbstractFunctionalArchitecture archi = (AbstractFunctionalArchitecture) EcoreUtil2.getFirstContainer(scenario,
+        FaPackage.Literals.ABSTRACT_FUNCTIONAL_ARCHITECTURE);
     FunctionPkg fpackage = archi.getOwnedFunctionPkg();
     for (Object obj : EcoreUtil2.getAllContents(FunctionPkgExt.getOwnedFunctions(fpackage))) {
       if (obj instanceof AbstractFunction) {
-          result.add((CapellaElement) obj);
-        }
+        result.add((CapellaElement) obj);
+      }
     }
     return result;
   }
@@ -116,13 +116,10 @@ public class GetAvailable_InstanceRole_RepresentedInstance extends AbstractQuery
 
     // Any Scenario can have instance roles for its architecture root component?
     BlockArchitecture ba = BlockArchitectureExt.getRootBlockArchitecture(scenario);
-    for (EObject e : ba.eContents()) {
-      if (e instanceof Component) {
-        for (Part te : ((Component) e).getRepresentingParts()) {
-          if (te instanceof Part) {
-            result.add(te);
-          }
-        }
+    Component root = ba.getSystem();
+    if (root != null) {
+      for (Part te : ((Component) root).getRepresentingParts()) {
+        result.add(te);
       }
     }
     return result;

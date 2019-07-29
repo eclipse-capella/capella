@@ -20,14 +20,17 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacommon.State;
+import org.polarsys.capella.core.data.capellacommon.StateTransition;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.information.Class;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.Operation;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.ComponentPkgExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 
 public class GetAvailable_AbstractStateProperties extends AbstractQuery {
@@ -49,8 +52,14 @@ public class GetAvailable_AbstractStateProperties extends AbstractQuery {
         }
       }
       EObject eContainer = inputElement.eContainer();
-      while ((eContainer != null) && !(eContainer instanceof Component) && !(eContainer instanceof Class)) {
+      while ((eContainer != null) && !(eContainer instanceof Component) && !(eContainer instanceof ComponentPkg)
+          && !(eContainer instanceof Class)) {
         eContainer = eContainer.eContainer();
+      }
+      if ((eContainer instanceof ComponentPkg) && (inputElement instanceof State)) {
+        for (Component component : ComponentPkgExt.getOwnedComponents((ComponentPkg) eContainer)) {
+          availableElements.addAll(getElementsFromComponentAndSubComponents((Component) component));
+        }
       }
       if ((eContainer instanceof Component) && (inputElement instanceof State)) {
         availableElements.addAll(getElementsFromComponentAndSubComponents((Component) eContainer));

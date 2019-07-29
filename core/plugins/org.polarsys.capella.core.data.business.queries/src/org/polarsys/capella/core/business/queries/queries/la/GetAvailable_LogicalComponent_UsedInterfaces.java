@@ -48,18 +48,18 @@ public class GetAvailable_LogicalComponent_UsedInterfaces extends AbstractQuery 
     List<EObject> availableElements = new ArrayList<EObject>();
     SystemEngineering systemEngineering = SystemEngineeringExt.getSystemEngineering(element);
     if (systemEngineering != null) {
-      if (element instanceof LogicalComponent) {
+      if (element instanceof Component) {
         // Gets All the Interfaces contained in the Interface Package (and all of its sub-packages) of the Physical
         // Architecture layer.
         // Except The interfaces that are already implemented by the current Physical Component.
-        LogicalComponent currentPC = (LogicalComponent) element;
-        for (Component cpnt : CapellaElementExt.getComponentHierarchy(currentPC)) {
+        Component current = (Component) element;
+        for (Component cpnt : CapellaElementExt.getComponentHierarchy(current)) {
           InterfacePkg interfacePkg = cpnt.getOwnedInterfacePkg();
           if (interfacePkg != null) {
             availableElements.addAll(InterfacePkgExt.getAllInterfaces(interfacePkg));
           }
         }
-        BlockArchitecture currentBlock = BlockArchitectureExt.getRootBlockArchitecture(currentPC);
+        BlockArchitecture currentBlock = BlockArchitectureExt.getRootBlockArchitecture(current);
         if (currentBlock.getOwnedInterfacePkg() != null) {
           availableElements.addAll(InterfacePkgExt.getAllInterfaces(currentBlock.getOwnedInterfacePkg()));
         }

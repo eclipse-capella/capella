@@ -131,27 +131,27 @@ private static BlockArchitectureHelper instance;
     if (element instanceof OperationalAnalysis) {
       EntityPkg ownedEntityPkg = ((OperationalAnalysis) element).getOwnedEntityPkg();
       if (ownedEntityPkg != null && !ownedEntityPkg.getOwnedEntities().isEmpty()) {
-        return ownedEntityPkg.getOwnedEntities().get(0);
+        return ownedEntityPkg.getOwnedEntities().stream().filter(x -> !x.isActor()).findFirst().orElse(null);
       }
     } else if (element instanceof SystemAnalysis) {
       SystemComponentPkg ownedSystemComponentPkg = ((SystemAnalysis) element).getOwnedSystemComponentPkg();
       if (ownedSystemComponentPkg != null && !ownedSystemComponentPkg.getOwnedSystemComponents().isEmpty()) {
-        return ownedSystemComponentPkg.getOwnedSystemComponents().get(0);
+        return ownedSystemComponentPkg.getOwnedSystemComponents().stream().filter(x -> !x.isActor()).findFirst().orElse(null);
       }
     } else if (element instanceof LogicalArchitecture) {
       LogicalComponentPkg ownedLogicalComponentPkg = ((LogicalArchitecture) element).getOwnedLogicalComponentPkg();
       if (ownedLogicalComponentPkg != null && !ownedLogicalComponentPkg.getOwnedLogicalComponents().isEmpty()) {
-        return ownedLogicalComponentPkg.getOwnedLogicalComponents().get(0);
+        return ownedLogicalComponentPkg.getOwnedLogicalComponents().stream().filter(x -> !x.isActor()).findFirst().orElse(null);
       }
     } else if (element instanceof PhysicalArchitecture) {
       PhysicalComponentPkg ownedPhysicalComponentPkg = ((PhysicalArchitecture) element).getOwnedPhysicalComponentPkg();
       if (ownedPhysicalComponentPkg != null && !ownedPhysicalComponentPkg.getOwnedPhysicalComponents().isEmpty()) {
-        return ownedPhysicalComponentPkg.getOwnedPhysicalComponents().get(0);
+        return ownedPhysicalComponentPkg.getOwnedPhysicalComponents().stream().filter(x -> !x.isActor()).findFirst().orElse(null);
       }
     } else if (element instanceof EPBSArchitecture) {
       ConfigurationItemPkg ownedConfigurationItemPkg = ((EPBSArchitecture) element).getOwnedConfigurationItemPkg();
       if (ownedConfigurationItemPkg != null && !ownedConfigurationItemPkg.getOwnedConfigurationItems().isEmpty()) {
-        return ownedConfigurationItemPkg.getOwnedConfigurationItems().get(0);
+        return ownedConfigurationItemPkg.getOwnedConfigurationItems().stream().filter(x -> !x.isActor()).findFirst().orElse(null);
       }
     }
     return null;
