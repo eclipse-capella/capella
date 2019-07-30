@@ -30,8 +30,10 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourceAttributes;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -244,6 +246,7 @@ public class FragmentUtils {
 
     List<DRepresentationDescriptor> result = new ArrayList<DRepresentationDescriptor>();
 
+    // aici e bugul
     result.addAll(DialectManager.INSTANCE.getRepresentationDescriptors(eObject_p, session));
     Iterator<EObject> it = EcoreUtil.getAllProperContents(eObject_p, true);
     while (it.hasNext()) {
@@ -271,24 +274,23 @@ public class FragmentUtils {
    *          The object to search
    * @return the corresponding resource if found, false otherwise.
    */
-  static public Resource getAirdResourceWithAnalysisOn(final EObject eobject_p) {
-
-    Resource result = null;
+  static public Set<Resource> getAirdResourceWithAnalysisOn(final EObject eobject_p) {
 
     Session session = SessionManager.INSTANCE.getSession(eobject_p);
+
+    Set<Resource> results = new HashSet<Resource>();
 
     if ((null != session) && (session instanceof DAnalysisSession)) {
       for (final Resource resource : session.getAllSessionResources()) {
         for (final DAnalysis analysis : getAnalyses(resource)) {
           if (analysis.getModels().contains(eobject_p)) {
-            result = resource;
-            break;
+            results.add(resource);
           }
         }
       }
     }
 
-    return result;
+    return results;
   }
 
   static private Collection<DAnalysis> getAnalyses(final Resource airdResource_p) {
@@ -396,6 +398,73 @@ public class FragmentUtils {
       fos.close();
     }
 
+  }
+
+  /**
+   * set attribute on the file
+   * 
+   * @param file_p
+   * @param value_p.
+   *          true->RedaObly, false>ReadWrite
+   * @throws CoreException
+   */
+  private static void setIFileAttribute(IFile file_p, boolean bReadOnly) throws CoreException {
+    ResourceAttributes resourceAttribute = new ResourceAttributes();
+    resourceAttribute.setReadOnly(bReadOnly);
+    try {
+      file_p.setResourceAttributes(resourceAttribute);
+    } catch (CoreException e) {
+      e.printStackTrace();
+      throw e;
+    }
+  }
+
+  /**
+   * Set the read only attribute for the file
+   * 
+   * @param file_p
+   *          the file to set the read only value
+   * @throws CoreException
+   */
+  public static void setIFileReadOnly(IFile file_p) throws CoreException {
+    setIFileAttribute(file_p, true);
+  }
+
+  /**
+   * Set the read only attribute for the the list of files
+   * 
+   * @param file_p
+   *          the file to set the read only value
+   * @throws CoreException
+   */
+  public static void setIFileListReadOnly(Collection<IFile> fileList_p) throws CoreException {
+    for (IFile currentFile : fileList_p) {
+      setIFileReadOnly(currentFile);
+    }
+  }
+
+  /**
+   * Set the read write attribute for a file
+   * 
+   * @param file_p
+   *          the file to set the read write value
+   * @throws CoreException
+   */
+  public static void setIFileWrite(IFile file_p) throws CoreException {
+    setIFileAttribute(file_p, false);
+  }
+
+  /**
+   * Set the read write attribute for a list of file
+   * 
+   * @param fileList_p
+   *          list of files to set read write attribute
+   * @throws CoreException
+   */
+  public static void setIFileListWrite(Collection<IFile> fileList_p) throws CoreException {
+    for (IFile currentFile : fileList_p) {
+      setIFileWrite(currentFile);
+    }
   }
 
 }

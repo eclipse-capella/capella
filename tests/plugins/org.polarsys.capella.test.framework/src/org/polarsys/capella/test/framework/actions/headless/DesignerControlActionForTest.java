@@ -28,6 +28,7 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.model.label.LabelRetriever;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaActionsActivator;
 import org.polarsys.capella.core.sirius.ui.actions.DesignerControlAction;
 
 /**
@@ -73,6 +74,19 @@ public class DesignerControlActionForTest extends DesignerControlAction {
         return URI.createURI(uriValue, true);
       }
 
+      /**
+       * @see org.eclipse.sirius.ui.tools.api.control.SiriusControlHandler#getDefaultCorrespondingAird(org.eclipse.emf.common.util.URI)
+       */
+      @Override
+      protected URI getDefaultCorrespondingAird(URI semanticModelUri) {
+        // Not very clean:
+        // - getDefaultCorresponding uses the preference
+        // ICapellaPreferences.PREFERENCE_CAPELLA_AIRD_FRAGMENT_FILE_EXTENSION to get the airdfragment file extension
+        // - Problem : the initializer for this preference is not yet called -> force it by starting the plugin...
+        CapellaActionsActivator.getDefault();
+        return super.getDefaultCorrespondingAird(semanticModelUri);
+      }
+
       protected String computeFragmentUri(EObject _controledObject) {
         StringBuilder defaultURI = new StringBuilder();
         URI fragmentFolderUri = _controledObject.eResource().getURI().trimSegments(1);
@@ -112,6 +126,7 @@ public class DesignerControlActionForTest extends DesignerControlAction {
           defaultURI.append(fragmentRelative);
           defaultURI.append(ICommonConstants.POINT_CHARACTER);
           defaultURI.append(CapellaResourceHelper.CAPELLA_FRAGMENT_FILE_EXTENSION);
+          System.out.println(defaultURI);
         }
         return defaultURI.toString();
       }

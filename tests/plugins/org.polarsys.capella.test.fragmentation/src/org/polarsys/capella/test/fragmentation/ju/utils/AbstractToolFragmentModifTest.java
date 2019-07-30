@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,11 +10,13 @@
  *******************************************************************************/
 package org.polarsys.capella.test.fragmentation.ju.utils;
 
+import static org.junit.Assert.fail;
+
 import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.runtime.CoreException;
 import org.polarsys.capella.common.helpers.TransactionHelper;
-import org.polarsys.capella.test.diagram.common.ju.step.tools.AbstractToolStep;
 import org.polarsys.capella.test.framework.api.step.AbstractTestStep;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
@@ -27,13 +29,14 @@ import org.polarsys.capella.test.framework.context.SessionContext;
  */
 public abstract class AbstractToolFragmentModifTest extends AbstractTestStep {
   FragmentModificationListener _nonAbusiveFragmentModifListener;
-  protected AbstractToolStep _command;
+  protected AbstractTestStep _command;
+  protected Object resultCmd;
 
   /**
    * Constructor
    * @param toolName
    */
-  public AbstractToolFragmentModifTest(SessionContext sessionContext, AbstractToolStep command) {
+  public AbstractToolFragmentModifTest(SessionContext sessionContext, AbstractTestStep command) {
     super(sessionContext);
     _command = command;
   }
@@ -43,6 +46,12 @@ public abstract class AbstractToolFragmentModifTest extends AbstractTestStep {
    */
   @Override
   protected void preRunTest() {
+    // set the files in ReadOnly mode
+    try {
+      FragmentUtils.setIFileListReadOnly(getExpectedFilesToBeModified());
+    } catch (CoreException e) {
+      fail(e.getMessage());
+    }
 
     super.preRunTest();
 
@@ -56,6 +65,12 @@ public abstract class AbstractToolFragmentModifTest extends AbstractTestStep {
 
   @Override
   protected void postRunTest() {
+    // set the files in Write mode
+    try {
+      FragmentUtils.setIFileListWrite(getExpectedFilesToBeModified());
+    } catch (CoreException e) {
+      fail(e.getMessage());
+    }
 
     super.postRunTest();
     // remove listener
@@ -67,12 +82,11 @@ public abstract class AbstractToolFragmentModifTest extends AbstractTestStep {
 
   @Override
   public Object getResult() {
-    // TODO Auto-generated method stub
-    return null;
+    return resultCmd;
   }
 
   @Override
   protected void runTest() {
-    _command.run();
+    resultCmd = _command.run();
   }
 }

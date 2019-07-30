@@ -16,6 +16,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -35,6 +36,10 @@ public class UnfragmentTest extends AbstractFragmentationTest {
     super(context, objectId);
   }
 
+  public UnfragmentTest(SessionContext context, EObject object) {
+    super(context, object);
+  }
+
   public void unfragmentTest() {
 
     EObject objectToUnfragment = getTargetObject();
@@ -50,6 +55,12 @@ public class UnfragmentTest extends AbstractFragmentationTest {
     // The unfragmentation op. itself.
     new GuiActions().unfragment((CapellaElement) objectToUnfragment, true);
 
+    postUnfragmentChecks(objectToUnfragment, numberOfProperChildren, eObjectRefCount);
+    return;
+  }
+
+  protected void postUnfragmentChecks(EObject objectToUnfragment, int numberOfProperChildren,
+      Map<EObject, Integer> eObjectRefCount) {
     // First, let's check whether new resource is ok.
     Resource directResource = FragmentUtils.getDirectResource(objectToUnfragment);
 
@@ -75,8 +86,6 @@ public class UnfragmentTest extends AbstractFragmentationTest {
     //
     Map<EObject, Integer> newEObjectRefCount = FragmentUtils.getProperContentsRefCount(objectToUnfragment);
     FragmentUtils.compareRefCountForTest(objectToUnfragment, eObjectRefCount, newEObjectRefCount, false);
-
-    return;
   }
 
   @Override
@@ -95,10 +104,12 @@ public class UnfragmentTest extends AbstractFragmentationTest {
     // Check DRepresentation, if needed
     if (isThereAnyDRepresentationToMove()) {
       // All DRepresentations should be in the same target aird.
-      Resource newAIRDresource = FragmentUtils.getAirdResourceWithAnalysisOn(getTargetObject());
+      Set<Resource> newAIRDresources = FragmentUtils.getAirdResourceWithAnalysisOn(getTargetObject());
+      for (Resource newAIRDresource : newAIRDresources) {
       boolean isnewAIRDresourceExist = WorkspaceSynchronizer.getFile(newAIRDresource) == null ? false : true;
       assertTrue("The fragment is not removed",
           !isnewAIRDresourceExist);
+      }
     }
     _eObject = null;
     _dRepresentations = null;

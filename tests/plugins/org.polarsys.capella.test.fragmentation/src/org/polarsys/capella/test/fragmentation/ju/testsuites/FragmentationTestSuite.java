@@ -13,7 +13,9 @@ package org.polarsys.capella.test.fragmentation.ju.testsuites;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.test.fragmentation.ju.testcases.DummyNonAbusiveFragmentModificationTestCase;
+import org.polarsys.capella.test.fragmentation.ju.nonabusive.testcases.NonAbusiveTestCase1;
+import org.polarsys.capella.test.fragmentation.ju.nonabusive.testcases.NonAbusiveTestCase2;
+import org.polarsys.capella.test.fragmentation.ju.testcases.FragmentationTests1;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
@@ -28,8 +30,10 @@ public class FragmentationTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     ArrayList<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
-    tests.add(new DummyNonAbusiveFragmentModificationTestCase());
+    tests.add(new NonAbusiveTestCase1());
+    tests.add(new NonAbusiveTestCase2());
+
+    tests.add(new FragmentationTests1());
     return tests;
   }
-
 }

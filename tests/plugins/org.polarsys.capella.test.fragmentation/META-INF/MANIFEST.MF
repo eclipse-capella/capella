@@ -12,7 +12,8 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.common.re.gen,
  org.polarsys.capella.core.validation,
  org.polarsys.capella.test.diagram.common.ju,
- org.polarsys.capella.test.diagram.tools.ju
+ org.polarsys.capella.test.diagram.tools.ju,
+ org.polarsys.capella.core.commandline.core
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.polarsys.capella.test.fragmentation.ju,

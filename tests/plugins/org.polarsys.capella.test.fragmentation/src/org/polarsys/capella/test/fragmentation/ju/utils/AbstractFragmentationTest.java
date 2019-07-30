@@ -39,7 +39,17 @@ public abstract class AbstractFragmentationTest extends AbstractTestStep {
 
   public AbstractFragmentationTest(SessionContext context, String objectId) {
     super(context);
-    this._eObject = context.getSemanticElement(objectId);
+    _eObject = context.getSemanticElement(objectId);
+    setDRepresentationDescriptorsToMove();
+  }
+
+  public AbstractFragmentationTest(SessionContext context, EObject object) {
+    super(context);
+    _eObject = object;
+    setDRepresentationDescriptorsToMove();
+  }
+
+  protected void setDRepresentationDescriptorsToMove() {
     _dRepresentations = FragmentUtils.getLinkedDRepresentationDescriptor(this._eObject);
   }
 

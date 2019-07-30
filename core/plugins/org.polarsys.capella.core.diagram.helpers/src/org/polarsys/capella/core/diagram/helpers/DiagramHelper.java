@@ -247,6 +247,7 @@ public class DiagramHelper {
 
       if (currentValue == null || !currentValue.equals(name)) {
         command = new RecordingCommand(domain) {
+          @Override
           public void doExecute() {
             if (annot != null) {
               SiriusUtil.delete(annot);

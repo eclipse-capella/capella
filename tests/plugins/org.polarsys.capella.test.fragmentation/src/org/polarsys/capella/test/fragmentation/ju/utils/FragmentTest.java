@@ -16,6 +16,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -36,13 +37,18 @@ public class FragmentTest extends AbstractFragmentationTest {
     super(context, objectId);
   }
 
+  public FragmentTest(SessionContext context, EObject object) {
+    super(context, object);
+  }
+
   public void fragmentTest() {
 
     EObject objectToFragment = getTargetObject();
 
     // Check whether the eObject has not been fragmented yet.
-    assertNull(NLS.bind(FragmentationMessages.abstractFragmentTest_isAlreadyFragmented,
-        EObjectExt.getText(objectToFragment)), FragmentUtils.getDirectResource(objectToFragment));
+    assertNull(
+        NLS.bind(FragmentationMessages.abstractFragmentTest_isAlreadyFragmented, EObjectExt.getText(objectToFragment)),
+        FragmentUtils.getDirectResource(objectToFragment));
 
     // Useful data before fragmentation
     int numberOfProperChildren = FragmentUtils.getNumberOfProperEObjects(objectToFragment);
@@ -51,12 +57,18 @@ public class FragmentTest extends AbstractFragmentationTest {
     // The fragmentation itself.
     new GuiActions().fragment((CapellaElement) objectToFragment, _dRepresentations);
 
+    postFragmentChecks(objectToFragment, numberOfProperChildren, eObjectRefCount);
+  }
+
+  protected void postFragmentChecks(EObject objectToFragment, int numberOfProperChildren,
+      Map<EObject, Integer> eObjectRefCount) {
     // First, let's check whether new resource is ok.
     Resource newResource = FragmentUtils.getDirectResource(objectToFragment);
 
     // Not null
-    assertNotNull(NLS.bind(FragmentationMessages.abstractFragmentTest_hasNotItsOwnResource,
-        EObjectExt.getText(objectToFragment)), newResource);
+    assertNotNull(
+        NLS.bind(FragmentationMessages.abstractFragmentTest_hasNotItsOwnResource, EObjectExt.getText(objectToFragment)),
+        newResource);
 
     // Expected resource
     FragmentUtils.checkEResource(objectToFragment, newResource);
@@ -69,7 +81,6 @@ public class FragmentTest extends AbstractFragmentationTest {
     // References to this object kept?
     Map<EObject, Integer> newEObjectRefCount = FragmentUtils.getProperContentsRefCount(objectToFragment);
     FragmentUtils.compareRefCountForTest(objectToFragment, eObjectRefCount, newEObjectRefCount, true);
-
   }
 
   @Override
@@ -78,14 +89,17 @@ public class FragmentTest extends AbstractFragmentationTest {
     // Check DRepresentation, if needed
     if (isThereAnyDRepresentationToMove()) {
       // All DRepresentations should be in the same target aird.
-      Resource newAIRDresource = FragmentUtils.getAirdResourceWithAnalysisOn(getTargetObject());
-      boolean isnewAIRDresourceExist = WorkspaceSynchronizer.getFile(newAIRDresource) == null ? false : true;
-      assertTrue("The new fragment '" + newAIRDresource.getURI().toString() + "' is not create",
-          isnewAIRDresourceExist);
+      Set<Resource> newAIRDresources = FragmentUtils.getAirdResourceWithAnalysisOn(getTargetObject());
 
       for (DRepresentationDescriptor drepresentation : getDRepresentationDescriptorsToMove()) {
-        assertEquals(NLS.bind(FragmentationMessages.abstractFragmentationTest_wrongAirdresourceAfterOps,
-            drepresentation.getName()), drepresentation.eResource(), newAIRDresource);
+        if (!newAIRDresources.contains(drepresentation.eResource())) {
+          assertTrue(NLS.bind(FragmentationMessages.abstractFragmentationTest_wrongAirdresourceAfterOps,
+              drepresentation.getName()), false);
+        }
+        Resource newAIRDresource = drepresentation.eResource();
+        boolean isnewAIRDresourceExist = WorkspaceSynchronizer.getFile(newAIRDresource) == null ? false : true;
+        assertTrue("The new fragment '" + newAIRDresource.getURI().toString() + "' is not create",
+            isnewAIRDresourceExist);
       }
     }
     _eObject = null;
