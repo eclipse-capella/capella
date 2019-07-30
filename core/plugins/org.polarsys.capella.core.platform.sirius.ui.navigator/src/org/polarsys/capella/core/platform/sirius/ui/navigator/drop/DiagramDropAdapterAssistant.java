@@ -13,12 +13,12 @@ package org.polarsys.capella.core.platform.sirius.ui.navigator.drop;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.util.LocalSelectionTransfer;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -101,26 +101,14 @@ public class DiagramDropAdapterAssistant extends AbstractCapellaDropAdapterAssis
     boolean isValid = DiagramDescriptionConstants.CLASS_BLANK_DIAGRAM_NAME.equals(diagramId)
         || IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME.equals(diagramId)
         || IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME.equals(diagramId)
-        || IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME.equals(diagramId) || diagramId.contains("Data Flow Blank"); //$NON-NLS-1$
+        || IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME.equals(diagramId) || diagramId.contains("Data Flow Blank") //$NON-NLS-1$
+        || IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME.equals(diagramId)
+        || IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME.equals(diagramId)
+        || IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME.equals(diagramId);
 
     if (isValid) {
       if (description instanceof DiagramDescription) {
-
-        // Get its domain class.
-        String domainClass = ((DiagramDescription) description).getDomainClass();
-        if (domainClass != null) {
-          if (domainClass.equals(targetElement.eClass().getName())) {
-            return true;
-          }
-          for (EClass aClass : targetElement.eClass().getEAllSuperTypes()) {
-            if (domainClass.equals(aClass.getName())) {
-              return true;
-            }
-          }
-        }
-
-      } else {
-        return true;
+        return DialectManager.INSTANCE.canCreate(targetElement, description);
       }
     }
     return false;

@@ -30,6 +30,11 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 
 import org.polarsys.capella.common.model.copypaste.SharedCopyPasteElements;
 import org.polarsys.capella.core.ui.toolkit.Activator;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
+import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
 
 /**
@@ -63,7 +68,10 @@ public class PasteCommandHelper {
       List<EReference> ownerContainments = owner.eClass().getEAllContainments();
       if (ownerContainments.contains(containingFeature)) {
         feat = containingFeature;
+      } else {
+        feat = getNewTargetContainingFeature(originalObject, owner, containingFeature);
       }
+      
       boolean append = true;
       // Check original object and the new owner are in the same session.
       Session session = SessionManager.INSTANCE.getSession(owner);
@@ -108,6 +116,27 @@ public class PasteCommandHelper {
       }
     }
     return status;
+  }
+
+  /**
+   * In case the original containing feature is not the same as the target containing feature
+   * 
+   * @param originalObject
+   * @param owner
+   * @param containingFeature
+   * @return
+   */
+  protected static EStructuralFeature getNewTargetContainingFeature(Object originalObject, EObject owner,
+      EStructuralFeature containingFeature) {
+    if (originalObject instanceof Part) {
+      if (owner instanceof ComponentPkg
+          && containingFeature == CapellacorePackage.Literals.CLASSIFIER__OWNED_FEATURES) {
+        return CsPackage.Literals.COMPONENT_PKG__OWNED_PARTS;
+      } else if (owner instanceof Component && containingFeature == CsPackage.Literals.COMPONENT_PKG__OWNED_PARTS) {
+        return CapellacorePackage.Literals.CLASSIFIER__OWNED_FEATURES;
+      }
+    }
+    return null;
   }
 
 }
