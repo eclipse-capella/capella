@@ -15,35 +15,27 @@
       <propertySections contributorId="org.polarsys.capella.core.data.capellamodeller.properties">
          <propertySection
                class="org.polarsys.capella.core.data.modeller.properties.sections.FolderSection"
+               filter="org.polarsys.capella.core.data.modeller.properties.sections.FolderSection"
                id="org.polarsys.capella.core.data.modeller.properties.sections.FolderSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellamodeller.Folder">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.modeller.properties.sections.ProjectSection"
+               filter="org.polarsys.capella.core.data.modeller.properties.sections.ProjectSection"
                id="org.polarsys.capella.core.data.modeller.properties.sections.ProjectSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellamodeller.Project">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.modeller.properties.sections.SystemEngineeringPkgSection"
+               filter="org.polarsys.capella.core.data.modeller.properties.sections.SystemEngineeringPkgSection"
                id="org.polarsys.capella.core.data.modeller.properties.sections.SystemEngineeringPkgSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellamodeller.SystemEngineeringPkg">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.modeller.properties.sections.SystemEngineeringSection"
+               filter="org.polarsys.capella.core.data.modeller.properties.sections.SystemEngineeringSection"
                id="org.polarsys.capella.core.data.modeller.properties.sections.SystemEngineeringSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellamodeller.SystemEngineering">
-            </input>
          </propertySection>
       </propertySections>
    </extension>

@@ -15,59 +15,45 @@
       <propertySections contributorId="org.polarsys.capella.core.data.capellamodeller.properties">
          <propertySection
                class="org.polarsys.capella.core.data.requirement.properties.sections.RequirementsPkgSection"
+               filter="org.polarsys.capella.core.data.requirement.properties.sections.RequirementsPkgSection"
                id="org.polarsys.capella.core.data.requirement.properties.sections.RequirementsPkgSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.requirement.RequirementsPkg">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.requirement.properties.sections.RequirementsTraceSection"
+               filter="org.polarsys.capella.core.data.requirement.properties.sections.RequirementsTraceSection"
                id="org.polarsys.capella.core.data.requirement.properties.sections.RequirementsTraceSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.requirement.RequirementsTrace">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.requirement.properties.sections.SystemFunctionalInterfaceRequirementSection"
+               filter="org.polarsys.capella.core.data.requirement.properties.sections.SystemFunctionalInterfaceRequirementSection"
                id="org.polarsys.capella.core.data.requirement.properties.sections.SystemFunctionalInterfaceRequirementSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.requirement.SystemFunctionalInterfaceRequirement">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.requirement.properties.sections.SystemFunctionalRequirementSection"
+               filter="org.polarsys.capella.core.data.requirement.properties.sections.SystemFunctionalRequirementSection"
                id="org.polarsys.capella.core.data.requirement.properties.sections.SystemFunctionalRequirementSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.requirement.SystemFunctionalRequirement">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.requirement.properties.sections.SystemNonFunctionalInterfaceRequirementSection"
+               filter="org.polarsys.capella.core.data.requirement.properties.sections.SystemNonFunctionalInterfaceRequirementSection"
                id="org.polarsys.capella.core.data.requirement.properties.sections.SystemNonFunctionalInterfaceRequirementSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.requirement.SystemNonFunctionalInterfaceRequirement">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.requirement.properties.sections.SystemNonFunctionalRequirementSection"
+               filter="org.polarsys.capella.core.data.requirement.properties.sections.SystemNonFunctionalRequirementSection"
                id="org.polarsys.capella.core.data.requirement.properties.sections.SystemNonFunctionalRequirementSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.requirement.SystemNonFunctionalRequirement">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.requirement.properties.sections.SystemUserRequirementSection"
+               filter="org.polarsys.capella.core.data.requirement.properties.sections.SystemUserRequirementSection"
                id="org.polarsys.capella.core.data.requirement.properties.sections.SystemUserRequirementSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.requirement.SystemUserRequirement">
-            </input>
          </propertySection>
       </propertySections>
    </extension>

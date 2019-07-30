@@ -16,6 +16,8 @@ import java.util.Optional;
 
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.libraries.model.ICapellaModel;
 import org.polarsys.capella.core.libraries.utils.ScopeModelWrapper;
@@ -54,7 +56,9 @@ public class FinishOnPropertyWizard extends BasicTestCase {
     IScope scope = new ScopeModelWrapper(model);
     SystemFunction rootSF = (SystemFunction) IdManager.getInstance().getEObject(ROOT_SF, scope);
 
-    EditCapellaCustomPropertyWizard wizard = new EditCapellaCustomPropertyWizard(rootSF);
+    IViewPart explorer = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView("capella.project.explorer");
+    
+    EditCapellaCustomPropertyWizard wizard = new EditCapellaCustomPropertyWizard(explorer, rootSF);
     wizard.addPages();
 
     EditCapellaCustomPropertyWizardPage capellaPage = null;

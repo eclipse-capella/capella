@@ -18,152 +18,102 @@
                filter="org.polarsys.capella.core.data.information.datavalue.properties.sections.BinaryExpressionSection"
                id="org.polarsys.capella.core.data.information.datavalue.section.BinaryExpression"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.datavalue.BinaryExpression">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.datavalue.properties.sections.BooleanReferenceSection"
                filter="org.polarsys.capella.core.data.information.datavalue.properties.sections.BooleanReferenceSection"
                id="org.polarsys.capella.core.data.information.datavalue.section.BooleanReference"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.datavalue.BooleanReference">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.datavalue.properties.sections.CollectionValueReferenceSection"
                filter="org.polarsys.capella.core.data.information.datavalue.properties.sections.CollectionValueReferenceSection"
                id="org.polarsys.capella.core.data.information.datavalue.section.CollectionValueReference"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.CollectionValueReference">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.datavalue.properties.sections.CollectionValueSection"
                filter="org.polarsys.capella.core.data.information.datavalue.properties.sections.CollectionValueSection"
                id="org.polarsys.capella.core.data.information.datavalue.section.CollectionValue"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.CollectionValue">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.datavalue.properties.sections.ComplexValueReferenceSection"
                filter="org.polarsys.capella.core.data.information.datavalue.properties.sections.ComplexValueReferenceSection"
                id="org.polarsys.capella.core.data.information.datavalue.section.ComplexValueReference"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.datavalue.ComplexValueReference">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.datavalue.properties.sections.ComplexValueSection"
                filter="org.polarsys.capella.core.data.information.datavalue.properties.sections.ComplexValueSection"
                id="org.polarsys.capella.core.data.information.datavalue.section.ComplexValue"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.datavalue.ComplexValue">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.datavalue.properties.sections.DataValueContainerSection"
                filter="org.polarsys.capella.core.data.information.datavalue.properties.sections.DataValueContainerSection"
                id="org.polarsys.capella.core.data.information.datavalue.section.DataValueContainer"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.datavalue.DataValueContainer">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.datavalue.properties.sections.EnumerationLiteralSection"
                filter="org.polarsys.capella.core.data.information.datavalue.properties.sections.EnumerationLiteralSection"
                id="org.polarsys.capella.core.data.information.datavalue.section.EnumerationLiteral"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.datavalue.EnumerationLiteral">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.datavalue.properties.sections.EnumerationReferenceSection"
                filter="org.polarsys.capella.core.data.information.datavalue.properties.sections.EnumerationReferenceSection"
                id="org.polarsys.capella.core.data.information.datavalue.section.EnumerationReference"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.datavalue.EnumerationReference">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.datavalue.properties.sections.LiteralBooleanValueSection"
                filter="org.polarsys.capella.core.data.information.datavalue.properties.sections.LiteralBooleanValueSection"
                id="org.polarsys.capella.core.data.information.datavalue.section.LiteralBooleanValue"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.datavalue.LiteralBooleanValue">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.datavalue.properties.sections.LiteralNumericValueSection"
                filter="org.polarsys.capella.core.data.information.datavalue.properties.sections.LiteralNumericValueSection"
                id="org.polarsys.capella.core.data.information.datavalue.section.LiteralNumericValue"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.datavalue.LiteralNumericValue">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.datavalue.properties.sections.LiteralStringValueSection"
                filter="org.polarsys.capella.core.data.information.datavalue.properties.sections.LiteralStringValueSection"
                id="org.polarsys.capella.core.data.information.datavalue.section.LiteralStringValue"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.datavalue.LiteralStringValue">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.datavalue.properties.sections.NumericReferenceSection"
                filter="org.polarsys.capella.core.data.information.datavalue.properties.sections.NumericReferenceSection"
                id="org.polarsys.capella.core.data.information.datavalue.section.NumericReference"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.datavalue.NumericReference">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.datavalue.properties.sections.StringReferenceSection"
                filter="org.polarsys.capella.core.data.information.datavalue.properties.sections.StringReferenceSection"
                id="org.polarsys.capella.core.data.information.datavalue.section.StringReference"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.datavalue.StringReference">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.datavalue.properties.sections.UnaryExpressionSection"
                filter="org.polarsys.capella.core.data.information.datavalue.properties.sections.UnaryExpressionSection"
                id="org.polarsys.capella.core.data.information.datavalue.section.UnaryExpression"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.datavalue.UnaryExpression">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.datavalue.properties.sections.ValuePartSection"
                filter="org.polarsys.capella.core.data.information.datavalue.properties.sections.ValuePartSection"
                id="org.polarsys.capella.core.data.information.datavalue.section.ValuePart"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.datavalue.ValuePart">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.datavalue.properties.sections.OpaqueExpressionSection"
+               filter="org.polarsys.capella.core.data.information.datavalue.properties.sections.OpaqueExpressionSection"
                id="org.polarsys.capella.core.data.information.datavalue.properties.OpaqueExpression"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.datavalue.OpaqueExpression">
-            </input>
          </propertySection>
       </propertySections>
    </extension>

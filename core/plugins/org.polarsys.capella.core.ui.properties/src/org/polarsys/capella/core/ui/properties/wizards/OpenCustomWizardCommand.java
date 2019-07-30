@@ -19,8 +19,8 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.views.properties.PropertySheet;
-
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 
 /**
  * Open a property wizard for a ModelElement inside a command.
@@ -36,6 +36,10 @@ public class OpenCustomWizardCommand extends AbstractReadWriteCommand {
     this.object = object;
   }
 
+  public boolean canExecute() {
+    return TransactionHelper.getExecutionManager(object) != null;
+  }
+  
   public void run() {
     canceled = false;
     if (createCustomWizardHandler().openWizard(object) == false) {

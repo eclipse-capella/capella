@@ -18,49 +18,36 @@
                filter="org.polarsys.capella.core.data.information.communication.properties.sections.CommunicationLinkSection"
                id="org.polarsys.capella.core.data.information.communication.properties.sections.CommunicationLinkSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.communication.CommunicationLink">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.communication.properties.sections.ExceptionSection"
+               filter="org.polarsys.capella.core.data.information.communication.properties.sections.ExceptionSection"
                id="org.polarsys.capella.core.data.information.communication.properties.sections.ExceptionSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.communication.Exception">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.communication.properties.sections.MessageReferenceSection"
+               filter="org.polarsys.capella.core.data.information.communication.properties.sections.MessageReferenceSection"
                id="org.polarsys.capella.core.data.information.communication.properties.sections.MessageReferenceSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.communication.MessageReference">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.communication.properties.sections.MessageSection"
+               filter="org.polarsys.capella.core.data.information.communication.properties.sections.MessageSection"
                id="org.polarsys.capella.core.data.information.communication.properties.sections.MessageSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.communication.Message">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.communication.properties.sections.SignalInstanceSection"
+               filter="org.polarsys.capella.core.data.information.communication.properties.sections.SignalInstanceSection"
                id="org.polarsys.capella.core.data.information.communication.properties.sections.SignalInstanceSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.communication.SignalInstance">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.communication.properties.sections.SignalSection"
+               filter="org.polarsys.capella.core.data.information.communication.properties.sections.SignalSection"
                id="org.polarsys.capella.core.data.information.communication.properties.sections.SignalSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.communication.Signal">
-            </input>
          </propertySection>
       </propertySections>
    </extension>

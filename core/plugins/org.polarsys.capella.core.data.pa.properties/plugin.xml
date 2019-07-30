@@ -18,81 +18,54 @@
                filter="org.polarsys.capella.core.data.pa.properties.sections.LogicalArchitectureRealizationSection"
                id="org.polarsys.capella.core.data.pa.properties.sections.LogicalArchitectureRealizationSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.pa.LogicalArchitectureRealization">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.pa.properties.sections.LogicalInterfaceRealizationSection"
                filter="org.polarsys.capella.core.data.pa.properties.sections.LogicalInterfaceRealizationSection"
                id="org.polarsys.capella.core.data.pa.properties.sections.LogicalInterfaceRealizationSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.pa.LogicalInterfaceRealization">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.pa.properties.sections.PhysicalArchitecturePkgSection"
                filter="org.polarsys.capella.core.data.pa.properties.sections.PhysicalArchitecturePkgSection"
                id="org.polarsys.capella.core.data.pa.properties.sections.PhysicalArchitecturePkgSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.pa.PhysicalArchitecturePkg">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.pa.properties.sections.PhysicalArchitectureSection"
                filter="org.polarsys.capella.core.data.pa.properties.sections.PhysicalArchitectureSection"
                id="org.polarsys.capella.core.data.pa.properties.sections.PhysicalArchitectureSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.pa.PhysicalArchitecture">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.pa.properties.sections.PhysicalComponentPkgSection"
                filter="org.polarsys.capella.core.data.pa.properties.sections.PhysicalComponentPkgSection"
                id="org.polarsys.capella.core.data.pa.properties.sections.PhysicalComponentPkgSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.pa.PhysicalComponentPkg">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.pa.properties.sections.PhysicalComponentSection"
                filter="org.polarsys.capella.core.data.pa.properties.sections.PhysicalComponentSection"
                id="org.polarsys.capella.core.data.pa.properties.sections.PhysicalComponentSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.pa.PhysicalComponent">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.pa.properties.sections.PhysicalFunctionPkgSection"
                filter="org.polarsys.capella.core.data.pa.properties.sections.PhysicalFunctionPkgSection"
                id="org.polarsys.capella.core.data.pa.properties.sections.PhysicalFunctionPkgSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.pa.PhysicalFunctionPkg">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.pa.properties.sections.PhysicalFunctionSection"
                filter="org.polarsys.capella.core.data.pa.properties.sections.PhysicalFunctionSection"
                id="org.polarsys.capella.core.data.pa.properties.sections.PhysicalFunctionSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.pa.PhysicalFunction">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.pa.properties.sections.PhysicalNodeSection"
                filter="org.polarsys.capella.core.data.pa.properties.sections.PhysicalNodeSection"
                id="org.polarsys.capella.core.data.pa.properties.sections.PhysicalNodeSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.pa.PhysicalNode">
-            </input>
          </propertySection>
       </propertySections>
    </extension>

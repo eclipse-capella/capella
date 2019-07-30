@@ -141,7 +141,7 @@ public class OpaqueExpressionSection extends NamedElementSection {
    */
   @Override
   public boolean select(Object toTest) {
-    return true;
+    return toTest instanceof OpaqueExpression;
   }
   
   private OpaqueExpression getOpaqueExpression(){

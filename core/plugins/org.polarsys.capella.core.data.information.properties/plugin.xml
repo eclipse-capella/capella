@@ -18,180 +18,120 @@
                filter="org.polarsys.capella.core.data.information.properties.sections.AssociationSection"
                id="org.polarsys.capella.core.data.information.section.Association"
                tab="BaseCapella">
-          	<input
-                 type="org.polarsys.capella.core.data.information.Association">
-          	</input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.ClassSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.ClassSection"
                id="org.polarsys.capella.core.data.information.section.Class"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.Class">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.CollectionSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.CollectionSection"
                id="org.polarsys.capella.core.data.information.section.Collection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.Collection">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.DataPkgSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.DataPkgSection"
                id="org.polarsys.capella.core.data.information.section.DataPkg"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.DataPkg">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.DomainElementSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.DomainElementSection"
                id="org.polarsys.capella.core.data.information.section.DomainElement"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.DomainElement">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemSection"
                id="org.polarsys.capella.core.data.information.section.ExchangeItem"
                tab="BaseCapella">
-          	<input
-                 type="org.polarsys.capella.core.data.information.ExchangeItem">
-          	</input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemElementSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemElementSection"
                id="org.polarsys.capella.core.data.information.section.ExchangeItemElement"
                tab="BaseCapella">
-          	<input
-                 type="org.polarsys.capella.core.data.information.ExchangeItemElement">
-          	</input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemInstanceSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemInstanceSection"
                id="org.polarsys.capella.core.data.information.section.ExchangeItemInstance"
                tab="BaseCapella">
-          	<input
-                 type="org.polarsys.capella.core.data.information.ExchangeItemInstance">
-          	</input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemRealizationSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemRealizationSection"
                id="org.polarsys.capella.core.data.information.section.ExchangeItemRealization"
                tab="BaseCapella">
-          	<input
-                 type="org.polarsys.capella.core.data.information.ExchangeItemRealization">
-          	</input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.InformationRealizationSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.InformationRealizationSection"
                id="org.polarsys.capella.core.data.information.section.InformationRealization"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.InformationRealization">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.KeyPartSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.KeyPartSection"
                id="org.polarsys.capella.core.data.information.section.KeyPart"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.KeyPart">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.OperationAllocationSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.OperationAllocationSection"
                id="org.polarsys.capella.core.data.information.section.OperationAllocation"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.OperationAllocation">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.ParameterSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.ParameterSection"
                id="org.polarsys.capella.core.data.information.section.Parameter"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.Parameter">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.PortAllocationSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.PortAllocationSection"
                id="org.polarsys.capella.core.data.information.section.PortAllocation"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.PortAllocation">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.PortRealizationSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.PortRealizationSection"
                id="org.polarsys.capella.core.data.information.section.PortRealization"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.PortRealization">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.PropertySection"
                filter="org.polarsys.capella.core.data.information.properties.sections.PropertySection"
                id="org.polarsys.capella.core.data.information.section.Property"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.Property">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.ServiceSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.ServiceSection"
                id="org.polarsys.capella.core.data.information.section.Service"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.Service">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.UnionPropertySection"
                filter="org.polarsys.capella.core.data.information.properties.sections.UnionPropertySection"
                id="org.polarsys.capella.core.data.information.section.UnionProperty"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.UnionProperty">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.UnionSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.UnionSection"
                id="org.polarsys.capella.core.data.information.section.Union"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.Union">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.UnitSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.UnitSection"
                id="org.polarsys.capella.core.data.information.section.Unit"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.Unit">
-            </input>
          </propertySection>
       </propertySections>
    </extension>

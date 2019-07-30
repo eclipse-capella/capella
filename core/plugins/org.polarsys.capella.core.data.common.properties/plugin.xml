@@ -18,198 +18,144 @@
                filter="org.polarsys.capella.core.data.common.properties.sections.AbstractStateRealizationSection"
                id="org.polarsys.capella.core.data.common.section.AbstractStateRealization"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacommon.AbstractStateRealization">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.common.properties.sections.ChoicePseudoStateSection"
                filter="org.polarsys.capella.core.data.common.properties.sections.ChoicePseudoStateSection"
                id="org.polarsys.capella.core.data.common.section.ChoicePseudoState"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacommon.ChoicePseudoState">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.common.properties.sections.FinalStateSection"
                filter="org.polarsys.capella.core.data.common.properties.sections.FinalStateSection"
                id="org.polarsys.capella.core.data.common.section.FinalState"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacommon.FinalState">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.common.properties.sections.ForkPseudoStateSection"
                filter="org.polarsys.capella.core.data.common.properties.sections.ForkPseudoStateSection"
                id="org.polarsys.capella.core.data.common.section.ForkPseudoState"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacommon.ForkPseudoState">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.common.properties.sections.EntryPointPseudoStateSection"
                filter="org.polarsys.capella.core.data.common.properties.sections.EntryPointPseudoStateSection"
                id="org.polarsys.capella.core.data.common.section.EntryPointPseudoState"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacommon.EntryPointPseudoState">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.common.properties.sections.ExitPointPseudoStateSection"
                filter="org.polarsys.capella.core.data.common.properties.sections.ExitPointPseudoStateSection"
                id="org.polarsys.capella.core.data.common.section.ExitPointPseudoState"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacommon.ExitPointPseudoState">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.common.properties.sections.ShallowHistoryPseudoStateSection"
                filter="org.polarsys.capella.core.data.common.properties.sections.ShallowHistoryPseudoStateSection"
                id="org.polarsys.capella.core.data.common.section.ShallowHistoryPseudoState"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacommon.ShallowHistoryPseudoState">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.common.properties.sections.DeepHistoryPseudoStateSection"
                filter="org.polarsys.capella.core.data.common.properties.sections.DeepHistoryPseudoStateSection"
                id="org.polarsys.capella.core.data.common.section.DeepHistoryPseudoState"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacommon.DeepHistoryPseudoState">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.common.properties.sections.GenericTraceSection"
                filter="org.polarsys.capella.core.data.common.properties.sections.GenericTraceSection"
                id="org.polarsys.capella.core.data.common.section.GenericTraceState"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacommon.GenericTrace">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.common.properties.sections.InitialPseudoStateSection"
                filter="org.polarsys.capella.core.data.common.properties.sections.InitialPseudoStateSection"
                id="org.polarsys.capella.core.data.common.section.InitialPseudoState"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacommon.InitialPseudoState">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.common.properties.sections.JoinPseudoStateSection"
                filter="org.polarsys.capella.core.data.common.properties.sections.JoinPseudoStateSection"
                id="org.polarsys.capella.core.data.common.section.JoinPseudoState"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacommon.JoinPseudoState">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.common.properties.sections.ModeSection"
                filter="org.polarsys.capella.core.data.common.properties.sections.ModeSection"
                id="org.polarsys.capella.core.data.common.section.Mode"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacommon.Mode">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.common.properties.sections.RegionSection"
                filter="org.polarsys.capella.core.data.common.properties.sections.RegionSection"
                id="org.polarsys.capella.core.data.common.section.Region"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacommon.Region">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.common.properties.sections.StateSection"
                filter="org.polarsys.capella.core.data.common.properties.sections.StateSection"
                id="org.polarsys.capella.core.data.common.section.State"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacommon.State">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.common.properties.sections.StateMachineSection"
                filter="org.polarsys.capella.core.data.common.properties.sections.StateMachineSection"
                id="org.polarsys.capella.core.data.common.section.StateMachine"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacommon.StateMachine">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.common.properties.sections.StateTransitionSection"
                filter="org.polarsys.capella.core.data.common.properties.sections.StateTransitionSection"
                id="org.polarsys.capella.core.data.common.section.StateTransition"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacommon.StateTransition">
-            </input>
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.common.properties.sections.StateEventRealizationSection"
+               filter="org.polarsys.capella.core.data.common.properties.sections.StateEventRealizationSection"
+               id="org.polarsys.capella.core.data.common.section.StateEventRealizationSection"
+               tab="BaseCapella">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.common.properties.sections.StateTransitionRealizationSection"
                filter="org.polarsys.capella.core.data.common.properties.sections.StateTransitionRealizationSection"
                id="org.polarsys.capella.core.data.common.section.StateTransitionRealization"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacommon.StateTransitionRealization">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.common.properties.sections.TerminatePseudoStateSection"
                filter="org.polarsys.capella.core.data.common.properties.sections.TerminatePseudoStateSection"
                id="org.polarsys.capella.core.data.common.section.TerminatePseudoState"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacommon.TerminatePseudoState">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.common.properties.sections.TransfoLinkSection"
                filter="org.polarsys.capella.core.data.common.properties.sections.TransfoLinkSection"
                id="org.polarsys.capella.core.data.common.section.TransfoLink"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacommon.TransfoLink">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.common.properties.sections.TimeEventSection"
                filter="org.polarsys.capella.core.data.common.properties.sections.TimeEventSection"
                id="org.polarsys.capella.core.data.common.section.TimeEventSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacommon.TimeEvent">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.common.properties.sections.ChangeEventSection"
                filter="org.polarsys.capella.core.data.common.properties.sections.ChangeEventSection"
                id="org.polarsys.capella.core.data.common.section.ChangeEventSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacommon.ChangeEvent">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.common.properties.sections.CapabilityRealizationInvolvementSection"
                filter="org.polarsys.capella.core.data.common.properties.sections.CapabilityRealizationInvolvementSection"
                id="org.polarsys.capella.core.data.common.section.SystemComponentCapabilityRealizationInvolvement"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement">
-            </input>
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.common.properties.sections.JustificationLinkSection"
+               filter="org.polarsys.capella.core.data.common.properties.sections.JustificationLinkSection"
+               id="org.polarsys.capella.core.data.common.section.JustificationLinkSection"
+               tab="BaseCapella">
          </propertySection>
       </propertySections>
    </extension>
@@ -312,6 +258,12 @@
                tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
+               class="org.polarsys.capella.core.data.common.properties.sections.StateEventRealizationSection"
+               filter="org.polarsys.capella.core.data.common.properties.sections.StateEventRealizationSection"
+               id="org.polarsys.capella.core.data.common.section.StateEventRealizationSection"
+               tab="BaseSiriusDiagram">
+         </propertySection>
+         <propertySection
                class="org.polarsys.capella.core.data.common.properties.sections.StateTransitionRealizationSection"
                filter="org.polarsys.capella.core.data.common.properties.sections.StateTransitionRealizationSection"
                id="org.polarsys.capella.core.data.common.section.StateTransitionRealizationBasePropertySection"
@@ -345,6 +297,12 @@
                class="org.polarsys.capella.core.data.common.properties.sections.CapabilityRealizationInvolvementSection"
                filter="org.polarsys.capella.core.data.common.properties.sections.CapabilityRealizationInvolvementSection"
                id="org.polarsys.capella.core.data.common.section.SystemComponentCapabilityRealizationInvolvementBasePropertySection"
+               tab="BaseSiriusDiagram">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.common.properties.sections.JustificationLinkSection"
+               filter="org.polarsys.capella.core.data.common.properties.sections.JustificationLinkSection"
+               id="org.polarsys.capella.core.data.common.section.JustificationLinkSection"
                tab="BaseSiriusDiagram">
          </propertySection>
       </propertySections>
@@ -448,6 +406,12 @@
                tab="BaseSiriusTable">
          </propertySection>
          <propertySection
+               class="org.polarsys.capella.core.data.common.properties.sections.StateEventRealizationSection"
+               filter="org.polarsys.capella.core.data.common.properties.sections.StateEventRealizationSection"
+               id="org.polarsys.capella.core.data.common.section.StateEventRealizationSection"
+               tab="BaseSiriusTable">
+         </propertySection>
+         <propertySection
                class="org.polarsys.capella.core.data.common.properties.sections.StateTransitionRealizationSection"
                filter="org.polarsys.capella.core.data.common.properties.sections.StateTransitionRealizationSection"
                id="org.polarsys.capella.core.data.common.section.StateTransitionRealizationBasePropertySection"
@@ -481,6 +445,12 @@
                class="org.polarsys.capella.core.data.common.properties.sections.CapabilityRealizationInvolvementSection"
                filter="org.polarsys.capella.core.data.common.properties.sections.CapabilityRealizationInvolvementSection"
                id="org.polarsys.capella.core.data.common.section.SystemComponentCapabilityRealizationInvolvementBasePropertySection"
+               tab="BaseSiriusTable">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.common.properties.sections.JustificationLinkSection"
+               filter="org.polarsys.capella.core.data.common.properties.sections.JustificationLinkSection"
+               id="org.polarsys.capella.core.data.common.section.JustificationLinkSection"
                tab="BaseSiriusTable">
          </propertySection>
       </propertySections>
