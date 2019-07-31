@@ -13050,7 +13050,7 @@
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="ShowHideActors" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.ShowHideMCComponents">
                     <parameters name="view" value="aql:elementView"/>
                     <parameters name="selected components" value="aql:self.void2Null(selectedActors)"/>
-                    <parameters name="components" value="aql:visibleActors"/>
+                    <parameters name="visible components" value="aql:visibleActors"/>
                     <parameters name="visible component views" value="aql:visibleActorViews"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>

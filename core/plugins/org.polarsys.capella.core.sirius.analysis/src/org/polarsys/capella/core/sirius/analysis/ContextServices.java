@@ -383,8 +383,7 @@ public class ContextServices {
     return getDisplayedContainerViews(view, new Function<AbstractDNode, Boolean>() {
       @Override
       public Boolean apply(AbstractDNode node) {
-        return (node.getTarget() != null) && (node.getTarget() instanceof Component)
-            && ComponentExt.isActor(node.getTarget());
+        return node.getTarget() instanceof Component && ComponentExt.isActor(node.getTarget());
       }
     });
   }
