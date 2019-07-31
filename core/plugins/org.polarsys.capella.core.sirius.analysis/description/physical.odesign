@@ -3078,22 +3078,76 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="D&amp;D Actors From Project Explorer" precondition="aql:element.isActor() and element.canBeDropped(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Actor']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="D&amp;D Actors From Project Explorer" precondition="aql:element.getComponentType().oclIsKindOf(cs::Component) and element.isActor() and element.partitionableElementCanBeDropped(newViewContainer)" forceRefresh="true" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:Switch">
+                  <cases conditionExpression="aql:element.oclIsKindOf(cs::Part)">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                      <subModelOperations xsi:type="tool:Switch">
+                        <cases conditionExpression="aql:newSemanticContainer.oclIsKindOf(cs::Part) and newContainerView.target.getDeployedComponents()->includes(self)">
+                          <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']" containerViewExpression="var:newContainerView"/>
+                        </cases>
+                        <default>
+                          <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Actor']" containerViewExpression="var:newContainerView"/>
+                        </default>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </cases>
+                  <cases conditionExpression="aql:element.oclIsKindOf(cs::Component)">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.representingParts->first()">
+                      <subModelOperations xsi:type="tool:Switch">
+                        <cases conditionExpression="aql:newSemanticContainer.oclIsKindOf(cs::Part) and newContainerView.target.getDeployedComponents()->includes(self)">
+                          <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']" containerViewExpression="var:newContainerView"/>
+                        </cases>
+                        <default>
+                          <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Actor']" containerViewExpression="var:newContainerView"/>
+                        </default>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </cases>
+                </subModelOperations>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="D&amp;D Components From Project Explorer" precondition="aql:element.getComponentType().oclIsKindOf(cs::Component) and not (element.isActor()) and element.partitionableElementCanBeDropped(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="D&amp;D Components From Project Explorer" precondition="aql:element.getComponentType().oclIsKindOf(cs::Component) and not (element.isActor()) and element.partitionableElementCanBeDropped(newViewContainer)" forceRefresh="true" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:Switch">
+                  <cases conditionExpression="aql:element.oclIsKindOf(cs::Part)">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                      <subModelOperations xsi:type="tool:Switch">
+                        <cases conditionExpression="aql:newSemanticContainer.oclIsKindOf(cs::Part) and newContainerView.target.getDeployedComponents()->includes(self)">
+                          <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']" containerViewExpression="var:newContainerView"/>
+                        </cases>
+                        <default>
+                          <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']" containerViewExpression="var:newContainerView"/>
+                        </default>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </cases>
+                  <cases conditionExpression="aql:element.oclIsKindOf(cs::Component)">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.representingParts->first()">
+                      <subModelOperations xsi:type="tool:Switch">
+                        <cases conditionExpression="aql:newSemanticContainer.oclIsKindOf(cs::Part) and newContainerView.target.getDeployedComponents()->includes(self)">
+                          <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']" containerViewExpression="var:newContainerView"/>
+                        </cases>
+                        <default>
+                          <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']" containerViewExpression="var:newContainerView"/>
+                        </default>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </cases>
+                </subModelOperations>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="Reconnect PhysicalLink Source" precondition="aql:element.isValidABReconnectPhysicalLinkSource(source,target)" reconnectionKind="RECONNECT_SOURCE">

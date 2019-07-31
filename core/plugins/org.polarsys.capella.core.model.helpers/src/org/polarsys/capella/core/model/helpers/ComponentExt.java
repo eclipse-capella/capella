@@ -943,7 +943,6 @@ public class ComponentExt {
     return list;
   }
 
-
   /**
    * @return the list of Component direct common parent for componentA and componentB.
    * @return null if not have a direct common parent.
@@ -1405,7 +1404,7 @@ public class ComponentExt {
         Part visit = toVisit.removeFirst();
 
         if (visit instanceof Part) {
-          Part pvisit = (Part) visit;
+          Part pvisit = visit;
 
           Component parent = getDirectParent(pvisit);
           if (parent != null) {
@@ -1414,8 +1413,7 @@ public class ComponentExt {
 
             // Retrieve also generalization of
             if (addGeneralizationOfParents && (parent instanceof GeneralizableElement)) {
-              List<GeneralizableElement> elements = GeneralizableElementExt
-                  .getAllSuperGeneralizableElements((GeneralizableElement) parent);
+              List<GeneralizableElement> elements = GeneralizableElementExt.getAllSuperGeneralizableElements(parent);
               container.addAll(elements);
             }
 
@@ -1430,15 +1428,15 @@ public class ComponentExt {
                 }
               }
             }
+          }
 
-            for (DeploymentTarget target : getCache(PartExt::getDeployingElements, pvisit)) {
-              if (target instanceof Part) {
-                Part part = (Part) target;
-                if (!visited.contains(part)) {
-                  toVisit.addLast(part);
-                  result.add(part);
-                  visited.add(part);
-                }
+          for (DeploymentTarget target : getCache(PartExt::getDeployingElements, pvisit)) {
+            if (target instanceof Part) {
+              Part part = (Part) target;
+              if (!visited.contains(part)) {
+                toVisit.addLast(part);
+                result.add(part);
+                visited.add(part);
               }
             }
           }
@@ -1820,16 +1818,20 @@ public class ComponentExt {
   /**
    * Returns whether the given component is considered as an actor
    */
-  public static boolean isActor(Object object) {
-    Object component = object;
-    if (object instanceof Part) {
-      component = ((Part) object).getAbstractType();
+  public static boolean isActor(EObject object) {
+    if (object instanceof Component) {
+      return isActor((Component) object);
+    } else if (object instanceof Part) {
+      return isActor(((Part) object).getAbstractType());
     }
-    if (component instanceof Component && ((Component) component).isActor()) {
-      return true;
-    }
+
     return false;
   }
+
+  public static boolean isActor(Component component) {
+    return component.isActor();
+  }
+
   /**
    * Returns whether component used or require the exchange item by related interfaces
    */
@@ -2523,7 +2525,7 @@ public class ComponentExt {
     Iterator<Part> iterator = ownedParts.iterator();
     while (iterator.hasNext()) {
       Part next = iterator.next();
-      Part part = (Part) next;
+      Part part = next;
       AbstractType abstractType = part.getAbstractType();
       if (abstractType instanceof LogicalComponent) {
         LogicalComponent lson = (LogicalComponent) abstractType;
@@ -2550,7 +2552,7 @@ public class ComponentExt {
     Iterator<Part> iterator = ownedParts.iterator();
     while (iterator.hasNext()) {
       Part next = iterator.next();
-      Part part = (Part) next;
+      Part part = next;
       AbstractType abstractType = part.getAbstractType();
       if (abstractType instanceof Component) {
         Component lson = (Component) abstractType;
@@ -2643,7 +2645,7 @@ public class ComponentExt {
     }
     return availableElements;
   }
-  
+
   /**
    * 
    * @param component

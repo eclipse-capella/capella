@@ -160,16 +160,18 @@ public class PhysicalServices {
     return query.getAvailableElements(context);
   }
 
-  public List<EObject> getDeployedComponents(PhysicalComponent context) {
-    IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(PaPackage.Literals.PHYSICAL_COMPONENT,
-        CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__DEPLOYED_ELEMENT);
-    return query.getCurrentElements(context, false);
-  }
-
-  public List<EObject> getDeployedComponents(Part context) {
-    IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(CsPackage.Literals.PART,
-        CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__DEPLOYED_ELEMENT);
-    return query.getCurrentElements(context, false);
+  public List<EObject> getDeployedComponents(EObject context) {
+    if (context instanceof PhysicalComponent) {
+      IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(
+          PaPackage.Literals.PHYSICAL_COMPONENT, CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__DEPLOYED_ELEMENT);
+      return query.getCurrentElements(context, false);
+      
+    } else if (context instanceof Part) {
+      IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(CsPackage.Literals.PART,
+          CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__DEPLOYED_ELEMENT);
+      return query.getCurrentElements(context, false);
+    }
+    return Collections.emptyList();
   }
 
   public List<Part> getAvailableComponentsToDeploy(Part part, boolean behaviour) {

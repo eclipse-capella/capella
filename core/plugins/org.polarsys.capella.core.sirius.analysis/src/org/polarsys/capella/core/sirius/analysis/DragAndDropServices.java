@@ -18,11 +18,9 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNodeContainer;
-import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.HideLabelFilter;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.Classifier;
@@ -39,7 +37,6 @@ import org.polarsys.capella.core.data.information.Collection;
 import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.InformationPackage;
-import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.model.helpers.AssociationExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ClassExt;
@@ -53,14 +50,6 @@ public class DragAndDropServices {
   public boolean canBeDropped(EObject semanticObjectToDrop, EObject targetContainerView) {
     DDiagram currentDiagram = CapellaServices.getService().getDiagramContainer(targetContainerView);
 
-    if (currentDiagram.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)
-        || currentDiagram.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)
-        || currentDiagram.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      if (semanticObjectToDrop instanceof Component) {
-        return false;
-      }
-    }
-
     for (DDiagramElement anElement : currentDiagram.getDiagramElements()) {
       if (anElement.getTarget().equals(semanticObjectToDrop)) {
         return false;
@@ -71,9 +60,10 @@ public class DragAndDropServices {
     if (targetContainerView instanceof DSemanticDecorator) {
       DSemanticDecorator element = (DSemanticDecorator) targetContainerView;
       EObject target = element.getTarget();
-      if ((null != target) && (target instanceof CapellaElement) && (semanticObjectToDrop instanceof CapellaElement)) {
+      if ((target instanceof CapellaElement) && (semanticObjectToDrop instanceof CapellaElement)) {
         CapellaElement capellaElement = (CapellaElement) target;
-        if (!CapellaLayerCheckingExt.isElementFromCurrentOrUpperLayer((CapellaElement) semanticObjectToDrop, capellaElement)) {
+        if (!CapellaLayerCheckingExt.isElementFromCurrentOrUpperLayer((CapellaElement) semanticObjectToDrop,
+            capellaElement)) {
           return false;
         }
       }
@@ -82,62 +72,58 @@ public class DragAndDropServices {
     if (targetContainerView instanceof DDiagram) {
       return true;
     }
-    return CapellaServices.getService().isChild(((DSemanticDecorator) targetContainerView).getTarget(), semanticObjectToDrop);
+    return CapellaServices.getService().isChild(((DSemanticDecorator) targetContainerView).getTarget(),
+        semanticObjectToDrop);
   }
 
   public boolean partitionableElementCanBeDropped(Component semanticObjectToDrop, EObject targetContainerView) {
-    DSemanticDiagram currentDiagram = (DSemanticDiagram) CapellaServices.getService().getDiagramContainer(targetContainerView);
-
-    if ((currentDiagram.getTarget() != null)
-        && (BlockArchitectureExt.getRootBlockArchitecture(currentDiagram.getTarget()) instanceof OperationalAnalysis)) {
-
-      for (DDiagramElement anElement : currentDiagram.getDiagramElements()) {
-        if (anElement.getTarget().equals(semanticObjectToDrop)) {
-          return false;
-        }
-      }
-      if (targetContainerView instanceof DDiagram) {
-        return true;
-      }
-      if (currentDiagram.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-        if (CapellaServices.getService().getAllAncestors((Component) currentDiagram.getTarget()).contains(semanticObjectToDrop)) {
-          return false;
-        }
-      }
-      EObject target = ((DSemanticDecorator) targetContainerView).getTarget();
-      if (target instanceof Part) {
-        target = CsServices.getService().getComponentType((Part) target);
-      }
-      return CapellaServices.getService().getAllAncestors(semanticObjectToDrop).contains(target);
-
-    }
-
-    return false;
-  }
-
-  public boolean partitionableElementCanBeDropped(Part semanticObjectToDrop, EObject targetContainerView) {
-    // Check if the dragged element exists already in the diagram
+    
     if (targetContainerView instanceof DDiagramElement) {
-      for (DDiagramElement anElement : DiagramServices.getDiagramServices().getDiagramElements(
-          (DDiagramElement) targetContainerView)) {
+      for (DDiagramElement anElement : DiagramServices.getDiagramServices().getDiagramElements(targetContainerView)) {
         if ((anElement.getTarget() != null) && anElement.getTarget().equals(semanticObjectToDrop)) {
           return false;
         }
       }
     }
-
-    DSemanticDecorator decorator = (DSemanticDecorator) targetContainerView;
-
-    if (!CsServices.getService().isMultipartMode((ModelElement) semanticObjectToDrop)) {
-      Component type = (Component) CsServices.getService().getComponentType(
-          (Part) semanticObjectToDrop);
-      return CsServices.getService().getABShowHideComponent(decorator).contains(type);
+    
+    DSemanticDecorator decorator = (DSemanticDecorator)targetContainerView;
+    if (targetContainerView instanceof DDiagram) {
+      return true;
     }
-    return CsServices.getService().getABShowHideComponent(decorator).contains(semanticObjectToDrop);
+    for (Part part : semanticObjectToDrop.getRepresentingParts()) {
+      java.util.Collection<Part> parents = ComponentExt.getPartAncestors(part);
+      if (decorator.getTarget() instanceof Part && parents.contains(decorator.getTarget())) {
+        return true;
+      }
+      if (decorator.getTarget() instanceof Component) {
+        for (Part partE : ((Component)decorator.getTarget()).getRepresentingParts()) {
+          if (parents.contains(partE))
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  public boolean partitionableElementCanBeDropped(Part part, EObject targetContainerView) {
+    DSemanticDecorator decorator = (DSemanticDecorator)targetContainerView;
+    java.util.Collection<Part> parents = ComponentExt.getPartAncestors(part);
+    if (decorator.getTarget() instanceof Part && parents.contains(decorator.getTarget())) {
+      return true;
+    }
+    if (decorator.getTarget() instanceof Component) {
+      for (Part partE : ((Component)decorator.getTarget()).getRepresentingParts()) {
+        if (parents.contains(partE))
+        return true;
+      }
+    }
+    return false;
   }
 
   /**
-   * Returns whether the given element from model can be dropped as an interface in the given newViewContainer used in common.odesign
+   * Returns whether the given element from model can be dropped as an interface in the given newViewContainer used in
+   * common.odesign
+   * 
    * @param item
    * @param itf
    */
@@ -160,7 +146,9 @@ public class DragAndDropServices {
   }
 
   /**
-   * Performs drop as interface of the given element from model into the given newViewContainer used in common.odesign, interface diagrams
+   * Performs drop as interface of the given element from model into the given newViewContainer used in common.odesign,
+   * interface diagrams
+   * 
    * @param element
    * @param newViewContainer
    */
@@ -169,7 +157,9 @@ public class DragAndDropServices {
   }
 
   /**
-   * Returns whether the given element from diagram can be dropped as an interface in the given newViewContainer used in common.odesign, interface diagrams
+   * Returns whether the given element from diagram can be dropped as an interface in the given newViewContainer used in
+   * common.odesign, interface diagrams
+   * 
    * @param item
    * @param itf
    */
@@ -184,7 +174,9 @@ public class DragAndDropServices {
   }
 
   /**
-   * Performs drop as interface of the given element from diagram into the given newViewContainer used in common.odesign, interface diagrams
+   * Performs drop as interface of the given element from diagram into the given newViewContainer used in
+   * common.odesign, interface diagrams
+   * 
    * @param element
    * @param newViewContainer
    */
@@ -213,7 +205,8 @@ public class DragAndDropServices {
    */
 
   @SuppressWarnings("unchecked")
-  public void dndCDClassOrCollectionFromDiagram(EObject element, DSemanticDecorator newViewContainer, EObject oldContainer) {
+  public void dndCDClassOrCollectionFromDiagram(EObject element, DSemanticDecorator newViewContainer,
+      EObject oldContainer) {
     if (!((element instanceof Class) || (element instanceof Collection))) {
       return;
     }
@@ -252,8 +245,9 @@ public class DragAndDropServices {
   }
 
   /**
-   * Returns whether the given element from model can be dropped as an exchange item allocation in the given newViewContainer used in common.odesign,
-   * interface diagrams
+   * Returns whether the given element from model can be dropped as an exchange item allocation in the given
+   * newViewContainer used in common.odesign, interface diagrams
+   * 
    * @param item
    * @param itf
    */
@@ -285,12 +279,14 @@ public class DragAndDropServices {
   }
 
   /**
-   * Returns whether the given element from diagram can be dropped as an exchange item allocation in the given newViewContainer used in common.odesign,
-   * interface diagrams
+   * Returns whether the given element from diagram can be dropped as an exchange item allocation in the given
+   * newViewContainer used in common.odesign, interface diagrams
+   * 
    * @param item
    * @param itf
    */
-  public boolean isValidIDDndAllocationExchangeItemFromDiagram(EObject element, DSemanticDecorator newViewContainer, EObject oldContainer) {
+  public boolean isValidIDDndAllocationExchangeItemFromDiagram(EObject element, DSemanticDecorator newViewContainer,
+      EObject oldContainer) {
     // we disable exchange item from exchange item to interface, sirius destroy always the source view.
     // we disable exchange item allocation dnd between 2 interfaces. a warning is generated by sirius.
     // we disable dnd from EIA to diagram. a dnd always dragndrop the source of the drag. (we can't create a view for
@@ -321,7 +317,9 @@ public class DragAndDropServices {
   }
 
   /**
-   * Performs drop as exchange item allocation of the given element from model into the given newViewContainer used in common.odesign, interface diagrams
+   * Performs drop as exchange item allocation of the given element from model into the given newViewContainer used in
+   * common.odesign, interface diagrams
+   * 
    * @param element
    * @param newViewContainer
    */
@@ -349,11 +347,14 @@ public class DragAndDropServices {
   }
 
   /**
-   * Performs drop as exchange item allocation of the given element from diagram into the given newViewContainer used in common.odesign, interface diagrams
+   * Performs drop as exchange item allocation of the given element from diagram into the given newViewContainer used in
+   * common.odesign, interface diagrams
+   * 
    * @param element
    * @param newViewContainer
    */
-  public void dndIDAllocationExchangeItemFromDiagram(EObject element, DSemanticDecorator newViewContainer, EObject oldContainer) {
+  public void dndIDAllocationExchangeItemFromDiagram(EObject element, DSemanticDecorator newViewContainer,
+      EObject oldContainer) {
     EObject target = newViewContainer.getTarget();
     DDiagram diagram = CapellaServices.getService().getDiagramContainer(newViewContainer);
 
@@ -397,14 +398,17 @@ public class DragAndDropServices {
   }
 
   /**
-   * Returns whether the given element from model can be dropped as a component port in the given newViewContainer used in common.odesign, interface diagrams
+   * Returns whether the given element from model can be dropped as a component port in the given newViewContainer used
+   * in common.odesign, interface diagrams
+   * 
    * @param item
    * @param itf
    */
   public boolean isValidIDDndComponentPortFromModel(EObject element, DSemanticDecorator newViewContainer) {
     if ((element instanceof ComponentPort) && (newViewContainer instanceof DDiagramElement)) {
       EObject target = newViewContainer.getTarget();
-      if ((target != null) && (target instanceof Component) && (element.eContainer() != null) && element.eContainer().equals(target)) {
+      if ((target != null) && (target instanceof Component) && (element.eContainer() != null)
+          && element.eContainer().equals(target)) {
         DDiagram diagram = CapellaServices.getService().getDiagramContainer(newViewContainer);
         return !DiagramServices.getDiagramServices().isOnDiagram(diagram, element);
       }
@@ -413,7 +417,9 @@ public class DragAndDropServices {
   }
 
   /**
-   * Performs drop as component port of the given element from model into the given newViewContainer used in common.odesign, interface diagrams
+   * Performs drop as component port of the given element from model into the given newViewContainer used in
+   * common.odesign, interface diagrams
+   * 
    * @param element
    * @param newViewContainer
    */
@@ -438,11 +444,14 @@ public class DragAndDropServices {
   }
 
   /**
-   * Performs drop as component port of the given element from diagram into the given newViewContainer used in common.odesign, interface diagrams
+   * Performs drop as component port of the given element from diagram into the given newViewContainer used in
+   * common.odesign, interface diagrams
+   * 
    * @param element
    * @param newViewContainer
    */
-  public void dndIDComponentPortFromDiagram(EObject element, DSemanticDecorator newViewContainer, EObject oldContainer) {
+  public void dndIDComponentPortFromDiagram(EObject element, DSemanticDecorator newViewContainer,
+      EObject oldContainer) {
     ComponentPort port = (ComponentPort) element;
     if ((newViewContainer.getTarget() != null) && (newViewContainer.getTarget() instanceof Component)) {
       Component cs = (Component) newViewContainer.getTarget();
@@ -455,12 +464,14 @@ public class DragAndDropServices {
   }
 
   /**
-   * Returns whether the given element from diagram can be dropped as a component port in the given newViewContainer used in common.odesign, interface
-   * diagrams
+   * Returns whether the given element from diagram can be dropped as a component port in the given newViewContainer
+   * used in common.odesign, interface diagrams
+   * 
    * @param item
    * @param itf
    */
-  public boolean isValidIDDndComponentPortFromDiagram(EObject element, DSemanticDecorator newViewContainer, EObject oldContainer) {
+  public boolean isValidIDDndComponentPortFromDiagram(EObject element, DSemanticDecorator newViewContainer,
+      EObject oldContainer) {
     if (element instanceof ComponentPort) {
       if ((newViewContainer.getTarget() != null) && (newViewContainer.getTarget() instanceof Component)) {
         return CsServices.getService().linkReconnectSource(oldContainer, oldContainer, newViewContainer.getTarget());
@@ -470,7 +481,9 @@ public class DragAndDropServices {
   }
 
   /**
-   * Returns whether the given element from model can be dropped as a component in the given newViewContainer used in common.odesign, interface diagrams
+   * Returns whether the given element from model can be dropped as a component in the given newViewContainer used in
+   * common.odesign, interface diagrams
+   * 
    * @param item
    * @param itf
    */
@@ -483,7 +496,8 @@ public class DragAndDropServices {
       }
       if (newViewContainer instanceof DNodeContainer) {
         EObject target = newViewContainer.getTarget();
-        if ((target != null) && CsServices.getService().getParentContainersByParts((Component) element).contains(target)) {
+        if ((target != null)
+            && CsServices.getService().getParentContainersByParts((Component) element).contains(target)) {
           return !DiagramServices.getDiagramServices().isOnDiagram((DNodeContainer) newViewContainer, element);
         }
       }
@@ -492,7 +506,9 @@ public class DragAndDropServices {
   }
 
   /**
-   * Performs drop as component of the given element from model into the given newViewContainer used in common.odesign, interface diagrams
+   * Performs drop as component of the given element from model into the given newViewContainer used in common.odesign,
+   * interface diagrams
+   * 
    * @param element
    * @param newViewContainer
    */
@@ -501,12 +517,15 @@ public class DragAndDropServices {
   }
 
   /**
-   * Returns whether the given element from diagram can be dropped as a component in the given newViewContainer used in common.odesign, interface diagrams
+   * Returns whether the given element from diagram can be dropped as a component in the given newViewContainer used in
+   * common.odesign, interface diagrams
+   * 
    * @param item
    * @param itf
    */
 
-  public boolean isValidIDDndComponentFromDiagram(EObject element, DSemanticDecorator newViewContainer, EObject oldContainer) {
+  public boolean isValidIDDndComponentFromDiagram(EObject element, DSemanticDecorator newViewContainer,
+      EObject oldContainer) {
     EObject newContainer = CsServices.getService().getIBTarget(newViewContainer);
     if (ComponentExt.isActor(element)) {
       return false;
@@ -524,11 +543,14 @@ public class DragAndDropServices {
   }
 
   /**
-   * Performs drop as component of the given element from diagram into the given newViewContainer used in common.odesign, interface diagrams
+   * Performs drop as component of the given element from diagram into the given newViewContainer used in
+   * common.odesign, interface diagrams
+   * 
    * @param element
    * @param newViewContainer
    */
   public void dndIDComponentFromDiagram(EObject element, DSemanticDecorator newViewContainer, EObject oldContainer) {
-    ABServices.getService().dndABComponent((NamedElement) element, (NamedElement) oldContainer, (NamedElement) newViewContainer.getTarget());
+    ABServices.getService().dndABComponent((NamedElement) element, (NamedElement) oldContainer,
+        (NamedElement) newViewContainer.getTarget());
   }
 }

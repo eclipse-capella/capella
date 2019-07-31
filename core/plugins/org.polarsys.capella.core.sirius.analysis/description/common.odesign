@@ -4253,7 +4253,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D PV From Project Explorer" forceRefresh="true" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D PV From Project Explorer" precondition="aql:self.oclIsKindOf(capellacore::AbstractPropertyValue) or self.oclIsKindOf(capellacore::PropertyValueGroup)" forceRefresh="true" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
