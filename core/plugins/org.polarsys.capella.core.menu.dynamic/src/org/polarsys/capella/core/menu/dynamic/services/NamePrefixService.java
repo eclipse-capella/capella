@@ -21,7 +21,7 @@ import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.pa.PaPackage;
-import org.polarsys.capella.core.model.helpers.ActorExt;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 
 public class NamePrefixService implements INamePrefixService {
 
@@ -30,17 +30,17 @@ public class NamePrefixService implements INamePrefixService {
   public NamePrefixService() {
     prefixes = new HashMap<>();
 
-    prefixes.put(OaPackage.Literals.ENTITY,
-        o -> ActorExt.isActorHuman(o) ? CustomNamePrefixes.OPERATIONAL_ACTOR : CustomNamePrefixes.OPERATIONAL_ENTITY);
+    prefixes.put(OaPackage.Literals.ENTITY, o -> ComponentExt.isActorHuman(o) ? CustomNamePrefixes.OPERATIONAL_ACTOR
+        : CustomNamePrefixes.OPERATIONAL_ENTITY);
 
     prefixes.put(CtxPackage.Literals.SYSTEM_COMPONENT,
-        o -> ActorExt.isActorHuman(o) ? CustomNamePrefixes.SYSTEM_ACTOR : CustomNamePrefixes.SYSTEM_COMPONENT);
+        o -> ComponentExt.isActorHuman(o) ? CustomNamePrefixes.SYSTEM_ACTOR : CustomNamePrefixes.SYSTEM_COMPONENT);
 
     prefixes.put(LaPackage.Literals.LOGICAL_COMPONENT,
-        o -> ActorExt.isActorHuman(o) ? CustomNamePrefixes.LOGICAL_ACTOR : CustomNamePrefixes.LOGICAL_COMPONENT);
+        o -> ComponentExt.isActorHuman(o) ? CustomNamePrefixes.LOGICAL_ACTOR : CustomNamePrefixes.LOGICAL_COMPONENT);
 
     prefixes.put(PaPackage.Literals.PHYSICAL_COMPONENT,
-        o -> ActorExt.isActorHuman(o) ? CustomNamePrefixes.PHYSICAL_ACTOR : CustomNamePrefixes.PHYSICAL_COMPONENT);
+        o -> ComponentExt.isActorHuman(o) ? CustomNamePrefixes.PHYSICAL_ACTOR : CustomNamePrefixes.PHYSICAL_COMPONENT);
   }
 
   @Override

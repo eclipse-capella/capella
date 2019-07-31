@@ -23,8 +23,9 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.polarsys.capella.common.menu.dynamic.util.DynamicCommandParameter;
 import org.polarsys.capella.core.data.gen.edit.decorators.ItemProviderAdapterDecorator;
 import org.polarsys.capella.core.data.gen.edit.decorators.Messages;
+import org.polarsys.capella.core.data.oa.EntityPkg;
 import org.polarsys.capella.core.data.oa.OaPackage;
-import org.polarsys.capella.core.model.helpers.ActorExt;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 
 public class EntityPkgItemProviderDecorator extends ItemProviderAdapterDecorator implements IEditingDomainItemProvider,
     IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
@@ -39,11 +40,15 @@ public class EntityPkgItemProviderDecorator extends ItemProviderAdapterDecorator
     Collection<Object> newChildDescriptors = (Collection<Object>) super.getNewChildDescriptors(object, editingDomain,
         sibling);
 
-    DynamicCommandParameter descriptor = new DynamicCommandParameter(null,
-        OaPackage.Literals.ENTITY_PKG__OWNED_ENTITIES, ActorExt.createOperationalActor(),
-        Messages.CreationMenuLabel_OperationalActor);
+    EntityPkg container = (EntityPkg) object;
 
-    newChildDescriptors.add(descriptor);
+    if (ComponentExt.canCreateABActor(container)) {
+      DynamicCommandParameter descriptor = new DynamicCommandParameter(null,
+          OaPackage.Literals.ENTITY_PKG__OWNED_ENTITIES, ComponentExt.createOperationalActor(),
+          Messages.CreationMenuLabel_OperationalActor);
+
+      newChildDescriptors.add(descriptor);
+    }
 
     return newChildDescriptors;
   }

@@ -25,7 +25,7 @@ import org.polarsys.capella.core.data.gen.edit.decorators.ItemProviderAdapterDec
 import org.polarsys.capella.core.data.gen.edit.decorators.Messages;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.model.helpers.ActorExt;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 
 public class LogicalComponentItemProviderDecorator extends ItemProviderAdapterDecorator
     implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
@@ -43,9 +43,9 @@ public class LogicalComponentItemProviderDecorator extends ItemProviderAdapterDe
 
     LogicalComponent container = (LogicalComponent) object;
 
-    if (ActorExt.canContainSubLogicalActor(container)) {
+    if (ComponentExt.canCreateABActor(container)) {
       DynamicCommandParameter descriptor = new DynamicCommandParameter(null,
-          LaPackage.Literals.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENTS, ActorExt.createLogicalActor(),
+          LaPackage.Literals.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENTS, ComponentExt.createLogicalActor(),
           Messages.CreationMenuLabel_LogicalActor);
 
       newChildDescriptors.add(descriptor);

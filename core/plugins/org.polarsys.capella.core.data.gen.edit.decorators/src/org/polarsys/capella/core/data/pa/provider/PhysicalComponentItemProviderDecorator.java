@@ -26,7 +26,7 @@ import org.polarsys.capella.core.data.gen.edit.decorators.Messages;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
-import org.polarsys.capella.core.model.helpers.ActorExt;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 
 public class PhysicalComponentItemProviderDecorator extends ItemProviderAdapterDecorator
     implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
@@ -52,13 +52,11 @@ public class PhysicalComponentItemProviderDecorator extends ItemProviderAdapterD
 
     PhysicalComponent container = (PhysicalComponent) object;
 
-    if (ActorExt.canContainSubPhysicalActor(container)) {
-      PhysicalComponent actor = ActorExt.createPhysicalActor();
-      actor.setKind(container.getKind());
+    if (ComponentExt.canCreateABActor(container)) {
 
       DynamicCommandParameter descriptor = new DynamicCommandParameter(null,
 
-          PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_PHYSICAL_COMPONENTS, actor,
+          PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_PHYSICAL_COMPONENTS, ComponentExt.createPhysicalActor(),
           Messages.CreationMenuLabel_PhysicalActor);
 
       newChildDescriptors.add(descriptor);

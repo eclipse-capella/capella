@@ -24,7 +24,6 @@ import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.command.CreateChildCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
@@ -37,40 +36,35 @@ import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 
 public class PhysicalComponentItemContribution implements IMDEMenuItemContribution {
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#executionContribution()
    */
   @Override
-  public Command executionContribution(final EditingDomain editingDomain, ModelElement containerElement,
+  public Command executionContribution(final EditingDomain editingDomain, ModelElement container,
       final ModelElement createdElement, EStructuralFeature feature) {
 
     if (createdElement instanceof PhysicalComponent) {
-      PhysicalComponent createdElementComponent = (PhysicalComponent) createdElement;
+      PhysicalComponent createdComponent = (PhysicalComponent) createdElement;
 
-      EObject partOwner = (containerElement instanceof PhysicalComponent) ? containerElement
-          : EcoreUtil2.getFirstContainer(containerElement, PaPackage.Literals.PHYSICAL_COMPONENT);
-      if (partOwner == null) {
-        EObject arch = EcoreUtil2.getFirstContainer(containerElement, PaPackage.Literals.PHYSICAL_ARCHITECTURE);
-        if (arch != null) {
-          partOwner = ((PhysicalArchitecture) arch).getOwnedPhysicalComponentPkg();
-        }
-      }
+      EObject partOwner = getPartOwner(container);
 
       if (partOwner != null) {
-        CompoundCommand cmd = new CompoundCommand();
+        CompoundCommand wrappingCommand = new CompoundCommand();
 
-        if (createdElementComponent.getRepresentingParts().isEmpty()) {
+        if (createdComponent.getRepresentingParts().isEmpty()) {
           EStructuralFeature ownedPartFeature = CapellacorePackage.Literals.CLASSIFIER__OWNED_FEATURES;
           if (partOwner instanceof ComponentPkg) {
             ownedPartFeature = CsPackage.Literals.COMPONENT_PKG__OWNED_PARTS;
           }
           // Creates the part.
           final Command createPartCmd = CreateChildCommand.create(editingDomain, partOwner,
-              new CommandParameter(createdElement, ownedPartFeature, CsFactory.eINSTANCE.createPart()),
+              new CommandParameter(createdComponent, ownedPartFeature, CsFactory.eINSTANCE.createPart()),
               Collections.emptyList());
-          cmd.append(createPartCmd);
+
+          wrappingCommand.append(createPartCmd);
 
           // Sets the part name.
           final Command setPartNameCmd = new CommandWrapper() {
@@ -81,14 +75,13 @@ public class PhysicalComponentItemContribution implements IMDEMenuItemContributi
                 Object createdPart = res.iterator().next();
                 if (createdPart instanceof EObject) {
                   return new SetCommand(editingDomain, (EObject) createdPart,
-                      ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME,
-                      ((AbstractNamedElement) createdElement).getName());
+                      ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME, createdComponent.getName());
                 }
               }
               return new IdentityCommand();
             }
           };
-          cmd.append(setPartNameCmd);
+          wrappingCommand.append(setPartNameCmd);
 
           // Sets the part type.
           Command setPartTypeCmd = new CommandWrapper() {
@@ -99,38 +92,56 @@ public class PhysicalComponentItemContribution implements IMDEMenuItemContributi
                 Object createdPart = res.iterator().next();
                 if (createdPart instanceof EObject) {
                   return new SetCommand(editingDomain, (EObject) createdPart,
-                      ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, createdElement);
+                      ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, createdComponent);
                 }
               }
               return null;
             }
           };
-          cmd.append(setPartTypeCmd);
+          wrappingCommand.append(setPartTypeCmd);
         }
 
         if (partOwner instanceof PhysicalComponent) {
-          PhysicalComponent componentPartOwner = (PhysicalComponent) partOwner;
+          PhysicalComponent pPartOwner = (PhysicalComponent) partOwner;
+          PhysicalComponentNature pPartOwnerNature = pPartOwner.getNature();
+          PhysicalComponentNature currentComponentNature = createdComponent.getNature();
+          PhysicalComponentNature newComponentNature = null;
 
-          // This nature rule is valid only for non actors and non humans
-          if (!createdElementComponent.isActor() && !createdElementComponent.isHuman()
-              && (createdElementComponent.getNature() == null || createdElementComponent
-                  .getNature() == PaPackage.Literals.PHYSICAL_COMPONENT_NATURE.getDefaultValue())) {
-
-            if (componentPartOwner.getNature().equals(PhysicalComponentNature.UNSET)
-                || componentPartOwner.getNature().equals(PhysicalComponentNature.NODE)) {
-              cmd.append(new SetCommand(editingDomain, createdElement, PaPackage.Literals.PHYSICAL_COMPONENT__NATURE,
-                  PhysicalComponentNature.NODE));
-            } else if (componentPartOwner.getNature().equals(PhysicalComponentNature.BEHAVIOR)) {
-              cmd.append(new SetCommand(editingDomain, createdElement, PaPackage.Literals.PHYSICAL_COMPONENT__NATURE,
-                  PhysicalComponentNature.BEHAVIOR));
+          if (ComponentExt.isActorHuman(createdComponent)) {
+            newComponentNature = pPartOwnerNature;
+          } else if (currentComponentNature == null
+              || currentComponentNature == PaPackage.Literals.PHYSICAL_COMPONENT_NATURE.getDefaultValue()) {
+            if (pPartOwnerNature.equals(PhysicalComponentNature.UNSET)
+                || pPartOwnerNature.equals(PhysicalComponentNature.NODE)) {
+              newComponentNature = PhysicalComponentNature.NODE;
+            } else if (pPartOwnerNature.equals(PhysicalComponentNature.BEHAVIOR)) {
+              newComponentNature = PhysicalComponentNature.BEHAVIOR;
             }
           }
+
+          if (newComponentNature != null) {
+            wrappingCommand.append(new SetCommand(editingDomain, createdComponent,
+                PaPackage.Literals.PHYSICAL_COMPONENT__NATURE, newComponentNature));
+          }
+
         }
 
-        return cmd;
+        return wrappingCommand;
       }
     }
     return new IdentityCommand();
+  }
+
+  private EObject getPartOwner(ModelElement container) {
+    EObject partOwner = (container instanceof PhysicalComponent) ? container
+        : EcoreUtil2.getFirstContainer(container, PaPackage.Literals.PHYSICAL_COMPONENT);
+    if (partOwner == null) {
+      EObject arch = EcoreUtil2.getFirstContainer(container, PaPackage.Literals.PHYSICAL_ARCHITECTURE);
+      if (arch != null) {
+        partOwner = ((PhysicalArchitecture) arch).getOwnedPhysicalComponentPkg();
+      }
+    }
+    return partOwner;
   }
 
   /**

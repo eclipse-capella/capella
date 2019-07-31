@@ -61,6 +61,7 @@ import org.polarsys.capella.core.data.cs.InterfacePkg;
 import org.polarsys.capella.core.data.cs.InterfaceUse;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
+import org.polarsys.capella.core.data.ctx.CtxFactory;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.ConfigurationItemPkg;
@@ -90,10 +91,13 @@ import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.MessageKind;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
+import org.polarsys.capella.core.data.la.LaFactory;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalComponentPkg;
 import org.polarsys.capella.core.data.oa.CommunicationMean;
 import org.polarsys.capella.core.data.oa.Entity;
+import org.polarsys.capella.core.data.oa.OaFactory;
+import org.polarsys.capella.core.data.pa.PaFactory;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
@@ -1832,6 +1836,54 @@ public class ComponentExt {
     return component.isActor();
   }
 
+  public static boolean isActorHuman(Component component) {
+    return component.isActor() && component.isHuman();
+  }
+
+  public static boolean isActorHuman(EObject object) {
+
+    if (object instanceof Component) {
+      return isActorHuman((Component) object);
+    } else if (object instanceof Part) {
+      return isActorHuman(((Part) object).getAbstractType());
+    }
+
+    return false;
+  }
+
+  public static Entity createOperationalActor() {
+    Entity operationalActor = OaFactory.eINSTANCE.createEntity();
+    operationalActor.setActor(true);
+    operationalActor.setHuman(true);
+
+    return operationalActor;
+  }
+
+  public static SystemComponent createSystemActor() {
+    SystemComponent systemActor = CtxFactory.eINSTANCE.createSystemComponent();
+    systemActor.setActor(true);
+    systemActor.setHuman(true);
+
+    return systemActor;
+  }
+
+  public static LogicalComponent createLogicalActor() {
+    LogicalComponent logicalActor = LaFactory.eINSTANCE.createLogicalComponent();
+    logicalActor.setActor(true);
+    logicalActor.setHuman(true);
+
+    return logicalActor;
+  }
+
+  public static PhysicalComponent createPhysicalActor() {
+    PhysicalComponent physicalActor = PaFactory.eINSTANCE.createPhysicalComponent();
+
+    physicalActor.setActor(true);
+    physicalActor.setHuman(true);
+
+    return physicalActor;
+  }
+
   /**
    * Returns whether component used or require the exchange item by related interfaces
    */
@@ -2682,7 +2734,7 @@ public class ComponentExt {
         return false;
       }
       if ((targetComponent instanceof Entity || targetComponent instanceof SystemComponent
-          || targetComponent instanceof LogicalComponent) && ComponentExt.isActor(targetComponent)) {
+          || targetComponent instanceof LogicalComponent) && targetComponent.isActor()) {
         return false;
       }
     } else if (target instanceof ComponentPkg) {
@@ -2709,9 +2761,12 @@ public class ComponentExt {
         return false;
       }
       if (targetComponent instanceof Entity) {
-        return false;
+        Entity targetEntity = (Entity) targetComponent;
+        if (targetEntity.isHuman()) {
+          return false;
+        }
       } else if ((targetComponent instanceof SystemComponent || targetComponent instanceof LogicalComponent)
-          && !ComponentExt.isActor(targetComponent)) {
+          && !targetComponent.isActor()) {
         return false;
       }
     } else if (target instanceof ComponentPkg) {
