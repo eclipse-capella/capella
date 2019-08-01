@@ -53,6 +53,7 @@ public class ContextualComponentExternalInterfacesRefreshExtension extends Abstr
     }
 
     final Component component = (Component) ((DSemanticDecorator) diagram).getTarget();
+
     HashSet<Component> components = new HashSet<>();
     Map<EObject, DragAndDropTarget> elements = DiagramServices.getDiagramServices().getMapOfDiagramNodes(diagram);
 

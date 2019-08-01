@@ -29,14 +29,12 @@ import org.polarsys.capella.common.queries.filters.IQueryFilter;
 import org.polarsys.capella.common.queries.filters.MultiFilter;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.libraries.queries.QueryExt;
 import org.polarsys.capella.core.model.helpers.queries.QueryIdentifierConstants;
 import org.polarsys.capella.core.model.helpers.queries.filters.RemoveActorsFilter;
-import org.polarsys.capella.core.model.helpers.queries.filters.RemoveContextFilter;
 
 @ExtendingQuery (extendingQuery = GetIBShowHideComponent.class)
 public class GetIBShowHideComponent__Lib extends AbstractQuery {
@@ -52,14 +50,11 @@ public class GetIBShowHideComponent__Lib extends AbstractQuery {
       EObject correspondingInput = QueryExt.getCorrespondingElementInLibrary(target, (CapellaModel) library);
       result.addAll(QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_COMPONENTS, correspondingInput, context, new RemoveActorsFilter()));
     }
-    return QueryInterpretor.executeFilter(result, new MultiFilter(new IQueryFilter[] { new RemoveActorsFilter(), new RemoveContextFilter() }));
+    return QueryInterpretor.executeFilter(result, new MultiFilter(new IQueryFilter[] { new RemoveActorsFilter() }));
   }
 
   private EObject getIBTarget(DSemanticDecorator decorator) {
     if (decorator instanceof DDiagram) {
-      if ((decorator.getTarget() instanceof AbstractActor) || (decorator.getTarget() instanceof System)) {
-        return getParentContainer(decorator.getTarget());
-      }
       for (DDiagramElement element : ((DDiagram) decorator).getOwnedDiagramElements()) {
         if (element.getTarget() == decorator.getTarget()) {
           return getParentContainer(decorator.getTarget());
@@ -79,5 +74,4 @@ public class GetIBShowHideComponent__Lib extends AbstractQuery {
     }
     return null;
   }
-
 }

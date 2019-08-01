@@ -32,7 +32,6 @@ import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsFactory;
@@ -44,6 +43,7 @@ import org.polarsys.capella.core.data.cs.InterfacePkg;
 import org.polarsys.capella.core.data.cs.InterfaceUse;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
+import org.polarsys.capella.core.data.epbs.ConfigurationItemKind;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.information.ExchangeItem;
@@ -147,12 +147,17 @@ public class IBServices {
   /**
    * In Interface Diagrams, we want to create a NODE when parent component is NODE, BEHAVIOR otherwise
    */
-  public PhysicalComponentNature getIBCreationNature(EObject current, EObject container) {
-    PhysicalComponentNature result = PhysicalComponentNature.BEHAVIOR;
-    if (container instanceof PhysicalComponent && ((PhysicalComponent) container).getNature() == PhysicalComponentNature.NODE) {
-      result = PhysicalComponentNature.NODE;
+  public void setIBCreationNature(EObject current, EObject container) {
+    if (current instanceof PhysicalComponent) {
+      if (container instanceof PhysicalComponent
+          && ((PhysicalComponent) container).getNature() == PhysicalComponentNature.NODE) {
+        ((PhysicalComponent) current).setNature(PhysicalComponentNature.NODE);
+      } else {
+        ((PhysicalComponent) current).setNature(PhysicalComponentNature.BEHAVIOR);
+      }
+    } else if (current instanceof ConfigurationItem) {
+      ((ConfigurationItem) current).setKind(ConfigurationItemKind.SYSTEM_CI);
     }
-    return result;
   }
   
   public EdgeMapping getMappingIDCommunicationLink(EObject context, DDiagram diagram) {
@@ -565,7 +570,7 @@ public class IBServices {
    * Returns whether the edge between preSourceView and preTargetView is valid to create a Delegation
    */
   public boolean isValidCreationCCDIInterface(DSemanticDecorator containerView) {
-    if (!((!(containerView instanceof DDiagram)) && (containerView.getTarget() instanceof AbstractActor))
+    if (!((!(containerView instanceof DDiagram)) && ComponentExt.isActor(containerView.getTarget()))
         && !(((DSemanticDecorator) CapellaServices.getService().getDiagramContainer(containerView))
             .getTarget() instanceof ConfigurationItem)) {
       return true;

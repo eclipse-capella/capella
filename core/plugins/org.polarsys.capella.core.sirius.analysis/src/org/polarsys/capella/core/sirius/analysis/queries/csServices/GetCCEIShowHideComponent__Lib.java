@@ -27,7 +27,6 @@ import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.libraries.queries.QueryExt;
 import org.polarsys.capella.core.model.helpers.queries.GetBrotherComponents;
 import org.polarsys.capella.core.model.helpers.queries.filters.RemoveActorsFilter;
-import org.polarsys.capella.core.model.helpers.queries.filters.RemoveContextFilter;
 
 @ExtendingQuery (extendingQuery = GetBrotherComponents.class)
 public class GetCCEIShowHideComponent__Lib extends AbstractQuery {
@@ -45,7 +44,6 @@ public class GetCCEIShowHideComponent__Lib extends AbstractQuery {
       // The refactoring of QueryIdentifierConstants is necessary
       result.addAll(QueryInterpretor.executeQuery("GetCCIIInsertComponent", correspondingInput, context, new RemoveActorsFilter()));//$NON-NLS-1$
     }
-    result = QueryInterpretor.executeFilter(result, new RemoveContextFilter());
     return result;
   }
 }

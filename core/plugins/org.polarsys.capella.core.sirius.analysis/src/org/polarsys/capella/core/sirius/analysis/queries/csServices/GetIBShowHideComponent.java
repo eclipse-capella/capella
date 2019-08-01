@@ -26,7 +26,6 @@ import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.queries.filters.RemoveActorsFilter;
-import org.polarsys.capella.core.model.helpers.queries.filters.RemoveContextFilter;
 import org.polarsys.capella.core.sirius.analysis.CsServices;
 
 public class GetIBShowHideComponent extends AbstractQuery {
@@ -55,7 +54,7 @@ public class GetIBShowHideComponent extends AbstractQuery {
       components.addAll(ComponentExt.getSubDefinedComponents((Component) target));
       components.addAll(ComponentExt.getSubUsedComponents((Component) target));
     }
-    components = QueryInterpretor.executeFilter(components, new MultiFilter(new IQueryFilter[] { new RemoveActorsFilter(), new RemoveContextFilter() }));
+    components = QueryInterpretor.executeFilter(components, new MultiFilter(new IQueryFilter[] { new RemoveActorsFilter()}));
     return (List) new ArrayList<Component>(components);
   }
 }

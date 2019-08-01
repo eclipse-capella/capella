@@ -624,7 +624,7 @@ public class CsServices {
   }
 
   /**
-   * Returns the parent component of the element or the blockarchitecture.
+   * Returns the parent component of the element or the blockarchitecture based on what's displayed on the diagram.
    * 
    * @param current
    *          the current element
@@ -1069,9 +1069,16 @@ public class CsServices {
    * namespace which haven't part) CCII-Insert-Component.
    */
   public Collection<Component> getCCIIInsertComponent(Component component) {
-    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_CCII_SHOW_HIDE_COMPONENTS_FOR_LIB, component);
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_CCII_SHOW_HIDE_COMPONENTS_FOR_LIB, component)
+        .stream().filter(comp -> comp instanceof Component && !ComponentExt.isActor((Component) comp))
+        .map(Component.class::cast).collect(Collectors.toList());
   }
-
+  
+  public Collection<Component> getCCIIInsertActor(Component component) {
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_CCII_SHOW_HIDE_COMPONENTS_FOR_LIB, component)
+        .stream().filter(comp -> comp instanceof Component && ComponentExt.isActor((Component) comp))
+        .map(Component.class::cast).collect(Collectors.toList());
+  }
   /**
    * Returns a sub-list of the given components which can be inserted into the given component.
    */
@@ -1439,9 +1446,6 @@ public class CsServices {
    */
   public EObject getIBTarget(DSemanticDecorator decorator) {
     if (decorator instanceof DDiagram) {
-      if ((decorator.getTarget() instanceof Entity && ((Component) decorator.getTarget()).isActor()) || (decorator.getTarget() instanceof Component && !((Component) decorator.getTarget()).isActor())) {
-        return getParentContainer(decorator.getTarget());
-      }
       for (DDiagramElement element : ((DDiagram) decorator).getOwnedDiagramElements()) {
         if (element.getTarget() == decorator.getTarget()) {
           return getParentContainer(decorator.getTarget());
@@ -1452,6 +1456,27 @@ public class CsServices {
     return decorator.getTarget();
   }
 
+  /**
+   * Gets the iB target.
+   * 
+   * @param decorator
+   *          the graphical element isActorContext whether we are looking the target for an actor
+   */
+  public EObject getIBTarget(DSemanticDecorator decorator, boolean isActorContext) {
+    if (decorator instanceof DDiagram) {
+      for (DDiagramElement element : ((DDiagram) decorator).getOwnedDiagramElements()) {
+        if (element.getTarget() == decorator.getTarget()) {
+          return getSemanticParentContainer(decorator.getTarget(), isActorContext);
+        }
+      }
+      if (isActorContext ? canCreateABActor(decorator) : canCreateABComponent(decorator)) {
+        return decorator.getTarget();
+      }
+      // We find the nearest container to store the element
+      return getSemanticParentContainer(decorator.getTarget(), isActorContext);
+    }
+    return decorator.getTarget();
+  }
   /**
    * @param context
    * @param newSource
@@ -2664,21 +2689,8 @@ public class CsServices {
    * @param nameVariable
    *          interpreter-variable which will be store the new created component
    */
-  public Component createComponent(EObject container, String nameVariable) {
-    String namePrefix = "";
-    if ((container instanceof LogicalComponent) || (container instanceof LogicalComponentPkg)
-        || (container instanceof LogicalArchitecture)) {
-      namePrefix = "LC ";
-    } else if ((container instanceof PhysicalComponent) || (container instanceof PhysicalComponentPkg)
-        || (container instanceof PhysicalArchitecture)) {
-      namePrefix = "PC ";
-    } else if ((container instanceof Entity) || (container instanceof EntityPkg)
-        || (container instanceof OperationalAnalysis)) {
-      namePrefix = "Entity ";
-    } else if ((container instanceof SystemComponentPkg) || (container instanceof SystemAnalysis)) {
-      namePrefix = "System ";
-    }
-    return createComponent(container, nameVariable, namePrefix);
+  public Component createComponent(CapellaElement container, String nameVariable) {
+    return createComponent(container, false, nameVariable);
   }
   
   private Component createComponent(EObject container, String nameVariable, String namePrefix) {
@@ -2765,7 +2777,33 @@ public class CsServices {
     }
     return element;
   }
-
+  
+  public Component createComponent(CapellaElement container, boolean creationService, String nameVariable) {
+    String namePrefix = "";
+    if ((container instanceof LogicalComponent) || (container instanceof LogicalComponentPkg)
+        || (container instanceof LogicalArchitecture)) {
+      namePrefix = "LC ";
+    } else if ((container instanceof PhysicalComponent) || (container instanceof PhysicalComponentPkg)
+        || (container instanceof PhysicalArchitecture)) {
+      namePrefix = "PC ";
+    } else if ((container instanceof Entity) || (container instanceof EntityPkg)
+        || (container instanceof OperationalAnalysis)) {
+      namePrefix = "Entity ";
+    } else if ((container instanceof SystemComponentPkg) || (container instanceof SystemAnalysis)) {
+      namePrefix = "System ";
+    }
+    
+    Component component = createComponent(container, nameVariable, namePrefix);
+    if (creationService) {
+      CapellaServices.getService().creationService(component, namePrefix);
+    }
+    return component;
+  }
+  
+  public Component createComponent(CapellaElement container) {
+    return createComponent(container, true, null);
+  }
+  
   /**
    * Create a logical actor into the container
    * 
