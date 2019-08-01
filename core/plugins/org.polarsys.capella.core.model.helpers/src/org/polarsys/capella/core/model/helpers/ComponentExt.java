@@ -63,6 +63,7 @@ import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.ctx.CtxFactory;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
+import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.ConfigurationItemPkg;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
@@ -1851,33 +1852,48 @@ public class ComponentExt {
     return false;
   }
 
+  public static Entity createEntity() {
+    return OaFactory.eINSTANCE.createEntity();
+  }
+
   public static Entity createOperationalActor() {
-    Entity operationalActor = OaFactory.eINSTANCE.createEntity();
+    Entity operationalActor = createEntity();
     operationalActor.setActor(true);
     operationalActor.setHuman(true);
 
     return operationalActor;
   }
 
+  public static SystemComponent createSystemComponent() {
+    return CtxFactory.eINSTANCE.createSystemComponent();
+  }
+
   public static SystemComponent createSystemActor() {
-    SystemComponent systemActor = CtxFactory.eINSTANCE.createSystemComponent();
+    SystemComponent systemActor = createSystemComponent();
     systemActor.setActor(true);
     systemActor.setHuman(true);
 
     return systemActor;
   }
 
+  public static LogicalComponent createLogicalComponent() {
+    return LaFactory.eINSTANCE.createLogicalComponent();
+  }
+
   public static LogicalComponent createLogicalActor() {
-    LogicalComponent logicalActor = LaFactory.eINSTANCE.createLogicalComponent();
+    LogicalComponent logicalActor = createLogicalComponent();
     logicalActor.setActor(true);
     logicalActor.setHuman(true);
 
     return logicalActor;
   }
 
-  public static PhysicalComponent createPhysicalActor() {
-    PhysicalComponent physicalActor = PaFactory.eINSTANCE.createPhysicalComponent();
+  public static PhysicalComponent createPhysicalComponent() {
+    return PaFactory.eINSTANCE.createPhysicalComponent();
+  }
 
+  public static PhysicalComponent createPhysicalActor() {
+    PhysicalComponent physicalActor = createPhysicalComponent();
     physicalActor.setActor(true);
     physicalActor.setHuman(true);
 
@@ -2740,9 +2756,19 @@ public class ComponentExt {
     } else if (target instanceof ComponentPkg) {
       ComponentPkg targetComponentPkg = (ComponentPkg) target;
       Component parentComponent = ComponentPkgExt.getParentComponent(targetComponentPkg);
-      if (parentComponent == null) {
-        return true;
+
+      if (parentComponent == null && (target instanceof SystemComponentPkg || target instanceof LogicalComponentPkg
+          || target instanceof PhysicalComponentPkg)) {
+
+        ComponentPkg rootComponentPkg = ComponentPkgExt.getRootComponentPkg(targetComponentPkg);
+        long nbOfExistingComponents = ComponentPkgExt.getContainedComponents(rootComponentPkg).stream()
+            .filter(c -> !ComponentExt.isActor(c)).count();
+
+        if (nbOfExistingComponents != 0) {
+          return false;
+        }
       }
+
       return canCreateABComponent(parentComponent);
     }
     return true;

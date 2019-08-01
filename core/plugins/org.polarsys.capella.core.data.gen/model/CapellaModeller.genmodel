@@ -248,7 +248,7 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//RoleAllocation/entity"/>
     </genClasses>
     <genClasses ecoreClass="OperationalAnalysis.ecore#//EntityPkg">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//EntityPkg/ownedEntities"/>
+      <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//EntityPkg/ownedEntities"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//EntityPkg/ownedEntityPkgs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//EntityPkg/ownedLocations"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//EntityPkg/ownedCommunicationMeans"/>
@@ -258,7 +258,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//Entity/organisationalUnitMemberships"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//Entity/actualLocation"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//Entity/subEntities"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//Entity/ownedEntities"/>
+      <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//Entity/ownedEntities"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//Entity/ownedCommunicationMeans"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//Entity/ownedRoleAllocations"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//Entity/allocatedOperationalActivities"/>
@@ -384,7 +384,7 @@
     </genClasses>
     <genClasses ecoreClass="ContextArchitecture.ecore#//OperationalAnalysisRealization"/>
     <genClasses ecoreClass="ContextArchitecture.ecore#//SystemComponentPkg">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemComponentPkg/ownedSystemComponents"/>
+      <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemComponentPkg/ownedSystemComponents"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemComponentPkg/ownedSystemComponentPkgs"/>
     </genClasses>
     <genClasses ecoreClass="ContextArchitecture.ecore#//SystemComponent">
@@ -426,7 +426,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalFunctionPkg/ownedLogicalFunctionPkgs"/>
     </genClasses>
     <genClasses ecoreClass="LogicalArchitecture.ecore#//LogicalComponent">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalComponent/ownedLogicalComponents"/>
+      <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalComponent/ownedLogicalComponents"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalComponent/ownedLogicalArchitectures"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalComponent/ownedLogicalComponentPkgs"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalComponent/subLogicalComponents"/>
@@ -435,7 +435,7 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalComponent/realizingPhysicalComponents"/>
     </genClasses>
     <genClasses ecoreClass="LogicalArchitecture.ecore#//LogicalComponentPkg">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalComponentPkg/ownedLogicalComponents"/>
+      <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalComponentPkg/ownedLogicalComponents"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalComponentPkg/ownedLogicalComponentPkgs"/>
     </genClasses>
     <genClasses ecoreClass="LogicalArchitecture.ecore#//CapabilityRealization">
@@ -505,7 +505,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PhysicalArchitecture.ecore#//PhysicalComponent/kind"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PhysicalArchitecture.ecore#//PhysicalComponent/nature"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalComponent/ownedDeploymentLinks"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalComponent/ownedPhysicalComponents"/>
+      <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalComponent/ownedPhysicalComponents"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalComponent/ownedPhysicalComponentPkgs"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalComponent/logicalInterfaceRealizations"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalComponent/subPhysicalComponents"/>
@@ -515,7 +515,7 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalComponent/deployingPhysicalComponents"/>
     </genClasses>
     <genClasses ecoreClass="PhysicalArchitecture.ecore#//PhysicalComponentPkg">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalComponentPkg/ownedPhysicalComponents"/>
+      <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalComponentPkg/ownedPhysicalComponents"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalComponentPkg/ownedPhysicalComponentPkgs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalComponentPkg/ownedKeyParts"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalComponentPkg/ownedDeployments"/>

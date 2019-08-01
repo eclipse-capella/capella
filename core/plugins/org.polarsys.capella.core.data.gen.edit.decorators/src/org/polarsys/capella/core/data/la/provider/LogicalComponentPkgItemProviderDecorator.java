@@ -51,6 +51,14 @@ public class LogicalComponentPkgItemProviderDecorator extends ItemProviderAdapte
       newChildDescriptors.add(descriptor);
     }
 
+    if (ComponentExt.canCreateABComponent(container)) {
+      DynamicCommandParameter descriptor = new DynamicCommandParameter(null,
+          LaPackage.Literals.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENTS, ComponentExt.createLogicalComponent(),
+          Messages.CreationMenuLabel_LogicalComponent);
+
+      newChildDescriptors.add(descriptor);
+    }
+
     return newChildDescriptors;
   }
 }

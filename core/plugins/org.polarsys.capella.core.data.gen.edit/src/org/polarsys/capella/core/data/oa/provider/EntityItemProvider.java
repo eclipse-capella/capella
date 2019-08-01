@@ -550,18 +550,6 @@ public class EntityItemProvider
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (OaPackage.Literals.ENTITY__OWNED_ENTITIES,
-                         OaFactory.eINSTANCE.createEntity());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
                         (OaPackage.Literals.ENTITY__OWNED_COMMUNICATION_MEANS,
                          OaFactory.eINSTANCE.createCommunicationMean());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {

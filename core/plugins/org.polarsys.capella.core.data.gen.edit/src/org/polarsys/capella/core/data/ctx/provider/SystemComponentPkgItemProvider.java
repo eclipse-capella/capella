@@ -179,18 +179,6 @@ public class SystemComponentPkgItemProvider
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (CtxPackage.Literals.SYSTEM_COMPONENT_PKG__OWNED_SYSTEM_COMPONENTS,
-                         CtxFactory.eINSTANCE.createSystemComponent());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
                         (CtxPackage.Literals.SYSTEM_COMPONENT_PKG__OWNED_SYSTEM_COMPONENT_PKGS,
                          CtxFactory.eINSTANCE.createSystemComponentPkg());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {

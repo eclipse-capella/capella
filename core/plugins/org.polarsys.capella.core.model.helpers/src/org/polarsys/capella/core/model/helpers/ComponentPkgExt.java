@@ -66,11 +66,11 @@ public class ComponentPkgExt {
     return getOwnedComponents(componentPkg).stream().filter(comp -> ComponentExt.isActor(comp))
         .collect(Collectors.toList());
   }
-  
+
   public static List<Component> getSubUsedComponents(ComponentPkg componentPkg) {
     return PartExt.getComponentsOfParts(componentPkg.getOwnedParts());
   }
-  
+
   /**
    * Returns sub parts of a component package
    */
@@ -80,17 +80,18 @@ public class ComponentPkgExt {
     getContainedComponentPkgs(componentPkg).stream().forEach(pkg -> result.addAll(ComponentPkgExt.getSubParts(pkg)));
     return result;
   }
-  
+
   /**
    * 
    * @param componentPkg
    * @return component packages contained in this component
    */
   public static List<ComponentPkg> getContainedComponentPkgs(ComponentPkg componentPkg) {
-    List<ComponentPkg> componentPkgs = new ArrayList<>();
     if (componentPkg == null) {
       return Collections.emptyList();
     }
+
+    List<ComponentPkg> componentPkgs = new ArrayList<>();
     if (componentPkg instanceof EntityPkg) {
       componentPkgs.addAll(((EntityPkg) componentPkg).getOwnedEntityPkgs());
     } else if (componentPkg instanceof SystemComponentPkg) {
@@ -104,7 +105,7 @@ public class ComponentPkgExt {
     }
     return componentPkgs;
   }
-  
+
   /**
    * 
    * @param componentPkg
@@ -120,4 +121,41 @@ public class ComponentPkgExt {
     }
     return null;
   }
+
+  public static ComponentPkg getRootComponentPkg(ComponentPkg componentPkg) {
+
+    ComponentPkg rootComponentPkg = componentPkg;
+
+    for (EObject parent = componentPkg.eContainer(); parent != null; parent = parent.eContainer()) {
+      if (parent instanceof ComponentPkg) {
+        rootComponentPkg = (ComponentPkg) parent;
+      } else if (parent instanceof BlockArchitecture) {
+        return rootComponentPkg;
+      }
+    }
+
+    return rootComponentPkg;
+  }
+
+  public static List<Component> getContainedComponents(ComponentPkg componentPkg) {
+
+    if (componentPkg == null) {
+      return Collections.emptyList();
+    }
+
+    List<Component> components = new ArrayList<>();
+
+    if (componentPkg instanceof EntityPkg) {
+      components.addAll(((EntityPkg) componentPkg).getOwnedEntities());
+    } else if (componentPkg instanceof SystemComponentPkg) {
+      components.addAll(((SystemComponentPkg) componentPkg).getOwnedSystemComponents());
+    } else if (componentPkg instanceof LogicalComponentPkg) {
+      components.addAll(((LogicalComponentPkg) componentPkg).getOwnedLogicalComponents());
+    } else if (componentPkg instanceof PhysicalComponentPkg) {
+      components.addAll(((PhysicalComponentPkg) componentPkg).getOwnedPhysicalComponents());
+    }
+
+    return components;
+  }
+
 }

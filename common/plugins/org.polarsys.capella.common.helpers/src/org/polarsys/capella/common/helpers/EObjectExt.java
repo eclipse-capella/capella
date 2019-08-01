@@ -265,7 +265,7 @@ public class EObjectExt extends EcoreUtil2 {
    * @param object
    * @return<code>null</code> if one of parameters is <code>null</code> or if no provider is found.
    */
-  protected static IItemLabelProvider getItemLabelProvider(EObject object) {
+  public static IItemLabelProvider getItemLabelProvider(EObject object) {
     // Precondition.
     if (null == object) {
       return null;

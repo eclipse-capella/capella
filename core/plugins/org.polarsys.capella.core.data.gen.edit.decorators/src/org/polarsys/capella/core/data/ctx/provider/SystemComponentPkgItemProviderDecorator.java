@@ -50,6 +50,14 @@ public class SystemComponentPkgItemProviderDecorator extends ItemProviderAdapter
       newChildDescriptors.add(descriptor);
     }
 
+    if (ComponentExt.canCreateABComponent(container)) {
+      DynamicCommandParameter descriptor = new DynamicCommandParameter(null,
+          CtxPackage.Literals.SYSTEM_COMPONENT_PKG__OWNED_SYSTEM_COMPONENTS, ComponentExt.createSystemComponent(),
+          Messages.CreationMenuLabel_SystemComponent);
+
+      newChildDescriptors.add(descriptor);
+    }
+
     return newChildDescriptors;
   }
 }

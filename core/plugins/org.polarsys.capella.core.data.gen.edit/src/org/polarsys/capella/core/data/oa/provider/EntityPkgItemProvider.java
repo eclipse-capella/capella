@@ -182,18 +182,6 @@ public class EntityPkgItemProvider
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (OaPackage.Literals.ENTITY_PKG__OWNED_ENTITIES,
-                         OaFactory.eINSTANCE.createEntity());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
                         (OaPackage.Literals.ENTITY_PKG__OWNED_ENTITY_PKGS,
                          OaFactory.eINSTANCE.createEntityPkg());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {

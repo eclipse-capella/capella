@@ -50,6 +50,14 @@ public class EntityPkgItemProviderDecorator extends ItemProviderAdapterDecorator
       newChildDescriptors.add(descriptor);
     }
 
+    if (ComponentExt.canCreateABComponent(container)) {
+      DynamicCommandParameter descriptor = new DynamicCommandParameter(null,
+          OaPackage.Literals.ENTITY_PKG__OWNED_ENTITIES, ComponentExt.createEntity(),
+          Messages.CreationMenuLabel_Entity);
+
+      newChildDescriptors.add(descriptor);
+    }
+
     return newChildDescriptors;
   }
 }

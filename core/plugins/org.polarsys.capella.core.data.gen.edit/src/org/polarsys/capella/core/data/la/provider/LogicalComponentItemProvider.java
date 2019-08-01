@@ -378,18 +378,6 @@ public class LogicalComponentItemProvider
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (LaPackage.Literals.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENTS,
-                         LaFactory.eINSTANCE.createLogicalComponent());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
                         (LaPackage.Literals.LOGICAL_COMPONENT__OWNED_LOGICAL_ARCHITECTURES,
                          LaFactory.eINSTANCE.createLogicalArchitecture());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {

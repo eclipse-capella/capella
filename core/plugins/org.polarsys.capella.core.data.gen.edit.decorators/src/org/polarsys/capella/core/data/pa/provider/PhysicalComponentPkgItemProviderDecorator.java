@@ -15,21 +15,17 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.polarsys.capella.common.menu.dynamic.util.DynamicCommandParameter;
-import org.polarsys.capella.core.data.gen.edit.decorators.ItemProviderAdapterDecorator;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.gen.edit.decorators.Messages;
 import org.polarsys.capella.core.data.pa.PaPackage;
+import org.polarsys.capella.core.data.pa.PhysicalComponent;
+import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.ComponentPkgExt;
 
-public class PhysicalComponentPkgItemProviderDecorator extends ItemProviderAdapterDecorator
-    implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-    IItemPropertySource {
+public class PhysicalComponentPkgItemProviderDecorator extends AbstractPhysicalComponentItemProviderDecorator {
 
   public PhysicalComponentPkgItemProviderDecorator(AdapterFactory adapterFactory) {
     super(adapterFactory);
@@ -44,7 +40,6 @@ public class PhysicalComponentPkgItemProviderDecorator extends ItemProviderAdapt
     PhysicalComponentPkg container = (PhysicalComponentPkg) object;
 
     if (ComponentExt.canCreateABActor(container)) {
-
       DynamicCommandParameter descriptor = new DynamicCommandParameter(null,
           PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS, ComponentExt.createPhysicalActor(),
           Messages.CreationMenuLabel_PhysicalActor);
@@ -52,6 +47,44 @@ public class PhysicalComponentPkgItemProviderDecorator extends ItemProviderAdapt
       newChildDescriptors.add(descriptor);
     }
 
+    if (ComponentExt.canCreateABComponent(container)) {
+      Component parent = ComponentPkgExt.getParentComponent(container);
+
+      DynamicCommandParameter componentBCDescriptor = createComponentBCDescriptor(
+          PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS);
+      DynamicCommandParameter componentICDescriptor = createComponentICDescriptor(
+          PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS);
+
+      if (parent == null) {
+        newChildDescriptors.add(componentICDescriptor);
+        newChildDescriptors.add(componentBCDescriptor);
+
+      } else if (parent instanceof PhysicalComponent) {
+        PhysicalComponent parentComponent = (PhysicalComponent) parent;
+        PhysicalComponentNature parentNature = parentComponent.getNature();
+
+        switch (parentNature) {
+        case BEHAVIOR:
+          newChildDescriptors.add(componentBCDescriptor);
+          break;
+
+        case NODE:
+          newChildDescriptors.add(componentICDescriptor);
+          break;
+
+        case UNSET:
+          newChildDescriptors.add(componentICDescriptor);
+          newChildDescriptors.add(componentBCDescriptor);
+          break;
+
+        default:
+          break;
+        }
+      }
+
+    }
+
     return newChildDescriptors;
   }
+
 }
