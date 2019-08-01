@@ -1293,14 +1293,16 @@ public class ABServices {
       return false;
     
     EObject type = CsServices.getService().getComponentType(containerView);
-    if ((type == null) || !(type instanceof PhysicalComponent)) {
+    if ((type == null) || !(type instanceof PhysicalComponent || type instanceof PhysicalComponentPkg)) {
       return false;
     }
 
     // Deploy Behavior is allowed on BEHAVIOR and UNSET, but not on Actor
-    PhysicalComponent pcType = (PhysicalComponent) type;
-    if (PhysicalComponentNature.NODE.equals(pcType.getNature())) {
-      return false;
+    if (type instanceof PhysicalComponent) {
+      PhysicalComponent pcType = (PhysicalComponent) type;
+      if (PhysicalComponentNature.NODE.equals(pcType.getNature())) {
+        return false;
+      }
     }
 
     return true;
