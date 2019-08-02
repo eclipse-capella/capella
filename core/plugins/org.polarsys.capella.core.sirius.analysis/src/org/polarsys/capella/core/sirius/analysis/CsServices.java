@@ -83,6 +83,7 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.mdsofa.common.misc.Couple;
+import org.polarsys.capella.common.menu.dynamic.util.INamePrefixService;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
@@ -2690,10 +2691,14 @@ public class CsServices {
    *          interpreter-variable which will be store the new created component
    */
   public Component createComponent(CapellaElement container, String nameVariable) {
-    return createComponent(container, false, nameVariable);
+    Component component = createComponent(container, false, nameVariable);
+    INamePrefixService prefixService = PlatformUI.getWorkbench().getService(INamePrefixService.class);
+    String createdElementPrefix = prefixService.getPrefix(component);
+    component.setName(CapellaServices.getService().getUniqueName(component, createdElementPrefix));
+    return component;
   }
   
-  private Component createComponent(EObject container, String nameVariable, String namePrefix) {
+  private Component createComponentInternal(CapellaElement container, String nameVariable) {
     Component element = null;
     EStructuralFeature containerFeature = null;
     EObject containerObject = null;
@@ -2769,7 +2774,6 @@ public class CsServices {
 
     if ((element != null) && (containerObject != null) && (containerFeature != null)) {
       ((EList) containerObject.eGet(containerFeature)).add(element);
-      element.setName(CapellaServices.getService().getUniqueName(element, namePrefix));
     }
 
     if (nameVariable != null) {
@@ -2779,23 +2783,9 @@ public class CsServices {
   }
   
   public Component createComponent(CapellaElement container, boolean creationService, String nameVariable) {
-    String namePrefix = "";
-    if ((container instanceof LogicalComponent) || (container instanceof LogicalComponentPkg)
-        || (container instanceof LogicalArchitecture)) {
-      namePrefix = "LC ";
-    } else if ((container instanceof PhysicalComponent) || (container instanceof PhysicalComponentPkg)
-        || (container instanceof PhysicalArchitecture)) {
-      namePrefix = "PC ";
-    } else if ((container instanceof Entity) || (container instanceof EntityPkg)
-        || (container instanceof OperationalAnalysis)) {
-      namePrefix = "Entity ";
-    } else if ((container instanceof SystemComponentPkg) || (container instanceof SystemAnalysis)) {
-      namePrefix = "System ";
-    }
-    
-    Component component = createComponent(container, nameVariable, namePrefix);
+    Component component = createComponentInternal(container, nameVariable);
     if (creationService) {
-      CapellaServices.getService().creationService(component, namePrefix);
+      CapellaServices.getService().creationService(component);
     }
     return component;
   }
@@ -2825,24 +2815,15 @@ public class CsServices {
    *          interpreter-variable which will be store the new created actor (create service is not called.)
    */
   public Component createActor(CapellaElement container, boolean creationService, String nameVariable) {
-    String namePrefix = "";
-    if ((container instanceof LogicalComponent) || (container instanceof LogicalComponentPkg)
-        || (container instanceof LogicalArchitecture)) {
-      namePrefix = "LA ";
-    } else if ((container instanceof PhysicalComponent) || (container instanceof PhysicalComponentPkg)
-        || (container instanceof PhysicalArchitecture)) {
-      namePrefix = "PA ";
-    } else if ((container instanceof Entity) || (container instanceof EntityPkg)
-        || (container instanceof OperationalAnalysis)) {
-      namePrefix = "OperationalActor ";
-    } else if ((container instanceof SystemComponentPkg) || (container instanceof SystemAnalysis)) {
-      namePrefix = "A ";
-    }
-    Component component = createComponent(container, nameVariable, namePrefix);
+    Component component = createComponent(container, nameVariable);
     component.setActor(true);
     component.setHuman(true);
     if (creationService) {
-      CapellaServices.getService().creationService(component, namePrefix);
+      CapellaServices.getService().creationService(component);
+    } else {
+      INamePrefixService prefixService = PlatformUI.getWorkbench().getService(INamePrefixService.class);
+      String createdElementPrefix = prefixService.getPrefix(component);
+      component.setName(CapellaServices.getService().getUniqueName(component, createdElementPrefix));
     }
     return component;
   }

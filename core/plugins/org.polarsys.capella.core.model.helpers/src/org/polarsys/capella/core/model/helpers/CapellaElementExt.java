@@ -427,7 +427,14 @@ public class CapellaElementExt {
   }
 
   public static EObject creationService(EObject context) {
-    return creationService(context, context.eClass().getName());
+    if (context instanceof ModelElement) {
+      EditingDomain editingDomain = TransactionHelper.getEditingDomain(context);
+      StrictCompoundCommand command = CreationHelper.getAdditionnalCommand(editingDomain, (ModelElement) context);
+      if (command.canExecute()) {
+        command.execute();
+      }
+    }
+    return context;
   }
 
   /**

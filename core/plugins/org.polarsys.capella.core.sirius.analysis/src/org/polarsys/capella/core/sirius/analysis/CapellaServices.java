@@ -2033,7 +2033,7 @@ public class CapellaServices {
    */
   public String getUniqueName(AbstractNamedElement namedElement, String prefix) {
     return EcoreUtil2.getUniqueName(namedElement, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME, prefix,
-        false, false);
+        true, false);
   }
 
   /**
