@@ -337,7 +337,7 @@ public class DynamicCreationAction extends DynamicModelElementAction {
    * @return
    */
   protected String getFeatureLabel(EStructuralFeature feature, EObject object) {
-    ItemProviderAdapter genericItemProvider = getItemProvider(object);
+    ItemProviderAdapter genericItemProvider = getItemProviderAdapter(object);
     String featureLabel = EObjectLabelProviderHelper.getFeatureLabel(feature, genericItemProvider);
     genericItemProvider.dispose();
     return featureLabel;
@@ -351,7 +351,7 @@ public class DynamicCreationAction extends DynamicModelElementAction {
    * @return
    */
   protected String getMetaclassLabel(EClass clazz, EObject object) {
-    ItemProviderAdapter genericItemProvider = getItemProvider(object);
+    ItemProviderAdapter genericItemProvider = getItemProviderAdapter(object);
     String metaclassLabel = EObjectLabelProviderHelper.getMetaclassLabel(clazz, genericItemProvider);
     genericItemProvider.dispose();
     return metaclassLabel;
@@ -362,16 +362,22 @@ public class DynamicCreationAction extends DynamicModelElementAction {
    * 
    * @return
    */
-  protected ItemProviderAdapter getItemProvider(EObject object) {
-    AdapterFactory adapterFactory = CapellaAdapterFactoryProvider.getInstance().getAdapterFactory();
-    Adapter adapter = adapterFactory.adapt(object, IItemLabelProvider.class);
-    if (adapter instanceof ItemProviderDecorator) {
-      IChangeNotifier notifier = ((ItemProviderDecorator) adapter).getDecoratedItemProvider();
+  protected ItemProviderAdapter getItemProviderAdapter(EObject object) {
+    IItemLabelProvider itemLabelProvider = getItemLabelProvider(object);
+
+    if (itemLabelProvider instanceof ItemProviderDecorator) {
+      IChangeNotifier notifier = ((ItemProviderDecorator) itemLabelProvider).getDecoratedItemProvider();
       if (notifier instanceof ItemProviderAdapter) {
         return (ItemProviderAdapter) notifier;
       }
     }
-    return (ItemProviderAdapter) adapter;
+    return (ItemProviderAdapter) itemLabelProvider;
+  }
+
+  protected IItemLabelProvider getItemLabelProvider(EObject object) {
+    AdapterFactory adapterFactory = CapellaAdapterFactoryProvider.getInstance().getAdapterFactory();
+    Adapter adapter = adapterFactory.adapt(object, IItemLabelProvider.class);
+    return (IItemLabelProvider) adapter;
   }
 
   /**
@@ -391,32 +397,61 @@ public class DynamicCreationAction extends DynamicModelElementAction {
      * @see org.eclipse.emf.edit.ui.action.StaticSelectionCommandAction#configureAction(org.eclipse.jface.viewers.ISelection)
      */
     @Override
-    public void configureAction(ISelection selection_) {
-      super.configureAction(selection_);
+    public void configureAction(ISelection selection) {
+      super.configureAction(selection);
 
       EObject object = ((CommandParameter) descriptor).getEValue();
 
       if (descriptor instanceof DynamicCommandParameter) {
         DynamicCommandParameter richCommandParameter = (DynamicCommandParameter) descriptor;
         setText(richCommandParameter.getLabel());
+        // dynamic commands have the same object type and are created in the same feature
+        // always reset their image descriptor
+        ImageDescriptor imageDescriptor = findBestImageDescriptor(object, selection);
+        setImageDescriptor(imageDescriptor);
       } else {
         EClass eClass = object.eClass();
         setText(getMetaclassLabel(eClass, object));
       }
 
       if (getImageDescriptor() == null) {
-        ImageDescriptor imageDescriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(EObjectLabelProviderHelper.getImage(object));
-        if (null != imageDescriptor) {
-          setImageDescriptor(imageDescriptor);
+        ImageDescriptor imageDescriptor = findBestImageDescriptor(object, selection);
+        setImageDescriptor(imageDescriptor);
+      }
+
+    }
+
+    /**
+     * Returns the best possible image descriptor for the current object
+     * 
+     * @param object
+     *          the object
+     * @param selection
+     *          the user selection
+     * @return the best possible image descriptor for the current object
+     */
+    private ImageDescriptor findBestImageDescriptor(EObject object, ISelection selection) {
+      // look for a image descriptor from the current label provider of the editing domain
+      ImageDescriptor imageDescriptor = EObjectImageProviderHelper.getImageDescriptor(object);
+      if (imageDescriptor == null) {
+
+        // no editing domain so look for a different item label provider
+        IItemLabelProvider itemLabelProvider = getItemLabelProvider(object);
+        URL imageUrl = null;
+        if (itemLabelProvider != null && itemLabelProvider.getImage(object) instanceof URL) {
+          imageUrl = (URL) itemLabelProvider.getImage(object);
         } else {
-          Object selection = ((StructuredSelection) selection_).getFirstElement();
+          // no item label provider for the current element, try to figure one out from the parent
+          Object parent = ((StructuredSelection) selection).getFirstElement();
           EStructuralFeature feature = ((CommandParameter) descriptor).getEStructuralFeature();
-          ItemProviderAdapter itemProvider = getItemProvider(object);
-          Object childImage = itemProvider.getCreateChildImage(selection, feature, object, null);
-          setImageDescriptor(ImageDescriptor.createFromURL((URL) childImage));
+          ItemProviderAdapter itemProvider = getItemProviderAdapter(object);
+          Object childImage = itemProvider.getCreateChildImage(parent, feature, object, null);
+          imageUrl = (URL) childImage;
           itemProvider.dispose();
         }
+        imageDescriptor = ImageDescriptor.createFromURL(imageUrl);
       }
+      return imageDescriptor;
     }
 
     @Override
