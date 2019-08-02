@@ -812,8 +812,8 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSystemComponent_DataComponent() {
-		return (EAttribute)systemComponentEClass.getEStructuralFeatures().get(0);
+	public EReference getSystemComponent_OwnedSystemComponents() {
+		return (EReference)systemComponentEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -821,7 +821,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSystemComponent_DataType() {
+	public EReference getSystemComponent_OwnedSystemComponentPkgs() {
 		return (EReference)systemComponentEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -830,8 +830,8 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSystemComponent_InvolvingCapabilities() {
-		return (EReference)systemComponentEClass.getEStructuralFeatures().get(2);
+	public EAttribute getSystemComponent_DataComponent() {
+		return (EAttribute)systemComponentEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -839,7 +839,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSystemComponent_CapabilityInvolvements() {
+	public EReference getSystemComponent_DataType() {
 		return (EReference)systemComponentEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -848,7 +848,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSystemComponent_InvolvingMissions() {
+	public EReference getSystemComponent_InvolvingCapabilities() {
 		return (EReference)systemComponentEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -857,7 +857,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSystemComponent_MissionInvolvements() {
+	public EReference getSystemComponent_CapabilityInvolvements() {
 		return (EReference)systemComponentEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -866,7 +866,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSystemComponent_RealizedEntities() {
+	public EReference getSystemComponent_InvolvingMissions() {
 		return (EReference)systemComponentEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -875,8 +875,26 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSystemComponent_RealizingLogicalComponents() {
+	public EReference getSystemComponent_MissionInvolvements() {
 		return (EReference)systemComponentEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSystemComponent_RealizedEntities() {
+		return (EReference)systemComponentEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSystemComponent_RealizingLogicalComponents() {
+		return (EReference)systemComponentEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -977,6 +995,8 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 		createEReference(systemComponentPkgEClass, SYSTEM_COMPONENT_PKG__OWNED_SYSTEM_COMPONENT_PKGS);
 
 		systemComponentEClass = createEClass(SYSTEM_COMPONENT);
+		createEReference(systemComponentEClass, SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENTS);
+		createEReference(systemComponentEClass, SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENT_PKGS);
 		createEAttribute(systemComponentEClass, SYSTEM_COMPONENT__DATA_COMPONENT);
 		createEReference(systemComponentEClass, SYSTEM_COMPONENT__DATA_TYPE);
 		createEReference(systemComponentEClass, SYSTEM_COMPONENT__INVOLVING_CAPABILITIES);
@@ -1113,6 +1133,8 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 		initEReference(getSystemComponentPkg_OwnedSystemComponentPkgs(), this.getSystemComponentPkg(), null, "ownedSystemComponentPkgs", null, 0, -1, SystemComponentPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(systemComponentEClass, SystemComponent.class, "SystemComponent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getSystemComponent_OwnedSystemComponents(), this.getSystemComponent(), null, "ownedSystemComponents", null, 0, -1, SystemComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getSystemComponent_OwnedSystemComponentPkgs(), this.getSystemComponentPkg(), null, "ownedSystemComponentPkgs", null, 0, -1, SystemComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getSystemComponent_DataComponent(), ecorePackage.getEBoolean(), "dataComponent", null, 0, 1, SystemComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getSystemComponent_DataType(), theCapellacorePackage.getClassifier(), null, "dataType", null, 0, -1, SystemComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getSystemComponent_InvolvingCapabilities(), this.getCapability(), null, "involvingCapabilities", null, 0, -1, SystemComponent.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -1599,6 +1621,22 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
+		  (getSystemComponent_OwnedSystemComponents(), 
+		   source, 
+		   new String[] {
+			 "description", "the System Components included in this System Component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getSystemComponent_OwnedSystemComponentPkgs(), 
+		   source, 
+		   new String[] {
+			 "description", "sub-packages of this System Component", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
 		  (getSystemComponent_DataComponent(), 
 		   source, 
 		   new String[] {
@@ -1848,6 +1886,16 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 		   });	
 		addAnnotation
 		  (getSystemComponentPkg_OwnedSystemComponentPkgs(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getSystemComponent_OwnedSystemComponents(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getSystemComponent_OwnedSystemComponentPkgs(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -2682,6 +2730,22 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getSystemComponent_OwnedSystemComponents(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getSystemComponent_OwnedSystemComponentPkgs(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getSystemComponent_DataComponent(), 

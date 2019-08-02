@@ -18,13 +18,17 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IAdapterManager;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.Classifier;
@@ -37,6 +41,7 @@ import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.Mission;
 import org.polarsys.capella.core.data.ctx.MissionInvolvement;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
+import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.oa.Entity;
 
@@ -49,6 +54,8 @@ import org.polarsys.capella.core.data.oa.Entity;
  * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemComponentImpl#getInvolvingInvolvements <em>Involving Involvements</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemComponentImpl#getOwnedSystemComponents <em>Owned System Components</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemComponentImpl#getOwnedSystemComponentPkgs <em>Owned System Component Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemComponentImpl#isDataComponent <em>Data Component</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemComponentImpl#getDataType <em>Data Type</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemComponentImpl#getInvolvingCapabilities <em>Involving Capabilities</em>}</li>
@@ -62,6 +69,26 @@ import org.polarsys.capella.core.data.oa.Entity;
  * @generated
  */
 public class SystemComponentImpl extends ComponentImpl implements SystemComponent {
+
+	/**
+	 * The cached value of the '{@link #getOwnedSystemComponents() <em>Owned System Components</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedSystemComponents()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<SystemComponent> ownedSystemComponents;
+
+	/**
+	 * The cached value of the '{@link #getOwnedSystemComponentPkgs() <em>Owned System Component Pkgs</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedSystemComponentPkgs()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<SystemComponentPkg> ownedSystemComponentPkgs;
 
 	/**
 	 * The default value of the '{@link #isDataComponent() <em>Data Component</em>}' attribute.
@@ -182,6 +209,34 @@ public class SystemComponentImpl extends ComponentImpl implements SystemComponen
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public EList<SystemComponent> getOwnedSystemComponents() {
+
+		if (ownedSystemComponents == null) {
+			ownedSystemComponents = new EObjectContainmentEList.Resolving<SystemComponent>(SystemComponent.class, this, CtxPackage.SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENTS);
+		}
+		return ownedSystemComponents;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public EList<SystemComponentPkg> getOwnedSystemComponentPkgs() {
+
+		if (ownedSystemComponentPkgs == null) {
+			ownedSystemComponentPkgs = new EObjectContainmentEList.Resolving<SystemComponentPkg>(SystemComponentPkg.class, this, CtxPackage.SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENT_PKGS);
+		}
+		return ownedSystemComponentPkgs;
 	}
 
 	/**
@@ -512,10 +567,30 @@ public class SystemComponentImpl extends ComponentImpl implements SystemComponen
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case CtxPackage.SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENTS:
+				return ((InternalEList<?>)getOwnedSystemComponents()).basicRemove(otherEnd, msgs);
+			case CtxPackage.SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENT_PKGS:
+				return ((InternalEList<?>)getOwnedSystemComponentPkgs()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case CtxPackage.SYSTEM_COMPONENT__INVOLVING_INVOLVEMENTS:
 				return getInvolvingInvolvements();
+			case CtxPackage.SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENTS:
+				return getOwnedSystemComponents();
+			case CtxPackage.SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENT_PKGS:
+				return getOwnedSystemComponentPkgs();
 			case CtxPackage.SYSTEM_COMPONENT__DATA_COMPONENT:
 				return isDataComponent();
 			case CtxPackage.SYSTEM_COMPONENT__DATA_TYPE:
@@ -545,6 +620,14 @@ public class SystemComponentImpl extends ComponentImpl implements SystemComponen
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case CtxPackage.SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENTS:
+				getOwnedSystemComponents().clear();
+				getOwnedSystemComponents().addAll((Collection<? extends SystemComponent>)newValue);
+				return;
+			case CtxPackage.SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENT_PKGS:
+				getOwnedSystemComponentPkgs().clear();
+				getOwnedSystemComponentPkgs().addAll((Collection<? extends SystemComponentPkg>)newValue);
+				return;
 			case CtxPackage.SYSTEM_COMPONENT__DATA_COMPONENT:
 					setDataComponent((Boolean)newValue);
 				return;
@@ -565,6 +648,12 @@ public class SystemComponentImpl extends ComponentImpl implements SystemComponen
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case CtxPackage.SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENTS:
+				getOwnedSystemComponents().clear();
+				return;
+			case CtxPackage.SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENT_PKGS:
+				getOwnedSystemComponentPkgs().clear();
+				return;
 			case CtxPackage.SYSTEM_COMPONENT__DATA_COMPONENT:
 				setDataComponent(DATA_COMPONENT_EDEFAULT);
 				return;
@@ -587,6 +676,10 @@ public class SystemComponentImpl extends ComponentImpl implements SystemComponen
 		switch (featureID) {
 			case CtxPackage.SYSTEM_COMPONENT__INVOLVING_INVOLVEMENTS:
 				return !getInvolvingInvolvements().isEmpty();
+			case CtxPackage.SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENTS:
+				return ownedSystemComponents != null && !ownedSystemComponents.isEmpty();
+			case CtxPackage.SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENT_PKGS:
+				return ownedSystemComponentPkgs != null && !ownedSystemComponentPkgs.isEmpty();
 			case CtxPackage.SYSTEM_COMPONENT__DATA_COMPONENT:
 				return dataComponent != DATA_COMPONENT_EDEFAULT;
 			case CtxPackage.SYSTEM_COMPONENT__DATA_TYPE:

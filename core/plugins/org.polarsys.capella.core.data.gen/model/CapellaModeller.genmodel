@@ -388,6 +388,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemComponentPkg/ownedSystemComponentPkgs"/>
     </genClasses>
     <genClasses ecoreClass="ContextArchitecture.ecore#//SystemComponent">
+      <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemComponent/ownedSystemComponents"/>
+      <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemComponent/ownedSystemComponentPkgs"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ContextArchitecture.ecore#//SystemComponent/dataComponent"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemComponent/dataType"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemComponent/involvingCapabilities"/>

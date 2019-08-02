@@ -1316,9 +1316,6 @@ public class ABServices {
     if (!(containerView instanceof DNodeContainer)) {
       return false;
     }
-
-    if (!CsServices.getService().canCreateABComponent(containerView))
-      return false;
     
     EObject type = CsServices.getService().getComponentType(containerView);
     if ((type == null) || !(type instanceof PhysicalComponent)) {

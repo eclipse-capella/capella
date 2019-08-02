@@ -29,6 +29,8 @@ import org.polarsys.capella.core.data.oa.Entity;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.polarsys.capella.core.data.ctx.SystemComponent#getOwnedSystemComponents <em>Owned System Components</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.ctx.SystemComponent#getOwnedSystemComponentPkgs <em>Owned System Component Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.SystemComponent#isDataComponent <em>Data Component</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.SystemComponent#getDataType <em>Data Type</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.SystemComponent#getInvolvingCapabilities <em>Involving Capabilities</em>}</li>
@@ -49,6 +51,52 @@ import org.polarsys.capella.core.data.oa.Entity;
 
 public interface SystemComponent extends Component, InvolvedElement {
 
+
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Owned System Components</b></em>' containment reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.SystemComponent}.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Owned System Components</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Owned System Components</em>' containment reference list.
+	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_OwnedSystemComponents()
+	 * @model containment="true" resolveProxies="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the System Components included in this System Component\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints=''"
+	 * @generated
+	 */
+
+	EList<SystemComponent> getOwnedSystemComponents();
+
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Owned System Component Pkgs</b></em>' containment reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.SystemComponentPkg}.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Owned System Component Pkgs</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Owned System Component Pkgs</em>' containment reference list.
+	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_OwnedSystemComponentPkgs()
+	 * @model containment="true" resolveProxies="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='sub-packages of this System Component' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints=''"
+	 * @generated
+	 */
+
+	EList<SystemComponentPkg> getOwnedSystemComponentPkgs();
 
 
 

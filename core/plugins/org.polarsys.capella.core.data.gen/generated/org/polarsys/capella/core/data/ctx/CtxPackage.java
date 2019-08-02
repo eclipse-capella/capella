@@ -5621,13 +5621,31 @@ public interface CtxPackage extends EPackage {
 	int SYSTEM_COMPONENT__INVOLVING_INVOLVEMENTS = CsPackage.COMPONENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Owned System Components</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENTS = CsPackage.COMPONENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Owned System Component Pkgs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENT_PKGS = CsPackage.COMPONENT_FEATURE_COUNT + 2;
+
+	/**
 	 * The feature id for the '<em><b>Data Component</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_COMPONENT__DATA_COMPONENT = CsPackage.COMPONENT_FEATURE_COUNT + 1;
+	int SYSTEM_COMPONENT__DATA_COMPONENT = CsPackage.COMPONENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Data Type</b></em>' reference list.
@@ -5636,7 +5654,7 @@ public interface CtxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_COMPONENT__DATA_TYPE = CsPackage.COMPONENT_FEATURE_COUNT + 2;
+	int SYSTEM_COMPONENT__DATA_TYPE = CsPackage.COMPONENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Involving Capabilities</b></em>' reference list.
@@ -5645,7 +5663,7 @@ public interface CtxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_COMPONENT__INVOLVING_CAPABILITIES = CsPackage.COMPONENT_FEATURE_COUNT + 3;
+	int SYSTEM_COMPONENT__INVOLVING_CAPABILITIES = CsPackage.COMPONENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Capability Involvements</b></em>' reference list.
@@ -5654,7 +5672,7 @@ public interface CtxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_COMPONENT__CAPABILITY_INVOLVEMENTS = CsPackage.COMPONENT_FEATURE_COUNT + 4;
+	int SYSTEM_COMPONENT__CAPABILITY_INVOLVEMENTS = CsPackage.COMPONENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Involving Missions</b></em>' reference list.
@@ -5663,7 +5681,7 @@ public interface CtxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_COMPONENT__INVOLVING_MISSIONS = CsPackage.COMPONENT_FEATURE_COUNT + 5;
+	int SYSTEM_COMPONENT__INVOLVING_MISSIONS = CsPackage.COMPONENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Mission Involvements</b></em>' reference list.
@@ -5672,7 +5690,7 @@ public interface CtxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_COMPONENT__MISSION_INVOLVEMENTS = CsPackage.COMPONENT_FEATURE_COUNT + 6;
+	int SYSTEM_COMPONENT__MISSION_INVOLVEMENTS = CsPackage.COMPONENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Realized Entities</b></em>' reference list.
@@ -5681,7 +5699,7 @@ public interface CtxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_COMPONENT__REALIZED_ENTITIES = CsPackage.COMPONENT_FEATURE_COUNT + 7;
+	int SYSTEM_COMPONENT__REALIZED_ENTITIES = CsPackage.COMPONENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Realizing Logical Components</b></em>' reference list.
@@ -5690,7 +5708,7 @@ public interface CtxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_COMPONENT__REALIZING_LOGICAL_COMPONENTS = CsPackage.COMPONENT_FEATURE_COUNT + 8;
+	int SYSTEM_COMPONENT__REALIZING_LOGICAL_COMPONENTS = CsPackage.COMPONENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The number of structural features of the '<em>System Component</em>' class.
@@ -5699,7 +5717,7 @@ public interface CtxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_COMPONENT_FEATURE_COUNT = CsPackage.COMPONENT_FEATURE_COUNT + 9;
+	int SYSTEM_COMPONENT_FEATURE_COUNT = CsPackage.COMPONENT_FEATURE_COUNT + 11;
 
 	/**
 	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.ctx.SystemAnalysis <em>System Analysis</em>}'.
@@ -6303,6 +6321,28 @@ public interface CtxPackage extends EPackage {
 	EClass getSystemComponent();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.polarsys.capella.core.data.ctx.SystemComponent#getOwnedSystemComponents <em>Owned System Components</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Owned System Components</em>'.
+	 * @see org.polarsys.capella.core.data.ctx.SystemComponent#getOwnedSystemComponents()
+	 * @see #getSystemComponent()
+	 * @generated
+	 */
+	EReference getSystemComponent_OwnedSystemComponents();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.polarsys.capella.core.data.ctx.SystemComponent#getOwnedSystemComponentPkgs <em>Owned System Component Pkgs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Owned System Component Pkgs</em>'.
+	 * @see org.polarsys.capella.core.data.ctx.SystemComponent#getOwnedSystemComponentPkgs()
+	 * @see #getSystemComponent()
+	 * @generated
+	 */
+	EReference getSystemComponent_OwnedSystemComponentPkgs();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.polarsys.capella.core.data.ctx.SystemComponent#isDataComponent <em>Data Component</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6889,6 +6929,22 @@ public interface CtxPackage extends EPackage {
 		 * @generated
 		 */
 		EClass SYSTEM_COMPONENT = eINSTANCE.getSystemComponent();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned System Components</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENTS = eINSTANCE.getSystemComponent_OwnedSystemComponents();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned System Component Pkgs</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENT_PKGS = eINSTANCE.getSystemComponent_OwnedSystemComponentPkgs();
 
 		/**
 		 * The meta object literal for the '<em><b>Data Component</b></em>' attribute feature.

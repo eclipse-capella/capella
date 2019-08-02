@@ -104,6 +104,14 @@ public class GenerateGenModelsTask implements ITaskProduction {
 											genFeature.setCreateChild(false);
 										}
 									}
+								} else if ("SystemComponent".equals(className)) {
+									for (GenFeature genFeature : genClass.getGenFeatures()) {
+										if ("ownedSystemComponents".equals(genFeature.getEcoreFeature().getName())) {
+											genFeature.setCreateChild(false);
+										} else if ("ownedSystemComponentPkgs".equals(genFeature.getEcoreFeature().getName())) {
+											genFeature.setCreateChild(false);
+										}
+									}
 								}
 							}
 						}

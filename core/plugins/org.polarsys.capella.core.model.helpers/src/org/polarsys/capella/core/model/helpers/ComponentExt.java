@@ -2744,13 +2744,14 @@ public class ComponentExt {
    * @return whether a component can be created in the target element
    */
   public static boolean canCreateABComponent(EObject target) {
+    if (target instanceof Part) {
+      target = ((Part) target).getAbstractType();
+    }
     if (target instanceof Component) {
       Component targetComponent = (Component) target;
-      if (!targetComponent.isActor() && targetComponent.isHuman()) {
+      if (targetComponent.isHuman()) {
         return false;
-      }
-      if ((targetComponent instanceof Entity || targetComponent instanceof SystemComponent
-          || targetComponent instanceof LogicalComponent) && targetComponent.isActor()) {
+      } else if (targetComponent instanceof SystemComponent && !isActor(targetComponent)) {
         return false;
       }
     } else if (target instanceof ComponentPkg) {
@@ -2781,18 +2782,14 @@ public class ComponentExt {
    * @return whether an actor can be created in the target element
    */
   public static boolean canCreateABActor(EObject target) {
+    if (target instanceof Part) {
+      target = ((Part) target).getAbstractType();
+    }
     if (target instanceof Component) {
       Component targetComponent = (Component) target;
-      if (!targetComponent.isActor() && targetComponent.isHuman()) {
+      if (targetComponent.isHuman()) {
         return false;
-      }
-      if (targetComponent instanceof Entity) {
-        Entity targetEntity = (Entity) targetComponent;
-        if (targetEntity.isHuman()) {
-          return false;
-        }
-      } else if ((targetComponent instanceof SystemComponent || targetComponent instanceof LogicalComponent)
-          && !targetComponent.isActor()) {
+      } else if (targetComponent instanceof SystemComponent && !isActor(targetComponent)) {
         return false;
       }
     } else if (target instanceof ComponentPkg) {
