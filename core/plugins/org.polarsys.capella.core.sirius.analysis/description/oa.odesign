@@ -63,7 +63,7 @@
         </create>
       </intersection>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Operational Entity Breakdown" titleExpression="aql:'[OEBD] ' + self.name" domainClass="Component" preconditionExpression="aql:(self.oclIsKindOf(oa::Entity) and not (self.isActor())) or self.oclIsKindOf(oa::EntityPkg)">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Operational Entity Breakdown" titleExpression="aql:'[OEBD] ' + self.name" domainClass="Namespace" preconditionExpression="aql:self.oclIsKindOf(oa::Entity) or self.oclIsKindOf(oa::EntityPkg)">
       <dropDescriptions href="#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
       <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
@@ -147,7 +147,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Operational Actor in the target Entity" name="operational.actor" label="Operational Actor" precondition="aql:not (container.oclIsKindOf(oa::Entity) ans self.isActor())" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/OperationalActor.gif" extraMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Operational Actor in the target Entity" name="operational.actor" label="Operational Actor" precondition="aql:not (container.oclIsKindOf(oa::Entity) and self.isActor())" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/OperationalActor.gif" extraMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -160,7 +160,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Sets the target Operational Entity as the new container of the source Operational Entity" name="contained.in" label="Contained In" precondition="aql:(preTarget->filter(oa::OperationalActor)->size() = 0) and preSource.isValidDndABDComponent(preTargetView)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@edgeMappings[name='containedIn%20Mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/description/images/containedIn.png">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Sets the target Operational Entity as the new container of the source Operational Entity" name="contained.in" label="Contained In" precondition="aql:preSource.isValidDndABDComponent(preTargetView)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@edgeMappings[name='containedIn%20Mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/description/images/containedIn.png">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -728,7 +728,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Operational Entity Blank" label="Operational Architecture Blank" titleExpression="aql:'[OAB] ' + self.name" domainClass="NamedElement" preconditionExpression="aql:self.oclIsKindOf(oa::Entity) or self.oclIsKindOf(oa::EntityPkg)" defaultConcern="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@concerns/@ownedConcernDescriptions.0">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Operational Entity Blank" label="Operational Architecture Blank" titleExpression="aql:'[OAB] ' + self.name" domainClass="Namespace" preconditionExpression="aql:self.oclIsKindOf(oa::Entity) or self.oclIsKindOf(oa::EntityPkg)" defaultConcern="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@concerns/@ownedConcernDescriptions.0">
       <dropDescriptions href="#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Entities%20From%20Project%20Explorer']"/>
       <dropDescriptions href="#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
       <dropDescriptions href="#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20Entitiy']"/>

@@ -45,7 +45,7 @@ public class AbstractRunnableHandler extends AbstractUiHandler {
   protected IRunnableWithProgress createRunnable(ExecutionEvent event_p) {
     return null;
   }
-T
+
   protected Shell getActiveShell(ExecutionEvent event_p) {
     IWorkbenchPart part = (IWorkbenchPart) getVariableValue(event_p, ACTIVE_PART_VARIABLE);
     if (part == null) {

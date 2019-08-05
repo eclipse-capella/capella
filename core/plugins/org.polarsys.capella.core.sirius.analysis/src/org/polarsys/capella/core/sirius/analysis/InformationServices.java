@@ -21,7 +21,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -60,7 +59,6 @@ import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.ui.toolkit.dialogs.TransferTreeListDialog;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
-import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement;
 import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.capellacore.AbstractDependenciesPkg;
 import org.polarsys.capella.core.data.capellacore.AbstractExchangeItemPkg;
@@ -70,8 +68,6 @@ import org.polarsys.capella.core.data.capellacore.Classifier;
 import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
 import org.polarsys.capella.core.data.capellacore.Generalization;
-import org.polarsys.capella.core.data.capellacore.InvolvedElement;
-import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentArchitecture;
 import org.polarsys.capella.core.data.cs.ComponentPkg;
@@ -80,7 +76,6 @@ import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfaceImplementation;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
 import org.polarsys.capella.core.data.cs.InterfaceUse;
-import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
@@ -144,7 +139,6 @@ import org.polarsys.capella.core.libraries.queries.QueryIdentifierConstants;
 import org.polarsys.capella.core.model.helpers.AbstractDependenciesPkgExt;
 import org.polarsys.capella.core.model.helpers.AbstractExchangeItemPkgExt;
 import org.polarsys.capella.core.model.helpers.AssociationExt;
-import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.DataPkgExt;
 import org.polarsys.capella.core.model.helpers.DataTypeExt;
@@ -2569,28 +2563,28 @@ public class InformationServices {
 
     if (!diagramServices.isOnDiagram(diagram, link)) {
       EObject targetElement = InterfaceExt.getTargetElementFromLink(link);
-      AbstractDNode targetVeiw = null;
+      AbstractDNode targetView = null;
       // create or retrieve targetView
       if ((null != targetElement) && diagramServices.isOnDiagram(diagram, targetElement)) {
         // retrieve target view
         EObject diagramElement = diagramServices.getDiagramElement(diagram, targetElement);
         if (diagramElement instanceof AbstractDNode) {
-          targetVeiw = (AbstractDNode) diagramElement;
+          targetView = (AbstractDNode) diagramElement;
         }
       } else {
         // create target view
         // get targetElement mapping from given diagram
         AbstractNodeMapping mapping = getTargetMappingOfGivenEdgeFromGivenDiagram(diagram, targetElement);
         if (null != mapping) {
-          targetVeiw = diagramServices.createAbstractDNodeContainer(mapping, targetElement, diagram, diagram);
+          targetView = diagramServices.createAbstractDNodeContainer(mapping, targetElement, diagram, diagram);
         }
       }
       // create Edge
-      if ((null != targetVeiw) && (sourceView instanceof EdgeTarget) && (targetVeiw instanceof EdgeTarget)) {
+      if ((null != targetView) && (sourceView instanceof EdgeTarget) && (targetView instanceof EdgeTarget)) {
         // get edge mapping to be created for given link and diagram
         List<EdgeMapping> edgeMappings = getEdgeMappingFromGivenDiagram(link, diagram, false, false);
         for (EdgeMapping edgeMapping : edgeMappings) {
-          diagramServices.createEdge(edgeMapping, (EdgeTarget) sourceView, (EdgeTarget) targetVeiw, link);
+          diagramServices.createEdge(edgeMapping, (EdgeTarget) sourceView, (EdgeTarget) targetView, link);
         }
       }
     }
@@ -2913,10 +2907,7 @@ public class InformationServices {
       actualMapping = diagramServices.getContainerMapping(diagram, IMappingNameConstants.IDB_INTERFACE_MAPPING_NAME);
     } else if (diagram.getDescription().getName()
         .equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_CAPABILITY_REALIZATION_INVOLVEMENT)) {
-
-      if (targetElement instanceof Component && ComponentExt.isActor(targetElement)) {
-        actualMapping = diagramServices.getNodeMapping(diagram, IMappingNameConstants.CCRI_ACTOR);
-      } else if (targetElement instanceof Component && !ComponentExt.isActor(targetElement)) {
+      if (targetElement instanceof Component) {
         actualMapping = diagramServices.getNodeMapping(diagram, IMappingNameConstants.CCRI_COMPONENT);
       }
     }
