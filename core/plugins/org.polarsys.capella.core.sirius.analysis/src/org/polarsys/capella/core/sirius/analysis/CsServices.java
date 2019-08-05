@@ -1431,15 +1431,21 @@ public class CsServices {
   /**
    * Can we create a component to a graphical element?
    */
-  public boolean canCreateABComponent(DSemanticDecorator decorator) {
-    return ComponentExt.canCreateABComponent(decorator.getTarget());
+  public boolean canCreateABComponent(EObject element) {
+    if (element instanceof DSemanticDecorator) {
+      return ComponentExt.canCreateABComponent(((DSemanticDecorator) element).getTarget());
+    }
+    return ComponentExt.canCreateABComponent(element);
   }
 
   /**
    * Can we create an actor to a graphical element?
    */
-  public boolean canCreateABActor(DSemanticDecorator decorator) {
-    return ComponentExt.canCreateABActor(decorator.getTarget());
+  public boolean canCreateABActor(EObject element) {
+    if (element instanceof DSemanticDecorator) {
+      return ComponentExt.canCreateABActor(((DSemanticDecorator) element).getTarget());
+    }
+    return ComponentExt.canCreateABActor(element);
   }
   
   /**

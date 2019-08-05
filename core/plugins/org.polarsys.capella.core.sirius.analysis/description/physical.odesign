@@ -2517,7 +2517,7 @@
             </tools>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="Physical Actor">
-            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Physical Actor with a Kind NODE  and a Part typed by this Physical Actor. The Part is created in the Physical Context Element." name="physical.actor" label="Physical Actor" containerMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Actor']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PhysicalActor.gif">
+            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Physical Actor with a Kind NODE  and a Part typed by this Physical Actor. The Part is created in the Physical Context Element." name="physical.actor" label="Physical Actor" precondition="aql:containerView.getABActorTarget().canCreateABActor()" containerMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Actor']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PhysicalActor.gif">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>

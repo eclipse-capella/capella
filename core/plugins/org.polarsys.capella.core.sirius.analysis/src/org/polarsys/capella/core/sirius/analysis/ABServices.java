@@ -1256,7 +1256,7 @@ public class ABServices {
       return false;
     }
 
-    if (!CsServices.getService().canCreateABComponent(containerView))
+    if (!CsServices.getService().canCreateABComponent(CsServices.getService().getABTarget(containerView)))
       return false;
     
     EObject type = CsServices.getService().getComponentType(containerView);
@@ -1289,7 +1289,7 @@ public class ABServices {
       return false;
     }
 
-    if (!CsServices.getService().canCreateABComponent(containerView))
+    if (!CsServices.getService().canCreateABComponent(CsServices.getService().getABTarget(containerView)))
       return false;
     
     EObject type = CsServices.getService().getComponentType(containerView);

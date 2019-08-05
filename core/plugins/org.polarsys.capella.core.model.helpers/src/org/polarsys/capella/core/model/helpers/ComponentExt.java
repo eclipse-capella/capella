@@ -2754,25 +2754,28 @@ public class ComponentExt {
       } else if (targetComponent instanceof SystemComponent && !isActor(targetComponent)) {
         return false;
       }
+      return true;
     } else if (target instanceof ComponentPkg) {
       ComponentPkg targetComponentPkg = (ComponentPkg) target;
       Component parentComponent = ComponentPkgExt.getParentComponent(targetComponentPkg);
 
-      if (parentComponent == null && (target instanceof SystemComponentPkg || target instanceof LogicalComponentPkg
-          || target instanceof PhysicalComponentPkg)) {
+      if (parentComponent == null) {
+        if (target instanceof SystemComponentPkg || target instanceof LogicalComponentPkg
+            || target instanceof PhysicalComponentPkg) {
+          ComponentPkg rootComponentPkg = ComponentPkgExt.getRootComponentPkg(targetComponentPkg);
+          long nbOfExistingComponents = ComponentPkgExt.getContainedComponents(rootComponentPkg).stream()
+              .filter(c -> !ComponentExt.isActor(c)).count();
 
-        ComponentPkg rootComponentPkg = ComponentPkgExt.getRootComponentPkg(targetComponentPkg);
-        long nbOfExistingComponents = ComponentPkgExt.getContainedComponents(rootComponentPkg).stream()
-            .filter(c -> !ComponentExt.isActor(c)).count();
-
-        if (nbOfExistingComponents != 0) {
-          return false;
+          if (nbOfExistingComponents != 0) {
+            return false;
+          }
         }
+        return true;
       }
 
       return canCreateABComponent(parentComponent);
     }
-    return true;
+    return false;
   }
 
   /**
@@ -2792,6 +2795,7 @@ public class ComponentExt {
       } else if (targetComponent instanceof SystemComponent && !isActor(targetComponent)) {
         return false;
       }
+      return true;
     } else if (target instanceof ComponentPkg) {
       ComponentPkg targetComponentPkg = (ComponentPkg) target;
       Component parentComponent = ComponentPkgExt.getParentComponent(targetComponentPkg);
@@ -2800,6 +2804,6 @@ public class ComponentExt {
       }
       return canCreateABActor(parentComponent);
     }
-    return true;
+    return false;
   }
 }
