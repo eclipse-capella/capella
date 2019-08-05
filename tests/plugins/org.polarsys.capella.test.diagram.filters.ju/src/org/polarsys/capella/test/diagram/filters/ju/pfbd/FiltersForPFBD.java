@@ -1,0 +1,31 @@
+/*******************************************************************************
+ * Copyright (c) 2019 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.test.diagram.filters.ju.pfbd;
+
+import org.polarsys.capella.test.diagram.filters.ju.DiagramObjectFilterTestCase;
+
+public abstract class FiltersForPFBD extends DiagramObjectFilterTestCase {
+
+  protected final String CONTROL_NODE_1_ID = "991ea7ad-c324-4d4b-b623-a62fb7aa3259";
+  protected final String CONTROL_NODE_2_ID = "4364f51d-af01-45ea-8199-18edfcf30909";
+  protected final String PROPERTY_VALUES_ID = "347bfb80-3575-422e-a579-938c6632c18b";
+
+  @Override
+  protected String getTestProjectName() {
+    return "StandardDiagramFiltersModel";
+  }
+
+  @Override
+  protected String getDiagramName() {
+    return "[PFBD] Root Physical Function";
+  }
+
+}

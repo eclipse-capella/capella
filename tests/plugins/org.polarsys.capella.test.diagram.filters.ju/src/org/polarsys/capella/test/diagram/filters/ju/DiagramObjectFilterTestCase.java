@@ -36,7 +36,6 @@ import org.eclipse.sirius.diagram.description.filter.MappingFilter;
 import org.junit.Assert;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 import org.polarsys.capella.test.framework.api.NonDirtyTestCase;
 import org.polarsys.capella.test.framework.helpers.GuiActions;
@@ -246,7 +245,8 @@ public abstract class DiagramObjectFilterTestCase extends NonDirtyTestCase {
    */
   protected void assertFilterActive(DDiagram diagram, String filterName) {
     FilterDescription filter = DiagramHelper.getFilterForDiagram(diagram, filterName);
-    Assert.assertNotNull(MessageFormat.format(HelperMessages.filterNotFound, filterName, EObjectExt.getText(diagram)), filter);
+    Assert.assertNotNull(MessageFormat.format(HelperMessages.filterNotFound, filterName, EObjectExt.getText(diagram)),
+        filter);
 
     EList<FilterDescription> activatedFilters = diagram.getActivatedFilters();
     assertTrue(activatedFilters.contains(filter));

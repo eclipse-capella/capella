@@ -8,23 +8,41 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.filters.ju.lab;
+package org.polarsys.capella.test.diagram.filters.ju.pab;
 
 import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
+import org.polarsys.capella.test.diagram.filters.ju.LabelFilterTestCase;
 
-public class HideComponentPortsWithoutExchangesForLAB extends FiltersForLAB {
+public class HideComponentExchangesNamesForPAB extends LabelFilterTestCase {
+
+  private final String COMPONENT_EXCHANGE_1_ID = "63d4dd01-c52f-4a74-85b4-dcece0ece82f";
+
+  @Override
+  protected String getTestProjectName() {
+    return "StandardDiagramFiltersModel";
+  }
+
+  @Override
+  protected String getDiagramName() {
+    return "[PAB] Physical System";
+  }
 
   @Override
   protected String getFilterName() {
-    return IFilterNameConstants.FILTER_LAB_HIDE_COMPONENT_PORTS_WITHOUT_EXCHANGES;
+    return IFilterNameConstants.FILTER_PAB_HIDE_COMPONENT_EXCHANGES_NAMES;
   }
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { COMPONENT_PORT_WITHOUT_EXCHANGES_ID, COMPONENT_PORT_7_ID });
+    return Arrays.asList(new String[] { COMPONENT_EXCHANGE_1_ID });
+  }
+
+  @Override
+  protected List<String> getExpectedElementLabels() {
+    return Arrays.asList(new String[] { ";DEdge;" });
   }
 
 }

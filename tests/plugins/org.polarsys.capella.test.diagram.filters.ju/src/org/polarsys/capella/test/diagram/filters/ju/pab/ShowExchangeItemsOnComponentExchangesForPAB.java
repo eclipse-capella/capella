@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.filters.ju.lab;
+package org.polarsys.capella.test.diagram.filters.ju.pab;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,9 +16,9 @@ import java.util.List;
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 import org.polarsys.capella.test.diagram.filters.ju.LabelFilterTestCase;
 
-public class ShowExchangeItemsOnFunctionalExchangesForLAB extends LabelFilterTestCase {
+public class ShowExchangeItemsOnComponentExchangesForPAB extends LabelFilterTestCase {
 
-  private final String FUNCTIONAL_EXCHANGE_1_ID = "998a0b1e-5baa-4d8b-84e9-22c13dd22b55";
+  private final String COMPONENT_EXCHANGE_1_ID = "63d4dd01-c52f-4a74-85b4-dcece0ece82f";
 
   @Override
   protected String getTestProjectName() {
@@ -27,22 +27,22 @@ public class ShowExchangeItemsOnFunctionalExchangesForLAB extends LabelFilterTes
 
   @Override
   protected String getDiagramName() {
-    return "[LAB] Logical System";
+    return "[PAB] Physical System";
   }
 
   @Override
   protected String getFilterName() {
-    return IFilterNameConstants.FILTER_LAB_SHOW_EXCHANGE_ITEMS_ON_FUNCTIONAL_EXCHANGES_ID;
+    return IFilterNameConstants.FILTER_PAB_SHOW_EXCHANGE_ITEMS_ON_COMPONENT_EXCHANGES;
   }
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { FUNCTIONAL_EXCHANGE_1_ID });
+    return Arrays.asList(new String[] { COMPONENT_EXCHANGE_1_ID });
   }
 
   @Override
   protected List<String> getExpectedElementLabels() {
-    return Arrays.asList(new String[] { "; ;" });
+    return Arrays.asList(new String[] { ";ExchangeItem 1;" });
   }
 
 }
