@@ -77,7 +77,7 @@ public class DragAndDropServices {
   }
 
   public boolean partitionableElementCanBeDropped(Component semanticObjectToDrop, EObject targetContainerView) {
-    
+
     if (targetContainerView instanceof DDiagramElement) {
       for (DDiagramElement anElement : DiagramServices.getDiagramServices().getDiagramElements(targetContainerView)) {
         if ((anElement.getTarget() != null) && anElement.getTarget().equals(semanticObjectToDrop)) {
@@ -85,8 +85,8 @@ public class DragAndDropServices {
         }
       }
     }
-    
-    DSemanticDecorator decorator = (DSemanticDecorator)targetContainerView;
+
+    DSemanticDecorator decorator = (DSemanticDecorator) targetContainerView;
     if (targetContainerView instanceof DDiagram) {
       return true;
     }
@@ -96,9 +96,9 @@ public class DragAndDropServices {
         return true;
       }
       if (decorator.getTarget() instanceof Component) {
-        for (Part partE : ((Component)decorator.getTarget()).getRepresentingParts()) {
+        for (Part partE : ((Component) decorator.getTarget()).getRepresentingParts()) {
           if (parents.contains(partE))
-          return true;
+            return true;
         }
       }
     }
@@ -106,15 +106,22 @@ public class DragAndDropServices {
   }
 
   public boolean partitionableElementCanBeDropped(Part part, EObject targetContainerView) {
-    DSemanticDecorator decorator = (DSemanticDecorator)targetContainerView;
+
+    DSemanticDecorator decorator = (DSemanticDecorator) targetContainerView;
+    if (targetContainerView instanceof DDiagram) {
+      return true;
+    }
+
     java.util.Collection<Part> parents = ComponentExt.getPartAncestors(part);
     if (decorator.getTarget() instanceof Part && parents.contains(decorator.getTarget())) {
       return true;
     }
+
     if (decorator.getTarget() instanceof Component) {
-      for (Part partE : ((Component)decorator.getTarget()).getRepresentingParts()) {
-        if (parents.contains(partE))
-        return true;
+      for (Part partE : ((Component) decorator.getTarget()).getRepresentingParts()) {
+        if (parents.contains(partE)) {
+          return true;
+        }
       }
     }
     return false;
