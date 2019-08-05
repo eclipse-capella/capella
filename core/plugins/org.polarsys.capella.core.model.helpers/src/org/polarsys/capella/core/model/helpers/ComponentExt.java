@@ -1575,7 +1575,7 @@ public class ComponentExt {
     return BlockArchitectureExt.getRootBlockArchitecture(modelElement);
   }
 
-  static public Component getRootComponent(Component component) {
+  public static Component getRootComponent(Component component) {
     Component rootCpnt = null;
     if (null != component) {
       Object container = component.eContainer();
@@ -1595,7 +1595,7 @@ public class ComponentExt {
    *          the current component
    * @return the root component architecture
    */
-  static public ComponentArchitecture getRootComponentArchitecture(Component component) {
+  public static ComponentArchitecture getRootComponentArchitecture(Component component) {
     ComponentArchitecture compArch = null;
     if (null != component) {
       Object container = component.eContainer();
@@ -1614,7 +1614,7 @@ public class ComponentExt {
   /**
    * Gets the sub defined actors.
    */
-  static public List<? extends Component> getSubDefinedActors(BlockArchitecture architecture) {
+  public static List<? extends Component> getSubDefinedActors(BlockArchitecture architecture) {
     List<Component> elements = new ArrayList<>();
     for (Component compo : getSubDefinedComponents(architecture)) {
       if (compo.isActor()) {
@@ -1627,7 +1627,7 @@ public class ComponentExt {
   /**
    * Returns components defined into the component.
    */
-  static public List<Component> getSubDefinedComponents(Component object) {
+  public static List<Component> getSubDefinedComponents(Component object) {
     List<Component> elements = new ArrayList<Component>();
     if (object instanceof Entity) {
       elements.addAll(((Entity) object).getOwnedEntities());
@@ -1666,7 +1666,7 @@ public class ComponentExt {
   /**
    * Returns components defined into the architecture.
    */
-  static public List<Component> getSubDefinedComponents(BlockArchitecture blockArchitecture) {
+  public static List<Component> getSubDefinedComponents(BlockArchitecture blockArchitecture) {
     ComponentPkg componentPkg = BlockArchitectureExt.getComponentPkg(blockArchitecture, false);
     return ComponentPkgExt.getOwnedComponents(componentPkg);
   }
@@ -1991,12 +1991,11 @@ public class ComponentExt {
    * Return true if the the Component given in parameter is the ComponentRoot
    */
   public static boolean isComponentRoot(EObject element) {
-    if (!(element instanceof Component)) {
-      return false;
+    if (element instanceof Component) {
+      return getRootComponent((Component) element) == null;
     }
 
-    // Last Component hierarchy detection
-    return (!EcoreUtil2.isContainedBy(element, CsPackage.Literals.COMPONENT));
+    return false;
   }
 
   /**

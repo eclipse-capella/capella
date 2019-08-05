@@ -18,9 +18,10 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
-
+import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.data.pa.properties.Messages;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticKindGroup;
 
 /**
@@ -31,11 +32,13 @@ public class PhysicalComponentNatureGroup extends AbstractSemanticKindGroup {
 
   /**
    * Constructor.
+   * 
    * @param parent
    * @param widgetFactory
    * @param enabled
    */
-  public PhysicalComponentNatureGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, boolean enabled) {
+  public PhysicalComponentNatureGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory,
+      boolean enabled) {
     super(parent, widgetFactory, Messages.getString("PhysicalComponentNature.Label"), enabled, 3); //$NON-NLS-1$
 
     pcNatureBtnBehavior = createButton(PhysicalComponentNature.BEHAVIOR, enabled);
@@ -62,14 +65,23 @@ public class PhysicalComponentNatureGroup extends AbstractSemanticKindGroup {
   public Button getDefaultSemanticField() {
     return null;
   }
-  
+
   @Override
   public void setEnabled(boolean enabled) {
-    super.setEnabled(enabled);
-    for (Button button : getSemanticFields()) {
-      if (!enabled)
-        button.setForeground(Display.getCurrent().getSystemColor(SWT.COLOR_GRAY));
+    boolean isEnabled = enabled;
+
+    if (isEnabled && semanticElement instanceof PhysicalComponent) {
+      PhysicalComponent component = (PhysicalComponent) semanticElement;
+      isEnabled = ComponentExt.isActor(component) || !ComponentExt.isComponentRoot(component);
     }
-    
+
+    super.setEnabled(isEnabled);
+    for (Button button : getSemanticFields()) {
+      if (isEnabled) {
+        button.setForeground(Display.getCurrent().getSystemColor(SWT.COLOR_BLACK));
+      } else {
+        button.setForeground(Display.getCurrent().getSystemColor(SWT.COLOR_GRAY));
+      }
+    }
   }
 }
