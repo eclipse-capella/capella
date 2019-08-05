@@ -125,6 +125,7 @@ import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.ctx.CtxFactory;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
@@ -2762,9 +2763,13 @@ public class CsServices {
         containerFeature = OaPackage.Literals.ENTITY_PKG__OWNED_ENTITIES;
         containerObject = pkg;
       }
-    } else if ((container instanceof SystemComponentPkg) || (container instanceof SystemAnalysis)) {
+    } else if (container instanceof SystemComponent || container instanceof SystemComponentPkg
+        || container instanceof SystemAnalysis) {
       element = CtxFactory.eINSTANCE.createSystemComponent();
-      if (container instanceof SystemComponentPkg) {
+      if (container instanceof SystemComponent) {
+        containerFeature = CtxPackage.Literals.SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENTS;
+        containerObject = container;
+      } else if (container instanceof SystemComponentPkg) {
         containerFeature = CtxPackage.Literals.SYSTEM_COMPONENT_PKG__OWNED_SYSTEM_COMPONENTS;
         containerObject = container;
       } else if (container instanceof SystemAnalysis) {
