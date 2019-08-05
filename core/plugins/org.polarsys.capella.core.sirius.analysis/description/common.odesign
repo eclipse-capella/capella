@@ -6315,7 +6315,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Contextual Component Detailed Interfaces" precondition="aql:self.isInLib() and self.getComponentType()->select(x | x->filter(la::LogicalComponent)->size() > 0 or x->filter(pa::PhysicalComponent)->size() > 0 or x->filter(ctx::System)->size() > 0 or x->filter(ctx::Actor)->size() > 0 or x->filter(la::LogicalActor)->size() > 0 or x->filter(pa::PhysicalActor)->size() > 0 or x->filter(epbs::ConfigurationItem)->size() > 0)->size() > 0" titleExpression="aql:'[CDI] ' + self.name" browseExpression="aql:self.getComponentType()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Contextual Component Detailed Interfaces" precondition="aql:self.isInLib() and self.getComponentType()->select(x | x->filter(la::LogicalComponent)->size() > 0 or x->filter(pa::PhysicalComponent)->size() > 0 or x->filter(epbs::ConfigurationItem)->size() > 0)->size() > 0" titleExpression="aql:'[CDI] ' + self.name" browseExpression="aql:self.getComponentType()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -6736,7 +6736,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='InterfaceDrop%20from%20Model'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Model'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Component%20from%20Model'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']" name="Contextual Component External Interfaces" titleExpression="aql:'[CEI] ' + self.name" domainClass="capellacore::Namespace" preconditionExpression="aql:self.getComponentType()->select(x | x->filter(ctx::SystemComponent)->size() > 0 or x->filter(la::LogicalComponent)->size() > 0 or x->filter(pa::PhysicalComponent)->size() > 0 or x->filter(pa::PhysicalComponentPkg)->size() > 0)->size() > 0" defaultConcern="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@concerns/@ownedConcernDescriptions.0">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='InterfaceDrop%20from%20Model'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Model'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Component%20from%20Model'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']" name="Contextual Component External Interfaces" titleExpression="aql:'[CEI] ' + self.name" domainClass="capellacore::Namespace" preconditionExpression="aql:self.getComponentType()->select(x | x->filter(ctx::SystemComponent)->size() > 0 or x->filter(la::LogicalComponent)->size() > 0 or x->filter(pa::PhysicalComponent)->size() > 0)->size() > 0" defaultConcern="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@concerns/@ownedConcernDescriptions.0">
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
@@ -7850,7 +7850,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Contextual Component External Interfaces" precondition="aql:self.isInLib() and self.getComponentType()->select(x | x->filter(la::LogicalComponent)->size() > 0 or x->filter(pa::PhysicalComponent)->size() > 0 or x->filter(ctx::System)->size() > 0 or x->filter(ctx::Actor)->size() > 0 or x->filter(la::LogicalActor)->size() > 0 or x->filter(pa::PhysicalActor)->size() > 0 or x->filter(epbs::ConfigurationItem)->size() > 0)->size() > 0" titleExpression="aql:'[CEI] ' + self.name" browseExpression="aql:self.getComponentType()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Contextual Component External Interfaces" precondition="aql:self.isInLib() and self.getComponentType()->select(x | x->filter(la::LogicalComponent)->size() > 0 or x->filter(pa::PhysicalComponent)->size() > 0 or x->filter(epbs::ConfigurationItem)->size() > 0)->size() > 0" titleExpression="aql:'[CEI] ' + self.name" browseExpression="aql:self.getComponentType()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -9262,6 +9262,67 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Insert/Remove Logical / Physical Component. Create or delete graphical objects representing existing Components. Removing a Component graphical object from a diagram does not delete the Component from the model. This tool does not modify the semantic model." name="actors" label="Actors" precondition="aql:not (containerView.oclIsKindOf(diagram::DDiagram) and container.getParentContainer().oclIsKindOf(cs::BlockArchitecture))" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@containerMappings[name='CCII_Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="ownedNodes" computationExpression="aql:self.void2Null(containerView.getOwnedContainers())"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="visibleTargets" computationExpression="aql:self.void2Null(ownedNodes->select(ownedNode | ownedNode.visible).target)"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="scope" computationExpression="aql:containerView.getCCIIShowHideActor()"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="message" computationExpression="aql:'Select Components to show in ' + container.name + '.'"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="context" computationExpression="aql:containerView.getCCIITarget()"/>
+            </viewVariable>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="showhide" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                  <parameters name="context" value="aql:context"/>
+                  <parameters name="scope" value="aql:scope"/>
+                  <parameters name="resultVariable" value="selection"/>
+                  <parameters name="wizardMessage" value="aql:message"/>
+                  <parameters name="initialSelection" value="aql:self.void2Null(self.getIntersection(visibleTargets,scope))"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selection = 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container">
+                    <subModelOperations xsi:type="tool_1:For" expression="aql:self.void2Null(self.makeDiff(self.getIntersection(visibleTargets,scope), selection))">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(ownedNodes->select(ownedNode | ownedNode.target = i))">
+                        <subModelOperations xsi:type="tool_1:DeleteView"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:For" expression="aql:self.void2Null(selection)">
+                      <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
+                        <parameters name="context" value="aql:container"/>
+                        <parameters name="variable" value="targetView"/>
+                        <parameters name="value" value="aql:self.void2Null(ownedNodes->select(ownedNode | ownedNode.target = i))"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:targetView != null">
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:targetView.show()"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:targetView = null">
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:i">
+                          <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@containerMappings[name='CCII_Component']" containerViewExpression="aql:containerView"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool_1:For" expression="aql:self.void2Null(self.getSubDefinedInterfaces())" iteratorName="h">
+                        <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
+                          <parameters name="context" value="aql:container"/>
+                          <parameters name="variable" value="interfaceView"/>
+                          <parameters name="value" value="aql:self.void2Null(ownedNodes->select(ownedNode | ownedNode.target = h))"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:interfaceView != null">
+                          <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:interfaceView">
+                            <subModelOperations xsi:type="tool_1:DeleteView"/>
+                          </subModelOperations>
+                          <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:h">
+                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@nodeMappings[name='CCII_Interface']" containerViewExpression="aql:h.getBestGraphicalContainer(containerView.getViewDiagram(),container.eClass())"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.getDiagramContainer().forceRefresh()"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Insert/Remove Interfaces. Removing an Interface graphical object from a diagram does not delete the Interface from the model. This tool does not modify the semantic model." name="interfaces" label="Interfaces" precondition="aql:container.oclIsKindOf(cs::Component)" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@nodeMappings[name='CCII_Interface']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <variable name="container"/>
             <viewVariable name="containerView">
@@ -10157,7 +10218,7 @@
           </conditionnalStyles>
         </containerMappings>
         <toolSections name="Interfaces Blank">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Logical / Physical Component (and creates a Part in the selected Container Component)" name="component" label="Component" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/System.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Logical / Physical Component (and creates a Part in the selected Container Component)" name="component" label="Component" precondition="aql:containerView.getIBTarget(false).canCreateABComponent()" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/System.gif">
             <variable name="container"/>
             <viewVariable name="containerView">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="target" computationExpression="aql:containerView.getIBTarget(false)"/>
@@ -10172,7 +10233,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new System Actor / Logical Actor / Physical Actor (and creates a Part in the Context element of the current level)" name="actor" label="Actor" precondition="aql:containerView.oclIsKindOf(diagram::DDiagram) and not (container.oclIsKindOf(epbs::ConfigurationItem))" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Actor.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new System Actor / Logical Actor / Physical Actor (and creates a Part in the Context element of the current level)" name="actor" label="Actor" precondition="aql:containerView.getIBTarget(true).canCreateABActor()" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Actor.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -10911,7 +10972,7 @@
               <viewVariable name="containerView">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="ownedNodes" computationExpression="aql:self.void2Null(containerView.getOwnedContainers())"/>
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="visibleTargets" computationExpression="aql:self.void2Null(ownedNodes->select(ownedNode | ownedNode.visible).target)"/>
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="scope" computationExpression="aql:containerView.target.getIBShowHideActors()"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="scope" computationExpression="aql:containerView.getIBShowHideActor()"/>
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="message" computationExpression="aql:'Select Interfaces to show in ' + container.name + '.'"/>
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="context" computationExpression="aql:containerView.target"/>
               </viewVariable>

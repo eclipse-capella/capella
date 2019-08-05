@@ -37,8 +37,14 @@ public class GetCCIIShowHideComponent__Lib extends AbstractQuery {
     Collection<IModel> libraries = LibraryManagerExt.getAllActivesReferences(currentProject);
     for (IModel library : libraries) {
       EObject correspondingInput = QueryExt.getCorrespondingElementInLibrary(element, (CapellaModel) library);
-      result.addAll(QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_COMPONENTS, correspondingInput, context));
+      List<Object> components = QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_COMPONENTS, correspondingInput, context);
+      components = filter(components);
+      result.addAll(components);
     }
     return result;
+  }
+  
+  protected List<Object> filter(List<Object> components) {
+    return components;
   }
 }

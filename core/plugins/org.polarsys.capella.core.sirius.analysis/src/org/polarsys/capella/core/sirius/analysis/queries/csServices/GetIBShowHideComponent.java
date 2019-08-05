@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.sirius.analysis.queries.csServices;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -24,7 +25,10 @@ import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.ComponentPkgExt;
+import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.model.helpers.queries.filters.RemoveActorsFilter;
 import org.polarsys.capella.core.sirius.analysis.CsServices;
 
@@ -35,10 +39,14 @@ public class GetIBShowHideComponent extends AbstractQuery {
     DSemanticDecorator decorator_p = (DSemanticDecorator) input_p;
     List<Component> components = new ArrayList<Component>();
 
-    if (!(decorator_p.getTarget() instanceof Component)) {
-      return (List) new ArrayList<Component>();
+    if (!(decorator_p.getTarget() instanceof Component || decorator_p.getTarget() instanceof ComponentPkg)) {
+      return Collections.emptyList();
     }
     EObject target = CsServices.getService().getIBTarget(decorator_p);
+    if (target instanceof ComponentPkg) {
+      components.addAll(PartExt.getComponentsOfParts(((ComponentPkg) target).getOwnedParts()));
+      target = ComponentPkgExt.getParentComponent((ComponentPkg) target);
+    }
     if (decorator_p instanceof DDiagram) {
       if (target instanceof Component) {
         components.addAll(CsServices.getService().getBrothersComponents((Component) target));
@@ -54,7 +62,13 @@ public class GetIBShowHideComponent extends AbstractQuery {
       components.addAll(ComponentExt.getSubDefinedComponents((Component) target));
       components.addAll(ComponentExt.getSubUsedComponents((Component) target));
     }
-    components = QueryInterpretor.executeFilter(components, new MultiFilter(new IQueryFilter[] { new RemoveActorsFilter()}));
+    components = filter(components);
     return (List) new ArrayList<Component>(components);
+  }
+
+  protected List<Component> filter(List<Component> components) {
+    components = QueryInterpretor.executeFilter(components,
+        new MultiFilter(new IQueryFilter[] { new RemoveActorsFilter() }));
+    return components;
   }
 }

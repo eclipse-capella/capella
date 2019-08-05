@@ -85,7 +85,6 @@ import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.mdsofa.common.misc.Couple;
 import org.polarsys.capella.common.menu.dynamic.util.INamePrefixService;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
-import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.data.capellacommon.ChangeEvent;
 import org.polarsys.capella.core.data.capellacommon.State;
@@ -206,7 +205,6 @@ import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.model.helpers.PhysicalLinkCategoryExt;
 import org.polarsys.capella.core.model.helpers.PortExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
-import org.polarsys.capella.core.model.helpers.queries.filters.RemoveActorsFilter;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
@@ -1213,6 +1211,10 @@ public class CsServices {
         for (Part siblingPart : ownerPart.getContainedParts()) {
           components.add((Component) siblingPart.getType());
         }
+      } else if (part.eContainer() instanceof ComponentPkg) {
+        for (Part siblingPart : ((ComponentPkg) part.eContainer()).getOwnedParts()) {
+          components.add((Component) siblingPart.getType());
+        }
       }
     }
     return components;
@@ -1222,23 +1224,18 @@ public class CsServices {
    * Returns available components which are accessible by brothers-part CCEI-Show-Hide-Component.
    */
   public Collection<Component> getCCEIShowHideComponent(Component component) {
-    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_CCEI_SHOW_HIDE_COMPONENTS_FOR_LIB, component,
-        new QueryContext(), new RemoveActorsFilter());
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_CCEI_SHOW_HIDE_COMPONENTS_FOR_LIB, component);
   }
 
   /**
    * Returns available components which are accessible by brothers-part CCEI-Show-Hide-Component.
    */
   public Collection<Component> getCCEIShowHideActors(Component component) {
-    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_CCEI_SHOW_HIDE_ACTORS_FOR_LIB,
-        getArchitecture(component));
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_CCEI_SHOW_HIDE_ACTORS_FOR_LIB, component);
   }
 
-  /**
-   * Returns available components which are accessible by brothers-part IB-Show-Hide-Component.
-   */
-  public Collection<Component> getIBShowHideActors(Component component) {
-    return getCCEIShowHideActors(component);
+  public Collection<Component> getIBShowHideActor(DSemanticDecorator decorator) {
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_IB_SHOW_HIDE_ACTORS_FOR_LIB, decorator);
   }
 
   /**
@@ -1252,6 +1249,17 @@ public class CsServices {
     return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_CCII_SHOW_HIDE_COMPONENTS_FOR_LIB, target);
   }
 
+  /**
+   * Returns available actors which are accessible CCII-Show-Hide-Actor.
+   */
+  public Collection<Component> getCCIIShowHideActor(DSemanticDecorator decorator) {
+    if (!(decorator.getTarget() instanceof Component)) {
+      return Collections.emptyList();
+    }
+    EObject target = getCCIITarget(decorator);
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_CCII_SHOW_HIDE_ACTORS_FOR_LIB, target);
+  }
+  
   public Collection<Component> getSubComponents(EObject target) {
     Collection<Component> components = new ArrayList<>();
     if (null == target) {
@@ -4678,8 +4686,7 @@ public class CsServices {
   }
 
   public Collection<? extends CapellaElement> getABShowHideActor(DSemanticDecorator view) {
-    return getABShowHideComponent(view).stream().filter(comp -> ComponentExt.isActor(comp))
-        .flatMap(comp -> ((Component) comp).getRepresentingParts().stream()).collect(Collectors.toList());
+    return getABShowHideComponent(view).stream().filter(comp -> ComponentExt.isActor(comp)).collect(Collectors.toList());
   }
 
   /**

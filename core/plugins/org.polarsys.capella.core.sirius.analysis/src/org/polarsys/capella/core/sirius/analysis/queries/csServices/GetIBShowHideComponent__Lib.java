@@ -50,6 +50,11 @@ public class GetIBShowHideComponent__Lib extends AbstractQuery {
       EObject correspondingInput = QueryExt.getCorrespondingElementInLibrary(target, (CapellaModel) library);
       result.addAll(QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_COMPONENTS, correspondingInput, context, new RemoveActorsFilter()));
     }
+    List<Object> components = filter(result);
+    return components;
+  }
+
+  protected List<Object> filter(List<Object> result) {
     return QueryInterpretor.executeFilter(result, new MultiFilter(new IQueryFilter[] { new RemoveActorsFilter() }));
   }
 

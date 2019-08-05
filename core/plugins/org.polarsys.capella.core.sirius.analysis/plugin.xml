@@ -497,6 +497,11 @@
              algorithm="org.polarsys.capella.core.sirius.analysis.queries.csServices.GetIBShowHideComponent"></queryAlgorithm>
     </querySpecification>
     <querySpecification
+          queryIdentifier="GetIBShowHideActor">
+       <queryAlgorithm
+             algorithm="org.polarsys.capella.core.sirius.analysis.queries.csServices.GetIBShowHideActor"></queryAlgorithm>
+    </querySpecification>
+    <querySpecification
           queryIdentifier="GetABInsertActor">
        <queryAlgorithm
              algorithm="org.polarsys.capella.core.sirius.analysis.queries.csServices.GetABInsertActor"></queryAlgorithm>
@@ -517,9 +522,9 @@
              algorithm="org.polarsys.capella.core.sirius.analysis.queries.csServices.GetCCIIShowHideComponent"></queryAlgorithm>
     </querySpecification>
     <querySpecification
-          queryIdentifier="GetCCEIShowHideActors">
+          queryIdentifier="GetCCIIShowHideActor">
        <queryAlgorithm
-             algorithm="org.polarsys.capella.core.sirius.analysis.queries.csServices.GetCCEIShowHideActors"></queryAlgorithm>
+             algorithm="org.polarsys.capella.core.sirius.analysis.queries.csServices.GetCCIIShowHideActor"></queryAlgorithm>
     </querySpecification>
     <querySpecification
           queryIdentifier="GetAllRealizablePhysicalArtefacts">
@@ -544,8 +549,8 @@
     <querySpecification queryIdentifier="GetCCEIInsertInterfaceForLib" extendedQueryIdentifier="GetCCEIInsertInterface">
       <queryAlgorithm algorithm="org.polarsys.capella.core.sirius.analysis.queries.csServices.GetCCEIInsertInterfaceForLib" />
     </querySpecification>
-    <querySpecification queryIdentifier="GetCCEIShowHideActors__Lib" extendedQueryIdentifier="GetCCEIShowHideActors">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.sirius.analysis.queries.csServices.GetCCEIShowHideActors__Lib" />
+    <querySpecification queryIdentifier="GetCCEIShowHideActor__Lib" extendedQueryIdentifier="GetBrotherComponents">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.sirius.analysis.queries.csServices.GetCCEIShowHideActor__Lib" />
     </querySpecification>
     <querySpecification queryIdentifier="GetCCEIShowHideComponent__Lib" extendedQueryIdentifier="GetBrotherComponents">
       <queryAlgorithm algorithm="org.polarsys.capella.core.sirius.analysis.queries.csServices.GetCCEIShowHideComponent__Lib" />
@@ -553,8 +558,14 @@
     <querySpecification queryIdentifier="GetCCIIShowHideComponent__Lib" extendedQueryIdentifier="GetCCIIShowHideComponent">
       <queryAlgorithm algorithm="org.polarsys.capella.core.sirius.analysis.queries.csServices.GetCCIIShowHideComponent__Lib" />
     </querySpecification>
+    <querySpecification queryIdentifier="GetCCIIShowHideActor__Lib" extendedQueryIdentifier="GetCCIIShowHideActor">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.sirius.analysis.queries.csServices.GetCCIIShowHideActor__Lib" />
+    </querySpecification>
     <querySpecification queryIdentifier="GetIBShowHideComponent__Lib" extendedQueryIdentifier="GetIBShowHideComponent">
       <queryAlgorithm algorithm="org.polarsys.capella.core.sirius.analysis.queries.csServices.GetIBShowHideComponent__Lib" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetIBShowHideActor__Lib" extendedQueryIdentifier="GetIBShowHideActor">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.sirius.analysis.queries.csServices.GetIBShowHideActor__Lib" />
     </querySpecification>
       
  </extension>

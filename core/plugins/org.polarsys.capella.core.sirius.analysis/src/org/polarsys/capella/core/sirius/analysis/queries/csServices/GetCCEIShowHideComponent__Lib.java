@@ -13,6 +13,7 @@ package org.polarsys.capella.core.sirius.analysis.queries.csServices;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.libraries.ILibraryManager;
@@ -25,8 +26,8 @@ import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.libraries.queries.QueryExt;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.queries.GetBrotherComponents;
-import org.polarsys.capella.core.model.helpers.queries.filters.RemoveActorsFilter;
 
 @ExtendingQuery (extendingQuery = GetBrotherComponents.class)
 public class GetCCEIShowHideComponent__Lib extends AbstractQuery {
@@ -42,8 +43,15 @@ public class GetCCEIShowHideComponent__Lib extends AbstractQuery {
       // !! TODO !!
       // CALL BY QueryIdentifierConstants
       // The refactoring of QueryIdentifierConstants is necessary
-      result.addAll(QueryInterpretor.executeQuery("GetCCIIInsertComponent", correspondingInput, context, new RemoveActorsFilter()));//$NON-NLS-1$
+      List<Object> components = QueryInterpretor.executeQuery("GetCCIIInsertComponent", correspondingInput, context);
+      components = filter(components);
+      result.addAll(components);//$NON-NLS-1$
     }
     return result;
+  }
+  
+  protected List<Object> filter(List<Object> components) {
+    return components.stream().filter(o -> o instanceof EObject && !ComponentExt.isActor((EObject) o))
+        .collect(Collectors.toList());
   }
 }

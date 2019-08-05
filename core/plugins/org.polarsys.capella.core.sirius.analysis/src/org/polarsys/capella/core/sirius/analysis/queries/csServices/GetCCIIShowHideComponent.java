@@ -30,8 +30,13 @@ public class GetCCIIShowHideComponent extends AbstractQuery {
   @Override
   public List<Object> execute(Object input_p, IQueryContext context_p) throws QueryException {
     List<Component> result = getSubComponents((EObject) input_p);
-    result = QueryInterpretor.executeFilter(result, new RemoveActorsFilter());
+    result = filter(result);
     return (List) result;
+  }
+
+  protected List<Component> filter(List<Component> result) {
+    result = QueryInterpretor.executeFilter(result, new RemoveActorsFilter());
+    return result;
   }
 
   private List<Component> getSubComponents(EObject target) {

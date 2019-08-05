@@ -1631,7 +1631,13 @@ public class ComponentExt {
     List<Component> elements = new ArrayList<Component>();
     if (object instanceof Entity) {
       elements.addAll(((Entity) object).getOwnedEntities());
-    } else if (object instanceof LogicalComponent) {
+    } else if (object instanceof SystemComponent) {
+      elements.addAll(((SystemComponent) object).getOwnedSystemComponents());
+      for (SystemComponentPkg pkg : ((SystemComponent) object).getOwnedSystemComponentPkgs()) {
+        elements.addAll(ComponentPkgExt.getOwnedComponents(pkg));
+      }
+    }
+    else if (object instanceof LogicalComponent) {
       elements.addAll(((LogicalComponent) object).getOwnedLogicalComponents());
       for (LogicalComponentPkg pkg : ((LogicalComponent) object).getOwnedLogicalComponentPkgs()) {
         elements.addAll(ComponentPkgExt.getOwnedComponents(pkg));
