@@ -2754,12 +2754,8 @@ public class ComponentExt {
     }
     if (target instanceof Component) {
       Component targetComponent = (Component) target;
-      if (targetComponent.isHuman()) {
-        return false;
-      } else if (targetComponent instanceof SystemComponent && !isActor(targetComponent)) {
-        return false;
-      }
-      return true;
+      return !targetComponent.isHuman() && (!(targetComponent instanceof SystemComponent) || isActor(targetComponent));
+
     } else if (target instanceof ComponentPkg) {
       ComponentPkg targetComponentPkg = (ComponentPkg) target;
       Component parentComponent = ComponentPkgExt.getParentComponent(targetComponentPkg);
@@ -2795,12 +2791,7 @@ public class ComponentExt {
     }
     if (target instanceof Component) {
       Component targetComponent = (Component) target;
-      if (targetComponent.isHuman()) {
-        return false;
-      } else if (targetComponent instanceof SystemComponent && !isActor(targetComponent)) {
-        return false;
-      }
-      return true;
+      return !targetComponent.isHuman() && (!(targetComponent instanceof SystemComponent) || isActor(targetComponent));
     } else if (target instanceof ComponentPkg) {
       ComponentPkg targetComponentPkg = (ComponentPkg) target;
       Component parentComponent = ComponentPkgExt.getParentComponent(targetComponentPkg);

@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.data.ctx.provider;
 
 import org.eclipse.emf.edit.provider.IItemProviderDecorator;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.gen.edit.decorators.CustomDecoratorAdapterFactory;
@@ -28,6 +29,8 @@ public class CtxItemProviderDecoratorAdapterFactory extends CustomDecoratorAdapt
       return new SystemFunctionItemProviderDecorator(this);
     } else if (target instanceof SystemComponentPkg) {
       return new SystemComponentPkgItemProviderDecorator(this);
+    } else if (target instanceof SystemComponent) {
+      return new SystemComponentItemProviderDecorator(this);
     }
 
     return new ForwardingItemProviderAdapterDecorator(this);
