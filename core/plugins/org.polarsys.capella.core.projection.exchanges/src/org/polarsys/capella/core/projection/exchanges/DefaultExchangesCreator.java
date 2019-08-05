@@ -16,11 +16,14 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-
-import org.polarsys.capella.core.data.cs.AbstractActor;
+import org.polarsys.capella.common.data.activity.ActivityNode;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.core.data.capellacommon.TransfoLink;
+import org.polarsys.capella.core.data.capellacore.Feature;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Interface;
-import org.polarsys.capella.core.data.ctx.System;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeFunctionalExchangeAllocation;
@@ -32,19 +35,12 @@ import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.capellacommon.TransfoLink;
-import org.polarsys.capella.core.data.capellacore.Feature;
-import org.polarsys.capella.core.data.pa.AbstractPhysicalComponent;
-import org.polarsys.capella.core.data.pa.PhysicalActor;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.PortExt;
-import org.polarsys.capella.common.data.activity.ActivityNode;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 
 /**
  * The default <code>IExchangesCreator</code>. Its behavior is to create component exchanges related to functional exchanges.
@@ -133,22 +129,13 @@ public class DefaultExchangesCreator implements IExchangesCreator {
    * @return
    */
   protected boolean isValidBound(Component component_p) {
-    if (component_p instanceof AbstractPhysicalComponent) {
-      AbstractPhysicalComponent component = (AbstractPhysicalComponent) component_p;
-      // physical Arch
-      if ((component instanceof PhysicalComponent)) {
+    if (component_p instanceof PhysicalComponent) {
         return true;
-
-      } else if (component instanceof PhysicalActor) {
-        return true;
-      }
     }
-    // Logical Arch
     if (component_p instanceof LogicalComponent) {
       return true;
     }
-    // System Analysis
-    if ((component_p instanceof AbstractActor) || (component_p instanceof System) || ComponentExt.isComponentRoot(component_p)) {
+    if ((component_p instanceof SystemComponent) || ComponentExt.isComponentRoot(component_p)) {
       return true;
     }
     return false;

@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.projection.common.rules.core;
+package org.polarsys.capella.core.projection.scenario.common.rules;
 
 import java.util.List;
 
@@ -58,38 +58,6 @@ public class Rule_CapellaElement extends AbstractCommonRule {
   protected boolean isRelatedToSource(EObject element_p, IContext context_p) {
     EObject transfoSource = (EObject) context_p.get(TransfoEngine.TRANSFO_SOURCE);
     return EcoreUtil2.isOrIsContainedBy(element_p, transfoSource);
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveGoDeep(source_p, result_p, context_p);
-
-    if (isRelatedToSource(source_p, context_p)) {
-      CapellaElement element = (CapellaElement) source_p;
-      result_p.addAll(element.getOwnedPropertyValues());
-      result_p.addAll(element.getOwnedEnumerationPropertyTypes());
-      result_p.addAll(element.getOwnedPropertyValueGroups());
-
-      if (element instanceof Structure) {
-        result_p.addAll(((Structure) element).getOwnedPropertyValuePkgs());
-      }
-    }
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  protected void attachRelated(EObject element_p, EObject result_p, IContext context_p) {
-    super.attachRelated(element_p, result_p, context_p);
-
-    AttachmentHelper.getInstance(context_p).attachToBestElement(element_p, result_p, CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUES,
-        context_p);
-    AttachmentHelper.getInstance(context_p).attachToBestElement(element_p, result_p, CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS,
-        context_p);
   }
 
   /**

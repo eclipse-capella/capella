@@ -16,16 +16,9 @@ import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
 import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.capellacore.Involvement;
-import org.polarsys.capella.core.data.cs.AbstractActor;
-import org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement;
-import org.polarsys.capella.core.data.cs.CsFactory;
-import org.polarsys.capella.core.data.cs.SystemComponent;
-import org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInvolvement;
-import org.polarsys.capella.core.data.ctx.Actor;
-import org.polarsys.capella.core.data.ctx.ActorCapabilityInvolvement;
 import org.polarsys.capella.core.data.ctx.Capability;
+import org.polarsys.capella.core.data.ctx.CapabilityInvolvement;
 import org.polarsys.capella.core.data.ctx.CtxFactory;
-import org.polarsys.capella.core.data.ctx.SystemCapabilityInvolvement;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.AbstractFunctionAbstractCapabilityInvolvement;
@@ -36,7 +29,6 @@ import org.polarsys.capella.core.data.interaction.InteractionFragment;
 import org.polarsys.capella.core.data.interaction.InteractionState;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
-import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.EntityOperationalCapabilityInvolvement;
 import org.polarsys.capella.core.data.oa.OaFactory;
@@ -109,20 +101,9 @@ public class ScenarioContraintsService {
 
     // if we are here, the involvement wasn't found, so we will have to create it.
     Involvement result = null;
-    if (component instanceof org.polarsys.capella.core.data.ctx.System) {
-      result = CtxFactory.eINSTANCE.createSystemCapabilityInvolvement();
-      ((Capability) capability).setOwnedSystemCapabilityInvolvement((SystemCapabilityInvolvement) result);
-    } else if (component instanceof Actor) {
-      result = CtxFactory.eINSTANCE.createActorCapabilityInvolvement();
-      ((Capability) capability).getOwnedActorCapabilityInvolvements().add((ActorCapabilityInvolvement) result);
-    } else if (component instanceof AbstractActor) {
-      result = CsFactory.eINSTANCE.createActorCapabilityRealizationInvolvement();
-      ((CapabilityRealization) capability).getOwnedActorCapabilityRealizations()
-          .add((ActorCapabilityRealizationInvolvement) result);
-    } else if (component instanceof SystemComponent) {
-      result = CsFactory.eINSTANCE.createSystemComponentCapabilityRealizationInvolvement();
-      ((CapabilityRealization) capability).getOwnedSystemComponentCapabilityRealizations()
-          .add((SystemComponentCapabilityRealizationInvolvement) result);
+    if (component instanceof org.polarsys.capella.core.data.ctx.SystemComponent) {
+      result = CtxFactory.eINSTANCE.createCapabilityInvolvement();
+      ((Capability) capability).getOwnedCapabilityInvolvements().add((CapabilityInvolvement) result);
     } else if (component instanceof Entity) {
       result = OaFactory.eINSTANCE.createEntityOperationalCapabilityInvolvement();
       ((OperationalCapability) capability).getOwnedEntityOperationalCapabilityInvolvements()

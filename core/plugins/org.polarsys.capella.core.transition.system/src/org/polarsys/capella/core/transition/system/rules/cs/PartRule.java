@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalPath;
@@ -77,13 +78,16 @@ public class PartRule extends AbstractCapellaElementRule {
     BlockArchitecture target =
         (BlockArchitecture) TransformationHandlerHelper.getInstance(context).getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE,
             element, result);
-    return BlockArchitectureExt.getContext(target);
+    return BlockArchitectureExt.getComponentPkg(target);
   }
 
   @Override
   protected EStructuralFeature getTargetContainementFeature(EObject element, EObject result, EObject container, IContext context) {
     if (container instanceof Component) {
       return CapellacorePackage.Literals.CLASSIFIER__OWNED_FEATURES;
+    }
+    if (container instanceof ComponentPkg) {
+      return CsPackage.Literals.COMPONENT_PKG__OWNED_PARTS;
     }
     return element.eContainingFeature();
   }

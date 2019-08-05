@@ -62,10 +62,8 @@ public class TransformationConfiguration extends ExtendedTraceabilityConfigurati
             BlockArchitectureExt.getRootFunction(target, false), context);
         addMapping(map, BlockArchitectureExt.getDataPkg(source, false), BlockArchitectureExt.getDataPkg(target, false),
             context);
-        addMapping(map, BlockArchitectureExt.getActorPkg(source, false),
-            BlockArchitectureExt.getActorPkg(target, false), context);
-        addMapping(map, BlockArchitectureExt.getContext(source, false), BlockArchitectureExt.getContext(target, false),
-            context);
+        addMapping(map, BlockArchitectureExt.getComponentPkg(source, false),
+            BlockArchitectureExt.getComponentPkg(target, false), context);
 
         if (!((target instanceof PhysicalArchitecture) && !(source instanceof PhysicalArchitecture))) {
           addMapping(map, BlockArchitectureExt.getInterfacePkg(source, false),
@@ -86,7 +84,8 @@ public class TransformationConfiguration extends ExtendedTraceabilityConfigurati
       protected void initializeRootMappings(IContext context) {
         super.initializeRootMappings(context);
         addMappings(ContextHelper.getSourceProject(context), ContextHelper.getTransformedProject(context), context);
-        addMappings(ContextHelper.getSourceEngineering(context), ContextHelper.getTransformedEngineering(context), context);
+        addMappings(ContextHelper.getSourceEngineering(context), ContextHelper.getTransformedEngineering(context),
+            context);
       }
 
     });
@@ -99,7 +98,8 @@ public class TransformationConfiguration extends ExtendedTraceabilityConfigurati
       @Override
       protected void initializeRootMappings(IContext context) {
         super.initializeRootMappings(context);
-        initializeMappings(ContextHelper.getSourceProject(context), ContextHelper.getTransformedProject(context), context);
+        initializeMappings(ContextHelper.getSourceProject(context), ContextHelper.getTransformedProject(context),
+            context);
       }
 
     });

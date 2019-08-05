@@ -14,12 +14,11 @@ import java.util.Collection;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.projection.common.AbstractTransform;
-import org.polarsys.capella.core.projection.common.TransitionMessages;
 import org.polarsys.capella.core.projection.common.TransitionHelper;
 import org.polarsys.capella.core.projection.scenario.ES2ESTransform;
+import org.polarsys.capella.core.projection.scenario.Messages;
 
 /**
  */
@@ -39,17 +38,17 @@ public class EStoESCommand extends ESToISCommand {
       EObject element = rootElements.iterator().next();
 
       if (TransitionHelper.getService().isES2ESForOASATransitionAvailable(element)) {
-        return TransitionMessages.transitionES2ES_OAtoSA_label;
+        return Messages.transitionES2ES_OAtoSA_label;
 
       } else if (TransitionHelper.getService().isES2ESForSALATransitionAvailable(element)) {
-        return TransitionMessages.transitionES2ES_SAtoLA_label;
+        return Messages.transitionES2ES_SAtoLA_label;
 
       } else if (TransitionHelper.getService().isES2ESForLAPATransitionAvailable(element)) {
-        return TransitionMessages.transitionES2ES_LAtoPA_label;
+        return Messages.transitionES2ES_LAtoPA_label;
 
       }
     }
-    return TransitionMessages.transitionES2ES_label;
+    return Messages.transitionES2ES_label;
   }
 
   /**

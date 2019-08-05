@@ -13,7 +13,7 @@ package org.polarsys.capella.test.transition.ju.model;
 import java.util.Arrays;
 import java.util.List;
 
-import org.polarsys.capella.core.data.la.LogicalContext;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
 import org.polarsys.capella.test.transition.ju.TopDownTransitionTestCase;
 
@@ -35,10 +35,10 @@ public class AlreadyTransitionedActorTestCase extends TopDownTransitionTestCase 
 
     setPreferenceValue(ITopDownConstants.OPTIONS_TRANSITION__EXCHANGE_ITEM, Boolean.FALSE);
 
-    LogicalContext logicalContext = shouldExist(LA__LOGICAL_CONTEXT);
+    ComponentPkg logicalContext = shouldExist(LA__LOGICAL_CONTEXT);
 
     // Before transition, assert that logical context has two features (Logical System & LA1)
-    assertTrue(logicalContext.getOwnedFeatures().size() == 2);
+    assertTrue(logicalContext.getOwnedParts().size() == 2);
    
     // Perform transition
     performActorTransition(getObjects(SA__ACTORS__A1));
@@ -48,7 +48,7 @@ public class AlreadyTransitionedActorTestCase extends TopDownTransitionTestCase 
     shouldExist(LA__LOGICAL_ACTORS__LA1);
 
     // After transition, assert that logical context still has two features (Logical System & LA1)
-    assertTrue(logicalContext.getOwnedFeatures().size() == 2);
+    assertTrue(logicalContext.getOwnedParts().size() == 2);
   }
  
   /*

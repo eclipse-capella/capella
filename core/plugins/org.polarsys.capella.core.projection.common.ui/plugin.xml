@@ -19,4 +19,29 @@
             priority="low">
       </resolver>
    </extension>
+   
+   <extension point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="org.polarsys.capella.core.projection.commands.ui.expression.transitionVisibilityModelElementExpression">
+               <with
+                  variable="selection">
+               <and>
+                  <iterate ifEmpty="false">
+                        <or>
+                        <instanceof
+                              value="org.polarsys.capella.common.data.modellingcore.ModelElement">
+                        </instanceof>
+                        <instanceof
+                              value="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart">
+                        </instanceof>
+                        <instanceof
+                              value="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart">
+                        </instanceof>
+                       </or>
+                  </iterate>
+               </and>
+            </with>
+               
+      </definition>
+   </extension>
 </plugin>

@@ -196,9 +196,7 @@ public class MergeTargetConfiguration extends ExtendedTraceabilityConfiguration 
           BlockArchitectureExt.getRootFunction(target, false), context);
       addMapping(map, BlockArchitectureExt.getDataPkg(source, false), BlockArchitectureExt.getDataPkg(target, false),
           context);
-      addMapping(map, BlockArchitectureExt.getActorPkg(source, false), BlockArchitectureExt.getActorPkg(target, false),
-          context);
-      addMapping(map, BlockArchitectureExt.getContext(source, false), BlockArchitectureExt.getContext(target, false),
+      addMapping(map, BlockArchitectureExt.getComponentPkg(source, false), BlockArchitectureExt.getComponentPkg(target, false),
           context);
 
       if (!((target instanceof PhysicalArchitecture) && !(source instanceof PhysicalArchitecture))) {

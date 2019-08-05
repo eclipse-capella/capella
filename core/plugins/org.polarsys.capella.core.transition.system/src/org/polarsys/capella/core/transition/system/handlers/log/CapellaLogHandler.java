@@ -19,13 +19,14 @@ import org.polarsys.capella.core.data.capellacommon.StateMachine;
 import org.polarsys.capella.core.data.capellacommon.StateTransition;
 import org.polarsys.capella.core.data.capellacommon.TransfoLink;
 import org.polarsys.capella.core.data.capellacore.Structure;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
-import org.polarsys.capella.core.data.cs.ComponentContext;
+import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentRealization;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeAllocation;
@@ -43,10 +44,10 @@ import org.polarsys.capella.core.data.information.datavalue.DataValue;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.pa.LogicalArchitectureRealization;
-import org.polarsys.capella.core.data.pa.LogicalComponentRealization;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.transition.common.handlers.log.DefaultLogHandler;
 
 /**
@@ -74,6 +75,14 @@ public class CapellaLogHandler extends DefaultLogHandler {
       AbstractFunction pf = (AbstractFunction) obj;
       eltLabel = (pf.getLabel() != null) ? pf.getLabel() : "?"; //$NON-NLS-1$
       text = "Function : " + eltLabel; //$NON-NLS-1$
+    } else if (ComponentExt.isActor(obj)) {
+      Component me = (Component) obj;
+      eltLabel = (me.getLabel() != null) ? me.getLabel() : "?"; //$NON-NLS-1$
+      text = "Actor : " + eltLabel; //$NON-NLS-1$
+    } else if (obj instanceof SystemComponent) {
+      SystemComponent me = (SystemComponent) obj;
+      eltLabel = (me.getLabel() != null) ? me.getLabel() : "?"; //$NON-NLS-1$
+      text = "System Component : " + eltLabel; //$NON-NLS-1$
     } else if (obj instanceof LogicalComponent) {
       LogicalComponent me = (LogicalComponent) obj;
       eltLabel = (me.getLabel() != null) ? me.getLabel() : "?"; //$NON-NLS-1$
@@ -86,10 +95,6 @@ public class CapellaLogHandler extends DefaultLogHandler {
       } else {
         text = "Implementation Component : " + eltLabel; //$NON-NLS-1$
       }
-    } else if (obj instanceof AbstractActor) {
-      AbstractActor actor = (AbstractActor) obj;
-      eltLabel = (actor.getLabel() != null) ? actor.getLabel() : "?"; //$NON-NLS-1$
-      text = "Actor : " + eltLabel; //$NON-NLS-1$
     } else if (obj instanceof Part) {
       Part part = (Part) obj;
       eltLabel = (part.getLabel() != null) ? part.getLabel() : "?"; //$NON-NLS-1$
@@ -151,14 +156,6 @@ public class CapellaLogHandler extends DefaultLogHandler {
       Structure me = (Structure) obj;
       String name = (me.getName() != null) ? me.getName() : "?"; //$NON-NLS-1$
       text = "Package : " + name; //$NON-NLS-1$
-    } else if (obj instanceof ComponentContext) {
-      ComponentContext me = (ComponentContext) obj;
-      String name = (me.getName() != null) ? me.getName() : "?"; //$NON-NLS-1$
-      text = "Context : " + name; //$NON-NLS-1$
-    } else if (obj instanceof org.polarsys.capella.core.data.ctx.System) {
-      org.polarsys.capella.core.data.ctx.System me = (org.polarsys.capella.core.data.ctx.System) obj;
-      String name = (me.getName() != null) ? me.getName() : "?"; //$NON-NLS-1$
-      text = "System : " + name; //$NON-NLS-1$
     } else if (obj instanceof DataValue) {
       String name = (meLabel != null) ? meLabel : "?"; //$NON-NLS-1$
       text = "DataValue : " + name; //$NON-NLS-1$
@@ -207,9 +204,9 @@ public class CapellaLogHandler extends DefaultLogHandler {
       } else {
         return DiffElement.IC.toString();
       }
-    } else if (me instanceof AbstractActor) {
-      return DiffElement.Actor.toString();
     } else if (me instanceof Part) {
+      return DiffElement.Part.toString();
+    } else if (ComponentExt.isActor(me)) {
       return DiffElement.Part.toString();
     } else if (me instanceof PhysicalLink) {
       return DiffElement.PL.toString();
@@ -234,7 +231,7 @@ public class CapellaLogHandler extends DefaultLogHandler {
       return DiffElement.PPort.toString();
     } else if (me instanceof FunctionRealization) {
       return DiffElement.FR.toString();
-    } else if (me instanceof LogicalComponentRealization) {
+    } else if (me instanceof ComponentRealization) {
       return DiffElement.LCR.toString();
     } else if (me instanceof LogicalArchitectureRealization) {
       return DiffElement.Other.toString();

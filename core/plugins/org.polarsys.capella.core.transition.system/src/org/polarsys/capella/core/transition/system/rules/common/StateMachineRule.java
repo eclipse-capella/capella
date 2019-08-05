@@ -21,6 +21,7 @@ import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.StateMachine;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.information.Class;
@@ -79,7 +80,7 @@ public class StateMachineRule extends AbstractCapellaElementRule {
    */
   @Override
   protected void retrieveContainer(EObject element, List<EObject> result, IContext context) {
-    // Nothing here
+    
   }
 
   @Override
@@ -119,7 +120,9 @@ public class StateMachineRule extends AbstractCapellaElementRule {
       return CsPackage.Literals.BLOCK__OWNED_STATE_MACHINES;
     } else if (container instanceof Class) {
       return InformationPackage.Literals.CLASS__OWNED_STATE_MACHINES;
-    }
+    } else if (container instanceof ComponentPkg) {
+      return CsPackage.Literals.COMPONENT_PKG__OWNED_STATE_MACHINES;
+    } 
     return element.eContainingFeature();
   }
 

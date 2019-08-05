@@ -45,8 +45,8 @@ public abstract class ScenarioTransform extends AbstractTransform {
    * @see org.polarsys.capella.core.projection.common.AbstractTransform#createTransfo(org.polarsys.capella.core.tiger.ITransfoRuleBase)
    */
   @Override
-  protected ITransfo createTransfo(ITransfoRuleBase ruleBase_p) throws ClassNotFoundException {
-    Transfo transfo = new ScenarioTransfo(ruleBase_p, CapellacommonPackage.Literals.TRANSFO_LINK, getRules());
+  protected ScenarioTransfo createTransfo(ITransfoRuleBase ruleBase_p) throws ClassNotFoundException {
+    ScenarioTransfo transfo = new ScenarioTransfo(ruleBase_p, CapellacommonPackage.Literals.TRANSFO_LINK, getRules());
     transfo.put(TransfoEngine.TRANSFO_SOURCE, _context);
 
     IContext context = IContext.getContext(transfo);

@@ -967,31 +967,6 @@
          <mappingPackage name="ctx">
          
             <mappingElement
-                  domainMetaClass="org.polarsys.capella.core.data.ctx.ActorPkg"
-                  reuseExtendedElementDefaultPossibility="true"
-                  reuseExtendedElementPossibilities="true">
-               <defaultMappingPossibility
-                     completeRule="org.polarsys.capella.core.transition.system.topdown.rules.ctx.ActorPkgRule"
-                     incompleteRule="org.polarsys.capella.core.transition.system.topdown.rules.ctx.ActorPkgRule"
-                     enabled="true"
-                     name="ActorPkg">
-               </defaultMappingPossibility>
-            </mappingElement>
-            
-            <mappingElement
-                  domainMetaClass="org.polarsys.capella.core.data.ctx.Actor"
-                  reuseExtendedElementDefaultPossibility="true"
-                  reuseExtendedElementPossibilities="true">
-               <defaultMappingPossibility
-                     completeRule="org.polarsys.capella.core.transition.system.topdown.rules.ctx.ActorRule"
-                     incompleteRule="org.polarsys.capella.core.transition.system.topdown.rules.ctx.ActorRule"
-                     enabled="true"
-                     name="Actor">
-               </defaultMappingPossibility>
-            </mappingElement>
-            
-            
-            <mappingElement
                   domainMetaClass="org.polarsys.capella.core.data.ctx.SystemAnalysis"
                   reuseExtendedElementDefaultPossibility="true"
                   reuseExtendedElementPossibilities="true">
@@ -1028,14 +1003,26 @@
             </mappingElement>
             
             <mappingElement
-                  domainMetaClass="org.polarsys.capella.core.data.ctx.System"
+                  domainMetaClass="org.polarsys.capella.core.data.ctx.SystemComponent"
                   reuseExtendedElementDefaultPossibility="true"
                   reuseExtendedElementPossibilities="true">
                <defaultMappingPossibility
-                     completeRule="org.polarsys.capella.core.transition.system.topdown.rules.ctx.SystemRule"
-                     incompleteRule="org.polarsys.capella.core.transition.system.topdown.rules.ctx.SystemRule"
+                     completeRule="org.polarsys.capella.core.transition.system.topdown.rules.ctx.SystemComponentRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.topdown.rules.ctx.SystemComponentRule"
                      enabled="true"
-                     name="System">
+                     name="SystemComponent">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.ctx.SystemComponentPkg"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.topdown.rules.ctx.SystemComponentPkgRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.topdown.rules.ctx.SystemComponentPkgRule"
+                     enabled="true"
+                     name="SystemComponentPkg">
                </defaultMappingPossibility>
             </mappingElement>
             
@@ -1209,14 +1196,14 @@
                name="ctx">
                
             <mappingElement
-                  domainMetaClass="org.polarsys.capella.core.data.ctx.ActorCapabilityInvolvement"
+                  domainMetaClass="org.polarsys.capella.core.data.ctx.CapabilityInvolvement"
                   reuseExtendedElementDefaultPossibility="true"
                   reuseExtendedElementPossibilities="true">
                <defaultMappingPossibility
-                     completeRule="org.polarsys.capella.core.transition.system.topdown.rules.interaction.ActorCapabilityInvolvementRule"
-                     incompleteRule="org.polarsys.capella.core.transition.system.topdown.rules.interaction.ActorCapabilityInvolvementRule"
+                     completeRule="org.polarsys.capella.core.transition.system.topdown.rules.interaction.CapabilityInvolvementRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.topdown.rules.interaction.CapabilityInvolvementRule"
                      enabled="true"
-                     name="ActorCapabilityInvolvement">
+                     name="CapabilityInvolvement">
                </defaultMappingPossibility>
             </mappingElement>
          </mappingPackage>
@@ -1226,14 +1213,14 @@
                name="cs">
                
             <mappingElement
-                  domainMetaClass="org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement"
+                  domainMetaClass="org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement"
                   reuseExtendedElementDefaultPossibility="true"
                   reuseExtendedElementPossibilities="true">
                <defaultMappingPossibility
-                     completeRule="org.polarsys.capella.core.transition.system.topdown.rules.interaction.ActorCapabilityRealizationInvolvementRule"
-                     incompleteRule="org.polarsys.capella.core.transition.system.topdown.rules.interaction.ActorCapabilityRealizationInvolvementRule"
+                     completeRule="org.polarsys.capella.core.transition.system.topdown.rules.interaction.CapabilityRealizationInvolvementRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.topdown.rules.interaction.CapabilityRealizationInvolvementRule"
                      enabled="true"
-                     name="ActorCapabilityRealizationInvolvement">
+                     name="CapabilityRealizationInvolvement">
                </defaultMappingPossibility>
             </mappingElement>
          </mappingPackage>
@@ -1328,31 +1315,6 @@
          
          <mappingPackage name="la">
          
-            <mappingElement
-                  domainMetaClass="org.polarsys.capella.core.data.la.LogicalActorPkg"
-                  reuseExtendedElementDefaultPossibility="true"
-                  reuseExtendedElementPossibilities="true">
-               <defaultMappingPossibility
-                     completeRule="org.polarsys.capella.core.transition.system.topdown.rules.la.LogicalActorPkgRule"
-                     incompleteRule="org.polarsys.capella.core.transition.system.topdown.rules.la.LogicalActorPkgRule"
-                     enabled="true"
-                     name="LogicalActorPkg">
-               </defaultMappingPossibility>
-            </mappingElement>
-            
-            <mappingElement
-                  domainMetaClass="org.polarsys.capella.core.data.la.LogicalActor"
-                  reuseExtendedElementDefaultPossibility="true"
-                  reuseExtendedElementPossibilities="true">
-               <defaultMappingPossibility
-                     completeRule="org.polarsys.capella.core.transition.system.topdown.rules.la.LogicalActorRule"
-                     incompleteRule="org.polarsys.capella.core.transition.system.topdown.rules.la.LogicalActorRule"
-                     enabled="true"
-                     name="LogicalActor">
-               </defaultMappingPossibility>
-            </mappingElement>
-            
-            
             
             <mappingElement
                   domainMetaClass="org.polarsys.capella.core.data.la.LogicalArchitecture"

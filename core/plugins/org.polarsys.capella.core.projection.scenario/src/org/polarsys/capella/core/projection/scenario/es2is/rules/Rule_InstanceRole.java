@@ -80,11 +80,6 @@ public class Rule_InstanceRole extends CommonRule {
   }
 
   @Override
-  protected void runSubTransitionBeforeTransform(EObject element_p, ITransfo transfo_p) {
-    super.runSubTransitionBeforeTransform(element_p, transfo_p);
-  }
-
-  @Override
   public void update_(EObject element_p, ITransfo transfo_p) {
     super.update_(element_p, transfo_p);
   }

@@ -16,13 +16,12 @@ import java.util.Collection;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.projection.common.AbstractTransform;
 import org.polarsys.capella.core.projection.common.AbstractTransitionCommand;
-import org.polarsys.capella.core.projection.common.TransitionMessages;
 import org.polarsys.capella.core.projection.common.TransitionHelper;
 import org.polarsys.capella.core.projection.scenario.ES2ISTransform;
+import org.polarsys.capella.core.projection.scenario.Messages;
 
 /**
  *
@@ -39,7 +38,7 @@ public class ESToISCommand extends AbstractTransitionCommand {
 
   @Override
   public String getName() {
-    return TransitionMessages.transitionES2IS_label;
+    return Messages.transitionES2IS_label;
   }
 
   @Override

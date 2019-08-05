@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.projection.exchanges;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
@@ -17,6 +19,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
+import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
+import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsFactory;
@@ -32,26 +38,16 @@ import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.fa.ComponentPortAllocation;
 import org.polarsys.capella.core.data.fa.FaFactory;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
-import org.polarsys.capella.core.data.helpers.cache.ModelCache;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionalExt;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
-import org.polarsys.capella.core.data.information.Partition;
-import org.polarsys.capella.core.data.capellacore.Type;
-import org.polarsys.capella.core.data.pa.AbstractPhysicalComponent;
-import org.polarsys.capella.core.data.pa.PhysicalActor;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.model.helpers.PhysicalLinkExt;
 import org.polarsys.capella.core.model.helpers.PortExt;
-import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
-import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
-
-import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 
 /**
  * This class is the <code>IExchangesCreator</code> implementation specific to node physical components.<br>
@@ -78,9 +74,9 @@ public class NodePhysicalComponentExchangesCreator extends DefaultExchangesCreat
    */
   @Override
   public void createExchanges() {
-    if (_component instanceof AbstractPhysicalComponent) {
+    if (_component instanceof PhysicalComponent) {
       // Casts the component as a physical component
-      AbstractPhysicalComponent node = (AbstractPhysicalComponent) _component;
+      PhysicalComponent node = (PhysicalComponent) _component;
       createExchangesForDeployedPhysicalComponents(node);
       // Creates the exchanges for directly allocated functions
       super.createExchanges();
@@ -94,13 +90,13 @@ public class NodePhysicalComponentExchangesCreator extends DefaultExchangesCreat
    */
   @Override
   protected boolean isValidBound(Component component) {
-    if (component instanceof AbstractPhysicalComponent) {
-      AbstractPhysicalComponent cpnt = (AbstractPhysicalComponent) component;
+    if (component instanceof PhysicalComponent) {
+      PhysicalComponent cpnt = (PhysicalComponent) component;
       PhysicalComponentNature nature = cpnt.getNature();
       if ((cpnt instanceof PhysicalComponent) && (nature == PhysicalComponentNature.NODE)) {
         return true;
 
-      } else if (cpnt instanceof PhysicalActor) {
+      } else if (ComponentExt.isActor(cpnt)) {
         return true;
       }
     }
@@ -119,7 +115,7 @@ public class NodePhysicalComponentExchangesCreator extends DefaultExchangesCreat
    * Creates the exchanges related to exchanges between deployed physical components.
    * @param node the node physical component from which the search of deployed physical component will be done
    */
-  protected void createExchangesForDeployedPhysicalComponents(AbstractPhysicalComponent node) {
+  protected void createExchangesForDeployedPhysicalComponents(PhysicalComponent node) {
 
     // Gets the deployments of the node
     EList<AbstractDeploymentLink> deployments = part.getDeploymentLinks();
@@ -128,14 +124,14 @@ public class NodePhysicalComponentExchangesCreator extends DefaultExchangesCreat
       if (deployment instanceof PartDeploymentLink) {
         PartDeploymentLink deploymentLink = (PartDeploymentLink) deployment;
         DeployableElement deployedElement = deploymentLink.getDeployedElement();
-        if ((deployedElement != null) && (deployedElement instanceof Part)) {
+        if (deployedElement instanceof Part) {
           Part part = (Part) deployedElement;
           Type type = part.getType();
           if (null != type) {
             createExchangesFromDeployedElement(node, type);
           }
-        } else if ((deployedElement != null) && (deployedElement instanceof AbstractPhysicalComponent)) {
-          createExchangesFromDeployedElement(node, (AbstractPhysicalComponent) deployedElement);
+        } else if (deployedElement instanceof PhysicalComponent) {
+          createExchangesFromDeployedElement(node, (PhysicalComponent) deployedElement);
         }
       }
     }
@@ -145,12 +141,12 @@ public class NodePhysicalComponentExchangesCreator extends DefaultExchangesCreat
    * @param node
    * @param type
    */
-  private void createExchangesFromDeployedElement(AbstractPhysicalComponent node, Type type) {
-    if ((type != null) && (type instanceof AbstractPhysicalComponent)) {
+  private void createExchangesFromDeployedElement(PhysicalComponent node, Type type) {
+    if ((type != null) && (type instanceof PhysicalComponent)) {
       // Process each deployed PC
       // DeployableElement deployedElement =
       // deployment.getDeployedElement();
-      AbstractPhysicalComponent deployedPhysicalComponent = (AbstractPhysicalComponent) type;
+      PhysicalComponent deployedPhysicalComponent = (PhysicalComponent) type;
       // This reference will allows to handle the processed connections
       for (ComponentPort port : ComponentExt.getOwnedComponentPort(deployedPhysicalComponent)) {
         // Process the flow ports of the deployed PC
@@ -168,21 +164,21 @@ public class NodePhysicalComponentExchangesCreator extends DefaultExchangesCreat
               // get the opposite port [which could be
               // source or target of the Connection]
               InformationsExchanger target = FunctionalExt.getOtherBound(connection, port);
-              if ((target != null) && (target instanceof ComponentPort)) {
+              if (target instanceof ComponentPort) {
                 // get the container of the target port
                 EObject container = target.eContainer();
                 // find the target Node
                 // [PhysicalComponent]
-                if (container instanceof AbstractPhysicalComponent) {
+                if (container instanceof PhysicalComponent) {
 
                   //For all parts, find the deploying component
-                  for (Partition partition : ((AbstractPhysicalComponent) container).getRepresentingPartitions()) {
+                  for (Part partition : ((PhysicalComponent) container).getRepresentingParts()) {
                     if (partition instanceof Part) {
                       for (DeploymentTarget deploying : getCache(PartExt::getDeployingElements, (Part) partition)) {
                         if (deploying instanceof Part) {
                           Part deployingPart = (Part) deploying;
-                          if ((deployingPart.getAbstractType() != null) && (deployingPart.getAbstractType() instanceof AbstractPhysicalComponent)) {
-                            AbstractPhysicalComponent typeDeploying = (AbstractPhysicalComponent) deployingPart.getAbstractType();
+                          if ((deployingPart.getAbstractType() != null) && (deployingPart.getAbstractType() instanceof PhysicalComponent)) {
+                            PhysicalComponent typeDeploying = (PhysicalComponent) deployingPart.getAbstractType();
 
                             //Create an exchange if there is no connection created
                             //TODO In multipart, create physical links with part related, not type
@@ -296,7 +292,7 @@ public class NodePhysicalComponentExchangesCreator extends DefaultExchangesCreat
    * @param componentExchange the component exchange
    * @return true if its has already been allocated, false otherwise
    */
-  protected boolean doesNodeAlreadyHaveAPhysicalLinkForComponentExchange(AbstractPhysicalComponent physicalComponent, ComponentExchange componentExchange) {
+  protected boolean doesNodeAlreadyHaveAPhysicalLinkForComponentExchange(PhysicalComponent physicalComponent, ComponentExchange componentExchange) {
     boolean result = false;
     // Get the semantic editing domain to access the cross referencer.
     SemanticEditingDomain editingDomain = (SemanticEditingDomain) AdapterFactoryEditingDomain.getEditingDomainFor(componentExchange);

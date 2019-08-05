@@ -16,9 +16,9 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.Region;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.attachment.AttachmentHelper;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
@@ -61,7 +61,7 @@ public class RegionRule extends AbstractCapellaElementRule {
     ISelectionContext sContext =
         SelectionContextHandlerHelper.getHandler(context).getSelectionContext(context, ITransitionConstants.SELECTION_CONTEXT__TRANSFORMATION);
     EObject parent = TransformationHandlerHelper.getInstance(context).getBestTracedElement(element.eContainer(), context, sContext);
-    if ((parent != null) && (parent.eContainer() != null) && (parent.eContainer() instanceof org.polarsys.capella.core.data.ctx.System)) {
+    if ((parent != null) && (parent.eContainer() != null) && (parent.eContainer() instanceof SystemComponent)) {
       List<EObject> regions = (List) parent.eGet(element.eContainingFeature());
       if (regions.size() == 1) {
         return regions.get(0);

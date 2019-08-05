@@ -122,6 +122,10 @@ public class ComponentPkgExt {
     return null;
   }
 
+  public static boolean isRootComponentPkg(EObject object) {
+    return (object instanceof ComponentPkg && object.eContainer() instanceof BlockArchitecture);
+  }
+
   public static ComponentPkg getRootComponentPkg(ComponentPkg componentPkg) {
 
     ComponentPkg rootComponentPkg = componentPkg;

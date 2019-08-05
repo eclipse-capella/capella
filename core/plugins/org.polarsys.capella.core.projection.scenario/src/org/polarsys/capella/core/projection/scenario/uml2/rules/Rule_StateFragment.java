@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.StateFragment;
 import org.polarsys.capella.core.projection.common.context.IContext;
-import org.polarsys.capella.core.projection.common.rules.core.Rule_CapellaElement;
+import org.polarsys.capella.core.projection.scenario.common.rules.Rule_CapellaElement;
 import org.polarsys.capella.core.projection.scenario.handlers.ScenarioHandlerHelper;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.TransfoException;

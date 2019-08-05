@@ -36,6 +36,8 @@ import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
+import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.FunctionPkg;
@@ -68,6 +70,7 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
 import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
 
@@ -333,10 +336,17 @@ public class TransitionCommandHelper {
     if (object instanceof SystemAnalysis || object instanceof LogicalArchitecture) {
       return true;
     }
-    if (CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object)
-        || CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object)) {
+    if (CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object)) {
       Component component = getComponent(object);
-      if ((component instanceof LogicalComponent && (component.isActor())) || //
+      if ((component instanceof SystemComponent && (ComponentExt.isActor(object))) || //
+          object instanceof SystemComponentPkg || //
+          (object instanceof ComponentExchange) && ComponentExchangeExt.isLinkToAnActor((ComponentExchange) object)) {
+        return true;
+      }
+    }
+    if (CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object)) {
+      Component component = getComponent(object);
+      if ((component instanceof LogicalComponent && (ComponentExt.isActor(object))) || //
           object instanceof LogicalComponentPkg || //
           (object instanceof ComponentExchange) && ComponentExchangeExt.isLinkToAnActor((ComponentExchange) object)) {
         return true;

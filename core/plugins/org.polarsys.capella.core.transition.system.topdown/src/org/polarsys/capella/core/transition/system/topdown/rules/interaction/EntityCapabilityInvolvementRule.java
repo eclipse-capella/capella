@@ -17,7 +17,7 @@ import org.polarsys.capella.core.data.oa.OaPackage;
 /**
  *
  */
-public class EntityCapabilityInvolvementRule extends ActorCapabilityInvolvementRule {
+public class EntityCapabilityInvolvementRule extends CapabilityInvolvementRule {
 
   @Override
   protected EClass getSourceType() {

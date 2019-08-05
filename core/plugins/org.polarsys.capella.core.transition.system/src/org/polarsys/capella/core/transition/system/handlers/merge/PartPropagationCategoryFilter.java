@@ -48,10 +48,12 @@ public class PartPropagationCategoryFilter extends CategoryFilter {
       if (target instanceof Component) {
         for (Part part : getCache(ComponentExt::getRepresentingParts, (Component) target)) {
           IMatch match = comparison.getMapping().getMatchFor(part, Role.REFERENCE);
-          IElementPresence matchPresence = match.getElementPresenceDifference();
-          if (matchPresence != null) {
-            ((IMergeableDifference.Editable) matchPresence).markRequires(presence, Role.TARGET);
-            ((IMergeableDifference.Editable) presence).markRequires(matchPresence, Role.TARGET);
+          if (match != null) {
+            IElementPresence matchPresence = match.getElementPresenceDifference();
+            if (matchPresence != null) {
+              ((IMergeableDifference.Editable) matchPresence).markRequires(presence, Role.TARGET);
+              ((IMergeableDifference.Editable) presence).markRequires(matchPresence, Role.TARGET);
+            }
           }
         }
       }

@@ -419,6 +419,18 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler
       mapping.add(new RealizationLinkMapping(CsPackage.Literals.COMPONENT, CsPackage.Literals.COMPONENT,
           CsPackage.Literals.COMPONENT_REALIZATION,
           CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(OaPackage.Literals.ENTITY, CtxPackage.Literals.SYSTEM_COMPONENT,
+          CsPackage.Literals.COMPONENT_REALIZATION,
+          CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(CtxPackage.Literals.SYSTEM_COMPONENT, LaPackage.Literals.LOGICAL_COMPONENT,
+          CsPackage.Literals.COMPONENT_REALIZATION,
+          CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(LaPackage.Literals.LOGICAL_COMPONENT, PaPackage.Literals.PHYSICAL_COMPONENT,
+          CsPackage.Literals.COMPONENT_REALIZATION,
+          CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(PaPackage.Literals.PHYSICAL_COMPONENT, EpbsPackage.Literals.CONFIGURATION_ITEM,
+          EpbsPackage.Literals.PHYSICAL_ARTIFACT_REALIZATION,
+          EpbsPackage.Literals.CONFIGURATION_ITEM__OWNED_PHYSICAL_ARTIFACT_REALIZATIONS));
 
       // Architectures
       mapping.add(new RealizationLinkMapping(OaPackage.Literals.OPERATIONAL_ANALYSIS,

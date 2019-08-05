@@ -30,7 +30,7 @@ public class EntityPkgRule extends ComponentPkgRule {
 
   @Override
   public EClass getTargetType(EObject element_p, IContext context_p) {
-    return CtxPackage.Literals.ACTOR_PKG;
+    return CtxPackage.Literals.SYSTEM_COMPONENT_PKG;
   }
 
 }

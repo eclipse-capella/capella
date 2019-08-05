@@ -11,28 +11,21 @@
 
 package org.polarsys.capella.core.transition.system.handlers.traceability;
 
-import java.util.Collection;
-import java.util.HashMap;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.core.data.capellacore.Allocation;
 import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
-import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.information.DataPkg;
-import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
-import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
 import org.polarsys.capella.core.transition.common.handlers.traceability.LevelBasedTraceabilityHandler;
 import org.polarsys.capella.core.transition.common.handlers.traceability.TraceabilityHandlerHelper;
@@ -199,10 +192,10 @@ public class ReconciliationTraceabilityHandler extends LevelBasedTraceabilityHan
     ITraceabilityHandler handler = TraceabilityHandlerHelper.getInstance(context);
 
     // Perform a map with parts if there is only one part with the same type
-    for (Partition sourcePartition : source.getOwnedPartitions()) {
+    for (Part sourcePartition : source.getContainedParts()) {
       if (sourcePartition.getType() != null) {
-        Partition targetPart = null;
-        for (Partition targetPartition : target.getOwnedPartitions()) {
+        Part targetPart = null;
+        for (Part targetPartition : target.getContainedParts()) {
           if (targetPartition.getType() != null) {
             if (handler.retrieveTracedElements(sourcePartition.getType(), context).contains(targetPartition.getType())) {
               if (targetPart != null) {
@@ -219,10 +212,10 @@ public class ReconciliationTraceabilityHandler extends LevelBasedTraceabilityHan
       }
     }
 
-    if (source.getRepresentingPartitions().size() == 1) {
-      if (target.getRepresentingPartitions().size() == 1) {
-        Partition sourcePartition = source.getRepresentingPartitions().get(0);
-        Partition targetPartition = target.getRepresentingPartitions().get(0);
+    if (source.getRepresentingParts().size() == 1) {
+      if (target.getRepresentingParts().size() == 1) {
+        Part sourcePartition = source.getRepresentingParts().get(0);
+        Part targetPartition = target.getRepresentingParts().get(0);
         addMapping(map, sourcePartition, targetPartition, context);
       }
     }

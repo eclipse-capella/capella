@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.projection.common.rules.core;
+package org.polarsys.capella.core.projection.scenario.common.rules;
 
 import java.util.List;
 
@@ -24,15 +24,10 @@ public class Rule_Constraint extends Rule_CapellaElement {
     super(CapellacorePackage.Literals.CONSTRAINT, CapellacorePackage.Literals.CONSTRAINT);
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   protected void retrieveGoDeep(EObject source_p, List<EObject> result_p, IContext context_p) {
     super.retrieveGoDeep(source_p, result_p, context_p);
     Constraint sourceElement = (Constraint) source_p;
-    result_p.addAll(sourceElement.getOwnedPropertyValueGroups());
-    result_p.addAll(sourceElement.getOwnedPropertyValues());
     result_p.add(sourceElement.getOwnedSpecification());
   }
 

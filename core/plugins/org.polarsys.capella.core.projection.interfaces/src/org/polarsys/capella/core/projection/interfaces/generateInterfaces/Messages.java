@@ -18,6 +18,9 @@ public class Messages extends NLS {
   public static String PortReferenceUpdater_add_required_interface;
   public static String PortReferenceUpdater_remove_provided_interface;
   public static String PortReferenceUpdater_remove_required_interface;
+
+  public static String generateInterfaces_label;
+
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);

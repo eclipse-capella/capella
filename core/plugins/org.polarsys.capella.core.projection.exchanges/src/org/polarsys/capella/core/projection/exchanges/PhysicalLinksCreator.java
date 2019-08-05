@@ -16,14 +16,15 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
-import org.polarsys.capella.core.data.cs.AbstractActor;
+import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
-import org.polarsys.capella.core.data.ctx.Actor;
-import org.polarsys.capella.core.data.ctx.System;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeAllocation;
 import org.polarsys.capella.core.data.fa.ComponentExchangeKind;
@@ -32,14 +33,10 @@ import org.polarsys.capella.core.data.fa.ComponentPortAllocation;
 import org.polarsys.capella.core.data.fa.FaFactory;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionalExt;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
-import org.polarsys.capella.core.data.la.LogicalActor;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.PhysicalLinkExt;
-import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
-import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 
 /**
  * This class is the <code>IExchangesCreator</code> implementation specific to node physical components.<br>
@@ -61,7 +58,7 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
    */
   @Override
   public void createExchanges() {
-    if ((_component instanceof LogicalComponent) || (_component instanceof LogicalActor) || (_component instanceof Actor) || (_component instanceof System)) {
+    if (_component instanceof LogicalComponent || _component instanceof SystemComponent) {
       createPhysicalLinksFromCExchanges(_component);
     }
   }
@@ -103,8 +100,7 @@ public class PhysicalLinksCreator extends DefaultExchangesCreator {
                 // get the container of the target port
                 EObject container = target.eContainer();
                 // find the target Node
-                if ((container instanceof LogicalComponent) || (container instanceof AbstractActor) || (container instanceof System)) {
-
+                if (container instanceof LogicalComponent || container instanceof SystemComponent) {
                   doCreatePhysicalLink(connection, lc, (Component) container);
                 }
               }

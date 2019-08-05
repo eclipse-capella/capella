@@ -13,6 +13,7 @@ package org.polarsys.capella.core.semantic.queries.basic.queries.utils;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 
 /**
@@ -27,7 +28,7 @@ public class QueriesFilters {
   public static List<Object> filterListToRemoveActors(List<Object> objects) {
     List<Object> returnValue = new ArrayList<Object>();
     for (Object obj : objects) {
-      if (!ComponentExt.isActor(obj)) {
+      if (obj instanceof EObject && !ComponentExt.isActor((EObject)obj)) {
         returnValue.add(obj);
       }
     }
@@ -42,7 +43,7 @@ public class QueriesFilters {
   public static List<Object> filterListToGetOnlyActors(List<Object> objects) {
     List<Object> returnValue = new ArrayList<Object>();
     for (Object obj : objects) {
-      if (ComponentExt.isActor(obj)) {
+      if (obj instanceof EObject && ComponentExt.isActor((EObject)obj)) {
         returnValue.add(obj);
       }
     }

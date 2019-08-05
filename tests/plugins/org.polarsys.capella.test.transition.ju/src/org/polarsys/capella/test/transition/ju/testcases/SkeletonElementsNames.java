@@ -13,21 +13,21 @@ package org.polarsys.capella.test.transition.ju.testcases;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
-import org.polarsys.capella.core.data.ctx.ActorPkg;
 import org.polarsys.capella.core.data.ctx.CapabilityPkg;
 import org.polarsys.capella.core.data.ctx.MissionPkg;
+import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.ctx.SystemFunctionPkg;
 import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.la.CapabilityRealizationPkg;
-import org.polarsys.capella.core.data.la.LogicalActorPkg;
+import org.polarsys.capella.core.data.la.LogicalComponentPkg;
 import org.polarsys.capella.core.data.la.LogicalFunction;
 import org.polarsys.capella.core.data.la.LogicalFunctionPkg;
 import org.polarsys.capella.core.data.oa.EntityPkg;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.OperationalActivityPkg;
 import org.polarsys.capella.core.data.oa.OperationalCapabilityPkg;
-import org.polarsys.capella.core.data.pa.PhysicalActorPkg;
+import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
 import org.polarsys.capella.core.data.requirement.RequirementsPkg;
@@ -116,7 +116,7 @@ public class SkeletonElementsNames extends EmptySkeletonProject {
 
   protected void checkActorPkg(String containerId) {
 
-    SkeletonHelper.createActorPkg(containerId, GenericModel.ACTOR_PKG, context);
+    SkeletonHelper.createComponentPkg(containerId, GenericModel.ACTOR_PKG, context);
 
     //Check default name
     EObject result = null;
@@ -236,13 +236,13 @@ public class SkeletonElementsNames extends EmptySkeletonProject {
     } else if (result instanceof EntityPkg) {
       mustBeNamed(result, NamingConstants.CreateOpAnalysisCmd_operationalEntities_pkg_name);
 
-    } else if (result instanceof ActorPkg) {
+    } else if (result instanceof SystemComponentPkg) {
       mustBeNamed(result, NamingConstants.CreateSysAnalysisCmd_actors_pkg_name);
 
-    } else if (result instanceof LogicalActorPkg) {
+    } else if (result instanceof LogicalComponentPkg) {
       mustBeNamed(result, NamingConstants.CreateLogicalArchCmd_actors_pkg_name);
 
-    } else if (result instanceof PhysicalActorPkg) {
+    } else if (result instanceof PhysicalComponentPkg) {
       mustBeNamed(result, NamingConstants.CreatePhysicalArchCmd_actors_pkg_name);
 
     } else if (result instanceof OperationalCapabilityPkg) {

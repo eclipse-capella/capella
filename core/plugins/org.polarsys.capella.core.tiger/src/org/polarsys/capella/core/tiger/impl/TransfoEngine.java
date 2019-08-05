@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.common.data.helpers.modellingcore.utils.HoldingResourceFilter;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
@@ -44,7 +45,6 @@ import org.polarsys.capella.core.tiger.ITransfoRule;
 import org.polarsys.capella.core.tiger.Messages;
 import org.polarsys.capella.core.tiger.TransfoException;
 import org.polarsys.capella.core.tiger.extension.ITransfoEngineExecuteExt;
-import org.polarsys.capella.core.tiger.helpers.DebugHelper;
 import org.polarsys.capella.core.tiger.helpers.Query;
 import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
 
@@ -160,7 +160,7 @@ public abstract class TransfoEngine extends ITransfoEngine {
     for (EObject sourceElement : _agenda) {
       if (_logger.isDebugEnabled()) {
         _logger.debug(" + Step " + step);
-        _logger.debug("   - Current element is : " + DebugHelper.elementToString(sourceElement));
+        _logger.debug("   - Current element is : " + EObjectExt.getText(sourceElement));
       }
       ITransfoRule rule = _transfo.findCachedMatchingRule(sourceElement);
       if (rule != null) {
@@ -192,7 +192,7 @@ public abstract class TransfoEngine extends ITransfoEngine {
       builder.append(System.getProperty("line.separator")); //$NON-NLS-1$
       for (EObject troubleObject : troubleList) {
         builder.append(" - ");
-        builder.append(DebugHelper.elementToString(troubleObject));
+        builder.append(EObjectExt.getText(troubleObject));
         builder.append(System.getProperty("line.separator")); //$NON-NLS-1$
 
         CapellaElement element = (CapellaElement) troubleObject;
@@ -541,7 +541,7 @@ public abstract class TransfoEngine extends ITransfoEngine {
       if (_logger.isDebugEnabled()) {
         _logger.debug(" + Step " + step); //$NON-NLS-1$
         _logger.debug("   - The agenda size is : " + agenda.size()); //$NON-NLS-1$
-        _logger.debug("   - The current element is : " + DebugHelper.elementToString(currentElement)); //$NON-NLS-1$
+        _logger.debug("   - The current element is : " + EObjectExt.getText(currentElement)); //$NON-NLS-1$
       }
 
       // No 'null' element in the agenda
@@ -561,7 +561,7 @@ public abstract class TransfoEngine extends ITransfoEngine {
       if (rule == null) {
         if (_logger.isDebugEnabled()) {
           // New version : just a warning
-          _logger.debug("      -> Warning no rule found for " + DebugHelper.elementToString(currentElement)); //$NON-NLS-1$
+          _logger.debug("      -> Warning no rule found for " + EObjectExt.getText(currentElement)); //$NON-NLS-1$
         }
         agenda.remove(currentElement);
 
@@ -585,7 +585,7 @@ public abstract class TransfoEngine extends ITransfoEngine {
           agenda.addAll(relatedElements);
           if (_logger.isDebugEnabled()) {
             for (EObject relatedElement : relatedElements) {
-              _logger.debug("   - Re-injecting element : " + DebugHelper.elementToString(relatedElement)); //$NON-NLS-1$
+              _logger.debug("   - Re-injecting element : " + EObjectExt.getText(relatedElement)); //$NON-NLS-1$
             }
           }
         }
@@ -641,7 +641,7 @@ public abstract class TransfoEngine extends ITransfoEngine {
     for (EObject sourceElement : _agenda) {
       if (_logger.isDebugEnabled()) {
         _logger.debug(" + Step " + step); //$NON-NLS-1$
-        _logger.debug("   - Current element is : " + DebugHelper.elementToString(sourceElement)); //$NON-NLS-1$
+        _logger.debug("   - Current element is : " + EObjectExt.getText(sourceElement)); //$NON-NLS-1$
       }
       ITransfoRule rule = _transfo.findCachedMatchingRule(sourceElement);
 

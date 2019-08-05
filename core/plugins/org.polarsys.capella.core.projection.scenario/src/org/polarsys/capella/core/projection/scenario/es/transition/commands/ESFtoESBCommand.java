@@ -14,12 +14,11 @@ import java.util.Collection;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.projection.common.AbstractTransform;
-import org.polarsys.capella.core.projection.common.TransitionMessages;
 import org.polarsys.capella.core.projection.common.TransitionHelper;
 import org.polarsys.capella.core.projection.scenario.ESF2ESBTransform;
+import org.polarsys.capella.core.projection.scenario.Messages;
 
 /**
  *
@@ -36,7 +35,7 @@ public class ESFtoESBCommand extends ESToISCommand {
 
   @Override
   public String getName() {
-    return TransitionMessages.transitionESF2ESB_label;
+    return Messages.transitionESF2ESB_label;
   }
 
   /**

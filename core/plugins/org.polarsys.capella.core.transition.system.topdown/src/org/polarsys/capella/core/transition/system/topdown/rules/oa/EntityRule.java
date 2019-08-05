@@ -10,20 +10,14 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.system.topdown.rules.oa;
 
-import java.util.Collection;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.polarsys.capella.core.data.cs.BlockArchitecture;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
-import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.OaPackage;
-import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.transition.common.handlers.selection.EClassSelectionContext;
 import org.polarsys.capella.core.transition.common.handlers.transformation.TransformationHandlerHelper;
-import org.polarsys.capella.core.transition.system.topdown.handlers.transformation.TopDownTransformationHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -31,6 +25,12 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
  */
 public class EntityRule extends org.polarsys.capella.core.transition.system.topdown.rules.cs.ComponentRule {
 
+  public EntityRule() {
+
+    unregisterUpdatedAttribute(CsPackage.Literals.COMPONENT__ACTOR);
+    unregisterUpdatedAttribute(CsPackage.Literals.COMPONENT__HUMAN);
+  }
+  
   @Override
   protected EClass getSourceType() {
     return OaPackage.Literals.ENTITY;
@@ -38,37 +38,23 @@ public class EntityRule extends org.polarsys.capella.core.transition.system.topd
 
   @Override
   public EClass getTargetType(EObject element_p, IContext context_p) {
-    // For an entity already transitioned in the target architecture, we need to retrieve it's type since it can be transitioned to System or Actor
-    EObject object =
-        TopDownTransformationHelper.getInstance(context_p).getBestTracedElement(element_p, context_p, new EClassSelectionContext(CsPackage.Literals.COMPONENT));
-    if (object != null) {
-      return object.eClass();
-    }
-    Collection<EObject> objects = TopDownTransformationHelper.getInstance(context_p).retrieveTargetTracedElements(element_p, context_p);
-    if (!objects.isEmpty()) {
-      return objects.iterator().next().eClass();
-    }
-    return CtxPackage.Literals.ACTOR;
+    return CtxPackage.Literals.SYSTEM_COMPONENT;
   }
 
   @Override
   protected EObject transformDirectElement(EObject element_p, IContext context_p) {
-    EClass targetType = getTargetType(element_p, context_p);
-    if (CtxPackage.Literals.SYSTEM.isSuperTypeOf(targetType)) {
-      // Retrieve the existing architecture if any
-      EObject root = TransformationHandlerHelper.getInstance(context_p).getLevelElement(element_p, context_p);
-
-      BlockArchitecture target =
-          (BlockArchitecture) TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(root, context_p, CsPackage.Literals.BLOCK_ARCHITECTURE);
-      if (target instanceof SystemAnalysis) {
-        SystemAnalysis analysis = (SystemAnalysis) target;
-        return BlockArchitectureExt.getFirstComponent(analysis, true);
-      }
-    }
     EObject res = super.transformDirectElement(element_p, context_p);
+    if (res instanceof Component) {
+      ((Component) res).setActor(true);
+      ((Component) res).setHuman(true);
+    }
     return res;
   }
 
+  protected boolean transformAsRootComponent(EObject object, IContext context) {
+    return false;
+  }
+  
   @Override
   protected EObject getBestContainer(EObject element_p, EObject result_p, IContext context_p) {
     EObject currentContainer = element_p.eContainer();
@@ -78,9 +64,8 @@ public class EntityRule extends org.polarsys.capella.core.transition.system.topd
     EObject bestContainer = null;
     while ((currentContainer != null)) {
       bestContainer =
-          TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(currentContainer, context_p, CtxPackage.Literals.ACTOR_PKG, element_p,
+          TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(currentContainer, context_p, CtxPackage.Literals.SYSTEM_COMPONENT_PKG, element_p,
               result_p);
-
       if (bestContainer != null) {
         break;
       }

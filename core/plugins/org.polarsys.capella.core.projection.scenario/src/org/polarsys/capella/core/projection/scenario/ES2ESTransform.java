@@ -14,6 +14,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
+import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.capella.core.data.fa.FaPackage;
+import org.polarsys.capella.core.data.information.InformationPackage;
+import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.projection.common.CapellaEngine;
@@ -21,6 +25,7 @@ import org.polarsys.capella.core.projection.common.context.IContext;
 import org.polarsys.capella.core.projection.scenario.es2es.handlers.ScenarioES2ESHandler;
 import org.polarsys.capella.core.projection.scenario.handlers.IScenarioHandler;
 import org.polarsys.capella.core.tiger.ITransfo;
+import org.polarsys.capella.core.tiger.ITransfoRuleBase;
 import org.polarsys.capella.core.tiger.impl.TransfoEngine;
 
 /**
@@ -37,6 +42,21 @@ public class ES2ESTransform extends ScenarioTransform {
     return CAPELLA_SCENARIO_RULES;
   }
 
+  protected ScenarioTransfo createTransfo(ITransfoRuleBase ruleBase_p) throws ClassNotFoundException {
+    ScenarioTransfo transfo = super.createTransfo(ruleBase_p);
+    
+    transfo.setSpecificLinkKindFromMap(InteractionPackage.Literals.ABSTRACT_CAPABILITY, InteractionPackage.Literals.ABSTRACT_CAPABILITY,
+        InteractionPackage.Literals.ABSTRACT_CAPABILITY_REALIZATION);
+    transfo.setSpecificLinkKindFromMap(FaPackage.Literals.ABSTRACT_FUNCTION, FaPackage.Literals.ABSTRACT_FUNCTION, FaPackage.Literals.FUNCTION_REALIZATION);
+    transfo.setSpecificLinkKindFromMap(CsPackage.Literals.COMPONENT, CsPackage.Literals.COMPONENT, CsPackage.Literals.COMPONENT_REALIZATION);
+    transfo.setSpecificLinkKindFromMap(FaPackage.Literals.COMPONENT_EXCHANGE, FaPackage.Literals.COMPONENT_EXCHANGE, FaPackage.Literals.COMPONENT_EXCHANGE_REALIZATION);
+    transfo.setSpecificLinkKindFromMap(InformationPackage.Literals.EXCHANGE_ITEM, InformationPackage.Literals.EXCHANGE_ITEM, InformationPackage.Literals.INFORMATION_REALIZATION);
+    transfo.setSpecificLinkKindFromMap(FaPackage.Literals.FUNCTIONAL_CHAIN, FaPackage.Literals.FUNCTIONAL_CHAIN, FaPackage.Literals.FUNCTIONAL_CHAIN_REALIZATION);
+    transfo.setSpecificLinkKindFromMap(FaPackage.Literals.FUNCTIONAL_EXCHANGE, FaPackage.Literals.FUNCTIONAL_EXCHANGE, FaPackage.Literals.FUNCTIONAL_EXCHANGE_REALIZATION);
+    
+    return transfo;
+  }
+  
   @Override
   protected IScenarioHandler createScenarioHandler(IContext context_p) {
     return new ScenarioES2ESHandler();

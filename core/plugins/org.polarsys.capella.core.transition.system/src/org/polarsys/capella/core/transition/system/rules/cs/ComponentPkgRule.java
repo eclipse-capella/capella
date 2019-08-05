@@ -19,11 +19,11 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.CsPackage;
-import org.polarsys.capella.core.data.ctx.ActorPkg;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
+import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
 import org.polarsys.capella.core.data.la.LaPackage;
-import org.polarsys.capella.core.data.la.LogicalActorPkg;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalComponentPkg;
@@ -31,7 +31,6 @@ import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.EntityPkg;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.pa.PaPackage;
-import org.polarsys.capella.core.data.pa.PhysicalActorPkg;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
@@ -89,12 +88,12 @@ public abstract class ComponentPkgRule extends AbstractCapellaElementRule {
     BlockArchitecture target = (BlockArchitecture) TransformationHandlerHelper.getInstance(context)
         .getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE, element, result);
 
-    if (result instanceof ActorPkg) {
-      return BlockArchitectureExt.getActorPkg(target);
-    } else if (result instanceof LogicalActorPkg) {
-      return BlockArchitectureExt.getActorPkg(target);
-    } else if (result instanceof PhysicalActorPkg) {
-      return BlockArchitectureExt.getActorPkg(target);
+    if (result instanceof SystemComponentPkg) {
+      return BlockArchitectureExt.getComponentPkg(target);
+    } else if (result instanceof LogicalComponentPkg) {
+      return BlockArchitectureExt.getComponentPkg(target);
+    } else if (result instanceof PhysicalComponentPkg) {
+      return BlockArchitectureExt.getComponentPkg(target);
     }
 
     return target;
@@ -115,23 +114,14 @@ public abstract class ComponentPkgRule extends AbstractCapellaElementRule {
         ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE,
             sourceElement.getOwnedEntities(), context);
 
-      } else if (source instanceof ActorPkg) {
-        ActorPkg sourceElement = (ActorPkg) source;
-        result.addAll(sourceElement.getOwnedActorPkgs());
-        result.addAll(sourceElement.getOwnedActors());
+      } else if (source instanceof SystemComponentPkg) {
+        SystemComponentPkg sourceElement = (SystemComponentPkg) source;
+        result.addAll(sourceElement.getOwnedSystemComponentPkgs());
+        result.addAll(sourceElement.getOwnedSystemComponents());
         ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE,
-            sourceElement.getOwnedActorPkgs(), context);
+            sourceElement.getOwnedSystemComponentPkgs(), context);
         ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE,
-            sourceElement.getOwnedActors(), context);
-
-      } else if (source instanceof LogicalActorPkg) {
-        LogicalActorPkg sourceElement = (LogicalActorPkg) source;
-        result.addAll(sourceElement.getOwnedLogicalActorPkgs());
-        result.addAll(sourceElement.getOwnedLogicalActors());
-        ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE,
-            sourceElement.getOwnedLogicalActorPkgs(), context);
-        ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE,
-            sourceElement.getOwnedLogicalActors(), context);
+            sourceElement.getOwnedSystemComponents(), context);
 
       } else if (source instanceof LogicalComponentPkg) {
         LogicalComponentPkg sourceElement = (LogicalComponentPkg) source;
@@ -142,23 +132,14 @@ public abstract class ComponentPkgRule extends AbstractCapellaElementRule {
         ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE,
             sourceElement.getOwnedLogicalComponents(), context);
 
-      } else if (source instanceof PhysicalActorPkg) {
-        PhysicalActorPkg sourceElement = (PhysicalActorPkg) source;
-        result.addAll(sourceElement.getOwnedPhysicalActorPkgs());
-        result.addAll(sourceElement.getOwnedPhysicalActors());
-        ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE,
-            sourceElement.getOwnedPhysicalActorPkgs(), context);
-        ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE,
-            sourceElement.getOwnedPhysicalActors(), context);
-
       } else if (source instanceof PhysicalComponentPkg) {
         PhysicalComponentPkg sourceElement = (PhysicalComponentPkg) source;
         result.addAll(sourceElement.getOwnedPhysicalComponentPkgs());
-        result.addAll(sourceElement.getOwnedComponents());
+        result.addAll(sourceElement.getOwnedPhysicalComponents());
         ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE,
             sourceElement.getOwnedPhysicalComponentPkgs(), context);
         ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE,
-            sourceElement.getOwnedComponents(), context);
+            sourceElement.getOwnedPhysicalComponents(), context);
 
       }
 
@@ -179,32 +160,25 @@ public abstract class ComponentPkgRule extends AbstractCapellaElementRule {
       // Nothing
 
     } else if (container instanceof SystemAnalysis) {
-      if (CtxPackage.Literals.ACTOR_PKG.isSuperTypeOf(targetType)) {
-        return CtxPackage.Literals.SYSTEM_ANALYSIS__OWNED_ACTOR_PKG;
-
+      if (CtxPackage.Literals.SYSTEM_COMPONENT_PKG.isSuperTypeOf(targetType)) {
+        return CtxPackage.Literals.SYSTEM_ANALYSIS__OWNED_SYSTEM_COMPONENT_PKG;
       }
 
-    } else if (container instanceof ActorPkg) {
-      if (CtxPackage.Literals.ACTOR_PKG.isSuperTypeOf(targetType)) {
-        return CtxPackage.Literals.ACTOR_PKG__OWNED_ACTOR_PKGS;
-
+    } else if (container instanceof SystemComponentPkg) {
+      if (CtxPackage.Literals.SYSTEM_COMPONENT_PKG.isSuperTypeOf(targetType)) {
+        return CtxPackage.Literals.SYSTEM_COMPONENT_PKG__OWNED_SYSTEM_COMPONENT_PKGS;
       }
 
-    } else if (container instanceof org.polarsys.capella.core.data.ctx.System) {
-      // Nothing
-
+    } else if (container instanceof SystemComponent) {
+      //Nothing
+      
     } else if (container instanceof LogicalArchitecture) {
-      if (LaPackage.Literals.LOGICAL_ACTOR_PKG.isSuperTypeOf(targetType)) {
-        return LaPackage.Literals.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_ACTOR_PKG;
+      if (LaPackage.Literals.LOGICAL_COMPONENT_PKG.isSuperTypeOf(targetType)) {
+        return LaPackage.Literals.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT_PKG;
 
       } else if (LaPackage.Literals.LOGICAL_COMPONENT_PKG.isSuperTypeOf(targetType)) {
         return LaPackage.Literals.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT_PKG;
 
-      }
-
-    } else if (container instanceof LogicalActorPkg) {
-      if (LaPackage.Literals.LOGICAL_ACTOR_PKG.isSuperTypeOf(targetType)) {
-        return LaPackage.Literals.LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTOR_PKGS;
       }
 
     } else if (container instanceof LogicalComponentPkg) {
@@ -218,17 +192,12 @@ public abstract class ComponentPkgRule extends AbstractCapellaElementRule {
       }
 
     } else if (container instanceof PhysicalArchitecture) {
-      if (PaPackage.Literals.PHYSICAL_ACTOR_PKG.isSuperTypeOf(targetType)) {
-        return PaPackage.Literals.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_ACTOR_PKG;
+      if (PaPackage.Literals.PHYSICAL_COMPONENT_PKG.isSuperTypeOf(targetType)) {
+        return PaPackage.Literals.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG;
 
       } else if (PaPackage.Literals.PHYSICAL_COMPONENT_PKG.isSuperTypeOf(targetType)) {
         return PaPackage.Literals.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG;
 
-      }
-
-    } else if (container instanceof PhysicalActorPkg) {
-      if (PaPackage.Literals.PHYSICAL_ACTOR_PKG.isSuperTypeOf(targetType)) {
-        return PaPackage.Literals.PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTOR_PKGS;
       }
 
     } else if (container instanceof PhysicalComponentPkg) {
@@ -252,11 +221,11 @@ public abstract class ComponentPkgRule extends AbstractCapellaElementRule {
       BlockArchitecture target = (BlockArchitecture) TransformationHandlerHelper.getInstance(context)
           .getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE);
 
-      if (element instanceof EntityPkg || element instanceof ActorPkg || element instanceof LogicalActorPkg
-          || element instanceof PhysicalActorPkg) {
-        AbstractNamedElement result = BlockArchitectureExt.getActorPkg(target, true);
+      if (element instanceof EntityPkg || element instanceof SystemComponentPkg || element instanceof LogicalComponentPkg
+          || element instanceof PhysicalComponentPkg) {
+        AbstractNamedElement result = BlockArchitectureExt.getComponentPkg(target, true);
         if (result != null) {
-          if (!BlockArchitectureExt.isDefaultNameActorPkg((AbstractNamedElement) element)) {
+          if (!BlockArchitectureExt.isDefaultNameComponentPkg((AbstractNamedElement) element)) {
             ((AbstractNamedElement) result).setName(((AbstractNamedElement) element).getName());
           }
           return result;

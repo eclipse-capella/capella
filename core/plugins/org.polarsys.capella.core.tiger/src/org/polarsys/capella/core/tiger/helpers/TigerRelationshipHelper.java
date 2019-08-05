@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.EList;
@@ -29,6 +30,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
@@ -139,8 +141,8 @@ protected static final Logger logger = ReportManagerRegistry.getInstance().subsc
     
 
     if (logger.isDebugEnabled()){
-      String message = "          => Attempt attach " + DebugHelper.elementToString(element) + "---" + relationship.getName() + "--->" //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                       + DebugHelper.elementToString(relatedElement);
+      String message = "          => Attempt attach " + EObjectExt.getText(element) + "---" + relationship.getName() + "--->" //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                       + EObjectExt.getText(relatedElement);
   
       if (done)
         message += " -> [OK] "; //$NON-NLS-1$
@@ -895,7 +897,7 @@ protected static final Logger logger = ReportManagerRegistry.getInstance().subsc
         targetElement.eSet(attribute, value);
         if (logger.isDebugEnabled()){
           logger.debug("       => Update attribute " //$NON-NLS-1$
-                          + attribute.getName() + " on element " + DebugHelper.elementToString(targetElement)); //$NON-NLS-1$
+                          + attribute.getName() + " on element " + EObjectExt.getText(targetElement)); //$NON-NLS-1$
         }
       }
     }
@@ -923,8 +925,8 @@ protected static final Logger logger = ReportManagerRegistry.getInstance().subsc
             if (logger.isInfoEnabled()){
               String text = NLS.bind(Messages.TigerRelationshipHelper_UpdateAttribute, new Object[] { attribute.getName(), 
                                                                                                       EObjectLabelProviderHelper.getText(targetElement), 
-                                                                                                      DebugHelper.elementToString(valueTarget), 
-                                                                                                      DebugHelper.elementToString(valueSource) });
+                                                                                                      Objects.toString(valueTarget), 
+                                                                                                      Objects.toString(valueSource) });
               
               logger.info(new EmbeddedMessage(text, logger.getName(), targetElement));
             }
@@ -968,7 +970,7 @@ protected static final Logger logger = ReportManagerRegistry.getInstance().subsc
             if (((valueSource == null) && (valueTarget != null)) || ((valueSource != null) && !valueSource.equals(valueTarget))) {
               if (valueTarget != null && logger.isInfoEnabled()) {
                   String text = NLS.bind(Messages.TigerRelationshipHelper_UpdateAttribute, 
-                      new Object[] { attribute.getName(), EObjectLabelProviderHelper.getText(targetElement), DebugHelper.elementToString(valueTarget), DebugHelper.elementToString(valueSource) }); 
+                      new Object[] { attribute.getName(), EObjectLabelProviderHelper.getText(targetElement), Objects.toString(valueTarget), Objects.toString(valueSource) }); 
                   logger.info(new EmbeddedMessage(text, logger.getName(), targetElement)); 
               }
               targetElement.eSet(attribute, valueSource);

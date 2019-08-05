@@ -12,8 +12,6 @@ package org.polarsys.capella.core.transition.system.topdown.rules.la.lc2pc;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
-import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.pa.PaPackage;
@@ -31,7 +29,7 @@ public class LogicalComponentRule extends org.polarsys.capella.core.transition.s
   protected EClass getSourceType() {
     return LaPackage.Literals.LOGICAL_COMPONENT;
   }
-
+  
   @Override
   public EClass getTargetType(EObject element_p, IContext context_p) {
 
@@ -40,7 +38,7 @@ public class LogicalComponentRule extends org.polarsys.capella.core.transition.s
             ITopDownConstants.OPTIONS_TRANSITION__LCPC, ITopDownConstants.OPTIONS_TRANSITION__LCPC_DEFAULT);
 
     if (ITopDownConstants.OPTIONS_TRANSITION__LCPC_LEAF.equals(value)) {
-      if (ComponentExt.isComposite((LogicalComponent) element_p) && !(element_p.eContainer() instanceof BlockArchitecture)) {
+      if (ComponentExt.isComposite((LogicalComponent) element_p) && !(ComponentExt.isComponentRoot(element_p))) {
         return PaPackage.Literals.PHYSICAL_COMPONENT_PKG;
       }
     }

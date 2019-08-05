@@ -12,34 +12,26 @@ package org.polarsys.capella.core.projection.exchanges;
 
 import java.util.Collection;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
-import org.polarsys.capella.core.data.cs.AbstractActor;
+import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
-import org.polarsys.capella.core.data.ctx.Actor;
-import org.polarsys.capella.core.data.ctx.System;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeAllocation;
-import org.polarsys.capella.core.data.fa.ComponentExchangeKind;
-import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.fa.ComponentPortAllocation;
 import org.polarsys.capella.core.data.fa.FaFactory;
-import org.polarsys.capella.core.data.helpers.fa.services.FunctionalExt;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
-import org.polarsys.capella.core.data.la.LogicalActor;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.PhysicalLinkExt;
-import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
-import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 
 /**
  * This class is the <code>IExchangesCreator</code> implementation specific to node physical components.<br>
@@ -61,7 +53,7 @@ public class ComponentExchangesCreator extends DefaultExchangesCreator {
    */
   @Override
   public void createExchanges() {
-    if ((_component instanceof LogicalComponent) || (_component instanceof LogicalActor) || (_component instanceof Actor) || (_component instanceof System)) {
+    if ((_component instanceof LogicalComponent) || (_component instanceof SystemComponent)) {
       super.createExchanges();
     }
   }
@@ -73,47 +65,6 @@ public class ComponentExchangesCreator extends DefaultExchangesCreator {
   @Override
   protected boolean isValidCreation(AbstractEventOperation fe_p, Component component_p, Component allocating_p) {
     return isValidBound(component_p) && isValidBound(allocating_p);
-  }
-
-  /**
-   * @param lc
-   * @param type
-   */
-  private void createPhysicalLinksFromCExchanges(Component lc) {
-    if ((lc != null)) {
-      // Process each lc
-      // This reference will allows to handle the processed connections
-      for (ComponentPort port : ComponentExt.getOwnedComponentPort(lc)) {
-        // Process the flow ports of the deployed PC
-        // filter inValid port
-        // if (PortExt.isOut(port)) {
-        // get all the connection of the port
-        for (ComponentExchange connection : port.getComponentExchanges()) {
-          // filter delegation and unSet type of connection
-          if ((connection.getKind() != ComponentExchangeKind.DELEGATION) && (connection.getKind() != ComponentExchangeKind.UNSET)) {
-            // proceed only if port is a source of current
-            // Connection
-            // if (connection.getSource().equals(port)) {
-            // check if physicalLink creation is necessary
-            if (!doesNodeAlreadyHaveAPhysicalLinkForComponentExchange(lc, connection)) {
-              // get the opposite port [which could be
-              // source or target of the Connection]
-              InformationsExchanger target = FunctionalExt.getOtherBound(connection, port);
-              if ((target != null) && (target instanceof ComponentPort)) {
-                // get the container of the target port
-                EObject container = target.eContainer();
-                // find the target Node
-                if ((container instanceof LogicalComponent) || (container instanceof AbstractActor) || (container instanceof System)) {
-
-                  doCreatePhysicalLink(connection, lc, (Component) container);
-                }
-              }
-            }
-          }
-        }
-      }
-
-    }
   }
 
   /**

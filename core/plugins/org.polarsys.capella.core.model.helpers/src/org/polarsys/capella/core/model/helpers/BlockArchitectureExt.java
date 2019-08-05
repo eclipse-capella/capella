@@ -345,6 +345,10 @@ public class BlockArchitectureExt {
   public static ComponentPkg getActorPkg(BlockArchitecture architecture, boolean create) {
     return getComponentPkg(architecture, create);
   }
+  
+  public static ComponentPkg getComponentPkg(BlockArchitecture blockArchitecture) {
+    return getComponentPkg(blockArchitecture, true);
+  }
 
   public static ComponentPkg getComponentPkg(BlockArchitecture blockArchitecture, boolean create) {
     if (blockArchitecture instanceof OperationalAnalysis) {
@@ -752,8 +756,8 @@ public class BlockArchitectureExt {
    * @return
    */
   public static boolean isRootComponent(Component component) {
-    return !ComponentExt.isActor(component) && component.eContainer() instanceof ComponentPkg
-        && component.eContainer().eContainer() instanceof BlockArchitecture;
+    BlockArchitecture architecture = getRootBlockArchitecture(component);
+    return component.equals(architecture.getSystem());
   }
 
   /**

@@ -42,26 +42,20 @@ public class PartRule extends org.polarsys.capella.core.transition.system.rules.
 
   @Override
   protected EObject getBestContainer(EObject element_p, EObject result_p, IContext context_p) {
-    //We don't care traceability, we return default container
+    // We don't care traceability, we return default container
     return null;
   }
 
   @Override
   protected EObject transformDirectElement(EObject element_p, IContext context_p) {
-    Part part = (Part) element_p;
-    EClass targetType = TransformationHandlerHelper.getInstance(context_p).getTargetType(part.getAbstractType(), context_p);
+    EObject root = TransformationHandlerHelper.getInstance(context_p).getLevelElement(element_p, context_p);
 
-    if (CtxPackage.Literals.SYSTEM.isSuperTypeOf(targetType) || (part.getAbstractType().eContainer() instanceof BlockArchitecture)) {
-      // Retrieve the existing architecture if any
-      EObject root = TransformationHandlerHelper.getInstance(context_p).getLevelElement(element_p, context_p);
-
-      BlockArchitecture target =
-          (BlockArchitecture) TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(root, context_p, CsPackage.Literals.BLOCK_ARCHITECTURE);
-      Component cps = BlockArchitectureExt.getOrCreateSystem(target);
-      Collection<Part> parts = getCache(ComponentExt::getRepresentingParts, cps);
-      if (!parts.isEmpty()) {
-        return parts.iterator().next();
-      }
+    BlockArchitecture target = (BlockArchitecture) TransformationHandlerHelper.getInstance(context_p)
+        .getBestTracedElement(root, context_p, CsPackage.Literals.BLOCK_ARCHITECTURE);
+    Component cps = BlockArchitectureExt.getOrCreateSystem(target);
+    Collection<Part> parts = getCache(ComponentExt::getRepresentingParts, cps);
+    if (!parts.isEmpty()) {
+      return parts.iterator().next();
     }
     return super.transformDirectElement(element_p, context_p);
   }

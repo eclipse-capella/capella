@@ -15,7 +15,7 @@ import org.eclipse.emf.diffmerge.api.Role;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
@@ -37,6 +37,11 @@ public class TopDownDiffPolicy extends org.polarsys.capella.core.transition.comm
    */
   public TopDownDiffPolicy(IContext context_p2) {
     super(context_p2);
+  }
+  
+  @Override
+  public boolean considerOrdered(EStructuralFeature feature_p) {
+    return super.considerOrdered(feature_p);
   }
 
   /**

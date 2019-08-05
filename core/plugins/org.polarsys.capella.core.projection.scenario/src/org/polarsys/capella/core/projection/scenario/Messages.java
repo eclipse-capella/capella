@@ -41,6 +41,20 @@ public class Messages extends NLS {
   public static String Rule_InteractionState_FailMsg;
   public static String Rule_StateFragment_FailMsg;
   public static String Rule_InteractionFunctionState_FailMsg;
+  
+  public static String transitionES2IS_label;
+  public static String transitionESF2ESB_label;
+  public static String transitionFS2ES_label;
+  public static String transitionFS2ES_OASA_label;
+  public static String transitionFS2ES_SALAPA_label;
+  public static String transitionES2ES_label;
+  public static String transitionES2ES_OAtoSA_label;
+  public static String transitionES2ES_SAtoLA_label;
+  public static String transitionES2ES_LAtoPA_label;
+  public static String transitionFS2FS_label;
+  public static String transitionFS2FS_OAtoSA_label;
+  public static String transitionFS2FS_SAtoLA_label;
+  public static String transitionFS2FS_LAtoPA_label;
 
   static {
     // initialize resource bundle

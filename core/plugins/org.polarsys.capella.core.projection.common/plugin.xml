@@ -13,71 +13,11 @@
 <plugin>
    <extension
          point="org.polarsys.capella.core.tiger">
-         
-     <ruleset context="org.polarsys.capella.core.projection.constraint"
-      	rulepackage="org.polarsys.capella.core.projection.common.rules.core">
-          <rule rulename="Rule_Constraint"/>
-          <rule rulename="Rule_OpaqueExpression"/>
-       </ruleset>
-       
+        
       <ruleset context="org.polarsys.capella.core.projection.common.resolver">
          <finalizer class="org.polarsys.capella.core.projection.common.resolver.ResolverFinalizer"/>
       </ruleset>
       
-      <ruleset
-            context="org.polarsys.capella.core.projection.capability"
-            rulepackage="org.polarsys.capella.core.projection.common.rules.interaction"
-            transfolink="org.polarsys.capella.core.projection.common.ProjectionTraceLinkProvider">
-         <rule rulename="Rule_AbstractCapability"/>
-         <rule rulename="Rule_OperationalCapability"/>
-         <rule rulename="Rule_AbstractCapabilityPkg"/>
-         
-         <rule rulename="Rule_AbstractCapabilityGeneralization"/>
-         <rule rulename="Rule_ActorCapabilityInvolvement"/>
-         <rule rulename="Rule_AbstractFunctionAbstractCapabilityInvolvement"/>
-         <rule rulename="Rule_FunctionalChainAbstractCapabilityInvolvement"/>
-      
-      <sharedContext context="org.polarsys.capella.core.projection.functional.realization"/>
-      <sharedContext context="org.polarsys.capella.core.projection.interfaces.definition"/>
-      <sharedContext context="capella.statemachine.rules"/>
-      
-      </ruleset>
-   
-      <ruleset
-            context="org.polarsys.capella.core.projection.functional.realization"
-            rulepackage="org.polarsys.capella.core.projection.common.rules.fa"
-            transfolink="org.polarsys.capella.core.projection.common.ProjectionTraceLinkProvider">
-          <!-- To load PortRealization, which is used in Rule_PortAllocation -->
-          <rule rulename="Rule_FunctionInputPort"/>
-          <!-- To load PortRealization, which is used in Rule_PortAllocation -->
-          <rule rulename="Rule_FunctionOutputPort"/>
-          <!-- To load FunctionalExchangeRealization, which is used in Rule_ConnectionFunctionalExchangeAllocation-->
-          <rule rulename="Rule_FunctionalExchange"/>
-          <!-- To load FunctionRealization, which is used in Rule_ComponentFunctionalAllocation -->
-          <rule rulename="Rule_Function"/>
-          <rule rulename="Rule_FunctionPkg"/>
-      </ruleset>
-      
-      <ruleset
-            context="org.polarsys.capella.core.projection.rules.la"
-            rulepackage="org.polarsys.capella.core.projection.common.rules.la"
-            transfolink="org.polarsys.capella.core.projection.common.ProjectionTraceLinkProvider">
-          <rule rulename="Rule_LogicalComponentPkg"/>
-      </ruleset>
-      
-   <ruleset
-      context="org.polarsys.capella.core.projection.global">
-      
-   	<sharedContext context="org.polarsys.capella.core.projection.scenario.es2es"/>
-   	<sharedContext context="capella.statemachine.rules"/>
-   	<sharedContext context="org.polarsys.capella.core.projection.capability"/>
-      <sharedContext context="org.polarsys.capella.core.projection.functional.realization"/>
-      <sharedContext context="org.polarsys.capella.core.projection.interfaces.definition"/>
-      <sharedContext context="org.polarsys.capella.core.projection.lc2pc.breakdownstrategy"/>
-      <sharedContext context="capella.logicalfunctions.rules"/>
-      <sharedContext context="capella.operationalactivities.rules"/>
-      <sharedContext context="capella.systemfunction.rules"/>
-   </ruleset>
    </extension>
    
    <extension

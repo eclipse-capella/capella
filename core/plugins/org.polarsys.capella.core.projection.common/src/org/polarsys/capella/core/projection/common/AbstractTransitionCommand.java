@@ -41,7 +41,7 @@ public abstract class AbstractTransitionCommand extends AbstractReadWriteCommand
    */
   @Override
   public String getName() {
-    return TransitionMessages.transition_title;
+    return ProjectionMessages.transition_title;
   }
 
   /**
@@ -94,7 +94,7 @@ public abstract class AbstractTransitionCommand extends AbstractReadWriteCommand
           elements.addAll(retrieveModelElements(rootElement));
         }
 
-        progressMonitor.beginTask(getName() + TransitionMessages.transition_processing, elements.size());
+        progressMonitor.beginTask(getName() + ProjectionMessages.transition_processing, elements.size());
 
         // Perform a transition for all retrieved elements
         for (EObject relatedElement : elements) {

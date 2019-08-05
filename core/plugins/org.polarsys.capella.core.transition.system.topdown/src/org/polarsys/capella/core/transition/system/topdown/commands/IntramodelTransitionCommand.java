@@ -108,7 +108,6 @@ public class IntramodelTransitionCommand extends LauncherCommand {
     return ITopDownConstants.TRANSITION_TOPDOWN;
   }
 
-
   @Override
   protected Collection<Object> retrieveRelatedElements(Object element) {
     Object rootElement = element;

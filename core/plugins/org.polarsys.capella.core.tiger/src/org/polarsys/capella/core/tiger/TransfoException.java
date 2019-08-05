@@ -11,8 +11,7 @@
 package org.polarsys.capella.core.tiger;
 
 import org.eclipse.emf.ecore.EClass;
-
-import org.polarsys.capella.core.tiger.helpers.DebugHelper;
+import org.polarsys.capella.common.helpers.EObjectExt;
 
 /**
  */
@@ -37,18 +36,18 @@ public class TransfoException extends Exception {
    * @param throwable
    */
   public TransfoException(String message, org.eclipse.emf.ecore.EObject object, Throwable throwable) {
-    super(message + " while parsing element '" + DebugHelper.elementToString(object) + "'", throwable); //$NON-NLS-1$ //$NON-NLS-2$
+    super(message + " while parsing element '" + EObjectExt.getText(object) + "'", throwable); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   /**
    * @param message
    */
   public TransfoException(String message, org.eclipse.emf.ecore.EObject object, ITransfoRule rule) {
-    super(message + " while running '" + rule.getName() + "' on element '" + DebugHelper.elementToString(object) + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    super(message + " while running '" + rule.getName() + "' on element '" + EObjectExt.getText(object) + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
   }
 
   public TransfoException(String message, org.eclipse.emf.ecore.EObject object) {
-    super(message + " while parsing element '" + DebugHelper.elementToString(object) + "'"); //$NON-NLS-1$ //$NON-NLS-2$
+    super(message + " while parsing element '" + EObjectExt.getText(object) + "'"); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   public TransfoException(EClass object) {

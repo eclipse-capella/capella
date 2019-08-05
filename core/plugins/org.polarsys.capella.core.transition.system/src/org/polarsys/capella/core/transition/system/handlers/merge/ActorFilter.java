@@ -10,19 +10,20 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.system.handlers.merge;
 
-import org.polarsys.capella.core.data.cs.AbstractActor;
-import org.polarsys.capella.core.data.ctx.CtxPackage;
+import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 public class ActorFilter extends EObjectCategoryFilter {
 
   public ActorFilter(IContext context) {
-    super(context, CtxPackage.Literals.ACTOR);
+    super(context, CsPackage.Literals.COMPONENT);
   }
 
   @Override
   public boolean keepElement(Object element) {
-    return element instanceof AbstractActor;
+    return element instanceof Component && (ComponentExt.isActor((Component)element));
   }
 
 }

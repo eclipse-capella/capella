@@ -18,8 +18,8 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
+import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Interface;
@@ -43,7 +43,7 @@ import org.polarsys.capella.core.tiger.ITransfo;
 public class Rule_FunctionalExchange_Interface extends InterfaceGenerationRule {
 
   private final TracingStrategy tracingStrategy = new ExchangeTracing();
-  
+
   /* cache computed information */
   final static String KEY_INTERFACEINFO_MAP = "org.polarsys.capella.core.projection.interfaces.generateInterfaces.INFOMAP"; //$NON-NLS-1$
 
@@ -64,12 +64,11 @@ public class Rule_FunctionalExchange_Interface extends InterfaceGenerationRule {
   }
 
   /**
-   * Find the interface information data for a given exchange. Returns an empty lisf for internal exchanges.
-   * Multiple elements are returned if the related function ports is allocated to multiple distinct component port pairs
-   * and/or the exchange is allocated to multiple distinct component exchanges that connect different pairs of component
-   * ports.
+   * Find the interface information data for a given exchange. Returns an empty lisf for internal exchanges. Multiple
+   * elements are returned if the related function ports is allocated to multiple distinct component port pairs and/or
+   * the exchange is allocated to multiple distinct component exchanges that connect different pairs of component ports.
    */
-  private Collection<InterfaceInfo> getInterfaceInfo(FunctionalExchange exchange){
+  private Collection<InterfaceInfo> getInterfaceInfo(FunctionalExchange exchange) {
 
     Collection<InterfaceInfo> result = new LinkedHashSet<InterfaceInfo>();
 
@@ -77,63 +76,66 @@ public class Rule_FunctionalExchange_Interface extends InterfaceGenerationRule {
     AbstractFunction sourceFunction = FunctionalExchangeExt.getSourceFunction(exchange);
     AbstractFunction targetFunction = FunctionalExchangeExt.getTargetFunction(exchange);
 
-    for (ComponentExchange ce : exchange.getAllocatingComponentExchanges()){
+    for (ComponentExchange ce : exchange.getAllocatingComponentExchanges()) {
       ComponentPort leftPort = (ComponentPort) ce.getSourcePort();
       ComponentPort rightPort = (ComponentPort) ce.getTargetPort();
       if (leftPort != null && rightPort != null && sourceFunction != null && targetFunction != null) {
 
-          ComponentPort providing = null;
-          ComponentPort requiring = null;
+        ComponentPort providing = null;
+        ComponentPort requiring = null;
 
-          Component leftComponent = PortExt.getRelatedComponent(leftPort);
-          Component rightComponent = PortExt.getRelatedComponent(rightPort);
+        Component leftComponent = PortExt.getRelatedComponent(leftPort);
+        Component rightComponent = PortExt.getRelatedComponent(rightPort);
 
-          if (leftComponent.getAllocatedFunctions().contains(sourceFunction) && rightComponent.getAllocatedFunctions().contains(targetFunction)) {
-            requiring = leftPort;
-            providing = rightPort;
-          } else if (rightComponent.getAllocatedFunctions().contains(sourceFunction) && leftComponent.getAllocatedComponents().contains(targetFunction)){
-            requiring = rightPort;
-            providing = leftPort;
+        if (leftComponent.getAllocatedFunctions().contains(sourceFunction)
+            && rightComponent.getAllocatedFunctions().contains(targetFunction)) {
+          requiring = leftPort;
+          providing = rightPort;
+        } else if (rightComponent.getAllocatedFunctions().contains(sourceFunction)
+            && leftComponent.getAllocatedFunctions().contains(targetFunction)) {
+          requiring = rightPort;
+          providing = leftPort;
+        }
+        if (providing != null && requiring != null && providing != requiring) {
+          result.add(new InterfaceInfo(new ComponentPortInterfaceAdapter(providing),
+              new ComponentPortInterfaceAdapter(requiring), tracingStrategy));
+        }
       }
-          if (providing != null && requiring != null && providing != requiring) {
-            result.add(new InterfaceInfo(new ComponentPortInterfaceAdapter(providing), new ComponentPortInterfaceAdapter(requiring), tracingStrategy));
-    }
-  }
     }
 
     FunctionInputPort fip = exchange.getTargetFunctionInputPort();
     FunctionOutputPort fop = exchange.getSourceFunctionOutputPort();
 
-    if (fip != null && fop != null){
+    if (fip != null && fop != null) {
 
       Collection<InterfaceRequirer> allRequiring = analyzePort(sourceFunction, fop, result.isEmpty());
       Collection<InterfaceProvider> allProviding = analyzePort(targetFunction, fip, result.isEmpty());
 
       for (InterfaceRequirer requiring : allRequiring) {
         for (InterfaceProvider providing : allProviding) {
-          if (providing != requiring){
+          if (providing != requiring) {
             result.add(new InterfaceInfo(providing, requiring, tracingStrategy));
+          }
         }
       }
     }
-  }
 
     return result;
 
-      }
-
+  }
 
   @SuppressWarnings("unchecked")
-  private <T> Collection<T> analyzePort(AbstractFunction f, FunctionPort port, boolean createComponentInterfaceAdapter){
+  private <T> Collection<T> analyzePort(AbstractFunction f, FunctionPort port,
+      boolean createComponentInterfaceAdapter) {
     Collection<T> result = new ArrayList<T>();
-    for (ComponentPort p : port.getAllocatorComponentPorts()){
-      result.add((T)new ComponentPortInterfaceAdapter(p));
+    for (ComponentPort p : port.getAllocatorComponentPorts()) {
+      result.add((T) new ComponentPortInterfaceAdapter(p));
     }
-    if (result.isEmpty() && createComponentInterfaceAdapter){
-      for (AbstractFunctionalBlock allocator : f.getAllocationBlocks()){
-        if (allocator instanceof Component){
-          result.add((T)new ComponentInterfaceAdapter((Component) allocator));
-  }
+    if (result.isEmpty() && createComponentInterfaceAdapter) {
+      for (AbstractFunctionalBlock allocator : f.getAllocationBlocks()) {
+        if (allocator instanceof Component) {
+          result.add((T) new ComponentInterfaceAdapter((Component) allocator));
+        }
       }
     }
     return result;
@@ -141,25 +143,30 @@ public class Rule_FunctionalExchange_Interface extends InterfaceGenerationRule {
 
   /* cache already known results here */
   @SuppressWarnings("unchecked")
-  private static Map<FunctionalExchange, InterfaceInfo> getInfoMap(ITransfo transfo){
-    Map<FunctionalExchange, InterfaceInfo> map = (Map<FunctionalExchange, InterfaceInfo>) transfo.get(KEY_INTERFACEINFO_MAP);
-    if (map == null){
+  private static Map<FunctionalExchange, InterfaceInfo> getInfoMap(ITransfo transfo) {
+    Map<FunctionalExchange, InterfaceInfo> map = (Map<FunctionalExchange, InterfaceInfo>) transfo
+        .get(KEY_INTERFACEINFO_MAP);
+    if (map == null) {
       map = new HashMap<FunctionalExchange, InterfaceInfo>();
       transfo.put(KEY_INTERFACEINFO_MAP, map);
-  }
+    }
     return map;
   }
 
-  private void logMultipleInfosFound(EObject exchange, ITransfo transfo){
+  private void logMultipleInfosFound(EObject exchange, ITransfo transfo) {
     // Do not log error in the Information view when this rule is executed during a model validation
-    if(!transfo.isDryRun()){
-      _logger.error(new EmbeddedMessage("Skipping generation for functional exchange " + EObjectLabelProviderHelper.getText(exchange) + " which has inconsistent or multiple port/ce allocations", _logger.getName(), exchange));      
+    if (!transfo.isDryRun()) {
+      _logger.error(new EmbeddedMessage("Skipping generation for functional exchange "
+          + EObjectLabelProviderHelper.getText(exchange) + " which has inconsistent or multiple port/ce allocations",
+          _logger.getName(), exchange));
     }
   }
 
   private void logNoInfosFound(EObject element) {
-    if (_logger.isDebugEnabled()){
-      _logger.debug(new EmbeddedMessage("Skipping generation for internal functional exchange " + EObjectLabelProviderHelper.getText(element), _logger.getName(), element));
+    if (_logger.isDebugEnabled()) {
+      _logger.debug(new EmbeddedMessage(
+          "Skipping generation for internal functional exchange " + EObjectLabelProviderHelper.getText(element),
+          _logger.getName(), element));
     }
   }
 
@@ -170,35 +177,35 @@ public class Rule_FunctionalExchange_Interface extends InterfaceGenerationRule {
    * @param transfo
    * @return
    */
-  public static Interface getInterface(FunctionalExchange exchange, ITransfo transfo){
+  public static Interface getInterface(FunctionalExchange exchange, ITransfo transfo) {
     Interface result = null;
     InterfaceInfo info = getInfoMap(transfo).get(exchange);
     if (info != null) {
       result = info.getInterface(false);
-  }
+    }
     return result;
   }
 
-  InterfaceInfo getInterfaceInfo(FunctionalExchange element, ITransfo transfo){
+  InterfaceInfo getInterfaceInfo(FunctionalExchange element, ITransfo transfo) {
     Map<FunctionalExchange, InterfaceInfo> infomap = getInfoMap(transfo);
     InterfaceInfo result = null;
-    if (infomap.containsKey(element)){
+    if (infomap.containsKey(element)) {
       result = getInfoMap(transfo).get(element);
     } else {
-      Collection<InterfaceInfo> infos = getInterfaceInfo((FunctionalExchange)element);
-      if (infos.size() == 1){
+      Collection<InterfaceInfo> infos = getInterfaceInfo((FunctionalExchange) element);
+      if (infos.size() == 1) {
         result = infos.iterator().next();
         for (FunctionalExchange exchange : result.getFunctionalExchanges()) {
           infomap.put(exchange, result);
-          }
-      } else if (infos.isEmpty()){
+        }
+      } else if (infos.isEmpty()) {
         logNoInfosFound(element); // internal exchange
       } else {
         logMultipleInfosFound(element, transfo); // exchange is somehow allocated multiple times/and/or/inconsistently
-        }
-      infomap.put((FunctionalExchange) element, result);
       }
-    return result;
+      infomap.put((FunctionalExchange) element, result);
     }
+    return result;
+  }
 
 }

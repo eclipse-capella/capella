@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
@@ -42,7 +43,6 @@ import org.polarsys.capella.core.projection.common.handlers.traceability.Traceab
 import org.polarsys.capella.core.projection.common.handlers.transformation.TransformationHandlerHelper;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.TransfoException;
-import org.polarsys.capella.core.tiger.helpers.DebugHelper;
 import org.polarsys.capella.core.tiger.helpers.Query;
 import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
 import org.polarsys.capella.core.tiger.impl.TransfoEngine;
@@ -250,7 +250,7 @@ public abstract class AbstractCommonRule extends TransfoRule implements IRuleTra
     IReadOnlySectionHandler roHandler = CapellaReadOnlyHelper.getReadOnlySectionHandler();
     if ((roHandler != null) && roHandler.isLockedByOthers(container)) {
       throw new AbortExecutionException("the container may be read only. Please check that you are allowed to edit " //$NON-NLS-1$
-                                        + DebugHelper.elementToString(container) + "."); //$NON-NLS-1$
+                                        + EObjectExt.getText(container) + "."); //$NON-NLS-1$
     }
 
     if (container != null) {
@@ -266,7 +266,7 @@ public abstract class AbstractCommonRule extends TransfoRule implements IRuleTra
     IReadOnlySectionHandler roHandler = CapellaReadOnlyHelper.getReadOnlySectionHandler();
     if ((roHandler != null) && roHandler.isLockedByOthers(result_p)) {
       throw new AbortExecutionException("the related element may be read only. Please check that you are allowed to edit " //$NON-NLS-1$
-                                        + DebugHelper.elementToString(result_p) + "."); //$NON-NLS-1$
+                                        + EObjectExt.getText(result_p) + "."); //$NON-NLS-1$
     }
   }
 

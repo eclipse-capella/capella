@@ -21,18 +21,10 @@
       
       <rule rulename="Rule_Component"/>
       <rule rulename="Rule_FunctionalExchange_Interface"/>
-      <rule
-            rulename="Rule_FunctionOutputPort">
-      </rule>
-      <rule
-            rulename="Rule_FunctionInputPort">
-      </rule>
-      <rule
-            rulename="Rule_ComponentExchange_Interface">
-      </rule>
-      <rule
-            rulename="Rule_ComponentPort">
-      </rule>
+      <rule rulename="Rule_FunctionOutputPort"/>
+      <rule rulename="Rule_FunctionInputPort"/>
+      <rule rulename="Rule_ComponentExchange_Interface"/>
+      <rule rulename="Rule_ComponentPort"/>
 
    </ruleset>
    

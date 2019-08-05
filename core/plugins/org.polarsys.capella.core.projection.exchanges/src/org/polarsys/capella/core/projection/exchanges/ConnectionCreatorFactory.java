@@ -12,14 +12,12 @@ package org.polarsys.capella.core.projection.exchanges;
 
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.ctx.Actor;
-import org.polarsys.capella.core.data.ctx.System;
-import org.polarsys.capella.core.data.la.LogicalActor;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.oa.Entity;
-import org.polarsys.capella.core.data.pa.AbstractPhysicalComponent;
-import org.polarsys.capella.core.data.pa.PhysicalActor;
+import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 
 /**
  * This factory creates a <code>IExchangesCreator</code> according to the given sub-type of <code>Component</code>.
@@ -27,30 +25,27 @@ import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 public class ConnectionCreatorFactory {
   /**
    * Creates a <code>IExchangesCreator</code> according to the given <code>Component</code>
-   * @param component_p the component on which you want to automatically create the exchanges
+   * 
+   * @param component_p
+   *          the component on which you want to automatically create the exchanges
    * @return an instance of a sub-class of <code>IExchangesCreator</code>
    */
   public static IExchangesCreator createConnectionCreator(Component component_p, Part part_p) {
     if (component_p instanceof Entity) {
       return new EntityExchangesCreator(component_p);
-    }
-    // logical architecture
-    if ((component_p instanceof LogicalComponent) || (component_p instanceof LogicalActor)) {
+      
+    } else if (component_p instanceof LogicalComponent) {
       return new ComponentExchangesCreator(component_p, part_p);
-    }
-    // System analysis
-    if ((component_p instanceof System) || (component_p instanceof Actor)) {
+      
+    } else if (component_p instanceof SystemComponent) {
       return new ComponentExchangesCreator(component_p, part_p);
-    }
-
-    if (component_p instanceof AbstractPhysicalComponent) {
-      AbstractPhysicalComponent pc = (AbstractPhysicalComponent) component_p;
-      PhysicalComponentNature nature = pc.getNature();
-      if (pc instanceof PhysicalActor) {
+      
+    } else if (component_p instanceof PhysicalComponent) {
+      PhysicalComponent pc = (PhysicalComponent) component_p;
+      if (ComponentExt.isActor(pc)) {
         return new PhysicalActorExchangesCreator(component_p, part_p);
-      }
-
-      if (nature == PhysicalComponentNature.NODE) {
+        
+      } else if (pc.getNature() == PhysicalComponentNature.NODE) {
         return new NodePhysicalComponentExchangesCreator(component_p, part_p);
       }
     }

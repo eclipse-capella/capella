@@ -15,20 +15,18 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentContext;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.information.Partition;
-import org.polarsys.capella.core.data.information.PartitionableElement;
-import org.polarsys.capella.core.data.capellacore.Structure;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.ComponentPkgExt;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.IContextScopeHandler;
@@ -49,7 +47,7 @@ public class ComponentRule extends org.polarsys.capella.core.transition.system.r
 
   @Override
   protected void retrieveComponentAllocations(EObject source_p, List<EObject> result_p, IContext context_p) {
-    if (!(source_p instanceof org.polarsys.capella.core.data.ctx.System)) {
+    if (!(source_p instanceof SystemComponent && BlockArchitectureExt.isRootComponent((SystemComponent)source_p))) {
       super.retrieveComponentAllocations(source_p, result_p, context_p);
 
     } else {
@@ -60,37 +58,20 @@ public class ComponentRule extends org.polarsys.capella.core.transition.system.r
       }
     }
   }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public EClass getTargetType(EObject element_p, IContext context_p) {
-
-    return super.getTargetType(element_p, context_p);
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  protected void attachContainement(EObject element_p, EObject result_p, IContext context_p) {
-    super.attachContainement(element_p, result_p, context_p);
-  }
-
+  
   @Override
   protected void retrieveRepresentingPartitions(EObject source_p, List<EObject> result_p, IContext context_p) {
     Component element = (Component) source_p;
 
-    for (Partition partition : element.getRepresentingPartitions()) {
+    for (Part partition : element.getRepresentingParts()) {
       if (TriStateBoolean.False.equals(CapellaProjectHelper.isReusableComponentsDriven(partition))) {
         result_p.add(partition);
 
       } else if ((partition instanceof Part) && (partition.getType() != null)) {
-        if ((partition.eContainer() != null) && (partition.eContainer() instanceof ComponentContext)) {
+        if ((partition.eContainer() != null) && (ComponentPkgExt.isRootComponentPkg(partition.eContainer()))) {
           result_p.add(partition);
         }
-        if ((partition.getType() instanceof PartitionableElement) && (((PartitionableElement) partition.getType()).getRepresentingPartitions().size() == 1)) {
+        if ((partition.getType() instanceof Component) && (((Component) partition.getType()).getRepresentingParts().size() == 1)) {
           result_p.add(partition);
         }
       }

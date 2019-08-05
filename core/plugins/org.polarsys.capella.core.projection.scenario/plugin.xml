@@ -26,29 +26,7 @@
          <rule rulename="Rule_Event"/>
          <rule rulename="Rule_Message"/>
          <rule rulename="Rule_AbstractEnd"/>
-         
-         <sharedContext context="org.polarsys.capella.core.projection.capability"/>
       
-         <sharedRuleset bundle="org.polarsys.capella.core.projection.common"
-          rulepackage="org.polarsys.capella.core.projection.common.rules.fa">
-          <rule rulename="Rule_Connection"/>
-          <rule rulename="Rule_ConnectionEnd"/>
-          <rule rulename="Rule_FunctionalExchange"/>
-          <rule rulename="Rule_Function"/>
-          <rule rulename="Rule_ConnectionFunctionalExchangeAllocation"/>
-          
-       </sharedRuleset>
-       
-      <sharedContext context="capella.statemachine.rules"/>
-      <sharedContext context="org.polarsys.capella.core.projection.functional.realization"/>
-      
-      <sharedRuleset bundle="org.polarsys.capella.core.projection.common"
-          rulepackage="org.polarsys.capella.core.projection.common.rules.cs">
-          <rule rulename="Rule_Component"/>
-          <rule rulename="Rule_Part"/>
-          <rule rulename="Rule_ComponentFunctionalAllocation"/>
-       </sharedRuleset>
-       
        <sharedRuleset bundle="org.polarsys.capella.core.projection.scenario"
           rulepackage="org.polarsys.capella.core.projection.scenario.uml2.rules">
          <rule rulename="Rule_CombinedFragment"/>
@@ -60,7 +38,7 @@
          <finalizer class="org.polarsys.capella.core.projection.scenario.ScenarioFinalizer"/>
          <finalizer class="org.polarsys.capella.core.projection.scenario.es2es.rules.ScenarioFinalizer"/>
          
-         <sharedContext context="org.polarsys.capella.core.projection.constraint"/>
+         <sharedContext context="org.polarsys.capella.core.projection.scenario.common.rules"/>
          <sharedContext context="org.polarsys.capella.core.projection.scenario.uml2.rules"/>
          <sharedContext context="org.polarsys.capella.core.projection.common.resolver"/>
          
@@ -82,12 +60,12 @@
          <rule rulename="Rule_Message"/>
          <rule rulename="Rule_AbstractEnd"/>
          
-       
          <finalizer class="org.polarsys.capella.core.projection.scenario.ScenarioFinalizer"/>
          <finalizer class="org.polarsys.capella.core.projection.scenario.es2is.rules.Df2IsFinalizer"/>
         
          <sharedContext context="org.polarsys.capella.core.projection.interfaces.generation"/>
          
+         <sharedContext context="org.polarsys.capella.core.projection.scenario.common.rules"/>
          <sharedContext context="org.polarsys.capella.core.projection.scenario.uml2.rules"/>
          <sharedContext context="org.polarsys.capella.core.projection.common.resolver"/>
          
@@ -112,7 +90,7 @@
          <finalizer class="org.polarsys.capella.core.projection.scenario.ScenarioFinalizer"/>
          <finalizer class="org.polarsys.capella.core.projection.scenario.fs2es.rules.FS2CESFinalizer"/>
          
-         <sharedContext context="org.polarsys.capella.core.projection.constraint"/>
+         <sharedContext context="org.polarsys.capella.core.projection.scenario.common.rules"/>
          <sharedContext context="org.polarsys.capella.core.projection.scenario.uml2.rules"/>
          <sharedContext context="org.polarsys.capella.core.projection.common.resolver"/>
          
@@ -136,7 +114,7 @@
          <finalizer class="org.polarsys.capella.core.projection.scenario.ScenarioFinalizer"/>
          <finalizer class="org.polarsys.capella.core.projection.scenario.esf2esb.rules.CESF2CESBFinalizer"/>
          
-         <sharedContext context="org.polarsys.capella.core.projection.constraint"/>
+         <sharedContext context="org.polarsys.capella.core.projection.scenario.common.rules"/>
          <sharedContext context="org.polarsys.capella.core.projection.scenario.uml2.rules"/>
          <sharedContext context="org.polarsys.capella.core.projection.common.resolver"/>
          
@@ -157,7 +135,13 @@
          <rule rulename="Rule_InteractionUse"/>
          
       </ruleset>
-      
+       
+     <ruleset context="org.polarsys.capella.core.projection.scenario.common.rules"
+      	rulepackage="org.polarsys.capella.core.projection.scenario.common.rules">
+          <rule rulename="Rule_Constraint"/>
+          <rule rulename="Rule_OpaqueExpression"/>
+     </ruleset>
+       
    </extension>
    
    <extension

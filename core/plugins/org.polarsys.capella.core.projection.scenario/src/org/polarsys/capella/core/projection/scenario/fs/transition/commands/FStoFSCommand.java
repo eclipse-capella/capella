@@ -14,12 +14,11 @@ import java.util.Collection;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.projection.common.AbstractTransform;
-import org.polarsys.capella.core.projection.common.TransitionMessages;
 import org.polarsys.capella.core.projection.common.TransitionHelper;
 import org.polarsys.capella.core.projection.scenario.FS2FSTransform;
+import org.polarsys.capella.core.projection.scenario.Messages;
 import org.polarsys.capella.core.projection.scenario.es.transition.commands.ESToISCommand;
 
 /**
@@ -40,17 +39,17 @@ public class FStoFSCommand extends ESToISCommand {
       EObject element = rootElements.iterator().next();
 
       if (TransitionHelper.getService().isFS2FSForOASATransitionAvailable(element)) {
-        return TransitionMessages.transitionFS2FS_OAtoSA_label;
+        return Messages.transitionFS2FS_OAtoSA_label;
 
       } else if (TransitionHelper.getService().isFS2FSForLAPATransitionAvailable(element)) {
-        return TransitionMessages.transitionFS2FS_LAtoPA_label;
+        return Messages.transitionFS2FS_LAtoPA_label;
 
       } else if (TransitionHelper.getService().isFS2FSForSALATransitionAvailable(element)) {
-        return TransitionMessages.transitionFS2FS_SAtoLA_label;
+        return Messages.transitionFS2FS_SAtoLA_label;
       }
     }
 
-    return TransitionMessages.transitionFS2FS_label;
+    return Messages.transitionFS2FS_label;
   }
 
   /**

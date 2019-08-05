@@ -13,12 +13,10 @@ package org.polarsys.capella.core.projection.exchanges.commands;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.operations.LongRunningListenersRegistry;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.projection.common.TransitionMessages;
 import org.polarsys.capella.core.projection.common.TransitionHelper;
 import org.polarsys.capella.core.projection.exchanges.ConnectionCreatorFactory;
 
@@ -81,17 +79,17 @@ public class MDGenerateConnectionsCommand extends AbstractReadWriteCommand {
       EObject element = _rootElements.iterator().next();
       if (element != null) {
         if (TransitionHelper.getService().isCommunicationMeansGenerationAvailable(element)) {
-          return TransitionMessages.generateCommunicationMeans_label;
+          return Messages.generateCommunicationMeans_label;
 
         } else if (TransitionHelper.getService().isComponentExchangesGenerationAvailable(element)) {
-          return TransitionMessages.generateComponentExchanges_label;
+          return Messages.generateComponentExchanges_label;
 
         } else if (TransitionHelper.getService().isPhysicalLinksGenerationAvailable(element)) {
-          return TransitionMessages.generatePhysicalLinks_label;
+          return Messages.generatePhysicalLinks_label;
 
         }
       }
     }
-    return TransitionMessages.generatePhysicalLinksComponentExchanges_label;
+    return Messages.generatePhysicalLinksComponentExchanges_label;
   }
 }

@@ -87,7 +87,6 @@ public abstract class AbstractCapellaElementRule extends AbstractUpdateRule {
         }
       }
     }
-
   }
 
   protected boolean isOrderedContainment(EObject element) {

@@ -23,12 +23,6 @@ Export-Package: org.polarsys.capella.core.projection.common,
  org.polarsys.capella.core.projection.common.handlers.traceability,
  org.polarsys.capella.core.projection.common.handlers.transformation,
  org.polarsys.capella.core.projection.common.resolver,
- org.polarsys.capella.core.projection.common.rules,
- org.polarsys.capella.core.projection.common.rules.core,
- org.polarsys.capella.core.projection.common.rules.cs,
- org.polarsys.capella.core.projection.common.rules.fa,
- org.polarsys.capella.core.projection.common.rules.information,
- org.polarsys.capella.core.projection.common.rules.interaction,
- org.polarsys.capella.core.projection.common.rules.oa
+ org.polarsys.capella.core.projection.common.rules
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

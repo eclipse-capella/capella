@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.projection.common.context.IContext;
 import org.polarsys.capella.core.projection.common.handlers.attachment.AttachmentHelper;
-import org.polarsys.capella.core.projection.common.rules.core.Rule_CapellaElement;
+import org.polarsys.capella.core.projection.scenario.common.rules.Rule_CapellaElement;
 
 /**
  */

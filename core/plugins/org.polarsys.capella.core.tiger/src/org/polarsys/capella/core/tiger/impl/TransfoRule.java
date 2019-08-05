@@ -17,7 +17,7 @@ import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
@@ -25,7 +25,6 @@ import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.ITransfoRule;
 import org.polarsys.capella.core.tiger.TransfoException;
-import org.polarsys.capella.core.tiger.helpers.DebugHelper;
 import org.polarsys.capella.core.tiger.helpers.Query;
 import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
@@ -210,7 +209,7 @@ public abstract class TransfoRule implements ITransfoRule, Comparable<TransfoRul
    */
   public final Object transform(EObject element, ITransfo transfo) {
     if (_logger.isDebugEnabled()){
-      _logger.debug("     - Transform " + DebugHelper.elementToString(element) + " by " + getName()); //$NON-NLS-1$ //$NON-NLS-2$
+      _logger.debug("     - Transform " + EObjectExt.getText(element) + " by " + getName()); //$NON-NLS-1$ //$NON-NLS-2$
     }
     return transform_(element, transfo);
   }
@@ -225,7 +224,7 @@ public abstract class TransfoRule implements ITransfoRule, Comparable<TransfoRul
    */
   public final void update(EObject element, ITransfo transfo) {
     if (_logger.isDebugEnabled()){
-      _logger.debug("     - Update " + DebugHelper.elementToString(element) + " by " + getName()); //$NON-NLS-1$ //$NON-NLS-2$
+      _logger.debug("     - Update " + EObjectExt.getText(element) + " by " + getName()); //$NON-NLS-1$ //$NON-NLS-2$
     }
     update_(element, transfo);
   }
@@ -269,7 +268,7 @@ public abstract class TransfoRule implements ITransfoRule, Comparable<TransfoRul
    */
   public final void attach(EObject element, ITransfo transfo) throws TransfoException {
     if (_logger.isDebugEnabled()){
-      _logger.debug("     - Attach " + DebugHelper.elementToString(element) + " by " + getName()); //$NON-NLS-1$ //$NON-NLS-2$
+      _logger.debug("     - Attach " + EObjectExt.getText(element) + " by " + getName()); //$NON-NLS-1$ //$NON-NLS-2$
     }
     attach_(element, transfo);
   }

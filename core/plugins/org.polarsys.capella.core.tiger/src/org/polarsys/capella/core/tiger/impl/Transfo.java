@@ -321,7 +321,7 @@ public class Transfo extends HashMap<String, Object> implements ITransfo {
 
   // Store the specific kind of Link corresponding to the Source and Target
   // Element
-  protected void setSpecificLinkKindFromMap(EClass sourceType, EClass targetType, EClass traceType) {
+  public void setSpecificLinkKindFromMap(EClass sourceType, EClass targetType, EClass traceType) {
     if ((sourceType != null) && (targetType != null) && (traceType != null)) {
       String key = getKey(sourceType, targetType);
       _eSpecificLinkKindMap.put(key, traceType);

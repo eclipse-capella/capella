@@ -18,19 +18,16 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentContext;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
-import org.polarsys.capella.core.data.information.InformationPackage;
-import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.ComponentPkgExt;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.options.OptionsHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.selection.EClassSelectionContext;
@@ -51,12 +48,10 @@ public class PartRule extends org.polarsys.capella.core.transition.system.rules.
   @Override
   public IStatus transformRequired(EObject element_p, IContext context_p) {
 
-    IStatus result = Status.OK_STATUS;
     Part partSrc = (Part) element_p;
-
-    boolean result2 =
+    boolean result =
         CsPackage.Literals.COMPONENT.isSuperTypeOf(TransformationHandlerHelper.getInstance(context_p).getTargetType(partSrc.getAbstractType(), context_p));
-    if (!result2) {
+    if (!result) {
       return new Status(IStatus.WARNING, "a", "TypeTransitionedToPackage");
     }
 
@@ -83,11 +78,10 @@ public class PartRule extends org.polarsys.capella.core.transition.system.rules.
         (BlockArchitecture) TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(root, context_p, CsPackage.Literals.BLOCK_ARCHITECTURE,
             element_p, result_p);
 
-    if (!(element_p.eContainer() instanceof ComponentContext)) {
+    if (!(ComponentPkgExt.isRootComponentPkg(element_p.eContainer()))) {
       return BlockArchitectureExt.getOrCreateSystem(target);
     }
-    return BlockArchitectureExt.getContext(target);
-
+    return BlockArchitectureExt.getComponentPkg(target);
   }
 
   @Override
@@ -98,29 +92,29 @@ public class PartRule extends org.polarsys.capella.core.transition.system.rules.
     boolean allowMultiplePart = TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(part));
 
     //Specific case for the part of the root component. Retrieve the existing part
-    if ((part.getAbstractType() != null) && (part.getAbstractType() instanceof PartitionableElement)) {
-      PartitionableElement type = (PartitionableElement) part.getAbstractType();
-      if ((type != null) && (type.getRepresentingPartitions().size() == 1)) {
+    if ((part.getAbstractType() != null) && (part.getAbstractType() instanceof Component)) {
+      Component type = (Component) part.getAbstractType();
+      if ((type != null) && (type.getRepresentingParts().size() == 1)) {
 
         EObject targetObject =
             TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(
                 type,
                 context_p,
                 new EClassSelectionContext(SelectionContextHandlerHelper.getHandler(context_p).getSelectionContext(context_p,
-                    ITransitionConstants.SELECTION_CONTEXT__TRANSFORMATION), InformationPackage.Literals.PARTITIONABLE_ELEMENT));
+                    ITransitionConstants.SELECTION_CONTEXT__TRANSFORMATION), CsPackage.Literals.COMPONENT));
 
-        if ((targetObject != null) && (targetObject instanceof PartitionableElement)) {
-          PartitionableElement targetCps = (PartitionableElement) targetObject;
-          if ((targetCps.getRepresentingPartitions().size() == 1) && (targetCps.getRepresentingPartitions().get(0) instanceof Part)) {
+        if ((targetObject != null) && (targetObject instanceof Component)) {
+          Component targetCps = (Component) targetObject;
+          if ((targetCps.getRepresentingParts().size() == 1) && (targetCps.getRepresentingParts().get(0) instanceof Part)) {
             if ((part.getAbstractType().eContainer() instanceof BlockArchitecture) || !allowMultiplePart) {
-              return targetCps.getRepresentingPartitions().get(0);
+              return targetCps.getRepresentingParts().get(0);
             }
           }
         }
       }
     }
 
-    if (CtxPackage.Literals.SYSTEM.isSuperTypeOf(targetType) || (part.getAbstractType().eContainer() instanceof BlockArchitecture)) {
+    if (CtxPackage.Literals.SYSTEM_COMPONENT.isSuperTypeOf(targetType) || (part.getAbstractType().eContainer() instanceof BlockArchitecture)) {
       // Retrieve the existing architecture if any
       EObject root = TransformationHandlerHelper.getInstance(context_p).getLevelElement(element_p, context_p);
 

@@ -10,23 +10,15 @@
  *******************************************************************************/
 package org.polarsys.capella.core.projection.interfaces.generateInterfaces;
 
-import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.change.ChangeDescription;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain;
-import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.projection.common.AbstractTransform;
 import org.polarsys.capella.core.projection.common.AbstractTransitionCommand;
-import org.polarsys.capella.core.projection.common.TransitionMessages;
 import org.polarsys.capella.core.projection.interfaces.InterfaceGeneration;
 
 /**
@@ -47,7 +39,7 @@ public class GenerateInterfacesCommand extends AbstractTransitionCommand {
    */
   @Override
   public String getName() {
-    return TransitionMessages.generateInterfaces_label;
+    return Messages.generateInterfaces_label;
   }
 
   @Override
