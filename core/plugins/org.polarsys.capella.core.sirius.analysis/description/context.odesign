@@ -3868,7 +3868,7 @@
               <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:containerView.eContainerOrSelf(diagram::DDiagram)"/>
               <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="aql:containerView.target.getComponentType()"/>
               <subVariables xsi:type="tool_1:AcceleoVariable" name="scope" computationExpression="aql:containerView.getABShowHideActor()"/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="ownedNodeContainer" computationExpression="aql:self.void2Null(containerView.eAllContents()->filter(diagram::DNodeContainer))"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="ownedNodeContainer" computationExpression="aql:self.void2Null(self.getIntersection(containerView.containers->select(container | container.visible).target->filter(cs::Part).getComponentType(),containerView.getABShowHideActor()))"/>
             </viewVariable>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerType">
@@ -3877,29 +3877,21 @@
                   <parameters name="scope" value="aql:scope"/>
                   <parameters name="resultVariable" value="selection"/>
                   <parameters name="wizardMessage" value="aql:'Select Sub Actors to show in ' + container.name + '.'"/>
-                  <parameters name="initialSelection" value="aql:self.void2Null(self.getIntersection(ownedNodeContainer->select(x | x.visible).target,scope))"/>
+                  <parameters name="initialSelection" value="aql:ownedNodeContainer"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selection = 'WIZARD_CANCELED')">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container">
-                    <subModelOperations xsi:type="tool_1:For" expression="aql:self.void2Null(self.makeDiff(self.getIntersection((self.makeUnion(ownedNodeContainer->select(x | x.visible).target, diagram.target)),scope), selection))">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:ownedNodeContainer->select(x | x.target = i)->first()">
-                        <subModelOperations xsi:type="tool_1:DeleteView"/>
+                    <subModelOperations xsi:type="tool_1:For" expression="aql:self.void2Null(self.makeDiff(ownedNodeContainer, containerView.target.getComponentType()))">
+                      <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selection->includes(i))">
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.containers->select(container | (container.target.oclIsKindOf(cs::Part)) and (container.target.getComponentType() = i))->first()">
+                          <subModelOperations xsi:type="tool_1:DeleteView"/>
+                        </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:For" expression="aql:self.void2Null(selection)">
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:ownedNodeContainer->select(x | x.target = i)->size() > 0">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:ownedNodeContainer->select(x | x.target = i).show()->first()"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:ownedNodeContainer->select(x | x.target = i)->size() = 0">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:i">
-                          <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:(self.makeUnion(ownedNodeContainer, containerView))->select(x | (x.target = i.eContainer() or x.target.type = i.eContainer()))->isEmpty()">
-                            <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:containerView.oclIsKindOf(diagram::DDiagram)">
-                              <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']" containerViewExpression="aql:containerView"/>
-                            </subModelOperations>
-                          </subModelOperations>
-                          <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (self.makeUnion(ownedNodeContainer, containerView))->select(x | (x.target = i.eContainer() or x.target.type = i.eContainer()))->isEmpty()">
-                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']" containerViewExpression="aql:(self.makeUnion(ownedNodeContainer, containerView))->select(x | (x.target = i.eContainer() or x.target.type = i.eContainer()))->first()"/>
-                          </subModelOperations>
+                      <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (ownedNodeContainer->includes(i))">
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:i.representingParts->filter(cs::Part)->first()">
+                          <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']" containerViewExpression="aql:containerView"/>
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
