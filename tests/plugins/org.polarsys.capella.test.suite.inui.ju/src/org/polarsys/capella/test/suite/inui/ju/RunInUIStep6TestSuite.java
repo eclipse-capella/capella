@@ -21,6 +21,8 @@ import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.massactions.ju.testsuites.MassActionsTestSuite;
 import org.polarsys.capella.test.odesign.ju.maintestsuite.ODesignTestSuite;
+import org.polarsys.capella.test.table.ju.testsuite.TableTestSuite;
+
 import junit.framework.Test;
 
 /**
@@ -44,6 +46,7 @@ public class RunInUIStep6TestSuite extends BasicTestSuite {
     tests.add(new MassActionsTestSuite());
     tests.add(new FragmentationTestSuite());
     tests.add(new ODesignTestSuite());
+    tests.add(new TableTestSuite());
 
     return tests;
   }

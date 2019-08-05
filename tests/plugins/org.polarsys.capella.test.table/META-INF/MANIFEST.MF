@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Junit tests for Table
+Bundle-SymbolicName: org.polarsys.capella.test.table;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Automatic-Module-Name: org.polarsys.capella.test.table
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Import-Package: org.eclipse.ui.plugin,
+ org.osgi.framework;version="1.9.0"
+Bundle-Activator: org.polarsys.capella.test.table.ju.Activator
+Require-Bundle: org.polarsys.capella.test.framework,
+ org.eclipse.sirius,
+ org.polarsys.capella.test.diagram.common.ju,
+ org.eclipse.sirius.diagram
+Bundle-ActivationPolicy: lazy
+Bundle-Localization: plugin
+Bundle-Vendor: Eclipse.org
+Export-Package: org.polarsys.capella.test.table.ju.testsuite
+
+

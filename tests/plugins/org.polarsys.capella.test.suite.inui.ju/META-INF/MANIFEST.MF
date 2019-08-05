@@ -12,5 +12,6 @@ Require-Bundle: org.polarsys.capella.test.suites.ju,
  org.polarsys.capella.test.platform.ju,
  org.polarsys.capella.test.benchmarks.ju,
  org.polarsys.capella.test.fragmentation,
- org.polarsys.capella.test.odesign
+ org.polarsys.capella.test.odesign,
+ org.polarsys.capella.test.table
 Export-Package: org.polarsys.capella.test.suite.inui.ju
