@@ -14,11 +14,15 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.sequence.ordering.CompoundEventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
+import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement;
+import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement;
+import org.polarsys.capella.core.data.capellacommon.CapellacommonFactory;
 import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.capellacore.Involvement;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.CapabilityInvolvement;
 import org.polarsys.capella.core.data.ctx.CtxFactory;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.AbstractFunctionAbstractCapabilityInvolvement;
@@ -29,6 +33,7 @@ import org.polarsys.capella.core.data.interaction.InteractionFragment;
 import org.polarsys.capella.core.data.interaction.InteractionState;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
+import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.EntityOperationalCapabilityInvolvement;
 import org.polarsys.capella.core.data.oa.OaFactory;
@@ -101,17 +106,18 @@ public class ScenarioContraintsService {
 
     // if we are here, the involvement wasn't found, so we will have to create it.
     Involvement result = null;
-    if (component instanceof org.polarsys.capella.core.data.ctx.SystemComponent) {
+    if (component instanceof SystemComponent) { // System
       result = CtxFactory.eINSTANCE.createCapabilityInvolvement();
       ((Capability) capability).getOwnedCapabilityInvolvements().add((CapabilityInvolvement) result);
     } else if (component instanceof Entity) {
       result = OaFactory.eINSTANCE.createEntityOperationalCapabilityInvolvement();
-      ((OperationalCapability) capability).getOwnedEntityOperationalCapabilityInvolvements()
-          .add((EntityOperationalCapabilityInvolvement) result);
+      ((OperationalCapability) capability).getOwnedEntityOperationalCapabilityInvolvements().add((EntityOperationalCapabilityInvolvement) result);
     } else if (component instanceof AbstractFunction) {
       result = InteractionFactory.eINSTANCE.createAbstractFunctionAbstractCapabilityInvolvement();
-      capability.getOwnedAbstractFunctionAbstractCapabilityInvolvements()
-          .add((AbstractFunctionAbstractCapabilityInvolvement) result);
+      capability.getOwnedAbstractFunctionAbstractCapabilityInvolvements().add((AbstractFunctionAbstractCapabilityInvolvement) result);
+    } else if (component instanceof CapabilityRealizationInvolvedElement) {
+      result = CapellacommonFactory.eINSTANCE.createCapabilityRealizationInvolvement();
+      ((CapabilityRealization) capability).getOwnedCapabilityRealizationInvolvements().add((CapabilityRealizationInvolvement) result);
     }
     if (result != null) {
       result.setInvolved(component);

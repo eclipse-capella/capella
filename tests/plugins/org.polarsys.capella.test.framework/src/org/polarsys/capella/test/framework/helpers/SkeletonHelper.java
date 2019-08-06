@@ -302,7 +302,7 @@ public class SkeletonHelper {
   }
 
   public static void createComponentExchange(String containerId, String elementId, SessionContext context) {
-    createObject(elementId, containerId, FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_COMPONENT_EXCHANGES,
+    createObject(elementId, containerId, CsPackage.Literals.COMPONENT_PKG__OWNED_COMPONENT_EXCHANGES,
         FaPackage.Literals.COMPONENT_EXCHANGE, elementId, context);
   }
 

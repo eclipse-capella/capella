@@ -16395,7 +16395,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="org.polarsys.capella.core.sirius.analysis.delete.RemoveInstanceRoles" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.delete.RemoveInstanceRoles">
                     <parameters name="result" value="aql:self.void2Null(result)"/>
-                    <parameters name="current" value="aql:self.void2Null(containerView.eContainerOrSelf(diagram::DDiagram).eAllContents(viewpoint::DSemanticDecorator).target->filter(interaction::InstanceRole)->select(x | x.representedInstance.abstractType->filter(cs::Component)->filter(c | c.isActor())->size() > 0))"/>
+                    <parameters name="current" value="aql:self.void2Null(containerView.eContainerOrSelf(diagram::DDiagram).eAllContents(viewpoint::DSemanticDecorator).target->filter(interaction::InstanceRole)->select(x | x.representedInstance.abstractType->filter(cs::Component)->select(c | c.isActor())->size() > 0))"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
