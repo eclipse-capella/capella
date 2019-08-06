@@ -37,6 +37,7 @@ import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
+import org.polarsys.capella.core.data.la.LogicalComponentPkg;
 
 public class LogicalComponentItemContribution implements IMDEMenuItemContribution {
   /**
@@ -46,9 +47,10 @@ public class LogicalComponentItemContribution implements IMDEMenuItemContributio
       EStructuralFeature feature) {
     if (createdElement instanceof LogicalComponent) {
       if (((Component) createdElement).getRepresentingParts().size() == 0) {
-        EObject partOwner =
-            (containerElement instanceof LogicalComponent) ? containerElement : EcoreUtil2.getFirstContainer(containerElement,
-                LaPackage.Literals.LOGICAL_COMPONENT);
+        EObject partOwner = null;
+        if (containerElement instanceof LogicalComponent || containerElement instanceof LogicalComponentPkg) {
+          partOwner = containerElement;
+        }
         if (partOwner == null) {
           EObject arch = EcoreUtil2.getFirstContainer(containerElement, LaPackage.Literals.LOGICAL_ARCHITECTURE);
           if (arch != null) {

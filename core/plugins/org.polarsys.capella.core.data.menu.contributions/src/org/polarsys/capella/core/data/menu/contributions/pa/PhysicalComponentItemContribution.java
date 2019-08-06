@@ -36,6 +36,7 @@ import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
+import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 
 public class PhysicalComponentItemContribution implements IMDEMenuItemContribution {
@@ -133,8 +134,10 @@ public class PhysicalComponentItemContribution implements IMDEMenuItemContributi
   }
 
   private EObject getPartOwner(ModelElement container) {
-    EObject partOwner = (container instanceof PhysicalComponent) ? container
-        : EcoreUtil2.getFirstContainer(container, PaPackage.Literals.PHYSICAL_COMPONENT);
+    EObject partOwner = null;
+    if (container instanceof PhysicalComponent || container instanceof PhysicalComponentPkg) {
+      partOwner = container;
+    }
     if (partOwner == null) {
       EObject arch = EcoreUtil2.getFirstContainer(container, PaPackage.Literals.PHYSICAL_ARCHITECTURE);
       if (arch != null) {

@@ -37,6 +37,7 @@ import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.ConfigurationItemKind;
+import org.polarsys.capella.core.data.epbs.ConfigurationItemPkg;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.epbs.EpbsPackage;
 
@@ -48,9 +49,10 @@ public class ConfigurationItemItemContribution implements IMDEMenuItemContributi
   public Command executionContribution(final EditingDomain editingDomain, ModelElement containerElement, final ModelElement createdElement,
       EStructuralFeature feature) {
     if (createdElement instanceof ConfigurationItem) {
-      EObject partOwner =
-          (containerElement instanceof ConfigurationItem) ? containerElement : EcoreUtil2.getFirstContainer(containerElement,
-              EpbsPackage.Literals.CONFIGURATION_ITEM);
+      EObject partOwner = null;
+      if (containerElement instanceof ConfigurationItem || containerElement instanceof ConfigurationItemPkg) {
+        partOwner = containerElement;
+      }
       if (partOwner == null) {
         EObject arch = EcoreUtil2.getFirstContainer(containerElement, EpbsPackage.Literals.EPBS_ARCHITECTURE);
         if (arch != null) {

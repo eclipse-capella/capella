@@ -37,6 +37,7 @@ import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
+import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
 
 public class SystemComponentItemContribution implements IMDEMenuItemContribution {
   /**
@@ -46,9 +47,10 @@ public class SystemComponentItemContribution implements IMDEMenuItemContribution
       EStructuralFeature feature) {
     if (createdElement instanceof SystemComponent) {
       if (((Component) createdElement).getRepresentingParts().size() == 0) {
-        EObject partOwner =
-            (containerElement instanceof SystemComponent) ? containerElement : EcoreUtil2.getFirstContainer(containerElement,
-                CtxPackage.Literals.SYSTEM_COMPONENT);
+        EObject partOwner = null;
+        if (containerElement instanceof SystemComponent || containerElement instanceof SystemComponentPkg) {
+          partOwner = containerElement;
+        }
         if (partOwner == null) {
           EObject arch = EcoreUtil2.getFirstContainer(containerElement, CtxPackage.Literals.SYSTEM_ANALYSIS);
           if (arch != null) {

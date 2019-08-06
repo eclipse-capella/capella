@@ -35,6 +35,7 @@ import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.oa.Entity;
+import org.polarsys.capella.core.data.oa.EntityPkg;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 
@@ -54,8 +55,10 @@ public class EntityItemContribution implements IMDEMenuItemContribution {
       EStructuralFeature feature) {
     if (createdElement instanceof Entity) {
       if (((Component) createdElement).getRepresentingParts().size() == 0) {
-        EObject partOwner =
-            (containerElement instanceof Entity) ? containerElement : EcoreUtil2.getFirstContainer(containerElement, OaPackage.Literals.ENTITY);
+        EObject partOwner = null;
+        if (containerElement instanceof Entity || containerElement instanceof EntityPkg) {
+          partOwner = containerElement;
+        }
         if (partOwner == null) {
           EObject pkg = EcoreUtil2.getFirstContainer(containerElement, OaPackage.Literals.OPERATIONAL_ANALYSIS);
           if (pkg != null) {
