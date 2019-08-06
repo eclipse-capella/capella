@@ -37,7 +37,7 @@
         id="dddf2791-2aad-4aa3-86a0-af20b0a8a195" name="REVIEWED_OK"/>
   </ownedEnumerationPropertyTypes>
   <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue" id="829c7043-54c5-42f4-807d-18f8ca504130"
-      key="projectApproach" value="ReusableComponents"/>
+      key="projectApproach" value="SingletonComponents"/>
   <ownedModelRoots xsi:type="org.polarsys.capella.core.data.capellamodeller:SystemEngineering"
       id="12981ad5-0f48-43f8-9dc3-bf98afc7e472" name="XABDiagrams">
     <ownedArchitectures xsi:type="org.polarsys.capella.core.data.oa:OperationalAnalysis"
