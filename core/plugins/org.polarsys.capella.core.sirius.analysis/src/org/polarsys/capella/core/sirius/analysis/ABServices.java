@@ -1341,8 +1341,12 @@ public class ABServices {
       return false;
     }
 
-    // Deploy Behavior is allowed on all nature (UNSET too)
-
+    // Deploy Behavior is only allowed on BEHAVIOR nodes
+    PhysicalComponent pcType = (PhysicalComponent) type;
+    if (!PhysicalComponentNature.BEHAVIOR.equals(pcType.getNature())) {
+      return false;
+    }
+    
     return true;
   }
 

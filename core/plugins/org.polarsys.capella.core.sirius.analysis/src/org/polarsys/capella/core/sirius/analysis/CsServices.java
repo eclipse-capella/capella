@@ -1476,7 +1476,7 @@ public class CsServices {
   }
   
   /**
-   * Gets the iB target.
+   * Gets the iB target (used for Interfaces, ExchangeItems, etc.).
    */
   public EObject getIBTarget(DSemanticDecorator decorator) {
     if (decorator instanceof DDiagram) {
@@ -1485,13 +1485,15 @@ public class CsServices {
           return getParentContainer(decorator.getTarget());
         }
       }
+      if (decorator.getTarget() instanceof ComponentPkg)
+        return getParentContainer(decorator.getTarget());
       return decorator.getTarget();
     }
     return decorator.getTarget();
   }
 
   /**
-   * Gets the iB target.
+   * Gets the iB target (used for Components, Actors).
    * 
    * @param decorator
    *          the graphical element isActorContext whether we are looking the target for an actor
@@ -1846,7 +1848,7 @@ public class CsServices {
   public Collection<Interface> getSubDefinedInterfaces(Component component) {
     return InterfacePkgExt.getAllInterfaces(component.getOwnedInterfacePkg());
   }
-
+  
   /**
    * Returns the list of interfaces defined into the architecture.
    */
@@ -2045,17 +2047,7 @@ public class CsServices {
    * Returns sub components of the component.
    */
   public List<Component> getAllSubDefinedComponents(Component component) {
-    List<Component> comps = new ArrayList<>();
-    LinkedList<Component> subs = new LinkedList<>();
-
-    subs.add(component);
-    while (!subs.isEmpty()) {
-      Component sub = subs.removeFirst();
-      List<Component> internal = ComponentExt.getSubDefinedComponents(sub);
-      comps.addAll(internal);
-      subs.addAll(internal);
-    }
-    return comps;
+    return ComponentExt.getAllSubDefinedComponents(component);
   }
 
   /**

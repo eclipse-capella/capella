@@ -10,13 +10,13 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis.queries.csServices;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.exceptions.QueryException;
 import org.polarsys.capella.common.queries.filters.IQueryFilter;
@@ -27,7 +27,6 @@ import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
-import org.polarsys.capella.core.model.helpers.ComponentPkgExt;
 import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.model.helpers.queries.filters.RemoveActorsFilter;
 import org.polarsys.capella.core.sirius.analysis.CsServices;
@@ -35,35 +34,26 @@ import org.polarsys.capella.core.sirius.analysis.CsServices;
 public class GetIBShowHideComponent extends AbstractQuery {
 
   @Override
-  public List<Object> execute(Object input_p, IQueryContext context_p) throws QueryException {
-    DSemanticDecorator decorator_p = (DSemanticDecorator) input_p;
-    List<Component> components = new ArrayList<Component>();
+  public List<Object> execute(Object input, IQueryContext context) throws QueryException {
+    DSemanticDecorator decorator = (DSemanticDecorator) input;
 
-    if (!(decorator_p.getTarget() instanceof Component || decorator_p.getTarget() instanceof ComponentPkg)) {
+    if (!(decorator.getTarget() instanceof Component || decorator.getTarget() instanceof ComponentPkg)) {
       return Collections.emptyList();
     }
-    EObject target = CsServices.getService().getIBTarget(decorator_p);
-    if (target instanceof ComponentPkg) {
-      components.addAll(PartExt.getComponentsOfParts(((ComponentPkg) target).getOwnedParts()));
-      target = ComponentPkgExt.getParentComponent((ComponentPkg) target);
-    }
-    if (decorator_p instanceof DDiagram) {
-      if (target instanceof Component) {
-        components.addAll(CsServices.getService().getBrothersComponents((Component) target));
-        components.addAll(ComponentExt.getSubDefinedComponents((Component) target));
-        components.addAll(ComponentExt.getSubUsedComponents((Component) target));
-        components.add((Component) target);
 
-      } else if (target instanceof BlockArchitecture) {
-        components.addAll(ComponentExt.getSubDefinedComponents((BlockArchitecture) target));
-      }
+    ModelElement target = (ModelElement) decorator.getTarget();
+    boolean fromDiagram = decorator instanceof DDiagram;
+
+    if (fromDiagram) {
+      BlockArchitecture architecture = ComponentExt.getRootBlockArchitecture(target);
+      return filter(CsServices.getService().getAllSubDefinedComponents(architecture)).stream()
+          .collect(Collectors.toList());
     } else if (target instanceof Component) {
-      components = new ArrayList<Component>();
-      components.addAll(ComponentExt.getSubDefinedComponents((Component) target));
-      components.addAll(ComponentExt.getSubUsedComponents((Component) target));
+      return filter(PartExt.getComponentsOfParts(ComponentExt.getAllSubUsedParts((Component) target, false))).stream()
+          .collect(Collectors.toList());
     }
-    components = filter(components);
-    return (List) new ArrayList<Component>(components);
+
+    return Collections.emptyList();
   }
 
   protected List<Component> filter(List<Component> components) {

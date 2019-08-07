@@ -533,7 +533,7 @@ public class DragAndDropServices {
 
   public boolean isValidIDDndComponentFromDiagram(EObject element, DSemanticDecorator newViewContainer,
       EObject oldContainer) {
-    EObject newContainer = CsServices.getService().getIBTarget(newViewContainer);
+    EObject newContainer = CsServices.getService().getIBTarget(newViewContainer, false);
     if (ComponentExt.isActor(element)) {
       return false;
     }

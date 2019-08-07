@@ -19,8 +19,10 @@ import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.exceptions.QueryException;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.PartExt;
 
 /**
  */
@@ -38,6 +40,10 @@ public class GetBrotherComponents extends AbstractQuery {
           if (containerPart.getType() instanceof Component) {
             components.add((Component) containerPart.getType());
           }
+        }
+      } else {
+        if (part.eContainer() instanceof ComponentPkg) {
+          components.addAll(PartExt.getComponentsOfParts(((ComponentPkg) part.eContainer()).getOwnedParts())); 
         }
       }
     }

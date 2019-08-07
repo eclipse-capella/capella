@@ -1623,7 +1623,21 @@ public class ComponentExt {
     }
     return elements;
   }
+  
+  public static List<Component> getAllSubDefinedComponents(Component component) {
+    List<Component> comps = new ArrayList<>();
+    LinkedList<Component> subs = new LinkedList<>();
 
+    subs.add(component);
+    while (!subs.isEmpty()) {
+      Component sub = subs.removeFirst();
+      List<Component> internal = getSubDefinedComponents(sub);
+      comps.addAll(internal);
+      subs.addAll(internal);
+    }
+    return comps;
+  }
+  
   /**
    * Returns components defined into the component.
    */
@@ -1634,22 +1648,22 @@ public class ComponentExt {
     } else if (object instanceof SystemComponent) {
       elements.addAll(((SystemComponent) object).getOwnedSystemComponents());
       for (SystemComponentPkg pkg : ((SystemComponent) object).getOwnedSystemComponentPkgs()) {
-        elements.addAll(ComponentPkgExt.getOwnedComponents(pkg));
+        elements.addAll(ComponentPkgExt.getSubDefinedComponents(pkg));
       }
     } else if (object instanceof LogicalComponent) {
       elements.addAll(((LogicalComponent) object).getOwnedLogicalComponents());
       for (LogicalComponentPkg pkg : ((LogicalComponent) object).getOwnedLogicalComponentPkgs()) {
-        elements.addAll(ComponentPkgExt.getOwnedComponents(pkg));
+        elements.addAll(ComponentPkgExt.getSubDefinedComponents(pkg));
       }
     } else if (object instanceof PhysicalComponent) {
       elements.addAll(((PhysicalComponent) object).getOwnedPhysicalComponents());
       for (PhysicalComponentPkg pkg : ((PhysicalComponent) object).getOwnedPhysicalComponentPkgs()) {
-        elements.addAll(ComponentPkgExt.getOwnedComponents(pkg));
+        elements.addAll(ComponentPkgExt.getSubDefinedComponents(pkg));
       }
     } else if (object instanceof ConfigurationItem) {
       elements.addAll(((ConfigurationItem) object).getOwnedConfigurationItems());
       for (ConfigurationItemPkg pkg : ((ConfigurationItem) object).getOwnedConfigurationItemPkgs()) {
-        elements.addAll(ComponentPkgExt.getOwnedComponents(pkg));
+        elements.addAll(ComponentPkgExt.getSubDefinedComponents(pkg));
       }
     }
 
@@ -1667,9 +1681,14 @@ public class ComponentExt {
    */
   public static List<Component> getSubDefinedComponents(BlockArchitecture blockArchitecture) {
     ComponentPkg componentPkg = BlockArchitectureExt.getComponentPkg(blockArchitecture, false);
-    return ComponentPkgExt.getOwnedComponents(componentPkg);
+    return ComponentPkgExt.getSubDefinedComponents(componentPkg);
   }
 
+  public static List<Component> getSubUsedComponents(BlockArchitecture blockArchitecture) {
+    ComponentPkg componentPkg = BlockArchitectureExt.getComponentPkg(blockArchitecture, false);
+    return ComponentPkgExt.getSubUsedComponents(componentPkg);
+  }
+  
   /**
    * Returns sub components of the component which are used (have a part)
    */

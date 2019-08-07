@@ -57,7 +57,7 @@ public class GetAvailable_AbstractStateProperties extends AbstractQuery {
         eContainer = eContainer.eContainer();
       }
       if ((eContainer instanceof ComponentPkg) && (inputElement instanceof State)) {
-        for (Component component : ComponentPkgExt.getOwnedComponents((ComponentPkg) eContainer)) {
+        for (Component component : ComponentPkgExt.getSubDefinedComponents((ComponentPkg) eContainer)) {
           availableElements.addAll(getElementsFromComponentAndSubComponents((Component) component));
         }
       }

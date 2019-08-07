@@ -23,7 +23,7 @@ public class ComponentPkgExt {
    * @param componentPkg
    * @return the first-level Components in this package and its sub-packages
    */
-  public static List<Component> getOwnedComponents(ComponentPkg componentPkg) {
+  public static List<Component> getSubDefinedComponents(ComponentPkg componentPkg) {
     List<Component> components = new ArrayList<>();
     if (componentPkg == null) {
       return Collections.emptyList();
@@ -32,43 +32,44 @@ public class ComponentPkgExt {
       EntityPkg entityPkg = (EntityPkg) componentPkg;
       components.addAll(entityPkg.getOwnedEntities());
       for (EntityPkg pkg : entityPkg.getOwnedEntityPkgs()) {
-        components.addAll(getOwnedComponents(pkg));
+        components.addAll(getSubDefinedComponents(pkg));
       }
     } else if (componentPkg instanceof SystemComponentPkg) {
       SystemComponentPkg systemComponentPkg = (SystemComponentPkg) componentPkg;
       components.addAll(systemComponentPkg.getOwnedSystemComponents());
       for (SystemComponentPkg pkg : systemComponentPkg.getOwnedSystemComponentPkgs()) {
-        components.addAll(getOwnedComponents(pkg));
+        components.addAll(getSubDefinedComponents(pkg));
       }
     } else if (componentPkg instanceof LogicalComponentPkg) {
       LogicalComponentPkg logicalComponentPkg = (LogicalComponentPkg) componentPkg;
       components.addAll(logicalComponentPkg.getOwnedLogicalComponents());
       for (LogicalComponentPkg pkg : logicalComponentPkg.getOwnedLogicalComponentPkgs()) {
-        components.addAll(getOwnedComponents(pkg));
+        components.addAll(getSubDefinedComponents(pkg));
       }
     } else if (componentPkg instanceof PhysicalComponentPkg) {
       PhysicalComponentPkg physicalComponentPkg = (PhysicalComponentPkg) componentPkg;
       components.addAll(physicalComponentPkg.getOwnedPhysicalComponents());
       for (PhysicalComponentPkg pkg : physicalComponentPkg.getOwnedPhysicalComponentPkgs()) {
-        components.addAll(getOwnedComponents(pkg));
+        components.addAll(getSubDefinedComponents(pkg));
       }
     } else if (componentPkg instanceof ConfigurationItemPkg) {
       ConfigurationItemPkg configurationItemComponentPkg = (ConfigurationItemPkg) componentPkg;
       components.addAll(configurationItemComponentPkg.getOwnedConfigurationItems());
       for (ConfigurationItemPkg pkg : configurationItemComponentPkg.getOwnedConfigurationItemPkgs()) {
-        components.addAll(getOwnedComponents(pkg));
+        components.addAll(getSubDefinedComponents(pkg));
       }
     }
+    
     return components;
   }
 
   public static List<Component> getAllActors(ComponentPkg componentPkg) {
-    return getOwnedComponents(componentPkg).stream().filter(comp -> ComponentExt.isActor(comp))
+    return getSubDefinedComponents(componentPkg).stream().filter(comp -> ComponentExt.isActor(comp))
         .collect(Collectors.toList());
   }
 
   public static List<Component> getSubUsedComponents(ComponentPkg componentPkg) {
-    return PartExt.getComponentsOfParts(componentPkg.getOwnedParts());
+    return PartExt.getComponentsOfParts(getSubParts(componentPkg));
   }
 
   /**

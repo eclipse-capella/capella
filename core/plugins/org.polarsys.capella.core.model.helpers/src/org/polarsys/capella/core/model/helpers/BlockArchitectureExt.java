@@ -799,7 +799,7 @@ public class BlockArchitectureExt {
    * @return List<Component>
    */
   public static List<Component> getFirstComponents(BlockArchitecture architecture) {
-    return ComponentPkgExt.getOwnedComponents(getComponentPkg(architecture, false));
+    return ComponentPkgExt.getSubDefinedComponents(getComponentPkg(architecture, false));
   }
 
   /**

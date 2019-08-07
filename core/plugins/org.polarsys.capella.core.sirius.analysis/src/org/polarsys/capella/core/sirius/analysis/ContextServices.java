@@ -177,7 +177,7 @@ public class ContextServices {
     EObject target = current.getTarget();
     ComponentPkg componentPkg = BlockArchitectureExt
         .getComponentPkg(BlockArchitectureExt.getRootBlockArchitecture(target), false);
-    result.addAll(ComponentPkgExt.getOwnedComponents(componentPkg).stream().filter(c -> !ComponentExt.isActor(c))
+    result.addAll(ComponentPkgExt.getSubDefinedComponents(componentPkg).stream().filter(c -> !ComponentExt.isActor(c))
         .collect(Collectors.toList()));
     return result;
   }

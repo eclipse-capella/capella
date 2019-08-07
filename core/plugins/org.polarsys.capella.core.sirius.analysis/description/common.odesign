@@ -7671,7 +7671,7 @@
             <viewVariable name="containerView">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="ownedNodes" computationExpression="aql:self.void2Null(containerView.getOwnedContainers())"/>
               <subVariables xsi:type="tool_1:AcceleoVariable" name="visibleTargets" computationExpression="aql:self.void2Null(ownedNodes->select(ownedNode | ownedNode.visible).target)"/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="scope" computationExpression="aql:containerView.target.getCCEIShowHideComponent()"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="scope" computationExpression="aql:containerView.target.getCCEIShowHideComponent()->select(c | not c.isActor())"/>
               <subVariables xsi:type="tool_1:AcceleoVariable" name="message" computationExpression="Select Components to show."/>
               <subVariables xsi:type="tool_1:AcceleoVariable" name="context" computationExpression="aql:containerView.target"/>
             </viewVariable>
@@ -7715,7 +7715,7 @@
             <viewVariable name="containerView">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="ownedNodes" computationExpression="aql:self.void2Null(containerView.getOwnedContainers())"/>
               <subVariables xsi:type="tool_1:AcceleoVariable" name="visibleTargets" computationExpression="aql:self.void2Null(ownedNodes->select(ownedNode | ownedNode.visible).target)"/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="scope" computationExpression="aql:containerView.target.getCCEIShowHideActors()"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="scope" computationExpression="aql:containerView.target.getCCEIShowHideActors()->select(c | c.isActor())"/>
               <subVariables xsi:type="tool_1:AcceleoVariable" name="message" computationExpression="Select Interfaces to show."/>
               <subVariables xsi:type="tool_1:AcceleoVariable" name="context" computationExpression="aql:containerView.target"/>
             </viewVariable>
@@ -10298,7 +10298,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates an Interface" name="interface" label="Interface" precondition="aql:not (not (containerView.oclIsKindOf(diagram::DDiagram)) and container.oclIsKindOf(cs::Component) and container.isActor()) and not (containerView.getViewDiagram().target.oclIsKindOf(epbs::ConfigurationItem)) and container.oclIsKindOf(cs::Component)" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Interface']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Interface.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates an Interface" name="interface" label="Interface" precondition="aql:not (containerView.getViewDiagram().target.oclIsKindOf(epbs::ConfigurationItem))" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Interface']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Interface.gif">
             <variable name="container"/>
             <viewVariable name="containerView">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="target" computationExpression="aql:containerView.getIBTarget()"/>
@@ -10909,7 +10909,7 @@
             <tools xsi:type="tool:ContainerCreationDescription" documentation="Insert/Remove Logical / Physical Component. Create or delete graphical objects representing existing Components. Removing a Component graphical object from a diagram does not delete the Component from the model. This tool does not modify the semantic model." name="components" label="Components" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <variable name="container"/>
               <viewVariable name="containerView">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="ownedNodes" computationExpression="aql:self.void2Null(containerView.getOwnedContainers())"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="ownedNodes" computationExpression="aql:self.void2Null(containerView.eAllContents()->filter(diagram::DNodeContainer))"/>
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="visibleTargets" computationExpression="aql:self.void2Null(ownedNodes->select(ownedNode | ownedNode.visible).target)"/>
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="scope" computationExpression="aql:containerView.getIBShowHideComponent()"/>
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="message" computationExpression="aql:'Select Components to show in ' + container.name + '.'"/>
@@ -10970,7 +10970,7 @@
             <tools xsi:type="tool:ContainerCreationDescription" documentation="Insert/Remove Sytem / Logical / Physical Actors. Create or delete graphical objects representing existing Actors. Removing a Component graphical object from a diagram does not delete the Actor from the model. This tool does not modify the semantic model." name="actors" label="Actors" precondition="aql:containerView.oclIsKindOf(diagram::DDiagram)" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <variable name="container"/>
               <viewVariable name="containerView">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="ownedNodes" computationExpression="aql:self.void2Null(containerView.getOwnedContainers())"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="ownedNodes" computationExpression="aql:self.void2Null(containerView.eAllContents()->filter(diagram::DNodeContainer))"/>
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="visibleTargets" computationExpression="aql:self.void2Null(ownedNodes->select(ownedNode | ownedNode.visible).target)"/>
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="scope" computationExpression="aql:containerView.getIBShowHideActor()"/>
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="message" computationExpression="aql:'Select Interfaces to show in ' + container.name + '.'"/>
@@ -11081,7 +11081,7 @@
             </tools>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="ShowHide ExchangeItemRelated">
-            <tools xsi:type="tool:ContainerCreationDescription" documentation="Insert/Remove Interfaces. Removing an Interface graphical object from a diagram does not delete the Interface from the model. This tool does not modify the semantic model." name="interfaces" label="Interfaces" precondition="aql:container.oclIsKindOf(cs::Component)" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Interface']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool:ContainerCreationDescription" documentation="Insert/Remove Interfaces. Removing an Interface graphical object from a diagram does not delete the Interface from the model. This tool does not modify the semantic model." name="interfaces" label="Interfaces" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Interface']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <variable name="container"/>
               <viewVariable name="containerView">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="ownedNodes" computationExpression="aql:containerView.getViewDiagram().getAllAbstractNodes()"/>

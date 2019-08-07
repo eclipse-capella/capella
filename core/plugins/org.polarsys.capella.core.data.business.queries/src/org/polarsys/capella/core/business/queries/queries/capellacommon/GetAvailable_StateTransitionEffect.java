@@ -57,7 +57,7 @@ public class GetAvailable_StateTransitionEffect extends AbstractQuery {
         availableElements.addAll(getElementsFromComponentAndSubComponents((Component) eContainer));
       }
       if ((eContainer instanceof ComponentPkg) && (inputElement instanceof StateTransition)) {
-        for (Component component: ComponentPkgExt.getOwnedComponents((ComponentPkg)eContainer)) {
+        for (Component component: ComponentPkgExt.getSubDefinedComponents((ComponentPkg)eContainer)) {
           availableElements.addAll(getElementsFromComponentAndSubComponents((Component) component));
         }
       }

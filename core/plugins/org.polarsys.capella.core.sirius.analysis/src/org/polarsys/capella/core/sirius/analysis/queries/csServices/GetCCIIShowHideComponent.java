@@ -51,7 +51,7 @@ public class GetCCIIShowHideComponent extends AbstractQuery {
       components.addAll(ComponentExt.getSubDefinedComponents((Component) target));
       components.addAll(ComponentExt.getSubUsedComponents((Component) target));
     } else if (target instanceof ComponentPkg) {
-      components.addAll(ComponentPkgExt.getOwnedComponents((ComponentPkg) target));
+      components.addAll(ComponentPkgExt.getSubDefinedComponents((ComponentPkg) target));
       components.addAll(ComponentPkgExt.getSubUsedComponents((ComponentPkg) target));
     }
 
