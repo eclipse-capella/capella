@@ -20,6 +20,7 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.polarsys.capella.common.menu.dynamic.util.DynamicCommandParameter;
+import org.polarsys.capella.core.data.ctx.CtxFactory;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.gen.edit.decorators.ItemProviderAdapterDecorator;
@@ -46,6 +47,14 @@ public class SystemComponentItemProviderDecorator extends ItemProviderAdapterDec
       DynamicCommandParameter descriptor = new DynamicCommandParameter(null,
           CtxPackage.Literals.SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENTS, ComponentExt.createSystemActor(),
           Messages.CreationMenuLabel_SystemActor);
+
+      newChildDescriptors.add(descriptor);
+    }
+
+    if (ComponentExt.isActor(container)) {
+      DynamicCommandParameter descriptor = new DynamicCommandParameter(null,
+          CtxPackage.Literals.SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENT_PKGS,
+          CtxFactory.eINSTANCE.createSystemComponentPkg(), Messages.CreationMenuLabel_SystemComponentPkg);
 
       newChildDescriptors.add(descriptor);
     }

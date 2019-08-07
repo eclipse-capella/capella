@@ -1636,8 +1636,7 @@ public class ComponentExt {
       for (SystemComponentPkg pkg : ((SystemComponent) object).getOwnedSystemComponentPkgs()) {
         elements.addAll(ComponentPkgExt.getOwnedComponents(pkg));
       }
-    }
-    else if (object instanceof LogicalComponent) {
+    } else if (object instanceof LogicalComponent) {
       elements.addAll(((LogicalComponent) object).getOwnedLogicalComponents());
       for (LogicalComponentPkg pkg : ((LogicalComponent) object).getOwnedLogicalComponentPkgs()) {
         elements.addAll(ComponentPkgExt.getOwnedComponents(pkg));
@@ -2754,7 +2753,7 @@ public class ComponentExt {
     }
     if (target instanceof Component) {
       Component targetComponent = (Component) target;
-      return !targetComponent.isHuman() && (!(targetComponent instanceof SystemComponent) || isActor(targetComponent));
+      return !(targetComponent.isHuman() || targetComponent instanceof SystemComponent);
 
     } else if (target instanceof ComponentPkg) {
       ComponentPkg targetComponentPkg = (ComponentPkg) target;

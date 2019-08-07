@@ -26,6 +26,8 @@ public class Messages extends NLS {
   public static String CreationMenuLabel_PhysicalComponent_IC;
   public static String CreationMenuLabel_PhysicalComponent_BC;
 
+  public static String CreationMenuLabel_SystemComponentPkg;
+
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);
