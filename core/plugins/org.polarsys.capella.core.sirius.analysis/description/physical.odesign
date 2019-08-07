@@ -63,9 +63,9 @@
         </create>
       </intersection>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Physical Components - Requirements" domainClass="PhysicalArchitecture">
-      <ownedLineMappings name="Physical Component 2" domainClass="PhysicalComponent" semanticCandidatesExpression="aql:self.ownedPhysicalComponentPkg.ownedPhysicalComponents.subPhysicalComponents" headerLabelExpression="feature:name">
-        <ownedSubLines name="Sub Physical Component 2" reusedSubLines="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Components%20-%20Requirements']/@ownedLineMappings[name='Physical%20Component%202']/@ownedSubLines[name='Sub%20Physical%20Component%202']" reusedInMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Components%20-%20Requirements']/@ownedLineMappings[name='Physical%20Component%202']/@ownedSubLines[name='Sub%20Physical%20Component%202']" domainClass="PhysicalComponent" semanticCandidatesExpression="feature:subPhysicalComponents" headerLabelExpression="feature:name">
+    <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Physical Components - Requirements" label="Physical Components/Actors - Requirements" domainClass="PhysicalArchitecture">
+      <ownedLineMappings name="Physical Component 2" domainClass="PhysicalComponent" semanticCandidatesExpression="aql:self.ownedPhysicalComponentPkg.ownedPhysicalComponents" headerLabelExpression="feature:name">
+        <ownedSubLines name="Sub Physical Component 2" reusedSubLines="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Components%20-%20Requirements']/@ownedLineMappings[name='Physical%20Component%202']/@ownedSubLines[name='Sub%20Physical%20Component%202']" reusedInMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Components%20-%20Requirements']/@ownedLineMappings[name='Physical%20Component%202']/@ownedSubLines[name='Sub%20Physical%20Component%202']" domainClass="PhysicalComponent" semanticCandidatesExpression="aql:self.getSubComponents()" headerLabelExpression="feature:name">
           <delete name="No delete" precondition="false">
             <variables name="element" documentation="The currently edited element."/>
             <variables name="root" documentation="The semantic element corresponding to the current table."/>
@@ -176,8 +176,8 @@
       </intersection>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Physical Components - Logical Components" domainClass="PhysicalArchitecture">
-      <ownedLineMappings name="Physical Components 1" domainClass="PhysicalComponent" semanticCandidatesExpression="aql:self.ownedPhysicalComponentPkg.ownedPhysicalComponents.subPhysicalComponents" headerLabelExpression="feature:name">
-        <ownedSubLines name="Sub Physical Component 1" reusedSubLines="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Components%20-%20Logical%20Components']/@ownedLineMappings[name='Physical%20Components%201']/@ownedSubLines[name='Sub%20Physical%20Component%201']" reusedInMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Components%20-%20Logical%20Components']/@ownedLineMappings[name='Physical%20Components%201']/@ownedSubLines[name='Sub%20Physical%20Component%201']" domainClass="PhysicalComponent" semanticCandidatesExpression="feature:subPhysicalComponents" headerLabelExpression="feature:name">
+      <ownedLineMappings name="Physical Components 1" domainClass="PhysicalComponent" semanticCandidatesExpression="aql:self.ownedPhysicalComponentPkg.ownedPhysicalComponents->select(c | not c.isActor())" headerLabelExpression="feature:name">
+        <ownedSubLines name="Sub Physical Component 1" reusedSubLines="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Components%20-%20Logical%20Components']/@ownedLineMappings[name='Physical%20Components%201']/@ownedSubLines[name='Sub%20Physical%20Component%201']" reusedInMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Components%20-%20Logical%20Components']/@ownedLineMappings[name='Physical%20Components%201']/@ownedSubLines[name='Sub%20Physical%20Component%201']" domainClass="PhysicalComponent" semanticCandidatesExpression="aql:self.getSubComponents()" headerLabelExpression="feature:name">
           <delete name="No delete" precondition="false">
             <variables name="element" documentation="The currently edited element."/>
             <variables name="root" documentation="The semantic element corresponding to the current table."/>
@@ -188,7 +188,7 @@
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
         </delete>
       </ownedLineMappings>
-      <ownedColumnMappings name="Logical Components" headerLabelExpression="feature:name" domainClass="LogicalComponent" semanticCandidatesExpression="aql:self.getRootContainer().eAllContents()->filter(la::LogicalComponent)->first().eAllContents()->filter(la::LogicalComponent)->select(x | x.subLogicalComponents->size() = 0)">
+      <ownedColumnMappings name="Logical Components" headerLabelExpression="feature:name" domainClass="LogicalComponent" semanticCandidatesExpression="aql:self.eContainer().containedLogicalArchitectures.eAllContents()->filter(la::LogicalComponent)->select(c | not c.isActor())">
         <delete name="No delete" precondition="false">
           <variables name="element" documentation="The currently edited element."/>
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
@@ -226,8 +226,8 @@
       </intersection>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Physical Components - Physical Functions" label="Physical Components/Actors - Physical Functions" domainClass="PhysicalArchitecture">
-      <ownedLineMappings name="Physical Components 3" domainClass="Component" semanticCandidatesExpression="aql:self.makeUnion(self.ownedPhysicalComponentPkg.ownedPhysicalComponents.subPhysicalComponents, self.ownedPhysicalComponentPkg.getAllActors())" headerLabelExpression="feature:name">
-        <ownedSubLines name="Sub Physical Component 3" reusedSubLines="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Components%20-%20Physical%20Functions']/@ownedLineMappings[name='Physical%20Components%203']/@ownedSubLines[name='Sub%20Physical%20Component%203']" reusedInMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Components%20-%20Physical%20Functions']/@ownedLineMappings[name='Physical%20Components%203']/@ownedSubLines[name='Sub%20Physical%20Component%203']" domainClass="PhysicalComponent" semanticCandidatesExpression="feature:subPhysicalComponents" headerLabelExpression="feature:name">
+      <ownedLineMappings name="Physical Components 3" domainClass="Component" semanticCandidatesExpression="aql:self.ownedPhysicalComponentPkg.ownedPhysicalComponents" headerLabelExpression="feature:name">
+        <ownedSubLines name="Sub Physical Component 3" reusedSubLines="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Components%20-%20Physical%20Functions']/@ownedLineMappings[name='Physical%20Components%203']/@ownedSubLines[name='Sub%20Physical%20Component%203']" reusedInMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Components%20-%20Physical%20Functions']/@ownedLineMappings[name='Physical%20Components%203']/@ownedSubLines[name='Sub%20Physical%20Component%203']" domainClass="PhysicalComponent" semanticCandidatesExpression="aql:self.makeUnion(self.getSubComponents(), self.getSubActors())" headerLabelExpression="feature:name">
           <delete name="No delete" precondition="false">
             <variables name="element" documentation="The currently edited element."/>
             <variables name="root" documentation="The semantic element corresponding to the current table."/>
@@ -4457,7 +4457,7 @@
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
         </delete>
       </ownedLineMappings>
-      <ownedColumnMappings name="PALA Logical Actor column" initialWidth="50" domainClass="LogicalComponent" semanticCandidatesExpression="aql:self.precedingSibling->filter(cs::BlockArchitecture)->last().eAllContents()->filter(cs::Component)->select(c | c.isActor())">
+      <ownedColumnMappings name="PALA Logical Actor column" initialWidth="50" domainClass="LogicalComponent" semanticCandidatesExpression="aql:self.eContainer().containedLogicalArchitectures.eAllContents()->filter(la::LogicalComponent)->select(c | c.isActor())">
         <delete name="No delete" precondition="false">
           <variables name="element" documentation="The currently edited element."/>
           <variables name="root" documentation="The semantic element corresponding to the current table."/>

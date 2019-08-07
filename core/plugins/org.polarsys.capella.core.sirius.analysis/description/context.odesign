@@ -5212,13 +5212,19 @@
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="System Actor - Operational Actor" label="System Actors - Operational Actors/Operational Entities" domainClass="SystemAnalysis">
-      <ownedLineMappings name="SAOA System Actor Line" domainClass="Component" semanticCandidatesExpression="aql:self.ownedSystemComponentPkg.getAllActors()">
+      <ownedLineMappings name="SAOA System Actor Line" domainClass="ctx::SystemComponent" semanticCandidatesExpression="aql:self.ownedSystemComponentPkg.ownedSystemComponents->select(c | c.isActor())">
+        <ownedSubLines name="Sub System Actors" reusedSubLines="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Actor%20-%20Operational%20Actor']/@ownedLineMappings[name='SAOA%20System%20Actor%20Line']/@ownedSubLines[name='Sub%20System%20Actors']" reusedInMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Actor%20-%20Operational%20Actor']/@ownedLineMappings[name='SAOA%20System%20Actor%20Line']/@ownedSubLines[name='Sub%20System%20Actors']" domainClass="ctx::SystemComponent" semanticCandidatesExpression="aql:self.getSubActors()" headerLabelExpression="feature:name">
+          <delete name="No delete" precondition="false">
+            <variables name="element" documentation="The currently edited element."/>
+            <variables name="root" documentation="The semantic element corresponding to the current table."/>
+          </delete>
+        </ownedSubLines>
         <delete name="No delete" precondition="false">
           <variables name="element" documentation="The currently edited element."/>
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
         </delete>
       </ownedLineMappings>
-      <ownedColumnMappings name="SAOA Entity column" initialWidth="50" domainClass="Entity" semanticCandidatesExpression="aql:self.precedingSibling->filter(cs::BlockArchitecture)->last().eAllContents()->filter(oa::Entity)">
+      <ownedColumnMappings name="SAOA Entity column" initialWidth="50" domainClass="Entity" semanticCandidatesExpression="aql:self.eContainer().containedOperationalAnalysis.eAllContents()->filter(oa::Entity)">
         <delete name="No delete" precondition="false">
           <variables name="element" documentation="The currently edited element."/>
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
@@ -5289,11 +5295,13 @@
       <intersection name="TICS Cell Value" canEdit="false" lineMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Interfaces%20-%20Capabilities%20and%20Scenarios']/@ownedLineMappings[name='TICS%20Interfaces%20line']/@ownedSubLines[name='TICS%20Services%20line']" columnMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Interfaces%20-%20Capabilities%20and%20Scenarios']/@ownedColumnMappings.0" labelExpression="aql:lineSemantic.getScenariosUsingService(columnSemantic)" columnFinderExpression="aql:self.isUsedInCapabilities()"/>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="System/Actors - System Functions" domainClass="SystemAnalysis">
-      <ownedLineMappings name="Components 1" domainClass="Component" semanticCandidatesExpression="aql:self.makeUnion(self.system, self.ownedSystemComponentPkg.getAllActors())" headerLabelExpression="feature:name">
-        <delete name="No delete" precondition="false">
-          <variables name="element" documentation="The currently edited element."/>
-          <variables name="root" documentation="The semantic element corresponding to the current table."/>
-        </delete>
+      <ownedLineMappings name="Components 1" domainClass="Component" semanticCandidatesExpression="aql:self.ownedSystemComponentPkg.ownedSystemComponents" headerLabelExpression="feature:name">
+        <ownedSubLines name="Sub System Actors" reusedSubLines="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%2FActors%20-%20System%20Functions']/@ownedLineMappings[name='Components%201']/@ownedSubLines[name='Sub%20System%20Actors']" reusedInMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%2FActors%20-%20System%20Functions']/@ownedLineMappings[name='Components%201']/@ownedSubLines[name='Sub%20System%20Actors']" domainClass="ctx::SystemComponent" semanticCandidatesExpression="aql:self.getSubActors()" headerLabelExpression="feature:name">
+          <delete name="No delete" precondition="false">
+            <variables name="element" documentation="The currently edited element."/>
+            <variables name="root" documentation="The semantic element corresponding to the current table."/>
+          </delete>
+        </ownedSubLines>
       </ownedLineMappings>
       <ownedColumnMappings name="Functions 1" headerLabelExpression="feature:name" domainClass="AbstractFunction" semanticCandidatesExpression="aql:self.getAllLeafAbstractFunctions()">
         <delete name="No delete" precondition="false">

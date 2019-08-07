@@ -1277,6 +1277,24 @@ public class CsServices {
     components.remove(target);
     return filterNotActors(components);
   }
+  
+  public Collection<Component> getSubActors(EObject target) {
+    Collection<Component> components = new ArrayList<>();
+    if (null == target) {
+      return components;
+    }
+
+    if (target instanceof BlockArchitecture) {
+      components.addAll(ComponentExt.getSubDefinedComponents((BlockArchitecture) target));
+
+    } else if (target instanceof Component) {
+      components.addAll(ComponentExt.getSubDefinedComponents((Component) target));
+      components.addAll(ComponentExt.getSubUsedComponents((Component) target));
+    }
+
+    components.remove(target);
+    return filterActors(components);
+  }
 
   public Collection<? extends CapellaElement> getABShowHidePureComponent(DSemanticDecorator decorator) {
     return getABShowHideComponent(decorator).stream()
