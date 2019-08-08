@@ -567,6 +567,20 @@
     <querySpecification queryIdentifier="GetIBShowHideActor__Lib" extendedQueryIdentifier="GetIBShowHideActor">
       <queryAlgorithm algorithm="org.polarsys.capella.core.sirius.analysis.queries.csServices.GetIBShowHideActor__Lib" />
     </querySpecification>
+        <querySpecification
+              extendedQueryIdentifier="GetISScopeInsertActors"
+              queryIdentifier="GetISScopeInsertActors__Lib">
+           <queryAlgorithm
+                 algorithm="org.polarsys.capella.core.sirius.analysis.queries.interactionServices.GetISScopeInsertActors__Lib">
+           </queryAlgorithm>
+        </querySpecification>
+        <querySpecification
+              extendedQueryIdentifier="GetISScopeInsertComponents"
+              queryIdentifier="GetISScopeInsertComponents__Lib">
+           <queryAlgorithm
+                 algorithm="org.polarsys.capella.core.sirius.analysis.queries.interactionServices.GetISScopeInsertComponents__Lib">
+           </queryAlgorithm>
+        </querySpecification>
       
  </extension>
  <extension

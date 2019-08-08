@@ -13779,12 +13779,12 @@
       <diagramInitialisation>
         <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
           <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:(self.ancestors()->filter(ctx::SystemAnalysis)->size() > 0)">
-            <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:(self.ownedInstanceRoles->select(ownedInstanceRole | ownedInstanceRole.representedInstance.abstractType->filter(ctx::System)->size() > 0)->size() = 0)">
+            <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedInstanceRoles->select(role | not role.representedInstance.abstractType.actor)->size()=0">
               <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.InstanceRole" referenceName="ownedInstanceRoles">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="representedInstance" valueExpression="aql:self.eContainerOrSelf(ctx::SystemAnalysis).ownedSystemContext.ownedPartitions->select(ownedPartition | ownedPartition.abstractType->filter(ctx::System)->size() > 0)->first()"/>
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.eContainerOrSelf(ctx::SystemAnalysis).ownedSystem.name"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="representedInstance" valueExpression="aql:self.eContainerOrSelf(ctx::SystemAnalysis).system.representingParts->first()"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.eContainerOrSelf(ctx::SystemAnalysis).system.name"/>
               </subModelOperations>
-              <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.ensureCapabilityInvolvment(self.eContainerOrSelf(ctx::SystemAnalysis).ownedSystemContext.ownedPartitions->select(ownedPartition | ownedPartition.abstractType->filter(ctx::System)->size() > 0)->first().abstractType)"/>
+              <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.ensureCapabilityInvolvment(self.eContainerOrSelf(ctx::SystemAnalysis).system)"/>
             </subModelOperations>
           </subModelOperations>
           <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="INTERFACE"/>
@@ -13893,7 +13893,7 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(cs::Component)->filter(c | c.isActor())->size() > 0">
+          <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(cs::Component)->select(c | c.isActor())->size() > 0">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelExpression="aql:self.getInstanceRoleLabel()" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" labelPosition="node" resizeKind="EAST_WEST" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(cs::Component)->size() > 0 and self.isNodeComponent()">
@@ -14435,7 +14435,7 @@
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Select Actor" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                     <parameters name="context" value="aql:container"/>
-                    <parameters name="scope" value="aql:container.getISScopeInsertActors()"/>
+                    <parameters name="scope" value="aql:self.void2Null(container.getISScopeInsertActors())"/>
                     <parameters name="initialSelection" value="aql:self.void2Null(containerView.eContainerOrSelf(diagram::DDiagram).eAllContents(viewpoint::DSemanticDecorator).target->filter(interaction::InstanceRole).representedInstance->select(x | x.abstractType->filter(cs::Component)->select(c | c.isActor())->size() > 0))"/>
                     <parameters name="wizardMessage" value=""/>
                     <parameters name="resultVariable" value="result"/>
@@ -14505,7 +14505,7 @@
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Select Component" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                     <parameters name="context" value="aql:container"/>
                     <parameters name="scope" value="aql:self.void2Null(container.getISScopeInsertComponents())"/>
-                    <parameters name="initialSelection" value="aql:self.void2Null(containerView.eContainerOrSelf(diagram::DDiagram).eAllContents(viewpoint::DSemanticDecorator).target->filter(interaction::InstanceRole).representedInstance->select(x | x.abstractType->filter(cs::Component)->size() > 0 and x.abstractType->filter(cs::Component)->select(c | c.isActor())->size() = 0))"/>
+                    <parameters name="initialSelection" value="aql:self.void2Null(containerView.eContainerOrSelf(diagram::DDiagram).eAllContents(viewpoint::DSemanticDecorator).target->filter(interaction::InstanceRole).representedInstance->select(x | x.abstractType->filter(cs::Component)->select(c | c.isActor())->size() = 0))"/>
                     <parameters name="wizardMessage" value=""/>
                     <parameters name="resultVariable" value="result"/>
                   </subModelOperations>
@@ -15910,12 +15910,12 @@
       <diagramInitialisation>
         <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
           <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:(self.ancestors()->filter(ctx::SystemAnalysis)->size() > 0)">
-            <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:(self.ownedInstanceRoles->select(ownedInstanceRole | ownedInstanceRole.representedInstance.abstractType->filter(ctx::System)->size() > 0)->size() = 0)">
+            <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedInstanceRoles->select(role | not role.representedInstance.abstractType.actor)->size()=0">
               <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.InstanceRole" referenceName="ownedInstanceRoles">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="representedInstance" valueExpression="aql:self.eContainerOrSelf(ctx::SystemAnalysis).ownedSystemContext.ownedPartitions->select(ownedPartition | ownedPartition.abstractType->filter(ctx::System)->size() > 0)->first()"/>
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.eContainerOrSelf(ctx::SystemAnalysis).ownedSystem.name"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="representedInstance" valueExpression="aql:self.eContainerOrSelf(ctx::SystemAnalysis).system.representingParts->first()"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.eContainerOrSelf(ctx::SystemAnalysis).system.name"/>
               </subModelOperations>
-              <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.ensureCapabilityInvolvment(self.eContainerOrSelf(ctx::SystemAnalysis).ownedSystemContext.ownedPartitions->select(ownedPartition | ownedPartition.abstractType->filter(ctx::System)->size() > 0)->first().abstractType)"/>
+              <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.ensureCapabilityInvolvment(self.eContainerOrSelf(ctx::SystemAnalysis).system)"/>
             </subModelOperations>
           </subModelOperations>
           <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="DATA_FLOW"/>
@@ -16020,7 +16020,7 @@
           <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(cs::Component)->size() > 0 and self.isNodeComponent()">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Border']" labelExpression="aql:self.getInstanceRoleLabel()" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Label']" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']"/>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(cs::Component)->filter(c | c.isActor())->size() > 0">
+          <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(cs::Component)->select(c | c.isActor())->size() > 0">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelExpression="aql:self.getInstanceRoleLabel()" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" labelPosition="node" resizeKind="EAST_WEST" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(cs::Component)->size() > 0 and not (self.isInternalLCForInstanceRole())">
@@ -16146,15 +16146,15 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="eContainer (&quot;BlockArchitecture&quot;)">
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainerOrSelf(cs::BlockArchitecture)">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self->filter(la::LogicalArchitecture)->size() != 0">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.getComponentContainer()">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.eContainerOrSelf(cs::BlockArchitecture)->filter(la::LogicalArchitecture)->size() != 0">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:ownedLogicalComponentPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponent" referenceName="ownedLogicalComponents" variableName="component">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self->filter(pa::PhysicalArchitecture)->size() != 0">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.eContainerOrSelf(cs::BlockArchitecture)->filter(pa::PhysicalArchitecture)->size() != 0">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:ownedPhysicalComponentPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents" variableName="component">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
@@ -16181,15 +16181,15 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="eContainer (&quot;BlockArchitecture&quot;)">
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainerOrSelf(cs::BlockArchitecture)">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self->filter(la::LogicalArchitecture)->size() != 0">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.getComponentContainer()">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.eContainerOrSelf(cs::BlockArchitecture)->filter(la::LogicalArchitecture)->size() != 0">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:ownedLogicalComponentPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponent" referenceName="ownedLogicalComponents" variableName="component">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self->filter(pa::PhysicalArchitecture)->size() != 0">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.eContainerOrSelf(cs::BlockArchitecture)->filter(pa::PhysicalArchitecture)->size() != 0">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:ownedPhysicalComponentPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents" variableName="component">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
@@ -16211,25 +16211,21 @@
             <predecessor name="predecessor"/>
           </ownedTools>
           <ownedTools xsi:type="tool_2:InstanceRoleCreationTool" name="component" label="Component" precondition="aql:self.eContainerOrSelf(ctx::SystemAnalysis)->size() = 0" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ComponentInstance.gif">
-            <filters precondition="aql:self.target.eContainerOrSelf(pa::PhysicalArchitecture)->size() > 0" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)"/>
+            <filters precondition="aql:(self.target.eContainerOrSelf(ctx::SystemAnalysis)->size() > 0 or self.target.eContainerOrSelf(pa::PhysicalArchitecture)->size() != 0)" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)"/>
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="eContainer (&quot;BlockArchitecture&quot;)">
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainerOrSelf(cs::BlockArchitecture)">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self->filter(la::LogicalArchitecture)->size() != 0">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:ownedLogicalComponentPkg">
-                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponent" referenceName="ownedLogicalComponents" variableName="component">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
-                      </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.getComponentContainer()">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.eContainerOrSelf(cs::BlockArchitecture)->filter(la::LogicalArchitecture)->size() != 0">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponent" referenceName="ownedLogicalComponents" variableName="component">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self->filter(pa::PhysicalArchitecture)->size() != 0">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:ownedPhysicalComponentPkg">
-                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents" variableName="component">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="nature" valueExpression="BEHAVIOR"/>
-                      </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.eContainerOrSelf(cs::BlockArchitecture)->filter(pa::PhysicalArchitecture)->size() != 0">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents" variableName="component">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="nature" valueExpression="BEHAVIOR"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
@@ -16311,7 +16307,7 @@
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Select Component" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                     <parameters name="context" value="aql:container"/>
-                    <parameters name="scope" value="aql:self.void2Null(self.getAllAvailablePartsIncludingSystem(containerView.eContainerOrSelf(diagram::DDiagram).eAllContents(viewpoint::DSemanticDecorator).target->filter(interaction::InstanceRole).representedInstance->filter(cs::Part))->select(x | x.abstractType->filter(cs::Component)->select(c | c.isActor())->size() = 0))"/>
+                    <parameters name="scope" value="aql:container.getAllComponents()"/>
                     <parameters name="initialSelection" value="aql:self.void2Null(containerView.eContainerOrSelf(diagram::DDiagram).eAllContents(viewpoint::DSemanticDecorator).target->filter(interaction::InstanceRole).representedInstance->select(x | x.abstractType->filter(cs::Component)->size() > 0 and x.abstractType->filter(cs::Component)->select(c | c.isActor())->size() = 0))"/>
                     <parameters name="wizardMessage" value=""/>
                     <parameters name="resultVariable" value="result"/>
@@ -16374,7 +16370,7 @@
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Select Actor" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                     <parameters name="context" value="aql:container"/>
-                    <parameters name="scope" value="aql:self.getAllActors()->select(getAllActor | getAllActor.eInverse('abstractType')->filter(cs::Part)->size() >= 1).typedElements"/>
+                    <parameters name="scope" value="aql:container.getAllActors()"/>
                     <parameters name="initialSelection" value="aql:self.void2Null(containerView.eContainerOrSelf(diagram::DDiagram).eAllContents(viewpoint::DSemanticDecorator).target->filter(interaction::InstanceRole).representedInstance->select(x | x.abstractType->filter(cs::Component)->select(c | c.isActor())->size() > 0))"/>
                     <parameters name="wizardMessage" value=""/>
                     <parameters name="resultVariable" value="result"/>
@@ -17836,7 +17832,7 @@
             </style>
           </borderedNodeMappings>
           <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']" labelExpression="aql:self.getInstanceRoleLabel()" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Label_Green']" labelPosition="node" resizeKind="EAST_WEST" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']"/>
-          <conditionnalStyles predicateExpression="aql:self.representedInstance.componentFunctionalAllocations.block->filter(cs::Component)->filter(c | c.isActor())->size() != 0">
+          <conditionnalStyles predicateExpression="aql:self.representedInstance.componentFunctionalAllocations.block->filter(cs::Component)->select(c | c.isActor())->size() != 0">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelExpression="aql:self.getInstanceRoleLabel()" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" labelPosition="node" resizeKind="EAST_WEST" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:not (self.representedInstance.isControlNode()) and not (self.representedInstance.isAllLeavesFunctionActorAllocated())">

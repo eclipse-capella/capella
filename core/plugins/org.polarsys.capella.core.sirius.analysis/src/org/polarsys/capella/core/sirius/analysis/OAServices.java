@@ -34,11 +34,13 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.data.activity.ActivityEdge;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
@@ -533,4 +535,15 @@ public class OAServices {
         && ((FunctionalExchange) obj).getAllocatingComponentExchanges().isEmpty();
   }
 
+  public Collection<Part> getAllEntities(EObject any) {
+    Collection<Part> parts = new ArrayList<>();
+
+    OperationalAnalysis architecture = (OperationalAnalysis) EcoreUtil2.getFirstContainer(any,
+        OaPackage.Literals.OPERATIONAL_ANALYSIS);
+    for (Entity entity : OperationalAnalysisExt.getAllEntity(architecture)) {
+      parts.addAll(entity.getRepresentingParts());
+    }
+
+    return parts;
+  }
 }

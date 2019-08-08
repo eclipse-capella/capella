@@ -106,24 +106,15 @@ public class InteractionServices {
   }
 
   public List<Part> getISScopeInsertComponents(Scenario scenario) {
-    // Collection<Part> partsFilter = new ArrayList<Part>();
-    // for (InstanceRole role : scenario.getOwnedInstanceRoles()) {
-    // if (role.getRepresentedInstance() instanceof Part) {
-    // partsFilter.add((Part) role.getRepresentedInstance());
-    // }
-    // }
-    // List<Part> parts = new ArrayList<Part>(new InteractionAspectService().getAvailableParts(scenario, partsFilter));
-    // parts = QueryInterpretor.executeFilter(parts, new RemoveActorsFilter());
     return QueryInterpretor.executeQuery(
         QueryIdentifierConstants.GET_IS_SCOPE_INSERT_COMPONENTS_FOR_LIB,
         scenario);
   }
 
   public List<Part> getISScopeInsertActors(Scenario scenario) {
-    BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(scenario);
     return QueryInterpretor.executeQuery(
         QueryIdentifierConstants.GET_IS_SCOPE_INSERT_ACTORS_FOR_LIB,
-        architecture);
+        scenario);
   }
 
   /**

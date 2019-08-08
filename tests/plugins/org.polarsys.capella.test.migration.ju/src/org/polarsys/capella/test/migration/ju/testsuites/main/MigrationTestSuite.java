@@ -17,7 +17,7 @@ import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.migration.ju.testcases.basic.FunctionalChainNonRegressionTest;
 import org.polarsys.capella.test.migration.ju.testcases.basic.SysmodelFilterMigration;
-import org.polarsys.capella.test.migration.ju.testsuites.partial.MigrationBasicTestSuite;
+import org.polarsys.capella.test.migration.ju.testcases.basic.SysmodelMigrationLayout;
 
 import junit.framework.Test;
 
@@ -35,7 +35,7 @@ public class MigrationTestSuite extends BasicTestSuite {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new FunctionalChainNonRegressionTest());
     tests.add(new SysmodelFilterMigration());
-    tests.add(new MigrationBasicTestSuite());
+    tests.add(new SysmodelMigrationLayout());
     return tests;
   }
 

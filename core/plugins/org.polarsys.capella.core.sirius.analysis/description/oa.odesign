@@ -2757,6 +2757,7 @@
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.ownedEntityPkg">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="Entity" referenceName="ownedEntities" variableName="actor">
                         <subModelOperations xsi:type="tool:SetValue" featureName="actor" valueExpression="true"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="human" valueExpression="true"/>
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -2808,7 +2809,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="Select Function" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                     <parameters name="context" value="aql:container"/>
-                    <parameters name="scope" value="aql:self.void2Null(self.makeUnion(self.eContainerOrSelf(capellacore::ModellingArchitecture).ownedRolePkg.ownedRoles, self.getAllComponents(containerView.eContainerOrSelf(diagram::DDiagram).eAllContents(viewpoint::DSemanticDecorator).target->filter(interaction::InstanceRole).representedInstance->filter(cs::Part))->select(getAllComponent | getAllComponent.abstractType->filter(cs::AbstractActor)->size() = 0)))"/>
+                    <parameters name="scope" value="aql:container.getAllEntities()"/>
                     <parameters name="initialSelection" value="aql:containerView.eContainerOrSelf(diagram::DDiagram).eAllContents(viewpoint::DSemanticDecorator).target->filter(interaction::InstanceRole).representedInstance"/>
                     <parameters name="wizardMessage" value=""/>
                     <parameters name="resultVariable" value="result"/>
