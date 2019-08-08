@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis.queries.filters;
 
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.queries.filters.IQueryFilter;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.cs.Component;
@@ -19,9 +20,7 @@ public class IsComponentFilter implements IQueryFilter {
 
   @Override
   public boolean keepElement(Object element, IQueryContext context) {
-    if (element instanceof Component && !ComponentExt.isActor(element))
-      return true;
-    return false;
+    return element instanceof Component && !ComponentExt.isActor((EObject) element);
   }
 
 }

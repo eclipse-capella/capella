@@ -41,8 +41,6 @@ import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.ctx.SystemComponent;
-import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeFunctionalExchangeAllocation;
@@ -75,11 +73,9 @@ import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.data.interaction.StateFragment;
 import org.polarsys.capella.core.data.interaction.TimeLapse;
 import org.polarsys.capella.core.data.interaction.properties.controllers.InterfaceHelper;
-import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.Role;
-import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramDescriptionConstants;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
@@ -1105,7 +1101,8 @@ public class ScenarioService {
     }
     // compatibility :
     if ((scenario.getKind() == ScenarioKind.DATA_FLOW) || (scenario.getKind() == ScenarioKind.INTERFACE)) {
-      return ((element instanceof SystemComponent) || ComponentExt.isActor(element)) && isCorrectComponentLevel(context, element);
+      return element instanceof Component
+          && isCorrectComponentLevel(context, element);
     } else if (scenario.getKind() == ScenarioKind.FUNCTIONAL) {
       return (element instanceof AbstractFunction);
     } else if (scenario.getKind() == ScenarioKind.INTERACTION) {
@@ -1133,25 +1130,16 @@ public class ScenarioService {
    * @return
    */
   private boolean isCorrectComponentLevel(EObject context, EObject element) {
-    if (ComponentExt.isActor(element)) {
-      return true;
-    }
     // find the carrier component of the scenario
     Component referenceComponent = null;
     EObject container = context;
     while (referenceComponent == null) {
       container = container.eContainer();
-      if (container instanceof SystemComponent) {
-        referenceComponent = (SystemComponent) container; // found
-      } else if (container instanceof LogicalArchitecture) {
-        LogicalArchitecture la = (LogicalArchitecture) container;
-        referenceComponent = la.getSystem();
-      } else if (container instanceof PhysicalArchitecture) {
-        PhysicalArchitecture pa = (PhysicalArchitecture) container;
-        referenceComponent = pa.getSystem();
-      } else if (container instanceof EPBSArchitecture) {
-        EPBSArchitecture ea = (EPBSArchitecture) container;
-        referenceComponent = ea.getSystem();
+      if (container instanceof Component) {
+        referenceComponent = (Component) container; // found
+      } else if (container instanceof BlockArchitecture) {
+        BlockArchitecture architecture = (BlockArchitecture) container;
+        referenceComponent = architecture.getSystem();
       }
     }
 
@@ -1245,12 +1233,9 @@ public class ScenarioService {
 
 
   public Collection<Part> getAllMultiInstanceRoleParts(Scenario scenario) {
-
     BlockArchitecture ba = BlockArchitectureExt.getRootBlockArchitecture(scenario);
-
-    Collection<EObject> roots = new ArrayList<>();
+    Collection<EObject> roots = new ArrayList<EObject>();
     roots.add(BlockArchitectureExt.getComponentPkg(ba, false));
-
     return getAllParts(Collections2.filter(roots, Predicates.notNull()));
   }
 
@@ -1258,10 +1243,10 @@ public class ScenarioService {
   public Collection<Part> getAllMultiInstanceRoleComponentParts(Scenario scenario){
     // select wizard wants a list
     return
-        new ArrayList<>(Collections2.filter(getAllMultiInstanceRoleParts(scenario), new Predicate<Part>() {
+        new ArrayList<Part>(Collections2.filter(getAllMultiInstanceRoleParts(scenario), new Predicate<Part>() {
       @Override
       public boolean apply(Part input) {
-        return !(ComponentExt.isActor(input.getAbstractType()));
+        return !ComponentExt.isActor(input);
       }
     }));
   }
@@ -1269,16 +1254,16 @@ public class ScenarioService {
 
   public Collection<Part> getAllMultiInstanceRoleActorParts(Scenario scenario){
     // select wizard wants a list
-    return new ArrayList<>(Collections2.filter(getAllMultiInstanceRoleParts(scenario), new Predicate<Part>() {
+    return new ArrayList<Part>(Collections2.filter(getAllMultiInstanceRoleParts(scenario), new Predicate<Part>() {
       @Override
       public boolean apply(Part input) {
-        return ComponentExt.isActor(input.getAbstractType());
+        return ComponentExt.isActor(input);
       }
     }));
   }
 
   private Collection<Part> getAllParts(Collection<EObject> roots){
-    Collection<Part> result = new ArrayList<>();
+    Collection<Part> result = new ArrayList<Part>();
     for (Iterator<EObject> it = EcoreUtil.getAllContents(roots); it.hasNext();) {
       EObject next = it.next();
       if (next instanceof Part) {

@@ -10,16 +10,16 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis.queries.filters;
 
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.queries.filters.IQueryFilter;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
-import org.polarsys.capella.core.data.cs.AbstractActor;
-import org.polarsys.capella.core.data.oa.OperationalActor;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 
 public class IsActorFilter implements IQueryFilter {
 
   @Override
   public boolean keepElement(Object element, IQueryContext context) {
-    return (element instanceof AbstractActor) || (element instanceof OperationalActor);
+    return (element instanceof EObject && ComponentExt.isActor((EObject) element));
   }
 
 }

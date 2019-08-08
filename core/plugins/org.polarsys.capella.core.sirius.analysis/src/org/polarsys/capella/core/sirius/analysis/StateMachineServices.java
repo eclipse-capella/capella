@@ -56,13 +56,13 @@ import org.polarsys.capella.core.data.capellacommon.StateMachine;
 import org.polarsys.capella.core.data.capellacommon.StateTransition;
 import org.polarsys.capella.core.data.capellacommon.TerminatePseudoState;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.capellacore.Involvement;
 import org.polarsys.capella.core.data.capellacore.InvolverElement;
 import org.polarsys.capella.core.data.capellacore.ModellingBlock;
 import org.polarsys.capella.core.data.cs.Block;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.SystemComponent;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
@@ -110,12 +110,8 @@ public class StateMachineServices {
    * @param arch
    * @return list of modes and states
    */
-  public List<CapellaElement> getAllStatesAndModesFromBlockArchitecture(EObject context, BlockArchitecture arch) {
-    List<CapellaElement> result = new ArrayList<CapellaElement>();
-
-    BlockArchitectureExt.getAllStatesAndModesFromBlockArchitecture(arch, result);
-
-    return result;
+  public List<EObject> getAllStatesAndModesFromBlockArchitecture(EObject context, BlockArchitecture arch) {
+    return BlockArchitectureExt.getAllStatesAndModes(arch);
   }
 
   /**
@@ -482,9 +478,9 @@ public class StateMachineServices {
       return getCapabilitiesForStateMatrix(archi);
     }
     // capability involving the modellingblock
-    if (block instanceof SystemComponent) {
-      SystemComponent component = (SystemComponent) block;
-      for (Involvement involve : component.getInvolvingInvolvements()) {
+    if (block instanceof Component && block instanceof InvolvedElement) {
+      Component component = (Component) block;
+      for (Involvement involve : ((InvolvedElement) block).getInvolvingInvolvements()) {
         InvolverElement involver = involve.getInvolver();
         if (involver instanceof AbstractCapability) {
           AbstractCapability ac = (AbstractCapability) involver;

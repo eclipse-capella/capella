@@ -24,7 +24,6 @@ import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
@@ -33,6 +32,7 @@ import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.libraries.queries.QueryExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.ComponentPkgExt;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 
 public class GetABShowHideActor extends AbstractQuery {
@@ -43,11 +43,11 @@ public class GetABShowHideActor extends AbstractQuery {
     BlockArchitecture currentArchBlock = BlockArchitectureExt.getRootBlockArchitecture(component);
     List<BlockArchitecture> archBlocksFromLibraries = getCorrespondingBlockArchitectureFromLibraries(currentArchBlock);
     architectures.addAll(archBlocksFromLibraries);
-    List<Object> parts = new ArrayList<Object>();
+    List<Object> actors = new ArrayList<Object>();
     for (BlockArchitecture architecture : architectures) {
-      parts.addAll(QueryExt.getParts(BlockArchitectureExt.getContext(architecture), CsPackage.Literals.ABSTRACT_ACTOR, null));
+      actors.addAll(ComponentPkgExt.getAllActors(BlockArchitectureExt.getContext(architecture)));
     }
-    return parts;
+    return actors;
   }
 
   private List<BlockArchitecture> getCorrespondingBlockArchitectureFromLibraries(BlockArchitecture currentArchBlock) {// TODO !!!!!!!!!!!!!!!!! TEST

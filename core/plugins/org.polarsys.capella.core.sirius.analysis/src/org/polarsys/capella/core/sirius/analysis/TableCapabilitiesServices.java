@@ -19,16 +19,15 @@ import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
+import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.capellacore.Involvement;
-import org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Interface;
-import org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInvolvement;
-import org.polarsys.capella.core.data.ctx.Actor;
-import org.polarsys.capella.core.data.ctx.ActorCapabilityInvolvement;
 import org.polarsys.capella.core.data.ctx.Capability;
+import org.polarsys.capella.core.data.ctx.CapabilityInvolvement;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.EventReceiptOperation;
@@ -89,8 +88,8 @@ public class TableCapabilitiesServices {
       }
 
       for (Component component : components) {
-        if (component instanceof Actor) {
-          capabilities.addAll(((Actor) component).getContributedCapabilities());
+        if (component instanceof SystemComponent) {
+          capabilities.addAll(((SystemComponent) component).getInvolvingCapabilities());
         } else {
           getAllCapabilities(component.getOwnedAbstractCapabilityPkg(), capabilities);
           for (EObject parent : cciiServices.getParentContainers(component)) {
@@ -195,7 +194,7 @@ public class TableCapabilitiesServices {
 
     if (abstractCapability instanceof Capability) {
       Capability capability = (Capability) abstractCapability;
-      for (ActorCapabilityInvolvement i : capability.getOwnedActorCapabilityInvolvements()) {
+      for (CapabilityInvolvement i : capability.getOwnedCapabilityInvolvements()) {
         if (i != null) {
           involvements.add(i);
         }
@@ -204,13 +203,7 @@ public class TableCapabilitiesServices {
     } else if (abstractCapability instanceof CapabilityRealization) {
 
       CapabilityRealization capability = (CapabilityRealization) abstractCapability;
-      for (ActorCapabilityRealizationInvolvement i : capability.getOwnedActorCapabilityRealizations()) {
-        if (i != null) {
-          involvements.add(i);
-        }
-      }
-
-      for (SystemComponentCapabilityRealizationInvolvement i : capability.getOwnedSystemComponentCapabilityRealizations()) {
+      for (CapabilityRealizationInvolvement i : capability.getOwnedCapabilityRealizationInvolvements()) {
         if (i != null) {
           involvements.add(i);
         }
