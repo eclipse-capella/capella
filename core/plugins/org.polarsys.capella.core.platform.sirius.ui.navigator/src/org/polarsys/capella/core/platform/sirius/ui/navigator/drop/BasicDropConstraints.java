@@ -85,15 +85,6 @@ public class BasicDropConstraints {
         }
         container = container.eContainer();
       }
-
-      if ((dragged instanceof Component || dragged instanceof Part) && !ComponentExt.isActor(dragged)
-          && !ComponentExt.canCreateABComponent(dropTarget)) {
-        return false;
-      }
-
-      if (ComponentExt.isActor(dragged) && !ComponentExt.canCreateABActor(dropTarget)) {
-        return false;
-      }
     }
     return true;
   }

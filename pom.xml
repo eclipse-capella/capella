@@ -287,10 +287,13 @@
 				<module>doc/features/org.polarsys.capella.doc.feature</module>
 				<module>doc/plugins</module>
 				
-				<module>ext/viatra/features/org.polarsys.capella.viatra.core.feature</module>
+				
+				<!-- TODO EPIC TO REACTIVATE WHEN VIATRA CODE IS COMPILED TO ADAPT TO ACTOR REFACTORING
+				<module>ext/viatra/features/org.polarsys.capella.viatra.core.feature</module> 
 				<module>ext/viatra/plugins/org.polarsys.capella.viatra.common.data.gen</module>
 				<module>ext/viatra/plugins/org.polarsys.capella.viatra.common.re.gen</module>
-				<module>ext/viatra/plugins/org.polarsys.capella.viatra.core.data.gen</module>
+				<module>ext/viatra/plugins/org.polarsys.capella.viatra.core.data.gen</module> -->
+				
 
 				<module>ext/detachment/features/org.polarsys.capella.detachment.feature</module>
 				<module>ext/detachment/plugins/org.polarsys.capella.detachment.propertyvalue</module>

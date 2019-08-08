@@ -15,8 +15,8 @@ import java.util.UUID;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.polarsys.capella.core.data.ctx.Actor;
 import org.polarsys.capella.core.data.ctx.CtxFactory;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.test.framework.helpers.ExternalResourceHelper;
 import org.polarsys.capella.test.recrpl.ju.RecRplTestPlugin;
 
@@ -51,7 +51,8 @@ public class ExternalInclusion {
 
   private static EObject getOrCreateActor(String id, Resource resource) {
     if (resource.getEObject(id) == null) {
-      Actor a = CtxFactory.eINSTANCE.createActor(id);
+      SystemComponent a = CtxFactory.eINSTANCE.createSystemComponent(id);
+      a.setActor(true);
       a.setId(id);
       ExternalResourceHelper.attachToResource(a, resource);
     }

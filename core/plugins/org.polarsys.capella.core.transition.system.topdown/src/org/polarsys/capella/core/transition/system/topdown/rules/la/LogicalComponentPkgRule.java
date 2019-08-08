@@ -12,10 +12,9 @@ package org.polarsys.capella.core.transition.system.topdown.rules.la;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.pa.PaPackage;
-import org.polarsys.capella.core.transition.system.topdown.rules.cs.ComponentPkgRule;
+import org.polarsys.capella.core.transition.system.rules.cs.ComponentPkgRule;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**

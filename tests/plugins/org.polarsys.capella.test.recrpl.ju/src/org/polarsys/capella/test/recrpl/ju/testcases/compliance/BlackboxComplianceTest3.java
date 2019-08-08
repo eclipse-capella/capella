@@ -53,7 +53,7 @@ public class BlackboxComplianceTest3 extends Compliance {
 
     SystemEngineering se = SystemEngineeringExt.getSystemEngineering(getProject());
     pa = SystemEngineeringExt.getPhysicalArchitecture(se);
-    rootPC = SystemEngineeringExt.getRootPhysicalComponent(pa);
+    rootPC = (PhysicalComponent)pa.getSystem();
 
     // create pc1,pc2,pf1 and allocate pf1 on pc1
     expectNoRollback(() -> {

@@ -51,7 +51,7 @@ public class BlackboxComplianceTest1 extends Compliance {
 
     SystemEngineering se = SystemEngineeringExt.getSystemEngineering(getProject());
     pa = SystemEngineeringExt.getPhysicalArchitecture(se);
-    rootPC = SystemEngineeringExt.getRootPhysicalComponent(pa);
+    rootPC = (PhysicalComponent) pa.getSystem();
     rootPf = (PhysicalFunction) BlockArchitectureExt.getRootFunction(pa);
 
     expectNoRollback(() -> {
@@ -65,7 +65,7 @@ public class BlackboxComplianceTest1 extends Compliance {
 
     pcRpl = (PhysicalComponent) rpl.getOwnedLinks().iterator().next().getTarget();
 
-    assertSame(pa.getOwnedPhysicalComponent(), pcRpl.eContainer());
+    assertSame(pa.getSystem(), pcRpl.eContainer());
 
     final String origPcRplName = pcRpl.getName();
     final String origPcRplDescription = pcRpl.getDescription();

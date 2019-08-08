@@ -17,10 +17,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.polarsys.capella.core.data.ctx.ActorPkg;
 import org.polarsys.capella.core.data.ctx.CapabilityPkg;
 import org.polarsys.capella.core.data.ctx.CtxFactory;
 import org.polarsys.capella.core.data.ctx.MissionPkg;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
+import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.ctx.SystemFunctionPkg;
 import org.polarsys.capella.core.model.skeleton.CapellaModelSkeleton;
@@ -54,10 +55,13 @@ public class CreateRPL_SpecificPackages_SA extends CreateRPL_SpecificPackages {
         cPkg.getOwnedCapabilityPkgs().add(CtxFactory.eINSTANCE.createCapabilityPkg());
         result.addAll(cPkg.eContents());
 
-        ActorPkg aPkg = project.getSystemAnalysis().getOwnedActorPkg();
-        aPkg.getOwnedActorPkgs().add(CtxFactory.eINSTANCE.createActorPkg());
-        aPkg.getOwnedActors().add(CtxFactory.eINSTANCE.createActor());
-        result.addAll(aPkg.eContents());
+        SystemComponentPkg aPkg = project.getSystemAnalysis().getOwnedSystemComponentPkg();
+        aPkg.getOwnedSystemComponentPkgs().add(CtxFactory.eINSTANCE.createSystemComponentPkg());
+        SystemComponent actor = CtxFactory.eINSTANCE.createSystemComponent();
+        actor.setActor(true);
+        aPkg.getOwnedSystemComponents().add(actor);
+        result.addAll(aPkg.getOwnedSystemComponentPkgs());
+        result.add(actor);
 
         MissionPkg mPkg = project.getSystemAnalysis().getOwnedMissionPkg();
         mPkg.getOwnedMissionPkgs().add(CtxFactory.eINSTANCE.createMissionPkg());

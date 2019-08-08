@@ -34,11 +34,9 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.DeployableElement;
 import org.polarsys.capella.core.data.cs.DeploymentTarget;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.information.Partition;
-import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.oa.Entity;
-import org.polarsys.capella.core.data.pa.AbstractPhysicalComponent;
+import org.polarsys.capella.core.data.pa.PhysicalComponent;
 
 
 
@@ -173,7 +171,7 @@ public class CapellaSemanticMapping extends DefaultSemanticMapping {
         if (isLAB(diagram)) {
           // In a LAB, new elements in the diagram background are stored in the
           // root Logical Component
-          EObject rootLc = getLogicalArchitecture(diagram.getTarget()).getOwnedLogicalComponent();
+          EObject rootLc = getLogicalArchitecture(diagram.getTarget()).getSystem();
           if (null != rootLc) result = rootLc;
         } else {
           // The diagram's target is represented within the diagram:
@@ -193,7 +191,7 @@ public class CapellaSemanticMapping extends DefaultSemanticMapping {
    */
   private boolean checkDeployment(EObject container, EObject target) {
     Part locationPart = null;
-    AbstractPhysicalComponent locationType = null;
+    PhysicalComponent locationType = null;
     if (container instanceof Part)
       locationPart = (Part) container;
 
@@ -223,16 +221,16 @@ public class CapellaSemanticMapping extends DefaultSemanticMapping {
    * @param target a potentially null element
    */
   private boolean checkSubcomponent(EObject container, EObject target) {
-    if (!(container instanceof PartitionableElement &&
+    if (!(container instanceof Component &&
         (target instanceof AbstractType || target instanceof Part)))
       return true;
-    PartitionableElement partitionableElement = (PartitionableElement)container;
+    Component partitionableElement = (Component)container;
     AbstractType subComponentType;
     if (target instanceof Part)
       subComponentType = ((Part)target).getAbstractType();
     else
       subComponentType = (AbstractType)target;
-    for (Partition part : partitionableElement.getOwnedPartitions()) {
+    for (Part part : partitionableElement.getContainedParts()) {
       if (part.getAbstractType() == subComponentType)
         return true;
     }

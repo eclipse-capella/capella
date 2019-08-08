@@ -40,7 +40,6 @@ public class CreateRPL_SpecificPackages_OA extends CreateRPL_SpecificPackages {
         EntityPkg entityPkg = project.getOperationalAnalysis().getOwnedEntityPkg();
 
         entityPkg.getOwnedEntities().add(OaFactory.eINSTANCE.createEntity());
-        entityPkg.getOwnedEntities().add(OaFactory.eINSTANCE.createOperationalActor());
         entityPkg.getOwnedEntityPkgs().add(OaFactory.eINSTANCE.createEntityPkg());
         result.addAll(entityPkg.eContents());
 

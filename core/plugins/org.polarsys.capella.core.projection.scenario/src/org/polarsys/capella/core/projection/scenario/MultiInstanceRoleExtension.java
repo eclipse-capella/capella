@@ -9,6 +9,7 @@
  *    Thales - initial API and implementation
  *******************************************************************************/
 package org.polarsys.capella.core.projection.scenario;
+
 import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -24,10 +25,9 @@ import org.polarsys.capella.core.tiger.extension.ITransfoEngineExecuteExt;
 import org.polarsys.capella.core.tiger.impl.TransfoEngine;
 
 /**
- * A pre-transfo extension that notifies the user when about to launch
- * a scenario transition for multi-instancerole scenarios. Such scenarios
- * are not yet supported. The notification shows a dialog that allows to
- * abort or confirm the launch of the transition.
+ * A pre-transfo extension that notifies the user when about to launch a scenario transition for multi-instancerole
+ * scenarios. Such scenarios are not yet supported. The notification shows a dialog that allows to abort or confirm the
+ * launch of the transition.
  */
 public class MultiInstanceRoleExtension implements ITransfoEngineExecuteExt {
 
@@ -39,14 +39,13 @@ public class MultiInstanceRoleExtension implements ITransfoEngineExecuteExt {
         if (ScenarioExt.isMultiInstanceRole(scenario)) {
           IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
           if (window != null) {
-            if (!MessageDialog.openConfirm(window.getShell(), MultiInstanceRoleMessages.MultiInstanceRoleExtension_title,
-                MultiInstanceRoleMessages.MultiInstanceRoleExtension_message)) {
-              throw new OperationCanceledException(MultiInstanceRoleMessages.MultiInstanceRoleExtension_logmsg);
-            } else {
-              Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.REFINEMENT);
-              logger.warn(MultiInstanceRoleMessages.MultiInstanceRoleExtension_logmsg_confirm + EObjectLabelProviderHelper.getText(scenario));
-              return;
+            if (!MessageDialog.openConfirm(window.getShell(), Messages.MultiInstanceRoleExtension_title,
+                Messages.MultiInstanceRoleExtension_message)) {
+              throw new OperationCanceledException(Messages.MultiInstanceRoleExtension_logmsg);
             }
+            Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.REFINEMENT);
+            logger.warn(
+                Messages.MultiInstanceRoleExtension_logmsg_confirm + EObjectLabelProviderHelper.getText(scenario));
           }
         }
       }

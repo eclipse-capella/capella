@@ -47,8 +47,13 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 /**
  *
  */
-public abstract class ComponentPkgRule extends AbstractCapellaElementRule {
+public class ComponentPkgRule extends AbstractCapellaElementRule {
 
+  @Override
+  protected EClass getSourceType() {
+    return CsPackage.Literals.COMPONENT_PKG;
+  }
+  
   @Override
   protected void retrieveContainer(EObject element, List<EObject> result, IContext context) {
     if (!(element.eContainer() instanceof BlockArchitecture)) {

@@ -1575,7 +1575,7 @@ public class ComponentExt {
     return BlockArchitectureExt.getRootBlockArchitecture(modelElement);
   }
 
-  public static Component getRootComponent(Component component) {
+  public static Component getRootComponent(EObject component) {
     Component rootCpnt = null;
     if (null != component) {
       Object container = component.eContainer();

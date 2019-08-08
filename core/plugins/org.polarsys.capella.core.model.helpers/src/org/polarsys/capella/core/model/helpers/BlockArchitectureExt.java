@@ -72,6 +72,7 @@ import org.polarsys.capella.core.data.la.LogicalComponentPkg;
 import org.polarsys.capella.core.data.la.LogicalFunction;
 import org.polarsys.capella.core.data.la.LogicalFunctionPkg;
 import org.polarsys.capella.core.data.la.SystemAnalysisRealization;
+import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.EntityPkg;
 import org.polarsys.capella.core.data.oa.OaFactory;
 import org.polarsys.capella.core.data.oa.OaPackage;
@@ -688,8 +689,8 @@ public class BlockArchitectureExt {
       first = ((OperationalAnalysis) architecture).getSystem();
       if ((first == null) && create) {
         first = OaFactory.eINSTANCE.createEntity(NamingConstants.CreateOaAnalysisCmd_entity_name);
-        ((SystemComponentPkg) getComponentPkg(architecture, true)).getOwnedSystemComponents()
-            .add((SystemComponent) first);
+        ((EntityPkg) getComponentPkg(architecture, true)).getOwnedEntities()
+            .add((Entity) first);
       }
 
     } else if (architecture instanceof SystemAnalysis) {

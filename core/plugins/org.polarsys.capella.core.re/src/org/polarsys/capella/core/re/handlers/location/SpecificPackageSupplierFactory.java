@@ -36,6 +36,7 @@ import org.polarsys.capella.core.data.capellacore.PropertyValuePkg;
 import org.polarsys.capella.core.data.capellacore.util.CapellacoreSwitch;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
@@ -71,7 +72,6 @@ import org.polarsys.capella.core.data.information.util.InformationSwitch;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.data.la.CapabilityRealizationPkg;
 import org.polarsys.capella.core.data.la.LaPackage;
-import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalComponentPkg;
 import org.polarsys.capella.core.data.la.LogicalFunction;
@@ -90,13 +90,13 @@ import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.data.oa.RolePkg;
 import org.polarsys.capella.core.data.oa.util.OaSwitch;
 import org.polarsys.capella.core.data.pa.PaPackage;
-import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
 import org.polarsys.capella.core.data.pa.util.PaSwitch;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.ProjectExt;
 import org.polarsys.capella.core.model.helpers.SystemAnalysisExt;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
@@ -117,6 +117,8 @@ public class SpecificPackageSupplierFactory {
 
   private BlockArchitecture destinationBlock;
 
+  private EObject packagedElement;
+  
   /**
    * @param destinationResource the resource in which we create packages; the resource in which the RPL will 'live'
    */
@@ -149,7 +151,8 @@ public class SpecificPackageSupplierFactory {
    * @return a supplier or null for elements that are not added to specific packages
    */
   public Supplier<EObject> getSpecificPackageSupplier(EObject packagedElement) {
-    destinationBlock = findDestinationBlock(packagedElement);
+    this.destinationBlock = findDestinationBlock(packagedElement);
+    this.packagedElement = packagedElement;
     return zwitch.doSwitch(packagedElement);
   }
 
@@ -192,7 +195,6 @@ public class SpecificPackageSupplierFactory {
           return suppliedObject;
         }
       };
-
       createdSuppliers.put(key, created);
     }
     return created;
@@ -492,6 +494,11 @@ public class SpecificPackageSupplierFactory {
   }
 
   private Supplier<EObject> getSystemComponentPkg(){
+    Component root = ComponentExt.getRootComponent(packagedElement);
+    if (root != null && BlockArchitectureExt.isRootComponent(root)) {
+      SystemComponent rootComponent = (SystemComponent)((BlockArchitecture) destinationBlock).getSystem();
+      return getSpecificPackageSupplier(rootComponent, CtxPackage.Literals.SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENT_PKGS);
+    }
     SystemComponentPkg componentPkg = (SystemComponentPkg)BlockArchitectureExt.getComponentPkg(destinationBlock, true);
     return getSpecificPackageSupplier(componentPkg, CtxPackage.Literals.SYSTEM_COMPONENT_PKG__OWNED_SYSTEM_COMPONENT_PKGS);
   }
@@ -510,8 +517,13 @@ public class SpecificPackageSupplierFactory {
   }
 
   private Supplier<EObject> getPhysicalComponentPkg(){
-    PhysicalComponent rootComponent = (PhysicalComponent)((PhysicalArchitecture) destinationBlock).getSystem();
-    return getSpecificPackageSupplier(rootComponent, PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_PHYSICAL_COMPONENT_PKGS);
+    Component root = ComponentExt.getRootComponent(packagedElement);
+    if (root != null && BlockArchitectureExt.isRootComponent(root)) {
+      PhysicalComponent rootComponent = (PhysicalComponent)((BlockArchitecture) destinationBlock).getSystem();
+      return getSpecificPackageSupplier(rootComponent, PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_PHYSICAL_COMPONENT_PKGS);
+    }
+    PhysicalComponentPkg componentPkg = (PhysicalComponentPkg)BlockArchitectureExt.getComponentPkg(destinationBlock, true);
+    return getSpecificPackageSupplier(componentPkg, PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENT_PKGS);
   }
 
   private Supplier<EObject> getPhysicalFunctionPkg(){
@@ -520,8 +532,13 @@ public class SpecificPackageSupplierFactory {
   }
 
   private Supplier<EObject> getLogicalComponentPkg(){
-    LogicalComponent rootComponent = (LogicalComponent)((LogicalArchitecture) destinationBlock).getSystem();
-    return getSpecificPackageSupplier(rootComponent, LaPackage.Literals.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_PKGS);
+    Component root = ComponentExt.getRootComponent(packagedElement);
+    if (root != null && BlockArchitectureExt.isRootComponent(root)) {
+      LogicalComponent rootComponent = (LogicalComponent)((BlockArchitecture) destinationBlock).getSystem();
+      return getSpecificPackageSupplier(rootComponent, LaPackage.Literals.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_PKGS);
+    }
+    LogicalComponentPkg componentPkg = (LogicalComponentPkg)BlockArchitectureExt.getComponentPkg(destinationBlock, true);
+    return getSpecificPackageSupplier(componentPkg, LaPackage.Literals.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENT_PKGS);
   }
 
   private Supplier<EObject> getOperationalCapabilityPkg(){
@@ -540,12 +557,7 @@ public class SpecificPackageSupplierFactory {
   }
 
   private Supplier<EObject> getEntityPkg(){
-    EntityPkg pkg = ((OperationalAnalysis) destinationBlock).getOwnedEntityPkg();
-    if (pkg == null) {
-      // FIXME move this to OperationalAnalysisExt
-      pkg = OaFactory.eINSTANCE.createEntityPkg(NamingConstants.CreateOpAnalysisCmd_operationalEntities_pkg_name);
-      ((OperationalAnalysis) destinationBlock).setOwnedEntityPkg(pkg);
-    }
+    EntityPkg pkg = (EntityPkg)BlockArchitectureExt.getComponentPkg(destinationBlock, true);
     return getSpecificPackageSupplier(pkg, OaPackage.Literals.ENTITY_PKG__OWNED_ENTITY_PKGS);
   }
 

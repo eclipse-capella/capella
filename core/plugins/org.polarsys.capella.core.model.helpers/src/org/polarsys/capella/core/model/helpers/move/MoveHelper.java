@@ -66,6 +66,7 @@ import org.polarsys.capella.core.data.la.CapabilityRealizationPkg;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponentPkg;
+import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
@@ -75,7 +76,7 @@ import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
-import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.InterfaceExt;
 import org.polarsys.capella.core.model.helpers.StateExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
@@ -132,9 +133,17 @@ public class MoveHelper {
         }
 
       } else if (elt instanceof Component) {
-        if (elt.eContainer() instanceof BlockArchitecture) {
+        //Prevent move of System
+        if (!(elt instanceof Entity) && BlockArchitectureExt.isRootComponent((Component)elt)) {
           isOK = false;
-
+          
+        } else if ((elt instanceof Component || elt instanceof Part) && !ComponentExt.isActor(elt)
+            && !ComponentExt.canCreateABComponent(targetElement)) {
+          isOK = false;
+          
+        } else if (ComponentExt.isActor(elt) && !ComponentExt.canCreateABActor(targetElement)) {
+          isOK = false;
+          
         } else if (targetElement instanceof Component) {
           isOK = areInSameLayer((ModelElement) elt, (ModelElement) targetElement);
         }

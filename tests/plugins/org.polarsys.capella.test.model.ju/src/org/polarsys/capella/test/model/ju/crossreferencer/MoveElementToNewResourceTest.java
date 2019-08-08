@@ -25,8 +25,8 @@ import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFact
 import org.polarsys.capella.core.data.capellamodeller.CapellamodellerFactory;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.data.ctx.System;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
@@ -74,7 +74,7 @@ public class MoveElementToNewResourceTest extends AbstractReflectiveCrossReferen
         SystemAnalysis contextArchitecture = createCtxArchiCmd.getSystemAnalysis();
         //
         SystemFunction systemFunction = createCtxArchiCmd.getSystemFunction();
-        System system = createCtxArchiCmd.getSystem();
+        SystemComponent system = createCtxArchiCmd.getSystem();
         // Create the logical Architecture.
         CreateLogicalArchiCmd createLogicalArchiCmd = new CreateLogicalArchiCmd(systemEngineering,
             NamingConstants.SkeletonServicesImpl_package_name_logicalArchitecture, contextArchitecture, systemFunction,
@@ -88,7 +88,7 @@ public class MoveElementToNewResourceTest extends AbstractReflectiveCrossReferen
     SemanticEditingDomain editingDomain = (SemanticEditingDomain) getExecutionManager().getEditingDomain();
     ECrossReferenceAdapter crossReferencer = editingDomain.getCrossReferencer();
 
-    LogicalComponent logicalComponent = logicalArchitecture[0].getOwnedLogicalComponent();
+    LogicalComponent logicalComponent = (LogicalComponent)logicalArchitecture[0].getSystem();
     // Check the Logical System has cross referencers registered as eAdapters().
     assertTrue(logicalComponent.eAdapters().contains(crossReferencer));
   }

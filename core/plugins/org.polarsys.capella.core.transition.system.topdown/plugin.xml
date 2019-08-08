@@ -1328,7 +1328,6 @@
                </defaultMappingPossibility>
             </mappingElement>
             
-            
             <mappingElement
                   domainMetaClass="org.polarsys.capella.core.data.la.LogicalComponentPkg"
                   reuseExtendedElementDefaultPossibility="true"

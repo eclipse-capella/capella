@@ -30,7 +30,7 @@ public class CreateRPLOnFragmentedModel extends Fragmented {
 
     HashMap<String, Collection<String>> recToSourceMap = new HashMap<>();
     
-    recToSourceMap.put(OA_REC_ID, Arrays.asList(OA_OPCONTEXT_ID, OA_OPENTITIES_ID));
+    recToSourceMap.put(OA_REC_ID, Arrays.asList(OA_OPENTITIES_ID));
     recToSourceMap.put(SA_REC_ID, Arrays.asList(SA_LAYER_ID));
     recToSourceMap.put(LA_REC_ID, Arrays.asList(LA_LAYER_ID));
     recToSourceMap.put(PA_REC_ID, Arrays.asList(PA_LAYER_ID));

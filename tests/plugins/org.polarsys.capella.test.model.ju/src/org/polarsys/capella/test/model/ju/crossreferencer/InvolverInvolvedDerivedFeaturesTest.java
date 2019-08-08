@@ -16,20 +16,17 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.capellacore.Involvement;
 import org.polarsys.capella.core.data.capellacore.InvolverElement;
-import org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.cs.PhysicalPath;
 import org.polarsys.capella.core.data.cs.PhysicalPathInvolvement;
-import org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInvolvement;
-import org.polarsys.capella.core.data.ctx.ActorCapabilityInvolvement;
-import org.polarsys.capella.core.data.ctx.ActorMissionInvolvement;
 import org.polarsys.capella.core.data.ctx.Capability;
+import org.polarsys.capella.core.data.ctx.CapabilityInvolvement;
 import org.polarsys.capella.core.data.ctx.Mission;
-import org.polarsys.capella.core.data.ctx.SystemCapabilityInvolvement;
-import org.polarsys.capella.core.data.ctx.SystemMissionInvolvement;
+import org.polarsys.capella.core.data.ctx.MissionInvolvement;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
@@ -73,21 +70,13 @@ public class InvolverInvolvedDerivedFeaturesTest extends AbstractReflectiveCross
               if (reference.isContainment() && !involvementEClass.isAbstract()
                   && reference.getEReferenceType() == involvementEClass) {
                 isMatched = true;
-                if (involver instanceof Capability && involvement instanceof ActorCapabilityInvolvement)
-                  ((Capability) involver).getOwnedActorCapabilityInvolvements()
-                      .add((ActorCapabilityInvolvement) involvement);
-                else if (involvement instanceof SystemCapabilityInvolvement
-                    && involvement instanceof SystemCapabilityInvolvement)
-                  ((Capability) involver)
-                      .setOwnedSystemCapabilityInvolvement((SystemCapabilityInvolvement) involvement);
+                if (involver instanceof Capability && involvement instanceof CapabilityInvolvement)
+                  ((Capability) involver).getOwnedCapabilityInvolvements()
+                      .add((CapabilityInvolvement) involvement);
                 else if (involver instanceof CapabilityRealization
-                    && involvement instanceof ActorCapabilityRealizationInvolvement)
-                  ((CapabilityRealization) involver).getOwnedActorCapabilityRealizations()
-                      .add((ActorCapabilityRealizationInvolvement) involvement);
-                else if (involvement instanceof SystemComponentCapabilityRealizationInvolvement
-                    && involvement instanceof SystemComponentCapabilityRealizationInvolvement)
-                  ((CapabilityRealization) involver).getOwnedSystemComponentCapabilityRealizations()
-                      .add((SystemComponentCapabilityRealizationInvolvement) involvement);
+                    && involvement instanceof CapabilityRealizationInvolvement)
+                  ((CapabilityRealization) involver).getOwnedCapabilityRealizationInvolvements()
+                      .add((CapabilityRealizationInvolvement) involvement);
                 else if (involver instanceof OperationalCapability
                     && involvement instanceof EntityOperationalCapabilityInvolvement)
                   ((OperationalCapability) involver).getOwnedEntityOperationalCapabilityInvolvements()
@@ -95,11 +84,8 @@ public class InvolverInvolvedDerivedFeaturesTest extends AbstractReflectiveCross
                 else if (involver instanceof FunctionalChain)
                   ((FunctionalChain) involver).getOwnedFunctionalChainInvolvements()
                       .add((FunctionalChainInvolvement) involvement);
-                else if (involver instanceof Mission && involvement instanceof ActorMissionInvolvement)
-                  ((Mission) involver).getOwnedActorMissionInvolvements().add((ActorMissionInvolvement) involvement);
-                else if (involvement instanceof SystemMissionInvolvement
-                    && involvement instanceof ActorMissionInvolvement)
-                  ((Mission) involver).setOwnedSystemMissionInvolvement((SystemMissionInvolvement) involvement);
+                else if (involver instanceof Mission && involvement instanceof MissionInvolvement)
+                  ((Mission) involver).getOwnedMissionInvolvements().add((MissionInvolvement) involvement);
                 else if (involver instanceof PhysicalPath)
                   ((PhysicalPath) involver).getOwnedPhysicalPathInvolvements()
                       .add((PhysicalPathInvolvement) involvement);

@@ -19,8 +19,8 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.polarsys.capella.core.data.la.CapabilityRealizationPkg;
 import org.polarsys.capella.core.data.la.LaFactory;
-import org.polarsys.capella.core.data.la.LogicalActorPkg;
 import org.polarsys.capella.core.data.la.LogicalComponent;
+import org.polarsys.capella.core.data.la.LogicalComponentPkg;
 import org.polarsys.capella.core.data.la.LogicalFunction;
 import org.polarsys.capella.core.data.la.LogicalFunctionPkg;
 import org.polarsys.capella.core.model.skeleton.CapellaModelSkeleton;
@@ -52,15 +52,17 @@ public class CreateRPL_SpecificPackages_LA extends CreateRPL_SpecificPackages {
         cPkg.getOwnedCapabilityRealizationPkgs().add(LaFactory.eINSTANCE.createCapabilityRealizationPkg());
         result.addAll(cPkg.eContents());
 
-        LogicalActorPkg aPkg = project.getLogicalArchitecture().getOwnedLogicalActorPkg();
-        aPkg.getOwnedLogicalActorPkgs().add(LaFactory.eINSTANCE.createLogicalActorPkg());
-        aPkg.getOwnedLogicalActors().add(LaFactory.eINSTANCE.createLogicalActor());
-        result.addAll(aPkg.eContents());
+        LogicalComponentPkg aPkg = project.getLogicalArchitecture().getOwnedLogicalComponentPkg();
+        aPkg.getOwnedLogicalComponentPkgs().add(LaFactory.eINSTANCE.createLogicalComponentPkg());
+        LogicalComponent actor = LaFactory.eINSTANCE.createLogicalComponent();
+        actor.setActor(true);
+        aPkg.getOwnedLogicalComponents().add(actor);
+        result.addAll(aPkg.getOwnedLogicalComponentPkgs());
+        result.add(actor);
 
-        LogicalComponent lc = project.getLogicalArchitecture().getOwnedLogicalComponent();
+        LogicalComponent lc = (LogicalComponent)project.getLogicalArchitecture().getSystem();
 
-      // FIXME
-      //  lc.getOwnedLogicalComponentPkgs().add(LaFactory.eINSTANCE.createLogicalComponentPkg());
+        lc.getOwnedLogicalComponentPkgs().add(LaFactory.eINSTANCE.createLogicalComponentPkg());
         lc.getOwnedLogicalComponents().add(LaFactory.eINSTANCE.createLogicalComponent());
 
         result.addAll(lc.getOwnedLogicalComponentPkgs());

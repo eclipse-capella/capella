@@ -41,7 +41,10 @@ public class Messages extends NLS {
   public static String Rule_InteractionState_FailMsg;
   public static String Rule_StateFragment_FailMsg;
   public static String Rule_InteractionFunctionState_FailMsg;
-  
+  public static String MultiInstanceRoleExtension_logmsg;
+  public static String MultiInstanceRoleExtension_logmsg_confirm;
+  public static String MultiInstanceRoleExtension_message;
+  public static String MultiInstanceRoleExtension_title;
   public static String transitionES2IS_label;
   public static String transitionESF2ESB_label;
   public static String transitionFS2ES_label;

@@ -13,6 +13,7 @@ package org.polarsys.capella.test.navigator.ju;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.command.Command;
@@ -30,6 +31,7 @@ import org.eclipse.ui.navigator.CommonDropAdapterAssistant;
 import org.eclipse.ui.navigator.CommonViewer;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.menu.dynamic.util.DynamicCommandParameter;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.ctx.CapabilityPkg;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
@@ -116,10 +118,9 @@ public class DragDropTest extends NavigatorEmptyProject {
     checkMoveDisabled(systemFunctionPkg, EPBS_ARCHITECTURE);
 
     // Check root components
-    checkMoveDisabled(OA_OPERATIONAL_CONTEXT, logicalFunctionPkg);
-    checkMoveDisabled(SA_SYSTEM, logicalFunctionPkg);
-    checkMoveDisabled(LA_LOGICAL_SYSTEM, logicalFunctionPkg);
-    checkMoveDisabled(PA_PHYSICAL_SYSTEM, logicalFunctionPkg);
+    checkMoveDisabled(SYSTEM, logicalFunctionPkg);
+    checkMoveDisabled(LOGICAL_SYSTEM, logicalFunctionPkg);
+    checkMoveDisabled(PHYSICAL_SYSTEM, logicalFunctionPkg);
 
     // Check functional chain
     EObject chain = createFunctionalChain(ROOT_SYSTEM_FUNCTION);
@@ -143,15 +144,15 @@ public class DragDropTest extends NavigatorEmptyProject {
     checkMoveDisabled(LA_INTERFACES, EPBS_ARCHITECTURE);
 
     // Check components and pkgs
-    EObject logicalComponent = createComponent(LA_LOGICAL_SYSTEM);
-    EObject physicalComponent = createComponent(PA_PHYSICAL_SYSTEM);
-    EObject logicalComponent2 = createComponent(LA_LOGICAL_SYSTEM);
-    EObject physicalComponent2 = createComponent(PA_PHYSICAL_SYSTEM);
-    EObject logicalComponentPkg = createComponentPkg(LA_LOGICAL_SYSTEM);
-    EObject physicalComponentPkg = createComponentPkg(PA_PHYSICAL_SYSTEM);
+    EObject logicalComponent = createComponent(LOGICAL_SYSTEM);
+    EObject physicalComponent = createComponent(PHYSICAL_SYSTEM);
+    EObject logicalComponent2 = createComponent(LOGICAL_SYSTEM);
+    EObject physicalComponent2 = createComponent(PHYSICAL_SYSTEM);
+    EObject logicalComponentPkg = createComponentPkg(LOGICAL_SYSTEM);
+    EObject physicalComponentPkg = createComponentPkg(PHYSICAL_SYSTEM);
 
-    checkMoveDisabled(logicalComponent, SA_SYSTEM);
-    checkMoveDisabled(logicalComponent, PA_PHYSICAL_SYSTEM);
+    checkMoveDisabled(logicalComponent, SYSTEM);
+    checkMoveDisabled(logicalComponent, PHYSICAL_SYSTEM);
     checkMoveAllowed(logicalComponent, logicalComponent2);
     checkMoveDisabled(logicalComponent, physicalComponent2);
     checkMoveAllowed(physicalComponent, physicalComponent2);
@@ -162,16 +163,15 @@ public class DragDropTest extends NavigatorEmptyProject {
 
     // Check Capability Pkgs
     checkMoveAllowed(OA_OPERATIONAL_CAPABILITIES, OPERATIONAL_ANALYSIS);
-    checkMoveAllowed(OA_OPERATIONAL_CAPABILITIES, OA_OPERATIONAL_CONTEXT);
     checkMoveDisabled(OA_OPERATIONAL_CAPABILITIES, SYSTEM_ANALYSIS);
 
     checkMoveAllowed(SA_CAPABILITIES, SYSTEM_ANALYSIS);
-    checkMoveAllowed(SA_CAPABILITIES, SA_SYSTEM);
+    checkMoveAllowed(SA_CAPABILITIES, SYSTEM);
     checkMoveDisabled(SA_CAPABILITIES, OPERATIONAL_ANALYSIS);
     checkMoveDisabled(SA_CAPABILITIES, LOGICAL_ARCHITECTURE);
 
     checkMoveDisabled(LA_CAPABILITIES, SYSTEM_ANALYSIS);
-    checkMoveAllowed(LA_CAPABILITIES, LA_LOGICAL_SYSTEM);
+    checkMoveAllowed(LA_CAPABILITIES, LOGICAL_SYSTEM);
     checkMoveAllowed(LA_CAPABILITIES, LOGICAL_ARCHITECTURE);
     checkMoveAllowed(LA_CAPABILITIES, PHYSICAL_ARCHITECTURE);
     checkMoveAllowed(LA_CAPABILITIES, EPBS_ARCHITECTURE);
@@ -180,7 +180,7 @@ public class DragDropTest extends NavigatorEmptyProject {
     checkMoveDisabled(capability, OA_OPERATIONAL_CAPABILITIES);
     checkMoveDisabled(capability, PA_CAPABILITIES);
     checkMoveAllowed(logicalCapability, PA_CAPABILITIES);
-    EObject capabilityPkg = createCapabilityPkg(LA_LOGICAL_SYSTEM);
+    EObject capabilityPkg = createCapabilityPkg(LOGICAL_SYSTEM);
     checkMoveDisabled(capability, capabilityPkg);
     checkMoveAllowed(logicalCapability, capabilityPkg);
 
@@ -248,12 +248,12 @@ public class DragDropTest extends NavigatorEmptyProject {
 
   private EnumerationLiteral createEnumerationLiteral(Enumeration container) {
     return create(container, DatavaluePackage.Literals.ENUMERATION_LITERAL,
-        DatatypePackage.Literals.ENUMERATION__OWNED_LITERALS);
+        DatatypePackage.Literals.ENUMERATION__OWNED_LITERALS, null);
   }
 
   private LiteralBooleanValue createBooleanLiteral(BooleanType container) {
     return create(container, DatavaluePackage.Literals.LITERAL_BOOLEAN_VALUE,
-        DatatypePackage.Literals.BOOLEAN_TYPE__OWNED_LITERALS);
+        DatatypePackage.Literals.BOOLEAN_TYPE__OWNED_LITERALS, null);
   }
 
   private EObject createComponentPkg(Component container) {
@@ -267,15 +267,39 @@ public class DragDropTest extends NavigatorEmptyProject {
   }
 
   private EObject createComponent(Component container) {
+    Predicate<CommandParameter> predicate = new Predicate<CommandParameter>() {
+      @Override
+      public boolean test(CommandParameter t) {
+        return (t instanceof DynamicCommandParameter ? ((DynamicCommandParameter)t).getLabel().contains("Component"): false);
+      }
+    };
+    
     if (container instanceof LogicalComponent) {
-      return create(container, LaPackage.Literals.LOGICAL_COMPONENT);
+      return create(container, LaPackage.Literals.LOGICAL_COMPONENT, null, predicate);
 
     } else if (container instanceof PhysicalComponent) {
-      return create(container, PaPackage.Literals.PHYSICAL_COMPONENT);
+      return create(container, PaPackage.Literals.PHYSICAL_COMPONENT, null, predicate);
     }
     return null;
   }
 
+  private EObject createActor(Component container) {
+    Predicate<CommandParameter> predicate = new Predicate<CommandParameter>() {
+      @Override
+      public boolean test(CommandParameter t) {
+        return (t instanceof DynamicCommandParameter ? ((DynamicCommandParameter)t).getLabel().contains("Actor"): false);
+      }
+    };
+    
+    if (container instanceof LogicalComponent) {
+      return create(container, LaPackage.Literals.LOGICAL_COMPONENT, null, predicate);
+
+    } else if (container instanceof PhysicalComponent) {
+      return create(container, PaPackage.Literals.PHYSICAL_COMPONENT, null, predicate);
+    }
+    return null;
+  }
+  
   private AbstractFunction createFunction(EObject container) {
     return create(container, CtxPackage.Literals.SYSTEM_FUNCTION);
   }
@@ -352,14 +376,14 @@ public class DragDropTest extends NavigatorEmptyProject {
   }
 
   private <T> T create(final EObject container, EClass clazz) {
-    return create(container, clazz, null);
+    return create(container, clazz, null, null);
   }
 
-  private <T> T create(final EObject container, EClass clazz, EStructuralFeature f) {
+  private <T> T create(final EObject container, EClass clazz, EStructuralFeature f, Predicate<CommandParameter> predicate) {
     Collection<CommandParameter> commands = (Collection<CommandParameter>) TransactionHelper.getEditingDomain(container)
         .getNewChildDescriptors(container, null);
     Optional<CommandParameter> cp = commands.stream()
-        .filter(c -> clazz.isInstance(c.getValue()) && (f == null || c.getEStructuralFeature() == f)).findFirst();
+        .filter(c -> clazz.isInstance(c.getValue()) && (f == null || c.getEStructuralFeature() == f)).filter(x -> (predicate != null ? predicate.test(x): true)).findFirst();
     if (cp.isPresent()) {
       Command cmd = CreateChildCommand.create(TransactionHelper.getEditingDomain(container), container, cp.get(),
           Arrays.asList(container));

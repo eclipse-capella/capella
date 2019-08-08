@@ -13,7 +13,7 @@ package org.polarsys.capella.test.recrpl.ju.handlers.scope;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
-import org.polarsys.capella.core.data.ctx.Actor;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.transition.common.handlers.scope.IScopeFilter;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -34,7 +34,7 @@ public class SecondInclusionFilter implements IScopeFilter {
     if (!ExternalInclusion.isEnabled()) {
       return false;
     }
-    return ExternalInclusion.ACTOR_2.equals(((Actor) element).getId());
+    return ExternalInclusion.ACTOR_2.equals(((SystemComponent) element).getId());
   }
 
 }

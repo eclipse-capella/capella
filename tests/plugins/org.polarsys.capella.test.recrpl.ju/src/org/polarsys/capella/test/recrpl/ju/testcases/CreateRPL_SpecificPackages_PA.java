@@ -20,8 +20,8 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.polarsys.capella.core.data.la.CapabilityRealizationPkg;
 import org.polarsys.capella.core.data.la.LaFactory;
 import org.polarsys.capella.core.data.pa.PaFactory;
-import org.polarsys.capella.core.data.pa.PhysicalActorPkg;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
+import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
 import org.polarsys.capella.core.model.skeleton.CapellaModelSkeleton;
@@ -54,15 +54,17 @@ public class CreateRPL_SpecificPackages_PA extends CreateRPL_SpecificPackages {
         cPkg.getOwnedCapabilityRealizationPkgs().add(LaFactory.eINSTANCE.createCapabilityRealizationPkg());
         result.addAll(cPkg.eContents());
 
-        PhysicalActorPkg aPkg = project.getPhysicalArchitecture().getOwnedPhysicalActorPkg();
-        aPkg.getOwnedPhysicalActorPkgs().add(PaFactory.eINSTANCE.createPhysicalActorPkg());
-        aPkg.getOwnedPhysicalActors().add(PaFactory.eINSTANCE.createPhysicalActor());
-        result.addAll(aPkg.eContents());
+        PhysicalComponentPkg aPkg = project.getPhysicalArchitecture().getOwnedPhysicalComponentPkg();
+        aPkg.getOwnedPhysicalComponentPkgs().add(PaFactory.eINSTANCE.createPhysicalComponentPkg());
+        PhysicalComponent actor = PaFactory.eINSTANCE.createPhysicalComponent();
+        actor.setActor(true);
+        aPkg.getOwnedPhysicalComponents().add(actor);
+        result.addAll(aPkg.getOwnedPhysicalComponentPkgs());
+        result.add(actor);
 
-        PhysicalComponent pc = project.getPhysicalArchitecture().getOwnedPhysicalComponent();
+        PhysicalComponent pc = (PhysicalComponent)project.getPhysicalArchitecture().getSystem();
 
-        // FIXME
-     //   pc.getOwnedPhysicalComponentPkgs().add(PaFactory.eINSTANCE.createPhysicalComponentPkg());
+        pc.getOwnedPhysicalComponentPkgs().add(PaFactory.eINSTANCE.createPhysicalComponentPkg());
         pc.getOwnedPhysicalComponents().add(PaFactory.eINSTANCE.createPhysicalComponent());
 
         result.addAll(pc.getOwnedPhysicalComponentPkgs());

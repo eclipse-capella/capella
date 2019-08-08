@@ -30,6 +30,8 @@ import org.polarsys.capella.common.re.RePackage;
 import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
+import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
@@ -46,6 +48,7 @@ import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.skeleton.CapellaModelSkeleton;
 import org.polarsys.capella.test.recrpl.ju.RecRplCommandManager;
 import org.polarsys.capella.test.recrpl.ju.RecRplTestCase;
@@ -62,7 +65,6 @@ public abstract class CreateRPL_SpecificPackages extends RecRplTestCase {
 
       .put(OaPackage.Literals.OPERATIONAL_ACTIVITY, OaPackage.Literals.OPERATIONAL_ACTIVITY_PKG)
       .put(OaPackage.Literals.OPERATIONAL_ACTIVITY_PKG, OaPackage.Literals.OPERATIONAL_ACTIVITY_PKG)
-      .put(OaPackage.Literals.OPERATIONAL_ACTOR, OaPackage.Literals.ENTITY_PKG)
       .put(OaPackage.Literals.ENTITY, OaPackage.Literals.ENTITY_PKG)
       .put(OaPackage.Literals.ENTITY_PKG, OaPackage.Literals.ENTITY_PKG)
       .put(OaPackage.Literals.OPERATIONAL_CAPABILITY, OaPackage.Literals.OPERATIONAL_CAPABILITY_PKG)
@@ -71,9 +73,9 @@ public abstract class CreateRPL_SpecificPackages extends RecRplTestCase {
       .put(OaPackage.Literals.ROLE_PKG, OaPackage.Literals.ROLE_PKG)
 
       .put(CtxPackage.Literals.SYSTEM_FUNCTION, CtxPackage.Literals.SYSTEM_FUNCTION_PKG)
+      .put(CtxPackage.Literals.SYSTEM_COMPONENT, CtxPackage.Literals.SYSTEM_COMPONENT_PKG)
+      .put(CtxPackage.Literals.SYSTEM_COMPONENT_PKG, CtxPackage.Literals.SYSTEM_COMPONENT_PKG)
       .put(CtxPackage.Literals.SYSTEM_FUNCTION_PKG, CtxPackage.Literals.SYSTEM_FUNCTION_PKG)
-      .put(CtxPackage.Literals.ACTOR, CtxPackage.Literals.ACTOR_PKG)
-      .put(CtxPackage.Literals.ACTOR_PKG, CtxPackage.Literals.ACTOR_PKG)
       .put(CtxPackage.Literals.MISSION, CtxPackage.Literals.MISSION_PKG)
       .put(CtxPackage.Literals.MISSION_PKG, CtxPackage.Literals.MISSION_PKG)
       .put(CtxPackage.Literals.CAPABILITY, CtxPackage.Literals.CAPABILITY_PKG)
@@ -85,15 +87,11 @@ public abstract class CreateRPL_SpecificPackages extends RecRplTestCase {
       .put(LaPackage.Literals.LOGICAL_COMPONENT_PKG, LaPackage.Literals.LOGICAL_COMPONENT_PKG)
       .put(LaPackage.Literals.CAPABILITY_REALIZATION, LaPackage.Literals.CAPABILITY_REALIZATION_PKG)
       .put(LaPackage.Literals.CAPABILITY_REALIZATION_PKG, LaPackage.Literals.CAPABILITY_REALIZATION_PKG)
-      .put(LaPackage.Literals.LOGICAL_ACTOR, LaPackage.Literals.LOGICAL_ACTOR_PKG)
-      .put(LaPackage.Literals.LOGICAL_ACTOR_PKG, LaPackage.Literals.LOGICAL_ACTOR_PKG)
 
       .put(PaPackage.Literals.PHYSICAL_FUNCTION, PaPackage.Literals.PHYSICAL_FUNCTION_PKG)
       .put(PaPackage.Literals.PHYSICAL_FUNCTION_PKG, PaPackage.Literals.PHYSICAL_FUNCTION_PKG)
       .put(PaPackage.Literals.PHYSICAL_COMPONENT, PaPackage.Literals.PHYSICAL_COMPONENT_PKG)
       .put(PaPackage.Literals.PHYSICAL_COMPONENT_PKG, PaPackage.Literals.PHYSICAL_COMPONENT_PKG)
-      .put(PaPackage.Literals.PHYSICAL_ACTOR_PKG, PaPackage.Literals.PHYSICAL_ACTOR_PKG)
-      .put(PaPackage.Literals.PHYSICAL_ACTOR, PaPackage.Literals.PHYSICAL_ACTOR_PKG)
 
       .put(CsPackage.Literals.INTERFACE_PKG, CsPackage.Literals.INTERFACE_PKG)
       .put(CsPackage.Literals.INTERFACE, CsPackage.Literals.INTERFACE_PKG)
@@ -184,14 +182,12 @@ public abstract class CreateRPL_SpecificPackages extends RecRplTestCase {
 
           // There should be at most one specific package of a given type per block architecture
           Map.Entry<EClass, EClass> key = new SimpleImmutableEntry<EClass, EClass>(targetBlock.eClass(), targetContainer.eClass());
-
           EObject previous = packages.put(key, targetContainer);
-          if (previous != null) {
+          if (previous != null && !(previous instanceof ComponentPkg)) {
             assertSame(targetContainer, previous);
           }
 
-          assertSame(getExpectedPackageContainer(targetBlock, targetContainer.eClass()), targetContainer.eContainer());
-
+          assertSame(getExpectedPackageContainer(targetBlock, targetContainer.eClass(), target), targetContainer.eContainer());
         }
 
       } else {
@@ -222,7 +218,7 @@ public abstract class CreateRPL_SpecificPackages extends RecRplTestCase {
     return result;
   }
 
-  protected EObject getExpectedPackageContainer(BlockArchitecture arch, EClass packageClass) {
+  protected EObject getExpectedPackageContainer(BlockArchitecture arch, EClass packageClass, EObject target) {
 
     if (packageClass == OaPackage.Literals.OPERATIONAL_ACTIVITY_PKG) {
       OperationalActivityPkg pkg = (OperationalActivityPkg) ((OperationalAnalysis) arch).getOwnedFunctionPkg();
@@ -246,8 +242,12 @@ public abstract class CreateRPL_SpecificPackages extends RecRplTestCase {
       return pkg.getOwnedSystemFunctions().get(0);
     }
 
-    if (packageClass == CtxPackage.Literals.ACTOR_PKG) {
-      return ((SystemAnalysis) arch).getOwnedActorPkg();
+    if (packageClass == CtxPackage.Literals.SYSTEM_COMPONENT_PKG) {
+      Component root = ComponentExt.getRootComponent(target);
+      if (root != null && BlockArchitectureExt.isRootComponent(root)) {
+        return ((SystemAnalysis) arch).getSystem();
+      }
+      return ((SystemAnalysis) arch).getOwnedSystemComponentPkg();
     }
 
     if (packageClass == CtxPackage.Literals.MISSION_PKG) {
@@ -264,15 +264,15 @@ public abstract class CreateRPL_SpecificPackages extends RecRplTestCase {
     }
 
     if (packageClass == LaPackage.Literals.LOGICAL_COMPONENT_PKG) {
-      return ((LogicalArchitecture) arch).getOwnedLogicalComponent();
+      Component root = ComponentExt.getRootComponent(target);
+      if (root != null && BlockArchitectureExt.isRootComponent(root)) {
+        return ((LogicalArchitecture) arch).getSystem();
+      }
+      return ((LogicalArchitecture) arch).getOwnedLogicalComponentPkg();
     }
 
     if (packageClass == LaPackage.Literals.CAPABILITY_REALIZATION_PKG) {
       return arch.getOwnedAbstractCapabilityPkg();
-    }
-
-    if (packageClass == LaPackage.Literals.LOGICAL_ACTOR_PKG) {
-      return ((LogicalArchitecture)arch).getOwnedLogicalActorPkg();
     }
 
     if (packageClass == PaPackage.Literals.PHYSICAL_FUNCTION_PKG) {
@@ -281,11 +281,11 @@ public abstract class CreateRPL_SpecificPackages extends RecRplTestCase {
     }
 
     if (packageClass == PaPackage.Literals.PHYSICAL_COMPONENT_PKG) {
-      return ((PhysicalArchitecture) arch).getOwnedPhysicalComponent();
-    }
-
-    if (packageClass == PaPackage.Literals.PHYSICAL_ACTOR_PKG) {
-      return ((PhysicalArchitecture) arch).getOwnedPhysicalActorPkg();
+      Component root = ComponentExt.getRootComponent(target);
+      if (root != null && BlockArchitectureExt.isRootComponent(root)) {
+        return ((PhysicalArchitecture) arch).getSystem();
+      }
+      return ((PhysicalArchitecture) arch).getOwnedPhysicalComponentPkg();
     }
 
     if (packageClass == CsPackage.Literals.INTERFACE_PKG) {

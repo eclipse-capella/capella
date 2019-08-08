@@ -63,7 +63,6 @@ import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyValue;
 import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.capellamodeller.Project;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.AbstractPhysicalLinkEnd;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
@@ -71,9 +70,8 @@ import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalLinkEnd;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
-import org.polarsys.capella.core.data.ctx.Actor;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
-import org.polarsys.capella.core.data.ctx.SystemContext;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeEnd;
@@ -88,16 +86,14 @@ import org.polarsys.capella.core.data.information.datatype.DataType;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.data.la.LaPackage;
-import org.polarsys.capella.core.data.la.LogicalActor;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.la.LogicalContext;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
-import org.polarsys.capella.core.data.pa.PhysicalContext;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.handler.helpers.HoldingResourceHelper;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 
 /**
  * An implementation of a semantic rule provider for Capella models.
@@ -729,19 +725,12 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
       // Parts
       Part part = (Part)value;
       Type type = part.getType();
-      if (type instanceof AbstractActor) {
-        if (type instanceof Actor)
-          result = element instanceof SystemContext;
-        else if (type instanceof LogicalActor)
-          result = element instanceof LogicalContext;
-        else
-          result = element instanceof PhysicalContext;
+      if (type instanceof SystemComponent && ComponentExt.isActor(type)) {
+        result = element instanceof SystemComponent && ComponentExt.isActor(element);
       } else if (type instanceof LogicalComponent) {
-        result = element instanceof LogicalContext ||
-            element instanceof LogicalComponent;
+        result = element instanceof LogicalComponent;
       } else if (type instanceof PhysicalComponent) {
-        result = element instanceof PhysicalContext ||
-            element instanceof PhysicalComponent;
+        result = element instanceof PhysicalComponent;
       }
     }
     return result;

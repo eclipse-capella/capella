@@ -41,7 +41,7 @@ public class PartIcon extends NavigatorEmptyProject {
   public void test() throws Exception {
     // Try to instantiate filters using a class
 
-    Part part = ComponentExt.getRepresentingParts(LA_LOGICAL_SYSTEM).iterator().next();
+    Part part = ComponentExt.getRepresentingParts(LOGICAL_SYSTEM).iterator().next();
     
     updateApproach(ProjectApproach.SingletonComponents, part);
     assertTrue("Part icon is decorated Component icon", hasDecoratedComponentIcon(part));

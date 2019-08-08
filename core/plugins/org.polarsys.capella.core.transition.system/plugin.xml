@@ -284,6 +284,17 @@
                </defaultMappingPossibility>
             </mappingElement>
             
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.cs.ComponentPkg"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.cs.ComponentPkgRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.cs.ComponentPkgRule"
+                     enabled="true"
+                     name="ComponentPkg">
+               </defaultMappingPossibility>
+            </mappingElement>
             
             <mappingElement
                   domainMetaClass="org.polarsys.capella.core.data.cs.Component"

@@ -33,12 +33,12 @@ import org.polarsys.capella.common.flexibility.properties.schema.IProperties;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
 import org.polarsys.capella.core.data.capellamodeller.Project;
-import org.polarsys.capella.core.data.ctx.Actor;
-import org.polarsys.capella.core.data.ctx.ActorPkg;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
+import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.OaFactory;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
-import org.polarsys.capella.core.data.oa.OperationalActor;
 import org.polarsys.capella.core.libraries.model.ICapellaModel;
 import org.polarsys.capella.core.model.helpers.ModelQueryHelper;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaCopyToClipboardCommand;
@@ -69,14 +69,15 @@ public class CopyPasteModelWithFunctionalAllocation extends MiscModel {
     final String actor1Name = "Actor1";
     final String activity1Name = "Activity1";
 
-    final OperationalActor[] actor1 = { null };
+    final Entity[] actor1 = { null };
 
     ExecutionManager executionManager = TestHelper.getExecutionManager(project);
     executionManager.execute(new AbstractReadWriteCommand() {
       @Override
       public void run() {
         // Add an Actor1 at OA level
-        actor1[0] = OaFactory.eINSTANCE.createOperationalActor(actor1Name);
+        actor1[0] = OaFactory.eINSTANCE.createEntity(actor1Name);
+        actor1[0].setActor(true);
         ModelQueryHelper.getOperationalEntityPkg(project).getOwnedEntities().add(actor1[0]);
         CsServices.getService().createRepresentingPartIfNone(actor1[0]);
 
@@ -98,17 +99,17 @@ public class CopyPasteModelWithFunctionalAllocation extends MiscModel {
     // Copy paste the transitioned actor.
     //
     // Copy
-    Actor systemActor = (Actor) EcoreUtil.getObjectByType(getSourceElements(actor1[0]), CtxPackage.Literals.ACTOR);
+    SystemComponent systemActor = (SystemComponent) EcoreUtil.getObjectByType(getSourceElements(actor1[0]),
+        CtxPackage.Literals.SYSTEM_COMPONENT);
     CapellaCommonNavigator capellaProjectView = (CapellaCommonNavigator) PlatformUI.getWorkbench()
         .getActiveWorkbenchWindow().getActivePage().showView(CapellaCommonNavigator.ID);
     CapellaCopyToClipboardCommand capellaCopyToClipboardCommand = new CapellaCopyToClipboardCommand(ted,
         Collections.singleton(systemActor), capellaProjectView.getCommonViewer());
     ted.getCommandStack().execute(capellaCopyToClipboardCommand);
     // Paste
-    ActorPkg actorPkg = ModelQueryHelper.getSystemActorPkg(project);
+    ComponentPkg actorPkg = ModelQueryHelper.getSystemComponentPkg(project);
     List<EObject> contentBeforePaste = new ArrayList<EObject>(actorPkg.eContents());
-    CapellaPasteCommand capellaPasteCommand = new CapellaPasteCommand(ted,
-        actorPkg, null, CommandParameter.NO_INDEX);
+    CapellaPasteCommand capellaPasteCommand = new CapellaPasteCommand(ted, actorPkg, null, CommandParameter.NO_INDEX);
     ted.getCommandStack().execute(capellaPasteCommand);
 
     //
@@ -117,7 +118,8 @@ public class CopyPasteModelWithFunctionalAllocation extends MiscModel {
     List<EObject> addedElements = new ArrayList<EObject>(actorPkg.eContents());
     addedElements.removeAll(contentBeforePaste);
     assertTrue("1 additional element of type Actor is expected in Actors package", addedElements.size() == 1);
-    Actor pastedActor = (Actor) EcoreUtil.getObjectByType(addedElements, CtxPackage.Literals.ACTOR);
+    SystemComponent pastedActor = (SystemComponent) EcoreUtil.getObjectByType(addedElements,
+        CtxPackage.Literals.SYSTEM_COMPONENT);
 
     assertTrue("Feature Owned Traces must be empty in copied Actor", pastedActor.getOwnedTraces().isEmpty());
     assertTrue("Feature Owned Functional Allocation must be empty in copied Actor",
@@ -130,6 +132,7 @@ public class CopyPasteModelWithFunctionalAllocation extends MiscModel {
 
   /**
    * Set Transition preferences.
+   * 
    * @param id
    * @param value
    */
@@ -149,6 +152,7 @@ public class CopyPasteModelWithFunctionalAllocation extends MiscModel {
 
   /**
    * Given a target object, get the source object using Traces.
+   * 
    * @param object
    * @return
    */
