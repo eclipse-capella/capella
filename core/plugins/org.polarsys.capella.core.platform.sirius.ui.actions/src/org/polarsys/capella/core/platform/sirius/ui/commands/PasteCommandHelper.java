@@ -12,7 +12,10 @@ package org.polarsys.capella.core.platform.sirius.ui.commands;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -27,15 +30,19 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-
 import org.polarsys.capella.common.model.copypaste.SharedCopyPasteElements;
-import org.polarsys.capella.core.ui.toolkit.Activator;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.ctx.CtxPackage;
+import org.polarsys.capella.core.data.epbs.EpbsPackage;
+import org.polarsys.capella.core.data.la.LaPackage;
+import org.polarsys.capella.core.data.oa.OaPackage;
+import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
+import org.polarsys.capella.core.ui.toolkit.Activator;
 
 /**
  * Helper to ease paste commands to create when cut/copy/drag paste elements.
@@ -47,7 +54,7 @@ public class PasteCommandHelper {
   private PasteCommandHelper() {
     // Avoid to instantiate.
   }
-
+  
   public static IStatus createPasteCommands(Collection<?> pasteElements, CompoundCommand commands, EObject owner, EStructuralFeature feature,
       EditingDomain domain, int index, boolean useIndex) {
     IStatus status = Status.OK_STATUS;
@@ -69,7 +76,7 @@ public class PasteCommandHelper {
       if (ownerContainments.contains(containingFeature)) {
         feat = containingFeature;
       } else {
-        feat = getNewTargetContainingFeature(originalObject, owner, containingFeature);
+        feat = getNewTargetContainingFeature((EObject) originalObject, owner, containingFeature);
       }
       
       boolean append = true;
@@ -122,18 +129,31 @@ public class PasteCommandHelper {
    * In case the original containing feature is not the same as the target containing feature
    * 
    * @param originalObject
-   * @param owner
-   * @param containingFeature
+   * @param newOwner
+   * @param originalContainingFeature
    * @return
    */
-  protected static EStructuralFeature getNewTargetContainingFeature(Object originalObject, EObject owner,
-      EStructuralFeature containingFeature) {
+  protected static EStructuralFeature getNewTargetContainingFeature(EObject originalObject, EObject newOwner,
+      EStructuralFeature originalContainingFeature) {
     if (originalObject instanceof Part) {
-      if (owner instanceof ComponentPkg
-          && containingFeature == CapellacorePackage.Literals.CLASSIFIER__OWNED_FEATURES) {
+      if (newOwner instanceof ComponentPkg
+          && originalContainingFeature == CapellacorePackage.Literals.CLASSIFIER__OWNED_FEATURES) {
         return CsPackage.Literals.COMPONENT_PKG__OWNED_PARTS;
-      } else if (owner instanceof Component && containingFeature == CsPackage.Literals.COMPONENT_PKG__OWNED_PARTS) {
+      } else if (newOwner instanceof Component && originalContainingFeature == CsPackage.Literals.COMPONENT_PKG__OWNED_PARTS) {
         return CapellacorePackage.Literals.CLASSIFIER__OWNED_FEATURES;
+      }
+    } // If I move a Component or a ComponentPkg ...
+    else if (originalObject instanceof Component || originalObject instanceof ComponentPkg) {
+      // ... between a Component container and a ComponentPkg container, then containing features with the same name can
+      // be deduced
+      if ((originalObject.eContainer() instanceof Component && newOwner instanceof ComponentPkg)
+          || (originalObject.eContainer() instanceof ComponentPkg && newOwner instanceof Component)) {
+        String originalFeatureName = originalContainingFeature.getName();
+        Optional<EStructuralFeature> newFeatureOptional = newOwner.eClass().getEAllStructuralFeatures().stream()
+            .filter(f -> f.getName().equals(originalFeatureName)).findAny();
+        if (newFeatureOptional.isPresent()) {
+          return newFeatureOptional.get();
+        }
       }
     }
     return null;
