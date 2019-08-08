@@ -9,7 +9,6 @@ Bundle-Localization: plugin
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.polarsys.capella.common.ui.toolkit.browser;visibility:=reexport,
  org.eclipse.gmf.runtime.diagram.ui;visibility:=reexport,
- org.polarsys.capella.common.platform.sirius,
  org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.polarsys.capella.core.ui.properties
 Export-Package: org.polarsys.capella.core.ui.semantic.browser,

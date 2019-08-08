@@ -128,7 +128,6 @@
         <module>org.polarsys.capella.core.re.validation</module>
         <module>org.polarsys.capella.core.semantic.queries</module>
         <module>org.polarsys.capella.core.semantic.queries.sirius</module>
-        <module>org.polarsys.capella.core.sequencediag.specific</module>
         <module>org.polarsys.capella.core.services</module>
         <module>org.polarsys.capella.core.sirius.analysis</module>
         <module>org.polarsys.capella.core.sirius.ui</module>

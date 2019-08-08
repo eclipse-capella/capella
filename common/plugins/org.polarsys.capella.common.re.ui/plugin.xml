@@ -470,15 +470,6 @@
    </extension>
    
    
-   <!--extension
-         name="Decorator for sirius diagram concerning REC"
-         point="org.polarsys.capella.common.sirius.decorators.diagramDecorators">
-      <decorator
-            class="org.polarsys.capella.common.re.ui.decorators.InstanciationLabelDecorator">
-      </decorator>
-   </extension-->
-   
-   
    <extension point="org.eclipse.ui.decorators">
    
       <decorator

@@ -50,7 +50,6 @@
         <module>org.polarsys.capella.common.model.helpers</module>
         <module>org.polarsys.capella.common.platform.eclipse.tools.report.console</module>
         <module>org.polarsys.capella.common.platform.eclipse.tools.report.ui</module>
-        <module>org.polarsys.capella.common.platform.sirius</module>
         <module>org.polarsys.capella.common.platform.sirius.customization</module>
         <module>org.polarsys.capella.common.platform.sirius.ted</module>
         <module>org.polarsys.capella.common.queries</module>
@@ -58,7 +57,6 @@
         <module>org.polarsys.capella.common.re.gen</module>
         <module>org.polarsys.capella.common.re.gen.edit</module>
         <module>org.polarsys.capella.common.re.ui</module>
-        <module>org.polarsys.capella.common.sirius.decorators</module>
         <module>org.polarsys.capella.common.tools.report</module>
         <module>org.polarsys.capella.common.tools.report.appenders.console</module>
         <module>org.polarsys.capella.common.tools.report.appenders.file</module>
@@ -71,7 +69,6 @@
         <module>org.polarsys.capella.common.ui.massactions</module>
         <module>org.polarsys.capella.common.ui.massactions.core</module>
         <module>org.polarsys.capella.common.ui.menu.dynamic</module>
-        <module>org.polarsys.capella.common.ui.progress</module>
         <module>org.polarsys.capella.common.ui.services</module>
         <module>org.polarsys.capella.common.ui.toolkit</module>
         <module>org.polarsys.capella.common.ui.toolkit.browser</module>

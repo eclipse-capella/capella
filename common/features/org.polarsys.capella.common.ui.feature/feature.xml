@@ -113,13 +113,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.polarsys.capella.common.ui.progress"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.polarsys.capella.common.platform.sirius.customization"
          download-size="0"
          install-size="0"
@@ -135,13 +128,6 @@
 
    <plugin
          id="org.polarsys.capella.common.ui.menu.dynamic"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.polarsys.capella.common.sirius.decorators"
          download-size="0"
          install-size="0"
          version="0.0.0"

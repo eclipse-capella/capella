@@ -66,7 +66,6 @@ import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.common.sirius.decorators.loader.SiriusDecoratorsManager;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.capellacore.Allocation;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -1172,18 +1171,11 @@ public class FaServices {
         target = ((FunctionalChainInvolvement) target).getInvolved();
       }
       if (isControlNode(target)) {
-        return decorateString(ICommonConstants.EMPTY_STRING, decorator);
+        return ICommonConstants.EMPTY_STRING;
       }
-      return decorateString(EObjectExt.getText(target), decorator);
+      return EObjectExt.getText(target);
     }
-    return decorateString(ICommonConstants.EMPTY_STRING, decorator);
-  }
-
-  private String decorateString(String text, Object element) {
-    for (ILabelDecorator decorator : SiriusDecoratorsManager.getDecorators()) {
-      text = decorator.decorateText(text, element);
-    }
-    return text;
+    return ICommonConstants.EMPTY_STRING;
   }
 
   public boolean isGatherFunction(EObject element) {
@@ -4525,7 +4517,7 @@ public class FaServices {
    */
   public String getFunctionalExchangeLabel(FunctionalExchange exchange, DDiagram diagram) {
     if (exchange == null) {
-      return decorateString(ICommonConstants.EMPTY_STRING, exchange);
+      return ICommonConstants.EMPTY_STRING;
     }
     if (isHideFunctionalExchangesNamesEnable(exchange, diagram) || isHideInteractionsNamesEnable(exchange, diagram)) {
       return Character.toString(ICommonConstants.WHITE_SPACE_CHARACTER);
@@ -4561,10 +4553,10 @@ public class FaServices {
     }
 
     if (showFEEI) {
-      return decorateString(getFEEIMessageName(exchange), exchange);
+      return getFEEIMessageName(exchange);
     }
     if (showFEEIParams || showFEParams) {
-      return decorateString(showFeEiParams(exchange, showFEEIParams), exchange);
+      return showFeEiParams(exchange, showFEEIParams);
     }
 
     StringBuilder result = new StringBuilder();
@@ -4594,7 +4586,7 @@ public class FaServices {
     } else {
       result.append(EObjectExt.getText(exchange));
     }
-    return decorateString(result.toString(), exchange);
+    return result.toString();
   }
 
   private String showFeEiParams(FunctionalExchange exchange, boolean showEIName) {
