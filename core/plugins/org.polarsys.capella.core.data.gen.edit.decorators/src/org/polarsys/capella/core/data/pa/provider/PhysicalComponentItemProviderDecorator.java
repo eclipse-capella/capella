@@ -16,7 +16,6 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.polarsys.capella.common.menu.dynamic.util.DynamicCommandParameter;
 import org.polarsys.capella.core.data.capellamodeller.provider.CapellaModellerEditPlugin;
-import org.polarsys.capella.core.data.gen.edit.decorators.Messages;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
@@ -45,9 +44,9 @@ public class PhysicalComponentItemProviderDecorator extends AbstractPhysicalComp
     PhysicalComponent container = (PhysicalComponent) object;
 
     if (ComponentExt.canCreateABActor(container)) {
-      DynamicCommandParameter descriptor = new DynamicCommandParameter(null,
-          PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_PHYSICAL_COMPONENTS, ComponentExt.createPhysicalActor(),
-          Messages.CreationMenuLabel_PhysicalActor);
+
+      DynamicCommandParameter descriptor = createPhysicalActorDescriptor(
+          PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_PHYSICAL_COMPONENTS, container.getNature());
 
       newChildDescriptors.add(descriptor);
     }
@@ -55,32 +54,21 @@ public class PhysicalComponentItemProviderDecorator extends AbstractPhysicalComp
     if (ComponentExt.canCreateABComponent(container)) {
       PhysicalComponentNature parentNature = container.getNature();
 
-      DynamicCommandParameter componentBCDescriptor = createComponentBCDescriptor(
-          PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_PHYSICAL_COMPONENTS);
+      if (parentNature == PhysicalComponentNature.UNSET) {
+        newChildDescriptors.add(createPhysicalComponentDecriptor(
+            PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_PHYSICAL_COMPONENTS, PhysicalComponentNature.NODE));
 
-      DynamicCommandParameter componentICDescriptor = createComponentICDescriptor(
-          PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_PHYSICAL_COMPONENTS);
+        newChildDescriptors.add(createPhysicalComponentDecriptor(
+            PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_PHYSICAL_COMPONENTS, PhysicalComponentNature.BEHAVIOR));
 
-      switch (parentNature) {
-      case BEHAVIOR:
-        newChildDescriptors.add(componentBCDescriptor);
-        break;
-
-      case NODE:
-        newChildDescriptors.add(componentICDescriptor);
-        break;
-
-      case UNSET:
-        newChildDescriptors.add(componentICDescriptor);
-        newChildDescriptors.add(componentBCDescriptor);
-        break;
-
-      default:
-        break;
+      } else {
+        newChildDescriptors.add(createPhysicalComponentDecriptor(
+            PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_PHYSICAL_COMPONENTS, parentNature));
       }
 
     }
 
     return newChildDescriptors;
   }
+
 }

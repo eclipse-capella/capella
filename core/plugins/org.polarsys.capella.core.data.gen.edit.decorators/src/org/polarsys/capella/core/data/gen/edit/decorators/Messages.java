@@ -23,8 +23,8 @@ public class Messages extends NLS {
   public static String CreationMenuLabel_Entity;
   public static String CreationMenuLabel_SystemComponent;
   public static String CreationMenuLabel_LogicalComponent;
-  public static String CreationMenuLabel_PhysicalComponent_IC;
-  public static String CreationMenuLabel_PhysicalComponent_BC;
+  public static String CreationMenuLabel_PhysicalComponent_Node;
+  public static String CreationMenuLabel_PhysicalComponent_Behaviour;
 
   public static String CreationMenuLabel_SystemComponentPkg;
 

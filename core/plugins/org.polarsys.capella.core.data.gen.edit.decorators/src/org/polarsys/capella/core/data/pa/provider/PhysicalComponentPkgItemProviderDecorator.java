@@ -16,8 +16,6 @@ import java.util.Collection;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.polarsys.capella.common.menu.dynamic.util.DynamicCommandParameter;
-import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.gen.edit.decorators.Messages;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
@@ -38,50 +36,31 @@ public class PhysicalComponentPkgItemProviderDecorator extends AbstractPhysicalC
         sibling);
 
     PhysicalComponentPkg container = (PhysicalComponentPkg) object;
+    PhysicalComponent parentComponent = (PhysicalComponent) ComponentPkgExt.getParentComponent(container);
 
     if (ComponentExt.canCreateABActor(container)) {
-      DynamicCommandParameter descriptor = new DynamicCommandParameter(null,
-          PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS, ComponentExt.createPhysicalActor(),
-          Messages.CreationMenuLabel_PhysicalActor);
+      PhysicalComponentNature nature = parentComponent != null ? parentComponent.getNature()
+          : PhysicalComponentNature.UNSET;
+
+      DynamicCommandParameter descriptor = createPhysicalActorDescriptor(
+          PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS, nature);
 
       newChildDescriptors.add(descriptor);
     }
 
     if (ComponentExt.canCreateABComponent(container)) {
-      Component parent = ComponentPkgExt.getParentComponent(container);
 
-      DynamicCommandParameter componentBCDescriptor = createComponentBCDescriptor(
-          PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS);
-      DynamicCommandParameter componentICDescriptor = createComponentICDescriptor(
-          PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS);
+      if (parentComponent == null || parentComponent.getNature() == PhysicalComponentNature.UNSET) {
+        newChildDescriptors.add(createPhysicalComponentDecriptor(
+            PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS, PhysicalComponentNature.NODE));
 
-      if (parent == null) {
-        newChildDescriptors.add(componentICDescriptor);
-        newChildDescriptors.add(componentBCDescriptor);
+        newChildDescriptors.add(createPhysicalComponentDecriptor(
+            PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS, PhysicalComponentNature.BEHAVIOR));
 
-      } else if (parent instanceof PhysicalComponent) {
-        PhysicalComponent parentComponent = (PhysicalComponent) parent;
-        PhysicalComponentNature parentNature = parentComponent.getNature();
-
-        switch (parentNature) {
-        case BEHAVIOR:
-          newChildDescriptors.add(componentBCDescriptor);
-          break;
-
-        case NODE:
-          newChildDescriptors.add(componentICDescriptor);
-          break;
-
-        case UNSET:
-          newChildDescriptors.add(componentICDescriptor);
-          newChildDescriptors.add(componentBCDescriptor);
-          break;
-
-        default:
-          break;
-        }
+      } else {
+        newChildDescriptors.add(createPhysicalComponentDecriptor(
+            PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS, parentComponent.getNature()));
       }
-
     }
 
     return newChildDescriptors;

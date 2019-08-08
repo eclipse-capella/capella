@@ -32,18 +32,23 @@ public abstract class AbstractPhysicalComponentItemProviderDecorator extends Ite
     super(adapterFactory);
   }
 
-  protected DynamicCommandParameter createComponentBCDescriptor(EReference reference) {
-    PhysicalComponent componentBC = ComponentExt.createPhysicalComponent();
-    componentBC.setNature(PhysicalComponentNature.BEHAVIOR);
+  protected DynamicCommandParameter createPhysicalActorDescriptor(EReference containerRef,
+      PhysicalComponentNature nature) {
+    PhysicalComponent actor = ComponentExt.createPhysicalActor();
+    actor.setNature(nature);
 
-    return new DynamicCommandParameter(null, reference, componentBC, Messages.CreationMenuLabel_PhysicalComponent_BC);
+    return new DynamicCommandParameter(null, containerRef, actor, Messages.CreationMenuLabel_PhysicalActor);
   }
 
-  protected DynamicCommandParameter createComponentICDescriptor(EReference reference) {
-    PhysicalComponent componentIC = ComponentExt.createPhysicalComponent();
-    componentIC.setNature(PhysicalComponentNature.NODE);
+  protected DynamicCommandParameter createPhysicalComponentDecriptor(EReference reference,
+      PhysicalComponentNature nature) {
+    PhysicalComponent nodeComponent = ComponentExt.createPhysicalComponent();
+    nodeComponent.setNature(nature);
 
-    return new DynamicCommandParameter(null, reference, componentIC, Messages.CreationMenuLabel_PhysicalComponent_IC);
+    String menuLabel = nature == PhysicalComponentNature.NODE ? Messages.CreationMenuLabel_PhysicalComponent_Node
+        : Messages.CreationMenuLabel_PhysicalComponent_Behaviour;
+
+    return new DynamicCommandParameter(null, reference, nodeComponent, menuLabel);
   }
 
 }

@@ -35,9 +35,7 @@ import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
-import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
 
 public class PhysicalComponentItemContribution implements IMDEMenuItemContribution {
   /**
@@ -100,31 +98,6 @@ public class PhysicalComponentItemContribution implements IMDEMenuItemContributi
             }
           };
           wrappingCommand.append(setPartTypeCmd);
-        }
-
-        if (partOwner instanceof PhysicalComponent) {
-          PhysicalComponent pPartOwner = (PhysicalComponent) partOwner;
-          PhysicalComponentNature pPartOwnerNature = pPartOwner.getNature();
-          PhysicalComponentNature currentComponentNature = createdComponent.getNature();
-          PhysicalComponentNature newComponentNature = null;
-
-          if (ComponentExt.isActorHuman(createdComponent)) {
-            newComponentNature = pPartOwnerNature;
-          } else if (currentComponentNature == null
-              || currentComponentNature == PaPackage.Literals.PHYSICAL_COMPONENT_NATURE.getDefaultValue()) {
-            if (pPartOwnerNature.equals(PhysicalComponentNature.UNSET)
-                || pPartOwnerNature.equals(PhysicalComponentNature.NODE)) {
-              newComponentNature = PhysicalComponentNature.NODE;
-            } else if (pPartOwnerNature.equals(PhysicalComponentNature.BEHAVIOR)) {
-              newComponentNature = PhysicalComponentNature.BEHAVIOR;
-            }
-          }
-
-          if (newComponentNature != null) {
-            wrappingCommand.append(new SetCommand(editingDomain, createdComponent,
-                PaPackage.Literals.PHYSICAL_COMPONENT__NATURE, newComponentNature));
-          }
-
         }
 
         return wrappingCommand;
