@@ -63,8 +63,19 @@ public class ComponentPkgExt {
     return components;
   }
 
+  /**
+   * Returns components defined into the package and its children components.
+   */
+  public static List<Component> getAllSubDefinedComponents(ComponentPkg componentPkg) {
+    List<Component> components = new ArrayList<>();
+    List<Component> subDefinedComponents = getSubDefinedComponents(componentPkg);
+    components.addAll(subDefinedComponents);
+    subDefinedComponents.stream().forEach(c -> components.addAll(ComponentExt.getAllSubDefinedComponents(c)));
+    return components;
+  }
+  
   public static List<Component> getAllActors(ComponentPkg componentPkg) {
-    return getSubDefinedComponents(componentPkg).stream().filter(comp -> ComponentExt.isActor(comp))
+    return getAllSubDefinedComponents(componentPkg).stream().filter(comp -> ComponentExt.isActor(comp))
         .collect(Collectors.toList());
   }
 

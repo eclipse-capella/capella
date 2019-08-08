@@ -573,6 +573,12 @@ public class ABServices {
     if (target.equals(source)) {
       return false;
     }
+    
+    if ((ComponentExt.isActor(source) && !ComponentExt.canCreateABActor(target))
+        || (!ComponentExt.isActor(source) && !ComponentExt.canCreateABComponent(target))) {
+      return false;
+    }
+    
     return true;
   }
 
@@ -1343,7 +1349,8 @@ public class ABServices {
 
     // Deploy Behavior is only allowed on BEHAVIOR nodes
     PhysicalComponent pcType = (PhysicalComponent) type;
-    if (!PhysicalComponentNature.BEHAVIOR.equals(pcType.getNature())) {
+    if (!(PhysicalComponentNature.BEHAVIOR.equals(pcType.getNature())
+        || PhysicalComponentNature.UNSET.equals(pcType.getNature()))) {
       return false;
     }
     

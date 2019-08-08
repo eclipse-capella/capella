@@ -1624,6 +1624,9 @@ public class ComponentExt {
     return elements;
   }
   
+  /**
+   * Returns components defined into the component and its children.
+   */
   public static List<Component> getAllSubDefinedComponents(Component component) {
     List<Component> comps = new ArrayList<>();
     LinkedList<Component> subs = new LinkedList<>();

@@ -528,41 +528,6 @@ public class OAServices {
     return result;
   }
 
-  public Entity createEntity(EObject container) {
-
-    Entity entity = OaFactory.eINSTANCE.createEntity();
-    if (entity != null) {
-      if (container instanceof EntityPkg) {
-        EntityPkg entityPkg = (EntityPkg) container;
-        entityPkg.getOwnedEntities().add(entity);
-      } else if (container instanceof Entity) {
-        Entity entityContainer = (Entity) container;
-        entityContainer.getOwnedEntities().add(entity);
-      }
-      CapellaServices.getService().creationService(entity);
-    }
-
-    return entity;
-  }
-
-  public Entity createOperationalActor(EObject container) {
-
-    Entity actor = OaFactory.eINSTANCE.createEntity();
-    if (actor != null) {
-      if (container instanceof EntityPkg) {
-        EntityPkg entityPkg = (EntityPkg) container;
-        entityPkg.getOwnedEntities().add(actor);
-      } else if (container instanceof Entity) {
-        Entity entityContainer = (Entity) container;
-        entityContainer.getOwnedEntities().add(actor);
-      }
-      CapellaServices.getService().creationService(actor);
-    }
-
-    actor.setActor(true);
-    return actor;
-  }
-
   public boolean hideAllocatedInteractions(EObject obj) {
     return (obj instanceof FunctionalExchange)
         && ((FunctionalExchange) obj).getAllocatingComponentExchanges().isEmpty();
