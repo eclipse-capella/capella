@@ -489,6 +489,9 @@ public interface IFilterNameConstants {
   String FILTER_PAB_HIDE_COMPUTED_CE = FILTER_XAB_HIDE_COMPUTED_CE;
   String FILTER_PAB_HIDE_COMPUTED_PL = FILTER_XAB_HIDE_COMPUTED_PL;
 
+  String FILTER_PAB_HIDE_SEQUENCING_INFORMATION = "Hide Sequencing Information"; //$NON-NLS-1$
+  String FILTER_PAB_HIDE_PROPERTY_VALUES = "Hide Property Values"; //$NON-NLS-1$
+
   // filter id
   String FILTER_PAB_HIDE_COMPONENT_EXCHANGES_ID = "Hide Connections"; //$NON-NLS-1$
   String FILTER_PAB_HIDE_PORT_ALLOCATIONS_ID = "Hide Port Realizations"; //$NON-NLS-1$
@@ -513,9 +516,11 @@ public interface IFilterNameConstants {
   String FILTER_PDFB_SHOW_FUNCTIONAL_EXCHANGES_EXCHANGEITEMS_ID = "Show Functional Exchanges [ExchangeItems]"; //$NON-NLS-1$
   String FILTER_PDFB_SHOW_FUNCTIONAL_EXCHANGES_PARAMETERS_ID = "Show Functional Exchanges (Parameters)";//$NON-NLS-1$
   String FILTER_PDFB_SHOW_FUNCTIONAL_EXCHANGES_EXCHANGEITEMS_PARAMETERS_ID = "Show Functional Exchanges [ExchangeItems(Parameters)]"; //$NON-NLS-1$
+  String FILTER_PDFB_HIDE_PROPERTY_VALUES = "Hide Property Values"; //$NON-NLS-1$
 
   // PFBD Filters
   String FILTER_PFBD_HIDE_CONTROL_NODES = "Hide Control Nodes";//$NON-NLS-1$
+  String FILTER_PFBD_HIDE_PROPERTY_VALUES = "Hide Property Values"; //$NON-NLS-1$
 
   // SAB filters - System Architecture Blank
   String FILTER_SAB_COLLAPSE_COMPONENT_PORTS = "Collapse Component Ports"; //$NON-NLS-1$

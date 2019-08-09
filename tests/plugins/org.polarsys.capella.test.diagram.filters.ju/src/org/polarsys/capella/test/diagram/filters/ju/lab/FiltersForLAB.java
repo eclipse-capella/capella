@@ -35,6 +35,7 @@ public abstract class FiltersForLAB extends DiagramObjectFilterTestCase {
   protected final String COMPONENT_PORT_4_ID = "a948be04-293a-4cbe-8feb-b6f673c58409";
   protected final String COMPONENT_PORT_5_ID = "8c006c8b-3993-4e94-a424-cadccbda3051";
   protected final String COMPONENT_PORT_6_ID = "03d2186c-5bd1-4728-b806-a9155edd5c6f";
+  protected final String COMPONENT_PORT_7_ID = "b76c2468-20f7-4502-b913-2adb107a8862";
   protected final String COMPONENT_PORT_WITHOUT_EXCHANGES_ID = "1c767656-007a-48e0-aa38-46942fbf5e45";
   protected final String PROPERTY_VALUES_ID = "a2f462b7-2c1f-4a73-b9fb-09c52e17fcba";
   protected final String PHYSICAL_LINK_ID = "8765332d-0948-4d89-8781-c77f3d319931";

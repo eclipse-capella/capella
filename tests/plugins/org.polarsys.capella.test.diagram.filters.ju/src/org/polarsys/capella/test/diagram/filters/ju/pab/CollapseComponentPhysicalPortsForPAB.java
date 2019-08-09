@@ -8,23 +8,24 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.filters.ju.lab;
+package org.polarsys.capella.test.diagram.filters.ju.pab;
 
 import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 
-public class HideComponentPortsWithoutExchangesForLAB extends FiltersForLAB {
+public class CollapseComponentPhysicalPortsForPAB extends FiltersForPAB {
 
   @Override
   protected String getFilterName() {
-    return IFilterNameConstants.FILTER_LAB_HIDE_COMPONENT_PORTS_WITHOUT_EXCHANGES;
+    return IFilterNameConstants.FILTER_PAB_COLLAPSE_COMPONENT_PHYSICAL_PORTS;
   }
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { COMPONENT_PORT_WITHOUT_EXCHANGES_ID, COMPONENT_PORT_7_ID });
+    return Arrays.asList(new String[] { PHYSICAL_PORT_1_ID, PHYSICAL_PORT_2_ID, PHYSICAL_PORT_3_ID, PHYSICAL_PORT_4_ID,
+        PHYSICAL_PORT_5_ID, PHYSICAL_PORT_6_ID, PHYSICAL_PORT_7_ID });
   }
 
 }

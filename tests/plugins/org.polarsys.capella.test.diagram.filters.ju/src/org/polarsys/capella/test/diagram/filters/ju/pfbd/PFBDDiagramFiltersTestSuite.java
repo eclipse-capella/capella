@@ -8,23 +8,22 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.filters.ju.lab;
+package org.polarsys.capella.test.diagram.filters.ju.pfbd;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
+import org.polarsys.capella.test.framework.api.BasicTestArtefact;
+import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
-public class HideComponentPortsWithoutExchangesForLAB extends FiltersForLAB {
-
-  @Override
-  protected String getFilterName() {
-    return IFilterNameConstants.FILTER_LAB_HIDE_COMPONENT_PORTS_WITHOUT_EXCHANGES;
-  }
+public class PFBDDiagramFiltersTestSuite extends BasicTestSuite {
 
   @Override
-  protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { COMPONENT_PORT_WITHOUT_EXCHANGES_ID, COMPONENT_PORT_7_ID });
+  protected List<BasicTestArtefact> getTests() {
+    List<BasicTestArtefact> tests = new ArrayList<>();
+    tests.add(new HideControlNodesForPFBD());
+    tests.add(new HidePropertyValuesForPFBD());
+    return tests;
   }
 
 }

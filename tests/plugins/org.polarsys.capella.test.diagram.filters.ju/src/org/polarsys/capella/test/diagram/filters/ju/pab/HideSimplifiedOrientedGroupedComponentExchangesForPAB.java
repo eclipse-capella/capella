@@ -8,23 +8,37 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.filters.ju.lab;
+package org.polarsys.capella.test.diagram.filters.ju.pab;
 
 import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
+import org.polarsys.capella.test.diagram.filters.ju.DefaultActivatedFilterTestCase;
 
-public class HideComponentPortsWithoutExchangesForLAB extends FiltersForLAB {
+public class HideSimplifiedOrientedGroupedComponentExchangesForPAB extends DefaultActivatedFilterTestCase {
+
+  private final String PHYSICAL_SYSTEM_ID = "962739bc-8534-406a-a161-f23f27c97cf2";
+
+  @Override
+  protected String getTestProjectName() {
+    return "StandardDiagramFiltersModel";
+  }
+
+  @Override
+  protected String getDiagramName() {
+    return "[PAB] Physical System";
+  }
 
   @Override
   protected String getFilterName() {
-    return IFilterNameConstants.FILTER_LAB_HIDE_COMPONENT_PORTS_WITHOUT_EXCHANGES;
+    return IFilterNameConstants.FILTER_PAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES;
   }
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { COMPONENT_PORT_WITHOUT_EXCHANGES_ID, COMPONENT_PORT_7_ID });
+    return Arrays.asList(new String[] { PHYSICAL_SYSTEM_ID });
+
   }
 
 }
