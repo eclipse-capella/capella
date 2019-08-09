@@ -15,7 +15,7 @@
       id="e0d3ecde-0a6f-4d3f-a89d-80a0e5d1a69c" name="node_to_function" version="1.0"
       template="true">
     <authors>Administrateur</authors>
-    <executionEnvironments>Melody Advance 4.4.x</executionEnvironments>
+    <executionEnvironments>Capella 1.4.x</executionEnvironments>
     <roles xsi:type="org.eclipse.emf.diffmerge.patterns.templates:TemplatePatternRole"
         id="c140d0ba-4044-4e82-8b8b-123182883117" name="nodePart" description="" additionKind="ANY_CONTAINMENT"
         exclusive="true" templateElements="#cac9b473-6c58-491e-b660-5817eae5a5df"/>
@@ -83,7 +83,7 @@
   <patterns xsi:type="org.eclipse.emf.diffmerge.patterns.templates:TemplatePattern"
       id="ce88310b-dff8-43c7-b2c2-c571ce588e8d" name="patternFromTemplate" version="1.0">
     <authors>Administrateur</authors>
-    <executionEnvironments>Melody Advance 4.4.x</executionEnvironments>
+    <executionEnvironments>Capella 1.4.x</executionEnvironments>
     <roles xsi:type="org.eclipse.emf.diffmerge.patterns.templates:TemplatePatternRole"
         id="75a6a446-bb86-471e-9224-abda4d3fdae2" name="nodePart" description="" additionKind="ANY_CONTAINMENT"
         exclusive="true" templateElements="#72893891-6716-4c71-bdd8-b40bb5b15822"/>

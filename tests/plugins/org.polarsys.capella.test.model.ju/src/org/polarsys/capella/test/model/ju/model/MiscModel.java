@@ -75,7 +75,7 @@ public abstract class MiscModel extends BasicTestCase {
   public static final String SA__INTERFACES = "b8b67e89-956c-405f-88a0-1099e666a13b";
   public static final String SA__DATA = "b1b618e0-1d7b-4b76-8beb-fbb4beb21f79";
   public static final String SA__DATA__EI1 = "9e0e8188-0b84-49fa-8cd2-0c84cbe5b1f6";
-  public static final String SA__SYSTEM_CONTEXT = "12add945-2e5f-44d5-a9ad-57ebd527222c";
+  public static final String SA__SYSTEM_COMPONENT_PKG = "0b6d6f19-fae4-4a23-aee3-8ac84d7a1e64";
   public static final String SA__SYSTEM_CONTEXT__PART_SYSTEM__SYSTEM = "b6cba2a7-2061-4900-975d-1fb8e64cdba6";
   public static final String SA__SYSTEM = "4630572f-7502-4263-a994-89ced76f21a8";
   public static final String SA__SYSTEM__STATEMACHINE_1 = "97900e4c-7b85-408c-96eb-bd3e63ab1d0b";

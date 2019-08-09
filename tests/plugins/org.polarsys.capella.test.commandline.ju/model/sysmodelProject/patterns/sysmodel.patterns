@@ -16,7 +16,7 @@
       id="c833aa94-a2c2-41b6-8337-5cb517219baf" name="MVC Component: MVC Component"
       description="MVC pattern" version="1.0">
     <authors>T0088906</authors>
-    <executionEnvironments>Melody Advance 4.4.x</executionEnvironments>
+    <executionEnvironments>Capella 1.4.x</executionEnvironments>
     <roles xsi:type="org.eclipse.emf.diffmerge.patterns.templates:TemplatePatternRole"
         id="6fff5224-5a16-4101-af29-06d825236669" name="MVC Component: MVC Component"
         description="" additionKind="ANY_CONTAINMENT" exclusive="true" templateElements="#f371bcdc-bd5c-4901-a1dc-8678fd3a4beb"/>
@@ -633,7 +633,7 @@
   <patterns xsi:type="org.eclipse.emf.diffmerge.patterns.templates:TemplatePattern"
       id="c41dcc9c-f0a1-4173-9b56-d41c13c607df" name="Pattern_WithStyle_Layout" version="1.0">
     <authors>Administrator</authors>
-    <executionEnvironments>Melody Advance 4.4.x</executionEnvironments>
+    <executionEnvironments>Capella 1.4.x</executionEnvironments>
     <roles xsi:type="org.eclipse.emf.diffmerge.patterns.templates:TemplatePatternRole"
         id="d06314c9-9597-4831-9be1-cf0e2e56a1a3" name="LogicalFunctions" description=""
         additionKind="ANY_CONTAINMENT" exclusive="true" templateElements="#956445c9-3e16-41ef-b89a-a01f8cd22cd0 #4eb484e7-63d3-4cd9-b675-62112b5ddcef"/>

@@ -13,7 +13,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_6Vy9YUGhEemEkr4HpicQpA" name="[SAB] System" repPath="#_6VMgcEGhEemEkr4HpicQpA">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']"/>
-        <target xmi:type="org.polarsys.capella.core.data.ctx:System" href="FunctionalChainsNonRegression.melodymodeller#e3c5968b-8f2d-4f2e-882c-284df4cab52c"/>
+        <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="FunctionalChainsNonRegression.melodymodeller#e3c5968b-8f2d-4f2e-882c-284df4cab52c"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_j2PhwEGOEemEkr4HpicQpA">
@@ -41,7 +41,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_odSlY0GOEemEkr4HpicQpA" name="[OAB] Operational Context" repPath="#_obywkEGOEemEkr4HpicQpA">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']"/>
-        <target xmi:type="org.polarsys.capella.core.data.oa:OperationalContext" href="FunctionalChainsNonRegression.melodymodeller#6696c4a8-04f4-4cec-9e60-3077ff2ec0a1"/>
+        <target xmi:type="org.polarsys.capella.core.data.oa:EntityPkg" href="FunctionalChainsNonRegression.melodymodeller#6696c4a8-04f4-4cec-9e60-3077ff2ec0a1"/>
       </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_hhpWDEGbEemEkr4HpicQpA" name="[OPD] OperationalProcess 1" repPath="#_hhV0AEGbEemEkr4HpicQpA">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Process%20Description']"/>
@@ -602,7 +602,7 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_ob8hkEGOEemEkr4HpicQpA"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.oa:OperationalContext" href="FunctionalChainsNonRegression.melodymodeller#6696c4a8-04f4-4cec-9e60-3077ff2ec0a1"/>
+    <target xmi:type="org.polarsys.capella.core.data.oa:EntityPkg" href="FunctionalChainsNonRegression.melodymodeller#6696c4a8-04f4-4cec-9e60-3077ff2ec0a1"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_hhV0AEGbEemEkr4HpicQpA" name="[OPD] OperationalProcess 1">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_hhpWCUGbEemEkr4HpicQpA" source="DANNOTATION_CUSTOMIZATION_KEY">
@@ -5379,7 +5379,7 @@
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_6VgCcEGhEemEkr4HpicQpA" name="System">
       <target xmi:type="org.polarsys.capella.core.data.cs:Part" href="FunctionalChainsNonRegression.melodymodeller#b7601b84-3dd5-43c2-958f-56b9ded7ea8c"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.cs:Part" href="FunctionalChainsNonRegression.melodymodeller#b7601b84-3dd5-43c2-958f-56b9ded7ea8c"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:System" href="FunctionalChainsNonRegression.melodymodeller#e3c5968b-8f2d-4f2e-882c-284df4cab52c"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="FunctionalChainsNonRegression.melodymodeller#e3c5968b-8f2d-4f2e-882c-284df4cab52c"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -5867,7 +5867,7 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_6VMgcUGhEemEkr4HpicQpA"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer"/>
-    <target xmi:type="org.polarsys.capella.core.data.ctx:System" href="FunctionalChainsNonRegression.melodymodeller#e3c5968b-8f2d-4f2e-882c-284df4cab52c"/>
+    <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="FunctionalChainsNonRegression.melodymodeller#e3c5968b-8f2d-4f2e-882c-284df4cab52c"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_g_ArkEGyEemEkr4HpicQpA" name="[SFCD] FunctionalChain 3">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_g_ArkkGyEemEkr4HpicQpA" source="DANNOTATION_CUSTOMIZATION_KEY">

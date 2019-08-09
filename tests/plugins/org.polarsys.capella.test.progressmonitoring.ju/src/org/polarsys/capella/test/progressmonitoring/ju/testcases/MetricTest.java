@@ -35,7 +35,7 @@ public class MetricTest extends BasicTestCase {
     oaMetrics.put("Communication Mean", 2);
     oaMetrics.put("Constraint", 4);
     oaMetrics.put("Data Pkg", 2);
-    oaMetrics.put("Entity", 4);
+    oaMetrics.put("Entity", 8);
     oaMetrics.put("Entity Pkg", 1);
     oaMetrics.put("Execution", 15);
     oaMetrics.put("Fragment End", 4);
@@ -47,7 +47,6 @@ public class MetricTest extends BasicTestCase {
     oaMetrics.put("Opaque Expression", 3);
     oaMetrics.put("Operational Activity", 24);
     oaMetrics.put("Operational Activity Pkg", 1);
-    oaMetrics.put("Operational Actor", 4);
     oaMetrics.put("Operational Capability", 3);
     oaMetrics.put("Operational Capability Pkg", 1);
     oaMetrics.put("Operational Context", 1);
@@ -64,7 +63,6 @@ public class MetricTest extends BasicTestCase {
 
     Map<String, Integer> saMetrics = new HashMap<>();
     saMetrics.put("Abstract Capability Include", 1);
-    saMetrics.put("Actor", 4);
     saMetrics.put("Actor Pkg", 1);
     saMetrics.put("Association", 8);
     saMetrics.put("Boolean Type", 1);
@@ -106,7 +104,7 @@ public class MetricTest extends BasicTestCase {
     saMetrics.put("State Machine", 2);
     saMetrics.put("State Transition", 39);
     saMetrics.put("String Type", 1);
-    saMetrics.put("System", 1);
+    saMetrics.put("System Component", 5);
     saMetrics.put("System Context", 1);
     saMetrics.put("System Function", 44);
     saMetrics.put("System Function Pkg", 1);
@@ -143,11 +141,10 @@ public class MetricTest extends BasicTestCase {
     laMetrics.put("State", 46);
     laMetrics.put("Use", 1);
     laMetrics.put("Interface Pkg", 1);
-    laMetrics.put("Key Value", 216);
+    laMetrics.put("Key Value", 215);
     laMetrics.put("= <undefined>", 70);
-    laMetrics.put("Logical Actor", 4);
-    laMetrics.put("Logical Actor Pkg", 1);
-    laMetrics.put("Logical Component", 19);
+    laMetrics.put("Logical Component Pkg", 1);
+    laMetrics.put("Logical Component", 23);
     laMetrics.put("Logical Context", 1);
     laMetrics.put("Logical Function", 64);
     laMetrics.put("Logical Function Pkg", 1);
@@ -191,9 +188,8 @@ public class MetricTest extends BasicTestCase {
     paMetrics.put("= <undefined>", 108);
     paMetrics.put("Numeric Type", 3);
     paMetrics.put("Part", 63);
-    paMetrics.put("Physical Actor", 4);
-    paMetrics.put("Physical Actor Pkg", 1);
-    paMetrics.put("Physical Component", 59);
+    paMetrics.put("Physical Component Pkg", 1);
+    paMetrics.put("Physical Component", 63);
     paMetrics.put("Physical Context", 1);
     paMetrics.put("Physical Function", 92);
     paMetrics.put("Physical Function Pkg", 2);
@@ -210,7 +206,7 @@ public class MetricTest extends BasicTestCase {
     Map<String, Integer> epbsMetrics = new HashMap<>();
     epbsMetrics.put("Capability Realization Pkg", 1);
     epbsMetrics.put("Unset", 11);
-    epbsMetrics.put("EPBS Context", 1);
+    epbsMetrics.put("Configuration Item Pkg", 1);
     epbsMetrics.put("Part", 11);
 
     String requiredModel = getRequiredTestModels().get(0);

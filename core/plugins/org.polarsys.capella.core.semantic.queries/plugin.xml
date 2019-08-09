@@ -5710,7 +5710,7 @@
          </itemQueries>
       </category>
       <category
-            id="org.polarsys.capella.core.semantic.queries.basic.queries.Capability_InvolvedComponents"
+            id="org.polarsys.capella.core.semantic.queries.Capability_InvolvedComponents"
             isTopLevel="true"
             name="Involved Components">
          <availableForType

@@ -14,8 +14,8 @@ import org.polarsys.capella.test.semantic.queries.ju.model.SemanticQueries;
 
 import junit.framework.Test;
 
-public class CapabilityRealization_InvolvedActors extends SemanticQueries {
-	String QUERY = "org.polarsys.capella.core.semantic.queries.CapabilityRealization_involvedActors";
+public class Capability_InvolvedComponents extends SemanticQueries {
+	String QUERY = "org.polarsys.capella.core.semantic.queries.Capability_InvolvedComponents";
 
 	@Override
 	protected String getQueryCategoryIdentifier() {
@@ -24,10 +24,10 @@ public class CapabilityRealization_InvolvedActors extends SemanticQueries {
 
 	@Override
 	public void test() throws Exception {
-		testQuery(LA__CAPABILITIES__CAPABILITY_1, LA__LOGICAL_ACTORS__LA_2);
+		testQuery(LA__CAPABILITIES__CAPABILITY_1, LA__LOGICALCOMPONENT_1, LA__LOGICAL_ACTORS__LA_2);
 	}
 
   public static Test suite() {
-    return new CapabilityRealization_InvolvedActors();
+    return new Capability_InvolvedComponents();
   }
 }

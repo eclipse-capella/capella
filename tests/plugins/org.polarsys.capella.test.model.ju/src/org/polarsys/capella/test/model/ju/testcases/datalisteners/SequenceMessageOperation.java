@@ -42,7 +42,7 @@ public class SequenceMessageOperation extends MiscModel {
     ensureSynchronizedElements(context, GenericModel.OBJECT_1, GenericModel.FUNCTIONAL_EXCHANGE_1);
     
     // We ensure that ComponentExchange and Sequence Message are synchronized
-    SkeletonHelper.createComponentExchange(SA__SYSTEM_CONTEXT, GenericModel.COMPONENT_EXCHANGE_1, context);
+    SkeletonHelper.createComponentExchange(SA__SYSTEM_COMPONENT_PKG, GenericModel.COMPONENT_EXCHANGE_1, context);
     SkeletonHelper.setOperation(GenericModel.OBJECT_1, GenericModel.COMPONENT_EXCHANGE_1, context);
     ensureSynchronizedElements(context, GenericModel.OBJECT_1, GenericModel.COMPONENT_EXCHANGE_1);
     

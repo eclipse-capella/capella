@@ -44,6 +44,8 @@ public class ComponentPkg_RootComponentPart extends AbstractValidationRule {
             if (parts.isEmpty()) {
               return createFailureStatus(ctx, new Object[] { pkg.getName(), pkg.eClass().getName() });
             }
+          } else {
+            return createFailureStatus(ctx, new Object[] { pkg.getName(), pkg.eClass().getName() });
           }
         }
       }
