@@ -12,7 +12,6 @@ package org.polarsys.capella.core.semantic.queries.sirius.diagram;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
-
 import org.polarsys.capella.common.utils.RunnableWithBooleanResult;
 
 /**

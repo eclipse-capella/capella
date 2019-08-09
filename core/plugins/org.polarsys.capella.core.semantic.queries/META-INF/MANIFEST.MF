@@ -7,7 +7,9 @@ Bundle-Activator: org.polarsys.capella.core.semantic.queries.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.core.model.handler,
  org.polarsys.capella.core.model.helpers,
- org.eclipse.sirius.diagram
+ org.eclipse.sirius.diagram,
+ org.polarsys.capella.core.diagram.helpers,
+ org.eclipse.sirius.table
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.semantic.queries,
  org.polarsys.capella.core.semantic.queries.basic.queries,
