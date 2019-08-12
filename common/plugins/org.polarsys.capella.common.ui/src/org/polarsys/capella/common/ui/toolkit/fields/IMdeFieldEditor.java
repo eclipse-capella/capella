@@ -15,9 +15,6 @@ import org.eclipse.jface.dialogs.DialogPage;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 
-import org.polarsys.capella.common.ui.toolkit.services.behaviors.IInputBehavior;
-import org.polarsys.capella.common.ui.toolkit.services.validators.IValidator;
-
 /**
  * The Mde field editor interface. This interface is used to make field editors services public, uniform and extends them.
  */
@@ -47,34 +44,10 @@ public interface IMdeFieldEditor {
   Control getHelperControl();
 
   /**
-   * Sets the field input behavior.
-   * @param behavior The input behavior.
-   */
-  void setInputBehavior(IInputBehavior behavior);
-
-  /**
-   * Gets the field input behavior.
-   * @return The input behavior or <code>null</code> if it doesn't exist.
-   */
-  IInputBehavior getInputBehavior();
-
-  /**
    * Returns the error message that will be displayed when an error occurs.
    * @return The error message, or <code>null</code> if none.
    */
   String getErrorMessage();
-
-  /**
-   * Sets the field validator.
-   * @param validator The validator.
-   */
-  void setValidator(IValidator validator);
-
-  /**
-   * Gets the field validator.
-   * @return The validator.
-   */
-  IValidator getValidator();
 
   /**
    * Returns whether this field contains a valid value.

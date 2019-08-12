@@ -72,7 +72,6 @@
         <module>org.polarsys.capella.common.ui.services</module>
         <module>org.polarsys.capella.common.ui.toolkit</module>
         <module>org.polarsys.capella.common.ui.toolkit.browser</module>
-        <module>org.polarsys.capella.common.ui.toolkit.services</module>
         <module>org.polarsys.capella.shared.id.handler</module>
       </modules>
     </profile>

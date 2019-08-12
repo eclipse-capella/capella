@@ -21,9 +21,6 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Layout;
 
-import org.polarsys.capella.common.ui.toolkit.services.behaviors.IInputBehavior;
-import org.polarsys.capella.common.ui.toolkit.services.validators.IValidator;
-
 /**
  * The MDE field editor. This implementation of field editor respect the IMdefieldEditor API which opens the old FieldEditor API. It supports error message
  * management, validator, input behavior and the databinding (based on the already in place binding system : IPreferenceStore).
@@ -33,10 +30,6 @@ public abstract class MdeFieldEditor extends FieldEditor implements IMdeFieldEdi
   protected int _labelStyle = SWT.LEFT;
   // The value control style.
   protected int _valueStyle = SWT.NONE;
-  // The input behavior.
-  private IInputBehavior _inputBehavior = null;
-  // The validator.
-  private IValidator _validator = null;
   // The current error message.
   private String _errorMessage = null;
 
@@ -204,38 +197,10 @@ public abstract class MdeFieldEditor extends FieldEditor implements IMdeFieldEdi
   public abstract Control getHelperControl();
 
   /**
-   * @see IMdeFieldEditor#getInputBehavior()
-   */
-  public IInputBehavior getInputBehavior() {
-    return _inputBehavior;
-  }
-
-  /**
-   * @see IMdeFieldEditor#setInputBehavior(IInputBehavior)
-   */
-  public void setInputBehavior(IInputBehavior behavior) {
-    _inputBehavior = behavior;
-  }
-
-  /**
    * @see IMdeFieldEditor#getErrorMessage()
    */
   public String getErrorMessage() {
     return _errorMessage;
-  }
-
-  /**
-   * @see IMdeFieldEditor#getValidator()
-   */
-  public IValidator getValidator() {
-    return _validator;
-  }
-
-  /**
-   * @see IMdeFieldEditor#setValidator(IValidator)
-   */
-  public void setValidator(IValidator validator) {
-    _validator = validator;
   }
 
   @Override
@@ -271,20 +236,7 @@ public abstract class MdeFieldEditor extends FieldEditor implements IMdeFieldEdi
    */
   @Override
   public boolean isValid() {
-    boolean isValid = true;
-    if (null != _validator) {
-      // Validate the field editor with the provided validator.
-      Control control = getValueControl();
-      Object value = getValue(control);
-      _errorMessage = _validator.isValid(value);
-      // If no error message is returned, the field editor is valid else is not valid.
-      isValid = (null == _errorMessage);
-      // If no page available, cannot displays the error message.
-      if (null != getPage()) {
-        showErrorMessage(_errorMessage);
-      }
-    }
-    return isValid;
+    return true;
   }
 
   /**

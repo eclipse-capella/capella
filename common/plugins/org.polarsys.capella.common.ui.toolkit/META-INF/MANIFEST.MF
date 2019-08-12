@@ -11,8 +11,7 @@ Export-Package: org.polarsys.capella.common.ui.toolkit,
  org.polarsys.capella.common.ui.toolkit.icons,
  org.polarsys.capella.common.ui.toolkit.provider,
  org.polarsys.capella.common.ui.toolkit.widgets
-Require-Bundle: org.polarsys.capella.common.ui.toolkit.services;visibility:=reexport,
- org.polarsys.capella.common.ui.services,
+Require-Bundle: org.polarsys.capella.common.ui.services,
  org.polarsys.capella.common.helpers;visibility:=reexport,
  org.eclipse.ui;visibility:=reexport,
  org.eclipse.core.databinding;visibility:=reexport
