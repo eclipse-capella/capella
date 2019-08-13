@@ -2826,6 +2826,24 @@ public class ComponentExt {
     return false;
   }
 
+  public static boolean canMoveInto(Component source, Component target) {
+    if (source.equals(target)) {
+      return false;
+    }
+    if (source instanceof PhysicalComponent && target instanceof PhysicalComponent) {
+      PhysicalComponentNature nature1 = ((PhysicalComponent) source).getNature();
+      PhysicalComponentNature nature2 = ((PhysicalComponent) target).getNature();
+      if (nature1 != PhysicalComponentNature.UNSET && nature2 != PhysicalComponentNature.UNSET && nature1 != nature2) {
+        return false;
+      }
+    }
+    if ((ComponentExt.isActor(source) && !ComponentExt.canCreateABActor(target))
+        || (!ComponentExt.isActor(source) && !ComponentExt.canCreateABComponent(target))) {
+      return false;
+    }
+    return true;
+  }
+  
   /**
    * 
    * @param component
@@ -2839,6 +2857,7 @@ public class ComponentExt {
     if (target instanceof Component) {
       Component targetComponent = (Component) target;
       return !targetComponent.isHuman() && (!(targetComponent instanceof SystemComponent) || isActor(targetComponent));
+    
     } else if (target instanceof ComponentPkg) {
       ComponentPkg targetComponentPkg = (ComponentPkg) target;
       Component parentComponent = ComponentPkgExt.getParentComponent(targetComponentPkg);

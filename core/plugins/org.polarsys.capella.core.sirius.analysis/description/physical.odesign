@@ -1438,7 +1438,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Physical Component Breakdown" titleExpression="aql:'[PCBD] ' + self.name" domainClass="PhysicalComponent">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Physical Component Breakdown" titleExpression="aql:'[PCBD] ' + self.name" domainClass="CapellaElement" preconditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponent) or (self.oclIsKindOf(pa::PhysicalComponentPkg)">
       <dropDescriptions href="#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
       <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
@@ -1470,7 +1470,7 @@
       </filters>
       <layout xsi:type="description_2:OrderedTreeLayout" childrenExpression="aql:self.ownedFeatures->filter(cs::Part).abstractType" nodeMapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='PCB_PhysicalComponent']"/>
       <defaultLayer name="default">
-        <nodeMappings name="PCB_PhysicalComponent" navigationDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PCB%20to%20PAB']" deletionDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Physical%20Component']" labelDirectEdit="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='PCB%20Rename']" semanticCandidatesExpression="aql:self.makeUnion(self->select(x | x.representingParts.eContainer()->filter(cs::ComponentPkg)->size() = 0), self.getAllDescendants())" synchronizationLock="true" domainClass="PhysicalComponent">
+        <nodeMappings name="PCB_PhysicalComponent" navigationDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PCB%20to%20PAB']" deletionDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Physical%20Component']" labelDirectEdit="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='PCB%20Rename']" semanticCandidatesExpression="service:self.getCBComponentSemanticCandidates()" synchronizationLock="true" domainClass="PhysicalComponent">
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Physical%20Component%20Breakdown']"/>
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Physical%20Architecture%20Blank']"/>
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20Detailed%20Interfaces']"/>
@@ -1576,7 +1576,7 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <edgeMappings name="PCB_PhysicalComponent_subComponents" deletionDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20subComponentLink']" semanticCandidatesExpression="aql:self.eAllContents()" semanticElements="service:getTargetsOfComponent_subComponents()" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='PCB_PhysicalComponent']" targetMapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='PCB_PhysicalComponent']" targetFinderExpression="service:getTargetsOfComponent_subComponents()" sourceFinderExpression="feature:type" domainClass="cs.Part" reconnections="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='move%20subComponents']">
+        <edgeMappings name="PCB_PhysicalComponent_subComponents" label="PCB_Link" deletionDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20subComponentLink']" semanticCandidatesExpression="aql:self.eAllContents()" semanticElements="service:getCBLinkSemanticCandidates()" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='PCB_PhysicalComponent']" targetMapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='PCB_PhysicalComponent']" targetFinderExpression="service:getCBLinkSemanticCandidates()" sourceFinderExpression="feature:type" domainClass="cs.Part" reconnections="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='move%20subComponents']">
           <style routingStyle="tree" foldingStyle="TARGET">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -1584,7 +1584,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="PCB_PhysicalComponent_Part" deletionDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Physical%20Component']" semanticCandidatesExpression="service:getPCBPartSemanticCandidates()" semanticElements="service:getLCBPartSemanticElements()" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='PCB_PhysicalComponent']" targetMapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='PCB_PhysicalComponent']" targetFinderExpression="feature:eContainer" sourceFinderExpression="service:getComponentType()" domainClass="cs.Part" useDomainElement="true" reconnections="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Move%20part']">
+        <edgeMappings name="PCB_PhysicalComponent_Part" label="PCB_MultipartLink" deletionDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Physical%20Component']" semanticCandidatesExpression="service:getCBMultipartLinkSemanticCandidates()" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='PCB_PhysicalComponent']" targetMapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='PCB_PhysicalComponent']" targetFinderExpression="feature:eContainer" sourceFinderExpression="service:getComponentType()" domainClass="cs.Part" useDomainElement="true" reconnections="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Move%20part']">
           <style routingStyle="tree" foldingStyle="TARGET">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -1599,35 +1599,91 @@
         <reusedMappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
         <toolSections name="Components">
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Node Physical Component in the target Physical Component" name="node.pc" label="Node PC" precondition="aql:container.nature = pa::PhysicalComponentNature::NODE or container.nature = pa::PhysicalComponentNature::UNSET" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='PCB_PhysicalComponent']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PhysicalComponentNode.gif" extraMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='PCB_PhysicalComponent']">
-            <variable name="container"/>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Node Physical Component in the target Physical Component" name="node.pc" label="Node PC" precondition="aql:containerView.isValidCreationCBNodePC()" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" inverseSelectionOrder="true" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='PCB_PhysicalComponent']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PhysicalComponentNode.gif" extraMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='PCB_PhysicalComponent']">
+            <variable name="container">
+              <subVariables xsi:type="tool:AcceleoVariable" name="nature" computationExpression="NODE"/>
+            </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.createPhysicalComponent()">
-                <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
-                  <parameters name="context" value="aql:container"/>
-                  <parameters name="scope" value="aql:self"/>
-                  <parameters name="containerViewExpression" value="aql:containerView.getDiagramContainer()"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getABTarget().getComponentType()">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createComponent('component')">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="nature" valueExpression="aql:nature"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:SetValue" featureName="nature" valueExpression="NODE"/>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:component != null">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:component"/>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponent)">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:component"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponentPkg)">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedParts" variableName="part">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:component"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Behavior Physical Component in the target Physical Component" name="behavior.pc" label="Behavior PC" precondition="aql:container.nature = pa::PhysicalComponentNature::BEHAVIOR or container.nature = pa::PhysicalComponentNature::UNSET" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='PCB_PhysicalComponent']" extraMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='PCB_PhysicalComponent']">
-            <variable name="container"/>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Behavior Physical Component in the target Physical Component" name="behavior.pc" label="Behavior PC" precondition="aql:containerView.isValidCreationCBBehaviorPC()" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" inverseSelectionOrder="true" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='PCB_PhysicalComponent']" extraMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='PCB_PhysicalComponent']">
+            <variable name="container">
+              <subVariables xsi:type="tool:AcceleoVariable" name="nature" computationExpression="BEHAVIOR"/>
+            </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.createPhysicalComponent()">
-                <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
-                  <parameters name="context" value="aql:container"/>
-                  <parameters name="scope" value="aql:self"/>
-                  <parameters name="containerViewExpression" value="aql:containerView.getDiagramContainer()"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getABTarget().getComponentType()">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createComponent('component')">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="nature" valueExpression="aql:nature"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:SetValue" featureName="nature" valueExpression="BEHAVIOR"/>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:component != null">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponent)">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:component"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponentPkg)">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedParts" variableName="part">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:component"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="[Reusable Components] Creates a new Part typed by the source Node Physical Component in the target Physical Component" name="create.part" label="Create Part" precondition="aql:preSource.isValidDndABDComponent(preTargetView)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@edgeMappings[name='PCB_PhysicalComponent_subComponents']" iconPath="/org.polarsys.capella.core.sirius.analysis/description/images/containedIn.png">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="actor" label="Physical Actor" precondition="aql:containerView.isValidCreationCBActor()" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" inverseSelectionOrder="true" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='PCB_PhysicalComponent']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PhysicalActor.gif" extraMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='PCB_PhysicalComponent']">
+            <variable name="container"/>
+            <viewVariable name="containerView">
+              <subVariables xsi:type="tool:AcceleoVariable" name="nature" computationExpression="aql:containerView.getComponentNature()"/>
+            </viewVariable>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getABActorTarget().getComponentType()">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createActor('actor')">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="nature" valueExpression="aql:nature"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:actor != null">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponent)">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:actor"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponentPkg)">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedParts" variableName="part">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:actor"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="[Reusable Components] Creates a new Part typed by the source Node Physical Component in the target Physical Component" name="create.part" label="Create Part" precondition="aql:preSource.isValidDndCBComponent(preTargetView)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@edgeMappings[name='PCB_PhysicalComponent_subComponents']" iconPath="/org.polarsys.capella.core.sirius.analysis/description/images/containedIn.png">
             <filters precondition="aql:not (self.isPreferenceEnabled('multipart.allowed'))" elementsToListen="aql:self.getPreferenceListener()">
               <listeners domainClass="org.polarsys.capella.core.preferences.Listener" featureName="multipart.allowed"/>
             </filters>
@@ -1648,7 +1704,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Sets the target Component as the new container of the source Component" name="contained.in" label="Contained In" precondition="aql:(preSource.nature = preTarget.nature) and preSource.isValidDndABDComponent(preTargetView)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@edgeMappings[name='PCB_PhysicalComponent_subComponents']" iconPath="/org.polarsys.capella.core.sirius.analysis/description/images/containedIn.png">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Sets the target Component as the new container of the source Component" name="contained.in" label="Contained In" precondition="aql:preSource.isValidDndCBComponent(preTargetView)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@edgeMappings[name='PCB_PhysicalComponent_subComponents']" iconPath="/org.polarsys.capella.core.sirius.analysis/description/images/containedIn.png">
             <filters precondition="aql:self.isPreferenceEnabled('multipart.allowed')" elementsToListen="aql:self.getPreferenceListener()">
               <listeners domainClass="org.polarsys.capella.core.preferences.Listener" featureName="multipart.allowed"/>
             </filters>
@@ -1657,7 +1713,7 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.dndABDComponent(source.eContainer(),target)"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.dndCBComponent(source.eContainer(),target)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Physical Component Breakdown" precondition="aql:self.isInLib() and self.getComponentType().oclIsKindOf(pa::PhysicalComponent)" titleExpression="aql:'[PCBD] ' + self.name" browseExpression="aql:self.getComponentType()" diagramDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']">
@@ -1667,10 +1723,10 @@
           </ownedTools>
           <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete subComponentLink">
             <element name="element"/>
-            <elementView name="view"/>
+            <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.sourceNode.target.dndABDComponent(elementView.sourceNode.target.eContainer(),containerView.target)"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.sourceNode.target.dndCBComponent(elementView.sourceNode.target.eContainer(),containerView.target)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Physical Component" precondition="aql: not self.makeUnion(self.eContainerOrSelf(diagram::DDiagram).target, self.eContainerOrSelf(diagram::DDiagram).target.ancestors())->includes(element)">
@@ -1700,18 +1756,18 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="move subComponents" precondition="aql:(source.nature = target.nature) and element.isValidDndABDComponent(targetView)" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="move subComponents" precondition="aql:element.isValidDndCBComponent(targetView)" forceRefresh="true">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.dndABDComponent(source,target)"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.dndCBComponent(source,target)"/>
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="Move part" precondition="aql:(source.nature = target.nature) and element.isValidDndABDComponent(targetView)">
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="Move part" precondition="aql:element.isValidDndCBComponent(targetView)">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -1720,7 +1776,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self">
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:edgeView.semanticElements->size() = 1">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:edgeView.semanticElements->at(1).dndABDComponent(source,target)"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:edgeView.semanticElements->at(1).dndCBComponent(source,target)"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:edgeView.semanticElements->size() > 1">
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="select part" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
@@ -1731,7 +1787,7 @@
                     <parameters name="wizardMessage" value="Select parts which will be moved"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:For" expression="aql:parts" iteratorName="part">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:part.dndABDComponent(source,target)"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:part.dndCBComponent(source,target)"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:edgeView">
                     <subModelOperations xsi:type="tool:DeleteView"/>
@@ -2558,10 +2614,14 @@
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
-              <viewVariable name="containerView"/>
+              <viewVariable name="containerView">
+                <subVariables xsi:type="tool:AcceleoVariable" name="nature" computationExpression="aql:containerView.getComponentNature()"/>
+              </viewVariable>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getABActorTarget().getComponentType()">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createActor('actor')"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createActor('actor')">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="nature" valueExpression="aql:nature"/>
+                  </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:actor != null">
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponent)">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
@@ -3049,7 +3109,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.dndABPhysicalPort(oldSemanticContainer,newSemanticContainer)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="DnD AB Component" precondition="aql:(self.getComponentType().nature = newViewContainer.target.getComponentType().nature or newViewContainer.target.getComponentType().nature = pa::PhysicalComponentNature::UNSET) and element.isValidDndABComponent(newViewContainer)" mappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']" moveEdges="true">
+          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="DnD AB Component" precondition="aql:element.isValidDndABComponent(newViewContainer)" mappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']" moveEdges="true">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -3205,7 +3265,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="DnD AB Deployment" precondition="aql:not (newViewContainer.target.getComponentType().nature = pa::PhysicalComponentNature::BEHAVIOR and self.getComponentType().nature = pa::PhysicalComponentNature::NODE) and element.isValidDndABComponent(newViewContainer)" mappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']" moveEdges="true">
+          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="DnD AB Deployment" precondition="aql:element.isValidDndABComponent(newViewContainer)" mappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']" moveEdges="true">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>

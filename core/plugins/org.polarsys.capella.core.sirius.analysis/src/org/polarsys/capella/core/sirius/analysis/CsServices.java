@@ -877,15 +877,6 @@ public class CsServices {
   }
 
   /**
-   * Returns all components and its children by generalizable link
-   */
-  public Collection<GeneralizableElement> getAllSubComponents(Component component) {
-    Collection<GeneralizableElement> components = GeneralizableElementExt.getAllSubGeneralizableElements(component);
-    components.add(component);
-    return components;
-  }
-
-  /**
    * Returns related interfaces of components (implements, uses, provides, requires).
    */
   public Collection<CommunicationLink> getRelatedCommunicationLinks(Component component) {
@@ -4113,48 +4104,6 @@ public class CsServices {
   }
 
   /**
-   * Returns semantics candidate in a LCB diagram
-   */
-  public Collection<Component> getLCBSemanticCandidates(Component element) {
-    return getSubDefinedByUsedComponents(element);
-  }
-
-  public EObject getLCBPartSource(EObject element) {
-    if (element instanceof Part) {
-      return ((Part) element).getAbstractType();
-    }
-    return null;
-  }
-
-  public List<EObject> getLCBPartTarget(EObject element) {
-    List<EObject> result = new ArrayList<>();
-
-    if ((element instanceof Part) && (((Part) element).getAbstractType() != null)) {
-      for (Part part : ((Component) (((Part) element).getAbstractType())).getRepresentingParts()) {
-        if (part instanceof Part) {
-          result.add(getParentContainer(part));
-        }
-      }
-    }
-
-    return result;
-  }
-
-  public List<EObject> getLCBPartSemanticElements(EObject element) {
-    List<EObject> result = new ArrayList<>();
-    result.add(element);
-    return result;
-  }
-
-  public List<EObject> getLCBPartSemanticCandidates(EObject element) {
-    List<EObject> result = new ArrayList<>();
-    if (element instanceof Component) {
-      result.addAll(ComponentExt.getSubParts((Component) element));
-    }
-    return result;
-  }
-
-  /**
    * Returns the sub-defined components which are defined in sub-used components
    */
   public Collection<Component> getSubDefinedByUsedComponents(Component component) {
@@ -5074,42 +5023,6 @@ public class CsServices {
       CapellaServices.getService().creationService(part);
       part.setAbstractType(component);
     }
-  }
-
-  /**
-   * Returns the target of LCB_LogicalComponent_subComponents mapping
-   * 
-   * @param component
-   * @return
-   */
-  public List<Component> getTargetsOfComponent_subComponents(Component component) {
-    List<Component> returnedList = new ArrayList<>();
-    if (isMultipartMode(component)) {
-      return returnedList;
-    }
-    for (Component cpnt : ComponentExt.getDirectParents(component)) {
-      if (!returnedList.contains(cpnt)) {
-        returnedList.add(cpnt);
-      }
-    }
-
-    return returnedList;
-  }
-
-  public List<EObject> getPCBPartSemanticCandidates(ModelElement element) {
-    List<EObject> result = new ArrayList<>();
-    if (!(element instanceof Component) || !isMultipartMode(element)) {
-      return result;
-    }
-    for (Component aComponent : getLCBSemanticCandidates((Component) element)) {
-      for (Part part : ComponentExt.getSubParts(aComponent)) {
-        if (!result.contains(part)) {
-          result.add(part);
-        }
-      }
-    }
-
-    return result;
   }
 
   /**

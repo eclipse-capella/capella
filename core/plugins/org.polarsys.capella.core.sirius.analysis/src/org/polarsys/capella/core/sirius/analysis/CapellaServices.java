@@ -178,6 +178,7 @@ import org.polarsys.capella.core.model.helpers.AbstractFunctionExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.ComponentPkgExt;
 import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
 import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.model.helpers.ScenarioExt;
@@ -2642,7 +2643,8 @@ public class CapellaServices {
     // Logical and Physical Levels
     if (sourceCapability instanceof CapabilityRealization) {
 
-      for (CapabilityRealizationInvolvedElement element : ((CapabilityRealization) sourceCapability).getInvolvedComponents()) {
+      for (CapabilityRealizationInvolvedElement element : ((CapabilityRealization) sourceCapability)
+          .getInvolvedComponents()) {
         if (element instanceof Component) {
           Component component = (Component) element;
           if (ComponentExt.isActor(component)) {
@@ -2887,7 +2889,7 @@ public class CapellaServices {
     }
 
     List<EObject> associatedSemanticElementsWithoutNulls = associatedSemanticElements.stream().filter(Objects::nonNull)
-        .map(x -> (EObject) x).collect(Collectors.toList());
+        .map(x -> x).collect(Collectors.toList());
 
     if (!associatedSemanticElementsWithoutNulls.isEmpty()) {
       return associatedSemanticElementsWithoutNulls;
@@ -2956,4 +2958,5 @@ public class CapellaServices {
     semanticElements.add(element.getInvolved());
     return semanticElements;
   }
+
 }

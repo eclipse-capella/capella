@@ -62,6 +62,7 @@ import org.polarsys.capella.core.data.cs.AbstractPathInvolvedElement;
 import org.polarsys.capella.core.data.cs.AbstractPhysicalLinkEnd;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.DeployableElement;
@@ -82,10 +83,12 @@ import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
+import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.data.pa.deployment.DeploymentFactory;
 import org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.ComponentPkgExt;
 import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.model.helpers.PhysicalComponentExt;
 import org.polarsys.capella.core.model.helpers.PhysicalPathExt;
@@ -165,7 +168,7 @@ public class PhysicalServices {
       IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(
           PaPackage.Literals.PHYSICAL_COMPONENT, CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__DEPLOYED_ELEMENT);
       return query.getCurrentElements(context, false);
-      
+
     } else if (context instanceof Part) {
       IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(CsPackage.Literals.PART,
           CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__DEPLOYED_ELEMENT);
@@ -1708,6 +1711,30 @@ public class PhysicalServices {
 
     allAllocations.removeAll(existingAllocations);
     return allAllocations;
+  }
+
+  public PhysicalComponentNature getComponentNature(DSemanticDecorator decorator) {
+
+    EObject target = decorator.getTarget();
+
+    if (target instanceof PhysicalComponentPkg) {
+      Component parentComponent = ComponentPkgExt.getParentComponent((ComponentPkg) target);
+      if (parentComponent instanceof PhysicalComponent) {
+        return ((PhysicalComponent) parentComponent).getNature();
+      }
+
+    } else if (target instanceof PhysicalComponent) {
+      return ((PhysicalComponent) target).getNature();
+    } else if (target instanceof Part) {
+      Component component = PartExt.getComponentOfPart((Part) target);
+      if (component instanceof PhysicalComponent) {
+        return ((PhysicalComponent) component).getNature();
+      }
+
+    }
+
+    return PhysicalComponentNature.UNSET;
+
   }
 
 }

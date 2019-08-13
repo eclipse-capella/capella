@@ -14,6 +14,7 @@ import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.test.diagram.common.ju.context.XBreakdownDiagram;
 import org.polarsys.capella.test.diagram.tools.ju.model.EmptyProject;
 import org.polarsys.capella.test.framework.context.SessionContext;
+import org.polarsys.capella.test.framework.helpers.SkeletonHelper;
 import org.polarsys.capella.test.framework.helpers.TestHelper;
 import org.polarsys.capella.test.framework.model.GenericModel;
 
@@ -22,7 +23,7 @@ public class LCBDScenario extends EmptyProject {
   @Override
   public void test() throws Exception {
     SessionContext context = new SessionContext(getSession(getRequiredTestModel()));
-
+    
     XBreakdownDiagram diagram = XBreakdownDiagram.createCBDiagram(context, LA__LOGICAL_SYSTEM);
 
     diagram.createComponent(GenericModel.LC_1, 1, ICommonConstants.EMPTY_STRING, diagram.getDiagramId(),
@@ -39,7 +40,7 @@ public class LCBDScenario extends EmptyProject {
 
     diagram.createComponent(GenericModel.LC_3, 1, ICommonConstants.EMPTY_STRING, diagram.getDiagramId(),
         diagram.getDiagramId());
-
+    actorsTestScenarios(context);
     // Set the Project multi-parts
     TestHelper.setReusableComponents(diagram.getSessionContext().getSemanticElement(GenericModel.LC_3), true);
 
@@ -48,5 +49,28 @@ public class LCBDScenario extends EmptyProject {
     String constraint = diagram.createConstraint(GenericModel.CONSTRAINT_2);
     diagram.removeConstraint(constraint, diagram.getDiagramId());
     diagram.dragAndDropConstraintsFromExplorer(constraint, diagram.getDiagramId());
+
   }
+
+  public void actorsTestScenarios(SessionContext context) {
+    SkeletonHelper.createComponentPkg(LA__LOGICAL_SYSTEM, "PKG1", context);
+    SkeletonHelper.createComponentPkg("PKG1", "PKG1_1", context);
+    
+    actorsTestScenario(context, LA__LOGICAL_SYSTEM);
+    actorsTestScenario(context, "PKG1");
+    actorsTestScenario(context, "PKG1_1");
+
+  }
+
+  public void actorsTestScenario(SessionContext context, String diagramContainerId) {
+    XBreakdownDiagram diagram = XBreakdownDiagram.createCBDiagram(context, diagramContainerId);
+    diagram.createActor(GenericModel.LA_1, diagram.getDiagramId(), false);
+    diagram.createActor(GenericModel.LA_2, diagram.getDiagramId(), true);
+    diagram.createActor(GenericModel.LA_1_1, diagram.getDiagramId(), true);
+    diagram.createComponent(GenericModel.LC_1, 1, ICommonConstants.EMPTY_STRING, diagram.getDiagramId(),
+        diagram.getDiagramId());
+    diagram.createCContainedIn(GenericModel.LA_1_1, GenericModel.LA_1);
+    diagram.createCContainedIn(GenericModel.LC_1, GenericModel.LA_1);
+  }
+
 }

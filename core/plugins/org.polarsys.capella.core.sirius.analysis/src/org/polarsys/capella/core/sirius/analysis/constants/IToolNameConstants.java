@@ -713,6 +713,7 @@ public interface IToolNameConstants {
 
   // LCBD tools - Logical Component Breakdown
   String TOOL_LCBD_CREATE_LOGICAL_COMPONENT = "logical.component";
+  String TOOL_LCBD_CREATE_LOGICAL_ACTOR = "actor";
   String TOOL_LCBD_CONTAINED_IN = "contained.in";
   String TOOL_LCBD_CREATE_CONSTRAINT = "constraint";
   String TOOL_LCBD_CREATE_CONSTRAINTELEMENT = "constraint.element";
@@ -1322,6 +1323,7 @@ public interface IToolNameConstants {
   // PCBD tools - Physical Component Breakdown
   String TOOL_PCBD_CREATE_NODE_PC = "node.pc";
   String TOOL_PCBD_CREATE_BEHAVIOR_PC = "behavior.pc";
+  String TOOL_PCBD_CREATE_PHYSICAL_ACTOR = "actor";
   String TOOL_PCBD_CONTAINED_IN = "contained.in";
   String TOOL_PCBD_CREATE_CONSTRAINT = "constraint";
   String TOOL_PCBD_CREATE_CONSTRAINTELEMENT = "constraint.element";

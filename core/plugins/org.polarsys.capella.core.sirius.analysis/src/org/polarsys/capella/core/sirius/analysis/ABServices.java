@@ -52,6 +52,7 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
@@ -88,12 +89,12 @@ import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
-import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.diagram.helpers.ContextualDiagramHelper;
 import org.polarsys.capella.core.model.helpers.AbstractCapabilityPkgExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.ComponentPkgExt;
 import org.polarsys.capella.core.model.helpers.ComponentPortAllocationExt;
 import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
 import org.polarsys.capella.core.model.helpers.PortExt;
@@ -254,7 +255,7 @@ public class ABServices {
       listChild.add(component);
       for (Component child : listChild) {
         if (child instanceof Component) {
-          Component componentChild = (Component) child;
+          Component componentChild = child;
           for (ComponentPort port : ComponentExt.getOwnedComponentPort(componentChild)) {
             FaServices.getFaServices().moveComponentExchanges(port);
           }
@@ -273,8 +274,62 @@ public class ABServices {
     return pcMoved;
   }
 
-  public EObject dndABDComponent(NamedElement pcMoved, NamedElement oldContainer, NamedElement newContainer) {
+  public EObject dndCBComponent(NamedElement pcMoved, NamedElement oldContainer, NamedElement newContainer) {
     return dndABComponent(pcMoved, oldContainer, newContainer);
+  }
+
+  public List<Component> getCBComponentSemanticCandidates(EObject container) {
+    if (container instanceof ComponentPkg) {
+      return ComponentPkgExt.getAllSubDefinedComponents((ComponentPkg) container);
+    } else if (container instanceof Component) {
+      return ComponentExt.getAllSubDefinedComponents((Component) container);
+    }
+    return Collections.emptyList();
+  }
+
+  public boolean isValidCreationCBNodePC(DSemanticDecorator decorator) {
+    return ABServices.getService().isValidCreationABNodePC(decorator);
+  }
+
+  public boolean isValidCreationCBBehaviorPC(DSemanticDecorator decorator) {
+    return ABServices.getService().isValidCreationABBehaviorPC(decorator);
+  }
+
+  public boolean isValidCreationCBComponent(DSemanticDecorator decorator) {
+    return ABServices.getService().isValidCreationABComponent(decorator);
+  }
+
+  public boolean isValidCreationCBActor(DSemanticDecorator decorator) {
+    return ABServices.getService().isValidCreationABActor(decorator);
+  }
+
+  public List<Component> getCBLinkSemanticCandidates(Component component) {
+    List<Component> returnedList = new ArrayList<>();
+    if (CsServices.getService().isMultipartMode(component)) {
+      return returnedList;
+    }
+    for (Component cpnt : ComponentExt.getDirectParents(component)) {
+      if (!returnedList.contains(cpnt)) {
+        returnedList.add(cpnt);
+      }
+    }
+    return returnedList;
+  }
+
+  public List<EObject> getCBMultipartLinkSemanticCandidates(ModelElement element) {
+    List<EObject> result = new ArrayList<>();
+    if (!(element instanceof Component) || !CsServices.getService().isMultipartMode(element)) {
+      return result;
+    }
+    for (Component aComponent : CsServices.getService().getSubDefinedByUsedComponents((Component) element)) {
+      for (Part part : ComponentExt.getSubParts(aComponent)) {
+        if (!result.contains(part)) {
+          result.add(part);
+        }
+      }
+    }
+
+    return result;
   }
 
   /**
@@ -531,8 +586,7 @@ public class ABServices {
         return false;
       }
     }
-
-    if (target.equals(source.getAbstractType())) {
+    if (!ComponentExt.canMoveInto((Component)source.getAbstractType(), target)) {
       return false;
     }
     return true;
@@ -550,8 +604,7 @@ public class ABServices {
     if (parts.contains(source)) {
       return false;
     }
-
-    if (target.getAbstractType().equals(source.getAbstractType())) {
+    if (!ComponentExt.canMoveInto((Component)source.getAbstractType(), (Component)target.getAbstractType())) {
       return false;
     }
     return true;
@@ -569,25 +622,19 @@ public class ABServices {
     if (parts.contains(source)) {
       return false;
     }
-
-    if (target.equals(source)) {
+    if (!ComponentExt.canMoveInto(source, target)) {
       return false;
     }
-    
-    if ((ComponentExt.isActor(source) && !ComponentExt.canCreateABActor(target))
-        || (!ComponentExt.isActor(source) && !ComponentExt.canCreateABComponent(target))) {
-      return false;
-    }
-    
     return true;
   }
-
+  
   /**
    * Returns whether the given part can be drop into the target element view
    */
   public boolean isValidDndABComponent(Part semanticObjectToDrop, EObject targetContainerView) {
 
     EObject context = CsServices.getService().getABTarget((DSemanticDecorator) targetContainerView);
+
     if (context instanceof BlockArchitecture) {
       return false;
 
@@ -596,7 +643,6 @@ public class ABServices {
 
     } else if (context instanceof Part) {
       return isValidDndComponent(semanticObjectToDrop, (Part) context);
-
     }
 
     return false;
@@ -605,9 +651,8 @@ public class ABServices {
   /**
    * Returns whether the given part can be drop into the target element view (ABD=Architecture Breakdown)
    */
-  public boolean isValidDndABDComponent(Component semanticObjectToDrop, EObject targetContainerView) {
+  public boolean isValidDndCBComponent(Component semanticObjectToDrop, EObject targetContainerView) {
     Object target = ((DSemanticDecorator) targetContainerView).getTarget();
-
     if (target instanceof Component) {
       return isValidDndComponent(semanticObjectToDrop, (Component) target);
     }
@@ -1261,7 +1306,7 @@ public class ABServices {
     if (!isValidCreationABComponent(target)) {
       return false;
     }
-    
+
     EObject type = CsServices.getService().getComponentType(containerView);
     // Deploy Node is allowed on NODE and UNSET, but not on Actor
     if (type instanceof PhysicalComponent) {
@@ -1278,7 +1323,6 @@ public class ABServices {
     return isValidCreationABNodePC(containerView);
   }
 
-  
   /**
    * Can we create a component to a graphical element?
    */
@@ -1298,7 +1342,7 @@ public class ABServices {
     }
     return ComponentExt.canCreateABActor(element);
   }
-  
+
   public boolean isValidCreationABBehaviorPC(DSemanticDecorator containerView) {
     if (containerView == null || containerView.getTarget() == null) {
       return false;
@@ -1308,7 +1352,7 @@ public class ABServices {
     if (!isValidCreationABComponent(target)) {
       return false;
     }
-    
+
     EObject type = CsServices.getService().getComponentType(containerView);
     if (type instanceof PhysicalComponent) {
       PhysicalComponent pcType = (PhysicalComponent) type;
@@ -3277,7 +3321,7 @@ public class ABServices {
     BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(component);
     return architecture.getSystem();
   }
-  
+
   /**
    * Display given component port allocations
    */
@@ -3386,4 +3430,5 @@ public class ABServices {
     }
     return categories;
   }
+
 }

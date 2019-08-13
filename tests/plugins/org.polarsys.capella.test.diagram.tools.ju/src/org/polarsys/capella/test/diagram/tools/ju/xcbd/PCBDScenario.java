@@ -14,6 +14,7 @@ import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.test.diagram.common.ju.context.XBreakdownDiagram;
 import org.polarsys.capella.test.diagram.tools.ju.model.EmptyProject;
 import org.polarsys.capella.test.framework.context.SessionContext;
+import org.polarsys.capella.test.framework.helpers.SkeletonHelper;
 import org.polarsys.capella.test.framework.helpers.TestHelper;
 import org.polarsys.capella.test.framework.model.GenericModel;
 
@@ -42,6 +43,7 @@ public class PCBDScenario extends EmptyProject {
     diagram.createComponent(GenericModel.PC_4, 1, PhysicalComponentNature.BEHAVIOR.getLiteral(), diagram.getDiagramId(),
         diagram.getDiagramId());
 
+    actorsTestScenarios(context);
     // Set the Project multi-parts
     TestHelper.setReusableComponents(diagram.getSessionContext().getSemanticElement(GenericModel.PC_1), true);
 
@@ -50,5 +52,42 @@ public class PCBDScenario extends EmptyProject {
     String constraint = diagram.createConstraint(GenericModel.CONSTRAINT_2);
     diagram.removeConstraint(constraint, diagram.getDiagramId());
     diagram.dragAndDropConstraintsFromExplorer(constraint, diagram.getDiagramId());
+
   }
+
+  public void actorsTestScenarios(SessionContext context) {
+    SkeletonHelper.createComponentPkg(PA__PHYSICAL_SYSTEM, "PKG1", context);
+    SkeletonHelper.createComponentPkg("PKG1", "PKG1_1", context);
+    
+    actorsTestScenario(context, PA__PHYSICAL_SYSTEM);
+    actorsTestScenario(context, "PKG1");
+    actorsTestScenario(context, "PKG1_1");
+
+  }
+
+  public void actorsTestScenario(SessionContext context, String diagramContainerId) {
+    XBreakdownDiagram diagram = XBreakdownDiagram.createCBDiagram(context, diagramContainerId);
+    diagram.createActor(GenericModel.PA_1, diagram.getDiagramId(), false);
+    diagram.createActor(GenericModel.PA_2, diagram.getDiagramId(), true);
+    diagram.createActor(GenericModel.PA_1_1, diagram.getDiagramId(), true);
+    diagram.createActor(GenericModel.PA_3, diagram.getDiagramId(), false);
+    diagram.createActor(GenericModel.PA_4, diagram.getDiagramId(), true);
+
+    diagram.createComponent(GenericModel.PC_1, 1, PhysicalComponentNature.NODE.getLiteral(), diagram.getDiagramId(),
+        diagram.getDiagramId());
+    diagram.createComponent(GenericModel.PC_2, 1, PhysicalComponentNature.BEHAVIOR.getLiteral(), diagram.getDiagramId(),
+        diagram.getDiagramId());
+
+    diagram.createCContainedIn(GenericModel.PA_1_1, GenericModel.PA_1);
+    diagram.createCContainedIn(GenericModel.PC_1, GenericModel.PA_1);
+    diagram.createCContainedIn(GenericModel.PC_2, GenericModel.PA_1);
+
+    diagram.createCContainedIn(GenericModel.PA_3, GenericModel.PC_1);
+    diagram.createCContainedIn(GenericModel.PA_3, GenericModel.PC_2);
+
+    diagram.createCContainedIn(GenericModel.PA_4, GenericModel.PC_1);
+    diagram.createCContainedIn(GenericModel.PA_4, GenericModel.PC_2);
+
+  }
+
 }

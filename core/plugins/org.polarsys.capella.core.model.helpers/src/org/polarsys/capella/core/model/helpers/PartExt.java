@@ -98,6 +98,13 @@ public class PartExt {
     return components;
   }
 
+  public static Component getComponentOfPart(Part part) {
+    if (part.getAbstractType() instanceof Component) {
+      return (Component) (part.getAbstractType());
+    }
+    return null;
+  }
+
   /**
    * Returns sub components of the component which are used (have a part).
    */

@@ -10227,13 +10227,16 @@
           </ownedTools>
           <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new System Actor / Logical Actor / Physical Actor (and creates a Part in the Context element of the current level)" name="actor" label="Actor" precondition="aql:containerView.getIBTarget(true).isValidCreationABActor()" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Actor.gif">
             <variable name="container"/>
-            <viewVariable name="containerView"/>
+            <viewVariable name="containerView">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="nature" computationExpression="aql:containerView.getComponentNature()"/>
+            </viewVariable>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.getIBTarget(true).createActor()">
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                   <parameters name="context" value="aql:self"/>
                   <parameters name="scope" value="aql:self"/>
                 </subModelOperations>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="nature" valueExpression="aql:nature"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

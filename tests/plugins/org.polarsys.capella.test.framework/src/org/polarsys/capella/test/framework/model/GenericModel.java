@@ -209,6 +209,13 @@ public class GenericModel {
   public static String PC_4 = "PC 4";
   public static String PC_4_1 = "PC 4_1";
 
+  public static String PA_1 = "PA 1";
+  public static String PA_1_1 = "PA 1_1";
+  public static String PA_1_2 = "PA 1_2";
+  public static String PA_2 = "PA 2";
+  public static String PA_3 = "PA 3";
+  public static String PA_4 = "PA 4";
+
   public static String NODE_1 = "NODE 1";
   public static String NODE_1_1 = "NODE 1_1";
   public static String NODE_2 = "NODE 2";
@@ -239,6 +246,8 @@ public class GenericModel {
   public static String CI_8 = "CI 8";
 
   public static String LA_1 = "LA 1";
+  public static String LA_1_1 = "LA 1_1";
+  public static String LA_1_2 = "LA 1_2";
   public static String LA_2 = "LA 2";
   public static String LA_3 = "LA 3";
   public static String LA_4 = "LA 4";

@@ -107,6 +107,7 @@ public abstract class EmptyProject extends AbstractDiagramTestCase {
   public static final String PA__LOGICAL_COMPONENT_REALIZATION_TO_LOGICAL_SYSTEM = "74ab6b1c-938f-426b-bf1c-e96800818ef9";
   public static final String PA__PHYSICAL_ACTORS = "54d762b5-2914-4cec-a8a5-02702956a051";
   public static final String PA__LOGICAL_ARCHITECTURE_REALIZATION_TO_LOGICAL_ARCHITECTURE = "a99c8315-3679-445a-9820-c0d23d2850a5";
+
   public static final String EPBS = "38f9a505-2d82-4963-8b93-2f5226a4f057";
   public static final String EPBS__CAPABILITIES = "eff0c767-1e47-441f-ab17-2515e90346db";
   public static final String EPBS__EPBS_CONTEXT = "21136eb8-5933-4b30-ac29-ca20f0ef4ba8";
@@ -119,10 +120,10 @@ public abstract class EmptyProject extends AbstractDiagramTestCase {
   public String getRequiredTestModel() {
     return EmptyProject.class.getSimpleName();
   }
-  
+
   public String getRootFunctionId(BlockArchitectureExt.Type type) {
     String rootFunction = "";
-    switch(type) {
+    switch (type) {
     case OA:
       rootFunction = OA__OPERATIONAL_ACTIVITIES__ROOT_OA;
       break;
@@ -138,13 +139,13 @@ public abstract class EmptyProject extends AbstractDiagramTestCase {
     default:
       break;
     }
-    
+
     return rootFunction;
   }
-  
+
   public String getContextId(BlockArchitectureExt.Type type) {
     String rootFunction = "";
-    switch(type) {
+    switch (type) {
     case OA:
       rootFunction = OA__OPERATIONAL_CONTEXT;
       break;
@@ -160,10 +161,10 @@ public abstract class EmptyProject extends AbstractDiagramTestCase {
     default:
       break;
     }
-    
+
     return rootFunction;
   }
-  
+
   public String getCapabilitiesId(BlockArchitectureExt.Type type) {
     String capabilitiesId = "";
     switch (type) {
@@ -184,7 +185,7 @@ public abstract class EmptyProject extends AbstractDiagramTestCase {
     }
     return capabilitiesId;
   }
-  
+
   public String getInterfacesId(BlockArchitectureExt.Type type) {
     String interfacesId = "";
     switch (type) {

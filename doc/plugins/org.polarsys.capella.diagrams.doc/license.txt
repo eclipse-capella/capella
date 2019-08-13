@@ -347,6 +347,7 @@ LiteralPhysicalValue.gif
 LiteralStringValue.gif
 LiteralUnlimitedNaturalValue.gif
 Location.gif
+LogicalActor.gif
 LogicalArchitecture.gif
 LogicalArchitectureAllocation.gif
 LogicalArchitectureImplementation.gif

@@ -10,13 +10,22 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.common.ju.context;
 
+import static org.junit.Assert.assertTrue;
+
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.junit.Assert;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.epbs.ConfigurationItemKind;
 import org.polarsys.capella.core.data.fa.FunctionKind;
+import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.oa.OaPackage;
+import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.Type;
@@ -209,6 +218,35 @@ public class XBreakdownDiagram extends CommonDiagram {
         return expectedNewElements;
       }
     }.run();
+  }
+
+  public void createActor(String id, String containerId, boolean isHuman) {
+    String name = null;
+    if (type == Type.LA) {
+      name = IToolNameConstants.TOOL_LCBD_CREATE_LOGICAL_ACTOR;
+    } else if (type == Type.PA) {
+      name = IToolNameConstants.TOOL_PCBD_CREATE_PHYSICAL_ACTOR;
+    }
+    CreateNodeTool tool = new CreateNodeTool(this, name, containerId, id);
+    EObject result = tool.run().getTarget();
+    if ((type == type.LA && result instanceof LogicalComponent)
+        || (type == type.PA && result instanceof PhysicalComponent)) {
+      Component actor = (Component) result;
+      assertTrue("the component created is not actor", actor.isActor());
+
+      TransactionHelper.getExecutionManager(actor).execute(new AbstractReadWriteCommand() {
+
+        @Override
+        public void run() {
+          actor.setHuman(isHuman);
+
+        }
+
+      });
+    } else {
+      Assert.fail(" The result is not the expected one ");
+    }
+
   }
 
   public void createCContainedIn(String sourceId, String targetId) {
