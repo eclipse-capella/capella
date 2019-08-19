@@ -46,6 +46,7 @@ import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.ReconnectTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.SelectFromListTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.SwitchTool;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.xab.ReuseComponentTool;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
 public class XABDiagram extends CommonDiagram {
@@ -687,7 +688,7 @@ public class XABDiagram extends CommonDiagram {
     } else if (type == Type.PA) {
       name = IToolNameConstants.TOOL_PAB_REUSE_PC;
     }
-    new SelectFromListTool(this, name, containerId, ids).select(ids);
+    new ReuseComponentTool(this, name, containerId).select(ids);
   }
 
   public void reuseActor(String containerId, String... ids) {
@@ -697,7 +698,7 @@ public class XABDiagram extends CommonDiagram {
     } else if (type == Type.LA) {
       name = IToolNameConstants.TOOL_LAB_REUSE_LOGICAL_ACTOR;
     }
-    new SelectFromListTool(this, name, containerId, ids).select(ids);
+    new ReuseComponentTool(this, name, containerId).select(ids);
   }
 
   @Override

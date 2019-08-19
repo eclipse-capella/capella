@@ -42,6 +42,8 @@ public class Messages extends NLS {
   public static String reconnectEdgeSourceFailed;
   public static String reconnectEdgeTargetFailed;
 
+  public static String toolPreconditionFailed;
+
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);

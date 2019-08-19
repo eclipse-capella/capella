@@ -1253,23 +1253,16 @@ public class ABServices {
   }
 
   public boolean isValidCreationABNodePC(DSemanticDecorator containerView) {
-    if (containerView == null) {
+    if (containerView == null || containerView.getTarget() == null) {
       return false;
     }
 
-    EObject container = containerView.getTarget();
-    if (container == null) {
+    EObject target = CsServices.getService().getABTarget(containerView);
+    if (!isValidCreationABComponent(target)) {
       return false;
     }
-
-    if (!CsServices.getService().canCreateABComponent(CsServices.getService().getABTarget(containerView)))
-      return false;
     
     EObject type = CsServices.getService().getComponentType(containerView);
-    if ((type == null) || !(type instanceof PhysicalComponent || type instanceof PhysicalComponentPkg)) {
-      return false;
-    }
-
     // Deploy Node is allowed on NODE and UNSET, but not on Actor
     if (type instanceof PhysicalComponent) {
       PhysicalComponent pcType = (PhysicalComponent) type;
@@ -1285,25 +1278,38 @@ public class ABServices {
     return isValidCreationABNodePC(containerView);
   }
 
+  
+  /**
+   * Can we create a component to a graphical element?
+   */
+  public boolean isValidCreationABComponent(EObject element) {
+    if (element instanceof DSemanticDecorator) {
+      return ComponentExt.canCreateABComponent(((DSemanticDecorator) element).getTarget());
+    }
+    return ComponentExt.canCreateABComponent(element);
+  }
+
+  /**
+   * Can we create an actor to a graphical element?
+   */
+  public boolean isValidCreationABActor(EObject element) {
+    if (element instanceof DSemanticDecorator) {
+      return ComponentExt.canCreateABActor(((DSemanticDecorator) element).getTarget());
+    }
+    return ComponentExt.canCreateABActor(element);
+  }
+  
   public boolean isValidCreationABBehaviorPC(DSemanticDecorator containerView) {
-    if (containerView == null) {
+    if (containerView == null || containerView.getTarget() == null) {
       return false;
     }
 
-    EObject container = containerView.getTarget();
-    if (container == null) {
+    EObject target = CsServices.getService().getABTarget(containerView);
+    if (!isValidCreationABComponent(target)) {
       return false;
     }
-
-    if (!CsServices.getService().canCreateABComponent(CsServices.getService().getABTarget(containerView)))
-      return false;
     
     EObject type = CsServices.getService().getComponentType(containerView);
-    if ((type == null) || !(type instanceof PhysicalComponent || type instanceof PhysicalComponentPkg)) {
-      return false;
-    }
-
-    // Deploy Behavior is allowed on BEHAVIOR and UNSET, but not on Actor
     if (type instanceof PhysicalComponent) {
       PhysicalComponent pcType = (PhysicalComponent) type;
       if (PhysicalComponentNature.NODE.equals(pcType.getNature())) {
@@ -1322,18 +1328,18 @@ public class ABServices {
     if (!(containerView instanceof DNodeContainer)) {
       return false;
     }
-    
+
+    EObject target = getABDeployTarget(containerView);
+    if (!(target instanceof PhysicalComponent)) {
+      return false;
+    }
+
+    // Deploy Node is allowed only on NODE or UNSET too
     EObject type = CsServices.getService().getComponentType(containerView);
-    if ((type == null) || !(type instanceof PhysicalComponent)) {
-      return false;
-    }
-
-    // Deploy Node is allowed only on NODE (not actor UNSET for instance)
     PhysicalComponent pcType = (PhysicalComponent) type;
-    if (!PhysicalComponentNature.NODE.equals(pcType.getNature())) {
+    if (PhysicalComponentNature.BEHAVIOR.equals(pcType.getNature())) {
       return false;
     }
-
     return true;
   }
 
@@ -1342,18 +1348,12 @@ public class ABServices {
       return false;
     }
 
-    EObject type = CsServices.getService().getComponentType(containerView);
-    if ((type == null) || !(type instanceof PhysicalComponent)) {
+    EObject target = getABDeployTarget(containerView);
+    if (!(target instanceof PhysicalComponent)) {
       return false;
     }
 
-    // Deploy Behavior is only allowed on BEHAVIOR nodes
-    PhysicalComponent pcType = (PhysicalComponent) type;
-    if (!(PhysicalComponentNature.BEHAVIOR.equals(pcType.getNature())
-        || PhysicalComponentNature.UNSET.equals(pcType.getNature()))) {
-      return false;
-    }
-    
+    // Deploy Behavior is allowed on all nature (UNSET too)
     return true;
   }
 
@@ -3272,6 +3272,12 @@ public class ABServices {
     return result;
   }
 
+  public EObject getABDeployTarget(DSemanticDecorator decorator) {
+    EObject component = CsServices.getService().getComponentType(decorator);
+    BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(component);
+    return architecture.getSystem();
+  }
+  
   /**
    * Display given component port allocations
    */

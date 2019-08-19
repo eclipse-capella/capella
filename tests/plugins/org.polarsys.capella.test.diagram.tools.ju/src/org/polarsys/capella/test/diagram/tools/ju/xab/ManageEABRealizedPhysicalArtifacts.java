@@ -23,7 +23,7 @@ public class ManageEABRealizedPhysicalArtifacts extends XABDiagramsProject {
     SessionContext context = new SessionContext(session);
 
     testOnXAB(context, EPBS__EAB_DIAGRAM, EPBS__EAB_CONFIGURATION_ITEM1, PA__PAB_PHYSICAL_LINK_PL1,
-        PA__PAB_COMPONENT_PART_PC6);
+        PA__PAB_COMPONENT_PC6);
   }
 
   public void testOnXAB(SessionContext context, String diagramName, String containerId, String... ids) {

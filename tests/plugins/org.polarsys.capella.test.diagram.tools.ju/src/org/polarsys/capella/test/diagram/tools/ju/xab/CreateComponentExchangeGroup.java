@@ -51,7 +51,7 @@ public class CreateComponentExchangeGroup extends XABDiagramsProject {
 
   public void testCreateComponentExchangeDelegation(SessionContext context) {
     testOnXAB_CreateComponentExchangeDelegation(context, LA__LAB_DIAGRAM,
-        BlockArchitectureExt.Type.LA, LA__LAB_LOGICAL_SYSTEM_PART, LA__LAB_LC1,
+        BlockArchitectureExt.Type.LA, LA__LAB_LOGICAL_SYSTEM_PART, LA__LAB_LC1_PART,
         LA__LAB_COMPONENT_PORT_LOGICAL_SYSTEM_CP1,
         LA__LAB_COMPONENT_PORT_LC1_CP2);
     testOnXAB_CreateComponentExchangeDelegation(context, PA__PAB_DIAGRAM,

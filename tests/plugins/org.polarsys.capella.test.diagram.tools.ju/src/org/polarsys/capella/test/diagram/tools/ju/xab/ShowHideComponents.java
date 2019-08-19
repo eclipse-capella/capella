@@ -27,7 +27,7 @@ public class ShowHideComponents extends XABDiagramsProject {
     testOnXAB(context, OA__OAB_DIAGRAM, BlockArchitectureExt.Type.OA,
         OA__OAB_ENTITY1, OA__OAB_DIAGRAM);
     testOnXAB(context, LA__LAB_DIAGRAM, BlockArchitectureExt.Type.LA,
-        LA__LAB_LC1, LA__LAB_LOGICAL_SYSTEM_PART);
+        LA__LAB_LC1_PART, LA__LAB_LOGICAL_SYSTEM_PART);
   }
 
   public void testOnXAB(SessionContext context, String diagramName, BlockArchitectureExt.Type type,

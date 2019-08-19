@@ -34,8 +34,8 @@ public class DragAndDropEABTest extends XABDiagramsProject {
     diagram.removeConfigurationItems(diagram.getDiagramId(), cs);
     diagram.dragAndDropConfigurationItemFromExplorer(cs, diagram.getDiagramId());
 
-    diagram.manageRealizedPhysicalArtifacts(EPBS__EAB_CONFIGURATION_ITEM1, PA__PAB_COMPONENT_PART_PC6);
-    diagram.dragAndDropPhysicalAtifacts(PA__PAB_COMPONENT_PART_PC6, cs);
+    diagram.manageRealizedPhysicalArtifacts(EPBS__EAB_CONFIGURATION_ITEM1, PA__PAB_COMPONENT_PC6);
+    diagram.dragAndDropPhysicalAtifacts(PA__PAB_COMPONENT_PC6, cs);
 
     String constraint = diagram.createConstraint(GenericModel.CONSTRAINT_1);
     diagram.removeConstraint(constraint, diagram.getDiagramId());

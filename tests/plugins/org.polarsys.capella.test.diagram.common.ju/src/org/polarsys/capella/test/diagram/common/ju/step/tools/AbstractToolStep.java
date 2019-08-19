@@ -126,9 +126,8 @@ public abstract class AbstractToolStep<A> extends AbstractDiagramStep<A> {
       public void run() {
         Command cmd = _toolWrapper.createCommand();
 
-        Assert.assertTrue(!UnexecutableCommand.INSTANCE.equals(cmd));
+        Assert.assertTrue(NLS.bind(Messages.toolPreconditionFailed, toolName), !UnexecutableCommand.INSTANCE.equals(cmd));
         cmd.execute();
-   
       }
     });
   }

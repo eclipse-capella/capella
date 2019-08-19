@@ -33,7 +33,7 @@ public abstract class EmptyProject extends AbstractDiagramTestCase {
   public static final String OA__DATA = "fb3e1e54-1c28-4e30-b7a3-bf18e7be1c62";
   public static final String OA__OPERATIONAL_CONTEXT = "bba24bed-20cd-4d6e-b981-12de37a4926d";
   public static final String OA__ROLES = "1e252d42-3f9b-4dd9-853d-d3a4d509a2f9";
-  public static final String OA__OPERATIONAL_ENTITIES = "56e8f319-5fa2-4a85-b703-6200ce2abcfc";
+  public static final String OA__OPERATIONAL_ENTITIES = "bba24bed-20cd-4d6e-b981-12de37a4926d";
   public static final String SA = "ecc705c5-b32e-4907-b7ed-4e4b43437584";
   public static final String SA__SYSTEM_FUNCTIONS = "33f73053-04e6-4880-863b-e63a691e80f2";
   public static final String SA__ROOT_SF = "f875adac-b475-4f56-8ef5-0f7d3cc43347";

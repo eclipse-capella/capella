@@ -120,7 +120,8 @@ public abstract class XABDiagramsProject extends AbstractDiagramTestCase {
   public static final String LA__LAB_LOGICAL_SYSTEM = "8dae69b8-87f7-45c0-9f95-f72009aa4c1c";
   public static final String LA__LAB_LOGICAL_SYSTEM_PART = "6b64bc6d-7666-4202-8727-bb039a76d172";
   public static final String LA__LAB_DIAGRAM = "[LAB] Logical System";
-  public static final String LA__LAB_LC1 = "c30f774e-9dd2-406e-a611-14f59ebcb96c";
+  public static final String LA__LAB_LC1_PART = "c30f774e-9dd2-406e-a611-14f59ebcb96c";
+  public static final String LA__LAB_LC1 = "f8d17c52-5dd0-412d-8f45-cebd58928da0";
   public static final String LA__LAB_A1 = "e7884bff-642d-44ac-bce6-c3cd20aa03b1";
   public static final String LA__LAB_A2 = "e671feb7-b6b3-40c0-8f2c-ff2b5ef349f0";
   public static final String LA__LAB_FUNCTION_1 = "02f0848d-2783-4079-b392-96b837442a54";
@@ -182,9 +183,10 @@ public abstract class XABDiagramsProject extends AbstractDiagramTestCase {
   public static final String PA__PAB_COMPONENT_PC3_2 = "79a754d4-99a4-4c7f-857d-aec9c0388232";
   public static final String PA__PAB_COMPONENT_PC3_2_PORT_PC1 = "5330e600-e77a-4bfd-beac-206621b6419c";
   public static final String PA__PAB_COMPONENT_PC4 = "7f2f46d0-9e76-418c-bd18-1d6845221d4b";
-  public static final String PA__PAB_COMPONENT_PC6 = "77ea8311-e10e-4f70-86ff-bf3260777830";
-  public static final String PA__PAB_COMPONENT_PART_PC6 = "0cbac486-3671-45dd-890b-c04d4b226bc6";
-  public static final String PA__PAB_COMPONENT_PC7 = "b61cce74-4df1-4c35-b52f-107a1a41236e";
+  public static final String PA__PAB_COMPONENT_PC6_PART = "77ea8311-e10e-4f70-86ff-bf3260777830";
+  public static final String PA__PAB_COMPONENT_PC6 = "0cbac486-3671-45dd-890b-c04d4b226bc6";
+  public static final String PA__PAB_COMPONENT_PC7 = "e6934a0a-bc02-4b96-ae58-cf0fdd326e58";
+  public static final String PA__PAB_COMPONENT_PC7_PART = "b61cce74-4df1-4c35-b52f-107a1a41236e";
   public static final String PA__PAB_COMPONENT_PC8 = "fdacc723-f8bc-4a99-b678-4c72d24098a9";
   public static final String PA__PAB_COMPONENT_EXCHANGE_1 = "6dde609b-0f07-48fd-9c23-1f991a8f59d6";
   public static final String PA__PAB_NAME_COMPONENT_EXCHANGE_1 = "C 1";

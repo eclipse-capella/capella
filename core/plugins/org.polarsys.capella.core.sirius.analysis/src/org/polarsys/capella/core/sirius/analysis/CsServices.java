@@ -1394,7 +1394,8 @@ public class CsServices {
           }
         }
       }
-      if (canCreateABComponent((decorator))) {
+      
+      if (ABServices.getService().isValidCreationABComponent(decorator)) {
         return decorator.getTarget();
       }
       // We find the nearest container to store the element
@@ -1422,7 +1423,7 @@ public class CsServices {
           }
         }
       }
-      if (canCreateABActor((decorator))) {
+      if (ABServices.getService().isValidCreationABActor((decorator))) {
         return decorator.getTarget();
       }
       // We find the nearest container to store the actor
@@ -1456,26 +1457,6 @@ public class CsServices {
   }
   
   /**
-   * Can we create a component to a graphical element?
-   */
-  public boolean canCreateABComponent(EObject element) {
-    if (element instanceof DSemanticDecorator) {
-      return ComponentExt.canCreateABComponent(((DSemanticDecorator) element).getTarget());
-    }
-    return ComponentExt.canCreateABComponent(element);
-  }
-
-  /**
-   * Can we create an actor to a graphical element?
-   */
-  public boolean canCreateABActor(EObject element) {
-    if (element instanceof DSemanticDecorator) {
-      return ComponentExt.canCreateABActor(((DSemanticDecorator) element).getTarget());
-    }
-    return ComponentExt.canCreateABActor(element);
-  }
-  
-  /**
    * Gets the iB target (used for Interfaces, ExchangeItems, etc.).
    */
   public EObject getIBTarget(DSemanticDecorator decorator) {
@@ -1505,7 +1486,7 @@ public class CsServices {
           return getSemanticParentContainer(decorator.getTarget(), isActorContext);
         }
       }
-      if (isActorContext ? canCreateABActor(decorator) : canCreateABComponent(decorator)) {
+      if (isActorContext ? ABServices.getService().isValidCreationABActor(decorator) : ABServices.getService().isValidCreationABComponent(decorator)) {
         return decorator.getTarget();
       }
       // We find the nearest container to store the element
