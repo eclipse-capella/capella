@@ -31,7 +31,7 @@ public abstract class EmptyProject extends AbstractDiagramTestCase {
   public static final String OA__OPERATIONAL_CAPABILITIES = "17272056-0c09-4f18-879c-3abd881be0d7";
   public static final String OA__INTERFACES = "ff8580b4-8866-4660-b09c-2fb74f4e972b";
   public static final String OA__DATA = "fb3e1e54-1c28-4e30-b7a3-bf18e7be1c62";
-  public static final String OA__OPERATIONAL_CONTEXT = "56e8f319-5fa2-4a85-b703-6200ce2abcfc";
+  public static final String OA__OPERATIONAL_CONTEXT = "bba24bed-20cd-4d6e-b981-12de37a4926d";
   public static final String OA__ROLES = "1e252d42-3f9b-4dd9-853d-d3a4d509a2f9";
   public static final String OA__OPERATIONAL_ENTITIES = "56e8f319-5fa2-4a85-b703-6200ce2abcfc";
   public static final String SA = "ecc705c5-b32e-4907-b7ed-4e4b43437584";
@@ -88,7 +88,7 @@ public abstract class EmptyProject extends AbstractDiagramTestCase {
   public static final String LA__CAPABILITIES = "d89e7f00-8f98-4a05-a9ee-930307efee73";
   public static final String LA__INTERFACES = "6785bc26-f5a5-49b5-910e-ec0d58b754a2";
   public static final String LA__DATA = "7474ef84-8450-4e03-9ba6-0674ce0b0dbd";
-  public static final String LA__LOGICAL_CONTEXT = "438bdabf-bde1-4bca-9410-f1709b08f3ec";
+  public static final String LA__LOGICAL_CONTEXT = "a59425f8-6827-48eb-ab41-cbf7e4d7674b";
   public static final String LA__LOGICAL_CONTEXT__PART_LOGICAL_SYSTEM__LOGICAL_SYSTEM = "ca2e0d95-cba7-4606-8734-00c23f117ce8";
   public static final String LA__LOGICAL_SYSTEM = "32f06455-48c7-4d68-aea5-cf397ab4aff2";
   public static final String LA__SYSTEM_REALIZATION_TO_SYSTEM = "3a899202-b245-46f6-b038-539ee8fcafe3";
@@ -101,7 +101,7 @@ public abstract class EmptyProject extends AbstractDiagramTestCase {
   public static final String PA__CAPABILITIES = "b02dd33a-ffa1-47fa-96dc-fa0863aab9ee";
   public static final String PA__INTERFACES = "fe0c0b8b-fb65-49c5-a104-ceb45bc9d285";
   public static final String PA__DATA = "dbaec066-1f9c-43e3-9ce1-b295c1e7fc8c";
-  public static final String PA__PHYSICAL_CONTEXT = "911ba489-fc12-488f-a2a4-3f0009961521";
+  public static final String PA__PHYSICAL_CONTEXT = "9a842ee5-662a-4534-a70a-d9241779d0ba";
   public static final String PA__PHYSICAL_CONTEXT__PART_PHYSICAL_SYSTEM__PHYSICAL_SYSTEM = "3815ea53-abad-4700-a5e3-ae72585f31d8";
   public static final String PA__PHYSICAL_SYSTEM = "16953dc7-be25-45ef-9da9-32869d0cb53f";
   public static final String PA__LOGICAL_COMPONENT_REALIZATION_TO_LOGICAL_SYSTEM = "74ab6b1c-938f-426b-bf1c-e96800818ef9";

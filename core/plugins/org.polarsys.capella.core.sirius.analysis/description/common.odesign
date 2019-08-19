@@ -9222,7 +9222,7 @@
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selection = 'WIZARD_CANCELED')">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container">
                     <subModelOperations xsi:type="tool_1:For" expression="aql:self.void2Null(self.makeDiff(self.getIntersection(visibleTargets,scope), selection))">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(ownedNodes->select(ownedNode | ownedNode.target = i))">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(ownedNodes->select(ownedNode | ownedNode.target = i)->first())">
                         <subModelOperations xsi:type="tool_1:DeleteView"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -9230,7 +9230,7 @@
                       <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                         <parameters name="context" value="aql:container"/>
                         <parameters name="variable" value="targetView"/>
-                        <parameters name="value" value="aql:self.void2Null(ownedNodes->select(ownedNode | ownedNode.target = i))"/>
+                        <parameters name="value" value="aql:self.void2Null(ownedNodes->select(ownedNode | ownedNode.target = i)->first())"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:targetView != null">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:targetView.show()"/>
@@ -9283,7 +9283,7 @@
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selection = 'WIZARD_CANCELED')">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container">
                     <subModelOperations xsi:type="tool_1:For" expression="aql:self.void2Null(self.makeDiff(self.getIntersection(visibleTargets,scope), selection))">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(ownedNodes->select(ownedNode | ownedNode.target = i))">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(ownedNodes->select(ownedNode | ownedNode.target = i)->first())">
                         <subModelOperations xsi:type="tool_1:DeleteView"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -9291,7 +9291,7 @@
                       <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                         <parameters name="context" value="aql:container"/>
                         <parameters name="variable" value="targetView"/>
-                        <parameters name="value" value="aql:self.void2Null(ownedNodes->select(ownedNode | ownedNode.target = i))"/>
+                        <parameters name="value" value="aql:self.void2Null(ownedNodes->select(ownedNode | ownedNode.target = i)->first())"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:targetView != null">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:targetView.show()"/>

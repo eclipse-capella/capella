@@ -105,9 +105,6 @@ public class DragAndDropTest extends EmptyProject {
     String component2 = idb.createComponent(containerId, GenericModel.COMPONENT_2);
     String component2_1 = idb.createComponent(containerId, GenericModel.COMPONENT_2_1);
 
-    // drag and drop component from explorer
-    idb.dragAndDropComponentFromExplorer(actor1, diagramId);
-
     // drag and drop interface from explorer
     idb.dragAndDropInterfaceFromExplorer(interface1, diagramId);
     idb.dragAndDropInterfaceFromExplorer(interface2, diagramId);
