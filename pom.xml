@@ -144,7 +144,7 @@
 						<!-- provide bundles not containing any source code -->
 						<plugin id="org.polarsys.capella.core.data.res.edit" />
 						<plugin id="org.polarsys.capella.core.data.res.editor" />
-						<plugin id="org.polarsys.capella.ui.views" />
+                        <plugin id="org.polarsys.capella.ui.views" />
 						<feature id="org.eclipse.nebula.widgets.richtext.feature" />
 						<feature id="org.polarsys.kitalpha.richtext.mde.tools.sirius.feature" />
 						<feature id="org.polarsys.kitalpha.richtext.widget.feature" />
