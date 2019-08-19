@@ -229,7 +229,13 @@ public class ComponentRule extends AbstractCapellaElementRule {
       }
 
     } else if (container instanceof SystemComponent) {
-      // Nothing
+      if (CtxPackage.Literals.SYSTEM_COMPONENT.isSuperTypeOf(targetType)) {
+        return CtxPackage.Literals.SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENTS;
+
+      } else if (CtxPackage.Literals.SYSTEM_COMPONENT_PKG.isSuperTypeOf(targetType)) {
+        return CtxPackage.Literals.SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENT_PKGS;
+
+      }
 
     } else if (container instanceof LogicalArchitecture) {
       if (LaPackage.Literals.LOGICAL_COMPONENT_PKG.isSuperTypeOf(targetType)) {

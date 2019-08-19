@@ -13,16 +13,13 @@ package org.polarsys.capella.core.transition.system.topdown.rules.oa.oe2system;
 import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 
 import java.util.Collection;
-import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.transition.common.handlers.transformation.TransformationHandlerHelper;
@@ -31,9 +28,6 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 /**
  */
 public class PartRule extends org.polarsys.capella.core.transition.system.rules.cs.PartRule {
-  @Override
-  protected void retrieveContainer(EObject element_p, List<EObject> result_p, IContext context_p) {
-  }
 
   @Override
   protected EClass getSourceType() {

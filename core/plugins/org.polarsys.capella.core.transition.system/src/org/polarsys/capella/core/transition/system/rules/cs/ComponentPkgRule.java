@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
@@ -109,7 +110,12 @@ public class ComponentPkgRule extends AbstractCapellaElementRule {
     super.retrieveGoDeep(source, result, context);
 
     if (ContextScopeHandlerHelper.getInstance(context).contains(ITransitionConstants.SOURCE_SCOPE, source, context)) {
-
+      if (source instanceof ComponentPkg) {
+        result.addAll(((ComponentPkg) source).getOwnedParts());
+        ContextScopeHandlerHelper.getInstance(context).addAll(ITransitionConstants.SOURCE_SCOPE,
+            ((ComponentPkg) source).getOwnedParts(), context);
+      }
+      
       if (source instanceof EntityPkg) {
         EntityPkg sourceElement = (EntityPkg) source;
         result.addAll(sourceElement.getOwnedEntityPkgs());
@@ -175,7 +181,9 @@ public class ComponentPkgRule extends AbstractCapellaElementRule {
       }
 
     } else if (container instanceof SystemComponent) {
-      //Nothing
+      if (CtxPackage.Literals.SYSTEM_COMPONENT_PKG.isSuperTypeOf(targetType)) {
+        return CtxPackage.Literals.SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENT_PKGS;
+      }
       
     } else if (container instanceof LogicalArchitecture) {
       if (LaPackage.Literals.LOGICAL_COMPONENT_PKG.isSuperTypeOf(targetType)) {

@@ -11,7 +11,9 @@
 package org.polarsys.capella.core.transition.system.topdown.rules.oa.oe2actor;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
  */
@@ -22,4 +24,9 @@ public class PartRule extends org.polarsys.capella.core.transition.system.rules.
     return CsPackage.Literals.PART;
   }
 
+  @Override
+  protected EObject getBestContainer(EObject element_p, EObject result_p, IContext context_p) {
+    // We don't care traceability, we return default container
+    return null;
+  }
 }

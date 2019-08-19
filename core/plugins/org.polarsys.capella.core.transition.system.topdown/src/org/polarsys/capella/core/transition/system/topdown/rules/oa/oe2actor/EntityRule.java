@@ -10,17 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.system.topdown.rules.oa.oe2actor;
 
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
-import org.polarsys.capella.core.data.cs.BlockArchitecture;
-import org.polarsys.capella.core.data.cs.CsPackage;
-import org.polarsys.capella.core.data.ctx.CtxPackage;
-import org.polarsys.capella.core.data.ctx.SystemComponent;
-import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.transition.common.handlers.selection.EClassSelectionContext;
-import org.polarsys.capella.core.transition.common.handlers.transformation.TransformationHandlerHelper;
-import org.polarsys.capella.core.transition.system.topdown.handlers.transformation.TopDownTransformationHelper;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -28,4 +19,13 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
  */
 public class EntityRule extends org.polarsys.capella.core.transition.system.topdown.rules.oa.EntityRule {
 
+  @Override
+  protected EObject transformDirectElement(EObject element_p, IContext context_p) {
+    EObject res = super.transformDirectElement(element_p, context_p);
+    if (res instanceof Component) {
+      ((Component) res).setActor(true);
+      ((Component) res).setHuman(true);
+    }
+    return res;
+  }
 }

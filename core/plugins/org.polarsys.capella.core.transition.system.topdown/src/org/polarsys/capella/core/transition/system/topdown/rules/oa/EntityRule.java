@@ -17,6 +17,7 @@ import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.OaPackage;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.transition.common.handlers.transformation.TransformationHandlerHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -39,16 +40,6 @@ public class EntityRule extends org.polarsys.capella.core.transition.system.topd
   @Override
   public EClass getTargetType(EObject element_p, IContext context_p) {
     return CtxPackage.Literals.SYSTEM_COMPONENT;
-  }
-
-  @Override
-  protected EObject transformDirectElement(EObject element_p, IContext context_p) {
-    EObject res = super.transformDirectElement(element_p, context_p);
-    if (res instanceof Component) {
-      ((Component) res).setActor(true);
-      ((Component) res).setHuman(true);
-    }
-    return res;
   }
 
   protected boolean transformAsRootComponent(EObject object, IContext context) {

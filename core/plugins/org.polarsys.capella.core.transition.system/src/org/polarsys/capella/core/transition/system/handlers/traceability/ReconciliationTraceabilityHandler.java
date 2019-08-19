@@ -22,6 +22,7 @@ import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.information.DataPkg;
@@ -58,6 +59,10 @@ public class ReconciliationTraceabilityHandler extends LevelBasedTraceabilityHan
 
     if ((source instanceof Component) && (target instanceof Component)) {
       initializeComponent((Component) source, (Component) target, context, map);
+    }
+    
+    if ((source instanceof ComponentPkg) && (target instanceof ComponentPkg)) {
+      initializeComponentPkg((ComponentPkg) source, (ComponentPkg) target, context, map);
     }
 
     if ((source instanceof FunctionPkg) && (target instanceof FunctionPkg)) {
@@ -217,6 +222,25 @@ public class ReconciliationTraceabilityHandler extends LevelBasedTraceabilityHan
         Part sourcePartition = source.getRepresentingParts().get(0);
         Part targetPartition = target.getRepresentingParts().get(0);
         addMapping(map, sourcePartition, targetPartition, context);
+      }
+    }
+  }
+  
+  protected void initializeComponentPkg(ComponentPkg source, ComponentPkg target, IContext context,
+      LevelMappingTraceability map) {
+    ITraceabilityHandler handler = TraceabilityHandlerHelper.getInstance(context);
+
+    // Perform a map with parts if there is only one part with the same type
+    for (Part sourcePart : source.getOwnedParts()) {
+      if (sourcePart.getType() != null) {
+        for (Part targetPart : target.getOwnedParts()) {
+          if (targetPart.getType() != null) {
+            if (handler.retrieveTracedElements(sourcePart.getType(), context).contains(targetPart.getType())) {
+              addMapping(map, sourcePart, targetPart, context);
+              break;
+            }
+          }
+        }
       }
     }
   }

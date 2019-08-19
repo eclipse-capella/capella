@@ -20,6 +20,7 @@ import org.polarsys.capella.test.transition.ju.model.functionalchain.FunctionalC
 import org.polarsys.capella.test.transition.ju.model.modestate.StateMachineTransitionTestCase;
 import org.polarsys.capella.test.transition.ju.testcases.FC2FSInitializationTestCase;
 import org.polarsys.capella.test.transition.ju.testcases.LcWithPropertyValueTestCase;
+import org.polarsys.capella.test.transition.ju.testcases.PartOwnedByPackage;
 import org.polarsys.capella.test.transition.ju.testcases.ReconciliationCommunicationLinks;
 import org.polarsys.capella.test.transition.ju.testcases.ReconciliationInterfaceUsesImplements;
 import org.polarsys.capella.test.transition.ju.testcases.RootPropertyValueTestCase;
@@ -48,6 +49,7 @@ public class TransitionTestSuite extends BasicTestSuite {
     tests.add(new FC2FSInitializationTestCase());
     tests.add(new FunctionalChainTestCase());
     tests.add(new RootPropertyValueTestCase());
+    tests.add(new PartOwnedByPackage());
     return tests;
   }
 
