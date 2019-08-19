@@ -10,7 +10,11 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius.common.ui,
  org.polarsys.capella.core.ui.resources,
  org.polarsys.capella.common.re.gen,
- org.polarsys.capella.core.validation
+ org.polarsys.capella.core.validation,
+ org.polarsys.capella.core.ui.properties,
+ org.polarsys.capella.common.ui.toolkit.browser,
+ org.polarsys.capella.core.platform.sirius.ui.navigator,
+ org.polarsys.capella.core.platform.sirius.ui.perspective
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.polarsys.capella.test.platform.ju,
