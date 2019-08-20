@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.data.cs.provider;
 
 import org.eclipse.emf.edit.provider.IItemProviderDecorator;
+import org.polarsys.capella.core.data.cs.ComponentRealization;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.gen.edit.decorators.CustomDecoratorAdapterFactory;
@@ -28,6 +29,8 @@ public class CsItemProviderDecoratorAdapterFactory extends CustomDecoratorAdapte
 			return new ExchangeItemAllocationItemProviderDecorator(this);
 		} else if (target instanceof Part) {
       return new PartItemProviderDecorator(this);
+    } else if (target instanceof ComponentRealization) {
+      return new ComponentRealizationItemProviderDecorator(this);
     }
 		return new ForwardingItemProviderAdapterDecorator(this);
 	}
