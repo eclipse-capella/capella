@@ -17,6 +17,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.polarsys.capella.core.data.cs.CsFactory;
+import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.EntityPkg;
 import org.polarsys.capella.core.data.oa.OaFactory;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
@@ -39,7 +42,11 @@ public class CreateRPL_SpecificPackages_OA extends CreateRPL_SpecificPackages {
       protected void doExecute() {
         EntityPkg entityPkg = project.getOperationalAnalysis().getOwnedEntityPkg();
 
-        entityPkg.getOwnedEntities().add(OaFactory.eINSTANCE.createEntity());
+        Entity entity = OaFactory.eINSTANCE.createEntity();
+        Part part = CsFactory.eINSTANCE.createPart();
+        part.setAbstractType(entity);
+        entityPkg.getOwnedEntities().add(entity);
+        entityPkg.getOwnedParts().add(part);
         entityPkg.getOwnedEntityPkgs().add(OaFactory.eINSTANCE.createEntityPkg());
         result.addAll(entityPkg.eContents());
 

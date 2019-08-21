@@ -133,20 +133,7 @@ public class MoveHelper {
         }
 
       } else if (elt instanceof Component) {
-        //Prevent move of System
-        if (!(elt instanceof Entity) && BlockArchitectureExt.isRootComponent((Component)elt)) {
-          isOK = false;
-          
-        } else if ((elt instanceof Component || elt instanceof Part) && !ComponentExt.isActor(elt)
-            && !ComponentExt.canCreateABComponent(targetElement)) {
-          isOK = false;
-          
-        } else if (ComponentExt.isActor(elt) && !ComponentExt.canCreateABActor(targetElement)) {
-          isOK = false;
-          
-        } else if (targetElement instanceof Component) {
-          isOK = areInSameLayer((ModelElement) elt, (ModelElement) targetElement);
-        }
+        isOK = canMoveComponent((Component) elt, targetElement);
 
       } else if (elt instanceof LogicalComponentPkg || elt instanceof PhysicalComponentPkg) {
         isOK = !(targetElement instanceof BlockArchitecture);
@@ -176,7 +163,8 @@ public class MoveHelper {
         AbstractType type = ((Part) elt).getAbstractType();
         if (type != null) {
           if (type.equals(targetElement) || targetElement instanceof Class
-              || isDecomposedBy((ModelElement) targetElement, (ModelElement) type)) {
+              || isDecomposedBy((ModelElement) targetElement, (ModelElement) type)
+              || (type instanceof Component && !canMoveComponent((Component) type, targetElement))) {
             isOK = false;
           }
         }
@@ -211,6 +199,24 @@ public class MoveHelper {
     }
 
     return Status.OK_STATUS;
+  }
+
+  protected boolean canMoveComponent(Component elt, EObject targetElement) {
+    boolean isOK = true;
+    // Prevent move of System
+    if (!(elt instanceof Entity) && BlockArchitectureExt.isRootComponent((Component) elt)) {
+      isOK = false;
+
+    } else if (!ComponentExt.isActor(elt) && !ComponentExt.canCreateABComponent(targetElement)) {
+      isOK = false;
+
+    } else if (ComponentExt.isActor(elt) && !ComponentExt.canCreateABActor(targetElement)) {
+      isOK = false;
+
+    } else if (targetElement instanceof Component) {
+      isOK = areInSameLayer((ModelElement) elt, (ModelElement) targetElement);
+    }
+    return isOK;
   }
 
   /**

@@ -17,6 +17,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.polarsys.capella.core.data.cs.CsFactory;
+import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.la.CapabilityRealizationPkg;
 import org.polarsys.capella.core.data.la.LaFactory;
 import org.polarsys.capella.core.data.la.LogicalComponent;
@@ -63,10 +65,15 @@ public class CreateRPL_SpecificPackages_LA extends CreateRPL_SpecificPackages {
         LogicalComponent lc = (LogicalComponent)project.getLogicalArchitecture().getSystem();
 
         lc.getOwnedLogicalComponentPkgs().add(LaFactory.eINSTANCE.createLogicalComponentPkg());
-        lc.getOwnedLogicalComponents().add(LaFactory.eINSTANCE.createLogicalComponent());
+        LogicalComponent subLC = LaFactory.eINSTANCE.createLogicalComponent();
+        lc.getOwnedLogicalComponents().add(subLC);
+        Part part = CsFactory.eINSTANCE.createPart();
+        part.setAbstractType(subLC);
+        lc.getOwnedFeatures().add(part);
 
         result.addAll(lc.getOwnedLogicalComponentPkgs());
         result.addAll(lc.getOwnedLogicalComponents());
+        result.addAll(lc.getContainedParts());
 
       }
 

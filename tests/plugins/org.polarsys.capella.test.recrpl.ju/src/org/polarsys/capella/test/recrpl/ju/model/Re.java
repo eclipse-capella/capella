@@ -78,5 +78,14 @@ public abstract class Re extends RecRplTestCase {
   public static String PC_31 = "2b3f5d6f-d457-4c02-9ab0-d906b93c2ef6";//$NON-NLS-1$
   public static String PC_32 = "b61c5f2b-760b-4b71-836d-c3ced52b248d";//$NON-NLS-1$
   public static String PF_33 = "f6a2aca7-8558-4124-a0ba-78f2bea6a470";//$NON-NLS-1$
+  
+  public static final String SA_STRUCTURE = "15377f28-3635-4a41-8453-9b79a71e8fb6"; //$NON-NLS-1$
+  public static final String SYSTEM = "ce8ec333-f17c-470e-920b-29f0b9906a78"; //$NON-NLS-1$
+  
+  public static final String SA_2 = "d87a09f4-216f-461e-9bd1-40f2ddf6f448"; //$NON-NLS-1$
+  public static final String SA_2__SA_2 = "e35ef7fe-f97c-4ed2-85ed-af0124218a1d"; //$NON-NLS-1$
+  
+  public static final String LA_2 = "2d7c0d76-82b3-4a92-9e23-ff7687b5bbbe"; //$NON-NLS-1$
+  public static final String LA_2__LA_2 = "e0c4339c-4ed5-44de-817e-c2390121c17d"; //$NON-NLS-1$
 
 }

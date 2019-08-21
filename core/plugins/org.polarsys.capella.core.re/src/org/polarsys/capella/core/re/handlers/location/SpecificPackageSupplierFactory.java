@@ -40,6 +40,7 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
+import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.util.CsSwitch;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.CapabilityPkg;
@@ -96,6 +97,7 @@ import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
 import org.polarsys.capella.core.data.pa.util.PaSwitch;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.Type;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.ProjectExt;
 import org.polarsys.capella.core.model.helpers.SystemAnalysisExt;
@@ -398,6 +400,21 @@ public class SpecificPackageSupplierFactory {
       return getInterfacePkg();
     }
 
+    @Override
+    public Supplier<EObject> casePart(Part object) {
+      Type blockArchitectureType = BlockArchitectureExt
+          .getBlockArchitectureType(BlockArchitectureExt.getRootBlockArchitecture(object));
+      if (blockArchitectureType == Type.OA) {
+        return getEntityPkg();
+      } else if (blockArchitectureType == Type.SA) {
+        return getSystemComponentPkg();
+      } else if (blockArchitectureType == Type.LA) {
+        return getLogicalComponentPkg();
+      } else if (blockArchitectureType == Type.PA) {
+        return getPhysicalComponentPkg();
+      }
+      return super.casePart(object);
+    }
   }
 
   class Information extends InformationSwitch<Supplier<EObject>> {

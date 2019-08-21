@@ -99,12 +99,6 @@ public class CapellaLocationHandler extends DefaultLocationHandler {
   protected boolean isInitialSelectionValidContainer(EObject selection_p, CatalogElementLink link_p,
       IContext context_p) {
 
-    if ((link_p.getTarget() instanceof Part)) {
-      Component type = ((Component) ((Part) link_p.getTarget()).getAbstractType());
-      if (type != null && type.isActor()) {
-        return false;
-      }
-    }
     if ((link_p.getTarget() instanceof Component) && (selection_p instanceof Part)) {
       return false;
     }

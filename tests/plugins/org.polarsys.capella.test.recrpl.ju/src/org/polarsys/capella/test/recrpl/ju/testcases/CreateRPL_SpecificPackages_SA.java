@@ -17,6 +17,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.polarsys.capella.core.data.cs.CsFactory;
+import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.ctx.CapabilityPkg;
 import org.polarsys.capella.core.data.ctx.CtxFactory;
 import org.polarsys.capella.core.data.ctx.MissionPkg;
@@ -59,9 +61,13 @@ public class CreateRPL_SpecificPackages_SA extends CreateRPL_SpecificPackages {
         aPkg.getOwnedSystemComponentPkgs().add(CtxFactory.eINSTANCE.createSystemComponentPkg());
         SystemComponent actor = CtxFactory.eINSTANCE.createSystemComponent();
         actor.setActor(true);
+        Part part = CsFactory.eINSTANCE.createPart();
+        part.setAbstractType(actor);
         aPkg.getOwnedSystemComponents().add(actor);
+        aPkg.getOwnedParts().add(part);
         result.addAll(aPkg.getOwnedSystemComponentPkgs());
         result.add(actor);
+        result.add(part);
 
         MissionPkg mPkg = project.getSystemAnalysis().getOwnedMissionPkg();
         mPkg.getOwnedMissionPkgs().add(CtxFactory.eINSTANCE.createMissionPkg());

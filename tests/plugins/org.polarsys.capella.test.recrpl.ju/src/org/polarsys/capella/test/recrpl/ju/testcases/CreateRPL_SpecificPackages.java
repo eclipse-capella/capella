@@ -33,6 +33,7 @@ import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.ctx.SystemFunctionPkg;
@@ -203,6 +204,8 @@ public abstract class CreateRPL_SpecificPackages extends RecRplTestCase {
     // Here it depends if the EI is in a data pkg or an interface pkg..
     if (target instanceof ExchangeItem) {
       return getExpectedContainerClass(target.eContainer());
+    } else if (target instanceof Part) {
+      return getExpectedContainerClass(((Part) target).getAbstractType());
     }
 
     EClass result = test.get(target.eClass());

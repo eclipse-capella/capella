@@ -37,6 +37,24 @@ public class CreateRPL_ContainmentPart extends Re {
     LF1rpl = ReplicableElementExt.getReferencingElement(RPL, getObject(LC_3_LC_3));
     LF2rpl = ReplicableElementExt.getReferencingElement(RPL, getObject(LC_3_LC_3__LC_3));
     assertTrue(LF2rpl.eContainer() == LF1rpl);
+    
+    // Create a REC with an actor and its part at LA level
+    REC = createREC(getObjects(LA_2, LA_2__LA_2));
+    // Create a RPL, actor and its part should be instantiated in the Logical System
+    RPL = createReplica(getObjects(LOGICAL_SYSTEM), REC);
+    EObject LA2Rpl = ReplicableElementExt.getReferencingElement(RPL, getObject(LA_2));
+    EObject LA2PartRpl = ReplicableElementExt.getReferencingElement(RPL, getObject(LA_2__LA_2));
+    assertTrue(LA2Rpl.eContainer() == getObject(LOGICAL_SYSTEM));
+    assertTrue(LA2PartRpl.eContainer() == getObject(LOGICAL_SYSTEM));
+    
+    // Create a REC with an actor and its part at SA level
+    REC = createREC(getObjects(SA_2, SA_2__SA_2));
+    // Create a RPL, actor and its part should be instantiated in the Structure
+    RPL = createReplica(getObjects(SYSTEM), REC);
+    EObject SA2Rpl = ReplicableElementExt.getReferencingElement(RPL, getObject(SA_2));
+    EObject SA2PartRpl = ReplicableElementExt.getReferencingElement(RPL, getObject(SA_2__SA_2));
+    assertTrue(SA2Rpl.eContainer() == getObject(SA_STRUCTURE));
+    assertTrue(SA2PartRpl.eContainer() == getObject(SA_STRUCTURE));
   }
 
 }

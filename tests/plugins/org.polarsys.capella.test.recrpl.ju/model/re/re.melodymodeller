@@ -299,6 +299,8 @@
           id="15377f28-3635-4a41-8453-9b79a71e8fb6" name="Structure">
         <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="8a9145c0-3992-4c9c-9140-564a41e06934"
             name="System" abstractType="#ce8ec333-f17c-470e-920b-29f0b9906a78"/>
+        <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="e35ef7fe-f97c-4ed2-85ed-af0124218a1d"
+            name="SA 2" abstractType="#d87a09f4-216f-461e-9bd1-40f2ddf6f448"/>
         <ownedSystemComponents xsi:type="org.polarsys.capella.core.data.ctx:SystemComponent"
             id="ce8ec333-f17c-470e-920b-29f0b9906a78" name="System">
           <ownedStateMachines xsi:type="org.polarsys.capella.core.data.capellacommon:StateMachine"
@@ -307,6 +309,8 @@
                 id="eb4aee99-3a9e-4b7c-b470-407418953fd0" name="Default Region"/>
           </ownedStateMachines>
         </ownedSystemComponents>
+        <ownedSystemComponents xsi:type="org.polarsys.capella.core.data.ctx:SystemComponent"
+            id="d87a09f4-216f-461e-9bd1-40f2ddf6f448" name="SA 2" actor="true" human="true"/>
       </ownedSystemComponentPkg>
       <ownedMissionPkg xsi:type="org.polarsys.capella.core.data.ctx:MissionPkg" id="1970a496-a938-4637-9ec4-c75b3242c082"
           name="Missions"/>
@@ -363,6 +367,8 @@
           id="f99c1a83-4f18-48ac-bcf7-b5a2cddcabe9" name="Structure">
         <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="ee696206-359c-4e9c-979c-7e9efcd444c9"
             name="Logical System" abstractType="#3ffa9fef-c04e-4aa9-bdf4-97dcc2ef30cb"/>
+        <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="e0c4339c-4ed5-44de-817e-c2390121c17d"
+            name="LA 2" abstractType="#2d7c0d76-82b3-4a92-9e23-ff7687b5bbbe"/>
         <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
             id="3ffa9fef-c04e-4aa9-bdf4-97dcc2ef30cb" name="Logical System">
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="c30260c6-d33d-4e0f-a0de-0d1442941e0a"
@@ -394,6 +400,8 @@
                 id="aa05ebdf-b57b-44da-9832-ffdf3f6c80ee" usedInterface="#9a8ebbe8-564f-410a-b583-1bd209d38677"/>
           </ownedLogicalComponents>
         </ownedLogicalComponents>
+        <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+            id="2d7c0d76-82b3-4a92-9e23-ff7687b5bbbe" name="LA 2" actor="true" human="true"/>
       </ownedLogicalComponentPkg>
       <ownedSystemAnalysisRealizations xsi:type="org.polarsys.capella.core.data.la:SystemAnalysisRealization"
           id="dbcae93c-f3eb-4654-91a3-90d032adf7ac" targetElement="#f27e040d-0393-491e-bdeb-c4325117d949"
