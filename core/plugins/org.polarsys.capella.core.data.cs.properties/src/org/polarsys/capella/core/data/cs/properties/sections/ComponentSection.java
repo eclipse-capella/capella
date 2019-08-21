@@ -17,11 +17,15 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.polarsys.capella.core.data.core.properties.sections.GeneralizableElementSection;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.properties.controllers.AllocatedFunctionsController;
 import org.polarsys.capella.core.data.cs.properties.controllers.ImplementedInterfacesController;
 import org.polarsys.capella.core.data.cs.properties.controllers.UsedInterfacesController;
+import org.polarsys.capella.core.data.cs.properties.fields.IsActorBooleanPropertiesCheckbox;
+import org.polarsys.capella.core.data.cs.properties.fields.IsHumanBooleanPropertiesCheckbox;
 import org.polarsys.capella.core.data.fa.FaPackage;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
 
@@ -30,18 +34,22 @@ import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
  */
 public abstract class ComponentSection extends GeneralizableElementSection {
 
-  private boolean _showImplementedInterfaces;
-  private boolean _showUsedInterfaces;
-  private boolean _showAllocatedFunctions;
-  private MultipleSemanticField _implementedInterfaces;
-  private MultipleSemanticField _usedInterfaces;
-  protected MultipleSemanticField _allocatedFunctions;
+  private boolean showIsActor;
+  private boolean showIsHuman;
+  private boolean showImplementedInterfaces;
+  private boolean showUsedInterfaces;
+  private boolean showAllocatedFunctions;
+  private IsActorBooleanPropertiesCheckbox isActorCheckbox;
+  private IsHumanBooleanPropertiesCheckbox isHumanCheckbox;
+  private MultipleSemanticField implementedInterfaces;
+  private MultipleSemanticField usedInterfaces;
+  protected MultipleSemanticField allocatedFunctions;
 
   /**
    * Default constructor.
    */
   public ComponentSection() {
-    this(true, true, true, true, true);
+    this(true, true, true, true, true, true, true);
   }
 
   /**
@@ -52,12 +60,14 @@ public abstract class ComponentSection extends GeneralizableElementSection {
    * @param showSuperTypes
    * @param showIsAbstract
    */
-  public ComponentSection(boolean showImplementedInterfaces, boolean showUsedInterfaces, boolean showAllocatedFunctions, boolean showSuperTypes, boolean showIsAbstract) {
+  public ComponentSection(boolean showIsActor, boolean showIsHuman, boolean showImplementedInterfaces, boolean showUsedInterfaces, boolean showAllocatedFunctions, boolean showSuperTypes, boolean showIsAbstract) {
     super(showSuperTypes, showIsAbstract);
 
-    _showImplementedInterfaces = showImplementedInterfaces;
-    _showUsedInterfaces = showUsedInterfaces;
-    _showAllocatedFunctions = showAllocatedFunctions;
+    this.showIsActor = showIsActor;
+    this.showIsHuman = showIsHuman;
+    this.showImplementedInterfaces = showImplementedInterfaces;
+    this.showUsedInterfaces = showUsedInterfaces;
+    this.showAllocatedFunctions = showAllocatedFunctions;
   }
 
   /**
@@ -69,24 +79,34 @@ public abstract class ComponentSection extends GeneralizableElementSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    if (_showImplementedInterfaces) {
-      _implementedInterfaces =
+    if (showIsActor) {
+      isActorCheckbox = new IsActorBooleanPropertiesCheckbox(getCheckGroup(), getWidgetFactory());
+      isActorCheckbox.setDisplayedInWizard(displayedInWizard);
+    }
+
+    if (showIsHuman) {
+      isHumanCheckbox = new IsHumanBooleanPropertiesCheckbox(getCheckGroup(), getWidgetFactory());
+      isHumanCheckbox.setDisplayedInWizard(displayedInWizard);
+    }
+
+    if (showImplementedInterfaces) {
+      implementedInterfaces =
         new MultipleSemanticField(getReferencesGroup(), Messages.ComponentSection_ImplementedInterfaces_Label, getWidgetFactory(),
             new ImplementedInterfacesController());
-      _implementedInterfaces.setDisplayedInWizard(displayedInWizard);
+      implementedInterfaces.setDisplayedInWizard(displayedInWizard);
     }
 
-    if (_showUsedInterfaces) {
-      _usedInterfaces =
+    if (showUsedInterfaces) {
+      usedInterfaces =
           new MultipleSemanticField(getReferencesGroup(), Messages.ComponentSection_UsedInterfaces_Label, getWidgetFactory(), new UsedInterfacesController());
-      _usedInterfaces.setDisplayedInWizard(displayedInWizard);
+      usedInterfaces.setDisplayedInWizard(displayedInWizard);
     }
 
-    if (_showAllocatedFunctions) {
-      _allocatedFunctions =
+    if (showAllocatedFunctions) {
+      allocatedFunctions =
           new MultipleSemanticField(getReferencesGroup(), Messages.ComponentSection_AllocatedFunctions_Label, getWidgetFactory(),
               new AllocatedFunctionsController());
-      _allocatedFunctions.setDisplayedInWizard(displayedInWizard);
+      allocatedFunctions.setDisplayedInWizard(displayedInWizard);
     }
   }
 
@@ -97,14 +117,34 @@ public abstract class ComponentSection extends GeneralizableElementSection {
   public void loadData(EObject capellaElement) {
     super.loadData(capellaElement);
 
-    if (null != _implementedInterfaces) {
-      _implementedInterfaces.loadData(capellaElement, CsPackage.Literals.COMPONENT__OWNED_INTERFACE_IMPLEMENTATIONS);
+    // if the capellaElement is a component but not an actor, the IsAbstract checkbox must be disabled
+    if (null != propertiesCheckbox && capellaElement instanceof Component) {
+      Component component = (Component) capellaElement;
+      propertiesCheckbox.setEnabled(component.isActor());
     }
-    if (null != _usedInterfaces) {
-      _usedInterfaces.loadData(capellaElement, CsPackage.Literals.COMPONENT__OWNED_INTERFACE_USES);
+    
+    if (null != isActorCheckbox) {
+      isActorCheckbox.loadData(capellaElement);
+
+      // if the capellaElement is a system, the IsActor checkbox must be disabled
+      isActorCheckbox.setEnabled(capellaElement != BlockArchitectureExt.getRootBlockArchitecture(capellaElement).getSystem());
     }
-    if (null != _allocatedFunctions) {
-      _allocatedFunctions.loadData(capellaElement, FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_FUNCTIONAL_ALLOCATION);
+    
+    if (null != isHumanCheckbox) {
+      isHumanCheckbox.loadData(capellaElement);
+      
+   // if the capellaElement is a system, the IsHuman checkbox must be disabled
+      isHumanCheckbox.setEnabled(capellaElement != BlockArchitectureExt.getRootBlockArchitecture(capellaElement).getSystem());
+    }
+    
+    if (null != implementedInterfaces) {
+      implementedInterfaces.loadData(capellaElement, CsPackage.Literals.COMPONENT__OWNED_INTERFACE_IMPLEMENTATIONS);
+    }
+    if (null != usedInterfaces) {
+      usedInterfaces.loadData(capellaElement, CsPackage.Literals.COMPONENT__OWNED_INTERFACE_USES);
+    }
+    if (null != allocatedFunctions) {
+      allocatedFunctions.loadData(capellaElement, FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_FUNCTIONAL_ALLOCATION);
     }
   }
 
@@ -113,12 +153,14 @@ public abstract class ComponentSection extends GeneralizableElementSection {
    */
   @Override
   public List<AbstractSemanticField> getSemanticFields() {
-    List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
+    List<AbstractSemanticField> fields = new ArrayList<>();
 
     fields.addAll(super.getSemanticFields());
-    fields.add(_allocatedFunctions);
-    fields.add(_implementedInterfaces);
-    fields.add(_usedInterfaces);
+    fields.add(isActorCheckbox);
+    fields.add(isHumanCheckbox);
+    fields.add(allocatedFunctions);
+    fields.add(implementedInterfaces);
+    fields.add(usedInterfaces);
 
     return fields;
   }

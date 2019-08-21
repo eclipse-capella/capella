@@ -38,7 +38,7 @@ public class ConfigurationItemSection extends ComponentSection {
    * Default constructor.
    */
   public ConfigurationItemSection() {
-    super(true, true, false, false, false);
+    super(false, false, true, true, false, false, false);
   }
 
   /**
@@ -79,7 +79,7 @@ public class ConfigurationItemSection extends ComponentSection {
    */
   @Override
   public List<AbstractSemanticField> getSemanticFields() {
-    List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
+    List<AbstractSemanticField> fields = new ArrayList<>();
 
     fields.addAll(super.getSemanticFields());
     fields.add(ciKindGroup);

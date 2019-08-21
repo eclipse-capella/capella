@@ -29,13 +29,13 @@ import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
  */
 public class SystemComponentSection extends ComponentSection {
 
-  private MultipleSemanticField _realizedOperationalEntities;
+  private MultipleSemanticField realizedOperationalEntities;
 
   /**
    * Default constructor.
    */
   public SystemComponentSection() {
-    super(true, true, true, true, true);
+    super(true, true, true, true, true, true, true);
   }
 
   /**
@@ -47,9 +47,9 @@ public class SystemComponentSection extends ComponentSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    _realizedOperationalEntities = new MultipleSemanticField(getReferencesGroup(),
+    realizedOperationalEntities = new MultipleSemanticField(getReferencesGroup(),
         Messages.getString("SystemComponentSection_RealizedOperationalEntities_Label"), getWidgetFactory(), new Component_RealizedComponentsController()); //$NON-NLS-1$
-    _realizedOperationalEntities.setDisplayedInWizard(displayedInWizard);
+    realizedOperationalEntities.setDisplayedInWizard(displayedInWizard);
   }
 
   /**
@@ -59,7 +59,7 @@ public class SystemComponentSection extends ComponentSection {
   public void loadData(EObject capellaElement) {
     super.loadData(capellaElement);
 
-    _realizedOperationalEntities.loadData(capellaElement, CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS);
+    realizedOperationalEntities.loadData(capellaElement, CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS);
   }
 
   /**
@@ -76,10 +76,10 @@ public class SystemComponentSection extends ComponentSection {
    */
   @Override
   public List<AbstractSemanticField> getSemanticFields() {
-    List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
+    List<AbstractSemanticField> fields = new ArrayList<>();
 
     fields.addAll(super.getSemanticFields());
-    fields.add(_realizedOperationalEntities);
+    fields.add(realizedOperationalEntities);
 
     return fields;
   }

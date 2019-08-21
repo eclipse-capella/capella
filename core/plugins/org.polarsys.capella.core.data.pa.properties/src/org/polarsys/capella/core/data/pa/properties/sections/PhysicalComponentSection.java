@@ -41,7 +41,7 @@ public class PhysicalComponentSection extends ComponentSection {
    * Default constructor.
    */
   public PhysicalComponentSection() {
-    super(true, true, true, true, true);
+    super(true, true, true, true, true, true, true);
   }
 
   /**
@@ -94,7 +94,7 @@ public class PhysicalComponentSection extends ComponentSection {
    */
   @Override
   public List<AbstractSemanticField> getSemanticFields() {
-    List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
+    List<AbstractSemanticField> fields = new ArrayList<>();
 
     fields.addAll(super.getSemanticFields());
     fields.add(logicalComponentRealizations);
@@ -106,9 +106,9 @@ public class PhysicalComponentSection extends ComponentSection {
 
   private void updateAllocatedFunctionsField(PhysicalComponentNature nature) {
     if (PhysicalComponentNature.NODE.equals(nature)) {
-      _allocatedFunctions.enableOpenButton(false);
+      allocatedFunctions.enableOpenButton(false);
     } else {
-      _allocatedFunctions.enableOpenButton(true);
+      allocatedFunctions.enableOpenButton(true);
     }
   }
 }

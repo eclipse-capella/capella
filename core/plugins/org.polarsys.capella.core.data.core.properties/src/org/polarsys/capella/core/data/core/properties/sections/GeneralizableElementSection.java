@@ -15,11 +15,8 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.core.properties.Messages;
@@ -38,7 +35,7 @@ public abstract class GeneralizableElementSection extends NamedElementSection {
   private boolean showIsAbstract;
   private boolean showSuperTypes;
   private CompositionMultipleSemanticField superTypes;
-  private GeneralizableElementBooleanPropertiesCheckbox propertiesCheckbox;
+  protected GeneralizableElementBooleanPropertiesCheckbox propertiesCheckbox;
 
   /**
    * Default constructor.
@@ -66,13 +63,7 @@ public abstract class GeneralizableElementSection extends NamedElementSection {
     boolean displayedInWizard = isDisplayedInWizard();
 
     if (showIsAbstract) {
-      Group checkGroup = getWidgetFactory().createGroup(rootParentComposite, ""); //$NON-NLS-1$
-      checkGroup.setLayout(new GridLayout(5, true));
-      GridData gd = new GridData(GridData.FILL_HORIZONTAL);
-      gd.horizontalSpan = 2;
-      checkGroup.setLayoutData(gd);
-      
-      propertiesCheckbox = new GeneralizableElementBooleanPropertiesCheckbox(checkGroup, getWidgetFactory());
+      propertiesCheckbox = new GeneralizableElementBooleanPropertiesCheckbox(getCheckGroup(), getWidgetFactory());
       propertiesCheckbox.setDisplayedInWizard(displayedInWizard);
     }
 
@@ -122,7 +113,7 @@ public abstract class GeneralizableElementSection extends NamedElementSection {
    */
   @Override
   public List<AbstractSemanticField> getSemanticFields() {
-    List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
+    List<AbstractSemanticField> fields = new ArrayList<>();
 
     fields.addAll(super.getSemanticFields());
     fields.add(propertiesCheckbox);

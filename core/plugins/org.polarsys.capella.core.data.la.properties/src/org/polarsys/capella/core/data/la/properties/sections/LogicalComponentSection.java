@@ -35,7 +35,7 @@ public class LogicalComponentSection extends ComponentSection {
    * Default constructor.
    */
   public LogicalComponentSection() {
-    super(true, true, true, true, true);
+    super(true, true, true, true, true, true, true);
   }
 
   /**
@@ -77,7 +77,7 @@ public class LogicalComponentSection extends ComponentSection {
    */
   @Override
   public List<AbstractSemanticField> getSemanticFields() {
-    List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
+    List<AbstractSemanticField> fields = new ArrayList<>();
 
     fields.addAll(super.getSemanticFields());
     fields.add(systemComponentRealizations);
