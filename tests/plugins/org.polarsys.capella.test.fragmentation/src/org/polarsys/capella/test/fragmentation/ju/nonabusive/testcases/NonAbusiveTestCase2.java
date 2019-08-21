@@ -26,6 +26,7 @@ import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 import org.polarsys.capella.test.fragmentation.ju.messages.FragmentationMessages;
 import org.polarsys.capella.test.fragmentation.ju.model.FragmentModelTestFramework;
 import org.polarsys.capella.test.fragmentation.ju.utils.AbstractToolFragmentModifTest;
+import org.polarsys.capella.test.fragmentation.ju.utils.NonAbusiveFragmentTest;
 
 public class NonAbusiveTestCase2 extends FragmentModelTestFramework {
   IFile _SF11aird;
@@ -47,8 +48,8 @@ public class NonAbusiveTestCase2 extends FragmentModelTestFramework {
   public void test() throws Exception {
     init();
 
-    fragment(context, sf11);
-    fragment(context, sf12);
+    fragmentWithRefChecks(context, sf11);
+    fragmentWithRefChecks(context, sf12);
 
     DiagramContext diag = new OpenDiagramStep(context, diag_SF121_SDFB).run();
 
@@ -83,13 +84,29 @@ public class NonAbusiveTestCase2 extends FragmentModelTestFramework {
 
     }.run();
 
-    unfragment(context, sf12);
-    unfragment(context, sf11);
+    unfragmentWithRefChecks(context, sf12);
+    unfragmentWithRefChecks(context, sf11);
 
-    fragment(context, sf1);
-    fragmentNoRefChecks(context, sf11);
-    unfragmentNoRefChecks(context, sf11);
-    unfragment(context, sf1);
+    fragmentWithRefChecks(context, sf1);
+    fragment(context, sf11);
+    unfragment(context, sf11);
+    unfragmentWithRefChecks(context, sf1);
+
+    /*
+     * aird ReadOnly. Test: fragment sf11
+     */
+    new AbstractToolFragmentModifTest(context, new NonAbusiveFragmentTest(context, getEObject(sf11))) {
+
+      @Override
+      protected Set<IFile> getExpectedFilesToBeModified() {
+        Set<IFile> set = new HashSet<IFile>();
+        set.add(_airdFile);
+        return set;
+      }
+
+    }.run();
+
+    unfragment(context, sf11);
   }
 
   @Override

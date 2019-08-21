@@ -42,7 +42,7 @@ public class NonAbusiveTestCase1 extends FragmentModelTestFramework {
   public void test() throws Exception {
     init();
 
-    fragment(context, sf1);
+    fragmentWithRefChecks(context, sf1);
 
     DiagramContext diag = new OpenDiagramStep(context, diag_SF1_SFBD).run();
 
@@ -65,7 +65,7 @@ public class NonAbusiveTestCase1 extends FragmentModelTestFramework {
 
     }.run();
 
-    unfragment(context, sf1);
+    unfragmentWithRefChecks(context, sf1);
   }
 
   @Override

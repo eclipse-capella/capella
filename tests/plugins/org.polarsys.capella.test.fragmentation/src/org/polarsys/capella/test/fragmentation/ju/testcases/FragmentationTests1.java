@@ -45,7 +45,7 @@ public class FragmentationTests1 extends FragmentModelTestFramework {
     fragment(context, UC1FromLogicalSystem_ID);
     fragment(context, LC3_ID);
     fragment(context, LC3_3_ID);
-    fragmentNoRefChecks(context, OA2_ID);
+    fragment(context, OA2_ID);
     fragment(context, LF2_3_ID);
 
     saveAndCloseSession();

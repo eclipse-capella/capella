@@ -55,6 +55,7 @@ import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 import org.polarsys.capella.test.fragmentation.ju.messages.FragmentationMessages;
 import org.polarsys.capella.test.fragmentation.ju.utils.FragmentTest;
 import org.polarsys.capella.test.fragmentation.ju.utils.FragmentUtils;
+import org.polarsys.capella.test.fragmentation.ju.utils.NonAbusiveFragmentTest;
 import org.polarsys.capella.test.fragmentation.ju.utils.UnfragmentTest;
 import org.polarsys.capella.test.fragmentation.ju.utils.initegrity.IntegrityChecker;
 import org.polarsys.capella.test.framework.api.NonDirtyTestCase;
@@ -138,11 +139,11 @@ public abstract class FragmentModelTestFramework extends NonDirtyTestCase {
     return Arrays.asList(getCurrentProjectName());
   }
 
-  public void fragment(SessionContext context, String id) {
+  public void fragmentWithRefChecks(SessionContext context, String id) {
     new FragmentTest(context, getEObject(id)).run();
   }
 
-  public void fragmentNoRefChecks(SessionContext context, String id) {
+  public void fragment(SessionContext context, String id) {
     new FragmentTest(context, getEObject(id)) {
       @Override
       protected void postFragmentChecks(EObject objectToFragment, int numberOfProperChildren,
@@ -151,11 +152,15 @@ public abstract class FragmentModelTestFramework extends NonDirtyTestCase {
     }.run();
   }
 
-  public void unfragment(SessionContext context, String id) {
+  public void fragmentNonAbusive(SessionContext context, String id) {
+    new NonAbusiveFragmentTest(context, getEObject(id));
+  }
+
+  public void unfragmentWithRefChecks(SessionContext context, String id) {
     new UnfragmentTest(context, getEObject(id)).run();
   }
 
-  public void unfragmentNoRefChecks(SessionContext context, String id) {
+  public void unfragment(SessionContext context, String id) {
     new UnfragmentTest(context, getEObject(id)) {
       @Override
       protected void postUnfragmentChecks(EObject objectToUnfragment, int numberOfProperChildren,
