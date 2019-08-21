@@ -60,7 +60,9 @@ import org.polarsys.capella.core.sirius.analysis.queries.QueryIdentifierConstant
 public class InteractionServices {
 
   /**
-   * Retrieve from the given scope, any element which are already displayed in the diagram. (initial scope variable in tools)
+   * Retrieve from the given scope, any element which are already displayed in the diagram. (initial scope variable in
+   * tools)
+   * 
    * @param diagram
    * @param scope
    * @return
@@ -79,6 +81,7 @@ public class InteractionServices {
 
   /**
    * Retrieve scope for the Relationship tool in the capability diagram
+   * 
    * @param source
    * @param diagram
    * @return
@@ -94,38 +97,47 @@ public class InteractionServices {
     } else if (IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
       return getScopeInsertRelationship(source, diagram, true, false);
 
-    } else if (IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
+    } else if (IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       return getScopeInsertRelationship(source, diagram, true, true);
-    } else if (IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
+    } else if (IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       return getScopeInsertRelationship(source, diagram, false, true);
-    } else if (IDiagramNameConstants.CONTEXTUAL_OPERATIONAL_CAPABILITIES__DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_OPERATIONAL_CAPABILITIES__DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       return getScopeInsertRelationship(source, diagram, false, true);
     }
 
     return Collections.EMPTY_LIST;
   }
 
+  public List<Part> getESScopeInsertComponents(Scenario scenario) {
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_IS_SCOPE_INSERT_COMPONENTS, scenario);
+  }
+
+  public List<Part> getESScopeInsertActors(Scenario scenario) {
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_IS_SCOPE_INSERT_ACTORS, scenario);
+  }
+
   public List<Part> getISScopeInsertComponents(Scenario scenario) {
-    return QueryInterpretor.executeQuery(
-        QueryIdentifierConstants.GET_IS_SCOPE_INSERT_COMPONENTS_FOR_LIB,
-        scenario);
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_IS_SCOPE_INSERT_COMPONENTS_FOR_LIB, scenario);
   }
 
   public List<Part> getISScopeInsertActors(Scenario scenario) {
-    return QueryInterpretor.executeQuery(
-        QueryIdentifierConstants.GET_IS_SCOPE_INSERT_ACTORS_FOR_LIB,
-        scenario);
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_IS_SCOPE_INSERT_ACTORS_FOR_LIB, scenario);
   }
 
   /**
    * Retrieve scope for the Relationship tool in the capability diagram
+   * 
    * @param source
    * @param diagram
    * @param addActorMissionInvolvement
    * @param addCapabilityManagement
    * @return
    */
-  protected List<EObject> getScopeInsertRelationship(EObject source, EObject diagram, boolean addActorMissionInvolvement, boolean addCapabilityManagement) {
+  protected List<EObject> getScopeInsertRelationship(EObject source, EObject diagram,
+      boolean addActorMissionInvolvement, boolean addCapabilityManagement) {
     List<EObject> result = new ArrayList<EObject>();
     DDiagram diag = (DDiagram) diagram;
 
@@ -142,8 +154,8 @@ public class InteractionServices {
                 result.add(involvement.getSystemComponent());
             }
           } else if (capa instanceof OperationalCapability) {
-            EList<EntityOperationalCapabilityInvolvement> ownedEntityOperationalCapabilityInvolvements =
-                ((OperationalCapability) capa).getOwnedEntityOperationalCapabilityInvolvements();
+            EList<EntityOperationalCapabilityInvolvement> ownedEntityOperationalCapabilityInvolvements = ((OperationalCapability) capa)
+                .getOwnedEntityOperationalCapabilityInvolvements();
             for (EntityOperationalCapabilityInvolvement involvement : ownedEntityOperationalCapabilityInvolvements) {
               result.add(involvement.getEntity());
             }
@@ -222,8 +234,7 @@ public class InteractionServices {
         if (addCapabilityManagement) {
           if (actor instanceof SystemComponent) {
             result.addAll(((SystemComponent) actor).getInvolvingCapabilities());
-          }
-          else if (actor instanceof CapabilityRealizationInvolvedElement) {
+          } else if (actor instanceof CapabilityRealizationInvolvedElement) {
             result.addAll(((CapabilityRealizationInvolvedElement) actor).getInvolvingCapabilityRealizations());
           }
         }
@@ -240,8 +251,7 @@ public class InteractionServices {
         if (addCapabilityManagement) {
           if (actor instanceof SystemComponent) {
             result.addAll(((SystemComponent) actor).getCapabilityInvolvements());
-          }
-          else if (actor instanceof CapabilityRealizationInvolvedElement) {
+          } else if (actor instanceof CapabilityRealizationInvolvedElement) {
             result.addAll(((CapabilityRealizationInvolvedElement) actor).getCapabilityRealizationInvolvements());
           }
         }
@@ -279,6 +289,7 @@ public class InteractionServices {
 
   /**
    * Retrieve the edge mapping used in the given diagram for the current object
+   * 
    * @param diagram
    * @param object
    * @return
@@ -316,7 +327,8 @@ public class InteractionServices {
       } else if (object instanceof MissionInvolvement) {
         mappingName = IMappingNameConstants.MB_ACTOR_MISSION_INVOLVEMENT;
       }
-    } else if (IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
+    } else if (IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       if (object instanceof CapabilityInvolvement) {
         mappingName = IMappingNameConstants.MCB_ACTOR_INVOLVEMENT;
       } else if (object instanceof CapabilityExploitation) {
@@ -332,7 +344,8 @@ public class InteractionServices {
       } else if (object instanceof MissionInvolvement) {
         mappingName = IMappingNameConstants.MCB_ACTOR_MISSION_INVOLVEMENT;
       }
-    } else if (IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
+    } else if (IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       if (object instanceof CommunicationMean) {
         mappingName = IMappingNameConstants.OCB_COMMUNICATION_MEAN_MAPPING_NAME;
       } else if (object instanceof EntityOperationalCapabilityInvolvement) {
@@ -344,7 +357,8 @@ public class InteractionServices {
       } else if (object instanceof AbstractCapabilityGeneralization) {
         mappingName = IMappingNameConstants.OCB_OC_Generalization_MAPPING_NAME;
       }
-    } else if (IDiagramNameConstants.CONTEXTUAL_OPERATIONAL_CAPABILITIES__DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_OPERATIONAL_CAPABILITIES__DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       if (object instanceof EntityOperationalCapabilityInvolvement) {
         mappingName = IMappingNameConstants.COC_EntityCapabilityInvolvement_MAPPING_NAME;
       } else if (object instanceof AbstractCapabilityExtend) {
@@ -364,6 +378,7 @@ public class InteractionServices {
 
   /**
    * Retrieve the node mapping used in the given diagram for the current object
+   * 
    * @param diagram
    * @param object
    * @return
@@ -398,7 +413,8 @@ public class InteractionServices {
         mappingName = IMappingNameConstants.MB_CAPABILITY_MAPPING_NAME;
       }
 
-    } else if (IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
+    } else if (IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       if (object instanceof Component) {
         mappingName = IMappingNameConstants.MCB_COMPONENT_MAPPING_NAME;
       } else if (object instanceof Mission) {
@@ -406,13 +422,15 @@ public class InteractionServices {
       } else if (object instanceof Capability) {
         mappingName = IMappingNameConstants.MCB_CAPABILITY_MAPPING_NAME;
       }
-    } else if (IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
+    } else if (IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       if (object instanceof Entity) {
         mappingName = IMappingNameConstants.OCB_OPERATIONAL_ENTITY_MAPPING_NAME;
       } else if (object instanceof OperationalCapability) {
         mappingName = IMappingNameConstants.OCB_OPERATIONAL_CAPABILITY_MAPPING_NAME;
       }
-    } else if (IDiagramNameConstants.CONTEXTUAL_OPERATIONAL_CAPABILITIES__DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_OPERATIONAL_CAPABILITIES__DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       if (object instanceof Entity) {
         mappingName = IMappingNameConstants.COC_ENTITY_MAPPING_NAME;
       } else if (object instanceof OperationalCapability) {
@@ -428,12 +446,14 @@ public class InteractionServices {
 
   /**
    * Show selectedItems and hide unselected elements of the scope in the diagram of sourceView
+   * 
    * @param context
    * @param sourceView
    * @param selectedItems
    * @param scope
    */
-  public void showHideRelationshipInCapabilityDiagram(EObject context, EObject sourceView, Collection<EObject> selectedItems, Collection<EObject> scope) {
+  public void showHideRelationshipInCapabilityDiagram(EObject context, EObject sourceView,
+      Collection<EObject> selectedItems, Collection<EObject> scope) {
     DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView);
     DiagramServices ds = DiagramServices.getDiagramServices();
 

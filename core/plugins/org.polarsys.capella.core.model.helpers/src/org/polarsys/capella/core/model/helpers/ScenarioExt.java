@@ -838,50 +838,6 @@ public class ScenarioExt {
   }
 
   /**
-   * Look for possible part for creation/update of an instanceROle in a scenario exchange. Retrieves System in the
-   * logical architecture level
-   * 
-   * @param any
-   *          current object from the current scenario
-   * @param filter
-   *          the parts we don't want to see.
-   * @return the owned part of the first ownerComponent or rootComponent
-   */
-  public static Collection<Part> getAllAvailablePartsIncludingSystem(final EObject any, final Collection<Part> filter) {
-    Collection<Part> result = new ArrayList<>();
-    EObject component = EcoreUtil2.getFirstContainer(any, CsPackage.Literals.COMPONENT);
-    if (component != null) {
-      Component comp = (Component) component;
-      getAllOwnedPart(result, comp, filter);
-    } else {
-      EObject arch = EcoreUtil2.getFirstContainer(any, CsPackage.Literals.BLOCK_ARCHITECTURE);
-      Component rootComponent = null;
-      if (arch != null) {
-        BlockArchitecture architecture = (BlockArchitecture) arch;
-        if (architecture instanceof LogicalArchitecture) {
-          rootComponent = ((LogicalArchitecture) architecture).getSystem();
-          if (rootComponent != null) {
-            getAllOwnedPart(result, rootComponent, filter);
-            if (!rootComponent.getRepresentingParts().isEmpty()) {
-              result.add(((Part) rootComponent.getRepresentingParts().get(0)));
-            }
-            return result;
-          }
-        } else if (architecture instanceof PhysicalArchitecture) {
-          rootComponent = ((PhysicalArchitecture) architecture).getSystem();
-        } else if (architecture instanceof EPBSArchitecture) {
-          rootComponent = ((EPBSArchitecture) architecture).getSystem();
-        }
-        if (rootComponent != null) {
-          getAllOwnedPart(result, rootComponent, filter);
-        }
-      }
-    }
-
-    return result;
-  }
-
-  /**
    * Look for possible part for creation/update of an instanceROle in a scenario
    * 
    * @param any

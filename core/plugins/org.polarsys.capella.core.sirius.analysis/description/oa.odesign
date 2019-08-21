@@ -2809,7 +2809,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="Select Function" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                     <parameters name="context" value="aql:container"/>
-                    <parameters name="scope" value="aql:container.getAllEntities()"/>
+                    <parameters name="scope" value="aql:self.void2Null(container.getOESScopeInsertEntitiesRoles())"/>
                     <parameters name="initialSelection" value="aql:containerView.eContainerOrSelf(diagram::DDiagram).eAllContents(viewpoint::DSemanticDecorator).target->filter(interaction::InstanceRole).representedInstance"/>
                     <parameters name="wizardMessage" value=""/>
                     <parameters name="resultVariable" value="result"/>

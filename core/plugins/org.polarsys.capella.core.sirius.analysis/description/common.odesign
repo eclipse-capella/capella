@@ -15753,11 +15753,9 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:newSemanticContainer">
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.isValidScenarioDrop(self.eContainerOrSelf(interaction::Scenario),element)">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:element.eContainerOrSelf(capellacore::ModellingArchitecture) = newSemanticContainer.eContainerOrSelf(capellacore::ModellingArchitecture)">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.InstanceRole" referenceName="ownedInstanceRoles">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="representedInstance" valueExpression="aql:element.abstractTypedElements->first()"/>
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:element.name"/>
-                    </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.InstanceRole" referenceName="ownedInstanceRoles">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="representedInstance" valueExpression="aql:element.abstractTypedElements->first()"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:element.name"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -16307,7 +16305,7 @@
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Select Component" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                     <parameters name="context" value="aql:container"/>
-                    <parameters name="scope" value="aql:container.getAllComponents()"/>
+                    <parameters name="scope" value="service:getAllMultiInstanceRoleComponentParts"/>
                     <parameters name="initialSelection" value="aql:self.void2Null(containerView.eContainerOrSelf(diagram::DDiagram).eAllContents(viewpoint::DSemanticDecorator).target->filter(interaction::InstanceRole).representedInstance->select(x | x.abstractType->filter(cs::Component)->size() > 0 and x.abstractType->filter(cs::Component)->select(c | c.isActor())->size() = 0))"/>
                     <parameters name="wizardMessage" value=""/>
                     <parameters name="resultVariable" value="result"/>
@@ -16370,7 +16368,7 @@
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Select Actor" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                     <parameters name="context" value="aql:container"/>
-                    <parameters name="scope" value="aql:container.getAllActors()"/>
+                    <parameters name="scope" value="service:getAllMultiInstanceRoleActorParts"/>
                     <parameters name="initialSelection" value="aql:self.void2Null(containerView.eContainerOrSelf(diagram::DDiagram).eAllContents(viewpoint::DSemanticDecorator).target->filter(interaction::InstanceRole).representedInstance->select(x | x.abstractType->filter(cs::Component)->select(c | c.isActor())->size() > 0))"/>
                     <parameters name="wizardMessage" value=""/>
                     <parameters name="resultVariable" value="result"/>
@@ -17629,11 +17627,9 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:newSemanticContainer">
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.isValidScenarioDrop(self.eContainerOrSelf(interaction::Scenario),element)">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:element.eContainerOrSelf(capellacore::ModellingArchitecture) = newSemanticContainer.eContainerOrSelf(capellacore::ModellingArchitecture)">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.InstanceRole" referenceName="ownedInstanceRoles">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="representedInstance" valueExpression="aql:element.abstractTypedElements->first()"/>
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:element.name"/>
-                    </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.InstanceRole" referenceName="ownedInstanceRoles">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="representedInstance" valueExpression="aql:element.abstractTypedElements->first()"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:element.name"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -18663,11 +18659,9 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:newSemanticContainer">
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.isValidScenarioDrop(self.eContainerOrSelf(interaction::Scenario),element)">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:element.eContainerOrSelf(capellacore::ModellingArchitecture) = newSemanticContainer.eContainerOrSelf(capellacore::ModellingArchitecture)">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.InstanceRole" referenceName="ownedInstanceRoles">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="representedInstance" valueExpression="aql:element"/>
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:element.name"/>
-                    </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.InstanceRole" referenceName="ownedInstanceRoles">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="representedInstance" valueExpression="aql:element"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:element.name"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>

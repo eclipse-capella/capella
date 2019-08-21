@@ -256,9 +256,9 @@ public class ScenarioService {
     if (ir.eContainer() instanceof Scenario) {
       Scenario scenario = (Scenario) ir.eContainer();
       for (InstanceRole element : scenario.getOwnedInstanceRoles()) {
-        if (element!=ir && element.getRepresentedInstance() == ir.getRepresentedInstance()) {
+        if (element != ir && element.getRepresentedInstance() == ir.getRepresentedInstance()) {
           result.insert(0, " : ") //$NON-NLS-1$
-            .insert(0, EObjectExt.getText(ir));
+              .insert(0, EObjectExt.getText(ir));
           break;
         }
       }
@@ -472,10 +472,8 @@ public class ScenarioService {
   }
 
   private static void appendExchangeContext(SequenceMessage message, StringBuilder builder) {
-    builder
-        .append(String
-            .format(
-                "{%s}", message.getExchangeContext() == null ? "" : CapellaServices.getService().getConstraintLabel(message.getExchangeContext()))); //$NON-NLS-1$ //$NON-NLS-2$
+    builder.append(String.format("{%s}", message.getExchangeContext() == null ? "" //$NON-NLS-1$ //$NON-NLS-2$
+        : CapellaServices.getService().getConstraintLabel(message.getExchangeContext())));
   }
 
   private static String getSafeName(AbstractNamedElement fe) {
@@ -561,7 +559,8 @@ public class ScenarioService {
       fe = (FunctionalExchange) op;
     }
     StringBuilder result = new StringBuilder();
-    List<? extends AbstractExchangeItem> selectEIList = firstNonEmpty(eiOnMessage, fe != null ? fe.getExchangedItems() : Collections.emptyList());
+    List<? extends AbstractExchangeItem> selectEIList = firstNonEmpty(eiOnMessage,
+        fe != null ? fe.getExchangedItems() : Collections.emptyList());
 
     result.append(getSafeName(fe));
 
@@ -738,8 +737,7 @@ public class ScenarioService {
       for (ExchangeItemElement element : item.getOwnedElements()) {
         if (element.getKind() == ElementKind.MEMBER) {
           nbParameters++;
-          if ((element.getDirection() == ParameterDirection.OUT)
-              || (element.getDirection() == ParameterDirection.INOUT)
+          if ((element.getDirection() == ParameterDirection.OUT) || (element.getDirection() == ParameterDirection.INOUT)
               || (element.getDirection() == ParameterDirection.RETURN)) {
             nbOutParameters++;
           }
@@ -814,7 +812,8 @@ public class ScenarioService {
       } else {
         name = type.getName();
       }
-    } else if (((message.getKind() == MessageKind.SYNCHRONOUS_CALL) || (message.getKind() == MessageKind.ASYNCHRONOUS_CALL))
+    } else if (((message.getKind() == MessageKind.SYNCHRONOUS_CALL)
+        || (message.getKind() == MessageKind.ASYNCHRONOUS_CALL))
         && ((direction == ParameterDirection.IN) || (direction == ParameterDirection.INOUT))) {
       name = parameter.getName();
     }
@@ -885,8 +884,8 @@ public class ScenarioService {
    */
   public List<StateFragment> getInteractionStatesOnExecution(InstanceRole ir) {
     List<StateFragment> result = new ArrayList<StateFragment>(1);
-    List<InteractionFragment> fragments = SequenceDiagramServices.getOrderedInteractionFragments((Scenario) ir
-        .eContainer());
+    List<InteractionFragment> fragments = SequenceDiagramServices
+        .getOrderedInteractionFragments((Scenario) ir.eContainer());
     Stack<TimeLapse> execStack = new Stack<TimeLapse>();
 
     for (InteractionFragment ifg : fragments) {
@@ -913,8 +912,8 @@ public class ScenarioService {
     List<StateFragment> result = new ArrayList<StateFragment>(1);
     InstanceRole ir = exec.getCovered();
 
-    List<InteractionFragment> fragments = SequenceDiagramServices.getOrderedInteractionFragments((Scenario) exec
-        .eContainer());
+    List<InteractionFragment> fragments = SequenceDiagramServices
+        .getOrderedInteractionFragments((Scenario) exec.eContainer());
     Stack<TimeLapse> execStack = new Stack<TimeLapse>();
     boolean inCurrentExec = false;
     for (InteractionFragment ifg : fragments) {
@@ -923,7 +922,8 @@ public class ScenarioService {
           inCurrentExec = true;
         }
 
-        if (inCurrentExec && (ifg instanceof InteractionState) && !(execStack.isEmpty()) && (execStack.peek() == exec)) {
+        if (inCurrentExec && (ifg instanceof InteractionState) && !(execStack.isEmpty())
+            && (execStack.peek() == exec)) {
           result.add((StateFragment) getStartingExecution(ifg));
         }
 
@@ -1030,8 +1030,10 @@ public class ScenarioService {
     InteractionFragment end = execution.getStart();
     if (end instanceof MessageEnd) {
       MessageEnd me = (MessageEnd) end;
-      EventReceiptOperation ero = (EventReceiptOperation) me.getEvent();
-      return ero.getOperation() instanceof FunctionalExchange;
+      if (me.getEvent() instanceof EventReceiptOperation) {
+        EventReceiptOperation ero = (EventReceiptOperation) me.getEvent();
+        return ero.getOperation() instanceof FunctionalExchange;
+      }
     }
     return false;
   }
@@ -1078,31 +1080,35 @@ public class ScenarioService {
   }
 
   public boolean isValidScenarioDrop(EObject context, Scenario scenario, EObject element) {
+
+    // if already existing in diagram, not valid
     if (element instanceof Component) {
       for (InstanceRole ir : scenario.getOwnedInstanceRoles()) {
         if ((ir.getRepresentedInstance() != null) && (ir.getRepresentedInstance().getAbstractType() != null)) {
           if (ir.getRepresentedInstance().getAbstractType().equals(element)) {
-            return false; // already unmasked
+            return false;
           }
         }
       }
-    } else if (element instanceof AbstractFunction) {
+    } else if (element instanceof AbstractFunction || element instanceof Role) {
       for (InstanceRole ir : scenario.getOwnedInstanceRoles()) {
         if (ir.getRepresentedInstance().equals(element)) {
-          return false; // already unmasked
-        }
-      }
-    } else if (element instanceof Role) {
-      for (InstanceRole ir : scenario.getOwnedInstanceRoles()) {
-        if (ir.getRepresentedInstance().equals(element)) {
-          return false; // already unmasked
+          return false;
         }
       }
     }
+
+    BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(scenario);
+    BlockArchitecture architecture2 = BlockArchitectureExt.getRootBlockArchitecture(element);
+
+    // dropped element shall be in the same architecture than scenario
+    if (!architecture.equals(architecture2)) {
+      return false;
+    }
+
     // compatibility :
     if ((scenario.getKind() == ScenarioKind.DATA_FLOW) || (scenario.getKind() == ScenarioKind.INTERFACE)) {
-      return element instanceof Component
-          && isCorrectComponentLevel(context, element);
+      return element instanceof Component && isCorrectComponentLevel(context, element);
     } else if (scenario.getKind() == ScenarioKind.FUNCTIONAL) {
       return (element instanceof AbstractFunction);
     } else if (scenario.getKind() == ScenarioKind.INTERACTION) {
@@ -1130,27 +1136,25 @@ public class ScenarioService {
    * @return
    */
   private boolean isCorrectComponentLevel(EObject context, EObject element) {
+    if (ComponentExt.isActor(element)) {
+      return true;
+    }
+
     // find the carrier component of the scenario
     Component referenceComponent = null;
     EObject container = context;
-    while (referenceComponent == null) {
+    while (referenceComponent == null && container != null) {
       container = container.eContainer();
       if (container instanceof Component) {
         referenceComponent = (Component) container; // found
-      } else if (container instanceof BlockArchitecture) {
-        BlockArchitecture architecture = (BlockArchitecture) container;
-        referenceComponent = architecture.getSystem();
       }
     }
 
     // element is in the parts of this component or below
-
-    for (Component tested : ComponentExt.getAllSubUsedComponents(referenceComponent)) {
-      if (tested.equals(element)) {
-        return true;
-      }
+    if (referenceComponent != null) {
+      return ComponentExt.getAllSubUsedComponents(referenceComponent).contains(element);
     }
-    return false;
+    return true;
   }
 
   /**
@@ -1231,19 +1235,16 @@ public class ScenarioService {
     return name;
   }
 
-
-  public Collection<Part> getAllMultiInstanceRoleParts(Scenario scenario) {
+  public List<Part> getAllMultiInstanceRoleParts(Scenario scenario) {
     BlockArchitecture ba = BlockArchitectureExt.getRootBlockArchitecture(scenario);
     Collection<EObject> roots = new ArrayList<EObject>();
     roots.add(BlockArchitectureExt.getComponentPkg(ba, false));
     return getAllParts(Collections2.filter(roots, Predicates.notNull()));
   }
 
-
-  public Collection<Part> getAllMultiInstanceRoleComponentParts(Scenario scenario){
+  public List<Part> getAllMultiInstanceRoleComponentParts(Scenario scenario) {
     // select wizard wants a list
-    return
-        new ArrayList<Part>(Collections2.filter(getAllMultiInstanceRoleParts(scenario), new Predicate<Part>() {
+    return new ArrayList<Part>(Collections2.filter(getAllMultiInstanceRoleParts(scenario), new Predicate<Part>() {
       @Override
       public boolean apply(Part input) {
         return !ComponentExt.isActor(input);
@@ -1251,8 +1252,7 @@ public class ScenarioService {
     }));
   }
 
-
-  public Collection<Part> getAllMultiInstanceRoleActorParts(Scenario scenario){
+  public List<Part> getAllMultiInstanceRoleActorParts(Scenario scenario) {
     // select wizard wants a list
     return new ArrayList<Part>(Collections2.filter(getAllMultiInstanceRoleParts(scenario), new Predicate<Part>() {
       @Override
@@ -1262,8 +1262,8 @@ public class ScenarioService {
     }));
   }
 
-  private Collection<Part> getAllParts(Collection<EObject> roots){
-    Collection<Part> result = new ArrayList<Part>();
+  private List<Part> getAllParts(Collection<EObject> roots) {
+    List<Part> result = new ArrayList<Part>();
     for (Iterator<EObject> it = EcoreUtil.getAllContents(roots); it.hasNext();) {
       EObject next = it.next();
       if (next instanceof Part) {
@@ -1272,6 +1272,5 @@ public class ScenarioService {
     }
     return result;
   }
-
 
 }

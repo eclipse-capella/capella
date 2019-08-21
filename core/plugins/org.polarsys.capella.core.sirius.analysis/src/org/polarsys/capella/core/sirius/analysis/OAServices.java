@@ -44,6 +44,7 @@ import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
+import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.oa.ActivityAllocation;
 import org.polarsys.capella.core.data.oa.CommunicationMean;
 import org.polarsys.capella.core.data.oa.Entity;
@@ -62,6 +63,7 @@ import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
 import org.polarsys.capella.core.model.helpers.OperationalAnalysisExt;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
+import org.polarsys.capella.core.sequencediag.ScenarioService;
 
 /**
  */
@@ -246,6 +248,16 @@ public class OAServices {
         && CapellaLayerCheckingExt.isInOperationalAnalysisLayer((CapellaElement) context);
   }
 
+  public Collection<EObject> getOESScopeInsertEntitiesRoles(Scenario scenario) {
+    Collection<EObject> roots = new ArrayList<EObject>();
+    roots.addAll(new ScenarioService().getAllMultiInstanceRoleParts(scenario));
+    BlockArchitecture analysis = BlockArchitectureExt.getRootBlockArchitecture(scenario);
+    if (analysis instanceof OperationalAnalysis) {
+      roots.addAll(OperationalAnalysisExt.getAllRoles((OperationalAnalysis)analysis));
+    }
+    return roots;
+  }
+  
   /**
    * check if function is allocated in role used in oa.odesign
    * 
@@ -286,6 +298,9 @@ public class OAServices {
     return getOEBEntities(view);
   }
 
+  
+
+  
   public Collection<? extends Component> getOEBEntities(DSemanticDecorator view) {
     EObject target = view.getTarget();
     if ((target instanceof Entity) || (target instanceof EntityPkg)
