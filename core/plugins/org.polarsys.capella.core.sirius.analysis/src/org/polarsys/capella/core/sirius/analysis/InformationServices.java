@@ -2908,7 +2908,9 @@ public class InformationServices {
     } else if (diagram.getDescription().getName()
         .equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_CAPABILITY_REALIZATION_INVOLVEMENT)) {
       if (targetElement instanceof Component) {
-        actualMapping = diagramServices.getNodeMapping(diagram, IMappingNameConstants.CCRI_COMPONENT);
+        if (!ComponentExt.isActor(targetElement))
+          actualMapping = diagramServices.getNodeMapping(diagram, IMappingNameConstants.CCRI_COMPONENT);
+        actualMapping = diagramServices.getNodeMapping(diagram, IMappingNameConstants.CCRI_ACTOR);
       }
     }
 

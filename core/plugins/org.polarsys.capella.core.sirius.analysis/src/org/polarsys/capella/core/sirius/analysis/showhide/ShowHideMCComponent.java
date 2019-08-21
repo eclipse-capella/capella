@@ -64,7 +64,7 @@ public class ShowHideMCComponent extends ShowHideABComponent {
   @Override
   public DiagramElementMapping getMapping(EObject semantic, DiagramContext context,
       HashMapSet<String, DSemanticDecorator> relatedViews) {
-    return getContent().getMapping(MappingConstantsHelper.getMappingCapability(semantic.eClass(), getContent().getDDiagram()));
+    return getContent().getMapping(MappingConstantsHelper.getMappingCapability(semantic, getContent().getDDiagram()));
   }
 
   @Override

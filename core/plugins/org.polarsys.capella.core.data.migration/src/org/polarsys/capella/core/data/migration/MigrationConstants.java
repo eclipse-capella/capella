@@ -23,8 +23,8 @@ public class MigrationConstants {
   public static final String CAPELLA_PREFIX = PREFIX_PREFIX + "core.data."; //$NON-NLS-1$
   public static final String SHARED_PREFIX = PREFIX_PREFIX + "common."; //$NON-NLS-1$
 
-  public static final String CAPELLA_COMMON_PREFIX = CAPELLA_PREFIX + "common"; //$NON-NLS-1$
-  public static final String CAPELLA_CORE_PREFIX = CAPELLA_PREFIX + "core"; //$NON-NLS-1$
+  public static final String CAPELLA_COMMON_PREFIX = CAPELLA_PREFIX + "capellacommon"; //$NON-NLS-1$
+  public static final String CAPELLA_CORE_PREFIX = CAPELLA_PREFIX + "capellacore"; //$NON-NLS-1$
   public static final String COMPOSITE_STRUCTURE_PREFIX = CAPELLA_PREFIX + "cs"; //$NON-NLS-1$
   public static final String CONTEXT_ARCHITECTURE_PREFIX = CAPELLA_PREFIX + "ctx"; //$NON-NLS-1$
   public static final String EPBS_ARCHITECTURE_PREFIX = CAPELLA_PREFIX + "epbs"; //$NON-NLS-1$
@@ -36,7 +36,7 @@ public class MigrationConstants {
   public static final String INFORMATION_REFERENCE_PREFIX = INFORMATION_PREFIX + ".reference"; //$NON-NLS-1$
   public static final String INTERACTION_PREFIX = CAPELLA_PREFIX + "interaction"; //$NON-NLS-1$
   public static final String LOGICAL_ARCHITECTURE_PREFIX = CAPELLA_PREFIX + "la"; //$NON-NLS-1$
-  public static final String CAPELLA_MODELLER_PREFIX = CAPELLA_PREFIX + "modeller"; //$NON-NLS-1$
+  public static final String CAPELLA_MODELLER_PREFIX = CAPELLA_PREFIX + "capellamodeller"; //$NON-NLS-1$
   public static final String OPERATIONAL_ANALYSIS_PREFIX = CAPELLA_PREFIX + "oa"; //$NON-NLS-1$
   public static final String PHYSICAL_ARCHITECTURE_PREFIX = CAPELLA_PREFIX + "pa"; //$NON-NLS-1$
   public static final String PHYSICAL_ARCHITECTURE_DEPLOYMENT_PREFIX = PHYSICAL_ARCHITECTURE_PREFIX + ".deployment"; //$NON-NLS-1$

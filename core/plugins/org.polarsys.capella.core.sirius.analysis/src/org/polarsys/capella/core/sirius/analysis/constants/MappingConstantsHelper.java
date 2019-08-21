@@ -789,7 +789,8 @@ public class MappingConstantsHelper {
     return mappingNames;
   }
   
-  public static String getMappingCapability(EClass eClass, DDiagram diagram) {
+  public static String getMappingCapability(EObject eObj, DDiagram diagram) {
+    EClass eClass = eObj.eClass();
     if (IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
       if (CsPackage.Literals.COMPONENT.isSuperTypeOf(eClass)) {
         return IMappingNameConstants.MCB_COMPONENT_MAPPING_NAME;
@@ -859,7 +860,9 @@ public class MappingConstantsHelper {
     } else if (IDiagramNameConstants.CONTEXTUAL_CAPABILITY_REALIZATION_INVOLVEMENT
         .equals(diagram.getDescription().getName())) {
       if (CsPackage.Literals.COMPONENT.isSuperTypeOf(eClass)) {
-        return IMappingNameConstants.CCRI_COMPONENT;
+        if (!ComponentExt.isActor(eObj))
+          return IMappingNameConstants.CCRI_COMPONENT;
+        return IMappingNameConstants.CCRI_ACTOR;
       } else if (LaPackage.Literals.CAPABILITY_REALIZATION.isSuperTypeOf(eClass)) {
         return IMappingNameConstants.CCRI_CAPABILITY_REALIZATION;
       }

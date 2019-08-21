@@ -12,8 +12,10 @@ package org.polarsys.capella.core.data.migration.capella;
 
 import java.util.HashMap;
 
+import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EPackage.Registry;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.polarsys.capella.common.data.activity.ActivityPackage;
 import org.polarsys.capella.common.data.behavior.BehaviorPackage;
@@ -132,6 +134,14 @@ public class CapellaMigrationContribution extends AbstractMigrationContribution 
     }
 
     return null;
+  }
+  
+  @Override
+  public EFactory getEFactory(String prefix, Resource resource, MigrationContext context) {
+    if (prefixes.containsKey(XMLResource.XML_NS + ":" + prefix)) {
+      return prefixes.get(XMLResource.XML_NS + ":" + prefix).getEFactoryInstance();
+    }
+    return super.getEFactory(prefix, resource, context);
   }
 
 }

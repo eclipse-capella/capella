@@ -62,7 +62,6 @@ import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.model.helpers.OperationalAnalysisExt;
 
 /**
  * This class takes care of the migration of the Actor refactoring work. Here are some basic migration steps:
