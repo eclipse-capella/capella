@@ -207,6 +207,17 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
         new UnknownEStructuralFeature(LaPackage.Literals.CAPABILITY_REALIZATION,
             "ownedSystemComponentCapabilityRealizations"),
         LaPackage.Literals.CAPABILITY_REALIZATION__OWNED_CAPABILITY_REALIZATION_INVOLVEMENTS);
+    
+    // Packages
+    OLD_FEATURE_2_NEW_FEATURE.put(
+        new UnknownEStructuralFeature(CtxPackage.Literals.SYSTEM_COMPONENT_PKG, "ownedActorPkgs"),
+        CtxPackage.Literals.SYSTEM_COMPONENT_PKG__OWNED_SYSTEM_COMPONENT_PKGS);
+    OLD_FEATURE_2_NEW_FEATURE.put(
+        new UnknownEStructuralFeature(LaPackage.Literals.LOGICAL_COMPONENT_PKG, "ownedLogicalActorPkgs"),
+        LaPackage.Literals.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENT_PKGS);
+    OLD_FEATURE_2_NEW_FEATURE.put(
+        new UnknownEStructuralFeature(PaPackage.Literals.PHYSICAL_COMPONENT_PKG, "ownedPhysicalActorPkgs"),
+        PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENT_PKGS);
   }
 
   private static final Map<String, String> OLD_TYPE_2_NEW_TYPE = new HashMap<>();
@@ -397,7 +408,7 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
       
       List<ConfigurationItem> items = filter(epbs.getOwnedMigratedElements(), ConfigurationItem.class);
       if (!items.isEmpty()) {
-        epbs.getOwnedConfigurationItemPkg().getOwnedConfigurationItems().addAll(items);
+        epbs.getOwnedConfigurationItemPkg().getOwnedConfigurationItems().addAll(0, items);
       }
 
       List<DataPkg> dataPkgs = filter(epbs.getOwnedConfigurationItemPkg().getOwnedMigratedElements(), DataPkg.class);
@@ -440,7 +451,7 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
 
       List<PhysicalComponent> items = filter(pa.getOwnedMigratedElements(), PhysicalComponent.class);
       if (!items.isEmpty()) {
-        pa.getOwnedPhysicalComponentPkg().getOwnedPhysicalComponents().addAll(items);
+        pa.getOwnedPhysicalComponentPkg().getOwnedPhysicalComponents().addAll(0, items);
       }
 
       List<DataPkg> dataPkgs = filter(pa.getOwnedPhysicalComponentPkg().getOwnedMigratedElements(), DataPkg.class);
@@ -483,7 +494,7 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
 
       List<LogicalComponent> items = filter(la.getOwnedMigratedElements(), LogicalComponent.class);
       if (!items.isEmpty()) {
-        la.getOwnedLogicalComponentPkg().getOwnedLogicalComponents().addAll(items);
+        la.getOwnedLogicalComponentPkg().getOwnedLogicalComponents().addAll(0, items);
       }
 
       List<DataPkg> dataPkgs = filter(la.getOwnedLogicalComponentPkg().getOwnedMigratedElements(), DataPkg.class);
@@ -526,7 +537,7 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
 
       List<SystemComponent> items = filter(sa.getOwnedMigratedElements(), SystemComponent.class);
       if (!items.isEmpty()) {
-        sa.getOwnedSystemComponentPkg().getOwnedSystemComponents().addAll(items);
+        sa.getOwnedSystemComponentPkg().getOwnedSystemComponents().addAll(0, items);
       }
       List<DataPkg> dataPkgs = filter(sa.getOwnedSystemComponentPkg().getOwnedMigratedElements(), DataPkg.class);
       if (!dataPkgs.isEmpty()) {
