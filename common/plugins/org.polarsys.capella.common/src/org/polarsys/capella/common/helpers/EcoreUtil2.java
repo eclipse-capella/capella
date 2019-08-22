@@ -20,6 +20,7 @@ import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
@@ -32,6 +33,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
+import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
@@ -638,5 +640,45 @@ public class EcoreUtil2 {
       }
     }
     return commonDomain;
+  }
+  
+  /**
+   * Make all objects referencing the source object to reference the target object instead
+   * 
+   * @param srcObject
+   *          the source object
+   * @param targetObj
+   *          the target object
+   * @param isContainmentIncluded
+   *          whether containment features are involved.
+   * @param isProxyResolved
+   *          should proxy references be resolved?
+   * 
+   */
+  public static void replaceReferencingFeatures(EObject srcObj, EObject targetObj, boolean isContainmentIncluded,
+      boolean isProxyResolved) {
+    TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(srcObj);
+    if (domain != null) {
+      ECrossReferenceAdapter crossReferencer = ECrossReferenceAdapter.getCrossReferenceAdapter(srcObj);
+      Collection<Setting> inverseReferences = crossReferencer.getInverseReferences(srcObj, isProxyResolved);
+      for (Setting setting : inverseReferences) {
+        EStructuralFeature eStructuralFeature = setting.getEStructuralFeature();
+        if (eStructuralFeature instanceof EReference && !isContainmentIncluded
+            && ((EReference) eStructuralFeature).isContainment()) {
+          continue;
+        }
+        if (!eStructuralFeature.isMany()) {
+          setting.getEObject().eSet(eStructuralFeature, targetObj);
+          System.out.println(srcObj.eClass().getName() + eStructuralFeature.getName());          
+        }
+        else {
+          EList list = ((EList) setting.getEObject().eGet(eStructuralFeature));
+          if (list.contains(srcObj)) {
+            list.remove(srcObj);
+            list.add(targetObj);
+          }
+        }
+      }
+    }
   }
 }

@@ -432,7 +432,7 @@ public class DynamicCreationAction extends DynamicModelElementAction {
      */
     private ImageDescriptor findBestImageDescriptor(EObject object, ISelection selection) {
       // look for a image descriptor from the current label provider of the editing domain
-      ImageDescriptor imageDescriptor = EObjectImageProviderHelper.getImageDescriptor(object);
+      ImageDescriptor imageDescriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(EObjectLabelProviderHelper.getImage(object));
       if (imageDescriptor == null) {
 
         // no editing domain so look for a different item label provider

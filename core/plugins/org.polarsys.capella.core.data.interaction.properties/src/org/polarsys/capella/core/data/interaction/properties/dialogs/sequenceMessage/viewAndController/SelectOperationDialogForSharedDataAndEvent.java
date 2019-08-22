@@ -62,6 +62,7 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.MessageKind;
 import org.polarsys.capella.core.data.interaction.properties.controllers.InterfaceHelper;
 import org.polarsys.capella.core.data.interaction.properties.dialogs.Messages;
+import org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMessage.model.algorithms.CreationAlgorithms;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.InterfaceExt;
 import org.polarsys.capella.core.ui.toolkit.ToolkitPlugin;

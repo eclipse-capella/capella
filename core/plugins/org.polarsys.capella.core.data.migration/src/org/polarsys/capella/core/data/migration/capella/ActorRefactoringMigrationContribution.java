@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.ef.ExecutionManager;
+import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacommon.TransfoLink;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
@@ -62,6 +63,7 @@ import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.ModelElementExt;
 
 /**
  * This class takes care of the migration of the Actor refactoring work. Here are some basic migration steps:
@@ -159,18 +161,22 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
     // Part
     OLD_FEATURE_2_NEW_FEATURE.put(new UnknownEStructuralFeature(OaPackage.Literals.ENTITY_PKG, "ownedFeatures"),
         CsPackage.Literals.COMPONENT_PKG__OWNED_PARTS);
-    OLD_FEATURE_2_NEW_FEATURE.put(new UnknownEStructuralFeature(CtxPackage.Literals.SYSTEM_COMPONENT_PKG, "ownedFeatures"),
+    OLD_FEATURE_2_NEW_FEATURE.put(
+        new UnknownEStructuralFeature(CtxPackage.Literals.SYSTEM_COMPONENT_PKG, "ownedFeatures"),
         CsPackage.Literals.COMPONENT_PKG__OWNED_PARTS);
-    OLD_FEATURE_2_NEW_FEATURE.put(new UnknownEStructuralFeature(LaPackage.Literals.LOGICAL_COMPONENT_PKG, "ownedFeatures"),
+    OLD_FEATURE_2_NEW_FEATURE.put(
+        new UnknownEStructuralFeature(LaPackage.Literals.LOGICAL_COMPONENT_PKG, "ownedFeatures"),
         CsPackage.Literals.COMPONENT_PKG__OWNED_PARTS);
-    OLD_FEATURE_2_NEW_FEATURE.put(new UnknownEStructuralFeature(PaPackage.Literals.PHYSICAL_COMPONENT_PKG, "ownedFeatures"),
+    OLD_FEATURE_2_NEW_FEATURE.put(
+        new UnknownEStructuralFeature(PaPackage.Literals.PHYSICAL_COMPONENT_PKG, "ownedFeatures"),
         CsPackage.Literals.COMPONENT_PKG__OWNED_PARTS);
     OLD_FEATURE_2_NEW_FEATURE.put(
         new UnknownEStructuralFeature(EpbsPackage.Literals.CONFIGURATION_ITEM_PKG, "ownedFeatures"),
         CsPackage.Literals.COMPONENT_PKG__OWNED_PARTS);
 
     // Actor
-    OLD_FEATURE_2_NEW_FEATURE.put(new UnknownEStructuralFeature(CtxPackage.Literals.SYSTEM_COMPONENT_PKG, "ownedActors"),
+    OLD_FEATURE_2_NEW_FEATURE.put(
+        new UnknownEStructuralFeature(CtxPackage.Literals.SYSTEM_COMPONENT_PKG, "ownedActors"),
         CtxPackage.Literals.SYSTEM_COMPONENT_PKG__OWNED_SYSTEM_COMPONENTS);
     OLD_FEATURE_2_NEW_FEATURE.put(
         new UnknownEStructuralFeature(LaPackage.Literals.LOGICAL_COMPONENT_PKG, "ownedLogicalActors"),
@@ -179,8 +185,9 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
         new UnknownEStructuralFeature(PaPackage.Literals.PHYSICAL_COMPONENT_PKG, "ownedPhysicalActors"),
         PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS);
     // Physical Components
-    OLD_FEATURE_2_NEW_FEATURE.put(new UnknownEStructuralFeature(PaPackage.Literals.PHYSICAL_COMPONENT_PKG, "ownedComponents"),
-          PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS);
+    OLD_FEATURE_2_NEW_FEATURE.put(
+        new UnknownEStructuralFeature(PaPackage.Literals.PHYSICAL_COMPONENT_PKG, "ownedComponents"),
+        PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS);
     // Capability/Mission Involvements
     OLD_FEATURE_2_NEW_FEATURE.put(new UnknownEStructuralFeature(CtxPackage.Literals.CAPABILITY_INVOLVEMENT, "actor"),
         CtxPackage.Literals.CAPABILITY_INVOLVEMENT__SYSTEM_COMPONENT);
@@ -207,7 +214,7 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
         new UnknownEStructuralFeature(LaPackage.Literals.CAPABILITY_REALIZATION,
             "ownedSystemComponentCapabilityRealizations"),
         LaPackage.Literals.CAPABILITY_REALIZATION__OWNED_CAPABILITY_REALIZATION_INVOLVEMENTS);
-    
+
     // Packages
     OLD_FEATURE_2_NEW_FEATURE.put(
         new UnknownEStructuralFeature(CtxPackage.Literals.SYSTEM_COMPONENT_PKG, "ownedActorPkgs"),
@@ -295,7 +302,7 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
   );
 
   private String operationalContextId, systemContextId, logicalContextId, physicalContextId, ePBSContextId;
-  
+
   @Override
   public EStructuralFeature getFeature(EObject object, String prefix, String name, boolean isElement) {
     UnknownEStructuralFeature featureToTest = new UnknownEStructuralFeature(object.eClass(), name);
@@ -356,6 +363,8 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
         }
       }
     }
+
+    EcoreUtil2.replaceReferencingFeatures(source, target, false, false);
   }
 
   /**
@@ -399,13 +408,14 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
   protected void reorganizeEPBSArchitecture(EPBSArchitecture epbs) {
     if (!epbs.getOwnedMigratedElements().isEmpty()) {
       ComponentPkg componentPkg = BlockArchitectureExt.getComponentPkg(epbs, true);
-      if (ePBSContextId != null)
-        componentPkg.setId(ePBSContextId);
+      if (ePBSContextId != null) {
+        ModelElementExt.setObjectId(componentPkg, ePBSContextId);
+      }
 
       epbs.getOwnedMigratedElements().stream().filter(ConfigurationItemPkg.class::isInstance)
           .forEach(modelElement -> fusionContainmentReferences(modelElement,
               ((ConfigurationItemPkg) BlockArchitectureExt.getComponentPkg(epbs, true))));
-      
+
       List<ConfigurationItem> items = filter(epbs.getOwnedMigratedElements(), ConfigurationItem.class);
       if (!items.isEmpty()) {
         epbs.getOwnedConfigurationItemPkg().getOwnedConfigurationItems().addAll(0, items);
@@ -424,7 +434,8 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
 
       List<CapabilityRealizationPkg> capabilityPkgs = filter(
           epbs.getOwnedConfigurationItemPkg().getOwnedMigratedElements(), CapabilityRealizationPkg.class);
-      if (!capabilityPkgs.isEmpty() && BlockArchitectureExt.getAbstractCapabilityPkg(epbs) instanceof CapabilityRealizationPkg) {
+      if (!capabilityPkgs.isEmpty()
+          && BlockArchitectureExt.getAbstractCapabilityPkg(epbs) instanceof CapabilityRealizationPkg) {
         ((CapabilityRealizationPkg) BlockArchitectureExt.getAbstractCapabilityPkg(epbs))
             .getOwnedCapabilityRealizationPkgs().addAll(capabilityPkgs);
       }
@@ -443,8 +454,9 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
   protected void reorganizePhysicalArchitecture(PhysicalArchitecture pa) {
     if (!pa.getOwnedMigratedElements().isEmpty()) {
       ComponentPkg componentPkg = BlockArchitectureExt.getComponentPkg(pa, true);
-      if (physicalContextId != null)
-        componentPkg.setId(physicalContextId);
+      if (physicalContextId != null) {
+        ModelElementExt.setObjectId(componentPkg, physicalContextId);
+      }
 
       pa.getOwnedMigratedElements().stream().filter(PhysicalComponentPkg.class::isInstance)
           .forEach(modelElement -> fusionContainmentReferences(modelElement, pa.getOwnedPhysicalComponentPkg()));
@@ -467,7 +479,8 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
 
       List<CapabilityRealizationPkg> capabilityPkgs = filter(
           pa.getOwnedPhysicalComponentPkg().getOwnedMigratedElements(), CapabilityRealizationPkg.class);
-      if (!capabilityPkgs.isEmpty() && BlockArchitectureExt.getAbstractCapabilityPkg(pa) instanceof CapabilityRealizationPkg) {
+      if (!capabilityPkgs.isEmpty()
+          && BlockArchitectureExt.getAbstractCapabilityPkg(pa) instanceof CapabilityRealizationPkg) {
         ((CapabilityRealizationPkg) BlockArchitectureExt.getAbstractCapabilityPkg(pa))
             .getOwnedCapabilityRealizationPkgs().addAll(capabilityPkgs);
       }
@@ -486,8 +499,9 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
   protected void reorganizeLogicalArchitecture(LogicalArchitecture la) {
     if (!la.getOwnedMigratedElements().isEmpty()) {
       ComponentPkg componentPkg = BlockArchitectureExt.getComponentPkg(la, true);
-      if (logicalContextId != null)
-        componentPkg.setId(logicalContextId);
+      if (logicalContextId != null) {
+        ModelElementExt.setObjectId(componentPkg, logicalContextId);
+      }
 
       la.getOwnedMigratedElements().stream().filter(LogicalComponentPkg.class::isInstance)
           .forEach(modelElement -> fusionContainmentReferences(modelElement, la.getOwnedLogicalComponentPkg()));
@@ -510,7 +524,8 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
 
       List<CapabilityRealizationPkg> capabilityPkgs = filter(
           la.getOwnedLogicalComponentPkg().getOwnedMigratedElements(), CapabilityRealizationPkg.class);
-      if (!capabilityPkgs.isEmpty() && BlockArchitectureExt.getAbstractCapabilityPkg(la) instanceof CapabilityRealizationPkg) {
+      if (!capabilityPkgs.isEmpty()
+          && BlockArchitectureExt.getAbstractCapabilityPkg(la) instanceof CapabilityRealizationPkg) {
         ((CapabilityRealizationPkg) BlockArchitectureExt.getAbstractCapabilityPkg(la))
             .getOwnedCapabilityRealizationPkgs().addAll(capabilityPkgs);
       }
@@ -529,8 +544,9 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
   protected void reorganizeSystemAnalysis(SystemAnalysis sa) {
     if (!sa.getOwnedMigratedElements().isEmpty()) {
       ComponentPkg componentPkg = BlockArchitectureExt.getComponentPkg(sa, true);
-      if (systemContextId != null)
-        componentPkg.setId(systemContextId);
+      if (systemContextId != null) {
+        ModelElementExt.setObjectId(componentPkg, systemContextId);
+      }
 
       sa.getOwnedMigratedElements().stream().filter(SystemComponentPkg.class::isInstance)
           .forEach(modelElement -> fusionContainmentReferences(modelElement, sa.getOwnedSystemComponentPkg()));
@@ -569,8 +585,9 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
   protected void reorganizeOperationalAnalysis(OperationalAnalysis oa) {
     if (!oa.getOwnedMigratedElements().isEmpty()) {
       ComponentPkg componentPkg = BlockArchitectureExt.getComponentPkg(oa, true);
-      if (operationalContextId != null)
-        componentPkg.setId(operationalContextId);
+      if (operationalContextId != null) {
+        ModelElementExt.setObjectId(componentPkg, operationalContextId);
+      }
 
       oa.getOwnedMigratedElements().stream().filter(EntityPkg.class::isInstance)
           .forEach(modelElement -> fusionContainmentReferences(modelElement, oa.getOwnedEntityPkg()));
@@ -646,7 +663,7 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
     }
     return super.ignoreSetFeatureValue(peekObject, feature, value, position, resource, context);
   }
-  
+
   @Override
   public void dispose(MigrationContext context) {
     operationalContextId = null;
