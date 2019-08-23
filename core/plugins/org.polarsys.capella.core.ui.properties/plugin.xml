@@ -153,6 +153,9 @@
                class="org.polarsys.capella.core.ui.properties.sections.CapellaAdvancedPropertySection"
                id="org.polarsys.capella.common.data.modellingcore.section.advanced.ModelElement">
           	<input type="org.eclipse.emf.ecore.EObject"/>
+           <input
+                 type="org.eclipse.core.resources.IResource">
+           </input>
          </propertySection>
          <propertySection tab="ManagementCapella"
                class="org.polarsys.capella.core.ui.properties.sections.CapellaManagementPropertySection"
