@@ -18,13 +18,20 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.description.IEdgeMapping;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.ef.ExecutionManager;
@@ -64,6 +71,7 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ModelElementExt;
+import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 
 /**
  * This class takes care of the migration of the Actor refactoring work. Here are some basic migration steps:
@@ -294,6 +302,34 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
         "org.polarsys.capella.core.data.capellacommon:CapabilityRealizationInvolvement");
   }
 
+  public static final Map<String, String> MAPPINGS = new HashMap<>();
+  static {
+    MAPPINGS.put("CCRI%20SystemComponentCapabilityRealizationInvolvement", "CCRI%20involvement");
+    MAPPINGS.put("CCRI%20ActorCapabilityRealizationInvolvement", "CCRI%20involvement");
+    MAPPINGS.put("CCRI%20Actor", "CCRI%20Component");
+    MAPPINGS.put("SC_Actor", "SC_System");
+    MAPPINGS.put("Logical%20Actors", "LAB%20Logical%20Component");
+    MAPPINGS.put("PAB_Actor", "PAB_PC");
+  }
+
+  private static final Map<String, String> STYLES = new HashMap<>();
+  static {
+    STYLES.put("CCRI%20SystemComponentCapabilityRealizationInvolvement", "CCRI%20involvement");
+    STYLES.put("CCRI%20ActorCapabilityRealizationInvolvement", "CCRI%20involvement");
+    
+    STYLES.put("[name='CCRI%20Actor']/@style", "[name='CCRI%20Component']/@conditionnalStyles.0/@style");
+    STYLES.put("[name='SC_Actor']/@style", "[name='SC_System']/@conditionnalStyles.0/@style");
+    
+    STYLES.put("[name='Logical%20Actors']/@style", "[name='LAB%20Logical%20Component']/@conditionnalStyles.0/@style");
+    STYLES.put("[name='Logical%20Actors']/@conditionnalStyles.0/@style", "[name='LAB%20Logical%20Component']/@conditionnalStyles.0/@style");
+    STYLES.put("Logical%20Actors", "LAB%20Logical%20Component");
+    
+    STYLES.put("[name='PAB_Actor']/@style", "[name='PAB_PC']/@conditionnalStyles.0/@style");
+    STYLES.put("[name='PAB_Actor']/@conditionnalStyles.0/@style", "[name='PAB_PC']/@conditionnalStyles.0/@style");
+    STYLES.put("[name='PAB_Actor']/@conditionnalStyles.1/@style", "[name='PAB_PC']/@conditionnalStyles.0/@style");
+    STYLES.put("PAB_Actor", "PAB_PC");
+    
+  }
   private static final List<String> OLD_ACTOR_TYPES = Arrays.asList( //
       "org.polarsys.capella.core.data.oa:OperationalActor", //
       "org.polarsys.capella.core.data.ctx:Actor", //
@@ -323,6 +359,64 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
     return super.getQName(peekObject, typeQName, feature, resource, helper, context);
   }
 
+  @Override
+  public void unaryMigrationExecute(EObject currentElement, MigrationContext context) {
+    super.unaryMigrationExecute(currentElement, context);
+    
+    if (currentElement instanceof DRepresentationElement) {
+      EStructuralFeature feature = currentElement.eClass().getEStructuralFeature("actualMapping");
+      if (feature != null) {
+        Object reference = ((EObject) currentElement).eGet(feature);
+        if (reference != null && reference instanceof EObject && ((EObject)reference).eIsProxy()) {
+          URI uri = migrateMappings(((InternalEObject) reference).eProxyURI());
+          if (uri != null) {
+            ((InternalEObject) reference).eSetProxyURI(uri);
+          }
+        }
+      }
+    } else if (currentElement instanceof Style) {
+      StyleDescription reference = ((Style) currentElement).getDescription();
+      if (reference != null && reference instanceof EObject && ((EObject)reference).eIsProxy()) {
+        URI uri = ((InternalEObject) reference).eProxyURI();
+        uri = migrateStyles(uri);
+        if (uri != null) {
+          ((InternalEObject) reference).eSetProxyURI(uri);
+        }
+      }
+    }
+  }
+
+  private URI migrateMappings(URI uri) {
+    boolean change = false;
+    String fragment = uri.fragment();
+    for (String mapping : MAPPINGS.keySet()) {
+      if (fragment.contains(mapping)) {
+        fragment = fragment.replace(mapping, MAPPINGS.get(mapping));
+        change = true;
+      }
+    }
+    if (change) {
+      String uriValue = uri.toPlatformString(true);
+      return URI.createPlatformPluginURI(uriValue, true).appendFragment(fragment);
+    }
+    return null;
+  }
+
+  private URI migrateStyles(URI uri) {
+    boolean change = false;
+    String fragment = uri.fragment();
+    for (String mapping : STYLES.keySet()) {
+      if (fragment.contains(mapping)) {
+        fragment = fragment.replace(mapping, STYLES.get(mapping));
+        change = true;
+      }
+    }
+    if (change) {
+      String uriValue = uri.toPlatformString(true);
+      return URI.createPlatformPluginURI(uriValue, true).appendFragment(fragment);
+    }
+    return null;
+  }
   @Override
   public void updateCreatedObject(EObject peekObject, EObject eObject, String typeQName, EStructuralFeature feature,
       XMLResource resource, XMLHelper helper, MigrationContext context) {

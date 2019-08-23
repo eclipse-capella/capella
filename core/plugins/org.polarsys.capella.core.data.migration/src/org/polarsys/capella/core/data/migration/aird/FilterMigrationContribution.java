@@ -43,18 +43,21 @@ public class FilterMigrationContribution extends AbstractMigrationContribution {
   private static final String VALID_PLUGIN = "org.polarsys.capella.core.sirius.analysis";
   private static final String DESCRIPTION_TYPE = "description";
 
+  private static Map<String, String> filterNameExceptions;
+  
   private Map<DiagramDescription, Set<String>> validFilterNames;
-  private Map<String, String> filterNameExceptions;
 
-  public FilterMigrationContribution() {
-    validFilterNames = new HashMap<>();
-
+  static {
     filterNameExceptions = new HashMap<>();
     filterNameExceptions.put("ShowEIExchangeContext", "show.ei.exchange.context.filter");
     filterNameExceptions.put("CEParam", "show.ce.param.filter");
     filterNameExceptions.put("CEEIParam", "show.ce.ei.param.filter");
     filterNameExceptions.put("ShowFEExchangeContex", "show.fe.exchange.context.filter");
     filterNameExceptions.put("ShowCEExchangeContext", "show.ce.exchange.context.filter");
+  }
+  
+  public FilterMigrationContribution() {
+    validFilterNames = new HashMap<>();
   }
 
   @Override
@@ -197,7 +200,7 @@ public class FilterMigrationContribution extends AbstractMigrationContribution {
   /*
    * Do not judge me :)
    */
-  private String getValidFilterNameCandidate(String invalidFilterName) {
+  public static String getValidFilterNameCandidate(String invalidFilterName) {
 
     String filterNameException = filterNameExceptions.get(invalidFilterName);
 

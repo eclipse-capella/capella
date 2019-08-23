@@ -87,8 +87,8 @@
       </data>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_Zh7I0NSUEeWUOJnCGL-26A" name="LA 1">
-      <target xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="MCBDiagramModel.melodymodeller#874d467b-3ffd-4239-a0cd-52f0e38ff918"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalActor" href="MCBDiagramModel.melodymodeller#874d467b-3ffd-4239-a0cd-52f0e38ff918"/>
+      <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="MCBDiagramModel.melodymodeller#874d467b-3ffd-4239-a0cd-52f0e38ff918"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="MCBDiagramModel.melodymodeller#874d467b-3ffd-4239-a0cd-52f0e38ff918"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
@@ -191,8 +191,8 @@
       </data>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_zfdgkNPeEeWTaM8H4vFUOQ" name="Actor 1" width="7" height="7" resizeKind="NSEW">
-      <target xmi:type="org.polarsys.capella.core.data.ctx:Actor" href="MCBDiagramModel.melodymodeller#3a277fb8-1289-426c-95a4-db179bea3545"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:Actor" href="MCBDiagramModel.melodymodeller#3a277fb8-1289-426c-95a4-db179bea3545"/>
+      <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="MCBDiagramModel.melodymodeller#3a277fb8-1289-426c-95a4-db179bea3545"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="MCBDiagramModel.melodymodeller#3a277fb8-1289-426c-95a4-db179bea3545"/>
       <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_zfnRkNPeEeWTaM8H4vFUOQ" showIcon="false" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.svg">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode4']/@style"/>
       </ownedStyle>
@@ -263,8 +263,8 @@
       </data>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_F4HxUNSMEeWUOJnCGL-26A" name="Actor 1" width="7" height="7" resizeKind="NSEW">
-      <target xmi:type="org.polarsys.capella.core.data.ctx:Actor" href="MCBDiagramModel.melodymodeller#3a277fb8-1289-426c-95a4-db179bea3545"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:Actor" href="MCBDiagramModel.melodymodeller#3a277fb8-1289-426c-95a4-db179bea3545"/>
+      <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="MCBDiagramModel.melodymodeller#3a277fb8-1289-426c-95a4-db179bea3545"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="MCBDiagramModel.melodymodeller#3a277fb8-1289-426c-95a4-db179bea3545"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -356,8 +356,8 @@
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='MissionNode']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_E4QvcNSPEeWUOJnCGL-26A" name="Actor 1" width="7" height="7" resizeKind="NSEW">
-      <target xmi:type="org.polarsys.capella.core.data.ctx:Actor" href="MCBDiagramModel.melodymodeller#3a277fb8-1289-426c-95a4-db179bea3545"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:Actor" href="MCBDiagramModel.melodymodeller#3a277fb8-1289-426c-95a4-db179bea3545"/>
+      <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="MCBDiagramModel.melodymodeller#3a277fb8-1289-426c-95a4-db179bea3545"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="MCBDiagramModel.melodymodeller#3a277fb8-1289-426c-95a4-db179bea3545"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -460,8 +460,8 @@
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='Capability3']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_JbmCoNSNEeWUOJnCGL-26A" name="Actor 1" width="7" height="7" resizeKind="NSEW">
-      <target xmi:type="org.polarsys.capella.core.data.ctx:Actor" href="MCBDiagramModel.melodymodeller#3a277fb8-1289-426c-95a4-db179bea3545"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:Actor" href="MCBDiagramModel.melodymodeller#3a277fb8-1289-426c-95a4-db179bea3545"/>
+      <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="MCBDiagramModel.melodymodeller#3a277fb8-1289-426c-95a4-db179bea3545"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="MCBDiagramModel.melodymodeller#3a277fb8-1289-426c-95a4-db179bea3545"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -517,8 +517,8 @@
       </data>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_dCPqYNSTEeWUOJnCGL-26A" name="OperationalActor 1">
-      <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActor" href="MCBDiagramModel.melodymodeller#1f436bec-557a-4ad8-b545-b97c200d3f03"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActor" href="MCBDiagramModel.melodymodeller#1f436bec-557a-4ad8-b545-b97c200d3f03"/>
+      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="MCBDiagramModel.melodymodeller#1f436bec-557a-4ad8-b545-b97c200d3f03"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="MCBDiagramModel.melodymodeller#1f436bec-557a-4ad8-b545-b97c200d3f03"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -605,8 +605,8 @@
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Contextual%20Operational%20Capability']/@defaultLayer/@nodeMappings[name='COC2_OperationalCapabilities']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_3h45UNSQEeWUOJnCGL-26A" name="OperationalActor 1">
-      <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActor" href="MCBDiagramModel.melodymodeller#1f436bec-557a-4ad8-b545-b97c200d3f03"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActor" href="MCBDiagramModel.melodymodeller#1f436bec-557a-4ad8-b545-b97c200d3f03"/>
+      <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="MCBDiagramModel.melodymodeller#1f436bec-557a-4ad8-b545-b97c200d3f03"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.oa:Entity" href="MCBDiagramModel.melodymodeller#1f436bec-557a-4ad8-b545-b97c200d3f03"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_3h45UdSQEeWUOJnCGL-26A" borderSize="1" borderSizeComputationExpression="1" borderColor="69,69,69" backgroundStyle="GradientTopToBottom" backgroundColor="249,248,245" foregroundColor="221,221,200">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Contextual%20Operational%20Capability']/@defaultLayer/@containerMappings[name='COC2_Entities']/@style"/>
       </ownedStyle>

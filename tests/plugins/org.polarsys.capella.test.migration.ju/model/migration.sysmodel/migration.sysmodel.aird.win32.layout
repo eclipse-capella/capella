@@ -23451,11 +23451,11 @@
       <appliedStyles>backgroundColor: 255,255,255</appliedStyles>
       <appliedStyles>foregroundColor: 240,221,221</appliedStyles>
       <appliedStyles>borderColor: 124,61,61</appliedStyles>
-      <bounds x="510" y="0" width="366" height="47"/>
+      <bounds x="510" y="0" width="367" height="47"/>
       <ownedLayouts xsi:type="layout:NodeLayout" id="33186f43-7503-43ff-9629-8094105da39e" name="ei_op1(INOUT eie3:PhysicalQuantity1 (Unit1)) :  returns eie2:Class1" actualMapping="DT_Operation1">
         <appliedStyles>foregroundColor: 136,136,136</appliedStyles>
         <appliedStyles>borderColor: 136,136,136</appliedStyles>
-        <bounds x="1025" y="28" width="354" height="16"/>
+        <bounds x="1025" y="28" width="355" height="16"/>
       </ownedLayouts>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:NodeLayout" id="a9139774-88b4-4e2c-8260-8ce9dcb70299" name="System_to_Actor 5" actualMapping="FullInterface1">

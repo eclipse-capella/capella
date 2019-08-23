@@ -207,7 +207,7 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
       if (DiagramHelper.getService().isA(targetDescription_p, IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
 
         if (IMappingNameConstants.SAB_ACTOR_MAPPING_NAME.equals(mappingName)) {
-          targetMappingName = IMappingNameConstants.LAB_LOGICAL_ACTOR_MAPPING_NAME;
+          targetMappingName = IMappingNameConstants.LAB_LOGICAL_COMPONENT_MAPPING_NAME;
 
         } else if (IMappingNameConstants.SAB_COMPONENT_CATEGORY_MAPPING_NAME.equals(mappingName)) {
           targetMappingName = IMappingNameConstants.LAB_COMPONENT_CATEGORY_MAPPING_NAME;
@@ -326,9 +326,6 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
 
         } else if (IMappingNameConstants.LAB_INTERNAL_LINK_MAPPING_NAME.equals(mappingName)) {
           targetMappingName = IMappingNameConstants.PAB_INTERNAL_LINK_MAPPING_NAME;
-
-        } else if (IMappingNameConstants.LAB_LOGICAL_ACTOR_MAPPING_NAME.equals(mappingName)) {
-          targetMappingName = IMappingNameConstants.PAB_PHYSICAL_ACTOR_MAPPING_NAME;
 
         } else if (IMappingNameConstants.LAB_LOGICAL_COMPONENT_MAPPING_NAME.equals(mappingName)) {
           targetMappingName = IMappingNameConstants.PAB_PHYSICAL_COMPONENT_MAPPING_NAME;

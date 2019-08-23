@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
@@ -57,7 +58,7 @@ public class CompositeChainDisplay extends CompositeChains {
         .filter(graph::isStartingFunction)
         .map(n -> ((FunctionalChainInvolvementFunction) n.getSemantic()).getInvolved()).map(EObject.class::cast)
         .collect(Collectors.toSet());
-    assertTrue(starts.size() == 2);
+    assertTrue("Chain doesn't have expected starts", starts.size() == 2);
     hasStyle(lab, LOGICALFUNCTION_5, starts);
     hasStyle(lab, LOGICALFUNCTION_13, starts);
 
@@ -65,7 +66,7 @@ public class CompositeChainDisplay extends CompositeChains {
     Collection<EObject> ends = graph.getNodes().values().stream().filter(graph::isInvolvingFunction)
         .filter(graph::isEndingFunction).map(n -> ((FunctionalChainInvolvementFunction) n.getSemantic()).getInvolved())
         .map(EObject.class::cast).collect(Collectors.toSet());
-    assertTrue(ends.size() == 3);
+    assertTrue("Chain doesn't have expected ends", ends.size() == 3);
     hasStyle(lab, LOGICALFUNCTION_9, ends);
     hasStyle(lab, LOGICALFUNCTION_12, ends);
     hasStyle(lab, LOGICALFUNCTION_14, ends);
@@ -98,7 +99,7 @@ public class CompositeChainDisplay extends CompositeChains {
     hasInternalLink(lab, internalLinks, FUNCTIONALEXCHANGE_7, FUNCTIONALEXCHANGE_12);
     hasInternalLink(lab, internalLinks, FUNCTIONALEXCHANGE_7, FUNCTIONALEXCHANGE_9);
     hasInternalLink(lab, internalLinks, FUNCTIONALEXCHANGE_8, FUNCTIONALEXCHANGE_10);
-    assertTrue(internalLinks.getEdges().values().size() == 9);
+    assertTrue("Chain doesn't have expected internalLinks", internalLinks.getEdges().values().size() == 9);
   }
 
   /**
@@ -141,11 +142,12 @@ public class CompositeChainDisplay extends CompositeChains {
       assertTrue(semantics.contains(view.getTarget()));
     }
 
+    String message = NLS.bind("Element {0} shall be highlighted", element);
     if (view instanceof DNodeContainer) {
-      assertTrue(((DNodeContainer) view).getOwnedStyle().getBorderSize() == 4);
+      assertTrue(message, ((DNodeContainer) view).getOwnedStyle().getBorderSize() == 4);
 
     } else if (view instanceof DEdge) {
-      assertTrue(((DEdge) view).getOwnedStyle().getSize() == 4);
+      assertTrue(message, ((DEdge) view).getOwnedStyle().getSize() == 4);
     }
   }
 
@@ -158,11 +160,12 @@ public class CompositeChainDisplay extends CompositeChains {
       assertTrue(!semantics.contains(view.getTarget()));
     }
 
+    String message = NLS.bind("Element {0} shall be normal", element);
     if (view instanceof DNodeContainer) {
-      assertTrue(((DNodeContainer) view).getOwnedStyle().getBorderSize() == 1);
+      assertTrue(message, ((DNodeContainer) view).getOwnedStyle().getBorderSize() == 1);
 
     } else if (view instanceof DEdge) {
-      assertTrue(((DEdge) view).getOwnedStyle().getSize() == 1);
+      assertTrue(message, ((DEdge) view).getOwnedStyle().getSize() == 1);
     }
   }
 
@@ -174,11 +177,14 @@ public class CompositeChainDisplay extends CompositeChains {
     FunctionalExchange start = context.getSessionContext().getSemanticElement(startExchange);
     FunctionalExchange end = context.getSessionContext().getSemanticElement(endExchange);
 
+    String message = NLS.bind("Missing internal link between {0} and {1}", start.getTarget().getName(),
+        end.getTarget().getName());
+
     // Check graph contains internalLink
-    assertTrue(internalLinks.hasInternalLink(start.getTarget(), end.getSource()));
+    assertTrue(message, internalLinks.hasInternalLink(start.getTarget(), end.getSource()));
 
     // Check diagram contains internalLink
-    assertTrue(context.getDiagram().getEdges().stream().anyMatch(e -> {
+    assertTrue(message, context.getDiagram().getEdges().stream().anyMatch(e -> {
       return (e.getTarget() == internalLinks.getSemantic())
           && ((DSemanticDecorator) e.getSourceNode()).getTarget() == start.getTarget()
           && ((DSemanticDecorator) e.getTargetNode()).getTarget() == end.getSource();

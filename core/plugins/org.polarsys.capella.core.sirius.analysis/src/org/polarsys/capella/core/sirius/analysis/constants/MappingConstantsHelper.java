@@ -596,14 +596,8 @@ public class MappingConstantsHelper {
       String description = diagram.getDescription().getName();
       if (equals(description, IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
         mappingName = IMappingNameConstants.PAB_PHYSICAL_COMPONENT_MAPPING_NAME;
-        if (ComponentExt.isActor(component)) {
-          mappingName = IMappingNameConstants.PAB_PHYSICAL_ACTOR_MAPPING_NAME;
-        }
       } else if (equals(description, IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
         mappingName = IMappingNameConstants.LAB_LOGICAL_COMPONENT_MAPPING_NAME;
-        if (ComponentExt.isActor(component)) {
-          mappingName = IMappingNameConstants.LAB_LOGICAL_ACTOR_MAPPING_NAME;
-        }
       } else if (equals(description, IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
         mappingName = IMappingNameConstants.SAB_SYSTEM_MAPPING_NAME;
         if (ComponentExt.isActor(component)) {
@@ -622,11 +616,9 @@ public class MappingConstantsHelper {
   public static List<String> getMappingsABComponent(DDiagram diagram) {
     String description = diagram.getDescription().getName();
     if (equals(description, IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      return Arrays.asList(IMappingNameConstants.PAB_PHYSICAL_COMPONENT_MAPPING_NAME,
-          IMappingNameConstants.PAB_PHYSICAL_ACTOR_MAPPING_NAME);
+      return Arrays.asList(IMappingNameConstants.PAB_PHYSICAL_COMPONENT_MAPPING_NAME);
     } else if (equals(description, IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      return Arrays.asList(IMappingNameConstants.LAB_LOGICAL_COMPONENT_MAPPING_NAME,
-          IMappingNameConstants.LAB_LOGICAL_ACTOR_MAPPING_NAME);
+      return Arrays.asList(IMappingNameConstants.LAB_LOGICAL_COMPONENT_MAPPING_NAME);
     } else if (equals(description, IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       return Arrays.asList(IMappingNameConstants.SAB_SYSTEM_MAPPING_NAME, IMappingNameConstants.SAB_ACTOR_MAPPING_NAME);
     } else if (equals(description, IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
@@ -860,9 +852,7 @@ public class MappingConstantsHelper {
     } else if (IDiagramNameConstants.CONTEXTUAL_CAPABILITY_REALIZATION_INVOLVEMENT
         .equals(diagram.getDescription().getName())) {
       if (CsPackage.Literals.COMPONENT.isSuperTypeOf(eClass)) {
-        if (!ComponentExt.isActor(eObj))
-          return IMappingNameConstants.CCRI_COMPONENT;
-        return IMappingNameConstants.CCRI_ACTOR;
+        return IMappingNameConstants.CCRI_COMPONENT;
       } else if (LaPackage.Literals.CAPABILITY_REALIZATION.isSuperTypeOf(eClass)) {
         return IMappingNameConstants.CCRI_CAPABILITY_REALIZATION;
       }
