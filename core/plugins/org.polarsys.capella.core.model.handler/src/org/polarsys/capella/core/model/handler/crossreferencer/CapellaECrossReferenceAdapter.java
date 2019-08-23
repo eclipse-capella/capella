@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter;
-import org.polarsys.capella.common.platform.sirius.ted.SiriusSessionListener;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 
 /**
@@ -241,17 +240,4 @@ public class CapellaECrossReferenceAdapter extends SiriusCrossReferenceAdapter {
     super.selfAdapt(notification);
   }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  protected boolean resolve() {
-    EditingDomain editingDomain = _editingDomain.get();
-    
-    if (SiriusSessionListener.isClosingSession(editingDomain)) {
-      return false;
-    }
-
-    return super.resolve();
-  }
 }
