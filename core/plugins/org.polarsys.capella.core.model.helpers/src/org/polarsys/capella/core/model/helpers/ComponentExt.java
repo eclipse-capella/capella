@@ -2098,7 +2098,34 @@ public class ComponentExt {
    * This method evaluates if a Component is a composite or not.
    */
   public static boolean isComposite(Component component) {
-    return !component.getContainedParts().isEmpty();
+    if (!component.getContainedParts().isEmpty()) {
+      return true;
+    }
+
+    for (ComponentPkg subPkg : getContainedComponentPkgs(component)) {
+      if (isComposite(subPkg)) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  /**
+   * This method evaluates if a ComponentPkg is a composite or not.
+   */
+  public static boolean isComposite(ComponentPkg pkg) {
+    if (!pkg.getOwnedParts().isEmpty()) {
+      return true;
+    }
+
+    for (ComponentPkg subPkg : ComponentPkgExt.getContainedComponentPkgs(pkg)) {
+      if (isComposite(subPkg)) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
   /**
@@ -2746,7 +2773,10 @@ public class ComponentExt {
     if (component == null) {
       return Collections.emptyList();
     }
-    if (component instanceof LogicalComponent) {
+    if (component instanceof SystemComponent) {
+      SystemComponent systemComponent = (SystemComponent) component;
+      componentPkgs.addAll(systemComponent.getOwnedSystemComponentPkgs());
+    } else if (component instanceof LogicalComponent) {
       LogicalComponent logicalComponent = (LogicalComponent) component;
       componentPkgs.addAll(logicalComponent.getOwnedLogicalComponentPkgs());
     } else if (component instanceof PhysicalComponent) {

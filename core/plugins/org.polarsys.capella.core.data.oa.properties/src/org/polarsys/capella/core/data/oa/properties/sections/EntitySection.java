@@ -16,7 +16,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-import org.polarsys.capella.core.data.core.properties.sections.NamedElementSection;
+import org.polarsys.capella.core.data.cs.properties.sections.ComponentSection;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.oa.properties.Messages;
@@ -28,10 +28,21 @@ import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
 /**
  * The Entity section.
  */
-public class EntitySection extends NamedElementSection {
+public class EntitySection extends ComponentSection {
 
-  private MultipleSemanticField _allocatedOperationalActivitiesField;
-  private MultipleSemanticField _allocatedRolesField;
+  private MultipleSemanticField allocatedOperationalActivitiesField;
+  private MultipleSemanticField allocatedRolesField;
+
+  /**
+   * Default constructor.
+   */
+  public EntitySection() {
+    this(true, false, false, false, false, false, false);
+  }
+
+  public EntitySection(boolean showIsHuman, boolean showIsActor, boolean showImplementedInterfaces, boolean showUsedInterfaces, boolean showAllocatedFunctions, boolean showSuperTypes, boolean showIsAbstract) {
+    super(showIsHuman, showIsActor, showImplementedInterfaces, showUsedInterfaces, showAllocatedFunctions, showSuperTypes, showIsAbstract);
+  }
 
   /**
    * {@inheritDoc}
@@ -42,13 +53,13 @@ public class EntitySection extends NamedElementSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    _allocatedOperationalActivitiesField = new MultipleSemanticField(getReferencesGroup(),
+    allocatedOperationalActivitiesField = new MultipleSemanticField(getReferencesGroup(),
         Messages.getString("EntitySection_AllocatedActivities_Label"), getWidgetFactory(), new Entity_AllocatedActivitiesController()); //$NON-NLS-1$
-    _allocatedOperationalActivitiesField.setDisplayedInWizard(displayedInWizard);
+    allocatedOperationalActivitiesField.setDisplayedInWizard(displayedInWizard);
 
-    _allocatedRolesField = new MultipleSemanticField(getReferencesGroup(),
+    allocatedRolesField = new MultipleSemanticField(getReferencesGroup(),
         Messages.getString("EntitySection_AllocatedRoles_Label"), getWidgetFactory(), new Entity_AllocatedRolesController()); //$NON-NLS-1$
-    _allocatedRolesField.setDisplayedInWizard(displayedInWizard);
+    allocatedRolesField.setDisplayedInWizard(displayedInWizard);
   }
 
   /**
@@ -58,8 +69,8 @@ public class EntitySection extends NamedElementSection {
   public void loadData(EObject capellaElement) {
     super.loadData(capellaElement);
 
-    _allocatedOperationalActivitiesField.loadData(capellaElement, FaPackage.eINSTANCE.getAbstractFunctionalBlock_OwnedFunctionalAllocation());
-    _allocatedRolesField.loadData(capellaElement, OaPackage.eINSTANCE.getEntity_OwnedRoleAllocations());
+    allocatedOperationalActivitiesField.loadData(capellaElement, FaPackage.eINSTANCE.getAbstractFunctionalBlock_OwnedFunctionalAllocation());
+    allocatedRolesField.loadData(capellaElement, OaPackage.eINSTANCE.getEntity_OwnedRoleAllocations());
   }
 
   /**
@@ -76,11 +87,11 @@ public class EntitySection extends NamedElementSection {
    */
   @Override
   public List<AbstractSemanticField> getSemanticFields() {
-    List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
+    List<AbstractSemanticField> fields = new ArrayList<>();
 
     fields.addAll(super.getSemanticFields());
-    fields.add(_allocatedOperationalActivitiesField);
-    fields.add(_allocatedRolesField);
+    fields.add(allocatedOperationalActivitiesField);
+    fields.add(allocatedRolesField);
 
     return fields;
   }

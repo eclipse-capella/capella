@@ -19,18 +19,19 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.properties.sections.Messages;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticCheckboxGroup;
+
 /**
  *
  */
-public class IsActorBooleanPropertiesCheckbox extends AbstractSemanticCheckboxGroup {
-  private Button isActorBtn;
+public class IsHumanCheckbox extends AbstractSemanticCheckboxGroup {
+  private Button isHumanBtn;
 
   /**
    * Constructor.
    * @param parent
    * @param widgetFactory
    */
-  public IsActorBooleanPropertiesCheckbox(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
+  public IsHumanCheckbox(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
     this(parent, widgetFactory, true);
   }
 
@@ -38,13 +39,13 @@ public class IsActorBooleanPropertiesCheckbox extends AbstractSemanticCheckboxGr
    * Constructor.
    * @param parent
    * @param widgetFactory
-   * @param showIsActor
+   * @param showIsHuman
    */
-  public IsActorBooleanPropertiesCheckbox(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, boolean showIsActor) {
+  public IsHumanCheckbox(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, boolean showIsHuman) {
     super(parent, widgetFactory);
 
-    if (showIsActor) {
-      isActorBtn = createButton(CsPackage.Literals.COMPONENT__ACTOR, Messages.Component_IsActor_Label, parent); //$NON-NLS-1$ 
+    if (showIsHuman) {
+      isHumanBtn = createButton(CsPackage.Literals.COMPONENT__HUMAN, Messages.Component_IsHuman_Label, parent); //$NON-NLS-1$ 
     }
   }
 
@@ -55,10 +56,14 @@ public class IsActorBooleanPropertiesCheckbox extends AbstractSemanticCheckboxGr
   public List<Button> getSemanticFields() {
     List<Button> fields = new ArrayList<>();
 
-    if (null != isActorBtn) {
-      fields.add(isActorBtn);
+    if (null != isHumanBtn) {
+      fields.add(isHumanBtn);
     }
 
     return fields;
+  }
+
+  public boolean isEnabled() {
+    return isHumanBtn.isEnabled();
   }
 }
