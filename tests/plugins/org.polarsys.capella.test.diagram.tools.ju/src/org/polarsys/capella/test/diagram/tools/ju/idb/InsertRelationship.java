@@ -18,6 +18,8 @@ import org.polarsys.capella.test.framework.context.SessionContext;
 import org.polarsys.capella.test.framework.model.GenericModel;
 
 public class InsertRelationship extends EmptyProject {
+  String interface1;
+  String interface2;
 
   @Override
   public void test() throws Exception {
@@ -49,11 +51,11 @@ public class InsertRelationship extends EmptyProject {
   }
 
   protected void createInterfacesLinks(IDBDiagram idb) {
-    idb.createInterface(GenericModel.LC_2, GenericModel.INTERFACE_1);
-    idb.createInterface(GenericModel.LC_2, GenericModel.INTERFACE_2);
+    interface1 = idb.createInterfaceInContainer(GenericModel.LC_2);
+    interface2 = idb.createInterfaceInContainer(GenericModel.LC_2);
 
-    idb.createUses(GenericModel.LC_1, GenericModel.INTERFACE_1, GenericModel.OBJECT_1);
-    idb.createImplements(GenericModel.LC_1, GenericModel.INTERFACE_2, GenericModel.OBJECT_2);
+    idb.createUses(GenericModel.LC_1, interface1, GenericModel.OBJECT_1);
+    idb.createImplements(GenericModel.LC_1, interface2, GenericModel.OBJECT_2);
   }
 
   protected void testInsertInterfacesLinksOnLC2(SessionContext context) {
@@ -65,14 +67,14 @@ public class InsertRelationship extends EmptyProject {
 
     idb.insertRelationship(GenericModel.LC_1, GenericModel.OBJECT_1);
     idb.hasView(GenericModel.OBJECT_1);
-    idb.hasView(GenericModel.INTERFACE_1);
+    idb.hasView(interface1);
 
     idb.insertRelationship(GenericModel.LC_1, GenericModel.OBJECT_2);
     idb.hasView(GenericModel.OBJECT_2);
-    idb.hasView(GenericModel.INTERFACE_2);
+    idb.hasView(interface2);
 
-    idb.mustGraphicalOwnedBy(GenericModel.INTERFACE_1, GenericModel.LC_2);
-    idb.mustGraphicalOwnedBy(GenericModel.INTERFACE_2, GenericModel.LC_2);
+    idb.mustGraphicalOwnedBy(interface1, GenericModel.LC_2);
+    idb.mustGraphicalOwnedBy(interface2, GenericModel.LC_2);
 
   }
 
@@ -85,14 +87,14 @@ public class InsertRelationship extends EmptyProject {
 
     idb.insertRelationship(GenericModel.LC_1, GenericModel.OBJECT_1);
     idb.hasView(GenericModel.OBJECT_1);
-    idb.hasView(GenericModel.INTERFACE_1);
+    idb.hasView(interface1);
 
     idb.insertRelationship(GenericModel.LC_1, GenericModel.OBJECT_2);
     idb.hasView(GenericModel.OBJECT_2);
-    idb.hasView(GenericModel.INTERFACE_2);
+    idb.hasView(interface2);
 
-    idb.mustGraphicalOwnedBy(GenericModel.INTERFACE_1, idb.getDiagramId());
-    idb.mustGraphicalOwnedBy(GenericModel.INTERFACE_2, idb.getDiagramId());
+    idb.mustGraphicalOwnedBy(interface1, idb.getDiagramId());
+    idb.mustGraphicalOwnedBy(interface2, idb.getDiagramId());
 
   }
 

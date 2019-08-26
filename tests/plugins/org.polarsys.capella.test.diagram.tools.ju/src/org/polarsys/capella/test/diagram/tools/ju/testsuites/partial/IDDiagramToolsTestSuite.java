@@ -13,10 +13,12 @@ package org.polarsys.capella.test.diagram.tools.ju.testsuites.partial;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.polarsys.capella.test.diagram.tools.ju.id.CreateConstraint;
 import org.polarsys.capella.test.diagram.tools.ju.id.CreateExchangeItemElement;
 import org.polarsys.capella.test.diagram.tools.ju.id.CreateExchangeItemGroup;
 import org.polarsys.capella.test.diagram.tools.ju.id.DragAndDropExchangeItem;
 import org.polarsys.capella.test.diagram.tools.ju.model.settings.OA_IDProjectSettings;
+import org.polarsys.capella.test.diagram.tools.ju.model.settings.SA_IDProjectSettings;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
@@ -39,8 +41,16 @@ public class IDDiagramToolsTestSuite extends BasicTestSuite {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
 
     tests.add(new CreateExchangeItemGroup(new OA_IDProjectSettings()));
+    tests.add(new CreateExchangeItemGroup(new SA_IDProjectSettings()));
+
     tests.add(new CreateExchangeItemElement(new OA_IDProjectSettings()));
+    tests.add(new CreateExchangeItemElement(new SA_IDProjectSettings()));
+
     tests.add(new DragAndDropExchangeItem(new OA_IDProjectSettings()));
+    tests.add(new DragAndDropExchangeItem(new SA_IDProjectSettings()));
+
+    tests.add(new CreateConstraint(new OA_IDProjectSettings()));
+    tests.add(new CreateConstraint(new SA_IDProjectSettings()));
 
     return tests;
   }

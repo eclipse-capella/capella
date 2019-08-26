@@ -39,6 +39,7 @@ public class OCBScenario extends EmptyProject {
 
     String capability1 = diagram.createCapability();
     String capability2 = diagram.createCapability();
+    String capability3 = diagram.createCapability();
 
     String cl1 = diagram.createComponentExchange(component2, actor6);
     String cl2 = diagram.createComponentExchange(actor5, component2_1);
@@ -47,6 +48,10 @@ public class OCBScenario extends EmptyProject {
     String cl5 = diagram.createCapabilityInvolvement(capability1, component2_1);
     String cl6 = diagram.createCapabilityInvolvement(capability2, actor5);
     String cl7 = diagram.createCapabilityInvolvement(capability2, actor6);
+
+    String cl8 = diagram.createCapabilityExtends(capability1, capability2);
+    String cl9 = diagram.createCapabilityIncludes(capability1, capability3);
+    String cl10 = diagram.createCapabilityGeneralization(capability2, capability3);
 
     DiagramHelper.setSynchronized(diagram.getDiagram(), false);
     diagram.removeRelationship(capability1, cl4);
@@ -57,6 +62,12 @@ public class OCBScenario extends EmptyProject {
     diagram.insertRelationship(actor5, cl6);
     diagram.removeRelationship(capability2, cl7);
     diagram.insertRelationship(actor6, cl7);
+    diagram.removeRelationship(capability1, cl8);
+    diagram.insertRelationship(capability1, cl8);
+    diagram.removeRelationship(capability1, cl9);
+    diagram.insertRelationship(capability1, cl9);
+    diagram.removeRelationship(capability2, cl10);
+    diagram.insertRelationship(capability2, cl10);
     DiagramHelper.setSynchronized(diagram.getDiagram(), true);
 
     diagram.removeComponent(component2_1, component2);

@@ -14,23 +14,31 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.core.data.information.communication.CommunicationLink;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkKind;
 import org.polarsys.capella.core.data.information.communication.CommunicationPackage;
+import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.context.IDBDiagram;
-import org.polarsys.capella.test.diagram.tools.ju.model.EmptyProject;
 import org.polarsys.capella.test.framework.context.SessionContext;
 import org.polarsys.capella.test.framework.model.GenericModel;
 
-public class CreateCommunicationLinkAcquire extends EmptyProject {
-
+public class CreateCommunicationLinkAcquire extends IDBProject {
   @Override
   public void test() throws Exception {
     Session session = getSession(getRequiredTestModel());
     SessionContext context = new SessionContext(session);
+    init(context);
+    testOnDiagram(context, IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME, LA__LOGICAL_SYSTEM);
+    testOnDiagram(context, IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME,
+        componentContext);
+    testOnDiagram(context, IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME,
+        componentContext);
+  }
 
-    IDBDiagram idb = IDBDiagram.createDiagram(context, LA__LOGICAL_SYSTEM);
+  @Override
+  protected void testOnDiagram(SessionContext context, String diagramKind, String String) {
+    IDBDiagram idb = IDBDiagram.createDiagram(context, diagramKind, String);
 
-    idb.createComponent(GenericModel.LC_1);
-    idb.createEvent(GenericModel.EXCHANGE_ITEM_1);
-    idb.createCommunicationLinkAcquire(GenericModel.LC_1, GenericModel.EXCHANGE_ITEM_1, GenericModel.CL_1);
+    String component = idb.createComponent();
+    String ei = idb.createEvent();
+    idb.createCommunicationLinkAcquire(component, ei, GenericModel.CL_1);
 
     idb.mustBeInstanceOf(GenericModel.CL_1, CommunicationPackage.Literals.COMMUNICATION_LINK);
 
