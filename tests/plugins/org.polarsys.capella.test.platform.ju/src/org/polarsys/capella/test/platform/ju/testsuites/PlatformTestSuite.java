@@ -20,6 +20,7 @@ import org.polarsys.capella.test.platform.ju.testcases.CapellaCheckAcceleo2NotUs
 import org.polarsys.capella.test.platform.ju.testcases.CapellaDefaultEditorEnabled;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaPlatformVersionNotNull;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaSiriusCustomisationEnabled;
+import org.polarsys.capella.test.platform.ju.testcases.CapellaVersionConsistencyTest;
 import org.polarsys.capella.test.platform.ju.testcases.ExportCSVPreferencesTest;
 import org.polarsys.capella.test.platform.ju.testcases.InvalidRepresentationDescriptorAdapterFactory;
 import org.polarsys.capella.test.platform.ju.testcases.PropertiesWizardIconTest;
@@ -45,6 +46,7 @@ public class PlatformTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+    tests.add(new CapellaVersionConsistencyTest());
     tests.add(new CapellaSiriusCustomisationEnabled());
     tests.add(new CapellaPlatformVersionNotNull());
     tests.add(new CapellaDefaultEditorEnabled());
@@ -56,7 +58,7 @@ public class PlatformTestSuite extends BasicTestSuite {
     tests.add(new ExportCSVPreferencesTest());
     return tests;
   }
-  
+
   @Override
   public List<String> getRequiredTestModels() {
     return null;

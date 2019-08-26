@@ -16,6 +16,7 @@ import java.util.List;
 
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+import org.polarsys.capella.test.semantic.queries.ju.UniqueIDInPluginsTest;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.AbstractFunction_mother_activity_allocation;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.AbstractFunction_mother_function_allocation;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.AbstractStateParentActiveElements;
@@ -82,6 +83,7 @@ public class SemanticQueriesTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+    tests.add(new UniqueIDInPluginsTest());
     tests.add(new AvailableForTypeClassExistTest());
     tests.add(new AbstractFunction_mother_activity_allocation());
     tests.add(new AbstractFunction_mother_function_allocation());
@@ -140,15 +142,15 @@ public class SemanticQueriesTestSuite extends BasicTestSuite {
     tests.add(new SequenceMessagePartSource());
     tests.add(new SequenceMessagePartTarget());
     tests.add(new AbstractStateParentActiveElements());
-    
+
     return tests;
   }
-  
+
   @Override
   public List<String> getRequiredTestModels() {
     return Collections.singletonList("SemanticQueries");
   }
-  
+
   /**
    * Added in order to launch this test suite without the Capella test framework.
    */
