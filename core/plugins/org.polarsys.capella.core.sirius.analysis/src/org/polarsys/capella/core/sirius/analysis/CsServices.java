@@ -2827,7 +2827,6 @@ public class CsServices {
   public Component createActor(CapellaElement container, boolean creationService, String nameVariable) {
     Component component = createComponent(container, nameVariable);
     component.setActor(true);
-    component.setHuman(true);
     if (creationService) {
       CapellaServices.getService().creationService(component);
     } else {

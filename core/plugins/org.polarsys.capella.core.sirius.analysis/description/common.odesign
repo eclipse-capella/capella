@@ -14283,7 +14283,6 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:ownedSystemComponentPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SystemComponent" referenceName="ownedSystemComponents" variableName="actor">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -14292,7 +14291,6 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:ownedLogicalComponentPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponent" referenceName="ownedLogicalComponents" variableName="actor">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -14301,7 +14299,6 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:ownedPhysicalComponentPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents" variableName="actor">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -14310,7 +14307,6 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainer().ownedArchitectures->filter(pa::PhysicalArchitecture).ownedPhysicalComponentPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents" variableName="actor">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -16153,7 +16149,6 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:ownedSystemComponentPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SystemComponent" referenceName="ownedSystemComponents" variableName="actor">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -16162,7 +16157,6 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:ownedLogicalComponentPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponent" referenceName="ownedLogicalComponents" variableName="actor">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -16171,7 +16165,6 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:ownedPhysicalComponentPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents" variableName="actor">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -16180,7 +16173,6 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainer().ownedArchitectures->filter(pa::PhysicalArchitecture).ownedPhysicalComponentPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents" variableName="actor">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>

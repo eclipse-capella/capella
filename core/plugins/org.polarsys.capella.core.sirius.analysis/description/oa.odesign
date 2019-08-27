@@ -2757,7 +2757,6 @@
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.ownedEntityPkg">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="Entity" referenceName="ownedEntities" variableName="actor">
                         <subModelOperations xsi:type="tool:SetValue" featureName="actor" valueExpression="true"/>
-                        <subModelOperations xsi:type="tool:SetValue" featureName="human" valueExpression="true"/>
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -6500,7 +6499,6 @@
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="oa::Entity" referenceName="ownedEntities" variableName="entity">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()">
                         <subModelOperations xsi:type="tool:SetValue" featureName="actor" valueExpression="true"/>
-                        <subModelOperations xsi:type="tool:SetValue" featureName="human" valueExpression="true"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -6508,7 +6506,6 @@
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="oa::Entity" referenceName="ownedEntities" variableName="entity">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()">
                         <subModelOperations xsi:type="tool:SetValue" featureName="actor" valueExpression="true"/>
-                        <subModelOperations xsi:type="tool:SetValue" featureName="human" valueExpression="true"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -6517,7 +6514,6 @@
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="oa::Entity" referenceName="ownedEntities" variableName="entity">
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()">
                           <subModelOperations xsi:type="tool:SetValue" featureName="actor" valueExpression="true"/>
-                          <subModelOperations xsi:type="tool:SetValue" featureName="human" valueExpression="true"/>
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>

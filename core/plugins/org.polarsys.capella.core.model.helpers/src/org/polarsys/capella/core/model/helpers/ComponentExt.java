@@ -1886,7 +1886,6 @@ public class ComponentExt {
   public static Entity createOperationalActor() {
     Entity operationalActor = createEntity();
     operationalActor.setActor(true);
-    operationalActor.setHuman(true);
 
     return operationalActor;
   }
@@ -1898,7 +1897,6 @@ public class ComponentExt {
   public static SystemComponent createSystemActor() {
     SystemComponent systemActor = createSystemComponent();
     systemActor.setActor(true);
-    systemActor.setHuman(true);
 
     return systemActor;
   }
@@ -1910,7 +1908,6 @@ public class ComponentExt {
   public static LogicalComponent createLogicalActor() {
     LogicalComponent logicalActor = createLogicalComponent();
     logicalActor.setActor(true);
-    logicalActor.setHuman(true);
 
     return logicalActor;
   }
@@ -1922,7 +1919,6 @@ public class ComponentExt {
   public static PhysicalComponent createPhysicalActor() {
     PhysicalComponent physicalActor = createPhysicalComponent();
     physicalActor.setActor(true);
-    physicalActor.setHuman(true);
 
     return physicalActor;
   }

@@ -30,17 +30,17 @@ public class NamePrefixService implements INamePrefixService {
   public NamePrefixService() {
     prefixes = new HashMap<>();
 
-    prefixes.put(OaPackage.Literals.ENTITY, o -> ComponentExt.isActorHuman(o) ? CustomNamePrefixes.OPERATIONAL_ACTOR
+    prefixes.put(OaPackage.Literals.ENTITY, o -> ComponentExt.isActor(o) ? CustomNamePrefixes.OPERATIONAL_ACTOR
         : CustomNamePrefixes.OPERATIONAL_ENTITY);
 
     prefixes.put(CtxPackage.Literals.SYSTEM_COMPONENT,
-        o -> ComponentExt.isActorHuman(o) ? CustomNamePrefixes.SYSTEM_ACTOR : CustomNamePrefixes.SYSTEM_COMPONENT);
+        o -> ComponentExt.isActor(o) ? CustomNamePrefixes.SYSTEM_ACTOR : CustomNamePrefixes.SYSTEM_COMPONENT);
 
     prefixes.put(LaPackage.Literals.LOGICAL_COMPONENT,
-        o -> ComponentExt.isActorHuman(o) ? CustomNamePrefixes.LOGICAL_ACTOR : CustomNamePrefixes.LOGICAL_COMPONENT);
+        o -> ComponentExt.isActor(o) ? CustomNamePrefixes.LOGICAL_ACTOR : CustomNamePrefixes.LOGICAL_COMPONENT);
 
     prefixes.put(PaPackage.Literals.PHYSICAL_COMPONENT,
-        o -> ComponentExt.isActorHuman(o) ? CustomNamePrefixes.PHYSICAL_ACTOR : CustomNamePrefixes.PHYSICAL_COMPONENT);
+        o -> ComponentExt.isActor(o) ? CustomNamePrefixes.PHYSICAL_ACTOR : CustomNamePrefixes.PHYSICAL_COMPONENT);
   }
 
   @Override

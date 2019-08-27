@@ -20,11 +20,10 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class EntityRule extends org.polarsys.capella.core.transition.system.topdown.rules.oa.EntityRule {
 
   @Override
-  protected EObject transformDirectElement(EObject element_p, IContext context_p) {
-    EObject res = super.transformDirectElement(element_p, context_p);
+  protected EObject transformDirectElement(EObject element, IContext context) {
+    EObject res = super.transformDirectElement(element, context);
     if (res instanceof Component) {
       ((Component) res).setActor(true);
-      ((Component) res).setHuman(true);
     }
     return res;
   }
