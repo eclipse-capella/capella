@@ -10,13 +10,17 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.misc.ju.testcases;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
@@ -55,6 +59,8 @@ public class DiagramToolAndLabelCoherenceTest extends BasicTestCase {
     List<DiagramDescription> diagramDescriptions = ODesignHelper.getAllDiagramDescription(odesigns);
     IElementIdentifierService elementIdentifier = PlatformUI.getWorkbench().getService(IElementIdentifierService.class);
 
+    Collection<String> errors = new ArrayList<>();
+    
     for (DiagramDescription diagramDescription : diagramDescriptions) {
 
       Stream.concat(diagramDescription.getAllTools().stream(), diagramDescription.getFilters().stream())
@@ -62,15 +68,27 @@ public class DiagramToolAndLabelCoherenceTest extends BasicTestCase {
 
             String toolIdentifier = elementIdentifier.getIdentifier(diagramDescription, element);
             String toolLabel = element.getLabel();
-
-            String[] tokens = toolLabel.split("%");
-            assertTrue(tokens.length == 1);
-
-            String label = tokens[0];
-
-            assertEquals(label, toolIdentifier);
+            if (toolLabel == null) {
+              errors.add(NLS.bind("Element {0} doens't have a label.", element.getName()));
+              
+            } else {
+              String[] tokens = toolLabel.split("%");
+              if (tokens.length != 1) {
+                errors.add(NLS.bind("Element {0} is not internationalized.", element.getName()));
+                
+              } else {
+                String label = tokens[0];
+                if (!label.equals(toolIdentifier)) {
+                  errors.add(NLS.bind("Element {0} doesn't use the correct identifier.", element.getName()));
+                }
+              }
+            }
           });
 
+    }
+    
+    if (!errors.isEmpty()) {
+      assertTrue(errors.stream().collect(Collectors.joining("\n")), errors.isEmpty());
     }
 
   }

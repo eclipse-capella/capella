@@ -155,7 +155,7 @@
                 <subModelOperations xsi:type="tool_1:For" expression="aql:self.void2Null(target.involvedActors.actor)">
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:source.involvedActors->select(involvedActor | involvedActor.actor = i)->size() = 0">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source">
-                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ActorMissionInvolvement" referenceName="ownedActorMissionInvolvements">
+                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="MissionInvolvement" referenceName="ownedMissionInvolvements">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="aql:i"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -576,7 +576,7 @@
                 <subModelOperations xsi:type="tool_1:For" expression="aql:self.void2Null(target.involvedActors.actor)">
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:source.involvedActors->select(involvedActor | involvedActor.actor = i)->size() = 0">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source">
-                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ActorMissionInvolvement" referenceName="ownedActorMissionInvolvements">
+                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="MissionInvolvement" referenceName="ownedMissionInvolvements">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="aql:i"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -1044,7 +1044,7 @@
                 <subModelOperations xsi:type="tool_1:For" expression="aql:self.void2Null(target.involvedActors.actor)">
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:source.involvedActors->select(involvedActor | involvedActor.actor = i)->size() = 0">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source">
-                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ActorMissionInvolvement" referenceName="ownedActorMissionInvolvements">
+                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="MissionInvolvement" referenceName="ownedMissionInvolvements">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="aql:i"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -1577,7 +1577,7 @@
                 <subModelOperations xsi:type="tool_1:For" expression="aql:self.void2Null(target.involvedActors.actor)">
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:source.involvedActors->select(involvedActor | involvedActor.actor = i)->size() = 0">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source">
-                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ActorMissionInvolvement" referenceName="ownedActorMissionInvolvements">
+                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="MissionInvolvement" referenceName="ownedMissionInvolvements">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="aql:i"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -5251,14 +5251,8 @@
           <variables name="root" documentation="The semantic root element of the table."/>
           <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic">
             <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:arg0 = 'X'">
-              <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:columnSemantic.oclIsKindOf(oa::OperationalActor)">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="OperationalActorRealization" referenceName="ownedOperationalActorRealizations">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="sourceElement" valueExpression="aql:lineSemantic"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="targetElement" valueExpression="aql:columnSemantic"/>
-                </subModelOperations>
-              </subModelOperations>
-              <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (columnSemantic.oclIsKindOf(oa::OperationalActor))">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="OperationalEntityRealization" referenceName="ownedOperationalEntityRealizations">
+              <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:columnSemantic.oclIsKindOf(oa::Entity)">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ComponentRealization" referenceName="ownedComponentRealizations">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="sourceElement" valueExpression="aql:lineSemantic"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="targetElement" valueExpression="aql:columnSemantic"/>
                 </subModelOperations>

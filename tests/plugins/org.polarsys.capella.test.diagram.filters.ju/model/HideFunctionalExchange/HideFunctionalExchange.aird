@@ -20,7 +20,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_fakeAe2XEeijUcDJRyD7mg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_hXlkUO2XEeijUcDJRyD7mg" name="[SDFB] Root System Function" repPath="#_hVzboO2XEeijUcDJRyD7mg" changeId="c45d52b0-5b4b-46ea-aa85-3d011ccdd587">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_hXlkUO2XEeijUcDJRyD7mg" name="[SDFB] Root System Function" repPath="#_hVzboO2XEeijUcDJRyD7mg">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="HideFunctionalExchange.melodymodeller#5290cc74-b4d8-4c5e-9503-24ef8110ed9b"/>
       </ownedRepresentationDescriptors>

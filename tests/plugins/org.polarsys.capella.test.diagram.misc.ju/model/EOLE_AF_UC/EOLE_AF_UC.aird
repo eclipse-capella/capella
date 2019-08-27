@@ -82,8 +82,6 @@
       </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Xxt2VoPqEeakXr_OCO8ayA" name="[PAB] Physical System - Physical Architecture Blank" repPath="#_xIU-oNXkEd609eMaGNBP-A" changeId="fa8e1e3c-b1bf-4c49-8627-b7894cf00d89">
         <eAnnotations xmi:type="description:DAnnotation" uid="_IrlA4EZoEem3gpcXA1GaCw" source="https://www.polarsys.org/capella/dannotation/DesactivatedFilters">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_IrlA4UZoEem3gpcXA1GaCw" key="Hide Computed Component Exchanges" value="true"/>
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_IrlA4kZoEem3gpcXA1GaCw" key="Hide Computed Physical Links" value="true"/>
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_MeV_8MTwEemtX5KI0HaNmg" key="hide.computed.component.exchanges.filter" value="true"/>
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_MeV_8cTwEemtX5KI0HaNmg" key="hide.computed.physical.links.filter" value="true"/>
         </eAnnotations>
@@ -92,8 +90,6 @@
       </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Xxt2V4PqEeakXr_OCO8ayA" name="[PAB] Physical System - Physical Architecture with Functions" repPath="#_UVprMNXpEd609eMaGNBP-A">
         <eAnnotations xmi:type="description:DAnnotation" uid="_I8a5QEZoEem3gpcXA1GaCw" source="https://www.polarsys.org/capella/dannotation/DesactivatedFilters">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_I8a5QUZoEem3gpcXA1GaCw" key="Hide Computed Component Exchanges" value="true"/>
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_I8a5QkZoEem3gpcXA1GaCw" key="Hide Computed Physical Links" value="true"/>
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_MnulcMTwEemtX5KI0HaNmg" key="hide.computed.component.exchanges.filter" value="true"/>
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_MnulccTwEemtX5KI0HaNmg" key="hide.computed.physical.links.filter" value="true"/>
         </eAnnotations>
@@ -151,8 +147,6 @@
       </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Xxt2QYPqEeakXr_OCO8ayA" name="[LAB] EOLE - Logical Architecture" repPath="#_SZ_9YNOlEd6jJYuawuuzSg">
         <eAnnotations xmi:type="description:DAnnotation" uid="_KMvRoEZoEem3gpcXA1GaCw" source="https://www.polarsys.org/capella/dannotation/DesactivatedFilters">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_KMvRoUZoEem3gpcXA1GaCw" key="Hide Computed Component Exchanges" value="true"/>
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_KMvRokZoEem3gpcXA1GaCw" key="Hide Computed Physical Links" value="true"/>
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_NkYa8MTwEemtX5KI0HaNmg" key="hide.computed.component.exchanges.filter" value="true"/>
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_NkYa8cTwEemtX5KI0HaNmg" key="hide.computed.physical.links.filter" value="true"/>
         </eAnnotations>
@@ -176,7 +170,6 @@
       </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_XxsoIYPqEeakXr_OCO8ayA" name="[SAB] EOLE - System Architecture" repPath="#_fMk40NN1Ed6jJYuawuuzSg">
         <eAnnotations xmi:type="description:DAnnotation" uid="_KthqgEZoEem3gpcXA1GaCw" source="https://www.polarsys.org/capella/dannotation/DesactivatedFilters">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_KthqgUZoEem3gpcXA1GaCw" key="Hide Simplified Group of Component Exchanges" value="true"/>
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_N8q_IsTwEemtX5KI0HaNmg" key="hide.simplified.group.of.component.exchanges.filter" value="true"/>
         </eAnnotations>
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']"/>
@@ -274,7 +267,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <table:DTable uid="_WN1SoNNpEd6jJYuawuuzSg" headerColumnWidth="281" name="EOLE System Functions - Operational Activities">
+  <table:DTable uid="_WN1SoNNpEd6jJYuawuuzSg" name="EOLE System Functions - Operational Activities" headerColumnWidth="281">
     <target xmi:type="org.polarsys.capella.core.data.ctx:SystemAnalysis" href="EOLE_AF_UC.melodymodeller#f10623c0-f74f-4d49-9236-64aca696500a"/>
     <lines xmi:type="table:DLine" uid="_Gj5uMOUjEeCPx5czLFEEAQ" label="Capture Meteorological Data">
       <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="EOLE_AF_UC.melodymodeller#1241141f-0321-402c-b3a4-49557b59ef75"/>
@@ -5825,7 +5818,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="EOLE_AF_UC.melodymodeller#45024adb-baf5-493c-adac-96964d95b770"/>
   </diagram:DSemanticDiagram>
-  <table:DTable uid="_13SQwNQmEd6hC4Vp4U-AQQ" headerColumnWidth="246" name="EOLE Logical Components - Logical Functions">
+  <table:DTable uid="_13SQwNQmEd6hC4Vp4U-AQQ" name="EOLE Logical Components - Logical Functions" headerColumnWidth="246">
     <target xmi:type="org.polarsys.capella.core.data.la:LogicalArchitecture" href="EOLE_AF_UC.melodymodeller#5d7bf16b-2ce7-40e4-a433-1388642f30af"/>
     <lines xmi:type="table:DLine" uid="_GL6E8OUjEeCPx5czLFEEAQ" label="Campaign Controller">
       <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="EOLE_AF_UC.melodymodeller#b603b820-44fe-44e5-9a72-d1d22a6b581d"/>
@@ -16812,7 +16805,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.capellacommon:Region" href="EOLE_AF_UC.melodymodeller#fcc3e74b-e836-428f-859f-59c9099ef24e"/>
   </diagram:DSemanticDiagram>
-  <table:DTable uid="_arkLwNXmEd609eMaGNBP-A" headerColumnWidth="227" name="EOLE Physical Components - Logical Components">
+  <table:DTable uid="_arkLwNXmEd609eMaGNBP-A" name="EOLE Physical Components - Logical Components" headerColumnWidth="227">
     <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalArchitecture" href="EOLE_AF_UC.melodymodeller#b560c44c-9a63-4ce2-a936-e5d028a2859f"/>
     <lines xmi:type="table:DLine" uid="_FVrAgOUjEeCPx5czLFEEAQ" label="Balloon">
       <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="EOLE_AF_UC.melodymodeller#fca7517e-e295-4964-9d7d-0390efc13e55"/>
@@ -25369,7 +25362,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalFunction" href="EOLE_AF_UC.melodymodeller#287ba506-1035-4e06-9e77-11876df3ad94"/>
   </diagram:DSemanticDiagram>
-  <table:DTable uid="_jUgXYNnfEd6EHJAW3AWnJA" headerColumnWidth="209" name="EOLE Configuration Items - Physical Components">
+  <table:DTable uid="_jUgXYNnfEd6EHJAW3AWnJA" name="EOLE Configuration Items - Physical Components" headerColumnWidth="209">
     <target xmi:type="org.polarsys.capella.core.data.epbs:EPBSArchitecture" href="EOLE_AF_UC.melodymodeller#d473425e-6f1e-4a25-b1db-0bfee69d63e4"/>
   </table:DTable>
   <diagram:DSemanticDiagram uid="_K7gBYKoCEd-WPacS1rZNRQ" name="[EAB] System - EPBS Architecture Blank">

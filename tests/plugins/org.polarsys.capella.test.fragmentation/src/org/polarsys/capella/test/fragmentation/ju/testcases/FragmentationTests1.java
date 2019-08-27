@@ -78,8 +78,8 @@ public class FragmentationTests1 extends FragmentModelTestFramework {
     checkFragmentModelElementsNumber(FragmentationMessages.UC1FromLogicalSystemairdfragment, 127);
     checkFragmentModelElementsNumber(FragmentationMessages.LC3airdfragment, 15);
     checkFragmentModelElementsNumber(FragmentationMessages.LC3_3airdfragment, 3);
-    checkFragmentModelElementsNumber(FragmentationMessages.RLF_OA2airdfragment, 14);
     checkFragmentModelElementsNumber(FragmentationMessages.LF2_3airdfragment, 3);
+    checkFragmentModelElementsNumber(FragmentationMessages.RLF_OA2airdfragment, 28);
 
     // open all diagrams/tables and check if they are not modified
     openAndCheckAllSessionRepresentations();

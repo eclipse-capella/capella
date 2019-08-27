@@ -46,20 +46,25 @@ public class FragmentationMessages {
   public static String RLF_OA2_SysOA2_1melodyfragment = "LA-Logical Functions-RLF-OA2-SysOA2_1.melodyfragment";
   public static String RLF_OA2_SysOA2_1_LogicalFunctionPkg1airdfragment = "LA-Logical Functions-RLF-OA2-SysOA2_1-LogicalFunctionPkg 1.airdfragment";
   public static String RLF_OA2_SysOA2_1_LogicalFunctionPkg1melodyfragment = "LA-Logical Functions-RLF-OA2-SysOA2_1-LogicalFunctionPkg 1.melodyfragment";
+  
   public static String LC2airdfragment = "LA-Logical System-LC2.airdfragment";
   public static String LC2melodyfragment = "LA-Logical System-LC2.melodyfragment";
-  public static String LC2_Capabilitiesairdfragment = "LA-Logical System-LC2-Capabilities.airdfragment";
-  public static String LC2_Capabilitiesmelodyfragment = "LA-Logical System-LC2-Capabilities.melodyfragment";
-  public static String LC3airdfragment = "LA-Logical System-LC3.airdfragment";
-  public static String LC3melodyfragment = "LA-Logical System-LC3.melodyfragment";
-  public static String LC3_3airdfragment = "LA-Logical System-LC3-LC3_3.airdfragment";
-  public static String LC3_3melodyfragment = "LA-Logical System-LC3-LC3_3.melodyfragment";
-  public static String LC3_LC3_1airdfragment = "LA-Logical System-LC3-LC3_1.airdfragment";
-  public static String LC3_LC3_1melodyfragment = "LA-Logical System-LC3-LC3_1.melodyfragment";
+  
+  public static String LC2_Capabilitiesairdfragment = "LA-Structure-Logical System-LC2-Capabilities.airdfragment";
+  public static String LC2_Capabilitiesmelodyfragment = "LA-Structure-Logical System-LC2-Capabilities.melodyfragment";
+  public static String LC3airdfragment = "LA-Structure-Logical System-LC3.airdfragment";
+  public static String LC3melodyfragment = "LA-Structure-Logical System-LC3.melodyfragment";
+  public static String LC3_3airdfragment = "LA-Structure-Logical System-LC3-LC3_3.airdfragment";
+  public static String LC3_3melodyfragment = "LA-Structure-Logical System-LC3-LC3_3.melodyfragment";
+  public static String LC3_LC3_1airdfragment = "LA-Structure-Logical System-LC3-LC3_1.airdfragment";
+  public static String LC3_LC3_1melodyfragment = "LA-Structure-Logical System-LC3-LC3_1.melodyfragment";
+  public static String LA_LogicalSystemairdfragment = "LA-Structure-Logical System.airdfragment";
+  public static String LA_LogicalSystemmelodyfragment = "LA-Structure-Logical System.melodyfragment";
+  public static String UC1FromLogicalSystemairdfragment = "LA-Structure-Logical System-LC2-Capabilities-UC1 From Logical System.airdfragment";
+  public static String UC1FromLogicalSystemmelodyfragment = "LA-Structure-Logical System-LC2-Capabilities-UC1 From Logical System.melodyfragment";
+  
   public static String LF2_3airdfragment = "LA-Logical Functions-RLF-OA2-SysOA2_1-LogicalFunctionPkg 1-LF2_3.airdfragment";
   public static String LF2_3melodyfragment = "LA-Logical Functions-RLF-OA2-SysOA2_1-LogicalFunctionPkg 1-LF2_3.melodyfragment";
-  public static String LA_LogicalSystemairdfragment = "LA-Logical System.airdfragment";
-  public static String LA_LogicalSystemmelodyfragment = "LA-Logical System.melodyfragment";
   public static String PAairdfragment = "PA.airdfragment";
   public static String PAmelodyfragment = "PA.melodyfragment";
   public static String PhysicalSystemairdfragment = "PA-Physical System.airdfragment";
@@ -68,8 +73,6 @@ public class FragmentationMessages {
   public static String OC1melodyfragment = "SA-Capabilities-OC1.melodyfragment";
   public static String Dataairdfragment = "SA-Data.airdfragment";
   public static String Datamelodyfragment = "SA-Data.melodyfragment";
-  public static String UC1FromLogicalSystemairdfragment = "LA-Logical System-LC2-Capabilities-UC1 From Logical System.airdfragment";
-  public static String UC1FromLogicalSystemmelodyfragment = "LA-Logical System-LC2-Capabilities-UC1 From Logical System.melodyfragment";
   public static String PA_PhysicalFunctionsRPFairdfragment = "PA-Physical Functions-RPF.airdfragment";
   public static String PA_PhysicalFunctionsRPFmelodyfragment = "PA-Physical Functions-RPF.melodyfragment";
   public static String PA_PhysicalSystemairdfragment = "PA-Physical System.airdfragment";
