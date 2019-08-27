@@ -1071,8 +1071,7 @@
     <setupTask
         xsi:type="git:GitCloneTask"
         id="git.clone.addon-basicvp"
-        remoteURI="capella/capella-basic-vp.git"
-        checkoutBranch="${basic-vp-branch}">
+        remoteURI="capella/capella-basic-vp.git">
       <annotation
           source="http://www.eclipse.org/oomph/setup/InducedChoices">
         <detail
@@ -1238,10 +1237,6 @@
           value="Oxygen"
           defaultValue="Neon"
           storageURI="scope://Workspace"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="basic-vp-branch"
-          value="master"/>
     </stream>
     <stream
         name="v1.2.x">
