@@ -28,11 +28,36 @@ public class PhysicalComponentItemProviderDecorator extends AbstractPhysicalComp
 
   @Override
   public Object getImage(Object object) {
-    PhysicalComponent pc = (PhysicalComponent) object;
-    if (pc.getNature().equals(PhysicalComponentNature.NODE)) {
-      return overlayImage(object, CapellaModellerEditPlugin.INSTANCE.getImage("full/obj16/PhysicalComponentNode")); //$NON-NLS-1$
+    PhysicalComponent component = (PhysicalComponent) object;
+    String imagePath = "full/obj16/PhysicalComponent";
+
+    if (component.isActor()) {
+      if (component.isHuman()) {
+        imagePath = "full/obj16/PhysicalActorHuman";
+      } else {
+        imagePath = "full/obj16/PhysicalActor";
+      }
+    } else {
+      if (component.getNature() == PhysicalComponentNature.NODE) {
+        if (component.isHuman()) {
+          imagePath = "full/obj16/PhysicalComponentHumanNode";
+        } else {
+          imagePath = "full/obj16/PhysicalComponentNode";
+        }
+      } else if (component.getNature() == PhysicalComponentNature.BEHAVIOR) {
+        if (component.isHuman()) {
+          imagePath = "full/obj16/PhysicalComponentHumanBehavior";
+        } else {
+          imagePath = "full/obj16/PhysicalComponentBehavior";
+        }
+      } else {
+        if (component.isHuman()) {
+          imagePath = "full/obj16/PhysicalComponentHumanUnset";
+        }
+      }
     }
-    return overlayImage(object, CapellaModellerEditPlugin.INSTANCE.getImage("full/obj16/PhysicalComponent")); //$NON-NLS-1$
+
+    return overlayImage(object, CapellaModellerEditPlugin.INSTANCE.getImage(imagePath));
   }
 
   @SuppressWarnings("unchecked")

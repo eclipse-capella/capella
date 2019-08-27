@@ -20,6 +20,7 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.polarsys.capella.common.menu.dynamic.util.DynamicCommandParameter;
+import org.polarsys.capella.core.data.capellamodeller.provider.CapellaModellerEditPlugin;
 import org.polarsys.capella.core.data.ctx.CtxFactory;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
@@ -33,6 +34,22 @@ public class SystemComponentItemProviderDecorator extends ItemProviderAdapterDec
 
   public SystemComponentItemProviderDecorator(AdapterFactory adapterFactory) {
     super(adapterFactory);
+  }
+
+  @Override
+  public Object getImage(Object object) {
+    SystemComponent component = (SystemComponent) object;
+    String imagePath = "full/obj16/SystemComponent";
+
+    if (component.isActor()) {
+      if (component.isHuman()) {
+        imagePath = "full/obj16/SystemActorHuman";
+      } else {
+        imagePath = "full/obj16/SystemActor";
+      }
+    }
+
+    return overlayImage(object, CapellaModellerEditPlugin.INSTANCE.getImage(imagePath));
   }
 
   @SuppressWarnings("unchecked")

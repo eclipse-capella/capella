@@ -16,7 +16,9 @@ External entity (user, operator or other system) interacting directly with the S
  
 [[Image:Images/1.%20Actor_html_m16fb01c8.png|75x66px]]
 
- 
+
+[[Image:Images/1.%20Actor_html_m66fb01c8.png|75x66px]]
+
 <br>
 
    

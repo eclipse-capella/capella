@@ -22,7 +22,6 @@ These followings icons are made available under the terms of the Eclipse Public 
 /icons/full/png/PropertyValuePkg.png - capella.ui.resources - capella.ui.resources/icons/full/png/PropertyValuePkg.png
 /icons/full/png/StandardPort.png - capella.ui.resources - capella.ui.resources/icons/full/png/StandardPort.png
 /icons/full/png/PhysicalActorPkg.png - capella.ui.resources - capella.ui.resources/icons/full/png/PhysicalActorPkg.png
-/icons/full/png/OperationalActor.png - capella.ui.resources - capella.ui.resources/icons/full/png/OperationalActor.png
 /icons/full/png/ExchangeItemInstance.png - capella.ui.resources - capella.ui.resources/icons/full/png/ExchangeItemInstance.png
 /icons/full/png/FunctionalChain.png - capella.ui.resources - capella.ui.resources/icons/full/png/FunctionalChain.png
 /icons/full/png/CommunicationLinkConsume.png - capella.ui.resources - capella.ui.resources/icons/full/png/CommunicationLinkConsume.png
@@ -150,7 +149,6 @@ These followings icons are made available under the terms of the Eclipse Public 
 /icons/full/png/Interface_Technical.png - capella.ui.resources - capella.ui.resources/icons/full/png/Interface_Technical.png
 /icons/full/png/LiteralStringValue.png - capella.ui.resources - capella.ui.resources/icons/full/png/LiteralStringValue.png
 /icons/full/png/PhysicalArchitecture.png - capella.ui.resources - capella.ui.resources/icons/full/png/PhysicalArchitecture.png
-/icons/full/png/Actor.png - capella.ui.resources - capella.ui.resources/icons/full/png/Actor.png
 /icons/full/png/CollectionValue.png - capella.ui.resources - capella.ui.resources/icons/full/png/CollectionValue.png
 /icons/full/png/LogicalActor.png - capella.ui.resources - capella.ui.resources/icons/full/png/LogicalActor.png
 /icons/full/png/PropertyValueGroup.png - capella.ui.resources - capella.ui.resources/icons/full/png/PropertyValueGroup.png
@@ -238,3 +236,10 @@ These followings icons are made available under the terms of the Eclipse Public 
 /icons/full/png/SystemRealization.png - capella.ui.resources - capella.ui.resources/icons/full/png/SystemRealization.png
 /icons/full/png/TransfoLink.png - capella.ui.resources - capella.ui.resources/icons/full/png/TransfoLink.png
 /icons/full/png/TypeDeploymentLink.png - capella.ui.resources - capella.ui.resources/icons/full/png/TypeDeploymentLink.png
+/icons/full/png/ActorHuman.png - capella.ui.resources - capella.ui.resources/icons/full/png/ActorHuman.png
+/icons/full/png/PhysicalComponentBehavior.png - capella.ui.resources - capella.ui.resources/icons/full/png/PhysicalComponentBehavior.png
+/icons/full/png/PhysicalComponentHumanBehavior.png - capella.ui.resources - capella.ui.resources/icons/full/png/PhysicalComponentHumanBehavior.png
+/icons/full/png/PhysicalComponentHumanNode.png - capella.ui.resources - capella.ui.resources/icons/full/png/PhysicalComponentHumanNode.png
+/icons/full/png/SystemActor.png - capella.ui.resources - capella.ui.resources/icons/full/png/SystemActor.png
+/icons/full/png/PhysicalComponentHumanUnset.png - capella.ui.resources - capella.ui.resources/icons/full/png/PhysicalComponentHumanUnset.png
+/icons/full/png/OperationalActor.png - capella.ui.resources - capella.ui.resources/icons/full/png/OperationalActor.png

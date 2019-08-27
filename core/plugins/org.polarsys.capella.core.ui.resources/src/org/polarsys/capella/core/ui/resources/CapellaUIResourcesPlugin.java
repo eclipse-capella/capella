@@ -15,7 +15,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.osgi.framework.BundleContext;
 import org.polarsys.capella.common.ui.services.AbstractUIActivator;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.fa.ComponentPortKind;
@@ -26,6 +28,8 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.ExchangeMechanism;
 import org.polarsys.capella.core.data.information.communication.CommunicationLink;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkKind;
+import org.polarsys.capella.core.data.la.LogicalComponent;
+import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
@@ -61,6 +65,7 @@ public class CapellaUIResourcesPlugin extends AbstractUIActivator {
 
   /**
    * Returns the shared instance
+   * 
    * @return the shared instance
    */
   public static CapellaUIResourcesPlugin getDefault() {
@@ -70,6 +75,7 @@ public class CapellaUIResourcesPlugin extends AbstractUIActivator {
   /**
    * Get an image for given eclass.<br>
    * Images must be located in 'plug-in folder'/icons
+   * 
    * @param eclass_p
    * @return an {@link ImageDescriptor} or <code>null</code> if not found
    */
@@ -81,6 +87,7 @@ public class CapellaUIResourcesPlugin extends AbstractUIActivator {
   /**
    * Get an image for a given eobject.<br>
    * Images must be located in 'plug-in folder'/icons
+   * 
    * @param eobject_p
    * @return an {@link ImageDescriptor} or <code>null</code> if not found
    */
@@ -92,6 +99,7 @@ public class CapellaUIResourcesPlugin extends AbstractUIActivator {
   /**
    * Get an image for given eclass.<br>
    * Images must be located in 'plug-in folder'/icons
+   * 
    * @param eclass_p
    * @return an {@link ImageDescriptor} or <code>null</code> if not found
    */
@@ -103,6 +111,7 @@ public class CapellaUIResourcesPlugin extends AbstractUIActivator {
   /**
    * Get an image descriptor from its key.<br>
    * URL related to key is first checked.
+   * 
    * @param metaClassImageDescriptorKey_p
    * @return <code>null</code> if no image descriptor is found.
    */
@@ -115,20 +124,17 @@ public class CapellaUIResourcesPlugin extends AbstractUIActivator {
   }
 
   /**
-   * @param eobject_p the element from which an image name will be evaluated
+   * @param eobject
+   *          the element from which an image name will be evaluated
    * @return a calculated image name
    */
-  public String getCustomizedImageName(EObject eobject_p) {
-    String eClassName = eobject_p.eClass().getName();
+  public String getCustomizedImageName(EObject eobject) {
+    String eClassName = eobject.eClass().getName();
 
-    if (eobject_p instanceof PhysicalComponent) {
-      if (PhysicalComponentNature.NODE.equals(((PhysicalComponent) eobject_p).getNature())) {
-        eClassName = "PhysicalComponentNode"; //$NON-NLS-1$
-      }
-    } else if (eobject_p instanceof Part) {
+    if (eobject instanceof Part) {
       eClassName = "Part"; //$NON-NLS-1$
-    } else if (eobject_p instanceof CommunicationLink) {
-      CommunicationLinkKind kind = ((CommunicationLink) eobject_p).getKind();
+    } else if (eobject instanceof CommunicationLink) {
+      CommunicationLinkKind kind = ((CommunicationLink) eobject).getKind();
       if (CommunicationLinkKind.PRODUCE.equals(kind)) {
         eClassName = "CommunicationLinkProduce"; //$NON-NLS-1$
       } else if (CommunicationLinkKind.CONSUME.equals(kind)) {
@@ -150,36 +156,35 @@ public class CapellaUIResourcesPlugin extends AbstractUIActivator {
       } else if (CommunicationLinkKind.TRANSMIT.equals(kind)) {
         eClassName = "CommunicationLinkTransmit"; //$NON-NLS-1$
       }
-    } else if (eobject_p instanceof ExchangeItem) {
-      if (((ExchangeItem) eobject_p).getExchangeMechanism()==ExchangeMechanism.EVENT) {
+    } else if (eobject instanceof ExchangeItem) {
+      if (((ExchangeItem) eobject).getExchangeMechanism() == ExchangeMechanism.EVENT) {
         eClassName = "ExchangeItemEvent"; //$NON-NLS-1$
-      } else if (ExchangeMechanism.FLOW.equals(((ExchangeItem) eobject_p).getExchangeMechanism())) {
+      } else if (ExchangeMechanism.FLOW.equals(((ExchangeItem) eobject).getExchangeMechanism())) {
         eClassName = "ExchangeItemFlow"; //$NON-NLS-1$
-      } else if (ExchangeMechanism.OPERATION.equals(((ExchangeItem) eobject_p).getExchangeMechanism())) {
+      } else if (ExchangeMechanism.OPERATION.equals(((ExchangeItem) eobject).getExchangeMechanism())) {
         eClassName = "ExchangeItemOperation"; //$NON-NLS-1$
-      } else if (ExchangeMechanism.SHARED_DATA.equals(((ExchangeItem) eobject_p).getExchangeMechanism())) { 
+      } else if (ExchangeMechanism.SHARED_DATA.equals(((ExchangeItem) eobject).getExchangeMechanism())) {
         eClassName = "ExchangeItemData"; //$NON-NLS-1$
       }
-    } else if (eobject_p instanceof FunctionalExchange) {
-      if (((FunctionalExchange) eobject_p).getSource() instanceof OperationalActivity
-       && ((FunctionalExchange) eobject_p).getTarget() instanceof OperationalActivity)
-      {
+    } else if (eobject instanceof FunctionalExchange) {
+      if (((FunctionalExchange) eobject).getSource() instanceof OperationalActivity
+          && ((FunctionalExchange) eobject).getTarget() instanceof OperationalActivity) {
         eClassName = "FunctionalExchange_OA"; //$NON-NLS-1$
       }
-    } else if (eobject_p instanceof ComponentPort) {
-      ComponentPortKind kind = ((ComponentPort) eobject_p).getKind();
+    } else if (eobject instanceof ComponentPort) {
+      ComponentPortKind kind = ((ComponentPort) eobject).getKind();
       if (ComponentPortKind.STANDARD.equals(kind)) {
         eClassName = "StandardPort"; //$NON-NLS-1$
       } else if (ComponentPortKind.FLOW.equals(kind)) {
         eClassName = "FlowPort"; //$NON-NLS-1$
-        if (OrientationPortKind.IN.equals(((ComponentPort) eobject_p).getOrientation())) {
+        if (OrientationPortKind.IN.equals(((ComponentPort) eobject).getOrientation())) {
           eClassName = "InFlowPort"; //$NON-NLS-1$
-        } else if (OrientationPortKind.OUT.equals(((ComponentPort) eobject_p).getOrientation())) {
+        } else if (OrientationPortKind.OUT.equals(((ComponentPort) eobject).getOrientation())) {
           eClassName = "OutFlowPort"; //$NON-NLS-1$
         }
       }
-    } else if (eobject_p instanceof AbstractFunction) {
-      FunctionKind kind = ((AbstractFunction) eobject_p).getKind();
+    } else if (eobject instanceof AbstractFunction) {
+      FunctionKind kind = ((AbstractFunction) eobject).getKind();
       if (FunctionKind.DUPLICATE.equals(kind)) {
         eClassName = "FunctionKind_Duplicate"; //$NON-NLS-1$
       } else if (FunctionKind.GATHER.equals(kind)) {
@@ -190,6 +195,53 @@ public class CapellaUIResourcesPlugin extends AbstractUIActivator {
         eClassName = "FunctionKind_Select"; //$NON-NLS-1$
       } else if (FunctionKind.SPLIT.equals(kind)) {
         eClassName = "FunctionKind_Split"; //$NON-NLS-1$
+      }
+    }
+
+    else if (eobject instanceof Component) {
+      Component component = (Component) eobject;
+      if (component.isActor() && component.isHuman()) {
+        eClassName = "ActorHuman";
+
+      } else if (component instanceof Entity && component.isActor() && !component.isHuman()) {
+        eClassName = "OperationalActor";
+
+      } else if (component instanceof SystemComponent && component.isActor() && !component.isHuman()) {
+        eClassName = "SystemActor";
+
+      } else if (component instanceof LogicalComponent) {
+        if (!component.isActor() && component.isHuman()) {
+          eClassName = "LogicalComponentHuman";
+
+        } else if (component.isActor() && !component.isHuman()) {
+          eClassName = "LogicalActor";
+        }
+      } else if (component instanceof PhysicalComponent) {
+
+        if (component.isActor() && !component.isHuman()) {
+          eClassName = "PhysicalActor";
+
+        } else {
+          PhysicalComponentNature nature = ((PhysicalComponent) component).getNature();
+
+          if (nature == PhysicalComponentNature.NODE) {
+            if (component.isHuman()) {
+              eClassName = "PhysicalComponentHumanNode";
+            } else {
+              eClassName = "PhysicalComponentNode";
+            }
+          } else if (nature == PhysicalComponentNature.BEHAVIOR) {
+            if (component.isHuman()) {
+              eClassName = "PhysicalComponentHumanBehavior";
+            } else {
+              eClassName = "PhysicalComponentBehavior";
+            }
+          } else {
+            if (component.isHuman()) {
+              eClassName = "PhysicalComponentHumanUnset";
+            }
+          }
+        }
       }
     }
 

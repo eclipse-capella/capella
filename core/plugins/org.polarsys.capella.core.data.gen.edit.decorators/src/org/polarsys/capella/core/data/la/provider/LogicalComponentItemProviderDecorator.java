@@ -21,6 +21,7 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.polarsys.capella.common.menu.dynamic.util.DynamicCommandParameter;
+import org.polarsys.capella.core.data.capellamodeller.provider.CapellaModellerEditPlugin;
 import org.polarsys.capella.core.data.gen.edit.decorators.ItemProviderAdapterDecorator;
 import org.polarsys.capella.core.data.gen.edit.decorators.Messages;
 import org.polarsys.capella.core.data.la.LaPackage;
@@ -33,6 +34,28 @@ public class LogicalComponentItemProviderDecorator extends ItemProviderAdapterDe
 
   public LogicalComponentItemProviderDecorator(AdapterFactory adapterFactory) {
     super(adapterFactory);
+  }
+
+  @Override
+  public Object getImage(Object object) {
+    LogicalComponent component = (LogicalComponent) object;
+    String imagePath;
+
+    if (component.isActor()) {
+      if (component.isHuman()) {
+        imagePath = "full/obj16/LogicalActorHuman";
+      } else {
+        imagePath = "full/obj16/LogicalActor";
+      }
+    } else {
+      if (component.isHuman()) {
+        imagePath = "full/obj16/LogicalComponentHuman";
+      } else {
+        imagePath = "full/obj16/LogicalComponent";
+      }
+    }
+
+    return overlayImage(object, CapellaModellerEditPlugin.INSTANCE.getImage(imagePath));
   }
 
   @SuppressWarnings("unchecked")

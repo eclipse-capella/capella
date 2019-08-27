@@ -7,26 +7,26 @@
       <dropDescriptions href="#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Capabilities%20From%20Project%20Explorer']"/>
       <dropDescriptions href="#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Actors%20From%20Project%20Explorer']"/>
       <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/ContextArchitecture.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/EPBSArchitecture.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/FunctionalAnalysis.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Interaction.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/LogicalArchitecture.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/OperationalAnalysis.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Requirement.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/SharedModel.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/ContextArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/EPBSArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/FunctionalAnalysis.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Interaction.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/LogicalArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/OperationalAnalysis.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Requirement.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/SharedModel.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.capabilities.filter" label="Hide Capabilities">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='CapNode']"/>
@@ -423,26 +423,26 @@
       <dropDescriptions href="#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Capabilities%20From%20Project%20Explorer']"/>
       <dropDescriptions href="#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Actors%20From%20Project%20Explorer']"/>
       <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/ContextArchitecture.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/EPBSArchitecture.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/FunctionalAnalysis.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Interaction.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/LogicalArchitecture.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/OperationalAnalysis.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Requirement.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/SharedModel.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/ContextArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/EPBSArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/FunctionalAnalysis.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Interaction.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/LogicalArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/OperationalAnalysis.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Requirement.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/SharedModel.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.capabilities.filter" label="Hide Capabilities">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='CapNode2']"/>
@@ -862,16 +862,16 @@
       <dropDescriptions href="#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Capabilities%20From%20Project%20Explorer']"/>
       <dropDescriptions href="#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Actors%20From%20Project%20Explorer']"/>
       <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Interaction.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Interaction.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.capabilities.filter" label="Hide Capabilities">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='Capability3']"/>
@@ -1381,26 +1381,26 @@
       <dropDescriptions href="#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Capabilities%20From%20Project%20Explorer']"/>
       <dropDescriptions href="#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Actors%20From%20Project%20Explorer']"/>
       <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/ContextArchitecture.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/EPBSArchitecture.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/FunctionalAnalysis.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Interaction.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/LogicalArchitecture.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/OperationalAnalysis.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Requirement.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/SharedModel.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/ContextArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/EPBSArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/FunctionalAnalysis.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Interaction.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/LogicalArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/OperationalAnalysis.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Requirement.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/SharedModel.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.capabilities.filter" label="Hide Capabilities">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='CapabilityNode4']"/>
@@ -2073,21 +2073,21 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="System Function Breakdown" titleExpression="aql:'[SFBD] ' + self.name" domainClass="SystemFunction">
       <dropDescriptions href="#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
       <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/LogicalArchitecture.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/FunctionalAnalysis.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Interaction.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Requirement.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/ContextArchitecture.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/LogicalArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/FunctionalAnalysis.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Interaction.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Requirement.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/ContextArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.control.nodes.filter" label="Hide Control Nodes">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" semanticConditionExpression="aql:not (self.isControlNode())"/>
@@ -2385,20 +2385,20 @@
       <dropDescriptions href="#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Function%20From%20Project%20Explorer']"/>
       <dropDescriptions href="#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
       <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/FunctionalAnalysis.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Interaction.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/LogicalArchitecture.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Requirement.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/FunctionalAnalysis.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Interaction.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/LogicalArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Requirement.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="collapse.ports.filter" label="Collapse Ports">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@borderedNodeMappings[name='SDFB_Pin'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@borderedNodeMappings[name='SDFB_InputPin%20by%20Categorie'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@borderedNodeMappings[name='SDFB_OutputPin%20by%20Categorie']"/>
@@ -3173,26 +3173,26 @@
       <dropDescriptions href="#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
       <dropDescriptions href="#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Actors%20From%20Project%20Explorer']"/>
       <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/ContextArchitecture.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/EPBSArchitecture.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/FunctionalAnalysis.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Interaction.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/LogicalArchitecture.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/OperationalAnalysis.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Requirement.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/SharedModel.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/ContextArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/EPBSArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/FunctionalAnalysis.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Interaction.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/LogicalArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/OperationalAnalysis.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Requirement.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/SharedModel.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="collapse.component.ports.filter" label="Collapse Component Ports">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port']"/>
@@ -3655,7 +3655,7 @@
         <reusedMappings xsi:type="description_1:NodeMapping" href="oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
         <toolSections name="Components">
           <ownedTools xsi:type="tool:ToolGroup" name="Actor">
-            <tools xsi:type="tool:ContainerCreationDescription" documentation="Create an Actor and its Part" name="actor" label="Actor" precondition="aql:containerView.getABActorTarget().isValidCreationABActor()" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Actor.gif">
+            <tools xsi:type="tool:ContainerCreationDescription" documentation="Create an Actor and its Part" name="actor" label="Actor" precondition="aql:containerView.getABActorTarget().isValidCreationABActor()" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/SystemActor.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4959,26 +4959,26 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Contextual System Actors" titleExpression="aql:'[CSA] ' + self.name" domainClass="ctx::SystemComponent" preconditionExpression="aql:not self.isActor()">
       <dropDescriptions href="#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
       <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/ContextArchitecture.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/EPBSArchitecture.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/FunctionalAnalysis.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Interaction.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/LogicalArchitecture.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/OperationalAnalysis.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Requirement.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/SharedModel.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/ContextArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/EPBSArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/FunctionalAnalysis.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Interaction.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/LogicalArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/OperationalAnalysis.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Requirement.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/SharedModel.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.property.values.filter" label="Hide Property Values">
         <filters xsi:type="filter:MappingFilter">
@@ -5036,7 +5036,7 @@
         <reusedMappings xsi:type="description_1:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
         <reusedMappings xsi:type="description_1:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
         <toolSections name="Tools">
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="actor" label="Actor" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_Actor']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="actor" label="Actor" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_Actor']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/SystemActor.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>

@@ -310,3 +310,12 @@ These followings icons are made available under the terms of the Eclipse Public 
 /icons/full/obj16/FunctionalChainInvolvementLink.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/FunctionalExchange.gif
 /icons/full/obj16/FunctionalChainReference_OA.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/OperationalProcess.gif
 /icons/full/obj16/SequenceLink.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/OperationAllocation.gif
+/icons/full/obj16/LogicalActorHuman.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/LogicalActorHuman.gif
+/icons/full/obj16/LogicalComponentHuman.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/LogicalComponentHuman.gif
+/icons/full/obj16/PhysicalActorHuman.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/PhysicalActorHuman.gif
+/icons/full/obj16/PhysicalComponentBehavior.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/PhysicalComponentBehavior.gif
+/icons/full/obj16/PhysicalComponentHumanBehavior.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/PhysicalComponentHumanBehavior.gif
+/icons/full/obj16/PhysicalComponentHumanNode.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/PhysicalComponentHumanNode.gif
+/icons/full/obj16/SystemActor.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/SystemActor.gif
+/icons/full/obj16/SystemActorHuman.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/SystemActorHuman.gif
+/icons/full/obj16/PhysicalComponentHumanUnset.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/PhysicalComponentHumanUnset.gif 

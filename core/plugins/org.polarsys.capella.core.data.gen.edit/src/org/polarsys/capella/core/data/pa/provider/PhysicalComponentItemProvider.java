@@ -1663,23 +1663,10 @@ public class PhysicalComponentItemProvider extends AbstractPhysicalArtifactItemP
    * <!-- end-user-doc -->
 	 * @generated
 	 */
-  public Object getImageGen(Object object) {
+	@Override
+  public Object getImage(Object object) {
 		return overlayImage(object, getResourceLocator().getImage("full/obj16/PhysicalComponent")); //$NON-NLS-1$
 	}
-
-  /**
-   * This returns PhysicalComponent.gif.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   */
-  @Override
-  public Object getImage(Object object) {
-    PhysicalComponent pc = (PhysicalComponent) object;
-    if (pc.getNature().equals(PhysicalComponentNature.NODE)) {
-      return overlayImage(object, getResourceLocator().getImage("full/obj16/PhysicalComponentNode")); //$NON-NLS-1$
-    }
-    return overlayImage(object, getResourceLocator().getImage("full/obj16/PhysicalComponent")); //$NON-NLS-1$
-  }
 
 		/**
 	 * This returns the label text for the adapted class.

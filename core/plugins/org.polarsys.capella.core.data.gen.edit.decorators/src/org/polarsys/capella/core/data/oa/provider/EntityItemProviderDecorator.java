@@ -21,6 +21,7 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.polarsys.capella.common.menu.dynamic.util.DynamicCommandParameter;
+import org.polarsys.capella.core.data.capellamodeller.provider.CapellaModellerEditPlugin;
 import org.polarsys.capella.core.data.gen.edit.decorators.ItemProviderAdapterDecorator;
 import org.polarsys.capella.core.data.gen.edit.decorators.Messages;
 import org.polarsys.capella.core.data.oa.Entity;
@@ -32,6 +33,22 @@ public class EntityItemProviderDecorator extends ItemProviderAdapterDecorator im
 
   public EntityItemProviderDecorator(AdapterFactory adapterFactory) {
     super(adapterFactory);
+  }
+
+  @Override
+  public Object getImage(Object object) {
+    Entity entity = (Entity) object;
+    String imagePath = "full/obj16/Entity";
+
+    if (entity.isActor()) {
+      if (entity.isHuman()) {
+        imagePath = "full/obj16/Actor";
+      } else {
+        imagePath = "full/obj16/OperationalActor";
+      }
+    }
+
+    return overlayImage(object, CapellaModellerEditPlugin.INSTANCE.getImage(imagePath));
   }
 
   @SuppressWarnings("unchecked")
