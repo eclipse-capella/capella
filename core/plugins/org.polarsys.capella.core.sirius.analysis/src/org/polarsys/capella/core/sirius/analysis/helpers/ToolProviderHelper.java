@@ -581,6 +581,8 @@ public class ToolProviderHelper {
       return IToolNameConstants.TOOL_CM_CREATE_ACTOR_GENERALIZATION;
     } else if (DDiagramHelper.isMB(diagram_p)) {
       return IToolNameConstants.TOOL_MB_CREATE_ACTOR_GENERALIZATION;
+    } else if (DDiagramHelper.isCSA(diagram_p)) {
+      return IToolNameConstants.TOOL_CSA_CREATE_ACTOR_GENERALIZATION;
     }
     return null;
   }
