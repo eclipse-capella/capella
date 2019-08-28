@@ -26,10 +26,12 @@ import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.ui.RefreshHelper;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 import org.polarsys.capella.core.sirius.analysis.helpers.DDiagramHelper;
 import org.polarsys.capella.core.sirius.analysis.preferences.DiagramPreferenceInitializer;
+import org.polarsys.capella.core.sirius.analysis.tool.ActivityEditorUpdater;
 
 public class SiriusViewActivator extends AbstractUIPlugin {
 
@@ -84,6 +86,7 @@ public class SiriusViewActivator extends AbstractUIPlugin {
       return false;
     };
     RefreshHelper.registerImpactingNotification(considerCollapseStateForAutomaticRefreshPredicate);
+    PlatformUI.getWorkbench().getActivitySupport().getActivityManager().addActivityManagerListener(new ActivityEditorUpdater());
   }
 
   /**

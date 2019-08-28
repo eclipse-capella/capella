@@ -74,7 +74,6 @@
             <!-- locationURI shall be org.eclipse.ui.popup.any?after=group.showIn, but we want ShowInSemanticBrowser right after the ShowInCapellaExplorer -->
          <command
                commandId="org.polarsys.capella.core.ui.semantic.browser.sirius.semanticBrowserSetSelectionCommand"
-               id="org.polarsys.capella.core.ui.semantic.browser.sirius.semanticBrowserSetSelection"
                style="push">
             <visibleWhen
                   checkEnabled="true">
@@ -91,7 +90,6 @@
             locationURI="popup:org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserID?after=additions">
          <command
                commandId="org.polarsys.capella.core.ui.semantic.browser.sirius.openRepresentationCommand"
-               id="org.polarsys.capella.core.ui.semantic.browser.sirius.opendiagram"
                style="push">
             <visibleWhen>
                <reference
@@ -101,7 +99,6 @@
          </command>
          <command
                commandId="org.polarsys.capella.core.ui.semantic.browser.sirius.openRepresentationAndFocusCommand"
-               id="org.polarsys.capella.core.ui.semantic.browser.sirius.opendiagramAndFocus"
                style="push">
             <visibleWhen>
                <reference

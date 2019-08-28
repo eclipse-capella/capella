@@ -85,8 +85,7 @@
             <menu id="org.polarsys.capella.core.data.migration" label="%migrationMenu">
             
             <command
-                  commandId="org.polarsys.capella.core.data.migration.project"
-                  id="org.polarsys.capella.core.data.migration.project">
+                  commandId="org.polarsys.capella.core.data.migration.project">
                <visibleWhen
                      checkEnabled="false">
                      <with
@@ -100,14 +99,12 @@
                </visibleWhen>
             </command>
             <command
-                  commandId="org.polarsys.capella.core.data.migration.model"
-                  id="org.polarsys.capella.core.data.migration.model">
+                  commandId="org.polarsys.capella.core.data.migration.model">
                 <visibleWhen checkEnabled="true">
                 </visibleWhen> 
             </command>
             <command
-                  commandId="org.polarsys.capella.core.data.migration.aird"
-                  id="org.polarsys.capella.core.data.migration.aird">
+                  commandId="org.polarsys.capella.core.data.migration.aird">
                 <visibleWhen checkEnabled="true">
                 </visibleWhen> 
             </command>

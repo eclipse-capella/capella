@@ -56,6 +56,7 @@ public class PlatformTestSuite extends BasicTestSuite {
     tests.add(new CapellaCheckAcceleo2NotUsed());
     tests.add(new PropertiesWizardIconTest());
     tests.add(new ExportCSVPreferencesTest());
+
     return tests;
   }
 

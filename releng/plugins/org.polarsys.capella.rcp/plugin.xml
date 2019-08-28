@@ -30,6 +30,15 @@
          </introProductBinding>
    </extension>
     
+    
+   <extension
+         point="org.eclipse.ui.activitySupport">
+      <triggerPointAdvisorProductBinding
+            productId="org.polarsys.capella.rcp.product"
+            triggerPointAdvisorId="org.polarsys.capella.core.platform.sirius.ui.TriggerPointAdvisor">
+      </triggerPointAdvisorProductBinding>
+   </extension>
+   
    <!--extension point="org.eclipse.ui.splashHandlers">
       <splashHandlerProductBinding
             productId="org.polarsys.capella.rcp.product"

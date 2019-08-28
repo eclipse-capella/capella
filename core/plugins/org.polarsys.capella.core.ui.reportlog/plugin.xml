@@ -52,7 +52,6 @@
          <command
                commandId="org.polarsys.capella.core.ui.reportlog.logcommand"
                icon="icons/add_element.gif"
-               id="logcommand"
                style="push">
          </command>
       	</menuContribution>

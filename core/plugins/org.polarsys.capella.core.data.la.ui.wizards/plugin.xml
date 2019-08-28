@@ -16,7 +16,7 @@
          
               <!-- Logical Component Decomposition -->
               <menuContribution  allPopups="true" locationURI="popup:org.polarsys.capella.core.wizards?after=additions">
-                 <command commandId="org.polarsys.capella.core.platform.sirius.ui.command.LCDecompWizardActionPartOrLogicalComponent" 
+                 <command commandId="org.polarsys.capella.core.platform.sirius.ui.wizard.command.LCDecompWizardActionPartOrLogicalComponent" 
                     style="push" 
                     icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif">  
                     
@@ -58,7 +58,7 @@
            <command
                    categoryId="org.polarsys.capella.core.wizards"
                    defaultHandler="org.polarsys.capella.core.common.ui.wizards.action.LCDecompWizardAction"
-                   id="org.polarsys.capella.core.platform.sirius.ui.command.LCDecompWizardActionPartOrLogicalComponent"
+                   id="org.polarsys.capella.core.platform.sirius.ui.wizard.command.LCDecompWizardActionPartOrLogicalComponent"
                    name="%LogicalComponentDecompositionWizard.action.label">
           </command>
       </extension>

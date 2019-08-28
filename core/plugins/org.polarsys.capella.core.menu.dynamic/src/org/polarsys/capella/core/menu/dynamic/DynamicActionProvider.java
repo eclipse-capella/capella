@@ -19,14 +19,17 @@ import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.activities.IActivityManager;
+import org.eclipse.ui.activities.IIdentifier;
 import org.eclipse.ui.navigator.ICommonMenuConstants;
-
 import org.polarsys.capella.common.menu.dynamic.contributions.ActionContributionProvider;
 import org.polarsys.capella.common.ui.menu.dynamic.AbstractActionProvider;
 
 /**
  */
 public class DynamicActionProvider extends AbstractActionProvider {
+  private static final String ADD_NEW_ELEMENT_MENU_ID = "capella.project.element.menu";
   /**
    * Dynamic creation action.
    */
@@ -47,8 +50,16 @@ public class DynamicActionProvider extends AbstractActionProvider {
   }
 
   protected IContributionItem createContributionItem() {
-    IMenuManager subMenuManager = new MenuManager(Messages.DynamicActionProvider_AddCapellaElement_Title, "Dynamic.Menu.ID"); //$NON-NLS-1$
-    fillContextMenu(subMenuManager, dynamicAction, null);
+    IMenuManager subMenuManager = new MenuManager(Messages.DynamicActionProvider_AddCapellaElement_Title,
+        ADD_NEW_ELEMENT_MENU_ID);
+
+    IActivityManager activityManager = PlatformUI.getWorkbench().getActivitySupport().getActivityManager();
+    IIdentifier identifier = activityManager.getIdentifier(ADD_NEW_ELEMENT_MENU_ID);
+
+    if (identifier.isEnabled()) {
+      fillContextMenu(subMenuManager, dynamicAction, null);
+    }
+
     return subMenuManager;
   }
 
@@ -101,6 +112,7 @@ public class DynamicActionProvider extends AbstractActionProvider {
 
   /**
    * Add given contribution item in specified menu.
+   * 
    * @param menu
    * @param groupId
    * @param item
@@ -116,6 +128,7 @@ public class DynamicActionProvider extends AbstractActionProvider {
 
   /**
    * Add given action in specified menu manager.
+   * 
    * @param menu
    * @param groupId
    * @param action
