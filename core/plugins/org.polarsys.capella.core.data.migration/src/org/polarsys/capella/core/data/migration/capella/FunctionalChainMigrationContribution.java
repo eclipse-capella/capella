@@ -48,6 +48,9 @@ import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
 import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
 
 public class FunctionalChainMigrationContribution extends AbstractMigrationContribution {
+
+  HashSet<MigrationContext> proceedingContexts = new HashSet<MigrationContext>();
+
   // Temporary map of FCI and next FCIs
   Map<FunctionalChainInvolvement, Set<FunctionalChainInvolvement>> fci2NextFcis = new HashMap<>();
   // Map of FCILink and FCIFunction to replace it
@@ -58,8 +61,10 @@ public class FunctionalChainMigrationContribution extends AbstractMigrationContr
       XMLHelper helper, MigrationContext context) {
     // Since the class FunctionalChainInvolvement is now abstract, we temporarily create FunctionalChainInvolvementLink
     // instead
-    if (typeQName.equals("org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"))
+    if (typeQName.equals("org.polarsys.capella.core.data.fa:FunctionalChainInvolvement")) {
+      proceedingContexts.add(context);
       return "org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink";
+    }
     return super.getQName(peekObject, typeQName, feature, resource, helper, context);
   }
 
@@ -67,7 +72,7 @@ public class FunctionalChainMigrationContribution extends AbstractMigrationContr
   public boolean ignoreSetFeatureValue(EObject peekObject, EStructuralFeature feature, Object value, int position,
       XMLResource resource, MigrationContext context) {
     // Since the reference nextFunctionalChainInvolvements is now derived, it should be ignored
-    if (peekObject instanceof FunctionalChainInvolvement
+    if (proceedingContexts.contains(context) && peekObject instanceof FunctionalChainInvolvement
         && feature == FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT__NEXT_FUNCTIONAL_CHAIN_INVOLVEMENTS) {
       Set<FunctionalChainInvolvement> nextFCIs = fci2NextFcis.computeIfAbsent((FunctionalChainInvolvement) peekObject,
           key -> new HashSet<>());
@@ -79,12 +84,14 @@ public class FunctionalChainMigrationContribution extends AbstractMigrationContr
 
   @Override
   public void unaryMigrationExecute(EObject object, MigrationContext context) {
-    if (object instanceof FunctionalChainInvolvementLink) {
-      FunctionalChainInvolvementLink fcil = (FunctionalChainInvolvementLink) object;
-      InvolvedElement involved = fcil.getInvolved();
-      if (involved instanceof AbstractFunction) {
-        FunctionalChainInvolvementFunction fcif = FaFactory.eINSTANCE.createFunctionalChainInvolvementFunction();
-        fciLink2FciFunctions.put(fcil, fcif);
+    if (proceedingContexts.contains(context)) {
+      if (object instanceof FunctionalChainInvolvementLink) {
+        FunctionalChainInvolvementLink fcil = (FunctionalChainInvolvementLink) object;
+        InvolvedElement involved = fcil.getInvolved();
+        if (involved instanceof AbstractFunction) {
+          FunctionalChainInvolvementFunction fcif = FaFactory.eINSTANCE.createFunctionalChainInvolvementFunction();
+          fciLink2FciFunctions.put(fcil, fcif);
+        }
       }
     }
     super.unaryMigrationExecute(object, context);
@@ -93,13 +100,15 @@ public class FunctionalChainMigrationContribution extends AbstractMigrationContr
   @Override
   public void postMigrationExecute(ExecutionManager executionManager, ResourceSet resourceSet,
       MigrationContext context) {
-    // Replace temporary FunctionalChainInvolvementLink by a FunctionalChainInvolvementFunction while keeping its
-    // features
-    fciLink2FciFunctions.forEach(this::replaceFCILinkByFCIFunction);
-    // Update link's source and target
-    updateSourceTarget();
-    // Update hierarchical context for FCILinks
-    updateHierarchicalContext();
+    if (proceedingContexts.contains(context)) {
+      // Replace temporary FunctionalChainInvolvementLink by a FunctionalChainInvolvementFunction while keeping its
+      // features
+      fciLink2FciFunctions.forEach(this::replaceFCILinkByFCIFunction);
+      // Update link's source and target
+      updateSourceTarget();
+      // Update hierarchical context for FCILinks
+      updateHierarchicalContext();
+    }
     super.postMigrationExecute(executionManager, resourceSet, context);
   }
 
@@ -294,6 +303,7 @@ public class FunctionalChainMigrationContribution extends AbstractMigrationContr
   @Override
   public void dispose(MigrationContext context) {
     super.dispose(context);
+    proceedingContexts.clear();
     fci2NextFcis.clear();
     fciLink2FciFunctions.clear();
   }
