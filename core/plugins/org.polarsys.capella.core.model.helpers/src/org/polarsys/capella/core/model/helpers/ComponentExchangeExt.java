@@ -682,7 +682,7 @@ public final class ComponentExchangeExt {
       return getPortAllocations(cExchange, fExchange);
     }
 
-    List<ModelElement> result = new ArrayList<ModelElement>();
+    List<ModelElement> result = new ArrayList<>();
     if (getExchangesFrom(cExchange, fExchange.getSource()).isEmpty()) {
       result.addAll(unsynchronizeAllocations(cExchange.getSource(), fExchange.getSource()));
     }
@@ -707,7 +707,7 @@ public final class ComponentExchangeExt {
    * @param fPort
    */
   private static List<ModelElement> unsynchronizeAllocations(InformationsExchanger cPort, ActivityNode fPort) {
-    List<ModelElement> result = new ArrayList<ModelElement>();
+    List<ModelElement> result = new ArrayList<>();
     PortAllocation allocation = getPortAllocation(cPort, fPort);
     if (null != allocation) {
       result.add(allocation);
@@ -722,7 +722,7 @@ public final class ComponentExchangeExt {
    * @return
    */
   private static List<FunctionalExchange> getExchangesFrom(ComponentExchange cExchange, ActivityNode fPort) {
-    List<FunctionalExchange> result = new ArrayList<FunctionalExchange>();
+    List<FunctionalExchange> result = new ArrayList<>();
     if (null != fPort) {
       for (FunctionalExchange exchange : cExchange.getAllocatedFunctionalExchanges()) {
         ActivityNode nodeSource = exchange.getSource();
@@ -792,5 +792,15 @@ public final class ComponentExchangeExt {
       delegatedComponentExchanges.addAll(PortExt.getDelegatedComponentExchanges((ComponentPort) targetPort));
     }
     return delegatedComponentExchanges;
+  }
+  
+  /**
+   * 
+   * @param connection The ComponentExchange
+   * @return if it's a connection between tow components.
+   */
+  public static boolean isConnectionBetweenTypes(ComponentExchange connection) {
+    return connection.getSourcePart() == null && connection.getTargetPart() == null
+        && connection.getSourcePort() != null && connection.getTargetPort() != null;
   }
 }
