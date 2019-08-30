@@ -15,7 +15,6 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
-import org.polarsys.capella.core.model.preferences.ProtectedElementsPreferences;
 import org.polarsys.capella.core.preferences.Activator;
 
 /**
@@ -26,7 +25,6 @@ public class ExportCSVPreferences extends AbstractPreferencesInitializer impleme
    */
   public ExportCSVPreferences() {
     super(CapellaModelPreferencesPlugin.PLUGIN_ID);
-    new ProtectedElementsPreferences();
   }
 
   /**

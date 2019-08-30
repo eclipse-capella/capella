@@ -13,11 +13,9 @@ package org.polarsys.capella.core.platform.sirius.ui.navigator.preferences;
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.widgets.Group;
-
 import org.polarsys.capella.core.commands.preferences.service.AbstractDefaultPreferencePage;
 import org.polarsys.capella.core.commands.preferences.service.UserProfileModeEnum;
 import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
-import org.polarsys.capella.core.model.preferences.helpers.PreferenceTitleHelper;
 import org.polarsys.capella.core.preferences.Activator;
 
 /**
@@ -65,15 +63,14 @@ public class CapellaNavigatorPreferencePage extends AbstractDefaultPreferencePag
    */
   @Override
   protected void createFieldEditors() {
-    Group treeContentGroup =
-        createGroup(Messages.CapellaNavigatorPreferencePage_ProjectExplorer_Group_Title, Messages.CapellaNavigatorPreferencePage_ProjectExplorer_Group_Message,
-            getFieldEditorParent());
+    Group treeContentGroup = createGroup(Messages.CapellaNavigatorPreferencePage_ProjectExplorer_Group_Title,
+        Messages.CapellaNavigatorPreferencePage_ProjectExplorer_Group_Message, getFieldEditorParent());
     addField(
         new BooleanFieldEditor(ICapellaNavigatorPreferences.PREFERENCE_SHOW_CAPELLA_PROJECT_CONCEPT,
-            new PreferenceTitleHelper().getPreferenceTitle(CapellamodellerPackage.Literals.PROJECT), treeContentGroup), UserProfileModeEnum.Expert,
-        treeContentGroup);
+            CapellamodellerPackage.Literals.PROJECT.getName(), treeContentGroup),
+        UserProfileModeEnum.Expert, treeContentGroup);
 
-	addField(new BooleanFieldEditor(ICapellaNavigatorPreferences.PREFERENCE_PART_EXPLICIT_VIEW,
+    addField(new BooleanFieldEditor(ICapellaNavigatorPreferences.PREFERENCE_PART_EXPLICIT_VIEW,
         Messages.CapellaNavigatorPreferencePage_ProjectExplorer_PartExplicitView, treeContentGroup));
   }
 }

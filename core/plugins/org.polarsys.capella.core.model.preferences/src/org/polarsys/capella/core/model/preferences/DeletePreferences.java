@@ -12,7 +12,6 @@ package org.polarsys.capella.core.model.preferences;
 
 import org.eclipse.core.resources.ProjectScope;
 import org.eclipse.core.runtime.preferences.DefaultScope;
-import org.eclipse.emf.ecore.EClass;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
 
 /**
@@ -24,8 +23,6 @@ public class DeletePreferences extends AbstractPreferencesInitializer implements
    */
   public DeletePreferences() {
     super(CapellaModelPreferencesPlugin.PLUGIN_ID);
-    new ProtectedElementsPreferences();
-
   }
 
   /**
@@ -35,11 +32,13 @@ public class DeletePreferences extends AbstractPreferencesInitializer implements
   public void initializeDefaultPreferences() {
     putBoolean(IDeletePreferences.PREFERENCE_CONFIRM_DELETE, true, DefaultScope.class);
     putBoolean(IDeletePreferences.PREFERENCE_DELETE_PARTS, false, ProjectScope.class);
+    putBoolean(IDeletePreferences.PREFERENCE_DELETE_PROTECTED_ELEMENTS, true, ProjectScope.class);
   }
 
   /**
    * {@inheritDoc}
    */
+  @Override
   public boolean isConfirmationRequired() {
     return getBoolean(IDeletePreferences.PREFERENCE_CONFIRM_DELETE, false);
   }
@@ -47,15 +46,14 @@ public class DeletePreferences extends AbstractPreferencesInitializer implements
   /**
    * {@inheritDoc}
    */
+  @Override
   public boolean isDeletingPartType() {
     return getBoolean(IDeletePreferences.PREFERENCE_DELETE_PARTS, true);
   }
 
-  /**
-   * {@inheritDoc}
-   */
-  public boolean isMetaclassProtected(EClass clazz) {
-    return CapellaModelPreferencesPlugin.getDefault().isMetaclassProtected(clazz);
+  @Override
+  public boolean isDeleteProtectedElements() {
+    return getBoolean(IDeletePreferences.PREFERENCE_DELETE_PROTECTED_ELEMENTS, true);
   }
 
 }

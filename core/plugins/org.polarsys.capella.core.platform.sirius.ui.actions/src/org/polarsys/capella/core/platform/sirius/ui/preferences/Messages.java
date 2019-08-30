@@ -17,12 +17,9 @@ import org.eclipse.osgi.util.NLS;
  */
 public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.core.platform.sirius.ui.preferences.messages"; //$NON-NLS-1$
+  public static String DeletePreferencePage_ConfirmDeleteTitle;
   public static String DeletePreferencePage_DeleteChoice;
-  public static String DeletePreferencePage_DeleteGroup_Message;
-  public static String DeletePreferencePage_DeleteGroup_Title;
-  public static String DeletePreferencePage_DeletePartsChoice;
-  public static String DeletePreferencePage_ProtectedElementsGroup_Title;
-  public static String DeletePreferencePage_ProtectedElementsGroup_Message;
+  public static String DeletePreferencePage_DeletePartsChoiceTitle;
   public static String DeletePreferencePage_Description;
   public static String DeletePreferencePage_Title;
   public static String CapellaPreferencePage_AirdFragmentFileExtension_Title;
@@ -32,7 +29,11 @@ public class Messages extends NLS {
   public static String WizardPreferencePage_Description;
   public static String WizardPreferencePage_Title;
   public static String ModelValidationPreferencePage_Description;
-  public static String ModelValidationPreferencePage_DeletePreviousResults_Title;  
+  public static String ModelValidationPreferencePage_DeletePreviousResults_Title;
+  public static String DeletePreferencePage_ProtectedElements_Title;
+
+  public static String DeletePreferencePage_MultipartGroup_Title;
+  public static String DeletePreferencePage_MultipartGroup_Description;
 
   static {
     // initialize resource bundle
