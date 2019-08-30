@@ -74,18 +74,26 @@ public class DragDropTest extends NavigatorEmptyProject {
    * It doesn't check basic EMF rules
    */
   void checkMoveAllowed(EObject current, EObject newTarget) {
-    assertTrue(MoveHelper.getInstance().checkSemanticRules(Arrays.asList(current), newTarget).isOK());
+    checkMoveAllowed(current, newTarget, "");
   }
 
+  void checkMoveAllowed(EObject current, EObject newTarget, String rule) {
+    assertTrue("Move shall be allowed: "+rule, MoveHelper.getInstance().checkSemanticRules(Arrays.asList(current), newTarget).isOK());
+  }
+  
   /**
    * Check customized semantic rules are disabling the drop of current element in the given newTarget
    * 
    * It doesn't check basic EMF rules
    */
   void checkMoveDisabled(EObject current, EObject newTarget) {
-    assertTrue(!MoveHelper.getInstance().checkSemanticRules(Arrays.asList(current), newTarget).isOK());
+    checkMoveDisabled(current, newTarget, "");
   }
 
+  void checkMoveDisabled(EObject current, EObject newTarget, String rule) {
+    assertTrue("Move shall be disabled: "+rule, !MoveHelper.getInstance().checkSemanticRules(Arrays.asList(current), newTarget).isOK());
+  }
+  
   @Override
   public void test() throws Exception {
 
@@ -105,83 +113,88 @@ public class DragDropTest extends NavigatorEmptyProject {
     EObject logicalFunction = createFunction(ROOT_LOGICAL_FUNCTION);
     EObject logicalFunctionPkg = createFunctionPkg(ROOT_LOGICAL_FUNCTION);
 
-    checkMoveDisabled(systemFunction, SA_SYSTEM_FUNCTIONS);
-    checkMoveDisabled(systemFunction, LA_LOGICAL_FUNCTIONS);
+    checkMoveDisabled(systemFunction, SA_SYSTEM_FUNCTIONS, "Root function Pkg must have only one function");
+    checkMoveDisabled(systemFunction, LA_LOGICAL_FUNCTIONS, "Root function Pkg must have only one function");
     checkMoveAllowed(systemFunction, systemFunctionPkg);
-    checkMoveDisabled(systemFunction, logicalFunctionPkg);
-    checkMoveDisabled(systemFunction, logicalFunction);
+    checkMoveDisabled(systemFunction, logicalFunctionPkg, "Functions can't be moved to different architecture");
+    checkMoveDisabled(systemFunction, logicalFunction, "Functions can't be moved to different architecture");
     checkMoveAllowed(systemFunction, systemFunction2);
 
     // Check function pkg
     checkMoveAllowed(systemFunctionPkg, systemFunctionPkg2);
-    checkMoveDisabled(systemFunctionPkg, logicalFunctionPkg);
-    checkMoveDisabled(systemFunctionPkg, EPBS_ARCHITECTURE);
+    checkMoveDisabled(systemFunctionPkg, logicalFunctionPkg, "Functions can't be moved to different architecture");
+    checkMoveDisabled(systemFunctionPkg, EPBS_ARCHITECTURE, "Functions can't be moved to different architecture");
 
     // Check root components
-    checkMoveDisabled(SYSTEM, logicalFunctionPkg);
-    checkMoveDisabled(LOGICAL_SYSTEM, logicalFunctionPkg);
-    checkMoveDisabled(PHYSICAL_SYSTEM, logicalFunctionPkg);
+    checkMoveDisabled(SYSTEM, logicalFunctionPkg, "Components can't be moved into Function Pkgs");
+    checkMoveDisabled(LOGICAL_SYSTEM, logicalFunctionPkg, "Components can't be moved into Function Pkgs");
+    checkMoveDisabled(PHYSICAL_SYSTEM, logicalFunctionPkg, "Components can't be moved into Function Pkgs");
 
     // Check functional chain
     EObject chain = createFunctionalChain(ROOT_SYSTEM_FUNCTION);
     createFunctionalChainFunction(chain, systemFunction2);
     EObject capability = createCapability(SA_CAPABILITIES);
     EObject logicalCapability = createCapability(LA_CAPABILITIES);
-    checkMoveDisabled(chain, LA_LOGICAL_FUNCTIONS);
-    checkCopyDisabled(chain, LA_LOGICAL_FUNCTIONS);
-    checkCopyEnabled(chain, capability);
-    checkMoveAllowed(chain, capability);
-    checkMoveAllowed(chain, systemFunction2);
-    checkMoveDisabled(chain, logicalCapability);
+    checkMoveDisabled(chain, LA_LOGICAL_FUNCTIONS, "Chains can't be moved to different architecture");
+    checkCopyDisabled(chain, LA_LOGICAL_FUNCTIONS, "Chains can't be moved to different architecture");
+    checkCopyEnabled(chain, capability, "Chains can be moved to capability of same architecture");
+    checkMoveAllowed(chain, capability, "Chains can be moved to capability of same architecture");
+    checkMoveAllowed(chain, systemFunction2, "Chains can be moved to funcitons of same architecture");
+    checkMoveDisabled(chain, logicalCapability, "Chains can't be moved to capability of different architecture");
 
     // Check chain involvements
     EObject chain2 = createFunctionalChain(ROOT_SYSTEM_FUNCTION);
-    checkMoveDisabled(createFunctionalChainLink(chain), chain2);
-    checkMoveDisabled(createFunctionalChainFunction(chain, systemFunction2), chain2);
-    checkMoveDisabled(createFunctionalChainReference(chain), chain2);
+    checkMoveDisabled(createFunctionalChainLink(chain), chain2, "Involvments can't be moved");
+    checkMoveDisabled(createFunctionalChainFunction(chain, systemFunction2), chain2, "Involvments can't be moved");
+    checkMoveDisabled(createFunctionalChainReference(chain), chain2, "Involvments can't be moved");
 
     // Check interface pkg
-    checkMoveDisabled(LA_INTERFACES, EPBS_ARCHITECTURE);
+    checkMoveDisabled(LA_INTERFACES, EPBS_ARCHITECTURE, "InterfacePkg can't be moved into EPBS");
 
     // Check components and pkgs
     EObject logicalComponent = createComponent(LOGICAL_SYSTEM);
+    EObject logicalActor = createActor(LOGICAL_SYSTEM);
     EObject physicalComponent = createComponent(PHYSICAL_SYSTEM);
     EObject logicalComponent2 = createComponent(LOGICAL_SYSTEM);
     EObject physicalComponent2 = createComponent(PHYSICAL_SYSTEM);
     EObject logicalComponentPkg = createComponentPkg(LOGICAL_SYSTEM);
     EObject physicalComponentPkg = createComponentPkg(PHYSICAL_SYSTEM);
 
-    checkMoveDisabled(logicalComponent, SYSTEM);
-    checkMoveDisabled(logicalComponent, PHYSICAL_SYSTEM);
-    checkMoveAllowed(logicalComponent, logicalComponent2);
-    checkMoveDisabled(logicalComponent, physicalComponent2);
-    checkMoveAllowed(physicalComponent, physicalComponent2);
-    checkMoveAllowed(logicalComponent, logicalComponentPkg);
+    checkMoveAllowed(logicalComponent, logicalComponent2, "LC can be moved into LC");
+    checkMoveAllowed(physicalComponent, physicalComponent2, "PC can be moved into PC");
+    checkMoveAllowed(logicalComponent, logicalComponentPkg, "LC can be moved into LC packages");
+    
+    checkMoveDisabled(logicalComponent, SYSTEM, "LC can't be moved into SA");
+    checkMoveDisabled(logicalComponent, PHYSICAL_SYSTEM, "LC can't be moved into PA");
+    checkMoveDisabled(logicalComponent, physicalComponent2, "LC can't be moved into PC");
 
     checkMoveDisabled(logicalComponentPkg, LOGICAL_ARCHITECTURE);
     checkMoveDisabled(physicalComponentPkg, PHYSICAL_ARCHITECTURE);
-
+    
+    checkMoveDisabled(logicalComponent, LA_STRUCTURE, "Structure can have only one System");
+    checkMoveAllowed(logicalActor, LA_STRUCTURE, "Structure can contains actors");
+    
     // Check Capability Pkgs
     checkMoveAllowed(OA_OPERATIONAL_CAPABILITIES, OPERATIONAL_ANALYSIS);
-    checkMoveDisabled(OA_OPERATIONAL_CAPABILITIES, SYSTEM_ANALYSIS);
+    checkMoveDisabled(OA_OPERATIONAL_CAPABILITIES, SYSTEM_ANALYSIS, "Capabilities can't be moved to different architecture");
 
     checkMoveAllowed(SA_CAPABILITIES, SYSTEM_ANALYSIS);
     checkMoveAllowed(SA_CAPABILITIES, SYSTEM);
-    checkMoveDisabled(SA_CAPABILITIES, OPERATIONAL_ANALYSIS);
-    checkMoveDisabled(SA_CAPABILITIES, LOGICAL_ARCHITECTURE);
+    checkMoveDisabled(SA_CAPABILITIES, OPERATIONAL_ANALYSIS, "Capabilities can't be moved to different architecture");
+    checkMoveDisabled(SA_CAPABILITIES, LOGICAL_ARCHITECTURE, "Capabilities can't be moved to different architecture");
 
-    checkMoveDisabled(LA_CAPABILITIES, SYSTEM_ANALYSIS);
-    checkMoveAllowed(LA_CAPABILITIES, LOGICAL_SYSTEM);
-    checkMoveAllowed(LA_CAPABILITIES, LOGICAL_ARCHITECTURE);
-    checkMoveAllowed(LA_CAPABILITIES, PHYSICAL_ARCHITECTURE);
-    checkMoveAllowed(LA_CAPABILITIES, EPBS_ARCHITECTURE);
+    checkMoveDisabled(LA_CAPABILITIES, SYSTEM_ANALYSIS, "Capabilities can't be moved to upper architecture");
+    checkMoveAllowed(LA_CAPABILITIES, LOGICAL_SYSTEM, "CapabilityRealizations can be moved to next architectures");
+    checkMoveAllowed(LA_CAPABILITIES, LOGICAL_ARCHITECTURE, "CapabilityRealizations can be moved to next architectures");
+    checkMoveAllowed(LA_CAPABILITIES, PHYSICAL_ARCHITECTURE, "CapabilityRealizations can be moved to next architectures");
+    checkMoveAllowed(LA_CAPABILITIES, EPBS_ARCHITECTURE, "CapabilityRealizations can be moved to next architectures");
 
     // Check capabilities can be moved on Components (for refinement purposes)
-    checkMoveDisabled(capability, OA_OPERATIONAL_CAPABILITIES);
-    checkMoveDisabled(capability, PA_CAPABILITIES);
-    checkMoveAllowed(logicalCapability, PA_CAPABILITIES);
+    checkMoveDisabled(capability, OA_OPERATIONAL_CAPABILITIES, "Capabilities can't be moved to different architecture");
+    checkMoveDisabled(capability, PA_CAPABILITIES, "Capabilities can't be moved to different architecture");
+    checkMoveAllowed(logicalCapability, PA_CAPABILITIES, "CapabilityRealizations can be moved to next architectures");
     EObject capabilityPkg = createCapabilityPkg(LOGICAL_SYSTEM);
-    checkMoveDisabled(capability, capabilityPkg);
+    checkMoveDisabled(capability, capabilityPkg, "Capabilities can't be moved to different architecture");
     checkMoveAllowed(logicalCapability, capabilityPkg);
 
     // Check Enumeration Literals
@@ -191,19 +204,19 @@ public class DragDropTest extends NavigatorEmptyProject {
     BooleanType bool2 = createBoolean(SA_DATA);
     EnumerationLiteral enumLiteral = createEnumerationLiteral(enum1);
     LiteralBooleanValue boolLiteral = createBooleanLiteral(bool1);
-    checkMoveAllowed(enumLiteral, enum2);
-    checkMoveDisabled(enumLiteral, bool1);
+    checkMoveAllowed(enumLiteral, enum2, "Literals of Enum can be moved to another Enum");
+    checkMoveDisabled(enumLiteral, bool1, "Literals of Enum can't be moved to Boolean Type");
 
     // Check Boolean Literals
-    checkMoveAllowed(boolLiteral, bool2);
-    checkMoveDisabled(boolLiteral, enum1);
+    checkMoveAllowed(boolLiteral, bool2, "Literals of Boolean can be moved to another Boolean");
+    checkMoveDisabled(boolLiteral, enum1, "Literals of Boolean can't be moved to Enum");
 
   }
 
-  private void checkCopyDisabled(EObject current, EObject newTarget) {
+  private void checkCopyDisabled(EObject current, EObject newTarget, String rule) {
     try {
       GuiActions.copyElement(" ", current);
-      assertTrue(!GuiActions.canPasteElement(" ", newTarget));
+      assertTrue("Copy shall be disabled: "+rule, !GuiActions.canPasteElement(" ", newTarget));
       
       System.out.println();
     } catch (Exception e) {
@@ -211,10 +224,10 @@ public class DragDropTest extends NavigatorEmptyProject {
     }
   }
 
-  private void checkCopyEnabled(EObject current, EObject newTarget) {
+  private void checkCopyEnabled(EObject current, EObject newTarget, String rule) {
     try {
       GuiActions.copyElement(" ", current);
-      assertTrue(GuiActions.canPasteElement(" ", newTarget));
+      assertTrue("Copy shall be disabled: "+rule, GuiActions.canPasteElement(" ", newTarget));
       
       System.out.println();
     } catch (Exception e) {
