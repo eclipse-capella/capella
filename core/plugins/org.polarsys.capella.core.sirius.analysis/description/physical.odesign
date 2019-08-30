@@ -1483,6 +1483,14 @@
             <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']"/>
             <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </style>
+          <conditionnalStyles predicateExpression="aql:(self = container) and (self.actor = true)">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']"/>
+              <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
+            </style>
+          </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self = container) and (self.nature = pa::PhysicalComponentNature::NODE)">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Border']"/>
@@ -1491,12 +1499,35 @@
               <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']"/>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:(self = container) and (self.nature != pa::PhysicalComponentNature::NODE)">
+          <conditionnalStyles predicateExpression="aql:(self = container) and (self.nature = pa::PhysicalComponentNature::BEHAVIOR)">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']"/>
               <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']"/>
               <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:(self = container)">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Border']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Label']"/>
+              <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:(self.actor = true) and (self.abstract = false)">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']"/>
+              <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']"/>
+              <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:(self.actor = true) and (self.abstract = true)">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']"/>
+              <labelFormat>italic</labelFormat>
+              <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']"/>
+              <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self.nature = pa::PhysicalComponentNature::NODE) and (self.abstract = false)">
@@ -1514,12 +1545,34 @@
               <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']"/>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:(self.abstract = true) and (self.nature != pa::PhysicalComponentNature::NODE)">
+          <conditionnalStyles predicateExpression="aql:(self.nature = pa::PhysicalComponentNature::BEHAVIOR) and (self.abstract = false)">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']"/>
+              <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']"/>
+              <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:(self.nature = pa::PhysicalComponentNature::BEHAVIOR) and (self.abstract = true)">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']"/>
               <labelFormat>italic</labelFormat>
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']"/>
               <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:(self.abstract = false)">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Border']"/>
+              <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Label']"/>
+              <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:(self.abstract = true)">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Border']"/>
+              <labelFormat>italic</labelFormat>
+              <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Label']"/>
+              <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray']"/>
             </style>
           </conditionnalStyles>
         </nodeMappings>
@@ -2315,10 +2368,10 @@
             </style>
           </borderedNodeMappings>
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql:self.computePartLabel()" backgroundStyle="GradientTopToBottom">
-            <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Border']"/>
-            <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Label']"/>
-            <backgroundColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_min']"/>
-            <foregroundColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']"/>
+            <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Border']"/>
+            <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Label']"/>
+            <backgroundColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_min']"/>
+            <foregroundColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray']"/>
           </style>
           <conditionnalStyles predicateExpression="aql:(self.getComponentType()->filter(cs::Component)->select(c | c.isActor())->size() > 0)">
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql:self.computePartLabel()" backgroundStyle="GradientTopToBottom">
@@ -2334,6 +2387,14 @@
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']"/>
               <backgroundColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']"/>
               <foregroundColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:(self.getComponentType().nature = pa::PhysicalComponentNature::NODE)">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql:self.computePartLabel()" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Border']"/>
+              <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Label']"/>
+              <backgroundColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_min']"/>
+              <foregroundColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']"/>
             </style>
           </conditionnalStyles>
         </containerMappings>
@@ -4388,7 +4449,7 @@
             <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction']/@conditionnalStyles.5/@style //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction']/@style" attributeName="borderLineStyle" value="dash"/>
           </vsmElementCustomizations>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.getComponentType().abstract = true">
-            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@conditionnalStyles.0/@style //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@conditionnalStyles.1/@style //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@style" attributeName="labelFormat" value="italic"/>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@conditionnalStyles.0/@style //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@conditionnalStyles.1/@style //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@conditionnalStyles.2/@style //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@style" attributeName="labelFormat" value="italic"/>
           </vsmElementCustomizations>
         </customization>
       </defaultLayer>

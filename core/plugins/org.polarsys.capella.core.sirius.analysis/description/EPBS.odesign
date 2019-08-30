@@ -145,24 +145,24 @@
       <dropDescriptions href="#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20CI']"/>
       <dropDescriptions href="#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
       <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/ContextArchitecture.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore#//deployment"/>
-      <metamodel href="../../../plugin/org.polarsys.kitalpha.emde/model/eMDE.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/EPBSArchitecture.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/FunctionalAnalysis.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Interaction.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/LogicalArchitecture.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/ContextArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore#//deployment"/>
+      <metamodel href="platform:/plugin/org.polarsys.kitalpha.emde/model/eMDE.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/EPBSArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/FunctionalAnalysis.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Interaction.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/LogicalArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.physical.artifacts.filter" label="Hide Physical Artifacts">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalComponentInCI%20mapping'] //@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalLinkInCI%20mapping'] //@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalPortInCI%20mapping']"/>
@@ -183,15 +183,22 @@
           <detailDescriptions xsi:type="description_1:TableCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Delegations']/@ownedRepresentationCreationDescriptions[name='Interface%20delegations']"/>
           <subNodeMappings name="PhysicalComponentInCI mapping" deletionDescription="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20PC%20allocation%20in%20CI']" labelDirectEdit="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20CI']" semanticCandidatesExpression="aql:self.type.outgoingTraces->filter(epbs::PhysicalArtifactRealization).targetElement->select(x | x->filter(pa::PhysicalComponent)->size() > 0)" domainClass="PhysicalComponent">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:self.computeComponentLabel()" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
-              <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']"/>
-              <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']"/>
-              <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
+              <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Border']"/>
+              <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Label']"/>
+              <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray']"/>
             </style>
             <conditionnalStyles predicateExpression="aql:self.nature = pa::PhysicalComponentNature::NODE">
               <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:self.computeComponentLabel()" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Border']"/>
                 <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Label']"/>
                 <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="aql:self.nature = pa::PhysicalComponentNature::BEHAVIOR">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:self.computeComponentLabel()" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']"/>
+                <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']"/>
+                <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
               </style>
             </conditionnalStyles>
           </subNodeMappings>
@@ -629,24 +636,24 @@
     <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Configuration Items Breakdown" titleExpression="aql:'[CIBD] ' + self.name" domainClass="ConfigurationItem">
       <dropDescriptions href="#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
       <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/ContextArchitecture.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore#//deployment"/>
-      <metamodel href="../../../plugin/org.polarsys.kitalpha.emde/model/eMDE.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/EPBSArchitecture.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/FunctionalAnalysis.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/Interaction.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/LogicalArchitecture.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>
-      <metamodel href="../../../plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/ContextArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore#//deployment"/>
+      <metamodel href="platform:/plugin/org.polarsys.kitalpha.emde/model/eMDE.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/EPBSArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/FunctionalAnalysis.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Interaction.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/LogicalArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.property.values.filter" label="Hide Property Values">
         <filters xsi:type="filter:MappingFilter">

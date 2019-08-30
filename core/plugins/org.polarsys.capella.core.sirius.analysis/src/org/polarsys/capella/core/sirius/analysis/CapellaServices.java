@@ -2465,7 +2465,18 @@ public class CapellaServices {
   /**
    * used in common.odesign
    */
+  public boolean isBehaviorComponent(final InstanceRole instanceRole) {
+    return isComponentNature(instanceRole, PhysicalComponentNature.BEHAVIOR);
+  }
+
+  /**
+   * used in common.odesign
+   */
   public boolean isNodeComponent(final InstanceRole instanceRole) {
+    return isComponentNature(instanceRole, PhysicalComponentNature.NODE);
+  }
+
+  private boolean isComponentNature(final InstanceRole instanceRole, PhysicalComponentNature nature) {
     BlockArchitecture ownerBlockArchitecture = (BlockArchitecture) getAncestor(instanceRole,
         CsPackage.Literals.BLOCK_ARCHITECTURE);
     boolean isNodeComponent = (ownerBlockArchitecture instanceof PhysicalArchitecture);
@@ -2473,7 +2484,7 @@ public class CapellaServices {
         : (Component) instanceRole.getRepresentedInstance().getAbstractType();
     if (instanceRoleComponent instanceof PhysicalComponent) {
       PhysicalComponent sourcePhysicalComponent = (PhysicalComponent) instanceRoleComponent;
-      isNodeComponent = isNodeComponent && sourcePhysicalComponent.getNature().equals(PhysicalComponentNature.NODE);
+      isNodeComponent = isNodeComponent && sourcePhysicalComponent.getNature().equals(nature);
     }
 
     return isNodeComponent;

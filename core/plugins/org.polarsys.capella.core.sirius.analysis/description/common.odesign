@@ -5462,6 +5462,15 @@
           <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'Entity') and (self.isAbstract() = true)">
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_border']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray']"/>
           </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:(self->filter(cs::Component)->select(c | c.isActor())->size() > 0) and (self = container)">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:(self->filter(cs::Component)->select(c | c.isActor())->size() > 0) and (self.isAbstract() = false)">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:(self->filter(cs::Component)->select(c | c.isActor())->size() > 0) and (self.isAbstract() = true)">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
+          </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'LogicalComponent') and (self = container)">
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
@@ -5470,15 +5479,6 @@
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'LogicalComponent') and (self.isAbstract() = true)">
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:(self->filter(cs::Component)->filter(c | c.isActor())->size() > 0) and (self = container)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:(self->filter(cs::Component)->filter(c | c.isActor())->size() > 0) and (self.isAbstract() = false)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:(self->filter(cs::Component)->filter(c | c.isActor())->size() > 0) and (self.isAbstract() = true)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self->filter(epbs::ConfigurationItem)->size() > 0) and (self = container)">
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="service:capellaLabelService(view, diagram)" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ConfigurationItem_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ConfigurationItem_Gray']">
@@ -5525,13 +5525,13 @@
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self = container)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Border']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.isAbstract() = false)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Border']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.isAbstract() = true)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Border']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray']"/>
           </conditionnalStyles>
         </containerMappings>
         <containerMappings name="CCDI_ExchangeItem" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" createElements="false" domainClass="ExchangeItem" childrenPresentation="List">
@@ -6996,19 +6996,6 @@
               <labelFormat>italic</labelFormat>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'LogicalComponent') and (self = container)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>bold</labelFormat>
-            </style>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'LogicalComponent') and (self.isAbstract() = false)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'LogicalComponent') and (self.isAbstract() = true)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>italic</labelFormat>
-            </style>
-          </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self->filter(cs::Component)->select(c | c.isActor())->size() > 0) and (self = container)">
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']">
               <labelFormat>bold</labelFormat>
@@ -7019,6 +7006,19 @@
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self->filter(cs::Component)->select(c | c.isActor())->size() > 0) and (self.isAbstract() = true)">
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']">
+              <labelFormat>italic</labelFormat>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'LogicalComponent') and (self = container)">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
+              <labelFormat>bold</labelFormat>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'LogicalComponent') and (self.isAbstract() = false)">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'LogicalComponent') and (self.isAbstract() = true)">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
               <labelFormat>italic</labelFormat>
             </style>
           </conditionnalStyles>
@@ -7069,15 +7069,15 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self = container)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Border']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray']">
               <labelFormat>bold</labelFormat>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.isAbstract() = false)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Border']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.isAbstract() = true)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Border']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray']">
               <labelFormat>italic</labelFormat>
             </style>
           </conditionnalStyles>
@@ -8520,6 +8520,19 @@
               <labelFormat>italic</labelFormat>
             </style>
           </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:(self->filter(cs::Component)->select(c | c.isActor())->size() > 0) and (self = container)">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']">
+              <labelFormat>bold</labelFormat>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:(self->filter(cs::Component)->select(c | c.isActor())->size() > 0) and (self.isAbstract() = false)">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:(self->filter(cs::Component)->select(c | c.isActor())->size() > 0) and (self.isAbstract() = true)">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']">
+              <labelFormat>italic</labelFormat>
+            </style>
+          </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'LogicalComponent') and (self = container)">
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
               <labelFormat>bold</labelFormat>
@@ -8530,19 +8543,6 @@
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'LogicalComponent') and (self.isAbstract() = true)">
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>italic</labelFormat>
-            </style>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:(self->filter(cs::Component)->filter(c | c.isActor())->size() > 0) and (self = container)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']">
-              <labelFormat>bold</labelFormat>
-            </style>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:(self->filter(cs::Component)->filter(c | c.isActor())->size() > 0) and (self.isAbstract() = false)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:(self->filter(cs::Component)->filter(c | c.isActor())->size() > 0) and (self.isAbstract() = true)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']">
               <labelFormat>italic</labelFormat>
             </style>
           </conditionnalStyles>
@@ -8593,15 +8593,15 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self = container)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Border']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray']">
               <labelFormat>bold</labelFormat>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.isAbstract() = false)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Border']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.isAbstract() = true)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Border']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray']">
               <labelFormat>italic</labelFormat>
             </style>
           </conditionnalStyles>
@@ -10097,6 +10097,19 @@
               <labelFormat>italic</labelFormat>
             </style>
           </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:(self->filter(cs::Component)->select(c | c.isActor())->size() > 0) and (self = container)">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']">
+              <labelFormat>bold</labelFormat>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:(self->filter(cs::Component)->select(c | c.isActor())->size() > 0) and (self.isAbstract() = false)">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:(self->filter(cs::Component)->select(c | c.isActor())->size() > 0) and (self.isAbstract() = true)">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']">
+              <labelFormat>italic</labelFormat>
+            </style>
+          </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'LogicalComponent') and (self = container)">
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="service:capellaLabelService(view, diagram)" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -10111,19 +10124,6 @@
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'LogicalComponent') and (self.isAbstract() = true)">
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>italic</labelFormat>
-            </style>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:(self->filter(cs::Component)->select(c | c.isActor())->size() > 0) and (self = container)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']">
-              <labelFormat>bold</labelFormat>
-            </style>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:(self->filter(cs::Component)->select(c | c.isActor())->size() > 0) and (self.isAbstract() = false)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:(self->filter(cs::Component)->select(c | c.isActor())->size() > 0) and (self.isAbstract() = true)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']">
               <labelFormat>italic</labelFormat>
             </style>
           </conditionnalStyles>
@@ -10174,19 +10174,15 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self = container)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="service:capellaLabelService(view, diagram)" backgroundStyle="GradientTopToBottom">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Border']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray']">
               <labelFormat>bold</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.isAbstract() = false)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Border']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.isAbstract() = true)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Border']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray']">
               <labelFormat>italic</labelFormat>
             </style>
           </conditionnalStyles>
@@ -11985,26 +11981,68 @@
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20Internal%20Interfaces']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Interfaces%20Diagram%20Blank']"/>
           <detailDescriptions xsi:type="description_3:TableCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Delegations']/@ownedRepresentationCreationDescriptions[name='Interface%20delegations']"/>
-          <conditionnalStyles predicateExpression="aql:(self->filter(cs::Component)->select(c | c.isActor())->size() > 0)">
+          <conditionnalStyles predicateExpression="aql:(self->filter(cs::Component)->select(c | c.isActor() and c.human = true)->size() > 0)">
             <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'LogicalComponent')">
-            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/LogicalComponent.png">
+          <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'LogicalComponent') and (self.isActor())">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/LogicalActor.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.nature = pa::PhysicalComponentNature::NODE)">
-            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalComponentNodeBig.png">
+          <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'LogicalComponent') and (self.human = false)">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/LogicalComponent.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.nature = pa::PhysicalComponentNature::BEHAVIOR)">
-            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalComponent.png">
+          <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'LogicalComponent') and (self.human = true)">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/LogicalComponentHuman.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.isActor())">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/PhysicalActor.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.nature = pa::PhysicalComponentNature::NODE) and (self.human = false)">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/PhysicalComponentNode.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.nature = pa::PhysicalComponentNature::NODE) and (self.human = true)">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/PhysicalComponentHumanNode.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.nature = pa::PhysicalComponentNature::BEHAVIOR) and (self.human = false)">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/PhysicalComponentBehavior.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.nature = pa::PhysicalComponentNature::BEHAVIOR) and (self.human = true)">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/PhysicalComponentHumanBehavior.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.human = false)">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/PhysicalComponent.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.human = true)">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/PhysicalComponentHumanUnset.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
@@ -12469,15 +12507,15 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self = container)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Border']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray']">
               <labelFormat>bold</labelFormat>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.isAbstract() = false)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Border']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.isAbstract() = true)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Border']" labelExpression="service:capellaLabelService(view, diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Label']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray']">
               <labelFormat>italic</labelFormat>
             </style>
           </conditionnalStyles>
@@ -13794,14 +13832,14 @@
           <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(cs::Component)->select(c | c.isActor())->size() > 0">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelExpression="aql:self.getInstanceRoleLabel()" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" labelPosition="node" resizeKind="EAST_WEST" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
           </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(cs::Component)->size() > 0 and self.isBehaviorComponent()">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="aql:self.getInstanceRoleLabel()" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
+          </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(cs::Component)->size() > 0 and self.isNodeComponent()">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Border']" labelExpression="aql:self.getInstanceRoleLabel()" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Label']" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']"/>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(cs::Component)->size() > 0 and not (self.isInternalLCForInstanceRole())">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="aql:self.getInstanceRoleLabel()" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(cs::Component)->size() > 0 and self.isInternalLCForInstanceRole()">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="aql:self.getInstanceRoleLabel()" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
+          <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(cs::Component)->size() > 0">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Border']" labelExpression="aql:self.getInstanceRoleLabel()" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Label']" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray']"/>
           </conditionnalStyles>
         </nodeMappings>
         <nodeMappings xsi:type="description_2:InstanceRoleMapping" name="hideSequenceLabel" semanticCandidatesExpression="ocl:Set {}" domainClass="EObject"/>
@@ -15913,16 +15951,19 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
-          <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(cs::Component)->size() > 0 and self.isNodeComponent()">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Border']" labelExpression="aql:self.getInstanceRoleLabel()" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Label']" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']"/>
-          </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(cs::Component)->select(c | c.isActor())->size() > 0">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelExpression="aql:self.getInstanceRoleLabel()" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" labelPosition="node" resizeKind="EAST_WEST" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(cs::Component)->size() > 0 and not (self.isInternalLCForInstanceRole())">
+          <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(cs::PhysicalComponent)->size() > 0 and self.isBehaviorComponent()">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="aql:self.getInstanceRoleLabel()" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(cs::Component)->size() > 0 and self.isInternalLCForInstanceRole()">
+          <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(cs::PhysicalComponent)->size() > 0 and self.isNodeComponent()">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Border']" labelExpression="aql:self.getInstanceRoleLabel()" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Label']" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']"/>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(cs::PhysicalComponent)->size() > 0">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Border']" labelExpression="aql:self.getInstanceRoleLabel()" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Label']" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray']"/>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(cs::Component)->size() > 0">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="aql:self.getInstanceRoleLabel()" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
         </nodeMappings>
@@ -20049,5 +20090,9 @@
     <entries xsi:type="description:UserFixedColor" red="234" green="239" blue="239" name="_CAP_MSM_Mode_Gray_min"/>
     <entries xsi:type="description:UserFixedColor" red="128" green="128" blue="128" name="_CAP_Lifeline_Gray"/>
     <entries xsi:type="description:UserFixedColor" red="233" green="243" blue="222" name="_CAP_FCD"/>
+    <entries xsi:type="description:UserFixedColor" red="205" green="205" blue="205" name="_CAP_Unset_Gray"/>
+    <entries xsi:type="description:UserFixedColor" red="234" green="234" blue="234" name="_CAP_Unset_Gray_min"/>
+    <entries xsi:type="description:UserFixedColor" red="128" green="128" blue="128" name="_CAP_Unset_Gray_Border"/>
+    <entries xsi:type="description:UserFixedColor" red="0" green="0" blue="0" name="_CAP_Unset_Gray_Label"/>
   </userColorsPalettes>
 </description:Group>

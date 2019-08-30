@@ -64,10 +64,18 @@
           </conditionnalStyles>
         </nodeMappings>
         <nodeMappings name="ActorNode" navigationDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20CM%20to%20SAB']" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" createElements="false" domainClass="ctx::SystemComponent">
-          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.svg">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-          </style>
+          <conditionnalStyles predicateExpression="aql:self.human = true">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.svg">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.human = false">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/SystemActor.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
         </nodeMappings>
         <nodeMappings name="CapNode" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="" createElements="false" domainClass="Capability">
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Capability']"/>
@@ -470,10 +478,18 @@
       </filters>
       <defaultLayer name="default layer Functional Missions 2">
         <nodeMappings name="ActorNode2" navigationDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20MB%20to%20SAB']" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit2']" semanticCandidatesExpression="" createElements="false" domainClass="ctx::SystemComponent">
-          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.svg">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-          </style>
+          <conditionnalStyles predicateExpression="aql:self.human = true">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.svg">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.human = false">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/SystemActor.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
         </nodeMappings>
         <nodeMappings name="CapNode2" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit2']" semanticCandidatesExpression="" createElements="false" domainClass="Capability">
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Capability']"/>
@@ -931,10 +947,18 @@
           </conditionnalStyles>
         </nodeMappings>
         <nodeMappings name="ActorNode3" navigationDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20CC%20to%20SAB']" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit3']" semanticCandidatesExpression="" createElements="false" domainClass="ctx::SystemComponent">
-          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.svg">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-          </style>
+          <conditionnalStyles predicateExpression="aql:self.human = true">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.svg">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.human = false">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/SystemActor.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
         </nodeMappings>
         <nodeMappings name="MissionNode3" detailDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Mission']" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit3']" semanticCandidatesExpression="" createElements="false" domainClass="Mission">
           <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Mission.svg">
@@ -1456,10 +1480,18 @@
           </style>
         </nodeMappings>
         <nodeMappings name="ActorNode4" navigationDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20MCB%20to%20SAB']" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="" createElements="false" domainClass="ctx::SystemComponent">
-          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.svg">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-          </style>
+          <conditionnalStyles predicateExpression="aql:self.human = true">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.svg">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.human = false">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/SystemActor.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
         </nodeMappings>
         <nodeMappings name="MissionNode4" detailDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Mission']" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="" createElements="false" domainClass="Mission">
           <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Mission.svg">
@@ -4998,8 +5030,14 @@
             <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']"/>
             <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </style>
-          <conditionnalStyles predicateExpression="aql:self.isActor()">
+          <conditionnalStyles predicateExpression="aql:self.isActor() and self.human = true">
             <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.svg">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.isActor() and self.human = false">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.ui.resources/icons/full/png/SystemActor.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
