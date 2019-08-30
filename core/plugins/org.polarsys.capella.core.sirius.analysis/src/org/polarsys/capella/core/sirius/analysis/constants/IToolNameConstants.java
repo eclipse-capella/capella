@@ -32,7 +32,7 @@ public interface IToolNameConstants {
   String TOOL_CREATE_INPUT_PORT = "input.port";
   String TOOL_CREATE_OUTPUT_PORT = "output.port";
   String TOOL_CREATE_FUNCTIONAL_EXCHANGE = "functional.exchange";
-  String TOOL_CREATE_FUNCTIONAL_CHAIN = "functional.chain.menu";
+  String TOOL_CREATE_FUNCTIONAL_CHAIN = "functional.chain";
   String TOOL_CREATE_CONSTRAINT = "constraint";
   String TOOL_CREATE_CONSTRAINT_ELEMENT = "constraint.element";
   String TOOL_CREATE_OPERATIONAL_ROLE = "operational.role";
@@ -102,7 +102,7 @@ public interface IToolNameConstants {
   String TOOL_COMMON_ELEMENTS_FROM_SCENARIO = "elements.from.scenario";
   String TOOL_COOMON_FUNCTIONS_FROM_MODE_STATE = "functions.from.mode.state";
 
-  String TOOL_CREATE_PHYSICAL_PATH = "physical.path.menu";
+  String TOOL_CREATE_PHYSICAL_PATH = "physical.path";
 
   // Accelerators
   String TOOL_DIAGRAMINITIALIZATION = "DiagramInitialization";
@@ -569,7 +569,7 @@ public interface IToolNameConstants {
   // Unsynchronized tools
   String TOOL_IDB_INSERT_REMOVE_COMPONENT_PORTS = "component.ports";
   String TOOL_IDB_INSERT_REMOVE_EXCHANGE_ITEM_ALLOCATIONS = "exchange.item.allocations";
-  String TOOL_IDB_INSERT_REMOVE_EXCHANGE_ITEM = "exchange.item";
+  String TOOL_IDB_INSERT_REMOVE_EXCHANGE_ITEM = "exchange.items";
   String TOOL_IDB_INSERT_REMOVE_EXCHANGE_ITEM_ELEMENTS = "exchange.item.elements";
   String TOOL_IDB_INSERT_REMOVE_COMMUNICATION_LINKS = "Communication Links";
 
@@ -650,7 +650,7 @@ public interface IToolNameConstants {
   String TOOL_LAB_CREATE_PHYSICAL_PORT = "physical.port";
   String TOOL_LAB_INSERT_REMOVE_COMPONENTS = "components";
   String TOOL_LAB_INSERT_REMOVE_PHYSICAL_LINKS = "physical.links";
-  String TOOL_LAB_INSERT_REMOVE_PHYSICAL_PATH = "physical.path.menu";
+  String TOOL_LAB_INSERT_REMOVE_PHYSICAL_PATH = "physical.path";
   String TOOL_LAB_INSERT_REMOVE_ACTORS = "actors";
   String TOOL_LAB_INSERT_REMOVE_COMPONENT_EXCHANGES = "component.exchanges";
   String TOOL_LAB_CREATE_CONSTRAINT = "constraint";
@@ -1043,7 +1043,7 @@ public interface IToolNameConstants {
   String TOOL_OAIB_INSERT_SCENARIO_ELEMENTS = TOOL_LDFB_INSERT_SCENARIO_ELEMENTS;
   String TOOL_OAIB_INSERT_STATEMODE_ELEMENTS = TOOL_LDFB_INSERT_STATEMODE_ELEMENTS;
 
-  String TOOL_OAIB_CREATE_OPERATIONAL_PROCESS = "operational.process.menu";
+  String TOOL_OAIB_CREATE_OPERATIONAL_PROCESS = "operational.process";
   String TOOL_OAIB_SHOW_HIDE_OA = "Show/Hide Operational Activity";
   String TOOL_OAIB_SHOW_HIDE_OPERATIONAL_PROCESS = "operational.processes";
   String TOOL_OAIB_SHOW_OPERATIONAL_PROCESS_ELT = "Show Operational Process Elements";
@@ -1233,7 +1233,7 @@ public interface IToolNameConstants {
 
   String TOOL_PAB_INSERT_REMOVE_PHYSICAL_LINKS = "physical.links";
   String TOOL_PAB_CREATE_COMPONENT_PORT_ALLOCATION = "component.port.allocation";
-  String TOOL_PAB_INSERT_REMOVE_PHYSICAL_PATH = "physical.path.menu";
+  String TOOL_PAB_INSERT_REMOVE_PHYSICAL_PATH = "physical.path";
   String TOOL_PAB_INSERT_REMOVE_PHYSICAL_LINKS_CATEGORIES = "switch.physical.links.categories";
   String TOOL_PAB_CREATE_CONSTRAINT = "constraint";
   String TOOL_PAB_CREATE_CONSTRAINT_ELEMENT = "constraint.element";
@@ -1295,7 +1295,7 @@ public interface IToolNameConstants {
   String TOOL_PAB_SHOW_HIDE_PORTS = "Show/Hide Ports";
   String TOOL_PAB_SHOW_HIDE_FUNCTION_PORTS = "Show/Hide Function Ports";
   String TOOL_PAB_CREATE_FUNCTIONAL_CHAIN = "functional.chain";
-  String TOOL_PAB_CREATE_PHYSICAL_PATH = "physical.path.menu";
+  String TOOL_PAB_CREATE_PHYSICAL_PATH = "physical.path";
   String TOOL_PAB_INSERT_PHYSICAL_ACTOR = "Show/Hide Actors";
   String TOOL_PAB_SHOW_HIDE_CONSTRAINT = "Show/Hide Constraints";
   String TOOL_PAB_SHOW_HIDE_FUNCTIONAL_CHAINS = "Show/Hide Functional Chains";
@@ -1425,7 +1425,7 @@ public interface IToolNameConstants {
   String TOOL_SAB_INSERT_REMOVE_COMPONENT_EXCHANGES = "component.exchanges";
   @Deprecated
   String TOOL_SAB_INSERT_REMOVE_PHYSICAL_LINKS = "physical.links";
-  String TOOL_SAB_INSERT_REMOVE_PHYSICAL_PATH = "physical.path.menu";
+  String TOOL_SAB_INSERT_REMOVE_PHYSICAL_PATH = "physical.path";
   String TOOL_SAB_INSERT_REMOVE_PHYSICAL_LINKS_CATEGORIES = "switch.physical.links.categories";
   String TOOL_SAB_CREATE_CONSTRAINT = "constraint";
   String TOOL_SAB_CREATE_CONSTRAINT_ELEMENT = "constraint.element";
@@ -1644,6 +1644,6 @@ public interface IToolNameConstants {
   String TOOL_XAB_INSERT_REMOVE_CATEGORIES = "categories";
   String TOOL_XAB_INSERT_ELEMENTS_FROM_SCENARIO = "elements.from.scenario";
   String TOOL_XAB_INSERT_FUNCTIONS_FROM_MODE_STATE = "functions.from.mode.state";
-  String TOOL_XAB_INSERT_REMOVE_PHYSICAL_PATH = "physical.path";
+  String TOOL_XAB_INSERT_REMOVE_PHYSICAL_PATH = "physical.paths";
 
 }

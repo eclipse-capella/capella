@@ -413,7 +413,7 @@
           </ownedTools>
           <reusedTools xsi:type="tool:ToolGroup" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV']"/>
           <reusedTools xsi:type="tool:ContainerDropDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
-          <reusedTools xsi:type="tool_1:PopupMenu" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='selectMenu']"/>
+          <reusedTools xsi:type="tool_1:PopupMenu" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu']"/>
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
@@ -852,7 +852,7 @@
           </ownedTools>
           <reusedTools xsi:type="tool:ToolGroup" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV']"/>
           <reusedTools xsi:type="tool:ContainerDropDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
-          <reusedTools xsi:type="tool_1:PopupMenu" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='selectMenu']"/>
+          <reusedTools xsi:type="tool_1:PopupMenu" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu']"/>
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
@@ -1371,7 +1371,7 @@
           </ownedTools>
           <reusedTools xsi:type="tool:ToolGroup" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV']"/>
           <reusedTools xsi:type="tool:ContainerDropDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
-          <reusedTools xsi:type="tool_1:PopupMenu" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='selectMenu']"/>
+          <reusedTools xsi:type="tool_1:PopupMenu" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu']"/>
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
@@ -1942,7 +1942,7 @@
           </ownedTools>
           <reusedTools xsi:type="tool:ToolGroup" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV']"/>
           <reusedTools xsi:type="tool:ContainerDropDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
-          <reusedTools xsi:type="tool_1:PopupMenu" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='selectMenu']"/>
+          <reusedTools xsi:type="tool_1:PopupMenu" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu']"/>
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
@@ -2376,7 +2376,7 @@
           </ownedTools>
           <reusedTools xsi:type="tool:ToolGroup" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV']"/>
           <reusedTools xsi:type="tool:ContainerDropDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
-          <reusedTools xsi:type="tool_1:PopupMenu" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='selectMenu']"/>
+          <reusedTools xsi:type="tool_1:PopupMenu" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu']"/>
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
@@ -3008,8 +3008,8 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:PopupMenu" name="Functional Chain" label="Functional Chain">
-            <menuItemDescription xsi:type="tool_1:OperationAction" name="functional.chain.menu" label="Create a Functional Chain" precondition="aql:self.isValidFunctionalChainSelection(views)" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:PopupMenu" name="functional.chain.menu" label="Functional Chain">
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="functional.chain" label="Create a Functional Chain" precondition="aql:self.isValidFunctionalChainSelection(views)" forceRefresh="true">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createFunctionalChain(views)">
@@ -3165,7 +3165,7 @@
           </ownedTools>
           <reusedTools xsi:type="tool:ToolGroup" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV']"/>
           <reusedTools xsi:type="tool:ContainerDropDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
-          <reusedTools xsi:type="tool_1:PopupMenu" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='selectMenu']"/>
+          <reusedTools xsi:type="tool_1:PopupMenu" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu']"/>
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
@@ -3844,8 +3844,8 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:PopupMenu" name="Physical Path">
-            <menuItemDescription xsi:type="tool_1:OperationAction" name="physical.path.menu" label="Create a Physical Path" precondition="aql:self.isValidPhysicalPathSelection(views)" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:PopupMenu" name="physical.path.menu" label="Physical Path">
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="physical.path" label="Create a Physical Path" precondition="aql:self.isValidPhysicalPathSelection(views)" forceRefresh="true">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:views">
@@ -4078,7 +4078,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Physical Paths. Creates or delete graphical objects corresponding to existing Physical Paths. Removing a Physical Path graphical object from a diagram does not delete the Physical Path from the model. This tool does not modify the semantic model." name="physical.path" label="Physical Path" precondition="aql:elementView->filter(diagram::DDiagram)->size() > 0" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Physical Paths. Creates or delete graphical objects corresponding to existing Physical Paths. Removing a Physical Path graphical object from a diagram does not delete the Physical Path from the model. This tool does not modify the semantic model." name="physical.paths" label="Physical Paths" precondition="aql:elementView->filter(diagram::DDiagram)->size() > 0" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -4789,8 +4789,8 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:PopupMenu" name="Functional Chain">
-            <menuItemDescription xsi:type="tool_1:OperationAction" name="functional.chain.menu" label="Create a Functional Chain" precondition="aql:self.isValidFunctionalChainSelection(views)" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:PopupMenu" name="functional.chain.menu">
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="functional.chain" label="Create a Functional Chain" precondition="aql:self.isValidFunctionalChainSelection(views)" forceRefresh="true">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createFunctionalChain(views)">
@@ -4944,7 +4944,7 @@
           </ownedTools>
           <reusedTools xsi:type="tool:ToolGroup" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV']"/>
           <reusedTools xsi:type="tool:ContainerDropDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
-          <reusedTools xsi:type="tool_1:PopupMenu" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='selectMenu']"/>
+          <reusedTools xsi:type="tool_1:PopupMenu" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu']"/>
         </toolSections>
         <customization>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.isDashedFunction(container.getComponentType())">
@@ -5207,7 +5207,7 @@
           </ownedTools>
           <reusedTools xsi:type="tool:ToolGroup" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV']"/>
           <reusedTools xsi:type="tool:ContainerDropDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
-          <reusedTools xsi:type="tool_1:PopupMenu" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='selectMenu']"/>
+          <reusedTools xsi:type="tool_1:PopupMenu" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='select.menu']"/>
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
