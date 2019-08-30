@@ -15,6 +15,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.eclipse.emf.ecore.resource.Resource;
@@ -75,9 +76,8 @@ public class DiagramDuplicateToolsAndFiltersTest extends BasicTestCase {
 
     }
 
-    System.out.println("There are " + duplicatedIds.size() + " duplicated ids for tools:");
-    duplicatedIds.stream().forEach(System.out::println);
-
-    assertTrue(duplicatedIds.isEmpty());
+    if (!duplicatedIds.isEmpty()) {
+      assertTrue(duplicatedIds.stream().collect(Collectors.joining("\n")), duplicatedIds.isEmpty());
+    }
   }
 }

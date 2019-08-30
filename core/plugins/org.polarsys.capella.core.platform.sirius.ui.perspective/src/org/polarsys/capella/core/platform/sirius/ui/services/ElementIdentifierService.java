@@ -57,14 +57,14 @@ public class ElementIdentifierService implements IElementIdentifierService {
     String[] tokens = titleExpression.split("(\\[)|(\\])");
 
     if (tokens.length == 3 && !tokens[1].contains("self")) {
-      return tokens[1];
+      return tokens[1].toLowerCase();
     }
 
     tokens = diagram.getName().split(" ");
     StringBuilder result = new StringBuilder();
 
     for (String token : tokens) {
-      char letter = Character.toUpperCase(token.charAt(0));
+      char letter = Character.toLowerCase(token.charAt(0));
       result.append(letter);
     }
 
