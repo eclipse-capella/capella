@@ -55,7 +55,7 @@ public class BooleanOperationSection extends CapellaElementSection {
       @Override
       @SuppressWarnings("unchecked")
       protected List<EObject> getReferencedElementsByContainedOnes() {
-        List<EObject> containedElements = (List<EObject>) _semanticElement.eGet(_semanticFeature);
+        List<EObject> containedElements = (List<EObject>) semanticElement.eGet(semanticFeature);
         ArrayList<EObject> referencedElements = new ArrayList<EObject>(0);
         // Collect referenced elements according specified referenced feature.
         for (EObject containedElement : containedElements) {
@@ -76,7 +76,7 @@ public class BooleanOperationSection extends CapellaElementSection {
       @Override
       protected List<? extends EObject> getAvailableElementsToAdd() {
         List<AbstractState> result = new ArrayList<AbstractState>();
-        Component comp = (Component) EcoreUtil2.getFirstContainer(_semanticElement, CsPackage.Literals.COMPONENT);
+        Component comp = (Component) EcoreUtil2.getFirstContainer(semanticElement, CsPackage.Literals.COMPONENT);
         for (Iterator<EObject> it = comp.eAllContents(); it.hasNext();) {
           EObject next = it.next();
           if (next instanceof AbstractState) {
@@ -101,7 +101,7 @@ public class BooleanOperationSection extends CapellaElementSection {
 
   @Override
   public boolean select(Object toTest) {
-    EObject obj = CapellaAdapterHelper.resolveSemanticObject(toTest);
+    EObject obj = CapellaAdapterHelper.resolveEObject(toTest);
     return obj != null && obj.eClass().equals(org.polarsys.capella.vp.ms.MsPackage.eINSTANCE.getBooleanOperation());
   }
 

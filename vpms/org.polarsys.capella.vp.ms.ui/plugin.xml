@@ -16,13 +16,13 @@
  
   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
     <propertySections contributorId="org.polarsys.capella.core.data.capellamodeller.properties">
-        <propertySection class="org.polarsys.capella.vp.ms.ui.properties.CSConfigurationSection" id="org.polarsys.capella.vp.ms.ui.properties.CSConfigurationSection" tab="Base">
+        <propertySection class="org.polarsys.capella.vp.ms.ui.properties.CSConfigurationSection" id="org.polarsys.capella.vp.ms.ui.properties.CSConfigurationSection" tab="BaseCapella">
             <input type="org.polarsys.capella.vp.ms.CSConfiguration"/>
         </propertySection>
         <propertySection
               class="org.polarsys.capella.vp.ms.ui.properties.SituationSection"
               id="org.polarsys.capella.vp.ms.ui.properties.SituationSection"
-              tab="Base">
+              tab="BaseCapella">
            <input
                  type="org.polarsys.capella.vp.ms.Situation">
            </input>
@@ -30,7 +30,7 @@
         <propertySection
               class="org.polarsys.capella.vp.ms.ui.properties.BooleanOperationSection"
               id="org.polarsys.capella.vp.ms.ui.properties.BooleanOperationSection"
-              tab="Base">
+              tab="BaseCapella">
            <input
                  type="org.polarsys.capella.vp.ms.BooleanOperation">
            </input>
@@ -45,7 +45,7 @@
               class="org.polarsys.capella.vp.ms.ui.properties.CSConfigurationSection"
               filter="org.polarsys.capella.vp.ms.ui.properties.CSConfigurationSection"
               id="org.polarsys.capella.vp.ms.ui.properties.CSConfigurationSection"
-              tab="Base"/>
+              tab="BaseSiriusDiagram"/>
        
 </propertySections>
     </extension>

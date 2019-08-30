@@ -897,16 +897,16 @@ public class MsPackageImpl extends EPackageImpl implements MsPackage {
   protected void createConstraintAnnotations() {
     String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraint"; //$NON-NLS-1$
     addAnnotation(csConfigurationEClass, source,
-        new String[] { "ExtendedElement", " http://www.polarsys.org/capella/core/cs/1.2.0#//Component" //$NON-NLS-1$ //$NON-NLS-2$
+        new String[] { "ExtendedElement", " http://www.polarsys.org/capella/core/cs/1.3.0#//Component" //$NON-NLS-1$ //$NON-NLS-2$
         });
     addAnnotation(fsmTypeEClass, source,
-        new String[] { "ExtendedElement", " http://www.polarsys.org/capella/core/common/1.2.0#//StateMachine" //$NON-NLS-1$ //$NON-NLS-2$
+        new String[] { "ExtendedElement", " http://www.polarsys.org/capella/core/common/1.3.0#//StateMachine" //$NON-NLS-1$ //$NON-NLS-2$
         });
     addAnnotation(situationEClass, source,
-        new String[] { "ExtendedElement", " http://www.polarsys.org/capella/core/cs/1.2.0#//Component" //$NON-NLS-1$ //$NON-NLS-2$
+        new String[] { "ExtendedElement", " http://www.polarsys.org/capella/core/cs/1.3.0#//Component" //$NON-NLS-1$ //$NON-NLS-2$
         });
     addAnnotation(comparisonEClass, source,
-        new String[] { "ExtendedElement", " http://www.polarsys.org/capella/core/cs/1.2.0#//Component" //$NON-NLS-1$ //$NON-NLS-2$
+        new String[] { "ExtendedElement", " http://www.polarsys.org/capella/core/cs/1.3.0#//Component" //$NON-NLS-1$ //$NON-NLS-2$
         });
   }
 

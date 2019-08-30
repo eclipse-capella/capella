@@ -14,6 +14,6 @@ include "../full/capella.target-definition.targetplatform"
 
 with source, requirements
 
-location capella-1.2.0 "http://download.polarsys.org/capella/core/updates/releases/1.2.0-R20171103-050121/org.polarsys.capella.rcp.site" {
+location capella-1.3.0 "https://download.eclipse.org/capella/core/updates/releases/1.3.1-R20190520-182008/org.polarsys.capella.rcp.site" {
 	org.polarsys.capella.rcp.feature.feature.group
 }

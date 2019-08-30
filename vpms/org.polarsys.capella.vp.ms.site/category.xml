@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.polarsys.capella.vp.ms.feature_0.12.1.qualifier.jar" id="org.polarsys.capella.vp.ms.feature" version="0.12.1.qualifier">
+   <feature url="features/org.polarsys.capella.vp.ms.feature_0.13.0.qualifier.jar" id="org.polarsys.capella.vp.ms.feature" version="0.13.0.qualifier">
       <category name="org.polarsys.capella.addon.vpms"/>
    </feature>
    <category-def name="org.polarsys.capella.addon.vpms" label="Vpms Addon"/>

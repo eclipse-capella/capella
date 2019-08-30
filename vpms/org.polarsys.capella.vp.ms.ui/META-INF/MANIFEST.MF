@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
 Bundle-SymbolicName: org.polarsys.capella.vp.ms.ui;singleton:=true
-Bundle-Version: 0.11.0.qualifier
+Bundle-Version: 0.13.0.qualifier
 Bundle-Localization: plugin
 Bundle-Activator: org.polarsys.capella.vp.ms.ui.Activator
 Require-Bundle: org.eclipse.ui,
@@ -22,7 +22,7 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.vp.ms.edit,
  org.polarsys.capella.vp.ms,
  org.polarsys.capella.vp.ms.ui.preferences
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.vp.ms.ui,
  org.polarsys.capella.vp.ms.ui.contextual,

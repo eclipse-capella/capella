@@ -13,15 +13,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.polarsys</groupId>
 	<artifactId>org.polarsys.capella.addon.vpms</artifactId>
-	<version>0.12.1-SNAPSHOT</version>
+	<version>0.13.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<parent>
 	  <groupId>org.polarsys</groupId>
 	  <artifactId>org.polarsys.capella</artifactId>
-	  <version>1.2.2-SNAPSHOT</version>
+	  <version>1.3.1-SNAPSHOT</version>
 	</parent>
 	
 	<modules>

@@ -26,7 +26,7 @@ import org.polarsys.kitalpha.emde.model.ElementExtension;
  *
  * @see org.polarsys.capella.vp.ms.MsPackage#getSituation()
  * @model annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/constraint ExtendedElement='
- *        http://www.polarsys.org/capella/core/cs/1.2.0#//Component'"
+ *        http://www.polarsys.org/capella/core/cs/1.3.0#//Component'"
  *        annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping Mapping='
  *        platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#//Component'"
  * @generated

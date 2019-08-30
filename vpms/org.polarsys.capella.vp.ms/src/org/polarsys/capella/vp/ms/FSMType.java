@@ -26,7 +26,7 @@ import org.polarsys.kitalpha.emde.model.ElementExtension;
  *
  * @see org.polarsys.capella.vp.ms.MsPackage#getFSMType()
  * @model annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/constraint ExtendedElement='
- *        http://www.polarsys.org/capella/core/common/1.2.0#//StateMachine'"
+ *        http://www.polarsys.org/capella/core/common/1.3.0#//StateMachine'"
  *        annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping Mapping='
  *        platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#//StateMachine'"
  * @generated

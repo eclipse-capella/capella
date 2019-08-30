@@ -3,7 +3,7 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="ms" nsURI="http://www.polarsys.org/capella/ms" nsPrefix="ms">
   <eClassifiers xsi:type="ecore:EClass" name="CSConfiguration" eSuperTypes="../../org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#//NamedElement platform:/plugin/org.polarsys.kitalpha.emde/model/eMDE.ecore#//ElementExtension">
     <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/constraint">
-      <details key="ExtendedElement" value=" http://www.polarsys.org/capella/core/cs/1.2.0#//Component"/>
+      <details key="ExtendedElement" value=" http://www.polarsys.org/capella/core/cs/1.3.0#//Component"/>
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping">
       <details key="Mapping" value="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#//Component"/>
@@ -57,7 +57,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FSMType" eSuperTypes="../../org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#//NamedElement platform:/plugin/org.polarsys.kitalpha.emde/model/eMDE.ecore#//ElementExtension">
     <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/constraint">
-      <details key="ExtendedElement" value=" http://www.polarsys.org/capella/core/common/1.2.0#//StateMachine"/>
+      <details key="ExtendedElement" value=" http://www.polarsys.org/capella/core/common/1.3.0#//StateMachine"/>
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping">
       <details key="Mapping" value=" platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#//StateMachine"/>
@@ -66,7 +66,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Situation" eSuperTypes="../../org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#//NamedElement platform:/plugin/org.polarsys.kitalpha.emde/model/eMDE.ecore#//ElementExtension">
     <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/constraint">
-      <details key="ExtendedElement" value=" http://www.polarsys.org/capella/core/cs/1.2.0#//Component"/>
+      <details key="ExtendedElement" value=" http://www.polarsys.org/capella/core/cs/1.3.0#//Component"/>
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping">
       <details key="Mapping" value=" platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#//Component"/>
@@ -108,7 +108,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="NotOperation" eSuperTypes="#//BooleanOperation"/>
   <eClassifiers xsi:type="ecore:EClass" name="Comparison" eSuperTypes="../../org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#//NamedElement platform:/plugin/org.polarsys.kitalpha.emde/model/eMDE.ecore#//ElementExtension">
     <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/constraint">
-      <details key="ExtendedElement" value=" http://www.polarsys.org/capella/core/cs/1.2.0#//Component"/>
+      <details key="ExtendedElement" value=" http://www.polarsys.org/capella/core/cs/1.3.0#//Component"/>
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping">
       <details key="Mapping" value=" platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#//Component"/>
