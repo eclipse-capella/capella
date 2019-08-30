@@ -2255,7 +2255,6 @@
           <targetMapping xsi:type="description_1:NodeMapping" href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='ActorNode']"/>
           <targetMapping xsi:type="description_1:NodeMapping" href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='CapNode']"/>
           <targetMapping xsi:type="description_1:NodeMapping" href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='MissionNode']"/>
-          <targetMapping xsi:type="description_1:NodeMapping" href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_Actor']"/>
           <targetMapping xsi:type="description_1:NodeMapping" href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_System']"/>
           <targetMapping xsi:type="description_1:NodeMapping" href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode2']"/>
           <targetMapping xsi:type="description_1:NodeMapping" href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='CapNode2']"/>
@@ -2293,7 +2292,6 @@
           <targetMapping xsi:type="description_1:NodeMapping" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20Flow%20Port%20on%20Logical%20Function']"/>
           <targetMapping xsi:type="description_1:NodeMapping" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20InputPin%20by%20Categorie']"/>
           <targetMapping xsi:type="description_1:NodeMapping" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20OutputPin%20by%20Categorie']"/>
-          <targetMapping xsi:type="description_1:ContainerMapping" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='Logical%20Actors']"/>
           <targetMapping xsi:type="description_1:NodeMapping" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='LCB_LogicalComponent']"/>
           <targetMapping xsi:type="description_1:ContainerMapping" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']"/>
           <targetMapping xsi:type="description_1:NodeMapping" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']/@borderedNodeMappings[name='LDFB_InputPin%20by%20Categorie']"/>
@@ -2301,7 +2299,6 @@
           <targetMapping xsi:type="description_1:NodeMapping" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']/@borderedNodeMappings[name='LDFB_Pin']"/>
           <targetMapping xsi:type="description_1:NodeMapping" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@nodeMappings[name='LDFB_Node']"/>
           <targetMapping xsi:type="description_1:NodeMapping" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']"/>
-          <targetMapping xsi:type="description_1:ContainerMapping" href="physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Actor']"/>
           <targetMapping xsi:type="description_1:NodeMapping" href="physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_ControlFunction']"/>
           <targetMapping xsi:type="description_1:NodeMapping" href="physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_Dummy']"/>
           <targetMapping xsi:type="description_1:ContainerMapping" href="physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']"/>
@@ -2741,7 +2738,6 @@
           <targetMapping xsi:type="description_1:NodeMapping" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@containerMappings[name='CRI_SystemComponent_top']/@subNodeMappings[name='CRI_CapabilityRealization_int']"/>
           <targetMapping xsi:type="description_1:ContainerMapping" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@containerMappings[name='CRI_SystemComponent_top']/@subContainerMappings[name='CRI_System_Component']"/>
           <targetMapping xsi:type="description_1:NodeMapping" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@containerMappings[name='CRI_SystemComponent_top']/@subContainerMappings[name='CRI_System_Component']/@subNodeMappings[name='CRI_CapabilityRealization_int_int']"/>
-          <targetMapping xsi:type="description_1:ContainerMapping" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='Logical%20Actors']"/>
           <targetMapping xsi:type="description_1:ContainerMapping" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']"/>
           <targetMapping xsi:type="description_1:NodeMapping" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB_ComponentCategory_Pin']"/>
           <targetMapping xsi:type="description_1:NodeMapping" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB%20ComponentPort']"/>
@@ -2781,7 +2777,6 @@
           <targetMapping xsi:type="description_1:NodeMapping" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']"/>
           <targetMapping xsi:type="description_1:EdgeMapping" href="physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB%20PortAllocation']"/>
           <targetMapping xsi:type="description_1:EdgeMapping" href="physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB%20PortRealization']"/>
-          <targetMapping xsi:type="description_1:ContainerMapping" href="physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Actor']"/>
           <targetMapping xsi:type="description_1:EdgeMapping" href="physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_ComponentCategory']"/>
           <targetMapping xsi:type="description_1:EdgeMapping" href="physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_Exchange']"/>
           <targetMapping xsi:type="description_1:EdgeMapping" href="physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_ComponentPortAllocation']"/>
@@ -2837,7 +2832,6 @@
           <targetMapping xsi:type="description_1:NodeMapping" href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='CapNode']"/>
           <targetMapping xsi:type="description_1:NodeMapping" href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='MissionNode']"/>
           <targetMapping xsi:type="description_1:EdgeMapping" href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@edgeMappings[name='actorGeneralization5']"/>
-          <targetMapping xsi:type="description_1:NodeMapping" href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_Actor']"/>
           <targetMapping xsi:type="description_1:NodeMapping" href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_System']"/>
           <targetMapping xsi:type="description_1:EdgeMapping" href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@edgeMappings[name='SC_System_Actor']"/>
           <targetMapping xsi:type="description_1:EdgeMapping" href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@edgeMappings[name='ActMissInv2']"/>
@@ -5406,13 +5400,13 @@
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='System%20Architecture%20Blank']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Configuration%20Items%20BreakDown']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='EPBS%20Architecture%20Blank']"/>
+          <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Logical%20Component%20Breakdown']"/>
+          <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Logical%20Architecture%20Blank']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20Detailed%20Interfaces']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20External%20Interfaces']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20Internal%20Interfaces']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Interfaces%20Diagram%20Blank']"/>
           <detailDescriptions xsi:type="description_3:TableCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Delegations']/@ownedRepresentationCreationDescriptions[name='Interface%20delegations']"/>
-          <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Logical%20Component%20Breakdown']"/>
-          <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Logical%20Architecture%20Blank']"/>
           <borderedNodeMappings name="CCDI_Port" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="aql:self.ownedFeatures->filter(fa::ComponentPort)" domainClass="ComponentPort">
             <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPortSmall.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -6934,13 +6928,13 @@
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='System%20Architecture%20Blank']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Configuration%20Items%20BreakDown']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='EPBS%20Architecture%20Blank']"/>
+          <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Logical%20Component%20Breakdown']"/>
+          <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Logical%20Architecture%20Blank']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20Detailed%20Interfaces']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20External%20Interfaces']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20Internal%20Interfaces']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Interfaces%20Diagram%20Blank']"/>
           <detailDescriptions xsi:type="description_3:TableCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Delegations']/@ownedRepresentationCreationDescriptions[name='Interface%20delegations']"/>
-          <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Logical%20Component%20Breakdown']"/>
-          <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Logical%20Architecture%20Blank']"/>
           <borderedNodeMappings name="CCEI_Port" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="aql:self.ownedFeatures->filter(fa::ComponentPort)" domainClass="ComponentPort">
             <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPortSmall.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -8459,12 +8453,12 @@
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Physical%20Architecture%20Blank']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Configuration%20Items%20BreakDown']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='EPBS%20Architecture%20Blank']"/>
+          <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Logical%20Component%20Breakdown']"/>
+          <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Logical%20Architecture%20Blank']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20Detailed%20Interfaces']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20External%20Interfaces']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20Internal%20Interfaces']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Interfaces%20Diagram%20Blank']"/>
-          <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Logical%20Component%20Breakdown']"/>
-          <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Logical%20Architecture%20Blank']"/>
           <borderedNodeMappings name="CCII_Port" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="aql:self.ownedFeatures->filter(fa::ComponentPort)" domainClass="ComponentPort">
             <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPortSmall.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -8628,7 +8622,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Logical / Physical Component (and creates a Part in the selected Container Component)" name="Actor" precondition="aql:containerView.getIBTarget(true).isValidCreationABActor()" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@containerMappings[name='CCII_Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Actor.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Logical / Physical Component (and creates a Part in the selected Container Component)" name="Actor" precondition="aql:containerView.getIBTarget(true).isValidCreationABActor()" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@containerMappings[name='CCII_Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/System.gif">
             <variable name="container"/>
             <viewVariable name="containerView">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="target" computationExpression="aql:containerView.getIBTarget(true)"/>
@@ -10032,12 +10026,12 @@
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='System%20Architecture%20Blank']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Configuration%20Items%20BreakDown']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='EPBS%20Architecture%20Blank']"/>
+          <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Logical%20Component%20Breakdown']"/>
+          <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Logical%20Architecture%20Blank']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20Detailed%20Interfaces']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20External%20Interfaces']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20Internal%20Interfaces']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Interfaces%20Diagram%20Blank']"/>
-          <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Logical%20Component%20Breakdown']"/>
-          <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Logical%20Architecture%20Blank']"/>
           <borderedNodeMappings name="IDB_Port" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="aql:self.ownedFeatures->filter(fa::ComponentPort)" domainClass="ComponentPort">
             <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeLabel()" hideLabelByDefault="true" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/StandardPortSmall.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -11981,23 +11975,23 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <nodeMappings name="CCRI Actor" preconditionExpression="aql:self.isActor()" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" createElements="false" domainClass="Component">
-          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.png">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-          </style>
-        </nodeMappings>
-        <nodeMappings name="CCRI Component" preconditionExpression="aql:not self.isActor()" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" createElements="false" domainClass="Component">
+        <nodeMappings name="CCRI Component" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" createElements="false" domainClass="Component">
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Physical%20Component%20Breakdown']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Physical%20Architecture%20Blank']"/>
+          <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Logical%20Component%20Breakdown']"/>
+          <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Logical%20Architecture%20Blank']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20Detailed%20Interfaces']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20External%20Interfaces']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20Internal%20Interfaces']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Interfaces%20Diagram%20Blank']"/>
           <detailDescriptions xsi:type="description_3:TableCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Delegations']/@ownedRepresentationCreationDescriptions[name='Interface%20delegations']"/>
-          <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Logical%20Component%20Breakdown']"/>
-          <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Logical%20Architecture%20Blank']"/>
-          <conditionnalStyles predicateExpression="aql:self.eClass().name = 'LogicalComponent'">
+          <conditionnalStyles predicateExpression="aql:(self->filter(cs::Component)->select(c | c.isActor())->size() > 0)">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'LogicalComponent')">
             <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/LogicalComponent.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -12022,7 +12016,7 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <edgeMappings name="CCRI involvement" label="CCRI Involvement" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20CapabilityRealization']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Actor'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Component']" targetFinderExpression="feature:involved" sourceFinderExpression="feature:involver" domainClass="CapabilityRealizationInvolvement" useDomainElement="true">
+        <edgeMappings name="CCRI involvement" label="CCRI Involvement" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20CapabilityRealization']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Component']" targetFinderExpression="feature:involved" sourceFinderExpression="feature:involver" domainClass="CapabilityRealizationInvolvement" useDomainElement="true">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
@@ -12042,7 +12036,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Logical Actor / Physical Actor (and creates a Part in the Context element of the current level)" name="actor" label="Actor" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Actor']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Actor.gif">
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Logical Actor / Physical Actor (and creates a Part in the Context element of the current level)" name="actor" label="Actor" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Actor.gif">
             <filters precondition="aql:(self.target.eContainerOrSelf(epbs::EPBSArchitecture)->size() != 0)"/>
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -14283,6 +14277,7 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:ownedSystemComponentPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SystemComponent" referenceName="ownedSystemComponents" variableName="actor">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -14291,6 +14286,7 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:ownedLogicalComponentPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponent" referenceName="ownedLogicalComponents" variableName="actor">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -14299,6 +14295,7 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:ownedPhysicalComponentPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents" variableName="actor">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -14307,6 +14304,7 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainer().ownedArchitectures->filter(pa::PhysicalArchitecture).ownedPhysicalComponentPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents" variableName="actor">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -16149,6 +16147,7 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:ownedSystemComponentPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SystemComponent" referenceName="ownedSystemComponents" variableName="actor">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -16157,6 +16156,7 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:ownedLogicalComponentPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponent" referenceName="ownedLogicalComponents" variableName="actor">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -16165,6 +16165,7 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:ownedPhysicalComponentPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents" variableName="actor">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -16173,6 +16174,7 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainer().ownedArchitectures->filter(pa::PhysicalArchitecture).ownedPhysicalComponentPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents" variableName="actor">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -18796,13 +18798,13 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:self.involved.isAllocatedInActor()">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="aql:self.involved.name" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']">
+          <conditionnalStyles predicateExpression="aql:self.involved.oclIsKindOf(oa::OperationalActivity)">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']" labelExpression="aql:self.involved.name" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange']">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:self.involved.oclIsKindOf(oa::OperationalActivity)">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']" labelExpression="aql:self.involved.name" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange']">
+          <conditionnalStyles predicateExpression="aql:self.involved.isAllocatedInActor()">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="aql:self.involved.name" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>

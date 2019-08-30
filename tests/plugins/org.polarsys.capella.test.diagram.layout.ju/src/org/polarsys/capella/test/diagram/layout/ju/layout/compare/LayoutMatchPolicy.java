@@ -134,8 +134,8 @@ public class LayoutMatchPolicy extends DefaultMatchPolicy {
   public void addArchitectureBlankMappingMatches() {
     
     addMappingMatch("ACTOR", IMappingNameConstants.SAB_ACTOR_MAPPING_NAME);
-    addMappingMatch("ACTOR", IMappingNameConstants.LAB_LOGICAL_ACTOR_MAPPING_NAME);
-    addMappingMatch("ACTOR", IMappingNameConstants.PAB_PHYSICAL_ACTOR_MAPPING_NAME);
+    addMappingMatch("ACTOR", IMappingNameConstants.LAB_LOGICAL_COMPONENT_MAPPING_NAME);
+    addMappingMatch("ACTOR", IMappingNameConstants.PAB_PHYSICAL_COMPONENT_MAPPING_NAME);
 
     addMappingMatch("FCT", IMappingNameConstants.SAB_SYSTEM_FUNCTION_MAPPING_NAME);
     addMappingMatch("FCT", IMappingNameConstants.LAB_LOGICAL_FUNCTION_MAPPING_NAME);

@@ -246,7 +246,6 @@ public interface IMappingNameConstants {
    * Logical Architecture
    */
   String LAB_LOGICAL_COMPONENT_MAPPING_NAME = "LAB Logical Component";
-  String LAB_LOGICAL_ACTOR_MAPPING_NAME = "Logical Actors";
   String LAB_LOGICAL_FUNCTION_MAPPING_NAME = "LAB Logical Function";
   String LAB_CONTROL_NODE_MAPPING_NAME = "LAB Sub Node";
   String LAB_FUNCTION_PORT_MAPPING_NAME = "LAB Flow Port on Logical Function";
@@ -301,7 +300,6 @@ public interface IMappingNameConstants {
    */
   String PAB_PHYSICAL_COMPONENT_MAPPING_NAME = "PAB_PC";
   String PAB_PHYSICAL_COMPONENT_DEPLOYMENT_MAPPING_NAME = "PAB_Deployment";
-  String PAB_PHYSICAL_ACTOR_MAPPING_NAME = "PAB_Actor";
   String PAB_CONTROL_NODE_MAPPING_NAME = "PAB_ControlFunction";
   String PAB_PHYSICAL_FUNCTION_MAPPING_NAME = "PAB_PhysicalFunction";
   String PAB_FUNCTION_PORT_MAPPING_NAME = "PAB_Pin";
@@ -535,7 +533,6 @@ public interface IMappingNameConstants {
   String SHOW_EI_EXCHANGE_CONTEXT = "show.ei.exchange.context.filter";
 
   // Contextual Capability Realization Involvement Diagram
-  String CCRI_ACTOR = "CCRI Actor";
   String CCRI_COMPONENT = "CCRI Component";
   String CCRI_CAPABILITY_REALIZATION = "CCRI CapabilityRealization";
   String CCRI_CAPABILITY_REALIZATION_INVOLVEMENT = "CCRI involvement";

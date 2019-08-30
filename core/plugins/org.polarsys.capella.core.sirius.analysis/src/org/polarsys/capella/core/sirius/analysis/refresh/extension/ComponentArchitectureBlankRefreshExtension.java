@@ -424,11 +424,7 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
     returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram,
         IMappingNameConstants.SAB_SYSTEM_MAPPING_NAME));
     returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram,
-        IMappingNameConstants.LAB_LOGICAL_ACTOR_MAPPING_NAME));
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram,
         IMappingNameConstants.LAB_LOGICAL_COMPONENT_MAPPING_NAME));
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram,
-        IMappingNameConstants.PAB_PHYSICAL_ACTOR_MAPPING_NAME));
     returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram,
         IMappingNameConstants.PAB_PHYSICAL_COMPONENT_DEPLOYMENT_MAPPING_NAME));
     returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram,

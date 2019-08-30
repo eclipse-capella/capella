@@ -58,7 +58,8 @@ public class ContextualCapabilityRealizationInvolvementRefreshExtension extends 
     }
 
     // We display elements related to the contextual capability only if the diagram is synchronized
-    NodeMapping componentNodeMapping = null;
+    NodeMapping componentNodeMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram,
+        IMappingNameConstants.CCRI_COMPONENT);
     EdgeMapping capabilityRealizationInvolvementMapping = null;
     if (diagram.isSynchronized()) {
 
@@ -72,13 +73,6 @@ public class ContextualCapabilityRealizationInvolvementRefreshExtension extends 
         // graphical representation of the link
         for (CapabilityRealizationInvolvement inv : involvements) {
           final InvolvedElement involvedElement = inv.getInvolved();
-          if (involvedElement instanceof Component && ComponentExt.isActor(involvedElement)) {
-            componentNodeMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram,
-                IMappingNameConstants.CCRI_ACTOR);
-          } else if (involvedElement instanceof Component && !ComponentExt.isActor(involvedElement)) {
-            componentNodeMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram,
-                IMappingNameConstants.CCRI_COMPONENT);
-          }
           if (!DiagramServices.getDiagramServices().isOnDiagram(diagram, involvedElement)) {
             graphicalNode = getNodeMappingHelper(involvedElement).createNode((INodeMappingExt) componentNodeMapping,
                 involvedElement, mainCapability, diagram);
