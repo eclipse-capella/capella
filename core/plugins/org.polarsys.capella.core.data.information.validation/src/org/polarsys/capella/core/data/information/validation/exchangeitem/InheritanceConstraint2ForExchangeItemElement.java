@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,40 +28,46 @@ import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 public class InheritanceConstraint2ForExchangeItemElement extends AbstractValidationRule {
 
 	@Override
-	public IStatus validate(IValidationContext ctx) {	
+	public IStatus validate(IValidationContext ctx) {
 		// get information
-		ExchangeItem ei2 = null;  
+		ExchangeItem ei2 = null;
 		ExchangeItemElement eie2 = null;
 		ExchangeItem ei1 = null;
 		ExchangeItemElement eie1 = null;
 		EObject eObj = ctx.getTarget();
-    if (eObj instanceof ExchangeItem) {
-    	ei2 = (ExchangeItem) eObj;
-    	List<ExchangeItemElement> elements = ei2.getOwnedElements();
-    	if (elements.size() == 1) {// Exchange Item must contain at most one EIE of kind "TYPE", not checked by this rule
-    		eie2 = elements.get(0);
-    	}
-    	List<GeneralizableElement> superItems = ei2.getSuper();
-			if (superItems.size() == 1) {// Exchange Item must has at least one super Exchange Item by construction 
+		if (eObj instanceof ExchangeItem) {
+			ei2 = (ExchangeItem) eObj;
+			List<ExchangeItemElement> elements = ei2.getOwnedElements();
+			if (elements.size() == 1) {// Exchange Item must contain at most one EIE of kind "TYPE", not checked by
+										// this rule
+				eie2 = elements.get(0);
+			}
+			List<GeneralizableElement> superItems = ei2.getSuper();
+			if (superItems.size() == 1) {// Exchange Item must has at least one super Exchange Item by construction
 				ei1 = (ExchangeItem) superItems.get(0);
 				elements = ei1.getOwnedElements();
-				if (elements.size() == 1) {// Exchange Item must contain at most one EIE of kind "TYPE", not checked by this rule
-      		eie1 = elements.get(0);
+				if (elements.size() == 1) {// Exchange Item must contain at most one EIE of kind "TYPE", not checked by
+											// this rule
+					eie1 = elements.get(0);
 				}
 			}
-    }
-    // check information
-    if (ei1 != null && ei2 != null) {
-    	if (eie1 != null &&  eie1.getKind() == ElementKind.TYPE && eie2 == null) {
-    		return ctx.createFailureStatus(
-    				CapellaElementExt.getCapellaExplorerLabel(ei2), 
-    				"Exchange Item "+CapellaElementExt.getCapellaExplorerLabel(ei2)+" must contain an Exchange Item Element since it inherits from "+CapellaElementExt.getCapellaExplorerLabel(ei1)+" which has an Exchange Item Element"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-    	} else if (eie2 != null && eie2.getKind() == ElementKind.TYPE && eie1 == null) {
-    		return ctx.createFailureStatus(
-    				CapellaElementExt.getCapellaExplorerLabel(ei2),
-    				"Exchange Item "+CapellaElementExt.getCapellaExplorerLabel(ei1)+" must contain an Exchange Item Element since "+CapellaElementExt.getCapellaExplorerLabel(ei2)+" has an Exchange Item Element and inherits from it"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-    	}
 		}
-    return ctx.createSuccessStatus();
+		// check information
+		if (ei1 != null) {
+			if (eie1 != null && eie1.getKind() == ElementKind.TYPE && eie2 == null) {
+				return ctx.createFailureStatus(CapellaElementExt.getCapellaExplorerLabel(ei2),
+						"Exchange Item " + CapellaElementExt.getCapellaExplorerLabel(ei2) //$NON-NLS-1$
+								+ " must contain an Exchange Item Element since it inherits from " //$NON-NLS-1$
+								+ CapellaElementExt.getCapellaExplorerLabel(ei1)
+								+ " which has an Exchange Item Element"); //$NON-NLS-1$
+			} else if (eie2 != null && eie2.getKind() == ElementKind.TYPE && eie1 == null) {
+				return ctx.createFailureStatus(CapellaElementExt.getCapellaExplorerLabel(ei2),
+						"Exchange Item " + CapellaElementExt.getCapellaExplorerLabel(ei1) //$NON-NLS-1$
+								+ " must contain an Exchange Item Element since " //$NON-NLS-1$
+								+ CapellaElementExt.getCapellaExplorerLabel(ei2)
+								+ " has an Exchange Item Element and inherits from it"); //$NON-NLS-1$
+			}
+		}
+		return ctx.createSuccessStatus();
 	}
 }

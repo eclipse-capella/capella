@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Navigator JUnit
 Bundle-SymbolicName: org.polarsys.capella.test.navigator.ju
-Bundle-Version: 1.2.2.qualifier
+Bundle-Version: 1.3.1.qualifier
 Bundle-Activator: org.polarsys.capella.test.navigator.ju.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -10,6 +10,6 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.polarsys.capella.core.menu.dynamic
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.polarsys.capella.test.navigator.ju,
  org.polarsys.capella.test.navigator.ju.testsuites.main

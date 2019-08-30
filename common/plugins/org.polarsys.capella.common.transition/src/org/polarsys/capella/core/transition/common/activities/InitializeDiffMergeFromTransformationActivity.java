@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -45,9 +45,7 @@ public class InitializeDiffMergeFromTransformationActivity extends AbstractActiv
   public IStatus _run(ActivityParameters activityParams) {
     IContext context = (IContext) activityParams.getParameter(TRANSPOSER_CONTEXT).getValue();
 
-    IStatus status = Status.OK_STATUS;
-
-    status = initializeTraceabilitySourceHandler(context, activityParams);
+    IStatus status = initializeTraceabilitySourceHandler(context, activityParams);
     if (!checkStatus(status)) {
       return status;
     }
@@ -84,7 +82,7 @@ public class InitializeDiffMergeFromTransformationActivity extends AbstractActiv
     EObject sourceTop = (EObject) context.get(ITransitionConstants.TRANSFORMATION_TARGET_ROOT);
     context.put(ITransitionConstants.MERGE_REFERENCE_CONTAINER, sourceTop);
 
-    List<EObject> rootSource = new ArrayList<EObject>();
+    List<EObject> rootSource = new ArrayList<>();
     rootSource.add((EObject) context.get(ITransitionConstants.MERGE_REFERENCE_CONTAINER));
 
     IEditableModelScope sourceScope = new ReferenceModelScope(rootSource, context);
@@ -106,13 +104,12 @@ public class InitializeDiffMergeFromTransformationActivity extends AbstractActiv
     EObject targetTop = (EObject) context.get(ITransitionConstants.TRANSITION_TARGET_ROOT);
     context.put(ITransitionConstants.MERGE_TARGET_CONTAINER, targetTop);
 
-    List<EObject> rootTarget = new ArrayList<EObject>();
+    List<EObject> rootTarget = new ArrayList<>();
     rootTarget.add((EObject) context.get(ITransitionConstants.MERGE_TARGET_CONTAINER));
 
-    IEditableModelScope targetScope = new TargetModelScope(rootTarget, context);
+    TargetModelScope targetScope = new TargetModelScope(rootTarget, context);
     context.put(ITransitionConstants.MERGE_TARGET_SCOPE, targetScope);
-
-    ((PartialRootedModelScope) targetScope).build(getTargetFilter(context));
+    targetScope.build(getTargetFilter(context));
 
     return Status.OK_STATUS;
   }
@@ -127,7 +124,7 @@ public class InitializeDiffMergeFromTransformationActivity extends AbstractActiv
     }
     context.put(ITransitionConstants.MERGE_DIFFERENCES_HANDLER, handler);
     IStatus status = handler.init(context);
-    if ((handler != null) && (handler instanceof IMergeHandler)) {
+    if (handler instanceof IMergeHandler) {
       initializeCategoriesHandlers(context, (IMergeHandler) handler, activityParams);
     }
 

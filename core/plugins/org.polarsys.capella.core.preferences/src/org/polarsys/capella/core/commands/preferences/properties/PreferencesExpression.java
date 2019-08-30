@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -110,11 +110,13 @@ public class PreferencesExpression extends Expression {
 		return EvaluationResult.valueOf(property.test(element, fArgs, fExpectedValue));
 	}
 
+	@Override
 	public void collectExpressionInfo(ExpressionInfo info) {
 		info.markDefaultVariableAccessed();
 		info.addAccessedPropertyName(fNamespace + PROP_SEP + fProperty);
 	}
 
+	@Override
 	public boolean equals(final Object object) {
 		if (!(object instanceof PreferencesExpression))
 			return false;
@@ -124,7 +126,14 @@ public class PreferencesExpression extends Expression {
 			&& this.fForcePluginActivation == that.fForcePluginActivation
 			&& equals(this.fArgs, that.fArgs) && equals(this.fExpectedValue, that.fExpectedValue);
 	}
+	
+	@Override
+	public int hashCode() {
+		// To satisfy Sonar
+		return super.hashCode();
+	}
 
+	@Override
 	protected int computeHashCode() {
 		return HASH_INITIAL * HASH_FACTOR + hashCode(fArgs)
 			* HASH_FACTOR + hashCode(fExpectedValue)
@@ -139,7 +148,7 @@ public class PreferencesExpression extends Expression {
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		StringBuffer args= new StringBuffer();
+		StringBuilder args= new StringBuilder();
 		for (int i= 0; i < fArgs.length; i++) {
 			Object arg= fArgs[i];
 			if (arg instanceof String) {
@@ -180,7 +189,7 @@ public class PreferencesExpression extends Expression {
 		IActivity a = activityManager.getActivity("org.eclipse.ui.actions");
 		IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow() ;
 		
-		IMenuService mSvc = (IMenuService) window.getService(IMenuService.class);
+		IMenuService mSvc = window.getService(IMenuService.class);
 		
 		
 		
@@ -189,6 +198,4 @@ public class PreferencesExpression extends Expression {
 		((TreeSelection) selection).getFirstElement() ;
 
 	}
-	
-	
 }

@@ -96,6 +96,7 @@ import org.polarsys.capella.core.data.requirement.RequirementPackage;
 import org.polarsys.capella.core.data.requirement.impl.RequirementPackageImpl;
 import org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage;
 import org.polarsys.capella.core.data.sharedmodel.impl.SharedmodelPackageImpl;
+import org.polarsys.kitalpha.emde.model.EmdePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -438,7 +439,10 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		isInited = true;
 
 		// Initialize simple dependencies
+		ModellingcorePackage.eINSTANCE.eClass();
+		EmdePackage.eINSTANCE.eClass();
 		ActivityPackage.eINSTANCE.eClass();
+		BehaviorPackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
 		CapellamodellerPackageImpl theCapellamodellerPackage = (CapellamodellerPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CapellamodellerPackage.eNS_URI) instanceof CapellamodellerPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CapellamodellerPackage.eNS_URI) : CapellamodellerPackage.eINSTANCE);
@@ -2279,14 +2283,12 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		createResource(eNS_URI);
 
 		// Create annotations
-		// http://www.polarsys.org/kitalpha/dsl/2007/dslfactory
-		createDslfactoryAnnotations();
+		// http://www.polarsys.org/kitalpha/emde/1.0.0/extension
+		createExtensionAnnotations();
 		// http://www.polarsys.org/kitalpha/ecore/documentation
 		createDocumentationAnnotations();
 		// http://www.polarsys.org/capella/semantic
 		createSemanticAnnotations();
-		// http://www.polarsys.org/kitalpha/emde/1.0.0/extension
-		createExtensionAnnotations();
 		// http://www.polarsys.org/capella/2007/BusinessInformation
 		createBusinessInformationAnnotations();
 		// http://www.polarsys.org/capella/2007/UML2Mapping
@@ -2299,26 +2301,6 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		createDerivedAnnotations();
 		// http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore
 		createIgnoreAnnotations();
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://www.polarsys.org/kitalpha/dsl/2007/dslfactory</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createDslfactoryAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$	
-		addAnnotation
-		  (this, 
-		   source, 
-		   new String[] {
-			 "trackResourceModification", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "useUUIDs", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });
 	}
 
 	/**
@@ -6467,221 +6449,309 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		  (getSequenceMessage_InvokedOperation(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "SequenceMessage.receivingEnd.event(self, ero);\r\n\tEventReceiptOperation.operation(ero, target);\r\n} or {\r\n\tSequenceMessage.sendingEnd.event(self, eso);\r\n\tEventSentOperation.operation(eso, target);\r\n" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getSequenceMessage_SendingPart(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "sendingEnd.covered.representedInstance" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getSequenceMessage_ReceivingPart(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "receivingEnd.covered.representedInstance" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getSequenceMessage_SendingFunction(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "sendingEnd.covered.representedInstance" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getSequenceMessage_ReceivingFunction(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "receivingEnd.covered.representedInstance" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getScenario_ContainedFunctions(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ownedInstanceRoles.representedInstance" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getScenario_ContainedParts(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ownedInstanceRoles.representedInstance" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getScenario_ReferencedScenarios(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "Scenario.ownedTimeLapses(self, iu);\r\nInteractionUse.referencedScenario(iu, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getScenario_RealizedScenarios(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "Scenario.outgoingTraces(self, sr);\r\nScenarioRealization.realizedScenario(sr, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getScenario_RealizingScenarios(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "Scenario.incomingTraces(self, sr);\r\nScenarioRealization.realizingScenario(sr, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getMessageEnd_Message(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "SequenceMessage.sendingEnd(target, self);\r\n} or {\r\n\tSequenceMessage.receivingEnd(target, self);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getExecution_Covered(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "Execution.start.coveredInstanceRoles(self, target);\r\n} or {\r\n\tExecution.finish.coveredInstanceRoles(self, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getExecutionEnd_Execution(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "Execution.start(target, self);\r\n} or {\r\n\tExecution.finish(target, self);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getInstanceRole_AbstractEnds(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "covered" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractEnd_Covered(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "coveredInstanceRoles" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractCapabilityRealization_RealizedCapability(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "targetElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractCapabilityRealization_RealizingCapability(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "sourceElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractCapability_IncomingCapabilityAllocation(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "incomingTraces" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractCapability_OutgoingCapabilityAllocation(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "outgoingTraces" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractCapability_Extending(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "extended" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractCapability_SubGeneralizations(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "^super" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractCapability_Including(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "included" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractCapability_Super(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "superGeneralizations.^super" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractCapability_Sub(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "subGeneralizations.sub" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractCapability_IncludedAbstractCapabilities(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "includes.included" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractCapability_IncludingAbstractCapabilities(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "AbstractCapabilityInclude.included(aci, self);\r\nAbstractCapabilityInclude.inclusion(aci, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractCapability_ExtendedAbstractCapabilities(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "^extends.extended" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractCapability_ExtendingAbstractCapabilities(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "AbstractCapabilityExtend.extended(ace, self);\r\nAbstractCapabilityExtend.^extension(ace, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractCapability_InvolvedAbstractFunctions(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "AbstractCapability.involvedInvolvements(self, afaci);\r\nAbstractFunctionAbstractCapabilityInvolvement.function(afaci, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractCapability_InvolvedFunctionalChains(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "AbstractCapability.involvedInvolvements(self, fcaci);\r\nFunctionalChainAbstractCapabilityInvolvement.functionalChain(fcaci, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractCapabilityExtend_Extension(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "^extends" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractCapabilityExtensionPoint_AbstractCapability(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "abstractCapabilityExtensionPoints" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractCapabilityGeneralization_Sub(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "superGeneralizations" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractCapabilityInclude_Inclusion(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "includes" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getInteractionState_Covered(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "coveredInstanceRoles" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getInteractionUse_ActualGates(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ownedGates" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getCombinedFragment_ExpressionGates(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ownedGates" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFragmentEnd_AbstractFragment(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "AbstractFragment.start(target, self);\r\n} or {\r\n\tAbstractFragment.finish(target, self);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionalChainAbstractCapabilityInvolvement_Capability(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "involver" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionalChainAbstractCapabilityInvolvement_FunctionalChain(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "involved" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractFunctionAbstractCapabilityInvolvement_Capability(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "involver" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractFunctionAbstractCapabilityInvolvement_Function(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "involved" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getScenarioRealization_RealizedScenario(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "targetElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getScenarioRealization_RealizingScenario(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "sourceElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 

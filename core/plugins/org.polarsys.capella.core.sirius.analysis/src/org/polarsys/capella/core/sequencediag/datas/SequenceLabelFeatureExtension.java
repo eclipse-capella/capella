@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,88 +27,117 @@ import org.eclipse.sirius.viewpoint.description.FeatureExtensionDescription;
 
 public class SequenceLabelFeatureExtension implements DFeatureExtension {
 
-	public EClass eClass() {
-		return null;
-	}
+    @Override
+    public EClass eClass() {
+        return null;
+    }
 
-	public Resource eResource() {
-		return null;
-	}
+    @Override
+    public Resource eResource() {
+        return null;
+    }
 
-	public EObject eContainer() {
-		return null;
-	}
+    @Override
+    public EObject eContainer() {
+        return null;
+    }
 
-	public EStructuralFeature eContainingFeature() {
-		return null;
-	}
+    @Override
+    public EStructuralFeature eContainingFeature() {
+        return null;
+    }
 
-	public EReference eContainmentFeature() {
-		return null;
-	}
+    @Override
+    public EReference eContainmentFeature() {
+        return null;
+    }
 
-	public EList<EObject> eContents() {
-		return null;
-	}
+    @Override
+    public EList<EObject> eContents() {
+        return null;
+    }
 
-	public TreeIterator<EObject> eAllContents() {
-		return null;
-	}
+    @Override
+    public TreeIterator<EObject> eAllContents() {
+        return null;
+    }
 
-	public boolean eIsProxy() {
-		return false;
-	}
+    @Override
+    public boolean eIsProxy() {
+        return false;
+    }
 
-	public EList<EObject> eCrossReferences() {
-		return null;
-	}
+    @Override
+    public EList<EObject> eCrossReferences() {
+        return null;
+    }
 
-	public Object eGet(EStructuralFeature feature) {
-		return null;
-	}
+    @Override
+    public Object eGet(EStructuralFeature feature) {
+        return null;
+    }
 
-	public Object eGet(EStructuralFeature feature, boolean resolve) {
-		return null;
-	}
+    @Override
+    public Object eGet(EStructuralFeature feature, boolean resolve) {
+        return null;
+    }
 
-	public void eSet(EStructuralFeature feature, Object newValue) {
-		
-	}
+    @Override
+    public void eSet(EStructuralFeature feature, Object newValue) {
 
-	public boolean eIsSet(EStructuralFeature feature) {
-		return false;
-	}
+    }
 
-	public void eUnset(EStructuralFeature feature) {
-		
-	}
+    @Override
+    public boolean eIsSet(EStructuralFeature feature) {
+        return false;
+    }
 
-	public Object eInvoke(EOperation operation, EList<?> arguments)
-			throws InvocationTargetException {
-		return null;
-	}
+    @Override
+    public void eUnset(EStructuralFeature feature) {
 
-	public EList<Adapter> eAdapters() {
-		return null;
-	}
+    }
 
-	public boolean eDeliver() {
-		return false;
-	}
+    @Override
+    public Object eInvoke(EOperation operation, EList<?> arguments) throws InvocationTargetException {
+        return null;
+    }
 
-	public void eSetDeliver(boolean deliver) {
-		
-	}
+    @Override
+    public EList<Adapter> eAdapters() {
+        return null;
+    }
 
-	public void eNotify(Notification notification) {
-		
-	}
+    @Override
+    public boolean eDeliver() {
+        return false;
+    }
 
-	public FeatureExtensionDescription getDescription() {
-		return null;
-	}
+    @Override
+    public void eSetDeliver(boolean deliver) {
 
-	public void setDescription(FeatureExtensionDescription value) {
-		
-	}
+    }
+
+    @Override
+    public void eNotify(Notification notification) {
+
+    }
+
+    @Override
+    public FeatureExtensionDescription getDescription() {
+        return null;
+    }
+
+    @Override
+    public void setDescription(FeatureExtensionDescription value) {
+
+    }
+
+    @Override
+    public String getUid() {
+        return null;
+    }
+
+    @Override
+    public void setUid(String value) {
+    }
 }

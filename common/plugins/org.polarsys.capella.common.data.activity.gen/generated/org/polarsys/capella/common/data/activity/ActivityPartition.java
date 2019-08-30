@@ -174,6 +174,7 @@ public interface ActivityPartition extends ActivityGroup, AbstractNamedElement {
 	 * @return the value of the '<em>Super Partition</em>' reference.
 	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityPartition_SuperPartition()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='superGroup'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Partition immediately containing the partition.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -200,6 +201,7 @@ public interface ActivityPartition extends ActivityGroup, AbstractNamedElement {
 	 * @return the value of the '<em>Sub Partitions</em>' reference list.
 	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityPartition_SubPartitions()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='subGroups'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Partitions immediately contained in the partition.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ActivityPartition::subpartition' explanation='Derived and transient' constraints='none'"
 	 * @generated

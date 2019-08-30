@@ -53,14 +53,14 @@ public class ComponentExchangeAllocationHelper {
 
 	protected ComponentExchange getComponentExchangeAllocated(ComponentExchangeAllocation element) {
 		TraceableElement ret = element.getTargetElement();
-		if(null != ret && ret instanceof ComponentExchange)
+		if(ret instanceof ComponentExchange)
 			return (ComponentExchange) ret;
 		return null;
 	}
 
 	protected ComponentExchangeAllocator getComponentExchangeAllocator(ComponentExchangeAllocation element) {
 		TraceableElement ret = element.getSourceElement();
-		if(null != ret && ret instanceof ComponentExchangeAllocator)
+		if(ret instanceof ComponentExchangeAllocator)
 			return (ComponentExchangeAllocator) ret;
 		return null;
 	}

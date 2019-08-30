@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,8 +17,9 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-
+import org.eclipse.ui.handlers.HandlerUtil;
 import org.polarsys.capella.common.ui.services.commands.AbstractUiHandler;
+import org.polarsys.capella.common.ui.services.commands.ActionCommandDelegate;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.ImpactAnalysisAction;
 
 /**
@@ -28,13 +29,11 @@ public class ShowImpactAnalysisHandler extends AbstractUiHandler {
   /**
    * {@inheritDoc}
    */
-  public Object execute(ExecutionEvent event_p) throws ExecutionException {
-    // Get the active part.
-    IWorkbenchPart activePart = (IWorkbenchPart) getVariableValue(event_p, ACTIVE_PART_VARIABLE);
-    // Open Impact Analysis Handler.
+  public Object execute(ExecutionEvent event) throws ExecutionException {
     ImpactAnalysisAction action = new ImpactAnalysisAction();
-    if (action.selectionChanged(activePart.getSite().getSelectionProvider().getSelection())) {
-      action.run(null);
+    ActionCommandDelegate delegate = new ActionCommandDelegate(event);
+    if (action.selectionChanged(HandlerUtil.getCurrentSelection(event))) {
+      action.run(delegate);
     }
     return null;
   }

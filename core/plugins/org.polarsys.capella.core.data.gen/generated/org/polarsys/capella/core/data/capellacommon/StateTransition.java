@@ -270,6 +270,7 @@ public interface StateTransition extends NamedElement, Relationship {
 	 * @return the value of the '<em>Realized State Transitions</em>' reference list.
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getStateTransition_RealizedStateTransitions()
 	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='StateTransitionRealization.realizingStateTransition(asr, self);\r\nStateTransitionRealization.realizedStateTransition(asr, target);\r\n'"
 	 * @generated
 	 */
 
@@ -288,6 +289,7 @@ public interface StateTransition extends NamedElement, Relationship {
 	 * @return the value of the '<em>Realizing State Transitions</em>' reference list.
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getStateTransition_RealizingStateTransitions()
 	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='StateTransitionRealization.realizedStateTransition(asr, self);\r\nStateTransitionRealization.realizingStateTransition(asr, target);\r\n'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 * @generated
 	 */

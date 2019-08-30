@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.test.diagram.tools.ju;singleton:=true
-Bundle-Version: 1.2.2.qualifier
+Bundle-Version: 1.3.1.qualifier
 Bundle-Activator: org.polarsys.capella.test.diagram.tools.ju.TestDiagramToolsPlugin
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.runtime,
@@ -12,22 +12,20 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.sirius.analysis,
  org.eclipse.sirius.diagram,
  org.eclipse.sirius.common.ui,
- org.polarsys.capella.test.diagram.layout.ju
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+ org.polarsys.capella.test.diagram.layout.ju,
+ org.polarsys.capella.core.diagram.helpers
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.test.diagram.tools.ju,
  org.polarsys.capella.test.diagram.tools.ju.cdb,
  org.polarsys.capella.test.diagram.tools.ju.diagram.actions,
  org.polarsys.capella.test.diagram.tools.ju.es,
  org.polarsys.capella.test.diagram.tools.ju.idb,
- org.polarsys.capella.test.diagram.tools.ju.lab,
  org.polarsys.capella.test.diagram.tools.ju.mcb,
  org.polarsys.capella.test.diagram.tools.ju.model,
  org.polarsys.capella.test.diagram.tools.ju.ms,
  org.polarsys.capella.test.diagram.tools.ju.msm,
- org.polarsys.capella.test.diagram.tools.ju.pab,
  org.polarsys.capella.test.diagram.tools.ju.pd,
- org.polarsys.capella.test.diagram.tools.ju.sab,
  org.polarsys.capella.test.diagram.tools.ju.sdfb,
  org.polarsys.capella.test.diagram.tools.ju.testsuites.main,
  org.polarsys.capella.test.diagram.tools.ju.testsuites.partial,

@@ -31,7 +31,7 @@ public class SetUnsynchronizedStep extends AbstractDiagramStep<DiagramContext> {
 
   @Override
   public DiagramContext getResult() {
-    return getExecutionContext();
+    return getDiagramContext();
   }
 
   @Override
@@ -39,11 +39,11 @@ public class SetUnsynchronizedStep extends AbstractDiagramStep<DiagramContext> {
 
     TestHelper.getExecutionManager(getExecutionContext().getSession()).execute(new AbstractReadWriteCommand() {
       public void run() {
-        getExecutionContext().getDiagram().setSynchronized(_synchronized);
+        getDiagramContext().getDiagram().setSynchronized(_synchronized);
         if (_synchronized) {
-          Assert.assertTrue(getExecutionContext().getDiagram().isSynchronized());
+          Assert.assertTrue(getDiagramContext().getDiagram().isSynchronized());
         } else {
-          Assert.assertTrue(!getExecutionContext().getDiagram().isSynchronized());
+          Assert.assertTrue(!getDiagramContext().getDiagram().isSynchronized());
         }
       }
     });

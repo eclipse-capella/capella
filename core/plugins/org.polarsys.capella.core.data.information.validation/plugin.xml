@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+  Copyright (c) 2018, 2019 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -13,7 +13,7 @@
 <plugin>
    <extension point="org.eclipse.emf.validation.constraintProviders">
      <constraintProvider>
-         <package namespaceUri="http://www.polarsys.org/capella/core/information/1.2.0">
+         <package namespaceUri="http://www.polarsys.org/capella/core/information/1.3.0">
          </package>
          <constraints categories="capella.category/transition/consistency/components">
             <constraint class="org.polarsys.capella.core.data.information.validation.port.PR01_PortRealization_Realization" id="TC_DC_01" isEnabledByDefault="true" lang="Java" mode="Batch" name="TC_DC_01 - Port Allocation" severity="WARNING" statusCode="1">
@@ -62,7 +62,7 @@ You should perform another transition of the ExchangeItemElement from the lower 
                <target class="ExchangeItemElement">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.exchangeitem.ExchangeItemMechanismRestriction" id="TC_I_06" isEnabledByDefault="true" lang="Java" mode="Batch" name="TC_I_06 - PA ExchangeItem restriction on UNSET exchangeMechanism" severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.exchangeitem.ExchangeItemMechanismRestriction" id="TC_I_06" isEnabledByDefault="true" lang="Java" mode="Batch" name="TC_I_06 - PA ExchangeItem restriction on UNSET exchangeMechanism" severity="WARNING" statusCode="1">
                <message>
                   The {0} (ExchangeItem) must not have an UNSET Exchange Mechanism.
                </message>
@@ -307,7 +307,7 @@ This rule checks that an element doesn&apos;t contain a naming conflict between 
                <target class="Property">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.union.UnionPropertyQualifierConsistency" id="DWF_D_13" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_13 Consistency of Qualifier values" severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.union.UnionPropertyQualifierConsistency" id="DWF_D_13" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_13 - Consistency of Qualifier values" severity="ERROR" statusCode="1">
                <message>
                   Qualifier nature  {0}({1}) of  {2}(UnionProperty) is not compatible with the nature of the Discriminant Type ({3}).
                </message>
@@ -595,12 +595,12 @@ contains the partition {2} (Partitionable Element)  typed by {0} (Partitionable 
          </constraints>
       </constraintProvider>
      <constraintProvider>
-        <package namespaceUri="http://www.polarsys.org/capella/core/information/datavalue/1.2.0">
+        <package namespaceUri="http://www.polarsys.org/capella/core/information/datavalue/1.3.0">
         </package>
-        <package namespaceUri="http://www.polarsys.org/capella/core/information/datatype/1.2.0">
+        <package namespaceUri="http://www.polarsys.org/capella/core/information/datatype/1.3.0">
         </package>
         <constraints categories="capella.category/design/well-formedness/data">
-           <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.LiteralBooleanValueType" id="DWF_D_26" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_26 LiteralBooleanValuel Type" severity="WARNING" statusCode="1">
+           <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.LiteralBooleanValueType" id="DWF_D_26" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_26 - LiteralBooleanValuel Type" severity="WARNING" statusCode="1">
               <message>
                  {0}(EnumerationLiteral) must be typed by its parent {1}(BooleanType).
               </message>
@@ -630,14 +630,14 @@ contains the partition {2} (Partitionable Element)  typed by {0} (Partitionable 
               <target class="AbstractBooleanValue">
               </target>
            </constraint>
-           <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.EnumerationValueFamilyTypeCheck" id="DWF_D_35" isEnabledByDefault="false" lang="Java" mode="Batch" name="DWF_D_35 - Enumeration Value Family Type check" severity="WARNING" statusCode="1">
+           <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.EnumerationReferenceTypeCheck" id="DWF_D_35" isEnabledByDefault="false" lang="Java" mode="Batch" name="DWF_D_35 - Enumeration Value Family Type check" severity="WARNING" statusCode="1">
               <message>
                  &quot;{0}&quot; (DataValue) referenced as {1} should be typed.
               </message>
               <description>
-                 This rule ensures that EnumerationLiteral and EnumerationReference are Typed.
+                 This rule enforces that EnumerationReference elements are Typed.
               </description>
-              <target class="AbstractEnumerationValue">
+              <target class="EnumerationReference">
               </target>
            </constraint>
            <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.StringValueFamilyTypeCheck" id="DWF_D_33" isEnabledByDefault="false" lang="Java" mode="Batch" name="DWF_D_33 - String Value Family Type check" severity="WARNING" statusCode="1">
@@ -690,6 +690,24 @@ contains the partition {2} (Partitionable Element)  typed by {0} (Partitionable 
               <target class="DataValue">
               </target>
            </constraint>
+            <constraint 
+            	class="org.polarsys.capella.core.data.information.validation.dataValue.EnumerationLiteralType" 
+            	id="DWF_D_56" 
+            	isEnabledByDefault="true" 
+            	lang="Java" 
+            	mode="Batch" 
+            	name="DWF_D_56 - EnumerationLiteral Type check" 
+            	severity="WARNING" 
+            	statusCode="1">
+              <message>
+                 "{0}" (EnumerationLiteral) with current type {1} should be typed by its parent {2}.
+              </message>
+              <description>
+                 This rule enforces that EnumerationLiteral elements are typed by their parent.
+              </description>
+              <target class="EnumerationLiteral">
+              </target>
+           </constraint>
            <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.EnumerationLiteralDomainValueCheck" id="DWF_D_44" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_44 - Enumeration Literals Domain Values Constraints" severity="WARNING" statusCode="1">
               <message>
                  Enumeration literals  of {0}(Enumeration) must have a domain value in concordance with the domain type of the parent enumeration {0}(Enumeration): {0}(Enumeration) is {1}, {2}
@@ -700,11 +718,33 @@ contains the partition {2} (Partitionable Element)  typed by {0} (Partitionable 
               <target class="Enumeration">
               </target>
            </constraint>
+           <constraint
+                 class="org.polarsys.capella.core.data.information.validation.dataValue.DataValueContainingFeatureCheck"
+                 id="DWF_D_57"
+                 isEnabledByDefault="true"
+                 lang="Java"
+                 mode="Batch"
+                 name="DWF_D_57 - DataValue Containing Feature"
+                 severity="ERROR"
+                 statusCode="1">
+              <message>
+                 {0} ({1}) is aggregated in ownedDataValues feature of {2} ({3}) instead of ownedLiterals feature.
+              </message>
+              <description>
+                 This rule checks that the EnumerationLiteral and the LiteralBooleanValue are aggregated in the ownedLiterals feature of the Enumeration or the BooleanType and not in the ownedDataValues feature.
+              </description>
+              <target
+                    class="EnumerationLiteral">
+              </target>
+              <target
+                    class="LiteralBooleanValue">
+              </target>
+           </constraint>
         </constraints>
      </constraintProvider>
      <constraintProvider>
         <package
-              namespaceUri="http://www.polarsys.org/capella/core/information/communication/1.2.0">
+              namespaceUri="http://www.polarsys.org/capella/core/information/communication/1.3.0">
         </package>
         <constraints
               categories="capella.category/design/completeness">

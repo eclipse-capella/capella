@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -79,7 +79,7 @@ public class ScenarioRepresentation {
 
   private static final String SCENARIO_REPRESENTATION_LISTENER_EXTENSION_ID = "scenarioRepresentationListenerExtension"; //$NON-NLS-1$
   private Set<CapellaElement> clonedElements = null;
-  private List<IScenarioRepresentationListener> listeners = new ArrayList<IScenarioRepresentationListener>();
+  private List<IScenarioRepresentationListener> listeners = new ArrayList<>();
   private Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.REFINEMENT);
   private Tree<InteractionFragment> messageTree = null;
 
@@ -92,9 +92,9 @@ public class ScenarioRepresentation {
   public ScenarioRepresentation(Scenario scenario) {
     if (scenario != null) {
       this.scenario = scenario;
-      messageTree = new Tree<InteractionFragment>();
+      messageTree = new Tree<>();
 
-      Node<InteractionFragment> rootNode = new Node<InteractionFragment>(null);
+      Node<InteractionFragment> rootNode = new Node<>(null);
       messageTree.setRootElement(rootNode);
 
       /**
@@ -134,7 +134,7 @@ public class ScenarioRepresentation {
    */
   private void addClonedElement(CapellaElement elt) {
     if (null == clonedElements) {
-      clonedElements = new HashSet<CapellaElement>();
+      clonedElements = new HashSet<>();
     }
     clonedElements.add(elt);
   }
@@ -290,15 +290,13 @@ public class ScenarioRepresentation {
           /** adding traceability link */
           RefinementLinkExt.createRefinementTraceabilityLink(tgtExec, srcExec, scenario);
         }
-        else if (startMsgEnd == null) {
+        else if (startMsgEnd == null && finishMsgEnd instanceof ExecutionEnd) {
           // [Refinement] Scenario containing an asynchronous message into empty Physical/EPBS
-          if (finishMsgEnd instanceof ExecutionEnd) {
             Event execEvt = finishMsgEnd.getEvent();
             CapellaElementExt.cleanTraces(execEvt);
             execEvt.destroy();
             CapellaElementExt.cleanTraces(finishMsgEnd);
             finishMsgEnd.destroy();
-          }
         }
       }
     }
@@ -369,12 +367,8 @@ public class ScenarioRepresentation {
         for (CapellaElement role : rolesLst) {
           InstanceRole instRole = (InstanceRole) role;
           AbstractInstance cpntInst = instRole.getRepresentedInstance();
-          if (instRole.eContainer().equals(scenario)) {
-            if ((abstractInstance == null) || (cpntInst.equals(abstractInstance))) {
+          if (instRole.eContainer().equals(scenario) && (abstractInstance == null || cpntInst.equals(abstractInstance) || cpntInst instanceof SignalInstance)) {
               tgtRole = instRole;
-            } else if (cpntInst instanceof SignalInstance) {
-              tgtRole = instRole;
-            }
           }
         }
         if (tgtRole == null) {
@@ -416,7 +410,7 @@ public class ScenarioRepresentation {
    * @return the cloned 'InstanceRole'
    */
   private List<InstanceRole> cloneInstanceRoles(List<InstanceRole> srcRoles, AbstractInstance abstractInstance, NamedElement tgtElement) {
-    List<InstanceRole> tgtRoles = new ArrayList<InstanceRole>();
+    List<InstanceRole> tgtRoles = new ArrayList<>();
 
     for (InstanceRole srcRole : srcRoles) {
       if (tgtElement instanceof Component) {
@@ -620,7 +614,7 @@ public class ScenarioRepresentation {
     Node<InteractionFragment> clonedElt = null;
 
     if (srcElt != null) {
-      clonedElt = new Node<InteractionFragment>(null);
+      clonedElt = new Node<>(null);
 
       InteractionFragment interactionFragment = srcElt.getData();
       if (interactionFragment instanceof AbstractEnd) {
@@ -651,11 +645,9 @@ public class ScenarioRepresentation {
             } else if (abstractEnd instanceof ExecutionEnd) {
               ExecutionEnd srcExecEnd = (ExecutionEnd) abstractEnd;
               ExecutionEnd tgtExecEnd = cloneExecutionEnd(srcExecEnd);
-              if (tgtExecEnd != null) {
-                tgtExecEnd.getCoveredInstanceRoles().add(tgtRole);
-                if (!scenario.getOwnedInteractionFragments().contains(tgtExecEnd)) {
-                  scenario.getOwnedInteractionFragments().add(tgtExecEnd);
-                }
+              tgtExecEnd.getCoveredInstanceRoles().add(tgtRole);
+              if (!scenario.getOwnedInteractionFragments().contains(tgtExecEnd)) {
+                scenario.getOwnedInteractionFragments().add(tgtExecEnd);
               }
               clonedElt.setData(tgtExecEnd);
             }
@@ -676,23 +668,19 @@ public class ScenarioRepresentation {
         }
 
         FragmentEnd tgtFragmentEnd = cloneFragmentEnd(srcFragmentEnd, tgtFragment);
-        if (tgtFragmentEnd != null) {
-          if (tgtFragment instanceof InteractionUse) {
-            List<InstanceRole> tgtRoles = cloneInstanceRoles(srcFragmentEnd.getCoveredInstanceRoles(), part, tgtElement);
-            tgtFragmentEnd.getCoveredInstanceRoles().addAll(tgtRoles);
-          }
-          if (!scenario.getOwnedInteractionFragments().contains(tgtFragmentEnd)) {
-            scenario.getOwnedInteractionFragments().add(tgtFragmentEnd);
-          }
+        if (tgtFragment instanceof InteractionUse) {
+          List<InstanceRole> tgtRoles = cloneInstanceRoles(srcFragmentEnd.getCoveredInstanceRoles(), part, tgtElement);
+          tgtFragmentEnd.getCoveredInstanceRoles().addAll(tgtRoles);
+        }
+        if (!scenario.getOwnedInteractionFragments().contains(tgtFragmentEnd)) {
+          scenario.getOwnedInteractionFragments().add(tgtFragmentEnd);
         }
         clonedElt.setData(tgtFragmentEnd);
       } else if (interactionFragment instanceof InteractionOperand) {
         InteractionOperand srcOperand = (InteractionOperand) interactionFragment;
         InteractionOperand tgtOperand = cloneInteractionOperand(srcOperand);
-        if (tgtOperand != null) {
-          if (!scenario.getOwnedInteractionFragments().contains(tgtOperand)) {
-            scenario.getOwnedInteractionFragments().add(tgtOperand);
-          }
+        if (!scenario.getOwnedInteractionFragments().contains(tgtOperand)) {
+          scenario.getOwnedInteractionFragments().add(tgtOperand);
         }
         clonedElt.setData(tgtOperand);
       }
@@ -783,14 +771,10 @@ public class ScenarioRepresentation {
         }
       } else if (interactionFragment instanceof ExecutionEnd) {
         list.add(interactionFragment);
-      } else if (interactionFragment instanceof FragmentEnd) {
-        if (interactionFragment.eContainer() != null) {
+      } else if (interactionFragment instanceof FragmentEnd && interactionFragment.eContainer() != null) {
           list.add(interactionFragment);
-        }
-      } else if (interactionFragment instanceof InteractionOperand) {
-        if (interactionFragment.eContainer() != null) {
+      } else if (interactionFragment instanceof InteractionOperand && interactionFragment.eContainer() != null) {
           list.add(interactionFragment);
-        }
       }
 
       export(childNode, list);
@@ -803,7 +787,7 @@ public class ScenarioRepresentation {
    */
   public void export(ScenarioRepresentation srcTree) {
     if (scenario != null) {
-      List<InteractionFragment> newList = new ArrayList<InteractionFragment>();
+      List<InteractionFragment> newList = new ArrayList<>();
       export(getRootNode(), newList);
       scenario.getOwnedInteractionFragments().clear();
       scenario.getOwnedInteractionFragments().addAll(newList);
@@ -816,7 +800,7 @@ public class ScenarioRepresentation {
    *
    */
   private void fillCombinedFragment() {
-    List<CombinedFragment> emptyCBToBeRemoved = new ArrayList<CombinedFragment>();
+    List<CombinedFragment> emptyCBToBeRemoved = new ArrayList<>();
 
     for (TimeLapse timeLapse : scenario.getOwnedTimeLapses()) {
       if (timeLapse instanceof InteractionUse) {
@@ -881,82 +865,82 @@ public class ScenarioRepresentation {
   private void fillTree(List<InteractionFragment> msgList, Node<InteractionFragment> node) {
     Node<InteractionFragment> currentNode = node;
     for (InteractionFragment interactionFragment : msgList) {
-      if (interactionFragment instanceof MessageEnd) {
-        SequenceMessage msg = ((MessageEnd) interactionFragment).getMessage();
-        if (msg != null) {
-          MessageKind kind = msg.getKind();
-          /** logging */
-          String loggedMsg = MessageFormat.format(Messages.DebugScenarioContent, scenario.getName(), msg.getName(), kind);
-          logger.debug(new EmbeddedMessage(loggedMsg, IReportManagerDefaultComponents.REFINEMENT, scenario));
-
-          /** node creation */
-          Node<InteractionFragment> childNode = new Node<InteractionFragment>(currentNode, interactionFragment);
-          addLastChild(currentNode, childNode);
-
-          MessageEnd oppositeMsgEnd = MessageEndExt.getOppositeMessageEnd((MessageEnd) interactionFragment);
-          if (oppositeMsgEnd != null) {
-            Node<InteractionFragment> oppositeMsgEndNode = getNodeByData(oppositeMsgEnd);
-            if (oppositeMsgEndNode != null) {
-              oppositeMsgEndNode.oppositeNode = childNode;
-              childNode.oppositeNode = oppositeMsgEndNode;
-            }
-          }
-
-          if (kind != MessageKind.REPLY) {
-            if ((kind.equals(MessageKind.CREATE) || kind.equals(MessageKind.DELETE))
-                && MessageEndExt.getMessageEndType((MessageEnd) interactionFragment).equals(COMPONENT_TYPE.RECEIVER)) {
-              currentNode = currentNode.getParent();
-            } else {
-              currentNode = childNode;
-            }
-          } else {
-            currentNode = currentNode.getParent();
-          }
-        }
-      } else if (interactionFragment instanceof ExecutionEnd) {
-        /** node creation */
-        Node<InteractionFragment> childNode = new Node<InteractionFragment>(currentNode, interactionFragment);
-        addLastChild(currentNode, childNode);
-
-        /** goes two steps up */
-        currentNode = currentNode.getParent();
-        if (currentNode != null) {
-          currentNode = currentNode.getParent();
-        }
-      } else if (interactionFragment instanceof FragmentEnd) {
-        /** node creation */
-        Node<InteractionFragment> childNode = new Node<InteractionFragment>(currentNode, interactionFragment);
-
-        FRAGMENT_END_TYPE type = FragmentEndExt.getFragmentEndType((FragmentEnd) interactionFragment);
-        if (!type.equals(FRAGMENT_END_TYPE.FINISH)) {
-          addLastChild(currentNode, childNode);
-          currentNode = childNode;
-        } else {
-          Node<InteractionFragment> parentNode = currentNode.getFirstParentInstanceOf(InteractionPackage.Literals.FRAGMENT_END);
-          if (parentNode != null) {
-            addLastChild(parentNode, childNode);
-          } else {
-            addLastChild(currentNode, childNode);
-          }
-          currentNode = currentNode.getParent()/* .getParent() */;
-        }
-      } else if (interactionFragment instanceof InteractionOperand) {
-        /** node creation */
-        Node<InteractionFragment> childNode = new Node<InteractionFragment>(currentNode, interactionFragment);
-
-        Node<InteractionFragment> parentNode = currentNode.getFirstParentInstanceOf(InteractionPackage.Literals.FRAGMENT_END);
-        if (parentNode != null) {
-          addLastChild(parentNode, childNode);
-        } else {
-          addLastChild(currentNode, childNode);
-        }
-
-        currentNode = childNode;
-      } else if (interactionFragment instanceof InteractionState) {
-        /** node creation */
-        Node<InteractionFragment> childNode = new Node<InteractionFragment>(currentNode, interactionFragment);
-        addLastChild(currentNode, childNode);
-      }
+    	if (interactionFragment instanceof MessageEnd && currentNode != null) {
+    		SequenceMessage msg = ((MessageEnd) interactionFragment).getMessage();
+    		if (msg != null) {
+    			MessageKind kind = msg.getKind();
+    			/** logging */
+    			String loggedMsg = MessageFormat.format(Messages.DebugScenarioContent, scenario.getName(), msg.getName(), kind);
+    			logger.debug(new EmbeddedMessage(loggedMsg, IReportManagerDefaultComponents.REFINEMENT, scenario));
+    			
+    			/** node creation */
+    			Node<InteractionFragment> childNode = new Node<>(currentNode, interactionFragment);
+    			addLastChild(currentNode, childNode);
+    			
+    			MessageEnd oppositeMsgEnd = MessageEndExt.getOppositeMessageEnd((MessageEnd) interactionFragment);
+    			if (oppositeMsgEnd != null) {
+    				Node<InteractionFragment> oppositeMsgEndNode = getNodeByData(oppositeMsgEnd);
+    				if (oppositeMsgEndNode != null) {
+    					oppositeMsgEndNode.oppositeNode = childNode;
+    					childNode.oppositeNode = oppositeMsgEndNode;
+    				}
+    			}
+    			
+    			if (kind != MessageKind.REPLY) {
+    				if ((kind.equals(MessageKind.CREATE) || kind.equals(MessageKind.DELETE))
+    						&& MessageEndExt.getMessageEndType((MessageEnd) interactionFragment).equals(COMPONENT_TYPE.RECEIVER)) {
+    					currentNode = currentNode.getParent();
+    				} else {
+    					currentNode = childNode;
+    				}
+    			} else {
+    				currentNode = currentNode.getParent();
+    			}
+    		}
+    	} else if (interactionFragment instanceof ExecutionEnd && currentNode != null) {
+    		/** node creation */
+    		Node<InteractionFragment> childNode = new Node<>(currentNode, interactionFragment);
+    		addLastChild(currentNode, childNode);
+    		
+    		/** goes two steps up */
+    		currentNode = currentNode.getParent();
+    		if (currentNode != null) {
+    			currentNode = currentNode.getParent();
+    		}
+    	} else if (interactionFragment instanceof FragmentEnd && currentNode != null) {
+    		/** node creation */
+    		Node<InteractionFragment> childNode = new Node<>(currentNode, interactionFragment);
+    		
+    		FRAGMENT_END_TYPE type = FragmentEndExt.getFragmentEndType((FragmentEnd) interactionFragment);
+    		if (!type.equals(FRAGMENT_END_TYPE.FINISH)) {
+    			addLastChild(currentNode, childNode);
+    			currentNode = childNode;
+    		} else {
+    			Node<InteractionFragment> parentNode = currentNode.getFirstParentInstanceOf(InteractionPackage.Literals.FRAGMENT_END);
+    			if (parentNode != null) {
+    				addLastChild(parentNode, childNode);
+    			} else {
+    				addLastChild(currentNode, childNode);
+    			}
+    			currentNode = currentNode.getParent()/* .getParent() */;
+    		}
+    	} else if (interactionFragment instanceof InteractionOperand && currentNode != null) {
+    		/** node creation */
+    		Node<InteractionFragment> childNode = new Node<>(currentNode, interactionFragment);
+    		
+    		Node<InteractionFragment> parentNode = currentNode.getFirstParentInstanceOf(InteractionPackage.Literals.FRAGMENT_END);
+    		if (parentNode != null) {
+    			addLastChild(parentNode, childNode);
+    		} else {
+    			addLastChild(currentNode, childNode);
+    		}
+    		
+    		currentNode = childNode;
+    	} else if (interactionFragment instanceof InteractionState && currentNode != null) {
+    		/** node creation */
+    		Node<InteractionFragment> childNode = new Node<>(currentNode, interactionFragment);
+    		addLastChild(currentNode, childNode);
+    	}
     }
   }
 
@@ -1089,8 +1073,7 @@ public class ScenarioRepresentation {
   public void updateOperationNode(Node<InteractionFragment> srcNode, Node<InteractionFragment> tgtNode) {
     InteractionFragment srcAbstractEnd = srcNode.getData();
     InteractionFragment tgtAbstractEnd = tgtNode.getData();
-    if ((srcAbstractEnd != null) && (tgtAbstractEnd != null)) {
-      if (srcAbstractEnd instanceof MessageEnd) {
+    if ((srcAbstractEnd instanceof MessageEnd) && (tgtAbstractEnd != null)) {
         MessageEnd srcMsgEnd = (MessageEnd) srcAbstractEnd;
         MessageEnd tgtMsgEnd = (MessageEnd) tgtAbstractEnd;
 
@@ -1098,8 +1081,7 @@ public class ScenarioRepresentation {
         switch (type) {
           case RECEIVER: {
             Event srcEvt = srcMsgEnd.getEvent();
-            if (srcEvt != null) {
-              if (srcEvt instanceof EventReceiptOperation) {
+            if (srcEvt instanceof EventReceiptOperation) {
                 AbstractEventOperation targetOp = null;
                 AbstractEventOperation srcOp = ((EventReceiptOperation) srcEvt).getOperation();
                 AbstractEventOperation deletegatedOp = getOperation(srcMsgEnd, tgtMsgEnd.getMessage(), srcOp);
@@ -1109,12 +1091,11 @@ public class ScenarioRepresentation {
                   targetOp = eventReceiptOp.getOperation();
                 }
 
-                if (targetOp != deletegatedOp) {
+                if (targetOp != deletegatedOp && eventReceiptOp != null) {
                   eventReceiptOp.setOperation(deletegatedOp);
                   SequenceMessage tgtSeqMsg = tgtMsgEnd.getMessage();
                   tgtSeqMsg.setName(srcMsgEnd.getMessage().getName());
                 }
-              }
             }
             break;
           }
@@ -1130,7 +1111,7 @@ public class ScenarioRepresentation {
                 targetOp = eventSentOp.getOperation();
               }
 
-              if (targetOp != delegatedOp) {
+              if (targetOp != delegatedOp && eventSentOp != null) {
                 eventSentOp.setOperation(delegatedOp);
                 SequenceMessage tgtSeqMsg = tgtMsgEnd.getMessage();
                 tgtSeqMsg.setName(srcMsgEnd.getMessage().getName());
@@ -1142,7 +1123,6 @@ public class ScenarioRepresentation {
           case UNDEFINED:
           break;
         }
-      }
     }
   }
 
@@ -1153,120 +1133,6 @@ public class ScenarioRepresentation {
     if (messageTree != null) {
       return messageTree.walk(messageTree.getRootElement());
     }
-    return null;
+    return Collections.emptyList();
   }
-
-  /**
-   * Check if the Interface source operation have been changed still the previous refinement
-   */
-  // private boolean checkInterfaceReafectation(Node<AbstractEnd> srcNode, Node<AbstractEnd> tgtNode) {
-  // AbstractEnd srcAbstractEnd = srcNode.getData();
-  // AbstractEnd tgtAbstractEnd = tgtNode.getData();
-  // if (srcAbstractEnd != null) {
-  // if (srcAbstractEnd instanceof MessageEnd) {
-  // MessageEnd srcMsgEnd = (MessageEnd) srcAbstractEnd;
-  // MessageEnd tgtMsgEnd = (MessageEnd) tgtAbstractEnd;
-  //
-  // COMPONENT_TYPE type = MessageEndExt.getMessageEndType(srcMsgEnd);
-  // switch (type) {
-  // case RECEIVER: {
-  // Event srcEvt = srcMsgEnd.getEvent();
-  // if (srcEvt != null) {
-  // if (srcEvt instanceof EventReceiptOperation) {
-  // AbstractEventOperation targetOp = null;
-  // AbstractEventOperation srcOp = ((EventReceiptOperation) srcEvt).getOperation();
-  // AbstractEventOperation deletegatedOp = getOperation(srcMsgEnd, tgtMsgEnd.getMessage(), srcOp);
-  //
-  // EventReceiptOperation eventReceiptOp = (EventReceiptOperation) tgtMsgEnd.getEvent();
-  // if (eventReceiptOp != null)
-  // targetOp = eventReceiptOp.getOperation();
-  //
-  // // Check Operation's Interface definition
-  // if (targetOp.eContainer() != deletegatedOp.eContainer()) {
-  // return true;
-  // }
-  // }
-  // }
-  // break;
-  // }
-  // case SENDER: {
-  // EventSentOperation srcEvt = (EventSentOperation) srcMsgEnd.getEvent();
-  // if (srcEvt != null) {
-  // AbstractEventOperation targetOp = null;
-  // AbstractEventOperation srcOp = srcEvt.getOperation();
-  // AbstractEventOperation delegatedOp = getOperation(srcMsgEnd, tgtMsgEnd.getMessage(), srcOp);
-  //
-  // EventSentOperation eventSentOp = (EventSentOperation) tgtMsgEnd.getEvent();
-  // if (eventSentOp != null)
-  // targetOp = eventSentOp.getOperation();
-  //
-  // if (targetOp.eContainer() != delegatedOp.eContainer()) {
-  // return true;
-  // }
-  // }
-  // break;
-  // }
-  // case UNDEFINED:
-  // break;
-  // }
-  // }
-  // }
-  // return false;
-  // }
-
-  /**
-   *
-   */
-  // private void removeRefinementLinkFromNode(Node<AbstractEnd> srcNode, Node<AbstractEnd> tgtNode) {
-  // AbstractEnd srcAbstractEnd = srcNode.getData();
-  // AbstractEnd tgtAbstractEnd = tgtNode.getData();
-  // if (srcAbstractEnd != null && srcAbstractEnd instanceof MessageEnd) {
-  // removeRefinementLinkFromMessageEnd((MessageEnd) srcAbstractEnd, (MessageEnd) tgtAbstractEnd);
-  // removeRefinementLinkFromMessageEnd(MessageEndExt.getOppositeMessageEnd((MessageEnd) srcAbstractEnd),
-  // MessageEndExt.getOppositeMessageEnd((MessageEnd)tgtAbstractEnd));
-  // }
-  //	  
-  // // For opposite Branch
-  // SequenceMessage srcOppositeBranch = SequenceMessageExt.getOppositeSequenceMessage(((MessageEnd) srcAbstractEnd).getMessage());
-  // SequenceMessage tgtOppositeBranch = SequenceMessageExt.getOppositeSequenceMessage(((MessageEnd) tgtAbstractEnd).getMessage());
-  // AbstractEnd srcOppositeAbstractEnd = srcOppositeBranch.getSendingEnd();
-  // AbstractEnd tgtOppositeAbstractEnd = tgtOppositeBranch.getSendingEnd();
-  // if (srcOppositeAbstractEnd != null && srcOppositeAbstractEnd instanceof MessageEnd) {
-  // removeRefinementLinkFromMessageEnd((MessageEnd) srcOppositeAbstractEnd, (MessageEnd) tgtOppositeAbstractEnd);
-  // removeRefinementLinkFromMessageEnd(MessageEndExt.getOppositeMessageEnd((MessageEnd) srcOppositeAbstractEnd),
-  // MessageEndExt.getOppositeMessageEnd((MessageEnd)tgtOppositeAbstractEnd));
-  // }
-  // }
-
-  /**
-   *
-   */
-  // private void removeRefinementLinkFromMessageEnd(MessageEnd srcMsgEnd, MessageEnd tgtMsgEnd) {
-  // Event srcEvt = srcMsgEnd.getEvent();
-  // Event tgtEvt = tgtMsgEnd.getEvent();
-  // SequenceMessage srcSeqMsg = srcMsgEnd.getMessage();
-  // SequenceMessage tgtSeqMsg = tgtMsgEnd.getMessage();
-  //
-  // removeRefinementLink(srcMsgEnd, tgtMsgEnd);
-  // removeRefinementLink(srcEvt, tgtEvt);
-  // removeRefinementLink(srcSeqMsg, tgtSeqMsg);
-  // }
-
-  /**
-   *
-   */
-  // private void removeRefinementLink(CapellaElement srcElt, CapellaElement tgtElt) {
-  // for (AbstractTrace lnk : srcElt.getIncomingTraces()) {
-  // if (lnk instanceof RefinementLink) {
-  // TraceableElement elt = lnk.getSourceElement();
-  // if (elt == tgtElt) {
-  // lnk.setSourceElement(null);
-  // lnk.setTargetElement(null);
-  // Structure ownerStructElt = (Structure) EObjectExt.getFirstContainer(_scenario, CapellacorePackage.Literals.STRUCTURE);
-  // ownerStructElt.getOwnedTraces().remove(lnk);
-  // break;
-  // }
-  // }
-  // }
-  // }
 }

@@ -10,10 +10,11 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.tools.ju.model;
 
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.test.diagram.common.ju.api.AbstractDiagramTestCase;
+import org.polarsys.capella.test.framework.context.SessionContext;
 
 public abstract class EmptyProject extends AbstractDiagramTestCase {
-
   public static final String PROJECT_EMPTYPROJECT = "3f8ad859-410c-45e2-88af-9a49368644f9";
   public static final String PROJECT_EMPTYPROJECT__LIBRARY_DEPENDENCIES = "755718f0-24e1-4028-92bf-78b62bea42d7";
   public static final String PROJECT_EMPTYPROJECT__PROGRESSSTATUS = "c4fbaefa-0086-403c-822d-065c51a3b559";
@@ -118,5 +119,88 @@ public abstract class EmptyProject extends AbstractDiagramTestCase {
   @Override
   public String getRequiredTestModel() {
     return EmptyProject.class.getSimpleName();
+  }
+  
+  public String getRootFunctionId(BlockArchitectureExt.Type type) {
+    String rootFunction = "";
+    switch(type) {
+    case OA:
+      rootFunction = OA__OPERATIONAL_ACTIVITIES__ROOT_OA;
+      break;
+    case SA:
+      rootFunction = SA__ROOT_SF;
+      break;
+    case LA:
+      rootFunction = LA__ROOT_LF;
+      break;
+    case PA:
+      rootFunction = PA__ROOT_PF;
+      break;
+    default:
+      break;
+    }
+    
+    return rootFunction;
+  }
+  
+  public String getContextId(BlockArchitectureExt.Type type) {
+    String rootFunction = "";
+    switch(type) {
+    case OA:
+      rootFunction = OA__OPERATIONAL_CONTEXT;
+      break;
+    case SA:
+      rootFunction = SA__SYSTEM_CONTEXT;
+      break;
+    case LA:
+      rootFunction = LA__LOGICAL_CONTEXT;
+      break;
+    case PA:
+      rootFunction = PA__PHYSICAL_CONTEXT;
+      break;
+    default:
+      break;
+    }
+    
+    return rootFunction;
+  }
+  
+  public String getCapabilitiesId(BlockArchitectureExt.Type type) {
+    String capabilitiesId = "";
+    switch (type) {
+    case OA:
+      capabilitiesId = EmptyProject.OA__OPERATIONAL_CAPABILITIES;
+      break;
+    case SA:
+      capabilitiesId = EmptyProject.SA__CAPABILITIES;
+      break;
+    case LA:
+      capabilitiesId = EmptyProject.LA__CAPABILITIES;
+      break;
+    case PA:
+      capabilitiesId = EmptyProject.PA__CAPABILITIES;
+      break;
+    default:
+      break;
+    }
+    return capabilitiesId;
+  }
+  
+  public String getInterfacesId(BlockArchitectureExt.Type type) {
+    String interfacesId = "";
+    switch (type) {
+    case SA:
+      interfacesId = EmptyProject.SA__INTERFACES;
+      break;
+    case LA:
+      interfacesId = EmptyProject.LA__INTERFACES;
+      break;
+    case PA:
+      interfacesId = EmptyProject.PA__INTERFACES;
+      break;
+    default:
+      break;
+    }
+    return interfacesId;
   }
 }

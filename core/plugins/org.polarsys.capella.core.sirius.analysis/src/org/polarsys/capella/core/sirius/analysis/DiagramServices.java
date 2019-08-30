@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -19,7 +21,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -49,6 +55,7 @@ import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsM
 import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.HideFilterHelper;
 import org.eclipse.sirius.diagram.business.api.query.AbstractNodeMappingQuery;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.business.api.query.EdgeMappingQuery;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.AbstractDNodeCandidate;
@@ -70,6 +77,7 @@ import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -78,7 +86,9 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramNamingConstants;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
@@ -87,6 +97,7 @@ import com.google.common.collect.Lists;
 
 /**
  */
+@SuppressWarnings("restriction")
 public class DiagramServices {
   private static DiagramServices singleton = null;
 
@@ -125,6 +136,30 @@ public class DiagramServices {
       return ((DNodeContainer) container).getOwnedDiagramElements();
     }
     return null;
+  }
+
+  /**
+   * Return the EList of flat owned diagram elements of the given container
+   * 
+   * @param container
+   * @return
+   */
+  public List<DDiagramElement> getFlatOwnedDiagramElements(EObject container) {
+    List<DDiagramElement> result = new ArrayList<>();
+    getFlatOwnedDiagramElements(container, result);
+
+    return result;
+  }
+
+  private void getFlatOwnedDiagramElements(EObject container, List<DDiagramElement> acumulator) {
+    List<DDiagramElement> ownedDiagramElements = getOwnedDiagramElements(container);
+    acumulator.addAll(ownedDiagramElements);
+
+    for (DDiagramElement dDiagramElement : ownedDiagramElements) {
+      if (dDiagramElement instanceof DNodeContainer) {
+        getFlatOwnedDiagramElements(dDiagramElement, acumulator);
+      }
+    }
   }
 
   /**
@@ -198,15 +233,15 @@ public class DiagramServices {
   public Iterable<DDiagramElement> getAllAbstractNodes(EObject element, boolean borderedNode) {
     return getDiagramElements(element, false, true, true, borderedNode);
   }
-  
+
   public Iterable<AbstractDNode> getAllNodeContainers(EObject element) {
-    return (Iterable)getDiagramElements(element, false, false, true, false);
+    return (Iterable) getDiagramElements(element, false, false, true, false);
   }
-  
+
   public Iterable<DDiagramElement> getAllBorderedNodes(DSemanticDecorator element) {
-    return getDiagramElements((DSemanticDecorator)element, false, false, false, true);
+    return getDiagramElements(element, false, false, false, true);
   }
-  
+
   /**
    * Returns owned NodeContainers from the given element
    */
@@ -227,7 +262,9 @@ public class DiagramServices {
       }
     }
 
-    if (element instanceof AbstractDNode) {
+    if (element instanceof AbstractDNode)
+
+    {
       views.addAll(((AbstractDNode) element).getOwnedBorderedNodes());
     }
     return views;
@@ -387,7 +424,7 @@ public class DiagramServices {
   }
 
   public DNode createNode(NodeMapping mapping, EObject modelElement, DragAndDropTarget container, DDiagram diagram) {
-    return (DNode)createAbstractDNode(mapping, modelElement, container, diagram);
+    return (DNode) createAbstractDNode(mapping, modelElement, container, diagram);
   }
 
   public DNode createBorderedNode(NodeMapping mapping, EObject modelElement, DragAndDropTarget container,
@@ -450,20 +487,25 @@ public class DiagramServices {
   /**
    * Evaluate precondition of the given edge mapping.
    */
-  public boolean evaluateEdgePrecondition(EdgeMapping edgeMapping, DDiagram diagram, EObject semantic, DSemanticDecorator sourceView, DSemanticDecorator targetView) {
+  public boolean evaluateEdgePrecondition(EdgeMapping edgeMapping, DDiagram diagram, EObject semantic,
+      DSemanticDecorator sourceView, DSemanticDecorator targetView) {
     IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semantic);
-    return new EdgeMappingQuery(edgeMapping).evaluatePrecondition((DSemanticDiagram) diagram, (DragAndDropTarget) diagram, interpreter, semantic, sourceView, targetView);
+    return new EdgeMappingQuery(edgeMapping).evaluatePrecondition((DSemanticDiagram) diagram,
+        (DragAndDropTarget) diagram, interpreter, semantic, sourceView, targetView);
   }
-  
+
   /**
    * Evaluate precondition of the given node mapping.
    */
-  public boolean evaluateNodePrecondition(AbstractNodeMapping nodeMapping, DDiagram diagram, DSemanticDecorator containerView, EObject semantic) {
+  public boolean evaluateNodePrecondition(AbstractNodeMapping nodeMapping, DDiagram diagram,
+      DSemanticDecorator containerView, EObject semantic) {
     IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semantic);
-    return new AbstractNodeMappingQuery(nodeMapping).evaluatePrecondition((DSemanticDiagram) diagram, (DragAndDropTarget) containerView, interpreter, semantic);
+    return new AbstractNodeMappingQuery(nodeMapping).evaluatePrecondition((DSemanticDiagram) diagram,
+        (DragAndDropTarget) containerView, interpreter, semantic);
   }
 
-  public AbstractDNode createAbstractDNode(AbstractNodeMapping mapping, EObject modelElement, DragAndDropTarget container, DDiagram diagram) {
+  public AbstractDNode createAbstractDNode(AbstractNodeMapping mapping, EObject modelElement,
+      DragAndDropTarget container, DDiagram diagram) {
     final DDiagram diag = diagram;
     if (mapping == null) {
       return null;
@@ -477,7 +519,8 @@ public class DiagramServices {
     RefreshIdsHolder rId = RefreshIdsHolder.getOrCreateHolder(diagram);
 
     AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping, modelElement, container, rId);
-    return elementSync.createNewNode(getMappingManager((DSemanticDiagram) diag), nodeCandidate, isBorderedNodeMapping(mapping));
+    return elementSync.createNewNode(getMappingManager((DSemanticDiagram) diag), nodeCandidate,
+        isBorderedNodeMapping(mapping));
   }
 
   public DEdge createEdge(EdgeMapping mapping, EdgeTarget sourceView, EdgeTarget targetView, EObject semanticObject) {
@@ -535,7 +578,8 @@ public class DiagramServices {
       mappingsToEdgeTargets.get(targetMapping).add(targetView);
     }
 
-    new DecorationHelperInternal(diagram, interpreter, accessor).computeDecorations(mappingsToEdgeTargets, edgeToSemanticBasedDecoration, edgeToMappingBasedDecoration);
+    new DecorationHelperInternal(diagram, interpreter, accessor).computeDecorations(mappingsToEdgeTargets,
+        edgeToSemanticBasedDecoration, edgeToMappingBasedDecoration);
     return elementSync.createNewEdge(getMappingManager((DSemanticDiagram) diagram), edgeCandidate,
         mappingsToEdgeTargets, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration);
   }
@@ -574,9 +618,9 @@ public class DiagramServices {
   /**
    * Checks if an element is onto diagram
    */
-  public boolean isOnDiagram(DNodeContainer diagramElement, EObject semantic) {
+  public boolean isOnDiagram(DNodeContainer diagramElement, EObject semanticTarget) {
     for (DDiagramElement element : diagramElement.getContainers()) {
-      if (element.getTarget() == semantic) {
+      if (element.getTarget() == semanticTarget) {
         return true;
       }
     }
@@ -584,48 +628,179 @@ public class DiagramServices {
   }
 
   /**
-   * Checks if an element is onto diagram
-   */
-  public boolean isOnDiagram(DDiagram diagram, EObject semantic) {
-    for (DDiagramElement element : getDiagramElements(diagram)) {
-      if (element.getTarget() == semantic) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  /**
-   * Checks if an element is onto diagram
-   */
-  public EObject getDiagramElement(DDiagram diagram, EObject semantic) {
-    Collection<DSemanticDecorator> views = getDiagramElements(diagram, semantic);
-    if (!views.isEmpty()) {
-      return views.iterator().next();
-    }
-    return null;
-  }
-
-  /**
-   * Returns a list of all diagram elements for the given view.
+   * Checks if an element is directly displayed on a diagram, or indirectly through the type of a Part.
    * 
-   * @param diagram
-   * @param semantic
-   * @return
+   * @param diagramElement
+   *          the diagram element
+   * @param semanticTarget
+   *          the semantic target
+   * @return true if an element is directly displayed on a diagram, or indirectly through the type of a Part, false
+   *         otherwise.
    */
-  public Collection<DSemanticDecorator> getDiagramElements(DRepresentation diagram, EObject semantic) {
-    Collection<DSemanticDecorator> views = new ArrayList<DSemanticDecorator>();
-    Session session = SessionManager.INSTANCE.getSession(semantic);
-    for (Setting setting : session.getSemanticCrossReferencer().getInverseReferences(semantic)) {
-      if (ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET.equals(setting.getEStructuralFeature())) {
-        DSemanticDecorator decorator = (DSemanticDecorator) setting.getEObject();
-        DRepresentation diag = DiagramHelper.getService().getRepresentation(decorator);
-        if ((diagram == null) || diagram.equals(diag)) {
-          views.add(decorator);
+  public boolean isIndirectlyOnDiagram(DNodeContainer diagramElement, EObject semanticTarget) {
+    for (DDiagramElement element : diagramElement.getContainers()) {
+      EObject elementTarget = element.getTarget();
+      if (elementTarget != null && elementTarget.equals(semanticTarget)) {
+        return true;
+      }
+
+      if (elementTarget instanceof Part) {
+        AbstractType partType = ((Part) elementTarget).getAbstractType();
+        if (partType != null && partType.equals(semanticTarget)) {
+          return true;
         }
       }
     }
-    return views;
+
+    return false;
+  }
+
+  /**
+   * Checks if an element is on the current diagram.
+   * 
+   * @param diagramTarget
+   *          the diagram target
+   * @param semanticTarget
+   *          the semantic target
+   * @return true if an element is on the current diagram, false otherwise.
+   */
+  public boolean isOnDiagram(DDiagram diagramTarget, EObject semanticTarget) {
+    return getDiagramElement(diagramTarget, semanticTarget) != null;
+  }
+
+  /**
+   * @return true if the current settings contains a 'target' feature.
+   */
+  protected Predicate<Setting> isValidTargetFeature() {
+    return setting -> ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET.equals(setting.getEStructuralFeature())
+        || ViewpointPackage.Literals.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS.equals(setting.getEStructuralFeature());
+  }
+
+  /**
+   * Returns a stream containing elements for the diagram target that have the specified semantic target.
+   * 
+   * @param diagramTarget
+   *          the diagram target
+   * @param semanticTarget
+   *          the semantic target
+   * @return a stream containing elements for the diagram target that have the specified semantic target.
+   */
+  protected Stream<DDiagramElement> getDiagramElementsStream(DRepresentation diagramTarget, EObject semanticTarget) {
+    Session session = SessionManager.INSTANCE.getSession(semanticTarget);
+    return session.getSemanticCrossReferencer().getInverseReferences(semanticTarget).stream()
+        .filter(isValidTargetFeature()).filter(setting -> setting.getEObject() instanceof DDiagramElement)
+        .map(setting -> (DDiagramElement) setting.getEObject())
+        .filter(decorator -> diagramTarget.equals(DiagramHelper.getService().getRepresentation(decorator)));
+  }
+
+  /**
+   * Returns the element on the diagram target that has the semantic target.
+   * 
+   * @param diagramTarget
+   *          the diagram target
+   * @param semanticTarget
+   *          the semantic target
+   * @return the element on the diagram target that has the semantic target.
+   */
+  public DDiagramElement getDiagramElement(DDiagram diagramTarget, EObject semanticTarget) {
+    return getDiagramElementsStream(diagramTarget, semanticTarget).findFirst().orElse(null);
+  }
+
+  /**
+   * Returns the elements on the diagram target that have the specified semantic target.
+   * 
+   * @param diagramTarget
+   *          the diagram target
+   * @param semanticTarget
+   *          the semantic target
+   * @return the elements on the diagram target that have the specified semantic target.
+   */
+  public Collection<DSemanticDecorator> getDiagramElements(DRepresentation diagramTarget, EObject semanticTarget) {
+    return getDiagramElementsStream(diagramTarget, semanticTarget).collect(Collectors.toSet());
+  }
+
+  public Iterable<DDiagramElement> getDiagramElements(DDiagram diagram, DiagramElementMapping mapping) {
+    boolean isEdgeMapping = mapping instanceof EdgeMapping || mapping instanceof EdgeMappingImport;
+
+    final DiagramIterator iterator = new DiagramIterator(diagram, mapping, isEdgeMapping, !isEdgeMapping,
+        !isEdgeMapping, !isEdgeMapping);
+
+    return new Iterable<DDiagramElement>() {
+
+      @Override
+      public Iterator<DDiagramElement> iterator() {
+        return iterator;
+      }
+
+    };
+  }
+
+  // TODO Optimize
+  public Iterable<DDiagramElement> getDiagramElements(DDiagramElement container, DiagramElementMapping mapping) {
+    boolean isEdgeMapping = mapping instanceof EdgeMapping || mapping instanceof EdgeMappingImport;
+
+    final DiagramIterator iterator = new DiagramIterator(container, mapping, isEdgeMapping, !isEdgeMapping,
+        !isEdgeMapping, !isEdgeMapping);
+
+    return new Iterable<DDiagramElement>() {
+
+      @Override
+      public Iterator<DDiagramElement> iterator() {
+        return iterator;
+      }
+
+    };
+  }
+
+  /**
+   * Returns the elements on the diagram target that have the specified semantic and mapping target.
+   * 
+   * @param diagramTarget
+   *          the diagram target
+   * @param mappingTarget
+   *          the mapping target
+   * @param semanticTarget
+   *          the semantic target
+   * @return the elements on the diagram target that have the specified semantic and mapping target.
+   */
+  public DDiagramElement getDiagramElements(DDiagram diagramTarget, DiagramElementMapping mappingTarget,
+      EObject semanticTarget) {
+
+    return getDiagramElementsStream(diagramTarget, semanticTarget).filter(DDiagramElement.class::isInstance)
+        .map(DDiagramElement.class::cast).filter(element -> element.getMapping().equals(mappingTarget)).findFirst()
+        .orElse(null);
+  }
+
+  /**
+   * An optimized version of diagram.getDiagramElements()
+   */
+  @Deprecated
+  public Iterable<DDiagramElement> getDiagramElements(EObject context) {
+    final DiagramIterator iterator = new DiagramIterator(context);
+
+    return new Iterable<DDiagramElement>() {
+
+      @Override
+      public Iterator<DDiagramElement> iterator() {
+        return iterator;
+      }
+
+    };
+  }
+
+  @Deprecated
+  public Iterable<DDiagramElement> getDiagramElements(EObject context, boolean edges, boolean nodes, boolean containers,
+      boolean borderedNodes) {
+    final DiagramIterator iterator = new DiagramIterator(context, edges, nodes, containers, borderedNodes);
+
+    return new Iterable<DDiagramElement>() {
+
+      @Override
+      public Iterator<DDiagramElement> iterator() {
+        return iterator;
+      }
+
+    };
   }
 
   /**
@@ -792,7 +967,7 @@ public class DiagramServices {
   }
 
   public Set<DEdge> getIncomingEdges(EdgeTarget node, DDiagram diagram) {
-    Set<DEdge> returnedSet = new HashSet<DEdge>();
+    Set<DEdge> returnedSet = new HashSet<>();
     returnedSet.addAll(node.getIncomingEdges());
     returnedSet.retainAll(diagram.getEdges());
     return returnedSet;
@@ -804,10 +979,28 @@ public class DiagramServices {
   }
 
   public Set<DEdge> getOutgoingEdges(EdgeTarget node, DDiagram diagram) {
-    Set<DEdge> returnedSet = new HashSet<DEdge>();
+    Set<DEdge> returnedSet = new HashSet<>();
     returnedSet.addAll(node.getOutgoingEdges());
     returnedSet.retainAll(diagram.getEdges());
     return returnedSet;
+  }
+
+  public Set<DEdge> getOutgoingEdges(EdgeTarget node) {
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(node);
+    return getOutgoingEdges(node, diagram);
+  }
+
+  public Set<DEdge> getAllEdges(EdgeTarget node, DDiagram diagram) {
+    Set<DEdge> returnedSet = new HashSet<>();
+    returnedSet.addAll(node.getOutgoingEdges());
+    returnedSet.addAll(node.getIncomingEdges());
+    returnedSet.retainAll(diagram.getEdges());
+    return returnedSet;
+  }
+
+  public Set<DEdge> getAllEdges(EdgeTarget node) {
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(node);
+    return getAllEdges(node, diagram);
   }
 
   /**
@@ -824,14 +1017,6 @@ public class DiagramServices {
     return getEdgeMappingHelper(context).getEdgeTargetCandidates(edgeMapping, context, diagram);
   }
 
-  public Set<DEdge> getOutgoingEdges(EdgeTarget node) {
-    DDiagram diagram = CapellaServices.getService().getDiagramContainer(node);
-    Set<DEdge> returnedSet = new HashSet<DEdge>();
-    returnedSet.addAll(node.getOutgoingEdges());
-    returnedSet.retainAll(diagram.getEdges());
-    return returnedSet;
-  }
-
   /**
    * An iterator to browse all diagram elements of a diagram. In fact, diagram.getDiagramElements browse one time the
    * diagram to retrieve elements
@@ -843,21 +1028,25 @@ public class DiagramServices {
     DiagramElementMapping mapping;
 
     EClass clazz;
-    
+
     boolean edges = true;
-    
+
     boolean nodes = true;
 
     boolean containers = true;
-    
+
     boolean borderedNodes = true;
-  
+
     /**
      * @param context
-     * @param edges whether edges will be returned
-     * @param nodes whether nodes will be returned
-     * @param containers whether containers will be returned
-     * @param borderedNodes whether bordered nodes will be included in addition to other nodes/containers
+     * @param edges
+     *          whether edges will be returned
+     * @param nodes
+     *          whether nodes will be returned
+     * @param containers
+     *          whether containers will be returned
+     * @param borderedNodes
+     *          whether bordered nodes will be included in addition to other nodes/containers
      */
     public DiagramIterator(EObject context, boolean edges, boolean nodes, boolean containers, boolean borderedNodes) {
       elements = new LinkedList<DDiagramElement>();
@@ -866,15 +1055,15 @@ public class DiagramServices {
       this.nodes = nodes;
       this.containers = containers;
       this.borderedNodes = borderedNodes;
-      
+
       if (context instanceof DDiagram) {
-        addElements(elements, ((DDiagram)context).getOwnedDiagramElements());
-        
+        addElements(elements, ((DDiagram) context).getOwnedDiagramElements());
+
       } else if (context instanceof DDiagramElement) {
-        elements.addAll(getNexts((DDiagramElement)context));
+        elements.addAll(getNexts((DDiagramElement) context));
       }
     }
-    
+
     private void addElements(Collection<DDiagramElement> elements, Collection<DDiagramElement> toAdd) {
       for (DDiagramElement element : toAdd) {
         if (this.containers && element instanceof DNodeContainer) {
@@ -888,23 +1077,27 @@ public class DiagramServices {
     }
 
     /**
-     * @param context a DDiagram or a DDiagramElement
+     * @param context
+     *          a DDiagram or a DDiagramElement
      */
     public DiagramIterator(EObject context) {
       this(context, true, true, true, true);
     }
 
     /**
-     * @param context a DDiagram or a DDiagramElement
+     * @param context
+     *          a DDiagram or a DDiagramElement
      */
     public DiagramIterator(EObject context, DiagramElementMapping mapping) {
       this(context, mapping, true, true, true, true);
     }
-    
+
     /**
-     * @param context a DDiagram or a DDiagramElement
+     * @param context
+     *          a DDiagram or a DDiagramElement
      */
-    public DiagramIterator(EObject context, DiagramElementMapping mapping, boolean edges, boolean nodes, boolean containers, boolean borderedNodes) {
+    public DiagramIterator(EObject context, DiagramElementMapping mapping, boolean edges, boolean nodes,
+        boolean containers, boolean borderedNodes) {
       this(context, edges, nodes, containers, borderedNodes);
       this.mapping = mapping;
       if (mapping != null) {
@@ -915,6 +1108,7 @@ public class DiagramServices {
     /**
      * @see java.util.Iterator#hasNext()
      */
+    @Override
     public boolean hasNext() {
       if (elements.size() == 0) {
         return false;
@@ -942,21 +1136,22 @@ public class DiagramServices {
       List<DDiagramElement> element = new ArrayList<DDiagramElement>();
 
       if (this.borderedNodes && context instanceof AbstractDNode) {
-        element.addAll((Collection)((AbstractDNode) context).getOwnedBorderedNodes());
+        element.addAll(((AbstractDNode) context).getOwnedBorderedNodes());
       }
       if (context instanceof DNodeContainer) {
-        addElements(element, (Collection)((DNodeContainer) context).getOwnedDiagramElements());
+        addElements(element, ((DNodeContainer) context).getOwnedDiagramElements());
       }
       if (context instanceof DNodeList) {
-        addElements(element, (Collection)((DNodeList) context).getOwnedElements());
+        addElements(element, (Collection) ((DNodeList) context).getOwnedElements());
       }
-      
+
       return element;
     }
 
     /**
      * @see java.util.Iterator#next()
      */
+    @Override
     public DDiagramElement next() {
       if (hasNext()) {
         DDiagramElement element = elements.removeFirst();
@@ -972,6 +1167,7 @@ public class DiagramServices {
     /**
      * @see java.util.Iterator#remove()
      */
+    @Override
     public void remove() {
       if (hasNext()) {
         next();
@@ -991,61 +1187,6 @@ public class DiagramServices {
       return false;
     }
 
-  }
-
-  /**
-   * An optimized version of diagram.getDiagramElements()
-   */
-  public Iterable<DDiagramElement> getDiagramElements(EObject context) {
-    final DiagramIterator iterator = new DiagramIterator(context);
-
-    return new Iterable<DDiagramElement>() {
-
-      public Iterator<DDiagramElement> iterator() {
-        return iterator;
-      }
-
-    };
-  }
-
-  public Iterable<DDiagramElement> getDiagramElements(EObject context, boolean edges, boolean nodes, boolean containers, boolean borderedNodes) {
-    final DiagramIterator iterator = new DiagramIterator(context, edges, nodes, containers, borderedNodes);
-
-    return new Iterable<DDiagramElement>() {
-
-      public Iterator<DDiagramElement> iterator() {
-        return iterator;
-      }
-
-    };
-  }
-  
-  public Iterable<DDiagramElement> getDiagramElements(DDiagram diagram, DiagramElementMapping mapping) {
-    boolean isEdgeMapping = mapping instanceof EdgeMapping || mapping instanceof EdgeMappingImport;
-    
-    final DiagramIterator iterator = new DiagramIterator(diagram, mapping, isEdgeMapping, !isEdgeMapping, !isEdgeMapping, !isEdgeMapping);
-
-    return new Iterable<DDiagramElement>() {
-
-      public Iterator<DDiagramElement> iterator() {
-        return iterator;
-      }
-
-    };
-  }
-
-  public Iterable<DDiagramElement> getDiagramElements(DDiagramElement diagramElement, DiagramElementMapping mapping) {
-    boolean isEdgeMapping = mapping instanceof EdgeMapping || mapping instanceof EdgeMappingImport;
-    
-    final DiagramIterator iterator = new DiagramIterator(diagramElement, mapping, isEdgeMapping, !isEdgeMapping, !isEdgeMapping, !isEdgeMapping);
-
-    return new Iterable<DDiagramElement>() {
-
-      public Iterator<DDiagramElement> iterator() {
-        return iterator;
-      }
-
-    };
   }
 
   /**
@@ -1210,7 +1351,8 @@ public class DiagramServices {
           // Search all edit parts linked to selected object.
           List<IGraphicalEditPart> allEditParts = dialectViewer.findEditPartsForElement((EObject) selectedElement,
               IGraphicalEditPart.class);
-          // Iterate over retrieved edit parts to remove the ones related to 'label' edit part.
+          // Iterate over retrieved edit parts to remove the ones related to 'label' edit
+          // part.
           for (Iterator<IGraphicalEditPart> iterator = allEditParts.iterator(); iterator.hasNext();) {
             IGraphicalEditPart editPart = iterator.next();
 
@@ -1305,8 +1447,8 @@ public class DiagramServices {
    * @param mapping
    * @return
    */
-  public DEdge findDEdgeElement(DDiagram pDiagram, EdgeTarget sourceNode, EdgeTarget targetNode,
-      EObject semanticObject, EdgeMapping mapping) {
+  public DEdge findDEdgeElement(DDiagram pDiagram, EdgeTarget sourceNode, EdgeTarget targetNode, EObject semanticObject,
+      EdgeMapping mapping) {
     for (DEdge anEdge : pDiagram.getEdgesFromMapping(mapping)) {
       if ((anEdge.getTarget() != null) && anEdge.getTarget().equals(semanticObject)
           && anEdge.getSourceNode().equals(sourceNode) && anEdge.getTargetNode().equals(targetNode)) {
@@ -1424,7 +1566,8 @@ public class DiagramServices {
   public DiagramElementMapping getMappingByName(RepresentationDescription targetDescription, String targetMappingName) {
     DiagramElementMapping mapping = null;
 
-    if ((targetMappingName != null) && (targetDescription != null) && (targetDescription instanceof DiagramDescription)) {
+    if ((targetMappingName != null) && (targetDescription != null)
+        && (targetDescription instanceof DiagramDescription)) {
       mapping = DiagramServices.getDiagramServices().getAbstractNodeMapping((DiagramDescription) targetDescription,
           targetMappingName);
       if (mapping == null) {
@@ -1449,9 +1592,9 @@ public class DiagramServices {
       result.put(nodeMapping.getName(), nodeMapping);
       for (DiagramElementMapping mapping : nodeMapping.getAllMappings()) {
         result.put(mapping.getName(), mapping);
-          for (DiagramElementMapping borderedMapping : mapping.getAllMappings()) {
-            result.put(borderedMapping.getName(), borderedMapping);
-          }
+        for (DiagramElementMapping borderedMapping : mapping.getAllMappings()) {
+          result.put(borderedMapping.getName(), borderedMapping);
+        }
       }
     }
     for (final EdgeMapping edgeMapping : description_p.getAllEdgeMappings()) {
@@ -1459,10 +1602,200 @@ public class DiagramServices {
     }
     return result;
   }
-  
+
   private DiagramMappingsManager getMappingManager(final DSemanticDiagram diagram) {
     Session session = SessionManager.INSTANCE.getSession(diagram.getTarget());
     return DiagramMappingsManagerRegistry.INSTANCE.getDiagramMappingsManager(session, diagram);
   }
 
+  /**
+   * Returns a collection of all DDiagramElement (representing a semantic element) having the same EType as
+   * <code>selectedViews</code> in the <code>currentDiagram</code>.
+   * 
+   * @param currentDiagram
+   *          The current {@link DSemanticDiagram}
+   * @param selectedViews
+   *          The selected views. For each view we consider the EType of its semantic elements.
+   * @return a collection of all DDiagramElement having the same EType as the selectedViews.
+   */
+  public Collection<DDiagramElement> getViewsRepresentingSameEType(DSemanticDiagram currentDiagram,
+      List<DSemanticDecorator> selectedViews) {
+
+    Set<EClass> eclassesToSelect = selectedViews.stream().filter(view -> view instanceof DDiagramElement)
+        .map(view -> ((DDiagramElement) view).getTarget().eClass()).collect(Collectors.toSet());
+
+    Collection<DDiagramElement> diagramElements = new DDiagramQuery(currentDiagram).getAllDiagramElements();
+
+    return diagramElements.stream().filter(element -> eclassesToSelect.contains(element.getTarget().eClass()))
+        .collect(Collectors.toList());
+  }
+
+  /**
+   * Return a collection of all DDiagramElement having the same mappings as <code>selectedViews</code> in the
+   * <code>currentDiagram</code>.
+   * 
+   * @param currentDiagram
+   *          The current {@link DSemanticDiagram}
+   * @param selectedViews
+   *          The selected views. For each view we consider the EType of its semantic elements.
+   * @return a collection of all DDiagramElement having the same mappings as the selected views.
+   */
+  public Collection<DDiagramElement> getViewsWithSameMapping(DSemanticDiagram currentDiagram,
+      List<DSemanticDecorator> selectedViews) {
+
+    Set<DiagramElementMapping> mappingsToSelect = selectedViews.stream().filter(view -> view instanceof DDiagramElement)
+        .map(view -> ((DDiagramElement) view).getDiagramElementMapping()).collect(Collectors.toSet());
+
+    Collection<DDiagramElement> diagramElements = new DDiagramQuery(currentDiagram).getAllDiagramElements();
+
+    return diagramElements.stream().filter(element -> mappingsToSelect.contains(element.getDiagramElementMapping()))
+        .collect(Collectors.toList());
+  }
+
+  /**
+   * Returns a collection of all DNode ports for the <code>selectedViews</code> in the <code>currentDiagram</code>.
+   * 
+   * @param currentDiagram
+   *          The current {@link DSemanticDiagram}
+   * @param selectedViews
+   *          The selected views.
+   * @return the list of all DNode ports for the selected views.
+   */
+  public Collection<DNode> getAllOwnedPorts(DSemanticDiagram currentDiagram, List<DSemanticDecorator> selectedViews) {
+
+    return selectedViews.stream().filter(view -> view instanceof AbstractDNode)
+        .flatMap(view -> ((AbstractDNode) view).getOwnedBorderedNodes().stream()).collect(Collectors.toList());
+  }
+
+  /**
+   * Returns a collection of all owned DDiagramElement for the <code>selectedViews</code> in the
+   * <code>currentDiagram</code>.
+   * 
+   * @param currentDiagram
+   *          The current {@link DSemanticDiagram}
+   * @param selectedViews
+   *          The selected views.
+   * @return a collection of all owned DDiagramElement for the selected views.
+   */
+  public Collection<DDiagramElement> getAllOwnedElements(DSemanticDiagram currentDiagram,
+      List<DSemanticDecorator> selectedViews) {
+
+    return selectedViews.stream().flatMap(view -> getOwnedDiagramElements(view).stream()).collect(Collectors.toList());
+  }
+
+  /**
+   * Returns a collection of all related DEdge for the for the <code>selectedViews</code> in the
+   * <code>currentDiagram</code>.
+   * 
+   * @param currentDiagram
+   *          The current {@link DSemanticDiagram}
+   * @param selectedViews
+   *          The selected views.
+   * @return a collection of all related DEdge for the for the selected views.
+   */
+  public Collection<DEdge> getAllEdges(DSemanticDiagram currentDiagram, List<DSemanticDecorator> selectedViews) {
+
+    Set<DEdge> edgesToSelect = new HashSet<>();
+
+    for (DSemanticDecorator view : selectedViews) {
+
+      if (view instanceof EdgeTarget) {
+        EdgeTarget viewEdgeTarget = (EdgeTarget) view;
+        Collection<DEdge> directEdges = getEdges(viewEdgeTarget);
+
+        edgesToSelect.addAll(directEdges);
+      }
+
+      if (view instanceof AbstractDNode) {
+        AbstractDNode viewNode = (AbstractDNode) view;
+        Collection<DEdge> portEdges = viewNode.getOwnedBorderedNodes().stream().flatMap(port -> getEdges(port).stream())
+            .collect(Collectors.toSet());
+
+        edgesToSelect.addAll(portEdges);
+      }
+    }
+
+    return edgesToSelect;
+  }
+
+  private Collection<DEdge> getEdges(EdgeTarget edgeTarget) {
+    HashSet<DEdge> allEdges = new HashSet<>();
+    allEdges.addAll(edgeTarget.getIncomingEdges());
+    allEdges.addAll(edgeTarget.getOutgoingEdges());
+
+    return allEdges;
+  }
+
+  public EObject getDiagramElementDiagramIfNull(DDiagram diagram, EObject semanticElement) {
+    DDiagramElement viewElement = getDiagramElement(diagram, semanticElement);
+    return viewElement == null ? diagram : viewElement;
+  }
+
+  /**
+   * Set the position of the given newView relatively to the given node
+   * 
+   * @param container
+   * @param node
+   * @param deltaX
+   * @param deltaY
+   * @return
+   */
+  public EObject setRelativePositionToNode(AbstractDNode newView, AbstractDNode node, int deltaX, int deltaY) {
+    Point location = DiagramHelper.getRelativePositionToNode(node, node.eContainer(), deltaX, deltaY);
+    DiagramHelper.setPosition(newView, location);
+    return newView;
+  }
+
+  /**
+   * Set the position of the given newView relatively to the middle of the given edge
+   * 
+   * @param container
+   * @param edge
+   * @return
+   */
+  public EObject setPositionAtMiddleOfEdge(AbstractDNode newView, DEdge edge, int deltaX, int deltaY) {
+    Point location = DiagramHelper.getPositionAtMiddleOfEdge(edge, edge.eContainer(), deltaX, deltaY);
+    DiagramHelper.setPosition(newView, location);
+    return newView;
+  }
+
+  /**
+   * Set the position of the given newView at the middle of the given edge
+   * 
+   * @param container
+   * @param edge
+   * @return
+   */
+  public EObject setPositionAtMiddleOfEdge(AbstractDNode newView, DEdge edge) {
+    return setPositionAtMiddleOfEdge(newView, edge, 0, 0);
+  }
+
+  /**
+   * Remove all nodes of the given mapping without any incoming/outgoing edge
+   * 
+   * @param context
+   * @param nodeMapping
+   */
+  public void removeNodeWithoutEdges(DDiagramContents context, AbstractNodeMapping nodeMapping) {
+    Collection<DNode> toRemoveNodes = new HashSet<>();
+    for (DDiagramElement element : getCache(context::getDiagramElements, nodeMapping)) {
+      if (element instanceof DNode && getAllEdges((DNode) element).isEmpty()) {
+        toRemoveNodes.add((DNode) element);
+      }
+    }
+    toRemoveNodes.stream().forEach(this::removeAbstractDNodeView);
+  }
+
+  /**
+   * Force refresh the representation embedded in an editor. This method must be called in a transaction.
+   * 
+   * @param editor
+   */
+  public void refreshRepresentationOfEditor(IEditorPart editor) {
+    if (editor instanceof DialectEditor) {
+      DialectEditor siriusEditor = (DialectEditor) editor;
+      DRepresentation representation = siriusEditor.getRepresentation();
+      CapellaServices.getService().forceRefresh((DDiagram) representation);
+    }
+  }
 }

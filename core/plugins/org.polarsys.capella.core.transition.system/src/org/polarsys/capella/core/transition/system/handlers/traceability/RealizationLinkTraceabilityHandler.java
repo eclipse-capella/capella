@@ -36,8 +36,10 @@ import org.polarsys.capella.core.data.capellacore.Namespace;
 import org.polarsys.capella.core.data.capellacore.Trace;
 import org.polarsys.capella.core.data.capellamodeller.CapellamodellerFactory;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Interface;
+import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.epbs.EpbsPackage;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
@@ -63,7 +65,8 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
  */
-public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler implements ITraceabilityTraceHandler, INotifyListener {
+public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler
+    implements ITraceabilityTraceHandler, INotifyListener {
 
   // A map to store which eClass to create according to source/target elements
   public static final String MAPPING_MAP = "_mPp";
@@ -75,6 +78,7 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
   public static final String DEFAULT_OWNER = "DEFAULT_OWNER";
 
   protected class RealizationLinkMapping {
+
     protected EClass source;
 
     protected EClass target;
@@ -109,13 +113,7 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
      * @return
      */
     public boolean isValid(EObject sourceElement, EObject targetElement, IContext context) {
-      if (sourceElement == null) {
-        return false;
-      }
-      if (targetElement == null) {
-        return false;
-      }
-      return true;
+      return (sourceElement != null && targetElement != null);
     }
 
     /**
@@ -141,6 +139,19 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
       }
       return target.equals(targetElement.eClass());
     }
+
+    public boolean match(AbstractTrace trace, IContext context) {
+      EObject sourceElement = trace.getTargetElement(); // link is inverted
+      EObject targetElement = trace.getSourceElement();
+
+      if (realizationLink.isInstance(trace)) {
+        if ((isValidSource(sourceElement, context)) && isValidTarget(targetElement, context)
+            && isValid(sourceElement, targetElement, context)) {
+          return true;
+        }
+      }
+      return false;
+    }
   }
 
   /**
@@ -150,8 +161,9 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
     return defaultMapping;
   }
 
-  private RealizationLinkMapping defaultMapping = new RealizationLinkMapping(ModellingcorePackage.Literals.TRACEABLE_ELEMENT,
-      ModellingcorePackage.Literals.TRACEABLE_ELEMENT, CapellacommonPackage.Literals.TRANSFO_LINK, CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES) {
+  private RealizationLinkMapping defaultMapping = new RealizationLinkMapping(
+      ModellingcorePackage.Literals.TRACEABLE_ELEMENT, ModellingcorePackage.Literals.TRACEABLE_ELEMENT,
+      CapellacommonPackage.Literals.TRANSFO_LINK, CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES) {
 
     /**
      * {@inheritDoc}
@@ -202,7 +214,8 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
    */
   @Override
   public IStatus init(IContext context) {
-    NotifyHandlerHelper.getInstance(context).addListener(ITransitionConstants.NOTIFY__END_TRANSFORMATION, this, context);
+    NotifyHandlerHelper.getInstance(context).addListener(ITransitionConstants.NOTIFY__END_TRANSFORMATION, this,
+        context);
     return super.init(context);
   }
 
@@ -221,8 +234,9 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
   private void disposeUnattachedElements(IContext context) {
     Collection<EObject> traces = Collections.singletonList((EObject) getDefaultOwner(context));
     if (!traces.isEmpty()) {
-      DeleteStructureCommand command =
-          new DeleteStructureCommand((TransactionalEditingDomain) context.get(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN), getDefaultOwner(context).eContents());
+      DeleteStructureCommand command = new DeleteStructureCommand(
+          (TransactionalEditingDomain) context.get(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN),
+          getDefaultOwner(context).eContents());
       if (command.canExecute()) {
         command.execute();
       }
@@ -253,233 +267,255 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
       iContext1.put(MAPPING_MAP, mapping);
 
       // miscellaneous realizations
-      mappingAdd(mapping, new RealizationLinkMapping(CsPackage.Literals.INTERFACE, CsPackage.Literals.INTERFACE,
-          PaPackage.Literals.LOGICAL_INTERFACE_REALIZATION, CsPackage.Literals.INTERFACE_ALLOCATOR__OWNED_INTERFACE_ALLOCATIONS) {
+      mapping.add(new RealizationLinkMapping(CsPackage.Literals.INTERFACE, CsPackage.Literals.INTERFACE,
+          PaPackage.Literals.LOGICAL_INTERFACE_REALIZATION,
+          CsPackage.Literals.INTERFACE_ALLOCATOR__OWNED_INTERFACE_ALLOCATIONS) {
         @Override
         public boolean isValid(EObject sourceElement, EObject targetElement, IContext context) {
           return !CapellaLayerCheckingExt.isAOrInContextLayer((CapellaElement) sourceElement);
         }
       });
 
-      mappingAdd(mapping, new RealizationLinkMapping(CsPackage.Literals.INTERFACE, CsPackage.Literals.INTERFACE,
-          LaPackage.Literals.CONTEXT_INTERFACE_REALIZATION, CsPackage.Literals.INTERFACE_ALLOCATOR__OWNED_INTERFACE_ALLOCATIONS) {
+      mapping.add(new RealizationLinkMapping(CsPackage.Literals.INTERFACE, CsPackage.Literals.INTERFACE,
+          LaPackage.Literals.CONTEXT_INTERFACE_REALIZATION,
+          CsPackage.Literals.INTERFACE_ALLOCATOR__OWNED_INTERFACE_ALLOCATIONS) {
         @Override
         public boolean isValid(EObject sourceElement, EObject targetElement, IContext context) {
           return CapellaLayerCheckingExt.isAOrInContextLayer((CapellaElement) sourceElement);
         }
       });
 
-      mappingAdd(mapping, new RealizationLinkMapping(FaPackage.Literals.COMPONENT_EXCHANGE, FaPackage.Literals.COMPONENT_EXCHANGE,
-          FaPackage.Literals.COMPONENT_EXCHANGE_REALIZATION, FaPackage.Literals.COMPONENT_EXCHANGE__OWNED_COMPONENT_EXCHANGE_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(FaPackage.Literals.COMPONENT_EXCHANGE,
+          FaPackage.Literals.COMPONENT_EXCHANGE, FaPackage.Literals.COMPONENT_EXCHANGE_REALIZATION,
+          FaPackage.Literals.COMPONENT_EXCHANGE__OWNED_COMPONENT_EXCHANGE_REALIZATIONS));
 
-      mappingAdd(mapping, new RealizationLinkMapping(CsPackage.Literals.PHYSICAL_LINK, CsPackage.Literals.PHYSICAL_LINK,
-          CsPackage.Literals.PHYSICAL_LINK_REALIZATION, CsPackage.Literals.PHYSICAL_LINK__OWNED_PHYSICAL_LINK_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(CsPackage.Literals.PHYSICAL_LINK, CsPackage.Literals.PHYSICAL_LINK,
+          CsPackage.Literals.PHYSICAL_LINK_REALIZATION,
+          CsPackage.Literals.PHYSICAL_LINK__OWNED_PHYSICAL_LINK_REALIZATIONS));
 
-      mappingAdd(mapping, new RealizationLinkMapping(CsPackage.Literals.PHYSICAL_PATH, CsPackage.Literals.PHYSICAL_PATH,
-          CsPackage.Literals.PHYSICAL_PATH_REALIZATION, CsPackage.Literals.PHYSICAL_PATH__OWNED_PHYSICAL_PATH_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(CsPackage.Literals.PHYSICAL_PATH, CsPackage.Literals.PHYSICAL_PATH,
+          CsPackage.Literals.PHYSICAL_PATH_REALIZATION,
+          CsPackage.Literals.PHYSICAL_PATH__OWNED_PHYSICAL_PATH_REALIZATIONS));
 
-      mappingAdd(mapping, new RealizationLinkMapping(OaPackage.Literals.COMMUNICATION_MEAN, FaPackage.Literals.COMPONENT_EXCHANGE,
-          FaPackage.Literals.COMPONENT_EXCHANGE_REALIZATION, FaPackage.Literals.COMPONENT_EXCHANGE__OWNED_COMPONENT_EXCHANGE_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(OaPackage.Literals.COMMUNICATION_MEAN,
+          FaPackage.Literals.COMPONENT_EXCHANGE, FaPackage.Literals.COMPONENT_EXCHANGE_REALIZATION,
+          FaPackage.Literals.COMPONENT_EXCHANGE__OWNED_COMPONENT_EXCHANGE_REALIZATIONS));
 
-      mappingAdd(mapping, new RealizationLinkMapping(FaPackage.Literals.FUNCTIONAL_EXCHANGE, FaPackage.Literals.FUNCTIONAL_EXCHANGE,
-          FaPackage.Literals.FUNCTIONAL_EXCHANGE_REALIZATION, FaPackage.Literals.FUNCTIONAL_EXCHANGE__OWNED_FUNCTIONAL_EXCHANGE_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(FaPackage.Literals.FUNCTIONAL_EXCHANGE,
+          FaPackage.Literals.FUNCTIONAL_EXCHANGE, FaPackage.Literals.FUNCTIONAL_EXCHANGE_REALIZATION,
+          FaPackage.Literals.FUNCTIONAL_EXCHANGE__OWNED_FUNCTIONAL_EXCHANGE_REALIZATIONS));
 
-      mappingAdd(mapping, new RealizationLinkMapping(FaPackage.Literals.COMPONENT_EXCHANGE, FaPackage.Literals.FUNCTIONAL_EXCHANGE,
-          FaPackage.Literals.COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION,
+      mapping.add(new RealizationLinkMapping(FaPackage.Literals.COMPONENT_EXCHANGE,
+          FaPackage.Literals.FUNCTIONAL_EXCHANGE, FaPackage.Literals.COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION,
           FaPackage.Literals.COMPONENT_EXCHANGE__OWNED_COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATIONS));
 
-      mappingAdd(mapping, new RealizationLinkMapping(InformationPackage.Literals.PORT, InformationPackage.Literals.PORT,
+      mapping.add(new RealizationLinkMapping(InformationPackage.Literals.PORT, InformationPackage.Literals.PORT,
           InformationPackage.Literals.PORT_REALIZATION, InformationPackage.Literals.PORT__OWNED_PORT_REALIZATIONS));
 
-      mappingAdd(mapping, new RealizationLinkMapping(FaPackage.Literals.COMPONENT_PORT, FaPackage.Literals.COMPONENT_PORT,
+      mapping.add(new RealizationLinkMapping(FaPackage.Literals.COMPONENT_PORT, FaPackage.Literals.COMPONENT_PORT,
           InformationPackage.Literals.PORT_REALIZATION, InformationPackage.Literals.PORT__OWNED_PORT_REALIZATIONS));
 
       // scenario realizations
-      mappingAdd(mapping, new RealizationLinkMapping(InteractionPackage.Literals.SCENARIO, InteractionPackage.Literals.SCENARIO,
-          InteractionPackage.Literals.SCENARIO_REALIZATION, InteractionPackage.Literals.SCENARIO__OWNED_SCENARIO_REALIZATION));
+      mapping.add(new RealizationLinkMapping(InteractionPackage.Literals.SCENARIO, InteractionPackage.Literals.SCENARIO,
+          InteractionPackage.Literals.SCENARIO_REALIZATION,
+          InteractionPackage.Literals.SCENARIO__OWNED_SCENARIO_REALIZATION));
 
       // capability realizations
-      mappingAdd(mapping, new RealizationLinkMapping(OaPackage.Literals.OPERATIONAL_CAPABILITY, CtxPackage.Literals.CAPABILITY,
-          InteractionPackage.Literals.ABSTRACT_CAPABILITY_REALIZATION, InteractionPackage.Literals.ABSTRACT_CAPABILITY__OWNED_ABSTRACT_CAPABILITY_REALIZATIONS));
-      mappingAdd(mapping, new RealizationLinkMapping(CtxPackage.Literals.CAPABILITY, LaPackage.Literals.CAPABILITY_REALIZATION,
-          InteractionPackage.Literals.ABSTRACT_CAPABILITY_REALIZATION, InteractionPackage.Literals.ABSTRACT_CAPABILITY__OWNED_ABSTRACT_CAPABILITY_REALIZATIONS));
-      mappingAdd(mapping, new RealizationLinkMapping(LaPackage.Literals.CAPABILITY_REALIZATION, LaPackage.Literals.CAPABILITY_REALIZATION,
-          InteractionPackage.Literals.ABSTRACT_CAPABILITY_REALIZATION, InteractionPackage.Literals.ABSTRACT_CAPABILITY__OWNED_ABSTRACT_CAPABILITY_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(OaPackage.Literals.OPERATIONAL_CAPABILITY, CtxPackage.Literals.CAPABILITY,
+          InteractionPackage.Literals.ABSTRACT_CAPABILITY_REALIZATION,
+          InteractionPackage.Literals.ABSTRACT_CAPABILITY__OWNED_ABSTRACT_CAPABILITY_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(CtxPackage.Literals.CAPABILITY, LaPackage.Literals.CAPABILITY_REALIZATION,
+          InteractionPackage.Literals.ABSTRACT_CAPABILITY_REALIZATION,
+          InteractionPackage.Literals.ABSTRACT_CAPABILITY__OWNED_ABSTRACT_CAPABILITY_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(LaPackage.Literals.CAPABILITY_REALIZATION,
+          LaPackage.Literals.CAPABILITY_REALIZATION, InteractionPackage.Literals.ABSTRACT_CAPABILITY_REALIZATION,
+          InteractionPackage.Literals.ABSTRACT_CAPABILITY__OWNED_ABSTRACT_CAPABILITY_REALIZATIONS));
 
       // state machine realizations
-      mappingAdd(mapping, new RealizationLinkMapping(CapellacommonPackage.Literals.CHOICE_PSEUDO_STATE, CapellacommonPackage.Literals.CHOICE_PSEUDO_STATE,
-          CapellacommonPackage.Literals.ABSTRACT_STATE_REALIZATION, CapellacommonPackage.Literals.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS));
-      mappingAdd(mapping, new RealizationLinkMapping(CapellacommonPackage.Literals.FORK_PSEUDO_STATE, CapellacommonPackage.Literals.FORK_PSEUDO_STATE,
-          CapellacommonPackage.Literals.ABSTRACT_STATE_REALIZATION, CapellacommonPackage.Literals.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS));
-      mappingAdd(mapping, new RealizationLinkMapping(CapellacommonPackage.Literals.INITIAL_PSEUDO_STATE, CapellacommonPackage.Literals.INITIAL_PSEUDO_STATE,
-          CapellacommonPackage.Literals.ABSTRACT_STATE_REALIZATION, CapellacommonPackage.Literals.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS));
-      mappingAdd(mapping, new RealizationLinkMapping(CapellacommonPackage.Literals.JOIN_PSEUDO_STATE, CapellacommonPackage.Literals.JOIN_PSEUDO_STATE,
-          CapellacommonPackage.Literals.ABSTRACT_STATE_REALIZATION, CapellacommonPackage.Literals.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS));
-      mappingAdd(mapping, new RealizationLinkMapping(CapellacommonPackage.Literals.TERMINATE_PSEUDO_STATE,
-          CapellacommonPackage.Literals.TERMINATE_PSEUDO_STATE, CapellacommonPackage.Literals.ABSTRACT_STATE_REALIZATION,
+      mapping.add(new RealizationLinkMapping(CapellacommonPackage.Literals.CHOICE_PSEUDO_STATE,
+          CapellacommonPackage.Literals.CHOICE_PSEUDO_STATE, CapellacommonPackage.Literals.ABSTRACT_STATE_REALIZATION,
           CapellacommonPackage.Literals.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS));
-      mappingAdd(mapping, new RealizationLinkMapping(CapellacommonPackage.Literals.FINAL_STATE, CapellacommonPackage.Literals.FINAL_STATE,
-          CapellacommonPackage.Literals.ABSTRACT_STATE_REALIZATION, CapellacommonPackage.Literals.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS));
-      mappingAdd(mapping, new RealizationLinkMapping(CapellacommonPackage.Literals.MODE, CapellacommonPackage.Literals.MODE,
-          CapellacommonPackage.Literals.ABSTRACT_STATE_REALIZATION, CapellacommonPackage.Literals.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS));
-      mappingAdd(mapping, new RealizationLinkMapping(CapellacommonPackage.Literals.STATE, CapellacommonPackage.Literals.STATE,
-          CapellacommonPackage.Literals.ABSTRACT_STATE_REALIZATION, CapellacommonPackage.Literals.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS));
-      mappingAdd(mapping, new RealizationLinkMapping(CapellacommonPackage.Literals.STATE_TRANSITION, CapellacommonPackage.Literals.STATE_TRANSITION,
-          CapellacommonPackage.Literals.STATE_TRANSITION_REALIZATION, CapellacommonPackage.Literals.STATE_TRANSITION__OWNED_STATE_TRANSITION_REALIZATIONS));
-      mappingAdd(mapping, new RealizationLinkMapping(CapellacommonPackage.Literals.CHANGE_EVENT, CapellacommonPackage.Literals.CHANGE_EVENT,
-          CapellacommonPackage.Literals.STATE_EVENT_REALIZATION, CapellacommonPackage.Literals.STATE_EVENT__OWNED_STATE_EVENT_REALIZATIONS));
-      mappingAdd(mapping, new RealizationLinkMapping(CapellacommonPackage.Literals.TIME_EVENT, CapellacommonPackage.Literals.TIME_EVENT,
-          CapellacommonPackage.Literals.STATE_EVENT_REALIZATION, CapellacommonPackage.Literals.STATE_EVENT__OWNED_STATE_EVENT_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(CapellacommonPackage.Literals.FORK_PSEUDO_STATE,
+          CapellacommonPackage.Literals.FORK_PSEUDO_STATE, CapellacommonPackage.Literals.ABSTRACT_STATE_REALIZATION,
+          CapellacommonPackage.Literals.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(CapellacommonPackage.Literals.INITIAL_PSEUDO_STATE,
+          CapellacommonPackage.Literals.INITIAL_PSEUDO_STATE, CapellacommonPackage.Literals.ABSTRACT_STATE_REALIZATION,
+          CapellacommonPackage.Literals.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(CapellacommonPackage.Literals.JOIN_PSEUDO_STATE,
+          CapellacommonPackage.Literals.JOIN_PSEUDO_STATE, CapellacommonPackage.Literals.ABSTRACT_STATE_REALIZATION,
+          CapellacommonPackage.Literals.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(CapellacommonPackage.Literals.TERMINATE_PSEUDO_STATE,
+          CapellacommonPackage.Literals.TERMINATE_PSEUDO_STATE,
+          CapellacommonPackage.Literals.ABSTRACT_STATE_REALIZATION,
+          CapellacommonPackage.Literals.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(CapellacommonPackage.Literals.FINAL_STATE,
+          CapellacommonPackage.Literals.FINAL_STATE, CapellacommonPackage.Literals.ABSTRACT_STATE_REALIZATION,
+          CapellacommonPackage.Literals.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(CapellacommonPackage.Literals.MODE, CapellacommonPackage.Literals.MODE,
+          CapellacommonPackage.Literals.ABSTRACT_STATE_REALIZATION,
+          CapellacommonPackage.Literals.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(CapellacommonPackage.Literals.STATE, CapellacommonPackage.Literals.STATE,
+          CapellacommonPackage.Literals.ABSTRACT_STATE_REALIZATION,
+          CapellacommonPackage.Literals.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(CapellacommonPackage.Literals.STATE_TRANSITION,
+          CapellacommonPackage.Literals.STATE_TRANSITION, CapellacommonPackage.Literals.STATE_TRANSITION_REALIZATION,
+          CapellacommonPackage.Literals.STATE_TRANSITION__OWNED_STATE_TRANSITION_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(CapellacommonPackage.Literals.CHANGE_EVENT,
+          CapellacommonPackage.Literals.CHANGE_EVENT, CapellacommonPackage.Literals.STATE_EVENT_REALIZATION,
+          CapellacommonPackage.Literals.STATE_EVENT__OWNED_STATE_EVENT_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(CapellacommonPackage.Literals.TIME_EVENT,
+          CapellacommonPackage.Literals.TIME_EVENT, CapellacommonPackage.Literals.STATE_EVENT_REALIZATION,
+          CapellacommonPackage.Literals.STATE_EVENT__OWNED_STATE_EVENT_REALIZATIONS));
 
       // functional chain realizations
-      mappingAdd(mapping, new RealizationLinkMapping(OaPackage.Literals.OPERATIONAL_PROCESS, FaPackage.Literals.FUNCTIONAL_CHAIN,
-          FaPackage.Literals.FUNCTIONAL_CHAIN_REALIZATION, FaPackage.Literals.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_REALIZATIONS));
-      mappingAdd(mapping, new RealizationLinkMapping(FaPackage.Literals.FUNCTIONAL_CHAIN, FaPackage.Literals.FUNCTIONAL_CHAIN,
-          FaPackage.Literals.FUNCTIONAL_CHAIN_REALIZATION, FaPackage.Literals.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(OaPackage.Literals.OPERATIONAL_PROCESS,
+          FaPackage.Literals.FUNCTIONAL_CHAIN, FaPackage.Literals.FUNCTIONAL_CHAIN_REALIZATION,
+          FaPackage.Literals.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(FaPackage.Literals.FUNCTIONAL_CHAIN, FaPackage.Literals.FUNCTIONAL_CHAIN,
+          FaPackage.Literals.FUNCTIONAL_CHAIN_REALIZATION,
+          FaPackage.Literals.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_REALIZATIONS));
 
       // information realizations
-      mappingAdd(mapping, new RealizationLinkMapping(DatatypePackage.Literals.BOOLEAN_TYPE, DatatypePackage.Literals.BOOLEAN_TYPE,
-          InformationPackage.Literals.INFORMATION_REALIZATION, DatatypePackage.Literals.DATA_TYPE__OWNED_INFORMATION_REALIZATIONS));
-      mappingAdd(mapping, new RealizationLinkMapping(DatatypePackage.Literals.ENUMERATION, DatatypePackage.Literals.ENUMERATION,
-          InformationPackage.Literals.INFORMATION_REALIZATION, DatatypePackage.Literals.DATA_TYPE__OWNED_INFORMATION_REALIZATIONS));
-      mappingAdd(mapping, new RealizationLinkMapping(DatatypePackage.Literals.NUMERIC_TYPE, DatatypePackage.Literals.NUMERIC_TYPE,
-          InformationPackage.Literals.INFORMATION_REALIZATION, DatatypePackage.Literals.DATA_TYPE__OWNED_INFORMATION_REALIZATIONS));
-      mappingAdd(mapping, new RealizationLinkMapping(DatatypePackage.Literals.PHYSICAL_QUANTITY, DatatypePackage.Literals.PHYSICAL_QUANTITY,
-          InformationPackage.Literals.INFORMATION_REALIZATION, DatatypePackage.Literals.DATA_TYPE__OWNED_INFORMATION_REALIZATIONS));
-      mappingAdd(mapping, new RealizationLinkMapping(DatatypePackage.Literals.STRING_TYPE, DatatypePackage.Literals.STRING_TYPE,
-          InformationPackage.Literals.INFORMATION_REALIZATION, DatatypePackage.Literals.DATA_TYPE__OWNED_INFORMATION_REALIZATIONS));
-      mappingAdd(mapping, new RealizationLinkMapping(InformationPackage.Literals.CLASS, InformationPackage.Literals.CLASS,
-          InformationPackage.Literals.INFORMATION_REALIZATION, InformationPackage.Literals.CLASS__OWNED_INFORMATION_REALIZATIONS));
-      mappingAdd(mapping, new RealizationLinkMapping(InformationPackage.Literals.EXCHANGE_ITEM, InformationPackage.Literals.EXCHANGE_ITEM,
-          InformationPackage.Literals.INFORMATION_REALIZATION, InformationPackage.Literals.EXCHANGE_ITEM__OWNED_INFORMATION_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(DatatypePackage.Literals.BOOLEAN_TYPE,
+          DatatypePackage.Literals.BOOLEAN_TYPE, InformationPackage.Literals.INFORMATION_REALIZATION,
+          DatatypePackage.Literals.DATA_TYPE__OWNED_INFORMATION_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(DatatypePackage.Literals.ENUMERATION, DatatypePackage.Literals.ENUMERATION,
+          InformationPackage.Literals.INFORMATION_REALIZATION,
+          DatatypePackage.Literals.DATA_TYPE__OWNED_INFORMATION_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(DatatypePackage.Literals.NUMERIC_TYPE,
+          DatatypePackage.Literals.NUMERIC_TYPE, InformationPackage.Literals.INFORMATION_REALIZATION,
+          DatatypePackage.Literals.DATA_TYPE__OWNED_INFORMATION_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(DatatypePackage.Literals.PHYSICAL_QUANTITY,
+          DatatypePackage.Literals.PHYSICAL_QUANTITY, InformationPackage.Literals.INFORMATION_REALIZATION,
+          DatatypePackage.Literals.DATA_TYPE__OWNED_INFORMATION_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(DatatypePackage.Literals.STRING_TYPE, DatatypePackage.Literals.STRING_TYPE,
+          InformationPackage.Literals.INFORMATION_REALIZATION,
+          DatatypePackage.Literals.DATA_TYPE__OWNED_INFORMATION_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(InformationPackage.Literals.CLASS, InformationPackage.Literals.CLASS,
+          InformationPackage.Literals.INFORMATION_REALIZATION,
+          InformationPackage.Literals.CLASS__OWNED_INFORMATION_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(InformationPackage.Literals.EXCHANGE_ITEM,
+          InformationPackage.Literals.EXCHANGE_ITEM, InformationPackage.Literals.INFORMATION_REALIZATION,
+          InformationPackage.Literals.EXCHANGE_ITEM__OWNED_INFORMATION_REALIZATIONS));
 
       // function realizations
-      mappingAdd(mapping, new RealizationLinkMapping(FaPackage.Literals.ABSTRACT_FUNCTION, FaPackage.Literals.ABSTRACT_FUNCTION,
+      mapping.add(new RealizationLinkMapping(FaPackage.Literals.ABSTRACT_FUNCTION, FaPackage.Literals.ABSTRACT_FUNCTION,
           FaPackage.Literals.FUNCTION_REALIZATION, FaPackage.Literals.ABSTRACT_FUNCTION__OWNED_FUNCTION_REALIZATIONS));
-      mappingAdd(mapping, new RealizationLinkMapping(OaPackage.Literals.OPERATIONAL_ACTIVITY, CtxPackage.Literals.SYSTEM_FUNCTION,
+      mapping.add(new RealizationLinkMapping(OaPackage.Literals.OPERATIONAL_ACTIVITY,
+          CtxPackage.Literals.SYSTEM_FUNCTION, FaPackage.Literals.FUNCTION_REALIZATION,
+          FaPackage.Literals.ABSTRACT_FUNCTION__OWNED_FUNCTION_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(CtxPackage.Literals.SYSTEM_FUNCTION, LaPackage.Literals.LOGICAL_FUNCTION,
           FaPackage.Literals.FUNCTION_REALIZATION, FaPackage.Literals.ABSTRACT_FUNCTION__OWNED_FUNCTION_REALIZATIONS));
-      mappingAdd(mapping, new RealizationLinkMapping(CtxPackage.Literals.SYSTEM_FUNCTION, LaPackage.Literals.LOGICAL_FUNCTION,
+      mapping.add(new RealizationLinkMapping(LaPackage.Literals.LOGICAL_FUNCTION, PaPackage.Literals.PHYSICAL_FUNCTION,
           FaPackage.Literals.FUNCTION_REALIZATION, FaPackage.Literals.ABSTRACT_FUNCTION__OWNED_FUNCTION_REALIZATIONS));
-      mappingAdd(mapping, new RealizationLinkMapping(LaPackage.Literals.LOGICAL_FUNCTION, PaPackage.Literals.PHYSICAL_FUNCTION,
-          FaPackage.Literals.FUNCTION_REALIZATION, FaPackage.Literals.ABSTRACT_FUNCTION__OWNED_FUNCTION_REALIZATIONS));
-      mappingAdd(mapping, new RealizationLinkMapping(FaPackage.Literals.FUNCTION_INPUT_PORT, FaPackage.Literals.FUNCTION_INPUT_PORT,
-          InformationPackage.Literals.PORT_REALIZATION, InformationPackage.Literals.PORT__OWNED_PORT_REALIZATIONS));
-      mappingAdd(mapping, new RealizationLinkMapping(FaPackage.Literals.FUNCTION_OUTPUT_PORT, FaPackage.Literals.FUNCTION_OUTPUT_PORT,
-          InformationPackage.Literals.PORT_REALIZATION, InformationPackage.Literals.PORT__OWNED_PORT_REALIZATIONS));
+      mapping.add(
+          new RealizationLinkMapping(FaPackage.Literals.FUNCTION_INPUT_PORT, FaPackage.Literals.FUNCTION_INPUT_PORT,
+              InformationPackage.Literals.PORT_REALIZATION, InformationPackage.Literals.PORT__OWNED_PORT_REALIZATIONS));
+      mapping.add(
+          new RealizationLinkMapping(FaPackage.Literals.FUNCTION_OUTPUT_PORT, FaPackage.Literals.FUNCTION_OUTPUT_PORT,
+              InformationPackage.Literals.PORT_REALIZATION, InformationPackage.Literals.PORT__OWNED_PORT_REALIZATIONS));
 
       // component realizations
-      mappingAdd(mapping, new RealizationLinkMapping(OaPackage.Literals.OPERATIONAL_ACTOR, CtxPackage.Literals.ACTOR,
-          CtxPackage.Literals.OPERATIONAL_ACTOR_REALIZATION, CtxPackage.Literals.ACTOR__OWNED_OPERATIONAL_ACTOR_REALIZATIONS));
-      mappingAdd(mapping, new RealizationLinkMapping(OaPackage.Literals.ENTITY, CtxPackage.Literals.ACTOR, CtxPackage.Literals.OPERATIONAL_ENTITY_REALIZATION,
+      mapping.add(new RealizationLinkMapping(OaPackage.Literals.OPERATIONAL_ACTOR, CtxPackage.Literals.ACTOR,
+          CtxPackage.Literals.OPERATIONAL_ACTOR_REALIZATION,
+          CtxPackage.Literals.ACTOR__OWNED_OPERATIONAL_ACTOR_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(OaPackage.Literals.ENTITY, CtxPackage.Literals.ACTOR,
+          CtxPackage.Literals.OPERATIONAL_ENTITY_REALIZATION,
           CtxPackage.Literals.ACTOR__OWNED_OPERATIONAL_ENTITY_REALIZATIONS));
-      mappingAdd(mapping, new RealizationLinkMapping(CtxPackage.Literals.ACTOR, LaPackage.Literals.LOGICAL_ACTOR, LaPackage.Literals.SYSTEM_ACTOR_REALIZATION,
+      mapping.add(new RealizationLinkMapping(CtxPackage.Literals.ACTOR, LaPackage.Literals.LOGICAL_ACTOR,
+          LaPackage.Literals.SYSTEM_ACTOR_REALIZATION,
           LaPackage.Literals.LOGICAL_ACTOR__OWNED_SYSTEM_ACTOR_REALIZATIONS));
-      mappingAdd(mapping, new RealizationLinkMapping(LaPackage.Literals.LOGICAL_ACTOR, PaPackage.Literals.PHYSICAL_ACTOR,
-          PaPackage.Literals.LOGICAL_ACTOR_REALIZATION, PaPackage.Literals.PHYSICAL_ACTOR__OWNED_LOGICAL_ACTOR_REALIZATIONS));
-      mappingAdd(mapping, new RealizationLinkMapping(OaPackage.Literals.ENTITY, CtxPackage.Literals.SYSTEM, CtxPackage.Literals.OPERATIONAL_ENTITY_REALIZATION,
-          CtxPackage.Literals.SYSTEM__OWNED_ENTITY_REALIZATIONS));
-      mappingAdd(mapping, new RealizationLinkMapping(CtxPackage.Literals.SYSTEM, LaPackage.Literals.LOGICAL_COMPONENT, LaPackage.Literals.SYSTEM_REALIZATION,
-          LaPackage.Literals.LOGICAL_COMPONENT__OWNED_SYSTEM_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(LaPackage.Literals.LOGICAL_ACTOR, PaPackage.Literals.PHYSICAL_ACTOR,
+          PaPackage.Literals.LOGICAL_ACTOR_REALIZATION,
+          PaPackage.Literals.PHYSICAL_ACTOR__OWNED_LOGICAL_ACTOR_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(OaPackage.Literals.ENTITY, CtxPackage.Literals.SYSTEM,
+          CtxPackage.Literals.OPERATIONAL_ENTITY_REALIZATION, CtxPackage.Literals.SYSTEM__OWNED_ENTITY_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(CtxPackage.Literals.SYSTEM, LaPackage.Literals.LOGICAL_COMPONENT,
+          LaPackage.Literals.SYSTEM_REALIZATION, LaPackage.Literals.LOGICAL_COMPONENT__OWNED_SYSTEM_REALIZATIONS));
 
-      mappingAdd(mapping, new RealizationLinkMapping(LaPackage.Literals.LOGICAL_COMPONENT, PaPackage.Literals.PHYSICAL_COMPONENT,
-          PaPackage.Literals.LOGICAL_COMPONENT_REALIZATION, PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(LaPackage.Literals.LOGICAL_COMPONENT,
+          PaPackage.Literals.PHYSICAL_COMPONENT, PaPackage.Literals.LOGICAL_COMPONENT_REALIZATION,
+          PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_REALIZATIONS));
 
       // Architectures
-      mappingAdd(mapping, new RealizationLinkMapping(OaPackage.Literals.OPERATIONAL_ANALYSIS, CtxPackage.Literals.SYSTEM_ANALYSIS,
-          CtxPackage.Literals.OPERATIONAL_ANALYSIS_REALIZATION, CtxPackage.Literals.SYSTEM_ANALYSIS__OWNED_OPERATIONAL_ANALYSIS_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(OaPackage.Literals.OPERATIONAL_ANALYSIS,
+          CtxPackage.Literals.SYSTEM_ANALYSIS, CtxPackage.Literals.OPERATIONAL_ANALYSIS_REALIZATION,
+          CtxPackage.Literals.SYSTEM_ANALYSIS__OWNED_OPERATIONAL_ANALYSIS_REALIZATIONS));
 
-      mappingAdd(mapping, new RealizationLinkMapping(CtxPackage.Literals.SYSTEM_ANALYSIS, LaPackage.Literals.LOGICAL_ARCHITECTURE,
-          LaPackage.Literals.SYSTEM_ANALYSIS_REALIZATION, LaPackage.Literals.LOGICAL_ARCHITECTURE__OWNED_SYSTEM_ANALYSIS_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(CtxPackage.Literals.SYSTEM_ANALYSIS,
+          LaPackage.Literals.LOGICAL_ARCHITECTURE, LaPackage.Literals.SYSTEM_ANALYSIS_REALIZATION,
+          LaPackage.Literals.LOGICAL_ARCHITECTURE__OWNED_SYSTEM_ANALYSIS_REALIZATIONS));
 
-      mappingAdd(mapping, new RealizationLinkMapping(LaPackage.Literals.LOGICAL_ARCHITECTURE, PaPackage.Literals.PHYSICAL_ARCHITECTURE,
-          PaPackage.Literals.LOGICAL_ARCHITECTURE_REALIZATION, PaPackage.Literals.PHYSICAL_ARCHITECTURE__OWNED_LOGICAL_ARCHITECTURE_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(LaPackage.Literals.LOGICAL_ARCHITECTURE,
+          PaPackage.Literals.PHYSICAL_ARCHITECTURE, PaPackage.Literals.LOGICAL_ARCHITECTURE_REALIZATION,
+          PaPackage.Literals.PHYSICAL_ARCHITECTURE__OWNED_LOGICAL_ARCHITECTURE_REALIZATIONS));
 
-      mappingAdd(mapping, new RealizationLinkMapping(PaPackage.Literals.PHYSICAL_ARCHITECTURE, EpbsPackage.Literals.EPBS_ARCHITECTURE,
-          EpbsPackage.Literals.PHYSICAL_ARCHITECTURE_REALIZATION, EpbsPackage.Literals.EPBS_ARCHITECTURE__OWNED_PHYSICAL_ARCHITECTURE_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(PaPackage.Literals.PHYSICAL_ARCHITECTURE,
+          EpbsPackage.Literals.EPBS_ARCHITECTURE, EpbsPackage.Literals.PHYSICAL_ARCHITECTURE_REALIZATION,
+          EpbsPackage.Literals.EPBS_ARCHITECTURE__OWNED_PHYSICAL_ARCHITECTURE_REALIZATIONS));
 
-      mappingAdd(mapping, new RealizationLinkMapping(CsPackage.Literals.PHYSICAL_PORT, CsPackage.Literals.PHYSICAL_PORT,
-          CsPackage.Literals.PHYSICAL_PORT_REALIZATION, CsPackage.Literals.PHYSICAL_PORT__OWNED_PHYSICAL_PORT_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(CsPackage.Literals.PHYSICAL_PORT, CsPackage.Literals.PHYSICAL_PORT,
+          CsPackage.Literals.PHYSICAL_PORT_REALIZATION,
+          CsPackage.Literals.PHYSICAL_PORT__OWNED_PHYSICAL_PORT_REALIZATIONS));
 
-      mappingAdd(mapping, new RealizationLinkMapping(CsPackage.Literals.PHYSICAL_PORT, CsPackage.Literals.PHYSICAL_LINK,
-          CsPackage.Literals.PHYSICAL_LINK_REALIZATION, CsPackage.Literals.PHYSICAL_LINK__OWNED_PHYSICAL_LINK_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(CsPackage.Literals.PHYSICAL_PORT, CsPackage.Literals.PHYSICAL_LINK,
+          CsPackage.Literals.PHYSICAL_LINK_REALIZATION,
+          CsPackage.Literals.PHYSICAL_LINK__OWNED_PHYSICAL_LINK_REALIZATIONS));
 
-      mappingAdd(mapping, new RealizationLinkMapping(CsPackage.Literals.PHYSICAL_PATH, CsPackage.Literals.PHYSICAL_PATH,
-          CsPackage.Literals.PHYSICAL_PATH_REALIZATION, CsPackage.Literals.PHYSICAL_PATH__OWNED_PHYSICAL_PATH_REALIZATIONS));
+      mapping.add(new RealizationLinkMapping(CsPackage.Literals.PHYSICAL_PATH, CsPackage.Literals.PHYSICAL_PATH,
+          CsPackage.Literals.PHYSICAL_PATH_REALIZATION,
+          CsPackage.Literals.PHYSICAL_PATH__OWNED_PHYSICAL_PATH_REALIZATIONS));
     }
 
     return (Collection<RealizationLinkMapping>) iContext1.get(MAPPING_MAP);
   }
 
+  protected Collection<RealizationLinkMapping> getMappingsSource(EObject element, IContext context) {
+
+    Collection<RealizationLinkMapping> traces = new LinkedList<RealizationLinkMapping>();
+    for (RealizationLinkMapping link : getMappings(context)) {
+      if (link.isValidSource(element, context)) { // link are inverted
+        traces.add(link);
+      }
+    }
+
+    if (traces.isEmpty()) {
+      traces.add(defaultMapping);
+    }
+    return traces;
+  }
+
+  protected Collection<RealizationLinkMapping> getMappingsTarget(EObject element, IContext context) {
+
+    Collection<RealizationLinkMapping> traces = new LinkedList<RealizationLinkMapping>();
+    for (RealizationLinkMapping link : getMappings(context)) {
+      if (link.isValidTarget(element, context)) { // link are inverted
+        traces.add(link);
+      }
+    }
+
+    if (traces.isEmpty()) {
+      traces.add(defaultMapping);
+    }
+    return traces;
+  }
+
   /**
-   * @param mapping
-   * @param realizationLinkMapping
+   * Returns all elements that are source of the given element.
+   * (ie all elements realized by the given element, and with a realization between them)
+   * 
+   * Some elements, like parts can realize another Part even if there is no TransfoLink between them.
+   * (by a realization between their components, https://bugs.polarsys.org/show_bug.cgi?id=1918)
    */
-  private void mappingAdd(Collection<RealizationLinkMapping> mapping, RealizationLinkMapping realizationLinkMapping) {
-    mapping.add(realizationLinkMapping);
-  }
-
-  protected Collection<RealizationLinkMapping> getMappingsSource(EObject targetElement, IContext context) {
-
-    Collection<RealizationLinkMapping> traces = new LinkedList<RealizationLinkMapping>();
-    if (targetElement instanceof CapellaElement) {
-      Collection<RealizationLinkMapping> map = getMappings(context);
-      for (RealizationLinkMapping link : map) {
-        if (link.isValidSource(targetElement, context)) { // link are inverted
-          traces.add(link);
-        }
-      }
-    }
-
-    if (traces.isEmpty()) {
-      traces.add(defaultMapping);
-    }
-    return traces;
-  }
-
-  protected Collection<RealizationLinkMapping> getMappingsTarget(EObject targetElement, IContext context) {
-
-    Collection<RealizationLinkMapping> traces = new LinkedList<RealizationLinkMapping>();
-    if (targetElement instanceof CapellaElement) {
-      Collection<RealizationLinkMapping> map = getMappings(context);
-      for (RealizationLinkMapping link : map) {
-        if (link.isValidTarget(targetElement, context)) { // link are inverted
-          traces.add(link);
-        }
-      }
-    }
-
-    if (traces.isEmpty()) {
-      traces.add(defaultMapping);
-    }
-    return traces;
-  }
-
   @Override
   protected List<EObject> getSourceAttachments(EObject targetElement, IContext context) {
-    List<EObject> elements = new ArrayList<EObject>();
+    List<EObject> elements = new ArrayList<>();
 
-    Collection<RealizationLinkMapping> traces = getMappingsTarget(targetElement, context);
     if (targetElement instanceof TraceableElement) {
-      for (AbstractTrace trace : ((TraceableElement) targetElement).getOutgoingTraces()) {
-        for (RealizationLinkMapping link : traces) {
-          if (isValidMapping(trace, link, context)) {
-            elements.add(trace.getTargetElement()); // link is inverted
-          }
-        }
-      }
-    }
-    return elements;
-  }
-
-  protected List<EObject> getTargetAttachments(EObject sourceElement, IContext context) {
-    List<EObject> elements = new ArrayList<EObject>();
-
-    Collection<RealizationLinkMapping> traces = getMappingsSource(sourceElement, context);
-    if (sourceElement instanceof TraceableElement) {
-      for (AbstractTrace trace : ((TraceableElement) sourceElement).getIncomingTraces()) {
-        for (RealizationLinkMapping link : traces) {
-          if (isValidMapping(trace, link, context)) {
-            elements.add(trace.getSourceElement()); // link is inverted
+      for (AbstractTrace trace : getOutgoingTraces((TraceableElement) targetElement)) {
+        for (RealizationLinkMapping link : getMappingsTarget(trace.getSourceElement(), context)) {
+          if (link.match(trace, context)) {
+            elements.add(adaptTracedElement(targetElement, trace.getTargetElement()));// link is inverted
           }
         }
       }
@@ -488,22 +524,68 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
   }
 
   /**
-   * @param trace
-   * @param link
-   * @param context
-   * @return
+   * Returns all elements that are target of the given element.
+   * (ie all elements realizing by the given element, and with a realization between them)
+   * 
+   * Some elements, like parts can be realized by another Part even if there is no TransfoLink between them.
+   * (by a realization between their components, https://bugs.polarsys.org/show_bug.cgi?id=1918)
    */
-  private boolean isValidMapping(AbstractTrace trace, RealizationLinkMapping link, IContext context) {
-    EObject sourceElement = trace.getTargetElement(); // link is inverted
-    EObject targetElement = trace.getSourceElement();
+  protected List<EObject> getTargetAttachments(EObject sourceElement, IContext context) {
+    List<EObject> elements = new ArrayList<>();
 
-    if (link.realizationLink.isInstance(trace)) {
-      if ((link.isValidSource(sourceElement, context)) && link.isValidTarget(targetElement, context)
-          && link.isValid(sourceElement, targetElement, context)) {
-        return true;
+    if (sourceElement instanceof TraceableElement) {
+      for (AbstractTrace trace : getIncomingTraces((TraceableElement) sourceElement)) {
+        for (RealizationLinkMapping link : getMappingsSource(trace.getTargetElement(), context)) {
+          if (link.match(trace, context)) {
+            elements.add(adaptTracedElement(sourceElement, trace.getSourceElement()));// link is inverted
+          }
+        }
       }
     }
-    return false;
+
+    return elements;
+  }
+
+
+  /**
+   * Some elements (like Part) can realize another Part even if there is no TransfoLink between them. We return here
+   * also traces for the type of the part
+   */
+  protected List<AbstractTrace> getOutgoingTraces(TraceableElement object) {
+    if (object instanceof Part && ((Part) object).getType() != null) {
+      ArrayList<AbstractTrace> traces = new ArrayList<>();
+      traces.addAll(object.getOutgoingTraces());
+      traces.addAll((((Part) object).getType()).getOutgoingTraces());
+      return traces;
+    }
+
+    return object.getOutgoingTraces();
+  }
+
+  /**
+   * Some elements (like Part) can realize another Part even if there is no TransfoLink between them. We return here
+   * also traces for the type of the part
+   */
+  protected List<AbstractTrace> getIncomingTraces(TraceableElement object) {
+    if (object instanceof Part && ((Part) object).getType() != null) {
+      ArrayList<AbstractTrace> traces = new ArrayList<>();
+      traces.addAll(object.getIncomingTraces());
+      traces.addAll((((Part) object).getType()).getIncomingTraces());
+      return traces;
+    }
+    return object.getIncomingTraces();
+  }
+
+  /**
+   * Then, from a given element and a element from a trace, we adapt it back to the original type. (From a Component
+   * Trace, we return the related Part).
+   */
+  private EObject adaptTracedElement(EObject sourceElement, TraceableElement object) {
+    if (sourceElement instanceof Part && object instanceof Component
+        && ((Component) object).getRepresentingPartitions().size() == 1) {
+      return ((Component) object).getRepresentingPartitions().get(0);
+    }
+    return object;
   }
 
   @Override
@@ -526,8 +608,8 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
     }
 
     if (mapping == defaultMapping) {
-      if (!(mapping.isValidSource(sourceElement, context) && mapping.isValidTarget(targetElement, context) && mapping.isValid(sourceElement,
-          targetElement, context))) {
+      if (!(mapping.isValidSource(sourceElement, context) && mapping.isValidTarget(targetElement, context)
+          && mapping.isValid(sourceElement, targetElement, context))) {
         mapping = null;
       }
     }
@@ -538,7 +620,8 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
     RealizationLinkMapping mapping = getBestMapping(sourceElement, targetElement, context);
 
     if (mapping != null) {
-      EObject link = ((EPackage) mapping.realizationLink.eContainer()).getEFactoryInstance().create(mapping.realizationLink);
+      EObject link = ((EPackage) mapping.realizationLink.eContainer()).getEFactoryInstance()
+          .create(mapping.realizationLink);
 
       if (sourceElement instanceof TraceableElement) {
         if (targetElement instanceof TraceableElement) {
@@ -605,14 +688,11 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
       EObject sourceElement = realizationLink.getSourceElement();
       EObject targetElement = realizationLink.getTargetElement();
 
-      EClass realizationLink2 = CapellacommonPackage.Literals.TRANSFO_LINK;
       EStructuralFeature feature2 = CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES;
 
       for (RealizationLinkMapping link : map) {
         if (link.realizationLink.isInstance(realizationLink)) {
-
           if (link.target.equals(sourceElement.eClass()) && link.source.equals(targetElement.eClass())) {
-            realizationLink2 = link.realizationLink;
             feature2 = link.feature;
             break;
           }
@@ -635,7 +715,8 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
             } catch (Exception e) {
               // Continue to next parent. realizationLink is not valid.
               LogHelper.getInstance().debug(
-                  NLS.bind("Realization link ''{0}'' cannot be attached into ''{1}''", realizationLink.eClass().getName(), parent.eClass().getName()),
+                  NLS.bind("Realization link ''{0}'' cannot be attached into ''{1}''",
+                      realizationLink.eClass().getName(), parent.eClass().getName()),
                   ITransitionConstants.ATTACHMENT_HANDLER);
 
             }

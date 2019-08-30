@@ -42,7 +42,7 @@ public class CapellaModelEditingDomainListener extends ResourceSetListenerImpl i
    */
   @Override
   public void disposedEditingDomain(EditingDomain editingDomain) {
-    //
+    // Do nothing
   }
 
   /**

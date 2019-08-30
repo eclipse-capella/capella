@@ -83,6 +83,7 @@ public interface PhysicalFunction extends AbstractFunction {
 	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalFunction_AllocatorPhysicalActors()
 	 * @see org.polarsys.capella.core.data.pa.PhysicalActor#getAllocatedPhysicalFunctions
 	 * @model opposite="allocatedPhysicalFunctions" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='PhysicalFunction.incomingTraces(self, cfa);\r\nComponentFunctionalAllocation.sourceElement(cfa, target);'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -111,6 +112,7 @@ public interface PhysicalFunction extends AbstractFunction {
 	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalFunction_AllocatorPhysicalComponents()
 	 * @see org.polarsys.capella.core.data.pa.PhysicalComponent#getAllocatedPhysicalFunctions
 	 * @model opposite="allocatedPhysicalFunctions" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='PhysicalFunction.incomingTraces(self, cfa);\r\nComponentFunctionalAllocation.sourceElement(cfa, target);'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -139,6 +141,7 @@ public interface PhysicalFunction extends AbstractFunction {
 	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalFunction_RealizedLogicalFunctions()
 	 * @see org.polarsys.capella.core.data.la.LogicalFunction#getRealizingPhysicalFunctions
 	 * @model opposite="realizingPhysicalFunctions" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outFunctionRealizations.allocatedFunction'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -164,6 +167,7 @@ public interface PhysicalFunction extends AbstractFunction {
 	 * @return the value of the '<em>Contained Physical Functions</em>' reference list.
 	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalFunction_ContainedPhysicalFunctions()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedFunctions'"
 	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedFunctions'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -190,6 +194,7 @@ public interface PhysicalFunction extends AbstractFunction {
 	 * @return the value of the '<em>Children Physical Functions</em>' reference list.
 	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalFunction_ChildrenPhysicalFunctions()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='subFunctions'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='list of children physical functions\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"

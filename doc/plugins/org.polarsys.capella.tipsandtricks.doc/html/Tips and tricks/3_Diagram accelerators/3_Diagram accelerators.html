@@ -1,2 +1,185 @@
-<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>3_Diagram accelerators</title><link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/></head><body><h1 id="Diagram_Accelerators">Diagram Accelerators</h1><h2 id="Contextualize_Your_Diagram_To_Selected_Model_Elements">Contextualize Your Diagram To Selected Model Elements</h2><p>Contextual diagrams are used to focus on one specific element. 
-This feature is available when you select the <b><i>background of the Diagram</i></b> and assign a specific model element (for instance a Functional Chain) in the field <b><i>Contextual Element</i></b> of the Properties view. Then, the Diagram has specific refresh rules and always keeps up-to-date the contextual elements.</p><p>As an example, imagine a Dataflow diagram always synchronised with Functions and Functional Exchanges coming from a selected contextual Functional Chain, or an Architecture Diagram always synchronised with Components and Functional Exchanges coming from a selected contextual dynamic Exchange Scenario.</p><p><div class="thumb"><div class="thumbinner" style="width:402px;"><a href="../../Images/Tips66.png" class="image"><img class="thumbimage" width="400" border="0" src="../../Images/Tips66.png"/></a></div></div></p><p>For more details, please refer to the section <i>Capella Guide &gt; User Manual &gt; Diagram Management &gt; Diagram Concepts &gt; Blank and Contextual Diagrams, Contextual Diagram Elements</i>.</p><p>This feature is often coupled with “Synchronizing Diagram” capability in order to master the visibility of the elements in the resulting Diagram, see section below “Unsynchronize your diagram”.</p><h2 id="Diagram_Accelerators_2">Diagram Accelerators</h2><p>From a diagram, Capella provides some tools called accelerators allowing automated synchronization or generations of model elements.</p><p>For instance, you can propagate Exchange Items allocated to a Functional Exchange to its source and target ports, etc…</p><p><div class="thumb"><div class="thumbinner" style="width:602px;"><a href="../../Images/Tips67.png" class="image"><img class="thumbimage" width="600" border="0" src="../../Images/Tips67.png"/></a></div></div></p><p>For more details, please refer to the section <i>Capella Guide &gt; User Manual &gt; Modelling Wizards and Accelerators</i>.</p><h2 id="Initialize_Diagram">Initialize Diagram</h2><table border="1"><tr><td><p><img height="48" width="48" border="0" src="../../Images/InfoIcon.png"/></p></td><td><p>For better results, graphical elements have to be unpinned before running this action. On the diagram menu choose "Select All" then "Unpin selected elements".</p></td></tr></table><p>The idea is to initialize a diagram from another one based on information in the model. Then apply the layout from a third diagram, a template one for instance.</p><p>Note: A recommended best practice is to capitalize the layout creation effort in a diagram and use it as a reference to apply the layout on other diagrams and keep their display consistent.</p><p>In order to save time when information can be deduced from the model, Capella is able to initialize diagrams from others, not only in a same layer but also between different layers, based on realization links.  </p><ul><li>For example, in the <i>System Analysis</i>, from a <i>Function Scenario</i>, you can initialize an <i>Exchange Scenario</i> thanks to the <b><i>Transitions</i></b> menu:</li></ul><p><div class="thumb"><div class="thumbinner" style="width:802px;"><a href="../../Images/Tips9.png" class="image"><img class="thumbimage" width="800" border="0" src="../../Images/Tips9.png"/></a></div></div></p><p><div class="thumb"><div class="thumbinner" style="width:802px;"><a href="../../Images/Tips10.png" class="image"><img class="thumbimage" width="800" border="0" src="../../Images/Tips10.png"/></a></div></div></p><dl><dd>The resulting ES Scenario is deduced from the model: the System and Actors allocating the functions displayed in the original FS Scenario.</dd></dl><ul><li>Another example from the <i>System Analysis</i> to the <i>Logical Architecture</i> is that you can also initialize an <i>Exchange Scenario</i> thanks to the <b><i>Transitions</i></b> menu:</li></ul><p><div class="thumb"><div class="thumbinner" style="width:802px;"><a href="../../Images/Tips11.png" class="image"><img class="thumbimage" width="800" border="0" src="../../Images/Tips11.png"/></a></div></div></p><p><div class="thumb"><div class="thumbinner" style="width:802px;"><a href="../../Images/Tips12.png" class="image"><img class="thumbimage" width="800" border="0" src="../../Images/Tips12.png"/></a></div></div></p><dl><dd>The resulting ES Scenario is deduced from the model: previous Functional Transitions from System to Logical phase and Logical Components and Actors allocating transitioned functions displayed in the original ES Scenario.</dd></dl><dl><dd>Then, you can imagine having a static view of this new dynamic ES Scenario, creating a new Architecture Diagram LAB and clicking on palette tool Diagram Accelerators <b>Elements from Scenario</b> which will initialize it with information coming from the ES Scenario: Logical Components and Actors, Logical Functions and Exchanges etc.. .  </dd></dl><p><div class="thumb"><div class="thumbinner" style="width:1002px;"><a href="../../Images/Tips68.png" class="image"><img class="thumbimage" width="1000" border="0" src="../../Images/Tips68.png"/></a></div></div></p><p>This feature is often coupled with:</p><ul><li>“Synchronizing Diagram” capability in order to master the resulting Diagram, see section below “Unsynchronize your diagram”</li><li>Copying/Pasting Layout from a template Diagram or a upper Architecture Diagram SAB to keep original layout. (see section below “Layout Management &gt; Diagram Template”.)</li></ul></body></html>
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>3_Diagram accelerators</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="Diagram_Accelerators">Diagram Accelerators</h1>
+		<h2 id="Contextualize_Your_Diagram_To_Selected_Model_Elements">Contextualize Your Diagram To Selected Model Elements</h2>
+		<p>Contextual diagrams are used to focus on one specific element. 
+			This feature is available when you select the 
+			<b>
+				<i>background of the Diagram</i>
+			</b> and assign a specific model element (for instance a Functional Chain) in the field 
+			<b>
+				<i>Contextual Element</i>
+			</b> of the Properties view. Then, the Diagram has specific refresh rules and always keeps up-to-date the contextual elements.
+		</p>
+		<p>As an example, imagine a Dataflow diagram always synchronised with Functions and Functional Exchanges coming from a selected contextual Functional Chain, or an Architecture Diagram always synchronised with Components and Functional Exchanges coming from a selected contextual dynamic Exchange Scenario.</p>
+		<p>
+			<div class="thumb">
+				<div class="thumbinner" style="width:402px;">
+					<a href="../../Images/Tips66.png" class="image">
+						<img class="thumbimage" width="400" border="0" src="../../Images/Tips66.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+		<p>For more details, please refer to the section 
+			<i>Capella Guide &gt; User Manual &gt; Diagram Management &gt; Diagram Concepts &gt; Blank and Contextual Diagrams, Contextual Diagram Elements</i>.
+		</p>
+		<p>This feature is often coupled with “Synchronizing Diagram” capability in order to master the visibility of the elements in the resulting Diagram, see section below “Unsynchronize your diagram”.</p>
+		<h2 id="Elements_of_Interest">Elements of Interest</h2>
+		<p>
+			<b>Elements of Interest</b> is a property of diagram allowing to associate the diagram with some model elements for the purpose of navigation or documentation.
+		</p>
+		<p>
+			<div class="thumb">
+				<div class="thumbinner">
+					<a href="../../Images/Tips89.png" class="image">
+						<img class="thumbimage" border="0" src="../../Images/Tips89.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+		<h2 id="Diagram_Accelerators_2">Diagram Accelerators</h2>
+		<p>From a diagram, Capella provides some tools called accelerators allowing automated synchronization or generations of model elements.</p>
+		<p>For instance, you can propagate Exchange Items allocated to a Functional Exchange to its source and target ports, etc…</p>
+		<p>
+			<div class="thumb">
+				<div class="thumbinner" style="width:602px;">
+					<a href="../../Images/Tips67.png" class="image">
+						<img class="thumbimage" width="600" border="0" src="../../Images/Tips67.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+		<p>For more details, please refer to the section 
+			<i>Capella Guide &gt; User Manual &gt; Modelling Wizards and Accelerators</i>.
+		</p>
+		<h2 id="Initialize_Diagram">Initialize Diagram</h2>
+		<p>The idea is to initialize a diagram from another one based on information in the model. Then apply the layout from a third diagram, a template one for instance.</p>
+		<p>Note: A recommended best practice is to capitalize the layout creation effort in a diagram and use it as a reference to apply the layout on other diagrams and keep their display consistent.</p>
+		<p>In order to save time when information can be deduced from the model, Capella is able to initialize diagrams from others, not only in a same layer but also between different layers, based on realization links.</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="48" width="48" border="0" src="../../Images/InfoIcon.png"/>
+					</p>
+				</td>
+				<td>
+					<p>For better results, graphical elements have to be unpinned before running this action. On the diagram menu choose "Select All" then "Unpin selected elements".</p>
+				</td>
+			</tr>
+		</table>
+		<h3 id="Initialize_FS_from_a_FC_and_OAS_from_an_OP">Initialize FS from a FC and OAS from an OP</h3>
+		<p>On a Functional Chain, you can run the command from the Transitions menu "Functional Chain to Functional Scenario Initialization" to create a Functional Scenario. Each time you run this command you will create a new scenario.</p>
+		<p>
+			<img height="650" width="700" border="0" src="../../Images/FC2FS_cmd.png"/>
+		</p>
+		<p>On an Operational Process, you can run the command from the Transitions menu "Operational Process to Operational Activity Scenario Initialization" to create an Operational Activity Scenario. Each time you run this command you will create a new scenario.</p>
+		<p>
+			<img height="650" width="700" border="0" src="../../Images/OP2OAS_cmd.png"/>
+		</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="48" width="48" border="0" src="../../Images/InfoIcon.png"/>
+					</p>
+				</td>
+				<td>
+					<p>In the Capella Transition/Generation preference page, you can control the creation of interactions between instance roles  during initialization (with or without return branch).</p>
+					<p>
+						<img height="150" width="500" border="0" src="../../Images/Pref_FC2FS.png"/>
+					</p>
+				</td>
+			</tr>
+		</table>
+		<h3 id="Initialize_an_ES_from_a_FS">Initialize an ES from a FS</h3>
+		<ul>
+			<li>A first use case, in the 
+				<i>System Analysis</i>, from a 
+				<i>Function Scenario</i>, you can initialize an 
+				<i>Exchange Scenario</i> thanks to the 
+				<b>
+					<i>Transitions</i>
+				</b> menu:
+			</li>
+		</ul>
+		<p>
+			<div class="thumb">
+				<div class="thumbinner" style="width:802px;">
+					<a href="../../Images/Tips9.png" class="image">
+						<img class="thumbimage" width="800" border="0" src="../../Images/Tips9.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+		<p>
+			<div class="thumb">
+				<div class="thumbinner" style="width:802px;">
+					<a href="../../Images/Tips10.png" class="image">
+						<img class="thumbimage" width="800" border="0" src="../../Images/Tips10.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+		<dl>
+			<dd>The resulting ES Scenario is deduced from the model: the System and Actors allocating the functions displayed in the original FS Scenario.</dd>
+		</dl>
+		<ul>
+			<li>A second use case, from the 
+				<i>System Analysis</i> to the 
+				<i>Logical Architecture</i> is that you can also initialize an 
+				<i>Exchange Scenario</i> thanks to the 
+				<b>
+					<i>Transitions</i>
+				</b> menu:
+			</li>
+		</ul>
+		<p>
+			<div class="thumb">
+				<div class="thumbinner" style="width:802px;">
+					<a href="../../Images/Tips11.png" class="image">
+						<img class="thumbimage" width="800" border="0" src="../../Images/Tips11.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+		<p>
+			<div class="thumb">
+				<div class="thumbinner" style="width:802px;">
+					<a href="../../Images/Tips12.png" class="image">
+						<img class="thumbimage" width="800" border="0" src="../../Images/Tips12.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+		<dl>
+			<dd>The resulting ES Scenario is deduced from the model: previous Functional Transitions from System to Logical phase and Logical Components and Actors allocating transitioned functions displayed in the original ES Scenario.</dd>
+		</dl>
+		<dl>
+			<dd>Then, you can imagine having a static view of this new dynamic ES Scenario, creating a new Architecture Diagram LAB and clicking on palette tool Diagram Accelerators 
+				<b>Elements from Scenario</b> which will initialize it with information coming from the ES Scenario: Logical Components and Actors, Logical Functions and Exchanges etc.. .  
+			</dd>
+		</dl>
+		<p>
+			<div class="thumb">
+				<div class="thumbinner" style="width:1002px;">
+					<a href="../../Images/Tips68.png" class="image">
+						<img class="thumbimage" width="1000" border="0" src="../../Images/Tips68.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+		<p>This feature is often coupled with:</p>
+		<ul>
+			<li>“Synchronizing Diagram” capability in order to master the resulting Diagram, see section below “Unsynchronize your diagram”</li>
+			<li>Copying/Pasting Layout from a template Diagram or a upper Architecture Diagram SAB to keep original layout. (see section below “Layout Management &gt; Diagram Template”.)</li>
+		</ul>
+	</body>
+</html>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,29 +17,28 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.StructuredViewer;
 
 /**
+ * Allow to select an object in a viewer.
  */
-public/**
-       * Allow to select an object in a viewer.
-       */
-class NavigateAction extends Action {
+@Deprecated
+public class NavigateAction extends Action {
   /**
    * Element to select.
    */
-  private EObject _element;
+  private EObject element;
   /**
    * Viewer that selects the model element.
    */
-  private StructuredViewer _viewer;
+  private StructuredViewer viewer;
 
   /**
    * Constructor.
    * 
-   * @param element_p
-   * @param viewer_p
+   * @param element
+   * @param viewer
    */
-  public NavigateAction(EObject element_p, StructuredViewer viewer_p) {
-    _element = element_p;
-    _viewer = viewer_p;
+  public NavigateAction(EObject element, StructuredViewer viewer) {
+    this.element = element;
+    this.viewer = viewer;
   }
 
   /**
@@ -47,12 +46,7 @@ class NavigateAction extends Action {
    */
   @Override
   public void run() {
-    IStructuredSelection selection = new StructuredSelection(_element);
-    _viewer.setSelection(selection, true);
-    if (((StructuredSelection) _viewer.getSelection()).toArray().length == 0) {
-      LocatedElementsNotFoundInCapellaExplorerHandlingAction locatedElementsNotFoundInCapellaExplorerHandlingAction = new LocatedElementsNotFoundInCapellaExplorerHandlingAction();
-      locatedElementsNotFoundInCapellaExplorerHandlingAction.run(selection);
-      _viewer.setSelection(selection, true);
-    }
+    IStructuredSelection selection = new StructuredSelection(element);
+    viewer.setSelection(selection, true);
   }
 }

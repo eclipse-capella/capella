@@ -59,7 +59,7 @@ public class ReplicaNameProperty extends AbstractProperty implements ICompoundPr
 
       } else {
         _lastSuffix = suffix;
-        if (element == null) {
+        if (element == null || element.eIsProxy()) {
           _currentName = suffix;
         } else {
           String name = element.getName();

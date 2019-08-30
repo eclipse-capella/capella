@@ -35,9 +35,8 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
  * @see org.polarsys.capella.core.data.oa.OaFactory
  * @model kind="package"
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping profileName='Capella'"
- *        annotation="http://www.polarsys.org/kitalpha/dsl/2007/dslfactory trackResourceModification='true' useUUIDs='false' useIDAttributes='true' extensibleProviderFactory='true' childCreationExtenders='true'"
- *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='OperationalAnalysis aims at defining the system\'s ecosystem operational analysis modelling language (close to the OVs from NAF/MoDAF).\r\n[source: Capella study]' usage\040guideline='none' used\040in\040levels='operational' usage\040examples='none' constraints='This package depends on the model CompositeStructure.ecore\r\nThis package depends on the model Interaction.ecore' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/extension trackResourceModification='true' useUUIDs='false' useIDAttributes='true' extensibleProviderFactory='true' childCreationExtenders='true'"
+ *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='OperationalAnalysis aims at defining the system\'s ecosystem operational analysis modelling language (close to the OVs from NAF/MoDAF).\r\n[source: Capella study]' usage\040guideline='none' used\040in\040levels='operational' usage\040examples='none' constraints='This package depends on the model CompositeStructure.ecore\r\nThis package depends on the model Interaction.ecore' comment/notes='none' reference\040documentation='none'"
  * @generated
  */
 public interface OaPackage extends EPackage {
@@ -55,7 +54,7 @@ public interface OaPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.polarsys.org/capella/core/oa/1.2.0"; //$NON-NLS-1$
+	String eNS_URI = "http://www.polarsys.org/capella/core/oa/1.3.0"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.
@@ -2246,6 +2245,42 @@ public interface OaPackage extends EPackage {
 	 * @ordered
 	 */
 	int OPERATIONAL_PROCESS__REALIZING_FUNCTIONAL_CHAINS = FaPackage.FUNCTIONAL_CHAIN__REALIZING_FUNCTIONAL_CHAINS;
+
+	/**
+	 * The feature id for the '<em><b>Pre Condition</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATIONAL_PROCESS__PRE_CONDITION = FaPackage.FUNCTIONAL_CHAIN__PRE_CONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Post Condition</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATIONAL_PROCESS__POST_CONDITION = FaPackage.FUNCTIONAL_CHAIN__POST_CONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Owned Sequence Nodes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATIONAL_PROCESS__OWNED_SEQUENCE_NODES = FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_NODES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Sequence Links</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATIONAL_PROCESS__OWNED_SEQUENCE_LINKS = FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_LINKS;
 
 	/**
 	 * The feature id for the '<em><b>Involving Operational Capabilities</b></em>' reference list.

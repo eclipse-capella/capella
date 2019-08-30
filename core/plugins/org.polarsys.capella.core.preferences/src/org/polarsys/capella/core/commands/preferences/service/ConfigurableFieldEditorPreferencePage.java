@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -71,10 +71,10 @@ public abstract class ConfigurableFieldEditorPreferencePage extends FieldEditorP
 	 * 
 	 */
 
-  public static Map<FieldEditor, Composite> EXPERT_FIEL_EDITORS = new HashMap<FieldEditor, Composite>(0);
+  public static Map<FieldEditor, Composite> EXPERT_FIEL_EDITORS = new HashMap<>(0);
   
   
-  public static List<Composite> COMPOSITE_FIEL_EDITORS = new ArrayList<Composite>(0);
+  public static List<Composite> COMPOSITE_FIEL_EDITORS = new ArrayList<>(0);
 
   /**
    * Creates a new field editor preference page with the given style, an empty title, and no image.
@@ -144,7 +144,7 @@ public abstract class ConfigurableFieldEditorPreferencePage extends FieldEditorP
       EXPERT_FIEL_EDITORS.put(editor, parent);
       editor.setEnabled(ConfigurabilityPreferences.isInstanceScopePreferenceItemEnabled(XmlPreferencesConfig.USER_PROFILE_MODE_ID), parent);
       parent.setEnabled(ConfigurabilityPreferences.isInstanceScopePreferenceItemEnabled(XmlPreferencesConfig.USER_PROFILE_MODE_ID));
-    } else {
+    } else if(parent != null){
       editor.setEnabled(true, parent);
       parent.setEnabled(true);
     }
@@ -229,7 +229,7 @@ public abstract class ConfigurableFieldEditorPreferencePage extends FieldEditorP
 	  
 	  for (int i = 0; i < COMPOSITE_FIEL_EDITORS.size(); i++) {
 		  
-		  final Composite composite =(Composite) COMPOSITE_FIEL_EDITORS.get(i);
+		  final Composite composite = COMPOSITE_FIEL_EDITORS.get(i);
 	      if ((composite != null) && composite.isDisposed()) {
 	    	  COMPOSITE_FIEL_EDITORS.remove(i);
 	      } else if (composite != null) {
@@ -242,8 +242,8 @@ public abstract class ConfigurableFieldEditorPreferencePage extends FieldEditorP
 
 	  
     Collection<FieldEditor> fields = EXPERT_FIEL_EDITORS.keySet();
-    for (Object element : fields) {
-      FieldEditor fieldEditorPreferencePage = (FieldEditor) element;
+    for (Object field : fields) {
+      FieldEditor fieldEditorPreferencePage = (FieldEditor) field;
       final Composite composite = EXPERT_FIEL_EDITORS.get(fieldEditorPreferencePage);
       if ((composite != null) && composite.isDisposed()) {
         EXPERT_FIEL_EDITORS.remove(composite);
@@ -263,7 +263,5 @@ public abstract class ConfigurableFieldEditorPreferencePage extends FieldEditorP
       }
       it.remove(); // avoids a ConcurrentModificationException
     }
-
   }
-
 }

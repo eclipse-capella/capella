@@ -50,6 +50,8 @@ import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.fa.ComponentPortAllocation;
 import org.polarsys.capella.core.data.fa.ComponentPortAllocationEnd;
 import org.polarsys.capella.core.data.fa.ComponentPortKind;
+import org.polarsys.capella.core.data.fa.ControlNode;
+import org.polarsys.capella.core.data.fa.ControlNodeKind;
 import org.polarsys.capella.core.data.fa.ExchangeCategory;
 import org.polarsys.capella.core.data.fa.ExchangeContainment;
 import org.polarsys.capella.core.data.fa.ExchangeLink;
@@ -66,6 +68,8 @@ import org.polarsys.capella.core.data.fa.FunctionRealization;
 import org.polarsys.capella.core.data.fa.FunctionSpecification;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
 import org.polarsys.capella.core.data.fa.FunctionalChainKind;
 import org.polarsys.capella.core.data.fa.FunctionalChainRealization;
 import org.polarsys.capella.core.data.fa.FunctionalChainReference;
@@ -73,6 +77,9 @@ import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.fa.FunctionalExchangeRealization;
 import org.polarsys.capella.core.data.fa.FunctionalExchangeSpecification;
 import org.polarsys.capella.core.data.fa.OrientationPortKind;
+import org.polarsys.capella.core.data.fa.ReferenceHierarchyContext;
+import org.polarsys.capella.core.data.fa.SequenceLink;
+import org.polarsys.capella.core.data.fa.SequenceLinkEnd;
 import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.information.communication.CommunicationPackage;
 import org.polarsys.capella.core.data.information.communication.impl.CommunicationPackageImpl;
@@ -95,6 +102,7 @@ import org.polarsys.capella.core.data.requirement.RequirementPackage;
 import org.polarsys.capella.core.data.requirement.impl.RequirementPackageImpl;
 import org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage;
 import org.polarsys.capella.core.data.sharedmodel.impl.SharedmodelPackageImpl;
+import org.polarsys.kitalpha.emde.model.EmdePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -353,6 +361,48 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass functionalChainInvolvementLinkEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass sequenceLinkEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass sequenceLinkEndEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass functionalChainInvolvementFunctionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass controlNodeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass referenceHierarchyContextEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum functionalChainKindEEnum = null;
 
 	/**
@@ -382,6 +432,13 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 	 * @generated
 	 */
 	private EEnum orientationPortKindEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum controlNodeKindEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -430,7 +487,10 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 		isInited = true;
 
 		// Initialize simple dependencies
+		ModellingcorePackage.eINSTANCE.eClass();
+		EmdePackage.eINSTANCE.eClass();
 		ActivityPackage.eINSTANCE.eClass();
+		BehaviorPackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
 		CapellamodellerPackageImpl theCapellamodellerPackage = (CapellamodellerPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CapellamodellerPackage.eNS_URI) instanceof CapellamodellerPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CapellamodellerPackage.eNS_URI) : CapellamodellerPackage.eINSTANCE);
@@ -1099,6 +1159,42 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getFunctionalChain_PreCondition() {
+		return (EReference)functionalChainEClass.getEStructuralFeatures().get(15);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFunctionalChain_PostCondition() {
+		return (EReference)functionalChainEClass.getEStructuralFeatures().get(16);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFunctionalChain_OwnedSequenceNodes() {
+		return (EReference)functionalChainEClass.getEStructuralFeatures().get(17);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFunctionalChain_OwnedSequenceLinks() {
+		return (EReference)functionalChainEClass.getEStructuralFeatures().get(18);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAbstractFunctionalChainContainer() {
 		return abstractFunctionalChainContainerEClass;
 	}
@@ -1144,17 +1240,8 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getFunctionalChainInvolvement_ExchangedItems() {
-		return (EReference)functionalChainInvolvementEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getFunctionalChainInvolvement_InvolvedElement() {
-		return (EReference)functionalChainInvolvementEClass.getEStructuralFeatures().get(3);
+		return (EReference)functionalChainInvolvementEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -2161,6 +2248,177 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getFunctionalChainInvolvementLink() {
+		return functionalChainInvolvementLinkEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFunctionalChainInvolvementLink_ExchangeContext() {
+		return (EReference)functionalChainInvolvementLinkEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFunctionalChainInvolvementLink_ExchangedItems() {
+		return (EReference)functionalChainInvolvementLinkEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFunctionalChainInvolvementLink_Source() {
+		return (EReference)functionalChainInvolvementLinkEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFunctionalChainInvolvementLink_Target() {
+		return (EReference)functionalChainInvolvementLinkEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSequenceLink() {
+		return sequenceLinkEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSequenceLink_Condition() {
+		return (EReference)sequenceLinkEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSequenceLink_Links() {
+		return (EReference)sequenceLinkEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSequenceLink_Source() {
+		return (EReference)sequenceLinkEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSequenceLink_Target() {
+		return (EReference)sequenceLinkEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSequenceLinkEnd() {
+		return sequenceLinkEndEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getFunctionalChainInvolvementFunction() {
+		return functionalChainInvolvementFunctionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFunctionalChainInvolvementFunction_OutgoingInvolvementLinks() {
+		return (EReference)functionalChainInvolvementFunctionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFunctionalChainInvolvementFunction_IncomingInvolvementLinks() {
+		return (EReference)functionalChainInvolvementFunctionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getControlNode() {
+		return controlNodeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getControlNode_Kind() {
+		return (EAttribute)controlNodeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getReferenceHierarchyContext() {
+		return referenceHierarchyContextEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getReferenceHierarchyContext_SourceReferenceHierarchy() {
+		return (EReference)referenceHierarchyContextEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getReferenceHierarchyContext_TargetReferenceHierarchy() {
+		return (EReference)referenceHierarchyContextEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getFunctionalChainKind() {
 		return functionalChainKindEEnum;
 	}
@@ -2199,6 +2457,15 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 	 */
 	public EEnum getOrientationPortKind() {
 		return orientationPortKindEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getControlNodeKind() {
+		return controlNodeKindEEnum;
 	}
 
 	/**
@@ -2305,6 +2572,10 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 		createEReference(functionalChainEClass, FUNCTIONAL_CHAIN__INVOLVING_CAPABILITY_REALIZATIONS);
 		createEReference(functionalChainEClass, FUNCTIONAL_CHAIN__REALIZED_FUNCTIONAL_CHAINS);
 		createEReference(functionalChainEClass, FUNCTIONAL_CHAIN__REALIZING_FUNCTIONAL_CHAINS);
+		createEReference(functionalChainEClass, FUNCTIONAL_CHAIN__PRE_CONDITION);
+		createEReference(functionalChainEClass, FUNCTIONAL_CHAIN__POST_CONDITION);
+		createEReference(functionalChainEClass, FUNCTIONAL_CHAIN__OWNED_SEQUENCE_NODES);
+		createEReference(functionalChainEClass, FUNCTIONAL_CHAIN__OWNED_SEQUENCE_LINKS);
 
 		abstractFunctionalChainContainerEClass = createEClass(ABSTRACT_FUNCTIONAL_CHAIN_CONTAINER);
 		createEReference(abstractFunctionalChainContainerEClass, ABSTRACT_FUNCTIONAL_CHAIN_CONTAINER__OWNED_FUNCTIONAL_CHAINS);
@@ -2312,7 +2583,6 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 		functionalChainInvolvementEClass = createEClass(FUNCTIONAL_CHAIN_INVOLVEMENT);
 		createEReference(functionalChainInvolvementEClass, FUNCTIONAL_CHAIN_INVOLVEMENT__NEXT_FUNCTIONAL_CHAIN_INVOLVEMENTS);
 		createEReference(functionalChainInvolvementEClass, FUNCTIONAL_CHAIN_INVOLVEMENT__PREVIOUS_FUNCTIONAL_CHAIN_INVOLVEMENTS);
-		createEReference(functionalChainInvolvementEClass, FUNCTIONAL_CHAIN_INVOLVEMENT__EXCHANGED_ITEMS);
 		createEReference(functionalChainInvolvementEClass, FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVED_ELEMENT);
 
 		functionalChainReferenceEClass = createEClass(FUNCTIONAL_CHAIN_REFERENCE);
@@ -2448,12 +2718,38 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 		createEReference(componentPortAllocationEndEClass, COMPONENT_PORT_ALLOCATION_END__PART);
 		createEReference(componentPortAllocationEndEClass, COMPONENT_PORT_ALLOCATION_END__OWNING_COMPONENT_PORT_ALLOCATION);
 
+		functionalChainInvolvementLinkEClass = createEClass(FUNCTIONAL_CHAIN_INVOLVEMENT_LINK);
+		createEReference(functionalChainInvolvementLinkEClass, FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__EXCHANGE_CONTEXT);
+		createEReference(functionalChainInvolvementLinkEClass, FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__EXCHANGED_ITEMS);
+		createEReference(functionalChainInvolvementLinkEClass, FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__SOURCE);
+		createEReference(functionalChainInvolvementLinkEClass, FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__TARGET);
+
+		sequenceLinkEClass = createEClass(SEQUENCE_LINK);
+		createEReference(sequenceLinkEClass, SEQUENCE_LINK__CONDITION);
+		createEReference(sequenceLinkEClass, SEQUENCE_LINK__LINKS);
+		createEReference(sequenceLinkEClass, SEQUENCE_LINK__SOURCE);
+		createEReference(sequenceLinkEClass, SEQUENCE_LINK__TARGET);
+
+		sequenceLinkEndEClass = createEClass(SEQUENCE_LINK_END);
+
+		functionalChainInvolvementFunctionEClass = createEClass(FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION);
+		createEReference(functionalChainInvolvementFunctionEClass, FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__OUTGOING_INVOLVEMENT_LINKS);
+		createEReference(functionalChainInvolvementFunctionEClass, FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__INCOMING_INVOLVEMENT_LINKS);
+
+		controlNodeEClass = createEClass(CONTROL_NODE);
+		createEAttribute(controlNodeEClass, CONTROL_NODE__KIND);
+
+		referenceHierarchyContextEClass = createEClass(REFERENCE_HIERARCHY_CONTEXT);
+		createEReference(referenceHierarchyContextEClass, REFERENCE_HIERARCHY_CONTEXT__SOURCE_REFERENCE_HIERARCHY);
+		createEReference(referenceHierarchyContextEClass, REFERENCE_HIERARCHY_CONTEXT__TARGET_REFERENCE_HIERARCHY);
+
 		// Create enums
 		functionalChainKindEEnum = createEEnum(FUNCTIONAL_CHAIN_KIND);
 		functionKindEEnum = createEEnum(FUNCTION_KIND);
 		componentExchangeKindEEnum = createEEnum(COMPONENT_EXCHANGE_KIND);
 		componentPortKindEEnum = createEEnum(COMPONENT_PORT_KIND);
 		orientationPortKindEEnum = createEEnum(ORIENTATION_PORT_KIND);
+		controlNodeKindEEnum = createEEnum(CONTROL_NODE_KIND);
 	}
 
 	/**
@@ -2554,6 +2850,14 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 		componentPortEClass.getESuperTypes().add(theModellingcorePackage.getInformationsExchanger());
 		componentPortAllocationEClass.getESuperTypes().add(theCapellacorePackage.getAllocation());
 		componentPortAllocationEndEClass.getESuperTypes().add(theCapellacorePackage.getCapellaElement());
+		functionalChainInvolvementLinkEClass.getESuperTypes().add(this.getFunctionalChainInvolvement());
+		functionalChainInvolvementLinkEClass.getESuperTypes().add(this.getReferenceHierarchyContext());
+		sequenceLinkEClass.getESuperTypes().add(theCapellacorePackage.getCapellaElement());
+		sequenceLinkEClass.getESuperTypes().add(this.getReferenceHierarchyContext());
+		sequenceLinkEndEClass.getESuperTypes().add(theCapellacorePackage.getCapellaElement());
+		functionalChainInvolvementFunctionEClass.getESuperTypes().add(this.getFunctionalChainInvolvement());
+		functionalChainInvolvementFunctionEClass.getESuperTypes().add(this.getSequenceLinkEnd());
+		controlNodeEClass.getESuperTypes().add(this.getSequenceLinkEnd());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(abstractFunctionalArchitectureEClass, AbstractFunctionalArchitecture.class, "AbstractFunctionalArchitecture", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -2632,14 +2936,17 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 		initEReference(getFunctionalChain_InvolvingCapabilityRealizations(), theLaPackage.getCapabilityRealization(), null, "involvingCapabilityRealizations", null, 0, -1, FunctionalChain.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getFunctionalChain_RealizedFunctionalChains(), this.getFunctionalChain(), null, "realizedFunctionalChains", null, 0, -1, FunctionalChain.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getFunctionalChain_RealizingFunctionalChains(), this.getFunctionalChain(), null, "realizingFunctionalChains", null, 0, -1, FunctionalChain.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getFunctionalChain_PreCondition(), theCapellacorePackage.getConstraint(), null, "preCondition", null, 0, 1, FunctionalChain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getFunctionalChain_PostCondition(), theCapellacorePackage.getConstraint(), null, "postCondition", null, 0, 1, FunctionalChain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getFunctionalChain_OwnedSequenceNodes(), this.getControlNode(), null, "ownedSequenceNodes", null, 0, -1, FunctionalChain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getFunctionalChain_OwnedSequenceLinks(), this.getSequenceLink(), null, "ownedSequenceLinks", null, 0, -1, FunctionalChain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(abstractFunctionalChainContainerEClass, AbstractFunctionalChainContainer.class, "AbstractFunctionalChainContainer", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getAbstractFunctionalChainContainer_OwnedFunctionalChains(), this.getFunctionalChain(), null, "ownedFunctionalChains", null, 0, -1, AbstractFunctionalChainContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(functionalChainInvolvementEClass, FunctionalChainInvolvement.class, "FunctionalChainInvolvement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getFunctionalChainInvolvement_NextFunctionalChainInvolvements(), this.getFunctionalChainInvolvement(), null, "nextFunctionalChainInvolvements", null, 0, -1, FunctionalChainInvolvement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(functionalChainInvolvementEClass, FunctionalChainInvolvement.class, "FunctionalChainInvolvement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getFunctionalChainInvolvement_NextFunctionalChainInvolvements(), this.getFunctionalChainInvolvement(), null, "nextFunctionalChainInvolvements", null, 0, -1, FunctionalChainInvolvement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getFunctionalChainInvolvement_PreviousFunctionalChainInvolvements(), this.getFunctionalChainInvolvement(), null, "previousFunctionalChainInvolvements", null, 0, -1, FunctionalChainInvolvement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getFunctionalChainInvolvement_ExchangedItems(), theInformationPackage.getExchangeItem(), null, "exchangedItems", null, 0, -1, FunctionalChainInvolvement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getFunctionalChainInvolvement_InvolvedElement(), theCapellacorePackage.getInvolvedElement(), null, "involvedElement", null, 0, 1, FunctionalChainInvolvement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(functionalChainReferenceEClass, FunctionalChainReference.class, "FunctionalChainReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -2775,6 +3082,31 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 		initEReference(getComponentPortAllocationEnd_Part(), theCsPackage.getPart(), null, "part", null, 0, 1, ComponentPortAllocationEnd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getComponentPortAllocationEnd_OwningComponentPortAllocation(), this.getComponentPortAllocation(), null, "owningComponentPortAllocation", null, 0, 1, ComponentPortAllocationEnd.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
+		initEClass(functionalChainInvolvementLinkEClass, FunctionalChainInvolvementLink.class, "FunctionalChainInvolvementLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getFunctionalChainInvolvementLink_ExchangeContext(), theCapellacorePackage.getConstraint(), null, "exchangeContext", null, 0, 1, FunctionalChainInvolvementLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getFunctionalChainInvolvementLink_ExchangedItems(), theInformationPackage.getExchangeItem(), null, "exchangedItems", null, 0, -1, FunctionalChainInvolvementLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getFunctionalChainInvolvementLink_Source(), this.getFunctionalChainInvolvementFunction(), null, "source", null, 0, 1, FunctionalChainInvolvementLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getFunctionalChainInvolvementLink_Target(), this.getFunctionalChainInvolvementFunction(), null, "target", null, 0, 1, FunctionalChainInvolvementLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(sequenceLinkEClass, SequenceLink.class, "SequenceLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getSequenceLink_Condition(), theCapellacorePackage.getConstraint(), null, "condition", null, 0, 1, SequenceLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getSequenceLink_Links(), this.getFunctionalChainInvolvementLink(), null, "links", null, 0, -1, SequenceLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getSequenceLink_Source(), this.getSequenceLinkEnd(), null, "source", null, 0, 1, SequenceLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getSequenceLink_Target(), this.getSequenceLinkEnd(), null, "target", null, 0, 1, SequenceLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(sequenceLinkEndEClass, SequenceLinkEnd.class, "SequenceLinkEnd", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+
+		initEClass(functionalChainInvolvementFunctionEClass, FunctionalChainInvolvementFunction.class, "FunctionalChainInvolvementFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getFunctionalChainInvolvementFunction_OutgoingInvolvementLinks(), this.getFunctionalChainInvolvementLink(), null, "outgoingInvolvementLinks", null, 0, -1, FunctionalChainInvolvementFunction.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getFunctionalChainInvolvementFunction_IncomingInvolvementLinks(), this.getFunctionalChainInvolvementLink(), null, "incomingInvolvementLinks", null, 0, -1, FunctionalChainInvolvementFunction.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(controlNodeEClass, ControlNode.class, "ControlNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(getControlNode_Kind(), this.getControlNodeKind(), "kind", null, 0, 1, ControlNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(referenceHierarchyContextEClass, ReferenceHierarchyContext.class, "ReferenceHierarchyContext", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getReferenceHierarchyContext_SourceReferenceHierarchy(), this.getFunctionalChainReference(), null, "sourceReferenceHierarchy", null, 0, -1, ReferenceHierarchyContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getReferenceHierarchyContext_TargetReferenceHierarchy(), this.getFunctionalChainReference(), null, "targetReferenceHierarchy", null, 0, -1, ReferenceHierarchyContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
 		// Initialize enums and add enum literals
 		initEEnum(functionalChainKindEEnum, FunctionalChainKind.class, "FunctionalChainKind"); //$NON-NLS-1$
 		addEEnumLiteral(functionalChainKindEEnum, FunctionalChainKind.SIMPLE);
@@ -2805,18 +3137,21 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 		addEEnumLiteral(orientationPortKindEEnum, OrientationPortKind.OUT);
 		addEEnumLiteral(orientationPortKindEEnum, OrientationPortKind.INOUT);
 
+		initEEnum(controlNodeKindEEnum, ControlNodeKind.class, "ControlNodeKind"); //$NON-NLS-1$
+		addEEnumLiteral(controlNodeKindEEnum, ControlNodeKind.OR);
+		addEEnumLiteral(controlNodeKindEEnum, ControlNodeKind.AND);
+		addEEnumLiteral(controlNodeKindEEnum, ControlNodeKind.ITERATE);
+
 		// Create resource
 		createResource(eNS_URI);
 
 		// Create annotations
-		// http://www.polarsys.org/kitalpha/dsl/2007/dslfactory
-		createDslfactoryAnnotations();
+		// http://www.polarsys.org/kitalpha/emde/1.0.0/extension
+		createExtensionAnnotations();
 		// http://www.polarsys.org/kitalpha/ecore/documentation
 		createDocumentationAnnotations();
 		// http://www.polarsys.org/capella/semantic
 		createSemanticAnnotations();
-		// http://www.polarsys.org/kitalpha/emde/1.0.0/extension
-		createExtensionAnnotations();
 		// http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping
 		createMappingAnnotations();
 		// http://www.polarsys.org/capella/2007/UML2Mapping
@@ -2829,26 +3164,6 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 		createDerivedAnnotations();
 		// http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore
 		createIgnoreAnnotations();
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://www.polarsys.org/kitalpha/dsl/2007/dslfactory</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createDslfactoryAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$	
-		addAnnotation
-		  (this, 
-		   source, 
-		   new String[] {
-			 "trackResourceModification", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "useUUIDs", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });
 	}
 
 	/**
@@ -3419,6 +3734,30 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getFunctionalChain_OwnedSequenceNodes(), 
+		   source, 
+		   new String[] {
+			 "description", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "used in levels", "operational,system,logical,physical", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getFunctionalChain_OwnedSequenceLinks(), 
+		   source, 
+		   new String[] {
+			 "description", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "used in levels", "operational,system,logical,physical", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (functionalChainKindEEnum, 
@@ -4351,6 +4690,134 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "description", "the ComponentPortAllocation link that contains this endpoint\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (functionalChainInvolvementLinkEClass, 
+		   source, 
+		   new String[] {
+			 "description", "specifies the involvement of a model element in form of link in a functional chain\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "used in levels", "operational,system,logical,physical", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getFunctionalChainInvolvementLink_ExchangedItems(), 
+		   source, 
+		   new String[] {
+			 "description", "the ExchangeItems carried by this Functional Chain Involvement Link", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (sequenceLinkEClass, 
+		   source, 
+		   new String[] {
+			 "description", "express precedence between executions of represented functions\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "used in levels", "operational,system,logical,physical", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (sequenceLinkEndEClass, 
+		   source, 
+		   new String[] {
+			 "description", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "used in levels", "operational,system,logical,physical", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (functionalChainInvolvementFunctionEClass, 
+		   source, 
+		   new String[] {
+			 "description", "specifies the involvement of a model element in form of function in a functional chain\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "used in levels", "operational,system,logical,physical", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (controlNodeEClass, 
+		   source, 
+		   new String[] {
+			 "description", "used to control the flow of executions of represented functions in a functional chain\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "used in levels", "operational,system,logical,physical", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getControlNode_Kind(), 
+		   source, 
+		   new String[] {
+			 "description", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "used in levels", "operational,system,logical,physical", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (controlNodeKindEEnum, 
+		   source, 
+		   new String[] {
+			 "description", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "used in levels", "operational,system,logical,physical", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (referenceHierarchyContextEClass, 
+		   source, 
+		   new String[] {
+			 "description", "used to uniquely identify a link between involvement functions when their functional chain is referenced more than once.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "used in levels", "operational,system,logical,physical", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getReferenceHierarchyContext_SourceReferenceHierarchy(), 
+		   source, 
+		   new String[] {
+			 "description", "used to uniquely identify the source of a link between involvement functions when their functional chain is referenced more than once.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "used in levels", "operational,system,logical,physical", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getReferenceHierarchyContext_TargetReferenceHierarchy(), 
+		   source, 
+		   new String[] {
+			 "description", "used to uniquely identify the target of a link between involvement functions when their functional chain is referenced more than once.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "used in levels", "operational,system,logical,physical", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -4462,6 +4929,26 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
+		  (getFunctionalChain_PreCondition(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getFunctionalChain_PostCondition(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getFunctionalChain_OwnedSequenceNodes(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getFunctionalChain_OwnedSequenceLinks(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getAbstractFunctionalChainContainer_OwnedFunctionalChains(), 
 		   source, 
 		   new String[] {
@@ -4480,7 +4967,6 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 		  (getFunctionalChainInvolvement_PreviousFunctionalChainInvolvements(), 
 		   source, 
 		   new String[] {
-			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionalChainInvolvement_InvolvedElement(), 
@@ -4787,6 +5273,96 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (functionalChainInvolvementLinkEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getFunctionalChainInvolvementLink_ExchangeContext(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getFunctionalChainInvolvementLink_ExchangedItems(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getFunctionalChainInvolvementLink_Source(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getFunctionalChainInvolvementLink_Target(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (sequenceLinkEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getSequenceLink_Condition(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getSequenceLink_Links(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getSequenceLink_Source(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getSequenceLink_Target(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (sequenceLinkEndEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (functionalChainInvolvementFunctionEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getFunctionalChainInvolvementFunction_OutgoingInvolvementLinks(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getFunctionalChainInvolvementFunction_IncomingInvolvementLinks(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (controlNodeEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (referenceHierarchyContextEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getReferenceHierarchyContext_SourceReferenceHierarchy(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getReferenceHierarchyContext_TargetReferenceHierarchy(), 
+		   source, 
+		   new String[] {
 		   });
 	}
 
@@ -5334,6 +5910,22 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
+		  (getFunctionalChain_OwnedSequenceNodes(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getFunctionalChain_OwnedSequenceLinks(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
 		  (functionalChainKindEEnum, 
 		   source, 
 		   new String[] {
@@ -5406,15 +5998,6 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 		   new String[] {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getFunctionalChainInvolvement_ExchangedItems(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
@@ -6438,6 +7021,110 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Opposite reference of uml::Connector::end", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (functionalChainInvolvementLinkEClass, 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getFunctionalChainInvolvementLink_ExchangedItems(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (sequenceLinkEClass, 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (sequenceLinkEndEClass, 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (functionalChainInvolvementFunctionEClass, 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getFunctionalChainInvolvementFunction_OutgoingInvolvementLinks(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getFunctionalChainInvolvementFunction_IncomingInvolvementLinks(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (controlNodeEClass, 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getControlNode_Kind(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (controlNodeKindEEnum, 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (referenceHierarchyContextEClass, 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getReferenceHierarchyContext_SourceReferenceHierarchy(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getReferenceHierarchyContext_TargetReferenceHierarchy(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -7160,421 +7847,610 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 		  (getAbstractFunctionalBlock_FunctionalAllocations(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "outgoingTraces" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractFunctionalBlock_AllocatedFunctions(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "functionalAllocations.function" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionSpecification_SubFunctionSpecifications(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "FunctionSpecification.ownedNodes(self, af);\r\nAbstractFunction.linkedFunctionSpecification(af, target); " //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getExchangeLink_Exchanges(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ownedExchangeContainments.exchange" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getExchangeSpecification_ContainingLink(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "link.link" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getExchangeSpecification_OutgoingExchangeSpecificationRealizations(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "outgoingTraces" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getExchangeSpecification_IncomingExchangeSpecificationRealizations(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "incomingTraces" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionalExchangeSpecification_FunctionalExchanges(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "realizations" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionalChain_InvolvedFunctionalChainInvolvements(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ownedFunctionalChainInvolvements" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionalChain_InvolvedFunctions(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "involvedElements" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionalChain_InvolvedFunctionalExchanges(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "involvedElements" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionalChain_InvolvedElements(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "involvedFunctionalChainInvolvements.involved" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionalChain_EnactedFunctions(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "involvedFunctions" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionalChain_EnactedFunctionalBlocks(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "enactedFunctions.allocationBlocks" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionalChain_FirstFunctionalChainInvolvements(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "freeform", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "pattern FunctionalChain__firstFunctionalChainInvolvements(self : FunctionalChain, target : FunctionalChainInvolvement) {\r\n\tFunctionalChain.ownedFunctionalChainInvolvements(self, target);\r\n\tFunctionalChainInvolvement.involved(target, _);\r\n\tneg find _PreviousInvolvement(target, _);\r\n}\r\nprivate pattern _PreviousInvolvement(fci : FunctionalChainInvolvement, previous : FunctionalChainInvolvement) {\r\n\tFunctionalChainInvolvement.previousFunctionalChainInvolvements(fci, previous);\r\n}\r\n" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionalChain_InvolvingCapabilities(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "FunctionalChain.involvingInvolvements(self, fcaci);\r\nFunctionalChainAbstractCapabilityInvolvement.capability(fcaci, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionalChain_InvolvingCapabilityRealizations(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "FunctionalChain.involvingInvolvements(self, fcaci);\r\nFunctionalChainAbstractCapabilityInvolvement.capability(fcaci, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionalChain_RealizedFunctionalChains(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "FunctionalChainRealization.sourceElement(fcr, self);\r\nFunctionalChainRealization.targetElement(fcr, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionalChain_RealizingFunctionalChains(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "FunctionalChainRealization.targetElement(fcr, self);\r\nFunctionalChainRealization.sourceElement(fcr, target);" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getFunctionalChainInvolvement_NextFunctionalChainInvolvements(), 
+		   source, 
+		   new String[] {
+			 "viatra.variant", "freeform", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "pattern FunctionalChainInvolvement_nextFunctionalChainInvolvements(self : FunctionalChainInvolvement, target : FunctionalChainInvolvement) {\r\n\tFunctionalChainInvolvementLink.source(target, self);\r\n} or {\r\n\tFunctionalChainInvolvementLink.target(self, target);\r\n}" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionalChainInvolvement_PreviousFunctionalChainInvolvements(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "freeform", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "pattern FunctionalChainInvolvement__previousFunctionalChainInvolvements(self : FunctionalChainInvolvement, target : FunctionalChainInvolvement) {\r\n\tFunctionalChainInvolvementLink.target(target, self);\r\n} or {\r\n\tFunctionalChainInvolvementLink.source(self, target);\r\n}" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionalChainInvolvement_InvolvedElement(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "involved" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionalChainReference_ReferencedFunctionalChain(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "involved" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionInputPort_IncomingFunctionalExchanges(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "incoming" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionOutputPort_OutgoingFunctionalExchanges(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "outgoing" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentFunctionalAllocation_Function(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "targetElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentFunctionalAllocation_Block(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "sourceElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getExchangeSpecificationRealization_RealizedExchangeSpecification(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "targetElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getExchangeSpecificationRealization_RealizingExchangeSpecification(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "sourceElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionalExchangeRealization_RealizedFunctionalExchange(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "targetElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionalExchangeRealization_RealizingFunctionalExchange(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "sourceElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionRealization_AllocatedFunction(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "targetElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionRealization_AllocatingFunction(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "sourceElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionalExchange_InvolvingFunctionalChains(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "FunctionalExchange.involvingInvolvements(self, fci);\r\nFunctionalChainInvolvement.involver(fci, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionalExchange_AllocatingComponentExchanges(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "incomingComponentExchangeFunctionalExchangeRealizations.allocatingComponentExchange" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionalExchange_IncomingComponentExchangeFunctionalExchangeRealizations(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "incomingTraces" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionalExchange_IncomingFunctionalExchangeRealizations(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "incomingTraces" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionalExchange_OutgoingFunctionalExchangeRealizations(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "outgoingTraces" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionalExchange_Categories(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "exchanges" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionalExchange_SourceFunctionOutputPort(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "source" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionalExchange_TargetFunctionInputPort(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "target" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionalExchange_RealizedFunctionalExchanges(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "FunctionalExchangeRealization.sourceElement(fer, self);\r\nFunctionalExchangeRealization.targetElement(fer, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionalExchange_RealizingFunctionalExchanges(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "FunctionalExchangeRealization.targetElement(fer, self);\r\nFunctionalExchangeRealization.sourceElement(fer, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractFunction_SubFunctions(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "freeform", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "pattern AbstractFunction__subFunctions(self : AbstractFunction, target : AbstractFunction) {\r\n\t// sub function directly in function\r\n\tAbstractFunction.ownedFunctions(self, target);\r\n} or { // sub function in function first level package\r\n\tfind _AbstractFunction__ownedFunctionPkgs(self, pkg);\r\n\tfind _FunctionPkg__ownedFunctions(pkg, target);\r\n}\r\nor { // sub function in function first level package sub packages\r\n\tfind _AbstractFunction__ownedFunctionPkgs(self, pkg);\r\n\tfind _FunctionPkg__ownedFunctionPkgs+(pkg, subpkg);\r\n\tfind _FunctionPkg__ownedFunctions(subpkg, target);\r\n}\r\n\r\nprivate pattern _AbstractFunction__ownedFunctionPkgs(af : AbstractFunction, ownedpkg : FunctionPkg) {\r\n\tOperationalActivity.ownedOperationalActivityPkgs(af, ownedpkg);\r\n} or {\r\n\tSystemFunction.ownedSystemFunctionPkgs(af, ownedpkg);\r\n} or {\r\n\tLogicalFunction.ownedLogicalFunctionPkgs(af, ownedpkg);\r\n} or {\r\n\tPhysicalFunction.ownedPhysicalFunctionPkgs(af, ownedpkg);\r\n}\r\n\r\nprivate pattern _FunctionPkg__ownedFunctionPkgs(pkg : FunctionPkg, ownedpkg : FunctionPkg) {\r\n\tOperationalActivityPkg.ownedOperationalActivityPkgs(pkg, ownedpkg);\r\n} or {\r\n\tSystemFunctionPkg.ownedSystemFunctionPkgs(pkg, ownedpkg);\r\n} or {\r\n\tLogicalFunctionPkg.ownedLogicalFunctionPkgs(pkg, ownedpkg);\r\n} or {\r\n\tPhysicalFunctionPkg.ownedPhysicalFunctionPkgs(pkg, ownedpkg);\r\n}\r\n\r\nprivate pattern _FunctionPkg__ownedFunctions(pkg : FunctionPkg, af : AbstractFunction) {\r\n\tOperationalActivityPkg.ownedOperationalActivities(pkg, af);\r\n} or {\r\n\tSystemFunctionPkg.ownedSystemFunctions(pkg, af);\r\n} or {\r\n\tLogicalFunctionPkg.ownedLogicalFunctions(pkg, af);\r\n} or {\r\n\tPhysicalFunctionPkg.ownedPhysicalFunctions(pkg, af);\r\n}\r\n" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractFunction_OutFunctionRealizations(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "outgoingTraces" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractFunction_InFunctionRealizations(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "incomingTraces" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractFunction_ComponentFunctionalAllocations(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "incomingTraces" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractFunction_AllocationBlocks(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "componentFunctionalAllocations.block" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractFunction_InvolvingCapabilities(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "AbstractFunction.involvingInvolvements(self, afaci);\r\nAbstractFunctionAbstractCapabilityInvolvement.capability(afaci, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractFunction_InvolvingCapabilityRealizations(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "AbstractFunction.involvingInvolvements(self, afaci);\r\nAbstractFunctionAbstractCapabilityInvolvement.capability(afaci, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractFunction_InvolvingFunctionalChains(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "AbstractFunction.involvingInvolvements(self, fci);\r\nFunctionalChainInvolvement.involver(fci, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractFunction_LinkedStateMachine(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "behavior" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractFunction_LinkedFunctionSpecification(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "behavior" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionPort_AllocatorComponentPorts(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "incomingPortAllocations.allocatingPort" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionPort_RealizedFunctionPorts(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "outgoingPortRealizations.realizedPort" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getFunctionPort_RealizingFunctionPorts(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "incomingPortRealizations.realizingPort" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentExchange_AllocatedFunctionalExchanges(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "outgoingComponentExchangeFunctionalExchangeAllocations.allocatedFunctionalExchange" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentExchange_IncomingComponentExchangeRealizations(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "incomingTraces" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentExchange_OutgoingComponentExchangeRealizations(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "outgoingTraces" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentExchange_OutgoingComponentExchangeFunctionalExchangeAllocations(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "outgoingTraces" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentExchange_SourcePort(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ComponentExchange.source(self, target);\r\n} or {\r\n\tComponentExchange.source(self, cee);\r\n\tComponentExchangeEnd.port(cee, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentExchange_SourcePart(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ComponentExchange.source(self, target);\r\n} or {\r\n\tComponentExchange.source(self, cee);\r\n\tComponentExchangeEnd.part(cee, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentExchange_TargetPort(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ComponentExchange.target(self, target);\r\n} or {\r\n\tComponentExchange.target(self, cee);\r\n\tComponentExchangeEnd.port(cee, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentExchange_TargetPart(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ComponentExchange.target(self, target);\r\n} or {\r\n\tComponentExchange.target(self, cee);\r\n\tComponentExchangeEnd.part(cee, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentExchange_Categories(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "exchanges" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentExchange_AllocatorPhysicalLinks(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ComponentExchange.incomingTraces(self, cea);\r\nComponentExchangeAllocation.componentExchangeAllocator(cea, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentExchange_RealizedComponentExchanges(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ComponentExchange.outgoingTraces(self, cer);\r\nComponentExchangeRealization.allocatedComponentExchange(cer, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentExchange_RealizingComponentExchanges(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ComponentExchange.incomingTraces(self, cer);\r\nComponentExchangeRealization.allocatingComponentExchange(cer, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentExchangeAllocation_ComponentExchangeAllocated(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "targetElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentExchangeAllocation_ComponentExchangeAllocator(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "sourceElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentExchangeAllocator_AllocatedComponentExchanges(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ComponentExchangeAllocator.outgoingTraces(self, cea);\r\nComponentExchangeAllocation.componentExchangeAllocated(cea, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentExchangeFunctionalExchangeAllocation_AllocatedFunctionalExchange(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "targetElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentExchangeFunctionalExchangeAllocation_AllocatingComponentExchange(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "sourceElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentExchangeRealization_AllocatedComponentExchange(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "targetElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentExchangeRealization_AllocatingComponentExchange(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "sourceElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentPort_ComponentExchanges(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ComponentPort.informationFlows(self, target);\r\n} or {\r\n\tComponentExchangeEnd.port(cee, self);\r\n\tComponentExchange.ownedComponentExchangeEnds(target, cee);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentPort_AllocatedFunctionPorts(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "outgoingPortAllocations.allocatedPort" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentPort_DelegatedComponentPorts(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ComponentPort.outgoingInformationFlows(self, ce);\r\nComponentExchange.kind(ce, ::DELEGATION);\r\nComponentExchange.targetPort(ce, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentPort_DelegatingComponentPorts(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ComponentPort.incomingInformationFlows(self, ce);\r\nComponentExchange.kind(ce, ::DELEGATION);\r\nComponentExchange.sourcePort(ce, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentPort_AllocatingPhysicalPorts(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ComponentPort.incomingTraces(self, cpa);\r\nComponentPortAllocation.allocatingPort(cpa, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentPort_RealizedComponentPorts(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "outgoingPortRealizations.realizedPort" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentPort_RealizingComponentPorts(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "incomingPortRealizations.realizingPort" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentPortAllocation_AllocatedPort(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "targetElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentPortAllocation_AllocatingPort(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "sourceElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentPortAllocationEnd_OwningComponentPortAllocation(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ownedComponentPortAllocationEnds" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getFunctionalChainInvolvementFunction_OutgoingInvolvementLinks(), 
+		   source, 
+		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "source" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getFunctionalChainInvolvementFunction_IncomingInvolvementLinks(), 
+		   source, 
+		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "target" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.jface.util.LocalSelectionTransfer;
 import org.eclipse.jface.viewers.CellEditor;
@@ -56,7 +57,6 @@ import org.polarsys.capella.common.re.handlers.location.LocationHandlerHelper;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
 import org.polarsys.capella.common.re.helpers.ReplicableElementExt;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.ListData;
-import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -383,18 +383,9 @@ public class ReplicaContentLocationRenderer extends EditListRenderer implements 
         return Collections.emptyList();
       }
 
-      Collection<Object> selection =
-          (Collection<Object>) ((IContext) (context.getPropertyContext().getSource())).get(ITransitionConstants.TRANSITION_SOURCES);
-      if ((selection != null) && (selection.size() > 0)) {
-        for (Object item : selection) {
-          if (item instanceof EObject) {
-            return ((EObject) item).eResource();
-          }
-        }
-      }
-
-      return ((CatalogElementLink) scopeElements.iterator().next()).getTarget().eResource();
-
+      IProperty rplProperty = context.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET);
+      EObject replica = (EObject) context.getPropertyContext().getCurrentValue(rplProperty);
+      return EcoreUtil.getRootContainer(replica).eResource();
     }
     return new ListData(Collections.emptyList(), context.getPropertyContext());
   }

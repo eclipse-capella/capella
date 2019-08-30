@@ -39,6 +39,7 @@ api_docs.xml
 ## Sonar
 ########
 #org.sonar.ide.eclipse.core.prefs
+.scannerwork
 
 #########
 ## KDiff3
@@ -74,3 +75,8 @@ $RECYCLE.BIN/
 ._*
 .Spotlight-V100
 .Trashes
+
+##########
+# Viatra/Xtext
+##########
+**/*.java._trace

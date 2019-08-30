@@ -56,10 +56,14 @@ import org.polarsys.capella.core.data.fa.ComponentExchangeRealization;
 import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.fa.ExchangeCategory;
 import org.polarsys.capella.core.data.fa.FaPackage;
-import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
+import org.polarsys.capella.core.data.fa.FunctionalChainReference;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.fa.FunctionalExchangeRealization;
+import org.polarsys.capella.core.data.fa.SequenceLink;
+import org.polarsys.capella.core.data.fa.SequenceLinkEnd;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
 import org.polarsys.capella.core.data.information.Association;
 import org.polarsys.capella.core.data.information.ExchangeItem;
@@ -79,6 +83,7 @@ import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriS
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 import org.polarsys.capella.core.model.helpers.PhysicalLinkExt;
 import org.polarsys.capella.core.model.helpers.PhysicalPathExt;
+import org.polarsys.capella.core.model.helpers.SequenceLinkEndExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.model.preferences.IDeletePreferences;
 
@@ -116,7 +121,8 @@ public class DeleteHelper implements IDeleteHelper {
         FunctionalChainInvolvement fcInvolvement = (FunctionalChainInvolvement) elementToDelete;
         InvolvedElement involved = fcInvolvement.getInvolved();
         if (null != involved) {
-          if ((involved instanceof AbstractFunction) || (involved instanceof FunctionalChain)) {
+          if ((elementToDelete instanceof FunctionalChainInvolvementFunction && involved instanceof AbstractFunction)
+              || elementToDelete instanceof FunctionalChainReference) {
             // Add next involvements.
             elementToAdd.addAll(fcInvolvement.getNextFunctionalChainInvolvements());
             // Add previous involvements.
@@ -151,9 +157,24 @@ public class DeleteHelper implements IDeleteHelper {
         }
       }
     }
-    if (!elementToAdd.isEmpty()) {
-      elementsToDelete.addAll(elementToAdd);
+    elementsToDelete.addAll(elementToAdd);
+  }
+
+  /**
+   * Add elements to delete for {@link SequenceLinkEnd}.
+   * 
+   * @param elementsToDelete
+   */
+  protected void addElementsForSequenceLinkEnd(Set<? super EObject> elementsToDelete) {
+    List<EObject> elementToAdd = new ArrayList<>();
+    for (Object elementToDelete : elementsToDelete) {
+      if (elementToDelete instanceof SequenceLinkEnd) {
+        SequenceLinkEnd sequenceLinkEnd = (SequenceLinkEnd) elementToDelete;
+        elementToAdd.addAll(SequenceLinkEndExt.getIncomingSequenceLinks(sequenceLinkEnd));
+        elementToAdd.addAll(SequenceLinkEndExt.getOutgoingSequenceLinks(sequenceLinkEnd));
+      }
     }
+    elementsToDelete.addAll(elementToAdd);
   }
 
   protected void addElementsForAbstractFunction(Set<? super EObject> elementsToDelete) {
@@ -288,8 +309,7 @@ public class DeleteHelper implements IDeleteHelper {
         }
 
       } else if (object instanceof InstanceRole) {
-        result
-            .addAll(EObjectExt.getReferencers((EObject) object, InteractionPackage.Literals.EXECUTION__COVERED));
+        result.addAll(EObjectExt.getReferencers((EObject) object, InteractionPackage.Literals.EXECUTION__COVERED));
 
         for (EObject fragment : EObjectExt.getReferencers((EObject) object,
             InteractionPackage.Literals.INTERACTION_FRAGMENT__COVERED_INSTANCE_ROLES)) {
@@ -304,10 +324,8 @@ public class DeleteHelper implements IDeleteHelper {
       }
 
       if (object instanceof InteractionFragment) {
-        result
-            .addAll(EObjectExt.getReferencers((EObject) object, InteractionPackage.Literals.TIME_LAPSE__START));
-        result
-            .addAll(EObjectExt.getReferencers((EObject) object, InteractionPackage.Literals.TIME_LAPSE__FINISH));
+        result.addAll(EObjectExt.getReferencers((EObject) object, InteractionPackage.Literals.TIME_LAPSE__START));
+        result.addAll(EObjectExt.getReferencers((EObject) object, InteractionPackage.Literals.TIME_LAPSE__FINISH));
 
         if (object instanceof AbstractEnd) {
           result.add(((AbstractEnd) object).getEvent());
@@ -371,6 +389,8 @@ public class DeleteHelper implements IDeleteHelper {
     addPendingPropertyValues(expandedSelection);
     // Special case for property value groups.
     addPendingPropertyValueGroups(expandedSelection);
+    // Special case for Sequence Link Ends.
+    addElementsForSequenceLinkEnd(expandedSelection);
 
     if (CapellaModelPreferencesPlugin.getDefault().isSynchronizationOfComponentPortToFunctionPortAllowed()) {
       addElementsForComponentExchangeFunctionalExchangeAllocation(expandedSelection);
@@ -505,8 +525,7 @@ public class DeleteHelper implements IDeleteHelper {
           .addAll(ComponentExchangeExt.evaluateImpactsOfUnsynchronizeAllocations(exchange, fctExchange, true));
 
       for (PhysicalLink link : exchange.getAllocatorPhysicalLinks()) {
-        elementsToAddToDeletion
-            .addAll(PhysicalLinkExt.evaluateImpactsOfUnsynchronizeAllocations(link, exchange, true));
+        elementsToAddToDeletion.addAll(PhysicalLinkExt.evaluateImpactsOfUnsynchronizeAllocations(link, exchange, true));
       }
     }
     return elementsToAddToDeletion;
@@ -608,12 +627,8 @@ public class DeleteHelper implements IDeleteHelper {
             || (linkedObject instanceof ComponentExchangeFunctionalExchangeAllocation)
             || (linkedObject instanceof ComponentExchangeAllocation);
       }
-    } else if (link instanceof FunctionalChainInvolvement) {
-      if (FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT__EXCHANGED_ITEMS.equals(feature)) {
-        return false;
-      }
-      InvolvedElement involved = ((Involvement) link).getInvolved();
-      result = (involved == null) || (involved instanceof FunctionalExchange);
+    } else if (link instanceof FunctionalChainInvolvementLink) {
+      result = !FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__EXCHANGED_ITEMS.equals(feature);
 
     } else if (link instanceof PhysicalPathInvolvement) {
       AbstractPathInvolvedElement involved = ((PhysicalPathInvolvement) link).getInvolvedElement();
@@ -630,11 +645,11 @@ public class DeleteHelper implements IDeleteHelper {
       result = !(ModellingcorePackage.Literals.TRACEABLE_ELEMENT__INCOMING_TRACES.equals(feature)
           || ModellingcorePackage.Literals.TRACEABLE_ELEMENT__OUTGOING_TRACES.equals(feature));
     }
-    
-    if (CapellacommonPackage.Literals.STATE_TRANSITION__GUARD.equals(feature)){
+
+    if (CapellacommonPackage.Literals.STATE_TRANSITION__GUARD.equals(feature)) {
       result = false;
     }
-    
+
     return result;
   }
 
@@ -695,6 +710,11 @@ public class DeleteHelper implements IDeleteHelper {
       result = !(linkedObject instanceof PhysicalLinkCategory);
 
     } else if (sourceObject instanceof PhysicalLinkEnd) {
+      result = true;
+
+    } else if (linkedObject instanceof FunctionalChainReference
+        && (FaPackage.Literals.REFERENCE_HIERARCHY_CONTEXT__TARGET_REFERENCE_HIERARCHY.equals(feature)
+            || FaPackage.Literals.REFERENCE_HIERARCHY_CONTEXT__SOURCE_REFERENCE_HIERARCHY.equals(feature))) {
       result = true;
     }
 

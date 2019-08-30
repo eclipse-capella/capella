@@ -13,6 +13,7 @@ package org.polarsys.capella.core.platform.sirius.ui.navigator.handlers;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
@@ -35,7 +36,7 @@ import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
@@ -43,7 +44,6 @@ import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.statushandlers.StatusManager;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 
@@ -55,14 +55,14 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
   public class RefreshDiagramsJob extends WorkspaceJob {
 
     private Session _session;
-    private Collection<DRepresentation> _representationsToRefresh;
+    private Collection<DRepresentationDescriptor> _representationsToRefresh;
     private Display _display;
 
-    public RefreshDiagramsJob(String name, Collection<DRepresentation> representationsToRefresh_p, Session session_p,
+    public RefreshDiagramsJob(String name, Collection<DRepresentationDescriptor> representations, Session session_p,
         Display display_p) {
       super(name);
       _session = session_p;
-      _representationsToRefresh = representationsToRefresh_p;
+      _representationsToRefresh = representations;
       _display = display_p;
     }
 
@@ -70,11 +70,12 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
     public IStatus runInWorkspace(IProgressMonitor monitor_p) throws CoreException {
       monitor_p.beginTask(getName(), IProgressMonitor.UNKNOWN);
       if (_session != null) {
-        for (final DRepresentation dRepresentation : _representationsToRefresh) {
+        for (final DRepresentationDescriptor dRepresentation : _representationsToRefresh) {
           monitor_p.setTaskName(Messages.bind(Messages.RefreshRepresentation_6, dRepresentation.getName()));
 
+          DRepresentation representation = dRepresentation.getRepresentation();
           OpeningDiagramJob job_opening = new OpeningDiagramJob(Messages.RefreshRepresentation_7, _session,
-              dRepresentation);
+              representation);
           job_opening.setUser(false);
           job_opening.schedule();
           try {
@@ -115,10 +116,10 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
     /**
      * @param name
      */
-    public OpeningDiagramJob(String name, Session session_p, DRepresentation dRepresentation_p) {
+    public OpeningDiagramJob(String name, Session session, DRepresentation dRepresentation) {
       super(name);
-      _session = session_p;
-      _dRepresentation = dRepresentation_p;
+      _session = session;
+      _dRepresentation = dRepresentation;
       currentEditor = null;
     }
 
@@ -212,28 +213,27 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
     Session session = getSession(selectedElement);
 
     // Compute representations to refresh.
-    Collection<DRepresentation> representationsToRefresh = Collections.emptyList();
+    Collection<DRepresentationDescriptor> representationsToRefresh = Collections.emptyList();
     if (selectedElement instanceof ModelElement) {
       // Selected element is a ModelElement, only diagrams under this ModelElement are refreshed.
-      representationsToRefresh = new ArrayList<DRepresentation>();
-      Collection<DRepresentation> allSessionRepresentations = DialectManager.INSTANCE.getAllRepresentations(session);
-      for (DRepresentation representation : allSessionRepresentations) {
-        if (representation instanceof DSemanticDecorator) {
-          EObject associatedModelElement = ((DSemanticDecorator) representation).getTarget();
+      representationsToRefresh = new ArrayList<DRepresentationDescriptor>();
+      Collection<DRepresentationDescriptor> allSessionRepresentations = DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
+      for (DRepresentationDescriptor representation : allSessionRepresentations) {
+           EObject associatedModelElement = representation.getTarget();
           if (EcoreUtil.isAncestor((ModelElement) selectedElement, associatedModelElement)) {
             representationsToRefresh.add(representation);
           }
-        }
       }
     } else if (selectedElement instanceof IFile) {
       // Selected element is an IFile (the aird file), all diagrams are refreshed.
-      representationsToRefresh = DialectManager.INSTANCE.getAllRepresentations(session);
+      representationsToRefresh = DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
     }
 
-    if (representationsToRefresh.size() == 0) {
+    if (representationsToRefresh.isEmpty()) {
       // If no representation, show information dialog
       MessageDialog.openInformation(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
           Messages.RefreshRepresentation_9, Messages.RefreshRepresentation_10);
+      
     } else {
       if (session.getStatus() == SessionStatus.DIRTY) {
         // If within the representations to refresh, there is a opened representation, close it. If it is dirty, ask for

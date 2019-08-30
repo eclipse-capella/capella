@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *    Thales - initial API and implementation
  *******************************************************************************/
 package org.polarsys.capella.core.data.helpers.fa.services;
+
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -52,7 +54,7 @@ public class FunctionExt {
 	 * @return
 	 */
 	public static List<AbstractFunction> getRealizedFunctions(AbstractFunction fct) {
-		List<AbstractFunction> result = new ArrayList<AbstractFunction>();
+		List<AbstractFunction> result = new ArrayList<>();
 		for (AbstractTrace trace : fct.getOutgoingTraces()) {
 			if (trace instanceof FunctionRealization) {
 				result.add(((FunctionRealization) trace).getAllocatedFunction());
@@ -66,7 +68,7 @@ public class FunctionExt {
 	 * @return
 	 */
 	public static List<AbstractFunction> getRealizingFunctions(AbstractFunction fct) {
-		List<AbstractFunction> result = new ArrayList<AbstractFunction>();
+		List<AbstractFunction> result = new ArrayList<>();
 		for (AbstractTrace trace : fct.getIncomingTraces()) {
 			if (trace instanceof FunctionRealization) {
 				result.add(((FunctionRealization) trace).getAllocatingFunction());
@@ -87,7 +89,7 @@ public class FunctionExt {
 			return false;
 		}
 
-		return function.getSubFunctions().size() == 0;
+		return function.getSubFunctions().isEmpty();
 	}
 
 	public static boolean isControlNodeOneOutput(AbstractFunction function) {
@@ -131,7 +133,7 @@ public class FunctionExt {
 	 */
 	public static List<CapellaElement> getAllocatedFunctionalExchangeFiltered(AbstractFunctionalBlock sourceEntity,
 			AbstractFunctionalBlock targetEntity) {
-		List<CapellaElement> list = new ArrayList<CapellaElement>(1);
+		List<CapellaElement> list = new ArrayList<>(1);
 
 		if ((sourceEntity != null) && (targetEntity != null)) {
 			EList<AbstractFunction> srcAllocatedFuns = sourceEntity.getAllocatedFunctions();
@@ -141,10 +143,8 @@ public class FunctionExt {
 				EList<ActivityEdge> outgoing = abstractFunction.getOutgoing();
 				for (ActivityEdge activityEdge : outgoing) {
 					ActivityNode target = activityEdge.getTarget();
-					if (null != target) {
-						if (tarAllocatedFuns.contains(target)) {
-							list.add((CapellaElement) activityEdge);
-						}
+					if (null != target && tarAllocatedFuns.contains(target)) {
+						list.add((CapellaElement) activityEdge);
 					}
 				}
 			}
@@ -163,7 +163,7 @@ public class FunctionExt {
 	 */
 	public static List<CapellaElement> getAllocatedFunctionalExchangeFilteredWithPort(
 			AbstractFunctionalBlock sourceEntity, AbstractFunctionalBlock targetEntity) {
-		List<CapellaElement> list = new ArrayList<CapellaElement>(1);
+		List<CapellaElement> list = new ArrayList<>(1);
 
 		if ((sourceEntity != null) && (targetEntity != null)) {
 			EList<AbstractFunction> srcAllocatedFuns = sourceEntity.getAllocatedFunctions();
@@ -192,7 +192,7 @@ public class FunctionExt {
 	 * @return all outgoing exchanges
 	 */
 	public static List<FunctionalExchange> getOutGoingExchange(AbstractFunction function) {
-		List<FunctionalExchange> result = new BasicEList<FunctionalExchange>();
+		List<FunctionalExchange> result = new BasicEList<>();
 		EList<ActivityEdge> outgoing = function.getOutgoing();
 		for (ActivityEdge activityEdge : outgoing) {
 			result.add((FunctionalExchange) activityEdge);
@@ -216,7 +216,7 @@ public class FunctionExt {
 		List<FunctionalExchange> result = getOutGoingExchange(function);
 
 		for (AbstractFunction abstractFunction : function.getOwnedFunctions()) {
-			List<FunctionalExchange> outgoings = getAllOutgoingExchanges(abstractFunction);
+			List<FunctionalExchange> outgoings = getCache(FunctionExt::getAllOutgoingExchanges, abstractFunction);
 			for (FunctionalExchange activityEdge : outgoings) {
 				// If the functional exchange of the sub-function goes out of
 				// the scope of the function
@@ -242,7 +242,7 @@ public class FunctionExt {
 		List<FunctionalExchange> result = getIncomingExchange(function);
 
 		for (AbstractFunction abstractFunction : function.getOwnedFunctions()) {
-			List<FunctionalExchange> incomings = getAllIncomingExchanges(abstractFunction);
+			List<FunctionalExchange> incomings = getCache(FunctionExt::getAllIncomingExchanges, abstractFunction);
 			for (FunctionalExchange activityEdge : incomings) {
 				// If the functional exchange of the sub-function goes out of
 				// the scope of the function
@@ -262,9 +262,9 @@ public class FunctionExt {
 	 * @return all incoming and outgoing exchanges
 	 */
 	public static List<FunctionalExchange> getAllExchanges(AbstractFunction function) {
-		List<FunctionalExchange> result = new BasicEList<FunctionalExchange>();
-    result.addAll(getAllIncomingExchanges(function));
-    result.addAll(getAllOutgoingExchanges(function));
+		List<FunctionalExchange> result = new BasicEList<>();
+    result.addAll(getCache(FunctionExt::getAllIncomingExchanges, function));
+    result.addAll(getCache(FunctionExt::getAllOutgoingExchanges, function));
 		return result;
 	}
 
@@ -276,7 +276,7 @@ public class FunctionExt {
 	 * @return all incoming exchanges
 	 */
 	public static List<FunctionalExchange> getIncomingExchange(AbstractFunction function) {
-		List<FunctionalExchange> result = new BasicEList<FunctionalExchange>();
+		List<FunctionalExchange> result = new BasicEList<>();
 		List<ActivityEdge> ingoing = function.getIncoming();
 		for (ActivityEdge activityEdge : ingoing) {
 			result.add((FunctionalExchange) activityEdge);
@@ -293,7 +293,7 @@ public class FunctionExt {
 	 * @return all incoming and outgoing exchanges
 	 */
 	public static List<FunctionalExchange> getExchanges(AbstractFunction function) {
-		List<FunctionalExchange> result = new BasicEList<FunctionalExchange>();
+		List<FunctionalExchange> result = new BasicEList<>();
 		List<ActivityEdge> ingoing = function.getIncoming();
 		for (ActivityEdge activityEdge : ingoing) {
 			result.add((FunctionalExchange) activityEdge);
@@ -313,7 +313,7 @@ public class FunctionExt {
 	 * @return the owned function ports
 	 */
 	public static List<Port> getOwnedFunctionPorts(AbstractFunction function) {
-		List<Port> ports = new ArrayList<Port>();
+		List<Port> ports = new ArrayList<>();
 		for (InputPin inpin : function.getInputs()) {
 			if (inpin instanceof Port) {
 				ports.add((Port) inpin);
@@ -395,13 +395,13 @@ public class FunctionExt {
 	 * @return
 	 */
 	public static Collection<? extends FunctionPkg> getAllFunctionPkgs(AbstractFunction aFunction) {
-		List<FunctionPkg> returnedList = new ArrayList<FunctionPkg>();
+		List<FunctionPkg> returnedList = new ArrayList<>();
 		if (aFunction == null) {
 			return returnedList;
 		}
 
 		for (AbstractFunction aSubFunction : aFunction.getOwnedFunctions()) {
-			returnedList.addAll(FunctionExt.getAllFunctionPkgs(aSubFunction));
+			returnedList.addAll(getCache(FunctionExt::getAllFunctionPkgs, aSubFunction));
 		}
 
 		for (FunctionPkg aFunctionPkg : getOwnedFunctionPkgs(aFunction)) {
@@ -420,7 +420,7 @@ public class FunctionExt {
 	 *         function
 	 */
 	public static List<AbstractFunction> getAllAbstractFunctions(AbstractFunction function) {
-		List<AbstractFunction> returnedList = new ArrayList<AbstractFunction>();
+		List<AbstractFunction> returnedList = new ArrayList<>();
 
 		if (function != null) {
 			returnedList.add(function);
@@ -444,8 +444,8 @@ public class FunctionExt {
 	 * @return all function in arch that do not contain any subFunctions
 	 */
 	public static List<AbstractFunction> getAllLeafAbstractFunctions(AbstractFunction function) {
-		List<AbstractFunction> returnedList = new ArrayList<AbstractFunction>();
-		for (AbstractFunction abstractFunction : getAllAbstractFunctions(function)) {
+		List<AbstractFunction> returnedList = new ArrayList<>();
+		for (AbstractFunction abstractFunction : getCache(FunctionExt::getAllAbstractFunctions, function)) {
 			if (isLeaf(abstractFunction)) {
 				returnedList.add(abstractFunction);
 			}
@@ -461,7 +461,7 @@ public class FunctionExt {
 	 * @return all function in arch that do not contain any subFunctions
 	 */
 	public static List<AbstractFunction> getAllLeafAbstractFunctions(BlockArchitecture arch) {
-		List<AbstractFunction> returnedList = new ArrayList<AbstractFunction>();
+		List<AbstractFunction> returnedList = new ArrayList<>();
 		for (AbstractFunction function : getAllAbstractFunctions(arch)) {
 			if (isLeaf(function)) {
 				returnedList.add(function);
@@ -504,7 +504,7 @@ public class FunctionExt {
 	 * @return
 	 */
 	public static Collection<AbstractFunction> getFirstLevelAbstractFunctions(AbstractFunction function) {
-		Collection<AbstractFunction> result = new ArrayList<AbstractFunction>();
+		Collection<AbstractFunction> result = new ArrayList<>();
 
 		result.addAll(function.getOwnedFunctions());
 
@@ -551,9 +551,9 @@ public class FunctionExt {
 	 * @return the list of parent functions
 	 */
 	public static List<AbstractFunction> getParentFunctions(AbstractFunction function) {
-		List<AbstractFunction> returnedList = new ArrayList<AbstractFunction>();
+		List<AbstractFunction> returnedList = new ArrayList<>();
 		EObject parent = function.eContainer();
-		while ((parent != null) && (parent instanceof AbstractFunction)) {
+		while (parent instanceof AbstractFunction) {
 			returnedList.add((AbstractFunction) parent);
 			parent = parent.eContainer();
 		}
@@ -567,9 +567,9 @@ public class FunctionExt {
 	 * @return
 	 */
 	public static Collection<FunctionalExchange> getAllOwnedFunctionalExchanges(AbstractFunction function) {
-		EList<FunctionalExchange> functionExchanges = new BasicEList<FunctionalExchange>();
+		EList<FunctionalExchange> functionExchanges = new BasicEList<>();
 
-		List<AbstractFunction> subFunctions = getAllAbstractFunctions(function);
+		List<AbstractFunction> subFunctions = getCache(FunctionExt::getAllAbstractFunctions, function);
 		for (AbstractFunction abstractFunction : subFunctions) {
 			functionExchanges.addAll(abstractFunction.getOwnedFunctionalExchanges());
 		}
@@ -632,7 +632,7 @@ public class FunctionExt {
 	 * @return boolean
 	 */
 	public static boolean isRootFunction(EObject element) {
-		if ((null != element) && (element instanceof AbstractFunction)) {
+		if (element instanceof AbstractFunction) {
 			AbstractFunction currentFunction = (AbstractFunction) element;
 			AbstractFunction rootFunction = FunctionExt.getRootFunction(currentFunction);
 			if ((null != rootFunction) && rootFunction.equals(currentFunction)) {

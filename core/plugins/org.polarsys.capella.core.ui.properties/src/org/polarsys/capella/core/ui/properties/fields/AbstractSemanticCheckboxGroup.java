@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,7 +39,7 @@ public abstract class AbstractSemanticCheckboxGroup extends AbstractSemanticButt
   @Override
   public void widgetSelected(SelectionEvent event) {
     Button button = (Button) event.widget;
-    setDataValue(_semanticElement, (EStructuralFeature) button.getData(), button.getSelection());
+    setDataValue(semanticElement, (EStructuralFeature) button.getData(), button.getSelection());
   }
 
   /**
@@ -70,8 +70,8 @@ public abstract class AbstractSemanticCheckboxGroup extends AbstractSemanticButt
    * @param button
    */
   private void selectButton(Button button) {
-    if (null != button && null != _semanticElement) {
-      setBooleanValue(button, _semanticElement, (EStructuralFeature) button.getData());
+    if (null != button && null != semanticElement) {
+      setBooleanValue(button, semanticElement, (EStructuralFeature) button.getData());
     }
   }
 }

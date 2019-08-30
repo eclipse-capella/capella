@@ -5,29 +5,109 @@ The '''''Ctrl+o''''' command enables to display for a dedicated diagram, in an i
 
 [[Image:../../Images/Tips8.png]]
 
-==View switching==
-
-Shortcuts are available to navigate between views:
-
-* '''F8''': opens the explorer and highlights the diagram selected element or the semantic browser selected element in the '''''Project Explorer'''.''
-
-[[Image:../../Images/Tips17.png]]
-
-* '''Go To''': opens the explorer and highlights the element you chose in the '''''Project Explorer'''''.
-
-[[Image:../../Images/Tips18.png]]
-
-==In the outline view==
+==Diagram outline==
 
 When the diagram is dense, the '''''Outline View''''' enables to navigate in the diagram per diagram area. 
 
 [[Image:../../Images/Tips19.png]]
 
-==With the computer mouse==
+==Scroll in a large diagram==
 
-Directly in diagrams, it is possible to go through large diagrams and move in all directions (horizontally and vertically) thanks to the following commands:
+If a diagram is large, it is possible to scroll easily through the diagram in all directions (both horizontally and vertically at the same time) by using on of the shortcuts below:
 
-* Space + Mouse left click 
-* Mouse wheel click "Middle click"
+* '''Space''' + '''left click '''
+* '''Mouse wheel click'''
 
 [[File:../../Images/Tips72.png|thumbnail|700px|]]
+
+==Selection menu in diagram==
+
+The new '''Select''' menu in diagram consists of tools for highlighting related elements to the selected element(s) on the diagram. For instance, on a SAB diagram, select a ''function'' and right click on the contextual menu '''Select/Elements of Same Type''' will select all functions on the SAB diagram.
+
+* Select '''one''' or '''many''' elements on the diagram and right-click to have the contextual menu.
+* Based on those selected elements, tools will be dynamically added to the menu '''Select'''
+
+[[File:../../Images/Tips83.png|thumbnail|]]
+
+The available tools are:
+
+{| class="wikitable"
+|'''Elements of Same Type'''
+|Select all elements on the active diagram which have the '''same type''' as the current selected element(s)
+|-
+|'''Resembling Elements'''
+|Select all elements on the active diagram which have the '''same mapping''' as the current selected element(s)
+|-
+|'''Owned ports'''
+|Select all ports on the active diagram which are owned by the current selected element(s)
+|-
+|'''Owned elements'''
+|Select all elements on the active diagram which are owned by the current selected element(s)
+|-
+|'''Related connections'''
+|Select all connections on the active diagram which are related to the current selected element(s)
+|}
+
+==Generic connection creation tool==
+
+A new tool called '''Generic Connection Creation Tool''' is added to the palette of diagram allowing create new edge more dynamically:
+
+* Select the tool icon [[Image:../../Images/IconCreateEdgeView.gif]] on the palette.
+* Select a graphical element on the diagram as '''source''' of a new edge
+* Select a graphical element on the diagram as '''target''' of a new edge
+* According to the selected source and target, a list of possible types of edge will be proposed as a contextual menu. 
+
+[[File:../../Images/Tips84.png|thumbnail|]]
+
+==Organize diagrams in Project Explorer by packages==
+
+When the number of diagrams increases, it is necessary to organize them by packages. A package is just a label or a tag that represents why several diagrams can be grouped together.
+
+In the view '''Properties''' of a diagram, it is possible to:
+
+* Create a new package
+* Add a diagram to an existing package
+    
+[[File:../../Images/Tips85.png|thumbnail|]]
+
+==Visibility Mode - new Sirius layer to manage hidden graphical elements==
+
+The '''Visibility Mode''' allows to visualize all elements of the diagram: if an element is currently invisible because of an active filter or being hidden by user, it will be shown with transparency.
+
+This mode can be activated from the toolbar of diagram.
+
+[[File:../../Images/Tips86.png|thumbnail|]]
+
+If the '''Visibility Mode''' is active, double-clicking on a graphical element will change its visibility (from visible to invisible and vice versa) without modifying semantic models:
+
+* If a selected diagram element is currently invisible and it is contained by an invisible element, both of them will be made visible.
+* If a selected diagram element is currently invisible and it contains hidden children, the element will be made visible and its children will be displayed with transparency.
+* If a selected diagram element is an edge, it will change the visibility of its source and target as well.
+* If a selected diagram element is currently invisible because of an active filter, a dialog will be prompted to ask for deactivating the filter.
+* If a selected diagram element is currently invisible because of an inactive layer, a dialog will be prompted to ask for activating the layer.
+
+
+{| border="1"
+|-
+| 
+[[Image:../../Images/InfoIcon.png|48x48px]]
+
+ 
+| 
+This '''Visibility Mode''' is not persisted: when a diagram is closed, the mode is automatically disabled.
+ 
+|} 
+
+==Note as graphical link toward other diagram==
+The new tool '''Representation Link''' in the palette allows to create a graphical link toward an existing diagram. 
+
+* The linked diagram is represented as a node element
+* The content of note is synchronized with the name of linked diagram
+* '''Double-clicking''' on the note will open the linked diagram
+
+[[File:../../Images/Tips90.png|thumbnail|]]
+
+==Refresh many representations at once==
+On the '''Capella Project Explorer''', it is possible to refresh at once many ''sub''-representations related to a selected element.
+
+[[File:../../Images/Tips92.png|thumbnail|480px]]

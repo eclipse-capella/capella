@@ -47,10 +47,15 @@ public class EObjectExt extends EcoreUtil2 {
   }
 
   /**
-   * This method retrieves all Object of metaClass 'metaClass' who have a EReference 'eRef' toward the Object 'eObjectRef'
-   * @param eObjectRef : EObject
-   * @param metaClass : EClass
-   * @param eRef : EReference relation
+   * This method retrieves all Object of metaClass 'metaClass' who have a EReference 'eRef' toward the Object
+   * 'eObjectRef'
+   * 
+   * @param eObjectRef
+   *          : EObject
+   * @param metaClass
+   *          : EClass
+   * @param eRef
+   *          : EReference relation
    * @return
    */
   public static List<EObject> getReferencers(EObject eObjectRef, EClass metaClass, EReference eRef) {
@@ -65,7 +70,9 @@ public class EObjectExt extends EcoreUtil2 {
 
   /**
    * This method retrieves all Object who have a EReference toward the EObject 'eObjectRef'
-   * @param eObjectRef : EObject
+   * 
+   * @param eObjectRef
+   *          : EObject
    * @return The list of referencing elements
    */
   public static List<EObject> getReferencers(EObject eObjectRef) {
@@ -79,8 +86,11 @@ public class EObjectExt extends EcoreUtil2 {
 
   /**
    * This method retrieves all Object who have a EReference 'eRef' toward the EObject 'eObjectRef'
-   * @param eObjectRef : EObject
-   * @param eRef : EReference relation
+   * 
+   * @param eObjectRef
+   *          : EObject
+   * @param eRef
+   *          : EReference relation
    * @return The list of referencing elements
    */
   public static <T extends EObject> List<T> getReferencers(EObject eObjectRef, EReference eRef) {
@@ -94,21 +104,28 @@ public class EObjectExt extends EcoreUtil2 {
 
   /**
    * This method retrieves all Object who have a EReference 'eRef' toward the Object 'eObjectRef'
-   * @param eObjectRef : EObject
-   * @param eRef : EReference relation (if null, all references are considered)
-   * @param editingDomain : SemanticEditingDomain
-   * @param ignoreDerivedFeature : whether derived feature is ignored while finding referencing objects
+   * 
+   * @param eObjectRef
+   *          : EObject
+   * @param eRef
+   *          : EReference relation (if null, all references are considered)
+   * @param editingDomain
+   *          : SemanticEditingDomain
+   * @param ignoreDerivedFeature
+   *          : whether derived feature is ignored while finding referencing objects
    * @return The list of referencing elements
    */
-  public static <T extends EObject> List<T> getReferencers(EObject eObjectRef, EReference eRef, SemanticEditingDomain editingDomain, boolean ignoreDerivedFeature) {
+  public static <T extends EObject> List<T> getReferencers(EObject eObjectRef, EReference eRef,
+      SemanticEditingDomain editingDomain, boolean ignoreDerivedFeature) {
     List<T> result = new ArrayList<T>();
 
     SemanticCrossReferencer crossReferencer = editingDomain.getCrossReferencer();
     if (eRef == null) {
-      Collection<Setting> inverseReferences = crossReferencer.getInverseReferences(eObjectRef, editingDomain.getCrossReferencer().isResolveProxyEnabled());
+      Collection<Setting> inverseReferences = crossReferencer.getInverseReferences(eObjectRef,
+          editingDomain.getCrossReferencer().isResolveProxyEnabled());
       for (Setting setting : inverseReferences) {
-    	  if (ignoreDerivedFeature && setting.getEStructuralFeature().isDerived())
-    	    continue;
+        if (ignoreDerivedFeature && setting.getEStructuralFeature().isDerived())
+          continue;
         if (!result.contains(setting.getEObject())) {
           result.add((T) setting.getEObject());
         }
@@ -131,19 +148,27 @@ public class EObjectExt extends EcoreUtil2 {
 
   /**
    * This method retrieves all Object who have a EReference 'eRef' toward the Object 'eObjectRef'
-   * @param eObjectRef : EObject
-   * @param eRef : EReference relation (if null, all references are considered)
-   * @param editingDomain : SemanticEditingDomain
+   * 
+   * @param eObjectRef
+   *          : EObject
+   * @param eRef
+   *          : EReference relation (if null, all references are considered)
+   * @param editingDomain
+   *          : SemanticEditingDomain
    * @return The list of referencing elements
    */
-  public static <T extends EObject> List<T> getReferencers(EObject eObjectRef, EReference eRef, SemanticEditingDomain editingDomain) {
-	  return getReferencers(eObjectRef, eRef, editingDomain, false);
+  public static <T extends EObject> List<T> getReferencers(EObject eObjectRef, EReference eRef,
+      SemanticEditingDomain editingDomain) {
+    return getReferencers(eObjectRef, eRef, editingDomain, false);
   }
-  
+
   /**
    * This method retrieves all Object who have any EReference from 'eRefs' toward the Object 'eObjectRef'
-   * @param eObjectRef : EObject
-   * @param eRefs : EReference relations list
+   * 
+   * @param eObjectRef
+   *          : EObject
+   * @param eRefs
+   *          : EReference relations list
    * @return
    */
   public static List<EObject> getReferencers(EObject eObjectRef, List<EReference> eRefs) {
@@ -158,6 +183,7 @@ public class EObjectExt extends EcoreUtil2 {
 
   /**
    * True if the given element is instance of at least one of the given eClasses
+   * 
    * @param elt
    * @param expectedContainerType
    * @return
@@ -175,12 +201,17 @@ public class EObjectExt extends EcoreUtil2 {
   }
 
   /**
-   * @param eObjects a collection of EObject(s) from which the resource set will be retrieved
-   * @return if all EObject(s) belong to the same resource set, this resource set is returned. Otherwise null is returned.
+   * @param eObjects
+   *          a collection of EObject(s) from which the resource set will be retrieved
+   * @return if all EObject(s) belong to the same resource set, this resource set is returned. Otherwise null is
+   *         returned.
    */
   public static ResourceSet getCommonResourceSet(Collection<? extends EObject> eObjects) {
     ResourceSet resourceSet = null;
     for (EObject obj : eObjects) {
+      if (obj == null) {
+        return null;
+      }
       Resource eResource = obj.eResource();
       if (eResource != null) {
         if (null == resourceSet) {
@@ -196,8 +227,10 @@ public class EObjectExt extends EcoreUtil2 {
   }
 
   /**
-   * @param resources a collection of resources from which the resource set will be retrieved
-   * @return if all resources belong to the same resource set, this resource set is returned. Otherwise null is returned.
+   * @param resources
+   *          a collection of resources from which the resource set will be retrieved
+   * @return if all resources belong to the same resource set, this resource set is returned. Otherwise null is
+   *         returned.
    */
   public static ResourceSet getCommonResourceSet(List<Resource> resources) {
     ResourceSet rs = null;
@@ -225,9 +258,10 @@ public class EObjectExt extends EcoreUtil2 {
     }
     return label;
   }
-  
+
   /**
    * Get the generated item provider for given object.
+   * 
    * @param object
    * @return<code>null</code> if one of parameters is <code>null</code> or if no provider is found.
    */
@@ -236,18 +270,19 @@ public class EObjectExt extends EcoreUtil2 {
     if (null == object) {
       return null;
     }
-    
+
     EditingDomain editingDomain = TransactionHelper.getEditingDomain(object);
-    
+
     // Precondition.
     if (null == editingDomain) {
       editingDomain = AdapterFactoryEditingDomain.getEditingDomainFor(object);
     }
-    
+
     // Precondition.
     if (null == editingDomain || !(editingDomain instanceof AdapterFactoryEditingDomain)) {
       return null;
     }
-    return (IItemLabelProvider) ((AdapterFactoryEditingDomain) editingDomain).getAdapterFactory().adapt(object, IItemLabelProvider.class);
+    return (IItemLabelProvider) ((AdapterFactoryEditingDomain) editingDomain).getAdapterFactory().adapt(object,
+        IItemLabelProvider.class);
   }
 }

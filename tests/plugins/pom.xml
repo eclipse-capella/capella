@@ -15,7 +15,7 @@
   <parent>
     <groupId>org.polarsys</groupId>
     <artifactId>org.polarsys.capella</artifactId>
-    <version>1.2.2-SNAPSHOT</version>
+    <version>1.3.1-SNAPSHOT</version>
     <relativePath>../../</relativePath>
   </parent>
   <groupId>org.polarsys</groupId>
@@ -31,7 +31,8 @@
       <activation>
         <activeByDefault>true</activeByDefault>
       </activation>
-      <modules>
+      <modules>      		
+      	<module>org.polarsys.capella.test.massactions.ju</module>      	
         <module>org.polarsys.capella.test.business.queries.ju</module>
         <module>org.polarsys.capella.test.diagram.common.ju</module>
         <module>org.polarsys.capella.test.diagram.filters.ju</module>
@@ -63,6 +64,7 @@
         <module>org.polarsys.capella.test.validation.rules.ju</module>
         <module>org.polarsys.capella.test.richtext.ju</module>
         <module>org.polarsys.capella.test.doc.ju</module>
+        <module>org.polarsys.capella.test.benchmarks.ju</module>
       </modules>
     </profile>
   </profiles>

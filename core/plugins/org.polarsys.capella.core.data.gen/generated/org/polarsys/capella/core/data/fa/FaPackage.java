@@ -33,9 +33,8 @@ import org.polarsys.capella.core.data.information.InformationPackage;
  * <!-- end-user-doc -->
  * @see org.polarsys.capella.core.data.fa.FaFactory
  * @model kind="package"
- *        annotation="http://www.polarsys.org/kitalpha/dsl/2007/dslfactory trackResourceModification='true' useUUIDs='false' useIDAttributes='true' extensibleProviderFactory='true' childCreationExtenders='true'"
- *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='FunctionalAnalysis aims at defining the system engineering usual functional breakdown and functional data flow language (close to the UML Activity machine and SysML Activity as Block, partially).\r\n[source: Capella study]' usage\040guideline='none' used\040in\040levels='operational,system,logical,physical,epbs' usage\040examples='none' constraints='This package depends on the model CapellaCommon.ecore\r\nThis package depends on the model Information.ecore' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/extension trackResourceModification='true' useUUIDs='false' useIDAttributes='true' extensibleProviderFactory='true' childCreationExtenders='true'"
+ *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='FunctionalAnalysis aims at defining the system engineering usual functional breakdown and functional data flow language (close to the UML Activity machine and SysML Activity as Block, partially).\r\n[source: Capella study]' usage\040guideline='none' used\040in\040levels='operational,system,logical,physical,epbs' usage\040examples='none' constraints='This package depends on the model CapellaCommon.ecore\r\nThis package depends on the model Information.ecore' comment/notes='none' reference\040documentation='none'"
  * @generated
  */
 public interface FaPackage extends EPackage {
@@ -53,7 +52,7 @@ public interface FaPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.polarsys.org/capella/core/fa/1.2.0"; //$NON-NLS-1$
+	String eNS_URI = "http://www.polarsys.org/capella/core/fa/1.3.0"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.
@@ -3332,13 +3331,49 @@ public interface FaPackage extends EPackage {
 	int FUNCTIONAL_CHAIN__REALIZING_FUNCTIONAL_CHAINS = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 16;
 
 	/**
+	 * The feature id for the '<em><b>Pre Condition</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN__PRE_CONDITION = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 17;
+
+	/**
+	 * The feature id for the '<em><b>Post Condition</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN__POST_CONDITION = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 18;
+
+	/**
+	 * The feature id for the '<em><b>Owned Sequence Nodes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN__OWNED_SEQUENCE_NODES = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 19;
+
+	/**
+	 * The feature id for the '<em><b>Owned Sequence Links</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN__OWNED_SEQUENCE_LINKS = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 20;
+
+	/**
 	 * The number of structural features of the '<em>Functional Chain</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTIONAL_CHAIN_FEATURE_COUNT = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 17;
+	int FUNCTIONAL_CHAIN_FEATURE_COUNT = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 21;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.fa.impl.AbstractFunctionalChainContainerImpl <em>Abstract Functional Chain Container</em>}' class.
@@ -3784,22 +3819,13 @@ public interface FaPackage extends EPackage {
 	int FUNCTIONAL_CHAIN_INVOLVEMENT__PREVIOUS_FUNCTIONAL_CHAIN_INVOLVEMENTS = CapellacorePackage.INVOLVEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Exchanged Items</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FUNCTIONAL_CHAIN_INVOLVEMENT__EXCHANGED_ITEMS = CapellacorePackage.INVOLVEMENT_FEATURE_COUNT + 2;
-
-	/**
 	 * The feature id for the '<em><b>Involved Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVED_ELEMENT = CapellacorePackage.INVOLVEMENT_FEATURE_COUNT + 3;
+	int FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVED_ELEMENT = CapellacorePackage.INVOLVEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Functional Chain Involvement</em>' class.
@@ -3808,7 +3834,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTIONAL_CHAIN_INVOLVEMENT_FEATURE_COUNT = CapellacorePackage.INVOLVEMENT_FEATURE_COUNT + 4;
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FEATURE_COUNT = CapellacorePackage.INVOLVEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.fa.impl.FunctionalChainReferenceImpl <em>Functional Chain Reference</em>}' class.
@@ -4044,15 +4070,6 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTIONAL_CHAIN_REFERENCE__PREVIOUS_FUNCTIONAL_CHAIN_INVOLVEMENTS = FUNCTIONAL_CHAIN_INVOLVEMENT__PREVIOUS_FUNCTIONAL_CHAIN_INVOLVEMENTS;
-
-	/**
-	 * The feature id for the '<em><b>Exchanged Items</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FUNCTIONAL_CHAIN_REFERENCE__EXCHANGED_ITEMS = FUNCTIONAL_CHAIN_INVOLVEMENT__EXCHANGED_ITEMS;
 
 	/**
 	 * The feature id for the '<em><b>Involved Element</b></em>' reference.
@@ -11078,6 +11095,1281 @@ public interface FaPackage extends EPackage {
 	int COMPONENT_PORT_ALLOCATION_END_FEATURE_COUNT = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The meta object id for the '{@link org.polarsys.capella.core.data.fa.impl.FunctionalChainInvolvementLinkImpl <em>Functional Chain Involvement Link</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.polarsys.capella.core.data.fa.impl.FunctionalChainInvolvementLinkImpl
+	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getFunctionalChainInvolvementLink()
+	 * @generated
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK = 35;
+
+	/**
+	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__OWNED_EXTENSIONS = FUNCTIONAL_CHAIN_INVOLVEMENT__OWNED_EXTENSIONS;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__ID = FUNCTIONAL_CHAIN_INVOLVEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Sid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__SID = FUNCTIONAL_CHAIN_INVOLVEMENT__SID;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__CONSTRAINTS = FUNCTIONAL_CHAIN_INVOLVEMENT__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__OWNED_CONSTRAINTS = FUNCTIONAL_CHAIN_INVOLVEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__REALIZED_FLOW = FUNCTIONAL_CHAIN_INVOLVEMENT__REALIZED_FLOW;
+
+	/**
+	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__INCOMING_TRACES = FUNCTIONAL_CHAIN_INVOLVEMENT__INCOMING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__OUTGOING_TRACES = FUNCTIONAL_CHAIN_INVOLVEMENT__OUTGOING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Visible In Doc</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__VISIBLE_IN_DOC = FUNCTIONAL_CHAIN_INVOLVEMENT__VISIBLE_IN_DOC;
+
+	/**
+	 * The feature id for the '<em><b>Visible In LM</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__VISIBLE_IN_LM = FUNCTIONAL_CHAIN_INVOLVEMENT__VISIBLE_IN_LM;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__SUMMARY = FUNCTIONAL_CHAIN_INVOLVEMENT__SUMMARY;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__DESCRIPTION = FUNCTIONAL_CHAIN_INVOLVEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Review</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__REVIEW = FUNCTIONAL_CHAIN_INVOLVEMENT__REVIEW;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Values</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__OWNED_PROPERTY_VALUES = FUNCTIONAL_CHAIN_INVOLVEMENT__OWNED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Enumeration Property Types</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__OWNED_ENUMERATION_PROPERTY_TYPES = FUNCTIONAL_CHAIN_INVOLVEMENT__OWNED_ENUMERATION_PROPERTY_TYPES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Values</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__APPLIED_PROPERTY_VALUES = FUNCTIONAL_CHAIN_INVOLVEMENT__APPLIED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Value Groups</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__OWNED_PROPERTY_VALUE_GROUPS = FUNCTIONAL_CHAIN_INVOLVEMENT__OWNED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Value Groups</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__APPLIED_PROPERTY_VALUE_GROUPS = FUNCTIONAL_CHAIN_INVOLVEMENT__APPLIED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__STATUS = FUNCTIONAL_CHAIN_INVOLVEMENT__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Features</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__FEATURES = FUNCTIONAL_CHAIN_INVOLVEMENT__FEATURES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__APPLIED_REQUIREMENTS = FUNCTIONAL_CHAIN_INVOLVEMENT__APPLIED_REQUIREMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Involver</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__INVOLVER = FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVER;
+
+	/**
+	 * The feature id for the '<em><b>Involved</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__INVOLVED = FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVED;
+
+	/**
+	 * The feature id for the '<em><b>Next Functional Chain Involvements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__NEXT_FUNCTIONAL_CHAIN_INVOLVEMENTS = FUNCTIONAL_CHAIN_INVOLVEMENT__NEXT_FUNCTIONAL_CHAIN_INVOLVEMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Previous Functional Chain Involvements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__PREVIOUS_FUNCTIONAL_CHAIN_INVOLVEMENTS = FUNCTIONAL_CHAIN_INVOLVEMENT__PREVIOUS_FUNCTIONAL_CHAIN_INVOLVEMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Involved Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__INVOLVED_ELEMENT = FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Source Reference Hierarchy</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__SOURCE_REFERENCE_HIERARCHY = FUNCTIONAL_CHAIN_INVOLVEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Target Reference Hierarchy</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__TARGET_REFERENCE_HIERARCHY = FUNCTIONAL_CHAIN_INVOLVEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Exchange Context</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__EXCHANGE_CONTEXT = FUNCTIONAL_CHAIN_INVOLVEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Exchanged Items</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__EXCHANGED_ITEMS = FUNCTIONAL_CHAIN_INVOLVEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__SOURCE = FUNCTIONAL_CHAIN_INVOLVEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__TARGET = FUNCTIONAL_CHAIN_INVOLVEMENT_FEATURE_COUNT + 5;
+
+	/**
+	 * The number of structural features of the '<em>Functional Chain Involvement Link</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_FEATURE_COUNT = FUNCTIONAL_CHAIN_INVOLVEMENT_FEATURE_COUNT + 6;
+
+	/**
+	 * The meta object id for the '{@link org.polarsys.capella.core.data.fa.impl.SequenceLinkImpl <em>Sequence Link</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.polarsys.capella.core.data.fa.impl.SequenceLinkImpl
+	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getSequenceLink()
+	 * @generated
+	 */
+	int SEQUENCE_LINK = 36;
+
+	/**
+	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK__OWNED_EXTENSIONS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_EXTENSIONS;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK__ID = CapellacorePackage.CAPELLA_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Sid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK__SID = CapellacorePackage.CAPELLA_ELEMENT__SID;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK__CONSTRAINTS = CapellacorePackage.CAPELLA_ELEMENT__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK__OWNED_CONSTRAINTS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK__INCOMING_TRACES = CapellacorePackage.CAPELLA_ELEMENT__INCOMING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK__OUTGOING_TRACES = CapellacorePackage.CAPELLA_ELEMENT__OUTGOING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Visible In Doc</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK__VISIBLE_IN_DOC = CapellacorePackage.CAPELLA_ELEMENT__VISIBLE_IN_DOC;
+
+	/**
+	 * The feature id for the '<em><b>Visible In LM</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK__VISIBLE_IN_LM = CapellacorePackage.CAPELLA_ELEMENT__VISIBLE_IN_LM;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK__SUMMARY = CapellacorePackage.CAPELLA_ELEMENT__SUMMARY;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK__DESCRIPTION = CapellacorePackage.CAPELLA_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Review</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK__REVIEW = CapellacorePackage.CAPELLA_ELEMENT__REVIEW;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Values</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK__OWNED_PROPERTY_VALUES = CapellacorePackage.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Enumeration Property Types</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK__OWNED_ENUMERATION_PROPERTY_TYPES = CapellacorePackage.CAPELLA_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Values</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK__APPLIED_PROPERTY_VALUES = CapellacorePackage.CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Value Groups</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK__OWNED_PROPERTY_VALUE_GROUPS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Value Groups</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK__APPLIED_PROPERTY_VALUE_GROUPS = CapellacorePackage.CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK__STATUS = CapellacorePackage.CAPELLA_ELEMENT__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Features</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK__FEATURES = CapellacorePackage.CAPELLA_ELEMENT__FEATURES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK__APPLIED_REQUIREMENTS = CapellacorePackage.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Source Reference Hierarchy</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK__SOURCE_REFERENCE_HIERARCHY = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Target Reference Hierarchy</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK__TARGET_REFERENCE_HIERARCHY = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Condition</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK__CONDITION = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Links</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK__LINKS = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK__SOURCE = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK__TARGET = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
+	 * The number of structural features of the '<em>Sequence Link</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK_FEATURE_COUNT = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 6;
+
+	/**
+	 * The meta object id for the '{@link org.polarsys.capella.core.data.fa.SequenceLinkEnd <em>Sequence Link End</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.polarsys.capella.core.data.fa.SequenceLinkEnd
+	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getSequenceLinkEnd()
+	 * @generated
+	 */
+	int SEQUENCE_LINK_END = 37;
+
+	/**
+	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK_END__OWNED_EXTENSIONS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_EXTENSIONS;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK_END__ID = CapellacorePackage.CAPELLA_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Sid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK_END__SID = CapellacorePackage.CAPELLA_ELEMENT__SID;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK_END__CONSTRAINTS = CapellacorePackage.CAPELLA_ELEMENT__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK_END__OWNED_CONSTRAINTS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK_END__INCOMING_TRACES = CapellacorePackage.CAPELLA_ELEMENT__INCOMING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK_END__OUTGOING_TRACES = CapellacorePackage.CAPELLA_ELEMENT__OUTGOING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Visible In Doc</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK_END__VISIBLE_IN_DOC = CapellacorePackage.CAPELLA_ELEMENT__VISIBLE_IN_DOC;
+
+	/**
+	 * The feature id for the '<em><b>Visible In LM</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK_END__VISIBLE_IN_LM = CapellacorePackage.CAPELLA_ELEMENT__VISIBLE_IN_LM;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK_END__SUMMARY = CapellacorePackage.CAPELLA_ELEMENT__SUMMARY;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK_END__DESCRIPTION = CapellacorePackage.CAPELLA_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Review</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK_END__REVIEW = CapellacorePackage.CAPELLA_ELEMENT__REVIEW;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Values</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK_END__OWNED_PROPERTY_VALUES = CapellacorePackage.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Enumeration Property Types</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK_END__OWNED_ENUMERATION_PROPERTY_TYPES = CapellacorePackage.CAPELLA_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Values</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK_END__APPLIED_PROPERTY_VALUES = CapellacorePackage.CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Value Groups</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK_END__OWNED_PROPERTY_VALUE_GROUPS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Value Groups</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK_END__APPLIED_PROPERTY_VALUE_GROUPS = CapellacorePackage.CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK_END__STATUS = CapellacorePackage.CAPELLA_ELEMENT__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Features</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK_END__FEATURES = CapellacorePackage.CAPELLA_ELEMENT__FEATURES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK_END__APPLIED_REQUIREMENTS = CapellacorePackage.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS;
+
+	/**
+	 * The number of structural features of the '<em>Sequence Link End</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_LINK_END_FEATURE_COUNT = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.polarsys.capella.core.data.fa.impl.FunctionalChainInvolvementFunctionImpl <em>Functional Chain Involvement Function</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.polarsys.capella.core.data.fa.impl.FunctionalChainInvolvementFunctionImpl
+	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getFunctionalChainInvolvementFunction()
+	 * @generated
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION = 38;
+
+	/**
+	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__OWNED_EXTENSIONS = FUNCTIONAL_CHAIN_INVOLVEMENT__OWNED_EXTENSIONS;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__ID = FUNCTIONAL_CHAIN_INVOLVEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Sid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__SID = FUNCTIONAL_CHAIN_INVOLVEMENT__SID;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__CONSTRAINTS = FUNCTIONAL_CHAIN_INVOLVEMENT__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__OWNED_CONSTRAINTS = FUNCTIONAL_CHAIN_INVOLVEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__REALIZED_FLOW = FUNCTIONAL_CHAIN_INVOLVEMENT__REALIZED_FLOW;
+
+	/**
+	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__INCOMING_TRACES = FUNCTIONAL_CHAIN_INVOLVEMENT__INCOMING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__OUTGOING_TRACES = FUNCTIONAL_CHAIN_INVOLVEMENT__OUTGOING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Visible In Doc</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__VISIBLE_IN_DOC = FUNCTIONAL_CHAIN_INVOLVEMENT__VISIBLE_IN_DOC;
+
+	/**
+	 * The feature id for the '<em><b>Visible In LM</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__VISIBLE_IN_LM = FUNCTIONAL_CHAIN_INVOLVEMENT__VISIBLE_IN_LM;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__SUMMARY = FUNCTIONAL_CHAIN_INVOLVEMENT__SUMMARY;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__DESCRIPTION = FUNCTIONAL_CHAIN_INVOLVEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Review</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__REVIEW = FUNCTIONAL_CHAIN_INVOLVEMENT__REVIEW;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Values</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__OWNED_PROPERTY_VALUES = FUNCTIONAL_CHAIN_INVOLVEMENT__OWNED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Enumeration Property Types</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__OWNED_ENUMERATION_PROPERTY_TYPES = FUNCTIONAL_CHAIN_INVOLVEMENT__OWNED_ENUMERATION_PROPERTY_TYPES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Values</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__APPLIED_PROPERTY_VALUES = FUNCTIONAL_CHAIN_INVOLVEMENT__APPLIED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Value Groups</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__OWNED_PROPERTY_VALUE_GROUPS = FUNCTIONAL_CHAIN_INVOLVEMENT__OWNED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Value Groups</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__APPLIED_PROPERTY_VALUE_GROUPS = FUNCTIONAL_CHAIN_INVOLVEMENT__APPLIED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__STATUS = FUNCTIONAL_CHAIN_INVOLVEMENT__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Features</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__FEATURES = FUNCTIONAL_CHAIN_INVOLVEMENT__FEATURES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__APPLIED_REQUIREMENTS = FUNCTIONAL_CHAIN_INVOLVEMENT__APPLIED_REQUIREMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Involver</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__INVOLVER = FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVER;
+
+	/**
+	 * The feature id for the '<em><b>Involved</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__INVOLVED = FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVED;
+
+	/**
+	 * The feature id for the '<em><b>Next Functional Chain Involvements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__NEXT_FUNCTIONAL_CHAIN_INVOLVEMENTS = FUNCTIONAL_CHAIN_INVOLVEMENT__NEXT_FUNCTIONAL_CHAIN_INVOLVEMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Previous Functional Chain Involvements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__PREVIOUS_FUNCTIONAL_CHAIN_INVOLVEMENTS = FUNCTIONAL_CHAIN_INVOLVEMENT__PREVIOUS_FUNCTIONAL_CHAIN_INVOLVEMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Involved Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__INVOLVED_ELEMENT = FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing Involvement Links</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__OUTGOING_INVOLVEMENT_LINKS = FUNCTIONAL_CHAIN_INVOLVEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Incoming Involvement Links</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__INCOMING_INVOLVEMENT_LINKS = FUNCTIONAL_CHAIN_INVOLVEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Functional Chain Involvement Function</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_FEATURE_COUNT = FUNCTIONAL_CHAIN_INVOLVEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.polarsys.capella.core.data.fa.impl.ControlNodeImpl <em>Control Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.polarsys.capella.core.data.fa.impl.ControlNodeImpl
+	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getControlNode()
+	 * @generated
+	 */
+	int CONTROL_NODE = 39;
+
+	/**
+	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_NODE__OWNED_EXTENSIONS = SEQUENCE_LINK_END__OWNED_EXTENSIONS;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_NODE__ID = SEQUENCE_LINK_END__ID;
+
+	/**
+	 * The feature id for the '<em><b>Sid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_NODE__SID = SEQUENCE_LINK_END__SID;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_NODE__CONSTRAINTS = SEQUENCE_LINK_END__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_NODE__OWNED_CONSTRAINTS = SEQUENCE_LINK_END__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_NODE__INCOMING_TRACES = SEQUENCE_LINK_END__INCOMING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_NODE__OUTGOING_TRACES = SEQUENCE_LINK_END__OUTGOING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Visible In Doc</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_NODE__VISIBLE_IN_DOC = SEQUENCE_LINK_END__VISIBLE_IN_DOC;
+
+	/**
+	 * The feature id for the '<em><b>Visible In LM</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_NODE__VISIBLE_IN_LM = SEQUENCE_LINK_END__VISIBLE_IN_LM;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_NODE__SUMMARY = SEQUENCE_LINK_END__SUMMARY;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_NODE__DESCRIPTION = SEQUENCE_LINK_END__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Review</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_NODE__REVIEW = SEQUENCE_LINK_END__REVIEW;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Values</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_NODE__OWNED_PROPERTY_VALUES = SEQUENCE_LINK_END__OWNED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Enumeration Property Types</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_NODE__OWNED_ENUMERATION_PROPERTY_TYPES = SEQUENCE_LINK_END__OWNED_ENUMERATION_PROPERTY_TYPES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Values</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_NODE__APPLIED_PROPERTY_VALUES = SEQUENCE_LINK_END__APPLIED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Value Groups</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_NODE__OWNED_PROPERTY_VALUE_GROUPS = SEQUENCE_LINK_END__OWNED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Value Groups</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_NODE__APPLIED_PROPERTY_VALUE_GROUPS = SEQUENCE_LINK_END__APPLIED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_NODE__STATUS = SEQUENCE_LINK_END__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Features</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_NODE__FEATURES = SEQUENCE_LINK_END__FEATURES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_NODE__APPLIED_REQUIREMENTS = SEQUENCE_LINK_END__APPLIED_REQUIREMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_NODE__KIND = SEQUENCE_LINK_END_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Control Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_NODE_FEATURE_COUNT = SEQUENCE_LINK_END_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.polarsys.capella.core.data.fa.ReferenceHierarchyContext <em>Reference Hierarchy Context</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.polarsys.capella.core.data.fa.ReferenceHierarchyContext
+	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getReferenceHierarchyContext()
+	 * @generated
+	 */
+	int REFERENCE_HIERARCHY_CONTEXT = 40;
+
+	/**
+	 * The feature id for the '<em><b>Source Reference Hierarchy</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_HIERARCHY_CONTEXT__SOURCE_REFERENCE_HIERARCHY = 0;
+
+	/**
+	 * The feature id for the '<em><b>Target Reference Hierarchy</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_HIERARCHY_CONTEXT__TARGET_REFERENCE_HIERARCHY = 1;
+
+	/**
+	 * The number of structural features of the '<em>Reference Hierarchy Context</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_HIERARCHY_CONTEXT_FEATURE_COUNT = 2;
+
+	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.fa.FunctionalChainKind <em>Functional Chain Kind</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11085,7 +12377,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getFunctionalChainKind()
 	 * @generated
 	 */
-	int FUNCTIONAL_CHAIN_KIND = 35;
+	int FUNCTIONAL_CHAIN_KIND = 41;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.fa.FunctionKind <em>Function Kind</em>}' enum.
@@ -11095,7 +12387,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getFunctionKind()
 	 * @generated
 	 */
-	int FUNCTION_KIND = 36;
+	int FUNCTION_KIND = 42;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.fa.ComponentExchangeKind <em>Component Exchange Kind</em>}' enum.
@@ -11105,7 +12397,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getComponentExchangeKind()
 	 * @generated
 	 */
-	int COMPONENT_EXCHANGE_KIND = 37;
+	int COMPONENT_EXCHANGE_KIND = 43;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.fa.ComponentPortKind <em>Component Port Kind</em>}' enum.
@@ -11115,7 +12407,7 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getComponentPortKind()
 	 * @generated
 	 */
-	int COMPONENT_PORT_KIND = 38;
+	int COMPONENT_PORT_KIND = 44;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.fa.OrientationPortKind <em>Orientation Port Kind</em>}' enum.
@@ -11125,7 +12417,18 @@ public interface FaPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getOrientationPortKind()
 	 * @generated
 	 */
-	int ORIENTATION_PORT_KIND = 39;
+	int ORIENTATION_PORT_KIND = 45;
+
+
+	/**
+	 * The meta object id for the '{@link org.polarsys.capella.core.data.fa.ControlNodeKind <em>Control Node Kind</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.polarsys.capella.core.data.fa.ControlNodeKind
+	 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getControlNodeKind()
+	 * @generated
+	 */
+	int CONTROL_NODE_KIND = 46;
 
 
 	/**
@@ -11844,6 +13147,50 @@ public interface FaPackage extends EPackage {
 	EReference getFunctionalChain_RealizingFunctionalChains();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.fa.FunctionalChain#getPreCondition <em>Pre Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Pre Condition</em>'.
+	 * @see org.polarsys.capella.core.data.fa.FunctionalChain#getPreCondition()
+	 * @see #getFunctionalChain()
+	 * @generated
+	 */
+	EReference getFunctionalChain_PreCondition();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.fa.FunctionalChain#getPostCondition <em>Post Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Post Condition</em>'.
+	 * @see org.polarsys.capella.core.data.fa.FunctionalChain#getPostCondition()
+	 * @see #getFunctionalChain()
+	 * @generated
+	 */
+	EReference getFunctionalChain_PostCondition();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.polarsys.capella.core.data.fa.FunctionalChain#getOwnedSequenceNodes <em>Owned Sequence Nodes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Owned Sequence Nodes</em>'.
+	 * @see org.polarsys.capella.core.data.fa.FunctionalChain#getOwnedSequenceNodes()
+	 * @see #getFunctionalChain()
+	 * @generated
+	 */
+	EReference getFunctionalChain_OwnedSequenceNodes();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.polarsys.capella.core.data.fa.FunctionalChain#getOwnedSequenceLinks <em>Owned Sequence Links</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Owned Sequence Links</em>'.
+	 * @see org.polarsys.capella.core.data.fa.FunctionalChain#getOwnedSequenceLinks()
+	 * @see #getFunctionalChain()
+	 * @generated
+	 */
+	EReference getFunctionalChain_OwnedSequenceLinks();
+
+	/**
 	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.fa.AbstractFunctionalChainContainer <em>Abstract Functional Chain Container</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11895,17 +13242,6 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getFunctionalChainInvolvement_PreviousFunctionalChainInvolvements();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvement#getExchangedItems <em>Exchanged Items</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Exchanged Items</em>'.
-	 * @see org.polarsys.capella.core.data.fa.FunctionalChainInvolvement#getExchangedItems()
-	 * @see #getFunctionalChainInvolvement()
-	 * @generated
-	 */
-	EReference getFunctionalChainInvolvement_ExchangedItems();
 
 	/**
 	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvement#getInvolvedElement <em>Involved Element</em>}'.
@@ -13118,6 +14454,209 @@ public interface FaPackage extends EPackage {
 	EReference getComponentPortAllocationEnd_OwningComponentPortAllocation();
 
 	/**
+	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink <em>Functional Chain Involvement Link</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Functional Chain Involvement Link</em>'.
+	 * @see org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink
+	 * @generated
+	 */
+	EClass getFunctionalChainInvolvementLink();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink#getExchangeContext <em>Exchange Context</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Exchange Context</em>'.
+	 * @see org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink#getExchangeContext()
+	 * @see #getFunctionalChainInvolvementLink()
+	 * @generated
+	 */
+	EReference getFunctionalChainInvolvementLink_ExchangeContext();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink#getExchangedItems <em>Exchanged Items</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Exchanged Items</em>'.
+	 * @see org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink#getExchangedItems()
+	 * @see #getFunctionalChainInvolvementLink()
+	 * @generated
+	 */
+	EReference getFunctionalChainInvolvementLink_ExchangedItems();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink#getSource <em>Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Source</em>'.
+	 * @see org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink#getSource()
+	 * @see #getFunctionalChainInvolvementLink()
+	 * @generated
+	 */
+	EReference getFunctionalChainInvolvementLink_Source();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink#getTarget()
+	 * @see #getFunctionalChainInvolvementLink()
+	 * @generated
+	 */
+	EReference getFunctionalChainInvolvementLink_Target();
+
+	/**
+	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.fa.SequenceLink <em>Sequence Link</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Sequence Link</em>'.
+	 * @see org.polarsys.capella.core.data.fa.SequenceLink
+	 * @generated
+	 */
+	EClass getSequenceLink();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.fa.SequenceLink#getCondition <em>Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Condition</em>'.
+	 * @see org.polarsys.capella.core.data.fa.SequenceLink#getCondition()
+	 * @see #getSequenceLink()
+	 * @generated
+	 */
+	EReference getSequenceLink_Condition();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.polarsys.capella.core.data.fa.SequenceLink#getLinks <em>Links</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Links</em>'.
+	 * @see org.polarsys.capella.core.data.fa.SequenceLink#getLinks()
+	 * @see #getSequenceLink()
+	 * @generated
+	 */
+	EReference getSequenceLink_Links();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.fa.SequenceLink#getSource <em>Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Source</em>'.
+	 * @see org.polarsys.capella.core.data.fa.SequenceLink#getSource()
+	 * @see #getSequenceLink()
+	 * @generated
+	 */
+	EReference getSequenceLink_Source();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.fa.SequenceLink#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see org.polarsys.capella.core.data.fa.SequenceLink#getTarget()
+	 * @see #getSequenceLink()
+	 * @generated
+	 */
+	EReference getSequenceLink_Target();
+
+	/**
+	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.fa.SequenceLinkEnd <em>Sequence Link End</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Sequence Link End</em>'.
+	 * @see org.polarsys.capella.core.data.fa.SequenceLinkEnd
+	 * @generated
+	 */
+	EClass getSequenceLinkEnd();
+
+	/**
+	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction <em>Functional Chain Involvement Function</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Functional Chain Involvement Function</em>'.
+	 * @see org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction
+	 * @generated
+	 */
+	EClass getFunctionalChainInvolvementFunction();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction#getOutgoingInvolvementLinks <em>Outgoing Involvement Links</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Outgoing Involvement Links</em>'.
+	 * @see org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction#getOutgoingInvolvementLinks()
+	 * @see #getFunctionalChainInvolvementFunction()
+	 * @generated
+	 */
+	EReference getFunctionalChainInvolvementFunction_OutgoingInvolvementLinks();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction#getIncomingInvolvementLinks <em>Incoming Involvement Links</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Incoming Involvement Links</em>'.
+	 * @see org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction#getIncomingInvolvementLinks()
+	 * @see #getFunctionalChainInvolvementFunction()
+	 * @generated
+	 */
+	EReference getFunctionalChainInvolvementFunction_IncomingInvolvementLinks();
+
+	/**
+	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.fa.ControlNode <em>Control Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Control Node</em>'.
+	 * @see org.polarsys.capella.core.data.fa.ControlNode
+	 * @generated
+	 */
+	EClass getControlNode();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.polarsys.capella.core.data.fa.ControlNode#getKind <em>Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Kind</em>'.
+	 * @see org.polarsys.capella.core.data.fa.ControlNode#getKind()
+	 * @see #getControlNode()
+	 * @generated
+	 */
+	EAttribute getControlNode_Kind();
+
+	/**
+	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.fa.ReferenceHierarchyContext <em>Reference Hierarchy Context</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Reference Hierarchy Context</em>'.
+	 * @see org.polarsys.capella.core.data.fa.ReferenceHierarchyContext
+	 * @generated
+	 */
+	EClass getReferenceHierarchyContext();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.polarsys.capella.core.data.fa.ReferenceHierarchyContext#getSourceReferenceHierarchy <em>Source Reference Hierarchy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Source Reference Hierarchy</em>'.
+	 * @see org.polarsys.capella.core.data.fa.ReferenceHierarchyContext#getSourceReferenceHierarchy()
+	 * @see #getReferenceHierarchyContext()
+	 * @generated
+	 */
+	EReference getReferenceHierarchyContext_SourceReferenceHierarchy();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.polarsys.capella.core.data.fa.ReferenceHierarchyContext#getTargetReferenceHierarchy <em>Target Reference Hierarchy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Target Reference Hierarchy</em>'.
+	 * @see org.polarsys.capella.core.data.fa.ReferenceHierarchyContext#getTargetReferenceHierarchy()
+	 * @see #getReferenceHierarchyContext()
+	 * @generated
+	 */
+	EReference getReferenceHierarchyContext_TargetReferenceHierarchy();
+
+	/**
 	 * Returns the meta object for enum '{@link org.polarsys.capella.core.data.fa.FunctionalChainKind <em>Functional Chain Kind</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -13166,6 +14705,16 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getOrientationPortKind();
+
+	/**
+	 * Returns the meta object for enum '{@link org.polarsys.capella.core.data.fa.ControlNodeKind <em>Control Node Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Control Node Kind</em>'.
+	 * @see org.polarsys.capella.core.data.fa.ControlNodeKind
+	 * @generated
+	 */
+	EEnum getControlNodeKind();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -13740,6 +15289,38 @@ public interface FaPackage extends EPackage {
 		EReference FUNCTIONAL_CHAIN__REALIZING_FUNCTIONAL_CHAINS = eINSTANCE.getFunctionalChain_RealizingFunctionalChains();
 
 		/**
+		 * The meta object literal for the '<em><b>Pre Condition</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FUNCTIONAL_CHAIN__PRE_CONDITION = eINSTANCE.getFunctionalChain_PreCondition();
+
+		/**
+		 * The meta object literal for the '<em><b>Post Condition</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FUNCTIONAL_CHAIN__POST_CONDITION = eINSTANCE.getFunctionalChain_PostCondition();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Sequence Nodes</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FUNCTIONAL_CHAIN__OWNED_SEQUENCE_NODES = eINSTANCE.getFunctionalChain_OwnedSequenceNodes();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Sequence Links</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FUNCTIONAL_CHAIN__OWNED_SEQUENCE_LINKS = eINSTANCE.getFunctionalChain_OwnedSequenceLinks();
+
+		/**
 		 * The meta object literal for the '{@link org.polarsys.capella.core.data.fa.impl.AbstractFunctionalChainContainerImpl <em>Abstract Functional Chain Container</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -13782,14 +15363,6 @@ public interface FaPackage extends EPackage {
 		 * @generated
 		 */
 		EReference FUNCTIONAL_CHAIN_INVOLVEMENT__PREVIOUS_FUNCTIONAL_CHAIN_INVOLVEMENTS = eINSTANCE.getFunctionalChainInvolvement_PreviousFunctionalChainInvolvements();
-
-		/**
-		 * The meta object literal for the '<em><b>Exchanged Items</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference FUNCTIONAL_CHAIN_INVOLVEMENT__EXCHANGED_ITEMS = eINSTANCE.getFunctionalChainInvolvement_ExchangedItems();
 
 		/**
 		 * The meta object literal for the '<em><b>Involved Element</b></em>' reference feature.
@@ -14732,6 +16305,170 @@ public interface FaPackage extends EPackage {
 		EReference COMPONENT_PORT_ALLOCATION_END__OWNING_COMPONENT_PORT_ALLOCATION = eINSTANCE.getComponentPortAllocationEnd_OwningComponentPortAllocation();
 
 		/**
+		 * The meta object literal for the '{@link org.polarsys.capella.core.data.fa.impl.FunctionalChainInvolvementLinkImpl <em>Functional Chain Involvement Link</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.polarsys.capella.core.data.fa.impl.FunctionalChainInvolvementLinkImpl
+		 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getFunctionalChainInvolvementLink()
+		 * @generated
+		 */
+		EClass FUNCTIONAL_CHAIN_INVOLVEMENT_LINK = eINSTANCE.getFunctionalChainInvolvementLink();
+
+		/**
+		 * The meta object literal for the '<em><b>Exchange Context</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__EXCHANGE_CONTEXT = eINSTANCE.getFunctionalChainInvolvementLink_ExchangeContext();
+
+		/**
+		 * The meta object literal for the '<em><b>Exchanged Items</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__EXCHANGED_ITEMS = eINSTANCE.getFunctionalChainInvolvementLink_ExchangedItems();
+
+		/**
+		 * The meta object literal for the '<em><b>Source</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__SOURCE = eINSTANCE.getFunctionalChainInvolvementLink_Source();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__TARGET = eINSTANCE.getFunctionalChainInvolvementLink_Target();
+
+		/**
+		 * The meta object literal for the '{@link org.polarsys.capella.core.data.fa.impl.SequenceLinkImpl <em>Sequence Link</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.polarsys.capella.core.data.fa.impl.SequenceLinkImpl
+		 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getSequenceLink()
+		 * @generated
+		 */
+		EClass SEQUENCE_LINK = eINSTANCE.getSequenceLink();
+
+		/**
+		 * The meta object literal for the '<em><b>Condition</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SEQUENCE_LINK__CONDITION = eINSTANCE.getSequenceLink_Condition();
+
+		/**
+		 * The meta object literal for the '<em><b>Links</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SEQUENCE_LINK__LINKS = eINSTANCE.getSequenceLink_Links();
+
+		/**
+		 * The meta object literal for the '<em><b>Source</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SEQUENCE_LINK__SOURCE = eINSTANCE.getSequenceLink_Source();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SEQUENCE_LINK__TARGET = eINSTANCE.getSequenceLink_Target();
+
+		/**
+		 * The meta object literal for the '{@link org.polarsys.capella.core.data.fa.SequenceLinkEnd <em>Sequence Link End</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.polarsys.capella.core.data.fa.SequenceLinkEnd
+		 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getSequenceLinkEnd()
+		 * @generated
+		 */
+		EClass SEQUENCE_LINK_END = eINSTANCE.getSequenceLinkEnd();
+
+		/**
+		 * The meta object literal for the '{@link org.polarsys.capella.core.data.fa.impl.FunctionalChainInvolvementFunctionImpl <em>Functional Chain Involvement Function</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.polarsys.capella.core.data.fa.impl.FunctionalChainInvolvementFunctionImpl
+		 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getFunctionalChainInvolvementFunction()
+		 * @generated
+		 */
+		EClass FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION = eINSTANCE.getFunctionalChainInvolvementFunction();
+
+		/**
+		 * The meta object literal for the '<em><b>Outgoing Involvement Links</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__OUTGOING_INVOLVEMENT_LINKS = eINSTANCE.getFunctionalChainInvolvementFunction_OutgoingInvolvementLinks();
+
+		/**
+		 * The meta object literal for the '<em><b>Incoming Involvement Links</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION__INCOMING_INVOLVEMENT_LINKS = eINSTANCE.getFunctionalChainInvolvementFunction_IncomingInvolvementLinks();
+
+		/**
+		 * The meta object literal for the '{@link org.polarsys.capella.core.data.fa.impl.ControlNodeImpl <em>Control Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.polarsys.capella.core.data.fa.impl.ControlNodeImpl
+		 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getControlNode()
+		 * @generated
+		 */
+		EClass CONTROL_NODE = eINSTANCE.getControlNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Kind</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTROL_NODE__KIND = eINSTANCE.getControlNode_Kind();
+
+		/**
+		 * The meta object literal for the '{@link org.polarsys.capella.core.data.fa.ReferenceHierarchyContext <em>Reference Hierarchy Context</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.polarsys.capella.core.data.fa.ReferenceHierarchyContext
+		 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getReferenceHierarchyContext()
+		 * @generated
+		 */
+		EClass REFERENCE_HIERARCHY_CONTEXT = eINSTANCE.getReferenceHierarchyContext();
+
+		/**
+		 * The meta object literal for the '<em><b>Source Reference Hierarchy</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REFERENCE_HIERARCHY_CONTEXT__SOURCE_REFERENCE_HIERARCHY = eINSTANCE.getReferenceHierarchyContext_SourceReferenceHierarchy();
+
+		/**
+		 * The meta object literal for the '<em><b>Target Reference Hierarchy</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REFERENCE_HIERARCHY_CONTEXT__TARGET_REFERENCE_HIERARCHY = eINSTANCE.getReferenceHierarchyContext_TargetReferenceHierarchy();
+
+		/**
 		 * The meta object literal for the '{@link org.polarsys.capella.core.data.fa.FunctionalChainKind <em>Functional Chain Kind</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -14780,6 +16517,16 @@ public interface FaPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum ORIENTATION_PORT_KIND = eINSTANCE.getOrientationPortKind();
+
+		/**
+		 * The meta object literal for the '{@link org.polarsys.capella.core.data.fa.ControlNodeKind <em>Control Node Kind</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.polarsys.capella.core.data.fa.ControlNodeKind
+		 * @see org.polarsys.capella.core.data.fa.impl.FaPackageImpl#getControlNodeKind()
+		 * @generated
+		 */
+		EEnum CONTROL_NODE_KIND = eINSTANCE.getControlNodeKind();
 
 	}
 

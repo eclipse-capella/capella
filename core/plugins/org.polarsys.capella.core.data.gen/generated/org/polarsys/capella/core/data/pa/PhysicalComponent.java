@@ -140,6 +140,7 @@ public interface PhysicalComponent extends AbstractPhysicalComponent, AbstractPh
 	 * @return the value of the '<em>Logical Component Realizations</em>' reference list.
 	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponent_LogicalComponentRealizations()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='provisionedComponentAllocations'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the logical component realization links that involve this physical component\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -166,6 +167,7 @@ public interface PhysicalComponent extends AbstractPhysicalComponent, AbstractPh
 	 * @return the value of the '<em>Logical Interface Realizations</em>' reference list.
 	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponent_LogicalInterfaceRealizations()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='provisionedInterfaceAllocations'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of logical interfaces that this physical component reallizes\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -193,6 +195,7 @@ public interface PhysicalComponent extends AbstractPhysicalComponent, AbstractPh
 	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponent_SubPhysicalComponents()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='subActors'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedPartitions.type'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the children components of this physical component\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
@@ -222,6 +225,7 @@ public interface PhysicalComponent extends AbstractPhysicalComponent, AbstractPh
 	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponent_RealizedLogicalComponents()
 	 * @see org.polarsys.capella.core.data.la.LogicalComponent#getRealizingPhysicalComponents
 	 * @model opposite="realizingPhysicalComponents" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='PhysicalComponent.outgoingTraces(self, lcr);\r\n\tLogicalComponentRealization.targetElement(lcr, target);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the list of realizations links coming from logical components, and in which this physical component is involved\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -250,6 +254,7 @@ public interface PhysicalComponent extends AbstractPhysicalComponent, AbstractPh
 	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponent_AllocatedPhysicalFunctions()
 	 * @see org.polarsys.capella.core.data.pa.PhysicalFunction#getAllocatorPhysicalComponents
 	 * @model opposite="allocatorPhysicalComponents" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatedFunctions'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -275,6 +280,7 @@ public interface PhysicalComponent extends AbstractPhysicalComponent, AbstractPh
 	 * @return the value of the '<em>Deployed Physical Components</em>' reference list.
 	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponent_DeployedPhysicalComponents()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Part.abstractType(part, self);\r\n\tPart.deploymentLinks.deployedElement(part, deployedPart);\r\n\tPart.abstractType(deployedPart, target);\r\n} or {\r\n\tPart.abstractType(part, self);\r\n\tPart.deploymentLinks.deployedElement(part, target);'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -300,6 +306,7 @@ public interface PhysicalComponent extends AbstractPhysicalComponent, AbstractPh
 	 * @return the value of the '<em>Deploying Physical Components</em>' reference list.
 	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponent_DeployingPhysicalComponents()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Part.abstractType(part, self);\r\n\tPart.deployingLinks.location(part, deployedPart);\r\n\tPart.abstractType(deployedPart, target);\r\n} or {\r\n\tPart.abstractType(part, self);\r\n\tPart.deploymentLinks.deployedElement(part, target);'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -326,6 +333,7 @@ public interface PhysicalComponent extends AbstractPhysicalComponent, AbstractPh
 	 * @return the value of the '<em>Deploying Physical Actors</em>' reference list.
 	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalComponent_DeployingPhysicalActors()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Part.abstractType(part, self);\r\n\tPart.deployingLinks.location(part, deployedPart);\r\n\tPart.abstractType(deployedPart, target);\r\n} or {\r\n\tPart.abstractType(part, self);\r\n\tPart.deploymentLinks.deployedElement(part, target);'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

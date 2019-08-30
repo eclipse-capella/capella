@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -45,18 +45,15 @@ public class GetAvailable_NumericValue_Unit extends AbstractQuery {
 
   /**
    * <p>
-   * Gets all the Units contained by the Value Package (and all of its sub-packages) of the current Element’s parent (can be a Component, a Component
+   * Gets all the Units contained by the Value Package (and all of its sub-packages) of the current Elementï¿½s parent (can be a Component, a Component
    * Architecture Decomposition package, or a Component Architecture root package).
    * </p>
    * <p>
-   * All the Units contained by the Value Package (and all of its sub-packages) of the current Element’s parents hierarchy according to layer visibility and
+   * All the Units contained by the Value Package (and all of its sub-packages) of the current Elementï¿½s parents hierarchy according to layer visibility and
    * multiple decomposition rules.
    * </p>
    * <p>
    * All the Units contained by the Value Package (and all of its sub-packages) of the Shared Assets Package.
-   * </p>
-   * <p>
-   * Except the current value itself
    * </p>
    * <p>
    * Refer MQRY_PhysicalDimension_DefaultUnit_1
@@ -85,9 +82,7 @@ public class GetAvailable_NumericValue_Unit extends AbstractQuery {
         DataPkg componentDataPkg = ((Component) container).getOwnedDataPkg();
         if (componentDataPkg != null) {
           for (Unit u : DataPkgExt.getAllUnits((((Component) container).getOwnedDataPkg()))) {
-            if (!u.equals(currentNumericValue.getUnit())) {
               availableElements.add(u);
-            }
           }
         }
       }
@@ -106,9 +101,6 @@ public class GetAvailable_NumericValue_Unit extends AbstractQuery {
       for (DataPkg dataPkg : dataPkgList) {
         if (null != dataPkg) {
           for (Unit unit : DataPkgExt.getAllUnits(dataPkg)) {
-            if (unit.equals(currentNumericValue.getUnit())) {
-              continue;
-            }
             availableElements.add(unit);
           }
         }
@@ -124,9 +116,6 @@ public class GetAvailable_NumericValue_Unit extends AbstractQuery {
       DataPkg dataPkg = DataPkgExt.getDataPkgOfBlockArchitecture(arch);
       if (null != dataPkg) {
         for (Unit unit : DataPkgExt.getAllUnits(dataPkg)) {
-          if (unit.equals(link)) {
-            continue;
-          }
           availableElements.add(unit);
         }
       }

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.platform.sirius.ui.perspective;singleton:=true
-Bundle-Version: 1.2.2.qualifier
+Bundle-Version: 1.3.1.qualifier
 Bundle-Activator: org.polarsys.capella.core.platform.sirius.ui.PerspectivePlugin
 Bundle-Vendor: %providerName
 Bundle-ActivationPolicy: lazy
@@ -24,5 +24,6 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius.common.ui,
  org.eclipse.ui.intro,
  org.polarsys.capella.core.preferences,
- org.polarsys.capella.core.application
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+ org.polarsys.capella.core.application,
+ org.polarsys.capella.common.platform.sirius.customization
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

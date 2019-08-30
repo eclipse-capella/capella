@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,15 +25,13 @@ import org.polarsys.capella.core.data.fa.ui.wizards.dialogs.EIAllocationModelHel
 public abstract class DeleteElementAction extends Action {
   /** */
   protected TreeViewer treeViewer;
-  protected IStructuredSelection selection;
 
   /**
    * 
    */
-  public DeleteElementAction(IStructuredSelection selection, TreeViewer treeViewer) {
+  public DeleteElementAction(TreeViewer treeViewer) {
     super();
     this.treeViewer = treeViewer;
-    this.selection = selection;
   }
 
   /**
@@ -41,8 +39,7 @@ public abstract class DeleteElementAction extends Action {
    */
   @Override
   public void run() {
-    EIAllocationModelHelpers.handleDeletion(selection.toList());
-
+    EIAllocationModelHelpers.handleDeletion(((IStructuredSelection)treeViewer.getSelection()).toList());
     postRun();
   }
 
@@ -79,7 +76,7 @@ public abstract class DeleteElementAction extends Action {
         /** deletion is not allowed on root elements */
         return false;
       }
-      if (EIAllocationModelHelpers.isValidTypeForDeletion(selection.toList())) {
+      if (EIAllocationModelHelpers.isValidTypeForDeletion(((IStructuredSelection)treeViewer.getSelection()).toList())) {
         return true;
       }
     }

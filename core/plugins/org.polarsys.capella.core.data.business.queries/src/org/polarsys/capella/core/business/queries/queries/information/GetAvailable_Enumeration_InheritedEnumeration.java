@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,14 +23,12 @@ import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.business.abstractqueries.helpers.CapellaElementsHelperForBusinessQueries;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
-import org.polarsys.capella.core.data.helpers.capellacore.services.GeneralizableElementExt;
 import org.polarsys.capella.core.data.information.Class;
 import org.polarsys.capella.core.data.information.Collection;
 import org.polarsys.capella.core.data.information.DataPkg;
@@ -91,7 +89,7 @@ public class GetAvailable_Enumeration_InheritedEnumeration extends AbstractQuery
     if (null != blockArchitecture) {
       DataPkg dataPkg = blockArchitecture.getOwnedDataPkg();
       if (null != dataPkg) {
-        return getDataFromLevel(dataPkg, capellaElement);
+        return CapellaElementsHelperForBusinessQueries.getDataFromLevel(dataPkg, capellaElement, getAvailableEclassForSuperType());
       }
     }
     return Collections.emptyList();
@@ -104,21 +102,7 @@ public class GetAvailable_Enumeration_InheritedEnumeration extends AbstractQuery
     return DatatypePackage.Literals.ENUMERATION;
   }
 
-  /**
-   * @see org.polarsys.capella.core.business.abstractqueries.CapellaElement_CurrentAndHigherLevelsQuery#getDataFromLevel(org.polarsys.capella.core.data.cs.BlockArchitecture,org.polarsys.capella.core.data.capellacore.CapellaElement)
-   */
-  public List<EObject> getDataFromLevel(DataPkg dataPkg, CapellaElement capellaElement) {
-    List<EObject> returnValue = new ArrayList<EObject>();
-    List<EObject> availableElemsInTermOfTypes =
-        CapellaElementsHelperForBusinessQueries.getCapellaElementsInstancesOf(dataPkg, getAvailableEclassForSuperType(), capellaElement);
-    for (EObject elem : availableElemsInTermOfTypes) {
-      if ((elem instanceof GeneralizableElement) && (capellaElement instanceof GeneralizableElement)
-          && GeneralizableElementExt.isInheritancyCycleCompatible((GeneralizableElement) elem, (GeneralizableElement) capellaElement)) {
-        returnValue.add(elem);
-      }
-    }
-    return returnValue;
-  }
+  
 
   /**
    * Returns the available data which do not need to use a level to be found.<br>
@@ -138,7 +122,7 @@ public class GetAvailable_Enumeration_InheritedEnumeration extends AbstractQuery
     for (Component cpnt : CapellaElementExt.getComponentHierarchy(element)) {
       DataPkg dataPkg = cpnt.getOwnedDataPkg();
       if (null != dataPkg) {
-        allDatas.addAll(getDataFromLevel(dataPkg, element));
+        allDatas.addAll(CapellaElementsHelperForBusinessQueries.getDataFromLevel(dataPkg, element, getAvailableEclassForSuperType()));
       }
     }
     return allDatas;
@@ -159,7 +143,7 @@ public class GetAvailable_Enumeration_InheritedEnumeration extends AbstractQuery
         for (Component cpnt : componentHierarchy) {
           DataPkg dataPkg = cpnt.getOwnedDataPkg();
           if (null != dataPkg) {
-            for (EObject data : getDataFromLevel(dataPkg, element)) {
+            for (EObject data : CapellaElementsHelperForBusinessQueries.getDataFromLevel(dataPkg, element, getAvailableEclassForSuperType())) {
               if (!allDatas.contains(data)) {
                 allDatas.add(data);
               }

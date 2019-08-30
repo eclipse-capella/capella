@@ -56,7 +56,7 @@ public class InterfaceAllocatorHelper {
 	
 	protected List<Interface> getAllocatedInterfaces(InterfaceAllocator element) {
 		List<InterfaceAllocation> allocs = element.getProvisionedInterfaceAllocations();
-		List <Interface> ret = new ArrayList<Interface>();
+		List <Interface> ret = new ArrayList<>();
 		
 		for (InterfaceAllocation alloc : allocs) {
 			Interface allocated = alloc.getAllocatedInterface();
@@ -71,7 +71,7 @@ public class InterfaceAllocatorHelper {
 	
 	protected List<InterfaceAllocation> getProvisionedInterfaceAllocations(InterfaceAllocator element) {
 		List<AbstractTrace> traces = element.getOutgoingTraces();
-		List <InterfaceAllocation> ret = new ArrayList<InterfaceAllocation>();
+		List <InterfaceAllocation> ret = new ArrayList<>();
 		
 		for (AbstractTrace trace : traces) {
 						
@@ -82,6 +82,4 @@ public class InterfaceAllocatorHelper {
 		
 		return ret;
 	}
-
-
 }

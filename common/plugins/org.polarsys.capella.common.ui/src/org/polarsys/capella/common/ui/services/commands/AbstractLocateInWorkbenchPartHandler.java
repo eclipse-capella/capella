@@ -14,10 +14,9 @@ package org.polarsys.capella.common.ui.services.commands;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.handlers.HandlerUtil;
 
 /**
  * Base class to implement an {@link AbstractUiHandler} that sets the active
@@ -32,22 +31,11 @@ public abstract class AbstractLocateInWorkbenchPartHandler extends
   public Object execute(ExecutionEvent event) throws ExecutionException {
     // Get the active part.
     IWorkbenchPart activePart = (IWorkbenchPart) getVariableValue(event, ACTIVE_PART_VARIABLE);
-    // Precondition.
     if (null == activePart) {
       return null;
     }
-    // Get the current selection from the active part.
-    IWorkbenchPartSite site = activePart.getSite();
-    if (null == site) {
-      return null;
-    }
     
-    ISelectionProvider selectionProvider = site.getSelectionProvider();
-    if (null == selectionProvider) {
-      return null;
-    }
-    
-    ISelection selection = selectionProvider.getSelection();
+    ISelection selection = HandlerUtil.getCurrentSelection(event);
     if (null == selection) {
       return null;
     }

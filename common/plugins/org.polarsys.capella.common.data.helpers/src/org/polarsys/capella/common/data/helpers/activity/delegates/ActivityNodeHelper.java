@@ -55,7 +55,7 @@ public class ActivityNodeHelper {
 
   protected ActivityPartition getInActivityPartition(ActivityNode element) {
     EObject group = element.eContainer();
-    if ((null != group) && (group instanceof ActivityPartition)) {
+    if (group instanceof ActivityPartition) {
       return (ActivityPartition) group;
     }
     return null;
@@ -63,7 +63,7 @@ public class ActivityNodeHelper {
 
   protected InterruptibleActivityRegion getInInterruptibleRegion(ActivityNode element) {
     EObject group = element.eContainer();
-    if ((null != group) && (group instanceof InterruptibleActivityRegion)) {
+    if (group instanceof InterruptibleActivityRegion) {
       return (InterruptibleActivityRegion) group;
     }
     return null;
@@ -71,7 +71,7 @@ public class ActivityNodeHelper {
 
   protected StructuredActivityNode getInStructuredNode(ActivityNode element) {
     EObject group = element.eContainer();
-    if ((null != group) && (group instanceof StructuredActivityNode)) {
+    if (group instanceof StructuredActivityNode) {
       return (StructuredActivityNode) group;
     }
     return null;

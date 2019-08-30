@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.ui.copyformat.keyproviders;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -66,7 +68,7 @@ public class TraceabilityKeyProvider implements IKeyProvider {
         for (AbstractTrace trace : ((TraceableElement) (((Part) semantic).getAbstractType())).getOutgoingTraces()) {
           if (isValidTrace(trace)) {
             keys.add(new CapellaTraceabilityFormatDataKey(mKey, trace.getTargetElement()));
-            for (Part part : ComponentExt.getRepresentingParts((Component) trace.getTargetElement())) {
+            for (Part part : getCache(ComponentExt::getRepresentingParts, (Component) trace.getTargetElement())) {
               keys.add(new CapellaTraceabilityFormatDataKey(mKey, part));
             }
           }

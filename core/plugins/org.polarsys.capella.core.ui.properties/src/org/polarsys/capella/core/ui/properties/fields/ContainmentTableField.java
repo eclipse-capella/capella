@@ -133,7 +133,7 @@ public class ContainmentTableField extends AbstractStructuredRepresentationField
 
           public void run() {
             CapellaDeleteCommand command =
-                new CapellaDeleteCommand(TransactionHelper.getExecutionManager(_semanticElement), getContainedElementsfor(selectedReferencedElements), true,
+                new CapellaDeleteCommand(TransactionHelper.getExecutionManager(semanticElement), getContainedElementsfor(selectedReferencedElements), true,
                     false, false);
             if (command.canExecute()) {
               command.execute();
@@ -157,7 +157,7 @@ public class ContainmentTableField extends AbstractStructuredRepresentationField
       AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
         public void run() {
           // Get the collection related to the semantic feature.
-          List<EObject> containedElements = (List<EObject>) _semanticElement.eGet(_semanticFeature);
+          List<EObject> containedElements = (List<EObject>) semanticElement.eGet(semanticFeature);
           // Get the type pointed by the referenced feature.
           // Get the factory instance that enables to create reference type objects.
           EFactory eFactoryInstance = _referencedFeatureType.getEPackage().getEFactoryInstance();
@@ -169,14 +169,14 @@ public class ContainmentTableField extends AbstractStructuredRepresentationField
               createdObjectForSelectedOne.eSet(_referencedFeature, selectedElement);
             }
             if (_referencerFeature != null) {
-              createdObjectForSelectedOne.eSet(_referencerFeature, _semanticElement);
+              createdObjectForSelectedOne.eSet(_referencerFeature, semanticElement);
             }
             // Add it in already contained object.
             containedElements.add(createdObjectForSelectedOne);
           }
         }
       };
-      TransactionHelper.getExecutionManager(_semanticElement).execute(command);
+      TransactionHelper.getExecutionManager(semanticElement).execute(command);
       refreshViewer();
     }
   }
@@ -230,19 +230,19 @@ public class ContainmentTableField extends AbstractStructuredRepresentationField
    * @return a not <code>null</code>list.
    */
   protected List<? extends EObject> getAvailableElementsToAdd() {
-    final List<EObject> availableElements = new ArrayList<EObject>(0);
+    final List<EObject> availableElements = new ArrayList<>(0);
     AbstractReadOnlyCommand command = new AbstractReadOnlyCommand() {
       /**
        * {@inheritDoc}
        */
       public void run() {
-        IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(_semanticElement.eClass(), _semanticFeature);
+        IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), semanticFeature);
         if (null != query) {
-          availableElements.addAll(query.getAvailableElements(_semanticElement));
+          availableElements.addAll(query.getAvailableElements(semanticElement));
         }
       }
     };
-    TransactionHelper.getExecutionManager(_semanticElement).execute(command);
+    TransactionHelper.getExecutionManager(semanticElement).execute(command);
     // Remove already referenced elements.
     availableElements.removeAll(getReferencedElementsByContainedOnes());
     return availableElements;

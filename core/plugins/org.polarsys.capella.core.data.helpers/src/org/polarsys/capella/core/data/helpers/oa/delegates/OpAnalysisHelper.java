@@ -75,7 +75,7 @@ public class OpAnalysisHelper {
   }
 
   protected List <SystemAnalysis> getAllocatingSystemAnalyses(OperationalAnalysis element) {
-    List <SystemAnalysis> ret = new ArrayList<SystemAnalysis>();
+    List <SystemAnalysis> ret = new ArrayList<>();
     for (BlockArchitecture architecture : element.getAllocatingArchitectures()) {
       if (architecture instanceof SystemAnalysis) {
         ret.add((SystemAnalysis) architecture);

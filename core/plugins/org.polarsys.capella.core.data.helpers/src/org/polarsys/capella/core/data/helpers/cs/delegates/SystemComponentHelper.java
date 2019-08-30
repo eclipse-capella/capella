@@ -59,14 +59,14 @@ public class SystemComponentHelper {
 	protected List<SystemComponentCapabilityRealizationInvolvement> getParticipationsInCapabilityRealizations(SystemComponent element) {
 		List<CapabilityRealizationInvolvement> involvements = element
 				.getInvolvingCapabilityRealizationInvolvements();
-		List<SystemComponentCapabilityRealizationInvolvement> ret = new ArrayList<SystemComponentCapabilityRealizationInvolvement>();
+		List<SystemComponentCapabilityRealizationInvolvement> ret = new ArrayList<>();
 
 		for (CapabilityRealizationInvolvement involvement : involvements) {
-			if(involvement instanceof SystemComponentCapabilityRealizationInvolvement)
-			ret.add((SystemComponentCapabilityRealizationInvolvement) involvement);
+			if(involvement instanceof SystemComponentCapabilityRealizationInvolvement) {
+			  ret.add((SystemComponentCapabilityRealizationInvolvement) involvement);			  
+			}
 		}
 
 		return ret;
 	}
-
 }

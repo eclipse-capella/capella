@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -56,12 +56,15 @@ public class NewRepresentationAction extends BaseSelectionListenerAction {
   protected boolean openRepresentation;
   private boolean isCanceled;
 
- 
-/**
+  /**
    * Constructs an action allowing to create new representations.
-   * @param description The representation description.
-   * @param selectedEObject The selected EObject.
-   * @param session The current session.
+   * 
+   * @param description
+   *          The representation description.
+   * @param selectedEObject
+   *          The selected EObject.
+   * @param session
+   *          The current session.
    */
   public NewRepresentationAction(RepresentationDescription description, EObject selectedEObject, Session session) {
     this(description, selectedEObject, session, false, true);
@@ -69,31 +72,43 @@ public class NewRepresentationAction extends BaseSelectionListenerAction {
 
   /**
    * Constructs an action allowing to create new representations.
-   * @param description The representation description.
-   * @param selectedEObject The selected EObject.
-   * @param session The current session.
+   * 
+   * @param description
+   *          The representation description.
+   * @param selectedEObject
+   *          The selected EObject.
+   * @param session
+   *          The current session.
    * @param forceDefaultName
    * @param openRepresentation
    */
-  public NewRepresentationAction(RepresentationDescription description, EObject selectedEObject, Session session, boolean forceDefaultName,
-      boolean openRepresentation) {
+  public NewRepresentationAction(RepresentationDescription description, EObject selectedEObject, Session session,
+      boolean forceDefaultName, boolean openRepresentation) {
     super(description.getName());
     String label = description.getLabel();
     if ((null != label) && (label.length() > 1)) {
       setText(label);
     }
     ImageDescriptor imageDescriptor = null;
+    
     // Handle specific representations : Table ones.
     if (description instanceof CrossTableDescription) {
-      imageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin(TableUIPlugin.ID, "/icons/full/obj16/CrossTableDescription.gif"); //$NON-NLS-1$
+      imageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin(TableUIPlugin.ID,
+          "/icons/full/obj16/CrossTableDescription.gif"); //$NON-NLS-1$
+    
     } else if (description instanceof EditionTableDescription) {
       imageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin(TableUIPlugin.ID, "/icons/full/obj16/DTable.gif"); //$NON-NLS-1$
-    }else if (description instanceof SequenceDiagramDescription) {
-		imageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.sirius.diagram.sequence.edit", "/icons/full/obj16/TSequenceDiagram.gif"); //$NON-NLS-1$ //$NON-NLS-2$
-	} else {
+    
+    } else if (description instanceof SequenceDiagramDescription) {
+      imageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.sirius.diagram.sequence.edit", //$NON-NLS-1$
+          "/icons/full/obj16/TSequenceDiagram.gif"); //$NON-NLS-1$
+    
+    } else {
       // Standard diagram.
-    	imageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin(DiagramUIPlugin.ID, "/icons/full/obj16/DDiagram.gif"); //$NON-NLS-1$
+      imageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin(DiagramUIPlugin.ID,
+          "/icons/full/obj16/DDiagram.gif"); //$NON-NLS-1$
     }
+    
     if (null == imageDescriptor) {
       imageDescriptor = ImageDescriptor.getMissingImageDescriptor();
     }
@@ -116,18 +131,18 @@ public class NewRepresentationAction extends BaseSelectionListenerAction {
     String defaultName = computeDefaultName(selectedEObject, description);
 
     if (!forceDefaultName) {
-      
+
       String label = description.getLabel();
       if (label == null || label.isEmpty()) {
         label = description.getName();
       }
-      
-      String dialogTitle = "New "+label; //$NON-NLS-1$
+
+      String dialogTitle = "New " + label; //$NON-NLS-1$
       String dialogMessage = "Name:"; //$NON-NLS-1$
       Shell activeShell = Display.getDefault().getActiveShell();
       InputDialog representationNameDlg = new InputDialog(activeShell, dialogTitle, dialogMessage, defaultName, null);
-      isCanceled = Window.CANCEL == representationNameDlg.open() ;
-      if (!isCanceled ) {
+      isCanceled = Window.CANCEL == representationNameDlg.open();
+      if (!isCanceled) {
         defaultName = representationNameDlg.getValue();
       } else {
         return;
@@ -186,12 +201,18 @@ public class NewRepresentationAction extends BaseSelectionListenerAction {
 
     /**
      * Constructs the command allowing to create a new representation.
-     * @param newName The new representation name.
-     * @param eObject The selected EObject.
-     * @param repDescription The current representation description.
-     * @param session The current session.
+     * 
+     * @param newName
+     *          The new representation name.
+     * @param eObject
+     *          The selected EObject.
+     * @param repDescription
+     *          The current representation description.
+     * @param session
+     *          The current session.
      */
-    public NewRepresentationCommand(String newName, EObject eObject, RepresentationDescription repDescription, Session session) {
+    public NewRepresentationCommand(String newName, EObject eObject, RepresentationDescription repDescription,
+        Session session) {
       this.newName = newName;
       this.eObject = eObject;
       this.repDescription = repDescription;
@@ -216,6 +237,7 @@ public class NewRepresentationAction extends BaseSelectionListenerAction {
 
     /**
      * Gets the new representation.
+     * 
      * @return The new representation.
      */
     public DRepresentation getRepresentation() {
@@ -234,20 +256,21 @@ public class NewRepresentationAction extends BaseSelectionListenerAction {
       }
 
       String eventName = "Create Representation";
-	  String eventContext = repDescription.getName();
-	  String addendum = IdManager.getInstance().getId(eObject);
-	  UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.NONE, addendum);
-      representation = DialectManager.INSTANCE.createRepresentation(newName, eObject, repDescription, currentSession, monitor);
+      String eventContext = repDescription.getName();
+      String addendum = IdManager.getInstance().getId(eObject);
+      UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.NONE, addendum);
+      representation = DialectManager.INSTANCE.createRepresentation(newName, eObject, repDescription, currentSession,
+          monitor);
       UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.OK, addendum);
     }
   }
-  
-  	public boolean isCanceled() {
-		return isCanceled;
-	}
 
-	public void setCanceled(boolean isCanceled) {
-		this.isCanceled = isCanceled;
-	}
+  public boolean isCanceled() {
+    return isCanceled;
+  }
+
+  public void setCanceled(boolean isCanceled) {
+    this.isCanceled = isCanceled;
+  }
 
 }

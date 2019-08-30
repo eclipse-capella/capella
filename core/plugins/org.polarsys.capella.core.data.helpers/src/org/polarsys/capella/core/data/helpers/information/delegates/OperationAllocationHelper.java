@@ -53,7 +53,7 @@ public class OperationAllocationHelper {
 	protected Operation getAllocatedOperation(OperationAllocation element) {
 		TraceableElement ret = element.getTargetElement();
 
-		if(null != ret && ret instanceof Operation)
+		if(ret instanceof Operation)
 			return (Operation) ret;
 
 		return null;
@@ -62,7 +62,7 @@ public class OperationAllocationHelper {
 	protected Operation getAllocatingOperation(OperationAllocation element) {
 		TraceableElement ret = element.getSourceElement();
 
-		if(null != ret && ret instanceof Operation)
+		if(ret instanceof Operation)
 			return (Operation) ret;
 
 		return null;

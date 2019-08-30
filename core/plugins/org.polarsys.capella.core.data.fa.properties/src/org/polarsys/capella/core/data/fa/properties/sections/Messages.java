@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,10 +41,18 @@ public class Messages extends NLS {
   public static String ComponentExchangeSection_AllocatedFunctionalExchanges_Label;
   public static String ComponentExchangeSection_RealizedComponentExchanges_Label;
   public static String ComponentExchangeSection_Categories_Label;
+  public static String FunctionalChainInvolvementSection_ExchangeContext_Label;
   public static String FunctionalChainInvolvementSection_ExchangedItems_Label;
   public static String ComponentExchangeCategorySection_Exchanges_Label;
   public static String ComponentExchangeAllocatorSection_ComponentExchangeAllocations_Label;
-
+  public static String FunctionalChainInvolvementFunctionSection_OutgoingInvolvementLinks_Label;
+  public static String FunctionalChainInvolvementFunctionSection_IncomingInvolvementLinks_Label;
+  public static String FunctionalChainSection_Precondition_Label;
+  public static String FunctionalChainSection_Postcondition_Label;
+  public static String SequenceLinkSection_Functional_Chain_Involvement_Links_Label;
+  public static String SequenceLinkSection_Condition_Label;
+  public static String SequenceLinkSection_Links_Label;
+  
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);

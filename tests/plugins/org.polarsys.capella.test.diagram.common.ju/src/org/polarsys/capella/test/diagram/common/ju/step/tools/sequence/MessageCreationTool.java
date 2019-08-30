@@ -21,7 +21,11 @@ import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
+import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
+import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
+import org.polarsys.capella.core.data.interaction.MessageKind;
+import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.headless.HeadlessResultOpProvider;
 import org.polarsys.capella.test.diagram.common.ju.headless.IHeadlessResult;
@@ -30,9 +34,46 @@ import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 import org.polarsys.capella.test.framework.api.CommonTestMessages;
 
 public class MessageCreationTool extends CreateDEdgeTool {
+  private MessageKind messageKind = null;
+  private boolean hasReturnBranch = false;
+  private int numCountChecks;
+
+  public MessageCreationTool(DiagramContext context, String toolName, String sourceId, String targetId) {
+    super(context, toolName, sourceId, targetId);
+    this.numCountChecks = 1;
+  }
 
   public MessageCreationTool(DiagramContext context, String toolName, String id, String sourceId, String targetId) {
     super(context, toolName, sourceId, targetId, id);
+    this.numCountChecks = 2;
+  }
+
+  public MessageCreationTool(DiagramContext context, String toolName, String id, String sourceId, String targetId,
+      boolean returnBranch) {
+    super(context, toolName, sourceId, targetId, id);
+    this.hasReturnBranch = returnBranch;
+    this.numCountChecks = 2;
+  }
+
+  ///////////////// MSG_KIND ///////////
+  public MessageCreationTool(DiagramContext context, String toolName, String sourceId, String targetId,
+      MessageKind messageKind) {
+    super(context, toolName, sourceId, targetId);
+    this.messageKind = messageKind;
+    this.numCountChecks = 2;
+  }
+
+  public MessageCreationTool(DiagramContext context, String toolName, String id, String sourceId, String targetId,
+      MessageKind messageKind) {
+    super(context, toolName, sourceId, targetId, id);
+    this.messageKind = messageKind;
+    this.numCountChecks = 3;
+  }
+
+  public MessageCreationTool(DiagramContext context, String toolName, String id, String sourceId, String targetId,
+      MessageKind messageKind, boolean returnBranch) {
+    this(context, toolName, sourceId, targetId, id);
+    this.hasReturnBranch = returnBranch;
   }
 
   /**
@@ -43,7 +84,7 @@ public class MessageCreationTool extends CreateDEdgeTool {
     HeadlessResultOpProvider.INSTANCE.setCurrentOp(createOperation());
     super.preRunTest();
   }
-  
+
   /**
    * @return
    */
@@ -56,7 +97,7 @@ public class MessageCreationTool extends CreateDEdgeTool {
       }
     };
   }
-  
+
   /**
    * @see org.polarsys.capella.test.common.AbstractExtendedTest#postTestRun()
    */
@@ -64,30 +105,51 @@ public class MessageCreationTool extends CreateDEdgeTool {
   @Override
   protected void postRunTest() {
     super.postRunTest();
-    
-    DDiagram diagram = getExecutionContext().getDiagram();
+
+    DDiagram diagram = getDiagramContext().getDiagram();
     DiagramHelper.refreshDiagram(diagram);
 
-    EObject feToAdd = getExecutionContext().getSemanticElement(_newIdentifier);
-    
-    String failMessage = NLS.bind(CommonTestMessages.objectRepresentationNotAvailableOnDiagram,
-        EObjectLabelProviderHelper.getText(feToAdd), diagram.getName());
-    
-    // Only one edge should be created
-    if (_newEdgesElements.size() == 1) {
+    EObject exchangeToAdd = null;
+    String failMessage = "";
+    if (_newIdentifier != null) {
+      exchangeToAdd = getExecutionContext().getSemanticElement(_newIdentifier);
+      NLS.bind(CommonTestMessages.objectRepresentationNotAvailableOnDiagram,
+          EObjectLabelProviderHelper.getText(exchangeToAdd), diagram.getName());
+    } else {
+      failMessage = "Message Creation postconditions failed";
+    }
+
+    // one edge should be created or two edges should be created if it has return branch
+    if (_newEdgesElements.size() == getNoEdgesCreated()) {
       DDiagramElement view = _newEdgesElements.iterator().next();
       EList<EObject> semanticElements = view.getSemanticElements();
+      int countChecks = 0;
       for (EObject semanticElement : semanticElements) {
-        if (semanticElement instanceof FunctionalExchange) {
+        if (exchangeToAdd != null && (semanticElement instanceof FunctionalExchange
+            || semanticElement instanceof ComponentExchange || semanticElement instanceof ExchangeItemAllocation)) {
           // and one of its semantic elements must be the added functional Exchange
-          FunctionalExchange feAdded = (FunctionalExchange) semanticElement;
-          assertEquals(failMessage, feToAdd, feAdded);
+          assertEquals(failMessage, exchangeToAdd, semanticElement);
+          countChecks++;
+        }
+        if (semanticElement instanceof SequenceMessage) {
+          countChecks++;
+        }
+        if (messageKind != null && semanticElement instanceof SequenceMessage) {
+          assertEquals("Message Kind unexpected", messageKind, ((SequenceMessage) semanticElement).getKind());
+          countChecks++;
+        }
+        if (countChecks == numCountChecks) {
           return;
         }
       }
     }
 
-    
     fail(failMessage);
+  }
+
+  private int getNoEdgesCreated() {
+    if (hasReturnBranch)
+      return 2;
+    return 1;
   }
 }

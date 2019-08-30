@@ -32,6 +32,7 @@ import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.fa.ComponentPortAllocation;
 import org.polarsys.capella.core.data.fa.FaFactory;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
+import org.polarsys.capella.core.data.helpers.cache.ModelCache;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionalExt;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
 import org.polarsys.capella.core.data.information.Partition;
@@ -49,6 +50,8 @@ import org.polarsys.capella.core.model.helpers.PortExt;
 import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
+
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 
 /**
  * This class is the <code>IExchangesCreator</code> implementation specific to node physical components.<br>
@@ -175,7 +178,7 @@ public class NodePhysicalComponentExchangesCreator extends DefaultExchangesCreat
                   //For all parts, find the deploying component
                   for (Partition partition : ((AbstractPhysicalComponent) container).getRepresentingPartitions()) {
                     if (partition instanceof Part) {
-                      for (DeploymentTarget deploying : PartExt.getDeployingElements((Part) partition)) {
+                      for (DeploymentTarget deploying : getCache(PartExt::getDeployingElements, (Part) partition)) {
                         if (deploying instanceof Part) {
                           Part deployingPart = (Part) deploying;
                           if ((deployingPart.getAbstractType() != null) && (deployingPart.getAbstractType() instanceof AbstractPhysicalComponent)) {

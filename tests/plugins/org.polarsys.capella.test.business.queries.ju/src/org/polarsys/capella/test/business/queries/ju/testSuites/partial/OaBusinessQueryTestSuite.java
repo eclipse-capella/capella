@@ -11,7 +11,6 @@
 package org.polarsys.capella.test.business.queries.ju.testSuites.partial;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import junit.framework.Test;
@@ -61,13 +60,9 @@ public class OaBusinessQueryTestSuite extends BasicTestSuite {
     tests.add(new OperationalCapability_InvolvedEntities());
     tests.add(new OperationalCapability_InvolvedOperationalProcess());
     tests.add(new OperationalProcess_AvailableInStates());
-    tests.add(new Role_AllocatedActivities());    
-    return tests;
-  }
+    tests.add(new Role_AllocatedActivities());
 
-  @Override
-  public List<String> getRequiredTestModels() {
-    return Arrays.asList("sysmodel");
+    return tests;
   }
 
 }

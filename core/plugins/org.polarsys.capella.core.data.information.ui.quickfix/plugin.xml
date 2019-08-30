@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
-  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  Copyright (c) 2018, 2019 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -195,6 +195,42 @@
             label="%quickFix.DWF_D_46.label">
          <rules
                ruleId="DWF_D_46">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.data.information.ui.quickfix.resolver.DeleteConstraintResolver"
+            desc="%quickFix.DWF_D_48_delconstraint.desc"
+            icon="icons/delete_element.gif"
+            label="%quickFix.DWF_D_48_delconstraint.label">
+         <rules
+               ruleId="DWF_D_48">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.data.information.ui.quickfix.resolver.CleanReferenceElementResolver"
+            desc="%quickFix.DWF_D_48_cleanDanglingReference.desc "
+            icon="icons/clear.gif"
+            label="%quickFix.DWF_D_48_cleanDanglingReference.label">
+         <rules
+               ruleId="DWF_D_48">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.data.information.ui.quickfix.resolver.EnumerationLiteralTypeResolver"
+            desc="%quickFix.DWF_D_56.desc"
+            icon="icons/search16.gif"
+            label="%quickFix.DWF_D_56.label">
+         <rules
+               ruleId="DWF_D_56">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.data.information.ui.quickfix.resolver.DWFD57Resolver"
+            desc="%quickFix.DWF_D_57.desc"
+            icon="icons/capella_process.gif"
+            label="%quickFix.DWF_D_57.label">
+         <rules
+               ruleId="DWF_D_57">
          </rules>
       </resolver>
    </extension>

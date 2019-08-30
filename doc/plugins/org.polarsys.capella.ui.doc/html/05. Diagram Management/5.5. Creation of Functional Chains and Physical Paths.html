@@ -1,7 +1,218 @@
-<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>5.5. Creation of Functional Chains and Physical Paths</title><link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/></head><body><h1 id="Creation_of_Functional_Chains_and_Physical_Paths">Creation of Functional Chains and Physical Paths</h1><h2 id="Functional_Chains_and_Operational_Processes">Functional Chains and Operational Processes</h2><p>On an existing dataflow diagram, select all the Functional Exchanges contributing to your Functional Chain.</p><table border="1"><tr><td><p><img height="45" width="45" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_m262394d3.png"/></p></td><td><ul><li>The selected elements must form a 					uninterrupted path of Functional Exchanges.</li><li>The path of selected elements 					shall only have two end, which means that it can be composed by 					only one branch.</li><li>Only 					Functional Exchanges must be selected.</li></ul></td></tr></table><p><br/>
-<br/></p><p><img height="300" width="900" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_3267dbc1.png"/></p><p>Using the contextual menu on this multiple selection, click on Functional Chain / Create a Functional Chain</p><p>A new Functional Chain is created and displayed.</p><p><img height="200" width="900" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_3e1821f9.png"/></p><p>If you want to edit a Functional Chain, you have to create a Functional Chain Description diagram. You can create this diagram from a Navigate command in the contextual menu from a Functional Chain.</p><p>A new diagram is created, representing your Functional Chain. What you see on this diagram are not Functions and Exchanges but Functional Chain Involvement elements. This is a essentially a &quot;working&quot; diagram.</p><p><img height="121" width="743" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_cd38218.png"/></p><p>On the following diagram, the tools of the palette have been used to include a new Function and new Exchanges so that we have a branch.</p><ul><li>The &ldquo;Involve Function&rdquo; tool simply adds a new element 	representing a Function. It is the responsibility of the user to add 	the necessary Functional Exchanges in order to form a complete 	Functional Chain.</li><li>The &ldquo;Involve Functional Exchange&rdquo; allows selecting a 	possible (already existing) Exchange between the selected source and 	target elements representing Functions.</li><li>The &ldquo;Involve Functional Chain&rdquo; tool adds a new element 	representing a Functional Chain. It is the responsibility of the 	user to add the necessary Functional Exchanges in order to form a 	complete Functional Chain.</li><li>The &ldquo;Involve Functional Exchange and Target Function&rdquo; is 	contextual to the selected source Function element: it allows 	creating at the same time both the elements representing an outgoing 	Exchange and the Target Function.</li><li>The &ldquo;Involve Functional Exchange and Target Functional Chain&rdquo; 	is contextual to the selected source Function element: it allows 	creating at the same time both the elements representing an outgoing 	Exchange and the Target Functional Chain.</li></ul><p><br/>
-<br/></p><p><img height="259" width="146" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_m447a782f.png"/></p><p><img height="200" width="900" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_mdab6cc9.png"/></p><p>On the dataflow diagram, the result is the following.</p><p><img height="200" width="900" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_6efdb628.png"/></p><p><br/>
-<br/></p><p><br/>
-<br/></p><h2 id="Physical_Paths">Physical Paths</h2><p>The same strategy applies for Physical Paths on System Architecture Blank and Logical Architecture Blank and Physical Architecture Blank diagrams.</p><table border="1"><tr><td><p><img height="45" width="45" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_m262394d3.png"/></p></td><td><ul><li>The selected elements must form a 					uninterrupted path of Physical Links.</li><li>This path shall only have two 					end, which means that it can be composed by only one branch.</li><li>Only 					Physical Links must be selected.</li></ul></td></tr></table><p><br/>
-<br/></p><p><img height="392" width="843" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_m5845eb00.png"/></p><p><img height="236" width="827" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_52c61c52.png"/></p><p>Corresponding Physical Path Description diagram.</p><p><img height="106" width="645" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_32613eaf.png"/></p><p><br/>
-<br/></p></body></html>
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>5.5. Creation of Functional Chains and Physical Paths</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="Creation_of_Functional_Chains_and_Physical_Paths">Creation of Functional Chains and Physical Paths</h1>
+		<h2 id="Functional_Chains_and_Operational_Processes">Functional Chains and Operational Processes</h2>
+		<p>On an existing dataflow diagram, select all the Functional Exchanges contributing to your Functional Chain.</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="45" width="45" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_m262394d3.png"/>
+					</p>
+				</td>
+				<td>
+					<ul>
+						<li>The selected elements must form a uninterrupted path of Functional Exchanges.</li>
+						<li>The path of selected elements shall only have two ends, which means that it can be composed by only one branch.</li>
+						<li>Only Functional Exchanges must be selected.</li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<p>
+			<img height="300" width="900" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_3267dbc1.png"/>
+		</p>
+		<p>Using the contextual menu on this multiple selection, click on Functional Chain / Create a Functional Chain</p>
+		<p>A new Functional Chain is created and displayed.</p>
+		<p>
+			<img height="200" width="900" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_3e1821f9.png"/>
+		</p>
+		<p>If you want to edit a Functional Chain, you have to create a Functional Chain Description diagram. You can create this diagram from a Navigate command in the contextual menu from a Functional Chain.</p>
+		<p>A new diagram is created, representing your Functional Chain. What you see on this diagram are not Functions and Exchanges but Functional Chain Involvement elements. There are 3 types of Involvements:</p>
+		<ul>
+			<li>Functional Chain Involvement Function: an involvement that references a Function.</li>
+			<li>Functional Chain Involvement Link: an involvement that references either a Functional Exchange or a Function (please refer to the  
+				<b>Assembling Functional Chains</b> section below for more information).
+			</li>
+			<li>Functional Reference: an involvement that references a Functional Chain.</li>
+		</ul>
+		<p>
+			<img width="700" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_cd38218.png"/>
+		</p>
+		<p>All the modifications done to the Functional Chain Description diagram are visible on the respective Dataflow Diagram as illustrated below:</p>
+		<pre> <img width="850" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_mdab6cc9.png"/>
+</pre>
+		<p>
+			<img height="200" width="900" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_6efdb628.png"/>
+		</p>
+		<p>For a complete overview of the available diagram tools you can consult these sections: </p>
+		<ul>
+			<li>
+				<a href="/wiki/../help/topic/org.polarsys.capella.diagrams.doc/html/Diagrams/diagrams.html?cp=6_3_18#Functional_Chain_Description" title="../help/topic/org.polarsys.capella.diagrams.doc/html/Diagrams/diagrams.html?cp=6_3_18#Functional_Chain_Description">Functional Chain Description Tools</a>
+			</li>
+			<li>
+				<a href="/wiki/../help/topic/org.polarsys.capella.diagrams.doc/html/Diagrams/diagrams.html?cp=6_3_36#Operational_Process_Description" title="../help/topic/org.polarsys.capella.diagrams.doc/html/Diagrams/diagrams.html?cp=6_3_36#Operational_Process_Description">Operational Process Description Tools</a>
+			</li>
+		</ul>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<h2 id="Sequencing_and_Control_concepts">Sequencing and Control concepts</h2>
+		<p>Functional Chain Description diagrams can be combined with Sequence Links and Control nodes in order to enriched them with additional sequencing information.</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="45" width="45" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_m262394d3.png"/>
+					</p>
+				</td>
+				<td>
+					<ul>
+						<li>Sequence Links express a precedence between the execution of the represented Functions.</li>
+						<li>A Sequence Link indicates that in the context of this Functional Chain, the source Function should operate before the target Function. More precisely, the target Function cannot produce its expected outputs before receiving the inputs produced by the source Function.</li>
+						<li>A Sequence Link has an optional triggering condition and can be combined with Control Nodes (OR, AND, ITERATE).</li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+		<pre> <img width="700" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_SL1.png"/>
+</pre>
+		<p>
+			<img width="800" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_SL2.png"/>
+		</p>
+		<p>The sequencing information can also be displayed in 
+			<b>xAB diagrams</b>. By default the associated elements are hidden, but they can be displayed by unchecking the 
+			<b>Hide Sequencing Information</b> filter.
+		</p>
+		<p>
+			<img width="900" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_XAB.png"/>
+		</p>
+		<p>For a complete overview of the available diagram tools you can consult these sections: </p>
+		<ul>
+			<li>
+				<a href="/wiki/../help/topic/org.polarsys.capella.diagrams.doc/html/Diagrams/diagrams.html?cp=6_3_18#Functional_Chain_Description" title="../help/topic/org.polarsys.capella.diagrams.doc/html/Diagrams/diagrams.html?cp=6_3_18#Functional_Chain_Description">Functional Chain Description Tools</a>.
+			</li>
+			<li>
+				<a href="/wiki/../help/topic/org.polarsys.capella.diagrams.doc/html/Diagrams/diagrams.html?cp=6_3_36#Operational_Process_Description" title="../help/topic/org.polarsys.capella.diagrams.doc/html/Diagrams/diagrams.html?cp=6_3_36#Operational_Process_Description">Operational Process Description Tools</a>.
+			</li>
+		</ul>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<h2 id="Assembling_Functional_Chains">Assembling Functional Chains</h2>
+		<p>Functional Chains can be assembled and reused in order to express more complex scenarios.</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="45" width="45" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_m262394d3.png"/>
+					</p>
+				</td>
+				<td>
+					<ul>
+						<li>Functional chains can be assembled through the means of a Functional Exchange. This implies that each Functional Chain contains a Involvement Function that can be used as source and target for a Involvement Link. The Involvement Functions are not necessarily required to be starting or ending.</li>
+						<li>Functional chains can be assembled through the means of a common Function. This implies that each Functional Chain contains a Involvement Function that references the same Function.</li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+		<h3 id="Assembling_Functional_Chains_by_using_a_Functional_Exchange">Assembling Functional Chains by using a Functional Exchange</h3>
+		<p>A example of two Functional Chains assembled through the means of the 
+			<b>Functional Exchange 2</b>.
+		</p>
+		<pre> <img width="750" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_FC1.png"/>
+</pre>
+		<h3 id="Assembling_Functional_Chains_by_using_a_common_Function">Assembling Functional Chains by using a common Function</h3>
+		<p>A example of two Functional Chains assembled through the means of the common 
+			<b>System Function 3</b>. Please note that the source and target of the connecting Involvement Link are two Involvement Functions that both reference 
+			<b>System Function 3</b>.
+		</p>
+		<p>
+			<img width="800" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_FC6.png"/>
+		</p>
+		<h3 id="Folding_Involved_Functional_Chains">Folding Involved Functional Chains</h3>
+		<p>Involved Functional Chains can be folded in order to hide their involvements. </p>
+		<p>In order to do so, you must first select the the region of the Functional chain (this displays a button in the top left corner), and then the 
+			<b>fold</b> button must be pressed as illustrated bellow.
+		</p>
+		<p>
+			<img width="800" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_FC2.png"/>
+		</p>
+		<p>Once the Functional Chain is folded, all the displayed Involvement Links and Sequence Links having as source or target the now hidden involvements will be displayed directly on the Functional Chain. Please note how the 
+			<b>Functional Exchange 2</b> edge has now as source the 
+			<b>Functional Chain 1</b> instead of the previous 
+			<b>System Function 2</b>.
+		</p>
+		<pre><img width="800" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_FC3.png"/>
+</pre>
+		<h3 id="Composite_Functional_Chains">Composite Functional Chains</h3>
+		<p>Functional Chains can be involved in other Functional Chains, and thus producing Composite Functional Chains. </p>
+		<p>Please note how 
+			<b>Functional Chain 1</b> and 
+			<b>Functional Chain 2</b> are involved in 
+			<b>Level2</b> which itself is involved in another Functional Chain.
+		</p>
+		<pre> <img width="1000" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_FC4.png"/>
+ <img width="600" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_FC5.png"/>
+</pre>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<h2 id="Physical_Paths">Physical Paths</h2>
+		<p>The same strategy applies for Physical Paths on System Architecture Blank and Logical Architecture Blank and Physical Architecture Blank diagrams.
+			Please note that Sequencing and Control concepts are not possible in this diagram.</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="45" width="45" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_m262394d3.png"/>
+					</p>
+				</td>
+				<td>
+					<ul>
+						<li>The selected elements must form a 					uninterrupted path of Physical Links.</li>
+						<li>This path shall only have two 					end, which means that it can be composed by only one branch.</li>
+						<li>Only 					Physical Links must be selected.</li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<p>
+			<img height="392" width="843" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_m5845eb00.png"/>
+		</p>
+		<p>
+			<img height="236" width="827" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_52c61c52.png"/>
+		</p>
+		<p>Corresponding Physical Path Description diagram.</p>
+		<p>
+			<img height="106" width="645" border="0" src="Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_32613eaf.png"/>
+		</p>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+	</body>
+</html>

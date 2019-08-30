@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,8 +20,11 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
@@ -38,15 +41,20 @@ import org.polarsys.capella.core.sirius.analysis.DiagramServices;
  * - if {@link RemoveHiddenElementsCommand#_doUnsynchronizeDiagrams} = false then only elements with "Not synchronized" mappings will be removed from diagrams.
  */
 public class RemoveHiddenElementsCommand extends AbstractReadWriteCommand implements ICommand {
-  private Collection<DRepresentation> representationsToClean;
+  private Collection<DRepresentationDescriptor> representationsToClean;
   private Logger _logger;
   private boolean _doUnsynchronizeDiagrams;
 
-  public RemoveHiddenElementsCommand(Collection<DRepresentation> representationsToRefresh_p, ExecutionManager executionManager,
+  public RemoveHiddenElementsCommand(Collection<DRepresentationDescriptor> representationsToRefresh_p, ExecutionManager executionManager,
       boolean doUnsynchronizeDiagrams_p) {
     representationsToClean = representationsToRefresh_p;
     _doUnsynchronizeDiagrams = doUnsynchronizeDiagrams_p;
 
+  }
+  
+  @Override
+  public String getName() {
+    return "Remove hidden elements";
   }
 
   /**
@@ -54,7 +62,7 @@ public class RemoveHiddenElementsCommand extends AbstractReadWriteCommand implem
    */
   @Override
   public void run() {
-    _logger = ReportManagerRegistry.getInstance().subscribe("Remove hidden elements"); //$NON-NLS-1$
+    _logger = ReportManagerRegistry.getInstance().subscribe(getName()); //$NON-NLS-1$
     deleteHidden(representationsToClean);
   }
 
@@ -62,8 +70,13 @@ public class RemoveHiddenElementsCommand extends AbstractReadWriteCommand implem
    * Removes non visible elements see {@link RemoveHiddenElementsCommand} Processes only diagrams
    * @param selection_p
    */
-  private void deleteHidden(Collection<DRepresentation> selection_p) {
-    for (DRepresentation representation : selection_p) {
+  private void deleteHidden(Collection<DRepresentationDescriptor> selection_p) {
+    for (DRepresentationDescriptor descriptor : selection_p) {
+      RepresentationDescription description = descriptor.getDescription();
+      if (!(description instanceof DiagramDescription)) {
+        continue;
+      }
+      DRepresentation representation = descriptor.getRepresentation();
       if (!(representation instanceof DDiagram)) {
         continue;
       }

@@ -52,6 +52,7 @@ public interface Type extends AbstractType, Namespace {
 	 * @return the value of the '<em>Typed Elements</em>' reference list.
 	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getType_TypedElements()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='abstractTypedElements'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the set of typed elements which eAttribute type value is the owner type.\r\n[source:Capella study]' constraints='None' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

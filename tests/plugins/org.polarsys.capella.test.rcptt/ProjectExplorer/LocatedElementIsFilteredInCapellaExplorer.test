@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _r_UEYOSgEeeF_6848eoV8Q
-Runtime-Version: 2.3.0.201712190725
-Save-Time: 1/23/18 2:29 PM
+Runtime-Version: 2.3.0.201803290557
+Save-Time: 6/26/18 10:07 AM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -15,16 +15,16 @@ Content-Type: text/ecl
 Entry-Name: .content
 
 get-button "View Menu" | click
-get-view "Capella Project Explorer" | get-menu -path "Customize View..." | click
-with [get-window "Available Customizations"] {
+get-view "Capella Project Explorer" | get-menu "Filters and Customization..." | click
+with [get-window "Filters and Customization"] {
     get-tab-folder | get-tab-item Filters | click
     get-editbox -after [get-label "Select the filters to apply (matching items will be hidden):"] | set-text comp
     get-table | select "Component Exchanges"
 }
-get-window "Available Customizations" | get-table | get-item -path "Component Exchanges" | get-property checked 
+get-window "Filters and Customization" | get-table | get-item -path "Component Exchanges" | get-property checked 
     | equals true | verify-true
     
-get-window "Available Customizations" | get-button OK | click
+get-window "Filters and Customization" | get-button OK | click
 with [get-view "Capella Project Explorer" | get-tree] {
     select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | double-click
     select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Logical Architecture/IFE System/\\[LAB\\] IFE System - All Components, CEs" 
@@ -77,12 +77,12 @@ get-view "Capella Project Explorer" | get-tree | get-item
     
 get-view "Capella Project Explorer" | click
 get-button "View Menu" | click
-get-view "Capella Project Explorer" | get-menu -path "Customize View..." | click
-with [get-window "Available Customizations"] {
+get-view "Capella Project Explorer" | get-menu "Filters and Customization..." | click
+with [get-window "Filters and Customization"] {
     get-tab-folder | get-tab-item Filters | click
     get-editbox -after [get-label "Select the filters to apply (matching items will be hidden):"] | set-text co
 }
-get-window "Available Customizations" | get-table | get-item -path "Component Exchanges" | get-property checked 
+get-window "Filters and Customization" | get-table | get-item -path "Component Exchanges" | get-property checked 
     | equals false | verify-true
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

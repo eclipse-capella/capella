@@ -94,10 +94,8 @@ public class SkeletonServicesImpl implements ISkeletonServices {
         // 4 - Builds the logical architecture structure skeleton.
         SystemFunction systemFunction = null;
         System system = null;
-        if (null != _currentCtxArchitectureCmd) {
-          systemFunction = _currentCtxArchitectureCmd.getSystemFunction();
-          system = _currentCtxArchitectureCmd.getSystem();
-        }
+        systemFunction = _currentCtxArchitectureCmd.getSystemFunction();
+        system = _currentCtxArchitectureCmd.getSystem();
 
         // Call the command allowing to create the logical architecture structure skeleton.
         _currentLogicalArchitectureCmd =
@@ -109,10 +107,8 @@ public class SkeletonServicesImpl implements ISkeletonServices {
         // 5 - Builds the physical architecture.
         LogicalComponent logicalComponent = null;
         LogicalFunction logicalFunction = null;
-        if (null != _currentLogicalArchitectureCmd) {
-          logicalComponent = _currentLogicalArchitectureCmd.getLogicalComponent();
-          logicalFunction = _currentLogicalArchitectureCmd.getLogicalFunction();
-        }
+        logicalComponent = _currentLogicalArchitectureCmd.getLogicalComponent();
+        logicalFunction = _currentLogicalArchitectureCmd.getLogicalFunction();
 
         // Call the command allowing to create the physical architecture structure skeleton.
         _currentPhysicalArchitectureCmd =

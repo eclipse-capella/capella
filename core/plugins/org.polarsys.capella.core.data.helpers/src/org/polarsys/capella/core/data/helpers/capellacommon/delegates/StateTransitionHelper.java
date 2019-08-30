@@ -54,7 +54,7 @@ public class StateTransitionHelper {
 	}
 
 	protected List<StateTransition> getRealizedStateTransitions(StateTransition element) {
-	  List<StateTransition> result = new ArrayList<StateTransition>();
+	  List<StateTransition> result = new ArrayList<>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof StateTransitionRealization) {
         StateTransition transition = ((StateTransitionRealization) trace).getRealizedStateTransition();
@@ -67,7 +67,7 @@ public class StateTransitionHelper {
 	}
 
   protected List<StateTransition> getRealizingStateTransitions(StateTransition element) {
-    List<StateTransition> result = new ArrayList<StateTransition>();
+    List<StateTransition> result = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof StateTransitionRealization) {
         StateTransition transition = ((StateTransitionRealization) trace).getRealizingStateTransition();

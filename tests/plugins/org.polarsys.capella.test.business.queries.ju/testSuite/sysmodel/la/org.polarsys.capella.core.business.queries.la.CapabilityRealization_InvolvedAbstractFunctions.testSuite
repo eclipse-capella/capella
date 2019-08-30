@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,64 +12,64 @@
 queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedAbstractFunctions-getAvailableElements
 inputId = 13ce6dbf-29e4-48a7-8ff6-9857d570a4c7
 resultIds = {
-    59a80d7b-28df-4442-88ed-45ef7337173b
-    8f5ed8da-5087-42a5-9a41-60fc0cced412
-    1baf12d4-c3c4-484a-9c72-f37227eb928a
-    3f009486-8a78-435e-b538-d24d5479027e
-    dc08ee20-0272-4a3e-975e-0d85c9c8a65d
-    c06cc01a-3c09-4e6c-ab29-26295b23e775
-    b448d9df-2f8c-42c4-9fbc-90b32d1cd7a9
-    06bf9abd-6e2c-4403-9330-65ed0d208533
-    6f21acec-ffcc-4fb3-8c9b-8670e3c51bad
-    e85d9b0f-b799-4ae3-a944-9f75e4e23857
-    b5281a1f-4ae4-404f-8353-e7dee54f70b8
-    6c66f0c6-d83b-4f20-9ab9-a55a6c85ac57
-    34bc42ff-368a-4dae-a083-f3ce53bb6fc4
-    4d8776f5-84c8-47fe-a3da-c5de63cd849b
-    e5c87b50-5d7c-4a69-bf4c-d79b63250e70
-    6ba2da72-b255-4373-b1ef-c48b123f60de
-    b0a9e47d-d249-483b-aa09-5ea9dd493218
-    984c37da-ebe1-42fe-a8ab-184584323d52
-    b8521b0d-bf72-4031-82a5-ed901ec20b28
-    d38b68fc-a581-46ee-a7a5-7f264d6be1ae
-    77c22251-67ee-4ad6-8af5-23705d367d89
-    e7862c4a-d1e4-4382-9d21-52e9d1c6eca4
-    d0dc038a-2008-4a5f-8aac-844ecd021f31
-    b1c81077-9ddc-4e5c-bcfc-49291b97ae9f
-    8bca056e-e62e-4325-9ca8-2528d0ce6a2a
-    6a3e4714-e532-4aca-ab84-4fee31d8983d
-    22466a04-e9a3-45da-a007-8a4578b7e215
-    5f36be0f-c918-4f32-9bba-ce392b998577
-    416f7f8d-016c-439e-a4de-2c859d9f49a3
-    7008e6cc-8ebf-4ecf-bfa0-e6e0c3a04973
-    392c6273-6fbc-4838-8eed-b43789d9aec8
-    67a38072-95eb-40fd-b32b-f0aee4ebd1af
-    9b358fe4-8295-4b77-9408-13f2b09bc037
-    b3e499f4-185c-4622-9019-bb71d1050911
-    a11f9249-3975-4cbf-b947-f0bd58e770f7
-    38b65759-f3d5-4647-b8c0-3f3d75d5d7de
-    651ccbf4-c826-402e-afef-f0410b04b5b1
-    12f435ca-e781-4994-9f56-c8f0499458f7
-    22525d47-7e67-48aa-bf2f-b0b114a6462a
-    63196a2b-775d-4465-aef8-fad148ad67a9
-    f17bc877-33c1-488b-a9dc-1e02ebe6d727
-    ccbf7ddb-2574-4d42-a40b-e0c1795d420c
     023201cd-0cc2-42b6-86f3-924ba45b655f
-    fb6e09aa-02c6-4aa5-b3b6-261135cb2c03
-    1c83be81-3332-4edc-896f-8b04e5a2d40f
-    4d3b01f0-34e4-4015-9fba-c994259b4022
-    831238db-dea6-4948-bcc4-742581d404b3
-    0efdaf9b-5e77-4322-97af-a48d2d7ec0fc
-    13325a9a-c51b-4187-8c35-099963e6269a
-    58f51167-6498-44f5-b5b4-6943712359ec
-    2063f5fe-60d2-44db-8a43-734d693fb402
-    62a61b78-73e7-47e7-9a23-6a0fb5b32419
-    83924beb-50f4-434a-ac28-2e1a3429ddbb
-    eacd4654-e941-4840-9525-fde712ba4c8b
-    ae850d5a-f49b-48d5-a4af-d5bc5a714555
-    142be261-1ab0-4703-852f-913108ccb27e
     0429de93-2fb0-44f6-a8d5-7e76f366beff
+    06bf9abd-6e2c-4403-9330-65ed0d208533
+    0efdaf9b-5e77-4322-97af-a48d2d7ec0fc
+    12f435ca-e781-4994-9f56-c8f0499458f7
+    13325a9a-c51b-4187-8c35-099963e6269a
+    142be261-1ab0-4703-852f-913108ccb27e
+    1baf12d4-c3c4-484a-9c72-f37227eb928a
+    1c83be81-3332-4edc-896f-8b04e5a2d40f
+    2063f5fe-60d2-44db-8a43-734d693fb402
+    22466a04-e9a3-45da-a007-8a4578b7e215
+    22525d47-7e67-48aa-bf2f-b0b114a6462a
     34530f7d-5bc7-439d-9663-abfa9ee561c4
+    34bc42ff-368a-4dae-a083-f3ce53bb6fc4
+    38b65759-f3d5-4647-b8c0-3f3d75d5d7de
+    392c6273-6fbc-4838-8eed-b43789d9aec8
+    3f009486-8a78-435e-b538-d24d5479027e
+    416f7f8d-016c-439e-a4de-2c859d9f49a3
+    4d3b01f0-34e4-4015-9fba-c994259b4022
+    4d8776f5-84c8-47fe-a3da-c5de63cd849b
+    58f51167-6498-44f5-b5b4-6943712359ec
+    59a80d7b-28df-4442-88ed-45ef7337173b
+    5f36be0f-c918-4f32-9bba-ce392b998577
+    62a61b78-73e7-47e7-9a23-6a0fb5b32419
+    63196a2b-775d-4465-aef8-fad148ad67a9
+    651ccbf4-c826-402e-afef-f0410b04b5b1
+    67a38072-95eb-40fd-b32b-f0aee4ebd1af
+    6a3e4714-e532-4aca-ab84-4fee31d8983d
+    6ba2da72-b255-4373-b1ef-c48b123f60de
+    6c66f0c6-d83b-4f20-9ab9-a55a6c85ac57
+    6f21acec-ffcc-4fb3-8c9b-8670e3c51bad
+    7008e6cc-8ebf-4ecf-bfa0-e6e0c3a04973
+    77c22251-67ee-4ad6-8af5-23705d367d89
+    831238db-dea6-4948-bcc4-742581d404b3
+    83924beb-50f4-434a-ac28-2e1a3429ddbb
+    8bca056e-e62e-4325-9ca8-2528d0ce6a2a
+    8f5ed8da-5087-42a5-9a41-60fc0cced412
+    984c37da-ebe1-42fe-a8ab-184584323d52
+    9b358fe4-8295-4b77-9408-13f2b09bc037
+    a11f9249-3975-4cbf-b947-f0bd58e770f7
+    ae850d5a-f49b-48d5-a4af-d5bc5a714555
+    b0a9e47d-d249-483b-aa09-5ea9dd493218
+    b1c81077-9ddc-4e5c-bcfc-49291b97ae9f
+    b3e499f4-185c-4622-9019-bb71d1050911
+    b448d9df-2f8c-42c4-9fbc-90b32d1cd7a9
+    b5281a1f-4ae4-404f-8353-e7dee54f70b8
+    b8521b0d-bf72-4031-82a5-ed901ec20b28
+    c06cc01a-3c09-4e6c-ab29-26295b23e775
+    ccbf7ddb-2574-4d42-a40b-e0c1795d420c
+    d0dc038a-2008-4a5f-8aac-844ecd021f31
+    d38b68fc-a581-46ee-a7a5-7f264d6be1ae
+    dc08ee20-0272-4a3e-975e-0d85c9c8a65d
+    e5c87b50-5d7c-4a69-bf4c-d79b63250e70
+    e7862c4a-d1e4-4382-9d21-52e9d1c6eca4
+    e85d9b0f-b799-4ae3-a944-9f75e4e23857
+    eacd4654-e941-4840-9525-fde712ba4c8b
+    f17bc877-33c1-488b-a9dc-1e02ebe6d727
+    fb6e09aa-02c6-4aa5-b3b6-261135cb2c03
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedAbstractFunctions-getCurrentElements
@@ -80,64 +80,64 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedAbstractFunctions-getAvailableElements
 inputId = dea98834-b408-4175-b93b-1139b1bf55b0
 resultIds = {
-    59a80d7b-28df-4442-88ed-45ef7337173b
-    8f5ed8da-5087-42a5-9a41-60fc0cced412
-    1baf12d4-c3c4-484a-9c72-f37227eb928a
-    3f009486-8a78-435e-b538-d24d5479027e
-    dc08ee20-0272-4a3e-975e-0d85c9c8a65d
-    c06cc01a-3c09-4e6c-ab29-26295b23e775
-    b448d9df-2f8c-42c4-9fbc-90b32d1cd7a9
-    06bf9abd-6e2c-4403-9330-65ed0d208533
-    6f21acec-ffcc-4fb3-8c9b-8670e3c51bad
-    e85d9b0f-b799-4ae3-a944-9f75e4e23857
-    b5281a1f-4ae4-404f-8353-e7dee54f70b8
-    6c66f0c6-d83b-4f20-9ab9-a55a6c85ac57
-    34bc42ff-368a-4dae-a083-f3ce53bb6fc4
-    4d8776f5-84c8-47fe-a3da-c5de63cd849b
-    e5c87b50-5d7c-4a69-bf4c-d79b63250e70
-    6ba2da72-b255-4373-b1ef-c48b123f60de
-    b0a9e47d-d249-483b-aa09-5ea9dd493218
-    984c37da-ebe1-42fe-a8ab-184584323d52
-    b8521b0d-bf72-4031-82a5-ed901ec20b28
-    d38b68fc-a581-46ee-a7a5-7f264d6be1ae
-    77c22251-67ee-4ad6-8af5-23705d367d89
-    e7862c4a-d1e4-4382-9d21-52e9d1c6eca4
-    d0dc038a-2008-4a5f-8aac-844ecd021f31
-    b1c81077-9ddc-4e5c-bcfc-49291b97ae9f
-    8bca056e-e62e-4325-9ca8-2528d0ce6a2a
-    6a3e4714-e532-4aca-ab84-4fee31d8983d
-    22466a04-e9a3-45da-a007-8a4578b7e215
-    5f36be0f-c918-4f32-9bba-ce392b998577
-    416f7f8d-016c-439e-a4de-2c859d9f49a3
-    7008e6cc-8ebf-4ecf-bfa0-e6e0c3a04973
-    392c6273-6fbc-4838-8eed-b43789d9aec8
-    67a38072-95eb-40fd-b32b-f0aee4ebd1af
-    9b358fe4-8295-4b77-9408-13f2b09bc037
-    b3e499f4-185c-4622-9019-bb71d1050911
-    a11f9249-3975-4cbf-b947-f0bd58e770f7
-    38b65759-f3d5-4647-b8c0-3f3d75d5d7de
-    651ccbf4-c826-402e-afef-f0410b04b5b1
-    12f435ca-e781-4994-9f56-c8f0499458f7
-    22525d47-7e67-48aa-bf2f-b0b114a6462a
-    63196a2b-775d-4465-aef8-fad148ad67a9
-    f17bc877-33c1-488b-a9dc-1e02ebe6d727
-    ccbf7ddb-2574-4d42-a40b-e0c1795d420c
     023201cd-0cc2-42b6-86f3-924ba45b655f
-    fb6e09aa-02c6-4aa5-b3b6-261135cb2c03
-    1c83be81-3332-4edc-896f-8b04e5a2d40f
-    4d3b01f0-34e4-4015-9fba-c994259b4022
-    831238db-dea6-4948-bcc4-742581d404b3
-    0efdaf9b-5e77-4322-97af-a48d2d7ec0fc
-    13325a9a-c51b-4187-8c35-099963e6269a
-    58f51167-6498-44f5-b5b4-6943712359ec
-    2063f5fe-60d2-44db-8a43-734d693fb402
-    62a61b78-73e7-47e7-9a23-6a0fb5b32419
-    83924beb-50f4-434a-ac28-2e1a3429ddbb
-    eacd4654-e941-4840-9525-fde712ba4c8b
-    ae850d5a-f49b-48d5-a4af-d5bc5a714555
-    142be261-1ab0-4703-852f-913108ccb27e
     0429de93-2fb0-44f6-a8d5-7e76f366beff
+    06bf9abd-6e2c-4403-9330-65ed0d208533
+    0efdaf9b-5e77-4322-97af-a48d2d7ec0fc
+    12f435ca-e781-4994-9f56-c8f0499458f7
+    13325a9a-c51b-4187-8c35-099963e6269a
+    142be261-1ab0-4703-852f-913108ccb27e
+    1baf12d4-c3c4-484a-9c72-f37227eb928a
+    1c83be81-3332-4edc-896f-8b04e5a2d40f
+    2063f5fe-60d2-44db-8a43-734d693fb402
+    22466a04-e9a3-45da-a007-8a4578b7e215
+    22525d47-7e67-48aa-bf2f-b0b114a6462a
     34530f7d-5bc7-439d-9663-abfa9ee561c4
+    34bc42ff-368a-4dae-a083-f3ce53bb6fc4
+    38b65759-f3d5-4647-b8c0-3f3d75d5d7de
+    392c6273-6fbc-4838-8eed-b43789d9aec8
+    3f009486-8a78-435e-b538-d24d5479027e
+    416f7f8d-016c-439e-a4de-2c859d9f49a3
+    4d3b01f0-34e4-4015-9fba-c994259b4022
+    4d8776f5-84c8-47fe-a3da-c5de63cd849b
+    58f51167-6498-44f5-b5b4-6943712359ec
+    59a80d7b-28df-4442-88ed-45ef7337173b
+    5f36be0f-c918-4f32-9bba-ce392b998577
+    62a61b78-73e7-47e7-9a23-6a0fb5b32419
+    63196a2b-775d-4465-aef8-fad148ad67a9
+    651ccbf4-c826-402e-afef-f0410b04b5b1
+    67a38072-95eb-40fd-b32b-f0aee4ebd1af
+    6a3e4714-e532-4aca-ab84-4fee31d8983d
+    6ba2da72-b255-4373-b1ef-c48b123f60de
+    6c66f0c6-d83b-4f20-9ab9-a55a6c85ac57
+    6f21acec-ffcc-4fb3-8c9b-8670e3c51bad
+    7008e6cc-8ebf-4ecf-bfa0-e6e0c3a04973
+    77c22251-67ee-4ad6-8af5-23705d367d89
+    831238db-dea6-4948-bcc4-742581d404b3
+    83924beb-50f4-434a-ac28-2e1a3429ddbb
+    8bca056e-e62e-4325-9ca8-2528d0ce6a2a
+    8f5ed8da-5087-42a5-9a41-60fc0cced412
+    984c37da-ebe1-42fe-a8ab-184584323d52
+    9b358fe4-8295-4b77-9408-13f2b09bc037
+    a11f9249-3975-4cbf-b947-f0bd58e770f7
+    ae850d5a-f49b-48d5-a4af-d5bc5a714555
+    b0a9e47d-d249-483b-aa09-5ea9dd493218
+    b1c81077-9ddc-4e5c-bcfc-49291b97ae9f
+    b3e499f4-185c-4622-9019-bb71d1050911
+    b448d9df-2f8c-42c4-9fbc-90b32d1cd7a9
+    b5281a1f-4ae4-404f-8353-e7dee54f70b8
+    b8521b0d-bf72-4031-82a5-ed901ec20b28
+    c06cc01a-3c09-4e6c-ab29-26295b23e775
+    ccbf7ddb-2574-4d42-a40b-e0c1795d420c
+    d0dc038a-2008-4a5f-8aac-844ecd021f31
+    d38b68fc-a581-46ee-a7a5-7f264d6be1ae
+    dc08ee20-0272-4a3e-975e-0d85c9c8a65d
+    e5c87b50-5d7c-4a69-bf4c-d79b63250e70
+    e7862c4a-d1e4-4382-9d21-52e9d1c6eca4
+    e85d9b0f-b799-4ae3-a944-9f75e4e23857
+    eacd4654-e941-4840-9525-fde712ba4c8b
+    f17bc877-33c1-488b-a9dc-1e02ebe6d727
+    fb6e09aa-02c6-4aa5-b3b6-261135cb2c03
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedAbstractFunctions-getCurrentElements
@@ -148,64 +148,64 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedAbstractFunctions-getAvailableElements
 inputId = a7696e8d-410d-4b58-94b9-fb306af2000b
 resultIds = {
-    59a80d7b-28df-4442-88ed-45ef7337173b
-    8f5ed8da-5087-42a5-9a41-60fc0cced412
-    1baf12d4-c3c4-484a-9c72-f37227eb928a
-    3f009486-8a78-435e-b538-d24d5479027e
-    dc08ee20-0272-4a3e-975e-0d85c9c8a65d
-    c06cc01a-3c09-4e6c-ab29-26295b23e775
-    b448d9df-2f8c-42c4-9fbc-90b32d1cd7a9
-    06bf9abd-6e2c-4403-9330-65ed0d208533
-    6f21acec-ffcc-4fb3-8c9b-8670e3c51bad
-    e85d9b0f-b799-4ae3-a944-9f75e4e23857
-    b5281a1f-4ae4-404f-8353-e7dee54f70b8
-    6c66f0c6-d83b-4f20-9ab9-a55a6c85ac57
-    34bc42ff-368a-4dae-a083-f3ce53bb6fc4
-    4d8776f5-84c8-47fe-a3da-c5de63cd849b
-    e5c87b50-5d7c-4a69-bf4c-d79b63250e70
-    6ba2da72-b255-4373-b1ef-c48b123f60de
-    b0a9e47d-d249-483b-aa09-5ea9dd493218
-    984c37da-ebe1-42fe-a8ab-184584323d52
-    b8521b0d-bf72-4031-82a5-ed901ec20b28
-    d38b68fc-a581-46ee-a7a5-7f264d6be1ae
-    77c22251-67ee-4ad6-8af5-23705d367d89
-    e7862c4a-d1e4-4382-9d21-52e9d1c6eca4
-    d0dc038a-2008-4a5f-8aac-844ecd021f31
-    b1c81077-9ddc-4e5c-bcfc-49291b97ae9f
-    8bca056e-e62e-4325-9ca8-2528d0ce6a2a
-    6a3e4714-e532-4aca-ab84-4fee31d8983d
-    22466a04-e9a3-45da-a007-8a4578b7e215
-    5f36be0f-c918-4f32-9bba-ce392b998577
-    416f7f8d-016c-439e-a4de-2c859d9f49a3
-    7008e6cc-8ebf-4ecf-bfa0-e6e0c3a04973
-    392c6273-6fbc-4838-8eed-b43789d9aec8
-    67a38072-95eb-40fd-b32b-f0aee4ebd1af
-    9b358fe4-8295-4b77-9408-13f2b09bc037
-    b3e499f4-185c-4622-9019-bb71d1050911
-    a11f9249-3975-4cbf-b947-f0bd58e770f7
-    38b65759-f3d5-4647-b8c0-3f3d75d5d7de
-    651ccbf4-c826-402e-afef-f0410b04b5b1
-    12f435ca-e781-4994-9f56-c8f0499458f7
-    22525d47-7e67-48aa-bf2f-b0b114a6462a
-    63196a2b-775d-4465-aef8-fad148ad67a9
-    f17bc877-33c1-488b-a9dc-1e02ebe6d727
-    ccbf7ddb-2574-4d42-a40b-e0c1795d420c
     023201cd-0cc2-42b6-86f3-924ba45b655f
-    fb6e09aa-02c6-4aa5-b3b6-261135cb2c03
-    1c83be81-3332-4edc-896f-8b04e5a2d40f
-    4d3b01f0-34e4-4015-9fba-c994259b4022
-    831238db-dea6-4948-bcc4-742581d404b3
-    0efdaf9b-5e77-4322-97af-a48d2d7ec0fc
-    13325a9a-c51b-4187-8c35-099963e6269a
-    58f51167-6498-44f5-b5b4-6943712359ec
-    2063f5fe-60d2-44db-8a43-734d693fb402
-    62a61b78-73e7-47e7-9a23-6a0fb5b32419
-    83924beb-50f4-434a-ac28-2e1a3429ddbb
-    eacd4654-e941-4840-9525-fde712ba4c8b
-    ae850d5a-f49b-48d5-a4af-d5bc5a714555
-    142be261-1ab0-4703-852f-913108ccb27e
     0429de93-2fb0-44f6-a8d5-7e76f366beff
+    06bf9abd-6e2c-4403-9330-65ed0d208533
+    0efdaf9b-5e77-4322-97af-a48d2d7ec0fc
+    12f435ca-e781-4994-9f56-c8f0499458f7
+    13325a9a-c51b-4187-8c35-099963e6269a
+    142be261-1ab0-4703-852f-913108ccb27e
+    1baf12d4-c3c4-484a-9c72-f37227eb928a
+    1c83be81-3332-4edc-896f-8b04e5a2d40f
+    2063f5fe-60d2-44db-8a43-734d693fb402
+    22466a04-e9a3-45da-a007-8a4578b7e215
+    22525d47-7e67-48aa-bf2f-b0b114a6462a
     34530f7d-5bc7-439d-9663-abfa9ee561c4
+    34bc42ff-368a-4dae-a083-f3ce53bb6fc4
+    38b65759-f3d5-4647-b8c0-3f3d75d5d7de
+    392c6273-6fbc-4838-8eed-b43789d9aec8
+    3f009486-8a78-435e-b538-d24d5479027e
+    416f7f8d-016c-439e-a4de-2c859d9f49a3
+    4d3b01f0-34e4-4015-9fba-c994259b4022
+    4d8776f5-84c8-47fe-a3da-c5de63cd849b
+    58f51167-6498-44f5-b5b4-6943712359ec
+    59a80d7b-28df-4442-88ed-45ef7337173b
+    5f36be0f-c918-4f32-9bba-ce392b998577
+    62a61b78-73e7-47e7-9a23-6a0fb5b32419
+    63196a2b-775d-4465-aef8-fad148ad67a9
+    651ccbf4-c826-402e-afef-f0410b04b5b1
+    67a38072-95eb-40fd-b32b-f0aee4ebd1af
+    6a3e4714-e532-4aca-ab84-4fee31d8983d
+    6ba2da72-b255-4373-b1ef-c48b123f60de
+    6c66f0c6-d83b-4f20-9ab9-a55a6c85ac57
+    6f21acec-ffcc-4fb3-8c9b-8670e3c51bad
+    7008e6cc-8ebf-4ecf-bfa0-e6e0c3a04973
+    77c22251-67ee-4ad6-8af5-23705d367d89
+    831238db-dea6-4948-bcc4-742581d404b3
+    83924beb-50f4-434a-ac28-2e1a3429ddbb
+    8bca056e-e62e-4325-9ca8-2528d0ce6a2a
+    8f5ed8da-5087-42a5-9a41-60fc0cced412
+    984c37da-ebe1-42fe-a8ab-184584323d52
+    9b358fe4-8295-4b77-9408-13f2b09bc037
+    a11f9249-3975-4cbf-b947-f0bd58e770f7
+    ae850d5a-f49b-48d5-a4af-d5bc5a714555
+    b0a9e47d-d249-483b-aa09-5ea9dd493218
+    b1c81077-9ddc-4e5c-bcfc-49291b97ae9f
+    b3e499f4-185c-4622-9019-bb71d1050911
+    b448d9df-2f8c-42c4-9fbc-90b32d1cd7a9
+    b5281a1f-4ae4-404f-8353-e7dee54f70b8
+    b8521b0d-bf72-4031-82a5-ed901ec20b28
+    c06cc01a-3c09-4e6c-ab29-26295b23e775
+    ccbf7ddb-2574-4d42-a40b-e0c1795d420c
+    d0dc038a-2008-4a5f-8aac-844ecd021f31
+    d38b68fc-a581-46ee-a7a5-7f264d6be1ae
+    dc08ee20-0272-4a3e-975e-0d85c9c8a65d
+    e5c87b50-5d7c-4a69-bf4c-d79b63250e70
+    e7862c4a-d1e4-4382-9d21-52e9d1c6eca4
+    e85d9b0f-b799-4ae3-a944-9f75e4e23857
+    eacd4654-e941-4840-9525-fde712ba4c8b
+    f17bc877-33c1-488b-a9dc-1e02ebe6d727
+    fb6e09aa-02c6-4aa5-b3b6-261135cb2c03
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedAbstractFunctions-getCurrentElements
@@ -216,64 +216,64 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedAbstractFunctions-getAvailableElements
 inputId = 9c749b58-6a1a-465c-9e94-e184229355f2
 resultIds = {
-    59a80d7b-28df-4442-88ed-45ef7337173b
-    8f5ed8da-5087-42a5-9a41-60fc0cced412
-    1baf12d4-c3c4-484a-9c72-f37227eb928a
-    3f009486-8a78-435e-b538-d24d5479027e
-    dc08ee20-0272-4a3e-975e-0d85c9c8a65d
-    c06cc01a-3c09-4e6c-ab29-26295b23e775
-    b448d9df-2f8c-42c4-9fbc-90b32d1cd7a9
-    06bf9abd-6e2c-4403-9330-65ed0d208533
-    6f21acec-ffcc-4fb3-8c9b-8670e3c51bad
-    e85d9b0f-b799-4ae3-a944-9f75e4e23857
-    b5281a1f-4ae4-404f-8353-e7dee54f70b8
-    6c66f0c6-d83b-4f20-9ab9-a55a6c85ac57
-    34bc42ff-368a-4dae-a083-f3ce53bb6fc4
-    4d8776f5-84c8-47fe-a3da-c5de63cd849b
-    e5c87b50-5d7c-4a69-bf4c-d79b63250e70
-    6ba2da72-b255-4373-b1ef-c48b123f60de
-    b0a9e47d-d249-483b-aa09-5ea9dd493218
-    984c37da-ebe1-42fe-a8ab-184584323d52
-    b8521b0d-bf72-4031-82a5-ed901ec20b28
-    d38b68fc-a581-46ee-a7a5-7f264d6be1ae
-    77c22251-67ee-4ad6-8af5-23705d367d89
-    e7862c4a-d1e4-4382-9d21-52e9d1c6eca4
-    d0dc038a-2008-4a5f-8aac-844ecd021f31
-    b1c81077-9ddc-4e5c-bcfc-49291b97ae9f
-    8bca056e-e62e-4325-9ca8-2528d0ce6a2a
-    6a3e4714-e532-4aca-ab84-4fee31d8983d
-    22466a04-e9a3-45da-a007-8a4578b7e215
-    5f36be0f-c918-4f32-9bba-ce392b998577
-    416f7f8d-016c-439e-a4de-2c859d9f49a3
-    7008e6cc-8ebf-4ecf-bfa0-e6e0c3a04973
-    392c6273-6fbc-4838-8eed-b43789d9aec8
-    67a38072-95eb-40fd-b32b-f0aee4ebd1af
-    9b358fe4-8295-4b77-9408-13f2b09bc037
-    b3e499f4-185c-4622-9019-bb71d1050911
-    a11f9249-3975-4cbf-b947-f0bd58e770f7
-    38b65759-f3d5-4647-b8c0-3f3d75d5d7de
-    651ccbf4-c826-402e-afef-f0410b04b5b1
-    12f435ca-e781-4994-9f56-c8f0499458f7
-    22525d47-7e67-48aa-bf2f-b0b114a6462a
-    63196a2b-775d-4465-aef8-fad148ad67a9
-    f17bc877-33c1-488b-a9dc-1e02ebe6d727
-    ccbf7ddb-2574-4d42-a40b-e0c1795d420c
     023201cd-0cc2-42b6-86f3-924ba45b655f
-    fb6e09aa-02c6-4aa5-b3b6-261135cb2c03
-    1c83be81-3332-4edc-896f-8b04e5a2d40f
-    4d3b01f0-34e4-4015-9fba-c994259b4022
-    831238db-dea6-4948-bcc4-742581d404b3
-    0efdaf9b-5e77-4322-97af-a48d2d7ec0fc
-    13325a9a-c51b-4187-8c35-099963e6269a
-    58f51167-6498-44f5-b5b4-6943712359ec
-    2063f5fe-60d2-44db-8a43-734d693fb402
-    62a61b78-73e7-47e7-9a23-6a0fb5b32419
-    83924beb-50f4-434a-ac28-2e1a3429ddbb
-    eacd4654-e941-4840-9525-fde712ba4c8b
-    ae850d5a-f49b-48d5-a4af-d5bc5a714555
-    142be261-1ab0-4703-852f-913108ccb27e
     0429de93-2fb0-44f6-a8d5-7e76f366beff
+    06bf9abd-6e2c-4403-9330-65ed0d208533
+    0efdaf9b-5e77-4322-97af-a48d2d7ec0fc
+    12f435ca-e781-4994-9f56-c8f0499458f7
+    13325a9a-c51b-4187-8c35-099963e6269a
+    142be261-1ab0-4703-852f-913108ccb27e
+    1baf12d4-c3c4-484a-9c72-f37227eb928a
+    1c83be81-3332-4edc-896f-8b04e5a2d40f
+    2063f5fe-60d2-44db-8a43-734d693fb402
+    22466a04-e9a3-45da-a007-8a4578b7e215
+    22525d47-7e67-48aa-bf2f-b0b114a6462a
     34530f7d-5bc7-439d-9663-abfa9ee561c4
+    34bc42ff-368a-4dae-a083-f3ce53bb6fc4
+    38b65759-f3d5-4647-b8c0-3f3d75d5d7de
+    392c6273-6fbc-4838-8eed-b43789d9aec8
+    3f009486-8a78-435e-b538-d24d5479027e
+    416f7f8d-016c-439e-a4de-2c859d9f49a3
+    4d3b01f0-34e4-4015-9fba-c994259b4022
+    4d8776f5-84c8-47fe-a3da-c5de63cd849b
+    58f51167-6498-44f5-b5b4-6943712359ec
+    59a80d7b-28df-4442-88ed-45ef7337173b
+    5f36be0f-c918-4f32-9bba-ce392b998577
+    62a61b78-73e7-47e7-9a23-6a0fb5b32419
+    63196a2b-775d-4465-aef8-fad148ad67a9
+    651ccbf4-c826-402e-afef-f0410b04b5b1
+    67a38072-95eb-40fd-b32b-f0aee4ebd1af
+    6a3e4714-e532-4aca-ab84-4fee31d8983d
+    6ba2da72-b255-4373-b1ef-c48b123f60de
+    6c66f0c6-d83b-4f20-9ab9-a55a6c85ac57
+    6f21acec-ffcc-4fb3-8c9b-8670e3c51bad
+    7008e6cc-8ebf-4ecf-bfa0-e6e0c3a04973
+    77c22251-67ee-4ad6-8af5-23705d367d89
+    831238db-dea6-4948-bcc4-742581d404b3
+    83924beb-50f4-434a-ac28-2e1a3429ddbb
+    8bca056e-e62e-4325-9ca8-2528d0ce6a2a
+    8f5ed8da-5087-42a5-9a41-60fc0cced412
+    984c37da-ebe1-42fe-a8ab-184584323d52
+    9b358fe4-8295-4b77-9408-13f2b09bc037
+    a11f9249-3975-4cbf-b947-f0bd58e770f7
+    ae850d5a-f49b-48d5-a4af-d5bc5a714555
+    b0a9e47d-d249-483b-aa09-5ea9dd493218
+    b1c81077-9ddc-4e5c-bcfc-49291b97ae9f
+    b3e499f4-185c-4622-9019-bb71d1050911
+    b448d9df-2f8c-42c4-9fbc-90b32d1cd7a9
+    b5281a1f-4ae4-404f-8353-e7dee54f70b8
+    b8521b0d-bf72-4031-82a5-ed901ec20b28
+    c06cc01a-3c09-4e6c-ab29-26295b23e775
+    ccbf7ddb-2574-4d42-a40b-e0c1795d420c
+    d0dc038a-2008-4a5f-8aac-844ecd021f31
+    d38b68fc-a581-46ee-a7a5-7f264d6be1ae
+    dc08ee20-0272-4a3e-975e-0d85c9c8a65d
+    e5c87b50-5d7c-4a69-bf4c-d79b63250e70
+    e7862c4a-d1e4-4382-9d21-52e9d1c6eca4
+    e85d9b0f-b799-4ae3-a944-9f75e4e23857
+    eacd4654-e941-4840-9525-fde712ba4c8b
+    f17bc877-33c1-488b-a9dc-1e02ebe6d727
+    fb6e09aa-02c6-4aa5-b3b6-261135cb2c03
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedAbstractFunctions-getCurrentElements
@@ -284,64 +284,64 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedAbstractFunctions-getAvailableElements
 inputId = 1e8b6132-a356-45d8-97cd-9a6bdcd5d768
 resultIds = {
-    59a80d7b-28df-4442-88ed-45ef7337173b
-    8f5ed8da-5087-42a5-9a41-60fc0cced412
-    1baf12d4-c3c4-484a-9c72-f37227eb928a
-    3f009486-8a78-435e-b538-d24d5479027e
-    dc08ee20-0272-4a3e-975e-0d85c9c8a65d
-    c06cc01a-3c09-4e6c-ab29-26295b23e775
-    b448d9df-2f8c-42c4-9fbc-90b32d1cd7a9
-    06bf9abd-6e2c-4403-9330-65ed0d208533
-    6f21acec-ffcc-4fb3-8c9b-8670e3c51bad
-    e85d9b0f-b799-4ae3-a944-9f75e4e23857
-    b5281a1f-4ae4-404f-8353-e7dee54f70b8
-    6c66f0c6-d83b-4f20-9ab9-a55a6c85ac57
-    34bc42ff-368a-4dae-a083-f3ce53bb6fc4
-    4d8776f5-84c8-47fe-a3da-c5de63cd849b
-    e5c87b50-5d7c-4a69-bf4c-d79b63250e70
-    6ba2da72-b255-4373-b1ef-c48b123f60de
-    b0a9e47d-d249-483b-aa09-5ea9dd493218
-    984c37da-ebe1-42fe-a8ab-184584323d52
-    b8521b0d-bf72-4031-82a5-ed901ec20b28
-    d38b68fc-a581-46ee-a7a5-7f264d6be1ae
-    77c22251-67ee-4ad6-8af5-23705d367d89
-    e7862c4a-d1e4-4382-9d21-52e9d1c6eca4
-    d0dc038a-2008-4a5f-8aac-844ecd021f31
-    b1c81077-9ddc-4e5c-bcfc-49291b97ae9f
-    8bca056e-e62e-4325-9ca8-2528d0ce6a2a
-    6a3e4714-e532-4aca-ab84-4fee31d8983d
-    22466a04-e9a3-45da-a007-8a4578b7e215
-    5f36be0f-c918-4f32-9bba-ce392b998577
-    416f7f8d-016c-439e-a4de-2c859d9f49a3
-    7008e6cc-8ebf-4ecf-bfa0-e6e0c3a04973
-    392c6273-6fbc-4838-8eed-b43789d9aec8
-    67a38072-95eb-40fd-b32b-f0aee4ebd1af
-    9b358fe4-8295-4b77-9408-13f2b09bc037
-    b3e499f4-185c-4622-9019-bb71d1050911
-    a11f9249-3975-4cbf-b947-f0bd58e770f7
-    38b65759-f3d5-4647-b8c0-3f3d75d5d7de
-    651ccbf4-c826-402e-afef-f0410b04b5b1
-    12f435ca-e781-4994-9f56-c8f0499458f7
-    22525d47-7e67-48aa-bf2f-b0b114a6462a
-    63196a2b-775d-4465-aef8-fad148ad67a9
-    f17bc877-33c1-488b-a9dc-1e02ebe6d727
-    ccbf7ddb-2574-4d42-a40b-e0c1795d420c
     023201cd-0cc2-42b6-86f3-924ba45b655f
-    fb6e09aa-02c6-4aa5-b3b6-261135cb2c03
-    1c83be81-3332-4edc-896f-8b04e5a2d40f
-    4d3b01f0-34e4-4015-9fba-c994259b4022
-    831238db-dea6-4948-bcc4-742581d404b3
-    0efdaf9b-5e77-4322-97af-a48d2d7ec0fc
-    13325a9a-c51b-4187-8c35-099963e6269a
-    58f51167-6498-44f5-b5b4-6943712359ec
-    2063f5fe-60d2-44db-8a43-734d693fb402
-    62a61b78-73e7-47e7-9a23-6a0fb5b32419
-    83924beb-50f4-434a-ac28-2e1a3429ddbb
-    eacd4654-e941-4840-9525-fde712ba4c8b
-    ae850d5a-f49b-48d5-a4af-d5bc5a714555
-    142be261-1ab0-4703-852f-913108ccb27e
     0429de93-2fb0-44f6-a8d5-7e76f366beff
+    06bf9abd-6e2c-4403-9330-65ed0d208533
+    0efdaf9b-5e77-4322-97af-a48d2d7ec0fc
+    12f435ca-e781-4994-9f56-c8f0499458f7
+    13325a9a-c51b-4187-8c35-099963e6269a
+    142be261-1ab0-4703-852f-913108ccb27e
+    1baf12d4-c3c4-484a-9c72-f37227eb928a
+    1c83be81-3332-4edc-896f-8b04e5a2d40f
+    2063f5fe-60d2-44db-8a43-734d693fb402
+    22466a04-e9a3-45da-a007-8a4578b7e215
+    22525d47-7e67-48aa-bf2f-b0b114a6462a
     34530f7d-5bc7-439d-9663-abfa9ee561c4
+    34bc42ff-368a-4dae-a083-f3ce53bb6fc4
+    38b65759-f3d5-4647-b8c0-3f3d75d5d7de
+    392c6273-6fbc-4838-8eed-b43789d9aec8
+    3f009486-8a78-435e-b538-d24d5479027e
+    416f7f8d-016c-439e-a4de-2c859d9f49a3
+    4d3b01f0-34e4-4015-9fba-c994259b4022
+    4d8776f5-84c8-47fe-a3da-c5de63cd849b
+    58f51167-6498-44f5-b5b4-6943712359ec
+    59a80d7b-28df-4442-88ed-45ef7337173b
+    5f36be0f-c918-4f32-9bba-ce392b998577
+    62a61b78-73e7-47e7-9a23-6a0fb5b32419
+    63196a2b-775d-4465-aef8-fad148ad67a9
+    651ccbf4-c826-402e-afef-f0410b04b5b1
+    67a38072-95eb-40fd-b32b-f0aee4ebd1af
+    6a3e4714-e532-4aca-ab84-4fee31d8983d
+    6ba2da72-b255-4373-b1ef-c48b123f60de
+    6c66f0c6-d83b-4f20-9ab9-a55a6c85ac57
+    6f21acec-ffcc-4fb3-8c9b-8670e3c51bad
+    7008e6cc-8ebf-4ecf-bfa0-e6e0c3a04973
+    77c22251-67ee-4ad6-8af5-23705d367d89
+    831238db-dea6-4948-bcc4-742581d404b3
+    83924beb-50f4-434a-ac28-2e1a3429ddbb
+    8bca056e-e62e-4325-9ca8-2528d0ce6a2a
+    8f5ed8da-5087-42a5-9a41-60fc0cced412
+    984c37da-ebe1-42fe-a8ab-184584323d52
+    9b358fe4-8295-4b77-9408-13f2b09bc037
+    a11f9249-3975-4cbf-b947-f0bd58e770f7
+    ae850d5a-f49b-48d5-a4af-d5bc5a714555
+    b0a9e47d-d249-483b-aa09-5ea9dd493218
+    b1c81077-9ddc-4e5c-bcfc-49291b97ae9f
+    b3e499f4-185c-4622-9019-bb71d1050911
+    b448d9df-2f8c-42c4-9fbc-90b32d1cd7a9
+    b5281a1f-4ae4-404f-8353-e7dee54f70b8
+    b8521b0d-bf72-4031-82a5-ed901ec20b28
+    c06cc01a-3c09-4e6c-ab29-26295b23e775
+    ccbf7ddb-2574-4d42-a40b-e0c1795d420c
+    d0dc038a-2008-4a5f-8aac-844ecd021f31
+    d38b68fc-a581-46ee-a7a5-7f264d6be1ae
+    dc08ee20-0272-4a3e-975e-0d85c9c8a65d
+    e5c87b50-5d7c-4a69-bf4c-d79b63250e70
+    e7862c4a-d1e4-4382-9d21-52e9d1c6eca4
+    e85d9b0f-b799-4ae3-a944-9f75e4e23857
+    eacd4654-e941-4840-9525-fde712ba4c8b
+    f17bc877-33c1-488b-a9dc-1e02ebe6d727
+    fb6e09aa-02c6-4aa5-b3b6-261135cb2c03
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedAbstractFunctions-getCurrentElements
@@ -352,40 +352,40 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedAbstractFunctions-getAvailableElements
 inputId = 33c70287-af33-40f6-aa33-7f767c5e9044
 resultIds = {
-    250d520b-e135-4089-97fc-83d502dd6d44
-    809ace3a-9e5f-40ef-8115-dc470ae520f5
-    fb1f8a6d-5cd3-44d8-9fb1-d48a390a61b0
-    ae3a003c-8d81-4fc2-a31d-67d9e5f5de72
-    c10b94df-cdac-4f26-8c14-02f509d7180e
-    b791c174-6163-4036-8fc3-a1a794b7897d
-    96b97474-1741-4384-8d38-f1735e52dffa
-    ad5c7d7a-20bd-449c-9ce3-4e8d322d9766
-    eac7063c-f6f5-4b2f-a126-69fefda8abf7
-    05810477-afd5-4b91-a73d-ccacc70b8437
-    52f2881c-494f-4dbf-9d10-c59487fa8831
     03b13e70-c7eb-4b2f-a8a6-1cf51e10516a
-    295b01a9-d090-43fc-8c56-5ea43ed3b078
-    6d214b1f-d597-4372-a589-3fb27b420869
-    e921bac7-94d3-4531-b1fe-3fa1498d5c27
-    691f8dfa-1984-4d2e-a29d-735103a1dbd9
-    d7be5024-b47b-4029-a4ef-32bfde6db9e0
-    f5b67d93-3e97-4815-8901-9f78e275a1bd
-    b237cd8f-ce19-41b0-bed7-f87e58ab5ca2
-    f631f66a-256a-4dc8-bdb9-be00366a0aaa
-    739d8b55-0a37-4539-ae81-b83862461d7f
-    2e3ab259-fc25-486b-a8e1-44b377694215
-    e29421bb-a541-49a6-b087-c1ea0e284e18
-    5ff5208c-ed22-46ea-86b9-12a9c435c490
+    05810477-afd5-4b91-a73d-ccacc70b8437
     09673c82-026b-4992-8b8e-1acc6bd8c299
-    5f99fd56-795a-40e5-81c8-60add70f6b37
-    224ba7d5-be51-4181-ad51-6add83606008
-    6589a6eb-b788-41db-aeb6-950ef147a49e
-    b0da5afd-e5ef-4392-bece-0e4b96ee31c7
-    6babe4e4-3fd9-4f77-be93-ff4deef6d727
-    c05d3c95-c069-4076-a851-ee7923bcf1a2
     159d483a-d343-4003-a17d-e3a05bce7031
-    97c76ee2-0e5a-49e5-a7ad-dacea2fe0f7f
     16b37377-609c-4dd6-a92b-964f817ab599
+    224ba7d5-be51-4181-ad51-6add83606008
+    250d520b-e135-4089-97fc-83d502dd6d44
+    295b01a9-d090-43fc-8c56-5ea43ed3b078
+    2e3ab259-fc25-486b-a8e1-44b377694215
+    52f2881c-494f-4dbf-9d10-c59487fa8831
+    5f99fd56-795a-40e5-81c8-60add70f6b37
+    5ff5208c-ed22-46ea-86b9-12a9c435c490
+    6589a6eb-b788-41db-aeb6-950ef147a49e
+    691f8dfa-1984-4d2e-a29d-735103a1dbd9
+    6babe4e4-3fd9-4f77-be93-ff4deef6d727
+    6d214b1f-d597-4372-a589-3fb27b420869
+    739d8b55-0a37-4539-ae81-b83862461d7f
+    809ace3a-9e5f-40ef-8115-dc470ae520f5
+    96b97474-1741-4384-8d38-f1735e52dffa
+    97c76ee2-0e5a-49e5-a7ad-dacea2fe0f7f
+    ad5c7d7a-20bd-449c-9ce3-4e8d322d9766
+    ae3a003c-8d81-4fc2-a31d-67d9e5f5de72
+    b0da5afd-e5ef-4392-bece-0e4b96ee31c7
+    b237cd8f-ce19-41b0-bed7-f87e58ab5ca2
+    b791c174-6163-4036-8fc3-a1a794b7897d
+    c05d3c95-c069-4076-a851-ee7923bcf1a2
+    c10b94df-cdac-4f26-8c14-02f509d7180e
+    d7be5024-b47b-4029-a4ef-32bfde6db9e0
+    e29421bb-a541-49a6-b087-c1ea0e284e18
+    e921bac7-94d3-4531-b1fe-3fa1498d5c27
+    eac7063c-f6f5-4b2f-a126-69fefda8abf7
+    f5b67d93-3e97-4815-8901-9f78e275a1bd
+    f631f66a-256a-4dc8-bdb9-be00366a0aaa
+    fb1f8a6d-5cd3-44d8-9fb1-d48a390a61b0
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedAbstractFunctions-getCurrentElements
@@ -396,40 +396,40 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedAbstractFunctions-getAvailableElements
 inputId = e397787c-a096-4ba1-86e0-9f7098d5aaa3
 resultIds = {
-    250d520b-e135-4089-97fc-83d502dd6d44
-    809ace3a-9e5f-40ef-8115-dc470ae520f5
-    fb1f8a6d-5cd3-44d8-9fb1-d48a390a61b0
-    ae3a003c-8d81-4fc2-a31d-67d9e5f5de72
-    c10b94df-cdac-4f26-8c14-02f509d7180e
-    b791c174-6163-4036-8fc3-a1a794b7897d
-    96b97474-1741-4384-8d38-f1735e52dffa
-    ad5c7d7a-20bd-449c-9ce3-4e8d322d9766
-    eac7063c-f6f5-4b2f-a126-69fefda8abf7
-    05810477-afd5-4b91-a73d-ccacc70b8437
-    52f2881c-494f-4dbf-9d10-c59487fa8831
     03b13e70-c7eb-4b2f-a8a6-1cf51e10516a
-    295b01a9-d090-43fc-8c56-5ea43ed3b078
-    6d214b1f-d597-4372-a589-3fb27b420869
-    e921bac7-94d3-4531-b1fe-3fa1498d5c27
-    691f8dfa-1984-4d2e-a29d-735103a1dbd9
-    d7be5024-b47b-4029-a4ef-32bfde6db9e0
-    f5b67d93-3e97-4815-8901-9f78e275a1bd
-    b237cd8f-ce19-41b0-bed7-f87e58ab5ca2
-    f631f66a-256a-4dc8-bdb9-be00366a0aaa
-    739d8b55-0a37-4539-ae81-b83862461d7f
-    2e3ab259-fc25-486b-a8e1-44b377694215
-    e29421bb-a541-49a6-b087-c1ea0e284e18
-    5ff5208c-ed22-46ea-86b9-12a9c435c490
+    05810477-afd5-4b91-a73d-ccacc70b8437
     09673c82-026b-4992-8b8e-1acc6bd8c299
-    5f99fd56-795a-40e5-81c8-60add70f6b37
-    224ba7d5-be51-4181-ad51-6add83606008
-    6589a6eb-b788-41db-aeb6-950ef147a49e
-    b0da5afd-e5ef-4392-bece-0e4b96ee31c7
-    6babe4e4-3fd9-4f77-be93-ff4deef6d727
-    c05d3c95-c069-4076-a851-ee7923bcf1a2
     159d483a-d343-4003-a17d-e3a05bce7031
-    97c76ee2-0e5a-49e5-a7ad-dacea2fe0f7f
     16b37377-609c-4dd6-a92b-964f817ab599
+    224ba7d5-be51-4181-ad51-6add83606008
+    250d520b-e135-4089-97fc-83d502dd6d44
+    295b01a9-d090-43fc-8c56-5ea43ed3b078
+    2e3ab259-fc25-486b-a8e1-44b377694215
+    52f2881c-494f-4dbf-9d10-c59487fa8831
+    5f99fd56-795a-40e5-81c8-60add70f6b37
+    5ff5208c-ed22-46ea-86b9-12a9c435c490
+    6589a6eb-b788-41db-aeb6-950ef147a49e
+    691f8dfa-1984-4d2e-a29d-735103a1dbd9
+    6babe4e4-3fd9-4f77-be93-ff4deef6d727
+    6d214b1f-d597-4372-a589-3fb27b420869
+    739d8b55-0a37-4539-ae81-b83862461d7f
+    809ace3a-9e5f-40ef-8115-dc470ae520f5
+    96b97474-1741-4384-8d38-f1735e52dffa
+    97c76ee2-0e5a-49e5-a7ad-dacea2fe0f7f
+    ad5c7d7a-20bd-449c-9ce3-4e8d322d9766
+    ae3a003c-8d81-4fc2-a31d-67d9e5f5de72
+    b0da5afd-e5ef-4392-bece-0e4b96ee31c7
+    b237cd8f-ce19-41b0-bed7-f87e58ab5ca2
+    b791c174-6163-4036-8fc3-a1a794b7897d
+    c05d3c95-c069-4076-a851-ee7923bcf1a2
+    c10b94df-cdac-4f26-8c14-02f509d7180e
+    d7be5024-b47b-4029-a4ef-32bfde6db9e0
+    e29421bb-a541-49a6-b087-c1ea0e284e18
+    e921bac7-94d3-4531-b1fe-3fa1498d5c27
+    eac7063c-f6f5-4b2f-a126-69fefda8abf7
+    f5b67d93-3e97-4815-8901-9f78e275a1bd
+    f631f66a-256a-4dc8-bdb9-be00366a0aaa
+    fb1f8a6d-5cd3-44d8-9fb1-d48a390a61b0
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedAbstractFunctions-getCurrentElements
@@ -440,40 +440,40 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedAbstractFunctions-getAvailableElements
 inputId = e0bb1110-1200-4b2c-b988-3930bbaa3e87
 resultIds = {
-    250d520b-e135-4089-97fc-83d502dd6d44
-    809ace3a-9e5f-40ef-8115-dc470ae520f5
-    fb1f8a6d-5cd3-44d8-9fb1-d48a390a61b0
-    ae3a003c-8d81-4fc2-a31d-67d9e5f5de72
-    c10b94df-cdac-4f26-8c14-02f509d7180e
-    b791c174-6163-4036-8fc3-a1a794b7897d
-    96b97474-1741-4384-8d38-f1735e52dffa
-    ad5c7d7a-20bd-449c-9ce3-4e8d322d9766
-    eac7063c-f6f5-4b2f-a126-69fefda8abf7
-    05810477-afd5-4b91-a73d-ccacc70b8437
-    52f2881c-494f-4dbf-9d10-c59487fa8831
     03b13e70-c7eb-4b2f-a8a6-1cf51e10516a
-    295b01a9-d090-43fc-8c56-5ea43ed3b078
-    6d214b1f-d597-4372-a589-3fb27b420869
-    e921bac7-94d3-4531-b1fe-3fa1498d5c27
-    691f8dfa-1984-4d2e-a29d-735103a1dbd9
-    d7be5024-b47b-4029-a4ef-32bfde6db9e0
-    f5b67d93-3e97-4815-8901-9f78e275a1bd
-    b237cd8f-ce19-41b0-bed7-f87e58ab5ca2
-    f631f66a-256a-4dc8-bdb9-be00366a0aaa
-    739d8b55-0a37-4539-ae81-b83862461d7f
-    2e3ab259-fc25-486b-a8e1-44b377694215
-    e29421bb-a541-49a6-b087-c1ea0e284e18
-    5ff5208c-ed22-46ea-86b9-12a9c435c490
+    05810477-afd5-4b91-a73d-ccacc70b8437
     09673c82-026b-4992-8b8e-1acc6bd8c299
-    5f99fd56-795a-40e5-81c8-60add70f6b37
-    224ba7d5-be51-4181-ad51-6add83606008
-    6589a6eb-b788-41db-aeb6-950ef147a49e
-    b0da5afd-e5ef-4392-bece-0e4b96ee31c7
-    6babe4e4-3fd9-4f77-be93-ff4deef6d727
-    c05d3c95-c069-4076-a851-ee7923bcf1a2
     159d483a-d343-4003-a17d-e3a05bce7031
-    97c76ee2-0e5a-49e5-a7ad-dacea2fe0f7f
     16b37377-609c-4dd6-a92b-964f817ab599
+    224ba7d5-be51-4181-ad51-6add83606008
+    250d520b-e135-4089-97fc-83d502dd6d44
+    295b01a9-d090-43fc-8c56-5ea43ed3b078
+    2e3ab259-fc25-486b-a8e1-44b377694215
+    52f2881c-494f-4dbf-9d10-c59487fa8831
+    5f99fd56-795a-40e5-81c8-60add70f6b37
+    5ff5208c-ed22-46ea-86b9-12a9c435c490
+    6589a6eb-b788-41db-aeb6-950ef147a49e
+    691f8dfa-1984-4d2e-a29d-735103a1dbd9
+    6babe4e4-3fd9-4f77-be93-ff4deef6d727
+    6d214b1f-d597-4372-a589-3fb27b420869
+    739d8b55-0a37-4539-ae81-b83862461d7f
+    809ace3a-9e5f-40ef-8115-dc470ae520f5
+    96b97474-1741-4384-8d38-f1735e52dffa
+    97c76ee2-0e5a-49e5-a7ad-dacea2fe0f7f
+    ad5c7d7a-20bd-449c-9ce3-4e8d322d9766
+    ae3a003c-8d81-4fc2-a31d-67d9e5f5de72
+    b0da5afd-e5ef-4392-bece-0e4b96ee31c7
+    b237cd8f-ce19-41b0-bed7-f87e58ab5ca2
+    b791c174-6163-4036-8fc3-a1a794b7897d
+    c05d3c95-c069-4076-a851-ee7923bcf1a2
+    c10b94df-cdac-4f26-8c14-02f509d7180e
+    d7be5024-b47b-4029-a4ef-32bfde6db9e0
+    e29421bb-a541-49a6-b087-c1ea0e284e18
+    e921bac7-94d3-4531-b1fe-3fa1498d5c27
+    eac7063c-f6f5-4b2f-a126-69fefda8abf7
+    f5b67d93-3e97-4815-8901-9f78e275a1bd
+    f631f66a-256a-4dc8-bdb9-be00366a0aaa
+    fb1f8a6d-5cd3-44d8-9fb1-d48a390a61b0
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedAbstractFunctions-getCurrentElements
@@ -484,40 +484,40 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedAbstractFunctions-getAvailableElements
 inputId = 9e19794e-8832-4894-87b9-0e826ddb78ee
 resultIds = {
-    250d520b-e135-4089-97fc-83d502dd6d44
-    809ace3a-9e5f-40ef-8115-dc470ae520f5
-    fb1f8a6d-5cd3-44d8-9fb1-d48a390a61b0
-    ae3a003c-8d81-4fc2-a31d-67d9e5f5de72
-    c10b94df-cdac-4f26-8c14-02f509d7180e
-    b791c174-6163-4036-8fc3-a1a794b7897d
-    96b97474-1741-4384-8d38-f1735e52dffa
-    ad5c7d7a-20bd-449c-9ce3-4e8d322d9766
-    eac7063c-f6f5-4b2f-a126-69fefda8abf7
-    05810477-afd5-4b91-a73d-ccacc70b8437
-    52f2881c-494f-4dbf-9d10-c59487fa8831
     03b13e70-c7eb-4b2f-a8a6-1cf51e10516a
-    295b01a9-d090-43fc-8c56-5ea43ed3b078
-    6d214b1f-d597-4372-a589-3fb27b420869
-    e921bac7-94d3-4531-b1fe-3fa1498d5c27
-    691f8dfa-1984-4d2e-a29d-735103a1dbd9
-    d7be5024-b47b-4029-a4ef-32bfde6db9e0
-    f5b67d93-3e97-4815-8901-9f78e275a1bd
-    b237cd8f-ce19-41b0-bed7-f87e58ab5ca2
-    f631f66a-256a-4dc8-bdb9-be00366a0aaa
-    739d8b55-0a37-4539-ae81-b83862461d7f
-    2e3ab259-fc25-486b-a8e1-44b377694215
-    e29421bb-a541-49a6-b087-c1ea0e284e18
-    5ff5208c-ed22-46ea-86b9-12a9c435c490
+    05810477-afd5-4b91-a73d-ccacc70b8437
     09673c82-026b-4992-8b8e-1acc6bd8c299
-    5f99fd56-795a-40e5-81c8-60add70f6b37
-    224ba7d5-be51-4181-ad51-6add83606008
-    6589a6eb-b788-41db-aeb6-950ef147a49e
-    b0da5afd-e5ef-4392-bece-0e4b96ee31c7
-    6babe4e4-3fd9-4f77-be93-ff4deef6d727
-    c05d3c95-c069-4076-a851-ee7923bcf1a2
     159d483a-d343-4003-a17d-e3a05bce7031
-    97c76ee2-0e5a-49e5-a7ad-dacea2fe0f7f
     16b37377-609c-4dd6-a92b-964f817ab599
+    224ba7d5-be51-4181-ad51-6add83606008
+    250d520b-e135-4089-97fc-83d502dd6d44
+    295b01a9-d090-43fc-8c56-5ea43ed3b078
+    2e3ab259-fc25-486b-a8e1-44b377694215
+    52f2881c-494f-4dbf-9d10-c59487fa8831
+    5f99fd56-795a-40e5-81c8-60add70f6b37
+    5ff5208c-ed22-46ea-86b9-12a9c435c490
+    6589a6eb-b788-41db-aeb6-950ef147a49e
+    691f8dfa-1984-4d2e-a29d-735103a1dbd9
+    6babe4e4-3fd9-4f77-be93-ff4deef6d727
+    6d214b1f-d597-4372-a589-3fb27b420869
+    739d8b55-0a37-4539-ae81-b83862461d7f
+    809ace3a-9e5f-40ef-8115-dc470ae520f5
+    96b97474-1741-4384-8d38-f1735e52dffa
+    97c76ee2-0e5a-49e5-a7ad-dacea2fe0f7f
+    ad5c7d7a-20bd-449c-9ce3-4e8d322d9766
+    ae3a003c-8d81-4fc2-a31d-67d9e5f5de72
+    b0da5afd-e5ef-4392-bece-0e4b96ee31c7
+    b237cd8f-ce19-41b0-bed7-f87e58ab5ca2
+    b791c174-6163-4036-8fc3-a1a794b7897d
+    c05d3c95-c069-4076-a851-ee7923bcf1a2
+    c10b94df-cdac-4f26-8c14-02f509d7180e
+    d7be5024-b47b-4029-a4ef-32bfde6db9e0
+    e29421bb-a541-49a6-b087-c1ea0e284e18
+    e921bac7-94d3-4531-b1fe-3fa1498d5c27
+    eac7063c-f6f5-4b2f-a126-69fefda8abf7
+    f5b67d93-3e97-4815-8901-9f78e275a1bd
+    f631f66a-256a-4dc8-bdb9-be00366a0aaa
+    fb1f8a6d-5cd3-44d8-9fb1-d48a390a61b0
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedAbstractFunctions-getCurrentElements

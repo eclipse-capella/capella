@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,10 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -18,11 +21,12 @@ import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -34,13 +38,11 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.viewers.AbstractTreeViewer;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.task.DeleteEObjectTask;
-import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.diagram.AbstractDNode;
@@ -59,20 +61,17 @@ import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramEl
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramSynchronizer;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.Layer;
-import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.ui.business.api.helper.graphicalfilters.CompositeFilterApplicationBuilder;
-import org.eclipse.sirius.diagram.ui.tools.internal.menu.PopupMenuContribution;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.query.legacy.ecore.factories.EFactory;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
+import org.eclipse.sirius.tools.api.ui.RefreshHelper;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.data.activity.ActivityEdge;
 import org.polarsys.capella.common.data.activity.ActivityNode;
 import org.polarsys.capella.common.data.activity.Pin;
@@ -92,8 +91,6 @@ import org.polarsys.capella.common.libraries.ILibraryManager;
 import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
-import org.polarsys.capella.common.re.CatalogElement;
-import org.polarsys.capella.common.re.helpers.ReplicableElementExt;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -103,6 +100,7 @@ import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.core.data.capellacore.Feature;
 import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
 import org.polarsys.capella.core.data.capellacore.Generalization;
+import org.polarsys.capella.core.data.capellacore.Involvement;
 import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
 import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.capellacore.TypedElement;
@@ -135,7 +133,6 @@ import org.polarsys.capella.core.data.fa.FunctionInputPort;
 import org.polarsys.capella.core.data.fa.FunctionOutputPort;
 import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
-import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.helpers.ctx.services.ActorPkgExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
@@ -156,14 +153,21 @@ import org.polarsys.capella.core.data.information.datatype.DataType;
 import org.polarsys.capella.core.data.information.datatype.NumericType;
 import org.polarsys.capella.core.data.information.datatype.PhysicalQuantity;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
+import org.polarsys.capella.core.data.interaction.AbstractEnd;
+import org.polarsys.capella.core.data.interaction.EventReceiptOperation;
+import org.polarsys.capella.core.data.interaction.EventSentOperation;
 import org.polarsys.capella.core.data.interaction.Execution;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.RefinementLink;
 import org.polarsys.capella.core.data.interaction.Scenario;
+import org.polarsys.capella.core.data.interaction.SequenceMessage;
+import org.polarsys.capella.core.data.interaction.StateFragment;
+import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.data.la.LogicalActor;
 import org.polarsys.capella.core.data.la.LogicalActorPkg;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.oa.ActivityAllocation;
+import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
 import org.polarsys.capella.core.data.oa.Role;
@@ -180,25 +184,175 @@ import org.polarsys.capella.core.model.helpers.AbstractFunctionExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
-import org.polarsys.capella.core.model.helpers.ExchangeItemExt;
 import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
+import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
-import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 import org.polarsys.capella.core.sirius.analysis.tool.StringUtil;
-import org.polarsys.capella.core.ui.properties.providers.CapellaTransfertViewerLabelProvider;
-import org.polarsys.capella.core.ui.toolkit.helpers.SelectionDialogHelper;
 
 /**
  * Basic Services For Capella models.
  */
 public class CapellaServices {
-  
+
   /**
-   * A specific prefix to add for message of {@link OperationCanceledException} that must be rethrown to rollback all the corresponding command.
+   * A specific prefix to add for message of {@link OperationCanceledException} that must be rethrown to rollback all
+   * the corresponding command.
    */
   public static final String RE_THROW_OCE_PREFIX = "-RT-"; //$NON-NLS-1$
-  
+
+  public EObject getRootContainer(EObject eObject) {
+    return EcoreUtil.getRootContainer(eObject);
+  }
+
+  /** used by aql queries */
+  public List<DDiagramElementContainer> getAllContainersNew(EObject container) {
+    return getAllContainers(container);
+  }
+
+  // equivalent de <%
+  // (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird")
+  // + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~.~).put("airds")
+  // +
+  // get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"])
+  // %>
+  public static Collection<EObject> getAllDAnalysis(EObject eObject) {
+    Collection<EObject> result = new ArrayList<>();
+    EObject source = eObject;
+    if (source instanceof DSemanticDecorator) {
+      source = ((DSemanticDecorator) source).getTarget();
+    }
+    if (source instanceof DRepresentationDescriptor) {
+      source = ((DRepresentationDescriptor) source).getTarget();
+    }
+    Session session = SessionManager.INSTANCE.getSession(source);
+    if (session instanceof DAnalysisSession) {
+      result.addAll(((DAnalysisSession) session).allAnalyses());
+    }
+    return result;
+  }
+
+  /** used by aql queries */
+  public Object void2Null(EObject eObject, Object object) {
+    if (object instanceof Collection && ((Collection<?>) object).isEmpty())
+      return null;
+    return object;
+  }
+
+  @SuppressWarnings({ "unchecked", "rawtypes" })
+  /** used by aql queries */
+  public Object makeIntersection(EObject eObject, Object obj1, Object obj2) {
+    try {
+      List<Object> result = new ArrayList<>();
+      if (obj1 instanceof Collection)
+        result.addAll((Collection) obj1);
+      else if (obj1 != null)
+        result.add(obj1);
+      if (obj2 instanceof Collection)
+        result.retainAll((Collection) obj2);
+      else if (obj2 != null && !result.contains(obj2))
+        result.remove(obj2);
+      return result;
+    } catch (Exception e) {
+      throw new UnsupportedOperationException();
+    }
+  }
+
+  @SuppressWarnings({ "unchecked", "rawtypes" })
+  /** used by aql queries */
+  public Object makeDiff(EObject eObject, Object obj1, Object obj2) {
+    try {
+      List<Object> result = new ArrayList<Object>();
+      if (obj1 instanceof Collection)
+        result.addAll((Collection) obj1);
+      else if (obj1 != null)
+        result.add(obj1);
+
+      if (obj2 instanceof Collection)
+        result.removeAll((Collection) obj2);
+      else if (obj2 instanceof Object[]) {
+        for (Object o : (Object[]) obj2) {
+          result.remove(o);
+        }
+      } else if (obj2 != null)
+        result.remove(obj2);
+      // if (result.size() == 1)
+      // return result.get(0);
+      return result;
+    } catch (Exception e) {
+      throw new UnsupportedOperationException();
+    }
+  }
+
+  @SuppressWarnings({ "unchecked", "rawtypes" })
+  /** used by aql queries */
+  public Object makeUnion(EObject eObject, Object obj1, Object obj2) {
+    try {
+      List<Object> result = new ArrayList<>();
+      if (obj1 instanceof Collection)
+        result.addAll((Collection) obj1);
+      else if (obj1 != null)
+        result.add(obj1);
+      if (obj2 instanceof Collection)
+        result.addAll((Collection) obj2);
+      else if (obj2 != null)
+        result.add(obj2);
+      return result;
+    } catch (Exception e) {
+      throw new UnsupportedOperationException();
+    }
+  }
+
+  @SuppressWarnings({ "unchecked", "rawtypes" })
+  /** used by aql queries */
+  public Object makeUnion(EObject eObject, Object obj1, Object obj2, Object obj3) {
+    try {
+      List<Object> result = new ArrayList<>();
+      if (obj1 instanceof Collection)
+        result.addAll((Collection) obj1);
+      else if (obj1 != null)
+        result.add(obj1);
+      if (obj2 instanceof Collection)
+        result.addAll((Collection) obj2);
+      else if (obj2 != null)
+        result.add(obj2);
+      if (obj3 instanceof Collection)
+        result.addAll((Collection) obj3);
+      else if (obj3 != null)
+        result.add(obj3);
+      return result;
+    } catch (Exception e) {
+      throw new UnsupportedOperationException();
+    }
+  }
+
+  @SuppressWarnings({ "unchecked", "rawtypes" })
+  /** used by aql queries */
+  public Object makeUnion(EObject eObject, Object obj1, Object obj2, Object obj3, Object obj4) {
+    try {
+      List<Object> result = new ArrayList<>();
+      if (obj1 instanceof Collection)
+        result.addAll((Collection) obj1);
+      else if (obj1 != null)
+        result.add(obj1);
+      if (obj2 instanceof Collection)
+        result.addAll((Collection) obj2);
+      else if (obj2 != null)
+        result.add(obj2);
+      if (obj3 instanceof Collection)
+        result.addAll((Collection) obj3);
+      else if (obj3 != null)
+        result.add(obj3);
+      if (obj4 instanceof Collection)
+        result.addAll((Collection) obj4);
+      else if (obj4 != null)
+        result.add(obj4);
+      return result;
+    } catch (Exception e) {
+      throw new UnsupportedOperationException();
+    }
+  }
+
   public List<EObject> selectOnlyCreatedView(EObject eObject) {
     return Collections.singletonList((EObject) InterpreterUtil.getInterpreter(eObject).getVariable("view"));
   }
@@ -207,12 +361,13 @@ public class CapellaServices {
     Session session = SessionManager.INSTANCE.getSession(context);
     IModel sessionModel = ILibraryManager.INSTANCE.getModel(TransactionHelper.getEditingDomain(session));
     IModel currentElementModel = ILibraryManager.INSTANCE.getModel(context);
-    return sessionModel.equals(currentElementModel); // forbidden if the element's IModel is not the session's one (ie
-                                                     // is a Library)
+    return sessionModel.equals(currentElementModel); // forbidden if the element's IModel is not the session's one
+    // (ie
+    // is a Library)
   }
 
   public List<EObject> ancestor(EObject object) {
-    List<EObject> result = new ArrayList<EObject>();
+    List<EObject> result = new ArrayList<>();
     if (object != null) {
       for (object = object.eContainer(); object != null; object = object.eContainer()) {
         result.add(object);
@@ -268,15 +423,13 @@ public class CapellaServices {
    * @param element
    */
   public void deleteView(DDiagramElement element) {
-    DeleteEObjectTask task = new DeleteEObjectTask(element, SiriusPlugin.getDefault().getModelAccessorRegistry()
-        .getModelAccessor(element));
+    DeleteEObjectTask task = new DeleteEObjectTask(element,
+        SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(element));
 
     try {
       task.execute();
-    } catch (FeatureNotFoundException ex) {
-      // do nothing
-    } catch (MetaClassNotFoundException ex) {
-      // do nothing
+    } catch (FeatureNotFoundException | MetaClassNotFoundException ex) {
+      // Do nothing
     }
   }
 
@@ -289,42 +442,14 @@ public class CapellaServices {
       }
     }
   }
-  
-  @SuppressWarnings({ "unchecked", "rawtypes" })
-  /** used by aql queries */
-  public Object makeDiff(EObject eObject, Object obj1, Object obj2) {
-    try {
-      List<Object> result = new ArrayList<Object>();
-      if (obj1 instanceof Collection)
-        result.addAll((Collection) obj1);
-      else if (obj1 != null)
-        result.add(obj1);
 
-      if (obj2 instanceof Collection)
-        result.removeAll((Collection) obj2);
-      else if (obj2 instanceof Object[]) {
-        for (Object o : (Object[]) obj2) {
-          result.remove(o);
-        }
-      }
-      else if (obj2 != null)
-        result.remove(obj2);
-      // if (result.size() == 1)
-      // return result.get(0);
-      return result;
-    } catch (Exception e) {
-      throw new UnsupportedOperationException();
-    }
-  }
-  
   public EObject forceRefresh(DDiagram diagram) {
-    boolean automaticRefresh = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null);
-    if (null != diagram && !automaticRefresh) {
-    	
-    	if (diagram.getActivatedFilters().size() != 0) {
-            CompositeFilterApplicationBuilder builder = new CompositeFilterApplicationBuilder(diagram);
-            builder.computeCompositeFilterApplications();
-        }
+    if (null != diagram && !RefreshHelper.isAutoRefresh()) {
+
+      if (!diagram.getActivatedFilters().isEmpty()) {
+        CompositeFilterApplicationBuilder builder = new CompositeFilterApplicationBuilder(diagram);
+        builder.computeCompositeFilterApplications();
+      }
 
       // Refreshes the diagram
       DialectManager.INSTANCE.refresh(diagram, new NullProgressMonitor());
@@ -357,7 +482,7 @@ public class CapellaServices {
    * @return
    */
   public List<EObject> getNavigationScope(EObject current) {
-    ArrayList<EObject> scope = new ArrayList<EObject>();
+    ArrayList<EObject> scope = new ArrayList<>();
 
     if (current instanceof AbstractTypedElement) {
       scope.add(((AbstractTypedElement) current).getAbstractType());
@@ -380,7 +505,7 @@ public class CapellaServices {
    */
   public List<EObject> getAllAncestor(EObject eObject) {
     EObject obj = eObject;
-    List<EObject> list = new ArrayList<EObject>();
+    List<EObject> list = new ArrayList<>();
     if (obj == null) {
       return list;
     }
@@ -403,8 +528,8 @@ public class CapellaServices {
   }
 
   List<PartitionableElement> getAllAncestors(Partition current) {
-    List<PartitionableElement> result = new ArrayList<PartitionableElement>();
-    List<PartitionableElement> ancestors = new ArrayList<PartitionableElement>();
+    List<PartitionableElement> result = new ArrayList<>();
+    List<PartitionableElement> ancestors = new ArrayList<>();
     ancestors.add((PartitionableElement) current.eContainer());
     result.addAll(ancestors);
 
@@ -428,12 +553,12 @@ public class CapellaServices {
   public EList<CapabilityExploitation> getAllCapabilityExploitation(final EObject context) {
     // Missions Capabilities Blank : CapExploitation4
     // Contextual Capability: CapExploitation3
-    EList<CapabilityExploitation> list = new BasicEList<CapabilityExploitation>();
+    EList<CapabilityExploitation> list = new BasicEList<>();
 
-    SystemAnalysis ca = (SystemAnalysis) getAncestor(context, CtxPackage.Literals.SYSTEM_ANALYSIS.getName());
+    SystemAnalysis ca = (SystemAnalysis) getAncestor(context, CtxPackage.Literals.SYSTEM_ANALYSIS);
     // get all recursive missionpkgs : private service
     EList<MissionPkg> allMissionPkg = getAllRecursiveMissionPkg(ca);
-    EList<Mission> ownedMissions = new BasicEList<Mission>();
+    EList<Mission> ownedMissions = new BasicEList<>();
     for (MissionPkg missionPkg : allMissionPkg) {
       // get all missions
       ownedMissions.addAll(missionPkg.getOwnedMissions());
@@ -447,7 +572,7 @@ public class CapellaServices {
   }
 
   private Collection<Constraint> getAllConstraints(final EObject context) {
-    Collection<Constraint> returnedClasses = new ArrayList<Constraint>();
+    Collection<Constraint> returnedClasses = new ArrayList<>();
     for (BlockArchitecture aBlockArchitecture : getAvailableArchitectures(context)) {
       TreeIterator<EObject> it = aBlockArchitecture.eAllContents();
       while (it.hasNext()) {
@@ -464,7 +589,7 @@ public class CapellaServices {
    * Recursively get all ports on current function and its children functions.
    */
   private List<Pin> getAllContainedPins(AbstractFunction function) {
-    List<Pin> result = new LinkedList<Pin>();
+    List<Pin> result = new LinkedList<>();
     for (EObject child : FaServices.getFaServices().getAllAbstractFunctions(function)) {
       if (child instanceof AbstractFunction) {
         result.addAll(getContainedPins((AbstractFunction) child));
@@ -480,7 +605,7 @@ public class CapellaServices {
    * @return container + recursively all the containers of container
    */
   public List<DDiagramElementContainer> getAllContainers(EObject container) {
-    List<DDiagramElementContainer> returnedList = new ArrayList<DDiagramElementContainer>();
+    List<DDiagramElementContainer> returnedList = new ArrayList<>();
     if (container instanceof DDiagram) {
       returnedList = ((DDiagram) container).getContainers();
     } else if (container instanceof DDiagramElementContainer) {
@@ -499,9 +624,9 @@ public class CapellaServices {
    * @return
    */
   public List<PartitionableElement> getAllDescendants(PartitionableElement current) {
-    List<PartitionableElement> result = new ArrayList<PartitionableElement>();
+    List<PartitionableElement> result = new ArrayList<>();
     List<Part> ownedPartitions = ComponentExt.getSubParts(current);
-    List<PartitionableElement> children = new ArrayList<PartitionableElement>();
+    List<PartitionableElement> children = new ArrayList<>();
 
     for (Part partition : ownedPartitions) {
       if (partition.getAbstractType() instanceof PartitionableElement) {
@@ -525,14 +650,14 @@ public class CapellaServices {
    * @return
    */
   public EList<ExchangeCategory> getAllExchangeCategory(final EObject context) {
-    EList<ExchangeCategory> result = new BasicEList<ExchangeCategory>();
+    EList<ExchangeCategory> result = new BasicEList<>();
     BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(context);
     result.addAll(FunctionPkgExt.getAllExchangeCategories(architecture.getOwnedFunctionPkg()));
     return result;
   }
 
   public Collection<AbstractExchangeItem> getAllExchangeItems(final EObject context) {
-    Collection<AbstractExchangeItem> returnedInformationItems = new ArrayList<AbstractExchangeItem>();
+    Collection<AbstractExchangeItem> returnedInformationItems = new ArrayList<>();
     List<BlockArchitecture> blocks = QueryInterpretor
         .executeQuery(QueryIdentifierConstants.GET_AVAILABLE_ARCHITECTURES_FOR_LIB, context);
     for (BlockArchitecture aBlockArchitecture : blocks) {
@@ -566,7 +691,7 @@ public class CapellaServices {
    * Recursively get all graphical container nodes which are contained within a diagram or a container node.
    */
   private List<DNodeContainer> getAllGraphicalContainers(DDiagram diagram) {
-    List<DNodeContainer> returnedList = new ArrayList<DNodeContainer>();
+    List<DNodeContainer> returnedList = new ArrayList<>();
     for (AbstractDNode aContainer : diagram.getContainers()) {
       if (aContainer instanceof DNodeContainer) {
         returnedList.add((DNodeContainer) aContainer);
@@ -576,7 +701,7 @@ public class CapellaServices {
   }
 
   private List<DNodeContainer> getAllGraphicalContainers(DNodeContainer container) {
-    List<DNodeContainer> result = new LinkedList<DNodeContainer>();
+    List<DNodeContainer> result = new LinkedList<>();
     result.add(container);
     for (AbstractDNode aContainer : container.getContainers()) {
       if (aContainer instanceof DNodeContainer) {
@@ -602,9 +727,9 @@ public class CapellaServices {
    */
   @Deprecated
   public EList<PortAllocation> getAllPortAllocation(final EObject context) {
-    EList<PortAllocation> result = new BasicEList<PortAllocation>();
-    Collection<Component> subLCsFromRoot = BlockArchitectureExt.getAllComponents(BlockArchitectureExt
-        .getRootBlockArchitecture(context));
+    EList<PortAllocation> result = new BasicEList<>();
+    Collection<Component> subLCsFromRoot = BlockArchitectureExt
+        .getAllComponents(BlockArchitectureExt.getRootBlockArchitecture(context));
     for (PartitionableElement partitionableElement : subLCsFromRoot) {
       EList<Feature> ownedFeatures = partitionableElement.getOwnedFeatures();
       for (Feature feature : ownedFeatures) {
@@ -628,10 +753,10 @@ public class CapellaServices {
   public EList<PortRealization> getAllPortRealisation(final EObject context) {
     // //System Architecture Blank : CA PortRealization Flow Port to
     // Standard Port + CA PortRealization FlowPort to FlowPort
-    EList<PortRealization> result = new BasicEList<PortRealization>();
+    EList<PortRealization> result = new BasicEList<>();
 
-    Collection<Component> enclosedComponents = BlockArchitectureExt.getAllComponents(BlockArchitectureExt
-        .getRootBlockArchitecture(context));
+    Collection<Component> enclosedComponents = BlockArchitectureExt
+        .getAllComponents(BlockArchitectureExt.getRootBlockArchitecture(context));
     for (PartitionableElement partitionableElement : enclosedComponents) {
       EList<Feature> ownedFeatures = partitionableElement.getOwnedFeatures();
       for (Feature feature : ownedFeatures) {
@@ -653,7 +778,7 @@ public class CapellaServices {
    */
   public EList<Mission> getAllPurposeMission(final Capability context) {
     // Contextual Capability : MissionNode3
-    EList<Mission> list = new BasicEList<Mission>();
+    EList<Mission> list = new BasicEList<>();
     list.addAll(context.getPurposeMissions());
 
     /*
@@ -661,10 +786,10 @@ public class CapellaServices {
      * capabilityExploitation : purposes) { Mission mission = capabilityExploitation.getMission(); list.add(mission); }
      */
 
-    SystemAnalysis ca = (SystemAnalysis) getAncestor(context, CtxPackage.Literals.SYSTEM_ANALYSIS.getName());
+    SystemAnalysis ca = (SystemAnalysis) getAncestor(context, CtxPackage.Literals.SYSTEM_ANALYSIS);
     // get all missionpkgs : private service
     EList<MissionPkg> allMissionPkg = getAllRecursiveMissionPkg(ca);
-    EList<Mission> ownedMissions = new BasicEList<Mission>();
+    EList<Mission> ownedMissions = new BasicEList<>();
     for (MissionPkg missionPkg : allMissionPkg) {
       // get all missions
       ownedMissions.addAll(missionPkg.getOwnedMissions());
@@ -681,7 +806,7 @@ public class CapellaServices {
   }
 
   private EList<MissionPkg> getAllRecursiveMissionPkg(MissionPkg missionPkg) {
-    EList<MissionPkg> list = new BasicEList<MissionPkg>();
+    EList<MissionPkg> list = new BasicEList<>();
 
     EList<MissionPkg> subMissionPkgs = missionPkg.getOwnedMissionPkgs();
     list.addAll(subMissionPkgs);
@@ -694,7 +819,7 @@ public class CapellaServices {
   }
 
   private EList<MissionPkg> getAllRecursiveMissionPkg(SystemAnalysis contextArchi) {
-    EList<MissionPkg> list = new BasicEList<MissionPkg>();
+    EList<MissionPkg> list = new BasicEList<>();
 
     MissionPkg ownedMissionPkg = contextArchi.getOwnedMissionPkg();
     // add the root missionpkg
@@ -713,7 +838,7 @@ public class CapellaServices {
    * @return
    */
   public List<AbstractCapability> getAllSuperCapabilities(final EObject context, AbstractCapability target) {
-    List<AbstractCapability> result = new LinkedList<AbstractCapability>();
+    List<AbstractCapability> result = new LinkedList<>();
     result.add(target);
     if (target.getSuper() == null) {
       return result;
@@ -757,23 +882,6 @@ public class CapellaServices {
     return current;
   }
 
-  /**
-   * Gets the first ancestor of the given type.
-   * 
-   * @param context
-   *          the context.
-   * @param type
-   *          the type.
-   * @return the first ancestor of the given type.
-   */
-  public EObject getAncestor(final EObject context, final String type) {
-    EObject current = context.eContainer();
-    while ((current != null) && !EFactory.eInstanceOf(current, type)) {
-      current = current.eContainer();
-    }
-    return current;
-  }
-
   public List<BlockArchitecture> getAvailableArchitectures(final EObject context) {
     return QueryInterpretor.executeQuery(
         org.polarsys.capella.core.sirius.analysis.queries.QueryIdentifierConstants.GET_AVAILABLE_ARCHITECTURES,
@@ -781,7 +889,7 @@ public class CapellaServices {
   }
 
   public Collection<EObject> getRelatedAssociations(Classifier clazz) {
-    Collection<EObject> result = new ArrayList<EObject>();
+    Collection<EObject> result = new ArrayList<>();
     // retrieve all the association of the target
     for (TypedElement typedElement : clazz.getTypedElements()) {
 
@@ -815,14 +923,14 @@ public class CapellaServices {
    */
   public List<EObject> getAvailableAssociationToInsert(EObject context) {
     // collect all association of the context target not in Diagram
-    List<EObject> result = new ArrayList<EObject>();
+    List<EObject> result = new ArrayList<>();
     // filter 'context' as 'DDiagramElementContainer'
     if (context instanceof AbstractDNode) {
       AbstractDNode currentContainer = (AbstractDNode) context;
       // retrieve Diagram
       DDiagram currentDiagram = getDiagramContainer(currentContainer);
       // collect all the elements from the Diagram
-      List<EObject> elementsIndiagram = new ArrayList<EObject>();
+      List<EObject> elementsIndiagram = new ArrayList<>();
       for (AbstractDNode aContainer : currentDiagram.getContainers()) {
         elementsIndiagram.add(aContainer.getTarget());
       }
@@ -862,7 +970,7 @@ public class CapellaServices {
     }
 
     if (semanticContext instanceof Structure) {
-      List<Constraint> list = new ArrayList<Constraint>();
+      List<Constraint> list = new ArrayList<>();
       EList<AbstractConstraint> constraints = ((Structure) semanticContext).getOwnedConstraints();
       for (AbstractConstraint abstractConstraint : constraints) {
         if (abstractConstraint instanceof Constraint) {
@@ -871,12 +979,12 @@ public class CapellaServices {
       }
       return list;
     }
-    return new ArrayList<Constraint>();
+    return new ArrayList<>();
   }
 
   public List<AbstractFunction> getCDFSemanticAbstractFunctions(AbstractFunction function) {
     // previously named getAvailableContextualFunctions
-    List<AbstractFunction> returnedFunctions = new ArrayList<AbstractFunction>();
+    List<AbstractFunction> returnedFunctions = new ArrayList<>();
 
     ActivityNode node = function;
 
@@ -933,14 +1041,14 @@ public class CapellaServices {
    */
   public List<EObject> getAvailableExchangeItemElementToInsert(EObject context) {
     // collect all super and sub Generalization of the context target not in Diagram
-    List<EObject> result = new ArrayList<EObject>();
+    List<EObject> result = new ArrayList<>();
     // filter AbstractDNode
     if (context instanceof AbstractDNode) {
       AbstractDNode currentContainer = (AbstractDNode) context;
       // retrieve Diagram
       DDiagram currentDiagram = getDiagramContainer(currentContainer);
       // collect all the containers from the Diagram
-      List<EObject> elementsIndiagram = new ArrayList<EObject>();
+      List<EObject> elementsIndiagram = new ArrayList<>();
       for (AbstractDNode aContainer : currentDiagram.getContainers()) {
         elementsIndiagram.add(aContainer.getTarget());
       }
@@ -969,7 +1077,7 @@ public class CapellaServices {
   }
 
   public List<EObject> getAvailableFunctionalAllocation(CapellaElement capellaElement) {
-    List<EObject> returnedList = new ArrayList<EObject>();
+    List<EObject> returnedList = new ArrayList<>();
     IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(capellaElement.eClass(),
         FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__ALLOCATED_FUNCTIONS);
     if (query != null) {
@@ -979,7 +1087,7 @@ public class CapellaServices {
   }
 
   List<AbstractFunction> getAvailableFunctionsInDataFlowBlank(AbstractFunction context) {
-    FunctionPkg pkgOwner = (FunctionPkg) getAncestor(context, FaPackage.Literals.FUNCTION_PKG.getName());
+    FunctionPkg pkgOwner = (FunctionPkg) getAncestor(context, FaPackage.Literals.FUNCTION_PKG);
     return FunctionPkgExt.getAllAbstractFunctions(pkgOwner);
   }
 
@@ -987,9 +1095,9 @@ public class CapellaServices {
    * used in context, oa, logical, physical
    */
   public List<AbstractFunction> getAvailableFunctionsToInsert(EObject current) {
-    List<AbstractFunction> returnedFunctions = new ArrayList<AbstractFunction>();
+    List<AbstractFunction> returnedFunctions = new ArrayList<>();
     List<DNodeContainer> allGraphicalContainers = null;
-    List<DNode> ownedNodes = new ArrayList<DNode>();
+    List<DNode> ownedNodes = new ArrayList<>();
     AbstractFunction rootFunction = null;
 
     if (current instanceof DSemanticDecorator) {
@@ -1007,12 +1115,12 @@ public class CapellaServices {
       }
 
     }
-    returnedFunctions.addAll(FunctionExt.getAllAbstractFunctions(rootFunction));
+    returnedFunctions.addAll(getCache(FunctionExt::getAllAbstractFunctions, rootFunction));
     returnedFunctions.removeAll(ownedNodes);
 
-    if(allGraphicalContainers != null){
+    if (allGraphicalContainers != null) {
       for (DDiagramElementContainer aNodeContainer : allGraphicalContainers) {
-        List<AbstractFunction> toBeRemoved = new ArrayList<AbstractFunction>();
+        List<AbstractFunction> toBeRemoved = new ArrayList<>();
         if (aNodeContainer.getTarget() instanceof AbstractFunction) {
           returnedFunctions.remove(aNodeContainer.getTarget());
           for (AbstractFunction anAbstractFunction : returnedFunctions) {
@@ -1049,14 +1157,14 @@ public class CapellaServices {
    */
   public List<EObject> getAvailableGeneralizationToInsert(EObject context) {
     // collect all super and sub Generalization of the context target not in Diagram
-    List<EObject> result = new ArrayList<EObject>();
+    List<EObject> result = new ArrayList<>();
     // filter AbstractDNode
     if (context instanceof AbstractDNode) {
       AbstractDNode currentContainer = (AbstractDNode) context;
       // retrieve Diagram
       DDiagram currentDiagram = getDiagramContainer(currentContainer);
       // collect all the containers from the Diagram
-      List<EObject> elementsIndiagram = new ArrayList<EObject>();
+      List<EObject> elementsIndiagram = new ArrayList<>();
       for (AbstractDNode aContainer : currentDiagram.getContainers()) {
         elementsIndiagram.add(aContainer.getTarget());
       }
@@ -1097,14 +1205,15 @@ public class CapellaServices {
   /*
    * used in context, logical, physical
    */
-  public List<ActivityNode> getAvailablePins(AbstractFunction context, DDiagram viewPoint, AbstractDNode containerView) {
-    List<ActivityNode> returnedList = new ArrayList<ActivityNode>();
+  public List<ActivityNode> getAvailablePins(AbstractFunction context, DDiagram viewPoint,
+      AbstractDNode containerView) {
+    List<ActivityNode> returnedList = new ArrayList<>();
     returnedList.addAll(getAllContainedPins(context));
 
     // Remove all pins already displayed in inner function
     if (containerView instanceof DNodeContainer) {
-      for (DNodeContainer aContainer : FaServices.getFaServices().getOwnedVisibleFunctionContainersInDataFlowBlank(
-          (DNodeContainer) containerView, viewPoint)) {
+      for (DNodeContainer aContainer : FaServices.getFaServices()
+          .getOwnedVisibleFunctionContainersInDataFlowBlank((DNodeContainer) containerView, viewPoint)) {
         Iterator<ActivityNode> returnedIterator = returnedList.iterator();
         if (aContainer.getTarget() != null) {
           while (returnedIterator.hasNext()) {
@@ -1167,13 +1276,16 @@ public class CapellaServices {
   }
 
   /**
-   * Check if given elements are contained in containers which are in the same containment tree (the method is used to know if an edge is internal).
+   * Check if given elements are contained in containers which are in the same containment tree (the method is used to
+   * know if an edge is internal).
+   * 
    * @param sourcePort
    * @param targetPort
    * @return
    */
   public boolean areInternalEdgePorts(DSemanticDecorator sourcePort, DSemanticDecorator targetPort) {
-    return (EcoreUtil.isAncestor(sourcePort.eContainer(), targetPort.eContainer())) || (EcoreUtil.isAncestor(targetPort.eContainer(), sourcePort.eContainer()));
+    return (EcoreUtil.isAncestor(sourcePort.eContainer(), targetPort.eContainer()))
+        || (EcoreUtil.isAncestor(targetPort.eContainer(), sourcePort.eContainer()));
   }
 
   /**
@@ -1185,7 +1297,7 @@ public class CapellaServices {
    * @return
    */
   public EObject getBestCandidate(EObject eObject, List<?> first, List<?> second) {
-    List<Object> first2 = new LinkedList<Object>(first);
+    List<Object> first2 = new LinkedList<>(first);
     first2.retainAll(second);
     if (first2.isEmpty() && (eObject instanceof DSemanticDecorator)) {
       return ((DSemanticDecorator) eObject).getTarget();
@@ -1198,9 +1310,9 @@ public class CapellaServices {
    * common.odesign
    */
   public EObject getBestGraphicalContainer(EObject eObject, DDiagram diagram, EClass eclass) {
-    Hashtable<EObject, DDiagramElement> elementsInDiagram = new Hashtable<EObject, DDiagramElement>(); // all displayed
-                                                                                                       // elements in
-                                                                                                       // the diagram
+    Hashtable<EObject, DDiagramElement> elementsInDiagram = new Hashtable<>(); // all displayed
+    // elements in
+    // the diagram
 
     // get all displayed functions in the diagram
     for (DDiagramElement aContainer : diagram.getContainers()) {
@@ -1288,7 +1400,7 @@ public class CapellaServices {
   }
 
   private List<Pin> getContainedPins(AbstractFunction function) {
-    List<Pin> result = new LinkedList<Pin>();
+    List<Pin> result = new LinkedList<>();
     result.addAll(function.getInputs());
     result.addAll(function.getOutputs());
     return result;
@@ -1304,8 +1416,8 @@ public class CapellaServices {
       }
     }
 
-    EList<EObject> deployedElements = new BasicEList<EObject>();
-    EList<EObject> containerViewdeployedElements = new BasicEList<EObject>();
+    EList<EObject> deployedElements = new BasicEList<>();
+    EList<EObject> containerViewdeployedElements = new BasicEList<>();
     if (!hasActivatedLayer) {
       // retrieve all the DeployedElement in depth
       getInDepthDeployedElements(context, deployedElements);
@@ -1348,7 +1460,7 @@ public class CapellaServices {
         target = ((DSemanticDecorator) current).getTarget();
       }
       Object oDiagram = CsServices.getService().getInterpreterVariable(target, IInterpreterSiriusVariables.DIAGRAM);
-      if ((oDiagram != null) && (oDiagram instanceof DDiagram)) {
+      if (oDiagram instanceof DDiagram) {
         return (DDiagram) oDiagram;
       }
     }
@@ -1364,7 +1476,7 @@ public class CapellaServices {
    * @return
    */
   public List<EObject> getEdgeExchangeCategorySemanticElements(EObject context, DEdge view) {
-    List<EObject> returnedList = new ArrayList<EObject>();
+    List<EObject> returnedList = new ArrayList<>();
     if (context instanceof ExchangeCategory) {
       returnedList.add(context);
       ExchangeCategory currentCategory = (ExchangeCategory) context;
@@ -1373,7 +1485,7 @@ public class CapellaServices {
       for (FunctionalExchange anExchange : currentCategory.getExchanges()) {
         boolean toAdd = false;
         EObject sourceContainer = anExchange.getSource().eContainer();
-        while ((sourceContainer != null) && (sourceContainer instanceof AbstractFunction)) {
+        while (sourceContainer instanceof AbstractFunction) {
           if (sourceContainer.equals(sourceNodeContainer)) {
             toAdd = true;
             break;
@@ -1385,7 +1497,7 @@ public class CapellaServices {
         }
         toAdd = false;
         EObject targetContainer = anExchange.getTarget().eContainer();
-        while ((targetContainer != null) && (targetContainer instanceof AbstractFunction)) {
+        while (targetContainer instanceof AbstractFunction) {
           if (targetContainer.equals(targetNodeContainer)) {
             toAdd = true;
             break;
@@ -1401,7 +1513,7 @@ public class CapellaServices {
   }
 
   public List<EObject> getEmptyList(EObject context) {
-    return new ArrayList<EObject>();
+    return new ArrayList<>();
   }
 
   public String getEObjectLabelProviderHelper(EObject context) {
@@ -1417,7 +1529,7 @@ public class CapellaServices {
    */
   public List<EObject> getExistingAssociationFromDiagram(EObject context) {
     // collect all association of the context target existing in Diagram
-    List<EObject> result = new ArrayList<EObject>();
+    List<EObject> result = new ArrayList<>();
     // filter 'context' as 'DDiagramElementContainer'
     if (context instanceof AbstractDNode) {
       AbstractDNode currentContainer = (AbstractDNode) context;
@@ -1443,7 +1555,7 @@ public class CapellaServices {
    */
   public List<EObject> getExistingConstraintsFromDiagram(EObject context, DDiagram diagram) {
     // collect all association of the context target existing in Diagram
-    List<EObject> result = new ArrayList<EObject>();
+    List<EObject> result = new ArrayList<>();
     if ((null == diagram) || (null == context)) {
       return result;
     }
@@ -1486,8 +1598,9 @@ public class CapellaServices {
    *         '$containerVeiw'.
    */
   public List<EObject> getExistingExchangeItemElementFromDiagram(EObject context) {
-    // collect all super and sub Generalization of the context target existing in Diagram
-    List<EObject> result = new ArrayList<EObject>();
+    // collect all super and sub Generalization of the context target existing in
+    // Diagram
+    List<EObject> result = new ArrayList<>();
     // filter 'context' as 'DDiagramElementContainer'
     if (context instanceof AbstractDNode) {
       AbstractDNode currentContainer = (AbstractDNode) context;
@@ -1513,8 +1626,9 @@ public class CapellaServices {
    *         '$containerVeiw'.
    */
   public List<EObject> getExistingGeneralizationFromDiagram(EObject context) {
-    // collect all super and sub Generalization of the context target existing in Diagram
-    List<EObject> result = new ArrayList<EObject>();
+    // collect all super and sub Generalization of the context target existing in
+    // Diagram
+    List<EObject> result = new ArrayList<>();
     // filter 'context' as 'DDiagramElementContainer'
     if (context instanceof AbstractDNode) {
       AbstractDNode currentContainer = (AbstractDNode) context;
@@ -1532,7 +1646,7 @@ public class CapellaServices {
   }
 
   public Collection<FunctionalChain> getFunctionalChain(final AbstractFunction context) {
-    Collection<FunctionalChain> result = new ArrayList<FunctionalChain>();
+    Collection<FunctionalChain> result = new ArrayList<>();
     result.addAll(context.getOwnedFunctionalChains());
     TreeIterator<EObject> allContents = context.eAllContents();
     while (allContents.hasNext()) {
@@ -1546,7 +1660,7 @@ public class CapellaServices {
   }
 
   public List<DEdge> getIncomingEdges(EdgeTarget containerView) {
-    List<DEdge> returnedList = new ArrayList<DEdge>();
+    List<DEdge> returnedList = new ArrayList<>();
     DDiagram currentDiagram = getDiagramContainer(containerView);
     List<DEdge> allEgdesInDiagram = currentDiagram.getEdges();
     for (DEdge anEdge : containerView.getIncomingEdges()) {
@@ -1610,7 +1724,7 @@ public class CapellaServices {
    * @return
    */
   public List<EObject> getInputPinCategorySemanticElements(EObject context, DSemanticDecorator view) {
-    List<EObject> returnedList = new ArrayList<EObject>();
+    List<EObject> returnedList = new ArrayList<>();
     if (context instanceof ExchangeCategory) {
       returnedList.add(context);
       ExchangeCategory currentCategory = (ExchangeCategory) context;
@@ -1618,7 +1732,7 @@ public class CapellaServices {
       for (FunctionalExchange anExchange : currentCategory.getExchanges()) {
         boolean toAdd = false;
         EObject targetContainer = anExchange.getTarget().eContainer();
-        while ((targetContainer != null) && (targetContainer instanceof AbstractFunction)) {
+        while (targetContainer instanceof AbstractFunction) {
           if (targetContainer.equals(container)) {
             toAdd = true;
             break;
@@ -1642,7 +1756,9 @@ public class CapellaServices {
    * @return
    */
   public List<?> getIntersection(EObject eObject, List<?> first, List<?> second) {
-    List<Object> first2 = new LinkedList<Object>(first);
+    if (first == null) // for acceleo2aql
+      first = new ArrayList<>();
+    List<Object> first2 = new LinkedList<>(first);
     first2.retainAll(second);
     return first2;
   }
@@ -1661,7 +1777,7 @@ public class CapellaServices {
     if (crossReferenceAdapter != null) {
       Collection<EStructuralFeature.Setting> allInverseReferences = crossReferenceAdapter.getInverseReferences(object,
           true);
-      Collection<EObject> inverseReferences = new HashSet<EObject>();
+      Collection<EObject> inverseReferences = new HashSet<>();
       for (EStructuralFeature.Setting setting : allInverseReferences) {
         if (setting.getEStructuralFeature() == reference) {
           inverseReferences.add(setting.getEObject());
@@ -1674,7 +1790,7 @@ public class CapellaServices {
   }
 
   static LinkedList<AbstractFunction> getLeaves(AbstractFunction function) {
-    LinkedList<AbstractFunction> subFunctions = new LinkedList<AbstractFunction>();
+    LinkedList<AbstractFunction> subFunctions = new LinkedList<>();
     for (AbstractFunction func : function.getSubFunctions()) {
       if (AbstractFunctionExt.isLeaf(func)) {
         subFunctions.add(func);
@@ -1685,19 +1801,6 @@ public class CapellaServices {
     return subFunctions;
   }
 
-  /**
-   * Returns the logger services.
-   * 
-   * @return the logger services.
-   */
-  // public LoggerServices getLoggerServices() {
-  // if (this.loggerServices == null) {
-  // this.loggerServices = new LoggerActivationDeactivationAspect(new BasicLoggerServices());
-  // ((LoggerActivationDeactivationAspect) this.loggerServices).setActive(LOGGER_ACTIVE);
-  // }
-  // return loggerServices;
-  // }
-
   public List<Component> getLogicalParent(EObject context, Component aComponent) {
     return ComponentExt.getDirectParents(aComponent);
   }
@@ -1707,7 +1810,7 @@ public class CapellaServices {
   }
 
   public List<DEdge> getOutgoingEdges(EdgeTarget containerView) {
-    List<DEdge> returnedList = new ArrayList<DEdge>();
+    List<DEdge> returnedList = new ArrayList<>();
     DDiagram currentDiagram = getDiagramContainer(containerView);
     List<DEdge> allEgdesInDiagram = currentDiagram.getEdges();
     for (DEdge anEdge : containerView.getOutgoingEdges()) {
@@ -1726,7 +1829,7 @@ public class CapellaServices {
    * @return
    */
   public List<EObject> getOutputPinCategorySemanticElements(EObject context, DSemanticDecorator view) {
-    List<EObject> returnedList = new ArrayList<EObject>();
+    List<EObject> returnedList = new ArrayList<>();
     if (context instanceof ExchangeCategory) {
       returnedList.add(context);
       ExchangeCategory currentCategory = (ExchangeCategory) context;
@@ -1734,7 +1837,7 @@ public class CapellaServices {
       for (FunctionalExchange anExchange : currentCategory.getExchanges()) {
         boolean toAdd = false;
         EObject sourceContainer = anExchange.getSource().eContainer();
-        while ((sourceContainer != null) && (sourceContainer instanceof AbstractFunction)) {
+        while (sourceContainer instanceof AbstractFunction) {
           if (sourceContainer.equals(container)) {
             toAdd = true;
             break;
@@ -1783,7 +1886,7 @@ public class CapellaServices {
   public Set<ExchangeCategory> getShowableCategories(EObject eObject, final List<ExchangeCategory> categories,
       final List<DEdge> exchangesView) {
 
-    Set<ExchangeCategory> showableCategory = new HashSet<ExchangeCategory>();
+    Set<ExchangeCategory> showableCategory = new HashSet<>();
 
     for (DEdge edge : exchangesView) {
       if (edge.getTarget() instanceof FunctionalExchange) {
@@ -1806,7 +1909,7 @@ public class CapellaServices {
    * @return
    */
   public Collection<GeneralizableElement> getSuperClassifiers(GeneralizableElement aClassifier) {
-    Collection<GeneralizableElement> superClassifiers = new ArrayList<GeneralizableElement>();
+    Collection<GeneralizableElement> superClassifiers = new ArrayList<>();
     superClassifiers.add(aClassifier);
     for (Generalization aGeneralization : aClassifier.getSuperGeneralizations()) {
       superClassifiers.addAll(getSuperClassifiers(aGeneralization.getSuper()));
@@ -1822,7 +1925,7 @@ public class CapellaServices {
    */
   public Collection<GeneralizableElement> getSuperClassifiers(GeneralizableElement aClassifier,
       Generalization generalization) {
-    Collection<GeneralizableElement> superClassifiers = new ArrayList<GeneralizableElement>();
+    Collection<GeneralizableElement> superClassifiers = new ArrayList<>();
     superClassifiers.add(aClassifier);
     for (Generalization aGeneralization : aClassifier.getSuperGeneralizations()) {
       if (!aGeneralization.equals(generalization)) {
@@ -1840,7 +1943,7 @@ public class CapellaServices {
    * @return
    */
   public Collection<GeneralizableElement> getSubClassifiers(GeneralizableElement aClassifier) {
-    Collection<GeneralizableElement> superClassifiers = new ArrayList<GeneralizableElement>();
+    Collection<GeneralizableElement> superClassifiers = new ArrayList<>();
     superClassifiers.add(aClassifier);
     for (Generalization aGeneralization : aClassifier.getSubGeneralizations()) {
       superClassifiers.addAll(getSubClassifiers(aGeneralization.getSub()));
@@ -1856,7 +1959,7 @@ public class CapellaServices {
    */
   public Collection<GeneralizableElement> getSubClassifiers(GeneralizableElement aClassifier,
       Generalization generalization) {
-    Collection<GeneralizableElement> superClassifiers = new ArrayList<GeneralizableElement>();
+    Collection<GeneralizableElement> superClassifiers = new ArrayList<>();
     superClassifiers.add(aClassifier);
     for (Generalization aGeneralization : aClassifier.getSubGeneralizations()) {
       if (!aGeneralization.equals(generalization)) {
@@ -1877,8 +1980,8 @@ public class CapellaServices {
       }
     }
 
-    EList<EObject> functionalAllocations = new BasicEList<EObject>();
-    EList<EObject> containerfunctionalAllocations = new BasicEList<EObject>();
+    EList<EObject> functionalAllocations = new BasicEList<>();
+    EList<EObject> containerfunctionalAllocations = new BasicEList<>();
     if (!hasActivatedLayer) {
       // retrieve all the DeployedElement in depth
       getInDepthTargetElements(context, functionalAllocations);
@@ -1973,7 +2076,7 @@ public class CapellaServices {
    * @return
    */
   public List<DSemanticDecorator> getVisibles(List<DSemanticDecorator> decorators) {
-    List<DSemanticDecorator> visibles = new LinkedList<DSemanticDecorator>(decorators);
+    List<DSemanticDecorator> visibles = new LinkedList<>(decorators);
     for (DSemanticDecorator dec : decorators) {
       if (dec instanceof DDiagramElement) {
         if (!isVisibleInDiagram(dec)) {
@@ -2000,20 +2103,6 @@ public class CapellaServices {
     return context;
   }
 
-  public boolean isA(EObject current, String type) {
-    if ((current == null)) {
-      return type == null;
-    }
-    if ((type == null)) {
-      return false;
-    }
-    if (type.equals(current.eClass().getName())) {
-      // Avoid weird computation if same name
-      return true;
-    }
-    return EFactory.eInstanceOf(current, type);
-  }
-
   /**
    * used everywhere
    * 
@@ -2036,12 +2125,12 @@ public class CapellaServices {
    * @return is function allocated to component/role
    */
   public boolean isAllocatedFunction(EObject eObject, AbstractFunction function, EObject container) {
-    LinkedList<AbstractFunction> allocatedFunctions = new LinkedList<AbstractFunction>();
+    LinkedList<AbstractFunction> allocatedFunctions = new LinkedList<>();
 
     if (container instanceof Component) {
       Component component = (Component) container;
       allocatedFunctions.addAll(component.getAllocatedFunctions());
-      for (Component subComponent : ComponentExt.getAllSubUsedAndDeployedComponents(component)) {
+      for (Component subComponent : getCache(ComponentExt::getAllSubUsedAndDeployedComponents, component)) {
         allocatedFunctions.addAll(subComponent.getAllocatedFunctions());
       }
     }
@@ -2049,40 +2138,87 @@ public class CapellaServices {
     return isAllocatedFunctionCommon(function, container, allocatedFunctions);
   }
 
-  public boolean isAllocatedFunction(AbstractFunction function, EObject container, DNodeContainer containerView) {
-    LinkedList<AbstractFunction> allocatedFunctions = new LinkedList<AbstractFunction>();
-
-    List<AbstractFunction> showableFunctions = FaServices.getFaServices().getShowableAllocatedFunctions(container,
-        containerView);
-    allocatedFunctions.addAll(showableFunctions);
-
-    return isAllocatedFunctionCommon(function, container, allocatedFunctions);
-  }
-
   /**
-   * Is given AbtractFunction directly allocated (or considered as allocated) to given Component.<br>
-   * To be considered as allocated, all leaf of a non leaf AbstractFunction must be allocated to given Component.
+   * Returns true if the function can be displayed in the container which has the specified target, false otherwise.
+   * 
    * @param function
+   *          the function
    * @param container
-   * @return
+   *          the container target
+   * @param containerView
+   *          the container view
+   * @return true if the function can be displayed in the container which has the specified target, false otherwise.
+   * 
+   *         TODO This function should have a more meaningfull name such as shouldFunctionBeDisplayed, the current
+   *         isAllocatedFunction name is confusing. This should be changed in a non patch version.
    */
-  public boolean isAllocatedInThisComponent(AbstractFunction function, EObject container) {
-    if (AbstractFunctionExt.isLeaf(function)) {
-      List<Component> allocatingComponent = AbstractFunctionExt.getAllocatingComponents(function);
-      if (allocatingComponent.size() != 1 || allocatingComponent.get(0) != container) {
-        // Function is a leaf but is not allocated to given Component
+  public boolean isAllocatedFunction(AbstractFunction function, EObject container, DNodeContainer containerView) {
+    EObject containerTarget;
+
+    if (function instanceof OperationalActivity) {
+      containerTarget = container;
+    } else {
+      containerTarget = CsServices.getService().getComponentType(container);
+    }
+
+    // contains allocation blocks and allocation roles
+    Set<EObject> allocationObjects = AbstractFunctionExt.getAllocationBlocks(function).stream()
+        .filter(EObject.class::isInstance).map(EObject.class::cast).collect(Collectors.toSet());
+
+    // function directly contained in the containerTarget
+    if (allocationObjects.contains(containerTarget)) {
+      return true;
+    }
+
+    // none of the allocation blocks must be in this container
+    // otherwise we could just display the function in the visible container
+    for (EObject allocationObject : allocationObjects) {
+      if (DiagramServices.getDiagramServices().isIndirectlyOnDiagram(containerView, allocationObject)) {
         return false;
       }
-    } else {
-      List<AbstractFunction> allLeaves = FunctionExt.getAllLeafAbstractFunctions(function);
-      for (AbstractFunction leaf : allLeaves) {
-        List<Component> allocatingComponent = AbstractFunctionExt.getAllocatingComponents(leaf);
-        if (allocatingComponent.size() != 1 || allocatingComponent.get(0) != container) {
-          // Function is not a leaf and at least one of its leaf is not allocated to given Component
-          return false;
-        }
+    }
+
+    // all the allocation blocks are not in the container, analyze the subcomponents
+    Set<EObject> subComponents = new HashSet<>();
+    if (container instanceof Component) {
+      subComponents.addAll(ComponentExt.getSubUsedAndDeployedComponents((Component) container));
+
+      if (container instanceof Entity) {
+        subComponents.addAll(((Entity) container).getAllocatedRoles());
+      }
+    } else if (container instanceof Part) {
+      subComponents.addAll(PartExt.getSubUsedAndDeployedComponentsOfPart((Part) container));
+    }
+
+    // not a single allocation block is visible in the container, and at least one is a direct subcomponent of target
+    if (!Collections.disjoint(subComponents, allocationObjects)) {
+      return true;
+    }
+
+    // not a direct subcomponent -> compute the subproblem on hidden subcomponents and stop at first match
+    for (EObject subComponent : subComponents) {
+      boolean isOnDiagram = DiagramServices.getDiagramServices().isIndirectlyOnDiagram(containerView, subComponent);
+
+      if (!isOnDiagram && isAllocatedFunction(function, subComponent, containerView)) {
+        return true;
       }
     }
+
+    // none of the hidden subcomponents is a valid target -> analyze children functions
+    EList<AbstractFunction> subFunctions = function.getSubFunctions();
+
+    if (subFunctions.isEmpty()) {
+      return false;
+    }
+
+    // an element can be displayed in a container, if all of its children can be displayed in that container
+    // compute the subproblem on all children
+    for (AbstractFunction subFunction : subFunctions) {
+      if (!isAllocatedFunction(subFunction, container, containerView)) {
+        return false;
+      }
+    }
+
     return true;
   }
 
@@ -2090,6 +2226,7 @@ public class CapellaServices {
       LinkedList<AbstractFunction> allocatedFunctions) {
     boolean result = false;
 
+    // can be added after
     if (container instanceof Role) {
       Role role = (Role) container;
       for (ActivityAllocation alloc : role.getOwnedActivityAllocations()) {
@@ -2104,7 +2241,7 @@ public class CapellaServices {
       result = true;
     } else if (!FunctionExt.isLeaf(function)) {
       LinkedList<AbstractFunction> leaves = getLeaves(function);
-      LinkedList<AbstractFunction> allocatedLeaves = new LinkedList<AbstractFunction>(leaves);
+      LinkedList<AbstractFunction> allocatedLeaves = new LinkedList<>(leaves);
       allocatedLeaves.retainAll(allocatedFunctions);
       if (allocatedLeaves.size() == leaves.size()) {
         result = true;
@@ -2112,6 +2249,64 @@ public class CapellaServices {
     }
 
     return result;
+  }
+
+  /**
+   * Is given AbtractFunction directly allocated (or considered as allocated) to given Component.<br>
+   * To be considered as allocated, all leaf of a non leaf AbstractFunction must be allocated to given Component.
+   * 
+   * @param function
+   * @param container
+   * @return
+   */
+  public boolean isAllocatedInThisComponent(AbstractFunction function, EObject container) {
+    if (AbstractFunctionExt.isLeaf(function)) {
+      List<Component> allocatingComponent = getCache(AbstractFunctionExt::getAllocatingComponents, function);
+      if (allocatingComponent.size() != 1 || allocatingComponent.get(0) != container) {
+        // Function is a leaf but is not allocated to given Component
+        return false;
+      }
+    } else {
+      List<AbstractFunction> allLeaves = getCache(FunctionExt::getAllLeafAbstractFunctions, function);
+      for (AbstractFunction leaf : allLeaves) {
+        List<Component> allocatingComponent = getCache(AbstractFunctionExt::getAllocatingComponents, leaf);
+        if (allocatingComponent.size() != 1 || allocatingComponent.get(0) != container) {
+          // Function is not a leaf and at least one of its leaf is not allocated to given
+          // Component
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  /**
+   * 
+   * Function border should be dashed only in the specified use cases : - ALL its leaf sub-functions are allocated to
+   * sub-components of the input component - Function is not allocated directly to the displayed component
+   * 
+   * @param function
+   * @param container
+   * @return Return whether the border of a function should be dashed or not.
+   */
+  public boolean isDashedFunction(AbstractFunction function, Component container) {
+    if (AbstractFunctionExt.isLeaf(function)) {
+      List<Component> allocatingComponents = getCache(AbstractFunctionExt::getAllocatingComponents, function);
+      if (!allocatingComponents.isEmpty()) {
+        return allocatingComponents.stream().allMatch(comp -> comp != container);
+      }
+    } else {
+      List<AbstractFunction> allLeaves = getCache(FunctionExt::getAllLeafAbstractFunctions, function);
+      List<Component> subComponents = getCache(ComponentExt::getAllSubUsedAndDeployedComponents, container);
+      for (AbstractFunction leaf : allLeaves) {
+        List<Component> allocatingComponents = getCache(AbstractFunctionExt::getAllocatingComponents, leaf);
+        if (allocatingComponents.stream().noneMatch(comp -> comp != container && subComponents.contains(comp))) {
+          return false;
+        }
+      }
+      return true;
+    }
+    return false;
   }
 
   /**
@@ -2137,11 +2332,10 @@ public class CapellaServices {
             DNodeContainer dnc = (DNodeContainer) next;
             EList<DDiagramElement> ownedDiagramElements = dnc.getOwnedDiagramElements();
             for (DDiagramElement diagramElement : ownedDiagramElements) {
-              if (diagramElement instanceof DNode) {
-                if (((DNode) diagramElement).getTarget().equals(((AbstractDNode) context2).getTarget())) {
-                  flag = false;
-                  break;
-                }
+              if (diagramElement instanceof DNode
+                  && ((DNode) diagramElement).getTarget().equals(((AbstractDNode) context2).getTarget())) {
+                flag = false;
+                break;
               }
             }
           }
@@ -2158,13 +2352,9 @@ public class CapellaServices {
         EList<Layer> activatedLayers = dDiagram.getActivatedLayers();
         for (Layer layer : activatedLayers) {
           if (layer.getName().equalsIgnoreCase("Sub Components")) { //$NON-NLS-1$
-            flag = false;
-            break;
+            return false;
           }
         }
-      }
-      if (flag) {
-        return true;
       }
     }
 
@@ -2208,10 +2398,9 @@ public class CapellaServices {
    */
   public boolean isGeneralizable(final EObject context, EObject source, EObject target) {
     // return false if source(Class) is not primitive and target(Class) is primitive
-    if ((source instanceof Class) && (target instanceof Class)) {
-      if (((Class) source).isIsPrimitive() && !((Class) target).isIsPrimitive()) {
-        return false;
-      }
+    if ((source instanceof Class) && (target instanceof Class) && ((Class) source).isIsPrimitive()
+        && !((Class) target).isIsPrimitive()) {
+      return false;
     }
     // return false if target(Class) is not primitive and source(Class) is primitive
     if ((source instanceof Class) && (target instanceof Class)) {
@@ -2225,9 +2414,8 @@ public class CapellaServices {
     }
 
     if (((source instanceof PhysicalQuantity) && (target instanceof NumericType))
-        || ((source instanceof Component) && (target instanceof Component))
-        || ((source instanceof GeneralizableElement) && (target instanceof GeneralizableElement) && source.eClass()
-            .equals(target.eClass()))) {
+        || ((source instanceof Component) && (target instanceof Component)) || ((source instanceof GeneralizableElement)
+            && (target instanceof GeneralizableElement) && source.eClass().equals(target.eClass()))) {
 
       GeneralizableElement targetClass = (GeneralizableElement) target;
       GeneralizableElement sourceClass = (GeneralizableElement) source;
@@ -2249,8 +2437,8 @@ public class CapellaServices {
 
         }
       } else {
-        return (!getSuperClassifiers(sourceClass).contains(targetClass) && !getSuperClassifiers(targetClass).contains(
-            sourceClass));
+        return (!getSuperClassifiers(sourceClass).contains(targetClass)
+            && !getSuperClassifiers(targetClass).contains(sourceClass));
       }
     }
 
@@ -2294,10 +2482,10 @@ public class CapellaServices {
    */
   public boolean isNodeComponent(final InstanceRole instanceRole) {
     BlockArchitecture ownerBlockArchitecture = (BlockArchitecture) getAncestor(instanceRole,
-        CsPackage.Literals.BLOCK_ARCHITECTURE.getName());
+        CsPackage.Literals.BLOCK_ARCHITECTURE);
     boolean isNodeComponent = (ownerBlockArchitecture instanceof PhysicalArchitecture);
-    Component instanceRoleComponent = instanceRole == null ? null : (Component) instanceRole.getRepresentedInstance()
-        .getAbstractType();
+    Component instanceRoleComponent = instanceRole == null ? null
+        : (Component) instanceRole.getRepresentedInstance().getAbstractType();
     if (instanceRoleComponent instanceof AbstractPhysicalComponent) {
       AbstractPhysicalComponent sourcePhysicalComponent = (AbstractPhysicalComponent) instanceRoleComponent;
       isNodeComponent = isNodeComponent && sourcePhysicalComponent.getNature().equals(PhysicalComponentNature.NODE);
@@ -2438,6 +2626,76 @@ public class CapellaServices {
   }
 
   /**
+   * used in common.odesign
+   * 
+   * @param context
+   * @param sourceCapability
+   *          - The source Capability of the involvement link
+   * @param involvementTarget
+   *          - The Actor target of the involvement link
+   * @return
+   */
+  public boolean isActorInvolvedWithCapability(EObject context, EObject sourceCapability, EObject involvementTarget) {
+
+    if ((sourceCapability == null) || (involvementTarget == null)) {
+      return false;
+    }
+
+    EList<AbstractActor> involvedActors = new BasicEList<>();
+
+    // Logical and Physical Levels
+    if (sourceCapability instanceof CapabilityRealization) {
+
+      involvedActors.addAll(((CapabilityRealization) sourceCapability).getParticipatingActors());
+    }
+
+    // System Analysis level
+    else if (sourceCapability instanceof Capability) {
+
+      involvedActors.addAll(((Capability) sourceCapability).getParticipatingActors());
+    }
+
+    if (!involvedActors.isEmpty()) {
+      if (involvedActors.contains(involvementTarget)) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  /**
+   * used in common.odesign
+   * 
+   * @param context
+   * @param sourceCapability
+   *          - The source Capability of the involvement link
+   * @param involvementTarget
+   *          - The SystemComponent target of the involvement link
+   * @return
+   */
+  public boolean isSystemComponentInvolvedWithCapability(EObject context, EObject sourceCapability,
+      EObject involvementTarget) {
+
+    if ((sourceCapability == null) || (involvementTarget == null)) {
+      return false;
+    }
+
+    if (sourceCapability instanceof CapabilityRealization) {
+
+      CapabilityRealization capRealization = (CapabilityRealization) sourceCapability;
+      EList<SystemComponent> involvedComponents = capRealization.getParticipatingSystemComponents();
+      if (!involvedComponents.isEmpty()) {
+        if (involvedComponents.contains(involvementTarget)) {
+          return true;
+        }
+      }
+    }
+
+    return false;
+  }
+
+  /**
    * used by refresh extensions
    * 
    * @param diagram
@@ -2485,16 +2743,16 @@ public class CapellaServices {
    */
   public void removeElement(CapellaElement element) {
     if (element != null) {
-      List<EObject> list = new ArrayList<EObject>();
+      List<EObject> list = new ArrayList<>();
       list.add(element);
       removeElements(list);
     }
   }
 
   public void removeElements(Collection<? extends EObject> elements) {
-    if ((elements != null) && (elements.size() > 0)) {
-      CapellaDeleteCommand command = new CapellaDeleteCommand(TransactionHelper.getExecutionManager(elements),
-          elements, false, false, true);
+    if ((elements != null) && (!elements.isEmpty())) {
+      CapellaDeleteCommand command = new CapellaDeleteCommand(TransactionHelper.getExecutionManager(elements), elements,
+          false, false, true);
       if (command.canExecute()) {
         try {
           command.execute();
@@ -2548,78 +2806,27 @@ public class CapellaServices {
     return CapellaEmbeddedLinkedTextEditorInput.getDefaultText(constraint, constraint.getName());
   }
 
-  public String getFCInvolvmentLabel(FunctionalChainInvolvement fci, DDiagram diagram) {
-    boolean showExchangeItems = false;
-    boolean showExchangeItemsParameters = false;
-    boolean showFEEI = false;
-
-    FunctionalExchange fe = (FunctionalExchange) fci.getInvolved();
-    String result = fe.getName();
-    for (FilterDescription filter : diagram.getActivatedFilters()) {
-      if (filter.getName().equals(IMappingNameConstants.SHOW_EXCHANGE_ITEMS)) {
-        showExchangeItems = true;
-      }
-      if (filter.getName().equals(IMappingNameConstants.SHOW_EXCHANGE_ITEMS_PARAMETERS)) {
-        showExchangeItemsParameters = true;
-      }
-      if (filter.getName().equals(IMappingNameConstants.SHOW_FUNCTIONAL_EXCHANGES_ECHANGE_ITEMS)) {
-        showFEEI = true;
-      }
-    }
-
-    if (showExchangeItems || showFEEI) {
-      StringBuilder sb = new StringBuilder();
-      if (showFEEI) {
-        sb.append(result);
-        sb.append("["); //$NON-NLS-1$
-      }
-      int indice = 0;
-      EList<ExchangeItem> exchangedItems = fci.getExchangedItems();
-      if ((null == exchangedItems) || exchangedItems.isEmpty()) {
-        for (AbstractExchangeItem ei : fe.getExchangedItems()) {
-          sb.append(ExchangeItemExt.getEILabel(ei, showExchangeItemsParameters));
-          indice++;
-          if (indice < fe.getExchangedItems().size()) {
-            sb.append(", "); //$NON-NLS-1$
-          }
-        }
-      } else {
-        for (AbstractExchangeItem ei : exchangedItems) {
-          sb.append(ExchangeItemExt.getEILabel(ei, showExchangeItemsParameters));
-          indice++;
-          if (indice < exchangedItems.size()) {
-            sb.append(", "); //$NON-NLS-1$
-          }
-        }
-      }
-
-      if (showFEEI) {
-        sb.append("]"); //$NON-NLS-1$
-      }
-      return sb.toString();
-    }
-
-    return result;
-  }
-
   /**
-   * Returns the EClass of the given domain. 
-   * @param domain : Sirius Domain Class which can be EClassName or prefix:EClassName
+   * Returns the EClass of the given domain.
+   * 
+   * @param domain
+   *          : Sirius Domain Class which can be EClassName or prefix:EClassName
    */
   public EClass getEClass(EObject context, String domain) {
     EClass clazz = null;
     ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(context);
-    //We would call accessor.getEClass(domain) but it doesn't exist and EcoreIntrinsicExtender.getEClassesFromName is private
+    // We would call accessor.getEClass(domain) but it doesn't exist and
+    // EcoreIntrinsicExtender.getEClassesFromName is private
     try {
       clazz = accessor.createInstance(domain).eClass();
     } catch (Exception e) {
-      //Nothing here
+      // Nothing here
     }
     return clazz;
   }
 
   public EClass getDomainClass(EObject context, DiagramElementMapping mapping) {
-    DiagramElementMappingQuery query  = new DiagramElementMappingQuery(mapping);
+    DiagramElementMappingQuery query = new DiagramElementMappingQuery(mapping);
     Option<String> domainClass = query.getDomainClass();
     if (domainClass.some()) {
       return getEClass(context, domainClass.get());
@@ -2631,56 +2838,122 @@ public class CapellaServices {
     return EObjectExt.getText(e);
   }
 
-  private static Boolean poc529992Enabled = null;
-  
   /**
-   * Check if the POC of bug 529992 is enabled.
+   * A service provides associated semantic elements for a given target.
    * 
-   * @param self
-   *          The current element
-   * @return true if the POC of bug 529992 is enabled, false otherwise.
+   * @param target
+   * @return A collection of associated semantic elements (including the target itself) based on the type of given
+   *         target.
    */
-  public boolean isPoc529992Enabled(EObject self) {
-    if (poc529992Enabled == null) {
-      poc529992Enabled = Boolean.getBoolean(PopupMenuContribution.POPUP_MENU_IMPROVEMENT_ID);
+  public Collection<EObject> getAssociatedSemanticElements(EObject target) {
+    List<EObject> associatedSemanticElements = new ArrayList<>();
+    if (target == null) {
+      return associatedSemanticElements;
     }
-    return poc529992Enabled;
+
+    if (target instanceof AbstractTypedElement) {
+      Collection<EObject> elements = getAssociatedSemanticElementsForAbstractTypedElement(
+          (AbstractTypedElement) target);
+      associatedSemanticElements.addAll(elements);
+    }
+    if (target instanceof EventReceiptOperation) {
+      Collection<EObject> elements = getAssociatedSemanticElementsForEventReceiptOperation(
+          (EventReceiptOperation) target);
+      associatedSemanticElements.addAll(elements);
+    }
+    if (target instanceof AbstractEnd) {
+      Collection<EObject> elements = getAssociatedSemanticElementsForAbstractEnd((AbstractEnd) target);
+      associatedSemanticElements.addAll(elements);
+    }
+    if (target instanceof EventSentOperation) {
+      Collection<EObject> elements = getAssociatedSemanticElementsForEventSentOperation((EventSentOperation) target);
+      associatedSemanticElements.addAll(elements);
+    }
+    if (target instanceof SequenceMessage) {
+      Collection<EObject> elements = getAssociatedSemanticElementsForSequenceMessage((SequenceMessage) target);
+      associatedSemanticElements.addAll(elements);
+    }
+    if (target instanceof InstanceRole) {
+      Collection<EObject> elements = getAssociatedSemanticElementsForInstanceRole((InstanceRole) target);
+      associatedSemanticElements.addAll(elements);
+    }
+    if (target instanceof StateFragment) {
+      Collection<EObject> elements = getAssociatedSemanticElementsForStateFragment((StateFragment) target);
+      associatedSemanticElements.addAll(elements);
+    }
+    if (target instanceof Involvement) {
+      Collection<EObject> elements = getAssociatedSemanticElementsForInvolvement((Involvement) target);
+      associatedSemanticElements.addAll(elements);
+    }
+
+    List<EObject> associatedSemanticElementsWithoutNulls = associatedSemanticElements.stream().filter(Objects::nonNull)
+        .map(x -> (EObject) x).collect(Collectors.toList());
+
+    if (!associatedSemanticElementsWithoutNulls.isEmpty()) {
+      return associatedSemanticElementsWithoutNulls;
+    }
+    return Arrays.asList(target);
   }
 
-  /**
-   * This method allows to choose a REC-RPL used in the diagram and returns the list of views to be selected
-   * Used only for POC of bug 529992
-   */
-  public Collection<DSemanticDecorator> getElementsFromRECRPL(EObject eo, Collection<DSemanticDecorator> views) {
-
-    Collection<CatalogElement> recs = new HashSet<CatalogElement>();
-    // Retrieve a map<REC, views> from the diagram views
-    HashMapSet<CatalogElement, DSemanticDecorator> viewsPerRec = new HashMapSet<CatalogElement, DSemanticDecorator>();
-    for (DDiagramElement element : ((DDiagram) eo).getDiagramElements()) {
-      if (element != null) {
-        EObject target = element.getTarget();
-        if (target != null && !target.eIsProxy()) {
-
-          for (CatalogElement rec : ReplicableElementExt.getReferencingReplicableElements(target)) {
-            if (rec != null) {
-              recs.add(rec);
-              viewsPerRec.put(rec, element);
-            }
-          }
-        }
-      }
-    }
-
-    Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-    if (recs.isEmpty()) {
-      MessageDialog.openInformation(shell, "Select from given REC-RPL", "There is no element related to a REC-RPL in this diagram");
-      return Collections.emptyList();
-    }
-    CapellaTransfertViewerLabelProvider labelProvider = new CapellaTransfertViewerLabelProvider(
-        TransactionHelper.getEditingDomain(recs));
-    EObject selected = SelectionDialogHelper.simplePropertySelectionDialogWizard(recs, labelProvider, shell,
-        AbstractTreeViewer.ALL_LEVELS);
-    return viewsPerRec.get(selected);
+  private Collection<EObject> getAssociatedSemanticElementsForAbstractTypedElement(AbstractTypedElement element) {
+    List<EObject> semanticElements = new ArrayList<>();
+    semanticElements.add(element);
+    semanticElements.add(element.getAbstractType());
+    return semanticElements;
   }
 
+  private Collection<EObject> getAssociatedSemanticElementsForEventReceiptOperation(EventReceiptOperation element) {
+    List<EObject> semanticElements = new ArrayList<>();
+    semanticElements.add(element);
+    semanticElements.add(element.getOperation());
+    return semanticElements;
+  }
+
+  private Collection<EObject> getAssociatedSemanticElementsForAbstractEnd(AbstractEnd element) {
+    List<EObject> semanticElements = new ArrayList<>();
+    semanticElements.add(element);
+    semanticElements.add(element.getEvent());
+    return semanticElements;
+  }
+
+  private Collection<EObject> getAssociatedSemanticElementsForEventSentOperation(EventSentOperation element) {
+    List<EObject> semanticElements = new ArrayList<>();
+    semanticElements.add(element);
+    semanticElements.add(element.getOperation());
+    return semanticElements;
+  }
+
+  private Collection<EObject> getAssociatedSemanticElementsForSequenceMessage(SequenceMessage element) {
+    List<EObject> semanticElements = new ArrayList<>();
+    semanticElements.add(element);
+    semanticElements.add(element.getReceivingEnd());
+    semanticElements.add(element.getSendingEnd());
+    semanticElements.add(element.getInvokedOperation());
+    return semanticElements;
+  }
+
+  private Collection<EObject> getAssociatedSemanticElementsForInstanceRole(InstanceRole element) {
+    List<EObject> semanticElements = new ArrayList<>();
+    semanticElements.add(element);
+    semanticElements.add(element.getRepresentedInstance());
+    if (element.getRepresentedInstance() instanceof Part) {
+      semanticElements.add(element.getRepresentedInstance().getAbstractType());
+    }
+    return semanticElements;
+  }
+
+  private Collection<EObject> getAssociatedSemanticElementsForStateFragment(StateFragment element) {
+    List<EObject> semanticElements = new ArrayList<>();
+    semanticElements.add(element);
+    semanticElements.add(element.getRelatedAbstractState());
+    semanticElements.add(element.getRelatedAbstractFunction());
+    return semanticElements;
+  }
+
+  private Collection<EObject> getAssociatedSemanticElementsForInvolvement(Involvement element) {
+    List<EObject> semanticElements = new ArrayList<>();
+    semanticElements.add(element);
+    semanticElements.add(element.getInvolved());
+    return semanticElements;
+  }
 }

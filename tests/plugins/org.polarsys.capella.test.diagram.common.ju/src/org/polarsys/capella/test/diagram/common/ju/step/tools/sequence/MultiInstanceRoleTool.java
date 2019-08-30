@@ -56,7 +56,7 @@ public final class MultiInstanceRoleTool extends AbstractToolStep<InstanceRole> 
 
     EObject diagramTarget = ((DSemanticDecorator) context.getDiagram()).getTarget();
     BlockArchitecture ba = BlockArchitectureExt.getRootBlockArchitecture(diagramTarget);
-    Part part = context.getSemanticElement(representedPartId);
+    Part part = context.getSessionContext().getSemanticElement(representedPartId);
 
     String toolName = null;
 
@@ -69,7 +69,8 @@ public final class MultiInstanceRoleTool extends AbstractToolStep<InstanceRole> 
       diagramDescriptionName = equalTo(IDiagramNameConstants.OPERATIONAL_INTERACTION_SCENARIO_DIAGRAM_NAME);
       toolName = IToolNameConstants.TOOL_OES_MULTI_INSTANCEROLE_ENTITYACTOR;
     } else {
-      diagramDescriptionName = anyOf(equalTo(IDiagramNameConstants.INTERFACE_SCENARIO), equalTo(IDiagramNameConstants.DATA_FLOW_SCENARIO_DIAGRAM_NAME));
+      diagramDescriptionName = anyOf(equalTo(IDiagramNameConstants.INTERFACE_SCENARIO),
+          equalTo(IDiagramNameConstants.DATA_FLOW_SCENARIO_DIAGRAM_NAME));
 
       if (part.getAbstractType() instanceof AbstractActor) {
         toolName = IToolNameConstants.TOOL_SCENARIO_MULTI_INSTANCEROLE_ACTOR;
@@ -90,16 +91,16 @@ public final class MultiInstanceRoleTool extends AbstractToolStep<InstanceRole> 
    */
   @Override
   protected void initToolArguments() {
-    DSemanticDecorator containerView = getExecutionContext().getView(getExecutionContext().getDiagramId());
+    DSemanticDecorator containerView = getDiagramContext().getView(getDiagramContext().getDiagramId());
     _toolWrapper.setArgumentValue(ArgumentType.CONTAINER, containerView.getTarget());
     _toolWrapper.setArgumentValue(ArgumentType.CONTAINER_VIEW, containerView);
   }
 
-
   @Override
   protected void postRunTest() {
 
-    List<DDiagramElement> now = new ArrayList<DDiagramElement>(getExecutionContext().getDiagram().getOwnedDiagramElements());
+    List<DDiagramElement> now = new ArrayList<DDiagramElement>(
+        getDiagramContext().getDiagram().getOwnedDiagramElements());
     now.removeAll(preExecutionElements);
 
     assertEquals(1, now.size());
@@ -118,7 +119,7 @@ public final class MultiInstanceRoleTool extends AbstractToolStep<InstanceRole> 
 
     // this auto-selects the part to be inserted from the selection dialog
     HeadlessResultOpProvider.INSTANCE.setCurrentOp(createOperation());
-    preExecutionElements = new ArrayList<DDiagramElement>(getExecutionContext().getDiagram().getOwnedDiagramElements());
+    preExecutionElements = new ArrayList<DDiagramElement>(getDiagramContext().getDiagram().getOwnedDiagramElements());
     super.preRunTest();
   }
 
@@ -136,7 +137,6 @@ public final class MultiInstanceRoleTool extends AbstractToolStep<InstanceRole> 
       }
     };
   }
-
 
   @Override
   public InstanceRole getResult() {

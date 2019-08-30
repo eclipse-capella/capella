@@ -31,6 +31,25 @@
       </image>
    </extension>
    <extension
+         point="org.eclipse.ui.importWizards">
+         
+      <wizard
+            category="capella.sample"
+            class="org.polarsys.capella.core.platform.sirius.ui.project.sample.SampleModelWizard"
+            icon="icons/capella_16.png"
+            id="capella.project.wizard.sample"
+            name="%CapellaSample">
+         <description>
+            Import Capella Project Example
+         </description>
+      </wizard>
+      
+      <category
+            id="capella.sample"
+            name="%CapellaCategorySample">
+      </category>
+   </extension>
+   <extension
          point="org.eclipse.ui.newWizards">
       <wizard
             category="org.polarsys.capella.wizards"
@@ -38,7 +57,7 @@
             hasPages="true"
             icon="icons/capella_16.png"
             id="capella.project.wizard"
-            name="Capella Project"
+            name="%CapellaProject"
             project="true">
          <description>
             Create a Capella project
@@ -46,8 +65,11 @@
       </wizard>
       <category
             id="org.polarsys.capella.wizards"
-            name="Capella">
+            name="%CapellaCategoryWizard">
       </category>
+      
+      
+      
    </extension>
    <extension
          point="org.eclipse.ui.perspectiveExtensions">

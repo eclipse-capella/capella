@@ -242,7 +242,7 @@ public class RenameResourceAction extends WorkspaceAction {
           // check for overwrite
           IResource oldResource = resources[0];
           renameResource(oldResource, newPath, monitor, errorStatus);
-          
+
           // When renaming the AIRD, rename also the associated AFM file if it has the same old name.
           if (CapellaResourceHelper.AIRD_FILE_EXTENSION.equals(oldResource.getFileExtension())) {
             IPath oldAfmPath = changeExtension(oldResource.getFullPath(), CapellaResourceHelper.AFM_FILE_EXTENSION);
@@ -255,9 +255,11 @@ public class RenameResourceAction extends WorkspaceAction {
                 airdContent = FileHelper.readFile(newPath.toString());
               } catch (UnsupportedEncodingException e) {
                 // Ignore the error
-              }
-              // If the AFM is referenced by the AIRD
-              if (airdContent.contains("<semanticResources>"+oldAfmPath.lastSegment())) {
+              }             
+              //Encode the last segment of oldAfmPath 
+              String oldAfmPathEncode = URI.encodeSegment(oldAfmPath.lastSegment(), true);
+           // If the AFM is referenced by the AIRD
+              if (airdContent.contains("<semanticResources>"+oldAfmPathEncode)) {
                 IPath newAfmPath =changeExtension(newPath, CapellaResourceHelper.AFM_FILE_EXTENSION);
                 // Rename the AFM
                 renameResource(oldAfmResource, newAfmPath, monitor, errorStatus);
@@ -268,7 +270,7 @@ public class RenameResourceAction extends WorkspaceAction {
       }
     };
   }
-  
+
   private IPath changeExtension (IPath inPath, String newExtension) {
     IPath newPath = inPath;
     String oldExtension = inPath.getFileExtension();
@@ -282,7 +284,7 @@ public class RenameResourceAction extends WorkspaceAction {
     boolean go = true;
     IWorkspaceRoot workspaceRoot = oldResource.getWorkspace().getRoot();
     IResource newResource = workspaceRoot.findMember(newResourcePath);
-    
+
     if (newResource != null) {
       go = checkOverwrite(_shell, newResource);
     }
@@ -308,8 +310,8 @@ public class RenameResourceAction extends WorkspaceAction {
 
     }
   }
-  
-  
+
+
   Composite createParent() {
     Tree tree = getTree();
     Composite result = new Composite(tree, SWT.NONE);
@@ -739,7 +741,7 @@ public class RenameResourceAction extends WorkspaceAction {
    * @throws UnsupportedEncodingException
    */
   private void updateReferencesFor(IResource[] members_p, String newName_p, String oldName_p, boolean updateCapellaProjectName_p) throws CoreException,
-      UnsupportedEncodingException {
+  UnsupportedEncodingException {
     for (IResource resource : members_p) {
       switch (resource.getType()) {
       case IResource.FILE:
@@ -794,7 +796,7 @@ public class RenameResourceAction extends WorkspaceAction {
     String newName = normalizeForContent(newName_p);
     //Replace the entire string not in a subString
     newContent = initialContent_p.replaceAll("\\b" + Pattern.quote(oldName) + "\\b", newName);
-    
+
 
     // TODO This special case was in the previous implementation
     // Handle special case.

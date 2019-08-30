@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,7 +21,6 @@ import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.Mission;
 import org.polarsys.capella.core.data.ctx.MissionPkg;
-import org.polarsys.capella.core.data.helpers.interaction.services.AbstractCapabilityExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 import org.polarsys.capella.core.model.utils.ListExt;
@@ -64,8 +63,7 @@ public class GetAvailable_Mission_IncludedCapabilities extends AbstractQuery {
 
 	/** 
 	 * <p>
-	 * Gets all the capabilities that can be included to the mission except
-	 * those which are already included.
+	 * Gets all the capabilities that can be included to the mission
 	 * </p>
 	 * <p>
 	 * Refer MQRY_Mission_CapabilityUseCase_Included_11
@@ -77,8 +75,6 @@ public class GetAvailable_Mission_IncludedCapabilities extends AbstractQuery {
 	private List<CapellaElement> getRule_MQRY_Mission_CapabilityUseCase_Included_11(SystemEngineering sysEng, Mission currentMission) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
 		for (Capability capabilityUseCase : CapellaElementExt.getAllCapabilities(sysEng)) {
-			if (AbstractCapabilityExt.isIncluded(capabilityUseCase, currentMission))
-				continue;
 			availableElements.add(capabilityUseCase);
 		}
 		return availableElements;

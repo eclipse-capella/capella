@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,9 +27,12 @@ public class ReportManagerFilter extends org.apache.log4j.spi.Filter {
 
   String appenderName = null;
 
+  public ReportManagerFilter(String appenderName) {
+    this.appenderName = appenderName;
+  }
+
   public ReportManagerFilter(Appender appender) {
-    super();
-    appenderName = appender.getName();
+    this(appender.getName());
   }
 
   /**
@@ -48,7 +51,7 @@ public class ReportManagerFilter extends org.apache.log4j.spi.Filter {
       if (appenderName.equals(outputConfiguration.getOutputName())) {
         List<LogLevel> logslevels = outputConfiguration.getLogLevel();
         for (LogLevel logLevel : logslevels) {
-          if (logLevel.isValue() == true && level.equals(logLevel.getName())) {
+          if (logLevel.isValue() && level.equals(logLevel.getName())) {
             return ACCEPT;
           }
         }

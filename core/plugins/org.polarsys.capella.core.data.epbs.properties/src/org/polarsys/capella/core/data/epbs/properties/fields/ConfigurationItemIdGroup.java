@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,8 +47,8 @@ public class ConfigurationItemIdGroup extends AbstractSemanticField {
    * @param textGroup
    */
   private void createConfigurationItemIdTextField(Group textGroup) {
-    _widgetFactory.createCLabel(textGroup, Messages.getString("ConfigurationItemIdentifier.Label")); //$NON-NLS-1$
-    _itemIdentifierField = _widgetFactory.createText(textGroup, ""); //$NON-NLS-1$
+    widgetFactory.createCLabel(textGroup, Messages.getString("ConfigurationItemIdentifier.Label")); //$NON-NLS-1$
+    _itemIdentifierField = widgetFactory.createText(textGroup, ""); //$NON-NLS-1$
     _itemIdentifierField.addFocusListener(this);
     _itemIdentifierField.addKeyListener(this);
     _itemIdentifierField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
@@ -61,9 +61,8 @@ public class ConfigurationItemIdGroup extends AbstractSemanticField {
   public void loadData(EObject semanticElement) {
     loadData(semanticElement, null);
 
-    if (null != _semanticElement) {
-      if (null != _itemIdentifierField)
-        setTextValue(_itemIdentifierField, _semanticElement, EpbsPackage.eINSTANCE.getConfigurationItem_ItemIdentifier());
+    if (null != semanticElement && null != _itemIdentifierField) {
+    	setTextValue(_itemIdentifierField, semanticElement, EpbsPackage.eINSTANCE.getConfigurationItem_ItemIdentifier());
     }
   }
 
@@ -73,7 +72,7 @@ public class ConfigurationItemIdGroup extends AbstractSemanticField {
   @Override
   protected void fillTextField(Text textField) {
     if (textField.equals(_itemIdentifierField)) {
-      setDataValue(_semanticElement, EpbsPackage.eINSTANCE.getConfigurationItem_ItemIdentifier(), _itemIdentifierField.getText());
+      setDataValue(semanticElement, EpbsPackage.eINSTANCE.getConfigurationItem_ItemIdentifier(), _itemIdentifierField.getText());
     }
   }
 

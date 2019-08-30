@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,10 +43,6 @@ public class GetAvailable_PhysicalLink_Categories extends AbstractQuery {
 		if (element instanceof PhysicalLink) {
 			PhysicalLink physicalLink = (PhysicalLink) element;
 			availableElements.addAll(getRule_MQRY_PhysicalLink_Categories_11(physicalLink));
-			List<CapellaElement> currentElements = getCurrentElements(physicalLink, false);
-			if (!currentElements.isEmpty() && !availableElements.isEmpty()) {
-				availableElements.removeAll(currentElements);
-			}
 		}
 		return availableElements;
 	}

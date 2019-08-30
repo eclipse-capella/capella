@@ -177,7 +177,6 @@ public class ModelMigrationRunnable extends ContributoryMigrationRunnable {
       @Override
       protected DefaultHandler makeDefaultHandler() {
         return new SAXExtensionXMIHandler(resource, helper, options) {
-
           /*
            * (non-Javadoc)
            * @see org.eclipse.emf.ecore.xmi.impl.XMIHandler#startElement(java.lang.String, java.lang.String, java.lang.String, org.xml.sax.Attributes)
@@ -382,8 +381,7 @@ public class ModelMigrationRunnable extends ContributoryMigrationRunnable {
 
             // On move of Eclass between two Ecore with ecore2ecore,
             // a new object which will be setted in the model
-            // couldn't be created,
-            // so use default method to create it.
+            // couldn't be created, so use default method to create it.
             if (newObject == null) {
               boolean oldUseNewMethods = useNewMethods;
               EStructuralFeature oldContextFeature = contextFeature;
@@ -399,7 +397,23 @@ public class ModelMigrationRunnable extends ContributoryMigrationRunnable {
             updateElement(peekObject, typeName, result, feature);
             return result;
           }
+          
+          @Override
+          protected EObject validateCreateObjectFromFactory(EFactory factory, String typeName, EObject newObject,
+              boolean top) {
+            EObject result = super.validateCreateObjectFromFactory(factory, typeName, newObject, top);
+            updateElement(null, typeName, result, null);
+            return result;
+          }
 
+          @Override
+          protected EObject validateCreateObjectFromFactory(EFactory factory, String typeName, EObject newObject,
+              EStructuralFeature feature) {
+            EObject result = super.validateCreateObjectFromFactory(factory, typeName, newObject, feature);
+            updateElement(null, typeName, result, feature);
+            return result;
+          }
+          
           /**
            * {@inheritDoc}
            */

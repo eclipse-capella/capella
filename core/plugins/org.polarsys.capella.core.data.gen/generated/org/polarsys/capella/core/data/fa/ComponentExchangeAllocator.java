@@ -77,6 +77,7 @@ public interface ComponentExchangeAllocator extends NamedElement {
 	 * @return the value of the '<em>Allocated Component Exchanges</em>' reference list.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchangeAllocator_AllocatedComponentExchanges()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='ComponentExchangeAllocator.outgoingTraces(self, cea);\r\nComponentExchangeAllocation.componentExchangeAllocated(cea, target);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) direct references to the component exchanges being allocated by this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

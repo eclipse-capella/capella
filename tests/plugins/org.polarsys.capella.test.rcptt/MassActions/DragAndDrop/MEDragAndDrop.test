@@ -1,0 +1,246 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _4Zi_gEkPEeaoOLXB8A2oPA
+Element-Name: MEDragAndDrop
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _tKRXEHlKEeinH5hIqek0Nw
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 9/20/18 11:49 AM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+- Tests the drag and drop feature Project Explorer elements
+-- Add initial set of elements and test that they are present in the view
+-- Add new elements and test that the both initial and new elements are present in the view
+-- Add elements that are already present and test that the existing elements in the view have not changed
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | double-click
+get-menu -path "Window/Show View/Other..." | click
+with [get-window "Show View"] {
+    get-editbox | set-text "Mass Editing"
+    get-tree | select "Capella/Mass Editing" | double-click
+}
+
+// add first batch of elements
+get-view "Capella Project Explorer" | get-tree | drag-end -detail move
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Media Content" "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Displayed Imposed Video Data" "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/VOD Movie Selections" "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Displayed VOD Movie Data"
+    get-item 
+        -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/VOD Movie Selections" 
+        | drag-start 53 20
+    get-item 
+        -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/VOD Movie Control Commands" 
+        | drag-enter 138 2 -detail move
+    get-item 
+        -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/VOD Movie Control Commands" 
+        | drag-over 138 2
+    get-item 
+        -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function" 
+        | drag-over 171 11
+    get-item 
+        -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/Capabilities" 
+        | drag-over 242 20
+    get-item 
+        -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/Data" 
+        | drag-over 275 10
+    get-item 
+        -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Context" 
+        | drag-over 303 14
+    get-item 
+        -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/VOD Movie Control Commands" 
+        | drag-exit
+}
+with [get-view "Mass Editing" | get-control Any -index 2] {
+    drag-enter 186 1 -detail move
+    drag-over 280 94 -detail move
+    drag-exit
+    drag-accept 280 94 -detail move
+}
+
+get-view "Capella Project Explorer" | get-tree | drag-set-data
+get-view "Mass Editing" | get-control Any -index 2 | drop 280 94 -detail move
+get-view "Capella Project Explorer" | get-tree | drag-end -detail move
+
+// verify that the added elements are added in the table
+with [get-view "Mass Editing" | get-canvas] {
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().ExchangeCategoryImpl[0].getClassName()" 
+        | equals "org.polarsys.capella.core.data.fa.impl.ExchangeCategoryImpl" | verify-true
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().ExchangeCategoryImpl[0].getId()" 
+        | equals "f10533a0-4c99-4fa8-bf06-3fa9e6d6eafd" | verify-true
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().ExchangeCategoryImpl[1].getClassName()" 
+        | equals "org.polarsys.capella.core.data.fa.impl.ExchangeCategoryImpl" | verify-true
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().ExchangeCategoryImpl[1].getId()" 
+        | equals "f8464d6c-3085-463e-b624-225b8839209f" | verify-true
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().ExchangeCategoryImpl[2].getClassName()" 
+        | equals "org.polarsys.capella.core.data.fa.impl.ExchangeCategoryImpl" | verify-true
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().ExchangeCategoryImpl[2].getId()" 
+        | equals "6ff020fc-4b56-45d1-8154-c24fe116bae1" | verify-true
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().ExchangeCategoryImpl[3].getClassName()" 
+        | equals "org.polarsys.capella.core.data.fa.impl.ExchangeCategoryImpl" | verify-true
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().ExchangeCategoryImpl[3].getId()" 
+        | equals "d3986bd2-066f-4be7-9218-25a47f3d8e40" | verify-true
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().size()" | equals 4 
+        | verify-true
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getRowCount()" | equals 4 | verify-true
+}
+
+// add new elements
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/Entertain with IFE System" "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/Perform Cabin Management Activities"
+    get-item 
+        -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/Entertain with IFE System" 
+        | drag-start 3 6
+    get-item 
+        -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/Entertain with IFE System" 
+        | drag-enter 3 10 -detail move
+    get-item 
+        -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/Entertain with IFE System" 
+        | drag-over 3 10
+    get-item 
+        -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/Provide Aircraft Information, Commands and Means" 
+        | drag-over 21 19 -detail move
+    get-item 
+        -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/Perform Maintenance, Configuration and Test Operations" 
+        | drag-over 36 18 -detail move
+    get-item 
+        -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/Entertain with IFE System" 
+        | drag-exit
+}
+
+
+get-eclipse-window | key-type "TRAVERSE_TAB_NEXT"
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/Entertain with IFE System" "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/Perform Cabin Management Activities"
+    get-item 
+        -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/Perform Cabin Management Activities" 
+        | drag-start 91 12
+}
+with [get-view "Mass Editing" | get-control Any -index 2] {
+    drag-enter 162 6 -detail move
+    drag-over 477 76 -detail move
+    drag-exit
+    drag-accept 477 76 -detail move
+}
+get-view "Capella Project Explorer" | get-tree | drag-set-data
+get-view "Mass Editing" | get-control Any -index 2 | drop 477 76 -detail move
+
+//verify that the new elements are added in the table
+with [get-view "Mass Editing" | get-canvas] {
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().ExchangeCategoryImpl[0].getClassName()" 
+        | equals "org.polarsys.capella.core.data.fa.impl.ExchangeCategoryImpl" | verify-true
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().ExchangeCategoryImpl[0].getId()" 
+        | equals "f10533a0-4c99-4fa8-bf06-3fa9e6d6eafd" | verify-true
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().ExchangeCategoryImpl[1].getClassName()" 
+        | equals "org.polarsys.capella.core.data.fa.impl.ExchangeCategoryImpl" | verify-true
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().ExchangeCategoryImpl[1].getId()" 
+        | equals "f8464d6c-3085-463e-b624-225b8839209f" | verify-true
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().ExchangeCategoryImpl[2].getClassName()" 
+        | equals "org.polarsys.capella.core.data.fa.impl.ExchangeCategoryImpl" | verify-true
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().ExchangeCategoryImpl[2].getId()" 
+        | equals "6ff020fc-4b56-45d1-8154-c24fe116bae1" | verify-true
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().ExchangeCategoryImpl[3].getClassName()" 
+        | equals "org.polarsys.capella.core.data.fa.impl.ExchangeCategoryImpl" | verify-true
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().ExchangeCategoryImpl[3].getId()" 
+        | equals "d3986bd2-066f-4be7-9218-25a47f3d8e40" | verify-true
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().SystemFunctionImpl[4].getClassName()" 
+        | equals "org.polarsys.capella.core.data.ctx.impl.SystemFunctionImpl" | verify-true
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().SystemFunctionImpl[4].getId()" 
+        | equals "3398fdbf-3415-4d03-a457-477324d2e091" | verify-true
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getRowCount()" | equals 6 | verify-true
+}
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Displayed Imposed Video Data" "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/VOD Movie Selections" "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Displayed VOD Movie Data"
+    get-item 
+        -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/VOD Movie Selections" 
+        | drag-start 26 4
+    get-item 
+        -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Displayed Imposed Video Data" 
+        | drag-enter 52 20 -detail move
+    get-item 
+        -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Displayed Imposed Video Data" 
+        | drag-over 52 20
+    get-item 
+        -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Displayed Imposed Video Data" 
+        | drag-exit
+}
+
+// add elements that are already present in the table
+get-view "Capella Project Explorer" | get-tree | drag-end -detail move
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Displayed Imposed Video Data" "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/VOD Movie Selections" "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Displayed VOD Movie Data"
+    get-item 
+        -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Displayed VOD Movie Data" 
+        | drag-start 72 20
+    get-item 
+        -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Displayed Imposed Video Data" 
+        | drag-enter 113 21 -detail move
+    get-item 
+        -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Displayed Imposed Video Data" 
+        | drag-over 113 21
+    get-item 
+        -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Media Content" 
+        | drag-over 140 22
+    get-item 
+        -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Audio Video Broadcast Commands" 
+        | drag-over 156 11
+    get-item 
+        -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Imposed Video Control Commands" 
+        | drag-over 196 17
+    get-item 
+        -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/VOD Movie Control Commands" 
+        | drag-over 230 22
+    get-item 
+        -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/Perform Cabin Management Activities" 
+        | drag-over 248 7
+    get-item 
+        -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/Entertain with IFE System" 
+        | drag-over 285 13
+    get-item 
+        -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Displayed Imposed Video Data" 
+        | drag-exit
+}
+with [get-view "Mass Editing" | get-control Any -index 2] {
+    drag-enter 147 4 -detail move
+    drag-over 296 118 -detail move
+    drag-exit
+    drag-accept 296 118 -detail move
+}
+get-view "Capella Project Explorer" | get-tree | drag-set-data
+get-view "Mass Editing" | get-control Any -index 2 | drop 296 118 -detail move
+get-view "Capella Project Explorer" | get-tree | drag-end -detail move
+
+// test that since they were already present, they have not been added
+with [get-view "Mass Editing" | get-canvas] {
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().ExchangeCategoryImpl[0].getClassName()" 
+        | equals "org.polarsys.capella.core.data.fa.impl.ExchangeCategoryImpl" | verify-true
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().ExchangeCategoryImpl[0].getId()" 
+        | equals "f10533a0-4c99-4fa8-bf06-3fa9e6d6eafd" | verify-true
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().ExchangeCategoryImpl[1].getClassName()" 
+        | equals "org.polarsys.capella.core.data.fa.impl.ExchangeCategoryImpl" | verify-true
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().ExchangeCategoryImpl[1].getId()" 
+        | equals "f8464d6c-3085-463e-b624-225b8839209f" | verify-true
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().ExchangeCategoryImpl[2].getClassName()" 
+        | equals "org.polarsys.capella.core.data.fa.impl.ExchangeCategoryImpl" | verify-true
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().ExchangeCategoryImpl[2].getId()" 
+        | equals "6ff020fc-4b56-45d1-8154-c24fe116bae1" | verify-true
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().ExchangeCategoryImpl[3].getClassName()" 
+        | equals "org.polarsys.capella.core.data.fa.impl.ExchangeCategoryImpl" | verify-true
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().ExchangeCategoryImpl[3].getId()" 
+        | equals "d3986bd2-066f-4be7-9218-25a47f3d8e40" | verify-true
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().SystemFunctionImpl[4].getClassName()" 
+        | equals "org.polarsys.capella.core.data.ctx.impl.SystemFunctionImpl" | verify-true
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().SystemFunctionImpl[4].getId()" 
+        | equals "3398fdbf-3415-4d03-a457-477324d2e091" | verify-true
+    get-property "getLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getRowCount()" | equals 6 | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

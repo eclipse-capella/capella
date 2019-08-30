@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -60,7 +60,7 @@ public class FunctionalExchangeSection extends NamedElementSection {
     categoriesField = new MultipleSemanticField(getReferencesGroup(), Messages.FunctionalExchangeSection_Categories_Label, getWidgetFactory(), new FunctionalExchangeCategoriesController()) {
       @Override
       protected void removeAllDataValue(EObject element, EStructuralFeature feature) {
-        _controller.writeOpenValues(_semanticElement, _semanticFeature, (List) Collections.emptyList());
+        _controller.writeOpenValues(semanticElement, semanticFeature, (List) Collections.emptyList());
       }
     };
     categoriesField.setDisplayedInWizard(displayedInWizard);
@@ -96,7 +96,7 @@ public class FunctionalExchangeSection extends NamedElementSection {
    */
   @Override
   public List<AbstractSemanticField> getSemanticFields() {
-    List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
+    List<AbstractSemanticField> fields = new ArrayList<>();
 
     fields.addAll(super.getSemanticFields());
     fields.add(categoriesField);

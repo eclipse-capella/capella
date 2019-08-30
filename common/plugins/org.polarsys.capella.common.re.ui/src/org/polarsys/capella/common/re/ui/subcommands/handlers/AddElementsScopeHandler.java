@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,7 +19,6 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.expressions.IEvaluationContext;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.ui.handlers.HandlerUtil;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
 import org.polarsys.capella.common.flexibility.wizards.ui.util.ExecutionEventUtil;
@@ -33,7 +32,7 @@ public class AddElementsScopeHandler extends SubCommandHandler {
   @Override
   public Object execute(ExecutionEvent event) throws ExecutionException {
     ISelection selection = getSelection(event);
-    if (selection != null && selection instanceof IStructuredSelection) {
+    if (selection instanceof IStructuredSelection) {
       IRendererContext context = ExecutionEventUtil.getRendererContext(event);
       IProperty sourceScope = context.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__SCOPE);
 
@@ -63,13 +62,11 @@ public class AddElementsScopeHandler extends SubCommandHandler {
         Collection scopeElements = (Collection) rendererContext.getPropertyContext().getCurrentValue(
             rendererContext.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__SCOPE));
 
-        Collection<Object> values = new HashSet<Object>(selectedObjects);
-        if (values != null) {
+        Collection<Object> values = new HashSet<>(selectedObjects);
           if (scopeElements != null) {
             values.removeAll(scopeElements);
           }
           setBaseEnabled(!values.isEmpty());
-        }
       }
     }
   }

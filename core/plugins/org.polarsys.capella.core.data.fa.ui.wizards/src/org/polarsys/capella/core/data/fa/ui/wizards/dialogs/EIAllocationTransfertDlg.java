@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,14 +21,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edit.command.CommandParameter;
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.ui.dnd.LocalTransfer;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.validation.model.ConstraintStatus;
 import org.eclipse.emf.validation.service.IConstraintDescriptor;
 import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.util.Util;
@@ -65,6 +64,7 @@ import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.ui.menu.dynamic.DynamicCreateChildAction;
 import org.polarsys.capella.common.ui.toolkit.dialogs.AbstractViewerDialog;
+import org.polarsys.capella.common.ui.toolkit.viewers.menu.ModalContextMenuExtender;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
@@ -75,8 +75,6 @@ import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.ui.wizards.actions.DeleteElementAction;
 import org.polarsys.capella.core.data.fa.ui.wizards.actions.MakeLinkAction;
 import org.polarsys.capella.core.data.fa.ui.wizards.actions.RemoveElementAction;
-import org.polarsys.capella.core.data.fa.ui.wizards.actions.SelectInProjectExplorerAction;
-import org.polarsys.capella.core.data.fa.ui.wizards.actions.SelectInSemanticBrowserAction;
 import org.polarsys.capella.core.data.fa.ui.wizards.actions.StartLinkAction;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.la.LaPackage;
@@ -96,6 +94,10 @@ public class EIAllocationTransfertDlg extends AbstractViewerDialog {
   protected List<ModelElement> selectedElements;
   protected List<ModelElement> transitionedElements;
 
+  public static final String EIALLOCATION_SOURCE_VIEWER = "org.polarsys.capella.core.data.fa.ui.wizards.dialogs.eiAllocation.sourcePhase";
+  
+  public static final String EIALLOCATION_TARGET_VIEWER = "org.polarsys.capella.core.data.fa.ui.wizards.dialogs.eiAllocation.targetPhase";
+  
   /** message pattern used for formatting the status bar tooltip */
   private static final String MSG_PATTERN = "[%s][%s] %s"; //$NON-NLS-1$
 
@@ -186,6 +188,9 @@ public class EIAllocationTransfertDlg extends AbstractViewerDialog {
     });
     tepViewer.setInput(transitionedElements);
 
+    registerContextualMenu(sepViewer.getTreeViewer(), false);
+    registerContextualMenu(tepViewer.getTreeViewer(), true);
+    
     createStatusTextField(dialogAreaComposite);
     createDragDropSourceTargets();
   }
@@ -238,8 +243,6 @@ public class EIAllocationTransfertDlg extends AbstractViewerDialog {
         updatedViewer.getTreeViewer().setSelection(null, true);
         updateStatusBar(null);
       }
-      showContextualMenu(selection, menuViewer.getTreeViewer(), isTEP);
-
       isAlreadyUpdatingSelection = false;
     }
   }
@@ -287,49 +290,49 @@ public class EIAllocationTransfertDlg extends AbstractViewerDialog {
    * @param treeViewer
    * @param isTEP
    */
-  protected void showContextualMenu(final IStructuredSelection selection, final TreeViewer treeViewer, final boolean isTEP) {
+  protected void registerContextualMenu(final TreeViewer treeViewer, final boolean isTEP) {
     MenuManager menuMgr = new MenuManager();
+
     if (isTEP) {
-      if (selection.size() == 1) {
-        for (Action action : getAddElementActions(selection, treeViewer)) {
-          menuMgr.add(action);
-        }
-        menuMgr.add(new Separator());
-      }
+      menuMgr.add(new DynamicCreateContributionItem(treeViewer));
     }
-    menuMgr.add(new DeleteElementAction(selection, treeViewer) {
+    
+    menuMgr.add(new ActionContributionItem(new DeleteElementAction(treeViewer) {
       @Override
       protected void postRun() {
         refreshViewers(isTEP);
       }
-    });
-    menuMgr.add(new RemoveElementAction(selection, treeViewer) {
+    }));
+    
+    menuMgr.add(new ActionContributionItem(new RemoveElementAction(treeViewer) {
       @Override
       protected void postRun() {
         refreshViewers(isTEP);
       }
-    });
+    }));
+    
     menuMgr.add(new Separator());
-    menuMgr.add(new SelectInProjectExplorerAction(selection));
-    menuMgr.add(new SelectInSemanticBrowserAction(selection));
-    menuMgr.add(new Separator());
+    
     if (isTEP) {
-      menuMgr.add(new StartLinkAction(linkManager, treeViewer) {
+      menuMgr.add(new ActionContributionItem(new StartLinkAction(linkManager, treeViewer) {
         @Override
         protected void postRun() {
           refreshViewers(true);
         }
-      });
+      }));
+      
     } else {
-      menuMgr.add(new MakeLinkAction(linkManager, treeViewer) {
+      menuMgr.add(new ActionContributionItem(new MakeLinkAction(linkManager, treeViewer) {
         @Override
         protected void postRun() {
           refreshViewers(true);
         }
-      });
+      }));
     }
+    
     Menu menu = menuMgr.createContextMenu(treeViewer.getControl());
     treeViewer.getControl().setMenu(menu);
+    ModalContextMenuExtender.registerContextMenu(menuMgr, !isTEP ? EIALLOCATION_SOURCE_VIEWER : EIALLOCATION_TARGET_VIEWER, treeViewer);
   }
 
   /**
@@ -351,15 +354,17 @@ public class EIAllocationTransfertDlg extends AbstractViewerDialog {
   protected List<Action> getAddElementActions(IStructuredSelection selection, final TreeViewer treeViewer) {
     List<Action> actions = new ArrayList<Action>();
     final Object selectedElement = selection.getFirstElement();
+    
     if (selectedElement instanceof AbstractFunction) {
       TransactionalEditingDomain editingDomain = TransactionHelper.getEditingDomain((EObject) selectedElement);
+      
       for (final CommandParameter cmd : (Collection<CommandParameter>) editingDomain.getNewChildDescriptors(selectedElement, null)) {
         final EReference ref = cmd.getEReference();
         final EObject value = cmd.getEValue();
         if (FaPackage.Literals.ABSTRACT_FUNCTION__OWNED_FUNCTIONS.equals(ref)
             || ActivityPackage.Literals.ABSTRACT_ACTION__INPUTS.equals(ref)
-            || ActivityPackage.Literals.ABSTRACT_ACTION__OUTPUTS.equals(ref))
-        {
+            || ActivityPackage.Literals.ABSTRACT_ACTION__OUTPUTS.equals(ref)) {
+          
           actions.add(new DynamicCreateChildAction(editingDomain, selection, cmd) {
             @SuppressWarnings("rawtypes")
             @Override
@@ -376,9 +381,8 @@ public class EIAllocationTransfertDlg extends AbstractViewerDialog {
             }
             @Override
             public String getText() {
-              ItemProviderAdapter itemProvider = (ItemProviderAdapter) ((AdapterFactoryEditingDomain) editingDomain).getAdapterFactory().adapt(cmd.getEValue(), IItemLabelProvider.class);
+              ItemProviderAdapter itemProvider = EObjectLabelProviderHelper.getItemProvider(cmd.getEValue());
               String metaclassLabel = EObjectLabelProviderHelper.getMetaclassLabel(cmd.getEValue().eClass(), itemProvider);
-              itemProvider.dispose();
               return metaclassLabel;
             }
           });

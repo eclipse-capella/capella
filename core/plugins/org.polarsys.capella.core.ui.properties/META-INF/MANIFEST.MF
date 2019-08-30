@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.ui.properties;singleton:=true
-Bundle-Version: 1.2.2.qualifier
+Bundle-Version: 1.3.1.qualifier
 Bundle-Activator: org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin
 Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.core.ui.toolkit;visibility:=reexport,
@@ -29,10 +29,9 @@ Require-Bundle: org.polarsys.capella.core.ui.toolkit;visibility:=reexport,
  org.polarsys.kitalpha.ad.services,
  org.polarsys.capella.core.linkedtext.ui,
  org.polarsys.capella.common.linkedtext.ui
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.ui.properties,
- org.polarsys.capella.core.ui.properties.annotations,
  org.polarsys.capella.core.ui.properties.controllers,
  org.polarsys.capella.core.ui.properties.fields,
  org.polarsys.capella.core.ui.properties.helpers,

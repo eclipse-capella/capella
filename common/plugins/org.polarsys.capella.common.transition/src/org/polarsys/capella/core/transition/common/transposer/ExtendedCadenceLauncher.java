@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -99,7 +99,7 @@ public class ExtendedCadenceLauncher {
     if ((candidateSize <= 1) || ((candidateSize > 1) && isMultiple)) {
 
       for (String activityID : activitiesID) {
-        ActivityParameters activityParameters = workflowActivityParameters.getActivityParameters(activityID);
+        ActivityParameters activityParameters = workflowActivityParameters != null ? workflowActivityParameters.getActivityParameters(activityID) : null;
         IStatus status = cadence(workflow_id, workflowElement_id, activityID, activityParameters, monitor);
         if (status == null) {
           //  Activator.getDefault().getLog().log(new Status(IStatus.WARNING, Activator.PLUGIN_ID, "Activity : " + activityID + " has returned a null status."));
@@ -158,9 +158,7 @@ public class ExtendedCadenceLauncher {
       monitor.subTask(activityName);
     }
 
-    IStatus status = cadence(workflowElement, activityElement, activityParameters); // if is good candidate run it
-
-    return status;
+    return cadence(workflowElement, activityElement, activityParameters); // if is good candidate run it
   }
 
   private IStatus cadence(final IConfigurationElement workflowElement, final IConfigurationElement activityElement, final ActivityParameters activityParameters) {
@@ -211,5 +209,4 @@ public class ExtendedCadenceLauncher {
   public IConfigurationElement[] getWorkflowElementParameters(IConfigurationElement workflowElement) {
     return workflowElement.getChildren(PARAMETER_DEFINITION);
   }
-
 }

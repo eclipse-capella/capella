@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _-NK48OTBEee98IEkL9YSZg
-Runtime-Version: 2.3.0.201712190725
-Save-Time: 1/23/18 2:29 PM
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 9/20/18 11:57 AM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -49,7 +49,7 @@ with [get-editor "[LAB] IFE System - All Components, CEs" | get-diagram -index 1
             }
         }
     }
-    get-menu -path "Go To/FIP 3" | click
+    get-menu -path "Show Related Element(s) in Capella Explorer/FIP 3" | click
 }
 get-window "Show in Capella Project Explorer" | get-button Yes | click
 with [get-editor "[LAB] IFE System - All Components, CEs" | get-diagram -index 1 | get-edit-part 
@@ -62,12 +62,12 @@ get-view "Capella Project Explorer" | get-tree | get-item
     -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Logical Architecture/Logical Functions/Root Logical Function/IFE System/Manage Audio and Video Diffusion/Display Video and Play Audio/Play Video Stream on Cabin Screen/FIP 3" 
     | get-property selected | equals true | verify-true
 get-button "View Menu" | click
-get-view "Capella Project Explorer" | get-menu -path "Customize View..." | click
-with [get-window "Available Customizations"] {
+get-view "Capella Project Explorer" | get-menu "Filters and Customization..." | click
+with [get-window "Filters and Customization"] {
     get-tab-folder | get-tab-item Filters | click
     get-editbox -after [get-label "Select the filters to apply (matching items will be hidden):"] | set-text fun
     get-table | select "Function Port"
 }
-get-window "Available Customizations" | get-table | get-item -path "Function Port" | get-property checked 
+get-window "Filters and Customization" | get-table | get-item -path "Function Port" | get-property checked 
     | equals false | verify-true
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

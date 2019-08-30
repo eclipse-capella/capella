@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,12 +38,10 @@ public class ReplicableElementProperty extends AbstractProperty implements IEdit
     if (rootElement == null) {
       Collection<Object> selection = (Collection<Object>) ctx.get(ITransitionConstants.TRANSITION_SOURCES);
       Collection<CatalogElement> selectedElements = ReplicableElementHandlerHelper.getInstance(ctx).getIndirectlySelectedReplicableElements(ctx);
-      if (selection.size() > 0) {
-        if (rootElement == null) {
-          CatalogElement element = ReplicableElementHandlerHelper.getInstance(ctx).createReplicableElement();
+      if (!selection.isEmpty()) {
+    	  CatalogElement element = ReplicableElementHandlerHelper.getInstance(ctx).createReplicableElement();
           rootElement = element;
-        }
-        ctx.put("RE", rootElement);
+          ctx.put("RE", rootElement);
       }
     }
 
@@ -87,5 +85,4 @@ public class ReplicableElementProperty extends AbstractProperty implements IEdit
   public void setValue(IPropertyContext context) {
 
   }
-
 }

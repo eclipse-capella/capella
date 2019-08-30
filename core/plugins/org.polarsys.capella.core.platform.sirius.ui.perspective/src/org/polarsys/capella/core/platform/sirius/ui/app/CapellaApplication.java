@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2003, 2017 IBM Corporation and others.
+ * Copyright (c) 2003, 2018 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ package org.polarsys.capella.core.platform.sirius.ui.app;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -101,9 +102,7 @@ public class CapellaApplication extends AbstractApplication implements IExecutab
           return EXIT_OK;
         }
       } finally {
-        if (shell != null) {
           shell.dispose();
-        }
       }
 
       // Run extensions from org.polarsys.capella.core.application.AppStart when the workbench is properly loaded
@@ -352,13 +351,7 @@ public class CapellaApplication extends AbstractApplication implements IExecutab
       // Although the version file is not spec'ed to be a Java properties
       // file, it happens to follow the same format currently, so using
       // Properties to read it is convenient.
-      Properties props = new Properties();
-      FileInputStream is = new FileInputStream(versionFile);
-      try {
-        props.load(is);
-      } finally {
-        is.close();
-      }
+      Properties props = loadProperties(versionFile);
 
       return props.getProperty(WORKSPACE_VERSION_KEY);
     } catch (IOException e) {
@@ -367,6 +360,19 @@ public class CapellaApplication extends AbstractApplication implements IExecutab
           e));
       return null;
     }
+  }
+
+  private static Properties loadProperties(File versionFile) throws IOException {
+	Properties props = new Properties();
+	FileInputStream is = new FileInputStream(versionFile);
+	try {
+		props.load(is);
+	} catch (Exception e) {
+		// do nothing
+	} finally {
+		is.close();
+	}
+	return props;
   }
 
   /**
@@ -390,6 +396,7 @@ public class CapellaApplication extends AbstractApplication implements IExecutab
 
       output = new FileOutputStream(versionFile);
       output.write(versionLine.getBytes("UTF-8")); //$NON-NLS-1$
+      output.close();
     } catch (IOException e) {
       IDEWorkbenchPlugin.log("Could not write version file", //$NON-NLS-1$
           StatusUtil.newStatus(IStatus.ERROR, e.getMessage(), e));
@@ -442,6 +449,7 @@ public class CapellaApplication extends AbstractApplication implements IExecutab
    * 
    * @see org.eclipse.equinox.app.IApplication#stop()
    */
+  @Override
   public void stop() {
     // Save report log configuration
     ReportManagerRegistry.getInstance().saveConfiguration();

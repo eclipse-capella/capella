@@ -1,0 +1,76 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _4Zi_gEkPEeaoOLXB8A2oPA,_0i1x8B2fEemB9ZmybI1P4g
+Element-Name: SemanticBrowserShowIn
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _ouh_QGgCEem-1Zn8MbYLuw
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 4/26/19 11:30 AM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Tests the Show in Semantic Browser command
+
+- Workbench selection activated and deactivated
+-- Show in Semantic Browser command
+-- F9 shortcut
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | double-click
+
+// enable the Link content option if disabled
+if [get-view "Semantic Browser" | get-button "Link content to workbench selection events" | get-property "getSelection()" -raw | not] {
+	get-view "Semantic Browser" | get-button "Link content to workbench selection events" | click
+}
+
+
+// Show in Semantic Browser menu option
+get-view "Capella Project Explorer" | get-tree 
+    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Operational Analysis/Operational Activities/Root Operational Activity/Adapt Entertainment Service" 
+    | get-menu -path "Show in Semantic Browser" | click
+get-view "Semantic Browser" | get-tree -after [get-label "Current Element"] | get-item 
+    -path "Adapt Entertainment Service" | get-property caption | equals "Adapt Entertainment Service" | verify-true
+
+// F9 shortcut
+get-view "Capella Project Explorer" | get-tree 
+    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Operational Analysis/Operational Activities/Root Operational Activity/[OABD] All Activities" 
+    | key-type F9
+get-view "Semantic Browser" | get-tree -after [get-label "Current Element"] | get-item 
+    -path "\\[OABD\\] All Activities" | get-property caption | equals "[OABD] All Activities" | verify-true
+    
+    
+// empty the content
+get-view "Semantic Browser" | close
+get-quick-access | set-text "Semantic Browser"
+get-quick-access | key-type Enter
+
+
+// Disable the Link content
+if [get-view "Semantic Browser" | get-button "Link content to workbench selection events" | get-property "getSelection()" -raw ] {
+	get-view "Semantic Browser" | get-button "Link content to workbench selection events" | click
+}
+    
+// Show in Semantic Browser menu option
+get-view "Capella Project Explorer" | get-tree 
+    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Operational Analysis/Operational Activities/Root Operational Activity/Adapt Entertainment Service" 
+    | get-menu -path "Show in Semantic Browser" | click
+get-view "Semantic Browser" | get-tree -after [get-label "Current Element"] | get-item 
+    -path "Adapt Entertainment Service" | get-property caption | equals "Adapt Entertainment Service" | verify-true
+
+// F9 shortcut
+get-view "Capella Project Explorer" | get-tree 
+    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Operational Analysis/Operational Activities/Root Operational Activity/Update Digital Media Offer" 
+    | key-type F9
+get-view "Semantic Browser" | get-tree -after [get-label "Current Element"] | get-item 
+    -path "Update Digital Media Offer" | get-property caption | equals "Update Digital Media Offer" | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

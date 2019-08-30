@@ -276,6 +276,7 @@ public interface DataType extends GeneralizableElement, DataValueContainer, Fina
 	 * @return the value of the '<em>Default Value</em>' reference.
 	 * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getDataType_DefaultValue()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='BooleanType.ownedDefaultValue(self, target);\r\n} or {\r\n\tStringType.ownedDefaultValue(self, target);\r\n} or {\r\n\tEnumeration.ownedDefaultValue(self, target);\r\n} or {\r\n\tNumericType.ownedDefaultValue(self, target);\r\n} or {\r\n\tPhysicalQuantity.ownedDefaultValue(self, target);\r\n\r\n'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='allows to specify a default value for this data type\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -301,6 +302,7 @@ public interface DataType extends GeneralizableElement, DataValueContainer, Fina
 	 * @return the value of the '<em>Null Value</em>' reference.
 	 * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getDataType_NullValue()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='StringType.ownedNullValue(self, target);\r\n} or {\r\n\tEnumeration.ownedNullValue(self, target);\r\n} or {\r\n\tNumericType.ownedNullValue(self, target);\r\n} or {\r\n\tPhysicalQuantity.ownedNullValue(self, target);\r\n\r\n'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='allows to specify the nature/value of the \"null\" value for this type of data\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -354,6 +356,7 @@ public interface DataType extends GeneralizableElement, DataValueContainer, Fina
 	 * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getDataType_RealizedDataTypes()
 	 * @see org.polarsys.capella.core.data.information.datatype.DataType#getRealizingDataTypes
 	 * @model opposite="realizingDataTypes" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='DataType.outgoingTraces(self, ir);\r\nInformationRealization.targetElement(ir, target); '"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='class(es) realized by this class' constraints='none' comment/notes='none'"
 	 * @generated
 	 */
@@ -381,6 +384,7 @@ public interface DataType extends GeneralizableElement, DataValueContainer, Fina
 	 * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getDataType_RealizingDataTypes()
 	 * @see org.polarsys.capella.core.data.information.datatype.DataType#getRealizedDataTypes
 	 * @model opposite="realizedDataTypes" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='DataType.incomingTraces(self, ir);\r\nInformationRealization.sourceElement(ir, target); '"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='class(es) realizing this class' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 * @generated

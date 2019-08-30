@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,7 +23,6 @@ import org.polarsys.capella.common.libraries.ILibraryManager;
 import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.common.queries.AbstractQuery;
-import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacommon.StateTransition;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -42,9 +41,6 @@ public class GetAvailable_StateTransitionTrigger__Lib extends AbstractQuery {
   public List<Object> execute(Object input, IQueryContext context) {
     CapellaElement capellaElement = (CapellaElement) input;
     List<EObject> availableElements = getAvailableElements(capellaElement);
-    List<CapellaElement> currentElements = QueryInterpretor.executeQuery(
-        "GetCurrent_StateTransitionTrigger", input, context);//$NON-NLS-1$
-    availableElements.removeAll(currentElements);
 
     return (List) availableElements;
   }

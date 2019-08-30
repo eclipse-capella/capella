@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,8 +11,10 @@
 package org.polarsys.capella.core.sirius.ui.actions;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.log4j.Logger;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
@@ -24,7 +26,7 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription;
 import org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription;
 import org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
@@ -36,7 +38,6 @@ import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageMonito
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
-import org.polarsys.capella.core.sirius.ui.helper.SiriusItemWrapperHelper;
 import org.polarsys.capella.core.sirius.ui.runnable.OpenRepresentationsRunnable;
 
 /**
@@ -46,8 +47,8 @@ public class OpenRepresentationsAction extends BaseSelectionListenerAction {
   // Log4j reference logger.
   private static final Logger LOGGER = ReportManagerRegistry.getInstance()
       .subscribe(IReportManagerDefaultComponents.UI);
-  private List<DRepresentation> representations;
-  private boolean parent = false;
+
+  private DRepresentationDescriptor descriptor;
 
   /**
    * Constructs the action allowing to open representations.
@@ -59,13 +60,12 @@ public class OpenRepresentationsAction extends BaseSelectionListenerAction {
   /**
    * @param drep
    */
-  public OpenRepresentationsAction(RepresentationDescription description, DRepresentation drep) {
-    super(drep.getName());
+  public OpenRepresentationsAction(DRepresentationDescriptor descriptor) {
+    super(descriptor.getName());
 
-    parent = true;
-    representations = new ArrayList<DRepresentation>();
-    representations.add(drep);
+    this.descriptor = descriptor;
 
+    RepresentationDescription description = descriptor.getDescription();
     ImageDescriptor imageDescriptor = null;
     // Handle specific representations : Table ones.
     if (description instanceof CrossTableDescription) {
@@ -81,10 +81,24 @@ public class OpenRepresentationsAction extends BaseSelectionListenerAction {
       imageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin(DiagramUIPlugin.ID,
           "/icons/full/obj16/DDiagram.gif"); //$NON-NLS-1$
     }
+
     if (null == imageDescriptor) {
       imageDescriptor = ImageDescriptor.getMissingImageDescriptor();
     }
     setImageDescriptor(imageDescriptor);
+  }
+
+  @Override
+  protected boolean updateSelection(IStructuredSelection selection) {
+    return !getOpenableRepresentationDescriptors(selection).isEmpty();
+  }
+
+  /**
+   * The action is enabled if at least one valid representation
+   */
+  private List<DRepresentationDescriptor> getOpenableRepresentationDescriptors(IStructuredSelection selection) {
+    return RepresentationHelper.getSelectedDescriptors(selection.toList()).stream()
+        .filter(RepresentationHelper::isValid).collect(Collectors.toList());
   }
 
   /**
@@ -92,37 +106,39 @@ public class OpenRepresentationsAction extends BaseSelectionListenerAction {
    */
   @Override
   public void run() {
-    List<DRepresentation> reps;
-    if (parent) {
-      reps = representations;
+    Collection<DRepresentationDescriptor> reps;
+    if (descriptor != null) {
+      reps = Collections.singletonList(descriptor);
+
     } else {
-      IStructuredSelection selection = getStructuredSelection();
-      
-      reps = RepresentationHelper.getRepresentations((SiriusItemWrapperHelper.filterItemWrapper(selection)));
+      reps = getOpenableRepresentationDescriptors(getStructuredSelection());
     }
-    // Precondition	
+
+    // Precondition
     if (reps.isEmpty()) {
       return;
     }
-    
+
     String eventName = "Open Representation";
-	String eventContext = ICommonConstants.EMPTY_STRING;
-	String addendum = ICommonConstants.EMPTY_STRING;
-	UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.NONE, addendum);
-    
+    String eventContext = ICommonConstants.EMPTY_STRING;
+    String addendum = ICommonConstants.EMPTY_STRING;
+    UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.NONE, addendum);
+
     IRunnableWithProgress runnable = new OpenRepresentationsRunnable(reps, false);
     ProgressMonitorDialog progressDialog = new ProgressMonitorDialog(Display.getDefault().getActiveShell());
+
     try {
       progressDialog.run(false, false, runnable);
       UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.OK, addendum);
+
     } catch (InvocationTargetException e) {
       LOGGER.debug(new EmbeddedMessage(e.getMessage(), IReportManagerDefaultComponents.UI));
       UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.ERROR, addendum);
+
     } catch (InterruptedException e) {
       LOGGER.debug(new EmbeddedMessage(e.getMessage(), IReportManagerDefaultComponents.UI));
       UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.ERROR, addendum);
     }
-    parent = false;
   }
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,10 +15,11 @@ import java.util.Collection;
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.diagram.helpers.ContextualDiagramHelper;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.sirius.analysis.CsServices;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
@@ -26,22 +27,28 @@ import org.polarsys.capella.core.sirius.analysis.FaServices;
 import org.polarsys.capella.core.sirius.analysis.FunctionalChainServices;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
+import org.polarsys.capella.core.sirius.analysis.cache.FunctionalChainCache;
 
 /**
  * 
  */
 //TODO : merge this refresh extension with component Architecture Refresh Extension 
-public class EntityArchitectureBlankRefreshExtension extends AbstractRefreshExtension implements IRefreshExtension {
+public class EntityArchitectureBlankRefreshExtension extends AbstractCacheAwareRefreshExtension {
 
   /**
    * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#beforeRefresh(org.eclipse.sirius.DDiagram)
    */
-  public void beforeRefresh(DDiagram diagram_p) {
+  @Override
+  public void beforeRefresh(DDiagram diagram) {
+    super.beforeRefresh(diagram);
 
-    Collection<EObject> contextualElements = ContextualDiagramHelper.getService().getContextualElements(diagram_p);
+    FunctionalChainCache.getInstance().reset();
+    
+    DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
+    Collection<EObject> contextualElements = ContextualDiagramHelper.getService().getContextualElements(descriptor);
 
-    DDiagramContents context = FaServices.getFaServices().getDDiagramContents(diagram_p);
-
+    DDiagramContents context = FaServices.getFaServices().getDDiagramContents(diagram);
+    
     // -------------------------------------
     // Show in diagram related contextual elements
     // -------------------------------------
@@ -55,7 +62,7 @@ public class EntityArchitectureBlankRefreshExtension extends AbstractRefreshExte
     // Reorder elements in best containers
     // -------------------------------------
     try {
-      CsServices.getService().refreschEntitiesArchitecture(getComponentMapping(diagram_p), diagram_p);
+      CsServices.getService().refreshEntitiesArchitecture(getComponentMapping(diagram), diagram);
     } catch (Exception e) {
       Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnReordering, e);
     }
@@ -64,26 +71,28 @@ public class EntityArchitectureBlankRefreshExtension extends AbstractRefreshExte
   /**
    * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#postRefresh(org.eclipse.sirius.DDiagram)
    */
-  public void postRefresh(DDiagram diagram_p) {
-
+  @Override
+  public void postRefresh(DDiagram diagram) {
     try {
-      FunctionalChainServices.getFunctionalChainServices().updateFunctionalChainStyles(diagram_p);
+      FunctionalChainServices.getFunctionalChainServices().updateFunctionalChainStyles(diagram);
     } catch (Exception e) {
       Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdateFunctionalChainStyle, e);
     }
+
+    FunctionalChainCache.getInstance().reset();
+    super.postRefresh(diagram);
   }
 
   /**
    * 
-   * @param diagram_p
+   * @param diagram
    * @return
    */
-  public ContainerMapping getComponentMapping(DDiagram diagram_p) {
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
-      return DiagramServices.getDiagramServices().getContainerMapping(diagram_p, IMappingNameConstants.OAB_ENTITY_MAPPING_NAME);
+  public ContainerMapping getComponentMapping(DDiagram diagram) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
+      return DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.OAB_ENTITY_MAPPING_NAME);
     }
 
     return null;
   }
-
 }

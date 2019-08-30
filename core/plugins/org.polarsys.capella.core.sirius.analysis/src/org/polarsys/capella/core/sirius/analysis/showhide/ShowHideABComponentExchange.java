@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *    Thales - initial API and implementation
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis.showhide;
+
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 
 import java.util.Collection;
 
@@ -34,7 +36,7 @@ import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
  * A ShowHide definition for ABCategory containers of category pins must be set with sourceParts and targetParts
  * variables
  */
-public class ShowHideABComponentExchange extends ShowHideABComponent {
+public class ShowHideABComponentExchange extends ShowHideFunctionalExchange {
 
   public static final String SOURCE_PART_VIEWS = "spv"; //$NON-NLS-1$
   public static final String TARGET_PART_VIEWS = "tpv"; //$NON-NLS-1$
@@ -106,7 +108,7 @@ public class ShowHideABComponentExchange extends ShowHideABComponent {
 
     } else if (lastContext.getValue() instanceof ComponentPort) {
       ComponentPort port = (ComponentPort) lastContext.getValue();
-      value.putAll(CONTAINER, (Collection<EObject>) (Collection<? extends EObject>) ComponentExt.getRepresentingParts(PortExt.getRelatedComponent(port)));
+      value.putAll(CONTAINER, (Collection<EObject>) (Collection<? extends EObject>) getCache(ComponentExt::getRepresentingParts, PortExt.getRelatedComponent(port)));
     }
 
     return value;

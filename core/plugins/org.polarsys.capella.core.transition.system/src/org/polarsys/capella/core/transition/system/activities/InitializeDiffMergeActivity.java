@@ -21,6 +21,7 @@ import org.polarsys.capella.core.transition.common.activities.InitializeDiffMerg
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
 import org.polarsys.capella.core.transition.common.handlers.merge.IMergeHandler;
 import org.polarsys.capella.core.transition.common.handlers.traceability.CompoundTraceabilityHandler;
+import org.polarsys.capella.core.transition.common.handlers.traceability.config.ExtendedTraceabilityConfiguration;
 import org.polarsys.capella.core.transition.common.handlers.traceability.config.ITraceabilityConfiguration;
 import org.polarsys.capella.core.transition.common.handlers.transformation.TransformationHandlerHelper;
 import org.polarsys.capella.core.transition.common.merge.scope.IModelScopeFilter;
@@ -32,29 +33,21 @@ import org.polarsys.capella.core.transition.system.handlers.merge.ManyToOneCateg
 import org.polarsys.capella.core.transition.system.handlers.merge.OneToManyCategoryFilter;
 import org.polarsys.capella.core.transition.system.handlers.merge.PartPropagationCategoryFilter;
 import org.polarsys.capella.core.transition.system.handlers.merge.RootCategoryFilter;
-import org.polarsys.capella.core.transition.system.handlers.traceability.config.MergeSourceConfiguration;
-import org.polarsys.capella.core.transition.system.handlers.traceability.config.MergeTargetConfiguration;
 import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
  *
  */
-public class InitializeDiffMergeActivity extends InitializeDiffMergeFromTransformationActivity {
+public abstract class InitializeDiffMergeActivity extends InitializeDiffMergeFromTransformationActivity {
 
   public static final String ID = "org.polarsys.capella.core.transition.system.activities.InitializeDiffMergeActivity"; //$NON-NLS-1$
 
   @Override
-  protected IHandler createDefaultTraceabilitySourceHandler(IContext context) {
-    ITraceabilityConfiguration configuration = new MergeSourceConfiguration();
-    return new CompoundTraceabilityHandler(configuration);
-  }
+  protected abstract IHandler createDefaultTraceabilitySourceHandler(IContext context);
 
   @Override
-  protected IHandler createDefaultTraceabilityTargetHandler(IContext context) {
-    ITraceabilityConfiguration configuration = new MergeTargetConfiguration();
-    return new CompoundTraceabilityHandler(configuration);
-  }
+  protected abstract IHandler createDefaultTraceabilityTargetHandler(IContext context);
 
   @Override
   protected IStatus initializeCategoriesHandlers(IContext context, IMergeHandler handler,

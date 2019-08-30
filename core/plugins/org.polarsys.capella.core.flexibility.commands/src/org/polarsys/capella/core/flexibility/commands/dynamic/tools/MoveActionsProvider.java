@@ -53,7 +53,7 @@ public class MoveActionsProvider implements IActionsProvider {
    * @see org.polarsys.capella.core.flexibility.commands.dynamic.IActionsProvider#getActions()
    */
   public Collection<DefaultAction> getActions(Shell shell, ISelectionProvider selectionProvider) {
-    List<DefaultAction> list = new ArrayList<DefaultAction>();
+    List<DefaultAction> list = new ArrayList<>();
 
     list.add(new ReplaceFunctionalExchangeAccessor(shell, selectionProvider));
     list.add(new ReplaceComponentExchangeAccessor(shell, selectionProvider));
@@ -86,12 +86,12 @@ public class MoveActionsProvider implements IActionsProvider {
         if (source instanceof CapellaElement) {
 
           if (getRelatedEClass().isInstance(source)) {
-            isPerformed = process(source, logger) | isPerformed;
+            isPerformed = process(source, logger) || isPerformed;
           }
 
           for (EObject element : EObjectExt.getAll(source, getRelatedEClass())) {
             if (getRelatedEClass().isInstance(element)) {
-              isPerformed = process(element, logger) | isPerformed;
+              isPerformed = process(element, logger) || isPerformed;
             }
           }
 
@@ -114,7 +114,7 @@ public class MoveActionsProvider implements IActionsProvider {
       moveExchange(exchange);
 
       if ((container != exchange.eContainer())) {
-        List<EObject> related = new ArrayList<EObject>();
+        List<EObject> related = new ArrayList<>();
         related.add(exchange);
         related.add(container);
         related.add(exchange.eContainer());
@@ -157,10 +157,9 @@ public class MoveActionsProvider implements IActionsProvider {
 
     @Override
     public String getText() {
-      if (getSelection(ModelElement.class).size() > 0) {
-        if (BlockArchitectureExt.getRootBlockArchitecture((EObject) getSelection(ModelElement.class).get(0)) instanceof OperationalAnalysis) {
-          return "Interactions";
-        }
+      if (!getSelection(ModelElement.class).isEmpty() && BlockArchitectureExt
+          .getRootBlockArchitecture((EObject) getSelection(ModelElement.class).get(0)) instanceof OperationalAnalysis) {
+        return "Interactions";
       }
       return "Functional Exchanges";
     }
@@ -195,10 +194,9 @@ public class MoveActionsProvider implements IActionsProvider {
 
     @Override
     protected String getIconFile() {
-      if (getSelection(ModelElement.class).size() > 0) {
-        if (BlockArchitectureExt.getRootBlockArchitecture((EObject) getSelection(ModelElement.class).get(0)) instanceof OperationalAnalysis) {
-          return "CommunicationMean.gif";
-        }
+      if (!getSelection(ModelElement.class).isEmpty() && BlockArchitectureExt
+          .getRootBlockArchitecture((EObject) getSelection(ModelElement.class).get(0)) instanceof OperationalAnalysis) {
+        return "CommunicationMean.gif";
       }
       return "ComponentExchange.gif";
     }
@@ -219,10 +217,9 @@ public class MoveActionsProvider implements IActionsProvider {
 
     @Override
     public String getText() {
-      if (getSelection(ModelElement.class).size() > 0) {
-        if (BlockArchitectureExt.getRootBlockArchitecture((EObject) getSelection(ModelElement.class).get(0)) instanceof OperationalAnalysis) {
-          return "Communication Means";
-        }
+      if (!getSelection(ModelElement.class).isEmpty() && BlockArchitectureExt
+          .getRootBlockArchitecture((EObject) getSelection(ModelElement.class).get(0)) instanceof OperationalAnalysis) {
+        return "Communication Means";
       }
       return "Component Exchanges";
     }
@@ -306,6 +303,6 @@ public class MoveActionsProvider implements IActionsProvider {
       return CsPackage.Literals.PHYSICAL_LINK;
     }
 
-  };
+  }
 
 }

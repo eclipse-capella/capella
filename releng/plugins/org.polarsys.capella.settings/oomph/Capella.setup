@@ -16,90 +16,6 @@
     name="capella"
     label="Capella">
   <setupTask
-      xsi:type="setup:CompoundTask"
-      name="User Preferences">
-    <annotation
-        source="http://www.eclipse.org/oomph/setup/UserPreferences">
-      <detail
-          key="/instance/org.eclipse.jdt.ui/formatter_profile">
-        <value>record</value>
-      </detail>
-      <detail
-          key="/instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.formatterprofiles">
-        <value>record</value>
-      </detail>
-      <detail
-          key="/instance/org.eclipse.releng.tools/org.eclipse.releng.tools.copyrightTemplate">
-        <value>record</value>
-      </detail>
-      <detail
-          key="/instance/org.eclipse.releng.tools/org.eclipse.releng.tools.replaceAllExisting">
-        <value>record</value>
-      </detail>
-    </annotation>
-    <setupTask
-        xsi:type="setup:CompoundTask"
-        name="org.eclipse.core.resources">
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.core.resources/encoding"
-          value="UTF-8"/>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:CompoundTask"
-        name="org.eclipse.core.runtime">
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.core.runtime/line.separator"
-          value="&#xD;&#xA;"/>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:CompoundTask"
-        name="org.eclipse.jdt.ui">
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.jdt.ui/formatter_profile"
-          value="_Capella"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.formatterprofiles"
-          value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?>&#xA;&lt;profiles version=&quot;12&quot;>&#xA;&lt;profile kind=&quot;CodeFormatterProfile&quot; name=&quot;Capella&quot; version=&quot;12&quot;>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_ellipsis&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_enum_declarations&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_in_empty_annotation_declaration&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_allocation_expression&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_at_in_annotation_type_declaration&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.new_lines_at_block_boundaries&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_constructor_declaration_parameters&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.insert_new_line_for_parameter&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_package&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_between_empty_parens_in_enum_constant&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.blank_lines_after_imports&quot; value=&quot;1&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_while&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.insert_new_line_before_root_tags&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_between_empty_parens_in_annotation_type_member_declaration&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_method_declaration_throws&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.format_javadoc_comments&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.indentation.size&quot; value=&quot;2&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_postfix_operator&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_for_increments&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_type_arguments&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_for_inits&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_in_empty_anonymous_type_declaration&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_semicolon_in_for&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.disabling_tag&quot; value=&quot;@formatter:off&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.continuation_indentation&quot; value=&quot;2&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_enum_constants&quot; value=&quot;0&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.blank_lines_before_imports&quot; value=&quot;1&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.blank_lines_after_package&quot; value=&quot;1&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_binary_operator&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_multiple_local_declarations&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_arguments_in_enum_constant&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_angle_bracket_in_parameterized_type_reference&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.indent_root_tags&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.wrap_before_or_operator_multicatch&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.enabling_tag&quot; value=&quot;@formatter:on&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_closing_brace_in_block&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_parenthesized_expression_in_return&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_throws_clause_in_method_declaration&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_parameter&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.keep_then_statement_on_same_line&quot; value=&quot;false&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_field&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_explicitconstructorcall_arguments&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_in_empty_block&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_prefix_operator&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.blank_lines_between_type_declarations&quot; value=&quot;1&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_brace_in_array_initializer&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_for&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_catch&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_angle_bracket_in_type_arguments&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_method&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_switch&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_anonymous_type_declaration&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_parenthesized_expression&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_enum_constant&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.never_indent_line_comments_on_first_column&quot; value=&quot;false&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.compiler.problem.enumIdentifier&quot; value=&quot;error&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_and_in_type_parameter&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_for_inits&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.indent_statements_compare_to_block&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.brace_position_for_anonymous_type_declaration&quot; value=&quot;end_of_line&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_question_in_wildcard&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_annotation&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_method_invocation_arguments&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_switch&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.line_length&quot; value=&quot;120&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.use_on_off_tags&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_between_empty_brackets_in_array_allocation_expression&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_enum_constant&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_between_empty_parens_in_method_invocation&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_assignment_operator&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_type_declaration&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_for&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.preserve_white_space_between_code_and_line_comments&quot; value=&quot;false&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_local_variable&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.brace_position_for_method_declaration&quot; value=&quot;end_of_line&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_method_invocation&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_union_type_in_multicatch&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_colon_in_for&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.number_of_blank_lines_at_beginning_of_method_body&quot; value=&quot;0&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_closing_angle_bracket_in_type_arguments&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.keep_else_statement_on_same_line&quot; value=&quot;false&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_binary_expression&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_parameterized_type_reference&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_array_initializer&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_multiple_field_declarations&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_annotation&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_arguments_in_explicit_constructor_call&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.indent_body_declarations_compare_to_annotation_declaration_header&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_superinterfaces&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_colon_in_default&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_question_in_conditional&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.brace_position_for_block&quot; value=&quot;end_of_line&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.brace_position_for_constructor_declaration&quot; value=&quot;end_of_line&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.brace_position_for_lambda_body&quot; value=&quot;end_of_line&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.compact_else_if&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_type_parameters&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_catch&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_method_invocation&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.put_empty_statement_on_new_line&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_parameters_in_constructor_declaration&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_method_invocation_arguments&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_arguments_in_method_invocation&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_throws_clause_in_constructor_declaration&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.compiler.problem.assertIdentifier&quot; value=&quot;error&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.clear_blank_lines_in_block_comment&quot; value=&quot;false&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_before_catch_in_try_statement&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_try&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_at_end_of_file_if_missing&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.clear_blank_lines_in_javadoc_comment&quot; value=&quot;false&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_array_initializer&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_binary_operator&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_unary_operator&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_expressions_in_array_initializer&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.format_line_comment_starting_on_first_column&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.number_of_empty_lines_to_preserve&quot; value=&quot;1&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_colon_in_case&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_ellipsis&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_semicolon_in_try_resources&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_colon_in_assert&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_if&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_type_arguments&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_and_in_type_parameter&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_in_empty_type_declaration&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_parenthesized_expression&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.format_line_comments&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_colon_in_labeled_statement&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.align_type_members_on_columns&quot; value=&quot;false&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_assignment&quot; value=&quot;0&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_in_empty_method_body&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.indent_body_declarations_compare_to_type_header&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_between_empty_parens_in_method_declaration&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_enum_constant&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_superinterfaces_in_type_declaration&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.blank_lines_before_first_class_body_declaration&quot; value=&quot;0&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_conditional_expression&quot; value=&quot;80&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_before_closing_brace_in_array_initializer&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_constructor_declaration_parameters&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.format_guardian_clause_on_one_line&quot; value=&quot;false&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_if&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_type&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_block&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.brace_position_for_enum_declaration&quot; value=&quot;end_of_line&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.brace_position_for_block_in_case&quot; value=&quot;end_of_line&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_constructor_declaration&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.format_header&quot; value=&quot;false&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_arguments_in_allocation_expression&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_method_invocation&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_while&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.compiler.codegen.inlineJsrBytecode&quot; value=&quot;enabled&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_switch&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_method_declaration&quot; value=&quot;0&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.join_wrapped_lines&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_between_empty_parens_in_constructor_declaration&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.indent_switchstatements_compare_to_cases&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_bracket_in_array_allocation_expression&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_synchronized&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.align_fields_grouping_blank_lines&quot; value=&quot;2147483647&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.new_lines_at_javadoc_boundaries&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.brace_position_for_annotation_type_declaration&quot; value=&quot;end_of_line&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_colon_in_for&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_resources_in_try&quot; value=&quot;80&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.use_tabs_only_for_leading_indentations&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_selector_in_method_invocation&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.never_indent_block_comments_on_first_column&quot; value=&quot;false&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.compiler.source&quot; value=&quot;1.8&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_synchronized&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_constructor_declaration_throws&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.tabulation.size&quot; value=&quot;2&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_in_empty_enum_constant&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_allocation_expression&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_bracket_in_array_reference&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_colon_in_conditional&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.format_source_code&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_array_initializer&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_try&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_semicolon_in_try_resources&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.blank_lines_before_field&quot; value=&quot;0&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_at_in_annotation&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.continuation_indentation_for_array_initializer&quot; value=&quot;2&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_question_in_wildcard&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.blank_lines_before_method&quot; value=&quot;1&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_superclass_in_type_declaration&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_superinterfaces_in_enum_declaration&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_parenthesized_expression_in_throw&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_colon_in_labeled_statement&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.compiler.codegen.targetPlatform&quot; value=&quot;1.8&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.brace_position_for_switch&quot; value=&quot;end_of_line&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_superinterfaces&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_method_declaration_parameters&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_after_type_annotation&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_brace_in_array_initializer&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_parenthesized_expression&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.format_html&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_at_in_annotation_type_declaration&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_closing_angle_bracket_in_type_parameters&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_compact_if&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.indent_empty_lines&quot; value=&quot;false&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_parameterized_type_reference&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_unary_operator&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_enum_constant&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_arguments_in_annotation&quot; value=&quot;0&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_enum_declarations&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.keep_empty_array_initializer_on_one_line&quot; value=&quot;false&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.indent_switchstatements_compare_to_switch&quot; value=&quot;false&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_before_else_in_if_statement&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_assignment_operator&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_constructor_declaration&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.blank_lines_before_new_chunk&quot; value=&quot;1&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_after_label&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.indent_body_declarations_compare_to_enum_declaration_header&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_bracket_in_array_allocation_expression&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_constructor_declaration&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_colon_in_conditional&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_angle_bracket_in_parameterized_type_reference&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_method_declaration_parameters&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_angle_bracket_in_type_arguments&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_cast&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_colon_in_assert&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.blank_lines_before_member_type&quot; value=&quot;1&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_before_while_in_do_statement&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_bracket_in_array_type_reference&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_angle_bracket_in_parameterized_type_reference&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_arguments_in_qualified_allocation_expression&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_after_opening_brace_in_array_initializer&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_in_empty_enum_declaration&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.indent_breaks_compare_to_cases&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_method_declaration&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_if&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_semicolon&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_postfix_operator&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_try&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_angle_bracket_in_type_arguments&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_cast&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.format_block_comments&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_lambda_arrow&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_method_declaration&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.keep_imple_if_on_one_line&quot; value=&quot;false&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_enum_declaration&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_parameters_in_method_declaration&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_between_brackets_in_array_type_reference&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_angle_bracket_in_type_parameters&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_semicolon_in_for&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_method_declaration_throws&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_bracket_in_array_allocation_expression&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.indent_statements_compare_to_body&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_multiple_fields&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_enum_constant_arguments&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_prefix_operator&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.brace_position_for_array_initializer&quot; value=&quot;end_of_line&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.wrap_before_binary_operator&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_method_declaration&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_type_parameters&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_catch&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.compiler.compliance&quot; value=&quot;1.8&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_bracket_in_array_reference&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_annotation&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_enum_constant_arguments&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_between_empty_braces_in_array_initializer&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_colon_in_case&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_multiple_local_declarations&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_annotation_type_declaration&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_bracket_in_array_reference&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_method_declaration&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.wrap_outer_expressions_when_nested&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_closing_paren_in_cast&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.brace_position_for_enum_constant&quot; value=&quot;end_of_line&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.brace_position_for_type_declaration&quot; value=&quot;end_of_line&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.blank_lines_before_package&quot; value=&quot;0&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_for&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_synchronized&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_for_increments&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_annotation_type_member_declaration&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_expressions_in_for_loop_header&quot; value=&quot;0&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_while&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_enum_constant&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_explicitconstructorcall_arguments&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_annotation&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_angle_bracket_in_type_parameters&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.indent_body_declarations_compare_to_enum_constant_header&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_lambda_arrow&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_constructor_declaration&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_constructor_declaration_throws&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.join_lines_in_comments&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_angle_bracket_in_type_parameters&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_question_in_conditional&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.indent_parameter_description&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_before_finally_in_try_statement&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.tabulation.char&quot; value=&quot;space&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_multiple_field_declarations&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.blank_lines_between_import_groups&quot; value=&quot;1&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.lineSplit&quot; value=&quot;120&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_annotation&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_switch&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;/profile>&#xA;&lt;/profiles>&#xA;"/>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:CompoundTask"
-        name="org.eclipse.releng.tools">
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.releng.tools/org.eclipse.releng.tools.copyrightTemplate"
-          value="Copyright (c) $${date} THALES GLOBAL SERVICES.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;  &#xA;Contributors:&#xA;   Thales - initial API and implementation"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.releng.tools/org.eclipse.releng.tools.replaceAllExisting"
-          value="false"/>
-    </setupTask>
-  </setupTask>
-  <setupTask
-      xsi:type="jdt:JRETask"
-      version="JavaSE-1.7"
-      location="${jre.location-1.7}">
-    <description>Define the JRE needed to compile and run the Java projects of ${scope.project.label}</description>
-  </setupTask>
-  <setupTask
-      xsi:type="setup:EclipseIniTask"
-      option="-Xmx"
-      value="1024m"
-      vm="true">
-    <description>Set the heap space needed to work with the projects of ${scope.project.label}</description>
-  </setupTask>
-  <setupTask
-      xsi:type="setup:ResourceCreationTask"
-      excludedTriggers="STARTUP MANUAL"
-      content="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;section name=&quot;Workbench&quot;>&#xD;&#xA;&#x9;&lt;section name=&quot;org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart&quot;>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;true&quot; key=&quot;group_libraries&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;false&quot; key=&quot;linkWithEditor&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;2&quot; key=&quot;layout&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;2&quot; key=&quot;rootMode&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;packageExplorer configured=&amp;quot;true&amp;quot; group_libraries=&amp;quot;1&amp;quot; layout=&amp;quot;2&amp;quot; linkWithEditor=&amp;quot;0&amp;quot; rootMode=&amp;quot;2&amp;quot; sortWorkingSets=&amp;quot;false&amp;quot; workingSetName=&amp;quot;&amp;quot;&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;localWorkingSetManager&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;workingSet editPageId=&amp;quot;org.eclipse.jdt.internal.ui.OthersWorkingSet&amp;quot; factoryID=&amp;quot;org.eclipse.ui.internal.WorkingSetFactory&amp;quot; id=&amp;quot;1382792884467_1&amp;quot; label=&amp;quot;Other Projects&amp;quot; name=&amp;quot;Other Projects&amp;quot;/&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;/localWorkingSetManager&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;activeWorkingSet workingSetName=&amp;quot;Other Projects&amp;quot;/&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;allWorkingSets workingSetName=&amp;quot;Other Projects&amp;quot;/&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;/packageExplorer&amp;gt;&quot; key=&quot;memento&quot;/>&#xD;&#xA;&#x9;&lt;/section>&#xD;&#xA;&lt;/section>&#xD;&#xA;"
-      targetURL="${workspace.location|uri}/.metadata/.plugins/org.eclipse.jdt.ui/dialog_settings.xml"
-      encoding="UTF-8">
-    <description>Initialize JDT's package explorer to show working sets as its root objects</description>
-  </setupTask>
-  <setupTask
       xsi:type="setup:VariableTask"
       name="polarsys.git.remoteURIs"
       label="Polarsys Git Repository">
@@ -178,39 +94,582 @@
         label="Git (read-only, anonymous, direct)"/>
     <description>Choose from the available Gerrit or Git URIs</description>
   </setupTask>
-  <setupTask
-      xsi:type="setup.p2:P2Task">
-    <requirement
-        name="org.eclipse.sirius.specifier.feature.group"/>
-    <requirement
-        name="org.eclipse.emf.sdk.feature.group"/>
-    <requirement
-        name="org.eclipse.releng.tools.feature.group"/>
-    <requirement
-        name="org.eclipse.egf.sdk.feature.group"/>
-    <requirement
-        name="org.polarsys.kitalpha.emde.sdk.feature.feature.group"/>
-    <repository
-        url="http://download.eclipse.org/sirius/updates/releases/4.1.4/neon"/>
-    <repository
-        url="http://download.eclipse.org/releases/neon"/>
-    <repository
-        url="http://download.eclipse.org/eclipse/updates/4.6"/>
-    <repository
-        url="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/lastSuccessfulBuild/artifact/result/publish/kitalpha_sdk/site.p2/"/>
-    <repository
-        url="https://hudson.eclipse.org/egf/job/buckminster-egf-mars/31/artifact/result/publish/org.eclipse.egf.sdk/site.p2/"/>
-  </setupTask>
-  <project name="Capella Developer"
-      logicalProjectContainer="/">
+  <project name="Capella Base">
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        name="User Preferences">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/UserPreferences">
+        <detail
+            key="/instance/org.eclipse.jdt.ui/formatter_profile">
+          <value>record</value>
+        </detail>
+        <detail
+            key="/instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.formatterprofiles">
+          <value>record</value>
+        </detail>
+        <detail
+            key="/instance/org.eclipse.releng.tools/org.eclipse.releng.tools.copyrightTemplate">
+          <value>record</value>
+        </detail>
+        <detail
+            key="/instance/org.eclipse.releng.tools/org.eclipse.releng.tools.replaceAllExisting">
+          <value>record</value>
+        </detail>
+      </annotation>
+      <setupTask
+          xsi:type="setup:CompoundTask"
+          name="org.eclipse.core.resources">
+        <setupTask
+            xsi:type="setup:PreferenceTask"
+            key="/instance/org.eclipse.core.resources/encoding"
+            value="UTF-8"/>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:CompoundTask"
+          name="org.eclipse.core.runtime">
+        <setupTask
+            xsi:type="setup:PreferenceTask"
+            key="/instance/org.eclipse.core.runtime/line.separator"
+            value="&#xD;&#xA;"/>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:CompoundTask"
+          name="org.eclipse.jdt.ui">
+        <setupTask
+            xsi:type="setup:PreferenceTask"
+            key="/instance/org.eclipse.jdt.ui/formatter_profile"
+            value="_Capella"/>
+        <setupTask
+            xsi:type="setup:PreferenceTask"
+            key="/instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.formatterprofiles"
+            value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?>&#xA;&lt;profiles version=&quot;12&quot;>&#xA;&lt;profile kind=&quot;CodeFormatterProfile&quot; name=&quot;Capella&quot; version=&quot;12&quot;>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_ellipsis&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_enum_declarations&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_in_empty_annotation_declaration&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_allocation_expression&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_at_in_annotation_type_declaration&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.new_lines_at_block_boundaries&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_constructor_declaration_parameters&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.insert_new_line_for_parameter&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_package&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_between_empty_parens_in_enum_constant&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.blank_lines_after_imports&quot; value=&quot;1&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_while&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.insert_new_line_before_root_tags&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_between_empty_parens_in_annotation_type_member_declaration&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_method_declaration_throws&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.format_javadoc_comments&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.indentation.size&quot; value=&quot;2&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_postfix_operator&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_for_increments&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_type_arguments&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_for_inits&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_in_empty_anonymous_type_declaration&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_semicolon_in_for&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.disabling_tag&quot; value=&quot;@formatter:off&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.continuation_indentation&quot; value=&quot;2&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_enum_constants&quot; value=&quot;0&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.blank_lines_before_imports&quot; value=&quot;1&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.blank_lines_after_package&quot; value=&quot;1&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_binary_operator&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_multiple_local_declarations&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_arguments_in_enum_constant&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_angle_bracket_in_parameterized_type_reference&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.indent_root_tags&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.wrap_before_or_operator_multicatch&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.enabling_tag&quot; value=&quot;@formatter:on&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_closing_brace_in_block&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_parenthesized_expression_in_return&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_throws_clause_in_method_declaration&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_parameter&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.keep_then_statement_on_same_line&quot; value=&quot;false&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_field&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_explicitconstructorcall_arguments&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_in_empty_block&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_prefix_operator&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.blank_lines_between_type_declarations&quot; value=&quot;1&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_brace_in_array_initializer&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_for&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_catch&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_angle_bracket_in_type_arguments&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_method&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_switch&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_anonymous_type_declaration&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_parenthesized_expression&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_enum_constant&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.never_indent_line_comments_on_first_column&quot; value=&quot;false&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.compiler.problem.enumIdentifier&quot; value=&quot;error&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_and_in_type_parameter&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_for_inits&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.indent_statements_compare_to_block&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.brace_position_for_anonymous_type_declaration&quot; value=&quot;end_of_line&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_question_in_wildcard&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_annotation&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_method_invocation_arguments&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_switch&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.line_length&quot; value=&quot;120&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.use_on_off_tags&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_between_empty_brackets_in_array_allocation_expression&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_enum_constant&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_between_empty_parens_in_method_invocation&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_assignment_operator&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_type_declaration&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_for&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.preserve_white_space_between_code_and_line_comments&quot; value=&quot;false&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_local_variable&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.brace_position_for_method_declaration&quot; value=&quot;end_of_line&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_method_invocation&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_union_type_in_multicatch&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_colon_in_for&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.number_of_blank_lines_at_beginning_of_method_body&quot; value=&quot;0&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_closing_angle_bracket_in_type_arguments&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.keep_else_statement_on_same_line&quot; value=&quot;false&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_binary_expression&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_parameterized_type_reference&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_array_initializer&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_multiple_field_declarations&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_annotation&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_arguments_in_explicit_constructor_call&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.indent_body_declarations_compare_to_annotation_declaration_header&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_superinterfaces&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_colon_in_default&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_question_in_conditional&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.brace_position_for_block&quot; value=&quot;end_of_line&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.brace_position_for_constructor_declaration&quot; value=&quot;end_of_line&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.brace_position_for_lambda_body&quot; value=&quot;end_of_line&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.compact_else_if&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_type_parameters&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_catch&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_method_invocation&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.put_empty_statement_on_new_line&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_parameters_in_constructor_declaration&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_method_invocation_arguments&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_arguments_in_method_invocation&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_throws_clause_in_constructor_declaration&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.compiler.problem.assertIdentifier&quot; value=&quot;error&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.clear_blank_lines_in_block_comment&quot; value=&quot;false&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_before_catch_in_try_statement&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_try&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_at_end_of_file_if_missing&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.clear_blank_lines_in_javadoc_comment&quot; value=&quot;false&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_array_initializer&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_binary_operator&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_unary_operator&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_expressions_in_array_initializer&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.format_line_comment_starting_on_first_column&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.number_of_empty_lines_to_preserve&quot; value=&quot;1&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_colon_in_case&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_ellipsis&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_semicolon_in_try_resources&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_colon_in_assert&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_if&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_type_arguments&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_and_in_type_parameter&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_in_empty_type_declaration&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_parenthesized_expression&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.format_line_comments&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_colon_in_labeled_statement&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.align_type_members_on_columns&quot; value=&quot;false&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_assignment&quot; value=&quot;0&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_in_empty_method_body&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.indent_body_declarations_compare_to_type_header&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_between_empty_parens_in_method_declaration&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_enum_constant&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_superinterfaces_in_type_declaration&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.blank_lines_before_first_class_body_declaration&quot; value=&quot;0&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_conditional_expression&quot; value=&quot;80&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_before_closing_brace_in_array_initializer&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_constructor_declaration_parameters&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.format_guardian_clause_on_one_line&quot; value=&quot;false&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_if&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_type&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_block&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.brace_position_for_enum_declaration&quot; value=&quot;end_of_line&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.brace_position_for_block_in_case&quot; value=&quot;end_of_line&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_constructor_declaration&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.format_header&quot; value=&quot;false&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_arguments_in_allocation_expression&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_method_invocation&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_while&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.compiler.codegen.inlineJsrBytecode&quot; value=&quot;enabled&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_switch&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_method_declaration&quot; value=&quot;0&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.join_wrapped_lines&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_between_empty_parens_in_constructor_declaration&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.indent_switchstatements_compare_to_cases&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_bracket_in_array_allocation_expression&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_synchronized&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.align_fields_grouping_blank_lines&quot; value=&quot;2147483647&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.new_lines_at_javadoc_boundaries&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.brace_position_for_annotation_type_declaration&quot; value=&quot;end_of_line&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_colon_in_for&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_resources_in_try&quot; value=&quot;80&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.use_tabs_only_for_leading_indentations&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_selector_in_method_invocation&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.never_indent_block_comments_on_first_column&quot; value=&quot;false&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.compiler.source&quot; value=&quot;1.8&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_synchronized&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_constructor_declaration_throws&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.tabulation.size&quot; value=&quot;2&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_in_empty_enum_constant&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_allocation_expression&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_bracket_in_array_reference&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_colon_in_conditional&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.format_source_code&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_array_initializer&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_try&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_semicolon_in_try_resources&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.blank_lines_before_field&quot; value=&quot;0&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_at_in_annotation&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.continuation_indentation_for_array_initializer&quot; value=&quot;2&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_question_in_wildcard&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.blank_lines_before_method&quot; value=&quot;1&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_superclass_in_type_declaration&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_superinterfaces_in_enum_declaration&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_parenthesized_expression_in_throw&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_colon_in_labeled_statement&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.compiler.codegen.targetPlatform&quot; value=&quot;1.8&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.brace_position_for_switch&quot; value=&quot;end_of_line&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_superinterfaces&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_method_declaration_parameters&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_after_type_annotation&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_brace_in_array_initializer&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_parenthesized_expression&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.format_html&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_at_in_annotation_type_declaration&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_closing_angle_bracket_in_type_parameters&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_compact_if&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.indent_empty_lines&quot; value=&quot;false&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_parameterized_type_reference&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_unary_operator&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_enum_constant&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_arguments_in_annotation&quot; value=&quot;0&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_enum_declarations&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.keep_empty_array_initializer_on_one_line&quot; value=&quot;false&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.indent_switchstatements_compare_to_switch&quot; value=&quot;false&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_before_else_in_if_statement&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_assignment_operator&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_constructor_declaration&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.blank_lines_before_new_chunk&quot; value=&quot;1&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_after_label&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.indent_body_declarations_compare_to_enum_declaration_header&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_bracket_in_array_allocation_expression&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_constructor_declaration&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_colon_in_conditional&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_angle_bracket_in_parameterized_type_reference&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_method_declaration_parameters&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_angle_bracket_in_type_arguments&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_cast&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_colon_in_assert&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.blank_lines_before_member_type&quot; value=&quot;1&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_before_while_in_do_statement&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_bracket_in_array_type_reference&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_angle_bracket_in_parameterized_type_reference&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_arguments_in_qualified_allocation_expression&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_after_opening_brace_in_array_initializer&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_in_empty_enum_declaration&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.indent_breaks_compare_to_cases&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_method_declaration&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_if&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_semicolon&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_postfix_operator&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_try&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_angle_bracket_in_type_arguments&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_cast&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.format_block_comments&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_lambda_arrow&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_method_declaration&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.keep_imple_if_on_one_line&quot; value=&quot;false&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_enum_declaration&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_parameters_in_method_declaration&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_between_brackets_in_array_type_reference&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_angle_bracket_in_type_parameters&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_semicolon_in_for&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_method_declaration_throws&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_bracket_in_array_allocation_expression&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.indent_statements_compare_to_body&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_multiple_fields&quot; value=&quot;16&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_enum_constant_arguments&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_prefix_operator&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.brace_position_for_array_initializer&quot; value=&quot;end_of_line&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.wrap_before_binary_operator&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_method_declaration&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_type_parameters&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_catch&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.compiler.compliance&quot; value=&quot;1.8&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_bracket_in_array_reference&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_comma_in_annotation&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_enum_constant_arguments&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_between_empty_braces_in_array_initializer&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_colon_in_case&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_multiple_local_declarations&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_annotation_type_declaration&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_bracket_in_array_reference&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_method_declaration&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.wrap_outer_expressions_when_nested&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_closing_paren_in_cast&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.brace_position_for_enum_constant&quot; value=&quot;end_of_line&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.brace_position_for_type_declaration&quot; value=&quot;end_of_line&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.blank_lines_before_package&quot; value=&quot;0&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_for&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_synchronized&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_for_increments&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_annotation_type_member_declaration&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.alignment_for_expressions_in_for_loop_header&quot; value=&quot;0&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_while&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_enum_constant&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_explicitconstructorcall_arguments&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_annotation&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_angle_bracket_in_type_parameters&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.indent_body_declarations_compare_to_enum_constant_header&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_lambda_arrow&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_constructor_declaration&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_constructor_declaration_throws&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.join_lines_in_comments&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_closing_angle_bracket_in_type_parameters&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_question_in_conditional&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.comment.indent_parameter_description&quot; value=&quot;true&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_new_line_before_finally_in_try_statement&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.tabulation.char&quot; value=&quot;space&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_comma_in_multiple_field_declarations&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.blank_lines_between_import_groups&quot; value=&quot;1&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.lineSplit&quot; value=&quot;120&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_annotation&quot; value=&quot;do not insert&quot;/>&#xD;&#xA;&lt;setting id=&quot;org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_switch&quot; value=&quot;insert&quot;/>&#xD;&#xA;&lt;/profile>&#xA;&lt;/profiles>&#xA;"/>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:CompoundTask"
+          name="org.eclipse.releng.tools">
+        <setupTask
+            xsi:type="setup:PreferenceTask"
+            key="/instance/org.eclipse.releng.tools/org.eclipse.releng.tools.copyrightTemplate"
+            value="Copyright (c) $${date} THALES GLOBAL SERVICES.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;  &#xA;Contributors:&#xA;   Thales - initial API and implementation"/>
+        <setupTask
+            xsi:type="setup:PreferenceTask"
+            key="/instance/org.eclipse.releng.tools/org.eclipse.releng.tools.replaceAllExisting"
+            value="false"/>
+      </setupTask>
+    </setupTask>
     <setupTask
         xsi:type="setup:EclipseIniTask"
-        disabled="true"
-        option="-Doomph.redirection.capella="
-        value="https://git.polarsys.org/c/capella/capella.git/plain/releng/plugins/org.polarsys.capella.rcp.target/oomph/Capella.setup->${git.clone.capella.location|uri}/releng/plugins/org.polarsys.capella.rcp.target/oomph/Capella.setup"
+        option="-Xmx"
+        value="1024m"
         vm="true">
-      <description>Redirect to local setup file allows testing changes before pushing them back to git. Disabled atm because does not work with branches other than master.</description>
+      <description>Set the heap space needed to work with the projects of ${scope.project.label}</description>
     </setupTask>
+    <setupTask
+        xsi:type="setup:ResourceCreationTask"
+        excludedTriggers="STARTUP MANUAL"
+        content="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;section name=&quot;Workbench&quot;>&#xD;&#xA;&#x9;&lt;section name=&quot;org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart&quot;>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;true&quot; key=&quot;group_libraries&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;false&quot; key=&quot;linkWithEditor&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;2&quot; key=&quot;layout&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;2&quot; key=&quot;rootMode&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;packageExplorer configured=&amp;quot;true&amp;quot; group_libraries=&amp;quot;1&amp;quot; layout=&amp;quot;2&amp;quot; linkWithEditor=&amp;quot;0&amp;quot; rootMode=&amp;quot;2&amp;quot; sortWorkingSets=&amp;quot;false&amp;quot; workingSetName=&amp;quot;&amp;quot;&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;localWorkingSetManager&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;workingSet editPageId=&amp;quot;org.eclipse.jdt.internal.ui.OthersWorkingSet&amp;quot; factoryID=&amp;quot;org.eclipse.ui.internal.WorkingSetFactory&amp;quot; id=&amp;quot;1382792884467_1&amp;quot; label=&amp;quot;Other Projects&amp;quot; name=&amp;quot;Other Projects&amp;quot;/&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;/localWorkingSetManager&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;activeWorkingSet workingSetName=&amp;quot;Other Projects&amp;quot;/&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;allWorkingSets workingSetName=&amp;quot;Other Projects&amp;quot;/&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;/packageExplorer&amp;gt;&quot; key=&quot;memento&quot;/>&#xD;&#xA;&#x9;&lt;/section>&#xD;&#xA;&lt;/section>&#xD;&#xA;"
+        targetURL="${workspace.location|uri}/.metadata/.plugins/org.eclipse.jdt.ui/dialog_settings.xml"
+        encoding="UTF-8">
+      <description>Initialize JDT's package explorer to show working sets as its root objects</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup.p2:P2Task">
+      <requirement
+          name="org.eclipse.sirius.specifier.feature.group"/>
+      <requirement
+          name="org.eclipse.emf.sdk.feature.group"/>
+      <requirement
+          name="org.eclipse.releng.tools.feature.group"/>
+      <requirement
+          name="org.eclipse.egf.sdk.feature.group"/>
+      <requirement
+          name="org.polarsys.kitalpha.emde.sdk.feature.feature.group"/>
+      <repository
+          url="http://download.eclipse.org/releases/neon"/>
+      <repository
+          url="http://download.eclipse.org/eclipse/updates/4.6"/>
+      <repository
+          url="http://download.polarsys.org/kitalpha/updates/stable/sdk/1.3.0RC3"/>
+      <repository
+          url="http://download.eclipse.org/releases/photon"/>
+      <repository
+          url="http://download.eclipse.org/releases/mars"/>
+      <repository
+          url="http://download.eclipse.org/sirius/updates/releases/6.0.2/photon"/>
+    </setupTask>
+    <setupTask
+        xsi:type="setup.targlets:TargletTask"
+        filter="(!(eclipse.target.platform=Mars))">
+      <targlet
+          name="Eclipse Modeling Base"
+          activeRepositoryList="${eclipse.target.platform}">
+        <requirement
+            name="org.eclipse.sdk.feature.group"/>
+        <requirement
+            name="org.eclipse.platform.feature.group"/>
+        <requirement
+            name="org.eclipse.emf.sdk.feature.group"/>
+        <requirement
+            name="org.eclipse.emf.query.feature.group"/>
+        <requirement
+            name="org.eclipse.emf.transaction.feature.group"/>
+        <requirement
+            name="org.eclipse.equinox.executable.feature.group"/>
+        <requirement
+            name="com.ibm.icu"/>
+        <repositoryList
+            name="Neon">
+          <repository
+              url="http://download.eclipse.org/releases/neon"/>
+        </repositoryList>
+        <repositoryList
+            name="Oxygen">
+          <repository
+              url="http://download.eclipse.org/releases/oxygen"/>
+        </repositoryList>
+        <repositoryList
+            name="Mars">
+          <repository
+              url="http://download.eclipse.org/releases/mars"/>
+        </repositoryList>
+      </targlet>
+      <targlet
+          name="Sirius"
+          activeRepositoryList="${eclipse.target.platform}">
+        <requirement
+            name="org.eclipse.sirius.doc.feature.feature.group"/>
+        <requirement
+            name="org.eclipse.sirius.runtime.feature.group"/>
+        <requirement
+            name="org.eclipse.sirius.runtime.aql.feature.group"/>
+        <requirement
+            name="org.eclipse.sirius.runtime.ide.ui.feature.group"/>
+        <requirement
+            name="org.eclipse.sirius.interpreter.feature.feature.group"/>
+        <requirement
+            name="org.eclipse.acceleo.ui.interpreter.feature.group"/>
+        <requirement
+            name="org.eclipse.sirius.aql.feature.group"/>
+        <requirement
+            name="org.eclipse.acceleo.query.feature.group"/>
+        <requirement
+            name="org.eclipse.sirius.runtime.ide.ui.acceleo.feature.group"/>
+        <repositoryList
+            name="Neon">
+          <repository
+              url="http://download.eclipse.org/sirius/updates/stable/5.1.4-S20181130-113030/neon"/>
+        </repositoryList>
+        <repositoryList
+            name="Oxygen">
+          <repository
+              url="http://download.eclipse.org/sirius/updates/stable/6.1.3-S20190506-061916/oxygen"/>
+        </repositoryList>
+      </targlet>
+      <targlet
+          name="Diffmerge"
+          activeRepositoryList="${eclipse.target.platform}">
+        <requirement
+            name="org.eclipse.emf.diffmerge.feature.feature.group"/>
+        <requirement
+            name="org.eclipse.emf.diffmerge.sirius.feature.feature.group"/>
+        <requirement
+            name="org.eclipse.emf.diffmerge.gmf.feature.feature.group"/>
+        <repositoryList
+            name="Neon">
+          <repository
+              url="http://download.eclipse.org/diffmerge/releases/0.9.0/emf-diffmerge-site"/>
+        </repositoryList>
+        <repositoryList
+            name="Oxygen">
+          <repository
+              url="http://download.eclipse.org/diffmerge/releases/0.11.2/emf-diffmerge-site"/>
+        </repositoryList>
+      </targlet>
+      <targlet
+          name="Patterns"
+          activeRepositoryList="${eclipse.target.platform}">
+        <requirement
+            name="org.eclipse.emf.diffmerge.patterns.sdk.feature.feature.group"/>
+        <requirement
+            name="org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.feature.group"/>
+        <repositoryList
+            name="Neon">
+          <repository
+              url="http://download.eclipse.org/diffmerge/releases/0.9.0/edm-patterns-site"/>
+        </repositoryList>
+        <repositoryList
+            name="Oxygen">
+          <repository
+              url="http://download.eclipse.org/diffmerge/releases/0.11.0/edm-patterns-site"/>
+        </repositoryList>
+      </targlet>
+      <targlet
+          name="Amalgam"
+          activeRepositoryList="${eclipse.target.platform}">
+        <requirement
+            name="org.eclipse.amalgam.explorer.activity.feature.group"/>
+        <repositoryList
+            name="Oxygen">
+          <repository
+              url="http://download.eclipse.org/modeling/amalgam/updates/stable/1.10.1-S20190510/capella"/>
+        </repositoryList>
+        <repositoryList
+            name="Neon">
+          <repository
+              url="http://download.eclipse.org/modeling/amalgam/updates/stable/1.9.0-S20180528/capella"/>
+        </repositoryList>
+      </targlet>
+      <targlet
+          name="Sirius Legacy">
+        <requirement
+            name="org.eclipse.sirius.query.legacy.feature.feature.group"/>
+        <repositoryList
+            name="">
+          <repository
+              url="http://download.eclipse.org/sirius/updates/legacy/1.1.0"/>
+        </repositoryList>
+      </targlet>
+      <targlet
+          name="Nebula">
+        <requirement
+            name="org.eclipse.nebula.widgets.richtext.feature.feature.group"/>
+        <repositoryList>
+          <repository
+              url="http://download.eclipse.org/nebula/releases/1.2.0"/>
+        </repositoryList>
+      </targlet>
+      <targlet
+          name="Eclipse License"
+          activeRepositoryList="">
+        <requirement
+            name="org.eclipse.license.feature.group"/>
+        <repositoryList
+            name="">
+          <repository
+              url="http://download.eclipse.org/cbi/updates/license"/>
+        </repositoryList>
+      </targlet>
+      <targlet
+          name="Orbit 2013">
+        <requirement
+            name="org.apache.log4j"
+            versionRange="[1.2.15.v201012070815,1.2.15.v201012070815]"/>
+        <requirement
+            name="org.apache.commons.lang"
+            versionRange="[2.4.0.v201005080502,2.4.0.v201005080502]"/>
+        <requirement
+            name="org.apache.commons.net"
+            versionRange="[3.2.0.v201305141515,3.2.0.v201305141515]"/>
+        <requirement
+            name="org.jsoup"
+            versionRange="[1.7.2.v201304221138,1.7.2.v201304221138]"/>
+        <repositoryList
+            name="">
+          <repository
+              url="http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository"/>
+        </repositoryList>
+      </targlet>
+      <targlet
+          name="Orbit 2014">
+        <requirement
+            name="com.google.guava"
+            versionRange="[15.0.0.v201403281430,15.0.0.v201403281430]"/>
+        <repositoryList
+            name="">
+          <repository
+              url="http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository"/>
+        </repositoryList>
+      </targlet>
+      <targlet
+          name="Capella Features"
+          activeRepositoryList="${eclipse.target.platform}">
+        <requirement
+            name="org.polarsys.capella.core.advance.feature.feature.group"/>
+        <repositoryList
+            name="Oxygen">
+          <repository
+              url="http://download.polarsys.org/capella/core/updates/nightly/1.3.x/org.polarsys.capella.rcp.site"/>
+          <repository
+              url="http://download.polarsys.org/capella/core/updates/nightly/1.3.x/org.polarsys.capella.egf.site"/>
+          <repository
+              url="http://download.polarsys.org/capella/core/updates/nightly/1.3.x/org.polarsys.capella.richtext.site"/>
+        </repositoryList>
+        <repositoryList
+            name="Neon">
+          <repository
+              url="http://download.polarsys.org/capella/core/updates/nightly/1.2.x/org.polarsys.capella.rcp.site"/>
+          <repository
+              url="http://download.polarsys.org/capella/core/updates/nightly/1.2.x/org.polarsys.capella.egf.site"/>
+          <repository
+              url="http://download.polarsys.org/capella/core/updates/nightly/1.2.x/org.polarsys.capella.richtext.site"/>
+        </repositoryList>
+      </targlet>
+      <targlet
+          name="Kitalpha"
+          activeRepositoryList="${eclipse.target.platform}">
+        <requirement
+            name="org.polarsys.kitalpha.ad.runtime.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.cadence.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.common.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.emde.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.emde.ui.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.model.common.commands.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.model.common.scrutiny.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.model.common.share.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.model.detachment.contrib.viewpoints.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.model.detachment.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.model.detachment.ui.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.patterns.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.report.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.report.ui.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.transposer.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.richtext.widget.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.richtext.widget.doc.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.richtext.widget.ext.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.emde.sdk.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.kitalpha.doc.feature.feature.group"/>
+        <repositoryList
+            name="Oxygen">
+          <repository
+              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.3.x/239/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.core.updatesite/target/repository"/>
+          <repository
+              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.3.x/239/artifact/releng/plugins/org.polarsys.kitalpha.releng.sdk.updatesite/target/repository"/>
+          <repository
+              url="http://download.eclipse.org/egf/updates/1.6.0/oxygen"/>
+        </repositoryList>
+        <repositoryList
+            name="Neon">
+          <repository
+              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.2.x/88/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.core.updatesite/target/repository"/>
+          <repository
+              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.2.x/88/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.updatesite/target/repository"/>
+          <repository
+              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.2.x/88/artifact/releng/plugins/org.polarsys.kitalpha.releng.sdk.updatesite/target/repository"/>
+          <repository
+              url="http://download.eclipse.org/egf/updates/1.5.1/neon"/>
+        </repositoryList>
+      </targlet>
+      <targlet
+          name="GMF"
+          activeRepositoryList="${eclipse.target.platform}">
+        <requirement
+            name="org.eclipse.gmf.feature.group"/>
+        <repositoryList
+            name="Neon">
+          <repository
+              url="http://download.eclipse.org/releases/neon"/>
+        </repositoryList>
+        <repositoryList
+            name="Oxygen">
+          <repository
+              url="http://download.eclipse.org/modeling/gmp/gmf-notation/updates/milestones/S201805221301"/>
+          <repository
+              url="http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/milestones/S201806010809"/>
+        </repositoryList>
+        <repositoryList
+            name="Mars">
+          <repository
+              url="http://download.eclipse.org/releases/mars"/>
+        </repositoryList>
+      </targlet>
+      <description>This defines the targets for 1.2.x and master. The filter below is defined to exclude this targlet from v1.1.x which is isolated in its own stream since its tp differs quite a bit.</description>
+    </setupTask>
+    <stream
+        name="master"
+        label="">
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="eclipse.target.platform"
+          value="Oxygen"
+          defaultValue="Oxygen"
+          storageURI="scope://Workspace"/>
+      <setupTask
+          xsi:type="jdt:JRETask"
+          version="JavaSE-1.8"
+          location="${jre.location-1.8}">
+        <description>Define the JRE needed to compile and run the Java projects of ${scope.project.label} 1.2.x+</description>
+      </setupTask>
+      <setupTask
+          xsi:type="setup.targlets:TargletTask">
+        <targlet
+            name="Kitalpha-1.3.x">
+          <requirement
+              name="org.polarsys.kitalpha.massactions.feature.feature.group"/>
+          <requirement
+              name="org.polarsys.kitalpha.resourcereuse.feature.feature.group"/>
+          <requirement
+              name="org.polarsys.kitalpha.resourcereuse.emfscheme.feature.feature.group"/>
+          <requirement
+              name="org.polarsys.kitalpha.resourcereuse.ui.feature.feature.group"/>
+          <requirement
+              name="org.polarsys.kitalpha.resourcereuse.emfscheme.ui.feature.feature.group"/>
+        </targlet>
+      </setupTask>
+      <description>Capella master development</description>
+    </stream>
+    <stream
+        name="v1.2.x"
+        label="">
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="eclipse.target.platform"
+          value="Neon"
+          defaultValue="Neon"
+          storageURI="scope://Workspace"/>
+      <setupTask
+          xsi:type="jdt:JRETask"
+          version="JavaSE-1.8"
+          location="${jre.location-1.8}">
+        <description>Define the JRE needed to compile and run the Java projects of ${scope.project.label} 1.2.x+</description>
+      </setupTask>
+      <description>Capella v1.2.x development</description>
+    </stream>
+    <stream
+        name="v1.1.x"
+        label="">
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="eclipse.target.platform"
+          value="Mars"
+          defaultValue="Mars"
+          storageURI="scope://Workspace"/>
+      <setupTask
+          xsi:type="setup.targlets:TargletTask">
+        <targlet
+            name="Capella Dependencies"
+            activeRepositoryList="">
+          <annotation
+              source="http:/www.eclipse.org/oomph/targlets/TargetDefinitionGenerator">
+            <detail
+                key="location">
+              <value>${java.io.tmpdir/Capella.target}</value>
+            </detail>
+            <detail
+                key="extraUnits">
+              <value>org.eclipse.equinox.executable.feature.group</value>
+            </detail>
+            <detail
+                key="singleLocation">
+              <value>true</value>
+            </detail>
+            <detail
+                key="includeAllPlatforms">
+              <value>false</value>
+            </detail>
+            <detail
+                key="includeSource">
+              <value>true</value>
+            </detail>
+          </annotation>
+          <requirement
+              name="org.eclipse.sdk.feature.group"/>
+          <requirement
+              name="org.eclipse.emf.sdk.feature.group"/>
+          <requirement
+              name="org.eclipse.gef.sdk.feature.group"/>
+          <requirement
+              name="org.eclipse.emf.transaction.feature.group"/>
+          <requirement
+              name="org.eclipse.emf.validation.feature.group"/>
+          <requirement
+              name="org.eclipse.emf.query.feature.group"/>
+          <requirement
+              name="org.eclipse.emf.workspace.feature.group"/>
+          <requirement
+              name="org.eclipse.emf.validation.ocl.feature.group"/>
+          <requirement
+              name="org.eclipse.emf.query.ocl.feature.group"/>
+          <requirement
+              name="org.eclipse.gmf.feature.group"/>
+          <requirement
+              name="org.eclipse.sirius.query.legacy.feature.feature.group"/>
+          <requirement
+              name="org.eclipse.sirius.runtime.feature.group"/>
+          <requirement
+              name="org.eclipse.sirius.runtime.ide.ui.feature.group"/>
+          <requirement
+              name="org.eclipse.sirius.doc.feature.feature.group"/>
+          <requirement
+              name="org.polarsys.kitalpha.emde.ui.feature.feature.group"/>
+          <requirement
+              name="org.polarsys.kitalpha.emde.feature.feature.group"/>
+          <requirement
+              name="org.polarsys.kitalpha.model.detachment.feature.feature.group"/>
+          <requirement
+              name="org.polarsys.kitalpha.model.detachment.contrib.viewpoints.feature.feature.group"/>
+          <requirement
+              name="org.polarsys.kitalpha.patterns.feature.feature.group"/>
+          <requirement
+              name="org.eclipse.emf.diffmerge.sdk.feature.feature.group"/>
+          <requirement
+              name="org.eclipse.emf.diffmerge.patterns.sdk.feature.feature.group"/>
+          <requirement
+              name="org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.feature.group"/>
+          <requirement
+              name="org.eclipse.amalgam.explorer.activity.feature.group"/>
+          <requirement
+              name="org.eclipse.amalgam.explorer.contextual.feature.group"/>
+          <requirement
+              name="org.eclipse.amalgam.explorer.contextual.core.feature.group"/>
+          <requirement
+              name="org.eclipse.amalgam.explorer.contextual.sirius.feature.group"/>
+          <repositoryList
+              name="Mars">
+            <repository
+                url="http://download.eclipse.org/sirius/updates/stable/4.1.9-S20180222-100510/mars/"/>
+            <repository
+                url="http://download.eclipse.org/sirius/updates/legacy/1.1.0"/>
+            <repository
+                url="http://download.eclipse.org/diffmerge/releases/0.7.0/emf-diffmerge-site"/>
+            <repository
+                url="http://download.eclipse.org/diffmerge/releases/0.7.1/edm-patterns-site"/>
+            <repository
+                url="https://hudson.polarsys.org/kitalpha/job/kitalpha-v1.1.x/713/artifact/result/publish/kitalpha_runtime/site.p2"/>
+            <repository
+                url="https://hudson.polarsys.org/kitalpha/job/kitalpha-v1.1.x/713/artifact/result/publish/kitalpha_sdk/site.p2"/>
+            <repository
+                url="http://download.eclipse.org/modeling/amalgam/updates/stable/1.8.0.S20180308/mars"/>
+            <repository
+                url="http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository"/>
+            <repository
+                url="http://download.eclipse.org/releases/mars"/>
+            <repository
+                url="http://download.eclipse.org/cbi/updates/license"/>
+          </repositoryList>
+        </targlet>
+        <description>Target for Capella 1.1.x, before tycho</description>
+      </setupTask>
+      <setupTask
+          xsi:type="jdt:JRETask"
+          version="JavaSE-1.7"
+          location="${jre.location-1.7}">
+        <description>Define the JRE needed to compile and run the Java projects of ${scope.project.label} 1.1.x</description>
+      </setupTask>
+    </stream>
+    <description>Minimum setup, containing preferences and target platform. Users should always select this.</description>
+  </project>
+  <project name="Capella Developer"
+      logicalProjectContainer="/">
     <setupTask
         xsi:type="git:GitCloneTask"
         id="git.clone.capella"
@@ -257,6 +716,17 @@
         <requirement
             name="org.polarsys.capella.core.model.definition.feature.feature.group"/>
       </targlet>
+      <targlet
+          name="Capella Releng and Code Generators">
+        <requirement
+            name="org.polarsys.capella.core.egf.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.capella.core.advance.feature.feature.group"/>
+        <requirement
+            name="org.polarsys.capella.core.data.def"/>
+        <requirement
+            name="org.polarsys.capella.common.data.def"/>
+      </targlet>
     </setupTask>
     <setupTask
         xsi:type="setup.workingsets:WorkingSetTask">
@@ -287,7 +757,7 @@
               pattern=".*\.validation(\..*)?"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.9"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.9"/>
           <operand
               xsi:type="predicates:RepositoryPredicate"
               project="org.polarsys.capella.common"/>
@@ -302,7 +772,7 @@
               pattern=".*\.properties(\..*)?"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8"/>
           <operand
               xsi:type="predicates:RepositoryPredicate"
               project="org.polarsys.capella.common"/>
@@ -317,7 +787,7 @@
               pattern=".*\.quickfix(\..*)?"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8"/>
           <operand
               xsi:type="predicates:RepositoryPredicate"
               project="org.polarsys.capella.common"/>
@@ -332,7 +802,7 @@
               pattern=".*\.transition(\..*)?"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.9"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.9"/>
           <operand
               xsi:type="predicates:RepositoryPredicate"
               project="org.polarsys.capella.common"/>
@@ -347,7 +817,7 @@
               pattern=".*\.sirius(\..*)?"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8"/>
           <operand
               xsi:type="predicates:RepositoryPredicate"
               project="org.polarsys.capella.common"/>
@@ -362,7 +832,7 @@
               pattern=".*/common/.*"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.2 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.3 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.0 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.7 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.5 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.4 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.1 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.9 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.11"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.2 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.3 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.0 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.7 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.5 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.4 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.1 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.9 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.11"/>
           <operand
               xsi:type="predicates:RepositoryPredicate"
               project="org.polarsys.capella.common"/>
@@ -377,7 +847,7 @@
               pattern=".*/core/.*"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.0 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.2 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.3 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.5 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.4 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.1 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.9 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.11"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.0 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.2 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.3 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.5 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.4 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.1 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.9 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.11"/>
           <operand
               xsi:type="predicates:RepositoryPredicate"
               project="org.polarsys.capella.common"/>
@@ -404,7 +874,7 @@
               pattern=".*\.test(\..*)?"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8"/>
           <operand
               xsi:type="predicates:RepositoryPredicate"
               project="org.polarsys.capella.common"/>
@@ -422,7 +892,7 @@
               project="org.polarsys.capella.common"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8"/>
         </predicate>
       </workingSet>
       <workingSet
@@ -434,7 +904,7 @@
               pattern=".*/doc/.*"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8"/>
           <operand
               xsi:type="predicates:RepositoryPredicate"
               project="org.polarsys.capella.common"/>
@@ -464,6 +934,22 @@
       <setupTask
           xsi:type="setup:VariableTask"
           name="eclipse.target.platform"
+          value="Oxygen"
+          defaultValue="Oxygen"
+          storageURI="scope://Workspace"/>
+      <setupTask
+          xsi:type="setup:EclipseIniTask"
+          option="-Doomph.redirection.capella="
+          value="http://git.polarsys.org/c/capella/capella.git/plain/releng/plugins/org.polarsys.capella.settings/oomph/Capella.setup->${git.clone.capella.location|uri}/releng/plugins/org.polarsys.capella.settings/oomph/Capella.setup"
+          vm="true">
+        <description>Redirect to local setup file allows testing changes before pushing them back to git. Disabled atm because does not work with branches other than master.</description>
+      </setupTask>
+    </stream>
+    <stream
+        name="v1.2.x">
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="eclipse.target.platform"
           value="Neon"
           defaultValue="Neon"
           storageURI="scope://Workspace"/>
@@ -477,7 +963,7 @@
           defaultValue="Mars"
           storageURI="scope://Workspace"/>
     </stream>
-    <description>Select this to work on the capella source code</description>
+    <description>Select this if you want to make changes to the capella source code</description>
   </project>
   <project name="Capella Addon Developer">
     <setupTask
@@ -510,7 +996,8 @@
     <setupTask
         xsi:type="git:GitCloneTask"
         id="git.clone.addon-basicvp"
-        remoteURI="capella/capella-basic-vp.git">
+        remoteURI="capella/capella-basic-vp.git"
+        checkoutBranch="${basic-vp-branch}">
       <annotation
           source="http://www.eclipse.org/oomph/setup/InducedChoices">
         <detail
@@ -580,11 +1067,14 @@
         <requirement
             name="org.polarsys.capella.transition.system2subsystem.tests.ju"/>
         <sourceLocator
-            rootFolder="${git.clone.addon-xhtml.location}"/>
+            rootFolder="${git.clone.addon-xhtml.location}"
+            locateNestedProjects="true"/>
         <sourceLocator
-            rootFolder="${git.clone.addon-basicvp.location}"/>
+            rootFolder="${git.clone.addon-basicvp.location}"
+            locateNestedProjects="true"/>
         <sourceLocator
-            rootFolder="${git.clone.addon-ssstransition.location}"/>
+            rootFolder="${git.clone.addon-ssstransition.location}"
+            locateNestedProjects="true"/>
       </targlet>
       <targlet
           name="Capella Addons Test Dependencies">
@@ -657,9 +1147,26 @@
       <setupTask
           xsi:type="setup:VariableTask"
           name="eclipse.target.platform"
+          value="Oxygen"
+          defaultValue="Neon"
+          storageURI="scope://Workspace"/>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="basic-vp-branch"
+          value="master"/>
+    </stream>
+    <stream
+        name="v1.2.x">
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="eclipse.target.platform"
           value="Neon"
           defaultValue="Neon"
           storageURI="scope://Workspace"/>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="basic-vp-branch"
+          value="master"/>
     </stream>
     <stream
         name="v1.1.x">
@@ -669,8 +1176,12 @@
           value="Mars"
           defaultValue="Mars"
           storageURI="scope://Workspace"/>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="basic-vp-branch"
+          value="v1.1.x"/>
     </stream>
-    <description>Select this work on capella addons source code</description>
+    <description>Select this if you want to make changes to the capella addons source code</description>
   </project>
   <project name="Capella Tools Developer">
     <setupTask
@@ -722,12 +1233,12 @@
         <repositoryList
             name="master">
           <repository
-              url="http://dist.springsource.org/snapshot/GRECLIPSE/e4.6/"/>
+              url="http://dist.springsource.org/snapshot/GRECLIPSE/e4.7/"/>
         </repositoryList>
         <repositoryList
-            name="v1.1.x">
+            name="v1.2.x">
           <repository
-              url="http://dist.springsource.org/snapshot/GRECLIPSE/e4.5/"/>
+              url="http://dist.springsource.org/snapshot/GRECLIPSE/e4.6/"/>
         </repositoryList>
       </targlet>
     </setupTask>
@@ -767,9 +1278,24 @@
           name="org.codehaus.groovy.eclipse.feature.feature.group"/>
       <repository
           url="http://dist.springsource.org/snapshot/GRECLIPSE/e4.7/"/>
+      <repository
+          url="http://dist.springsource.org/snapshot/GRECLIPSE/e4.8/"/>
+      <repository
+          url="http://dist.springsource.org/snapshot/GRECLIPSE/e4.9/"/>
+      <repository
+          url="http://dist.springsource.org/snapshot/GRECLIPSE/e4.10/"/>
     </setupTask>
     <stream
         name="master">
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="eclipse.target.platform"
+          value="Oxygen"
+          defaultValue="Oxygen"
+          storageURI="scope://Workspace"/>
+    </stream>
+    <stream
+        name="v1.2.x">
       <setupTask
           xsi:type="setup:VariableTask"
           name="eclipse.target.platform"
@@ -777,405 +1303,10 @@
           defaultValue="Neon"
           storageURI="scope://Workspace"/>
     </stream>
-    <description>Select this work on capella addons source code</description>
+    <description>Select this if you want to make changes to the capella tools source code</description>
   </project>
-  <stream name="v1.1.x">
-    <setupTask
-        xsi:type="setup:VariableTask"
-        name="eclipse.target.platform"
-        value="Mars"
-        defaultValue="Mars"
-        storageURI="scope://Workspace"/>
-    <setupTask
-        xsi:type="setup.targlets:TargletTask">
-      <targlet
-          name="Capella Features"
-          activeRepositoryList="">
-        <requirement
-            name="org.polarsys.capella.core.advance.feature.feature.group"/>
-        <repositoryList
-            name="Mars">
-          <repository
-              url="https://hudson.polarsys.org/capella/view/Capella-v1.1.x/job/capella-v1.1.x/lastSuccessfulBuild/artifact/result/publish/org.polarsys.capella/site.p2/"/>
-        </repositoryList>
-      </targlet>
-      <targlet
-          name="Capella Dependencies"
-          activeRepositoryList="">
-        <annotation
-            source="http:/www.eclipse.org/oomph/targlets/TargetDefinitionGenerator">
-          <detail
-              key="location">
-            <value>${java.io.tmpdir/Capella.target}</value>
-          </detail>
-          <detail
-              key="extraUnits">
-            <value>org.eclipse.equinox.executable.feature.group</value>
-          </detail>
-          <detail
-              key="singleLocation">
-            <value>true</value>
-          </detail>
-          <detail
-              key="includeAllPlatforms">
-            <value>false</value>
-          </detail>
-          <detail
-              key="includeSource">
-            <value>true</value>
-          </detail>
-        </annotation>
-        <requirement
-            name="org.eclipse.sdk.feature.group"/>
-        <requirement
-            name="org.eclipse.emf.sdk.feature.group"/>
-        <requirement
-            name="org.eclipse.gef.sdk.feature.group"/>
-        <requirement
-            name="org.eclipse.emf.transaction.feature.group"/>
-        <requirement
-            name="org.eclipse.emf.validation.feature.group"/>
-        <requirement
-            name="org.eclipse.emf.query.feature.group"/>
-        <requirement
-            name="org.eclipse.emf.workspace.feature.group"/>
-        <requirement
-            name="org.eclipse.emf.validation.ocl.feature.group"/>
-        <requirement
-            name="org.eclipse.emf.query.ocl.feature.group"/>
-        <requirement
-            name="org.eclipse.gmf.feature.group"/>
-        <requirement
-            name="org.eclipse.sirius.query.legacy.feature.feature.group"/>
-        <requirement
-            name="org.eclipse.sirius.runtime.feature.group"/>
-        <requirement
-            name="org.eclipse.sirius.runtime.ide.ui.feature.group"/>
-        <requirement
-            name="org.eclipse.sirius.doc.feature.feature.group"/>
-        <requirement
-            name="org.polarsys.kitalpha.emde.ui.feature.feature.group"/>
-        <requirement
-            name="org.polarsys.kitalpha.emde.feature.feature.group"/>
-        <requirement
-            name="org.polarsys.kitalpha.model.detachment.feature.feature.group"/>
-        <requirement
-            name="org.polarsys.kitalpha.model.detachment.contrib.viewpoints.feature.feature.group"/>
-        <requirement
-            name="org.polarsys.kitalpha.patterns.feature.feature.group"/>
-        <requirement
-            name="org.eclipse.emf.diffmerge.sdk.feature.feature.group"/>
-        <requirement
-            name="org.eclipse.emf.diffmerge.patterns.sdk.feature.feature.group"/>
-        <requirement
-            name="org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.feature.group"/>
-        <requirement
-            name="org.eclipse.amalgam.explorer.activity.feature.group"/>
-        <requirement
-            name="org.eclipse.amalgam.explorer.contextual.feature.group"/>
-        <requirement
-            name="org.eclipse.amalgam.explorer.contextual.core.feature.group"/>
-        <requirement
-            name="org.eclipse.amalgam.explorer.contextual.sirius.feature.group"/>
-        <repositoryList
-            name="Mars">
-          <repository
-              url="http://download.eclipse.org/sirius/updates/milestones/4.1.7rc1/mars/"/>
-          <repository
-              url="http://download.eclipse.org/sirius/updates/legacy/1.1.0"/>
-          <repository
-              url="http://download.eclipse.org/diffmerge/releases/0.7.0/emf-diffmerge-site"/>
-          <repository
-              url="http://download.eclipse.org/diffmerge/releases/0.7.1/edm-patterns-site"/>
-          <repository
-              url="https://hudson.polarsys.org/kitalpha/job/kitalpha-v1.1.x/571/artifact/result/publish/kitalpha_runtime/site.p2"/>
-          <repository
-              url="https://hudson.polarsys.org/kitalpha/job/kitalpha-v1.1.x/571/artifact/result/publish/kitalpha_sdk/site.p2"/>
-          <repository
-              url="http://download.eclipse.org/modeling/amalgam/updates/nightly/1.8.0-N20170307-051244/mars"/>
-          <repository
-              url="http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository"/>
-          <repository
-              url="http://download.eclipse.org/releases/mars"/>
-          <repository
-              url="http://download.eclipse.org/cbi/updates/license"/>
-        </repositoryList>
-      </targlet>
-    </setupTask>
-    <description>Capella version 1.1.x maintenance</description>
-  </stream>
-  <stream name="master"
-      label="">
-    <setupTask
-        xsi:type="setup:VariableTask"
-        name="eclipse.target.platform"
-        value="Neon"
-        defaultValue="Neon"
-        storageURI="scope://Workspace"/>
-    <setupTask
-        xsi:type="setup.targlets:TargletTask">
-      <targlet
-          name="Eclipse Projects"
-          activeRepositoryList="">
-        <annotation
-            source="http:/www.eclipse.org/oomph/targlets/TargetDefinitionGenerator">
-          <detail
-              key="location">
-            <value>${java.io.tmpdir/Capella.target}</value>
-          </detail>
-          <detail
-              key="extraUnits">
-            <value>org.eclipse.equinox.executable.feature.group</value>
-          </detail>
-          <detail
-              key="singleLocation">
-            <value>true</value>
-          </detail>
-          <detail
-              key="includeAllPlatforms">
-            <value>false</value>
-          </detail>
-          <detail
-              key="includeSource">
-            <value>true</value>
-          </detail>
-        </annotation>
-        <requirement
-            name="org.eclipse.sdk.feature.group"/>
-        <requirement
-            name="org.eclipse.platform.feature.group"/>
-        <requirement
-            name="org.eclipse.emf.sdk.feature.group"/>
-        <requirement
-            name="org.eclipse.emf.query.feature.group"/>
-        <requirement
-            name="org.eclipse.emf.transaction.feature.group"/>
-        <requirement
-            name="org.eclipse.gmf.feature.group"/>
-        <requirement
-            name="org.eclipse.equinox.executable.feature.group"/>
-        <requirement
-            name="com.ibm.icu"/>
-        <repositoryList
-            name="Neon">
-          <repository
-              url="http://download.eclipse.org/releases/neon"/>
-        </repositoryList>
-      </targlet>
-      <targlet
-          name="Sirius">
-        <requirement
-            name="org.eclipse.sirius.doc.feature.feature.group"/>
-        <requirement
-            name="org.eclipse.sirius.runtime.feature.group"/>
-        <requirement
-            name="org.eclipse.sirius.runtime.aql.feature.group"/>
-        <requirement
-            name="org.eclipse.sirius.runtime.ide.ui.feature.group"/>
-        <requirement
-            name="org.eclipse.sirius.interpreter.feature.feature.group"/>
-        <requirement
-            name="org.eclipse.acceleo.ui.interpreter.feature.group"/>
-        <requirement
-            name="org.eclipse.sirius.aql.feature.group"/>
-        <requirement
-            name="org.eclipse.acceleo.query.feature.group"/>
-        <requirement
-            name="org.eclipse.sirius.runtime.ide.ui.acceleo.feature.group"/>
-        <repositoryList
-            name="Neon">
-          <repository
-              url="http://download.eclipse.org/sirius/updates/releases/5.1.2/neon"/>
-        </repositoryList>
-      </targlet>
-      <targlet
-          name="Kitalpha">
-        <requirement
-            name="org.polarsys.kitalpha.ad.runtime.feature.feature.group"/>
-        <requirement
-            name="org.polarsys.kitalpha.cadence.feature.feature.group"/>
-        <requirement
-            name="org.polarsys.kitalpha.common.feature.feature.group"/>
-        <requirement
-            name="org.polarsys.kitalpha.emde.feature.feature.group"/>
-        <requirement
-            name="org.polarsys.kitalpha.emde.ui.feature.feature.group"/>
-        <requirement
-            name="org.polarsys.kitalpha.model.common.commands.feature.feature.group"/>
-        <requirement
-            name="org.polarsys.kitalpha.model.common.scrutiny.feature.feature.group"/>
-        <requirement
-            name="org.polarsys.kitalpha.model.common.share.feature.feature.group"/>
-        <requirement
-            name="org.polarsys.kitalpha.model.detachment.contrib.viewpoints.feature.feature.group"/>
-        <requirement
-            name="org.polarsys.kitalpha.model.detachment.feature.feature.group"/>
-        <requirement
-            name="org.polarsys.kitalpha.model.detachment.ui.feature.feature.group"/>
-        <requirement
-            name="org.polarsys.kitalpha.patterns.feature.feature.group"/>
-        <requirement
-            name="org.polarsys.kitalpha.report.feature.feature.group"/>
-        <requirement
-            name="org.polarsys.kitalpha.report.ui.feature.feature.group"/>
-        <requirement
-            name="org.polarsys.kitalpha.transposer.feature.feature.group"/>
-        <requirement
-            name="org.polarsys.kitalpha.richtext.widget.feature.feature.group"/>
-        <requirement
-            name="org.polarsys.kitalpha.richtext.widget.doc.feature.feature.group"/>
-        <requirement
-            name="org.polarsys.kitalpha.richtext.widget.ext.feature.feature.group"/>
-        <requirement
-            name="org.polarsys.kitalpha.emde.sdk.feature.feature.group"/>
-        <requirement
-            name="org.polarsys.kitalpha.doc.feature.feature.group"/>
-        <repositoryList
-            name="Neon">
-          <repository
-              url="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/545/artifact/result/publish/kitalpha_runtime/site.p2"/>
-          <repository
-              url="https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/545/artifact/result/publish/kitalpha_sdk/site.p2"/>
-        </repositoryList>
-      </targlet>
-      <targlet
-          name="Diffmerge">
-        <requirement
-            name="org.eclipse.emf.diffmerge.feature.feature.group"/>
-        <requirement
-            name="org.eclipse.emf.diffmerge.sirius.feature.feature.group"/>
-        <requirement
-            name="org.eclipse.emf.diffmerge.gmf.feature.feature.group"/>
-        <repositoryList
-            name="Neon">
-          <repository
-              url="http://download.eclipse.org/diffmerge/releases/0.9.0/emf-diffmerge-site"/>
-        </repositoryList>
-      </targlet>
-      <targlet
-          name="Patterns">
-        <requirement
-            name="org.eclipse.emf.diffmerge.patterns.sdk.feature.feature.group"/>
-        <requirement
-            name="org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.feature.group"/>
-        <repositoryList
-            name="Neon">
-          <repository
-              url="http://download.eclipse.org/diffmerge/releases/0.9.0/edm-patterns-site"/>
-        </repositoryList>
-      </targlet>
-      <targlet
-          name="Amalgam">
-        <requirement
-            name="org.eclipse.amalgam.explorer.activity.feature.group"/>
-        <repositoryList
-            name="Neon">
-          <repository
-              url="http://download.eclipse.org/modeling/amalgam/updates/milestones/1.9.0RC1/capella"/>
-        </repositoryList>
-      </targlet>
-      <targlet
-          name="Sirius Legacy">
-        <requirement
-            name="org.eclipse.sirius.query.legacy.feature.feature.group"/>
-        <repositoryList
-            name="Neon">
-          <repository
-              url="http://download.eclipse.org/sirius/updates/legacy/1.1.0"/>
-        </repositoryList>
-      </targlet>
-      <targlet
-          name="EGF SDK">
-        <requirement
-            name="org.eclipse.egf.sdk.feature.group"/>
-        <repositoryList
-            name="Neon">
-          <repository
-              url="https://hudson.eclipse.org/egf/job/buckminster-egf-neon/lastSuccessfulBuild/artifact/result/publish/org.eclipse.egf.site/site.p2"/>
-        </repositoryList>
-      </targlet>
-      <targlet
-          name="Nebula">
-        <requirement
-            name="org.eclipse.nebula.widgets.richtext.feature.feature.group"/>
-        <repositoryList
-            name="Neon">
-          <repository
-              url="http://download.eclipse.org/nebula/releases/1.2.0"/>
-        </repositoryList>
-      </targlet>
-      <targlet
-          name="Eclipse License"
-          activeRepositoryList="">
-        <requirement
-            name="org.eclipse.license.feature.group"/>
-        <repositoryList
-            name="Neon">
-          <repository
-              url="http://download.eclipse.org/cbi/updates/license"/>
-        </repositoryList>
-      </targlet>
-      <targlet
-          name="Orbit 2013">
-        <requirement
-            name="org.apache.log4j"
-            versionRange="[1.2.15.v201012070815,1.2.15.v201012070815]"/>
-        <requirement
-            name="org.apache.commons.lang"
-            versionRange="[2.4.0.v201005080502,2.4.0.v201005080502]"/>
-        <requirement
-            name="org.apache.commons.net"
-            versionRange="[3.2.0.v201305141515,3.2.0.v201305141515]"/>
-        <requirement
-            name="org.jsoup"
-            versionRange="[1.7.2.v201304221138,1.7.2.v201304221138]"/>
-        <repositoryList
-            name="Neon">
-          <repository
-              url="http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository"/>
-        </repositoryList>
-      </targlet>
-      <targlet
-          name="Orbit 2014">
-        <requirement
-            name="com.google.guava"
-            versionRange="[15.0.0.v201403281430,15.0.0.v201403281430]"/>
-        <repositoryList
-            name="Neon">
-          <repository
-              url="http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository"/>
-        </repositoryList>
-      </targlet>
-      <targlet
-          name="Capella Features"
-          activeRepositoryList="">
-        <requirement
-            name="org.polarsys.capella.core.advance.feature.feature.group"/>
-        <repositoryList
-            name="Neon">
-          <repository
-              url="https://hudson.polarsys.org/capella/view/Capella-master/job/capella-master/lastSuccessfulBuild/artifact/releng/plugins/org.polarsys.capella.rcp.site/target/repository/"/>
-        </repositoryList>
-      </targlet>
-      <targlet
-          name="Capella Releng and Code Generators">
-        <requirement
-            name="org.polarsys.capella.core.egf.feature.feature.group"/>
-        <requirement
-            name="org.polarsys.capella.headless.feature.feature.group"/>
-        <requirement
-            name="org.polarsys.capella.rcp.feature.feature.group"/>
-        <requirement
-            name="org.polarsys.capella.core.data.def"/>
-        <requirement
-            name="org.polarsys.capella.common.data.def"/>
-      </targlet>
-      <description>Capella Dependencies, copied from org.polarsys.capella.rcp.target/full</description>
-    </setupTask>
-    <description>Capella master development</description>
-  </stream>
   <logicalProjectContainer
       xsi:type="setup:ProjectCatalog"
       href="index:/org.eclipse.setup#//@projectCatalogs[name='org.eclipse']"/>
-  <description>Always select Capella Target Platform</description>
+  <description></description>
 </setup:Project>

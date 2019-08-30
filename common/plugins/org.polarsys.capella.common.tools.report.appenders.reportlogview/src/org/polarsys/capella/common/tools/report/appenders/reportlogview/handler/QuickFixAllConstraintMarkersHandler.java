@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,8 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.resources.IMarker;
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.validation.service.IConstraintDescriptor;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.MenuManager;
@@ -39,8 +41,8 @@ import org.polarsys.capella.common.tools.report.appenders.reportlogview.Messages
 
 public class QuickFixAllConstraintMarkersHandler extends QuickfixHandler {
 
-  private final String menuId = "org.polarsys.capella.core.validation.quickfixAllSimilar"; //$NON-NLS-1$
-  private final String menuImage = "quickfixAll-repository.png"; //$NON-NLS-1$
+  private static final String menuId = "org.polarsys.capella.core.validation.quickfixAllSimilar"; //$NON-NLS-1$
+  private static final String menuImage = "quickfixAll-repository.png"; //$NON-NLS-1$
 
   public static IMarkerHelpRegistry getMarkerRegistry() {
     return IDE.getMarkerHelpRegistry();
@@ -55,21 +57,34 @@ public class QuickFixAllConstraintMarkersHandler extends QuickfixHandler {
       return NO_CONTRIBUTION_ITEM;
     }
 
-    Collection<IContributionItem> items = new ArrayList<IContributionItem>();
-
+    Collection<IContributionItem> items = new ArrayList<>();
+    
     IConstraintDescriptor selectedMarkerDesc = MarkerViewHelper.getConstraintDescriptor(selection.get(0));
+    Diagnostic diagnostic = selection.get(0).getAdapter(Diagnostic.class);
+    Diagnostic basicDiagnostic = null;
+    
+    if(diagnostic instanceof BasicDiagnostic) {
+      basicDiagnostic = (BasicDiagnostic) diagnostic;
+    }
 
-    if (selectedMarkerDesc != null) {
+    if (selectedMarkerDesc != null || basicDiagnostic != null) {
 
-      List<IMarker> sameConstraintMarkers = new ArrayList<IMarker>();
+      List<IMarker> sameConstraintMarkers = new ArrayList<>();
 
       Collection<IMarker> allMarkers = LightMarkerRegistry.getInstance().getMarkers();
 
       // get all markers that has the same constraint id
       for (IMarker marker : allMarkers) {
 
-        if (MarkerViewHelper.getConstraintDescriptor(marker) == selectedMarkerDesc) {
+        if ((selectedMarkerDesc != null) && (MarkerViewHelper.getConstraintDescriptor(marker) == selectedMarkerDesc)) {
           sameConstraintMarkers.add(marker);
+        }
+        else if (basicDiagnostic != null) {
+          Diagnostic diag = marker.getAdapter(Diagnostic.class);
+          if (diag != null && diag.getSource() != null && diag.getSource().equals(basicDiagnostic.getSource())
+              && (diag.getCode() == basicDiagnostic.getCode())) {
+            sameConstraintMarkers.add(marker);
+          }
         }
       }
       // no other similar markers
@@ -81,7 +96,7 @@ public class QuickFixAllConstraintMarkersHandler extends QuickfixHandler {
       // should, since they have the same constraint id)
       for (IMarkerResolution res : getMarkerRegistry().getResolutions(selection.get(0))) {
 
-        Set<IMarker> markersToFix = new HashSet<IMarker>();
+        Set<IMarker> markersToFix = new HashSet<>();
         if (res instanceof WorkbenchMarkerResolution) {
 
           IMarker[] otherMarkers = ((WorkbenchMarkerResolution) res).findOtherMarkers(sameConstraintMarkers
@@ -99,7 +114,7 @@ public class QuickFixAllConstraintMarkersHandler extends QuickfixHandler {
       }
     }
 
-    if (items.size() > 0) {
+    if (!items.isEmpty()) {
       ImageDescriptor image = MarkerViewPlugin.getDefault().getImageDescriptor(menuImage);
       String text = Messages.MarkerView_QuickfixAll_Command_Name;
       MenuManager manager = new MenuManager(text, image, menuId);
@@ -112,37 +127,23 @@ public class QuickFixAllConstraintMarkersHandler extends QuickfixHandler {
     return NO_CONTRIBUTION_ITEM;
   }
 
-  // @Deprecated
-  // private ISelection getSelection() {
-  // ISelection selection = null;
-  //
-  // IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-  // IWorkbenchPart activePart = activePage.getActivePart();
-  // if (activePart instanceof MarkerView) {
-  // MarkerView view = (MarkerView) activePart;
-  // selection = view.getViewer().getSelection();
-  // }
-  // return selection;
-  // }
-
   @Override
   protected List<IMarker> getSelectedMarkers() {
 
-    List<IMarker> result = new ArrayList<IMarker>();
+    List<IMarker> result = new ArrayList<>();
     IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
     IWorkbenchPart activePart = activePage.getActivePart();
     if (activePart instanceof MarkerView) {
       MarkerView view = (MarkerView) activePart;
       ISelection selection = view.getViewer().getSelection();
-      if (selection instanceof StructuredSelection) {
-        if (((StructuredSelection) selection).size() > 0) {
-          for (Iterator<?> it = ((StructuredSelection) selection).iterator(); it.hasNext();) {
-            Object element = it.next();
-            if (element instanceof IMarker) {
-              result.add((IMarker) element);
-            }
+      if (selection instanceof StructuredSelection && ((StructuredSelection) selection).size() > 0) {
+        for (Iterator<?> it = ((StructuredSelection) selection).iterator(); it.hasNext();) {
+          Object element = it.next();
+          if (element instanceof IMarker) {
+            result.add((IMarker) element);
           }
         }
+
       }
     }
     return result;
@@ -152,18 +153,4 @@ public class QuickFixAllConstraintMarkersHandler extends QuickfixHandler {
   public boolean isEnabled() {
     return true;
   }
-
-  // private IConstraintDescriptor getConstraintDescriptor(ISelection selection) {
-  // IConstraintDescriptor descriptor = null;
-  // if (selection instanceof IStructuredSelection) {
-  // IStructuredSelection ssel = (IStructuredSelection) selection;
-  // Object first = ssel.getFirstElement();
-  // if ((first != null) && (first instanceof IMarker)) {
-  // IMarker marker = (IMarker) first;
-  // descriptor = MarkerViewHelper.getConstraintDescriptor(marker);
-  // }
-  // }
-  // return descriptor;
-  // }
-
 }

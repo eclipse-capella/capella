@@ -38,6 +38,11 @@ public class HeadlessSelectElementsFromListWizard extends SelectElementFromListW
 
     Object result = itwr.getResult(selections, parameters);
 
+    // set result as single element if it is not a collection (important for aql)
+    boolean multiple = ("true".equals((String) parameters.get(MULTIPLE))) ? true : false; //$NON-NLS-1$
+    if (!multiple && result instanceof Collection && !((Collection)result).isEmpty()) {
+        result = ((Collection)result).iterator().next();
+    }        
     InterpreterUtil.getInterpreter(context).setVariable(resultVariable, result);
   }
 }

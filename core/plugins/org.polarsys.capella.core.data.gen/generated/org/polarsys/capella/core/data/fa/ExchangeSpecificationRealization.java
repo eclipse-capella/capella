@@ -53,6 +53,7 @@ public interface ExchangeSpecificationRealization extends Allocation {
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeSpecificationRealization_RealizedExchangeSpecification()
 	 * @see org.polarsys.capella.core.data.fa.ExchangeSpecification#getIncomingExchangeSpecificationRealizations
 	 * @model opposite="incomingExchangeSpecificationRealizations" required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='targetElement'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the exchange specification that is being realized by the other (typically lower level) exchange specification involved in this link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -80,6 +81,7 @@ public interface ExchangeSpecificationRealization extends Allocation {
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeSpecificationRealization_RealizingExchangeSpecification()
 	 * @see org.polarsys.capella.core.data.fa.ExchangeSpecification#getOutgoingExchangeSpecificationRealizations
 	 * @model opposite="outgoingExchangeSpecificationRealizations" required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='sourceElement'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the exchange specification that performs the realization of the other exchange specification involved in this link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

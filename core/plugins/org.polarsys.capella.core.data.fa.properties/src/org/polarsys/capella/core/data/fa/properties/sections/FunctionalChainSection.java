@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,7 +21,10 @@ import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.properties.controllers.FunctionalChainRealizationsController;
 import org.polarsys.capella.core.data.fa.properties.controllers.FunctionalChain_AvailableInStatesController;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
+import org.polarsys.capella.core.ui.properties.fields.ConstraintReferenceGroup;
 import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
+
+import com.google.common.collect.ImmutableMap;
 
 /**
  * The FunctionalChain section.
@@ -31,6 +34,7 @@ public class FunctionalChainSection extends NamedElementSection {
   private boolean showFunctionalChainRealizations;
   private MultipleSemanticField availableInStatesField;
   private MultipleSemanticField realizedFunctionalChainsField;
+  private ConstraintReferenceGroup prePostGroup;
 
   /**
    * Default constructor.
@@ -41,6 +45,7 @@ public class FunctionalChainSection extends NamedElementSection {
 
   /**
    * Constructor.
+   * 
    * @param showFunctionalChainRealizations
    */
   public FunctionalChainSection(boolean showFunctionalChainRealizations) {
@@ -56,11 +61,21 @@ public class FunctionalChainSection extends NamedElementSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    availableInStatesField = new MultipleSemanticField(getReferencesGroup(), Messages.FunctionalChainSection_AvailableInStates_Label, getWidgetFactory(), new FunctionalChain_AvailableInStatesController());
+    prePostGroup = new ConstraintReferenceGroup(ImmutableMap.of(Messages.FunctionalChainSection_Precondition_Label,
+        FaPackage.Literals.FUNCTIONAL_CHAIN__PRE_CONDITION, Messages.FunctionalChainSection_Postcondition_Label,
+        FaPackage.Literals.FUNCTIONAL_CHAIN__POST_CONDITION));
+
+    prePostGroup.createControls(rootParentComposite, getWidgetFactory(), isDisplayedInWizard());
+
+    availableInStatesField = new MultipleSemanticField(getReferencesGroup(),
+        Messages.FunctionalChainSection_AvailableInStates_Label, getWidgetFactory(),
+        new FunctionalChain_AvailableInStatesController());
     availableInStatesField.setDisplayedInWizard(displayedInWizard);
 
     if (showFunctionalChainRealizations) {
-      realizedFunctionalChainsField = new MultipleSemanticField(getReferencesGroup(), Messages.FunctionalChainSection_FunctionalChainRealizations_Label, getWidgetFactory(), new FunctionalChainRealizationsController());
+      realizedFunctionalChainsField = new MultipleSemanticField(getReferencesGroup(),
+          Messages.FunctionalChainSection_FunctionalChainRealizations_Label, getWidgetFactory(),
+          new FunctionalChainRealizationsController());
       realizedFunctionalChainsField.setDisplayedInWizard(displayedInWizard);
     }
   }
@@ -74,8 +89,10 @@ public class FunctionalChainSection extends NamedElementSection {
 
     availableInStatesField.loadData(capellaElement, FaPackage.eINSTANCE.getFunctionalChain_AvailableInStates());
     if (null != realizedFunctionalChainsField) {
-      realizedFunctionalChainsField.loadData(capellaElement, FaPackage.eINSTANCE.getFunctionalChain_OwnedFunctionalChainRealizations());
+      realizedFunctionalChainsField.loadData(capellaElement,
+          FaPackage.eINSTANCE.getFunctionalChain_OwnedFunctionalChainRealizations());
     }
+    prePostGroup.loadData(capellaElement);
   }
 
   /**
@@ -97,6 +114,7 @@ public class FunctionalChainSection extends NamedElementSection {
     fields.addAll(super.getSemanticFields());
     fields.add(availableInStatesField);
     fields.add(realizedFunctionalChainsField);
+    fields.addAll(prePostGroup.getFields());
 
     return fields;
   }

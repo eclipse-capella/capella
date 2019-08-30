@@ -246,29 +246,6 @@ public class FaItemProviderAdapterFactory extends FaAdapterFactory implements Co
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvement} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected FunctionalChainInvolvementItemProvider functionalChainInvolvementItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvement}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createFunctionalChainInvolvementAdapter() {
-		if (functionalChainInvolvementItemProvider == null) {
-			functionalChainInvolvementItemProvider = new FunctionalChainInvolvementItemProvider(this);
-		}
-
-		return functionalChainInvolvementItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionalChainReference} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -660,6 +637,98 @@ public class FaItemProviderAdapterFactory extends FaAdapterFactory implements Co
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FunctionalChainInvolvementLinkItemProvider functionalChainInvolvementLinkItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFunctionalChainInvolvementLinkAdapter() {
+		if (functionalChainInvolvementLinkItemProvider == null) {
+			functionalChainInvolvementLinkItemProvider = new FunctionalChainInvolvementLinkItemProvider(this);
+		}
+
+		return functionalChainInvolvementLinkItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.SequenceLink} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SequenceLinkItemProvider sequenceLinkItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.SequenceLink}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSequenceLinkAdapter() {
+		if (sequenceLinkItemProvider == null) {
+			sequenceLinkItemProvider = new SequenceLinkItemProvider(this);
+		}
+
+		return sequenceLinkItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FunctionalChainInvolvementFunctionItemProvider functionalChainInvolvementFunctionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFunctionalChainInvolvementFunctionAdapter() {
+		if (functionalChainInvolvementFunctionItemProvider == null) {
+			functionalChainInvolvementFunctionItemProvider = new FunctionalChainInvolvementFunctionItemProvider(this);
+		}
+
+		return functionalChainInvolvementFunctionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.ControlNode} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ControlNodeItemProvider controlNodeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.ControlNode}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createControlNodeAdapter() {
+		if (controlNodeItemProvider == null) {
+			controlNodeItemProvider = new ControlNodeItemProvider(this);
+		}
+
+		return controlNodeItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -791,7 +860,6 @@ public class FaItemProviderAdapterFactory extends FaAdapterFactory implements Co
 		if (exchangeContainmentItemProvider != null) exchangeContainmentItemProvider.dispose();
 		if (functionalExchangeSpecificationItemProvider != null) functionalExchangeSpecificationItemProvider.dispose();
 		if (functionalChainItemProvider != null) functionalChainItemProvider.dispose();
-		if (functionalChainInvolvementItemProvider != null) functionalChainInvolvementItemProvider.dispose();
 		if (functionalChainReferenceItemProvider != null) functionalChainReferenceItemProvider.dispose();
 		if (functionInputPortItemProvider != null) functionInputPortItemProvider.dispose();
 		if (functionOutputPortItemProvider != null) functionOutputPortItemProvider.dispose();
@@ -809,6 +877,10 @@ public class FaItemProviderAdapterFactory extends FaAdapterFactory implements Co
 		if (componentPortItemProvider != null) componentPortItemProvider.dispose();
 		if (componentPortAllocationItemProvider != null) componentPortAllocationItemProvider.dispose();
 		if (componentPortAllocationEndItemProvider != null) componentPortAllocationEndItemProvider.dispose();
+		if (functionalChainInvolvementLinkItemProvider != null) functionalChainInvolvementLinkItemProvider.dispose();
+		if (sequenceLinkItemProvider != null) sequenceLinkItemProvider.dispose();
+		if (functionalChainInvolvementFunctionItemProvider != null) functionalChainInvolvementFunctionItemProvider.dispose();
+		if (controlNodeItemProvider != null) controlNodeItemProvider.dispose();
 	}
 
 	/**
@@ -859,7 +931,7 @@ public class FaItemProviderAdapterFactory extends FaAdapterFactory implements Co
 			@Override
 			public Object caseAbstractActivity(AbstractActivity object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/1.2.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/1.3.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code
@@ -913,7 +985,7 @@ public class FaItemProviderAdapterFactory extends FaAdapterFactory implements Co
 			@Override
 			public Object caseActivityGroup(ActivityGroup object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/1.2.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/1.3.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code
@@ -967,7 +1039,7 @@ public class FaItemProviderAdapterFactory extends FaAdapterFactory implements Co
 			@Override
 			public Object caseAbstractAction(AbstractAction object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/1.2.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/1.3.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code
@@ -1008,7 +1080,7 @@ public class FaItemProviderAdapterFactory extends FaAdapterFactory implements Co
 			@Override
 			public Object caseAcceptEventAction(AcceptEventAction object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/1.2.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/1.3.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code
@@ -1036,7 +1108,7 @@ public class FaItemProviderAdapterFactory extends FaAdapterFactory implements Co
 			@Override
 			public Object caseInvocationAction(InvocationAction object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/1.2.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/1.3.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code
@@ -1064,7 +1136,7 @@ public class FaItemProviderAdapterFactory extends FaAdapterFactory implements Co
 			@Override
 			public Object caseSendSignalAction(SendSignalAction object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/1.2.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/1.3.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code
@@ -1092,7 +1164,7 @@ public class FaItemProviderAdapterFactory extends FaAdapterFactory implements Co
 			@Override
 			public Object caseCallAction(CallAction object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/1.2.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/1.3.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code

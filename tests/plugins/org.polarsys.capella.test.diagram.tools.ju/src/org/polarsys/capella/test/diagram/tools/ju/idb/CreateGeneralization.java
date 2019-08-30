@@ -35,20 +35,22 @@ public class CreateGeneralization extends EmptyProject {
    */
   private void testComponents(IDBDiagram idb) {
 
+    SessionContext sessionContext = idb.getSessionContext();
+
     idb.createComponent(GenericModel.LC_1);
     idb.createComponent(GenericModel.LC_2);
     idb.createComponent(GenericModel.LC_3);
 
-    idb.setPreference(IInheritancePreferences.PREFS_ALLOW_COMPONENT_INHERITANCE, false);
-    idb.setPreference(IInheritancePreferences.PREFS_ALLOW_MULTIPLE_INHERITANCE, false);
+    sessionContext.setPreference(IInheritancePreferences.PREFS_ALLOW_COMPONENT_INHERITANCE, false);
+    sessionContext.setPreference(IInheritancePreferences.PREFS_ALLOW_MULTIPLE_INHERITANCE, false);
     idb.createGeneralizationNotEnabled(GenericModel.LC_1, GenericModel.LC_2);
 
-    idb.setPreference(IInheritancePreferences.PREFS_ALLOW_COMPONENT_INHERITANCE, true);
+    sessionContext.setPreference(IInheritancePreferences.PREFS_ALLOW_COMPONENT_INHERITANCE, true);
     idb.createGeneralization(GenericModel.LC_2, GenericModel.LC_1);
     idb.createGeneralizationNotEnabled(GenericModel.LC_1, GenericModel.LC_2);
     idb.createGeneralizationNotEnabled(GenericModel.LC_1, GenericModel.LC_3);
 
-    idb.setPreference(IInheritancePreferences.PREFS_ALLOW_MULTIPLE_INHERITANCE, true);
+    sessionContext.setPreference(IInheritancePreferences.PREFS_ALLOW_MULTIPLE_INHERITANCE, true);
     idb.createGeneralization(GenericModel.LC_3, GenericModel.LC_1);
     idb.createGeneralizationNotEnabled(GenericModel.LC_1, GenericModel.LC_3);
 

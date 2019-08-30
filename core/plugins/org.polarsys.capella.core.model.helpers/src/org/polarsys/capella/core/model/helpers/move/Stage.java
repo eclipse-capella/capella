@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.model.helpers.move;
 
+import static org.polarsys.capella.common.helpers.EObjectLabelProviderHelper.getText;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -17,6 +19,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.ListenerList;
@@ -25,10 +29,13 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EContentsEList;
+import org.eclipse.emf.ecore.util.EContentsEList.FeatureIterator;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -37,24 +44,21 @@ import org.eclipse.emf.transaction.ResourceSetListener;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.osgi.util.NLS;
-import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
-import org.polarsys.capella.core.model.helpers.listeners.PartComponentMoveListener;
+import org.polarsys.capella.core.data.information.InformationPackage;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.Collections2;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Multimap;
 
 public class Stage {
 
-  final static String SOURCE = "capella.move.stage"; //$NON-NLS-1$
+  public final static String SOURCE = Messages.Stage_diagnosticSource;
   final List<EObject> delegate = new ArrayList<EObject>();
 
   private TransactionalEditingDomain domain;
   private ResourceSetListener listener;
   private final ListenerList<StageListener> stageListeners;
-  private final int CODE_BACKREF = 0;
+  private static final Object[] NO_DATA = new Object[0];
 
   /* maps staged elements to their new parent */
   Map<EObject, EObject> plannedParents = new HashMap<EObject, EObject>();
@@ -66,7 +70,25 @@ public class Stage {
 
   private final Multimap<EObject, Diagnostic> diagnostics = ArrayListMultimap.create();
 
+  /* these are the potential backreferences to check for all added elements
+   * we check all non derived refs, plus the component-part ref to ensure that 
+   * components and parts must be moved together. The part-component exception
+   * is a first step towards 'synthetic' constraints, i.e. we might one day want to say:
+   * "When you move X, you have to move Y, even if there is no modeled relation
+   * between X and Y"
+   */
+  private final Predicate<EReference> BACKREF_PREDICATE = new Predicate<EReference>() {
+    @Override
+    public boolean test(EReference t) {
+      return !t.isDerived() ||
+          t == InformationPackage.Literals.PARTITIONABLE_ELEMENT__REPRESENTING_PARTITIONS;
+    }
+  };
+
   public Stage(TransactionalEditingDomain domain){
+    if (domain == null) {
+      throw new IllegalArgumentException("domain parameter cannot be null"); //$NON-NLS-1$
+    }
     this.domain = domain;
     stageListeners = new ListenerList<StageListener>();
     listener = new StageResourceSetListener(this);
@@ -102,12 +124,12 @@ public class Stage {
   }
 
   public Collection<EObject> getElementsWithoutNewParent() {
-    return Collections2.filter(getElements(), new Predicate<EObject>() {
+    return getElements().parallelStream().filter(new Predicate<EObject>() {
       @Override
-      public boolean apply(EObject input) {
+      public boolean test(EObject input) {
         return !plannedParents.containsKey(input);
       }
-    });
+    }).collect(Collectors.toList());
   }
 
   public Collection<EObject> getElements(){
@@ -158,7 +180,7 @@ public class Stage {
       throw new IllegalArgumentException(Messages.Stage_different_editing_domains_not_allowed);
     }
 
-    // if parent was already added there is nothing to do
+    // if e itself or parent of e was already added there is nothing to do
     if (EcoreUtil.isAncestor(delegate, e)){
       return;
     }
@@ -199,12 +221,11 @@ public class Stage {
   }
 
   private void addBackrefs(EObject e){
-    EContentsEList.FeatureIterator<?> it = (EContentsEList.FeatureIterator)e.eCrossReferences().iterator();
+    EContentsEList.FeatureIterator<EObject> it = (FeatureIterator<EObject>) e.eCrossReferences().iterator();
     while (it.hasNext()){
       EObject referenced = (EObject) it.next();
-      EStructuralFeature feature = it.feature();
-      if (!feature.isDerived()){
-
+      EReference ref = (EReference) it.feature();
+      if (BACKREF_PREDICATE.test(ref)){
 
         if (!Iterators.contains(EcoreUtil.getAllContents(delegate), referenced) && !delegate.contains(referenced)){
           // the referenced object is not staged
@@ -213,8 +234,8 @@ public class Stage {
             // don't consider cases where the referenced object is in a different project/library
             // FIXME this is probably even more complicated when multiple libraries are involved..
 
-            backrefs.put(referenced, ((InternalEObject) e).eSetting(it.feature()));
-            diagnostics.put(e, new BasicDiagnostic(Diagnostic.ERROR, SOURCE, CODE_BACKREF, Messages.Stage_diagnostic_backref, new Object[] {e, referenced, it.feature() }));
+            backrefs.put(referenced, ((InternalEObject) e).eSetting(ref));
+            diagnostics.put(e, new BasicDiagnostic(Diagnostic.ERROR, SOURCE, 0, Messages.Stage_diagnostic_backref, new Object[] {e, referenced, ref }));
           }
 
         }
@@ -284,50 +305,64 @@ public class Stage {
     return result;
   }
 
-  public IStatus execute(){
+  /**
+   * @deprecated use {@link #executeWithDiagnostics()}
+   * @return
+   */
+  @Deprecated
+  public IStatus execute() {
+    Diagnostic diagnostic = executeWithDiagnostics();
+    return new Status(diagnostic.getSeverity(), diagnostic.getSource(), diagnostic.getMessage());
+  }
 
-    IStatus result = null;
+  public Diagnostic executeWithDiagnostics(){
+
+    Diagnostic result = null;
 
     // there are still illegal references
     if (!backrefs.isEmpty()){
-      result = new Status(IStatus.ERROR, "org.polarsys.capella.core.model.helpers" , Messages.Stage_incomplete_with_backrefs); //$NON-NLS-1$
+      result = new BasicDiagnostic(Diagnostic.ERROR, SOURCE , 0, Messages.Stage_incomplete_with_backrefs, NO_DATA);
     }
 
     // there is at least one element without a new parent
-    else if (!plannedParents.keySet().containsAll(getElements())){
-      result = new Status(IStatus.ERROR, "org.polarsys.capella.core.model.helpers", Messages.Stage_incomplete_with_orphan); //$NON-NLS-1$
+    else if (!plannedParents.keySet().containsAll(getElements())) {
+      result = new BasicDiagnostic(IStatus.ERROR, SOURCE, 0, Messages.Stage_incomplete_with_orphan, NO_DATA);
     } else {
 
-      RecordingCommand rc = new RecordingCommand(domain, Messages.Stage_formtitle){
+      RecordingCommand rc = new RecordingCommand(domain, Messages.Stage_formtitle) {
 
-        IStatus resultStatus = Status.OK_STATUS;
+        DiagnosticChain resultStatus = new BasicDiagnostic(SOURCE, 0, Messages.Stage_executeDiagnostics_title,
+            NO_DATA);
 
         @Override
         protected void doExecute() {
           CompoundCommand c = new CompoundCommand();
-          for (EObject staged : getElements()){
-            if (!c.appendAndExecute(AddCommand.create(domain, getNewParent(staged), null, Collections.singleton(staged)))){
-              resultStatus = new Status(IStatus.ERROR, "org.polarsys.capella.core.model.helpers", NLS.bind("Cannot move {0} to {1}", EObjectLabelProviderHelper.getText(staged), EObjectLabelProviderHelper.getText(getNewParent(staged))));
+          for (EObject staged : getElements()) {
+            Object oldParent = staged.eContainer() != null ? staged.eContainer() : staged.eResource();
+            EObject newParent = getNewParent(staged);
+            if (!c.appendAndExecute(AddCommand.create(domain, newParent, null, Collections.singleton(staged)))) {
+              resultStatus.add(new BasicDiagnostic(Diagnostic.ERROR, SOURCE, 0,
+                  NLS.bind(Messages.Stage_executeCannotMove, getText(staged), getText(newParent)),
+                  new Object[] { staged, newParent }));
               throw new OperationCanceledException();
+            } else {
+              resultStatus.add(new BasicDiagnostic(Diagnostic.OK, SOURCE, 0,
+                  NLS.bind(Messages.Stage_executeMoved,
+                      new Object[] { getText(staged), getText(oldParent), getText(newParent) }),
+                  new Object[] { staged, oldParent, getNewParent(staged) }));
             }
           }
         }
 
         @Override
-        public Collection<?> getResult(){
+        public Collection<?> getResult() {
           return Collections.singleton(resultStatus);
         }
 
       };
 
-      ResourceSetListener l = new PartComponentMoveListener();
-      try {
-        domain.addResourceSetListener(l);
-        domain.getCommandStack().execute(rc);
-        result = (IStatus) rc.getResult().iterator().next();
-      } finally {
-        domain.removeResourceSetListener(l);
-      }
+      domain.getCommandStack().execute(rc);
+      result = (Diagnostic) rc.getResult().iterator().next();
 
     }
     return result;

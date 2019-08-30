@@ -72,7 +72,7 @@ public class PhysicalActorHelper {
   }
 
   protected List<LogicalActorRealization> getLogicalActorRealizations(PhysicalActor element) {
-    List<LogicalActorRealization> ret = new ArrayList<LogicalActorRealization>();
+    List<LogicalActorRealization> ret = new ArrayList<>();
     for (ComponentAllocation componentAllocation : element.getProvisionedComponentAllocations()) {
       if (componentAllocation instanceof LogicalActorRealization) {
         ret.add((LogicalActorRealization) componentAllocation);
@@ -82,7 +82,7 @@ public class PhysicalActorHelper {
   }
 
   protected List<PhysicalFunction> getAllocatedPhysicalFunctions(PhysicalActor element) {
-    List<PhysicalFunction> ret = new ArrayList<PhysicalFunction>();
+    List<PhysicalFunction> ret = new ArrayList<>();
     for (AbstractFunction function : element.getAllocatedFunctions()) {
       if (function instanceof PhysicalFunction) {
         ret.add((PhysicalFunction) function);
@@ -92,7 +92,7 @@ public class PhysicalActorHelper {
   }
 
   protected List<LogicalActor> getRealizedLogicalActors(PhysicalActor element) {
-    List<LogicalActor> ret = new ArrayList<LogicalActor>();
+    List<LogicalActor> ret = new ArrayList<>();
     for (Component cpnt : element.getAllocatedComponents()) {
       if (cpnt instanceof LogicalActor) {
         ret.add((LogicalActor) cpnt);
@@ -102,7 +102,7 @@ public class PhysicalActorHelper {
   }
 
   protected List<PhysicalComponent> getDeployedPhysicalComponents(PhysicalActor element) {
-    List<PhysicalComponent> ret = new ArrayList<PhysicalComponent>();
+    List<PhysicalComponent> ret = new ArrayList<>();
     for (EObject obj : EObjectExt.getReferencers(element, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE)) {
       if (obj instanceof Part) {
         for (AbstractDeploymentLink deploymentLink : ((Part) obj).getDeploymentLinks()) {

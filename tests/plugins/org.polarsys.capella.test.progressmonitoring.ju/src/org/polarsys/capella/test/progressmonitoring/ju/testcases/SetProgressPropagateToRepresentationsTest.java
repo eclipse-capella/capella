@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,9 +15,9 @@ import static org.polarsys.capella.test.progressmonitoring.ju.util.SetProgressTe
 import java.util.Iterator;
 
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.polarsys.capella.core.diagram.helpers.RepresentationAnnotationHelper;
 import org.polarsys.capella.core.ui.metric.actions.ProgressMonitoringSetAction;
-import org.polarsys.capella.core.ui.properties.annotations.RepresentationAnnotationHelper;
 
 public class SetProgressPropagateToRepresentationsTest extends AbstractSetProgressTest {
   
@@ -47,10 +47,10 @@ public class SetProgressPropagateToRepresentationsTest extends AbstractSetProgre
     assertEquals(DRAFT, sf2.getStatus().getLabel());
     
     // Assert statuses are set for diagrams
-    Iterator<DRepresentation> iterator = representations.iterator();
+    Iterator<DRepresentationDescriptor> iterator = representations.iterator();
     // First diagram
-    assertEquals(DRAFT, RepresentationAnnotationHelper.getProgressStatus(iterator.next()));
+    assertEquals(DRAFT, RepresentationAnnotationHelper.getProgressStatus(iterator.next()).getLabel());
     // Second diagram
-    assertEquals(DRAFT, RepresentationAnnotationHelper.getProgressStatus(iterator.next()));
+    assertEquals(DRAFT, RepresentationAnnotationHelper.getProgressStatus(iterator.next()).getLabel());
   }
 }

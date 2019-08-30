@@ -36,6 +36,11 @@ public class ShowHidePhysicalLinks extends ShowHideComponentExchanges {
   protected void insertLink(XABDiagram xab, String id, String containerId) {
     xab.insertPhysicalLink(id, containerId);
   }
+  
+  @Override
+  protected void removeLink(XABDiagram xab, String id, String containerId) {
+    xab.removePhysicalLink(id, containerId);
+  }
 
   @Override
   public void createSubComponent(PABDiagram xab, String id, String containerId) {

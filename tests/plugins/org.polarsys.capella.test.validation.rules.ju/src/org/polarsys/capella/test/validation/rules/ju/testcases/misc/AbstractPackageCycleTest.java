@@ -45,7 +45,7 @@ public abstract class AbstractPackageCycleTest extends ValidationRuleTestCase {
     Project project = model.getProject(getSessionForTestModel(getRequiredTestModel()).getTransactionalEditingDomain());
     if (project != null) {
       SystemEngineering se = (SystemEngineering) project.getOwnedModelRoots().get(0);
-      Couple<IDirectedGraph<EObject>, Collection<List<EObject>>> scc = new DWF_D25_Resolver().computeCycles(se);
+      Couple<IDirectedGraph<EObject>, Collection<List<EObject>>> scc = new DWF_D25_Resolver().computeCyclesGraph(se);
       Collection<List<EObject>> foundCycles = null;
       if (scc == null) {
         // no cycles found...

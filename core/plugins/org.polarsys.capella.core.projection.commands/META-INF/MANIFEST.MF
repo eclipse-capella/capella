@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.projection.commands;singleton:=true
-Bundle-Version: 1.2.2.qualifier
+Bundle-Version: 1.3.1.qualifier
 Bundle-Activator: org.polarsys.capella.core.projection.commands.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.ui,
@@ -32,10 +32,14 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.projection.exchanges,
  org.polarsys.capella.core.projection.scenario,
  org.eclipse.sirius.diagram.ui,
- org.polarsys.capella.common.tools.report.appenders.usage
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+ org.polarsys.capella.common.tools.report.appenders.usage,
+ org.polarsys.capella.core.ui.toolkit,
+ org.polarsys.capella.core.diagram.helpers
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.projection.commands,
  org.polarsys.capella.core.projection.commands.actions,
- org.polarsys.capella.core.projection.commands.internal;x-internal:=true
+ org.polarsys.capella.core.projection.commands.handlers,
+ org.polarsys.capella.core.projection.commands.internal;x-internal:=true,
+ org.polarsys.capella.core.projection.commands.util
 Bundle-Localization: plugin

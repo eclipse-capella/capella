@@ -48,6 +48,7 @@ public interface StateTransitionRealization extends Allocation {
 	 * @return the value of the '<em>Realized State Transition</em>' reference.
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getStateTransitionRealization_RealizedStateTransition()
 	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='targetElement'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='destination of the realization link : the state transition that is being realized\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -73,6 +74,7 @@ public interface StateTransitionRealization extends Allocation {
 	 * @return the value of the '<em>Realizing State Transition</em>' reference.
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getStateTransitionRealization_RealizingStateTransition()
 	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='sourceElement'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the source of the realization link : the state transition that is realizing another state transition\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

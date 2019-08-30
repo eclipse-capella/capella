@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,6 +32,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
+import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.sirius.analysis.CapellaServices;
 import org.polarsys.capella.core.sirius.analysis.ContextServices;
@@ -49,7 +50,7 @@ public class ShowHideService {
   protected static final String CONTEXT = "context"; //$NON-NLS-1$
   protected static final String SCOPE = "scope"; //$NON-NLS-1$
   protected static final String WIZARD_MESSAGE = "wizardMessage"; //$NON-NLS-1$
-  protected static final String WIZARD_TITLE = "wizardTitle"; //$NON-NLS-1$  
+  protected static final String WIZARD_TITLE = "wizardTitle"; //$NON-NLS-1$
   protected static final String RESULT_VARIABLE = "resultVariable"; //$NON-NLS-1$
   protected static final String INITIAL_SELECTION = "initialSelection"; //$NON-NLS-1$
   protected static final String SEMANTIC_CANDIDATE = "semanticCandidate"; //$NON-NLS-1$
@@ -172,6 +173,9 @@ public class ShowHideService {
     if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.getName().equals(eClass)) {
       return InteractionPackage.Literals.ABSTRACT_CAPABILITY;
 
+    } else if (LaPackage.Literals.CAPABILITY_REALIZATION.getName().equals(eClass)) {
+      return LaPackage.Literals.CAPABILITY_REALIZATION;
+
     } else if (CsPackage.Literals.ABSTRACT_ACTOR.getName().equals(eClass)) {
       return CsPackage.Literals.ABSTRACT_ACTOR;
 
@@ -186,6 +190,9 @@ public class ShowHideService {
 
     } else if (CsPackage.Literals.COMPONENT.getName().equals(eClass)) {
       return CsPackage.Literals.COMPONENT;
+
+    } else if (CsPackage.Literals.SYSTEM_COMPONENT.getName().equals(eClass)) {
+      return CsPackage.Literals.SYSTEM_COMPONENT;
     }
 
     return null;
@@ -249,8 +256,8 @@ public class ShowHideService {
             IMappingNameConstants.CM_CAPABILITY_MAPPING_NAME);
       }
 
-    } else if (IDiagramNameConstants.CONTEXTUAL_OPERATIONAL_CAPABILITIES__DIAGRAM_NAME.equals(diagram.getDescription()
-        .getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_OPERATIONAL_CAPABILITIES__DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       if (OaPackage.Literals.OPERATIONAL_ACTOR.isSuperTypeOf(eClass)) {
         return DiagramServices.getDiagramServices().getContainerMapping(diagram,
             IMappingNameConstants.COC_ENTITY_MAPPING_NAME);
@@ -263,8 +270,8 @@ public class ShowHideService {
             IMappingNameConstants.COC_ENTITY_MAPPING_NAME);
       }
 
-    } else if (IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       if (OaPackage.Literals.OPERATIONAL_ACTOR.isSuperTypeOf(eClass)) {
         return DiagramServices.getDiagramServices().getContainerMapping(diagram,
             IMappingNameConstants.OCB_OPERATIONAL_ENTITY_MAPPING_NAME);
@@ -291,11 +298,25 @@ public class ShowHideService {
         return DiagramServices.getDiagramServices().getContainerMapping(diagram,
             IMappingNameConstants.CRB_COMPONENT_MAPPING);
       }
+
+    } else if (IDiagramNameConstants.CONTEXTUAL_CAPABILITY_REALIZATION_INVOLVEMENT
+        .equals(diagram.getDescription().getName())) {
+      if (CsPackage.Literals.ABSTRACT_ACTOR.isSuperTypeOf(eClass)) {
+        return DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.CCRI_ACTOR);
+
+      } else if (CsPackage.Literals.SYSTEM_COMPONENT.isSuperTypeOf(eClass)) {
+        return DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.CCRI_COMPONENT);
+
+      } else if (LaPackage.Literals.CAPABILITY_REALIZATION.isSuperTypeOf(eClass)) {
+        return DiagramServices.getDiagramServices().getNodeMapping(diagram,
+            IMappingNameConstants.CCRI_CAPABILITY_REALIZATION);
+      }
     }
     return null;
   }
 
   protected List<EObject> getShowHideAvailableElements(DDiagram diagram, DSemanticDecorator view, EClass type) {
+
     if (IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
       if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.equals(type)) {
         return ContextServices.getServices().getMCBCapabilities((DSemanticDecorator) diagram);
@@ -329,8 +350,8 @@ public class ShowHideService {
         return ContextServices.getServices().getCMActors(view);
       }
 
-    } else if (IDiagramNameConstants.CONTEXTUAL_OPERATIONAL_CAPABILITIES__DIAGRAM_NAME.equals(diagram.getDescription()
-        .getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_OPERATIONAL_CAPABILITIES__DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.equals(type)) {
         return ContextServices.getServices().getCOCCapabilities((DSemanticDecorator) diagram);
       } else if (OaPackage.Literals.OPERATIONAL_ACTOR.equals(type)) {
@@ -339,8 +360,8 @@ public class ShowHideService {
         return ContextServices.getServices().getCOCEntities(view);
       }
 
-    } else if (IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.equals(type)) {
         return ContextServices.getServices().getOCBCapabilities((DSemanticDecorator) diagram);
       } else if (OaPackage.Literals.OPERATIONAL_ACTOR.equals(type)) {
@@ -356,6 +377,16 @@ public class ShowHideService {
         return ContextServices.getServices().getCRBActors(view);
       } else if (CsPackage.Literals.COMPONENT.equals(type)) {
         return ContextServices.getServices().getCRBComponents(view);
+      }
+
+    } else if (IDiagramNameConstants.CONTEXTUAL_CAPABILITY_REALIZATION_INVOLVEMENT
+        .equals(diagram.getDescription().getName())) {
+      if (CsPackage.Literals.ABSTRACT_ACTOR.equals(type)) {
+        return ContextServices.getServices().getCRIActors(view);
+      } else if (CsPackage.Literals.SYSTEM_COMPONENT.equals(type)) {
+        return ContextServices.getServices().getCRIComponents(view);
+      } else if (LaPackage.Literals.CAPABILITY_REALIZATION.equals(type)) {
+        return ContextServices.getServices().getCRICapabilityRealizations(view);
       }
     }
     return null;

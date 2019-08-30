@@ -2,7 +2,7 @@
 <?eclipse version="3.0"?>
 
 <!--
-  Copyright (c) 2017 THALES GLOBAL SERVICES.
+  Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -22,6 +22,17 @@
             genModel="model/layout.genmodel"/>
    </extension>
 
+	<extension
+	      point="org.eclipse.core.runtime.adapters">
+	   <factory
+	         adaptableType="org.polarsys.capella.test.diagram.layout.ju.layout.ISemanticLayout"
+	         class="org.polarsys.capella.test.diagram.layout.ju.LayoutAdapterFactory">
+	      <adapter
+	            type="org.polarsys.kitalpha.emde.model.Element">
+	      </adapter>
+	   </factory>
+	</extension>
+	
    <extension point="org.eclipse.emf.ecore.extension_parser">
       <!-- @generated layout -->
       <parser
@@ -29,6 +40,35 @@
             class="org.polarsys.capella.test.diagram.layout.ju.layout.util.LayoutResourceFactoryImpl"/>
    </extension>
 
+	<extension
+	      point="org.eclipse.ui.menus">
+	   <menuContribution 
+      		locationURI="popup:capella.project.explorer#PopupMenu?after=group.project">
+         <command
+               commandId="org.polarsys.capella.test.compareLayout"
+               id="org.polarsys.capella.test.compareLayout">
+          </command>
+        </menuContribution>
+        
+       <menuContribution
+                locationURI="popup:org.polarsys.capella.test.compareLayout.ui.diffmerge?after=additions">
+               
+              <separator name="group.showIn" visible="true" />
+              <separator name="group.sendTo" visible="true" />
+              
+       </menuContribution>
+       
+	</extension>
+	
+	<extension
+	      point="org.eclipse.ui.commands">
+	      <command
+             id="org.polarsys.capella.test.compareLayout"
+             name="[TEST] Compare Layout"
+             defaultHandler="org.polarsys.capella.test.diagram.layout.ju.handlers.CompareLayoutHandler">
+	      </command>
+	</extension>
+	
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated layout -->
       <factory
@@ -47,5 +87,7 @@
          <comparisonMethod factory="org.polarsys.capella.test.diagram.layout.ju.layout.compare.LayoutComparisonMethodFactory">
          </comparisonMethod>
    </extension>
+
+
 
 </plugin>

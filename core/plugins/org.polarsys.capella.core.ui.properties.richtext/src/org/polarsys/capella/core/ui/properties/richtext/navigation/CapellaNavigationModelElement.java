@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,24 +10,23 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.properties.richtext.navigation;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.ui.services.UIUtil;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
+import org.polarsys.capella.core.model.handler.helpers.SemanticResourcesScope;
 import org.polarsys.capella.shared.id.handler.IScope;
 import org.polarsys.capella.shared.id.handler.IdManager;
 import org.polarsys.kitalpha.richtext.widget.tools.ext.intf.OpenLinkStrategy;
@@ -42,12 +41,12 @@ public class CapellaNavigationModelElement implements OpenLinkStrategy {
         if (obj != null) {
             if (CapellaResourceHelper.isSemanticElement(obj)) {
                 UIUtil.getInstance().selectInPackageExplorer(obj);
-            } else if (obj instanceof DSemanticDiagram) {
-                Session session = SessionManager.INSTANCE.getSession(((DSemanticDiagram) obj).getTarget());
-                DialectUIManager.INSTANCE.openEditor(session, (DRepresentation) obj, new NullProgressMonitor());
-            } else if (obj instanceof DTable) {
-                Session session = SessionManager.INSTANCE.getSession(((DTable) obj).getTarget());
-                DialectUIManager.INSTANCE.openEditor(session, (DRepresentation) obj, new NullProgressMonitor());
+            } else if (obj instanceof DRepresentationDescriptor) {
+                DRepresentation representation = ((DRepresentationDescriptor) obj).getRepresentation();
+                if (representation instanceof DSemanticDecorator) {
+                  Session session = SessionManager.INSTANCE.getSession(((DSemanticDecorator) representation).getTarget());
+                  DialectUIManager.INSTANCE.openEditor(session, representation, new NullProgressMonitor());
+                }
             }
         } else {
             MessageBox msgBox = new MessageBox(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
@@ -58,12 +57,13 @@ public class CapellaNavigationModelElement implements OpenLinkStrategy {
     }
 
     private EObject getElement(final EditingDomain editingDomain, String uriFragment) {
-        return IdManager.getInstance().getEObject(uriFragment, new IScope() {
-            @Override
-            public List<Resource> getResources() {
-                return new ArrayList<Resource>(editingDomain.getResourceSet().getResources());
-            }
-        });
+        ResourceSet resourceSet = editingDomain.getResourceSet();
+        IScope capellaSemanticResourceScope = new SemanticResourcesScope(resourceSet);
+        EObject semanticElement = IdManager.getInstance().getEObject(uriFragment, capellaSemanticResourceScope);
+        if (semanticElement == null) {
+          return RepresentationHelper.getRepresentationDescriptor(resourceSet, uriFragment);
+        }
+        return semanticElement;
     }
 
 	@Override

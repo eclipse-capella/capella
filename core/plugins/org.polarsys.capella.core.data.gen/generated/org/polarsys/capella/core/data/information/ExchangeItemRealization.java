@@ -49,6 +49,7 @@ public interface ExchangeItemRealization extends Allocation {
 	 * @return the value of the '<em>Realized Item</em>' reference.
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getExchangeItemRealization_RealizedItem()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='targetElement'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the exchange item that is being realized by the operation\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -74,6 +75,7 @@ public interface ExchangeItemRealization extends Allocation {
 	 * @return the value of the '<em>Realizing Operation</em>' reference.
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getExchangeItemRealization_RealizingOperation()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='sourceElement'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the interface\'s operation that realizes the given exchange item\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

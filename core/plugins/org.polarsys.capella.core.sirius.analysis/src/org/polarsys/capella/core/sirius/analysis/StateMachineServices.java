@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -739,15 +739,11 @@ public class StateMachineServices {
   public boolean canCreateMode(EObject context, EObject containerView) {
     Region testedRegion = getRegionFromView(containerView);
     if (testedRegion != null) {
-      if (!CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed())
+      if (!CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed()) {
         return MoveHelper.getInstance().canMoveModeState(CapellacommonFactory.eINSTANCE.createMode(), testedRegion);
-
-      for (IState st : getStatesOfRegion(testedRegion)) {
-        if ((st instanceof State) && !(st instanceof Mode) && !(st instanceof FinalState)) {
-          return false;
-        }
       }
-      return true;
+      //If there is a State, then can't create a Mode
+      return getStatesOfRegion(testedRegion).stream().noneMatch(StateExt::isStrictState);
     }
     return false;
   }
@@ -815,15 +811,12 @@ public class StateMachineServices {
   public boolean canCreateState(EObject context, EObject containerView) {
     Region testedRegion = getRegionFromView(containerView);
     if (testedRegion != null) {
-      if (!CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed())
+      if (!CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed()) {
         return MoveHelper.getInstance().canMoveModeState(CapellacommonFactory.eINSTANCE.createState(), testedRegion);
-
-      for (IState st : getStatesOfRegion(testedRegion)) {
-        if (st instanceof Mode) {
-          return false;
-        }
       }
-      return true;
+
+      //If there is a Mode, then can't create a State
+      return getStatesOfRegion(testedRegion).stream().noneMatch(StateExt::isMode);
     }
     return false;
   }

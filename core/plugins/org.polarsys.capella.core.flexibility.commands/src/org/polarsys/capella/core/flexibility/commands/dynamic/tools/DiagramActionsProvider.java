@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -89,6 +90,7 @@ import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.diagram.helpers.ContextualDiagramHelper;
 import org.polarsys.capella.core.flexibility.commands.actions.DefaultAction;
 import org.polarsys.capella.core.flexibility.commands.dynamic.IActionsProvider;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.sirius.analysis.CapellaServices;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
@@ -97,6 +99,8 @@ import org.polarsys.capella.core.sirius.ui.danalysis.CapellaAnalysisSelector;
 /**
  */
 public class DiagramActionsProvider implements IActionsProvider {
+	
+  private static final Logger logger = Logger.getLogger(DiagramActionsProvider.class.getName());
 
   public class OpenDynamicViewer extends DefaultAction {
 
@@ -106,7 +110,7 @@ public class DiagramActionsProvider implements IActionsProvider {
 
 	    for (Resource resE : set.getResources()) {
 	      if (resE.getURI().toString().equals("capella://dynamic")) { //$NON-NLS-1$
-	        if (resE.getContents().size() > 0) {
+	        if (!resE.getContents().isEmpty()) {
 	          return (DAnalysis) resE.getContents().get(0);
 	        }
 	        res = resE;
@@ -135,10 +139,7 @@ public class DiagramActionsProvider implements IActionsProvider {
 
     @Override
     public boolean isSelectionCompatible() {
-      if (getSelection(CapellaElement.class).size() >= 0) {
-        return true;
-      }
-      return false;
+      return getSelection(CapellaElement.class).size() >= 0;
     }
 
     public OpenDynamicViewer(Shell shell, ISelectionProvider selectionProvider) {
@@ -184,7 +185,7 @@ public class DiagramActionsProvider implements IActionsProvider {
     }
 
     public Collection<Viewpoint> getViewpoints() {
-      Collection<Viewpoint> vs = new ArrayList<Viewpoint>();
+      Collection<Viewpoint> vs = new ArrayList<>();
       ResourceSet set = TransactionHelper.getEditingDomain(getSelectedEObjects()).getResourceSet();
 
       for (Resource odesign : set.getResources()) {
@@ -193,10 +194,8 @@ public class DiagramActionsProvider implements IActionsProvider {
             if (content instanceof DAnalysis) {
               DAnalysis analysis = (DAnalysis) content;
               for (DView view : analysis.getOwnedViews()) {
-                if (view.getViewpoint() != null) {
-                  if (!vs.contains(view.getViewpoint())) {
+                if (view.getViewpoint() != null && !vs.contains(view.getViewpoint())) {
                     vs.add(view.getViewpoint());
-                  }
                 }
               }
             }
@@ -351,20 +350,20 @@ public class DiagramActionsProvider implements IActionsProvider {
 
     @Override
     public void execute() {
-      HashMap<EObject, DRepresentation> diagrams = new HashMap<EObject, DRepresentation>();
+      HashMap<EObject, DRepresentation> diagrams = new HashMap<>();
       try {
 
         for (EObject element : getSelectedEObjects()) {
           DRepresentation representation = getDynamicRepresentation(element);
           diagrams.put(element, representation);
-          ContextualDiagramHelper.getService().setContextualElements(representation, new ArrayList<EObject>());
+          ContextualDiagramHelper.getService().setContextualElements(RepresentationHelper.getRepresentationDescriptor(representation), new ArrayList<EObject>());
         }
 
-        for (EObject element : diagrams.keySet()) {
-          DRepresentation representation = diagrams.get(element);
-          Collection<EObject> contextual = ContextualDiagramHelper.getService().getContextualElements(representation);
-          contextual.add(element);
-          ContextualDiagramHelper.getService().setContextualElements(representation, contextual);
+        for (Entry<EObject, DRepresentation> entry : diagrams.entrySet()) {
+          DRepresentation representation = entry.getValue();
+          Collection<EObject> contextual = ContextualDiagramHelper.getService().getContextualElements(RepresentationHelper.getRepresentationDescriptor(representation));
+          contextual.add(entry.getKey());
+          ContextualDiagramHelper.getService().setContextualElements(RepresentationHelper.getRepresentationDescriptor(representation), contextual);
         }
 
         for (DRepresentation representation : diagrams.values()) {
@@ -380,9 +379,8 @@ public class DiagramActionsProvider implements IActionsProvider {
           CapellaServices.getService().forceRefresh(diagram);
         }
       } catch (Exception e) {
-        e.printStackTrace();
+    	  logger.error(e.getMessage(), e);
       }
-
     }
   }
 
@@ -390,13 +388,11 @@ public class DiagramActionsProvider implements IActionsProvider {
    * @see org.polarsys.capella.core.flexibility.commands.dynamic.IActionsProvider#getActions()
    */
   public Collection<DefaultAction> getActions(Shell shell, ISelectionProvider selectionProvider) {
-    List<DefaultAction> list = new ArrayList<DefaultAction>();
-
+    List<DefaultAction> list = new ArrayList<>();
     list.add(new ReColorEdgesAction(shell, selectionProvider));
     list.add(new DiagramProxyReparatorAccessor(shell, selectionProvider));
     list.add(new RefreshDiagramAction(shell, selectionProvider));
     list.add(new RepairViewpointDefinition(shell, selectionProvider));
-
     list.add(new OpenDynamicViewer(shell, selectionProvider));
 
     return list;
@@ -446,10 +442,9 @@ public class DiagramActionsProvider implements IActionsProvider {
     }
 
     Collection<Resource> getResources() {
-      Collection<Resource> diagrams = new HashSet<Resource>();
+      Collection<Resource> diagrams = new HashSet<>();
 
       for (EObject object : getSelectedEObjects()) {
-        Resource re = object.eResource();
 
         if (object instanceof DDiagram) {
           diagrams.add(object.eResource());
@@ -466,8 +461,8 @@ public class DiagramActionsProvider implements IActionsProvider {
       return diagrams;
     }
 
-    HashMap<String, Viewpoint> viewpoints = new HashMap<String, Viewpoint>();
-    HashMap<String, Boolean> viewpointsEnabled = new HashMap<String, Boolean>();
+    HashMap<String, Viewpoint> viewpoints = new HashMap<>();
+    HashMap<String, Boolean> viewpointsEnabled = new HashMap<>();
 
     @Override
     public void execute() {
@@ -478,7 +473,7 @@ public class DiagramActionsProvider implements IActionsProvider {
           boolean hasProceed = false;
           int nbProceed = 0;
           Collection<Resource> objects = getResources();
-          List<DAnalysis> analysises = new ArrayList<DAnalysis>();
+          List<DAnalysis> analysises = new ArrayList<>();
 
           getLogger().info(new EmbeddedMessage(objects.size() + " resources to be opened", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
 
@@ -500,7 +495,7 @@ public class DiagramActionsProvider implements IActionsProvider {
 
                           getLogger().info(
                               new EmbeddedMessage(NLS.bind("Get viewpoint definition ''{0}'' in ''{1}''", getName(view.getViewpoint()), //$NON-NLS-1$
-                                  getName(analysis.eResource()).toString()), IReportManagerDefaultComponents.UI));
+                                  getName(analysis.eResource())), IReportManagerDefaultComponents.UI));
                           viewpointsEnabled.put(key, Boolean.valueOf(analysis.getSelectedViews().contains(view)));
                         } else {
                           if ((viewpointsEnabled.get(key) != null) && !viewpointsEnabled.get(key).booleanValue()) {
@@ -554,19 +549,15 @@ public class DiagramActionsProvider implements IActionsProvider {
         }
 
         private String getKey(Viewpoint viewpoint) {
-          if (viewpoint instanceof InternalEObject) {
-            if (viewpoint.eIsProxy()) {
+          if (viewpoint instanceof InternalEObject && viewpoint.eIsProxy()) {
               return ((InternalEObject) viewpoint).eProxyURI().lastSegment();
-            }
           }
           return viewpoint.getName() + viewpoint.eResource().getURI().lastSegment();
         }
 
         private String getName(Object eResource) {
-          if (eResource instanceof InternalEObject) {
-            if (((InternalEObject) eResource).eIsProxy()) {
-              return ((InternalEObject) eResource).eProxyURI().toString();
-            }
+          if (eResource instanceof InternalEObject && ((InternalEObject) eResource).eIsProxy()) {
+            return ((InternalEObject) eResource).eProxyURI().toString();
           }
           if (eResource instanceof Viewpoint) {
             return ((Viewpoint) eResource).getName();
@@ -598,12 +589,9 @@ public class DiagramActionsProvider implements IActionsProvider {
       ProgressMonitorDialog progressDialog = new ProgressMonitorDialog(Display.getDefault().getActiveShell());
       try {
         progressDialog.run(false, false, runnable);
-      } catch (InvocationTargetException ex) {
-        getLogger().warn(new EmbeddedMessage(ex.getMessage(), IReportManagerDefaultComponents.UI));
-      } catch (InterruptedException ex) {
+      } catch (InvocationTargetException | InterruptedException ex) {
         getLogger().warn(new EmbeddedMessage(ex.getMessage(), IReportManagerDefaultComponents.UI));
       }
-
     }
 
     /**
@@ -669,34 +657,33 @@ public class DiagramActionsProvider implements IActionsProvider {
     public void execute() {
       boolean hasProceed = false;
       for (EObject object : getSelectedEObjects()) {
-        Resource re = object.eResource();
 
-        if (true) {
+ //       if (true) {
           return;
-        }
-        if (object instanceof DDiagram) {
-          if (process((DDiagram) object)) {
-            hasProceed = true;
-          }
-
-        } else if (object instanceof SystemEngineering) {
-          Session session = SessionManager.INSTANCE.getSession(object);
-          if (session != null) {
-            for (DRepresentation representation : DialectManager.INSTANCE.getAllRepresentations(session)) {
-              if (representation instanceof DDiagram) {
-                if (process((DDiagram) representation)) {
-                  hasProceed = true;
-                }
-              }
-            }
-          }
-        }
+//        }
+//        if (object instanceof DDiagram) {
+//          if (process((DDiagram) object)) {
+//            hasProceed = true;
+//          }
+//
+//        } else if (object instanceof SystemEngineering) {
+//          Session session = SessionManager.INSTANCE.getSession(object);
+//          if (session != null) {
+//            for (DRepresentation representation : DialectManager.INSTANCE.getAllRepresentations(session)) {
+//              if (representation instanceof DDiagram) {
+//                if (process((DDiagram) representation)) {
+//                  hasProceed = true;
+//                }
+//              }
+//            }
+//          }
+//        }
       }
 
-      if (!hasProceed) {
+//      if (!hasProceed) {
         getLogger().info(new EmbeddedMessage("No edges have been re-colored", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
 
-      }
+//      }
     }
 
     /**
@@ -707,7 +694,7 @@ public class DiagramActionsProvider implements IActionsProvider {
 
       for (DEdge edge : object.getEdges()) {
 
-        if ((edge.getActualMapping() != null) && (edge.getActualMapping() instanceof EdgeMapping)) {
+        if (edge.getActualMapping() instanceof EdgeMapping) {
           EdgeMapping mapping = (EdgeMapping) edge.getActualMapping();
           EdgeStyleDescription description = mapping.getStyle();
 
@@ -792,18 +779,18 @@ public class DiagramActionsProvider implements IActionsProvider {
         }
       }
 
-      if (hasProceed) {
-        getLogger().info(
-            new EmbeddedMessage(NLS.bind("Edges on diagram ''{0}'' have recovered default color.", object.getName()), IReportManagerDefaultComponents.UI, //$NON-NLS-1$
-                object));
-        try {
-          object.refresh();
-        } catch (Exception exceptionP) {
-          getLogger().warn(
-              new EmbeddedMessage(NLS.bind("An error occured while refreshing diagram ''{0}''.", object.getName()), IReportManagerDefaultComponents.UI, //$NON-NLS-1$
-                  object));
-        }
-      }
+			if (hasProceed) {
+				getLogger().info(new EmbeddedMessage(
+						NLS.bind("Edges on diagram ''{0}'' have recovered default color.", object.getName()), //$NON-NLS-1$
+						IReportManagerDefaultComponents.UI, object));
+				try {
+					DialectManager.INSTANCE.refresh(object, new NullProgressMonitor());
+				} catch (Exception exceptionP) {
+					getLogger().warn(new EmbeddedMessage(
+							NLS.bind("An error occured while refreshing diagram ''{0}''.", object.getName()), //$NON-NLS-1$
+							IReportManagerDefaultComponents.UI, object));
+				}
+			}
 
       return hasProceed;
     }
@@ -862,10 +849,9 @@ public class DiagramActionsProvider implements IActionsProvider {
     }
 
     List<DDiagram> getDiagrams() {
-      List<DDiagram> diagrams = new ArrayList<DDiagram>();
+      List<DDiagram> diagrams = new ArrayList<>();
 
       for (EObject object : getSelectedEObjects()) {
-        Resource re = object.eResource();
 
         if (object instanceof DDiagram) {
           diagrams.add((DDiagram) object);
@@ -918,12 +904,9 @@ public class DiagramActionsProvider implements IActionsProvider {
       ProgressMonitorDialog progressDialog = new ProgressMonitorDialog(Display.getDefault().getActiveShell());
       try {
         progressDialog.run(false, false, runnable);
-      } catch (InvocationTargetException ex) {
-        getLogger().warn(new EmbeddedMessage(ex.getMessage(), IReportManagerDefaultComponents.UI));
-      } catch (InterruptedException ex) {
+      } catch (InvocationTargetException | InterruptedException ex) {
         getLogger().warn(new EmbeddedMessage(ex.getMessage(), IReportManagerDefaultComponents.UI));
       }
-
     }
 
     /**
@@ -952,7 +935,7 @@ public class DiagramActionsProvider implements IActionsProvider {
 
   public class DiagramProxyReparatorAccessor extends DefaultAction {
 
-    HashMap<String, EObject> mapIds = new HashMap<String, EObject>();
+    HashMap<String, EObject> mapIds = new HashMap<>();
 
     @Override
     protected String getIconFile() {
@@ -1001,7 +984,7 @@ public class DiagramActionsProvider implements IActionsProvider {
 
       logger.info(new EmbeddedMessage("Diagrams checking...", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
 
-      if (getSelectedEObjects().size() > 0) {
+      if (!getSelectedEObjects().isEmpty()) {
         EObject root = getSelectedEObjects().get(0);
 
         initMap(root);
@@ -1101,7 +1084,7 @@ public class DiagramActionsProvider implements IActionsProvider {
 
     private boolean performDiagram(DDiagram diagram) {
       Logger logger = getLogger();
-      List<DDiagramElement> proxys = new ArrayList<DDiagramElement>();
+      List<DDiagramElement> proxys = new ArrayList<>();
       int nbProblem = 0;
       int nbFix = 0;
       int nbNotFix = 0;

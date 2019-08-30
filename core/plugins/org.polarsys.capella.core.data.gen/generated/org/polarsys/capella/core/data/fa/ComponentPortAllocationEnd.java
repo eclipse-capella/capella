@@ -139,6 +139,7 @@ public interface ComponentPortAllocationEnd extends CapellaElement {
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='owningComponentPortAllocation'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the ComponentPortAllocation link that contains this endpoint\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::Connector::end' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='ownedComponentPortAllocationEnds'"
 	 * @generated
 	 */
 

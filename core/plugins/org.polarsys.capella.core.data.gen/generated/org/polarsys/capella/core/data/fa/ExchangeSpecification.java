@@ -54,6 +54,7 @@ public interface ExchangeSpecification extends NamedElement, ActivityExchange {
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeSpecification_ContainingLink()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='containingLink'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='link.link'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the exchange link associated with this exchange specification\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -127,6 +128,7 @@ public interface ExchangeSpecification extends NamedElement, ActivityExchange {
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeSpecification_OutgoingExchangeSpecificationRealizations()
 	 * @see org.polarsys.capella.core.data.fa.ExchangeSpecificationRealization#getRealizingExchangeSpecification
 	 * @model opposite="realizingExchangeSpecification" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outgoingTraces'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the realization links between exchange specifications, for which this exchange specification is the origin of the link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -155,6 +157,7 @@ public interface ExchangeSpecification extends NamedElement, ActivityExchange {
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeSpecification_IncomingExchangeSpecificationRealizations()
 	 * @see org.polarsys.capella.core.data.fa.ExchangeSpecificationRealization#getRealizedExchangeSpecification
 	 * @model opposite="realizedExchangeSpecification" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='incomingTraces'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the realization links between exchange specifications, for which this exchange specification is the destination of the link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

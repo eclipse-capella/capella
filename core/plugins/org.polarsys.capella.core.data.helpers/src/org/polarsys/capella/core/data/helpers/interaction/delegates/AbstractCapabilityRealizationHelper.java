@@ -52,14 +52,14 @@ public class AbstractCapabilityRealizationHelper {
 
 	protected AbstractCapability getRealizedCapability(AbstractCapabilityRealization element) {
 		TraceableElement ret = element.getTargetElement();
-		if(null != ret && ret instanceof AbstractCapability)
+		if(ret instanceof AbstractCapability)
 			return (AbstractCapability) ret;
 		return null;
 	}
 
 	protected AbstractCapability getRealizingCapability(AbstractCapabilityRealization element) {
 		TraceableElement ret = element.getSourceElement();
-		if(null != ret && ret instanceof AbstractCapability)
+		if(ret instanceof AbstractCapability)
 			return (AbstractCapability) ret;
 		return null;
 	}

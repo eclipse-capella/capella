@@ -52,7 +52,7 @@ public class MultipleValidElementsTreeData extends TreeData implements IMoveable
    */
   @Override
   protected Collection<Object> createChildrenCollection() {
-    return new ArrayList<Object>(1);
+    return new ArrayList<>(1);
   }
 
   /**
@@ -62,9 +62,9 @@ public class MultipleValidElementsTreeData extends TreeData implements IMoveable
   public List<Object> getValidElements() {
     // Since we can have many times a same element in a tree data structure,
     // we must rebuild valid elements from tree data that only ensure the right order.
-    List<Object> validElements = new ArrayList<Object>(0);
+    List<Object> validElements = new ArrayList<>(0);
     // Loop over all root objects to collect valid elements to return.
-    for (Object rootElement : _rootElements) {
+    for (Object rootElement : rootElements) {
       buildValidElements(validElements, rootElement);
     }
     return validElements;
@@ -75,7 +75,7 @@ public class MultipleValidElementsTreeData extends TreeData implements IMoveable
    */
   @Override
   protected Collection<Object> initializeValidElementCollection(Collection<? extends Object> displayedElements) {
-    return new ArrayList<Object>(displayedElements);
+    return new ArrayList<>(displayedElements);
   }
 
   /**

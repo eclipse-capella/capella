@@ -51,6 +51,7 @@ import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.model.helpers.refmap.Pair;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 /**
  */
 public class PhysicalPathExt {
@@ -334,7 +335,7 @@ public class PhysicalPathExt {
     }
 
     for (Part function : targetFunctions) {
-      targetExchanges.addAll(org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getAllRelatedPhysicalLinks(function));
+      targetExchanges.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, function));
     }
     return targetExchanges;
   }
@@ -358,7 +359,7 @@ public class PhysicalPathExt {
     }
 
     for (Part function : targetFunctions) {
-      targetExchanges.addAll(org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getAllRelatedPhysicalLinks(function));
+      targetExchanges.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, function));
     }
     return targetExchanges;
   }
@@ -382,7 +383,7 @@ public class PhysicalPathExt {
     }
 
     for (Part function : sourceFunctions) {
-      sourceExchanges.addAll(org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getAllRelatedPhysicalLinks(function));
+      sourceExchanges.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, function));
     }
 
     return sourceExchanges;
@@ -420,7 +421,7 @@ public class PhysicalPathExt {
     targetFunctions.addAll(getFlatPhysicalPathFirstParts(path));
 
     for (Part function : targetFunctions) {
-      targetExchanges.addAll(org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getAllRelatedPhysicalLinks(function));
+      targetExchanges.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, function));
     }
     return targetExchanges;
   }
@@ -433,7 +434,7 @@ public class PhysicalPathExt {
     targetFunctions.addAll(getFlatPhysicalPathLastParts(path));
 
     for (Part function : targetFunctions) {
-      targetExchanges.addAll(org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getAllRelatedPhysicalLinks(function));
+      targetExchanges.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, function));
     }
     return targetExchanges;
   }
@@ -462,12 +463,12 @@ public class PhysicalPathExt {
         Collection<Part> nextParts = new LinkedHashSet<>();
 
         for (PhysicalPathInvolvement involvment : previouses) {
-          if ((involvment.getInvolved() != null) && (involvment.getInvolved() instanceof Part)) {
+          if (involvment.getInvolved() instanceof Part) {
             previousParts.add((Part) involvment.getInvolved());
           }
         }
         for (PhysicalPathInvolvement involvment : nexts) {
-          if ((involvment.getInvolved() != null) && (involvment.getInvolved() instanceof Part)) {
+          if (involvment.getInvolved() instanceof Part) {
             nextParts.add((Part) involvment.getInvolved());
           }
         }
@@ -649,14 +650,15 @@ public class PhysicalPathExt {
     }
     return false;
   }
-
+  
   /**
    * @param container
    * @param involvedPhysicalLinks
    * @param source the source of the path
    * @return a new PhysicalPath initialized with the given involved physical links
    */
-  public static PhysicalPath createPhysicalPath(final Component container, final Collection<PhysicalLink> involvedPhysicalLinks, final Part source) {
+  public static PhysicalPath createPhysicalPath(final Component container,
+      final Collection<PhysicalLink> involvedPhysicalLinks, final Part source) {
     PhysicalPath newPath = CsFactory.eINSTANCE.createPhysicalPath();
 
     container.getOwnedPhysicalPath().add(newPath);
@@ -665,33 +667,34 @@ public class PhysicalPathExt {
     if (command.canExecute()) {
       command.execute();
     }
-    
+
     // Create a first involvement for the given source part
     PhysicalPathInvolvement previousPartInvolvement = createInvolvement(newPath, source);
-    
+
     // On each iteration, get a pair of (link, part), create the involvements and link them
     int size = involvedPhysicalLinks.size();
-    for(int i=0; i < size; i++){
-      Pair<PhysicalLink, Part> nextLinkPartPair = getNextLinkPartPair(involvedPhysicalLinks, previousPartInvolvement.getInvolved());
-      if(nextLinkPartPair != null){
+    for (int i = 0; i < size; i++) {
+      Pair<PhysicalLink, Part> nextLinkPartPair = getNextLinkPartPair(involvedPhysicalLinks,
+          previousPartInvolvement.getInvolved());
+      if (nextLinkPartPair != null) {
         // Remove the physical link from the involved links
         involvedPhysicalLinks.remove(nextLinkPartPair.getFirstValue());
-        
+
         // Create an involvement for the link and wire it to the previous part involvement
         PhysicalPathInvolvement linkInvolvement = createInvolvement(newPath, nextLinkPartPair.getFirstValue());
         previousPartInvolvement.getNextInvolvements().add(linkInvolvement);
-        
+
         // Create an involvement for the part and wire it to the link involvement
         PhysicalPathInvolvement nextPartInvolvement = createInvolvement(newPath, nextLinkPartPair.getSecondValue());
         linkInvolvement.getNextInvolvements().add(nextPartInvolvement);
-        
+
         // Next become previous
-        previousPartInvolvement = nextPartInvolvement;        
+        previousPartInvolvement = nextPartInvolvement;
       }
     }
     return newPath;
   }
-
+  
   /**
    * @param path the physical path which contains the new involvement
    * @param involved the involved element
@@ -735,7 +738,7 @@ public class PhysicalPathExt {
       }
       visited.add(chain);
       for (PhysicalPathInvolvement involvement : chain.getOwnedPhysicalPathInvolvements()) {
-        if ((involvement.getInvolvedElement() != null) && (involvement.getInvolvedElement() instanceof PhysicalPath)) {
+        if (involvement.getInvolvedElement() instanceof PhysicalPath) {
           toVisit.add((PhysicalPath) involvement.getInvolvedElement());
         }
         involvments.add(involvement);

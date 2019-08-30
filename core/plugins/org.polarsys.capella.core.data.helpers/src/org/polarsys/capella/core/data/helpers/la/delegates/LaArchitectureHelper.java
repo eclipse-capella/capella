@@ -66,7 +66,7 @@ public class LaArchitectureHelper {
   }
 
   protected List<SystemAnalysisRealization> getAllocatedSystemAnalysisRealizations(LogicalArchitecture element) {
-    List<SystemAnalysisRealization> ret = new ArrayList<SystemAnalysisRealization>();
+    List<SystemAnalysisRealization> ret = new ArrayList<>();
 
     for (ArchitectureAllocation architectureAllocation : element.getProvisionedArchitectureAllocations()) {
       if (architectureAllocation instanceof SystemAnalysisRealization) {
@@ -93,7 +93,7 @@ public class LaArchitectureHelper {
   }
 
   protected List<SystemAnalysis> getAllocatedSystemAnalyses(LogicalArchitecture element){
-    List <SystemAnalysis> ret = new ArrayList<SystemAnalysis>();
+    List <SystemAnalysis> ret = new ArrayList<>();
     for (BlockArchitecture architecture : element.getAllocatedArchitectures()) {
       if (architecture instanceof SystemAnalysis) {
         ret.add((SystemAnalysis) architecture);
@@ -103,7 +103,7 @@ public class LaArchitectureHelper {
   }
 
   protected List <PhysicalArchitecture> getAllocatingPhysicalArchitectures(LogicalArchitecture element) {
-    List <PhysicalArchitecture> ret = new ArrayList<PhysicalArchitecture>();
+    List <PhysicalArchitecture> ret = new ArrayList<>();
     for (BlockArchitecture architecture : element.getAllocatingArchitectures()) {
       if (architecture instanceof PhysicalArchitecture) {
         ret.add((PhysicalArchitecture) architecture);

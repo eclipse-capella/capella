@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,8 +14,8 @@ package org.polarsys.capella.common.helpers.operations;
 import java.util.Collection;
 import java.util.HashSet;
 
+import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IConfigurationElement;
-
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 
 /**
@@ -23,14 +23,17 @@ import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
  * Also stands for a proxy to all existing events.
  */
 public final class LongRunningListenersRegistry implements ILongRunningListener {
+	
+  private static final Logger logger = Logger.getLogger(LongRunningListenersRegistry.class.getName());
+  
   /**
    * Shared instance.
    */
-  private static LongRunningListenersRegistry __instance;
+  private static LongRunningListenersRegistry instance;
   /**
    * Set of registered listeners.
    */
-  private Collection<ILongRunningListener> _listeners;
+  private Collection<ILongRunningListener> listeners;
 
   /**
    * Constructor.
@@ -45,8 +48,8 @@ public final class LongRunningListenersRegistry implements ILongRunningListener 
    */
   public ILongRunningListener[] getListeners() {
     // Lazy initialization.
-    if (null == _listeners) {
-      _listeners = new HashSet<ILongRunningListener>(0);
+    if (null == listeners) {
+      listeners = new HashSet<>(0);
       IConfigurationElement[] configurationElements =
           ExtensionPointHelper.getConfigurationElements("org.polarsys.capella.common.helpers", "longRunningOperationsListener"); //$NON-NLS-1$ //$NON-NLS-2$
       // Cycle through declared extensions.
@@ -54,14 +57,14 @@ public final class LongRunningListenersRegistry implements ILongRunningListener 
         try {
           ILongRunningListener listener = (ILongRunningListener) configurationElement.createExecutableExtension(ExtensionPointHelper.ATT_CLASS);
           // Add new listener to collection.
-          _listeners.add(listener);
+          listeners.add(listener);
         } catch (Exception exception) {
           // Unable to instantiate this listener.
           // Skip it.
         }
       }
     }
-    return _listeners.toArray(new ILongRunningListener[_listeners.size()]);
+    return listeners.toArray(new ILongRunningListener[listeners.size()]);
   }
 
   /**
@@ -77,18 +80,18 @@ public final class LongRunningListenersRegistry implements ILongRunningListener 
    */
   public void operationAborted(Class<?> operationClass) {
     // No listeners resolved yet.
-    if (null == _listeners) {
+    if (null == listeners) {
       getListeners();
     }
     // Cycle through listeners.
-    for (ILongRunningListener listener : _listeners) {
+    for (ILongRunningListener listener : listeners) {
       try {
         // Check listener compatibility.
         if (listener.isListenerFor(operationClass)) {
           // Operation aborted.
           listener.operationAborted(operationClass);
         }
-      } catch (Throwable t) {
+      } catch (Exception ex) {
         // There is no way the operation will fail because of an exception.
       }
     }
@@ -99,18 +102,18 @@ public final class LongRunningListenersRegistry implements ILongRunningListener 
    */
   public void operationEnded(Class<?> operationClass) {
     // No listeners resolved yet.
-    if (null == _listeners) {
+    if (null == listeners) {
       getListeners();
     }
     // Cycle through listeners.
-    for (ILongRunningListener listener : _listeners) {
+    for (ILongRunningListener listener : listeners) {
       try {
         // Check listener compatibility.
         if (listener.isListenerFor(operationClass)) {
           // Operation Ended.
           listener.operationEnded(operationClass);
         }
-      } catch (Throwable t) {
+      } catch (Exception ex) {
         // There is no way the operation will fail because of an exception.
       }
     }
@@ -121,20 +124,20 @@ public final class LongRunningListenersRegistry implements ILongRunningListener 
    */
   public void operationStarting(Class<?> operationClass) {
     // No listeners resolved yet.
-    if (null == _listeners) {
+    if (null == listeners) {
       getListeners();
     }
     // Cycle through listeners.
-    for (ILongRunningListener listener : _listeners) {
+    for (ILongRunningListener listener : listeners) {
       try {
         // Check listener compatibility.
         if (listener.isListenerFor(operationClass)) {
           // Operation starting.
           listener.operationStarting(operationClass);
         }
-      } catch (Throwable t) {
+      } catch (Exception ex) {
         // There is no way the operation will fail because of an exception.
-        t.printStackTrace();
+        logger.error(ex.getMessage(), ex);
       }
     }
   }
@@ -144,9 +147,9 @@ public final class LongRunningListenersRegistry implements ILongRunningListener 
    * @return
    */
   public static LongRunningListenersRegistry getInstance() {
-    if (null == __instance) {
-      __instance = new LongRunningListenersRegistry();
+    if (null == instance) {
+      instance = new LongRunningListenersRegistry();
     }
-    return __instance;
+    return instance;
   }
 }

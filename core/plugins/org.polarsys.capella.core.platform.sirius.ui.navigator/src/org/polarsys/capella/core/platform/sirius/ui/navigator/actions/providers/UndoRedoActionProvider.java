@@ -16,13 +16,11 @@ import java.util.List;
 
 import org.eclipse.core.commands.operations.IOperationHistory;
 import org.eclipse.core.commands.operations.IUndoContext;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.workspace.IWorkspaceCommandStack;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationItemImpl;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.actions.ActionContext;
@@ -34,6 +32,7 @@ import org.eclipse.ui.navigator.ICommonViewerWorkbenchSite;
 import org.eclipse.ui.operations.RedoActionHandler;
 import org.eclipse.ui.operations.UndoActionHandler;
 import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.ICommandStackSelectionProvider;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.NavigatorEditingDomainDispatcher;
 
@@ -59,9 +58,9 @@ public class UndoRedoActionProvider extends CommonActionProvider implements ICom
 
     IWorkbenchPartSite workbenchPartSite = ((ICommonViewerWorkbenchSite) site.getViewSite()).getSite();
     // Create the undo action handler
-    undoActionHandler = new UndoActionHandler(workbenchPartSite, null/*undoContext*/);
+    undoActionHandler = new UndoActionHandler(workbenchPartSite, null/* undoContext */);
     // Create the redo action handler
-    redoActionHandler = new RedoActionHandler(workbenchPartSite, null/*undoContext*/);
+    redoActionHandler = new RedoActionHandler(workbenchPartSite, null/* undoContext */);
 
     NavigatorEditingDomainDispatcher.registerCommandStackSelectionProvider(this);
     updateActionBars();
@@ -101,23 +100,15 @@ public class UndoRedoActionProvider extends CommonActionProvider implements ICom
       selection = getActionSite().getViewSite().getSelectionProvider().getSelection();
     }
     if (selection instanceof IStructuredSelection) {
-      IStructuredSelection structuralSel = (IStructuredSelection) selection;
-      //If a representation item is clicked, the editing domain should be retrieved from the corresponding diagram
-      if (structuralSel.size() == 1) {
-        Object selectedElement = structuralSel.getFirstElement();
-        if (selectedElement instanceof RepresentationItemImpl)
-          editingDomain = TransactionHelper.getEditingDomain(((RepresentationItemImpl) selectedElement).getDRepresentationDescriptor().getRepresentation());
-      }
-      
-      boolean isEObjectList = true;
       List selectionList = ((IStructuredSelection) selection).toList();
-      for (Object obj : selectionList)
-        if (!(obj instanceof EObject))
-          isEObjectList = false;
-      //Editing domain can only be retrieved from a list of EObjects
-      if (isEObjectList)
-        editingDomain = TransactionHelper.getEditingDomain((Collection) selectionList);
+      Collection selectedObjects = CapellaAdapterHelper.resolveEObjects(selectionList);
+
+      //If all selected elements were EObjects, retrieve editing domain if elements are from the same session
+      if (selectionList.size() == selectedObjects.size()) {
+         editingDomain = TransactionHelper.getEditingDomain(selectedObjects);
+      }
     }
+    
     if (null != editingDomain) {
       // Get the appropriate undo context.
       IUndoContext undoContext = ((IWorkspaceCommandStack) editingDomain.getCommandStack()).getDefaultUndoContext();

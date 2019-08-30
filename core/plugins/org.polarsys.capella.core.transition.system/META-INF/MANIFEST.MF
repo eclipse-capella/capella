@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.transition.system;singleton:=true
-Bundle-Version: 1.2.2.qualifier
+Bundle-Version: 1.3.1.qualifier
 Bundle-Activator: org.polarsys.capella.core.transition.system.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.ui,
@@ -17,7 +17,7 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.common.queries,
  org.polarsys.capella.common.ui,
  org.polarsys.capella.common.libraries
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.transition.system,
  org.polarsys.capella.core.transition.system.activities,
@@ -28,7 +28,6 @@ Export-Package: org.polarsys.capella.core.transition.system,
  org.polarsys.capella.core.transition.system.handlers.merge,
  org.polarsys.capella.core.transition.system.handlers.optimize,
  org.polarsys.capella.core.transition.system.handlers.traceability,
- org.polarsys.capella.core.transition.system.handlers.traceability.config,
  org.polarsys.capella.core.transition.system.handlers.transformation,
  org.polarsys.capella.core.transition.system.helpers,
  org.polarsys.capella.core.transition.system.preferences,

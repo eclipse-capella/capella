@@ -11,19 +11,18 @@
 package org.polarsys.capella.core.data.fa.validation.functionalChainInvolvement;
 
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 
 /**
- * Checks realization consistency between functional exchanges.
+ * Checks realization consistency between abstract functions. A transitioned involvement is valid if the transitioned
+ * involved function is valid.
  */
 public class FCI01_FunctionalChainInvolvement_RealizingFunction extends AbstractValidationRule {
   /**
@@ -31,42 +30,37 @@ public class FCI01_FunctionalChainInvolvement_RealizingFunction extends Abstract
    */
   @Override
   public IStatus validate(IValidationContext ctx) {
-    EObject eObj = ctx.getTarget();
-    EMFEventType eType = ctx.getEventType();
-    if (eType == EMFEventType.NULL) {
-      boolean isFunction= false;
-      
-      if (eObj instanceof FunctionalChainInvolvement) {
-        FunctionalChainInvolvement fci = (FunctionalChainInvolvement)eObj;
-        if (fci.getInvolved() instanceof AbstractFunction) {
-          isFunction = true;
-        }
-        for (AbstractTrace trace : fci.getOutgoingTraces()) {
-          if (trace.getTargetElement() instanceof FunctionalChainInvolvement) {
-            FunctionalChainInvolvement exc = (FunctionalChainInvolvement)trace.getTargetElement();
-            if (exc.getInvolved() instanceof AbstractFunction) {
-              
-              for (AbstractTrace traceFunction : ((AbstractFunction)exc.getInvolved()).getIncomingTraces()) {
-                if (traceFunction.getSourceElement() instanceof AbstractFunction) {
-                  AbstractFunction targetFunction = (AbstractFunction)traceFunction.getSourceElement();
-                  if (EcoreUtil2.isOrIsContainedBy(fci.getInvolved(), targetFunction)) {
+
+    if (ctx.getEventType() == EMFEventType.NULL && ctx.getTarget() instanceof FunctionalChainInvolvement) {
+      FunctionalChainInvolvement involvement = (FunctionalChainInvolvement) ctx.getTarget();
+      if (involvement.getInvolved() instanceof AbstractFunction) {
+        AbstractFunction initialLevelFunction = (AbstractFunction) involvement.getInvolved();
+
+        for (AbstractTrace outgoingTrace : involvement.getOutgoingTraces()) {
+          if (outgoingTrace.getTargetElement() instanceof FunctionalChainInvolvement) {
+            FunctionalChainInvolvement outgoingInvolvement = (FunctionalChainInvolvement) outgoingTrace
+                .getTargetElement();
+            if (outgoingInvolvement.getInvolved() instanceof AbstractFunction) {
+              AbstractFunction outgoingFunction = (AbstractFunction) outgoingInvolvement.getInvolved();
+
+              for (AbstractTrace incomingTrace : outgoingFunction.getIncomingTraces()) {
+                if (incomingTrace.getSourceElement() instanceof AbstractFunction) {
+                  AbstractFunction secondLevelFunction = (AbstractFunction) incomingTrace.getSourceElement();
+                  if (EcoreUtil2.isOrIsContainedBy(initialLevelFunction, secondLevelFunction)) {
                     return ctx.createSuccessStatus();
                   }
                 }
               }
-              
             }
           }
         }
-        
-        if (fci.getOutgoingTraces().size()!=0 && isFunction) {
-          return createFailureStatus(ctx, new Object[] { CapellaElementExt.getName(fci) });
+
+        if (!involvement.getOutgoingTraces().isEmpty()) {
+          return ctx.createFailureStatus(CapellaElementExt.getName(involvement));
         }
-        
       }
     }
-    return ctx.createSuccessStatus();
-    
-  }
 
+    return ctx.createSuccessStatus();
+  }
 }

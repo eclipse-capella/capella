@@ -37,8 +37,8 @@ public class GetCurrent_Parameter_MaxValue extends AbstractQuery {
     List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
     if (element instanceof MultiplicityElement) {
       MultiplicityElement mElement = (MultiplicityElement) element;
-      if (mElement.getOwnedNullValue() != null) {
-        currentElements.add(mElement.getOwnedNullValue());
+      if (mElement.getOwnedMaxValue() != null) {
+        currentElements.add(mElement.getOwnedMaxValue());
       }
     }
     return currentElements;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,12 +43,16 @@ public class FileHelper {
   /**
    * Log4j reference logger.
    */
-  private static final Logger __logger = Logger.getLogger(FileHelper.class.getPackage().getName());
+  private static final Logger logger = Logger.getLogger(FileHelper.class.getPackage().getName());
+  
+  private FileHelper() {
+	  // To hide the implicit public one
+  }
 
   /**
    * Get file full url from relative one.
    * 
-   * @param fileRelativePath_p
+   * @param fileRelativePath
    *          File path relative to workspace.<br>
    *          It <b>must</b> start with <i>pluginId</i> or <i>project name</i>. It is also recommended that both plug-in
    *          id and plug-in project names are the same.<br>
@@ -60,27 +64,31 @@ public class FileHelper {
    *          It's still referred to as a relative path, since the returned URL is absolute in the file system.
    * @return
    */
-  public static URL getFileFullUrl(String fileRelativePath_p) {
+  public static URL getFileFullUrl(String fileRelativePath) {
     // Get the URI for given relative path.
-    return getFileFullUrl(getFileFullUri(fileRelativePath_p));
+    URI fileFullUri = getFileFullUri(fileRelativePath);
+    if(fileFullUri != null) {
+    	return getFileFullUrl(fileFullUri);    	
+    }
+    return null;
   }
 
   /**
    * Get file full url from its full uri.<br>
    * See {@link #getFileFullUri(String)} method.
    * 
-   * @param fileFullUri_p
+   * @param fileFullUri
    * @return
    */
-  public static URL getFileFullUrl(URI fileFullUri_p) {
+  public static URL getFileFullUrl(URI fileFullUri) {
     URL result = null;
     // Resolve url from returned uri.
     try {
-      result = FileLocator.resolve(new URL(fileFullUri_p.toString()));
-    } catch (Exception exception_p) {
+      result = FileLocator.resolve(new URL(fileFullUri.toString()));
+    } catch (Exception exception) {
       StringBuilder loggerMessage = new StringBuilder("FileHelper.getFileFullPath(..) _ "); //$NON-NLS-1$
-      loggerMessage.append("Unable to resolve the url for ").append(fileFullUri_p.toString()); //$NON-NLS-1$
-      __logger.warn(loggerMessage.toString(), exception_p);
+      loggerMessage.append("Unable to resolve the url for ").append(fileFullUri.toString()); //$NON-NLS-1$
+      logger.warn(loggerMessage.toString(), exception);
     }
     return result;
   }
@@ -89,7 +97,7 @@ public class FileHelper {
    * Get a file uri from relative one which is not resolved against the eclipse platform.<br>
    * The returned uri starts with either 'platform:/plug-in/' or 'platform:/resource/'.
    * 
-   * @param fileRelativePath_p
+   * @param fileRelativePath
    *          File path relative to workspace.<br>
    *          It <b>must</b> start with <code>project name</code> or <i>pluginId</i>. It is also recommended that both
    *          plug-in id and plug-in project names are the same.<br>
@@ -99,19 +107,19 @@ public class FileHelper {
    *          <i>model/example.ecore</i> file in its project.
    * @return an {@link URI} not resolved against the eclipse platform.<br>
    */
-  public static URI getFileFullUri(String fileRelativePath_p) {
+  public static URI getFileFullUri(String fileRelativePath) {
     URI fileUri = null;
     // Precondition.
-    if (null == fileRelativePath_p) {
+    if (null == fileRelativePath) {
       return fileUri;
     }
     // Find project from relative first segment.
-    IPath path = new Path(fileRelativePath_p);
+    IPath path = new Path(fileRelativePath);
     IProject project = ProjectHelper.getProject(path.segment(0));
     if ((null != project) && project.exists()) { // Project found, the file is in the workspace.
-      fileUri = URI.createPlatformResourceURI(fileRelativePath_p, true);
+      fileUri = URI.createPlatformResourceURI(fileRelativePath, true);
     } else { // Resource not found, the file is deployed elsewhere.
-      fileUri = URI.createPlatformPluginURI(fileRelativePath_p, true);
+      fileUri = URI.createPlatformPluginURI(fileRelativePath, true);
     }
     return fileUri;
   }
@@ -119,13 +127,13 @@ public class FileHelper {
   /**
    * Convert package name to a correct java folder path.
    * 
-   * @param packageName_p
+   * @param packageName
    * @return
    */
-  public static String convertPackageNameToFolderPath(String packageName_p) {
+  public static String convertPackageNameToFolderPath(String packageName) {
     String result = null;
-    if (null != packageName_p) {
-      result = packageName_p.replace(ICommonConstants.POINT_CHARACTER, ICommonConstants.SLASH_CHARACTER);
+    if (null != packageName) {
+      result = packageName.replace(ICommonConstants.POINT_CHARACTER, ICommonConstants.SLASH_CHARACTER);
     }
     return result;
   }
@@ -133,42 +141,40 @@ public class FileHelper {
   /**
    * Read given input stream as an array of bytes.
    * 
-   * @param inputStream_p
+   * @param inputStream
    * @return a not null array.
    */
-  public static byte[] readFile(InputStream inputStream_p) {
+  public static byte[] readFile(InputStream inputStream) {
     byte[] buffer = null;
     try {
       // Available bytes to read.
-      int sizeToRead = inputStream_p.available();
+      int sizeToRead = inputStream.available();
       // Allocate a new buffer with the right size.
       buffer = new byte[sizeToRead];
       // Read bytes from the input stream.
-      int readBytes = inputStream_p.read(buffer);
+      int readBytes = inputStream.read(buffer);
       // Total read bytes count.
       int totalReadBytes = readBytes;
       // Read again, if available bytes remain.
       while (readBytes != -1 && (totalReadBytes < sizeToRead)) {
-        readBytes = inputStream_p.read(buffer, totalReadBytes, sizeToRead - totalReadBytes);
+        readBytes = inputStream.read(buffer, totalReadBytes, sizeToRead - totalReadBytes);
         // Add readBytes to the total read bytes count.
         if (readBytes != -1) {
           totalReadBytes += readBytes;
         }
       }
-    } catch (Exception exception_p) {
+    } catch (Exception exception) {
       StringBuilder loggerMessage = new StringBuilder("FileHelper.readFile(..) _ "); //$NON-NLS-1$
       loggerMessage.append("Failed to read the input stream ! "); //$NON-NLS-1$
-      __logger.warn(loggerMessage.toString());
+      logger.warn(loggerMessage.toString());
     } finally {
-      if (null != inputStream_p) {
         try {
-          inputStream_p.close();
-        } catch (IOException exception_p) {
+          inputStream.close();
+        } catch (IOException exception) {
           StringBuilder loggerMessage = new StringBuilder("FileHelper.readFile(..) _ "); //$NON-NLS-1$
           loggerMessage.append("Failed to close input stream ! "); //$NON-NLS-1$
-          __logger.warn(loggerMessage.toString(), exception_p);
+          logger.warn(loggerMessage.toString(), exception);
         }
-      }
     }
     // Ensure to return a not null array.
     return (null == buffer) ? new byte[0] : buffer;
@@ -183,8 +189,8 @@ public class FileHelper {
    * @return If an error occurred {@link ICommonConstants#EMPTY_STRING} is returned.
    * @throws UnsupportedEncodingException
    */
-  public static String readFile(String filePath_p) throws UnsupportedEncodingException {
-    byte[] rawContent = readRawFile(filePath_p);
+  public static String readFile(String filePath) throws UnsupportedEncodingException {
+    byte[] rawContent = readRawFile(filePath);
     String result;
     result = (0 == rawContent.length) ? ICommonConstants.EMPTY_STRING : new String(rawContent, "UTF-8");
     return result;
@@ -193,21 +199,23 @@ public class FileHelper {
   /**
    * Get file as a stream.
    * 
-   * @param filePath_p
+   * @param filePath
    *          File path relative to the plug-in, plug-in id included.<br>
    *          See {@link #getFileFullUrl(String)} documentation.
    * @return If an error occurred null is returned.
    */
-  public static InputStream getFileAsStream(String filePath_p) {
+  public static InputStream getFileAsStream(String filePath) {
     InputStream result = null;
     // Get input stream.
-    URL fileURL = getFileFullUrl(filePath_p);
+    URL fileURL = getFileFullUrl(filePath);
     try {
-      result = fileURL.openStream();
-    } catch (Exception exception_p) {
+    	if(fileURL != null) {
+    		result = fileURL.openStream();
+    	}
+    } catch (Exception exception) {
       StringBuilder loggerMessage = new StringBuilder("FileHelper.getFileAsStream(..) _ "); //$NON-NLS-1$
-      loggerMessage.append("Failed to load ").append(filePath_p); //$NON-NLS-1$
-      __logger.warn(loggerMessage.toString());
+      loggerMessage.append("Failed to load ").append(filePath); //$NON-NLS-1$
+      logger.warn(loggerMessage.toString());
     }
     return result;
   }
@@ -215,15 +223,15 @@ public class FileHelper {
   /**
    * Read file as an array of bytes.
    * 
-   * @param filePath_p
+   * @param filePath
    *          File path relative to the plug-in, plug-in id included.<br>
    *          See {@link #getFileFullUrl(String)} documentation.
    * @return a not null array.
    */
-  public static byte[] readRawFile(String filePath_p) {
+  public static byte[] readRawFile(String filePath) {
     byte[] result = null;
     // Get stream from file.
-    InputStream inputStream = getFileAsStream(filePath_p);
+    InputStream inputStream = getFileAsStream(filePath);
     // Ensure the input stream got from the file path is not null.
     if (null != inputStream) {
       result = readFile(inputStream);
@@ -234,148 +242,155 @@ public class FileHelper {
   /**
    * Copy given source file content in given target file.
    * 
-   * @param sourceFileRelativePath_p
+   * @param sourceFileRelativePath
    *          File path relative to the plug-in, plug-in id included.<br>
    *          See {@link #getFileFullUrl(String)} documentation.
-   * @param targetFileRelativePath_p
+   * @param targetFileRelativePath
    *          File path relative to the plug-in, plug-in id included.<br>
    *          See {@link #getFileFullUrl(String)} documentation.
    */
-  public static void copyFile(String sourceFileRelativePath_p, String targetFileRelativePath_p) {
-    byte[] content = readRawFile(sourceFileRelativePath_p);
-    writeFile(targetFileRelativePath_p, true, content);
+  public static void copyFile(String sourceFileRelativePath, String targetFileRelativePath) {
+    byte[] content = readRawFile(sourceFileRelativePath);
+    writeFile(targetFileRelativePath, true, content);
   }
 
   /**
    * Write given string contents at specified path.
    * 
-   * @param filePath_p
+   * @param filePath
    *          File path relative to the plug-in, plug-in id included.<br>
    *          See {@link #getFileFullUrl(String)} documentation.
-   * @param ensureFolders_p
+   * @param ensureFolders
    *          Make sure all parent folders exist by creating all necessary ones.
-   * @param contents_p
+   * @param contents
    *          Contents that should be written to pointed file.
    * @return
    */
-  public static boolean writeFile(String filePath_p, boolean ensureFolders_p, String contents_p) {
-    return writeFile(filePath_p, ensureFolders_p, contents_p.getBytes(Charset.forName("UTF-8")));
+  public static boolean writeFile(String filePath, boolean ensureFolders, String contents) {
+    return writeFile(filePath, ensureFolders, contents.getBytes(Charset.forName("UTF-8")));
   }
 
   /**
    * Write given contents of bytes at specified path.
    * 
-   * @param filePath_p
+   * @param filePath
    *          File path relative to the plug-in, plug-in id included.<br>
    *          See {@link #getFileFullUrl(String)} documentation.
-   * @param ensureFolders_p
+   * @param ensureFolders
    *          Make sure all parent folders exist by creating all necessary ones.
-   * @param contents_p
+   * @param contents
    *          Contents that should be written to pointed file.
    * @return
    */
-  public static boolean writeFile(String filePath_p, boolean ensureFolders_p, byte[] contents_p) {
-    boolean result = false;
-    FileChannel channel = null;
-    try {
-      // Get file full path from its relative one.
-      String fileFullPath = FileHelper.getFileFullUrl(FileHelper.getFileFullUri(filePath_p)).getFile();
-      // Should path be enforced ?
-      if (ensureFolders_p) {
-        ensurePathAvailability(fileFullPath);
-      }
-      // Make sure file is writable.
-      boolean fileWritable = makeFileWritable(filePath_p);
-      // Write content.
-      if (fileWritable) {
-        // Try and open the resulting file.
-        channel = new FileOutputStream(fileFullPath).getChannel();
-        // Write contents.
-        channel.write(ByteBuffer.wrap(contents_p));
-        result = true;
-      }
-    } catch (Exception exception_p) {
-      result = false;
-      StringBuilder loggerMessage = new StringBuilder("FileHelper.writeFile(..) _ "); //$NON-NLS-1$
-      loggerMessage.append("Failed to open channel in write mode for "); //$NON-NLS-1$
-      loggerMessage.append(filePath_p).append(" !"); //$NON-NLS-1$
-      __logger.warn(loggerMessage.toString(), exception_p);
-    } finally {
-      if ((null != channel) && channel.isOpen()) {
-        try {
-          // Close the channel.
-          channel.close();
-        } catch (IOException exception_p) {
-          result = false;
-          StringBuilder loggerMessage = new StringBuilder("FileHelper.writeFile(..) _ "); //$NON-NLS-1$
-          loggerMessage.append("Failed to close opened channel in write mode ! "); //$NON-NLS-1$
-          loggerMessage.append(filePath_p).append(" may no longer be usable."); //$NON-NLS-1$
-          __logger.warn(loggerMessage.toString(), exception_p);
-        }
-      }
-    }
-    return result;
-  }
+	public static boolean writeFile(String filePath, boolean ensureFolders, byte[] contents) {
+		boolean result = false;
+		FileChannel channel = null;
+		// Get file full path from its relative one.
+		URI fileFullUri = FileHelper.getFileFullUri(filePath);
+		if (fileFullUri != null) {
+			URL fileFullUrl = FileHelper.getFileFullUrl(fileFullUri);
+			if(fileFullUrl != null) {
+				String fileFullPath = fileFullUrl.getFile();
+				try (FileOutputStream fileOutputStream = new FileOutputStream(fileFullPath)) {
+					// Should path be enforced ?
+					if (ensureFolders) {
+						ensurePathAvailability(fileFullPath);
+					}
+					// Make sure file is writable.
+					boolean fileWritable = makeFileWritable(filePath);
+					// Write content.
+					if (fileWritable) {
+						// Try and open the resulting file.
+						channel = fileOutputStream.getChannel();
+						// Write contents.
+						channel.write(ByteBuffer.wrap(contents));
+						result = true;
+						channel.close();
+					}
+				} catch (Exception exception) {
+					result = false;
+					StringBuilder loggerMessage = new StringBuilder("FileHelper.writeFile(..) _ "); //$NON-NLS-1$
+					loggerMessage.append("Failed to open channel in write mode for "); //$NON-NLS-1$
+					loggerMessage.append(filePath).append(" !"); //$NON-NLS-1$
+					logger.warn(loggerMessage.toString(), exception);
+				} finally {
+					if ((null != channel) && channel.isOpen()) {
+						try {
+							// Close the channel.
+							channel.close();
+						} catch (IOException exception) {
+							result = false;
+							StringBuilder loggerMessage = new StringBuilder("FileHelper.writeFile(..) _ "); //$NON-NLS-1$
+							loggerMessage.append("Failed to close opened channel in write mode ! "); //$NON-NLS-1$
+							loggerMessage.append(filePath).append(" may no longer be usable."); //$NON-NLS-1$
+							logger.warn(loggerMessage.toString(), exception);
+						}
+					}
+				}
+			}
+		}
+		return result;
+	}
 
   /**
    * Rename file from source file relative path to destination relative path.
    * 
-   * @param sourceFileRelativePath_p
+   * @param sourceFileRelativePath
    *          File path relative to the plug-in, plug-in id included.<br>
    *          See {@link #getFileFullUrl(String)} documentation.
-   * @param destinationFileRelativePath_p
+   * @param destinationFileRelativePath
    *          File path relative to the plug-in, plug-in id included.<br>
    *          See {@link #getFileFullUrl(String)} documentation.
    * @return
    */
-  public static boolean renameFile(String sourceFileRelativePath_p, String destinationFileRelativePath_p) {
+  public static boolean renameFile(String sourceFileRelativePath, String destinationFileRelativePath) {
     // Preconditions.
-    if ((null == sourceFileRelativePath_p) || (null == destinationFileRelativePath_p)) {
+    if ((null == sourceFileRelativePath) || (null == destinationFileRelativePath)) {
       return false;
     }
-    IFile sourceFile = getPlatformFile(sourceFileRelativePath_p);
-    IPath destinationPath = getPlatformFile(destinationFileRelativePath_p).getFullPath();
+    IFile sourceFile = getPlatformFile(sourceFileRelativePath);
+    IPath destinationPath = getPlatformFile(destinationFileRelativePath).getFullPath();
     return moveResource(sourceFile, destinationPath);
   }
 
   /**
    * Rename folder from source folder relative path to destination relative path.
    * 
-   * @param sourceFolderRelativePath_p
+   * @param sourceFolderRelativePath
    *          Folder path relative to the plug-in, plug-in id included.<br>
    *          See {@link #getFileFullUrl(String)} documentation.
-   * @param destinationFolderRelativePath_p
+   * @param destinationFolderRelativePath
    *          Folder path relative to the plug-in, plug-in id included.<br>
    *          See {@link #getFileFullUrl(String)} documentation.
    * @return
    */
-  public static boolean renameFolder(String sourceFolderRelativePath_p, String destinationFolderRelativePath_p) {
+  public static boolean renameFolder(String sourceFolderRelativePath, String destinationFolderRelativePath) {
     // Preconditions.
-    if ((null == sourceFolderRelativePath_p) || (null == destinationFolderRelativePath_p)) {
+    if ((null == sourceFolderRelativePath) || (null == destinationFolderRelativePath)) {
       return false;
     }
-    IFolder sourceFolder = getPlatformFolder(sourceFolderRelativePath_p);
-    IPath destinationPath = getPlatformFolder(destinationFolderRelativePath_p).getFullPath();
+    IFolder sourceFolder = getPlatformFolder(sourceFolderRelativePath);
+    IPath destinationPath = getPlatformFolder(destinationFolderRelativePath).getFullPath();
     return moveResource(sourceFolder, destinationPath);
   }
 
   /**
    * Move resource to given destination path.
    * 
-   * @param resource_p
-   * @param destinationPath_p
+   * @param resource
+   * @param destinationPath
    * @return true if move occurred with no exception, false otherwise.
    */
-  public static boolean moveResource(IResource resource_p, IPath destinationPath_p) {
+  public static boolean moveResource(IResource resource, IPath destinationPath) {
     boolean result = false;
     try {
-      resource_p.move(destinationPath_p, true, new NullProgressMonitor());
+      resource.move(destinationPath, true, new NullProgressMonitor());
       result = true;
-    } catch (Exception e_p) {
+    } catch (Exception ex) {
       StringBuilder loggerMessage = new StringBuilder("FileHelper.moveResource(..) _ "); //$NON-NLS-1$
-      loggerMessage.append("Could not move ").append(resource_p.getFullPath()); //$NON-NLS-1$
-      loggerMessage.append(" to ").append(destinationPath_p); //$NON-NLS-1$
-      __logger.warn(loggerMessage.toString(), e_p);
+      loggerMessage.append("Could not move ").append(resource.getFullPath()); //$NON-NLS-1$
+      loggerMessage.append(" to ").append(destinationPath); //$NON-NLS-1$
+      logger.warn(loggerMessage.toString(), ex);
     }
     return result;
   }
@@ -383,24 +398,24 @@ public class FileHelper {
   /**
    * Is given file relative path pointing to an existing file ?
    * 
-   * @param fileRelativePath_p
+   * @param fileRelativePath
    *          File path relative to the plug-in, plug-in id included.<br>
    *          See {@link #getFileFullUrl(String)} documentation.
    * @return
    */
-  public static boolean exists(String fileRelativePath_p) {
-    IFile file = getPlatformFile(fileRelativePath_p);
-    return (null != file) ? file.exists() : false;
+  public static boolean exists(String fileRelativePath) {
+    IFile file = getPlatformFile(fileRelativePath);
+    return (null != file) ? file.exists() : Boolean.FALSE;
   }
 
   /**
    * Make sure that given path is safe to use, ie ensure that all parent folders exist.
    * 
-   * @param fileFullPath_p
+   * @param fileFullPath
    */
-  public static void ensurePathAvailability(String fileFullPath_p) {
+  public static void ensurePathAvailability(String fileFullPath) {
     // Get rid of file extension and file name, for this has no meaning in the parent folders chain.
-    IPath parentFolderPath = new Path(fileFullPath_p).removeFileExtension().removeLastSegments(1);
+    IPath parentFolderPath = new Path(fileFullPath).removeFileExtension().removeLastSegments(1);
     // If it still makes sense to create a folder, go for it.
     if (!parentFolderPath.isEmpty()) {
       File parentFolder = parentFolderPath.toFile();
@@ -412,20 +427,20 @@ public class FileHelper {
   /**
    * Delete given relative file in the workspace.
    * 
-   * @param workspaceRelativeFile_p
+   * @param workspaceRelativeFile
    */
-  public static boolean deleteFile(String workspaceRelativeFile_p) {
+  public static boolean deleteFile(String workspaceRelativeFile) {
     boolean result = false;
     // Get the file
-    IFile fileToDelete = getPlatformFile(workspaceRelativeFile_p);
+    IFile fileToDelete = getPlatformFile(workspaceRelativeFile);
     if ((null != fileToDelete) && fileToDelete.exists()) {
       try {
         fileToDelete.delete(true, new NullProgressMonitor());
         result = true;
-      } catch (CoreException exception_p) {
+      } catch (CoreException exception) {
         StringBuilder loggerMessage = new StringBuilder("FileHelper.deleteFile(..) _ "); //$NON-NLS-1$
-        loggerMessage.append("Failed to delete file:").append(workspaceRelativeFile_p); //$NON-NLS-1$
-        __logger.warn(loggerMessage.toString());
+        loggerMessage.append("Failed to delete file:").append(workspaceRelativeFile); //$NON-NLS-1$
+        logger.warn(loggerMessage.toString());
       }
     }
     return result;
@@ -434,20 +449,20 @@ public class FileHelper {
   /**
    * Delete given relative folder in the workspace.
    * 
-   * @param workspaceRelativePath_p
+   * @param workspaceRelativePath
    * @return true if successfully deleted, false otherwise.
    */
-  public static boolean deleteFolder(String workspaceRelativePath_p) {
+  public static boolean deleteFolder(String workspaceRelativePath) {
     boolean result = false;
-    IFolder folderToDelete = getPlatformFolder(workspaceRelativePath_p);
+    IFolder folderToDelete = getPlatformFolder(workspaceRelativePath);
     if ((null != folderToDelete) && folderToDelete.exists()) {
       try {
         folderToDelete.delete(true, new NullProgressMonitor());
         result = true;
-      } catch (CoreException exception_p) {
+      } catch (CoreException exception) {
         StringBuilder loggerMessage = new StringBuilder("FileHelper.deleteFolder(..) _ "); //$NON-NLS-1$
-        loggerMessage.append("Failed to delete folder:").append(workspaceRelativePath_p); //$NON-NLS-1$
-        __logger.warn(loggerMessage.toString(), exception_p);
+        loggerMessage.append("Failed to delete folder:").append(workspaceRelativePath); //$NON-NLS-1$
+        logger.warn(loggerMessage.toString(), exception);
       }
     }
     return result;
@@ -456,33 +471,33 @@ public class FileHelper {
   /**
    * Get platform file as an {@link IResource} from its relative path.
    * 
-   * @param fileRelativePath_p
+   * @param fileRelativePath
    *          File path relative to the plug-in, plug-in id included.<br>
    *          See {@link #getFileFullUrl(String)} documentation.
    * @return
    */
-  public static IFile getPlatformFile(String fileRelativePath_p) {
+  public static IFile getPlatformFile(String fileRelativePath) {
     IFile result = null;
     // Precondition.
-    if (null == fileRelativePath_p) {
+    if (null == fileRelativePath) {
       return result;
     }
     IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
-    result = root.getFile(new Path(fileRelativePath_p));
+    result = root.getFile(new Path(fileRelativePath));
     return result;
   }
 
   /**
    * Get platform folder as an {@link IResource} from its relative path.
    * 
-   * @param folderRelativePath_p
+   * @param folderRelativePath
    *          Folder path relative to the plug-in, plug-in id included.<br>
    *          See {@link #getFileFullUrl(String)} documentation.
    * @return
    */
-  public static IFolder getPlatformFolder(String folderRelativePath_p) {
+  public static IFolder getPlatformFolder(String folderRelativePath) {
     IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
-    return root.getFolder(new Path(folderRelativePath_p));
+    return root.getFolder(new Path(folderRelativePath));
   }
 
   /**
@@ -496,11 +511,11 @@ public class FileHelper {
    * the file extension portion is the empty string.<br>
    * </p>
    * 
-   * @param filePath_p
+   * @param filePath
    * @return the file extension or <code>null</code>
    */
-  public static String getFileExtension(String filePath_p) {
-    return new Path(filePath_p).getFileExtension();
+  public static String getFileExtension(String filePath) {
+    return new Path(filePath).getFileExtension();
   }
 
   /**
@@ -509,17 +524,17 @@ public class FileHelper {
    * The user may be asked to take a decision if the file is held by the configuration management system.<br>
    * Nevertheless, if no UI is reachable, then the system is urged into making the file writable.
    * 
-   * @param filePath_p
+   * @param filePath
    *          File path relative to the plug-in, plug-in id included. See {@link #getFileFullUrl(String)} documentation.
    * @return false if file could not be made writable or user denied rights to (in case of a configuration management).
    *         true if it does not exist (then it is writable) or permission was granted (either by the system or by the
    *         user).
    */
-  public static boolean makeFileWritable(String filePath_p) {
+  public static boolean makeFileWritable(String filePath) {
     // Get user helper.
     IUserEnforcedHelper helper = SolFaCommonActivator.getDefault().getUserEnforcedHelper();
     // Delegate to it.
-    IStatus status = helper.makeFileWritable(getPlatformFile(filePath_p));
+    IStatus status = helper.makeFileWritable(getPlatformFile(filePath));
     return status.isOK();
   }
 }

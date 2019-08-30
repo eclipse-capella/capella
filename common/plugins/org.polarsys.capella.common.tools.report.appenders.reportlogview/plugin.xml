@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -39,19 +39,6 @@
           name="%category.name"
           description="%category.description">
     </category>
-    
-    <command id="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.open"
-          categoryId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.actions"
-          description="%openCommand.description"
-          name="%openCommand.name">
-          
-          <commandParameter
-                id="index"
-                name="index"
-                optional="true">
-          </commandParameter>
-          
-    </command>
     
     <command id="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.export"
           categoryId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.actions"
@@ -186,10 +173,6 @@
          
     </handler>
     
-    <handler commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.open"
-            class="org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.OpenHandler">
-    </handler>
-       
     <handler commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.deleteAll"
             class="org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.ClearLogHandler">
     </handler>
@@ -225,6 +208,19 @@
            
 </extension>
 
+<extension
+         id="org.eclipse.ui.ide.resourceMappingAdapters"
+         point="org.eclipse.core.runtime.adapters">
+       <factory
+             adaptableType="org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerView"
+             class="org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerShowInAdapter">
+          <adapter
+                type="org.eclipse.ui.part.IShowInSource">
+          </adapter>
+       </factory>
+   </extension>
+   
+   
    <extension
          point="org.eclipse.ui.menus">
          
@@ -243,13 +239,7 @@
          
      </menuContribution>
       
-       <menuContribution
-             locationURI="popup:org.polarsys.capella.common.tools.report.appenders.reportlogview.logview?after=navigation">
-          <dynamic
-                class="org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.GotoHandler"
-                id="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.showRelatedElementProjectExplorer">
-          </dynamic>
-       </menuContribution>
+      
       
       <menuContribution
             locationURI="popup:org.polarsys.capella.common.tools.report.appenders.reportlogview.logview?after=use">

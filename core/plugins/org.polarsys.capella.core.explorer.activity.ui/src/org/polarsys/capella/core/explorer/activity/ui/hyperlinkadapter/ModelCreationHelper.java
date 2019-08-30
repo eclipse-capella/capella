@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -75,7 +75,7 @@ import org.polarsys.capella.core.ui.toolkit.helpers.SelectionDialogHelper;
  */
 public class ModelCreationHelper {
 
-	static protected Scenario createScenario(AbstractCapability abstractCapability, ScenarioKind scenarioKind) {
+	protected static Scenario createScenario(AbstractCapability abstractCapability, ScenarioKind scenarioKind) {
 		if (abstractCapability != null) {
 			Scenario sc = InteractionFactory.eINSTANCE.createScenario("Scenario"); //$NON-NLS-1$
 			sc.setKind(scenarioKind);
@@ -85,7 +85,7 @@ public class ModelCreationHelper {
 		return null;
 	}
 
-	static protected void createStateMachineRegion(Block block, String stateMachineName) {
+	protected static void createStateMachineRegion(Block block, String stateMachineName) {
 		StateMachine defaultSM = null;
 		for (StateMachine sm : block.getOwnedStateMachines()) {
 			defaultSM = sm;
@@ -106,7 +106,7 @@ public class ModelCreationHelper {
 		}
 	}
 
-	static protected AbstractCapability selectCapability(final Project project, ComponentArchitecture architecture) {
+	protected static AbstractCapability selectCapability(final Project project, ComponentArchitecture architecture) {
 		AbstractCapability result = null;
 		AbstractCapabilityPkg capabilityPkg = ModelQueryHelper.getCapabilityPkgFrom(project, architecture);
 		if (capabilityPkg != null) {
@@ -128,29 +128,27 @@ public class ModelCreationHelper {
 
 	public static AbstractCapability createAbstractCapability(AbstractCapabilityPkg capabilityPkg) {
 		AbstractCapability result = null;
-		if (null == result) {
-			if (capabilityPkg instanceof CapabilityPkg) {
-				result = CtxFactory.eINSTANCE.createCapability("Capability"); //$NON-NLS-1$
-				((CapabilityPkg) capabilityPkg).getOwnedCapabilities().add((Capability) result);
-			} else if (capabilityPkg instanceof CapabilityRealizationPkg) {
-				result = LaFactory.eINSTANCE.createCapabilityRealization("Capability"); //$NON-NLS-1$
-				((CapabilityRealizationPkg) capabilityPkg).getOwnedCapabilityRealizations().add((CapabilityRealization) result);
-			}
+		if (capabilityPkg instanceof CapabilityPkg) {
+			result = CtxFactory.eINSTANCE.createCapability("Capability"); //$NON-NLS-1$
+			((CapabilityPkg) capabilityPkg).getOwnedCapabilities().add((Capability) result);
+		} else if (capabilityPkg instanceof CapabilityRealizationPkg) {
+			result = LaFactory.eINSTANCE.createCapabilityRealization("Capability"); //$NON-NLS-1$
+			((CapabilityRealizationPkg) capabilityPkg).getOwnedCapabilityRealizations().add((CapabilityRealization) result);
 		}
 		return result;
 	}
 
-	static public Scenario selectCapabilityAndCreateScenario(final Project project, final ComponentArchitecture architecture,
+	public static Scenario selectCapabilityAndCreateScenario(final Project project, final ComponentArchitecture architecture,
 			final ScenarioKind scenarioKind) {
 		AbstractReadWriteCommand cmd = new AbstractReadWriteCommand() {
-			private Scenario _scenario;
+			private Scenario scenario;
 
 			/**
 			 * @see org.polarsys.capella.common.ef.command.AbstractCommand#getAffectedObjects()
 			 */
 			@Override
 			public Collection<?> getAffectedObjects() {
-				return Collections.singletonList(_scenario);
+				return Collections.singletonList(scenario);
 			}
 
 			/**
@@ -159,7 +157,7 @@ public class ModelCreationHelper {
 			public void run() {
 				AbstractCapability capability = selectCapability(project, architecture);
 				if (capability != null) {
-					_scenario = createScenario(capability, scenarioKind);
+					scenario = createScenario(capability, scenarioKind);
 				}
 			}
 		};
@@ -168,7 +166,7 @@ public class ModelCreationHelper {
 		return (Scenario) cmd.getAffectedObjects().iterator().next();
 	}
 
-	static protected CapabilityRealization selectCapabilityRealization(CapabilityRealizationPkg capabilityRealizationPkg) {
+	protected static CapabilityRealization selectCapabilityRealization(CapabilityRealizationPkg capabilityRealizationPkg) {
 		if (capabilityRealizationPkg != null) {
 			Set<EObject> all = EObjectExt.getAll(capabilityRealizationPkg, LaPackage.Literals.CAPABILITY_REALIZATION);
 			if (!all.isEmpty()) {
@@ -182,7 +180,7 @@ public class ModelCreationHelper {
 		return null;
 	}
 
-	static protected CapabilityRealization selectLACapabilityRealization(Project project) {
+	protected static CapabilityRealization selectLACapabilityRealization(Project project) {
 		CapabilityRealizationPkg capabilityRealizationPkg = ModelQueryHelper.getLACapabilityRealizationPkg(project);
 		if (capabilityRealizationPkg != null) {
 			return selectCapabilityRealization(capabilityRealizationPkg);
@@ -190,16 +188,16 @@ public class ModelCreationHelper {
 		return null;
 	}
 
-	static public Scenario selectLACapabilityRealizationAndCreateDataFlowScenario(final Project project) {
+	public static Scenario selectLACapabilityRealizationAndCreateDataFlowScenario(final Project project) {
 		AbstractReadWriteCommand cmd = new AbstractReadWriteCommand() {
-			private Scenario _scenario;
+			private Scenario scenario;
 
 			/**
 			 * @see org.polarsys.capella.common.ef.command.AbstractCommand#getAffectedObjects()
 			 */
 			@Override
 			public Collection<?> getAffectedObjects() {
-				return Collections.singletonList(_scenario);
+				return Collections.singletonList(scenario);
 			}
 
 			/**
@@ -208,7 +206,7 @@ public class ModelCreationHelper {
 			public void run() {
 				CapabilityRealization capabilityRealization = selectLACapabilityRealization(project);
 				if (capabilityRealization != null) {
-					_scenario = createScenario(capabilityRealization, ScenarioKind.DATA_FLOW);
+					scenario = createScenario(capabilityRealization, ScenarioKind.DATA_FLOW);
 				}
 			}
 		};
@@ -217,7 +215,7 @@ public class ModelCreationHelper {
 		return (Scenario) cmd.getAffectedObjects().iterator().next();
 	}
 
-	static protected OperationalCapability selectOperationalCapability(Project project) {
+	protected static OperationalCapability selectOperationalCapability(Project project) {
 		OperationalCapabilityPkg operationalCapabilityPkg = ModelQueryHelper.getOperationalCapabilityPkg(project);
 		if (operationalCapabilityPkg != null) {
 			Set<EObject> all = EObjectExt.getAll(operationalCapabilityPkg, OaPackage.Literals.OPERATIONAL_CAPABILITY);
@@ -232,16 +230,16 @@ public class ModelCreationHelper {
 		return null;
 	}
 
-	static public Scenario selectOperationalCapabilityAndCreateInteractionScenario(final Project project) {
+	public static Scenario selectOperationalCapabilityAndCreateInteractionScenario(final Project project) {
 		AbstractReadWriteCommand cmd = new AbstractReadWriteCommand() {
-			private Scenario _scenario;
+			private Scenario scenario;
 
 			/**
 			 * @see org.polarsys.capella.common.ef.command.AbstractCommand#getAffectedObjects()
 			 */
 			@Override
 			public Collection<?> getAffectedObjects() {
-				return Collections.singletonList(_scenario);
+				return Collections.singletonList(scenario);
 			}
 
 			/**
@@ -250,7 +248,7 @@ public class ModelCreationHelper {
 			public void run() {
 				OperationalCapability operationalCapability = selectOperationalCapability(project);
 				if (operationalCapability != null) {
-					_scenario = createScenario(operationalCapability, ScenarioKind.INTERACTION);
+					scenario = createScenario(operationalCapability, ScenarioKind.INTERACTION);
 				}
 			}
 		};
@@ -263,7 +261,7 @@ public class ModelCreationHelper {
 	 * Select an Operation Entity for current project.
 	 * @return <code>null</code> if no Operational Entity Package found.
 	 */
-	static protected Entity selectOperationalEntity(Project project) {
+	protected static Entity selectOperationalEntity(Project project) {
 		EntityPkg operationalEntityPkg = ModelQueryHelper.getOperationalEntityPkg(project);
 		// Precondition.
 		if (null == operationalEntityPkg) {
@@ -285,7 +283,7 @@ public class ModelCreationHelper {
 	 * Select (or create) an operational entity and create a state machine region for it.
 	 * @return <code>null</code> if no Operational Entity is selected.
 	 */
-	static public Region selectOperationalEntityAndCreateStateMachineRegion(final Project project) {
+	public static Region selectOperationalEntityAndCreateStateMachineRegion(final Project project) {
 		final Entity[] operationalEntity = { null };
 		AbstractReadWriteCommand cmd = new AbstractReadWriteCommand() {
 			/**
@@ -302,7 +300,7 @@ public class ModelCreationHelper {
 		return (null != operationalEntity[0]) ? ModelQueryHelper.getStateMachineRegion(operationalEntity[0]) : null;
 	}
 
-	static protected CapabilityRealization selectPACapabilityRealization(Project project) {
+	protected static CapabilityRealization selectPACapabilityRealization(Project project) {
 		CapabilityRealizationPkg capabilityRealizationPkg = ModelQueryHelper.getPACapabilityRealizationPkg(project);
 		if (capabilityRealizationPkg != null) {
 			return selectCapabilityRealization(capabilityRealizationPkg);
@@ -310,16 +308,16 @@ public class ModelCreationHelper {
 		return null;
 	}
 
-	static public Scenario selectPACapabilityRealizationAndCreateDataFlowScenario(final Project project) {
+	public static Scenario selectPACapabilityRealizationAndCreateDataFlowScenario(final Project project) {
 		AbstractReadWriteCommand cmd = new AbstractReadWriteCommand() {
-			private Scenario _scenario;
+			private Scenario scenario;
 
 			/**
 			 * @see org.polarsys.capella.common.ef.command.AbstractCommand#getAffectedObjects()
 			 */
 			@Override
 			public Collection<?> getAffectedObjects() {
-				return Collections.singletonList(_scenario);
+				return Collections.singletonList(scenario);
 			}
 
 			/**
@@ -328,7 +326,7 @@ public class ModelCreationHelper {
 			public void run() {
 				CapabilityRealization capabilityRealization = selectPACapabilityRealization(project);
 				if (capabilityRealization != null) {
-					_scenario = createScenario(capabilityRealization, ScenarioKind.DATA_FLOW);
+					scenario = createScenario(capabilityRealization, ScenarioKind.DATA_FLOW);
 				}
 			}
 		};
@@ -341,7 +339,7 @@ public class ModelCreationHelper {
 	 * Select (or create) an operational entity and create a state machine region for it.
 	 * @return <code>null</code> if no Operational Entity is selected.
 	 */
-	static public Region selectComponentAtSALevelAndCreateStateMachineRegion(final Project project) {
+	public static Region selectComponentAtSALevelAndCreateStateMachineRegion(final Project project) {
 		final Component[] components = { null };
 		AbstractReadWriteCommand cmd = new AbstractReadWriteCommand() {
 			/**
@@ -362,7 +360,7 @@ public class ModelCreationHelper {
 	 * Select (or create) an operational entity and create a state machine region for it.
 	 * @return <code>null</code> if no Operational Entity is selected.
 	 */
-	static public Region selectComponentAtLALevelAndCreateStateMachineRegion(final Project project) {
+	public static Region selectComponentAtLALevelAndCreateStateMachineRegion(final Project project) {
 		final Component[] components = { null };
 		AbstractReadWriteCommand cmd = new AbstractReadWriteCommand() {
 			/**
@@ -383,7 +381,7 @@ public class ModelCreationHelper {
 	 * Select (or create) an operational entity and create a state machine region for it.
 	 * @return <code>null</code> if no Operational Entity is selected.
 	 */
-	static public Region selectComponentAtPALevelAndCreateStateMachineRegion(final Project project) {
+	public static Region selectComponentAtPALevelAndCreateStateMachineRegion(final Project project) {
 		final Component[] components = { null };
 		AbstractReadWriteCommand cmd = new AbstractReadWriteCommand() {
 			/**
@@ -404,7 +402,7 @@ public class ModelCreationHelper {
 	 * Select (or create) an operational entity and create a state machine region for it.
 	 * @return <code>null</code> if no Operational Entity is selected.
 	 */
-	static public Region selectComponentAtAPBSLevelAndCreateStateMachineRegion(final Project project) {
+	public static Region selectComponentAtAPBSLevelAndCreateStateMachineRegion(final Project project) {
 		final Component[] components = { null };
 		AbstractReadWriteCommand cmd = new AbstractReadWriteCommand() {
 			/**
@@ -425,8 +423,8 @@ public class ModelCreationHelper {
 	 * Select a System or any Actor for current project.
 	 * @return <code>null</code> if no SystemAnlysis Package found.
 	 */
-	static protected Component selectComponentAtSaLevel(Project project) {
-		List<Component> components = new ArrayList<Component>(0);
+	protected static Component selectComponentAtSaLevel(Project project) {
+		List<Component> components = new ArrayList<>(0);
 		// add System
 		System system = ModelQueryHelper.getSystem(project);
 		if (null != system) {
@@ -459,8 +457,8 @@ public class ModelCreationHelper {
 	 * Select a Logical component or Logical Actor for current project.
 	 * @return <code>null</code> if no LogicalArchitecture Package found.
 	 */
-	static protected Component selectComponentAtLaLevel(Project project) {
-		List<Component> components = new ArrayList<Component>(0);
+	protected static Component selectComponentAtLaLevel(Project project) {
+		List<Component> components = new ArrayList<>(0);
 		// add All Logical Components
 		SystemEngineering systemEngineering = ModelQueryHelper.getSystemEngineering(project);
 		if (null != systemEngineering) {
@@ -496,8 +494,8 @@ public class ModelCreationHelper {
 	 * Select a Physical component or Physical Actor for current project.
 	 * @return <code>null</code> if no PhysicalArchitecture Package found.
 	 */
-	static protected Component selectComponentAtPaLevel(Project project) {
-		List<Component> components = new ArrayList<Component>(0);
+	protected static Component selectComponentAtPaLevel(Project project) {
+		List<Component> components = new ArrayList<>(0);
 		// add All Physical Components
 		SystemEngineering systemEngineering = ModelQueryHelper.getSystemEngineering(project);
 		if (null != systemEngineering) {
@@ -530,8 +528,8 @@ public class ModelCreationHelper {
 	 * Select a ConfiguraitonItem for current project.
 	 * @return <code>null</code> if no EPBSArchitecture Package found.
 	 */
-	static protected Component selectComponentAtEPBSLevel(Project project) {
-		List<Component> components = new ArrayList<Component>(0);
+	protected static Component selectComponentAtEPBSLevel(Project project) {
+		List<Component> components = new ArrayList<>(0);
 		// add All Configuration Items
 		SystemEngineering systemEngineering = ModelQueryHelper.getSystemEngineering(project);
 		if (null != systemEngineering) {

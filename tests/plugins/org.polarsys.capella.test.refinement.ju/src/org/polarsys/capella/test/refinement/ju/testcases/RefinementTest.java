@@ -95,14 +95,6 @@ public abstract class RefinementTest extends BasicTestCase {
     setObjects();
   }
 
-  @Override
-  protected void tearDown() throws Exception {
-    super.tearDown();
-    // Do some clean up to avoid memory leaks
-    _semanticObjectMap.clear();
-    _semanticObjectMap = null;
-  }
-
   /**
    * @param refinedScenario
    * @param referenceScenario

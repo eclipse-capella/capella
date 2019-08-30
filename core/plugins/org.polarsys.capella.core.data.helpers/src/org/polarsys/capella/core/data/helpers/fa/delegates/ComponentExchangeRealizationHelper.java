@@ -50,14 +50,14 @@ public class ComponentExchangeRealizationHelper {
 
 	protected ComponentExchange getAllocatingComponentExchange(ComponentExchangeRealization element) {
 		TraceableElement ret = element.getSourceElement();
-		if(null != ret && ret instanceof ComponentExchange)
+		if(ret instanceof ComponentExchange)
 			return (ComponentExchange) ret;
 		return null;
 	}
 
 	protected ComponentExchange getAllocatedComponentExchange(ComponentExchangeRealization element) {
 		TraceableElement ret = element.getTargetElement();
-		if(null != ret && ret instanceof ComponentExchange)
+		if(ret instanceof ComponentExchange)
 			return (ComponentExchange) ret;
 		return null;
 	}

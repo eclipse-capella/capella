@@ -214,6 +214,7 @@ public interface AbstractActivity extends AbstractBehavior, TraceableElement {
 	 * @return the value of the '<em>Owned Structured Nodes</em>' reference list.
 	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getAbstractActivity_OwnedStructuredNodes()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedGroups'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Nodes coordinated by the activity\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

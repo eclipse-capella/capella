@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.common.ju.step.tools;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
@@ -17,31 +18,42 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.stream.Collectors;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.polarsys.capella.common.helpers.EObjectExt;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.sirius.analysis.actions.extensions.AbstractExternalJavaAction;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.headless.HeadlessResultOpProvider;
 import org.polarsys.capella.test.diagram.common.ju.headless.IHeadlessResult;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
+import org.polarsys.capella.test.framework.context.SessionContext;
 
 public class InsertRemoveTool extends AbstractToolStep {
 
-  boolean initialized = false;
+  protected boolean initialized = false;
 
-  boolean insertAll = false;
+  protected boolean insertAll = false;
 
-  boolean removeAll = false;
+  protected boolean removeAll = false;
 
-  boolean autoRefresh = true;
+  protected boolean autoRefresh = true;
 
-  String containerId;
+  protected String containerId;
   protected String[] toInsert;
   protected String[] toRemove;
   protected String[] insertedElements;
   protected String[] removedElements;
+  protected EReference[] insertedReferencedElementsFeatures;
+  protected EReference[] removedReferencedElementsFeatures;
+  protected EReference[] insertedReferencingElementsFeatures;
+  protected EReference[] removedReferencingElementsFeatures;
 
   public InsertRemoveTool(DiagramContext context, String toolName) {
     this(context, toolName, context.getDiagramId());
@@ -130,12 +142,22 @@ public class InsertRemoveTool extends AbstractToolStep {
     run();
   }
 
+  protected void checkPreconditions() {
+    for (String identifier : insertedElements) {
+      getDiagramContext().hasntView(identifier);
+    }
+    for (String identifier : removedElements) {
+      getDiagramContext().hasView(identifier);
+    }
+  }
+
   /**
    * @see org.polarsys.capella.test.diagram.common.ju.steps.AbstractExecuteToolCmdStep.tool.AbstractExecuteToolCmdTest#preTestRun()
    */
   @Override
   protected void preRunTest() {
     HeadlessResultOpProvider.INSTANCE.setCurrentOp(createOperation());
+    checkPreconditions();
     super.preRunTest();
   }
 
@@ -150,17 +172,18 @@ public class InsertRemoveTool extends AbstractToolStep {
       public Object getResult(java.util.Collection<? extends EObject> selections, Map<String, Object> parameters) {
         if (insertAll) {
           return AbstractExternalJavaAction.getScope(parameters);
-
         } else if (removeAll) {
           return Collections.emptyList();
         }
 
         Collection<EObject> objects = new HashSet<EObject>();
-        DiagramContext context = getExecutionContext();
+        DiagramContext context = getDiagramContext();
+        SessionContext sessionContext = context.getSessionContext();
+
         Collection<EObject> inserted = context.adaptTool(InsertRemoveTool.this, parameters,
-            context.getSemanticElements(insertedElements));
+            sessionContext.getSemanticElements(insertedElements));
         Collection<EObject> removed = context.adaptTool(InsertRemoveTool.this, parameters,
-            context.getSemanticElements(removedElements));
+            sessionContext.getSemanticElements(removedElements));
         objects.addAll(AbstractExternalJavaAction.getInitialSelection(parameters));
         objects.addAll(inserted);
         objects.removeAll(removed);
@@ -175,7 +198,7 @@ public class InsertRemoveTool extends AbstractToolStep {
    */
   @Override
   protected void initToolArguments() {
-    DSemanticDecorator containerView = getExecutionContext().getView(this.containerId);
+    DSemanticDecorator containerView = getDiagramContext().getView(this.containerId);
     _toolWrapper.setArgumentValue(ArgumentType.CONTAINER, containerView.getTarget());
     _toolWrapper.setArgumentValue(ArgumentType.CONTAINER_VIEW, containerView);
   }
@@ -188,19 +211,94 @@ public class InsertRemoveTool extends AbstractToolStep {
   protected void postRunTest() {
     super.postRunTest();
     if (autoRefresh)
-      DiagramHelper.refreshDiagram(getExecutionContext().getDiagram());
+      DiagramHelper.refreshDiagram(getDiagramContext().getDiagram());
+
+    checkPostconditions();
 
     for (String identifier : insertedElements) {
-      getExecutionContext().hasView(identifier);
+      getDiagramContext().hasView(identifier);
     }
     for (String identifier : removedElements) {
-      getExecutionContext().hasntView(identifier);
+      getDiagramContext().hasntView(identifier);
     }
+  }
+
+  protected void checkPostconditions() {
+    initializeFeatures();
+
+    if (insertedElements.length > 0) {
+      if (insertedReferencedElementsFeatures != null) {
+        insertedElements = applyReferencedFeatures(insertedReferencedElementsFeatures, insertedElements);
+      } else if (insertedReferencingElementsFeatures != null) {
+        insertedElements = applyReferencingFeatures(insertedReferencingElementsFeatures, insertedElements);
+      }
+    }
+
+    if (removedElements.length > 0) {
+      if (removedReferencedElementsFeatures != null) {
+        removedElements = applyReferencedFeatures(removedReferencedElementsFeatures, removedElements);
+      } else if (removedReferencingElementsFeatures != null) {
+        removedElements = applyReferencingFeatures(removedReferencingElementsFeatures, removedElements);
+      }
+    }
+  }
+
+  protected String[] applyReferencedFeatures(EReference[] features, String... elements) {
+    // apply feature in chain: (obj.eGet(feature1)).eGet(feature2)
+    for (EReference feature : features) {
+      elements = getReferencedElements(feature, elements);
+    }
+    return elements;
+  }
+
+  protected String[] applyReferencingFeatures(EReference[] features, String... elements) {
+    // apply feature in chain: (obj.eGet(feature1)).eGet(feature2)
+    for (EReference feature : features) {
+      elements = getReferencingElements(feature, elements);
+    }
+    return elements;
+  }
+
+  @SuppressWarnings("unchecked")
+  protected String[] getReferencedElements(EReference feature, String... elements) {
+    Collection<CapellaElement> objs = new HashSet<CapellaElement>();
+    for (String element : elements) {
+      EObject obj = getExecutionContext().getSemanticElement(element);
+      Object object = obj.eGet(feature);
+      if (object instanceof EList) {
+        objs.addAll((EList<CapellaElement>) object);
+      } else if (object instanceof CapellaElement) {
+        objs.add(((CapellaElement) object));
+      }
+    }
+    return filterResults(objs);
+  }
+
+  @SuppressWarnings("unchecked")
+  protected String[] getReferencingElements(EReference feature, String... elements) {
+    Collection<CapellaElement> objs = new HashSet<CapellaElement>();
+    for (String element : elements) {
+      objs.addAll((Collection<? extends CapellaElement>) EObjectExt
+          .getReferencers(getExecutionContext().getSemanticElement(element), feature).stream()
+          .collect(Collectors.toList()));
+    }
+    return filterResults(objs);
+  }
+
+  protected String[] filterResults(Collection<CapellaElement> objs) {
+    DRepresentationDescriptor cRDescriptor = getDiagramContext().getDiagramDescriptor();
+    String[] results = objs.stream().filter(x -> x.eContainer() == cRDescriptor.getTarget()).map(x -> x.getId())
+        .toArray(size -> new String[size]);
+
+    assertTrue(results.length > 0);
+    return results;
+  }
+
+  protected void initializeFeatures() {
   }
 
   @Override
   public Object getResult() {
     return null;
   }
-
 }

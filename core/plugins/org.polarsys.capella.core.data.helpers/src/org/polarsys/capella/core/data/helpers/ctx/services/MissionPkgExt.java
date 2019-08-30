@@ -27,8 +27,8 @@ public class MissionPkgExt {
    * @param missionPkg the missionPkg
    * @return list of missions
    */
-  static public List<Mission> getAllMissions(MissionPkg missionPkg) {
-    List<Mission> list = new ArrayList<Mission>(1);
+  public static List<Mission> getAllMissions(MissionPkg missionPkg) {
+    List<Mission> list = new ArrayList<>(1);
     if (null != missionPkg) {
       list.addAll(missionPkg.getOwnedMissions());
       for (MissionPkg subPkg : missionPkg.getOwnedMissionPkgs()) {

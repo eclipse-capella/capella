@@ -67,7 +67,7 @@ public class LogicalComponentHelper {
   }
 
   protected List<SystemRealization> getSystemRealizations(LogicalComponent element) {
-    List<SystemRealization> ret = new ArrayList<SystemRealization>();
+    List<SystemRealization> ret = new ArrayList<>();
     for (ComponentAllocation componentAllocation : element.getProvisionedComponentAllocations()) {
       if (componentAllocation instanceof SystemRealization) {
         ret.add((SystemRealization) componentAllocation);
@@ -77,7 +77,7 @@ public class LogicalComponentHelper {
   }
 
   protected List<LogicalComponent> getSubLogicalComponents(LogicalComponent element) {
-    List<LogicalComponent> ret = new ArrayList<LogicalComponent>();
+    List<LogicalComponent> ret = new ArrayList<>();
     for (Partition thePartition : element.getOwnedPartitions()) {
       Type representedElement = thePartition.getType();
       if (representedElement instanceof LogicalComponent) {
@@ -88,7 +88,7 @@ public class LogicalComponentHelper {
   }
 
   protected List<LogicalFunction> getAllocatedLogicalFunctions(LogicalComponent element) {
-    List<LogicalFunction> ret = new ArrayList<LogicalFunction>();
+    List<LogicalFunction> ret = new ArrayList<>();
     for (AbstractFunction function : element.getAllocatedFunctions()) {
       if (function instanceof LogicalFunction) {
         ret.add((LogicalFunction) function);
@@ -98,7 +98,7 @@ public class LogicalComponentHelper {
   }
 
   protected List<PhysicalComponent> getRealizingPhysicalComponents(LogicalComponent element) {
-    List<PhysicalComponent> ret = new ArrayList<PhysicalComponent>();
+    List<PhysicalComponent> ret = new ArrayList<>();
     for (Component cpnt : element.getAllocatingComponents()) {
       if (cpnt instanceof PhysicalComponent) {
         ret.add((PhysicalComponent) cpnt);
@@ -108,7 +108,7 @@ public class LogicalComponentHelper {
   }
 
   protected List<System> getRealizedSystems(LogicalComponent element) {
-    List<System> ret = new ArrayList<System>();
+    List<System> ret = new ArrayList<>();
     for (Component cpnt : element.getAllocatedComponents()) {
       if (cpnt instanceof System) {
         ret.add((System) cpnt);

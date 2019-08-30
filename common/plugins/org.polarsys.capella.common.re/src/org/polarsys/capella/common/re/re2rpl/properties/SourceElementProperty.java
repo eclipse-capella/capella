@@ -16,7 +16,6 @@ import java.util.HashSet;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.common.flexibility.properties.property.AbstractProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.ICompoundProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IEditableProperty;
@@ -82,7 +81,10 @@ public class SourceElementProperty extends AbstractProperty implements IEditable
    */
   @Override
   public IStatus validate(Object newValue, IPropertyContext context) {
-    if ((newValue instanceof Collection) && ((Collection) newValue).isEmpty()) {
+    CatalogElement element = (CatalogElement) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
+    if (element == null || element.eIsProxy()) {
+      return new Status(IStatus.ERROR, getId(), "Your RPL is invalid (no REC), please validate your model.");
+    } else if ((newValue instanceof Collection) && ((Collection) newValue).isEmpty()) {
       return new Status(IStatus.ERROR, getId(), "Scope should not be empty");
     }
     return Status.OK_STATUS;

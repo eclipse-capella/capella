@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.sequencediag.specific;singleton:=true
-Bundle-Version: 1.2.2.qualifier
+Bundle-Version: 1.3.1.qualifier
 Bundle-Activator: org.polarsys.capella.core.sequencediag.specific.SequenceDiagramActivator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.ui,
@@ -19,7 +19,7 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.common.ui.services,
  org.polarsys.capella.core.data.interaction.properties,
  org.eclipse.sirius.diagram.ui
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: org.eclipse.gmf.runtime.diagram.ui.services.editpolicy
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

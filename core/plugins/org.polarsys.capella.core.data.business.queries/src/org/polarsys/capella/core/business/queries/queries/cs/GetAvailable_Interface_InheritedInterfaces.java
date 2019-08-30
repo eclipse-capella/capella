@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,8 +28,8 @@ import org.polarsys.capella.core.data.cs.InterfacePkg;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.InterfaceExt;
 import org.polarsys.capella.core.model.helpers.InterfacePkgExt;
+import org.polarsys.capella.core.model.helpers.queries.filters.RemoveIndirectSuperTypesFilter;
 import org.polarsys.capella.core.model.helpers.queries.filters.RemoveSubTypesFilter;
-import org.polarsys.capella.core.model.helpers.queries.filters.RemoveSuperTypesFilter;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 import org.polarsys.capella.core.model.utils.ListExt;
 
@@ -48,7 +48,8 @@ import org.polarsys.capella.core.model.utils.ListExt;
  * All the Interfaces contained by the Shared Package (and all of its sub-packages).
  * </p>
  * <p>
- * Except the current Interface itself and interfaces in the inheritance hierarchy of the current Interface
+ * Except the current Interface itself,  Interfaces that specialize the current interface,
+ * and Interfaces that are indirect generalizations of the current Interface.
  * </p>
  * <p>
  * Refer MQRY_Interface_Inherited_1
@@ -88,7 +89,7 @@ public class GetAvailable_Interface_InheritedInterfaces extends AbstractQuery {
       }
       availableElements = ListExt.removeDuplicates(availableElements);
       availableElements.remove(inputElement);
-      MultiFilter filter = new MultiFilter(new IQueryFilter[] { new RemoveSubTypesFilter(currentInterface), new RemoveSuperTypesFilter(currentInterface) });
+      MultiFilter filter = new MultiFilter(new IQueryFilter[] { new RemoveSubTypesFilter(currentInterface), new RemoveIndirectSuperTypesFilter(currentInterface) });
       availableElements = QueryInterpretor.executeFilter(availableElements, filter);
     }
     return (List) availableElements;

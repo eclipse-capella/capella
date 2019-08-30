@@ -527,3 +527,15 @@ These followings icons are made available under the terms of the Eclipse Public 
 /icons/full/obj16/ActorLogicalFunction.gif - org.polarsys.capella.core.sirius.analysis - org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ActorLogicalFunction.gif
 /icons/full/obj16/ActorPhysicalFunction.gif - org.polarsys.capella.core.sirius.analysis - org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ActorPhysicalFunction.gif
 /icons/full/obj16/AddInstanceRole.gif - org.polarsys.capella.core.sirius.analysis - org.polarsys.capella.core.sirius.analysis/icons/full/obj16/AddInstanceRole.gif
+/icons/full/obj16/ControlNode_And.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/ControlNode_And.gif
+/icons/full/obj16/ControlNode_Iterate.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/ControlNode_Iterate.gif
+/icons/full/obj16/ControlNode_Ore.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/ControlNode_Ore.gif
+/icons/full/obj16/ControlNode.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/ControlNode.gif
+/icons/full/obj16/FunctionalChainInvolvementFunction_OA.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/FunctionalChainInvolvementFunction_OA.gif
+/icons/full/obj16/FunctionalChainInvolvementFunction.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/FunctionalChainInvolvementFunction.gif
+/icons/full/obj16/FunctionalChainInvolvementLink_OA.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/FunctionalChainInvolvementLink_OA.gif
+/icons/full/obj16/FunctionalChainInvolvementLink.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/FunctionalChainInvolvementLink.gif
+/icons/full/obj16/FunctionalChainReference_OA.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/FunctionalChainReference_OA.gif
+/icons/full/obj16/FunctionalChainInvolvementLink_AndFunction.gif - org.polarsys.capella.core.sirius.analysis - org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLink_AndFunction.gif
+/icons/full/obj16/FunctionalChainInvolvementLinkOA_AndFunction.gif - org.polarsys.capella.core.sirius.analysis - org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_AndFunction.gif
+/icons/full/obj16/SequenceLink.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/SequenceLink.gif

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,6 @@ import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.context.CapabilityDiagram;
 import org.polarsys.capella.test.diagram.tools.ju.model.EmptyProject;
 import org.polarsys.capella.test.framework.context.SessionContext;
-import org.polarsys.capella.test.framework.model.GenericModel;
 
 /*
  * Test case: Hiding Operational Entity should not hide other Operational Actors
@@ -29,11 +28,12 @@ public class OCBHideEntityTestCase extends EmptyProject {
 
     CapabilityDiagram diagram = CapabilityDiagram.createDiagram(context, OA__OPERATIONAL_CAPABILITIES,
         IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME);
-    
-    diagram.createActor(GenericModel.ACTOR_1);
-    diagram.createComponent(GenericModel.ENTITY_1);
-    diagram.removeComponent(GenericModel.ENTITY_1);
-    diagram.hasView(GenericModel.ACTOR_1);
+
+    String actor1 = diagram.createActor();
+    String entity1 = diagram.createComponent();
+    diagram.removeComponent(entity1);
+    diagram.insertComponent(entity1);
+    diagram.hasView(actor1);
   }
 
 }

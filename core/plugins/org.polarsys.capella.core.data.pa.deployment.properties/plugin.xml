@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -16,7 +16,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.pa.deployment.properties.sections.ComponentInstanceSection"
                id="org.polarsys.capella.core.data.pa.deployment.properties.sections.ComponentInstanceSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.pa.deployment.ComponentInstance">
             </input>
@@ -24,7 +24,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.pa.deployment.properties.sections.ConnectionInstanceSection"
                id="org.polarsys.capella.core.data.pa.deployment.properties.sections.ConnectionInstanceSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.pa.deployment.ConnectionInstance">
             </input>
@@ -32,7 +32,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentAspectSection"
                id="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentAspectSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.pa.deployment.DeploymentAspect">
             </input>
@@ -40,7 +40,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentConfigurationSection"
                id="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentConfigurationSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.pa.deployment.DeploymentConfiguration">
             </input>
@@ -48,7 +48,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.pa.deployment.properties.sections.InstanceDeploymentLinkSection"
                id="org.polarsys.capella.core.data.pa.deployment.properties.sections.InstanceDeploymentLinkSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.pa.deployment.InstanceDeploymentLink">
             </input>
@@ -56,7 +56,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.pa.deployment.properties.sections.PartDeploymentLinkSection"
                id="org.polarsys.capella.core.data.pa.deployment.properties.sections.PartDeploymentLinkSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink">
             </input>
@@ -64,7 +64,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.pa.deployment.properties.sections.PortInstanceSection"
                id="org.polarsys.capella.core.data.pa.deployment.properties.sections.PortInstanceSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.pa.deployment.PortInstance">
             </input>
@@ -72,7 +72,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.pa.deployment.properties.sections.TypeDeploymentLinkSection"
                id="org.polarsys.capella.core.data.pa.deployment.properties.sections.TypeDeploymentLinkSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.pa.deployment.TypeDeploymentLink">
             </input>
@@ -85,49 +85,49 @@
                class="org.polarsys.capella.core.data.pa.deployment.properties.sections.ComponentInstanceSection"
                filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.ComponentInstanceSection"
                id="org.polarsys.capella.core.data.pa.deployment.properties.sections.ComponentInstanceSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.pa.deployment.properties.sections.ConnectionInstanceSection"
                filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.ConnectionInstanceSection"
                id="org.polarsys.capella.core.data.pa.deployment.properties.sections.ConnectionInstanceSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentAspectSection"
                filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentAspectSection"
                id="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentAspectSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentConfigurationSection"
                filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentConfigurationSection"
                id="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentConfigurationSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.pa.deployment.properties.sections.InstanceDeploymentLinkSection"
                filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.InstanceDeploymentLinkSection"
                id="org.polarsys.capella.core.data.pa.deployment.properties.sections.InstanceDeploymentLinkSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.pa.deployment.properties.sections.PartDeploymentLinkSection"
                filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.PartDeploymentLinkSection"
                id="org.polarsys.capella.core.data.pa.deployment.properties.sections.PartDeploymentLinkSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.pa.deployment.properties.sections.PortInstanceSection"
                filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.PortInstanceSection"
                id="org.polarsys.capella.core.data.pa.deployment.properties.sections.PortInstanceSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.pa.deployment.properties.sections.TypeDeploymentLinkSection"
                filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.TypeDeploymentLinkSection"
                id="org.polarsys.capella.core.data.pa.deployment.properties.sections.TypeDeploymentLinkSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
       </propertySections>
    </extension>
@@ -137,49 +137,49 @@
                class="org.polarsys.capella.core.data.pa.deployment.properties.sections.ComponentInstanceSection"
                filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.ComponentInstanceSection"
                id="org.polarsys.capella.core.data.pa.deployment.properties.sections.ComponentInstanceSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.pa.deployment.properties.sections.ConnectionInstanceSection"
                filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.ConnectionInstanceSection"
                id="org.polarsys.capella.core.data.pa.deployment.properties.sections.ConnectionInstanceSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentAspectSection"
                filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentAspectSection"
                id="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentAspectSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentConfigurationSection"
                filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentConfigurationSection"
                id="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentConfigurationSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.pa.deployment.properties.sections.InstanceDeploymentLinkSection"
                filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.InstanceDeploymentLinkSection"
                id="org.polarsys.capella.core.data.pa.deployment.properties.sections.InstanceDeploymentLinkSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.pa.deployment.properties.sections.PartDeploymentLinkSection"
                filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.PartDeploymentLinkSection"
                id="org.polarsys.capella.core.data.pa.deployment.properties.sections.PartDeploymentLinkSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.pa.deployment.properties.sections.PortInstanceSection"
                filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.PortInstanceSection"
                id="org.polarsys.capella.core.data.pa.deployment.properties.sections.PortInstanceSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.pa.deployment.properties.sections.TypeDeploymentLinkSection"
                filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.TypeDeploymentLinkSection"
                id="org.polarsys.capella.core.data.pa.deployment.properties.sections.TypeDeploymentLinkSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
       </propertySections>
    </extension>

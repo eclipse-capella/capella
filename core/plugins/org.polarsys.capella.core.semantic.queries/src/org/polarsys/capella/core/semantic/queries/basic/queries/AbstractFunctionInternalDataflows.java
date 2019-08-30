@@ -10,18 +10,18 @@
  *******************************************************************************/
 package org.polarsys.capella.core.semantic.queries.basic.queries;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.data.activity.ActivityNode;
+import org.polarsys.capella.common.helpers.query.IQuery;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FunctionPort;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
-import org.polarsys.capella.common.data.activity.ActivityNode;
-import org.polarsys.capella.common.helpers.query.IQuery;
-
 /**
  * 
  * Return all the outGoing Functional Exchanges whose target is not 
@@ -42,11 +42,11 @@ public abstract class AbstractFunctionInternalDataflows implements IQuery {
    */
   public List<Object> compute(Object object) {
 
-    List<Object> result = new ArrayList<Object>();
+    List<Object> result = new ArrayList<>();
     if (object instanceof AbstractFunction) {
       AbstractFunction currentFunction = (AbstractFunction) object;
       // collect all the sub functions recursively 
-      List<AbstractFunction> subfunctions = FunctionExt.getAllAbstractFunctions(currentFunction);
+      List<AbstractFunction> subfunctions = new ArrayList<>(getCache(FunctionExt::getAllAbstractFunctions, currentFunction));
       // remove the current function
       subfunctions.remove(currentFunction);
       for (AbstractFunction subfunction : subfunctions) {
@@ -56,7 +56,7 @@ public abstract class AbstractFunctionInternalDataflows implements IQuery {
           for (ActivityNode target : activityNodes) {
             // info : here the target could be function port or abstract function
             // if target is function port
-            if (null != target && target instanceof FunctionPort) {
+            if (target instanceof FunctionPort) {
               EObject container = target.eContainer();
               if (null != container) {
                 // if the target container is not the current function and not one of the subFunctions(all recursive)
@@ -66,7 +66,7 @@ public abstract class AbstractFunctionInternalDataflows implements IQuery {
               }
             }
             // if target is abstract function
-            else if (null != target && target instanceof AbstractFunction) {
+            else if (target instanceof AbstractFunction) {
               if ((!subfunctions.contains(target)) && (target != currentFunction)) {
                 result.add(functionalExchange);
               }

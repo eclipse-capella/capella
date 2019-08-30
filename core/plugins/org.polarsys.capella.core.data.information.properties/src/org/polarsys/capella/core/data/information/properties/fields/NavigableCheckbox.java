@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -52,9 +52,9 @@ public class NavigableCheckbox extends AbstractSemanticCheckboxGroup {
   public void loadData(EObject property) {
     loadData(property, null);
 
-    EObject assoc = _semanticElement.eContainer();
+    EObject assoc = semanticElement.eContainer();
     if (assoc instanceof Classifier) {
-      List<EObject> lst = EObjectExt.getReferencers(_semanticElement, InformationPackage.Literals.ASSOCIATION, InformationPackage.Literals.ASSOCIATION__NAVIGABLE_MEMBERS);
+      List<EObject> lst = EObjectExt.getReferencers(semanticElement, InformationPackage.Literals.ASSOCIATION, InformationPackage.Literals.ASSOCIATION__NAVIGABLE_MEMBERS);
       if (!lst.isEmpty()) {
         assoc = lst.get(0);
       }
@@ -62,7 +62,7 @@ public class NavigableCheckbox extends AbstractSemanticCheckboxGroup {
 
     if (null != assoc) {
       List<?> lst = (List<?>) assoc.eGet(InformationPackage.eINSTANCE.getAssociation_NavigableMembers());
-      _isNavigableBtn.setSelection(lst.contains(_semanticElement));
+      _isNavigableBtn.setSelection(lst.contains(semanticElement));
     }
   }
 
@@ -71,31 +71,31 @@ public class NavigableCheckbox extends AbstractSemanticCheckboxGroup {
    */
   @Override
   public void widgetSelected(SelectionEvent event) {
-    EObject ownerElement = _semanticElement.eContainer();
-    EObject typeElement = (EObject) _semanticElement.eGet(ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE);
+    EObject ownerElement = semanticElement.eContainer();
+    EObject typeElement = (EObject) semanticElement.eGet(ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE);
 
     if (_isNavigableBtn.getSelection()) {
       if ((ownerElement instanceof Association) && (typeElement instanceof Classifier)) {
-        Property oppositeMember = getOppositeMember((Association) ownerElement, (Property) _semanticElement);
+        Property oppositeMember = getOppositeMember((Association) ownerElement, (Property) semanticElement);
         if (oppositeMember != null) {
           EObject oppositeTypeElement = (EObject) oppositeMember.eGet(ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE);
           if (oppositeTypeElement != null) {
-            moveDataValue(_semanticElement, oppositeTypeElement, CapellacorePackage.Literals.CLASSIFIER__OWNED_FEATURES);
-            addDataValue(ownerElement, InformationPackage.Literals.ASSOCIATION__NAVIGABLE_MEMBERS, _semanticElement);
+            moveDataValue(semanticElement, oppositeTypeElement, CapellacorePackage.Literals.CLASSIFIER__OWNED_FEATURES);
+            addDataValue(ownerElement, InformationPackage.Literals.ASSOCIATION__NAVIGABLE_MEMBERS, semanticElement);
           }
         }
       }
     }
     else {
       EObject referencerElement = null;
-      List<EObject> lst = EObjectExt.getReferencers(_semanticElement, InformationPackage.Literals.ASSOCIATION, InformationPackage.Literals.ASSOCIATION__NAVIGABLE_MEMBERS);
+      List<EObject> lst = EObjectExt.getReferencers(semanticElement, InformationPackage.Literals.ASSOCIATION, InformationPackage.Literals.ASSOCIATION__NAVIGABLE_MEMBERS);
       if (!lst.isEmpty()) {
         referencerElement = lst.get(0);
       }
 
       if ((typeElement instanceof Classifier) && (referencerElement instanceof Association)) {
-        moveDataValue(_semanticElement, referencerElement, InformationPackage.Literals.ASSOCIATION__OWNED_MEMBERS);
-        removeDataValue(referencerElement, InformationPackage.Literals.ASSOCIATION__NAVIGABLE_MEMBERS, _semanticElement);
+        moveDataValue(semanticElement, referencerElement, InformationPackage.Literals.ASSOCIATION__OWNED_MEMBERS);
+        removeDataValue(referencerElement, InformationPackage.Literals.ASSOCIATION__NAVIGABLE_MEMBERS, semanticElement);
       }
     }
   }
@@ -106,7 +106,7 @@ public class NavigableCheckbox extends AbstractSemanticCheckboxGroup {
    * @return
    */
   private Property getOppositeMember(Association association, Property member) {
-    List<Property> members = new ArrayList<Property>();
+    List<Property> members = new ArrayList<>();
     members.addAll(association.getOwnedMembers());
     members.addAll(association.getNavigableMembers());
     members.remove(member);
@@ -118,7 +118,7 @@ public class NavigableCheckbox extends AbstractSemanticCheckboxGroup {
    */
   @Override
   public List<Button> getSemanticFields() {
-    List<Button> fields = new ArrayList<Button>();
+    List<Button> fields = new ArrayList<>();
 
     fields.add(_isNavigableBtn);
 

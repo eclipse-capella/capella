@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,6 +31,7 @@ import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
@@ -120,8 +121,8 @@ public class DiagramDescriptionHelper implements IDiagramHandler {
   }
 
   @Override
-  public boolean covers(IContext context_p, DRepresentation representation_p) {
-    RepresentationDescription description = DiagramHelper.getService().getDescription(representation_p);
+  public boolean covers(IContext context_p, DRepresentationDescriptor representation_p) {
+    RepresentationDescription description = representation_p.getDescription();
     IDiagramHandler handler = getHandler(context_p, description);
     if (handler != null) {
       return handler.covers(context_p, representation_p);
@@ -129,8 +130,8 @@ public class DiagramDescriptionHelper implements IDiagramHandler {
     return false;
   }
 
-  public boolean backCovers(IContext context_p, DRepresentation representation_p) {
-    RepresentationDescription description = DiagramHelper.getService().getDescription(representation_p);
+  public boolean backCovers(IContext context_p, DRepresentationDescriptor representation_p) {
+    RepresentationDescription description = representation_p.getDescription();
     IDiagramHandler handler = getHandler(context_p, description);
     if (handler != null) {
       return handler.backCovers(context_p, representation_p);

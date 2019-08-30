@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,10 +43,10 @@ public final class GmfUtil {
    * to belong to the same diagram.
    * @return the lowest Node or Diagram that transitively contains all views
    */
-  public static View getCommonViewAncestor(Collection<? extends View> views_p) {
-    if (views_p == null || views_p.isEmpty()) return null;
+  public static View getCommonViewAncestor(Collection<? extends View> views) {
+    if (views == null || views.isEmpty()) return null;
     List<Node> commonHierarchy = null;
-    for (View view : views_p) {
+    for (View view : views) {
       if (view instanceof Diagram)
         return view; // Diagram is among the Views: return it
       if (view instanceof Node) {
@@ -58,13 +58,16 @@ public final class GmfUtil {
           commonHierarchy.retainAll(currentHierarchy);
       }
     }
-    // Exclude the given views
-    commonHierarchy.removeAll(views_p);
-    // No common Node ancestor: take Diagram
-    if (commonHierarchy.isEmpty())
-      return views_p.iterator().next().getDiagram();
-    // Take lowest ancestor in common hierarchy
-    return commonHierarchy.get(commonHierarchy.size()-1);
+    if(commonHierarchy != null) {
+    	// Exclude the given views
+    	commonHierarchy.removeAll(views);
+    	// No common Node ancestor: take Diagram
+    	if (commonHierarchy.isEmpty())
+    		return views.iterator().next().getDiagram();
+    	// Take lowest ancestor in common hierarchy
+    	return commonHierarchy.get(commonHierarchy.size()-1);    	
+    }
+    return null;
   }
 
   /**
@@ -74,7 +77,7 @@ public final class GmfUtil {
    */
   private static <T extends EObject> List<T> getSimilarContainers(
       T element_p, Class<T> higherType_p) {
-    if (element_p == null) return new ArrayList<T>();
+    if (element_p == null) return new ArrayList<>();
     EObject container = element_p.eContainer();
     if (higherType_p.isInstance(container)) {
       // container conforms to the given type: recursively proceed
@@ -84,7 +87,7 @@ public final class GmfUtil {
       return result;
     }
     // element not null and its container does not conform to the given type
-    List<T> result = new ArrayList<T>(1);
+    List<T> result = new ArrayList<>(1);
     result.add(element_p);
     return result;
   }
@@ -113,9 +116,9 @@ public final class GmfUtil {
   /**
    * Return the location of a node relative to its container
    */
-  public static Point getRelativeLocation(Node node_p) {
+  public static Point getRelativeLocation(Node node) {
     Point result = null;
-    LayoutConstraint layout = node_p.getLayoutConstraint();
+    LayoutConstraint layout = node.getLayoutConstraint();
     if (layout instanceof Location) {
       Location location = (Location)layout;
       result = new Point(location.getX(), location.getY());
@@ -126,10 +129,10 @@ public final class GmfUtil {
   /**
    * Return the location of a node relative to its diagram
    */
-  public static Point getAbsoluteLocation(Node node_p) {
+  public static Point getAbsoluteLocation(Node node) {
     Point result = null;
-    EObject container = node_p.eContainer();
-    Point relative = GmfUtil.getRelativeLocation(node_p);
+    EObject container = node.eContainer();
+    Point relative = GmfUtil.getRelativeLocation(node);
     if (container instanceof Diagram) {
       result = relative;
     } else if (container instanceof Node) {
@@ -146,27 +149,41 @@ public final class GmfUtil {
    * Converts a Point in absolute (Display-relative) coordinates to coordinates
    * relative to the underlying Draw2D IFigure
    */
-  public static Point getEditPartRelativeLocation(Point location_p,
-      GraphicalEditPart editPart_p) {
-    Point editPartLocation = getAbsoluteLocation(editPart_p);
-    Point result = new Point(
-        location_p.x - editPartLocation.x,
-        location_p.y - editPartLocation.y);
-    return result;
+  public static Point getEditPartRelativeLocation(Point location,
+      GraphicalEditPart editPart) {
+    Point editPartLocation = getAbsoluteLocation(editPart);
+    return  new Point(
+        location.x - editPartLocation.x,
+        location.y - editPartLocation.y);
   }
 
   /**
    * Return the absolute (Display-relative) location of the given edit part
    */
-  public static Point getAbsoluteLocation(GraphicalEditPart editPart_p) {
-    IFigure figure = editPart_p.getFigure();
-    Control canvas = editPart_p.getViewer().getControl();
+  public static Point getAbsoluteLocation(GraphicalEditPart editPart) {
+    IFigure figure = editPart.getFigure();
+    Control canvas = editPart.getViewer().getControl();
     org.eclipse.draw2d.geometry.Rectangle bounds = figure.getBounds().getCopy();
     figure.translateToAbsolute(bounds);
     Point swtPoint = new org.eclipse.swt.graphics.Point(bounds.x, bounds.y);
-    Point result = canvas.getDisplay().map(canvas, null, swtPoint);
-    return result;
+    return canvas.getDisplay().map(canvas, null, swtPoint);
   }
   
-  
+  /**
+   * 
+   * @param elements
+   * @return the context diagram of the given elements. It assumes that all elements are owned by the same diagram.
+   */
+  public static String getContextDiagram(List<? extends EObject> elements) {
+    for (EObject obj : elements) {
+      if (obj instanceof View) {
+        EObject element = ((View) obj).getElement();
+        String contextDiagram = SiriusUtil.getContextDiagram(element);
+        if (contextDiagram != null) {
+          return contextDiagram;
+        }
+      }
+    }
+    return null;
+  }
 }

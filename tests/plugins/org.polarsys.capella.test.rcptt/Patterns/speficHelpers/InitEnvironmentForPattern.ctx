@@ -5,8 +5,8 @@ Element-Name: InitEnvironmentForPattern
 Element-Type: context
 Element-Version: 2.0
 Id: _56REoGYJEeaVsIgvj-cA7g
-Runtime-Version: 2.3.0.201712190725
-Save-Time: 1/19/18 3:28 PM
+Runtime-Version: 2.3.0.201803290557
+Save-Time: 6/25/18 5:10 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -17,8 +17,8 @@ closeCatalog
 
 // Show Functional Exchanges to be able to see them later
 get-button "View Menu" | click
-get-view "Capella Project Explorer" | get-menu "Customize View..." | click
-with [get-window "Available Customizations"] {
+get-view "Capella Project Explorer" | get-menu "Filters and Customization..." | click
+with [get-window "Filters and Customization"] {
     get-tab-folder | get-tab-item Filters | click
     get-table | get-item "Functional Exchanges" | uncheck
     get-table | get-item "Parts" | uncheck

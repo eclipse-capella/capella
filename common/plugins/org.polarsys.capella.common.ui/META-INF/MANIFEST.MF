@@ -2,16 +2,20 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.common.ui;singleton:=true
-Bundle-Version: 1.2.2.qualifier
+Bundle-Version: 1.3.1.qualifier
 Bundle-Vendor: %providerName
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.help,
  org.eclipse.emf.edit.ui;visibility:=reexport,
  org.eclipse.emf.transaction.ui;visibility:=reexport,
  org.polarsys.capella.common.ef,
  org.polarsys.capella.common;visibility:=reexport,
- org.eclipse.ui.forms;visibility:=reexport
+ org.eclipse.ui.forms;visibility:=reexport,
+ org.eclipse.ui.navigator;visibility:=reexport,
+ org.eclipse.e4.core.di,
+ org.eclipse.e4.ui.workbench,
+ org.eclipse.e4.core.contexts
 Export-Package: org.polarsys.capella.common.ui,
  org.polarsys.capella.common.ui.providers,
  org.polarsys.capella.common.ui.services,
@@ -26,6 +30,7 @@ Export-Package: org.polarsys.capella.common.ui,
  org.polarsys.capella.common.ui.toolkit.services.validators,
  org.polarsys.capella.common.ui.toolkit.viewers,
  org.polarsys.capella.common.ui.toolkit.viewers.data,
+ org.polarsys.capella.common.ui.toolkit.viewers.menu,
  org.polarsys.capella.common.ui.toolkit.viewers.transfer,
  org.polarsys.capella.common.ui.toolkit.widgets.filter,
  org.polarsys.capella.common.ui.toolkit.widgets.handler

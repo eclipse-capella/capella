@@ -69,7 +69,7 @@ public class LogicalFunctionHelper {
   }
 
   protected List<LogicalActor> getAllocatorLogicalActors(LogicalFunction element) {
-    List<LogicalActor> ret = new ArrayList<LogicalActor>();
+    List<LogicalActor> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ComponentFunctionalAllocation) {
         TraceableElement src = trace.getSourceElement();
@@ -82,7 +82,7 @@ public class LogicalFunctionHelper {
   }
 
   protected List<LogicalComponent> getAllocatorLogicalComponents(LogicalFunction element) {
-    List<LogicalComponent> ret = new ArrayList<LogicalComponent>();
+    List<LogicalComponent> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ComponentFunctionalAllocation) {
         TraceableElement src = trace.getSourceElement();
@@ -95,7 +95,7 @@ public class LogicalFunctionHelper {
   }
 
   protected List<SystemFunction> getRealizedSystemFunctions(LogicalFunction element) {
-    List<SystemFunction> ret = new ArrayList<SystemFunction>();
+    List<SystemFunction> ret = new ArrayList<>();
     for (FunctionRealization functionRealization : element.getOutFunctionRealizations()) {
       AbstractFunction abstractFunction = functionRealization.getAllocatedFunction();
       if (abstractFunction instanceof SystemFunction) {
@@ -106,7 +106,7 @@ public class LogicalFunctionHelper {
   }
 
   protected List<PhysicalFunction> getRealizingPhysicalFunctions(LogicalFunction element) {
-    List<PhysicalFunction> ret = new ArrayList<PhysicalFunction>();
+    List<PhysicalFunction> ret = new ArrayList<>();
     for (FunctionRealization functionRealization : element.getInFunctionRealizations()) {
       AbstractFunction abstractFunction = functionRealization.getAllocatingFunction();
       if (abstractFunction instanceof PhysicalFunction) {
@@ -117,7 +117,7 @@ public class LogicalFunctionHelper {
   }
 
   protected List<LogicalFunction> getContainedLogicalFunctions(LogicalFunction element) {
-    List<LogicalFunction> ret = new ArrayList<LogicalFunction>();
+    List<LogicalFunction> ret = new ArrayList<>();
     for (AbstractFunction function : element.getOwnedFunctions()) {
       if (function instanceof LogicalFunction) {
         ret.add((LogicalFunction) function);
@@ -127,7 +127,7 @@ public class LogicalFunctionHelper {
   }
 
   protected List<LogicalFunction> getChildrenLogicalFunctions(LogicalFunction element) {
-    List<LogicalFunction> ret = new ArrayList<LogicalFunction>();
+    List<LogicalFunction> ret = new ArrayList<>();
     for (AbstractFunction function : element.getSubFunctions()) {
       if (function instanceof LogicalFunction) {
         ret.add((LogicalFunction) function);

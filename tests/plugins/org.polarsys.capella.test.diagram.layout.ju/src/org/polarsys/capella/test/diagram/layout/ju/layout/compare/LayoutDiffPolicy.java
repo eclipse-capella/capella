@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.test.diagram.layout.ju.layout.LayoutPackage;
 
 /**
- * We ignore ordering differences and naming one
+ * We ignore ordering differences and naming, id or mapping ones
  */
 public class LayoutDiffPolicy extends DefaultDiffPolicy {
 
@@ -26,8 +26,10 @@ public class LayoutDiffPolicy extends DefaultDiffPolicy {
 
   @Override
   public boolean coverFeature(EStructuralFeature feature_p) {
-    return !(LayoutPackage.Literals.ISEMANTIC_LAYOUT__NAME.equals(feature_p));
+    return !(LayoutPackage.Literals.ISEMANTIC_LAYOUT__NAME.equals(feature_p))
+        && !(LayoutPackage.Literals.DIAGRAM_LAYOUT__DESCRIPTION.equals(feature_p))
+        && !(LayoutPackage.Literals.ISEMANTIC_LAYOUT__ID.equals(feature_p))
+        && !(LayoutPackage.Literals.ISEMANTIC_LAYOUT__ACTUAL_MAPPING.equals(feature_p));
   }
 
-  
 }

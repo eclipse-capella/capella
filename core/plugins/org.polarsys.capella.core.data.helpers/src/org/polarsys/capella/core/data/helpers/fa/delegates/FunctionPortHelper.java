@@ -59,7 +59,7 @@ public class FunctionPortHelper {
 	}
 
   protected List<ComponentPort> getAllocatorComponentPorts(FunctionPort element) {
-    List <ComponentPort> ret = new ArrayList<ComponentPort>();
+    List <ComponentPort> ret = new ArrayList<>();
     for (PortAllocation portAllocation : element.getIncomingPortAllocations()) {
       Port port = portAllocation.getAllocatingPort();
       if (port instanceof ComponentPort){
@@ -70,7 +70,7 @@ public class FunctionPortHelper {
   }
 
   protected List<FunctionPort> getRealizedFunctionPorts(FunctionPort element) {
-    List <FunctionPort> result = new ArrayList<FunctionPort>();
+    List <FunctionPort> result = new ArrayList<>();
     for (PortRealization portAllocation : element.getOutgoingPortRealizations()) {
       Port port = portAllocation.getRealizedPort();
       if (port instanceof FunctionPort && !result.contains(port)){
@@ -81,7 +81,7 @@ public class FunctionPortHelper {
   }
 
   protected List<FunctionPort> getRealizingFunctionPorts(FunctionPort element) {
-    List <FunctionPort> result = new ArrayList<FunctionPort>();
+    List <FunctionPort> result = new ArrayList<>();
     for (PortRealization portAllocation : element.getIncomingPortRealizations()) {
       Port port = portAllocation.getRealizingPort();
       if (port instanceof FunctionPort && !result.contains(port)){

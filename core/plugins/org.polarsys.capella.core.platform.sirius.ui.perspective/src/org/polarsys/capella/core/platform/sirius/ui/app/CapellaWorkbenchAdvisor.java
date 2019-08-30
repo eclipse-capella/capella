@@ -17,7 +17,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.util.Properties;
-
 import org.eclipse.core.commands.operations.IUndoContext;
 import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.internal.jobs.JobManager;
@@ -32,16 +31,13 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.validation.service.ModelValidationService;
 import org.eclipse.jface.viewers.ILabelDecorator;
 import org.eclipse.jface.viewers.ILabelProviderListener;
-import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
-import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
-import org.eclipse.sirius.common.ui.SiriusTransPlugin;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 import org.eclipse.ui.ide.undo.WorkspaceUndoUtil;
 import org.eclipse.ui.internal.WorkbenchMessages;
 import org.eclipse.ui.internal.ide.IDEWorkbenchErrorHandler;
+import org.eclipse.ui.internal.ide.IDEWorkbenchPlugin;
 import org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor;
 import org.eclipse.ui.statushandlers.AbstractStatusHandler;
 import org.eclipse.ui.statushandlers.StatusAdapter;
@@ -85,6 +81,8 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
    */
   private static final String BUILD_ID_TAG = "BuildId"; //$NON-NLS-1$
 
+  private static final int limitLengthOfPath = 115;
+  private static final int fileCharAdd = 6;
   private AbstractStatusHandler ideWorkbenchErrorHandler;
 
   /**
@@ -110,16 +108,17 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
   public void preStartup() {
     super.preStartup();
 
-    // Load SiriusEdit
-    SiriusEditPlugin.getPlugin().getPreferenceStore().setValue(SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), true);
-    // Disable Sirius Pre-commit listener behavior since Capella has the same one.
-    SiriusTransPlugin.getPlugin().getPreferenceStore().setValue(CommonPreferencesConstants.PREF_DEFENSIVE_EDIT_VALIDATION, false);
+    // Ensure that Sirius customization are properly overidden by loading customisation plugin
+    org.polarsys.capella.common.platform.sirius.customisation.SiriusPlugin.getDefault();
+
     // force all workspace operations to be undoable
     // That's the easiest way to avoid undo operation on a capella project creation from clipboard (copy/paste).
     IUndoContext workspaceUndoContext = WorkspaceUndoUtil.getWorkspaceUndoContext();
     OperationHistoryFactory.getOperationHistory().setLimit(workspaceUndoContext, 0);
-    // Set Capella version env property based on the version of the plug-in that provides the Capella product i.e this current plug-in.
-    // Don't use Capella Feature version as it is also used in persistence of semantic models to get something working for both 1.x & 2.x releases.
+    // Set Capella version env property based on the version of the plug-in that provides the Capella product i.e this
+    // current plug-in.
+    // Don't use Capella Feature version as it is also used in persistence of semantic models to get something working
+    // for both 1.x & 2.x releases.
     String bundleVersion = ((String) Platform.getProduct().getDefiningBundle().getHeaders().get("Bundle-version")); //$NON-NLS-1$
     System.setProperty(CAPELLA_VERSION_TAG, bundleVersion.substring(0, 5));
     System.setProperty(BUILD_ID_TAG, bundleVersion.substring(6));
@@ -128,11 +127,17 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
 
     // Remove all acceleo UI elements from capella( remove all extensions from extensionRegistry).
     removeAllAcceleoIntroExtensionPoints();
-    
+
     // Call UsageMonitoringLogger.getInstance() to trigger the activation of plug-in
     // org.polarsys.capella.common.tools.report.appenders.usage so that default preferences will be initialized by the
     // org.polarsys.capella.common.tools.report.appenders.usage.preferences.PreferencesInitializer
     UsageMonitoringLogger.getInstance();
+    
+    // FIXME Workaround for Eclipse Bug 467000 (Too many refreshes when building Dynamic Menus), Capella Bug 1916
+    String workaround = "eclipse.workaround.bug467000"; //$NON-NLS-1$
+    if (System.getProperty(workaround) == null) { // Only change the value if it is not explicitly set already (Don't override user-defined value)
+      System.setProperty(workaround, Boolean.TRUE.toString());
+    }
   }
 
   /**
@@ -142,11 +147,11 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
   public void postShutdown() {
     super.postShutdown();
     // Get the config.ini file used by runtime.
-    IPath configFileUsedByRuntime = new Path(Platform.getConfigurationLocation().getURL().getFile()).append(CONFIG_INI_FILE_SHORT_NAME);
+    IPath configFileUsedByRuntime = new Path(Platform.getConfigurationLocation().getURL().getFile())
+        .append(CONFIG_INI_FILE_SHORT_NAME);
     // Get the config.ini declared in installation.
-    IPath configFileFromInstallation =
-        new Path(Platform.getInstallLocation().getURL().getFile()).append(CONFIGURATION_FOLDER_SHORT_NAME + ICommonConstants.SLASH_CHARACTER
-                                                                          + CONFIG_INI_FILE_SHORT_NAME);
+    IPath configFileFromInstallation = new Path(Platform.getInstallLocation().getURL().getFile())
+        .append(CONFIGURATION_FOLDER_SHORT_NAME + ICommonConstants.SLASH_CHARACTER + CONFIG_INI_FILE_SHORT_NAME);
     // config.ini files are different ones.
     File installationConfigFile = configFileFromInstallation.toFile();
     if (installationConfigFile.exists() && !configFileUsedByRuntime.equals(configFileFromInstallation)) {
@@ -157,7 +162,8 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
         configFileAsProperties.load(openStream);
         // Close the stream.
         openStream.close();
-        // Create a stream to save loaded config.ini as runtime one : to replace the one tweaked by p2 where keys are replaced with bad values e.g product,
+        // Create a stream to save loaded config.ini as runtime one : to replace the one tweaked by p2 where keys are
+        // replaced with bad values e.g product,
         // application,...
         OutputStream out = new FileOutputStream(configFileUsedByRuntime.toFile());
         configFileAsProperties.store(out, "This configuration file was written by Capella"); //$NON-NLS-1$
@@ -180,6 +186,14 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
       // force start of EMF Validation plugin before initializing the default preferences scope
       ModelValidationService.getInstance().loadXmlConstraintDeclarations();
       PreferencesHelper.initializeCapellaPreferencesFromEPFFile();
+      File systemDirectory = new File(System.getProperty("eclipse.home.location"));
+      int lengthDirectory = systemDirectory.toString().substring(fileCharAdd).length();
+      if (System.getProperty("os.name").contains("Windows")) {
+        if (lengthDirectory > limitLengthOfPath) {
+          IDEWorkbenchPlugin.log(
+              "The current installation path is too long (Windows Maximum Path Length Limitation). Certain components such as Capella Properties description may not work properly.");
+        }
+      }
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -193,7 +207,8 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
 
   /**
    * remove all acceleo UI elements from capella <br>
-   * remove all acceleo extensions from Capella extensionRegistry</br>.
+   * remove all acceleo extensions from Capella extensionRegistry</br>
+   * .
    */
   private void removeAllAcceleoIntroExtensionPoints() {
     Field privateStringField;
@@ -202,10 +217,12 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
       privateStringField.setAccessible(true);
       Object masterToken = privateStringField.get(Platform.getExtensionRegistry());
       // Reads the External Datatype Providers
-      IExtensionPoint extensionPoint = Platform.getExtensionRegistry().getExtensionPoint("org.eclipse.ui.intro.configExtension"); //$NON-NLS-1$
+      IExtensionPoint extensionPoint = Platform.getExtensionRegistry()
+          .getExtensionPoint("org.eclipse.ui.intro.configExtension"); //$NON-NLS-1$
       IConfigurationElement[] extensionPointArray = extensionPoint.getConfigurationElements();
       for (IConfigurationElement element : extensionPointArray) {
-        if ((element.getNamespaceIdentifier() != null) && element.getNamespaceIdentifier().equals("org.eclipse.acceleo.ide.ui")) { //$NON-NLS-1$
+        if ((element.getNamespaceIdentifier() != null)
+            && element.getNamespaceIdentifier().equals("org.eclipse.acceleo.ide.ui")) { //$NON-NLS-1$
           if (element.getAttribute("configId").equals("org.eclipse.ui.intro.universalConfig")) { //$NON-NLS-1$ //$NON-NLS-2$
             Platform.getExtensionRegistry().removeExtension(element.getDeclaringExtension(), masterToken);
             break;
@@ -224,7 +241,8 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
   }
 
   /**
-   * Override the default error message to avoid exception message in the main message. (it is already displayed in Details part)
+   * Override the default error message to avoid exception message in the main message. (it is already displayed in
+   * Details part)
    */
   @Override
   public synchronized AbstractStatusHandler getWorkbenchErrorHandler() {
@@ -244,9 +262,9 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
                     Throwable exception = status.getException();
                     if ((exception != null) && (exception.getMessage() != null) && (status.getMessage() != null)
                         && !status.getMessage().equals(exception.getMessage())) {
-                      
+
                       if (JobManager.PI_JOBS.equals(status.getPlugin())) {
-                        if (text.startsWith(JobMessages.jobs_internalError.substring(0,30))) {
+                        if (text.startsWith(JobMessages.jobs_internalError.substring(0, 30))) {
                           return WorkbenchMessages.WorkbenchStatusDialog_SeeDetails;
                         }
                       }

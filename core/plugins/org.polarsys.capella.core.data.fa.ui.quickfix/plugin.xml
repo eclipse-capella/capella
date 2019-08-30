@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
-  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+  Copyright (c) 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -149,7 +149,7 @@
             icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif"
             label="%quickFix.I_27.label">
          <rules
-               ruleId="I_26">
+               ruleId="I_27">
          </rules>
       </resolver>
       <resolver
@@ -158,7 +158,7 @@
             icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
             label="%quickFix.I_28.label">
          <rules
-               ruleId="I_27">
+               ruleId="I_28">
          </rules>
       </resolver>
       <resolver
@@ -287,6 +287,15 @@
                     ruleId="DCOM_21">
               </rules>
            </resolver>
+           <resolver
+                 class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.I_26_Resolver"
+                 desc="%quickFix.I_26.desc"
+                 icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif"
+                 label="%quickFix.I_26.label">
+              <rules
+                    ruleId="I_26">
+              </rules>
+           </resolver>
    </extension>
    <extension
          point="org.eclipse.ui.ide.markerResolution">
@@ -300,6 +309,22 @@
       </markerResolutionGenerator>
       <markerResolutionGenerator
             class="org.polarsys.capella.core.data.fa.ui.quickfix.generator.GenerateInterfacesResolutionGenerator"
+            markerType="org.polarsys.capella.core.validation.markers">
+      </markerResolutionGenerator>
+      <markerResolutionGenerator
+            class="org.polarsys.capella.core.data.fa.ui.quickfix.generator.DWF_DF_16_Resolutions"
+            markerType="org.polarsys.capella.core.validation.markers">
+      </markerResolutionGenerator>
+      <markerResolutionGenerator
+            class="org.polarsys.capella.core.data.fa.ui.quickfix.generator.DWF_DF_18_Resolutions"
+            markerType="org.polarsys.capella.core.validation.markers">
+      </markerResolutionGenerator>
+      <markerResolutionGenerator
+            class="org.polarsys.capella.core.data.fa.ui.quickfix.generator.DWF_DF_19_Resolutions"
+            markerType="org.polarsys.capella.core.validation.markers">
+      </markerResolutionGenerator>
+      <markerResolutionGenerator
+            class="org.polarsys.capella.core.data.fa.ui.quickfix.generator.DWF_DF_20_Resolutions"
             markerType="org.polarsys.capella.core.validation.markers">
       </markerResolutionGenerator>
    </extension>

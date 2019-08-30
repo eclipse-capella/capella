@@ -853,13 +853,13 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 		  (recCatalogEClass, 
 		   source, 
 		   new String[] {
-			 "ExtendedElement", "http://www.polarsys.org/capella/core/modeller/1.2.0#//SystemEngineering " //$NON-NLS-1$ //$NON-NLS-2$
+			 "ExtendedElement", "http://www.polarsys.org/capella/core/modeller/1.3.0#//SystemEngineering " //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (groupingElementPkgEClass, 
 		   source, 
 		   new String[] {
-			 "ExtendedElement", "http://www.polarsys.org/capella/core/modeller/1.2.0#//SystemEngineering http://www.polarsys.org/capella/core/cs/1.2.0#//BlockArchitecture" //$NON-NLS-1$ //$NON-NLS-2$
+			 "ExtendedElement", "http://www.polarsys.org/capella/core/modeller/1.3.0#//SystemEngineering http://www.polarsys.org/capella/core/cs/1.3.0#//BlockArchitecture" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -891,11 +891,15 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 		  (getCatalogElement_ReferencedElements(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ownedLinks.target" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getCatalogElement_ReplicatedElements(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "origin" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 

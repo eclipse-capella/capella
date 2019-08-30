@@ -10,12 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.fa.validation.functionalChain;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.osgi.util.NLS;
@@ -35,57 +31,48 @@ public class MDCHK_FunctionalChain_Involvements_1 extends AbstractValidationRule
    */
   @Override
   public IStatus validate(IValidationContext ctx) {
-    EObject eObj = ctx.getTarget();
-    EMFEventType eType = ctx.getEventType();
 
-    if (eType == EMFEventType.NULL) {
-      if (eObj instanceof FunctionalChain) {
-        FunctionalChain chain = (FunctionalChain) eObj;
+    if (ctx.getEventType() == EMFEventType.NULL && ctx.getTarget() instanceof FunctionalChain) {
+      FunctionalChain chain = (FunctionalChain) ctx.getTarget();
 
-        // Check if functionalChain is empty
-        if (chain.getOwnedFunctionalChainInvolvements().isEmpty()) {
-          return ctx.createFailureStatus(new Object[] { chain.getName(), Messages.MDCHK_FunctionalChain_Involvements_1_IsEmpty });
+      // check if the chain contains any involvements
+      EList<FunctionalChainInvolvement> ownedFunctionalChainInvolvements = chain.getOwnedFunctionalChainInvolvements();
+      if (ownedFunctionalChainInvolvements.isEmpty()) {
+        return ctx.createFailureStatus(chain.getName(), Messages.MDCHK_FunctionalChain_Involvements_1_IsEmpty);
+      }
+
+      // check if the chain contains invalid involvements
+      StringBuilder invalidInvolvementsMessage = new StringBuilder();
+      int invalidInvolvementsSize = 0;
+
+      for (FunctionalChainInvolvement involvement : ownedFunctionalChainInvolvements) {
+        IStatus status = FunctionalChainExt.getFunctionalChainInvolvementValidityStatus(involvement);
+
+        if (!status.isOK()) {
+          invalidInvolvementsMessage.append(EObjectLabelProviderHelper.getText(involvement));
+          invalidInvolvementsMessage.append(ICommonConstants.WHITE_SPACE_CHARACTER);
+          invalidInvolvementsMessage.append(ICommonConstants.PARENTHESIS_OPEN_CHARACTER);
+          invalidInvolvementsMessage.append(status.getMessage());
+          invalidInvolvementsMessage.append(ICommonConstants.PARENTHESIS_CLOSE_CHARACTER);
+          invalidInvolvementsMessage.append(ICommonConstants.EOL_CHARACTER);
+          invalidInvolvementsSize++;
         }
+      }
 
-        // Check if functionalChain contains invalid involvements
-        String involvedElements = ICommonConstants.EMPTY_STRING;
-        Collection<FunctionalChainInvolvement> invsNoValid = new ArrayList<FunctionalChainInvolvement>();
-        for (FunctionalChainInvolvement inv : chain.getOwnedFunctionalChainInvolvements()) {
-          IStatus status = FunctionalChainExt.isFunctionalChainInvolvementValidWithStatus(inv);
+      if (invalidInvolvementsSize > 0) {
+        return ctx.createFailureStatus(chain.getName(),
+            NLS.bind(Messages.MDCHK_FunctionalChain_Involvements_1_InvolvementInvalid,
+                String.valueOf(invalidInvolvementsSize), invalidInvolvementsMessage.toString()));
+      }
 
-          if (!status.isOK()) {
-            involvedElements += EObjectLabelProviderHelper.getText(inv);
-            involvedElements += ICommonConstants.WHITE_SPACE_CHARACTER;
-            involvedElements += ICommonConstants.PARENTHESIS_OPEN_CHARACTER;
-            involvedElements += status.getMessage();
-            involvedElements += ICommonConstants.PARENTHESIS_CLOSE_CHARACTER;
-            involvedElements += ICommonConstants.EOL_CHARACTER;
-            invsNoValid.add(inv);
-          }
-        }
-        if (!invsNoValid.isEmpty()) {
-          return ctx.createFailureStatus(new Object[] {
-                                                       chain.getName(),
-                                                       NLS.bind(Messages.MDCHK_FunctionalChain_Involvements_1_InvolvementInvalid,
-                                                           String.valueOf(invsNoValid.size()), involvedElements) });
-        }
+      // check if the chain is not well formed
+      if (!FunctionalChainExt.isFunctionalChainWellFormed(chain)) {
+        return ctx.createFailureStatus(chain.getName(), Messages.MDCHK_FunctionalChain_Involvements_1_NotWellFormed);
+      }
 
-        // Check if functionalChain is not well formed
-        if (!FunctionalChainExt.isFunctionalChainWellFormed(chain)) {
-          return ctx.createFailureStatus(new Object[] { chain.getName(), Messages.MDCHK_FunctionalChain_Involvements_1_NotWellFormed });
-        }
-
-        // Check if functionalChain contains no source
-        List<FunctionalChainInvolvement> sources = chain.getFirstFunctionalChainInvolvements();
-        if (sources.isEmpty()) {
-          return ctx.createFailureStatus(new Object[] { chain.getName(), Messages.MDCHK_FunctionalChain_Involvements_1_NoSource });
-        }
-
-        // Check if functionalChain contains a cycle
-        boolean cycleFound = FunctionalChainExt.containsACycle(chain);
-        if (cycleFound) {
-          return ctx.createFailureStatus(new Object[] { chain.getName(), Messages.MDCHK_FunctionalChain_Involvements_1_ContainsACycle });
-        }
+      // check if functionalChain contains a cycle
+      if (FunctionalChainExt.containsACycle(chain)) {
+        return ctx.createFailureStatus(chain.getName(), Messages.MDCHK_FunctionalChain_Involvements_1_ContainsACycle);
       }
     }
     return ctx.createSuccessStatus();

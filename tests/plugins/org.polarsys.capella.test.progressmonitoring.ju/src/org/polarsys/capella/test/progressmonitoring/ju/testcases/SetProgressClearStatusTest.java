@@ -15,10 +15,10 @@ import static org.polarsys.capella.test.progressmonitoring.ju.util.SetProgressTe
 import java.util.Iterator;
 
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.core.diagram.helpers.RepresentationAnnotationHelper;
 import org.polarsys.capella.core.ui.metric.actions.ProgressMonitoringSetAction;
-import org.polarsys.capella.core.ui.properties.annotations.RepresentationAnnotationHelper;
 
 public class SetProgressClearStatusTest extends AbstractSetProgressTest {
 
@@ -49,11 +49,11 @@ public class SetProgressClearStatusTest extends AbstractSetProgressTest {
     assertEquals(DRAFT, sf2.getStatus().getLabel());
     
     // Assert statuses are not set for diagrams
-    Iterator<DRepresentation> iterator = representations.iterator();
+    Iterator<DRepresentationDescriptor> iterator = representations.iterator();
     // First diagram
-    assertEquals(ICommonConstants.EMPTY_STRING, RepresentationAnnotationHelper.getProgressStatus(iterator.next()));
+    assertEquals(null, RepresentationAnnotationHelper.getProgressStatus(iterator.next()));
     // Second diagram
-    assertEquals(ICommonConstants.EMPTY_STRING, RepresentationAnnotationHelper.getProgressStatus(iterator.next()));
+    assertEquals(null, RepresentationAnnotationHelper.getProgressStatus(iterator.next()));
     
     // Second run to clear the status
     ProgressMonitoringSetAction action2 = createSetProgressAction(createRunSetup(null, false, false));

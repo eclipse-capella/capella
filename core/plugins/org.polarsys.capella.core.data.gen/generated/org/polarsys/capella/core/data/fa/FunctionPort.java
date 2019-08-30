@@ -97,6 +97,7 @@ public interface FunctionPort extends Port, TypedElement, AbstractEvent {
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionPort_AllocatorComponentPorts()
 	 * @see org.polarsys.capella.core.data.fa.ComponentPort#getAllocatedFunctionPorts
 	 * @model opposite="allocatedFunctionPorts" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='incomingPortAllocations.allocatingPort'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -123,6 +124,7 @@ public interface FunctionPort extends Port, TypedElement, AbstractEvent {
 	 * @return the value of the '<em>Realized Function Ports</em>' reference list.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionPort_RealizedFunctionPorts()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outgoingPortRealizations.realizedPort'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -148,6 +150,7 @@ public interface FunctionPort extends Port, TypedElement, AbstractEvent {
 	 * @return the value of the '<em>Realizing Function Ports</em>' reference list.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionPort_RealizingFunctionPorts()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='incomingPortRealizations.realizingPort'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

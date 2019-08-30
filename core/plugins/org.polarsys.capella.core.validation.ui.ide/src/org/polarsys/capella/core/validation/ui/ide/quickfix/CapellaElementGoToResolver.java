@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,11 +14,12 @@ import java.text.MessageFormat;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IMarkerResolution2;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
-import org.polarsys.capella.common.tools.report.appenders.reportlogview.actions.SelectElementAction;
 import org.polarsys.capella.common.ui.services.helper.EObjectImageProviderHelper;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.LocateInCapellaExplorerAction;
 
 /**
  * This class can be used to create "Go to" Quick Fixes.
@@ -77,8 +78,10 @@ public class CapellaElementGoToResolver implements IMarkerResolution2 {
    * {@inheritDoc}
    */
   public void run(IMarker marker) {
-    SelectElementAction selectElementAction = new SelectElementAction(modelElement);
-    selectElementAction.run();
+    LocateInCapellaExplorerAction selectElementAction = new LocateInCapellaExplorerAction();
+    selectElementAction.selectionChanged(null, new StructuredSelection(modelElement));
+    selectElementAction.shouldIgnoreWorkbenchPartSite(true);
+    selectElementAction.run(null);
   }
 
   /**
@@ -86,5 +89,9 @@ public class CapellaElementGoToResolver implements IMarkerResolution2 {
    */
   public String getDescription() {
     return null;
+  }
+  
+  public EObject getModelElement() {
+    return modelElement;
   }
 }

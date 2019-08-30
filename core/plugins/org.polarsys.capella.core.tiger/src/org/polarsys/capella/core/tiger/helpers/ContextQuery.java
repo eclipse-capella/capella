@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -49,6 +49,9 @@ import org.polarsys.capella.core.model.helpers.RefinementLinkExt;
  */
 public class ContextQuery {
 
+  private ContextQuery() {
+	// To hide the implicit public one.
+  }
   /**
    * Builds the merged capability realization
    * @param capabilityRealization The source capability realization
@@ -101,11 +104,11 @@ public class ContextQuery {
    * @see #findExternalComponentTransfoSourceList(SystemComponent)
    */
   public static List<Actor> findActorTransfoSourceList(SystemComponent transfoSource) {
-    List<Actor> actorTransfoSourceList = new ArrayList<Actor>();
+    List<Actor> actorTransfoSourceList = new ArrayList<>();
 
     List<SystemComponentCapabilityRealizationInvolvement> involvements1 = transfoSource.getParticipationsInCapabilityRealizations();
 
-    // Looks for usecases that the source element is involved in
+    // Looks for use cases that the source element is involved in
     for (SystemComponentCapabilityRealizationInvolvement involvement1 : involvements1) {
       CapabilityRealization usecase = (CapabilityRealization) involvement1.getInvolvedCapabilityRealizationInvolvedElement();
 
@@ -128,7 +131,7 @@ public class ContextQuery {
    */
   public static List<CapabilityRealization> findCapabilityRealizationsOfComponent(Component component) {
     List<SystemComponentCapabilityRealizationInvolvement> involvements = ((SystemComponent) component).getParticipationsInCapabilityRealizations();
-    List<CapabilityRealization> capabilityRealizations = new ArrayList<CapabilityRealization>();
+    List<CapabilityRealization> capabilityRealizations = new ArrayList<>();
     for (SystemComponentCapabilityRealizationInvolvement involvement : involvements) {
       capabilityRealizations.add((CapabilityRealization) involvement.getInvolved());
     }
@@ -141,7 +144,7 @@ public class ContextQuery {
    * @return The component instance list
    */
   public static List<Part> findComponentInstanceList(Component component) {
-    List<Part> componentInstanceList = new ArrayList<Part>();
+    List<Part> componentInstanceList = new ArrayList<>();
     Component pkg = component;
     if (pkg != null) {
       TreeIterator<?> iterator = pkg.eAllContents();
@@ -163,7 +166,7 @@ public class ContextQuery {
    * @return The component instances
    */
   public static List<Part> findComponentInstanceList(List<? extends Component> componentList) {
-    List<Part> componentInstanceList = new ArrayList<Part>();
+    List<Part> componentInstanceList = new ArrayList<>();
     for (Component component : componentList) {
       componentInstanceList.addAll(findComponentInstanceList(component));
     }
@@ -175,7 +178,7 @@ public class ContextQuery {
       List<CapabilityRealization> exportedCapabilityRealizationList, List<ActorCapabilityRealizationInvolvement> exportedActorInvolvementList,
       List<SystemComponentCapabilityRealizationInvolvement> exportedComponentSystemInvolvementList, List<InterfaceUse> exportedInterfaceUseList,
       List<InterfaceImplementation> exportedInterfaceImplList, List<Interface> exportedInterfaceList) {
-    List<Component> internalComponents = new ArrayList<Component>();
+    List<Component> internalComponents = new ArrayList<>();
     internalComponents.add(transfoSource);
     findContext(transfoSource, exportedActorList, exportedExternalComponentList, internalComponents, exportedCapabilityRealizationList,
         exportedActorInvolvementList, exportedComponentSystemInvolvementList, exportedInterfaceUseList, exportedInterfaceImplList,
@@ -197,7 +200,7 @@ public class ContextQuery {
       List<SystemComponentCapabilityRealizationInvolvement> exportedComponentSystemInvolvementList, List<InterfaceUse> exportedInterfaceUseList,
       List<InterfaceImplementation> exportedInterfaceImplList, List<Interface> exportedInterfaceList) {
 
-    List<Component> internalComponentsList = new ArrayList<Component>();
+    List<Component> internalComponentsList = new ArrayList<>();
 
     if (transfoSource instanceof LogicalComponent) {
       internalComponentsList.add(transfoSource);
@@ -243,9 +246,9 @@ public class ContextQuery {
 
       boolean possibleExchangeFounded = false;
 
-      List<InterfaceUse> exportedInterfaceUses = new ArrayList<InterfaceUse>();
-      List<InterfaceImplementation> exportedInterfaceImpls = new ArrayList<InterfaceImplementation>();
-      List<Interface> exportedInterfaces = new ArrayList<Interface>();
+      List<InterfaceUse> exportedInterfaceUses = new ArrayList<>();
+      List<InterfaceImplementation> exportedInterfaceImpls = new ArrayList<>();
+      List<Interface> exportedInterfaces = new ArrayList<>();
 
       for (ActorCapabilityRealizationInvolvement actorInvolvement : actorInvolvements) {
         Actor actor = (Actor) actorInvolvement.getInvolver();
@@ -292,7 +295,7 @@ public class ContextQuery {
    * @return
    */
   public static List<Scenario> findDirectScenarioList(List<CapabilityRealization> capabilityRealizationList, List<Part> componentInstanceList) {
-    List<Scenario> exportedScenarioList = new ArrayList<Scenario>();
+    List<Scenario> exportedScenarioList = new ArrayList<>();
 
     // 1- Parse the use cases
     for (CapabilityRealization capabilityRealization : capabilityRealizationList) {
@@ -307,7 +310,7 @@ public class ContextQuery {
       List<Scenario> scenarioList = capabilityRealization.getOwnedScenarios();
       for (Scenario scenario : scenarioList) {
         if (!scenario.isMerged()) {
-          List<AbstractInstance> componentInstances = new ArrayList<AbstractInstance>();
+          List<AbstractInstance> componentInstances = new ArrayList<>();
           List<InstanceRole> instanceRoleList = scenario.getOwnedInstanceRoles();
           for (InstanceRole instanceRole : instanceRoleList) {
             AbstractInstance representedInstance = instanceRole.getRepresentedInstance();
@@ -387,7 +390,7 @@ public class ContextQuery {
    * @see #findActorTransfoSourceList(SystemComponent)
    */
   public static List<SystemComponent> findExternalComponentTransfoSourceList(SystemComponent transfoSource) {
-    List<SystemComponent> externalComponentTransfoSourceList = new ArrayList<SystemComponent>();
+    List<SystemComponent> externalComponentTransfoSourceList = new ArrayList<>();
 
     List<SystemComponentCapabilityRealizationInvolvement> involvements1 = transfoSource.getParticipationsInCapabilityRealizations();
 
@@ -423,7 +426,7 @@ public class ContextQuery {
   public static List<Component> findInvolvedComponentOfCapabilityRealizations(CapabilityRealization capabilityRealization) {
     // 1- Get the Capability at the top of the CapabilityRealization tree
     CapabilityRealization currentCapability = findRootCapabilityRealization(capabilityRealization);
-    List<Component> involvedComponents = new ArrayList<Component>();
+    List<Component> involvedComponents = new ArrayList<>();
 
     // 2- Find all involvements of this capability
     List<Component> newComponents = AbstractCapabilityExt.getInvolvedComponents(currentCapability);
@@ -445,11 +448,11 @@ public class ContextQuery {
 
     List<CapellaElement> elements = RefinementLinkExt.getRefinementRelatedSourceElements(currentCapability, LaPackage.Literals.CAPABILITY_REALIZATION);
 
-    List<AbstractCapability> agenda = new ArrayList<AbstractCapability>();
+    List<AbstractCapability> agenda = new ArrayList<>();
     agenda.add((CapabilityRealization) elements.get(0));
 
     AbstractCapability currentCapabilityRealization = null;
-    while (agenda.size() > 0) {
+    while (!agenda.isEmpty()) {
       currentCapabilityRealization = agenda.get(0);
       elements = RefinementLinkExt.getRefinementRelatedSourceElements(currentCapabilityRealization, LaPackage.Literals.CAPABILITY_REALIZATION);
 
@@ -486,8 +489,8 @@ public class ContextQuery {
    * @return The list of logical components.
    */
   public static List<LogicalComponent> findLogicalComponentsOfCI(ConfigurationItem configurationItem) {
-    List<LogicalComponent> logicalComponents = new ArrayList<LogicalComponent>();
-    List<PhysicalComponent> physicalComponents = new ArrayList<PhysicalComponent>();
+    List<LogicalComponent> logicalComponents = new ArrayList<>();
+    List<PhysicalComponent> physicalComponents = new ArrayList<>();
 
     for (PhysicalArtifactRealization physicalComponentRealization : configurationItem.getOwnedPhysicalArtifactRealizations()) {
       if (physicalComponentRealization.getTargetElement() instanceof PhysicalComponent) {
@@ -514,9 +517,7 @@ public class ContextQuery {
   private static Component findParentComponentInList(Component component, List<Component> componentList) {
     Iterator<Component> iterator = componentList.iterator();
 
-    boolean containsComponents = false;
-
-    while (iterator.hasNext() && !containsComponents) {
+    while (iterator.hasNext()) {
       Component currentComponent = iterator.next();
       if (EcoreUtil2.isContainedBy(component, currentComponent)) {
         return currentComponent;
@@ -595,7 +596,7 @@ public class ContextQuery {
       }
     }
 
-    return exportedInterfaceList.size() > 0;
+    return !exportedInterfaceList.isEmpty();
   }
 
   /**
@@ -608,7 +609,7 @@ public class ContextQuery {
     boolean done = false;
     while ((currentCapability != null) && !done) {
       List<CapellaElement> elements = RefinementLinkExt.getRefinementRelatedTargetElements(currentCapability, LaPackage.Literals.CAPABILITY_REALIZATION);
-      if (elements.size() == 0) {
+      if (elements.isEmpty()) {
         done = true;
       } else {
         currentCapability = (CapabilityRealization) elements.get(0);
@@ -625,7 +626,7 @@ public class ContextQuery {
    */
   public static List<CapabilityRealization> findRootCapabilityRealizationsOfComponent(Component component) {
     List<SystemComponentCapabilityRealizationInvolvement> involvements = ((SystemComponent) component).getParticipationsInCapabilityRealizations();
-    List<CapabilityRealization> capabilityRealizations = new ArrayList<CapabilityRealization>();
+    List<CapabilityRealization> capabilityRealizations = new ArrayList<>();
     for (SystemComponentCapabilityRealizationInvolvement involvement : involvements) {
       CapabilityRealization rootCapabilityRealization = (CapabilityRealization) involvement.getInvolved();
       capabilityRealizations.add(rootCapabilityRealization);
@@ -640,7 +641,7 @@ public class ContextQuery {
    * @return
    */
   public static List<Scenario> findScenarioList(List<CapabilityRealization> capabilityRealizationUseCaseList, List<Part> componentInstanceList) {
-    List<Scenario> exportedScenarioList = new ArrayList<Scenario>();
+    List<Scenario> exportedScenarioList = new ArrayList<>();
 
     // 1- Parse the use cases
     for (CapabilityRealization useCase : capabilityRealizationUseCaseList) {
@@ -659,7 +660,7 @@ public class ContextQuery {
       for (Scenario scenario : scenarioList) {
 
         if (scenario.isMerged()) {
-          List<AbstractInstance> componentInstances = new ArrayList<AbstractInstance>();
+          List<AbstractInstance> componentInstances = new ArrayList<>();
           List<InstanceRole> instanceRoleList = scenario.getOwnedInstanceRoles();
           for (InstanceRole instanceRole : instanceRoleList) {
             AbstractInstance representedInstance = instanceRole.getRepresentedInstance();

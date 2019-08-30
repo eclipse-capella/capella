@@ -69,7 +69,7 @@ public class SystemFunctionHelper {
   }
 
   protected List<Actor> getAllocatorActors(SystemFunction element) {
-    List<Actor> ret = new ArrayList<Actor>();
+    List<Actor> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ComponentFunctionalAllocation) {
         TraceableElement src = trace.getSourceElement();
@@ -82,7 +82,7 @@ public class SystemFunctionHelper {
   }
 
   protected List<System> getAllocatorSystems(SystemFunction element) {
-    List<System> ret = new ArrayList<System>();
+    List<System> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ComponentFunctionalAllocation) {
         TraceableElement src = trace.getSourceElement();
@@ -95,7 +95,7 @@ public class SystemFunctionHelper {
   }
 
   protected List<OperationalActivity> getRealizedOperationalActivities(SystemFunction element) {
-    List<OperationalActivity> ret = new ArrayList<OperationalActivity>();
+    List<OperationalActivity> ret = new ArrayList<>();
     for (FunctionRealization functionRealization : element.getOutFunctionRealizations()) {
       AbstractFunction abstractFunction = functionRealization.getAllocatedFunction();
       if (abstractFunction instanceof OperationalActivity) {
@@ -106,7 +106,7 @@ public class SystemFunctionHelper {
   }
 
   protected List<LogicalFunction> getRealizingLogicalFunctions(SystemFunction element) {
-    List<LogicalFunction> ret = new ArrayList<LogicalFunction>();
+    List<LogicalFunction> ret = new ArrayList<>();
     for (FunctionRealization functionRealization : element.getInFunctionRealizations()) {
       AbstractFunction abstractFunction = functionRealization.getAllocatingFunction();
       if (abstractFunction instanceof LogicalFunction) {
@@ -117,7 +117,7 @@ public class SystemFunctionHelper {
   }
 
   protected List<SystemFunction> getContainedSystemFunctions(SystemFunction element) {
-    List<SystemFunction> ret = new ArrayList<SystemFunction>();
+    List<SystemFunction> ret = new ArrayList<>();
     for (AbstractFunction function : element.getOwnedFunctions()) {
       if (function instanceof SystemFunction) {
         ret.add((SystemFunction) function);
@@ -127,7 +127,7 @@ public class SystemFunctionHelper {
   }
 
   protected List<SystemFunction> getChildrenSystemFunctions(SystemFunction element) {
-    List<SystemFunction> ret = new ArrayList<SystemFunction>();
+    List<SystemFunction> ret = new ArrayList<>();
     for (AbstractFunction function : element.getSubFunctions()) {
       if (function instanceof SystemFunction) {
         ret.add((SystemFunction) function);

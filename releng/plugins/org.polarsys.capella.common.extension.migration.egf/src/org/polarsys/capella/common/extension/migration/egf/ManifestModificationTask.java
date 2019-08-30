@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,49 +30,46 @@ import org.eclipse.pde.internal.ui.util.ModelModification;
 import org.eclipse.pde.internal.ui.util.PDEModelUtility;
 
 /**
- *
+ * This class add:
+ * - import to "org.polarsys.kitalpha.emde.xmi" on manifests if not yet set
  */
 public class ManifestModificationTask implements ITaskProduction {
 
 	@SuppressWarnings("restriction")
 	public void doExecute(ITaskProductionContext productionContext,
 			IProgressMonitor monitor) throws InvocationException {
-		String manifestMFPathString = productionContext.getInputValue("ManifestMFPath", String.class);
 		
-        IPath manifestMFPath = new Path(manifestMFPathString);
-        IWorkspace workspace = ResourcesPlugin.getWorkspace();
-        final IProject project = workspace.getRoot().getProject(manifestMFPath.segment(0));
-        IFile manifestMFFile = project.getFile(ICoreConstants.BUNDLE_FILENAME_DESCRIPTOR);
-        if (!manifestMFFile.exists()) {
-        	System.out.println("file " + manifestMFPathString + " doesn't exist (skipping).");
-        	return;
-        }
-		PDEModelUtility.modifyModel(new ModelModification(manifestMFFile) {
+		for (String manifestMFPathString : ICommonConstants.MANIFESTS ) {
+			
+	        IPath manifestMFPath = new Path(manifestMFPathString);
+	        IWorkspace workspace = ResourcesPlugin.getWorkspace();
+	        final IProject project = workspace.getRoot().getProject(manifestMFPath.segment(0));
+	        IFile manifestMFFile = project.getFile(ICoreConstants.BUNDLE_FILENAME_DESCRIPTOR);
+	        if (!manifestMFFile.exists()) {
+	        	System.out.println("file " + manifestMFPathString + " doesn't exist (skipping).");
+	        	return;
+	        }
+			PDEModelUtility.modifyModel(new ModelModification(manifestMFFile) {
 
-            @Override
-            protected void modifyModel(IBaseModel model, IProgressMonitor innerMonitor) throws CoreException {
-                if (model instanceof IBundlePluginModelBase) {
-                	IBundlePluginModelBase bundlePluginModelBase = (IBundlePluginModelBase) model;
-                	
-                	bundlePluginModelBase.getPluginBase().setProviderName("%pluginName");
-                	bundlePluginModelBase.getPluginBase().setProviderName("%providerName");
-                	bundlePluginModelBase.getPluginBase().setVersion("1.2.1.qualifier");
-                	
-                	IPluginImport[] imports = bundlePluginModelBase.getPluginBase().getImports();
-                	boolean extension_xmi_found = false;
-                	for (IPluginImport iPluginImport : imports) {
-						if ("org.polarsys.capella.common.mdsofa.emf.extension".equals(iPluginImport.getId()) ||
-							"org.polarsys.capella.common.mdsofa.dsl.search".equals(iPluginImport.getId()))
-							bundlePluginModelBase.getPluginBase().remove(iPluginImport);
-						if ("org.polarsys.kitalpha.emde.xmi".equals(iPluginImport.getId())) 
-							extension_xmi_found = true;
-					}
-                	if (!extension_xmi_found)
-                		bundlePluginModelBase.getPluginBase().add(new PluginImportNode("org.polarsys.kitalpha.emde.xmi"));
-                }
-            }
+	            @Override
+	            protected void modifyModel(IBaseModel model, IProgressMonitor innerMonitor) throws CoreException {
+	                if (model instanceof IBundlePluginModelBase) {
+	                	IBundlePluginModelBase bundlePluginModelBase = (IBundlePluginModelBase) model;
+	                	
+	                	IPluginImport[] imports = bundlePluginModelBase.getPluginBase().getImports();
+	                	boolean extension_xmi_found = false;
+	                	for (IPluginImport iPluginImport : imports) {
+							if ("org.polarsys.kitalpha.emde.xmi".equals(iPluginImport.getId())) 
+								extension_xmi_found = true;
+						}
+	                	if (!extension_xmi_found)
+	                		bundlePluginModelBase.getPluginBase().add(new PluginImportNode("org.polarsys.kitalpha.emde.xmi"));
+	                }
+	            }
 
-        }, monitor);
+	        }, monitor);
+		}
+		
 	}
 
 	public void postExecute(ITaskProductionContext productionContext,

@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis.showhide;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -29,6 +31,7 @@ import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.model.helpers.AbstractFunctionExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.PortExt;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
 import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
@@ -68,9 +71,7 @@ public class ShowHideFunction extends ShowHideABRole {
           } else if (block instanceof Role) {
             result.add((Role) block);
           } else if (block instanceof Component) {
-            result.addAll(ComponentExt.getRepresentingParts((Component) block));
-          } else if (block instanceof Component) {
-            result.addAll(ComponentExt.getRepresentingParts((Component) block));
+            result.addAll(getCache(ComponentExt::getRepresentingParts, (Component) block));
           }
         }
 
@@ -93,7 +94,8 @@ public class ShowHideFunction extends ShowHideABRole {
   }
 
   @Override
-  protected boolean mustShow(ContextItemElement originCouple_p, DiagramContext context_p, HashMapSet<String, DSemanticDecorator> relatedViews_p) {
+  protected boolean mustShow(ContextItemElement originCouple_p, DiagramContext context_p,
+      HashMapSet<String, DSemanticDecorator> relatedViews_p) {
 
     if (originCouple_p.getValue() instanceof AbstractFunction) {
       // We don't reveal a parent function, if the getAncestor is already displayed somewhere
@@ -109,7 +111,8 @@ public class ShowHideFunction extends ShowHideABRole {
   }
 
   @Override
-  public DiagramElementMapping getMapping(EObject semantic_p, DiagramContext context_p, HashMapSet<String, DSemanticDecorator> relatedViews_p) {
+  public DiagramElementMapping getMapping(EObject semantic_p, DiagramContext context_p,
+      HashMapSet<String, DSemanticDecorator> relatedViews_p) {
     DiagramElementMapping mapping = super.getMapping(semantic_p, context_p, relatedViews_p);
 
     if (semantic_p instanceof AbstractFunction) {
@@ -121,7 +124,8 @@ public class ShowHideFunction extends ShowHideABRole {
   }
 
   @Override
-  protected Collection<DSemanticDecorator> retrieveDefaultContainer(EObject semantic_p, DiagramContext context_p, Collection<DSemanticDecorator> targetViews_p) {
+  protected Collection<DSemanticDecorator> retrieveDefaultContainer(EObject semantic_p, DiagramContext context_p,
+      Collection<DSemanticDecorator> targetViews_p) {
     if (!DiagramHelper.getService().isArchitectureBlank(getContent().getDDiagram())) {
       if ((semantic_p instanceof AbstractFunction)) {
         // If no container has been found for a function, use diagram to put the given function
@@ -144,7 +148,7 @@ public class ShowHideFunction extends ShowHideABRole {
 
   @Override
   protected boolean mustHide(DDiagramElement view_p, DiagramContext context_p) {
-    if (view_p.getTarget() instanceof OperationalActivity)
+    if (view_p.getTarget() instanceof AbstractFunction)
       return true;
     return super.mustHide(view_p, context_p);
   }

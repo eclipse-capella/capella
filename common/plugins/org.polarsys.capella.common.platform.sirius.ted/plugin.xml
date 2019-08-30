@@ -34,4 +34,36 @@
             class="org.polarsys.capella.common.platform.sirius.ted.SiriusSessionFactory">
       </sessionFactory>
    </extension>
+   <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+    		class="org.polarsys.capella.common.platform.sirius.ted.property.testers.ElementOfOpenedSessionTester"
+            id="org.polarsys.capella.common.platform.sirius.ted.property.testers.ElementOfOpenedSessionTester"
+            namespace="org.polarsys.capella.common.platform.sirius.ted.property.testers"
+            properties="elementOfOpenedSessionTester"
+            type="java.lang.Object">
+		</propertyTester>
+   </extension>
+   <extension
+         point="org.eclipse.core.expressions.definitions">
+		<definition
+            id="org.polarsys.capella.common.platform.sirius.ted.definition.checkElementOfOpenedSessionOnCompareEditorPartOnly">
+			<or>
+	    		<with variable="activePartId">
+	            	<not>
+	                    <equals value="org.eclipse.compare.CompareEditor"/>
+	                </not>
+	       		</with>
+	    		<and>
+	    			<with variable="activePartId">
+	                	<equals value="org.eclipse.compare.CompareEditor"/>
+	               	</with>
+	        		<test
+	                	forcePluginActivation="true"
+	                		property="org.polarsys.capella.common.platform.sirius.ted.property.testers.elementOfOpenedSessionTester">
+	          		</test>
+	        	</and>
+	    	</or>
+		</definition>
+   </extension>
 </plugin>

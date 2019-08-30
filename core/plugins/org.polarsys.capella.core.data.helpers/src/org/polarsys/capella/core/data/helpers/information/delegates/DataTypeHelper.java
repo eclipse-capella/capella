@@ -67,7 +67,7 @@ public class DataTypeHelper {
    *
    */
   protected List<DataType> getRealizedDataTypes(DataType element) {
-    List <DataType> ret = new ArrayList <DataType>();
+    List <DataType> ret = new ArrayList <>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof InformationRealization) {
         TraceableElement elt = trace.getTargetElement();
@@ -83,7 +83,7 @@ public class DataTypeHelper {
    *
    */
   protected List<DataType> getRealizingDataTypes(DataType element) {
-    List <DataType> ret = new ArrayList <DataType>();
+    List <DataType> ret = new ArrayList <>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof InformationRealization) {
         TraceableElement elt = trace.getSourceElement();

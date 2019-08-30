@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.polarsys.capella.test.diagram.layout.ju.layout.Bounds;
 import org.polarsys.capella.test.diagram.layout.ju.layout.DiagramLayout;
 import org.polarsys.capella.test.diagram.layout.ju.layout.EdgeLayout;
@@ -154,6 +155,7 @@ public class LayoutPackageImpl extends EPackageImpl implements LayoutPackage {
 
     // Initialize simple dependencies
     EcorePackage.eINSTANCE.eClass();
+    ViewpointPackage.eINSTANCE.eClass();
 
     // Create package meta-data objects
     theLayoutPackage.createPackageContents();
@@ -544,6 +546,7 @@ public class LayoutPackageImpl extends EPackageImpl implements LayoutPackage {
 
     // Obtain other dependent packages
     EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
+    ViewpointPackage theViewpointPackage = (ViewpointPackage)EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI);
 
     // Create type parameters
 
@@ -551,6 +554,7 @@ public class LayoutPackageImpl extends EPackageImpl implements LayoutPackage {
 
     // Add supertypes to classes
     diagramLayoutEClass.getESuperTypes().add(this.getISemanticLayout());
+    iLayoutEClass.getESuperTypes().add(theViewpointPackage.getDRefreshable());
     iSemanticLayoutEClass.getESuperTypes().add(this.getILayout());
     edgeLayoutEClass.getESuperTypes().add(this.getISemanticLayout());
     nodeLayoutEClass.getESuperTypes().add(this.getISemanticLayout());

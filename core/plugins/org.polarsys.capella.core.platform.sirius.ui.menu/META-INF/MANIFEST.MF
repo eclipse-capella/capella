@@ -2,15 +2,16 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.platform.sirius.ui.menu;singleton:=true
-Bundle-Version: 1.2.2.qualifier
+Bundle-Version: 1.3.1.qualifier
 Bundle-Vendor: %providerName
-Require-Bundle: org.polarsys.capella.core.platform.sirius.ui.actions;visibility:=reexport,
- org.eclipse.sirius.diagram,
+Require-Bundle: org.eclipse.sirius.diagram,
  org.eclipse.gmf.runtime.diagram.ui.resources.editor;visibility:=reexport,
  org.eclipse.core.expressions,
  org.polarsys.capella.core.model.helpers,
- org.polarsys.capella.core.preferences
+ org.polarsys.capella.core.preferences,
+ org.polarsys.capella.common.ui.services,
+ org.eclipse.gmf.runtime.diagram.ui
 Export-Package: org.polarsys.capella.core.platform.sirius.ui
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

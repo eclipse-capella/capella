@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,17 +12,17 @@ package org.polarsys.capella.core.libraries.extendedqueries.interaction;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
-import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.ILibraryManager;
+import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.common.queries.AbstractQuery;
-import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
@@ -57,15 +57,9 @@ public class GetAvailable_InstanceRole_RepresentedInstance__Lib extends Abstract
         Collection<IModel> libraries = LibraryManagerExt.getAllActivesReferences(currentProject);
         for (IModel library : libraries) {
           ModellingArchitecture block = (ModellingArchitecture) QueryExt.getCorrespondingElementInLibrary(capellaElement, (CapellaModel) library);
-          Collection<Part> excluded = new ArrayList<Part>();
-          for (InstanceRole instRole : scenario.getOwnedInstanceRoles()) {
-            if (instRole.getRepresentedInstance() instanceof Part) {
-              excluded.add((Part) instRole.getRepresentedInstance());
-            }
-          }
           Component rootComponent = BlockArchitectureExt.getFirstComponent(block, false);
           if (rootComponent != null) {
-            getAllOwnedPart(availableElements, rootComponent, excluded);
+            getAllOwnedPart(availableElements, rootComponent, Collections.emptyList());
           }
           if ((scenario.getKind() == ScenarioKind.DATA_FLOW) || (scenario.getKind() == ScenarioKind.INTERFACE)) {
             // in the case of an epbs architecture, we must use the physical actors
@@ -83,7 +77,7 @@ public class GetAvailable_InstanceRole_RepresentedInstance__Lib extends Abstract
               if (next instanceof AbstractActor) {
                 AbstractActor actor = (AbstractActor) next;
                 for (AbstractTypedElement ate : actor.getAbstractTypedElements()) {
-                  if ((ate instanceof Part) && !excluded.contains(ate)) {
+                  if (ate instanceof Part) {
                     availableElements.add((Part) ate);
                   }
                 }
@@ -96,7 +90,7 @@ public class GetAvailable_InstanceRole_RepresentedInstance__Lib extends Abstract
                 final EObject next = iterContents.next();
                 if (CsPackage.eINSTANCE.getPart().isInstance(next)) {
                   final Part currentPart = (Part) next;
-                  if (CsPackage.eINSTANCE.getComponent().isInstance(currentPart.getAbstractType()) && (!excluded.contains(currentPart))
+                  if (CsPackage.eINSTANCE.getComponent().isInstance(currentPart.getAbstractType())
                       && (!currentPart.getAbstractType().equals(rootComponent))) {
                     availableElements.add(currentPart);
                   }
@@ -105,7 +99,6 @@ public class GetAvailable_InstanceRole_RepresentedInstance__Lib extends Abstract
             }
           }
         }
-        availableElements.removeAll(QueryInterpretor.executeQuery("GetCurrent_InstanceRole_RepresentedInstance", ir, context));//$NON-NLS-1$
       }
     }
     return (List) availableElements;

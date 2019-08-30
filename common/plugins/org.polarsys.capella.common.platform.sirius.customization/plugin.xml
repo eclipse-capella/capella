@@ -12,11 +12,6 @@
        Thales - initial API and implementation
 -->
 <plugin>
-  <extension point="org.eclipse.sirius.ui.resourcelocator">
-    <resourcelocator
-      class="org.polarsys.capella.common.platform.sirius.customisation.resourcelocator.DelegatingSiriusResourceLocator">
-    </resourcelocator>
-  </extension>
    <extension
          point="org.polarsys.capella.shared.id.handler.IdHandler">
       <IdHandler

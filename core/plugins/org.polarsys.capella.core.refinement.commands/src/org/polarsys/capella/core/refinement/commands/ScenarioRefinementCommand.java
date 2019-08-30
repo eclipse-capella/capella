@@ -19,7 +19,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
-import org.polarsys.capella.common.helpers.EObjectExt;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.helpers.operations.LongRunningListenersRegistry;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
@@ -85,7 +85,7 @@ public class ScenarioRefinementCommand extends AbstractReadWriteCommand {
                 sr.remove();
               } else {
                 Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.REFINEMENT);
-                logger.warn(Messages.MultiInstanceRoleExtension_logmsg_confirm + EObjectExt.getText(scenario));
+                logger.warn(Messages.MultiInstanceRoleExtension_logmsg_confirm + EObjectLabelProviderHelper.getText(scenario));
               }
             }
           }

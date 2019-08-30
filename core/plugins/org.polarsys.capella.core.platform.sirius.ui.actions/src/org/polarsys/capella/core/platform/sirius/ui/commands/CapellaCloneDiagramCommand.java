@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,6 @@ package org.polarsys.capella.core.platform.sirius.ui.commands;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
-
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.AbstractCommand;
@@ -21,10 +20,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.tools.internal.SiriusCopierHelper;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-
+import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.mdsofa.common.helper.StringHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
@@ -39,11 +39,13 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
   /**
    * The representations to clone.
    */
-  private Collection<DRepresentationDescriptor> _representationDescriptors;
+  private Collection<DRepresentationDescriptor> _descriptors = new ArrayList<>();
+
   /**
    * Cloned representations.
    */
   private Collection<DRepresentationDescriptor> _clones;
+
   /**
    * Clone life cycle listeners.
    */
@@ -51,11 +53,12 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
 
   /**
    * Constructor.
-   * @param representations
+   * 
+   * @param descriptors
    */
-  public CapellaCloneDiagramCommand(Collection<DRepresentation> representations) {
+  public CapellaCloneDiagramCommand(Collection<DRepresentationDescriptor> descriptors) {
     super(Messages.CapellaCloneDiagramCommand_CommandLabel);
-    _representationDescriptors = RepresentationHelper.getRepresentationDescriptors(representations);
+    _descriptors.addAll(descriptors);
   }
 
   /**
@@ -72,13 +75,14 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
       _listeners.clear();
       _listeners = null;
     }
-    if (null != _representationDescriptors) {
-      _representationDescriptors = null;
+    if (null != _descriptors) {
+      _descriptors = null;
     }
   }
 
   /**
    * Add a clone life cycle listener.
+   * 
    * @param listener
    */
   public void addCloneListener(ICloneListener listener) {
@@ -95,6 +99,7 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
 
   /**
    * Remove a registered clone life cycle listener.
+   * 
    * @param listener
    */
   public void removeCloneListener(ICloneListener listener) {
@@ -107,6 +112,7 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
 
   /**
    * Send clone life cycle event.
+   * 
    * @param type
    * @param clone
    * @param session
@@ -127,7 +133,8 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
         }
       } catch (Exception exception) {
         CapellaActionsActivator activator = CapellaActionsActivator.getDefault();
-        activator.getLog().log(new Status(IStatus.ERROR, activator.getPluginId(), "Unable to notify listeners !", exception)); //$NON-NLS-1$
+        activator.getLog()
+            .log(new Status(IStatus.ERROR, activator.getPluginId(), "Unable to notify listeners !", exception)); //$NON-NLS-1$
       }
     }
   }
@@ -143,6 +150,7 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
   /**
    * @see org.eclipse.emf.common.command.Command#execute()
    */
+  @Override
   public void execute() {
     // Initialize clones list.
     if (null == _clones) {
@@ -154,7 +162,10 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
       }
     }
     // Copy all representations.
-    for (DRepresentationDescriptor descriptor : _representationDescriptors) {
+    for (DRepresentationDescriptor descriptor : _descriptors) {
+      // Copy all the Dannotation of DRepresentationDescriptor
+      Collection<DAnnotation> results = SiriusCopierHelper.copyAllWithNoUidDuplication(descriptor.getEAnnotations());
+
       DRepresentation representation = descriptor.getRepresentation();
       if (representation instanceof DSemanticDecorator) {
         // Get target semantic element.
@@ -162,42 +173,49 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
         // Get session.
         Session session = SessionManager.INSTANCE.getSession(target);
         // Copy representation.
-        DRepresentation copyRepresentation = DialectManager.INSTANCE.copyRepresentation(representation, getCloneName(representation, session), session, null);
-        DRepresentationDescriptor copyRepresentationDescriptor = RepresentationHelper.getRepresentationDescriptor(session, copyRepresentation);
+        DRepresentation copyRepresentation = DialectManager.INSTANCE.copyRepresentation(representation,
+            getCloneName(representation, session), session, null);
+        DRepresentationDescriptor copyRepresentationDescriptor = RepresentationHelper
+            .getRepresentationDescriptor(session, copyRepresentation);
         if (copyRepresentationDescriptor != null) {
+          // put the list of copy Dannotation in the copied DRepresentationDescriptor
+          copyRepresentationDescriptor.getEAnnotations().addAll(results);
           // Retain copied reference.
           _clones.add(copyRepresentationDescriptor);
         }
       } else {
         CapellaActionsActivator activator = CapellaActionsActivator.getDefault();
-        activator.getLog().log(new Status(IStatus.WARNING, activator.getPluginId(), "Clone is not supported for " + representation.getName())); //$NON-NLS-1$
+        activator.getLog().log(new Status(IStatus.WARNING, activator.getPluginId(),
+            "Clone is not supported for " + representation.getName())); //$NON-NLS-1$
       }
     }
   }
 
   /**
    * Get clone name for specified representation.
+   * 
    * @param representation
    * @return
    */
   protected String getCloneName(DRepresentation representation, Session session) {
     String message = Messages.CapellaCloneDiagramCommand_CloneName_Prefix;
-    String cloneName = StringHelper.formatMessage(message, new Object[] { ICommonConstants.EMPTY_STRING, representation.getName() });
+    String cloneName = StringHelper.formatMessage(message,
+        new Object[] { ICommonConstants.EMPTY_STRING, representation.getName() });
     boolean cloneNameFound = false;
-    Collection<DRepresentation> allRepresentations = DialectManager.INSTANCE.getAllRepresentations(session);
+    Collection<DRepresentationDescriptor> allDescriptors = DialectManager.INSTANCE
+        .getAllRepresentationDescriptors(session);
     int i = 1;
     while (!cloneNameFound) {
       boolean collision = false;
-      for (DRepresentation rep : allRepresentations) {
+      for (DRepresentationDescriptor rep : allDescriptors) {
         if (cloneName.equals(rep.getName())) {
           collision = true;
           break;
         }
       }
       if (collision) {
-        cloneName =
-            StringHelper.formatMessage(message, new Object[] { ICommonConstants.EMPTY_STRING + ++i + ICommonConstants.WHITE_SPACE_CHARACTER,
-                                                              representation.getName() });
+        cloneName = StringHelper.formatMessage(message, new Object[] {
+            ICommonConstants.EMPTY_STRING + ++i + ICommonConstants.WHITE_SPACE_CHARACTER, representation.getName() });
       }
       cloneNameFound = !collision;
     }
@@ -215,6 +233,7 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
   /**
    * @see org.eclipse.emf.common.command.Command#redo()
    */
+  @Override
   public void redo() {
     execute();
   }
@@ -226,11 +245,21 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
   public void undo() {
     // Delete all cloned representations.
     for (DRepresentationDescriptor descriptor : _clones) {
-      Session session = SessionManager.INSTANCE.getSession(((DSemanticDecorator) descriptor.getRepresentation()).getTarget());
+      Session session = SessionManager.INSTANCE.getSession(descriptor.getTarget());
       DialectManager.INSTANCE.deleteRepresentation(descriptor, session);
     }
     // Clean clones collection.
     _clones.clear();
+  }
+
+  /**
+   * Returns a list of clones DRepresentationDescriptor.
+   * 
+   * @return _clones.
+   */
+  @Override
+  public Collection<DRepresentationDescriptor> getResult() {
+    return _clones;
   }
 
   /**
@@ -246,6 +275,7 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
   public interface ICloneListener {
     /**
      * Specified clone has just been added to specified session.
+     * 
      * @param clone
      * @param session
      */
@@ -253,6 +283,7 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
 
     /**
      * Specified clone is about to be removed from specified session.
+     * 
      * @param clone
      * @param session
      */

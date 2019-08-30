@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *    Thales - initial API and implementation
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.common.ju.wrapper.utils;
+
+import static org.junit.Assert.assertFalse;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -34,6 +36,7 @@ import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.listener.Notification;
 import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
@@ -43,6 +46,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramComponentizationManager;
@@ -52,18 +56,23 @@ import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.ui.business.api.helper.graphicalfilters.CompositeFilterApplicationBuilder;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.CopyFormatAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteFormatAction;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.PlatformUI;
 import org.junit.Assert;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
@@ -73,9 +82,11 @@ import org.polarsys.capella.common.ef.command.AbstractNonDirtyingCommand;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.mdsofa.common.helper.FileHelper;
 import org.polarsys.capella.core.diagram.helpers.ContextualDiagramHelper;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.sirius.analysis.CapellaServices;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.test.framework.api.CommonTestMessages;
+import org.polarsys.capella.test.framework.helpers.GuiActions;
 import org.polarsys.capella.test.framework.helpers.TestHelper;
 
 /**
@@ -93,6 +104,7 @@ public class DiagramHelper {
    */
   public static void setSynchronized(final DDiagram diagram, final boolean isSynchronized) {
     final AbstractCommand cmd = new AbstractReadWriteCommand() {
+      @Override
       public void run() {
         diagram.setSynchronized(isSynchronized);
         refreshDiagram(diagram);
@@ -254,8 +266,6 @@ public class DiagramHelper {
     return null;
   }
 
-  
-  
   /**
    * Return the first {@link DDiagramElement} corresponding to the first occurrence found for a given ID, null otherwise
    * 
@@ -456,6 +466,7 @@ public class DiagramHelper {
     try {
 
       final AbstractCommand cmd = new AbstractReadWriteCommand() {
+        @Override
         public void run() {
           DialectManager.INSTANCE.refresh(diagram, new NullProgressMonitor());
         }
@@ -488,6 +499,7 @@ public class DiagramHelper {
        * 
        * @see org.eclipse.sirius.diagram.tools.internal.handler.AbstractChangeLayerActivation#run()
        */
+      @Override
       public void run() {
 
         NotificationUtil.sendNotification(diagram, Notification.Kind.STOP, Notification.VISIBILITY);
@@ -533,7 +545,8 @@ public class DiagramHelper {
    * @param viewpoints
    * @return contributed layers
    */
-  public static List<Layer> getContributedLayers(DiagramDescription diagramDescription, Collection<Viewpoint> viewpoints) {
+  public static List<Layer> getContributedLayers(DiagramDescription diagramDescription,
+      Collection<Viewpoint> viewpoints) {
     return new DiagramComponentizationManager().getAllLayers(viewpoints, diagramDescription);
   }
 
@@ -552,6 +565,52 @@ public class DiagramHelper {
     DialectEditor editor = editingSession.getEditor(diagram);
 
     return editor;
+  }
+
+  public static void copyLayout(DDiagram diagram) {
+    Session session = SessionManager.INSTANCE.getSession(((DSemanticDecorator) diagram).getTarget());
+    IWorkbenchPart part = DiagramHelper.getDiagramEditor(session, diagram);
+    if (part == null) {
+      assertFalse("Diagram is not open, can't copy layout", true);
+    }
+    CopyFormatAction action = new CopyFormatAction(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage(),
+        part);
+    action.init(); // if we don't do init, action.getWorkbenchPart will be empty, even if we give the part in the
+                   // constructor. Due to AbstractCopyPasteFormatAction constructor calling the wrong super().
+    action.run();
+    GuiActions.flushASyncGuiThread();
+  }
+
+  public static void pasteLayout(DDiagram diagram) {
+    Session session = SessionManager.INSTANCE.getSession(((DSemanticDecorator) diagram).getTarget());
+    IWorkbenchPart part = DiagramHelper.getDiagramEditor(session, diagram);
+    if (part == null) {
+      assertFalse("Diagram is not open, can't paste layout", true);
+    }
+    PasteFormatAction action = new PasteFormatAction(
+        PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage(), part);
+    action.init();
+    action.run();
+    GuiActions.flushASyncGuiThread();
+
+    // Bug sirius: Copy Paste Layout doesn't take border size into account
+    // It requires a second paste
+    action.init();
+    action.run();
+    GuiActions.flushASyncGuiThread();
+
+  }
+
+  /**
+   * Close a 'diagram'
+   * 
+   * @param session
+   * @param diagram
+   * @return
+   */
+  public static void closeEditor(Session session, DDiagram diagram) {
+    IEditorPart editor = getDiagramEditor(session, diagram);
+    DialectUIManager.INSTANCE.closeEditor(editor, true);
   }
 
   /**
@@ -767,9 +826,10 @@ public class DiagramHelper {
    */
   @SuppressWarnings("boxing")
   public static void checkDiagramContextualElements(DDiagram diagram, List<EObject> expectedContextualElementsList) {
-    boolean hasContextualElements = ContextualDiagramHelper.getService().hasContextualElements(diagram);
+    DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
+    boolean hasContextualElements = ContextualDiagramHelper.getService().hasContextualElements(descriptor);
     Assert.assertTrue(MessageFormat.format(Messages.noContextualElement, diagram.getName()), hasContextualElements);
-    List<EObject> contextualElements = ContextualDiagramHelper.getService().getContextualElements(diagram);
+    List<EObject> contextualElements = ContextualDiagramHelper.getService().getContextualElements(descriptor);
     int expectedNumberOfContextualElements = expectedContextualElementsList.size();
     boolean sameSize = contextualElements.size() == expectedNumberOfContextualElements;
     Assert.assertTrue(MessageFormat.format(Messages.wrongNumberOfContextualElement, diagram.getName(),
@@ -796,6 +856,12 @@ public class DiagramHelper {
     return diagram;
   }
 
+  public static boolean isDiagramElementSelectable(DDiagramElement element) {
+    DDiagramElementQuery query = new DDiagramElementQuery(element);
+    return !(query.isIndirectlyCollapsed() || query.isFiltered() || query.isIndirectlyHidden()
+        || query.isIndirectlyFolded());
+  }
+
   public static boolean isDiagramElementFiltered(DDiagramElement element) {
     return new DDiagramElementQuery(element).isFiltered() || new DDiagramElementQuery(element).isIndirectlyFiltered();
   }
@@ -813,14 +879,12 @@ public class DiagramHelper {
 
   public static void addFilterInDiagram(final DDiagram diagram, final FilterDescription filter) {
     AbstractCommand cmd = new AbstractReadWriteCommand() {
+      @Override
       public void run() {
         EList<FilterDescription> activatedFilters = diagram.getActivatedFilters();
         activatedFilters.add(filter);
         CompositeFilterApplicationBuilder builder = new CompositeFilterApplicationBuilder(diagram);
         builder.computeCompositeFilterApplications();
-        DialectManager.INSTANCE.refresh(diagram, new NullProgressMonitor());// refreshes
-                                                                            // the
-                                                                            // diagram
       }
     };
     TestHelper.getExecutionManager(diagram).execute(cmd);
@@ -850,9 +914,9 @@ public class DiagramHelper {
       eObject = DiagramHelper.getOnDiagram(diagram, current);
       Assert.assertTrue(
           NLS.bind(errMsg,
-              new Object[] {
-                  current instanceof AbstractNamedElement ? ((AbstractNamedElement) current).getName() : current
-                      .eClass().getName(), diagram.getName() }), shouldBeAvailable ? eObject != null : eObject == null);
+              new Object[] { current instanceof AbstractNamedElement ? ((AbstractNamedElement) current).getName()
+                  : current.eClass().getName(), diagram.getName() }),
+          shouldBeAvailable ? eObject != null : eObject == null);
     }
   }
 
@@ -868,9 +932,9 @@ public class DiagramHelper {
       eObject = DiagramHelper.getOnDiagram(diagram, current);
       Assert.assertTrue(
           NLS.bind(errMsg,
-              new Object[] {
-                  current instanceof AbstractNamedElement ? ((AbstractNamedElement) current).getName() : current
-                      .eClass().getName(), diagram.getName() }), shouldBeAvailable ? eObject != null : eObject == null);
+              new Object[] { current instanceof AbstractNamedElement ? ((AbstractNamedElement) current).getName()
+                  : current.eClass().getName(), diagram.getName() }),
+          shouldBeAvailable ? eObject != null : eObject == null);
     }
   }
 
@@ -882,6 +946,15 @@ public class DiagramHelper {
 
     if (element instanceof DDiagram) {
       return new ArrayList<DDiagramElement>(((DDiagram) element).getOwnedDiagramElements());
+    }
+    if (element instanceof DNodeList) {
+      ArrayList<DDiagramElement> views = new ArrayList<DDiagramElement>();
+      for (DDiagramElement view : ((DNodeList) element).getOwnedElements()) {
+        if (view instanceof AbstractDNode) {
+          views.add(view);
+        }
+      }
+      return views;
     }
     if (element instanceof AbstractDNode) {
       return DiagramServices.getDiagramServices().getOwnedAbstractNodes(element);

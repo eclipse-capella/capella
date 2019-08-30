@@ -11,6 +11,7 @@
 package org.polarsys.capella.common.tools.report.appenders.reportlogview;
 
 import java.util.Collections;
+import java.util.List;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.WriterAppender;
@@ -64,7 +65,8 @@ public final class ReportManagerLogViewAppender extends WriterAppender {
     Object message = event.getMessage();
     if (message instanceof EmbeddedMessage) {
       report((EmbeddedMessage) message, level);
-      
+    } else if (message instanceof Diagnostic) {
+      report((Diagnostic) message);
     } else if (message != null) {
       report(event.getRenderedMessage(), level);
       
@@ -85,21 +87,27 @@ public final class ReportManagerLogViewAppender extends WriterAppender {
     }
   }
 
+  // Resolve marker's IResource (.aird file) and fall back to
+  // the workspace root if unable
+  private IResource getMarkerResource(List<?> objects) {
+    if (objects != null && !objects.isEmpty()) {
+      return getSessionResource(objects.get(0));
+    }
+    return workspaceRoot;
+  }
+
   private void report(EmbeddedMessage message, Level level) {
     int severity = log4jToDiagnostics(level);
-    // Resolve marker's IResource (.aird file)
-    IResource markerResource = null;
-    if (!message.getCapellaElements().isEmpty()) {
-      markerResource = getSessionResource(message.getCapellaElements().get(0)); 
-    }
-    if (markerResource == null) {
-      // fall back: No IResource found -> use workspace root
-      markerResource = workspaceRoot;
-    } 
+    IResource markerResource = getMarkerResource(message.getCapellaElements());
     LightMarkerRegistry.getInstance().createMarker(markerResource, 
         new BasicDiagnostic(severity, message.getSource(), 0, message.getLabel(), message.getCapellaElements().toArray()));
   }
-  
+
+  private void report(Diagnostic message) {
+    IResource markerResource = getMarkerResource(message.getData());
+    LightMarkerRegistry.getInstance().createMarker(markerResource, message);
+  }
+
   /**
    * Get Sirius Session .aird file from a given EObject/Resource.
    * @param obj

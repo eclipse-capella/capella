@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -19,7 +19,7 @@
       </category>
       <constraintProvider>
          <package
-               namespaceUri="http://www.polarsys.org/capella/common/re/1.2.0">
+               namespaceUri="http://www.polarsys.org/capella/common/re/1.3.0">
          </package>
          <constraints
                categories="capella.category/design/consistency">
@@ -42,6 +42,63 @@
                   This rule check if a RPL is up to date compared to its origin REC.
                </description>
             </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.re.validation.design.consistency.DCON_04_RplWithoutRec"
+                  id="DCON_04"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DCON_04 - RPL/REC_RPL without REC"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} ({1}) without REC
+               </message>
+               <target
+                     class="CatalogElement">
+               </target>
+               <description>
+                  This rule check if a RPL or REC_RPL has no REC.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.re.validation.design.consistency.DCON_05_RecWithoutRpl"
+                  id="DCON_05"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DCON_05 - REC might not have any RPL instance"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} ({1}) might not have any RPL instance
+               </message>
+               <target
+                     class="CatalogElement">
+               </target>
+               <description>
+                  This rule check if a REC might not be utilised in a RPL.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.re.validation.design.consistency.DCON_06_RecRplWithoutRpl"
+                  id="DCON_06"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DCON_06 - REC_RPL might not have any RPL instance"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} ({1}) might not have any RPL instance
+               </message>
+               <target
+                     class="CatalogElement">
+               </target>
+               <description>
+                  This rule check if a REC_RPL might not be utilised in a RPL.
+               </description>
+            </constraint>
          </constraints>
       </constraintProvider>
       <constraintProvider>
@@ -56,7 +113,7 @@
                   isEnabledByDefault="false"
                   lang="Java"
                   mode="Live"
-                  name="Blackbox"
+                  name="[Live] - Blackbox"
                   severity="ERROR"
                   statusCode="1">
                <message>

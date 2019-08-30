@@ -568,8 +568,7 @@ public class ScenarioService {
       fe = (FunctionalExchange) op;
     }
     StringBuilder result = new StringBuilder();
-    List<? extends AbstractExchangeItem> selectEIList;
-    selectEIList = firstNonEmpty(eiOnMessage, fe.getExchangedItems());
+    List<? extends AbstractExchangeItem> selectEIList = firstNonEmpty(eiOnMessage, fe != null ? fe.getExchangedItems() : Collections.emptyList());
 
     result.append(getSafeName(fe));
 
@@ -589,7 +588,7 @@ public class ScenarioService {
     } else {
       result.append("("); //$NON-NLS-1$
       // looking for information
-      List<ExchangeItemElement> eies = new ArrayList<ExchangeItemElement>();
+      List<ExchangeItemElement> eies = new ArrayList<>();
       for (AbstractExchangeItem aei : selectEIList) {
         if (aei instanceof ExchangeItem) {
           ExchangeItem ei = (ExchangeItem) aei;
@@ -624,7 +623,7 @@ public class ScenarioService {
       selectEIList = firstNonEmpty(eiOnMessage, ((FunctionalExchange) op).getExchangedItems());
     } else {
       ComponentExchange ce = (ComponentExchange) op;
-      List<ExchangeItem> itemsOfFe = new ArrayList<ExchangeItem>();
+      List<ExchangeItem> itemsOfFe = new ArrayList<>();
       int indice = 0;
       for (ComponentExchangeFunctionalExchangeAllocation fea : ce
           .getOwnedComponentExchangeFunctionalExchangeAllocations()) {
@@ -681,7 +680,7 @@ public class ScenarioService {
 
   private static List<? extends AbstractExchangeItem> firstNonEmpty(List<? extends AbstractExchangeItem> first,
       List<? extends AbstractExchangeItem> second) {
-    return first.size() > 0 ? first : second;
+    return !first.isEmpty() ? first : second;
   }
 
   /**

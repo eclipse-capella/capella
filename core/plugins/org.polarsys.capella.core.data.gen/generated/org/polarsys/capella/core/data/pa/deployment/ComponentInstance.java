@@ -54,6 +54,7 @@ public interface ComponentInstance extends AbstractPhysicalInstance, DeployableE
 	 * @return the value of the '<em>Port Instances</em>' reference list.
 	 * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getComponentInstance_PortInstances()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedAbstractPhysicalInstances'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */

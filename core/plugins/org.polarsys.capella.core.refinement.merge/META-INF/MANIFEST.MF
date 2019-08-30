@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.refinement.merge;singleton:=true
-Bundle-Version: 1.2.2.qualifier
+Bundle-Version: 1.3.1.qualifier
 Bundle-Activator: org.polarsys.capella.core.refinement.merge.MergeActivator
 Export-Package: org.polarsys.capella.core.refinement.merge,
  org.polarsys.capella.core.refinement.merge.exception,
@@ -20,6 +20,6 @@ Require-Bundle: org.polarsys.capella.core.refinement.framework;visibility:=reexp
  org.polarsys.capella.core.refinement.preferences
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: %providerName
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ManifestVersion: 2
 Bundle-Localization: plugin

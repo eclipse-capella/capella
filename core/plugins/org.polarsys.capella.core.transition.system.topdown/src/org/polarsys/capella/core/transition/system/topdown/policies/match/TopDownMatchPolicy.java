@@ -15,6 +15,10 @@ import java.util.HashSet;
 
 import org.eclipse.emf.diffmerge.api.scopes.IModelScope;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation;
@@ -25,6 +29,7 @@ import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.oa.ActivityAllocation;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
+import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
 import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityTraceHandler;
@@ -43,13 +48,12 @@ public class TopDownMatchPolicy
    * @param a
    *          non-null mapping of corresponding elements whose further modifications will impact this policy
    */
-  public TopDownMatchPolicy(IContext context2) {
-    super(context2);
+  public TopDownMatchPolicy(IContext context) {
+    super(context);
   }
 
   @Override
   public Comparable<?> getMatchID(EObject element, IModelScope scope) {
-    EObject bound = null;
 
     IContext context = getContext();
 
@@ -131,6 +135,11 @@ public class TopDownMatchPolicy
 
     if (!isMatchable(element, scope, context)) {
       ID += "UNMATCHABLE-ELEMENT-";
+    }
+
+    SystemEngineering engineering = (SystemEngineering) EcoreUtil2.getFirstContainer(element, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING);
+    if (engineering != null) {
+      ID += engineering.getId() + "_";
     }
 
     // If into an architecture, we add ArchitectureIdentifier

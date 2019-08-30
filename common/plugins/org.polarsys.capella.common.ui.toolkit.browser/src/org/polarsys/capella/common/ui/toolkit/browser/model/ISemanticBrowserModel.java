@@ -39,4 +39,8 @@ public interface ISemanticBrowserModel {
   public boolean containsExpandedHistory(String browserID);
 
   public List<String> getOrCreateHistory(String browserID);
+
+  void setListeningToPageSelectionEvents(boolean value);
+
+  boolean isListeningToPageSelectionEvents();
 }

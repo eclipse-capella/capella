@@ -52,7 +52,7 @@ public class OperationalActorHelper {
 	}
 
   protected List<Actor> getRealizingSystemActors(OperationalActor element) {
-    List<Actor> ret = new ArrayList<Actor>();
+    List<Actor> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof OperationalActorRealization) {
         Component cpnt = ((OperationalActorRealization)trace).getAllocatingComponent();

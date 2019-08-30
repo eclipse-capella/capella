@@ -43,7 +43,7 @@ public class PCBDScenario extends EmptyProject {
         diagram.getDiagramId());
 
     // Set the Project multi-parts
-    TestHelper.setReusableComponents(diagram.getSemanticElement(GenericModel.PC_1), true);
+    TestHelper.setReusableComponents(diagram.getSessionContext().getSemanticElement(GenericModel.PC_1), true);
 
     diagram.createPart(GenericModel.PC_1, GenericModel.PC_3, diagram.getDiagramId());
   }

@@ -52,14 +52,14 @@ public class ComponentAllocationHelper {
 
 	protected Component getAllocatedComponent(ComponentAllocation element) {
 		TraceableElement ret = element.getTargetElement();
-		if(null != ret && ret instanceof Component)
+		if(ret instanceof Component)
 			return (Component) ret;
 		return null;
 	}
 
 	protected Component getAllocatingComponent(ComponentAllocation element) {
 		TraceableElement ret = element.getSourceElement();
-		if(null != ret && ret instanceof Component)
+		if(ret instanceof Component)
 			return (Component) ret;
 		return null;
 	}

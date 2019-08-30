@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _m1bcAPyxEeWcsI4k6xXMnQ
-Runtime-Version: 2.3.0.201712190725
-Save-Time: 1/23/18 2:29 PM
+Runtime-Version: 2.3.0.201803290557
+Save-Time: 6/25/18 3:46 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -21,8 +21,8 @@ Entry-Name: .description
 Content-Type: text/ecl
 Entry-Name: .content
 
-get-view "Capella Project Explorer" | get-menu "Customize View..." | click
-with [get-window "Available Customizations"] {
+get-view "Capella Project Explorer" | get-menu "Filters and Customization..." | click
+with [get-window "Filters and Customization"] {
     get-tab-folder | get-tab-item Filters | click
     get-table | get-item Trace | uncheck
     get-button OK | click

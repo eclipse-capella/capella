@@ -50,7 +50,7 @@ public class CombinedFragmentHelper {
 	}
 
   protected List<Gate> getExpressionGates(CombinedFragment element) {
-    List<Gate> ret = new ArrayList<Gate>();
+    List<Gate> ret = new ArrayList<>();
 
     ret.addAll(element.getOwnedGates());
 

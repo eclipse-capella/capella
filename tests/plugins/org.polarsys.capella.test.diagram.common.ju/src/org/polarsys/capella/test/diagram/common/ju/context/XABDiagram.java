@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,38 +12,37 @@ package org.polarsys.capella.test.diagram.common.ju.context;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.diagram.DNode;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.cs.PhysicalLink;
-import org.polarsys.capella.core.data.pa.PaPackage;
+import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.ComponentPortType;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.FunctionPortType;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.FunctionType;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.LinkDirection;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.Type;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.actions.extensions.AbstractExternalJavaAction;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
-import org.polarsys.capella.test.diagram.common.ju.headless.HeadlessResultOpProvider;
-import org.polarsys.capella.test.diagram.common.ju.headless.IHeadlessResult;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.AbstractToolStep;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateAbstractDNodeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateNodeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreatePathTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
-import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
-import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.ReconnectTool;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.SelectFromListTool;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.SwitchTool;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
 public class XABDiagram extends CommonDiagram {
@@ -61,19 +60,25 @@ public class XABDiagram extends CommonDiagram {
     final BlockArchitectureExt.Type type = BlockArchitectureExt.getBlockArchitectureType(architecture);
 
     String name = null;
-    if (type == Type.OA) {
-      name = IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME;
-    } else if (type == Type.SA) {
+    switch (type) {
+    case OA:
+      return OABDiagram.createDiagram(executionContext, targetIdentifier);
+
+    case EPBS:
+      return EABDiagram.createDiagram(executionContext, targetIdentifier);
+
+    case PA:
+      return PABDiagram.createDiagram(executionContext, targetIdentifier);
+
+    case SA:
       name = IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME;
-    } else if (type == Type.LA) {
+      break;
+
+    case LA:
       name = IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME;
-    } else if (type == Type.PA) {
-      name = IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME;
+      break;
     }
 
-    if (type == Type.PA) {
-      return PABDiagram.createDiagram(executionContext, targetIdentifier);
-    }
     return (XABDiagram) new CreateDiagramStep(executionContext, targetIdentifier, name) {
       @Override
       public DiagramContext getResult() {
@@ -105,9 +110,8 @@ public class XABDiagram extends CommonDiagram {
     }
     new CreateContainerTool(this, name, getDiagramId(), id).run();
   }
-  
 
-  public void createFunction(String id, String containerId) {
+  public String getToolNameFunction() {
     String name = null;
     if (type == Type.OA) {
       name = IToolNameConstants.TOOL_OAB_CREATE_OPERATIONAL_ACTIVITY;
@@ -118,21 +122,74 @@ public class XABDiagram extends CommonDiagram {
     } else if (type == Type.PA) {
       name = IToolNameConstants.TOOL_PAB_CREATE_PHYSICAL_FUNCTION;
     }
+    return name;
+  }
+
+  public void createFunction(String id, String containerId) {
+    new CreateNodeTool(this, getToolNameFunction(), containerId, id).run();
+  }
+
+  public void createFunction(String id, String containerId, FunctionType functionType) {
+    String name = null;
+    switch (functionType) {
+    case SYSTEM_FUNCTION:
+      name = getToolNameFunction();
+      break;
+    case DUPLICATE:
+      name = IToolNameConstants.TOOL_XAB_CREATE_DUPLICATE;
+      break;
+    case GATHER:
+      name = IToolNameConstants.TOOL_XAB_CREATE_GATHER;
+      break;
+    case ROUTE:
+      name = IToolNameConstants.TOOL_XAB_CREATE_ROUTE;
+      break;
+    case SELECT:
+      name = IToolNameConstants.TOOL_XAB_CREATE_SELECT;
+      break;
+    case SPLIT:
+      name = IToolNameConstants.TOOL_XAB_CREATE_SPLIT;
+      break;
+    default:
+      break;
+    }
+
     new CreateNodeTool(this, name, containerId, id).run();
   }
 
-  public void removeActor(String id) {
+  public String getToolNameShowHideActor() {
     String name = null;
     if (type == Type.OA) {
       name = IToolNameConstants.TOOL_OAB_INSERT_REMOVE_OPERATIONAL_ENTITIES;
-    } else if (type == Type.SA) {
-      name = IToolNameConstants.TOOL_SAB_INSERT_ACTOR;
-    } else if (type == Type.LA) {
-      name = IToolNameConstants.TOOL_LAB_INSERT_ACTOR;
-    } else if (type == Type.PA) {
-      name = IToolNameConstants.TOOL_PAB_INSERT_PHYSICAL_ACTOR;
+    } else {
+      name = IToolNameConstants.TOOL_XAB_INSERT_ACTOR;
     }
-    new InsertRemoveTool(this, name).remove(id);
+    return name;
+  }
+
+  public void insertActor(String id) {
+    new InsertRemoveTool(this, getToolNameShowHideActor()).insert(id);
+  }
+
+  public void removeActor(String id) {
+    new InsertRemoveTool(this, getToolNameShowHideActor()).remove(id);
+  }
+
+  public void insertComponent(String id) {
+    insertComponent(id, getDiagramId());
+  }
+
+  public void insertComponent(String toInsertId, String containerId) {
+    String name = null;
+    if (type == Type.OA) {
+      name = IToolNameConstants.TOOL_OAB_INSERT_REMOVE_OPERATIONAL_ENTITIES;
+    } else if (type == Type.LA) {
+      name = IToolNameConstants.TOOL_XAB_INSERT_REMOVE_COMPONENTS_MONOPART;
+    } else if (type == Type.PA) {
+      // Nothing here.. need to specify which kind of component
+    }
+
+    new InsertRemoveTool(this, name, containerId).insert(toInsertId);
   }
 
   public void removeComponent(String id) {
@@ -148,7 +205,6 @@ public class XABDiagram extends CommonDiagram {
       new InsertRemoveTool(this, new String[] { IToolNameConstants.TOOL_XAB_INSERT_REMOVE_COMPONENTS_MONOPART,
           IToolNameConstants.TOOL_LAB_INSERT_REMOVE_COMPONENTS }, containerId).remove(id);
     }
-
   }
 
   public void createComponent(String id, String containerId) {
@@ -177,39 +233,98 @@ public class XABDiagram extends CommonDiagram {
   }
 
   public void createComponentExchangeDelegation(String idSource, String idTarget, String id) {
+    new CreateDEdgeTool(this, IToolNameConstants.TOOL_XAB_CREATE_DELEGATION, idSource, idTarget, id).run();
+  }
+
+  public void createComponentExchangeWithDelegation(String idSource, String idTarget, String id) {
+    new CreateDEdgeTool(this, IToolNameConstants.TOOL_XAB_CREATE_COMPONENT_EXCHANGE_WITH_DELEGATIONS, idSource,
+        idTarget, id).run();
+  }
+
+  public void createComponentExchangeWithPorts(String idSource, String idTarget, String id) {
+    new CreateDEdgeTool(this, IToolNameConstants.TOOL_XAB_CREATE_COMPONENT_EXCHANGE_WITH_PORTS, idSource, idTarget, id)
+        .run();
+  }
+
+  public void createComponentExchangeWithoutPorts(String idSource, String idTarget, String id) {
+    new CreateDEdgeTool(this, IToolNameConstants.TOOL_XAB_CREATE_COMPONENT_EXCHANGE_WITHOUT_PORTS, idSource, idTarget,
+        id).run();
+  }
+
+  public void createComponentExchangeBetweenTypes(String idSource, String idTarget, String id) {
+    new CreateDEdgeTool(this, IToolNameConstants.TOOL_XAB_CREATE_COMPONENT_EXCHANGE_BETWEEN_TYPES, idSource, idTarget,
+        id).run();
+  }
+
+  public String getToolNameReconnectComponentExchange(BlockArchitectureExt.LinkDirection direction) {
     String name = null;
-    if (type == Type.LA) {
-      name = IToolNameConstants.TOOL_LAB_CREATE_DELEGATION;
-    } else if (type == Type.PA) {
-      name = IToolNameConstants.TOOL_PAB_CREATE_DELEGATION;
+    if (direction == LinkDirection.SOURCE) {
+      if (type == Type.OA) {
+        name = IToolNameConstants.TOOL_OAB_RECONNECT_COMMUNICATION_MEAN_SOURCE;
+      } else if (type == Type.SA) {
+        name = IToolNameConstants.TOOL_SAB_RECONNECT_EXCHANGES_SOURCE;
+      } else if (type == Type.LA) {
+        name = IToolNameConstants.TOOL_LAB_RECONNECT_CONNECTION_SOURCE;
+      } else if (type == Type.PA) {
+        name = IToolNameConstants.TOOL_PAB_RECONNECT_COMPONENTEXCHANGE_SOURCE;
+      }
+    } else if (direction == LinkDirection.TARGET) {
+      if (type == Type.OA) {
+        name = IToolNameConstants.TOOL_OAB_RECONNECT_COMMUNICATION_MEAN_TARGET;
+      } else if (type == Type.SA) {
+        name = IToolNameConstants.TOOL_SAB_RECONNECT_EXCHANGES_TARGET;
+      } else if (type == Type.LA) {
+        name = IToolNameConstants.TOOL_LAB_RECONNECT_CONNECTION_TARGET;
+      } else if (type == Type.PA) {
+        name = IToolNameConstants.TOOL_PAB_RECONNECT_COMPONENTEXCHANGE_TARGET;
+      }
     }
-    new CreateDEdgeTool(this, name, idSource, idTarget, id).run();
+    return name;
+  }
+
+  public void reconnectComponentExchange(String id, String oldTargetId, String newTargetId,
+      BlockArchitectureExt.LinkDirection direction) {
+    new ReconnectTool(this, getToolNameReconnectComponentExchange(direction), id, oldTargetId, newTargetId).run();
+  }
+
+  public void cannotReconnectComponentExchange(String id, String oldTargetId, String newTargetId,
+      BlockArchitectureExt.LinkDirection direction) {
+    new ReconnectTool(this, getToolNameReconnectComponentExchange(direction), id, oldTargetId, newTargetId)
+        .shouldFail();
   }
 
   public void createFunctionalExchange(String idSource, String idTarget, String id) {
     String name = null;
     if (type == Type.OA) {
       name = IToolNameConstants.TOOL_OAB_CREATE_INTERACTION;
-    } else if (type == Type.SA) {
-      name = IToolNameConstants.TOOL_SAB_CREATE_FUNCTIONAL_EXCHANGE;
-    } else if (type == Type.LA) {
-      name = IToolNameConstants.TOOL_LAB_CREATE_FUNCTIONAL_EXCHANGE;
-    } else if (type == Type.PA) {
-      name = IToolNameConstants.TOOL_PAB_CREATE_FUNCTIONAL_EXCHANGE;
+    } else {
+      name = IToolNameConstants.TOOL_XAB_CREATE_FUNCTIONAL_EXCHANGE;
     }
     new CreateDEdgeTool(this, name, idSource, idTarget, id).run();
   }
 
   public void createPhysicalLink(String idSource, String idTarget, String id) {
+    new CreateDEdgeTool(this, IToolNameConstants.TOOL_XAB_CREATE_PHYSICAL_LINK, idSource, idTarget, id).run();
+  }
+
+  public String getToolNameReconnectPhysicalLink(BlockArchitectureExt.LinkDirection direction) {
     String name = null;
-    if (type == Type.SA) {
-      name = IToolNameConstants.TOOL_SAB_CREATE_PHYSICAL_LINK;
-    } else if (type == Type.LA) {
-      name = IToolNameConstants.TOOL_LAB_CREATE_PHYSICAL_LINK;
-    } else if (type == Type.PA) {
-      name = IToolNameConstants.TOOL_PAB_CREATE_PHYSICAL_LINK;
+    if (direction == LinkDirection.SOURCE) {
+      name = IToolNameConstants.TOOL_XAB_RECONNECT_PHYSICALLINK_SOURCE_ID;
+    } else if (direction == LinkDirection.TARGET) {
+      name = IToolNameConstants.TOOL_XAB_RECONNECT_PHYSICALLINK_TARGET_ID;
     }
-    new CreateDEdgeTool(this, name, idSource, idTarget, id).run();
+    return name;
+  }
+
+  public void reconnectPhysicalLink(String id, String oldTargetId, String newTargetId,
+      BlockArchitectureExt.LinkDirection direction) {
+    new ReconnectTool(this, getToolNameReconnectPhysicalLink(direction), id, oldTargetId, newTargetId).run();
+  }
+
+  public void cannotReconnectPhysicalLink(String id, String oldTargetId, String newTargetId,
+      BlockArchitectureExt.LinkDirection direction) {
+    new ReconnectTool(this, getToolNameReconnectPhysicalLink(direction), id, oldTargetId, newTargetId).shouldFail();
   }
 
   public void insertComponentExchange(String id, String containerId) {
@@ -226,75 +341,98 @@ public class XABDiagram extends CommonDiagram {
     new InsertRemoveTool(this, name, containerId).insert(id);
   }
 
-  public void insertComponent(String toInsertId, String containerId) {
+  public void removeComponentExchange(String id, String containerId) {
     String name = null;
     if (type == Type.OA) {
-      name = IToolNameConstants.TOOL_OAB_INSERT_REMOVE_OPERATIONAL_ENTITIES;
-    } else if (type == Type.LA) {
-      name = IToolNameConstants.TOOL_XAB_INSERT_REMOVE_COMPONENTS_MONOPART;
-    } else if (type == Type.PA) {
-      // Nothing here.. need to specify which kind of component
-    }
-
-    new InsertRemoveTool(this, name, containerId).insert(toInsertId);
-  }
-
-  public void insertPhysicalLink(String id, String containerId) {
-    String name = null;
-    if (type == Type.SA) {
-      name = IToolNameConstants.TOOL_SAB_SHOW_HIDE_PHYSICAL_LINK;
-    } else if (type == Type.LA) {
-      name = IToolNameConstants.TOOL_LAB_SHOW_HIDE_PHYSICAL_LINK;
-    } else if (type == Type.PA) {
-      name = IToolNameConstants.TOOL_PAB_SHOW_HIDE_PHYSICAL_LINK;
-    }
-    new InsertRemoveTool(this, name, containerId).insert(id);
-  }
-
-  public void manageAllocatedFunction(String id, String containerId) {
-    String name = null;
-    if (type == Type.OA) {
-      name = IToolNameConstants.TOOL_OAB_MANAGE_ACTIVITY_ALLOCATION;
+      name = IToolNameConstants.TOOL_OAB_SHOW_HIDE_COMMUNICATION_MEAN;
     } else if (type == Type.SA) {
-      name = IToolNameConstants.TOOL_SAB_MANAGE_FUNCTION_ALLOCATION;
+      name = IToolNameConstants.TOOL_SAB_SHOW_HIDE_COMPONENT_EXCHANGE;
     } else if (type == Type.LA) {
-      name = IToolNameConstants.TOOL_LAB_MANAGE_FUNCTION_ALLOCATION;
+      name = IToolNameConstants.TOOL_LAB_SHOW_HIDE_COMPONENT_EXCHANGE;
     } else if (type == Type.PA) {
-      name = IToolNameConstants.TOOL_PAB_MANAGE_FUNCTION_ALLOCATION;
-    }
-    new InsertRemoveTool(this, name, containerId).insert(id);
-  }
-
-  public void insertAllocatedFunction(String id, String containerId) {
-    String name = null;
-    if (type == Type.OA) {
-      name = IToolNameConstants.TOOL_OAB_INSERT_REMOVE_ALLOCATED_ACTIVITIES;
-    } else if (type == Type.SA) {
-      name = IToolNameConstants.TOOL_SAB_INSERT_REMOVE_ALLOCATED_FUNCTIONS;
-    } else if (type == Type.LA) {
-      name = IToolNameConstants.TOOL_LAB_INSERT_REMOVE_ALLOCATED_FUNCTIONS;
-    } else if (type == Type.PA) {
-      name = IToolNameConstants.TOOL_PAB_INSERT_REMOVE_ALLOCATED_FUNCTIONS;
-    }
-    new InsertRemoveTool(this, name, containerId).insert(id);
-  }
-
-  public void removeAllocatedFunction(String id, String containerId) {
-    String name = null;
-    if (type == Type.OA) {
-      name = IToolNameConstants.TOOL_OAB_INSERT_REMOVE_ALLOCATED_ACTIVITIES;
-    } else if (type == Type.SA) {
-      name = IToolNameConstants.TOOL_SAB_INSERT_REMOVE_ALLOCATED_FUNCTIONS;
-    } else if (type == Type.LA) {
-      name = IToolNameConstants.TOOL_LAB_INSERT_REMOVE_ALLOCATED_FUNCTIONS;
-    } else if (type == Type.PA) {
-      name = IToolNameConstants.TOOL_PAB_INSERT_REMOVE_ALLOCATED_FUNCTIONS;
+      name = IToolNameConstants.TOOL_PAB_SHOW_HIDE_COMPONENT_EXCHANGE;
     }
     new InsertRemoveTool(this, name, containerId).remove(id);
   }
 
+  public void insertPhysicalLink(String id, String containerId) {
+    new InsertRemoveTool(this, IToolNameConstants.TOOL_XAB_SHOW_HIDE_PHYSICAL_LINK, containerId).insert(id);
+  }
+
+  public void removePhysicalLink(String id, String containerId) {
+    new InsertRemoveTool(this, IToolNameConstants.TOOL_XAB_SHOW_HIDE_PHYSICAL_LINK, containerId).remove(id);
+  }
+
+  public String getToolNameManageAllocatedFunction() {
+    String name = null;
+    if (type == Type.OA) {
+      name = IToolNameConstants.TOOL_OAB_MANAGE_ACTIVITY_ALLOCATION;
+    } else {
+      name = IToolNameConstants.TOOL_XAB_MANAGE_FUNCTION_ALLOCATION;
+    }
+    return name;
+  }
+
+  public void manageAllocatedFunction(String id, String containerId) {
+    new InsertRemoveTool(this, getToolNameManageAllocatedFunction(), containerId).insert(id);
+  }
+
+  public void manageAllocatedFunctionRemove(String id, String containerId) {
+    new InsertRemoveTool(this, getToolNameManageAllocatedFunction(), containerId).remove(id);
+  }
+
+  private String getToolNameShowHideAllocatedFunction() {
+    String name = null;
+    if (type == Type.OA) {
+      name = IToolNameConstants.TOOL_OAB_INSERT_REMOVE_ALLOCATED_ACTIVITIES;
+    } else if (type == Type.SA) {
+      name = IToolNameConstants.TOOL_SAB_INSERT_REMOVE_ALLOCATED_FUNCTIONS;
+    } else if (type == Type.LA) {
+      name = IToolNameConstants.TOOL_LAB_INSERT_REMOVE_ALLOCATED_FUNCTIONS;
+    } else if (type == Type.PA) {
+      name = IToolNameConstants.TOOL_PAB_INSERT_REMOVE_ALLOCATED_FUNCTIONS;
+    }
+    return name;
+  }
+
+  public void insertAllocatedFunction(String id, String containerId) {
+    new InsertRemoveTool(this, getToolNameShowHideAllocatedFunction(), containerId).insert(id);
+  }
+
+  public void removeAllocatedFunction(String id, String containerId) {
+    new InsertRemoveTool(this, getToolNameShowHideAllocatedFunction(), containerId).remove(id);
+  }
+
+  private String getToolNameALLAllocatedFunction(String... types) {
+    String name = null;
+    String[] aTypes = types;
+    if (type == Type.OA) {
+      if (aTypes.length > 0) {
+        name = aTypes[0];
+      } else {
+        name = IToolNameConstants.TOOL_OAB_INSERT_REMOVE_ALL_ALLOCATED_ACTIVITIES_IN_ENTITIES;
+      }
+    } else if (type == Type.SA) {
+      name = IToolNameConstants.TOOL_SAB_INSERT_REMOVE_ALL_ALLOCATED_FUNCTIONS;
+    } else if (type == Type.LA) {
+      name = IToolNameConstants.TOOL_LAB_INSERT_REMOVE_ALL_ALLOCATED_FUNCTIONS;
+    } else if (type == Type.PA) {
+      name = IToolNameConstants.TOOL_PAB_INSERT_REMOVE_ALL_ALLOCATED_FUNCTIONS;
+    }
+
+    return name;
+  }
+
+  public void insertAllAllocatedFunction(String id, String containerId, String... types) {
+    new InsertRemoveTool(this, getToolNameALLAllocatedFunction(types), containerId).insert(id);
+  }
+
+  public void removeAllAllocatedFunction(String id, String containerId, String... types) {
+    new InsertRemoveTool(this, getToolNameALLAllocatedFunction(types), containerId).remove(id);
+  }
+
   @Override
-  public Collection<EObject> adaptTool(AbstractToolStep tool, Map<String, Object> parameters,
+  public Collection<EObject> adaptTool(AbstractToolStep<?> tool, Map<String, Object> parameters,
       Collection<EObject> semanticElements) {
     Collection<EObject> scope = AbstractExternalJavaAction.getScope(parameters);
     if (scope.isEmpty()) {
@@ -316,7 +454,7 @@ public class XABDiagram extends CommonDiagram {
     return result;
   }
 
-  public void insertFunctionalExchange(String id, String containerId, boolean autoRefresh) {
+  public String getNameFunctionalExchange() {
     String name = null;
     if (type == Type.SA) {
       name = IToolNameConstants.TOOL_SAB_SHOW_HIDE_FUNCTIONAL_EXCHANGES;
@@ -325,15 +463,245 @@ public class XABDiagram extends CommonDiagram {
     } else if (type == Type.PA) {
       name = IToolNameConstants.TOOL_PAB_SHOW_HIDE_FUNCTIONAL_EXCHANGES;
     }
-    new InsertRemoveTool(this, name, containerId, autoRefresh).insert(id);
+    return name;
+  }
+
+  public void insertFunctionalExchange(String id, String containerId, boolean autoRefresh) {
+    new InsertRemoveTool(this, getNameFunctionalExchange(), containerId, autoRefresh).insert(id);
+  }
+
+  public void removeFunctionalExchange(String id, String containerId, boolean autoRefresh) {
+    new InsertRemoveTool(this, getNameFunctionalExchange(), containerId, autoRefresh).remove(id);
+  }
+
+  public String getToolNameReconnectFunctionalExchange() {
+    String name = null;
+    if (type == Type.OA) {
+      name = IToolNameConstants.TOOL_OAB_RECONNECT_INTERACTION;
+    } else if (type == Type.SA) {
+      name = IToolNameConstants.TOOL_SAB_RECONNECT_FUNCTION_EXCHANGES;
+    } else if (type == Type.LA) {
+      name = IToolNameConstants.TOOL_LAB_RECONNECT_FUNCTION_EXCHANGE;
+    } else if (type == Type.PA) {
+      name = IToolNameConstants.TOOL_PAB_RECONNECT_FUNCTION_EXCHANGE;
+    }
+    return name;
+  }
+
+  public void reconnectFunctionalExchange(String id, String oldTargetId, String newTargetId) {
+    new ReconnectTool(this, getToolNameReconnectFunctionalExchange(), id, oldTargetId, newTargetId).run();
+  }
+
+  public void cannotReconnectFunctionalExchange(String id, String oldTargetId, String newTargetId) {
+    new ReconnectTool(this, getToolNameReconnectFunctionalExchange(), id, oldTargetId, newTargetId).shouldFail();
   }
 
   public void createPhysicalPath(final String path, final String... links) {
     new CreatePathTool(this, IToolNameConstants.TOOL_CREATE_PHYSICAL_PATH, path, links).run();
   }
-  
-  public void createFunctionalChain(String path, String ...links) {
+
+  public void insertPhysicalPath(String... path) {
+    new InsertRemoveTool(this, IToolNameConstants.TOOL_XAB_INSERT_REMOVE_PHYSICAL_PATH).insert(path);
+  }
+
+  public void removePhysicalPath(String... path) {
+    new InsertRemoveTool(this, IToolNameConstants.TOOL_XAB_INSERT_REMOVE_PHYSICAL_PATH).remove(path);
+  }
+
+  public void createFunctionalChain(String path, String... links) {
     new CreatePathTool(this, IToolNameConstants.TOOL_CREATE_FUNCTIONAL_CHAIN, path, links).run();
   }
 
+  public String getToolNameFunctionalChains() {
+    String name = null;
+    if (type == Type.OA) {
+      name = IToolNameConstants.TOOL_OAB_INSERT_REMOVE_OPERATIONAL_PROCESSES;
+    } else {
+      name = IToolNameConstants.TOOL_XAB_INSERT_REMOVE_FUNCTIONAL_CHAINS;
+    }
+
+    return name;
+  }
+
+  public void insertFunctionalChain(String id) {
+    new InsertRemoveTool(this, getToolNameFunctionalChains(), getDiagramId()).insert(id);
+  }
+
+  public void removeFunctionalChain(String id) {
+    new InsertRemoveTool(this, getToolNameFunctionalChains(), getDiagramId()).remove(id);
+  }
+
+  public void createFunctionPort(String id, FunctionPortType fpType, String containerId) {
+    String name = null;
+    switch (fpType) {
+    case IN_FUNCTION_PORT:
+      name = IToolNameConstants.TOOL_XAB_CREATE_FUNCTION_INPUT_PORT;
+      break;
+    case OUT_FUNCTION_PORT:
+      name = IToolNameConstants.TOOL_XAB_CREATE_FUNCTION_OUTPUT_PORT;
+    default:
+      break;
+    }
+    new CreateAbstractDNodeTool<DNode>(this, name, containerId, id).run();
+  }
+
+  public void createComponentPort(String id, ComponentPortType cpType, String containerId) {
+    String name = null;
+    switch (cpType) {
+    case IN_FLOW_PORT:
+      name = IToolNameConstants.TOOL_XAB_CREATE_INFLOW_PORT;
+      break;
+    case OUT_FLOW_PORT:
+      name = IToolNameConstants.TOOL_XAB_CREATE_OUTFLOW_PORT;
+      break;
+    case IN_OUT_FLOW_PORT:
+      name = IToolNameConstants.TOOL_XAB_CREATE_INOUT_FLOW_PORT;
+      break;
+    case STANDARD_PORT:
+      name = IToolNameConstants.TOOL_XAB_CREATE_STANDARD_PORT;
+      break;
+    default:
+      break;
+    }
+
+    new CreateAbstractDNodeTool<DNode>(this, name, containerId, id).run();
+  }
+
+  public void createPhysicalPort(String id, String containerId) {
+    new CreateAbstractDNodeTool<DNode>(this, IToolNameConstants.TOOL_XAB_CREATE_PHYSICAL_PORT, containerId, id).run();
+  }
+
+  public void createPortAllocation(String sourceId, String targetId) {
+    new CreateDEdgeTool(this, IToolNameConstants.TOOL_XAB_CREATE_PORT_ALLOCATION, sourceId, targetId).run();
+  }
+
+  public void removePortAllocation(String containerId, String id) {
+    new InsertRemoveTool(this, IToolNameConstants.TOOL_XAB_INSERT_REMOVE_PORT_ALLOCATION, containerId).insert(id);
+  }
+
+  public void insertPortAllocation(String containerId, String id) {
+    new InsertRemoveTool(this, IToolNameConstants.TOOL_XAB_INSERT_REMOVE_PORT_ALLOCATION, containerId).remove(id);
+  }
+
+  public void selectElementsFromModesAndStates(String[] selectedModeAndStates, String... inserted) {
+    String name = null;
+    if (type == Type.OA) {
+      name = IToolNameConstants.TOOL_OAB_INSERT_ACTIVITIES_FROM_MODE_STATE;
+    } else {
+      name = IToolNameConstants.TOOL_XAB_INSERT_FUNCTIONS_FROM_MODE_STATE;
+    }
+
+    new SelectFromListTool(this, name, this.getDiagramId(), inserted).select(selectedModeAndStates);
+  }
+
+  public void selectElementsFromScenario(String[] selectedScenarioIds, String... inserted) {
+    new SelectFromListTool(this, IToolNameConstants.TOOL_XAB_INSERT_ELEMENTS_FROM_SCENARIO, this.getDiagramId(),
+        inserted).select(selectedScenarioIds);
+  }
+
+  private String getToolNameShowHidePorts() {
+    String name = null;
+    if (type == Type.SA) {
+      name = IToolNameConstants.TOOL_SAB_INSERT_REMOVE_PORTS;
+    } else if (type == Type.LA) {
+      name = IToolNameConstants.TOOL_LAB_INSERT_REMOVE_PORTS;
+    } else if (type == Type.PA) {
+      name = IToolNameConstants.TOOL_PAB_INSERT_REMOVE_PORTS;
+    }
+    return name;
+  }
+
+  public void insertPort(String id, String containerId) {
+    new InsertRemoveTool(this, getToolNameShowHidePorts(), containerId).insert(id);
+  }
+
+  public void removePort(String id, String containerId) {
+    new InsertRemoveTool(this, getToolNameShowHidePorts(), containerId).remove(id);
+  }
+
+  public void insertFunctionPort(String id, String containerId) {
+    new InsertRemoveTool(this, IToolNameConstants.TOOL_XAB_INSERT_REMOVE_FUNCTION_PORTS, containerId).insert(id);
+  }
+
+  public void removeFunctionPort(String id, String containerId) {
+    new InsertRemoveTool(this, IToolNameConstants.TOOL_XAB_INSERT_REMOVE_FUNCTION_PORTS, containerId).remove(id);
+  }
+
+  public void insertCategory(String id, String containerId) {
+    // new InsertRemoveTool(this, getToolNameShowCategories(), containerId).insert(id);
+    new SelectFromListTool(this, IToolNameConstants.TOOL_XAB_INSERT_REMOVE_CATEGORIES, containerId, id).select(id);
+  }
+
+  public void removeCategory(String id, String containerId) {
+    // new InsertRemoveTool(this, getToolNameShowCategories(), containerId).remove(id);
+    new SelectFromListTool(this, IToolNameConstants.TOOL_XAB_INSERT_REMOVE_CATEGORIES, containerId).select(id);
+  }
+
+  public void switchComponentExchangesCategories(String id, boolean addCategory) {
+    if (addCategory)
+      new SwitchTool(this, IToolNameConstants.TOOL_SAB_INSERT_REMOVE_COMPONENT_EXCHANGES_CATEGORIES).insert(id);
+    else
+      new SwitchTool(this, IToolNameConstants.TOOL_SAB_INSERT_REMOVE_COMPONENT_EXCHANGES_CATEGORIES).remove(id);
+  }
+
+  public void switchPhysicalLinksCategories(String id, boolean addCategory) {
+    if (addCategory)
+      new SwitchTool(this, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_PHYSICAL_LINKS_CATEGORIES).insert(id);
+    else
+      new SwitchTool(this, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_PHYSICAL_LINKS_CATEGORIES).remove(id);
+  }
+
+  public void switchFunctionalExchangesCategories(String id, boolean addCategory) {
+    if (addCategory)
+      new SwitchTool(this, IToolNameConstants.TOOL_XAB_INSERT_REMOVE_EXCHANGE_CATEGORIES).insert(id);
+    else
+      new SwitchTool(this, IToolNameConstants.TOOL_XAB_INSERT_REMOVE_EXCHANGE_CATEGORIES).remove(id);
+  }
+
+  public void reuseComponent(String containerId, String... ids) {
+    String name = null;
+    if (type == Type.LA) {
+      name = IToolNameConstants.TOOL_LAB_REUSE_LOGICAL_COMPONENT;
+    } else if (type == Type.PA) {
+      name = IToolNameConstants.TOOL_PAB_REUSE_PC;
+    }
+    new SelectFromListTool(this, name, containerId, ids).select(ids);
+  }
+
+  public void reuseActor(String containerId, String... ids) {
+    String name = null;
+    if (type == Type.SA) {
+      name = IToolNameConstants.TOOL_SAB_REUSE_ACTOR;
+    } else if (type == Type.LA) {
+      name = IToolNameConstants.TOOL_LAB_REUSE_LOGICAL_ACTOR;
+    }
+    new SelectFromListTool(this, name, containerId, ids).select(ids);
+  }
+
+  @Override
+  public void hasntView(String identifier) {
+    super.hasntView(identifier);
+    checkContainedElements(identifier);
+  }
+
+  public void checkContainedElements(String id) {
+    EObject semantic = getSessionContext().getSemanticElement(id);
+
+    if (semantic != null) {
+      if (semantic instanceof Part) {
+        Part partSem = (Part) semantic;
+        if (partSem.getAbstractType() instanceof Component) {
+          Component component = (Component) partSem.getAbstractType();
+          Collection<ComponentExchange> ce = ComponentExt.getAllRelatedComponentExchange(component);
+          for (ComponentExchange c : ce) {
+            super.hasntView(c.getId());
+          }
+        }
+      }
+    }
+  }
+
+  public BlockArchitectureExt.Type getDiagramType() {
+    return type;
+  }
 }

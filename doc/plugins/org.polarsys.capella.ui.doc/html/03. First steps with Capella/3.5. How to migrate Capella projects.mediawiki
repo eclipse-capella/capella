@@ -1,28 +1,33 @@
             
 = How to Migrate Capella Project =
- 
-Capella offers migration feature to operate with old Capella projects.
 
+When upgrading to a new Capella product, your older models may not be compatible right away with this new version.
+In order to facilitate this transition, Capella offers a migration feature that allows you to migrate your models.
+
+The migrated projects '''are not backwards compatible'''. This means that once they are migrated to the new version, they '''can not''' be opened with the previous Capella versions. For more details please refer to the '''Capella versions requiring a project migration''' section below.
+
+We strongly recommend that you baseline your model in a version control system before performing the migration operation. Once this is done please continue with the following migration steps:
+
+# Migrate any libraries towards wich you model has any dependencies. If your libraries have dependencies towards other libraries then they must be migrated first. You should start your migration process with the library that has no external dependencies, and continue progressively to the top dependency.
+# Migrate your projects.
  
-To launch the migration process on a Capella Project, right click on the <u>'''project'''</u> and choose ''migration &gt; Migrate Project toward current version''
+In order to launch the migration process of a Capella Project you must right click on the <u>'''project'''</u> and choose ''Migration &gt; Migrate Project toward current version''. The same steps apply to libraries as well.
 
  
 [[Image:Images/3.5.%20How%20to%20migrate%20Melody%20Advance%20projects_html_m55692da5.png|675x430px]]
 
  
-A reminder asks to manually make a versioned copy (baseline) of the model before running migration.
+The displayed dialog allows you to to make a versioned backup (baseline) of the model before running the migration.
+These backup files will allow you to recover your model in case of any migration problems, even if the model is not managed in a source control system. 
 
- 
-Capella creates backup files before performing migration to go back in case of migration problems, even if models are not managed in source control. Please check the option &ldquo;Backup models before the migration&rdquo;.
+We highly advise you to enable the option &ldquo;Backup models before the migration&rdquo;.
 
  
 [[Image:Images/3.5.%20How%20to%20migrate%20Melody%20Advance%20projects_html_m381b2efb.png|567x210px]]
 
-<br>
-<br>
-Some additional migration commands are available on semantic and diagram files allowing advanced migration processes by triggering migration on each files kind separately. These commands can be enabled following "Capella Guide > User Manual > Preferences > Capella > Commands & User Profiles" section.
 
- 
+Some additional migration commands are available on semantic and diagram files allowing advanced migration processes by triggering a migration on each of these files kind separately. For more details see the [[../help/topic/org.polarsys.capella.preferences.doc/html/06.%20Preferences/6.4.%20Commands%20preferences.html?cp=6_1_21_1_11_0_0| Commands & User Profiles]] section.
+
 <br>
 <br>
         
@@ -33,11 +38,24 @@ Some additional migration commands are available on semantic and diagram files a
 
  
 | 
-At the end of the migration of a project, we recommend to run a manual global refresh of all diagrams on the migrated project (See Capella Guide > User Manual > Diagram Management > Diagram Concepts > Diagram Refreshing Strategies).
+At the end of the migration process, we recommend you to run a manual global refresh on all the diagrams of the migrated project. For more details see the [[../help/topic/org.polarsys.capella.ui.doc/html/05.%20Diagram%20Management/5.1.%20Diagram%20concepts.html?cp=6_1_6_0_1#Diagram_Refreshing_Strategies| Diagram Refreshing Strategies]] section.
 
- 
 |}  
 <br>
-<br>
+== Capella versions requiring a project migration==
+The following table presents the Capella version transitions that require a project migration.
+
+
+{| border="1"
+! Previous Capella Version
+! Upgraded Capella Version
+|-
+| 1.2.x
+| 1.3.x
+|-
+| 1.3.0
+| 1.3.1
+|}
+
 
    

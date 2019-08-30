@@ -52,13 +52,9 @@ public class GeneralizableElementExt {
    * @param element_b the second element
    * @return <code>true</code> if the affectation is possible, <code>false</code> otherwise
    */
-  public static boolean isInheritancyCycleCompatible(GeneralizableElement element_a, GeneralizableElement element_b) {
-    if (!GeneralizableElementExt.getAllSuperGeneralizableElements(element_a).contains(element_b)
-     && !GeneralizableElementExt.getAllSuperGeneralizableElements(element_b).contains(element_a))
-    {
-      return true;
-    }
-    return false;
+  public static boolean isInheritancyCycleCompatible(GeneralizableElement elementA, GeneralizableElement elementB) {
+    return !GeneralizableElementExt.getAllSuperGeneralizableElements(elementA).contains(elementB)
+        && !GeneralizableElementExt.getAllSuperGeneralizableElements(elementB).contains(elementA);
   }
 
 
@@ -67,8 +63,8 @@ public class GeneralizableElementExt {
    * @param generalizableElement the current classifier
    * @return list of classifiers
    */
-  static public List<GeneralizableElement> getAllSuperGeneralizableElements(GeneralizableElement generalizableElement) {
-    List<GeneralizableElement> superGeneralizableElements = new ArrayList<GeneralizableElement>();
+  public static List<GeneralizableElement> getAllSuperGeneralizableElements(GeneralizableElement generalizableElement) {
+    List<GeneralizableElement> superGeneralizableElements = new ArrayList<>();
     if (null != generalizableElement) {
       getAllSuperGeneralizableElements2(generalizableElement, superGeneralizableElements);
     }
@@ -80,7 +76,7 @@ public class GeneralizableElementExt {
    * @param generalizableElement1 the current classifier
    * @return list of classifiers
    */
-  static private void getAllSuperGeneralizableElements2(GeneralizableElement generalizableElement1, List<GeneralizableElement> list) {
+  private static void getAllSuperGeneralizableElements2(GeneralizableElement generalizableElement1, List<GeneralizableElement> list) {
     for (GeneralizableElement generalizableElement : generalizableElement1.getSuper()) {
       if (
           !list.contains(generalizableElement)
@@ -89,8 +85,6 @@ public class GeneralizableElementExt {
         getAllSuperGeneralizableElements2(generalizableElement, list);
       }
     }
-    
-    return;
   }  
   
   /**
@@ -99,7 +93,7 @@ public class GeneralizableElementExt {
    * @return the inheriting generalizable elements list.
    */
   public static List<GeneralizableElement> getAllSubGeneralizableElements(GeneralizableElement generalizableElement) {
-    List<GeneralizableElement> subGeneralizableElements = new ArrayList<GeneralizableElement>();
+    List<GeneralizableElement> subGeneralizableElements = new ArrayList<>();
     
     if (null != generalizableElement) {
       getAllSubGeneralizableElements2(generalizableElement, subGeneralizableElements);
@@ -117,7 +111,6 @@ public class GeneralizableElementExt {
           getAllSubGeneralizableElements2(generalizableElement, list);
         }
       }
-      return;
   }
 
   /**
@@ -139,8 +132,8 @@ public class GeneralizableElementExt {
    * @param classifier the classifier
    * @return the root super types
    */
-  static public List<GeneralizableElement> getRootSupertypes(GeneralizableElement classifier) {
-    List<GeneralizableElement> list = new ArrayList<GeneralizableElement>();
+  public static List<GeneralizableElement> getRootSupertypes(GeneralizableElement classifier) {
+    List<GeneralizableElement> list = new ArrayList<>();
     if (null != classifier) {
       // Gets the super classifiers of the current element
       for (Generalization generalization : classifier.getSuperGeneralizations()) {
@@ -150,7 +143,7 @@ public class GeneralizableElementExt {
           // if it is not null
           // Gets its own super types
           List<GeneralizableElement> supertypes = superCls.getSuper();
-          if (null == supertypes || supertypes.size() == 0) {
+          if (null == supertypes || supertypes.isEmpty()) {
             // If there is no super type for this one, then it is a root super type of <code>classifier</code>
             list.add(superCls);
           } else {
@@ -160,7 +153,7 @@ public class GeneralizableElementExt {
         }
       }
     }
-    if (list.size() == 0) {
+    if (list.isEmpty()) {
       // The current type is the root type because it generalizes "nobody"
       list.add(classifier);
     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.InterfaceImplementation;
 import org.polarsys.capella.core.data.ctx.Actor;
+import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.la.LogicalActor;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalActor;
@@ -52,6 +53,8 @@ public class GetAvailable_InterfaceImplementation_ImplementedInterface extends A
 
       } else if (component instanceof PhysicalActor) {
         queryIdentifier = "GetAvailable_PhysicalActor_ImplementedInterfaces__Lib"; //$NON-NLS-1$
+      } else if (component instanceof ConfigurationItem) {
+        queryIdentifier = "GetAvailable_ConfigurationItem_ImplementedInterfaces__Lib";
       }
       return QueryInterpretor.executeQuery(queryIdentifier, component, context);
     }

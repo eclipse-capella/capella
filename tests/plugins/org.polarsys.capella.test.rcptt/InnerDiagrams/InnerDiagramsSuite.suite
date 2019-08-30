@@ -4,8 +4,8 @@ Element-Name: InnerDiagramsSuite
 Element-Type: testsuite
 Element-Version: 2.0
 Id: _AczyQB3uEeex3Nv8iShVXQ
-Runtime-Version: 2.0.2.201511100828
-Save-Time: 4/10/17 3:03 PM
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 4/10/19 12:25 PM
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
 Content-Type: text/testcase
@@ -14,5 +14,7 @@ Entry-Name: testcase-items
 _lLPcYBqpEeeW4YRUbIvNnA	// kind: 'test' name: 'DeleteSystemFunction' path: 'DeleteSystemFunction.test'
 _OuJeEBrGEeeW4YRUbIvNnA	// kind: 'test' name: 'ProgressMonitoringOverview' path: 'ProgressMonitoringOverview.test'
 _-fxM8BqvEeeW4YRUbIvNnA	// kind: 'test' name: 'ShowImpactAnalysis' path: 'ShowImpactAnalysis.test'
+_2uEXAFBuEemLA81nU1nPLg	// kind: 'test' name: 'ShowHide_ShowAll_SystemFunctions' path: 'ShowHide_ShowAll_SystemFunctions.test'
+_Wyxk8Ft4Eem9oKr70EVe_w	// kind: 'test' name: 'ShowHide_HideAll_SystemFunctions' path: 'ShowHide_HideAll_SystemFunctions.test'
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--

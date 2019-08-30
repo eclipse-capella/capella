@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,7 +23,6 @@ import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.common.re.handlers.attributes.AttributesHandlerHelper;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
-import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -39,8 +38,8 @@ public class ReSourceScope extends ReScope {
    * @param elements
    * @param context
    */
-  public ReSourceScope(CatalogElement element, ITraceabilityHandler handler, Collection<? extends EObject> elements, IContext context) {
-    super(element, handler, elements, context);
+  public ReSourceScope(CatalogElement element, Collection<? extends EObject> elements, IContext context) {
+    super(element, elements, context);
     
     // if the command is:
     String commandValue = (String) context.get(IReConstants.COMMAND__CURRENT_VALUE);

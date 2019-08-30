@@ -66,6 +66,7 @@ public interface System extends Component, CapabilityRealizationInvolvedElement 
 	 * @see org.polarsys.capella.core.data.ctx.Capability#getParticipatingSystem
 	 * @model opposite="participatingSystem" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='contributedCapabilitySpecificationUseCases'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='participationsInCapabilities.capability'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Capabilities to which this System contributes\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
@@ -97,6 +98,7 @@ public interface System extends Component, CapabilityRealizationInvolvedElement 
 	 * @model opposite="system" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping umlOppositeReference='supplier' umlOppositeReferenceOwner='Dependency'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='participationsInCapabilities'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involvingInvolvements'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the links to Capabilities to which this System contributes\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -126,6 +128,7 @@ public interface System extends Component, CapabilityRealizationInvolvedElement 
 	 * @see org.polarsys.capella.core.data.ctx.Mission#getParticipatingSystem
 	 * @model opposite="participatingSystem" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='contributedMissions'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='participationsInMissions.mission'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the Missions to which this System contributes\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
@@ -157,6 +160,7 @@ public interface System extends Component, CapabilityRealizationInvolvedElement 
 	 * @model opposite="system" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping umlOppositeReference='supplier' umlOppositeReferenceOwner='Dependency'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='participationsInMissions'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involvingInvolvements'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the links to the Missions to which this System contributes\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -236,6 +240,7 @@ public interface System extends Component, CapabilityRealizationInvolvedElement 
 	 * @return the value of the '<em>Allocated Entity Realizations</em>' reference list.
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystem_AllocatedEntityRealizations()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='provisionedComponentAllocations'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the links from operational entities being realized by this System\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -264,6 +269,7 @@ public interface System extends Component, CapabilityRealizationInvolvedElement 
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystem_AllocatedSystemFunctions()
 	 * @see org.polarsys.capella.core.data.ctx.SystemFunction#getAllocatorSystems
 	 * @model opposite="allocatorSystems" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatedFunctions'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -289,6 +295,7 @@ public interface System extends Component, CapabilityRealizationInvolvedElement 
 	 * @return the value of the '<em>Realized Entities</em>' reference list.
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystem_RealizedEntities()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='OperationalEntityRealization.sourceElement(oer, self);\r\nOperationalEntityRealization.allocatedComponent(oer, target);'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -316,6 +323,7 @@ public interface System extends Component, CapabilityRealizationInvolvedElement 
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystem_RealizingLogicalComponents()
 	 * @see org.polarsys.capella.core.data.la.LogicalComponent#getRealizedSystems
 	 * @model opposite="realizedSystems" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatingComponents'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

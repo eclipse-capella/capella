@@ -13,7 +13,7 @@
 <plugin>
    <extension point="org.eclipse.emf.validation.constraintProviders">
       <constraintProvider>
-         <package namespaceUri="http://www.polarsys.org/capella/core/interaction/1.2.0">
+         <package namespaceUri="http://www.polarsys.org/capella/core/interaction/1.3.0">
          </package>
          <constraints categories="capella.category/design/well-formedness/scenarios">
             <constraint class="org.polarsys.capella.core.data.interaction.validation.interaction_use.MDCHK_InteractionUse_ReferencedScenario_1" id="DWF_DS_01" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_01 - InteractionUse referenced scenario check" severity="WARNING" statusCode="1">
@@ -235,7 +235,7 @@ Whatever the level, UNSET Scenarios raise an error.
             </constraint>
             <constraint class="org.polarsys.capella.core.data.interaction.validation.stateFragment.MDCHK_StateFragment_FS_OAS_StateModeAvailability" id="DWF_DS_22" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_22 - OAS/FS AbstractFunction availability in Mode/State" severity="ERROR" statusCode="1">
                <message>
-                  StateFragment related to {0} ({1}) is inconsistent in {2} ({3}) ({4} ({5}) is not available for related {1}).
+                  {0} ({1}) is an invalid choice for the {2} ({3}) because is not available in {4} ({5}).
                </message>
                <target class="StateFragment">
                </target>
@@ -245,12 +245,13 @@ Whatever the level, UNSET Scenarios raise an error.
             </constraint>
          </constraints>
          <constraints categories="capella.category/design/completeness">
-            <constraint class="org.polarsys.capella.core.data.interaction.validation.scenario.MDCHK_Scenario_InvolvementComponents_1" id="DCOM_05" isEnabledByDefault="true" lang="Java" mode="Batch" name="DCOM_05 - Scenario components capability involvement check" severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.interaction.validation.scenario.MDCHK_Scenario_InvolvementComponents_1" id="DCOM_05" isEnabledByDefault="true" lang="Java" mode="Batch" 
+            name="DCOM_05 - Scenario Components Capability involvement check" severity="WARNING" statusCode="1">
                <message>
-                  {0} (Component) is not involved in {1} (Capability / Capability Realization), but it appears in at least one of its scenario.
+                  Message generated dynamically
                </message>
                <description>
-                  This rule checks that a scenario component involves in a capability.
+                  This rule checks that a Component which appears in a Scenario of a Capability is also involved in the Capability.
                </description>
                <target class="Scenario">
                </target>
@@ -312,6 +313,66 @@ If Capability resides in SystemAnalysis layer. It should be relalized by a Capab
                </target>
                <param name="group" value="MERGE">
                </param>
+            </constraint>
+         </constraints>
+         <constraints
+            categories="capella.category/design/well-formedness/capabilities">
+         <constraint
+	               class="org.polarsys.capella.core.data.interaction.validation.abstractCapability.MDCHK_Capability_Components_Involved"
+	               id="DWF_CA_07"
+	               isEnabledByDefault="true"
+	               lang="java"
+	               mode="Batch"
+	               name="DWF_CA_07 - Capability check that all the involved Actors are present in at least one Operational Process or Functional Chain or Scenario related to the Capabilities it participates"
+	               severity="WARNING"
+	               statusCode="1">
+	            <message>
+	               Message generated dynamically
+	            </message>
+	            <description>
+	               This rule checks if the involved Actors in the current Capability are present in at least one Operational Process or Functional Chain or Scenario.
+	            </description>
+	            <target
+	                  class="AbstractCapability">
+	            </target>
+            </constraint>
+            <constraint
+	               class="org.polarsys.capella.core.data.interaction.validation.abstractCapability.MDCHK_Capability_Components_NotInvolved"
+	               id="DWF_CA_08"
+	               isEnabledByDefault="true"
+	               lang="java"
+	               mode="Batch"
+	               name="DWF_CA_08 - Capability check if the current Capability has Actors that are not involved but are present in at least one Operational Process or Functional Chain or Scenario related to the Capability"
+	               severity="WARNING"
+	               statusCode="1">
+	            <message>
+	               Message generated dynamically
+	            </message>
+	            <description>
+	               This rule checks that if the current Capability has Actors that are not involved but are present in at least one Operational Process or Functional Chain or Scenario related to the Capability.
+	            </description>
+	            <target
+	                  class="AbstractCapability">
+	            </target>
+            </constraint>
+            <constraint
+	               class="org.polarsys.capella.core.data.interaction.validation.abstractCapability.MDCHK_Capability_FunctionalChains_Involvement"
+	               id="DWF_CA_09"
+	               isEnabledByDefault="true"
+	               lang="java"
+	               mode="Batch"
+	               name="DWF_CA_09 - Capability check if the current Capability has Functional Chains that are not involved but are related to the Capability"
+	               severity="WARNING"
+	               statusCode="1">
+	            <message>
+	               Message generated dynamically
+	            </message>
+	            <description>
+	               This rule checks that if the current Capability has related Operational Processes or Functionals Chains that are not involved with the Capability.
+	            </description>
+	            <target
+	                  class="AbstractCapability">
+	            </target>
             </constraint>
          </constraints>
       </constraintProvider>

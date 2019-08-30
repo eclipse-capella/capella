@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,45 +10,76 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.sirius.ui.navigator.actions;
 
-import org.apache.log4j.Logger;
-import org.eclipse.gef.GraphicalEditPart;
-import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IViewActionDelegate;
 import org.eclipse.ui.IViewPart;
-import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartSite;
-import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-import org.polarsys.capella.common.tools.report.EmbeddedMessage;
-import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
-import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
-import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.EObjectWrapper;
+import org.eclipse.ui.part.IShowInTarget;
+import org.eclipse.ui.part.ShowInContext;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
+import org.polarsys.capella.common.ui.services.helper.EObjectImageProviderHelper;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
-import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
-import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 
 /**
  * The action to locate a Capella model element into the Capella explorer from the diagram view.
  */
 public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IViewActionDelegate {
-  private Logger __logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
-  private boolean _ignoreWorkbenchPartSite;
-  private IWorkbenchPartSite _site;
+  private boolean ignoreWorkbenchPartSite;
+  private IWorkbenchPartSite site;
+  ISelection selection = null;
+
+  public static IAction createLocateTowards(EObject referenced, String message, boolean useElementIcon) {
+    LocateInCapellaExplorerAction goToAction = new LocateInCapellaExplorerAction() {
+
+      @Override
+      protected ISelection getSelection() {
+        return new StructuredSelection(referenced);
+      }
+
+      @Override
+      public void run(IAction action) {
+        Object elementToSelectInCapellaExplorer = referenced;
+        // Keep the double check here, as getSemanticElement can return an element not from the model.
+        selectElementInCapellaExplorer(new StructuredSelection(elementToSelectInCapellaExplorer));
+      }
+    };
+
+    IAction action = new Action() {
+      @Override
+      public void run() {
+        goToAction.run(this);
+      }
+    };
+
+    // Ignore workbench part site, since in a dialog, site has no meaning.
+    goToAction.shouldIgnoreWorkbenchPartSite(true);
+
+    if (useElementIcon) {
+      action.setImageDescriptor(ImageDescriptor.createFromImage(EObjectImageProviderHelper.getImage(referenced)));
+    } else {
+      action.setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor("capella_16.png"));
+    }
+    action.setText(NLS.bind(message, EObjectLabelProviderHelper.getText(referenced)));
+    return action;
+  }
 
   /**
    * Get the first selected element.
@@ -71,7 +102,7 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
    * @return <code>StructuredSelection.EMPTY</code> if no {@link IWorkbenchPart} is set to this action.
    */
   protected ISelection getSelection() {
-    return (null != _site) ? _site.getSelectionProvider().getSelection() : StructuredSelection.EMPTY;
+    return selection;
   }
 
   /**
@@ -80,34 +111,16 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
    * @see org.eclipse.ui.IViewActionDelegate#init(org.eclipse.ui.IViewPart)
    */
   public void init(IViewPart view) {
-    _site = view.getSite();
+    site = view.getSite();
   }
 
   /**
    * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
    */
   public void run(IAction action) {
-    if (_ignoreWorkbenchPartSite || (null != _site)) {
-      ISelection selection = getSelection();
+    if (ignoreWorkbenchPartSite || (null != site)) {
       if (selection instanceof IStructuredSelection) {
-        Object uiSelectedElement = getFirstSelectedElement(selection);
-        Object elementToSelectInCapellaExplorer = null;
-        // If provided selection is a diagram or a table, let's select it in the capella explorer.
-        if (uiSelectedElement instanceof ItemWrapper) {
-          uiSelectedElement = ((ItemWrapper) uiSelectedElement).getWrappedObject();
-        }
-        if (uiSelectedElement instanceof DRepresentationDescriptor) {
-          elementToSelectInCapellaExplorer = uiSelectedElement;
-        } else {
-          // Get element from given selection.
-          elementToSelectInCapellaExplorer = getElement(uiSelectedElement);
-        }
-        // Keep the double check here, as getSemanticElement can return error.
-        if (CapellaResourceHelper.isSemanticElement(elementToSelectInCapellaExplorer)
-            || (elementToSelectInCapellaExplorer instanceof DRepresentation)
-            || (elementToSelectInCapellaExplorer instanceof DRepresentationDescriptor)) {
-          selectElementInCapellaExplorer(new StructuredSelection(elementToSelectInCapellaExplorer));
-        }
+          selectElementInCapellaExplorer(selection);
       }
     }
   }
@@ -118,22 +131,13 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
    * @param selection
    */
   protected void selectElementInCapellaExplorer(ISelection selection) {
-    try {
-      IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-      // Get the Capella Explorer.
-      CapellaCommonNavigator explorerView = (CapellaCommonNavigator) activePage.findView(CapellaCommonNavigator.ID);
-      if (null == explorerView) {
-        // Show it if not found.
-        explorerView = (CapellaCommonNavigator) activePage.showView(CapellaCommonNavigator.ID);
+    IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+    if (window != null) {
+      IViewPart part = window.getActivePage().findView(CapellaCommonNavigator.ID); //$NON-NLS-1$
+      if (part != null) {
+        IShowInTarget showInTarget = part.getAdapter(IShowInTarget.class);
+        showInTarget.show(new ShowInContext(null, selection));
       }
-      explorerView.selectReveal(selection);
-      if (((StructuredSelection) explorerView.getCommonViewer().getSelection()).toArray().length == 0) {
-        LocatedElementsNotFoundInCapellaExplorerHandlingAction locatedElementsNotFoundInCapellaExplorerHandlingAction = new LocatedElementsNotFoundInCapellaExplorerHandlingAction();
-        locatedElementsNotFoundInCapellaExplorerHandlingAction.run((IStructuredSelection) selection);
-        explorerView.selectReveal(selection);
-      }
-    } catch (PartInitException exception) {
-      __logger.warn(new EmbeddedMessage(exception.getMessage(), IReportManagerDefaultComponents.UI), exception);
     }
   }
 
@@ -143,6 +147,7 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
    */
   public void selectionChanged(IAction action, ISelection selection) {
     // Do nothing here since we'd prefer getting the selection in a lazy way.
+    this.selection = selection;
   }
 
   /**
@@ -150,7 +155,7 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
    *      org.eclipse.ui.IWorkbenchPart)
    */
   public void setActivePart(IAction action, IWorkbenchPart targetPart) {
-    _site = targetPart.getSite();
+    this.site = targetPart.getSite();
   }
 
   /**
@@ -159,7 +164,7 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
    * @param site
    */
   public void setSite(IWorkbenchPartSite site) {
-    _site = site;
+    this.site = site;
   }
 
   /**
@@ -168,7 +173,7 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
    * @param ignore
    */
   public void shouldIgnoreWorkbenchPartSite(boolean ignore) {
-    _ignoreWorkbenchPartSite = ignore;
+    ignoreWorkbenchPartSite = ignore;
   }
 
   /**
@@ -178,45 +183,16 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
    * @return a semantic element or a {@link DRepresentation}.
    */
   public static Object getElement(Object uiSelectedElement) {
-    Object result = null;
-    // Precondition.
-    if (null == uiSelectedElement) {
-      return result;
-    }
-    if (CapellaResourceHelper.isSemanticElement(uiSelectedElement)) {
-      result = uiSelectedElement;
-
-    } else if (uiSelectedElement instanceof GraphicalEditPart) {
-      GraphicalEditPart editPart = (GraphicalEditPart) uiSelectedElement;
-      result = editPart.getModel();
-      if (result instanceof View) {
-        View view = (View) result;
-        result = view.getElement();
-      }
-      if ((result instanceof DSemanticDecorator) && !(result instanceof DSemanticDiagram)) {
-        DSemanticDecorator semanticDecorator = (DSemanticDecorator) result;
-        result = semanticDecorator.getTarget();
-      }
-      if (result instanceof DRepresentation) {
-        result = RepresentationHelper.getRepresentationDescriptor((DRepresentation) result);
-      }
-    } else if ((uiSelectedElement instanceof DSemanticDecorator) && !(uiSelectedElement instanceof DSemanticDiagram)) {
-      DSemanticDecorator semanticDecorator = (DSemanticDecorator) uiSelectedElement;
-      result = semanticDecorator.getTarget();
-    } else if (uiSelectedElement instanceof EObjectWrapper) {
-      result = ((EObjectWrapper) uiSelectedElement).getElement();
-    }
-
-    if (result instanceof Part) {
+    Object semanticElement = CapellaAdapterHelper.resolveSemanticObject(uiSelectedElement, true);
+    
+    if (semanticElement instanceof Part) {
       boolean allowMultiplePart = TriStateBoolean.True
-          .equals(CapellaProjectHelper.isReusableComponentsDriven((Part) result));
-      if (!allowMultiplePart) {
-        if (!(((Part) result).getAbstractType() instanceof ConfigurationItem)) {
-          result = ((Part) result).getAbstractType();
-        }
+          .equals(CapellaProjectHelper.isReusableComponentsDriven((Part) semanticElement));
+      if (!allowMultiplePart && !(((Part) semanticElement).getAbstractType() instanceof ConfigurationItem)) {
+        semanticElement = ((Part) semanticElement).getAbstractType();
       }
     }
 
-    return result;
+    return semanticElement;
   }
 }

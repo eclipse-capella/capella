@@ -1,11 +1,215 @@
-<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>4.04. Project Explorer</title><link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/></head><body><h1 id="Capella_Project_Explorer">Capella Project Explorer</h1><h2 id="Opening.2C_Visualizing_and_Closing_a_Model">Opening, Visualizing and Closing a Model</h2><p>When not fragmented, a Capella model is composed of one file containing the model elements (the semantic model) and one or more AIRD files containing the representations (diagrams and matrices).</p><p>It can also contain additional resources such as images.</p><p><center><img height="200" width="213" border="0" src="Images/4.04.%20Project%20Explorer_html_m50c8ab23.png"/></center></p><p>Double-clicking on the AIRD file opens the model. While the AIRD file technically contains the diagrams, once opened, it also shows the hierarchical view of the semantic model.</p><p>This hierarchy represents how the model elements are organized in terms of containment. Diagrams attached to a specific element are located under this element.</p><p><center><img height="372" width="303" border="0" src="Images/4.04.%20Project%20Explorer_html_m3aa67aa3.png"/></center></p><p>An additional folder shows all diagrams sorted by categories.</p><p><center><img height="421" width="346" border="0" src="Images/4.04.%20Project%20Explorer_html_301b63e9.png"/></center></p><p>Optionally, another folder displaying diagrams sorted by resources is available. Viewing diagrams sorted by resources can be helpful when models are fragmented or when several AIRD files are referencing a unique semantic model. as a folder in which diagrams are sorted by categories.</p><p><center><img height="122" width="348" border="0" src="Images/4.04.%20Project%20Explorer_html_3a7d651e.png"/></center></p><p>Clicking on &ldquo;Customize View&rdquo; opens a dialog where &ldquo;Representations per category&rdquo; can be hidden.</p><p><center><img height="350" width="400" border="0" src="Images/4.04_Project_Explorer2.png"/></center></p><p><br/>
-<br/></p><p><center><img height="207" width="237" border="0" src="Images/4.04.%20Project%20Explorer_html_m5da49805.png"/></center></p><p><b>Fig</b>. Project explorer with a filtered &laquo; Representations per category &raquo; element.</p><p>On an opened AIRD file, the contextual menu allows to close the model, activate or deactivate viewpoints.</p><p><center><img height="523" width="500" border="0" src="Images/4.04_Project_Explorer1.png"/></center></p><p>Saving the model can be performed from the toolbar or using the CTRL+S shortcut.</p><table border="1"><tr><td><p><center><img height="48" width="48" border="0" src="Images/4.04.%20Project%20Explorer_html_3c78e109.png"/></center></p></td><td><p>The * character in 				front of the project explorer View title indicates the model has 				changed since the last save. One says the model is in a &laquo; dirty &raquo; 				state.</p></td></tr></table><p><center><img height="270" width="300" border="0" src="Images/4.04.%20Project%20Explorer_html_2a59bdef.png"/></center></p><p><br/>
-<br/></p><h2 id="Customizing_the_Content_of_the_Project_Explorer">Customizing the Content of the Project Explorer</h2><p>It is possible to filter some of the elements displayed in the hierarchical view of the model. This can be particularly useful for hiding &ldquo;technical&rdquo; model elements such as transformation links, etc.</p><p><center><img height="150" width="348" border="0" src="Images/4.04.%20Project%20Explorer_html_3a7d651e.png"/></center></p><p><center><img height="420" width="239" border="0" src="Images/4.04.%20Project%20Explorer_html_dd6dd4d.png"/></center></p><p>For example, when masking Trace elements, the difference is the following. The Project Explorer get clearer when &ldquo;technical&rdquo; elements are hidden. Dedicated Properties View and Diagrams usually allow to see in a more ergonomic way the same information.</p><p><center><img height="342" width="691" border="0" src="Images/4.04.%20Project%20Explorer_html_116eb088.png"/></center></p><table border="1"><tr><td><p><center><img height="48" width="48" border="0" src="Images/4.04.%20Project%20Explorer_html_3c78e109.png"/></center></p></td><td><p>Note that the elements below are hidden by default with Capella:</p><ul><li>Component</li><li>Functional Exchanges</li><li>Part</li></ul></td></tr></table><h2 id="Commands_of_the_Contextual_Menu">Commands of the Contextual Menu</h2><p>In the hierarchical view of the model, a contextual menu allows launching all kinds of commands (model validation, model transformation, creation of diagrams, etc.).</p><p>The functionality of each of these applicative commands is described in other sections of this documentation.</p><p><center><img height="436" width="530" border="0" src="Images/4.04_Project_Explorer3.png"/></center></p><p>The &ldquo;Sort Content&rdquo; command alphabetically sorts the children of an element taking into account capitalized letters and spaces in element name.</p><p>The &ldquo;Sort Selection&rdquo; command sorts the list of selected elements which have the same parent and the same type.</p><p><center><img height="250" width="500" border="0" src="Images/4.04.%20Project%20Explorer_Sort%20Selection.png"/></center></p><p>The &ldquo;Add Capella Element&rdquo; command creates new semantic elements.</p><p><center><img height="250" width="550" border="0" src="Images/4.04_Project_Explorer4.png"/></center></p><p>The &ldquo;New Diagram / Table&rdquo; command creates new diagrams or matrices.</p><p><center><img height="150" width="570" border="0" src="Images/4.04.%20Project%20Explorer_html_40cc432b.png"/></center></p><p>The &ldquo;Go To&rdquo; command provides a quick navigation shortcut towards related elements. For example, the type of a property, the allocated functions of a component, etc.</p><p><center><img height="150" width="600" border="0" src="Images/4.04_Project_Explorer5.png"/></center></p><p><br/>
-<br/></p><p><center><img height="200" width="600" border="0" src="Images/4.04_Project_Explorer6.png"/></center></p><p>The contextual menu on a diagram allows to rename or clone an existing diagram (a new diagram is initiated with the same content and layout, which can be very helpful).</p><p><center><img height="176" width="516" border="0" src="Images/4.04.%20Project%20Explorer_html_m6179049.png"/></center></p><p><br/>
-<br/></p><h2 id="Synchronization_with_other_Views">Synchronization with other Views</h2><ol><li>Some other views, such as the Semantic Browser and the Properties view, are automatically updated regarding the element that is currently selected in the Project Explorer.</li><li>From the Diagram Editor, the Semantic Browser and the Information View, we can navigate a selected element or its related elements in the Capella Project Explorer by choosing one of the options below from the right-click contextual menu:<ul><li>Show in Capella Explorer (F8)</li><li>Show Related Element(s) in Capella Explorer (F7)</li><li>Go To</li></ul></li></ol><p>If the selected element or its related element(s) are not currently visible in the Capella Explorer due to the activation of some filters, there will be a prompted dialog to inform the user and propose to the user a quick fix, which will look for which active filters might have hidden the selected element(s) and then deactivate them so that the selected element(s) will be visible and focused on the Capella Explorer.
-<center><img border="0" src="Images/4.04.%20Project%20Explorer_ShowInCapellaExplorer_QuickFix.PNG"/></center>
-If the quick fix is not possible, an information dialog will be displayed.
-<center><img border="0" src="Images/4.04.%20Project%20Explorer_ShowInCapellaExplorer_NotFound.PNG"/></center></p><h2 id="Search_Field">Search Field</h2><p>A research field based on regular expressions is available on the top of the Project Explorer. It is convenient to quickly locate elements in the hierarchy, based on just a part of their name.</p><p><center><img height="370" width="400" border="0" src="Images/4.04.%20Project%20Explorer_html_14f2f514.png"/></center></p><p><br/>
-<br/></p><table border="1"><tr><td><p><center><img height="48" width="48" border="0" src="Images/4.04.%20Project%20Explorer_html_3c78e109.png"/></center></p></td><td><p>Clicking 				on the small magnifier next to the search field allows searching 				not only in names but also in descriptions.</p></td></tr></table><p><br/>
-<br/></p><table border="1"><tr><td><p><center><img height="48" width="48" border="0" src="Images/4.04.%20Project%20Explorer_html_3c78e109.png"/></center></p></td><td><p>A wildcard character can be used to substitute 				for any other character or characters in a string.</p><ul><li>: the asterisk character substitutes for 				zero or more of the characters. For example, ab*c 				matches &quot;ac&quot;, &quot;abc&quot;, &quot;abbc&quot;, 				&quot;abbbc&quot;, and so on.</li></ul><p>? 				: the question mark substitutes for exactly one character. For 				example, colo?r matches only &quot;colour&quot; 				and not &quot;color&quot;.</p></td></tr></table><p><br/>
-<br/></p></body></html>
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>4.04. Project Explorer</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="Capella_Project_Explorer">Capella Project Explorer</h1>
+		<h2 id="Opening.2C_Visualizing_and_Closing_a_Model">Opening, Visualizing and Closing a Model</h2>
+		<p>When not fragmented, a Capella model is composed of one file containing the model elements (the semantic model) and one or more AIRD files containing the representations (diagrams and matrices).</p>
+		<p>It can also contain additional resources such as images.</p>
+		<p><center>
+			<img height="200" width="213" border="0" src="Images/4.04.%20Project%20Explorer_html_m50c8ab23.png"/></center>
+		</p>
+		<p>Double-clicking on the AIRD file opens the model. While the AIRD file technically contains the diagrams, once opened, it also shows the hierarchical view of the semantic model.</p>
+		<p>This hierarchy represents how the model elements are organized in terms of containment. Diagrams attached to a specific element are located under this element.</p>
+		<p><center>
+			<img height="372" width="303" border="0" src="Images/4.04.%20Project%20Explorer_html_m3aa67aa3.png"/></center>
+		</p>
+		<p>An additional folder shows all diagrams sorted by categories.</p>
+		<p><center>
+			<img height="421" width="346" border="0" src="Images/4.04.%20Project%20Explorer_html_301b63e9.png"/></center>
+		</p>
+		<p>Optionally, another folder displaying diagrams sorted by resources is available. Viewing diagrams sorted by resources can be helpful when models are fragmented or when several AIRD files are referencing a unique semantic model. as a folder in which diagrams are sorted by categories.</p>
+		<p><center>
+			<img height="122" width="348" border="0" src="Images/4.04.%20Project%20Explorer_html_3a7d651e.png"/></center>
+		</p>
+		<p>Clicking on &ldquo;Customize View&rdquo; opens a dialog where &ldquo;Representations per category&rdquo; can be hidden.</p>
+		<p><center>
+			<img height="350" width="400" border="0" src="Images/4.04_Project_Explorer2.png"/></center>
+		</p>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<p><center>
+			<img height="207" width="237" border="0" src="Images/4.04.%20Project%20Explorer_html_m5da49805.png"/></center>
+		</p>
+		<p>
+			<b>Fig</b>. Project explorer with a filtered &laquo; Representations per category &raquo; element.
+		</p>
+		<p>On an opened AIRD file, the contextual menu allows to close the model, activate or deactivate viewpoints.</p>
+		<p><center>
+			<img height="523" width="500" border="0" src="Images/4.04_Project_Explorer1.png"/></center>
+		</p>
+		<p>Saving the model can be performed from the toolbar or using the CTRL+S shortcut.</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p><center>
+						<img height="48" width="48" border="0" src="Images/4.04.%20Project%20Explorer_html_3c78e109.png"/></center>
+					</p>
+				</td>
+				<td>
+					<p>The * character in 				front of the project explorer View title indicates the model has 				changed since the last save. One says the model is in a &laquo; dirty &raquo; 				state.</p>
+				</td>
+			</tr>
+		</table>
+		<p><center>
+			<img height="270" width="300" border="0" src="Images/4.04.%20Project%20Explorer_html_2a59bdef.png"/></center>
+		</p>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<h2 id="Appearance">Appearance</h2>
+		<h3 id="REC_.2F_RPL">REC / RPL</h3>
+		<p>Elements that are used in a REC or a RPL are decorated with a tag [REC] / [RPL] aside the name of the element.</p>
+		<p>This decoration can be disabled by using preference 
+			<i>Windows &gt; Preferences &gt; General &gt; Appearance &gt; Label decorations &gt; Instantiation Text Decorator</i>
+		</p>
+		<h3 id="Representation">Representation</h3>
+		<p>Some representations may be displayed as gray, meaning that the representation is invalid and can no longer be opened. It includes representation:</p>
+		<p>- without represented element or whose element has been detached or deleted</p>
+		<p>- which can not be reached because it has been deleted</p>
+		<p>- or its url is malformed (representationDescriptor.repPath links towards an invalid representation) </p>
+		<h2 id="Customizing_the_Content_of_the_Project_Explorer">Customizing the Content of the Project Explorer</h2>
+		<p>It is possible to filter some of the elements displayed in the hierarchical view of the model. This can be particularly useful for hiding &ldquo;technical&rdquo; model elements such as transformation links, etc.</p>
+		<p><center>
+			<img height="150" width="348" border="0" src="Images/4.04.%20Project%20Explorer_html_3a7d651e.png"/></center>
+		</p>
+		<p><center>
+			<img height="420" width="239" border="0" src="Images/4.04.%20Project%20Explorer_html_dd6dd4d.png"/></center>
+		</p>
+		<p>For example, when masking Trace elements, the difference is the following. The Project Explorer get clearer when &ldquo;technical&rdquo; elements are hidden. Dedicated Properties View and Diagrams usually allow to see in a more ergonomic way the same information.</p>
+		<p><center>
+			<img height="342" width="691" border="0" src="Images/4.04.%20Project%20Explorer_html_116eb088.png"/></center>
+		</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p><center>
+						<img height="48" width="48" border="0" src="Images/4.04.%20Project%20Explorer_html_3c78e109.png"/></center>
+					</p>
+				</td>
+				<td>
+					<p>Note that the elements below are hidden by default with Capella:</p>
+					<ul>
+						<li>Functional Exchanges</li>
+						<li>Part</li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+		<h2 id="Commands_of_the_Contextual_Menu">Commands of the Contextual Menu</h2>
+		<p>In the hierarchical view of the model, a contextual menu allows launching all kinds of commands (model validation, model transformation, creation of diagrams, etc.).</p>
+		<p>The functionality of each of these applicative commands is described in other sections of this documentation.</p>
+		<p><center>
+			<img height="436" width="530" border="0" src="Images/4.04_Project_Explorer3.png"/></center>
+		</p>
+		<p>The &ldquo;Sort Content&rdquo; command alphabetically sorts the children of an element taking into account capitalized letters and spaces in element name.</p>
+		<p>The &ldquo;Sort Selection&rdquo; command sorts the list of selected elements which have the same parent and the same type.</p>
+		<p><center>
+			<img height="250" width="500" border="0" src="Images/4.04.%20Project%20Explorer_Sort%20Selection.png"/></center>
+		</p>
+		<p>The &ldquo;Add Capella Element&rdquo; command creates new semantic elements.</p>
+		<p><center>
+			<img height="250" width="550" border="0" src="Images/4.04_Project_Explorer4.png"/></center>
+		</p>
+		<p>The &ldquo;New Diagram / Table&rdquo; command creates new diagrams or matrices.</p>
+		<p><center>
+			<img height="150" width="570" border="0" src="Images/4.04.%20Project%20Explorer_html_40cc432b.png"/></center>
+		</p>
+		<p>The &ldquo;Go To&rdquo; command provides a quick navigation shortcut towards related elements. For example, the type of a property, the allocated functions of a component, etc.</p>
+		<p><center>
+			<img height="150" width="600" border="0" src="Images/4.04_Project_Explorer5.png"/></center>
+		</p>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<p><center>
+			<img height="200" width="600" border="0" src="Images/4.04_Project_Explorer6.png"/></center>
+		</p>
+		<p>The contextual menu on a diagram allows to rename or clone an existing diagram (a new diagram is initiated with the same content and layout, which can be very helpful).</p>
+		<p><center>
+			<img height="176" width="516" border="0" src="Images/4.04.%20Project%20Explorer_html_m6179049.png"/></center>
+		</p>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<h2 id="Synchronization_with_other_Views">Synchronization with other Views</h2>
+		<ol>
+			<li>Some other views, such as the Semantic Browser and the Properties view, are automatically updated regarding the element that is currently selected in the Project Explorer.</li>
+			<li>From the Diagram Editor, the Semantic Browser and the Information View, we can navigate a selected element or its related elements in the Capella Project Explorer by choosing one of the options below from the right-click contextual menu:
+				<ul>
+					<li>Show in Capella Explorer (F8)</li>
+					<li>Show Related Element(s) in Capella Explorer (F7)</li>
+					<li>Go To</li>
+				</ul>
+			</li>
+		</ol>
+		<p>If the selected element or its related element(s) are not currently visible in the Capella Explorer due to the activation of some filters, there will be a prompted dialog to inform the user and propose to the user a quick fix, which will look for which active filters might have hidden the selected element(s) and then deactivate them so that the selected element(s) will be visible and focused on the Capella Explorer.
+<center>
+			<img border="0" src="Images/4.04.%20Project%20Explorer_ShowInCapellaExplorer_QuickFix.PNG"/></center>
+			If the quick fix is not possible, an information dialog will be displayed.
+<center>
+			<img border="0" src="Images/4.04.%20Project%20Explorer_ShowInCapellaExplorer_NotFound.PNG"/></center>
+		</p>
+		<h2 id="Search_Field">Search Field</h2>
+		<p>A research field based on regular expressions is available on the top of the Project Explorer. It is convenient to quickly locate elements in the hierarchy, based on just a part of their name.</p>
+		<p><center>
+			<img height="370" width="400" border="0" src="Images/4.04.%20Project%20Explorer_html_14f2f514.png"/></center>
+		</p>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p><center>
+						<img height="48" width="48" border="0" src="Images/4.04.%20Project%20Explorer_html_3c78e109.png"/></center>
+					</p>
+				</td>
+				<td>
+					<p>Clicking 				on the small magnifier next to the search field allows searching 				not only in names but also in descriptions.</p>
+				</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p><center>
+						<img height="48" width="48" border="0" src="Images/4.04.%20Project%20Explorer_html_3c78e109.png"/></center>
+					</p>
+				</td>
+				<td>
+					<p>A wildcard character can be used to substitute 				for any other character or characters in a string.</p>
+					<ul>
+						<li>: the asterisk character substitutes for 				zero or more of the characters. For example, ab*c 				matches &quot;ac&quot;, &quot;abc&quot;, &quot;abbc&quot;, 				&quot;abbbc&quot;, and so on.</li>
+					</ul>
+					<p>? 				: the question mark substitutes for exactly one character. For 				example, colo?r matches only &quot;colour&quot; 				and not &quot;color&quot;.</p>
+				</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+	</body>
+</html>

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.data.interaction.properties;singleton:=true
-Bundle-Version: 1.2.2.qualifier
+Bundle-Version: 1.3.1.qualifier
 Bundle-Activator: org.polarsys.capella.core.data.interaction.properties.InteractionPropertiesPlugin
 Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.core.data.information.properties;visibility:=reexport,
@@ -17,5 +17,5 @@ Export-Package: org.polarsys.capella.core.data.interaction.properties,
  org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMessage.viewAndController,
  org.polarsys.capella.core.data.interaction.properties.fields,
  org.polarsys.capella.core.data.interaction.properties.sections
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin

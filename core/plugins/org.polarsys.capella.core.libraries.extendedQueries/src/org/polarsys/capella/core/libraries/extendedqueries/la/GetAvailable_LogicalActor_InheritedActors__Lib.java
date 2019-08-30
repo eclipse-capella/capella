@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,17 +11,18 @@
 
 package org.polarsys.capella.core.libraries.extendedqueries.la;
 
+import static org.polarsys.capella.core.business.abstractqueries.helpers.CapellaElementsHelperForBusinessQueries.isGoodSupertypeCandidate;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.ILibraryManager;
+import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
-import org.polarsys.capella.core.data.helpers.capellacore.services.GeneralizableElementExt;
 import org.polarsys.capella.core.data.helpers.ctx.services.ActorPkgExt;
 import org.polarsys.capella.core.data.la.LogicalActor;
 import org.polarsys.capella.core.data.la.LogicalActorPkg;
@@ -48,11 +49,7 @@ public class GetAvailable_LogicalActor_InheritedActors__Lib extends AbstractQuer
           LogicalActorPkg laActorPkg = la.getOwnedLogicalActorPkg();
           if (laActorPkg != null) {
             for (LogicalActor actor : ActorPkgExt.getAllActors(laActorPkg)) {
-              if ((actor == null) || currentActor.equals(actor)) {
-                continue;
-              }
-              if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentActor).contains(actor)
-                  && !GeneralizableElementExt.getAllSuperGeneralizableElements(actor).contains(currentActor)) {
+              if (isGoodSupertypeCandidate(currentActor, actor)) {
                 availableElements.add(actor);
               }
             }

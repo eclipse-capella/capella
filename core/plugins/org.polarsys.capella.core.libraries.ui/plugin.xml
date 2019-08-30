@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
-  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -109,61 +109,30 @@
       <menuContribution
             allPopups="false"
             locationURI="popup:org.polarsys.capella.core.libraries.ui.moveview.stageViewer?after=additions">
-         <command
-               commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.locateInCapellaExplorerCommand"
-               style="push">
-            <visibleWhen
-                  checkEnabled="true">
-            </visibleWhen>
-         </command>
-         <command
-               commandId="org.polarsys.capella.core.ui.semantic.browser.sirius.semanticBrowserSetSelectionCommand"
-               style="push">
-            <visibleWhen
-                  checkEnabled="true">
-            </visibleWhen>
-         </command>
-         <command
-               commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showInDiagramCommand"
-               style="push">
-            <visibleWhen
-                  checkEnabled="true">
-            </visibleWhen>
-         </command>
-         <command
-               commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showImpactAnalysisCommand"
-               style="push">
-            <visibleWhen
-                  checkEnabled="true">
-            </visibleWhen>
-         </command>
+         <separator
+               name="group.showIn">
+         </separator>
+         <separator
+               name="group.sendTo">
+         </separator>
       </menuContribution>
       <menuContribution
             allPopups="false"
             locationURI="popup:org.polarsys.capella.core.libraries.ui.moveview.destinationViewer?after=additions">
+         <separator
+               name="group.showIn">
+         </separator>
+         <separator
+               name="group.sendTo">
+         </separator>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.popup.any?after=group.sendTo">
          <command
-               commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.locateInCapellaExplorerCommand"
-               style="push">
-            <visibleWhen
-                  checkEnabled="true">
-            </visibleWhen>
-         </command>
-         <command
-               commandId="org.polarsys.capella.core.ui.semantic.browser.sirius.semanticBrowserSetSelectionCommand"
-               style="push">
-            <visibleWhen
-                  checkEnabled="true">
-            </visibleWhen>
-         </command>
-         <command
-               commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showInDiagramCommand"
-               style="push">
-            <visibleWhen
-                  checkEnabled="true">
-            </visibleWhen>
-         </command>
-         <command
-               commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showImpactAnalysisCommand"
+               commandId="org.polarsys.capella.core.libraries.ui.sendToTransferView"
+               icon="icons/transfer_16x16.png"
+               label="%sendToTransferViewLabel"
                style="push">
             <visibleWhen
                   checkEnabled="true">
@@ -253,12 +222,23 @@
             </equals>
          </activeWhen>
       </handler>
-         
+     <handler
+           class="org.polarsys.capella.core.libraries.ui.move.SendToTransferViewHandler"
+           commandId="org.polarsys.capella.core.libraries.ui.sendToTransferView">
+        <activeWhen>
+           <iterate
+                 ifEmpty="false">
+              <adapt
+                    type="org.eclipse.emf.ecore.EObject">
+              </adapt>
+           </iterate>
+        </activeWhen>
+     </handler>
    </extension>
    <extension
          point="org.eclipse.ui.views">
       <view
-            category="org.polarsys.capella.views.category.incubation"
+            category="org.polarsys.capella.views.category"
             class="org.polarsys.capella.core.libraries.ui.move.MoveStagingView"
             icon="icons/transfer_16x16.png"
             id="org.polarsys.capella.core.libraries.ui.moveview"
@@ -274,6 +254,20 @@
             id="org.polarsys.capella.core.libraries.ui.moveReset"
             name="Reset">
       </command>
+      <command
+            description="%sendToTransferViewDescription"
+            id="org.polarsys.capella.core.libraries.ui.sendToTransferView"
+            name="%sendToTransferViewLabel">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="capella.sirius.perspective">
+         <viewShortcut
+               id="org.polarsys.capella.core.libraries.ui.moveview">
+         </viewShortcut>
+      </perspectiveExtension>
    </extension>
 
 </plugin>

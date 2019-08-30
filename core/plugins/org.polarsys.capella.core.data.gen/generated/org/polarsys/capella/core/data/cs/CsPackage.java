@@ -33,9 +33,8 @@ import org.polarsys.capella.core.data.information.communication.CommunicationPac
  * <!-- end-user-doc -->
  * @see org.polarsys.capella.core.data.cs.CsFactory
  * @model kind="package"
- *        annotation="http://www.polarsys.org/kitalpha/dsl/2007/dslfactory trackResourceModification='true' useUUIDs='false' useIDAttributes='true' extensibleProviderFactory='true' childCreationExtenders='true'"
- *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='CompositeStructure aims at defining the common component approach composite structure pattern language (close to the UML Composite structure).\r\n[source: Capella study]' usage\040guideline='none' used\040in\040levels='operational,system,logical,physical,epbs' usage\040examples='none' constraints='This package depends on the model FunctionalAnalysis.ecore' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/extension trackResourceModification='true' useUUIDs='false' useIDAttributes='true' extensibleProviderFactory='true' childCreationExtenders='true'"
+ *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='CompositeStructure aims at defining the common component approach composite structure pattern language (close to the UML Composite structure).\r\n[source: Capella study]' usage\040guideline='none' used\040in\040levels='operational,system,logical,physical,epbs' usage\040examples='none' constraints='This package depends on the model FunctionalAnalysis.ecore' comment/notes='none' reference\040documentation='none'"
  * @generated
  */
 public interface CsPackage extends EPackage {
@@ -53,7 +52,7 @@ public interface CsPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.polarsys.org/capella/core/cs/1.2.0"; //$NON-NLS-1$
+	String eNS_URI = "http://www.polarsys.org/capella/core/cs/1.3.0"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.

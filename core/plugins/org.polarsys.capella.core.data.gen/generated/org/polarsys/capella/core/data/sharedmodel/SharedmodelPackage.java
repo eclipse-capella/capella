@@ -28,9 +28,8 @@ import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
  * <!-- end-user-doc -->
  * @see org.polarsys.capella.core.data.sharedmodel.SharedmodelFactory
  * @model kind="package"
- *        annotation="http://www.polarsys.org/kitalpha/dsl/2007/dslfactory trackResourceModification='true' useUUIDs='false' useIDAttributes='true' extensibleProviderFactory='true' childCreationExtenders='true'"
- *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Shared aims at defining a structure for the shared model elements storage. It is dedicated to the model elements reuse. This is a rest of MDSysE and may be reengineered into more adapted solutions.\r\n[source: Capella study]' usage\040guideline='none' used\040in\040levels='n/a' usage\040examples='none' constraints='This package depends on the model CapellaModeller.ecore' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/extension trackResourceModification='true' useUUIDs='false' useIDAttributes='true' extensibleProviderFactory='true' childCreationExtenders='true'"
+ *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Shared aims at defining a structure for the shared model elements storage. It is dedicated to the model elements reuse. This is a rest of MDSysE and may be reengineered into more adapted solutions.\r\n[source: Capella study]' usage\040guideline='none' used\040in\040levels='n/a' usage\040examples='none' constraints='This package depends on the model CapellaModeller.ecore' comment/notes='none' reference\040documentation='none'"
  * @generated
  */
 public interface SharedmodelPackage extends EPackage {
@@ -48,7 +47,7 @@ public interface SharedmodelPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.polarsys.org/capella/core/sharedmodel/1.2.0"; //$NON-NLS-1$
+	String eNS_URI = "http://www.polarsys.org/capella/core/sharedmodel/1.3.0"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,17 +10,17 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.ui.actions;
 
-import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.dialog.RenameDialog;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IWorkbenchCommandConstants;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
@@ -28,7 +28,6 @@ import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
 import org.polarsys.capella.core.model.handler.provider.IReadOnlySectionHandler;
 import org.polarsys.capella.core.sirius.ui.Messages;
-import org.polarsys.capella.core.sirius.ui.helper.SiriusItemWrapperHelper;
 
 /**
  * The action allowing to rename representations.
@@ -39,7 +38,7 @@ public class RenameRepresentationAction extends BaseSelectionListenerAction {
    */
   public RenameRepresentationAction() {
     super("Rename"); //$NON-NLS-1$
-    setActionDefinitionId("org.eclipse.ui.edit.rename"); //$NON-NLS-1$
+    setActionDefinitionId(IWorkbenchCommandConstants.FILE_RENAME);
   }
 
   /**
@@ -47,26 +46,18 @@ public class RenameRepresentationAction extends BaseSelectionListenerAction {
    */
   @Override
   protected boolean updateSelection(IStructuredSelection selection) {
-    // The text control should not be editable if the element is readonly (locked by other)
+    return !getRenamableRepresentationDescriptors(selection).isEmpty();
+  }
+
+  /**
+   * The action is enabled if at least one valid representation is not readonly (locked by other)
+   */
+  private List<DRepresentationDescriptor> getRenamableRepresentationDescriptors(IStructuredSelection selection) {
     IReadOnlySectionHandler handler = CapellaReadOnlyHelper.getReadOnlySectionHandler();
-
-    if (handler != null) {
-      for (Iterator<?> iterator = selection.iterator(); iterator.hasNext();) {
-        Object selectedObject = iterator.next();
-
-        if (selectedObject instanceof DRepresentationDescriptor) {
-          selectedObject = ((DRepresentationDescriptor) selectedObject).getRepresentation();
-        }
-
-        if (selectedObject instanceof DRepresentation) {
-          if (handler.isLockedByOthers((DRepresentation) selectedObject)) {
-            return false;
-          }
-        }
-      }
-    }
-
-    return true;
+    return RepresentationHelper.getSelectedDescriptors(selection.toList()).stream()
+        .filter(RepresentationHelper::isValid).filter(descriptor -> {
+          return (handler == null || (handler != null && !handler.isLockedByOthers(descriptor)));
+        }).collect(Collectors.toList());
   }
 
   /**
@@ -76,11 +67,11 @@ public class RenameRepresentationAction extends BaseSelectionListenerAction {
   public void run() {
     // Gets all the selected representations.
     IStructuredSelection selection = getStructuredSelection();
-    List<DRepresentation> representations = RepresentationHelper.getRepresentations(SiriusItemWrapperHelper.filterItemWrapper(selection));
-    
+    List<DRepresentationDescriptor> descriptors = getRenamableRepresentationDescriptors(selection);
+
     // Parses the selected representations and rename them.
-    for (DRepresentation representation : representations) {
-      final String oldName = (representation.getName() != null) ? representation.getName() : StringUtil.EMPTY_STRING;
+    for (DRepresentationDescriptor descriptor : descriptors) {
+      final String oldName = (descriptor.getName() != null) ? descriptor.getName() : StringUtil.EMPTY_STRING;
 
       // To provide a title we need sub-classing the RenameDialog.
       RenameDialog dialog = new RenameDialog(Display.getDefault().getActiveShell(), oldName) {
@@ -101,7 +92,9 @@ public class RenameRepresentationAction extends BaseSelectionListenerAction {
         public void create() {
           super.create();
           setTitle(Messages.RenameRepresentationAction_Title);
-          // Set the old name here allow to have the preferred size correctly computed, even if the old name was already provided with the constructor.
+          // Set the old name here allow to have the preferred size correctly computed, even if the old name
+          // was already
+          // provided with the constructor.
           setOldName(oldName);
 
           // Force the window to compute its preferred size.
@@ -111,7 +104,8 @@ public class RenameRepresentationAction extends BaseSelectionListenerAction {
       if (Window.OK == dialog.open()) {
         String newName = dialog.getNewName();
         if (!oldName.equals(newName)) {
-          TransactionHelper.getExecutionManager(representation).execute(new RenameRepresentationCommand(representation, newName));
+          TransactionHelper.getExecutionManager(descriptor)
+              .execute(new RenameRepresentationCommand(descriptor, newName));
         }
       }
     }
@@ -121,15 +115,24 @@ public class RenameRepresentationAction extends BaseSelectionListenerAction {
   private class RenameRepresentationCommand extends AbstractReadWriteCommand {
     // The new name to apply.
     private String newName;
+
     // The selected representation.
-    private DRepresentation selectedRepresentation;
+    private DRepresentationDescriptor selectedRepresentation;
+
+    @Override
+    public String getName() {
+      return RenameRepresentationAction.this.getText();
+    }
 
     /**
      * Constructs the command allowing to rename the selected representation.
-     * @param representation The representation.
-     * @param name The new name to apply.
+     * 
+     * @param representation
+     *          The representation.
+     * @param name
+     *          The new name to apply.
      */
-    public RenameRepresentationCommand(DRepresentation representation, String name) {
+    public RenameRepresentationCommand(DRepresentationDescriptor representation, String name) {
       newName = name;
       selectedRepresentation = representation;
     }
@@ -139,6 +142,9 @@ public class RenameRepresentationAction extends BaseSelectionListenerAction {
      */
     @Override
     public void run() {
+      if (!selectedRepresentation.isLoadedRepresentation()) {
+        selectedRepresentation.getRepresentation();
+      }
       selectedRepresentation.setName(newName);
     }
   }

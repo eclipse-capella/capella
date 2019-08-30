@@ -66,7 +66,7 @@ public class LogicalActorHelper {
   }
 
   protected List<ActorCapabilityRealizationInvolvement> getParticipationInCapabilityRealizations(LogicalActor element) {
-    List<ActorCapabilityRealizationInvolvement> ret = new ArrayList<ActorCapabilityRealizationInvolvement>();
+    List<ActorCapabilityRealizationInvolvement> ret = new ArrayList<>();
     for (CapabilityRealizationInvolvement involvement : element.getInvolvingCapabilityRealizationInvolvements()) {
       if (involvement instanceof ActorCapabilityRealizationInvolvement) {
         ret.add((ActorCapabilityRealizationInvolvement) involvement);
@@ -76,7 +76,7 @@ public class LogicalActorHelper {
   }
 
   protected List<SystemActorRealization> getSystemActorRealizations(LogicalActor element) {
-    List<SystemActorRealization> ret = new ArrayList<SystemActorRealization>();
+    List<SystemActorRealization> ret = new ArrayList<>();
     for (ComponentAllocation componentAllocation : element.getProvisionedComponentAllocations()) {
       if (componentAllocation instanceof SystemActorRealization) {
         ret.add((SystemActorRealization) componentAllocation);
@@ -86,7 +86,7 @@ public class LogicalActorHelper {
   }
 
   protected List<LogicalFunction> getAllocatedLogicalFunctions(LogicalActor element) {
-    List<LogicalFunction> ret = new ArrayList<LogicalFunction>();
+    List<LogicalFunction> ret = new ArrayList<>();
     for (AbstractFunction function : element.getAllocatedFunctions()) {
       if (function instanceof LogicalFunction) {
         ret.add((LogicalFunction) function);
@@ -96,7 +96,7 @@ public class LogicalActorHelper {
   }
 
   protected List<PhysicalActor> getRealizingPhysicalActors(LogicalActor element) {
-    List<PhysicalActor> ret = new ArrayList<PhysicalActor>();
+    List<PhysicalActor> ret = new ArrayList<>();
     for (Component cpnt : element.getAllocatingComponents()) {
       if (cpnt instanceof PhysicalActor) {
         ret.add((PhysicalActor) cpnt);
@@ -106,7 +106,7 @@ public class LogicalActorHelper {
   }
 
   protected List<Actor> getRealizedSystemActors(LogicalActor element) {
-    List<Actor> ret = new ArrayList<Actor>();
+    List<Actor> ret = new ArrayList<>();
     for (Component cpnt : element.getAllocatedComponents()) {
       if (cpnt instanceof Actor) {
         ret.add((Actor) cpnt);

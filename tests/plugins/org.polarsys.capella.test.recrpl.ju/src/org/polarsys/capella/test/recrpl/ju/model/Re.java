@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ public abstract class Re extends RecRplTestCase {
 
   public static String LOGICAL_SYSTEM = "3ffa9fef-c04e-4aa9-bdf4-97dcc2ef30cb"; //$NON-NLS-1$ 
 
+  public static String ROOT_LF = "c3da4575-4c41-4517-aa6c-892b36abecb0"; //$NON-NLS-1$ 
   public static String LF1 = "2fb8fdd1-86a6-4f1d-ba6d-6dfc993c9083"; //$NON-NLS-1$ 
   public static String FOP_1 = "608258a6-1b30-46f3-8dde-30bb8513bbbc"; //$NON-NLS-1$ 
   public static String LF2 = "f1bfe95d-b77d-4947-914b-989f426151e7"; //$NON-NLS-1$ 

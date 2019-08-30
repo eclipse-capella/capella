@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -67,14 +67,14 @@ public class TextValueGroup extends AbstractSemanticGroup {
    * @param hasResetBtn
    */
   protected void createValueTextField(String label, boolean hasResetBtn) {
-    Composite main = _widgetFactory.createComposite(parent);
+    Composite main = widgetFactory.createComposite(parent);
     main.setLayout(new GridLayout(3, false));
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = ((GridLayout) parent.getLayout()).numColumns; //2;
     main.setLayoutData(gd);
 
-    _widgetFactory.createCLabel(main, label);
-    valueField = _widgetFactory.createText(main, ""); //$NON-NLS-1$
+    widgetFactory.createCLabel(main, label);
+    valueField = widgetFactory.createText(main, ""); //$NON-NLS-1$
     valueField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
     addListeners();
 
@@ -124,8 +124,8 @@ public class TextValueGroup extends AbstractSemanticGroup {
    *
    */
   public void loadTextValue() {
-    if (null != valueField && null != _semanticElement && null != _semanticFeature) {
-      setTextValue(valueField, _semanticElement, _semanticFeature);
+    if (null != valueField && null != semanticElement && null != semanticFeature) {
+      setTextValue(valueField, semanticElement, semanticFeature);
       updateResetBtnStatus();
     }
   }
@@ -136,7 +136,7 @@ public class TextValueGroup extends AbstractSemanticGroup {
   @Override
   protected void fillTextField(Text textField) {
     if (textField.equals(valueField)) {
-      setDataValue(_semanticElement, _semanticFeature, valueField.getText());
+      setDataValue(semanticElement, semanticFeature, valueField.getText());
     }
   }
 
@@ -173,8 +173,8 @@ public class TextValueGroup extends AbstractSemanticGroup {
    * @param button
    */
   protected void handleResetButtonClicked(Button button) {
-    setDataValue(_semanticElement, _semanticFeature, null);
-    setTextValue(valueField, _semanticElement, _semanticFeature);
+    setDataValue(semanticElement, semanticFeature, null);
+    setTextValue(valueField, semanticElement, semanticFeature);
   }
 
   /**
@@ -182,7 +182,7 @@ public class TextValueGroup extends AbstractSemanticGroup {
    */
   protected void updateResetBtnStatus() {
     if (null != valueResetBtn) {
-      valueResetBtn.setEnabled(_semanticElement.eGet(_semanticFeature) != null);
+      valueResetBtn.setEnabled(semanticElement.eGet(semanticFeature) != null);
     }
   }
   

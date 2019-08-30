@@ -26,6 +26,8 @@ import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.platform.sirius.ui.actions.CreateCategoriesController;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
+import org.polarsys.capella.test.diagram.common.ju.availableXDFBDiagramTools.XDFBCreateContainerTools;
+import org.polarsys.capella.test.diagram.common.ju.availableXDFBDiagramTools.XDFBCreateEdgeTools;
 import org.polarsys.capella.test.diagram.common.ju.context.XDFBDiagram;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
@@ -36,7 +38,7 @@ import org.polarsys.capella.test.framework.model.GenericModel;
 public class UndoOnHideSystemFunction extends EmptyProject {
   @Override
   public void test() throws Exception {
-    // Close Intro, else Undo action does not work. 
+    // Close Intro, else Undo action does not work.
     IIntroPart introViewPart = PlatformUI.getWorkbench().getIntroManager().getIntro();
     if (introViewPart != null) {
       PlatformUI.getWorkbench().getIntroManager().closeIntro(introViewPart);
@@ -47,42 +49,48 @@ public class UndoOnHideSystemFunction extends EmptyProject {
 
     // Create a SDFB diagram
     XDFBDiagram sdfbDiagram = XDFBDiagram.createDiagram(context, SA__ROOT_SF);
-    
+
     // Create a main SF
-    sdfbDiagram.createFunction(GenericModel.FUNCTION_1);
-    
+    String function1Id = sdfbDiagram.createContainer(sdfbDiagram.getDiagramId(),
+        XDFBCreateContainerTools.CREATE_FUNCTION);
+
     // Create 2 sub SFs under the main SF
-    sdfbDiagram.createFunction(GenericModel.FUNCTION_1_1, GenericModel.FUNCTION_1);
-    sdfbDiagram.createFunction(GenericModel.FUNCTION_1_2, GenericModel.FUNCTION_1);
-    
+    String function1_1Id = sdfbDiagram.createContainer(function1Id, XDFBCreateContainerTools.CREATE_FUNCTION);
+    String function1_2Id = sdfbDiagram.createContainer(function1Id, XDFBCreateContainerTools.CREATE_FUNCTION);
+
     // Create a FE between the 2 bus SFs
-    sdfbDiagram.createFunctionalExchange(GenericModel.FUNCTIONAL_EXCHANGE_1, GenericModel.FUNCTION_1_1, GenericModel.FUNCTION_1_2);
-    
-    final FunctionalExchange fe1 = sdfbDiagram.getSemanticElement(GenericModel.FUNCTIONAL_EXCHANGE_1);
-    
+    String feId = sdfbDiagram.createEdge(function1_1Id, function1_2Id, XDFBCreateEdgeTools.CREATE_FUNCTIONAL_EXCHANGE);
+
+    final FunctionalExchange fe1 = sdfbDiagram.getSessionContext().getSemanticElement(feId);
+
     // Create an Exchange Category referencing the FE
     AbstractReadWriteCommand createExchangeCategory = new AbstractReadWriteCommand() {
       @Override
       public void run() {
         List<EObject> feList = Collections.singletonList((EObject) fe1);
-        CreateCategoriesController createCategoryController = CreateCategoriesController.createCreateCategoriesController(feList);
+        CreateCategoriesController createCategoryController = CreateCategoriesController
+            .createCreateCategoriesController(feList);
         createCategoryController.createAndAttachCategory(feList, GenericModel.EXCHANGE_CATEGORY_1);
       }
     };
     context.getExecutionManager().execute(createExchangeCategory);
 
     // Hide the second sub SF
-    new InsertRemoveTool(sdfbDiagram, IToolNameConstants.TOOL_SDFB_SHOW_HIDE_FUNCTIONS, GenericModel.FUNCTION_1).remove(GenericModel.FUNCTION_1_2);
+    new InsertRemoveTool(sdfbDiagram, IToolNameConstants.TOOL_SDFB_SHOW_HIDE_FUNCTIONS, function1Id)
+        .remove(function1_2Id);
 
-    // Undo Hide (Ctrl + Z) - Two Undos are needed (first: undo the refresh diagram - done by the test tool, second: recover the sub SF).
+    // Undo Hide (Ctrl + Z) - Two Undos are needed (first: undo the refresh diagram - done by the test tool, second:
+    // recover the sub SF).
     IEditorPart editorPart = DiagramHelper.getDiagramEditor(session, sdfbDiagram.getDiagram());
     IActionBars actionBars = editorPart.getEditorSite().getActionBars();
     actionBars.getGlobalActionHandler(ActionFactory.UNDO.getId()).run();
     actionBars.getGlobalActionHandler(ActionFactory.UNDO.getId()).run();
 
     // Check outgoingEdges
-    DSemanticDecorator functionalExchangeDEdge = sdfbDiagram.getView(GenericModel.FUNCTIONAL_EXCHANGE_1);
-    assertTrue("Functional Exchange must be represented by a DEdge in a diagram", functionalExchangeDEdge instanceof DEdge);
-    assertEquals("Only 1 DEdge is expected on the output port", 1, ((DEdge)functionalExchangeDEdge).getSourceNode().getOutgoingEdges().size());
+    DSemanticDecorator functionalExchangeDEdge = sdfbDiagram.getView(feId);
+    assertTrue("Functional Exchange must be represented by a DEdge in a diagram",
+        functionalExchangeDEdge instanceof DEdge);
+    assertEquals("Only 1 DEdge is expected on the output port", 1,
+        ((DEdge) functionalExchangeDEdge).getSourceNode().getOutgoingEdges().size());
   }
 }

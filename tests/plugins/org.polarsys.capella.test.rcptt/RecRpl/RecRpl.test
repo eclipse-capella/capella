@@ -1,0 +1,679 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _0i1x8B2fEemB9ZmybI1P4g
+Element-Name: RecRpl
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _QblmIKj2Eee0yuaysMB3Rg
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 1/21/19 6:15 PM
+Testcase-Type: ecl
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Create new Capella Project
+get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
+with [get-window "New Capella Project"] {
+    get-editbox | set-text project
+    get-button Finish | click
+}
+
+// Create new SDFB diagram
+get-view "Capella Project Explorer" | get-tree 
+    | select "project/project.aird/project/System Analysis/System Functions/Root System Function" 
+    | get-menu "New Diagram \\/ Table.../System Data Flow Blank" | click
+get-window "New System Data Flow Blank" | get-button OK | click
+
+
+//Ensure that port and exchanges are hidden
+get-button "View Menu" | click
+get-view "Capella Project Explorer" | get-menu "Filters and Customization..." | click
+with [get-window "Filters and Customization"] {
+    get-tab-folder | get-tab-item Filters | click
+    with [get-table] {
+        get-item "Functional Exchanges" | check
+        get-item "Function Port" | check
+    }
+    get-button OK | click
+}
+
+
+//Create a REC with two functions and one Functional Exchange
+with [get-editor "[SDFB] Root System Function"] {
+ 
+    with [get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-hover 316 83 -height 394 -width 604
+        mouse-move 330 83 button1 -height 394 -width 604
+        mouse-press 330 83 button1 -height 394 -width 604
+        mouse-move 330 83 -mask 524288 -height 394 -width 604
+        mouse-drag 330 83 button1 524288 -height 394 -width 604
+        mouse-release 330 83 button1 524288 -height 394 -width 604
+        mouse-move 593 82 -height 394 -width 604
+    }
+    with [get-palette] {
+        with [get-palette-entry "Actor Function"] {
+            mouse-move 64 4 -height 23 -width 125
+            mouse-hover 64 4 -height 23 -width 125
+        }
+        with [get-palette-entry "System Function"] {
+            mouse-move 61 12 -height 23 -width 125
+            mouse-hover 61 12 -height 23 -width 125
+            mouse-move 61 12 button1 -height 23 -width 125
+            mouse-press 61 12 button1 -height 23 -width 125
+            mouse-release 61 12 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-move 106 83 button1 -height 394 -width 604
+        mouse-press 106 83 button1 -height 394 -width 604
+        mouse-release 106 83 button1 524288 -height 394 -width 604
+    }
+    get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function" | mouse-move 191 73 -height 394 -width 604
+    with [get-palette | get-palette-entry "System Function"] {
+        mouse-move 43 13 button1 -height 23 -width 125
+        mouse-press 43 13 button1 -height 23 -width 125
+        mouse-release 43 13 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-move 377 67 -height 394 -width 604
+        mouse-hover 377 67 -height 394 -width 604
+        mouse-move 374 83 -height 394 -width 604
+        mouse-hover 374 83 -height 394 -width 604
+        mouse-move 374 83 button1 -height 394 -width 604
+        mouse-press 374 83 button1 -height 394 -width 604
+        mouse-release 374 83 button1 524288 -height 394 -width 604
+    }
+    get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function" | mouse-move 575 78 -height 394 -width 604
+    with [get-palette | get-palette-entry "Functional Exchange"] {
+        mouse-move 44 6 button1 -height 37 -width 125
+        mouse-press 44 6 button1 -height 37 -width 125
+        mouse-release 44 6 button1 524288 -height 37 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-move 301 105 -height 394 -width 604
+        with [get-edit-part -name "SystemFunction 1" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 114 36 button1 -height 68 -width 148
+            mouse-press 114 36 button1 -height 68 -width 148
+            mouse-release 114 36 button1 524288 -height 68 -width 148
+        }
+        with [get-edit-part -name "SystemFunction 2" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 11 27 button1 -height 68 -width 148
+            mouse-press 11 27 button1 -height 68 -width 148
+        }
+    }
+    
+}
+
+// Select all elements on the diagram to create REC
+with [get-editor "[SDFB] Root System Function"] {
+    with [get-diagram -index 1] {
+        key-type "M1+a"
+        with [get-edit-part -name "[SDFB] Root System Function" | get-edit-part -name "SystemFunction 1" 
+            | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 55 47 button3 -height 68 -width 148
+            mouse-press 55 47 button3 -height 68 -width 148
+            mouse-release 55 47 button3 2097152 -height 68 -width 148
+        }
+        get-menu "REC \\/ RPL/Create REC/From selection..." | click
+    }
+}
+
+// Activate suffix for all elements
+with [get-window "Replicable Elements"] {
+    with [get-group "" -index 1] {
+        get-tree 
+            | select "project/project/System Analysis/System Functions/Root System Function/FunctionalExchange 1" "project/project/System Analysis/System Functions/Root System Function/SystemFunction 1/FOP 1" "project/project/System Analysis/System Functions/Root System Function/SystemFunction 1" "project/project/System Analysis/System Functions/Root System Function/SystemFunction 2/FIP 1" "project/project/System Analysis/System Functions/Root System Function/SystemFunction 2"
+        get-button "Add/remove suffix on elements" | click
+    }
+    get-button OK | click
+}
+
+
+// Check that both function are tagged with a [REC] tag
+// And REC is containing 5 elements. (functions, ports and exchange)
+get-editor "[SDFB] Root System Function" | get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function" 
+    | mouse-move 410 207 -height 394 -width 604
+get-editor "[SDFB] Root System Function" | get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function" 
+    | mouse-move 47 69 -height 394 -width 521
+with [get-view "Capella Project Explorer" | get-tree] {
+    get-item "project/\\*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 1 \\[REC\\]" 
+        | get-property caption | equals "SystemFunction 1 [REC]" | verify-true
+    get-item "project/\\*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 2 \\[REC\\]" 
+        | get-property caption | equals "SystemFunction 2 [REC]" | verify-true
+    get-item "project/\\*project.aird/project/REC Catalog/REC1" | get-property caption | equals REC1 | verify-true
+    get-item "project/\\*project.aird/project/REC Catalog/REC1" | get-property childCount | equals 5 | verify-true
+}
+
+// Add a sub function inside a function and update the REC
+with [get-editor "[SDFB] Root System Function"] {
+    get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function" | mouse-move 400 161 -height 394 -width 521
+    with [get-palette] {
+        get-palette-entry Functions -index 1 | mouse-move 91 5 -height 23 -width 125
+        get-palette-entry "Functional Exchange" | mouse-move 96 16 -height 37 -width 125
+        get-palette-entry "Actor Function" | mouse-move 74 13 -height 23 -width 125
+        with [get-palette-entry "System Function"] {
+            mouse-move 55 14 button1 -height 23 -width 125
+            mouse-press 55 14 button1 -height 23 -width 125
+            mouse-release 55 14 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-move 317 81 -height 394 -width 521
+        with [get-edit-part -name "SystemFunction 1" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 35 43 button1 -height 68 -width 148
+            mouse-press 35 43 button1 -height 68 -width 148
+            mouse-release 35 43 button1 524288 -height 68 -width 148
+        }
+    }
+    with [get-diagram -index 1] {
+        get-edit-part -name "[SDFB] Root System Function" | get-edit-part -name "SystemFunction 1" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name "SystemFunction 1" 
+            | get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart | mouse-hover 5 3 -height 68 
+            -width 148
+        key-type "M2+s"
+        get-edit-part -name "[SDFB] Root System Function" | get-edit-part -name "SystemFunction 1" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name "SystemFunction 1" 
+            | get-edit-part -className DNodeContainerName2EditPart | activate-direct-edit
+    }
+    with [get-editbox] {
+        set-text Sub
+        key-type Enter
+    }
+    
+    with [get-diagram -index 1] {
+        key-type "M1+a"
+        with [get-edit-part -name "[SDFB] Root System Function" | get-edit-part -name "SystemFunction 1" 
+            | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 55 47 button3 -height 68 -width 148
+            mouse-press 55 47 button3 -height 68 -width 148
+            mouse-release 55 47 button3 2097152 -height 68 -width 148
+        }
+        get-menu "REC \\/ RPL/Update REC/From selection..." | click
+    }
+	
+}
+
+get-window "Replicable Elements" | get-button OK | click
+with [get-window "Update REC from selection"] {
+    get-button Apply | click
+}
+
+// Check that REC contains 6 elements, and Sub Function is tagged with [REC] tag
+
+get-view "Capella Project Explorer" | get-tree | get-item "project/\\*project.aird/project/REC Catalog/REC1" 
+    | get-property childCount | equals 6 | verify-true
+    
+get-view "Capella Project Explorer" | get-tree 
+    | select "project/*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 1 [REC]/Sub [REC]"
+get-editor "[SDFB] Root System Function" | get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function" 
+    | mouse-move 160 5 -height 394 -width 521
+get-view "Capella Project Explorer" | get-tree 
+    | get-item "project/\\*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 1 \\[REC\\]/Sub \\[REC\\]" 
+    | get-property caption | equals "Sub [REC]" | verify-true
+
+
+
+// Create a new Diagram and instanciate a RPL with a suffix newElements
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "project/*project.aird/project/System Analysis/System Functions/Root System Function" 
+    | get-menu "New Diagram \\/ Table.../System Data Flow Blank" | click
+get-window "New System Data Flow Blank" | get-button OK | click
+with [get-editor "[SDFB] Root System Function" -index 1 | get-diagram -index 1] {
+    with [get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-move 210 88 button3 -height 394 -width 604
+        mouse-press 210 88 button3 -height 394 -width 604
+        mouse-release 210 88 button3 2097152 -height 394 -width 604
+    }
+    get-menu "REC \\/ RPL/Instantiate RPL from REC" | click
+}
+with [get-window "Replicable Elements"] {
+    get-group "" | get-button "Browse available elements" | click
+    with [get-window "Selection Dialog"] {
+        get-tree | select "project/project/REC Catalog/REC1"
+        get-button OK | click
+    }
+    with [get-group "" | get-editbox -after [get-label "Suffix :"]] {
+        set-text "_newElements"
+        click-text 1
+    }
+    with [get-group "" | get-editbox -after [get-label "Name :"]] {
+        set-text "RPL1"
+        click-text 1
+    }
+    get-button OK | click
+}
+
+//Check that RPL has 6 elements, and are tagged with [RPL]
+
+get-editor "[SDFB] Root System Function" -index 1 | get-palette | get-palette-entry "Functional Exchanges" -index 1 
+    | mouse-move 104 0 -height 37 -width 125
+get-view "Capella Project Explorer" | get-tree 
+    | select "project/*project.aird/project/REC Catalog/RPL1 [REC1]"
+get-editor "[SDFB] Root System Function" -index 1 | get-diagram -index 1 | get-edit-part 
+    -name "[SDFB] Root System Function" | mouse-move 78 8 -height 394 -width 604
+with [get-view "Capella Project Explorer" | get-tree] {
+    get-item "project/\\*project.aird/project/REC Catalog/RPL1 \\[REC1\\]" | get-property caption 
+        | equals "RPL1 [REC1]" | verify-true
+    get-item "project/\\*project.aird/project/REC Catalog/RPL1 \\[REC1\\]" | get-property childCount 
+        | equals 6 | verify-true
+}
+
+get-editor "[SDFB] Root System Function" -index 1 | get-diagram -index 1 | get-edit-part 
+    -name "[SDFB] Root System Function" | mouse-move 93 171 -height 394 -width 498
+get-view "Capella Project Explorer" | get-tree 
+    | get-item "project/\\*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 1_newElements \\[RPL\\]" 
+    | get-property caption | equals "SystemFunction 1_newElements [RPL]" | verify-true
+get-view "Capella Project Explorer" | get-tree 
+    | get-item "project/\\*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 2_newElements \\[RPL\\]" 
+    | get-property caption | equals "SystemFunction 2_newElements [RPL]" | verify-true
+
+
+
+// Insert all RPL elements into diagram
+
+get-editor "[SDFB] Root System Function" -index 1 | get-diagram -index 1 | get-edit-part 
+    -name "[SDFB] Root System Function" | mouse-move 317 521 -height 687 -width 1042
+with [get-editor "[SDFB] Root System Function" -index 1] {
+    get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function" | mouse-move 1016 336 -height 687 
+        -width 1042
+    with [get-palette] {
+        with [get-palette-entry "Functions" -index 1] {
+            mouse-move 39 8 button1 -height 23 -width 150
+            mouse-press 39 8 button1 -height 23 -width 150
+            mouse-release 39 8 button1 524288 -height 23 -width 150
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-move 360 194 button1 -height 687 -width 1042
+        mouse-press 360 194 button1 -height 687 -width 1042
+        mouse-release 360 194 button1 524288 -height 687 -width 1042
+    }
+}
+with [get-window "Transfer Dialog"] {
+    get-group "Select a name to find" | get-editbox -after [get-label "? = any character, * = any string"] | set-focus
+    with [get-tree] {
+        select "project/project/System Analysis/System Functions/Root System Function/SystemFunction 1_newElements" 
+            | double-click
+        select "project/project/System Analysis/System Functions/Root System Function/SystemFunction 1_newElements/Sub" 
+            | double-click
+        select "project/project/System Analysis/System Functions/Root System Function/SystemFunction 2_newElements" 
+            | double-click
+    }
+    get-button OK | click
+}
+
+// Delete from model Sub function of RPL
+
+with [get-editor "[SDFB] Root System Function" -index 1 | get-diagram -index 1] {
+    with [get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-move 672 448 button1 -height 687 -width 1042
+        mouse-press 672 448 button1 -height 687 -width 1042
+        mouse-release 672 448 button1 524288 -height 687 -width 1042
+        mouse-move 436 350 -height 687 -width 1042
+        with [get-edit-part -name "SystemFunction 1_newElements" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 139 92 -height 122 -width 341
+            with [get-edit-part -name Sub | get-edit-part 
+                -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+                mouse-move 46 47 button1 -height 68 -width 148
+                mouse-press 46 47 button1 -height 68 -width 148
+                mouse-release 46 47 button1 524288 -height 68 -width 148
+            }
+        }
+    }
+    key-type Del
+}
+get-window Delete | get-button Yes | click
+with [get-editor "[SDFB] Root System Function" -index 1 | get-diagram -index 1 | get-edit-part 
+    -name "[SDFB] Root System Function" | get-edit-part -name "SystemFunction 1_newElements" | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+    mouse-move 147 47 button1 -height 68 -width 184
+    mouse-press 147 47 button1 -height 68 -width 184
+    mouse-release 147 47 button1 524288 -height 68 -width 184
+    mouse-press 147 47 button3 -height 68 -width 184
+    mouse-release 147 47 button3 2097152 -height 68 -width 184
+}
+
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "project/*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 1_newElements [RPL]"
+get-view "Capella Project Explorer" | get-tree 
+    | get-item "project/\\*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 1_newElements \\[RPL\\]" 
+    | get-property childCount | equals 0 | verify-true
+    
+    
+// Reupdate RPL, sub function shall be recreated
+
+with [get-editor "[SDFB] Root System Function" -index 1] {
+    
+    with [get-diagram -index 1] {
+        with [get-edit-part -name "[SDFB] Root System Function"] {
+            with [get-edit-part -name "SystemFunction 1_newElements" | get-edit-part 
+                -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+                mouse-move 70 30 button1 -height 68 -width 184
+                mouse-press 70 30 button1 -height 68 -width 184
+                mouse-release 70 30 button1 524288 -height 68 -width 184
+                mouse-press 70 30 button3 -height 68 -width 184
+                mouse-release 70 30 button3 2097152 -height 68 -width 184
+            }
+        }
+        get-menu "REC \\/ RPL/Update selected RPL from its REC" | click
+    }
+}
+get-window "Replicable Elements" | get-button OK | click
+with [get-window "Update selected RPL from its REC"] {
+    get-button "Apply" | click
+}
+get-editor "[SDFB] Root System Function" -index 1 | get-diagram -index 1 | get-edit-part 
+    -name "[SDFB] Root System Function" | mouse-move 151 558 -height 687 -width 1042
+get-view "Capella Project Explorer" | get-tree 
+    | select "project/*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 1_newElements [RPL]"
+with [get-view "Capella Project Explorer" | get-tree] {
+    get-item "project/\\*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 1_newElements \\[RPL\\]" 
+        | get-property childCount | equals 1 | verify-true
+    get-item "project/\\*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 1_newElements \\[RPL\\]/Sub \\[RPL\\]" 
+        | get-property caption | equals "Sub [RPL]" | verify-true
+}
+
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "project/*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 1_newElements [RPL]/Sub [RPL]"
+with [get-editor "[SDFB] Root System Function" -index 1] {
+    get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function" | mouse-move 894 255 -height 687 
+        -width 1042
+    with [get-palette] {
+        get-palette-entry "Functional Exchange" | mouse-move 88 20 -height 23 -width 150
+        with [get-palette-entry Functions -index 1] {
+            mouse-move 60 13 button1 -height 23 -width 150
+            mouse-press 60 13 button1 -height 23 -width 150
+            mouse-release 60 13 button1 524288 -height 23 -width 150
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-move 612 229 button1 -height 687 -width 1042
+        mouse-press 612 229 button1 -height 687 -width 1042
+        mouse-release 612 229 button1 524288 -height 687 -width 1042
+    }
+}
+with [get-window "Transfer Dialog"] {
+    get-group "Select a name to find" | get-editbox -after [get-label "? = any character, * = any string"] | set-focus
+    get-tree 
+        | select "project/project/System Analysis/System Functions/Root System Function/SystemFunction 1_newElements/Sub" 
+        | double-click
+    get-button OK | click
+}
+with [get-editor "[SDFB] Root System Function" -index 1] {
+    with [get-diagram -index 1] {
+        get-edit-part -name "[SDFB] Root System Function" | mouse-move 636 443 -height 687 -width 1042
+        key-type "M1+z"
+        get-edit-part -name "[SDFB] Root System Function" | mouse-move 484 542 -height 687 -width 1042
+    }
+    with [get-palette] {
+        get-palette-entry "Functional Exchanges" -index 1 | mouse-move 41 9 -height 23 -width 150
+        with [get-palette-entry Functions -index 1] {
+            mouse-move 46 14 button1 -height 23 -width 150
+            mouse-press 46 14 button1 -height 23 -width 150
+            mouse-release 46 14 button1 524288 -height 23 -width 150
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-move 535 188 -height 687 -width 1042
+        with [get-edit-part -name "SystemFunction 1_newElements" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 168 4 button1 -height 68 -width 184
+            mouse-press 168 4 button1 -height 68 -width 184
+            mouse-release 168 4 button1 524288 -height 68 -width 184
+        }
+    }
+}
+with [get-window "Transfer Dialog"] {
+    get-group "Select a name to find" | get-editbox -after [get-label "? = any character, * = any string"] | set-focus
+    get-button Cancel | click
+}
+with [get-editor "[SDFB] Root System Function" -index 1] {
+    get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function" | mouse-move 980 454 -height 687 
+        -width 1042
+    with [get-palette | get-palette-entry Functions -index 1] {
+        mouse-move 35 12 button1 -height 23 -width 150
+        mouse-press 35 12 button1 -height 23 -width 150
+        mouse-release 35 12 button1 524288 -height 23 -width 150
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-move 675 360 button1 -height 687 -width 1042
+        mouse-press 675 360 button1 -height 687 -width 1042
+        mouse-release 675 360 button1 524288 -height 687 -width 1042
+    }
+}
+with [get-window "Transfer Dialog"] {
+    get-group "Select a name to find" | get-editbox -after [get-label "? = any character, * = any string"] | set-focus
+    get-tree 
+        | select "project/project/System Analysis/System Functions/Root System Function/SystemFunction 1_newElements/Sub" 
+        | double-click
+    get-button OK | click
+}
+with [get-editor "[SDFB] Root System Function" -index 1 | get-diagram -index 1] {
+    get-edit-part -name "[SDFB] Root System Function" | mouse-move 763 495 -height 687 -width 1042
+    key-type Del
+}
+get-window Delete | get-button Yes | click
+
+
+// Update REC from RPL, Sub function of REC shall be deleted too
+
+with [get-editor "[SDFB] Root System Function" -index 1 | get-diagram -index 1] {
+    with [get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-move 521 280 -height 687 -width 1042
+        get-edit-part -name "SystemFunction 2_newElements" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart | mouse-move 128 16 -height 68 -width 184
+        with [get-edit-part -name "SystemFunction 1_newElements" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 131 6 button3 -height 68 -width 184
+            mouse-press 131 6 button3 -height 68 -width 184
+            mouse-release 131 6 button3 2097152 -height 68 -width 184
+        }
+    }
+    get-menu "REC \\/ RPL/Update REC from selected RPL" | click
+}
+get-window "Replicable Elements" | get-button OK | click
+with [get-window "Update REC from selected RPL"] {
+    get-button Apply | click
+}
+get-editor "[SDFB] Root System Function" -index 1 | get-diagram -index 1 | get-edit-part 
+    -name "[SDFB] Root System Function" | mouse-move 500 480 -height 687 -width 1042
+with [get-view "Capella Project Explorer" | get-tree] {
+    get-item "project/\\*project.aird/project/REC Catalog/REC1" | get-property caption | equals REC1 | verify-true
+    get-item "project/\\*project.aird/project/REC Catalog/REC1" | get-property childCount | equals 5 | verify-true
+    get-item "project/\\*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 1 \\[REC\\]" 
+        | get-property childCount | equals 0 | verify-true
+}
+
+
+//Create a new diagram and instanciate a new RPL. They shall contains the suffix
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "project/*project.aird/project/System Analysis/System Functions/Root System Function" 
+    | get-menu "New Diagram \\/ Table.../System Data Flow Blank" | click
+get-window "New System Data Flow Blank" | get-button OK | click
+
+
+with [get-editor "[SDFB] Root System Function" -index 2 | get-diagram -index 1] {
+    with [get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-move 229 382 button3 -height 687 -width 1042
+        mouse-press 229 382 button3 -height 687 -width 1042
+        mouse-release 229 382 button3 2097152 -height 687 -width 1042
+    }
+    get-menu "REC \\/ RPL/Instantiate RPL from REC" | click
+}
+with [get-window "Replicable Elements"] {
+    get-group "" | get-button "Browse available elements" | click
+    get-window "Selection Dialog" | get-tree | select "project/project/REC Catalog/REC1" | double-click
+    with [get-group ""] {
+        get-editbox -after [get-label "Suffix :"] | set-text "_newElements2"
+        get-editbox -after [get-label "Name :"] | click-text 1
+        get-editbox -after [get-label "Suffix :"] | set-text "_newElements2"
+        get-editbox -after [get-label "Name :"] | set-text RPL2
+    }
+    get-button OK | click
+}
+
+with [get-view "Capella Project Explorer" | get-tree] {
+    get-item "project/\\*project.aird/project/REC Catalog/RPL2 \\[REC1\\]" | get-property caption 
+        | equals "RPL2 [REC1]" | verify-true
+    get-item "project/\\*project.aird/project/REC Catalog/RPL2 \\[REC1\\]" | get-property childCount | equals 5 
+        | verify-true
+    get-item "project/\\*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 2_newElements2 \\[RPL\\]" 
+        | get-property caption | equals "SystemFunction 2_newElements2 [RPL]" | verify-true
+    get-item "project/\\*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 1_newElements2 \\[RPL\\]" 
+        | get-property caption | equals "SystemFunction 1_newElements2 [RPL]" | verify-true
+}
+
+// Insert both functions, and perform a Copy Layout
+
+with [get-editor "[SDFB] Root System Function" -index 2] {
+    with [get-palette | get-palette-entry Functions -index 1] {
+        mouse-move 42 12 button1 -height 23 -width 125
+        mouse-press 42 12 button1 -height 23 -width 125
+        mouse-release 42 12 button1 524288 -height 23 -width 125
+        mouse-move 37 12 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-move 283 214 button1 -height 687 -width 1042
+        mouse-press 283 214 button1 -height 687 -width 1042
+        mouse-release 283 214 button1 524288 -height 687 -width 1042
+    }
+}
+with [get-window "Transfer Dialog"] {
+    get-group "Select a name to find" | get-editbox -after [get-label "? = any character, * = any string"] | set-focus
+    with [get-tree] {
+        select "project/project/System Analysis/System Functions/Root System Function/SystemFunction 1_newElements2" 
+            | double-click
+        select "project/project/System Analysis/System Functions/Root System Function/SystemFunction 2_newElements2" 
+            | double-click
+    }
+    get-button OK | click
+}
+with [get-editor "[SDFB] Root System Function" -index 2 | get-diagram -index 1 | get-edit-part 
+    -name "[SDFB] Root System Function"] {
+    mouse-move 495 338 button1 -height 687 -width 1042
+    mouse-press 495 338 button1 -height 687 -width 1042
+    mouse-release 495 338 button1 524288 -height 687 -width 1042
+    mouse-move 464 104 -height 687 -width 1042
+}
+with [get-editor "[SDFB] Root System Function"] {
+    click
+    with [get-diagram -index 1] {
+        with [get-edit-part -name "[SDFB] Root System Function"] {
+            mouse-move 183 24 button1 -height 687 -width 1042
+            mouse-press 183 24 button1 -height 687 -width 1042
+            mouse-release 183 24 button1 524288 -height 687 -width 1042
+            mouse-move 222 21 -height 687 -width 1042
+        }
+        key-type "M1+a"
+        get-edit-part -name "[SDFB] Root System Function" | mouse-move 221 20 -height 687 -width 1042
+    }
+}
+with [get-editor "[SDFB] Root System Function"] {
+    get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function" | mouse-move 221 2 -height 687 -width 1042
+    get-button "Copy the format of the selected diagram elements" | click
+}
+with [get-editor "[SDFB] Root System Function" -index 2] {
+    click
+    with [get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-move 510 48 button1 -height 687 -width 1042
+        mouse-press 510 48 button1 -height 687 -width 1042
+        mouse-release 510 48 button1 524288 -height 687 -width 1042
+        mouse-move 279 2 -height 687 -width 1042
+    }
+    get-button "Paste the current recorded format (layout and style) to the selected diagram" | click
+    get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function" | mouse-move 260 479 -height 687 
+        -width 1042
+}
+
+// Layout shall be copied
+
+with [get-editor "[SDFB] Root System Function" -index 2 | get-diagram -index 1 | get-edit-part 
+    -name "[SDFB] Root System Function"] {
+    with [get-edit-part -name "SystemFunction 1_newElements2" | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        mouse-move 61 2 button1 -height 68 -width 148
+        mouse-press 61 2 button1 -height 68 -width 148
+        mouse-release 61 2 button1 524288 -height 68 -width 148
+    }
+    mouse-move 170 372 button1 -height 687 -width 1042
+    mouse-press 170 372 button1 -height 687 -width 1042
+    mouse-release 170 372 button1 524288 -height 687 -width 1042
+}
+with [get-editor "[SDFB] Root System Function" -index 2 | get-diagram -index 1 | get-edit-part 
+    -name "[SDFB] Root System Function" | get-edit-part -name "SystemFunction 1_newElements2" | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartmentEditPart | get-figure 1] {
+    get-property x | equals 110 | verify-true
+    get-property y | equals 81 | verify-true
+    get-property width | equals 148 | verify-true
+    get-property height | equals 67 | verify-true
+}
+with [get-editor "[SDFB] Root System Function" -index 2 | get-diagram -index 1 | get-edit-part 
+    -name "[SDFB] Root System Function"] {
+    mouse-move 367 84 -height 687 -width 1042
+    get-edit-part -name "SystemFunction 2_newElements2" | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartmentEditPart | mouse-move 3 6 -height 68 -width 148
+}
+with [get-editor "[SDFB] Root System Function" -index 2 | get-diagram -index 1 | get-edit-part 
+    -name "[SDFB] Root System Function" | get-edit-part -name "SystemFunction 2_newElements2" | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartmentEditPart | get-figure 1] {
+    get-property x | equals 370 | verify-true
+    get-property y | equals 81 | verify-true
+    get-property width | equals 148 | verify-true
+    get-property height | equals 67 | verify-true
+}
+
+
+// Update suffix of the RPL, we ensure that names of elements are properly named.
+
+get-editor "[SDFB] Root System Function" -index 2 | get-diagram -index 1 | get-edit-part 
+    -name "[SDFB] Root System Function" | mouse-move 607 653 -height 687 -width 1042
+get-view "Capella Project Explorer" | get-tree | select "project/*project.aird/project/REC Catalog/RPL2 [REC1]" 
+    | get-menu "REC \\/ RPL/Update selected RPL from its REC" | click
+with [get-window "Replicable Elements"] {
+    with [get-group ""] {
+        get-editbox -after [get-label "Suffix :"] | set-text "_nefffff"
+        get-editbox -after [get-label "Name :"] | click-text 1
+    }
+    get-button OK | click
+}
+with [get-window "Update selected RPL from its REC"] {
+    get-button Apply | click
+}
+get-editor "[SDFB] Root System Function" -index 2 | get-diagram -index 1 | get-edit-part 
+    -name "[SDFB] Root System Function" | mouse-move 109 672 -height 687 -width 1042
+with [get-view "Capella Project Explorer" | get-tree] {
+    get-item "project/\\*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 2_nefffff \\[RPL\\]" 
+        | get-property caption | equals "SystemFunction 2_nefffff [RPL]" | verify-true
+    get-item "project/\\*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 1_nefffff \\[RPL\\]" 
+        | get-property caption | equals "SystemFunction 1_nefffff [RPL]" | verify-true
+}
+
+
+// Check Semantic Browser queries on REC
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "project/*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 1 [REC]"
+
+get-view "Semantic Browser" | get-tree | select "REC/REC1"
+
+// Check Semantic Browser queries on RPL
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "project/*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 1_newElements [RPL]"
+
+with [get-view "Semantic Browser"] {
+    get-tree | select "RPL/RPL1_newElements [REC1]"
+    get-tree -after [get-label "Referenced Elements"] | select "REC Source Element/SystemFunction 1/REC1"
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

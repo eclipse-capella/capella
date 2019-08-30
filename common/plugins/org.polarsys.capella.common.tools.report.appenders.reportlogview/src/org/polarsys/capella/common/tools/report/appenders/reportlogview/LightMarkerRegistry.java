@@ -219,16 +219,29 @@ public class LightMarkerRegistry implements IMarkerSource {
     }
 
     public boolean isPurgeable() {
+      
       // A marker no-related to any data is kept
       if (diagnostic.getData().isEmpty()) {
         return false;
       }
       boolean purgeable = false;
-      // If one element is invalid, marker is deleted
-      for (Object o : diagnostic.getData()) {
-        if (o instanceof EObject && ((EObject) o).eResource() == null) {
-          purgeable = true;
-          break;
+
+      // Delete the EMF object only if the internal object it's referencing has been deleted
+      if (diagnostic.getSource() != null && diagnostic.getSource().equals("org.eclipse.emf.ecore")) {
+        for (Object o : diagnostic.getData()) {
+          if (o instanceof EObject && ((EObject) o).eResource() == null && !((EObject) o).eIsProxy()) {
+            purgeable = true;
+            break;
+          }
+        }
+      } else {
+
+        // If one element is invalid, marker is deleted
+        for (Object o : diagnostic.getData()) {
+          if (o instanceof EObject && ((EObject) o).eResource() == null) {
+            purgeable = true;
+            break;
+          }
         }
       }
       return purgeable;
@@ -287,7 +300,7 @@ public class LightMarkerRegistry implements IMarkerSource {
             ModelElement element = (ModelElement) data;
             Session session = SessionManager.INSTANCE.getSession(element);
             if (session != null) {
-            	pathAttributes += element.getFullLabel() + ICommonConstants.LINE_SEPARATOR;
+              pathAttributes += element.getFullLabel() + ICommonConstants.LINE_SEPARATOR;
             }
           }
         }

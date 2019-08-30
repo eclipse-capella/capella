@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -55,7 +55,6 @@ public class IRulesTestSuite extends BasicTestSuite {
     tests.add(new Rule_I_25());
     tests.add(new Rule_I_26());
     tests.add(new Rule_I_27());
-    tests.add(new Rule_I_28());
     tests.add(new Rule_I_29());
     tests.add(new Rule_I_30());
     tests.add(new Rule_I_31());
@@ -69,12 +68,14 @@ public class IRulesTestSuite extends BasicTestSuite {
     tests.add(new Rule_I_37_38_FunctionalExchange());
     tests.add(new Rule_I_37_38_PhysicalLink());
     tests.add(new Rule_I_37_38_ComponentFunctionalAllocation());
+    tests.add(new Rule_I_40_OnCapability());
+    tests.add(new Rule_I_40_OnMission());
 
     return tests;
   }
 
   @Override
   public List<String> getRequiredTestModels() {
-    return Arrays.asList(new String [] {"RulesOnIntegrityTest"});  //$NON-NLS-1$
+    return Arrays.asList(new String[] { "RulesOnIntegrityTest" }); //$NON-NLS-1$
   }
 }

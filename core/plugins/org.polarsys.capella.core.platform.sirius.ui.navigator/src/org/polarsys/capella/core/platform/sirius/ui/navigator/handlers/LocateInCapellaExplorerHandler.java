@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,12 +10,19 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.sirius.ui.navigator.handlers;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.eclipse.core.commands.ExecutionEvent;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPart;
-
 import org.polarsys.capella.common.ui.services.commands.AbstractLocateInViewPartHandler;
+import org.polarsys.capella.common.ui.services.commands.ActionCommandDelegate;
+import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.LocateInCapellaExplorerAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 
@@ -36,10 +43,34 @@ public class LocateInCapellaExplorerHandler extends AbstractLocateInViewPartHand
    *      org.eclipse.ui.IWorkbenchPart, org.eclipse.core.commands.ExecutionEvent)
    */
   @Override
-  protected IViewPart handleSelection(ISelection selection_p, IWorkbenchPart activePart_p, ExecutionEvent event_p) {
+  protected IViewPart handleSelection(ISelection selection, IWorkbenchPart activePart, ExecutionEvent event) {
     LocateInCapellaExplorerAction relatedAction = new LocateInCapellaExplorerAction();
-    relatedAction.setActivePart(null, activePart_p);
-    relatedAction.run(null);
+    ActionCommandDelegate delegate = new ActionCommandDelegate(event);
+    
+    // - Calculate the semantic elements to be selected in the navigator here, instead of inside the CapellaCommonNavigator;
+    // The CapellaCommonNavigator is used for all type of selection in the navigator, so handling 
+    // the semantic elements in it is too late.
+    // It causes the selection of Part always points to its AbstractType (Actor i.e)
+    
+    // - Bug 2150: Should use the Set to avoid duplicating elements
+    // If not, in LocateFilteredElementsInCommonNavigatorAction.isSetSelection() will give False even though all
+    // semantic elements were selected.
+    Set<Object> semanticElementsToSelect = new HashSet<>();
+    if (selection instanceof IStructuredSelection) {
+      Object[] selectedElements = ((IStructuredSelection) selection).toArray();
+      for (Object element : selectedElements) {
+        
+        EObject semanticElement = CapellaAdapterHelper.resolveSemanticObject(element, false);
+        
+        if (semanticElement != null) {
+          semanticElementsToSelect.add(semanticElement);
+        }
+      }
+    }
+    
+    relatedAction.selectionChanged(delegate, new StructuredSelection(semanticElementsToSelect.toArray()));
+    relatedAction.setActivePart(delegate, activePart);
+    relatedAction.run(delegate);
     return null;
   }
 }

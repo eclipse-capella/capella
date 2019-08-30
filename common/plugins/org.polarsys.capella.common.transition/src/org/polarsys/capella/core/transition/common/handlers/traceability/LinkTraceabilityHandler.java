@@ -22,6 +22,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -57,18 +58,17 @@ public class LinkTraceabilityHandler extends TwoSideTraceabilityHandler {
   }
 
   protected void initializeRootMappings(IContext context) {
-    //Initialize root mapping
+    // Initialize root mapping
   }
 
   protected void initializeMappings(EObject source, EObject target, IContext context) {
-    Iterator<EObject> iterator = target.eAllContents();
-
-    //For all elements from target, retrieve a source and addMapping
+    // For all elements from target, retrieve a source and addMapping
     addMappings(source, target, context);
+    
+    Iterator<EObject> iterator = target.eAllContents();
     while (iterator.hasNext()) {
       EObject object = iterator.next();
       for (EObject sourceAttachment : getSourceAttachments(object, context)) {
-
         if (initTraceabilityMapping(sourceAttachment, object, context)) {
           addMappings(sourceAttachment, object, context);
         }

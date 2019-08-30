@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,10 +43,6 @@ public class GetAvailable_ComponentExchange_Categories extends AbstractQuery {
 		if (element instanceof ComponentExchange) {
 			ComponentExchange componentExchange = (ComponentExchange) element;
 			availableElements.addAll(getRule_MQRY_ComponentExchange_Categories_11(componentExchange));
-			List<CapellaElement> currentElements = getCurrentElements(componentExchange, false);
-			if (!currentElements.isEmpty() && !availableElements.isEmpty()) {
-				availableElements.removeAll(currentElements);
-			}
 		}
 		return availableElements;
 	}

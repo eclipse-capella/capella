@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,8 +29,8 @@ public class MissionDiagram extends CapabilityDiagram {
   }
 
   public static MissionDiagram createDiagram(SessionContext executionContext, String targetIdentifier, String name) {
-    BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(executionContext
-        .getSemanticElement(targetIdentifier));
+    BlockArchitecture architecture = BlockArchitectureExt
+        .getRootBlockArchitecture(executionContext.getSemanticElement(targetIdentifier));
     final BlockArchitectureExt.Type type = BlockArchitectureExt.getBlockArchitectureType(architecture);
 
     return (MissionDiagram) new CreateDiagramStep(executionContext, targetIdentifier, name) {
@@ -41,7 +41,84 @@ public class MissionDiagram extends CapabilityDiagram {
     }.run().open();
   }
 
+  @Deprecated
   public void createCapabilityExploitation(String sourceId, String targetId, String id) {
+    new CreateDEdgeTool(this, getCapabilityExploitationToolName(), sourceId, targetId, id).run();
+  }
+
+  public String createCapabilityExploitation(String sourceId, String targetId) {
+    return createEdgeElement(sourceId, targetId, getCapabilityExploitationToolName());
+  }
+
+  public void cannotCreateCapabilityExploitation(String sourceId, String targetId) {
+    new CreateDEdgeTool(this, getCapabilityExploitationToolName(), sourceId, targetId).shouldFail();
+  }
+
+  public String createMission() {
+    return createNodeElement(getDiagramId(), getMissionToolName());
+  }
+
+  @Deprecated
+  public void createMission(String id) {
+    new CreateAbstractDNodeTool(this, getMissionToolName(), getDiagramId(), id).run();
+  }
+
+  public String createMissionInvolvement(String sourceId, String targetId) {
+    return createEdgeElement(sourceId, targetId, getMissionInvolvementToolName());
+  }
+
+  public void cannotCreateMissionInvolvement(String sourceId, String targetId) {
+    new CreateDEdgeTool(this, getMissionInvolvementToolName(), sourceId, targetId).shouldFail();
+  }
+
+  public boolean canInsertMission() {
+    if (isA(IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME)) {
+      return true;
+
+    } else if (isA(IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME)) {
+      return true;
+    }
+    return false;
+  }
+
+  public void insertMission(String id) {
+    new InsertRemoveTool(this, getMissionsToolName(), getDiagramId()).insert(id);
+  }
+
+  public void removeMission(String id) {
+    new InsertRemoveTool(this, getMissionsToolName(), getDiagramId()).remove(id);
+  }
+
+  private String getMissionToolName() {
+    String name = null;
+    if (isA(IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME)) {
+      name = IToolNameConstants.TOOL_MCB_CREATE_MISSION;
+
+    } else if (isA(IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME)) {
+      name = IToolNameConstants.TOOL_MB_CREATE_MISSION;
+
+    } else if (isA(IDiagramNameConstants.CONTEXTUAL_CAPABILITY_DIAGRAM_NAME)) {
+      name = IToolNameConstants.TOOL_CC_CREATE_MISSION;
+
+    }
+    return name;
+  }
+
+  private String getMissionsToolName() {
+    String name = null;
+    if (isA(IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME)) {
+      name = IToolNameConstants.TOOL_MCB_INSERT_REMOVE_MISSIONS;
+
+    } else if (isA(IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME)) {
+      name = IToolNameConstants.TOOL_MB_INSERT_REMOVE_MISSIONS;
+
+    } else if (isA(IDiagramNameConstants.CONTEXTUAL_CAPABILITY_DIAGRAM_NAME)) {
+      name = IToolNameConstants.TOOL_CC_SHOW_MISSIONS;
+    }
+    return name;
+  }
+
+  private String getCapabilityExploitationToolName() {
     String name = null;
     if (isA(IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME)) {
       name = IToolNameConstants.TOOL_MCB_CREATE_CAPABILITY_EXPLOITATION;
@@ -56,29 +133,10 @@ public class MissionDiagram extends CapabilityDiagram {
       name = IToolNameConstants.TOOL_CM_CREATE_CAPABILITY_EXPLOITATION;
 
     }
-    new CreateDEdgeTool(this, name, sourceId, targetId, id).run();
+    return name;
   }
 
-  public void createCapabilityExploitation(String sourceId, String targetId) {
-    createCapabilityExploitation(sourceId, targetId, null);
-  }
-
-  public void createMission(String id) {
-    String name = null;
-    if (isA(IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME)) {
-      name = IToolNameConstants.TOOL_MCB_CREATE_MISSION;
-
-    } else if (isA(IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME)) {
-      name = IToolNameConstants.TOOL_MB_CREATE_MISSION;
-
-    } else if (isA(IDiagramNameConstants.CONTEXTUAL_CAPABILITY_DIAGRAM_NAME)) {
-      name = IToolNameConstants.TOOL_CC_CREATE_MISSION;
-
-    }
-    new CreateAbstractDNodeTool(this, name, getDiagramId(), id).run();
-  }
-
-  public void createMissionInvolvement(String sourceId, String targetId) {
+  private String getMissionInvolvementToolName() {
     String name = null;
     if (isA(IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME)) {
       name = IToolNameConstants.TOOL_MCB_CREATE_INVOLVED_ACTOR;
@@ -88,47 +146,7 @@ public class MissionDiagram extends CapabilityDiagram {
 
     } else if (isA(IDiagramNameConstants.CONTEXTUAL_MISSION_DIAGRAM_NAME)) {
       name = IToolNameConstants.TOOL_CM_CREATE_ACTOR_INVOLVEMENT;
-
     }
-    new CreateDEdgeTool(this, name, sourceId, targetId).run();
-  }
-
-  public boolean canInsertMission() {
-    if (isA(IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME)) {
-      return true;
-      
-    } else if (isA(IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME)) {
-      return true;
-    }
-    return false;
-  }
-  public void insertMission(String id) {
-    String name = null;
-    if (isA(IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME)) {
-      name = IToolNameConstants.TOOL_MCB_INSERT_REMOVE_MISSIONS;
-
-    } else if (isA(IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME)) {
-      name = IToolNameConstants.TOOL_MB_INSERT_REMOVE_MISSIONS;
-
-    } else if (isA(IDiagramNameConstants.CONTEXTUAL_CAPABILITY_DIAGRAM_NAME)) {
-      name = IToolNameConstants.TOOL_CC_SHOW_MISSIONS;
-
-    }
-    new InsertRemoveTool(this, name, getDiagramId()).insert(id);
-  }
-
-  public void removeMission(String id) {
-    String name = null;
-    if (isA(IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME)) {
-      name = IToolNameConstants.TOOL_MCB_INSERT_REMOVE_MISSIONS;
-
-    } else if (isA(IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME)) {
-      name = IToolNameConstants.TOOL_MB_INSERT_REMOVE_MISSIONS;
-
-    } else if (isA(IDiagramNameConstants.CONTEXTUAL_CAPABILITY_DIAGRAM_NAME)) {
-      name = IToolNameConstants.TOOL_CC_SHOW_MISSIONS;
-
-    }
-    new InsertRemoveTool(this, name, getDiagramId()).remove(id);
+    return name;
   }
 }

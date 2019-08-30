@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
-  Copyright (c) 2017 THALES GLOBAL SERVICES.
+  Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -13,7 +13,7 @@
 <plugin>
    <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
       <propertySections contributorId="org.polarsys.capella.core.data.capellamodeller.properties">
-         <propertySection tab="Description"
+         <propertySection tab="DescriptionCapella"
                class="org.polarsys.capella.core.ui.properties.richtext.sections.CapellaDescriptionPropertySection"
 			   filter="org.polarsys.capella.core.ui.properties.richtext.sections.CapellaDescriptionPropertySection"
                id="org.polarsys.capella.core.ui.properties.descriptions.sections.CapellaDescriptionPropertySection.navigator">
@@ -21,7 +21,7 @@
                   type="org.polarsys.capella.core.data.capellacore.CapellaElement">
             </input>
          </propertySection>
-         <propertySection tab="Description"
+         <propertySection tab="DescriptionCapella"
                class="org.polarsys.capella.core.ui.properties.richtext.sections.DiagramDescriptionPropertySection"
 			   filter="org.polarsys.capella.core.ui.properties.richtext.sections.DiagramDescriptionPropertySection"
                id="org.polarsys.capella.core.ui.properties.descriptions.sections.DiagramaDescriptionPropertySection.navigator">
@@ -33,12 +33,12 @@
    </extension>
    <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
 	  <propertySections contributorId="org.eclipse.sirius.diagram.ui">
-         <propertySection tab="Description"
+         <propertySection tab="DescriptionSiriusDiagram"
                class="org.polarsys.capella.core.ui.properties.richtext.sections.CapellaDescriptionPropertySection"
 			   filter="org.polarsys.capella.core.ui.properties.richtext.sections.CapellaDescriptionPropertySection"
                id="org.polarsys.capella.core.ui.properties.descriptions.sections.CapellaDescriptionPropertySection.diagram">
          </propertySection>
-         <propertySection tab="Description"
+         <propertySection tab="DescriptionSiriusDiagram"
                class="org.polarsys.capella.core.ui.properties.richtext.sections.DiagramDescriptionPropertySection"
                filter="org.polarsys.capella.core.ui.properties.richtext.sections.DiagramDescriptionPropertySection"
                id="org.polarsys.capella.core.ui.properties.descriptions.section.DiagramDescriptionPropertySection.diagram">
@@ -50,7 +50,7 @@
    </extension>
    <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
 	  <propertySections contributorId="org.eclipse.sirius.table.ui.EditorID">
-         <propertySection tab="Description"
+         <propertySection tab="DescriptionSiriusTable"
                class="org.polarsys.capella.core.ui.properties.richtext.sections.CapellaDescriptionPropertySection"
 			   filter="org.polarsys.capella.core.ui.properties.richtext.sections.CapellaDescriptionPropertySection"
                id="org.polarsys.capella.core.ui.properties.descriptions.sections.CapellaDescriptionPropertySection.table">

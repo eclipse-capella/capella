@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -80,7 +80,7 @@ public class DialogProvider {
   			List<CapellaElement> filtered = InterfaceHelper.getInstance().filterExchangeItemAllocations(available, sourceIR, targetIR, messageKind);
   			// we remove the duplicate EI/EIA, we keep only EIA. 
   			// If the EIA exists, this means that this EIA is already selected, so we keep the EIA and we remove the EI.
-  			List<ExchangeItem> exchangeItemsToRemove = new ArrayList<ExchangeItem>();
+  			List<ExchangeItem> exchangeItemsToRemove = new ArrayList<>();
   			for (EObject eObject : filtered) {
   				if (eObject instanceof ExchangeItemAllocation) {
   					ExchangeItemAllocation eia = (ExchangeItemAllocation) eObject;
@@ -101,7 +101,7 @@ public class DialogProvider {
   						messageKind, ElementSupportedType.OPERATION);
   		if (Window.OK == dialog.open()) {
   			// End-user has selected an operation, handle it.
-  			if (dialog.getResult().size() == 0)
+  			if (dialog.getResult().isEmpty())
   				return null;  			
   			EObject selectedOperation = dialog.getResult().get(0);
   			portStrategie = dialog.isPortStrategy();
@@ -121,12 +121,9 @@ public class DialogProvider {
   						Messages.AffectToMessage_SelectionOperationDialog_Message, 
   						model,
   						controller);
-  		if (Window.OK == dialog.open()) {
-  			if (dialog.getResult().size() != 0) {
-  				portStrategie = model.doesPortsMustBeCreated();
-  				EObject selectedOperation = dialog.getResult().get(0);
-  				return selectedOperation;  				
-  			}
+  		if (Window.OK == dialog.open() && !dialog.getResult().isEmpty()) {
+  			portStrategie = model.doesPortsMustBeCreated();
+  			return dialog.getResult().get(0);
   		}  		
   	}
     return null;
@@ -146,7 +143,7 @@ public class DialogProvider {
     }
     
     // Open a selection dialog to get the related operation.
-    List<AbstractEventOperation> availableExchanges = new ArrayList<AbstractEventOperation>();
+    List<AbstractEventOperation> availableExchanges = new ArrayList<>();
 
     SelectFunctionalExchangeDialog dialog = null;
 
@@ -182,9 +179,9 @@ public class DialogProvider {
               Messages.SelectionDialogHelper_MessageCreation_Title, selectionExchangeMessage, availableExchanges, message, sourceIR, targetIR,
               DataflowDialogCreationType.FUNCTIONAL_EXCHANGE_SCENARIO);
     }
-    if (Window.OK == dialog.open()) {
+    if (dialog != null && Window.OK == dialog.open()) {
       // End-user has selected an operation, handle it.
-      if (dialog.getResult().size() == 0)
+      if (dialog.getResult().isEmpty())
         return null;
 
       return dialog.getResult().get(0);

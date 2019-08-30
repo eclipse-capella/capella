@@ -19,25 +19,26 @@ import org.eclipse.ui.services.IServiceLocator;
  */
 public class MenuInput {
 
+  public Shell shell;
+  public IServiceLocator locator;
+  public ISelectionProvider selectionProvider;
+
   /**
    * @param shell
    * @param selectionProvider
    */
   public MenuInput(Shell shell, ISelectionProvider selectionProvider) {
     super();
-    shell = shell;
-    selectionProvider = selectionProvider;
+    this.shell = shell;
+    this.selectionProvider = selectionProvider;
   }
 
   public MenuInput(IServiceLocator locator, ISelectionProvider selectionProvider) {
     super();
-    locator = locator;
-    selectionProvider = selectionProvider;
+    this.locator = locator;
+    this.selectionProvider = selectionProvider;
   }
 
-  public IServiceLocator locator;
 
-  public Shell shell;
-  public ISelectionProvider selectionProvider;
 
 }

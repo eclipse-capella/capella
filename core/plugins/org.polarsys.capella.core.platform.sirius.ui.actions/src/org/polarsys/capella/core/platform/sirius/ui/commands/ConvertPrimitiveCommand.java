@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -73,11 +73,10 @@ public class ConvertPrimitiveCommand extends AbstractReadWriteCommand {
 			
 			// Transfer Attributes into Compositions
 			for (AbstractTypedElement currentAbstractTypedElement : myClass.getAbstractTypedElements()) {
-				if (currentAbstractTypedElement instanceof Property) {
+				if (currentAbstractTypedElement instanceof Property && myClassPkg != null) {
 					Property currentProperty = (Property) currentAbstractTypedElement;
 					
 					// Update Property to new Class
-					//currentProperty.setAbstractType(newClass);
 					currentProperty.setAggregationKind(AggregationKind.COMPOSITION);
 					
 					// Create Association
@@ -118,5 +117,4 @@ public class ConvertPrimitiveCommand extends AbstractReadWriteCommand {
 			_logger.error(new EmbeddedMessage(MessageFormat.format("Selected Element is not correct : "+ _modelElement.getFullLabel(), _modelElement.getId()), IReportManagerDefaultComponents.MODEL, _modelElement)); //$NON-NLS-1$
 		}
 	}
-
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,21 +30,18 @@ import org.polarsys.capella.common.helpers.query.IQuery;
  */
 public class AbstractTypeAbstractTypedElement implements IQuery {
 
-
-	/** 
-	 * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
-	 */
-	public List<Object> compute(Object object) {
-	  List<Object> result = new ArrayList<Object>();
-	  if(!TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven((ModelElement) object)))
-	    return result;
-	  if (object instanceof AbstractType) {
-	    AbstractType abstractType = (AbstractType) object;
-	    // List to collect all the sub abstract type of current abstract type
-	    List<AbstractType> list = new ArrayList<AbstractType>();
-	    // add current element
-	    list.add(abstractType);
-	    // add all sub abstract type elements 
+  /**
+   * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
+   */
+  public List<Object> compute(Object object) {
+    List<Object> result = new ArrayList<Object>();
+    if (!TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven((ModelElement) object)))
+      return result;
+    if (object instanceof AbstractType) {
+      AbstractType abstractType = (AbstractType) object;
+      // List to collect all the sub abstract type of current abstract type
+      List<AbstractType> list = new ArrayList<AbstractType>();
+      // add all sub abstract type elements
       if (abstractType instanceof GeneralizableElement) {
         GeneralizableElement ele = (GeneralizableElement) abstractType;
         List<GeneralizableElement> allSuperGenElts = GeneralizableElementExt.getAllSubGeneralizableElements(ele);
@@ -52,18 +49,16 @@ public class AbstractTypeAbstractTypedElement implements IQuery {
           list.addAll(allSuperGenElts);
         }
       }
-      
-      // add the abstract typed elements to the result 
+
+      // add the abstract typed elements to the result
       for (AbstractType abtype : list) {
         EList<AbstractTypedElement> abstractTypedElements = abtype.getAbstractTypedElements();
         if (!abstractTypedElements.isEmpty()) {
           result.addAll(abstractTypedElements);
         }
       }
-	    
 
-	    
-	  }
-	  return result;
-	}
+    }
+    return result;
+  }
 }

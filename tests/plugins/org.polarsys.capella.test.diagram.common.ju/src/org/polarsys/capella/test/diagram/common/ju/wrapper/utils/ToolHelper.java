@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,24 +10,47 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.common.ju.wrapper.utils;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
+import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramComponentizationManager;
 import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.diagram.sequence.description.tool.MessageCreationTool;
+import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
+import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
+import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.MenuItemDescription;
+import org.eclipse.sirius.viewpoint.description.tool.PopupMenu;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+import org.eclipse.ui.IEditorPart;
 import org.junit.Assert;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.core.sirius.analysis.tool.StringUtil;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.AbstractToolWrapper;
+import org.polarsys.capella.test.framework.helpers.GuiActions;
 
 /**
  * Useful class for tools on a given session and diagram
@@ -71,6 +94,15 @@ public class ToolHelper {
       if (current.getName().equals(toolName)) {
         theAbstractToolDescription = current;
         break;
+      }
+      
+      if (current instanceof PopupMenu) {
+        for (MenuItemDescription item : ((PopupMenu) current).getMenuItemDescription()) {
+          if (item.getName().equals(toolName)) {
+            theAbstractToolDescription = item;
+            break;
+          }
+        }
       }
     }
 
@@ -221,4 +253,46 @@ public class ToolHelper {
     }
     return listOfGroupTools;
   }
+
+  /**
+   * For a tool that have an expression specifying which ElementsToSelect, check if the selected views after the tool are the expected ones.
+   * It must be called after tool being executed. before, it will do wrong checks.
+   */
+  public static void checkSelectionOk(AbstractToolWrapper toolWrapper) { 
+    String elementsToSelect = toolWrapper.getTool().getElementsToSelect();
+    if ((elementsToSelect != null) && !StringUtil.isEmpty(elementsToSelect)) {
+      
+      Collection<DSemanticDecorator> initialViews = (Collection<DSemanticDecorator>) toolWrapper.getArgumentValue(ArgumentType.COLLECTION);
+      EObject semantic = ((DDiagramElement)initialViews.iterator().next()).getTarget();
+      InterpreterRegistry interpreterRegistry = SiriusPlugin.getDefault().getInterpreterRegistry();
+      IInterpreter interpreter = interpreterRegistry.getInterpreter(semantic);
+
+      DDiagram diagram = ((DDiagramElement)initialViews.iterator().next()).getParentDiagram();
+      interpreter.setVariable("views", initialViews); //There is no constants for it in Sirius
+      interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, diagram);
+
+      RuntimeLoggerInterpreter decorate = RuntimeLoggerManager.INSTANCE.decorate(interpreter);
+      EAttribute attribute = ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+      
+      Collection<EObject> result = decorate.evaluateCollection(semantic, toolWrapper.getTool(), attribute);
+      //remove hidden elements since they will not be selected
+      result = result.stream().filter(x -> DiagramHelper.isDiagramElementSelectable((DDiagramElement)x)).collect(Collectors.toList());
+      
+      if (!result.isEmpty()) {
+
+        //Selection is made on async in UI thread. we need to wait the async execution for this tool.
+        GuiActions.flushASyncGuiThread();
+        IEditorPart part = DiagramHelper.getDiagramEditor(SessionManager.INSTANCE.getSession(semantic), diagram);
+        Collection<DSemanticDecorator> selectedViews = DialectUIManager.INSTANCE.getSelection((DialectEditor)part);
+        
+        boolean isValid = result.containsAll(selectedViews) && selectedViews.containsAll(result);
+        Assert.assertTrue(MessageFormat.format(Messages.failedSelectedElements, diagram.getName(), toolWrapper.getTool().getName(), selectedViews.size()), isValid);
+      }
+
+      interpreter.unSetVariable(IInterpreterSiriusVariables.DIAGRAM);
+      interpreter.unSetVariable("views");
+    }
+  }
+
+
 }

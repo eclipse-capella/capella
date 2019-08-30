@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -268,9 +268,9 @@ public abstract class AbstractSection extends AbstractPropertySection implements
     // Disable the section if the element is read only.
     IReadOnlySectionHandler roHandler = CapellaReadOnlyHelper.getReadOnlySectionHandler();
     if ((roHandler != null) && roHandler.isLockedByOthers(_capellaElement)) {
-      setEnabled(false);
+      setInitialEnabledState(false);
     } else {
-      setEnabled(true);
+      setInitialEnabledState(true);
     }
   }
 
@@ -330,6 +330,14 @@ public abstract class AbstractSection extends AbstractPropertySection implements
       }
     }
   }
+  
+  /**
+   * Set the initial enablement state of the section
+   * @param enabled
+   */
+  protected void setInitialEnabledState(boolean enabled) {
+    setEnabled(enabled);
+  }
 
   /**
    * {@inheritDoc}
@@ -374,5 +382,10 @@ public abstract class AbstractSection extends AbstractPropertySection implements
    */
   protected IReadOnlySectionHandler register(EObject element) {
     return CapellaReadOnlyHelper.register(element, this);
+  }
+  
+  @Override
+  public void performFinish() {
+    // Do nothing
   }
 }

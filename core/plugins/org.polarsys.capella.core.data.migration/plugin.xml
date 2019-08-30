@@ -82,13 +82,21 @@
          point="org.eclipse.ui.menus">
       <menuContribution
             locationURI="popup:capella.project.explorer#PopupMenu?after=group.migration">
-            <menu label="%migrationMenu">
+            <menu id="org.polarsys.capella.core.data.migration" label="%migrationMenu">
             
             <command
                   commandId="org.polarsys.capella.core.data.migration.project"
                   id="org.polarsys.capella.core.data.migration.project">
                <visibleWhen
-                     checkEnabled="true">
+                     checkEnabled="false">
+                     <with
+		                  variable="selection">
+		                  <iterate
+		                        ifEmpty="false">
+		                        <instanceof value="org.eclipse.core.resources.IProject">
+		                        </instanceof>
+		                  </iterate>
+		            </with>
                </visibleWhen>
             </command>
             <command
@@ -158,6 +166,9 @@
       <migrationContribution
             class="org.polarsys.capella.core.data.migration.capella.OpaqueExpressionMigrationContribution">
       </migrationContribution>
+      <migrationContribution
+            class="org.polarsys.capella.core.data.migration.capella.FunctionalChainMigrationContribution">
+      </migrationContribution>
    </extension>
    
    
@@ -170,7 +181,7 @@
             class="org.polarsys.capella.core.data.migration.aird.AirdMigrationContributor">
       </migrationContributor>
       <migrationContributor
-         class="org.polarsys.capella.core.data.migration.af.MetadataUpdateContributor">
+            class="org.polarsys.capella.core.data.migration.aird.FCDDiagramMigrationContributor">
       </migrationContributor>
       <migrationContributor
          class="org.polarsys.capella.core.data.migration.af.ViewpointMigrationContributor"> 
@@ -194,7 +205,7 @@
          point="org.polarsys.capella.core.data.migration.migrationContributions">
          
 	  <migrationContribution
-         class="org.polarsys.capella.core.data.migration.contribution.FixDAnnotationsContribution">
+         class="org.polarsys.capella.core.data.migration.contribution.DAnnotationDescriptorContribution">
 	  </migrationContribution>
 	  
 	  <migrationContribution

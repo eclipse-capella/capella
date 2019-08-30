@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -63,7 +63,7 @@ public class GetAvailable_FunctionOutputPort_RequiredInterface extends AbstractQ
 	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(EObject)
 	 */
 	public List<EObject> getAvailableElements(CapellaElement element) {
-		List<EObject> availableElements = new ArrayList<EObject>();
+		List<EObject> availableElements = new ArrayList<>();
 		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 		if (element instanceof Port) {
 			Port ele = (Port) element;
@@ -75,7 +75,7 @@ public class GetAvailable_FunctionOutputPort_RequiredInterface extends AbstractQ
 	}
 
 	private List<CapellaElement> getRule_MQRY_Port_ProvidedInterfaces_11(SystemEngineering systemEng, Port element) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
+		List<CapellaElement> availableElements = new ArrayList<>(1);
 		BlockArchitecture arch = null;
 		arch = SystemEngineeringExt.getRootBlockArchitecture(element);
 		availableElements.addAll(getElementsFromBlockArchitecture(arch, element));
@@ -92,7 +92,7 @@ public class GetAvailable_FunctionOutputPort_RequiredInterface extends AbstractQ
 	 * root package).
 	 */
 	private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch, Port element) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+		List<CapellaElement> availableElements = new ArrayList<>();
 		InterfacePkg interfacePkg = arch.getOwnedInterfacePkg();
 		if (interfacePkg != null) {
 			for (Interface inter : InterfacePkgExt.getAllInterfaces(interfacePkg)) {
@@ -102,13 +102,11 @@ public class GetAvailable_FunctionOutputPort_RequiredInterface extends AbstractQ
 			}
 		}
 		EObject container = element.eContainer();
-		if (container != null && container instanceof Component) {
+		if (container instanceof Component) {
 			Component parentComponent = (Component) container;
-			if (parentComponent != null) {
-				for (Interface inter : InterfacePkgExt.getAllInterfaces(parentComponent.getOwnedInterfacePkg())) {
-					if (inter != null) {
-						availableElements.add(inter);
-					}
+			for (Interface inter : InterfacePkgExt.getAllInterfaces(parentComponent.getOwnedInterfacePkg())) {
+				if (inter != null) {
+					availableElements.add(inter);
 				}
 			}
 		}
@@ -119,7 +117,7 @@ public class GetAvailable_FunctionOutputPort_RequiredInterface extends AbstractQ
 	}
 
 	private List<CapellaElement> getRule_MQRY_Port_ProvidedInterfaces_11_1(SystemEngineering systemEng, Port element) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
+		List<CapellaElement> availableElements = new ArrayList<>(1);
 		BlockArchitecture arch = null;
 		arch = SystemEngineeringExt.getRootBlockArchitecture(element);
 		OperationalAnalysis oa = SystemEngineeringExt.getOwnedOperationalAnalysis(systemEng);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,14 +18,12 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.helpers.ReplicableElementExt;
+import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.transition.common.context.TransitionContext;
 import org.polarsys.capella.core.transition.common.handlers.log.ILogHandler;
 import org.polarsys.capella.core.transition.common.handlers.log.LogHelper;
 import org.polarsys.capella.core.transition.system.handlers.log.CapellaLogHandler;
-import org.polarsys.capella.core.transition.system.helpers.SemanticHelper;
 
-/**
- */
 public class UpdateReplicaLauncher extends org.polarsys.capella.common.re.launcher.UpdateReplicaLauncher {
 
   @Override
@@ -56,9 +54,6 @@ public class UpdateReplicaLauncher extends org.polarsys.capella.common.re.launch
     addOverrides(org.polarsys.capella.common.re.re2rpl.activities.InitializeTransitionActivity.ID,
         org.polarsys.capella.core.re.re2rpl.activities.InitializeTransitionActivity.ID);
 
-    addOverrides(org.polarsys.capella.common.re.activities.AttachmentActivity.ID,
-        org.polarsys.capella.core.re.activities.AttachmentActivity.ID);
-
     addOverrides(org.polarsys.capella.common.re.activities.DifferencesComputingActivity.ID,
         org.polarsys.capella.core.re.activities.DifferencesComputingActivity.ID);
 
@@ -71,21 +66,22 @@ public class UpdateReplicaLauncher extends org.polarsys.capella.common.re.launch
   }
 
   @Override
-  public void run(Collection<?> selection_p, boolean save, IProgressMonitor monitor_p) {
-    HashSet<CatalogElement> elements = new HashSet<CatalogElement>();
-    for (Object selected : SemanticHelper.getSemanticObjects(selection_p)) {
-      if (selected instanceof EObject) {
-        if (selected instanceof CatalogElement) {
-          elements.add((CatalogElement) selected);
-        } else {
-          elements.addAll(ReplicableElementExt.getReferencingReplicableElements((EObject) selected));
-        }
+  public void run(Collection<?> selection, boolean save, IProgressMonitor monitor) {
+    Collection<EObject> semanticElements = CapellaAdapterHelper.resolveSemanticsObjects(selection);
+    
+    HashSet<CatalogElement> catalogElements = new HashSet<>();
+    for (EObject selected : semanticElements) {
+      if (selected instanceof CatalogElement) {
+        catalogElements.add((CatalogElement) selected);
+      } else {
+        catalogElements.addAll(ReplicableElementExt.getReferencingReplicableElements((EObject) selected));
       }
     }
-    for (CatalogElement selected : elements) {
-      ArrayList<Object> item = new ArrayList<Object>();
+    
+    for (CatalogElement selected : catalogElements) {
+      ArrayList<Object> item = new ArrayList<>();
       item.add(selected);
-      launch(item, getPurpose(), getMapping(), monitor_p);
+      launch(item, getPurpose(), getMapping(), monitor);
     }
   }
 }

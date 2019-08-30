@@ -55,7 +55,7 @@ public class ClassifierHelper {
 	 * @return returns ONLY the instances of {@link Property} meta-class and NOT one of its sub-types
 	 */
   protected List <Property> getContainedProperties(Classifier element){
-    List <Property> ret = new ArrayList <Property>();
+    List <Property> ret = new ArrayList <>();
     for (Feature feature : element.getOwnedFeatures()) {
       if(feature.eClass().equals(InformationPackage.Literals.PROPERTY)) {
         ret.add((Property) feature);

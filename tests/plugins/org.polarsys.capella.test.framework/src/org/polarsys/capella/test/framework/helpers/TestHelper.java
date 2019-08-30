@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,8 +13,12 @@ package org.polarsys.capella.test.framework.helpers;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -24,7 +28,11 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -43,6 +51,8 @@ import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.Proj
 import org.polarsys.capella.test.framework.api.ModelProviderHelper;
 
 import com.google.common.io.Files;
+
+import junit.framework.TestCase;
 
 /**
  * Helper for writing JUnit tests for RCP application.
@@ -108,17 +118,18 @@ public class TestHelper {
    *          true to set as Multipart, otherwise false
    */
   public static void setReusableComponents(final EObject anyModelElement, final boolean value) {
-    ExecutionManagerRegistry.getInstance().getExecutionManager(TransactionHelper.getEditingDomain(anyModelElement)).execute(new AbstractReadWriteCommand() {
-      @Override
-      public void run() {
-        Project project = CapellaProjectHelper.getProject(anyModelElement);
-        if (value) {
-          CapellaProjectHelper.setProjectWithApproach(project, ProjectApproach.ReusableComponents);
-        } else {
-          CapellaProjectHelper.setProjectWithApproach(project, ProjectApproach.SingletonComponents);
-        }
-      }
-    });
+    ExecutionManagerRegistry.getInstance().getExecutionManager(TransactionHelper.getEditingDomain(anyModelElement))
+        .execute(new AbstractReadWriteCommand() {
+          @Override
+          public void run() {
+            Project project = CapellaProjectHelper.getProject(anyModelElement);
+            if (value) {
+              CapellaProjectHelper.setProjectWithApproach(project, ProjectApproach.ReusableComponents);
+            } else {
+              CapellaProjectHelper.setProjectWithApproach(project, ProjectApproach.SingletonComponents);
+            }
+          }
+        });
   }
 
   /**
@@ -233,5 +244,45 @@ public class TestHelper {
       Assert.fail(exception.getMessage());
     }
     return result;
+  }
+
+  /**
+   * 
+   * @return all derived references from Capella packages
+   */
+  public static Set<EReference> getAllCapellaDerivedReferences() {
+    Set<EReference> allDerivedReferences = new HashSet<>();
+    for (String nsURI : EPackage.Registry.INSTANCE.keySet()) {
+      if (nsURI.startsWith("http://www.polarsys.org/capella")) {
+        EPackage ePackage = EPackage.Registry.INSTANCE.getEPackage(nsURI);
+        for (EClassifier eClassifier : ePackage.getEClassifiers())
+          if (eClassifier instanceof EClass) {
+            EClass eClass = (EClass) eClassifier;
+            for (EReference eReference : eClass.getEReferences()) {
+              if (eReference.isDerived()) {
+                allDerivedReferences.add(eReference);
+              }
+            }
+          }
+      }
+    }
+    return allDerivedReferences;
+  }
+
+  public static void disposeObject(Object e) {
+    Class currentClass = e.getClass();
+    while (currentClass != null && TestCase.class != currentClass) {
+      for (Field field : currentClass.getDeclaredFields()) {
+        try {
+          if (!Modifier.isFinal(field.getModifiers()) && !field.getType().isPrimitive() && !String.class.isAssignableFrom(field.getType())) {
+            field.setAccessible(true);
+            field.set(e, null);
+          }
+        } catch (IllegalArgumentException | IllegalAccessException e1) {
+          e1.printStackTrace();
+        }
+      }
+      currentClass = currentClass.getSuperclass();
+    }
   }
 }

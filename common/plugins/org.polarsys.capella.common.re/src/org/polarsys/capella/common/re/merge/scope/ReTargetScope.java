@@ -15,7 +15,6 @@ import java.util.Collection;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.constants.IReConstants;
-import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
 import org.polarsys.capella.core.transition.common.merge.scope.ITargetModelScope;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -34,9 +33,9 @@ public class ReTargetScope extends ReScope implements ITargetModelScope {
    * @param elements
    * @param context
    */
-  public ReTargetScope(CatalogElement element, ITraceabilityHandler handler, Collection<? extends EObject> elements,
+  public ReTargetScope(CatalogElement element, Collection<? extends EObject> elements,
       IContext context) {
-    super(element, handler, elements, context);
+    super(element, elements, context);
     
     // if the command is:
     String commandValue = (String) context.get(IReConstants.COMMAND__CURRENT_VALUE);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,6 @@ package org.polarsys.capella.core.ui.properties.fields;
 import java.util.List;
 
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
@@ -42,7 +41,7 @@ public abstract class AbstractSemanticButtonGroup extends AbstractSemanticField 
    * @return a not <code>null</code> object.
    */
   protected Button createButton(Composite group, String label, Object data, boolean enabled, int style) {
-    Button button = _widgetFactory.createButton(group, label, style);
+    Button button = widgetFactory.createButton(group, label, style);
     button.addSelectionListener(this);
     // Link this button to its semantic value.
     button.setData(data);

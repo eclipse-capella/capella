@@ -48,6 +48,7 @@ public interface Swimlane extends NamedElement, ActivityPartition {
 	 * @return the value of the '<em>Represented Entity</em>' reference.
 	 * @see org.polarsys.capella.core.data.oa.OaPackage#getSwimlane_RepresentedEntity()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='representedElement'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the entity to which that elements in this swimlane are being allocated\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

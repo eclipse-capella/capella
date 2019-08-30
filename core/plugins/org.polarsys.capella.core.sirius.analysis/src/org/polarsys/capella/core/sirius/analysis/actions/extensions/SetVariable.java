@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis.actions.extensions;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 
@@ -29,6 +30,9 @@ public class SetVariable extends AbstractExternalJavaAction {
     Object value = parameters_p.get(VALUE);
     Assert.isNotNull(context);
     Assert.isNotNull(variable);
+    // for acceleo2aql
+    if (value instanceof Collection)
+    	value = new ArrayList((Collection)value);
     InterpreterUtil.getInterpreter(context).setVariable(variable, value);
   }
 

@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.sirius.ui;
 
 import java.util.Hashtable;
+import java.util.Map;
 
 import org.eclipse.gmf.runtime.common.ui.services.action.global.AbstractGlobalActionHandlerProvider;
 import org.eclipse.gmf.runtime.common.ui.services.action.global.IGlobalActionHandler;
@@ -20,90 +21,74 @@ import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.IWorkbenchPart;
 
 public class CapellaGlobalActionHandlerProvider extends AbstractGlobalActionHandlerProvider
-implements
-		IGlobalActionHandlerProvider {
-	
+    implements IGlobalActionHandlerProvider {
 
-    /**
-     * List for handlers.
-     */
-    private Hashtable<IWorkbenchPart, IGlobalActionHandler> handlerList = new Hashtable<IWorkbenchPart, IGlobalActionHandler>();
+  /**
+   * A map containing for each IWorkbenchPart (Diagram Editor) the associated IGlobalActionHandler.
+   */
+  private Map<IWorkbenchPart, IGlobalActionHandler> actionHandlers = new Hashtable<>();
 
+  /**
+   * Returns the IGlobalActionHandler associated with the current context.
+   */
+  @Override
+  public IGlobalActionHandler getGlobalActionHandler(IGlobalActionHandlerContext context) {
+    final IWorkbenchPart part = context.getActivePart();
+    /* Create the handler */
+    if (!getActionHandlers().containsKey(part)) {
+      getActionHandlers().put(part, new CapellaGlobalActionHandler());
 
-
-	public IGlobalActionHandler getGlobalActionHandler(
-			IGlobalActionHandlerContext context) {
-        final IWorkbenchPart part = context.getActivePart();
-        /* Create the handler */
-        if (!getHandlerList().containsKey(part)) {
-            getHandlerList().put(part, new CapellaGlobalActionHandler());
-            /*
-             * Register as a part listener  so that the cache can be cleared when
-             * the part is disposed
-             */
-            part.getSite().getPage().addPartListener(initListener(context));
-        }
-        return (IGlobalActionHandler) getHandlerList().get(part);	
-        }
-
-	/**
-	 * Returns the handlerList.
-	 * 
-	 * @return Hashtable
-	 */
-	private Hashtable<IWorkbenchPart, IGlobalActionHandler> getHandlerList() {
-	    return handlerList;
-	}
-	
-	   /**
-     * Initialize a listener removing the GlobalAction on closing the given part
-     * 
-     * @param context
-     *            the context to clean
-     * @return the expected listener
-     */
-    private IPartListener initListener(final IGlobalActionHandlerContext context) {
-        return new IPartListener() {
-
-            private IWorkbenchPart localPart = context.getActivePart();
-
-            /**
-             * @see org.eclipse.ui.IPartListener#partActivated(IWorkbenchPart)
-             */
-            public void partActivated(IWorkbenchPart part) {
-            }
-
-            /**
-             * @see org.eclipse.ui.IPartListener#partBroughtToTop(IWorkbenchPart)
-             */
-            public void partBroughtToTop(IWorkbenchPart part) {
-            }
-
-            /**
-             * @see org.eclipse.ui.IPartListener#partClosed(IWorkbenchPart)
-             */
-            public void partClosed(IWorkbenchPart part) {
-                /* Remove the cache associated with the part */
-                if (part != null && part == localPart && getHandlerList().containsKey(part)) {
-                    getHandlerList().remove(part);
-                    localPart.getSite().getPage().removePartListener(this);
-                    localPart = null;
-                }
-            }
-
-            /**
-             * @see org.eclipse.ui.IPartListener#partDeactivated(IWorkbenchPart)
-             */
-            public void partDeactivated(IWorkbenchPart part) {
-            }
-
-            /**
-             * @see org.eclipse.ui.IPartListener#partOpened(IWorkbenchPart)
-             */
-            public void partOpened(IWorkbenchPart part) {
-            }
-        };
+      // Register a dispose listener
+      part.getSite().getPage().addPartListener(disposeListener(context));
     }
+    return getActionHandlers().get(part);
+  }
+
+  private Map<IWorkbenchPart, IGlobalActionHandler> getActionHandlers() {
+    return actionHandlers;
+  }
+
+  /**
+   * A dispose listener, that will clear the associated action handler when the part is disposed
+   * 
+   * @param context
+   *          the initial context
+   * @return a dispose listener, that will clear the associated action handler when the part is disposed
+   */
+  private IPartListener disposeListener(final IGlobalActionHandlerContext context) {
+    return new IPartListener() {
+
+      private IWorkbenchPart initialPart = context.getActivePart();
+
+      @Override
+      public void partClosed(IWorkbenchPart part) {
+        if (part != null && part == initialPart && getActionHandlers().containsKey(part)) {
+          getActionHandlers().remove(part);
+          initialPart.getSite().getPage().removePartListener(this);
+          initialPart = null;
+        }
+      }
+
+      @Override
+      public void partActivated(IWorkbenchPart part) {
+        // not used
+      }
+
+      @Override
+      public void partBroughtToTop(IWorkbenchPart part) {
+        // not used
+      }
+
+      @Override
+      public void partDeactivated(IWorkbenchPart part) {
+        // not used
+      }
+
+      @Override
+      public void partOpened(IWorkbenchPart part) {
+        // not used
+      }
+    };
+  }
 
 }
-

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -81,7 +82,7 @@ public interface LayoutPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int ILAYOUT_FEATURE_COUNT = 0;
+  int ILAYOUT_FEATURE_COUNT = ViewpointPackage.DREFRESHABLE_FEATURE_COUNT + 0;
 
   /**
    * The number of operations of the '<em>ILayout</em>' class.

@@ -18,6 +18,7 @@ import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.EObjectExt;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.helpers.operations.LongRunningListenersRegistry;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
@@ -65,7 +66,7 @@ public class AddExistingSubScenarioCommand extends AbstractReadWriteCommand {
               return;
             } else {
               Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.REFINEMENT);
-              logger.warn(Messages.MultiInstanceRoleExtension_logmsg_confirm + EObjectExt.getText(modelElement));
+              logger.warn(Messages.MultiInstanceRoleExtension_logmsg_confirm + EObjectLabelProviderHelper.getText(modelElement));
             }
           }
         }

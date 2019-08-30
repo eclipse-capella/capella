@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,14 @@ package org.polarsys.capella.test.diagram.filters.ju.testsuites;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideByDefaultAssociationLinksLFCD;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideByDefaultAssociationLinksOPD;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideByDefaultAssociationLinksPFCD;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideByDefaultAssociationLinksSFCD;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideByDefaultSequencingInformationLAB;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideByDefaultSequencingInformationOAB;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideByDefaultSequencingInformationPAB;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideByDefaultSequencingInformationSAB;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideComputedCEForPABTestCase1;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideComputedComponentExchangesForLAB;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideComputedComponentExchangesForPAB;
@@ -25,6 +33,10 @@ import org.polarsys.capella.test.diagram.filters.ju.testcases.HideComputedLinksF
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideComputedLinksForPABTestCase7;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideComputedPLForPABTestCase1;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideComputedPhysicalLinksForPAB;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideComputedSequencingInformationLFCDTest;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideComputedSequencingInformationOPDTest;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideComputedSequencingInformationPFCDTest;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideComputedSequencingInformationSFCDTest;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideControlNodesForLFBD;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideControlNodesForPFBD;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideControlNodesForSFBD;
@@ -32,11 +44,29 @@ import org.polarsys.capella.test.diagram.filters.ju.testcases.HideDelegatedCommu
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideDelegatedCommunicationLinksForIDB;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideDelegatedUseImplementationLinksForCII;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideDelegatedUseImplementationLinksForIDB;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideFunctionalChainInvolvementLinksLFCD;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideFunctionalChainInvolvementLinksOPDTest;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideFunctionalChainInvolvementLinksPFCDTest;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideFunctionalChainInvolvementLinksSFCDTest;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideFunctionalExchangesTestCase;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideSequencingInformationLFCDTest;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideSequencingInformationOPDTest;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideSequencingInformationPFCDTest;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideSequencingInformationSFCDTest;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideTechnicalInterfaceForCDB;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideTechnicalInterfaceForCDI;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideTechnicalInterfaceForCEI;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideTechnicalInterfaceForCII;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideTechnicalInterfaceForIDB;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.MergeFilterOPDTest;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.MergeFilterPFCDTest;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.MergeFilterSFCDTest;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.MergeSequenceLinksAssociatedLinksTestCase1;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.MergeSequenceLinksAssociatedLinksTestCase2;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.MergeSequenceLinksAssociatedLinksTestCase3;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.ShowExchangeItemsOnInteractions;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.ShowExchangeItemsParametersOnInteractions;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.ShowInteractionsWithExchangeItems;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.ShowTriggerSourceFunctionForMSM;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
@@ -58,6 +88,9 @@ public class DiagramFiltersTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+    tests.add(new ShowExchangeItemsOnInteractions());
+    tests.add(new ShowInteractionsWithExchangeItems());
+    tests.add(new ShowExchangeItemsParametersOnInteractions());
     tests.add(new HideControlNodesForSFBD());
     tests.add(new HideControlNodesForLFBD());
     tests.add(new HideControlNodesForPFBD());
@@ -83,7 +116,33 @@ public class DiagramFiltersTestSuite extends BasicTestSuite {
     tests.add(new HideComputedLinksForPABTestCase5());
     tests.add(new HideComputedLinksForPABTestCase6());
     tests.add(new HideComputedLinksForPABTestCase7());
+    tests.add(new HideFunctionalExchangesTestCase());
+    tests.add(new MergeSequenceLinksAssociatedLinksTestCase1());
+    tests.add(new MergeSequenceLinksAssociatedLinksTestCase2());
+    tests.add(new MergeSequenceLinksAssociatedLinksTestCase3());
+    tests.add(new MergeFilterOPDTest());
+    tests.add(new MergeFilterPFCDTest());
+    tests.add(new MergeFilterSFCDTest());
+    tests.add(new HideFunctionalChainInvolvementLinksSFCDTest());
+    tests.add(new HideFunctionalChainInvolvementLinksLFCD());
+    tests.add(new HideFunctionalChainInvolvementLinksPFCDTest());
+    tests.add(new HideFunctionalChainInvolvementLinksOPDTest());
+    tests.add(new HideSequencingInformationSFCDTest());
+    tests.add(new HideSequencingInformationLFCDTest());
+    tests.add(new HideSequencingInformationPFCDTest());
+    tests.add(new HideSequencingInformationOPDTest());
+    tests.add(new HideComputedSequencingInformationSFCDTest());
+    tests.add(new HideComputedSequencingInformationLFCDTest());
+    tests.add(new HideComputedSequencingInformationPFCDTest());
+    tests.add(new HideComputedSequencingInformationOPDTest());
+    tests.add(new HideByDefaultAssociationLinksSFCD());
+    tests.add(new HideByDefaultAssociationLinksLFCD());
+    tests.add(new HideByDefaultAssociationLinksPFCD());
+    tests.add(new HideByDefaultAssociationLinksOPD());
+    tests.add(new HideByDefaultSequencingInformationOAB());
+    tests.add(new HideByDefaultSequencingInformationSAB());
+    tests.add(new HideByDefaultSequencingInformationLAB());
+    tests.add(new HideByDefaultSequencingInformationPAB());
     return tests;
   }
-
 }

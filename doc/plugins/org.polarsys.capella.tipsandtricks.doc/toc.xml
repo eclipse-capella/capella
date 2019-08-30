@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?NLS TYPE="org.eclipse.help.toc"?>
 <!--
-  Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
+  Copyright (c) 2016, 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
   Contributors:
        Thales - initial API and implementation
 -->
-<toc label="Tips and Tricks" link_to="PLUGINS_ROOT/org.polarsys.capella.doc/toc.xml#main" sort="true">
+<toc label="Tips and Tricks" link_to="PLUGINS_ROOT/org.polarsys.capella.ui.doc/toc.xml#TipsAndTricks" sort="true">
       <topic label="Tips and Tricks">
       	<topic href="html/Tips and tricks/1_Tab-Bar Actions Glossary/1_Tab-Bar Actions Glossary.html" label="1. Tab-Bar Actions Glossary">
       </topic>
@@ -19,12 +19,15 @@
          </topic>
          <topic href="html/Tips and tricks/2_Element selection/2_Element selection.html#Connectors_selection" label="2.2. Connectors selection">
          </topic>
+         <topic href="html/Tips and tricks/2_Element selection/2_Element selection.html#Select_only_elements_of_container_with_ALT" label="2.3. Select only elements of container with ALT">
+         </topic>
       </topic>
       
     <topic href="html/Tips and tricks/3_Diagram accelerators/3_Diagram accelerators.html" label="3. Diagram Accelerators">
 		<topic href="html/Tips and tricks/3_Diagram accelerators/3_Diagram accelerators.html#Contextualize_your_diagram_to_selected_model_elements" label="3.1. Contextualize your diagram to selected model elements"></topic>
-		<topic href="html/Tips and tricks/3_Diagram accelerators/3_Diagram accelerators.html#Diagram_accelerators_2" label="3.2. Diagram accelerators"></topic>
-		<topic href="html/Tips and tricks/3_Diagram accelerators/3_Diagram accelerators.html#Initialize_Diagram" label="3.3. Initialize diagram"></topic>
+		<topic href="html/Tips and tricks/3_Diagram accelerators/3_Diagram accelerators.html#Elements_of_Interest" label="3.2. Elements of Interest"></topic>
+		<topic href="html/Tips and tricks/3_Diagram accelerators/3_Diagram accelerators.html#Diagram_Accelerators_2" label="3.3. Diagram accelerators"></topic>
+		<topic href="html/Tips and tricks/3_Diagram accelerators/3_Diagram accelerators.html#Initialize_Diagram" label="3.4. Initialize diagram"></topic>
 	</topic>
       
       <topic href="html/Tips and tricks/4_Unsynchronize your diagram/4_Unsynchronize your diagram.html" label="4. Unsynchronize Your Diagram">
@@ -46,11 +49,21 @@
       <topic href="html/Tips and tricks/6_Diagram exploration/6_Diagram exploration.html" label="6. Diagram Exploration">
          <topic href="html/Tips and tricks/6_Diagram exploration/6_Diagram exploration.html#Find_an_element_in_a_digram" label="6.1. Find an element in a diagram">
          </topic>
-         <topic href="html/Tips and tricks/6_Diagram exploration/6_Diagram exploration.html#View_switching" label="6.2. View switching">
+         <topic href="html/Tips and tricks/6_Diagram exploration/6_Diagram exploration.html#Diagram_outline" label="6.2. Diagram outline">
          </topic>
-         <topic href="html/Tips and tricks/6_Diagram exploration/6_Diagram exploration.html#In_the_outline_view" label="6.3. In the outline view">
+         <topic href="html/Tips and tricks/6_Diagram exploration/6_Diagram exploration.html#Scroll_in_a_large_diagram" label="6.3. Scroll in a large diagram">
          </topic>
-         <topic href="html/Tips and tricks/6_Diagram exploration/6_Diagram exploration.html#With_the_computer_mouse" label="6.4. With the computer mouse">
+         <topic href="html/Tips and tricks/6_Diagram exploration/6_Diagram exploration.html#Selection_menu_in_diagram" label="6.4. Selection menu in diagram">
+         </topic>
+         <topic href="html/Tips and tricks/6_Diagram exploration/6_Diagram exploration.html#Generic_connection_creation_tool" label="6.5. Generic connection creation tool">
+         </topic>
+         <topic href="html/Tips and tricks/6_Diagram exploration/6_Diagram exploration.html#Organize_diagrams_in_Project_Explorer_by_packages" label="6.6. Organize diagrams in Project Explorer by packages">
+         </topic>
+         <topic href="html/Tips and tricks/6_Diagram exploration/6_Diagram exploration.html#Visibility_Mode_-_new_Sirius_layer_to_manage_hidden_graphical_elements" label="6.7. Visibility Mode - new Sirius layer to manage hidden graphical elements">
+         </topic>
+         <topic href="html/Tips and tricks/6_Diagram exploration/6_Diagram exploration.html#Note_as_graphical_link_toward_other_diagram" label="6.8. Note as graphical link toward other diagram">
+         </topic>
+         <topic href="html/Tips and tricks/6_Diagram exploration/6_Diagram exploration.html#Refresh_many_representations_at_once" label="6.9. Refresh many representations at once">
          </topic>
       </topic>
       <topic href="html/Tips and tricks/7_Manage routing style/7_Manage routing style.html" label="7. Manage Routing Style">
@@ -75,6 +88,10 @@
          <topic href="html/Tips and tricks/8_Other layout facilities/8_Other layout facilities.html#Snap_back_labels_on_edge_selection" label="8.6. Snap back labels on edge selection">
          </topic>
          <topic href="html/Tips and tricks/8_Other layout facilities/8_Other layout facilities.html#Display_link_between_an_edge_and_its_label" label="8.7. Display link between an edge and its label">
+         </topic>
+         <topic href="html/Tips and tricks/8_Other layout facilities/8_Other layout facilities.html#Copy_Paste_Of_Notes" label="8.8. Copy Paste Of Notes">
+         </topic>
+         <topic href="html/Tips and tricks/8_Other layout facilities/8_Other layout facilities.html#Add_vertical_blank_space_on_sequence_diagrams" label="8.9. Add vertical blank space on sequence diagrams">
          </topic>         
       </topic>
       <topic href="html/Tips and tricks/9_Element size management/9_Element size management.html" label="9. Element Size Management">
@@ -132,6 +149,10 @@
          </topic>
          <topic href="html/Tips and tricks/14_Other shortcut keys/14_Other shortcut keys.html#Moving_elements" label="14.4. Moving elements">
          </topic>
+      </topic>
+      <topic href="html/Tips and tricks/15_Navigation Menu/15_Navigation Menu.html" label="15. Navigation Menu">
+      </topic>
+      <topic href="html/Tips and tricks/16_Mass Editing and Visualization/16_Mass Editing and Visualization.html" label="16. Mass Editing and Visualization">
       </topic>
       	
       </topic>

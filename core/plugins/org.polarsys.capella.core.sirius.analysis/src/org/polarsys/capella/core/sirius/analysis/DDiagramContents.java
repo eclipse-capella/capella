@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -88,8 +88,8 @@ public class DDiagramContents {
   public DDiagramContents(DDiagram diagram) {
     _currentDiagram = (DSemanticDiagram) diagram;
     _currentDescription = _currentDiagram.getDescription();
-    _elementsToShow = new HashSet<DDiagramElement>();
-    _elementsToHide = new HashSet<DDiagramElement>();
+    _elementsToShow = new HashSet<>();
+    _elementsToHide = new HashSet<>();
   }
 
   /**
@@ -102,8 +102,8 @@ public class DDiagramContents {
     this._currentDiagram = diagramContent._currentDiagram;
     this._currentDescription = diagramContent.getDescription();
     this._elementsTargets = diagramContent._elementsTargets;
-    _elementsToShow = new HashSet<DDiagramElement>();
-    _elementsToHide = new HashSet<DDiagramElement>();
+    _elementsToShow = new HashSet<>();
+    _elementsToHide = new HashSet<>();
   }
 
   public DiagramDescription getDescription() {
@@ -122,7 +122,7 @@ public class DDiagramContents {
    */
   private HashMapSet<EObject, DDiagramElement> getMapDiagramElements() {
     if (_elementsTargets == null) {
-      _elementsTargets = new HashMapSet<EObject, DDiagramElement>();
+      _elementsTargets = new HashMapSet<>();
       for (DDiagramElement element : getDiagramElements()) {
         _elementsTargets.put(element.getTarget(), element);
       }
@@ -167,7 +167,7 @@ public class DDiagramContents {
   }
 
   public List<DDiagramElement> getVisibleDiagramElements(DiagramElementMapping mapping) {
-    List<DDiagramElement> lstVisibleElements = new ArrayList<DDiagramElement>();
+    List<DDiagramElement> lstVisibleElements = new ArrayList<>();
     for (DDiagramElement element : DiagramServices.getDiagramServices().getDiagramElements(_currentDiagram, mapping)) {
       if (element.isVisible()) {
         lstVisibleElements.add(element);
@@ -195,7 +195,7 @@ public class DDiagramContents {
   }
 
   public <T> Collection<T> asList(Iterable<T> iterable) {
-    Collection<T> result = new ArrayList<T>();
+    Collection<T> result = new ArrayList<>();
     for (T t : iterable) {
       result.add(t);
     }
@@ -203,7 +203,7 @@ public class DDiagramContents {
   }
 
   public Collection<EObject> asSemantic(Iterable<?> iterable) {
-    Collection<EObject> result = new ArrayList<EObject>();
+    Collection<EObject> result = new ArrayList<>();
     for (Object t : iterable) {
       if (t instanceof DSemanticDecorator) {
         DSemanticDecorator view = (DSemanticDecorator) t;
@@ -235,7 +235,7 @@ public class DDiagramContents {
     if (target.size() == 1) {
       return getDiagramElements(target.iterator().next());
     } else if (target.size() > 1) {
-      Collection<DDiagramElement> elements = new HashSet<DDiagramElement>();
+      Collection<DDiagramElement> elements = new HashSet<>();
       for (EObject tgt : target) {
         elements.addAll(getDiagramElements(tgt));
       }
@@ -269,7 +269,7 @@ public class DDiagramContents {
     }
 
     for (DDiagramElement view : getDiagramElements(target)) {
-      if (mapping.equals(view.getDiagramElementMapping())) {
+      if (mapping != null && mapping.equals(view.getDiagramElementMapping())) {
         return true;
       }
     }
@@ -291,9 +291,9 @@ public class DDiagramContents {
       return getMapDiagramElements().get(target);
     }
 
-    ArrayList<DDiagramElement> result = new ArrayList<DDiagramElement>();
+    ArrayList<DDiagramElement> result = new ArrayList<>();
     for (DDiagramElement view : getMapDiagramElements().get(target)) {
-      if (mapping.equals(view.getDiagramElementMapping())) {
+      if (mapping != null && mapping.equals(view.getDiagramElementMapping())) {
         result.add(view);
       }
     }
@@ -316,7 +316,7 @@ public class DDiagramContents {
       return Collections.emptyList();
     }
 
-    ArrayList<DDiagramElement> result = new ArrayList<DDiagramElement>();
+    ArrayList<DDiagramElement> result = new ArrayList<>();
     for (DDiagramElement view : getMapDiagramElements().get(target)) {
       if ((mapping == null) || mapping.equals(view.getDiagramElementMapping())) {
         if ((containerView == null) || EcoreUtil2.isContainedBy(view, containerView)) {
@@ -366,7 +366,7 @@ public class DDiagramContents {
   @Deprecated
   public AbstractDNode getNode(EObject target) {
     Collection<AbstractDNode> elt = getNodes(target);
-    if (elt.size() > 0) {
+    if (!elt.isEmpty()) {
       return elt.iterator().next();
     }
     return null;
@@ -381,7 +381,7 @@ public class DDiagramContents {
   @Deprecated
   public DEdge getEdge(EObject target) {
     Collection<DEdge> elt = getEdges(target);
-    if (elt.size() > 0) {
+    if (!elt.isEmpty()) {
       return elt.iterator().next();
     }
     return null;
@@ -411,10 +411,10 @@ public class DDiagramContents {
    */
   public DragAndDropTarget getBestContainer(EObject semantic) {
     EObject object = semantic;
-    LinkedList<EObject> toVisit = new LinkedList<EObject>();
+    LinkedList<EObject> toVisit = new LinkedList<>();
     if (object != null) {
       toVisit.addAll(getParents(object, semantic));
-      while (toVisit.size() > 0) {
+      while (!toVisit.isEmpty()) {
         EObject element = toVisit.removeFirst();
 
         if (element != null) {
@@ -427,7 +427,6 @@ public class DDiagramContents {
           }
           toVisit.addAll(getParents(element, semantic));
         }
-
       }
     }
 
@@ -461,7 +460,7 @@ public class DDiagramContents {
   }
   
   public Collection<DiagramElementMapping> getMappings(Collection<String> names) {
-    Collection<DiagramElementMapping> result = new ArrayList<DiagramElementMapping>();
+    Collection<DiagramElementMapping> result = new ArrayList<>();
     for (String name: names) {
       result.add(getMapping(name));
     }
@@ -473,7 +472,7 @@ public class DDiagramContents {
       _mappings = DiagramServices.getDiagramServices().getAllMappingsByName(getDescription());
     }
     if (_mappings.containsKey(name)) {
-      return (DiagramElementMapping)_mappings.get(name);
+      return _mappings.get(name);
     }
     return null;
   }

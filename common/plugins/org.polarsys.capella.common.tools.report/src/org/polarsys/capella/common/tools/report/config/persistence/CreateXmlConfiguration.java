@@ -39,10 +39,10 @@ public class CreateXmlConfiguration {
    */
   private static final String FILE_PATH = System.getProperty("osgi.configuration.area") + "ReportConfiguration.xml"; //$NON-NLS-1$//$NON-NLS-2$
 
-  private final ObjectFactory _factory = new ObjectFactory();
+  private final ObjectFactory objectFactory = new ObjectFactory();
 
   private String filePath = null;
-  
+
   public CreateXmlConfiguration() {
     this.filePath = URI.createURI(FILE_PATH).toFileString();
   }
@@ -50,7 +50,7 @@ public class CreateXmlConfiguration {
   public CreateXmlConfiguration(String filePath) {
     this.filePath = filePath;
   }
-  
+
   /**
    * Create default XML configuration file.
    * 
@@ -63,14 +63,14 @@ public class CreateXmlConfiguration {
    */
   public ConfigurationInstance createDefaultConfiguration(String componentName, Collection<String> appenders) {
 
-    ConfigurationInstance confInstance = _factory.createConfigurationInstance();
+    ConfigurationInstance confInstance = objectFactory.createConfigurationInstance();
     confInstance.setComponentName(componentName);
 
     // list of outputConfigs
     List<OutputConfiguration> opConfList = confInstance.getOutputConfiguration();
 
     for (String appenderName : appenders) {
-      OutputConfiguration currentConfig = _factory.createOutputConfiguration();
+      OutputConfiguration currentConfig = objectFactory.createOutputConfiguration();
       currentConfig.setOutputName(appenderName);
 
       opConfList.add(currentConfig);
@@ -82,29 +82,16 @@ public class CreateXmlConfiguration {
     return confInstance;
   }
 
-  /**
-   * 
-   * 
-   */
   private void createLogConfig(OutputConfiguration outputConfiguration) {
     List<LogLevel> logLevelListFile = outputConfiguration.getLogLevel();
-
     logLevelListFile.clear();
 
-    if (ReportManagerConstants.LOG_OUTPUT_FILE.equals(outputConfiguration.getOutputName())) {
-      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_INFO));
-      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_DEBUG));
-      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_WARN));
-      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_ERROR));
-      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_FATAL));
-      
-    } else {
-      logLevelListFile.add(buildLogLevel(true, ReportManagerConstants.LOG_LEVEL_INFO));
-      logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_DEBUG));
-      logLevelListFile.add(buildLogLevel(true, ReportManagerConstants.LOG_LEVEL_WARN));
-      logLevelListFile.add(buildLogLevel(true, ReportManagerConstants.LOG_LEVEL_ERROR));
-      logLevelListFile.add(buildLogLevel(true, ReportManagerConstants.LOG_LEVEL_FATAL));
-    }
+    boolean value = ReportManagerConstants.LOG_OUTPUT_PROBLEMS_VIEW.equals(outputConfiguration.getOutputName());
+    logLevelListFile.add(buildLogLevel(value, ReportManagerConstants.LOG_LEVEL_INFO));
+    logLevelListFile.add(buildLogLevel(value, ReportManagerConstants.LOG_LEVEL_WARN));
+    logLevelListFile.add(buildLogLevel(value, ReportManagerConstants.LOG_LEVEL_ERROR));
+    logLevelListFile.add(buildLogLevel(value, ReportManagerConstants.LOG_LEVEL_FATAL));
+    logLevelListFile.add(buildLogLevel(false, ReportManagerConstants.LOG_LEVEL_DEBUG));
   }
 
   /**
@@ -112,7 +99,7 @@ public class CreateXmlConfiguration {
    * @return
    */
   private LogLevel buildLogLevel(boolean logLevelValue, String logLevelInfo) {
-    LogLevel infoLevelFile = _factory.createLogLevel();
+    LogLevel infoLevelFile = objectFactory.createLogLevel();
     infoLevelFile.setName(logLevelInfo);
     infoLevelFile.setValue(logLevelValue);
     return infoLevelFile;
@@ -132,13 +119,13 @@ public class CreateXmlConfiguration {
   /**
    * load persisted configuration
    * 
-   * Returns configuration Instance Map
+   * Returns configuration Instance Map   
    * 
    * @return configurationMap
    */
-  public HashMap<String, ConfigurationInstance> loadConfiguration() {
+  public Map<String, ConfigurationInstance> loadConfiguration() {
     if (isConfigurationFileExists()) {
-      HashMap<String, ConfigurationInstance> configurationMap = new HashMap<String, ConfigurationInstance>(1);
+      Map<String, ConfigurationInstance> configurationMap = new HashMap<>(1);
       try {
         JAXBContext jc = getJAXBContext();
 
@@ -149,12 +136,8 @@ public class CreateXmlConfiguration {
 
         configurationMap.putAll(getConfiguration(file));
 
-      } catch (JAXBException je) {
-        je.printStackTrace();
-        return configurationMap;
-
-      } catch (IOException ioe) {
-        ioe.printStackTrace();
+      } catch (JAXBException | IOException exception) {
+        exception.printStackTrace();
         return configurationMap;
       }
       return configurationMap;
@@ -163,14 +146,14 @@ public class CreateXmlConfiguration {
   }
 
   /**
-   * load persisted configuration
+   * Load persisted configuration
    * 
    * Returns configuration Instance Map
    * 
    * @return configurationMap
    */
-  public HashMap<String, ConfigurationInstance> getConfiguration(ReportConfigurationFile file) {
-    HashMap<String, ConfigurationInstance> configurationMap = new HashMap<String, ConfigurationInstance>(1);
+  public Map<String, ConfigurationInstance> getConfiguration(ReportConfigurationFile file) {
+    Map<String, ConfigurationInstance> configurationMap = new HashMap<>(1);
 
     List<ConfigurationInstance> confInst = file.getConfigurationInstance();
 
@@ -182,13 +165,13 @@ public class CreateXmlConfiguration {
   }
 
   /**
-   * save configuraion hashmap to configuration file
+   * Save configuration map to configuration file
    * 
    * @param configurationMap
    */
   public void saveConfiguration(Map<String, ConfigurationInstance> configurationMap) {
 
-    ReportConfigurationFile repConffile = _factory.createReportConfigurationFile();
+    ReportConfigurationFile repConffile = objectFactory.createReportConfigurationFile();
     repConffile.setFileFormatVersion(ReportManagerConstants.FILEFORMAT_VERSION);
     repConffile.setReportManagerVersion(ReportManagerConstants.REPORTMANAGER_VERSION);
     Collection<ConfigurationInstance> confInst = configurationMap.values();
@@ -201,7 +184,7 @@ public class CreateXmlConfiguration {
   }
 
   /**
-   * do the jaxb technical stuff to save the configuration into a file
+   * Do the jaxb technical stuff to save the configuration into a file
    * 
    * @param repConffile
    *          the virtual configuration
@@ -217,13 +200,7 @@ public class CreateXmlConfiguration {
       marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
       marshaller.marshal(repConffile, new FileOutputStream(filePath));
 
-    } catch (PropertyException exception) {
-      exception.printStackTrace();
-
-    } catch (FileNotFoundException exception) {
-      exception.printStackTrace();
-
-    } catch (JAXBException exception) {
+    } catch (FileNotFoundException | JAXBException exception) {
       exception.printStackTrace();
     }
   }
@@ -234,8 +211,6 @@ public class CreateXmlConfiguration {
    */
   private JAXBContext getJAXBContext() throws JAXBException {
     ClassLoader theClassLoader = this.getClass().getClassLoader();
-    JAXBContext jc = JAXBContext.newInstance(ReportManagerConstants.JAXB_INSTANCE, theClassLoader);
-    return jc;
+    return JAXBContext.newInstance(ReportManagerConstants.JAXB_INSTANCE, theClassLoader);
   }
-
 }

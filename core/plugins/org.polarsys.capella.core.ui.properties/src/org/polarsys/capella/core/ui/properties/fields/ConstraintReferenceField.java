@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -77,12 +77,12 @@ public class ConstraintReferenceField extends AbstractSemanticField {
     
     _controller = controller;
     
-    _labelTextArea = _widgetFactory.createLabel(parent, label);
+    _labelTextArea = widgetFactory.createLabel(parent, label);
     _labelTextArea.setLayoutData(new GridData(SWT.FILL, SWT.TOP, false, false));
 
     // Create a text area with a read only Text field (3 lines height).
-    _textArea = _widgetFactory.createComposite(parent);
-    Text t = _widgetFactory.createText(_textArea, "", SWT.READ_ONLY);
+    _textArea = widgetFactory.createComposite(parent);
+    Text t = widgetFactory.createText(_textArea, "", SWT.READ_ONLY);
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.heightHint = t.getLineHeight() * 3 + 5;
     _textArea.setLayoutData(gd);
@@ -116,7 +116,7 @@ public class ConstraintReferenceField extends AbstractSemanticField {
    */
   public void createConstraintNameTextField(final EObject semanticElement, final EStructuralFeature semanticFeature) {
     String text = _controller.loadText(semanticElement, semanticFeature);
-    final Text defaultTextField = _widgetFactory.createText(_textArea, text);
+    final Text defaultTextField = widgetFactory.createText(_textArea, text);
     defaultTextField.addModifyListener(new ModifyListener() {
       @Override
       public void modifyText(final ModifyEvent e) {
@@ -137,7 +137,7 @@ public class ConstraintReferenceField extends AbstractSemanticField {
    */
   public void createDefaultTextTextField(final EObject semanticElement, final EStructuralFeature semanticFeature) {
     String text = _controller.loadText(semanticElement, semanticFeature);
-    final Text defaultTextField = _widgetFactory.createText(_textArea, text, SWT.MULTI | SWT.V_SCROLL);
+    final Text defaultTextField = widgetFactory.createText(_textArea, text, SWT.MULTI | SWT.V_SCROLL);
     defaultTextField.addModifyListener(new ModifyListener() {
       @Override
       public void modifyText(final ModifyEvent e) {
@@ -185,7 +185,7 @@ public class ConstraintReferenceField extends AbstractSemanticField {
   public void createLinkedTextEditor(final EObject semanticElement, final EStructuralFeature semanticFeature) {
 
     CapellaEmbeddedLinkedTextEditor editor = new CapellaEmbeddedLinkedTextEditor(_textArea,
-        SWT.H_SCROLL | SWT.V_SCROLL | _widgetFactory.getBorderStyle());
+        SWT.H_SCROLL | SWT.V_SCROLL | widgetFactory.getBorderStyle());
     final CapellaEmbeddedLinkedTextEditorInput input = new CapellaEmbeddedLinkedTextEditorInput(semanticElement) {
       @Override
       public String getText() {
@@ -264,7 +264,7 @@ public class ConstraintReferenceField extends AbstractSemanticField {
    * Handle Delete button click event. Reset all data value in this field.
    */
   protected void handleDeleteButtonClicked() {
-    AbstractReadWriteCommand command = getDeleteCommand(_semanticElement, _semanticFeature);
+    AbstractReadWriteCommand command = getDeleteCommand(semanticElement, semanticFeature);
     executeCommand(command);
   }
 
@@ -275,11 +275,11 @@ public class ConstraintReferenceField extends AbstractSemanticField {
     AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
       @Override
       public String getName() {
-        return "Edit " + _semanticElement.eGet(ModellingcorePackage.eINSTANCE.getAbstractNamedElement_Name()); //$NON-NLS-1$
+        return "Edit " + semanticElement.eGet(ModellingcorePackage.eINSTANCE.getAbstractNamedElement_Name()); //$NON-NLS-1$
       }
 
       public void run() {
-        ((ISimpleEditableSemanticFieldController) _controller).editValue(_semanticElement, _semanticFeature,
+        ((ISimpleEditableSemanticFieldController) _controller).editValue(semanticElement, semanticFeature,
             DEFAULT_CONSTRAINT_NAME);
 
       }
@@ -296,15 +296,15 @@ public class ConstraintReferenceField extends AbstractSemanticField {
     AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
       @Override
       public String getName() {
-        return "Edit " + _semanticElement.eGet(ModellingcorePackage.eINSTANCE.getAbstractNamedElement_Name()); //$NON-NLS-1$
+        return "Edit " + semanticElement.eGet(ModellingcorePackage.eINSTANCE.getAbstractNamedElement_Name()); //$NON-NLS-1$
       }
 
       public void run() {
-        List<EObject> list = _controller.readOpenValues(_semanticElement, _semanticFeature);
+        List<EObject> list = _controller.readOpenValues(semanticElement, semanticFeature);
         // calling selection wizard
         EObject firstResult = DialogHelper.openSimpleSelectionDialog(button, list);
         if (null != firstResult) {
-          _controller.writeOpenValue(_semanticElement, _semanticFeature, DEFAULT_CONSTRAINT_NAME, firstResult);
+          _controller.writeOpenValue(semanticElement, semanticFeature, DEFAULT_CONSTRAINT_NAME, firstResult);
         }
       }
     };
@@ -317,7 +317,7 @@ public class ConstraintReferenceField extends AbstractSemanticField {
    */
   @Override
   public void loadData(EObject semanticElement) {
-    loadData(semanticElement, _semanticFeature);
+    loadData(semanticElement, semanticFeature);
   }
 
   /**
@@ -351,7 +351,7 @@ public class ConstraintReferenceField extends AbstractSemanticField {
       c.dispose();
     }
 
-    final EObject elementToEdit = _controller.getElementToEdit(_semanticElement, _semanticFeature);
+    final EObject elementToEdit = _controller.getElementToEdit(semanticElement, semanticFeature);
 
     // Install editor/text field corresponding to the element to edit
     boolean useLinkedTextEditor = false;
@@ -366,15 +366,15 @@ public class ConstraintReferenceField extends AbstractSemanticField {
     if (useLinkedTextEditor) {
       // Use a LinkedTextEditor if the first element of the OpaqueExpression is a LinkedText (if Constraint,
       // OpaqueExpression or LinkedText does not exist, create them)
-      createLinkedTextEditor(_semanticElement, _semanticFeature);
+      createLinkedTextEditor(semanticElement, semanticFeature);
 
     } else if (elementToEdit instanceof OpaqueExpression) {
       // Edit the first text of the Opaque Expression using a multi line Text field
-      createDefaultTextTextField(_semanticElement, _semanticFeature);
+      createDefaultTextTextField(semanticElement, semanticFeature);
 
     } else if (elementToEdit instanceof Constraint) {
       // Edit the Constraint name using a mono line Text field
-      createConstraintNameTextField(_semanticElement, _semanticFeature);
+      createConstraintNameTextField(semanticElement, semanticFeature);
     }
 
     _textArea.layout(true, true);

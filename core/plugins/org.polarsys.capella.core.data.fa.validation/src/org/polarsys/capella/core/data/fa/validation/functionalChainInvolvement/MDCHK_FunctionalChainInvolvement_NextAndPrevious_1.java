@@ -11,13 +11,9 @@
 package org.polarsys.capella.core.data.fa.validation.functionalChainInvolvement;
 
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
-
-import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
-import org.polarsys.capella.core.data.fa.FunctionalExchange;
-import org.polarsys.capella.core.data.capellacore.InvolvedElement;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 public class MDCHK_FunctionalChainInvolvement_NextAndPrevious_1 extends AbstractValidationRule {
@@ -26,21 +22,15 @@ public class MDCHK_FunctionalChainInvolvement_NextAndPrevious_1 extends Abstract
    */
   @Override
   public IStatus validate(IValidationContext ctx) {
-    if (EMFEventType.NULL.equals(ctx.getEventType())) {
-      EObject eObj = ctx.getTarget();
-      if (eObj instanceof FunctionalChainInvolvement) {
-        InvolvedElement involved = ((FunctionalChainInvolvement) eObj).getInvolved();
+    if (EMFEventType.NULL == ctx.getEventType() && ctx.getTarget() instanceof FunctionalChainInvolvementLink) {
+      FunctionalChainInvolvementLink link = (FunctionalChainInvolvementLink) ctx.getTarget();
 
-        if (involved instanceof FunctionalExchange) {
-          if (((FunctionalChainInvolvement) eObj).getPreviousFunctionalChainInvolvements().isEmpty()) {
-            return ctx.createFailureStatus(new Object[] { eObj });
-          }
-          if (((FunctionalChainInvolvement) eObj).getNextFunctionalChainInvolvements().isEmpty()) {
-            return ctx.createFailureStatus(new Object[] { eObj });
-          }
-        }
+      if (link.getPreviousFunctionalChainInvolvements().isEmpty()
+          || link.getNextFunctionalChainInvolvements().isEmpty()) {
+        return ctx.createFailureStatus(link);
       }
     }
+
     return ctx.createSuccessStatus();
   }
 }

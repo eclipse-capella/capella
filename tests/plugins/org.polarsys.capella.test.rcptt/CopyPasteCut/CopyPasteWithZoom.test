@@ -1,0 +1,184 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _E9dGgFfFEem9oKr70EVe_w
+Element-Name: CopyPasteWithZoom
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _4Q-lIHxpEemG69K0hFZuOg
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 5/22/19 10:35 AM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Tests the copy paste of a diagram element in zoomed diagram context.
+The element should be pasted at the last location of the user's left click.
+
+Use cases:
+- 150% zoom
+- 50% zoom
+- 100% zoom
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Open the session
+get-view "Capella Project Explorer" | get-tree | select "CopyPasteNoDuplicate/CopyPasteNoDuplicate.aird" | double-click
+
+// Select the SDFB diagram in the project and open it
+get-view "Capella Project Explorer" | get-tree 
+    | select "CopyPasteNoDuplicate/CopyPasteNoDuplicate.aird/CopyPasteNoDuplicate/System Analysis/System Functions/Root System Function/\\[SDFB\\] Root System Function" 
+    | double-click
+
+// use case with 50% zoom
+with [get-editor "[SDFB] Root System Function"] {
+    get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function" | mouse-move 489 1 -height 583 -width 1281
+    
+    // set zoom
+    get-combo | select "50%"
+    with [get-diagram -index 1] {
+        with [get-edit-part -name "[SDFB] Root System Function"] {
+            mouse-move 680 140 -height 1166 -width 2562
+            with [get-edit-part -name "SystemFunction 1" | get-edit-part 
+                -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+                mouse-move 76 24 button1 -height 68 -width 148
+                mouse-press 76 24 button1 -height 68 -width 148
+                mouse-release 76 24 button1 524288 -height 68 -width 148
+                mouse-hover 76 24 -mask CTRL -height 68 -width 148
+            }
+        }
+        
+        //copy element
+        key-type "M1+c"
+        with [get-edit-part -name "[SDFB] Root System Function"] {
+            mouse-move 302 516 -height 1166 -width 2562
+            mouse-hover 302 516 -height 1166 -width 2562
+            mouse-move 300 518 -height 1166 -width 2562
+            mouse-hover 300 518 -height 1166 -width 2562
+            mouse-move 300 518 button1 -height 1166 -width 2562
+            mouse-press 300 518 button1 -height 1166 -width 2562
+            mouse-release 300 518 button1 524288 -height 1166 -width 2562
+            mouse-hover 300 518 -height 1166 -width 2562
+        }
+        
+        // paste element
+        key-type "M1+v"
+    }
+    get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function" | mouse-move 2436 720 -height 1166 
+        -width 2562
+    get-palette | get-palette-entry "Elements from Scenario" | mouse-move 85 30 -height 67 -width 125
+}
+
+// verify pasted element position
+with [get-editor "[SDFB] Root System Function" | get-diagram -index 1 | get-edit-part 
+    -name "[SDFB] Root System Function" | get-edit-part -name "SystemFunction 1_1" | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+    get-property x | equals 300 | verify-true
+    get-property y | equals 518 | verify-true
+}
+
+// use case with 150% zoom
+with [get-editor "[SDFB] Root System Function"] {
+    with [get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-move 796 126 button1 -height 1166 -width 2562
+        mouse-press 796 126 button1 -height 1166 -width 2562
+        mouse-release 796 126 button1 524288 -height 1166 -width 2562
+        mouse-move 898 0 -height 1166 -width 2562
+    }
+    // set zoom
+    get-combo | select "150%"
+    with [get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-move 308 300 -height 588 -width 854
+        mouse-hover 308 300 -height 588 -width 854
+        mouse-move 314 315 -height 588 -width 854
+    }
+}
+
+// verify pasted element position  
+with [get-editor "[SDFB] Root System Function"] {
+    with [get-diagram -index 1] {
+        with [get-edit-part -name "[SDFB] Root System Function"] {
+            mouse-move 298 528 -height 588 -width 854
+            with [get-edit-part -name "SystemFunction 1_1" | get-edit-part 
+                -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+                mouse-move 55 24 button1 -height 68 -width 148
+                mouse-press 55 24 button1 -height 68 -width 148
+                mouse-release 55 24 button1 524288 -height 68 -width 148
+            }
+        }
+        // copy element
+        key-type "M1+c"
+        with [get-edit-part -name "[SDFB] Root System Function"] {
+            get-edit-part -name "SystemFunction 1_1" | get-edit-part 
+                -className DNodeContainerViewNodeContainerCompartmentEditPart | mouse-hover 55 24 -height 68 -width 148
+            mouse-move 98 279 button1 -height 588 -width 854
+            mouse-press 98 279 button1 -height 588 -width 854
+            mouse-release 98 279 button1 524288 -height 588 -width 854
+            mouse-hover 98 279 -height 588 -width 854
+        }
+        // paste element
+        key-type "M1+v"
+    }
+    get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function" | mouse-move 776 482 -height 588 -width 854
+    get-palette | get-palette-entry "Applied Property Value Groups" | mouse-move 69 8 -height 67 -width 125
+}
+
+// verify pasted element position
+with [get-editor "[SDFB] Root System Function" | get-diagram -index 1 | get-edit-part 
+    -name "[SDFB] Root System Function" | get-edit-part -name "SystemFunction 1_1_1" | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+    get-property x | equals 98 | verify-true
+    get-property y | equals 279 | verify-true
+}
+
+// use case with 100% zoom
+with [get-editor "[SDFB] Root System Function"] {
+    with [get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-move 190 354 -height 588 -width 854
+        mouse-move 323 231 button1 -height 588 -width 854
+        mouse-press 323 231 button1 -height 588 -width 854
+        mouse-release 323 231 button1 524288 -height 588 -width 854
+        mouse-move 312 182 -height 588 -width 854
+    }
+    // set zoom
+    get-combo | select "100%"
+    with [get-diagram -index 1] {
+        with [get-edit-part -name "[SDFB] Root System Function"] {
+            mouse-move 525 200 -height 588 -width 1281
+            with [get-edit-part -name "SystemFunction 1" | get-edit-part 
+                -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+                mouse-move 31 45 button1 -height 68 -width 148
+                mouse-press 31 45 button1 -height 68 -width 148
+                mouse-release 31 45 button1 524288 -height 68 -width 148
+                mouse-move 30 44 -height 68 -width 148
+            }
+        }
+        // copy
+        key-type "M1+c"
+        with [get-edit-part -name "[SDFB] Root System Function"] {
+            mouse-move 860 335 button1 -height 588 -width 1281
+            mouse-press 860 335 button1 -height 588 -width 1281
+            mouse-release 860 335 button1 524288 -height 588 -width 1281
+        }
+        // paste
+        key-type "M1+v"
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-hover 860 335 -height 588 -width 1281
+        mouse-move 1184 473 -height 588 -width 1281
+    }
+    get-palette | get-palette-entry ConstraintElement | mouse-move 54 4 -height 27 -width 241
+}
+// verify pasted element position
+with [get-editor "[SDFB] Root System Function" | get-diagram -index 1 | get-edit-part 
+    -name "[SDFB] Root System Function" | get-edit-part -name "SystemFunction 1_2" | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartmentEditPart | get-figure -path "1/0"] {
+    get-property x | equals 865 | verify-true
+    get-property y | equals 341 | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

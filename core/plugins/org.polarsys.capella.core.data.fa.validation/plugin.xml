@@ -13,7 +13,7 @@
 <plugin>
    <extension point="org.eclipse.emf.validation.constraintProviders">
       <constraintProvider>
-         <package namespaceUri="http://www.polarsys.org/capella/core/fa/1.2.0">
+         <package namespaceUri="http://www.polarsys.org/capella/core/fa/1.3.0">
          </package>
          
          <constraints categories="capella.category/design/completeness">
@@ -197,7 +197,7 @@
                </description>
             </constraint>
             
-            <constraint class="org.polarsys.capella.core.data.fa.validation.functionalChainInvolvement.FunctionalChainInvolvement_ExchangeItems" 
+            <constraint class="org.polarsys.capella.core.data.fa.validation.functionalChainInvolvement.FunctionalChainInvolvementLink_ExchangeItems" 
                 id="DWF_DF_14" 
                 isEnabledByDefault="true" 
                 lang="Java"
@@ -276,7 +276,7 @@
             </constraint>
             <constraint class="org.polarsys.capella.core.data.fa.validation.functionalChain.FunctionalChainFunctionActiveInState" id="DWF_DF_05" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DF_05 - Functional chain involved functions active in state" severity="WARNING" statusCode="1">
                <message>
-                  Function{3} {1} involved in {0}({4}) {2} not active in relevant State/Mode.
+                  {0} ({1}) contains at least one State/Mode which is not available in one of the functions involved in this {1}.
                </message>
                <description>
                   This check ensures that all the functions involved in FunctionalChain are also active in modes and states as FunctionChain.
@@ -292,6 +292,104 @@
                   This rule ensures that Functional Exchange is located in the common ancestor between its source/target elements.
                </description>
                <target class="FunctionalExchange">
+               </target>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.sequenceLink.SequenceLinksBetweenNodesWithNoConnectingFE"
+             id="DWF_DF_15"
+             isEnabledByDefault="true" lang="Java" mode="Batch"
+             name="DWF_DF_15 - SequenceLinks between the referenced Involvement Functions/OperationalActivities have no Involvement Links referencing them"
+             severity="WARNING" statusCode="1">
+               <message>
+                  (SequenceLink) between the referenced {0}({1}) and {2}({3}) has no Involvement Links referencing them.
+               </message>
+               <description>
+                  This check ensures that SequenceLinks between the referenced Involvement Functions have Involvement Links referencing them.
+               </description>
+               <target class="SequenceLink">
+               </target>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.sequenceLink.SequenceLinkHasEmptyCondition"
+             id="DWF_DF_16"
+             isEnabledByDefault="true" lang="Java" mode="Batch"
+             name="DWF_DF_16 - SequenceLink has empty condition"
+             severity="WARNING" statusCode="1">
+               <message>
+                  (SequenceLink) between {0}({1}) and {2}({3}) has empty condition.
+               </message>
+               <description>
+                  This rule checks if there is an empty condition on the SequenceLink.
+               </description>
+               <target class="SequenceLink">
+               </target>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.sequenceLink.SequenceLinkBetweenAdjacentControlNodesWithoutFCIFunction"
+             id="DWF_DF_17"
+             isEnabledByDefault="true" lang="Java" mode="Batch"
+             name="DWF_DF_17 - SequenceLink between two adjacent Control Nodes without a FunctionalChainInvolvementFunction"
+             severity="WARNING" statusCode="1">
+               <message>
+                  (SequenceLink) between two adjacent ControlNodes without a FunctionalChainInvolvementFunction.
+               </message>
+               <description>
+                  This rule checks if there is a Sequence Link between two adjacent ControlNodes without a FunctionalChainInvolvementFunction.
+               </description>
+               <target class="SequenceLink">
+               </target>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.sequenceLink.SequenceLinkWithNoAssociatedLinks"
+             id="DWF_DF_18"
+             isEnabledByDefault="true" lang="Java" mode="Batch"
+             name="DWF_DF_18 - SequenceLink with no associated FunctionalChainInvolvementLinks"
+             severity="WARNING" statusCode="1">
+               <message>
+                  (SequenceLink) between {0}({1}) and {2}({3}) has no associated FunctionalChainInvolvementLinks.
+               </message>
+               <description>
+                 This rule checks if a SequenceLink has associated FunctionalChainInvolvementLinks.
+               </description>
+               <target class="SequenceLink">
+               </target>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.sequenceLink.SequenceLinkWithInconsistentAssociatedLinks"
+             id="DWF_DF_19"
+             isEnabledByDefault="true" lang="Java" mode="Batch"
+             name="DWF_DF_19 - SequenceLink with inconsistent associated FunctionalChainInvolvementLinks"
+             severity="ERROR" statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <description>
+                 This rule checks if a SequenceLink has inconsistent associated FunctionalChainInvolvementLinks.
+               </description>
+               <target class="SequenceLink">
+               </target>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.sequenceLink.SequenceLinkOppositeDirectionToFE"
+             id="DWF_DF_20"
+             isEnabledByDefault="true" lang="Java" mode="Batch"
+             name="DWF_DF_20 - SequenceLink between the referenced Involvement Functions/OperationalActivities is in opposite direction to Involvement Links referencing them"
+             severity="ERROR" statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <description>
+                 This rule checks if a SequenceLink between the referenced Involvement Functions/OperationalActivities is in opposite direction to a Involvement Links referencing them.
+               </description>
+               <target class="SequenceLink">
+               </target>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.controlNode.ControlNodeInconsistentOperations"
+             id="DWF_DF_21"
+             isEnabledByDefault="true" lang="Java" mode="Batch"
+             name="DWF_DF_21 - Control Nodes inconsistent operations"
+             severity="WARNING" statusCode="1">
+               <message>
+                  ({0}) {1}.
+               </message>
+               <description>
+                  This rule checks the ControlNode construction inconsistencies. A ControlNode is valid if it has one IN and two OUT links or two IN and one OUT link.
+               </description>
+               <target class="ControlNode">
                </target>
             </constraint>
          </constraints>
@@ -342,25 +440,6 @@
                </message>
                <description>
                   This rule checks that a Functional Chain Involvement has a valid next and/or previous involvement (not empty)
-               </description>
-               <target
-                     class="FunctionalChainInvolvement">
-               </target>
-            </constraint>
-            <constraint
-                  class="org.polarsys.capella.core.data.fa.validation.functionalChainInvolvement.MDCHK_FunctionalChainInvolvement_NextAndPrevious_2"
-                  id="I_28"
-                  isEnabledByDefault="true"
-                  lang="Java"
-                  mode="Batch"
-                  name="I_28 - Functional chain involvement check 4"
-                  severity="WARNING"
-                  statusCode="1">
-               <message>
-                  {0} (Functional Chain Involvement) has an invalid next and/or previous involvement.
-               </message>
-               <description>
-                  This rule checks that a Functional Chain Involvement has a valid next and/or previous involvement (contained by the same functional chain)
                </description>
                <target
                      class="FunctionalChainInvolvement">
@@ -617,6 +696,25 @@ NodePC=Physical Component of nature NODE
                </target>
                <description>
                   This rule ensures that Component Exchange allocates valid functional exchanges (regarding ports directions).
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.function.MDCHK_Function_StateAllocation"
+                  id="DWF_DC_35"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_DC_35 - Function is not available in at least one Mode/State allocated to a functional chain in which the function is involved"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Function) is not available in at least one Mode/State allocated to a functional chain in which the {1} is involved.
+               </message>
+               <target
+                     class="AbstractFunction">
+               </target>
+               <description>
+               	  Check that the function is available in all the Mode/State allocated to a functional chain in which the function is involved.
                </description>
             </constraint>
          </constraints>

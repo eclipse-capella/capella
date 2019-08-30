@@ -59,6 +59,7 @@ import org.polarsys.capella.core.flexibility.commands.actions.DefaultAction;
 import org.polarsys.capella.core.flexibility.commands.dynamic.IActionsProvider;
 import org.polarsys.capella.core.flexibility.commands.helpers.EObjectHelper;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 /**
  */
 public class InformationActionsProvider implements IActionsProvider {
@@ -66,8 +67,9 @@ public class InformationActionsProvider implements IActionsProvider {
   /**
    * @see org.polarsys.capella.core.flexibility.commands.dynamic.IActionsProvider#getActions()
    */
+  @Override
   public Collection<DefaultAction> getActions(Shell shell, ISelectionProvider selectionProvider) {
-    List<DefaultAction> list = new ArrayList<DefaultAction>();
+    List<DefaultAction> list = new ArrayList<>();
 
     list.add(new RetrieveIDs(shell, selectionProvider));
     list.add(new MustBeTransitioned(shell, selectionProvider));
@@ -130,11 +132,11 @@ public class InformationActionsProvider implements IActionsProvider {
     String value;
 
     GetText(Shell shell) {
-      shell = shell;
+      this.shell = shell;
     }
 
     public void setValue(String value) {
-      value = value;
+      this.value = value;
     }
 
     public String getValue() {
@@ -201,7 +203,7 @@ public class InformationActionsProvider implements IActionsProvider {
     @Override
     public void execute() {
       Resource resource = null;
-      final List<EObject> objects = new ArrayList<EObject>();
+      final List<EObject> objects = new ArrayList<>();
 
       for (EObject object : getSelectedEObjects()) {
         resource = object.eResource();
@@ -225,20 +227,24 @@ public class InformationActionsProvider implements IActionsProvider {
 
       ISelectionProvider provider = new ISelectionProvider() {
 
+        @Override
         public void setSelection(ISelection selection) {
-
+          // 
         }
 
+        @Override
         public void removeSelectionChangedListener(ISelectionChangedListener listener) {
-
+          //
         }
 
+        @Override
         public ISelection getSelection() {
           return new StructuredSelection(objects);
         }
 
+        @Override
         public void addSelectionChangedListener(ISelectionChangedListener listener) {
-
+          //
         }
       };
 
@@ -331,7 +337,7 @@ public class InformationActionsProvider implements IActionsProvider {
     public void execute() {
 
       for (EObject object : getSelectedEObjects()) {
-        Collection<AbstractFunction> a = (FunctionExt.getAllLeafAbstractFunctions((BlockArchitecture) object));
+        Collection<AbstractFunction> a = (getCache(FunctionExt::getAllLeafAbstractFunctions, (BlockArchitecture) object));
         for (AbstractFunction pkg : a) {
           getLogger().info(pkg.getName() + " " + pkg.hashCode());
         }

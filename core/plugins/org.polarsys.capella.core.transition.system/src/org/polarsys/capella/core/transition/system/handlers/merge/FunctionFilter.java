@@ -12,8 +12,6 @@ package org.polarsys.capella.core.transition.system.handlers.merge;
 
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
-import org.polarsys.capella.core.data.fa.FunctionalChain;
-import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
 import org.polarsys.capella.core.transition.system.preferences.PreferenceConstants;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -25,8 +23,7 @@ public class FunctionFilter extends EObjectCategoryFilter {
 
   @Override
   public boolean keepElement(Object element) {
-    return element instanceof AbstractFunction || element instanceof FunctionalChain
-        || element instanceof FunctionalChainInvolvement;
+    return element instanceof AbstractFunction;
   }
 
 }

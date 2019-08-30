@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *    Thales - initial API and implementation
  *******************************************************************************/
 package org.polarsys.capella.core.model.helpers;
+
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -53,96 +55,95 @@ import org.polarsys.capella.core.data.oa.Role;
  */
 public class AbstractFunctionExt {
 
-	/**
-	 * @param component
-	 * @param allocatedFunctions
-	 *            (first call : all leaves functions allocated to component)
-	 * @param functionsToCheck
-	 *            (first call : all leaves functions allocated to component
-	 * @return recursively all functions (and function containers) allocated to
-	 *         component
-	 */
-	public static Set<AbstractFunction> getRecursiveAllocatedFunctions(Set<AbstractFunction> allocatedFunctions,
-			final Set<AbstractFunction> functionsToCheck) {
-		Set<AbstractFunction> newfunctionsToCheck = new HashSet<AbstractFunction>();
-		Set<AbstractFunction> returnedAllocatedFunctions = new HashSet<AbstractFunction>(allocatedFunctions);
-		for (AbstractFunction aFunction : functionsToCheck) {
-			EObject container = aFunction.eContainer();
-			if (container instanceof AbstractFunction) {
-				boolean toAdd = true;
-				for (AbstractFunction aSubFunction : ((AbstractFunction) container).getSubFunctions()) {
-					if (!allocatedFunctions.contains(aSubFunction)) {
-						toAdd = false;
-						newfunctionsToCheck.add(aFunction);
-						break;
-					}
-				}
-				if (toAdd) {
-					returnedAllocatedFunctions.add((AbstractFunction) container);
-					newfunctionsToCheck.add((AbstractFunction) container);
-				}
-			}
-		}
-		boolean checkParents = false;
+  /**
+   * @param component
+   * @param allocatedFunctions
+   *          (first call : all leaves functions allocated to component)
+   * @param functionsToCheck
+   *          (first call : all leaves functions allocated to component
+   * @return recursively all functions (and function containers) allocated to component
+   */
+  public static Set<AbstractFunction> getRecursiveAllocatedFunctions(Set<AbstractFunction> allocatedFunctions,
+      final Set<AbstractFunction> functionsToCheck) {
+    Set<AbstractFunction> newfunctionsToCheck = new HashSet<AbstractFunction>();
+    Set<AbstractFunction> returnedAllocatedFunctions = new HashSet<AbstractFunction>(allocatedFunctions);
+    for (AbstractFunction aFunction : functionsToCheck) {
+      EObject container = aFunction.eContainer();
+      if (container instanceof AbstractFunction) {
+        boolean toAdd = true;
+        for (AbstractFunction aSubFunction : ((AbstractFunction) container).getSubFunctions()) {
+          if (!allocatedFunctions.contains(aSubFunction)) {
+            toAdd = false;
+            newfunctionsToCheck.add(aFunction);
+            break;
+          }
+        }
+        if (toAdd) {
+          returnedAllocatedFunctions.add((AbstractFunction) container);
+          newfunctionsToCheck.add((AbstractFunction) container);
+        }
+      }
+    }
+    boolean checkParents = false;
 
-		for (AbstractFunction aFunction : returnedAllocatedFunctions) {
-			if (!allocatedFunctions.contains(aFunction)) {
-				checkParents = true;
-				break;
-			}
-		}
-		// if the returned list is the same as the list given in parameter =>
-		// stop
-		if (checkParents) {
-			return getRecursiveAllocatedFunctions(returnedAllocatedFunctions, newfunctionsToCheck);
-		}
-		return returnedAllocatedFunctions;
-	}
+    for (AbstractFunction aFunction : returnedAllocatedFunctions) {
+      if (!allocatedFunctions.contains(aFunction)) {
+        checkParents = true;
+        break;
+      }
+    }
+    // if the returned list is the same as the list given in parameter =>
+    // stop
+    if (checkParents) {
+      return getRecursiveAllocatedFunctions(returnedAllocatedFunctions, newfunctionsToCheck);
+    }
+    return returnedAllocatedFunctions;
+  }
 
-	/**
-	 * @param component
-	 * @return all functions (leaves and parents) allocated to component
-	 */
-	public static List<AbstractFunction> getAllocatedFunctions(Component component) {
-		List<AbstractFunction> returnedList = new ArrayList<AbstractFunction>();
-		Set<AbstractFunction> allocatedFunctions = new HashSet<AbstractFunction>();
-		allocatedFunctions.addAll(component.getAllocatedFunctions());
-		returnedList.addAll(getRecursiveAllocatedFunctions(allocatedFunctions, allocatedFunctions));
-		return returnedList;
-	}
+  /**
+   * @param component
+   * @return all functions (leaves and parents) allocated to component
+   */
+  public static List<AbstractFunction> getAllocatedFunctions(Component component) {
+    List<AbstractFunction> returnedList = new ArrayList<AbstractFunction>();
+    Set<AbstractFunction> allocatedFunctions = new HashSet<AbstractFunction>();
+    allocatedFunctions.addAll(component.getAllocatedFunctions());
+    returnedList.addAll(getRecursiveAllocatedFunctions(allocatedFunctions, allocatedFunctions));
+    return returnedList;
+  }
 
-	/**
-	 * @param role
-	 * @return all operational activities (leaves and parents) allocated to role
-	 */
-	public static List<AbstractFunction> getAllocatedOperationalActivities(Role role) {
-		List<AbstractFunction> returnedList = new ArrayList<AbstractFunction>();
-		Set<AbstractFunction> allocatedFunctions = new HashSet<AbstractFunction>();
-		for (ActivityAllocation anAllocation : role.getOwnedActivityAllocations()) {
-			if ((anAllocation.getTargetElement() != null)
-					&& (anAllocation.getTargetElement() instanceof OperationalActivity)) {
-				allocatedFunctions.add((OperationalActivity) anAllocation.getTargetElement());
-			}
-		}
-		returnedList.addAll(getRecursiveAllocatedFunctions(allocatedFunctions, allocatedFunctions));
-		return returnedList;
-	}
+  /**
+   * @param role
+   * @return all operational activities (leaves and parents) allocated to role
+   */
+  public static List<AbstractFunction> getAllocatedOperationalActivities(Role role) {
+    List<AbstractFunction> returnedList = new ArrayList<AbstractFunction>();
+    Set<AbstractFunction> allocatedFunctions = new HashSet<AbstractFunction>();
+    for (ActivityAllocation anAllocation : role.getOwnedActivityAllocations()) {
+      if ((anAllocation.getTargetElement() != null)
+          && (anAllocation.getTargetElement() instanceof OperationalActivity)) {
+        allocatedFunctions.add((OperationalActivity) anAllocation.getTargetElement());
+      }
+    }
+    returnedList.addAll(getRecursiveAllocatedFunctions(allocatedFunctions, allocatedFunctions));
+    return returnedList;
+  }
 
-	/**
-	 * Gets the allocated functional exchange filtered for current and all its
-	 * sub partitions and deployed elements recursively
-	 * 
-	 * @param sourceBlock
-	 *            the given abstractFunctionalBlock
-	 * @param targetBlock
-	 *            the given abstractFunctionalBlock
-	 * @return the allocated functional exchange filtered
-	 */
-	public static List<CapellaElement> getAllAllocatedFunctionalExchangeFiltered(AbstractFunctionalBlock sourceBlock,
-			AbstractFunctionalBlock targetBlock) {
-		List<CapellaElement> list = new ArrayList<CapellaElement>(1);
-		List<AbstractFunction> srcAllocatedFuns = new ArrayList<AbstractFunction>(1);
-		List<AbstractFunction> tarAllocatedFuns = new ArrayList<AbstractFunction>(1);
+  /**
+   * Gets the allocated functional exchange filtered for current and all its sub partitions and deployed elements
+   * recursively
+   * 
+   * @param sourceBlock
+   *          the given abstractFunctionalBlock
+   * @param targetBlock
+   *          the given abstractFunctionalBlock
+   * @return the allocated functional exchange filtered
+   */
+  public static List<CapellaElement> getAllAllocatedFunctionalExchangeFiltered(AbstractFunctionalBlock sourceBlock,
+      AbstractFunctionalBlock targetBlock) {
+    List<CapellaElement> list = new ArrayList<CapellaElement>(1);
+    List<AbstractFunction> srcAllocatedFuns = new ArrayList<AbstractFunction>(1);
+    List<AbstractFunction> tarAllocatedFuns = new ArrayList<AbstractFunction>(1);
 
     if ((sourceBlock instanceof PartitionableElement) && (targetBlock instanceof PartitionableElement)) {
       // get allocated function for current source and target
@@ -191,210 +192,216 @@ public class AbstractFunctionExt {
 
     }
     return list;
-	}
+  }
 
-	private static void getSuperGElesFilterAsComponent(AbstractFunctionalBlock sourceBlock,
-			Collection<Component> allSourceRelatedEles) {
-		List<GeneralizableElement> allSuperGEs = GeneralizableElementExt
-				.getAllSuperGeneralizableElements((GeneralizableElement) sourceBlock);
-		for (GeneralizableElement generalizableElement : allSuperGEs) {
-			if (generalizableElement instanceof Component) {
-				allSourceRelatedEles.add((Component) generalizableElement);
-			}
-		}
-	}
+  private static void getSuperGElesFilterAsComponent(AbstractFunctionalBlock sourceBlock,
+      Collection<Component> allSourceRelatedEles) {
+    List<GeneralizableElement> allSuperGEs = GeneralizableElementExt
+        .getAllSuperGeneralizableElements((GeneralizableElement) sourceBlock);
+    for (GeneralizableElement generalizableElement : allSuperGEs) {
+      if (generalizableElement instanceof Component) {
+        allSourceRelatedEles.add((Component) generalizableElement);
+      }
+    }
+  }
 
-	/**
-	 * Return all the allocation blocks of the current functions. Also
-	 * considering the roles allocated in operational activities
-	 * 
-	 * @param object
-	 * @return
-	 */
-	public static List<Object> getAllocationBlocks(Object object) {
-		List<Object> result = new ArrayList<Object>();
-		if (null == object) {
-			return result;
-		}
+  /**
+   * Return all the allocation blocks of the current and roles of the current function.
+   * 
+   * @param object
+   *          the target function
+   * @return all the allocation blocks of the current and roles of the current function.
+   * 
+   *         TODO This function should return a Set and have a more meaningful name such as getAllocationBlocksAndRoles,
+   *         this should be fixed in a non-patch version.
+   */
+  public static List<Object> getAllocationBlocks(Object object) {
+    if (null == object) {
+      return Collections.emptyList();
+    }
 
-		if (object instanceof AbstractFunction) {
-			AbstractFunction sf = (AbstractFunction) object;
-			result.addAll(sf.getAllocationBlocks());
-		}
-		// On top of what is done before, you have to check the entities where
-		// roles are allocated for
-		// operational activities:
-		if (object instanceof OperationalActivity) {
-			OperationalActivity oa = (OperationalActivity) object;
-			for (ActivityAllocation allocation : oa.getActivityAllocations()) {
-				Role role = allocation.getRole();
-				if (role != null) {
-					result.add(role);
-				}
-			}
-		}
-		return result;
-	}
+    List<Object> result = new ArrayList<>();
 
-	/**
-	 * Checks if is leaf.
-	 * 
-	 * @param function
-	 *            the given abstract function
-	 * @return true, if is leaf
-	 */
-	public static final boolean isLeaf(AbstractFunction function) {
-		if (function == null) {
-			return false;
-		}
-		return FunctionExt.isLeaf(function);
-	}
+    if (object instanceof AbstractFunction) {
+      AbstractFunction abstractFunction = (AbstractFunction) object;
+      EList<AbstractFunctionalBlock> allocationBlocks = abstractFunction.getAllocationBlocks();
 
-	/**
-	 * check if available for allocation
-	 * 
-	 * @param element
-	 *            a model element
-	 * @return true, if available for allocation
-	 */
-	public static boolean isAbstractFunctionAvailableForAllocation(EObject element) {
-		boolean isAllocated = false;
-		if ((element == null) || !(element instanceof AbstractFunction)) {
-			return false;
-		}
+      if (allocationBlocks != null) {
+        result.addAll(allocationBlocks);
+      }
+    }
+    // On top of what is done before, you have to check the entities where
+    // roles are allocated for
+    // operational activities:
+    if (object instanceof OperationalActivity) {
+      OperationalActivity operationActivity = (OperationalActivity) object;
+      List<Role> allocatingRoles = operationActivity.getAllocatingRoles();
 
-		AbstractFunction fun = (AbstractFunction) element;
-		EList<AbstractTrace> incomingTraces = fun.getIncomingTraces();
-		for (AbstractTrace abstractTrace : incomingTraces) {
-			if ((abstractTrace instanceof ComponentFunctionalAllocation)
-					|| (abstractTrace instanceof ActivityAllocation)) {
-				isAllocated = true;
-				break;
-			}
-		}
+      if (allocatingRoles != null) {
+        result.addAll(allocatingRoles);
+      }
+    }
+    return result;
+  }
 
-		if (!isAllocated && isLeaf(fun)) {
-			return true;
-		}
+  /**
+   * Checks if is leaf.
+   * 
+   * @param function
+   *          the given abstract function
+   * @return true, if is leaf
+   */
+  public static final boolean isLeaf(AbstractFunction function) {
+    if (function == null) {
+      return false;
+    }
+    return FunctionExt.isLeaf(function);
+  }
 
-		return false;
-	}
+  /**
+   * check if available for allocation
+   * 
+   * @param element
+   *          a model element
+   * @return true, if available for allocation
+   */
+  public static boolean isAbstractFunctionAvailableForAllocation(EObject element) {
+    boolean isAllocated = false;
+    if ((element == null) || !(element instanceof AbstractFunction)) {
+      return false;
+    }
 
-	/**
-	 * check if available for allocation
-	 * 
-	 * @param element
-	 *            a model element
-	 * @return true, if available for allocation
-	 */
-	public static boolean isFunctionExchangeAvailableForAllocation(EObject element) {
-		if ((element == null) || !(element instanceof FunctionalExchange)) {
-			return false;
-		}
+    AbstractFunction fun = (AbstractFunction) element;
+    EList<AbstractTrace> incomingTraces = fun.getIncomingTraces();
+    for (AbstractTrace abstractTrace : incomingTraces) {
+      if ((abstractTrace instanceof ComponentFunctionalAllocation) || (abstractTrace instanceof ActivityAllocation)) {
+        isAllocated = true;
+        break;
+      }
+    }
 
-		FunctionalExchange funExc = (FunctionalExchange) element;
-		if (funExc.getAllocatingComponentExchanges().size() == 0) {
-			return true;
-		}
+    if (!isAllocated && isLeaf(fun)) {
+      return true;
+    }
 
-		return false;
-	}
+    return false;
+  }
 
-	/**
-	 * check if available for allocation
-	 * 
-	 * @param element
-	 *            a model element
-	 * @return true, if available for allocation
-	 */
-	public static boolean isComponentExchangeAvailableForAllocation(EObject element) {
-		if ((element == null) || !(element instanceof ComponentExchange)) {
-			return false;
-		}
+  /**
+   * check if available for allocation
+   * 
+   * @param element
+   *          a model element
+   * @return true, if available for allocation
+   */
+  public static boolean isFunctionExchangeAvailableForAllocation(EObject element) {
+    if ((element == null) || !(element instanceof FunctionalExchange)) {
+      return false;
+    }
 
-		ComponentExchange compExc = (ComponentExchange) element;
-		EList<AbstractTrace> incomingTraces = compExc.getIncomingTraces();
+    FunctionalExchange funExc = (FunctionalExchange) element;
+    if (funExc.getAllocatingComponentExchanges().size() == 0) {
+      return true;
+    }
 
-		if (incomingTraces.isEmpty()) {
-			return true;
-		}
+    return false;
+  }
 
-		for (AbstractTrace abstractTrace : incomingTraces) {
-			if (abstractTrace instanceof ComponentExchangeAllocation) {
-				ComponentExchangeAllocation allocation = (ComponentExchangeAllocation) abstractTrace;
-				ComponentExchangeAllocator allocator = allocation.getComponentExchangeAllocator();
-				if ((null != allocator) && (allocator instanceof PhysicalLink)) {
-					return false;
-				}
-			}
-		}
+  /**
+   * check if available for allocation
+   * 
+   * @param element
+   *          a model element
+   * @return true, if available for allocation
+   */
+  public static boolean isComponentExchangeAvailableForAllocation(EObject element) {
+    if ((element == null) || !(element instanceof ComponentExchange)) {
+      return false;
+    }
 
-		return true;
-	}
+    ComponentExchange compExc = (ComponentExchange) element;
+    EList<AbstractTrace> incomingTraces = compExc.getIncomingTraces();
 
-	/**
-	 * @param object
-	 * @return
-	 */
-	public static boolean isPCPartAvailableForDeployment(EObject object) {
-		if ((null != object) && (object instanceof Part)) {
-			Part part = (Part) object;
-			if (part.getDeployingLinks().size() == 0) {
-				return true;
-			}
-		}
-		return false;
-	}
+    if (incomingTraces.isEmpty()) {
+      return true;
+    }
 
-	public static List<CapellaElement> getExchangeSourceAndTargetPorts(FunctionalExchange exchange) {
-		List<CapellaElement> result = new ArrayList<CapellaElement>(0);
-		if (exchange != null) {
-			ActivityNode source = exchange.getSource();
-			if ((source != null) && (source instanceof FunctionPort)) {
-				result.add((CapellaElement) source);
-			}
-			ActivityNode target = exchange.getTarget();
-			if ((target != null) && (target instanceof FunctionPort)) {
-				result.add((CapellaElement) target);
-			}
-		}
-		return result;
-	}
+    for (AbstractTrace abstractTrace : incomingTraces) {
+      if (abstractTrace instanceof ComponentExchangeAllocation) {
+        ComponentExchangeAllocation allocation = (ComponentExchangeAllocation) abstractTrace;
+        ComponentExchangeAllocator allocator = allocation.getComponentExchangeAllocator();
+        if ((null != allocator) && (allocator instanceof PhysicalLink)) {
+          return false;
+        }
+      }
+    }
 
-	/**
-	 * @param abstractFunction
-	 *            a Capella Element
-	 * @return all the exchange items contained in the the given Function
-	 */
-	public static Collection<AbstractExchangeItem> getAllExchangeItems(final AbstractFunction abstractFunction) {
-		Set<AbstractExchangeItem> returnedItems = new HashSet<AbstractExchangeItem>();
-		EList<InputPin> inputs = abstractFunction.getInputs();
-		EList<OutputPin> outputs = abstractFunction.getOutputs();
+    return true;
+  }
 
-		for (Iterator<InputPin> iterator = inputs.iterator(); iterator.hasNext();) {
-			FunctionInputPort inputPin = (FunctionInputPort) iterator.next();
-			EList<ExchangeItem> exchangeItems = inputPin.getIncomingExchangeItems();
-			returnedItems.addAll(exchangeItems);
-		}
+  /**
+   * @param object
+   * @return
+   */
+  public static boolean isPCPartAvailableForDeployment(EObject object) {
+    if ((null != object) && (object instanceof Part)) {
+      Part part = (Part) object;
+      if (part.getDeployingLinks().size() == 0) {
+        return true;
+      }
+    }
+    return false;
+  }
 
-		for (Iterator<OutputPin> iterator = outputs.iterator(); iterator.hasNext();) {
-			FunctionOutputPort outputPin = (FunctionOutputPort) iterator.next();
-			EList<ExchangeItem> exchangeItems = outputPin.getOutgoingExchangeItems();
-			returnedItems.addAll(exchangeItems);
-		}
+  public static List<CapellaElement> getExchangeSourceAndTargetPorts(FunctionalExchange exchange) {
+    List<CapellaElement> result = new ArrayList<CapellaElement>(0);
+    if (exchange != null) {
+      ActivityNode source = exchange.getSource();
+      if ((source != null) && (source instanceof FunctionPort)) {
+        result.add((CapellaElement) source);
+      }
+      ActivityNode target = exchange.getTarget();
+      if ((target != null) && (target instanceof FunctionPort)) {
+        result.add((CapellaElement) target);
+      }
+    }
+    return result;
+  }
 
-		return returnedItems;
-	}
+  /**
+   * @param abstractFunction
+   *          a Capella Element
+   * @return all the exchange items contained in the the given Function
+   */
+  public static Collection<AbstractExchangeItem> getAllExchangeItems(final AbstractFunction abstractFunction) {
+    Set<AbstractExchangeItem> returnedItems = new HashSet<AbstractExchangeItem>();
+    EList<InputPin> inputs = abstractFunction.getInputs();
+    EList<OutputPin> outputs = abstractFunction.getOutputs();
 
-	/**
-	 * Given a function, returns the components it is allocated to.
-	 * 
-	 * @param function
-	 *            the function considered
-	 * @return the components the function is allocated to
-	 */
+    for (Iterator<InputPin> iterator = inputs.iterator(); iterator.hasNext();) {
+      FunctionInputPort inputPin = (FunctionInputPort) iterator.next();
+      EList<ExchangeItem> exchangeItems = inputPin.getIncomingExchangeItems();
+      returnedItems.addAll(exchangeItems);
+    }
+
+    for (Iterator<OutputPin> iterator = outputs.iterator(); iterator.hasNext();) {
+      FunctionOutputPort outputPin = (FunctionOutputPort) iterator.next();
+      EList<ExchangeItem> exchangeItems = outputPin.getOutgoingExchangeItems();
+      returnedItems.addAll(exchangeItems);
+    }
+
+    return returnedItems;
+  }
+
+  /**
+   * Given a function, returns the components it is allocated to.
+   * 
+   * @param function
+   *          the function considered
+   * @return the components the function is allocated to
+   */
   public static List<Component> getAllocatingComponents(AbstractFunction function) {
-    List<Component> result = new ArrayList<Component>();
+    List<Component> result = new ArrayList<>();
     if (null != function.getAllocationBlocks()) {
       for (AbstractFunctionalBlock block : function.getAllocationBlocks()) {
         if (block instanceof Component) {
@@ -405,45 +412,39 @@ public class AbstractFunctionExt {
     return result;
   }
 
-	/**
-	 * Given an activity, returns the roles it is allocated to.
-	 * 
-	 * @param function
-	 *            the function considered
-	 * @return the components the function is allocated to
-	 */
-	protected static Collection<Role> getAllocatingRoles(OperationalActivity activity) {
-		Collection<Role> result = new ArrayList<Role>();
-		EList<Role> roles = activity.getAllocatingRoles();
-		if (null != roles && !roles.isEmpty()) {
-			result.addAll(roles);
-		}
-		return result;
-	}
+  /**
+   * Given an activity, returns the roles it is allocated to.
+   * 
+   * @param function
+   *          the function considered
+   * @return the components the function is allocated to
+   */
+  protected static Collection<Role> getAllocatingRoles(OperationalActivity activity) {
+    Collection<Role> result = new ArrayList<Role>();
+    EList<Role> roles = activity.getAllocatingRoles();
+    if (null != roles && !roles.isEmpty()) {
+      result.addAll(roles);
+    }
+    return result;
+  }
 
-	/**
-	 * Given a mother function/activity that has sub functions, this method
-	 * <b>calculates</b> the allocation of the mother function to a
-	 * component/actor/entity.
-	 * 
-	 * The rule is that <b>a mother function/activity is allocated to a
-	 * component/actor/entity if and only if all of its leaf functions are
-	 * allocated to this component/actor/entity or children of them</b>.
-	 * 
-	 * <b>Note</b> that in case the mother function/activity is already
-	 * allocated to a component/actor/entity or in case the mother
-	 * function/activity is a leaf function, the method returns its
-	 * allocation(s).
-	 * 
-	 * <b>Note</b> also that the helper works also in the case the sub functions
-	 * are allocated to different children of the same component/actor/entity.
-	 * 
-	 * @param motherFunction
-	 *            the mother function/activity to calculate
-	 *            component/actor/entity allocation on.
-	 * @return the <b>calculated</b> list of components/actors/entities the
-	 *         mother function is allocated to.
-	 */
+  /**
+   * Given a mother function/activity that has sub functions, this method <b>calculates</b> the allocation of the mother
+   * function to a component/actor/entity.
+   * 
+   * The rule is that <b>a mother function/activity is allocated to a component/actor/entity if and only if all of its
+   * leaf functions are allocated to this component/actor/entity or children of them</b>.
+   * 
+   * <b>Note</b> that in case the mother function/activity is already allocated to a component/actor/entity or in case
+   * the mother function/activity is a leaf function, the method returns its allocation(s).
+   * 
+   * <b>Note</b> also that the helper works also in the case the sub functions are allocated to different children of
+   * the same component/actor/entity.
+   * 
+   * @param motherFunction
+   *          the mother function/activity to calculate component/actor/entity allocation on.
+   * @return the <b>calculated</b> list of components/actors/entities the mother function is allocated to.
+   */
   public static List<Component> getMotherFunctionAllocation(AbstractFunction motherFunction) {
     // If motherFunction is already allocated to a component/actor
     List<Component> motherFunctionAllocatingComponents = getAllocatingComponents(motherFunction);
@@ -451,15 +452,15 @@ public class AbstractFunctionExt {
       return motherFunctionAllocatingComponents;
     }
     // Get all leaves functions of the motherFunction
-    List<AbstractFunction> leaves = FunctionExt.getAllLeafAbstractFunctions(motherFunction);
+    List<AbstractFunction> leaves = getCache(FunctionExt::getAllLeafAbstractFunctions, motherFunction);
     if (null == leaves || leaves.isEmpty()) {
       return Collections.emptyList();
     }
     // Gather all allocating Components of all leaves
-    List<Component> allAllocatingComponents = new ArrayList<Component>();
+    List<Component> allAllocatingComponents = new ArrayList<>();
     for (AbstractFunction leaf : leaves) {
       Collection<Component> allocatingComponents = getAllocatingComponents(leaf);
-      if (allocatingComponents == null || allocatingComponents.isEmpty()) {
+      if (allocatingComponents.isEmpty()) {
         // A leaf is not allocated -> stop here
         return Collections.emptyList();
       }
@@ -473,72 +474,97 @@ public class AbstractFunctionExt {
     return Collections.singletonList(commonAncestor);
   }
 
-	/**
-	 * Given a mother activity that has sub activities, this method
-	 * <b>calculates</b> the allocation of the mother activity to a role.
-	 * 
-	 * The rule is that <b>a mother activity is allocated to a role if and only
-	 * if all of its sub activities are allocated to this role</b>.
-	 * 
-	 * Note that in case the mother activity is already allocated to a role or
-	 * in case the mother activity is a leaf activity, the method returns its
-	 * allocation(s).
-	 * 
-	 * @param motherFunction
-	 *            the mother activity to calculate role allocation on
-	 * @return the <b>calculated</b> list of roles the mother activity is
-	 *         allocated to
-	 */
-	public static List<Role> getMotherActivityRoleAllocation(AbstractFunction motherFunction) {
-		List<Role> result = new ArrayList<Role>();
+  /**
+   * Returns all components that have as allocated functions the given function or to its sub-functions
+   * 
+   * @param motherFunction
+   *          the parent function
+   */
+  public static List<Component> getMotherAllFunctionAllocation(AbstractFunction motherFunction) {
+    // If motherFunction is already allocated to a component/actor
+    List<Component> motherFunctionAllocatingComponents = getAllocatingComponents(motherFunction);
+    if (!motherFunctionAllocatingComponents.isEmpty()) {
+      return motherFunctionAllocatingComponents;
+    }
+    // Get all owned functions of the motherFunction
+    List<AbstractFunction> owned = getCache(FunctionExt::getAllAbstractFunctions, motherFunction);
+    if (null == owned || owned.isEmpty()) {
+      return Collections.emptyList();
+    }
+    // Gather all allocating Components of all owned functions
+    List<Component> allAllocatingComponents = new ArrayList<>();
+    for (AbstractFunction func : owned) {
+      Collection<Component> allocatingComponents = getAllocatingComponents(func);
+      if (!allocatingComponents.isEmpty()) {
+        allAllocatingComponents.addAll(allocatingComponents);
+      }
+    }
 
-		// Consider only Operational Activity
-		if (motherFunction instanceof OperationalActivity) {
-			OperationalActivity motherActivity = (OperationalActivity) motherFunction;
+    return allAllocatingComponents;
+  }
 
-			// If motherActivity is already allocated to a role
-			Collection<Role> roles = getAllocatingRoles(motherActivity);
-			if (!roles.isEmpty()) {
-				result.addAll(roles);
-			} else {
-				// Get all leaves activities of the motherActivity
-				List<OperationalActivity> leaves = getAllLeafOperationalActivities(motherActivity);
-				if (null != leaves && !leaves.isEmpty()) {
-					Iterator<OperationalActivity> it = leaves.iterator();
+  /**
+   * Given a mother activity that has sub activities, this method <b>calculates</b> the allocation of the mother
+   * activity to a role.
+   * 
+   * The rule is that <b>a mother activity is allocated to a role if and only if all of its sub activities are allocated
+   * to this role</b>.
+   * 
+   * Note that in case the mother activity is already allocated to a role or in case the mother activity is a leaf
+   * activity, the method returns its allocation(s).
+   * 
+   * @param motherFunction
+   *          the mother activity to calculate role allocation on
+   * @return the <b>calculated</b> list of roles the mother activity is allocated to
+   */
+  public static List<Role> getMotherActivityRoleAllocation(AbstractFunction motherFunction) {
+    List<Role> result = new ArrayList<Role>();
 
-					// Get first leaf role allocation to initialize the
-					// result
-					result.addAll(getAllocatingRoles(it.next()));
+    // Consider only Operational Activity
+    if (motherFunction instanceof OperationalActivity) {
+      OperationalActivity motherActivity = (OperationalActivity) motherFunction;
 
-					// Iterate over leaves and do the intersection with result
-					while (it.hasNext()) {
-						result.retainAll(getAllocatingRoles(it.next()));
-					}
-				}
-			}
-		}
+      // If motherActivity is already allocated to a role
+      Collection<Role> roles = getAllocatingRoles(motherActivity);
+      if (!roles.isEmpty()) {
+        result.addAll(roles);
+      } else {
+        // Get all leaves activities of the motherActivity
+        List<OperationalActivity> leaves = getAllLeafOperationalActivities(motherActivity);
+        if (null != leaves && !leaves.isEmpty()) {
+          Iterator<OperationalActivity> it = leaves.iterator();
 
-		return result;
-	}
+          // Get first leaf role allocation to initialize the
+          // result
+          result.addAll(getAllocatingRoles(it.next()));
 
-	/**
-	 * Given an Operational Activity, returns all leaves of type Operational
-	 * Activity
-	 * 
-	 * @param activity
-	 *            The mother Operational Activity
-	 * @return the list of leaves of type Operational Activity
-	 */
-	public static List<OperationalActivity> getAllLeafOperationalActivities(OperationalActivity activity) {
-		List<OperationalActivity> result = new ArrayList<OperationalActivity>();
-		for (AbstractFunction abstractFunction : org.polarsys.capella.core.data.helpers.fa.services.FunctionExt
-				.getAllAbstractFunctions(activity)) {
-			if (org.polarsys.capella.core.data.helpers.fa.services.FunctionExt.isLeaf(abstractFunction)
-					&& (abstractFunction instanceof OperationalActivity)) {
-				result.add((OperationalActivity) abstractFunction);
-			}
-		}
-		return result;
-	}
+          // Iterate over leaves and do the intersection with result
+          while (it.hasNext()) {
+            result.retainAll(getAllocatingRoles(it.next()));
+          }
+        }
+      }
+    }
+
+    return result;
+  }
+
+  /**
+   * Given an Operational Activity, returns all leaves of type Operational Activity
+   * 
+   * @param activity
+   *          The mother Operational Activity
+   * @return the list of leaves of type Operational Activity
+   */
+  public static List<OperationalActivity> getAllLeafOperationalActivities(OperationalActivity activity) {
+    List<OperationalActivity> result = new ArrayList<>();
+    for (AbstractFunction abstractFunction : getCache(FunctionExt::getAllAbstractFunctions, activity)) {
+      if (org.polarsys.capella.core.data.helpers.fa.services.FunctionExt.isLeaf(abstractFunction)
+          && (abstractFunction instanceof OperationalActivity)) {
+        result.add((OperationalActivity) abstractFunction);
+      }
+    }
+    return result;
+  }
 
 }

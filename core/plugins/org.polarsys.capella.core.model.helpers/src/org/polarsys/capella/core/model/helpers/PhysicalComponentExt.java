@@ -49,6 +49,8 @@ import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 /**
  * PhysicalComponent helpers
  */
@@ -102,10 +104,11 @@ public class PhysicalComponentExt {
    */
   public static Collection<ComponentExchange> findConnectionsBetweenPhysicalComponentes(List<Component> sourceDeployedElements,
       List<Component> targetDeployedElements) {
-    List<ComponentExchange> result = new ArrayList<ComponentExchange>(1);
+    List<ComponentExchange> result = new ArrayList<>(1);
 
     for (Component component : sourceDeployedElements) {
-      Collection<ComponentExchange> allRelatedConnection = ComponentExt.getAllRelatedComponentExchange(component);
+      Collection<ComponentExchange> allRelatedConnection = getCache(ComponentExt::getAllRelatedComponentExchange,
+          component);
       for (ComponentExchange connection : allRelatedConnection) {
         Component targetComponent = ComponentExchangeExt.getTargetComponent(connection);
         if (targetDeployedElements.contains(targetComponent)) {

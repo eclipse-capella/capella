@@ -20,6 +20,7 @@ import java.util.function.Supplier;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
 import org.polarsys.capella.common.re.CatalogElement;
@@ -46,11 +47,10 @@ public class CapellaLocationHandler extends DefaultLocationHandler {
     SpecificPackageLocationAdapter adapter = (SpecificPackageLocationAdapter) EcoreUtil.getExistingAdapter(rpl, SpecificPackageLocationAdapter.class);
 
     if (adapter == null) {
-
       String scope = (String) context.get(ITransitionConstants.OPTIONS_SCOPE);
       IPropertyContext propertyContext = ((IPropertyHandler) OptionsHandlerHelper.getInstance(context)).getPropertyContext(context, scope);
-      adapter = new SpecificPackageLocationAdapter(propertyContext, getDestinationResource(context));
-
+      Resource rplResource = EcoreUtil.getRootContainer(rpl).eResource();
+      adapter = new SpecificPackageLocationAdapter(propertyContext, rplResource);
       rpl.eAdapters().add(adapter);
       adapters.add(adapter);
     }

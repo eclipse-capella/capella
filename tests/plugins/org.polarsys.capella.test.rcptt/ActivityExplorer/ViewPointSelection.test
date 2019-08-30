@@ -5,8 +5,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _cZR30MN6EeWBxdbwkOo7Xg
-Runtime-Version: 2.3.0.201712190725
-Save-Time: 1/23/18 2:30 PM
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 7/20/18 2:10 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -35,7 +35,7 @@ with [get-window "Viewpoints Selection"] {
 		$table | get-items | foreach [val item] {
 		    if [$item | get-property "columns[2]" -raw | eq "Common"] {
 		    	let [val index [$item | get-property index -raw]] {
-		    		$table | get-cell $index 0 | uncheck
+		    		$table | get-cell $index 0 | click
 		    	}
 		  	}
 	  	}
@@ -48,7 +48,7 @@ with [get-window "Viewpoints Selection"] {
 		$table | get-items | foreach [val item] {
 		    if [$item | get-property "columns[2]" -raw | eq "Logical Architecture"] {
 		    	let [val index [$item | get-property index -raw]] {
-		    		$table | get-cell $index 0 | uncheck
+		    		$table | get-cell $index 0 | click
 		    	}
 		  	}
 	  	}
@@ -58,6 +58,15 @@ get-window "Viewpoints Selection" | get-button OK | click
 with [get-editor "Project" | get-tab-folder] {
     get-tab-item "Logical Architecture" | click
 }
+
 get-editor "Project" | get-section "Diagrams Viewer" | get-tree | get-property itemCount | equals 0 
     | verify-true
+
+
+
+
+
+
+
+
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

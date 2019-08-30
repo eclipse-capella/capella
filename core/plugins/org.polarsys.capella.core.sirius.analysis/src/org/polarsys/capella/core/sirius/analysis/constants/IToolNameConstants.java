@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,19 +17,90 @@ import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
  */
 public interface IToolNameConstants {
 
-  //
-  // Diagram Tools
-  //
+  // New Diagram Tools convention (tool name should be the same across all diagrams where the tool is available)
+  // =================================================================================================
 
+  String TOOL_CREATE_FUNCTION = "Function";
+  String TOOL_CREATE_FUNCTION_DUPLICATE = "Duplicate";
+  String TOOL_CREATE_FUNCTION_GATHER = "Gather";
+  String TOOL_CREATE_FUNCTION_ROUTE = "Route";
+  String TOOL_CREATE_FUNCTION_SELECT = "Select";
+  String TOOL_CREATE_FUNCTION_SPLIT = "Split";
+  String TOOL_CREATE_ACTOR_FUNCTION = "Actor Function";
+  String TOOL_CREATE_INPUT_PORT = "Input Port";
+  String TOOL_CREATE_OUTPUT_PORT = "Output Port";
+  String TOOL_CREATE_FUNCTIONAL_EXCHANGE = "Functional Exchange";
+  String TOOL_CREATE_FUNCTIONAL_CHAIN = "Functional Chain";
+  String TOOL_CREATE_CONSTRAINT = "Constraint";
+  String TOOL_CREATE_CONSTRAINT_ELEMENT = "ConstraintElement";
+  String TOOL_CREATE_OPERATIONAL_ROLE = "Operational Role";
+  String TOOL_CREATE_OPERATIONAL_ACTIVITY = "Operational Activity";
+  String TOOL_CREATE_INTERACTION = "Interaction";
+  String TOOL_INSERT_REMOVE_FUNCTION_PORT = "Show/Hide Function Ports";
+  String TOOL_INSERT_REMOVE_FUNCTIONS = "Show/Hide Functions";
+  String TOOL_INSERT_REMOVE_FUNCTIONAL_EXCHANGES = "Functional Exchanges";
+  String TOOL_INSERT_REMOVE_FUNCTIONAL_CHAINS = "Show/Hide Functional Chains";
+  String TOOL_INSERT_REMOVE_EXCHANGE_CATEGORIES = "Exchange Categories";
+  String TOOL_INSERT_REMOVE_OPERATIONAL_ROLES = "Operational Roles";
+  String TOOL_INSERT_REMOVE_INTERACTIONS = "Interactions";
+  String TOOL_INSERT_REMOVE_ALLOCATED_ACTIVITIES = "Allocated Activities";
+  String TOOL_SHOW_ALL_ALLOCATED_ACTIVITIES = "All Allocated Activities";
+  String TOOL_MANAGE_ACTIVITY_ALLOCATION = "Manage Activity Allocation";
+  String TOOL_SWITCH_FUNCTIONAL_EXCHANGE_CATEGORIES = "Switch Functional Exchanges / Categories";
+  String TOOL_INSERT_REMOVE_CONSTRAINTS = "Show/Hide Constraints";
+  String TOOL_SWITCH_FUNCTIONAL_EXCHANGE_CATEGORY = "Switch Functional Exchanges / Categories";
+  String TOOL_INSERT_REMOVE_PV = "Applied Property Values";
+  String TOOL_INSERT_REMOVE_PVG = "Applied Property Value Groups";
+
+  // Accelerators
+  String TOOL_INITIALIZATION_FROM_EXISTING_DIAGRAM = "Initialization from existing diagram";
+
+  String TOOL_CREATE_ACTOR = "Actor";
+  String TOOL_CREATE_COMPONENT = "Component";
+  String TOOL_CREATE_BEHAVIOR_COMPONENT = "Behavior PC";
+  String TOOL_CREATE_NODE_COMPONENT = "Node PC";
+  String TOOL_INSERT_REMOVE_ALLOCATED_FUNCTION = "Function state";
+  String TOOL_INSERT_REMOVE_STATE_MODE = "State / Mode";
+  String TOOL_INSERT_REMOVE_ACTORS = "Actors";
+  String TOOL_INSERT_REMOVE_COMPONENTS = "Components";
+
+  // Sequence Diagram Tools operands
+  String TOOL_CREATE_REFERENCE = "Reference";
+  String TOOL_CREATE_LOOP = "LOOP";
+  String TOOL_CREATE_ALT = "ALT";
+  String TOOL_CREATE_PAR = "PAR";
+  String TOOL_CREATE_OTHER_COMBINED_FRAGMENT = "Other Combined Fragment";
+  String TOOL_CREATE_OPERAND = "Operand";
+  String TOOL_CREATE_COMPONENT_EXCHANGE_WITH_RETURN_BRANCH = "Component Exchange with Return Branch";
+  String TOOL_CREATE_COMPONENT_EXCHANGE = "Component Exchange";
+  String TOOL_LOST_COMPONENT_EXCHANGE = "Lost Component Exchange";
+  String TOOL_FOUND_COMPONENT_EXCHANGE = "Found Component Exchange";
+  String TOOL_LOST_FUNCTIONAL_EXCHANGE = "Lost Functional Exchange";
+  String TOOL_DURATION = "Duration";
+  String TOOL_CREATE_FUNCTIONAL_EXCHANGE_WITH_RETURN_BRANCH = "Functional Exchange with Return Branch";
+  String TOOL_CREATE_FOUND_FUNCTIONAL_EXCHANGE = "Found Functional Exchange";
+  String TOOL_CREATE_ARM_TIMER = "Arm timer";
+  String TOOL_CREATE_CANCEL_TIMER = "Cancel timer";
+  String TOOL_CREATE_MESSAGE = "Create message";
+  String TOOL_DELETE_MESSAGE = "Delete message";
+  String TOOL_EXCHANGE_CONTEXT = "Exchange Context";
+
+  // =================================================================================================
+  // Old Diagram Tools convention
   //
-  // Common tools on all diagrams
   //
-  String TOOL_COMMON_INSERT_REMOVE_PV = "Applied Property Values";
-  String TOOL_COMMON_INSERT_REMOVE_PVG = "Applied Property Value Groups";
+  // Tools that are available to multiple types of diagrams
+  //
+  String TOOL_COMMON_SELECT_SAME_TYPE = "SameType";
+  String TOOL_COMMON_SELECT_SAME_MAPPING = "SameMapping";
+  String TOOL_COMMON_SELECT_OWNED_PORTS = "OwnedPorts";
+  String TOOL_COMMON_SELECT_OWNED_ELEMENTS = "OwnedElements";
+  String TOOL_COMMON_SELECT_RELATED_EDGES = "OwnedEdges";
+  String TOOL_COMMON_ELEMENTS_FROM_SCENARIO = "Elements from Scenario";
+  String TOOL_COOMON_FUNCTIONS_FROM_MODE_STATE = "Functions from Mode / State";
 
   String TOOL_CREATE_PHYSICAL_PATH = "Physical Path";//$NON-NLS-1$
-  String TOOL_CREATE_FUNCTIONAL_CHAIN = "Functional Chain";//$NON-NLS-1$
-  
+
   // Accelerators
   String TOOL_DIAGRAMINITIALIZATION = "DiagramInitialization";//$NON-NLS-1$
   String TOOL_STATEMODE_ELEMENTS = "State-Mode Elements";//$NON-NLS-1$
@@ -60,6 +131,16 @@ public interface IToolNameConstants {
   String TOOL_CC_SHOW_MISSIONS = "s/h Missions"; //$NON-NLS-1$
   String TOOL_CC_SHOW_CAPABILITY = "s/h Capabilities"; //$NON-NLS-1$
 
+  // CCRI Tools - Contextual Capability Realization Involvement
+  String TOOL_CCRI_CREATE_CAPABILITY_REALIZATION_NODE = "Capability Realization"; //$NON-NLS-1$
+  String TOOL_CCRI_CREATE_ACTOR_NODE = "Actor"; //$NON-NLS-1$
+  String TOOL_CCRI_CREATE_COMPONENT_NODE = "Component"; //$NON-NLS-1$
+  String TOOL_CCRI_CREATE_CAPABILITY_REALIZATION_INVOLVEMENT_EDGE = "Involvement"; //$NON-NLS-1$
+  String TOOL_CCRI_INSERT_CAPABILITY_REALIZATION_NODE = "s/h Capability Realization"; //$NON-NLS-1$
+  String TOOL_CCRI_INSERT_ACTOR_NODE = "s/h Actors"; //$NON-NLS-1$
+  String TOOL_CCRI_INSERT_COMPONENT_NODE = "s/h Components"; //$NON-NLS-1$
+  String TOOL_CCRI_INSERT_RELATIONSHIP_EDGE = "Show/Hide Relationships"; //$NON-NLS-1$
+
   // CDB Tools - Class Diagram Blank
   // Classes Tools
   String TOOL_CDB_DELETE_CONSTRAINT_ELEMENT = "Delete Constraint Elements"; //$NON-NLS-1$
@@ -86,7 +167,7 @@ public interface IToolNameConstants {
   String TOOL_CDB_CREATE_COMPLEX_VALUE_REFERENCE = "Complex Value Reference"; //$NON-NLS-1$
   String TOOL_CDB_CREATE_ENUMERATION_REFERENCE = "Enumeration Reference"; //$NON-NLS-1$
   String TOOL_CDB_CREATE_COLLECTION_VALUE = "Collection Value"; //$NON-NLS-1$
-  String TOOL_CDB_CREATE_COLLECTION_VALUE_REFERENCE = "Collection Value Reference"; //$NON-NLS-1$	
+  String TOOL_CDB_CREATE_COLLECTION_VALUE_REFERENCE = "Collection Value Reference"; //$NON-NLS-1$
   String TOOL_CDB_CREATE_PROPERTY = "Property"; //$NON-NLS-1$
   String TOOL_CDB_CREATE_SERVICE = "Class Operation"; //$NON-NLS-1$
   String TOOL_CDB_CREATE_PARAMETER = "Parameter"; //$NON-NLS-1$
@@ -333,81 +414,101 @@ public interface IToolNameConstants {
   String TOOL_EAB_SHOW_HIDE_CONSTRAINTS = "Show/Hide Constraints"; //$NON-NLS-1$
 
   // ES Tools - Exchange Scenario
-  String TOOL_ES_CREATE_NODE_PC = "Node PC"; //$NON-NLS-1$
-  String TOOL_ES_CREATE_BEHAVIOR_PC = "Behavior PC"; //$NON-NLS-1$
-  String TOOL_ES_CREATE_COMPONENT = "Component"; //$NON-NLS-1$
-  String TOOL_ES_CREATE_ACTOR = "Actor"; //$NON-NLS-1$-
-  String TOOL_ES_INSERT_REMOVE_COMPONENTS = "Components"; //$NON-NLS-1$
-  String TOOL_ES_INSERT_ACTOR = "Actors"; //$NON-NLS-1$
-  String TOOL_ES_CREATE_FUNCTIONAL_EXCHANGE_WITH_RETURN_BRANCH = "Functional Exchange with Return Branch"; //$NON-NLS-1$
-  String TOOL_ES_CREATE_FUNCTIONAL_EXCHANGE = "Functional Exchange"; //$NON-NLS-1$
-  String TOOL_ES_CREATE_FOUND_FUNCTIONAL_EXCHANGE = "Found Functional Exchange"; //$NON-NLS-1$
+  String TOOL_ES_CREATE_NODE_PC = TOOL_CREATE_NODE_COMPONENT; // $NON-NLS-1$
+  String TOOL_ES_CREATE_BEHAVIOR_PC = TOOL_CREATE_BEHAVIOR_COMPONENT; // $NON-NLS-1$
+  String TOOL_ES_CREATE_COMPONENT = TOOL_CREATE_COMPONENT; // $NON-NLS-1$
+  String TOOL_ES_CREATE_ACTOR = "Actor"; //$NON-NLS-1$ -
+  String TOOL_ES_INSERT_REMOVE_COMPONENTS = TOOL_INSERT_REMOVE_COMPONENTS; // $NON-NLS-1$
+  String TOOL_ES_INSERT_ACTOR = TOOL_INSERT_REMOVE_ACTORS; // $NON-NLS-1$
+  String TOOL_ES_CREATE_FUNCTIONAL_EXCHANGE_WITH_RETURN_BRANCH = TOOL_CREATE_FUNCTIONAL_EXCHANGE_WITH_RETURN_BRANCH; // $NON-NLS-1$
+  String TOOL_ES_CREATE_FUNCTIONAL_EXCHANGE = TOOL_CREATE_FUNCTIONAL_EXCHANGE; // $NON-NLS-1$
+  String TOOL_ES_CREATE_FOUND_FUNCTIONAL_EXCHANGE = TOOL_CREATE_FOUND_FUNCTIONAL_EXCHANGE; // $NON-NLS-1$
   String TOOL_ES_INSERT_REMOVE_FUNCTION = "Allocated Function"; //$NON-NLS-1$
-  String TOOL_ES_INSERT_REMOVE_STATE_MODE = "Involved State / Mode"; //$NON-NLS-1$	
-  String TOOL_ES_CREATE_REFERENCE = "Reference"; //$NON-NLS-1$
-  String TOOL_ES_CREATE_LOOP = "LOOP"; //$NON-NLS-1$
-  String TOOL_ES_CREATE_ALT = "ALT"; //$NON-NLS-1$
-  String TOOL_ES_CREATE_PAR = "PAR"; //$NON-NLS-1$
-  String TOOL_ES_CREATE_OTHER_COMBINED_FRAGMENT = "Other Combined Fragment"; //$NON-NLS-1$
-  String TOOL_ES_CREATE_OPERAND = "Operand"; //$NON-NLS-1$
-  String TOOL_ES_CREATE_COMPONENT_EXCHANGE_WITH_RETURN_BRANCH = "Component Exchange with Return Branch"; //$NON-NLS-1$
-  String TOOL_ES_CREATE_COMPONENT_EXCHANGE = "Component Exchange"; //$NON-NLS-1$
-  String TOOL_ES_LOST_COMPONENT_EXCHANGE = "Lost Component Exchange"; //$NON-NLS-1$
-  String TOOL_ES_FOUND_COMPONENT_EXCHANGE = "Found Component Exchange"; //$NON-NLS-1$
-  String TOOL_ES_LOST_FUNCTIONAL_EXCHANGE = "Lost Functional Exchange"; //$NON-NLS-1$
+  String TOOL_ES_INSERT_REMOVE_STATE_MODE = "Involved State / Mode"; //$NON-NLS-1$
+  String TOOL_ES_CREATE_REFERENCE = TOOL_CREATE_REFERENCE; // $NON-NLS-1$
+  String TOOL_ES_CREATE_LOOP = TOOL_CREATE_LOOP; // $NON-NLS-1$
+  String TOOL_ES_CREATE_ALT = TOOL_CREATE_ALT; // $NON-NLS-1$
+  String TOOL_ES_CREATE_PAR = TOOL_CREATE_PAR; // $NON-NLS-1$
+  String TOOL_ES_CREATE_OTHER_COMBINED_FRAGMENT = TOOL_CREATE_OTHER_COMBINED_FRAGMENT; // $NON-NLS-1$
+  String TOOL_ES_CREATE_OPERAND = TOOL_CREATE_OPERAND; // $NON-NLS-1$
+  String TOOL_ES_CREATE_COMPONENT_EXCHANGE_WITH_RETURN_BRANCH = TOOL_CREATE_COMPONENT_EXCHANGE_WITH_RETURN_BRANCH; // $NON-NLS-1$
+  String TOOL_ES_CREATE_COMPONENT_EXCHANGE = TOOL_CREATE_COMPONENT_EXCHANGE; // $NON-NLS-1$
+  String TOOL_ES_LOST_COMPONENT_EXCHANGE = TOOL_LOST_COMPONENT_EXCHANGE; // $NON-NLS-1$
+  String TOOL_ES_FOUND_COMPONENT_EXCHANGE = TOOL_FOUND_COMPONENT_EXCHANGE; // $NON-NLS-1$
+  String TOOL_ES_LOST_FUNCTIONAL_EXCHANGE = TOOL_LOST_FUNCTIONAL_EXCHANGE; // $NON-NLS-1$
   String TOOL_ES_CREATE_CONSTRAINT = "Constraint"; //$NON-NLS-1$
   String TOOL_ES_CREATE_CONSTRAINTELEMENT = "ConstraintElement"; //$NON-NLS-1$
   String TOOL_ES_INSERT_REMOVE_CONSTRAINTS = "Constraints"; //$NON-NLS-1$
-  String TOOL_ES_CREATE_ARM_TIMER = "Arm timer"; //$NON-NLS-1$
-  String TOOL_ES_CREATE_CANCEL_TIMER = "Cancel timer"; //$NON-NLS-1$
-  String TOOL_ES_DURATION = "Duration"; //$NON-NLS-1$
-  String TOOL_ES_EXCHANGE_CONTEXT = "Exchange Context"; //$NON-NLS-1$
+  String TOOL_ES_CREATE_ARM_TIMER = TOOL_CREATE_ARM_TIMER; // $NON-NLS-1$
+  String TOOL_ES_CREATE_CANCEL_TIMER = TOOL_CREATE_CANCEL_TIMER; // $NON-NLS-1$
+  String TOOL_ES_DURATION = TOOL_DURATION; // $NON-NLS-1$
+  String TOOL_ES_EXCHANGE_CONTEXT = TOOL_EXCHANGE_CONTEXT; // $NON-NLS-1$
 
   // id tools
   String TOOL_ES_CREATE_CONSTRAINTELEMENTSCENARIO = "ConstraintElementScenario"; //$NON-NLS-1$
   String TOOL_ES_CREATE_FUNCTION_STATE = "Function state"; //$NON-NLS-1$
-  String TOOL_ES_CREATE_STATE_MODE = "State / Mode"; //$NON-NLS-1$
+  String TOOL_ES_CREATE_STATE_MODE = TOOL_INSERT_REMOVE_STATE_MODE; // $NON-NLS-1$
 
   // FCD tools - Functional Chain Description
-  String TOOL_FCD_INSERT_REMOVE_INVOLVE_FUNCTION = "Involve Function"; //$NON-NLS-1$
-  String TOOL_FCD_INSERT_REMOVE_INVOLVE_FUNCTIONAL_EXCHANGE = "Involve Functional Exchange"; //$NON-NLS-1$
-  String TOOL_FCD_INSERT_REMOVE_INVOLVE_FUNCTIONAL_CHAIN = "Involve Functional Chain"; //$NON-NLS-1$
-  String TOOL_FCD_INSERT_REMOVE_INVOLVE_FUNCTIONAL_EXCHANGE_AND_TARGET_FUNCTION = "Involve Functional Exchange & Target Function"; //$NON-NLS-1$
-  String TOOL_FCD_INSERT_REMOVE_INVOLVE_FUNCTIONAL_EXCHANGE_AND_TARGET_FUNCTIONAL_CHAIN = "Involve Functional Exchange & Target Functional Chain"; //$NON-NLS-1$
+  String TOOL_FCD_INVOLVE_FUNCTION = "Function"; //$NON-NLS-1$
+  String TOOL_FCD_INVOLVE_EXCHANGE = "Exchange"; //$NON-NLS-1$
+  String TOOL_FCD_INVOLVE_EXCHANGE_AND_FUNCTION = "Exchange and Function"; //$NON-NLS-1$
+  String TOOL_FCD_INVOLVE_FUNCTIONAL_CHAIN = "Functional Chain"; //$NON-NLS-1$
+  String TOOL_FCD_CONNECT_FUNCTIONS = "Connect Functions"; //$NON-NLS-1$
+
   String TOOL_FCD_CREATE_CONSTRAINT = "Constraint"; //$NON-NLS-1$
   String TOOL_FCD_CREATE_CONSTRAINTELEMENT = "ConstraintElement"; //$NON-NLS-1$
   String TOOL_FCD_INSERT_REMOVE_CONSTRAINTS = "Constraints"; //$NON-NLS-1$
   // Accelerators
   String TOOL_FCD_INITIALIZATION_FROM_EXISTING_DIAGRAM = "Initialization from existing diagram"; //$NON-NLS-1$
 
+  /*
+   * Sequencing section
+   */
+  // Control Node Tools
+  String TOOL_CREATE_CONTROL_NODE_AND = "Create_ControlNode_And";
+  String TOOL_CREATE_CONTROL_NODE_OR = "Create_ControlNode_Or";
+  String TOOL_CREATE_CONTROL_NODE_IT = "Create_ControlNode_It";
+
+  String TOOL_CREATE_CONSTRUCT_CONTROL_NODE_AND = "Create_ControlNodeConstruct_And";
+  String TOOL_CREATE_CONSTRUCT_CONTROL_NODE_OR = "Create_ControlNodeConstruct_Or";
+  String TOOL_CREATE_CONSTRUCT_CONTROL_NODE_IT = "Create_ControlNodeConstruct_It";
+
+  String TOOL_CREATE_SEQUENCE_LINK = "Create_SequenceLink";
+  String TOOL_CREATE_FUNCTION_ON_SEQUENCE_LINK = "CreateFunctionInvolvementOnSequenceLink";
+  String TOOL_CREATE_EXCHANGE_WITH_SEQUENCE_LINK = "ExchangeWithSequenceLink";
+  String TOOL_ASSOCIATE_SEQUENCE_LINK_WITH_EXCHANGE = "AssociateSLwithE";
+  String TOOL_EXCHANGE_FROM_SEQUENCE_LINK = "Exchange from Sequence Link";
+  String TOOL_SEQUENCE_LINK_FROM_EXCHANGE = "Sequence Link from Exchange";
+
   // FS tools - Function Scenario
-  String TOOL_FS_CREATE_SYSTEM_FUNCTION = "System Function"; //$NON-NLS-1$
-  String TOOL_FS_CREATE_LOGICAL_FUNCTION = "Logical Function"; //$NON-NLS-1$
-  String TOOL_FS_CREATE_PHYSICAL_FUNCTION = "Physical Function"; //$NON-NLS-1$
-  String TOOL_FS_CREATE_DUPLICATE = "Duplicate"; //$NON-NLS-1$
-  String TOOL_FS_CREATE_GATHER = "Gather"; //$NON-NLS-1$
-  String TOOL_FS_CREATE_ROUTE = "Route"; //$NON-NLS-1$
-  String TOOL_FS_CREATE_SELECT = "Select"; //$NON-NLS-1$
-  String TOOL_FS_CREATE_SPLIT = "Split"; //$NON-NLS-1$
+  String TOOL_FS_CREATE_SYSTEM_FUNCTION = TOOL_CREATE_FUNCTION; // $NON-NLS-1$
+  String TOOL_FS_CREATE_LOGICAL_FUNCTION = TOOL_CREATE_FUNCTION; // $NON-NLS-1$
+  String TOOL_FS_CREATE_PHYSICAL_FUNCTION = TOOL_CREATE_FUNCTION; // $NON-NLS-1$
+  String TOOL_FS_CREATE_DUPLICATE = TOOL_CREATE_FUNCTION_DUPLICATE; // $NON-NLS-1$
+  String TOOL_FS_CREATE_GATHER = TOOL_CREATE_FUNCTION_GATHER; // $NON-NLS-1$
+  String TOOL_FS_CREATE_ROUTE = TOOL_CREATE_FUNCTION_ROUTE; // $NON-NLS-1$
+  String TOOL_FS_CREATE_SELECT = TOOL_CREATE_FUNCTION_SELECT; // $NON-NLS-1$
+  String TOOL_FS_CREATE_SPLIT = TOOL_CREATE_FUNCTION_SPLIT; // $NON-NLS-1$
   String TOOL_FS_INSERT_REMOVE_FUNCTIONS = "Functions"; //$NON-NLS-1$
-  String TOOL_FS_CREATE_FUNCTIONAL_EXCHANGE_WITH_RETURN_BRANCH = "Functional Exchange with return branch"; //$NON-NLS-1$
+  String TOOL_FS_CREATE_FUNCTIONAL_EXCHANGE_WITH_RETURN_BRANCH = TOOL_CREATE_FUNCTIONAL_EXCHANGE_WITH_RETURN_BRANCH; // $NON-NLS-1$
   String TOOL_FS_CREATE_FUNCTIONAL_EXCHANGE = "Functional Exchange"; //$NON-NLS-1$
-  String TOOL_FS_CREATE_REFERENCE = "Reference"; //$NON-NLS-1$
-  String TOOL_FS_CREATE_LOOP = "LOOP"; //$NON-NLS-1$
-  String TOOL_FS_CREATE_ALT = "ALT"; //$NON-NLS-1$
-  String TOOL_FS_CREATE_PAR = "PAR"; //$NON-NLS-1$
-  String TOOL_FS_CREATE_OTHER_COMBINED_FRAGMENT = "Other Combined Fragment"; //$NON-NLS-1$
-  String TOOL_FS_CREATE_OPERAND = "Operand"; //$NON-NLS-1$
+  String TOOL_FS_CREATE_REFERENCE = TOOL_CREATE_REFERENCE; // $NON-NLS-1$
+  String TOOL_FS_CREATE_LOOP = TOOL_CREATE_LOOP; // $NON-NLS-1$
+  String TOOL_FS_CREATE_ALT = TOOL_CREATE_ALT; // $NON-NLS-1$
+  String TOOL_FS_CREATE_PAR = TOOL_CREATE_PAR; // $NON-NLS-1$
+  String TOOL_FS_CREATE_OTHER_COMBINED_FRAGMENT = TOOL_CREATE_OTHER_COMBINED_FRAGMENT; // $NON-NLS-1$
+  String TOOL_FS_CREATE_OPERAND = TOOL_CREATE_OPERAND; // $NON-NLS-1$
   String TOOL_FS_INSERT_REMOVE_STATE_MODE = "Involved State / Mode"; //$NON-NLS-1$
   String TOOL_FS_CREATE_CONSTRAINT = "Constraint"; //$NON-NLS-1$
   String TOOL_FS_CREATE_CONSTRAINTELEMENT = "ConstraintElement"; //$NON-NLS-1$
   String TOOL_FS_INSERT_REMOVE_CONSTRAINTS = "Constraints"; //$NON-NLS-1$
-  String TOOL_FS_DURATION = "Duration"; //$NON-NLS-1$
-  String TOOL_FS_EXCHANGE_CONTEXT = "Exchange Context"; //$NON-NLS-1$
+  String TOOL_FS_DURATION = TOOL_DURATION; // $NON-NLS-1$
+  String TOOL_FS_EXCHANGE_CONTEXT = TOOL_EXCHANGE_CONTEXT; // $NON-NLS-1$
 
   // ID tool
   String TOOL_FS_CREATE_CONSTRAINTELEMENTSCENARIO = "ConstraintElementScenario"; //$NON-NLS-1$
-  String TOOL_FS_CREATE_STATE_MODE = "State / Mode"; //$NON-NLS-1$
+  String TOOL_FS_CREATE_STATE_MODE = TOOL_INSERT_REMOVE_STATE_MODE; // $NON-NLS-1$
 
   // ID tools - Interface Diagram
   String TOOL_ID_CREATE_EVENT = "Event"; //$NON-NLS-1$
@@ -491,20 +592,20 @@ public interface IToolNameConstants {
   String TOOL_IS_CREATE_ACTOR = "Actor"; //$NON-NLS-1$
   String TOOL_IS_CREATE_COMPONENT = "Component"; //$NON-NLS-1$
   String TOOL_IS_INSERT_REMOVE_ACTORS = "Actors"; //$NON-NLS-1$
-  String TOOL_IS_CREATE_MESSAGE = "Create message"; //$NON-NLS-1$
-  String TOOL_IS_DELETE_MESSAGE = "Delete message"; //$NON-NLS-1$
+  String TOOL_IS_CREATE_MESSAGE = TOOL_CREATE_MESSAGE; // $NON-NLS-1$
+  String TOOL_IS_DELETE_MESSAGE = TOOL_DELETE_MESSAGE; // $NON-NLS-1$
   String TOOL_IS_FOUND_MESSAGE = "Found Message"; //$NON-NLS-1$
   String TOOL_IS_LOST_MESSAGE = "Lost Message"; //$NON-NLS-1$
   String TOOL_IS_SYNCHRONOUS_MESSAGE = "Sequence Message with Return Branch"; //$NON-NLS-1$
   String TOOL_IS_ASYNCHRONOUS_MESSAGE = "Sequence Message"; //$NON-NLS-1$
   String TOOL_IS_INSERT_REMOVE_SHARED_DATA_EVENT = "Shared Data/Event "; //$NON-NLS-1$
-  String TOOL_IS_INSERT_REMOVE_STATE_MODE = "Involved State / Mode"; //$NON-NLS-1$	
-  String TOOL_IS_CREATE_REFERENCE = "Reference"; //$NON-NLS-1$
-  String TOOL_IS_CREATE_LOOP = "LOOP"; //$NON-NLS-1$
-  String TOOL_IS_CREATE_ALT = "ALT"; //$NON-NLS-1$
-  String TOOL_IS_CREATE_PAR = "PAR"; //$NON-NLS-1$
-  String TOOL_IS_CREATE_OTHER_COMBINED_FRAGMENT = "Other Combined Fragment"; //$NON-NLS-1$
-  String TOOL_IS_CREATE_OPERAND = "Operand"; //$NON-NLS-1$
+  String TOOL_IS_INSERT_REMOVE_STATE_MODE = "Involved State / Mode"; //$NON-NLS-1$
+  String TOOL_IS_CREATE_REFERENCE = TOOL_CREATE_REFERENCE; // $NON-NLS-1$
+  String TOOL_IS_CREATE_LOOP = TOOL_CREATE_LOOP; // $NON-NLS-1$
+  String TOOL_IS_CREATE_ALT = TOOL_CREATE_ALT; // $NON-NLS-1$
+  String TOOL_IS_CREATE_PAR = TOOL_CREATE_PAR; // $NON-NLS-1$
+  String TOOL_IS_CREATE_OTHER_COMBINED_FRAGMENT = TOOL_CREATE_OTHER_COMBINED_FRAGMENT; // $NON-NLS-1$
+  String TOOL_IS_CREATE_OPERAND = TOOL_CREATE_OPERAND; // $NON-NLS-1$
   String TOOL_IS_CREATE_CONSTRAINT = "Constraint"; //$NON-NLS-1$
   String TOOL_IS_CREATE_CONSTRAINTELEMENT = "ConstraintElement"; //$NON-NLS-1$
   String TOOL_IS_INSERT_REMOVE_CONSTRAINTS = "Constraints"; //$NON-NLS-1$
@@ -515,17 +616,17 @@ public interface IToolNameConstants {
   String TOOL_IS_CREATE_NDI = "NDI"; //$NON-NLS-1$
   String TOOL_IS_CREATE_PRIME_ITEM = "Prime Item"; //$NON-NLS-1$
   String TOOL_IS_CREATE_SYSTEM = "System"; //$NON-NLS-1$
-  String TOOL_IS_INSERT_REMOVE_COMPONENTS = "Components"; //$NON-NLS-1$
+  String TOOL_IS_INSERT_REMOVE_COMPONENTS = TOOL_INSERT_REMOVE_COMPONENTS; // $NON-NLS-1$
   String TOOL_IS_INSERT_REMOVE_FUNCTION = "Allocated Function"; //$NON-NLS-1$
-  String TOOL_IS_CREATE_ARM_TIMER = "Arm timer"; //$NON-NLS-1$
-  String TOOL_IS_CREATE_CANCEL_TIMER = "Cancel timer"; //$NON-NLS-1$
-  String TOOL_IS_DURATION = "Duration"; //$NON-NLS-1$
-  String TOOL_IS_EXCHANGE_CONTEXT = "Exchange Context"; //$NON-NLS-1$
-  String TOOL_IS_EI_EXCHANGE_CONTEXT = "Exchange Context"; //$NON-NLS-1$
+  String TOOL_IS_CREATE_ARM_TIMER = TOOL_CREATE_ARM_TIMER; // $NON-NLS-1$
+  String TOOL_IS_CREATE_CANCEL_TIMER = TOOL_CREATE_CANCEL_TIMER; // $NON-NLS-1$
+  String TOOL_IS_DURATION = TOOL_DURATION; // $NON-NLS-1$
+  String TOOL_IS_EXCHANGE_CONTEXT = TOOL_EXCHANGE_CONTEXT; // $NON-NLS-1$
+  String TOOL_IS_EI_EXCHANGE_CONTEXT = TOOL_EXCHANGE_CONTEXT; // $NON-NLS-1$
 
   // id tools
   String TOOL_IS_CREATE_CONSTRAINTELEMENTSCENARIO = "ConstraintElementScenario"; //$NON-NLS-1$
-  String TOOL_IS_CREATE_STATE_MODE = "State / Mode"; //$NON-NLS-1$
+  String TOOL_IS_CREATE_STATE_MODE = TOOL_INSERT_REMOVE_STATE_MODE; // $NON-NLS-1$
 
   // LAB tools
   // Components
@@ -535,7 +636,7 @@ public interface IToolNameConstants {
   String TOOL_LAB_CREATE_OUT_FLOW_PORT_PORT = "Out Flow Port"; //$NON-NLS-1$
   String TOOL_LAB_CREATE_INOUT_FLOW_PORT_PORT = "InOut Flow Port"; //$NON-NLS-1$
   String TOOL_LAB_CREATE_STANDARD_PORT_PORT = "Standard Port"; //$NON-NLS-1$
-  String TOOL_LAB_CREATE_COMPONENT_EXCHANGE = "Component Exchange"; //$NON-NLS-1$
+  String TOOL_LAB_CREATE_COMPONENT_EXCHANGE = TOOL_CREATE_COMPONENT_EXCHANGE; // $NON-NLS-1$
   String TOOL_LAB_CREATE_COMPONENT_EXCHANGE_WITH_DELEGATIONS = "Component Exchange with Delegations"; //$NON-NLS-1$
   String TOOL_LAB_CREATE_DELEGATION = "Delegation"; //$NON-NLS-1$
   String TOOL_LAB_CREATE_PHYSICAL_LINK = "Physical Link"; //$NON-NLS-1$
@@ -548,7 +649,7 @@ public interface IToolNameConstants {
   String TOOL_LAB_CREATE_CONSTRAINT = "Constraint"; //$NON-NLS-1$
   String TOOL_LAB_INSERT_REMOVE_PHYSICAL_LINKS_CATEGORIES = "Switch Physical Links / Categories"; //$NON-NLS-1$
   String TOOL_LAB_CREATE_CONSTRAINT_ELEMENT = "ConstraintElement"; //$NON-NLS-1$
-  String TOOL_LAB_INSERT_REMOVE_CONSTRAINTS = "Constraints"; //$NON-NLS-1$    
+  String TOOL_LAB_INSERT_REMOVE_CONSTRAINTS = "Constraints"; //$NON-NLS-1$
   String TOOL_LAB_INSERT_ACTOR = "Show/Hide Actors"; //$NON-NLS-1$
   // Functions
   String TOOL_LAB_CREATE_LOGICAL_FUNCTION = "Logical Function"; //$NON-NLS-1$
@@ -703,7 +804,7 @@ public interface IToolNameConstants {
   String TOOL_LDFB_INSERT_REMOVE_FUNCTIONAL_CHAINS = "Functional Chains"; //$NON-NLS-1$
   String TOOL_LDFB_INSERT_REMOVE_FUNCTIONAL_CHAIN_ELEMENTS = "Functional Chain Elements"; //$NON-NLS-1$
   String TOOL_LDFB_CREATE_CONSTRAINT = "Constraint"; //$NON-NLS-1$
-  String TOOL_LDFB_CREATE_CONSTRAINTELEMENT = "ConstraintElement"; //$NON-NLS-1$
+  String TOOL_LDFB_CREATE_CONSTRAINT_ELEMENT = "ConstraintElement"; //$NON-NLS-1$
   String TOOL_LDFB_INSERT_REMOVE_CONSTRAINTS = "Constraints"; //$NON-NLS-1$
   // Accelerators
   String TOOL_LDFB_INITIALIZATION_FROM_EXISTING_DIAGRAM = "Initialization from existing diagram"; //$NON-NLS-1$
@@ -880,7 +981,6 @@ public interface IToolNameConstants {
   String TOOL_MSM_DND_STATES_DROM_DIAGRAM = "D&D ModeState from Diagram"; //$NON-NLS-1$
   String TOOL_MSM_DND_PSEUDOSTATES_DROM_DIAGRAM = "D&D PseudoState from Diagram"; //$NON-NLS-1$
 
-  
   // OAB tools - Operational Architecture Blank
   // Entities
   String TOOL_OAB_CREATE_OE = "Operational Entity"; //$NON-NLS-1$
@@ -942,6 +1042,7 @@ public interface IToolNameConstants {
 
   String TOOL_OAIB_CREATE_OPERATIONAL_PROCESS = "Operational Process"; //$NON-NLS-1$
   String TOOL_OAIB_SHOW_HIDE_OA = "Show/Hide Operational Activity"; //$NON-NLS-1$
+  String TOOL_OAIB_SHOW_HIDE_OPERATIONAL_PROCESS = "Operational Processes"; //$NON-NLS-1$
   String TOOL_OAIB_SHOW_OPERATIONAL_PROCESS_ELT = "Show Operational Process Elements"; //$NON-NLS-1$
   String TOOL_OAIB_SHOW_HIDE_CONSTRAINTS = "Show/Hide Constraints"; //$NON-NLS-1$
   String TOOL_OAIB_SHOW_HIDE_INTERACTION = "Show/Hide Interaction"; //$NON-NLS-1$
@@ -952,25 +1053,25 @@ public interface IToolNameConstants {
   String TOOL_OAIB_SCENARIO_ELEMENTS_ID = "Scenario Elements"; //$NON-NLS-1$
 
   // OAS tools - Operational Activity Scenario
-  String TOOL_OAS_CREATE_ACTIVITY = "Activity"; //$NON-NLS-1$
-  String TOOL_OAS_CREATE_INTERACTION_WITH_RETURN_BRANCH = "Interaction with return branch"; //$NON-NLS-1$
-  String TOOL_OAS_CREATE_INTERACTION = "Interaction"; //$NON-NLS-1$
-  String TOOL_OAS_INSERT_REMOVE_ACTIVITIES = "Activities"; //$NON-NLS-1$
-  String TOOL_OAS_INSERT_REMOVE_STATE_MODE = "State / Mode"; //$NON-NLS-1$
-  String TOOL_OAS_CREATE_REFERENCE = "Reference"; //$NON-NLS-1$
-  String TOOL_OAS_CREATE_LOOP = "LOOP"; //$NON-NLS-1$
-  String TOOL_OAS_CREATE_ALT = "ALT"; //$NON-NLS-1$
-  String TOOL_OAS_CREATE_PAR = "PAR"; //$NON-NLS-1$
-  String TOOL_OAS_CREATE_OTHER_COMBINED_FRAGMENT = "Other Combined Fragment"; //$NON-NLS-1$
-  String TOOL_OAS_CREATE_OPERAND = "Operand"; //$NON-NLS-1$
+  String TOOL_OAS_CREATE_ACTIVITY = TOOL_CREATE_FUNCTION; // $NON-NLS-1$
+  String TOOL_OAS_CREATE_INTERACTION_WITH_RETURN_BRANCH = TOOL_CREATE_FUNCTIONAL_EXCHANGE_WITH_RETURN_BRANCH; // $NON-NLS-1$
+  String TOOL_OAS_CREATE_INTERACTION = TOOL_CREATE_FUNCTIONAL_EXCHANGE; // $NON-NLS-1$
+  String TOOL_OAS_INSERT_REMOVE_ACTIVITIES = TOOL_INSERT_REMOVE_FUNCTIONS; // $NON-NLS-1$
+  String TOOL_OAS_INSERT_REMOVE_STATE_MODE = TOOL_INSERT_REMOVE_STATE_MODE; // $NON-NLS-1$
+  String TOOL_OAS_CREATE_REFERENCE = TOOL_CREATE_REFERENCE; // $NON-NLS-1$
+  String TOOL_OAS_CREATE_LOOP = TOOL_CREATE_LOOP; // $NON-NLS-1$
+  String TOOL_OAS_CREATE_ALT = TOOL_CREATE_ALT; // $NON-NLS-1$
+  String TOOL_OAS_CREATE_PAR = TOOL_CREATE_PAR; // $NON-NLS-1$
+  String TOOL_OAS_CREATE_OTHER_COMBINED_FRAGMENT = TOOL_CREATE_OTHER_COMBINED_FRAGMENT; // $NON-NLS-1$
+  String TOOL_OAS_CREATE_OPERAND = TOOL_CREATE_OPERAND; // $NON-NLS-1$
   String TOOL_OAS_CREATE_CONSTRAINT = "Constraint"; //$NON-NLS-1$
   String TOOL_OAS_CREATE_CONSTRAINTELEMENTSCENARIO = "ConstraintElementScenario"; //$NON-NLS-1$
   String TOOL_OAS_INSERT_REMOVE_CONSTRAINTS = "Constraints"; //$NON-NLS-1$
-  String TOOL_OAS_DURATION = "Duration"; //$NON-NLS-1$
-  String TOOL_OAS_EXCHANGE_CONTEXT = "Exchange Context"; //$NON-NLS-1$
+  String TOOL_OAS_DURATION = TOOL_DURATION; // $NON-NLS-1$
+  String TOOL_OAS_EXCHANGE_CONTEXT = TOOL_EXCHANGE_CONTEXT; // $NON-NLS-1$
 
   // tool id
-  String TOOL_OAS_CREATE_FUNCTIONAL_EXCHANGE_WITH_RETURN_BRANCH = "Functional Exchange with return branch"; //$NON-NLS-1$
+  String TOOL_OAS_CREATE_FUNCTIONAL_EXCHANGE_WITH_RETURN_BRANCH = TOOL_CREATE_FUNCTIONAL_EXCHANGE_WITH_RETURN_BRANCH; // $NON-NLS-1$
   String TOOL_OAS_CREATE_FUNCTIONAL_EXCHANGE = "Functional Exchange"; //$NON-NLS-1$
 
   // OCB - Operational Capabilities Blank (OCB) tools
@@ -1050,31 +1151,31 @@ public interface IToolNameConstants {
   String TOOL_OEBD_INSERT_REMOVE_CONSTRAINTS = "Constraints"; //$NON-NLS-1$
 
   // OES tools - Operational Entity Scenario
-  String TOOL_OES_CREATE_OE = "Operational Entity"; //$NON-NLS-1$
-  String TOOL_OES_CREATE_OA = "Operational Actor"; //$NON-NLS-1$
+  String TOOL_OES_CREATE_OE = TOOL_CREATE_COMPONENT; // $NON-NLS-1$
+  String TOOL_OES_CREATE_OA = TOOL_CREATE_ACTOR; // $NON-NLS-1$
   String TOOL_OES_CREATE_ROLE = "Role"; //$NON-NLS-1$
-  String TOOL_OES_INSERT_REMOVE_OPERATIONAL_ENTITIES_ROLES = "Operational Entities / roles"; //$NON-NLS-1$
+  String TOOL_OES_INSERT_REMOVE_OPERATIONAL_ENTITIES_ROLES = TOOL_INSERT_REMOVE_ACTORS; // $NON-NLS-1$
   String TOOL_OES_CREATE_INTERACTION_WITH_RETURN_BRANCH = "Interaction with Return Branch"; //$NON-NLS-1$
   String TOOL_OES_CREATE_INTERACTION = "Interaction"; //$NON-NLS-1$
-  String TOOL_OES_CREATE_MESSAGE = "Create message"; //$NON-NLS-1$
-  String TOOL_OES_DELETE_MESSAGE = "Delete message"; //$NON-NLS-1$
-  String TOOL_OES_CREATE_REFERENCE = "Reference"; //$NON-NLS-1$
-  String TOOL_OES_CREATE_LOOP = "LOOP"; //$NON-NLS-1$
-  String TOOL_OES_CREATE_ALT = "ALT"; //$NON-NLS-1$
-  String TOOL_OES_CREATE_PAR = "PAR"; //$NON-NLS-1$
-  String TOOL_OES_CREATE_OTHER_COMBINED_FRAGMENT = "Other Combined Fragment"; //$NON-NLS-1$
-  String TOOL_OES_CREATE_OPERAND = "Operand"; //$NON-NLS-1$
+  String TOOL_OES_CREATE_MESSAGE = TOOL_CREATE_MESSAGE; // $NON-NLS-1$
+  String TOOL_OES_DELETE_MESSAGE = TOOL_DELETE_MESSAGE; // $NON-NLS-1$
+  String TOOL_OES_CREATE_REFERENCE = TOOL_CREATE_REFERENCE; // $NON-NLS-1$
+  String TOOL_OES_CREATE_LOOP = TOOL_CREATE_LOOP; // $NON-NLS-1$
+  String TOOL_OES_CREATE_ALT = TOOL_CREATE_ALT; // $NON-NLS-1$
+  String TOOL_OES_CREATE_PAR = TOOL_CREATE_PAR; // $NON-NLS-1$
+  String TOOL_OES_CREATE_OTHER_COMBINED_FRAGMENT = TOOL_CREATE_OTHER_COMBINED_FRAGMENT; // $NON-NLS-1$
+  String TOOL_OES_CREATE_OPERAND = TOOL_CREATE_OPERAND; // $NON-NLS-1$
   String TOOL_OES_INSERT_REMOVE_ACTIVITY = "Activity"; //$NON-NLS-1$
-  String TOOL_OES_INSERT_REMOVE_STATE_MODE = "State / Mode"; //$NON-NLS-1$	
+  String TOOL_OES_INSERT_REMOVE_STATE_MODE = TOOL_INSERT_REMOVE_STATE_MODE; // $NON-NLS-1$
   String TOOL_OES_CREATE_COMMUNICATIONMEAN_RETURN_BRANCH = "CommunicationMean Return Branch"; //$NON-NLS-1$
   String TOOL_OES_CREATE_COMMUNICATION_MEAN = "Communication Mean"; //$NON-NLS-1$
   String TOOL_OES_CREATE_CONSTRAINT = "Constraint"; //$NON-NLS-1$
   String TOOL_OES_CREATE_CONSTRAINTELEMENT = "ConstraintElement"; //$NON-NLS-1$
   String TOOL_OES_INSERT_REMOVE_CONSTRAINTS = "Constraints"; //$NON-NLS-1$
-  String TOOL_OES_CREATE_ARM_TIMER = "Arm timer"; //$NON-NLS-1$
-  String TOOL_OES_CREATE_CANCEL_TIMER = "Cancel timer"; //$NON-NLS-1$
-  String TOOL_OES_DURATION = "Duration"; //$NON-NLS-1$
-  String TOOL_OES_EXCHANGE_CONTEXT = "Exchange Context"; //$NON-NLS-1$
+  String TOOL_OES_CREATE_ARM_TIMER = TOOL_CREATE_ARM_TIMER; // $NON-NLS-1$
+  String TOOL_OES_CREATE_CANCEL_TIMER = TOOL_CREATE_CANCEL_TIMER; // $NON-NLS-1$
+  String TOOL_OES_DURATION = TOOL_DURATION; // $NON-NLS-1$
+  String TOOL_OES_EXCHANGE_CONTEXT = TOOL_EXCHANGE_CONTEXT; // $NON-NLS-1$
 
   // OES tool ids (different from the label)
   String TOOL_OES_CREATE_SEQUENCE_MESSAGE = "Sequence Message"; //$NON-NLS-1$
@@ -1135,7 +1236,7 @@ public interface IToolNameConstants {
   // Behavior
   String TOOL_PAB_DEPLOY_BEHAVIOR_PC = "Deploy Behavior PC"; //$NON-NLS-1$
   String TOOL_PAB_CREATE_BEHAVIOR_PHYSICAL_COMPONENT = "Behavior PC"; //$NON-NLS-1$
-  String TOOL_PAB_CREATE_COMPONENT_EXCHANGE = "Component Exchange"; //$NON-NLS-1$
+  String TOOL_PAB_CREATE_COMPONENT_EXCHANGE = TOOL_CREATE_COMPONENT_EXCHANGE; // $NON-NLS-1$
   String TOOL_PAB_CREATE_COMPONENT_EXCHANGE_WITH_DELEGATIONS = "Component Exchange with Delegations"; //$NON-NLS-1$
   String TOOL_PAB_CREATE_DELEGATION = "Delegation"; //$NON-NLS-1$
   String TOOL_PAB_CREATE_INFLOW_PORT = "In Flow Port"; //$NON-NLS-1$
@@ -1168,6 +1269,7 @@ public interface IToolNameConstants {
   String TOOL_PAB_INSERT_REMOVE_EXCHANGE_CATEGORIES = "Switch Functional Exchanges / Categories"; //$NON-NLS-1$
   String TOOL_PAB_INSERT_SCENARIO_ELEMENTS = TOOL_LAB_INSERT_SCENARIO_ELEMENTS;
   String TOOL_PAB_INSERT_STATEMODE_ELEMENTS = TOOL_LAB_INSERT_STATEMODE_ELEMENTS;
+  String TOOL_PAB_INSERT_REMOVE_COMPONENT_PORT_ALLOCATION = "Component Port Allocations";
 
   // Unsynchronized tools
   String TOOL_PAB_INSERT_REMOVE_PORTS = "Ports"; //$NON-NLS-1$
@@ -1313,7 +1415,7 @@ public interface IToolNameConstants {
   String TOOL_SAB_CREATE_STANDARD_PORT = "Standard Port"; //$NON-NLS-1$
 
   // WARNING: label and id tool are different and are used in different tests
-  String TOOL_SAB_CREATE_COMPONENT_EXCHANGE_LABEL = "Component Exchange"; //$NON-NLS-1$
+  String TOOL_SAB_CREATE_COMPONENT_EXCHANGE_LABEL = TOOL_CREATE_COMPONENT_EXCHANGE; // $NON-NLS-1$
   String TOOL_SAB_CREATE_PHYSICAL_LINK = "Physical Link"; //$NON-NLS-1$
   String TOOL_SAB_CREATE_PHYSICAL_PORT = "Physical Port"; //$NON-NLS-1$
   String TOOL_SAB_INSERT_REMOVE_ACTORS = "Actors"; //$NON-NLS-1$
@@ -1403,7 +1505,7 @@ public interface IToolNameConstants {
   String TOOL_SDFB_CREATE_ROUTE = "Route"; //$NON-NLS-1$
   String TOOL_SDFB_CREATE_SELECT = "Select"; //$NON-NLS-1$
   String TOOL_SDFB_CREATE_SPLIT = "Split"; //$NON-NLS-1$
-  String TOOL_SDFB_CREATE_FUNCTIONAL_EXCHANGE = "Functional Exchange"; //$NON-NLS-1$	
+  String TOOL_SDFB_CREATE_FUNCTIONAL_EXCHANGE = "Functional Exchange"; //$NON-NLS-1$
   String TOOL_SDFB_CREATE_FUNCTIONAL_CHAIN = "Functional Chain"; //$NON-NLS-1$
   String TOOL_SDFB_RECONNECT_EXCHANGE = "SDFB Reconnect Exchanges"; //$NON-NLS-1$
   String TOOL_SDFB_SHOW_HIDE_EXCH_CATEGORIES = "Show/Hide Exchange Categories"; //$NON-NLS-1$
@@ -1417,7 +1519,7 @@ public interface IToolNameConstants {
   String TOOL_SDFB_INSERT_STATEMODE_ELEMENTS = TOOL_LDFB_INSERT_STATEMODE_ELEMENTS;
   String TOOL_SDFB_DND_SYSTEM_FUNCTION = "DnD DF AbstractFunction";
   String TOOL_SDFB_RECONNECT_EXCHANGES = "SDFB Reconnect Exchanges";
-  
+
   // SDFB tool constants added
   String TOOL_SDFB_INSERT_REMOVE_FUNCTIONS = "Functions"; //$NON-NLS-1$
   String TOOL_SDFB_INSERT_REMOVE_ACTOR_FUNCTIONS = "Actor Functions"; //$NON-NLS-1$
@@ -1425,7 +1527,7 @@ public interface IToolNameConstants {
   String TOOL_SDFB_INSERT_REMOVE_FUNCTIONAL_CHAINS = "Functional Chains"; //$NON-NLS-1$
   String TOOL_SDFB_CREATE_FUNCTIONAL_CHAIN_ELEMENTS = "Functional Chain Elements"; //$NON-NLS-1$
   String TOOL_SDFB_CREATE_CONSTRAINT = "Constraint"; //$NON-NLS-1$
-  String TOOL_SDFB_CREATE_CONSTRAINTELEMENT = "ConstraintElement"; //$NON-NLS-1$
+  String TOOL_SDFB_CREATE_CONSTRAINT_ELEMENT = "ConstraintElement"; //$NON-NLS-1$
   String TOOL_SDFB_INSERT_REMOVE_CONSTRAINTS = "Constraints"; //$NON-NLS-1$
 
   String TOOL_SDFB_INSERT_FUNCTIONS_FROM_MODE_STATE = "Functions from Mode / State"; //$NON-NLS-1$
@@ -1475,7 +1577,6 @@ public interface IToolNameConstants {
   String TOOL_XAB_SHOW_HIDE_COMPONENTS = "Show/Hide Components"; //$NON-NLS-1$
   String TOOL_XAB_INSERT_REMOVE_COMPONENTS_MONOPART = "Insert/Remove Components mono part"; //$NON-NLS-1$
   String TOOL_PAB_INSERT_REMOVE_COMPONENTS_MONOPART = "Insert/remove Components mono part"; //$NON-NLS-1$
-  String TOOL_XAB_MANAGE_FUNCTION_ALLOCATION = "Manage Function Allocation"; //$NON-NLS-1$
 
   //
   // Representation Descriptions moved to IDiagramNameConstants
@@ -1505,4 +1606,41 @@ public interface IToolNameConstants {
   String TOOL_SCENARIO_MULTI_INSTANCEROLE_COMPONENT = "Add multiple lifelines for an existing Component"; //$NON-NLS-1$
   String TOOL_SCENARIO_MULTI_INSTANCEROLE_ACTOR = "Add multiple lifelines for an existing Actor"; //$NON-NLS-1$
   String TOOL_OES_MULTI_INSTANCEROLE_ENTITYACTOR = "Add multiple lifelines for an existing Entity / Actor"; //$NON-NLS-1$
+
+  /*
+   * XAB
+   */
+  String TOOL_XAB_CREATE_PHYSICAL_LINK = "Physical Link"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_PHYSICAL_PORT = "Physical Port"; //$NON-NLS-1$
+  String TOOL_XAB_RECONNECT_PHYSICALLINK_SOURCE_ID = "Reconnect PhysicalLink Source"; //$NON-NLS-1$
+  String TOOL_XAB_RECONNECT_PHYSICALLINK_TARGET_ID = "Reconnect PhysicalLink Target"; //$NON-NLS-1$
+  String TOOL_XAB_SHOW_HIDE_PHYSICAL_LINK = "Show/Hide Physical Links"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_DELEGATION = "Delegation"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_COMPONENT_EXCHANGE_WITH_DELEGATIONS = "Component Exchange with Delegations"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_COMPONENT_EXCHANGE_WITH_PORTS = "Component Exchange with ports"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_COMPONENT_EXCHANGE_WITHOUT_PORTS = "Component Exchange without ports"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_COMPONENT_EXCHANGE_BETWEEN_TYPES = "Component Exchange between types"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_FUNCTIONAL_EXCHANGE = "Functional Exchange"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_INFLOW_PORT = "In Flow Port"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_OUTFLOW_PORT = "Out Flow Port"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_INOUT_FLOW_PORT = "InOut Flow Port"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_STANDARD_PORT = "Standard Port"; //$NON-NLS-1$
+  String TOOL_XAB_INSERT_ACTOR = "Show/Hide Actors"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_FUNCTION_INPUT_PORT = "Input Port"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_FUNCTION_OUTPUT_PORT = "Output Port"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_PORT_ALLOCATION = "Port Allocation"; //$NON-NLS-1$
+  String TOOL_XAB_INSERT_REMOVE_PORT_ALLOCATION = "Port Allocations"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_DUPLICATE = "Duplicate"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_GATHER = "Gather"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_ROUTE = "Route"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_SELECT = "Select"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_SPLIT = "Split"; //$NON-NLS-1$
+  String TOOL_XAB_MANAGE_FUNCTION_ALLOCATION = "Manage Function Allocation"; //$NON-NLS-1$
+  String TOOL_XAB_INSERT_REMOVE_EXCHANGE_CATEGORIES = "Switch Functional Exchanges / Categories"; //$NON-NLS-1$
+  String TOOL_XAB_INSERT_REMOVE_FUNCTIONAL_CHAINS = "Functional Chains"; //$NON-NLS-1$
+  String TOOL_XAB_INSERT_REMOVE_FUNCTION_PORTS = "Function Ports"; //$NON-NLS-1$
+  String TOOL_XAB_INSERT_REMOVE_CATEGORIES = "Categories"; //$NON-NLS-1$
+  String TOOL_XAB_INSERT_ELEMENTS_FROM_SCENARIO = "Elements from Scenario"; //$NON-NLS-1$
+  String TOOL_XAB_INSERT_FUNCTIONS_FROM_MODE_STATE = "Functions from Mode / State"; //$NON-NLS-1$
+  String TOOL_XAB_INSERT_REMOVE_PHYSICAL_PATH = "Show/Hide Physical Path"; //$NON-NLS-1$
 }

@@ -10,46 +10,78 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.common.ju.step.tools;
 
+import static org.junit.Assert.fail;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 
 public class CreateDEdgeTool extends AbstractToolStep<DEdge> {
 
-  String _sourceView;
-  String _targetView;
-  protected String _newIdentifier;
+  protected String _sourceView;
+  protected String _targetView;
+
+  @Deprecated
   String _newSourceIdentifier;
+  @Deprecated
   String _newTargetIdentifier;
+  @Deprecated
+  protected String _newIdentifier;
 
   Collection<DDiagramElement> _sourceElements;
   Collection<DDiagramElement> _targetElements;
   Collection<DDiagramElement> _newSourceElements;
   Collection<DDiagramElement> _newTargetElements;
   Collection<DDiagramElement> _edgesElements;
-  protected Collection<DDiagramElement> _newEdgesElements;
 
-  public CreateDEdgeTool(DiagramContext context, String toolName, String sourceView, String targetView) {
+  protected Collection<DDiagramElement> _newEdgesElements;
+  protected int expectedNumberOfNewEdges;
+
+  // The creation of some types of edges (eg. FunctionalExchange), will also add Ports on the source and target elements
+  protected int expectedNumberOfNewElementsOnSource;
+  protected int expectedNumberOfNewElementsOnTarget;
+
+  public CreateDEdgeTool(DiagramContext context, String toolName, String sourceView, String targetView,
+      int expectedNumberOfNewEdges, int expectedNumberOfNewElementsOnSource, int expectedNumberOfNewElementsOnTarget) {
+
     super(context, toolName);
+
     _sourceView = sourceView;
     _targetView = targetView;
+    this.expectedNumberOfNewEdges = expectedNumberOfNewEdges;
+    this.expectedNumberOfNewElementsOnSource = expectedNumberOfNewElementsOnSource;
+    this.expectedNumberOfNewElementsOnTarget = expectedNumberOfNewElementsOnTarget;
   }
 
-  public CreateDEdgeTool(DiagramContext context, String toolName,String sourceView, String targetView,
+  public CreateDEdgeTool(DiagramContext context, String toolName, String sourceView, String targetView) {
+
+    super(context, toolName);
+
+    _sourceView = sourceView;
+    _targetView = targetView;
+    this.expectedNumberOfNewEdges = -1;
+    this.expectedNumberOfNewElementsOnSource = -1;
+    this.expectedNumberOfNewElementsOnTarget = -1;
+  }
+
+  @Deprecated
+  public CreateDEdgeTool(DiagramContext context, String toolName, String sourceView, String targetView,
       String newIdentifier) {
-    this(context, toolName, sourceView, targetView);
+    this(context, toolName, sourceView, targetView, -1, -1, -1);
     _newIdentifier = newIdentifier;
   }
 
+  @Deprecated
   public CreateDEdgeTool(DiagramContext context, String toolName, String sourceView, String targetView,
       String newIdentifier, String newSourceIdentifier, String newTargetIdentifier) {
-    this(context, toolName, sourceView, targetView);
+    this(context, toolName, sourceView, targetView, -1, -1, -1);
     _newIdentifier = newIdentifier;
     _newSourceIdentifier = newSourceIdentifier;
     _newTargetIdentifier = newTargetIdentifier;
@@ -57,10 +89,12 @@ public class CreateDEdgeTool extends AbstractToolStep<DEdge> {
 
   @Override
   protected void preRunTest() {
+
     super.preRunTest();
-    _sourceElements = DiagramHelper.getOwnedElements(getExecutionContext().getView(_sourceView));
-    _targetElements = DiagramHelper.getOwnedElements(getExecutionContext().getView(_targetView));
-    _edgesElements = new ArrayList(getExecutionContext().getDiagram().getEdges());
+
+    _sourceElements = DiagramHelper.getOwnedElements(getDiagramContext().getView(_sourceView));
+    _targetElements = DiagramHelper.getOwnedElements(getDiagramContext().getView(_targetView));
+    _edgesElements = new ArrayList<>(getDiagramContext().getDiagram().getEdges());
   }
 
   @Override
@@ -74,43 +108,68 @@ public class CreateDEdgeTool extends AbstractToolStep<DEdge> {
   protected void postRunTest() {
     super.postRunTest();
 
-    _newSourceElements = DiagramHelper.getOwnedElements(getExecutionContext().getView(_sourceView));
+    _newSourceElements = DiagramHelper.getOwnedElements(getDiagramContext().getView(_sourceView));
     _newSourceElements.removeAll(_sourceElements);
 
-    _newTargetElements = DiagramHelper.getOwnedElements(getExecutionContext().getView(_targetView));
+    _newTargetElements = DiagramHelper.getOwnedElements(getDiagramContext().getView(_targetView));
     _newTargetElements.removeAll(_targetElements);
 
-    _newEdgesElements = new ArrayList(getExecutionContext().getDiagram().getEdges());
+    _newEdgesElements = new ArrayList<>(getDiagramContext().getDiagram().getEdges());
     _newEdgesElements.removeAll(_edgesElements);
+
+    if (!(_newEdgesElements.iterator().next() instanceof DEdge)) {
+      fail("The crated element is not of type DEdge");
+    }
+
+    if (expectedNumberOfNewEdges != -1 && _newEdgesElements.size() != expectedNumberOfNewEdges) {
+      fail("The number of created edges is not equal to " + expectedNumberOfNewEdges);
+    }
+
+    if (expectedNumberOfNewElementsOnSource != -1 && _newSourceElements.size() != expectedNumberOfNewElementsOnSource) {
+      fail("The number of created edges is not equal to " + expectedNumberOfNewElementsOnSource);
+    }
+
+    if (expectedNumberOfNewElementsOnTarget != -1 && _newTargetElements.size() != expectedNumberOfNewElementsOnTarget) {
+      fail("The number of created edges is not equal to " + expectedNumberOfNewElementsOnTarget);
+    }
   }
 
   @Override
   public DEdge getResult() {
-    DEdge view = (DEdge) _newEdgesElements.iterator().next();
+
+    DEdge createdEdgeView = (DEdge) _newEdgesElements.iterator().next();
+    String edgeId = ((CapellaElement) createdEdgeView.getTarget()).getId();
+
     if (_newIdentifier != null) {
-      getExecutionContext().putSemanticElement(_newIdentifier, view.getTarget());
-      getExecutionContext().putView(_newIdentifier, view);
+      getExecutionContext().putSemanticElement(_newIdentifier, createdEdgeView.getTarget());
+      getDiagramContext().putView(_newIdentifier, createdEdgeView);
     }
     if ((_newSourceIdentifier != null) && !_newSourceElements.isEmpty()) {
       DDiagramElement sView = _newSourceElements.iterator().next();
       getExecutionContext().putSemanticElement(_newSourceIdentifier, sView.getTarget());
-      getExecutionContext().putView(_newSourceIdentifier, sView);
+      getDiagramContext().putView(_newSourceIdentifier, sView);
     }
     if ((_newTargetIdentifier != null) && !_newTargetElements.isEmpty()) {
       DDiagramElement tView = _newTargetElements.iterator().next();
       getExecutionContext().putSemanticElement(_newTargetIdentifier, tView.getTarget());
-      getExecutionContext().putView(_newTargetIdentifier, tView);
+      getDiagramContext().putView(_newTargetIdentifier, tView);
     }
-    return view;
+
+    if (null == _newIdentifier && null == _newSourceIdentifier && null == _newTargetIdentifier) {
+      getExecutionContext().putSemanticElement(edgeId, createdEdgeView.getTarget());
+      getDiagramContext().putView(edgeId, createdEdgeView);
+    }
+
+    return createdEdgeView;
   }
 
   @Override
   protected void initToolArguments() {
-    DSemanticDecorator source = getExecutionContext().getView(_sourceView);
-    _toolWrapper.setArgumentValue(ArgumentType.SOURCE, source);
 
-    DSemanticDecorator target = getExecutionContext().getView(_targetView);
-    _toolWrapper.setArgumentValue(ArgumentType.TARGET, target);
+    DSemanticDecorator edgeSourceView = getDiagramContext().getView(_sourceView);
+    _toolWrapper.setArgumentValue(ArgumentType.SOURCE, edgeSourceView);
+
+    DSemanticDecorator edgeTargetView = getDiagramContext().getView(_targetView);
+    _toolWrapper.setArgumentValue(ArgumentType.TARGET, edgeTargetView);
   }
-
 }

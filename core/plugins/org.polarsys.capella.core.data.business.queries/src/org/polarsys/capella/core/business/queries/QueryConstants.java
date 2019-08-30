@@ -118,7 +118,7 @@ public class QueryConstants {
   public static final String GET_AVAILABLE__FUNCTION_OUTPUT_PORT__PROVIDED_INTERFACE = "GetAvailable_FunctionOutputPort_ProvidedInterface"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__FUNCTION_OUTPUT_PORT__REALIZED_FUNCTION_OUTPUT_PORT = "GetAvailable_FunctionOutputPort_RealizedFunctionOutputPort"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__FUNCTION_OUTPUT_PORT__REQUIRED_INTERFACE = "GetAvailable_FunctionOutputPort_RequiredInterface"; //$NON-NLS-1$
-  public static final String GET_AVAILABLE__FUNCTIONAL_CHAIN_INVOLVEMENT__EXCHANGE_ITEMS = "GetAvailable_FunctionalChainInvolvement_ExchangeItems"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__EXCHANGE_ITEMS = "GetAvailable_FunctionalChainInvolvementLink_ExchangeItems"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__FUNCTIONAL_CHAIN__AVAILABLE_IN_STATES = "GetAvailable_FunctionalChain_AvailableInStates"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__FUNCTIONAL_CHAIN__REALIZED_FUNCTIONAL_CHAINS = "GetAvailable_FunctionalChain_RealizedFunctionalChains"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__FUNCTIONAL_EXCHANGE__CATEGORIES = "GetAvailable_FunctionalExchange_Categories"; //$NON-NLS-1$
@@ -217,6 +217,7 @@ public class QueryConstants {
   public static final String GET_AVAILABLE__PROPERTY__TYPE___LIB = "GetAvailable_Property_Type__Lib"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__ROLE__ALLOCATED_ACTIVITIES = "GetAvailable_Role_AllocatedActivities"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__SCENARIO__REALIZED_SCENARIO = "GetAvailable_Scenario_RealizedScenario"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__SEQUENCE_LINK_LINKS = "GetAvailable_SequenceLink_Links";
   public static final String GET_AVAILABLE__SEQUENCE_MESSAGE__EXCHANGED_ITEMS = "GetAvailable_SequenceMessage_ExchangedItems"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__SEQUENCE_MESSAGE__INVOKED_OPERATION = "GetAvailable_SequenceMessage_InvokedOperation"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__SEQUENCE_MESSAGE__SERVICE_INTERFACE___LIB = "GetAvailable_SequenceMessage_ServiceInterface__Lib"; //$NON-NLS-1$
@@ -374,7 +375,7 @@ public class QueryConstants {
   public static final String GET_CURRENT__FUNCTION_OUTPUT_PORT__PROVIDED_INTERFACE = "GetCurrent_FunctionOutputPort_ProvidedInterface"; //$NON-NLS-1$
   public static final String GET_CURRENT__FUNCTION_OUTPUT_PORT__REALIZED_FUNCTION_OUTPUT_PORT = "GetCurrent_FunctionOutputPort_RealizedFunctionOutputPort"; //$NON-NLS-1$
   public static final String GET_CURRENT__FUNCTION_OUTPUT_PORT__REQUIRED_INTERFACE = "GetCurrent_FunctionOutputPort_RequiredInterface"; //$NON-NLS-1$
-  public static final String GET_CURRENT__FUNCTIONAL_CHAIN_INVOLVEMENT__EXCHANGE_ITEMS = "GetCurrent_FunctionalChainInvolvement_ExchangeItems"; //$NON-NLS-1$
+  public static final String GET_CURRENT__FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__EXCHANGE_ITEMS = "GetCurrent_FunctionalChainInvolvementLink_ExchangeItems"; //$NON-NLS-1$
   public static final String GET_CURRENT__FUNCTIONAL_CHAIN__AVAILABLE_IN_STATES = "GetCurrent_FunctionalChain_AvailableInStates"; //$NON-NLS-1$
   public static final String GET_CURRENT__FUNCTIONAL_CHAIN__REALIZED_FUNCTIONAL_CHAINS = "GetCurrent_FunctionalChain_RealizedFunctionalChains"; //$NON-NLS-1$
   public static final String GET_CURRENT__FUNCTIONAL_EXCHANGE__CATEGORIES = "GetCurrent_FunctionalExchange_Categories"; //$NON-NLS-1$
@@ -491,6 +492,7 @@ public class QueryConstants {
   public static final String GET_CURRENT__PROPERTY__TYPE = "GetCurrent_Property_Type"; //$NON-NLS-1$
   public static final String GET_CURRENT__ROLE__ALLOCATED_ACTIVITIES = "GetCurrent_Role_AllocatedActivities"; //$NON-NLS-1$
   public static final String GET_CURRENT__SCENARIO__REALIZED_SCENARIO = "GetCurrent_Scenario_RealizedScenario"; //$NON-NLS-1$
+  public static final String GET_CURRENT__SEQUENCE_LINK_LINKS = "GetCurrent_SequenceLink_Links"; //$NON-NLS-1$
   public static final String GET_CURRENT__SEQUENCE_MESSAGE__EXCHANGED_ITEMS = "GetCurrent_SequenceMessage_ExchangedItems"; //$NON-NLS-1$
   public static final String GET_CURRENT__SEQUENCE_MESSAGE__INVOKED_OPERATION = "GetCurrent_SequenceMessage_InvokedOperation"; //$NON-NLS-1$
   public static final String GET_CURRENT__SEQUENCE_MESSAGE__SERVICE_INTERFACE = "GetCurrent_SequenceMessage_ServiceInterface"; //$NON-NLS-1$

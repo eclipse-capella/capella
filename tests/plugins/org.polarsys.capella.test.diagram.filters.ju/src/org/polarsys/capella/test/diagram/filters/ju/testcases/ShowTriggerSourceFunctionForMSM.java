@@ -13,12 +13,10 @@ package org.polarsys.capella.test.diagram.filters.ju.testcases;
 import java.util.Arrays;
 import java.util.List;
 
-import org.eclipse.sirius.diagram.DDiagramElement;
-import org.polarsys.capella.core.data.capellacommon.StateTransition;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
-import org.polarsys.capella.test.diagram.filters.ju.DiagramObjectFilterTestCase;
+import org.polarsys.capella.test.diagram.filters.ju.LabelFilterTestCase;
 
-public class ShowTriggerSourceFunctionForMSM extends DiagramObjectFilterTestCase {
+public class ShowTriggerSourceFunctionForMSM extends LabelFilterTestCase {
 
   @Override
   protected String getTestProjectName() {
@@ -42,13 +40,7 @@ public class ShowTriggerSourceFunctionForMSM extends DiagramObjectFilterTestCase
   }
 
   @Override
-  protected boolean isFiltered(DDiagramElement elt) {
-    if (elt.getTarget() instanceof StateTransition) {
-      StateTransition transition = (StateTransition) elt.getTarget();
-      if (transition.getId().equals(getFilteredObjetIDs().get(0)))
-        return (elt.getName().equals("[SystemFunction 1 ->] FunctionalExchange 1" //$NON-NLS-1$
-            ));
-    }
-    return super.isFiltered(elt);
+  protected List<String> getExpectedElementLabels() {
+    return Arrays.asList(new String[] { "[SystemFunction 1 ->] FunctionalExchange 1" });
   }
 }

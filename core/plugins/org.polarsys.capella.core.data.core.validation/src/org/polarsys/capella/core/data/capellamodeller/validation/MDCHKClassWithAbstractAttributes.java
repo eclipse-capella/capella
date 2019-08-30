@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,23 +40,22 @@ public class MDCHKClassWithAbstractAttributes extends AbstractValidationRule {
   public IStatus validate(IValidationContext ctx) {
     EObject eObj = ctx.getTarget();
     EMFEventType eType = ctx.getEventType();
-    if (eType == EMFEventType.NULL) {
-      if (eObj instanceof Class) {
-        Class classToValidate = (Class) eObj;
-        boolean isNotAbstractClass = !classToValidate.isAbstract();
-        if (isNotAbstractClass) {
-          // This collection will store the validation errors
-          Collection<IStatus> statuses = new ArrayList<IStatus>();
-          validateAbstractClass(ctx, classToValidate, statuses);
-          boolean isValidatedSuperClasses = validateAbstractSuperClass(ctx, classToValidate, classToValidate, statuses);
-          if (isValidatedSuperClasses) {
-            IStatus failureStatus = ctx.createFailureStatus("\"" + classToValidate.getName() + "\" (Class)", " inherited attribute", ""); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
-            statuses.add(failureStatus);
-          }
-          if (!statuses.isEmpty()) {
-            // There are conflicts returns them as a multi-statuses status
-            return ConstraintStatus.createMultiStatus(ctx, statuses);
-          }
+    if (eType == EMFEventType.NULL && eObj instanceof Class) {
+      Class classToValidate = (Class) eObj;
+      boolean isNotAbstractClass = !classToValidate.isAbstract();
+      if (isNotAbstractClass) {
+        // This collection will store the validation errors
+        Collection<IStatus> statuses = new ArrayList<>();
+        validateAbstractClass(ctx, classToValidate, statuses);
+        boolean isValidatedSuperClasses = validateAbstractSuperClass(ctx, classToValidate, classToValidate, statuses);
+        if (isValidatedSuperClasses) {
+          IStatus failureStatus = ctx.createFailureStatus("\"" + classToValidate.getName() + "\" (Class)", //$NON-NLS-1$ //$NON-NLS-2$
+              " inherited attribute", ""); //$NON-NLS-1$ //$NON-NLS-2$
+          statuses.add(failureStatus);
+        }
+        if (!statuses.isEmpty()) {
+          // There are conflicts returns them as a multi-statuses status
+          return ConstraintStatus.createMultiStatus(ctx, statuses);
         }
       }
     }
@@ -132,7 +131,7 @@ public class MDCHKClassWithAbstractAttributes extends AbstractValidationRule {
       if (property.getAssociation() == null) {
         boolean isAbstractAttr = property.isIsAbstract();
         if (isAbstractAttr) {
-          return !isOverridedProperty(classToValidate, subClass, property);// true ;
+          return !isOverridedProperty(classToValidate, subClass, property);
         }
       } else {
         EList<Property> navigableMembers = property.getAssociation().getNavigableMembers();

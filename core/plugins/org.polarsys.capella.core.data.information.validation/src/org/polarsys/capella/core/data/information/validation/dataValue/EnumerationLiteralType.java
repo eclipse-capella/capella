@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,13 +31,20 @@ public class EnumerationLiteralType extends AbstractValidationRule {
   public IStatus validate(IValidationContext ctx) {
     EObject eObj = ctx.getTarget();
     if (eObj instanceof EnumerationLiteral) {
+
       EnumerationLiteral enumLiteral = (EnumerationLiteral) eObj;
       EObject container = enumLiteral.eContainer();
       if (container != null && container instanceof Enumeration) {
+
         Enumeration eNum = (Enumeration) container;
         AbstractType abstractType = enumLiteral.getAbstractType();
-        if (abstractType == null || !eNum.equals(abstractType)) {
-          return ctx.createFailureStatus(new Object[] {enumLiteral.getName(),eNum.getName()});
+        String typeName = "null";
+        if (!eNum.equals(abstractType)) {
+
+          if (null != abstractType) {
+            typeName = abstractType.getName();
+          }
+          return ctx.createFailureStatus(new Object[] { enumLiteral.getName(), typeName, eNum.getName() });
         }
       }
     }

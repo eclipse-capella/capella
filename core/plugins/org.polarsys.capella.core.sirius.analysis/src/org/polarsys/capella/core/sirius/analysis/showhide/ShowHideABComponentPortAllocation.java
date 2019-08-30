@@ -14,6 +14,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.polarsys.capella.core.data.cs.PhysicalPort;
+import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.fa.ComponentPortAllocation;
 import org.polarsys.capella.core.model.helpers.ComponentPortAllocationExt;
 import org.polarsys.capella.core.sirius.analysis.CsServices;
@@ -90,10 +92,11 @@ public class ShowHideABComponentPortAllocation extends ShowHideABPhysicalLink {
   protected boolean mustHide(ContextItemElement originCouple_p, DiagramContext context_p) {
     EObject semantic = originCouple_p.getValue();
 
-    // We want to hide physical link
+    // We want to hide component port
     if (semantic instanceof ComponentPortAllocation) {
       return true;
     }
+    
     // And only these elements
     return super.mustHide(originCouple_p, context_p);
   }

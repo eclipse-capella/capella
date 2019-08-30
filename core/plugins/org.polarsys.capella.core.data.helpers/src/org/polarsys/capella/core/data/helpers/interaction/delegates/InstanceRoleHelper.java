@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,21 +28,22 @@ public class InstanceRoleHelper {
 	private static InstanceRoleHelper instance;
 
 	private InstanceRoleHelper() {
-    // do nothing
+    // Do nothing
 	}
 
 	public static InstanceRoleHelper getInstance() {
-		if (instance == null)
+		if (instance == null) {
 			instance = new InstanceRoleHelper();
+		}
 		return instance;
 	}
 
 	public Object doSwitch(InstanceRole element, EStructuralFeature feature) {
 		Object ret = null;
 
-    if (feature.equals(InteractionPackage.Literals.INSTANCE_ROLE__ABSTRACT_ENDS)) {
-      ret = getAbstractEnds(element);
-    }
+		if (feature.equals(InteractionPackage.Literals.INSTANCE_ROLE__ABSTRACT_ENDS)) {
+			ret = getAbstractEnds(element);
+		}
 
 		// no helper found... searching in super classes...
 		if (null == ret) {
@@ -52,26 +53,24 @@ public class InstanceRoleHelper {
 		return ret;
 	}
 
-  protected List<AbstractEnd> getAbstractEnds(InstanceRole element) {
-    List<AbstractEnd> ret = new ArrayList<AbstractEnd>();
+	protected List<AbstractEnd> getAbstractEnds(InstanceRole element) {
+		List<AbstractEnd> ret = new ArrayList<>();
 
-    if (element != null) {
-      EObject owner = element.eContainer();
-      if (owner instanceof Scenario) {
-        Scenario scenario = (Scenario) owner;
-        if (scenario != null) {
-          for (InteractionFragment interactionFragment : scenario.getOwnedInteractionFragments()) {
-            if (interactionFragment instanceof AbstractEnd) {
-              AbstractEnd abstractEnd = (AbstractEnd) interactionFragment;
-              if (element.equals(abstractEnd.getCovered())) {
-                ret.add(abstractEnd);
-              }
-            }
-          }
-        }
-      }
-    }
+		if (element != null) {
+			EObject owner = element.eContainer();
+			if (owner instanceof Scenario) {
+				Scenario scenario = (Scenario) owner;
+				for (InteractionFragment interactionFragment : scenario.getOwnedInteractionFragments()) {
+					if (interactionFragment instanceof AbstractEnd) {
+						AbstractEnd abstractEnd = (AbstractEnd) interactionFragment;
+						if (element.equals(abstractEnd.getCovered())) {
+							ret.add(abstractEnd);
+						}
+					}
+				}
+			}
+		}
 
-    return ret;
-  }
+		return ret;
+	}
 }

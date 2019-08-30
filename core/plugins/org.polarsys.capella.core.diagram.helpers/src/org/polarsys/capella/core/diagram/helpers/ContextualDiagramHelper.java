@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.diagram.helpers;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -17,15 +19,10 @@ import java.util.HashSet;
 import java.util.List;
 
 import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.diagram.description.DiagramDescription;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
@@ -54,7 +51,6 @@ import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramDescriptionConstants;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
-import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.helpers.AbstractCapabilityPkgExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
@@ -77,19 +73,15 @@ public class ContextualDiagramHelper {
     }
     return instance;
   }
-
-  /** Key used in diagrams to store contextual elements */
-  public final String CONTEXTUAL_ELEMENTS = "CONTEXTUAL_ELEMENTS"; //$NON-NLS-1$
-
+  
   /**
    * Retrieve whether the representation can be a contextualizedElements based diagram.
    * @param representation
    * @return 
    */
-  public boolean isContextualRepresentation(DRepresentation representation) {
-    if (representation instanceof DDiagram) {
-      DDiagram diagram = (DDiagram) representation;
-      DiagramDescription description = diagram.getDescription();
+  public boolean isContextualRepresentation(DRepresentationDescriptor representation) {
+    if (representation instanceof DRepresentationDescriptor) {
+      RepresentationDescription description = representation.getDescription();
       if (description != null) {
         if (description.getName() != null) {
           return description.getName().endsWith(DiagramDescriptionConstants.INTERACTION_BLANK_DIAGRAM_NAME)
@@ -103,10 +95,10 @@ public class ContextualDiagramHelper {
     return false;
   }
 
-  public boolean hasContextualElements(DRepresentation representation) {
-    DAnnotation annotation = RepresentationHelper.getAnnotation(CONTEXTUAL_ELEMENTS, representation);
+  public boolean hasContextualElements(DRepresentationDescriptor representation) {
+    DAnnotation annotation = DAnnotationHelper.getAnnotation(IRepresentationAnnotationConstants.ContextualElements, representation, false);
     if (annotation != null) {
-      return (annotation.getDetails() != null) && !annotation.getDetails().isEmpty();
+      return (annotation.getReferences() != null) && !annotation.getReferences().isEmpty();
     }
     return false;
   }
@@ -116,33 +108,12 @@ public class ContextualDiagramHelper {
    * @param representation
    * @param elements
    */
-  public List<EObject> getContextualElements(DRepresentation representation) {
+  public List<EObject> getContextualElements(DRepresentationDescriptor representation) {
     ArrayList<EObject> result = new ArrayList<EObject>();
-    DAnnotation annotation = RepresentationHelper.getAnnotation(CONTEXTUAL_ELEMENTS, representation);
-    if (annotation != null) {
-      for (String elementURI : annotation.getDetails().values()) {
-        if ((elementURI != null) && (elementURI.length() > 0)) {
-          try {
-            String id = elementURI;
-            URI uri = URI.createURI(elementURI);
-            if ((uri != null) && uri.hasFragment()) {
-              id = uri.fragment();
-            }
-
-            if ((id != null) && (id.length() > 0)) {
-              for (Resource resource : RepresentationHelper.getSemanticResources(representation)) {
-                if (resource != null) {
-                  EObject obj = resource.getEObject(id);
-                  if (obj != null) {
-                    result.add(obj);
-                  }
-                }
-              }
-            }
-          } catch (IllegalArgumentException exception) {
-            // silent exception.. we just ignore this contextual element
-          }
-        }
+    if (representation != null) {
+      DAnnotation annotation = DAnnotationHelper.getAnnotation(IRepresentationAnnotationConstants.ContextualElements, representation, false);
+      if (annotation != null) {
+        return new ArrayList<EObject>(annotation.getReferences());
       }
     }
     return result;
@@ -153,29 +124,15 @@ public class ContextualDiagramHelper {
    * @param representation
    * @param elements
    */
-  public void setContextualElements(DRepresentation representation, Collection<EObject> elements) {
+  public void setContextualElements(DRepresentationDescriptor representation, Collection<EObject> elements) {
     if (representation != null) {
       if ((elements == null) || (elements.size() == 0)) {
-        RepresentationHelper.removeAnnotation(CONTEXTUAL_ELEMENTS, representation);
+        DAnnotationHelper.deleteAnnotation(IRepresentationAnnotationConstants.ContextualElements, representation);
 
       } else {
-        DAnnotation annotation = RepresentationHelper.getAnnotation(CONTEXTUAL_ELEMENTS, representation);
-        if (annotation == null) {
-          annotation = RepresentationHelper.createAnnotation(CONTEXTUAL_ELEMENTS, representation);
-        }
-        if (annotation.getDetails() != null) {
-          annotation.getDetails().clear();
-        }
-        if (elements != null) {
-          int i = 0;
-          for (EObject object : elements) {
-            String id = EcoreUtil.getID(object);
-            if ((id != null) && !(id.length() == 0)) {
-              annotation.getDetails().put("id_" + i, id); //$NON-NLS-1$
-              i++;
-            }
-          }
-        }
+        DAnnotation annotation = DAnnotationHelper.getAnnotation(IRepresentationAnnotationConstants.ContextualElements, representation, true);
+        annotation.getReferences().clear();
+        annotation.getReferences().addAll(elements);
       }
     }
   }
@@ -183,26 +140,25 @@ public class ContextualDiagramHelper {
   /**
    * Retrieve all available elements which can be used as a contextual element into the given representation
    */
-  public Collection<EObject> getAvailableContextualElements(DRepresentation representation) {
-    if ((representation != null) && (representation instanceof DSemanticDiagram)) {
-      DSemanticDiagram diagram = (DSemanticDiagram) representation;
+  public Collection<EObject> getAvailableContextualElements(DRepresentationDescriptor representation) {
+    if (representation != null) {
 
       // Check for invalid diagrams
-      EObject target = ((DSemanticDiagram) representation).getTarget();
-      if ((target == null) || (diagram.getDescription() == null)) {
+      EObject target = representation.getTarget();
+      if ((target == null) || (representation.getDescription() == null)) {
         return Collections.emptyList();
       }
 
-      String name = diagram.getDescription().getName();
+      String name = representation.getDescription().getName();
       if (name.endsWith(DiagramDescriptionConstants.ARCHITECTURE_BLANK_DIAGRAM_NAME) || name.endsWith(DiagramDescriptionConstants.ENTITY_BLANK_DIAGRAM_NAME)) {
-        return getABAvailableContextualElements(diagram);
+        return getABAvailableContextualElements(representation);
 
       } else if (name.endsWith(DiagramDescriptionConstants.DATA_FLOW_BLANK_DIAGRAM_NAME)
                  || name.endsWith(DiagramDescriptionConstants.INTERACTION_BLANK_DIAGRAM_NAME)) {
-        return getDFAvailableContextualElements(diagram);
+        return getDFAvailableContextualElements(representation);
 
       } else if (name.endsWith(DiagramDescriptionConstants.CLASS_BLANK_DIAGRAM_NAME)) {
-        return getCDBAvailableContextualElements(diagram);
+        return getCDBAvailableContextualElements(representation);
       }
     }
 
@@ -212,7 +168,7 @@ public class ContextualDiagramHelper {
   /**
    * Retrieve all available elements which can be used as a contextual element into the given architecture blank diagram
    */
-  protected Collection<EObject> getABAvailableContextualElements(DSemanticDiagram diagram) {
+  protected Collection<EObject> getABAvailableContextualElements(DRepresentationDescriptor diagram) {
     Collection<EObject> result = new HashSet<EObject>();
     EObject target = diagram.getTarget();
 
@@ -249,7 +205,7 @@ public class ContextualDiagramHelper {
           boolean valid = !(component instanceof ComponentContext);
           if (valid) {
             if (multiPart && !isOA) {
-              result.addAll(ComponentExt.getRepresentingParts(component));
+              result.addAll(getCache(ComponentExt::getRepresentingParts, component));
             } else {
               result.add(component);
             }
@@ -308,7 +264,7 @@ public class ContextualDiagramHelper {
   /**
    * Retrieve all available elements which can be used as a contextual element into the given data flow blank diagram
    */
-  protected Collection<EObject> getDFAvailableContextualElements(DSemanticDiagram diagram) {
+  protected Collection<EObject> getDFAvailableContextualElements(DRepresentationDescriptor diagram) {
     Collection<EObject> result = new HashSet<EObject>();
     EObject target = diagram.getTarget();
 
@@ -424,7 +380,7 @@ public class ContextualDiagramHelper {
   /**
    * Retrieve all available elements which can be used as a contextual element into the given class diagram blank
    */
-  protected Collection<EObject> getCDBAvailableContextualElements(DSemanticDiagram diagram) {
+  protected Collection<EObject> getCDBAvailableContextualElements(DRepresentationDescriptor diagram) {
     Collection<EObject> result = new HashSet<EObject>();
     EObject target = diagram.getTarget();
 

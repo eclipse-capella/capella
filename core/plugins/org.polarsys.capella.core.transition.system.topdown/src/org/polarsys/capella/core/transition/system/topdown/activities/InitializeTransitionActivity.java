@@ -52,21 +52,14 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
   }
 
   @Override
-  protected IHandler createDefaultTransformationHandler() {
-    return super.createDefaultTransformationHandler();
-  }
-
-  @Override
-  protected Collection<Object> adaptSelection(Collection<Object> selection_p) {
-    Collection<Object> superCollection = super.adaptSelection(selection_p);
-    Collection<Object> result = new ArrayList<Object>();
-    for (Object item : superCollection) {
-      if (item instanceof EObject) {
-        if (item instanceof Part) {
-          item = ((Part) item).getAbstractType();
-        }
-        result.add(item);
+  protected Collection<EObject> adaptSelection(Collection<Object> selection) {
+    Collection<EObject> superCollection = super.adaptSelection(selection);
+    Collection<EObject> result = new ArrayList<>();
+    for (EObject item : superCollection) {
+      if (item instanceof Part) {
+        item = ((Part) item).getAbstractType();
       }
+      result.add((EObject) item);
     }
     return result;
   }
@@ -80,18 +73,18 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
   }
 
   @Override
-  protected IStatus initializeContext(IContext context_p, ActivityParameters activityParams_p) {
-    IStatus status = super.initializeContext(context_p, activityParams_p);
+  protected IStatus initializeContext(IContext context, ActivityParameters activityParams) {
+    IStatus status = super.initializeContext(context, activityParams);
     if (!checkStatus(status)) {
       return status;
     }
 
-    status = initializeTransitionKind(context_p, activityParams_p);
+    status = initializeTransitionKind(context, activityParams);
     if (!checkStatus(status)) {
       return status;
     }
 
-    status = checkParameters(context_p, new String[] { ITopDownConstants.TRANSITION_KIND });
+    status = checkParameters(context, new String[] { ITopDownConstants.TRANSITION_KIND });
     if (!checkStatus(status)) {
       return status;
     }
@@ -99,17 +92,13 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
     return status;
   }
 
-  /**
-   * @param context_p
-   * @param activityParams_p
-   */
   @Override
-  protected IStatus configureLogHandler(IContext context_p, ActivityParameters activityParams_p) {
-    if (!(OptionsHandlerHelper.getInstance(context_p).getBooleanValue(context_p, ITopDownConstants.OPTIONS_SCOPE, ITopDownConstants.OPTIONS_LOG,
+  protected IStatus configureLogHandler(IContext context, ActivityParameters activityParams) {
+    if (!(OptionsHandlerHelper.getInstance(context).getBooleanValue(context, ITopDownConstants.OPTIONS_SCOPE, ITopDownConstants.OPTIONS_LOG,
         ITopDownConstants.OPTIONS_LOG__DEFAULT.booleanValue()))) {
       LogHelper.getInstance().setLevel(Level.ERROR);
     } else {
-      return super.configureLogHandler(context_p, activityParams_p);
+      return super.configureLogHandler(context, activityParams);
     }
     return Status.OK_STATUS;
   }
@@ -117,10 +106,10 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
   /**
    * Initialize TRANSITION_KIND parameter
    */
-  protected IStatus initializeTransitionKind(IContext context_p, ActivityParameters activityParams_p) {
-    Object scope = context_p.get(ITransitionConstants.OPTIONS_SCOPE);
+  protected IStatus initializeTransitionKind(IContext context, ActivityParameters activityParams) {
+    Object scope = context.get(ITransitionConstants.OPTIONS_SCOPE);
 
-    context_p.put(ITopDownConstants.TRANSITION_KIND, scope);
+    context.put(ITopDownConstants.TRANSITION_KIND, scope);
     return Status.OK_STATUS;
   }
 
@@ -128,10 +117,10 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
    * {@inheritDoc}
    */
   @Override
-  protected IStatus initializeScopeRetrieverHandlers(IContext context_p, CompoundScopeRetriever handler_p, ActivityParameters activityParams_p) {
-    super.initializeScopeRetrieverHandlers(context_p, handler_p, activityParams_p);
-    handler_p.addScopeRetriever(new ContextualScopeRetriever(), context_p);
-    handler_p.addScopeRetriever(new PropertyValuesScopeRetriever(), context_p);
+  protected IStatus initializeScopeRetrieverHandlers(IContext context, CompoundScopeRetriever handler, ActivityParameters activityParams) {
+    super.initializeScopeRetrieverHandlers(context, handler, activityParams);
+    handler.addScopeRetriever(new ContextualScopeRetriever(), context);
+    handler.addScopeRetriever(new PropertyValuesScopeRetriever(), context);
     return Status.OK_STATUS;
   }
 
@@ -139,9 +128,9 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
    * {@inheritDoc}
    */
   @Override
-  protected IStatus initializeScopeFilterHandlers(IContext context_p, CompoundScopeFilter handler_p, ActivityParameters activityParams_p) {
-    super.initializeScopeFilterHandlers(context_p, handler_p, activityParams_p);
-    handler_p.addScopeFilter(new FinalizableElementFilter(), context_p);
+  protected IStatus initializeScopeFilterHandlers(IContext context, CompoundScopeFilter handler, ActivityParameters activityParams) {
+    super.initializeScopeFilterHandlers(context, handler, activityParams);
+    handler.addScopeFilter(new FinalizableElementFilter(), context);
     return Status.OK_STATUS;
   }
 
@@ -156,15 +145,10 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
     return new CompoundTraceabilityHandler(configuration);
   }
 
-  /**
-   * @param context_p
-   * @param handler_p
-   * @param activityParams_p
-   */
   @Override
-  protected void initializeSelectionContextHandlers(IContext context_p, CompoundSelectionContextHandler handler_p, ActivityParameters activityParams_p) {
-    super.initializeSelectionContextHandlers(context_p, handler_p, activityParams_p);
+  protected void initializeSelectionContextHandlers(IContext context, CompoundSelectionContextHandler handler, ActivityParameters activityParams) {
+    super.initializeSelectionContextHandlers(context, handler, activityParams);
 
-    LevelHandlerHelper.getInstance(context_p).initializeSelectionContexts(context_p, handler_p);
+    LevelHandlerHelper.getInstance(context).initializeSelectionContexts(context, handler);
   }
 }

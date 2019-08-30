@@ -185,7 +185,8 @@ public class ExtendedComparison extends EComparisonImpl {
        * @return whether at least one difference was detected
        */
       @Override
-      protected boolean detectReferenceDifferences(IMatch match, EReference reference, boolean create) {
+      protected boolean detectReferenceDifferences(IMatch match, EReference reference, Role role1, Role role2,
+          boolean create) {
         assert match != null && !match.isPartial() && reference != null;
         assert !reference.isContainer();
         boolean result = false;

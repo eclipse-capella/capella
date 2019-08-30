@@ -299,6 +299,30 @@ public class FaAdapterFactory extends AdapterFactoryImpl {
 				return createComponentPortAllocationEndAdapter();
 			}
 			@Override
+			public Adapter caseFunctionalChainInvolvementLink(FunctionalChainInvolvementLink object) {
+				return createFunctionalChainInvolvementLinkAdapter();
+			}
+			@Override
+			public Adapter caseSequenceLink(SequenceLink object) {
+				return createSequenceLinkAdapter();
+			}
+			@Override
+			public Adapter caseSequenceLinkEnd(SequenceLinkEnd object) {
+				return createSequenceLinkEndAdapter();
+			}
+			@Override
+			public Adapter caseFunctionalChainInvolvementFunction(FunctionalChainInvolvementFunction object) {
+				return createFunctionalChainInvolvementFunctionAdapter();
+			}
+			@Override
+			public Adapter caseControlNode(ControlNode object) {
+				return createControlNodeAdapter();
+			}
+			@Override
+			public Adapter caseReferenceHierarchyContext(ReferenceHierarchyContext object) {
+				return createReferenceHierarchyContextAdapter();
+			}
+			@Override
 			public Adapter caseElement(Element object) {
 				return createElementAdapter();
 			}
@@ -1005,6 +1029,90 @@ public class FaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createComponentPortAllocationEndAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink <em>Functional Chain Involvement Link</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink
+	 * @generated
+	 */
+	public Adapter createFunctionalChainInvolvementLinkAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.fa.SequenceLink <em>Sequence Link</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.fa.SequenceLink
+	 * @generated
+	 */
+	public Adapter createSequenceLinkAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.fa.SequenceLinkEnd <em>Sequence Link End</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.fa.SequenceLinkEnd
+	 * @generated
+	 */
+	public Adapter createSequenceLinkEndAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction <em>Functional Chain Involvement Function</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction
+	 * @generated
+	 */
+	public Adapter createFunctionalChainInvolvementFunctionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.fa.ControlNode <em>Control Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.fa.ControlNode
+	 * @generated
+	 */
+	public Adapter createControlNodeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.fa.ReferenceHierarchyContext <em>Reference Hierarchy Context</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.fa.ReferenceHierarchyContext
+	 * @generated
+	 */
+	public Adapter createReferenceHierarchyContextAdapter() {
 		return null;
 	}
 

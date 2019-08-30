@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -290,13 +290,20 @@ public class DynamicCreationAction extends DynamicModelElementAction {
     condition.setValue(descriptor.getValue());
     // Create a "create child action" if condition is fulfilled.
     if (condition.isValid()) {
-      CapellaCreateChildAction action = new CapellaCreateChildAction(editingDomain, (ISelection) descriptor.getOwner(),
-          descriptor);
+      DynamicCreateChildAction action = createChildAction(editingDomain, (ISelection) descriptor.getOwner(), descriptor);
       if (action.isExecutable() && action.isEnabled()) {
         // Add it if enable and executable.
         items.add(new DynamicActionContributionItem(action));
       }
     }
+  }
+
+  /**
+   * Create an action for the given CommandParameter
+   */
+  protected DynamicCreateChildAction createChildAction(EditingDomain editingDomain, ISelection selection,
+      CommandParameter descriptor) {
+    return new CapellaCreateChildAction(editingDomain, selection, descriptor);
   }
 
   /**
@@ -347,7 +354,7 @@ public class DynamicCreationAction extends DynamicModelElementAction {
   /**
    * Extends {@link DynamicCreateChildAction} to override the setText.
    */
-  class CapellaCreateChildAction extends DynamicCreateChildAction {
+  protected class CapellaCreateChildAction extends DynamicCreateChildAction {
     /**
      * @param editingDomain
      * @param selection

@@ -2,14 +2,14 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.data.cs.properties;singleton:=true
-Bundle-Version: 1.2.2.qualifier
+Bundle-Version: 1.3.1.qualifier
 Bundle-Activator: org.polarsys.capella.core.data.cs.properties.CsPropertiesPlugin
 Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.core.data.information.communication.properties;visibility:=reexport,
  org.polarsys.capella.core.data.fa.properties;visibility:=reexport,
  org.polarsys.capella.core.model.handler
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.polarsys.capella.core.data.cs.properties,
  org.polarsys.capella.core.data.cs.properties.controllers,
  org.polarsys.capella.core.data.cs.properties.sections

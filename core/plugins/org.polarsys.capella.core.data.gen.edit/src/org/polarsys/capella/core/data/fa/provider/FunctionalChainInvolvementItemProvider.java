@@ -142,7 +142,6 @@ public class FunctionalChainInvolvementItemProvider
 			addInvolvedPropertyDescriptor(object);
 			addNextFunctionalChainInvolvementsPropertyDescriptor(object);
 			addPreviousFunctionalChainInvolvementsPropertyDescriptor(object);
-			addExchangedItemsPropertyDescriptor(object);
 			addInvolvedElementPropertyDescriptor(object);
 		}
 		// begin-extension-code
@@ -220,9 +219,9 @@ public class FunctionalChainInvolvementItemProvider
 				 getString("_UI_FunctionalChainInvolvement_nextFunctionalChainInvolvements_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChainInvolvement_nextFunctionalChainInvolvements_feature", "_UI_FunctionalChainInvolvement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT__NEXT_FUNCTIONAL_CHAIN_INVOLVEMENTS,
-				 true,
 				 false,
-				 true,
+				 false,
+				 false,
 				 null,
 				 null,
 		// begin-extension-code
@@ -258,33 +257,6 @@ public class FunctionalChainInvolvementItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Exchanged Items feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addExchangedItemsPropertyDescriptor(Object object) {
-
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_FunctionalChainInvolvement_exchangedItems_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChainInvolvement_exchangedItems_feature", "_UI_FunctionalChainInvolvement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT__EXCHANGED_ITEMS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
-
-	/**
 	 * This adds a property descriptor for the Involved Element feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -308,17 +280,6 @@ public class FunctionalChainInvolvementItemProvider
 				 null);
 		itemPropertyDescriptors.add(involvedElementPropertyDescriptor);
 		// end-extension-code
-	}
-
-	/**
-	 * This returns FunctionalChainInvolvement.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/FunctionalChainInvolvement")); //$NON-NLS-1$
 	}
 
 	/**

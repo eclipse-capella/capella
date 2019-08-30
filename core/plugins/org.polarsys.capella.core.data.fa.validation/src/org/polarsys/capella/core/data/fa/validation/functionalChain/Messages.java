@@ -20,7 +20,6 @@ public class Messages extends NLS {
   public static String MDCHK_FunctionalChain_Involvements_1_ContainsACycle;
   public static String MDCHK_FunctionalChain_Involvements_1_IsEmpty;
   public static String MDCHK_FunctionalChain_Involvements_1_NotWellFormed;
-  public static String MDCHK_FunctionalChain_Involvements_1_NoSource;
   public static String MDCHK_FunctionalChain_Involvements_1_InvolvementInvalid;
 
   static {
@@ -29,6 +28,6 @@ public class Messages extends NLS {
   }
 
   private Messages() {
-    //Nothing here
+    // Nothing here
   }
 }

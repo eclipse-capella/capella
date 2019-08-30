@@ -65,7 +65,7 @@ public class ScenarioHelper {
   }
 
   protected List<AbstractFunction> getContainedFunctions(Scenario element) {
-    List<AbstractFunction> res = new ArrayList<AbstractFunction>();
+    List<AbstractFunction> res = new ArrayList<>();
     for (InstanceRole instanceRole : element.getOwnedInstanceRoles()) {
       AbstractInstance inst = instanceRole.getRepresentedInstance();
       if (inst instanceof AbstractFunction) {
@@ -76,7 +76,7 @@ public class ScenarioHelper {
   }
 
   protected List<Part> getContainedParts(Scenario element) {
-    List<Part> res = new ArrayList<Part>();
+    List<Part> res = new ArrayList<>();
     for (InstanceRole instanceRole : element.getOwnedInstanceRoles()) {
       AbstractInstance inst = instanceRole.getRepresentedInstance();
       if (inst instanceof Part) {
@@ -87,7 +87,7 @@ public class ScenarioHelper {
   }
 
   protected List<Scenario> getReferencedScenarios(Scenario element) {
-    List<Scenario> res = new ArrayList<Scenario>();
+    List<Scenario> res = new ArrayList<>();
     for (TimeLapse timeLapse : element.getOwnedTimeLapses()) {
       if (timeLapse instanceof InteractionUse) {
         Scenario sc = ((InteractionUse) timeLapse).getReferencedScenario();
@@ -100,7 +100,7 @@ public class ScenarioHelper {
   }
 
   protected List<Scenario> getRealizedScenarios(Scenario element) {
-    List<Scenario> res = new ArrayList<Scenario>();
+    List<Scenario> res = new ArrayList<>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof ScenarioRealization) {
         Scenario sc = ((ScenarioRealization) trace).getRealizedScenario();
@@ -113,7 +113,7 @@ public class ScenarioHelper {
   }
 
   protected List<Scenario> getRealizingScenarios(Scenario element) {
-    List<Scenario> res = new ArrayList<Scenario>();
+    List<Scenario> res = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ScenarioRealization) {
         Scenario sc = ((ScenarioRealization) trace).getRealizingScenario();

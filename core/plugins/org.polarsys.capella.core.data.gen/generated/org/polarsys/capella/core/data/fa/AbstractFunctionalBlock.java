@@ -136,6 +136,7 @@ public interface AbstractFunctionalBlock extends ModellingBlock {
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunctionalBlock_FunctionalAllocations()
 	 * @see org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation#getBlock
 	 * @model opposite="block" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outgoingTraces'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the allocation links between this block, and the functions that are allocated to it.\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -164,6 +165,7 @@ public interface AbstractFunctionalBlock extends ModellingBlock {
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunctionalBlock_AllocatedFunctions()
 	 * @see org.polarsys.capella.core.data.fa.AbstractFunction#getAllocationBlocks
 	 * @model opposite="allocationBlocks" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='functionalAllocations.function'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of functions allocated to this block\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

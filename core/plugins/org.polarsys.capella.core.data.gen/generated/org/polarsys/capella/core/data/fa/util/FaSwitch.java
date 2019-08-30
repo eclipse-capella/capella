@@ -766,6 +766,84 @@ public class FaSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT_LINK: {
+				FunctionalChainInvolvementLink functionalChainInvolvementLink = (FunctionalChainInvolvementLink)theEObject;
+				T result = caseFunctionalChainInvolvementLink(functionalChainInvolvementLink);
+				if (result == null) result = caseFunctionalChainInvolvement(functionalChainInvolvementLink);
+				if (result == null) result = caseReferenceHierarchyContext(functionalChainInvolvementLink);
+				if (result == null) result = caseInvolvement(functionalChainInvolvementLink);
+				if (result == null) result = caseRelationship(functionalChainInvolvementLink);
+				if (result == null) result = caseAbstractRelationship(functionalChainInvolvementLink);
+				if (result == null) result = caseCapellaElement(functionalChainInvolvementLink);
+				if (result == null) result = caseTraceableElement(functionalChainInvolvementLink);
+				if (result == null) result = casePublishableElement(functionalChainInvolvementLink);
+				if (result == null) result = caseModelElement(functionalChainInvolvementLink);
+				if (result == null) result = caseExtensibleElement(functionalChainInvolvementLink);
+				if (result == null) result = caseElement(functionalChainInvolvementLink);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case FaPackage.SEQUENCE_LINK: {
+				SequenceLink sequenceLink = (SequenceLink)theEObject;
+				T result = caseSequenceLink(sequenceLink);
+				if (result == null) result = caseCapellaElement(sequenceLink);
+				if (result == null) result = caseReferenceHierarchyContext(sequenceLink);
+				if (result == null) result = caseTraceableElement(sequenceLink);
+				if (result == null) result = casePublishableElement(sequenceLink);
+				if (result == null) result = caseModelElement(sequenceLink);
+				if (result == null) result = caseExtensibleElement(sequenceLink);
+				if (result == null) result = caseElement(sequenceLink);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case FaPackage.SEQUENCE_LINK_END: {
+				SequenceLinkEnd sequenceLinkEnd = (SequenceLinkEnd)theEObject;
+				T result = caseSequenceLinkEnd(sequenceLinkEnd);
+				if (result == null) result = caseCapellaElement(sequenceLinkEnd);
+				if (result == null) result = caseTraceableElement(sequenceLinkEnd);
+				if (result == null) result = casePublishableElement(sequenceLinkEnd);
+				if (result == null) result = caseModelElement(sequenceLinkEnd);
+				if (result == null) result = caseExtensibleElement(sequenceLinkEnd);
+				if (result == null) result = caseElement(sequenceLinkEnd);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION: {
+				FunctionalChainInvolvementFunction functionalChainInvolvementFunction = (FunctionalChainInvolvementFunction)theEObject;
+				T result = caseFunctionalChainInvolvementFunction(functionalChainInvolvementFunction);
+				if (result == null) result = caseFunctionalChainInvolvement(functionalChainInvolvementFunction);
+				if (result == null) result = caseSequenceLinkEnd(functionalChainInvolvementFunction);
+				if (result == null) result = caseInvolvement(functionalChainInvolvementFunction);
+				if (result == null) result = caseRelationship(functionalChainInvolvementFunction);
+				if (result == null) result = caseAbstractRelationship(functionalChainInvolvementFunction);
+				if (result == null) result = caseCapellaElement(functionalChainInvolvementFunction);
+				if (result == null) result = caseTraceableElement(functionalChainInvolvementFunction);
+				if (result == null) result = casePublishableElement(functionalChainInvolvementFunction);
+				if (result == null) result = caseModelElement(functionalChainInvolvementFunction);
+				if (result == null) result = caseExtensibleElement(functionalChainInvolvementFunction);
+				if (result == null) result = caseElement(functionalChainInvolvementFunction);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case FaPackage.CONTROL_NODE: {
+				ControlNode controlNode = (ControlNode)theEObject;
+				T result = caseControlNode(controlNode);
+				if (result == null) result = caseSequenceLinkEnd(controlNode);
+				if (result == null) result = caseCapellaElement(controlNode);
+				if (result == null) result = caseTraceableElement(controlNode);
+				if (result == null) result = casePublishableElement(controlNode);
+				if (result == null) result = caseModelElement(controlNode);
+				if (result == null) result = caseExtensibleElement(controlNode);
+				if (result == null) result = caseElement(controlNode);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case FaPackage.REFERENCE_HIERARCHY_CONTEXT: {
+				ReferenceHierarchyContext referenceHierarchyContext = (ReferenceHierarchyContext)theEObject;
+				T result = caseReferenceHierarchyContext(referenceHierarchyContext);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -1292,6 +1370,96 @@ public class FaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseComponentPortAllocationEnd(ComponentPortAllocationEnd object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Functional Chain Involvement Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Functional Chain Involvement Link</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFunctionalChainInvolvementLink(FunctionalChainInvolvementLink object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Sequence Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Sequence Link</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSequenceLink(SequenceLink object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Sequence Link End</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Sequence Link End</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSequenceLinkEnd(SequenceLinkEnd object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Functional Chain Involvement Function</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Functional Chain Involvement Function</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFunctionalChainInvolvementFunction(FunctionalChainInvolvementFunction object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Control Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Control Node</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseControlNode(ControlNode object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Reference Hierarchy Context</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Reference Hierarchy Context</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseReferenceHierarchyContext(ReferenceHierarchyContext object) {
 		return null;
 	}
 

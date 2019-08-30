@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="information" nsURI="http://www.polarsys.org/capella/core/information/1.2.0"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="information" nsURI="http://www.polarsys.org/capella/core/information/1.3.0"
     nsPrefix="org.polarsys.capella.core.data.information">
-  <eAnnotations source="http://www.polarsys.org/kitalpha/dsl/2007/dslfactory">
+  <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/extension">
     <details key="trackResourceModification" value="true"/>
     <details key="useUUIDs" value="false"/>
     <details key="useIDAttributes" value="true"/>
@@ -19,13 +19,6 @@
     <details key="reference documentation" value="n/a"/>
   </eAnnotations>
   <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-  <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/extension">
-    <details key="trackResourceModification" value="true"/>
-    <details key="useUUIDs" value="false"/>
-    <details key="useIDAttributes" value="true"/>
-    <details key="extensibleProviderFactory" value="true"/>
-    <details key="childCreationExtenders" value="true"/>
-  </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractInstance" abstract="true" eSuperTypes="#//Property">
     <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
       <details key="Label" value="AbstractInstance"/>
@@ -51,7 +44,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="representingInstanceRoles"
         upperBound="-1" eType="ecore:EClass Interaction.ecore#//InstanceRole" changeable="false"
         volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="opposite"/>
+        <details key="viatra.expression" value="representedInstance"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
         <details key="explanation" value="Derived and transient"/>
@@ -368,7 +364,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizedClasses" upperBound="-1"
         eType="#//Class" changeable="false" volatile="true" transient="true" derived="true"
         eOpposite="#//Class/realizingClasses">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="Class.outgoingTraces(self, ir);&#xD;&#xA;InformationRealization.targetElement(ir, target); "/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="class(es) realized by this class"/>
         <details key="constraints" value="none"/>
@@ -379,7 +378,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizingClasses" upperBound="-1"
         eType="#//Class" changeable="false" volatile="true" transient="true" derived="true"
         eOpposite="#//Class/realizedClasses">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="Class.incomingTraces(self, ir);&#xD;&#xA;InformationRealization.sourceElement(ir, target); "/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="class(es) realizing this class"/>
         <details key="constraints" value="none"/>
@@ -511,7 +513,10 @@
         <details key="Label" value="operations"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="ownedFeatures"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="The operations associated to this collection&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1264,7 +1269,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatingOperations" upperBound="-1"
         eType="#//Operation" changeable="false" volatile="true" transient="true" derived="true"
         eOpposite="#//Operation/allocatedOperations">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="Operation.incomingTraces(self, oa);&#xD;&#xA;OperationAllocation.allocatingOperation(oa, target); "/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the operation allocation relationships that point to this Operation&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1282,7 +1290,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatedOperations" upperBound="-1"
         eType="#//Operation" changeable="false" volatile="true" transient="true" derived="true"
         eOpposite="#//Operation/allocatingOperations">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="Operation.outgoingTraces(self, oa);&#xD;&#xA;OperationAllocation.allocatedOperation(oa, target); "/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the operation allocation relationships that start from this Operation&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1324,7 +1335,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizedExchangeItems"
         upperBound="-1" eType="#//ExchangeItem" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//ExchangeItem/realizingOperations">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="Operation.outgoingTraces(self, eir);&#xD;&#xA;ExchangeItemRealization.realizedItem(eir, target); "/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="class(es) realized by this class"/>
         <details key="constraints" value="none"/>
@@ -1354,7 +1368,10 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatedOperation" lowerBound="1"
         eType="#//Operation" changeable="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="targetElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="contains the &quot;target&quot; of the allocation link&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1368,7 +1385,10 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatingOperation" lowerBound="1"
         eType="#//Operation" changeable="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="sourceElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="contains the &quot;source&quot; of the allocation link&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1721,7 +1741,10 @@
         <details key="explanation" value="none"/>
         <details key="constraints" value="none"/>
       </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="opposite"/>
+        <details key="viatra.expression" value="navigableMembers"/>
+      </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="SynchronismKind">
@@ -1854,7 +1877,10 @@
         <details key="Label" value="messages"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="messageReferences.message"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the Messages involving this Service&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1963,7 +1989,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="containedUnionProperties"
         upperBound="-1" eType="#//UnionProperty" changeable="false" volatile="true"
         transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="ownedFeatures"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="feature" value="ownedFeatures"/>
       </eAnnotations>
@@ -2121,7 +2150,10 @@
         <details key="Label" value="ownedParts"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="ownedFeatures"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) list of partitions contained in this element&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2144,7 +2176,10 @@
         <details key="Label" value="parts"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="typedElements"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the list of Partitions that are associated to this element&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2210,7 +2245,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="incomingPortRealizations"
         upperBound="-1" eType="#//PortRealization" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//PortRealization/realizedPort">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="incomingTraces"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="contains the list of port realization link(s) pointing from other (typically lower level) port(s) to this port&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2225,7 +2263,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingPortRealizations"
         upperBound="-1" eType="#//PortRealization" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//PortRealization/realizingPort">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="outgoingTraces"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) list of port realization links starting from this port, and pointing to other (typically higher-level) ports.&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2254,7 +2295,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="incomingPortAllocations"
         upperBound="-1" eType="#//PortAllocation" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//PortAllocation/allocatedPort">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="incomingTraces"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) list of allocation links pointing from other model elements, to this port&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2269,7 +2313,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingPortAllocations"
         upperBound="-1" eType="#//PortAllocation" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//PortAllocation/allocatingPort">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="outgoingTraces"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) list of allocations links, starting from this port towards other model elements to which this port needs to be allocated&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2355,7 +2402,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizedPort" lowerBound="1"
         eType="#//Port" changeable="false" volatile="true" transient="true" derived="true"
         eOpposite="#//Port/incomingPortRealizations">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="targetElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="destiniation of the port realization : the port that is being realized&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2370,7 +2420,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizingPort" lowerBound="1"
         eType="#//Port" changeable="false" volatile="true" transient="true" derived="true"
         eOpposite="#//Port/outgoingPortRealizations">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="sourceElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the source of the Port realization : the port that is realizing another port&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2401,7 +2454,10 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatedPort" eType="#//Port"
         changeable="false" volatile="true" transient="true" derived="true" eOpposite="#//Port/incomingPortAllocations">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="targetElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the &quot;destination&quot; of the allocation link : the port that is being allocated by another port&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2415,7 +2471,10 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatingPort" eType="#//Port"
         changeable="false" volatile="true" transient="true" derived="true" eOpposite="#//Port/outgoingPortAllocations">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="sourceElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the &quot;source&quot; of the allocation link : the port that is allocating the other port&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2494,7 +2553,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatorInterfaces" upperBound="-1"
         eType="ecore:EClass CompositeStructure.ecore#//Interface" changeable="false"
         volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="ExchangeItemAllocation.allocatedItem(eia, self);&#xD;&#xA;ExchangeItemAllocation.allocatingInterface(eia, target);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="excludefrom" value="xmlpivot"/>
       </eAnnotations>
@@ -2507,7 +2569,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizedExchangeItems"
         upperBound="-1" eType="#//ExchangeItem" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//ExchangeItem/realizingExchangeItems">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="ExchangeItem.outgoingTraces(self, ir);&#xD;&#xA;InformationRealization.targetElement(ir, target); "/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="class(es) realized by this class"/>
         <details key="constraints" value="none"/>
@@ -2518,7 +2583,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizingExchangeItems"
         upperBound="-1" eType="#//ExchangeItem" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//ExchangeItem/realizedExchangeItems">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="ExchangeItem.incomingTraces(self, ir);&#xD;&#xA;InformationRealization.sourceElement(ir, target); "/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="class(es) realizing this class"/>
         <details key="constraints" value="none"/>
@@ -2531,7 +2599,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizingOperations" upperBound="-1"
         eType="#//Operation" changeable="false" volatile="true" transient="true" derived="true"
         eOpposite="#//Operation/realizedExchangeItems">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="ExchangeItem.incomingTraces(self, eir);&#xD;&#xA;ExchangeItemRealization.realizingOperation(eir, target); "/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="class(es) realizing this class"/>
         <details key="constraints" value="none"/>
@@ -2812,7 +2883,10 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizedItem" eType="ecore:EClass ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractExchangeItem"
         changeable="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="targetElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the exchange item that is being realized by the operation&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2826,7 +2900,10 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizingOperation" eType="#//Operation"
         changeable="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="sourceElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the interface's operation that realizes the given exchange item&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2855,7 +2932,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="invokingSequenceMessages"
         upperBound="-1" eType="ecore:EClass Interaction.ecore#//SequenceMessage" changeable="false"
         volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="SequenceMessage.receivingEnd.event(target, ero);&#xD;&#xA;&#x9;EventReceiptOperation.operation(ero, self);&#xD;&#xA;} or {&#xD;&#xA;&#x9;SequenceMessage.sendingEnd.event(target, eso);&#xD;&#xA;&#x9;EventSentOperation.operation(eso, self);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="excludefrom" value="xmlpivot"/>
       </eAnnotations>
@@ -2866,9 +2946,9 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eSubpackages name="communication" nsURI="http://www.polarsys.org/capella/core/information/communication/1.2.0"
+  <eSubpackages name="communication" nsURI="http://www.polarsys.org/capella/core/information/communication/1.3.0"
       nsPrefix="org.polarsys.capella.core.data.information.communication">
-    <eAnnotations source="http://www.polarsys.org/kitalpha/dsl/2007/dslfactory">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/extension">
       <details key="trackResourceModification" value="true"/>
       <details key="useUUIDs" value="false"/>
       <details key="useIDAttributes" value="true"/>
@@ -2885,13 +2965,6 @@
       <details key="reference documentation" value="n/a"/>
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/extension">
-      <details key="trackResourceModification" value="true"/>
-      <details key="useUUIDs" value="false"/>
-      <details key="useIDAttributes" value="true"/>
-      <details key="extensibleProviderFactory" value="true"/>
-      <details key="childCreationExtenders" value="true"/>
-    </eAnnotations>
     <eClassifiers xsi:type="ecore:EClass" name="CommunicationItem" abstract="true"
         eSuperTypes="CapellaCore.ecore#//Classifier #//datavalue/DataValueContainer">
       <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
@@ -2954,7 +3027,10 @@
           <details key="Label" value="properties"/>
         </eAnnotations>
         <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-        <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+        <eAnnotations source="http://www.polarsys.org/capella/derived">
+          <details key="viatra.variant" value="alias"/>
+          <details key="viatra.expression" value="ownedFeatures"/>
+        </eAnnotations>
         <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
           <details key="description" value="attributes of the communication item&#xD;&#xA;[source: Capella study]"/>
           <details key="constraints" value="none"/>
@@ -3525,7 +3601,10 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="produce" upperBound="-1"
           eType="#//communication/CommunicationLink" changeable="false" volatile="true"
           transient="true" derived="true">
-        <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+        <eAnnotations source="http://www.polarsys.org/capella/derived">
+          <details key="viatra.variant" value="patternbody"/>
+          <details key="viatra.expression" value="CommunicationLinkExchanger.ownedCommunicationLinks(self, target);&#xD;&#xA;CommunicationLink.kind(target, ::PRODUCE);"/>
+        </eAnnotations>
         <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
           <details key="description" value="(automatically computed) list of all production CommunicationLinks"/>
           <details key="constraints" value="none"/>
@@ -3540,7 +3619,10 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="consume" upperBound="-1"
           eType="#//communication/CommunicationLink" changeable="false" volatile="true"
           transient="true" derived="true">
-        <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+        <eAnnotations source="http://www.polarsys.org/capella/derived">
+          <details key="viatra.variant" value="patternbody"/>
+          <details key="viatra.expression" value="CommunicationLinkExchanger.ownedCommunicationLinks(self, target);&#xD;&#xA;CommunicationLink.kind(target, ::CONSUME);"/>
+        </eAnnotations>
         <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
           <details key="description" value="(automatically computed) list of all consumption CommunicationLinks"/>
           <details key="constraints" value="none"/>
@@ -3555,7 +3637,10 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="send" upperBound="-1"
           eType="#//communication/CommunicationLink" changeable="false" volatile="true"
           transient="true" derived="true">
-        <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+        <eAnnotations source="http://www.polarsys.org/capella/derived">
+          <details key="viatra.variant" value="patternbody"/>
+          <details key="viatra.expression" value="CommunicationLinkExchanger.ownedCommunicationLinks(self, target);&#xD;&#xA;CommunicationLink.kind(target, ::SEND);"/>
+        </eAnnotations>
         <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
           <details key="description" value="(automatically computed) list of all sending CommunicationLinks"/>
           <details key="constraints" value="none"/>
@@ -3570,7 +3655,10 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="receive" upperBound="-1"
           eType="#//communication/CommunicationLink" changeable="false" volatile="true"
           transient="true" derived="true">
-        <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+        <eAnnotations source="http://www.polarsys.org/capella/derived">
+          <details key="viatra.variant" value="patternbody"/>
+          <details key="viatra.expression" value="CommunicationLinkExchanger.ownedCommunicationLinks(self, target);&#xD;&#xA;CommunicationLink.kind(target, ::RECEIVE);"/>
+        </eAnnotations>
         <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
           <details key="description" value="(automatically computed) list of all receiving CommunicationLinks"/>
           <details key="constraints" value="none"/>
@@ -3585,7 +3673,10 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="call" upperBound="-1"
           eType="#//communication/CommunicationLink" changeable="false" volatile="true"
           transient="true" derived="true">
-        <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+        <eAnnotations source="http://www.polarsys.org/capella/derived">
+          <details key="viatra.variant" value="patternbody"/>
+          <details key="viatra.expression" value="CommunicationLinkExchanger.ownedCommunicationLinks(self, target);&#xD;&#xA;CommunicationLink.kind(target, ::CALL);"/>
+        </eAnnotations>
         <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
           <details key="description" value="(automatically computed) list of all calling CommunicationLinks"/>
           <details key="constraints" value="none"/>
@@ -3600,7 +3691,10 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="execute" upperBound="-1"
           eType="#//communication/CommunicationLink" changeable="false" volatile="true"
           transient="true" derived="true">
-        <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+        <eAnnotations source="http://www.polarsys.org/capella/derived">
+          <details key="viatra.variant" value="patternbody"/>
+          <details key="viatra.expression" value="CommunicationLinkExchanger.ownedCommunicationLinks(self, target);&#xD;&#xA;CommunicationLink.kind(target, ::EXECUTE);"/>
+        </eAnnotations>
         <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
           <details key="description" value="(automatically computed) list of all execution CommunicationLinks"/>
           <details key="constraints" value="none"/>
@@ -3615,7 +3709,10 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="write" upperBound="-1"
           eType="#//communication/CommunicationLink" changeable="false" volatile="true"
           transient="true" derived="true">
-        <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+        <eAnnotations source="http://www.polarsys.org/capella/derived">
+          <details key="viatra.variant" value="patternbody"/>
+          <details key="viatra.expression" value="CommunicationLinkExchanger.ownedCommunicationLinks(self, target);&#xD;&#xA;CommunicationLink.kind(target, ::WRITE);"/>
+        </eAnnotations>
         <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
           <details key="description" value="(automatically computed) list of all writing CommunicationLinks"/>
           <details key="constraints" value="none"/>
@@ -3630,7 +3727,10 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="access" upperBound="-1"
           eType="#//communication/CommunicationLink" changeable="false" volatile="true"
           transient="true" derived="true">
-        <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+        <eAnnotations source="http://www.polarsys.org/capella/derived">
+          <details key="viatra.variant" value="patternbody"/>
+          <details key="viatra.expression" value="CommunicationLinkExchanger.ownedCommunicationLinks(self, target);&#xD;&#xA;CommunicationLink.kind(target, ::ACCESS);"/>
+        </eAnnotations>
         <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
           <details key="description" value="(automatically computed) list of all accessing CommunicationLinks"/>
           <details key="constraints" value="none"/>
@@ -3645,7 +3745,10 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="acquire" upperBound="-1"
           eType="#//communication/CommunicationLink" changeable="false" volatile="true"
           transient="true" derived="true">
-        <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+        <eAnnotations source="http://www.polarsys.org/capella/derived">
+          <details key="viatra.variant" value="patternbody"/>
+          <details key="viatra.expression" value="CommunicationLinkExchanger.ownedCommunicationLinks(self, target);&#xD;&#xA;CommunicationLink.kind(target, ::ACQUIRE);"/>
+        </eAnnotations>
         <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
           <details key="description" value="(automatically computed) list of all acquiring CommunicationLinks"/>
           <details key="constraints" value="none"/>
@@ -3660,7 +3763,10 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="transmit" upperBound="-1"
           eType="#//communication/CommunicationLink" changeable="false" volatile="true"
           transient="true" derived="true">
-        <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+        <eAnnotations source="http://www.polarsys.org/capella/derived">
+          <details key="viatra.variant" value="patternbody"/>
+          <details key="viatra.expression" value="CommunicationLinkExchanger.ownedCommunicationLinks(self, target);&#xD;&#xA;CommunicationLink.kind(target, ::TRANSMIT);"/>
+        </eAnnotations>
         <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
           <details key="description" value="(automatically computed) list of all transmitting CommunicationLinks"/>
           <details key="constraints" value="none"/>
@@ -3674,9 +3780,9 @@
       </eStructuralFeatures>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages name="datatype" nsURI="http://www.polarsys.org/capella/core/information/datatype/1.2.0"
+  <eSubpackages name="datatype" nsURI="http://www.polarsys.org/capella/core/information/datatype/1.3.0"
       nsPrefix="org.polarsys.capella.core.data.information.datatype">
-    <eAnnotations source="http://www.polarsys.org/kitalpha/dsl/2007/dslfactory">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/extension">
       <details key="trackResourceModification" value="true"/>
       <details key="useUUIDs" value="false"/>
       <details key="useIDAttributes" value="true"/>
@@ -3693,13 +3799,6 @@
       <details key="reference documentation" value="n/a"/>
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/extension">
-      <details key="trackResourceModification" value="true"/>
-      <details key="useUUIDs" value="false"/>
-      <details key="useIDAttributes" value="true"/>
-      <details key="extensibleProviderFactory" value="true"/>
-      <details key="childCreationExtenders" value="true"/>
-    </eAnnotations>
     <eClassifiers xsi:type="ecore:EClass" name="DataType" abstract="true" eSuperTypes="CapellaCore.ecore#//GeneralizableElement #//datavalue/DataValueContainer ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//FinalizableElement">
       <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
         <details key="Label" value="DataType"/>
@@ -3808,7 +3907,10 @@
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="defaultValue" eType="#//datavalue/DataValue"
           changeable="false" volatile="true" transient="true" derived="true">
-        <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+        <eAnnotations source="http://www.polarsys.org/capella/derived">
+          <details key="viatra.variant" value="patternbody"/>
+          <details key="viatra.expression" value="BooleanType.ownedDefaultValue(self, target);&#xD;&#xA;} or {&#xD;&#xA;&#x9;StringType.ownedDefaultValue(self, target);&#xD;&#xA;} or {&#xD;&#xA;&#x9;Enumeration.ownedDefaultValue(self, target);&#xD;&#xA;} or {&#xD;&#xA;&#x9;NumericType.ownedDefaultValue(self, target);&#xD;&#xA;} or {&#xD;&#xA;&#x9;PhysicalQuantity.ownedDefaultValue(self, target);&#xD;&#xA;&#xD;&#xA;"/>
+        </eAnnotations>
         <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
           <details key="description" value="allows to specify a default value for this data type&#xD;&#xA;[source: Capella study]"/>
           <details key="constraints" value="none"/>
@@ -3823,7 +3925,10 @@
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="nullValue" eType="#//datavalue/DataValue"
           changeable="false" volatile="true" transient="true" derived="true">
-        <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+        <eAnnotations source="http://www.polarsys.org/capella/derived">
+          <details key="viatra.variant" value="patternbody"/>
+          <details key="viatra.expression" value="StringType.ownedNullValue(self, target);&#xD;&#xA;} or {&#xD;&#xA;&#x9;Enumeration.ownedNullValue(self, target);&#xD;&#xA;} or {&#xD;&#xA;&#x9;NumericType.ownedNullValue(self, target);&#xD;&#xA;} or {&#xD;&#xA;&#x9;PhysicalQuantity.ownedNullValue(self, target);&#xD;&#xA;&#xD;&#xA;"/>
+        </eAnnotations>
         <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
           <details key="description" value="allows to specify the nature/value of the &quot;null&quot; value for this type of data&#xD;&#xA;[source: Capella study]"/>
           <details key="constraints" value="none"/>
@@ -3847,7 +3952,10 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="realizedDataTypes" upperBound="-1"
           eType="#//datatype/DataType" changeable="false" volatile="true" transient="true"
           derived="true" eOpposite="#//datatype/DataType/realizingDataTypes">
-        <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+        <eAnnotations source="http://www.polarsys.org/capella/derived">
+          <details key="viatra.variant" value="patternbody"/>
+          <details key="viatra.expression" value="DataType.outgoingTraces(self, ir);&#xD;&#xA;InformationRealization.targetElement(ir, target); "/>
+        </eAnnotations>
         <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
           <details key="description" value="class(es) realized by this class"/>
           <details key="constraints" value="none"/>
@@ -3858,7 +3966,10 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="realizingDataTypes" upperBound="-1"
           eType="#//datatype/DataType" changeable="false" volatile="true" transient="true"
           derived="true" eOpposite="#//datatype/DataType/realizedDataTypes">
-        <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+        <eAnnotations source="http://www.polarsys.org/capella/derived">
+          <details key="viatra.variant" value="patternbody"/>
+          <details key="viatra.expression" value="DataType.incomingTraces(self, ir);&#xD;&#xA;InformationRealization.sourceElement(ir, target); "/>
+        </eAnnotations>
         <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
           <details key="description" value="class(es) realizing this class"/>
           <details key="constraints" value="none"/>
@@ -4399,9 +4510,9 @@
       </eLiterals>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages name="datavalue" nsURI="http://www.polarsys.org/capella/core/information/datavalue/1.2.0"
+  <eSubpackages name="datavalue" nsURI="http://www.polarsys.org/capella/core/information/datavalue/1.3.0"
       nsPrefix="org.polarsys.capella.core.data.information.datavalue">
-    <eAnnotations source="http://www.polarsys.org/kitalpha/dsl/2007/dslfactory">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/extension">
       <details key="trackResourceModification" value="true"/>
       <details key="useUUIDs" value="false"/>
       <details key="useIDAttributes" value="true"/>
@@ -4418,13 +4529,6 @@
       <details key="reference documentation" value="n/a"/>
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/extension">
-      <details key="trackResourceModification" value="true"/>
-      <details key="useUUIDs" value="false"/>
-      <details key="useIDAttributes" value="true"/>
-      <details key="extensibleProviderFactory" value="true"/>
-      <details key="childCreationExtenders" value="true"/>
-    </eAnnotations>
     <eClassifiers xsi:type="ecore:EClass" name="DataValue" abstract="true" eSuperTypes="CapellaCore.ecore#//NamedElement ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//ValueSpecification">
       <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
         <details key="Label" value="DataValue"/>
@@ -4463,7 +4567,10 @@
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass CapellaCore.ecore#//Type"
           changeable="false" volatile="true" transient="true" derived="true">
-        <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+        <eAnnotations source="http://www.polarsys.org/capella/derived">
+          <details key="viatra.variant" value="alias"/>
+          <details key="viatra.expression" value="abstractType"/>
+        </eAnnotations>
         <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
           <details key="description" value="The type of the TypedElement&#xD;&#xA;[source:UML Superstructure v2.2]"/>
           <details key="constraints" value="none"/>
@@ -4552,7 +4659,10 @@
           <details key="Label" value="type"/>
         </eAnnotations>
         <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-        <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+        <eAnnotations source="http://www.polarsys.org/capella/derived">
+          <details key="viatra.variant" value="alias"/>
+          <details key="viatra.expression" value="abstractType"/>
+        </eAnnotations>
         <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
           <details key="description" value="the type of the data being valued&#xD;&#xA;[source: Capella study]"/>
           <details key="constraints" value="none"/>
@@ -4706,7 +4816,10 @@
           <details key="Label" value="type"/>
         </eAnnotations>
         <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-        <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+        <eAnnotations source="http://www.polarsys.org/capella/derived">
+          <details key="viatra.variant" value="alias"/>
+          <details key="viatra.expression" value="abstractType"/>
+        </eAnnotations>
         <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
           <details key="description" value="the type of the data being valued&#xD;&#xA;[source: Capella study]"/>
           <details key="constraints" value="none"/>
@@ -4851,7 +4964,10 @@
           <details key="Label" value="type"/>
         </eAnnotations>
         <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-        <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+        <eAnnotations source="http://www.polarsys.org/capella/derived">
+          <details key="viatra.variant" value="alias"/>
+          <details key="viatra.expression" value="abstractType"/>
+        </eAnnotations>
         <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
           <details key="description" value="the type of the data being valued&#xD;&#xA;[source: Capella study]"/>
           <details key="constraints" value="none"/>
@@ -5028,7 +5144,10 @@
           <details key="Label" value="type"/>
         </eAnnotations>
         <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-        <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+        <eAnnotations source="http://www.polarsys.org/capella/derived">
+          <details key="viatra.variant" value="alias"/>
+          <details key="viatra.expression" value="abstractType"/>
+        </eAnnotations>
         <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
           <details key="description" value="the type of the data being valued&#xD;&#xA;[source: Capella study]"/>
           <details key="constraints" value="none"/>
@@ -5182,7 +5301,10 @@
           <details key="Label" value="type"/>
         </eAnnotations>
         <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-        <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+        <eAnnotations source="http://www.polarsys.org/capella/derived">
+          <details key="viatra.variant" value="alias"/>
+          <details key="viatra.expression" value="abstractType"/>
+        </eAnnotations>
         <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
           <details key="description" value="the type of the data being valued&#xD;&#xA;[source: Capella study]"/>
           <details key="constraints" value="none"/>
@@ -5403,7 +5525,10 @@
           <details key="Label" value="type"/>
         </eAnnotations>
         <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-        <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+        <eAnnotations source="http://www.polarsys.org/capella/derived">
+          <details key="viatra.variant" value="alias"/>
+          <details key="viatra.expression" value="abstractType"/>
+        </eAnnotations>
         <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
           <details key="description" value="the type of the data being valued&#xD;&#xA;[source: Capella study]"/>
           <details key="constraints" value="none"/>

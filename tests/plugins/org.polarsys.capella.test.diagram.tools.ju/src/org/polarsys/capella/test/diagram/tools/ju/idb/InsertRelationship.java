@@ -108,8 +108,10 @@ public class InsertRelationship extends EmptyProject {
 
   private void createGeneralizationLinks(IDBDiagram diagramContext) {
 
-    diagramContext.setPreference(IInheritancePreferences.PREFS_ALLOW_COMPONENT_INHERITANCE, true);
-    diagramContext.setPreference(IInheritancePreferences.PREFS_ALLOW_MULTIPLE_INHERITANCE, true);
+    SessionContext sessionContext = diagramContext.getSessionContext();
+
+    sessionContext.setPreference(IInheritancePreferences.PREFS_ALLOW_COMPONENT_INHERITANCE, true);
+    sessionContext.setPreference(IInheritancePreferences.PREFS_ALLOW_MULTIPLE_INHERITANCE, true);
 
     diagramContext.createGeneralization(GenericModel.LC_1, GenericModel.LC_2, GenericModel.GENERALIZATION_2);
     diagramContext.createGeneralization(GenericModel.LC_1, GenericModel.LC_3, GenericModel.GENERALIZATION_3);

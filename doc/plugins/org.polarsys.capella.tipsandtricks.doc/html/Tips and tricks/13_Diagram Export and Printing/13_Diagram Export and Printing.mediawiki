@@ -12,6 +12,7 @@ You can:
 * Select the export location
 * Choose the format among JPG, PNG, SVG, BMP, GIF
 * Choose the quality of the exported image (image size)
+* Choose the quality of the exported image (image size)
 * Export it to HTML Format
 
 ==Batch Image Export==
@@ -28,6 +29,7 @@ You can:
 
 * Select the export location
 * Choose the format among JPG, PNG, SVG, BMP, GIF
+* Choose the quality of the exported image (image size)
 * Choose the quality of the exported image (image size)
 * Export it to HTML Format
 

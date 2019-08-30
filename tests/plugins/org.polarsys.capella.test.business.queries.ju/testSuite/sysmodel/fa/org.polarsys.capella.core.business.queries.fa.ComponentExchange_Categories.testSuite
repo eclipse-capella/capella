@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -447,6 +447,7 @@ queryIdentifier = org.polarsys.capella.core.business.queries.fa.ComponentExchang
 inputId = 8f44caf2-b8e2-4c4a-9289-9bbba5d01d91
 resultIds = {
     788d1676-6cbd-4960-898f-ec4eab43a1c4
+    a3254dd7-1b09-415d-a454-cd66abaa91f1
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.fa.ComponentExchange_Categories-getCurrentElements
@@ -458,19 +459,22 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.fa.ComponentExchange_Categories-getAvailableElements
 inputId = 47b87c8b-9d4f-4531-83a0-33605b32894a
 resultIds = {
+    788d1676-6cbd-4960-898f-ec4eab43a1c4
+    a3254dd7-1b09-415d-a454-cd66abaa91f1
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.fa.ComponentExchange_Categories-getCurrentElements
 inputId = 47b87c8b-9d4f-4531-83a0-33605b32894a
 resultIds = {
-    a3254dd7-1b09-415d-a454-cd66abaa91f1
     788d1676-6cbd-4960-898f-ec4eab43a1c4
+    a3254dd7-1b09-415d-a454-cd66abaa91f1
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.fa.ComponentExchange_Categories-getAvailableElements
 inputId = e5274eb2-84e4-4c2a-8818-9dad8ee095ca
 resultIds = {
     788d1676-6cbd-4960-898f-ec4eab43a1c4
+    a3254dd7-1b09-415d-a454-cd66abaa91f1
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.fa.ComponentExchange_Categories-getCurrentElements
@@ -482,6 +486,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.fa.ComponentExchange_Categories-getAvailableElements
 inputId = 2089fff5-b658-46fc-8388-382511f1b187
 resultIds = {
+    788d1676-6cbd-4960-898f-ec4eab43a1c4
     a3254dd7-1b09-415d-a454-cd66abaa91f1
 }
 

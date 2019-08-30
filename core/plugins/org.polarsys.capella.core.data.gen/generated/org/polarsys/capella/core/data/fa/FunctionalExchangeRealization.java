@@ -51,6 +51,7 @@ public interface FunctionalExchangeRealization extends Allocation {
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalExchangeRealization_RealizedFunctionalExchange()
 	 * @see org.polarsys.capella.core.data.fa.FunctionalExchange#getIncomingFunctionalExchangeRealizations
 	 * @model opposite="incomingFunctionalExchangeRealizations" required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='targetElement'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the functional exchange that is being realized by the other functional exchange involved in this relationship\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -78,6 +79,7 @@ public interface FunctionalExchangeRealization extends Allocation {
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalExchangeRealization_RealizingFunctionalExchange()
 	 * @see org.polarsys.capella.core.data.fa.FunctionalExchange#getOutgoingFunctionalExchangeRealizations
 	 * @model opposite="outgoingFunctionalExchangeRealizations" required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='sourceElement'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the functional exchange that is realising the other functional exchange involved in this relationship\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

@@ -52,7 +52,7 @@ public class ActivityPartitionHelper {
 	}
 
 	public List<ActivityPartition> getSubPartitions (ActivityPartition element) {
-		List<ActivityPartition> ret = new ArrayList<ActivityPartition>();
+		List<ActivityPartition> ret = new ArrayList<>();
 		for (ActivityGroup group : element.getSubGroups()) {
 			if (group instanceof ActivityPartition){
 				ret.add((ActivityPartition) group);		

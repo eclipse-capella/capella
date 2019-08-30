@@ -45,6 +45,7 @@ import org.polarsys.capella.common.data.activity.StructuredActivityNode;
 import org.polarsys.capella.common.data.activity.ValuePin;
 import org.polarsys.capella.common.data.behavior.BehaviorPackage;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.kitalpha.emde.model.EmdePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -276,6 +277,8 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 
 		// Initialize simple dependencies
 		BehaviorPackage.eINSTANCE.eClass();
+		ModellingcorePackage.eINSTANCE.eClass();
+		EmdePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theActivityPackage.createPackageContents();
@@ -1413,38 +1416,16 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 		createResource(eNS_URI);
 
 		// Create annotations
-		// http://www.polarsys.org/kitalpha/dsl/2007/dslfactory
-		createDslfactoryAnnotations();
+		// http://www.polarsys.org/kitalpha/emde/1.0.0/extension
+		createExtensionAnnotations();
 		// http://www.polarsys.org/kitalpha/ecore/documentation
 		createDocumentationAnnotations();
 		// http://www.polarsys.org/capella/semantic
 		createSemanticAnnotations();
-		// http://www.polarsys.org/kitalpha/emde/1.0.0/extension
-		createExtensionAnnotations();
 		// http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping
 		createMappingAnnotations();
 		// http://www.polarsys.org/capella/derived
 		createDerivedAnnotations();
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://www.polarsys.org/kitalpha/dsl/2007/dslfactory</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createDslfactoryAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$	
-		addAnnotation
-		  (this, 
-		   source, 
-		   new String[] {
-			 "trackResourceModification", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "useUUIDs", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });
 	}
 
 	/**
@@ -3298,61 +3279,85 @@ public class ActivityPackageImpl extends EPackageImpl implements ActivityPackage
 		  (getAbstractActivity_OwnedStructuredNodes(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ownedGroups" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getActivityEdge_InActivityPartition(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ownedEdges" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getActivityEdge_InInterruptibleRegion(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ownedEdges" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getActivityEdge_InStructuredNode(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ownedEdges" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getActivityPartition_SuperPartition(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "superGroup" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getActivityPartition_SubPartitions(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "subGroups" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getActivityExchange_RealizingActivityFlows(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "realizations" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getActivityNode_InActivityPartition(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ownedNodes" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getActivityNode_InInterruptibleRegion(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ownedNodes" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getActivityNode_InStructuredNode(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ownedNodes" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getActivityNode_Outgoing(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "source" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getActivityNode_Incoming(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "target" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 

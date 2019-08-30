@@ -1,5 +1,76 @@
-<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>3.5. How to migrate Capella projects</title><link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/></head><body><h1 id="How_to_Migrate_Capella_Project">How to Migrate Capella Project</h1><p>Capella offers migration feature to operate with old Capella projects.</p><p>To launch the migration process on a Capella Project, right click on the <u><b>project</b></u> and choose <i>migration &gt; Migrate Project toward current version</i></p><p><img height="430" width="675" border="0" src="Images/3.5.%20How%20to%20migrate%20Melody%20Advance%20projects_html_m55692da5.png"/></p><p>A reminder asks to manually make a versioned copy (baseline) of the model before running migration.</p><p>Capella creates backup files before performing migration to go back in case of migration problems, even if models are not managed in source control. Please check the option &ldquo;Backup models before the migration&rdquo;.</p><p><img height="210" width="567" border="0" src="Images/3.5.%20How%20to%20migrate%20Melody%20Advance%20projects_html_m381b2efb.png"/></p><p><br/>
-<br/>
-Some additional migration commands are available on semantic and diagram files allowing advanced migration processes by triggering migration on each files kind separately. These commands can be enabled following "Capella Guide &gt; User Manual &gt; Preferences &gt; Capella &gt; Commands &amp; User Profiles" section.</p><p><br/>
-<br/></p><table border="1"><tr><td><p><img height="48" width="48" border="0" src="Images/3.5.%20How%20to%20migrate%20Melody%20Advance%20projects_html_3c78e109.png"/></p></td><td><p>At the end of the migration of a project, we recommend to run a manual global refresh of all diagrams on the migrated project (See Capella Guide &gt; User Manual &gt; Diagram Management &gt; Diagram Concepts &gt; Diagram Refreshing Strategies).</p></td></tr></table><p><br/>
-<br/></p></body></html>
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="How_to_Migrate_Capella_Project">How to Migrate Capella Project</h1>
+		<p>When upgrading to a new Capella product, your older models may not be compatible right away with this new version.
+			In order to facilitate this transition, Capella offers a migration feature that allows you to migrate your models.</p>
+		<p>The migrated projects 
+			<b>are not backwards compatible</b>. This means that once they are migrated to the new version, they 
+			<b>can not</b> be opened with the previous Capella versions. For more details please refer to the 
+			<b>Capella versions requiring a project migration</b> section below.
+		</p>
+		<p>We strongly recommend that you baseline your model in a version control system before performing the migration operation. Once this is done please continue with the following migration steps:</p>
+		<ol>
+			<li>Migrate any libraries towards wich you model has any dependencies. If your libraries have dependencies towards other libraries then they must be migrated first. You should start your migration process with the library that has no external dependencies, and continue progressively to the top dependency.</li>
+			<li>Migrate your projects.</li>
+		</ol>
+		<p>In order to launch the migration process of a Capella Project you must right click on the <u>
+			<b>project</b></u> and choose 
+			<i>Migration &gt; Migrate Project toward current version</i>. The same steps apply to libraries as well.
+		</p>
+		<p>
+			<img height="430" width="675" border="0" src="Images/3.5.%20How%20to%20migrate%20Melody%20Advance%20projects_html_m55692da5.png"/>
+		</p>
+		<p>The displayed dialog allows you to to make a versioned backup (baseline) of the model before running the migration.
+			These backup files will allow you to recover your model in case of any migration problems, even if the model is not managed in a source control system. </p>
+		<p>We highly advise you to enable the option &ldquo;Backup models before the migration&rdquo;.</p>
+		<p>
+			<img height="210" width="567" border="0" src="Images/3.5.%20How%20to%20migrate%20Melody%20Advance%20projects_html_m381b2efb.png"/>
+		</p>
+		<p>Some additional migration commands are available on semantic and diagram files allowing advanced migration processes by triggering a migration on each of these files kind separately. For more details see the 
+			<a href="/wiki/../help/topic/org.polarsys.capella.preferences.doc/html/06.%20Preferences/6.4.%20Commands%20preferences.html?cp=6_1_21_1_11_0_0" title="../help/topic/org.polarsys.capella.preferences.doc/html/06.%20Preferences/6.4.%20Commands%20preferences.html?cp=6_1_21_1_11_0_0">Commands &amp; User Profiles</a> section.
+		</p>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="48" width="48" border="0" src="Images/3.5.%20How%20to%20migrate%20Melody%20Advance%20projects_html_3c78e109.png"/>
+					</p>
+				</td>
+				<td>
+					<p>At the end of the migration process, we recommend you to run a manual global refresh on all the diagrams of the migrated project. For more details see the 
+						<a href="/wiki/../help/topic/org.polarsys.capella.ui.doc/html/05.%20Diagram%20Management/5.1.%20Diagram%20concepts.html?cp=6_1_6_0_1#Diagram_Refreshing_Strategies" title="../help/topic/org.polarsys.capella.ui.doc/html/05.%20Diagram%20Management/5.1.%20Diagram%20concepts.html?cp=6_1_6_0_1#Diagram_Refreshing_Strategies">Diagram Refreshing Strategies</a> section.
+					</p>
+				</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+		</p>
+		<h2 id="Capella_versions_requiring_a_project_migration">Capella versions requiring a project migration</h2>
+		<p>The following table presents the Capella version transitions that require a project migration.</p>
+		<table border="1">
+			<tr>
+				<th>Previous Capella Version</th>
+				<th>Upgraded Capella Version</th>
+			</tr>
+			<tr>
+				<td>1.2.x</td>
+				<td>1.3.x</td>
+			</tr>
+			<tr>
+				<td>1.3.0</td>
+				<td>1.3.1</td>
+			</tr>
+		</table>
+	</body>
+</html>

@@ -1,0 +1,387 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _n3K_MK56Eee2vO1UksePLw
+Element-Name: InterfaceDelegation
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _wxM68K56Eee2vO1UksePLw
+Runtime-Version: 2.1.0.201606221726
+Save-Time: 3/21/18 2:32 PM
+Testcase-Type: ecl
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "InterfaceDelegation/InterfaceDelegation.aird" | get-menu "Open Session" | click
+}
+
+
+///SequenceMessage Creation option wizard Test
+
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "InterfaceDelegation/InterfaceDelegation.aird/Representations per category/Common/Interface Scenario/[IS] Testing" 
+    | get-menu Open | click
+with [get-editor "[IS] Testing"] {
+    
+    with [get-palette | get-palette-entry "Sequence Message with Return Branch"] {
+        mouse-move 41 19 -height 52 -width 125
+        mouse-move 66 22 button1 -height 52 -width 125
+        mouse-press 66 22 button1 -height 52 -width 125
+        mouse-release 66 22 button1 524288 -height 52 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[IS] Testing"] {
+        mouse-move 414 180 -height 663 -width 1111
+        with [get-edit-part -name "A 2" | get-edit-part -name "" | get-edit-part -className SquareEditPart] {
+            mouse-move 7 109 button1 -height 395 -width 10
+            mouse-press 7 109 button1 -height 395 -width 10
+            mouse-release 7 109 button1 524288 -height 395 -width 10
+        }
+        mouse-move 563 210 -height 663 -width 1111
+        with [get-edit-part -name "Actor 3" | get-edit-part -name "" | get-edit-part -className SquareEditPart] {
+            mouse-hover 0 110 -height 395 -width 10
+            mouse-move 2 109 button1 -height 395 -width 10
+            mouse-press 2 109 button1 -height 395 -width 10
+        }
+    }
+}
+
+//There shall not have any Communication Link in the wizard
+get-window "Selection Dialog" | get-group "Select an existing Exchange Item" | get-tree | get-property itemCount 
+    | equals 0 | verify-true
+    
+//Unckeck the box, there shall have 4 links flow_partial_01 shared_partial_01 sync_operation_partial_01 unset_partial_01
+
+get-window "Selection Dialog" | get-group "Select an existing Exchange Item" 
+    | get-button "Restrict to existing static communication compatibilities" | uncheck
+
+with [get-window "Selection Dialog" | get-group "Select an existing Exchange Item" | get-tree] {
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Actors/A 2/\\[Link\\] to flow_partial_01 \\(FLOW\\) \\[UNSET\\/\\+UNSET\\]" 
+        | get-property caption | equals "[Link] to flow_partial_01 (FLOW) [UNSET/+UNSET]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Actors/A 2/\\[Link\\] to shared_partial_01 \\(SHARED_DATA\\) \\[UNSET\\/\\+READ\\]" 
+        | get-property caption | equals "[Link] to shared_partial_01 (SHARED_DATA) [UNSET/+READ]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Actors/A 2/\\[Link\\] to sync_operation_partial_01 \\(OPERATION\\) \\[SYNCHRONOUS\\/\\+UNSET\\]" 
+        | get-property caption | equals "[Link] to sync_operation_partial_01 (OPERATION) [SYNCHRONOUS/+UNSET]"  | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Actors/A 2/\\[Link\\] to unset_partial_01 \\(UNSET\\) \\[UNSET\\/\\+UNSET\\]" 
+        | get-property caption | equals "[Link] to unset_partial_01 (UNSET) [UNSET/+UNSET]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Actors/A 2" | get-property childCount | equals 4 
+        | verify-true
+}
+
+//On the top o the wizard change the "Sequence Message Kind" to "Asynchronous call", there shall have 4 links async_operation_partial_01 flow_partial_01 shared_partial_01 unset_partial_01
+
+get-window "Selection Dialog" | get-group "Sequence Message Kind" | get-button "Asynchronous call" | click
+with [get-window "Selection Dialog" | get-group "Select an existing Exchange Item" | get-tree] {
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Actors/A 2/\\[Link\\] to async_operation_partial_01 \\(OPERATION\\) \\[ASYNCHRONOUS\\/\\+UNSET\\]" 
+        | get-property caption | equals "[Link] to async_operation_partial_01 (OPERATION) [ASYNCHRONOUS/+UNSET]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Actors/A 2/\\[Link\\] to flow_partial_01 \\(FLOW\\) \\[UNSET\\/\\+UNSET\\]" 
+        | get-property caption | equals "[Link] to flow_partial_01 (FLOW) [UNSET/+UNSET]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Actors/A 2/\\[Link\\] to shared_partial_01 \\(SHARED_DATA\\) \\[UNSET\\/\\+ACCEPT\\]" 
+        | get-property caption | equals "[Link] to shared_partial_01 (SHARED_DATA) [UNSET/+ACCEPT]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Actors/A 2/\\[Link\\] to unset_partial_01 \\(UNSET\\) \\[UNSET\\/\\+UNSET\\]" 
+        | get-property caption | equals "[Link] to unset_partial_01 (UNSET) [UNSET/+UNSET]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Actors/A 2" | get-property childCount | equals 4 
+        | verify-true
+    
+}
+//Allow Selection of other Exchange Items
+//Now Select "Show other Exchange Items" , 13 exchagneIteams are visible, except which contains the name partial
+
+
+with [get-window "Selection Dialog" | get-group "Select an existing Exchange Item"] {
+    get-button "Show other Exchange Items" | check
+    get-tree 
+        | select "InterfaceDelegation/prod00122042/System Analysis/Actors/A 2/\\[Link\\] to flow_partial_01 \\(FLOW\\) \\[UNSET\\/\\+UNSET\\]"
+}
+with [get-window "Selection Dialog"] {
+    get-group "Select an existing Exchange Item" | get-tree 
+        | get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces" | get-property childCount | equals 13 
+        | verify-true
+    get-button "Create Communication Links" | get-property enablement | equals false | verify-true
+    get-button "Create Port Realization instead of direct Implementation" | get-property enablement | equals false 
+        | verify-true
+}
+
+//Select any exchagneItem
+//"At the bottom of the wizard two options are editable..
+//1) Create Port Realization instead of direct Implementaiton
+//2) Create Communication Links"
+
+get-window "Selection Dialog" | get-group "Select an existing Exchange Item" | get-tree 
+    | select "InterfaceDelegation/prod00122042/System Analysis/Interfaces/async_unset_02"
+with [get-window "Selection Dialog"] {
+    get-button "Create Port Realization instead of direct Implementation" | get-property enablement | equals true 
+        | verify-true
+    get-button "Create Communication Links" | get-property enablement | equals true | verify-true
+}
+
+
+
+
+
+
+/// ---------------------------------
+// Sequece Message Cretion wizard check for Existing Exchange Item, EIA & Communication links
+
+//1) Sequence message Kinds check
+//- Synch with return call
+//- Asynch with return Call
+//- Asynch without return call
+//2) check the option ""Hide name of the Technical Interfaces""
+//& ""Allow Selection of other ExchangeItems"""
+
+
+
+
+get-window "Selection Dialog" | get-button Cancel | click
+with [get-editor "[IS] Testing"] {
+    get-diagram -index 1 | get-edit-part -name "[IS] Testing" | mouse-move 466 320 -height 663 -width 1111
+    with [get-palette] {
+        get-palette-entry "Allocated Function" | mouse-move 70 5 -height 23 -width 240
+        get-palette-entry "Exchange Context" | mouse-move 83 13 -height 23 -width 240
+        with [get-palette-entry "Sequence Message with Return Branch"] {
+            mouse-move 66 5 -height 23 -width 240
+            mouse-move 57 11 button1 -height 23 -width 240
+            mouse-press 57 11 button1 -height 23 -width 240
+            mouse-release 57 11 button1 524288 -height 23 -width 240
+            mouse-move 51 11 -height 23 -width 240
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[IS] Testing"] {
+        mouse-move 137 300 -height 663 -width 1111
+        with [get-edit-part -name System | get-edit-part -name "" | get-edit-part -className SquareEditPart] {
+            mouse-move 3 223 button1 -height 395 -width 10
+            mouse-press 3 223 button1 -height 395 -width 10
+            mouse-release 3 223 button1 524288 -height 395 -width 10
+        }
+        mouse-move 255 318 -height 663 -width 1111
+        with [get-edit-part -name "A 1" | get-edit-part -name "" | get-edit-part -className SquareEditPart] {
+            mouse-hover 1 221 -height 395 -width 10
+            mouse-move 5 222 button1 -height 395 -width 10
+            mouse-press 5 222 button1 -height 395 -width 10
+        }
+    }
+}
+with [get-window "Selection Dialog" | get-group "Select an existing Exchange Item" | get-tree] {
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces//--> sysn_unset_01" | get-property caption 
+        | equals "--> sysn_unset_01" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1/--> async_flow_01" 
+        | get-property caption | equals "--> async_flow_01" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1/--> async_flow_02" 
+        | get-property caption | equals "--> async_flow_02" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1/--> async_unset_02" 
+        | get-property caption | equals "--> async_unset_02" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1/--> asys_unset_01" 
+        | get-property caption | equals "--> asys_unset_01" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1/--> sync_flow_01" 
+        | get-property caption | equals "--> sync_flow_01" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1/--> sysn_operation_01" 
+        | get-property caption | equals "--> sysn_operation_01" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1/--> sysn_shared_01" 
+        | get-property caption | equals "--> sysn_shared_01" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1/--> sysn_unset_01" 
+        | get-property caption | equals "--> sysn_unset_01" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1" | get-property childCount 
+        | equals 8 | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces" | get-property childCount | equals 2 
+        | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System/\\[Link\\] to async_flow_01 \\(FLOW\\) \\[UNSET\\/UNSET\\]" 
+        | get-property caption | equals "[Link] to async_flow_01 (FLOW) [UNSET/UNSET]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System/\\[Link\\] to async_flow_02 \\(FLOW\\) \\[UNSET\\/UNSET\\]" 
+        | get-property caption | equals "[Link] to async_flow_02 (FLOW) [UNSET/UNSET]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System/\\[Link\\] to async_unset_02 \\(UNSET\\) \\[UNSET\\/UNSET\\]" 
+        | get-property caption | equals "[Link] to async_unset_02 (UNSET) [UNSET/UNSET]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System/\\[Link\\] to asys_unset_01 \\(UNSET\\) \\[UNSET\\/UNSET\\]" 
+        | get-property caption | equals "[Link] to asys_unset_01 (UNSET) [UNSET/UNSET]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System/\\[Link\\] to sync_flow_01 \\(FLOW\\) \\[UNSET\\/UNSET\\]" 
+        | get-property caption | equals "[Link] to sync_flow_01 (FLOW) [UNSET/UNSET]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System/\\[Link\\] to sysn_operation_01 \\(OPERATION\\) \\[SYNCHRONOUS\\/UNSET\\]" 
+        | get-property caption | equals "[Link] to sysn_operation_01 (OPERATION) [SYNCHRONOUS/UNSET]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System/\\[Link\\] to sysn_shared_01 \\(SHARED_DATA\\) \\[UNSET\\/READ\\]" 
+        | get-property caption | equals "[Link] to sysn_shared_01 (SHARED_DATA) [UNSET/READ]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System/\\[Link\\] to sysn_unset_01 \\(UNSET\\) \\[UNSET\\/UNSET\\]" 
+        | get-property caption | equals "[Link] to sysn_unset_01 (UNSET) [UNSET/UNSET]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System" | get-property childCount | equals 8 
+        | verify-true
+}
+get-window "Selection Dialog" | get-group "Sequence Message Kind" | get-button "Asynchronous call" | click
+with [get-window "Selection Dialog" | get-group "Select an existing Exchange Item" | get-tree] {
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces//--> sysn_unset_01" | get-property caption 
+        | equals "--> sysn_unset_01" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1/--> async_flow_01" 
+        | get-property caption | equals "--> async_flow_01" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1/--> async_flow_02" 
+        | get-property caption | equals "--> async_flow_02" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1/--> async_operation_01" 
+        | get-property caption | equals "--> async_operation_01" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1/--> async_operation_02" 
+        | get-property caption | equals "--> async_operation_02" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1/--> async_shared_02" 
+        | get-property caption | equals "--> async_shared_02" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1/--> async_unset_02" 
+        | get-property caption | equals "--> async_unset_02" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1/--> asys_unset_01" 
+        | get-property caption | equals "--> asys_unset_01" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1/--> aync_shared_01" 
+        | get-property caption | equals "--> aync_shared_01" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1/--> sync_flow_01" 
+        | get-property caption | equals "--> sync_flow_01" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1/--> sysn_unset_01" 
+        | get-property caption | equals "--> sysn_unset_01" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1" | get-property childCount 
+        | equals 10 | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces" | get-property childCount | equals 2 
+        | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System/\\[Link\\] to async_flow_01 \\(FLOW\\) \\[UNSET\\/UNSET\\]" 
+        | get-property caption | equals "[Link] to async_flow_01 (FLOW) [UNSET/UNSET]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System/\\[Link\\] to async_flow_02 \\(FLOW\\) \\[UNSET\\/UNSET\\]" 
+        | get-property caption | equals "[Link] to async_flow_02 (FLOW) [UNSET/UNSET]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System/\\[Link\\] to async_operation_01 \\(OPERATION\\) \\[ASYNCHRONOUS\\/UNSET\\]" 
+        | get-property caption | equals "[Link] to async_operation_01 (OPERATION) [ASYNCHRONOUS/UNSET]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System/\\[Link\\] to async_operation_02 \\(OPERATION\\) \\[ASYNCHRONOUS\\/UNSET\\]" 
+        | get-property caption | equals "[Link] to async_operation_02 (OPERATION) [ASYNCHRONOUS/UNSET]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System/\\[Link\\] to async_shared_02 \\(SHARED_DATA\\) \\[UNSET\\/ACCEPT\\]" 
+        | get-property caption | equals "[Link] to async_shared_02 (SHARED_DATA) [UNSET/ACCEPT]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System/\\[Link\\] to async_unset_02 \\(UNSET\\) \\[UNSET\\/UNSET\\]" 
+        | get-property caption | equals "[Link] to async_unset_02 (UNSET) [UNSET/UNSET]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System/\\[Link\\] to asys_unset_01 \\(UNSET\\) \\[UNSET\\/UNSET\\]" 
+        | get-property caption | equals "[Link] to asys_unset_01 (UNSET) [UNSET/UNSET]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System/\\[Link\\] to aync_shared_01 \\(SHARED_DATA\\) \\[UNSET\\/ACCEPT\\]" 
+        | get-property caption | equals "[Link] to aync_shared_01 (SHARED_DATA) [UNSET/ACCEPT]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System/\\[Link\\] to sync_flow_01 \\(FLOW\\) \\[UNSET\\/UNSET\\]" 
+        | get-property caption | equals "[Link] to sync_flow_01 (FLOW) [UNSET/UNSET]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System/\\[Link\\] to sysn_unset_01 \\(UNSET\\) \\[UNSET\\/UNSET\\]" 
+        | get-property caption | equals "[Link] to sysn_unset_01 (UNSET) [UNSET/UNSET]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System" | get-property childCount | equals 10 
+        | verify-true
+}
+get-window "Selection Dialog" | get-button Cancel | click
+
+
+// Create Sequence Message without return
+
+with [get-editor "[IS] Testing"] {
+    with [get-palette] {
+        get-palette-entry "Create message" | mouse-move 22 4 -height 23 -width 240
+        with [get-palette-entry "Sequence Message"] {
+            mouse-move 26 21 -height 23 -width 240
+            mouse-move 36 15 button1 -height 23 -width 240
+            mouse-press 36 15 button1 -height 23 -width 240
+            mouse-release 36 15 button1 524288 -height 23 -width 240
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[IS] Testing"] {
+        mouse-move 117 331 -height 663 -width 1111
+        with [get-edit-part -name System | get-edit-part -name "" | get-edit-part -className SquareEditPart] {
+            mouse-move 4 225 button1 -height 395 -width 10
+            mouse-press 4 225 button1 -height 395 -width 10
+            mouse-release 4 225 button1 524288 -height 395 -width 10
+        }
+        mouse-move 261 333 -height 663 -width 1111
+        with [get-edit-part -name "A 1" | get-edit-part -name "" | get-edit-part -className SquareEditPart] {
+            mouse-move 2 231 button1 -height 395 -width 10
+            mouse-press 2 231 button1 -height 395 -width 10
+        }
+    }
+}
+with [get-window "Selection Dialog" | get-group "Select an existing Exchange Item" | get-tree] {
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces//--> sysn_unset_01" | get-property caption 
+        | equals "--> sysn_unset_01" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1/--> async_flow_01" 
+        | get-property caption | equals "--> async_flow_01" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1/--> async_flow_02" 
+        | get-property caption | equals "--> async_flow_02" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1/--> async_operation_01" 
+        | get-property caption | equals "--> async_operation_01" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1/--> async_operation_02" 
+        | get-property caption | equals "--> async_operation_02" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1/--> async_shared_02" 
+        | get-property caption | equals "--> async_shared_02" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1/--> async_unset_02" 
+        | get-property caption | equals "--> async_unset_02" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1/--> asys_unset_01" 
+        | get-property caption | equals "--> asys_unset_01" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1/--> aync_shared_01" 
+        | get-property caption | equals "--> aync_shared_01" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1/--> aysn_event_02" 
+        | get-property caption | equals "--> aysn_event_02" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1/--> sync_flow_01" 
+        | get-property caption | equals "--> sync_flow_01" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1/--> sysn_unset_01" 
+        | get-property caption | equals "--> sysn_unset_01" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1" | get-property childCount 
+        | equals 11 | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces" | get-property childCount | equals 2 
+        | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System/\\[Link\\] to async_flow_01 \\(FLOW\\) \\[UNSET\\/UNSET\\]" 
+        | get-property caption | equals "[Link] to async_flow_01 (FLOW) [UNSET/UNSET]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System/\\[Link\\] to async_flow_02 \\(FLOW\\) \\[UNSET\\/UNSET\\]" 
+        | get-property caption | equals "[Link] to async_flow_02 (FLOW) [UNSET/UNSET]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System/\\[Link\\] to async_operation_01 \\(OPERATION\\) \\[ASYNCHRONOUS\\/UNSET\\]" 
+        | get-property caption | equals "[Link] to async_operation_01 (OPERATION) [ASYNCHRONOUS/UNSET]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System/\\[Link\\] to async_operation_02 \\(OPERATION\\) \\[ASYNCHRONOUS\\/UNSET\\]" 
+        | get-property caption | equals "[Link] to async_operation_02 (OPERATION) [ASYNCHRONOUS/UNSET]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System/\\[Link\\] to async_shared_02 \\(SHARED_DATA\\) \\[UNSET\\/ACCEPT\\]" 
+        | get-property caption | equals "[Link] to async_shared_02 (SHARED_DATA) [UNSET/ACCEPT]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System/\\[Link\\] to async_unset_02 \\(UNSET\\) \\[UNSET\\/UNSET\\]" 
+        | get-property caption | equals "[Link] to async_unset_02 (UNSET) [UNSET/UNSET]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System/\\[Link\\] to asys_unset_01 \\(UNSET\\) \\[UNSET\\/UNSET\\]" 
+        | get-property caption | equals "[Link] to asys_unset_01 (UNSET) [UNSET/UNSET]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System/\\[Link\\] to aync_shared_01 \\(SHARED_DATA\\) \\[UNSET\\/ACCEPT\\]" 
+        | get-property caption | equals "[Link] to aync_shared_01 (SHARED_DATA) [UNSET/ACCEPT]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System/\\[Link\\] to aysn_event_02 \\(EVENT\\) \\[UNICAST\\/UNSET\\]" 
+        | get-property caption | equals "[Link] to aysn_event_02 (EVENT) [UNICAST/UNSET]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System/\\[Link\\] to sync_flow_01 \\(FLOW\\) \\[UNSET\\/UNSET\\]" 
+        | get-property caption | equals "[Link] to sync_flow_01 (FLOW) [UNSET/UNSET]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System/\\[Link\\] to sysn_unset_01 \\(UNSET\\) \\[UNSET\\/UNSET\\]" 
+        | get-property caption | equals "[Link] to sysn_unset_01 (UNSET) [UNSET/UNSET]" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/System" | get-property childCount | equals 11 
+        | verify-true
+}
+
+//Ensure Checkbox Hide the Name of Technical Interfaces
+with [get-window "Selection Dialog" | get-group "Select an existing Exchange Item" | get-tree] {
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces" 
+        | get-property "getItems().TreeItem[0].getText()" | equals "" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces" 
+        | get-property "getItems().TreeItem[1].getText()" | equals "System_to_A 1" | verify-true
+}
+
+get-window "Selection Dialog" | get-group "Select an existing Exchange Item" 
+    | get-button "Hide the Name of Technical Interfaces" | uncheck
+with [get-window "Selection Dialog" | get-group "Select an existing Exchange Item" | get-tree] {
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/System_to_A 1_1" | get-property caption 
+        | equals "System_to_A 1_1" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces" 
+        | get-property "getItems().TreeItem[0].getText()" | equals "System_to_A 1" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces" 
+        | get-property "getItems().TreeItem[1].getText()" | equals "System_to_A 1_1" | verify-true
+}
+
+//Ensure Checkbox Show other Exchange Items, there should have "partial" exchange items
+get-window "Selection Dialog" | get-group "Select an existing Exchange Item" | get-button "Show other Exchange Items" 
+    | check
+with [get-window "Selection Dialog" | get-group "Select an existing Exchange Item" | get-tree] {
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces" | get-property childCount | equals 8 
+        | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/async_operation_partial_01" 
+        | get-property caption | equals "async_operation_partial_01" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/event_partial_01" | get-property caption 
+        | equals "event_partial_01" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/flow_partial_01" | get-property caption 
+        | equals "flow_partial_01" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/shared_partial_01" | get-property caption 
+        | equals "shared_partial_01" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/sync_operation_partial_01" 
+        | get-property caption | equals "sync_operation_partial_01" | verify-true
+    get-item "InterfaceDelegation/prod00122042/System Analysis/Interfaces/unset_partial_01" | get-property caption 
+        | equals "unset_partial_01" | verify-true
+}
+get-window "Selection Dialog" | get-button Cancel | click
+
+
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

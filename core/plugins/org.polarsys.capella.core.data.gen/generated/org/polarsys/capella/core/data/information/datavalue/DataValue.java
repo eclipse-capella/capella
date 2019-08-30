@@ -93,6 +93,7 @@ public interface DataValue extends NamedElement, ValueSpecification {
 	 * @return the value of the '<em>Type</em>' reference.
 	 * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getDataValue_Type()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='abstractType'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The type of the TypedElement\r\n[source:UML Superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic feature='abstractType'"

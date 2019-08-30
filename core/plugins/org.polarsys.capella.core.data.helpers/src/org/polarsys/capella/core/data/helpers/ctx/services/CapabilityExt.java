@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,7 +39,9 @@ public class CapabilityExt {
   public static void addInvolvedActor(Capability capability1, Actor actor) {
     if ((capability1 != null) && (actor != null)) {
       if (!getInvolvedActors(capability1).contains(actor)) {
-        Capability capability = (Capability) capability1.eContainer();
+        Capability capability = capability1;
+        if(capability1.eContainer() instanceof Capability)
+          capability = (Capability) capability1.eContainer();
         ActorCapabilityInvolvement involvementLnk = CtxFactory.eINSTANCE.createActorCapabilityInvolvement();
 
         capability.getOwnedActorCapabilityInvolvements().add(involvementLnk);
@@ -94,10 +96,13 @@ public class CapabilityExt {
    * @return the contributing actors
    */
   public static List<Actor> getInvolvedActors(Capability capability1, boolean recurse) {
-    List<Actor> involvedActors = new ArrayList<Actor>();
+    List<Actor> involvedActors = new ArrayList<>();
 
     for (ActorCapabilityInvolvement involvement : capability1.getInvolvedActors()) {
-      involvedActors.add(involvement.getActor());
+      Actor actor = involvement.getActor();
+      if(actor != null) {
+        involvedActors.add(actor);        
+      }
     }
 
     if (recurse) {
@@ -125,7 +130,7 @@ public class CapabilityExt {
    * @return the contributing components
    */
   public static List<Component> getInvolvedComponents(Capability capability, boolean recurse) {
-    List<Component> involvedComponents = new ArrayList<Component>();
+    List<Component> involvedComponents = new ArrayList<>();
 
     involvedComponents.addAll(getInvolvedActors(capability, recurse));
     involvedComponents.addAll(getInvolvedSystems(capability, recurse));
@@ -149,7 +154,7 @@ public class CapabilityExt {
    * @return the contributing systems
    */
   public static List<System> getInvolvedSystems(Capability capability1, boolean recurse) {
-    List<System> contributingSystems = new ArrayList<System>();
+    List<System> contributingSystems = new ArrayList<>();
 
     SystemCapabilityInvolvement contrib = capability1.getOwnedSystemCapabilityInvolvement();
     if (contrib != null) {
@@ -181,15 +186,21 @@ public class CapabilityExt {
    * @return the purpose missions
    */
   public static List<Mission> getPurposeMissions(Capability capability1, boolean recurse) {
-    List<Mission> purposeMissions = new ArrayList<Mission>();
+    List<Mission> purposeMissions = new ArrayList<>();
 
     for (CapabilityExploitation exploitation : capability1.getPurposes()) {
-      purposeMissions.add(exploitation.getMission());
+      Mission mission = exploitation.getMission();
+      if(mission != null ) {
+        purposeMissions.add(mission);        
+      }
     }
 
     for (AbstractCapability capability : AbstractCapabilityExt.getIncludingHierarchy(capability1)) {
       for (CapabilityExploitation exploitation : ((Capability) capability).getPurposes()) {
-        purposeMissions.add(exploitation.getMission());
+        Mission mission = exploitation.getMission();
+        if(mission != null) {
+          purposeMissions.add(mission);          
+        }
       }
     }
 
@@ -208,7 +219,7 @@ public class CapabilityExt {
    * @param actor the actor involved
    * @return true if the actor is involved in a capability
    */
-  static public boolean hasInvolved(Capability capability, Actor actor) {
+  public static boolean hasInvolved(Capability capability, Actor actor) {
     boolean isInvolved = false;
 
     for (ActorCapabilityInvolvement actorCapabilityInvolvement : capability.getInvolvedActors()) {

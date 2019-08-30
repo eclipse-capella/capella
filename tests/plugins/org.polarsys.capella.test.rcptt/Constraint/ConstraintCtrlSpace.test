@@ -1,0 +1,60 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Element-Name: ConstraintCtrlSpace
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _vM7qoK5gEee2vO1UksePLw
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 7/18/18 11:19 AM
+Tags: constraint
+Testcase-Type: ecl
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
+with [get-window "New Capella Project"] {
+    get-editbox | set-text Project
+    get-button Finish | click
+}
+
+//Create Contraint under "MA_Project01::MA_Project01::System Analysis::Capabilities"
+
+get-view "Capella Project Explorer" | get-tree | select "Project/Project.aird/Project/System Analysis/Capabilities" 
+    | get-menu "Add Capella Element/Constraint" | click
+get-view "Capella Project Explorer" | get-tree 
+    | get-item "Project/\\*Project.aird/Project/System Analysis/Capabilities/\\[Constraint\\]" 
+    | get-property childCount | equals 1 | verify-true
+
+with [get-view Properties] {
+    click
+    with [get-section Property | get-group "" -index 2 | get-text-viewer] {
+        type-text B
+        key-type BackSpace
+        type-text "Hello "
+        key-type "M1+SPACE"
+        type-text Root
+        key-type Enter
+        type-text " How Are You "
+        key-type "M1+SPACE"
+        type-text Mel
+        key-type BackSpace
+        type-text "lody "
+        key-type "M1+SPACE"
+        type-text DRAF
+        key-type Enter
+        type-text " new Hello "
+        key-type "M1+SPACE"
+        type-text Function
+        key-type Down -times 4
+        key-type Enter
+        type-text " OK"
+        key-type Enter
+        key-type "M1+s"
+    }
+}
+get-view Properties | get-section Property | get-group "" -index 2 | get-text-viewer | get-property text 
+    | equals "Hello Root Operational Activity How Are You Melody DRAFT new Hello Physical Functions OK" | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

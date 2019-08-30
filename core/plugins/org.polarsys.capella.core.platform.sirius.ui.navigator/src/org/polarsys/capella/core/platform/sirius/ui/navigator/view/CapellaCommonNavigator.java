@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,10 +30,10 @@ import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.dialogs.IDialogSettings;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
-import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionProvider;
@@ -44,6 +44,7 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
@@ -60,6 +61,7 @@ import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.Saveable;
 import org.eclipse.ui.WorkbenchException;
 import org.eclipse.ui.XMLMemento;
@@ -72,6 +74,7 @@ import org.eclipse.ui.navigator.INavigatorContentService;
 import org.eclipse.ui.navigator.INavigatorSaveablesService;
 import org.eclipse.ui.navigator.SaveablesProvider;
 import org.eclipse.ui.part.IPageSite;
+import org.eclipse.ui.part.ShowInContext;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
@@ -84,9 +87,9 @@ import org.polarsys.capella.common.ui.toolkit.widgets.filter.StringMatcherFactor
 import org.polarsys.capella.common.ui.toolkit.widgets.filter.TreePatternFilter;
 import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.LocateFilteredElementsInCommonNavigatorAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SelectionHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.MoveDownAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.MoveUpAction;
@@ -792,6 +795,35 @@ public class CapellaCommonNavigator extends CommonNavigator implements IEditingD
     return super.getAdapter(adapter);
   }
 
+  @Override
+  public boolean show(ShowInContext context) {
+    ISelection selection = context.getSelection();
+    if (selection instanceof IStructuredSelection && !selection.isEmpty()) {
+      IStructuredSelection structuredSelection = (IStructuredSelection) selection;
+      
+      // Before selecting, check if any active filter hides the selected element
+      // If so, propose dialog to deactivate
+      LocateFilteredElementsInCommonNavigatorAction locateFilteredElementsInCommonNavigatorAction = new LocateFilteredElementsInCommonNavigatorAction(getSite().getId());
+      locateFilteredElementsInCommonNavigatorAction.run(structuredSelection);
+      
+      // Then select the elements
+      selectReveal(structuredSelection);
+      
+      ISelection actualSelection = getCommonViewer().getSelection();
+      
+      // After doing selection, if no element was selected, then no element found.
+      if (actualSelection == null || actualSelection.isEmpty()) {
+        MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+            NLS.bind(Messages.LocateInCommonNavigator_SelectedElementNotVisible_Title, getPartName()),
+            NLS.bind(Messages.LocateInCommonNavigator_SelectedElementNotVisible_2, getPartName()));
+      }
+      
+      return true;
+    }
+    
+    return false;
+  }
+  
   /**
    * @see org.eclipse.ui.navigator.CommonNavigator#getCommonViewer()
    */
@@ -875,21 +907,6 @@ public class CapellaCommonNavigator extends CommonNavigator implements IEditingD
       };
     }
     return propertySheetPage;
-  }
-
-  /**
-   * @see org.eclipse.ui.navigator.CommonNavigator#handleDoubleClick(org.eclipse.jface.viewers.DoubleClickEvent)
-   */
-  @Override
-  protected void handleDoubleClick(DoubleClickEvent event) {
-    super.handleDoubleClick(event);
-    // Add an additional behavior for ModelElement selection.
-    IStructuredSelection selection = (IStructuredSelection) event.getSelection();
-    Object element = selection.getFirstElement();
-
-    if (CapellaResourceHelper.isSemanticElement(element)) {
-      CapellaUIPropertiesPlugin.getDefault().openWizard(event, (EObject) element);
-    }
   }
 
   /**

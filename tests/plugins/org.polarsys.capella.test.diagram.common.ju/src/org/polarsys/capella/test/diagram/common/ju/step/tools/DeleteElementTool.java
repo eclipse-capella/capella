@@ -12,6 +12,7 @@ package org.polarsys.capella.test.diagram.common.ju.step.tools;
 
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -24,7 +25,7 @@ import org.polarsys.capella.test.diagram.common.ju.wrapper.Messages;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.factory.ToolWrapperFactory;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
 
-public class DeleteElementTool extends AbstractToolStep {
+public class DeleteElementTool extends AbstractToolStep<EObject> {
 
   DDiagramElement _elementToDelete;
   DDiagram _containingToolDiagram;
@@ -57,7 +58,7 @@ public class DeleteElementTool extends AbstractToolStep {
   }
 
   @Override
-  public Object getResult() {
+  public EObject getResult() {
     return null;
   }
 

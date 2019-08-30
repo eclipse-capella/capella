@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -45,17 +45,15 @@ public class ReplaceInDescriptionSaxParser {
     _currentElementDescription = null;
   }
 
-  protected String getName(EObject object_p) {
+  protected String getName(EObject object) {
     String result = null;
-    if (null != object_p) {
-      result = CapellaElementExt.getName(object_p);
-      if ((null == result) || result.isEmpty()) {
-        if (object_p instanceof DRepresentation) {
-          DRepresentation res = (DRepresentation) object_p;
-          String repName = res.getName();
-          if (null != repName) {
-            result = repName;
-          }
+    if (null != object) {
+      result = CapellaElementExt.getName(object);
+      if ((null == result || result.isEmpty()) && object instanceof DRepresentation) {
+        DRepresentation res = (DRepresentation) object;
+        String repName = res.getName();
+        if (null != repName) {
+          result = repName;
         }
       }
     }
@@ -205,14 +203,20 @@ public class ReplaceInDescriptionSaxParser {
           reader = new StringReader(_currentElementDescription.toString());
           is.setCharacterStream(reader);
           saxParser.parse(is, handler);
-
-        } catch (Exception exception_p) {
-          _logger.error("Exception while quick fix : " + exception_p.toString()); //$NON-NLS-1$
-          return false;
-        } finally {
-          // reset parser and reader
           reader.close();
           saxParser.reset();
+
+        } catch (Exception exception) {
+          _logger.error("Exception while quick fix : " + exception.toString()); //$NON-NLS-1$
+          return false;
+        } finally {
+        	if(reader != null) {
+        	  // reset parser and reader
+        	  reader.close();
+        	}
+        	if(saxParser != null) {
+        		saxParser.reset();        		
+        	}
         }
         // remove root
         String result = __description.toString().replaceAll(IConstantValidation.ROOT_NODE, ICommonConstants.EMPTY_STRING);

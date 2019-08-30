@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="fa" nsURI="http://www.polarsys.org/capella/core/fa/1.2.0" nsPrefix="org.polarsys.capella.core.data.fa">
-  <eAnnotations source="http://www.polarsys.org/kitalpha/dsl/2007/dslfactory">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="fa" nsURI="http://www.polarsys.org/capella/core/fa/1.3.0" nsPrefix="org.polarsys.capella.core.data.fa">
+  <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/extension">
     <details key="trackResourceModification" value="true"/>
     <details key="useUUIDs" value="false"/>
     <details key="useIDAttributes" value="true"/>
@@ -18,13 +18,6 @@
     <details key="reference documentation" value="none"/>
   </eAnnotations>
   <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-  <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/extension">
-    <details key="trackResourceModification" value="true"/>
-    <details key="useUUIDs" value="false"/>
-    <details key="useIDAttributes" value="true"/>
-    <details key="extensibleProviderFactory" value="true"/>
-    <details key="childCreationExtenders" value="true"/>
-  </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractFunctionalArchitecture" abstract="true"
       eSuperTypes="CapellaCore.ecore#//ModellingArchitecture">
     <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
@@ -300,7 +293,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="functionalAllocations"
         upperBound="-1" eType="#//ComponentFunctionalAllocation" changeable="false"
         volatile="true" transient="true" derived="true" eOpposite="#//ComponentFunctionalAllocation/block">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="outgoingTraces"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the allocation links between this block, and the functions that are allocated to it.&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -315,7 +311,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatedFunctions" upperBound="-1"
         eType="#//AbstractFunction" changeable="false" volatile="true" transient="true"
         derived="true" eOpposite="#//AbstractFunction/allocationBlocks">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="functionalAllocations.function"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the list of functions allocated to this block&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -541,7 +540,10 @@
         <details key="Label" value="subFunctions"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="FunctionSpecification.ownedNodes(self, af);&#xD;&#xA;AbstractFunction.linkedFunctionSpecification(af, target); "/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) list of sub-specifications of this function specification &#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -619,7 +621,10 @@
         <details key="Label" value="exchanges"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="ownedExchangeContainments.exchange"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the exchanges involved in this exchange link&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -806,7 +811,10 @@
         <details key="Label" value="containingLink"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="link.link"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the exchange link associated with this exchange specification&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -842,7 +850,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingExchangeSpecificationRealizations"
         upperBound="-1" eType="#//ExchangeSpecificationRealization" changeable="false"
         volatile="true" transient="true" derived="true" eOpposite="#//ExchangeSpecificationRealization/realizingExchangeSpecification">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="outgoingTraces"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the realization links between exchange specifications, for which this exchange specification is the origin of the link&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -857,7 +868,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="incomingExchangeSpecificationRealizations"
         upperBound="-1" eType="#//ExchangeSpecificationRealization" changeable="false"
         volatile="true" transient="true" derived="true" eOpposite="#//ExchangeSpecificationRealization/realizedExchangeSpecification">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="incomingTraces"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the realization links between exchange specifications, for which this exchange specification is the destination of the link&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -897,7 +911,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="functionalExchanges" upperBound="-1"
         eType="#//FunctionalExchange" changeable="false" volatile="true" transient="true"
         derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="realizations"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the functional exchanges that fulfill this specification&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -978,7 +995,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="involvedFunctionalChainInvolvements"
         upperBound="-1" eType="#//FunctionalChainInvolvement" changeable="false" volatile="true"
         transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="ownedFunctionalChainInvolvements"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the list of involvement relationships included in this functional chain&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -993,7 +1013,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="involvedFunctions" upperBound="-1"
         eType="#//AbstractFunction" changeable="false" volatile="true" transient="true"
         derived="true" eOpposite="#//AbstractFunction/involvingFunctionalChains">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="involvedElements"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the functions involved in this functional chain&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1008,7 +1031,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="involvedFunctionalExchanges"
         upperBound="-1" eType="#//FunctionalExchange" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//FunctionalExchange/involvingFunctionalChains">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="involvedElements"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the functional exchanges involved in this functional chain&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1023,7 +1049,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="involvedElements" upperBound="-1"
         eType="ecore:EClass CapellaCore.ecore#//InvolvedElement" changeable="false"
         volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="involvedFunctionalChainInvolvements.involved"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the list of model elements involved in this functional chain&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1038,7 +1067,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="enactedFunctions" upperBound="-1"
         eType="#//AbstractFunction" changeable="false" volatile="true" transient="true"
         derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="involvedFunctions"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the functions involved in this functional chain&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1053,7 +1085,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="enactedFunctionalBlocks"
         upperBound="-1" eType="#//AbstractFunctionalBlock" changeable="false" volatile="true"
         transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="enactedFunctions.allocationBlocks"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the functional blocks involved in this functional chain&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1082,7 +1117,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="firstFunctionalChainInvolvements"
         upperBound="-1" eType="#//FunctionalChainInvolvement" changeable="false" volatile="true"
         transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="freeform"/>
+        <details key="viatra.expression" value="pattern FunctionalChain__firstFunctionalChainInvolvements(self : FunctionalChain, target : FunctionalChainInvolvement) {&#xD;&#xA;&#x9;FunctionalChain.ownedFunctionalChainInvolvements(self, target);&#xD;&#xA;&#x9;FunctionalChainInvolvement.involved(target, _);&#xD;&#xA;&#x9;neg find _PreviousInvolvement(target, _);&#xD;&#xA;}&#xD;&#xA;private pattern _PreviousInvolvement(fci : FunctionalChainInvolvement, previous : FunctionalChainInvolvement) {&#xD;&#xA;&#x9;FunctionalChainInvolvement.previousFunctionalChainInvolvements(fci, previous);&#xD;&#xA;}&#xD;&#xA;"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
@@ -1093,7 +1131,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="involvingCapabilities"
         upperBound="-1" eType="ecore:EClass ContextArchitecture.ecore#//Capability"
         changeable="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="FunctionalChain.involvingInvolvements(self, fcaci);&#xD;&#xA;FunctionalChainAbstractCapabilityInvolvement.capability(fcaci, target);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value=""/>
         <details key="constraints" value="none"/>
@@ -1111,7 +1152,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="involvingCapabilityRealizations"
         upperBound="-1" eType="ecore:EClass LogicalArchitecture.ecore#//CapabilityRealization"
         changeable="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="FunctionalChain.involvingInvolvements(self, fcaci);&#xD;&#xA;FunctionalChainAbstractCapabilityInvolvement.capability(fcaci, target);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value=""/>
         <details key="constraints" value="none"/>
@@ -1129,7 +1173,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizedFunctionalChains"
         upperBound="-1" eType="#//FunctionalChain" changeable="false" volatile="true"
         transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="FunctionalChainRealization.sourceElement(fcr, self);&#xD;&#xA;FunctionalChainRealization.targetElement(fcr, target);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
@@ -1140,7 +1187,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizingFunctionalChains"
         upperBound="-1" eType="#//FunctionalChain" changeable="false" volatile="true"
         transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="FunctionalChainRealization.targetElement(fcr, self);&#xD;&#xA;FunctionalChainRealization.sourceElement(fcr, target);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="excludefrom" value="xmlpivot"/>
       </eAnnotations>
@@ -1149,6 +1199,48 @@
         <details key="explanation" value="Derived and transient"/>
         <details key="constraints" value="none"/>
       </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="preCondition" eType="ecore:EClass CapellaCore.ecore#//Constraint">
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="postCondition" eType="ecore:EClass CapellaCore.ecore#//Constraint">
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedSequenceNodes" upperBound="-1"
+        eType="#//ControlNode" containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value=""/>
+        <details key="usage guideline" value="n/a"/>
+        <details key="used in levels" value="operational,system,logical,physical"/>
+        <details key="usage examples" value="n/a"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+        <details key="reference documentation" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedSequenceLinks" upperBound="-1"
+        eType="#//SequenceLink" containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value=""/>
+        <details key="usage guideline" value="n/a"/>
+        <details key="used in levels" value="operational,system,logical,physical"/>
+        <details key="usage examples" value="n/a"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+        <details key="reference documentation" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="FunctionalChainKind">
@@ -1239,7 +1331,8 @@
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="FunctionalChainInvolvement" eSuperTypes="CapellaCore.ecore#//Involvement">
+  <eClassifiers xsi:type="ecore:EClass" name="FunctionalChainInvolvement" abstract="true"
+      eSuperTypes="CapellaCore.ecore#//Involvement">
     <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
       <details key="description" value="specifies the involvement of a model element in a functional chain&#xD;&#xA;[source: Capella study]"/>
       <details key="usage guideline" value="n/a"/>
@@ -1257,7 +1350,12 @@
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="nextFunctionalChainInvolvements"
-        upperBound="-1" eType="#//FunctionalChainInvolvement">
+        upperBound="-1" eType="#//FunctionalChainInvolvement" changeable="false" volatile="true"
+        transient="true" derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="freeform"/>
+        <details key="viatra.expression" value="pattern FunctionalChainInvolvement_nextFunctionalChainInvolvements(self : FunctionalChainInvolvement, target : FunctionalChainInvolvement) {&#xD;&#xA;&#x9;FunctionalChainInvolvementLink.source(target, self);&#xD;&#xA;} or {&#xD;&#xA;&#x9;FunctionalChainInvolvementLink.target(self, target);&#xD;&#xA;}"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="none"/>
         <details key="constraints" value="none"/>
@@ -1274,28 +1372,23 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="previousFunctionalChainInvolvements"
         upperBound="-1" eType="#//FunctionalChainInvolvement" changeable="false" volatile="true"
         transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic">
-        <details key="excludefrom" value="xmlpivot"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="freeform"/>
+        <details key="viatra.expression" value="pattern FunctionalChainInvolvement__previousFunctionalChainInvolvements(self : FunctionalChainInvolvement, target : FunctionalChainInvolvement) {&#xD;&#xA;&#x9;FunctionalChainInvolvementLink.target(target, self);&#xD;&#xA;} or {&#xD;&#xA;&#x9;FunctionalChainInvolvementLink.source(self, target);&#xD;&#xA;}"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
         <details key="explanation" value="Derived and transient"/>
         <details key="constraints" value="none"/>
       </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="exchangedItems" upperBound="-1"
-        eType="ecore:EClass Information.ecore#//ExchangeItem">
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value=""/>
-        <details key="base metaclass in UML/SysML profile " value=""/>
-        <details key="explanation" value=""/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="involvedElement" eType="ecore:EClass CapellaCore.ecore#//InvolvedElement"
         changeable="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="involved"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
@@ -1315,7 +1408,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="referencedFunctionalChain"
         eType="#//FunctionalChain" changeable="false" volatile="true" transient="true"
         derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="involved"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
@@ -1358,7 +1454,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="incomingFunctionalExchanges"
         upperBound="-1" eType="#//FunctionalExchange" changeable="false" volatile="true"
         transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="incoming"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="excludefrom" value="xmlpivot"/>
       </eAnnotations>
@@ -1403,7 +1502,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingFunctionalExchanges"
         upperBound="-1" eType="#//FunctionalExchange" changeable="false" volatile="true"
         transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="outgoing"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="excludefrom" value="xmlpivot"/>
       </eAnnotations>
@@ -1466,7 +1568,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="function" lowerBound="1"
         eType="#//AbstractFunction" changeable="false" volatile="true" transient="true"
         derived="true" eOpposite="#//AbstractFunction/componentFunctionalAllocations">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="targetElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the function involved in this allocation link&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1480,7 +1585,10 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="block" lowerBound="1" eType="#//AbstractFunctionalBlock"
         changeable="false" volatile="true" transient="true" derived="true" eOpposite="#//AbstractFunctionalBlock/functionalAllocations">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="sourceElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the block involved in this allocation link&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1538,7 +1646,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizedExchangeSpecification"
         lowerBound="1" eType="#//ExchangeSpecification" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//ExchangeSpecification/incomingExchangeSpecificationRealizations">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="targetElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the exchange specification that is being realized by the other (typically lower level) exchange specification involved in this link&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1553,7 +1664,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizingExchangeSpecification"
         lowerBound="1" eType="#//ExchangeSpecification" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//ExchangeSpecification/outgoingExchangeSpecificationRealizations">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="sourceElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the exchange specification that performs the realization of the other exchange specification involved in this link&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1588,7 +1702,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizedFunctionalExchange"
         lowerBound="1" eType="#//FunctionalExchange" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//FunctionalExchange/incomingFunctionalExchangeRealizations">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="targetElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the functional exchange that is being realized by the other functional exchange involved in this relationship&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1603,7 +1720,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizingFunctionalExchange"
         lowerBound="1" eType="#//FunctionalExchange" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//FunctionalExchange/outgoingFunctionalExchangeRealizations">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="sourceElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the functional exchange that is realising the other functional exchange involved in this relationship&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1635,7 +1755,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatedFunction" lowerBound="1"
         eType="#//AbstractFunction" changeable="false" volatile="true" transient="true"
         derived="true" eOpposite="#//AbstractFunction/inFunctionRealizations">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="targetElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the function that is being allocated by/from the other function&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1650,7 +1773,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatingFunction" lowerBound="1"
         eType="#//AbstractFunction" changeable="false" volatile="true" transient="true"
         derived="true" eOpposite="#//AbstractFunction/outFunctionRealizations">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="sourceElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the function that allocates (to) the other function&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1708,7 +1834,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="involvingFunctionalChains"
         upperBound="-1" eType="#//FunctionalChain" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//FunctionalChain/involvedFunctionalExchanges">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="FunctionalExchange.involvingInvolvements(self, fci);&#xD;&#xA;FunctionalChainInvolvement.involver(fci, target);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the functional chains in which this exchange is involved&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1740,7 +1869,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatingComponentExchanges"
         upperBound="-1" eType="#//ComponentExchange" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//ComponentExchange/allocatedFunctionalExchanges">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="incomingComponentExchangeFunctionalExchangeRealizations.allocatingComponentExchange"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the component exchanges associated to this functional exchange, e.g. the exchanges between the components to which the source/destination of this functional exchange are allocated.&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1758,7 +1890,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="incomingComponentExchangeFunctionalExchangeRealizations"
         upperBound="-1" eType="#//ComponentExchangeFunctionalExchangeAllocation" changeable="false"
         volatile="true" transient="true" derived="true" eOpposite="#//ComponentExchangeFunctionalExchangeAllocation/allocatedFunctionalExchange">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="incomingTraces"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the allocation links between component exchanges and functional exchanges, that have this functional exchange as their destination&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1773,7 +1908,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="incomingFunctionalExchangeRealizations"
         upperBound="-1" eType="#//FunctionalExchangeRealization" changeable="false"
         volatile="true" transient="true" derived="true" eOpposite="#//FunctionalExchangeRealization/realizedFunctionalExchange">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="incomingTraces"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the realization links between functional exchanges, that have this functional exchange as their destination&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1788,7 +1926,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingFunctionalExchangeRealizations"
         upperBound="-1" eType="#//FunctionalExchangeRealization" changeable="false"
         volatile="true" transient="true" derived="true" eOpposite="#//FunctionalExchangeRealization/realizingFunctionalExchange">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="outgoingTraces"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the realization links between functional exchanges, that have this functional exchange as their origin&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1803,7 +1944,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="categories" upperBound="-1"
         eType="#//ExchangeCategory" changeable="false" volatile="true" transient="true"
         derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="opposite"/>
+        <details key="viatra.expression" value="exchanges"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the exchange categories (families) to which this functional exchange belongs&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1832,7 +1976,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="sourceFunctionOutputPort"
         eType="#//FunctionOutputPort" changeable="false" volatile="true" transient="true"
         derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="source"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
@@ -1843,7 +1990,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="targetFunctionInputPort"
         eType="#//FunctionInputPort" changeable="false" volatile="true" transient="true"
         derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="target"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
@@ -1854,7 +2004,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizedFunctionalExchanges"
         upperBound="-1" eType="#//FunctionalExchange" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//FunctionalExchange/realizingFunctionalExchanges">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="FunctionalExchangeRealization.sourceElement(fer, self);&#xD;&#xA;FunctionalExchangeRealization.targetElement(fer, target);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
@@ -1865,7 +2018,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizingFunctionalExchanges"
         upperBound="-1" eType="#//FunctionalExchange" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//FunctionalExchange/realizedFunctionalExchanges">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="FunctionalExchangeRealization.targetElement(fer, self);&#xD;&#xA;FunctionalExchangeRealization.sourceElement(fer, target);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="excludefrom" value="xmlpivot"/>
       </eAnnotations>
@@ -1959,7 +2115,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="subFunctions" upperBound="-1"
         eType="#//AbstractFunction" changeable="false" volatile="true" transient="true"
         derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="freeform"/>
+        <details key="viatra.expression" value="pattern AbstractFunction__subFunctions(self : AbstractFunction, target : AbstractFunction) {&#xD;&#xA;&#x9;// sub function directly in function&#xD;&#xA;&#x9;AbstractFunction.ownedFunctions(self, target);&#xD;&#xA;} or { // sub function in function first level package&#xD;&#xA;&#x9;find _AbstractFunction__ownedFunctionPkgs(self, pkg);&#xD;&#xA;&#x9;find _FunctionPkg__ownedFunctions(pkg, target);&#xD;&#xA;}&#xD;&#xA;or { // sub function in function first level package sub packages&#xD;&#xA;&#x9;find _AbstractFunction__ownedFunctionPkgs(self, pkg);&#xD;&#xA;&#x9;find _FunctionPkg__ownedFunctionPkgs+(pkg, subpkg);&#xD;&#xA;&#x9;find _FunctionPkg__ownedFunctions(subpkg, target);&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;private pattern _AbstractFunction__ownedFunctionPkgs(af : AbstractFunction, ownedpkg : FunctionPkg) {&#xD;&#xA;&#x9;OperationalActivity.ownedOperationalActivityPkgs(af, ownedpkg);&#xD;&#xA;} or {&#xD;&#xA;&#x9;SystemFunction.ownedSystemFunctionPkgs(af, ownedpkg);&#xD;&#xA;} or {&#xD;&#xA;&#x9;LogicalFunction.ownedLogicalFunctionPkgs(af, ownedpkg);&#xD;&#xA;} or {&#xD;&#xA;&#x9;PhysicalFunction.ownedPhysicalFunctionPkgs(af, ownedpkg);&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;private pattern _FunctionPkg__ownedFunctionPkgs(pkg : FunctionPkg, ownedpkg : FunctionPkg) {&#xD;&#xA;&#x9;OperationalActivityPkg.ownedOperationalActivityPkgs(pkg, ownedpkg);&#xD;&#xA;} or {&#xD;&#xA;&#x9;SystemFunctionPkg.ownedSystemFunctionPkgs(pkg, ownedpkg);&#xD;&#xA;} or {&#xD;&#xA;&#x9;LogicalFunctionPkg.ownedLogicalFunctionPkgs(pkg, ownedpkg);&#xD;&#xA;} or {&#xD;&#xA;&#x9;PhysicalFunctionPkg.ownedPhysicalFunctionPkgs(pkg, ownedpkg);&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;private pattern _FunctionPkg__ownedFunctions(pkg : FunctionPkg, af : AbstractFunction) {&#xD;&#xA;&#x9;OperationalActivityPkg.ownedOperationalActivities(pkg, af);&#xD;&#xA;} or {&#xD;&#xA;&#x9;SystemFunctionPkg.ownedSystemFunctions(pkg, af);&#xD;&#xA;} or {&#xD;&#xA;&#x9;LogicalFunctionPkg.ownedLogicalFunctions(pkg, af);&#xD;&#xA;} or {&#xD;&#xA;&#x9;PhysicalFunctionPkg.ownedPhysicalFunctions(pkg, af);&#xD;&#xA;}&#xD;&#xA;"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the children functions of this function&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1974,7 +2133,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="outFunctionRealizations"
         upperBound="-1" eType="#//FunctionRealization" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//FunctionRealization/allocatingFunction">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="outgoingTraces"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="function realization links that have this function as their origin&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1989,7 +2151,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="inFunctionRealizations"
         upperBound="-1" eType="#//FunctionRealization" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//FunctionRealization/allocatedFunction">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="incomingTraces"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the function realisation links that have this function as their destination&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2004,7 +2169,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="componentFunctionalAllocations"
         upperBound="-1" eType="#//ComponentFunctionalAllocation" changeable="false"
         volatile="true" transient="true" derived="true" eOpposite="#//ComponentFunctionalAllocation/function">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="incomingTraces"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the mediator classes that implement the allocation of this function to/from components (blocks)&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2019,7 +2187,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocationBlocks" upperBound="-1"
         eType="#//AbstractFunctionalBlock" changeable="false" volatile="true" transient="true"
         derived="true" eOpposite="#//AbstractFunctionalBlock/allocatedFunctions">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="componentFunctionalAllocations.block"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the blocks to/from which this function is allocated&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2048,7 +2219,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="involvingCapabilities"
         upperBound="-1" eType="ecore:EClass ContextArchitecture.ecore#//Capability"
         changeable="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="AbstractFunction.involvingInvolvements(self, afaci);&#xD;&#xA;AbstractFunctionAbstractCapabilityInvolvement.capability(afaci, target);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value=""/>
         <details key="constraints" value="none"/>
@@ -2066,7 +2240,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="involvingCapabilityRealizations"
         upperBound="-1" eType="ecore:EClass LogicalArchitecture.ecore#//CapabilityRealization"
         changeable="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="AbstractFunction.involvingInvolvements(self, afaci);&#xD;&#xA;AbstractFunctionAbstractCapabilityInvolvement.capability(afaci, target);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value=""/>
         <details key="constraints" value="none"/>
@@ -2084,7 +2261,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="involvingFunctionalChains"
         upperBound="-1" eType="#//FunctionalChain" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//FunctionalChain/involvedFunctions">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="AbstractFunction.involvingInvolvements(self, fci);&#xD;&#xA;FunctionalChainInvolvement.involver(fci, target);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the functional chains that involve this function&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2105,7 +2285,10 @@
         <details key="Label" value="linkedFunction"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="behavior"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the state machine associated to this function&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2125,7 +2308,10 @@
         <details key="Label" value="linkedFunctionSpecification"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="behavior"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the function specification with which this function complies&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2184,7 +2370,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatorComponentPorts"
         upperBound="-1" eType="#//ComponentPort" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//ComponentPort/allocatedFunctionPorts">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="incomingPortAllocations.allocatingPort"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="excludefrom" value="xmlpivot"/>
       </eAnnotations>
@@ -2197,7 +2386,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizedFunctionPorts"
         upperBound="-1" eType="#//FunctionPort" changeable="false" volatile="true"
         transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="outgoingPortRealizations.realizedPort"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
@@ -2208,7 +2400,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizingFunctionPorts"
         upperBound="-1" eType="#//FunctionPort" changeable="false" volatile="true"
         transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="incomingPortRealizations.realizingPort"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="excludefrom" value="xmlpivot"/>
       </eAnnotations>
@@ -2440,7 +2635,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatedFunctionalExchanges"
         upperBound="-1" eType="#//FunctionalExchange" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//FunctionalExchange/allocatingComponentExchanges">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="outgoingComponentExchangeFunctionalExchangeAllocations.allocatedFunctionalExchange"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the functional exchanges associated with this component exchange (e.g. the functional exchanges that happen between functions allocated to the two components involved in this component exchange)&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2456,7 +2654,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="incomingComponentExchangeRealizations"
         upperBound="-1" eType="#//ComponentExchangeRealization" changeable="false"
         volatile="true" transient="true" derived="true" eOpposite="#//ComponentExchangeRealization/allocatedComponentExchange">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="incomingTraces"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the component exchange realization links that have this component exchange as their destination&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2471,7 +2672,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingComponentExchangeRealizations"
         upperBound="-1" eType="#//ComponentExchangeRealization" changeable="false"
         volatile="true" transient="true" derived="true" eOpposite="#//ComponentExchangeRealization/allocatingComponentExchange">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="outgoingTraces"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the component exchange realization links that have this component exchange as their source&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2486,7 +2690,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingComponentExchangeFunctionalExchangeAllocations"
         upperBound="-1" eType="#//ComponentExchangeFunctionalExchangeAllocation" changeable="false"
         volatile="true" transient="true" derived="true" eOpposite="#//ComponentExchangeFunctionalExchangeAllocation/allocatingComponentExchange">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="outgoingTraces"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the allocation links between functional exchanges and component exchanges, for which this component exchange is the source&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2548,7 +2755,10 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sourcePort" eType="ecore:EClass Information.ecore#//Port"
         changeable="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="ComponentExchange.source(self, target);&#xD;&#xA;} or {&#xD;&#xA;&#x9;ComponentExchange.source(self, cee);&#xD;&#xA;&#x9;ComponentExchangeEnd.port(cee, target);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
@@ -2558,7 +2768,10 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sourcePart" eType="ecore:EClass CompositeStructure.ecore#//Part"
         changeable="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="ComponentExchange.source(self, target);&#xD;&#xA;} or {&#xD;&#xA;&#x9;ComponentExchange.source(self, cee);&#xD;&#xA;&#x9;ComponentExchangeEnd.part(cee, target);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
@@ -2568,7 +2781,10 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="targetPort" eType="ecore:EClass Information.ecore#//Port"
         changeable="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="ComponentExchange.target(self, target);&#xD;&#xA;} or {&#xD;&#xA;&#x9;ComponentExchange.target(self, cee);&#xD;&#xA;&#x9;ComponentExchangeEnd.port(cee, target);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
@@ -2578,7 +2794,10 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="targetPart" eType="ecore:EClass CompositeStructure.ecore#//Part"
         changeable="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="ComponentExchange.target(self, target);&#xD;&#xA;} or {&#xD;&#xA;&#x9;ComponentExchange.target(self, cee);&#xD;&#xA;&#x9;ComponentExchangeEnd.part(cee, target);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
@@ -2589,7 +2808,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="categories" upperBound="-1"
         eType="#//ComponentExchangeCategory" changeable="false" volatile="true" transient="true"
         derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="opposite"/>
+        <details key="viatra.expression" value="exchanges"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the exchange categories (families) to which this functional exchange belongs&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2605,7 +2827,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatorPhysicalLinks"
         upperBound="-1" eType="ecore:EClass CompositeStructure.ecore#//PhysicalLink"
         changeable="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="ComponentExchange.incomingTraces(self, cea);&#xD;&#xA;ComponentExchangeAllocation.componentExchangeAllocator(cea, target);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="excludefrom" value="xmlpivot"/>
       </eAnnotations>
@@ -2618,7 +2843,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizedComponentExchanges"
         upperBound="-1" eType="#//ComponentExchange" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//ComponentExchange/realizingComponentExchanges">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="ComponentExchange.outgoingTraces(self, cer);&#xD;&#xA;ComponentExchangeRealization.allocatedComponentExchange(cer, target);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
@@ -2629,7 +2857,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizingComponentExchanges"
         upperBound="-1" eType="#//ComponentExchange" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//ComponentExchange/realizedComponentExchanges">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="ComponentExchange.incomingTraces(self, cer);&#xD;&#xA;ComponentExchangeRealization.allocatingComponentExchange(cer, target);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="excludefrom" value="xmlpivot"/>
       </eAnnotations>
@@ -2659,7 +2890,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="componentExchangeAllocated"
         lowerBound="1" eType="#//ComponentExchange" changeable="false" volatile="true"
         transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="targetElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="The connection being allocated&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2674,7 +2908,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="componentExchangeAllocator"
         lowerBound="1" eType="#//ComponentExchangeAllocator" changeable="false" volatile="true"
         transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="sourceElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="The element that allocates the connection&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2720,7 +2957,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatedComponentExchanges"
         upperBound="-1" eType="#//ComponentExchange" changeable="false" volatile="true"
         transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="ComponentExchangeAllocator.outgoingTraces(self, cea);&#xD;&#xA;ComponentExchangeAllocation.componentExchangeAllocated(cea, target);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) direct references to the component exchanges being allocated by this element&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2854,7 +3094,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatedFunctionalExchange"
         lowerBound="1" eType="#//FunctionalExchange" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//FunctionalExchange/incomingComponentExchangeFunctionalExchangeRealizations">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="targetElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the functional exchange involved in this allocation link&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2869,7 +3112,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatingComponentExchange"
         lowerBound="1" eType="#//ComponentExchange" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//ComponentExchange/outgoingComponentExchangeFunctionalExchangeAllocations">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="sourceElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the connection involved in this allocation relationship&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2904,7 +3150,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatedComponentExchange"
         lowerBound="1" eType="#//ComponentExchange" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//ComponentExchange/incomingComponentExchangeRealizations">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="targetElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the connection that is being allocated by/from the other connection involved in this link&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2919,7 +3168,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatingComponentExchange"
         lowerBound="1" eType="#//ComponentExchange" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//ComponentExchange/outgoingComponentExchangeRealizations">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="sourceElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the connection that is allocating that other connection involved in this link &#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -2974,7 +3226,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="componentExchanges" upperBound="-1"
         eType="#//ComponentExchange" changeable="false" volatile="true" transient="true"
         derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="ComponentPort.informationFlows(self, target);&#xD;&#xA;} or {&#xD;&#xA;&#x9;ComponentExchangeEnd.port(cee, self);&#xD;&#xA;&#x9;ComponentExchange.ownedComponentExchangeEnds(target, cee);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
@@ -2985,7 +3240,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatedFunctionPorts"
         upperBound="-1" eType="#//FunctionPort" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//FunctionPort/allocatorComponentPorts">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="outgoingPortAllocations.allocatedPort"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
@@ -2996,7 +3254,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="delegatedComponentPorts"
         upperBound="-1" eType="#//ComponentPort" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//ComponentPort/delegatingComponentPorts">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="ComponentPort.outgoingInformationFlows(self, ce);&#xD;&#xA;ComponentExchange.kind(ce, ::DELEGATION);&#xD;&#xA;ComponentExchange.targetPort(ce, target);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
@@ -3007,7 +3268,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="delegatingComponentPorts"
         upperBound="-1" eType="#//ComponentPort" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//ComponentPort/delegatedComponentPorts">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="ComponentPort.incomingInformationFlows(self, ce);&#xD;&#xA;ComponentExchange.kind(ce, ::DELEGATION);&#xD;&#xA;ComponentExchange.sourcePort(ce, target);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="excludefrom" value="xmlpivot"/>
       </eAnnotations>
@@ -3020,7 +3284,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatingPhysicalPorts"
         upperBound="-1" eType="ecore:EClass CompositeStructure.ecore#//PhysicalPort"
         changeable="false" volatile="true" transient="true" derived="true" eOpposite="CompositeStructure.ecore#//PhysicalPort/allocatedComponentPorts">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="ComponentPort.incomingTraces(self, cpa);&#xD;&#xA;ComponentPortAllocation.allocatingPort(cpa, target);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="excludefrom" value="xmlpivot"/>
       </eAnnotations>
@@ -3033,7 +3300,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizedComponentPorts"
         upperBound="-1" eType="#//ComponentPort" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//ComponentPort/realizingComponentPorts">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="outgoingPortRealizations.realizedPort"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
@@ -3044,7 +3314,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizingComponentPorts"
         upperBound="-1" eType="#//ComponentPort" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//ComponentPort/realizedComponentPorts">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="incomingPortRealizations.realizingPort"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="excludefrom" value="xmlpivot"/>
       </eAnnotations>
@@ -3086,7 +3359,10 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatedPort" eType="ecore:EClass Information.ecore#//Port"
         changeable="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="targetElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the &quot;destination&quot; of the allocation link : the port that is being allocated by another port&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -3100,7 +3376,10 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatingPort" eType="ecore:EClass Information.ecore#//Port"
         changeable="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="sourceElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the &quot;source&quot; of the allocation link : the port that is allocating the other port&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -3172,7 +3451,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="owningComponentPortAllocation"
         eType="#//ComponentPortAllocation" changeable="false" volatile="true" transient="true"
         derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
       <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
         <details key="umlOppositeReference" value="end"/>
         <details key="umlOppositeReferenceOwner" value="Connector"/>
@@ -3191,6 +3469,250 @@
         <details key="explanation" value="Opposite reference of uml::Connector::end"/>
         <details key="constraints" value="none"/>
       </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="opposite"/>
+        <details key="viatra.expression" value="ownedComponentPortAllocationEnds"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FunctionalChainInvolvementLink" eSuperTypes="#//FunctionalChainInvolvement #//ReferenceHierarchyContext">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="specifies the involvement of a model element in form of link in a functional chain&#xD;&#xA;[source: Capella study]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational,system,logical,physical"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exchangeContext" eType="ecore:EClass CapellaCore.ecore#//Constraint">
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exchangedItems" upperBound="-1"
+        eType="ecore:EClass Information.ecore#//ExchangeItem">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="the ExchangeItems carried by this Functional Chain Involvement Link"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//FunctionalChainInvolvementFunction">
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//FunctionalChainInvolvementFunction">
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SequenceLink" eSuperTypes="CapellaCore.ecore#//CapellaElement #//ReferenceHierarchyContext">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="express precedence between executions of represented functions&#xD;&#xA;[source: Capella study]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational,system,logical,physical"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="ecore:EClass CapellaCore.ecore#//Constraint">
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="links" upperBound="-1"
+        eType="#//FunctionalChainInvolvementLink">
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//SequenceLinkEnd">
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//SequenceLinkEnd">
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SequenceLinkEnd" abstract="true" interface="true"
+      eSuperTypes="CapellaCore.ecore#//CapellaElement">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value=""/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational,system,logical,physical"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FunctionalChainInvolvementFunction"
+      eSuperTypes="#//FunctionalChainInvolvement #//SequenceLinkEnd">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="specifies the involvement of a model element in form of function in a functional chain&#xD;&#xA;[source: Capella study]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational,system,logical,physical"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingInvolvementLinks"
+        upperBound="-1" eType="#//FunctionalChainInvolvementLink" changeable="false"
+        volatile="true" transient="true" derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="opposite"/>
+        <details key="viatra.expression" value="source"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
+        <details key="explanation" value="Derived and transient"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="incomingInvolvementLinks"
+        upperBound="-1" eType="#//FunctionalChainInvolvementLink" changeable="false"
+        volatile="true" transient="true" derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="opposite"/>
+        <details key="viatra.expression" value="target"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
+        <details key="explanation" value="Derived and transient"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlNode" eSuperTypes="#//SequenceLinkEnd">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="used to control the flow of executions of represented functions in a functional chain&#xD;&#xA;[source: Capella study]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational,system,logical,physical"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" eType="#//ControlNodeKind">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value=""/>
+        <details key="usage guideline" value="n/a"/>
+        <details key="used in levels" value="operational,system,logical,physical"/>
+        <details key="usage examples" value="n/a"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+        <details key="reference documentation" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ControlNodeKind">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value=""/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational,system,logical,physical"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eLiterals name="OR"/>
+    <eLiterals name="AND" value="1"/>
+    <eLiterals name="ITERATE" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReferenceHierarchyContext" abstract="true"
+      interface="true">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="used to uniquely identify a link between involvement functions when their functional chain is referenced more than once.&#xD;&#xA;[source: Capella study]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational,system,logical,physical"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceReferenceHierarchy"
+        upperBound="-1" eType="#//FunctionalChainReference">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="used to uniquely identify the source of a link between involvement functions when their functional chain is referenced more than once.&#xD;&#xA;[source: Capella study]"/>
+        <details key="usage guideline" value="n/a"/>
+        <details key="used in levels" value="operational,system,logical,physical"/>
+        <details key="usage examples" value="n/a"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+        <details key="reference documentation" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetReferenceHierarchy"
+        upperBound="-1" eType="#//FunctionalChainReference">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="used to uniquely identify the target of a link between involvement functions when their functional chain is referenced more than once.&#xD;&#xA;[source: Capella study]"/>
+        <details key="usage guideline" value="n/a"/>
+        <details key="used in levels" value="operational,system,logical,physical"/>
+        <details key="usage examples" value="n/a"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+        <details key="reference documentation" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
   </eClassifiers>
 </ecore:EPackage>

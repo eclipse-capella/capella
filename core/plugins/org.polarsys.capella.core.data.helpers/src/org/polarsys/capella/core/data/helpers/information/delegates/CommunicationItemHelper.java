@@ -51,7 +51,7 @@ public class CommunicationItemHelper {
 	}
 
 	protected List<Property> getProperties(CommunicationItem element) {
-		List <Property> ret = new ArrayList <Property>();
+		List <Property> ret = new ArrayList <>();
 		for (Feature feature : element.getOwnedFeatures()) {
 			if (feature instanceof Property) {
 				ret.add((Property) feature);

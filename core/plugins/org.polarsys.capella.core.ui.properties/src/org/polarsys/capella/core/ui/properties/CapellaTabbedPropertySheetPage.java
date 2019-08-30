@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.properties;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.LabelProviderChangedEvent;
 import org.eclipse.ui.part.IPageSite;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
@@ -47,9 +49,17 @@ public class CapellaTabbedPropertySheetPage extends TabbedPropertySheetPage {
    */
   @Override
   public void labelProviderChanged(LabelProviderChangedEvent event) {
-    if (!getControl().isDisposed()) {
+    if (!getControl().isDisposed() && isValidSelection()) {
       super.labelProviderChanged(event);
     }
+  }
+
+  protected boolean isValidSelection() {
+    if(getCurrentSelection() instanceof IStructuredSelection) {
+      Object firstElement = ((IStructuredSelection)getCurrentSelection()).getFirstElement();
+      return firstElement instanceof EObject && ((EObject)firstElement).eResource() != null;
+    }
+    return false;
   }
 
   /**

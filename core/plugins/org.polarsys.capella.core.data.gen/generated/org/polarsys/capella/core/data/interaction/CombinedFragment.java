@@ -120,6 +120,7 @@ public interface CombinedFragment extends AbstractFragment {
 	 * @return the value of the '<em>Expression Gates</em>' reference list.
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getCombinedFragment_ExpressionGates()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedGates'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
 	 * @generated

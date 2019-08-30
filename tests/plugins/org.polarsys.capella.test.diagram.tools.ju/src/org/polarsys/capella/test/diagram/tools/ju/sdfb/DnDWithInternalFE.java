@@ -12,11 +12,12 @@ package org.polarsys.capella.test.diagram.tools.ju.sdfb;
 
 import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
+import org.polarsys.capella.test.diagram.common.ju.availableXDFBDiagramTools.XDFBCreateContainerTools;
+import org.polarsys.capella.test.diagram.common.ju.availableXDFBDiagramTools.XDFBCreateEdgeTools;
 import org.polarsys.capella.test.diagram.common.ju.context.XDFBDiagram;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.DragAndDropTool;
 import org.polarsys.capella.test.diagram.tools.ju.model.EmptyProject;
 import org.polarsys.capella.test.framework.context.SessionContext;
-import org.polarsys.capella.test.framework.model.GenericModel;
 
 public class DnDWithInternalFE extends EmptyProject {
   @Override
@@ -26,24 +27,27 @@ public class DnDWithInternalFE extends EmptyProject {
 
     // Create a SDFB diagram
     XDFBDiagram sdfbDiagram = XDFBDiagram.createDiagram(context, SA__ROOT_SF);
-    
+
     // Create 3 SFs
-    sdfbDiagram.createFunction(GenericModel.FUNCTION_1);
-    sdfbDiagram.createFunction(GenericModel.FUNCTION_2);
-    sdfbDiagram.createFunction(GenericModel.FUNCTION_3);
+    String function1Id = sdfbDiagram.createContainer(sdfbDiagram.getDiagramId(),
+        XDFBCreateContainerTools.CREATE_FUNCTION);
+    String function2Id = sdfbDiagram.createContainer(sdfbDiagram.getDiagramId(),
+        XDFBCreateContainerTools.CREATE_FUNCTION);
+    String function3Id = sdfbDiagram.createContainer(sdfbDiagram.getDiagramId(),
+        XDFBCreateContainerTools.CREATE_FUNCTION);
 
     // Create a FE SF1 -> SF2
-    sdfbDiagram.createFunctionalExchange(GenericModel.FUNCTIONAL_EXCHANGE_1, GenericModel.FUNCTION_1, GenericModel.FUNCTION_2);
+    String fe1Id = sdfbDiagram.createEdge(function1Id, function2Id, XDFBCreateEdgeTools.CREATE_FUNCTIONAL_EXCHANGE);
     // Create a FE SF1 -> SF3
-    sdfbDiagram.createFunctionalExchange(GenericModel.FUNCTIONAL_EXCHANGE_2, GenericModel.FUNCTION_1, GenericModel.FUNCTION_3);
-    
-    assertNotNull("FE expected between Function 1 and Function 2", sdfbDiagram.getView(GenericModel.FUNCTIONAL_EXCHANGE_1));
-    assertNotNull("FE expected between Function 1 and Function 3", sdfbDiagram.getView(GenericModel.FUNCTIONAL_EXCHANGE_2));
-    
-    // DnD SF2 in SF1 so we have an internal FE between them
-    new DragAndDropTool(sdfbDiagram, IToolNameConstants.TOOL_SDFB_DND_SYSTEM_FUNCTION, GenericModel.FUNCTION_2, GenericModel.FUNCTION_1).run();
+    String fe2Id = sdfbDiagram.createEdge(function1Id, function3Id, XDFBCreateEdgeTools.CREATE_FUNCTIONAL_EXCHANGE);
 
-    assertNull("No FE expected between Function 1 and Function 2 (internal exchange)", sdfbDiagram.getView(GenericModel.FUNCTIONAL_EXCHANGE_1));
-    assertNotNull("FE expected between Function 1 and Function 3", sdfbDiagram.getView(GenericModel.FUNCTIONAL_EXCHANGE_2));
+    assertNotNull("FE expected between Function 1 and Function 2", sdfbDiagram.getView(fe1Id));
+    assertNotNull("FE expected between Function 1 and Function 3", sdfbDiagram.getView(fe2Id));
+
+    // DnD SF2 in SF1 so we have an internal FE between them
+    new DragAndDropTool(sdfbDiagram, IToolNameConstants.TOOL_SDFB_DND_SYSTEM_FUNCTION, function2Id, function1Id).run();
+
+    assertNull("No FE expected between Function 1 and Function 2 (internal exchange)", sdfbDiagram.getView(fe1Id));
+    assertNotNull("FE expected between Function 1 and Function 3", sdfbDiagram.getView(fe2Id));
   }
 }

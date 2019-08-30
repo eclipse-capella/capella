@@ -17,13 +17,13 @@ import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-
-import org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys;
 import org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserView;
 
 /**
  */
+@Deprecated
 public class SelectInSemanticBrowserAction extends Action {
 
   /** */
@@ -53,7 +53,7 @@ public class SelectInSemanticBrowserAction extends Action {
       activePage.activate(smView);
       smView.setInput(selection.getFirstElement());
     } catch (PartInitException exception) {
-    	// Catch exception silently,
+      // Catch exception silently,
     }
   }
 

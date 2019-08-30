@@ -182,6 +182,7 @@ public interface ExchangeItemAllocation extends Relationship, AbstractEventOpera
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the interface that allocated the given exchange item' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='ownedExchangeItemAllocations'"
 	 * @generated
 	 */
 

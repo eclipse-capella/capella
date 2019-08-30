@@ -64,6 +64,7 @@ public interface Entity extends AbstractConceptItem, InformationsExchanger, Invo
 	 * @see org.polarsys.capella.core.data.oa.OaPackage#getEntity_RoleAllocations()
 	 * @see org.polarsys.capella.core.data.oa.RoleAllocation#getEntity
 	 * @model opposite="entity" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outgoingTraces'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the allocation links between this operational entity and the operational roles\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -155,6 +156,7 @@ public interface Entity extends AbstractConceptItem, InformationsExchanger, Invo
 	 * @return the value of the '<em>Sub Entities</em>' reference list.
 	 * @see org.polarsys.capella.core.data.oa.OaPackage#getEntity_SubEntities()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedPartitions.type'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='sub-entities that have a derivation relationship from this entity\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
@@ -262,6 +264,7 @@ public interface Entity extends AbstractConceptItem, InformationsExchanger, Invo
 	 * @see org.polarsys.capella.core.data.oa.OaPackage#getEntity_AllocatedOperationalActivities()
 	 * @see org.polarsys.capella.core.data.oa.OperationalActivity#getAllocatorEntities
 	 * @model opposite="allocatorEntities" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatedFunctions'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -287,6 +290,7 @@ public interface Entity extends AbstractConceptItem, InformationsExchanger, Invo
 	 * @return the value of the '<em>Allocated Roles</em>' reference list.
 	 * @see org.polarsys.capella.core.data.oa.OaPackage#getEntity_AllocatedRoles()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='roleAllocations.role'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -312,6 +316,7 @@ public interface Entity extends AbstractConceptItem, InformationsExchanger, Invo
 	 * @return the value of the '<em>Realizing Systems</em>' reference list.
 	 * @see org.polarsys.capella.core.data.oa.OaPackage#getEntity_RealizingSystems()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Entity.incomingTraces(self, oer);\r\n\tOperationalEntityRealization.allocatingComponent(oer, target);\r\n} or {\r\n\tEntity.incomingTraces(self, oar);\r\n\tOperationalActorRealization.allocatingComponent(oar, target);'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -340,6 +345,7 @@ public interface Entity extends AbstractConceptItem, InformationsExchanger, Invo
 	 * @see org.polarsys.capella.core.data.oa.OaPackage#getEntity_RealizingActors()
 	 * @see org.polarsys.capella.core.data.ctx.Actor#getRealizedEntities
 	 * @model opposite="realizedEntities" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Entity.incomingTraces(self, oer);\r\n\tOperationalEntityRealization.allocatingComponent(oer, target);'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -366,6 +372,7 @@ public interface Entity extends AbstractConceptItem, InformationsExchanger, Invo
 	 * @return the value of the '<em>Involving Operational Capabilities</em>' reference list.
 	 * @see org.polarsys.capella.core.data.oa.OaPackage#getEntity_InvolvingOperationalCapabilities()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Entity.involvingInvolvements(self, eoci);\r\nEntityOperationalCapabilityInvolvement.capability(eoci, target);'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 * @generated

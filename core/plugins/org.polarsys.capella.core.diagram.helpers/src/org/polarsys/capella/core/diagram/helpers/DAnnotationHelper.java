@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *   
+ *  
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -33,18 +33,6 @@ public class DAnnotationHelper {
   }
 
   /**
-   * Remove the first annotation with a given source from a given model element
-   * @param source
-   * @param representation
-   */
-  public static void deleteAnnotation(String source, DModelElement representation) {
-    DAnnotation annotation = getAnnotation(source, representation, false);
-    if (annotation != null) {
-      SiriusUtil.delete(annotation);
-    }
-  }
-
-  /**
    * Get the first annotation with a given source from a given model element, optionally
    * creating the annotation if none previously existed.
    * 
@@ -54,7 +42,7 @@ public class DAnnotationHelper {
    */
   public static DAnnotation getAnnotation(String source, DModelElement representation, boolean create) {
     for (DAnnotation annotation : representation.getEAnnotations()) {
-      if (annotation.getSource().equals(source)) {
+      if (annotation.getSource() != null && annotation.getSource().equals(source)) {
         return annotation;
       }
     }
@@ -64,6 +52,31 @@ public class DAnnotationHelper {
     }
 
     return null;
+  }
+
+  /**
+   * Returns whether the element has the given element
+   * 
+   * @param source
+   * @param representation
+   */
+  public static boolean hasAnnotation(String source, DModelElement representation) {
+    return getAnnotation(source, representation, false) != null;
+  }
+
+  /**
+   * Delete the first annotation with a given source from a given model element
+   * @param source
+   * @param representation
+   * @return true if an annotation was deleted, false otherwise
+   */
+  public static boolean deleteAnnotation(String source, DModelElement representation) {
+    DAnnotation annotation = getAnnotation(source, representation, false);
+    if (annotation != null) {
+      SiriusUtil.delete(annotation);
+      return true;
+    }
+    return false;
   }
 
 }

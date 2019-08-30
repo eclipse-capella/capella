@@ -63,7 +63,7 @@ public abstract class PropertyPropagator {
       if (!tgts.contains(obj)) {
         handleFilterStatus(semanticElementPropagation, technicalElementPropagation, propagateToRepresentations, useFilterStatus, filterStatus, tgts, obj);
 
-        if (!(obj instanceof DRepresentation)) {
+        if (!(obj instanceof DRepresentationDescriptor)) {
           // Go through model elements to get inner elements
           TreeIterator<EObject> it = obj.eAllContents();
 
@@ -77,16 +77,15 @@ public abstract class PropertyPropagator {
 
     // Handle DRepresentation
     if (propagateToRepresentations) {
-      Collection<DRepresentation> representationsTargeted = RepresentationHelper
-          .getAllRepresentationsTargetedBy(selectedObjects);
+      Collection<DRepresentationDescriptor> representationsTargeted = RepresentationHelper.getAllRepresentationDescriptorsTargetedBy(selectedObjects);
 
-      for (DRepresentation representation : representationsTargeted) {
+      for (DRepresentationDescriptor descriptor : representationsTargeted) {
         if (useFilterStatus) {
-          if (mustBeFiltered(filterStatus, representation)) {
-            tgts.add(representation);
+          if (mustBeFiltered(filterStatus, descriptor)) {
+            tgts.add(descriptor);
           }
         } else {
-          tgts.add(representation);
+          tgts.add(descriptor);
         }
       }
 
@@ -131,7 +130,7 @@ public abstract class PropertyPropagator {
 
   protected void handlePropagation(boolean semanticElementPropagation, boolean technicalElementPropagation, boolean propagateToRepresentations, Collection<EObject> tgts, EObject obj) {
     if (isTaggableElement(obj)) {
-      if (obj instanceof DRepresentation) {
+      if (obj instanceof DRepresentationDescriptor) {
        if (propagateToRepresentations) {
         tgts.add(obj);
        }
@@ -309,21 +308,20 @@ public abstract class PropertyPropagator {
 
       TreeIterator<EObject> it = root.eAllContents();
       EObject current = null;
-      EObject currentDiagram = null;
+
+      for (DRepresentationDescriptor representationDesc : DialectManager.INSTANCE.getRepresentationDescriptors(root, session)) {
+        if (isTaggedRepresentation(representationDesc)) {
+          result.add(representationDesc);
+        }
+      }
+      
       while (it.hasNext()) {
         current = it.next();
         if (isTagged(current)) {
           result.add(current);
         }
         for (DRepresentationDescriptor representationDesc : DialectManager.INSTANCE.getRepresentationDescriptors(current, session)) {
-          currentDiagram = representationDesc.getRepresentation();
-          if (isTaggedRepresentation(currentDiagram)) {
-            result.add(representationDesc);
-          }
-        }
-        for (DRepresentationDescriptor representationDesc : DialectManager.INSTANCE.getRepresentationDescriptors(root, session)) {
-          currentDiagram = representationDesc.getRepresentation();
-          if (isTaggedRepresentation(currentDiagram)) {
+          if (isTaggedRepresentation(representationDesc)) {
             result.add(representationDesc);
           }
         }

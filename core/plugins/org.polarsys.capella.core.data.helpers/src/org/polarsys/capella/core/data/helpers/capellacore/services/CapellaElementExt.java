@@ -29,7 +29,7 @@ public class CapellaElementExt {
    * @return
    */
   public static List<CapellaElement> setSubtraction(List<? extends CapellaElement> dataDefListExisting2, List<? extends CapellaElement> dataDefListExisting) {
-    List<CapellaElement> listResult = new ArrayList<CapellaElement>();
+    List<CapellaElement> listResult = new ArrayList<>();
     for (CapellaElement eltA : dataDefListExisting2) {
       if (!(dataDefListExisting.contains(eltA))) {
         listResult.add(eltA);
@@ -44,13 +44,12 @@ public class CapellaElementExt {
    * @return list of <code>PartitionableElement<code>
    */
   public static List<PartitionableElement> getAllDescendants(PartitionableElement current) {
-    List<PartitionableElement> result = new ArrayList<PartitionableElement>();
+    List<PartitionableElement> result = new ArrayList<>();
     List<Partition> ownedPartitions = current.getOwnedPartitions();
-    List<PartitionableElement> children = new ArrayList<PartitionableElement>();
+    List<PartitionableElement> children = new ArrayList<>();
     for (Partition partition : ownedPartitions) {
       if (partition.getAbstractType() instanceof PartitionableElement) {
-        PartitionableElement pa = (PartitionableElement) partition.getAbstractType();
-        children.add(pa);
+        children.add((PartitionableElement) partition.getAbstractType());
       }
     }
     result.addAll(children);

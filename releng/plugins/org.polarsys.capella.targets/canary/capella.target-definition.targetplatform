@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,20 +10,21 @@
  *******************************************************************************/
 target "Capella"
 
+include "../modules/gmf-runtime-1.12.tpd"
+
 with source, requirements
 
-location "http://download.eclipse.org/releases/neon/201705151400" {
+location "http://download.eclipse.org/releases/oxygen/201803211000" {
 	org.eclipse.sdk.feature.group
 	org.eclipse.platform.feature.group
 	org.eclipse.emf.sdk.feature.group
 	org.eclipse.emf.query.feature.group
 	org.eclipse.emf.transaction.feature.group
-	org.eclipse.gmf.feature.group
 	org.eclipse.equinox.executable.feature.group
 	com.ibm.icu
 }
 
-location "http://download.eclipse.org/sirius/updates/nightly/latest/neon" {
+location "http://download.eclipse.org/sirius/updates/milestones/6.1.1rc1/oxygen" {
 	org.eclipse.sirius.doc.feature.feature.group
 	org.eclipse.sirius.doc.feature.source.feature.group
 	org.eclipse.sirius.runtime.feature.group
@@ -45,34 +46,37 @@ location "http://download.eclipse.org/sirius/updates/nightly/latest/neon" {
 }
 
 location "http://download.polarsys.org/kitalpha/updates/stable/runtime/1.2.0" {
-	org.polarsys.kitalpha.ad.runtime.feature.feature.group
-	org.polarsys.kitalpha.cadence.feature.feature.group
-	org.polarsys.kitalpha.common.feature.feature.group
-	org.polarsys.kitalpha.emde.feature.feature.group
-	org.polarsys.kitalpha.emde.ui.feature.feature.group
-	org.polarsys.kitalpha.model.common.commands.feature.feature.group
-	org.polarsys.kitalpha.model.common.scrutiny.feature.feature.group
-	org.polarsys.kitalpha.model.common.share.feature.feature.group
-	org.polarsys.kitalpha.model.detachment.contrib.viewpoints.feature.feature.group
-	org.polarsys.kitalpha.model.detachment.feature.feature.group
-	org.polarsys.kitalpha.model.detachment.ui.feature.feature.group
-	org.polarsys.kitalpha.patterns.feature.feature.group
-	org.polarsys.kitalpha.report.feature.feature.group
-	org.polarsys.kitalpha.report.ui.feature.feature.group
-	org.polarsys.kitalpha.transposer.feature.feature.group
-	org.polarsys.kitalpha.richtext.widget.feature.feature.group
-	org.polarsys.kitalpha.doc.feature.feature.group
+	org.polarsys.kitalpha.ad.runtime.feature.feature.group lazy
+	org.polarsys.kitalpha.cadence.feature.feature.group lazy
+	org.polarsys.kitalpha.common.feature.feature.group lazy
+	org.polarsys.kitalpha.emde.feature.feature.group lazy
+	org.polarsys.kitalpha.emde.ui.feature.feature.group lazy
+	org.polarsys.kitalpha.model.common.commands.feature.feature.group lazy
+	org.polarsys.kitalpha.model.common.scrutiny.feature.feature.group lazy
+	org.polarsys.kitalpha.model.common.share.feature.feature.group lazy
+	org.polarsys.kitalpha.model.detachment.contrib.viewpoints.feature.feature.group lazy
+	org.polarsys.kitalpha.model.detachment.feature.feature.group lazy
+	org.polarsys.kitalpha.model.detachment.ui.feature.feature.group lazy
+	org.polarsys.kitalpha.patterns.feature.feature.group lazy
+	org.polarsys.kitalpha.report.feature.feature.group lazy
+	org.polarsys.kitalpha.report.ui.feature.feature.group lazy
+	org.polarsys.kitalpha.resourcereuse.feature.feature.group lazy
+	org.polarsys.kitalpha.resourcereuse.emfscheme.feature.feature.group lazy
+	org.polarsys.kitalpha.resourcereuse.ui.feature.feature.group lazy
+	org.polarsys.kitalpha.transposer.feature.feature.group lazy
+	org.polarsys.kitalpha.richtext.widget.feature.feature.group lazy
+	org.polarsys.kitalpha.doc.feature.feature.group lazy
 }
 
-location "http://download.eclipse.org/diffmerge/releases/0.9.0/emf-diffmerge-site" {
-	org.eclipse.emf.diffmerge.feature.feature.group
-	org.eclipse.emf.diffmerge.sirius.feature.feature.group
-	org.eclipse.emf.diffmerge.gmf.feature.feature.group
+location "http://download.eclipse.org/diffmerge/releases/0.11.0/emf-diffmerge-site" {
+	org.eclipse.emf.diffmerge.feature.feature.group lazy
+	org.eclipse.emf.diffmerge.sirius.feature.feature.group lazy
+	org.eclipse.emf.diffmerge.gmf.feature.feature.group lazy
 }
 
-location "http://download.eclipse.org/diffmerge/releases/0.9.0/edm-patterns-site" {
-	org.eclipse.emf.diffmerge.patterns.sdk.feature.feature.group
-	org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.feature.group
+location "http://download.eclipse.org/diffmerge/releases/0.11.0/edm-patterns-site" {
+	org.eclipse.emf.diffmerge.patterns.sdk.feature.feature.group lazy
+	org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.feature.group lazy
 }
 
 location "http://download.eclipse.org/modeling/amalgam/updates/nightly/1.9.x/capella" {

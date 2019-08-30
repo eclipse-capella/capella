@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -62,6 +62,7 @@ public class ActivitiesLauncher {
       throw new NoSuchElementException();
     }
 
+    @Override
     public void remove() {
       throw new UnsupportedOperationException();
     }
@@ -92,7 +93,7 @@ public class ActivitiesLauncher {
 
   protected void addOverrides(String idOverrided, String idOverriding) {
     if (mapOverrides == null) {
-      mapOverrides = new HashMap<String, String>();
+      mapOverrides = new HashMap<>();
     }
     mapOverrides.put(idOverrided, idOverriding);
   }
@@ -152,8 +153,7 @@ public class ActivitiesLauncher {
   }
 
   protected WorkflowActivityParameter getParameter(String workflowId, String workflowElement) {
-    WorkflowActivityParameter parameter = new WorkflowActivityParameter();
-    return parameter;
+    return new WorkflowActivityParameter();
   }
 
   public void addParameters(SharedWorkflowActivityParameter parameters) {
@@ -187,10 +187,7 @@ public class ActivitiesLauncher {
         checkStatus(monitor, status);
       }
 
-    } catch (OperationCanceledException e) {
-      throw e;
-
-    } catch (TransitionException e) {
+    } catch (OperationCanceledException | TransitionException e) {
       throw e;
 
     } catch (Exception e) {
@@ -269,7 +266,7 @@ public class ActivitiesLauncher {
       if (status.matches(IStatus.ERROR)) {
         throw new TransitionException(status);
       } else if (status.matches(IStatus.CANCEL)) {
-        throw new OperationCanceledException(status == null ? "" : status.getMessage());
+        throw new OperationCanceledException(status.getMessage());
       }
     }
   }
@@ -293,5 +290,4 @@ public class ActivitiesLauncher {
   protected void dispose() {
     //Nothing here yet
   }
-
 }

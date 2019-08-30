@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,9 @@ package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
@@ -57,7 +59,7 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
 
   /**
    * Move the given physical link to common ancestor
-   * @param exchange_p
+   * @param link
    * @return whether the physical link has been moved
    */
   public static boolean attachToDefaultContainer(PhysicalLink link) {
@@ -84,7 +86,7 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
   /**
    * The best container is the common ancestor of source/target parts. if no parts, we use common ancestor of components (which can happen in OA or if user has
    * deleted parts)
-   * @param exchange_p
+   * @param link
    * @return a not null element
    */
   public static Component getDefaultContainer(PhysicalLink link) {
@@ -146,7 +148,6 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
     Collection<Part> sourceParts = org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getSourceParts(link);
     Collection<Part> targetParts = org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getTargetParts(link);
 
-    boolean flag = false;
     for (Part part : targetParts) {
       Collection<Part> firstPartAncestors = PartExt.getFirstPartAncestors(part);
       for (Part part2 : firstPartAncestors) {
@@ -156,13 +157,11 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
       }
     }
 
-    if (!flag) {
-      for (Part part : sourceParts) {
-        Collection<Part> firstPartAncestors = PartExt.getFirstPartAncestors(part);
-        for (Part part2 : firstPartAncestors) {
-          if (targetParts.contains(part2)) {
-            return true;
-          }
+    for (Part part : sourceParts) {
+      Collection<Part> firstPartAncestors = PartExt.getFirstPartAncestors(part);
+      for (Part part2 : firstPartAncestors) {
+        if (targetParts.contains(part2)) {
+          return true;
         }
       }
     }
@@ -207,7 +206,7 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
   }
 
   public static List<ModelElement> evaluateImpactsOfUnsynchronizeAllocations(PhysicalLink pLink, ComponentExchange cExchange, boolean forceCleaning) {
-    List<ModelElement> result = new ArrayList<ModelElement>();
+    List<ModelElement> result = new ArrayList<>();
     Port ceSource = ComponentExchangeExt.getSourcePort(cExchange);
     Port ceTarget = ComponentExchangeExt.getTargetPort(cExchange);
     if ((ceSource instanceof ComponentPort) && (ceTarget instanceof ComponentPort)) {
@@ -223,7 +222,7 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
    * @param forceCleaning
    */
   private static List<ModelElement> unsynchronizeAllocations(PhysicalLink pLink, ComponentPort ceSource, ComponentPort ceTarget, boolean forceCleaning) {
-    List<ModelElement> result = new ArrayList<ModelElement>();
+    List<ModelElement> result = new ArrayList<>();
     if (forceCleaning || getExchangesFrom(pLink, ceSource).isEmpty()) {
       result.addAll(unsynchronizeAllocations(getPhysicalPortFrom(pLink, ceSource), ceSource));
     }
@@ -238,7 +237,7 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
    * @param cPort
    */
   protected static List<ModelElement> unsynchronizeAllocations(PhysicalPort pPort, ComponentPort cPort) {
-    List<ModelElement> result = new ArrayList<ModelElement>();
+    List<ModelElement> result = new ArrayList<>();
     if ((null != pPort) && (null != cPort)) {
       ComponentPortAllocation allocation = getComponentPortAllocation(pPort, cPort);
       if (null != allocation) {
@@ -255,10 +254,8 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
    */
   private static ComponentPortAllocation getComponentPortAllocation(PhysicalPort pPort, ComponentPort cPort) {
     for (AbstractTrace trace : pPort.getOutgoingTraces()) {
-      if (trace instanceof ComponentPortAllocation) {
-        if (cPort.equals(trace.getTargetElement())) {
-          return (ComponentPortAllocation) trace;
-        }
+      if (trace instanceof ComponentPortAllocation && cPort.equals(trace.getTargetElement())) {
+        return (ComponentPortAllocation) trace;
       }
     }
     return null;
@@ -271,7 +268,7 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
    * @return
    */
   protected static List<ComponentExchange> getExchangesFrom(ComponentExchangeAllocator cpntAllocator, InformationsExchanger cPort) {
-    List<ComponentExchange> result = new ArrayList<ComponentExchange>();
+    List<ComponentExchange> result = new ArrayList<>();
     if (null != cPort) {
       for (ComponentExchange exchange : cpntAllocator.getAllocatedComponentExchanges()) {
         InformationsExchanger ceSource = exchange.getSource();
@@ -336,5 +333,25 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
     pPort.getOwnedComponentPortAllocations().add(allocation);
     CapellaElementExt.creationService(allocation);
   }
-
+  
+  /**
+   * 
+   * @param pl
+   * @return the physical links that are delegated from the given physical link (on both ports)
+   */
+  public static Collection<PhysicalLink> getDelegatedPhysicalLinks(PhysicalLink pl) {
+    Set<PhysicalLink> delegatedPhysicalLinks = new HashSet<>();
+    PhysicalPort sourcePhysicalPort = pl.getSourcePhysicalPort();
+    PhysicalPort targetPhysicalPort = pl.getTargetPhysicalPort();
+    if (isDelegation(pl)) {
+      if (PortExt.getDelegatingPhysicalLinks(sourcePhysicalPort).contains(pl))
+        delegatedPhysicalLinks.addAll(PortExt.getDelegatedPhysicalLinks(sourcePhysicalPort));
+      if (PortExt.getDelegatingPhysicalLinks(targetPhysicalPort).contains(pl))
+        delegatedPhysicalLinks.addAll(PortExt.getDelegatedPhysicalLinks(targetPhysicalPort));
+    } else {
+      delegatedPhysicalLinks.addAll(PortExt.getDelegatedPhysicalLinks(sourcePhysicalPort));
+      delegatedPhysicalLinks.addAll(PortExt.getDelegatedPhysicalLinks(targetPhysicalPort));
+    }
+    return delegatedPhysicalLinks;
+  }
 }

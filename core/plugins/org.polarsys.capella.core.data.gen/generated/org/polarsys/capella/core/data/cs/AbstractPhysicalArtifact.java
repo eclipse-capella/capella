@@ -53,6 +53,7 @@ public interface AbstractPhysicalArtifact extends CapellaElement {
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getAbstractPhysicalArtifact_AllocatorConfigurationItems()
 	 * @see org.polarsys.capella.core.data.epbs.ConfigurationItem#getAllocatedPhysicalArtifacts
 	 * @model opposite="allocatedPhysicalArtifacts" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='PhysicalArtifactRealization.targetElement(par, self);\r\nPhysicalArtifactRealization.allocatingComponent(par, target);'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

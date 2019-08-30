@@ -53,6 +53,7 @@ public interface ArchitectureAllocation extends Allocation {
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getArchitectureAllocation_AllocatedArchitecture()
 	 * @see org.polarsys.capella.core.data.cs.BlockArchitecture#getProvisioningArchitectureAllocations
 	 * @model opposite="provisioningArchitectureAllocations" required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='targetElement'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the allocated architecture\r\n[source: Capella study]\r\n\r\nSpecifies the targets of the DirectedRelationship.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -80,6 +81,7 @@ public interface ArchitectureAllocation extends Allocation {
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getArchitectureAllocation_AllocatingArchitecture()
 	 * @see org.polarsys.capella.core.data.cs.BlockArchitecture#getProvisionedArchitectureAllocations
 	 * @model opposite="provisionedArchitectureAllocations" required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='sourceElement'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the allocating architecture\r\n[source: Capella study]\r\n\r\nSpecifies the sources of the DirectedRelationship.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

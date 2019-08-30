@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,9 @@ public class Messages extends NLS {
   public static String MigrationAction_ConfirmationDialog_Message;
   public static String MigrationAction_ConfirmationDialog_ToggleMessage;
   public static String MigrationAction_UidMigration;
+  public static String MigrationAction_AnnotationMigration;
+  public static String MigrationAction_MissingStatusMigration;
+  public static String MigrationAction_MissingContextualElementMigration;
 
   static {
     // initialize resource bundle

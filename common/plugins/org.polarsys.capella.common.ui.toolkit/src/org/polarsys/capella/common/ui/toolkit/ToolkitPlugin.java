@@ -70,9 +70,9 @@ public class ToolkitPlugin extends AbstractUIActivator {
     imgDescriptor = ImageDescriptor.createFromURL(getIconURL("delete_element.gif")); //$NON-NLS-1$
     registry.put(ToolkitPlugin.REMOVE_IMAGE_ITEM_ID, imgDescriptor.createImage());
 
-    imgDescriptor = ImageDescriptor.createFromURL(getIconURL("arrow_down.png")); //$NON-NLS-1$
+    imgDescriptor = ImageDescriptor.createFromURL(getIconURL("arrow_down.gif")); //$NON-NLS-1$
     registry.put(ToolkitPlugin.MOVE_DOWN_ITEM_IMAGE_ID, imgDescriptor.createImage());
-    imgDescriptor = ImageDescriptor.createFromURL(getIconURL("arrow_up.png")); //$NON-NLS-1$
+    imgDescriptor = ImageDescriptor.createFromURL(getIconURL("arrow_up.gif")); //$NON-NLS-1$
     registry.put(ToolkitPlugin.MOVE_UP_ITEM_IMAGE_ID, imgDescriptor.createImage());
   }
 

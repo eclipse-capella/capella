@@ -96,7 +96,7 @@ public class ComponentExchangeHelper {
   }
   
   protected List<ComponentExchangeRealization> getIncomingComponentExchangeRealizations(ComponentExchange element) {
-    List<ComponentExchangeRealization> ret = new ArrayList<ComponentExchangeRealization>();
+    List<ComponentExchangeRealization> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ComponentExchangeRealization) {
         ret.add((ComponentExchangeRealization) trace);
@@ -106,7 +106,7 @@ public class ComponentExchangeHelper {
   }
 
   protected List<ComponentExchangeRealization> getOutgoingComponentExchangeRealizations(ComponentExchange element) {
-    List<ComponentExchangeRealization> ret = new ArrayList<ComponentExchangeRealization>();
+    List<ComponentExchangeRealization> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof ComponentExchangeRealization) {
         ret.add((ComponentExchangeRealization) trace);
@@ -116,7 +116,7 @@ public class ComponentExchangeHelper {
   }
 
   protected List<FunctionalExchange> getFunctionalExchanges(ComponentExchange element) {
-    List<FunctionalExchange> ret = new ArrayList<FunctionalExchange>();
+    List<FunctionalExchange> ret = new ArrayList<>();
     for (ComponentExchangeFunctionalExchangeAllocation item : element.getOutgoingComponentExchangeFunctionalExchangeAllocations()) {
       FunctionalExchange allocatedFunctionalExchange = item.getAllocatedFunctionalExchange();
       if (null != allocatedFunctionalExchange) {
@@ -127,7 +127,7 @@ public class ComponentExchangeHelper {
   }
 
   protected List<ComponentExchangeFunctionalExchangeAllocation> getOutgoingComponentExchangeFunctionalExchangeRealizations(ComponentExchange element) {
-    List<ComponentExchangeFunctionalExchangeAllocation> ret = new ArrayList<ComponentExchangeFunctionalExchangeAllocation>();
+    List<ComponentExchangeFunctionalExchangeAllocation> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof ComponentExchangeFunctionalExchangeAllocation) {
         ret.add((ComponentExchangeFunctionalExchangeAllocation) trace);
@@ -183,7 +183,7 @@ public class ComponentExchangeHelper {
   }
 
   protected List<PhysicalLink> getAllocatorPhysicalLinks(ComponentExchange element) {
-    List<PhysicalLink> ret = new ArrayList<PhysicalLink>();
+    List<PhysicalLink> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ComponentExchangeAllocation) {
         ComponentExchangeAllocator componentExchangeAllocator = ((ComponentExchangeAllocation)trace).getComponentExchangeAllocator();
@@ -196,20 +196,28 @@ public class ComponentExchangeHelper {
   }
 
   protected List<ComponentExchange> getRealizedComponentExchanges(ComponentExchange element) {
-    List<ComponentExchange> ret = new ArrayList<ComponentExchange>();
+    List<ComponentExchange> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof ComponentExchangeRealization) {
-        ret.add(((ComponentExchangeRealization) trace).getAllocatedComponentExchange());
+        ComponentExchange allocatedComponentExchange = ((ComponentExchangeRealization) trace)
+            .getAllocatedComponentExchange();
+        if (allocatedComponentExchange != null) {
+          ret.add(allocatedComponentExchange);
+        }
       }
     }
     return ret;
   }
 
   protected List<ComponentExchange> getRealizingComponentExchanges(ComponentExchange element) {
-    List<ComponentExchange> ret = new ArrayList<ComponentExchange>();
+    List<ComponentExchange> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ComponentExchangeRealization) {
-        ret.add(((ComponentExchangeRealization) trace).getAllocatingComponentExchange());
+        ComponentExchange allocatingComponentExchange = ((ComponentExchangeRealization) trace)
+            .getAllocatingComponentExchange();
+        if (allocatingComponentExchange != null) {
+          ret.add(allocatingComponentExchange);
+        }
       }
     }
     return ret;

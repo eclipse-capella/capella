@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?NLS TYPE="org.eclipse.help.toc"?>
-<!-- Copyright (c) 2006, 2017 THALES GLOBAL SERVICES. All rights reserved. 
+<!-- Copyright (c) 2006, 2018 THALES GLOBAL SERVICES. All rights reserved. 
 	This program and the accompanying materials are made available under the 
 	terms of the Eclipse Public License v1.0 which accompanies this distribution, 
 	and is available at http://www.eclipse.org/legal/epl-v10.html Contributors: 
@@ -16,6 +16,8 @@
 		<topic label="Capella">
 			<topic href="html/06. Preferences/6.2. Model preferences.html#General" label="General"></topic>
 			<topic href="html/06. Preferences/6.2. Model preferences.html#Delete" label="Delete"></topic>
+   <topic href="html/06. Preferences/6.2. Model preferences.html#Diagrams" label="Diagrams">
+   </topic>
 			<topic href="html/06. Preferences/6.2. Model preferences.html#Model" label="Model"></topic>
 			<topic href="html/06. Preferences/6.2. Model preferences.html#Model_Change_Recorder" label="Model Change Recorder"></topic>
 			<topic href="html/06. Preferences/6.2. Model preferences.html#Model_Validation" label="Model Validation"></topic>

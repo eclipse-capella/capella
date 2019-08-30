@@ -68,7 +68,7 @@ public class OperationHelper {
    *
    */
 	protected List<Operation> getAllocatedOperations(Operation element) {
-		List <Operation> ret = new ArrayList<Operation>();
+		List <Operation> ret = new ArrayList<>();
 		for (AbstractTrace trace : element.getOutgoingTraces()) {	
 			if (trace instanceof OperationAllocation) {
 			  Operation op = ((OperationAllocation) trace).getAllocatedOperation();
@@ -82,7 +82,7 @@ public class OperationHelper {
    *
    */
 	protected List<Operation> getAllocatingOperations(Operation element) {
-		List <Operation> ret = new ArrayList<Operation>();
+		List <Operation> ret = new ArrayList<>();
 		for (AbstractTrace trace : element.getIncomingTraces()) {	
 			if (trace instanceof OperationAllocation) {
         Operation op = ((OperationAllocation) trace).getAllocatingOperation();
@@ -96,7 +96,7 @@ public class OperationHelper {
    *
    */
   protected List<ExchangeItem> getRealizedExchangeItems(Operation element) {
-    List <ExchangeItem> ret = new ArrayList <ExchangeItem>();
+    List <ExchangeItem> ret = new ArrayList <>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof ExchangeItemRealization) {
         AbstractExchangeItem item = ((ExchangeItemRealization) trace).getRealizedItem();

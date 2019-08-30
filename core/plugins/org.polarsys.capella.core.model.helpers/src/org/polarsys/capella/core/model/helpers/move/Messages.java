@@ -15,11 +15,15 @@ import org.eclipse.osgi.util.NLS;
 public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.core.model.helpers.move.messages"; //$NON-NLS-1$
   public static String Stage_element_has_no_editing_domain;
+  public static String Stage_executeCannotMove;
+  public static String Stage_executeMoved;
   public static String Stage_diagnostic_backref;
   public static String Stage_different_editing_domains_not_allowed;
   public static String Stage_formtitle;
   public static String Stage_incomplete_with_backrefs;
   public static String Stage_incomplete_with_orphan;
+  public static String Stage_executeDiagnostics_title;
+  public static String Stage_diagnosticSource;
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);

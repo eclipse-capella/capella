@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+  Copyright (c) 2018, 2019 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -15,7 +15,7 @@
          point="org.eclipse.emf.validation.constraintProviders">
       <constraintProvider>
          <package
-               namespaceUri="http://www.polarsys.org/capella/core/core/1.2.0">
+               namespaceUri="http://www.polarsys.org/capella/core/core/1.3.0">
          </package>
          <constraints
                categories="capella.category/design/well-formedness/data">
@@ -65,7 +65,7 @@
                   isEnabledByDefault="false"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_D_41 - class with an abstract attribute/role"
+                  name="DWF_D_41 - Class with an abstract attribute/role"
                   severity="ERROR"
                   statusCode="1">
                <message>
@@ -96,6 +96,24 @@
                     <description>
                         This rule ensures that superTypes are not Final.
                     </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.capellamodeller.validation.PkgDependenciesCycleLiveValidationRule"
+                  id="DWF_D_55"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Live"
+                  name="DWF_D_55 [Live] - Validate Data Pkg Dependency Cycle"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  DWF_D_55 [Live]: Some dependency cycle(s) has(ve) been detected that implies the following packages: {0}
+               </message>
+               <description>
+                  This rule detects Cycle of Dependencies between Data packages.
+               </description>
+               <target
+                     class="AbstractDependenciesPkg"></target>
             </constraint>
          </constraints>
          <constraints
@@ -358,25 +376,6 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
             </constraint>
             <constraint
                   class="org.polarsys.capella.core.data.core.validation.constraint.ReferentialConstraintsValidationRule"
-                  id="I_37"
-                  isEnabledByDefault="true"
-                  lang="Java"
-                  mode="Live"
-                  name="I_37 - Validate referential constraints during move"
-                  severity="ERROR"
-                  statusCode="1">
-               <message>
-                  Cannot move elements
-               </message>
-               <description>
-                  Detects moved elements and verifies that outgoing/incoming references from/to these elements and their content trees are still allowed. This validation rule is only executed if the move operation was executed in the Move Staging View.
-               </description>
-               <target
-                     class="CapellaElement">
-               </target>
-            </constraint>
-            <constraint
-                  class="org.polarsys.capella.core.data.core.validation.constraint.ReferentialConstraintsValidationRule"
                   id="I_38"
                   isEnabledByDefault="false"
                   lang="Java"
@@ -388,19 +387,19 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                   ''{0}'' cannot reference ''{1}'' via ''{2}'' 
                </message>
                <description>
-                  Detects moved elements and verifies that outgoing/incoming references from/to these elements and their content trees are still allowed. This validation rule is only executed if the move operation was executed in the Move Staging View.
+                  Verifies that an elements outgoing references are valid according to Capella business rules.
                </description>
                <target
                      class="CapellaElement">
                </target>
             </constraint>
              <constraint
-                  class="org.polarsys.capella.core.data.core.validation.constraint.InterModelConsistencyValidationRule"
+                  class="org.polarsys.capella.core.data.core.validation.constraint.InterModelConsistencyLiveValidationRule"
                   id="I_39"
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Live"
-                  name="I_39 - Validate inter-model references"
+                  name="I_39 [Live] - Validate inter-model references"
                   severity="ERROR"
                   statusCode="1">
                <message>
@@ -417,12 +416,18 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
       </constraintProvider>
       <constraintProvider>
          <package
-               namespaceUri="http://www.polarsys.org/capella/core/modeller/1.2.0">
+               namespaceUri="http://www.polarsys.org/capella/core/modeller/1.3.0">
+         </package>
+         <package
+               namespaceUri="http://www.polarsys.org/capella/core/core/1.3.0">
+         </package>
+         <package
+               namespaceUri="http://www.polarsys.org/capella/core/cs/1.3.0">
          </package>
          <constraints
                categories="capella.category/design/well-formedness/data">
             <constraint
-                  class="org.polarsys.capella.core.data.capellamodeller.validation.MDCHK_SystemEngineering_Cycle_Dependencies"
+                  class="org.polarsys.capella.core.data.capellamodeller.validation.PkgDependenciesCycleValidationRule"
                   id="DWF_D_25"
                   isEnabledByDefault="true"
                   lang="Java"
@@ -431,13 +436,19 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  Some dependency cycle(s) has(ve) been detected that implies {0} packages
+                  Some dependency cycle(s) has(ve) been detected that implies the following packages: {0}
                </message>
                <description>
-                  This rule detects Cycle of Dependencies.
+                  This rule detects Cycle of Dependencies between packages.
                </description>
                <target
                      class="SystemEngineering">
+               </target>
+               <target
+                     class="BlockArchitecture">
+               </target>
+               <target
+                     class="AbstractDependenciesPkg">
                </target>
             </constraint>
         	<constraint
@@ -463,7 +474,7 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
          <constraints
                categories="capella.category/integrity">
             <constraint
-                  class="org.polarsys.capella.core.data.capellamodeller.validation.SystemEngineering_InterModelInconsistencyDetection"
+                  class="org.polarsys.capella.core.data.capellamodeller.validation.InterModelInconsistencyValidationRule"
                   id="I_34"
                   isEnabledByDefault="false"
                   lang="Java"
@@ -508,7 +519,7 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
       </constraintProvider>
       <constraintProvider>
          <package
-               namespaceUri="http://www.polarsys.org/capella/common/core/1.2.0">
+               namespaceUri="http://www.polarsys.org/capella/common/core/1.3.0">
          </package>
          <constraints
                categories="capella.category/transition/justification/generic">
@@ -541,7 +552,7 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                   lang="Java"
                   mode="Batch"
                   name="I_26 - Equivalent Trace Elements"
-                  severity="WARNING"
+                  severity="ERROR"
                   statusCode="1">
                <message>
                   Message body provided by implementation
@@ -551,6 +562,33 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                </description>
                <target
                      class="AbstractTrace">
+               </target>
+            </constraint>
+         </constraints>
+      </constraintProvider>
+      <constraintProvider>
+         <package
+               namespaceUri="http://www.polarsys.org/capella/core/core/1.3.0">
+         </package>
+         <constraints
+               categories="capella.category/integrity">
+            <constraint
+                  class="org.polarsys.capella.core.data.core.validation.constraint.UniqueInvolvementConstraint"
+                  id="I_40"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_40 - Equivalent Involvement Elements"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  Message body provided by implementation
+               </message>
+               <description>
+                  Checks that there are no equivalent Involvement elements. Two Involvements elements are equivalent if they have identical types and identical source and target elements.
+               </description>
+               <target
+                     class="Involvement">
                </target>
             </constraint>
          </constraints>

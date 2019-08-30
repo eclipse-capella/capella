@@ -1,0 +1,365 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Element-Name: TriggerEvent
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _yKF9QK86Eee2vO1UksePLw
+Runtime-Version: 2.1.0.201606221726
+Save-Time: 9/28/18 1:34 PM
+Testcase-Type: ecl
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+//Create a project
+
+get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
+with [get-window "New Capella Project"] {
+    get-editbox | set-text project
+    get-button Finish | click
+}
+
+
+//Create a library
+
+get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Library" | click
+with [get-window "New Capella Library"] {
+    get-editbox | set-text library
+    get-button Finish | click
+}
+
+get-view "Capella Project Explorer" | get-tree | select "project/project.aird" | get-menu "Libraries/Manage references" | click
+with [get-window -class PropertyDialog] {
+    get-table | get-item "library.melodymodeller" | check
+    get-button OK | click
+}
+
+// Create a MSM diagram
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "project/project.aird/project/System Analysis/System/System State Machine/Default Region" 
+    | select "project/project.aird/project/System Analysis/System/System State Machine/Default Region" 
+    | get-menu "New Diagram \\/ Table.../Mode State Machine" | click
+with [get-window "New Mode State Machine"] {
+    with [get-editbox -after [get-label "Name:"]] {
+        set-text "[MSM] Default Region"
+    }
+    get-button OK | click
+}
+with [get-editor "[MSM] Default Region"] {
+    get-diagram -index 1 | get-edit-part -name "[MSM] Default Region" | mouse-move 846 91 -height 687 -width 1042
+    with [get-palette] {
+        get-palette-entry "Modes & States" | mouse-move 6 91 -height 679 -width 125
+        get-palette-entry State | mouse-move 26 0 -height 23 -width 125
+        with [get-palette-entry Mode] {
+            mouse-move 36 14 button1 -height 23 -width 125
+            mouse-press 36 14 button1 -height 23 -width 125
+            mouse-release 36 14 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[MSM] Default Region"] {
+        mouse-move 176 233 button1 CTRL -height 687 -width 1042
+        mouse-press 176 233 button1 CTRL -height 687 -width 1042
+        mouse-release 176 233 button1 786432 -height 687 -width 1042
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[MSM] Default Region"] {
+        mouse-move 457 339 button1 CTRL -height 687 -width 1042
+        mouse-press 457 339 button1 CTRL -height 687 -width 1042
+        mouse-release 457 339 button1 786432 -height 687 -width 1042
+    }
+    get-diagram -index 1 | get-edit-part -name "[MSM] Default Region" | mouse-move 973 338 -mask CTRL -height 687 
+        -width 1042
+    with [get-palette | get-palette-entry Transition] {
+        mouse-move 64 12 button1 -height 23 -width 125
+        mouse-press 64 12 button1 -height 23 -width 125
+        mouse-release 64 12 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[MSM] Default Region"] {
+        mouse-move 358 292 -height 687 -width 1042
+        with [get-edit-part -name "Mode 1"] {
+            mouse-move 59 54 -height 70 -width 62
+            with [get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part 
+                -name " [region]" | get-edit-part -className StackCompartment2EditPart] {
+                mouse-move 41 21 button1 -height 40 -width 58
+                mouse-press 41 21 button1 -height 40 -width 58
+                mouse-release 41 21 button1 524288 -height 40 -width 58
+            }
+        }
+        mouse-move 453 385 -height 687 -width 1042
+        with [get-edit-part -name "Mode 2" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name " [region]" 
+            | get-edit-part -className StackCompartment2EditPart] {
+            mouse-move 33 19 button1 -height 40 -width 58
+            mouse-press 33 19 button1 -height 40 -width 58
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[MSM] Default Region"] {
+        get-edit-part -name "Mode 2" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+            | get-edit-part -name " [region]" | get-edit-part -className StackCompartment2EditPart 
+            | mouse-release 33 19 button1 524288 -height 40 -width 58
+        mouse-move 370 404 button1 -height 687 -width 1042
+        mouse-press 370 404 button1 -height 687 -width 1042
+        mouse-release 370 404 button1 524288 -height 687 -width 1042
+        mouse-move 368 346 -height 687 -width 1042
+        with [get-edit-part -name "Mode 2" | get-target-connection 0] {
+            mouse-move 141 78 button1 -height 137 -width 247
+            mouse-press 141 78 button1 -height 137 -width 247
+            mouse-release 143 80 button1 524288 -height 141 -width 251
+        }
+    }
+}
+
+
+// Create a Time Event, AT shal be selected between two kind (AT/AFTER), and it shall be displayed as "(AT) TimeEventConstraint"
+get-view Properties | get-section Property | get-group -index 3 | get-button "Create a Time Event" | click
+with [get-window "Time Event"] {
+    get-tab-folder | get-tab-item Capella | click
+    with [get-group "" | get-editbox -after [get-label "Name :"]] {
+        click-text 1
+        set-focus
+    }
+    get-group "" | get-editbox -after [get-label "Name :"] | set-focus
+    with [get-group "" -index 1 | get-text-viewer] {
+        type-text TimeEventConstraint
+    }
+    with [get-group "Time Event Kind:"] {
+    	with [get-button AT] {
+    	    get-property enablement | equals true | verify-true
+    	    get-property selected | equals true | verify-true
+    	}
+    	with [get-button AFTER] {
+    	    get-property enablement | equals true | verify-true
+    	    get-property selected | equals false | verify-true
+    	}
+    }
+    get-button Finish | click
+}
+
+
+
+
+
+
+with [get-editor "[MSM] Default Region"] {
+    get-diagram -index 1 | get-edit-part -name "[MSM] Default Region" | mouse-move 1034 472 -height 526 -width 1042
+    with [get-palette | get-palette-entry "Modes & States"] {
+        mouse-move 42 411 button1 -height 518 -width 125
+        mouse-press 42 411 button1 -height 518 -width 125
+        mouse-release 42 411 button1 524288 -height 518 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[MSM] Default Region"] {
+        mouse-move 664 390 -height 526 -width 1042
+        mouse-move 327 330 -height 526 -width 1042
+        mouse-move 317 333 -height 526 -width 1042
+    }
+}
+get-editor "[MSM] Default Region" | get-diagram -index 1 | get-edit-part -name "[MSM] Default Region" | get-edit-part 
+    -name "Mode 2" | get-target-connection 0 | get-edit-part -className DEdgeNameEditPart | get-property "element.name" 
+    | equals "(AT) TimeEventConstraint" | verify-true
+    
+    
+
+// Create a Change Event, WHEN shal be selected, and it shall be displayed as "(AT) TimeEventConstraint, (WHEN) ChangeEventConstraint"
+
+get-view Properties | get-section Property | get-group -index 3 | get-button "Create a Change Event" | click
+with [get-window "Change Event"] {
+    get-tab-folder | get-tab-item Capella | click
+    get-group "" -index 1 | get-text-viewer | type-text ChangeEventConstraint
+    with [get-group "Change Event Kind:" | get-button WHEN] {
+	    get-property enablement | equals true | verify-true
+	    get-property selected | equals true | verify-true
+	}
+}
+
+
+
+get-window "Change Event" | get-button Finish | click
+with [get-editor "[MSM] Default Region" | get-diagram -index 1 | get-edit-part -name "[MSM] Default Region"] {
+    mouse-move 517 307 button1 -height 526 -width 1042
+    mouse-press 517 307 button1 -height 526 -width 1042
+    mouse-release 517 307 button1 524288 -height 526 -width 1042
+    mouse-move 440 315 -height 526 -width 1042
+    with [get-edit-part -name "Mode 2" | get-target-connection 0 | get-edit-part -className DEdgeNameEditPart] {
+        mouse-move 210 3 button1 -height 13 -width 296
+        mouse-press 210 3 button1 -height 13 -width 296
+        mouse-release 210 3 button1 524288 -height 13 -width 296
+        mouse-hover 210 3 -height 13 -width 296
+        mouse-move 207 9 -height 13 -width 296
+    }
+}
+get-editor "[MSM] Default Region" | get-diagram -index 1 | get-edit-part -name "[MSM] Default Region" | get-edit-part 
+    -name "Mode 2" | get-target-connection 0 | get-edit-part -className DEdgeNameEditPart | get-property "element.name" 
+    | equals "(AT) TimeEventConstraint, (WHEN) ChangeEventConstraint" | verify-true
+    
+    
+
+// On the project explorer, we can add Constraints and Property Values on TimeEvent/ ChangeEvent
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "project/*project.aird/project/System Analysis/Data/TimeEvent 1" 
+    | select "project/*project.aird/project/System Analysis/Data/TimeEvent 1" 
+    | get-menu "Add Capella Element/Constraint" | click
+    
+get-view "Capella Project Explorer" | get-tree 
+    | select "project/*project.aird/project/System Analysis/Data/TimeEvent 1" 
+    | select "project/*project.aird/project/System Analysis/Data/TimeEvent 1" 
+    | get-menu "Add Capella Element/Boolean Property Value" | click
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "project/*project.aird/project/System Analysis/Data/ChangeEvent 2" 
+    | select "project/*project.aird/project/System Analysis/Data/ChangeEvent 2" 
+    | get-menu "Add Capella Element/Boolean Property Value" | click
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "project/*project.aird/project/System Analysis/Data/ChangeEvent 2" 
+    | select "project/*project.aird/project/System Analysis/Data/ChangeEvent 2" 
+    | get-menu "Add Capella Element/Constraint" | click
+    
+    
+// Create a model with Time Event, Change Event, Function, Functional Exchange as below
+
+with [get-view "Capella Project Explorer" | get-tree] {
+
+    select "project/*project.aird/project/Operational Analysis/Data" | get-menu "Add Capella Element/Time Event" | click
+    select "library/library.aird/library/Operational Analysis/Data" | get-menu "Add Capella Element/Time Event" | click
+    select "library/*library.aird/library/System Analysis/Data" | get-menu "Add Capella Element/Time Event"  | click
+    select "library/*library.aird/library/Logical Architecture/Data" | get-menu "Add Capella Element/Time Event"  | click
+    
+    select "project/*project.aird/project/Operational Analysis/Data" | get-menu "Add Capella Element/Change Event" | click
+    select "library/*library.aird/library/Operational Analysis/Data" | get-menu "Add Capella Element/Change Event" | click
+	select "library/*library.aird/library/System Analysis/Data" | get-menu "Add Capella Element/Change Event" | click
+	select "library/*library.aird/library/Logical Architecture/Data" | get-menu "Add Capella Element/Change Event" | click
+    
+	select "library/*library.aird/library/System Analysis/Interfaces" | get-menu "Add Capella Element/Exchange Item" | click
+	select "library/*library.aird/library/Logical Architecture/Interfaces" | get-menu "Add Capella Element/Exchange Item" | click
+	
+	select "library/*library.aird/library/System Analysis/Data" | get-menu "Add Capella Element/Class" | click
+	select "library/*library.aird/library/System Analysis/Data/Class 1" | get-menu "Add Capella Element/Service" | click
+	
+}
+
+// Create a Functional Exchange and two functions, allocate it to the System
+get-view "Capella Project Explorer" | get-tree 
+    | select "project/*project.aird/project/System Analysis/System Functions/Root System Function" 
+    | select "project/*project.aird/project/System Analysis/System Functions/Root System Function" 
+    | get-menu "New Diagram \\/ Table.../System Data Flow Blank" | click
+get-window "New System Data Flow Blank" | get-button OK | click
+with [get-editor "[SDFB] Root System Function"] {
+    get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function" | mouse-move 1033 25 -height 687 
+        -width 1042
+    with [get-palette] {
+        get-palette-entry SystemFunctions | mouse-move 5 4 -height 23 -width 125
+        with [get-palette-entry "System Function"] {
+            mouse-move 19 5 button1 -height 23 -width 125
+            mouse-press 19 5 button1 -height 23 -width 125
+            mouse-release 19 5 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-move 294 229 button1 CTRL -height 687 -width 1042
+        mouse-press 294 229 button1 CTRL -height 687 -width 1042
+        mouse-release 294 229 button1 786432 -height 687 -width 1042
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-move 634 181 button1 CTRL -height 687 -width 1042
+        mouse-press 634 181 button1 CTRL -height 687 -width 1042
+        mouse-release 634 181 button1 786432 -height 687 -width 1042
+    }
+    with [get-palette] {
+        get-palette-entry "Functional Exchanges" | mouse-move 6 35 -height 37 -width 125
+        with [get-palette-entry "Functional Exchange"] {
+            mouse-move 21 10 button1 -height 37 -width 125
+            mouse-press 21 10 button1 -height 37 -width 125
+            mouse-release 21 10 button1 524288 -height 37 -width 125
+            mouse-move 22 9 -height 37 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
+        mouse-move 485 233 -height 687 -width 1042
+        with [get-edit-part -name "SystemFunction 1" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 124 27 button1 -height 68 -width 148
+            mouse-press 124 27 button1 -height 68 -width 148
+            mouse-release 124 27 button1 524288 -height 68 -width 148
+        }
+        with [get-edit-part -name "SystemFunction 2" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 32 29 button1 -height 68 -width 148
+            mouse-press 32 29 button1 -height 68 -width 148
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
+        get-edit-part -name "SystemFunction 2" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart | mouse-release 32 29 button1 524288 
+            -height 68 -width 148
+        mouse-move 376 153 button3 -height 687 -width 1042
+        mouse-press 376 153 button3 -height 687 -width 1042
+        mouse-move 371 153 -mask 2097152 -height 687 -width 1042
+        mouse-drag 371 153 button3 2097152 -height 687 -width 1042
+        mouse-release 371 153 button3 2097152 -height 687 -width 1042
+        mouse-press 166 128 button1 -height 687 -width 1042
+        mouse-move 166 128 -mask 524288 -height 687 -width 1042
+        mouse-drag 166 128 button1 524288 -height 687 -width 1042
+        mouse-release 166 128 button1 524288 -height 687 -width 1042
+        mouse-move 7 171 -height 687 -width 1042
+        get-edit-part -name "SystemFunction 1" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart | mouse-move 111 9 -height 68 -width 148
+    }
+}
+
+// Allocate both functions
+
+get-view "Capella Project Explorer" | get-tree | select "project/*project.aird/project/System Analysis/System"
+get-view Properties | get-section Property | get-group -index 1 | get-button "Browse available elements"
+    -after [get-label "Allocated Functions :"] | click
+with [get-window "Transfer Dialog"] {
+    get-button ">>" | click
+    get-button OK | click
+}
+
+
+get-view "Capella Project Explorer" | get-tree | select "library/*library.aird" | key-type "M1+s"
+get-view "Capella Project Explorer" | get-tree | select "project/*project.aird" | key-type "M1+s"
+
+// On the Transition.trigger, it shall display all allocated functions, exchanges, operation, exchangeItems, as UPPER_LAYER & LIBRARY_UPPER_LAYERS access rule(i.e Same layer + All upper layer even of library model)
+
+with [get-editor "[MSM] Default Region"] {
+    click
+    with [get-diagram -index 1 | get-edit-part -name "[MSM] Default Region"] {
+        mouse-move 408 370 -height 687 -width 1042
+        with [get-edit-part -name "Mode 2" | get-target-connection 0] {
+            mouse-move 216 102 button1 -height 141 -width 324
+            mouse-press 216 102 button1 -height 141 -width 324
+            mouse-release 216 102 button1 524288 -height 141 -width 324
+        }
+        mouse-move 512 455 -height 687 -width 1042
+    }
+}
+
+get-view Properties | get-section Property | get-group -index 3 | get-button "Browse available elements" | click
+
+with [get-window "Transfer Dialog"] {
+    get-button "<<" | click
+}
+with [get-window "Transfer Dialog" | get-tree] {
+    get-item "library/library" | get-property childCount | equals 2 | verify-true
+    get-item "project/project" | get-property childCount | equals 2 | verify-true
+    get-item "library/library/Operational Analysis/Data/TimeEvent 1"
+    get-item "library/library/Operational Analysis/Data/ChangeEvent 2"
+    get-item "library/library/System Analysis/Data/Class 1/Service 1"
+    get-item "library/library/System Analysis/Data/TimeEvent 1"
+    get-item "library/library/System Analysis/Data/ChangeEvent 2"
+    get-item "library/library/System Analysis/Interfaces/ExchangeItem 1"
+    get-item "project/project/System Analysis/System Functions/Root System Function/SystemFunction 1"  
+    get-item "project/project/System Analysis/System Functions/Root System Function/FunctionalExchange 1 \\[SystemFunction 1 -> SystemFunction 2\\]" 
+    get-item "project/project/Operational Analysis/Data/TimeEvent 1"
+    get-item "project/project/Operational Analysis/Data/ChangeEvent 2"
+    get-item "project/project/System Analysis/Data/TimeEvent 1"
+    get-item "project/project/System Analysis/Data/ChangeEvent 2"
+}
+with [get-window "Transfer Dialog"] {
+    get-button OK | click
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

@@ -46,7 +46,7 @@ public class UnionHelper {
 	}	
 
   protected List <UnionProperty> getContainedUnionProperties(Union element){
-    List <UnionProperty> ret = new ArrayList <UnionProperty>();
+    List <UnionProperty> ret = new ArrayList <>();
     for (Feature feature : element.getOwnedFeatures()) {
       if(feature instanceof UnionProperty) {
         ret.add((UnionProperty)feature);

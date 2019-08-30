@@ -121,6 +121,7 @@ public interface CapabilityRealization extends AbstractCapability {
 	 * @see org.polarsys.capella.core.data.la.LaPackage#getCapabilityRealization_ParticipatingActors()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='participatingActors'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involvedActors.involved'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) direct references to the actors which capabilities are being realized by this CapabilityRealization\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -148,6 +149,7 @@ public interface CapabilityRealization extends AbstractCapability {
 	 * @see org.polarsys.capella.core.data.la.LaPackage#getCapabilityRealization_ParticipatingSystemComponents()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='participatingSystemComponents'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involvedSystemComponents.involved'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) direct references to the system components being realized by this CapabilityRealization\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -176,6 +178,7 @@ public interface CapabilityRealization extends AbstractCapability {
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='involvedActors'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involvedInvolvements'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) references to the involvement links in ActorCapabilityRealizations\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -204,6 +207,7 @@ public interface CapabilityRealization extends AbstractCapability {
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='involvedSystemComponents'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involvedInvolvements'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) references to the involvement links in SystemComponentRealizations for this CapabilityRealization\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -232,6 +236,7 @@ public interface CapabilityRealization extends AbstractCapability {
 	 * @see org.polarsys.capella.core.data.la.LaPackage#getCapabilityRealization_RealizedCapabilities()
 	 * @see org.polarsys.capella.core.data.ctx.Capability#getRealizingCapabilityRealizations
 	 * @model opposite="realizingCapabilityRealizations" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='CapabilityRealization.outgoingTraces(self, acr);\r\nAbstractCapabilityRealization.realizedCapability(acr, target);'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -259,6 +264,7 @@ public interface CapabilityRealization extends AbstractCapability {
 	 * @see org.polarsys.capella.core.data.la.LaPackage#getCapabilityRealization_RealizedCapabilityRealizations()
 	 * @see org.polarsys.capella.core.data.la.CapabilityRealization#getRealizingCapabilityRealizations
 	 * @model opposite="realizingCapabilityRealizations" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='CapabilityRealization.outgoingTraces(self, acr);\r\nAbstractCapabilityRealization.realizedCapability(acr, target);'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -286,6 +292,7 @@ public interface CapabilityRealization extends AbstractCapability {
 	 * @see org.polarsys.capella.core.data.la.LaPackage#getCapabilityRealization_RealizingCapabilityRealizations()
 	 * @see org.polarsys.capella.core.data.la.CapabilityRealization#getRealizedCapabilityRealizations
 	 * @model opposite="realizedCapabilityRealizations" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='CapabilityRealization.incomingTraces(self, acr);\r\nAbstractCapabilityRealization.realizingCapability(acr, target);'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

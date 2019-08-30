@@ -75,7 +75,7 @@
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.ComponentExchangeCategory_Exchanges" id="org.polarsys.capella.core.business.queries.fa.ComponentExchangeCategory_Exchanges" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionalChain_RealizedFunctionalChains" id="org.polarsys.capella.core.business.queries.fa.FunctionalChain_RealizedFunctionalChains" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionalChain_AvailableInStates" id="org.polarsys.capella.core.business.queries.fa.FunctionalChain_AvailableInStates" />
-    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionalChainInvolvement_ExchangeItems" id="org.polarsys.capella.core.business.queries.fa.FunctionalChainInvolvement_ExchangeItems" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionalChainInvolvementLink_ExchangeItems" id="org.polarsys.capella.core.business.queries.fa.FunctionalChainInvolvement_ExchangeItems" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionalExchange_FunctionalExchangeRealizations" id="org.polarsys.capella.core.business.queries.fa.FunctionalExchange_FunctionalExchangeRealizations" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionalExchange_Source" id="org.polarsys.capella.core.business.queries.fa.FunctionalExchange_Source" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionalExchange_Target" id="org.polarsys.capella.core.business.queries.fa.FunctionalExchange_Target" />
@@ -99,6 +99,10 @@
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionInputPort_ProvidedInterface" id="org.polarsys.capella.core.business.queries.fa.FunctionInputPort_ProvidedInterface" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionInputPort_RequiredInterface" id="org.polarsys.capella.core.business.queries.fa.FunctionInputPort_RequiredInterface" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionalExchange_ExchangeItems" id="org.polarsys.capella.core.business.queries.fa.FunctionalExchange_ExchangeItems" />
+    <MDEBusinessQueries
+          class="org.polarsys.capella.core.business.queries.fa.SequenceLink_Links"
+          id="org.polarsys.capella.core.business.queries.fa.SequenceLink_Links">
+    </MDEBusinessQueries>
   </extension>
   <extension name="information" point="org.polarsys.capella.core.data.business.queries.MDEBusinessQueries">
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.BinaryExpression_LeftOperand" id="org.polarsys.capella.core.business.queries.information.BinaryExpression_LeftOperand" />
@@ -1322,11 +1326,11 @@
     <querySpecification queryIdentifier="GetCurrent_FunctionOutputPort_RequiredInterface">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionOutputPort_RequiredInterface" />
     </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_FunctionalChainInvolvement_ExchangeItems">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_FunctionalChainInvolvement_ExchangeItems" />
+    <querySpecification queryIdentifier="GetAvailable_FunctionalChainInvolvementLink_ExchangeItems">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_FunctionalChainInvolvementLink_ExchangeItems" />
     </querySpecification>
-    <querySpecification queryIdentifier="GetCurrent_FunctionalChainInvolvement_ExchangeItems">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionalChainInvolvement_ExchangeItems" />
+    <querySpecification queryIdentifier="GetCurrent_FunctionalChainInvolvementLink_ExchangeItems">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionalChainInvolvementLink_ExchangeItems" />
     </querySpecification>
     <querySpecification queryIdentifier="GetAvailable_FunctionalChain_AvailableInStates">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_FunctionalChain_AvailableInStates" />
@@ -1891,6 +1895,17 @@
     </querySpecification>
     <querySpecification queryIdentifier="GetCurrent_InterfaceImpl_ImplementedInterface">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_InterfaceImpl_ImplementedInterface" />
+    </querySpecification>
+    <querySpecification
+          queryIdentifier="GetCurrent_SequenceLink_Links">
+       <queryAlgorithm
+             algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_SequenceLink_Links"></queryAlgorithm>
+    </querySpecification>
+    <querySpecification
+          queryIdentifier="GetAvailable_SequenceLink_Links">
+       <queryAlgorithm
+             algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_SequenceLink_Links">
+       </queryAlgorithm>
     </querySpecification>
   </extension>
 </plugin>

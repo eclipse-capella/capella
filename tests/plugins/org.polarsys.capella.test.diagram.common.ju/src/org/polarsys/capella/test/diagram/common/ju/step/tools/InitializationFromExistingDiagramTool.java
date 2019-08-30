@@ -29,25 +29,29 @@ import com.google.common.collect.Iterators;
 import com.google.common.collect.UnmodifiableIterator;
 
 public class InitializationFromExistingDiagramTool extends InsertRemoveTool {
-  
+
   private DiagramContext existingDiagramContext;
 
-  public InitializationFromExistingDiagramTool(DiagramContext context, String toolName, String containerId, DiagramContext existingDiagramContext) {
+  public InitializationFromExistingDiagramTool(DiagramContext context, String toolName, String containerId,
+      DiagramContext existingDiagramContext) {
     super(context, toolName, containerId);
     this.existingDiagramContext = existingDiagramContext;
   }
 
-  public InitializationFromExistingDiagramTool(DiagramContext context, String toolName, DiagramContext existingDiagramContext) {
+  public InitializationFromExistingDiagramTool(DiagramContext context, String toolName,
+      DiagramContext existingDiagramContext) {
     super(context, toolName);
     this.existingDiagramContext = existingDiagramContext;
   }
 
-  public InitializationFromExistingDiagramTool(DiagramContext context, String[] toolIdentifier, String containerId, DiagramContext existingDiagramContext) {
+  public InitializationFromExistingDiagramTool(DiagramContext context, String[] toolIdentifier, String containerId,
+      DiagramContext existingDiagramContext) {
     super(context, toolIdentifier, containerId);
     this.existingDiagramContext = existingDiagramContext;
   }
 
-  public InitializationFromExistingDiagramTool(DiagramContext context, String[] toolIdentifier, DiagramContext existingDiagramContext) {
+  public InitializationFromExistingDiagramTool(DiagramContext context, String[] toolIdentifier,
+      DiagramContext existingDiagramContext) {
     super(context, toolIdentifier);
     this.existingDiagramContext = existingDiagramContext;
   }
@@ -55,21 +59,20 @@ public class InitializationFromExistingDiagramTool extends InsertRemoveTool {
   /**
    * @see org.polarsys.capella.test.common.AbstractExtendedTest#postTestRun()
    */
-  @SuppressWarnings("synthetic-access")
   @Override
   protected void postRunTest() {
-    DiagramHelper.refreshDiagram(getExecutionContext().getDiagram());
+    DiagramHelper.refreshDiagram(getDiagramContext().getDiagram());
 
-    // Get locations for views in existing diagram  
+    // Get locations for views in existing diagram
     Map<String, Point> existingLocationMap = getNameToLocationMap(existingDiagramContext.getDiagram());
-    Map<String, Point> initializedDiagramLocationMap = getNameToLocationMap(getExecutionContext().getDiagram());
-    
+    Map<String, Point> initializedDiagramLocationMap = getNameToLocationMap(getDiagramContext().getDiagram());
+
     boolean atLeastOneCheck = false;
     // Compare the maps and ensure that the location is the same for views in the initialized diagram
-    for(String key : initializedDiagramLocationMap.keySet()){
+    for (String key : initializedDiagramLocationMap.keySet()) {
       // Try to get the location for this key from the existing location map
       Point existingLocation = existingLocationMap.get(key);
-      if(existingLocation != null){
+      if (existingLocation != null) {
         atLeastOneCheck = true;
         Point initializedLocation = initializedDiagramLocationMap.get(key);
         // It's possible to tolerate some pixel
@@ -77,11 +80,12 @@ public class InitializationFromExistingDiagramTool extends InsertRemoveTool {
         Assert.assertEquals(existingLocation.y, initializedLocation.y);
       }
     }
-    
-    // Fails here mean that the initialized diagram do not have any view from the existing diagram, so we should use another diagram.
+
+    // Fails here mean that the initialized diagram do not have any view from the existing diagram, so we should use
+    // another diagram.
     Assert.assertTrue(atLeastOneCheck);
   }
-  
+
   Predicate<Node> nodePredicate = new Predicate<Node>() {
     public boolean apply(Node input) {
       return input.eContainer() != null && input.eContainer() instanceof Diagram && input.getElement() != null;
@@ -94,8 +98,9 @@ public class InitializationFromExistingDiagramTool extends InsertRemoveTool {
     Option<Diagram> option = query.getAssociatedGMFDiagram();
     if (option.some()) {
       Diagram diagram = option.get();
-      UnmodifiableIterator<Node> nodesIterator = Iterators.filter(Iterators.filter(diagram.eAllContents(), Node.class), nodePredicate);
-      while(nodesIterator.hasNext()){
+      UnmodifiableIterator<Node> nodesIterator = Iterators.filter(Iterators.filter(diagram.eAllContents(), Node.class),
+          nodePredicate);
+      while (nodesIterator.hasNext()) {
         Node node = nodesIterator.next();
         // Get the position for OA
         Point location = GMFHelper.getLocation(node);

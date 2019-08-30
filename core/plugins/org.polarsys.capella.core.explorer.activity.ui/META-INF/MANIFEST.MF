@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.explorer.activity.ui;singleton:=true
-Bundle-Version: 1.2.2.qualifier
+Bundle-Version: 1.3.1.qualifier
 Bundle-Activator: org.polarsys.capella.core.explorer.activity.ui.CapellaActivityExplorerActivator
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui,
@@ -16,9 +16,10 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.eclipse.sirius.table.ui;visibility:=reexport,
  org.eclipse.sirius.common.ui,
- org.polarsys.capella.common.tools.report.appenders.usage
+ org.polarsys.capella.common.tools.report.appenders.usage,
+ org.eclipse.jface
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName
 Export-Package: org.polarsys.capella.core.explorer.activity.ui,
  org.polarsys.capella.core.explorer.activity.ui.actions,

@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+import org.polarsys.capella.test.richtext.ju.testcases.FinishOnPropertyWizard;
 import org.polarsys.capella.test.richtext.ju.testcases.RichtextOpenLinkTest;
 
 import junit.framework.Test;
@@ -31,6 +32,8 @@ public class RichtextTestSuite extends BasicTestSuite {
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new RichtextOpenLinkTest());
+    // FIXME This test cannot be launched on Linux environment due to the XULRunner bug
+    // tests.add(new FinishOnPropertyWizard());
     return tests;
   }
 

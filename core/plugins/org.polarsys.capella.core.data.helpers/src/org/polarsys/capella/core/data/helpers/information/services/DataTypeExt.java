@@ -33,7 +33,7 @@ public class DataTypeExt {
    * @return the realized information list.
    */
   public static List<CapellaElement> getRealizedInformation(DataType dataType) {
-    List<CapellaElement> realizedInformation = new ArrayList<CapellaElement>();
+    List<CapellaElement> realizedInformation = new ArrayList<>();
     if (null != dataType) {
       for (InformationRealization realization : dataType.getOwnedInformationRealizations()) {
         TraceableElement elt = realization.getTargetElement();

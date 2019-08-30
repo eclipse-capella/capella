@@ -2,20 +2,21 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.model.helpers;singleton:=true
-Bundle-Version: 1.2.2.qualifier
+Bundle-Version: 1.3.1.qualifier
 Bundle-Vendor: %providerName
 Require-Bundle: org.apache.commons.lang,
  org.eclipse.emf.codegen.ecore,
- org.polarsys.capella.common.helpers;visibility:=reexport,
  org.polarsys.capella.common.menu.dynamic;visibility:=reexport,
  org.polarsys.capella.common.queries,
  org.polarsys.capella.core.data.gen.edit;visibility:=reexport,
  org.polarsys.capella.core.data.helpers;visibility:=reexport,
  org.polarsys.capella.core.model.preferences,
  org.polarsys.capella.common.libraries,
- com.google.guava;bundle-version="15.0.0"
+ com.google.guava;bundle-version="15.0.0",
+ org.eclipse.sirius.diagram
 Export-Package: org.polarsys.capella.core.model.helpers,
  org.polarsys.capella.core.model.helpers.delete,
+ org.polarsys.capella.core.model.helpers.graph,
  org.polarsys.capella.core.model.helpers.intermodelInconsistencyDetection,
  org.polarsys.capella.core.model.helpers.listeners,
  org.polarsys.capella.core.model.helpers.move,
@@ -28,6 +29,6 @@ Export-Package: org.polarsys.capella.core.model.helpers,
  org.polarsys.capella.core.model.helpers.registry,
  org.polarsys.capella.core.model.utils,
  org.polarsys.capella.core.model.utils.saxparser
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
-  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -23,9 +23,26 @@
          point="org.polarsys.capella.core.validation.ui.ide.capellaQuickFix">
       <resolver
             class="org.polarsys.capella.core.validation.ui.ide.quickfix.EObjectMultiplicityResolver"
-            label="Delete element">
+            label="Delete element"
+            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif">
          <rules
                ruleId="org.eclipse.emf.ecore.1">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.validation.ui.ide.quickfix.DanglingReferenceResolver"
+            label="Delete invalid references"
+            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif">
+         <rules
+               ruleId="org.eclipse.emf.ecore.4">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.validation.ui.ide.quickfix.DanglingReferenceResolver"
+            label="Delete invalid references"
+            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif">
+         <rules
+               ruleId="org.eclipse.emf.ecore.16">
          </rules>
       </resolver>
    </extension>

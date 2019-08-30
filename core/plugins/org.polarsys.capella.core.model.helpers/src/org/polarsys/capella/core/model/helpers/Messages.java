@@ -51,12 +51,16 @@ public class Messages extends NLS {
   public static String FunctionalChainExt_NextIsNotOrNot;
   public static String FunctionalChainExt_IsNotRelatedToOutgoingNext;
 
+  public static String FunctionalChainInvLink_SourceNull;
+  public static String FunctionalChainInvLink_TargetNull;
+  public static String FunctionalChainInv_EmptyOwnedInvolvements;
+
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);
   }
 
   private Messages() {
-    //Nothing
+    // Nothing
   }
 }

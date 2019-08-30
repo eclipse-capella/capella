@@ -13,15 +13,18 @@ package org.polarsys.capella.test.validation.rules.ju.testcases.i;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
 
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.validation.model.IConstraintStatus;
-import org.eclipse.emf.validation.service.IValidationListener;
-import org.eclipse.emf.validation.service.ModelValidationService;
-import org.eclipse.emf.validation.service.ValidationEvent;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.RollbackException;
+import org.eclipse.emf.transaction.TransactionalCommandStack;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.ui.IViewPart;
-import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
@@ -30,9 +33,11 @@ import org.polarsys.capella.common.libraries.LibrariesFactory;
 import org.polarsys.capella.common.libraries.LibraryReference;
 import org.polarsys.capella.common.libraries.ModelInformation;
 import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
+import org.polarsys.capella.core.data.core.validation.constraint.ReferentialConstraintsResourceSetListener;
 import org.polarsys.capella.core.libraries.model.CapellaLibraryExt;
 import org.polarsys.capella.core.model.skeleton.CapellaModelSkeleton;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
+import org.polarsys.capella.test.validation.rules.ju.TestValidationRulesPlugin;
 
 /**
  * Tests ability to move elements.
@@ -43,7 +48,7 @@ public abstract class Rule_I37_38 extends BasicTestCase {
   CapellaModelSkeleton projectSkeleton;
   CapellaModelSkeleton librarySkeleton;
   IViewPart moveView;
-
+  
   @SuppressWarnings("nls")
   @Override
   public void setUp() throws Exception {
@@ -74,102 +79,95 @@ public abstract class Rule_I37_38 extends BasicTestCase {
       }
     });
 
-    // That's a hack to activate the live validation context for move rule I_36
-    // TODO maybe bind the move validation rule to an additional context which is only active when tests are running
-    moveView = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView("org.polarsys.capella.core.libraries.ui.moveview");
-
-
   }
 
 
   @Override
   public void tearDown() throws Exception {
-    PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().hideView(moveView);
     ExecutionManagerRegistry.getInstance().removeManager(manager);
     super.tearDown();
   }
 
 
   /**
-   * Executes the runnable in a read write command and returns the rollback status for the command
-   * TODO move to ExecutionManager for 1.3 see https://bugs.polarsys.org/show_bug.cgi?id=1874
+   * Executes the runnable in a read write command.
+   * RollbackExceptions and InterruptedExceptions are forwarded to the caller.
+   * TODO move to ExecutionManager for 1.4 see https://bugs.polarsys.org/show_bug.cgi?id=1874
+   * 
    * @param r
-   * @return true if the command wasn't rolled back, false if the command was rolled back
+   * @throws RollbackException 
+   * @throws InterruptedException 
    */
-  protected boolean executeCommand(final Runnable r) {
-    AbstractReadWriteCommand arwc = new AbstractReadWriteCommand() {
+  protected void executeCommand(final Runnable r) throws InterruptedException, RollbackException {
+    RecordingCommand rc = new RecordingCommand(manager.getEditingDomain()) {
       @Override
-      public void run() {
+      protected void doExecute() {
         r.run();
       }
     };
-    manager.execute(arwc);
-    return !arwc.isRolledBack();
+    TransactionalCommandStack stack = (TransactionalCommandStack) manager.getEditingDomain().getCommandStack();
+    stack.execute(rc, Collections.emptyMap());
   }
 
-  protected void expectRollback(final Runnable r) {
-    expectRollback(r, new String[0]);
-  }
 
-  /**
-   * Wrap the given runnable into an ICommand and execute it.
-   * If the command succeeds fail.
-   * If the command is rolled back, check validation events
-   * and search for expected validation error messages.
-   * If no validation status is found for any expected errors fail.
-   *
-   *
-   *
-   * @param r
-   * @param expectedErrors
-   */
-  @SuppressWarnings("nls")
-  // This could be improved a bit, by checking rule id and severity but
-  // for now it's sufficient. TODO, move somewhere else
-  protected void expectRollback(final Runnable r, String... expectedErrors) {
-
-    Collection<IConstraintStatus> result = new ArrayList<IConstraintStatus>();
-    IValidationListener listener = new IValidationListener() {
-      @Override
-      public void validationOccurred(ValidationEvent event) {
-        result.addAll(event.getValidationResults());
-      }
-    };
-    ModelValidationService.getInstance().addValidationListener(listener);
-
+  protected void expectNoRollback(final Runnable r) throws InterruptedException, RollbackException {
+    ReferentialConstraintsRecorder recorder = new ReferentialConstraintsRecorder(manager.getEditingDomain(), new String[0]);
     try {
-      assertFalse(executeCommand(r));
+      executeCommand(r);
     } finally {
-      ModelValidationService.getInstance().removeValidationListener(listener);
+      recorder.dispose();
     }
-
-    for (String expected : expectedErrors) {
-      assertNotNull("Expected validation error: " + expected, find(expected, result));
-    }
-
   }
 
-  protected void expectNoRollback(final Runnable r) {
-    assertTrue(executeCommand(r));
+  protected void expectRollback(final Runnable r, String... expectedErrors) throws InterruptedException {    
+    ReferentialConstraintsRecorder recorder = new ReferentialConstraintsRecorder(manager.getEditingDomain(), expectedErrors);
+    try {
+      executeCommand(r);
+    } catch (RollbackException expected) {
+      // that is expected
+    } finally {
+      recorder.dispose();
+    }
+    if (recorder.missingExpected.size() > 0) {
+      fail(String.join(System.lineSeparator(), recorder.missingExpected));
+    }
   }
 
+  private static class ReferentialConstraintsRecorder {
 
-  private IStatus find(String message, Collection<? extends IStatus> status) {
-    for (IStatus s : status) {
-      if (s.isMultiStatus()) {
-        IStatus result = find(message, Arrays.asList(s.getChildren()));
-        if (result != null) {
-          return result;
-        }
-      } else {
-        System.out.println(s.getMessage());
-        if (message.equals(s.getMessage())) {
-          return s;
+    private Collection<String> missingExpected;
+    private final TransactionalEditingDomain domain;
+    private final ReferentialConstraintsResourceSetListener listener;
+
+    public ReferentialConstraintsRecorder(TransactionalEditingDomain domain, String...expectedErrors) {
+      this.missingExpected = new ArrayList<>(Arrays.asList(expectedErrors)); // we want to modify the collection later..
+      this.domain = domain;
+      listener = new ReferentialConstraintsResourceSetListener(this::handleDiagnostic);
+      domain.addResourceSetListener(listener);
+    }
+
+    public void handleDiagnostic(Diagnostic ms) throws RollbackException {
+      for (Iterator<String> it = missingExpected.iterator(); it.hasNext(); ) {
+        String expected = it.next();
+        if (findDiagnostic(expected, ms.getChildren()) != null) {
+          it.remove();
         }
       }
+      throw new RollbackException(new Status(IStatus.ERROR, TestValidationRulesPlugin.PLUGIN_ID, "rolling back"));  //$NON-NLS-1$
     }
-    return null;
-  }
 
+    private Diagnostic findDiagnostic(String message, Collection<Diagnostic> diagnostics) {
+      for(Diagnostic d : diagnostics) {
+        if (message.equals(d.getMessage())) {
+          return d;
+        }
+      }
+      return null;
+    }
+
+    private void dispose() {
+      domain.removeResourceSetListener(listener);
+    }
+  }
 
 }

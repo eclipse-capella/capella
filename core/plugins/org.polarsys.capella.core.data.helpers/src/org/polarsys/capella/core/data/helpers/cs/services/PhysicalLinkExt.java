@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,13 +31,15 @@ import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.information.Port;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 /**
  */
 public class PhysicalLinkExt {
+  
 
   public static Collection<PhysicalLinkEnd> getRelatedPhysicalLinkEnds(Port element) {
-    HashSet<PhysicalLinkEnd> result = new HashSet<PhysicalLinkEnd>();
-    List<EReference> refs = new ArrayList<EReference>();
+    HashSet<PhysicalLinkEnd> result = new HashSet<>();
+    List<EReference> refs = new ArrayList<>();
     refs.add(CsPackage.Literals.PHYSICAL_LINK_END__PORT);
 
     for (Object objectRef : EObjectExt.getReferencers(element, refs)) {
@@ -48,8 +50,8 @@ public class PhysicalLinkExt {
   }
 
   public static Collection<PhysicalLinkEnd> getRelatedPhysicalLinkEnds(Part element) {
-    HashSet<PhysicalLinkEnd> result = new HashSet<PhysicalLinkEnd>();
-    List<EReference> refs = new ArrayList<EReference>();
+    HashSet<PhysicalLinkEnd> result = new HashSet<>();
+    List<EReference> refs = new ArrayList<>();
     refs.add(CsPackage.Literals.PHYSICAL_LINK_END__PART);
 
     for (Object objectRef : EObjectExt.getReferencers(element, refs)) {
@@ -66,7 +68,7 @@ public class PhysicalLinkExt {
    * @return
    */
   public static Collection<PhysicalLink> getAllRelatedPhysicalLinks(PhysicalPort element) {
-    HashSet<PhysicalLink> result = new HashSet<PhysicalLink>();
+    HashSet<PhysicalLink> result = new HashSet<>();
     result.addAll(element.getInvolvedLinks());
 
     for (PhysicalLinkEnd end : getRelatedPhysicalLinkEnds(element)) {
@@ -77,10 +79,10 @@ public class PhysicalLinkExt {
   }
 
   public static Collection<PhysicalLink> getAllRelatedPhysicalLinks(Component element) {
-    HashSet<PhysicalLink> result = new HashSet<PhysicalLink>();
+    HashSet<PhysicalLink> result = new HashSet<>();
 
     for (PhysicalPort port : element.getContainedPhysicalPorts()) {
-      result.addAll(PhysicalLinkExt.getAllRelatedPhysicalLinks((PhysicalPort) port));
+      result.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, (PhysicalPort) port));
     }
 
     return result;
@@ -94,7 +96,7 @@ public class PhysicalLinkExt {
    * @return
    */
   public static final List<PhysicalLink> getPhysicalLinks(Part part) {
-    List<PhysicalLink> result = new ArrayList<PhysicalLink>();
+    List<PhysicalLink> result = new ArrayList<>();
     for (AbstractInformationFlow flow : part.getInformationFlows()) {
       if (flow instanceof PhysicalLink) {
         result.add((PhysicalLink) flow);
@@ -113,11 +115,11 @@ public class PhysicalLinkExt {
    * @return
    */
   public static Collection<PhysicalLink> getAllRelatedPhysicalLinks(Part element) {
-    HashSet<PhysicalLink> result = new HashSet<PhysicalLink>();
+    HashSet<PhysicalLink> result = new HashSet<>();
 
     if (element.getAbstractType() instanceof Component) {
       Component component = ((Component) element.getAbstractType());
-      result.addAll(getAllRelatedPhysicalLinks(component));
+      result.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, component));
     }
 
     for (PhysicalLinkEnd end : getRelatedPhysicalLinkEnds(element)) {
@@ -128,7 +130,7 @@ public class PhysicalLinkExt {
   }
 
   public static EObject getSource(PhysicalLink link) {
-    if (link.getLinkEnds().size() > 0) {
+    if (!link.getLinkEnds().isEmpty()) {
       return link.getLinkEnds().get(0);
     }
     return null;
@@ -185,7 +187,7 @@ public class PhysicalLinkExt {
     }
     Component sourceComponent = getSourceComponent(link);
     if (sourceComponent != null) {
-      ArrayList<Part> result = new ArrayList<Part>();
+      ArrayList<Part> result = new ArrayList<>();
       for (Partition partition : sourceComponent.getRepresentingPartitions()) {
         if (partition instanceof Part) {
           result.add((Part) partition);
@@ -220,7 +222,7 @@ public class PhysicalLinkExt {
     }
     Component targetComponent = getTargetComponent(link);
     if (targetComponent != null) {
-      ArrayList<Part> result = new ArrayList<Part>();
+      ArrayList<Part> result = new ArrayList<>();
       for (Partition partition : targetComponent.getRepresentingPartitions()) {
         if (partition instanceof Part) {
           result.add((Part) partition);
@@ -235,7 +237,7 @@ public class PhysicalLinkExt {
     Port sourcePort = getSourcePort(link);
     if (null != sourcePort) {
       EObject eContainer = sourcePort.eContainer();
-      if ((eContainer != null) && (eContainer instanceof Component)) {
+      if (eContainer instanceof Component) {
         return (Component) eContainer;
       }
     }
@@ -246,7 +248,7 @@ public class PhysicalLinkExt {
     Port sourcePort = getTargetPort(link);
     if (null != sourcePort) {
       EObject eContainer = sourcePort.eContainer();
-      if ((eContainer != null) && (eContainer instanceof Component)) {
+      if (eContainer instanceof Component) {
         return (Component) eContainer;
       }
     }
@@ -284,5 +286,4 @@ public class PhysicalLinkExt {
     }
     return null;
   }
-
 }

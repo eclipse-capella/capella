@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -66,7 +66,7 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
   public AbstractContentProvider(AdapterFactory adapterFactory, ISemanticBrowserModel model) {
     super(adapterFactory);
     this.model = model;
-    _semanticParentHashMap = new HashMap<BrowserElementWrapper, BrowserElementWrapper>(0);
+    _semanticParentHashMap = new HashMap<>(0);
   }
 
   /**
@@ -105,7 +105,7 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
         BrowserElementWrapper wrapper = (BrowserElementWrapper) parentElement;
         // retrieve referenced element by the wrapper.
         Object element = ((BrowserElementWrapper) parentElement).getElement();
-        Set<Object> gatheredElements = new HashSet<Object>(0);
+        Set<Object> gatheredElements = new HashSet<>(0);
         if (wrapper instanceof EObjectWrapper) {
           // Provide the root element to the CurrentElement Browser in purpose to display it.
           if ((element == _rootElement) && _inputHasChanged) {
@@ -124,7 +124,7 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
         /**
          * Wrap gathered elements & register each wrapper in cache.
          */
-        Set<Object> wrappers = new HashSet<Object>(0);
+        Set<Object> wrappers = new HashSet<>(0);
         for (Object gatherElement : gatheredElements) {
           // ignore queries result that returns a null object (reference with cardinality max 1)
           if (gatherElement != null) {
@@ -138,7 +138,7 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
               if (!model.doesShowCategory((ICategory) gatherElement)) {
                 shouldRemovedEmptyCategoryWrapper = true;
               } else {
-                Set<Object> categoryChildren = new HashSet<Object>(0);
+                Set<Object> categoryChildren = new HashSet<>(0);
                 // Compute category children, if no child, remove this category from displayed elements.
                 getCategoryChildren((ICategory) gatherElement, elementWrapper, categoryChildren);
                 if (categoryChildren.isEmpty()) {
@@ -312,7 +312,7 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
       refresh = refreshRequired;
       refreshRequired = false;
 
-      if (refreshRequired) {
+      if (refresh) {
         notifications = null;
         toRefresh = null;
       }
@@ -342,7 +342,7 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
    */
   private BrowserElementWrapper wrapElement(Object gatherElement) {
     BrowserElementWrapper wrapper = null;
-    if ((gatherElement != null) && (gatherElement instanceof EObject)) {
+    if (gatherElement instanceof EObject) {
       wrapper = new EObjectWrapper(gatherElement);
     } else if (gatherElement instanceof ICategory) {
       wrapper = new CategoryWrapper(gatherElement);

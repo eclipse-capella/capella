@@ -247,6 +247,53 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
   }
 
   /**
+   * 
+   * @param prefName name of the preference
+   * @param capellaProject the project to look for preference value
+   * @return value of the preference at the project scope if it is set. Otherwise return the value at the workspace scope.
+   */
+  public static boolean getBoolean(String prefName, IProject capellaProject) {
+    if (capellaProject != null) {
+      IProject project = adapt(capellaProject);
+      if (getProjectValue(project, prefName) instanceof String) {
+        return Boolean.parseBoolean(((String) getProjectValue(project, prefName)));
+      }
+    }
+    return Activator.getDefault().getPreferenceStore().getBoolean(prefName);
+  }
+
+  /**
+   * 
+   * @param prefName name of the preference
+   * @param capellaProject the project to look for preference value
+   * @return value of the preference at the project scope if it is set. Otherwise return the value at the workspace scope.
+   */
+  public static int getInt(String prefName, IProject capellaProject) {
+    if (capellaProject != null) {
+      IProject project = adapt(capellaProject);
+      if (getProjectValue(project, prefName) instanceof String) {
+        return Integer.parseInt(((String) getProjectValue(project, prefName)));
+      }
+    }
+    return Activator.getDefault().getPreferenceStore().getInt(prefName);
+  }
+
+  /**
+   * 
+   * @param prefName name of the preference
+   * @param capellaProject the project to look for preference value
+   * @return value of the preference at the project scope if it is set. Otherwise return the value at the workspace scope.
+   */
+  public static String getString(String prefName, IProject capellaProject) {
+    if (capellaProject != null) {
+      IProject project = adapt(capellaProject);
+      if (getProjectValue(project, prefName) instanceof String) {
+        return (String) getProjectValue(project, prefName);
+      }
+    }
+    return Activator.getDefault().getPreferenceStore().getString(prefName);
+  }
+  /**
    * @param project
    * @param optionName
    * @return

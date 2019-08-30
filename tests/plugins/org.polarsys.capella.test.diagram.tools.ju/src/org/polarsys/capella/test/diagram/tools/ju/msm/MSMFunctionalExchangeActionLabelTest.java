@@ -24,6 +24,7 @@ import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
+import org.polarsys.capella.test.diagram.common.ju.availableXDFBDiagramTools.XDFBCreateContainerTools;
 import org.polarsys.capella.test.diagram.common.ju.context.MSMDiagram;
 import org.polarsys.capella.test.diagram.common.ju.context.XABDiagram;
 import org.polarsys.capella.test.diagram.common.ju.context.XDFBDiagram;
@@ -41,21 +42,20 @@ public class MSMFunctionalExchangeActionLabelTest extends EmptyProject {
     SessionContext context = new SessionContext(session);
 
     XDFBDiagram xdfb = XDFBDiagram.createDiagram(context, EmptyProject.SA__ROOT_SF);
-    xdfb.createFunction(GenericModel.FUNCTION_1);
-    xdfb.createFunction(GenericModel.FUNCTION_2);
+    String function1Id = xdfb.createContainer(xdfb.getDiagramId(), XDFBCreateContainerTools.CREATE_FUNCTION);
+    String function2Id = xdfb.createContainer(xdfb.getDiagramId(), XDFBCreateContainerTools.CREATE_FUNCTION);
 
     XABDiagram sabDiagram = XABDiagram.createDiagram(context, EmptyProject.SA__SYSTEM);
-    sabDiagram.manageAllocatedFunction(GenericModel.FUNCTION_1, EmptyProject.SA__SYSTEM_CONTEXT__PART_SYSTEM__SYSTEM);
-    sabDiagram.manageAllocatedFunction(GenericModel.FUNCTION_2, EmptyProject.SA__SYSTEM_CONTEXT__PART_SYSTEM__SYSTEM);
-    sabDiagram.createFunctionalExchange(GenericModel.FUNCTION_1, GenericModel.FUNCTION_2,
-        GenericModel.FUNCTIONAL_EXCHANGE_1);
-    final FunctionalExchange fe1 = (FunctionalExchange) sabDiagram
+    sabDiagram.manageAllocatedFunction(function1Id, EmptyProject.SA__SYSTEM_CONTEXT__PART_SYSTEM__SYSTEM);
+    sabDiagram.manageAllocatedFunction(function2Id, EmptyProject.SA__SYSTEM_CONTEXT__PART_SYSTEM__SYSTEM);
+    sabDiagram.createFunctionalExchange(function1Id, function2Id, GenericModel.FUNCTIONAL_EXCHANGE_1);
+    final FunctionalExchange fe1 = (FunctionalExchange) sabDiagram.getSessionContext()
         .getSemanticElement(GenericModel.FUNCTIONAL_EXCHANGE_1);
 
     MSMDiagram msmDiagram = MSMDiagram.createDiagram(context,
         EmptyProject.SA__SYSTEM__SYSTEM_STATE_MACHINE__DEFAULT_REGION);
     msmDiagram.createState(msmDiagram.getDiagramId(), GenericModel.STATE_1);
-    final State state1 = (State) msmDiagram.getSemanticElement(GenericModel.STATE_1);
+    final State state1 = (State) msmDiagram.getSessionContext().getSemanticElement(GenericModel.STATE_1);
 
     ChangeCommand command = new ChangeCommand(state1.eResource()) {
       @Override

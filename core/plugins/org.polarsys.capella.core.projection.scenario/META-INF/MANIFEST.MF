@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.projection.scenario;singleton:=true
-Bundle-Version: 1.2.2.qualifier
+Bundle-Version: 1.3.1.qualifier
 Bundle-Activator: org.polarsys.capella.core.projection.scenario.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.runtime,
@@ -20,9 +20,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.projection.actors.oa2ctx,
  org.polarsys.capella.core.projection.lc2pc.breakdownstrategy,
  org.polarsys.capella.core.projection.lc2pc.leafstrategy,
- org.polarsys.capella.core.transition.system.topdown,
+ org.polarsys.capella.core.transition.system.topdown;visibility:=reexport,
  org.polarsys.capella.core.projection.statemachine
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.projection.scenario
 Bundle-Localization: plugin

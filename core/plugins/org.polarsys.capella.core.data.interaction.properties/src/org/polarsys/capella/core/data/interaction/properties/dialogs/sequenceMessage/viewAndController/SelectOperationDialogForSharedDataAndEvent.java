@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -96,10 +96,6 @@ public class SelectOperationDialogForSharedDataAndEvent extends SelectElementsDi
 
   private ViewerFilter _showComponentExchangeFilter;
 
-  /**
-   * Sequence message that this dialog is open for.
-   */
-  // private SequenceMessage _sequenceMessage;
   /**
    * Text field used to store the name of a created operation.
    */
@@ -199,7 +195,7 @@ public class SelectOperationDialogForSharedDataAndEvent extends SelectElementsDi
 
     }
     enabledCreationInterface = enabledCreationOperation;
-    enabledCreationInterface |= ((getAnExchangeItemSelected() != null) && (getAnExchangeItemSelected() instanceof ExchangeItem));
+    enabledCreationInterface |= (getAnExchangeItemSelected() instanceof ExchangeItem);
 
     if (_operationText != null) {
       _eiTypeGroup.setEnabled(enabledCreationInterface);
@@ -223,7 +219,7 @@ public class SelectOperationDialogForSharedDataAndEvent extends SelectElementsDi
     if (null != _restrictedTreeViewerButton) {
       _restrictedTreeViewerButton.setEnabled(!enabledCreationOperation);
     }
-    if (InterfaceHelper.isSharedDataAccess(_sourceIR, _targetIR)) {
+    if (_restrictedTreeViewerButton != null && InterfaceHelper.isSharedDataAccess(_sourceIR, _targetIR)) {
       _restrictedTreeViewerButton.setEnabled(false);
     }
     updateButtons(selection);
@@ -935,8 +931,8 @@ public class SelectOperationDialogForSharedDataAndEvent extends SelectElementsDi
     }
 
     boolean interfaceSet = !_interfaceText.getText().equals(ICommonConstants.EMPTY_STRING);
-    boolean exchangeItemSelected = (getAnExchangeItemSelected != null) && (getAnExchangeItemSelected instanceof ExchangeItem);
-    boolean exchangeItemAllocationSelected = (getAnExchangeItemSelected != null) && (getAnExchangeItemSelected instanceof ExchangeItemAllocation);
+    boolean exchangeItemSelected = getAnExchangeItemSelected instanceof ExchangeItem;
+    boolean exchangeItemAllocationSelected = getAnExchangeItemSelected instanceof ExchangeItemAllocation;
     boolean operationSet = (((_operationText != null) && !_operationText.getText().equals(ICommonConstants.EMPTY_STRING)));
 
     if (exchangeItemAllocationSelected) {

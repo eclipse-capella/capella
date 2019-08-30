@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
-
+import org.eclipse.emf.validation.model.ConstraintStatus;
 import org.polarsys.capella.core.data.ctx.Actor;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.information.AbstractInstance;
@@ -38,6 +38,8 @@ public class MDCHK_ActorInvolvedCapabilityConforms extends AbstractValidationRul
     EObject eObj = ctx.getTarget();
     EMFEventType eType = ctx.getEventType();
 
+    java.util.Collection<IStatus> statuses = new ArrayList<IStatus>();
+    
     // In the case of batch mode.
     if (eType == EMFEventType.NULL) {
       if (eObj instanceof Actor) {
@@ -57,11 +59,15 @@ public class MDCHK_ActorInvolvedCapabilityConforms extends AbstractValidationRul
             }
           }
           if (!lcomponentList.contains(actor)) {
-            return ctx.createFailureStatus(new Object[] { actor.getName(), capabilityReal.getName() });
+            IStatus status = ctx.createFailureStatus(new Object[] { actor.getName(), capabilityReal.getName() });
+            statuses.add(status);
           }
         }
       }
     }
-    return ctx.createSuccessStatus();
+    if (statuses.isEmpty()) {
+      return ctx.createSuccessStatus();
+    }
+    return ConstraintStatus.createMultiStatus(ctx, statuses);
   }
 }

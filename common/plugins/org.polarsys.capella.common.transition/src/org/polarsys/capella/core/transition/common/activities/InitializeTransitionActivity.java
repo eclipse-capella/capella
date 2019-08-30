@@ -11,16 +11,15 @@
 
 package org.polarsys.capella.core.transition.common.activities;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 
 import org.apache.log4j.Level;
-import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.polarsys.capella.core.transition.common.ExtensionHelper;
 import org.polarsys.capella.core.transition.common.constants.ISchemaConstants;
@@ -225,35 +224,6 @@ public abstract class InitializeTransitionActivity extends AbstractActivity impl
     return Status.OK_STATUS;
   }
 
-  // FIXME refactor duplicated code
-  public Collection<Object> getSemanticObjects(Collection<Object> elements) {
-    Collection<Object> result = new ArrayList<Object>();
-    for (Object object : elements) {
-      Object semantic = resolveSemanticObject(object);
-      if (semantic != null) {
-        result.add(semantic);
-      }
-    }
-    return result;
-  }
-
-  public Object resolveSemanticObject(Object object) {
-    Object semantic = null;
-
-    if (object != null) {
-      if (object instanceof EObject) {
-        semantic = object;
-
-      } else if (object instanceof IAdaptable) {
-        Object adapter = ((IAdaptable) object).getAdapter(EObject.class);
-        if (adapter instanceof EObject) {
-          semantic = adapter;
-        }
-      }
-    }
-    return semantic;
-  }
-
   /**
    * @param context
    * @param activityParams
@@ -312,13 +282,14 @@ public abstract class InitializeTransitionActivity extends AbstractActivity impl
    */
   protected IStatus initializeSource(IContext context, ActivityParameters activityParams) {
     Collection<Object> selection = (Collection<Object>) context.get(ITransitionConstants.TRANSITION_SOURCES);
-    if (selection.size() > 0) {
+    if (!selection.isEmpty()) {
       Object source = selection.toArray()[0];
-      context.put(ITransitionConstants.TRANSITION_SOURCE_ROOT, source);
       if (source instanceof EObject) {
-        Resource res = ((EObject) source).eResource();
-        context.put(ITransitionConstants.TRANSITION_SOURCE_RESOURCE, res);
-        context.put(ITransitionConstants.TRANSITION_SOURCE_EDITING_DOMAIN, TransactionUtil.getEditingDomain(res));
+        EObject element = (EObject) source;
+        Resource resource = element.eResource();
+        context.put(ITransitionConstants.TRANSITION_SOURCE_ROOT, EcoreUtil.getRootContainer(element));
+        context.put(ITransitionConstants.TRANSITION_SOURCE_RESOURCE, resource);
+        context.put(ITransitionConstants.TRANSITION_SOURCE_EDITING_DOMAIN, TransactionUtil.getEditingDomain(resource));
       }
 
     } else {

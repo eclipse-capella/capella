@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.model.Category;
@@ -141,26 +142,23 @@ public class MarkerViewHelper {
    * @param qualified whether the rule should be qualified or not
    * @return
    */
-  public static String getRuleID(IMarker marker, boolean qualified){
-    
+  public static String getRuleID(IMarker marker, boolean qualified) {
     String result = null;
+    Diagnostic diag = (Diagnostic) marker.getAdapter(Diagnostic.class);
+    if (diag instanceof ConstraintStatusDiagnostic) {
+      result = ((ConstraintStatusDiagnostic) diag).getConstraintStatus().getConstraint().getDescriptor().getId();
+      if (!qualified) {
 
-    // the deprecated attribute has preference for backwards compatibility
-//    result = marker.getAttribute(IValidationConstants.TAG_RULE_ID, null);
-    
-//    if (result == null){
-      Diagnostic diag = (Diagnostic) marker.getAdapter(Diagnostic.class);
-      if (diag instanceof ConstraintStatusDiagnostic) {
-        result = ((ConstraintStatusDiagnostic) diag).getConstraintStatus().getConstraint().getDescriptor().getId();
-        if (!qualified){
-        
-          int lastDot = result.lastIndexOf('.');
-          if ((lastDot >= 0) && (lastDot < (result.length() - 1))) {
-            result = result.substring(lastDot + 1);
-          }
+        int lastDot = result.lastIndexOf('.');
+        if ((lastDot >= 0) && (lastDot < (result.length() - 1))) {
+          result = result.substring(lastDot + 1);
         }
       }
-//    }
+    } else if (diag instanceof BasicDiagnostic && diag.getSource() != null) {
+      if(diag.getSource().equals(ECORE_DIAGNOSTIC_SOURCE))
+        return diag.getSource() + "." + diag.getCode();
+      return diag.getSource();
+    }
     return result;
   }
 

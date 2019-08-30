@@ -50,7 +50,7 @@
                name="Highest">
          </Priority>
          <ViewId
-               id="org.eclipse.sirius.diagram.part.SiriusDiagramEditorID">
+               id="org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorID">
             <ElementType
                   class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
                <GlobalActionId
@@ -105,5 +105,27 @@
       <editingDomainListener
             class="org.polarsys.capella.core.sirius.ui.listener.FileModificationPreCommitListener">
       </editingDomainListener>
+   </extension>
+   <extension
+         point="org.eclipse.ltk.core.refactoring.renameParticipants">
+      <renameParticipant
+            class="org.polarsys.capella.core.sirius.ui.refactoring.CapellaRenameParticipant"
+            id="org.polarsys.capella.core.sirius.ui.refactoring.rename.participant"
+            name="%Capella_Rename_Participant_name">
+         <enablement>
+            <with variable="affectedNatures">
+               <iterate ifEmpty="false" operator="or">
+                  <or>
+                     <equals
+                           value="org.polarsys.capella.library.nature">
+                     </equals>
+                     <equals
+                           value="org.polarsys.capella.project.nature">
+                     </equals>
+                  </or>
+               </iterate>
+            </with>
+         </enablement>
+      </renameParticipant>
    </extension>
 </plugin>

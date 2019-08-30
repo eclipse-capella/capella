@@ -14,7 +14,7 @@ import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-import org.polarsys.capella.common.helpers.EObjectExt;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.data.interaction.Scenario;
@@ -45,7 +45,7 @@ public class MultiInstanceRoleExtension implements ITransfoEngineExecuteExt {
               throw new OperationCanceledException(Messages.MultiInstanceRoleExtension_logmsg);
             } else {
               Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.REFINEMENT);
-              logger.warn(Messages.MultiInstanceRoleExtension_logmsg_confirm + EObjectExt.getText(scenario));
+              logger.warn(Messages.MultiInstanceRoleExtension_logmsg_confirm + EObjectLabelProviderHelper.getText(scenario));
               return;
             }
           }

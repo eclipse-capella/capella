@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -53,7 +53,7 @@ public class DataValuePattern extends AbstractValidationRule {
       // Store pattern string
       String pattern = null;
       // If the value of the DataValue is not null and the Type is DataType
-      if ((null != dataValueType) && (dataValueType instanceof DataType)) {
+      if (dataValueType instanceof DataType) {
         // Typing the DataType
         DataType dataType = (DataType) dataValueType;
         // Get the pattern of the DataType
@@ -76,7 +76,7 @@ public class DataValuePattern extends AbstractValidationRule {
           return ctx
               .createFailureStatus(value
                                    + " value of " + "\"" + CapellaElementExt.getCapellaExplorerLabel(dataValue) + "\"" + " (" + dataValue.eClass().getName() + ")" //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
-                                   + " does not match the patten " + pattern.toString()); //$NON-NLS-1$
+                                   + " does not match the patten " + pattern); //$NON-NLS-1$
         }
       } else if ((dataValue instanceof LiteralNumericValue) || (dataValue instanceof LiteralStringValue)) {
         // Assume pattern is equal to Integer by default
@@ -84,7 +84,7 @@ public class DataValuePattern extends AbstractValidationRule {
           // If the value don't match the default pattern
           pattern = "INTEGER [+-]?[1-9][0-9]*|0"; //$NON-NLS-1$
           return ctx.createFailureStatus(value + " value of " + "\"" + CapellaElementExt.getCapellaExplorerLabel(dataValue) + "\"" //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                                           + " (" + dataValue.eClass().getName() + ")" + " does not match the default patten " + pattern.toString()); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                                           + " (" + dataValue.eClass().getName() + ")" + " does not match the default patten " + pattern); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
       }
     }

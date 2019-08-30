@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -110,9 +110,7 @@ protected static final Logger logger = ReportManagerRegistry.getInstance().subsc
             list.add(relatedElement);
             done = true;
 
-          } catch (ArrayStoreException exception) {
-            done = false;
-          } catch (IllegalArgumentException exception) {
+          } catch (ArrayStoreException | IllegalArgumentException ex) {
             done = false;
           }
         }
@@ -227,11 +225,10 @@ protected static final Logger logger = ReportManagerRegistry.getInstance().subsc
    */
   public static boolean attachTraceToNearestContainer(EObject object, Trace trace) {
     Structure container = null;
-    boolean found = false;
 
     // Finds the first container of trace on top
     EObject currentObject = object;
-    while ((object != null) && !found) {
+    while (currentObject != null) {
       // Structures can hold traces
       if (object instanceof Structure) {
         container = (Structure) object;
@@ -440,12 +437,12 @@ protected static final Logger logger = ReportManagerRegistry.getInstance().subsc
     int indiceOfElementToAddInSource = srcList.indexOf(sourceElement);
 
     // simple case : tgtList is empty, same than non preserving order
-    if (tgtList.size() == 0) {
+    if (tgtList.isEmpty()) {
       return attachElementByRel(targetContainerElement, targetElement, targetRelationship);
     }
 
     // to simplify algorithm, i'm creating a map of inverse transformation
-    Map<EObject, EObject> inverseTransfo = new HashMap<EObject, EObject>();
+    Map<EObject, EObject> inverseTransfo = new HashMap<>();
     for (EObject srcObj : srcList) {
       EObject tgtObj = (EObject) Query.retrieveTransformedElement(srcObj, transfo);
       inverseTransfo.put(tgtObj, srcObj);
@@ -815,7 +812,7 @@ protected static final Logger logger = ReportManagerRegistry.getInstance().subsc
    * @return
    */
   public static List<EObject> getJustContainer(EObject element) {
-    List<EObject> relatedElements = new ArrayList<EObject>();
+    List<EObject> relatedElements = new ArrayList<>();
     relatedElements.add(element.eContainer());
     return relatedElements;
   }
@@ -833,7 +830,7 @@ protected static final Logger logger = ReportManagerRegistry.getInstance().subsc
   @SuppressWarnings("unchecked")
   public static Collection<EObject> retrieveBestElements(EObject source, EObject object, EClass clazz, ITransfo transfo) {
     Collection<EObject> objects = (Collection<EObject>) Query.retrieveTransformedElements(object, transfo, clazz);
-    Collection<EObject> result = new LinkedList<EObject>();
+    Collection<EObject> result = new LinkedList<>();
 
     // Retrieves only transitioned elements which are in same or previous architectures of the source element
     BlockArchitecture sourceArchitecture = BlockArchitectureExt.getRootBlockArchitecture(source);
@@ -846,7 +843,7 @@ protected static final Logger logger = ReportManagerRegistry.getInstance().subsc
       }
     }
 
-    if (result.size() == 0) {
+    if (result.isEmpty()) {
       result = Collections.singleton(object);
     }
     return result;
@@ -959,7 +956,7 @@ protected static final Logger logger = ReportManagerRegistry.getInstance().subsc
    */
   public static void updateElementByProperty(EObject sourceElement, String property, ITransfo transfo) {
     List<? extends EObject> targetElements = Query.retrieveTransformedElements(sourceElement, transfo);
-    if (targetElements.size() > 0) {
+    if (!targetElements.isEmpty()) {
       EStructuralFeature featureSource = sourceElement.eClass().getEStructuralFeature(property);
       if (featureSource instanceof EAttribute) {
         EAttribute attribute = (EAttribute) featureSource;
@@ -969,12 +966,10 @@ protected static final Logger logger = ReportManagerRegistry.getInstance().subsc
           if (featureTarget != null) {
             Object valueTarget = targetElement.eGet(attribute);
             if (((valueSource == null) && (valueTarget != null)) || ((valueSource != null) && !valueSource.equals(valueTarget))) {
-              if (!(valueTarget == null)) {
-                if (logger.isInfoEnabled()){
+              if (valueTarget != null && logger.isInfoEnabled()) {
                   String text = NLS.bind(Messages.TigerRelationshipHelper_UpdateAttribute, 
                       new Object[] { attribute.getName(), EObjectLabelProviderHelper.getText(targetElement), DebugHelper.elementToString(valueTarget), DebugHelper.elementToString(valueSource) }); 
                   logger.info(new EmbeddedMessage(text, logger.getName(), targetElement)); 
-                }
               }
               targetElement.eSet(attribute, valueSource);
             }

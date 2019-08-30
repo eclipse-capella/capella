@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -49,13 +49,13 @@ public class SimpleEditableSemanticField extends SimpleSemanticField {
 	protected void handleEditButtonClicked() throws EditableSemanticFieldException {
 		AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
 			public void run() {
-				EObject obj = ((ISimpleEditableSemanticFieldController) _controller).editValue(_semanticElement, _semanticFeature, _defaultName);
+				EObject obj = ((ISimpleEditableSemanticFieldController) _controller).editValue(semanticElement, semanticFeature, _defaultName);
 				setValueTextField(obj);
 			}
 
 			@Override
 			public String getName() {
-				return "Edit " + _semanticElement.eGet(ModellingcorePackage.eINSTANCE.getAbstractNamedElement_Name()); //$NON-NLS-1$
+				return "Edit " + semanticElement.eGet(ModellingcorePackage.eINSTANCE.getAbstractNamedElement_Name()); //$NON-NLS-1$
 			}
 		};
 		executeCommand(command);

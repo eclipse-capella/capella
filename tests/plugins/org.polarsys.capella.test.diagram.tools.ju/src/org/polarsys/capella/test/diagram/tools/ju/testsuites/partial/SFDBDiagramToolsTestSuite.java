@@ -13,16 +13,18 @@ package org.polarsys.capella.test.diagram.tools.ju.testsuites.partial;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.Test;
-
 import org.polarsys.capella.test.diagram.tools.ju.sdfb.DnDWithInternalFE;
 import org.polarsys.capella.test.diagram.tools.ju.sdfb.DnDWithInternalFEAndCommonPort;
 import org.polarsys.capella.test.diagram.tools.ju.sdfb.InitializeFromExistingDiagramTestCase;
+import org.polarsys.capella.test.diagram.tools.ju.sdfb.RemoveCategoryWithoutExchange;
 import org.polarsys.capella.test.diagram.tools.ju.sdfb.ShowHideFunctionalExchangeWithCategoryTestCase;
 import org.polarsys.capella.test.diagram.tools.ju.sdfb.SwitchCategoryTestCase;
+import org.polarsys.capella.test.diagram.tools.ju.sdfb.SwitchCategoryWithHiddenExchanges;
 import org.polarsys.capella.test.diagram.tools.ju.sdfb.UndoOnHideSystemFunction;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+
+import junit.framework.Test;
 
 public class SFDBDiagramToolsTestSuite extends BasicTestSuite {
 
@@ -44,7 +46,9 @@ public class SFDBDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new SwitchCategoryTestCase());
     tests.add(new UndoOnHideSystemFunction());
     tests.add(new InitializeFromExistingDiagramTestCase());
-	tests.add(new ShowHideFunctionalExchangeWithCategoryTestCase());
+    tests.add(new ShowHideFunctionalExchangeWithCategoryTestCase());
+    tests.add(new SwitchCategoryWithHiddenExchanges());
+    tests.add(new RemoveCategoryWithoutExchange());
     return tests;
 	}
 

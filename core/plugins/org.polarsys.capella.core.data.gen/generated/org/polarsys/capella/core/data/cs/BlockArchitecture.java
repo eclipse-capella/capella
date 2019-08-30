@@ -221,6 +221,7 @@ public interface BlockArchitecture extends AbstractFunctionalArchitecture {
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getBlockArchitecture_ProvisionedArchitectureAllocations()
 	 * @see org.polarsys.capella.core.data.cs.ArchitectureAllocation#getAllocatingArchitecture
 	 * @model opposite="allocatingArchitecture" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outgoingTraces'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) list of allocation links to other architectures\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -249,6 +250,7 @@ public interface BlockArchitecture extends AbstractFunctionalArchitecture {
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getBlockArchitecture_ProvisioningArchitectureAllocations()
 	 * @see org.polarsys.capella.core.data.cs.ArchitectureAllocation#getAllocatedArchitecture
 	 * @model opposite="allocatedArchitecture" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='incomingTraces'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) list of allocation links from other architectures to this one\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -275,6 +277,7 @@ public interface BlockArchitecture extends AbstractFunctionalArchitecture {
 	 * @return the value of the '<em>Allocated Architectures</em>' reference list.
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getBlockArchitecture_AllocatedArchitectures()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='provisionedArchitectureAllocations.allocatedArchitecture'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) direct references to the BlockArchitectures that are allocated from this one\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -301,6 +304,7 @@ public interface BlockArchitecture extends AbstractFunctionalArchitecture {
 	 * @return the value of the '<em>Allocating Architectures</em>' reference list.
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getBlockArchitecture_AllocatingArchitectures()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='provisioningArchitectureAllocations.allocatingArchitecture'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) direct references to BlockArchitectures that allocate to this architecture\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

@@ -17,16 +17,13 @@ import java.util.List;
 import org.polarsys.capella.common.helpers.query.IQuery;
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
-import org.polarsys.capella.core.data.information.Partition;
-import org.polarsys.capella.core.data.information.PartitionableElement;
-import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
-import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
+
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 
 /**
  * Return incoming or outgoing component exchanges of given AbstractActor, System, LC or PC
@@ -58,7 +55,7 @@ public abstract class AbstractComponentFilteredComponentExchange implements IQue
   }
 
   protected Collection<ComponentExchange> getExchanges(Object object) {
-    return ComponentExt.getAllRelatedComponentExchange((Component)object);
+    return getCache(ComponentExt::getAllRelatedComponentExchange, (Component)object);
   }
 
   /**

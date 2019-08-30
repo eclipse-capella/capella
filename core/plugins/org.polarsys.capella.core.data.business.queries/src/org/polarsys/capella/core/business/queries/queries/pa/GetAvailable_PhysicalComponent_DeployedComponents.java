@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,20 +38,21 @@ public class GetAvailable_PhysicalComponent_DeployedComponents extends AbstractQ
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getAvailableElements(EObject)
 	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element) {
-		PhysicalComponent currentPC = (PhysicalComponent) element;
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		List<PhysicalComponent> comps = SystemEngineeringExt.getAllPhysicalComponents(currentPC);
-		for (PhysicalComponent physicalComponent : comps) {
-			if (!(currentPC.getNature().equals(PhysicalComponentNature.BEHAVIOR) && physicalComponent.getNature().equals(PhysicalComponentNature.NODE))
-					&& !(!isMultipleDeploymentAllowed() && !physicalComponent.getDeployingLinks().isEmpty()) && !physicalComponent.equals(currentPC)
-					&& !EcoreUtil.isAncestor(physicalComponent, currentPC)) {
-				availableElements.add(physicalComponent);
-			}
-		}
-		availableElements.removeAll(getCurrentElements(element, false));
-		return availableElements;
-	}
+  public List<CapellaElement> getAvailableElements(CapellaElement element) {
+    PhysicalComponent currentPC = (PhysicalComponent) element;
+    List<CapellaElement> availableElements = new ArrayList<>(1);
+    List<PhysicalComponent> comps = SystemEngineeringExt.getAllPhysicalComponents(currentPC);
+    boolean isMultipleDeploymentAllowed = isMultipleDeploymentAllowed();
+    for (PhysicalComponent physicalComponent : comps) {
+      if (!(currentPC.getNature().equals(PhysicalComponentNature.BEHAVIOR)
+          && physicalComponent.getNature().equals(PhysicalComponentNature.NODE))
+          && !(!isMultipleDeploymentAllowed && !physicalComponent.getDeployingLinks().isEmpty())
+          && !physicalComponent.equals(currentPC) && !EcoreUtil.isAncestor(physicalComponent, currentPC)) {
+        availableElements.add(physicalComponent);
+      }
+    }
+    return availableElements;
+  }
 
 	public boolean isMultipleDeploymentAllowed() {
 		return CapellaModelPreferencesPlugin.getDefault().isMultipleDeploymentAllowed();
@@ -61,7 +62,7 @@ public class GetAvailable_PhysicalComponent_DeployedComponents extends AbstractQ
 	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getCurrentElements(EObject,boolean)
 	 */
 	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
-		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
+		List<CapellaElement> currentElements = new ArrayList<>();
 		if (element instanceof PhysicalComponent) {
 			PhysicalComponent pc = (PhysicalComponent) element;
 			for (AbstractDeploymentLink abstractDeployment : pc.getDeploymentLinks()) {
@@ -72,5 +73,4 @@ public class GetAvailable_PhysicalComponent_DeployedComponents extends AbstractQ
 		}
 		return currentElements;
 	}
-
 }

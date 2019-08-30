@@ -35,8 +35,8 @@ public class CapabilityPkgExt {
 	 *            the CapabilityPkg
 	 * @return list of Capability
 	 */
-	static public List<Capability> getAllCapabilities(CapabilityPkg capabilityPkg) {
-		List<Capability> result = new ArrayList<Capability>(1);
+  public static List<Capability> getAllCapabilities(CapabilityPkg capabilityPkg) {
+		List<Capability> result = new ArrayList<>(1);
 		if (null != capabilityPkg) {
 			result.addAll(capabilityPkg.getOwnedCapabilities());
 			for (CapabilityPkg subPkg : capabilityPkg.getOwnedCapabilityPkgs()) {
@@ -55,7 +55,7 @@ public class CapabilityPkgExt {
    * @return list of AbstractCapability
    */
   public static List<AbstractCapability> getAllAbstractCapabilities(AbstractCapabilityPkg abstractCapabilityPkg) {
-    List<AbstractCapability> result = new ArrayList<AbstractCapability>();
+    List<AbstractCapability> result = new ArrayList<>();
 
     // Case CapabilityPkg
     if (abstractCapabilityPkg instanceof CapabilityPkg) {

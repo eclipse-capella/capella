@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
@@ -22,32 +21,26 @@ import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 /**
  *
  */
-public class PackageDependenciesRefreshExtension extends AbstractRefreshExtension implements IRefreshExtension {
+public class PackageDependenciesRefreshExtension extends AbstractCacheAwareRefreshExtension {
 
   /**
    * @see org.polarsys.capella.core.sirius.analysis.refresh.extension.AbstractRefreshExtension#getListOfMappingsToMove(org.eclipse.sirius.DDiagram)
    */
   @Override
-  protected List<AbstractNodeMapping> getListOfMappingsToMove(DDiagram diagram_p) {
-    List<AbstractNodeMapping> returnedList = new ArrayList<AbstractNodeMapping>();
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram_p, IMappingNameConstants.CDB_DATA_PKG_MAPPING_NAME));
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram_p, IMappingNameConstants.CDB_INTERFACE_PKG_MAPPING_NAME));
+  protected List<AbstractNodeMapping> getListOfMappingsToMove(DDiagram diagram) {
+    List<AbstractNodeMapping> returnedList = new ArrayList<>();
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CDB_DATA_PKG_MAPPING_NAME));
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CDB_INTERFACE_PKG_MAPPING_NAME));
     return returnedList;
   }
 
   /**
    * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#beforeRefresh(org.eclipse.sirius.DDiagram)
    */
-  public void beforeRefresh(DDiagram dDiagram_p) {
-    reorderElements(dDiagram_p);
+  @Override
+  public void beforeRefresh(DDiagram dDiagram) {
+    super.beforeRefresh(dDiagram);
+    
+    reorderElements(dDiagram);
   }
-
-  /**
-   * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#postRefresh(org.eclipse.sirius.DDiagram)
-   */
-  public void postRefresh(DDiagram dDiagram_p) {
-    // Nothing
-
-  }
-
 }

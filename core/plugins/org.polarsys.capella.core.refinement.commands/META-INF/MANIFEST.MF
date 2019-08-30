@@ -2,9 +2,9 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.refinement.commands;singleton:=true
-Bundle-Version: 1.2.2.qualifier
+Bundle-Version: 1.3.1.qualifier
 Bundle-Vendor: %providerName
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.eclipse.core.expressions,
  org.polarsys.capella.core.refinement.framework.ui;visibility:=reexport,
  org.polarsys.capella.core.refinement.scenario;visibility:=reexport,
@@ -15,6 +15,7 @@ Require-Bundle: org.eclipse.core.expressions,
  org.polarsys.capella.core.platform.sirius.ui.actions;visibility:=reexport,
  org.polarsys.capella.core.platform.sirius.ui.menu
 Export-Package: org.polarsys.capella.core.refinement.commands,
- org.polarsys.capella.core.refinement.commands.actions
+ org.polarsys.capella.core.refinement.commands.actions,
+ org.polarsys.capella.core.refinement.commands.handlers
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

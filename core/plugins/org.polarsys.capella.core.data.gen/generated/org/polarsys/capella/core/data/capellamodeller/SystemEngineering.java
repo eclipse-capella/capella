@@ -64,6 +64,7 @@ public interface SystemEngineering extends AbstractModellingStructure, ModelRoot
 	 * @return the value of the '<em>Contained Operational Analysis</em>' reference list.
 	 * @see org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage#getSystemEngineering_ContainedOperationalAnalysis()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedArchitectures'"
 	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedArchitectures'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -90,6 +91,7 @@ public interface SystemEngineering extends AbstractModellingStructure, ModelRoot
 	 * @return the value of the '<em>Contained System Analysis</em>' reference list.
 	 * @see org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage#getSystemEngineering_ContainedSystemAnalysis()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedArchitectures'"
 	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedArchitectures'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -116,6 +118,7 @@ public interface SystemEngineering extends AbstractModellingStructure, ModelRoot
 	 * @return the value of the '<em>Contained Logical Architectures</em>' reference list.
 	 * @see org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage#getSystemEngineering_ContainedLogicalArchitectures()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedArchitectures'"
 	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedArchitectures'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -142,6 +145,7 @@ public interface SystemEngineering extends AbstractModellingStructure, ModelRoot
 	 * @return the value of the '<em>Contained Physical Architectures</em>' reference list.
 	 * @see org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage#getSystemEngineering_ContainedPhysicalArchitectures()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedArchitectures'"
 	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedArchitectures'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -168,6 +172,7 @@ public interface SystemEngineering extends AbstractModellingStructure, ModelRoot
 	 * @return the value of the '<em>Contained EPBS Architectures</em>' reference list.
 	 * @see org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage#getSystemEngineering_ContainedEPBSArchitectures()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedArchitectures'"
 	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedArchitectures'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -196,6 +201,7 @@ public interface SystemEngineering extends AbstractModellingStructure, ModelRoot
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedArchitectures'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='unimplemented' viatra.expression='ownedArchitectures as SharedPkg, but SharedPkg is not a subclass of ModellingArchitecture !'"
 	 * @generated
 	 */
 

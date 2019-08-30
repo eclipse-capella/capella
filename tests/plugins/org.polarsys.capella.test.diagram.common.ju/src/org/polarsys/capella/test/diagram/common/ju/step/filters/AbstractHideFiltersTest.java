@@ -18,8 +18,8 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.junit.Assert;
+import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.FilterOnDiagramHelper;
-import org.polarsys.capella.test.framework.context.SessionContext;
 import org.polarsys.capella.test.framework.helpers.HelperMessages;
 
 /**
@@ -35,11 +35,12 @@ public abstract class AbstractHideFiltersTest extends AbstractHideShowFiltersTes
   /**
    * @param filterName_p
    */
-  public AbstractHideFiltersTest(SessionContext context, String filterName_p, boolean checkDelta_p) {
+  public AbstractHideFiltersTest(DiagramContext context, String filterName_p, boolean checkDelta_p) {
     super(context, filterName_p, checkDelta_p);
   }
 
-  public AbstractHideFiltersTest(SessionContext context, String filterName_p, boolean checkDelta_p, boolean FilteredElementsInDiagram_p) {
+  public AbstractHideFiltersTest(DiagramContext context, String filterName_p, boolean checkDelta_p,
+      boolean FilteredElementsInDiagram_p) {
     super(context, filterName_p, checkDelta_p);
     _checkFilteredElementsInDiagram = FilteredElementsInDiagram_p;
   }
@@ -54,7 +55,8 @@ public abstract class AbstractHideFiltersTest extends AbstractHideShowFiltersTes
     // Set the filter
     final DDiagram diagram = getDiagram();
     FilterDescription filterDescription = FilterOnDiagramHelper.applyFilterOnDiagram(diagram, _filterName);
-    Assert.assertNotNull(MessageFormat.format(HelperMessages.filterNotFound, _filterName, diagram.getName()), filterDescription);
+    Assert.assertNotNull(MessageFormat.format(HelperMessages.filterNotFound, _filterName, diagram.getName()),
+        filterDescription);
     // Store filterDescription in _objects map for reuse
     getObjects().put(_filterName, filterDescription);
   }

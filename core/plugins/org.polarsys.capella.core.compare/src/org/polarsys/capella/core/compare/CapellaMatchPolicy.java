@@ -14,22 +14,15 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.StringJoiner;
 
-import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.common.util.BasicEMap.Entry;
 import org.eclipse.emf.diffmerge.api.scopes.IModelScope;
 import org.eclipse.emf.diffmerge.sirius.SiriusMatchPolicy;
 import org.eclipse.emf.diffmerge.structures.common.comparable.ComparableTreeMap;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.sirius.viewpoint.DView;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
@@ -83,7 +76,6 @@ import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
-import org.polarsys.capella.shared.id.handler.IdManager;
 import org.polarsys.kitalpha.ad.metadata.metadata.ViewpointReference;
 
 /**
@@ -97,12 +89,6 @@ public class CapellaMatchPolicy extends SiriusMatchPolicy {
       new FineGrainedMatchCriterion(MatchCriterionKind.INTRINSIC_ID,
           Messages.CapellaMatchPolicy_Criterion_SIDs,
           Messages.CapellaMatchPolicy_Criterion_SIDs_Tooltip);
-  
-  /** A criterion for capella 1.2.1 */
-  public static final FineGrainedMatchCriterion CRITERION_INTRINSIC_ID_SIRIUS_DIAGRAM =
-      new FineGrainedMatchCriterion(MatchCriterionKind.INTRINSIC_ID,
-          Messages.CapellaMatchPolicy_Criterion_ID_Sirius_Diagram,
-          Messages.CapellaMatchPolicy_Criterion_ID_Sirius_Diagram_Tooltip);
   
   /** A criterion for semantic matching of technical elements */
   public static final FineGrainedMatchCriterion CRITERION_SEMANTICS_TECHNICALELEMENTS =
@@ -175,32 +161,11 @@ public class CapellaMatchPolicy extends SiriusMatchPolicy {
    * typically because instances have automatically-generated names.
    */
   private static Collection<EClass> UNSIGNIFICANT_NAMEDELEMENT_SUBTYPES = null;
-  
-  /**
-   * "airdfragment" file extension.
-   */
-  private static final String AIRDFRAGMENT_FILE_EXTENSION = org.polarsys.capella.core.model.handler.command.CapellaResourceHelper.AIRD_FRAGMENT_FILE_EXTENSION;
-  /**
-   * If a DAnalysis element is referenced, then add the suffix at the end of its match id.
-   */
-  private static final String DANALYSIS_MATCH_ID_SUFFIX_IF_REFERENCED = "REFERENCED"; //$NON-NLS-1$
-  /**
-   * If a DAnalysis element is referenced, and those are the fragments, then add the suffix at the end of its match id.
-   */
-  private static final String DANALYSIS_MATCH_ID_SUFFIX_IF_FRAGMENTED = "FRAGMENTED"; //$NON-NLS-1$
-  /**
-   * The separator between different elements constructing the match id.
-   */
-  private static final String ID_ELEMENTS_SEPARATOR = "::";  //$NON-NLS-1$
   /**
    * Default constructor
    */
   public CapellaMatchPolicy() {
     super();
-    // if model is aird;
-    setUseCriterion(MatchCriterionKind.EXTRINSIC_ID, true);
-    setUseCriterion(MatchCriterionKind.INTRINSIC_ID, true);
-    setUseFineGrainedCriterion(CRITERION_INTRINSIC_ID_SIRIUS_DIAGRAM, true);
   }
   
   /**
@@ -233,7 +198,6 @@ public class CapellaMatchPolicy extends SiriusMatchPolicy {
     result.add(pos+1, CRITERION_SEMANTICS_P2L);
     result.add(pos+2, CRITERION_SEMANTICS_TECHNICALELEMENTS);
     result.add(CRITERION_INTRINSIC_ID_SID);
-    result.add(CRITERION_INTRINSIC_ID_SIRIUS_DIAGRAM);
     return result;
   }
   
@@ -372,44 +336,6 @@ public class CapellaMatchPolicy extends SiriusMatchPolicy {
       result = ((ModelElement) element_p).getSid();
     if (result == null)
       result = super.getIntrinsicID(element_p);
-    if (result == null && useFineGrainedCriterion(CRITERION_INTRINSIC_ID_SIRIUS_DIAGRAM)) {
-      // Use the UID for DRepresentation
-      if (element_p instanceof DRepresentation) {
-        result = IdManager.getInstance().getId(element_p);
-      }
-      // Consider the fragment of RepPath for DRepresentationDescriptor
-      if (element_p instanceof DRepresentationDescriptor) {
-        URI elementUri = ((DRepresentationDescriptor) element_p).getRepPath().getResourceURI();
-        result = element_p.eClass().getName();
-        result += ID_ELEMENTS_SEPARATOR;
-        result += elementUri.fragment();
-      }
-
-      // Consider the name for viewpoints
-      if (element_p instanceof DView) {
-        Viewpoint vp = ((DView) element_p).getViewpoint();
-        // In order to handle the case of fragmented. i.e each fragment has the same viewpoints.
-        // So the viewpoint's name only can not differentiate them.
-        // We prefix the match id of the container Danalysis before the viewpoint's name
-        if (vp != null) {
-          if (element_p.eContainer() instanceof DAnalysis) {
-            result = getIntrinsicID(element_p.eContainer());
-            result += ID_ELEMENTS_SEPARATOR;
-            result += vp.getName();
-          } else {
-            result = vp.getName();
-          }
-        }
-      }
-
-      // Consider the class name "DAnalysis" for elements of type DAnalysis
-      if (element_p instanceof DAnalysis) {
-        // In some cases where more than one DAnalysis are present, i.e fragment, the class name "DAnalysis" only can not differentiate them.
-        result = element_p.eClass().getName();
-        result += ID_ELEMENTS_SEPARATOR;
-        result += getDAnalysisIdSuffix((DAnalysis) element_p);
-      }
-    }
     return result;
   }
   
@@ -771,6 +697,31 @@ public class CapellaMatchPolicy extends SiriusMatchPolicy {
     return result;
   }
   
+  // TODO remove this override when the following bug is fixed in EMF DiffMerge
+  // (https://bugs.eclipse.org/bugs/show_bug.cgi?id=549331)
+  @Override
+  protected String getMapEntrySemanticID(EObject entry_p, IModelScope scope_p) {
+    String result = null;
+    // Based on container ID, key and value
+    if (entry_p instanceof Entry) {
+      EObject container = getContainer(entry_p, scope_p);
+      if (container != null) {
+        String containerID = getMatchID(container, scope_p);
+        if (containerID != null) {
+          Map<String, String> map = new ComparableTreeMap<String, String>();
+          Entry<?, ?> asEntry = (Entry<?, ?>) entry_p;
+          Object key = asEntry.getKey();
+          Object value = asEntry.getValue();
+          map.put(SEMANTIC_ID_CONTAINER_PROPERTY, containerID);
+          map.put(SEMANTIC_ID_ENTRY_KEY_PROPERTY, key == null? null: key.toString());
+          map.put(SEMANTIC_ID_ENTRY_VALUE_PROPERTY, value == null? null: value.toString());
+          result = map.toString();
+        }
+      }
+    }
+    return result;
+  }
+  
   /**
    * Return whether the given element represents a Capella predefined type
    * @param element_p a potentially null element
@@ -1013,67 +964,4 @@ public class CapellaMatchPolicy extends SiriusMatchPolicy {
         isInDiscriminatingContainment(element_p, scope_p);
   }
   
-//  /**
-//   * @see org.eclipse.emf.diffmerge.impl.policies.DefaultMatchPolicy#keepMatchIDs()
-//   */
-//  @Override
-//  public boolean keepMatchIDs() {
-//    return true;
-//  }
-  
-  /**
-   * Based on whether the DAnalysis is referenced or fragmented or not, calculate the suffix for its match id.
-   * @param analysis The DAnalysis to be analyzed.
-   * @return The suffix
-   */
-  protected String getDAnalysisIdSuffix(DAnalysis analysis) {
-    boolean isReferenced = isReferenced(analysis);
-    boolean isFragmented = isFragmented(analysis);
-    boolean isAirdFragmentFile = analysis.eResource().getURI().fileExtension().contains(AIRDFRAGMENT_FILE_EXTENSION);
-    String lastUriSegment = analysis.eResource().getURI().lastSegment();
-    StringJoiner suffixBuilder = new StringJoiner(ID_ELEMENTS_SEPARATOR);
-    
-    if (isAirdFragmentFile) {
-      suffixBuilder.add(lastUriSegment);
-    }
-    if (isReferenced) {
-      suffixBuilder.add(DANALYSIS_MATCH_ID_SUFFIX_IF_REFERENCED);
-    }
-    if (isFragmented) {
-      suffixBuilder.add(DANALYSIS_MATCH_ID_SUFFIX_IF_FRAGMENTED);
-    }
-    
-    return suffixBuilder.toString();
-  }
-  
-  /**
-   * Check whether the DAnalysis is fragmented or not. 
-   * It is fragmented if it is referenced by others DAnalysis and
-   * those are all resources AIRDFRAGMENT_FILE_EXTENSION
-   * @param analysis The DAnalysis to be analyzed.
-   * @return True if fragmented, false otherwise
-   */
-  protected boolean isFragmented(DAnalysis analysis) {
-    List<DAnalysis> referencedAnalysis = analysis.getReferencedAnalysis();
-    if (referencedAnalysis.size() > 0) {
-      for (DAnalysis dAnalysis : referencedAnalysis) {
-        Resource resource = dAnalysis.eResource();
-        if (resource == null || !resource.getURI().fileExtension().equals(AIRDFRAGMENT_FILE_EXTENSION)) {
-          return false;
-        }
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  /**
-   * Check whether the DAnalysis is referenced or not.
-   * @param analysis The DAnalysis to be analyzed.
-   * @return True if fragmented, false otherwise.
-   */
-  protected boolean isReferenced(DAnalysis analysis) {
-    List<DAnalysis> referencedAnalysis = analysis.getReferencedAnalysis();
-    return referencedAnalysis.size() > 0;
-  }
 }

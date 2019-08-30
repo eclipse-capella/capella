@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,6 @@ package org.polarsys.capella.core.ui.semantic.browser.view;
 import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,14 +20,10 @@ import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
-import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IStatusLineManager;
-import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.dialogs.IDialogSettings;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.util.LocalSelectionTransfer;
 import org.eclipse.jface.viewers.ColumnViewerToolTipSupport;
 import org.eclipse.jface.viewers.DoubleClickEvent;
@@ -44,13 +39,12 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerSorter;
+import org.eclipse.jface.viewers.ViewerComparator;
 import org.eclipse.jface.window.ToolTip;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.BusyIndicator;
 import org.eclipse.swt.custom.SashForm;
@@ -70,18 +64,14 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Layout;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Tree;
-import org.eclipse.ui.IActionBars;
-import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.ISelectionListener;
-import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.WorkbenchException;
 import org.eclipse.ui.XMLMemento;
-import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 import org.eclipse.ui.internal.views.properties.tabbed.view.TabbedPropertyTitle;
 import org.eclipse.ui.part.IPageSite;
 import org.eclipse.ui.part.ViewPart;
@@ -97,7 +87,6 @@ import org.polarsys.capella.common.tools.report.config.registry.ReportManagerReg
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.common.ui.services.helper.ViewerHelper;
 import org.polarsys.capella.common.ui.services.swt.events.AbstractKeyAdapter;
-import org.polarsys.capella.common.ui.toolkit.browser.action.BrowserActionFactory;
 import org.polarsys.capella.common.ui.toolkit.browser.action.BrowserHistory;
 import org.polarsys.capella.common.ui.toolkit.browser.category.ICategory;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.factory.AbstractContentProviderFactory;
@@ -112,26 +101,24 @@ import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
 import org.polarsys.capella.core.model.handler.provider.IReadOnlyListener;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaStatusLineContributionItemProvider;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaStatusLineContributionItemProvider.CapellaStatusLineMessageContributionItem;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.CapellaNavigatorLabelProvider;
 import org.polarsys.capella.core.ui.properties.CapellaTabbedPropertySheetPage;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 import org.polarsys.capella.core.ui.semantic.browser.CapellaBrowserActivator;
 import org.polarsys.capella.core.ui.semantic.browser.CapellaBrowserPreferences;
-import org.polarsys.capella.core.ui.semantic.browser.IImageKeys;
+import org.polarsys.capella.core.ui.semantic.browser.actions.SemanticBrowserActionFactory;
 import org.polarsys.capella.core.ui.semantic.browser.model.SemanticBrowserModel;
 
 /**
  * Browser Semantic View. Load by extension point.
  */
-public abstract class SemanticBrowserView extends ViewPart implements ISemanticBrowserViewPart, ITabbedPropertySheetPageContributor, IEditingDomainProvider, IReadOnlyListener {
+public abstract class SemanticBrowserView extends ViewPart implements ISemanticBrowserViewPart,
+    ITabbedPropertySheetPageContributor, IEditingDomainProvider, IReadOnlyListener {
 
   /**
    * Listener that listens to closing and closed session events.
    */
-  protected class SemCloseSessionListener extends SessionManagerListener.Stub {
+  protected class CloseSessionListener extends SessionManagerListener.Stub {
     @Override
     public void notify(final Session updated, final int notification) {
       switch (notification) {
@@ -144,11 +131,10 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
             clean();
           }
         }
-        for (BrowserHistory.BrowserNavigationHistoryEntry entry : getHistory().getAllNavigationEntries()){
-          if (entry.getRealObject() instanceof EObject){ 
-            if (updated == SessionManager.INSTANCE.getSession((EObject)entry.getRealObject())){
-              entry.invalidate();
-            }
+        for (BrowserHistory.BrowserNavigationHistoryEntry entry : getHistory().getAllNavigationEntries()) {
+          if (entry.getRealObject() instanceof EObject
+              && updated == SessionManager.INSTANCE.getSession((EObject) entry.getRealObject())) {
+            entry.invalidate();
           }
         }
         break;
@@ -156,17 +142,14 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
         // Update history to clean dead entries.
         getHistory().update(null);
         break;
+      default:
+        break;
       }
     }
   }
 
-  /**
-   * Whether or not the view is listening page selection events.<br>
-   * Hopefully there is only one instance of a semantic browser at runtime.
-   */
-  private static volatile boolean isListeningToPageSelectionEvents;
-
-  private static final Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
+  private static final Logger logger = ReportManagerRegistry.getInstance()
+      .subscribe(IReportManagerDefaultComponents.UI);
   /**
    * Category name displayed in Current Viewer.<br>
    * See definition in org.polarsys.capella.core.semantic.queries.sirius plugin.xml file in appropriate extension.
@@ -194,17 +177,17 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
    * Memento persistence tag.
    */
   private static final String TAG_MEMENTO = "memento"; //$NON-NLS-1$
-  /**
-   * Back navigation action.
-   */
-  private IWorkbenchAction backAction;
 
-  private TreeViewer currentViewer;
-  private DelegateSelectionProviderWrapper delegateSelectionProvider;
   /**
-   * Forward navigation action.
+   * Default viewers embedded into the view.
    */
-  private IWorkbenchAction forwardAction;
+  private TreeViewer currentViewer;
+  private TreeViewer referencedViewer;
+  private TreeViewer referencingViewer;
+
+  private Object input;
+
+  private DelegateSelectionProviderWrapper delegateSelectionProvider;
 
   /**
    * Navigation history.
@@ -215,41 +198,26 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
    * Is CTRL key pressed when a double click is emitted ?
    */
   private boolean isCtrlKeyPressed;
-  /**
-   * Memento used to persist view states between sessions.
-   */
-  private IMemento memento;
-  private SessionManagerListener semCloseSessionListener;
-  private TabbedPropertySheetPage propertySheetPage;
-  private TreeViewer referencedViewer;
-  /**
-   * Default viewers embedded into the view.
-   */
-  private TreeViewer referencingViewer;
-  private ISelectionListener selectionListener;
-  private TabbedPropertyTitle semanticBrowserTitle;
 
   /**
    * Used to drive setFocus from setInput.
    */
   private boolean shouldSetFocus;
-  private IDoubleClickListener viewerDoubleClickListener;
 
-  private ISelectionChangedListener viewerSelectionListener;
-
-  /**
-   * Dialog settings for this view.
-   */
-  private IDialogSettings viewSettings;
+  private boolean isLinkedToSelection;
 
   protected ISemanticBrowserModel model;
+  private ISelectionListener selectionListener;
+  private SessionManagerListener sessionListener;
+  private TabbedPropertyTitle semanticBrowserTitle;
+  private TabbedPropertySheetPage propertySheetPage;
+  private IDoubleClickListener viewerDoubleClickListener;
+  private ISelectionChangedListener viewerSelectionListener;
 
   /**
    * Constructor.
    */
   public SemanticBrowserView() {
-    // Get the dialog settings section for this view.
-    viewSettings = getDialogSettingsSection();
     model = new SemanticBrowserModel();
   }
 
@@ -262,11 +230,20 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
    * Activate the listening to page selection events.
    */
   public void activateListeningToPageSelectionEvents() {
-    selectionListener = getSelectionListener();
-    if (null != selectionListener) {
-      getSite().getPage().addSelectionListener(selectionListener);
+    if (!isLinkedToSelection) {
+      isLinkedToSelection = true;
+      getModel().setListeningToPageSelectionEvents(isLinkedToSelection);
     }
-    isListeningToPageSelectionEvents = true;
+  }
+
+  /**
+   * Deactivate listening to page selection events.
+   */
+  public void deactivateListeningToPageSelectionEvents() {
+    if (isLinkedToSelection) {
+      isLinkedToSelection = false;
+      getModel().setListeningToPageSelectionEvents(false);
+    }
   }
 
   /**
@@ -295,7 +272,8 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
       public void dragStart(DragSourceEvent event) {
         // Check selection to drag is a CapellaElement.
         ISelection selection = viewer.getSelection();
-        if ((selection != null) && (selection instanceof IStructuredSelection) && (CapellaResourceHelper.isSemanticElements(((IStructuredSelection) selection).toList()))) {
+        if (selection instanceof IStructuredSelection
+            && CapellaResourceHelper.isSemanticElements(((IStructuredSelection) selection).toList())) {
           // Fill LocalSelectionTransfer.
           LocalSelectionTransfer.getTransfer().setSelection(selection);
           LocalSelectionTransfer.getTransfer().setSelectionSetTime(event.time & 0xFFFFFFFFL);
@@ -360,14 +338,6 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
         if (null != newSelectionProvider) {
           updateSelectionProvider(newSelectionProvider);
           refreshPropertyPage(newSelectionProvider);
-          // viewer_p.addSelectionChangedListener(getSite().getWorkbenchWindow());
-          // viewer_p.addSelectionChangedListener(WindowSelectionService);
-          try {
-            getViewSite().getPage().showView(SEMANTIC_BROWSER_ID, null, org.eclipse.ui.IWorkbenchPage.VIEW_CREATE);
-          } catch (PartInitException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-          }
         }
       }
     });
@@ -457,58 +427,65 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     mainSashForm.setLayout(gridLayoutTop);
     mainSashForm.setLayoutData(new GridData(GridData.FILL_BOTH));
 
-    // set the model in the AbstractContentProviderFactory
+    // Set the model in the AbstractContentProviderFactory
     AbstractContentProviderFactory.getInstance().setModel(model);
 
     // Initialize referencing viewer as first element of the main sash form.
-    ViewerSorter sorter = new ViewerSorter();
-    AbstractContentProvider treeProvider = (AbstractContentProvider) AbstractContentProviderFactory.getInstance().getReferencingContentProvider();
+    ViewerComparator comparator = new ViewerComparator();
+    AbstractContentProvider treeProvider = (AbstractContentProvider) AbstractContentProviderFactory.getInstance()
+        .getReferencingContentProvider();
     referencingViewer = createViewer(mainSashForm, REFERENCING_ELEMENTS_LABEL_TXT, 3, treeProvider.getBrowserId());
-    initializeViewer(referencingViewer, treeProvider, AbstractLabelProviderFactory.getInstance().getReferencingLabelProvider(), sorter);
+    initializeViewer(referencingViewer, treeProvider,
+        AbstractLabelProviderFactory.getInstance().getReferencingLabelProvider(), comparator);
 
     // Create a sash form as second element of the main sash form.
     // Initialize current viewer as first element of the center sash form.
     treeProvider = (AbstractContentProvider) AbstractContentProviderFactory.getInstance().getCurrentContentProvider();
-    this.currentViewer = createViewer(mainSashForm, Messages.SemanticBrowserView_Current_Element_Title, 3, treeProvider.getBrowserId());
-    initializeViewer(this.currentViewer, treeProvider, AbstractLabelProviderFactory.getInstance().getCurrentLabelProvider(), new ViewerSorter() {
-      /**
-       * Overridden to force All Related Diagrams and All Related Tables to be located at the end of the tree.
-       * {@inheritDoc}
-       */
-      @Override
-      public int compare(Viewer viewer, Object e1, Object e2) {
-        if ((e1 instanceof CategoryWrapper) && isRepresentationCategory((CategoryWrapper) e1)) {
-          return 1;
-        }
-        if ((e2 instanceof CategoryWrapper) && isRepresentationCategory((CategoryWrapper) e2)) {
-          return -1;
-        }
-        return super.compare(viewer, e1, e2);
-      }
+    this.currentViewer = createViewer(mainSashForm, Messages.SemanticBrowserView_Current_Element_Title, 3,
+        treeProvider.getBrowserId());
+    initializeViewer(this.currentViewer, treeProvider,
+        AbstractLabelProviderFactory.getInstance().getCurrentLabelProvider(), new ViewerComparator() {
+          /**
+           * Overridden to force All Related Diagrams and All Related Tables to be located at the end of the tree.
+           * {@inheritDoc}
+           */
+          @Override
+          public int compare(Viewer viewer, Object e1, Object e2) {
+            if ((e1 instanceof CategoryWrapper) && isRepresentationCategory((CategoryWrapper) e1)) {
+              return 1;
+            }
+            if ((e2 instanceof CategoryWrapper) && isRepresentationCategory((CategoryWrapper) e2)) {
+              return -1;
+            }
+            return super.compare(viewer, e1, e2);
+          }
 
-      /**
-       * Is given category used to displayed diagrams or tables ?
-       * 
-       * @param categoryWrapper
-       * @return
-       */
-      private boolean isRepresentationCategory(CategoryWrapper categoryWrapper) {
-        ICategory category = (ICategory) (categoryWrapper).getElement();
-        String categoryName = category.getName();
-        return categoryName.equals(ALL_RELATED_DIAGRAMS) || categoryName.equals(ALL_RELATED_TABLES);
-      }
-    });
+          /**
+           * Is given category used to displayed diagrams or tables ?
+           * 
+           * @param categoryWrapper
+           * @return
+           */
+          private boolean isRepresentationCategory(CategoryWrapper categoryWrapper) {
+            ICategory category = (ICategory) (categoryWrapper).getElement();
+            String categoryName = category.getName();
+            return categoryName.equals(ALL_RELATED_DIAGRAMS) || categoryName.equals(ALL_RELATED_TABLES);
+          }
+        });
 
     // Initialize the referenced viewer as third element of the main sash
     // form.
-    treeProvider = (AbstractContentProvider) AbstractContentProviderFactory.getInstance().getReferencedContentProvider();
-    referencedViewer = createViewer(mainSashForm, Messages.SemanticBrowserView_Referenced_Elements_Title, 3, treeProvider.getBrowserId());
-    initializeViewer(referencedViewer, treeProvider, AbstractLabelProviderFactory.getInstance().getReferencedLabelProvider(), sorter);
+    treeProvider = (AbstractContentProvider) AbstractContentProviderFactory.getInstance()
+        .getReferencedContentProvider();
+    referencedViewer = createViewer(mainSashForm, Messages.SemanticBrowserView_Referenced_Elements_Title, 3,
+        treeProvider.getBrowserId());
+    initializeViewer(referencedViewer, treeProvider,
+        AbstractLabelProviderFactory.getInstance().getReferencedLabelProvider(), comparator);
 
     initializeContextMenus();
     // Create and set a delegate selection provider, initialized on current
     // viewer.
-    List<ISelectionProvider> lstProvider = new ArrayList<ISelectionProvider>();
+    List<ISelectionProvider> lstProvider = new ArrayList<>();
     lstProvider.add(this.currentViewer);
     lstProvider.add(referencedViewer);
     lstProvider.add(referencingViewer);
@@ -516,10 +493,12 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     delegateSelectionProvider = new DelegateSelectionProviderWrapper(lstProvider);
     delegateSelectionProvider.setActiveDelegate(this.currentViewer);
     getViewSite().setSelectionProvider(delegateSelectionProvider);
+    addSessionListener();
+
+    // Add the selection listener
+    getSite().getPage().addSelectionListener(getSelectionListener());
+
     makeActions();
-    // Listen to Closing/Close session events.
-    semCloseSessionListener = new SemCloseSessionListener();
-    SessionManager.INSTANCE.addSessionsListener(semCloseSessionListener);
   }
 
   /**
@@ -531,9 +510,9 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
    * @return the referenced treeviewer
    */
   protected TreeViewer createViewer(Composite parent, String label, int autoExpandLevel, String browserID) {
-    BrowserComposite composite = new BrowserComposite(parent, model, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL, label, browserID);
+    BrowserComposite composite = new BrowserComposite(parent, model, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL, label,
+        browserID);
     TreeViewer treeViewer = composite.getTreeviewer();
-    // treeViewer.setAutoExpandLevel(autoExpandLevel_p);
     treeViewer.setUseHashlookup(true);
     ColumnViewerToolTipSupport.enableFor(treeViewer, ToolTip.RECREATE);
     addListeners(treeViewer);
@@ -542,57 +521,32 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   }
 
   /**
-   * Deactivate listening to page selection events.
-   */
-  public void deactivateListeningToPageSelectionEvents() {
-    if (null != selectionListener) {
-      getSite().getPage().removeSelectionListener(selectionListener);
-      selectionListener = null;
-    }
-    isListeningToPageSelectionEvents = false;
-  }
-
-  /**
    * @see org.eclipse.ui.part.WorkbenchPart#dispose()
    */
   @Override
   public void dispose() {
     // Unregister...
-    TreeViewer currentViewer = getCurrentViewer();
-    if (null != currentViewer) {
-      Object currentInput = currentViewer.getInput();
+    TreeViewer currentTreeViewer = getCurrentViewer();
+    if (null != currentTreeViewer) {
+      Object currentInput = currentTreeViewer.getInput();
       if (null != currentInput) {
         CapellaReadOnlyHelper.unregister((EObject) currentInput, this);
       }
     }
 
-    // Save view settings.
     saveViewSettings();
+
     deactivateListeningToPageSelectionEvents();
-    if (null != propertySheetPage) {
-      propertySheetPage.dispose();
-      propertySheetPage = null;
-    }
-    if (null != referencingViewer) {
-      removeListeners(referencingViewer);
-      referencingViewer = null;
-    }
-    if (null != referencedViewer) {
-      removeListeners(referencedViewer);
-      referencedViewer = null;
-    }
-    if (null != this.currentViewer) {
-      removeListeners(this.currentViewer);
-    }
-    viewerSelectionListener = null;
-    viewerDoubleClickListener = null;
-    if (null != history) {
-      history.dispose();
-      history = null;
-    }
-    // Remove Closing/Close session listener.
-    SessionManager.INSTANCE.removeSessionsListener(semCloseSessionListener);
-    semCloseSessionListener = null;
+
+    disposePropertySheetPage();
+
+    removeViewersListeners();
+
+    disposeHistory();
+
+    removeSessionListener();
+
+    getSite().getPage().removeSelectionListener(getSelectionListener());
 
     model = null;
     super.dispose();
@@ -737,40 +691,40 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     return ((AbstractContentProvider) this.currentViewer.getContentProvider()).getRootElement();
   }
 
+  public ISelectionListener getSelectionListener() {
+    if (selectionListener == null) {
+      selectionListener = createSelectionListener();
+    }
+    return selectionListener;
+  }
+
   /**
-   * Get the selection listener to handle {@link IWorkbenchPage} selection events.
+   * Creates the selection listener to handle {@link IWorkbenchPage} selection events.
    * 
    * @return
    */
-  protected ISelectionListener getSelectionListener() {
-    return new ISelectionListener() {
-      /**
-       * @see org.eclipse.ui.ISelectionListener#selectionChanged(org.eclipse.ui.IWorkbenchPart,
-       *      org.eclipse.jface.viewers.ISelection)
-       */
-      @SuppressWarnings("synthetic-access")
-      @Override
-      public void selectionChanged(IWorkbenchPart part, ISelection selection) {
-        Object newInput = handleWorkbenchPageSelectionEvent(part, selection);
-        // Set the selected object as new input only if it is an EObject
-        if ((null != newInput) && (newInput instanceof EObject)) {
-          // Avoid the property view to be selection provider.
-          if (CapellaUIPropertiesPlugin.PROPERTIES_SHEET_VIEW_ID.equals(part.getSite().getId())) {
-            return;
-          }
-          // Check the input is different from current one.
-          try {
-            shouldSetFocus = false;
-            setInput(newInput);
-          } finally {
-            shouldSetFocus = true;
-          }
-        } else if ((part != SemanticBrowserView.this) && !CapellaUIPropertiesPlugin.PROPERTIES_SHEET_VIEW_ID.equals(part.getSite().getId())) { // //
-          // Avoid the property view to be selection provider.
-          // Event sent by another part apart from the Property Sheet view
-          // Prevent from displaying elements not related to the workbench current selection.
-          clean();
+  protected ISelectionListener createSelectionListener() {
+    return (part, selection) -> {
+      Object newInput = handleWorkbenchPageSelectionEvent(part, selection);
+      // Set the selected object as new input only if it is an EObject
+      if (newInput instanceof EObject) {
+        // Avoid the property view to be selection provider.
+        if (CapellaUIPropertiesPlugin.PROPERTIES_SHEET_VIEW_ID.equals(part.getSite().getId())) {
+          return;
         }
+        // Check the input is different from current one.
+        try {
+          shouldSetFocus = false;
+          saveInput(newInput);
+        } finally {
+          shouldSetFocus = true;
+        }
+      } else if ((part != SemanticBrowserView.this)
+          && !CapellaUIPropertiesPlugin.PROPERTIES_SHEET_VIEW_ID.equals(part.getSite().getId())) { // //
+        // Avoid the property view to be selection provider.
+        // Event sent by another part apart from the Property Sheet view
+        // Prevent from displaying elements not related to the workbench current selection.
+        clean();
       }
     };
   }
@@ -823,20 +777,22 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   @Override
   public void init(IViewSite site, IMemento memento) throws PartInitException {
     // Specified memento could be null :
-    // 1) if the view was not shown when the previous workbench session
+    // 1) If the view was not shown when the previous workbench session
     // exited.
-    // 2) the view is open by the end-user whereas the workbench is already
+    // 2) The view is open by the end-user whereas the workbench is already
     // loaded.
-    this.memento = restoreViewSettings(memento);
-    super.init(site, this.memento);
-    Integer value = null;
-    if (null != this.memento) {
-      // Get state of listening to Page selection events.
-      value = this.memento.getInteger(LISTENING_TO_WORKBENCH_PAGE_SELECTION_EVENTS);
-    }
+    memento = restoreViewSettings(memento);
+    super.init(site, memento);
 
-    boolean isListeningOnStartup = !CapellaBrowserActivator.getDefault().getPreferenceStore().getBoolean(CapellaBrowserPreferences.PREFS_DISABLE_SEMANTIC_BROWSER_SYNC_ON_STARTUP);
-    isListeningToPageSelectionEvents = (null != value) ? value.intValue() == 1 : isListeningOnStartup;
+    boolean isListeningOnStartup = !CapellaBrowserActivator.getDefault().getPreferenceStore()
+        .getBoolean(CapellaBrowserPreferences.PREFS_DISABLE_SEMANTIC_BROWSER_SYNC_ON_STARTUP);
+
+    if (isListeningOnStartup && null != memento) {
+      isListeningOnStartup = memento.getInteger(LISTENING_TO_WORKBENCH_PAGE_SELECTION_EVENTS) == 1;
+    }
+    if (isListeningOnStartup) {
+      activateListeningToPageSelectionEvents();
+    }
   }
 
   /**
@@ -873,11 +829,12 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
    * @param labelProvider
    * @param sorter
    */
-  private void initializeViewer(TreeViewer viewer, IContentProvider contentProvider, IBaseLabelProvider labelProvider, ViewerSorter sorter) {
+  private void initializeViewer(TreeViewer viewer, IContentProvider contentProvider, IBaseLabelProvider labelProvider,
+      ViewerComparator comparator) {
     viewer.getControl().setLayoutData(new GridData(GridData.FILL_BOTH));
     viewer.setContentProvider(contentProvider);
     viewer.setLabelProvider(labelProvider);
-    viewer.setSorter(sorter);
+    viewer.setComparator(comparator);
   }
 
   /**
@@ -891,148 +848,17 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   protected IAction showDiagramsAction;
   protected IAction limitateTreeExpansionAction;
 
-  private ImageDescriptor getImage(EObject object) {
-    IItemLabelProvider l = ((IItemLabelProvider) CapellaAdapterFactoryProvider.getInstance().getAdapterFactory().adapt(object, IItemLabelProvider.class));
-    URL imageUrl = (URL) l.getImage(object);
-    return ImageDescriptor.createFromURL(imageUrl);
-  }
-
   /**
    * Make actions.
    */
   protected void makeActions() {
-    IActionBars actionBars = getViewSite().getActionBars();
-    IToolBarManager toolBarManager = actionBars.getToolBarManager();
-    // Add history actions.
-    backAction = BrowserActionFactory.BACKWARD_HISTORY.create(getViewSite().getWorkbenchWindow(), this);
-    backAction.setActionDefinitionId("org.polarsys.capella.core.ui.semantic.browser.backwardNavigation"); //$NON-NLS-1$
-    toolBarManager.add(backAction);
-
-    forwardAction = BrowserActionFactory.FORWARD_HISTORY.create(getViewSite().getWorkbenchWindow(), this);
-    forwardAction.setActionDefinitionId("org.polarsys.capella.core.ui.semantic.browser.forwardNavigation"); //$NON-NLS-1$
-    toolBarManager.add(forwardAction);
-
-    // Add hide diagrams action.
-    showDiagramsAction = new Action(null, IAction.AS_CHECK_BOX) {
-      @Override
-      public void run() {
-        model.setShowDiagrams(isChecked());
-        Object input = getCurrentViewer().getInput();
-        setInputOnViewers(input);
-      }
-    };
-    showDiagramsAction.setChecked(model.doesShowDiagrams());
-    showDiagramsAction.setToolTipText(Messages.SemanticBrowserView_ShowDiagramsAction_Tooltip);
-    showDiagramsAction.setImageDescriptor(getImage(ViewpointFactory.eINSTANCE.createDAnalysis()));
-    toolBarManager.add(showDiagramsAction);
-
-    // Add limitate tree expansion action.
-    limitateTreeExpansionAction = new Action(null, IAction.AS_CHECK_BOX) {
-      @Override
-      public void run() {
-        model.setLimitateTreeExpansion(isChecked());
-        Object input = getCurrentViewer().getInput();
-        setInputOnViewers(input);
-      }
-    };
-    limitateTreeExpansionAction.setChecked(model.doesLimitateTreeExpansion());
-    limitateTreeExpansionAction.setToolTipText(Messages.SemanticBrowserView_LimitateTreeExpansionAction_Tooltip);
-    limitateTreeExpansionAction.setImageDescriptor(CapellaBrowserActivator.getDefault().getImageDescriptor(IImageKeys.IMG_COLLAPSE_CATEGORIES));
-    toolBarManager.add(limitateTreeExpansionAction);
-
-    // Add refresh action.
-    IAction refreshAction = new Action(null, CapellaBrowserActivator.getDefault().getImageDescriptor(IImageKeys.IMG_REFRESH)) {
-      @Override
-      public void run() {
-        refreshTitleBar();
-      }
-    };
-    toolBarManager.add(refreshAction);
-
-    // Add the listening action (i.e button synch checked button).
-    IAction listeningToPageSelectionEventsAction = new Action(null, IAction.AS_CHECK_BOX) {
-      private ISelection getSelection(IWorkbenchPart part) {
-        return part.getSite().getSelectionProvider().getSelection();
-      }
-
-      private boolean isSomethingSelectable(ISelection selection) {
-        return (null != selection) && !selection.isEmpty();
-      }
-
-      /**
-       * @see org.eclipse.jface.action.Action#run()
-       */
-      @SuppressWarnings("synthetic-access")
-      @Override
-      public void run() {
-        if (isChecked()) {
-          activateListeningToPageSelectionEvents();
-          // Get the current selection.
-          IWorkbenchPage activePage = getSite().getPage();
-          // Get the active part to get something selectable.
-          IWorkbenchPart activePart = activePage.getActivePart();
-          IWorkbenchPart part = null;
-          ISelection selection = null;
-          if ((null != activePart) && (SemanticBrowserView.this != activePart)) {
-            // Handle selection at view creation time.
-            ISelectionProvider selectionProvider = activePart.getSite().getSelectionProvider();
-            if (null != selectionProvider) {
-              selection = selectionProvider.getSelection();
-              if (isSomethingSelectable(selection)) {
-                part = activePart;
-              }
-            }
-          } else {
-            IViewPart capellaExplorer = activePage.findView(CapellaCommonNavigator.ID);
-            if (null != capellaExplorer) {
-              // Capella explorer is displayed.
-              selection = getSelection(capellaExplorer);
-              if (isSomethingSelectable(selection)) {
-                part = capellaExplorer;
-              }
-            }
-            if (null == part) {
-              // Try to get a selection from active editor.
-              IEditorPart activeEditor = activePage.getActiveEditor();
-              if (null != activeEditor) {
-                selection = getSelection(activeEditor);
-                if (isSomethingSelectable(selection)) {
-                  part = activeEditor;
-                }
-              }
-            }
-          }
-          if (null != part) {
-            // Something to select.
-            selectionListener.selectionChanged(part, selection);
-          }
-        } else {
-          deactivateListeningToPageSelectionEvents();
-        }
-      }
-    };
-    listeningToPageSelectionEventsAction.setText(Messages.SemanticBrowserView_ListeningToPageSelectionEventsAction_Title);
-    listeningToPageSelectionEventsAction.setToolTipText(Messages.SemanticBrowserView_ListeningToPageSelectionEventsAction_Tooltip);
-    listeningToPageSelectionEventsAction.setImageDescriptor(CapellaBrowserActivator.getDefault().getImageDescriptor(IImageKeys.IMG_LISTENING_TO_PAGE_SELECTION_EVENTS));
-    toolBarManager.add(listeningToPageSelectionEventsAction);
-    // Restore state from boolean that keeps the state.
-    listeningToPageSelectionEventsAction.setChecked(isListeningToPageSelectionEvents);
-    // If enable, listen to selection events.
-    if (isListeningToPageSelectionEvents) {
-      // Run the action enables the listening and get the current
-      // selection.
-      listeningToPageSelectionEventsAction.run();
-    }
-  }
-
-  /**
-   * @see org.polarsys.capella.common.ui.toolkit.browser.view.ISemanticBrowserViewPart#refresh()
-   */
-  @Override
-  public void refresh() {
-    ViewerHelper.refresh(referencingViewer);
-    ViewerHelper.refresh(referencedViewer);
-    ViewerHelper.refresh(this.currentViewer);
+    SemanticBrowserActionFactory factory = new SemanticBrowserActionFactory();
+    factory.createBackAction(this);
+    factory.createForwardAction(this);
+    factory.createShowDiagramsAction(this);
+    factory.createLimitateTreeExpansionAction(this);
+    factory.createRefreshAction(this);
+    factory.createListenToSelectionEventsAction(this, isLinkedToSelection);
   }
 
   protected void refreshPropertyPage(ISelectionProvider selectionProvider) {
@@ -1051,20 +877,21 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
 
   public void updateStatusLine(ISelection selection) {
     if (selection instanceof IStructuredSelection) {
-      Object selectedElement = ((IStructuredSelection)selection).getFirstElement();
+      Object selectedElement = ((IStructuredSelection) selection).getFirstElement();
       IStatusLineManager statusLineManager = getViewSite().getActionBars().getStatusLineManager();
-      
-      if (selectedElement != null && selectedElement instanceof EObject) {
-        CapellaNavigatorLabelProvider semanticBrowserLabelProvider = new CapellaNavigatorLabelProvider(CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
+
+      if (selectedElement instanceof EObject) {
+        CapellaNavigatorLabelProvider semanticBrowserLabelProvider = new CapellaNavigatorLabelProvider(
+            CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
         Image image = semanticBrowserLabelProvider.getImage(selectedElement);
         String text = semanticBrowserLabelProvider.getDescription(selectedElement);
         statusLineManager.setMessage(image, text);
-      }
-      else
+      } else {
         statusLineManager.setMessage(null, ICommonConstants.EMPTY_STRING);
+      }
     }
   }
-  
+
   /**
    * {@inheritDoc}
    */
@@ -1078,9 +905,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
    */
   @Override
   public void refreshTitleBar() {
-    Object input = getCurrentViewer().getInput();
-    refreshTitleBar(input);
-    setInputOnViewers(input);
+    refreshTitleBar(getCurrentViewer().getInput());
   }
 
   /**
@@ -1089,41 +914,33 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   @SuppressWarnings("synthetic-access")
   @Override
   public void setInputOnViewers(final Object input) {
-    TreeViewer currentViewer = getCurrentViewer();
+    TreeViewer currentTreeViewer = getCurrentViewer();
 
-    if ((currentViewer != null) && ((currentViewer.getControl() != null) && !(currentViewer.getControl().isDisposed()))) {
-      Display display = currentViewer.getControl().getDisplay();
+    if ((currentTreeViewer != null)
+        && ((currentTreeViewer.getControl() != null) && !(currentTreeViewer.getControl().isDisposed()))) {
+      Display display = currentTreeViewer.getControl().getDisplay();
 
-      BusyIndicator.showWhile(display, new Runnable() {
-        @Override
-        public void run() {
+      BusyIndicator.showWhile(display, () -> {
 
-          // Broadcast "set input" signal to all viewers.
-          ViewerHelper.run(referencingViewer, new Runnable() {
-            @Override
-            public void run() {
-              if ((referencingViewer.getControl() != null) && !referencingViewer.getControl().isDisposed()) {
-                referencingViewer.setInput(input);
-              }
-            }
-          });
-          ViewerHelper.run(referencedViewer, new Runnable() {
-            @Override
-            public void run() {
-              if ((referencedViewer.getControl() != null) && !referencedViewer.getControl().isDisposed()) {
-                referencedViewer.setInput(input);
-              }
-            }
-          });
-          ViewerHelper.run(SemanticBrowserView.this.currentViewer, new Runnable() {
-            @Override
-            public void run() {
-              if ((SemanticBrowserView.this.currentViewer.getControl() != null) && !SemanticBrowserView.this.currentViewer.getControl().isDisposed()) {
-            	  SemanticBrowserView.this.currentViewer.setInput(input);
-              }
-            }
-          });
-        }
+        // Broadcast "set input" signal to all viewers.
+        ViewerHelper.run(referencingViewer, () -> {
+          if ((referencingViewer.getControl() != null) && !referencingViewer.getControl().isDisposed()) {
+            referencingViewer.setInput(input);
+          }
+        });
+
+        ViewerHelper.run(referencedViewer, () -> {
+          if ((referencedViewer.getControl() != null) && !referencedViewer.getControl().isDisposed()) {
+            referencedViewer.setInput(input);
+          }
+        });
+
+        ViewerHelper.run(SemanticBrowserView.this.currentViewer, () -> {
+          if ((SemanticBrowserView.this.currentViewer.getControl() != null)
+              && !SemanticBrowserView.this.currentViewer.getControl().isDisposed()) {
+            SemanticBrowserView.this.currentViewer.setInput(input);
+          }
+        });
       });
     }
   }
@@ -1173,7 +990,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
       // session exited, no memento is provided.
       // The only chance to restore current state is to get the memento
       // from its persisted representation in view settings (if any).
-      String persistedMemento = viewSettings.get(TAG_MEMENTO);
+      String persistedMemento = getDialogSettingsSection().get(TAG_MEMENTO);
       if (null != persistedMemento) {
         try {
           mementol = XMLMemento.createReadRoot(new StringReader(persistedMemento));
@@ -1190,7 +1007,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
    */
   @Override
   public void saveState(IMemento memento) {
-    memento.putInteger(LISTENING_TO_WORKBENCH_PAGE_SELECTION_EVENTS, isListeningToPageSelectionEvents ? 1 : 0);
+    memento.putInteger(LISTENING_TO_WORKBENCH_PAGE_SELECTION_EVENTS, isLinkedToSelection ? 1 : 0);
   }
 
   /**
@@ -1199,18 +1016,18 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   private void saveViewSettings() {
     String rootName = getClass().getSimpleName();
     // Create a new memento.
-    XMLMemento memento = XMLMemento.createWriteRoot(rootName);
+    XMLMemento rootMemento = XMLMemento.createWriteRoot(rootName);
     // Save current state in it.
     // Notice, that the saveState() method is also called by the workbench
     // when exiting before the dispose() method.
     // Nevertheless, we keep this call here, to make sure current state is
     // stored within a running workbench session where the saveState()
     // method is not called.
-    saveState(memento);
+    saveState(rootMemento);
     StringWriter writer = new StringWriter();
     try {
-      memento.save(writer);
-      viewSettings.put(TAG_MEMENTO, writer.getBuffer().toString());
+      rootMemento.save(writer);
+      getDialogSettingsSection().put(TAG_MEMENTO, writer.getBuffer().toString());
     } catch (IOException exception) {
       // Don't do anything. Simply don't store the settings
     }
@@ -1221,44 +1038,73 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
    */
   @Override
   public void setFocus() {
+    setFocusOnViewer();
+    refresh();
+  }
+
+  private void setFocusOnViewer() {
     ISelectionProvider selectionProvider = delegateSelectionProvider.getActiveDelegate();
     // Make sure the selection provider is tree viewer.
-    if ((null != selectionProvider) && (selectionProvider instanceof TreeViewer)) {
+    if (selectionProvider instanceof TreeViewer) {
       ((TreeViewer) selectionProvider).getControl().setFocus();
     } else {
       this.currentViewer.getControl().setFocus();
     }
   }
 
-  /**
-   * @see org.polarsys.capella.common.ui.toolkit.browser.view.ISemanticBrowserViewPart#setInput(java.lang.Object)
-   */
   @Override
   public final void setInput(final Object input) {
-    // Precondition: do not set the same input twice.
-    TreeViewer currentViewer = getCurrentViewer();
-    Object lastInput = currentViewer.getInput();
-    if ((null != lastInput) && (lastInput.equals(input))) {
-      return;
+    this.input = input;
+    refresh();
+  }
+
+  @Override
+  public final void saveInput(final Object input) {
+    this.input = input;
+
+    if (isLinkedToSelection) {
+      refresh();
     }
-    refreshTitleBar(input);
-    // Set the selection provider with currentViewer as selection provider.
-    delegateSelectionProvider.setActiveDelegate(this.currentViewer);
 
-    // Broadcast "set input" signal to all viewers.
-    setInputOnViewers(input);
+  }
 
-    CapellaReadOnlyHelper.unregister((EObject) lastInput, this);
-    CapellaReadOnlyHelper.register((EObject) input, this);
+  @Override
+  public void refresh(boolean forceRefresh) {
+    if (getSite().getPage().isPartVisible(this)) {
+      // Precondition: do not set the same input twice, except during refreshing.
+      TreeViewer currentTreeViewer = getCurrentViewer();
+      Object lastInput = currentTreeViewer.getInput();
+      if (!forceRefresh && null != lastInput && lastInput.equals(input)) {
+        return;
+      }
 
-    // Update history mechanism.
-    getHistory().update(input);
-    // Force to reset the focus and the underlying selection provider.
-    // From platform selection changed event, the setFocus is disabled.
-    if (shouldSetFocus) {
-      // Set focus in another thread UI processing.
-      setFocus();
+      refreshTitleBar(input);
+      // Set the selection provider with currentViewer as selection provider.
+      delegateSelectionProvider.setActiveDelegate(this.currentViewer);
+
+      // Broadcast "set input" signal to all viewers.
+      setInputOnViewers(input);
+
+      CapellaReadOnlyHelper.unregister((EObject) lastInput, this);
+      CapellaReadOnlyHelper.register((EObject) input, this);
+
+      // Update history mechanism.
+      getHistory().update(input);
+      // Force to reset the focus and the underlying selection provider.
+      // From platform selection changed event, the setFocus is disabled.
+      if (shouldSetFocus) {
+        // Set focus in another thread UI processing.
+        setFocusOnViewer();
+      }
     }
+  }
+
+  /**
+   * Propagates the current input to the sub viewers if the view is visible
+   */
+  @Override
+  public void refresh() {
+    refresh(false);
   }
 
   /**
@@ -1274,12 +1120,44 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     }
   }
 
-  /**
-   * Is Semantic Browser listening to {@link IWorkbenchPage} selection events.
-   * 
-   * @return the isListeningToPageSelectionEvents
-   */
-  public static boolean isListeningToPageSelectionEvents() {
-    return isListeningToPageSelectionEvents;
+  private void addSessionListener() {
+    sessionListener = new CloseSessionListener();
+    SessionManager.INSTANCE.addSessionsListener(sessionListener);
   }
+
+  private void removeSessionListener() {
+    SessionManager.INSTANCE.removeSessionsListener(sessionListener);
+    sessionListener = null;
+  }
+
+  private void disposeHistory() {
+    if (null != history) {
+      history.dispose();
+      history = null;
+    }
+  }
+
+  private void disposePropertySheetPage() {
+    if (null != propertySheetPage) {
+      propertySheetPage.dispose();
+      propertySheetPage = null;
+    }
+  }
+
+  private void removeViewersListeners() {
+    if (null != referencingViewer) {
+      removeListeners(referencingViewer);
+      referencingViewer = null;
+    }
+    if (null != referencedViewer) {
+      removeListeners(referencedViewer);
+      referencedViewer = null;
+    }
+    if (null != this.currentViewer) {
+      removeListeners(this.currentViewer);
+    }
+    viewerSelectionListener = null;
+    viewerDoubleClickListener = null;
+  }
+
 }

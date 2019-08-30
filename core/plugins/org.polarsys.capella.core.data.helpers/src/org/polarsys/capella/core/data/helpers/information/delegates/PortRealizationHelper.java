@@ -52,14 +52,14 @@ public class PortRealizationHelper {
 
 	protected Port getRealizingPort(PortRealization element) {
 		TraceableElement ret = element.getSourceElement();
-		if(null != ret && ret instanceof Port)
+		if(ret instanceof Port)
 			return (Port) ret;
 		return null;
 	}
 
 	protected Port getRealizedPort(PortRealization element) {
 		TraceableElement ret = element.getTargetElement();
-		if(null != ret && ret instanceof Port)
+		if(ret instanceof Port)
 			return (Port) ret;
 		return null;
 	}

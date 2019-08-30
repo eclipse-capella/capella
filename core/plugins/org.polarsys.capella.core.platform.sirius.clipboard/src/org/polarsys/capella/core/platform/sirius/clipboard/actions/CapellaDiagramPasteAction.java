@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Text;
@@ -54,7 +55,8 @@ public class CapellaDiagramPasteAction extends AbstractCopyPasteAction {
   /**
    * @see IActionDelegate#run(IAction)
    */
-  public void run(IAction action_p) {
+  @Override
+  public void run(IAction action) {
     Text currentEditingText = getEditingTextWidget();
     WrappingLabel selectedNoteContent = getSelectedNoteContentFigure();
     if (currentEditingText != null) {
@@ -78,8 +80,9 @@ public class CapellaDiagramPasteAction extends AbstractCopyPasteAction {
   private void pasteElements() {
     ProgressMonitorDialog progressDialog = new ProgressMonitorDialog(getShell());
     IRunnableWithProgress runnable = new IRunnableWithProgress() {
-      public void run(IProgressMonitor monitor_p) throws InvocationTargetException, InterruptedException {
-        doRun(monitor_p);
+      @Override
+      public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+        doRun(monitor);
       }
     };
     try {
@@ -97,7 +100,7 @@ public class CapellaDiagramPasteAction extends AbstractCopyPasteAction {
    * Core computation for nominal paste, called from progress dialog
    */
   @SuppressWarnings({ "unchecked", "rawtypes" })
-      /* package */void doRun(IProgressMonitor monitor) {
+  void doRun(IProgressMonitor monitor) {
 
     try {
       monitor.beginTask(Messages.CapellaDiagramPasteAction_ProgressMessage, 2);
@@ -115,23 +118,20 @@ public class CapellaDiagramPasteAction extends AbstractCopyPasteAction {
         // Keep mouse location
         final Point relativeLocation = getRelativeLocation();
         // GraphicalAdjustmentCommand is executed asynchronously to come after the SiriusCanonicalLayoutCommand
-        Display.getDefault().asyncExec(new Runnable() {
-          @Override
-          public void run() {
-            View target = siriusCmd.getGmfTarget();
-            EObject siriusTarget = LayerUtil.getSiriusElement(target);
-            GraphicalAdjustmentCommand gmfCmd;
-            if (SiriusUtil.layoutIsConstrained(siriusTarget) && mustRefresh()) {
-              // Just refresh the diagram
-              gmfCmd = new GraphicalAdjustmentCommand(target);
-            } else {
-              // Duplicate layout
-              gmfCmd = new GraphicalAdjustmentCommand((List) siriusCmd.getResults(),
-                  siriusCmd.getPastedSiriusElementsOrigins(), target, relativeLocation, mustRefresh(),
-                  mustPasteLayout(), mustPasteStyle());
-            }
-            MiscUtil.transactionallyExecute(gmfSelection, gmfCmd);
+        Display.getDefault().asyncExec(() -> {
+          View target = siriusCmd.getGmfTarget();
+          EObject siriusTarget = LayerUtil.getSiriusElement(target);
+          GraphicalAdjustmentCommand gmfCmd;
+          if (SiriusUtil.layoutIsConstrained(siriusTarget) && mustRefresh()) {
+            // Just refresh the diagram
+            gmfCmd = new GraphicalAdjustmentCommand(target);
+          } else {
+            // Duplicate layout
+            gmfCmd = new GraphicalAdjustmentCommand((List) siriusCmd.getResults(),
+                siriusCmd.getPastedSiriusElementsOrigins(), target, relativeLocation, mustRefresh(), mustPasteLayout(),
+                mustPasteStyle());
           }
+          MiscUtil.transactionallyExecute(gmfSelection, gmfCmd);
         });
 
       }
@@ -149,6 +149,11 @@ public class CapellaDiagramPasteAction extends AbstractCopyPasteAction {
     EditPart target = getSelection().get(0);
     if (target instanceof GraphicalEditPart) {
       result = GmfUtil.getEditPartRelativeLocation(_cursorLocation, (GraphicalEditPart) target);
+
+      // take into account the zoom factor of the diagram
+      double zoomFactor = GraphicalHelper.getZoom(target);
+      result.x = (int) Math.round(result.x / zoomFactor);
+      result.y = (int) Math.round(result.y / zoomFactor);
     }
     return result;
   }

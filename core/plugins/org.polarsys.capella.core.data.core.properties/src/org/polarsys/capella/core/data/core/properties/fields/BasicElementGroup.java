@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,7 +48,7 @@ public class BasicElementGroup extends AbstractSemanticField {
   public BasicElementGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, boolean hasNameField, boolean hasSummaryField) {
     super(widgetFactory);
 
-    Group textGroup = _widgetFactory.createGroup(parent, ICommonConstants.EMPTY_STRING);
+    Group textGroup = widgetFactory.createGroup(parent, ICommonConstants.EMPTY_STRING);
     textGroup.setLayout(new GridLayout(2, false));
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 2;
@@ -69,9 +69,9 @@ public class BasicElementGroup extends AbstractSemanticField {
    * @param textLabel
    */
   private Text createTextField(Group textGroup, String textLabel) {
-    _widgetFactory.createCLabel(textGroup, textLabel);
+    widgetFactory.createCLabel(textGroup, textLabel);
 
-    Text textField = _widgetFactory.createText(textGroup, ICommonConstants.EMPTY_STRING);
+    Text textField = widgetFactory.createText(textGroup, ICommonConstants.EMPTY_STRING);
     textField.addFocusListener(this);
     textField.addKeyListener(this);
     textField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
@@ -86,11 +86,11 @@ public class BasicElementGroup extends AbstractSemanticField {
   public void loadData(EObject semanticElement) {
     loadData(semanticElement, null);
 
-    if (null != _semanticElement) {
+    if (null != semanticElement) {
       if (null != nameTextField)
-        setTextValue(nameTextField, _semanticElement, ModellingcorePackage.eINSTANCE.getAbstractNamedElement_Name());
+        setTextValue(nameTextField, semanticElement, ModellingcorePackage.eINSTANCE.getAbstractNamedElement_Name());
       if (null != summaryTextField)
-        setTextValue(summaryTextField, _semanticElement, CapellacorePackage.eINSTANCE.getCapellaElement_Summary());
+        setTextValue(summaryTextField, semanticElement, CapellacorePackage.eINSTANCE.getCapellaElement_Summary());
     }
   }
 
@@ -100,9 +100,9 @@ public class BasicElementGroup extends AbstractSemanticField {
   @Override
   protected void fillTextField(Text textField) {
     if (textField.equals(nameTextField)) {
-      setDataValue(_semanticElement, ModellingcorePackage.eINSTANCE.getAbstractNamedElement_Name(), nameTextField.getText());
+      setDataValue(semanticElement, ModellingcorePackage.eINSTANCE.getAbstractNamedElement_Name(), nameTextField.getText());
     } else if (textField.equals(summaryTextField)) {
-      setDataValue(_semanticElement, CapellacorePackage.eINSTANCE.getCapellaElement_Summary(), summaryTextField.getText());
+      setDataValue(semanticElement, CapellacorePackage.eINSTANCE.getCapellaElement_Summary(), summaryTextField.getText());
     }
   }
 
@@ -111,7 +111,7 @@ public class BasicElementGroup extends AbstractSemanticField {
    */
   public void clearNameField() {
     if (null != nameTextField) {
-      setDataValue(_semanticElement, ModellingcorePackage.eINSTANCE.getAbstractNamedElement_Name(), ""); //$NON-NLS-1$
+      setDataValue(semanticElement, ModellingcorePackage.eINSTANCE.getAbstractNamedElement_Name(), ""); //$NON-NLS-1$
       nameTextField.setText(""); //$NON-NLS-1$
     }
   }

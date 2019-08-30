@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.osgi.util.NLS;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -39,10 +39,9 @@ import org.eclipse.swt.widgets.Shell;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyType;
+import org.polarsys.capella.core.diagram.helpers.RepresentationAnnotationHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.ui.metric.MetricMessages;
-import org.polarsys.capella.core.ui.metric.utils.Utils;
-import org.polarsys.capella.core.ui.properties.annotations.RepresentationAnnotationHelper;
 
 public class ProgressSetDialog extends Dialog {
 
@@ -375,8 +374,8 @@ public class ProgressSetDialog extends Dialog {
       EObject next = iterator.next();
       if (next instanceof CapellaElement) {
         semanticElement = next;
-      } else if (next instanceof DRepresentation) {
-        semanticElement = Utils.getTarget((DRepresentation) next);
+      } else if (next instanceof DRepresentationDescriptor) {
+        semanticElement = ((DRepresentationDescriptor) next).getTarget();
       }
     }
     Assert.isNotNull(semanticElement);
@@ -391,9 +390,10 @@ public class ProgressSetDialog extends Dialog {
     for (EObject obj : affectedObjects) {
       if (obj instanceof CapellaElement && ((CapellaElement) obj).getStatus() != null) {
         labels.add(((CapellaElement) obj).getStatus().getLabel());
-      } else if (obj instanceof DRepresentation
-          && RepresentationAnnotationHelper.getProgressStatus((DRepresentation) obj) != null) {
-        labels.add(RepresentationAnnotationHelper.getProgressStatus((DRepresentation) obj));
+        
+      } else if (obj instanceof DRepresentationDescriptor
+          && RepresentationAnnotationHelper.hasProgressStatus((DRepresentationDescriptor) obj)) {
+        labels.add(RepresentationAnnotationHelper.getProgressStatus((DRepresentationDescriptor) obj).getLabel());
       }
     }
     // If all affected objects have the same status, return its index

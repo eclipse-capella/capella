@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+  Copyright (c) 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -98,6 +98,381 @@
           </basicQuery>
        </categoryQuery>
     </category>
+	<category
+	      id="org.polarsys.capella.core.semantic.queries.GeneralizableElementAllSuperGE"
+	      isTopLevel="true"
+	      name="Generalized Elements">
+	   <categoryQuery>
+	      <basicQuery
+	            class="org.polarsys.capella.core.semantic.queries.basic.queries.GeneralizableElementAllSuperGE">
+	      </basicQuery>
+	   </categoryQuery>
+	   <targetBrowserId
+	         id="ReferencedElementBrowser">
+	   </targetBrowserId>
+	   <availableForType
+	         class="org.polarsys.capella.core.data.capellacore.GeneralizableElement">
+	   </availableForType>
+	</category>
+    <category
+          id="org.polarsys.capella.core.semantic.queries.GeneralizableElementAllSubGE"
+          isTopLevel="true"
+          name="Generalizing Elements">
+       <targetBrowserId
+             id="ReferencingElementBrowser">
+       </targetBrowserId>
+       <availableForType
+             class="org.polarsys.capella.core.data.capellacore.GeneralizableElement">
+       </availableForType>
+       <categoryQuery>
+          <basicQuery
+                class="org.polarsys.capella.core.semantic.queries.basic.queries.GeneralizableElementAllSubGE"></basicQuery>
+       </categoryQuery>
+    </category>
+    <category
+            id="---------- CapellaRelationships ----------">
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsInterfaceUseTarget"
+            isTopLevel="true"
+            name="Target">
+         <availableForType
+               class="org.polarsys.capella.core.data.cs.InterfaceUse">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsInterfaceUseTarget">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsInterfaceUseSource"
+            isTopLevel="true"
+            name="Source">
+         <availableForType
+               class="org.polarsys.capella.core.data.cs.InterfaceUse">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsInterfaceUseSource">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsInterfaceImplementationTarget"
+            isTopLevel="true"
+            name="Target">
+         <availableForType
+               class="org.polarsys.capella.core.data.cs.InterfaceImplementation">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsInterfaceImplementationTarget">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsInterfaceImplementationSource"
+            isTopLevel="true"
+            name="Source">
+         <availableForType
+               class="org.polarsys.capella.core.data.cs.InterfaceImplementation">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsInterfaceImplementationSource">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsInvolvementTarget"
+            isTopLevel="true"
+            name="Involved Element">
+         <availableForType
+               class="org.polarsys.capella.core.data.capellacore.Involvement">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsInvolvementTarget">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsInvolvementSource"
+            isTopLevel="true"
+            name="Involving Element">
+         <availableForType
+               class="org.polarsys.capella.core.data.capellacore.Involvement">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsInvolvementSource">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsCapabilityExploitationTarget"
+            isTopLevel="true"
+            name="Involved Element">
+         <availableForType
+               class="org.polarsys.capella.core.data.ctx.CapabilityExploitation">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsCapabilityExploitationTarget">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsCapabilityExploitationSource"
+            isTopLevel="true"
+            name="Source">
+         <availableForType
+               class="org.polarsys.capella.core.data.ctx.CapabilityExploitation">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsCapabilityExploitationSource">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsAbstractCapabilityExtendTarget"
+            isTopLevel="true"
+            name="Target">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsAbstractCapabilityExtendTarget">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsAbstractCapabilityExtendSource"
+            isTopLevel="true"
+            name="Source">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsAbstractCapabilityExtendSource">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsAbstractCapabilityIncludeTarget"
+            isTopLevel="true"
+            name="Target">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.AbstractCapabilityInclude">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsAbstractCapabilityIncludeTarget">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsAbstractCapabilityIncludeSource"
+            isTopLevel="true"
+            name="Source">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.AbstractCapabilityInclude">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsAbstractCapabilityIncludeSource">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsAbstractCapabilityGeneralizationTarget"
+            isTopLevel="true"
+            name="Target">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsAbstractCapabilityGeneralizationTarget">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsAbstractCapabilityGeneralizationSource"
+            isTopLevel="true"
+            name="Source">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsAbstractCapabilityGeneralizationSource">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsGeneralizationTarget"
+            isTopLevel="true"
+            name="Target">
+         <availableForType
+               class="org.polarsys.capella.core.data.capellacore.Generalization">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsGeneralizationTarget">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsGeneralizationSource"
+            isTopLevel="true"
+            name="Source">
+         <availableForType
+               class="org.polarsys.capella.core.data.capellacore.Generalization">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsGeneralizationSource">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsAssociationRoles"
+            isTopLevel="true"
+            name="Roles">
+         <availableForType
+               class="org.polarsys.capella.core.data.information.Association">
+         </availableForType>
+         <targetBrowserId
+               id="CurrentElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsAssociationRoles">
+            </basicQuery>
+         </categoryQuery>
+         <itemQueries>
+             <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaPropertyType">
+            </basicQuery>
+         </itemQueries>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsAllocationTarget"
+            isTopLevel="true"
+            name="Target">
+         <availableForType
+               class="org.polarsys.capella.core.data.capellacore.Allocation">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsAllocationTarget">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+            <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsAllocationSource"
+            isTopLevel="true"
+            name="Source">
+         <availableForType
+               class="org.polarsys.capella.core.data.capellacore.Allocation">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsAllocationSource">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsTraceTarget"
+            isTopLevel="true"
+            name="Target">
+         <availableForType
+               class="org.polarsys.capella.core.data.capellacore.Trace">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsTraceTarget">
+            </basicQuery>
+         </categoryQuery>
+      </category>   
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsTraceSource"
+            isTopLevel="true"
+            name="Source">
+         <availableForType
+               class="org.polarsys.capella.core.data.capellacore.Trace">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsTraceSource">
+            </basicQuery>
+         </categoryQuery>
+      </category>
       <category
             id="------------- Component ----------------">
       </category>
@@ -435,6 +810,27 @@
          </itemQueries>
       </category>
       <category
+            id="capella.semantic.queries.Interface_inheritedExchangeItem"
+            isTopLevel="true"
+            name="Inherited Exchange Items">
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <availableForType
+               class="org.polarsys.capella.core.data.cs.Interface">
+         </availableForType>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.InterfaceInheritedExchangesItems">
+            </basicQuery>
+         </categoryQuery>
+         <itemQueries>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ExchangesItemExchangeItemElements">
+            </basicQuery>
+         </itemQueries>
+      </category>
+      <category
             id="org.polarsys.capella.core.semantic.queries.Interface_provisioningInterfaces"
             isTopLevel="true"
             name="Refining Interfaces">
@@ -482,7 +878,6 @@
             </basicQuery>
          </categoryQuery>
       </category>
-      
       <category
             id="------------- Physical Component -------------">
       </category>
@@ -911,6 +1306,22 @@
 
       <category
             id="---------- ComponentPort ---------">
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.ComponentPortAllocatingPhysicalPorts"
+            isTopLevel="true"
+            name="Allocating Physical Ports">
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.ComponentPort">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ComponentPortAllocatingPhysicalPorts">
+            </basicQuery>
+         </categoryQuery>
       </category>
       <category
             id="org.polarsys.capella.core.semantic.queries.basic.queries.ComponentPortIncomingComponentExchanges"
@@ -1421,6 +1832,70 @@
             id="------------- SequenceMessage ----------------">
       </category>
       <category
+            id="org.polarsys.capella.core.semantic.queries.SequenceMessageFunctionSource"
+            isTopLevel="true"
+            name="Source">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.SequenceMessage">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.SequenceMessageFunctionSource">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.SequenceMessageFunctionTarget"
+            isTopLevel="true"
+            name="Target">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.SequenceMessage">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.SequenceMessageFunctionTarget">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.SequenceMessagePartSource"
+            isTopLevel="true"
+            name="Source">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.SequenceMessage">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.SequenceMessagePartSource">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.SequenceMessagePartTarget"
+            isTopLevel="true"
+            name="Target">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.SequenceMessage">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.SequenceMessagePartTarget">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
             id="org.polarsys.capella.core.semantic.queries.SequenceMessage_parentScenario"
             isTopLevel="true"
             name="Parent Scenario">
@@ -1436,7 +1911,6 @@
             </basicQuery>
          </categoryQuery>
       </category>
-      
       <category
             id="org.polarsys.capella.core.semantic.queries.SequenceMessage_refinedSequenceMessage"
             isTopLevel="true"
@@ -1534,6 +2008,56 @@
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.Part_type">
             </basicQuery>
          </categoryQuery>
+      </category>
+      
+      <category
+            id="org.polarsys.capella.core.semantic.queries.StateFragmentRelatedFunctions"
+            isTopLevel="true"
+            name="Related Function">
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.StateFragment">
+         </availableForType>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.StateFragmentRelatedFunctions">
+            </basicQuery>
+         </categoryQuery>         
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.StateFragmentRelatedStates"
+            isTopLevel="true"
+            name="Related State">
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.StateFragment">
+         </availableForType>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.StateFragmentRelatedStates">
+            </basicQuery>
+         </categoryQuery>         
+      </category>
+      
+      <category
+            id="org.polarsys.capella.core.semantic.queries.AbstractStateParentActiveElements"
+            isTopLevel="true"
+            name="Active Elements (computed)">
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.AbstractStateParentActiveElements">
+            </basicQuery>
+         </categoryQuery>
+         <availableForType
+                     class="org.polarsys.capella.core.data.capellacommon.State">
+         </availableForType>
       </category>
       
       <category
@@ -1859,7 +2383,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.CommunicationLinkExchangeItem"
             isTopLevel="true"
-            name="ExchangeItem">
+            name="Target">
          <targetBrowserId
                id="ReferencedElementBrowser">
          </targetBrowserId>
@@ -1880,7 +2404,7 @@
             <category
             id="org.polarsys.capella.core.semantic.queries.CommunicationLinkComponent"
             isTopLevel="true"
-            name="Component">
+            name="Source">
          <targetBrowserId
                id="ReferencingElementBrowser">
          </targetBrowserId>
@@ -1897,10 +2421,10 @@
                   id="------------ AbstractType ---------------"
                   isTopLevel="false">
             </category>
-            <category
+             <category
                   id="org.polarsys.capella.core.semantic.queries.AbstractTypeAbstractTypedElement"
                   isTopLevel="true"
-                  name="Typed Elements">
+                  name="Inherited of Typing Elements">
                <availableForType
                      class="org.polarsys.capella.common.data.modellingcore.AbstractType">
                </availableForType>
@@ -1979,37 +2503,6 @@
                   <basicQuery
                         class="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalExchangeOperationalProcess">
                   </basicQuery>
-               </categoryQuery>
-            </category>
-            <category
-                  id="org.polarsys.capella.core.semantic.queries.GeneralizableElementAllSuperGE"
-                  isTopLevel="true"
-                  name="Super Types">
-               <categoryQuery>
-                  <basicQuery
-                        class="org.polarsys.capella.core.semantic.queries.basic.queries.GeneralizableElementAllSuperGE">
-                  </basicQuery>
-               </categoryQuery>
-               <targetBrowserId
-                     id="ReferencedElementBrowser">
-               </targetBrowserId>
-               <availableForType
-                     class="org.polarsys.capella.core.data.capellacore.GeneralizableElement">
-               </availableForType>
-            </category>
-            <category
-                  id="org.polarsys.capella.core.semantic.queries.GeneralizableElementAllSubGE"
-                  isTopLevel="true"
-                  name="Sub Types">
-               <targetBrowserId
-                     id="ReferencingElementBrowser">
-               </targetBrowserId>
-               <availableForType
-                     class="org.polarsys.capella.core.data.capellacore.GeneralizableElement">
-               </availableForType>
-               <categoryQuery>
-                  <basicQuery
-                        class="org.polarsys.capella.core.semantic.queries.basic.queries.GeneralizableElementAllSubGE"></basicQuery>
                </categoryQuery>
             </category>
             <category
@@ -2171,6 +2664,22 @@
                         class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalLinkSourceAndTarget">
                   </basicQuery>
                </itemQueries>
+            </category>
+            <category
+                  id="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalPortAllocatedComponentPorts"
+                  isTopLevel="true"
+                  name="Allocated Component Ports">
+               <availableForType
+                     class="org.polarsys.capella.core.data.cs.PhysicalPort">
+               </availableForType>
+               <targetBrowserId
+                     id="ReferencedElementBrowser">
+               </targetBrowserId>
+               <categoryQuery>
+                  <basicQuery
+                        class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalPortAllocatedComponentPorts">
+                  </basicQuery>
+               </categoryQuery>
             </category>
             <category
                   id="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalPortOutgoingDelgations"
@@ -4531,7 +5040,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.CommunicationMean_source"
             isTopLevel="true"
-            name="Source Entity">
+            name="Source">
          <targetBrowserId
                id="ReferencingElementBrowser">
          </targetBrowserId>
@@ -4547,7 +5056,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.CommunicationMean_target"
             isTopLevel="true"
-            name="Target Entity">
+            name="Target">
          <targetBrowserId
                id="ReferencedElementBrowser">
          </targetBrowserId>
@@ -4563,24 +5072,6 @@
       <category
             id="---------- Functional Chain ----------">
       </category>
-      
-            <category
-                  id="org.polarsys.capella.core.semantic.queries.FunctionalChainInvolvingFunctionalChain"
-                  isTopLevel="true"
-                  name="Functional Chains">
-               <availableForType
-                     class="org.polarsys.capella.core.data.fa.FunctionalChain">
-               </availableForType>
-               <targetBrowserId
-                     id="ReferencingElementBrowser">
-               </targetBrowserId>
-               <categoryQuery>
-                  <basicQuery
-                        class="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvingFunctionalChain">
-                  </basicQuery>
-               </categoryQuery>
-            </category>
-            
       <category
             id="org.polarsys.capella.core.semantic.queries.FunctionalChain_owningFunction"
             isTopLevel="true"
@@ -4597,27 +5088,10 @@
             </basicQuery>
          </categoryQuery>
       </category>
-      
-      <category
-            id="org.polarsys.capella.core.semantic.queries.FunctionalChain_enactedFunctions_sys"
-            isTopLevel="true"
-            name="Involved System Functions">
-         <availableForType
-               class="org.polarsys.capella.core.data.fa.FunctionalChain">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencedElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.SAFunctionalChainInvolvedFunctions">
-            </basicQuery>
-         </categoryQuery>
-      </category>
       <category
             id="org.polarsys.capella.core.semantic.queries.FunctionalChain_enactedFunctions_log"
             isTopLevel="true"
-            name="Involved Logical Functions">
+            name="Involved Functions">
          <availableForType
                class="org.polarsys.capella.core.data.fa.FunctionalChain">
          </availableForType>
@@ -4626,30 +5100,40 @@
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.LAFunctionalChainInvolvedFunctions">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvementFunctions">
             </basicQuery>
          </categoryQuery>
+         <itemQueries>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsInvolvementTarget">
+            </basicQuery>
+         </itemQueries>
       </category>
       <category
-            id="org.polarsys.capella.core.semantic.queries.FunctionalChain_enactedFunctions_phy"
+            id="org.polarsys.capella.core.semantic.queries.FunctionalChainReference_enactedFunctions_log"
             isTopLevel="true"
-            name="Involved Physical Functions">
+            name="Involved Functions">
          <availableForType
-               class="org.polarsys.capella.core.data.fa.FunctionalChain">
+               class="org.polarsys.capella.core.data.fa.FunctionalChainReference">
          </availableForType>
          <targetBrowserId
                id="ReferencedElementBrowser">
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.PAFunctionalChainInvolvedFunctions">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvementFunctions">
             </basicQuery>
          </categoryQuery>
+         <itemQueries>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsInvolvementTarget">
+            </basicQuery>
+         </itemQueries>
       </category>
       <category
-            id="org.polarsys.capella.core.semantic.queries.FunctionalChainFunctionalExchange"
+            id="org.polarsys.capella.core.semantic.queries.FunctionalChain.InvolvementLinks"
             isTopLevel="true"
-            name="Involved Functional Exchanges">
+            name="Involvement Links">
          <availableForType
                class="org.polarsys.capella.core.data.fa.FunctionalChain">
          </availableForType>
@@ -4658,25 +5142,35 @@
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvedFunctionalExchange">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvementLinks">
             </basicQuery>
          </categoryQuery>
+         <itemQueries>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsInvolvementTarget">
+            </basicQuery>
+         </itemQueries>
       </category>
       <category
-            id="org.polarsys.capella.core.semantic.queries.FunctionalChainInvolvedFunctionalChain"
+            id="org.polarsys.capella.core.semantic.queries.FunctionalChainReference.InvolvementLinks"
             isTopLevel="true"
-            name="Involved Functional Chains">
+            name="Involvement Links">
          <availableForType
-               class="org.polarsys.capella.core.data.fa.FunctionalChain">
+               class="org.polarsys.capella.core.data.fa.FunctionalChainReference">
          </availableForType>
          <targetBrowserId
                id="ReferencedElementBrowser">
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvedFunctionalChain">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvementLinks">
             </basicQuery>
          </categoryQuery>
+         <itemQueries>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsInvolvementTarget">
+            </basicQuery>
+         </itemQueries>
       </category>
       <category
             id="org.polarsys.capella.core.semantic.queries.FunctionalChain_enactedComponents"
@@ -4775,14 +5269,417 @@
          </categoryQuery>
       </category>
       <category
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChain.Parent"
+            isTopLevel="true"
+            name="Parent Functional Chains">
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainParent">
+            </basicQuery>
+         </categoryQuery>
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.FunctionalChain">
+         </availableForType>
+      </category>
+
+      <category
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChain.Children"
+            isTopLevel="true"
+            name="Involved Functional Chains">
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainChildren">
+            </basicQuery>
+         </categoryQuery>
+         <itemQueries>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsInvolvementTarget">
+            </basicQuery>
+         </itemQueries>
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.FunctionalChain">
+         </availableForType>
+      </category>
+
+      <category
+            id="----------- Functional Chain Involvment Link----------">
+      </category>
+      
+      <category
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvmentLinkSource"
+            isTopLevel="true"
+            name="Source">
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvmentLinkSource">
+            </basicQuery>
+         </categoryQuery>
+         <itemQueries>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsInvolvementTarget">
+            </basicQuery>
+         </itemQueries>
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink">
+         </availableForType>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvmentLinkTarget"
+            isTopLevel="true"
+            name="Target">
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvmentLinkTarget">
+            </basicQuery>
+         </categoryQuery>
+         <itemQueries>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsInvolvementTarget">
+            </basicQuery>
+         </itemQueries>
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink">
+         </availableForType>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvmentLinkExchangeContext"
+            isTopLevel="true"
+            name="Exchange Context">
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvmentLinkExchangeContext">
+            </basicQuery>
+         </categoryQuery>
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink">
+         </availableForType>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.ReferenceHierarchyContextSource"
+            isTopLevel="true"
+            name="Source Reference Hierachy">
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ReferenceHierarchyContextSource">
+            </basicQuery>
+         </categoryQuery>
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.ReferenceHierarchyContext">
+         </availableForType>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.ReferenceHierarchyContextTarget"
+            isTopLevel="true"
+            name="Target Reference Hierachy">
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ReferenceHierarchyContextTarget">
+            </basicQuery>
+         </categoryQuery>
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.ReferenceHierarchyContext">
+         </availableForType>
+      </category>
+      
+      <category
+            id="----------- Functional Chain Reference ----------">
+      </category>
+      
+      <category
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainReference.Parent"
+            isTopLevel="true"
+            name="Parent Functional Chains">
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainParent">
+            </basicQuery>
+         </categoryQuery>
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.FunctionalChainReference">
+         </availableForType>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainReference.Children"
+            isTopLevel="true"
+            name="Involved Functional Chains">
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainChildren">
+            </basicQuery>
+         </categoryQuery>
+         <itemQueries>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsInvolvementTarget">
+            </basicQuery>
+         </itemQueries>
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.FunctionalChainReference">
+         </availableForType>
+      </category>
+      
+      <category
+            id="----------- Sequence Link ----------">
+      </category>
+
+      <category
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.SequencLinkSourceInvolvementFunction"
+            isTopLevel="true"
+            name="Source Involvement Function">
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.SequenceLink">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.SequenceLinkSourceInvolvementFunction">
+            </basicQuery>
+         </categoryQuery>
+         <itemQueries>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsInvolvementTarget">
+            </basicQuery>
+         </itemQueries>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.SequencLinkSourceControlNode"
+            isTopLevel="true"
+            name="Source Control Node">
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.SequenceLink">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.SequenceLinkSourceControlNode">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.SequencLinkOwner"
+            isTopLevel="true"
+            name="Owner">
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.SequenceLink">
+         </availableForType>
+         <targetBrowserId
+               id="CurrentElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaElementOwner">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.SequencLinkCondition"
+            isTopLevel="true"
+            name="Condition">
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.SequenceLink">
+         </availableForType>
+         <targetBrowserId
+               id="CurrentElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.SequenceLinkCondition">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.SequencLinkLinks"
+            isTopLevel="true"
+            name="Links">
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.SequenceLink">
+         </availableForType>
+         <targetBrowserId
+               id="CurrentElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.SequenceLinkLinks">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.SequencLinkTargetInvolvementFunction"
+            isTopLevel="true"
+            name="Target Involvement Function">
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.SequenceLink">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.SequenceLinkTargetInvolvementFunction">
+            </basicQuery>
+         </categoryQuery>
+         <itemQueries>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsInvolvementTarget">
+            </basicQuery>
+         </itemQueries>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.SequencLinkTargetControlNode"
+            isTopLevel="true"
+            name="Target Control Node">
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.SequenceLink">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.SequenceLinkTargetControlNode">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      
+      <category
+            id="----------- Sequence Link End ----------">
+      </category>
+      
+      <category
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.SequencLinkEndSourceSequenceLinks"
+            isTopLevel="true"
+            name="Source Sequence Links">
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.SequenceLinkEnd">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.SequenceLinkEndSourceSequenceLinks">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.SequencLinkEndTargetSequenceLinks"
+            isTopLevel="true"
+            name="Target Sequence Links">
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.SequenceLinkEnd">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.SequenceLinkEndTargetSequenceLinks">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      
+      <category
+            id="----------- Functional Chain Involvement Function ----------">
+      </category>
+      
+      <category
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvementFunctionIncomingInvolvementLinks"
+            isTopLevel="true"
+            name="Incoming Involvement Links">
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvementFunctionIncomingInvolvementLinks">
+            </basicQuery>
+         </categoryQuery>
+         <itemQueries>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsInvolvementTarget">
+            </basicQuery>
+         </itemQueries>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.FunctionalChainInvolvementFunctionOwner"
+            isTopLevel="true"
+            name="Owner">
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction">
+         </availableForType>
+         <targetBrowserId
+               id="CurrentElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaElementOwner">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvementFunctionOutgoingInvolvementLinks"
+            isTopLevel="true"
+            name="Outgoing Involvement Links">
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvementFunctionOutgoingInvolvementLinks">
+            </basicQuery>
+         </categoryQuery>
+         <itemQueries>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsInvolvementTarget">
+            </basicQuery>
+         </itemQueries>
+      </category>
+
+      <category
             id="---------- Operational Process ----------">
       </category>
       
       
             <category
-                  id="org.polarsys.capella.core.semantic.queries.OperationalProcessInvolvingOperationalProcess"
+                  id="org.polarsys.capella.core.semantic.queries.OperationalProcessParent"
                   isTopLevel="true"
-                  name="Operational Processes">
+                  name="Parent Operational Processes">
                <availableForType
                      class="org.polarsys.capella.core.data.oa.OperationalProcess">
                </availableForType>
@@ -4791,7 +5688,7 @@
                </targetBrowserId>
                <categoryQuery>
                   <basicQuery
-                        class="org.polarsys.capella.core.semantic.queries.basic.queries.OperationalProcessInvolvingOperationalProcess">
+                        class="org.polarsys.capella.core.semantic.queries.basic.queries.OperationalProcessParent">
                   </basicQuery>
                </categoryQuery>
             </category>
@@ -4811,25 +5708,14 @@
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.OperationalProcessInvolvedOperationalActivities">
             </basicQuery>
          </categoryQuery>
-      </category>
-      <category
-            id="org.polarsys.capella.core.semantic.queries.FunctionalChainFunctionalExchange_oa"
-            isTopLevel="true"
-            name="Involved Interactions">
-         <availableForType
-               class="org.polarsys.capella.core.data.oa.OperationalProcess">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencedElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
+         <itemQueries>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.OperationalProcessInvolvedInteractions">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsInvolvementTarget">
             </basicQuery>
-         </categoryQuery>
+         </itemQueries>
       </category>
       <category
-            id="org.polarsys.capella.core.semantic.queries.OperationalProcessInvolvedOperationalProcess"
+            id="org.polarsys.capella.core.semantic.queries.OperationalProcessChildren"
             isTopLevel="true"
             name="Involved Operational Processes">
          <availableForType
@@ -4840,9 +5726,14 @@
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.OperationalProcessInvolvedOperationalProcess">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.OperationalProcessChildren">
             </basicQuery>
          </categoryQuery>
+         <itemQueries>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsInvolvementTarget">
+            </basicQuery>
+         </itemQueries>
       </category>
       <category
             id="org.polarsys.capella.core.semantic.queries.FunctionalChainInvolvingCapabilityoa"
@@ -5129,6 +6020,22 @@
          </categoryQuery>
       </category>
       <category
+            id="org.polarsys.capella.core.semantic.queries.Capability_extendingCapabilities"
+            isTopLevel="true"
+            name="Extending Capabilities">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.AbstractCapability">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Capability_extendingCapabilities">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
             id="org.polarsys.capella.core.semantic.queries.Capability_includedCapabilities"
             isTopLevel="true"
             name="Included Capabilities">
@@ -5145,9 +6052,25 @@
          </categoryQuery>
       </category>
       <category
+            id="org.polarsys.capella.core.semantic.queries.Capability_includingCapabilities"
+            isTopLevel="true"
+            name="Including Capabilities">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.AbstractCapability">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Capability_includingCapabilities">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
             id="org.polarsys.capella.core.semantic.queries.AbstractCapabilitySuper"
             isTopLevel="true"
-            name="Super">
+            name="Generalized Elements">
          <availableForType
                class="org.polarsys.capella.core.data.interaction.AbstractCapability">
          </availableForType>
@@ -5163,12 +6086,12 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.AbstractCapabilitySub"
             isTopLevel="true"
-            name="Sub">
+            name="Generalizing Elements">
          <availableForType
                class="org.polarsys.capella.core.data.interaction.AbstractCapability">
          </availableForType>
          <targetBrowserId
-               id="ReferencedElementBrowser">
+               id="ReferencingElementBrowser">
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
@@ -5326,7 +6249,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.AbstractCapabilityInvolvedFunctionalChainsSA"
             isTopLevel="true"
-            name="Involved FunctionalChain">
+            name="Involved Functional Chains">
          <availableForType
                class="org.polarsys.capella.core.data.ctx.Capability">
          </availableForType>
@@ -5517,12 +6440,12 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.basic.queries.AbstractTypeTypedElements"
             isTopLevel="true"
-            name="Typed Elements">
+            name="Typing Elements">
          <availableForType
                class="org.polarsys.capella.core.data.capellacore.Type">
          </availableForType>
          <targetBrowserId
-               id="ReferencedElementBrowser">
+               id="ReferencingElementBrowser">
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
@@ -5834,140 +6757,7 @@
             </basicQuery>
          </categoryQuery>
       </category>
-      <category
-            id="----------- Functional Chain Involvment----------">
-      </category>
-      <category
-            id="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvmentInvolvedOperationalActivity"
-            isTopLevel="true"
-            name="Involved Operational Activity">
-         <availableForType
-               class="org.polarsys.capella.core.data.fa.FunctionalChainInvolvement">
-         </availableForType>
-         <targetBrowserId
-               id="ReferencedElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvmentInvolvedOperationalActivity">
-            </basicQuery>
-         </categoryQuery>
-      </category>
-      <category
-            id="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvmentInvolvedSystemFunction"
-            isTopLevel="true"
-            name="Involved System Function">
-         <targetBrowserId
-               id="ReferencedElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvmentInvolvedSystemFunction">
-            </basicQuery>
-         </categoryQuery>
-         <availableForType
-               class="org.polarsys.capella.core.data.fa.FunctionalChainInvolvement">
-         </availableForType>
-      </category>
-      <category
-            id="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvmentInvolvedLogicalFunction"
-            isTopLevel="true"
-            name="Involved Logical Function">
-         <targetBrowserId
-               id="ReferencedElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvmentInvolvedLogicalFunction">
-            </basicQuery>
-         </categoryQuery>
-         <availableForType
-               class="org.polarsys.capella.core.data.fa.FunctionalChainInvolvement">
-         </availableForType>
-      </category>
-      <category
-            id="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvmentInvolvedPhysicalFunction"
-            isTopLevel="true"
-            name="Involved Physical Function">
-         <targetBrowserId
-               id="ReferencedElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvmentInvolvedPhysicalFunction">
-            </basicQuery>
-         </categoryQuery>
-         <availableForType
-               class="org.polarsys.capella.core.data.fa.FunctionalChainInvolvement">
-         </availableForType>
-      </category>
-      
-      <category
-            id="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvmentInvolvedFunctionalChain"
-            isTopLevel="true"
-            name="Involved Functional Chain">
-         <targetBrowserId
-               id="ReferencedElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvmentInvolvedFunctionalChain">
-            </basicQuery>
-         </categoryQuery>
-         <availableForType
-               class="org.polarsys.capella.core.data.fa.FunctionalChainInvolvement">
-         </availableForType>
-      </category>
-      
-      <category
-            id="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvmentInvolvedOperationalProcess"
-            isTopLevel="true"
-            name="Involved Operational Process">
-         <targetBrowserId
-               id="ReferencedElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvmentInvolvedOperationalProcess">
-            </basicQuery>
-         </categoryQuery>
-         <availableForType
-               class="org.polarsys.capella.core.data.fa.FunctionalChainInvolvement">
-         </availableForType>
-      </category>
-      
-      <category
-            id="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvmentInvolvedFunctionalExchange"
-            isTopLevel="true"
-            name="Involved Functional Exchange">
-         <targetBrowserId
-               id="ReferencedElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvmentInvolvedFunctionalExchange">
-            </basicQuery>
-         </categoryQuery>
-         <availableForType
-               class="org.polarsys.capella.core.data.fa.FunctionalChainInvolvement">
-         </availableForType>
-      </category>
-      <category
-            id="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvmentInvolvedInteraction"
-            isTopLevel="true"
-            name="Involved Interaction">
-         <targetBrowserId
-               id="ReferencedElementBrowser">
-         </targetBrowserId>
-         <categoryQuery>
-            <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChainInvolvmentInvolvedInteraction">
-            </basicQuery>
-         </categoryQuery>
-         <availableForType
-               class="org.polarsys.capella.core.data.fa.FunctionalChainInvolvement">
-         </availableForType>
-      </category>
+
       <category
             id="----------- Physical Path Involvment----------">
       </category>
@@ -6202,6 +6992,11 @@
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.TraceableElementIncomingTrace">
             </basicQuery>
          </categoryQuery>
+         <itemQueries>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.TraceableElementTraceType">
+            </basicQuery>
+         </itemQueries>
       </category>
       <category
             id="org.polarsys.capella.core.semantic.queries.basic.queries.TraceableElementOutgoingTrace01"
@@ -6218,6 +7013,11 @@
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.TraceableElementOutgoingTrace">
             </basicQuery>
          </categoryQuery>
+         <itemQueries>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.TraceableElementTraceType">
+            </basicQuery>
+         </itemQueries>
       </category>
       <category
             id="org.polarsys.capella.core.semantic.queries.basic.queries.DataValueRefReferencedValue01"
@@ -6474,6 +7274,26 @@
          <categoryQuery>
             <basicQuery
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.CRRealizingCR">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="-----------Collection--------"
+            isTopLevel="false">
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CollectionType"
+            isTopLevel="true"
+            name="Type">
+         <availableForType
+               class="org.polarsys.capella.core.data.information.Collection">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CollectionType">
             </basicQuery>
          </categoryQuery>
       </category>

@@ -2,13 +2,18 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.platform.sirius.adapter;singleton:=true
-Bundle-Version: 1.2.2.qualifier
+Bundle-Version: 1.3.1.qualifier
 Bundle-Activator: org.polarsys.capella.core.platform.sirius.adapter.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.sirius.diagram;visibility:=reexport,
  org.polarsys.capella.core.services;visibility:=reexport,
- org.polarsys.capella.core.model.handler
+ org.polarsys.capella.core.model.handler,
+ org.eclipse.gef,
+ org.eclipse.gmf.runtime.notation,
+ org.eclipse.sirius.ui,
+ org.polarsys.capella.common.ui.toolkit.browser,
+ org.polarsys.capella.common.tools.report.appenders.reportlogview
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.platform.sirius.adapter
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin

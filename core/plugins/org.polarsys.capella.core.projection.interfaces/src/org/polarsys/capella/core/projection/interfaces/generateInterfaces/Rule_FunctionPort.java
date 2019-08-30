@@ -31,12 +31,12 @@ import org.polarsys.capella.core.tiger.ITransfo;
 
 abstract class Rule_FunctionPort extends InterfaceGenerationRule {
 
-  private final static ProviderRequirerTracing tracing = new ProviderRequirerTracing();
+  private static final ProviderRequirerTracing tracing = new ProviderRequirerTracing();
   
   private static final Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.REFINEMENT);
 
-  public Rule_FunctionPort(EClass sourceType_p, EClass targetType_p) {
-    super(sourceType_p, targetType_p);
+  public Rule_FunctionPort(EClass sourceType, EClass targetType) {
+    super(sourceType, targetType);
   }
 
   abstract Collection<ExchangeItem> getRelatedExchangeItems(FunctionPort fp);
@@ -46,7 +46,7 @@ abstract class Rule_FunctionPort extends InterfaceGenerationRule {
   @Override
   protected Collection<InterfaceInfo> transformToInterfaceInfo(EObject element, ITransfo transfo) {
 
-    Collection<InterfaceInfo> result = new ArrayList<InterfaceInfo>();
+    Collection<InterfaceInfo> result = new ArrayList<>();
 
     for (FunctionalExchange fe : getRelatedFunctionalExchanges((FunctionPort)element)){
       if (isExternal(fe, transfo)){
@@ -65,7 +65,7 @@ abstract class Rule_FunctionPort extends InterfaceGenerationRule {
         requirer = new ComponentPortInterfaceAdapter(cp);
       }
 
-      if (getRelatedExchangeItems((FunctionPort)element).size() > 0){
+      if (!getRelatedExchangeItems((FunctionPort)element).isEmpty()){
         result.add(new InterfaceInfo(provider, requirer, tracing));
       }
     }
@@ -82,16 +82,17 @@ abstract class Rule_FunctionPort extends InterfaceGenerationRule {
       boolean result = true;
       result &= sourceF != null;
       result &= targetF != null;
-      result &= sourceF.getAllocationBlocks().size() > 0;
+      result &= !sourceF.getAllocationBlocks().isEmpty();
       if (!result) {
         if(!transfo.isDryRun()){
           // The source function has not been allocated to any component
-          String message = sourceF.getName() + " has not been allocated to any component";
+          String name = sourceF != null ? sourceF.getName() : "Unknown";
+          String message = name + " has not been allocated to any component";
           logger.warn(new EmbeddedMessage(message, logger.getName(), Arrays.asList(sourceF)));
         }          
         return true;
       }
-      result &= targetF.getAllocationBlocks().size() > 0;
+      result &= !targetF.getAllocationBlocks().isEmpty();
       if (!result) {
         if(!transfo.isDryRun()){
           // The target function has not been allocated to any component

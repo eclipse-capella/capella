@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,18 +20,13 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.action.Action;
-import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swt.SWT;
@@ -55,15 +50,10 @@ import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMar
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerView;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewPlugin;
 import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
-import org.polarsys.capella.common.ui.toolkit.viewers.AbstractContextMenuFiller;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.model.utils.saxparser.WriteCapellaElementDescriptionSAXParser;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.LocateInCapellaExplorerAction;
-import org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserView;
 import org.polarsys.capella.core.ui.toolkit.dialogs.ImpactAnalysisDialog;
 import org.polarsys.kitalpha.emde.model.Element;
 
@@ -132,7 +122,7 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
    * @param selection
    * @param treeViewerExpandLevel
    */
-  public FindAndReplaceDialog(Shell shell, SystemEngineering root, HashSet<EObject> modelElementContent, ISelection selection,
+  public FindAndReplaceDialog(Shell shell, SystemEngineering root, Set<EObject> modelElementContent, ISelection selection,
       int treeViewerExpandLevel) {
     this(shell, modelElementContent, treeViewerExpandLevel);
     this.currentSelection = selection;
@@ -268,16 +258,17 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
     SetView<Element> impactedElts = Sets.union(Sets.union(matchingElementsForName, matchingElementsForSummary), matchingElementsForDescription);
 
     // no matching elements
-    if (impactedElts.size() == 0) {
+    if (impactedElts.isEmpty()) {
       MessageDialog.openInformation(getParentShell(), Messages.FindAndReplaceDialog_title, Messages.FindAndReplaceDialog_no_matching);
     }
     // Some elements matches => opens a preview dialog
-    if (impactedElts.size() > 0) {
+    if (!impactedElts.isEmpty()) {
       ImpactAnalysisDialog impactDialog =
           new ImpactAnalysisDialog(new ArrayList<EObject>(impactedElts), Messages.FindAndReplaceDialog_preview, NLS.bind(
               Messages.FindAndReplaceDialog_impacted_find_string, getFindString()));
-      AbstractContextMenuFiller contextMenuFiller = new PreviewDialogContextMenuFiller();
-      impactDialog.setContextMenuManagerFiller(contextMenuFiller);
+
+      //AbstractContextMenuFiller contextMenuFiller = new PreviewDialogContextMenuFiller();
+     // impactDialog.setContextMenuManagerFiller(contextMenuFiller);
       impactDialog.open();
     }
   }
@@ -334,13 +325,11 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
       @Override
       protected String getName(EObject object) {
         String result = super.getName(object);
-        if ((null == result) || result.isEmpty()) {
-          if (object instanceof DRepresentation) {
-            DRepresentation res = (DRepresentation) object;
-            String repName = res.getName();
-            if (null != repName) {
-              result = repName;
-            }
+        if ((null == result || result.isEmpty()) && object instanceof DRepresentation) {
+          DRepresentation res = (DRepresentation) object;
+          String repName = res.getName();
+          if (null != repName) {
+            result = repName;
           }
         }
         return result;
@@ -394,11 +383,7 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
     if (!ignoreWildCards) {
       return;
     }
-    if (ignoreWildCards) {
-      pattern = Pattern.compile(getFindString(), (ignoreCase ? Pattern.CASE_INSENSITIVE : 0) | Pattern.LITERAL);
-    } else {
-      pattern = Pattern.compile(getFindString(), ignoreCase ? Pattern.CASE_INSENSITIVE : 0);
-    }
+    pattern = Pattern.compile(getFindString(), (ignoreCase ? Pattern.CASE_INSENSITIVE : 0) | Pattern.LITERAL);
   }
 
   /**
@@ -421,8 +406,7 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
    * @return
    */
   public String getFindString() {
-    String findText = header.getFindCombo().getText();
-    return findText;
+    return header.getFindCombo().getText();
   }
 
   /**
@@ -447,9 +431,9 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
     }
     if (wholeExpression) {
       List<String> findExprList = Arrays.asList(getFindString().split(SPACE));
-      List<String> string_pList = Arrays.asList(string.split(SPACE));
+      List<String> stringPList = Arrays.asList(string.split(SPACE));
 
-      return matchExpressionList(string_pList, findExprList, ignoreCase);
+      return matchExpressionList(stringPList, findExprList, ignoreCase);
     }
     return pattern.matcher(string).find();
   }
@@ -465,7 +449,7 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
   }
 
   public static boolean matchExpressionList(List<String> text, List<String> findExpr, boolean ignoreCase) {
-    if ((null == text) | (null == findExpr)) {
+    if ((null == text) || (null == findExpr)) {
       return false;
     }
     int textSize = text.size();
@@ -537,91 +521,6 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
     }
   }
 
-  /**
-   */
-  protected final class PreviewDialogContextMenuFiller extends AbstractContextMenuFiller {
-    @Override
-    public void fillMenuManager(IMenuManager contextMenuManager, final ISelection selection) {
-      final LocateInCapellaExplorerAction selectInExplorerAction = new LocateInCapellaExplorerAction() {
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected ISelection getSelection() {
-          return selection;
-        }
-      };
-
-      IAction action = new Action() {
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public void run() {
-          selectInExplorerAction.run(this);
-        }
-
-      };
-
-      // Ignore workbench part site, since in a dialog, site has no meaning.
-      selectInExplorerAction.shouldIgnoreWorkbenchPartSite(true);
-      action.setText(Messages.ImpactAnalysisAction_ShowInCapellaExplorer_Title);
-      action.setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor(IImageKeys.IMG_SHOW_IN_CAPELLA_EXPLORER));
-      selectInExplorerAction.selectionChanged(action, selection);
-      if (action.isEnabled()) {
-        contextMenuManager.add(action);
-      }
-
-      final EObject eObject = (EObject) ((TreeSelection) selection).iterator().next();
-
-      final LocateInCapellaExplorerAction selectInSemanticBrowserAction = new LocateInCapellaExplorerAction() {
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected ISelection getSelection() {
-          return selection;
-        }
-      };
-
-      IAction action3 = new Action() {
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public void run() {
-          try {
-            activateSemanticBrowser();
-          } catch (CoreException e) {
-            // Do nothing
-          }
-          selectInSemanticBrowserAction.run(this);
-        }
-
-        private void activateSemanticBrowser() throws CoreException {
-          IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-          SemanticBrowserView smView = (SemanticBrowserView) activePage.findView(SemanticBrowserView.SEMANTIC_BROWSER_ID);
-          if (null == smView) {
-            // Show it if not found.
-            smView = (SemanticBrowserView) activePage.showView(SemanticBrowserView.SEMANTIC_BROWSER_ID);
-          }
-          activePage.activate(smView);
-          smView.setInput(eObject);
-        }
-
-      };
-
-      // Ignore workbench part site, since in a dialog, site has no meaning.
-      selectInSemanticBrowserAction.shouldIgnoreWorkbenchPartSite(true);
-      action3.setText(Messages.selectInSemanticBrowser);
-      action3.setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor(IImageKeys.IMG_SHOW_IN_CAPELLA_EXPLORER));
-      selectInSemanticBrowserAction.selectionChanged(action3, selection);
-      if (action3.isEnabled()) {
-        contextMenuManager.add(action3);
-      }
-
-    }
-  }
 
   class CompoundCommand extends AbstractCompoundCommand {
     /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Tree;
 
 import org.polarsys.capella.common.ui.services.helper.AdapterManagerHelper;
+import org.polarsys.capella.common.ui.toolkit.dialogs.TransferTreeListDialog;
 import org.polarsys.capella.common.ui.toolkit.viewers.ITreeLabelAdapter;
 import org.polarsys.capella.common.ui.toolkit.viewers.IViewerStyle;
 import org.polarsys.capella.common.ui.toolkit.viewers.TreeAndListViewer;
@@ -127,8 +128,13 @@ public class TransferTreeListViewer extends AbstractTransferViewer2 {
    */
   @Override
   protected TreeViewer doLeftViewer(Composite composite) {
-    TreeAndListViewer treeViewer = new TreeAndListViewer(composite, (SWT.MULTI & getLeftViewerStyleBits()) != 0, IViewerStyle.SHOW_TREE_VIEW_MODE_BUTTON, _leftViewerExpandLevel);
-//    treeViewer.setAutoExpandLevel(_leftViewerExpandLevel);
+    TreeAndListViewer treeViewer = new TreeAndListViewer(composite, (SWT.MULTI & getLeftViewerStyleBits()) != 0, IViewerStyle.SHOW_TREE_VIEW_MODE_BUTTON, _leftViewerExpandLevel) {
+      @Override
+      public String getContextMenuLocation() {
+        return TransferTreeListDialog.TRANSFERT_TREELIST_DIALOG_LEFT;
+      }
+    };
+    // treeViewer.setAutoExpandLevel(_leftViewerExpandLevel);
     // Register a double click listener to behave as a '>' button click.
     TreeViewer clientViewer = treeViewer.getClientViewer();
     clientViewer.addDoubleClickListener(new IDoubleClickListener() {
@@ -150,8 +156,13 @@ public class TransferTreeListViewer extends AbstractTransferViewer2 {
    */
   @Override
   protected TreeViewer doRightViewer(Composite composite) {
-    TreeAndListViewer treeViewer = new TreeAndListViewer(composite, (SWT.MULTI & getRightViewerStyleBits()) != 0, IViewerStyle.SHOW_TREE_VIEW_MODE_BUTTON, _rightViewerExpandLevel);
-//    treeViewer.setAutoExpandLevel(_rightViewerExpandLevel);
+    TreeAndListViewer treeViewer = new TreeAndListViewer(composite, (SWT.MULTI & getRightViewerStyleBits()) != 0, IViewerStyle.SHOW_TREE_VIEW_MODE_BUTTON, _rightViewerExpandLevel) {
+      @Override
+      public String getContextMenuLocation() {
+        return TransferTreeListDialog.TRANSFERT_TREELIST_DIALOG_RIGHT;
+      }
+    };
+    // treeViewer.setAutoExpandLevel(_rightViewerExpandLevel);
     // Register a double click listener to behave as a '<' button click.
     TreeViewer clientViewer = treeViewer.getClientViewer();
     clientViewer.addDoubleClickListener(new IDoubleClickListener() {

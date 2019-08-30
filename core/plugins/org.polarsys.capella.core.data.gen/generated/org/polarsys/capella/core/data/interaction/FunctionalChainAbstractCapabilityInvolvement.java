@@ -49,6 +49,7 @@ public interface FunctionalChainAbstractCapabilityInvolvement extends Involvemen
 	 * @return the value of the '<em>Capability</em>' reference.
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getFunctionalChainAbstractCapabilityInvolvement_Capability()
 	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involver'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -73,6 +74,7 @@ public interface FunctionalChainAbstractCapabilityInvolvement extends Involvemen
 	 * @return the value of the '<em>Functional Chain</em>' reference.
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getFunctionalChainAbstractCapabilityInvolvement_FunctionalChain()
 	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involved'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */

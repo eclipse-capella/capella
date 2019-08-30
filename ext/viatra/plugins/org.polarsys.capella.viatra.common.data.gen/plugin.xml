@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+#
+#  Copyright (c) 2006, 2019 THALES DMS FRANCE.
+#  All rights reserved. This program and the accompanying materials
+#  are made available under the terms of the Eclipse Public License v1.0
+#  which accompanies this distribution, and is available at
+#  http://www.eclipse.org/legal/epl-v10.html
+# 
+#  Contributors:
+#     Thales - initial API and implementation
+--><plugin>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.common.data.activity.surrogate.AbstractActivity__ownedStructuredNodes" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="AbstractActivity" feature-name="ownedStructuredNodes" package-nsUri="http://www.polarsys.org/capella/common/activity/1.3.0" query-fqn="org.polarsys.capella.viatra.common.data.activity.surrogate.AbstractActivity__ownedStructuredNodes" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.common.data.activity.surrogate.util.AbstractActivity__ownedStructuredNodesQuerySpecification"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityEdge__inActivityPartition" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="ActivityEdge" feature-name="inActivityPartition" package-nsUri="http://www.polarsys.org/capella/common/activity/1.3.0" query-fqn="org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityEdge__inActivityPartition" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.common.data.activity.surrogate.util.ActivityEdge__inActivityPartitionQuerySpecification"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityEdge__inInterruptibleRegion" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="ActivityEdge" feature-name="inInterruptibleRegion" package-nsUri="http://www.polarsys.org/capella/common/activity/1.3.0" query-fqn="org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityEdge__inInterruptibleRegion" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.common.data.activity.surrogate.util.ActivityEdge__inInterruptibleRegionQuerySpecification"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityEdge__inStructuredNode" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="ActivityEdge" feature-name="inStructuredNode" package-nsUri="http://www.polarsys.org/capella/common/activity/1.3.0" query-fqn="org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityEdge__inStructuredNode" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.common.data.activity.surrogate.util.ActivityEdge__inStructuredNodeQuerySpecification"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityExchange__realizingActivityFlows" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="ActivityExchange" feature-name="realizingActivityFlows" package-nsUri="http://www.polarsys.org/capella/common/activity/1.3.0" query-fqn="org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityExchange__realizingActivityFlows" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.common.data.activity.surrogate.util.ActivityExchange__realizingActivityFlowsQuerySpecification"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityNode__inActivityPartition" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="ActivityNode" feature-name="inActivityPartition" package-nsUri="http://www.polarsys.org/capella/common/activity/1.3.0" query-fqn="org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityNode__inActivityPartition" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.common.data.activity.surrogate.util.ActivityNode__inActivityPartitionQuerySpecification"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityNode__inInterruptibleRegion" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="ActivityNode" feature-name="inInterruptibleRegion" package-nsUri="http://www.polarsys.org/capella/common/activity/1.3.0" query-fqn="org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityNode__inInterruptibleRegion" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.common.data.activity.surrogate.util.ActivityNode__inInterruptibleRegionQuerySpecification"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityNode__inStructuredNode" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="ActivityNode" feature-name="inStructuredNode" package-nsUri="http://www.polarsys.org/capella/common/activity/1.3.0" query-fqn="org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityNode__inStructuredNode" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.common.data.activity.surrogate.util.ActivityNode__inStructuredNodeQuerySpecification"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityNode__incoming" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="ActivityNode" feature-name="incoming" package-nsUri="http://www.polarsys.org/capella/common/activity/1.3.0" query-fqn="org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityNode__incoming" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.common.data.activity.surrogate.util.ActivityNode__incomingQuerySpecification"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityNode__outgoing" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="ActivityNode" feature-name="outgoing" package-nsUri="http://www.polarsys.org/capella/common/activity/1.3.0" query-fqn="org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityNode__outgoing" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.common.data.activity.surrogate.util.ActivityNode__outgoingQuerySpecification"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityPartition__subPartitions" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="ActivityPartition" feature-name="subPartitions" package-nsUri="http://www.polarsys.org/capella/common/activity/1.3.0" query-fqn="org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityPartition__subPartitions" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.common.data.activity.surrogate.util.ActivityPartition__subPartitionsQuerySpecification"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityPartition__superPartition" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="ActivityPartition" feature-name="superPartition" package-nsUri="http://www.polarsys.org/capella/common/activity/1.3.0" query-fqn="org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityPartition__superPartition" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.common.data.activity.surrogate.util.ActivityPartition__superPartitionQuerySpecification"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.common.data.core.surrogate.AbstractConstraint__context" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="AbstractConstraint" feature-name="context" package-nsUri="http://www.polarsys.org/capella/common/core/1.3.0" query-fqn="org.polarsys.capella.viatra.common.data.core.surrogate.AbstractConstraint__context" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.common.data.core.surrogate.util.AbstractConstraint__contextQuerySpecification"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.common.data.core.surrogate.AbstractType__abstractTypedElements" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="AbstractType" feature-name="abstractTypedElements" package-nsUri="http://www.polarsys.org/capella/common/core/1.3.0" query-fqn="org.polarsys.capella.viatra.common.data.core.surrogate.AbstractType__abstractTypedElements" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.common.data.core.surrogate.util.AbstractType__abstractTypedElementsQuerySpecification"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.common.data.core.surrogate.InformationsExchanger__incomingInformationFlows" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="InformationsExchanger" feature-name="incomingInformationFlows" package-nsUri="http://www.polarsys.org/capella/common/core/1.3.0" query-fqn="org.polarsys.capella.viatra.common.data.core.surrogate.InformationsExchanger__incomingInformationFlows" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.common.data.core.surrogate.util.InformationsExchanger__incomingInformationFlowsQuerySpecification"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.common.data.core.surrogate.InformationsExchanger__informationFlows" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="InformationsExchanger" feature-name="informationFlows" package-nsUri="http://www.polarsys.org/capella/common/core/1.3.0" query-fqn="org.polarsys.capella.viatra.common.data.core.surrogate.InformationsExchanger__informationFlows" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.common.data.core.surrogate.util.InformationsExchanger__informationFlowsQuerySpecification"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.common.data.core.surrogate.InformationsExchanger__outgoingInformationFlows" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="InformationsExchanger" feature-name="outgoingInformationFlows" package-nsUri="http://www.polarsys.org/capella/common/core/1.3.0" query-fqn="org.polarsys.capella.viatra.common.data.core.surrogate.InformationsExchanger__outgoingInformationFlows" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.common.data.core.surrogate.util.InformationsExchanger__outgoingInformationFlowsQuerySpecification"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.common.data.core.surrogate.ModelElement__constraints" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="ModelElement" feature-name="constraints" package-nsUri="http://www.polarsys.org/capella/common/core/1.3.0" query-fqn="org.polarsys.capella.viatra.common.data.core.surrogate.ModelElement__constraints" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.common.data.core.surrogate.util.ModelElement__constraintsQuerySpecification"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.common.data.core.surrogate.TraceableElement__incomingTraces" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="TraceableElement" feature-name="incomingTraces" package-nsUri="http://www.polarsys.org/capella/common/core/1.3.0" query-fqn="org.polarsys.capella.viatra.common.data.core.surrogate.TraceableElement__incomingTraces" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.common.data.core.surrogate.util.TraceableElement__incomingTracesQuerySpecification"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.common.data.core.surrogate.TraceableElement__outgoingTraces" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="TraceableElement" feature-name="outgoingTraces" package-nsUri="http://www.polarsys.org/capella/common/core/1.3.0" query-fqn="org.polarsys.capella.viatra.common.data.core.surrogate.TraceableElement__outgoingTraces" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.common.data.core.surrogate.util.TraceableElement__outgoingTracesQuerySpecification"/>
+  </extension>
+  <extension id="org.polarsys.capella.viatra.common.data.activity.surrogate.AbstractActivity" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.polarsys.capella.viatra.common.data.activity.surrogate.AbstractActivity" id="org.polarsys.capella.viatra.common.data.activity.surrogate.AbstractActivity">
+      <query-specification fqn="org.polarsys.capella.viatra.common.data.activity.surrogate.AbstractActivity__ownedStructuredNodes"/>
+    </group>
+  </extension>
+  <extension id="org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityEdge" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityEdge" id="org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityEdge">
+      <query-specification fqn="org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityEdge__inActivityPartition"/>
+      <query-specification fqn="org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityEdge__inInterruptibleRegion"/>
+      <query-specification fqn="org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityEdge__inStructuredNode"/>
+    </group>
+  </extension>
+  <extension id="org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityExchange" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityExchange" id="org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityExchange">
+      <query-specification fqn="org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityExchange__realizingActivityFlows"/>
+    </group>
+  </extension>
+  <extension id="org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityNode" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityNode" id="org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityNode">
+      <query-specification fqn="org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityNode__inActivityPartition"/>
+      <query-specification fqn="org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityNode__inInterruptibleRegion"/>
+      <query-specification fqn="org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityNode__inStructuredNode"/>
+      <query-specification fqn="org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityNode__outgoing"/>
+      <query-specification fqn="org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityNode__incoming"/>
+    </group>
+  </extension>
+  <extension id="org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityPartition" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityPartition" id="org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityPartition">
+      <query-specification fqn="org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityPartition__superPartition"/>
+      <query-specification fqn="org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityPartition__subPartitions"/>
+    </group>
+  </extension>
+  <extension id="org.polarsys.capella.viatra.common.data.core.surrogate.AbstractConstraint" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.polarsys.capella.viatra.common.data.core.surrogate.AbstractConstraint" id="org.polarsys.capella.viatra.common.data.core.surrogate.AbstractConstraint">
+      <query-specification fqn="org.polarsys.capella.viatra.common.data.core.surrogate.AbstractConstraint__context"/>
+    </group>
+  </extension>
+  <extension id="org.polarsys.capella.viatra.common.data.core.surrogate.AbstractType" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.polarsys.capella.viatra.common.data.core.surrogate.AbstractType" id="org.polarsys.capella.viatra.common.data.core.surrogate.AbstractType">
+      <query-specification fqn="org.polarsys.capella.viatra.common.data.core.surrogate.AbstractType__abstractTypedElements"/>
+    </group>
+  </extension>
+  <extension id="org.polarsys.capella.viatra.common.data.core.surrogate.InformationsExchanger" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.polarsys.capella.viatra.common.data.core.surrogate.InformationsExchanger" id="org.polarsys.capella.viatra.common.data.core.surrogate.InformationsExchanger">
+      <query-specification fqn="org.polarsys.capella.viatra.common.data.core.surrogate.InformationsExchanger__incomingInformationFlows"/>
+      <query-specification fqn="org.polarsys.capella.viatra.common.data.core.surrogate.InformationsExchanger__outgoingInformationFlows"/>
+      <query-specification fqn="org.polarsys.capella.viatra.common.data.core.surrogate.InformationsExchanger__informationFlows"/>
+    </group>
+  </extension>
+  <extension id="org.polarsys.capella.viatra.common.data.core.surrogate.ModelElement" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.polarsys.capella.viatra.common.data.core.surrogate.ModelElement" id="org.polarsys.capella.viatra.common.data.core.surrogate.ModelElement">
+      <query-specification fqn="org.polarsys.capella.viatra.common.data.core.surrogate.ModelElement__constraints"/>
+    </group>
+  </extension>
+  <extension id="org.polarsys.capella.viatra.common.data.core.surrogate.TraceableElement" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.polarsys.capella.viatra.common.data.core.surrogate.TraceableElement" id="org.polarsys.capella.viatra.common.data.core.surrogate.TraceableElement">
+      <query-specification fqn="org.polarsys.capella.viatra.common.data.core.surrogate.TraceableElement__incomingTraces"/>
+      <query-specification fqn="org.polarsys.capella.viatra.common.data.core.surrogate.TraceableElement__outgoingTraces"/>
+    </group>
+  </extension>
+</plugin>

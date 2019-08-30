@@ -52,6 +52,14 @@ The following figure illustrates the prompted dialog when deleting the System Ac
  
 [[Image:Images/6.2.%20Model%20preferences_html_597b3feb.png|877x595px]]
 
+== Diagrams ==
+ 
+On the sub section of '''Capella / Diagrams''', it is possible to specify preferences for displaying diagrams:
+
+* If &ldquo;'''Show 'Incomplete' in the chain/path/process's label'''&rdquo; is activated, then incomplete chain/path/process's labels are annotated with ''Incomplete''.
+* If &ldquo;'''Show 'Invalid' in the chain/path/process's label'''&rdquo; is activated, then invalid chain/path/process's labels are annotated with ''Invalid''.
+ 
+[[Image:Images/DiagramsPreference.PNG]]
 
 == Model ==
  

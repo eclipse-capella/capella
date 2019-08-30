@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.eclipse.core.resources.IMarker;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
@@ -27,6 +28,7 @@ import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
 import org.polarsys.capella.core.data.capellacommon.StateTransition;
 import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
 import org.polarsys.capella.core.data.capellacore.InvolvedElement;
@@ -47,6 +49,7 @@ import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
 import org.polarsys.capella.core.data.fa.ExchangeCategory;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
+import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.information.Association;
 import org.polarsys.capella.core.data.information.Collection;
@@ -79,6 +82,8 @@ import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.data.interaction.StateFragment;
 import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.model.handler.AbstractModelElementRunnable;
+import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
+import org.polarsys.capella.core.model.helpers.AbstractFunctionExt;
 
 /**
  * Provides services to navigation from a {@link ModelElement} to other {@link ModelElement} according to semantic
@@ -108,19 +113,29 @@ public class NavigationAdvisor {
    * @param element
    * @return a not <code>null</code> set, empty if nothing found. Returned set can't contain <code>null</code> value.
    */
-  public Set<EObject> getNavigableElements(EObject element) {
+  public Set<EObject> getNavigableElements(Object receiver) {
     HashSet<EObject> navigableElements = new HashSet<EObject>(0);
-    List<AbstractModelElementRunnable> navigationHandlers = getNavigationHandler(element);
-    if (!navigationHandlers.isEmpty()) {
-      for (AbstractModelElementRunnable modelElementRunnable : navigationHandlers) {
-        // Set to the navigation handler the current selection.
-        modelElementRunnable.setElement(element);
-        // Run it.
-        modelElementRunnable.run();
-        // Get the result.
-        navigableElements.addAll(modelElementRunnable.getResult());
+
+    if (receiver instanceof IMarker) {
+      navigableElements.addAll(MarkerViewHelper.getModelElementsFromMarker((IMarker) receiver));
+
+    } else {
+      EObject element = CapellaAdapterHelper.resolveSemanticObject(receiver, true);
+      if (element != null) {
+        List<AbstractModelElementRunnable> navigationHandlers = getNavigationHandler(element);
+        if (!navigationHandlers.isEmpty()) {
+          for (AbstractModelElementRunnable modelElementRunnable : navigationHandlers) {
+            // Set to the navigation handler the current selection.
+            modelElementRunnable.setElement(element);
+            // Run it.
+            modelElementRunnable.run();
+            // Get the result.
+            navigableElements.addAll(modelElementRunnable.getResult());
+          }
+        }
       }
     }
+
     // Trim potential null value added by navigation handlers.
     navigableElements.remove(null);
     return navigableElements;
@@ -175,7 +190,15 @@ public class NavigationAdvisor {
    * @return a list mapped to {@link AbstractFunction#getAllocationBlocks()} and realized functions.
    */
   List<EObject> handleAbstractFunctionNavigation(AbstractFunction function) {
-    return new ArrayList<EObject>(function.getAllocationBlocks());
+    List<EObject> allocationBlocks = new ArrayList<>();
+    
+    if (FunctionExt.isLeaf(function)) {
+      allocationBlocks.addAll(function.getAllocationBlocks());
+    } else {
+      allocationBlocks.addAll(AbstractFunctionExt.getMotherFunctionAllocation(function));
+    }
+    
+    return allocationBlocks;
   }
 
   /**

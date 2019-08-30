@@ -1,0 +1,294 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Element-Name: ExchangeItemScenario
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _7NrmAK8sEee2vO1UksePLw
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 7/18/18 4:53 PM
+Tags: Diagram_IS
+Testcase-Type: ecl
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+//Create a project
+
+get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
+with [get-window "New Capella Project"] {
+    get-editbox | set-text project
+    get-button Finish | click
+}
+
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "project/project.aird/project/System Analysis/Capabilities" 
+        | select "project/project.aird/project/System Analysis/Capabilities" 
+        | get-menu "Add Capella Element/Capability" | click
+    select "project/*project.aird/project/System Analysis/Capabilities/Capability 1" 
+        | get-menu "New Diagram \\/ Table.../Interface Scenario" | click
+}
+get-window "New Interface Scenario" | get-button OK | click
+with [get-editor "[IS] Capability 1"] {
+    with [get-diagram -index 1 | get-edit-part -name "[IS] Capability 1"] {
+        mouse-move 385 539 -height 663 -width 1042
+        mouse-move 1004 198 -height 663 -width 1042
+    }
+    with [get-palette] {
+        with [get-palette-entry Actor] {
+            mouse-move 38 9 button1 -height 23 -width 125
+            mouse-press 38 9 button1 -height 23 -width 125
+            mouse-release 38 9 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[IS] Capability 1"] {
+        mouse-move 440 51 button1 -height 663 -width 1042
+        mouse-press 440 51 button1 -height 663 -width 1042
+        mouse-release 440 51 button1 524288 -height 663 -width 1042
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[IS] Capability 1"] {
+        get-edit-part -name "Actor 1" | get-edit-part -className SquareEditPart | mouse-hover 0 0 -height 50 -width 100
+        mouse-move 1009 198 -height 663 -width 1042
+    }
+    with [get-palette | get-palette-entry "Sequence Message"] {
+        mouse-move 70 23 button1 -height 37 -width 125
+        mouse-press 70 23 button1 -height 37 -width 125
+        mouse-release 70 23 button1 524288 -height 37 -width 125
+    }
+    get-diagram -index 1 | get-edit-part -name "[IS] Capability 1" | mouse-move 1022 136 -height 663 -width 1042
+    with [get-palette | get-palette-entry "Sequence Message with Return Branch"] {
+        mouse-move 63 21 button1 -height 52 -width 125
+        mouse-press 63 21 button1 -height 52 -width 125
+        mouse-release 63 21 button1 524288 -height 52 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[IS] Capability 1"] {
+        mouse-move 117 161 -height 663 -width 1042
+        mouse-hover 117 161 -height 663 -width 1042
+        with [get-edit-part -name System | get-edit-part -name "" | get-edit-part -className SquareEditPart] {
+            mouse-move 4 57 button1 -height 395 -width 10
+            mouse-press 4 57 button1 -height 395 -width 10
+            mouse-release 4 57 button1 524288 -height 395 -width 10
+        }
+        mouse-move 484 157 -height 663 -width 1042
+        with [get-edit-part -name "Actor 1" | get-edit-part -name "" | get-edit-part -className SquareEditPart] {
+            mouse-move 4 60 button1 -height 400 -width 10
+            mouse-press 4 60 button1 -height 400 -width 10
+        }
+    }
+}
+with [get-window "Selection Dialog"] {
+    with [get-group "Create a new Exchange Item"] {
+        get-button "Create a new exchange item" | check
+        get-editbox -after [get-label "Exchange Item :"] | set-text exchangeItem1
+    }
+    get-button OK | click
+}
+with [get-editor "[IS] Capability 1" | get-diagram -index 1 | get-edit-part -name "[IS] Capability 1"] {
+    get-edit-part -name "Actor 1" | get-edit-part -name "" | get-edit-part -name "" -index 1 | get-target-connection 0 
+        | get-edit-part -className SequenceMessageNameEditPart | get-property "element.name" | equals "exchangeItem1()" 
+        | verify-true
+    get-edit-part -name System | get-edit-part -name "" | get-target-connection 0 | get-edit-part 
+        -className SequenceMessageNameEditPart | get-property "element.name" | equals "exchangeItem1()" | verify-true
+}
+
+// Create a Constraint under Capability 1 and name it Constraint1
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "project/*project.aird/project/System Analysis/Capabilities/Capability 1" 
+    | get-menu "Add Capella Element/Constraint" | click
+    
+with [get-view Properties | get-section Property | get-group -index 0 | get-editbox -after [get-label "Name :"]] {
+    set-text Constraint1
+    key-type Enter
+}
+
+with [get-editor "[IS] Capability 1"] {
+    with [get-diagram -index 1 | get-edit-part -name "[IS] Capability 1"] {
+        mouse-move 578 453 button1 -height 663 -width 1042
+        mouse-press 578 453 button1 -height 663 -width 1042
+        mouse-release 578 453 button1 524288 -height 663 -width 1042
+        mouse-hover 578 453 -height 663 -width 1042
+        mouse-move 1012 434 -height 663 -width 1042
+    }
+    with [get-palette] {
+        with [get-palette-entry "Constraints"] {
+            mouse-move 9 13 button1 -height 23 -width 240
+            mouse-press 9 13 button1 -height 23 -width 240
+            mouse-release 9 13 button1 524288 -height 23 -width 240
+            mouse-move 10 13 -height 71 -width 240
+        }
+        with [get-palette-entry "Constraints"] {
+            mouse-move 42 8 button1 -height 23 -width 240
+            mouse-press 42 8 button1 -height 23 -width 240
+            mouse-release 42 8 button1 524288 -height 23 -width 240
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[IS] Capability 1"] {
+        mouse-move 626 291 button1 -height 663 -width 1042
+        mouse-press 626 291 button1 -height 663 -width 1042
+        mouse-release 626 291 button1 524288 -height 663 -width 1042
+    }
+}
+with [get-window "Transfer Dialog"] {
+    get-group "Select a name to find" | get-editbox -after [get-label "? = any character, * = any string"] | set-focus
+    get-tree | select "project/project/System Analysis/Capabilities/Capability 1/Constraint1" 
+        | select "project/project/System Analysis/Capabilities/Capability 1/Constraint1" | double-click
+    get-button OK | click
+}
+
+
+// It shall be displayed
+get-editor "[IS] Capability 1" | get-diagram -index 1 | get-edit-part -name "[IS] Capability 1" | get-edit-part 
+    -name Constraint1 | get-edit-part -className SquareEditPart | get-figure "0/0" | get-property "getText()" 
+    | equals Constraint1 | verify-true
+    
+// On the Sequence Message, applied it as an ExchangeContext
+    
+with [get-editor "[IS] Capability 1" | get-diagram -index 1 | get-edit-part -name "[IS] Capability 1"] {
+    mouse-move 991 295 button1 -height 663 -width 1042
+    mouse-press 991 295 button1 -height 663 -width 1042
+    mouse-release 991 295 button1 524288 -height 663 -width 1042
+    mouse-move 427 197 -height 663 -width 1042
+    mouse-move 391 162 -height 663 -width 1042
+    with [get-edit-part -name "Actor 1" | get-edit-part -name "" | get-edit-part -name "" -index 1 
+        | get-target-connection 0] {
+        mouse-move 271 27 button1 -height 47 -width 386
+        mouse-press 271 27 button1 -height 47 -width 386
+        mouse-release 273 28 button1 524288 -height 49 -width 390
+    }
+    mouse-move 463 515 -height 663 -width 1042
+}
+get-view Properties | get-section Property | get-group -index 3 | get-button "Browse available elements" | click
+
+//A link shall be created between both
+get-window "Selection Dialog" | get-tree | select project 
+    | select "project/project/System Analysis/Capabilities/Capability 1/Constraint1" 
+    | select "project/project/System Analysis/Capabilities/Capability 1/Constraint1" | double-click
+
+
+with [get-editor "[IS] Capability 1" | get-diagram -index 1 | get-edit-part -name "[IS] Capability 1" | get-edit-part 
+    -name Constraint1 | get-target-connection 0] {
+    get-property "source.element.name" | equals "exchangeItem1()" | verify-true
+    get-property "target.element.name" | equals Constraint1 | verify-true
+}
+
+//With tool Insert/Remove ExchangeContext, remove it
+
+with [get-editor "[IS] Capability 1"] {
+    get-diagram -index 1 | get-edit-part -name "[IS] Capability 1"
+    with [get-palette] {
+        with [get-palette-entry "Exchange Context"] {
+            mouse-move 48 7 button1 -height 23 -width 240
+            mouse-press 48 7 button1 -height 23 -width 240
+            mouse-release 48 7 button1 524288 -height 23 -width 240
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[IS] Capability 1"] {
+        mouse-move 742 235 button1 -height 663 -width 1042
+        mouse-press 742 235 button1 -height 663 -width 1042
+        mouse-release 742 235 button1 524288 -height 663 -width 1042
+    }
+}
+with [get-window "Transfer Dialog"] {
+    get-group "Select a name to find" | get-editbox -after [get-label "? = any character, * = any string"] | set-focus
+    get-tree -index 1 | select "project/project/System Analysis/Capabilities/Capability 1/Constraint1" 
+        | select "project/project/System Analysis/Capabilities/Capability 1/Constraint1" | double-click
+    get-button OK | click
+}
+with [get-editor "[IS] Capability 1" | get-diagram -index 1 | get-edit-part -name "[IS] Capability 1"] {
+    mouse-move 862 475 button1 -height 663 -width 1042
+    mouse-press 862 475 button1 -height 663 -width 1042
+    mouse-release 862 475 button1 524288 -height 663 -width 1042
+    mouse-hover 862 475 -height 663 -width 1042
+    mouse-move 632 346 -height 663 -width 1042
+}
+
+
+get-menu "Window/Show View/Other..." | click
+get-window "Show View" | get-tree | select "Other/Interpreter" | select "Other/Interpreter" | double-click
+
+with [get-view Interpreter | get-section Expression | get-text-viewer] {
+    set-text "aql:self.nodes->select(n | n.name == 'Constraint1')"
+}
+wait 1000
+get-view Interpreter | get-label "Result of type Sequence and size 0" | get-property caption 
+    | equals "Result of type Sequence and size 0" | verify-true
+
+
+// With tool Insert/Remove ExchangeContext, reshow it 
+    
+with [get-editor "[IS] Capability 1"] {
+    get-diagram -index 1 | get-edit-part -name "[IS] Capability 1" | mouse-move 987 237 -height 663 -width 1042
+    with [get-palette | get-palette-entry "Exchange Context"] {
+        mouse-move 36 14 button1 -height 23 -width 240
+        mouse-press 36 14 button1 -height 23 -width 240
+        mouse-release 36 14 button1 524288 -height 23 -width 240
+        mouse-hover 36 14 -height 23 -width 240
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[IS] Capability 1"] {
+        mouse-move 840 274 button1 -height 663 -width 1042
+        mouse-press 840 274 button1 -height 663 -width 1042
+        mouse-release 840 274 button1 524288 -height 663 -width 1042
+    }
+}
+with [get-window "Transfer Dialog"] {
+    get-group "Select a name to find" | get-editbox -after [get-label "? = any character, * = any string"] | set-focus
+    get-tree | select "project/project/System Analysis/Capabilities/Capability 1/Constraint1" 
+        | select "project/project/System Analysis/Capabilities/Capability 1/Constraint1" | double-click
+    get-button OK | click
+}
+
+
+
+get-editor "[IS] Capability 1" | get-diagram -index 1 | get-edit-part -name "[IS] Capability 1" | get-edit-part 
+    -name Constraint1 | get-edit-part -className SquareEditPart | get-figure "0/0" | get-property "getText()" 
+    | equals Constraint1 | verify-true
+
+with [get-editor "[IS] Capability 1" | get-diagram -index 1 | get-edit-part -name "[IS] Capability 1" | get-edit-part 
+    -name Constraint1 | get-target-connection 0] {
+    get-property "source.element.name" | equals "exchangeItem1()" | verify-true
+    get-property "target.element.name" | equals Constraint1 | verify-true
+}
+
+// Display the filter, it shall display ei(context)
+
+with [get-editor "[IS] Capability 1"] {
+    with [get-diagram -index 1 | get-edit-part -name "[IS] Capability 1"] {
+        mouse-move 629 373 button1 -height 663 -width 1042
+        mouse-press 629 373 button1 -height 663 -width 1042
+        mouse-release 629 373 button1 524288 -height 663 -width 1042
+        mouse-hover 629 373 -height 663 -width 1042
+        mouse-move 621 391 button1 -height 663 -width 1042
+        mouse-press 621 391 button1 -height 663 -width 1042
+        mouse-release 621 391 button1 524288 -height 663 -width 1042
+        mouse-move 310 58 -height 663 -width 1042
+    }
+    get-button Filters | click -arrow
+}
+get-menu "Show EI {Exchange Context}" | click
+with [get-editor "[IS] Capability 1"] {
+    with [get-diagram -index 1 | get-edit-part -name "[IS] Capability 1"] {
+        with [get-edit-part -name System | get-edit-part -className SquareEditPart] {
+            mouse-move 148 1 -height 50 -width 150
+            mouse-hover 148 1 -height 50 -width 150
+        }
+        mouse-move 266 53 button1 -height 663 -width 1042
+        mouse-press 266 53 button1 -height 663 -width 1042
+        mouse-release 266 53 button1 524288 -height 663 -width 1042
+        mouse-move 262 50 -height 663 -width 1042
+    }
+    get-button "Refresh diagram" | click
+    with [get-diagram -index 1 | get-edit-part -name "[IS] Capability 1"] {
+        mouse-move 251 37 button1 -height 663 -width 1042
+        mouse-press 251 37 button1 -height 663 -width 1042
+        mouse-release 251 37 button1 524288 -height 663 -width 1042
+    }
+}
+
+get-editor "[IS] Capability 1" | get-diagram -index 1 | get-edit-part -name "[IS] Capability 1" | get-edit-part 
+    -name "Actor 1" | get-edit-part -name "" | get-edit-part -name "" -index 1 | get-target-connection 0 
+    | get-edit-part -className SequenceMessageNameEditPart | get-property "getLabelText()" 
+    | equals "exchangeItem1() {Constraint1}" | verify-true
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

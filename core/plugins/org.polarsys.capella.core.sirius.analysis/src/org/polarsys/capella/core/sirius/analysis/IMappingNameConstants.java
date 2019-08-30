@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,7 +48,7 @@ public interface IMappingNameConstants {
   String HIDE_REGION_NAMES = "HideRegionNames";//$NON-NLS-1$
   String DISPLAY_REGION_NAME_ON_ENTRY_EXIT_POINTS = "DisplayRegionNameOnEntryExitPoints";//$NON-NLS-1$
   String SHOW_TRIGGER_SOURCE_FUNCTION = "ShowTriggerFESource";//$NON-NLS-1$
-  
+
   /**
    * Entity Architecture
    */
@@ -237,7 +237,7 @@ public interface IMappingNameConstants {
   String SAB_PHYSICAL_PATH_INTERNAL_LINK_MAPPING_NAME = "SAB_InternPhysicalPathLink"; //$NON-NLS-1$
   String SAB_PHYSICAL_PATH_END = "SAB_PhysicalPathEnd"; //$NON-NLS-1$
   String SAB_PHYSICAL_CATEGORY_MAPPING_NAME = "SAB_PhysicalCategory"; //$NON-NLS-1$
-  String COC_ENTITY_MAPPING_NAME = "COC2_Entities"; //$NON-NLS-1$  
+  String COC_ENTITY_MAPPING_NAME = "COC2_Entities"; //$NON-NLS-1$
 
   String SAB_PHYSICAL_CATEGORY_PIN_MAPPING_NAME = "SAB_PhysicalCategory_Pin"; //$NON-NLS-1$
 
@@ -308,7 +308,7 @@ public interface IMappingNameConstants {
   String PAB_PHYSICAL_PATH_END = "PAB_PhysicalPathEnd"; //$NON-NLS-1$
   String PAB_COMPONENT_PORT_MAPPING_NAME = "PAB_Port"; //$NON-NLS-1$
   String PAB_PHYSICAL_PORT_MAPPING_NAME = PAB_COMPONENT_PORT_MAPPING_NAME;
-  String PAB_CONNECTION_MAPPING_NAME = "PAB_Exchange"; //$NON-NLS-1$ 
+  String PAB_CONNECTION_MAPPING_NAME = "PAB_Exchange"; //$NON-NLS-1$
   String PAB_EXCHANGE_CATEGORY_INPUTPORT_MAPPING_NAME = "PAB InputPin by Categorie"; //$NON-NLS-1$
   String PAB_EXCHANGE_CATEGORY_OUTPUTPORT_MAPPING_NAME = "PAB OutputPin by Categorie"; //$NON-NLS-1$
   String PAB_EXCHANGE_CATEGORY_MAPPING_NAME = "PAB_FunctionExchange by Categorie"; //$NON-NLS-1$
@@ -466,16 +466,18 @@ public interface IMappingNameConstants {
   String HIDE_PHYSICAL_LINKS_NAMES = "Hide Physical Links names";//$NON-NLS-1$
   String HIDE_INTERACTIONS_NAMES = "Hide Interactions names";//$NON-NLS-1$
   String HIDE_COMMUNICATION_MEANS_NAMES = "Hide Communication Means names";//$NON-NLS-1$
-  Object SHOW_FUNCTIONAL_EXCHANGES_ECHANGE_ITEMS = "Show Functional Exchanges [ExchangeItems]"; //$NON-NLS-1$
-  Object SHOW_COMPONENT_EXCHANGES_ECHANGE_ITEMS = "Show Component Exchanges [ExchangeItems]"; //$NON-NLS-1$
-  Object HIDE_CE_BY_DELEGATION = "Hide Simplified Diagram Based Component Exchanges"; //$NON-NLS-1$
-  Object HIDE_CE_BY_GROUP = "Hide Simplified Group of Component Exchanges"; //$NON-NLS-1$
-  Object HIDE_CE_BY_GROUP_ORIENTED = "Hide Simplified Oriented Grouped Component Exchanges"; //$NON-NLS-1$
+  String SHOW_FUNCTIONAL_EXCHANGES_ECHANGE_ITEMS = "Show Functional Exchanges [ExchangeItems]"; //$NON-NLS-1$
+  String SHOW_COMPONENT_EXCHANGES_ECHANGE_ITEMS = "Show Component Exchanges [ExchangeItems]"; //$NON-NLS-1$
+  String HIDE_CE_BY_DELEGATION = "Hide Simplified Diagram Based Component Exchanges"; //$NON-NLS-1$
+  String HIDE_CE_BY_GROUP = "Hide Simplified Group of Component Exchanges"; //$NON-NLS-1$
+  String HIDE_CE_BY_GROUP_ORIENTED = "Hide Simplified Oriented Grouped Component Exchanges"; //$NON-NLS-1$
 
-  Object SHOW_FUNCTIONAL_EXCHANGES_PARAMS = "Show Functional Exchanges (Parameters)"; //$NON-NLS-1$
-  Object SHOW_FUNCTIONAL_EXCHANGES_ECHANGE_ITEMS_PARAMS = "Show Functional Exchanges [ExchangeItems(Parameters)]"; //$NON-NLS-1$
+  String SHOW_FUNCTIONAL_EXCHANGES_PARAMS = "Show Functional Exchanges (Parameters)"; //$NON-NLS-1$
+  String SHOW_FUNCTIONAL_EXCHANGES_ECHANGE_ITEMS_PARAMS = "Show Functional Exchanges [ExchangeItems(Parameters)]"; //$NON-NLS-1$
   String CDB_SHOW_FULL_PATH = "Show Full Path";//$NON-NLS-1$
   String SHOW_CONTEXTUAL_ELEMENTS = "Show Contextual Elements";//$NON-NLS-1$
+  
+  String MERGE_ASSOCIATED_FE_AND_SL = "Merge associated Functional Exchange Involvements and Sequence Links without Control Node"; //$NON-NLS-1$
 
   // EPBS Architecture
   String EAB_CI = "CI container mapping"; //$NON-NLS-1$
@@ -504,9 +506,13 @@ public interface IMappingNameConstants {
   String SHOW_COMPONENT_EXCHANGES_EXCHANGE_ITEMS_PARAMS = "CEEIParam"; //$NON-NLS-1$
 
   // FunctionalChainDescription
+  String FCD_DIAGRAM = "Functional Chain Description"; //$NON-NLS-1$
   String FCD_FUNCTION__MAPPING_NAME = "FC_AbstractFunction"; //$NON-NLS-1$
   String FCD_FUNCTIONAL_CHAIN__MAPPING_NAME = "FC_FunctionalChain"; //$NON-NLS-1$
   String FCD_FUNCTIONAL_EXCHANGE__MAPPING_NAME = "FC_Exchange"; //$NON-NLS-1$
+  String FCD_CONTROL_NODE__MAPPING_NAME = "FC_ControlNode"; //$NON-NLS-1$
+  String FCD_SEQUENCE_LINK__MAPPING_NAME = "FC_SequenceLink"; //$NON-NLS-1$
+  String FCD_ASSOCIATION_LINK__MAPPING_NAME = "FC_SequenceLink_InvolvementLink"; //$NON-NLS-1$
 
   // PhysicalPathDescription
   String PPD_PHYSICAL_LINK__MAPPING_NAME = "PPD_PhysicalLink"; //$NON-NLS-1$
@@ -526,4 +532,10 @@ public interface IMappingNameConstants {
   String SHOW_CE_EXCHANGE_CONTEXT = "ShowCEExchangeContext"; //$NON-NLS-1$
   String SHOW_FE_EXCHANGE_CONTEXT = "ShowFEExchangeContext"; //$NON-NLS-1$
   String SHOW_EI_EXCHANGE_CONTEXT = "ShowEIExchangeContext"; //$NON-NLS-1$
+
+  // Contextual Capability Realization Involvement Diagram
+  String CCRI_ACTOR = "CCRI Actor";
+  String CCRI_COMPONENT = "CCRI Component";
+  String CCRI_CAPABILITY_REALIZATION = "CCRI CapabilityRealization";
+  String CCRI_CAPABILITY_REALIZATION_INVOLVEMENT = "CCRI involvement";
 }

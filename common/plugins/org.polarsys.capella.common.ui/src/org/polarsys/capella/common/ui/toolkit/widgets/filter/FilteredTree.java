@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -52,6 +52,7 @@ import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.ui.IImageKeys;
 import org.polarsys.capella.common.ui.MdeCommonUiActivator;
 import org.polarsys.capella.common.ui.services.swt.events.AbstractKeyAdapter;
+import org.polarsys.capella.common.ui.toolkit.viewers.ExpandableTreeViewer;
 
 /**
  * Copied from org.eclipse.ui.dialogs due to {@link PatternFilter} methods visibility.<br>
@@ -60,11 +61,12 @@ import org.polarsys.capella.common.ui.services.swt.events.AbstractKeyAdapter;
  * @since 3.2
  */
 public class FilteredTree extends Composite {
+  
   /**
    * Custom tree viewer subclass that clears the caches in patternFilter on any change to the tree. See bug 187200.
    * @since 3.3
    */
-  class NotifyingTreeViewer extends TreeViewer {
+  class NotifyingTreeViewer extends ExpandableTreeViewer {
     /**
      * Constructor.
      * @param parent
@@ -400,10 +402,8 @@ public class FilteredTree extends Composite {
         Display display = filterText.getDisplay();
         display.asyncExec(new Runnable() {
           public void run() {
-            if (!filterText.isDisposed()) {
-              if (getInitialText().equals(filterText.getText().trim())) {
-                filterText.selectAll();
-              }
+            if (!filterText.isDisposed() && getInitialText().equals(filterText.getText().trim())) {
+              filterText.selectAll();
             }
           }
         });
@@ -754,6 +754,7 @@ public class FilteredTree extends Composite {
   protected void init(int treeStyle, PatternFilter filter) {
     patternFilter = filter;
     showFilterControls = PlatformUI.getPreferenceStore().getBoolean(IWorkbenchPreferenceConstants.SHOW_FILTERED_TEXTS);
+    narrowingDown = true;
     createControl(parent, treeStyle);
     createRefreshJob();
     setInitialText(WorkbenchMessages.FilteredTree_FilterMessage);
@@ -817,7 +818,6 @@ public class FilteredTree extends Composite {
   public void setInitialText(String text) {
     initialText = text;
     setFilterText(initialText);
-    textChanged();
   }
 
   /**
@@ -865,7 +865,7 @@ public class FilteredTree extends Composite {
       boolean initial = (initialText != null) && initialText.equals(filterText);
       if (initial) {
         filter.setPattern(null);
-      } else if (filterText != null) {
+      } else {
         filter.setPattern(filterText);
       }
 

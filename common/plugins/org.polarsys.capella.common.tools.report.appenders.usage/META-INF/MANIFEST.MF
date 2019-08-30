@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.common.tools.report.appenders.usage;singleton:=true
-Bundle-Version: 1.2.2.qualifier
+Bundle-Version: 1.3.1.qualifier
 Bundle-Activator: org.polarsys.capella.common.tools.report.appenders.usage.UsageAppenderPlugin
 Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.common.tools.report;visibility:=reexport,
@@ -12,5 +12,5 @@ Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.tools.report.appenders.usage,
  org.polarsys.capella.common.tools.report.appenders.usage.preferences,
  org.polarsys.capella.common.tools.report.appenders.usage.util
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin

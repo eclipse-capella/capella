@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis.queries.interactionServices;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,12 +30,12 @@ import org.polarsys.capella.common.queries.queryContext.QueryContext;
 public class GetISScopeInsertActors extends AbstractQuery {
 
   @Override
-  public List<Object> execute(Object input_p, IQueryContext context_p) throws QueryException {
-    BlockArchitecture architecture = (BlockArchitecture) input_p;
-    List<Part> parts = new ArrayList<Part>();
+  public List<Object> execute(Object input, IQueryContext context) throws QueryException {
+    BlockArchitecture architecture = (BlockArchitecture) input;
+    List<Part> parts = new ArrayList<>();
     List<AbstractActor> actors = QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_SUB_DEFINED_ACTORS, architecture, new QueryContext());
     for (AbstractActor actor : actors) {
-      parts.addAll(ComponentExt.getRepresentingParts(actor));
+      parts.addAll(getCache(ComponentExt::getRepresentingParts, actor));
     }
     return (List) ListExt.removeDuplicates((List) parts);
   }

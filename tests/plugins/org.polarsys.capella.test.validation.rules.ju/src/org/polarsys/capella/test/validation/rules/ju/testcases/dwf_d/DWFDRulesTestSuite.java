@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -82,11 +82,12 @@ public class DWFDRulesTestSuite extends BasicTestSuite {
     tests.add(new Rule_DWF_D_52());
     tests.add(new Rule_DWF_D_53());
     tests.add(new Rule_DWF_D_54());
+    tests.add(new Rule_DWF_D_56());
     return tests;
   }
 
   @Override
-  public List<String> getRequiredTestModels() {   
-    return Arrays.asList(new String [] {"RulesOnDesignTest"});  //$NON-NLS-1$
+  public List<String> getRequiredTestModels() {
+    return Arrays.asList(new String[] { "RulesOnDesignTest" }); //$NON-NLS-1$
   }
 }

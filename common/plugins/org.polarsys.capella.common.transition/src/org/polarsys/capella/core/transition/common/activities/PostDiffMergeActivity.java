@@ -56,7 +56,7 @@ public class PostDiffMergeActivity extends AbstractActivity implements ITranspos
 
     // Delete content of the root transformation element
     Object root = context.get(ITransitionConstants.TRANSFORMATION_TARGET_ROOT);
-    if ((root != null) && (root instanceof EObject)) {
+    if (root instanceof EObject) {
       EObject rootObject = (EObject) root;
       if (rootObject.eContainer() == null) {
         ArrayList<EObject> toDelete = new ArrayList<EObject>();

@@ -31,9 +31,8 @@ import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
  * @see org.polarsys.capella.core.data.capellacore.CapellacoreFactory
  * @model kind="package"
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping profileName='Capella'"
- *        annotation="http://www.polarsys.org/kitalpha/dsl/2007/dslfactory trackResourceModification='true' useUUIDs='false' useIDAttributes='true' extensibleProviderFactory='true' childCreationExtenders='true'"
- *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='CapellaCore aims at defining the core concepts of the other languages.\r\n[source: Capella study]' usage\040guideline='none' used\040in\040levels='operational,system,logical,physical,epbs' usage\040examples='none' constraints='This package depends on the model ModellingCore.ecore' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/extension trackResourceModification='true' useUUIDs='false' useIDAttributes='true' extensibleProviderFactory='true' childCreationExtenders='true'"
+ *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='CapellaCore aims at defining the core concepts of the other languages.\r\n[source: Capella study]' usage\040guideline='none' used\040in\040levels='operational,system,logical,physical,epbs' usage\040examples='none' constraints='This package depends on the model ModellingCore.ecore' comment/notes='none' reference\040documentation='none'"
  * @generated
  */
 public interface CapellacorePackage extends EPackage {
@@ -51,7 +50,7 @@ public interface CapellacorePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.polarsys.org/capella/core/core/1.2.0"; //$NON-NLS-1$
+	String eNS_URI = "http://www.polarsys.org/capella/core/core/1.3.0"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.

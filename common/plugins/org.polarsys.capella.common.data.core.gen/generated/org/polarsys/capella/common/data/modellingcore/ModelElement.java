@@ -137,6 +137,7 @@ public interface ModelElement extends ExtensibleElement {
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of constraints applying to this element of the model\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::Constraint::constrainedElement' constraints='Order must be computed'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='constrainedElements'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 * @generated
 	 */

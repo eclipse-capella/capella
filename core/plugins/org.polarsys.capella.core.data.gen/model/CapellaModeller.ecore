@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="capellamodeller" nsURI="http://www.polarsys.org/capella/core/modeller/1.2.0"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="capellamodeller" nsURI="http://www.polarsys.org/capella/core/modeller/1.3.0"
     nsPrefix="org.polarsys.capella.core.data.capellamodeller">
   <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
     <details key="profileName" value="Capella"/>
   </eAnnotations>
-  <eAnnotations source="http://www.polarsys.org/kitalpha/dsl/2007/dslfactory">
+  <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/extension">
     <details key="trackResourceModification" value="true"/>
     <details key="useUUIDs" value="false"/>
     <details key="useIDAttributes" value="true"/>
@@ -21,12 +21,6 @@
     <details key="reference documentation" value="n/a"/>
   </eAnnotations>
   <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-  <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/extension">
-    <details key="trackResourceModification" value="true"/>
-    <details key="useUUIDs" value="false"/>
-    <details key="useIDAttributes" value="true"/>
-    <details key="extensibleProviderFactory" value="true"/>
-  </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="Project" eSuperTypes="CapellaCore.ecore#//Structure">
     <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
       <details key="metaclass" value="Model"/>
@@ -207,7 +201,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="containedOperationalAnalysis"
         upperBound="-1" eType="ecore:EClass OperationalAnalysis.ecore#//OperationalAnalysis"
         changeable="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="ownedArchitectures"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="feature" value="ownedArchitectures"/>
       </eAnnotations>
@@ -220,7 +217,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="containedSystemAnalysis"
         upperBound="-1" eType="ecore:EClass ContextArchitecture.ecore#//SystemAnalysis"
         changeable="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="ownedArchitectures"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="feature" value="ownedArchitectures"/>
       </eAnnotations>
@@ -233,7 +233,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="containedLogicalArchitectures"
         upperBound="-1" eType="ecore:EClass LogicalArchitecture.ecore#//LogicalArchitecture"
         changeable="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="ownedArchitectures"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="feature" value="ownedArchitectures"/>
       </eAnnotations>
@@ -246,7 +249,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="containedPhysicalArchitectures"
         upperBound="-1" eType="ecore:EClass PhysicalArchitecture.ecore#//PhysicalArchitecture"
         changeable="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="ownedArchitectures"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="feature" value="ownedArchitectures"/>
       </eAnnotations>
@@ -259,7 +265,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="containedEPBSArchitectures"
         upperBound="-1" eType="ecore:EClass EPBSArchitecture.ecore#//EPBSArchitecture"
         changeable="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="ownedArchitectures"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="feature" value="ownedArchitectures"/>
       </eAnnotations>
@@ -272,7 +281,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="containedSharedPkgs" upperBound="-1"
         eType="ecore:EClass SharedModel.ecore#//SharedPkg" changeable="false" volatile="true"
         transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="feature" value="ownedArchitectures"/>
       </eAnnotations>
@@ -280,6 +288,10 @@
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
         <details key="explanation" value="Derived and transient"/>
         <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="unimplemented"/>
+        <details key="viatra.expression" value="ownedArchitectures as SharedPkg, but SharedPkg is not a subclass of ModellingArchitecture !"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

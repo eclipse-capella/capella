@@ -7,15 +7,16 @@ Git is a Version Control System (VCS) for tracking changes in computer files and
 === Installation from update sites ===
 
 #Install the correct version of Capella.
+#* Find different compatibilities/dependencies for a specific version of Capella : https://wiki.polarsys.org/Capella/Roadmap
 #Download the correct version of EGit.
-#* For Capella 1.1 based on Mars.2 use the following link (EGit 4.2.0:<br> http://www.eclipse.org/downloads/download.php?file=/egit/updates-4.2/org.eclipse.egit.repository-4.2.0.201601211800-r.zip
+#*https://www.eclipse.org/egit/download/
 #Install EGit:
 #* In Capella, select Window > Preferences > Install/Update > Available Software Sites > Add… > Archive… and select the downloaded ZIP file.
 #* Select "Eclipse Git Team Provider" and "JGit", click Next.
 #* After a few seconds, a warning page shows up: click Next, "I accept", "Finish" then "Yes".
 #* If you click the "+" button in the top right-hand corner near the "Capella" perspective button, you should now see a "Git" perspective available.
 #Download the correct version of EMF Diff/Merge.
-#* For Capella 1.1 use the following link (EMF-DiffMerge-0.7.0):<br>  http://www.eclipse.org/downloads/download.php?file=/diffmerge/releases/0.7.0/EMF-DiffMerge-0.7.0.v20161020-1434-Site-Incubation.zip
+#*  http://download.eclipse.org/diffmerge    (EMF-DiffMerge-x.y.z)
 #Install EMF Diff/Merge:
 #* In Capella, select Window > Preferences > Install/Update > Available Software Sites > Add… > Archive… and select the downloaded ZIP file.
 #* Select "EMF Diff/Merge EGit Integration Feature (Incubation)", click Next.
@@ -24,10 +25,10 @@ Git is a Version Control System (VCS) for tracking changes in computer files and
 == Tutorials ==
 
 These tutorials assume that you are familiar with Git and you knwo how it works.<br>
-If you're new to Git or distributed version control systems generally, then you might want to read [http://127.0.0.1:54666/help/topic/org.eclipse.egit.doc/help/EGit/Git_For_Eclipse_Users/Git-For-Eclipse-Users.html Git for Eclipse Users] first.<br>
+If you're new to Git or distributed version control systems generally, then you might want to read [[../help/topic/org.eclipse.egit.doc/help/EGit/Git_For_Eclipse_Users/Git-For-Eclipse-Users.html| Git for Eclipse Users]] first.<br>
 More background and details can be found in the on-line book [https://git-scm.com/book/en/v2 Pro Git].
 
-Capella Git Adapter is based on EMF Diff/Merge, help and details about it can be found in [http://127.0.0.1:53149/help/topic/org.eclipse.emf.diffmerge.doc/html/EMF-DiffMerge.html EMF Diff/Merge Guide].
+Capella Git Adapter is based on EMF Diff/Merge, help and details about it can be found in [[../help/topic/org.eclipse.emf.diffmerge.doc/html/EMF-DiffMerge.html| EMF Diff/Merge Guide]].
 
 {| border="1"
 |-

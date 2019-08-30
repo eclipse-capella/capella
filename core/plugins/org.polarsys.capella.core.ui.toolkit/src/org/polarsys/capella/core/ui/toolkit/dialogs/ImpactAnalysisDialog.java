@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,21 +29,23 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
-
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.ui.toolkit.dialogs.AbstractMessageDialogWithViewer;
 import org.polarsys.capella.common.ui.toolkit.viewers.AbstractContextMenuFiller;
 import org.polarsys.capella.common.ui.toolkit.viewers.IViewerStyle;
 import org.polarsys.capella.common.ui.toolkit.viewers.TreeAndListViewer;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.DataContentProvider;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.core.ui.toolkit.viewers.CapellaElementLabelProvider;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.core.ui.toolkit.viewers.CapellaElementLabelProvider;
 
 /**
  * Impact Analysis Tool dialog.
  */
 public class ImpactAnalysisDialog extends AbstractMessageDialogWithViewer {
+  
+  public static final String IMPACT_ANALYSIS_DIALOG = "org.polarsys.capella.core.ui.toolkit.dialogs.impactAnalysis";
+  
   /**
    * Impact analysis label provider.
    */
@@ -213,6 +215,11 @@ public class ImpactAnalysisDialog extends AbstractMessageDialogWithViewer {
         createResourceCheckButton(parent__p);
       }
 
+      @Override
+      public String getContextMenuLocation() {
+        return IMPACT_ANALYSIS_DIALOG;
+      }
+      
       /**
        * Create a check button to display (or not) the resource.
        * @param parent_p

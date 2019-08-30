@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,39 +11,57 @@
 package org.polarsys.capella.test.diagram.tools.ju.xdfb;
 
 import org.eclipse.sirius.business.api.session.Session;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.Type;
+import org.polarsys.capella.test.diagram.common.ju.availableXDFBDiagramTools.XDFBCreateContainerTools;
+import org.polarsys.capella.test.diagram.common.ju.availableXDFBDiagramTools.XDFBInsertRemoveTools;
 import org.polarsys.capella.test.diagram.common.ju.context.XDFBDiagram;
-import org.polarsys.capella.test.diagram.tools.ju.model.EmptyProject;
+import org.polarsys.capella.test.diagram.tools.ju.model.XDFBToolsTestingModel;
 import org.polarsys.capella.test.framework.context.SessionContext;
-import org.polarsys.capella.test.framework.model.GenericModel;
 
-import junit.framework.Test;
+public class XDFBShowHideFunctions extends XDFBToolsTestingModel {
 
-public class XDFBShowHideFunctions extends EmptyProject {
+  @Override
+  public void test() throws Exception {
+    Session session = getSession(getRequiredTestModel());
+    SessionContext context = new SessionContext(session);
 
-	@Override
-	public void test() throws Exception {
-		Session session = getSession(getRequiredTestModel());
-		SessionContext context = new SessionContext(session);
+    testOnXDFBDiagram(context, OA__ROOT_OA_DATA_FLOW_DIAGRAM_NAME, Type.OA);
+    testOnXDFBDiagram(context, SA__ROOT_SF_DATA_FLOW_DIAGRAM_NAME, Type.SA);
+    testOnXDFBDiagram(context, LA__ROOT_LF_DATA_FLOW_DIAGRAM_NAME, Type.LA);
+    testOnXDFBDiagram(context, PA__ROOT_PF_DATA_FLOW_DIAGRAM_NAME, Type.PA);
+  }
 
-		testOnXDFBDiagram(context, SA__ROOT_SF);
-		testOnXDFBDiagram(context, LA__ROOT_LF);
-	    testOnXDFBDiagram(context, PA__ROOT_PF);
-	}
-	
-	protected void testOnXDFBDiagram(SessionContext context, String idSource) {
-		XDFBDiagram xdfb = XDFBDiagram.createDiagram(context, idSource);
+  protected void testOnXDFBDiagram(SessionContext context, String diagramName, Type diagramType) {
 
-		xdfb.createFunction(GenericModel.FUNCTION_1);
-		xdfb.createActorFunction(GenericModel.FUNCTION_2);
-		
-		xdfb.removeFunction(xdfb.getDiagramId(), GenericModel.FUNCTION_1);
-		xdfb.removeFunction(xdfb.getDiagramId(), GenericModel.FUNCTION_2);
-		
-		xdfb.insertFunction(xdfb.getDiagramId(), GenericModel.FUNCTION_1);
-		xdfb.insertFunction(xdfb.getDiagramId(), GenericModel.FUNCTION_2);
-	}
-	
-	public static Test suite() {
-		return new XDFBShowHideFunctions();
-	}
+    XDFBDiagram xdfb = XDFBDiagram.openDiagram(context, diagramName, diagramType);
+    String diagramId = xdfb.getDiagramId();
+
+    String function1Id = xdfb.createContainer(diagramId, XDFBCreateContainerTools.CREATE_FUNCTION);
+    String function2Id = xdfb.createContainer(diagramId, XDFBCreateContainerTools.CREATE_FUNCTION);
+
+    hideAndShow(xdfb, function1Id, function2Id);
+
+    if (diagramType != Type.OA) {
+
+      String actorFunction1Id = xdfb.createContainer(diagramId, XDFBCreateContainerTools.CREATE_ACTOR_FUNCTION);
+      String actorFunction2Id = xdfb.createContainer(diagramId, XDFBCreateContainerTools.CREATE_ACTOR_FUNCTION);
+
+      hideAndShow(xdfb, actorFunction1Id, actorFunction2Id);
+    }
+  }
+
+  private void hideAndShow(XDFBDiagram xdfb, String... functions) {
+
+    String diagramId = xdfb.getDiagramId();
+
+    // Hide Both and Show One by One
+    xdfb.hideElements(diagramId, XDFBInsertRemoveTools.INSERT_REMOVE_FUNCTIONS, functions);
+    xdfb.showElements(diagramId, XDFBInsertRemoveTools.INSERT_REMOVE_FUNCTIONS, functions[0]);
+    xdfb.showElements(diagramId, XDFBInsertRemoveTools.INSERT_REMOVE_FUNCTIONS, functions[1]);
+
+    // Hide One by One and Show Both
+    xdfb.hideElements(diagramId, XDFBInsertRemoveTools.INSERT_REMOVE_FUNCTIONS, functions[0]);
+    xdfb.hideElements(diagramId, XDFBInsertRemoveTools.INSERT_REMOVE_FUNCTIONS, functions[1]);
+    xdfb.showElements(diagramId, XDFBInsertRemoveTools.INSERT_REMOVE_FUNCTIONS, functions);
+  }
 }

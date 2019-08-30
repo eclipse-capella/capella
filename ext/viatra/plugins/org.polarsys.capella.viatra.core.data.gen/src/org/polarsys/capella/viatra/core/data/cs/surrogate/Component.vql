@@ -1,0 +1,91 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2019 THALES DMS FRANCE.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+
+/* Generated file */
+
+package org.polarsys.capella.viatra.core.data.cs.surrogate
+
+import "http://www.polarsys.org/capella/core/cs/1.3.0"
+
+// Start of user code for imports 
+import "http://www.polarsys.org/capella/common/core/1.3.0"
+import "http://www.polarsys.org/capella/core/information/1.3.0"
+import "http://www.polarsys.org/capella/core/core/1.3.0"
+import "http://www.polarsys.org/capella/core/fa/1.3.0"
+
+// End of user code
+
+@Surrogate(feature="usedInterfaceLinks")
+pattern Component__usedInterfaceLinks(self : Component, target : InterfaceUse) {
+	Component.ownedInterfaceUses(self, target);
+}
+
+@Surrogate(feature="usedInterfaces")
+pattern Component__usedInterfaces(self : Component, target : Interface) {
+	Component.usedInterfaceLinks.usedInterface(self, target);
+}
+
+@Surrogate(feature="implementedInterfaceLinks")
+pattern Component__implementedInterfaceLinks(self : Component, target : InterfaceImplementation) {
+	Component.ownedInterfaceImplementations(self, target);
+}
+
+@Surrogate(feature="implementedInterfaces")
+pattern Component__implementedInterfaces(self : Component, target : Interface) {
+	Component.implementedInterfaceLinks.implementedInterface(self, target);
+}
+
+@Surrogate(feature="provisionedComponentAllocations")
+pattern Component__provisionedComponentAllocations(self : Component, target : ComponentAllocation) {
+	Component.outgoingTraces(self, target);
+}
+
+@Surrogate(feature="provisioningComponentAllocations")
+pattern Component__provisioningComponentAllocations(self : Component, target : ComponentAllocation) {
+	Component.incomingTraces(self, target);
+}
+
+@Surrogate(feature="allocatedComponents")
+pattern Component__allocatedComponents(self : Component, target : Component) {
+	Component.provisionedComponentAllocations.allocatedComponent(self, target);
+}
+
+@Surrogate(feature="allocatingComponents")
+pattern Component__allocatingComponents(self : Component, target : Component) {
+	Component.provisioningComponentAllocations.allocatingComponent(self, target);
+}
+
+@Surrogate(feature="providedInterfaces")
+pattern Component__providedInterfaces(self : Component, target : Interface) {
+	Component.containedComponentPorts.providedInterfaces(self, target);
+}
+
+@Surrogate(feature="requiredInterfaces")
+pattern Component__requiredInterfaces(self : Component, target : Interface) {
+	Component.containedComponentPorts.requiredInterfaces(self, target);
+}
+
+@Surrogate(feature="containedComponentPorts")
+pattern Component__containedComponentPorts(self : Component, target : ComponentPort) {
+	Component.ownedFeatures(self, target);
+}
+
+@Surrogate(feature="containedParts")
+pattern Component__containedParts(self : Component, target : Part) {
+	Component.ownedFeatures(self, target);
+}
+
+@Surrogate(feature="containedPhysicalPorts")
+pattern Component__containedPhysicalPorts(self : Component, target : PhysicalPort) {
+	Component.ownedFeatures(self, target);
+}
+
+

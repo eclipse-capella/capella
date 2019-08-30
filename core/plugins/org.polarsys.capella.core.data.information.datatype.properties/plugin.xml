@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -17,7 +17,7 @@
                class="org.polarsys.capella.core.data.information.datatype.properties.sections.StringTypeSection"
                filter="org.polarsys.capella.core.data.information.datatype.properties.sections.StringTypeSection"
                id="org.polarsys.capella.core.data.information.datatype.section.StringType"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.information.datatype.StringType">
             </input>
@@ -26,7 +26,7 @@
                class="org.polarsys.capella.core.data.information.datatype.properties.sections.NumericTypeSection"
                filter="org.polarsys.capella.core.data.information.datatype.properties.sections.NumericTypeSection"
                id="org.polarsys.capella.core.data.information.datatype.section.NumericType"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.information.datatype.NumericType">
             </input>
@@ -35,7 +35,7 @@
                class="org.polarsys.capella.core.data.information.datatype.properties.sections.BooleanTypeSection"
                filter="org.polarsys.capella.core.data.information.datatype.properties.sections.BooleanTypeSection"
                id="org.polarsys.capella.core.data.information.datatype.section.BooleanType"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.information.datatype.BooleanType">
             </input>
@@ -44,7 +44,7 @@
                class="org.polarsys.capella.core.data.information.datatype.properties.sections.PhysicalQuantitySection"
                filter="org.polarsys.capella.core.data.information.datatype.properties.sections.PhysicalQuantitySection"
                id="org.polarsys.capella.core.data.information.datatype.section.PhysicalQuantity"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.information.datatype.PhysicalQuantity">
             </input>
@@ -53,7 +53,7 @@
                class="org.polarsys.capella.core.data.information.datatype.properties.sections.EnumerationSection"
                filter="org.polarsys.capella.core.data.information.datatype.properties.sections.EnumerationSection"
                id="org.polarsys.capella.core.data.information.datatype.section.Enumeration"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.information.datatype.Enumeration">
             </input>
@@ -66,31 +66,31 @@
                class="org.polarsys.capella.core.data.information.datatype.properties.sections.StringTypeSection"
                filter="org.polarsys.capella.core.data.information.datatype.properties.sections.StringTypeSection"
                id="org.polarsys.capella.core.data.information.datatype.section.StringTypeBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.datatype.properties.sections.NumericTypeSection"
                filter="org.polarsys.capella.core.data.information.datatype.properties.sections.NumericTypeSection"
                id="org.polarsys.capella.core.data.information.datatype.section.NumericTypeBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.datatype.properties.sections.BooleanTypeSection"
                filter="org.polarsys.capella.core.data.information.datatype.properties.sections.BooleanTypeSection"
                id="org.polarsys.capella.core.data.information.datatype.section.BooleanTypeBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.datatype.properties.sections.PhysicalQuantitySection"
                filter="org.polarsys.capella.core.data.information.datatype.properties.sections.PhysicalQuantitySection"
                id="org.polarsys.capella.core.data.information.datatype.section.PhysicalQuantityBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.datatype.properties.sections.EnumerationSection"
                filter="org.polarsys.capella.core.data.information.datatype.properties.sections.EnumerationSection"
                id="org.polarsys.capella.core.data.information.datatype.section.EnumerationBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
       </propertySections>
    </extension>
@@ -100,31 +100,31 @@
                class="org.polarsys.capella.core.data.information.datatype.properties.sections.StringTypeSection"
                filter="org.polarsys.capella.core.data.information.datatype.properties.sections.StringTypeSection"
                id="org.polarsys.capella.core.data.information.datatype.section.StringTypeBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.datatype.properties.sections.NumericTypeSection"
                filter="org.polarsys.capella.core.data.information.datatype.properties.sections.NumericTypeSection"
                id="org.polarsys.capella.core.data.information.datatype.section.NumericTypeBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.datatype.properties.sections.BooleanTypeSection"
                filter="org.polarsys.capella.core.data.information.datatype.properties.sections.BooleanTypeSection"
                id="org.polarsys.capella.core.data.information.datatype.section.BooleanTypeBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.datatype.properties.sections.PhysicalQuantitySection"
                filter="org.polarsys.capella.core.data.information.datatype.properties.sections.PhysicalQuantitySection"
                id="org.polarsys.capella.core.data.information.datatype.section.PhysicalQuantityBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.datatype.properties.sections.EnumerationSection"
                filter="org.polarsys.capella.core.data.information.datatype.properties.sections.EnumerationSection"
                id="org.polarsys.capella.core.data.information.datatype.section.EnumerationBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
       </propertySections>
    </extension>

@@ -22,7 +22,9 @@
 		<topic href="html/08. Replicable Element (REC-RPL)/8.2. Basic Use Case.html#Copy-Paste_Layout" label="Copy-Paste Layout"></topic>
 	</topic>
 	<topic href="html/08. Replicable Element (REC-RPL)/8.3. Update REC-RPL.html" label="Updates Between REC and RPL">
-		<topic href="html/08. Replicable Element (REC-RPL)/8.3. Update REC-RPL.html#Update_of_a_REC_from_its_SOURCE" label="Update of a REC from its SOURCE"></topic>
+		<topic href="html/08. Replicable Element (REC-RPL)/8.3. Update REC-RPL.html#Update_of_a_REC_from_its_SOURCE" label="Update of a REC from its SOURCE">
+     <topic href="html/08. Replicable Element (REC-RPL)/8.3. Update REC-RPL.html#Add.2Fremove_suffix_on_elements_of_the_REC" label="Add/remove suffix on elements of the REC">
+     </topic></topic>
 		<topic href="html/08. Replicable Element (REC-RPL)/8.3. Update REC-RPL.html#Update_of_a_RPL_from_its_REC" label="Update of a RPL from its REC"></topic>
 		<topic href="html/08. Replicable Element (REC-RPL)/8.3. Update REC-RPL.html#Update_of_a_REC_from_its_RPL" label="Update of a REC from its RPL"></topic>
 	</topic>
@@ -54,8 +56,6 @@
 	<topic href="html/09. Libraries/9.4. Usage Restrictions.html" label="Usage Restrictions">
 		<topic href="html/09. Libraries/9.4. Usage Restrictions.html#Libraries_Usage_Restriction" label="Libraries Usage Restriction"></topic>
 		<topic href="html/09. Libraries/9.4. Usage Restrictions.html#Nominal_Case_vs_Downgraded_Case" label="Nominal Case vs Downgraded Case"></topic>
-	</topic>
-	<topic href="html/09. Libraries/9.5. Moving Elements to a Library.html" label="Moving Elements To A Library">
 	</topic>
       <anchor id="lib"/>
    </topic>

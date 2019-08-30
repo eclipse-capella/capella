@@ -2,14 +2,15 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.test.suites.ju
-Bundle-Version: 1.2.2.qualifier
+Bundle-Version: 1.3.1.qualifier
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Require-Bundle: org.polarsys.capella.test.business.queries.ju;visibility:=reexport,
  org.polarsys.capella.test.diagram.filters.ju;visibility:=reexport,
  org.polarsys.capella.test.diagram.tools.ju;visibility:=reexport,
+ org.polarsys.capella.test.diagram.layout.ju;visibility:=reexport,
  org.polarsys.capella.test.fastlinker.ju;visibility:=reexport,
  org.polarsys.capella.test.library.ju;visibility:=reexport,
  org.polarsys.capella.test.merge.ju;visibility:=reexport,
@@ -26,4 +27,6 @@ Require-Bundle: org.polarsys.capella.test.business.queries.ju;visibility:=reexpo
  org.polarsys.capella.test.diagram.misc.ju;visibility:=reexport,
  org.polarsys.capella.test.re.updateconnections.ju;visibility:=reexport,
  org.polarsys.capella.test.commandline.ju;visibility:=reexport,
- org.polarsys.capella.test.migration.ju;visibility:=reexport
+ org.polarsys.capella.test.migration.ju;visibility:=reexport,
+ org.polarsys.capella.test.massactions.ju;visibility:=reexport,
+ org.polarsys.capella.test.richtext.ju;visibility:=reexport

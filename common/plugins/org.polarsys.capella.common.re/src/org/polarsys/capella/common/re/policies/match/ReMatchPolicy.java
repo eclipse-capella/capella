@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,8 +24,7 @@ import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
 import org.polarsys.capella.common.re.merge.scope.ReSourceScope;
 import org.polarsys.capella.common.re.merge.scope.ReTargetScope;
-import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
-import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
+import org.polarsys.capella.core.transition.common.handlers.session.SessionHandlerHelper;
 import org.polarsys.capella.core.transition.common.policies.match.TraceabilityHandlerMatchPolicy;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -42,7 +41,6 @@ public class ReMatchPolicy extends TraceabilityHandlerMatchPolicy {
    */
   public ReMatchPolicy(IContext context) {
     super(context);
-
     queryContext = new QueryContext();
   }
 
@@ -54,20 +52,17 @@ public class ReMatchPolicy extends TraceabilityHandlerMatchPolicy {
     IContext context = getContext();
 
     //Retrieve handlers from context
-    ITraceabilityHandler sourceHandler = (ITraceabilityHandler) context.get(ITransitionConstants.TRACEABILITY_SOURCE_MERGE_HANDLER);
-    ITraceabilityHandler targetHandler = (ITraceabilityHandler) context.get(ITransitionConstants.TRACEABILITY_TARGET_MERGE_HANDLER);
-
-    ITraceabilityHandler currentHandler = null;
     CatalogElement elt = null;
     CatalogElement otherElement = null;
+    boolean isSource = false;
 
     if ((scope instanceof ReSourceScope) && !(scope instanceof ReTargetScope)) {
-      currentHandler = sourceHandler;
+      isSource = true;
       elt = ReplicableElementHandlerHelper.getInstance(context).getSource(context);
       otherElement = ReplicableElementHandlerHelper.getInstance(context).getTarget(context);
 
     } else {
-      currentHandler = targetHandler;
+      isSource = false;
       elt = ReplicableElementHandlerHelper.getInstance(context).getTarget(context);
       otherElement = ReplicableElementHandlerHelper.getInstance(context).getSource(context);
     }
@@ -104,16 +99,15 @@ public class ReMatchPolicy extends TraceabilityHandlerMatchPolicy {
 
         if (IReConstants.COMMAND__UPDATE_DEFINITION_REPLICA_FROM_REPLICA.equals(value)) {
           //if (update replicableElement from replica)
-          if (currentHandler == sourceHandler) {
+          if (isSource) {
             if (link != null) {
               link = link.getOrigin();
             }
           }
         }
       } else if (IReConstants.COMMAND__CREATE_A_REPLICA_FROM_REPLICABLE.equals(value) || IReConstants.COMMAND__UPDATE_A_REPLICA_FROM_REPLICABLE.equals(value)) {
-
         //if (update replica from replicableElement)
-        if (currentHandler == targetHandler) {
+        if (!isSource) {
           if (link != null) {
             link = link.getOrigin();
           }
@@ -122,12 +116,9 @@ public class ReMatchPolicy extends TraceabilityHandlerMatchPolicy {
       }
     }
 
-    String id = "";
     if ((link != null) && (elt != null) && (otherElement != null)) {
-      id = currentHandler.getId(link, context);
-    } else {
-      id = currentHandler.getId(element, context);
-    }
-    return id;
+      return SessionHandlerHelper.getInstance(context).getId(link, context);
+    } 
+    return SessionHandlerHelper.getInstance(context).getId(element, context);
   }
 }

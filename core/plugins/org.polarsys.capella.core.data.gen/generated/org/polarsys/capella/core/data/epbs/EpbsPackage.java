@@ -31,9 +31,8 @@ import org.polarsys.capella.core.data.cs.CsPackage;
  * <!-- end-user-doc -->
  * @see org.polarsys.capella.core.data.epbs.EpbsFactory
  * @model kind="package"
- *        annotation="http://www.polarsys.org/kitalpha/dsl/2007/dslfactory trackResourceModification='true' useUUIDs='false' useIDAttributes='true' extensibleProviderFactory='true' childCreationExtenders='true'"
- *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(E)PBS (for (End-)Product Breakdown Structure) aims at defining the system\'s work product breakdown (close to Clearcase/UCM\'s components concept).\r\n[source: Capella study]' usage\040guideline='none' used\040in\040levels='epbs' usage\040examples='none' constraints='This package depends on the model CompositeStructure.ecore' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/extension trackResourceModification='true' useUUIDs='false' useIDAttributes='true' extensibleProviderFactory='true' childCreationExtenders='true'"
+ *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(E)PBS (for (End-)Product Breakdown Structure) aims at defining the system\'s work product breakdown (close to Clearcase/UCM\'s components concept).\r\n[source: Capella study]' usage\040guideline='none' used\040in\040levels='epbs' usage\040examples='none' constraints='This package depends on the model CompositeStructure.ecore' comment/notes='none' reference\040documentation='none'"
  * @generated
  */
 public interface EpbsPackage extends EPackage {
@@ -51,7 +50,7 @@ public interface EpbsPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.polarsys.org/capella/core/epbs/1.2.0"; //$NON-NLS-1$
+	String eNS_URI = "http://www.polarsys.org/capella/core/epbs/1.3.0"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.

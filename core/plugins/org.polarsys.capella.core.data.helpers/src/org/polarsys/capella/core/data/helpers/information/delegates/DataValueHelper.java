@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,29 +36,25 @@ public class DataValueHelper {
   }
 
   public static DataValueHelper getInstance() {
-    if (instance == null)
-      instance = new DataValueHelper();
+    if (instance == null) {
+    	instance = new DataValueHelper();
+    }
     return instance;
   }
 
   public Object doSwitch(DataValue element, EStructuralFeature feature) {
-    Object ret = null;
 
     if (feature.equals(DatavaluePackage.Literals.DATA_VALUE__TYPE)) {
       return getType(element);
     }
 
     // no helper found... searching in super classes...
-    if (null == ret) {
-      ret = NamedElementHelper.getInstance().doSwitch(element, feature);
-    }
-
-    return ret;
+    return NamedElementHelper.getInstance().doSwitch(element, feature);
   }
 
   protected Type getType(DataValue element) {
     AbstractType absType = element.getAbstractType();
-    if (null != absType && absType instanceof Type) {
+    if (absType instanceof Type) {
       return (Type) absType;
     }
     return null;

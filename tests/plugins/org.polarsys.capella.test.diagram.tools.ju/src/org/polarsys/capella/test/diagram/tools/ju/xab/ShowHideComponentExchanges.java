@@ -17,6 +17,11 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.junit.Assert;
+import org.polarsys.capella.common.ef.command.AbstractCommand;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.core.diagram.helpers.DAnnotationHelper;
+import org.polarsys.capella.core.diagram.helpers.IRepresentationAnnotationConstants;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.context.PABDiagram;
@@ -25,6 +30,7 @@ import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 import org.polarsys.capella.test.diagram.tools.ju.model.EmptyProject;
 import org.polarsys.capella.test.framework.context.SessionContext;
 import org.polarsys.capella.test.framework.helpers.HelperMessages;
+import org.polarsys.capella.test.framework.helpers.TestHelper;
 import org.polarsys.capella.test.framework.model.GenericModel;
 
 public class ShowHideComponentExchanges extends EmptyProject {
@@ -32,9 +38,13 @@ public class ShowHideComponentExchanges extends EmptyProject {
   protected void createLink(XABDiagram xab, String idSource, String idTarget, String id) {
     xab.createComponentExchange(idSource, idTarget, id);
   }
-
+  
   protected void insertLink(XABDiagram xab, String id, String containerId) {
     xab.insertComponentExchange(id, containerId);
+  }
+  
+  protected void removeLink(XABDiagram xab, String id, String containerId) {
+    xab.removeComponentExchange(id, containerId);
   }
 
   public void createSubComponent(PABDiagram xab, String id, String containerId) {
@@ -58,7 +68,7 @@ public class ShowHideComponentExchanges extends EmptyProject {
     Session session = getSession(getRequiredTestModel());
     SessionContext context = new SessionContext(session);
 
-    testContextualElements(context, PA__PHYSICAL_SYSTEM);
+    testOnXAB(context, PA__PHYSICAL_SYSTEM);
     testOnDeployedPhysicalComponents(context, PA__PHYSICAL_SYSTEM);
     testOnUnDeployedPhysicalComponents(context, PA__PHYSICAL_SYSTEM);
 
@@ -74,8 +84,11 @@ public class ShowHideComponentExchanges extends EmptyProject {
    * @param context
    * @param paPhysicalSystem
    */
-  private void testContextualElements(SessionContext context, String idSource) {
+  private void testOnXAB(SessionContext context, String idSource) {
     PABDiagram xab = PABDiagram.createDiagram(context, idSource);
+    
+    activateComponentExchangeFilters(xab);
+    
     createSubComponent(xab, GenericModel.LC_1, xab.getDiagramId());
     createSubComponent(xab, GenericModel.LC_2, GenericModel.LC_1);
     createSubComponent(xab, GenericModel.LC_3, GenericModel.LC_2);
@@ -109,6 +122,8 @@ public class ShowHideComponentExchanges extends EmptyProject {
 
   protected void testOnActors(SessionContext context, String idSource) {
     XABDiagram xab = XABDiagram.createDiagram(context, idSource);
+    activateComponentExchangeFilters(xab);
+    
     xab.createActor(GenericModel.LA_1);
     xab.createActor(GenericModel.LA_2);
 
@@ -117,12 +132,15 @@ public class ShowHideComponentExchanges extends EmptyProject {
     xab.hasView(GenericModel.LA_2);
     xab.removeActor(GenericModel.LA_2);
     insertLink(xab, GenericModel.CL_1, GenericModel.LA_1);
+    
+    DiagramHelper.setSynchronized(xab.getDiagram(), false);
+    removeLink(xab, GenericModel.CL_1, GenericModel.LA_1);
+    DiagramHelper.setSynchronized(xab.getDiagram(), true);
   }
 
   protected void testOnLogicalComponents(SessionContext context, String idSource) {
     XABDiagram xab = XABDiagram.createDiagram(context, idSource);
-    
-    activateFilter(xab.getDiagram(), getFilterName());
+    activateComponentExchangeFilters(xab);
     
     xab.createComponent(GenericModel.LC_1, LA__LOGICAL_CONTEXT__PART_LOGICAL_SYSTEM__LOGICAL_SYSTEM);
     xab.createComponent(GenericModel.LC_2, LA__LOGICAL_CONTEXT__PART_LOGICAL_SYSTEM__LOGICAL_SYSTEM);
@@ -137,12 +155,15 @@ public class ShowHideComponentExchanges extends EmptyProject {
     xab.removeComponent(GenericModel.LC_1);
     insertLink(xab, GenericModel.CL_1, GenericModel.LC_2_1);
     xab.hasView(GenericModel.LC_1);
+    
+    DiagramHelper.setSynchronized(xab.getDiagram(), false);
+    removeLink(xab, GenericModel.CL_1, GenericModel.LC_2_1);
+    DiagramHelper.setSynchronized(xab.getDiagram(), true);
   }
 
   protected void testOnPhysicalComponents(SessionContext context, String idSource) {
     PABDiagram xab = PABDiagram.createDiagram(context, idSource);
-    
-    activateFilter(xab.getDiagram(), getFilterName());
+    activateComponentExchangeFilters(xab);
 
     // Create a component exchange between two behavior not deployed
     createSubComponent(xab, GenericModel.LC_1, xab.getDiagramId());
@@ -160,13 +181,15 @@ public class ShowHideComponentExchanges extends EmptyProject {
     removeSubComponent(xab, GenericModel.LC_1, xab.getDiagramId());
     insertLink(xab, GenericModel.CL_1, GenericModel.LC_2_1);
     xab.hasView(GenericModel.LC_1);
-
+    
+    DiagramHelper.setSynchronized(xab.getDiagram(), false);
+    removeLink(xab, GenericModel.CL_1, GenericModel.LC_2_1);
+    DiagramHelper.setSynchronized(xab.getDiagram(), true);
   }
 
   protected void testOnDeployedPhysicalComponents(SessionContext context, String idSource) {
     PABDiagram xab = PABDiagram.createDiagram(context, idSource);
-
-    activateFilter(xab.getDiagram(), getFilterName());
+    activateComponentExchangeFilters(xab);
     
     // Create a component exchange between two deployments
     xab.createNodeComponent(GenericModel.LC_1, xab.getDiagramId());
@@ -194,13 +217,14 @@ public class ShowHideComponentExchanges extends EmptyProject {
     insertLink(xab, GenericModel.CL_1, GenericModel.LC_2);
     xab.hasView(GenericModel.LC_4, IMappingNameConstants.PAB_PHYSICAL_COMPONENT_DEPLOYMENT_MAPPING_NAME);
 
+    DiagramHelper.setSynchronized(xab.getDiagram(), false);
+    removeLink(xab, GenericModel.CL_1, GenericModel.LC_2);
+    DiagramHelper.setSynchronized(xab.getDiagram(), true);
   }
 
   protected void testOnUnDeployedPhysicalComponents(SessionContext context, String idSource) {
     PABDiagram xab = PABDiagram.createDiagram(context, idSource);
-
-    // Activate the filter to hide the computed CE
-    activateFilter(xab.getDiagram(), getFilterName());
+    activateComponentExchangeFilters(xab);
     
     // Create a component exchange between a behavior and a deployed behavior.
     // if there is no other deployed displayed, target is displayed as undeployed
@@ -213,6 +237,10 @@ public class ShowHideComponentExchanges extends EmptyProject {
     
     insertLink(xab, GenericModel.CL_1, GenericModel.LC_1);
     xab.hasView(GenericModel.LC_3, IMappingNameConstants.PAB_PHYSICAL_COMPONENT_MAPPING_NAME);
+    
+    DiagramHelper.setSynchronized(xab.getDiagram(), false);
+    removeLink(xab, GenericModel.CL_1, GenericModel.LC_1);
+    DiagramHelper.setSynchronized(xab.getDiagram(), true);
   }
   
   /**
@@ -240,5 +268,25 @@ public class ShowHideComponentExchanges extends EmptyProject {
     Assert.assertNotNull(MessageFormat.format(HelperMessages.filterNotFound, filterName, diagram.getName()), filter);
     EList<FilterDescription> activatedFilters = diagram.getActivatedFilters();
     assertTrue(activatedFilters.contains(filter));
+  }
+  
+  protected void activateComponentExchangeFilters(XABDiagram xab) {
+    AbstractCommand cmd = new AbstractReadWriteCommand() {
+      public void run() {
+        DAnnotationHelper.deleteAnnotation(IRepresentationAnnotationConstants.DesactivatedFilters, xab.getDiagramDescriptor());
+      }
+    };
+    TestHelper.getExecutionManager(xab.getDiagram()).execute(cmd);
+    
+    if(xab.getDiagramType() != BlockArchitectureExt.Type.SA) {
+      activateFilter(xab.getDiagram(), IMappingNameConstants.HIDE_CE_BY_GROUP);
+      activateFilter(xab.getDiagram(), IMappingNameConstants.HIDE_CE_BY_GROUP_ORIENTED);
+      activateFilter(xab.getDiagram(), IFilterNameConstants.FILTER_XAB_HIDE_COMPUTED_CE);
+      activateFilter(xab.getDiagram(), IFilterNameConstants.FILTER_XAB_HIDE_COMPUTED_PL);
+      activateFilter(xab.getDiagram(), IFilterNameConstants.FILTER_XAB_HIDE_SIMPLIFIED_DIAGRAM_BASED_COMPONENT_EXCHANGES);
+      activateFilter(xab.getDiagram(), IFilterNameConstants.FILTER_XAB_HIDE_SIMPLIFIED_GROUP_OF_COMPONENT_EXCHANGES_ID);
+      activateFilter(xab.getDiagram(), IFilterNameConstants.FILTER_XAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES);
+    }
+    DiagramHelper.refreshDiagram(xab.getDiagram());
   }
 }

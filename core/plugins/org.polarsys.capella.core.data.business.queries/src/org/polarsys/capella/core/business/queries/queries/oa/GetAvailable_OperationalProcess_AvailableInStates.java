@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,6 +42,7 @@ import org.polarsys.capella.core.data.la.LogicalContext;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.EntityPkg;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
+import org.polarsys.capella.core.data.oa.OperationalContext;
 import org.polarsys.capella.core.data.pa.PhysicalActor;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
@@ -110,6 +111,8 @@ public class GetAvailable_OperationalProcess_AvailableInStates extends AbstractQ
 	 */
 	protected void getElementsFromOperationalAnalysisLayer(CapellaElement ele, BlockArchitecture blockArch, List<CapellaElement> availableElements) {
 		OperationalAnalysis oa = (OperationalAnalysis) blockArch;
+		OperationalContext ownedOperationalContext = oa.getOwnedOperationalContext();
+    availableElements.addAll(getElementsFromBlockArchitecture(ownedOperationalContext, ele));
 		EntityPkg ownedEntityPkg = oa.getOwnedEntityPkg();
 		List<Entity> allEntity = OperationalAnalysisExt.getAllEntity(ownedEntityPkg);
 		for (Entity entity : allEntity) {
@@ -212,8 +215,6 @@ public class GetAvailable_OperationalProcess_AvailableInStates extends AbstractQ
 				}
 			}
 		}
-		List<CapellaElement> currentElements = getCurrentElements(ele, false);
-		availableElements.removeAll(currentElements);
 		return availableElements;
 	}
 

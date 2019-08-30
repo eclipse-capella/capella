@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,23 +18,19 @@ import org.polarsys.capella.core.data.capellacore.Allocation;
 public class AllocationHelper {
 	private static AllocationHelper instance;
 
-	private AllocationHelper() {//
+	private AllocationHelper() {
+		// Do nothing
 	}
 
 	public static AllocationHelper getInstance() {
-		if (instance == null)
-			instance = new AllocationHelper();
+		if (instance == null) {
+			instance = new AllocationHelper();			
+		}
 		return instance;
 	}
 
 	public Object doSwitch(Allocation element, EStructuralFeature feature) {
-		Object ret = null;
-
 		// no helper found... searching in super classes...
-		if(null == ret) {
-			ret = RelationshipHelper.getInstance().doSwitch(element, feature);
-		}
-
-		return ret;
+		return RelationshipHelper.getInstance().doSwitch(element, feature);
 	}
 }

@@ -91,8 +91,8 @@ public class AbstractCapabilityExt {
    * @param currentCapability the capability for which extended capabilities have to be found
    * @return list of extended capabilities
    */
-  static public List<AbstractCapability> getExtendHierarchy(AbstractCapability currentCapability) {
-    List<AbstractCapability> capabilityList = new ArrayList<AbstractCapability>();
+  public static List<AbstractCapability> getExtendHierarchy(AbstractCapability currentCapability) {
+    List<AbstractCapability> capabilityList = new ArrayList<>();
 
     for (AbstractCapabilityExtend extend : currentCapability.getExtends()) {
       AbstractCapability extCap = extend.getExtended();
@@ -121,7 +121,7 @@ public class AbstractCapabilityExt {
    * @param capabilityList
    * @param currentCapability
    */
-  static private void getIncludedCapabilitiesRecursively(List<AbstractCapability> capabilityList, AbstractCapability currentCapability) {
+  private static void getIncludedCapabilitiesRecursively(List<AbstractCapability> capabilityList, AbstractCapability currentCapability) {
     EList<AbstractCapabilityInclude> including = currentCapability.getIncludes();
     for (AbstractCapabilityInclude cap : including) {
       AbstractCapability inclusionCap = cap.getIncluded();
@@ -137,8 +137,8 @@ public class AbstractCapabilityExt {
    * @param currentCapability the capability for which included capabilities have to be found
    * @return list of included capabilities
    */
-  static public List<AbstractCapability> getIncludedHierarchy(AbstractCapability currentCapability) {
-    List<AbstractCapability> capabilityList = new ArrayList<AbstractCapability>();
+  public static List<AbstractCapability> getIncludedHierarchy(AbstractCapability currentCapability) {
+    List<AbstractCapability> capabilityList = new ArrayList<>();
 
     getIncludedCapabilitiesRecursively(capabilityList, currentCapability);
 
@@ -150,7 +150,7 @@ public class AbstractCapabilityExt {
    * @param capabilityList
    * @param currentCapability
    */
-  static private void getIncludingCapabilitiesRecursively(List<AbstractCapability> capabilityList, AbstractCapability currentCapability) {
+  private static void getIncludingCapabilitiesRecursively(List<AbstractCapability> capabilityList, AbstractCapability currentCapability) {
     EList<AbstractCapabilityInclude> including = currentCapability.getIncluding();
     for (AbstractCapabilityInclude cap : including) {
       AbstractCapability inclusionCap = cap.getInclusion();
@@ -166,8 +166,8 @@ public class AbstractCapabilityExt {
    * @param currentCapability the capability for which including capabilities have to be found
    * @return list of including capabilities
    */
-  static public List<AbstractCapability> getIncludingHierarchy(AbstractCapability currentCapability) {
-    List<AbstractCapability> capabilityList = new ArrayList<AbstractCapability>();
+  public static List<AbstractCapability> getIncludingHierarchy(AbstractCapability currentCapability) {
+    List<AbstractCapability> capabilityList = new ArrayList<>();
 
     getIncludingCapabilitiesRecursively(capabilityList, currentCapability);
 
@@ -179,15 +179,15 @@ public class AbstractCapabilityExt {
    * @param currentCapability the capability for which super capabilities have to be found
    * @return list of super capabilities
    */
-  static public List<AbstractCapability> getInheritanceHierarchy(AbstractCapability currentCapability) {
-    List<AbstractCapability> capabilityList = new ArrayList<AbstractCapability>();
+  public static List<AbstractCapability> getInheritanceHierarchy(AbstractCapability currentCapability) {
+    List<AbstractCapability> capabilityList = new ArrayList<>();
 
     getInheritanceHierarchyRecursively(capabilityList, currentCapability);
 
     return capabilityList;
   }
 
-  static private void getInheritanceHierarchyRecursively(List<AbstractCapability> capabilityList, AbstractCapability currentCapability) {
+  private static void getInheritanceHierarchyRecursively(List<AbstractCapability> capabilityList, AbstractCapability currentCapability) {
     for (AbstractCapabilityGeneralization generalization : currentCapability.getSuperGeneralizations()) {
       AbstractCapability superCap = generalization.getSuper();
       if ((superCap != null) && !superCap.equals(currentCapability) && !capabilityList.contains(superCap)) {
@@ -213,8 +213,8 @@ public class AbstractCapabilityExt {
    * @param currentCapability the capability for which related capabilities have to be found
    * @return list of related capabilities
    */
-  static public List<AbstractCapability> getSuperHierarchy(AbstractCapability currentCapability) {
-    List<AbstractCapability> capabilityList = new ArrayList<AbstractCapability>();
+  public static List<AbstractCapability> getSuperHierarchy(AbstractCapability currentCapability) {
+    List<AbstractCapability> capabilityList = new ArrayList<>();
 
     capabilityList.addAll(getInheritanceHierarchy(currentCapability));
     /*capabilityList.addAll(getIncludedHierarchy(currentCapability));
@@ -228,20 +228,20 @@ public class AbstractCapabilityExt {
    * @param currentCapability the capability for which sub capabilities have to be found
    * @return list of super capabilities
    */
-  static public List<AbstractCapability> getSubInheritanceHierarchy(AbstractCapability currentCapability) {
-    List<AbstractCapability> capabilityList = new ArrayList<AbstractCapability>();
+  public static List<AbstractCapability> getSubInheritanceHierarchy(AbstractCapability currentCapability) {
+    List<AbstractCapability> capabilityList = new ArrayList<>();
 
     getSubInheritanceHierarchyRecursively(capabilityList, currentCapability);
 
     return capabilityList;
   }
 
-  static private void getSubInheritanceHierarchyRecursively(List<AbstractCapability> capabilityList, AbstractCapability currentCapability) {
+  private static void getSubInheritanceHierarchyRecursively(List<AbstractCapability> capabilityList, AbstractCapability currentCapability) {
     for (AbstractCapabilityGeneralization generalization : currentCapability.getSubGeneralizations()) {
       AbstractCapability subCap = generalization.getSub();
       if ((subCap != null) && !subCap.equals(currentCapability) && !capabilityList.contains(subCap)) {
         capabilityList.add(subCap);
-        getInheritanceHierarchyRecursively(capabilityList, subCap);
+        getSubInheritanceHierarchyRecursively(capabilityList, subCap);
       }
     }
   }
@@ -252,7 +252,7 @@ public class AbstractCapabilityExt {
    * @param mission the mission
    * @return true if the capability has been included in the mission
    */
-  static public boolean isIncluded(AbstractCapability capability, Mission mission) {
+  public static boolean isIncluded(AbstractCapability capability, Mission mission) {
     boolean isIncluded = false;
 
     for (CapabilityExploitation capabilityExploitation : mission.getOwnedCapabilityExploitations()) {
@@ -271,7 +271,7 @@ public class AbstractCapabilityExt {
    * @param capability the second Capability
    * @return if there is an Inheritance Relationship existence
    */
-  static public boolean isSuperCapability(AbstractCapability currentCapability, AbstractCapability capability) {
+  public static boolean isSuperCapability(AbstractCapability currentCapability, AbstractCapability capability) {
     return getSuperHierarchy(currentCapability).contains(capability);
   }
 

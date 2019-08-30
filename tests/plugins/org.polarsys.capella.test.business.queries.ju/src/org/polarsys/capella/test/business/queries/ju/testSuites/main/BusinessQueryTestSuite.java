@@ -43,6 +43,19 @@ public class BusinessQueryTestSuite extends BasicTestSuite {
 		return new BusinessQueryTestSuite();
 	}
 
+  @Override
+  public List<String> getRequiredTestModels() {
+    return Arrays.asList(new String[] { getProjectForTest(), getLibProjectForTest() });
+  }
+
+  public String getProjectForTest() {
+    return "sysmodel"; //$NON-NLS-1$
+  }
+
+  public String getLibProjectForTest() {
+    return "sysModelLib"; //$NON-NLS-1$
+  }
+  
 	@Override
 	protected List<BasicTestArtefact> getTests() {
 		List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
@@ -60,9 +73,4 @@ public class BusinessQueryTestSuite extends BasicTestSuite {
 		tests.add(new PaBusinessQueryTestSuite());
 		return tests;
 	}
-
-  @Override
-  public List<String> getRequiredTestModels() {
-    return Arrays.asList(new String[] { "sysmodel" }); //$NON-NLS-1$
-  }
 }

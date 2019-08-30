@@ -17,6 +17,7 @@ import junit.framework.Test;
 
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+import org.polarsys.capella.test.validation.rules.ju.testcases.misc.Bug2438TestCase;
 import org.polarsys.capella.test.validation.rules.ju.testcases.misc.CheckAllRulesCodeTest;
 import org.polarsys.capella.test.validation.rules.ju.testcases.misc.ComponentPortOrientationConsistencyTest;
 import org.polarsys.capella.test.validation.rules.ju.testcases.misc.I25_MoreDescriptionValidationTests;
@@ -54,6 +55,7 @@ public class MiscTestSuite extends BasicTestSuite {
     tests.add(new PackageCycle4Test());
     tests.add(new PackageCycle5Test());
     tests.add(new PackageCycle6Test());
+    tests.add(new Bug2438TestCase());
     //tests.add(new RulesCoverageTest());
     return tests;
   }

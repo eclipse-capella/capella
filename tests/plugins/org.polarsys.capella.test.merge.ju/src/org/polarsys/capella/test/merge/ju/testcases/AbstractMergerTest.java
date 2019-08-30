@@ -31,11 +31,6 @@ import org.polarsys.capella.test.merge.ju.utils.MergeTestUtils;
  */
 public abstract class AbstractMergerTest extends BasicTestCase {
 
-  // project data
-
-  /** The session opened for this testSuite */
-//  protected Session _session;
-
   /** readable name for this test */
   String _readableTestName;
 
@@ -83,65 +78,11 @@ public abstract class AbstractMergerTest extends BasicTestCase {
     Assert.assertNotNull(MergeTestingMessages.noMergedScenarioCreated, _result);
   }
 
-  /**
-   * In order to set _session at runtime
-   */
-//  public abstract void setSessionData();
-
-  /**
-   * @see org.polarsys.capella.test.common.AbstractExtendedTest#getResult()
-   */
-//  @Override
-//  public Object getResult() {
-//    return _result;
-//  }
-
   @Override
   protected void setUp() throws Exception {
     super.setUp();
     setObjects();
   }
-
-  @Override
-  protected void tearDown() throws Exception {
-    super.tearDown();
-    cleanUp();
-  }
-
-  /**
-   * @see org.polarsys.capella.test.common.AbstractExtendedTest#preTestRun()
-   */
-//  @Override
-//  protected void preTestRun() {
-//
-//    setSessionData();
-//
-//    setObjects();
-//
-//    super.preTestRun();
-//
-//    return;
-//  }
-
-  /**
-   * @see org.polarsys.capella.test.common.AbstractExtendedTest#postTestRun()
-   */
-//  @Override
-//  protected void postTestRun() {
-//
-//    super.postTestRun();
-//
-//    mergerTest();
-//
-//    Scenario control = (Scenario) _semanticObjectMap.get(_controlScenarioId);
-//
-//    ScenarioTestHelper.compareStructure(control, _result);
-//    ScenarioTestHelper.checkMergeLink(_result);
-//
-//    cleanUp();
-//
-//    return;
-//  }
 
   /**
    * Set the map with interesting object for this test suite. Not really nice in this case because we close and re-open
@@ -163,38 +104,5 @@ public abstract class AbstractMergerTest extends BasicTestCase {
 
     _semanticObjectMap.putAll(map);
   }
-
-  /**
-   * Ensure that no references are kept to object;
-   */
-  protected void cleanUp() {
-    _semanticObjectMap.clear();
-//    _session = null;
-    _result = null;
-  }
-
-  /**
-   * @see org.polarsys.capella.test.common.AbstractExtendedTest#getDescription()
-   */
-//  @Override
-//  public String getDescription() {
-//    return _testCaseDesc;
-//  }
-
-  /**
-   * @see org.polarsys.capella.test.common.AbstractExtendedTest#getTestName()
-   */
-//  @Override
-//  final protected String getTestName() {
-//    return "mergerTest"; //$NON-NLS-1$
-//  }
-
-  /**
-   * @see org.polarsys.capella.test.common.AbstractExtendedTest#getReadableTestName()
-   */
-//  @Override
-//  public String getReadableTestName() {
-//    return _readableTestName;
-//  }
 
 }

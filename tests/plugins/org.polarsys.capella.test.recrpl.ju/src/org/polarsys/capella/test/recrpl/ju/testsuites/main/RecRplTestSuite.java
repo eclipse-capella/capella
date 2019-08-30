@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.util.List;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.recrpl.ju.testcases.CatalogPkgName;
+import org.polarsys.capella.test.recrpl.ju.testcases.CompositeREC;
 import org.polarsys.capella.test.recrpl.ju.testcases.CreateREC_ComponentFunctionalAllocation;
 import org.polarsys.capella.test.recrpl.ju.testcases.CreateREC_ContainedInCatalog;
 import org.polarsys.capella.test.recrpl.ju.testcases.CreateREC_DeploymentLink;
@@ -39,6 +40,7 @@ import org.polarsys.capella.test.recrpl.ju.testcases.CreateRPL_SpecificPackages_
 import org.polarsys.capella.test.recrpl.ju.testcases.CreateRPL_WithSuffix;
 import org.polarsys.capella.test.recrpl.ju.testcases.CreateRPL_onREC;
 import org.polarsys.capella.test.recrpl.ju.testcases.DeleteDetachRPL_RelatedElements;
+import org.polarsys.capella.test.recrpl.ju.testcases.LocationOnUpdate;
 import org.polarsys.capella.test.recrpl.ju.testcases.RemoveElement_CatalogElementLink;
 import org.polarsys.capella.test.recrpl.ju.testcases.UpdateDefREC_AddElementOnRPL;
 import org.polarsys.capella.test.recrpl.ju.testcases.UpdateDefREC_RemoveElement;
@@ -51,6 +53,7 @@ import org.polarsys.capella.test.recrpl.ju.testcases.compliance.BatchBlackboxCom
 import org.polarsys.capella.test.recrpl.ju.testcases.compliance.BlackboxComplianceTest1;
 import org.polarsys.capella.test.recrpl.ju.testcases.compliance.BlackboxComplianceTest2;
 import org.polarsys.capella.test.recrpl.ju.testcases.compliance.BlackboxComplianceTest3;
+import org.polarsys.capella.test.recrpl.ju.testcases.fragmented.CreateRPLOnFragmentedModel;
 
 import junit.framework.Test;
 
@@ -102,6 +105,9 @@ public class RecRplTestSuite extends BasicTestSuite {
     tests.add(new CreateRPL_SpecificPackages_PA());
     tests.add(new CreateRPL_SpecificPackages_Interfaces());
     tests.add(new CreateRPL_SpecificPackages_Combined());
+    tests.add(new CompositeREC());
+    tests.add(new LocationOnUpdate());
+    tests.add(new CreateRPLOnFragmentedModel());
     return tests;
   }
 

@@ -62,7 +62,7 @@ public class PortHelper {
 
 	protected List<PortAllocation> getIncomingPortAllocations(Port element){
 		List<AbstractTrace> traces = element.getIncomingTraces();
-		List<PortAllocation> ret = new ArrayList<PortAllocation>();
+		List<PortAllocation> ret = new ArrayList<>();
 		
 		for (AbstractTrace trace : traces) {
 			if(trace instanceof PortAllocation) {
@@ -75,7 +75,7 @@ public class PortHelper {
 	
 	protected List<PortAllocation> getOutgoingPortAllocations(Port element){
 		List<AbstractTrace> traces = element.getOutgoingTraces();
-		List<PortAllocation> ret = new ArrayList<PortAllocation>();
+		List<PortAllocation> ret = new ArrayList<>();
 		
 		for (AbstractTrace trace : traces) {
 			if(trace instanceof PortAllocation) {
@@ -88,7 +88,7 @@ public class PortHelper {
 	
 	protected List<PortRealization> getIncomingPortRealizations(Port element){
 		List<AbstractTrace> traces = element.getIncomingTraces();
-		List<PortRealization> ret = new ArrayList<PortRealization>();
+		List<PortRealization> ret = new ArrayList<>();
 		
 		for (AbstractTrace trace : traces) {
 			if(trace instanceof PortRealization) {
@@ -101,7 +101,7 @@ public class PortHelper {
 	
 	protected List<PortRealization> getOutgoingPortRealizations(Port element){
 		List<AbstractTrace> traces = element.getOutgoingTraces();
-		List<PortRealization> ret = new ArrayList<PortRealization>();
+		List<PortRealization> ret = new ArrayList<>();
 		
 		for (AbstractTrace trace : traces) {
 			if(trace instanceof PortRealization) {

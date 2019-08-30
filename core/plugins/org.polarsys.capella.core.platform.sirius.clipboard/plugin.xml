@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -11,62 +11,48 @@
        Thales - initial API and implementation
 -->
 <plugin>
+   
    <extension
-         point="org.eclipse.ui.popupMenus">
-      <objectContribution
-            id="org.polarsys.capella.core.platform.sirius.clipboard.siriusActions"
-            objectClass="org.eclipse.gef.EditPart">
-         <menu
-               id="BusinessCopyPasteMenuSirius"
-               label="Capella Copy/Paste"
-               path="additions">
-            <groupMarker
-                  name="groupCopyPaste">
-            </groupMarker>
-            <groupMarker
-                  name="org.polarsys.capella.core.platform.sirius.clipboard.groupMarker1">
-            </groupMarker>
-            <separator
-                  name="groupQuickPaste">
-            </separator>
-         </menu>
-         <action
-               class="org.polarsys.capella.core.platform.sirius.clipboard.actions.CapellaDiagramQuickPasteAction"
-               enablesFor="1"
-               id="modelpatterns.sirius.clipboard.actionQuickPaste"
-               label="Quick Paste         Ctrl+Shift+V"
-               menubarPath="BusinessCopyPasteMenuSirius/groupQuickPaste">
-         </action>
-         <action
-               class="org.polarsys.capella.core.platform.sirius.clipboard.actions.CapellaDiagramPasteActionStyleOnly"
-               enablesFor="+"
-               id="modelpatterns.sirius.clipboard.actionPasteStyleOnly"
-               label="Paste with style only"
-               menubarPath="BusinessCopyPasteMenuSirius/groupCopyPaste">
-         </action>
-         <action
-               class="org.polarsys.capella.core.platform.sirius.clipboard.actions.CapellaDiagramPasteActionLayoutOnly"
-               enablesFor="+"
-               id="modelpatterns.sirius.clipboard.actionPasteLayoutOnly"
-               label="Paste with layout only"
-               menubarPath="BusinessCopyPasteMenuSirius/groupCopyPaste">
-         </action>
-         <action
-               class="org.polarsys.capella.core.platform.sirius.clipboard.actions.CapellaDiagramPasteAction"
-               enablesFor="+"
-               id="modelpatterns.sirius.clipboard.actionPaste"
-               label="Paste                   Ctrl+V"
-               menubarPath="BusinessCopyPasteMenuSirius/groupCopyPaste">
-         </action>
-         <action
-               class="org.polarsys.capella.core.platform.sirius.clipboard.actions.CapellaDiagramCopyAction"
-               enablesFor="+"
-               id="modelpatterns.sirius.clipboard.actionCopy"
-               label="Copy                    Ctrl+C"
-               menubarPath="BusinessCopyPasteMenuSirius/groupCopyPaste">
-         </action>
-      </objectContribution>
+         point="org.eclipse.ui.menus">
+         <menuContribution
+               locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu?after=group.semantic">
+               
+               <menu id="BusinessCopyPasteMenuSirius" label="Capella Copy/Paste">
+	               <command
+	                     commandId="org.polarsys.capella.core.platform.sirius.clipboard.copy">
+	               </command>
+	               <command
+	                     commandId="org.polarsys.capella.core.platform.sirius.clipboard.paste">
+	               </command>
+                <command
+                      commandId="org.polarsys.capella.core.platform.sirius.clipboard.cut"
+                      style="push">
+                </command>
+	               <command
+	                     commandId="org.polarsys.capella.core.platform.sirius.clipboard.pasteStyleOnly">
+	               </command>
+	               <command
+	                     commandId="org.polarsys.capella.core.platform.sirius.clipboard.pasteLayoutOnly">
+	               </command>
+	               <separator
+	                     name="groupCopyPaste">
+	               </separator>
+	               <separator
+	                     visible="true"
+	                     name="org.polarsys.capella.core.platform.sirius.clipboard.groupMarker1">
+	               </separator>
+	               <command
+	                     commandId="org.polarsys.capella.core.platform.sirius.clipboard.quickPaste"
+	                     label="Quick Paste">
+	               </command>
+	               <separator
+	                     name="groupQuickPaste">
+	               </separator>
+		       </menu>
+		  </menuContribution>
+		  
    </extension>
+   
    <extension
          point="org.eclipse.ui.bindings">
       <key
@@ -87,6 +73,12 @@
             schemeId="org.polarsys.capella.core.defaultAcceleratorConfiguration"
             sequence="M1+C">
       </key>
+      <key
+            commandId="org.polarsys.capella.core.platform.sirius.clipboard.cut"
+            contextId="org.eclipse.sirius.diagram.ui.diagramContext"
+            schemeId="org.polarsys.capella.core.defaultAcceleratorConfiguration"
+            sequence="M1+X">
+      </key>
    </extension>
    <extension
          point="org.eclipse.ui.commands">
@@ -99,22 +91,46 @@
             defaultHandler="org.polarsys.capella.core.platform.sirius.clipboard.actions.QuickPasteCommandHandler"
             description="Capella Diagram Paste without refresh"
             id="org.polarsys.capella.core.platform.sirius.clipboard.quickPaste"
-            name="Business quick paste (no refresh)">
+            name="Quick paste (no refresh)">
       </command>
       <command
             categoryId="org.polarsys.capella.core.platform.sirius.clipboard.category"
             defaultHandler="org.polarsys.capella.core.platform.sirius.clipboard.actions.PasteCommandHandler"
             description="Capella Diagram Paste"
             id="org.polarsys.capella.core.platform.sirius.clipboard.paste"
-            name="Business paste">
+            name="Paste">
       </command>
       <command
             categoryId="org.polarsys.capella.core.platform.sirius.clipboard.category"
             defaultHandler="org.polarsys.capella.core.platform.sirius.clipboard.actions.CopyCommandHandler"
             description="Capella Diagram Copy"
             id="org.polarsys.capella.core.platform.sirius.clipboard.copy"
-            name="Business copy">
+            name="Copy">
       </command>
+      
+      
+      <command
+            categoryId="org.polarsys.capella.core.platform.sirius.clipboard.category"
+            defaultHandler="org.polarsys.capella.core.platform.sirius.clipboard.actions.PasteStyleOnlyCommandHandler"
+            description="Capella Diagram Paste"
+            id="org.polarsys.capella.core.platform.sirius.clipboard.pasteStyleOnly"
+            name="Paste with style only">
+      </command>
+      <command
+            categoryId="org.polarsys.capella.core.platform.sirius.clipboard.category"
+            defaultHandler="org.polarsys.capella.core.platform.sirius.clipboard.actions.PasteLayoutOnlyCommandHandler"
+            description="Capella Diagram Paste"
+            id="org.polarsys.capella.core.platform.sirius.clipboard.pasteLayoutOnly"
+            name="Paste with layout only">
+      </command>
+      <command
+            categoryId="org.polarsys.capella.core.platform.sirius.clipboard.category"
+            description="Capella Diagram Cut"
+            id="org.polarsys.capella.core.platform.sirius.clipboard.cut"
+            name="Cut">
+      </command>
+      
+      
    </extension>
    <extension
          point="org.eclipse.ui.statusHandlers">
@@ -126,6 +142,14 @@
                value="org.polarsys.capella.core.platform.sirius.clipboard">
          </parameter>
       </statusHandler>
+   </extension>
+   <extension
+         point="org.eclipse.gmf.runtime.emf.clipboard.core.clipboardSupport">
+      <factory
+            class="org.polarsys.capella.core.platform.sirius.clipboard.support.CapellaClipboardSupportFactory"
+            policy="org.polarsys.capella.core.platform.sirius.clipboard.support.CapellaClipboardSupportPolicy"
+            priority="highest">
+      </factory>
    </extension>
 
 </plugin>

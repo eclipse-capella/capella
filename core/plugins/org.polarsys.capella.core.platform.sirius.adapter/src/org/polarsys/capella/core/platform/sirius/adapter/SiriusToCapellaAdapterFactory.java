@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,13 +13,19 @@ package org.polarsys.capella.core.platform.sirius.adapter;
 
 import java.util.List;
 
+import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.IAdapterFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.gef.EditPart;
+import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-
+import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
+import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.EObjectWrapper;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
+import org.polarsys.kitalpha.emde.model.Element;
 
 /**
  * 
@@ -28,24 +34,43 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
 public class SiriusToCapellaAdapterFactory implements IAdapterFactory {
 
   /**
-   * @param object_p
+   * @param object
    * @return
    */
-  public EObject adaptToBusinessElement(Object object_p) {
-    if (object_p instanceof DSemanticDecorator) {
-      DSemanticDecorator vpe = (DSemanticDecorator) object_p;
+  public EObject adaptToBusinessElement(Object object) {
+    if (object instanceof ItemWrapper) {
+      object = ((ItemWrapper) object).getWrappedObject();
+    }
+    if (object instanceof EObjectWrapper) {
+      object = ((EObjectWrapper) object).getElement();
+    }
+    if (object instanceof EditPart) {
+      EditPart editPart = (EditPart) object;
+      Object editPartModel = editPart.getModel();
+      if (editPartModel instanceof View) {
+        EObject siriusElement = ((View) editPartModel).getElement();
+        if (siriusElement instanceof DSemanticDecorator) {
+          return ((DSemanticDecorator) siriusElement).getTarget();
+        } 
+        if (siriusElement instanceof DRepresentation) {
+          return RepresentationHelper.getRepresentationDescriptor((DRepresentation) siriusElement);
+        }
+      }
+    }
+    
+    // It is for DRepresentationElement and DTableElement
+    if (object instanceof DSemanticDecorator) {
+      DSemanticDecorator vpe = (DSemanticDecorator) object;
       EObject element = vpe.getTarget();
       if (CapellaResourceHelper.isSemanticElement(element)) {
         return element;
       }
     }
-    if (object_p instanceof DRepresentationElement) {
-      DRepresentationElement vpe = (DRepresentationElement) object_p;
-      List<EObject> elements = vpe.getSemanticElements();
-      for (EObject element : elements) {
-        if (CapellaResourceHelper.isSemanticElement(element)) {
-          return element;
-        }
+
+    if (object instanceof IMarker) {
+      List<EObject> objects = MarkerViewHelper.getModelElementsFromMarker((IMarker) object);
+      if (!objects.isEmpty()) {
+        return objects.get(0);
       }
     }
     return null;
@@ -53,10 +78,13 @@ public class SiriusToCapellaAdapterFactory implements IAdapterFactory {
 
   public Object getAdapter(Object adaptableObject_p, Class adapterType) {
     EObject result = adaptToBusinessElement(adaptableObject_p);
-    return result;
+    if (adapterType != null && adapterType.isInstance(result)) {
+      return result;
+    }
+    return null;
   }
 
   public Class<?>[] getAdapterList() {
-    return new Class[] { ModelElement.class };
+    return new Class[] { Element.class };
   }
 }

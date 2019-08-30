@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,8 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
@@ -27,6 +29,8 @@ import org.eclipse.swt.widgets.TreeColumn;
 public class CSVExporter
 {
 
+   private static final Logger logger = Logger.getLogger(CSVExporter.class.getName());
+   
    private static final String[] FILTER_NAMES = { "Comma Separated Values Files (*.csv)", "All Files (*.*)" };
 
    private static final String[] FILTER_EXTS = { "*.csv", "*.*" };
@@ -44,14 +48,14 @@ public class CSVExporter
 
       fileDialog.setFileName("DifferencesLog");
 
-      String resultFile = fileDialog.open();
+      String myResultFile = fileDialog.open();
 
       this.diffviewer = diffviewer;
 
       // If operation not canceled
-      if (resultFile != null)
+      if (myResultFile != null)
       {
-         createFile(resultFile);
+         createFile(myResultFile);
 
          exportFromViewer();
       }
@@ -70,7 +74,7 @@ public class CSVExporter
       // Header
       for (TreeColumn treeColumn : diffviewer.getTree().getColumns())
       {
-         if (/* treeColumn.getResizable() && */!(treeColumn.getWidth() == 0))
+         if (/* treeColumn.getResizable() && */treeColumn.getWidth() != 0)
          {
             writeField(treeColumn.getText());
          }
@@ -84,7 +88,7 @@ public class CSVExporter
          for (int j = 0; j < nbColumn; j++)
          {
             TreeColumn treeColumn = diffviewer.getTree().getColumns()[j];
-            if (!(treeColumn.getWidth() == 0))
+            if (treeColumn.getWidth() != 0)
             {
                String string = diffviewer.getTree().getItem(i).getText(j);
 
@@ -99,30 +103,23 @@ public class CSVExporter
       resultFile.close();
    }
 
-   private void createFile(String resultCVSFile)
-   {
-      try
-      {
-         File errorFile = new File(resultCVSFile);
-         if (errorFile.exists())
-         {
-            errorFile.delete();
-         }
+  private void createFile(String resultCVSFile) {
+    try (FileWriter csvFileWriter = new FileWriter(resultCVSFile)) {
+      File errorFile = new File(resultCVSFile);
+      if (errorFile.exists()) {
+        errorFile.delete();
+      }
 
-         resultFile = new PrintWriter(new BufferedWriter(new FileWriter(resultCVSFile)));
-      }
-      catch (FileNotFoundException e)
-      {
-         MessageBox lMessageBox = new MessageBox(new Shell(), SWT.OK);
-         lMessageBox.setText("Write EXCEL file");
-         lMessageBox.setMessage("Write operation failed \n" + e.getMessage());
-         lMessageBox.open();
-      }
-      catch (IOException e)
-      {
-         e.printStackTrace();
-      }
-   }
+      resultFile = new PrintWriter(new BufferedWriter(csvFileWriter));
+    } catch (FileNotFoundException e) {
+      MessageBox lMessageBox = new MessageBox(new Shell(), SWT.OK);
+      lMessageBox.setText("Write EXCEL file");
+      lMessageBox.setMessage("Write operation failed \n" + e.getMessage());
+      lMessageBox.open();
+    } catch (IOException e) {
+      logger.log(Level.SEVERE, e.getMessage(), e);
+    }
+  }
 
    /**
     * writeField Write a String followed by a ";"

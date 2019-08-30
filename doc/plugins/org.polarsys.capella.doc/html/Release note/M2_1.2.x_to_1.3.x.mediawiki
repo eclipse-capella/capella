@@ -1,0 +1,85 @@
+= Metamodel changes =
+
+== From Capella 1.2.x to 1.3.x ==
+
+=== Modification of all NSURI ===
+
+* http://www.polarsys.org/capella/core/.../1.2.0 to http://www.polarsys.org/capella/core/.../1.3.0
+* http://www.polarsys.org/capella/common/.../1.2.0 to http://www.polarsys.org/capella/common/.../1.3.0
+
+=== [Bugzilla 2092][M2] Add annotations in Capella M2 to specify queries for derived features ===
+
+The existing annotation http://www.polarsys.org/capella/derived as been enhanced by adding Viatra implementation information. It describes how the derived reference can be computed using Viatra queries.
+
+It is based on two added details on the annotation:
+
+* viatra.expression, describing how the derived reference is implemented.
+* viatra.variant, describing which kind of implementation is described in the expression. (alias, opposite, patternbody, freeform, unimplemented)
+
+According to the value of viatra.variant, a Viatra pattern can be created for the given derived reference:
+
+[[Image:../Images/viatra.png]]
+
+For a TypeA, referencing TypeB by the derived reference containing such annotation. TypeA.reference:TypeB, reference is computed by:
+
+{|
+!viatra.variant
+!viatra.expression
+!implied pattern
+|-
+|alias
+|referenceName
+|
+ pattern (self: TypeA, target: TypeB) { 
+  TypeA.referenceName(self, target) 
+ }
+|-
+|opposite
+|referenceName 
+|
+ pattern (self: TypeA, target: TypeB) {
+   TypeB.referenceName(target, self) 
+ }
+|-
+|patternbody
+|expression 
+|
+ pattern (self: TypeA, target: TypeB) {
+  expression
+ } 
+|-
+|freeform
+|expression
+|
+ expression
+|-
+|unimplemented
+|N/A 
+|
+ N/A (this reference is not implemented/implementable by a Viatra pattern) 
+|}
+
+=== [Bugzilla 2392][M2] Add new concepts in Capella's meta-model for the enhancements of Functional Chain ===
+* The meta-class '''SequenceLinkEnd''' has been added.
+* The meta-class '''ReferenceHierarchyContext''' has been added.
+* The meta-class '''FunctionalChainInvolvementLink''' that inherits from ''FunctionalChainInvolvement'' and ''ReferenceHierarchyContext'' meta-class has been added.
+* The meta-class '''FunctionalChainInvolvementFunction''' that inherits from ''FunctionalChainInvolvement'' and ''SequenceLinkEnd'' meta-class has been added.
+* The meta-class '''SequenceLink''' that inherits from ''ReferenceHierarchyContext'' meta-class has been added.
+* The meta-class '''ControlNode''' that inherits from ''SequenceLinkEnd'' has been added.
+* The enumeration '''ControlNodeKind''' with 3 values OR, AND and ITERATE has been added.
+* The reference '''FunctionalChain.preCondition''' has been added.
+* The reference '''FunctionalChain.postCondition''' has been added.
+* The containment reference '''FunctionalChain.ownedSequenceNodes''' has been added.
+* The containment reference '''FunctionalChain.ownedSequenceLinks''' has been added.
+* The derived reference '''FunctionalChainInvolvementFunction.outgoingInvolvementLinks''' has been added.
+* The derived reference '''FunctionalChainInvolvementFunction.incomingInvolvementLinks''' has been added.
+* The reference '''FunctionalChainInvolvementLink.source''' has been added.
+* The reference '''FunctionalChainInvolvementLink.target''' has been added.
+* The reference '''FunctionalChainInvolvementLink.exchangeContext''' has been added.
+* The reference '''FunctionalChainInvolvement.exchangedItems''' has been moved to the concrete meta-class ''FunctionalChainInvolvementLink.exchangedItems''.
+* The reference '''FunctionalChainInvolvement.previousFunctionalChainInvolvements''' has been set as ''derived''.
+* The reference '''SequenceLink.links''' has been added.
+* The reference '''SequenceLink.source''' has been added.
+* The reference '''SequenceLink.target''' has been added.
+* The reference '''ReferenceHierarchyContext.sourceReferenceHierarchy''' has been added.
+* The reference '''ReferenceHierarchyContext.targetReferenceHierarchy''' has been added.

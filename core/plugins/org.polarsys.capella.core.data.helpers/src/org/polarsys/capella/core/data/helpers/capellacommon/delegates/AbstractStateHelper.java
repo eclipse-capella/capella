@@ -66,7 +66,7 @@ public class AbstractStateHelper {
   }
 
   protected List<AbstractState> getRealizedAbstractStates(AbstractState element) {
-    List<AbstractState> result = new ArrayList<AbstractState>();
+    List<AbstractState> result = new ArrayList<>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof AbstractStateRealization) {
         AbstractState state = ((AbstractStateRealization) trace).getRealizedAbstractState();
@@ -79,7 +79,7 @@ public class AbstractStateHelper {
   }
 
   protected List<AbstractState> getRealizingAbstractStates(AbstractState element) {
-    List<AbstractState> result = new ArrayList<AbstractState>();
+    List<AbstractState> result = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof AbstractStateRealization) {
         AbstractState state = ((AbstractStateRealization) trace).getRealizingAbstractState();

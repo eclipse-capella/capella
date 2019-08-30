@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -46,6 +46,10 @@
       <refreshExtensionProvider
             priority="high"
             providerClass="org.polarsys.capella.core.sirius.analysis.refresh.extension.ContextualCapabilityRefreshExtensionProvider">
+      </refreshExtensionProvider>
+      <refreshExtensionProvider
+            priority="high"
+            providerClass="org.polarsys.capella.core.sirius.analysis.refresh.extension.ContextualCapabilityRealizationInvolvementRefreshExtensionProvider">
       </refreshExtensionProvider>
       <refreshExtensionProvider
             priority="high"
@@ -178,6 +182,10 @@
       <javaActions
             actionClass="org.polarsys.capella.core.sirius.analysis.actions.extensions.DoIRReorderExternalAction"
             id="org.polarsys.capella.core.sirius.analysis.actions.extensions.doIRReorder">
+      </javaActions>
+      <javaActions
+            actionClass="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectOrCreateFunctionalExchangeWizard"
+            id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectOrCreateFunctionalExchangeWizard">
       </javaActions>
       
    </extension>
@@ -312,6 +320,22 @@
           </visibleWhen>
        </command>
     </menuContribution>
+    <menuContribution
+          locationURI="popup:org.polarsys.capella.core.accelerators?after=groupAccelerator">
+       <command
+             commandId="org.polarsys.capella.core.platform.sirius.ui.actions.AcceleratorFromFCILToSequenceLink"
+             icon="icons/full/obj16/SequenceLink.gif">
+          <visibleWhen
+                checkEnabled="true">
+          </visibleWhen>
+       </command>
+       <command
+             commandId="org.polarsys.capella.core.platform.sirius.ui.actions.AcceleratorFromSequenceLinkToFCIL">
+          <visibleWhen
+                checkEnabled="true">
+          </visibleWhen>
+       </command>
+    </menuContribution>
  </extension>
  <extension
        point="org.eclipse.ui.commands">
@@ -415,6 +439,16 @@
              id="org.eclipse.ui.commands.toggleState">
        </state>
     </command>
+    <command
+          defaultHandler="org.polarsys.capella.core.sirius.analysis.accelerators.AcceleratorOnSequenceLinkHandler"
+          id="org.polarsys.capella.core.platform.sirius.ui.actions.AcceleratorFromSequenceLinkToFCIL"
+          name="Create new Exchange">
+    </command>
+    <command
+          defaultHandler="org.polarsys.capella.core.sirius.analysis.accelerators.AcceleratorOnFCILinkHandler"
+          id="org.polarsys.capella.core.platform.sirius.ui.actions.AcceleratorFromFCILToSequenceLink"
+          name="Create new Sequence Link">
+    </command>
  </extension>
  <extension
        point="org.eclipse.ui.handlers">
@@ -488,5 +522,35 @@
        <queryAlgorithm
              algorithm="org.polarsys.capella.core.sirius.analysis.queries.configurationItemServices.GetAllRealizablePhysicalArtefacts"></queryAlgorithm>
     </querySpecification>    
+ </extension>
+ <extension
+       point="org.eclipse.ui.preferencePages">
+    <page
+          category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+          class="org.polarsys.capella.core.sirius.analysis.preferences.DiagramsPreferencePage"
+          id="org.polarsys.capella.core.sirius.analysis.preferences.DiagramsPreferencePage"
+          name="Diagrams">
+    </page>
+ </extension>
+ <extension
+       point="org.eclipse.core.runtime.preferences">
+    <initializer
+          class="org.polarsys.capella.core.sirius.analysis.preferences.DiagramPreferenceInitializer">
+    </initializer>
+ </extension>
+ <extension
+       point="org.eclipse.ui.propertyPages">
+    <page
+          category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+          class="org.polarsys.capella.core.sirius.analysis.preferences.DiagramsPreferencePage"
+          id="org.polarsys.capella.core.sirius.analysis.preferences.DiagramsPreferencePage"
+          name="Diagrams"
+          objectClass="org.eclipse.core.resources.IProject">
+       <enabledWhen>
+          <reference
+                definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression">
+          </reference>
+       </enabledWhen>
+    </page>
  </extension>
 </plugin>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,9 +35,8 @@ import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.FilteredList;
 import org.eclipse.ui.progress.WorkbenchJob;
-
-import org.polarsys.capella.common.ui.toolkit.internal.StringMatcher;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.ui.toolkit.internal.StringMatcher;
 
 /**
  * A composite widget which holds a list of elements for user selection. The elements are sorted alphabetically. Optionally, the elements can be filtered and
@@ -203,7 +202,7 @@ public class MdeFilteredList extends Composite {
 
   Label[] fLabels;
 
-  Vector<Image> fImages = new Vector<Image>();
+  Vector<Image> fImages = new Vector<>();
 
   int[] fFoldedIndices;
 
@@ -353,7 +352,7 @@ public class MdeFilteredList extends Composite {
     int length = fElements.length;
     // fill labels
     fLabels = new Label[length];
-    Set<Image> imageSet = new HashSet<Image>();
+    Set<Image> imageSet = new HashSet<>();
     for (int i = 0; i != length; i++) {
       String text = fLabelProvider.getText(fElements[i]);
       Image image = fLabelProvider.getImage(fElements[i]);
@@ -544,7 +543,7 @@ public class MdeFilteredList extends Composite {
    */
   public Object[] getFoldedElements(int index) {
     if ((index < 0) || (index >= fFoldedCount)) {
-      return null;
+      return new Object[] {};
     }
     int start = fFoldedIndices[index];
     int count = (index == fFoldedCount - 1) ? fFilteredCount - start : fFoldedIndices[index + 1] - start;
@@ -587,7 +586,9 @@ public class MdeFilteredList extends Composite {
     if (((fFilter == null) || (fFilter.length() == 0)) && !fMatchEmptyString) {
       return 0;
     }
-    fFilterMatcher.setFilter(fFilter.trim(), fIgnoreCase, false);
+    if(fFilter != null) {
+      fFilterMatcher.setFilter(fFilter.trim(), fIgnoreCase, false);    	
+    }
     int k = 0;
     for (int i = 0; i != fElements.length; i++) {
       if (fFilterMatcher.match(fElements[i])) {

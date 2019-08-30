@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,7 +24,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
-
+import org.polarsys.capella.common.mdsofa.common.misc.Couple;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.AbstractData;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.DataContentProvider;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.DataLabelProvider;
@@ -33,12 +33,18 @@ import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
 import org.polarsys.capella.common.ui.toolkit.viewers.transfer.AbstractTransferViewer2;
 import org.polarsys.capella.common.ui.toolkit.viewers.transfer.TransferTreeListViewer;
 import org.polarsys.capella.common.ui.toolkit.widgets.handler.SelectionChangedHandler;
-import org.polarsys.capella.common.mdsofa.common.misc.Couple;
 
 /**
  * Dialog that displays a {@link TransferTreeListViewer}
  */
 public class TransferTreeListDialog extends AbstractViewerDialog {
+
+  public static final String TRANSFERT_TREELIST_DIALOG = "org.polarsys.capella.common.ui.toolkit.dialogs.transferTreeListElements";
+  
+  public static final String TRANSFERT_TREELIST_DIALOG_LEFT = "org.polarsys.capella.common.ui.toolkit.dialogs.transferTreeListElements.leftPane";
+  
+  public static final String TRANSFERT_TREELIST_DIALOG_RIGHT = "org.polarsys.capella.common.ui.toolkit.dialogs.transferTreeListElements.rightPane";
+  
   /**
    * Default TreeViewer style bits constant.
    */

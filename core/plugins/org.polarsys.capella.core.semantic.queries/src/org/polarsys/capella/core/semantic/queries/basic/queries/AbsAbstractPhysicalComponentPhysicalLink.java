@@ -21,6 +21,8 @@ import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
 import org.polarsys.capella.core.data.pa.AbstractPhysicalComponent;
 import org.polarsys.capella.common.helpers.query.IQuery;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 /**
  * Return outgoing or incoming physical links of current physical component and physical actor
  */
@@ -39,10 +41,10 @@ public abstract class AbsAbstractPhysicalComponentPhysicalLink implements IQuery
    */
   @Override
   public List<Object> compute(Object object) {
-    List<Object> result = new ArrayList<Object>();
+    List<Object> result = new ArrayList<>();
     if (object instanceof AbstractPhysicalComponent) {
       AbstractPhysicalComponent absPhyComp = (AbstractPhysicalComponent) object;
-      Collection<PhysicalLink> allRelatedPhysicalLinks = PhysicalLinkExt.getAllRelatedPhysicalLinks(absPhyComp);
+      Collection<PhysicalLink> allRelatedPhysicalLinks = getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, absPhyComp);
       for (PhysicalLink physicalLink : allRelatedPhysicalLinks) {
         result.add(physicalLink);
       }

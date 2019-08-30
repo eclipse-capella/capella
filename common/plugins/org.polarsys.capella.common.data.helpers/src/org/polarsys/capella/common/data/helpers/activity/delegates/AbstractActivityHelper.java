@@ -53,7 +53,7 @@ public class AbstractActivityHelper {
 	
 	protected List<StructuredActivityNode> getOwnedStructureNodes (AbstractActivity element) {
 		List <ActivityGroup> groups = element.getOwnedGroups();
-		List <StructuredActivityNode> ret = new ArrayList<StructuredActivityNode> ();
+		List <StructuredActivityNode> ret = new ArrayList<> ();
 
 		for(ActivityGroup group: groups) {
 			if(group instanceof StructuredActivityNode){

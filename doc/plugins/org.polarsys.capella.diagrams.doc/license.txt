@@ -22,7 +22,7 @@ CSA_Contextual System Actors.jpg
 CSDF_Contextual System Data Flow.jpg
 EAB_EPBS Architecture Blank.jpg
 ES_Exchange Scenario.jpg
-FCD_Functional Chain Description.jpg
+FCD_Functional Chain Description.png
 FS_Function Scenario.jpg
 IDB_Interfaces Diagram Blank.jpg
 ID_Interface Diagram.jpg
@@ -42,7 +42,7 @@ OAS_Operational Activity Scenario.jpg
 OCB_Operational Capabilities Blank.jpg
 OEBD_Operational Entity Breakdown.jpg
 OES_Operational Entity Scenario.jpg
-OPD_Operational Process Description.jpg
+OPD_Operational Process Description.png
 ORB_Operational Role Blank.jpg
 PAB_Physical Architecture Blank.jpg
 PCBD_Physical Component Breakdown.jpg
@@ -591,5 +591,17 @@ UnlimitedNaturalType.gif
 Use.gif
 ValuePkg.gif
 XiModelFile.gif
-
-
+ControlNode.gif
+ControlNode_And.gif
+ControlNode_Iterate.gif
+ControlNode_Or.gif
+FunctionalChainInvolvementFunction.gif
+FunctionalChainInvolvementFunction_OA.gif
+FunctionalChainInvolvementLinkOA_AndFunction.gif
+FunctionalChainInvolvementLinkOA_ToExchange.gif
+FunctionalChainInvolvementLinkOA_ToFunction.gif
+FunctionalChainInvolvementLink_AndFunction.gif
+FunctionalChainInvolvementLink_ToExchange.gif
+FunctionalChainInvolvementLink_ToFunction.gif
+FunctionalChainReference_OA.gif
+SequenceLink.gif

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,24 +24,25 @@ public class FastLinkerLabelProvider extends CapellaNavigatorLabelProvider {
 	@Override
 	public Image getImage(Object object) {
 		if (object instanceof Collection) {
-			if (((Collection) object).isEmpty())
+			Collection<?> collection = (Collection<?>)object;
+			if (collection.isEmpty())
 				return null;
-			if (((Collection) object).size() == 1)
+			else if (collection.size() == 1)
 				return super
-						.getImage(((Collection) object).iterator().next());
+						.getImage(collection.iterator().next());
 			else {
-				EClass eClass = null;
-				Iterator it = ((Collection) object).iterator();
+				Object next = collection.iterator().next();
+				EClass eClass = ((EObject) next).eClass();
+				Iterator<?> it = collection.iterator();
 				while (it.hasNext()) {
 					Object current = it.next();
 					if (current instanceof EObject) {
-						if (eClass == null)
-							eClass = ((EObject) current).eClass();
-						else if (!((EObject) current).eClass().equals(eClass))
+						if (!((EObject) current).eClass().equals(eClass))
 							return null;
-					} else
+					} else {
 						return null;
-					return super.getImage(((Collection) object).iterator()
+					}
+					return super.getImage(collection.iterator()
 							.next());
 				}
 			}
@@ -66,8 +67,9 @@ public class FastLinkerLabelProvider extends CapellaNavigatorLabelProvider {
 					if (current instanceof EObject) {
 						
 						array += ", " + super.getText(current);
-					} else
+					} else {
 						return null;
+					}
 
 				}
 				return eClass.getName() + " [ " + array.substring(2) + " ]";

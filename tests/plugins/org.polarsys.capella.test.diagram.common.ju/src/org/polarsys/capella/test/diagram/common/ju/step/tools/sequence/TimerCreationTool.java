@@ -21,28 +21,26 @@ import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 
-
 public class TimerCreationTool extends CreateDEdgeTool {
-	public TimerCreationTool(DiagramContext context, String toolName, String sourceView, String targetView) {
-		    super(context, toolName, sourceView, targetView);
-	}
-		  
-	/**
-	 * @see org.polarsys.capella.test.common.AbstractExtendedTest#postTestRun()
-	 */
-	@SuppressWarnings("synthetic-access")
-	@Override
-	protected void postRunTest() {
-		super.postRunTest();
-		DDiagram diagram = getExecutionContext().getDiagram();
-		DiagramHelper.refreshDiagram(diagram);
-		        
-		if (_newEdgesElements.size() != 1) {
-			fail("New edge expected");    
-		}
-		
-		SequenceMessage sequenceMessage = (SequenceMessage) ((DEdge) _newEdgesElements.iterator().next()).getTarget();
-		Assert.assertEquals("TIMER kind expected.", MessageKind.TIMER, sequenceMessage.getKind());
-	}
-}
+  public TimerCreationTool(DiagramContext context, String toolName, String sourceView, String targetView) {
+    super(context, toolName, sourceView, targetView);
+  }
 
+  /**
+   * @see org.polarsys.capella.test.common.AbstractExtendedTest#postTestRun()
+   */
+  @SuppressWarnings("synthetic-access")
+  @Override
+  protected void postRunTest() {
+    super.postRunTest();
+    DDiagram diagram = getDiagramContext().getDiagram();
+    DiagramHelper.refreshDiagram(diagram);
+
+    if (_newEdgesElements.size() != 1) {
+      fail("New edge expected");
+    }
+
+    SequenceMessage sequenceMessage = (SequenceMessage) ((DEdge) _newEdgesElements.iterator().next()).getTarget();
+    Assert.assertEquals("TIMER kind expected.", MessageKind.TIMER, sequenceMessage.getKind());
+  }
+}

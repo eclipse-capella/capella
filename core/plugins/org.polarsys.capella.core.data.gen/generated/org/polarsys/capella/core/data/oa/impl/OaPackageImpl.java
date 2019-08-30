@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.polarsys.capella.common.data.activity.ActivityPackage;
+import org.polarsys.capella.common.data.behavior.BehaviorPackage;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl;
@@ -83,6 +84,7 @@ import org.polarsys.capella.core.data.requirement.RequirementPackage;
 import org.polarsys.capella.core.data.requirement.impl.RequirementPackageImpl;
 import org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage;
 import org.polarsys.capella.core.data.sharedmodel.impl.SharedmodelPackageImpl;
+import org.polarsys.kitalpha.emde.model.EmdePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -348,7 +350,10 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 		isInited = true;
 
 		// Initialize simple dependencies
+		ModellingcorePackage.eINSTANCE.eClass();
+		EmdePackage.eINSTANCE.eClass();
 		ActivityPackage.eINSTANCE.eClass();
+		BehaviorPackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
 		CapellamodellerPackageImpl theCapellamodellerPackage = (CapellamodellerPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CapellamodellerPackage.eNS_URI) instanceof CapellamodellerPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CapellamodellerPackage.eNS_URI) : CapellamodellerPackage.eINSTANCE);
@@ -1844,14 +1849,12 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 		// Create annotations
 		// http://www.polarsys.org/capella/2007/UML2Mapping
 		createUML2MappingAnnotations();
-		// http://www.polarsys.org/kitalpha/dsl/2007/dslfactory
-		createDslfactoryAnnotations();
+		// http://www.polarsys.org/kitalpha/emde/1.0.0/extension
+		createExtensionAnnotations();
 		// http://www.polarsys.org/kitalpha/ecore/documentation
 		createDocumentationAnnotations();
 		// http://www.polarsys.org/capella/semantic
 		createSemanticAnnotations();
-		// http://www.polarsys.org/kitalpha/emde/1.0.0/extension
-		createExtensionAnnotations();
 		// http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping
 		createMappingAnnotations();
 		// http://www.polarsys.org/capella/derived
@@ -1871,26 +1874,6 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 		   source, 
 		   new String[] {
 			 "profileName", "Capella" //$NON-NLS-1$ //$NON-NLS-2$
-		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://www.polarsys.org/kitalpha/dsl/2007/dslfactory</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createDslfactoryAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$	
-		addAnnotation
-		  (this, 
-		   source, 
-		   new String[] {
-			 "trackResourceModification", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "useUUIDs", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -4042,176 +4025,246 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 		  (getOperationalAnalysis_ContainedOperationalCapabilityPkg(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ownedAbstractCapabilityPkg" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getOperationalAnalysis_ContainedOperationalActivityPkg(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ownedFunctionPkg" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getOperationalAnalysis_AllocatingSystemAnalyses(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "allocatingArchitectures" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getOperationalActivity_ActivityAllocations(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "incomingTraces" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getOperationalActivity_OwnedSwimlanes(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "unimplemented", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "Nothing in helpers ?" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getOperationalActivity_OwnedProcess(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ownedFunctionalChains" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getOperationalActivity_AllocatorEntities(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "OperationalActivity.incomingTraces(self, cfa);\r\nComponentFunctionalAllocation.sourceElement(cfa, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getOperationalActivity_RealizingSystemFunctions(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "inFunctionRealizations.allocatingFunction" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getOperationalActivity_AllocatingRoles(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "activityAllocations.role" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getOperationalActivity_ContainedOperationalActivities(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ownedFunctions" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getOperationalActivity_ChildrenOperationalActivities(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "subFunctions" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getOperationalProcess_InvolvingOperationalCapabilities(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "OperationalProcess.involvingInvolvements(self, fcaci);\r\nFunctionalChainAbstractCapabilityInvolvement.capability(fcaci, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getSwimlane_RepresentedEntity(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "representedElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getOperationalCapability_RealizingCapabilities(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "OperationalCapability.incomingTraces(self, acr);\r\nAbstractCapabilityRealization.realizingCapability(acr, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getOperationalCapability_InvolvedEntities(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "OperationalCapability.involvedInvolvements(self, eoci);\r\nEntityOperationalCapabilityInvolvement.entity(eoci, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getActivityAllocation_Role(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "sourceElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getActivityAllocation_Activity(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "targetElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getRole_RoleAllocations(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "incomingTraces" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getRole_ActivityAllocations(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "outgoingTraces" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getRole_AllocatingEntities(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "roleAllocations.entity" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getRole_AllocatedOperationalActivities(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "activityAllocations.activity" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getRoleAllocation_Role(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "targetElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getRoleAllocation_Entity(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "sourceElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getEntity_RoleAllocations(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "outgoingTraces" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getEntity_SubEntities(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ownedPartitions.type" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getEntity_AllocatedOperationalActivities(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "allocatedFunctions" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getEntity_AllocatedRoles(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "roleAllocations.role" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getEntity_RealizingSystems(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "Entity.incomingTraces(self, oer);\r\n\tOperationalEntityRealization.allocatingComponent(oer, target);\r\n} or {\r\n\tEntity.incomingTraces(self, oar);\r\n\tOperationalActorRealization.allocatingComponent(oar, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getEntity_RealizingActors(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "Entity.incomingTraces(self, oer);\r\n\tOperationalEntityRealization.allocatingComponent(oer, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getEntity_InvolvingOperationalCapabilities(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "Entity.involvingInvolvements(self, eoci);\r\nEntityOperationalCapabilityInvolvement.capability(eoci, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getOperationalActor_RealizingSystemActors(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "OperationalActor.incomingTraces(self, oar);\r\n\tOperationalActorRealization.allocatingComponent(oar, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getCommunicationMean_SourceEntity(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "source" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getCommunicationMean_TargetEntity(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "target" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getEntityOperationalCapabilityInvolvement_Entity(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "involved" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getEntityOperationalCapabilityInvolvement_Capability(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "involver" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 

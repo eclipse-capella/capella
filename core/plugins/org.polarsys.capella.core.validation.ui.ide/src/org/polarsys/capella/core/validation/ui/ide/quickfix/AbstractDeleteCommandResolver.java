@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,8 +37,10 @@ public abstract class AbstractDeleteCommandResolver extends AbstractCapellaMarke
 
   /**
    * QF implementations must override this method to give the element(s) to delete.
+   * 
    * @param obj
-   * @return the Object to delete or a Collection of Objects to delete, <code>null</code> or an empty Collection if no element to delete.
+   * @return the Object to delete or a Collection of Objects to delete, <code>null</code> or an empty Collection if no
+   *         element to delete.
    */
   public abstract Object getElementToDelete(Object obj);
 
@@ -72,9 +74,11 @@ public abstract class AbstractDeleteCommandResolver extends AbstractCapellaMarke
       @Override
       public void run() {
         // Ask user for confirmation.
-        boolean confirmDeletion = CapellaDeleteCommand.confirmDeletion(TransactionHelper.getExecutionManager(modelElement), listOfElementsToDelete[0]);
+        boolean confirmDeletion = CapellaDeleteCommand
+            .confirmDeletion(TransactionHelper.getExecutionManager(modelElement), listOfElementsToDelete[0]);
         if (confirmDeletion) {
-          CapellaDeleteCommand command = new CapellaDeleteCommand(TransactionHelper.getExecutionManager(modelElement), listOfElementsToDelete[0], false, false, true);
+          CapellaDeleteCommand command = new CapellaDeleteCommand(TransactionHelper.getExecutionManager(modelElement),
+              listOfElementsToDelete[0], false, false, true);
           if (command.canExecute()) {
             command.execute();
             // Element (s) deleted -> delete maker too.
@@ -96,35 +100,31 @@ public abstract class AbstractDeleteCommandResolver extends AbstractCapellaMarke
     }
 
   }
-  
-  
+
   @Override
   public void run(IMarker[] markers, IProgressMonitor monitor) {
-  
+
     final Set<EObject> toDelete = new HashSet<EObject>();
-    
-    for (IMarker marker : markers){
+
+    for (IMarker marker : markers) {
       // Get ModelElement associated to the marker.
       List<EObject> modelElements = getModelElements(marker);
       if (modelElements.isEmpty()) {
         return;
       }
-      
+
       Object elementToDelete = getElementToDelete(modelElements.get(0));
-      
+
       if (elementToDelete instanceof Collection<?>) {
-        if (((Collection<?>) elementToDelete).isEmpty()) {
-          return;
-        }
         toDelete.addAll((Collection<? extends EObject>) elementToDelete);
       } else if (elementToDelete != null) {
         toDelete.add((EObject) elementToDelete);
       }
     }
-    
+
     final AtomicReference<Boolean> mustDeleteMarker = new AtomicReference<Boolean>(Boolean.FALSE);
-    
-    if (toDelete.isEmpty()){
+
+    if (toDelete.isEmpty()) {
       mustDeleteMarker.set(Boolean.TRUE);
     } else {
       final ExecutionManager em = TransactionHelper.getExecutionManager(toDelete);
@@ -143,20 +143,24 @@ public abstract class AbstractDeleteCommandResolver extends AbstractCapellaMarke
           }
         }
       };
-      em.execute(abstrctCommand);
+      if (em != null)
+        em.execute(abstrctCommand);
+      else
+        mustDeleteMarker.set(Boolean.TRUE);
     }
 
     // Remove the marker if the element is deleted.
     if (mustDeleteMarker.get().booleanValue()) {
-      for (IMarker marker : markers){
-        if (marker.exists()){
+      for (IMarker marker : markers) {
+        if (marker.exists()) {
           try {
             marker.delete();
           } catch (CoreException exception) {
-            StatusManager.getManager().handle(new Status(IStatus.ERROR, PluginActivator.getDefault().getPluginId(), exception.getMessage(), exception));
+            StatusManager.getManager().handle(new Status(IStatus.ERROR, PluginActivator.getDefault().getPluginId(),
+                exception.getMessage(), exception));
           }
         }
       }
-    } 
+    }
   }
 }

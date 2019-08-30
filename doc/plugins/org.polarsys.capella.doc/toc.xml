@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?NLS TYPE="org.eclipse.help.toc"?>
 <!--
-  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -13,12 +13,140 @@
 <toc label="Capella Guide" topic="html/toc.html" sort="false">
    <topic label="Release Note">
       <topic label="API changes">
+         <topic href="html/Release note/API_1.2.x_to_1.3.x.html" label="Capella 1.2.x to 1.3.x">
+         <topic href="html/Release note/API_1.2.x_to_1.3.x.html#Major_changes" label="Major changes">
+			<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Usage_of_Representations_Descriptors_instead_of_Representations" label="Usage of Representations Descriptors instead of Representations"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#AQL_instead_of_Acceleo2" label="AQL instead of Acceleo2"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Property_tabs_identifiers" label="Property tabs identifiers"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Extensible_Menus_have_been_updated" label="Extensible Menus have been updated">
+					<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Migrated_menus" label="Migrated menus"></topic>
+				</topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Menu_visibility" label="Menu visibility"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Property_Tester" label="Property Tester"></topic>
+			</topic>
+			<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Raw_API_changes_from_1.2.0_to_1.3.0" label="Raw API changes from 1.2.0 to 1.3.0">
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.common.flexibility.properties" label="Changes in org.polarsys.capella.common.flexibility.properties"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.common.flexibility.wizards" label="Changes in org.polarsys.capella.common.flexibility.wizards"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.common.helpers" label="Changes in org.polarsys.capella.common.helpers"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.common.platform.sirius.customization" label="Changes in org.polarsys.capella.common.platform.sirius.customization"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.common.platform.sirius.ted" label="Changes in org.polarsys.capella.common.platform.sirius.ted"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.common.re" label="Changes in org.polarsys.capella.common.re"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.common.tools.report.appenders.reportlogview" label="Changes in org.polarsys.capella.common.tools.report.appenders.reportlogview"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.common.tools.report" label="Changes in org.polarsys.capella.common.tools.report"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.common.transition" label="Changes in org.polarsys.capella.common.transition"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.common.ui.massactions.core" label="Changes in org.polarsys.capella.common.ui.massactions.core"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.common.ui.massactions" label="Changes in org.polarsys.capella.common.ui.massactions"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.common.ui" label="Changes in org.polarsys.capella.common.ui"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.common.xmisupport" label="Changes in org.polarsys.capella.common.xmisupport"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.common" label="Changes in org.polarsys.capella.common"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.af.integration" label="Changes in org.polarsys.capella.core.af.integration"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.commandline.core" label="Changes in org.polarsys.capella.core.commandline.core"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.compare" label="Changes in org.polarsys.capella.core.compare"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.data.business.queries" label="Changes in org.polarsys.capella.core.data.business.queries"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.data.core.ui.quickfix" label="Changes in org.polarsys.capella.core.data.core.ui.quickfix"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.data.core.validation" label="Changes in org.polarsys.capella.core.data.core.validation"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.data.fa.ui.wizards" label="Changes in org.polarsys.capella.core.data.fa.ui.wizards"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.data.gen.edit.decorators" label="Changes in org.polarsys.capella.core.data.gen.edit.decorators"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.data.gen.editor" label="Changes in org.polarsys.capella.core.data.gen.editor"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.data.information.ui.quickfix" label="Changes in org.polarsys.capella.core.data.information.ui.quickfix"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.data.interaction.properties" label="Changes in org.polarsys.capella.core.data.interaction.properties"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.data.la.ui.wizards" label="Changes in org.polarsys.capella.core.data.la.ui.wizards"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.data.menu.contributions" label="Changes in org.polarsys.capella.core.data.menu.contributions"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.data.migration" label="Changes in org.polarsys.capella.core.data.migration"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.diagram.helpers" label="Changes in org.polarsys.capella.core.diagram.helpers"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.libraries.ui" label="Changes in org.polarsys.capella.core.libraries.ui"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.libraries" label="Changes in org.polarsys.capella.core.libraries"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.model.handler" label="Changes in org.polarsys.capella.core.model.handler"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.model.helpers" label="Changes in org.polarsys.capella.core.model.helpers"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.model.preferences" label="Changes in org.polarsys.capella.core.model.preferences"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.model.skeleton" label="Changes in org.polarsys.capella.core.model.skeleton"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.platform.eclipse.ui.trace" label="Changes in org.polarsys.capella.core.platform.eclipse.ui.trace"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.platform.sirius.clipboard" label="Changes in org.polarsys.capella.core.platform.sirius.clipboard"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.platform.sirius.ui.actions" label="Changes in org.polarsys.capella.core.platform.sirius.ui.actions"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.platform.sirius.ui.navigator" label="Changes in org.polarsys.capella.core.platform.sirius.ui.navigator"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.platform.sirius.ui.perspective" label="Changes in org.polarsys.capella.core.platform.sirius.ui.perspective"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.platform.sirius.ui.project" label="Changes in org.polarsys.capella.core.platform.sirius.ui.project"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.preferences" label="Changes in org.polarsys.capella.core.preferences"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.projection.commands" label="Changes in org.polarsys.capella.core.projection.commands"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.projection.interfaces" label="Changes in org.polarsys.capella.core.projection.interfaces"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.re.project" label="Changes in org.polarsys.capella.core.re.project"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.re" label="Changes in org.polarsys.capella.core.re"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.refinement.commands" label="Changes in org.polarsys.capella.core.refinement.commands"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.refinement.scenario" label="Changes in org.polarsys.capella.core.refinement.scenario"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.semantic.queries.sirius" label="Changes in org.polarsys.capella.core.semantic.queries.sirius"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.semantic.queries" label="Changes in org.polarsys.capella.core.semantic.queries"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.sirius.analysis" label="Changes in org.polarsys.capella.core.sirius.analysis"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.sirius.ui" label="Changes in org.polarsys.capella.core.sirius.ui"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.tiger" label="Changes in org.polarsys.capella.core.tiger"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.transition.common.ui" label="Changes in org.polarsys.capella.core.transition.common.ui"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.transition.diagram" label="Changes in org.polarsys.capella.core.transition.diagram"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.transition.system.topdown" label="Changes in org.polarsys.capella.core.transition.system.topdown"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.ui.metric" label="Changes in org.polarsys.capella.core.ui.metric"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.ui.properties.richtext" label="Changes in org.polarsys.capella.core.ui.properties.richtext"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.ui.properties" label="Changes in org.polarsys.capella.core.ui.properties"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.ui.reportlog" label="Changes in org.polarsys.capella.core.ui.reportlog"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.ui.search" label="Changes in org.polarsys.capella.core.ui.search"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.ui.toolkit" label="Changes in org.polarsys.capella.core.ui.toolkit"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.validation.ui.ide" label="Changes in org.polarsys.capella.core.validation.ui.ide"></topic>
+			</topic>
+			<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Raw_API_changes_from_1.3.0_to_1.3.1" label="Raw API changes from 1.3.0 to 1.3.1">
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.common.flexibility.wizards_2" label="Changes in org.polarsys.capella.common.flexibility.wizards"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.common.re.ui" label="Changes in org.polarsys.capella.common.re.ui"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.common.re_2" label="Changes in org.polarsys.capella.common.re"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.common.tools.report.appenders.console" label="Changes in org.polarsys.capella.common.tools.report.appenders.console"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.common.tools.report_2" label="Changes in org.polarsys.capella.common.tools.report"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.common.transition_2" label="Changes in org.polarsys.capella.common.transition"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.common.ui.massactions.core_2" label="Changes in org.polarsys.capella.common.ui.massactions.core"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.common.ui.massactions_2" label="Changes in org.polarsys.capella.common.ui.massactions"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.common.ui.toolkit" label="Changes in org.polarsys.capella.common.ui.toolkit"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.common.ui_2" label="Changes in org.polarsys.capella.common.ui"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.common_2" label="Changes in org.polarsys.capella.common"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.data.business.queries_2" label="Changes in org.polarsys.capella.core.data.business.queries"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.data.core.ui.quickfix_2" label="Changes in org.polarsys.capella.core.data.core.ui.quickfix"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.data.core.validation_2" label="Changes in org.polarsys.capella.core.data.core.validation"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.data.fa.properties" label="Changes in org.polarsys.capella.core.data.fa.properties"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.data.fa.ui.quickfix" label="Changes in org.polarsys.capella.core.data.fa.ui.quickfix"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.data.fa.validation" label="Changes in org.polarsys.capella.core.data.fa.validation"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.data.gen.edit.decorators_2" label="Changes in org.polarsys.capella.core.data.gen.edit.decorators"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.data.gen.edit" label="Changes in org.polarsys.capella.core.data.gen.edit"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.data.gen" label="Changes in org.polarsys.capella.core.data.gen"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.data.helpers" label="Changes in org.polarsys.capella.core.data.helpers"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.data.information.ui.quickfix_2" label="Changes in org.polarsys.capella.core.data.information.ui.quickfix"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.data.information.validation" label="Changes in org.polarsys.capella.core.data.information.validation"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.data.interaction.ui.quickfix" label="Changes in org.polarsys.capella.core.data.interaction.ui.quickfix"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.data.interaction.validation" label="Changes in org.polarsys.capella.core.data.interaction.validation"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.data.migration_2" label="Changes in org.polarsys.capella.core.data.migration"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.diagram.helpers_2" label="Changes in org.polarsys.capella.core.diagram.helpers"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.explorer.activity.ui.richtext" label="Changes in org.polarsys.capella.core.explorer.activity.ui.richtext"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.libraries.extendedQueries" label="Changes in org.polarsys.capella.core.libraries.extendedQueries"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.libraries.ui_2" label="Changes in org.polarsys.capella.core.libraries.ui"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.model.handler_2" label="Changes in org.polarsys.capella.core.model.handler"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.model.helpers_2" label="Changes in org.polarsys.capella.core.model.helpers"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.platform.sirius.clipboard_2" label="Changes in org.polarsys.capella.core.platform.sirius.clipboard"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.platform.sirius.ui.navigator_2" label="Changes in org.polarsys.capella.core.platform.sirius.ui.navigator"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.projection.commands_2" label="Changes in org.polarsys.capella.core.projection.commands"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.re.ui" label="Changes in org.polarsys.capella.core.re.ui"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.semantic.queries_2" label="Changes in org.polarsys.capella.core.semantic.queries"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.sirius.analysis_2" label="Changes in org.polarsys.capella.core.sirius.analysis"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.sirius.ui_2" label="Changes in org.polarsys.capella.core.sirius.ui"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.transition.common.ui_2" label="Changes in org.polarsys.capella.core.transition.common.ui"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.transition.system.topdown_2" label="Changes in org.polarsys.capella.core.transition.system.topdown"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.transition.system" label="Changes in org.polarsys.capella.core.transition.system"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.ui.properties.richtext_2" label="Changes in org.polarsys.capella.core.ui.properties.richtext"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.ui.properties_2" label="Changes in org.polarsys.capella.core.ui.properties"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.ui.semantic.browser" label="Changes in org.polarsys.capella.core.ui.semantic.browser"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.validation.ui.ide_2" label="Changes in org.polarsys.capella.core.validation.ui.ide"></topic>
+				<topic href="html/Release note/API_1.2.x_to_1.3.x.html#Changes_in_org.polarsys.capella.core.validation.ui" label="Changes in org.polarsys.capella.core.validation.ui"></topic>
+			</topic>
+         </topic>
          <topic href="html/Release note/API_1.1.x-1.2.0_to_1.2.x.html" label="Capella 1.1.x/1.2.0 to 1.2.x">
          </topic>
          <topic href="html/Release note/API_1.0.x_to_1.1.x.html" label="Capella 1.0.x to 1.1.x">
          </topic>
       </topic>
       <topic label="Metamodel changes">
+         <topic href="html/Release note/M2_1.2.x_to_1.3.x.html" label="Capella 1.2.x to 1.3.x">
+         </topic>
          <topic href="html/Release note/M2_1.1.x_to_1.2.x.html" label="Capella 1.1.x to 1.2.x">
          </topic>
          <topic href="html/Release note/M2_1.0.x_to_1.1.x.html" label="Capella 1.0.x to 1.1.x">

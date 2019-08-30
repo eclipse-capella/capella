@@ -172,6 +172,16 @@ logo_capella_big.png
 5.5. Creation of Functional Chains and Physical Paths_html_m447a782f.png
 5.5. Creation of Functional Chains and Physical Paths_html_m5845eb00.png
 5.5. Creation of Functional Chains and Physical Paths_html_mdab6cc9.png
+5.5. Creation of Functional Chains and Physical Paths_html_FC1.png
+5.5. Creation of Functional Chains and Physical Paths_html_FC2.png
+5.5. Creation of Functional Chains and Physical Paths_html_FC3.png
+5.5. Creation of Functional Chains and Physical Paths_html_FC4.png
+5.5. Creation of Functional Chains and Physical Paths_html_FC5.png
+5.5. Creation of Functional Chains and Physical Paths_html_FC6.png
+5.5. Creation of Functional Chains and Physical Paths_html_SL1.png
+5.5. Creation of Functional Chains and Physical Paths_html_SL2.png
+5.5. Creation of Functional Chains and Physical Paths_html_m447a283f.png
+5.5. Creation of Functional Chains and Physical Paths_html_XAB
 AllocatingFunctions_AllocatedFunctionReference.png
 AllocatingFunctions_FunctionalBreakdown.png
 AllocatingFunctions_FunctionAllocatedOnComponents.png
@@ -325,6 +335,9 @@ AllocatingFunctions_RepresentParentFunction_LF_A.png
 3.6. How to detach viewpoints_html_723ed3f9.png
 3.6. How to detach viewpoints_html_m5a4bf1ab.png
 3.7. How to rename a Melody Advance Project_html_723ed3f9.png
+3.8. How to add new Capella Project Example.png
+3.8. How to import Capella Project Example_1.png
+3.8. How to import Capella Project Example_2.png
 warning.png
 
 2.1. Definitions_html_3c78e109.png

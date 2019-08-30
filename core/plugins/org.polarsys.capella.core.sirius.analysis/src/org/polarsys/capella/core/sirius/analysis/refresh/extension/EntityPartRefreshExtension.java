@@ -11,40 +11,33 @@
 package org.polarsys.capella.core.sirius.analysis.refresh.extension;
 
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.polarsys.capella.core.sirius.analysis.CsServices;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 
-public class EntityPartRefreshExtension extends AbstractRefreshExtension implements IRefreshExtension{
+public class EntityPartRefreshExtension extends AbstractCacheAwareRefreshExtension {
 
-	/**
-	 * <b>Before Refresh</b>
-	 * <p>
-	 *  This method is executed before the refreshing action of the diaram
-	 *  @param diagram_p
-	 */
-	public void beforeRefresh(DDiagram diagram_p) 
-	{
-		CsServices.getService().refreschEntitiesArchitecture(getComponentMapping(diagram_p), diagram_p);  
-	}
+  /**
+   * <b>Before Refresh</b>
+   * <p>
+   * This method is executed before the refreshing action of the diagram
+   * 
+   * @param diagram
+   */
+  @Override
+  public void beforeRefresh(DDiagram diagram) {
+    super.beforeRefresh(diagram);
+    CsServices.getService().refreshEntitiesArchitecture(getComponentMapping(diagram), diagram);
+  }
 
-	/**
-	 * <b>Post Refresh</b>
-	 * <p>
-	 *  This method is executed after the refreshing action of the diagram
-	 *  @param diagram
-	 */
-	public void postRefresh(DDiagram diagram_p) {
-		// do nothing
-	}
-	
-	public ContainerMapping getComponentMapping (DDiagram diagram_p){
-	    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME)){
-	      return DiagramServices.getDiagramServices().getContainerMapping(diagram_p, IMappingNameConstants.COC_OPERATIONAL_ENTITY_MAPPING_NAME);
-	    }
-	    return null;
-	  }
+  public ContainerMapping getComponentMapping(DDiagram diagram) {
+    if (diagram.getDescription().getName()
+        .equals(IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME)) {
+      return DiagramServices.getDiagramServices().getContainerMapping(diagram,
+          IMappingNameConstants.COC_OPERATIONAL_ENTITY_MAPPING_NAME);
+    }
+    return null;
+  }
 }

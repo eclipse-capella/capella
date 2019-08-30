@@ -1,0 +1,75 @@
+=Navigation Menu=
+The navigation menu consists of several useful menu items that enables navigating an element between different views. For instance, from a selected graphical element on the diagram editor, users can navigate easily to its associated semantic element on the Capella Project Explorer. 
+
+The navigation menu is available for most of the views. However, based on the type of selected element and the active view, the menu can display with different items. 
+
+{| class="wikitable"
+|-
+|Select a '''Capella element''' on the '''Capella Project Explorer''' view
+|Select a '''graphical element''' on a scenario '''diagram editor'''
+|-
+|[[File:../../Images/Tips81.png|thumbnail|550px]]
+|[[File:../../Images/Tips82.png|thumbnail|550px]]
+|}
+
+==Menu items==
+{| class="wikitable"
+|-
+|Icon
+|Label
+|Shortcut
+|Action
+|-
+|[[Image:../../Images/IconShowInExplorer.png]]
+|''Show in Capella Explorer''
+|'''F8'''
+|
+* Open the '''Project Explorer''' view if not already opened and highlight the selected element in the explorer's tree.
+* It's possible to select '''many''' elements.
+|-
+|[[Image:../../Images/IconSemanticBrowser.png]]
+|''Show in Semantic Browser''
+|'''F9'''
+|Open the '''Semantic Browser''' view if not already opened and refresh the view based on the selected element.
+|-
+|[[Image:../../Images/IconShowInExplorer.png]]
+|''Show Related Element(s) in Capella Explorer''
+|'''F7'''
+|
+* A sub-menu action is created for each related element.
+* If no related element found, the menu is not visible.
+* It's possible to select '''many''' elements.
+* Click on each sub-menu action will opens the '''Project Explorer''' view if not already opened and highlights that related element in the explorer's tree.
+* Shortcut '''F7''' highlights all related elements in the explorer's tree.
+|-
+|[[Image:../../Images/IconShowInDiagram.gif]]
+|''Show in Diagram Editor''
+|'''F10'''
+| If there is an '''active diagram editor''' and a graphical element on that diagram representing the selected element, highlight that graphical element.
+|-
+|[[Image:../../Images/IconImpactAnalysis.gif]]
+|''Show Impact Analysis...''
+|
+|Show the '''Impact Analysis''' dialog for the selected element.
+|-
+|[[Image:../../Images/IconFastLinker.gif]]
+|''Send to Fast Linker View''
+|'''F6'''
+|If the selected element is valid, send that element to the view '''Fast Linker'''.
+|-
+|[[Image:../../Images/IconMassEdit.gif]]
+|''Send to Mass Editing View''
+|
+|
+* Send selected element(s) to a new '''Mass Editing''' view or an existing one.
+* It's possible to select '''many''' elements.
+* If send to an existing view, it will aggregate new element(s) with exiting element(s) in the view.
+|-
+|[[Image:../../Images/IconMassVisu.gif]]
+|''Send to Mass Visualization View''
+|
+|
+* Send selected element(s) to a new '''Mass Visualization ''' view or an existing one.
+* It's possible to select '''many''' elements.
+* If send to an existing view, it will aggregate new element(s) with exiting element(s) in the view.
+|}

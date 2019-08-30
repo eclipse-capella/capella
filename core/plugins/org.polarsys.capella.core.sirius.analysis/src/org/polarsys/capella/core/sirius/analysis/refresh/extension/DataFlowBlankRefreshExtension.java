@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,39 +17,46 @@ import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.data.fa.ExchangeCategory;
 import org.polarsys.capella.core.diagram.helpers.ContextualDiagramHelper;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
 import org.polarsys.capella.core.sirius.analysis.FaServices;
 import org.polarsys.capella.core.sirius.analysis.FunctionalChainServices;
+import org.polarsys.capella.core.sirius.analysis.cache.FunctionalChainCache;
 
 /**
  *
  */
-public class DataFlowBlankRefreshExtension extends AbstractRefreshExtension implements IRefreshExtension {
+public class DataFlowBlankRefreshExtension extends AbstractCacheAwareRefreshExtension {
 
   /**
    * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#postRefresh(org.eclipse.sirius.DDiagram)
    */
-  public void beforeRefresh(DDiagram diagram_p) {
+  @Override
+  public void beforeRefresh(DDiagram diagram) {
+    super.beforeRefresh(diagram);
 
+    FunctionalChainCache.getInstance().reset();
+    
     // -------------------------------------
     // Show in diagram related contextual elements
     // -------------------------------------
-    DDiagramContents context = FaServices.getFaServices().getDDiagramContents(diagram_p);
+    DDiagramContents context = FaServices.getFaServices().getDDiagramContents(diagram);
 
     try {
-      Collection<EObject> contextualElements = ContextualDiagramHelper.getService().getContextualElements(diagram_p);
+      DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
+      Collection<EObject> contextualElements = ContextualDiagramHelper.getService().getContextualElements(descriptor);
       FaServices.getFaServices().showDFContextualElements(context, contextualElements);
 
     } catch (Exception e) {
       Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnContextualElements, e);
     }
-
+    
     try {
       updateFunctionalExchangeCategories(context);
     } catch (Exception e) {
@@ -70,7 +77,7 @@ public class DataFlowBlankRefreshExtension extends AbstractRefreshExtension impl
     // -------------------------------------
 
     try {
-      FaServices.getFaServices().reorderFAElements(diagram_p);
+      FaServices.getFaServices().reorderFAElements(diagram);
     } catch (Exception e) {
       Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnReordering, e);
     }
@@ -80,38 +87,35 @@ public class DataFlowBlankRefreshExtension extends AbstractRefreshExtension impl
   /**
    * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#postRefresh(org.eclipse.sirius.DDiagram)
    */
-  public void postRefresh(DDiagram diagram_p) {
+  @Override
+  public void postRefresh(DDiagram diagram) {
     try {
-      FunctionalChainServices.getFunctionalChainServices().updateFunctionalChainStyles(diagram_p);
+      FunctionalChainServices.getFunctionalChainServices().updateFunctionalChainStyles(diagram);
     } catch (Exception e) {
       Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdateFunctionalChainStyle, e);
     }
 
+    FunctionalChainCache.getInstance().reset();
+    
+    super.postRefresh(diagram);
   }
 
-  protected void updateFunctionalExchangeCategories(DDiagramContents context_p) {
-
-    DDiagram diagram = context_p.getDDiagram();
-
+  protected void updateFunctionalExchangeCategories(DDiagramContents diagramContents) {
+    DDiagram diagram = diagramContents.getDDiagram();
     if (diagram.isSynchronized()) {
-      FaServices service = FaServices.getFaServices();
-      Collection<EObject> categories = new HashSet<EObject>();
-
+      // TODO Should I move this out of the if isSynchronized. Should it always switch FECategories?
       // Switch to FE categories
-      EdgeMapping edgeMapping = service.getMappingFECategory(diagram);
+      EdgeMapping edgeMapping = FaServices.getFaServices().getMappingFECategory(diagram);
       if (edgeMapping != null) {
-        for (DDiagramElement element : context_p.getDiagramElements(edgeMapping)) {
-          if ((element.getTarget() != null) && (element.getTarget() instanceof ExchangeCategory)) {
-            categories.add(element.getTarget());
+        Collection<ExchangeCategory> categories = new HashSet<>();
+        for (DDiagramElement element : diagramContents.getDiagramElements(edgeMapping)) {
+          EObject target = element.getTarget();
+          if (target instanceof ExchangeCategory) {
+            categories.add((ExchangeCategory) target);
           }
         }
-        FaServices.getFaServices().switchFECategories(context_p, (DSemanticDecorator) context_p.getDDiagram(), categories, false);
+        FaServices.getFaServices().switchFECategories(diagramContents, (DSemanticDecorator) diagram, categories, false);
       }
-
-    } else {
-      FaServices.getFaServices().updateFECategories(context_p);
     }
-
   }
-
 }

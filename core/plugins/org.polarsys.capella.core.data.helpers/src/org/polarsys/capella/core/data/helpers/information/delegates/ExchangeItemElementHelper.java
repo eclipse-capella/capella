@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,19 +26,14 @@ public class ExchangeItemElementHelper {
   }
 
   public static ExchangeItemElementHelper getInstance(){
-    if(instance == null)
-      instance = new ExchangeItemElementHelper();
+    if(instance == null) {
+    	instance = new ExchangeItemElementHelper();
+    }
     return instance;
   }
-
-  public Object doSwitch(ExchangeItemElement element, EStructuralFeature feature){
-    Object ret = null;
-
-    // no helper found... searching in super classes...
-    if(null == ret) {
-      ret = TypedElementHelper.getInstance().doSwitch(element, feature);
-    }
-
-    return ret;
+  
+  public Object doSwitch(ExchangeItemElement element, EStructuralFeature feature) {
+	  // no helper found... searching in super classes...
+	  return TypedElementHelper.getInstance().doSwitch(element, feature);
   }
 }

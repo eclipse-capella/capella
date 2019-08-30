@@ -20,6 +20,8 @@ import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.common.helpers.query.IQuery;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 /**
  * Return connected Physical Links of current Physical Port
  *
@@ -40,10 +42,10 @@ public abstract class AbstractPhysicalPortPhysicalLinks implements IQuery {
 	 * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
 	 */
 	public List<Object> compute(Object object) {
-		List<Object> result = new ArrayList<Object>();
+		List<Object> result = new ArrayList<>();
 		if (object instanceof PhysicalPort) {
 		  PhysicalPort currentPort = (PhysicalPort) object;
-		  Collection<PhysicalLink> links = PhysicalLinkExt.getAllRelatedPhysicalLinks(currentPort);
+		  Collection<PhysicalLink> links = getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, currentPort);
 		  for (PhysicalLink physicalLink : links) {
         Port port = getSourcePortFromLink(physicalLink);
         if (null != port && port.equals(currentPort)) {

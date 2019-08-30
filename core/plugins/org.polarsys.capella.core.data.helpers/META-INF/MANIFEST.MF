@@ -2,9 +2,10 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.data.helpers;singleton:=true
-Bundle-Version: 1.2.2.qualifier
+Bundle-Version: 1.3.1.qualifier
 Bundle-Vendor: %providerName
-Export-Package: org.polarsys.capella.core.data.helpers.capellacommon,
+Export-Package: org.polarsys.capella.core.data.helpers.cache,
+ org.polarsys.capella.core.data.helpers.capellacommon,
  org.polarsys.capella.core.data.helpers.capellacommon.delegates,
  org.polarsys.capella.core.data.helpers.capellacore,
  org.polarsys.capella.core.data.helpers.capellacore.delegates,
@@ -41,7 +42,8 @@ Export-Package: org.polarsys.capella.core.data.helpers.capellacommon,
  org.polarsys.capella.core.data.helpers.requirement.delegates,
  org.polarsys.capella.core.data.helpers.sharedmodel
 Require-Bundle: org.polarsys.capella.core.data.gen;visibility:=reexport,
- org.polarsys.capella.common.data.helpers;visibility:=reexport
+ org.polarsys.capella.common.data.helpers;visibility:=reexport,
+ org.eclipse.emf.ecore
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin

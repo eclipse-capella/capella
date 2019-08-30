@@ -5,8 +5,8 @@ Element-Type: testsuite
 Element-Version: 2.0
 Id: _H2g9YMEUEeWqb6y2_gGIKQ
 Manually-Ordered: true
-Runtime-Version: 2.2.0.201706152316
-Save-Time: 7/2/18 3:02 PM
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 4/26/19 11:05 AM
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
 Content-Type: text/testcase
@@ -17,7 +17,6 @@ _Ub3nIGYiEeaVsIgvj-cA7g	// kind: 'suite' name: 'ActivityExplorerSuite' path: 'Ac
 _m1bcAPyxEeWcsI4k6xXMnQ	// kind: 'test' name: 'FunctionalExchangeWhenAllocationWithoutTarget' path: 'Sequence/FunctionalExchangeWhenAllocationWithoutTarget.test'
 _g6DIAFpOEeaZtZLaGPKybA	// kind: 'test' name: 'CheckAFMFilePresenceAfterMigration' path: 'Migration/CheckAFMFilePresenceAfterMigration.test'
 _LPsygGYiEeaVsIgvj-cA7g	// kind: 'suite' name: 'PatternSuite' path: 'Patterns/PatternSuite.suite'
-_s0WTkLfUEea5ZpGbd-RfXw	// kind: 'test' name: 'FragmentedModelDiffMerge' path: 'FragmentedModelDiffMerge/FragmentedModelDiffMerge.test'
 _KKad8L0gEeaNWvF_GpqW3w	// kind: 'suite' name: 'ValidationProfileSuite' path: 'PrefConfig/ValidationProfileSuite.suite'
 _AczyQB3uEeex3Nv8iShVXQ	// kind: 'suite' name: 'InnerDiagramsSuite' path: 'InnerDiagrams/InnerDiagramsSuite.suite'
 _6DCJACmvEeeLMJ-eLKwAnw	// kind: 'suite' name: 'Constraint' path: 'Constraint/Constraint.suite'
@@ -28,13 +27,30 @@ _VqGRgDS6EeepRL_NUeNEXg	// kind: 'test' name: 'PrePostConditionDeletionImpactAna
 _lhay0FpGEeey96mRdJF15w	// kind: 'test' name: 'OpenDiagramRepresentationPerCategory' path: 'ProjectExplorer/OpenDiagramRepresentationPerCategory.test'
 _iXvJIKd2EeeauqwgHGcTiA	// kind: 'suite' name: 'RetrieveCapellaExplorerTreeAfterSearch' path: 'ProjectExplorer/Search/RetrieveCapellaExplorerTreeAfterSearch.suite'
 _W_aPYK2fEee8uezCxKoQOw	// kind: 'test' name: 'CheckClosedEditorsWithSessionClose' path: 'ProjectExplorer/CheckClosedEditorsWithSessionClose.test'
+_7NrmAK8sEee2vO1UksePLw	// kind: 'test' name: 'ExchangeItemScenario' path: 'ExchangeItemScenario/ExchangeItemScenario.test'
+_iKToUKpvEee0yuaysMB3Rg	// kind: 'test' name: 'FastLinker' path: 'FastLinker/FastLinker.test'
+_5pI4EK6SEee2vO1UksePLw	// kind: 'test' name: 'CheckFilters' path: 'Interface/CheckFilters.test'
+_wxM68K56Eee2vO1UksePLw	// kind: 'test' name: 'InterfaceDelegation' path: 'Interface/InterfaceDelegation.test'
+_GSPGkK6TEee2vO1UksePLw	// kind: 'test' name: 'SequenceMessageProtocol' path: 'Interface/SequenceMessageProtocol.test'
+_tEBy8KkGEee0yuaysMB3Rg	// kind: 'test' name: 'AccessPolicyRecRpl' path: 'Library/AccessPolicyRecRpl.test'
+_vh5p8KkOEee0yuaysMB3Rg	// kind: 'test' name: 'CloseDelete' path: 'Library/CloseDelete.test'
+_yKF9QK86Eee2vO1UksePLw	// kind: 'test' name: 'TriggerEvent' path: 'ModeAndState/TriggerEvent.test'
+_T-55YMCcEeidDq4eRTARFA	// kind: 'test' name: 'TransitionUI' path: 'Transition/TransitionUI.test'
+_GJay8KkbEee0yuaysMB3Rg	// kind: 'test' name: 'CommandConfigurability' path: 'ValidationProfile/CommandConfigurability.test'
+_4W6WAKnCEee0yuaysMB3Rg	// kind: 'test' name: 'ProjectConfiguration' path: 'ValidationProfile/ProjectConfiguration.test'
 _8tBCsOSeEeeF_6848eoV8Q	// kind: 'test' name: 'HidePartsByDefaultInProjectExplorer' path: 'ProjectExplorer/HidePartsByDefaultInProjectExplorer.test'
 _r_UEYOSgEeeF_6848eoV8Q	// kind: 'test' name: 'LocatedElementIsFilteredInCapellaExplorer' path: 'ProjectExplorer/LocatedElementIsFilteredInCapellaExplorer.test'
 _-NK48OTBEee98IEkL9YSZg	// kind: 'test' name: 'LocatedElementIsFilteredInCapellaExplorer_GoTo' path: 'ProjectExplorer/LocatedElementIsFilteredInCapellaExplorer_GoTo.test'
 _j7W34AXEEeiIZY68FD204w	// kind: 'suite' name: 'RefreshAllSubRepresentations_Suite' path: 'SiriusUiNavigator/RefreshAllSubRepresentations_Suite.suite'
-_0kJfgCbIEeieRPPEeacKyA	// kind: 'suite' name: 'DetachmentTestSuite' path: 'detachment/DetachmentTestSuite.suite'
 _HHJUwEMREeiEYaQR9fY4DQ	// kind: 'suite' name: 'DiffMerge' path: 'DiffMerge/DiffMerge.suite'
 _wlapMHoDEeiaPKaUZLw7uw	// kind: 'test' name: 'RepresentationElementsOfInterest' path: 'RepresentationElementsOfInterest.test'
 _vpoagHrAEeiFH4aXYyDXfw	// kind: 'test' name: 'RepresentationPackage' path: 'RepresentationPackage.test'
+_UcVhUPfIEeiaU_LTMcHjMQ	// kind: 'suite' name: 'RecRpl' path: 'RecRpl/RecRpl.suite'
+_BiAI4MsTEei-lPwnfaLAUA	// kind: 'suite' name: 'Menu' path: 'Menu/Menu.suite'
+_7G5xkMxuEeiPxbJ-SrbizA	// kind: 'suite' name: 'MassActionsTestSuite' path: 'MassActions/MassActionsTestSuite.suite'
+_1BG1wOzgEeighIRKUyQgZw	// kind: 'test' name: 'RenameCapellaProject' path: 'ProjectExplorer/RenameCapellaProject.test'
+__N9vAPL5EeighIRKUyQgZw	// kind: 'suite' name: 'CopyPasteCutTestSuite' path: 'CopyPasteCut/CopyPasteCutTestSuite.suite'
+_-NK48OTBEii98IEkL9YSZs	// kind: 'test' name: 'DiagramVisibileInExplorerAfterCreation' path: 'ProjectExplorer/DiagramVisibileInExplorerAfterCreation.test'
+_OtEBcGgCEem-1Zn8MbYLuw	// kind: 'suite' name: 'SemanticBrowser' path: 'SemanticBrowser/SemanticBrowser.suite'
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--

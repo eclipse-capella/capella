@@ -56,7 +56,7 @@ public abstract class AbstractFilterTrackChangesTest extends AbstractDiagramStep
   protected void postRunTest() {
     // Match the expectedFiltersList() to the actual list of
     // filters from runtime
-    DiagramDescription description = ((DiagramContext) getExecutionContext()).getDiagram().getDescription();
+    DiagramDescription description = getDiagramContext().getDiagram().getDescription();
     EList<FilterDescription> filters = description.getFilters();
     Set<String> setOfActualFilters = getSetOfActualFilters(filters);
 
@@ -66,14 +66,13 @@ public abstract class AbstractFilterTrackChangesTest extends AbstractDiagramStep
     if (setOfActualFilters.size() > expectedFiltersSet.size()) {
       // A new filter have been created
       setOfActualFilters.removeAll(expectedFiltersSet);
-      Assert.assertTrue(MessageFormat.format(Messages.newFilterCreationDetected, setOfActualFilters.toString(), ((DiagramContext) getExecutionContext())
-          .getDiagram().getName()), false);
+      Assert.assertTrue(MessageFormat.format(Messages.newFilterCreationDetected, setOfActualFilters.toString(),
+          getDiagramContext().getDiagram().getName()), false);
     } else if (setOfActualFilters.size() < expectedFiltersSet.size()) {
       // A filter have been deleted from diagram
       expectedFiltersSet.removeAll(setOfActualFilters);
-      Assert.assertTrue(
-          MessageFormat.format(Messages.filterRemovalDetected, expectedFiltersSet.toString(), ((DiagramContext) getExecutionContext()).getDiagram().getName()),
-          false);
+      Assert.assertTrue(MessageFormat.format(Messages.filterRemovalDetected, expectedFiltersSet.toString(),
+          getDiagramContext().getDiagram().getName()), false);
     }
 
     boolean haveSameFilters = setOfActualFilters.equals(expectedFiltersSet);
@@ -84,16 +83,18 @@ public abstract class AbstractFilterTrackChangesTest extends AbstractDiagramStep
       List<String> origineFilterList = new ArrayList<String>(setOfActualFilters);
       origineFilterList.removeAll(expectedFiltersSet);
 
-      Assert.fail(MessageFormat.format(Messages.renamedFiltersFound, ((DiagramContext) getExecutionContext()).getDiagram().getName(),
+      Assert.fail(MessageFormat.format(Messages.renamedFiltersFound, getDiagramContext().getDiagram().getName(),
           origineFilterList.toString(), renamingFilterList.toString()));
     }
     super.postRunTest();
   }
 
   /**
-   * Get the {@link Set} of the actual filters detected in diagram. Fails if there's a duplicated Name/Label detected in filter list extracted from runtime
-   * diagram
-   * @param filters a EList<FilterDescription>
+   * Get the {@link Set} of the actual filters detected in diagram. Fails if there's a duplicated Name/Label detected in
+   * filter list extracted from runtime diagram
+   * 
+   * @param filters
+   *          a EList<FilterDescription>
    * @return the set of found filters in runtime diagram
    */
   private Set<String> getSetOfActualFilters(EList<FilterDescription> filters) {
@@ -106,20 +107,19 @@ public abstract class AbstractFilterTrackChangesTest extends AbstractDiagramStep
           listOfDuplicated.add(filter.getName());
         }
         // FIXME: for test initialization purpose
-        //				System.out.println("set.add(\"" + filter.getName() + "\");"); //$NON-NLS-1$ //$NON-NLS-2$
+        // System.out.println("set.add(\"" + filter.getName() + "\");"); //$NON-NLS-1$ //$NON-NLS-2$
       } else {
         if (!setOfActualFilters.add(filter.getLabel())) {
           listOfDuplicated.add(filter.getLabel());
         }
         // FIXME: for test initialization purpose
-        //				System.out.println("set.add(\"" + filter.getLabel() //$NON-NLS-1$
-        //						+ "\");"); //$NON-NLS-1$
+        // System.out.println("set.add(\"" + filter.getLabel() //$NON-NLS-1$
+        // + "\");"); //$NON-NLS-1$
       }
     }
 
-    Assert
-        .assertTrue(MessageFormat.format(Messages.duplicatedFilterIDDetected, listOfDuplicated.toString(), ((DiagramContext) getExecutionContext())
-            .getDiagram().getName()), listOfDuplicated.isEmpty());
+    Assert.assertTrue(MessageFormat.format(Messages.duplicatedFilterIDDetected, listOfDuplicated.toString(),
+        getDiagramContext().getDiagram().getName()), listOfDuplicated.isEmpty());
 
     return setOfActualFilters;
   }

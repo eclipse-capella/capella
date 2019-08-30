@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
-  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -11,158 +11,56 @@
        Thales - initial API and implementation
 -->
 <plugin>
-   <!--extension point="org.eclipse.ui.popupMenus">
-      <objectContribution
-            id="org.polarsys.capella.core.sirius.menus.graphical.decompositionWizard"
-            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
-         <enablement>
-            <or>
-                    <and>
-                      <test
-                            forcePluginActivation="true"
-                            property="org.polarsys.capella.core.platform.sirius.ui.classOf"
-                            value="Part">
-                      </test>
-                      <test
-                            args="abstractType"
-                            forcePluginActivation="true"
-                            property="org.polarsys.capella.core.platform.sirius.ui.graphicalFeatureIsA"
-                            value="LogicalComponent">
-                      </test>
-                   </and>
-                    <test
-                        forcePluginActivation="true"
-                        property="org.polarsys.capella.core.platform.sirius.ui.classOf"
-                        value="LogicalComponent">
-                    </test>
-             </or>
-         </enablement>
-         <action
-               class="org.polarsys.capella.core.common.ui.wizards.action.LCDecompWizardAction"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif"
-               id="org.polarsys.capella.core.platform.sirius.ui.actions.LCgraphicalDecompWizardAction"
-               label="%LogicalComponentDecompositionWizard.action.label"
-               menubarPath="WizardDiagramCommands/groupWizards">
-         </action>
-      </objectContribution>
-         
-   </extension-->
-      
-      
-      
-      
-   <!--extension point="org.eclipse.ui.popupMenus">
-      
-      <objectContribution
-            id="capella.project.explorer.toolsContributor.decompositionWizard1"
-            objectClass="org.polarsys.capella.core.data.la.LogicalComponent">
-         <action
-               class="org.polarsys.capella.core.common.ui.wizards.action.LCDecompWizardAction"
-               enablesFor="1"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif"
-               id="org.polarsys.capella.core.platform.sirius.ui.actions.LCDecompWizardActionComponent"
-               label="%LogicalComponentDecompositionWizard.action.label"
-               menubarPath="capella.project.explorer.menu.wizards/groupWizards">
-         </action>
-      </objectContribution>
-      <objectContribution
-            id="capella.project.explorer.toolsContributor.decompositionWizard2"
-            objectClass="org.polarsys.capella.core.data.cs.Part">
-         <enablement>
-             <test
-                args="abstractType"
-                forcePluginActivation="true"
-                property="org.polarsys.capella.core.platform.sirius.ui.featureIsA"
-                value="LogicalComponent">
-             </test>
-         </enablement>
-         <action
-               class="org.polarsys.capella.core.common.ui.wizards.action.LCDecompWizardAction"
-               enablesFor="1"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif"
-               id="org.polarsys.capella.core.platform.sirius.ui.actions.LCDecompWizardActionPart"
-               label="%LogicalComponentDecompositionWizard.action.label"
-               menubarPath="capella.project.explorer.menu.wizards/groupWizards">
-         </action>
-      </objectContribution>
-        
-   </extension-->
-      
       <extension
          point="org.eclipse.ui.menus">
          
-              <!-- Logical Component Decomposition     -->
-              <menuContribution  allPopups="true"  locationURI="popup:org.polarsys.capella.core.wizards?after=additions">
+              <!-- Logical Component Decomposition -->
+              <menuContribution  allPopups="true" locationURI="popup:org.polarsys.capella.core.wizards?after=additions">
                  <command commandId="org.polarsys.capella.core.platform.sirius.ui.command.LCDecompWizardActionPartOrLogicalComponent" 
                     style="push" 
                     icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif">  
                     
                     <visibleWhen checkEnabled="true">
-                    
-                    
-                    <with variable="selection">
-                        <iterate operator="and" ifEmpty="false">
-                        <instanceof  value="org.polarsys.capella.core.data.la.LogicalComponent"/>
-                        
-                        </iterate>
-                    </with>
-                    
-                    
-                  <!--with variable="selection">
-                        <iterate operator="or" ifEmpty="false">
-                        <instanceof  value="org.polarsys.capella.core.data.la.LogicalComponent"/>
-                          <and>
-                                <instanceof  value="org.polarsys.capella.core.data.cs.Part"/>
-                                <test args="abstractType" forcePluginActivation="true" property="org.polarsys.capella.core.platform.sirius.ui.featureIsA"
-                                                          value="LogicalComponent">
-                                </test>
-                           </and>                             
-                        </iterate>
-                    </with-->
-                    
-                  </visibleWhen>
+	                    <reference
+                                 definitionId="org.polarsys.capella.core.platform.sirius.ui.command.LCDecompWizardActionPartOrLogicalComponent.expression">
+                           </reference>
+                    </visibleWhen>
                 </command> 
-                
-                 
-                 
              </menuContribution>
-         
        </extension>
       
-      
       <extension
-         point="org.eclipse.ui.menus">
-           <!-- LC Decomposition wizard -->
-          <menuContribution  allPopups="true"
-                locationURI="popup:org.polarsys.capella.core.sirius.diagram.editor.wizards?after=additions">
-             <command commandId="org.polarsys.capella.core.platform.sirius.ui.command.LCDecompWizardActionPartOrLogicalComponent" 
-             style="push" 
-             icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif" >  
-               <visibleWhen checkEnabled="false">
-                <with variable="selection">
-                    <iterate>
-                            <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.wizardVisibilityDiagramElementExpression"/>
-                    </iterate>
-                </with>
-              </visibleWhen>
-            </command> 
-          </menuContribution>
+            point="org.eclipse.core.expressions.definitions">
+         <definition
+               id="org.polarsys.capella.core.platform.sirius.ui.command.LCDecompWizardActionPartOrLogicalComponent.expression">
+               
+               <with
+                  variable="selection">
+                  <iterate
+                        ifEmpty="false">
+                        <or>
+                         <test forcePluginActivation="true"
+				               property="org.polarsys.capella.core.platform.sirius.ui.classOf"
+				               value="LogicalComponent">
+				         </test>
+                         <test forcePluginActivation="true"
+				               property="org.polarsys.capella.core.platform.sirius.ui.classOf"
+				               value="Part">
+				         </test>
+				         </or>
+                  </iterate>
+            </with>
+            
+         </definition>
       </extension>
-      
-      
-      
       <extension
          point="org.eclipse.ui.commands">
-           <category
-                id="org.polarsys.capella.core.wizard.ui.category"
-                name="Wizards">
-           </category>
            <command
+                   categoryId="org.polarsys.capella.core.wizards"
                    defaultHandler="org.polarsys.capella.core.common.ui.wizards.action.LCDecompWizardAction"
                    id="org.polarsys.capella.core.platform.sirius.ui.command.LCDecompWizardActionPartOrLogicalComponent"
                    name="%LogicalComponentDecompositionWizard.action.label">
           </command>
       </extension>
-      
     
 </plugin>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
@@ -67,25 +67,21 @@ public class FunctionalChainHandler extends AbstractDiagramHandler {
   }
 
   @Override
-  public boolean covers(IContext context_p, DRepresentation representation_p) {
-    if (representation_p instanceof DSemanticDecorator) {
-      EObject target = ((DSemanticDecorator) representation_p).getTarget();
+  public boolean covers(IContext context_p, DRepresentationDescriptor representation_p) {
+      EObject target = representation_p.getTarget();
       if ((target != null) && (target instanceof CapellaElement)) {
         return !CapellaLayerCheckingExt.isAOrInPhysicalLayer((CapellaElement) target) && !CapellaLayerCheckingExt.isAOrInEPBSLayer((CapellaElement) target);
       }
-    }
     return false;
   }
 
   @Override
-  public boolean backCovers(IContext context_p, DRepresentation representation_p) {
-    if (representation_p instanceof DSemanticDecorator) {
-      EObject target = ((DSemanticDecorator) representation_p).getTarget();
+  public boolean backCovers(IContext context_p, DRepresentationDescriptor representation_p) {
+      EObject target = representation_p.getTarget();
       if ((target != null) && (target instanceof CapellaElement)) {
         return !CapellaLayerCheckingExt.isAOrInOperationalAnalysisLayer((CapellaElement) target)
                && !CapellaLayerCheckingExt.isAOrInEPBSLayer((CapellaElement) target);
       }
-    }
     return false;
   }
 

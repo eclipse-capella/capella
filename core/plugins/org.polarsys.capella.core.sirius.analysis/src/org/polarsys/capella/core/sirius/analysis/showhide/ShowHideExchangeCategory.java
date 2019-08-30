@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,8 @@ package org.polarsys.capella.core.sirius.analysis.showhide;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
@@ -26,6 +28,7 @@ import org.polarsys.capella.core.data.fa.ExchangeCategory;
 import org.polarsys.capella.core.data.fa.FunctionInputPort;
 import org.polarsys.capella.core.data.fa.FunctionOutputPort;
 import org.polarsys.capella.core.data.fa.FunctionPort;
+import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.sirius.analysis.ABServices;
@@ -47,7 +50,6 @@ public class ShowHideExchangeCategory extends ShowHideFunctionalExchange {
 
   public ShowHideExchangeCategory(DDiagramContents content) {
     super(content);
-    // TODO Auto-generated constructor stub
   }
 
   @Override
@@ -57,38 +59,28 @@ public class ShowHideExchangeCategory extends ShowHideFunctionalExchange {
 
   @Override
   protected boolean isValidSemanticView(EObject semantic, DSemanticDecorator semanticView, DiagramContext context) {
-    // TODO Auto-generated method stub
     return super.isValidSemanticView(semantic, semanticView, context);
   }
 
   @Override
   protected boolean mustHide(DDiagramElement view, DiagramContext context) {
-
-    // A function port must be hidden if no edges or hidden edges
+    // A function port must be hidden if no edges whose target is not FunctionalChain are visible
     if (view.getDiagramElementMapping() instanceof AbstractNodeMapping) {
       EObject target = view.getTarget();
-      if ((target != null) && ((target instanceof FunctionPort || target instanceof ExchangeCategory))) {
-        boolean result = true;
-        if (result) {
-          for (DEdge edge : ((EdgeTarget) view).getIncomingEdges()) {
-            if (getContent().isVisible(edge)) {
-              result = false;
-              break;
-            }
+      if ((target instanceof FunctionPort) || (target instanceof ExchangeCategory)) {
+        EList<DEdge> relatedEdges = new BasicEList<>();
+        relatedEdges.addAll(((EdgeTarget) view).getIncomingEdges());
+        relatedEdges.addAll(((EdgeTarget) view).getOutgoingEdges());
+        
+        for (DEdge edge : relatedEdges) {
+          if (edge != null && !(edge.getTarget() instanceof FunctionalChain) && getContent().isVisible(edge)) {
+            return false;
           }
         }
-        if (result) {
-          for (DEdge edge : ((EdgeTarget) view).getOutgoingEdges()) {
-            if (getContent().isVisible(edge)) {
-              result = false;
-              break;
-            }
-          }
-        }
-        return result;
+        
+        return true;
       }
     }
-
     return super.mustHide(view, context);
   }
 
@@ -250,8 +242,8 @@ public class ShowHideExchangeCategory extends ShowHideFunctionalExchange {
   @Override
   protected boolean hideInsteadOfRemoveView(DDiagramElement element, DiagramContext context) {
     EObject target = element.getTarget();
-    // We want to hide (not remove views) of FE and FP if diagram is synchronized
-    if ((target != null) && ((target instanceof FunctionalExchange) || (target instanceof FunctionPort))) {
+    // We want to hide (not remove views) of the port if diagram is synchronized
+    if (target instanceof FunctionPort) {
       return getContent().getDDiagram().isSynchronized();
     }
     return super.hideInsteadOfRemoveView(element, context);

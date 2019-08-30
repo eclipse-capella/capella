@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -80,16 +80,16 @@ public class MetricAction extends BaseSelectionListenerAction {
        */
       @Override
       @SuppressWarnings("synthetic-access")
-      public void run(IProgressMonitor progressMonitor_p) throws InvocationTargetException, InterruptedException {
-        progressMonitor_p.beginTask(MetricMessages.progressMonitorMsg, -1);
+      public void run(IProgressMonitor progressMonitor) throws InvocationTargetException, InterruptedException {
+        progressMonitor.beginTask(MetricMessages.progressMonitorMsg, -1);
 
         //
         // Build the tree data (to refactor)
         //
 
-        results = new MetricTree<EObject>(rootSemanticObject, null, null);
+        results = new MetricTree<>(rootSemanticObject, null, null);
 
-        ArrayList<MetricTree<EObject>> nodeWithSes = new ArrayList<MetricTree<EObject>>();
+        ArrayList<MetricTree<EObject>> nodeWithSes = new ArrayList<>();
 
         EClass eRoot = rootSemanticObject.eClass();
         if ( // Project and SystemEngineering cases
@@ -98,10 +98,10 @@ public class MetricAction extends BaseSelectionListenerAction {
           MetricTree<EObject> tree = null;
           MetricTree<EObject> tree1 = null;
           for (ModelRoot mr : project.getOwnedModelRoots()) {
-            tree = new MetricTree<EObject>(mr, null, results);
+            tree = new MetricTree<>(mr, null, results);
             results.addChild(tree);
             for (ModellingArchitecture ma : ((SystemEngineering) mr).getOwnedArchitectures()) {
-              tree1 = new MetricTree<EObject>(ma, null, tree);
+              tree1 = new MetricTree<>(ma, null, tree);
               tree.addChild(tree1);
               nodeWithSes.add(tree1);
             }
@@ -110,7 +110,7 @@ public class MetricAction extends BaseSelectionListenerAction {
           SystemEngineering se = (SystemEngineering) rootSemanticObject;
           MetricTree<EObject> tree = null;
           for (ModellingArchitecture ma : se.getOwnedArchitectures()) {
-            tree = new MetricTree<EObject>(ma, null, results);
+            tree = new MetricTree<>(ma, null, results);
             results.addChild(tree);
             nodeWithSes.add(tree);
           }
@@ -132,7 +132,7 @@ public class MetricAction extends BaseSelectionListenerAction {
             root = tree.getId();
 
             TreeIterator<EObject> it = root.eAllContents();
-            Metric<EClass> metric = new Metric<EClass>();
+            Metric<EClass> metric = new Metric<>();
             metric.addFilter(new DefaultFilter());
             // the main count job
             EObject current = null;
@@ -141,7 +141,7 @@ public class MetricAction extends BaseSelectionListenerAction {
               if (metric.accept(current)) {
                 metric.update(current.eClass());
               }
-              if (progressMonitor_p.isCanceled()) {
+              if (progressMonitor.isCanceled()) {
                 results.clear();
                 return;
               }
@@ -155,7 +155,7 @@ public class MetricAction extends BaseSelectionListenerAction {
 
               customizeMetricTree(root, eobject);
 
-              leaf = new MetricTree<EObject>(eobject, null, tree);
+              leaf = new MetricTree<>(eobject, null, tree);
               leaf.setData(metric.getResult().get(eclass));
               tree.addChild(leaf);
             }
@@ -163,9 +163,8 @@ public class MetricAction extends BaseSelectionListenerAction {
           }
 
         } finally {
-          progressMonitor_p.done();
+          progressMonitor.done();
         }
-        return;
       }
 
       /**
@@ -192,8 +191,8 @@ public class MetricAction extends BaseSelectionListenerAction {
 
       PlatformUI.getWorkbench().getProgressService().busyCursorWhile(runnable);
 
-    } catch (Exception exception_p) {
-      throw new RuntimeException(exception_p);
+    } catch (Exception exception) {
+      throw new RuntimeException(exception);
     }
 
     //
@@ -207,17 +206,19 @@ public class MetricAction extends BaseSelectionListenerAction {
     }
 
     // clean everything to avoid any memory leaks.
-    results.clear();
+    if(results != null) {
+      results.clear();    	
+    }
   }
 
-  private List<EClass> sort(Set<EClass> keySet_p) {
+  private List<EClass> sort(Set<EClass> keySet) {
 
-    List<EClass> list = new ArrayList<EClass>(keySet_p);
+    List<EClass> list = new ArrayList<>(keySet);
 
     Collections.sort(list, new java.util.Comparator<EClass>() {
       @Override
-      public int compare(EClass o1_p, EClass o2_p) {
-        return o1_p.getName().compareTo(o2_p.getName());
+      public int compare(EClass o1, EClass o2) {
+        return o1.getName().compareTo(o2.getName());
       }
 
     });
@@ -258,8 +259,6 @@ public class MetricAction extends BaseSelectionListenerAction {
     dialog.setData(results);
     dialog.setResourceName(resourceName);
     dialog.open();
-
-    return;
   }
   
   @Override

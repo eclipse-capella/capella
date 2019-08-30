@@ -22,11 +22,12 @@ import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.XMLLoad;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.emf.ecore.xmi.impl.URIHandlerImpl;
 import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileVersionSAXParser;
+import org.eclipse.sirius.business.internal.resource.AirDResourceFactory;
 import org.eclipse.sirius.business.internal.resource.AirDResourceImpl;
 import org.eclipse.sirius.business.internal.resource.parser.RepresentationsFileXMIHelper;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
@@ -40,8 +41,6 @@ import org.polarsys.kitalpha.emde.xmi.XMIExtensionHelperImpl;
  */
 @SuppressWarnings("restriction")
 public class AirdMigrationRunnable extends ModelMigrationRunnable {
-
-  static final String FORMAT_UTF8 = "UTF-8"; //$NON-NLS-1$
 
   /**
    * @param file
@@ -79,75 +78,66 @@ public class AirdMigrationRunnable extends ModelMigrationRunnable {
   @Override
   public XMLResource doCreateResource(URI uri, final MigrationContext context) {
     if (isAirdFile(uri)) {
-      XMLResource result = new AirDResourceImpl(uri) {
+      
+      return (XMIResource) new AirDResourceFactory() {
         
         @Override
-        protected XMIExtensionHelperImpl createXMLHelper() {
-          return createCapellaXMLHelper(this);
+        protected XMIResource doCreateAirdResourceImpl(URI uri) {
+          return new AirDResourceImpl(uri) {
+
+            @Override
+            protected XMIExtensionHelperImpl createXMLHelper() {
+              return createCapellaXMLHelper(this);
+            }
+
+            @Override
+            protected XMLLoad createXMLLoad() {
+              return createCustomizedHandler(createXMLHelper(), context);
+            }
+            
+            @Override
+            protected XMLLoad createXMLLoad(Map<?, ?> options) {
+              return createXMLLoad();
+            }
+            
+            @Override
+            protected void init() {
+              super.init();
+
+              //We want the loaded version information, even if there is no Sirius migration needed. maybe we have some too
+              RepresentationsFileVersionSAXParser parser = new RepresentationsFileVersionSAXParser(getURI());
+              String loadedVersion = parser.getVersion(new NullProgressMonitor());
+              getDefaultLoadOptions().put(SiriusMigrationContribution.SIRIUS_VERSION, loadedVersion);
+
+            }
+          };
         }
         
-        @Override
-        protected XMLLoad createXMLLoad() {
-          return createCustomizedHandler(createXMLHelper(), context);
-        }
-
-        @Override
-        protected XMLLoad createXMLLoad(Map<?, ?> options)
-        {
-          return createXMLLoad();
-        }
-        
-        // @Override
-        // protected XMLSave createXMLSave() {
-        // return createCustomizedSaveHandler(createXMLHelper(), context);
-        // }
-
-        @Override
-        protected void init() {
-          super.init();
-
-          org.eclipse.sirius.business.internal.migration.RepresentationsFileVersionSAXParser parser = new RepresentationsFileVersionSAXParser(
-              getURI());
-          String loadedVersion = parser.getVersion(new NullProgressMonitor());
-
-          getDefaultLoadOptions().put("VERSION", loadedVersion);
-
-          // like CapellamodellerResource and AirDResourceFactory, add some
-          // initial properties
-          getDefaultSaveOptions().put(XMLResource.OPTION_ENCODING, FORMAT_UTF8);
-          getDefaultLoadOptions().put(XMLResource.OPTION_ENCODING, FORMAT_UTF8);
-          getDefaultSaveOptions().put(XMLResource.OPTION_URI_HANDLER, new URIHandlerImpl.PlatformSchemeAware());
-
-          getDefaultSaveOptions().put(XMLResource.OPTION_USE_FILE_BUFFER, Boolean.TRUE);
-          getDefaultSaveOptions().put(XMLResource.OPTION_FLUSH_THRESHOLD, Integer.valueOf(0x01000000));
-
-          // Avoid any error with unknown features which can exist in aird
-          // files. Migration of aird will be processed after
-          getDefaultLoadOptions().put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
-
-          AirDResourceImpl.addMigrationOptions(loadedVersion, getDefaultLoadOptions(), getDefaultSaveOptions());
-          
-          if (!getEncoding().equals(FORMAT_UTF8)) {
-            setEncoding(FORMAT_UTF8);
-          }
-        }
-
-      };
-
-      return result;
+      }.createResource(uri);
+      
+    } else if (CapellaResourceHelper.AFM_FILE_EXTENSION.equals(uri.fileExtension())) {
+      //we want to use the default resource for this one.
+      return null;
     }
 
     return super.doCreateResource(uri, context);
   }
 
   @Override
-  @SuppressWarnings("restriction")
   public XMIExtensionHelperImpl createCapellaXMLHelper(XMLResource resource) {
       // Ideally, the XMLHelper used should be inherited from RepresentationsFileXMIHelper. But, as
       // XMIExtensionHelperImpl and RepresentationsFileXMIHelper are not in the same inheritance branch we do
       // inheritance by composition instantiating RepresentationsFileXMIHelper as delegate.
       final RepresentationsFileXMIHelper delegateXMLHelper = new RepresentationsFileXMIHelper(resource);
       XMIExtensionHelperImpl result = new XMIExtensionHelperImpl(resource) {
+          
+          @Override
+          public String getID(EObject obj) {
+              //[525261] Add technical id on Sirius meta-model
+              //getId on RepresentationsFileXMIHelper has been added to avoid save of xmi:id when an uid exist.
+              return  delegateXMLHelper.getID(obj);
+          }
+          
           @Override
           public EClassifier getType(EFactory eFactory, String typeName) {
               EClassifier type = null;

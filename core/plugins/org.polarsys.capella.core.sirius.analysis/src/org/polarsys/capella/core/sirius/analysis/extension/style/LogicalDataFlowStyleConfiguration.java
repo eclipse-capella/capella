@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,7 +23,6 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.SimpleStyleConfiguration;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.swt.graphics.Image;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
@@ -49,7 +48,6 @@ public class LogicalDataFlowStyleConfiguration extends SimpleStyleConfiguration 
         }
         return DiagramUIPlugin.getPlugin().getImage(descriptor);
       }
-      // }
       return null;
     }
 
@@ -77,15 +75,11 @@ public class LogicalDataFlowStyleConfiguration extends SimpleStyleConfiguration 
 
   @Override
   public Image getLabelIcon(DDiagramElement representationElement, IGraphicalEditPart editPart) {
-    Image result = null;
     if (isShowIcon(representationElement, editPart)) {
-      final EObject target = ((DSemanticDecorator) representationElement).getTarget();
+      final EObject target = representationElement.getTarget();
       return new GetLabelIconSwitch().doSwitch(target);
     }
-    if (result == null) {
-      result = super.getLabelIcon(representationElement, editPart);
-    }
-    return result;
+    return super.getLabelIcon(representationElement, editPart);
   }
 
   public boolean provides(DiagramElementMapping mapping, Style style) {

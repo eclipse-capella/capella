@@ -84,7 +84,7 @@ public class PhysicalPathInvolvementHelper {
   }
 
   protected List<PhysicalPathInvolvement> getPreviousInvolvements(PhysicalPathInvolvement element) {
-    List<PhysicalPathInvolvement> ret = new ArrayList<PhysicalPathInvolvement>();
+    List<PhysicalPathInvolvement> ret = new ArrayList<>();
     EObject owner = element.eContainer();
     if (owner instanceof PhysicalPath) {
       for (EObject anInverseReference : EObjectExt.getReferencers(element, CsPackage.Literals.PHYSICAL_PATH_INVOLVEMENT__NEXT_INVOLVEMENTS)) {

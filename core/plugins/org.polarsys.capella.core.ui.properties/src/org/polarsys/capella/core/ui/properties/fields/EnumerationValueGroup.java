@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,7 +44,7 @@ public class EnumerationValueGroup extends AbstractSemanticGroup {
   public EnumerationValueGroup(Composite parentComposite, String label, TabbedPropertySheetWidgetFactory widgetFactory) {
     super(parentComposite, widgetFactory, false);
 
-    _widgetFactory.createCLabel(parent, label);
+    widgetFactory.createCLabel(parent, label);
     _valueField = createValueComboField();
     _valueField.setEditable(false);
   }
@@ -53,7 +53,7 @@ public class EnumerationValueGroup extends AbstractSemanticGroup {
    * @param label
    */
   protected CCombo createValueComboField() {
-    CCombo valueField = _widgetFactory.createCCombo(parent, SWT.BORDER);
+    CCombo valueField = widgetFactory.createCCombo(parent, SWT.BORDER);
     valueField.addSelectionListener(this);
     valueField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
     valueField.setEditable(false);
@@ -84,7 +84,7 @@ public class EnumerationValueGroup extends AbstractSemanticGroup {
   public void loadComboValue() {
     if (null != _valueField) {
       if (null == _items) {
-        _items = new HashMap<String, EObject>();
+        _items = new HashMap<>();
       }
       _items.clear();
 
@@ -127,10 +127,10 @@ public class EnumerationValueGroup extends AbstractSemanticGroup {
    *
    */
   protected List<EObject> getAvailableValues() {
-    List<EObject> result = new ArrayList<EObject>(0);
-    IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(CapellacorePackage.Literals.CAPELLA_ELEMENT, _semanticFeature);
+    List<EObject> result = new ArrayList<>(0);
+    IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(CapellacorePackage.Literals.CAPELLA_ELEMENT, semanticFeature);
     if (null != query) {
-      result.addAll(query.getAvailableElements(_semanticElement));
+      result.addAll(query.getAvailableElements(semanticElement));
     }
     return result;
   }
@@ -139,10 +139,10 @@ public class EnumerationValueGroup extends AbstractSemanticGroup {
    *
    */
   protected List<EObject> getCurrentValues() {
-    List<EObject> result = new ArrayList<EObject>(0);
-    IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(CapellacorePackage.Literals.CAPELLA_ELEMENT, _semanticFeature);
+    List<EObject> result = new ArrayList<>(0);
+    IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(CapellacorePackage.Literals.CAPELLA_ELEMENT, semanticFeature);
     if (null != query) {
-      result.addAll(query.getCurrentElements(_semanticElement, false));
+      result.addAll(query.getCurrentElements(semanticElement, false));
     }
     return result;
   }
@@ -154,7 +154,7 @@ public class EnumerationValueGroup extends AbstractSemanticGroup {
   protected void fillComboField(CCombo comboField) {
     if (comboField.equals(_valueField)) {
       String selecteditem = _valueField.getItem(_valueField.getSelectionIndex());
-      setDataValue(_semanticElement, _semanticFeature, _items.get(selecteditem));
+      setDataValue(semanticElement, semanticFeature, _items.get(selecteditem));
     }
   }
 

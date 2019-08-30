@@ -24,6 +24,10 @@ public class Messages extends NLS {
   public static String CapellaDiagramPasteAction_Failure;
   public static String CapellaDiagramPasteAction_ProgressMessage;
   public static String PasteCommand_Name;
+  public static String CapellaDiagramPasteAction_InvalidDiagramTarget;
+  public static String CapellaDiagramPasteAction_InvalidNodeContainerTarget;
+  public static String CapellaDiagramPasteAction_InvalidNodeTarget;
+
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);

@@ -178,7 +178,7 @@ public interface AbstractFunctionalArchitecture extends ModellingArchitecture {
 	 * @return the value of the '<em>Owned Functional Allocations</em>' containment reference list.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunctionalArchitecture_OwnedFunctionalAllocations()
 	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of component <=> functions allocation links contained directly under this functional architecture\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of component &lt;=&gt; functions allocation links contained directly under this functional architecture\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which ComponentFunctionalAllocation stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
 	 * @generated
 	 */

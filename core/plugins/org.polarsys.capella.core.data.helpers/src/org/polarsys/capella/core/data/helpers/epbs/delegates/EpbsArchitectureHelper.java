@@ -59,7 +59,7 @@ public class EpbsArchitectureHelper {
   }
 
   protected List<PhysicalArchitectureRealization> getAllocatedPhysicalArchitectureRealizations(EPBSArchitecture element) {
-    List<PhysicalArchitectureRealization> ret = new ArrayList<PhysicalArchitectureRealization>();
+    List<PhysicalArchitectureRealization> ret = new ArrayList<>();
 
     for (ArchitectureAllocation architectureAllocation : element.getProvisionedArchitectureAllocations()) {
       if (architectureAllocation instanceof PhysicalArchitectureRealization) {
@@ -78,7 +78,7 @@ public class EpbsArchitectureHelper {
   }
 
   protected List<PhysicalArchitecture> getAllocatedPhysicalArchitectures(EPBSArchitecture element){
-    List <PhysicalArchitecture> ret = new ArrayList<PhysicalArchitecture>();
+    List <PhysicalArchitecture> ret = new ArrayList<>();
     for (BlockArchitecture architecture : element.getAllocatedArchitectures()) {
       if (architecture instanceof PhysicalArchitecture) {
         ret.add((PhysicalArchitecture) architecture);

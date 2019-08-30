@@ -10,15 +10,12 @@
  *******************************************************************************/
 package org.polarsys.capella.core.flexibility.commands.handlers;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
@@ -50,11 +47,11 @@ public class GenerateHierarchicalHandler extends AbstractUiHandler {
     String value;
 
     GetText(Shell shell) {
-      shell = shell;
+      this.shell = shell;
     }
 
     public void setValue(String value) {
-      value = value;
+      this.value = value;
     }
 
     public String getValue() {
@@ -96,16 +93,16 @@ public class GenerateHierarchicalHandler extends AbstractUiHandler {
    */
   public Object execute(final ExecutionEvent event) throws ExecutionException {
 
-    Resource resource = null;
-    final List<EObject> objects = new ArrayList<EObject>();
     IStructuredSelection selection = (IStructuredSelection) HandlerUtil.getCurrentSelection(event);
     final EObject root = (EObject) selection.iterator().next();
 
     TransactionHelper.getExecutionManager(root).execute(new AbstractReadWriteCommand() {
+      
+      @Override
       public void run() {
         BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(root);
-        HashMap<String, Class> clazz = new HashMap<String, Class>();
-        HashMapSet<String, String> hierarchical = new HashMapSet<String, String>();
+        HashMap<String, Class> clazz = new HashMap<>();
+        HashMapSet<String, String> hierarchical = new HashMapSet<>();
 
         String value = new GetText(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell()).getValue();
         if (value != null) {

@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Tests
+Bundle-SymbolicName: org.polarsys.capella.test.massactions.ju
+Bundle-Version: 1.3.1.qualifier
+Bundle-Activator: org.polarsys.capella.test.massactions.ju.activator.TestActivator
+Require-Bundle: org.polarsys.capella.test.framework,
+ org.polarsys.capella.common.ui.massactions.core,
+ org.polarsys.capella.common.ui.massactions
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: org.polarsys.capella.common.ui.massactions.tests.ju
+Export-Package: org.polarsys.capella.test.massactions.ju.testsuites

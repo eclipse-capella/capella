@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,9 +17,7 @@ import java.util.List;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.polarsys.capella.common.data.modellingcore.IState;
 import org.polarsys.capella.common.queries.AbstractQuery;
-import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -37,7 +35,7 @@ public class GetAvailable_AbstractStateProperties extends AbstractQuery {
   @Override
   public List<Object> execute(Object input, IQueryContext context) {
     CapellaElement inputElement = (CapellaElement) input;
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+    List<Object> availableElements = new ArrayList<>();
     BlockArchitecture arch = SystemEngineeringExt.getRootBlockArchitecture(inputElement);
     if (arch != null) {
       for (BlockArchitecture block : BlockArchitectureExt.getAllAllocatedArchitectures(arch)) {
@@ -46,7 +44,7 @@ public class GetAvailable_AbstractStateProperties extends AbstractQuery {
         while (allContents.hasNext()) {
           Object object = allContents.next();
           if ((object instanceof ExchangeItem) || (object instanceof Operation)) {
-            availableElements.add((CapellaElement) object);
+            availableElements.add(object);
           }
         }
       }
@@ -59,12 +57,7 @@ public class GetAvailable_AbstractStateProperties extends AbstractQuery {
       }
     }
 
-    if (inputElement instanceof IState) {
-      List<CapellaElement> currentElements = QueryInterpretor.executeQuery(
-          "GetCurrent_AbstractStateProperties", inputElement, context);//$NON-NLS-1$
-      availableElements.removeAll(currentElements);
-    }
-    return (List) availableElements;
+    return availableElements;
   }
 
   /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,9 +29,7 @@ import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
-import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
-import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.AbstractActor;
@@ -59,6 +57,8 @@ import org.polarsys.capella.core.sirius.analysis.showhide.AbstractShowHide;
 import org.polarsys.capella.core.sirius.analysis.showhide.AbstractShowHide.DiagramContext;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideIDRelationships;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 /**
  * Shared helpers for Architecture Blank diagrams
  */
@@ -78,7 +78,7 @@ public class IBServices {
    */
   public EObject showHideIDExchangeItems(EObject context, List<CapellaElement> selectedOperations, DDiagram diagram) {
 
-    Map<CapellaElement, AbstractDNode> visibleElements = new HashMap<CapellaElement, AbstractDNode>();
+    Map<CapellaElement, AbstractDNode> visibleElements = new HashMap<>();
     for (DDiagramElement aNode : DiagramServices.getDiagramServices().getDiagramElements(diagram)) {
       if ((aNode instanceof AbstractDNode) && (aNode.getTarget() != null)
           && (aNode.getTarget() instanceof ExchangeItem)) {
@@ -138,13 +138,10 @@ public class IBServices {
     }
 
     if (isContainerMapping) {
-      ContainerMapping mapping = DiagramServices.getDiagramServices().getContainerMapping(diagram, mappingName);
-      return mapping;
+      return DiagramServices.getDiagramServices().getContainerMapping(diagram, mappingName);
     }
 
-    NodeMapping mapping = DiagramServices.getDiagramServices().getNodeMapping(diagram, mappingName);
-    return mapping;
-
+    return DiagramServices.getDiagramServices().getNodeMapping(diagram, mappingName);
   }
 
   /**
@@ -173,8 +170,7 @@ public class IBServices {
       mappingName = IMappingNameConstants.CCII_COMMUNICATION_LINK_MAPPING_NAME;
     }
 
-    EdgeMapping mapping = DiagramServices.getDiagramServices().getEdgeMapping(diagram, mappingName);
-    return mapping;
+    return DiagramServices.getDiagramServices().getEdgeMapping(diagram, mappingName);
   }
 
   /**
@@ -204,8 +200,7 @@ public class IBServices {
       mappingName = IMappingNameConstants.CCII_GENERALIZATION_MAPPING_NAME;
     }
 
-    EdgeMapping mapping = DiagramServices.getDiagramServices().getEdgeMapping(diagram, mappingName);
-    return mapping;
+    return DiagramServices.getDiagramServices().getEdgeMapping(diagram, mappingName);
   }
 
   public EdgeMapping getMappingIDInterfaceUse(EObject context, DDiagram diagram) {
@@ -223,8 +218,7 @@ public class IBServices {
       mappingName = IMappingNameConstants.CCII_USE_INTERFACE_MAPPING_NAME;
     }
 
-    EdgeMapping mapping = DiagramServices.getDiagramServices().getEdgeMapping(diagram, mappingName);
-    return mapping;
+    return DiagramServices.getDiagramServices().getEdgeMapping(diagram, mappingName);
   }
 
   public EdgeMapping getMappingIDInterfaceImplementation(EObject context, DDiagram diagram) {
@@ -242,8 +236,7 @@ public class IBServices {
       mappingName = IMappingNameConstants.CCII_IMPLEMENTATION_INTERFACE_MAPPING_NAME;
     }
 
-    EdgeMapping mapping = DiagramServices.getDiagramServices().getEdgeMapping(diagram, mappingName);
-    return mapping;
+    return DiagramServices.getDiagramServices().getEdgeMapping(diagram, mappingName);
   }
 
   public EdgeMapping getMappingIDInterfaceProvide(EObject context, DDiagram diagram) {
@@ -261,8 +254,7 @@ public class IBServices {
       mappingName = IMappingNameConstants.CCII_PROVIDED_INTERFACE_MAPPING_NAME;
     }
 
-    EdgeMapping mapping = DiagramServices.getDiagramServices().getEdgeMapping(diagram, mappingName);
-    return mapping;
+    return DiagramServices.getDiagramServices().getEdgeMapping(diagram, mappingName);
   }
 
   public EdgeMapping getMappingIDInterfaceRequire(EObject context, DDiagram diagram) {
@@ -280,12 +272,10 @@ public class IBServices {
       mappingName = IMappingNameConstants.CCII_REQUIRED_INTERFACE_MAPPING_NAME;
     }
 
-    EdgeMapping mapping = DiagramServices.getDiagramServices().getEdgeMapping(diagram, mappingName);
-    return mapping;
+    return DiagramServices.getDiagramServices().getEdgeMapping(diagram, mappingName);
   }
 
   public AbstractNodeMapping getMappingIDComponent(EObject element, DDiagram diagram) {
-    boolean isContainerMapping = true;
 
     String mappingName = ""; //$NON-NLS-1$
     if (IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
@@ -301,14 +291,8 @@ public class IBServices {
       mappingName = IMappingNameConstants.CCII_COMPONENT;
 
     }
-
-    if (isContainerMapping) {
-      ContainerMapping mapping = DiagramServices.getDiagramServices().getContainerMapping(diagram, mappingName);
-      return mapping;
-    }
-
-    NodeMapping mapping = DiagramServices.getDiagramServices().getNodeMapping(diagram, mappingName);
-    return mapping;
+    
+    return DiagramServices.getDiagramServices().getContainerMapping(diagram, mappingName);
 
   }
 
@@ -328,9 +312,7 @@ public class IBServices {
 
     }
 
-    NodeMapping mapping = DiagramServices.getDiagramServices().getBorderedNodeMapping(diagram, mappingName);
-    return mapping;
-
+    return DiagramServices.getDiagramServices().getBorderedNodeMapping(diagram, mappingName);
   }
 
   public AbstractNodeMapping getMappingIDExchangeItem(EObject context, DDiagram diagram) {
@@ -353,13 +335,10 @@ public class IBServices {
     }
 
     if (isContainerMapping) {
-      ContainerMapping mapping = DiagramServices.getDiagramServices().getContainerMapping(diagram, mappingName);
-      return mapping;
+      return DiagramServices.getDiagramServices().getContainerMapping(diagram, mappingName);
     }
 
-    NodeMapping mapping = DiagramServices.getDiagramServices().getNodeMapping(diagram, mappingName);
-    return mapping;
-
+    return DiagramServices.getDiagramServices().getNodeMapping(diagram, mappingName);
   }
 
   public Interface createCCDIInterface(DSemanticDecorator containerView) {
@@ -398,7 +377,7 @@ public class IBServices {
   }
 
   public Collection<EObject> getIDInsertRemoveRelationshipsScope(EObject context) {
-    List<EObject> result = new ArrayList<EObject>();
+    List<EObject> result = new ArrayList<>();
 
     EObject target = context;
     if (target instanceof DSemanticDecorator) {
@@ -433,13 +412,12 @@ public class IBServices {
       Interface itf = (Interface) target;
       result.addAll(itf.getSuperGeneralizations());
       result.addAll(itf.getSubGeneralizations());
-
     }
     return result;
   }
 
   public List<EObject> getIDInsertRemoveRelationshipsInitialSelection(EObject sourceView, Collection scope) {
-    List<EObject> result = new ArrayList<EObject>();
+    List<EObject> result = new ArrayList<>();
     DDiagram diagramContainer = CapellaServices.getService().getDiagramContainer(sourceView);
     EObject sourceTarget = ((DSemanticDecorator) sourceView).getTarget();
 
@@ -549,7 +527,7 @@ public class IBServices {
    */
   public EObject showHideInterfaces(EObject context, List<CapellaElement> selectedInterfaces,
       List<CapellaElement> scope, DDiagram diagram) {
-    Map<CapellaElement, AbstractDNode> visibleElements = new HashMap<CapellaElement, AbstractDNode>();
+    Map<CapellaElement, AbstractDNode> visibleElements = new HashMap<>();
     for (DDiagramElement aNode : DiagramServices.getDiagramServices().getDiagramElements(diagram)) {
       EObject target = aNode.getTarget();
       if ((aNode instanceof AbstractDNode) && (target != null) && (target instanceof Interface)) {
@@ -604,7 +582,7 @@ public class IBServices {
   }
 
   public Object getIBInterfaceUseSemanticCandidates(DDiagram diagram) {
-    Collection<EObject> result = new ArrayList<EObject>();
+    Collection<EObject> result = new ArrayList<>();
 
     for (DDiagramElement dNode : DiagramServices.getDiagramServices().getAllAbstractNodes(diagram, false)) {
       EObject target = dNode.getTarget();
@@ -617,7 +595,7 @@ public class IBServices {
   }
 
   public Object getIBInterfaceImplementationSemanticCandidates(DDiagram diagram) {
-    Collection<EObject> result = new ArrayList<EObject>();
+    Collection<EObject> result = new ArrayList<>();
 
     for (DDiagramElement dNode : DiagramServices.getDiagramServices().getAllAbstractNodes(diagram, false)) {
       EObject target = dNode.getTarget();
@@ -630,14 +608,14 @@ public class IBServices {
   }
 
   public Object getIBComponentExchangeSemanticCandidates(DDiagram diagram) {
-    Collection<ComponentExchange> result = new ArrayList<ComponentExchange>();
+    Collection<ComponentExchange> result = new ArrayList<>();
 
     for (DDiagramElement dNode : DiagramServices.getDiagramServices().getAllAbstractNodes(diagram, false)) {
       EObject target = dNode.getTarget();
       if (target instanceof Part) {
         result.addAll(ComponentExt.getAllRelatedComponentExchange((Part) target, true));
       } else if (target instanceof Component) {
-        result.addAll(ComponentExt.getAllRelatedComponentExchange((Component) target));
+        result.addAll(getCache(ComponentExt::getAllRelatedComponentExchange, (Component) target));
       }
     }
 
@@ -649,7 +627,7 @@ public class IBServices {
   }
 
   public Object getIBCommunicationLinkSemanticCandidates(DDiagram diagram) {
-    Collection<CommunicationLink> result = new ArrayList<CommunicationLink>();
+    Collection<CommunicationLink> result = new ArrayList<>();
 
     for (DDiagramElement dNode : DiagramServices.getDiagramServices().getAllAbstractNodes(diagram, false)) {
       EObject target = dNode.getTarget();
@@ -662,7 +640,7 @@ public class IBServices {
   }
 
   public Object getIBExchangeItemAllocationSemanticCandidates(DDiagram diagram) {
-    Collection<ExchangeItemAllocation> result = new ArrayList<ExchangeItemAllocation>();
+    Collection<ExchangeItemAllocation> result = new ArrayList<>();
 
     for (DDiagramElement dNode : DiagramServices.getDiagramServices().getAllAbstractNodes(diagram, false)) {
       EObject target = dNode.getTarget();

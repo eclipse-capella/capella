@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
-  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -11,69 +11,46 @@
        Thales - initial API and implementation
 -->
 <plugin>
-   <!--extension
-         point="org.eclipse.ui.popupMenus">
-      <objectContribution
-            id="org.polarsys.capella.core.data.fa.ui.wizards.objectContribution1"
-            objectClass="org.polarsys.capella.core.data.oa.OperationalActivity">
-         <action
-               class="org.polarsys.capella.core.data.fa.ui.wizards.actions.EIAllocationManagementWizardAction"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_manage.gif"
-               id="org.polarsys.capella.core.data.fa.ui.wizards.actions.EIAllocationManagementWizardAction"
-               label="%EIAllocationManagement"
-               menubarPath="capella.project.explorer.menu.wizards/groupWizards">
-         </action>
-      </objectContribution>
-      <objectContribution
-            id="org.polarsys.capella.core.data.fa.ui.wizards.objectContribution2"
-            objectClass="org.polarsys.capella.core.data.ctx.SystemFunction">
-         <action
-               class="org.polarsys.capella.core.data.fa.ui.wizards.actions.EIAllocationManagementWizardAction"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_manage.gif"
-               id="org.polarsys.capella.core.data.fa.ui.wizards.actions.EIAllocationManagementWizardAction"
-               label="%EIAllocationManagement"
-               menubarPath="capella.project.explorer.menu.wizards/groupWizards">
-         </action>
-      </objectContribution>
-      <objectContribution
-            id="org.polarsys.capella.core.data.fa.ui.wizards.objectContribution3"
-            objectClass="org.polarsys.capella.core.data.la.LogicalFunction">
-         <action
-               class="org.polarsys.capella.core.data.fa.ui.wizards.actions.EIAllocationManagementWizardAction"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_manage.gif"
-               id="org.polarsys.capella.core.data.fa.ui.wizards.actions.EIAllocationManagementWizardAction"
-               label="%EIAllocationManagement"
-               menubarPath="capella.project.explorer.menu.wizards/groupWizards">
-         </action>
-      </objectContribution>
-      
-      </extension-->
-      
-      
-      
       
         <extension
          point="org.eclipse.ui.menus">
             <!-- EI Allocation Management -->
-              <menuContribution  allPopups="true"  locationURI="popup:org.polarsys.capella.core.wizards?after=additions">
+              <menuContribution locationURI="popup:org.polarsys.capella.core.wizards?after=additions">
                  <command commandId="org.polarsys.capella.core.data.fa.ui.wizards.command.EIAllocationManagementWizardAction" 
                     style="push" 
                     icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_manage.gif">  
-                </command> 
                 
                  <visibleWhen checkEnabled="false">
                     <with variable="selection">
-                        <iterate>
-                            <or>
-                              <instanceof  value="org.polarsys.capella.core.data.oa.OperationalActivity"/>
-                              <instanceof  value="org.polarsys.capella.core.data.ctx.SystemFunction"/>
-                              <instanceof  value="org.polarsys.capella.core.data.la.LogicalFunction"/>
+                        <iterate ifEmpty="false">
+                        	<or>
+                            <test property="org.polarsys.capella.core.platform.sirius.ui.classOf" forcePluginActivation="true" value="OperationalActivity"/>
+                            <test property="org.polarsys.capella.core.platform.sirius.ui.classOf" forcePluginActivation="true" value="SystemFunction"/>
+                            <test property="org.polarsys.capella.core.platform.sirius.ui.classOf" forcePluginActivation="true" value="LogicalFunction"/>
                             </or>
                         </iterate>
                     </with>
                   </visibleWhen>
+             </command>
+                
              </menuContribution>
              
+             <menuContribution locationURI="popup:org.polarsys.capella.core.data.fa.ui.wizards.dialogs.eiAllocation.sourcePhase?after=additions">
+             
+	              <separator
+	                    name="group.showIn">
+	              </separator>
+	              
+             </menuContribution>
+              
+             <menuContribution locationURI="popup:org.polarsys.capella.core.data.fa.ui.wizards.dialogs.eiAllocation.targetPhase?after=additions">
+	              
+	              <separator
+	                    name="group.showIn">
+	              </separator>
+              
+             </menuContribution>
+              
        </extension>
       
       <extension
@@ -91,50 +68,14 @@
        
       <extension
          point="org.eclipse.ui.commands">
-           <category
-                id="org.polarsys.capella.core.wizard.ui.category"
-                name="Wizards">
-           </category>
            <command
+                   categoryId="org.polarsys.capella.core.wizards"
                    defaultHandler="org.polarsys.capella.core.data.fa.ui.wizards.actions.EIAllocationManagementWizardAction"
                    id="org.polarsys.capella.core.data.fa.ui.wizards.command.EIAllocationManagementWizardAction"
                    name="%EIAllocationManagement">
           </command>
       </extension>
       
-      
-      
-      <!--                     DIAGRAM COMMAND WIZARDS                                        -->
-      
-      <extension
-         point="org.eclipse.ui.menus">
-           <!-- EI Allocation Management wizard -->
-          <menuContribution  allPopups="true"
-                locationURI="popup:org.polarsys.capella.core.sirius.diagram.editor.wizards?after=additions">
-             <command commandId="org.polarsys.capella.core.data.fa.ui.wizards.command.EIAllocationManagementWizardAction" 
-             style="push" 
-             icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_manage.gif" >  
-               <visibleWhen checkEnabled="false">
-                <with variable="selection">
-                    <and>
-                    <iterate>
-                         
-                            <reference definitionId="org.polarsys.capella.core.data.ui.expression.wizardVisibilityDiagramElementExpression"/>
-                            <or>
-                            <test property="org.polarsys.capella.core.platform.sirius.ui.classOf" forcePluginActivation="true" value="OperationalActivity"/>
-                            <test property="org.polarsys.capella.core.platform.sirius.ui.classOf" forcePluginActivation="true" value="SystemFunction"/>
-                            <test property="org.polarsys.capella.core.platform.sirius.ui.classOf" forcePluginActivation="true" value="LogicalFunction"/>
-                            </or>
-                    </iterate>
-                    </and>
-                </with>
-              </visibleWhen>
-            </command> 
-          </menuContribution>
-      </extension>
-      
-      
-     
       <extension point="org.eclipse.core.expressions.definitions">
       <definition
             id="org.polarsys.capella.core.data.ui.expression.wizardVisibilityDiagramElementExpression">
@@ -150,28 +91,5 @@
             </with>
       </definition>
    </extension>
-      
-      
-      <!--extension
-         point="org.eclipse.ui.popupMenus">
-      <objectContribution
-            id="org.polarsys.capella.core.data.fa.ui.wizards.objectContribution4"
-            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
-         <enablement>
-           <or>
-             <test property="org.polarsys.capella.core.platform.sirius.ui.classOf" forcePluginActivation="true" value="OperationalActivity"/>
-             <test property="org.polarsys.capella.core.platform.sirius.ui.classOf" forcePluginActivation="true" value="SystemFunction"/>
-             <test property="org.polarsys.capella.core.platform.sirius.ui.classOf" forcePluginActivation="true" value="LogicalFunction"/>
-           </or>
-         </enablement>
-         <action
-               class="org.polarsys.capella.core.data.fa.ui.wizards.actions.EIAllocationManagementWizardAction"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_manage.gif"
-               id="org.polarsys.capella.core.data.fa.ui.wizards.actions.EIAllocationManagementWizardAction"
-               label="%EIAllocationManagement"
-               menubarPath="WizardDiagramCommands/groupWizards">
-         </action>
-      </objectContribution>
-   </extension-->
 
 </plugin>

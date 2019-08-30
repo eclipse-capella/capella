@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.common.tools.report.appenders.reportlogview;singleton:=true
-Bundle-Version: 1.2.2.qualifier
+Bundle-Version: 1.3.1.qualifier
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.debug.ui,
@@ -13,10 +13,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.help,
  org.apache.commons.lang,
  org.polarsys.capella.shared.id.handler
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.tools.report.appenders.reportlogview,
- org.polarsys.capella.common.tools.report.appenders.reportlogview.actions,
  org.polarsys.capella.common.tools.report.appenders.reportlogview.extpoint,
  org.polarsys.capella.common.tools.report.appenders.reportlogview.handler
 Bundle-Activator: org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewPlugin

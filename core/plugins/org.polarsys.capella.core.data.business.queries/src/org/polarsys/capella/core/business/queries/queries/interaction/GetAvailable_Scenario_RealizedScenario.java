@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -52,9 +52,6 @@ public class GetAvailable_Scenario_RealizedScenario extends AbstractQuery {
 			availableElements.addAll(getElementsFromBlockArchitecture(currentBlockArchitecture, (Scenario) element));
 		}
 		availableElements.remove(element);
-		for (CapellaElement elt : getCurrentElements(element, false)) {
-			availableElements.remove(elt);
-		}
 		return availableElements;
 	}
 

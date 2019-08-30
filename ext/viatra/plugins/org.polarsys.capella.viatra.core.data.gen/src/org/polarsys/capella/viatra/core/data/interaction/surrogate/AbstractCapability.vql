@@ -1,0 +1,94 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2019 THALES DMS FRANCE.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+
+/* Generated file */
+
+package org.polarsys.capella.viatra.core.data.interaction.surrogate
+
+import "http://www.polarsys.org/capella/core/interaction/1.3.0"
+
+// Start of user code for imports 
+import "http://www.polarsys.org/capella/common/core/1.3.0"
+import "http://www.polarsys.org/capella/core/core/1.3.0"
+import "http://www.polarsys.org/capella/core/fa/1.3.0"
+
+// End of user code
+
+@Surrogate(feature="incomingCapabilityAllocation")
+pattern AbstractCapability__incomingCapabilityAllocation(self : AbstractCapability, target : AbstractCapabilityRealization) {
+	AbstractCapability.incomingTraces(self, target);
+}
+
+@Surrogate(feature="outgoingCapabilityAllocation")
+pattern AbstractCapability__outgoingCapabilityAllocation(self : AbstractCapability, target : AbstractCapabilityRealization) {
+	AbstractCapability.outgoingTraces(self, target);
+}
+
+@Surrogate(feature="extending")
+pattern AbstractCapability__extending(self : AbstractCapability, target : AbstractCapabilityExtend) {
+	AbstractCapabilityExtend.extended(target, self);
+}
+
+@Surrogate(feature="subGeneralizations")
+pattern AbstractCapability__subGeneralizations(self : AbstractCapability, target : AbstractCapabilityGeneralization) {
+	AbstractCapabilityGeneralization.^super(target, self);
+}
+
+@Surrogate(feature="including")
+pattern AbstractCapability__including(self : AbstractCapability, target : AbstractCapabilityInclude) {
+	AbstractCapabilityInclude.included(target, self);
+}
+
+@Surrogate(feature="super")
+pattern AbstractCapability__super(self : AbstractCapability, target : AbstractCapability) {
+	AbstractCapability.superGeneralizations.^super(self, target);
+}
+
+@Surrogate(feature="sub")
+pattern AbstractCapability__sub(self : AbstractCapability, target : AbstractCapability) {
+	AbstractCapability.subGeneralizations.sub(self, target);
+}
+
+@Surrogate(feature="includedAbstractCapabilities")
+pattern AbstractCapability__includedAbstractCapabilities(self : AbstractCapability, target : AbstractCapability) {
+	AbstractCapability.includes.included(self, target);
+}
+
+@Surrogate(feature="includingAbstractCapabilities")
+pattern AbstractCapability__includingAbstractCapabilities(self : AbstractCapability, target : AbstractCapability) {
+	AbstractCapabilityInclude.included(aci, self);
+AbstractCapabilityInclude.inclusion(aci, target);
+}
+
+@Surrogate(feature="extendedAbstractCapabilities")
+pattern AbstractCapability__extendedAbstractCapabilities(self : AbstractCapability, target : AbstractCapability) {
+	AbstractCapability.^extends.extended(self, target);
+}
+
+@Surrogate(feature="extendingAbstractCapabilities")
+pattern AbstractCapability__extendingAbstractCapabilities(self : AbstractCapability, target : AbstractCapability) {
+	AbstractCapabilityExtend.extended(ace, self);
+AbstractCapabilityExtend.^extension(ace, target);
+}
+
+@Surrogate(feature="involvedAbstractFunctions")
+pattern AbstractCapability__involvedAbstractFunctions(self : AbstractCapability, target : AbstractFunction) {
+	AbstractCapability.involvedInvolvements(self, afaci);
+AbstractFunctionAbstractCapabilityInvolvement.function(afaci, target);
+}
+
+@Surrogate(feature="involvedFunctionalChains")
+pattern AbstractCapability__involvedFunctionalChains(self : AbstractCapability, target : FunctionalChain) {
+	AbstractCapability.involvedInvolvements(self, fcaci);
+FunctionalChainAbstractCapabilityInvolvement.functionalChain(fcaci, target);
+}
+
+

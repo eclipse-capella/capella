@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.transition.common.ui;singleton:=true
-Bundle-Version: 1.2.2.qualifier
+Bundle-Version: 1.3.1.qualifier
 Bundle-Activator: org.polarsys.capella.core.transition.common.ui.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.ui,
@@ -14,14 +14,16 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.expressions;bundle-version="3.4.200",
  org.polarsys.capella.common.flexibility.wizards;visibility:=reexport,
  org.polarsys.capella.core.model.handler,
- org.polarsys.capella.core.preferences
+ org.polarsys.capella.core.preferences,
+ org.polarsys.capella.common.ui
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.transition.common.ui,
  org.polarsys.capella.core.transition.common.ui.actions,
  org.polarsys.capella.core.transition.common.ui.commands,
+ org.polarsys.capella.core.transition.common.ui.dialogs,
  org.polarsys.capella.core.transition.common.ui.handlers.merge,
  org.polarsys.capella.core.transition.common.ui.handlers.options,
  org.polarsys.capella.core.transition.common.ui.utils,
  org.polarsys.capella.core.transition.common.ui.wizard
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

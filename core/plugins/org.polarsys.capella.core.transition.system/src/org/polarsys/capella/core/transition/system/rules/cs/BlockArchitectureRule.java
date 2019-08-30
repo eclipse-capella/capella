@@ -19,8 +19,11 @@ import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
 import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
+import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.capella.core.model.helpers.ProjectExt;
+import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.constants.Messages;
 import org.polarsys.capella.core.transition.common.handlers.transformation.TransformationHandlerHelper;
@@ -36,11 +39,6 @@ public class BlockArchitectureRule extends AbstractCapellaElementRule {
   @Override
   protected EClass getSourceType() {
     return CsPackage.Literals.BLOCK_ARCHITECTURE;
-  }
-
-  @Override
-  protected EObject getDefaultContainer(EObject element, EObject result, IContext context) {
-    return (EObject) context.get(ITransitionConstants.TRANSFORMATION_TARGET_ROOT);
   }
 
   @Override

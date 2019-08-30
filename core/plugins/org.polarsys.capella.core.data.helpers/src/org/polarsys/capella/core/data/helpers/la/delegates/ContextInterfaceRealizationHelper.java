@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,17 +24,14 @@ public class ContextInterfaceRealizationHelper {
   }
 
   public static ContextInterfaceRealizationHelper getInstance() {
-    if (instance == null)
-      instance = new ContextInterfaceRealizationHelper();
+    if (instance == null) {
+    	instance = new ContextInterfaceRealizationHelper();
+    }
     return instance;
   }
 
   public Object doSwitch(ContextInterfaceRealization element, EStructuralFeature feature) {
-    Object ret = null;
-    // no helper found... searching in super classes...
-    if (null == ret) {
-      ret = InterfaceAllocationHelper.getInstance().doSwitch(element, feature);
-    }
-    return ret;
+	  // no helper found... searching in super classes...
+      return InterfaceAllocationHelper.getInstance().doSwitch(element, feature);
   }
 }

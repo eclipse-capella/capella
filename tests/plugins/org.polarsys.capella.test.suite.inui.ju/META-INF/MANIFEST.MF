@@ -2,11 +2,13 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.test.suite.inui.ju
-Bundle-Version: 1.2.2.qualifier
+Bundle-Version: 1.3.1.qualifier
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Require-Bundle: org.polarsys.capella.test.suites.ju,
- org.apache.xerces
+ org.apache.xerces,
+ org.polarsys.capella.test.platform.ju,
+ org.polarsys.capella.test.benchmarks.ju
 Export-Package: org.polarsys.capella.test.suite.inui.ju

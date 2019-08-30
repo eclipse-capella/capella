@@ -51,7 +51,7 @@ public class GeneralClassHelper {
   }
 
   protected List <Operation> getContainedOperations(GeneralClass element) {
-    List <Operation> ret = new ArrayList <Operation>();
+    List <Operation> ret = new ArrayList <>();
     for (Feature feature : element.getOwnedFeatures()) {
       if(feature instanceof Operation) {
         ret.add((Operation)feature);

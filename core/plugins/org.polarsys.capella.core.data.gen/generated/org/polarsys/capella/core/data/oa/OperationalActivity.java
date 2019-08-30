@@ -86,6 +86,7 @@ public interface OperationalActivity extends AbstractFunction {
 	 * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalActivity_ActivityAllocations()
 	 * @see org.polarsys.capella.core.data.oa.ActivityAllocation#getActivity
 	 * @model opposite="activity" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='incomingTraces'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='allocation of this operational activity to a given operational role\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -114,6 +115,7 @@ public interface OperationalActivity extends AbstractFunction {
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='list of swimlanes used to partition this operational activity\r\n[source: Capella study]' constraints='none' comment/notes='not used/implemented as of Capella'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='unimplemented' viatra.expression='Nothing in helpers ?'"
 	 * @generated
 	 */
 
@@ -140,6 +142,7 @@ public interface OperationalActivity extends AbstractFunction {
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='list of Processes associated to this Operational Activity\r\n[source: Capella study]' constraints='none' comment/notes='not used/implemented as of Capella 1.0.3'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedFunctionalChains'"
 	 * @generated
 	 */
 
@@ -166,6 +169,7 @@ public interface OperationalActivity extends AbstractFunction {
 	 * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalActivity_AllocatorEntities()
 	 * @see org.polarsys.capella.core.data.oa.Entity#getAllocatedOperationalActivities
 	 * @model opposite="allocatedOperationalActivities" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='OperationalActivity.incomingTraces(self, cfa);\r\nComponentFunctionalAllocation.sourceElement(cfa, target);'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -194,6 +198,7 @@ public interface OperationalActivity extends AbstractFunction {
 	 * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalActivity_RealizingSystemFunctions()
 	 * @see org.polarsys.capella.core.data.ctx.SystemFunction#getRealizedOperationalActivities
 	 * @model opposite="realizedOperationalActivities" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='inFunctionRealizations.allocatingFunction'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -220,6 +225,7 @@ public interface OperationalActivity extends AbstractFunction {
 	 * @return the value of the '<em>Allocating Roles</em>' reference list.
 	 * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalActivity_AllocatingRoles()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='activityAllocations.role'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -246,6 +252,7 @@ public interface OperationalActivity extends AbstractFunction {
 	 * @return the value of the '<em>Contained Operational Activities</em>' reference list.
 	 * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalActivity_ContainedOperationalActivities()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedFunctions'"
 	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedFunctions'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -272,6 +279,7 @@ public interface OperationalActivity extends AbstractFunction {
 	 * @return the value of the '<em>Children Operational Activities</em>' reference list.
 	 * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalActivity_ChildrenOperationalActivities()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='subFunctions'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='list of children operational activities\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"

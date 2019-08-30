@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -61,6 +61,10 @@ public abstract class AbstractToolWrapper {
   /** the target tool */
   protected final AbstractToolDescription _tool;
 
+  public AbstractToolDescription getTool() {
+    return _tool;
+  }
+
   /** The argument list in order to create the command */
   protected Map<ArgumentType, Object> _arguments;
 
@@ -120,7 +124,8 @@ public abstract class AbstractToolWrapper {
       ArgumentData currentArgumentData = it.next();
       ArgumentType currentType = currentArgumentData.getType();
       
-      if ((currentType.equals(ArgumentType.PREDECESSOR) && (_arguments.get(currentType) == null))
+      if (((currentType.equals(ArgumentType.COLLECTION) && _arguments.get(currentType) == null))
+          || (currentType.equals(ArgumentType.PREDECESSOR) && (_arguments.get(currentType) == null))
           || (currentType.equals(ArgumentType.STARTINGENDPREDECESSOR) && (_arguments.get(currentType) == null))
           || (currentType.equals(ArgumentType.FINISHINGENDPREDECESSOR) && (_arguments.get(currentType) == null))) {
         result.add(new Status(Status.OK, TestDiagramCommonPlugin.PLUGIN_ID, currentType + " is ok"));

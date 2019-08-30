@@ -51,7 +51,7 @@ public class CollectionHelper {
 	}
 
 	protected List <Operation> getContainedOperations(Collection element){
-		List <Operation> ret = new ArrayList <Operation>();
+		List <Operation> ret = new ArrayList <>();
 		for (Feature feature : element.getOwnedFeatures()) {
 			if(feature instanceof Operation) {
 				ret.add((Operation) feature);

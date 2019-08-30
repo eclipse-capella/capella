@@ -67,9 +67,8 @@ public class NameGenerator {
     else if (instance instanceof SignalInstance) {
       component = ((SignalInstance) instance).getType();
     }
-    assert component!=null;
     
-    String representedInstanceName = component.getName();
+    String representedInstanceName = component != null ? component.getName() : "Unknown";
     
     SequenceMessage message = messageEnd.getMessage();
     String messageName = message.getName();
@@ -97,9 +96,8 @@ public class NameGenerator {
     else if (instance instanceof SignalInstance) {
       component =((SignalInstance) instance).getType();
     }
-    assert component!=null;
     
-    String representedInstanceName = component.getName();
+    String representedInstanceName = component != null ? component.getName() : "Unknown";
     
     executionEnd.setName("[[ " //$NON-NLS-1$
                            + "[" + representedInstanceName + "] " //$NON-NLS-1$ //$NON-NLS-2$
@@ -127,12 +125,10 @@ public class NameGenerator {
     else if (instance instanceof SignalInstance) {
       component = ((SignalInstance) instance).getType();
     }
-    assert component!=null;
     
-    String componentName = component.getName();
-    String representedInstanceName = component.getName();  
+    String componentName = component != null ? component.getName() : "Unknown";
     instanceRole.setName("[[ " //$NON-NLS-1$
-                           + "[" + representedInstanceName + " : "+ componentName + "] " //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                           + "[" + componentName + " : "+ componentName + "] " //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                            + "(Ref=" + __idInstanceRole + ")" //$NON-NLS-1$ //$NON-NLS-2$
                            + " ]] "); //$NON-NLS-1$
     

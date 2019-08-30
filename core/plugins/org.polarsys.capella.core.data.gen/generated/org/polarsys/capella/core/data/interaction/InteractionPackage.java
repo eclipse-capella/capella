@@ -30,9 +30,8 @@ import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
  * <!-- end-user-doc -->
  * @see org.polarsys.capella.core.data.interaction.InteractionFactory
  * @model kind="package"
- *        annotation="http://www.polarsys.org/kitalpha/dsl/2007/dslfactory trackResourceModification='true' useUUIDs='false' useIDAttributes='true' extensibleProviderFactory='true' childCreationExtenders='true'"
- *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Interaction aims at defining the components interaction language (close from the UML Sequence diagram, partially).\r\n[source: Capella study]' usage\040guideline='none' used\040in\040levels='operational,system,logical' usage\040examples='none' constraints='This package depends on the model FunctionalAnalysis.ecore\r\nThis package depends on the model Behavior.ecore' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/extension trackResourceModification='true' useUUIDs='false' useIDAttributes='true' extensibleProviderFactory='true' childCreationExtenders='true'"
+ *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Interaction aims at defining the components interaction language (close from the UML Sequence diagram, partially).\r\n[source: Capella study]' usage\040guideline='none' used\040in\040levels='operational,system,logical' usage\040examples='none' constraints='This package depends on the model FunctionalAnalysis.ecore\r\nThis package depends on the model Behavior.ecore' comment/notes='none' reference\040documentation='none'"
  * @generated
  */
 public interface InteractionPackage extends EPackage {
@@ -50,7 +49,7 @@ public interface InteractionPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.polarsys.org/capella/core/interaction/1.2.0"; //$NON-NLS-1$
+	String eNS_URI = "http://www.polarsys.org/capella/core/interaction/1.3.0"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.

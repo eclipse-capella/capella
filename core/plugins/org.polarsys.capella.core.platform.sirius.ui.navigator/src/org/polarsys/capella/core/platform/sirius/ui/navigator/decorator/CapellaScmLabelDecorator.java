@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,14 +18,13 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.IDecoration;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.ILightweightLabelDecorator;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.team.core.RepositoryProvider;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.capellamodeller.Project;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys;
 
 public class CapellaScmLabelDecorator implements ILightweightLabelDecorator {
   /**
@@ -41,30 +40,30 @@ public class CapellaScmLabelDecorator implements ILightweightLabelDecorator {
   }
 
   /**
-   * @see org.eclipse.jface.viewers.ILightweightLabelDecorator#decorate(java.lang.Object, org.eclipse.jface.viewers.IDecoration)
+   * @see org.eclipse.jface.viewers.ILightweightLabelDecorator#decorate(java.lang.Object,
+   *      org.eclipse.jface.viewers.IDecoration)
    */
+  @Override
   public void decorate(Object element, IDecoration decoration) {
     // The plugin.xml (via decorator extension) defines the enable status.
     // Only the NamedElement model element is decorated.
     // Ensure that in checking given object type.
+    
     if (element instanceof NamedElement) {
       handleNamedElement(decoration, (NamedElement) element);
-    } else if (element instanceof DRepresentation) {
-      handleRespresentation(decoration, (DRepresentation) element);
+      
     } else if (element instanceof DRepresentationDescriptor) {
-      DRepresentation representation = ((DRepresentationDescriptor) element).getRepresentation();
-      if(null != representation){
-        handleRespresentation(decoration, representation);
-      }
+      handleRepresentation(decoration, (DRepresentationDescriptor) element);
     }
   }
 
   /**
    * Handle Representation.
+   * 
    * @param decoration
    * @param element
    */
-  protected void handleRespresentation(IDecoration decoration, DRepresentation element) {
+  protected void handleRepresentation(IDecoration decoration, DRepresentationDescriptor element) {
     addScmOverlay(decoration, element);
   }
 
@@ -92,6 +91,7 @@ public class CapellaScmLabelDecorator implements ILightweightLabelDecorator {
 
   /**
    * Add scm overlay if needed.
+   * 
    * @param decoration
    * @param element
    */
@@ -118,6 +118,7 @@ public class CapellaScmLabelDecorator implements ILightweightLabelDecorator {
   /**
    * @see org.eclipse.jface.viewers.IBaseLabelProvider#addListener(org.eclipse.jface.viewers.ILabelProviderListener)
    */
+  @Override
   public void addListener(ILabelProviderListener listener) {
     // Do nothing.
   }
@@ -125,6 +126,7 @@ public class CapellaScmLabelDecorator implements ILightweightLabelDecorator {
   /**
    * @see org.eclipse.jface.viewers.IBaseLabelProvider#dispose()
    */
+  @Override
   public void dispose() {
     // Do nothing.
   }
@@ -132,6 +134,7 @@ public class CapellaScmLabelDecorator implements ILightweightLabelDecorator {
   /**
    * @see org.eclipse.jface.viewers.IBaseLabelProvider#isLabelProperty(java.lang.Object, java.lang.String)
    */
+  @Override
   public boolean isLabelProperty(Object element, String property) {
     return false;
   }
@@ -139,6 +142,7 @@ public class CapellaScmLabelDecorator implements ILightweightLabelDecorator {
   /**
    * @see org.eclipse.jface.viewers.IBaseLabelProvider#removeListener(org.eclipse.jface.viewers.ILabelProviderListener)
    */
+  @Override
   public void removeListener(ILabelProviderListener listener) {
     // Do nothing.
   }

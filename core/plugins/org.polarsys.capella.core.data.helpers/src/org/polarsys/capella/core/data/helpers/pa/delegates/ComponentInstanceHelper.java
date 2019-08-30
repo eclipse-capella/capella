@@ -56,7 +56,7 @@ public class ComponentInstanceHelper {
 	}
 
   protected List<PortInstance> getPortInstances(ComponentInstance element) {
-    List<PortInstance> portInstances = new ArrayList<PortInstance>();
+    List<PortInstance> portInstances = new ArrayList<>();
     for (AbstractPhysicalInstance abstractPhysicalInstance : element.getOwnedAbstractPhysicalInstances()) {
       if (abstractPhysicalInstance instanceof PortInstance) {
         portInstances.add((PortInstance) abstractPhysicalInstance);
