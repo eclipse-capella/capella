@@ -21,6 +21,7 @@ import org.polarsys.capella.test.model.ju.crossreferencer.TraceableElementDerive
 import org.polarsys.capella.test.model.ju.crossreferencer.TypeDerivedFeaturesTest;
 import org.polarsys.capella.test.model.ju.derivedfeature.DerivedFeatureTestCase;
 import org.polarsys.capella.test.model.ju.helpers.CapellaAdapterHelperTestCase;
+import org.polarsys.capella.test.model.ju.helpers.ChildrenFeaturesItemProviderTest;
 import org.polarsys.capella.test.model.ju.obfuscate.ObfuscateModelTestCase;
 import org.polarsys.capella.test.model.ju.propertyviews.PropertyViewsTest;
 import org.polarsys.capella.test.model.ju.rename.RenameModelTestSuite;
@@ -70,6 +71,7 @@ public class ModelTestSuite extends BasicTestSuite {
     tests.add(new DeleteElementTestSuite());
     tests.add(new DataListenerTestSuite());
     tests.add(new CapellaAdapterHelperTestCase());
+    tests.add(new ChildrenFeaturesItemProviderTest());
     tests.add(new CopyPasteLayout());
     tests.add(new InvalidCapellaCopyPaste());
     tests.add(new PropertyViewsTest());

@@ -148,14 +148,19 @@ public class ModelElementItemProvider extends ExtensibleElementItemProvider impl
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_CONSTRAINTS);
-			childrenFeatures.add(ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_MIGRATED_ELEMENTS);
+			// childrenFeatures.add(ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_MIGRATED_ELEMENTS);
+			// Ignore the ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_MIGRATED_ELEMENTS
+			// as it is only used during the migration by accessing directly the method getOwnedMigratedElements()
+			// For all others commands, we do not expect to do anything with this feature.
+			// It is hence safely to ignore it from the collection childrenFeatures.
+			// The drag-n-drop operation will not then take the ownedMigratedElements as default drop destination.
 		}
 		return childrenFeatures;
 	}
@@ -256,7 +261,6 @@ public class ModelElementItemProvider extends ExtensibleElementItemProvider impl
 	protected Command createInitializeCopyCommand(EditingDomain domain, EObject owner, Helper helper) {
 		return new SharedInitializeCopyCommand(domain, owner, helper);
 	}
-
 
   /**
    * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createItemPropertyDescriptor(org.eclipse.emf.common.notify.AdapterFactory,
