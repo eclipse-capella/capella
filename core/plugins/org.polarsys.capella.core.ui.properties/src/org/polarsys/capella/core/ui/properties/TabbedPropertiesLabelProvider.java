@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.properties;
 
+import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.NoteEditPart;
@@ -64,9 +66,21 @@ public class TabbedPropertiesLabelProvider extends CapellaElementLabelProvider i
       if (selection instanceof AbstractGraphicalEditPart) {
         return getTextForEditPart((AbstractGraphicalEditPart) selection);
       }
+      if(selection instanceof IResource) {
+        return getTextForResource((IResource)selection);
+      }
 
     }
     return encode(title);
+  }
+  
+  private String getTextForResource(IResource resource) {
+    IContainer parent = resource.getParent();
+    if (parent != null && parent.getType() != IResource.ROOT) {
+      return resource.getName() + " - " + parent.getFullPath();
+
+    }
+    return resource.getName();
   }
 
   /**
