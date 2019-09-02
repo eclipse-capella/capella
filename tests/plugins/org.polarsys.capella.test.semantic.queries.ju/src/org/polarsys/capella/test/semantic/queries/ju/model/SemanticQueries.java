@@ -194,6 +194,8 @@ public abstract class SemanticQueries extends AbstractSemanticQueryTestCase {
   public static final String LA__PROPERTYVALUEPKG = "aee81c11-9865-4ca3-80ed-843f48c36586";
   public static final String LA__PROPERTYVALUEPKG__BOOLEANPROPERTYVALUE = "6a119245-9324-4e6f-b380-76dcf22c9539";
   public static final String LA__PROPERTYVALUEPKG__FLOATPROPERTYVALUE = "40b0f93b-6724-4da2-9bc8-48c4eb680585";
+  public static final String LA__PROPERTYVALUEPKG__INTEGERPROPERTYVALUE = "4b8969df-3079-4375-95e4-cd0019ae2f86";
+  public static final String LA__PROPERTYVALUEPKG__STRINGPROPERTYVALUE = "81ac8a50-9f53-48bb-a0aa-7b57b1bc7266";
   public static final String LA__PROPERTYVALUEPKG__PROPERTYVALUEGROUP = "287b862e-cfd3-492c-ad2d-b654d3152ddf";
   public static final String LA__PROPERTYVALUEPKG__PROPERTYVALUEGROUP__STRINGPROPERTYVALUE_ = "43e50bcb-5de3-4c59-919f-070015a68cf7";
   public static final String LA__LOGICAL_FUNCTIONS = "7b1116f0-775f-4fb7-b190-e3020a4b8f55";

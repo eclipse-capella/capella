@@ -79,7 +79,7 @@ public class SemanticBrowserTree extends TreeViewer {
       if (!getExpanded(treeItem)) {
         Object data = treeItem.getData();
         if ((data != null) && (data instanceof CategoryWrapper)) {
-          CategoryImpl category = (CategoryImpl) ((CategoryWrapper) data).getElement();
+          CategoryImpl category = ((CategoryWrapper) data).getElement();
           model.saveExpandedState(category, browserID, false);
         }
       }
@@ -94,7 +94,7 @@ public class SemanticBrowserTree extends TreeViewer {
       if (data != null) {
         if (model.doesLimitateTreeExpansion()) {
           if (data instanceof CategoryWrapper) {
-            CategoryImpl category = (CategoryImpl) ((CategoryWrapper) data).getElement();
+            CategoryImpl category = ((CategoryWrapper) data).getElement();
             boolean expanded = model.getExpandedState(category, browserID);
             treeItem.setExpanded(expanded);
           } else if ((browserID == IBrowserContentProvider.ID_CURRENT_CP) && (treeItem == topItem)) {

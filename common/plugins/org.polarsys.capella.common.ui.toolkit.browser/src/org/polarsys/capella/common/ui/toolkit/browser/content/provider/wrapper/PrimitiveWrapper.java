@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,23 +11,10 @@
 
 package org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper;
 
-import org.eclipse.emf.ecore.EObject;
+public class PrimitiveWrapper extends BrowserElementWrapper {
 
-/**
- * Wrapper for a ModelElement.
- */
-public class EObjectWrapper extends BrowserElementWrapper {
-  /**
-   * Constructor.
-   * 
-   * @param element
-   */
-  public EObjectWrapper(EObject element) {
+  public PrimitiveWrapper(Object element) {
     super(element);
   }
 
-  @Override
-  public EObject getElement() {
-    return (EObject) super.getElement();
-  }
 }

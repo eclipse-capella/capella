@@ -13,7 +13,6 @@ package org.polarsys.capella.common.ui.massactions.core.shared.data.convert;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.kitalpha.massactions.core.data.convert.MADisplayConverter;
 
@@ -30,7 +29,7 @@ public class SemanticBrowserDisplayConverter extends MADisplayConverter {
   public String canonicalToDisplayValue(Object canonicalValue) {
 
     if (canonicalValue instanceof Collection<?>) {
-      Collection<EObject> valueList = (Collection<EObject>) canonicalValue;
+      Collection<Object> valueList = (Collection<Object>) canonicalValue;
       return valueList.stream().map(EObjectLabelProviderHelper::getText).collect(Collectors.joining(", "));
     }
 

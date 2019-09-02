@@ -82,7 +82,7 @@ public class EObjectLabelProviderHelper {
    * @since 1.2.1, this method have a replacement with better performances, Please use EObjectExt.getText() instead
    *        until bugzilla 2036 is solved
    */
-  public static String getText(EObject object) {
+  private static String getTextEObject(EObject object) {
     IItemLabelProvider provider = getItemLabelProvider(object);
     String label = ICommonConstants.EMPTY_STRING;
 
@@ -108,7 +108,7 @@ public class EObjectLabelProviderHelper {
     }
     ItemProviderAdapter provider = getItemProvider(object);
     if (provider instanceof ItemProviderAdapter) {
-      label = getMetaclassLabel(object.eClass(), (ItemProviderAdapter) provider);
+      label = getMetaclassLabel(object.eClass(), provider);
     }
     if (addParenthesis) {
       label = METACLASS_DISPLAY_PREFIX + label + METACLASS_DISPLAY_SUFFIX;
@@ -201,7 +201,7 @@ public class EObjectLabelProviderHelper {
   protected static void getText(Object affectedObject, StringBuilder value) {
     if (affectedObject != null) {
       if (affectedObject instanceof EObject) {
-        value.append(getText((EObject) affectedObject));
+        value.append(getText(affectedObject));
       } else if (affectedObject instanceof Collection<?>) {
         Collection<?> coll = (Collection<?>) affectedObject;
         value.append("{"); //$NON-NLS-1$
@@ -223,6 +223,9 @@ public class EObjectLabelProviderHelper {
    * Retrieve a readable text of the element. May be an Object or a Collection of objects.
    */
   public static String getText(Object object) {
+    if (object instanceof EObject) {
+      return getTextEObject((EObject) object);
+    }
     StringBuilder buffer = new StringBuilder();
     getText(object, buffer);
     return buffer.toString();

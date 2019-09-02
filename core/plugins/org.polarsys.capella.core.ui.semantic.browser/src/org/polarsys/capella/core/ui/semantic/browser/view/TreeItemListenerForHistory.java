@@ -25,7 +25,8 @@ public class TreeItemListenerForHistory implements Listener {
   protected ISemanticBrowserModel model;
   protected SemanticBrowserTree browser;
 
-  public TreeItemListenerForHistory(boolean hasBeenExpanded_p, String browserID_p, ISemanticBrowserModel model_p, SemanticBrowserTree browser_p) {
+  public TreeItemListenerForHistory(boolean hasBeenExpanded_p, String browserID_p, ISemanticBrowserModel model_p,
+      SemanticBrowserTree browser_p) {
     hasBeenExpanded = hasBeenExpanded_p;
     browserID = browserID_p;
     model = model_p;
@@ -42,7 +43,7 @@ public class TreeItemListenerForHistory implements Listener {
       TreeItem item = (TreeItem) widget;
       Object data = item.getData();
       if ((data != null) && (data instanceof CategoryWrapper)) {
-        CategoryImpl category = (CategoryImpl) ((CategoryWrapper) data).getElement();
+        CategoryImpl category = ((CategoryWrapper) data).getElement();
         model.saveExpandedState(category, browserID, hasBeenExpanded);
       }
     }

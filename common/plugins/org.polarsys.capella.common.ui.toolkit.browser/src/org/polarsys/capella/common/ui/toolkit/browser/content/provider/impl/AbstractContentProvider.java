@@ -33,6 +33,7 @@ import org.polarsys.capella.common.ui.toolkit.browser.content.provider.IBrowserC
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.BrowserElementWrapper;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.CategoryWrapper;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.EObjectWrapper;
+import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.PrimitiveWrapper;
 import org.polarsys.capella.common.ui.toolkit.browser.model.ISemanticBrowserModel;
 import org.polarsys.capella.common.ui.toolkit.browser.query.QueryAdapter;
 import org.polarsys.capella.common.ui.toolkit.provider.GroupedAdapterFactoryContentProvider;
@@ -40,24 +41,25 @@ import org.polarsys.capella.common.ui.toolkit.provider.GroupedAdapterFactoryCont
 /**
  * Controller.
  */
-public abstract class AbstractContentProvider extends GroupedAdapterFactoryContentProvider implements IBrowserContentProvider {
+public abstract class AbstractContentProvider extends GroupedAdapterFactoryContentProvider
+    implements IBrowserContentProvider {
   /**
    * Root element i.e the element given as initial input.
    */
-  protected EObject _rootElement;
+  protected EObject rootElement;
 
   /**
    * Flag that indicates input has changed.
    */
-  protected boolean _inputHasChanged;
+  protected boolean inputHasChanged;
 
   /**
    * Weak hash map for seeking semantic container of an element (category or object)
    */
-  protected HashMap<BrowserElementWrapper, BrowserElementWrapper> _semanticParentHashMap;
+  protected HashMap<BrowserElementWrapper, BrowserElementWrapper> semanticParentHashMap;
 
   protected boolean refreshRequired = false;
-  
+
   protected ISemanticBrowserModel model;
 
   /**
@@ -66,7 +68,7 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
   public AbstractContentProvider(AdapterFactory adapterFactory, ISemanticBrowserModel model) {
     super(adapterFactory);
     this.model = model;
-    _semanticParentHashMap = new HashMap<>(0);
+    semanticParentHashMap = new HashMap<>(0);
   }
 
   /**
@@ -74,12 +76,13 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
    */
   @Override
   public void dispose() {
-    _semanticParentHashMap.clear();
+    semanticParentHashMap.clear();
     super.dispose();
   }
 
   /**
    * Get category children.
+   * 
    * @param wrapper
    * @param element
    * @param gatheredElements
@@ -91,7 +94,8 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
 
     // Gather subCategories & compute queries attached to the category.
     gatheredElements.addAll(category.compute(elementToQuery));
-    gatheredElements.addAll(CategoryRegistry.getInstance().gatherSubCategories(getBrowserId(), elementToQuery, category));
+    gatheredElements
+        .addAll(CategoryRegistry.getInstance().gatherSubCategories(getBrowserId(), elementToQuery, category));
   }
 
   /**
@@ -108,10 +112,10 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
         Set<Object> gatheredElements = new HashSet<>(0);
         if (wrapper instanceof EObjectWrapper) {
           // Provide the root element to the CurrentElement Browser in purpose to display it.
-          if ((element == _rootElement) && _inputHasChanged) {
+          if ((element == rootElement) && inputHasChanged) {
             // Root element has no parent : store null value.
-            _semanticParentHashMap.put(wrapper, null);
-            _inputHasChanged = false;
+            semanticParentHashMap.put(wrapper, null);
+            inputHasChanged = false;
             if (getBrowserId().equalsIgnoreCase(IBrowserContentProvider.ID_CURRENT_CP)) {
               return new Object[] { wrapper };
             }
@@ -131,7 +135,7 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
             BrowserElementWrapper elementWrapper = wrapElement(gatherElement);
             // Add wrapper and element wrapper in internal data and returned collection.
             wrappers.add(elementWrapper);
-            _semanticParentHashMap.put(elementWrapper, wrapper);
+            semanticParentHashMap.put(elementWrapper, wrapper);
             // Flag to filter out empty category.
             boolean shouldRemovedEmptyCategoryWrapper = false;
             if (gatherElement instanceof ICategory) {
@@ -144,11 +148,11 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
                 if (categoryChildren.isEmpty()) {
                   shouldRemovedEmptyCategoryWrapper = true;
                 }
-              }            	
+              }
             }
             if (shouldRemovedEmptyCategoryWrapper) {
               wrappers.remove(elementWrapper);
-              _semanticParentHashMap.remove(elementWrapper);
+              semanticParentHashMap.remove(elementWrapper);
             }
           }
         }
@@ -156,11 +160,11 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
         result = wrappers.toArray();
       } else {
         // Wrap given element. This input element can't be a Category because a category element is computed.
-        result = getChildren(new EObjectWrapper(parentElement));
+        result = getChildren(new EObjectWrapper((EObject) parentElement));
       }
     } catch (Exception exception) {
-      BrowserActivator.getDefault().getLog()
-          .log(new Status(IStatus.ERROR, BrowserActivator.PLUGIN_ID, "Error while getting children for " + parentElement, exception)); //$NON-NLS-1$
+      BrowserActivator.getDefault().getLog().log(new Status(IStatus.ERROR, BrowserActivator.PLUGIN_ID,
+          "Error while getting children for " + parentElement, exception)); //$NON-NLS-1$
       result = new Object[0];
     }
     return result;
@@ -168,15 +172,16 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
 
   /**
    * Ge element children.
+   * 
    * @param wrapper
    * @param gatheredElements
    * @param gatheredCategories
    * @param modelElement
    */
   protected void getElementChildren(EObject modelElement, BrowserElementWrapper wrapper, Set<Object> gatheredElements) {
-    if (modelElement != _rootElement) {
+    if (modelElement != rootElement) {
       // If it's an item gather sub-queries from parent category.
-      BrowserElementWrapper semanticParentWrapper = _semanticParentHashMap.get(wrapper);
+      BrowserElementWrapper semanticParentWrapper = semanticParentHashMap.get(wrapper);
       if (null != semanticParentWrapper) {
         Object semanticParent = semanticParentWrapper.getElement();
         if (semanticParent instanceof ICategory) {
@@ -190,8 +195,8 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
     }
 
     // Gather direct categories for any model element.
-    BrowserElementWrapper parentWrapper = _semanticParentHashMap.get(wrapper);
-    if (null == _semanticParentHashMap.get(parentWrapper)) // for blocking recursion
+    BrowserElementWrapper parentWrapper = semanticParentHashMap.get(wrapper);
+    if (null == semanticParentHashMap.get(parentWrapper)) // for blocking recursion
     {
       gatheredElements.addAll(CategoryRegistry.getInstance().gatherCategories(getBrowserId(), modelElement));
     }
@@ -211,7 +216,7 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
    */
   @Override
   public Object getParent(Object element) {
-    return _semanticParentHashMap.get(element);
+    return semanticParentHashMap.get(element);
   }
 
   /**
@@ -234,30 +239,32 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
       if (oldInput == null) {
         inputChanged(viewer, new EObjectWrapper(null), ((BrowserElementWrapper) newInput).getElement());
       } else if (oldInput instanceof BrowserElementWrapper) {
-        inputChanged(viewer, ((BrowserElementWrapper) oldInput).getElement(), ((BrowserElementWrapper) newInput).getElement());
+        inputChanged(viewer, ((BrowserElementWrapper) oldInput).getElement(),
+            ((BrowserElementWrapper) newInput).getElement());
       } else if (oldInput instanceof EObject) {
         inputChanged(viewer, oldInput, ((BrowserElementWrapper) newInput).getElement());
       }
     } else if (newInput instanceof EObject) {
       // clear cache.
-      _semanticParentHashMap.clear();
-      _inputHasChanged = true;
-      _rootElement = (EObject) newInput;
+      semanticParentHashMap.clear();
+      inputHasChanged = true;
+      rootElement = (EObject) newInput;
     } else if (null == newInput) {
       // View is closing or no input selection.
-      _inputHasChanged = false;
-      _rootElement = null;
-      _semanticParentHashMap.clear();
+      inputHasChanged = false;
+      rootElement = null;
+      semanticParentHashMap.clear();
     }
   }
 
   /**
    * Look up a model element for specified wrapper.
+   * 
    * @param wrapper
    * @return
    */
   private EObject lookUpModelElement(BrowserElementWrapper wrapper) {
-    BrowserElementWrapper parentWrapper = _semanticParentHashMap.get(wrapper);
+    BrowserElementWrapper parentWrapper = semanticParentHashMap.get(wrapper);
     if (parentWrapper instanceof CategoryWrapper) {
       return lookUpModelElement(parentWrapper);
     }
@@ -291,7 +298,8 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
           super.notifyChanged(ViewerNotification.wrapNotification(viewerNotification, wrappedElement));
         }
       } else {
-        // Impossible to know if modifications from other AbstractContentProvider instances in the semantic browser have impacts on current one.
+        // Impossible to know if modifications from other AbstractContentProvider instances in the semantic browser have
+        // impacts on current one.
         // Let's refresh completely the viewer.
         // refresh fails here due to the poor content provider implementation based on EObjectWrapper & co.
         synchronized (this) {
@@ -324,6 +332,7 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
     } else {
       if ((viewer != null) && (viewer.getControl() != null) && !viewer.getControl().isDisposed()) {
         ViewerHelper.run((StructuredViewer) viewer, new Runnable() {
+          @Override
           @SuppressWarnings("synthetic-access")
           public void run() {
             Object input = viewer.getInput();
@@ -337,24 +346,28 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
 
   /**
    * Wrap element in the proper wrapper.
+   * 
    * @param gatherElement
    * @return
    */
   private BrowserElementWrapper wrapElement(Object gatherElement) {
     BrowserElementWrapper wrapper = null;
     if (gatherElement instanceof EObject) {
-      wrapper = new EObjectWrapper(gatherElement);
+      wrapper = new EObjectWrapper((EObject) gatherElement);
     } else if (gatherElement instanceof ICategory) {
-      wrapper = new CategoryWrapper(gatherElement);
+      wrapper = new CategoryWrapper((ICategory) gatherElement);
+    } else if (gatherElement instanceof Object) {
+      wrapper = new PrimitiveWrapper(gatherElement);
     }
     return wrapper;
   }
 
   /**
    * Get root element.
+   * 
    * @return
    */
   public EObject getRootElement() {
-    return _rootElement;
+    return rootElement;
   }
 }

@@ -27,10 +27,12 @@ import org.polarsys.capella.common.ui.toolkit.browser.category.ICategory;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.BrowserElementWrapper;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.CategoryWrapper;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.EObjectWrapper;
+import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.PrimitiveWrapper;
 import org.polarsys.capella.core.ui.semantic.browser.CapellaBrowserActivator;
 import org.polarsys.capella.core.ui.semantic.browser.IImageKeys;
 
-public class SemanticBrowserLabelProvider extends MDEAdapterFactoryLabelProvider implements ILabelProvider, IColorProvider, IFontProvider, IToolTipProvider {
+public class SemanticBrowserLabelProvider extends MDEAdapterFactoryLabelProvider
+    implements ILabelProvider, IColorProvider, IFontProvider, IToolTipProvider {
   /**
    * The font used for category, to not forget to dispose it
    */
@@ -50,9 +52,11 @@ public class SemanticBrowserLabelProvider extends MDEAdapterFactoryLabelProvider
     EObject modelElement = null;
     // Find out a model element from given element.
     if (element instanceof EObjectWrapper) {
-      modelElement = (EObject) ((EObjectWrapper) element).getElement();
+      modelElement = ((EObjectWrapper) element).getElement();
     } else if (element instanceof EObject) {
       modelElement = (EObject) element;
+    } else if (element instanceof PrimitiveWrapper) {
+      return CapellaBrowserActivator.getDefault().getImage(IImageKeys.IMG_PRIMITIVE_VARIABLES);
     }
     // If a model element was found, get its image.
     if (null != modelElement) {
@@ -71,6 +75,9 @@ public class SemanticBrowserLabelProvider extends MDEAdapterFactoryLabelProvider
     if (element instanceof CategoryWrapper) {
       Object modelElement = ((BrowserElementWrapper) element).getElement();
       result = ((ICategory) modelElement).getName();
+    } else if (element instanceof PrimitiveWrapper) {
+      Object modelElement = ((PrimitiveWrapper) element).getElement();
+      result = modelElement.toString();
     } else {
       Object modelElement = null;
       if (element instanceof EObjectWrapper) {
@@ -140,7 +147,6 @@ public class SemanticBrowserLabelProvider extends MDEAdapterFactoryLabelProvider
     }
     return null;
   }
-
 
   @Override
   public String getToolTipText(Object element) {

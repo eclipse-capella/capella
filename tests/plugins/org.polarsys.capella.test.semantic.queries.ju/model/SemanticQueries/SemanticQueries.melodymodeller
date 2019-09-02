@@ -671,9 +671,15 @@
       <ownedPropertyValuePkgs xsi:type="org.polarsys.capella.core.data.capellacore:PropertyValuePkg"
           id="aee81c11-9865-4ca3-80ed-843f48c36586" name="PropertyValuePkg">
         <ownedPropertyValues xsi:type="org.polarsys.capella.core.data.capellacore:BooleanPropertyValue"
-            id="6a119245-9324-4e6f-b380-76dcf22c9539" name="BooleanPropertyValue"/>
+            id="6a119245-9324-4e6f-b380-76dcf22c9539" name="BooleanPropertyValue"
+            review=""/>
         <ownedPropertyValues xsi:type="org.polarsys.capella.core.data.capellacore:FloatPropertyValue"
             id="40b0f93b-6724-4da2-9bc8-48c4eb680585" name="FloatPropertyValue"/>
+        <ownedPropertyValues xsi:type="org.polarsys.capella.core.data.capellacore:IntegerPropertyValue"
+            id="4b8969df-3079-4375-95e4-cd0019ae2f86" name="IntegerPropertyValue"
+            value="100"/>
+        <ownedPropertyValues xsi:type="org.polarsys.capella.core.data.capellacore:StringPropertyValue"
+            id="81ac8a50-9f53-48bb-a0aa-7b57b1bc7266" name="StringPropertyValue" value="String Test"/>
         <ownedPropertyValueGroups xsi:type="org.polarsys.capella.core.data.capellacore:PropertyValueGroup"
             id="287b862e-cfd3-492c-ad2d-b654d3152ddf" name="PropertyValueGroup">
           <ownedPropertyValues xsi:type="org.polarsys.capella.core.data.capellacore:StringPropertyValue"

@@ -66,7 +66,7 @@
           </basicQuery>
        </categoryQuery>
     </category>
-    <category
+   <category
           id="org.polarsys.capella.core.semantic.queries.PropertyValue_applying_valued_element"
           isTopLevel="true"
           name="Valued Elements">
@@ -81,7 +81,23 @@
                 class="org.polarsys.capella.core.semantic.queries.basic.queries.PropertyValue_applying_valued_element">
           </basicQuery>
        </categoryQuery>
-    </category>
+    </category> 
+    <category
+          id="org.polarsys.capella.core.semantic.queries.PropertyValue_applying_valued_element_Primitive"
+          isTopLevel="true"
+          name="Value">
+       <availableForType
+             class="org.polarsys.capella.core.data.capellacore.AbstractPropertyValue">
+       </availableForType>
+       <targetBrowserId
+             id="CurrentElementBrowser">
+       </targetBrowserId>
+       <categoryQuery>
+          <basicQuery
+                class="org.polarsys.capella.core.semantic.queries.basic.queries.PropertyValue_applying_valued_element_Primitive">
+          </basicQuery>
+       </categoryQuery>
+    </category> 
     <category
           id="org.polarsys.capella.core.semantic.queries.PropertyValueGroup_applying_valued_element"
           isTopLevel="true"
