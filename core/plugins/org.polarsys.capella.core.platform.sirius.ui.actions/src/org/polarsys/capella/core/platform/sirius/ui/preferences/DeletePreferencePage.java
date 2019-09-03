@@ -11,14 +11,12 @@
 package org.polarsys.capella.core.platform.sirius.ui.preferences;
 
 import org.eclipse.core.resources.ProjectScope;
-import org.eclipse.jface.preference.BooleanFieldEditor;
-import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.polarsys.capella.common.ui.toolkit.fields.SpacerFieldEditor;
 import org.polarsys.capella.core.commands.preferences.service.AbstractDefaultPreferencePage;
 import org.polarsys.capella.core.commands.preferences.service.PreferenceField;
 import org.polarsys.capella.core.commands.preferences.service.UserProfileModeEnum;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.model.preferences.IDeletePreferences;
 
 /**
@@ -57,35 +55,28 @@ public class DeletePreferencePage extends AbstractDefaultPreferencePage {
    */
   @Override
   protected void createFieldEditors() {
-    Group confirmDeletionGroup =
-        createGroup(Messages.DeletePreferencePage_DeleteGroup_Title, Messages.DeletePreferencePage_DeleteGroup_Message, getFieldEditorParent());
-    addField(new BooleanFieldEditor(IDeletePreferences.PREFERENCE_CONFIRM_DELETE, Messages.DeletePreferencePage_DeleteChoice, confirmDeletionGroup),
-        UserProfileModeEnum.Expert, confirmDeletionGroup);
-    addField(new PreferenceField(IDeletePreferences.PREFERENCE_DELETE_PARTS, Messages.DeletePreferencePage_DeletePartsChoice, confirmDeletionGroup),
-        UserProfileModeEnum.Expert, confirmDeletionGroup, ProjectScope.class);
-    // Add space.
+
+    Composite fieldEditorParent = getFieldEditorParent();
+
+    addField(
+        new PreferenceField(IDeletePreferences.PREFERENCE_CONFIRM_DELETE,
+            Messages.DeletePreferencePage_ConfirmDeleteTitle, fieldEditorParent),
+        UserProfileModeEnum.Expert, fieldEditorParent, ProjectScope.class);
+
+    addField(
+        new PreferenceField(IDeletePreferences.PREFERENCE_DELETE_PROTECTED_ELEMENTS,
+            Messages.DeletePreferencePage_ProtectedElements_Title, fieldEditorParent),
+        UserProfileModeEnum.Expert, fieldEditorParent, ProjectScope.class);
+
     addField(new SpacerFieldEditor(getFieldEditorParent()));
-    Group deleteRestrictionGroup =
-        createGroup(Messages.DeletePreferencePage_ProtectedElementsGroup_Title, Messages.DeletePreferencePage_ProtectedElementsGroup_Message,
-            getFieldEditorParent());
-    addDeleteRestrictionPreferences(deleteRestrictionGroup);
-  }
 
-  /**
-   * Add delete restrictions preferences.
-   * @param parentGroup
-   */
-  private void addDeleteRestrictionPreferences(Group parentGroup) {
-    IPreferenceStore preferenceStore = doGetPreferenceStore();
+    Group multiPartGroup = createGroup(Messages.DeletePreferencePage_MultipartGroup_Title,
+        Messages.DeletePreferencePage_MultipartGroup_Description, getFieldEditorParent());
 
-    int count = 0;
-    String preferenceKey = CapellaModelPreferencesPlugin.getDefault().getPreference(count);
-    while (preferenceStore.contains(preferenceKey)) {
-      addField(new PreferenceField(preferenceKey, preferenceStore.getString(CapellaModelPreferencesPlugin.getDefault().getPreferenceTitle(count)), parentGroup),
-          UserProfileModeEnum.Expert, parentGroup, ProjectScope.class);
-      // Increment to compute the next key.
-      count++;
-      preferenceKey = CapellaModelPreferencesPlugin.getDefault().getPreference(count);
-    }
+    addField(
+        new PreferenceField(IDeletePreferences.PREFERENCE_DELETE_PARTS,
+            Messages.DeletePreferencePage_DeletePartsChoiceTitle, multiPartGroup),
+        UserProfileModeEnum.Expert, multiPartGroup, ProjectScope.class);
+
   }
 }

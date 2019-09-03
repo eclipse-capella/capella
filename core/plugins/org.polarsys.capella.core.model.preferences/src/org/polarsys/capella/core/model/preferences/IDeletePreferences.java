@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.model.preferences;
 
-import org.eclipse.emf.ecore.EClass;
-
 /**
  *
  */
@@ -27,7 +25,7 @@ public interface IDeletePreferences {
   /**
    * Default value for confirm delete action preference.
    */
-  final Boolean PREFERENCE_CONFIRM_DELETE_DEFAULT = Boolean.TRUE;
+  final boolean PREFERENCE_CONFIRM_DELETE_DEFAULT = true;
 
   /**
    * Delete parts preference.
@@ -37,7 +35,11 @@ public interface IDeletePreferences {
   /**
    * Default value for delete parts preference.
    */
-  final Boolean PREFERENCE_DELETE_PARTS_DEFAULT = Boolean.FALSE;
+  final boolean PREFERENCE_DELETE_PARTS_DEFAULT = false;
+
+  final String PREFERENCE_DELETE_PROTECTED_ELEMENTS = "Delete_Protected_Elements"; //$NON-NLS-1$
+
+  final boolean PREFERENCE_DELETE_PREOTECTED_ELEMENTS_DEFAULT = false;
 
   /**
    * Should a delete be confirmed by the user?
@@ -50,8 +52,8 @@ public interface IDeletePreferences {
   public boolean isDeletingPartType();
 
   /**
-   * May the user delete instances of the given class?
+   * May the user delete the current element.
    */
-  public boolean isMetaclassProtected(EClass clazz);
+  public boolean isDeleteProtectedElements();
 
 }
