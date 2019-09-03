@@ -17,15 +17,17 @@ import java.util.stream.Collectors;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.description.tool.PopupMenu;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.platform.sirius.ui.services.IElementIdentifierService;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 
-public class ToolAndLabelCoherenceTest extends BasicTestCase {
+public class ToolIdentifierConsistencyTest extends BasicTestCase {
 
   @Override
   public void test() {
@@ -40,22 +42,16 @@ public class ToolAndLabelCoherenceTest extends BasicTestCase {
           DiagramDescription diagramDescription = (DiagramDescription) description;
           IdentifierHelper.getTools(diagramDescription).forEach(element -> {
             String toolIdentifier = elementIdentifier.getIdentifier(diagramDescription, element);
-            String toolLabel = element.getLabel();
-            if (toolLabel == null) {
-              errors.add(NLS.bind("Element {0} doesn't have a label.", element.getName()));
 
-            } else {
-              String[] tokens = toolLabel.split("%");
-              if (tokens.length != 1) {
-                errors.add(NLS.bind("Element {0} is not internationalized.", element.getName()));
+            if (element instanceof PopupMenu && !(toolIdentifier.endsWith(".menu"))) {
+              errors.add(NLS.bind("Menu {0} doens't ends with '.menu'.", element.getName()));
 
-              } else {
-                String label = tokens[0];
-                if (!label.equals(toolIdentifier)) {
-                  errors.add(NLS.bind("Element {0} doesn't use the correct label identifier. {1} instead of {2}", new String[] {element.getName(), label, toolIdentifier}));
-                }
+            } else if (element instanceof CompositeFilterDescription && !(toolIdentifier.endsWith(".filter"))) {
+              if (!"ModelExtensionFilter".equals(element.getName())) {
+                errors.add(NLS.bind("Filter {0} doens't ends with '.filter'.", element.getName()));
               }
             }
+
           });
         }
       }
