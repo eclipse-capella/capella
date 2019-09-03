@@ -18,6 +18,7 @@ import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.odesign.directeditlabel.DirectEditLabelTestSuite;
 import org.polarsys.capella.test.odesign.identifier.DuplicateToolsAndFiltersTest;
 import org.polarsys.capella.test.odesign.identifier.ToolAndLabelCoherenceTest;
+import org.polarsys.capella.test.odesign.identifier.ToolIdentifierConsistencyTest;
 import org.polarsys.capella.test.odesign.ju.domainclass.CheckDomainClassTestSuite;
 import org.polarsys.capella.test.odesign.typereferencename.CheckTypeReferenceNameTestSuite;
 
@@ -37,6 +38,7 @@ public class ODesignTestSuite extends BasicTestSuite {
     tests.add(new CheckDomainClassTestSuite());
     tests.add(new CheckTypeReferenceNameTestSuite());
     tests.add(new DuplicateToolsAndFiltersTest());
+    tests.add(new ToolIdentifierConsistencyTest());
     tests.add(new ToolAndLabelCoherenceTest());
     return tests;
   }
