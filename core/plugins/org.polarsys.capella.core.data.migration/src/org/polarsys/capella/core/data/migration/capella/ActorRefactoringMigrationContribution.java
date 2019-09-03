@@ -12,6 +12,7 @@ package org.polarsys.capella.core.data.migration.capella;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,6 +37,7 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.re.RePackage;
 import org.polarsys.capella.core.data.capellacommon.TransfoLink;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
@@ -444,7 +446,7 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
     super.updateCreatedObject(peekObject, eObject, typeQName, feature, resource, helper, context);
   }
 
-  protected void fusionContainmentReferences(EObject source, EObject target) {
+  protected void fusionContainmentReferences(EObject source, EObject target, List<EStructuralFeature> excludedFeatures) {
     if (source.eClass() != target.eClass()) {
       return;
     }
@@ -458,7 +460,7 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
       }
     }
 
-    EcoreUtil2.replaceReferencingFeatures(source, target, false, false);
+    EcoreUtil2.replaceReferencingFeatures(source, target, false, false, excludedFeatures);
   }
 
   /**
@@ -506,9 +508,14 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
         ModelElementExt.setObjectId(componentPkg, ePBSContextId);
       }
 
-      epbs.getOwnedMigratedElements().stream().filter(ConfigurationItemPkg.class::isInstance)
-          .forEach(modelElement -> fusionContainmentReferences(modelElement,
-              ((ConfigurationItemPkg) BlockArchitectureExt.getComponentPkg(epbs, true))));
+      List<ModelElement> migratedComponentPkgs = epbs.getOwnedMigratedElements().stream()
+          .filter(ConfigurationItemPkg.class::isInstance).collect(Collectors.toList());
+      if (migratedComponentPkgs.size() == 1) {
+        // We do not want CatalogElementLink's reference to old EPBS Context
+        fusionContainmentReferences(migratedComponentPkgs.get(0),
+            (ConfigurationItemPkg) BlockArchitectureExt.getComponentPkg(epbs, true),
+            Arrays.asList(RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET));
+      }
 
       List<ConfigurationItem> items = filter(epbs.getOwnedMigratedElements(), ConfigurationItem.class);
       if (!items.isEmpty()) {
@@ -552,9 +559,14 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
         ModelElementExt.setObjectId(componentPkg, physicalContextId);
       }
 
-      pa.getOwnedMigratedElements().stream().filter(PhysicalComponentPkg.class::isInstance)
-          .forEach(modelElement -> fusionContainmentReferences(modelElement, pa.getOwnedPhysicalComponentPkg()));
-
+      List<ModelElement> migratedComponentPkgs = pa.getOwnedMigratedElements().stream().filter(PhysicalComponentPkg.class::isInstance).collect(Collectors.toList());
+      if (migratedComponentPkgs.size() == 2) {
+        // We do not want CatalogElementLink's reference to old Context
+        fusionContainmentReferences(migratedComponentPkgs.get(0), pa.getOwnedPhysicalComponentPkg(), Arrays.asList(RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET));
+        // We want to conserve all references to old Physical Actors Pkg
+        fusionContainmentReferences(migratedComponentPkgs.get(1), pa.getOwnedPhysicalComponentPkg(), Collections.emptyList());
+      }
+      
       List<PhysicalComponent> items = filter(pa.getOwnedMigratedElements(), PhysicalComponent.class);
       if (!items.isEmpty()) {
         pa.getOwnedPhysicalComponentPkg().getOwnedPhysicalComponents().addAll(0, items);
@@ -597,8 +609,13 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
         ModelElementExt.setObjectId(componentPkg, logicalContextId);
       }
 
-      la.getOwnedMigratedElements().stream().filter(LogicalComponentPkg.class::isInstance)
-          .forEach(modelElement -> fusionContainmentReferences(modelElement, la.getOwnedLogicalComponentPkg()));
+      List<ModelElement> migratedComponentPkgs = la.getOwnedMigratedElements().stream().filter(LogicalComponentPkg.class::isInstance).collect(Collectors.toList());
+      if (migratedComponentPkgs.size() == 2) {
+        // We do not want CatalogElementLink's reference to old Context
+        fusionContainmentReferences(migratedComponentPkgs.get(0), la.getOwnedLogicalComponentPkg(), Arrays.asList(RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET));
+        // We want to conserve all references to old Logical Actors Pkg
+        fusionContainmentReferences(migratedComponentPkgs.get(1), la.getOwnedLogicalComponentPkg(), Collections.emptyList());
+      }
 
       List<LogicalComponent> items = filter(la.getOwnedMigratedElements(), LogicalComponent.class);
       if (!items.isEmpty()) {
@@ -642,8 +659,13 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
         ModelElementExt.setObjectId(componentPkg, systemContextId);
       }
 
-      sa.getOwnedMigratedElements().stream().filter(SystemComponentPkg.class::isInstance)
-          .forEach(modelElement -> fusionContainmentReferences(modelElement, sa.getOwnedSystemComponentPkg()));
+      List<ModelElement> migratedComponentPkgs = sa.getOwnedMigratedElements().stream().filter(SystemComponentPkg.class::isInstance).collect(Collectors.toList());
+      if (migratedComponentPkgs.size() == 2) {
+        // We do not want CatalogElementLink's reference to old Context
+        fusionContainmentReferences(migratedComponentPkgs.get(0), sa.getOwnedSystemComponentPkg(), Arrays.asList(RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET));
+        // We want to conserve all references to old Actors Pkg
+        fusionContainmentReferences(migratedComponentPkgs.get(1), sa.getOwnedSystemComponentPkg(), Collections.emptyList());
+      }
 
       List<SystemComponent> items = filter(sa.getOwnedMigratedElements(), SystemComponent.class);
       if (!items.isEmpty()) {
@@ -683,8 +705,11 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
         ModelElementExt.setObjectId(componentPkg, operationalContextId);
       }
 
-      oa.getOwnedMigratedElements().stream().filter(EntityPkg.class::isInstance)
-          .forEach(modelElement -> fusionContainmentReferences(modelElement, oa.getOwnedEntityPkg()));
+      List<ModelElement> migratedComponentPkgs = oa.getOwnedMigratedElements().stream().filter(EntityPkg.class::isInstance).collect(Collectors.toList());
+      if (migratedComponentPkgs.size() == 1) {
+        // We do not want CatalogElementLink's reference to old Context
+        fusionContainmentReferences(migratedComponentPkgs.get(0), oa.getOwnedEntityPkg(), Arrays.asList(RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET));
+      }
 
       List<DataPkg> dataPkgs = filter(oa.getOwnedEntityPkg().getOwnedMigratedElements(), DataPkg.class);
       if (!dataPkgs.isEmpty()) {

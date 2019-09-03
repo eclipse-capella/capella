@@ -669,9 +669,48 @@ public class EcoreUtil2 {
         }
         if (!eStructuralFeature.isMany()) {
           setting.getEObject().eSet(eStructuralFeature, targetObj);
-          System.out.println(srcObj.eClass().getName() + eStructuralFeature.getName());          
         }
         else {
+          EList list = ((EList) setting.getEObject().eGet(eStructuralFeature));
+          if (list.contains(srcObj)) {
+            list.remove(srcObj);
+            list.add(targetObj);
+          }
+        }
+      }
+    }
+  }
+  
+  /**
+   * Make all objects referencing the source object to reference the target object instead
+   * 
+   * @param srcObject
+   *          the source object
+   * @param targetObj
+   *          the target object
+   * @param isContainmentIncluded
+   *          whether containment features are involved.
+   * @param isProxyResolved
+   *          should proxy references be resolved?
+   * @param excludedFeatures
+   *          features to be excluded
+   * 
+   */
+  public static void replaceReferencingFeatures(EObject srcObj, EObject targetObj, boolean isContainmentIncluded,
+      boolean isProxyResolved, List<EStructuralFeature> excludedFeatures) {
+    TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(srcObj);
+    if (domain != null) {
+      ECrossReferenceAdapter crossReferencer = ECrossReferenceAdapter.getCrossReferenceAdapter(srcObj);
+      Collection<Setting> inverseReferences = crossReferencer.getInverseReferences(srcObj, isProxyResolved);
+      for (Setting setting : inverseReferences) {
+        EStructuralFeature eStructuralFeature = setting.getEStructuralFeature();
+        if ((eStructuralFeature instanceof EReference && !isContainmentIncluded
+            && ((EReference) eStructuralFeature).isContainment()) || (excludedFeatures.contains(eStructuralFeature))) {
+          continue;
+        }
+        if (!eStructuralFeature.isMany()) {
+          setting.getEObject().eSet(eStructuralFeature, targetObj);
+        } else {
           EList list = ((EList) setting.getEObject().eGet(eStructuralFeature));
           if (list.contains(srcObj)) {
             list.remove(srcObj);
