@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.4.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.4.0" xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.4.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_b_-v4D6xEeamPMVEPP91Qw" selectedViews="_cBwRgD6xEeamPMVEPP91Qw _cWM3gD6xEeamPMVEPP91Qw _cWkD4D6xEeamPMVEPP91Qw _cW-TkD6xEeamPMVEPP91Qw _cYJ_UD6xEeamPMVEPP91Qw _cY5mMD6xEeamPMVEPP91Qw _cZ0MMD6xEeamPMVEPP91Qw" version="14.1.0.201810161215">
+  <viewpoint:DAnalysis uid="_b_-v4D6xEeamPMVEPP91Qw" selectedViews="_cBwRgD6xEeamPMVEPP91Qw _cWM3gD6xEeamPMVEPP91Qw _cWkD4D6xEeamPMVEPP91Qw _cW-TkD6xEeamPMVEPP91Qw _cYJ_UD6xEeamPMVEPP91Qw _cY5mMD6xEeamPMVEPP91Qw _cZ0MMD6xEeamPMVEPP91Qw" version="14.3.0.201908231800">
     <semanticResources>Project_validation_hideControlNodesFilter.melodymodeller</semanticResources>
     <semanticResources>Project_validation_hideControlNodesFilter.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_cBwRgD6xEeamPMVEPP91Qw">
@@ -37,7 +37,7 @@
       </ownedRepresentationDescriptors>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram uid="_0x_4AD6xEeamPMVEPP91Qw" name="[PFBD] TEST">
+  <diagram:DSemanticDiagram uid="_0x_4AD6xEeamPMVEPP91Qw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_0x_4AT6xEeamPMVEPP91Qw" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_0x_4Aj6xEeamPMVEPP91Qw"/>
     </ownedAnnotationEntries>
@@ -385,7 +385,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Function%20Breakdown']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalFunction" href="Project_validation_hideControlNodesFilter.melodymodeller#6051e173-d710-4f67-9383-b06238869f03"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_sDDx8D6xEeamPMVEPP91Qw" name="[SFBD] TEST">
+  <diagram:DSemanticDiagram uid="_sDDx8D6xEeamPMVEPP91Qw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_sDDx8T6xEeamPMVEPP91Qw" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_sDDx8j6xEeamPMVEPP91Qw"/>
     </ownedAnnotationEntries>
@@ -739,7 +739,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="Project_validation_hideControlNodesFilter.melodymodeller#bbb1ce99-c252-4aca-8c25-2843e087f609"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_wFg6wD6xEeamPMVEPP91Qw" name="[LFBD] TEST">
+  <diagram:DSemanticDiagram uid="_wFg6wD6xEeamPMVEPP91Qw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_wFg6wT6xEeamPMVEPP91Qw" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_wFg6wj6xEeamPMVEPP91Qw"/>
     </ownedAnnotationEntries>

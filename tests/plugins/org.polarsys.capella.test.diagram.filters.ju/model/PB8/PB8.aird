@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.4.0" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.4.0" xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.4.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_gpF9UZI-EeeH1vQ3EnstJA" selectedViews="_g7FsQJI-EeeH1vQ3EnstJA _hFNRkJI-EeeH1vQ3EnstJA _hFXCkJI-EeeH1vQ3EnstJA _hFXCkZI-EeeH1vQ3EnstJA _hFgMgJI-EeeH1vQ3EnstJA _hFp9gJI-EeeH1vQ3EnstJA _hFzugJI-EeeH1vQ3EnstJA" version="14.1.0.201810161215">
+  <viewpoint:DAnalysis uid="_gpF9UZI-EeeH1vQ3EnstJA" selectedViews="_g7FsQJI-EeeH1vQ3EnstJA _hFNRkJI-EeeH1vQ3EnstJA _hFXCkJI-EeeH1vQ3EnstJA _hFXCkZI-EeeH1vQ3EnstJA _hFgMgJI-EeeH1vQ3EnstJA _hFp9gJI-EeeH1vQ3EnstJA _hFzugJI-EeeH1vQ3EnstJA" version="14.3.0.201908231800">
     <semanticResources>PB8.afm</semanticResources>
     <semanticResources>PB8.melodymodeller</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_g7FsQJI-EeeH1vQ3EnstJA">
@@ -29,7 +29,7 @@
       </ownedRepresentationDescriptors>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram uid="_jMS54JI-EeeH1vQ3EnstJA" name="PB8">
+  <diagram:DSemanticDiagram uid="_jMS54JI-EeeH1vQ3EnstJA">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_jMS54ZI-EeeH1vQ3EnstJA" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_jMS54pI-EeeH1vQ3EnstJA"/>
     </ownedAnnotationEntries>
@@ -76,7 +76,7 @@
                   </children>
                   <children xmi:type="notation:Node" xmi:id="_p9ObKJI-EeeH1vQ3EnstJA" type="3012" element="_p8xvM5I-EeeH1vQ3EnstJA">
                     <children xmi:type="notation:Node" xmi:id="_p9ObK5I-EeeH1vQ3EnstJA" visible="false" type="5010">
-                      <layoutConstraint xmi:type="notation:Location" xmi:id="_p9ObLJI-EeeH1vQ3EnstJA" y="11"/>
+                      <layoutConstraint xmi:type="notation:Location" xmi:id="_p9ObLJI-EeeH1vQ3EnstJA" x="-20" y="11"/>
                     </children>
                     <children xmi:type="notation:Node" xmi:id="_p9ObLZI-EeeH1vQ3EnstJA" type="3003" element="_p8xvNJI-EeeH1vQ3EnstJA">
                       <styles xmi:type="notation:ShapeStyle" xmi:id="_p9ObLpI-EeeH1vQ3EnstJA" fontName="Segoe UI"/>
@@ -105,7 +105,7 @@
                   </children>
                   <children xmi:type="notation:Node" xmi:id="_pGxUQ5I-EeeH1vQ3EnstJA" type="3012" element="_pGBtYpI-EeeH1vQ3EnstJA">
                     <children xmi:type="notation:Node" xmi:id="_pGxURpI-EeeH1vQ3EnstJA" visible="false" type="5010">
-                      <layoutConstraint xmi:type="notation:Location" xmi:id="_pGxUR5I-EeeH1vQ3EnstJA" y="11"/>
+                      <layoutConstraint xmi:type="notation:Location" xmi:id="_pGxUR5I-EeeH1vQ3EnstJA" x="-20" y="11"/>
                     </children>
                     <children xmi:type="notation:Node" xmi:id="_pG7FQJI-EeeH1vQ3EnstJA" type="3005" element="_pGBtY5I-EeeH1vQ3EnstJA">
                       <styles xmi:type="notation:ShapeStyle" xmi:id="_pG7FQZI-EeeH1vQ3EnstJA" fontName="Segoe UI"/>

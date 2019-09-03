@@ -24,19 +24,17 @@
       name="Interfaces"/>
   <ownedDataPkg xsi:type="org.polarsys.capella.core.data.information:DataPkg" id="4936b62d-1b10-4b73-b78d-abef966e02cf"
       name="Data"/>
-  <ownedLogicalContext xsi:type="org.polarsys.capella.core.data.la:LogicalContext"
-      id="be394a64-58ac-4f68-92b4-cfd87e8d141a" name="Logical Context">
-    <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="cf2a9b50-ccd8-408d-96a3-3fcd23ef1fc1"
+  <ownedLogicalComponentPkg xsi:type="org.polarsys.capella.core.data.la:LogicalComponentPkg"
+      id="be394a64-58ac-4f68-92b4-cfd87e8d141a" name="Structure">
+    <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="cf2a9b50-ccd8-408d-96a3-3fcd23ef1fc1"
         name="Logical System" abstractType="#f44af8b2-1f50-4f7a-8466-c1047c1d22f3"/>
-  </ownedLogicalContext>
-  <ownedLogicalComponent xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
-      id="f44af8b2-1f50-4f7a-8466-c1047c1d22f3" name="Logical System">
-    <ownedSystemRealizations xsi:type="org.polarsys.capella.core.data.la:SystemRealization"
-        id="9f28d056-d7bf-448c-988b-dd33653ca37d" targetElement="org.polarsys.capella.core.data.ctx:System SA.melodyfragment#7a157006-5ba8-4887-891a-e72e50e0291b"
-        sourceElement="#f44af8b2-1f50-4f7a-8466-c1047c1d22f3"/>
-  </ownedLogicalComponent>
-  <ownedLogicalActorPkg xsi:type="org.polarsys.capella.core.data.la:LogicalActorPkg"
-      id="f3ddfeb5-980d-40a3-9a88-249149a78879" name="Logical Actors"/>
+    <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+        id="f44af8b2-1f50-4f7a-8466-c1047c1d22f3" name="Logical System">
+      <ownedComponentRealizations xsi:type="org.polarsys.capella.core.data.cs:ComponentRealization"
+          id="9f28d056-d7bf-448c-988b-dd33653ca37d" targetElement="org.polarsys.capella.core.data.ctx:SystemComponent SA.melodyfragment#7a157006-5ba8-4887-891a-e72e50e0291b"
+          sourceElement="#f44af8b2-1f50-4f7a-8466-c1047c1d22f3"/>
+    </ownedLogicalComponents>
+  </ownedLogicalComponentPkg>
   <ownedSystemAnalysisRealizations xsi:type="org.polarsys.capella.core.data.la:SystemAnalysisRealization"
       id="c5246b66-d758-4139-96c9-c8d60d190c20" targetElement="org.polarsys.capella.core.data.ctx:SystemAnalysis SA.melodyfragment#e53c38e7-ab5e-468d-9901-eae0af9bf059"
       sourceElement="#bb2a8cdb-de93-488b-8beb-ce9c89744b18"/>

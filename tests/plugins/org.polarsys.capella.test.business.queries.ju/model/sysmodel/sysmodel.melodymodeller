@@ -3980,7 +3980,7 @@
   </ownedExtensions>
   <ownedExtensions xsi:type="libraries:ModelInformation" id="4c8e4d9e-92bc-4dca-a6b4-6af23b11da71">
     <ownedReferences xsi:type="libraries:LibraryReference" id="360187a5-bc99-4497-9d11-c666c7f534cc"
-        library="libraries:ModelInformation ../sysModelLib/sysModelLib.melodymodeller#3f2bb4a4-df07-42db-8b43-99a3c032582e"/>
+        library="libraries:ModelInformation platform:/resource/sysModelLib/sysModelLib.melodymodeller#3f2bb4a4-df07-42db-8b43-99a3c032582e"/>
   </ownedExtensions>
   <ownedPropertyValues xsi:type="org.polarsys.capella.core.data.capellacore:BooleanPropertyValue"
       id="0f85368b-c99a-4a3c-b47f-9de703e99d6a" name="Project PV"/>

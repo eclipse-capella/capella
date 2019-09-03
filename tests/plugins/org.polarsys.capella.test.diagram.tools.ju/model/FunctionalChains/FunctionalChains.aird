@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.4.0" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.4.0" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.4.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.4.0" xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.4.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_ACRdMD8fEemAMorOl8q0FQ" selectedViews="_ADch4D8fEemAMorOl8q0FQ _AUlVMD8fEemAMorOl8q0FQ _AUvGMD8fEemAMorOl8q0FQ _AU4QID8fEemAMorOl8q0FQ _AWEi8D8fEemAMorOl8q0FQ _AWOT8D8fEemAMorOl8q0FQ _AWhO4D8fEemAMorOl8q0FQ" version="14.1.0.201810161215">
+  <viewpoint:DAnalysis uid="_ACRdMD8fEemAMorOl8q0FQ" selectedViews="_ADch4D8fEemAMorOl8q0FQ _AUlVMD8fEemAMorOl8q0FQ _AUvGMD8fEemAMorOl8q0FQ _AU4QID8fEemAMorOl8q0FQ _AWEi8D8fEemAMorOl8q0FQ _AWOT8D8fEemAMorOl8q0FQ _AWhO4D8fEemAMorOl8q0FQ" version="14.3.0.201908231800">
     <semanticResources>FunctionalChains.afm</semanticResources>
     <semanticResources>FunctionalChains.melodymodeller</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_ADch4D8fEemAMorOl8q0FQ">
@@ -121,7 +121,7 @@
       </ownedRepresentationDescriptors>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram uid="_ECjbwD8fEemAMorOl8q0FQ" name="[SAB] System">
+  <diagram:DSemanticDiagram uid="_ECjbwD8fEemAMorOl8q0FQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_EFFyYD8fEemAMorOl8q0FQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_EFFyYT8fEemAMorOl8q0FQ"/>
     </ownedAnnotationEntries>
@@ -140,7 +140,7 @@
               </children>
               <children xmi:type="notation:Node" xmi:id="_H7QysD8fEemAMorOl8q0FQ" type="3001" element="_H6OQ4D8fEemAMorOl8q0FQ">
                 <children xmi:type="notation:Node" xmi:id="_H7Qysz8fEemAMorOl8q0FQ" visible="false" type="5001">
-                  <layoutConstraint xmi:type="notation:Location" xmi:id="_H7QytD8fEemAMorOl8q0FQ" y="11"/>
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_H7QytD8fEemAMorOl8q0FQ" x="-20" y="11"/>
                 </children>
                 <children xmi:type="notation:Node" xmi:id="_H7ajsD8fEemAMorOl8q0FQ" type="3005" element="_H6OQ4T8fEemAMorOl8q0FQ">
                   <styles xmi:type="notation:ShapeStyle" xmi:id="_H7ajsT8fEemAMorOl8q0FQ" fontName="Segoe UI"/>
@@ -162,7 +162,7 @@
               </children>
               <children xmi:type="notation:Node" xmi:id="_H7ajsz8fEemAMorOl8q0FQ" type="3001" element="_H6OQ5D8fEemAMorOl8q0FQ">
                 <children xmi:type="notation:Node" xmi:id="_H7ajtj8fEemAMorOl8q0FQ" visible="false" type="5001">
-                  <layoutConstraint xmi:type="notation:Location" xmi:id="_H7ajtz8fEemAMorOl8q0FQ" y="11"/>
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_H7ajtz8fEemAMorOl8q0FQ" x="-20" y="11"/>
                 </children>
                 <children xmi:type="notation:Node" xmi:id="_H7ajuD8fEemAMorOl8q0FQ" type="3005" element="_H6Xa0D8fEemAMorOl8q0FQ">
                   <styles xmi:type="notation:ShapeStyle" xmi:id="_H7ajuT8fEemAMorOl8q0FQ" fontName="Segoe UI"/>
@@ -173,7 +173,7 @@
               </children>
               <children xmi:type="notation:Node" xmi:id="_IMGrED8fEemAMorOl8q0FQ" type="3001" element="_ILgOID8fEemAMorOl8q0FQ">
                 <children xmi:type="notation:Node" xmi:id="_IMGrEz8fEemAMorOl8q0FQ" visible="false" type="5001">
-                  <layoutConstraint xmi:type="notation:Location" xmi:id="_IMGrFD8fEemAMorOl8q0FQ" y="11"/>
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_IMGrFD8fEemAMorOl8q0FQ" x="-20" y="11"/>
                 </children>
                 <children xmi:type="notation:Node" xmi:id="_IMGrFT8fEemAMorOl8q0FQ" type="3005" element="_ILgOIT8fEemAMorOl8q0FQ">
                   <styles xmi:type="notation:ShapeStyle" xmi:id="_IMGrFj8fEemAMorOl8q0FQ" fontName="Segoe UI"/>
@@ -195,7 +195,7 @@
               </children>
               <children xmi:type="notation:Node" xmi:id="_IMGrGD8fEemAMorOl8q0FQ" type="3001" element="_ILgOJD8fEemAMorOl8q0FQ">
                 <children xmi:type="notation:Node" xmi:id="_IMGrGz8fEemAMorOl8q0FQ" visible="false" type="5001">
-                  <layoutConstraint xmi:type="notation:Location" xmi:id="_IMGrHD8fEemAMorOl8q0FQ" y="11"/>
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_IMGrHD8fEemAMorOl8q0FQ" x="-20" y="11"/>
                 </children>
                 <children xmi:type="notation:Node" xmi:id="_IMGrHT8fEemAMorOl8q0FQ" type="3005" element="_ILgOJT8fEemAMorOl8q0FQ">
                   <styles xmi:type="notation:ShapeStyle" xmi:id="_IMGrHj8fEemAMorOl8q0FQ" fontName="Segoe UI"/>
@@ -250,7 +250,7 @@
               </children>
               <children xmi:type="notation:Node" xmi:id="_KI02cD8fEemAMorOl8q0FQ" type="3001" element="_KIOZgD8fEemAMorOl8q0FQ">
                 <children xmi:type="notation:Node" xmi:id="_KI02cz8fEemAMorOl8q0FQ" visible="false" type="5001">
-                  <layoutConstraint xmi:type="notation:Location" xmi:id="_KI02dD8fEemAMorOl8q0FQ" y="11"/>
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_KI02dD8fEemAMorOl8q0FQ" x="-20" y="11"/>
                 </children>
                 <children xmi:type="notation:Node" xmi:id="_KI02dT8fEemAMorOl8q0FQ" type="3005" element="_KIOZgT8fEemAMorOl8q0FQ">
                   <styles xmi:type="notation:ShapeStyle" xmi:id="_KI02dj8fEemAMorOl8q0FQ" fontName="Segoe UI"/>
@@ -272,7 +272,7 @@
               </children>
               <children xmi:type="notation:Node" xmi:id="_KI02eD8fEemAMorOl8q0FQ" type="3001" element="_KIOZhD8fEemAMorOl8q0FQ">
                 <children xmi:type="notation:Node" xmi:id="_KI02ez8fEemAMorOl8q0FQ" visible="false" type="5001">
-                  <layoutConstraint xmi:type="notation:Location" xmi:id="_KI02fD8fEemAMorOl8q0FQ" y="11"/>
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_KI02fD8fEemAMorOl8q0FQ" x="-20" y="11"/>
                 </children>
                 <children xmi:type="notation:Node" xmi:id="_KI02fT8fEemAMorOl8q0FQ" type="3005" element="_KIOZhT8fEemAMorOl8q0FQ">
                   <styles xmi:type="notation:ShapeStyle" xmi:id="_KI02fj8fEemAMorOl8q0FQ" fontName="Segoe UI"/>
@@ -711,7 +711,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.ctx:SystemComponent" href="FunctionalChains.melodymodeller#e74fbe92-55bc-4549-acc5-67027269ed04"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_xJTL4D8gEemAMorOl8q0FQ" name="[SFCD] Level1Chain1">
+  <diagram:DSemanticDiagram uid="_xJTL4D8gEemAMorOl8q0FQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_xJmt7j8gEemAMorOl8q0FQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_xJmt7z8gEemAMorOl8q0FQ"/>
     </ownedAnnotationEntries>
@@ -969,7 +969,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="FunctionalChains.melodymodeller#b380d24a-2beb-47d5-9360-fe1410c53a43"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_3NVx8D8gEemAMorOl8q0FQ" name="[SFCD] Level1Chain2">
+  <diagram:DSemanticDiagram uid="_3NVx8D8gEemAMorOl8q0FQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_3Ne75z8gEemAMorOl8q0FQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_3Ne76D8gEemAMorOl8q0FQ"/>
     </ownedAnnotationEntries>
@@ -1105,7 +1105,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="FunctionalChains.melodymodeller#32cdf697-4677-42ee-ad2c-0a8799426a8e"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_eK-rQD8hEemAMorOl8q0FQ" name="[SFCD] Level3Chain1">
+  <diagram:DSemanticDiagram uid="_eK-rQD8hEemAMorOl8q0FQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_eLIcQD8hEemAMorOl8q0FQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_eLIcQT8hEemAMorOl8q0FQ"/>
     </ownedAnnotationEntries>
@@ -1198,7 +1198,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="FunctionalChains.melodymodeller#6256b217-e656-4ef5-958d-fde65824bbf9"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_tn1a0D8hEemAMorOl8q0FQ" name="[SFCD] EmptyChain1">
+  <diagram:DSemanticDiagram uid="_tn1a0D8hEemAMorOl8q0FQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_tn1a0j8hEemAMorOl8q0FQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_tn1a0z8hEemAMorOl8q0FQ"/>
     </ownedAnnotationEntries>
@@ -1213,7 +1213,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="FunctionalChains.melodymodeller#f7e6d0ab-c0e3-44d7-bffa-a349b7a7c6d5"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_o7LzsEAMEemus9VjolN4_A" name="[SFCD] Level2Chain1">
+  <diagram:DSemanticDiagram uid="_o7LzsEAMEemus9VjolN4_A">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_o7iZAEAMEemus9VjolN4_A" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_o7iZAUAMEemus9VjolN4_A"/>
     </ownedAnnotationEntries>
@@ -1228,7 +1228,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="FunctionalChains.melodymodeller#cd80263c-a598-40fd-8623-9ea827b8ea68"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_Y25T0EDUEemoGalPoH57Ew" name="[OAB] Operational Context">
+  <diagram:DSemanticDiagram uid="_Y25T0EDUEemoGalPoH57Ew">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_Y3DE0EDUEemoGalPoH57Ew" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_Y3DE0UDUEemoGalPoH57Ew"/>
     </ownedAnnotationEntries>
@@ -1552,7 +1552,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.oa:EntityPkg" href="FunctionalChains.melodymodeller#2023f849-ce12-49a8-afda-bcee3dbb412b"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_2eNW8EDUEemoGalPoH57Ew" name="[OPD] Level1Chain1">
+  <diagram:DSemanticDiagram uid="_2eNW8EDUEemoGalPoH57Ew">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_2eNXDUDUEemoGalPoH57Ew" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_2eNXDkDUEemoGalPoH57Ew"/>
     </ownedAnnotationEntries>
@@ -1679,7 +1679,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Process%20Description']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="FunctionalChains.melodymodeller#ed576cb9-dea7-4053-8613-95ff551f1e94"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_3ed6EEDUEemoGalPoH57Ew" name="[OPD] Level1Chain2">
+  <diagram:DSemanticDiagram uid="_3ed6EEDUEemoGalPoH57Ew">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_3eu_0EDUEemoGalPoH57Ew" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_3eu_0UDUEemoGalPoH57Ew"/>
     </ownedAnnotationEntries>
@@ -1806,7 +1806,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Process%20Description']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="FunctionalChains.melodymodeller#488b0776-3476-41a1-a7e0-8ffd69d5d9bf"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="__qgucEDUEemoGalPoH57Ew" name="[OPD] Level2Chain1">
+  <diagram:DSemanticDiagram uid="__qgucEDUEemoGalPoH57Ew">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="__qguckDUEemoGalPoH57Ew" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="__qguc0DUEemoGalPoH57Ew"/>
     </ownedAnnotationEntries>
@@ -1821,7 +1821,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Process%20Description']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="FunctionalChains.melodymodeller#43268963-856e-453e-9325-54cd0a5d2163"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_CE5GMEDVEemoGalPoH57Ew" name="[OPD] Level3Chain1">
+  <diagram:DSemanticDiagram uid="_CE5GMEDVEemoGalPoH57Ew">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_CFC3MEDVEemoGalPoH57Ew" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_CFC3MUDVEemoGalPoH57Ew"/>
     </ownedAnnotationEntries>
@@ -1914,7 +1914,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Process%20Description']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="FunctionalChains.melodymodeller#dc69394b-29c2-4bbe-a417-2755dc8f0c39"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_M4d9gEDVEemoGalPoH57Ew" name="[OPD] EmptyChain1">
+  <diagram:DSemanticDiagram uid="_M4d9gEDVEemoGalPoH57Ew">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_M4d9gkDVEemoGalPoH57Ew" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_M4d9g0DVEemoGalPoH57Ew"/>
     </ownedAnnotationEntries>
@@ -1929,7 +1929,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Process%20Description']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="FunctionalChains.melodymodeller#cfc6261f-c3be-4be4-8797-54606407900c"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_dJpG0Fq8EemkL5UG-kdg9Q" name="[SFCD] SequenceFC1_Level0">
+  <diagram:DSemanticDiagram uid="_dJpG0Fq8EemkL5UG-kdg9Q">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_dJpG0lq8EemkL5UG-kdg9Q" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_dJpG01q8EemkL5UG-kdg9Q"/>
     </ownedAnnotationEntries>
@@ -2155,7 +2155,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="FunctionalChains.melodymodeller#3362f7d5-8bdb-44cb-a11c-67ab1429935f"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_W3tm8FuGEem10o4A5uhw2w" name="[SFCD] SequenceFC2_Level1">
+  <diagram:DSemanticDiagram uid="_W3tm8FuGEem10o4A5uhw2w">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_W32w4FuGEem10o4A5uhw2w" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_W32w4VuGEem10o4A5uhw2w"/>
     </ownedAnnotationEntries>
@@ -2572,7 +2572,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="FunctionalChains.melodymodeller#5e69264c-9f3d-4d9a-88a4-eaf70fab9674"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_h3DCUFuGEem10o4A5uhw2w" name="[SDFB] Root System Function">
+  <diagram:DSemanticDiagram uid="_h3DCUFuGEem10o4A5uhw2w">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_h3MzUFuGEem10o4A5uhw2w" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_h3MzUVuGEem10o4A5uhw2w"/>
     </ownedAnnotationEntries>
@@ -2628,7 +2628,7 @@
           </children>
           <children xmi:type="notation:Node" xmi:id="_naTPjFuGEem10o4A5uhw2w" type="3012" element="_nZ2jlFuGEem10o4A5uhw2w">
             <children xmi:type="notation:Node" xmi:id="_naTPj1uGEem10o4A5uhw2w" visible="false" type="5010">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_naTPkFuGEem10o4A5uhw2w" y="11"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_naTPkFuGEem10o4A5uhw2w" x="-20" y="11"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_naTPkVuGEem10o4A5uhw2w" type="3005" element="_nZ2jlVuGEem10o4A5uhw2w">
               <styles xmi:type="notation:ShapeStyle" xmi:id="_naTPkluGEem10o4A5uhw2w" fontName="Segoe UI"/>
@@ -2650,7 +2650,7 @@
           </children>
           <children xmi:type="notation:Node" xmi:id="_m4Iv_GA-Eemg2v6hRJikDQ" type="3012" element="_m3iSwGA-Eemg2v6hRJikDQ">
             <children xmi:type="notation:Node" xmi:id="_m4Iv_2A-Eemg2v6hRJikDQ" visible="false" type="5010">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_m4IwAGA-Eemg2v6hRJikDQ" y="11"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_m4IwAGA-Eemg2v6hRJikDQ" x="-20" y="11"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_m4IwAWA-Eemg2v6hRJikDQ" type="3005" element="_m3iSwWA-Eemg2v6hRJikDQ">
               <styles xmi:type="notation:ShapeStyle" xmi:id="_m4IwAmA-Eemg2v6hRJikDQ" fontName="Segoe UI"/>
@@ -2712,7 +2712,7 @@
           </children>
           <children xmi:type="notation:Node" xmi:id="_1OWbk2AjEemg2v6hRJikDQ" type="3012" element="_1N5vpGAjEemg2v6hRJikDQ">
             <children xmi:type="notation:Node" xmi:id="_1OWblmAjEemg2v6hRJikDQ" visible="false" type="5010">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_1OWbl2AjEemg2v6hRJikDQ" y="11"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_1OWbl2AjEemg2v6hRJikDQ" x="-20" y="11"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_1OWbmGAjEemg2v6hRJikDQ" type="3005" element="_1N5vpWAjEemg2v6hRJikDQ">
               <styles xmi:type="notation:ShapeStyle" xmi:id="_1OWbmWAjEemg2v6hRJikDQ" fontName="Segoe UI"/>
@@ -3077,7 +3077,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="FunctionalChains.melodymodeller#1ea39f22-11b4-43b0-87b6-c6d0f0f3f70c"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_0AZF8FuJEem10o4A5uhw2w" name="[SFCD] SequenceFC1_Level2">
+  <diagram:DSemanticDiagram uid="_0AZF8FuJEem10o4A5uhw2w">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_0AiP4FuJEem10o4A5uhw2w" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_0AiP4VuJEem10o4A5uhw2w"/>
     </ownedAnnotationEntries>
@@ -4529,7 +4529,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="FunctionalChains.melodymodeller#27e3c2b0-6f1c-4447-b50e-66d766fe288a"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_YRKdMFw2EemgZNCFo8NfyA" name="[LDFB] Root Logical Function">
+  <diagram:DSemanticDiagram uid="_YRKdMFw2EemgZNCFo8NfyA">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_YRdYIFw2EemgZNCFo8NfyA" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_YRdYIVw2EemgZNCFo8NfyA"/>
     </ownedAnnotationEntries>
@@ -4585,7 +4585,7 @@
           </children>
           <children xmi:type="notation:Node" xmi:id="_j0bsGFw2EemgZNCFo8NfyA" type="3012" element="_jzyy5Fw2EemgZNCFo8NfyA">
             <children xmi:type="notation:Node" xmi:id="_j0bsG1w2EemgZNCFo8NfyA" visible="false" type="5010">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_j0bsHFw2EemgZNCFo8NfyA" y="11"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_j0bsHFw2EemgZNCFo8NfyA" x="-20" y="11"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_j0bsHVw2EemgZNCFo8NfyA" type="3005" element="_jzyy5Vw2EemgZNCFo8NfyA">
               <styles xmi:type="notation:ShapeStyle" xmi:id="_j0bsHlw2EemgZNCFo8NfyA" fontName="Segoe UI"/>
@@ -4607,7 +4607,7 @@
           </children>
           <children xmi:type="notation:Node" xmi:id="_3ocKhWBGEemg2v6hRJikDQ" type="3012" element="_3n_ekGBGEemg2v6hRJikDQ">
             <children xmi:type="notation:Node" xmi:id="_3ocKiGBGEemg2v6hRJikDQ" visible="false" type="5010">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_3ocKiWBGEemg2v6hRJikDQ" y="11"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_3ocKiWBGEemg2v6hRJikDQ" x="-20" y="11"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_3ocKimBGEemg2v6hRJikDQ" type="3005" element="_3n_ekWBGEemg2v6hRJikDQ">
               <styles xmi:type="notation:ShapeStyle" xmi:id="_3ocKi2BGEemg2v6hRJikDQ" fontName="Segoe UI"/>
@@ -4638,7 +4638,7 @@
           </children>
           <children xmi:type="notation:Node" xmi:id="_x8X7OGAoEemg2v6hRJikDQ" type="3012" element="_x8EZNGAoEemg2v6hRJikDQ">
             <children xmi:type="notation:Node" xmi:id="_x8X7O2AoEemg2v6hRJikDQ" visible="false" type="5010">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_x8X7PGAoEemg2v6hRJikDQ" y="11"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_x8X7PGAoEemg2v6hRJikDQ" x="-20" y="11"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_x8X7PWAoEemg2v6hRJikDQ" type="3005" element="_x8EZNWAoEemg2v6hRJikDQ">
               <styles xmi:type="notation:ShapeStyle" xmi:id="_x8X7PmAoEemg2v6hRJikDQ" fontName="Segoe UI"/>
@@ -4691,7 +4691,7 @@
           </children>
           <children xmi:type="notation:Node" xmi:id="_4xbHeGAoEemg2v6hRJikDQ" type="3012" element="_4xRWdGAoEemg2v6hRJikDQ">
             <children xmi:type="notation:Node" xmi:id="_4xbHe2AoEemg2v6hRJikDQ" visible="false" type="5010">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_4xbHfGAoEemg2v6hRJikDQ" y="11"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_4xbHfGAoEemg2v6hRJikDQ" x="-20" y="11"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_4xbHfWAoEemg2v6hRJikDQ" type="3005" element="_4xRWdWAoEemg2v6hRJikDQ">
               <styles xmi:type="notation:ShapeStyle" xmi:id="_4xbHfmAoEemg2v6hRJikDQ" fontName="Segoe UI"/>
@@ -5114,7 +5114,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.la:LogicalFunction" href="FunctionalChains.melodymodeller#c8b6d57b-3681-43af-91c3-b9f1bd5929c3"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_1RPhMFw2EemgZNCFo8NfyA" name="[LFCD] SequenceFC1_Level0">
+  <diagram:DSemanticDiagram uid="_1RPhMFw2EemgZNCFo8NfyA">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_1RZSNVw2EemgZNCFo8NfyA" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_1RZSNlw2EemgZNCFo8NfyA"/>
     </ownedAnnotationEntries>
@@ -5358,7 +5358,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="FunctionalChains.melodymodeller#0a1194e7-c3c8-4276-bbb8-349b9e1d7af0"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_3hfFgFw2EemgZNCFo8NfyA" name="[LFCD] SequenceFC2_Level1">
+  <diagram:DSemanticDiagram uid="_3hfFgFw2EemgZNCFo8NfyA">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_3ho2i1w2EemgZNCFo8NfyA" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_3ho2jFw2EemgZNCFo8NfyA"/>
     </ownedAnnotationEntries>
@@ -5798,7 +5798,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="FunctionalChains.melodymodeller#0a78ea17-8c8f-458a-abd7-1466fa26288e"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_Td6soFxiEemgZNCFo8NfyA" name="[LFCD] SequenceFC3">
+  <diagram:DSemanticDiagram uid="_Td6soFxiEemgZNCFo8NfyA">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_TeD2kFxiEemgZNCFo8NfyA" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_TeD2kVxiEemgZNCFo8NfyA"/>
     </ownedAnnotationEntries>
@@ -7451,7 +7451,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="FunctionalChains.melodymodeller#da1c6558-ad6e-465f-9d63-823a9b8f8259"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_xbPNQFxoEemItOO3sMV2xQ" name="[OPD] SequenceFC1_Level0">
+  <diagram:DSemanticDiagram uid="_xbPNQFxoEemItOO3sMV2xQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_xbY-QFxoEemItOO3sMV2xQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_xbY-QVxoEemItOO3sMV2xQ"/>
     </ownedAnnotationEntries>
@@ -7673,7 +7673,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Process%20Description']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="FunctionalChains.melodymodeller#d1d64d50-fd40-40e4-8c5a-152bd501cc68"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_18ej0FxoEemItOO3sMV2xQ" name="[OPD] SequenceFC2_Level1">
+  <diagram:DSemanticDiagram uid="_18ej0FxoEemItOO3sMV2xQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_18ntwFxoEemItOO3sMV2xQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_18ntwVxoEemItOO3sMV2xQ"/>
     </ownedAnnotationEntries>
@@ -8126,7 +8126,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Process%20Description']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="FunctionalChains.melodymodeller#67ba0217-5ae6-43e0-b816-ce7054a35830"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_4HDlAFxoEemItOO3sMV2xQ" name="[OPD] SequenceFC3_Level2">
+  <diagram:DSemanticDiagram uid="_4HDlAFxoEemItOO3sMV2xQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_4HNWAFxoEemItOO3sMV2xQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_4HNWAVxoEemItOO3sMV2xQ"/>
     </ownedAnnotationEntries>
@@ -9783,7 +9783,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Process%20Description']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="FunctionalChains.melodymodeller#99cf5775-732b-4c57-8bcd-a0078780db46"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_aYz_sGAnEemg2v6hRJikDQ" name="[OAB] Operational Context_Seq">
+  <diagram:DSemanticDiagram uid="_aYz_sGAnEemg2v6hRJikDQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_aYz_smAnEemg2v6hRJikDQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_aYz_s2AnEemg2v6hRJikDQ"/>
     </ownedAnnotationEntries>

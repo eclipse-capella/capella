@@ -24,19 +24,17 @@
       name="Interfaces"/>
   <ownedDataPkg xsi:type="org.polarsys.capella.core.data.information:DataPkg" id="f29ad5ab-643f-4fe8-81d3-fec612c93290"
       name="Data"/>
-  <ownedPhysicalContext xsi:type="org.polarsys.capella.core.data.pa:PhysicalContext"
-      id="84f4c041-0d63-4489-8fbb-2079c027e116" name="Physical Context">
-    <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="59edfba9-f496-443d-8d4f-8cddbc3c0f6f"
+  <ownedPhysicalComponentPkg xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponentPkg"
+      id="84f4c041-0d63-4489-8fbb-2079c027e116" name="Structure">
+    <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="59edfba9-f496-443d-8d4f-8cddbc3c0f6f"
         name="Physical System" abstractType="#6fc750ef-3d92-4969-be14-e873e5f58ac6"/>
-  </ownedPhysicalContext>
-  <ownedPhysicalComponent xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
-      id="6fc750ef-3d92-4969-be14-e873e5f58ac6" name="Physical System">
-    <ownedLogicalComponentRealizations xsi:type="org.polarsys.capella.core.data.pa:LogicalComponentRealization"
-        id="bd410916-0601-4c95-971f-0bd4c4b15ed4" targetElement="org.polarsys.capella.core.data.la:LogicalComponent LA.melodyfragment#f44af8b2-1f50-4f7a-8466-c1047c1d22f3"
-        sourceElement="#6fc750ef-3d92-4969-be14-e873e5f58ac6"/>
-  </ownedPhysicalComponent>
-  <ownedPhysicalActorPkg xsi:type="org.polarsys.capella.core.data.pa:PhysicalActorPkg"
-      id="f4ea1ef8-d1d5-4d42-9c8e-5afd61c945b2" name="Physical Actors"/>
+    <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+        id="6fc750ef-3d92-4969-be14-e873e5f58ac6" name="Physical System">
+      <ownedComponentRealizations xsi:type="org.polarsys.capella.core.data.cs:ComponentRealization"
+          id="bd410916-0601-4c95-971f-0bd4c4b15ed4" targetElement="org.polarsys.capella.core.data.la:LogicalComponent LA.melodyfragment#f44af8b2-1f50-4f7a-8466-c1047c1d22f3"
+          sourceElement="#6fc750ef-3d92-4969-be14-e873e5f58ac6"/>
+    </ownedPhysicalComponents>
+  </ownedPhysicalComponentPkg>
   <ownedLogicalArchitectureRealizations xsi:type="org.polarsys.capella.core.data.pa:LogicalArchitectureRealization"
       id="6d535fa7-c76b-4416-b523-0f20013cff93" targetElement="org.polarsys.capella.core.data.la:LogicalArchitecture LA.melodyfragment#bb2a8cdb-de93-488b-8beb-ce9c89744b18"
       sourceElement="#8692d262-5c57-4fbf-9a01-cd1a5da41b97"/>

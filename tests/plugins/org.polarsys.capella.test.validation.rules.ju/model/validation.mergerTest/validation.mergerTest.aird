@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.4.0" xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/1.4.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.4.0" xmlns:sequence="http://www.eclipse.org/sirius/diagram/sequence/2.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0 http://www.eclipse.org/sirius/diagram/sequence/2.0.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_5bQtELafEd-D96Pr0_X3Fg" selectedViews="_5cmw4LafEd-D96Pr0_X3Fg _5cwh4LafEd-D96Pr0_X3Fg _5dpSsLafEd-D96Pr0_X3Fg _5eF-oLafEd-D96Pr0_X3Fg _5eiqkLafEd-D96Pr0_X3Fg _5e_WgLafEd-D96Pr0_X3Fg _6FzBwLCtEeK-_ZCenGT04A" version="14.1.0.201810161215">
+  <viewpoint:DAnalysis uid="_5bQtELafEd-D96Pr0_X3Fg" selectedViews="_5cmw4LafEd-D96Pr0_X3Fg _5cwh4LafEd-D96Pr0_X3Fg _5dpSsLafEd-D96Pr0_X3Fg _5eF-oLafEd-D96Pr0_X3Fg _5eiqkLafEd-D96Pr0_X3Fg _5e_WgLafEd-D96Pr0_X3Fg _6FzBwLCtEeK-_ZCenGT04A" version="14.3.0.201908231800">
     <semanticResources>validation.mergerTest.melodymodeller</semanticResources>
     <semanticResources>validation.mergerTest.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_5cmw4LafEd-D96Pr0_X3Fg">
@@ -45,7 +45,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <sequence:SequenceDDiagram uid="_nXEv8FbyEeCtXqpjL2wCJQ" name="LC 1">
+  <sequence:SequenceDDiagram uid="_nXEv8FbyEeCtXqpjL2wCJQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_nXYR8FbyEeCtXqpjL2wCJQ" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_nXYR8VbyEeCtXqpjL2wCJQ" type="Sirius" element="_nXEv8FbyEeCtXqpjL2wCJQ" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_nde58FbyEeCtXqpjL2wCJQ" type="2001" element="_Al4iIHQuEeamAMxs9g9ZYQ">
@@ -507,12 +507,12 @@
     </ownedDiagramElements>
     <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
-    <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@filters[name='Hide%20PrePost%20conditions']"/>
+    <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@filters[name='hide.pre.post.conditions.filter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_nXEv8VbyEeCtXqpjL2wCJQ"/>
     <activatedLayers xmi:type="description_2:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="validation.mergerTest.melodymodeller#8439b248-a413-41ec-8028-d824f58f330a"/>
   </sequence:SequenceDDiagram>
-  <sequence:SequenceDDiagram uid="_747qcFbyEeCtXqpjL2wCJQ" name="LC ROOT">
+  <sequence:SequenceDDiagram uid="_747qcFbyEeCtXqpjL2wCJQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_747qdFbyEeCtXqpjL2wCJQ" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_747qdVbyEeCtXqpjL2wCJQ" type="Sirius" element="_747qcFbyEeCtXqpjL2wCJQ" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_76a4MFbyEeCtXqpjL2wCJQ" type="2001" element="_AnQbIHQuEeamAMxs9g9ZYQ">
@@ -968,12 +968,12 @@
     </ownedDiagramElements>
     <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
-    <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@filters[name='Hide%20PrePost%20conditions']"/>
+    <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@filters[name='hide.pre.post.conditions.filter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_747qcVbyEeCtXqpjL2wCJQ"/>
     <activatedLayers xmi:type="description_2:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="validation.mergerTest.melodymodeller#02bcfe34-407f-44ab-9aab-38f407fd01c3"/>
   </sequence:SequenceDDiagram>
-  <sequence:SequenceDDiagram uid="_KGgjcFbzEeCtXqpjL2wCJQ" name="SysTEME">
+  <sequence:SequenceDDiagram uid="_KGgjcFbzEeCtXqpjL2wCJQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_KGgjdFbzEeCtXqpjL2wCJQ" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_KGgjdVbzEeCtXqpjL2wCJQ" type="Sirius" element="_KGgjcFbzEeCtXqpjL2wCJQ" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_KHs2QFbzEeCtXqpjL2wCJQ" type="2001" element="_AoXOYHQuEeamAMxs9g9ZYQ">
@@ -1303,12 +1303,12 @@
     </ownedDiagramElements>
     <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
-    <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@filters[name='Hide%20PrePost%20conditions']"/>
+    <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@filters[name='hide.pre.post.conditions.filter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_KGgjcVbzEeCtXqpjL2wCJQ"/>
     <activatedLayers xmi:type="description_2:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="validation.mergerTest.melodymodeller#c008806f-2980-4c0d-be7e-5628c3db25b7"/>
   </sequence:SequenceDDiagram>
-  <sequence:SequenceDDiagram uid="_ibFxMFkuEeCvw7BMIRDDyg" name="[IS] Scenario 1 - Interface Scenario">
+  <sequence:SequenceDDiagram uid="_ibFxMFkuEeCvw7BMIRDDyg">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_ibsOIFkuEeCvw7BMIRDDyg" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_ibsOIVkuEeCvw7BMIRDDyg" type="Sirius" element="_ibFxMFkuEeCvw7BMIRDDyg" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_i4cbkFkuEeCvw7BMIRDDyg" type="2001" element="_ApG1QHQuEeamAMxs9g9ZYQ">
@@ -1784,12 +1784,12 @@
     </ownedDiagramElements>
     <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
-    <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@filters[name='Hide%20PrePost%20conditions']"/>
+    <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@filters[name='hide.pre.post.conditions.filter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_ibFxMVkuEeCvw7BMIRDDyg"/>
     <activatedLayers xmi:type="description_2:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="validation.mergerTest.melodymodeller#d08ff0a6-e1f9-401f-9c46-00e5be8e2104"/>
   </sequence:SequenceDDiagram>
-  <sequence:SequenceDDiagram uid="_aYQRQFkwEeCvw7BMIRDDyg" name="[IS] Scenario 1 - Interface Scenario">
+  <sequence:SequenceDDiagram uid="_aYQRQFkwEeCvw7BMIRDDyg">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_aYQRRFkwEeCvw7BMIRDDyg" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_aYQRRVkwEeCvw7BMIRDDyg" type="Sirius" element="_aYQRQFkwEeCvw7BMIRDDyg" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_aZSzEFkwEeCvw7BMIRDDyg" type="2001" element="_ApqO4HQuEeamAMxs9g9ZYQ">
@@ -2119,7 +2119,7 @@
     </ownedDiagramElements>
     <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
-    <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@filters[name='Hide%20PrePost%20conditions']"/>
+    <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@filters[name='hide.pre.post.conditions.filter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_aYQRQVkwEeCvw7BMIRDDyg"/>
     <activatedLayers xmi:type="description_2:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="validation.mergerTest.melodymodeller#6030c79b-1087-4826-83a8-5d363c7242eb"/>

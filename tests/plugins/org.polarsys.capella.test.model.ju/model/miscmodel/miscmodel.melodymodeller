@@ -804,19 +804,19 @@
             name="System" abstractType="#4630572f-7502-4263-a994-89ced76f21a8"/>
         <ownedSystemComponents xsi:type="org.polarsys.capella.core.data.ctx:SystemComponent"
             id="4630572f-7502-4263-a994-89ced76f21a8" name="System">
-        <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
-            id="49317473-6399-4f48-900b-55626be12ab3" targetElement="#c715344a-b235-445a-b1d4-8d308e5bb65b"
-            sourceElement="#4630572f-7502-4263-a994-89ced76f21a8"/>
-        <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
-            id="9f9ef46b-5d6a-4c29-b6df-a154f5d6a22a" targetElement="#6dfeb3c7-c28f-48e2-a0dd-256aa593feb4"
-            sourceElement="#4630572f-7502-4263-a994-89ced76f21a8"/>
-        <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
-            id="40b78b79-bfc6-4c63-b2e7-e2074deaf439" targetElement="#012d8bd2-f128-4fa2-9bf4-7909f7900313"
-            sourceElement="#4630572f-7502-4263-a994-89ced76f21a8"/>
-        <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
-            id="9ff1b6af-e934-4264-b89f-f20f16706143" targetElement="#b41b8752-5a17-4d28-8773-b7356ea21f1b"
-            sourceElement="#4630572f-7502-4263-a994-89ced76f21a8"/>
-        <ownedStateMachines xsi:type="org.polarsys.capella.core.data.capellacommon:StateMachine"
+          <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+              id="49317473-6399-4f48-900b-55626be12ab3" targetElement="#c715344a-b235-445a-b1d4-8d308e5bb65b"
+              sourceElement="#4630572f-7502-4263-a994-89ced76f21a8"/>
+          <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+              id="9f9ef46b-5d6a-4c29-b6df-a154f5d6a22a" targetElement="#6dfeb3c7-c28f-48e2-a0dd-256aa593feb4"
+              sourceElement="#4630572f-7502-4263-a994-89ced76f21a8"/>
+          <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+              id="40b78b79-bfc6-4c63-b2e7-e2074deaf439" targetElement="#012d8bd2-f128-4fa2-9bf4-7909f7900313"
+              sourceElement="#4630572f-7502-4263-a994-89ced76f21a8"/>
+          <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+              id="9ff1b6af-e934-4264-b89f-f20f16706143" targetElement="#b41b8752-5a17-4d28-8773-b7356ea21f1b"
+              sourceElement="#4630572f-7502-4263-a994-89ced76f21a8"/>
+          <ownedStateMachines xsi:type="org.polarsys.capella.core.data.capellacommon:StateMachine"
               id="97900e4c-7b85-408c-96eb-bd3e63ab1d0b" name="StateMachine 1">
             <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
                 id="fc3926fb-2c44-4301-a73d-c3a1aaca5ce2" name="Default Region" involvedStates="#135aa60d-7795-4a71-a6ce-0af9b2a959a9 #a7fde950-553a-4766-b710-31a8a11c7bc4">

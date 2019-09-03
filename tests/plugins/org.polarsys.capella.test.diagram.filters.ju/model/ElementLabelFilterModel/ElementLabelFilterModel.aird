@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.4.0" xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.4.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_rnutAFB0EembLZuYOQDZyg" selectedViews="_sggIEFB0EembLZuYOQDZyg _s5YiIFB0EembLZuYOQDZyg _s5YiIVB0EembLZuYOQDZyg _s5iTIFB0EembLZuYOQDZyg _s51OEFB0EembLZuYOQDZyg _s6R6AFB0EembLZuYOQDZyg _s7nWwFB0EembLZuYOQDZyg" version="14.1.0.201810161215">
+  <viewpoint:DAnalysis uid="_rnutAFB0EembLZuYOQDZyg" selectedViews="_sggIEFB0EembLZuYOQDZyg _s5YiIFB0EembLZuYOQDZyg _s5YiIVB0EembLZuYOQDZyg _s5iTIFB0EembLZuYOQDZyg _s51OEFB0EembLZuYOQDZyg _s6R6AFB0EembLZuYOQDZyg _s7nWwFB0EembLZuYOQDZyg" version="14.3.0.201908231800">
     <semanticResources>ElementLabelFilterModel.afm</semanticResources>
     <semanticResources>ElementLabelFilterModel.melodymodeller</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_sggIEFB0EembLZuYOQDZyg">
@@ -37,7 +37,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram uid="_WxZjEFCPEemJ35r2qIwMNw" name="[OAIB] Root Operational Activity">
+  <diagram:DSemanticDiagram uid="_WxZjEFCPEemJ35r2qIwMNw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_WxseAFCPEemJ35r2qIwMNw" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_WxseAVCPEemJ35r2qIwMNw"/>
     </ownedAnnotationEntries>
@@ -190,7 +190,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="ElementLabelFilterModel.melodymodeller#719267bd-dbfb-41c7-9ebf-fa8839f7dc53"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_dTA18FCPEemJ35r2qIwMNw" name="Test Operational Process Description Diagram">
+  <diagram:DSemanticDiagram uid="_dTA18FCPEemJ35r2qIwMNw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_dTTw4FCPEemJ35r2qIwMNw" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_dTTw4VCPEemJ35r2qIwMNw"/>
     </ownedAnnotationEntries>
@@ -326,7 +326,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Process%20Description']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.oa:OperationalProcess" href="ElementLabelFilterModel.melodymodeller#1186fe6b-5394-4c4f-9402-820d079706c2"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_zKyHkFCcEemdJrVTlDFAJg" name="Test Operational Process Description With Exchange Items Shown">
+  <diagram:DSemanticDiagram uid="_zKyHkFCcEemdJrVTlDFAJg">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_zK7RgFCcEemdJrVTlDFAJg" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_zK7RgVCcEemdJrVTlDFAJg"/>
     </ownedAnnotationEntries>

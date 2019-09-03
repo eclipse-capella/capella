@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.4.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter">
-  <viewpoint:DAnalysis uid="_fpvJYJ82EemCksxQS2dHoQ" selectedViews="_fq8qUJ82EemCksxQS2dHoQ _f6lo0J82EemCksxQS2dHoQ _f7x7oJ82EemCksxQS2dHoQ _f7x7oZ82EemCksxQS2dHoQ _f8FdoJ82EemCksxQS2dHoQ _f8OnkJ82EemCksxQS2dHoQ _f81EgJ82EemCksxQS2dHoQ" version="14.1.0.201810161215">
+  <viewpoint:DAnalysis uid="_fpvJYJ82EemCksxQS2dHoQ" selectedViews="_fq8qUJ82EemCksxQS2dHoQ _f6lo0J82EemCksxQS2dHoQ _f7x7oJ82EemCksxQS2dHoQ _f7x7oZ82EemCksxQS2dHoQ _f8FdoJ82EemCksxQS2dHoQ _f8OnkJ82EemCksxQS2dHoQ _f81EgJ82EemCksxQS2dHoQ" version="14.3.0.201908231800">
     <semanticResources>SearchWithOptions.afm</semanticResources>
     <semanticResources>SearchWithOptions.melodymodeller</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_fq8qUJ82EemCksxQS2dHoQ">
@@ -29,7 +29,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram uid="_LKAgYJ83EemCksxQS2dHoQ" documentation="&lt;p>Foo And Bar&lt;/p>&#xA;&#xA;&lt;p>&amp;nbsp;&lt;/p>&#xA;" name="LookMeInDocumentation">
+  <diagram:DSemanticDiagram uid="_LKAgYJ83EemCksxQS2dHoQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_LNIs4J83EemCksxQS2dHoQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_LNIs4Z83EemCksxQS2dHoQ"/>
     </ownedAnnotationEntries>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.4.0" xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.4.0" xmlns:org.polarsys.capella.core.data.information.communication="http://www.polarsys.org/capella/core/information/communication/1.4.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.4.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.polarsys.org/capella/core/information/communication/1.4.0 http://www.polarsys.org/capella/core/information/1.4.0#//communication http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_BT9DQBcdEeSY-4saSvHI4g" selectedViews="_BWZ6UBcdEeSY-4saSvHI4g _BWey0BcdEeSY-4saSvHI4g _BWmHkBcdEeSY-4saSvHI4g _BW6QoBcdEeSY-4saSvHI4g _BXJhMBcdEeSY-4saSvHI4g _BXUgUBcdEeSY-4saSvHI4g _BXjJ0BcdEeSY-4saSvHI4g" version="14.1.0.201810161215">
+  <viewpoint:DAnalysis uid="_BT9DQBcdEeSY-4saSvHI4g" selectedViews="_BWZ6UBcdEeSY-4saSvHI4g _BWey0BcdEeSY-4saSvHI4g _BWmHkBcdEeSY-4saSvHI4g _BW6QoBcdEeSY-4saSvHI4g _BXJhMBcdEeSY-4saSvHI4g _BXUgUBcdEeSY-4saSvHI4g _BXjJ0BcdEeSY-4saSvHI4g" version="14.3.0.201908231800">
     <semanticResources>Test_delegationWizard.melodymodeller</semanticResources>
     <semanticResources>Test_delegationWizard.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_BWZ6UBcdEeSY-4saSvHI4g">
@@ -33,7 +33,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram uid="_LAI0sBcdEeSY-4saSvHI4g" name="[IDB] TEST">
+  <diagram:DSemanticDiagram uid="_LAI0sBcdEeSY-4saSvHI4g">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_LAJbwBcdEeSY-4saSvHI4g" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_LAJbwRcdEeSY-4saSvHI4g" type="Sirius" element="_LAI0sBcdEeSY-4saSvHI4g" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_PTA_IBcdEeSY-4saSvHI4g" type="2002" element="_PSpywBcdEeSY-4saSvHI4g">
@@ -1221,7 +1221,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Test_delegationWizard.melodymodeller#067681fa-7fb0-48c1-b481-cf7b38991080"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_CzKgEBfJEeSXZMS_M02sJw" name="[CII] TEST">
+  <diagram:DSemanticDiagram uid="_CzKgEBfJEeSXZMS_M02sJw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_CzLHIBfJEeSXZMS_M02sJw" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_CzLHIRfJEeSXZMS_M02sJw" type="Sirius" element="_CzKgEBfJEeSXZMS_M02sJw" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_CzLHIxfJEeSXZMS_M02sJw" type="2002" element="_CzKgERfJEeSXZMS_M02sJw">
@@ -1328,7 +1328,7 @@
             </children>
             <children xmi:type="notation:Node" xmi:id="_Cza-wBfJEeSXZMS_M02sJw" type="3007" element="_CzKgIxfJEeSXZMS_M02sJw">
               <children xmi:type="notation:Node" xmi:id="_CzcM4BfJEeSXZMS_M02sJw" type="5003">
-                <layoutConstraint xmi:type="notation:Location" xmi:id="_CzcM4RfJEeSXZMS_M02sJw" x="-5" y="-21"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_CzcM4RfJEeSXZMS_M02sJw" x="-10" y="-18"/>
               </children>
               <children xmi:type="notation:Node" xmi:id="_Cz1OcBfJEeSXZMS_M02sJw" type="3005" element="_Rz66MHm6Eeaz6OBCXhyrOA">
                 <styles xmi:type="notation:ShapeStyle" xmi:id="_Cz1OcRfJEeSXZMS_M02sJw" fontName="Segoe UI"/>
@@ -1339,7 +1339,7 @@
             </children>
             <children xmi:type="notation:Node" xmi:id="_CzwV8BfJEeSXZMS_M02sJw" type="3007" element="_CzKgJxfJEeSXZMS_M02sJw">
               <children xmi:type="notation:Node" xmi:id="_Czw9ABfJEeSXZMS_M02sJw" type="5003">
-                <layoutConstraint xmi:type="notation:Location" xmi:id="_Czw9ARfJEeSXZMS_M02sJw" x="-5" y="-21"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_Czw9ARfJEeSXZMS_M02sJw" x="-10" y="-18"/>
               </children>
               <children xmi:type="notation:Node" xmi:id="_Cz11gBfJEeSXZMS_M02sJw" type="3005" element="_Rz8IUHm6Eeaz6OBCXhyrOA">
                 <styles xmi:type="notation:ShapeStyle" xmi:id="_Cz11gRfJEeSXZMS_M02sJw" fontName="Segoe UI"/>
@@ -1350,7 +1350,7 @@
             </children>
             <children xmi:type="notation:Node" xmi:id="_CzxkEBfJEeSXZMS_M02sJw" type="3007" element="_CzKgKxfJEeSXZMS_M02sJw">
               <children xmi:type="notation:Node" xmi:id="_CzyLIBfJEeSXZMS_M02sJw" type="5003">
-                <layoutConstraint xmi:type="notation:Location" xmi:id="_CzyLIRfJEeSXZMS_M02sJw" x="-5" y="-21"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_CzyLIRfJEeSXZMS_M02sJw" x="-18" y="-18"/>
               </children>
               <children xmi:type="notation:Node" xmi:id="_Cz2ckBfJEeSXZMS_M02sJw" type="3005" element="_Rz8vYHm6Eeaz6OBCXhyrOA">
                 <styles xmi:type="notation:ShapeStyle" xmi:id="_Cz2ckRfJEeSXZMS_M02sJw" fontName="Segoe UI"/>

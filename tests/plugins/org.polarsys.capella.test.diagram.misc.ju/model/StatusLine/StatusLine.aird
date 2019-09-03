@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.4.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter">
-  <viewpoint:DAnalysis uid="_hBLyAYgeEeeGKdJkiNW8jQ" selectedViews="_hCq_wIgeEeeGKdJkiNW8jQ _hR35YIgeEeeGKdJkiNW8jQ _hSBDUIgeEeeGKdJkiNW8jQ _hSK0UIgeEeeGKdJkiNW8jQ _hSUlUIgeEeeGKdJkiNW8jQ _hSdvQIgeEeeGKdJkiNW8jQ _hSwqMIgeEeeGKdJkiNW8jQ" version="14.1.0.201810161215">
+  <viewpoint:DAnalysis uid="_hBLyAYgeEeeGKdJkiNW8jQ" selectedViews="_hCq_wIgeEeeGKdJkiNW8jQ _hR35YIgeEeeGKdJkiNW8jQ _hSBDUIgeEeeGKdJkiNW8jQ _hSK0UIgeEeeGKdJkiNW8jQ _hSUlUIgeEeeGKdJkiNW8jQ _hSdvQIgeEeeGKdJkiNW8jQ _hSwqMIgeEeeGKdJkiNW8jQ" version="14.3.0.201908231800">
     <semanticResources>StatusLine.afm</semanticResources>
     <semanticResources>StatusLine.melodymodeller</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_hCq_wIgeEeeGKdJkiNW8jQ">
@@ -29,7 +29,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram uid="_EG8xsIiqEee3HYoViZ79Dw" name="[SDFB] Root System Function">
+  <diagram:DSemanticDiagram uid="_EG8xsIiqEee3HYoViZ79Dw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_EG8xsYiqEee3HYoViZ79Dw" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_EG8xsoiqEee3HYoViZ79Dw"/>
     </ownedAnnotationEntries>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.4.0" xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.4.0" xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/1.4.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.polarsys.org/capella/core/information/datatype/1.4.0 http://www.polarsys.org/capella/core/information/1.4.0#//datatype http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_FMAJYLtEEeiYJvO_5nNSmw" selectedViews="_FMsF4LtEEeiYJvO_5nNSmw _FZWo4LtEEeiYJvO_5nNSmw _FZgZ4LtEEeiYJvO_5nNSmw _FaQAwLtEEeiYJvO_5nNSmw _Fai7sLtEEeiYJvO_5nNSmw _FasssLtEEeiYJvO_5nNSmw _Fa_noLtEEeiYJvO_5nNSmw" version="14.1.0.201810161215">
+  <viewpoint:DAnalysis uid="_FMAJYLtEEeiYJvO_5nNSmw" selectedViews="_FMsF4LtEEeiYJvO_5nNSmw _FZWo4LtEEeiYJvO_5nNSmw _FZgZ4LtEEeiYJvO_5nNSmw _FaQAwLtEEeiYJvO_5nNSmw _Fai7sLtEEeiYJvO_5nNSmw _FasssLtEEeiYJvO_5nNSmw _Fa_noLtEEeiYJvO_5nNSmw" version="14.3.0.201908231800">
     <semanticResources>TestCloneDiagram.afm</semanticResources>
     <semanticResources>TestCloneDiagram.melodymodeller</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_FMsF4LtEEeiYJvO_5nNSmw">
@@ -37,7 +37,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram uid="_OCXGELtEEeiYJvO_5nNSmw" documentation="&lt;p>le clone ce fera bien sur&lt;/p>&#xA;" name="[CDB] Play Video Movie - Physical">
+  <diagram:DSemanticDiagram uid="_OCXGELtEEeiYJvO_5nNSmw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_OCgQALtEEeiYJvO_5nNSmw" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_OCgQAbtEEeiYJvO_5nNSmw"/>
     </ownedAnnotationEntries>

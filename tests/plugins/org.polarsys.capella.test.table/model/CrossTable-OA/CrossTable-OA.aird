@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.4.0" xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.4.0" xmlns:org.polarsys.capella.core.data.requirement="http://www.polarsys.org/capella/core/requirement/1.4.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_ryw-MItJEd-KSuEkfbRUuQ" selectedViews="_sekUQItJEd-KSuEkfbRUuQ _sekUQYtJEd-KSuEkfbRUuQ _sekUQotJEd-KSuEkfbRUuQ _seuFQItJEd-KSuEkfbRUuQ _seuFQYtJEd-KSuEkfbRUuQ _sfKxMItJEd-KSuEkfbRUuQ _iuVEsLCwEeKTarCrFK6Pwg" version="14.1.0.201810161215">
+  <viewpoint:DAnalysis uid="_ryw-MItJEd-KSuEkfbRUuQ" selectedViews="_sekUQItJEd-KSuEkfbRUuQ _sekUQYtJEd-KSuEkfbRUuQ _sekUQotJEd-KSuEkfbRUuQ _seuFQItJEd-KSuEkfbRUuQ _seuFQYtJEd-KSuEkfbRUuQ _sfKxMItJEd-KSuEkfbRUuQ _iuVEsLCwEeKTarCrFK6Pwg" version="14.3.0.201908231800">
     <semanticResources>CrossTable-OA.melodymodeller</semanticResources>
     <semanticResources>CrossTable-OA.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_sekUQItJEd-KSuEkfbRUuQ">
@@ -33,7 +33,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram uid="_f0xWANw5Ed-oVazRqWRNYw" name="[OAIB] Root Operational Activity - Operational Activity Interaction Blank">
+  <diagram:DSemanticDiagram uid="_f0xWANw5Ed-oVazRqWRNYw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_f0xWAtw5Ed-oVazRqWRNYw" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_f0xWA9w5Ed-oVazRqWRNYw" type="Sirius" element="_f0xWANw5Ed-oVazRqWRNYw" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_B9wH0POBEeaZnfll6B5lKw" type="2002" element="_i303UNw5Ed-oVazRqWRNYw">

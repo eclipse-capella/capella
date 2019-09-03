@@ -6173,7 +6173,7 @@
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="2d1d6975-d0df-45b7-b139-02f900e2a173"
               name="OK_Component" summary="" description="" abstractType="#09297e15-6b1b-4892-9c76-42eef9cb1441"/>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="c7126cc9-901d-4a7b-96b7-cd3849023aa7"
-              name="Logical Context" summary="" description="" abstractType="#ca00a1b7-ebb2-49e4-9387-6adb7de6f9d6"/>
+              name="Physical System" summary="" description="" abstractType="#ca00a1b7-ebb2-49e4-9387-6adb7de6f9d6"/>
           <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
               id="09297e15-6b1b-4892-9c76-42eef9cb1441" name="OK_Component" summary="Same level between a part and the related component"
               description="OK_Part: OK_Part abstrat type is LogicalComponent, the type of OK_Part"/>

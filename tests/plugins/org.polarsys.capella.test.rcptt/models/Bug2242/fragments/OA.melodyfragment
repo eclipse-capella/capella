@@ -18,10 +18,8 @@
       name="Interfaces"/>
   <ownedDataPkg xsi:type="org.polarsys.capella.core.data.information:DataPkg" id="f4d61646-13b2-4c50-b1f4-47d7c43e31e5"
       name="Data"/>
-  <ownedOperationalContext xsi:type="org.polarsys.capella.core.data.oa:OperationalContext"
-      id="72ecc0a0-9350-4e72-8567-5cc5557128db" name="Operational Context"/>
   <ownedRolePkg xsi:type="org.polarsys.capella.core.data.oa:RolePkg" id="9ee4425d-1ebe-46d5-9749-4ca07400d28c"
       name="Roles"/>
-  <ownedEntityPkg xsi:type="org.polarsys.capella.core.data.oa:EntityPkg" id="01160f65-348c-4e86-9beb-bed9f6d7d539"
+  <ownedEntityPkg xsi:type="org.polarsys.capella.core.data.oa:EntityPkg" id="72ecc0a0-9350-4e72-8567-5cc5557128db"
       name="Operational Entities"/>
 </org.polarsys.capella.core.data.oa:OperationalAnalysis>

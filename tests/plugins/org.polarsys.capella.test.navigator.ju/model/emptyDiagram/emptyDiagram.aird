@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.4.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_UClNUPbzEeiLpslvQua1lw" selectedViews="_UVDdYPbzEeiLpslvQua1lw _Uo3xQPbzEeiLpslvQua1lw _UpLTQPbzEeiLpslvQua1lw _UpUdMPbzEeiLpslvQua1lw _UpeOMPbzEeiLpslvQua1lw _UqXmEPbzEeiLpslvQua1lw _Uqzq8PbzEeiLpslvQua1lw" version="14.1.0.201810161215">
+  <viewpoint:DAnalysis uid="_UClNUPbzEeiLpslvQua1lw" selectedViews="_UVDdYPbzEeiLpslvQua1lw _Uo3xQPbzEeiLpslvQua1lw _UpLTQPbzEeiLpslvQua1lw _UpUdMPbzEeiLpslvQua1lw _UpeOMPbzEeiLpslvQua1lw _UqXmEPbzEeiLpslvQua1lw _Uqzq8PbzEeiLpslvQua1lw" version="14.3.0.201908231800">
     <semanticResources>emptyDiagram.afm</semanticResources>
     <semanticResources>emptyDiagram.melodymodeller</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_UVDdYPbzEeiLpslvQua1lw">
@@ -44,7 +44,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram uid="_btlxMPbzEeiLpslvQua1lw" name="[SDFB] Valid">
+  <diagram:DSemanticDiagram uid="_btlxMPbzEeiLpslvQua1lw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_bwabsfbzEeiLpslvQua1lw" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_bwabsvbzEeiLpslvQua1lw"/>
     </ownedAnnotationEntries>
@@ -99,7 +99,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="emptyDiagram.melodymodeller#8c0193e4-0909-4817-93ce-135e47c43331"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_eru9UfbzEeiLpslvQua1lw" name="[SDFB] NullTarget">
+  <diagram:DSemanticDiagram uid="_eru9UfbzEeiLpslvQua1lw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_eru9U_bzEeiLpslvQua1lw" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_eru9VPbzEeiLpslvQua1lw"/>
     </ownedAnnotationEntries>
@@ -153,7 +153,7 @@
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_eru9a_bzEeiLpslvQua1lw"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_fk9EUfbzEeiLpslvQua1lw" name="[SDFB] ProxyTarget">
+  <diagram:DSemanticDiagram uid="_fk9EUfbzEeiLpslvQua1lw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_fk9EU_bzEeiLpslvQua1lw" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_fk9EVPbzEeiLpslvQua1lw"/>
     </ownedAnnotationEntries>

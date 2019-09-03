@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.4.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_gXlSMezOEeiYm_kNG_G0NA" selectedViews="_gYLvIOzOEeiYm_kNG_G0NA _gkGrQOzOEeiYm_kNG_G0NA _gkQcQOzOEeiYm_kNG_G0NA _gkQcQezOEeiYm_kNG_G0NA _gkjXMOzOEeiYm_kNG_G0NA _glJNEOzOEeiYm_kNG_G0NA _glS-EOzOEeiYm_kNG_G0NA" version="14.1.0.201810161215">
+  <viewpoint:DAnalysis uid="_gXlSMezOEeiYm_kNG_G0NA" selectedViews="_gYLvIOzOEeiYm_kNG_G0NA _gkGrQOzOEeiYm_kNG_G0NA _gkQcQOzOEeiYm_kNG_G0NA _gkQcQezOEeiYm_kNG_G0NA _gkjXMOzOEeiYm_kNG_G0NA _glJNEOzOEeiYm_kNG_G0NA _glS-EOzOEeiYm_kNG_G0NA" version="14.3.0.201908231800">
     <semanticResources>renameTest.afm</semanticResources>
     <semanticResources>renameTest.melodymodeller</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_gYLvIOzOEeiYm_kNG_G0NA">
@@ -29,7 +29,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram uid="_t8MGsOzOEeiYm_kNG_G0NA" name="[SDFB] Root System Function">
+  <diagram:DSemanticDiagram uid="_t8MGsOzOEeiYm_kNG_G0NA">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_t9YZgOzOEeiYm_kNG_G0NA" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_t9YZgezOEeiYm_kNG_G0NA"/>
     </ownedAnnotationEntries>

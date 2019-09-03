@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.4.0" xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/1.4.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_-DhWsLxDEeSC5uxsBRe41Q" selectedViews="_-QVqsLxDEeSC5uxsBRe41Q _-QjtILxDEeSC5uxsBRe41Q _-QyWoLxDEeSC5uxsBRe41Q _-Q_K8LxDEeSC5uxsBRe41Q _-RFRkLxDEeSC5uxsBRe41Q _-RW-YLxDEeSC5uxsBRe41Q _-RYzkLxDEeSC5uxsBRe41Q" version="14.1.0.201810161215">
+  <viewpoint:DAnalysis uid="_-DhWsLxDEeSC5uxsBRe41Q" selectedViews="_-QVqsLxDEeSC5uxsBRe41Q _-QjtILxDEeSC5uxsBRe41Q _-QyWoLxDEeSC5uxsBRe41Q _-Q_K8LxDEeSC5uxsBRe41Q _-RFRkLxDEeSC5uxsBRe41Q _-RW-YLxDEeSC5uxsBRe41Q _-RYzkLxDEeSC5uxsBRe41Q" version="14.3.0.201908231800">
     <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="fragments/SA-Capabilities-Capability_Fragmented.airdfragment#_A_f4QLxHEeSC5uxsBRe41Q"/>
     <semanticResources>I_34_Test_OK.melodymodeller</semanticResources>
     <semanticResources>fragments/SA-Capabilities-Capability_Fragmented.melodyfragment</semanticResources>
@@ -31,12 +31,12 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram uid="_AS28ELxEEeSC5uxsBRe41Q" name="[MCB] Capabilities - Mission Capabilities Blank">
+  <diagram:DSemanticDiagram uid="_AS28ELxEEeSC5uxsBRe41Q">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_AS3jILxEEeSC5uxsBRe41Q" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_AS3jIbxEEeSC5uxsBRe41Q" type="Sirius" element="_AS28ELxEEeSC5uxsBRe41Q" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_BHWUELxEEeSC5uxsBRe41Q" type="2001" element="_BHKt4LxEEeSC5uxsBRe41Q">
           <children xmi:type="notation:Node" xmi:id="_BHXiMLxEEeSC5uxsBRe41Q" type="5002">
-            <layoutConstraint xmi:type="notation:Location" xmi:id="_BHXiMbxEEeSC5uxsBRe41Q" y="-21"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_BHXiMbxEEeSC5uxsBRe41Q" x="-31" y="-18"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_BHbMkLxEEeSC5uxsBRe41Q" type="3005" element="_BHLU8LxEEeSC5uxsBRe41Q">
             <styles xmi:type="notation:ShapeStyle" xmi:id="_BHbMkbxEEeSC5uxsBRe41Q" fontName="Segoe UI"/>

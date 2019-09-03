@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.4.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_NXmXoZljEeOT3c8lYGAdUA" selectedViews="_OamFsJljEeOT3c8lYGAdUA _OcDeQJljEeOT3c8lYGAdUA _Ogi8sJljEeOT3c8lYGAdUA _OgsGoJljEeOT3c8lYGAdUA _Ogui4JljEeOT3c8lYGAdUA _OhrlIJljEeOT3c8lYGAdUA _Ohy54JljEeOT3c8lYGAdUA" version="14.1.0.201810161215">
+  <viewpoint:DAnalysis uid="_NXmXoZljEeOT3c8lYGAdUA" selectedViews="_OamFsJljEeOT3c8lYGAdUA _OcDeQJljEeOT3c8lYGAdUA _Ogi8sJljEeOT3c8lYGAdUA _OgsGoJljEeOT3c8lYGAdUA _Ogui4JljEeOT3c8lYGAdUA _OhrlIJljEeOT3c8lYGAdUA _Ohy54JljEeOT3c8lYGAdUA" version="14.3.0.201908231800">
     <semanticResources>setProgress.melodymodeller</semanticResources>
     <semanticResources>setProgress.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_OamFsJljEeOT3c8lYGAdUA">
@@ -34,7 +34,7 @@
       </ownedRepresentationDescriptors>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram uid="_mVtukJ6VEeWbOcCd2AFRuA" name="[SFBD] SF1 - System Function Breakdown">
+  <diagram:DSemanticDiagram uid="_mVtukJ6VEeWbOcCd2AFRuA">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_mVtukZ6VEeWbOcCd2AFRuA" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_mVtukp6VEeWbOcCd2AFRuA"/>
     </ownedAnnotationEntries>
@@ -112,7 +112,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="setProgress.melodymodeller#e543b7f1-618e-45a3-b73c-4876f14e72e0"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_oZLbIJ6VEeWbOcCd2AFRuA" name="[SFBD] Root System Function - System Function Breakdown">
+  <diagram:DSemanticDiagram uid="_oZLbIJ6VEeWbOcCd2AFRuA">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_oZLbIZ6VEeWbOcCd2AFRuA" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_oZLbIp6VEeWbOcCd2AFRuA"/>
     </ownedAnnotationEntries>

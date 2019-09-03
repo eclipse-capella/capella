@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.4.0" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.4.0" xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.4.0" xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.4.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_U8OCcD5tEemFMbQILueuVQ" selectedViews="_U9HaUD5tEemFMbQILueuVQ _VM6J0D5tEemFMbQILueuVQ _VNNr0D5tEemFMbQILueuVQ _VNW1wD5tEemFMbQILueuVQ _VNqXwD5tEemFMbQILueuVQ _VNzhsD5tEemFMbQILueuVQ _VOQNoD5tEemFMbQILueuVQ" version="14.1.0.201810161215">
+  <viewpoint:DAnalysis uid="_U8OCcD5tEemFMbQILueuVQ" selectedViews="_U9HaUD5tEemFMbQILueuVQ _VM6J0D5tEemFMbQILueuVQ _VNNr0D5tEemFMbQILueuVQ _VNW1wD5tEemFMbQILueuVQ _VNqXwD5tEemFMbQILueuVQ _VNzhsD5tEemFMbQILueuVQ _VOQNoD5tEemFMbQILueuVQ" version="14.3.0.201908231800">
     <semanticResources>DiagramToolsModel.afm</semanticResources>
     <semanticResources>DiagramToolsModel.melodymodeller</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_U9HaUD5tEemFMbQILueuVQ">
@@ -73,7 +73,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram uid="_0e0YMHJPEemAwaOpjxlcHQ" name="OA Package Dependencies Tools Diagram">
+  <diagram:DSemanticDiagram uid="_0e0YMHJPEemAwaOpjxlcHQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_0e9iIHJPEemAwaOpjxlcHQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_0e9iIXJPEemAwaOpjxlcHQ"/>
     </ownedAnnotationEntries>
@@ -388,7 +388,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Package%20Dependencies']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="DiagramToolsModel.melodymodeller#c440b299-48fc-4357-b54c-a3a26a7ee496"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_8jpKQHJPEemAwaOpjxlcHQ" name="SA Package Dependencies Tools Diagram">
+  <diagram:DSemanticDiagram uid="_8jpKQHJPEemAwaOpjxlcHQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_8jv38HJPEemAwaOpjxlcHQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_8jv38XJPEemAwaOpjxlcHQ"/>
     </ownedAnnotationEntries>
@@ -715,7 +715,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Package%20Dependencies']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="DiagramToolsModel.melodymodeller#b0581dcc-10a3-4a9d-a27e-83a36ac0b5bc"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_DdSioHJQEemAwaOpjxlcHQ" name="LA Package Dependencies Tools Diagram">
+  <diagram:DSemanticDiagram uid="_DdSioHJQEemAwaOpjxlcHQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_DdbskHJQEemAwaOpjxlcHQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_DdbskXJQEemAwaOpjxlcHQ"/>
     </ownedAnnotationEntries>
@@ -1030,7 +1030,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Package%20Dependencies']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="DiagramToolsModel.melodymodeller#9f700d5f-22f8-4020-9d5a-7233ebad61ad"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_IPg7gHJQEemAwaOpjxlcHQ" name="PA Package Dependencies Tools Diagram">
+  <diagram:DSemanticDiagram uid="_IPg7gHJQEemAwaOpjxlcHQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_IPg7gnJQEemAwaOpjxlcHQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_IPg7g3JQEemAwaOpjxlcHQ"/>
     </ownedAnnotationEntries>
@@ -1345,7 +1345,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Package%20Dependencies']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="DiagramToolsModel.melodymodeller#a808ecae-2cf9-486a-a193-46610b68eba9"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_uJy4IHV2EemJj8Zl0ZGvoA" name="OA Dependencies Scenarios Test Diagram">
+  <diagram:DSemanticDiagram uid="_uJy4IHV2EemJj8Zl0ZGvoA">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_uJy4InV2EemJj8Zl0ZGvoA" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_uJy4I3V2EemJj8Zl0ZGvoA"/>
     </ownedAnnotationEntries>
@@ -1360,7 +1360,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Package%20Dependencies']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="DiagramToolsModel.melodymodeller#c440b299-48fc-4357-b54c-a3a26a7ee496"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_FqwyoHV4EemJj8Zl0ZGvoA" name="SA Dependencies Scenarios Test Diagram">
+  <diagram:DSemanticDiagram uid="_FqwyoHV4EemJj8Zl0ZGvoA">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_FqwyonV4EemJj8Zl0ZGvoA" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_Fqwyo3V4EemJj8Zl0ZGvoA"/>
     </ownedAnnotationEntries>
@@ -1375,7 +1375,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Package%20Dependencies']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="DiagramToolsModel.melodymodeller#b0581dcc-10a3-4a9d-a27e-83a36ac0b5bc"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_ko0mQHV4EemJj8Zl0ZGvoA" name="LA Dependencies Scenarios Test Diagram">
+  <diagram:DSemanticDiagram uid="_ko0mQHV4EemJj8Zl0ZGvoA">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_ko0mQnV4EemJj8Zl0ZGvoA" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_ko0mQ3V4EemJj8Zl0ZGvoA"/>
     </ownedAnnotationEntries>
@@ -1390,7 +1390,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Package%20Dependencies']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="DiagramToolsModel.melodymodeller#9f700d5f-22f8-4020-9d5a-7233ebad61ad"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_mBVRUHV4EemJj8Zl0ZGvoA" name="PA Dependencies Scenarios Test Diagram">
+  <diagram:DSemanticDiagram uid="_mBVRUHV4EemJj8Zl0ZGvoA">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_mBVRUnV4EemJj8Zl0ZGvoA" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_mBVRU3V4EemJj8Zl0ZGvoA"/>
     </ownedAnnotationEntries>
@@ -1405,7 +1405,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Package%20Dependencies']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="DiagramToolsModel.melodymodeller#a808ecae-2cf9-486a-a193-46610b68eba9"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_GbbkAHcMEemPuL79PYeVvQ" name="SA Mode State Machine Test Diagram">
+  <diagram:DSemanticDiagram uid="_GbbkAHcMEemPuL79PYeVvQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_GdOTwHcMEemPuL79PYeVvQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_GdOTwXcMEemPuL79PYeVvQ"/>
     </ownedAnnotationEntries>
@@ -1451,7 +1451,7 @@
         </children>
         <children xmi:type="notation:Node" xmi:id="_4Mdk-nitEemPuL79PYeVvQ" type="2001" element="_4MTz8HitEemPuL79PYeVvQ">
           <children xmi:type="notation:Node" xmi:id="_4Mdk_XitEemPuL79PYeVvQ" type="5002">
-            <layoutConstraint xmi:type="notation:Location" xmi:id="_4Mdk_nitEemPuL79PYeVvQ" x="21" y="-1"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_4Mdk_nitEemPuL79PYeVvQ" x="-10" y="-18"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_4Mmu4HitEemPuL79PYeVvQ" type="3005" element="_4MTz8XitEemPuL79PYeVvQ">
             <styles xmi:type="notation:ShapeStyle" xmi:id="_4Mmu4XitEemPuL79PYeVvQ" fontName="Segoe UI"/>
@@ -1611,7 +1611,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.capellacommon:Region" href="DiagramToolsModel.melodymodeller#d1fd244c-5ae5-4440-a7d3-edc497715635"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_4p9UgIIJEemvxdjaRnCi5w" name="Test Operational Entity Breakdown Diagram">
+  <diagram:DSemanticDiagram uid="_4p9UgIIJEemvxdjaRnCi5w">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_4qHFgIIJEemvxdjaRnCi5w" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_4qHFgYIJEemvxdjaRnCi5w"/>
     </ownedAnnotationEntries>
@@ -1649,7 +1649,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="DiagramToolsModel.melodymodeller#e702501c-dc02-4c2a-865a-271febd1185c"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_Lz398K33EemmUfOwDp-6NQ" name="Operational Roles Blank Test Diagram">
+  <diagram:DSemanticDiagram uid="_Lz398K33EemmUfOwDp-6NQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_L1OBwK33EemmUfOwDp-6NQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_L1OBwa33EemmUfOwDp-6NQ"/>
     </ownedAnnotationEntries>
@@ -1664,7 +1664,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.oa:Entity" href="DiagramToolsModel.melodymodeller#e702501c-dc02-4c2a-865a-271febd1185c"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_OzgX0K33EemmUfOwDp-6NQ" name="Test Operational Role Breakdown Diagram">
+  <diagram:DSemanticDiagram uid="_OzgX0K33EemmUfOwDp-6NQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_OzgX0q33EemmUfOwDp-6NQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_OzgX0633EemmUfOwDp-6NQ"/>
     </ownedAnnotationEntries>

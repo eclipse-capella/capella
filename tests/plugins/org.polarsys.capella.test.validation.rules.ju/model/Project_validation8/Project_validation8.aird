@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.4.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.4.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_1A1fYBM4EeSPnsiHy_LRsw" selectedViews="_1DWn4BM4EeSPnsiHy_LRsw _1Dfx0BM4EeSPnsiHy_LRsw _1DtNMBM4EeSPnsiHy_LRsw _1D1JABM4EeSPnsiHy_LRsw _1ECkYBM4EeSPnsiHy_LRsw _1EZwwBM4EeSPnsiHy_LRsw _1EnzMBM4EeSPnsiHy_LRsw" version="14.1.0.201810161215">
+  <viewpoint:DAnalysis uid="_1A1fYBM4EeSPnsiHy_LRsw" selectedViews="_1DWn4BM4EeSPnsiHy_LRsw _1Dfx0BM4EeSPnsiHy_LRsw _1DtNMBM4EeSPnsiHy_LRsw _1D1JABM4EeSPnsiHy_LRsw _1ECkYBM4EeSPnsiHy_LRsw _1EZwwBM4EeSPnsiHy_LRsw _1EnzMBM4EeSPnsiHy_LRsw" version="14.3.0.201908231800">
     <semanticResources>Project_validation8.melodymodeller</semanticResources>
     <semanticResources>Project_validation8.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_1DWn4BM4EeSPnsiHy_LRsw">
@@ -29,7 +29,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram uid="_6wzS4BM4EeSPnsiHy_LRsw" name="[IDB] Logical System - Interfaces Diagram Blank">
+  <diagram:DSemanticDiagram uid="_6wzS4BM4EeSPnsiHy_LRsw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_6w5ZgBM4EeSPnsiHy_LRsw" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_6w5ZgRM4EeSPnsiHy_LRsw" type="Sirius" element="_6wzS4BM4EeSPnsiHy_LRsw" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_7gx-UBM4EeSPnsiHy_LRsw" type="2003" element="_7gMvgBM4EeSPnsiHy_LRsw">
@@ -795,7 +795,7 @@
       <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#9710bf8a-bd56-4cee-9028-b0eb9de3c619"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#9710bf8a-bd56-4cee-9028-b0eb9de3c619"/>
       <graphicalFilters xmi:type="diagram:AppliedCompositeFilters" uid="_AzV54HQvEeamAMxs9g9ZYQ">
-        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='Hide%20Simplified%20Component%20Interactions']"/>
+        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='hide.simplified.component.interactions.filter']"/>
       </graphicalFilters>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_AzGCQXQvEeamAMxs9g9ZYQ" lineStyle="dash" size="2" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_FilteredLabel']/@style"/>
@@ -807,7 +807,7 @@
       <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#9710bf8a-bd56-4cee-9028-b0eb9de3c619"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#9710bf8a-bd56-4cee-9028-b0eb9de3c619"/>
       <graphicalFilters xmi:type="diagram:AppliedCompositeFilters" uid="_AzV54XQvEeamAMxs9g9ZYQ">
-        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='Hide%20Simplified%20Component%20Interactions']"/>
+        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='hide.simplified.component.interactions.filter']"/>
       </graphicalFilters>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_AzGpUXQvEeamAMxs9g9ZYQ" lineStyle="dash" size="2" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_FilteredLabel']/@style"/>
@@ -819,7 +819,7 @@
       <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#9710bf8a-bd56-4cee-9028-b0eb9de3c619"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#9710bf8a-bd56-4cee-9028-b0eb9de3c619"/>
       <graphicalFilters xmi:type="diagram:AppliedCompositeFilters" uid="_AzV54nQvEeamAMxs9g9ZYQ">
-        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='Hide%20Simplified%20Component%20Interactions']"/>
+        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='hide.simplified.component.interactions.filter']"/>
       </graphicalFilters>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_AzHQYXQvEeamAMxs9g9ZYQ" lineStyle="dash" size="2" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_FilteredLabel']/@style"/>
@@ -831,7 +831,7 @@
       <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#6188899c-1997-4bf3-95f8-4403a5517181"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#6188899c-1997-4bf3-95f8-4403a5517181"/>
       <graphicalFilters xmi:type="diagram:AppliedCompositeFilters" uid="_AzV543QvEeamAMxs9g9ZYQ">
-        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='Hide%20Simplified%20Component%20Interactions']"/>
+        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='hide.simplified.component.interactions.filter']"/>
       </graphicalFilters>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_AzH3cXQvEeamAMxs9g9ZYQ" lineStyle="dash" size="2" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_FilteredLabel']/@style"/>
@@ -843,7 +843,7 @@
       <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#6188899c-1997-4bf3-95f8-4403a5517181"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#6188899c-1997-4bf3-95f8-4403a5517181"/>
       <graphicalFilters xmi:type="diagram:AppliedCompositeFilters" uid="_AzWg8HQvEeamAMxs9g9ZYQ">
-        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='Hide%20Simplified%20Component%20Interactions']"/>
+        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='hide.simplified.component.interactions.filter']"/>
       </graphicalFilters>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_AzIegXQvEeamAMxs9g9ZYQ" lineStyle="dash" size="2" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_FilteredLabel']/@style"/>
@@ -855,7 +855,7 @@
       <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#6188899c-1997-4bf3-95f8-4403a5517181"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#6188899c-1997-4bf3-95f8-4403a5517181"/>
       <graphicalFilters xmi:type="diagram:AppliedCompositeFilters" uid="_AzWg8XQvEeamAMxs9g9ZYQ">
-        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='Hide%20Simplified%20Component%20Interactions']"/>
+        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='hide.simplified.component.interactions.filter']"/>
       </graphicalFilters>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_AzJFkXQvEeamAMxs9g9ZYQ" lineStyle="dash" size="2" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_FilteredLabel']/@style"/>
@@ -867,7 +867,7 @@
       <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#166492c9-92cf-4570-9113-65b569a575b5"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#166492c9-92cf-4570-9113-65b569a575b5"/>
       <graphicalFilters xmi:type="diagram:AppliedCompositeFilters" uid="_AzWg8nQvEeamAMxs9g9ZYQ">
-        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='Hide%20Simplified%20Component%20Interactions']"/>
+        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='hide.simplified.component.interactions.filter']"/>
       </graphicalFilters>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_AzJsoHQvEeamAMxs9g9ZYQ" lineStyle="dash" size="2" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_FilteredLabel']/@style"/>
@@ -879,7 +879,7 @@
       <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#166492c9-92cf-4570-9113-65b569a575b5"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#166492c9-92cf-4570-9113-65b569a575b5"/>
       <graphicalFilters xmi:type="diagram:AppliedCompositeFilters" uid="_AzWg83QvEeamAMxs9g9ZYQ">
-        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='Hide%20Simplified%20Component%20Interactions']"/>
+        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='hide.simplified.component.interactions.filter']"/>
       </graphicalFilters>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_AzJso3QvEeamAMxs9g9ZYQ" lineStyle="dash" size="2" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_FilteredLabel']/@style"/>
@@ -891,7 +891,7 @@
       <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#166492c9-92cf-4570-9113-65b569a575b5"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#166492c9-92cf-4570-9113-65b569a575b5"/>
       <graphicalFilters xmi:type="diagram:AppliedCompositeFilters" uid="_AzWg9HQvEeamAMxs9g9ZYQ">
-        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='Hide%20Simplified%20Component%20Interactions']"/>
+        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='hide.simplified.component.interactions.filter']"/>
       </graphicalFilters>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_AzKTsXQvEeamAMxs9g9ZYQ" lineStyle="dash" size="2" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_FilteredLabel']/@style"/>
@@ -903,7 +903,7 @@
       <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#9710bf8a-bd56-4cee-9028-b0eb9de3c619"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#9710bf8a-bd56-4cee-9028-b0eb9de3c619"/>
       <graphicalFilters xmi:type="diagram:AppliedCompositeFilters" uid="_AzWg9XQvEeamAMxs9g9ZYQ">
-        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='Hide%20Simplified%20Diagram%20Based%20Interactions']"/>
+        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='hide.simplified.diagram.based.interactions.filter']"/>
       </graphicalFilters>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_AzMI4XQvEeamAMxs9g9ZYQ" lineStyle="dash" size="2" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_FilteredLabel_DiagramBased']/@style"/>
@@ -915,7 +915,7 @@
       <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#9710bf8a-bd56-4cee-9028-b0eb9de3c619"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#9710bf8a-bd56-4cee-9028-b0eb9de3c619"/>
       <graphicalFilters xmi:type="diagram:AppliedCompositeFilters" uid="_AzWg9nQvEeamAMxs9g9ZYQ">
-        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='Hide%20Simplified%20Diagram%20Based%20Interactions']"/>
+        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='hide.simplified.diagram.based.interactions.filter']"/>
       </graphicalFilters>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_AzMv8XQvEeamAMxs9g9ZYQ" lineStyle="dash" size="2" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_FilteredLabel_DiagramBased']/@style"/>
@@ -927,7 +927,7 @@
       <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#9710bf8a-bd56-4cee-9028-b0eb9de3c619"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#9710bf8a-bd56-4cee-9028-b0eb9de3c619"/>
       <graphicalFilters xmi:type="diagram:AppliedCompositeFilters" uid="_AzXIAHQvEeamAMxs9g9ZYQ">
-        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='Hide%20Simplified%20Diagram%20Based%20Interactions']"/>
+        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='hide.simplified.diagram.based.interactions.filter']"/>
       </graphicalFilters>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_AzNXAXQvEeamAMxs9g9ZYQ" lineStyle="dash" size="2" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_FilteredLabel_DiagramBased']/@style"/>
@@ -939,7 +939,7 @@
       <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#6188899c-1997-4bf3-95f8-4403a5517181"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#6188899c-1997-4bf3-95f8-4403a5517181"/>
       <graphicalFilters xmi:type="diagram:AppliedCompositeFilters" uid="_AzXIAXQvEeamAMxs9g9ZYQ">
-        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='Hide%20Simplified%20Diagram%20Based%20Interactions']"/>
+        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='hide.simplified.diagram.based.interactions.filter']"/>
       </graphicalFilters>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_AzN-EHQvEeamAMxs9g9ZYQ" lineStyle="dash" size="2" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_FilteredLabel_DiagramBased']/@style"/>
@@ -951,7 +951,7 @@
       <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#6188899c-1997-4bf3-95f8-4403a5517181"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#6188899c-1997-4bf3-95f8-4403a5517181"/>
       <graphicalFilters xmi:type="diagram:AppliedCompositeFilters" uid="_AzXIAnQvEeamAMxs9g9ZYQ">
-        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='Hide%20Simplified%20Diagram%20Based%20Interactions']"/>
+        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='hide.simplified.diagram.based.interactions.filter']"/>
       </graphicalFilters>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_AzN-E3QvEeamAMxs9g9ZYQ" lineStyle="dash" size="2" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_FilteredLabel_DiagramBased']/@style"/>
@@ -963,7 +963,7 @@
       <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#6188899c-1997-4bf3-95f8-4403a5517181"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#6188899c-1997-4bf3-95f8-4403a5517181"/>
       <graphicalFilters xmi:type="diagram:AppliedCompositeFilters" uid="_AzXIA3QvEeamAMxs9g9ZYQ">
-        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='Hide%20Simplified%20Diagram%20Based%20Interactions']"/>
+        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='hide.simplified.diagram.based.interactions.filter']"/>
       </graphicalFilters>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_AzOlIXQvEeamAMxs9g9ZYQ" lineStyle="dash" size="2" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_FilteredLabel_DiagramBased']/@style"/>
@@ -975,7 +975,7 @@
       <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#166492c9-92cf-4570-9113-65b569a575b5"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#166492c9-92cf-4570-9113-65b569a575b5"/>
       <graphicalFilters xmi:type="diagram:AppliedCompositeFilters" uid="_AzXIBHQvEeamAMxs9g9ZYQ">
-        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='Hide%20Simplified%20Diagram%20Based%20Interactions']"/>
+        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='hide.simplified.diagram.based.interactions.filter']"/>
       </graphicalFilters>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_AzPMMXQvEeamAMxs9g9ZYQ" lineStyle="dash" size="2" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_FilteredLabel_DiagramBased']/@style"/>
@@ -987,7 +987,7 @@
       <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#166492c9-92cf-4570-9113-65b569a575b5"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#166492c9-92cf-4570-9113-65b569a575b5"/>
       <graphicalFilters xmi:type="diagram:AppliedCompositeFilters" uid="_AzXIBXQvEeamAMxs9g9ZYQ">
-        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='Hide%20Simplified%20Diagram%20Based%20Interactions']"/>
+        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='hide.simplified.diagram.based.interactions.filter']"/>
       </graphicalFilters>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_AzPzQXQvEeamAMxs9g9ZYQ" lineStyle="dash" size="2" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_FilteredLabel_DiagramBased']/@style"/>
@@ -999,7 +999,7 @@
       <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#166492c9-92cf-4570-9113-65b569a575b5"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation8.melodymodeller#166492c9-92cf-4570-9113-65b569a575b5"/>
       <graphicalFilters xmi:type="diagram:AppliedCompositeFilters" uid="_AzXIBnQvEeamAMxs9g9ZYQ">
-        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='Hide%20Simplified%20Diagram%20Based%20Interactions']"/>
+        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='hide.simplified.diagram.based.interactions.filter']"/>
       </graphicalFilters>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_AzQaUXQvEeamAMxs9g9ZYQ" lineStyle="dash" size="2" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_FilteredLabel_DiagramBased']/@style"/>
@@ -1009,8 +1009,8 @@
     </ownedDiagramElements>
     <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
     <currentConcern xmi:type="concern:ConcernDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@concerns/@ownedConcernDescriptions.0"/>
-    <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='Hide%20Simplified%20Component%20Interactions']"/>
-    <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='Hide%20Simplified%20Diagram%20Based%20Interactions']"/>
+    <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='hide.simplified.component.interactions.filter']"/>
+    <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@filters[name='hide.simplified.diagram.based.interactions.filter']"/>
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_6wzS4RM4EeSPnsiHy_LRsw"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer"/>

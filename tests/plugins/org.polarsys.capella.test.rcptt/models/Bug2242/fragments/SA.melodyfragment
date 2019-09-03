@@ -120,21 +120,19 @@
       </ownedDataTypes>
     </ownedDataPkgs>
   </ownedDataPkg>
-  <ownedSystemContext xsi:type="org.polarsys.capella.core.data.ctx:SystemContext"
-      id="6062bf72-8f42-4aad-a0e4-4c023d6f794b" name="System Context">
-    <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="17e2b5f4-e4d2-4af8-99ff-a117c3e4720d"
+  <ownedSystemComponentPkg xsi:type="org.polarsys.capella.core.data.ctx:SystemComponentPkg"
+      id="6062bf72-8f42-4aad-a0e4-4c023d6f794b" name="Structure">
+    <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="17e2b5f4-e4d2-4af8-99ff-a117c3e4720d"
         name="System" abstractType="#225d26cd-6157-4049-87dd-c0f179997795"/>
-  </ownedSystemContext>
-  <ownedSystem xsi:type="org.polarsys.capella.core.data.ctx:System" id="225d26cd-6157-4049-87dd-c0f179997795"
-      name="System">
-    <ownedStateMachines xsi:type="org.polarsys.capella.core.data.capellacommon:StateMachine"
-        id="0e8846d1-8f43-4024-a49f-06855087418d" name="System State Machine">
-      <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
-          id="de7b11db-e3ef-42d6-b602-4b8e8a3a8fff" name="Default Region"/>
-    </ownedStateMachines>
-  </ownedSystem>
-  <ownedActorPkg xsi:type="org.polarsys.capella.core.data.ctx:ActorPkg" id="bcb2127d-8d05-4eb6-83f8-5bac4658a78f"
-      name="Actors"/>
+    <ownedSystemComponents xsi:type="org.polarsys.capella.core.data.ctx:SystemComponent"
+        id="225d26cd-6157-4049-87dd-c0f179997795" name="System">
+      <ownedStateMachines xsi:type="org.polarsys.capella.core.data.capellacommon:StateMachine"
+          id="0e8846d1-8f43-4024-a49f-06855087418d" name="System State Machine">
+        <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
+            id="de7b11db-e3ef-42d6-b602-4b8e8a3a8fff" name="Default Region"/>
+      </ownedStateMachines>
+    </ownedSystemComponents>
+  </ownedSystemComponentPkg>
   <ownedMissionPkg xsi:type="org.polarsys.capella.core.data.ctx:MissionPkg" id="d7d57c55-c73c-4355-84d8-eb9ed891e5e4"
       name="Missions"/>
   <ownedOperationalAnalysisRealizations xsi:type="org.polarsys.capella.core.data.ctx:OperationalAnalysisRealization"
