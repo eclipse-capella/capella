@@ -449,11 +449,18 @@ public class FaServices {
     for (ComponentExchange connection : allComponentExchanges) {
       // Add connection if is related to the current part if any
       if (!CsServices.getService().isMultipartMode(connection)
-          || !((currentPart != null) && !FunctionalExt.getRelatedParts(connection).contains(currentPart))) {
+          || !((currentPart != null) && !FunctionalExt.getRelatedParts(connection).contains(currentPart))
+          || (currentComponent != null && isBetweenTypes(connection, currentComponent))) {
         returnedList.add(connection);
       }
     }
     return returnedList;
+  }
+
+  private boolean isBetweenTypes(ComponentExchange connection, EObject currentComponent) {
+    return ComponentExchangeExt.isConnectionBetweenTypes(connection)
+        && (connection.getSourcePort().eContainer() == currentComponent
+            || connection.getTargetPort().eContainer() == currentComponent);
   }
 
   /**
