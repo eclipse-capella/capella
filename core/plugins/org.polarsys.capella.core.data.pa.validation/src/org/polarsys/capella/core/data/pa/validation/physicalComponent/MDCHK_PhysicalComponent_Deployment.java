@@ -17,11 +17,13 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.DeployableElement;
+import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
@@ -38,17 +40,24 @@ public class MDCHK_PhysicalComponent_Deployment extends AbstractValidationRule {
 
     if (eType == EMFEventType.NULL) {
       if (eObj instanceof PhysicalComponent) {
+
         PhysicalComponent physCpnt = (PhysicalComponent) eObj;
         if (physCpnt.getNature() == PhysicalComponentNature.BEHAVIOR) {
-          EList<AbstractDeploymentLink> ownedDeployments = physCpnt.getOwnedDeploymentLinks();
-          Iterator<AbstractDeploymentLink> iterator = ownedDeployments.iterator();
-          while (iterator.hasNext()) {
-            AbstractDeploymentLink next = iterator.next();
-            DeployableElement deployedElement = next.getDeployedElement();
-            if (deployedElement instanceof PhysicalComponent) {
-              PhysicalComponent deployedPc = (PhysicalComponent) deployedElement;
-              if (deployedPc.getNature() == PhysicalComponentNature.NODE) {
-                return createFailureStatus(ctx, new Object[] { physCpnt.getName(), deployedPc.getName() });
+          for (Part part : physCpnt.getRepresentingParts()) {
+            EList<AbstractDeploymentLink> ownedDeployments = part.getOwnedDeploymentLinks();
+            Iterator<AbstractDeploymentLink> iterator = ownedDeployments.iterator();
+            while (iterator.hasNext()) {
+              AbstractDeploymentLink next = iterator.next();
+              DeployableElement deployedElement = next.getDeployedElement();
+              if (deployedElement instanceof Part) {
+                AbstractType type = ((Part) deployedElement).getAbstractType();
+                if (type instanceof PhysicalComponent) {
+                  PhysicalComponent deployedPc = (PhysicalComponent) type;
+                  if (deployedPc.getNature() == PhysicalComponentNature.NODE) {
+                    return ctx.createFailureStatus(new Object[] { physCpnt.getName(), deployedPc.getName(),
+                        ComponentExt.getComponentName(physCpnt), ComponentExt.getComponentName(deployedPc) });
+                  }
+                }
               }
             }
           }

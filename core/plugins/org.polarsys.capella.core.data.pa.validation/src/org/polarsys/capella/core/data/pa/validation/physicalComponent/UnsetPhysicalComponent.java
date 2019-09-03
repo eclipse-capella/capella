@@ -14,10 +14,12 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
+import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
-import org.polarsys.capella.core.model.helpers.CapellaElementExt;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
@@ -38,10 +40,12 @@ public class UnsetPhysicalComponent extends AbstractValidationRule {
         PhysicalComponent currentElement = (PhysicalComponent) eObj;
         PhysicalArchitecture architecture = SystemEngineeringExt.getPhysicalArchitecture(currentElement);
         if (currentElement != architecture.getSystem()) {
-        	if (currentElement.getNature() == PhysicalComponentNature.UNSET) {
-            	return ctx.createFailureStatus(CapellaElementExt.getValidationRuleMessagePrefix(currentElement)
-                        + "must not be of nature UNSET."); //$NON-NLS-1$
+          if (currentElement.getNature() == PhysicalComponentNature.UNSET) {
+            EObject rootComp = EcoreUtil2.getFirstContainer(currentElement, CsPackage.Literals.COMPONENT);
+            if (!(currentElement.isActor() && rootComp == null)) {
+              return ctx.createFailureStatus(currentElement.getName(), ComponentExt.getComponentName(currentElement));
             }
+          }
         }
       }
     }

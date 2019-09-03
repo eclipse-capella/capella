@@ -105,7 +105,7 @@
                severity="WARNING"
                statusCode="1">
             <message>
-               {0} (Actor) is declared to be involved in {1} (Mission) but it is not involved in any of the exploited capabilities of {1} .
+               {0} ({2}) is declared to be involved in {1} (Mission) but it is not involved in any of the exploited capabilities of {1} .
             </message>
             <description>
                This rule checks that the current Actor is involved with the Mission, and then involved in any of its Capabilities.
@@ -225,7 +225,7 @@
                severity="WARNING"
                statusCode="1">
             <message>
-               {0} (System Component) is not involved in {1} (Mission), although it is involved in {2}
+               {0} ({3}) is not involved in {1} (Mission), although it is involved in {2}
             </message>
             <description>
                This rule checks that an System Component is involved in at least one Mission.
@@ -244,7 +244,7 @@
                severity="WARNING"
                statusCode="1">
             <message>
-               {0} (System Component) is not involved in any Capability.
+               {0} ({1}) is not involved in any Capability.
             </message>
             <description>
                This rule checks that the minimum number of participation from a Component towards a Capability is one.
@@ -282,7 +282,7 @@
                severity="WARNING"
                statusCode="1">
             <message>
-               {0} (System Component) is declared to be involved in {1} (Capability) but it does not appear in any of its Scenario(s).
+               {0} ({2}) is declared to be involved in {1} (Capability) but it does not appear in any of its Scenario(s).
             </message>
             <description>
                This rule checks that the current Component involved with capabilities appears in at least one scenario related to the capabilities it participates.

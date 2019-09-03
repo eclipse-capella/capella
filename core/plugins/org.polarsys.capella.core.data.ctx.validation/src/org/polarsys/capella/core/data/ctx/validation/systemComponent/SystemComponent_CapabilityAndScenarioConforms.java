@@ -24,6 +24,7 @@ import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.Scenario;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
@@ -59,7 +60,8 @@ public class SystemComponent_CapabilityAndScenarioConforms extends AbstractValid
             }
           }
           if (!lcomponentList.contains(actor)) {
-            IStatus status = ctx.createFailureStatus(new Object[] { actor.getName(), capabilityReal.getName() });
+            IStatus status = ctx.createFailureStatus(
+                new Object[] { actor.getName(), capabilityReal.getName(), ComponentExt.getComponentName(actor) });
             statuses.add(status);
           }
         }

@@ -14,7 +14,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
-
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
@@ -34,7 +33,7 @@ public class Part_NullType extends AbstractValidationRule {
       if (eObj instanceof Part) {
         Part part = (Part) eObj;
         if (part.getAbstractType() == null) {
-          return createFailureStatus(ctx, new Object[] { part.getName() });
+          return ctx.createFailureStatus(new Object[] { part.getName() });
         }
       }
     }

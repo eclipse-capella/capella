@@ -448,7 +448,11 @@ public class CapellaElementExt {
 
   public static String getValidationRuleMessagePrefix(AbstractNamedElement ele) {
     if (null != ele) {
-      return ele.getName() + " (" + ele.eClass().getName() + ") "; //$NON-NLS-1$//$NON-NLS-2$
+      String className = ele.eClass().getName();
+      if (ele instanceof Component) {
+        className = ComponentExt.getComponentName(ele);
+      }
+      return ele.getName() + " (" + className + ") "; //$NON-NLS-1$//$NON-NLS-2$
     }
 
     return ICommonConstants.EMPTY_STRING;

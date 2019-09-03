@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
@@ -31,7 +32,7 @@ public class Component_GeneralizationItself extends AbstractValidationRule {
       if (eObj instanceof Component) {
         Component actor = (Component) eObj;
         if (actor.getSuper().contains(actor)) {
-          return createFailureStatus(ctx, new Object[] { actor.getName() });
+          return ctx.createFailureStatus(new Object[] { actor.getName(), ComponentExt.getComponentName(actor) });
         }
       }
     }

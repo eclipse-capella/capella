@@ -23,12 +23,14 @@ import org.polarsys.capella.test.validation.rules.ju.testcases.AbstractRulesOnDe
  * @generated
  */
 public class Rule_DWF_DC_17 extends AbstractRulesOnDesignTest {
+  String PC_6 = "d42adaca-9d1d-4ab2-bedd-14719454b1ce";
 
 	/**
 	 * @see org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRuleTestCase#getTargetedEClass()
 	 * @generated
 	 */
-	protected EClass getTargetedEClass() {
+	@Override
+  protected EClass getTargetedEClass() {
 		return PaPackage.Literals.PHYSICAL_COMPONENT;
 	}
 
@@ -36,7 +38,8 @@ public class Rule_DWF_DC_17 extends AbstractRulesOnDesignTest {
 	 * @see org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRuleTestCase#getRuleID()
 	 * @generated
 	 */
-	protected String getRuleID() {
+	@Override
+  protected String getRuleID() {
 		return "org.polarsys.capella.core.data.pa.validation.DWF_DC_17";
 	}
 
@@ -44,18 +47,18 @@ public class Rule_DWF_DC_17 extends AbstractRulesOnDesignTest {
 	 * @see org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRulePartialTestCase#getScopeDefinition()
 	 * @generated
 	 */
-	protected List<String> getScopeDefinition() {
-		return Arrays.asList(new String[] {
-				"c7967e9a-96c7-4ec9-8e93-3a410b1f7c37",
-				"66c58049-3063-49c2-8f80-a51b775f5656" });
+	@Override
+  protected List<String> getScopeDefinition() {
+    return Arrays.asList(new String[] { PC_6 });
 	}
 
 	/**
 	 * @see org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRuleTestCase#getOracleDefinitions()
 	 * @generated
 	 */
-	protected List<OracleDefinition> getOracleDefinitions() {
+	@Override
+  protected List<OracleDefinition> getOracleDefinitions() {
 		return Arrays.asList(new OracleDefinition[] { new OracleDefinition(
-				"66c58049-3063-49c2-8f80-a51b775f5656", 1) });
+        PC_6, 1) });
 	}
 }

@@ -61,8 +61,25 @@ public class CapellaElementGoToResolver implements IMarkerResolution2 {
   }
 
   /**
+   * @param elementToGoToDescription
+   * @param modelElement
+   */
+  public CapellaElementGoToResolver(String elementToGoToDescription, EObject modelElement,
+      String modelElementClassName) {
+    // Generate label.
+    String modelElementName = EObjectLabelProviderHelper.getText(modelElement);
+    label = MessageFormat.format(QUICK_FIX_LABEL_PATTERN, elementToGoToDescription, modelElementName,
+        modelElementClassName);
+    // Image.
+    image = ExtendedImageRegistry.getInstance().getImage(EObjectLabelProviderHelper.getImage(modelElement));
+
+    this.modelElement = modelElement;
+  }
+
+  /**
    * {@inheritDoc}
    */
+  @Override
   public Image getImage() {
     return image;
   }
@@ -70,6 +87,7 @@ public class CapellaElementGoToResolver implements IMarkerResolution2 {
   /**
    * {@inheritDoc}
    */
+  @Override
   public String getLabel() {
     return label;
   }
@@ -77,6 +95,7 @@ public class CapellaElementGoToResolver implements IMarkerResolution2 {
   /**
    * {@inheritDoc}
    */
+  @Override
   public void run(IMarker marker) {
     LocateInCapellaExplorerAction selectElementAction = new LocateInCapellaExplorerAction();
     selectElementAction.selectionChanged(null, new StructuredSelection(modelElement));
@@ -87,6 +106,7 @@ public class CapellaElementGoToResolver implements IMarkerResolution2 {
   /**
    * {@inheritDoc}
    */
+  @Override
   public String getDescription() {
     return null;
   }

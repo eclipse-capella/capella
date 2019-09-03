@@ -39,7 +39,8 @@ public class CommunicationLinkForComponentIsDefinedInItsParent extends AbstractV
     	  Component component = CommunicationLinkExt.getSource(link);
     	  List<Component> parentsInError = new ArrayList<Component>();
     	  for (Component parent : ComponentExt.getDirectParents(component)) {
-    		  if (!BlockArchitectureExt.isRootComponent(parent) && !getExchangeItemsForLinks(parent, link).contains(item)) {
+        if (parent != null && !BlockArchitectureExt.isRootComponent(parent)
+            && !getExchangeItemsForLinks(parent, link).contains(item)) {
     			  parentsInError.add(parent);
     		  }
     	  }

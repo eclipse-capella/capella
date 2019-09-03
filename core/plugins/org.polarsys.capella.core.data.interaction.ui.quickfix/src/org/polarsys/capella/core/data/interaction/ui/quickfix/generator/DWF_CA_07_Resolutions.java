@@ -20,6 +20,7 @@ import org.eclipse.ui.IMarkerResolution;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractMarkerResolutionGenerator;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.CapellaElementGoToResolver;
 
@@ -46,7 +47,7 @@ public class DWF_CA_07_Resolutions extends AbstractMarkerResolutionGenerator {
     
     Component element = (Component) modelElements.get(1);
     if(element != null) {
-      resolutions.add(new CapellaElementGoToResolver("Component", element));
+      resolutions.add(new CapellaElementGoToResolver("Component", element, ComponentExt.getComponentName(element)));
     }
     
     return resolutions.toArray(new IMarkerResolution[0]);

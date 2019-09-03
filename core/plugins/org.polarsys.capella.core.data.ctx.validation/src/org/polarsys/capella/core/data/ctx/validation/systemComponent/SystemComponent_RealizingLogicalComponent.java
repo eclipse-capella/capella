@@ -10,19 +10,12 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.ctx.validation.systemComponent;
 
-import java.util.Iterator;
-
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentRealization;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
-import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.oa.Entity;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
@@ -43,7 +36,8 @@ public class SystemComponent_RealizingLogicalComponent extends AbstractValidatio
         if (!actor.getRealizingLogicalComponents().isEmpty()) {
           return ctx.createSuccessStatus();
         }
-        return ctx.createFailureStatus(actor.getName() + " (" + actor.eClass().getName() + ") is not realized by any Logical Actor."); //$NON-NLS-1$ //$NON-NLS-2$
+        return ctx.createFailureStatus(
+            actor.getName() + " (" + ComponentExt.getComponentName(actor) + ") is not realized by any Logical Actor."); //$NON-NLS-1$ //$NON-NLS-2$
       }
     }
 
