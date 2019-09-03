@@ -1527,7 +1527,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		Insert/Remove Exchange Items Allocations. Removing an Exchange Item Allocation graphical object from a diagram does not delete the Exchange Item Allocation from the model. This tool does not modify the semantic model. An Exchange Item allocation is a reference relationship from an Interface to an Exchange Item. 	
 |-
-| 	Exchange Item 	
+| 	Exchange Items 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		Insert/Remove Exchange Items. Removing an Exchange Item graphical object from a diagram does not delete the Exchange Item from the model. This tool does not modify the semantic model. 	
 |-
@@ -1645,7 +1645,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		Creates or deletes graphical objects corresponding to existing Physical Links. The proposed Physical Links are the one incoming and outgoing from the Component target of the click. Opposite Components / Actors might be displayed on the diagram as well if they are not yet represented. This tool does not modify the semantic model. 	
 |-
-| 	Physical Path 	
+| 	Physical Paths 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		Insert/Remove Physical Paths. Creates or delete graphical objects corresponding to existing Physical Paths. Removing a Physical Path graphical object from a diagram does not delete the Physical Path from the model. This tool does not modify the semantic model. 	
 |-
@@ -2611,7 +2611,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		Creates or deletes graphical objects corresponding to existing Physical Links. The proposed Physical Links are the one incoming and outgoing from the Component target of the click. Opposite Components / Actors might be displayed on the diagram as well if they are not yet represented. This tool does not modify the semantic model. 	
 |-
-| 	Physical Path 	
+| 	Physical Paths 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		Insert/Remove Physical Paths. Creates or delete graphical objects corresponding to existing Physical Paths. Removing a Physical Path graphical object from a diagram does not delete the Physical Path from the model. This tool does not modify the semantic model. 	
 |-
@@ -3037,7 +3037,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		Creates or deletes graphical objects corresponding to existing Physical Links. The proposed Physical Links are the one incoming and outgoing from the Component target of the click. Opposite Components / Actors might be displayed on the diagram as well if they are not yet represented. This tool does not modify the semantic model. 	
 |-
-| 	Physical Path 	
+| 	Physical Paths 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		Insert/Remove Physical Paths. Creates or delete graphical objects corresponding to existing Physical Paths. Removing a Physical Path graphical object from a diagram does not delete the Physical Path from the model. This tool does not modify the semantic model. 	
 |-

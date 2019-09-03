@@ -20,19 +20,19 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 public class ElementIdentifierService implements IElementIdentifierService {
 
-  private static final String SEPARATOR = "/";
+  private static final String SEPARATOR = ".";
 
   private Map<String, String> viewpointShortNames;
 
   public ElementIdentifierService() {
     viewpointShortNames = new HashMap<>();
 
-    viewpointShortNames.put("Common", "co");
+    viewpointShortNames.put("Common", "common");
     viewpointShortNames.put("Operational Analysis", "oa");
+    viewpointShortNames.put("System Analysis", "sa");
+    viewpointShortNames.put("Logical Architecture", "la");
     viewpointShortNames.put("Physical Architecture", "pa");
     viewpointShortNames.put("EPBS architecture", "epbs");
-    viewpointShortNames.put("Logical Architecture", "la");
-    viewpointShortNames.put("System Analysis", "sa");
   }
 
   @Override
@@ -49,25 +49,25 @@ public class ElementIdentifierService implements IElementIdentifierService {
   }
 
   private String getViewpointShortName(Viewpoint viewpoint) {
-    return viewpointShortNames.get(viewpoint.getName());
+    return viewpointShortNames.getOrDefault(viewpoint.getName(), viewpoint.getName());
   }
 
   private String getDiagramShortName(DiagramDescription diagram) {
     String titleExpression = diagram.getTitleExpression();
-    String[] tokens = titleExpression.split("(\\[)|(\\])");
-
-    if (tokens.length == 3 && !tokens[1].contains("self")) {
-      return tokens[1].toLowerCase();
+    if (titleExpression != null) {
+      titleExpression = titleExpression.replace("&", "n");
+      String[] tokens = titleExpression.split("(\\[)|(\\])");
+      if (tokens.length == 3 && !tokens[1].contains("self")) {
+        return tokens[1].toLowerCase();
+      }
     }
 
-    tokens = diagram.getName().split(" ");
+    String[] tokens = diagram.getName().split(" ");
     StringBuilder result = new StringBuilder();
-
     for (String token : tokens) {
       char letter = Character.toLowerCase(token.charAt(0));
       result.append(letter);
     }
-
     return result.toString();
   }
 

@@ -41,11 +41,11 @@ public class CheckDomainClassTestSuite extends BasicTestSuite {
     for (Viewpoint viewpoint : viewpoints) {
 
       EList<RepresentationDescription> ownedRepresentations = viewpoint.getOwnedRepresentations();
-      for (final RepresentationDescription _representationDescription : ownedRepresentations) {
+      for (final RepresentationDescription description : ownedRepresentations) {
 
         // Diagram case
-        if (_representationDescription instanceof DiagramDescription) {
-          DiagramDescription des = (DiagramDescription) _representationDescription;
+        if (description instanceof DiagramDescription) {
+          DiagramDescription des = (DiagramDescription) description;
 
           // check domain class of the diagram
           final String diagramDomainClass = des.getDomainClass();
@@ -74,8 +74,8 @@ public class CheckDomainClassTestSuite extends BasicTestSuite {
         }
 
         // Table case
-        else if (_representationDescription instanceof TableDescription) {
-          TableDescription des = (TableDescription) _representationDescription;
+        else if (description instanceof TableDescription) {
+          TableDescription des = (TableDescription) description;
           EList<LineMapping> allLineMappings = des.getAllLineMappings();
           for (LineMapping lineMapping : allLineMappings) {
             final String domainClass = lineMapping.getDomainClass();
