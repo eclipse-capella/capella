@@ -1890,6 +1890,11 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 		   new String[] {
 		   });	
 		addAnnotation
+		  (systemComponentEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getSystemComponent_OwnedSystemComponents(), 
 		   source, 
 		   new String[] {

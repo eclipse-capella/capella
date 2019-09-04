@@ -53,7 +53,7 @@ public interface TimeEvent extends StateEvent {
 	 * @see #setKind(TimeEventKind)
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getTimeEvent_Kind()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the type of the state TimeEvent (see TimeEventKind)\r\n[source: Capella study]' constraints='none' type='refer to TimeEventKind definition' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::TimeEvent::isRelative' explanation='A relative time trigger is specified with the keyword \u2018after\u2019 followed by an expression that evaluates to a time value, such\r\nas \u201cafter (5 seconds).\u201d An absolute time trigger is specified with the keyword \u2018at\u2019 followed by an expression that\r\nevaluates to a time value, such as \u201cJan. 1, 2000, Noon.\"' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::TimeEvent::isRelative' explanation='A relative time trigger is specified with the keyword \'after\' followed by an expression that evaluates to a time value, such\r\nas \'after (5 seconds).\' An absolute time trigger is specified with the keyword \'at\' followed by an expression that\r\nevaluates to a time value, such as \'Jan. 1, 2000, Noon\'.' constraints='none'"
 	 * @generated
 	 */
 
