@@ -7084,6 +7084,7 @@
         </containerMappings>
         <toolSections name="External Interfaces">
           <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Logical / Physical Component (and creates a Part in the selected Container Component)" name="component" label="Component" precondition="aql:containerView.getIBTarget(false).isValidCreationABComponent()" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@containerMappings[name='CA_Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/System.gif">
+            <filters precondition="aql:self.target.eContainerOrSelf(ctx::SystemAnalysis)->size() != 0"/>
             <variable name="container"/>
             <viewVariable name="containerView">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="target" computationExpression="aql:containerView.getIBTarget(false)"/>
@@ -8622,7 +8623,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Logical / Physical Component (and creates a Part in the selected Container Component)" name="Actor" precondition="aql:containerView.getIBTarget(true).isValidCreationABActor()" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@containerMappings[name='CCII_Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/System.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Logical / Physical Actor (and creates a Part in the selected Container Component)" name="actor" label="Actor" precondition="aql:containerView.getIBTarget(true).isValidCreationABActor()" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@containerMappings[name='CCII_Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Actor.gif">
             <variable name="container"/>
             <viewVariable name="containerView">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="target" computationExpression="aql:containerView.getIBTarget(true)"/>
@@ -10209,6 +10210,7 @@
         </containerMappings>
         <toolSections name="Interfaces Blank">
           <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Logical / Physical Component (and creates a Part in the selected Container Component)" name="component" label="Component" precondition="aql:containerView.getIBTarget(false).isValidCreationABComponent()" containerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/System.gif">
+            <filters precondition="aql:self.target.eContainerOrSelf(ctx::SystemAnalysis)->size() != 0"/>
             <variable name="container"/>
             <viewVariable name="containerView">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="target" computationExpression="aql:containerView.getIBTarget(false)"/>
@@ -13832,14 +13834,17 @@
           <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(cs::Component)->select(c | c.isActor())->size() > 0">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelExpression="aql:self.getInstanceRoleLabel()" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" labelPosition="node" resizeKind="EAST_WEST" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(cs::Component)->size() > 0 and self.isBehaviorComponent()">
+          <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(pa::PhysicalComponent)->size() > 0 and self.isBehaviorComponent()">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="aql:self.getInstanceRoleLabel()" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(cs::Component)->size() > 0 and self.isNodeComponent()">
+          <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(pa::PhysicalComponent)->size() > 0 and self.isNodeComponent()">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Border']" labelExpression="aql:self.getInstanceRoleLabel()" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Label']" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']"/>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(cs::Component)->size() > 0">
+          <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(pa::PhysicalComponent)->size() > 0">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Border']" labelExpression="aql:self.getInstanceRoleLabel()" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Label']" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray']"/>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(cs::Component)->size()">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="aql:self.getInstanceRoleLabel()" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
         </nodeMappings>
         <nodeMappings xsi:type="description_2:InstanceRoleMapping" name="hideSequenceLabel" semanticCandidatesExpression="ocl:Set {}" domainClass="EObject"/>
@@ -14046,8 +14051,74 @@
           </style>
         </containerMappings>
         <toolSections name="tools section" label="Scenario Elements">
+          <ownedTools xsi:type="tool_2:InstanceRoleCreationTool" name="node.pc" label="Node PC" precondition="aql:self.eContainerOrSelf(ctx::SystemAnalysis)->size() = 0" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ComponentInstanceNodePC.gif">
+            <filters precondition="aql:self.target.eContainerOrSelf(pa::PhysicalArchitecture)->size() = 0" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)">
+              <listeners domainClass="interaction.Scenario" featureName="ownedAbstractEnds"/>
+            </filters>
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="eContainer (&quot;BlockArchitecture&quot;)">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.getComponentContainer()">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.eContainerOrSelf(cs::BlockArchitecture)->filter(la::LogicalArchitecture)->size() != 0">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponent" referenceName="ownedLogicalComponents" variableName="component">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.eContainerOrSelf(cs::BlockArchitecture)->filter(pa::PhysicalArchitecture)->size() != 0">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents" variableName="component">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="nature" valueExpression="NODE"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.eContainerOrSelf(interaction::Scenario)">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.InstanceRole" referenceName="ownedInstanceRoles">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="representedInstance" valueExpression="aql:component.abstractTypedElements->at(1)"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:component.name"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.reorderInstanceRole(instance,predecessor)"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.ensureCapabilityInvolvment(component)"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <predecessor name="predecessor"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_2:InstanceRoleCreationTool" name="behavior.pc" label="Behavior PC" precondition="aql:self.eContainerOrSelf(ctx::SystemAnalysis)->size() = 0" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ComponentInstance.gif">
+            <filters precondition="aql:self.target.eContainerOrSelf(pa::PhysicalArchitecture)->size() = 0" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)">
+              <listeners domainClass="interaction.Scenario" featureName="ownedAbstractEnds"/>
+            </filters>
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="eContainer (&quot;BlockArchitecture&quot;)">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.getComponentContainer()">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.eContainerOrSelf(cs::BlockArchitecture)->filter(la::LogicalArchitecture)->size() != 0">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponent" referenceName="ownedLogicalComponents" variableName="component">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.eContainerOrSelf(cs::BlockArchitecture)->filter(pa::PhysicalArchitecture)->size() != 0">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents" variableName="component">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="nature" valueExpression="BEHAVIOR"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.eContainerOrSelf(interaction::Scenario)">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.InstanceRole" referenceName="ownedInstanceRoles">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="representedInstance" valueExpression="aql:component.abstractTypedElements->at(1)"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:component.name"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.reorderInstanceRole(instance,predecessor)"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.ensureCapabilityInvolvment(component)"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <predecessor name="predecessor"/>
+          </ownedTools>
           <ownedTools xsi:type="tool_2:InstanceRoleCreationTool" name="component" label="Component" precondition="aql:self.eContainerOrSelf(ctx::SystemAnalysis)->size() = 0" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ComponentInstance.gif">
-            <filters precondition="aql:(self.target.eContainerOrSelf(ctx::SystemAnalysis)->size() != 0) or (self.target.eContainerOrSelf(epbs::EPBSArchitecture)->size() != 0)" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)">
+            <filters precondition="aql:self.target.eContainerOrSelf(la::LogicalArchitecture)->size() = 0" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)">
               <listeners domainClass="interaction.Scenario" featureName="ownedAbstractEnds"/>
             </filters>
             <variable name="container"/>
@@ -14315,7 +14386,6 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:ownedSystemComponentPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SystemComponent" referenceName="ownedSystemComponents" variableName="actor">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -14324,7 +14394,6 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:ownedLogicalComponentPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponent" referenceName="ownedLogicalComponents" variableName="actor">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -14333,7 +14402,6 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:ownedPhysicalComponentPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents" variableName="actor">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -14342,7 +14410,6 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainer().ownedArchitectures->filter(pa::PhysicalArchitecture).ownedPhysicalComponentPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents" variableName="actor">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -15954,13 +16021,13 @@
           <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(cs::Component)->select(c | c.isActor())->size() > 0">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelExpression="aql:self.getInstanceRoleLabel()" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" labelPosition="node" resizeKind="EAST_WEST" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(cs::PhysicalComponent)->size() > 0 and self.isBehaviorComponent()">
+          <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(pa::PhysicalComponent)->size() > 0 and self.isBehaviorComponent()">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="aql:self.getInstanceRoleLabel()" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(cs::PhysicalComponent)->size() > 0 and self.isNodeComponent()">
+          <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(pa::PhysicalComponent)->size() > 0 and self.isNodeComponent()">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Border']" labelExpression="aql:self.getInstanceRoleLabel()" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Label']" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']"/>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(cs::PhysicalComponent)->size() > 0">
+          <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(pa::PhysicalComponent)->size() > 0">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Border']" labelExpression="aql:self.getInstanceRoleLabel()" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray_Label']" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Unset_Gray']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:self.representedInstance.abstractType->filter(cs::Component)->size() > 0">
@@ -16148,7 +16215,7 @@
             <predecessor name="predecessor"/>
           </ownedTools>
           <ownedTools xsi:type="tool_2:InstanceRoleCreationTool" name="component" label="Component" precondition="aql:self.eContainerOrSelf(ctx::SystemAnalysis)->size() = 0" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ComponentInstance.gif">
-            <filters precondition="aql:(self.target.eContainerOrSelf(ctx::SystemAnalysis)->size() > 0 or self.target.eContainerOrSelf(pa::PhysicalArchitecture)->size() != 0)" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)"/>
+            <filters precondition="aql:self.target.eContainerOrSelf(la::LogicalArchitecture)->size() = 0" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)"/>
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -16188,7 +16255,6 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:ownedSystemComponentPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SystemComponent" referenceName="ownedSystemComponents" variableName="actor">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -16197,7 +16263,6 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:ownedLogicalComponentPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponent" referenceName="ownedLogicalComponents" variableName="actor">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -16206,7 +16271,6 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:ownedPhysicalComponentPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents" variableName="actor">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -16215,7 +16279,6 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainer().ownedArchitectures->filter(pa::PhysicalArchitecture).ownedPhysicalComponentPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents" variableName="actor">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="human" valueExpression="true"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
