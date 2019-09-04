@@ -43,21 +43,21 @@ public class StateTransitionSection extends NamedElementSection {
   private ConstraintReferenceGroup _guardGroup;
   
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
     boolean displayedInWizard = isDisplayedInWizard();
 
 
     _guardGroup = new ConstraintReferenceGroup(Collections.singletonMap(Messages.getString("StateTransitionGroup.Guard.Label"), CapellacommonPackage.Literals.STATE_TRANSITION__GUARD)); //$NON-NLS-1$
-    _guardGroup.createControls(rootParentComposite, getWidgetFactory(), isDisplayedInWizard());
+    _guardGroup.createControls(parent, getWidgetFactory(), isDisplayedInWizard());
 
     _effectField =
         new MultipleSemanticField(getReferencesGroup(),
             Messages.getString("StateTransition.Effect.Label"), getWidgetFactory(), new EffectsController()); //$NON-NLS-1$
     _effectField.setDisplayedInWizard(displayedInWizard);
 
-    Group triggersGroup = getWidgetFactory().createGroup(rootParentComposite, ""); //$NON-NLS-1$
+    Group triggersGroup = getWidgetFactory().createGroup(parent, ""); //$NON-NLS-1$
     triggersGroup.setLayout(new GridLayout(1, false));
     GridData layoutData = new GridData(GridData.FILL_HORIZONTAL);
     layoutData.horizontalSpan = 2;
@@ -74,7 +74,7 @@ public class StateTransitionSection extends NamedElementSection {
             Messages.getString("StateTransition.Realizations.Label"), getWidgetFactory(), new StateTransitionRealizationsController()); //$NON-NLS-1$
     _realizationsField.setDisplayedInWizard(displayedInWizard);
 
-    _stateTransitionGroup = new StateTransitionGroup(rootParentComposite, getWidgetFactory());
+    _stateTransitionGroup = new StateTransitionGroup(parent, getWidgetFactory());
     _stateTransitionGroup.setDisplayedInWizard(isDisplayedInWizard());
   }
 

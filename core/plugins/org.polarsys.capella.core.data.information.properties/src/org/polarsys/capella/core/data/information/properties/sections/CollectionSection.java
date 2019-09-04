@@ -62,18 +62,18 @@ public class CollectionSection extends MultiplicityElementSection {
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
     boolean displayedInWizard = isDisplayedInWizard();
 
     collectionBooleanPropertiesCheckbox = new CollectionBooleanPropertiesCheckbox(getCheckGroup(), getWidgetFactory(), true, true);
     collectionBooleanPropertiesCheckbox.setDisplayedInWizard(displayedInWizard);
 
-    collectionKindGroup = new CollectionKindGroup(rootParentComposite, getWidgetFactory());
+    collectionKindGroup = new CollectionKindGroup(parent, getWidgetFactory());
     collectionKindGroup.setDisplayedInWizard(displayedInWizard);
 
-    aggregationKindGroup = new AggregationKindGroup(rootParentComposite, getWidgetFactory());
+    aggregationKindGroup = new AggregationKindGroup(parent, getWidgetFactory());
     aggregationKindGroup.setDisplayedInWizard(displayedInWizard);
 
     superTypes = new CompositionMultipleSemanticField(getReferencesGroup(),
@@ -102,7 +102,7 @@ public class CollectionSection extends MultiplicityElementSection {
         Messages.getString("MultiplicityElement.DefaultValueLabel"), getWidgetFactory(), "", new Collection_ValueController()); //$NON-NLS-1$ //$NON-NLS-2$
     defaultValueField.setDisplayedInWizard(displayedInWizard);
 
-    visibilityKindGroup = new VisibilityKindGroup(rootParentComposite, getWidgetFactory());
+    visibilityKindGroup = new VisibilityKindGroup(parent, getWidgetFactory());
     visibilityKindGroup.setDisplayedInWizard(displayedInWizard);
   }
 

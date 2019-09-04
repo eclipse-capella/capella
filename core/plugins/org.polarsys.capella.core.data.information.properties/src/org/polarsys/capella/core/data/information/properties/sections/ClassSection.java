@@ -42,8 +42,8 @@ public class ClassSection extends GeneralizableElementSection {
   }
 
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
     boolean displayedInWizard = isDisplayedInWizard();
     
@@ -54,7 +54,7 @@ public class ClassSection extends GeneralizableElementSection {
         Messages.getString("ClassSection_RealizedClasses_Label"), getWidgetFactory(), new Class_InformationRealizationsController()); //$NON-NLS-1$
     _realizedClassesField.setDisplayedInWizard(displayedInWizard);
     
-    _visibilityKindGroup = new VisibilityKindGroup(rootParentComposite, getWidgetFactory());
+    _visibilityKindGroup = new VisibilityKindGroup(parent, getWidgetFactory());
     _visibilityKindGroup.setDisplayedInWizard(displayedInWizard);
   }
 

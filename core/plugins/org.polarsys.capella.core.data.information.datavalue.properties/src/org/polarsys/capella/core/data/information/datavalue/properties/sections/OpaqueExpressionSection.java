@@ -262,8 +262,8 @@ public class OpaqueExpressionSection extends NamedElementSection {
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
     GridLayout layout = new GridLayout(5, false);
     layout.marginBottom = 2;
@@ -271,7 +271,7 @@ public class OpaqueExpressionSection extends NamedElementSection {
     layout.marginRight = 2;
     layout.marginTop = 2;
     
-    opaqueExpressionGroup = getWidgetFactory().createGroup(rootParentComposite, ""); //$NON-NLS-1$
+    opaqueExpressionGroup = getWidgetFactory().createGroup(parent, ""); //$NON-NLS-1$
     opaqueExpressionGroup.setLayout(layout);
     GridData gd = new GridData(SWT.FILL, SWT.FILL, true, true);
     gd.horizontalSpan = 2;

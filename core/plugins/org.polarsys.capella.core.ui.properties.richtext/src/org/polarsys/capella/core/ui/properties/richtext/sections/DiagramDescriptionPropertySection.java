@@ -45,8 +45,8 @@ public class DiagramDescriptionPropertySection extends DescriptionPropertySectio
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
     // This operation history listener is used to force refreshes when undo / redo operations are performed.
     OperationHistoryFactory.getOperationHistory().addOperationHistoryListener(this);
   }

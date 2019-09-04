@@ -63,15 +63,14 @@ public class DiagramManagementPropertySection extends AbstractSection {
    *      org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage)
    */
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
 
-    rootParentComposite.setLayout(new GridLayout());
-    rootParentComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+    parent.setLayout(new GridLayout());
+    parent.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    _visibleInDocGroup = new BooleanValueGroup(rootParentComposite, Messages.VisibleInDocGroup_Label, getWidgetFactory()) {
+    _visibleInDocGroup = new BooleanValueGroup(parent, Messages.VisibleInDocGroup_Label, getWidgetFactory()) {
       /**
        * {@inheritDoc}
        */
@@ -94,7 +93,7 @@ public class DiagramManagementPropertySection extends AbstractSection {
     };
     _visibleInDocGroup.setDisplayedInWizard(displayedInWizard);
 
-    _visibleInLMGroup = new BooleanValueGroup(rootParentComposite, Messages.VisibleForTraceabilityGroup_Label, getWidgetFactory()) {
+    _visibleInLMGroup = new BooleanValueGroup(parent, Messages.VisibleForTraceabilityGroup_Label, getWidgetFactory()) {
       /**
        * {@inheritDoc}
        */
@@ -117,7 +116,7 @@ public class DiagramManagementPropertySection extends AbstractSection {
     };
     _visibleInLMGroup.setDisplayedInWizard(displayedInWizard);
 
-    _status = new EnumerationValueGroup(rootParentComposite, Messages.ProgressStatus_Label, getWidgetFactory()) {
+    _status = new EnumerationValueGroup(parent, Messages.ProgressStatus_Label, getWidgetFactory()) {
       /**
        * {@inheritDoc}
        */

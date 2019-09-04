@@ -44,15 +44,15 @@ public class FunctionalChainInvolvementLinkSection extends CapellaElementSection
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
     boolean displayedInWizard = isDisplayedInWizard();
 
     exchangeContext = new ConstraintReferenceGroup(
         Collections.singletonMap(Messages.FunctionalChainInvolvementSection_ExchangeContext_Label,
             FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__EXCHANGE_CONTEXT));
-    exchangeContext.createControls(rootParentComposite, getWidgetFactory(), isDisplayedInWizard());
+    exchangeContext.createControls(parent, getWidgetFactory(), isDisplayedInWizard());
 
     exchangedItemsField = new MultipleSemanticField(getReferencesGroup(),
         Messages.FunctionalChainInvolvementSection_ExchangedItems_Label, getWidgetFactory(),

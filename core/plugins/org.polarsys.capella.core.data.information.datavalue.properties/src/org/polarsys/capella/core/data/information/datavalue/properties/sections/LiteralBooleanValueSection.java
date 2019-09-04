@@ -28,14 +28,17 @@ public class LiteralBooleanValueSection extends DataValueSection {
 
   private BooleanValueGroup _valueGroup;
 
+  protected boolean isShowAbstract() {
+    return false;
+  }
+  
   /**
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage, false);
-
-    _valueGroup = new BooleanValueGroup(rootParentComposite, Messages.getString("BooleanValueGroup.ValueLabel"), getWidgetFactory()); //$NON-NLS-1$
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
+    _valueGroup = new BooleanValueGroup(parent, Messages.getString("BooleanValueGroup.ValueLabel"), getWidgetFactory()); //$NON-NLS-1$
     _valueGroup.setDisplayedInWizard(isDisplayedInWizard());
   }
 

@@ -30,25 +30,25 @@ public abstract class DataValueSection extends TypedElementSection {
 
   private DataValueBooleanPropertiesCheckbox propertiesCheckbox;
 
-  @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    createControls(parent, aTabbedPropertySheetPage, true);
+  protected boolean isShowAbstract() {
+    return true;
   }
+  
+  @Override
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage, boolean showIsAbstract) {
-    super.createControls(parent, aTabbedPropertySheetPage);
-
-    if (showIsAbstract) {
+    if (isShowAbstract()) {
       boolean displayedInWizard = isDisplayedInWizard();
       
-      Group checkGroup = getWidgetFactory().createGroup(rootParentComposite, ""); //$NON-NLS-1$
+      Group checkGroup = getWidgetFactory().createGroup(parent, ""); //$NON-NLS-1$
       checkGroup.setLayout(new GridLayout(5, true));
       GridData gd = new GridData(GridData.FILL_HORIZONTAL);
       gd.horizontalSpan = 2;
       checkGroup.setLayoutData(gd);
       checkGroup.moveAbove(getReferencesGroup());
       
-      propertiesCheckbox = new DataValueBooleanPropertiesCheckbox(checkGroup, getWidgetFactory(), showIsAbstract);
+      propertiesCheckbox = new DataValueBooleanPropertiesCheckbox(checkGroup, getWidgetFactory(), true);
       propertiesCheckbox.setDisplayedInWizard(displayedInWizard);
     }
   }

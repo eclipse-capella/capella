@@ -40,8 +40,8 @@ public class ComponentPortSection extends PortSection {
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
     boolean displayedInWizard = isDisplayedInWizard();
 
@@ -53,10 +53,10 @@ public class ComponentPortSection extends PortSection {
         Messages.ComponentPortSection_RealizedPorts_Label, getWidgetFactory(), new Port_RealizedPortsController());
     realizedPortsField.setDisplayedInWizard(displayedInWizard);
 
-    componentPortKindGroup = new ComponentPortKindGroup(rootParentComposite, getWidgetFactory(), true);
+    componentPortKindGroup = new ComponentPortKindGroup(parent, getWidgetFactory(), true);
     componentPortKindGroup.setDisplayedInWizard(displayedInWizard);
 
-    orientationPortKindGroup = new OrientationPortKindGroup(rootParentComposite, getWidgetFactory(), true);
+    orientationPortKindGroup = new OrientationPortKindGroup(parent, getWidgetFactory(), true);
     orientationPortKindGroup.setDisplayedInWizard(displayedInWizard);
   }
 

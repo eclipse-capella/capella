@@ -54,12 +54,12 @@ public class ServiceSection extends NamedElementSection {
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    _visibilityKindGroup = new VisibilityKindGroup(rootParentComposite, getWidgetFactory());
+    _visibilityKindGroup = new VisibilityKindGroup(parent, getWidgetFactory());
     _visibilityKindGroup.setDisplayedInWizard(displayedInWizard);
 
     _thrownExceptionsField = new MultipleSemanticField(getReferencesGroup(),
@@ -75,7 +75,7 @@ public class ServiceSection extends NamedElementSection {
         Messages.getString("ServiceSection_RealizedExchangeItems_Label"), getWidgetFactory(), new Service_RealizedExchangeItemsController()); //$NON-NLS-1$
     _realizedExchangeItemsField.setDisplayedInWizard(displayedInWizard);
 
-    Group exchangeItemGroup = getWidgetFactory().createGroup(rootParentComposite, ""); //$NON-NLS-1$
+    Group exchangeItemGroup = getWidgetFactory().createGroup(parent, ""); //$NON-NLS-1$
     exchangeItemGroup.setLayout(new GridLayout(1, false));
     GridData layoutData = new GridData(GridData.FILL_HORIZONTAL);
     layoutData.horizontalSpan = 2;

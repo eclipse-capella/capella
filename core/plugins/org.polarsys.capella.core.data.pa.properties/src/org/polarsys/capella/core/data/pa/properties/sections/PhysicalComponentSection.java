@@ -48,14 +48,14 @@ public class PhysicalComponentSection extends ComponentSection {
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    pcKindGroup = new PhysicalComponentKindGroup(rootParentComposite, getWidgetFactory(), true);
+    pcKindGroup = new PhysicalComponentKindGroup(parent, getWidgetFactory(), true);
     pcKindGroup.setDisplayedInWizard(displayedInWizard);
-    pcNatureGroup = new PhysicalComponentNatureGroup(rootParentComposite, getWidgetFactory(),
+    pcNatureGroup = new PhysicalComponentNatureGroup(parent, getWidgetFactory(),
         CapellaModelPreferencesPlugin.getDefault().isChangePhysicalComponentNatureAllowed());
     pcNatureGroup.setDisplayedInWizard(displayedInWizard);
 

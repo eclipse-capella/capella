@@ -45,15 +45,15 @@ public class ConfigurationItemSection extends ComponentSection {
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    ciKindGroup = new ConfigurationItemKindGroup(rootParentComposite, getWidgetFactory(), true);
+    ciKindGroup = new ConfigurationItemKindGroup(parent, getWidgetFactory(), true);
     ciKindGroup.setDisplayedInWizard(displayedInWizard);
 
-    itemIdentifierGroup = new ConfigurationItemIdGroup(rootParentComposite, getWidgetFactory());
+    itemIdentifierGroup = new ConfigurationItemIdGroup(parent, getWidgetFactory());
     itemIdentifierGroup.setDisplayedInWizard(displayedInWizard);
 
     physicalArtifactRealizations =

@@ -39,10 +39,10 @@ public class ValuePartSection extends CapellaElementSection {
   private SimpleSemanticField referencedPropertyField;
 
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
-    Group main = getWidgetFactory().createGroup(rootParentComposite, ICommonConstants.EMPTY_STRING);
+    Group main = getWidgetFactory().createGroup(parent, ICommonConstants.EMPTY_STRING);
     main.setLayout(new GridLayout(6, false));
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 2;

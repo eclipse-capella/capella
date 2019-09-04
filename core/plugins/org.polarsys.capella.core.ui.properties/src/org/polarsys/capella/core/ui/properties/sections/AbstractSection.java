@@ -23,9 +23,6 @@ import org.eclipse.emf.workspace.EMFCommandOperation;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.DisposeEvent;
-import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -68,8 +65,11 @@ public abstract class AbstractSection extends AbstractPropertySection implements
   private Color parentBackgroundColor;
   /**
    * Main composite displayed in this section.
+   * @deprecated Subclasses should no longer use this and override {@link #createContents(Composite, TabbedPropertySheetPage)} instead
    */
+  @Deprecated
   protected Composite rootParentComposite;
+
   /**
    * Widget factory used when displaying in a wizard.
    */
@@ -88,8 +88,16 @@ public abstract class AbstractSection extends AbstractPropertySection implements
   private TabbedPropertySheetPage propertySheetPage;
 
   /**
+   * Creates the root composite for this section. Depending on whether
+   * this section is displayed in the capella properties wizard or not, 
+   * different composites are created. Subclasses should therefore avoid
+   * to override this method, and implement
+   * {@link #createContents(Composite, TabbedPropertySheetPage)}
+   * which is always using the correct composite.
+   * 
    * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#createControls(org.eclipse.swt.widgets.Composite,
    *      org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage)
+   *
    */
   @Override
   public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
@@ -97,35 +105,27 @@ public abstract class AbstractSection extends AbstractPropertySection implements
     if (null != parentBackgroundColor) {
       handleParentBackground(parentBackgroundColor, parent);
     }
-    // Whether or not we are displayed in a wizard.
-    if (null == aTabbedPropertySheetPage) {
-      // Root composite is the one specified by the caller.
-      rootParentComposite = parent;
-      // Change the flag to indicate we are displaying within a wizard.
+    if (aTabbedPropertySheetPage == null) { 
       displayedInWizard = true;
-      parent.addDisposeListener(new DisposeListener() {
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public void widgetDisposed(DisposeEvent e) {
-          dispose();
-        }
-      });
+      rootParentComposite = parent;
+      parent.addDisposeListener(e->dispose());
     } else {
       propertySheetPage = aTabbedPropertySheetPage;
-      parent.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
-
       Section section = getWidgetFactory().createSection(parent, ExpandableComposite.TITLE_BAR | ExpandableComposite.TWISTIE | ExpandableComposite.EXPANDED);
       section.setText(Messages.CapellaElement_SectionLabel);
-
       rootParentComposite = getWidgetFactory().createFlatFormComposite(section);
       rootParentComposite.setLayout(new GridLayout(2, true)); // 2 ?
-
       section.setClient(rootParentComposite);
-
       CapellalEditingDomainListenerForPropertySections.getCapellaDataListenerForPropertySections().registerPropertySheetPage(propertySheetPage);
     }
+    createContents(rootParentComposite, aTabbedPropertySheetPage);
+  }
+
+  /**
+   * Override this method to fill the section with contents rather than overriding {@link #createControls(Composite, TabbedPropertySheetPage)}
+   */
+  protected void createContents(Composite rootParentComposite, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    // empty impl for compatibility with sections in 3rd party code that still overrides createControls()
   }
 
   /**

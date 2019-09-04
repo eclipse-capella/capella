@@ -29,10 +29,10 @@ public class StringPropertyValueSection extends NamedElementSection {
   private TextValueGroup _valueGroup;
 
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
-    _valueGroup = new TextValueGroup(rootParentComposite, Messages.TextValueGroup_Value_Label, getWidgetFactory());
+    _valueGroup = new TextValueGroup(parent, Messages.TextValueGroup_Value_Label, getWidgetFactory());
     _valueGroup.setDisplayedInWizard(isDisplayedInWizard());
   }
 

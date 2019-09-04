@@ -49,8 +49,8 @@ public class ExchangeItemElementSection extends MultiplicityElementSection {
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
     boolean displayedInWizard = isDisplayedInWizard();
 
@@ -62,7 +62,7 @@ public class ExchangeItemElementSection extends MultiplicityElementSection {
             Messages.getString("ExchangeItemElement_ReferencedProperties_Label"), getWidgetFactory(), new ExchangeItemElementController()); //$NON-NLS-1$
     _referencedProperties.setDisplayedInWizard(displayedInWizard);
 
-    elementKindGroup = new ElementKindGroup(rootParentComposite, getWidgetFactory()) {
+    elementKindGroup = new ElementKindGroup(parent, getWidgetFactory()) {
       /**
        * {@inheritDoc}
        */
@@ -74,7 +74,7 @@ public class ExchangeItemElementSection extends MultiplicityElementSection {
     elementKindGroup.setEnabled(false);
     elementKindGroup.setDisplayedInWizard(displayedInWizard);
 
-    parameterDirectionGroup = new ParameterDirectionGroup(rootParentComposite, getWidgetFactory());
+    parameterDirectionGroup = new ParameterDirectionGroup(parent, getWidgetFactory());
     parameterDirectionGroup.setDisplayedInWizard(displayedInWizard);
   }
 

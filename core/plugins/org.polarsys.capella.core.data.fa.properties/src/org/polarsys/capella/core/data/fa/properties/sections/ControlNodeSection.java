@@ -51,13 +51,13 @@ public class ControlNodeSection extends CapellaElementSection {
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
     boolean displayedInWizard = isDisplayedInWizard();
 
     if (showControlNodeKind) {
-      controlNodeKindGroup = new ControlNodeKindGroup(rootParentComposite, getWidgetFactory(), true) {
+      controlNodeKindGroup = new ControlNodeKindGroup(parent, getWidgetFactory(), true) {
         /**
          * {@inheritDoc}
          */

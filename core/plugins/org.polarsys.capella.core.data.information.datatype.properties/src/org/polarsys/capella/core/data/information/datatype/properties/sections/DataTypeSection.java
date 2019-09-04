@@ -55,13 +55,13 @@ public abstract class DataTypeSection extends NamedElementSection {
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
     boolean displayedInWizard = isDisplayedInWizard();
 
     if (_showPatternField) {
-      _dataTypeComposite = new TextValueGroup(rootParentComposite, Messages.getString("DataType.PatternLabel"), getWidgetFactory()); //$NON-NLS-1$
+      _dataTypeComposite = new TextValueGroup(parent, Messages.getString("DataType.PatternLabel"), getWidgetFactory()); //$NON-NLS-1$
       _dataTypeComposite.setDisplayedInWizard(displayedInWizard);
     }
 
@@ -74,7 +74,7 @@ public abstract class DataTypeSection extends NamedElementSection {
     _realizedInformationWidget = new CompositionMultipleSemanticField(getReferencesGroup(), Messages.getString("DataType.RealizedInformationLabel"), getWidgetFactory(), new DataTypeController()); //$NON-NLS-1$
     _realizedInformationWidget.setDisplayedInWizard(displayedInWizard);
 
-    _visibilityKindGroup = new VisibilityKindGroup(rootParentComposite, getWidgetFactory());
+    _visibilityKindGroup = new VisibilityKindGroup(parent, getWidgetFactory());
     _visibilityKindGroup.setDisplayedInWizard(displayedInWizard);
   }
 

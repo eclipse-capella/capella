@@ -48,18 +48,18 @@ public class ExchangeItemSection extends GeneralizableElementSection {
   private MultipleSemanticField _realizedExchangeItemsField;
 
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
     boolean displayedInWizard = isDisplayedInWizard();
 
     _exchangeItemBooleanPropertiesCheckbox = new ExchangeItemBooleanPropertiesCheckbox(getCheckGroup(), getWidgetFactory());
     _exchangeItemBooleanPropertiesCheckbox.setDisplayedInWizard(displayedInWizard);    
     
-    _exchangeMechanismGroup = new ExchangeMechanismGroup(rootParentComposite, getWidgetFactory());
+    _exchangeMechanismGroup = new ExchangeMechanismGroup(parent, getWidgetFactory());
     _exchangeMechanismGroup.setDisplayedInWizard(displayedInWizard);
 
-    Group exchangeItemGroup = getWidgetFactory().createGroup(rootParentComposite, ""); //$NON-NLS-1$
+    Group exchangeItemGroup = getWidgetFactory().createGroup(parent, ""); //$NON-NLS-1$
     exchangeItemGroup.setLayout(new GridLayout(1, false));
     GridData layoutData = new GridData(GridData.FILL_HORIZONTAL);
     layoutData.horizontalSpan = 2;
@@ -97,7 +97,7 @@ public class ExchangeItemSection extends GeneralizableElementSection {
     };
     _containmentTableField.setDisplayedInWizard(displayedInWizard);
 
-    Group main = getWidgetFactory().createGroup(rootParentComposite, ""); //$NON-NLS-1$
+    Group main = getWidgetFactory().createGroup(parent, ""); //$NON-NLS-1$
     main.setLayout(new GridLayout(6, false));
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 2;

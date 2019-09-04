@@ -39,12 +39,12 @@ public class PhysicalQuantitySection extends DataTypeSection {
   private SimpleSemanticField unitWidget;
 
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    numericTypeKindGroup = new NumericTypeKindGroup(rootParentComposite, getWidgetFactory()) {
+    numericTypeKindGroup = new NumericTypeKindGroup(parent, getWidgetFactory()) {
       @Override
       public void widgetSelected(SelectionEvent event) {
         super.widgetSelected(event);

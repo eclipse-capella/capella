@@ -18,10 +18,10 @@ import org.polarsys.capella.core.ui.properties.richtext.sections.CapellaDescript
 
 public class CapellaDescriptionPropertySectionMock extends CapellaDescriptionPropertySection {
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
     if (PlatformUI.getTestableObject().getTestHarness() != null)
-      descriptionGroup = new CapellaElementDescriptionGroupMock(rootParentComposite,
+      descriptionGroup = new CapellaElementDescriptionGroupMock(parent,
           (aTabbedPropertySheetPage != null) ? getWidgetFactory() : null, this);
   }
 
