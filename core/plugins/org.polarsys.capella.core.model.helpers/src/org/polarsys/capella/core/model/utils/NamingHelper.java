@@ -15,14 +15,18 @@ import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Iterator;
 
+import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
@@ -37,6 +41,8 @@ import org.polarsys.capella.core.data.information.Operation;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.datavalue.DataValue;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
+import org.polarsys.capella.core.data.pa.PhysicalComponent;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 
 /**
  */
@@ -44,6 +50,62 @@ public class NamingHelper {
 
   private NamingHelper() {
     // To hide the implicit public one.
+  }
+  
+  /**
+   * get the default title for the selection wizard
+   * @param modelElement
+   * @return the default title
+   */
+  public static String getDefaultTitle(EObject modelElement) {
+    String name = null;
+    String title = getTitleLabel(modelElement);
+    if (modelElement instanceof AbstractNamedElement) {
+      name = ((AbstractNamedElement) modelElement).getName();
+    } 
+    else{
+      name = EObjectLabelProviderHelper.getText(modelElement);
+    }
+    title = title + (name == null ? ICommonConstants.EMPTY_STRING : name);
+    return title;
+  }
+  
+  /**
+   * 
+   * @param modelElement
+   * @return
+   */
+  public static String getTitleLabel(EObject modelElement) {
+    StringBuilder builder = new StringBuilder();
+    String metaclassLabel = EObjectLabelProviderHelper.getMetaclassLabel(modelElement, true);
+    if (null != metaclassLabel) {
+      builder.append(metaclassLabel);
+    }
+    if (modelElement instanceof Component && ComponentExt.isActor((Component) modelElement)) {
+      builder.append("[Actor]");
+    }
+    if (modelElement instanceof PhysicalComponent) {
+      String nature = ((PhysicalComponent) modelElement).getNature().getName();
+      builder.append("[" + capitalize(nature) + "]");
+    }
+    if (builder.length() > 0) {
+      builder.append(" ");
+    }
+    return builder.toString();
+  }
+  
+  /**
+   * 
+   * @param resource the resource
+   * @return the text for the given resource
+   */
+  public static String getTextForResource(IResource resource) {
+    IContainer parent = resource.getParent();
+    if (parent != null && parent.getType() != IResource.ROOT) {
+      return resource.getName() + " - " + parent.getFullPath();
+
+    }
+    return resource.getName();
   }
 
   /**
@@ -86,6 +148,20 @@ public class NamingHelper {
 
     return Messages.getString("UndefinedValue"); //$NON-NLS-1$
   }
+  
+  /**
+   * get the default message for the selection wizard
+   * @param currentObject
+   * @return
+   */
+  public static String getDefaultMessage(EObject currentObject, String editedPropertyName) {
+    String message = "Select " + editedPropertyName; //$NON-NLS-1$
+    if (currentObject instanceof AbstractNamedElement) {
+      String name = ((AbstractNamedElement) currentObject).getName();
+      message = message + " of " + currentObject.eClass().getName() + " \"" + (name == null ? ICommonConstants.EMPTY_STRING : name) + "\"."; //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
+    }
+    return message;
+  }
 
   public static String toString(Collection<NamedElement> elements) {
     Assert.isLegal(elements != null);
@@ -99,5 +175,16 @@ public class NamingHelper {
       }
     }
     return builder.toString();
+  }
+  
+  /**
+   * Make the given String starts with capital letter.
+   * @param str
+   * @return
+   */
+  public static String capitalize(String str) {
+    if (str.length() == 0)
+      return str;
+    return str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase();
   }
 }

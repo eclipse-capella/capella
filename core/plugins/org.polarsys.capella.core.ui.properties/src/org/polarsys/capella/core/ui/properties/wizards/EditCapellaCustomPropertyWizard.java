@@ -33,7 +33,7 @@ public class EditCapellaCustomPropertyWizard extends Wizard {
   public EditCapellaCustomPropertyWizard(EObject object) {
     this.object = object;
     this.metaclassLabel = EObjectLabelProviderHelper.getMetaclassLabel(object, false);
-    setWindowTitle(metaclassLabel);
+    setWindowTitle("Properties");
   }
 
   /**

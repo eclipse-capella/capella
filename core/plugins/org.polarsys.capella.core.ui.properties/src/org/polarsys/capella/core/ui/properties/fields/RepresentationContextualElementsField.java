@@ -22,9 +22,9 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.core.model.utils.NamingHelper;
 import org.polarsys.capella.core.ui.properties.controllers.RepresentationContextualElementsController;
 import org.polarsys.capella.core.ui.properties.helpers.DialogHelper;
-import org.polarsys.capella.core.ui.properties.helpers.NamingHelper;
 
 /**
  */

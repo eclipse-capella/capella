@@ -40,6 +40,7 @@ import org.eclipse.ui.help.IWorkbenchHelpSystem;
 import org.eclipse.ui.views.properties.tabbed.ISection;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.ui.services.helper.FormHelper;
+import org.polarsys.capella.core.model.utils.NamingHelper;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 import org.polarsys.capella.core.ui.properties.sections.IAbstractSection;
 import org.polarsys.capella.core.ui.resources.CapellaUIResourcesPlugin;
@@ -65,8 +66,8 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage {
   public EditCapellaCustomPropertyWizardPage(String pageName, EObject element, String metaclassLabel) {
     super(pageName);
     // Configure page title and description.
-    setTitle(metaclassLabel);
-    setDescription(Messages.EditCapellaCustomPropertyWizardPage_Description + metaclassLabel);
+    setTitle(NamingHelper.getTitleLabel(element));
+    setDescription(NLS.bind(Messages.editCapellaCustomPropertyWizardPage_Description, metaclassLabel));
 
     ImageDescriptor imageDescriptor = CapellaUIResourcesPlugin.getDefault().getPNGImage(element);
     if (imageDescriptor != null) {

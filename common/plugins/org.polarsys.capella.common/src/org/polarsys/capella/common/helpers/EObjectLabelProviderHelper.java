@@ -44,11 +44,11 @@ public class EObjectLabelProviderHelper {
   /**
    * Prefix used in label rendering if requested.
    */
-  private static final String METACLASS_DISPLAY_PREFIX = "["; //$NON-NLS-1$
+  private static final String METACLASS_DISPLAY_PREFIX = "("; //$NON-NLS-1$
   /**
    * Suffix used in label rendering if requested.
    */
-  private static final String METACLASS_DISPLAY_SUFFIX = "] "; //$NON-NLS-1$
+  private static final String METACLASS_DISPLAY_SUFFIX = ") "; //$NON-NLS-1$
   /**
    * Separator used by getFullPath
    */
@@ -96,11 +96,11 @@ public class EObjectLabelProviderHelper {
    * Get the metaclass label (emitted by EMF Edit generation) for given object.
    * 
    * @param object
-   * @param addBrackets
+   * @param addParenthesis
    *          if <code>true</code> the returned label is surrounded by brackets.
    * @return <code>null</code> if one of parameters is <code>null</code> or if no label is found.
    */
-  public static String getMetaclassLabel(EObject object, boolean addBrackets) {
+  public static String getMetaclassLabel(EObject object, boolean addParenthesis) {
     String label = null;
     // Precondition.
     if (null == object) {
@@ -110,7 +110,7 @@ public class EObjectLabelProviderHelper {
     if (provider instanceof ItemProviderAdapter) {
       label = getMetaclassLabel(object.eClass(), (ItemProviderAdapter) provider);
     }
-    if (addBrackets) {
+    if (addParenthesis) {
       label = METACLASS_DISPLAY_PREFIX + label + METACLASS_DISPLAY_SUFFIX;
     }
     return label;

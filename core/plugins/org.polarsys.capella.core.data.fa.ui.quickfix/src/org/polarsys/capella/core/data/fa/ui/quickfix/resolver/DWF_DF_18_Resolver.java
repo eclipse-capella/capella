@@ -26,7 +26,7 @@ import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.SequenceLink;
 import org.polarsys.capella.core.data.fa.properties.controllers.SequenceLinkLinksController;
-import org.polarsys.capella.core.ui.properties.helpers.NamingHelper;
+import org.polarsys.capella.core.model.utils.NamingHelper;
 import org.polarsys.capella.core.ui.resources.CapellaUIResourcesPlugin;
 import org.polarsys.capella.core.ui.toolkit.helpers.SelectionDialogHelper;
 import org.polarsys.capella.core.validation.ui.ide.PluginActivator;

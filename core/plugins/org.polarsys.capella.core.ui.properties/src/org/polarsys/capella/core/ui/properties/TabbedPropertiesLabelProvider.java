@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.properties;
 
-import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
@@ -24,9 +23,9 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.common.ui.business.api.views.properties.tabbed.ILabelProviderProvider;
 import org.eclipse.swt.graphics.Image;
-import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
+import org.polarsys.capella.core.model.utils.NamingHelper;
 
 /**
  * This class handles title label for tabbed properties.
@@ -43,43 +42,20 @@ public class TabbedPropertiesLabelProvider extends MDEAdapterFactoryLabelProvide
     String title = "<unknown>"; //$NON-NLS-1$
     EObject modelElement = getModel(element);
     if (null != modelElement) {
-      title = super.getText(modelElement);
-      if (null != title) {
-        String metaclassLabel = EObjectLabelProviderHelper.getMetaclassLabel(modelElement, true);
-        if (null != metaclassLabel) {
-          if (!title.startsWith(metaclassLabel)) {
-            title = metaclassLabel + title;
-          }
-        }
-      } else {
-        title = EObjectLabelProviderHelper.getText(modelElement);
-      }
+      title = NamingHelper.getDefaultTitle(modelElement);
     } else if (element instanceof StructuredSelection) {
       Object selection = ((IStructuredSelection) element).getFirstElement();
       if (selection instanceof AbstractGraphicalEditPart) {
         return getTextForEditPart((AbstractGraphicalEditPart) selection);
       }
-      if(selection instanceof IResource) {
-        return getTextForResource((IResource)selection);
+      if (selection instanceof IResource) {
+        return NamingHelper.getTextForResource((IResource) selection);
       }
-
     }
     return encode(title);
   }
   
-  private String getTextForResource(IResource resource) {
-    IContainer parent = resource.getParent();
-    if (parent != null && parent.getType() != IResource.ROOT) {
-      return resource.getName() + " - " + parent.getFullPath();
-
-    }
-    return resource.getName();
-  }
-
-  /**
-   * @param editPart
-   * @return
-   */
+  
   @SuppressWarnings("restriction")
   private String getTextForEditPart(AbstractGraphicalEditPart editPart) {
     StringBuilder sb = new StringBuilder(""); //$NON-NLS-1$
