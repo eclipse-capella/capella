@@ -104,7 +104,8 @@ public class DiagramDropAdapterAssistant extends AbstractCapellaDropAdapterAssis
         || IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME.equals(diagramId) || diagramId.contains("Data Flow Blank") //$NON-NLS-1$
         || IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME.equals(diagramId)
         || IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME.equals(diagramId)
-        || IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME.equals(diagramId);
+        || IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME.equals(diagramId)
+        || IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME.equals(diagramId);
 
     if (isValid) {
       if (description instanceof DiagramDescription) {
