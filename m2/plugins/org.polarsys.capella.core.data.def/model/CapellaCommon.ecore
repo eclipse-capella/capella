@@ -1239,7 +1239,7 @@
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="uml::TimeEvent::isRelative"/>
-        <details key="explanation" value="A relative time trigger is specified with the keyword ‘after’ followed by an expression that evaluates to a time value, such&#xD;&#xA;as “after (5 seconds).” An absolute time trigger is specified with the keyword ‘at’ followed by an expression that&#xD;&#xA;evaluates to a time value, such as “Jan. 1, 2000, Noon.&quot;"/>
+        <details key="explanation" value="A relative time trigger is specified with the keyword 'after' followed by an expression that evaluates to a time value, such&#xD;&#xA;as 'after (5 seconds).' An absolute time trigger is specified with the keyword 'at' followed by an expression that&#xD;&#xA;evaluates to a time value, such as 'Jan. 1, 2000, Noon'."/>
         <details key="constraints" value="none"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
@@ -1258,7 +1258,7 @@
     </eAnnotations>
     <eLiterals name="AT">
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="An absolute time trigger is specified with the keyword ‘at’ followed by an expression that&#xD;&#xA;evaluates to a time value, such as “Jan. 1, 2000, Noon.&quot;&#xD;&#xA;[source: UML superstructure v2.4]"/>
+        <details key="description" value="An absolute time trigger is specified with the keyword 'at' followed by an expression that&#xD;&#xA;evaluates to a time value, such as 'Jan. 1, 2000, Noon'.&#xD;&#xA;[source: UML superstructure v2.4]"/>
         <details key="constraints" value="none"/>
         <details key="comment/notes" value="none"/>
       </eAnnotations>
@@ -1270,7 +1270,7 @@
     </eLiterals>
     <eLiterals name="AFTER" value="1">
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="A relative time trigger is specified with the keyword ‘after’ followed by an expression that evaluates to a time value, such&#xD;&#xA;as “after (5 seconds).” &#xD;&#xA;[source: UML superstructure v2.4]"/>
+        <details key="description" value="A relative time trigger is specified with the keyword 'after' followed by an expression that evaluates to a time value, such&#xD;&#xA;as 'after (5 seconds)'.&#xD;&#xA;[source: UML superstructure v2.4]"/>
         <details key="constraints" value="none"/>
         <details key="comment/notes" value="none"/>
       </eAnnotations>

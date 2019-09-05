@@ -2234,7 +2234,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		  (timeEventKindEEnum.getELiterals().get(0), 
 		   source, 
 		   new String[] {
-			 "description", "An absolute time trigger is specified with the keyword \u2018at\u2019 followed by an expression that\r\nevaluates to a time value, such as \u201cJan. 1, 2000, Noon.\"\r\n[source: UML superstructure v2.4]", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			 "description", "An absolute time trigger is specified with the keyword \'at\' followed by an expression that\r\nevaluates to a time value, such as \'Jan. 1, 2000, Noon\'.\r\n[source: UML superstructure v2.4]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
@@ -2242,7 +2242,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		  (timeEventKindEEnum.getELiterals().get(1), 
 		   source, 
 		   new String[] {
-			 "description", "A relative time trigger is specified with the keyword \u2018after\u2019 followed by an expression that evaluates to a time value, such\r\nas \u201cafter (5 seconds).\u201d \r\n[source: UML superstructure v2.4]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "description", "A relative time trigger is specified with the keyword \'after\' followed by an expression that evaluates to a time value, such\r\nas \'after (5 seconds)\'.\r\n[source: UML superstructure v2.4]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
@@ -3183,7 +3183,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		   source, 
 		   new String[] {
 			 "UML/SysML semantic equivalences", "uml::TimeEvent::isRelative", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "A relative time trigger is specified with the keyword \u2018after\u2019 followed by an expression that evaluates to a time value, such\r\nas \u201cafter (5 seconds).\u201d An absolute time trigger is specified with the keyword \u2018at\u2019 followed by an expression that\r\nevaluates to a time value, such as \u201cJan. 1, 2000, Noon.\"", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			 "explanation", "A relative time trigger is specified with the keyword \'after\' followed by an expression that evaluates to a time value, such\r\nas \'after (5 seconds).\' An absolute time trigger is specified with the keyword \'at\' followed by an expression that\r\nevaluates to a time value, such as \'Jan. 1, 2000, Noon\'.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation

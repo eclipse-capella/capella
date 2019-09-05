@@ -1074,6 +1074,7 @@
       <details key="explanation" value="none"/>
       <details key="constraints" value="none"/>
     </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedSystemComponents"
         upperBound="-1" eType="#//SystemComponent" containment="true">
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
