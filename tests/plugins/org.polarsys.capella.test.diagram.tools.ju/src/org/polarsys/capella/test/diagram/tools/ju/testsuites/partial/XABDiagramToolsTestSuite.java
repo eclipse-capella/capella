@@ -19,6 +19,7 @@ import org.polarsys.capella.test.diagram.tools.ju.xab.CreateActor;
 import org.polarsys.capella.test.diagram.tools.ju.xab.CreateBehaviorPCGroup;
 import org.polarsys.capella.test.diagram.tools.ju.xab.CreateComponent;
 import org.polarsys.capella.test.diagram.tools.ju.xab.CreateComponentExchangeGroup;
+import org.polarsys.capella.test.diagram.tools.ju.xab.CreateComponentInStructureXAB;
 import org.polarsys.capella.test.diagram.tools.ju.xab.CreateComponentPort;
 import org.polarsys.capella.test.diagram.tools.ju.xab.CreateComponentPortAllocation;
 import org.polarsys.capella.test.diagram.tools.ju.xab.CreateConstraint;
@@ -123,6 +124,7 @@ public class XABDiagramToolsTestSuite extends BasicTestSuite {
 
     tests.add(new CreateBehaviorPCGroup());
     tests.add(new CreateComponent());
+    tests.add(new CreateComponentInStructureXAB());
     tests.add(new CreateComponentExchangeGroup());
     tests.add(new CreateActor());
     tests.add(new CreateComponentPort());

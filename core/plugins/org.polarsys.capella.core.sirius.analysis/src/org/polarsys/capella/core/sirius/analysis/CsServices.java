@@ -1389,8 +1389,15 @@ public class CsServices {
       if (ABServices.getService().isValidCreationABComponent(decorator)) {
         return decorator.getTarget();
       }
+      
       // We find the nearest container to store the element
-      return getSemanticParentContainer(decorator.getTarget(), false);
+      EObject parent = getSemanticParentContainer(decorator.getTarget(), false);
+      if (parent instanceof BlockArchitecture
+          && ABServices.getService().isValidCreationABComponent(((BlockArchitecture) parent).getSystem())) {
+        return ((BlockArchitecture) parent).getSystem();
+      }
+      
+      return parent;
     }
     return decorator.getTarget();
   }
@@ -1417,8 +1424,15 @@ public class CsServices {
       if (ABServices.getService().isValidCreationABActor((decorator))) {
         return decorator.getTarget();
       }
-      // We find the nearest container to store the actor
-      return getSemanticParentContainer(decorator.getTarget(), true);
+      
+      // We find the nearest container to store the element
+      EObject parent = getSemanticParentContainer(decorator.getTarget(), true);
+      if (parent instanceof BlockArchitecture
+          && ABServices.getService().isValidCreationABComponent(((BlockArchitecture) parent).getSystem())) {
+        return ((BlockArchitecture) parent).getSystem();
+      }
+      
+      return parent;
     }
     return decorator.getTarget();
   }
@@ -1480,8 +1494,15 @@ public class CsServices {
       if (isActorContext ? ABServices.getService().isValidCreationABActor(decorator) : ABServices.getService().isValidCreationABComponent(decorator)) {
         return decorator.getTarget();
       }
+      
       // We find the nearest container to store the element
-      return getSemanticParentContainer(decorator.getTarget(), isActorContext);
+      EObject parent = getSemanticParentContainer(decorator.getTarget(), isActorContext);
+      if (parent instanceof BlockArchitecture
+          && ABServices.getService().isValidCreationABComponent(((BlockArchitecture) parent).getSystem())) {
+        return ((BlockArchitecture) parent).getSystem();
+      }
+      
+      return parent;
     }
     return decorator.getTarget();
   }
