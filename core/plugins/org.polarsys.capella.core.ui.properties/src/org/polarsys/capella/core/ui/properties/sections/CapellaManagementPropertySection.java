@@ -56,9 +56,6 @@ public class CapellaManagementPropertySection extends AbstractSection implements
   @Override
   public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
 
-    parent.setLayout(new GridLayout());
-    parent.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
-
     boolean displayedInWizard = isDisplayedInWizard();
 
     _visibleInDocGroup = new BooleanValueGroup(parent, Messages.VisibleInDocGroup_Label, getWidgetFactory());
@@ -72,6 +69,11 @@ public class CapellaManagementPropertySection extends AbstractSection implements
 
     _review = new TextAreaValueGroup(_status.getParent(), Messages.ReviewGroup_Label, getWidgetFactory(), true);
     _review.setDisplayedInWizard(displayedInWizard);
+  }
+
+  @Override
+  protected int getColumnCount() {
+    return 1;
   }
 
   /**

@@ -25,10 +25,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
@@ -58,15 +55,18 @@ public class DiagramManagementPropertySection extends AbstractSection {
   private EnumerationValueGroup _status;
   private TextAreaValueGroup _review;
 
+
+  @Override
+  protected int getColumnCount() {
+    return 1;
+  }
+
   /**
    * @see org.eclipse.ui.views.properties.tabbed.ISection#createControls(org.eclipse.swt.widgets.Composite,
    *      org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage)
    */
   @Override
   public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-
-    parent.setLayout(new GridLayout());
-    parent.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
     boolean displayedInWizard = isDisplayedInWizard();
 

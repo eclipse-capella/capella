@@ -115,6 +115,14 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
     });
   }
 
+
+  @Override
+  protected int getColumnCount() {
+    return 1;
+  }
+
+
+
   /**
    * {@inheritDoc}
    */
@@ -124,8 +132,6 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
     OperationHistoryFactory.getOperationHistory().addOperationHistoryListener(this);
 
     TabbedPropertySheetWidgetFactory widgetFactory = getWidgetFactory();
-
-    parent.setLayout(new GridLayout());
 
     // Create the group.
     Group textGroup = widgetFactory.createGroup(parent, ICommonConstants.EMPTY_STRING);

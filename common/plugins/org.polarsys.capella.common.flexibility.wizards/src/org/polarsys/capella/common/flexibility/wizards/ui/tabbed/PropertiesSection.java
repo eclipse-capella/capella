@@ -18,8 +18,9 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
@@ -28,13 +29,14 @@ import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyGroup;
 import org.polarsys.capella.common.flexibility.wizards.group.renderer.DefaultGroupRenderer;
-import org.polarsys.capella.common.flexibility.wizards.group.renderer.SectionGroupRenderer;
+import org.polarsys.capella.common.flexibility.wizards.group.renderer.FlatGroupRenderer;
 import org.polarsys.capella.common.flexibility.wizards.policy.AbstractRendererPolicy;
 import org.polarsys.capella.common.flexibility.wizards.policy.IPolicifiedRendererContext;
 import org.polarsys.capella.common.flexibility.wizards.schema.IGroupRenderer;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRenderer;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
 import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.ui.services.helper.FormHelper;
 
 public class PropertiesSection extends AbstractPropertySection {
   IPropertyContext propertyContext;
@@ -73,7 +75,7 @@ public class PropertiesSection extends AbstractPropertySection {
           // Sub groups should not use this renderer !
           for (IPropertyGroup grp : rendererContext.getPropertyContext().getProperties().getGroups(IPropertyGroup.EMPTY)) {
             if (grp.getId().equals(group.getParentId())) {
-              return new SectionGroupRenderer();
+              return new FlatGroupRenderer();
             }
           }
           return new DefaultGroupRenderer() {
@@ -181,17 +183,24 @@ public class PropertiesSection extends AbstractPropertySection {
   @Override
   public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
     super.createControls(parent, aTabbedPropertySheetPage);
-    try {
-      parent.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
-      IGroupRenderer groupRenderer = rendererContext.getRenderer(group);
-      if (groupRenderer != null) {
-        groupRenderer.render(parent, rendererContext);
-      }
 
-    } catch (Exception e) {
-      e.printStackTrace();
+    // feed the group renderers what they expect..
+    Composite comp = new Composite(parent, SWT.NONE);
+    GridLayout gl = new GridLayout();
+    gl.marginWidth=0;
+    gl.marginHeight=0;
+    comp.setLayout(gl);
+
+    IGroupRenderer groupRenderer = rendererContext.getRenderer(group);
+    if (groupRenderer != null) {
+      groupRenderer.render(comp, rendererContext);
     }
-    parent.pack();
+    
+    if (aTabbedPropertySheetPage != null) {
+      FormHelper.adaptBackgroundColor((Control) comp, aTabbedPropertySheetPage.getWidgetFactory().getColors().getBackground(), false);
+    }
+
+    comp.pack();
   }
 
 }

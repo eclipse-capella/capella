@@ -19,7 +19,6 @@ import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.IFilter;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -125,15 +124,22 @@ public class CapellaExtensionsPropertySection extends AbstractSection implements
     Messages.Summary_ColumnViewer_Label
   };
 
+  @Override
+  protected int getColumnCount() {
+    return 1;
+  }
+
+  @Override
+  public boolean shouldUseExtraSpace() {
+    return true;
+  }
+
   /**
    * @see org.eclipse.ui.views.properties.tabbed.ISection#createControls(org.eclipse.swt.widgets.Composite,
    *      org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage)
    */
   @Override
   public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-
-    parent.setLayout(new GridLayout());
-    parent.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
     boolean displayedInWizard = isDisplayedInWizard();
 

@@ -28,9 +28,8 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Layout;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.forms.widgets.ExpandableComposite;
-import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
@@ -45,7 +44,6 @@ import org.polarsys.capella.core.model.handler.provider.IReadOnlyListener;
 import org.polarsys.capella.core.model.handler.provider.IReadOnlySectionHandler;
 import org.polarsys.capella.core.ui.properties.CapellalEditingDomainListenerForPropertySections;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
-import org.polarsys.capella.core.ui.properties.wizards.Messages;
 
 /**
  * The NamedElement customized section class.
@@ -107,18 +105,31 @@ public abstract class AbstractSection extends AbstractPropertySection implements
     }
     if (aTabbedPropertySheetPage == null) { 
       displayedInWizard = true;
-      rootParentComposite = parent;
       parent.addDisposeListener(e->dispose());
     } else {
       propertySheetPage = aTabbedPropertySheetPage;
-      Section section = getWidgetFactory().createSection(parent, ExpandableComposite.TITLE_BAR | ExpandableComposite.TWISTIE | ExpandableComposite.EXPANDED);
-      section.setText(Messages.CapellaElement_SectionLabel);
-      rootParentComposite = getWidgetFactory().createFlatFormComposite(section);
-      rootParentComposite.setLayout(new GridLayout(2, true)); // 2 ?
-      section.setClient(rootParentComposite);
       CapellalEditingDomainListenerForPropertySections.getCapellaDataListenerForPropertySections().registerPropertySheetPage(propertySheetPage);
     }
+
+    rootParentComposite = getWidgetFactory().createComposite(parent);
+    rootParentComposite.setLayout(createLayout());
+
     createContents(rootParentComposite, aTabbedPropertySheetPage);
+  }
+
+  /**
+   * Defines the layout that should be used on the composite passed to {@link #createContents(Composite, TabbedPropertySheetPage)}.
+   * Defaults to a grid layout with equal width columns. Number of colums is defined by {@link #getColumnCount()}
+   */
+  protected Layout createLayout() {
+    return new GridLayout(getColumnCount(), true);
+  }
+
+  /**
+   * Define the number of columns used for the default grid layout.
+   */
+  protected int getColumnCount() {
+    return 2; // old value for compat. makes no sense really..
   }
 
   /**
