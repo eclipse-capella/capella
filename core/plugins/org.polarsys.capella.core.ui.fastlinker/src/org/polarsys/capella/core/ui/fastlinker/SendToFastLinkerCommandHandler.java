@@ -78,7 +78,7 @@ public class SendToFastLinkerCommandHandler extends AbstractHandler {
 		}
 		Collection<EObject> ret = new ArrayList<>();
 		for (Object selectedElement : ((IStructuredSelection) selection).toList()) {
-		  EObject semanticElement = CapellaAdapterHelper.resolveSemanticObject(selectedElement, true);
+		  EObject semanticElement = CapellaAdapterHelper.resolveBusinessObject(selectedElement);
 		  if (semanticElement != null) {
 				ret.add(semanticElement);
 			}

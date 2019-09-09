@@ -43,7 +43,7 @@ public class DeleteReplicaAndRelatedElementsCommand extends DefaultCommand {
 	
 	protected void performTransformation(Collection<?> source) {
 		
-	  Collection<EObject> semanticElements = CapellaAdapterHelper.resolveSemanticsObjects(source);
+	  Collection<EObject> semanticElements = CapellaAdapterHelper.resolveSemanticObjects(source);
 			HashSet<CatalogElement> catalogElements = new HashSet<>();
       for (EObject selected : semanticElements) {
 				if (selected instanceof CatalogElement && ((CatalogElement) selected).getKind()!=CatalogElementKind.REC) {

@@ -15,6 +15,7 @@ import java.util.Collection;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.re.handlers.attachment.ReAttachmentHandler;
 import org.polarsys.capella.core.re.handlers.attributes.CapellaAttributeHandler;
@@ -67,7 +68,7 @@ public class InitializeTransitionActivity
   @Override
   protected IStatus initializeTransitionSources(IContext context, ActivityParameters activityParams) {
     Collection<Object> selection = (Collection) context.get(ITransitionConstants.TRANSITION_SELECTION);
-    Collection<EObject> result = CapellaAdapterHelper.resolveSemanticsObjects(selection);
+    Collection<EObject> result = CapellaAdapterHelper.resolveSemanticObjects(selection);
     context.put(ITransitionConstants.TRANSITION_SOURCES, result);
     return Status.OK_STATUS;
   }

@@ -69,7 +69,7 @@ public abstract class ProjectRecHandler extends CommandHandler {
         ((LauncherCommand) cmd).setName(name);
       }
       if (cmd != null) {
-        TransactionHelper.getExecutionManager(CapellaAdapterHelper.resolveSemanticsObjects(selection)).execute(cmd);
+        TransactionHelper.getExecutionManager(CapellaAdapterHelper.resolveSemanticObjects(selection)).execute(cmd);
       } else {
         handleNullCommand();
       }
