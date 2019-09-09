@@ -120,7 +120,7 @@ public class NavigationAdvisor {
       navigableElements.addAll(MarkerViewHelper.getModelElementsFromMarker((IMarker) receiver));
 
     } else {
-      EObject element = CapellaAdapterHelper.resolveSemanticObject(receiver, true);
+      EObject element = CapellaAdapterHelper.resolveBusinessObject(receiver);
       if (element != null) {
         List<AbstractModelElementRunnable> navigationHandlers = getNavigationHandler(element);
         if (!navigationHandlers.isEmpty()) {

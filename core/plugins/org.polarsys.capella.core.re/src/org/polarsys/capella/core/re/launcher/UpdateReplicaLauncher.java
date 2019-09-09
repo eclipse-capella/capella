@@ -67,7 +67,7 @@ public class UpdateReplicaLauncher extends org.polarsys.capella.common.re.launch
 
   @Override
   public void run(Collection<?> selection, boolean save, IProgressMonitor monitor) {
-    Collection<EObject> semanticElements = CapellaAdapterHelper.resolveSemanticsObjects(selection);
+    Collection<EObject> semanticElements = CapellaAdapterHelper.resolveSemanticObjects(selection);
     
     HashSet<CatalogElement> catalogElements = new HashSet<>();
     for (EObject selected : semanticElements) {

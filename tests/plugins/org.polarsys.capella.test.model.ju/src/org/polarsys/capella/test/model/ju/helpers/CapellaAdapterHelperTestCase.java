@@ -52,24 +52,27 @@ public class CapellaAdapterHelperTestCase extends BasicTestCase {
     DRepresentationDescriptor labDiagramDescriptor = RepresentationHelper.getRepresentationDescriptor(labDiagram);
     
     assertEquals("Semantic element of a diagram should be its target.", labDiagram.getTarget(),
-        CapellaAdapterHelper.resolveSemanticObject(labDiagram, true));
+        CapellaAdapterHelper.resolveSemanticObject(labDiagram));
     
     assertEquals(
-        "Semantic element of a diagram should be its descriptor, if option is false. Remark: It is NOT quite logic here!!!",
-        labDiagramDescriptor, CapellaAdapterHelper.resolveSemanticObject(labDiagram, false));
+        "Related EObject of a diagram should be its descriptor",
+        labDiagramDescriptor, CapellaAdapterHelper.resolveEObject(labDiagram));
     
     assertEquals("Semantic element of a descriptor should be the target of its diagram", labDiagram.getTarget(),
-        CapellaAdapterHelper.resolveSemanticObject(labDiagramDescriptor, true));
+        CapellaAdapterHelper.resolveSemanticObject(labDiagramDescriptor));
 
     DiagramContext diagramContext = new OpenDiagramStep(context, LAB_DIAGRAM).run();
     DSemanticDecorator functionView = diagramContext.getView(LA__ROOT_LF__LOGICALFUNCTION_1);
     EObject function = IdManager.getInstance().getEObject(LA__ROOT_LF__LOGICALFUNCTION_1, scope);
     
     assertEquals("Semantic element of the view of a function should be the function itself", function,
-        CapellaAdapterHelper.resolveSemanticObject(functionView, true));
+        CapellaAdapterHelper.resolveSemanticObject(functionView));
     
     assertEquals("Semantic element of a function should be itself", function,
-        CapellaAdapterHelper.resolveSemanticObject(function, true));
+        CapellaAdapterHelper.resolveSemanticObject(function));
 
+    assertEquals("Semantic element of a diagram should be its target.", labDiagram.getTarget(),
+        CapellaAdapterHelper.resolveSemanticObject(labDiagram));
+    
   }
 }

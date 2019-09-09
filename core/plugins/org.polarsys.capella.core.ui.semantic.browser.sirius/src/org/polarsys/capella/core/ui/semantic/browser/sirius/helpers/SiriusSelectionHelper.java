@@ -10,16 +10,10 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.semantic.browser.sirius.helpers;
 
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IWorkbenchPart;
-import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
-import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
-import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.ui.semantic.browser.sirius.view.SiriusSemanticBrowserView;
 
 /**
@@ -42,24 +36,9 @@ public class SiriusSelectionHelper {
       if (selection instanceof IStructuredSelection) {
         IStructuredSelection selection_l = (IStructuredSelection) selection;
         Object firstElement = selection_l.getFirstElement();
-        // adapt to the Element
-        result = CapellaAdapterHelper.resolveSemanticObject(firstElement, false);
-        if (result == null) {
-          result = Platform.getAdapterManager().getAdapter(firstElement, EObject.class);
-        }
+        result = CapellaAdapterHelper.resolveBusinessObject(firstElement);
       }
     }
-
-    if (result instanceof Part) {
-      boolean allowMultiplePart = TriStateBoolean.True
-          .equals(CapellaProjectHelper.isReusableComponentsDriven((Part) result));
-      if (!allowMultiplePart) {
-        if (!(((Part) result).getAbstractType() instanceof ConfigurationItem)) {
-          result = ((Part) result).getAbstractType();
-        }
-      }
-    }
-
     return result;
   }
 

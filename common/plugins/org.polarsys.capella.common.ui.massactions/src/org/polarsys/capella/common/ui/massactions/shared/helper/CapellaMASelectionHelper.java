@@ -40,7 +40,7 @@ public class CapellaMASelectionHelper extends MASelectionHelper {
     List<EObject> semanticElements = new ArrayList<>();
 
     for (Object selectedElement : selectedElements) {
-      EObject semanticElement = CapellaAdapterHelper.resolveSemanticObject(selectedElement, false);
+      EObject semanticElement = CapellaAdapterHelper.resolveEObject(selectedElement, false, true);
 
       if (semanticElement != null) {
         semanticElements.add(semanticElement);

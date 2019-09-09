@@ -183,7 +183,7 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
    * @return a semantic element or a {@link DRepresentation}.
    */
   public static Object getElement(Object uiSelectedElement) {
-    Object semanticElement = CapellaAdapterHelper.resolveSemanticObject(uiSelectedElement, true);
+    Object semanticElement = CapellaAdapterHelper.resolveBusinessObject(uiSelectedElement);
     
     if (semanticElement instanceof Part) {
       boolean allowMultiplePart = TriStateBoolean.True
