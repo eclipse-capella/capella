@@ -53,7 +53,7 @@
         <module>org.polarsys.capella.viewpoint.doc</module>
         <module>org.polarsys.capella.th.doc</module>
         <module>org.polarsys.capella.tipsandtricks.doc</module>
-        <module>org.polarsys.capella.gitadapter.doc</module>
+        <module>org.polarsys.capella.git.doc</module>
       </modules>
     </profile>
   </profiles>
