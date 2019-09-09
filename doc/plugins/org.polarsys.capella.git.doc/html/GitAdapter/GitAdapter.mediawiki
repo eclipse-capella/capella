@@ -1,34 +1,15 @@
 = Version Control with GIT =
 
-Git is a Version Control System (VCS) for tracking changes in computer files and coordinating work on those files among multiple users.<br>As with most other distributed version control systems, and unlike SVN and CC, every Git directory on every computer is a full-fledged repository with complete history and full version tracking abilities, independent of network access or a central server.<br>This document describe how to install the Capella Git Adapter and help you to manage Capella Models with Git.
- 
-== Installation ==
+Git is a Version Control System (VCS) for tracking changes in computer files and coordinating work on those files among multiple users.<br>As with most other distributed version control systems, and unlike SVN and CC, every Git directory on every computer is a full-fledged repository with complete history and full version tracking abilities, independent of network access or a central server.
 
-=== Installation from update sites ===
-
-#Install the correct version of Capella.
-#* Find different compatibilities/dependencies for a specific version of Capella : https://wiki.polarsys.org/Capella/Roadmap
-#Download the correct version of EGit.
-#*https://www.eclipse.org/egit/download/
-#Install EGit:
-#* In Capella, select Window > Preferences > Install/Update > Available Software Sites > Add… > Archive… and select the downloaded ZIP file.
-#* Select "Eclipse Git Team Provider" and "JGit", click Next.
-#* After a few seconds, a warning page shows up: click Next, "I accept", "Finish" then "Yes".
-#* If you click the "+" button in the top right-hand corner near the "Capella" perspective button, you should now see a "Git" perspective available.
-#Download the correct version of EMF Diff/Merge.
-#*  http://download.eclipse.org/diffmerge    (EMF-DiffMerge-x.y.z)
-#Install EMF Diff/Merge:
-#* In Capella, select Window > Preferences > Install/Update > Available Software Sites > Add… > Archive… and select the downloaded ZIP file.
-#* Select "EMF Diff/Merge EGit Integration Feature (Incubation)", click Next.
-#* Click Next, "I accept", "Finish", "OK", "Yes".
 
 == Tutorials ==
 
-These tutorials assume that you are familiar with Git and you knwo how it works.<br>
-If you're new to Git or distributed version control systems generally, then you might want to read [[../help/topic/org.eclipse.egit.doc/help/EGit/Git_For_Eclipse_Users/Git-For-Eclipse-Users.html| Git for Eclipse Users]] first.<br>
+These tutorials assume that you are familiar with Git and you know how it works.<br>
+If you are new to Git or to distributed version control systems generally, then you might want to read [[../help/topic/org.eclipse.egit.doc/help/EGit/Git_For_Eclipse_Users/Git-For-Eclipse-Users.html| Git for Eclipse Users]] first.<br>
 More background and details can be found in the on-line book [https://git-scm.com/book/en/v2 Pro Git].
 
-Capella Git Adapter is based on EMF Diff/Merge, help and details about it can be found in [[../help/topic/org.eclipse.emf.diffmerge.doc/html/EMF-DiffMerge.html| EMF Diff/Merge Guide]].
+Capella Git Adapter is based on EMF Diff/Merge, help and details about it can be found in the[[../help/topic/org.eclipse.emf.diffmerge.doc/html/EMF-DiffMerge.html| EMF Diff/Merge Guide]].
 
 {| border="1"
 |-
@@ -39,8 +20,8 @@ Capella Git Adapter is based on EMF Diff/Merge, help and details about it can be
 <li>Always validate your model before a commit.</li>
 <li>Select all fragments on commit if the model is fragmented.</li>
 <li>Close the session before a pull, rebase or merge operation.</li>
-<li>To handle large files in Git Repositories, more than 2GB, there are multiple 3rd party implementations that will try to solve the problem, many of them using similar paradigm as a solution.</li>
-<li>Content of all model files (aird, airdfragment, melodymodeller, melodyfragment, afm, ...) are declared as ASCII Text and not binary files.<br>(see Capella : Window > Preferences > Team > File Content)</li>
+<li>To handle large files in Git Repositories, more than 2GB, there are multiple 3rd party implementations that will try to solve the problem, many of them using a similar paradigm as a solution.</li>
+<li>The content of all model files (aird, airdfragment, melodymodeller, melodyfragment, afm, ...) are declared as ASCII Text and not binary files.<br>(see Capella : Window > Preferences > Team > File Content)</li>
 </ul>
 |}
 
@@ -82,7 +63,7 @@ This tutorial provides a step by step walk-through of the Capella Git Adapter.
 
 *Now, switch back to the Capella perspective ("Capella" button in the top right-hand corner) and create a new Capella Project.
 *Right-click the project in the Capella Project Explorer > Team > Share Project...<br><br>
-:-[[Image:images/ShareProject.png|480x580px]]
+:-[[Image:images/ShareProject.png]]
 <br>
 *Select Git and click Next.<br><br>
 :-[[Image:images/ShareProjectGit.png|460x410px]]
@@ -114,14 +95,14 @@ This tutorial provides a step by step walk-through of the Capella Git Adapter.
 :-[[Image:images/CompareEditor.png|840x670px]]
 
 
-==== Check the current changes wrt. the last commit ====
+==== Check the current changes with the last commit ====
 
 *Make new changes in your diagram including the renaming of a function, save.
 
 *Right-click the .melodymodeller file > Compare with > Head revision > Finish. You have the possibility to undo some of the current changes at a fine grain with the diff/merge tool.<br><br>
 :-[[Image:images/CompareWithHead.png|470x600px]]
 <br>
-:-[[Image:images/CompareHeadActions.png|988x470px]]
+:-[[Image:images/CompareHeadActions.png]]
 
 
 
@@ -244,7 +225,6 @@ If your model refers to libraries, you have to include manually your modified li
 
 == Limitations / Known Issues ==
 
-* Diff/Merge 3-way to enhance.
-* Session need to be closed prior to any Fetch, Pull or Rebase as the files will be changed by Git and those changes need to be synchonized with the Eclipse File System.
-* On a fragmented model, Diff/Merge shall be performed on root file (not airdfragment/melodyfragment) to ensure that model is fully loaded while Diff/Merge analysis.
- 
+* Diff/Merge 3-way can be improved.
+* The session needs to be closed prior to any Fetch, Pull or Rebase. This is due to the fact that files will be changed by Git and those changes need to be synchonized with the Eclipse File System.
+* On a fragmented model, Diff/Merge needs to be performed on the root file (not the airdfragment/melodyfragment) to ensure that the model is fully loaded during the Diff/Merge analysis.
