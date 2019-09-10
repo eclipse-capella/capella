@@ -97,10 +97,6 @@
          id="org.polarsys.capella.core.re.feature"
          version="0.0.0"/>
 
-   <includes
-         id="org.polarsys.capella.core.git.feature"
-         version="0.0.0"/>
-
    <plugin
          id="org.polarsys.capella.rcp"
          download-size="0"
