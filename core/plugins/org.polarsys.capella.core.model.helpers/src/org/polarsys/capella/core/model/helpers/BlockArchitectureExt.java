@@ -758,7 +758,10 @@ public class BlockArchitectureExt {
    */
   public static boolean isRootComponent(Component component) {
     BlockArchitecture architecture = getRootBlockArchitecture(component);
-    return component.equals(architecture.getSystem());
+    if(architecture != null) {
+      return component.equals(architecture.getSystem());      
+    }
+    return false;
   }
 
   /**
