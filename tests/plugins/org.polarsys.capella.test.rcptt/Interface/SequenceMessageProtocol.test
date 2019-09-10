@@ -14,7 +14,7 @@ Testcase-Type: ecl
 Content-Type: text/ecl
 Entry-Name: .content
 
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "InterfaceDelegation/InterfaceDelegation.aird" | get-menu "Open Session" | click
 }
 
@@ -22,12 +22,12 @@ with [get-view "Capella Project Explorer" | get-tree] {
 //- after creation of default Sequence message, check Tranmission  & Acquisition Protocol value
 
 
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "InterfaceDelegation/InterfaceDelegation.aird/prod00122042/Physical Architecture/Capabilities" 
     | get-menu "Add Capella Element/Capability Realization" | click
     
     
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "InterfaceDelegation/*InterfaceDelegation.aird/prod00122042/Physical Architecture/Capabilities/CapabilityRealization 1" 
     | get-menu "New Diagram \\/ Table.../Interface Scenario" | click
 get-window "New Interface Scenario" | get-button OK | click
@@ -105,7 +105,7 @@ proc createMessage [val eiName] [val msgTool] [val msgKind] [val eiKind] [val ch
     }
 
 
-    get-view "Capella Project Explorer" | get-tree 
+    get-view "Project Explorer" | get-tree 
         | select [concat "InterfaceDelegation/*InterfaceDelegation.aird/prod00122042/Physical Architecture/Physical System/Interfaces/PhysicalComponent 1_to_PhysicalComponent 2/--> " $eiName]
 
     get-view Properties | click

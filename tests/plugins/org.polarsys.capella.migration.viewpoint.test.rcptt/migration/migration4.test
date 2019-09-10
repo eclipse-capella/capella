@@ -14,14 +14,14 @@ Testcase-Type: ecl
 Content-Type: text/ecl
 Entry-Name: .content
 
-get-view "Capella Project Explorer" | get-tree | select C | get-menu "Migration/Migrate Project toward current version" 
+get-view "Project Explorer" | get-tree | select C | get-menu "Migration/Migrate Project toward current version" 
     | click
 get-window "Model Migration"  | get-button OK | click
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "C/C.aird" | double-click
     select "C/C.aird/C/Physical Architecture/Physical System/PhysicalComponent 1 : PhysicalComponent 1/PartMass 1"
 }
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | get-item "C/C.aird/C/Physical Architecture/Physical System/PhysicalComponent 1 : PhysicalComponent 1/PartMass 1" 
     | get-property "getText()" | equals "PartMass 1" | verify-true
 with [get-view "Viewpoint Manager" | get-table] {
@@ -29,5 +29,5 @@ with [get-view "Viewpoint Manager" | get-table] {
     get-item mass | get-property "values['Name']" | equals mass | verify-true
     get-item mass | get-property "values['State']" | equals Used | verify-true
 }
-get-view "Capella Project Explorer" | get-tree | get-item C | get-property childCount | equals 6 | verify-true
+get-view "Project Explorer" | get-tree | get-item C | get-property childCount | equals 6 | verify-true
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

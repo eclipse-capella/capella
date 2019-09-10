@@ -20,7 +20,7 @@ Creates a new Class Diagram then DnD it into a different Data Package.
 Content-Type: text/ecl
 Entry-Name: .content
 
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "EOLE_AF/EOLE_AF.aird" | double-click
     select "EOLE_AF/EOLE_AF.aird/EOLE_AF/Operational Analysis/Data" 
         | get-menu "New Diagram \\/ Table.../Class Diagram Blank" | click
@@ -28,15 +28,15 @@ with [get-view "Capella Project Explorer" | get-tree] {
 get-window "New Class Diagram Blank" | get-button OK | click
 get-editor "[CDB] Data" | get-diagram -index 1 | get-edit-part -name "[CDB] Data" | mouse-move 138 257 -height 398 
     -width 605
-get-view "Capella Project Explorer" | get-tree | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Operational Analysis/Data" 
+get-view "Project Explorer" | get-tree | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Operational Analysis/Data" 
     | get-menu "Add Capella Element/Data Pkg" | click
 get-editor "[CDB] Data" | get-diagram -index 1 | get-edit-part -name "[CDB] Data" | mouse-move 257 149 -height 398 
     -width 605
-get-view "Capella Project Explorer" | get-tree | key-type "M1+s"
+get-view "Project Explorer" | get-tree | key-type "M1+s"
 get-editor "[CDB] Data" | get-diagram -index 1 | get-edit-part -name "[CDB] Data" | mouse-move 27 236 -height 398 
     -width 605
     
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "EOLE_AF/EOLE_AF.aird/EOLE_AF/Operational Analysis/Data/[CDB] Data" 
         | get-item "EOLE_AF/EOLE_AF.aird/EOLE_AF/Operational Analysis/Data/\\[CDB\\] Data" | drag-start 35 8
     get-item "EOLE_AF/EOLE_AF.aird/EOLE_AF/Operational Analysis/Data/DataPkg 1" | drag-enter 35 15 -detail move
@@ -48,7 +48,7 @@ with [get-view "Capella Project Explorer" | get-tree] {
     drag-end -detail move
     
     // The diagram should be dropped under the newly created DataPkg 1
-    get-view "Capella Project Explorer" | get-tree 
+    get-view "Project Explorer" | get-tree 
     | get-item "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Operational Analysis/Data/DataPkg 1" | 
     get-property childCount | equals 1 | verify-true
 }

@@ -15,7 +15,7 @@ Entry-Name: .content
 
 //Create a project
 
-get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
+get-view "Project Explorer" | get-tree | get-menu "New/Capella Project" | click
 with [get-window "New Capella Project"] {
     get-editbox | set-text project
     get-button Finish | click
@@ -24,13 +24,13 @@ with [get-window "New Capella Project"] {
 
 //Create a library
 
-get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Library" | click
+get-view "Project Explorer" | get-tree | get-menu "New/Capella Library" | click
 with [get-window "New Capella Library"] {
     get-editbox | set-text library
     get-button Finish | click
 }
 
-get-view "Capella Project Explorer" | get-tree | select "project/project.aird" | get-menu "Libraries/Manage references" | click
+get-view "Project Explorer" | get-tree | select "project/project.aird" | get-menu "Libraries/Manage references" | click
 with [get-window -class PropertyDialog] {
     get-table | get-item "library.melodymodeller" | check
     get-button OK | click
@@ -38,7 +38,7 @@ with [get-window -class PropertyDialog] {
 
 // Create a MSM diagram
 
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "project/project.aird/project/System Analysis/System/System State Machine/Default Region" 
     | select "project/project.aird/project/System Analysis/System/System State Machine/Default Region" 
     | get-menu "New Diagram \\/ Table.../Mode State Machine" | click
@@ -197,22 +197,22 @@ get-editor "[MSM] Default Region" | get-diagram -index 1 | get-edit-part -name "
 
 // On the project explorer, we can add Constraints and Property Values on TimeEvent/ ChangeEvent
 
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "project/*project.aird/project/System Analysis/Data/TimeEvent 1" 
     | select "project/*project.aird/project/System Analysis/Data/TimeEvent 1" 
     | get-menu "Add Capella Element/Constraint" | click
     
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "project/*project.aird/project/System Analysis/Data/TimeEvent 1" 
     | select "project/*project.aird/project/System Analysis/Data/TimeEvent 1" 
     | get-menu "Add Capella Element/Boolean Property Value" | click
 
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "project/*project.aird/project/System Analysis/Data/ChangeEvent 2" 
     | select "project/*project.aird/project/System Analysis/Data/ChangeEvent 2" 
     | get-menu "Add Capella Element/Boolean Property Value" | click
 
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "project/*project.aird/project/System Analysis/Data/ChangeEvent 2" 
     | select "project/*project.aird/project/System Analysis/Data/ChangeEvent 2" 
     | get-menu "Add Capella Element/Constraint" | click
@@ -220,7 +220,7 @@ get-view "Capella Project Explorer" | get-tree
     
 // Create a model with Time Event, Change Event, Function, Functional Exchange as below
 
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
 
     select "project/*project.aird/project/Operational Analysis/Data" | get-menu "Add Capella Element/Time Event" | click
     select "library/library.aird/library/Operational Analysis/Data" | get-menu "Add Capella Element/Time Event" | click
@@ -241,7 +241,7 @@ with [get-view "Capella Project Explorer" | get-tree] {
 }
 
 // Create a Functional Exchange and two functions, allocate it to the System
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "project/*project.aird/project/System Analysis/System Functions/Root System Function" 
     | select "project/*project.aird/project/System Analysis/System Functions/Root System Function" 
     | get-menu "New Diagram \\/ Table.../System Data Flow Blank" | click
@@ -311,7 +311,7 @@ with [get-editor "[SDFB] Root System Function"] {
 
 // Allocate both functions
 
-get-view "Capella Project Explorer" | get-tree | select "project/*project.aird/project/System Analysis/System"
+get-view "Project Explorer" | get-tree | select "project/*project.aird/project/System Analysis/System"
 get-view Properties | get-section Property | get-group -index 1 | get-button "Browse available elements"
     -after [get-label "Allocated Functions :"] | click
 with [get-window "Transfer Dialog"] {
@@ -320,8 +320,8 @@ with [get-window "Transfer Dialog"] {
 }
 
 
-get-view "Capella Project Explorer" | get-tree | select "library/*library.aird" | key-type "M1+s"
-get-view "Capella Project Explorer" | get-tree | select "project/*project.aird" | key-type "M1+s"
+get-view "Project Explorer" | get-tree | select "library/*library.aird" | key-type "M1+s"
+get-view "Project Explorer" | get-tree | select "project/*project.aird" | key-type "M1+s"
 
 // On the Transition.trigger, it shall display all allocated functions, exchanges, operation, exchangeItems, as UPPER_LAYER & LIBRARY_UPPER_LAYERS access rule(i.e Same layer + All upper layer even of library model)
 

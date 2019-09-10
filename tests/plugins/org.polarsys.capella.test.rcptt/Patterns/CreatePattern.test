@@ -67,7 +67,7 @@ get-window "Modeling Patterns" | get-button OK | click
 get-eclipse-window | key-type "M1+M2+s"
 
 // Open the 'Pattern Instance Management' window
-get-view "Capella Project Explorer" | get-tree | select "patterns_1/patterns_1.aird/patterns_1/Logical Architecture/L" +
+get-view "Project Explorer" | get-tree | select "patterns_1/patterns_1.aird/patterns_1/Logical Architecture/L" +
 	"ogical System/LC_A : LC_A" | get-menu "Patterns/Manage Instance(s)..." | click
 
 // Check that the part has the correct role

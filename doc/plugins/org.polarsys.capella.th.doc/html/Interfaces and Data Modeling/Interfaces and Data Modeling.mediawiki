@@ -997,9 +997,9 @@ And do not forget that navigability (arrows on associations) and direction of th
 
 <center>[[image:Images\image053.png]]</center>
 
-====Associations in Capella Project Explorer====
+====Associations in Project Explorer====
 
-Properties of a class (attributes or navigable roles) are shown in the same way under their owning class in Capella Project Explorer.
+Properties of a class (attributes or navigable roles) are shown in the same way under their owning class in Project Explorer.
 
 
 

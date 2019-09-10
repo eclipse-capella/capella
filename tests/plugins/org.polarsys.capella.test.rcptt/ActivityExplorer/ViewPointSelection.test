@@ -23,12 +23,12 @@ Test scenario:
 Content-Type: text/ecl
 Entry-Name: .content
 
-get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
+get-view "Project Explorer" | get-tree | get-menu "New/Capella Project" | click
 with [get-window "New Capella Project"] {
     get-editbox | set-text Project
     get-button Finish | click
 }
-get-view "Capella Project Explorer" | get-tree | select "Project/Project.aird" | get-menu "Viewpoints selection" | click
+get-view "Project Explorer" | get-tree | select "Project/Project.aird" | get-menu "Viewpoints selection" | click
 with [get-window "Viewpoints Selection"] {
 	let [val table [get-table]]
 	{

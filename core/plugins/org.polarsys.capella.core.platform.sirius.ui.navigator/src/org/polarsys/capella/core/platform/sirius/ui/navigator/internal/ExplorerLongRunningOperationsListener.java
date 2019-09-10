@@ -24,7 +24,7 @@ import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommon
 public class ExplorerLongRunningOperationsListener implements ILongRunningListener {
 
   /**
-   * Runnable to be run in UI Thread to enable/disable notifications on the Capella Project Explorer.
+   * Runnable to be run in UI Thread to enable/disable notifications on the Project Explorer.
    */
   private class NotificationEnabler implements Runnable {
 

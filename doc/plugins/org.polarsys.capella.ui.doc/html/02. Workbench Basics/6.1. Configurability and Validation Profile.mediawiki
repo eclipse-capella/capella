@@ -70,7 +70,7 @@ Capella projects use by default Workspace preferences.
  
 ==== Exporting Workspace Preferences ====
  
-Workspace preferences can be exported using the Export wizard. Right click in the Capella Project Explorer and choose ''Export''.
+Workspace preferences can be exported using the Export wizard. Right click in the Project Explorer and choose ''Export''.
 
  
 [[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_658237e5.png|900x540px]]
@@ -118,7 +118,7 @@ Validation preferences can be exported only if there are different from the defa
  
 ==== Importing Workspace Preferences ====
  
-Preferences can be imported using the Import wizard. Right click in the Capella Project Explorer and choose ''Import''.
+Preferences can be imported using the Import wizard. Right click in the Project Explorer and choose ''Import''.
 
  
 [[Image:Images/6.1.%20Configurability%20and%20Validation%20Profile_html_19779b8b.png|650x300px]]
@@ -216,7 +216,7 @@ The following table gives the preferences in each step
 Capella Project specific preferences can be set on a Capella project to override Workspace preferences.
 
  
-Capella Project specific preferences are set by right clicking on the project in Capella Project Explorer, and choosing ''properties'' menu.
+Capella Project specific preferences are set by right clicking on the project in Project Explorer, and choosing ''properties'' menu.
 
                     
 {| border="1"
@@ -226,7 +226,7 @@ Capella Project specific preferences are set by right clicking on the project in
 
  
 | 
-To see 				.settings folder containing these local preferences, filtered by 				default, go to Capella Project Explorer and select 				&ldquo;Customize View&hellip;&rdquo; dialog, uncheck 				&ldquo;*.resources&rdquo; choice.
+To see 				.settings folder containing these local preferences, filtered by 				default, go to Project Explorer and select 				&ldquo;Customize View&hellip;&rdquo; dialog, uncheck 				&ldquo;*.resources&rdquo; choice.
 
  
 | 

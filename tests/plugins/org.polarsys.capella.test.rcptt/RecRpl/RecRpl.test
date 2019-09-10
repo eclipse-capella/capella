@@ -15,14 +15,14 @@ Content-Type: text/ecl
 Entry-Name: .content
 
 // Create new Capella Project
-get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
+get-view "Project Explorer" | get-tree | get-menu "New/Capella Project" | click
 with [get-window "New Capella Project"] {
     get-editbox | set-text project
     get-button Finish | click
 }
 
 // Create new SDFB diagram
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "project/project.aird/project/System Analysis/System Functions/Root System Function" 
     | get-menu "New Diagram \\/ Table.../System Data Flow Blank" | click
 get-window "New System Data Flow Blank" | get-button OK | click
@@ -30,7 +30,7 @@ get-window "New System Data Flow Blank" | get-button OK | click
 
 //Ensure that port and exchanges are hidden
 get-button "View Menu" | click
-get-view "Capella Project Explorer" | get-menu "Filters and Customization..." | click
+get-view "Project Explorer" | get-menu "Filters and Customization..." | click
 with [get-window "Filters and Customization"] {
     get-tab-folder | get-tab-item "Pre-set filters" | click
     with [get-table] {
@@ -140,7 +140,7 @@ get-editor "[SDFB] Root System Function" | get-diagram -index 1 | get-edit-part 
     | mouse-move 410 207 -height 394 -width 604
 get-editor "[SDFB] Root System Function" | get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function" 
     | mouse-move 47 69 -height 394 -width 521
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     get-item "project/\\*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 1 \\[REC\\]" 
         | get-property caption | equals "SystemFunction 1 [REC]" | verify-true
     get-item "project/\\*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 2 \\[REC\\]" 
@@ -206,14 +206,14 @@ with [get-window "Update REC from selection"] {
 
 // Check that REC contains 6 elements, and Sub Function is tagged with [REC] tag
 
-get-view "Capella Project Explorer" | get-tree | get-item "project/\\*project.aird/project/REC Catalog/REC1" 
+get-view "Project Explorer" | get-tree | get-item "project/\\*project.aird/project/REC Catalog/REC1" 
     | get-property childCount | equals 6 | verify-true
     
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "project/*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 1 [REC]/Sub [REC]"
 get-editor "[SDFB] Root System Function" | get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function" 
     | mouse-move 160 5 -height 394 -width 521
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | get-item "project/\\*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 1 \\[REC\\]/Sub \\[REC\\]" 
     | get-property caption | equals "Sub [REC]" | verify-true
 
@@ -221,7 +221,7 @@ get-view "Capella Project Explorer" | get-tree
 
 // Create a new Diagram and instanciate a RPL with a suffix newElements
 
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "project/*project.aird/project/System Analysis/System Functions/Root System Function" 
     | get-menu "New Diagram \\/ Table.../System Data Flow Blank" | click
 get-window "New System Data Flow Blank" | get-button OK | click
@@ -254,11 +254,11 @@ with [get-window "Replicable Elements"] {
 
 get-editor "[SDFB] Root System Function" -index 1 | get-palette | get-palette-entry "Functional Exchanges" -index 1 
     | mouse-move 104 0 -height 37 -width 125
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "project/*project.aird/project/REC Catalog/RPL1 [REC1]"
 get-editor "[SDFB] Root System Function" -index 1 | get-diagram -index 1 | get-edit-part 
     -name "[SDFB] Root System Function" | mouse-move 78 8 -height 394 -width 604
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     get-item "project/\\*project.aird/project/REC Catalog/RPL1 \\[REC1\\]" | get-property caption 
         | equals "RPL1 [REC1]" | verify-true
     get-item "project/\\*project.aird/project/REC Catalog/RPL1 \\[REC1\\]" | get-property childCount 
@@ -267,10 +267,10 @@ with [get-view "Capella Project Explorer" | get-tree] {
 
 get-editor "[SDFB] Root System Function" -index 1 | get-diagram -index 1 | get-edit-part 
     -name "[SDFB] Root System Function" | mouse-move 93 171 -height 394 -width 498
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | get-item "project/\\*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 1_newElements \\[RPL\\]" 
     | get-property caption | equals "SystemFunction 1_newElements [RPL]" | verify-true
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | get-item "project/\\*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 2_newElements \\[RPL\\]" 
     | get-property caption | equals "SystemFunction 2_newElements [RPL]" | verify-true
 
@@ -342,9 +342,9 @@ with [get-editor "[SDFB] Root System Function" -index 1 | get-diagram -index 1 |
 }
 
 
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "project/*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 1_newElements [RPL]"
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | get-item "project/\\*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 1_newElements \\[RPL\\]" 
     | get-property childCount | equals 0 | verify-true
     
@@ -373,9 +373,9 @@ with [get-window "Update selected RPL from its REC"] {
 }
 get-editor "[SDFB] Root System Function" -index 1 | get-diagram -index 1 | get-edit-part 
     -name "[SDFB] Root System Function" | mouse-move 151 558 -height 687 -width 1042
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "project/*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 1_newElements [RPL]"
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     get-item "project/\\*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 1_newElements \\[RPL\\]" 
         | get-property childCount | equals 1 | verify-true
     get-item "project/\\*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 1_newElements \\[RPL\\]/Sub \\[RPL\\]" 
@@ -383,7 +383,7 @@ with [get-view "Capella Project Explorer" | get-tree] {
 }
 
 
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "project/*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 1_newElements [RPL]/Sub [RPL]"
 with [get-editor "[SDFB] Root System Function" -index 1] {
     get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function" | mouse-move 894 255 -height 687 
@@ -487,7 +487,7 @@ with [get-window "Update REC from selected RPL"] {
 }
 get-editor "[SDFB] Root System Function" -index 1 | get-diagram -index 1 | get-edit-part 
     -name "[SDFB] Root System Function" | mouse-move 500 480 -height 687 -width 1042
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     get-item "project/\\*project.aird/project/REC Catalog/REC1" | get-property caption | equals REC1 | verify-true
     get-item "project/\\*project.aird/project/REC Catalog/REC1" | get-property childCount | equals 5 | verify-true
     get-item "project/\\*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 1 \\[REC\\]" 
@@ -497,7 +497,7 @@ with [get-view "Capella Project Explorer" | get-tree] {
 
 //Create a new diagram and instanciate a new RPL. They shall contains the suffix
 
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "project/*project.aird/project/System Analysis/System Functions/Root System Function" 
     | get-menu "New Diagram \\/ Table.../System Data Flow Blank" | click
 get-window "New System Data Flow Blank" | get-button OK | click
@@ -523,7 +523,7 @@ with [get-window "Replicable Elements"] {
     get-button OK | click
 }
 
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     get-item "project/\\*project.aird/project/REC Catalog/RPL2 \\[REC1\\]" | get-property caption 
         | equals "RPL2 [REC1]" | verify-true
     get-item "project/\\*project.aird/project/REC Catalog/RPL2 \\[REC1\\]" | get-property childCount | equals 5 
@@ -638,7 +638,7 @@ with [get-editor "[SDFB] Root System Function" -index 2 | get-diagram -index 1 |
 
 get-editor "[SDFB] Root System Function" -index 2 | get-diagram -index 1 | get-edit-part 
     -name "[SDFB] Root System Function" | mouse-move 607 653 -height 687 -width 1042
-get-view "Capella Project Explorer" | get-tree | select "project/*project.aird/project/REC Catalog/RPL2 [REC1]" 
+get-view "Project Explorer" | get-tree | select "project/*project.aird/project/REC Catalog/RPL2 [REC1]" 
     | get-menu "REC \\/ RPL/Update selected RPL from its REC" | click
 with [get-window "Replicable Elements"] {
     with [get-group ""] {
@@ -652,7 +652,7 @@ with [get-window "Update selected RPL from its REC"] {
 }
 get-editor "[SDFB] Root System Function" -index 2 | get-diagram -index 1 | get-edit-part 
     -name "[SDFB] Root System Function" | mouse-move 109 672 -height 687 -width 1042
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     get-item "project/\\*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 2_nefffff \\[RPL\\]" 
         | get-property caption | equals "SystemFunction 2_nefffff [RPL]" | verify-true
     get-item "project/\\*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 1_nefffff \\[RPL\\]" 
@@ -662,14 +662,14 @@ with [get-view "Capella Project Explorer" | get-tree] {
 
 // Check Semantic Browser queries on REC
 
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "project/*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 1 [REC]"
 
 get-view "Semantic Browser" | get-tree | select "REC/REC1"
 
 // Check Semantic Browser queries on RPL
 
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "project/*project.aird/project/System Analysis/System Functions/Root System Function/SystemFunction 1_newElements [RPL]"
 
 with [get-view "Semantic Browser"] {

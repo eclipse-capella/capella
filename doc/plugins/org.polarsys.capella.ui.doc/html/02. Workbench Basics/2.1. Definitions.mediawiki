@@ -56,7 +56,7 @@ Capella consists in one single Perspective, which is loaded by default when Cape
 A view is a visual component within the workbench. It is typically used to navigate a list or hierarchy of information (such as the resources in the workbench), or display properties for the active editor. It can support editors and provides information and alternative presentation. Modifications made in a view are saved immediately if the view is not attached to an editor.
 
  
-For example, the Capella Project Explorer and other navigation views display projects and other resources the user is working with, while the Information view displays information that provides feedback to several Capella &ldquo;complex&rdquo; processes.
+For example, the Project Explorer and other navigation views display projects and other resources the user is working with, while the Information view displays information that provides feedback to several Capella &ldquo;complex&rdquo; processes.
 
  
 == Editors ==

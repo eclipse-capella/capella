@@ -42,7 +42,7 @@ with [get-window Preferences] {
 }
 
 // Open the Sirius diagram and delete all model elements from the project explorer
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "RefreshAllSubRepresentations/model.aird" | double-click
     select "RefreshAllSubRepresentations/model.aird/model/Operational Analysis/Operational Activities/Root Operational Activity/\\[OAIB\\] Root Operational Activity" 
         | double-click
@@ -69,7 +69,7 @@ get-view Properties | get-tree | get-property itemCount | equals 0 | verify-true
 get-eclipse-window | key-type "M1+s"
 
 // Close and re-open the session, then Refresh All Sub Representations
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "RefreshAllSubRepresentations/model.aird" | get-menu -path Close | click
     select "RefreshAllSubRepresentations/model.aird" | get-menu -path "Open Session" | click
     select "RefreshAllSubRepresentations/model.aird" | get-menu -path "Refresh All Sub Representations" | click
@@ -80,7 +80,7 @@ get-window "Confirm Capella Representation Refresh" | get-button OK | click
 get-button "Save All (M1+M2+S)" | click
 
 // Open the diagram
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "RefreshAllSubRepresentations/model.aird/model/Operational Analysis/Operational Activities/Root Operational Activity/\\[OAIB\\] Root Operational Activity" 
     | double-click
 

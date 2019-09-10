@@ -18,7 +18,7 @@ package org.polarsys.capella.core.model.semantic.prefs;
  * The preference is currently initialized to be true and not exposed to the user. 
  * 
  * <p/>
- * I imagine that we could in the future also use this preference to filter the capella project explorer, and for code completion in the ocl request interpreter.
+ * I imagine that we could in the future also use this preference to filter the project explorer, and for code completion in the ocl request interpreter.
  */
 public interface ISemanticModelPreferences {
 

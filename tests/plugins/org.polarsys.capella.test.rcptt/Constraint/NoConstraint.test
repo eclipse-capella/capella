@@ -22,7 +22,7 @@ Case 1: No contraint
 Content-Type: text/ecl
 Entry-Name: .content
 
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "ConstraintEdition/ConstraintEdition.aird" | double-click
     select [get-item "ConstraintEdition/ConstraintEdition.aird/ConstraintEdition/System Analysis/System/System State Machine/Default Region" 
         | get-item "Transition 2"]
@@ -39,7 +39,7 @@ with [get-view Properties | get-section Property | get-group "" -index 1 | get-t
 	type-text "True"
 	key-type Enter
 }
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select [get-item "ConstraintEdition/*ConstraintEdition.aird/ConstraintEdition/System Analysis/System/System State Machine/Default Region" 
     | get-item "Transition 2" | get-item "[Constraint]/[Opaque Expression]"]
 
@@ -52,7 +52,7 @@ with [get-view Properties | get-section Property | get-group "" -index 1] {
     get-text-viewer | get-property text | equals "toto=True" | verify-true
 }
 
-get-view "Capella Project Explorer" | get-tree | select "ConstraintEdition/*ConstraintEdition.aird" | get-menu Close 
+get-view "Project Explorer" | get-tree | select "ConstraintEdition/*ConstraintEdition.aird" | get-menu Close 
     | click
 get-window Save | get-button Yes | click
 

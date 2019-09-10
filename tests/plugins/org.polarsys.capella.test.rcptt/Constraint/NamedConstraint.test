@@ -22,7 +22,7 @@ Case 2: Constraint created with name
 Content-Type: text/ecl
 Entry-Name: .content
 
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "ConstraintEdition/ConstraintEdition.aird" | double-click
     select [get-item "ConstraintEdition/ConstraintEdition.aird/ConstraintEdition/System Analysis/System/System State Machine/Default Region" 
         | get-item "Transition 1"]
@@ -40,7 +40,7 @@ with [get-view Properties | get-section Property | get-group "" -index 1 | get-e
 verify-error {get-window -from "CompletionProposalPopup.createProposalSelector()"}
 
 // Test that no child OpaqueExpression is created
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | get-item "ConstraintEdition/ConstraintEdition.aird/ConstraintEdition/System Analysis/System/System State Machine/Default Region/Transition 1/This constraint is named" 
     | get-property childCount | equals 0 | verify-true
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

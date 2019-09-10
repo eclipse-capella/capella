@@ -22,10 +22,10 @@ Content-Type: text/ecl
 Entry-Name: .content
 
 // Open the session
-get-view "Capella Project Explorer" | get-tree | select "CopyPasteNoDuplicate/CopyPasteNoDuplicate.aird" | double-click
+get-view "Project Explorer" | get-tree | select "CopyPasteNoDuplicate/CopyPasteNoDuplicate.aird" | double-click
 
 // Select the SDFB diagram in the project and open it
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "CopyPasteNoDuplicate/CopyPasteNoDuplicate.aird/CopyPasteNoDuplicate/System Analysis/System Functions/Root System Function/\\[SDFB\\] Root System Function" 
     | double-click
 
@@ -65,7 +65,7 @@ with [get-editor "[SDFB] Root System Function"] {
 get-button "Save All (M1+M2+S)" | click
 
 // Close the session, then reopen it, then open the SDFB diagram
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "CopyPasteNoDuplicate/CopyPasteNoDuplicate.aird" | get-menu -path Close | click
     select "CopyPasteNoDuplicate/CopyPasteNoDuplicate.aird" | double-click
     select "CopyPasteNoDuplicate/CopyPasteNoDuplicate.aird/CopyPasteNoDuplicate/System Analysis/System Functions/Root System Function/\\[SDFB\\] Root System Function" 

@@ -14,11 +14,11 @@ Testcase-Type: ecl
 Content-Type: text/ecl
 Entry-Name: .content
 
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "InterfaceDelegation/InterfaceDelegation.aird" | get-menu "Open Session" | click
 }
 
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "InterfaceDelegation/InterfaceDelegation.aird/Representations per category/Common/Interfaces Diagram Blank/\\[IDB\\] Testing Filters" 
         | double-click
 }

@@ -16,13 +16,13 @@ Entry-Name: .content
 
 //Create a project
 
-get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
+get-view "Project Explorer" | get-tree | get-menu "New/Capella Project" | click
 with [get-window "New Capella Project"] {
     get-editbox | set-text project
     get-button Finish | click
 }
 
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "project/project.aird/project/System Analysis/Capabilities" 
         | select "project/project.aird/project/System Analysis/Capabilities" 
         | get-menu "Add Capella Element/Capability" | click
@@ -94,7 +94,7 @@ with [get-editor "[IS] Capability 1" | get-diagram -index 1 | get-edit-part -nam
 
 // Create a Constraint under Capability 1 and name it Constraint1
 
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "project/*project.aird/project/System Analysis/Capabilities/Capability 1" 
     | get-menu "Add Capella Element/Constraint" | click
     

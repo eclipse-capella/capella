@@ -153,7 +153,7 @@ public class CapellaUIExtender extends SiriusUIExtender {
   }
 
   /**
-   * Return the Capella Project Explorer view if possible
+   * Return the Project Explorer view if possible
    * @param forceShow whether the view must be shown if it is hidden
    * @return a potentially null object
    */

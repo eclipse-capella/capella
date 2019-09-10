@@ -20,7 +20,7 @@ import org.eclipse.ui.navigator.ICommonMenuConstants;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SelectionHelper;
 
 /**
- * Provider that declares actions for the Capella Project Explorer.
+ * Provider that declares actions for the Project Explorer.
  */
 public class ActivityExplorerActionProvider extends CommonActionProvider {
   /**

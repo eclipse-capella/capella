@@ -14,20 +14,20 @@ Testcase-Type: ecl
 Content-Type: text/ecl
 Entry-Name: .content
 
-get-view "Capella Project Explorer" | get-tree | select C | get-menu "Migration/Migrate Project toward current version" 
+get-view "Project Explorer" | get-tree | select C | get-menu "Migration/Migrate Project toward current version" 
     | click
 get-window "Model Migration" | get-button OK | click
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "C/C.aird" | double-click
     select "C/C.aird/C/Logical Architecture/Logical System/LC5_ 2 : LC5_ 2"
 }
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     get-item "C/C.aird/C/Logical Architecture/Logical System/LC5_ 2 : LC5_ 2" | get-property "getText()" 
         | equals "LC5_ 2 : LC5_ 2" | verify-true
     get-item "C/C.aird/C/Logical Architecture/Logical System/LC5_ 2" | get-property "getText()" | equals "LC5_ 2" 
         | verify-true
 }
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     get-item "C/C.aird/C/Physical Architecture/Physical System/PhysicalComponent 1 : PhysicalComponent 1/PartMass 1" 
         | get-property "getText()" | equals "PartMass 1" | verify-true
     get-item C | get-property childCount | equals 6 | verify-true

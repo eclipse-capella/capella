@@ -1,7 +1,7 @@
             
 = How to Import an Existing Project in a Workspace? =
  
-From the Capella Project Explorer, select Import&hellip;
+From the Project Explorer, select Import&hellip;
 
  
 [[Image:Images/3.3.%20How%20to%20import%20an%20existing%20Melody%20Advance%20Project_html_m618030b9.png]]

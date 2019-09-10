@@ -28,7 +28,7 @@ Entry-Name: .content
 
 // -------------------------------------------
 // Import model fragmentedModel and copy it
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select fragmentedModel | key-type "M1+c"
     key-type "M1+v"
 }
@@ -36,7 +36,7 @@ get-window "Copy Project" | get-button Copy | click
 
 
 // Compare both aird, no differences must be found
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "fragmentedModel2/fragmentedModel.aird" "fragmentedModel/fragmentedModel.aird"
     get-menu "Compare With/Each Other as models" | click
 }
@@ -55,7 +55,7 @@ get-editor "Compare ('fragmentedModel' - 'fragmentedModel')" | close
 
 // -------------------------------------------
 // In the original model, add diagram/scenario/table in the fragment and not in the fragment
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "fragmentedModel/fragmentedModel.aird" | double-click
     select "fragmentedModel/fragmentedModel.aird" | get-menu "Open Activity Explorer" | click
 }
@@ -364,7 +364,7 @@ with [get-editor "New Logical Functions - System Functions"] {
 
 // -------------------------------------------
 // Compare the two models with diffmerge and merge all modified original model in the copied model
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "fragmentedModel/fragmentedModel.aird" | get-menu Close | click
     select "fragmentedModel/fragmentedModel.melodymodeller" "fragmentedModel2/fragmentedModel.melodymodeller" 
     get-menu "Compare With/Each Other as models" | click
@@ -391,7 +391,7 @@ with [get-editor "Compare ('fragmentedModel' - 'fragmentedModel')"] {
 
 // -------------------------------------------
 // Compare both aird
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "fragmentedModel/fragmentedModel.aird" "fragmentedModel2/fragmentedModel.aird"
     get-menu "Compare With/Each Other as models" | click
 }
@@ -418,7 +418,7 @@ with [get-editor "Compare ('fragmentedModel' - 'fragmentedModel')"] {
 
 
 // Compare again both models, no differences must be found
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "fragmentedModel2/fragmentedModel.melodymodeller" "fragmentedModel/fragmentedModel.melodymodeller"
     get-menu "Compare With/Each Other as models" | click
 }
@@ -429,7 +429,7 @@ get-window Compare | get-button OK | click
 
 
 // Compare again both aird, no differences must be found
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "fragmentedModel2/fragmentedModel.aird" "fragmentedModel/fragmentedModel.aird"
     get-menu "Compare With/Each Other as models" | click
 }

@@ -15,20 +15,20 @@ Content-Type: text/ecl
 Entry-Name: .content
 
 // Check the model obsolescence (a popup with an error message ) 
-get-view "Capella Project Explorer" | get-tree | select "previous_version/previous_version.aird"
+get-view "Project Explorer" | get-tree | select "previous_version/previous_version.aird"
 
 // FIXME This step is unstable. It causes the test failed because:
 // Sometime it is the dialog "Problem Occured".
 // Sometime it is the dialog "Multiple problems have occured"
 //exec-with-options {
-//    get-view "Capella Project Explorer" | get-tree | get-menu "Open Session" | click
+//    get-view "Project Explorer" | get-tree | get-menu "Open Session" | click
 //    get-window "Progress Information" | get-window "Problem Occurred" | get-control Any -index 1 
 //        | get-property "getChildren().Control[1].getText()" | contains "Please have a look at documentation about project migration." | verify-true
 //    get-window "Progress Information" | get-window "Problem Occurred" | get-button OK | click
 //} -allowStatusDialog
 
 // Migrate the model
-get-view "Capella Project Explorer" | get-tree | select "previous_version" 
+get-view "Project Explorer" | get-tree | select "previous_version" 
     | get-menu "Migration/Migrate Project toward current version" | click
 with [get-window "Migration of 'previous_version'"] {
     get-button "Backup models before the migration" | uncheck
@@ -36,9 +36,9 @@ with [get-window "Migration of 'previous_version'"] {
 }
 
 // Unhide AFM resources
-get-view "Capella Project Explorer" | get-tree | select "previous_version/previous_version.aird"
+get-view "Project Explorer" | get-tree | select "previous_version/previous_version.aird"
 get-button "View Menu" | click
-get-view "Capella Project Explorer" | get-menu "Filters and Customization..." | click
+get-view "Project Explorer" | get-menu "Filters and Customization..." | click
 with [get-window "Filters and Customization"] {
     get-tab-folder | get-tab-item "Pre-set filters" | click
     get-table | get-item "\\*.afm resources" | uncheck
@@ -46,13 +46,13 @@ with [get-window "Filters and Customization"] {
 }
 
 // Check the presence of .afm resource
-get-view "Capella Project Explorer" | get-tree | get-item "previous_version/previous_version.afm" 
+get-view "Project Explorer" | get-tree | get-item "previous_version/previous_version.afm" 
     | get-property caption | equals "previous_version.afm" | verify-true
-get-view "Capella Project Explorer" | get-tree | select "previous_version/previous_version.aird" 
+get-view "Project Explorer" | get-tree | select "previous_version/previous_version.aird" 
     | get-menu "Open Session" | click
     
 // Check that the session is correctly opened (Open a diagram and check it has 3 children)
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "previous_version/previous_version.aird/previous_version/Logical Architecture/Logical System/\\[LAB\\] Logical System" 
     | double-click
 get-editor "[LAB] Logical System" | get-diagram -index 1 | get-edit-part -name "[LAB] Logical System" 

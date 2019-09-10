@@ -22,7 +22,7 @@ Content-Type: text/ecl
 Entry-Name: .content
 
 // Run Diff/Merge command from the contextual menu
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "DiffMerge_TestModel_Import_2/TestModel.aird" "DiffMerge_TestModel_Import_1/TestModel.aird"
     get-menu -path "Compare With/Each Other as models" | click
 }
@@ -48,7 +48,7 @@ get-editor "Compare ('TestModel' - 'TestModel')" | close
 
 
 //Redo diffmerge with some diagram disabled comparison matching
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "DiffMerge_TestModel_Import_2/TestModel.aird" "DiffMerge_TestModel_Import_1/TestModel.aird"
     get-menu -path "Compare With/Each Other as models" | click
 }

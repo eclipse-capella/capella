@@ -42,7 +42,7 @@ public class CapellaSaveSessionRunnable extends SaveSessionRunnable {
 
         
         // We also need to save the Session when the active editor is not a
-        // DialectEditor, such as the Capella Project Explorer or the Activity
+        // DialectEditor, such as the Project Explorer or the Activity
         // Explorer Editor.
         if (super.session != null) {
             IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(super.session);

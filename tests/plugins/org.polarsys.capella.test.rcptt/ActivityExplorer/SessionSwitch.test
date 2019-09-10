@@ -25,17 +25,17 @@ Scenario:
 Content-Type: text/ecl
 Entry-Name: .content
 
-get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
+get-view "Project Explorer" | get-tree | get-menu "New/Capella Project" | click
 with [get-window "New Capella Project"] {
     get-editbox | set-text P1
     get-button Finish | click
 }
-get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
+get-view "Project Explorer" | get-tree | get-menu "New/Capella Project" | click
 with [get-window "New Capella Project"] {
     get-editbox | set-text P2
     get-button Finish | click
 }
-get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
+get-view "Project Explorer" | get-tree | get-menu "New/Capella Project" | click
 with [get-window "New Capella Project"] {
     get-editbox | set-text P3
     get-button Finish | click
@@ -44,6 +44,6 @@ with [get-editor "P2"] {
     get-link | click
     get-canvas -index 3 | get-menu P1 | click
 }
-get-view "Capella Project Explorer" | get-tree | select "P1/P1.aird" | get-menu Close | click
+get-view "Project Explorer" | get-tree | select "P1/P1.aird" | get-menu Close | click
 find-tab-folder "P3" | get-property tabCount | equals 1 | verify-true
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

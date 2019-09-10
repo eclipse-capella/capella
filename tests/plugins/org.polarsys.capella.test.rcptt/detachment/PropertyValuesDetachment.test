@@ -14,13 +14,13 @@ Testcase-Type: ecl
 Content-Type: text/ecl
 Entry-Name: .content
 
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | double-click
 
 wait -ms 5000
 
 
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     get-item "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Operational Analysis/Operational Entities/Max Age = 99" 
         | get-property caption | equals "Max Age = 99" | verify-true
     get-item "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Operational Analysis/Operational Entities/Max Age = 99" 
@@ -59,7 +59,7 @@ with [get-view "Fast Linker" | get-canvas] {
     mouse-move 226 35 -height 238 -width 412
     mouse-exit 234 "-9" -height 238 -width 412
 }
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Operational Analysis/Operational Entities/Ground Operator"
 get-view Properties | get-property-tab Expert | click
 with [get-view Properties | get-tree] {
@@ -67,7 +67,7 @@ with [get-view Properties | get-tree] {
     get-item "Applied Property Values" | get-property "columns[0]" | equals "Applied Property Values" | verify-true
     get-item "Applied Property Values" | get-property "columns[1]" | equals "Max Age = 99" | verify-true
 }
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Operational Analysis/Operational Entities/Passenger"
 with [get-view Properties | get-tree] {
     get-item "Applied Property Value Groups" | get-property caption | equals "Applied Property Value Groups" 
@@ -79,7 +79,7 @@ with [get-view Properties | get-tree] {
     get-item "Applied Property Value Groups" | get-property "getText()" | equals "Applied Property Value Groups" 
         | verify-true
 }
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | get-menu Close | click
     select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | get-menu "Model Detachment" | click
 }
@@ -184,7 +184,7 @@ wait -ms 1000
 get-window "Detachment..." | get-label "The Detachment Is Finished!" | get-property caption 
     | equals "The Detachment Is Finished!" | verify-true
 get-window "Detachment..." | get-button OK | click
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | get-menu "Model Detachment" | click
 with [get-view "Fast Linker" | get-canvas] {
     mouse-enter 347 172 -height 238 -width 412
@@ -198,12 +198,12 @@ get-editor "Detachment" | get-button "Check All Tree Items" | click
 get-editor "Detachment" | get-button "Perform Detachment" | click
 get-window "Information" | get-button Yes | click
 get-window "Detachment..." | get-button OK | click
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | get-menu "Model Detachment" | click
 get-editor "Detachment" | get-tab-folder | get-tab-item "Property Values" | click
 get-editor "Detachment" | get-tree | get-property "getItemCount()" | equals 0 | verify-true
 get-editor "Detachment" | close
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | double-click
     select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Operational Analysis/Operational Entities/Ground Operator"
 }
@@ -219,13 +219,13 @@ with [get-view Properties | get-tree] {
     get-item "Applied Property Value Groups" | get-property "values['Value']" 
         | equals "" | verify-true
 }
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Operational Analysis/Operational Entities/Passenger"
 with [get-view Properties | get-tree] {
     get-item "Applied Property Value Groups" | get-property "values['Property']" 
         | equals "Applied Property Value Groups" | verify-true
     get-item "Applied Property Value Groups" | get-property "values['Value']" | equals "" | verify-true
 }
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Physical Architecture/IFE System"
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

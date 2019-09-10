@@ -15,7 +15,7 @@ Content-Type: text/ecl
 Entry-Name: .content
 
 // Execute the Diff/Merge command
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "DiffMerge_Fragment_Model_Import_2/TestModel.aird" "DiffMerge_Fragment_Model_Import_1/TestModel.aird"
     get-menu -path "Compare With/Each Other as models" | click
 }

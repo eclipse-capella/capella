@@ -20,7 +20,7 @@ createPattern
 foldInstance
 
 // Check pattern state after the folding operation
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "patterns_1/patterns_1.aird/patterns_1/Logical Architecture/Logical System" 
     | get-menu "Patterns/Manage Instance(s)..." | click
 with [get-window "Pattern Instance Management" | get-table] {
@@ -38,7 +38,7 @@ get-editor "[LAB] Logical System" | get-diagram -index 1 | get-edit-part -name "
     | get-figure "1/0" | get-property "getContents().getChildren().size()" | equals 0 | verify-true
 
 // Unfold the pattern (recreate model elements) 
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "patterns_1/patterns_1.aird/patterns_1/Logical Architecture/Logical System" 
     | get-menu "Patterns/Manage Instance(s)..." | click
 get-window "Pattern Instance Management" | get-group "Life-cycle" | get-button Unfold | click
@@ -49,7 +49,7 @@ with [get-window "Modeling Patterns"] {
 
 // Semantics elements are recreated (enventually diagram elements, but this part is not stable yet)
 get-window "Pattern Instance Management" | get-button Close | click
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     get-item "patterns_1/\\*patterns_1.aird/patterns_1/Logical Architecture/Logical Functions/Root Logical Function/LF_A" 
         | get-property caption | equals "LF_A" | verify-true
     get-item "patterns_1/\\*patterns_1.aird/patterns_1/Logical Architecture/Logical Functions/Root Logical Function/LF_B_1" 

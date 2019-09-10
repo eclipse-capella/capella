@@ -18,10 +18,8 @@
             class="org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator"
             icon="icons/capella_16.png"
             id="capella.project.explorer"
-            name="Capella Project Explorer">
-         <description>
-            This explorer displays all the model elements except the aspect elements which are displayed into the Aspect Explorer and the diagram elements which are displayed into the Diagram Explorer.
-         </description>
+            name="%project.explorer.name">
+         <description>%project.explorer.description</description>
       </view>
    </extension>
    
@@ -194,7 +192,7 @@
    </dragAssistant>
    </extension>
    <extension
-         name="Capella Project Explorer"
+         name="%capella.project.explorer_viewName"
          point="org.eclipse.ui.navigator.navigatorContent">
       <navigatorContent
             activeByDefault="true"
@@ -1112,7 +1110,8 @@
       </command>
       <category
             id="org.polarsys.capella.core.platform.sirius.ui.navigator"
-            name="%category.capella.navigator.name">
+            name="%category.capella.navigator.name"
+            description="%category.capella.navigator.description">
       </category>
       <command
             categoryId="org.polarsys.capella.core.platform.sirius.ui.navigator"

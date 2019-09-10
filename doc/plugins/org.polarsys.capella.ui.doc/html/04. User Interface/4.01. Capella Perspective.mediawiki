@@ -7,7 +7,7 @@ Capella is en Eclipse workbench. It comes with a specific Perspective aggregatin
 The Capella Perspective contains:
 
  
-* The '''Capella Project Explorer''' that is a file system explorer showing all the resources available in the current 	Workspace.
+* The '''Project Explorer''' that is a file system explorer showing all the resources available in the current 	Workspace.
 * The '''Editor''' containing both the diagrams and the Activity Browser
 * The '''Properties View''' displaying the features of the model 	element currently selected in the model explorer or in a diagram.
 * The '''Information View''' displaying Validation results and 	miscellaneous additional messages

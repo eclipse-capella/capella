@@ -4,7 +4,7 @@
 Mass Editing and Visualization view is useful for working with many elements. Combined with the '''Selection Tools''' on diagrams or with '''Navigation Menu''', they offer a great productive tool. For instance:
 
 * '''Select / Resembling Elements''' of a function on diagram and send them to Mass Editing or Visualization view.
-* '''Show Related Element(s) in Capella Explorer''' of an existing element on Mass Editing or Visualization view and send them to the same current table.
+* '''Show Related Element(s) in Project Explorer''' of an existing element on Mass Editing or Visualization view and send them to the same current table.
 
 ==Grouping elements by feature in Mass Visualization view==
 For a better organization of elements on the table of Mass Visualization view, it is possible to drag-and-drop a column header to the top of the table. This will group elements based on their value for the dragged column.

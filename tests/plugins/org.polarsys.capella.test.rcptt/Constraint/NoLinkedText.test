@@ -23,7 +23,7 @@ Case 4: LinkedText is not the default language
 Content-Type: text/ecl
 Entry-Name: .content
 
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "ConstraintEdition/ConstraintEdition.aird" | double-click
     select [get-item "ConstraintEdition/ConstraintEdition.aird/ConstraintEdition/System Analysis/System/System State Machine/Default Region" 
         | get-item "Transition 4"]
@@ -35,7 +35,7 @@ with [get-view Properties | get-section Property | get-group "" -index 1 | get-e
 }
 verify-error {get-window -from "CompletionProposalPopup.createProposalSelector()"}
 
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "ConstraintEdition/ConstraintEdition.aird/ConstraintEdition/System Analysis/System/System State Machine/Default Region/Transition 4/[Constraint]/[Opaque Expression]"
 
 // Test that we cannot delete the only language

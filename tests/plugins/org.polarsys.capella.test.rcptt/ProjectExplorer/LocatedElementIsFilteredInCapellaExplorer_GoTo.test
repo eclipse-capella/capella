@@ -14,7 +14,7 @@ Testcase-Type: ecl
 Content-Type: text/ecl
 Entry-Name: .content
 
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | double-click
     select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Logical Architecture/IFE System/\\[LAB\\] IFE System - All Components, CEs" 
         | double-click
@@ -49,20 +49,20 @@ with [get-editor "[LAB] IFE System - All Components, CEs" | get-diagram -index 1
             }
         }
     }
-    get-menu -path "Show Related Element(s) in Capella Explorer/FIP 3" | click
+    get-menu -path "Show Related Element(s) in Project Explorer/FIP 3" | click
 }
-get-window "Show in Capella Project Explorer" | get-button Yes | click
+get-window "Show in Project Explorer" | get-button Yes | click
 with [get-editor "[LAB] IFE System - All Components, CEs" | get-diagram -index 1 | get-edit-part 
     -name "[LAB] IFE System - All Components, CEs"] {
     get-edit-part -name "IFE System" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
         | get-edit-part -name "Seat TV" | mouse-move 221 329 -height 395 -width 223
     mouse-move 17 525 -height 796 -width 1282
 }
-get-view "Capella Project Explorer" | get-tree | get-item 
+get-view "Project Explorer" | get-tree | get-item 
     -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Logical Architecture/Logical Functions/Root Logical Function/IFE System/Manage Audio and Video Diffusion/Display Video and Play Audio/Play Video Stream on Cabin Screen/FIP 3" 
     | get-property selected | equals true | verify-true
 get-button "View Menu" | click
-get-view "Capella Project Explorer" | get-menu "Filters and Customization..." | click
+get-view "Project Explorer" | get-menu "Filters and Customization..." | click
 with [get-window "Filters and Customization"] {
     get-tab-folder | get-tab-item "Pre-set filters" | click
     get-editbox -after [get-label "Select the filters to apply (matching items will be hidden):"] | set-text fun

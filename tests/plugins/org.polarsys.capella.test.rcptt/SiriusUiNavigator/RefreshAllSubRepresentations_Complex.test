@@ -41,7 +41,7 @@ with [get-window Preferences] {
     get-button "Apply and Close" | click
 }
 // Open the diagram. Delete some all model elements from the project explorer.
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "RefreshAllSubRepresentations/model.aird" | double-click
     select "RefreshAllSubRepresentations/model.aird/model/Operational Analysis/Operational Activities/Root Operational Activity/\\[OAIB\\] Root Operational Activity" 
         | double-click
@@ -51,7 +51,7 @@ with [get-view "Capella Project Explorer" | get-tree] {
 get-window "Progress Information" | get-window Delete | get-button Yes | click
 
 // Do not save manually the model. Call the refresh all sub representations
-get-view "Capella Project Explorer" | get-tree | select "RefreshAllSubRepresentations/*model.aird" | get-menu 
+get-view "Project Explorer" | get-tree | select "RefreshAllSubRepresentations/*model.aird" | get-menu 
     -path "Refresh All Sub Representations" | click
 // Make sure a dialog showed up to ask for saving the changes
 get-window "Save Resource Before Refreshing" 
@@ -68,7 +68,7 @@ get-window "Confirm Capella Representation Refresh" | get-button OK | click
 get-button "Save All (M1+M2+S)" | click
 
 // Open the diagram to verify
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "RefreshAllSubRepresentations/model.aird/model/Operational Analysis/Operational Activities/Root Operational Activity/\\[OAIB\\] Root Operational Activity" 
     | double-click
 get-editor "[OAIB] Root Operational Activity" | get-diagram -index 1 | get-edit-part 

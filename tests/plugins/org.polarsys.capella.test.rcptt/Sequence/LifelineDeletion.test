@@ -14,7 +14,7 @@ Testcase-Type: ecl
 Content-Type: text/ecl
 Entry-Name: .content
 
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "DeleteLifeline/DeleteLifeline.aird" | double-click
     select "DeleteLifeline/DeleteLifeline.aird/DeleteLifeline/System Analysis/Capabilities/Capability 1/\\[IS\\] Capability 1/\\[IS\\] Capability 1" 
         | double-click
@@ -56,7 +56,7 @@ get-window Delete | get-button Yes | click
 get-button "Save (M1+S)" | click
 // Now check that the "create" and "delete" Messages are deleted when deleting Actors
 // Only System and [IS] Capability 1 should be under the item [IS] Capability 1
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | get-item "DeleteLifeline/DeleteLifeline.aird/DeleteLifeline/System Analysis/Capabilities/Capability 1/\\[IS\\] Capability 1" 
     | get-property childCount | equals 2 | verify-true
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

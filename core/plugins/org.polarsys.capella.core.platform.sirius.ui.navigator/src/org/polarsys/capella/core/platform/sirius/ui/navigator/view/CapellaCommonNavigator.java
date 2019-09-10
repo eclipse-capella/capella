@@ -77,7 +77,7 @@ public class CapellaCommonNavigator extends CommonNavigator implements IEditingD
     ITabbedPropertySheetPageContributor, ICommandStackSelectionProvider, IPropertyChangeListener {
 
   /**
-   * The Capella project explorer view identifier.
+   * The project explorer view identifier.
    */
   public static final String ID = "capella.project.explorer"; //$NON-NLS-1$
 

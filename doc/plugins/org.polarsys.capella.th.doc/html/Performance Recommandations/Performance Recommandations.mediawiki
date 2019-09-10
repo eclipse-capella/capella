@@ -44,7 +44,7 @@ See dedicated User Manual section User Interface.
 
 == Filter Project explorer model elements ==
 
-Hiding technical and “useless” elements in the tree helps have a clearer vision of the model main elements.<br> In the Capella Project Explorer view toolbar \Customize View…\Filters, check technical model elements to be hidden.
+Hiding technical and “useless” elements in the tree helps have a clearer vision of the model main elements.<br> In the Project Explorer view toolbar \Customize View…\Filters, check technical model elements to be hidden.
 
 [[Image:Images/Perf_REC6.png|650x750px]]<br>
 

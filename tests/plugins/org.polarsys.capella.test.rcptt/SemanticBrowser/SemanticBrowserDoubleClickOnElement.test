@@ -23,7 +23,7 @@ Double click on a diagram, table and scenario to open them and close them (if yo
 Content-Type: text/ecl
 Entry-Name: .content
 
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "EOLE_AF/EOLE_AF.aird" | double-click
     select "EOLE_AF/EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical Functions/Root Logical Function/[LFBD] Root Logical Function - Logical Function Breakdown"
 }
@@ -34,13 +34,13 @@ with [get-view "Semantic Browser"] {
 }
 get-editor "EOLE_AF" | click
 get-editor "[LFBD] Root Logical Function - Logical Function Breakdown" | close
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "EOLE_AF/EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical Components - Logical Functions"
 get-view "Semantic Browser" | get-tree -after [get-label "Current Element"] 
     | select "Logical Components - Logical Functions" | click -default
 get-editor "EOLE_AF" | click
 get-editor "Logical Components - Logical Functions" | close
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "EOLE_AF/EOLE_AF.aird/EOLE_AF/Logical Architecture/Capabilities/Distribute data/Scenario/[ES] Distribute data - Exchange Scenario"
 get-view "Semantic Browser" | get-tree -after [get-label "Current Element"] 
     | select "[ES] Distribute data - Exchange Scenario" | click -default

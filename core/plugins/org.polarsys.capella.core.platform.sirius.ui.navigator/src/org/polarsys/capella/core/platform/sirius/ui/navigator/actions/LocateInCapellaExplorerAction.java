@@ -125,7 +125,7 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
   }
 
   /**
-   * Set as new selection in the Capella Project Explorer given selection.
+   * Set as new selection in the Project Explorer given selection.
    * 
    * @param selection
    */

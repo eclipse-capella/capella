@@ -14,7 +14,7 @@ For better integration with Eclipse in the future and for better user experience
 * The search is triggered only by hitting Enter
 * The search is case insensitive
 
-As a reminder, the filtered tree is used in the '''Capella Project Explorer''' view and many others wizards like '''Transfer Dialog''', '''Replicable Elements Dialog''', '''Delete Dialog''', etc
+As a reminder, the filtered tree is used in the '''Project Explorer''' view and many others wizards like '''Transfer Dialog''', '''Replicable Elements Dialog''', '''Delete Dialog''', etc
 
 === Refinement plug-ins have been removed; Projection plug-ins have been refactored ===
 

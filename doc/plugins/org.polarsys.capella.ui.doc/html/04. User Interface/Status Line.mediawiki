@@ -11,7 +11,7 @@ On representations, it also displays the status of the representation
 |-
 | 	(Invalid)
 | 		An invalid representation
-''(see section: User Interface / Capella Project Explorer / Appearance)''
+''(see section: User Interface / Project Explorer / Appearance)''
 |-
 | 	(Not Loaded)
 | 		Load status 

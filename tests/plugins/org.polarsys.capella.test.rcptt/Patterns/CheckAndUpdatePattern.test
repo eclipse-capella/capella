@@ -18,7 +18,7 @@ createPattern
 
 // Rename 'LFA_A' to 'LFA_A_Renamed'
 // Add to it a summary and a description
-get-view "Capella Project Explorer" | get-tree | select "patterns_1/patterns_1.aird/patterns_1/Logical Architecture/L" +
+get-view "Project Explorer" | get-tree | select "patterns_1/patterns_1.aird/patterns_1/Logical Architecture/L" +
 	"ogical Functions/Root Logical Function/LF_A"
 with [get-view Properties] {
 	get-property-tab Capella | click
@@ -39,7 +39,7 @@ with [get-view Properties] {
 get-button "Save (M1+S)" | click
 
 // Show 'Manage Instance' wizard for 'LFA_A' renamed
-get-view "Capella Project Explorer" | get-tree | select "patterns_1/patterns_1.aird/patterns_1/Logical Architecture/L" +
+get-view "Project Explorer" | get-tree | select "patterns_1/patterns_1.aird/patterns_1/Logical Architecture/L" +
 	"ogical Functions/Root Logical Function/LF_A_renamed" | get-menu "Patterns/Manage Instance(s)..." | click
 
 // Uncheck 'Name' from 'Feature to Exclude'
@@ -94,6 +94,6 @@ with [get-window "Pattern Instance Management" | get-window "Update Pattern"] {
 get-window "Pattern Instance Management" | get-window "Modeling Patterns" | get-button OK | click
 get-window "Pattern Instance Management" | get-button Close | click
 
-get-view "Capella Project Explorer" | get-tree | select "patterns_1/*patterns_1.aird" | get-menu Close | click
+get-view "Project Explorer" | get-tree | select "patterns_1/*patterns_1.aird" | get-menu Close | click
 get-window Save | get-button Yes | click
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

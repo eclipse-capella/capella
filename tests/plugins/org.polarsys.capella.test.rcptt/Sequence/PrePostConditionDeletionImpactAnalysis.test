@@ -23,7 +23,7 @@ Entry-Name: .description
 Content-Type: text/ecl
 Entry-Name: .content
 
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "EOLE_AF/EOLE_AF.aird" | key-type Enter
     click -default
     select "EOLE_AF/EOLE_AF.aird/EOLE_AF/Operational Analysis/Operational Capabilities/Provide Meteo Services/Scenario" 
@@ -45,7 +45,7 @@ with [get-window Scenario] {
     get-button Finish | click
 }
 
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Operational Analysis/Operational Capabilities/Provide Meteo Services/Scenario/[OAS] Provide Meteo Services - Operational Activity Scenario" 
     | get-menu "Open" | click
 get-editor "[OAS] Provide Meteo Services - Operational Activity Scenario" | get-button Filters | click -arrow

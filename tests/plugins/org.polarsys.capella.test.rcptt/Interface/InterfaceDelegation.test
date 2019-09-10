@@ -14,7 +14,7 @@ Testcase-Type: ecl
 Content-Type: text/ecl
 Entry-Name: .content
 
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "InterfaceDelegation/InterfaceDelegation.aird" | get-menu "Open Session" | click
 }
 
@@ -22,7 +22,7 @@ with [get-view "Capella Project Explorer" | get-tree] {
 ///SequenceMessage Creation option wizard Test
 
 
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "InterfaceDelegation/InterfaceDelegation.aird/Representations per category/Common/Interface Scenario/[IS] Testing" 
     | get-menu Open | click
 with [get-editor "[IS] Testing"] {

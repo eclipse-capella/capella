@@ -25,7 +25,7 @@ Tests the History  Semantic Browser command
 Content-Type: text/ecl
 Entry-Name: .content
 
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | double-click
 
 // enable the Link content option if disabled
@@ -34,7 +34,7 @@ if [get-view "Semantic Browser" | get-button "Link content to workbench selectio
 }
 
 // select an element
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Logical Architecture/Logical Functions/Root Logical Function"
 get-view "Semantic Browser" | get-tree -after [get-label "Current Element"] | get-item -path "Root Logical Function" 
     | get-property caption | equals "Root Logical Function" | verify-true
@@ -80,7 +80,7 @@ if [get-view "Semantic Browser" | get-button "Link content to workbench selectio
 }
 
 // select an element
-get-view "Capella Project Explorer" | get-tree 
+get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Logical Architecture/Logical Functions/Root Logical Function/Perform Cabin Management Activities" 
     | get-menu -path "Show in Semantic Browser" | click
 get-view "Semantic Browser" | get-tree -after [get-label "Current Element"] | get-item 

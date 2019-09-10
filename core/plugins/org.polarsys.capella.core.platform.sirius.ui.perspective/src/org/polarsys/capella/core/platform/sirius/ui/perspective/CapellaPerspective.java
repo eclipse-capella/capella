@@ -43,10 +43,7 @@ public class CapellaPerspective implements IPerspectiveFactory {
    */
   public static final String PROPERTIES_ID = IPageLayout.ID_PROP_SHEET;
   /**
-   * The Capella project explorer view identifier.
-   */
-  /**
-   * The Capella explorer view identifier.
+   * The Project explorer view identifier.
    */
   public static final String CAPELLA_PROJECT_EXPLORER_ID = CapellaCommonNavigator.ID;
 

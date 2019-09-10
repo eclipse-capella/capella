@@ -103,7 +103,7 @@ Once, Capella is open for the first step of this project:
 
 == TRANSITIONS FROM SYSTEM ANALYSIS TO LOGICAL ARCHITECTURE ==
 
-On Capella Project Explorer: ,Right click on "System Analysis". <br>
+On Project Explorer: ,Right click on "System Analysis". <br>
 On the contextual menu, sub-menu "Transitions", select:
 * "Actor"
 * "Functional transition"
@@ -231,7 +231,7 @@ To show functions, '''use the "Actor Functions" palette tool on the diagram''' a
 === Exchange Scenario (ES) Phase Transition System to Logical===
 
 To proceed to an Exchange Scenario transition:
-* Right click on the scenario in the Capella Project Explorer
+* Right click on the scenario in the Project Explorer
 * click on "Transitions" and select "System Exchange Scenario to Logical Exchange Scenario Initialization".
 
 <center>[[Image:Images/TH_1.34.png|800x500px]]</center><br>
@@ -251,7 +251,7 @@ To add a functional exchange:
 ==TRANSITION FROM LOGICAL ARCHITECTURE TO PHYSICAL ARCHITECTURE==
 
 
-On Capella Project Explorer: ,Right click on "Logical Architecture". <br>
+On Project Explorer: ,Right click on "Logical Architecture". <br>
 On the contextual menu, sub-menu "Transitions", select:
 * "Actor"
 * "Functional transition"
@@ -260,7 +260,7 @@ On the contextual menu, sub-menu "Transitions", select:
 
 
 To proceed to an Exchange Scenario transition from Logical architecture to Physical architecture:
-* Right click on the scenario in the Capella Project Explorer
+* Right click on the scenario in the Project Explorer
 * click on "Transitions" and select "Logical Exchange Scenario to Physical Exchange Scenario Initialization".
 
 <center>[[Image:Images/TH_1.41.png|800x500px]]</center><br>
@@ -367,13 +367,13 @@ To show Interfaces on the diagram:
 ====Initialize Interface Scenario (IS) from  Exchange Scenario (ES) within the Logical Architecture====
 
 To proceed to ES to IS transition, within the Logical Analysis:
-* '''Right click on the "Scenario" item of the Capella Project Explorer''' 
+* '''Right click on the "Scenario" item of the Project Explorer''' 
 * On the contextual menu, sub-menu "Transition" '''select "Exchange scenario to Interface Scenario initialization"'''
 
 <center>[[Image:Images/TH_1.55.png|750x500px]]</center><br>
 
 To create an Interfaces Scenario:
-* '''Right click on the "scenario (IS)" item of the Capella Project Explorer '''
+* '''Right click on the "scenario (IS)" item of the Project Explorer '''
 * On the contextual menu, sub-menu "New Diagram / Table" '''select " Interfaces Scenario".'''
 
 <center>[[Image:Images/TH_1.56.png|700x550px]]</center><br>
@@ -381,7 +381,7 @@ To create an Interfaces Scenario:
 ====Exchange Scenario (ES) Phase Transition Logical to Physical====
 
 To proceed to ES transition:
-* '''Right click on the "Scenario" item of the Capella Project Explorer '''
+* '''Right click on the "Scenario" item of the Project Explorer '''
 * On the contextual menu, sub-menu "Transition" '''select "Logical Architecture ES to Physical Architecture ES Initialization".'''
 
 <center>[[Image:Images/TH_1.57.png|800x400px]]</center><br>
@@ -391,7 +391,7 @@ The result is a corresponding Scenario in the Physical Architecture.
 ====InitialiZe Component Exchange Scenario (CES)====
 
 To create a diagram on the transited Exchanges Scenario:
-* '''Right click on the scenario item of the Capella Project Explorer '''
+* '''Right click on the scenario item of the Project Explorer '''
 * On the contextual menu, sub-menu "New Diagram / Table" '''select " Exchanges Scenario". '''
 
 <center>[[Image:Images/TH_1.58.png|700x400px]]</center><br>
@@ -399,13 +399,13 @@ To create a diagram on the transited Exchanges Scenario:
 ====Initialize Interface Scenario (IS) from  Exchange Scenario (ES) within the Physical Architecture====
 
 To proceed to ES to IS transition, within the Physical Architecture:
-* '''Right click on the "Scenario" item of the Capella Project Explorer''' 
+* '''Right click on the "Scenario" item of the Project Explorer''' 
 * On the contextual menu, sub-menu "Transition" '''select "Exchange scenario to Interface Scenario initialization"'''
 
 <center>[[Image:Images/TH_1.59.png|750x400px]]</center><br>
 
 To create an Interfaces Scenario:
-* '''Right click on the "scenario (IS)" item of the Capella Project Explorer '''
+* '''Right click on the "scenario (IS)" item of the Project Explorer '''
 * On the contextual menu, sub-menu "New Diagram / Table" '''select " Interfaces Scenario".'''
 
 <center>[[Image:Images/TH_1.60.png|700x400px]]</center><br>

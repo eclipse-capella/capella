@@ -14,14 +14,14 @@ Testcase-Type: ecl
 Content-Type: text/ecl
 Entry-Name: .content
 
-get-view "Capella Project Explorer" | get-tree | select A | get-menu "Migration/Migrate Project toward current version" 
+get-view "Project Explorer" | get-tree | select A | get-menu "Migration/Migrate Project toward current version" 
     | click
 get-window "Model Migration" | get-button OK | click
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     get-item "A/A.afm" | get-property "getText()" | equals "A.afm" | verify-true
     get-item A | get-property childCount | equals 5 | verify-true
 }
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     select "A/A.aird" | double-click
     select "A/A.aird/A"
 }
@@ -31,7 +31,7 @@ with [get-view "Viewpoint Manager" | get-table] {
     get-item test5 | get-property "values['Name']" | equals test5 | verify-true
     get-item test5 | get-property "values['State']" | equals Used | verify-true
 }
-with [get-view "Capella Project Explorer" | get-tree] {
+with [get-view "Project Explorer" | get-tree] {
     get-item "A/A.aird/A/Logical Architecture/Logical System/LC5_ 1 : LC5_ 1" | get-property "getText()" 
         | equals "LC5_ 1 : LC5_ 1" | verify-true
     get-item "A/A.aird/A/Logical Architecture/Logical System/LC5_ 1" | get-property "getText()" | equals "LC5_ 1" 
