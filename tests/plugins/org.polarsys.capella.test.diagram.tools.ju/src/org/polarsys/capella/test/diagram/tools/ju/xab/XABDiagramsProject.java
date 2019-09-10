@@ -169,6 +169,7 @@ public abstract class XABDiagramsProject extends AbstractDiagramTestCase {
   public static final String LA__LAB_EXCHANGE_CATEGORY1 = "cfc7de31-fef6-46b7-adf7-3bf6469db536";
   public static final String LA__LAB_EXCHANGE_CATEGORY4 = "eca4de89-fa15-4d1c-b9ee-5b9395b03117";
   public static final String LA__LAB_COMPONENT_EXCHANGE_CATEGORY1 = "60cf855b-4356-41a2-9ffc-5974f481df9f";
+  public static final String LA__LAB_STRUCTURE_DIAGRAM = "[LAB] Structure";
 
   // pa
   public static final String PA__PAB_PHYSICAL_SYSTEM = "6117356a-8b31-480f-a1ed-07e8da164fbd";
