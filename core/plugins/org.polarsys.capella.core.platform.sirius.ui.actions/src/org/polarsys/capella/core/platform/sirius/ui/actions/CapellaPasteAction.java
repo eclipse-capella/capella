@@ -73,23 +73,12 @@ public class CapellaPasteAction extends AbstractCommandActionHandler {
           }
         }
 
-        if ((clipboard != null) && !clipboard.isEmpty() && !checkSemanticRules((List<EObject>) clipboard, (EObject) obj)) {
+        if ((clipboard != null) && !clipboard.isEmpty()
+            && !MoveHelper.getInstance().checkSemanticRules((List<EObject>) clipboard, (EObject) obj).isOK()) {
           return false;
         }
       }
     }
     return super.updateSelection(selection);
   }
-
-  /**
-   * @param selectedModelElements
-   * @param targetElement
-   * @return
-   * Moved. use instead MoveHelper.checkSemanticRules
-   */
-  @Deprecated
-  public static boolean checkSemanticRules(List<EObject> selectedElements, EObject targetElement) {
-    return MoveHelper.getInstance().checkSemanticRules(selectedElements, targetElement).isOK();
-  }
-
 }
