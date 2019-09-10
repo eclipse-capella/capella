@@ -38,13 +38,13 @@ import org.polarsys.capella.core.data.common.properties.CommonPropertiesPlugin;
 import org.polarsys.capella.core.data.common.properties.IImageKeys;
 import org.polarsys.capella.core.linkedtext.ui.CapellaEmbeddedLinkedTextEditorInput;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.utils.NamingHelper;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 import org.polarsys.capella.core.ui.properties.controllers.AbstractMultipleSemanticFieldController;
 import org.polarsys.capella.core.ui.properties.controllers.IMultipleSemanticFieldController;
 import org.polarsys.capella.core.ui.properties.fields.ContainmentTableField;
 import org.polarsys.capella.core.ui.properties.fields.EditableSemanticFieldException;
 import org.polarsys.capella.core.ui.properties.helpers.DialogHelper;
-import org.polarsys.capella.core.ui.properties.helpers.NamingHelper;
 import org.polarsys.capella.core.ui.properties.viewers.TableDelegatedViewer;
 import org.polarsys.capella.core.ui.toolkit.ToolkitPlugin;
 

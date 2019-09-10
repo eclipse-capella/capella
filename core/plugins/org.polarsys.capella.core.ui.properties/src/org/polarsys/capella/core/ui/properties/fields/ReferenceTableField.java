@@ -24,11 +24,11 @@ import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.model.utils.NamingHelper;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 import org.polarsys.capella.core.ui.properties.IImageKeys;
 import org.polarsys.capella.core.ui.properties.controllers.IMultipleSemanticFieldController;
 import org.polarsys.capella.core.ui.properties.helpers.DialogHelper;
-import org.polarsys.capella.core.ui.properties.helpers.NamingHelper;
 import org.polarsys.capella.core.ui.properties.viewers.IDelegatedViewer;
 
 /**

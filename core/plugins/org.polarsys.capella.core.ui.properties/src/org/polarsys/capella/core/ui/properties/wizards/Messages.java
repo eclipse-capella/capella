@@ -19,14 +19,16 @@ public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.core.ui.properties.wizards.messages"; //$NON-NLS-1$
 
   public static String CustomWizardHandler_Command_Title;
-  public static String EditCapellaCustomPropertyWizardPage_Description;
   public static String CapellaElement_SectionLabel;
 
   // Help on wizard
   
+  public static String editCapellaCustomPropertyWizardPage_Description;
   public static String editCapellaCustomPropertyWizardPage_MainDescription;
   public static String editCapellaCustomPropertyWizardPage_MainDescriptionKO;
   public static String editCapellaCustomPropertyWizardPage_RLLinkName;
+  
+  public static String editCapellaCustomPropertyWizard_WindowTitle;
   
   
   static {
