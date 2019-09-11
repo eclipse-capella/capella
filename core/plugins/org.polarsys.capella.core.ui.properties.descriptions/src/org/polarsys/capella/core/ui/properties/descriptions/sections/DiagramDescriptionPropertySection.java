@@ -52,17 +52,15 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
     // This operation history listener is used to force refreshes when undo / redo operations are performed.
     OperationHistoryFactory.getOperationHistory().addOperationHistoryListener(this);
 
     TabbedPropertySheetWidgetFactory widgetFactory = getWidgetFactory();
 
-    rootParentComposite.setLayout(new GridLayout());
-
     // Create Description text field.
-    createDescriptionWidget(widgetFactory, rootParentComposite);
+    createDescriptionWidget(widgetFactory, parent);
   }
 
   /**
@@ -75,6 +73,16 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
     descriptionGroup = new CapellaElementDescriptionGroup(parent, widgetFactory);
   }
 
+  @Override
+  protected int getColumnCount() {
+    return 1;
+  }
+
+  @Override
+  public boolean shouldUseExtraSpace() {
+    return true;
+  }
+  
   /**
    * {@inheritDoc}
    */

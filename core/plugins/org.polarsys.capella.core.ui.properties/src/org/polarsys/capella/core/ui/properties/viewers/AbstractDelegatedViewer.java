@@ -29,10 +29,9 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Item;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
-
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.data.capellacore.AbstractPropertyValue;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
 
 /**
  */
@@ -164,7 +163,7 @@ public abstract class AbstractDelegatedViewer implements IDelegatedViewer {
    */
   public Composite getViewerGroup(Composite parent) {
     if (null == _viewerGroup) {
-      _viewerGroup = new Composite(parent, SWT.NONE);
+      _viewerGroup = _widgetFactory.createComposite(parent, SWT.NONE);
       _viewerGroup.setLayoutData(new GridData(GridData.FILL, GridData.FILL, true, true));
       GridLayout layout = new GridLayout(5 /* since 4 actions + 1 empty label */, false);
       layout.horizontalSpacing = 0;

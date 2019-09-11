@@ -13,10 +13,7 @@ package org.polarsys.capella.core.ui.properties.richtext.sections;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
@@ -41,12 +38,18 @@ public abstract class DescriptionPropertySection extends AbstractSection {
    */
   @Override
   public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-
-    parent.setLayout(new GridLayout());
-    parent.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
-
-    // Create Description text field.
+    super.createContents(parent, aTabbedPropertySheetPage);
     createDescriptionWidget(getWidgetFactory(), parent);
+  }
+
+  @Override
+  protected int getColumnCount() {
+    return 1;
+  }
+
+  @Override
+  public boolean shouldUseExtraSpace() {
+    return true;
   }
 
   /**
@@ -59,7 +62,7 @@ public abstract class DescriptionPropertySection extends AbstractSection {
     if (RichtextManager.getInstance().isRichTextEnabled()) {
       descriptionGroup = new CapellaElementDescriptionGroup(parent, widgetFactory, this);
     } else {
-      descriptionFallbackGroup = new TextAreaValueGroup(parent, "", getWidgetFactory(), true);
+      descriptionFallbackGroup = new TextAreaValueGroup(parent, "", getWidgetFactory(), true); //$NON-NLS-1$
       descriptionFallbackGroup.setDisplayedInWizard(isDisplayedInWizard());
     }
   }

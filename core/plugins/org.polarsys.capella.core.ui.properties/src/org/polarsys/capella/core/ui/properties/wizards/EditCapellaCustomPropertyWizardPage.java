@@ -30,6 +30,7 @@ import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabItem;
 import org.eclipse.swt.events.HelpEvent;
 import org.eclipse.swt.events.HelpListener;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -123,19 +124,23 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage {
           sections = new ArrayList<>();
         }
         sections.add(section);
+        
         // Create a new composite hosted by the new entry section tab item.
-        Composite tabItemContent = new Composite(tabFolder, SWT.NONE);
-        GridLayout layout = new GridLayout();
-        layout.numColumns = 2;
-        tabItemContent.setLayout(layout);
+        Composite sectionComposite = new Composite(tabFolder, SWT.NONE);
+        sectionComposite.setLayout(new FillLayout());
+        int style = (section.shouldUseExtraSpace()) ? GridData.FILL_BOTH : GridData.FILL_HORIZONTAL;
+        GridData data = new GridData(style);
+        data.heightHint = section.getMinimumHeight();
+        sectionComposite.setLayoutData(data);
+        
         // Create a tab item for the current entry section.
         CTabItem tabItem = new CTabItem(tabFolder, SWT.NONE);
-        tabItem.setControl(tabItemContent);
+        tabItem.setControl(sectionComposite);
         // Set tab item name with value got from section extension.
         tabItem.setText(CustomPropertyHelper.getPropertyTabLabelFromID(entry.getKey()));
         // Set appropriate background color.
         section.setParentBackgroundColor(parent.getDisplay().getSystemColor(SWT.COLOR_WHITE));
-        section.createControls(tabItemContent, null);
+        section.createControls(sectionComposite, null);
         section.loadData(object);
       }
     }

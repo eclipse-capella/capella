@@ -19,6 +19,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -51,15 +52,22 @@ public class CapellaDescriptionPropertySection extends AbstractSection implement
    *      org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage)
    */
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
-    rootParentComposite.setLayout(new GridLayout());
-    rootParentComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
-
-    _descriptionGroup = new CapellaElementDescriptionGroup(rootParentComposite, (aTabbedPropertySheetPage != null) ? getWidgetFactory() : null);
+    _descriptionGroup = new CapellaElementDescriptionGroup(parent, (aTabbedPropertySheetPage != null) ? getWidgetFactory() : null);
   }
 
+  @Override
+  protected int getColumnCount() {
+    return 1;
+  }
+
+  @Override
+  public boolean shouldUseExtraSpace() {
+    return true;
+  }
+  
   /**
    * {@inheritDoc}
    */
