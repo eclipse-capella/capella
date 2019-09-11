@@ -431,16 +431,27 @@ public class GuiActions {
   }
 
   /**
-   * Clone a diagram and all this attach element
+   * Clone the given diagrams and all attached elements
    * 
    * @param descriptors
    *          the representations to clone
    * 
    */
-  public static Collection<DRepresentationDescriptor> CloneDiagram(Collection<DRepresentationDescriptor> descriptors) {
+  public static Collection<DRepresentationDescriptor> CloneDiagrams(Collection<DRepresentationDescriptor> descriptors) {
     CapellaCloneDiagramCommand capellaCloneDiagramCommand = new CapellaCloneDiagramCommand(descriptors);
     capellaCloneDiagramCommand.execute();
     return capellaCloneDiagramCommand.getResult();
+  }
+  
+  /**
+   * Clone the given diagram and all its attached elements
+   * 
+   * @param descriptor
+   *          the representation descriptor to clone
+   * 
+   */
+  public static DRepresentationDescriptor CloneDiagram(DRepresentationDescriptor descriptor) {
+    return CloneDiagrams(Collections.singletonList(descriptor)).iterator().next();
   }
 
   public static boolean canPasteElement(String string, EObject newTarget) {
