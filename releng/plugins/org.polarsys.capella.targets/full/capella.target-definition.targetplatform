@@ -26,6 +26,13 @@ location eclipse "http://download.eclipse.org/releases/2019-06" {
 	org.eclipse.jgit.source.feature.group
 	org.eclipse.egit.feature.group
 	org.eclipse.egit.source.feature.group
+	org.eclipse.mylyn_feature.feature.group
+	org.eclipse.mylyn.commons.feature.group
+	org.eclipse.mylyn.commons.sdk.feature.group
+	org.eclipse.mylyn.context_feature.feature.group
+	org.eclipse.mylyn.monitor.feature.group
+	org.eclipse.mylyn.team_feature.feature.group
+	org.eclipse.mylyn.ide_feature.feature.group
 }
 
 location sirius "https://download.eclipse.org/sirius/updates/stable/6.3.0-S20190906-151817/2019-06/" {
