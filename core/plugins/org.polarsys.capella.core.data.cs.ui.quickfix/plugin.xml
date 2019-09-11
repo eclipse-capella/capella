@@ -115,6 +115,20 @@
                ruleId="DWF_DC_26">
          </rules>
       </resolver>
+      <resolver
+            class="org.polarsys.capella.core.data.cs.ui.quickfix.resolver.SwitchIsHumanFlag_Resolver"
+            label="Switch to non HUMAN">
+         <rules
+               ruleId="DWF_DC_40">
+         </rules>
+      </resolver>
+            <resolver
+            class="org.polarsys.capella.core.data.cs.ui.quickfix.resolver.SwitchIsHumanFlag_Resolver"
+            label="Switch to HUMAN">
+         <rules
+               ruleId="DWF_DC_41">
+         </rules>
+      </resolver>
    </extension>
    <extension
          point="org.eclipse.ui.ide.markerResolution">
@@ -132,6 +146,10 @@
       </markerResolutionGenerator>
       <markerResolutionGenerator
             class="org.polarsys.capella.core.data.cs.ui.quickfix.generator.DWF_I_21_Generator"
+            markerType="org.polarsys.capella.core.validation.markers">
+      </markerResolutionGenerator>
+      <markerResolutionGenerator
+            class="org.polarsys.capella.core.data.cs.ui.quickfix.generator.DWF_DC_36_Generator"
             markerType="org.polarsys.capella.core.validation.markers">
       </markerResolutionGenerator>
    </extension>

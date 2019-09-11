@@ -21,7 +21,7 @@ import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
-import org.polarsys.capella.core.data.interaction.ui.quickfix.resolver.AddInvolvedElementsResolver;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractMarkerResolutionGenerator;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.CapellaElementGoToResolver;
 
@@ -43,7 +43,7 @@ public class DWF_CA_08_Resolutions extends AbstractMarkerResolutionGenerator {
       } else if (element instanceof Component) {
         component = (Component) element;
         resolutions
-            .add(new CapellaElementGoToResolver(EObjectLabelProviderHelper.getMetaclassLabel(element, false), element));
+            .add(new CapellaElementGoToResolver(ComponentExt.getComponentName(component), element));
       }
     }
 

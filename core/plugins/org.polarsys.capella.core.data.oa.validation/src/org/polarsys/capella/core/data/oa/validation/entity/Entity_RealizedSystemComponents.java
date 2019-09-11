@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.core.data.oa.Entity;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
@@ -34,7 +35,8 @@ public class Entity_RealizedSystemComponents extends AbstractValidationRule {
         Entity actor = (Entity) eObj;
         if (actor.getRealizingSystemComponents().isEmpty()) {
           return ctx_p.createFailureStatus(
-              actor.getName() + " (" + actor.eClass().getName() + ") is not realized by any System Component."); //$NON-NLS-1$ //$NON-NLS-2$
+              actor.getName() + " (" + ComponentExt.getComponentName(actor) //$NON-NLS-1$
+                  + ") is not realized by any System Component."); //$NON-NLS-1$
         }
       }
     }

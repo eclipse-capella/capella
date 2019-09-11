@@ -103,6 +103,7 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
+import org.polarsys.capella.core.model.utils.NamingHelper;
 
 /**
  * Component helpers
@@ -2009,7 +2010,7 @@ public class ComponentExt {
    */
   public static boolean isComponentRoot(EObject element) {
     if (element instanceof Component) {
-      return getRootComponent((Component) element) == null;
+      return getRootComponent(element) == null;
     }
 
     return false;
@@ -2652,7 +2653,8 @@ public class ComponentExt {
       }
     }
     if (!found) {
-      return ctx.createFailureStatus(new Object[] { lcomp.getName(), itf.getName() });
+      return ctx
+          .createFailureStatus(new Object[] { lcomp.getName(), itf.getName(), ComponentExt.getComponentName(lcomp) });
     }
     return ctx.createSuccessStatus();
 
@@ -2679,7 +2681,8 @@ public class ComponentExt {
       }
     }
     if (!found) {
-      return ctx.createFailureStatus(new Object[] { lcomp.getName(), itf.getName() });
+      return ctx
+          .createFailureStatus(new Object[] { lcomp.getName(), itf.getName(), ComponentExt.getComponentName(lcomp) });
     }
     return ctx.createSuccessStatus();
   }
@@ -2867,5 +2870,19 @@ public class ComponentExt {
       return canCreateABActor(parentComponent);
     }
     return false;
+  }
+
+  /*
+   * Get component name
+   */
+  public static String getComponentName(EObject target) {
+    EObject myTarget = target;
+
+    if (target instanceof Part) {
+      myTarget = ((Part) target).getAbstractType();
+    }
+    String componentName = NamingHelper.getTitleLabel(myTarget);
+    componentName = componentName.replaceAll("\\(", "").replaceAll("\\)", "");
+    return componentName;
   }
 }

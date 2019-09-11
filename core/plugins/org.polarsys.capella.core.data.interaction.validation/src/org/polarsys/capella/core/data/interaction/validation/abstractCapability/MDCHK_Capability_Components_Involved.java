@@ -79,7 +79,7 @@ public class MDCHK_Capability_Components_Involved extends AbstractValidationRule
       AbstractCapability capability, Component element) {
     Object[] msgArguments = new Object[] { capability.getName(),
         EObjectLabelProviderHelper.getMetaclassLabel(capability, false), element.getName(),
-        EObjectLabelProviderHelper.getMetaclassLabel(element, false),
+        ComponentExt.getComponentName(element),
         getFunctionalChainType(capability) + " or Scenarios" };
     Collection<EObject> resultLocus = new ArrayList<EObject>();
     resultLocus.add(capability);

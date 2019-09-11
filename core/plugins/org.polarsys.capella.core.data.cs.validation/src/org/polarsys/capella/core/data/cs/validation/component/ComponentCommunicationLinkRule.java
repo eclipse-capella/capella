@@ -26,6 +26,7 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.communication.CommunicationLink;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
@@ -70,7 +71,7 @@ public class ComponentCommunicationLinkRule extends AbstractValidationRule {
         					links.size(),
         					firstLink.getKind(),
         					firstLink.getProtocol(),
-        					CapellaElementExt.getCapellaExplorerLabel(exchangeItem)));
+                  CapellaElementExt.getCapellaExplorerLabel(exchangeItem), ComponentExt.getComponentName(comp)));
         		}
         	}        	
         }

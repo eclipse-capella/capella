@@ -29,7 +29,7 @@
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} (Logical Component) is not realized by any Physical Component.
+                  {0} ({1}) is not realized by any {2}.
                </message>
                <description>
                   This rule checks that a leaf of Logical Component is realized by at least one Physical Component.
@@ -48,7 +48,7 @@
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} (Logical Component) is realized by more than one (Physical Component) {1}.
+                  {0} ({2}) is realized by more than one ({3}) {1}.
                </message>
                <description>
                   This rule checks that a Logical Component is not realized by more than one Physical Component.
@@ -152,7 +152,7 @@
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} (Logical Component) does not delegate its used Interface {1}.
+                  {0} ({2}) does not delegate its used Interface {1}.
                </message>
                <description>
                   This rule checks that a Logical Component delegates its used Interface.
@@ -171,7 +171,7 @@
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} (Logical Component) does not delegate its implemented Interface {1}.
+                  {0} ({2}) does not delegate its implemented Interface {1}.
                </message>
                <description>
                   This rule checks that a Logical Component delegates its implemented Interface.
@@ -190,7 +190,7 @@
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} (Logical Component) does not delegate its provided {1} (Interface).
+                  {0} ({2}) does not delegate its provided {1} (Interface).
                </message>
                <description>
                   This rule checks that provided interfaces are delegated to one or many subcomponents (if they exist).
@@ -209,7 +209,7 @@
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} (Logical Component) does not delegate its required {1} (Interface).
+                  {0} ({2}) does not delegate its required {1} (Interface).
                </message>
                <description>
                   This rule checks that required interfaces are delegated to one or many  subcomponents (if they exist).

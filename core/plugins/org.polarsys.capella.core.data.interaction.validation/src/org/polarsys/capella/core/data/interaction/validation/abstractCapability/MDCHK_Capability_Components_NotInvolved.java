@@ -27,6 +27,7 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
 import org.polarsys.capella.core.model.helpers.AbstractCapabilityExt;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 public class MDCHK_Capability_Components_NotInvolved extends AbstractValidationRule {
@@ -73,7 +74,7 @@ public class MDCHK_Capability_Components_NotInvolved extends AbstractValidationR
       AbstractCapability capability, Component element) {
     Object[] msgArguments = new Object[] { capability.getName(),
         EObjectLabelProviderHelper.getMetaclassLabel(capability, false), element.getName(),
-        EObjectLabelProviderHelper.getMetaclassLabel(element, false),
+        ComponentExt.getComponentName(element),
         getFunctionalChainType(capability) + " or Scenarios" };
     Collection<EObject> resultLocus = new ArrayList<EObject>();
     resultLocus.add(capability);

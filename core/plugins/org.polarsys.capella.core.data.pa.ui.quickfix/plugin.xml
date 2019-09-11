@@ -23,30 +23,24 @@
       </resolver>
       <resolver
             class="org.polarsys.capella.core.data.pa.ui.quickfix.resolver.EditPhysicalComponent"
-            desc="%quickFix.DWF_DC_21_22_23.desc"
-            label="%quickFix.DWF_DC_21_22_23.label">
+            desc="%quickFix.DWF_DC_21_22.desc"
+            label="%quickFix.DWF_DC_21_22.label">
          <rules
                ruleId="DWF_DC_21">
          </rules>
          <rules
                ruleId="DWF_DC_22">
-         </rules>
-         <rules
-               ruleId="DWF_DC_23">
          </rules>
       </resolver>
       <resolver
             class="org.polarsys.capella.core.data.pa.ui.quickfix.resolver.DeletePhysicalComponent"
-            desc="%quickFix.DWF_DC_21_22_23_delete.desc"
-            label="%quickFix.DWF_DC_21_22_23_delete.label">
+            desc="%quickFix.DWF_DC_21_22_delete.desc"
+            label="%quickFix.DWF_DC_21_22_delete.label">
          <rules
                ruleId="DWF_DC_21">
          </rules>
          <rules
                ruleId="DWF_DC_22">
-         </rules>
-         <rules
-               ruleId="DWF_DC_23">
          </rules>
       </resolver>
       <resolver
@@ -65,6 +59,22 @@
                ruleId="DWF_DC_34">
          </rules>
       </resolver>
+      <resolver
+            class="org.polarsys.capella.core.data.pa.ui.quickfix.resolver.PhysicalComponentNatureToUnsetResolver"
+            desc="%quickFix.DWF_DC_39_set_nature_unset.desc"
+            label="%quickFix.DWF_DC_39_set_nature_unset.label">
+         <rules
+               ruleId="DWF_DC_39">
+         </rules>
+      </resolver>
+      
+    </extension>  
+    <extension
+         point="org.eclipse.ui.ide.markerResolution">
+      <markerResolutionGenerator
+            class="org.polarsys.capella.core.data.pa.ui.quickfix.resolution.DWF_DC_22_Resolutions"
+            markerType="org.polarsys.capella.core.validation.markers">
+      </markerResolutionGenerator>
       
    </extension>
 

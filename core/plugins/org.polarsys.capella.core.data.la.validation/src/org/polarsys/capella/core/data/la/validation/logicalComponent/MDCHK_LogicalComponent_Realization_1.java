@@ -17,6 +17,7 @@ import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.la.LogicalComponent;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
@@ -33,14 +34,17 @@ public class MDCHK_LogicalComponent_Realization_1 extends AbstractValidationRule
     if (eType == EMFEventType.NULL) {
       if (eObj instanceof LogicalComponent) {
         LogicalComponent logCpnt = (LogicalComponent) eObj;
-        // The verification is done only if the Logical Component is a leaf
+        // The verification is done only if the Logical Component is a leaf or if is an actor
         // Gets the sub owned parts:
         EList<Part> ownedParts = logCpnt.getContainedParts();
         if (ownedParts.size() == 0) {
           if (!logCpnt.getRealizingPhysicalComponents().isEmpty()) {
             return ctx.createSuccessStatus();
           }
-          return createFailureStatus(ctx, new Object[] { logCpnt.getName() });
+          String logicalComponentName = ComponentExt.getComponentName(logCpnt);
+          String physicalComponentName = logicalComponentName.replace("Logical", "Physical");
+          return ctx
+              .createFailureStatus(new Object[] { logCpnt.getName(), logicalComponentName, physicalComponentName });
         }
       }
     }

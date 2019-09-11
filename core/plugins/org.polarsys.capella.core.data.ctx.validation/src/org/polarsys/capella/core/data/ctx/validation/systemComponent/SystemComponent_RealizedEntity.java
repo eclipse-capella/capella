@@ -14,9 +14,8 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
-import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
-import org.polarsys.capella.core.data.oa.Entity;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
@@ -38,7 +37,8 @@ public class SystemComponent_RealizedEntity extends AbstractValidationRule {
           return ctx.createSuccessStatus();
         }
         return ctx
-            .createFailureStatus(actor.getName() + " (" + actor.eClass().getName() + ") does not realize any Entity."); //$NON-NLS-1$ //$NON-NLS-2$
+            .createFailureStatus(
+                actor.getName() + " (" + ComponentExt.getComponentName(actor) + ") does not realize any Entity."); //$NON-NLS-1$ //$NON-NLS-2$
       }
     }
 

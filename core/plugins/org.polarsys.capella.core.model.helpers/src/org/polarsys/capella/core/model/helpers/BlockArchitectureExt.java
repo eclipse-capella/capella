@@ -17,6 +17,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -985,5 +986,39 @@ public class BlockArchitectureExt {
       }
     }
     return result;
+  }
+
+  public static Collection<Component> getRootComponents(BlockArchitecture element) {
+    if (element instanceof OperationalAnalysis) {
+      EntityPkg ownedEntityPkg = ((OperationalAnalysis) element).getOwnedEntityPkg();
+      if (ownedEntityPkg != null && !ownedEntityPkg.getOwnedEntities().isEmpty()) {
+        return ownedEntityPkg.getOwnedEntities().stream().filter(x -> !x.isActor()).collect(Collectors.toSet());
+      }
+    } else if (element instanceof SystemAnalysis) {
+      SystemComponentPkg ownedSystemComponentPkg = ((SystemAnalysis) element).getOwnedSystemComponentPkg();
+      if (ownedSystemComponentPkg != null && !ownedSystemComponentPkg.getOwnedSystemComponents().isEmpty()) {
+        return ownedSystemComponentPkg.getOwnedSystemComponents().stream().filter(x -> !x.isActor())
+            .collect(Collectors.toSet());
+      }
+    } else if (element instanceof LogicalArchitecture) {
+      LogicalComponentPkg ownedLogicalComponentPkg = ((LogicalArchitecture) element).getOwnedLogicalComponentPkg();
+      if (ownedLogicalComponentPkg != null && !ownedLogicalComponentPkg.getOwnedLogicalComponents().isEmpty()) {
+        return ownedLogicalComponentPkg.getOwnedLogicalComponents().stream().filter(x -> !x.isActor())
+            .collect(Collectors.toSet());
+      }
+    } else if (element instanceof PhysicalArchitecture) {
+      PhysicalComponentPkg ownedPhysicalComponentPkg = ((PhysicalArchitecture) element).getOwnedPhysicalComponentPkg();
+      if (ownedPhysicalComponentPkg != null && !ownedPhysicalComponentPkg.getOwnedPhysicalComponents().isEmpty()) {
+        return ownedPhysicalComponentPkg.getOwnedPhysicalComponents().stream().filter(x -> !x.isActor())
+            .collect(Collectors.toSet());
+      }
+    } else if (element instanceof EPBSArchitecture) {
+      ConfigurationItemPkg ownedConfigurationItemPkg = ((EPBSArchitecture) element).getOwnedConfigurationItemPkg();
+      if (ownedConfigurationItemPkg != null && !ownedConfigurationItemPkg.getOwnedConfigurationItems().isEmpty()) {
+        return ownedConfigurationItemPkg.getOwnedConfigurationItems().stream().filter(x -> !x.isActor())
+            .collect(Collectors.toSet());
+      }
+    }
+    return null;
   }
 }

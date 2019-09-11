@@ -49,7 +49,7 @@
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0} (PhysicalComponent) must be deployed only once.
+                  {0} ({1}) must be deployed only once.
                </message>
                <target
                      class="PhysicalComponent">
@@ -68,7 +68,7 @@
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} (Behavior Physical Component) is deploying {1} (Node Physical Component) .
+                  {0} (Behavior {2}) is deploying {1} (Node {3}).
                </message>
                <target
                      class="PhysicalComponent">
@@ -97,20 +97,22 @@
                 </target>
              </constraint>
              <constraint
-                   class="org.polarsys.capella.core.data.pa.validation.physicalComponent.ContainementCheckNodeAndBehaviour"
+                   class="org.polarsys.capella.core.data.pa.validation.physicalComponent.DeploymentParentPCChecks"
                    id="DWF_DC_21"
                    isEnabledByDefault="true"
                    lang="Java"
                    mode="Batch"
-                   name="DWF_DC_21 - Containement check for node and behaviour"
+                   name="DWF_DC_21 - PhysicalComponent check deployment/containment of Sub-PhysicalComponents"
                    severity="ERROR"
                    statusCode="1">
                 <message>
                    {0}
                 </message>
                 <description>
-                   This rule ensures that NodePC is not contained in BehaviourPC and BehaviourPC is not contained in NodePC.
-
+                 This rule ensures that PC is correctly deploying/containing other child PC.
+                 
+Node Components (actor or not) can contain Node and deploy Node or Behavior.
+Behavior Components (actor or not) can contain Behavior and deploy behavior.
 NodePC=Physical Component of nature NODE
 BehaviourPC=Physical Component of nature BEHAVIOUR
                 </description>
@@ -119,43 +121,22 @@ BehaviourPC=Physical Component of nature BEHAVIOUR
                 </target>
              </constraint>
              <constraint
-                   class="org.polarsys.capella.core.data.pa.validation.physicalComponent.NodeDeploymentInBehaviourPC"
+                   class="org.polarsys.capella.core.data.pa.validation.physicalComponent.DeploymentChildPCChecks"
                    id="DWF_DC_22"
                    isEnabledByDefault="true"
                    lang="Java"
                    mode="Batch"
-                   name="DWF_DC_22 - NodeDeployment In BehaviourPC"
+                   name="DWF_DC_22 - PhysicalComponent check deployment/containment in Parent-PhysicalComponent"
                    severity="ERROR"
                    statusCode="1">
                 <message>
                    {0}
                 </message>
                 <description>
-                   This rule ensures that NodePC is not deployed in BehaviourPC.
-
-NodePC=Physical Component of nature NODE
-BehaviourPC=Physical Component of nature BEHAVIOUR
-                </description>
-                <target
-                      class="PhysicalComponent">
-                </target>
-             </constraint>
-             <constraint
-                   class="org.polarsys.capella.core.data.pa.validation.physicalComponent.NodeDeploymentInPhysicalActor"
-                   id="DWF_DC_23"
-                   isEnabledByDefault="true"
-                   lang="Java"
-                   mode="Batch"
-                   name="DWF_DC_23 - NodeDeployment In PhysicalActor"
-                   severity="ERROR"
-                   statusCode="1">
-                <message>
-                   {0}
-                </message>
-                <description>
-                   This rule ensures that NodePC is not deployed in PhysicalActor.
-
-NodePC=Physical Component of nature NODE
+                   This rule ensures that PC is correctly deployed/contained in parent PC.
+                   
+NODE PC cannot be deployed/contained by a  BEHAVIOUR PC
+BEHAVIOUR PC cannot be contained by a NODE PC
                 </description>
                 <target
                       class="PhysicalComponent">
@@ -171,10 +152,31 @@ NodePC=Physical Component of nature NODE
                    severity="WARNING"
                    statusCode="1">
                 <message>
-                   {0}
+                   {0} ({1}) has an invalid nature UNSET.
                 </message>
                 <description>
-                   This rule ensures that a Physical Component is not of nature UNSET.
+                   This rule ensures that a Physical Component is not of nature UNSET, with the exceptions below, in which UNSET is allowed:
+                   1. Only root Actors (inside structure) can be nature UNSET
+                   2. The root Physical Component can be nature UNSET
+                </description>
+                <target
+                      class="PhysicalComponent">
+                </target>
+             </constraint>
+             <constraint
+                   class="org.polarsys.capella.core.data.pa.validation.physicalComponent.IsUnsetPhysicalComponentCheck"
+                   id="DWF_DC_39"
+                   isEnabledByDefault="true"
+                   lang="Java"
+                   mode="Batch"
+                   name="DWF_DC_39 - PhysicalSystem should be of nature UNSET"
+                   severity="ERROR"
+                   statusCode="1">
+                <message>
+                   {0} ({1}) should be of nature UNSET.
+                </message>
+                <description>
+                   This rule ensures that the PhysicalSystem Component is of nature UNSET.
                 </description>
                 <target
                       class="PhysicalComponent">
@@ -189,7 +191,7 @@ NodePC=Physical Component of nature NODE
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="I_06 - Physical Actor Realization"
+                  name="I_06 - Physical Component Realization"
                   severity="WARNING"
                   statusCode="1">
                <message>
@@ -199,7 +201,7 @@ NodePC=Physical Component of nature NODE
                      class="PhysicalComponent">
                </target>
                <description>
-                 This rule Ensures that Physical Actor always realizes a Logical Actor.
+                 This rule Ensures that Physical Component always realizes a Logical Component.
                </description>
             </constraint>
          </constraints>
@@ -215,7 +217,7 @@ NodePC=Physical Component of nature NODE
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} (Physical Component) should not implement / use / require / provide [{1}]Interface(s) of logical level which is/are not implemented / used / provided / required  by any of its realized Logical Components.
+                  {0} ({2}) should not implement / use / require / provide [{1}]Interface(s) of logical level which is/are not implemented / used / provided / required  by any of its realized Logical Components.
                </message>
                <description>
                   This rule ensures that a Physical Component implements / uses a logical interface which is used / implemented / provided / required by its realized Logical Components. 
@@ -236,7 +238,7 @@ This rule is only evaluated if the transition preference &quot;Transit Interface
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} (Physical Component) is not supposed to implement / use / provide / require an interface defined elsewhere than the physical architecture.
+                  {0} ({1}) is not supposed to implement / use / provide / require an interface defined elsewhere than the physical architecture.
                </message>
                <description>
                   This rule checks that a Physical Component implements / uses / provides / requires an interface of its own level. 

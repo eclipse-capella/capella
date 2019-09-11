@@ -36,7 +36,7 @@ public class Part_AbstractType extends AbstractValidationRule {
       if (eObj instanceof Part) {
         AbstractType abstractType = ((Part) eObj).getAbstractType();
         if (abstractType instanceof Component && ((Component) abstractType).isAbstract()) {
-          return createFailureStatus(ctx, new Object[] { ((Part) eObj).getName(), abstractType.getName() });
+          return ctx.createFailureStatus(new Object[] { ((Part) eObj).getName(), abstractType.getName() });
         }
       }
     }

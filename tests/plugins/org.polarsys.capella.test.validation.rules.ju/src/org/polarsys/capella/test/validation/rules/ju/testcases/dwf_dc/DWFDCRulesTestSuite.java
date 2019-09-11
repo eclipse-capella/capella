@@ -31,6 +31,7 @@ public class DWFDCRulesTestSuite extends BasicTestSuite {
   /**
    * @see org.polarsys.capella.test.framework.api.BasicTestSuite#getTests()
    */
+  @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new Rule_DWF_DC_01());
@@ -42,7 +43,6 @@ public class DWFDCRulesTestSuite extends BasicTestSuite {
     tests.add(new Rule_DWF_DC_07());
     tests.add(new Rule_DWF_DC_08());
     tests.add(new Rule_DWF_DC_09());
-    tests.add(new Rule_DWF_DC_10());
     tests.add(new Rule_DWF_DC_11());
     tests.add(new Rule_DWF_DC_12());
     tests.add(new Rule_DWF_DC_13());
@@ -55,7 +55,6 @@ public class DWFDCRulesTestSuite extends BasicTestSuite {
     tests.add(new Rule_DWF_DC_20());
     tests.add(new Rule_DWF_DC_21());
     tests.add(new Rule_DWF_DC_22());
-    tests.add(new Rule_DWF_DC_23());
     tests.add(new Rule_DWF_DC_24());
     tests.add(new Rule_DWF_DC_26());
     tests.add(new Rule_DWF_DC_27());
@@ -67,6 +66,12 @@ public class DWFDCRulesTestSuite extends BasicTestSuite {
     tests.add(new Rule_DWF_DC_33());
     tests.add(new Rule_DWF_DC_34());
     tests.add(new Rule_DWF_DC_35());
+    tests.add(new Rule_DWF_DC_36());
+    tests.add(new Rule_DWF_DC_37());
+    tests.add(new Rule_DWF_DC_38());
+    tests.add(new Rule_DWF_DC_39());
+    tests.add(new Rule_DWF_DC_40());
+    tests.add(new Rule_DWF_DC_41());
     return tests;
   }
 

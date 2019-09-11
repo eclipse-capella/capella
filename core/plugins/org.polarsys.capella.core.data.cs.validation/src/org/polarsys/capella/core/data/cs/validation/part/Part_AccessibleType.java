@@ -24,6 +24,7 @@ import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
@@ -50,7 +51,8 @@ public class Part_AccessibleType extends AbstractValidationRule {
             
             // return failure warning : part is not typed any of the 'accessibleComponent'
             if (!accessibleComponent.contains(abstractType)) {
-              return createFailureStatus(ctx, new Object[] { part.getName() });
+              return ctx.createFailureStatus(
+                  new Object[] { part.getName(), abstractType.getName(), ComponentExt.getComponentName(abstractType) });
             }
           }
           

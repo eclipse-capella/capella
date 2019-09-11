@@ -36,11 +36,12 @@ public class PhysicalComponent_RealizedLogicalComponents extends AbstractValidat
         if (!actor.getRealizedLogicalComponents().isEmpty()) {
           return ctx.createSuccessStatus();
         }
+        String physicalActorClassName = ComponentExt.getComponentName(actor);
+        String logicalActorClassName = physicalActorClassName.replace("Physical", "Logical");
         return ctx.createFailureStatus(
-            actor.getName() + " (" + actor.eClass().getName() + ") does not realize any Logical Actor."); //$NON-NLS-1$ //$NON-NLS-2$
+            actor.getName() + " (" + physicalActorClassName + ") does not realize any " + logicalActorClassName + "."); //$NON-NLS-1$ //$NON-NLS-2$
       }
     }
     return ctx.createSuccessStatus();
   }
-
 }
