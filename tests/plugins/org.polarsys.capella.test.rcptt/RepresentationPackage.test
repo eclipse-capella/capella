@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _vpoagHrAEeiFH4aXYyDXfw
-Runtime-Version: 2.2.0.201706152316
-Save-Time: 7/3/18 12:06 PM
+Runtime-Version: 2.5.0.M2
+Save-Time: 9/11/19 11:05 AM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -19,44 +19,44 @@ get-view "Project Explorer" | get-tree
 
 //1
 get-view "Project Explorer" | get-tree
-    | select "EOLE_AF/EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/[LAB] Logical System - Logical Architecture Blank"
+    | select "EOLE_AF/EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/[LAB] Logical System - Logical Architecture Blank"
 with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
     set-text a
     key-type Enter
 }
 get-view "Project Explorer" | get-tree 
-    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/a/[LAB] Logical System - Logical Architecture Blank"
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/a/[LAB] Logical System - Logical Architecture Blank"
 
 //2
 get-view "Project Explorer" | get-tree 
-    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/[LAB] Logical System - Logical Architecture Blank with FC"
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/[LAB] Logical System - Logical Architecture Blank with FC"
 with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
     set-text a
     key-type Enter
 }
 get-view "Project Explorer" | get-tree 
-    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/a/[LAB] Logical System - Logical Architecture Blank with FC"
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/a/[LAB] Logical System - Logical Architecture Blank with FC"
 
 
 //3
 get-view "Project Explorer" | get-tree 
-    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/[LAB] Logical System - Logical Architecture Blank without connections"
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/[LAB] Logical System - Logical Architecture Blank without connections"
 with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
     set-text a
     key-type Enter
 }
 get-view "Project Explorer" | get-tree 
-    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/a/[LAB] Logical System - Logical Architecture Blank without connections"
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/a/[LAB] Logical System - Logical Architecture Blank without connections"
 
 //4
 get-view "Project Explorer" | get-tree
-    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/[LCBD] Logical System - Logical Component Breakdown"
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/[LCBD] Logical System - Logical Component Breakdown"
 with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
     set-text a
     key-type Enter
 }
 get-view "Project Explorer" | get-tree
-    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/a/[LCBD] Logical System - Logical Component Breakdown"
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/a/[LCBD] Logical System - Logical Component Breakdown"
 
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -64,77 +64,77 @@ get-view "Project Explorer" | get-tree
 
 //2
 get-view "Project Explorer" | get-tree 
-    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/a/[LAB] Logical System - Logical Architecture Blank with FC"
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/a/[LAB] Logical System - Logical Architecture Blank with FC"
 with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
     set-text b
     key-type Enter
 }
 get-view "Project Explorer" | get-tree 
-    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/b/[LAB] Logical System - Logical Architecture Blank with FC"
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/b/[LAB] Logical System - Logical Architecture Blank with FC"
 
 
 //3
 get-view "Project Explorer" | get-tree 
-    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/a/[LAB] Logical System - Logical Architecture Blank without connections"
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/a/[LAB] Logical System - Logical Architecture Blank without connections"
 with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
     set-text c
     key-type Enter
 }
 get-view "Project Explorer" | get-tree 
-    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/c/[LAB] Logical System - Logical Architecture Blank without connections"
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/c/[LAB] Logical System - Logical Architecture Blank without connections"
 
 //4
 get-view "Project Explorer" | get-tree
-    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/a/[LCBD] Logical System - Logical Component Breakdown"
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/a/[LCBD] Logical System - Logical Component Breakdown"
 with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
     set-text d
     key-type Enter
 }
 get-view "Project Explorer" | get-tree
-    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/d/[LCBD] Logical System - Logical Component Breakdown"
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/d/[LCBD] Logical System - Logical Component Breakdown"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 
 //1
 get-view "Project Explorer" | get-tree 
-    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/a/[LAB] Logical System - Logical Architecture Blank"
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/a/[LAB] Logical System - Logical Architecture Blank"
 with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
     set-text ""
     key-type Enter
 }
 get-view "Project Explorer" | get-tree 
-    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/[LAB] Logical System - Logical Architecture Blank"
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/[LAB] Logical System - Logical Architecture Blank"
 
 //2
 get-view "Project Explorer" | get-tree 
-    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/b/[LAB] Logical System - Logical Architecture Blank with FC"
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/b/[LAB] Logical System - Logical Architecture Blank with FC"
 with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
     set-text ""
     key-type Enter
 }
 get-view "Project Explorer" | get-tree 
-    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/[LAB] Logical System - Logical Architecture Blank with FC"
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/[LAB] Logical System - Logical Architecture Blank with FC"
     
     
 //3
 get-view "Project Explorer" | get-tree 
-    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/c/[LAB] Logical System - Logical Architecture Blank without connections"
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/c/[LAB] Logical System - Logical Architecture Blank without connections"
 with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
     set-text ""
     key-type Enter
 }
 get-view "Project Explorer" | get-tree 
-    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/[LAB] Logical System - Logical Architecture Blank without connections"
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/[LAB] Logical System - Logical Architecture Blank without connections"
 
 //4
 get-view "Project Explorer" | get-tree
-    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/d/[LCBD] Logical System - Logical Component Breakdown"
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/d/[LCBD] Logical System - Logical Component Breakdown"
 with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
     set-text ""
     key-type Enter
 }
 get-view "Project Explorer" | get-tree
-    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/[LCBD] Logical System - Logical Component Breakdown"
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/[LCBD] Logical System - Logical Component Breakdown"
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

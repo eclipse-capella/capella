@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _tBkd0NdfEeiFia3ZpEwxKw
-Runtime-Version: 2.3.0.201806262310
-Save-Time: 10/24/18 10:29 AM
+Runtime-Version: 2.5.0.M2
+Save-Time: 9/11/19 11:09 AM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -59,10 +59,10 @@ get-view "Project Explorer" | get-tree
     | select "Bug2242/Bug2242.aird/Bug2242/Operational Analysis/Operational Activities/Root Operational Activity/Diagram 1"
 get-view Properties | get-property-tab Expert | click
 with [get-view Properties | get-tree] {
-    get-item -path "Rep Path" | get-property caption | equals "Rep Path" | verify-true
-    get-item -path "Rep Path" | get-property index | equals 2 | verify-true
-    get-item -path "Rep Path" | get-property "columns[0]" | equals "Rep Path" | verify-true
-    get-item -path "Rep Path" | get-property "columns[1]" 
+    get-item -path "Misc/Rep Path" | get-property caption | equals "Rep Path" | verify-true
+    get-item -path "Misc/Rep Path" | get-property index | equals 2 | verify-true
+    get-item -path "Misc/Rep Path" | get-property "columns[0]" | equals "Rep Path" | verify-true
+    get-item -path "Misc/Rep Path" | get-property "columns[1]" 
         | equals "platform:/resource/Bug2242/Bug2242.aird#_WGuIINdeEeiv0MCZCDcVww" | verify-true
 }
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _r_UEYOSgEeeF_6848eoV8Q
-Runtime-Version: 2.3.0.201803290557
-Save-Time: 6/26/18 10:07 AM
+Runtime-Version: 2.5.0.M2
+Save-Time: 9/10/19 5:43 PM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -27,7 +27,7 @@ get-window "Filters and Customization" | get-table | get-item -path "Component E
 get-window "Filters and Customization" | get-button OK | click
 with [get-view "Project Explorer" | get-tree] {
     select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | double-click
-    select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Logical Architecture/IFE System/\\[LAB\\] IFE System - All Components, CEs" 
+    select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Logical Architecture/Structure/IFE System/\\[LAB\\] IFE System - All Components, CEs" 
         | double-click
 }
 
@@ -72,7 +72,7 @@ with [get-editor "[LAB] IFE System - All Components, CEs" | get-diagram -index 1
 
 
 get-view "Project Explorer" | get-tree | get-item 
-    -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Logical Architecture/IFE System/Streaming Protocol" 
+    -path "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Logical Architecture/Structure/IFE System/Streaming Protocol" 
     | get-property selected | equals true | verify-true
     
 get-view "Project Explorer" | click

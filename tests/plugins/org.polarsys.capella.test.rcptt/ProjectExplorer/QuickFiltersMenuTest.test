@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _8tBCsOSeEeeF_6848eoV8Q
-Runtime-Version: 2.5.0.201906250740
-Save-Time: 7/5/19 5:03 PM
+Runtime-Version: 2.5.0.M2
+Save-Time: 9/10/19 5:42 PM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -27,17 +27,14 @@ with [get-window "Filters and Customization"] {
     get-item "\*.aird" | get-property checked | equals true | verify-true
     get-item "\*.class resources" | get-property checked | equals true | verify-true
     get-item "\*.melodymodeller resources" | get-property checked | equals true | verify-true
-    get-item "Actor Capability and Mission Involvements" | get-property checked | equals true | verify-true
+    get-item "Capability and Mission Involvements" | get-property checked | equals true | verify-true
     get-item "Association Links" | get-property checked | equals true | verify-true
-    get-item "Capability Realization Involvements" | get-property checked | equals true | verify-true
     get-item "Closed projects" | get-property checked | equals true | verify-true
     get-item "Combined Fragments" | get-property checked | equals true | verify-true
     get-item "Component Exchange Ends" | get-property checked | equals true | verify-true
     get-item "Component Exchanges" | get-property checked | equals true | verify-true
     get-item "Component Port" | get-property checked | equals true | verify-true
-    get-item "Contexts" | get-property checked | equals true | verify-true
     get-item "EMF Resources" | get-property checked | equals true | verify-true
-    get-item "Entity Operational Capability Involvements" | get-property checked | equals true | verify-true
     get-item "Events" | get-property checked | equals true | verify-true
     get-item "Execution Ends" | get-property checked | equals true | verify-true
     get-item "Executions" | get-property checked | equals true | verify-true
@@ -66,7 +63,7 @@ with [get-window "Filters and Customization"] {
     get-item "Representations per resource" | get-property checked | equals true | verify-true
     get-item "Reuse Links" | get-property checked | equals true | verify-true
     get-item "Sequence Messages" | get-property checked | equals true | verify-true
-    get-item "System Capability and Mission Involvements" | get-property checked | equals true | verify-true
+    get-item "Capability and Mission Involvements" | get-property checked | equals true | verify-true
     get-item "Technical Interfaces" | get-property checked | equals true | verify-true
     get-item "Trace" | get-property checked | equals true | verify-true
     get-item "Transformation Links" | get-property checked | equals true | verify-true
@@ -88,17 +85,14 @@ with [get-window "Filters and Customization"] {
     get-item "\*.aird" | get-property checked | equals false | verify-true
     get-item "\*.class resources" | get-property checked | equals false | verify-true
     get-item "\*.melodymodeller resources" | get-property checked | equals false | verify-true
-    get-item "Actor Capability and Mission Involvements" | get-property checked | equals false | verify-true
+    get-item "Capability and Mission Involvements" | get-property checked | equals false | verify-true
     get-item "Association Links" | get-property checked | equals false | verify-true
-    get-item "Capability Realization Involvements" | get-property checked | equals false | verify-true
     get-item "Closed projects" | get-property checked | equals false | verify-true
     get-item "Combined Fragments" | get-property checked | equals false | verify-true
     get-item "Component Exchange Ends" | get-property checked | equals false | verify-true
     get-item "Component Exchanges" | get-property checked | equals false | verify-true
     get-item "Component Port" | get-property checked | equals false | verify-true
-    get-item "Contexts" | get-property checked | equals false | verify-true
     get-item "EMF Resources" | get-property checked | equals false | verify-true
-    get-item "Entity Operational Capability Involvements" | get-property checked | equals false | verify-true
     get-item "Events" | get-property checked | equals false | verify-true
     get-item "Execution Ends" | get-property checked | equals false | verify-true
     get-item "Executions" | get-property checked | equals false | verify-true
@@ -127,7 +121,7 @@ with [get-window "Filters and Customization"] {
     get-item "Representations per resource" | get-property checked | equals false | verify-true
     get-item "Reuse Links" | get-property checked | equals false | verify-true
     get-item "Sequence Messages" | get-property checked | equals false | verify-true
-    get-item "System Capability and Mission Involvements" | get-property checked | equals false | verify-true
+    get-item "Capability and Mission Involvements" | get-property checked | equals false | verify-true
     get-item "Technical Interfaces" | get-property checked | equals false | verify-true
     get-item "Trace" | get-property checked | equals false | verify-true
     get-item "Transformation Links" | get-property checked | equals false | verify-true
@@ -149,17 +143,14 @@ with [get-window "Filters and Customization"] {
     get-item "\*.aird" | get-property checked | equals false | verify-true
     get-item "\*.class resources" | get-property checked | equals false | verify-true
     get-item "\*.melodymodeller resources" | get-property checked | equals false | verify-true
-    get-item "Actor Capability and Mission Involvements" | get-property checked | equals true | verify-true
-    get-item "Association Links" | get-property checked | equals true | verify-true
-    get-item "Capability Realization Involvements" | get-property checked | equals true | verify-true
+    get-item "Capability and Mission Involvements" | get-property checked | equals true | verify-true
+    get-item "Association Links" | get-property checked | equals true | verify-true    
     get-item "Closed projects" | get-property checked | equals false | verify-true
     get-item "Combined Fragments" | get-property checked | equals true | verify-true
     get-item "Component Exchange Ends" | get-property checked | equals true | verify-true
     get-item "Component Exchanges" | get-property checked | equals true | verify-true
     get-item "Component Port" | get-property checked | equals true | verify-true
-    get-item "Contexts" | get-property checked | equals false | verify-true
     get-item "EMF Resources" | get-property checked | equals true | verify-true
-    get-item "Entity Operational Capability Involvements" | get-property checked | equals true | verify-true
     get-item "Events" | get-property checked | equals true | verify-true
     get-item "Execution Ends" | get-property checked | equals true | verify-true
     get-item "Executions" | get-property checked | equals true | verify-true
@@ -188,7 +179,7 @@ with [get-window "Filters and Customization"] {
     get-item "Representations per resource" | get-property checked | equals true | verify-true
     get-item "Reuse Links" | get-property checked | equals false | verify-true
     get-item "Sequence Messages" | get-property checked | equals false | verify-true
-    get-item "System Capability and Mission Involvements" | get-property checked | equals true | verify-true
+    get-item "Capability and Mission Involvements" | get-property checked | equals true | verify-true
     get-item "Technical Interfaces" | get-property checked | equals true | verify-true
     get-item "Trace" | get-property checked | equals true | verify-true
     get-item "Transformation Links" | get-property checked | equals true | verify-true

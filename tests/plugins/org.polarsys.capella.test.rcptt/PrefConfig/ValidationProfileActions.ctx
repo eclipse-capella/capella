@@ -5,8 +5,8 @@ Element-Name: ValidationProfileActions
 Element-Type: context
 Element-Version: 2.0
 Id: _ZR3fQKKHEeaAAPJPtfviTA
-Runtime-Version: 2.3.0.201806262310
-Save-Time: 11/29/18 12:58 PM
+Runtime-Version: 2.5.0.M2
+Save-Time: 9/10/19 2:30 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -14,7 +14,7 @@ Entry-Name: .ecl.context
 
 
 proc referenceConfigProject [val capellaProjectName] [val configProjectName]{
-	get-view "Capella Project Explorer" | get-tree | select $capellaProjectName | get-menu Properties | click
+	get-view "Project Explorer" | get-tree | select $capellaProjectName | get-menu Properties | click
 	with [get-window [concat "Properties for " $capellaProjectName] ] {
 	    get-tree | select "Capella Project References"
 	    get-table | get-item $configProjectName | check
@@ -74,7 +74,7 @@ proc importEPFFileFromDir [val filename] {
 
 proc exportEPFFileToConfigProject [val configProjectName] {
 
-	get-view "Capella Project Explorer" | get-tree | get-menu "Export..." | click
+	get-view "Project Explorer" | get-tree | get-menu "Export..." | click
 	with [get-window Export] {
 	    get-tree | select "General" | select "General/Preferences"
 	    get-button "Next >" | click
@@ -117,9 +117,9 @@ proc selectSomeConstraints_step1 {
 	get-preferences-menu | click
 	with [get-window Preferences] {
 		get-tree | select "Capella/Delete"
-	    with [get-group Delete] {
-	        get-button "Confirm deletions" | uncheck
-	        get-button "If reusing components is allowed, synchronize the deletion of parts when deleting components" | uncheck
+	    get-button "Show confirmation dialog" | uncheck
+		with [get-group "Reusable components" ] {
+	        get-button "Delete parts when deleting components" | uncheck
 	    }
 	    
 	    get-tree | select "Capella/Model"
@@ -141,9 +141,9 @@ proc selectSomeConstraints_step2 {
 	get-preferences-menu | click
 	with [get-window Preferences] {
 		get-tree | select "Capella/Delete"
-	    with [get-group Delete] {
-	        get-button "Confirm deletions" | check
-	        get-button "If reusing components is allowed, synchronize the deletion of parts when deleting components" | check
+	    	    get-button "Show confirmation dialog" | check
+		with [get-group "Reusable components" ] {
+	        get-button "Delete parts when deleting components" | check
 	    }
 	    
 	    get-tree | select "Capella/Model"
@@ -165,9 +165,10 @@ proc selectSomeConstraints_validation {
 	get-preferences-menu | click
 	with [get-window Preferences] {
 		get-tree | select "Capella/Delete"
-	    with [get-group Delete] {
-	        checkPropertyButtonSelected "Confirm deletions" false
-	        checkPropertyButtonSelected "If reusing components is allowed, synchronize the deletion of parts when deleting components" false
+		
+		checkPropertyButtonSelected "Show confirmation dialog" false
+		with [get-group "Reusable components" ] {
+	        checkPropertyButtonSelected "Delete parts when deleting components" false
 	    }
 	    
 	    get-tree | select "Capella/Model"
@@ -201,7 +202,7 @@ proc "checkDefaultPreferences" [val projectName] {
 
 	// Open the Preference window
 	if [ $projectName | not-eq "" ] {
-		get-view "Capella Project Explorer" | get-tree | select $projectName | get-menu Properties | click
+		get-view "Project Explorer" | get-tree | select $projectName | get-menu Properties | click
 		
 		global [val prefWindow [concat "Properties for " $projectName]] true
 	} -else {
@@ -269,7 +270,7 @@ proc "changePreferences" [val projectName] {
 
 	// Open the Preference window
 	if [ $projectName | not-eq "" ] {
-		get-view "Capella Project Explorer" | get-tree | select $projectName | get-menu Properties | click
+		get-view "Project Explorer" | get-tree | select $projectName | get-menu Properties | click
 		
 		global [val prefWindow [concat "Properties for " $projectName]] true
 	} -else {
@@ -342,7 +343,7 @@ proc "checkChangedPreferences" [val projectName] {
 
 	// Open the Preference window
 	if [ $projectName | not-eq "" ] {
-		get-view "Capella Project Explorer" | get-tree | select $projectName | get-menu Properties | click
+		get-view "Project Explorer" | get-tree | select $projectName | get-menu Properties | click
 		
 		global [val prefWindow [concat "Properties for " $projectName]] true
 	} -else {
@@ -424,7 +425,7 @@ proc "checkUnchangedPreferencesProject1" [val projectName] {
 
 	// Open the Preference window
 	if [ $projectName | not-eq "" ] {
-		get-view "Capella Project Explorer" | get-tree | select $projectName | get-menu Properties | click
+		get-view "Project Explorer" | get-tree | select $projectName | get-menu Properties | click
 		
 		global [val prefWindow [concat "Properties for " $projectName]] true
 	} -else {
@@ -508,7 +509,7 @@ proc "restoreDefaultPreferences" [val projectName] {
 
 	// Open the Preference window
 	if [ $projectName | not-eq "" ] {
-		get-view "Capella Project Explorer" | get-tree | select $projectName | get-menu Properties | click
+		get-view "Project Explorer" | get-tree | select $projectName | get-menu Properties | click
 		
 		global [val prefWindow [concat "Properties for " $projectName]] true
 	} -else {
@@ -552,7 +553,7 @@ proc checkValidationProfile {
 	}
 	
 	// Check config ConfigProject1_preferences
-	with [get-view "Capella Project Explorer" | get-tree] {
+	with [get-view "Project Explorer" | get-tree] {
 	    select "MelodyProject1/MelodyProject1.aird" | get-menu "Open Session" | click
 	    select "MelodyProject1/MelodyProject1.aird/MelodyProject1" | get-menu "Validate Model/ConfigProject1_preferences" | click
 	}
@@ -566,7 +567,7 @@ proc checkValidationProfile {
 	}
 	
 	// Check config Validate Model
-	with [get-view "Capella Project Explorer" | get-tree] {
+	with [get-view "Project Explorer" | get-tree] {
 	    select "MelodyProject1/MelodyProject1.aird/MelodyProject1" | get-menu "Validate Model/Validate Model" | click
 	}
 	get-window "Validation Problems" | get-button OK | click

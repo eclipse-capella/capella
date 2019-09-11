@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _vE9zkCmcEeeLMJ-eLKwAnw
-Runtime-Version: 2.1.0.201606221726
-Save-Time: 10/1/18 10:40 AM
+Runtime-Version: 2.5.0.M2
+Save-Time: 9/10/19 2:39 PM
 Tags: constraint
 Testcase-Type: ecl
 
@@ -24,7 +24,7 @@ Entry-Name: .content
 
 with [get-view "Project Explorer" | get-tree] {
     select "ConstraintEdition/ConstraintEdition.aird" | double-click
-    select [get-item "ConstraintEdition/ConstraintEdition.aird/ConstraintEdition/System Analysis/System/System State Machine/Default Region" 
+    select [get-item "ConstraintEdition/ConstraintEdition.aird/ConstraintEdition/System Analysis/Structure/System/System State Machine/Default Region" 
         | get-item "Transition 2"]
 }
 
@@ -40,7 +40,7 @@ with [get-view Properties | get-section Property | get-group "" -index 1 | get-t
 	key-type Enter
 }
 get-view "Project Explorer" | get-tree 
-    | select [get-item "ConstraintEdition/*ConstraintEdition.aird/ConstraintEdition/System Analysis/System/System State Machine/Default Region" 
+    | select [get-item "ConstraintEdition/*ConstraintEdition.aird/ConstraintEdition/System Analysis/Structure/System/System State Machine/Default Region" 
     | get-item "Transition 2" | get-item "[Constraint]/[Opaque Expression]"]
 
 // Test that the language "LinkedText" and its content are created

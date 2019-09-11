@@ -5,8 +5,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _7NrmAK8sEee2vO1UksePLw
-Runtime-Version: 2.5.0.201906250740
-Save-Time: 7/4/19 9:26 AM
+Runtime-Version: 2.5.0.M2
+Save-Time: 9/10/19 3:25 PM
 Tags: Diagram_IS
 Testcase-Type: ecl
 
@@ -48,7 +48,7 @@ with [get-editor "[IS] Capability 1"] {
         mouse-release 440 51 button1 524288 -height 663 -width 1042
     }
     with [get-diagram -index 1 | get-edit-part -name "[IS] Capability 1"] {
-        get-edit-part -name "Actor 1" | get-edit-part -className SquareEditPart | mouse-hover 0 0 -height 50 -width 100
+        get-edit-part -name "SA 2" | get-edit-part -className SquareEditPart | mouse-hover 0 0 -height 50 -width 100
         mouse-move 1009 198 -height 663 -width 1042
     }
     with [get-palette | get-palette-entry "Sequence Message"] {
@@ -71,7 +71,7 @@ with [get-editor "[IS] Capability 1"] {
             mouse-release 4 57 button1 524288 -height 395 -width 10
         }
         mouse-move 484 157 -height 663 -width 1042
-        with [get-edit-part -name "Actor 1" | get-edit-part -name "" | get-edit-part -className SquareEditPart] {
+        with [get-edit-part -name "SA 2" | get-edit-part -name "" | get-edit-part -className SquareEditPart] {
             mouse-move 4 60 button1 -height 400 -width 10
             mouse-press 4 60 button1 -height 400 -width 10
         }
@@ -85,7 +85,7 @@ with [get-window "Selection Dialog"] {
     get-button OK | click
 }
 with [get-editor "[IS] Capability 1" | get-diagram -index 1 | get-edit-part -name "[IS] Capability 1"] {
-    get-edit-part -name "Actor 1" | get-edit-part -name "" | get-edit-part -name "" -index 1 | get-target-connection 0 
+    get-edit-part -name "SA 2" | get-edit-part -name "" | get-edit-part -name "" -index 1 | get-target-connection 0 
         | get-edit-part -className SequenceMessageNameEditPart | get-property "element.name" | equals "exchangeItem1()" 
         | verify-true
     get-edit-part -name System | get-edit-part -name "" | get-target-connection 0 | get-edit-part 
@@ -151,7 +151,7 @@ with [get-editor "[IS] Capability 1" | get-diagram -index 1 | get-edit-part -nam
     mouse-release 991 295 button1 524288 -height 663 -width 1042
     mouse-move 427 197 -height 663 -width 1042
     mouse-move 391 162 -height 663 -width 1042
-    with [get-edit-part -name "Actor 1" | get-edit-part -name "" | get-edit-part -name "" -index 1 
+    with [get-edit-part -name "SA 2" | get-edit-part -name "" | get-edit-part -name "" -index 1 
         | get-target-connection 0] {
         mouse-move 271 27 button1 -height 47 -width 386
         mouse-press 271 27 button1 -height 47 -width 386
@@ -287,7 +287,7 @@ with [get-editor "[IS] Capability 1"] {
 }
 
 get-editor "[IS] Capability 1" | get-diagram -index 1 | get-edit-part -name "[IS] Capability 1" | get-edit-part 
-    -name "Actor 1" | get-edit-part -name "" | get-edit-part -name "" -index 1 | get-target-connection 0 
+    -name "SA 2" | get-edit-part -name "" | get-edit-part -name "" -index 1 | get-target-connection 0 
     | get-edit-part -className SequenceMessageNameEditPart | get-property "getLabelText()" 
     | equals "exchangeItem1() {Constraint1}" | verify-true
 

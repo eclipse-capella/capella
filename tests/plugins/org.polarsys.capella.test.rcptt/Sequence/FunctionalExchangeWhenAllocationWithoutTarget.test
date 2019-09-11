@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _m1bcAPyxEeWcsI4k6xXMnQ
-Runtime-Version: 2.3.0.201803290557
-Save-Time: 6/25/18 3:46 PM
+Runtime-Version: 2.5.0.M2
+Save-Time: 9/10/19 1:11 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -29,7 +29,7 @@ with [get-window "Filters and Customization"] {
 }
 with [get-view "Project Explorer" | get-tree] {
     select "EOLE_AF/EOLE_AF.aird" | double-click
-    select "EOLE_AF/EOLE_AF.aird/EOLE_AF/Logical Architecture/Actors/Atmosphere/[Component Functional Allocation] to Make weather"
+    select "EOLE_AF/EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Atmosphere/[Component Functional Allocation] to Make weather"
 }
 with [get-view Properties] {
     click

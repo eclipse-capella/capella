@@ -5,15 +5,15 @@ Element-Name: CapellaExplorerFilters
 Element-Type: context
 Element-Version: 2.0
 Id: _l_hsIAA_EeimXaiNP7dJhg
-Runtime-Version: 2.3.0.201803290557
-Save-Time: 6/25/18 3:31 PM
+Runtime-Version: 2.5.0.M2
+Save-Time: 9/10/19 10:55 AM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
 Entry-Name: .ecl.context
 
 get-button "View Menu" | click
-get-view "Capella Project Explorer" | get-menu "Filters and Customization..." | click
+get-view "Project Explorer" | get-menu "Filters and Customization..." | click
 with [get-window "Filters and Customization"] {
     get-tab-folder | get-tab-item "Pre-set filters" | click
     with [get-table] {
@@ -22,17 +22,14 @@ with [get-window "Filters and Customization"] {
     get-item "\*.aird" | uncheck
     get-item "\*.class resources" | uncheck
     get-item "\*.melodymodeller resources" | uncheck
-    get-item "Actor Capability and Mission Involvements" | check
+    get-item "Capability and Mission Involvements" | check
     get-item "Association Links" | check
-    get-item "Capability Realization Involvements" | check
     get-item "Closed projects" | uncheck
     get-item "Combined Fragments" | check
     get-item "Component Exchange Ends" | check
     get-item "Component Exchanges" | check
     get-item "Component Port" | check
-    get-item "Contexts" | uncheck
     get-item "EMF Resources" | check
-    get-item "Entity Operational Capability Involvements" | check
     get-item "Events" | check
     get-item "Execution Ends" | check
     get-item "Executions" | check
@@ -61,7 +58,6 @@ with [get-window "Filters and Customization"] {
     get-item "Representations per resource" | check
     get-item "Reuse Links" | uncheck
     get-item "Sequence Messages" | uncheck
-    get-item "System Capability and Mission Involvements" | check
     get-item "Technical Interfaces" | check
     get-item "Trace" | check
     get-item "Transformation Links" | check

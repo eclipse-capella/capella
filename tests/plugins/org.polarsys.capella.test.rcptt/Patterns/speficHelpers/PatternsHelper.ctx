@@ -5,8 +5,8 @@ Element-Name: PatternsHelper
 Element-Type: context
 Element-Version: 2.0
 Id: _2kJLQGXmEeaVsIgvj-cA7g
-Runtime-Version: 2.0.2.201511100828
-Save-Time: 1/11/17 2:50 PM
+Runtime-Version: 2.5.0.M2
+Save-Time: 9/10/19 1:17 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -15,7 +15,7 @@ Entry-Name: .ecl.context
 // Very specific procedures in order to clarify test cases
 
 proc openLAB {
-	with [get-view "Capella Project Explorer" | get-tree] {
+	with [get-view "Project Explorer" | get-tree] {
 		select "patterns_1/patterns_1.aird" | get-menu "Open Session" | click
 		select "patterns_1/patterns_1.aird/Representations per category/Logical Architecture/Logical Architecture Bla" +
 			"nk/[LAB] Logical System" | get-menu Open | click
@@ -98,8 +98,8 @@ proc createPattern {
 }
 
 proc foldInstance {
-	get-view "Capella Project Explorer" | get-tree | select "patterns_1/patterns_1.aird/patterns_1/Logical Architectu" +
-		"re/Logical System" | get-menu "Patterns/Manage Instance(s)..." | click
+	get-view "Project Explorer" | get-tree | select "patterns_1/patterns_1.aird/patterns_1/Logical Architectu" +
+		"re/Structure/Logical System" | get-menu "Patterns/Manage Instance(s)..." | click
 	get-window "Pattern Instance Management" | get-group "Life-cycle" | get-button Fold | click
 
 	// Check if the deleted content is not empty delete the instance
@@ -114,7 +114,7 @@ proc foldInstance {
 
 proc closeCatalog {
 	try {
-		get-view "Capella Project Explorer" | get-tree | select "patterns_1/patterns_1.patterns" | get-menu "Close Ca" +
+		get-view "Project Explorer" | get-tree | select "patterns_1/patterns_1.patterns" | get-menu "Close Ca" +
 			"talog" | click
 		get-window "Modeling Patterns" | get-button OK | click
 	} -catch {
