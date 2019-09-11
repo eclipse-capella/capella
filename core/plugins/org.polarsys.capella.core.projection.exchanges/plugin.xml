@@ -16,7 +16,7 @@
           
          <command
                defaultHandler="org.polarsys.capella.core.projection.exchanges.handlers.GenerateConnectionsHandler"
-               id="org.polarsys.capella.core.sirius.menus.graphical.generateComponentExchanges"
+               id="org.polarsys.capella.core.sirius.menus.graphical.accelerator.generateComponentExchanges"
                name="%generateComponentExchanges_label"
                >
          </command>
@@ -46,7 +46,7 @@
    <extension
             point="org.eclipse.ui.commandImages">
          <image
-               commandId="org.polarsys.capella.core.sirius.menus.graphical.generateComponentExchanges"
+               commandId="org.polarsys.capella.core.sirius.menus.graphical.accelerator.generateComponentExchanges"
                icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif">
          </image>
          
@@ -73,7 +73,7 @@
             locationURI="popup:org.polarsys.capella.core.accelerators?after=additions">
             
             
-         <command  commandId="org.polarsys.capella.core.sirius.menus.graphical.generateComponentExchanges" >
+         <command  commandId="org.polarsys.capella.core.sirius.menus.graphical.accelerator.generateComponentExchanges" >
          <visibleWhen checkEnabled="false">
             <with variable="selection">
                 <iterate ifEmpty="false">

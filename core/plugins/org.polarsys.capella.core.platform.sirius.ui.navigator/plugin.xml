@@ -1197,7 +1197,6 @@
       		locationURI="popup:capella.project.explorer#PopupMenu?after=group.project">
          <command
                commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.refreshAird"
-               id="org.polarsys.capella.core.platform.sirius.ui.navigator.refreshAird"
                label="%command.refreshDiagrams"
                style="push">
             <visibleWhen checkEnabled="true">
@@ -1228,7 +1227,6 @@
          </command>
          <command
                commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.removeHiddenElements"
-               id="org.polarsys.capella.core.platform.sirius.ui.navigator.removeHiddenElements"
                label="%command.removeHiddenElements"
                style="push">
             <visibleWhen
@@ -1269,7 +1267,6 @@
             locationURI="popup:org.eclipse.ui.popup.any?after=group.showIn">
          <command
                commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.locateInCapellaExplorerCommand"
-               id="org.polarsys.capella.core.platform.sirius.ui.navigator.LocateInCapellaExplorer"
                label="%showInCapellaExplorerAction"
                style="push">
             <visibleWhen
@@ -1361,7 +1358,6 @@
 	         
             <command
                commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showRelatedElementsCommand"
-               id="org.polarsys.capella.core.platform.sirius.ui.navigator.showRelatedElementFromDiagram"
                label="%showAllSemanticInCapellaExplorerAction"
                style="push">
                <!-- Do not need to define visibleWhen for this Show All command. The visibleWhen of the menu showSemanticInCapellaExplorerAction  

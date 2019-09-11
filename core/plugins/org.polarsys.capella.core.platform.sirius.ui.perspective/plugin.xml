@@ -62,18 +62,20 @@
           </run>
        </application>
     </extension>
-   <extension point= "org.eclipse.ui.activities" >
-     <!-- Declare the activity -->
+   <extension
+         point="org.eclipse.ui.activities">
+         
+         
      <activity id= "org.polarsys.capella.core.hidden.activity" description= "Capella Hidden Activities" name= "Capella Hidden Activities"/>
-     <!-- hidden contributions-->
      <activityPatternBinding activityId="org.polarsys.capella.core.hidden.activity" pattern="org\.eclipse\.debug\..*/.*"/>
      <activityPatternBinding activityId="org.polarsys.capella.core.hidden.activity" pattern=".*/org.eclipse.sirius.ui.modelingproject.wizard"/>
      <activityPatternBinding activityId="org.polarsys.capella.core.hidden.activity" pattern=".*/org.eclipse.sirius.ui.specificationproject.wizard"/>
+     
 	 <!-- Declare the a specific activity for elements only hidden in Capella perspective -->
 	 <activity
-		description="Capella Hidden Activities"
+		description="Capella Hidden Activities Perspective"
 		id="org.polarsys.capella.core.perspective.hidden.activity"
-		name="Capella Hidden Activities">
+		name="Capella Hidden Activities Perspective">
 		<enabledWhen>
 			<with
 				variable="activeWorkbenchWindow.activePerspective">
@@ -87,86 +89,435 @@
 	 </activity>
 	 <!-- This contribution is used to hide the Sirius's close contextual menu in Capella perspective -->
 	 <activityPatternBinding activityId="org.polarsys.capella.core.perspective.hidden.activity" isEqualityPattern="true" pattern="org.eclipse.sirius.ui.editor/org.eclipse.sirius.ui.closeSessionMenuContribution"/>
-  	 <category
-               description="The single capella test category"
-               id="org.polarsys.capella.rcp.activities.capellaCategory"
-               name="Capella Category">
-       </category>
-       <activity
-             description="Binds contributions that are not associated to any other capella activity"
-             id="org.polarsys.capella.rcp.activities.sampleActivity"
-             name="Capella Example Activity">
-       </activity>
-       <activity
-             description="Transitions"
-             id="org.polarsys.capella.rcp.activities.transition"
+     
+         
+         
+    </extension>
+    
+    
+    
+   <extension
+         point="org.eclipse.ui.activities">
+      <category
+            description="Capella System Engineering Tools"
+            id="org.polarsys.capella.activities.categories.capella"
+            name="Capella Tools">
+      </category>
+      <category
+            description="Capella System Engineering Phases"
+            id="org.polarsys.capella.activities.categories.architectures"
+            name="Capella Phases">
+      </category>
+      <category
+            description="Capella System Engineering Concepts"
+            id="org.polarsys.capella.activities.categories.common"
+            name="Capella Concepts">
+      </category>
+      
+      <category
+            description="Platforrm"
+            id="org.polarsys.capella.activities.categories.platform"
+            name="Platform">
+      </category>
+      
+      <category
+            description="Modeling Features for Advanced Users"
+            id="org.polarsys.capella.activities.categories.advanced"
+            name="Capella Advanced Modeling">
+      </category>
+      
+	 
+	 
+	   <activity
+             description="Concepts related to Transitions"
+             id="org.polarsys.capella.activities.transitions"
              name="Transitions">
        </activity>
+       <defaultEnablement
+             id="org.polarsys.capella.activities.transitions">
+       </defaultEnablement>
+       <categoryActivityBinding
+             activityId="org.polarsys.capella.activities.transitions"
+             categoryId="org.polarsys.capella.activities.categories.capella">
+       </categoryActivityBinding>
+       <activityPatternBinding pattern="org.polarsys.capella.core.transition.system.topdown.ui/.*" activityId="org.polarsys.capella.activities.transitions" />
+       <activityPatternBinding pattern="org.polarsys.capella.core.projection.scenario/.*" activityId="org.polarsys.capella.activities.transitions" />
+       <activityPatternBinding pattern="org.polarsys.capella.core.projection.exchanges/.*" activityId="org.polarsys.capella.activities.transitions" />
+       <activityPatternBinding pattern="org.polarsys.capella.core.projection.interfaces/.*" activityId="org.polarsys.capella.activities.transitions" />
+       
+       
+       
        <activity
-             id="org.polarsys.capella.rcp.activities.pattern"
-             name="Modeling Pattern">
+             id="org.polarsys.capella.activities.patterns"
+             description="Concepts related to Paterns"
+             name="Patterns">
        </activity>
+       <defaultEnablement
+             id="org.polarsys.capella.activities.patterns">
+       </defaultEnablement>
+       <categoryActivityBinding
+             activityId="org.polarsys.capella.activities.patterns"
+             categoryId="org.polarsys.capella.activities.categories.capella">
+       </categoryActivityBinding>
+       <activityPatternBinding pattern="org.polarsys.capella.patterns.ui/.*" activityId="org.polarsys.capella.activities.patterns" />
+       
+       
+       
        <activity
-             description="Replicable Elements"
-             id="org.polarsys.capella.rcp.activities.re"
-             name="Replicable Elements">
-       </activity>
-       <activity
-             description="Enables support for capella libraries"
-             id="org.polarsys.capella.rcp.activities.libraries"
+             id="org.polarsys.capella.activities.libraries"
+             description="Concepts related to Libraries"
              name="Libraries">
        </activity>
-       <defaultEnablement id="org.polarsys.capella.rcp.activities.sampleActivity"/>
-       <defaultEnablement id="org.polarsys.capella.rcp.activities.pattern"/>
-       <defaultEnablement id="org.polarsys.capella.rcp.activities.transition"/>
-       <defaultEnablement id="org.polarsys.capella.rcp.activities.re"/>
-       <defaultEnablement id="org.polarsys.capella.rcp.activities.libraries"/>
+       <defaultEnablement
+             id="org.polarsys.capella.activities.libraries">
+       </defaultEnablement>
        <categoryActivityBinding
-             activityId="org.polarsys.capella.rcp.activities.sampleActivity"
-             categoryId="org.polarsys.capella.rcp.activities.capellaCategory">
+             activityId="org.polarsys.capella.activities.libraries"
+             categoryId="org.polarsys.capella.activities.categories.capella">
        </categoryActivityBinding>
+       <activityPatternBinding pattern="org.polarsys.capella.core.libraries/.*" activityId="org.polarsys.capella.activities.libraries" />
+       <activityPatternBinding pattern="org.polarsys.capella.core.libraries.ui/.*" activityId="org.polarsys.capella.activities.libraries" />
+       
+       
+       
+       
+       <activity
+             description="Concepts related to the Replicable Elements"
+             id="org.polarsys.capella.activities.re"
+             name="Replicable Elements">
+       </activity>
+       <defaultEnablement id="org.polarsys.capella.activities.re"/>
         <categoryActivityBinding
-             activityId="org.polarsys.capella.rcp.activities.transition"
-             categoryId="org.polarsys.capella.rcp.activities.capellaCategory">
+             activityId="org.polarsys.capella.activities.re"
+             categoryId="org.polarsys.capella.activities.categories.capella">
        </categoryActivityBinding>
+      <activityPatternBinding pattern="org.polarsys.capella.common.re.ui/.*" activityId="org.polarsys.capella.activities.re" />
+      <activityPatternBinding pattern="org.polarsys.capella.core.re.ui/.*" activityId="org.polarsys.capella.activities.re"/>
+      <activityPatternBinding pattern="org.polarsys.capella.core.re.project/.*" activityId="org.polarsys.capella.activities.re"/>
+      
+      
+      
+      
+      
+      
+      
+      
+       
+       <activity
+             description="Concepts related to Wizards"
+             id="org.polarsys.capella.activities.wizards"
+             name="Wizards">
+       </activity>
+       <defaultEnablement id="org.polarsys.capella.activities.wizards"/>
         <categoryActivityBinding
-             activityId="org.polarsys.capella.rcp.activities.re"
-             categoryId="org.polarsys.capella.rcp.activities.capellaCategory">
+             activityId="org.polarsys.capella.activities.wizards"
+             categoryId="org.polarsys.capella.activities.categories.capella">
        </categoryActivityBinding>
+      <activityPatternBinding pattern="org.polarsys.capella.core.*wizard.*" activityId="org.polarsys.capella.activities.wizards" />
+      
+      
+       <activity
+             name="Modeling Accelerators"
+             id="org.polarsys.capella.activities.accelerator"
+             description="Concepts related to Modeling Accelerators">
+       </activity>
+       <defaultEnablement id="org.polarsys.capella.activities.accelerator"/>
         <categoryActivityBinding
-             activityId="org.polarsys.capella.rcp.activities.pattern"
-             categoryId="org.polarsys.capella.rcp.activities.capellaCategory">
+             activityId="org.polarsys.capella.activities.accelerator"
+             categoryId="org.polarsys.capella.activities.categories.capella">
        </categoryActivityBinding>
-         <categoryActivityBinding
-             activityId="org.polarsys.capella.rcp.activities.libraries"
-             categoryId="org.polarsys.capella.rcp.activities.capellaCategory">
+      <activityPatternBinding pattern="org.polarsys.capella.core.platform.sirius.ui.*accelerator.*" activityId="org.polarsys.capella.activities.accelerator" />
+      <activityPatternBinding pattern="org.polarsys.capella.core.transfo.*accelerator.*" activityId="org.polarsys.capella.activities.accelerator" />
+      <activityPatternBinding pattern="org.polarsys.capella.core.sirius.*accelerator.*" activityId="org.polarsys.capella.activities.accelerator" />
+      
+      
+      
+      
+      <activity
+             name="Element Creation in Project Explorer"
+             id="org.polarsys.capella.activities.element.creation"
+             description="Element Creation in Project Explorer">
+       </activity>
+       <defaultEnablement id="org.polarsys.capella.activities.element.creation"/>
+        <categoryActivityBinding
+             activityId="org.polarsys.capella.activities.element.creation"
+             categoryId="org.polarsys.capella.activities.categories.advanced">
        </categoryActivityBinding>
-       <activityPatternBinding
-            activityId="org.polarsys.capella.rcp.activities.transition"
-            isEqualityPattern="false"
-            pattern="org\.polarsys\.capella\.core\.transition.*">
-      </activityPatternBinding>
-      <activityPatternBinding
-            activityId="org.polarsys.capella.rcp.activities.transition"
-            isEqualityPattern="false"
-            pattern="org\.polarsys\.capella\.core\.projection.*">
-      </activityPatternBinding>
-      <activityPatternBinding
-            activityId="org.polarsys.capella.rcp.activities.re"
-            pattern="org\.polarsys\.capella\.common\.re\..*">
-      </activityPatternBinding>
-      <activityPatternBinding
-            activityId="org.polarsys.capella.rcp.activities.pattern"
-            isEqualityPattern="false"
-            pattern="org\.polarsys\.capella\.patterns\.ui/.*">
-      </activityPatternBinding>
-      <activityPatternBinding
-            activityId="org.polarsys.capella.rcp.activities.libraries"
-            pattern="org\.polarsys\.capella\.core\.libraries\.ui/.*">
-      </activityPatternBinding>
+      <activityPatternBinding pattern="capella.project.element.menu" activityId="org.polarsys.capella.activities.element.creation" />
+      
+      
+      
+      
+      
+      
+       <activity
+             name="Expert Properties"
+             id="org.polarsys.capella.activities.expert.properties"
+             description="Allows the edition of model element properties through Expert Property View">
+       </activity>
+       <defaultEnablement id="org.polarsys.capella.activities.expert.properties"/>
+        <categoryActivityBinding
+             activityId="org.polarsys.capella.activities.expert.properties"
+             categoryId="org.polarsys.capella.activities.categories.advanced">
+       </categoryActivityBinding>
+      <activityPatternBinding pattern="org.polarsys.capella.common.data.modellingcore.section.advanced.ModelElement" activityId="org.polarsys.capella.activities.expert.properties" />
+      <activityPatternBinding pattern="property.section.semantic" activityId="org.polarsys.capella.activities.expert.properties" />
+      
+      
+      
+      
+      
+      <activity
+             name="Diagram Creation in Project Explorer"
+             id="org.polarsys.capella.activities.diagram.creation"
+             description="Diagram Creation in Project Explorer">
+       </activity>
+       <defaultEnablement id="org.polarsys.capella.activities.diagram.creation"/>
+        <categoryActivityBinding
+             activityId="org.polarsys.capella.activities.diagram.creation"
+             categoryId="org.polarsys.capella.activities.categories.advanced">
+       </categoryActivityBinding>
+      <activityPatternBinding pattern="capella.project.diagrams.menu" activityId="org.polarsys.capella.activities.diagram.creation" />
+
+
+      
+      
+      
+      
+      
+      
+      
+      
+
+
+
+      <activity id="org.polarsys.capella.activities.fastLinker" name="Fast Linker" 
+                description="Concepts related to the Fast Linker Tool" />
       <defaultEnablement
-            id="org.polarsys.capella.rcp.activities.libraries">
+            id="org.polarsys.capella.activities.fastLinker">
       </defaultEnablement>
+      <categoryActivityBinding
+            activityId="org.polarsys.capella.activities.fastLinker"
+            categoryId="org.polarsys.capella.activities.categories.capella">
+      </categoryActivityBinding>
+      <activityPatternBinding
+            activityId="org.polarsys.capella.activities.fastLinker"
+            pattern="org.polarsys.capella.core.ui.fastlinker/.*">
+      </activityPatternBinding>
+      
+      
+      
+      
+
+      
+
+
+      <activity
+            id="org.polarsys.capella.activities.migration"
+            description="Concepts related to Model Migration"
+            name="Migration">
+      </activity>
+      <defaultEnablement
+            id="org.polarsys.capella.activities.migration">
+      </defaultEnablement>
+      <categoryActivityBinding
+            activityId="org.polarsys.capella.activities.migration"
+            categoryId="org.polarsys.capella.activities.categories.capella">
+      </categoryActivityBinding>
+      <activityPatternBinding pattern="org.polarsys.capella.core.data.migration/.*" activityId="org.polarsys.capella.activities.migration"/>
+      <activityPatternBinding pattern="org.polarsys.capella.patterns.migration/.*" activityId="org.polarsys.capella.activities.migration"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <activity
+            id="org.polarsys.capella.activities.oa"
+            description="Concepts related to the Operational Analysis Engineering Phase in Activity Explorer"
+            name="1- Operational Analysis">
+      </activity>
+      <defaultEnablement
+            id="org.polarsys.capella.activities.oa">
+      </defaultEnablement>
+      <categoryActivityBinding
+            activityId="org.polarsys.capella.activities.oa"
+            categoryId="org.polarsys.capella.activities.categories.architectures">
+      </categoryActivityBinding>
+      <activityPatternBinding pattern=".*/.*\.oa\..*" activityId="org.polarsys.capella.activities.oa"/>
+      
+      
+      
+      <activity
+            id="org.polarsys.capella.activities.sa"
+            description="Concepts related to the System Analysis Engineering Phase in Activity Explorer"
+            name="2- System Analysis">
+      </activity>
+      <defaultEnablement
+            id="org.polarsys.capella.activities.sa">
+      </defaultEnablement>
+      <categoryActivityBinding
+            activityId="org.polarsys.capella.activities.sa"
+            categoryId="org.polarsys.capella.activities.categories.architectures">
+      </categoryActivityBinding>
+      <activityPatternBinding pattern=".*/.*\.sa\..*" activityId="org.polarsys.capella.activities.sa"/>
+      
+      
+      <activity
+            id="org.polarsys.capella.activities.la"
+            description="Concepts related to the Logical Architecture Engineering Phase in Activity Explorer"
+            name="3- Logical Architecture">
+      </activity>
+      <defaultEnablement
+            id="org.polarsys.capella.activities.la">
+      </defaultEnablement>
+      <categoryActivityBinding
+            activityId="org.polarsys.capella.activities.la"
+            categoryId="org.polarsys.capella.activities.categories.architectures">
+      </categoryActivityBinding>
+      <activityPatternBinding pattern=".*/.*\.la\..*" activityId="org.polarsys.capella.activities.la"/>
+      
+      
+      
+      
+      <activity
+            id="org.polarsys.capella.activities.pa"
+            description="Concepts related to the Physical Architecture Engineering Phase in Activity Explorer"
+            name="4- Physical Architecture">
+      </activity>
+      <defaultEnablement
+            id="org.polarsys.capella.activities.pa">
+      </defaultEnablement>
+      <categoryActivityBinding
+            activityId="org.polarsys.capella.activities.pa"
+            categoryId="org.polarsys.capella.activities.categories.architectures">
+      </categoryActivityBinding>
+      <activityPatternBinding pattern=".*/.*\.pa\..*" activityId="org.polarsys.capella.activities.pa"/>
+      
+      <activity
+            id="org.polarsys.capella.activities.epbs"
+            description="Concepts related to the EPBS Engineering Phase in Activity Explorer"
+            name="5- EPBS">
+      </activity>
+      <defaultEnablement
+            id="org.polarsys.capella.activities.epbs">
+      </defaultEnablement>
+      <categoryActivityBinding
+            activityId="org.polarsys.capella.activities.epbs"
+            categoryId="org.polarsys.capella.activities.categories.architectures">
+      </categoryActivityBinding>
+      <activityPatternBinding pattern=".*/.*\.epbs\..*" activityId="org.polarsys.capella.activities.epbs"/>
+      
+      
+      
+      
+      
+      <activity
+            id="org.polarsys.capella.activities.pa.node"
+            description="Concepts related to Node Components"
+            name="Node Concepts">
+      </activity>
+      
+      <defaultEnablement
+            id="org.polarsys.capella.activities.pa.node">
+      </defaultEnablement>
+      
+      <categoryActivityBinding
+            activityId="org.polarsys.capella.activities.pa.node"
+            categoryId="org.polarsys.capella.activities.categories.common">
+      </categoryActivityBinding>
+      
+   
+   	  <activityPatternBinding pattern=".*node.*" activityId="org.polarsys.capella.activities.pa.node"/>
+      <activityPatternBinding pattern=".*physical.(link|port|path).*" activityId="org.polarsys.capella.activities.pa.node"/>      
+      <activityPatternBinding pattern=".*deploy.node.pc.*" activityId="org.polarsys.capella.activities.pa.node"/>
+      <activityPatternBinding pattern=".*manage.node.pcs.deployment.*" activityId="org.polarsys.capella.activities.pa.node"/>
+      <activityPatternBinding pattern=".*deployed.node.pcs.*" activityId="org.polarsys.capella.activities.pa.node"/>
+      <activityPatternBinding pattern=".*all.deployed.node.pcs.*" activityId="org.polarsys.capella.activities.pa.node"/>
+      <activityPatternBinding pattern=".*component.port.allocation.*" activityId="org.polarsys.capella.activities.pa.node"/>
+      
+
+      
+      <activityRequirementBinding
+      		activityId="org.polarsys.capella.activities.pa.node" requiredActivityId="org.polarsys.capella.activities.pa">
+      </activityRequirementBinding>
+      
+      
+      
+      <activity
+            id="org.polarsys.capella.activities.pa.behavior"
+            description="Concepts related to Behavior Components"
+            name="Behavior Concepts">
+      </activity>
+      
+      <defaultEnablement
+            id="org.polarsys.capella.activities.pa.behavior">
+      </defaultEnablement>
+      
+      <categoryActivityBinding
+            activityId="org.polarsys.capella.activities.pa.behavior"
+            categoryId="org.polarsys.capella.activities.categories.common">
+      </categoryActivityBinding>
+      
+      <activityPatternBinding pattern=".*behavior.*" activityId="org.polarsys.capella.activities.pa.behavior"/>      
+      <activityPatternBinding pattern=".*deploy.behavior.pc.*" activityId="org.polarsys.capella.activities.pa.behavior"/>
+      <activityPatternBinding pattern=".*manage.behavior.pcs.deployment.*" activityId="org.polarsys.capella.activities.pa.behavior"/>
+      <activityPatternBinding pattern=".*deployed.behaviour.pcs.*" activityId="org.polarsys.capella.activities.pa.behavior"/>
+      
+      <activityPatternBinding pattern=".*(in|out).*flow.port.*" activityId="org.polarsys.capella.activities.pa.behavior"/>     
+      <activityPatternBinding pattern=".*standard.port.*" activityId="org.polarsys.capella.activities.pa.behavior"/>             
+      <activityPatternBinding pattern=".*component.exchange.*" activityId="org.polarsys.capella.activities.pa.behavior"/>            
+      <activityPatternBinding pattern=".*delegation$" activityId="org.polarsys.capella.activities.pa.behavior"/>      
+    
+      <activityRequirementBinding
+      		activityId="org.polarsys.capella.activities.pa.behavior" requiredActivityId="org.polarsys.capella.activities.pa">
+      </activityRequirementBinding>
+      
+
+      <activity
+            id="org.polarsys.capella.activities.fa"
+            description="Concepts related to Functional Analysis"            
+            name="Functional Analysis">
+      </activity>
+      <defaultEnablement
+            id="org.polarsys.capella.activities.fa">
+      </defaultEnablement>
+      <categoryActivityBinding
+            activityId="org.polarsys.capella.activities.fa"
+            categoryId="org.polarsys.capella.activities.categories.common">
+      </categoryActivityBinding>
+      <activityPatternBinding pattern=".*function.*" activityId="org.polarsys.capella.activities.fa"/>
+      <activityPatternBinding pattern=".*duplicate.*" activityId="org.polarsys.capella.activities.fa"/>
+      <activityPatternBinding pattern=".*gather.*" activityId="org.polarsys.capella.activities.fa"/>
+      <activityPatternBinding pattern=".*route.*" activityId="org.polarsys.capella.activities.fa"/>
+      <activityPatternBinding pattern=".*select.*" activityId="org.polarsys.capella.activities.fa"/>
+      <activityPatternBinding pattern=".*split.*" activityId="org.polarsys.capella.activities.fa"/>
+      <activityPatternBinding pattern=".*functional.exchange.*" activityId="org.polarsys.capella.activities.fa"/>
+      <activityPatternBinding pattern=".*function.port.*" activityId="org.polarsys.capella.activities.fa"/>
+      <activityPatternBinding pattern=".*input.port.*" activityId="org.polarsys.capella.activities.fa"/>
+      <activityPatternBinding pattern=".*output.port.*" activityId="org.polarsys.capella.activities.fa"/>
+      <activityPatternBinding pattern="^(?!.*component).*port.*allocation.*" activityId="org.polarsys.capella.activities.fa"/>
+      <activityPatternBinding pattern=".*manage.function.allocation.*" activityId="org.polarsys.capella.activities.fa"/>
+      <activityPatternBinding pattern=".*allocated.function.*" activityId="org.polarsys.capella.activities.fa"/>
+      <activityPatternBinding pattern=".*functional.chains.*" activityId="org.polarsys.capella.activities.fa"/>
+      
+      
+     
+      
+     
+
+
+
+
+
+
+
+
    </extension>
    
    <!--extension point="org.eclipse.ui.splashHandlers">
@@ -213,5 +564,18 @@
             <service
                   serviceClass="org.polarsys.capella.core.platform.sirius.ui.services.IElementIdentifierService"></service>
          </serviceFactory>
+      </extension>
+      <extension
+            point="org.eclipse.sirius.diagram.toolManagement">
+         <toolFilter
+               class="org.polarsys.capella.core.platform.sirius.ui.services.ActivityToolFilter">
+         </toolFilter>
+      </extension>
+      <extension
+            point="org.eclipse.ui.activitySupport">
+         <triggerPointAdvisor
+               class="org.polarsys.capella.core.platform.sirius.ui.TriggerPointAdvisor"
+               id="org.polarsys.capella.core.platform.sirius.ui.TriggerPointAdvisor">
+         </triggerPointAdvisor>
       </extension>
 </plugin>

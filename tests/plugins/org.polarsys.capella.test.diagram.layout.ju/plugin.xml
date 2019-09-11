@@ -59,8 +59,7 @@
 	   <menuContribution 
       		locationURI="popup:capella.project.explorer#PopupMenu?after=group.project">
          <command
-               commandId="org.polarsys.capella.test.compareLayout"
-               id="org.polarsys.capella.test.compareLayout">
+               commandId="org.polarsys.capella.test.compareLayout">
           </command>
         </menuContribution>
         

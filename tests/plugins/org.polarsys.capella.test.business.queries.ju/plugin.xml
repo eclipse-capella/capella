@@ -17,13 +17,11 @@
 	   <menuContribution 
       		locationURI="popup:capella.project.explorer#PopupMenu?after=group.project">
          <command
-               commandId="org.polarsys.capella.test.generateQueries"
-               id="org.polarsys.capella.test.generateQueries">
+               commandId="org.polarsys.capella.test.generateQueries">
           </command>
           
           <command
-               commandId="org.polarsys.capella.test.sortQueries"
-               id="org.polarsys.capella.test.sortQueries">
+               commandId="org.polarsys.capella.test.sortQueries">
           </command>
           
         </menuContribution>

@@ -236,7 +236,6 @@
        <command
              commandId="org.polarsys.capella.core.sirius.analysis.label1"
              icon="icons/full/obj16/ActorCapabilityInvolvement.gif"
-             id="org.polarsys.capella.core.sirius.analysis.label1"
              label="Show [EI1, EI2]"
              style="toggle">
           <visibleWhen
@@ -246,7 +245,6 @@
        <command
              commandId="org.polarsys.capella.core.sirius.analysis.label2"
              icon="icons/full/obj16/ActorCapabilityInvolvement.gif"
-             id="org.polarsys.capella.core.sirius.analysis.label2"
              label="Show EI1(param1:type1, param2:type2), EI2(param3:type3)"
              style="toggle">
           <visibleWhen
@@ -256,7 +254,6 @@
        <command
              commandId="org.polarsys.capella.core.sirius.analysis.label3"
              icon="icons/full/obj16/ActorCapabilityInvolvement.gif"
-             id="org.polarsys.capella.core.sirius.analysis.label3"
              label="Show FE"
              style="toggle">
           <visibleWhen
@@ -266,7 +263,6 @@
        <command
              commandId="org.polarsys.capella.core.sirius.analysis.label4"
              icon="icons/full/obj16/ActorCapabilityInvolvement.gif"
-             id="org.polarsys.capella.core.sirius.analysis.label4"
              label="Show FE [EI1, EI2]"
              style="toggle">
           <visibleWhen
@@ -276,7 +272,6 @@
        <command
              commandId="org.polarsys.capella.core.sirius.analysis.label5"
              icon="icons/full/obj16/ActorCapabilityInvolvement.gif"
-             id="org.polarsys.capella.core.sirius.analysis.label5"
              label="Show FE (type1, type2, type3)"
              style="toggle">
           <visibleWhen
@@ -286,7 +281,6 @@
        <command
              commandId="org.polarsys.capella.core.sirius.analysis.label6"
              icon="icons/full/obj16/ActorCapabilityInvolvement.gif"
-             id="org.polarsys.capella.core.sirius.analysis.label6"
              label="Show FE [EI1(param1:type1, param2:type2), EI2(param3:type3)]"
              style="toggle">
           <visibleWhen
@@ -296,7 +290,6 @@
        <command
              commandId="org.polarsys.capella.core.sirius.analysis.label7"
              icon="icons/full/obj16/ActorCapabilityInvolvement.gif"
-             id="org.polarsys.capella.core.sirius.analysis.label7"
              label="Show CE [EI1, EI2]"
              style="toggle">
           <visibleWhen
@@ -306,7 +299,6 @@
        <command
              commandId="org.polarsys.capella.core.sirius.analysis.label8"
              icon="icons/full/obj16/ActorCapabilityInvolvement.gif"
-             id="org.polarsys.capella.core.sirius.analysis.label8"
              label="Show CE (type1, type2)"
              style="toggle">
           <visibleWhen
@@ -316,7 +308,6 @@
        <command
              commandId="org.polarsys.capella.core.sirius.analysis.label9"
              icon="icons/full/obj16/ActorCapabilityInvolvement.gif"
-             id="org.polarsys.capella.core.sirius.analysis.label9"
              label="Show CE [EI (param1:type1, param2:type2)]"
              style="toggle">
           <visibleWhen
@@ -327,14 +318,14 @@
     <menuContribution
           locationURI="popup:org.polarsys.capella.core.accelerators?after=groupAccelerator">
        <command
-             commandId="org.polarsys.capella.core.platform.sirius.ui.actions.AcceleratorFromFCILToSequenceLink"
+             commandId="org.polarsys.capella.core.platform.sirius.ui.actions.accelerator.AcceleratorFromFCILToSequenceLink"
              icon="icons/full/obj16/SequenceLink.gif">
           <visibleWhen
                 checkEnabled="true">
           </visibleWhen>
        </command>
        <command
-             commandId="org.polarsys.capella.core.platform.sirius.ui.actions.AcceleratorFromSequenceLinkToFCIL">
+             commandId="org.polarsys.capella.core.platform.sirius.ui.actions.accelerator.AcceleratorFromSequenceLinkToFCIL">
           <visibleWhen
                 checkEnabled="true">
           </visibleWhen>
@@ -445,12 +436,12 @@
     </command>
     <command
           defaultHandler="org.polarsys.capella.core.sirius.analysis.accelerators.AcceleratorOnSequenceLinkHandler"
-          id="org.polarsys.capella.core.platform.sirius.ui.actions.AcceleratorFromSequenceLinkToFCIL"
+          id="org.polarsys.capella.core.platform.sirius.ui.actions.accelerator.AcceleratorFromSequenceLinkToFCIL"
           name="Create new Exchange">
     </command>
     <command
           defaultHandler="org.polarsys.capella.core.sirius.analysis.accelerators.AcceleratorOnFCILinkHandler"
-          id="org.polarsys.capella.core.platform.sirius.ui.actions.AcceleratorFromFCILToSequenceLink"
+          id="org.polarsys.capella.core.platform.sirius.ui.actions.accelerator.AcceleratorFromFCILToSequenceLink"
           name="Create new Sequence Link">
     </command>
  </extension>

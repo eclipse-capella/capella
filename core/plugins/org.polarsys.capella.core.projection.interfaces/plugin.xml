@@ -65,7 +65,7 @@ This rule produces Errors for missing or unused Exchange Items on Interfaces gen
   
   		<command
                defaultHandler="org.polarsys.capella.core.projection.interfaces.generateInterfaces.GenerateInterfacesHandler"
-               id="org.polarsys.capella.core.transfo.commands.actions.GenerateInterfacesAction"
+               id="org.polarsys.capella.core.transfo.commands.actions.accelerator.GenerateInterfacesAction"
                name="%generateInterfaces_label"
                >
          </command>
@@ -77,7 +77,7 @@ This rule produces Errors for missing or unused Exchange Items on Interfaces gen
             point="org.eclipse.ui.commandImages">
             
             <image
-               commandId="org.polarsys.capella.core.transfo.commands.actions.GenerateInterfacesAction"
+               commandId="org.polarsys.capella.core.transfo.commands.actions.accelerator.GenerateInterfacesAction"
                icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif">
          </image>
       </extension>
@@ -87,7 +87,7 @@ This rule produces Errors for missing or unused Exchange Items on Interfaces gen
             
          <menuContribution allPopups="true"
             locationURI="popup:org.polarsys.capella.core.accelerators?after=additions">
-             <command  commandId="org.polarsys.capella.core.transfo.commands.actions.GenerateInterfacesAction" >
+             <command  commandId="org.polarsys.capella.core.transfo.commands.actions.accelerator.GenerateInterfacesAction" >
          <visibleWhen checkEnabled="false">
             <with variable="selection">
                 <iterate ifEmpty="false">

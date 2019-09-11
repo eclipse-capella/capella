@@ -27,8 +27,7 @@
             locationURI="popup:org.polarsys.capella.core.data.migration?after=additions">
             
             <command
-                  commandId="org.polarsys.capella.patterns.migration"
-                  id="org.polarsys.capella.patterns.migration">
+                  commandId="org.polarsys.capella.patterns.migration">
                 <visibleWhen checkEnabled="true">
                 </visibleWhen> 
             </command>
