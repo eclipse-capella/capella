@@ -12,10 +12,6 @@
 -->
 <toc label="Version Control with GIT" link_to="PLUGINS_ROOT/org.polarsys.capella.doc/toc.xml#contribution" sort="true">
    <topic href="html/GitAdapter/GitAdapter.html" label="Version Control with GIT">
-		 <topic href="html/GitAdapter/GitAdapter.html#Installation" label="Installation">
-      <topic href="html/GitAdapter/GitAdapter.html#Installation_from_update_sites" label="Installation from update sites"></topic>
-      <anchor id="installationContribution"/>
-      </topic>
 		<topic href="html/GitAdapter/GitAdapter.html#Tutorials" label="Tutorials">
 			<topic href="html/GitAdapter/GitAdapter.html#Basic_Tutorial" label="Basic Tutorial"></topic>
 			<topic href="html/GitAdapter/GitAdapter.html#Advanced_Tutorial" label="Advanced Tutorial"></topic>
