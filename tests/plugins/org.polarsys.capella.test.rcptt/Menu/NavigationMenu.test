@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _x3yKIJrrEeiYyJV_j_AxhQ
-Runtime-Version: 2.3.0.201806281136
-Save-Time: 5/10/19 9:39 AM
+Runtime-Version: 2.5.0.M2
+Save-Time: 9/11/19 11:15 AM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -110,7 +110,7 @@ get-window "Impact Analysis" | get-button OK | click
 
 get-view "Semantic Browser" | click
 get-view "Project Explorer" | get-tree 
-    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/IFE System"
+    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/Structure/IFE System"
 with [get-view "Semantic Browser"] {
     get-button "Link content to workbench selection events" | click
     get-tree | select "Realizing Logical Components/IFE System"
@@ -121,14 +121,14 @@ get-view "Semantic Browser" | get-tree | get-menu -path "Copy Qualified Name" | 
     
 // Menus Wizards
 get-view "Project Explorer" | get-tree 
-    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/IFE System"
+    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/Structure/IFE System"
 with [get-view "Project Explorer" | get-tree] {
     get-menu -path "Wizards/Requirement Manager" | get-property enablement | equals true | verify-true
     get-menu -path "Wizards/Trace Manager" | get-property enablement | equals true | verify-true
 }
 
 get-view "Project Explorer" | get-tree 
-    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Logical Architecture/IFE System/Aircraft Front Servers"
+    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Logical Architecture/Structure/IFE System/Aircraft Front Servers"
 get-view "Project Explorer" | get-tree | get-menu -path "Wizards/Logical Component Decomposition" | get-property enablement | equals true | verify-true
 
 get-view "Project Explorer" | get-tree 

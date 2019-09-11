@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _wlapMHoDEeiaPKaUZLw7uw
-Runtime-Version: 2.5.0.201906250740
-Save-Time: 7/4/19 3:44 PM
+Runtime-Version: 2.5.0.M2
+Save-Time: 9/11/19 11:04 AM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -16,7 +16,7 @@ Entry-Name: .content
 
 with [get-view "Project Explorer" | get-tree] {
     select "EOLE_AF/EOLE_AF.aird" | double-click
-    select "EOLE_AF/EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/\\[LAB\\] Logical System - Logical Architecture Blank" 
+    select "EOLE_AF/EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/\\[LAB\\] Logical System - Logical Architecture Blank" 
         | double-click
 }
 with [get-view Properties] {
@@ -27,13 +27,13 @@ with [get-view Properties] {
 with [get-window "Transfer Dialog"] {
     get-editbox | click-text
     with [get-tree] {
-        select "EOLE_AF/EOLE_AF/Logical Architecture/Actors/Atmosphere" | double-click
-        select "EOLE_AF/EOLE_AF/Logical Architecture/Actors/Forecaster" | double-click
+        select "EOLE_AF/EOLE_AF/Logical Architecture/Structure/Atmosphere" | double-click
+        select "EOLE_AF/EOLE_AF/Logical Architecture/Structure/Forecaster" | double-click
     }
     get-button OK | click
 }
 get-view "Project Explorer" | get-tree 
-    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/[LAB] Logical System - Logical Architecture Blank"
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/[LAB] Logical System - Logical Architecture Blank"
 
 // Click the refresh button on the view semantic browser
 with [get-view "Semantic Browser"] {
@@ -44,11 +44,11 @@ with [get-view "Semantic Browser"] {
 get-view "Semantic Browser" | get-tree -after [get-label "Referenced Elements"] 
     | select "Elements of Interest/Forecaster"
 get-view "Project Explorer" | get-tree 
-    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Actors/Atmosphere"
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Atmosphere"
 get-view "Semantic Browser" | get-tree 
     | select "Element of Interest for Diagram/[LAB] Logical System - Logical Architecture Blank"
 get-view "Project Explorer" | get-tree 
-    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Actors/Forecaster"
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Forecaster"
 get-view "Semantic Browser" | get-tree 
     | select "Element of Interest for Diagram/[LAB] Logical System - Logical Architecture Blank"
 get-button "Save All (M1+M2+S)" | click

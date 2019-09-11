@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _5pI4EK6SEee2vO1UksePLw
-Runtime-Version: 2.1.0.201606221726
-Save-Time: 3/21/18 2:32 PM
+Runtime-Version: 2.5.0.M2
+Save-Time: 9/10/19 3:46 PM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -49,7 +49,7 @@ with [get-editor "[IDB] Testing Filters" | get-diagram -index 1 | get-edit-part 
 
 get-view Interpreter | get-section Expression | get-button Clear | click
 with [get-view Interpreter | get-section Expression | get-text-viewer] {
-    type-text "aql:self.edges->select(e | e.graphicalFilters.compositeFilterDescriptions.name->count('Hide Delegated Communication Links')==1)"
+    type-text "aql:self.edges->select(e | e.graphicalFilters.compositeFilterDescriptions.name->count('hide.delegated.communication.links.filter')==1)"
 }
 
 // Disable filter Hide Delegated
@@ -99,7 +99,7 @@ get-menu "Hide Delegated Use\\/Implementation\\/Require\\/Provide Links" | click
 
 get-view Interpreter | get-section Expression | get-button Clear | click
 with [get-view Interpreter | get-section Expression | get-text-viewer] {
-    type-text "aql:self.edges->select(e | e.graphicalFilters.compositeFilterDescriptions.name->count('Hide Delegated Use/Implementation/Require/Provide Links')==1)"
+    type-text "aql:self.edges->select(e | e.graphicalFilters.compositeFilterDescriptions.name->count('hide.delegated.use.implementation.require.provide.links.filter')==1)"
 }
 
 with [get-editor "[IDB] Testing Filters" | get-diagram -index 1 | get-edit-part -name "[IDB] Testing Filters"] {
@@ -143,7 +143,7 @@ get-menu "Hide Delegated Use\\/Implementation\\/Require\\/Provide Links" | click
 
 get-view Interpreter | get-section Expression | get-button Clear | click
 with [get-view Interpreter | get-section Expression | get-text-viewer] {
-    type-text "aql:self.edges->select(e | e.graphicalFilters.compositeFilterDescriptions.name->count('Hide Delegated Use/Implementation/Require/Provide Links')==1)"
+    type-text "aql:self.edges->select(e | e.graphicalFilters.compositeFilterDescriptions.name->count('hide.delegated.use.implementation.require.provide.links.filter')==1)"
 }
 
 with [get-editor "[IDB] Testing Filters" | get-diagram -index 1 | get-edit-part -name "[IDB] Testing Filters"] {

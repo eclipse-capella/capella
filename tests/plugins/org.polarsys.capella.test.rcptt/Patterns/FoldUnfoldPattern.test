@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _HhKTwGXsEeaVsIgvj-cA7g
-Runtime-Version: 2.0.2.201511100828
-Save-Time: 8/19/16 5:15 PM
+Runtime-Version: 2.5.0.M2
+Save-Time: 9/10/19 1:42 PM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -21,7 +21,7 @@ foldInstance
 
 // Check pattern state after the folding operation
 get-view "Project Explorer" | get-tree 
-    | select "patterns_1/patterns_1.aird/patterns_1/Logical Architecture/Logical System" 
+    | select "patterns_1/patterns_1.aird/patterns_1/Logical Architecture/Structure/Logical System" 
     | get-menu "Patterns/Manage Instance(s)..." | click
 with [get-window "Pattern Instance Management" | get-table] {
     get-property "getItems().length" | equals 1 | verify-true
@@ -39,11 +39,11 @@ get-editor "[LAB] Logical System" | get-diagram -index 1 | get-edit-part -name "
 
 // Unfold the pattern (recreate model elements) 
 get-view "Project Explorer" | get-tree 
-    | select "patterns_1/patterns_1.aird/patterns_1/Logical Architecture/Logical System" 
+    | select "patterns_1/patterns_1.aird/patterns_1/Logical Architecture/Structure/Logical System" 
     | get-menu "Patterns/Manage Instance(s)..." | click
 get-window "Pattern Instance Management" | get-group "Life-cycle" | get-button Unfold | click
 with [get-window "Modeling Patterns"] {
-    get-tree | select "patterns_1/patterns_1/Logical Architecture/Logical System"
+    get-tree | select "patterns_1/patterns_1/Logical Architecture/Structure/Logical System"
     get-button OK | click
 }
 
@@ -56,9 +56,9 @@ with [get-view "Project Explorer" | get-tree] {
         | get-property caption | equals "LF_B_1" | verify-true
     get-item "patterns_1/\\*patterns_1.aird/patterns_1/Logical Architecture/Logical Functions/Root Logical Function/LF_B_2" 
         | get-property caption | equals "LF_B_2" | verify-true
-    get-item "patterns_1/\\*patterns_1.aird/patterns_1/Logical Architecture/Logical System/LC_A : LC_A" 
+    get-item "patterns_1/\\*patterns_1.aird/patterns_1/Logical Architecture/Structure/Logical System/LC_A : LC_A" 
         | get-property caption | equals "LC_A : LC_A" | verify-true
-    get-item "patterns_1/\\*patterns_1.aird/patterns_1/Logical Architecture/Logical System/LC_B : LC_B" 
+    get-item "patterns_1/\\*patterns_1.aird/patterns_1/Logical Architecture/Structure/Logical System/LC_B : LC_B" 
         | get-property caption | equals "LC_B : LC_B" | verify-true
 }
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

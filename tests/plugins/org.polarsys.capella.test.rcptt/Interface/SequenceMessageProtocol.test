@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _GSPGkK6TEee2vO1UksePLw
-Runtime-Version: 2.1.0.201606221726
-Save-Time: 3/21/18 2:32 PM
+Runtime-Version: 2.5.0.M2
+Save-Time: 9/10/19 4:16 PM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -36,7 +36,7 @@ with [get-editor "[IS] CapabilityRealization 1"] {
     get-diagram -index 1 | get-edit-part -name "[IS] CapabilityRealization 1" | mouse-move 991 201 -height 663 
         -width 1042
     with [get-palette] {
-        with [get-palette-entry Component] {
+        with [get-palette-entry "Node PC"] {
             mouse-move 44 16 button1 -height 23 -width 125
             mouse-press 44 16 button1 -height 23 -width 125
             mouse-release 44 16 button1 524288 -height 23 -width 125
@@ -49,7 +49,7 @@ with [get-editor "[IS] CapabilityRealization 1"] {
     }
     get-diagram -index 1 | get-edit-part -name "[IS] CapabilityRealization 1" | mouse-move 515 35 -height 663 
         -width 1042
-    with [get-palette | get-palette-entry Component] {
+    with [get-palette | get-palette-entry "Node PC"] {
         mouse-move 50 13 button1 -height 23 -width 125
         mouse-press 50 13 button1 -height 23 -width 125
         mouse-release 50 13 button1 524288 -height 23 -width 125
@@ -77,14 +77,14 @@ proc createMessage [val eiName] [val msgTool] [val msgKind] [val eiKind] [val ch
         }
         with [get-diagram -index 1 | get-edit-part -name "[IS] CapabilityRealization 1"] {
             mouse-move 182 130 -height 663 -width 1042
-            with [get-edit-part -name "PhysicalComponent 1" | get-edit-part -name "" | get-edit-part 
+            with [get-edit-part -name "PC 1" | get-edit-part -name "" | get-edit-part 
                 -className SquareEditPart] {
                 mouse-move 6 31 button1 -height 395 -width 10
                 mouse-press 6 31 button1 -height 395 -width 10
                 mouse-release 6 31 button1 524288 -height 395 -width 10
             }
             mouse-move 469 128 -height 663 -width 1042
-            with [get-edit-part -name "PhysicalComponent 2" | get-edit-part -name "" | get-edit-part 
+            with [get-edit-part -name "PC 2" | get-edit-part -name "" | get-edit-part 
                 -className SquareEditPart] {
                 mouse-move 1 28 button1 -height 395 -width 10
                 mouse-press 1 28 button1 -height 395 -width 10
@@ -106,7 +106,7 @@ proc createMessage [val eiName] [val msgTool] [val msgKind] [val eiKind] [val ch
 
 
     get-view "Project Explorer" | get-tree 
-        | select [concat "InterfaceDelegation/*InterfaceDelegation.aird/prod00122042/Physical Architecture/Physical System/Interfaces/PhysicalComponent 1_to_PhysicalComponent 2/--> " $eiName]
+        | select [concat "InterfaceDelegation/*InterfaceDelegation.aird/prod00122042/Physical Architecture/Structure/Physical System/Interfaces/PC 1_to_PC 2/--> " $eiName]
 
     get-view Properties | click
     with [get-view Properties | get-section Property | get-group "Transmission Protocol :" | get-button $checkTransmission] {
@@ -155,7 +155,7 @@ with [get-editor "[IS] CapabilityRealization 1"] {
     }
     with [get-diagram -index 1 | get-edit-part -name "[IS] CapabilityRealization 1"] {
         mouse-move 197 467 -height 663 -width 1042
-        with [get-edit-part -name "PhysicalComponent 1" | get-edit-part -name "" | get-edit-part 
+        with [get-edit-part -name "PC 1" | get-edit-part -name "" | get-edit-part 
             -className SquareEditPart] {
             mouse-move 2 361 button1 -height 395 -width 10
             mouse-press 2 361 button1 -height 395 -width 10
@@ -163,7 +163,7 @@ with [get-editor "[IS] CapabilityRealization 1"] {
         }
         mouse-move 465 465 -height 663 -width 1042
         mouse-hover 465 465 -height 663 -width 1042
-        with [get-edit-part -name "PhysicalComponent 2" | get-edit-part -name "" | get-edit-part 
+        with [get-edit-part -name "PC 2" | get-edit-part -name "" | get-edit-part 
             -className SquareEditPart] {
             mouse-move 3 364 button1 -height 395 -width 10
             mouse-press 3 364 button1 -height 395 -width 10

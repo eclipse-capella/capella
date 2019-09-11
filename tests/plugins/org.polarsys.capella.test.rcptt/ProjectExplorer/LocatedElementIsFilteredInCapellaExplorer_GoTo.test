@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _-NK48OTBEee98IEkL9YSZg
-Runtime-Version: 2.3.0.201806262310
-Save-Time: 9/20/18 11:57 AM
+Runtime-Version: 2.5.0.M2
+Save-Time: 9/10/19 5:35 PM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -16,7 +16,7 @@ Entry-Name: .content
 
 with [get-view "Project Explorer" | get-tree] {
     select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | double-click
-    select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Logical Architecture/IFE System/\\[LAB\\] IFE System - All Components, CEs" 
+    select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Logical Architecture/Structure/IFE System/\\[LAB\\] IFE System - All Components, CEs" 
         | double-click
 }
 with [get-editor "[LAB] IFE System - All Components, CEs" | get-diagram -index 1] {

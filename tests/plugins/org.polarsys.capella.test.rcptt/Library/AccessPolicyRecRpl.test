@@ -5,8 +5,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _tEBy8KkGEee0yuaysMB3Rg
-Runtime-Version: 2.5.0.201906250740
-Save-Time: 7/4/19 9:20 AM
+Runtime-Version: 2.5.0.M2
+Save-Time: 9/10/19 4:24 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -176,38 +176,38 @@ with [get-editor "[SDFB] Root System Function" | get-diagram -index 1 | get-edit
     mouse-release 1011 402 button1 524288 -height 687 -width 1042
 }
 get-view "Project Explorer" | get-tree 
-    | select "LibProjectSuper/*LibProjectSuper.aird/LibProjectSuper/Logical Architecture/Logical System"
+    | select "LibProjectSuper/*LibProjectSuper.aird/LibProjectSuper/Logical Architecture/Structure/Logical System"
 get-editor "[SDFB] Root System Function" | get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function" 
     | mouse-move 17 365 -height 687 -width 1042
 get-view "Project Explorer" | get-tree 
-    | select "LibProjectSuper/*LibProjectSuper.aird/LibProjectSuper/Logical Architecture/Logical System" 
+    | select "LibProjectSuper/*LibProjectSuper.aird/LibProjectSuper/Logical Architecture/Structure/Logical System" 
     | get-menu "New Diagram \\/ Table.../Logical Architecture Blank" | click
 get-window "New Logical Architecture Blank" | get-button OK | click
 get-editor "[LAB] Logical System" | get-diagram -index 1 | get-edit-part -name "[LAB] Logical System" 
     | mouse-move 254 462 -height 687 -width 1042
 
 get-view "Project Explorer" | get-tree 
-    | select "LibProjectSuper/*LibProjectSuper.aird/LibProjectSuper/Logical Architecture/Logical System" 
+    | select "LibProjectSuper/*LibProjectSuper.aird/LibProjectSuper/Logical Architecture/Structure/Logical System" 
     | get-menu "Add Capella Element/Logical Component" | click
 get-editor "[LAB] Logical System" | get-diagram -index 1 | get-edit-part -name "[LAB] Logical System" 
     | mouse-move 146 482 -height 687 -width 1042
 get-view "Project Explorer" | get-tree 
-    | select "LibProjectSuper/*LibProjectSuper.aird/LibProjectSuper/Logical Architecture/Logical System/LogicalComponent 1" 
+    | select "LibProjectSuper/*LibProjectSuper.aird/LibProjectSuper/Logical Architecture/Structure/Logical System/LC 1" 
     | get-menu "Add Capella Element/Component Port" | click
 get-editor "[LAB] Logical System" | get-diagram -index 1 | get-edit-part -name "[LAB] Logical System" 
     | mouse-move 8 420 -height 687 -width 1042
 get-view "Project Explorer" | get-tree 
-    | select "LibProjectSuper/*LibProjectSuper.aird/LibProjectSuper/Logical Architecture/Logical System/LogicalComponent 1" 
+    | select "LibProjectSuper/*LibProjectSuper.aird/LibProjectSuper/Logical Architecture/Structure/Logical System/LC 1" 
     | get-menu "Add Capella Element/Constraint" | click
 get-editor "[LAB] Logical System" | get-diagram -index 1 | get-edit-part -name "[LAB] Logical System" 
     | mouse-move 68 317 -height 687 -width 1042
 get-view "Project Explorer" | get-tree 
-    | select "LibProjectSuper/*LibProjectSuper.aird/LibProjectSuper/Logical Architecture/Logical System/LogicalComponent 1" 
+    | select "LibProjectSuper/*LibProjectSuper.aird/LibProjectSuper/Logical Architecture/Structure/Logical System/LC 1" 
     | get-menu "REC \\/ RPL/Create REC/From selection..." | click
 get-window "Replicable Elements" | get-button OK | click
 
 with [get-view "Project Explorer" | get-tree] {
-    select "LibProjectSuper/*LibProjectSuper.aird/LibProjectSuper/Logical Architecture/Logical System/LogicalComponent 1 [REC]" 
+    select "LibProjectSuper/*LibProjectSuper.aird/LibProjectSuper/Logical Architecture/Structure/Logical System/LC 1 [REC]" 
         | key-type "M1+s"
 }
 
@@ -310,7 +310,7 @@ get-view "Project Explorer" | get-tree
 // Instanciate a RPL in MAProjectReadWriteLib
 
 get-view "Project Explorer" | get-tree 
-    | select "MAProjectReadWriteLib/MAProjectReadWriteLib.aird/MAProjectReadWriteLib/Logical Architecture/Logical System" 
+    | select "MAProjectReadWriteLib/MAProjectReadWriteLib.aird/MAProjectReadWriteLib/Logical Architecture/Structure/Logical System" 
     | get-menu "REC \\/ RPL/Instantiate RPL from REC" | click
 with [get-window "Replicable Elements"] {
     get-group "" | get-button "Browse available elements" | click
@@ -324,19 +324,19 @@ with [get-window "Replicable Elements"] {
 // Delete the constraint and Update REC, it shall be removed from REC
 
 get-view "Project Explorer" | get-tree 
-    | select "MAProjectReadWriteLib/*MAProjectReadWriteLib.aird/MAProjectReadWriteLib/Logical Architecture/Logical System/LogicalComponent 1 [RPL]/[Constraint] [RPL]" 
+    | select "MAProjectReadWriteLib/*MAProjectReadWriteLib.aird/MAProjectReadWriteLib/Logical Architecture/Structure/Logical System/LC 1 [RPL]/[Constraint] [RPL]" 
     | key-type Del
     
 get-window "Progress Information" | get-window Delete | get-button Yes | click
 get-view "Project Explorer" | get-tree 
-    | select "MAProjectReadWriteLib/*MAProjectReadWriteLib.aird/MAProjectReadWriteLib/Logical Architecture/Logical System/LogicalComponent 1 [RPL]" 
+    | select "MAProjectReadWriteLib/*MAProjectReadWriteLib.aird/MAProjectReadWriteLib/Logical Architecture/Structure/Logical System/LC 1 [RPL]" 
     | get-menu "REC \\/ RPL/Update REC from selected RPL" | click
 get-window "Replicable Elements" | get-button OK | click
 with [get-window "Update REC from selected RPL"] {
     get-button Apply | click
 }
 get-view "Project Explorer" | get-tree 
-    | get-item "MAProjectReadWriteLib/\\*MAProjectReadWriteLib.aird/LibProjectSuper/Logical Architecture/Logical System/LogicalComponent 1 \\[REC\\]" 
+    | get-item "MAProjectReadWriteLib/\\*MAProjectReadWriteLib.aird/LibProjectSuper/Logical Architecture/Structure/Logical System/LC 1 \\[REC\\]" 
     | get-property childCount | equals 0 | verify-true
 
 get-view "Project Explorer" | get-tree 
