@@ -40,14 +40,13 @@ public abstract class DescriptionPropertySection extends AbstractSection {
    *      org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage)
    */
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
 
-    rootParentComposite.setLayout(new GridLayout());
-    rootParentComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+    parent.setLayout(new GridLayout());
+    parent.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
     // Create Description text field.
-    createDescriptionWidget(getWidgetFactory(), rootParentComposite);
+    createDescriptionWidget(getWidgetFactory(), parent);
   }
 
   /**
@@ -60,7 +59,7 @@ public abstract class DescriptionPropertySection extends AbstractSection {
     if (RichtextManager.getInstance().isRichTextEnabled()) {
       descriptionGroup = new CapellaElementDescriptionGroup(parent, widgetFactory, this);
     } else {
-      descriptionFallbackGroup = new TextAreaValueGroup(rootParentComposite, "", getWidgetFactory(), true);
+      descriptionFallbackGroup = new TextAreaValueGroup(parent, "", getWidgetFactory(), true);
       descriptionFallbackGroup.setDisplayedInWizard(isDisplayedInWizard());
     }
   }

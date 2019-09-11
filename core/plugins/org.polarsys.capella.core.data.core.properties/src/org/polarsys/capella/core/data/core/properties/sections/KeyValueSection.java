@@ -28,10 +28,10 @@ public class KeyValueSection extends CapellaElementSection {
   private KeyValueGroup _keyValueGroup;
 
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
-    _keyValueGroup = new KeyValueGroup(rootParentComposite, getWidgetFactory());
+    _keyValueGroup = new KeyValueGroup(parent, getWidgetFactory());
     _keyValueGroup.setDisplayedInWizard(isDisplayedInWizard());
   }
 

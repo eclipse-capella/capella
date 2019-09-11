@@ -32,10 +32,10 @@ public class LiteralStringValueSection extends DataValueSection {
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
-    _valueGroup = new TextValueGroup(rootParentComposite, Messages.getString("StringValueGroup.ValueLabel"), getWidgetFactory(), true, false); //$NON-NLS-1$
+    _valueGroup = new TextValueGroup(parent, Messages.getString("StringValueGroup.ValueLabel"), getWidgetFactory(), true, false); //$NON-NLS-1$
     _valueGroup.setDisplayedInWizard(isDisplayedInWizard());
   }
 

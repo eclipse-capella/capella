@@ -37,8 +37,8 @@ public class ConstraintSection extends NamedElementSection {
   private ConstraintReferenceGroup _specificationGroup;
 
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
     boolean displayedInWizard = isDisplayedInWizard();
 
@@ -53,7 +53,7 @@ public class ConstraintSection extends NamedElementSection {
     _constrainedElementsField.setDisplayedInWizard(displayedInWizard);
 
     _specificationGroup = new ConstraintReferenceGroup(Collections.singletonMap(Messages.getString("Constraint.OwnedSpecification.Label"), ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION), false); //$NON-NLS-1$
-    _specificationGroup.createControls(rootParentComposite, getWidgetFactory(), isDisplayedInWizard());
+    _specificationGroup.createControls(parent, getWidgetFactory(), isDisplayedInWizard());
 
             }
 

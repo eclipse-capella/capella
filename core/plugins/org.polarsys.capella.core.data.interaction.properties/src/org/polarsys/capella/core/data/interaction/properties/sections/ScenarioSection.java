@@ -40,19 +40,19 @@ public class ScenarioSection extends NamedElementSection {
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    scenarioKindGroup = new ScenarioKindGroup(rootParentComposite, getWidgetFactory(), true);
+    scenarioKindGroup = new ScenarioKindGroup(parent, getWidgetFactory(), true);
     scenarioKindGroup.setDisplayedInWizard(displayedInWizard);
 
     prePostGroup = new ConstraintReferenceGroup(ImmutableMap.of(
         Messages.getString("Scenario_PreCondition_Label"), InteractionPackage.Literals.SCENARIO__PRE_CONDITION, //$NON-NLS-1$
         Messages.getString("Scenario_PostCondition_Label"), InteractionPackage.Literals.SCENARIO__POST_CONDITION //$NON-NLS-1$
     ));
-    prePostGroup.createControls(rootParentComposite, getWidgetFactory(), isDisplayedInWizard());
+    prePostGroup.createControls(parent, getWidgetFactory(), isDisplayedInWizard());
 
 
     realizedScenariosField = new MultipleSemanticField(getReferencesGroup(),

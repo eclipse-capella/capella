@@ -33,12 +33,12 @@ public abstract class RequirementSection extends NamedElementSection {
   private RequirementGroup requirementGroup;
 
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    Group checkGroup = getWidgetFactory().createGroup(rootParentComposite, ""); //$NON-NLS-1$
+    Group checkGroup = getWidgetFactory().createGroup(parent, ""); //$NON-NLS-1$
     checkGroup.setLayout(new GridLayout(5, true));
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 2;
@@ -47,7 +47,7 @@ public abstract class RequirementSection extends NamedElementSection {
     propertiesCheckbox = new RequirementBooleanPropertiesCheckbox(checkGroup, getWidgetFactory());
     propertiesCheckbox.setDisplayedInWizard(displayedInWizard);
 
-    requirementGroup = new RequirementGroup(rootParentComposite, getWidgetFactory());
+    requirementGroup = new RequirementGroup(parent, getWidgetFactory());
     requirementGroup.setDisplayedInWizard(displayedInWizard);
   }
 

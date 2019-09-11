@@ -35,8 +35,8 @@ public class UnionSection extends NamedElementSection {
   private SimpleSemanticField _defaultPropertyField;
 
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
     boolean displayedInWizard = isDisplayedInWizard();
 
@@ -49,7 +49,7 @@ public class UnionSection extends NamedElementSection {
     _defaultPropertyField = new SimpleSemanticField(getReferencesGroup(), Messages.getString("UnionSection_DefaultProperty_Label"), getWidgetFactory(), new SimpleSemanticFieldController()); //$NON-NLS-1$
     _defaultPropertyField.setDisplayedInWizard(displayedInWizard);
 
-    _unionKindGroup = new UnionKindGroup(rootParentComposite, getWidgetFactory());
+    _unionKindGroup = new UnionKindGroup(parent, getWidgetFactory());
     _unionKindGroup.setDisplayedInWizard(displayedInWizard);
   }
 

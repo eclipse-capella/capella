@@ -28,11 +28,11 @@ public class TimeEventSection extends StateEventSection {
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
     boolean displayedInWizard = isDisplayedInWizard();
-    super.createControls(parent, aTabbedPropertySheetPage);
+    super.createContents(parent, aTabbedPropertySheetPage);
 
-    _kindGroup = new TimeEventKindGroup(rootParentComposite, getWidgetFactory(), true);
+    _kindGroup = new TimeEventKindGroup(parent, getWidgetFactory(), true);
     _kindGroup.setDisplayedInWizard(displayedInWizard);
   }
 

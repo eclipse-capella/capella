@@ -40,11 +40,11 @@ public abstract class StateEventSection extends NamedElementSection {
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
     _expression = new ConstraintReferenceGroup(Collections.singletonMap(Messages.getString("StateEvent.Expression"), CapellacommonPackage.Literals.STATE_EVENT__EXPRESSION), false); //$NON-NLS-1$
-    _expression.createControls(rootParentComposite, getWidgetFactory(), isDisplayedInWizard());
+    _expression.createControls(parent, getWidgetFactory(), isDisplayedInWizard());
     
   }
 

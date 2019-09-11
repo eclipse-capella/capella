@@ -40,12 +40,12 @@ public class UnaryExpressionSection extends DataValueSection {
   protected UnparsedExpressionGroup unparsedExpressionField;
 
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    operatorGroup = new UnaryOperatorGroup(rootParentComposite, getWidgetFactory()) {
+    operatorGroup = new UnaryOperatorGroup(parent, getWidgetFactory()) {
       /**
        * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.fields.AbstractSemanticField#widgetDefaultSelected(org.eclipse.swt.events.SelectionEvent)
        */
@@ -65,7 +65,7 @@ public class UnaryExpressionSection extends DataValueSection {
         getWidgetFactory(), Messages.getString("UnaryExpression.OperandDefaultName"), new ExpressionController()); //$NON-NLS-1$
     operandWidget.setDisplayedInWizard(displayedInWizard);
 
-    unparsedExpressionField = new UnparsedExpressionGroup(rootParentComposite, getWidgetFactory());
+    unparsedExpressionField = new UnparsedExpressionGroup(parent, getWidgetFactory());
     unparsedExpressionField.setDisplayedInWizard(displayedInWizard);
   }
 

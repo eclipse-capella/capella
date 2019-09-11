@@ -63,14 +63,14 @@ public abstract class AbstractCapabilitySection extends NamedElementSection {
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
     prePostConditions = new ConstraintReferenceGroup(ImmutableMap.of(
         Messages.getString("AbstractCapabilitySection_PreCondition_Label"), InteractionPackage.Literals.ABSTRACT_CAPABILITY__PRE_CONDITION, //$NON-NLS-1$
         Messages.getString("AbstractCapabilitySection_PostCondition_Label"), InteractionPackage.Literals.ABSTRACT_CAPABILITY__POST_CONDITION //$NON-NLS-1$
     ));
-    prePostConditions.createControls(rootParentComposite, getWidgetFactory(), isDisplayedInWizard());
+    prePostConditions.createControls(parent, getWidgetFactory(), isDisplayedInWizard());
 
     superTypes = new CompositionMultipleSemanticField(getReferencesGroup(),
       Messages.getString("AbstractCapabilitySection_SuperType_Label"), getWidgetFactory(), new AbstractCapability_SuperController()); //$NON-NLS-1$

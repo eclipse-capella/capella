@@ -130,15 +130,14 @@ public class CapellaExtensionsPropertySection extends AbstractSection implements
    *      org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage)
    */
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
 
-    rootParentComposite.setLayout(new GridLayout());
-    rootParentComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+    parent.setLayout(new GridLayout());
+    parent.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    Group grp = getWidgetFactory().createGroup(rootParentComposite, ICommonConstants.EMPTY_STRING);
+    Group grp = getWidgetFactory().createGroup(parent, ICommonConstants.EMPTY_STRING);
     grp.setLayout(new GridLayout(1, false));
     GridData layoutData = new GridData(GridData.FILL, GridData.FILL, true, true);
     layoutData.horizontalSpan = 2;
@@ -178,7 +177,7 @@ public class CapellaExtensionsPropertySection extends AbstractSection implements
       });
     _appliedPropertyValuesTableField.setDisplayedInWizard(displayedInWizard);
 
-    grp = getWidgetFactory().createGroup(rootParentComposite, ICommonConstants.EMPTY_STRING);
+    grp = getWidgetFactory().createGroup(parent, ICommonConstants.EMPTY_STRING);
     grp.setLayout(new GridLayout(1, false));
     layoutData = new GridData(GridData.FILL, GridData.FILL, true, true);
     layoutData.horizontalSpan = 2;

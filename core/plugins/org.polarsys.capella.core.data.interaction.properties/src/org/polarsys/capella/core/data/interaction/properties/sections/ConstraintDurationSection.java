@@ -30,12 +30,12 @@ public class ConstraintDurationSection extends NamedElementSection {
   private TextValueGroup _durationField;
 
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    _durationField = new TextValueGroup(rootParentComposite, Messages.getString("ConstraintDuration.Duration.Label"), getWidgetFactory()); //$NON-NLS-1$
+    _durationField = new TextValueGroup(parent, Messages.getString("ConstraintDuration.Duration.Label"), getWidgetFactory()); //$NON-NLS-1$
     _durationField.setDisplayedInWizard(displayedInWizard);
   }
 

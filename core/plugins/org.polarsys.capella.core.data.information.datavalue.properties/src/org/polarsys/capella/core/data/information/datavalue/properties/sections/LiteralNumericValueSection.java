@@ -35,12 +35,12 @@ public class LiteralNumericValueSection extends DataValueSection {
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    valueGroup = new TextValueGroup(rootParentComposite, Messages.getString("StringValueGroup.ValueLabel"), getWidgetFactory(), true, false); //$NON-NLS-1$
+    valueGroup = new TextValueGroup(parent, Messages.getString("StringValueGroup.ValueLabel"), getWidgetFactory(), true, false); //$NON-NLS-1$
     valueGroup.setDisplayedInWizard(isDisplayedInWizard());
 
     unitField = new SimpleSemanticField(getReferencesGroup(), Messages.getString("NumericValue.Unit.Label"), getWidgetFactory(), new SimpleSemanticFieldController()); //$NON-NLS-1$

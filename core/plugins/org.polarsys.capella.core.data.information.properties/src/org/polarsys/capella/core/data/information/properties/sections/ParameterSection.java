@@ -46,8 +46,8 @@ public class ParameterSection extends MultiplicityElementSection {
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
     boolean displayedInWizard = isDisplayedInWizard();
 
@@ -67,7 +67,7 @@ public class ParameterSection extends MultiplicityElementSection {
       Messages.getString("MultiplicityElement.NullValueLabel"), getWidgetFactory(), "", new MultiplicityElementValueController()); //$NON-NLS-1$ //$NON-NLS-2$
     nullValueField.setDisplayedInWizard(displayedInWizard);
 
-    parameterDirectionGroup = new ParameterDirectionGroup(rootParentComposite, getWidgetFactory());
+    parameterDirectionGroup = new ParameterDirectionGroup(parent, getWidgetFactory());
     parameterDirectionGroup.setDisplayedInWizard(displayedInWizard);
   }
 

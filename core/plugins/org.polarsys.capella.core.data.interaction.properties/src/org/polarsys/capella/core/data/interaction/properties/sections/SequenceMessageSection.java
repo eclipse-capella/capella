@@ -58,12 +58,12 @@ public class SequenceMessageSection extends NamedElementSection {
   private ConstraintReferenceGroup exchangeContextField;
 
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
     namedElementGroup.enableNameField(false);
 
-    Group main = getWidgetFactory().createGroup(rootParentComposite, ""); //$NON-NLS-1$
+    Group main = getWidgetFactory().createGroup(parent, ""); //$NON-NLS-1$
     main.setLayout(new GridLayout(6, false));
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 2;
@@ -150,13 +150,13 @@ public class SequenceMessageSection extends NamedElementSection {
         new MultipleSemanticField(main, Messages.getString("SequenceMessage.ExchangedItemsLabel"), getWidgetFactory(), new ExchangedItemsController()); //$NON-NLS-1$
     exchangedItemsField.setDisplayedInWizard(displayedInWizard);
 
-    messageKindGroup = new MessageKindGroup(rootParentComposite, getWidgetFactory(), false);
+    messageKindGroup = new MessageKindGroup(parent, getWidgetFactory(), false);
     messageKindGroup.setDisplayedInWizard(displayedInWizard);
 
     exchangeContextField =
         new ConstraintReferenceGroup(Collections.singletonMap(
             Messages.getString("SequenceMessage.ExchangeContextLabel"), InteractionPackage.Literals.SEQUENCE_MESSAGE__EXCHANGE_CONTEXT)); //$NON-NLS-1$
-    exchangeContextField.createControls(rootParentComposite, getWidgetFactory(), displayedInWizard);
+    exchangeContextField.createControls(parent, getWidgetFactory(), displayedInWizard);
 
   }
 

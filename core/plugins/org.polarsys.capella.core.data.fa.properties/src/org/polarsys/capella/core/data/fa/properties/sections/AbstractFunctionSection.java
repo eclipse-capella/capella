@@ -67,13 +67,12 @@ public abstract class AbstractFunctionSection extends NamedElementSection {
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
-
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
     boolean displayedInWizard = isDisplayedInWizard();
 
     if (showKind) {
-      functionKindGroup = new FunctionKindGroup(rootParentComposite, getWidgetFactory(), true) {
+      functionKindGroup = new FunctionKindGroup(parent, getWidgetFactory(), true) {
         /**
          * {@inheritDoc}
          */
@@ -85,7 +84,7 @@ public abstract class AbstractFunctionSection extends NamedElementSection {
       };
       functionKindGroup.setDisplayedInWizard(displayedInWizard);
 
-      conditionField = new TextValueGroup(rootParentComposite, Messages.AbstractFunctionSection_Condition_Label, getWidgetFactory());
+      conditionField = new TextValueGroup(parent, Messages.AbstractFunctionSection_Condition_Label, getWidgetFactory());
       conditionField.setDisplayedInWizard(displayedInWizard);
     }
 

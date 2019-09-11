@@ -29,10 +29,10 @@ public class BooleanPropertyValueSection extends NamedElementSection {
   private BooleanValueGroup _valueGroup;
 
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
-    _valueGroup = new BooleanValueGroup(rootParentComposite, Messages.BooleanValueGroup_Value_Label, getWidgetFactory());
+    _valueGroup = new BooleanValueGroup(parent, Messages.BooleanValueGroup_Value_Label, getWidgetFactory());
     _valueGroup.setDisplayedInWizard(isDisplayedInWizard());
   }
 

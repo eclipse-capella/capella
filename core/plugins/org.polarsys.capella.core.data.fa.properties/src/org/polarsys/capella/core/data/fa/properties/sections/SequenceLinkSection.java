@@ -42,14 +42,14 @@ public class SequenceLinkSection extends CapellaElementSection {
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
     boolean displayedInWizard = isDisplayedInWizard();
 
     conditionField = new ConstraintReferenceGroup(Collections.singletonMap(Messages.SequenceLinkSection_Condition_Label,
         FaPackage.Literals.SEQUENCE_LINK__CONDITION));
-    conditionField.createControls(rootParentComposite, getWidgetFactory(), displayedInWizard);
+    conditionField.createControls(parent, getWidgetFactory(), displayedInWizard);
 
     linksField = new MultipleSemanticField(getReferencesGroup(), Messages.SequenceLinkSection_Links_Label,
         getWidgetFactory(), new SequenceLinkLinksController());

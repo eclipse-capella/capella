@@ -29,10 +29,10 @@ public class RequirementsPkgSection extends StructureSection {
   private RequirementsPkgGroup requirementsPkgGroup;
 
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
-    requirementsPkgGroup = new RequirementsPkgGroup(rootParentComposite, getWidgetFactory());
+    requirementsPkgGroup = new RequirementsPkgGroup(parent, getWidgetFactory());
     requirementsPkgGroup.setDisplayedInWizard(isDisplayedInWizard());
   }
 

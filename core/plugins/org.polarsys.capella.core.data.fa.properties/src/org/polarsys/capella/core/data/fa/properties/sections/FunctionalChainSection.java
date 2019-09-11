@@ -56,8 +56,8 @@ public class FunctionalChainSection extends NamedElementSection {
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
     boolean displayedInWizard = isDisplayedInWizard();
 
@@ -65,7 +65,7 @@ public class FunctionalChainSection extends NamedElementSection {
         FaPackage.Literals.FUNCTIONAL_CHAIN__PRE_CONDITION, Messages.FunctionalChainSection_Postcondition_Label,
         FaPackage.Literals.FUNCTIONAL_CHAIN__POST_CONDITION));
 
-    prePostGroup.createControls(rootParentComposite, getWidgetFactory(), isDisplayedInWizard());
+    prePostGroup.createControls(parent, getWidgetFactory(), isDisplayedInWizard());
 
     availableInStatesField = new MultipleSemanticField(getReferencesGroup(),
         Messages.FunctionalChainSection_AvailableInStates_Label, getWidgetFactory(),

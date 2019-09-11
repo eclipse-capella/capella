@@ -31,10 +31,10 @@ public class InteractionOperandSection extends NamedElementSection {
   private ConstraintReferenceGroup _constraintReferences;
 
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
     _constraintReferences = new ConstraintReferenceGroup(Collections.singletonMap(Messages.getString("InteractionOperandSection_Guard_Label"), InteractionPackage.Literals.INTERACTION_OPERAND__GUARD)); //$NON-NLS-1$
-    _constraintReferences.createControls(rootParentComposite, getWidgetFactory(), isDisplayedInWizard());
+    _constraintReferences.createControls(parent, getWidgetFactory(), isDisplayedInWizard());
   }
 
   /**

@@ -43,12 +43,12 @@ public class InteractionUseSection extends NamedElementSection {
   private SimpleSemanticField referencedScenarioField;
 
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
     namedElementGroup.enableNameField(false);
 
-    Group main = getWidgetFactory().createGroup(rootParentComposite, ""); //$NON-NLS-1$
+    Group main = getWidgetFactory().createGroup(parent, ""); //$NON-NLS-1$
     main.setLayout(new GridLayout(6, false));
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 2;

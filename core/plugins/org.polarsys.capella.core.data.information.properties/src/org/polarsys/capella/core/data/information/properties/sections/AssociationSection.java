@@ -34,15 +34,15 @@ public class AssociationSection extends NamedElementSection {
   private PropertyGroup propertyGroup2;
 
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    propertyGroup1 = new PropertyGroup(rootParentComposite, getWidgetFactory());
+    propertyGroup1 = new PropertyGroup(parent, getWidgetFactory());
     propertyGroup1.setDisplayedInWizard(displayedInWizard);
 
-    propertyGroup2 = new PropertyGroup(rootParentComposite, getWidgetFactory());
+    propertyGroup2 = new PropertyGroup(parent, getWidgetFactory());
     propertyGroup2.setDisplayedInWizard(displayedInWizard);
   }
 

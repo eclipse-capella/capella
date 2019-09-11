@@ -119,17 +119,16 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
     // This operation history listener is used to force refreshes when undo / redo operations are performed.
     OperationHistoryFactory.getOperationHistory().addOperationHistoryListener(this);
 
     TabbedPropertySheetWidgetFactory widgetFactory = getWidgetFactory();
 
-    rootParentComposite.setLayout(new GridLayout());
+    parent.setLayout(new GridLayout());
 
     // Create the group.
-    Group textGroup = widgetFactory.createGroup(rootParentComposite, ICommonConstants.EMPTY_STRING);
+    Group textGroup = widgetFactory.createGroup(parent, ICommonConstants.EMPTY_STRING);
     textGroup.setLayout(new GridLayout(2, false));
     textGroup.setLayoutData(new GridData(SWT.FILL, GridData.FILL, false, false));
 
@@ -163,8 +162,8 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
 
     createNameWidget(widgetFactory, textGroup);
     createPackageWidget(widgetFactory, textGroup);
-    createContextualElementsWidget(widgetFactory, rootParentComposite);
-    createEOIWidget(widgetFactory, rootParentComposite);
+    createContextualElementsWidget(widgetFactory, parent);
+    createEOIWidget(widgetFactory, parent);
   }
 
   /**

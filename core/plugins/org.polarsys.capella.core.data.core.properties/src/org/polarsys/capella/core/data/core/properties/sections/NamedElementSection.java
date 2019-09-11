@@ -31,10 +31,8 @@ public abstract class NamedElementSection extends ModelElementSection {
   protected BasicElementGroup namedElementGroup;
 
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
-
-    namedElementGroup = new BasicElementGroup(rootParentComposite, getWidgetFactory(), true, true);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    namedElementGroup = new BasicElementGroup(parent, getWidgetFactory(), true, true);
     namedElementGroup.setDisplayedInWizard(isDisplayedInWizard());
   }
 
@@ -70,4 +68,5 @@ public abstract class NamedElementSection extends ModelElementSection {
 
     return fields;
   }
+
 }

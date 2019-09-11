@@ -30,8 +30,8 @@ public class InterfaceImplementationSection extends CapellaElementSection {
   private SimpleSemanticField _implementedInterfaceField;
 
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
     _implementedInterfaceField = new SimpleSemanticField(getReferencesGroup(), Messages.InterfaceImplementationSection_ImplementedInterface_Label, getWidgetFactory(), new SimpleSemanticFieldController());
     _implementedInterfaceField.setDisplayedInWizard(isDisplayedInWizard());

@@ -31,10 +31,8 @@ public abstract class CapellaElementSection extends ModelElementSection {
   protected BasicElementGroup capellaElementGroup;
 
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
-
-    capellaElementGroup = new BasicElementGroup(rootParentComposite, getWidgetFactory(), false, true);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    capellaElementGroup = new BasicElementGroup(parent, getWidgetFactory(), false, true);
     capellaElementGroup.setDisplayedInWizard(isDisplayedInWizard());
   }
 

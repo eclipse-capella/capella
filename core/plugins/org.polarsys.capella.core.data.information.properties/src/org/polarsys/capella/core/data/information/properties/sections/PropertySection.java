@@ -60,8 +60,8 @@ public class PropertySection extends MultiplicityElementSection {
    * {@inheritDoc}
    */
   @Override
-  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    super.createControls(parent, aTabbedPropertySheetPage);
+  public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createContents(parent, aTabbedPropertySheetPage);
 
     boolean displayedInWizard = isDisplayedInWizard();
 
@@ -71,7 +71,7 @@ public class PropertySection extends MultiplicityElementSection {
     propertyBooleanPropertiesCheckbox = new PropertyBooleanPropertiesCheckbox(getCheckGroup(), getWidgetFactory());
     propertyBooleanPropertiesCheckbox.setDisplayedInWizard(displayedInWizard);
 
-    aggregationKindGroup = new AggregationKindGroup(rootParentComposite, getWidgetFactory());
+    aggregationKindGroup = new AggregationKindGroup(parent, getWidgetFactory());
     aggregationKindGroup.setDisplayedInWizard(displayedInWizard);
 
     minValueField = new SimpleEditableSemanticField(getReferencesGroup(),
@@ -98,7 +98,7 @@ public class PropertySection extends MultiplicityElementSection {
       Messages.getString("MultiplicityElement.MaxLengthLabel"), getWidgetFactory(), "", new MultiplicityElementLengthController(), true, 3); //$NON-NLS-1$ //$NON-NLS-2$
     maxLengthField.setDisplayedInWizard(displayedInWizard);
 
-    visibilityKindGroup = new VisibilityKindGroup(rootParentComposite, getWidgetFactory());
+    visibilityKindGroup = new VisibilityKindGroup(parent, getWidgetFactory());
     visibilityKindGroup.setDisplayedInWizard(displayedInWizard);
   }
 
