@@ -11,15 +11,24 @@
 
 package org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper;
 
+import org.polarsys.capella.common.ui.toolkit.browser.category.CategoryImpl;
+import org.polarsys.capella.common.ui.toolkit.browser.category.ICategory;
+
 /**
  * Wrapper for a ICategory element.
  */
 public class CategoryWrapper extends BrowserElementWrapper {
   /**
    * Constructor.
+   * 
    * @param element
    */
-  public CategoryWrapper(Object element) {
+  public CategoryWrapper(ICategory element) {
     super(element);
+  }
+
+  @Override
+  public CategoryImpl getElement() {
+    return (CategoryImpl) super.getElement();
   }
 }
