@@ -242,7 +242,7 @@ with [get-view "Project Explorer" | get-tree] {
 
 get-view "Project Explorer" | get-tree 
     | select "MAProjectReadOnlyLib/*MAProjectReadOnlyLib.aird/MAProjectReadOnlyLib/System Analysis/System Functions/Root System Function/SystemFunction 1 [RPL]"
-with [get-view Properties | get-section Property | get-group "Kind :"] {
+with [get-view Properties |  get-group "Kind :"] {
     get-button SELECT | click
 }
 get-view "Project Explorer" | get-tree 
@@ -358,7 +358,7 @@ with [get-window "Replicable Elements"] {
 }
 get-view "Project Explorer" | get-tree 
     | select "MAProjectReadWriteLib/*MAProjectReadWriteLib.aird/MAProjectReadWriteLib/System Analysis/System Functions/Root System Function/SystemFunction 1 [RPL]"
-with [get-view Properties | get-section Property | get-group "Kind :"] {
+with [get-view Properties |  get-group "Kind :"] {
     get-button GATHER | click
 }
 get-view "Project Explorer" | get-tree 
@@ -408,9 +408,9 @@ get-view "Project Explorer" | get-tree
 
 get-view "Project Explorer" | get-tree 
     | select "MAProjectReadWriteLib/*MAProjectReadWriteLib.aird/LibProjectSuper/System Analysis/System Functions/Root System Function/SystemFunction 1 [REC]"
-get-view Properties | get-section Property | get-group "Kind :" | get-button GATHER | get-property selected 
+get-view Properties |  get-group "Kind :" | get-button GATHER | get-property selected 
     | equals true | verify-true
-get-view Properties | get-section Property | get-group "Kind :" | get-button FUNCTION | get-property selected 
+get-view Properties |  get-group "Kind :" | get-button FUNCTION | get-property selected 
     | equals false | verify-true
 
 // Save Project (and also library then)
@@ -439,7 +439,7 @@ with [get-view "Project Explorer" | get-tree] {
 
 get-view "Project Explorer" | get-tree 
     | select "MAProjectReadOnlyLib/*MAProjectReadOnlyLib.aird/MAProjectReadOnlyLib/System Analysis/System Functions/Root System Function/SystemFunction 1 [RPL]"
-get-view Properties | get-section Property | get-group "Kind :" | get-button GATHER | get-property selected 
+get-view Properties |  get-group "Kind :" | get-button GATHER | get-property selected 
     | equals true | verify-true
     
 

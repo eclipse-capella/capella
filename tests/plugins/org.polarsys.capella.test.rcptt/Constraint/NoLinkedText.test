@@ -30,7 +30,7 @@ with [get-view "Project Explorer" | get-tree] {
 }
 
 // Test that Ctrl+Space is not activated
-with [get-view Properties | get-section Property | get-group "" -index 1 | get-editbox -after [get-label "Guard :"]] {
+with [get-view Properties |  get-group "" -index 1 | get-editbox -after [get-label "Guard :"]] {
     key-type "M1+SPACE"
 }
 verify-error {get-window -from "CompletionProposalPopup.createProposalSelector()"}
@@ -39,6 +39,6 @@ get-view "Project Explorer" | get-tree
     | select "ConstraintEdition/ConstraintEdition.aird/ConstraintEdition/System Analysis/Structure/System/System State Machine/Default Region/Transition 4/[Constraint]/[Opaque Expression]"
 
 // Test that we cannot delete the only language
-get-view Properties | get-section Property | get-group "" -index 1 | get-button -index 1 | get-property enablement 
+get-view Properties |  get-group "" -index 1 | get-button -index 1 | get-property enablement 
     | equals false | verify-true
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

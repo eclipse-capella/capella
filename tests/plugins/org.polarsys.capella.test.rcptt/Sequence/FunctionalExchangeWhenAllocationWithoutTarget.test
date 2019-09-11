@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _m1bcAPyxEeWcsI4k6xXMnQ
 Runtime-Version: 2.5.0.M2
-Save-Time: 9/10/19 1:11 PM
+Save-Time: 9/11/19 4:34 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -33,7 +33,7 @@ with [get-view "Project Explorer" | get-tree] {
 }
 with [get-view Properties] {
     click
-    get-section Property | get-group "" -index 1 | get-button "Removes all elements" 
+    get-group "" -index 1 | get-button "Removes all elements" 
         -after [get-label "Target Element :"] | click
 }
 get-button "Save (M1+S)" | click

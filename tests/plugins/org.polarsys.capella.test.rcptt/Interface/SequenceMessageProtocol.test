@@ -109,11 +109,11 @@ proc createMessage [val eiName] [val msgTool] [val msgKind] [val eiKind] [val ch
         | select [concat "InterfaceDelegation/*InterfaceDelegation.aird/prod00122042/Physical Architecture/Structure/Physical System/Interfaces/PC 1_to_PC 2/--> " $eiName]
 
     get-view Properties | click
-    with [get-view Properties | get-section Property | get-group "Transmission Protocol :" | get-button $checkTransmission] {
+    with [get-view Properties |  get-group "Transmission Protocol :" | get-button $checkTransmission] {
         get-property enablement | equals true | verify-true
         get-property selected | equals true | verify-true
     }
-    with [get-view Properties | get-section Property | get-group "Acquisition Protocol :" | get-button $checkAcquisition] {
+    with [get-view Properties |  get-group "Acquisition Protocol :" | get-button $checkAcquisition] {
         get-property enablement | equals true | verify-true
         get-property selected | equals true | verify-true
     }

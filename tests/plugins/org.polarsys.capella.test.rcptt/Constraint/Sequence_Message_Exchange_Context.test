@@ -39,7 +39,7 @@ get-view "Project Explorer" | get-tree
     | select "Project/*Project.aird/Project/System Analysis/Capabilities/[Constraint]/[Opaque Expression]"
 with [get-view Properties] {
     click
-    with [get-section Property | get-group "" -index 1 | get-text-viewer] {
+    with [ get-group "" -index 1 | get-text-viewer] {
         type-text "Hello "
         key-type "M1+SPACE"
         type-text "Root System Function"
@@ -47,7 +47,7 @@ with [get-view Properties] {
     }
 }
 
-with [get-view Properties | get-section Property | get-group "" -index 1 | get-text-viewer] {
+with [get-view Properties |  get-group "" -index 1 | get-text-viewer] {
     set-caret-pos 1 27
     type-text ", how are you?"
     key-type Enter
@@ -144,7 +144,7 @@ with [get-editor "[FS] Capability 1" | get-diagram -index 1 | get-edit-part -nam
     
 }
 
-get-view Properties | get-section Property | get-group -index 3 | get-button "Browse available elements" | click
+get-view Properties |  get-group -index 3 | get-button "Browse available elements" | click
 get-window "Selection Dialog" | get-tree | select "Project/Project/System Analysis/Capabilities/\\[Constraint\\]" 
     | double-click
 

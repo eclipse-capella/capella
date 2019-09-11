@@ -30,7 +30,7 @@ get-view "Project Explorer" | get-tree
 
 with [get-view Properties] {
     click
-    with [get-section Property | get-group "" -index 2 | get-text-viewer] {
+    with [get-group "" -index 2 | get-text-viewer] {
         type-text B
         key-type BackSpace
         type-text "Hello "
@@ -55,6 +55,6 @@ with [get-view Properties] {
         key-type "M1+s"
     }
 }
-get-view Properties | get-section Property | get-group "" -index 2 | get-text-viewer | get-property text 
+get-view Properties | get-group "" -index 2 | get-text-viewer | get-property text 
     | equals "Hello Root Operational Activity How Are You Melody DRAFT new Hello Physical Functions OK" | verify-true
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

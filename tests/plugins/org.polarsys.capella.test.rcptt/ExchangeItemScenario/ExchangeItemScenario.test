@@ -98,7 +98,7 @@ get-view "Project Explorer" | get-tree
     | select "project/*project.aird/project/System Analysis/Capabilities/Capability 1" 
     | get-menu "Add Capella Element/Constraint" | click
     
-with [get-view Properties | get-section Property | get-group -index 0 | get-editbox -after [get-label "Name :"]] {
+with [get-view Properties |  get-group -index 0 | get-editbox -after [get-label "Name :"]] {
     set-text Constraint1
     key-type Enter
 }
@@ -159,7 +159,7 @@ with [get-editor "[IS] Capability 1" | get-diagram -index 1 | get-edit-part -nam
     }
     mouse-move 463 515 -height 663 -width 1042
 }
-get-view Properties | get-section Property | get-group -index 3 | get-button "Browse available elements" | click
+get-view Properties |  get-group -index 3 | get-button "Browse available elements" | click
 
 //A link shall be created between both
 get-window "Selection Dialog" | get-tree | select project 

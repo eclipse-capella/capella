@@ -20,7 +20,7 @@ get-view "Project Explorer" | get-tree
 //1
 get-view "Project Explorer" | get-tree
     | select "EOLE_AF/EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/[LAB] Logical System - Logical Architecture Blank"
-with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
+with [get-view Properties |  get-group "" | get-editbox -after [get-label "Package :"]] {
     set-text a
     key-type Enter
 }
@@ -30,7 +30,7 @@ get-view "Project Explorer" | get-tree
 //2
 get-view "Project Explorer" | get-tree 
     | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/[LAB] Logical System - Logical Architecture Blank with FC"
-with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
+with [get-view Properties |  get-group "" | get-editbox -after [get-label "Package :"]] {
     set-text a
     key-type Enter
 }
@@ -41,7 +41,7 @@ get-view "Project Explorer" | get-tree
 //3
 get-view "Project Explorer" | get-tree 
     | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/[LAB] Logical System - Logical Architecture Blank without connections"
-with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
+with [get-view Properties |  get-group "" | get-editbox -after [get-label "Package :"]] {
     set-text a
     key-type Enter
 }
@@ -51,7 +51,7 @@ get-view "Project Explorer" | get-tree
 //4
 get-view "Project Explorer" | get-tree
     | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/[LCBD] Logical System - Logical Component Breakdown"
-with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
+with [get-view Properties |  get-group "" | get-editbox -after [get-label "Package :"]] {
     set-text a
     key-type Enter
 }
@@ -65,7 +65,7 @@ get-view "Project Explorer" | get-tree
 //2
 get-view "Project Explorer" | get-tree 
     | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/a/[LAB] Logical System - Logical Architecture Blank with FC"
-with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
+with [get-view Properties |  get-group "" | get-editbox -after [get-label "Package :"]] {
     set-text b
     key-type Enter
 }
@@ -76,7 +76,7 @@ get-view "Project Explorer" | get-tree
 //3
 get-view "Project Explorer" | get-tree 
     | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/a/[LAB] Logical System - Logical Architecture Blank without connections"
-with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
+with [get-view Properties |  get-group "" | get-editbox -after [get-label "Package :"]] {
     set-text c
     key-type Enter
 }
@@ -86,7 +86,7 @@ get-view "Project Explorer" | get-tree
 //4
 get-view "Project Explorer" | get-tree
     | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/a/[LCBD] Logical System - Logical Component Breakdown"
-with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
+with [get-view Properties |  get-group "" | get-editbox -after [get-label "Package :"]] {
     set-text d
     key-type Enter
 }
@@ -99,7 +99,7 @@ get-view "Project Explorer" | get-tree
 //1
 get-view "Project Explorer" | get-tree 
     | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/a/[LAB] Logical System - Logical Architecture Blank"
-with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
+with [get-view Properties |  get-group "" | get-editbox -after [get-label "Package :"]] {
     set-text ""
     key-type Enter
 }
@@ -109,7 +109,7 @@ get-view "Project Explorer" | get-tree
 //2
 get-view "Project Explorer" | get-tree 
     | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/b/[LAB] Logical System - Logical Architecture Blank with FC"
-with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
+with [get-view Properties |  get-group "" | get-editbox -after [get-label "Package :"]] {
     set-text ""
     key-type Enter
 }
@@ -120,7 +120,7 @@ get-view "Project Explorer" | get-tree
 //3
 get-view "Project Explorer" | get-tree 
     | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/c/[LAB] Logical System - Logical Architecture Blank without connections"
-with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
+with [get-view Properties |  get-group "" | get-editbox -after [get-label "Package :"]] {
     set-text ""
     key-type Enter
 }
@@ -130,7 +130,7 @@ get-view "Project Explorer" | get-tree
 //4
 get-view "Project Explorer" | get-tree
     | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Structure/Logical System/d/[LCBD] Logical System - Logical Component Breakdown"
-with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
+with [get-view Properties |  get-group "" | get-editbox -after [get-label "Package :"]] {
     set-text ""
     key-type Enter
 }

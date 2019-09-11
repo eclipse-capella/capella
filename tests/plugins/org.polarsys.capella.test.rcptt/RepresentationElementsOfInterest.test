@@ -21,7 +21,7 @@ with [get-view "Project Explorer" | get-tree] {
 }
 with [get-view Properties] {
     click
-    get-section Property | get-group "" -index 1 | get-button "Browse available elements" 
+     get-group "" -index 1 | get-button "Browse available elements" 
         -after [get-label "Elements of Interest :"] | click
 }
 with [get-window "Transfer Dialog"] {

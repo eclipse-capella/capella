@@ -6,7 +6,7 @@ Element-Type: context
 Element-Version: 2.0
 Id: _ZR3fQKKHEeaAAPJPtfviTA
 Runtime-Version: 2.5.0.M2
-Save-Time: 9/10/19 2:30 PM
+Save-Time: 9/11/19 5:25 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -94,19 +94,12 @@ proc exportEPFFileToConfigProject [val configProjectName] {
 	}
 
 	
-	// For Linux, refresh using Project Explorer since F5 does not work in Capella Explorer ...
-	get-menu "Window/Show View/Other..." | click
-	with [get-window "Show View"] {
-	    get-tree | select "General/Project Explorer"
-	    get-button "Open" | click
-	}
 	with [get-view "Project Explorer"] {
 	    with [get-tree] {
 	        select $configProjectName | get-menu Refresh | click
 	        // Check the epf is present
 	        select [concat $configProjectName "/" $configProjectName "_preferences.epf"]
 	    }
-	    close
 	}
 
 }

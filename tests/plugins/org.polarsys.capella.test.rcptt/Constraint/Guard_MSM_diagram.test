@@ -40,7 +40,7 @@ get-view "Project Explorer" | get-tree
     | select "Project/*Project.aird/Project/System Analysis/Capabilities/[Constraint]/[Opaque Expression]"
 with [get-view Properties] {
     click
-    with [get-section Property | get-group "" -index 1 | get-text-viewer] {
+    with [get-group "" -index 1 | get-text-viewer] {
         type-text Bonjour
         key-type BackSpace -times 8
         type-text "Hello "
@@ -50,7 +50,7 @@ with [get-view Properties] {
     }
 }
 
-with [get-view Properties | get-section Property | get-group "" -index 1 | get-text-viewer] {
+with [get-view Properties | get-group "" -index 1 | get-text-viewer] {
     set-caret-pos 1 27
     type-text ", how are you?"
     key-type Enter
@@ -132,11 +132,11 @@ with [get-editor "[MSM] Default Region"] {
 }
 
 // On transition, set the constraint
-get-view Properties | get-section Property | get-group -index 1 | get-button "Browse available elements" | click
+get-view Properties | get-group -index 1 | get-button "Browse available elements" | click
 get-window "Selection Dialog" | get-tree | select "Project/Project/System Analysis/Capabilities/\\[Constraint\\]" 
     | double-click
 
-get-view Properties | get-section Property | get-group -index 1 | get-text-viewer | get-property text 
+get-view Properties | get-group -index 1 | get-text-viewer | get-property text 
     | equals "Hello Root System Function, how are you?" | verify-true
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

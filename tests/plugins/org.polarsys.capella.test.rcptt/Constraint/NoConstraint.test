@@ -29,11 +29,11 @@ with [get-view "Project Explorer" | get-tree] {
 }
 
 // Test the default hint <Press key \"Ctrl+Space\" and type name for Content Assist>
-get-view Properties | get-section Property | get-group "" -index 1 | get-text-viewer | get-property text 
+get-view Properties | get-group "" -index 1 | get-text-viewer | get-property text 
     | equals "<Press key \"Ctrl+Space\" and type name for Content Assist>" | verify-true
 
 // Test the Ctrl + Space command
-with [get-view Properties | get-section Property | get-group "" -index 1 | get-text-viewer] {
+with [get-view Properties | get-group "" -index 1 | get-text-viewer] {
     type-text "toto="
     key-type "M1+SPACE"
 	type-text "True"
@@ -44,7 +44,7 @@ get-view "Project Explorer" | get-tree
     | get-item "Transition 2" | get-item "[Constraint]/[Opaque Expression]"]
 
 // Test that the language "LinkedText" and its content are created
-with [get-view Properties | get-section Property | get-group "" -index 1] {
+with [get-view Properties | get-group "" -index 1] {
     with [get-table] {
         get-property itemCount | equals 1 | verify-true
         get-property "selection[0].path[0]" | equals LinkedText | verify-true

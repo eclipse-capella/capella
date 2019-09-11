@@ -29,12 +29,12 @@ with [get-view "Project Explorer" | get-tree] {
 }
 
 // Test that guard's content is the constraint's name
-get-view Properties | get-section Property | get-group "" -index 1 | get-editbox -after [get-label "Guard :"] 
+get-view Properties | get-group "" -index 1 | get-editbox -after [get-label "Guard :"] 
     | get-property text | equals "This constraint is named" | verify-true
 
 
 // Test that Ctrl+Space is not activated
-with [get-view Properties | get-section Property | get-group "" -index 1 | get-editbox -after [get-label "Guard :"]] {
+with [get-view Properties | get-group "" -index 1 | get-editbox -after [get-label "Guard :"]] {
     key-type "M1+SPACE"
 }
 verify-error {get-window -from "CompletionProposalPopup.createProposalSelector()"}

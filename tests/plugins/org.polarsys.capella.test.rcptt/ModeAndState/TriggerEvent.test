@@ -113,7 +113,7 @@ with [get-editor "[MSM] Default Region"] {
 
 
 // Create a Time Event, AT shal be selected between two kind (AT/AFTER), and it shall be displayed as "(AT) TimeEventConstraint"
-get-view Properties | get-section Property | get-group -index 3 | get-button "Create a Time Event" | click
+get-view Properties |  get-group -index 3 | get-button "Create a Time Event" | click
 with [get-window Properties] {
     get-tab-folder | get-tab-item Capella | click
     with [get-group "" | get-editbox -after [get-label "Name :"]] {
@@ -163,7 +163,7 @@ get-editor "[MSM] Default Region" | get-diagram -index 1 | get-edit-part -name "
 
 // Create a Change Event, WHEN shal be selected, and it shall be displayed as "(AT) TimeEventConstraint, (WHEN) ChangeEventConstraint"
 
-get-view Properties | get-section Property | get-group -index 3 | get-button "Create a Change Event" | click
+get-view Properties |  get-group -index 3 | get-button "Create a Change Event" | click
 with [get-window Properties] {
     get-tab-folder | get-tab-item Capella | click
     get-group "" -index 1 | get-text-viewer | type-text ChangeEventConstraint
@@ -314,7 +314,7 @@ with [get-editor "[SDFB] Root System Function"] {
 get-view "Project Explorer" | get-tree | select "project/*project.aird/project/System Analysis/Structure/System"
 with [get-view Properties] {
     click
-    get-section Property | get-group "" -index 2 | get-button "Browse available elements" 
+     get-group "" -index 2 | get-button "Browse available elements" 
         -after [get-label "Allocated Functions :"] | click
 }
 with [get-window "Transfer Dialog"] {
@@ -341,7 +341,7 @@ with [get-editor "[MSM] Default Region"] {
     }
 }
 
-get-view Properties | get-section Property | get-group -index 3 | get-button "Browse available elements" | click
+get-view Properties |  get-group -index 3 | get-button "Browse available elements" | click
 
 with [get-window "Transfer Dialog"] {
     get-button "<<" | click
