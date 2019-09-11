@@ -18,252 +18,168 @@
                filter="org.polarsys.capella.core.data.fa.properties.sections.ComponentExchangeCategorySection"
                id="org.polarsys.capella.core.data.fa.section.ComponentExchangeCategory"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.fa.ComponentExchangeCategory">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.fa.properties.sections.ComponentExchangeEndSection"
                filter="org.polarsys.capella.core.data.fa.properties.sections.ComponentExchangeEndSection"
                id="org.polarsys.capella.core.data.fa.section.ComponentExchangeEnd"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.fa.ComponentExchangeEnd">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.fa.properties.sections.ComponentExchangeFunctionalExchangeAllocationSection"
                filter="org.polarsys.capella.core.data.fa.properties.sections.ComponentExchangeFunctionalExchangeAllocationSection"
                id="org.polarsys.capella.core.data.fa.section.ComponentExchangeFunctionalExchangeAllocation"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.fa.ComponentExchangeFunctionalExchangeAllocation">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.fa.properties.sections.ComponentExchangeRealizationSection"
                filter="org.polarsys.capella.core.data.fa.properties.sections.ComponentExchangeRealizationSection"
                id="org.polarsys.capella.core.data.fa.section.ComponentExchangeRealization"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.fa.ComponentExchangeRealization">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.fa.properties.sections.ComponentExchangeSection"
                filter="org.polarsys.capella.core.data.fa.properties.sections.ComponentExchangeSection"
                id="org.polarsys.capella.core.data.fa.section.ComponentExchange"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.fa.ComponentExchange">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.fa.properties.sections.ComponentExchangeAllocationSection"
                filter="org.polarsys.capella.core.data.fa.properties.sections.ComponentExchangeAllocationSection"
                id="org.polarsys.capella.core.data.fa.properties.sections.ComponentExchangeAllocationSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.fa.ComponentExchangeAllocation">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.fa.properties.sections.ComponentPortAllocationSection"
                filter="org.polarsys.capella.core.data.fa.properties.sections.ComponentPortAllocationSection"
                id="org.polarsys.capella.core.data.fa.properties.sections.ComponentPortAllocationSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.fa.ComponentPortAllocation">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.fa.properties.sections.ComponentPortAllocationEndSection"
                filter="org.polarsys.capella.core.data.fa.properties.sections.ComponentPortAllocationEndSection"
                id="org.polarsys.capella.core.data.fa.properties.sections.ComponentPortAllocationEndSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.fa.ComponentPortAllocationEnd">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.fa.properties.sections.ComponentFunctionalAllocationSection"
                filter="org.polarsys.capella.core.data.fa.properties.sections.ComponentFunctionalAllocationSection"
                id="org.polarsys.capella.core.data.fa.section.ComponentFunctionalAllocation"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.fa.properties.sections.ComponentPortSection"
                filter="org.polarsys.capella.core.data.fa.properties.sections.ComponentPortSection"
                id="org.polarsys.capella.core.data.fa.section.ComponentPort"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.fa.ComponentPort">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.fa.properties.sections.ExchangeCategorySection"
                filter="org.polarsys.capella.core.data.fa.properties.sections.ExchangeCategorySection"
                id="org.polarsys.capella.core.data.fa.section.ExchangeCategory"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.fa.ExchangeCategory">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.fa.properties.sections.ExchangeContainmentSection"
                filter="org.polarsys.capella.core.data.fa.properties.sections.ExchangeContainmentSection"
                id="org.polarsys.capella.core.data.fa.section.ExchangeContainment"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.fa.ExchangeContainment">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.fa.properties.sections.ExchangeLinkSection"
                filter="org.polarsys.capella.core.data.fa.properties.sections.ExchangeLinkSection"
                id="org.polarsys.capella.core.data.fa.section.ExchangeLink"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.fa.ExchangeLink">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.fa.properties.sections.SequenceLinkSection"
                filter="org.polarsys.capella.core.data.fa.properties.sections.SequenceLinkSection"
                id="org.polarsys.capella.core.data.fa.section.SequenceLink"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.fa.SequenceLink">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.fa.properties.sections.ControlNodeSection"
                filter="org.polarsys.capella.core.data.fa.properties.sections.ControlNodeSection"
                id="org.polarsys.capella.core.data.fa.section.ControlNode"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.fa.ControlNode">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.fa.properties.sections.FunctionalChainInvolvementSection"
                filter="org.polarsys.capella.core.data.fa.properties.sections.FunctionalChainInvolvementSection"
                id="org.polarsys.capella.core.data.fa.section.FunctionalChainInvolvement"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.fa.FunctionalChainInvolvement">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.fa.properties.sections.FunctionalChainInvolvementLinkSection"
                filter="org.polarsys.capella.core.data.fa.properties.sections.FunctionalChainInvolvementLinkSection"
                id="org.polarsys.capella.core.data.fa.section.FunctionalChainInvolvementLink"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.fa.properties.sections.FunctionalChainInvolvementFunctionSection"
                filter="org.polarsys.capella.core.data.fa.properties.sections.FunctionalChainInvolvementFunctionSection"
                id="org.polarsys.capella.core.data.fa.section.FunctionalChainInvolvementFunction"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.fa.properties.sections.FunctionalChainReferenceSection"
                filter="org.polarsys.capella.core.data.fa.properties.sections.FunctionalChainReferenceSection"
                id="org.polarsys.capella.core.data.fa.section.FunctionalChainReference"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.fa.FunctionalChainReference">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.fa.properties.sections.FunctionalChainRealizationSection"
                filter="org.polarsys.capella.core.data.fa.properties.sections.FunctionalChainRealizationSection"
                id="org.polarsys.capella.core.data.fa.section.FunctionalChainRealization"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.fa.FunctionalChainRealization">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.fa.properties.sections.FunctionalChainSection"
                filter="org.polarsys.capella.core.data.fa.properties.sections.FunctionalChainSection"
                id="org.polarsys.capella.core.data.fa.section.FunctionalChain"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.fa.FunctionalChain">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.fa.properties.sections.FunctionalExchangeRealizationSection"
                filter="org.polarsys.capella.core.data.fa.properties.sections.FunctionalExchangeRealizationSection"
                id="org.polarsys.capella.core.data.fa.section.FunctionalExchangeRealization"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.fa.FunctionalExchangeRealization">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.fa.properties.sections.FunctionalExchangeSection"
                filter="org.polarsys.capella.core.data.fa.properties.sections.FunctionalExchangeSection"
                id="org.polarsys.capella.core.data.fa.section.FunctionalExchange"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.fa.FunctionalExchange">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.fa.properties.sections.FunctionalExchangeSpecificationSection"
                filter="org.polarsys.capella.core.data.fa.properties.sections.FunctionalExchangeSpecificationSection"
                id="org.polarsys.capella.core.data.fa.section.FunctionalExchangeSpecification"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.fa.FunctionalExchangeSpecification">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.fa.properties.sections.FunctionInputPortSection"
                filter="org.polarsys.capella.core.data.fa.properties.sections.FunctionInputPortSection"
                id="org.polarsys.capella.core.data.fa.section.FunctionInputPort"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.fa.FunctionInputPort">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.fa.properties.sections.FunctionOutputPortSection"
                filter="org.polarsys.capella.core.data.fa.properties.sections.FunctionOutputPortSection"
                id="org.polarsys.capella.core.data.fa.section.FunctionOutputPort"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.fa.FunctionOutputPort">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.fa.properties.sections.FunctionRealizationSection"
                filter="org.polarsys.capella.core.data.fa.properties.sections.FunctionRealizationSection"
                id="org.polarsys.capella.core.data.fa.section.FunctionRealization"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.fa.FunctionRealization">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.fa.properties.sections.FunctionSpecificationSection"
                filter="org.polarsys.capella.core.data.fa.properties.sections.FunctionSpecificationSection"
                id="org.polarsys.capella.core.data.fa.section.FunctionSpecification"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.fa.FunctionSpecification">
-            </input>
          </propertySection>
       </propertySections>
    </extension>

@@ -12,25 +12,37 @@
 package org.polarsys.capella.test.model.ju.propertyviews;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.osgi.util.NLS;
+import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.internal.views.properties.tabbed.view.TabbedPropertyRegistry;
+import org.eclipse.ui.internal.views.properties.tabbed.view.TabbedPropertyRegistryFactory;
+import org.eclipse.ui.views.properties.tabbed.ISectionDescriptor;
+import org.eclipse.ui.views.properties.tabbed.ITabDescriptor;
+import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
 import org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper;
 import org.polarsys.capella.common.mdsofa.common.helper.FileHelper;
 import org.polarsys.capella.core.data.capellacore.Trace;
+import org.polarsys.capella.core.data.interaction.InteractionPackage;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
-import org.polarsys.capella.core.ui.properties.sections.IAbstractSection;
-import org.polarsys.capella.core.ui.properties.wizards.CustomPropertyHelper;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 import org.polarsys.capella.test.framework.helpers.TestHelper;
 
@@ -38,10 +50,14 @@ import org.polarsys.capella.test.framework.helpers.TestHelper;
  * Property Views test.
  */
 public class PropertyViewsTest extends BasicTestCase {
-  protected List<EClass> _concreteClasses;
+  
+  protected List<EClass> excludedClasses;
+
+  protected List<EClass> concreteClasses;
 
   @Override
   public void test() throws Exception {
+    excludedClasses = Arrays.asList(InteractionPackage.Literals.SEQUENCE_MESSAGE_VALUATION);
     init();
     testPropertyViewsForAll();
     clear();
@@ -50,31 +66,59 @@ public class PropertyViewsTest extends BasicTestCase {
   /**
    * Test for all possible values for {@link Trace} and {@link TraceableElement}.
    */
-  private void testPropertyViewsForAll() throws Exception {
-    int globalCount = _concreteClasses.size();
+  public void testPropertyViewsForAll() throws Exception {
+    int globalCount = concreteClasses.size();
     System.out.println("Concrete classes: " + globalCount);
 
-    int customCount = countCustomPropertyViews(_concreteClasses, CapellaUIPropertiesPlugin.PROPERTIES_CONTRIBUTOR);
+    int customCount = countCustomPropertyViews(concreteClasses, CapellaUIPropertiesPlugin.PROPERTIES_CONTRIBUTOR);
     System.out.println("[Capella Navigator] Custom property views: " + customCount);
     System.out.println("[Capella Navigator] Generated property views: " + (globalCount - customCount));
   }
 
-  private int countCustomPropertyViews(List<EClass> cls_p, String contributorId_p) {
+  public int countCustomPropertyViews(List<EClass> cls_p, String contributorId_p) {
     int counter = 0;
+    
+    IViewPart part = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+        .findView(CapellaCommonNavigator.ID);
+
+    TabbedPropertyRegistry registry = TabbedPropertyRegistryFactory.getInstance().createRegistry(new ITabbedPropertySheetPageContributor() {
+      
+      @Override
+      public String getContributorId() {
+        return CapellaUIPropertiesPlugin.PROPERTIES_CONTRIBUTOR;
+      }
+    });
+    
+    Collection<String> errors = new ArrayList<String>();
+    
     for (EClass eclass : cls_p) {
-      Map<String, IAbstractSection> custom = CustomPropertyHelper.getCustomPropertySection(eclass, contributorId_p);
-      if (!custom.isEmpty()) {
-        counter++;
+      EObject object = eclass.getEPackage().getEFactoryInstance().create(eclass);
+      ITabDescriptor[] result = registry.getTabDescriptors(part, new StructuredSelection(object));
+      
+      Optional<ITabDescriptor> capella = Arrays.asList(result).stream().filter(x -> "BaseCapella".equals(x.getId())).findFirst();
+      if (!capella.isPresent()) {
+        errors.add(NLS.bind("No Property Tab 'Capella' for {0}", eclass.getName()+eclass.getEPackage().getNsPrefix()));
       } else {
-        System.err.println(
-            "[Error] EClass '" + eclass.getEPackage().getName() + "." + eclass.getName() + "' has no property view");
+        ITabDescriptor tab = capella.get();
+        if (tab.getSectionDescriptors().isEmpty()) {
+          errors.add(NLS.bind("Property Tab 'Capella' is empty for {0}", eclass.getName()+eclass.getEPackage().getNsPrefix()));
+        }
+        for (Object section : tab.getSectionDescriptors()) {
+          ISectionDescriptor descriptor = (ISectionDescriptor)section;
+          if (descriptor.getSectionClass() == null) {
+            errors.add(NLS.bind("Property Capella Section no longer exist {0}", descriptor.getSectionClass()));
+          }
+        }
       }
     }
+    
+    assertTrue(errors.stream().collect(Collectors.joining("\n")), errors.isEmpty());
+    
     return counter;
   }
 
   private void init() {
-    _concreteClasses = new ArrayList<EClass>(0);
+    concreteClasses = new ArrayList<EClass>(0);
     // Get all contents.
     ResourceSet resourceSet = TestHelper.getEditingDomain().getResourceSet();
     TreeIterator<Notifier> contents = resourceSet.getAllContents();
@@ -84,10 +128,12 @@ public class PropertyViewsTest extends BasicTestCase {
       if (type instanceof EClass) {
         EClass classType = EcoreHelper.getStaticClass((EClass) type);
         if (!classType.isAbstract()) {
-          _concreteClasses.add(classType);
+          concreteClasses.add(classType);
         }
       }
     }
+    
+    concreteClasses.removeAll(excludedClasses);
   }
 
   @Override
@@ -118,7 +164,7 @@ public class PropertyViewsTest extends BasicTestCase {
   }
 
   private void clear() {
-    _concreteClasses.clear();
-    _concreteClasses = null;
+    concreteClasses.clear();
+    concreteClasses = null;
   }
 }

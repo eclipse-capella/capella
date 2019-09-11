@@ -8,24 +8,24 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.data.modeller.properties.sections;
+package org.polarsys.capella.core.data.cs.properties.sections;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.polarsys.capella.core.data.core.properties.sections.NamedElementSection;
-import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
-import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.core.data.core.properties.sections.AllocationSection;
+import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.capella.core.data.la.LaPackage;
 
 /**
- * The Project section.
+ * The SystemRealization section.
  */
-public class ProjectSection extends NamedElementSection {
+public class PhysicalLinkRealizationSection extends AllocationSection {
   /**
    * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
    */
   @Override
   public boolean select(Object toTest) {
     EObject eObjectToTest = super.selection(toTest);
-    return ((eObjectToTest != null) && (eObjectToTest instanceof Project));
+    return ((eObjectToTest != null) && (eObjectToTest.eClass() == CsPackage.eINSTANCE.getPhysicalLinkRealization()));
   }
 }

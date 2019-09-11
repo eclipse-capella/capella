@@ -18,45 +18,30 @@
                filter="org.polarsys.capella.core.data.information.datatype.properties.sections.StringTypeSection"
                id="org.polarsys.capella.core.data.information.datatype.section.StringType"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.datatype.StringType">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.datatype.properties.sections.NumericTypeSection"
                filter="org.polarsys.capella.core.data.information.datatype.properties.sections.NumericTypeSection"
                id="org.polarsys.capella.core.data.information.datatype.section.NumericType"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.datatype.NumericType">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.datatype.properties.sections.BooleanTypeSection"
                filter="org.polarsys.capella.core.data.information.datatype.properties.sections.BooleanTypeSection"
                id="org.polarsys.capella.core.data.information.datatype.section.BooleanType"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.datatype.BooleanType">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.datatype.properties.sections.PhysicalQuantitySection"
                filter="org.polarsys.capella.core.data.information.datatype.properties.sections.PhysicalQuantitySection"
                id="org.polarsys.capella.core.data.information.datatype.section.PhysicalQuantity"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.datatype.PhysicalQuantity">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.datatype.properties.sections.EnumerationSection"
                filter="org.polarsys.capella.core.data.information.datatype.properties.sections.EnumerationSection"
                id="org.polarsys.capella.core.data.information.datatype.section.Enumeration"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.information.datatype.Enumeration">
-            </input>
          </propertySection>
       </propertySections>
    </extension>

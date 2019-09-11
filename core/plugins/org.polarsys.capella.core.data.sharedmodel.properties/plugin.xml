@@ -15,19 +15,15 @@
       <propertySections contributorId="org.polarsys.capella.core.data.capellamodeller.properties">
          <propertySection
                class="org.polarsys.capella.core.data.sharedmodel.properties.sections.GenericPkgSection"
+               filter="org.polarsys.capella.core.data.sharedmodel.properties.sections.GenericPkgSection"
                id="org.polarsys.capella.core.data.sharedmodel.properties.sections.GenericPkgSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.sharedmodel.GenericPkg">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.sharedmodel.properties.sections.SharedPkgSection"
+               filter="org.polarsys.capella.core.data.sharedmodel.properties.sections.SharedPkgSection"
                id="org.polarsys.capella.core.data.sharedmodel.properties.sections.SharedPkgSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.sharedmodel.SharedPkg">
-            </input>
          </propertySection>
       </propertySections>
    </extension>

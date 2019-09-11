@@ -18,126 +18,102 @@
                filter="org.polarsys.capella.core.data.cs.properties.sections.ExchangeItemAllocationSection"
                id="org.polarsys.capella.core.data.cs.section.ExchangeItemAllocation"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.cs.ExchangeItemAllocation">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.cs.properties.sections.InterfaceImplementationSection"
                filter="org.polarsys.capella.core.data.cs.properties.sections.InterfaceImplementationSection"
                id="org.polarsys.capella.core.data.cs.section.InterfaceImplementation"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.cs.InterfaceImplementation">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.cs.properties.sections.InterfacePkgSection"
                filter="org.polarsys.capella.core.data.cs.properties.sections.InterfacePkgSection"
                id="org.polarsys.capella.core.data.cs.section.InterfacePkg"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.cs.InterfacePkg">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.cs.properties.sections.InterfaceSection"
                filter="org.polarsys.capella.core.data.cs.properties.sections.InterfaceSection"
                id="org.polarsys.capella.core.data.cs.section.Interface"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.cs.Interface">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.cs.properties.sections.InterfaceUseSection"
                filter="org.polarsys.capella.core.data.cs.properties.sections.InterfaceUseSection"
                id="org.polarsys.capella.core.data.cs.section.InterfaceUse"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.cs.InterfaceUse">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.cs.properties.sections.PartSection"
                filter="org.polarsys.capella.core.data.cs.properties.sections.PartSection"
                id="org.polarsys.capella.core.data.cs.section.Part"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.cs.Part">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.cs.properties.sections.PhysicalLinkSection"
                filter="org.polarsys.capella.core.data.cs.properties.sections.PhysicalLinkSection"
                id="org.polarsys.capella.core.data.cs.properties.sections.PhysicalLinkSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.cs.PhysicalLink">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.cs.properties.sections.PhysicalLinkCategorySection"
                filter="org.polarsys.capella.core.data.cs.properties.sections.PhysicalLinkCategorySection"
                id="org.polarsys.capella.core.data.cs.properties.sections.PhysicalLinkCategorySection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.cs.PhysicalLinkCategory">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.cs.properties.sections.PhysicalLinkEndSection"
                filter="org.polarsys.capella.core.data.cs.properties.sections.PhysicalLinkEndSection"
                id="org.polarsys.capella.core.data.cs.properties.sections.PhysicalLinkEndSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.cs.PhysicalLinkEnd">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.cs.properties.sections.PhysicalPathSection"
                filter="org.polarsys.capella.core.data.cs.properties.sections.PhysicalPathSection"
                id="org.polarsys.capella.core.data.cs.properties.sections.PhysicalPathSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.cs.PhysicalPath">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.cs.properties.sections.PhysicalPathInvolvementSection"
                filter="org.polarsys.capella.core.data.cs.properties.sections.PhysicalPathInvolvementSection"
                id="org.polarsys.capella.core.data.cs.properties.sections.PhysicalPathInvolvementSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.cs.PhysicalPathInvolvement">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.cs.properties.sections.PhysicalPathReferenceSection"
                filter="org.polarsys.capella.core.data.cs.properties.sections.PhysicalPathReferenceSection"
                id="org.polarsys.capella.core.data.cs.properties.sections.PhysicalPathReferenceSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.cs.PhysicalPathReference">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.cs.properties.sections.PhysicalPortSection"
                filter="org.polarsys.capella.core.data.cs.properties.sections.PhysicalPortSection"
                id="org.polarsys.capella.core.data.cs.properties.sections.PhysicalPortSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.cs.PhysicalPort">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.cs.properties.sections.ComponentRealizationSection"
                filter="org.polarsys.capella.core.data.cs.properties.sections.ComponentRealizationSection"
                id="org.polarsys.capella.core.data.cs.properties.sections.ComponentRealizationSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.cs.ComponentRealization">
-            </input>
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.cs.properties.sections.PhysicalLinkRealizationSection"
+               filter="org.polarsys.capella.core.data.cs.properties.sections.PhysicalLinkRealizationSection"
+               id="org.polarsys.capella.core.data.cs.properties.sections.PhysicalLinkRealizationSection"
+               tab="BaseCapella">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.cs.properties.sections.PhysicalPathRealizationSection"
+               filter="org.polarsys.capella.core.data.cs.properties.sections.PhysicalPathRealizationSection"
+               id="org.polarsys.capella.core.data.cs.properties.sections.PhysicalPathRealizationSection"
+               tab="BaseCapella">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.cs.properties.sections.PhysicalPortRealizationSection"
+               filter="org.polarsys.capella.core.data.cs.properties.sections.PhysicalPortRealizationSection"
+               id="org.polarsys.capella.core.data.cs.properties.sections.PhysicalPortRealizationSection"
+               tab="BaseCapella">
          </propertySection>
       </propertySections>
    </extension>
@@ -227,6 +203,24 @@
                id="org.polarsys.capella.core.data.cs.properties.sections.ComponentRealizationSection"
                tab="BaseSiriusDiagram">
          </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.cs.properties.sections.PhysicalLinkRealizationSection"
+               filter="org.polarsys.capella.core.data.cs.properties.sections.PhysicalLinkRealizationSection"
+               id="org.polarsys.capella.core.data.cs.properties.sections.PhysicalLinkRealizationSection"
+               tab="BaseSiriusDiagram">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.cs.properties.sections.PhysicalPathRealizationSection"
+               filter="org.polarsys.capella.core.data.cs.properties.sections.PhysicalPathRealizationSection"
+               id="org.polarsys.capella.core.data.cs.properties.sections.PhysicalPathRealizationSection"
+               tab="BaseSiriusDiagram">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.cs.properties.sections.PhysicalPortRealizationSection"
+               filter="org.polarsys.capella.core.data.cs.properties.sections.PhysicalPortRealizationSection"
+               id="org.polarsys.capella.core.data.cs.properties.sections.PhysicalPortRealizationSection"
+               tab="BaseSiriusDiagram">
+         </propertySection>
       </propertySections>
    </extension>
    <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">      
@@ -313,6 +307,24 @@
                class="org.polarsys.capella.core.data.cs.properties.sections.ComponentRealizationSection"
                filter="org.polarsys.capella.core.data.cs.properties.sections.ComponentRealizationSection"
                id="org.polarsys.capella.core.data.cs.properties.sections.ComponentRealizationSection"
+               tab="BaseSiriusTable">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.cs.properties.sections.PhysicalLinkRealizationSection"
+               filter="org.polarsys.capella.core.data.cs.properties.sections.PhysicalLinkRealizationSection"
+               id="org.polarsys.capella.core.data.cs.properties.sections.PhysicalLinkRealizationSection"
+               tab="BaseSiriusTable">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.cs.properties.sections.PhysicalPathRealizationSection"
+               filter="org.polarsys.capella.core.data.cs.properties.sections.PhysicalPathRealizationSection"
+               id="org.polarsys.capella.core.data.cs.properties.sections.PhysicalPathRealizationSection"
+               tab="BaseSiriusTable">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.cs.properties.sections.PhysicalPortRealizationSection"
+               filter="org.polarsys.capella.core.data.cs.properties.sections.PhysicalPortRealizationSection"
+               id="org.polarsys.capella.core.data.cs.properties.sections.PhysicalPortRealizationSection"
                tab="BaseSiriusTable">
          </propertySection>
       </propertySections>

@@ -15,115 +15,87 @@
       <propertySections contributorId="org.polarsys.capella.core.data.capellamodeller.properties">
          <propertySection
                class="org.polarsys.capella.core.data.core.properties.sections.BooleanPropertyValueSection"
+               filter="org.polarsys.capella.core.data.core.properties.sections.BooleanPropertyValueSection"
                id="org.polarsys.capella.core.data.core.properties.sections.BooleanPropertyValueSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacore.BooleanPropertyValue">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.core.properties.sections.ConstraintSection"
+               filter="org.polarsys.capella.core.data.core.properties.sections.ConstraintSection"
                id="org.polarsys.capella.core.data.core.properties.sections.ConstraintSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacore.Constraint">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.core.properties.sections.EnumerationPropertyLiteralSection"
+               filter="org.polarsys.capella.core.data.core.properties.sections.EnumerationPropertyLiteralSection"
                id="org.polarsys.capella.core.data.core.properties.sections.EnumerationPropertyLiteralSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.core.properties.sections.EnumerationPropertyTypeSection"
+               filter="org.polarsys.capella.core.data.core.properties.sections.EnumerationPropertyTypeSection"
                id="org.polarsys.capella.core.data.core.properties.sections.EnumerationPropertyTypeSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacore.EnumerationPropertyType">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.core.properties.sections.EnumerationPropertyValueSection"
+               filter="org.polarsys.capella.core.data.core.properties.sections.EnumerationPropertyValueSection"
                id="org.polarsys.capella.core.data.core.properties.sections.EnumerationPropertyValueSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacore.EnumerationPropertyValue">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.core.properties.sections.FloatPropertyValueSection"
+               filter="org.polarsys.capella.core.data.core.properties.sections.FloatPropertyValueSection"
                id="org.polarsys.capella.core.data.core.properties.sections.FloatPropertyValueSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacore.FloatPropertyValue">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.core.properties.sections.GeneralizationSection"
+               filter="org.polarsys.capella.core.data.core.properties.sections.GeneralizationSection"
                id="org.polarsys.capella.core.data.core.properties.sections.GeneralizationSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacore.Generalization">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.core.properties.sections.IntegerPropertyValueSection"
+               filter="org.polarsys.capella.core.data.core.properties.sections.IntegerPropertyValueSection"
                id="org.polarsys.capella.core.data.core.properties.sections.IntegerPropertyValueSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacore.IntegerPropertyValue">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.core.properties.sections.KeyValueSection"
+               filter="org.polarsys.capella.core.data.core.properties.sections.KeyValueSection"
                id="org.polarsys.capella.core.data.core.properties.sections.KeyValueSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacore.KeyValue">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.core.properties.sections.NamingRuleSection"
+               filter="org.polarsys.capella.core.data.core.properties.sections.NamingRuleSection"
                id="org.polarsys.capella.core.data.core.properties.sections.NamingRuleSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacore.NamingRule">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.core.properties.sections.PropertyValueGroupSection"
+               filter="org.polarsys.capella.core.data.core.properties.sections.PropertyValueGroupSection"
                id="org.polarsys.capella.core.data.core.properties.sections.PropertyValueGroupSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacore.PropertyValueGroup">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.core.properties.sections.PropertyValuePkgSection"
+               filter="org.polarsys.capella.core.data.core.properties.sections.PropertyValuePkgSection"
                id="org.polarsys.capella.core.data.core.properties.sections.PropertyValuePkgSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacore.PropertyValuePkg">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.core.properties.sections.ReuseLinkSection"
+               filter="org.polarsys.capella.core.data.core.properties.sections.ReuseLinkSection"
                id="org.polarsys.capella.core.data.core.properties.sections.ReuseLinkSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacore.ReuseLink">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.core.properties.sections.StringPropertyValueSection"
+               filter="org.polarsys.capella.core.data.core.properties.sections.StringPropertyValueSection"
                id="org.polarsys.capella.core.data.core.properties.sections.StringPropertyValueSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.capellacore.StringPropertyValue">
-            </input>
          </propertySection>
       </propertySections>
    </extension>

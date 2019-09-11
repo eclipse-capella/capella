@@ -15,84 +15,63 @@
       <propertySections contributorId="org.polarsys.capella.core.data.capellamodeller.properties">
          <propertySection
                class="org.polarsys.capella.core.data.la.properties.sections.CapabilityRealizationPkgSection"
+               filter="org.polarsys.capella.core.data.la.properties.sections.CapabilityRealizationPkgSection"
                id="org.polarsys.capella.core.data.la.properties.sections.CapabilityRealizationPkgSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.la.CapabilityRealizationPkg">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.la.properties.sections.CapabilityRealizationSection"
+               filter="org.polarsys.capella.core.data.la.properties.sections.CapabilityRealizationSection"
                id="org.polarsys.capella.core.data.la.properties.sections.CapabilityRealizationSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.la.CapabilityRealization">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.la.properties.sections.ContextInterfaceRealizationSection"
+               filter="org.polarsys.capella.core.data.la.properties.sections.ContextInterfaceRealizationSection"
                id="org.polarsys.capella.core.data.la.properties.sections.ContextInterfaceRealizationSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.la.ContextInterfaceRealization">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.la.properties.sections.LogicalArchitecturePkgSection"
+               filter="org.polarsys.capella.core.data.la.properties.sections.LogicalArchitecturePkgSection"
                id="org.polarsys.capella.core.data.la.properties.sections.LogicalArchitecturePkgSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.la.LogicalArchitecturePkg">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.la.properties.sections.LogicalArchitectureSection"
+               filter="org.polarsys.capella.core.data.la.properties.sections.LogicalArchitectureSection"
                id="org.polarsys.capella.core.data.la.properties.sections.LogicalArchitectureSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.la.LogicalArchitecture">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.la.properties.sections.LogicalComponentPkgSection"
+               filter="org.polarsys.capella.core.data.la.properties.sections.LogicalComponentPkgSection"
                id="org.polarsys.capella.core.data.la.properties.sections.LogicalComponentPkgSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.la.LogicalComponentPkg">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.la.properties.sections.LogicalComponentSection"
                filter="org.polarsys.capella.core.data.la.properties.sections.LogicalComponentSection"
                id="org.polarsys.capella.core.data.la.properties.sections.LogicalComponentSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.la.LogicalComponent">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.la.properties.sections.LogicalFunctionPkgSection"
+               filter="org.polarsys.capella.core.data.la.properties.sections.LogicalFunctionPkgSection"
                id="org.polarsys.capella.core.data.la.properties.sections.LogicalFunctionPkgSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.la.LogicalFunctionPkg">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.la.properties.sections.LogicalFunctionSection"
+               filter="org.polarsys.capella.core.data.la.properties.sections.LogicalFunctionSection"
                id="org.polarsys.capella.core.data.la.properties.sections.LogicalFunctionSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.la.LogicalFunction">
-            </input>
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.la.properties.sections.SystemAnalysisRealizationSection"
+               filter="org.polarsys.capella.core.data.la.properties.sections.SystemAnalysisRealizationSection"
                id="org.polarsys.capella.core.data.la.properties.sections.SystemAnalysisRealizationSection"
                tab="BaseCapella">
-            <input
-                  type="org.polarsys.capella.core.data.la.SystemAnalysisRealization">
-            </input>
          </propertySection>
       </propertySections>
    </extension>

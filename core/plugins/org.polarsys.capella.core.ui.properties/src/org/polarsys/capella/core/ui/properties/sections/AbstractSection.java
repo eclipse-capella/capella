@@ -129,7 +129,7 @@ public abstract class AbstractSection extends AbstractPropertySection implements
    * Define the number of columns used for the default grid layout.
    */
   protected int getColumnCount() {
-    return 2; // old value for compat. makes no sense really..
+    return 1;
   }
 
   /**

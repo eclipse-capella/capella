@@ -13,6 +13,7 @@ package org.polarsys.capella.core.ui.properties.wizards;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 
 import org.polarsys.capella.common.ui.toolkit.dialogs.IDialog;
@@ -71,7 +72,8 @@ public class CustomWizardHandler implements ICustomWizardHandler {
    */
   protected IDialog createWizardDialog(EObject object) {
     Display display = PlatformUI.getWorkbench().getDisplay();
-    return new CapellaWizardDialog(display.getActiveShell(), new EditCapellaCustomPropertyWizard(object));
+    IWorkbenchPart part = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActivePart();
+    return new CapellaWizardDialog(display.getActiveShell(), new EditCapellaCustomPropertyWizard(part, object));
   }
 
 }

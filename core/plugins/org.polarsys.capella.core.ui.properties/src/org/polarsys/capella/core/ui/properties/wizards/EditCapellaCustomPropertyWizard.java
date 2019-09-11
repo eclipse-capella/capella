@@ -12,6 +12,7 @@ package org.polarsys.capella.core.ui.properties.wizards;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.wizard.Wizard;
+import org.eclipse.ui.IWorkbenchPart;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 
 /**
@@ -30,10 +31,13 @@ public class EditCapellaCustomPropertyWizard extends Wizard {
    */
   private EditCapellaCustomPropertyWizardPage page;
 
-  public EditCapellaCustomPropertyWizard(EObject object) {
+  private IWorkbenchPart part;
+  
+  public EditCapellaCustomPropertyWizard(IWorkbenchPart part, EObject object) {
     this.object = object;
     this.metaclassLabel = EObjectLabelProviderHelper.getMetaclassLabel(object, false);
     setWindowTitle("Properties");
+    this.part = part;
   }
 
   /**
@@ -41,7 +45,7 @@ public class EditCapellaCustomPropertyWizard extends Wizard {
    */
   @Override
   public void addPages() {
-    page = new EditCapellaCustomPropertyWizardPage("editCapellaCustomWizardPage", object, metaclassLabel); //$NON-NLS-1$
+    page = new EditCapellaCustomPropertyWizardPage(part, "editCapellaCustomWizardPage", object, metaclassLabel); //$NON-NLS-1$
     addPage(page);
   }
 

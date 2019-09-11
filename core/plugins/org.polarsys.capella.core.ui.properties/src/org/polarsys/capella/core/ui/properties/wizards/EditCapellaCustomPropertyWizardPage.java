@@ -13,9 +13,8 @@ package org.polarsys.capella.core.ui.properties.wizards;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -23,6 +22,8 @@ import org.eclipse.help.HelpSystem;
 import org.eclipse.help.IContext;
 import org.eclipse.help.IHelpResource;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.SWT;
@@ -34,11 +35,18 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.help.IWorkbenchHelpSystem;
+import org.eclipse.ui.internal.views.properties.tabbed.view.TabbedPropertyRegistry;
+import org.eclipse.ui.internal.views.properties.tabbed.view.TabbedPropertyRegistryFactory;
 import org.eclipse.ui.views.properties.tabbed.ISection;
+import org.eclipse.ui.views.properties.tabbed.ISectionDescriptor;
+import org.eclipse.ui.views.properties.tabbed.ITabDescriptor;
+import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.ui.services.helper.FormHelper;
 import org.polarsys.capella.core.model.utils.NamingHelper;
@@ -48,7 +56,7 @@ import org.polarsys.capella.core.ui.resources.CapellaUIResourcesPlugin;
 
 /**
  */
-public class EditCapellaCustomPropertyWizardPage extends WizardPage {
+public class EditCapellaCustomPropertyWizardPage extends WizardPage implements ITabbedPropertySheetPageContributor {
 
   private FormToolkit toolkit;
 
@@ -57,6 +65,8 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage {
 
   private Collection<ISection> sections = null;
 
+  private IWorkbenchPart part;
+
   /**
    * Constructor.
    * 
@@ -64,7 +74,8 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage {
    * @param element
    * @param metaclassLabel
    */
-  public EditCapellaCustomPropertyWizardPage(String pageName, EObject element, String metaclassLabel) {
+  public EditCapellaCustomPropertyWizardPage(IWorkbenchPart part, String pageName, EObject element,
+      String metaclassLabel) {
     super(pageName);
     // Configure page title and description.
     setTitle(NamingHelper.getTitleLabel(element));
@@ -74,6 +85,7 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage {
     if (imageDescriptor != null) {
       setImageDescriptor(imageDescriptor);
     }
+    this.part = part;
   }
 
   /**
@@ -93,58 +105,70 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage {
     return content;
   }
 
+  protected boolean sectionDisplayedOnWizard(ISectionDescriptor section) {
+    // Expert view is not synchronized with other sections, so if the user change a value in it.
+    // it is not reflected on other tabs.
+    return !CapellaUIPropertiesPlugin.CAPELLA_EXPERT_SECTION.equals(section.getId());
+  }
+
   /**
    * @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite)
    */
   public void createControl(Composite parent) {
+    TabbedPropertyRegistry registry = TabbedPropertyRegistryFactory.getInstance().createRegistry(this);
+    IStructuredSelection selection = new StructuredSelection(getEObject());
+
+    sections = new ArrayList<ISection>();
     toolkit = new FormToolkit(parent.getDisplay());
     toolkit.setBackground(parent.getBackground());
     // Create parent composite.
     Composite content = createComposite(parent, toolkit);
     // Initialize dialog units.
     initializeDialogUnits(content);
+
+    // Get the edited model element.
+    EObject object = getEObject();
+
     // Create a Tab folder to store each section per tab.
     CTabFolder tabFolder = new CTabFolder(content, SWT.BORDER);
     tabFolder.setLayoutData(new GridData(GridData.FILL_BOTH));
     tabFolder.setSimple(false);
-    // Get the edited model element.
-    EObject object = getEObject();
-    // Load the Custom section according to given element.
-    Map<String, IAbstractSection> mySections = CustomPropertyHelper.getCustomPropertySection(object,
-        CapellaUIPropertiesPlugin.PROPERTIES_CONTRIBUTOR, false);
-    Iterator<Entry<String, IAbstractSection>> entries = mySections.entrySet().iterator();
-    while (entries.hasNext()) {
-      // Get the current entry.
-      Entry<String, IAbstractSection> entry = entries.next();
-      // Get the section itself.
-      IAbstractSection section = entry.getValue();
-      // Check if a filter is applied to this properties section for the given modelElement
-      if (section.select(object)) {
-        if (sections == null) {
-          sections = new ArrayList<>();
-        }
-        sections.add(section);
-        
-        // Create a new composite hosted by the new entry section tab item.
-        Composite sectionComposite = new Composite(tabFolder, SWT.NONE);
-        sectionComposite.setLayout(new FillLayout());
-        int style = (section.shouldUseExtraSpace()) ? GridData.FILL_BOTH : GridData.FILL_HORIZONTAL;
-        GridData data = new GridData(style);
-        data.heightHint = section.getMinimumHeight();
-        sectionComposite.setLayoutData(data);
-        
-        // Create a tab item for the current entry section.
+
+    for (ITabDescriptor descriptor : registry.getTabDescriptors(part, selection)) {
+      Composite tabItemContent = new Composite(tabFolder, SWT.NONE);
+      tabItemContent.setLayout(new GridLayout());
+      tabItemContent.setLayoutData(new GridData(GridData.FILL_BOTH));
+
+      List<ISectionDescriptor> descriptors = ((List<Object>) descriptor.getSectionDescriptors()).stream()
+          .map(ISectionDescriptor.class::cast).filter(x -> sectionDisplayedOnWizard(x)).collect(Collectors.toList());
+
+      if (!descriptors.isEmpty()) {
         CTabItem tabItem = new CTabItem(tabFolder, SWT.NONE);
-        tabItem.setControl(sectionComposite);
-        // Set tab item name with value got from section extension.
-        tabItem.setText(CustomPropertyHelper.getPropertyTabLabelFromID(entry.getKey()));
-        // Set appropriate background color.
-        section.setParentBackgroundColor(parent.getDisplay().getSystemColor(SWT.COLOR_WHITE));
-        section.createControls(sectionComposite, null);
-        section.loadData(object);
+        tabItem.setText(descriptor.getLabel());
+        tabItem.setControl(tabItemContent);
+        tabItem.setData(descriptor);
+
+        for (ISectionDescriptor sd : descriptors) {
+          ISectionDescriptor sectionDescriptor = (ISectionDescriptor) sd;
+          ISection section = sectionDescriptor.getSectionClass();
+          if (section != null) {
+            Composite sectionComposite = new Composite(tabItemContent, SWT.NONE);
+            sectionComposite.setLayout(new FillLayout());
+            int style = (section.shouldUseExtraSpace()) ? GridData.FILL_BOTH : GridData.FILL_HORIZONTAL;
+            GridData data = new GridData(style);
+            data.heightHint = section.getMinimumHeight();
+            sectionComposite.setLayoutData(data);
+            section.createControls(sectionComposite, null);
+            section.setInput(part, new StructuredSelection(object));
+            sections.add(section);
+          }
+        }
       }
+
     }
-    FormHelper.adaptBackgroundColor(content, content.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND), false);
+
+    FormHelper.adaptBackgroundColor((Control) content, content.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND),
+        false);
 
     //
     // Help on wizards
@@ -236,6 +260,9 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage {
       }
       sections = null;
     }
+
+    TabbedPropertyRegistryFactory.getInstance().disposeRegistry(this);
+
   }
 
   /**
@@ -248,13 +275,18 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage {
   }
 
   public void performFinish() {
-    // Propergate the Finish action to sections
+    // Propagate the Finish action to sections
     sections.stream().filter(IAbstractSection.class::isInstance).map(IAbstractSection.class::cast)
         .forEach(IAbstractSection::performFinish);
   }
 
   public Collection<ISection> getSections() {
     return sections;
+  }
+
+  @Override
+  public String getContributorId() {
+    return CapellaUIPropertiesPlugin.PROPERTIES_CONTRIBUTOR;
   }
 
 }
