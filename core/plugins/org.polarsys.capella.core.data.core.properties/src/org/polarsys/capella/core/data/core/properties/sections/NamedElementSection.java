@@ -26,7 +26,7 @@ import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 /**
  * The NamedElement section.
  */
-public abstract class NamedElementSection extends ModelElementSection {
+public class NamedElementSection extends ModelElementSection {
 
   protected BasicElementGroup namedElementGroup;
 
@@ -67,6 +67,15 @@ public abstract class NamedElementSection extends ModelElementSection {
     fields.add(namedElementGroup);
 
     return fields;
+  }
+
+  /**
+   * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
+   */
+  @Override
+  public boolean select(Object toTest) {
+    EObject eObjectToTest = super.selection(toTest);
+    return eObjectToTest instanceof AbstractNamedElement;
   }
 
 }
