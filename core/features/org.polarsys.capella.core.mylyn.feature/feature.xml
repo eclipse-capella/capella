@@ -28,6 +28,8 @@
    </license>
 
    <requires>
-  		<import feature="org.eclipse.mylyn.team_feature"/>
+      <import feature="org.eclipse.mylyn.team_feature"/>
+      <import plugin="org.eclipse.mylyn.help.ui"/>
    </requires>
+
 </feature>
