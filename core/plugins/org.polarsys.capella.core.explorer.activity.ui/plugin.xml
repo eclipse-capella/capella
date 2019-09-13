@@ -393,11 +393,11 @@
                %SystemAnalysisActivityExplorerPage_AllocateSystemFunctionToSystemAndActorsSection_Description
             </Description>
             <Activity
-                  class="org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.sa.NewActorsAllocationsDiagramAdapter"
+                  class="org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.sa.NewSystemArchitectureDiagramAdapter"
                   id="org.polarsys.capella.core.explorer.activity.ui.section.sa.system.architecture.diagram"
                   image="icons/full/ctool/AF-system-architecture-diagram.png"
                   index="1"
-                  name="%SystemAnalysisActivityExplorerPage_NewActorsAllocationsDiagram_Title">
+                  name="%SystemAnalysisActivityExplorerPage_NewSystemArchitectureDiagram_Title">
                <Description></Description>
             </Activity>
             <Activity

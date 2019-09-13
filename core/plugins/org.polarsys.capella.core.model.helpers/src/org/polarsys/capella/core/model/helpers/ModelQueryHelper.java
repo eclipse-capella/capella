@@ -51,6 +51,7 @@ import org.polarsys.capella.core.data.oa.OperationalCapabilityPkg;
 import org.polarsys.capella.core.data.oa.RolePkg;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
+import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
@@ -225,6 +226,14 @@ public class ModelQueryHelper {
     PhysicalArchitecture physicalArchitecture = getPhysicalArchitecture(project);
     if (physicalArchitecture != null) {
       return getDataPkg(physicalArchitecture);
+    }
+    return null;
+  }
+
+  static public PhysicalComponentPkg getPhysicalComponentPkg(Project project) {
+    PhysicalArchitecture physicalArchitecture = getPhysicalArchitecture(project);
+    if (physicalArchitecture != null) {
+      return physicalArchitecture.getOwnedPhysicalComponentPkg();
     }
     return null;
   }
