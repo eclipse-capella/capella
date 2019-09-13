@@ -4,16 +4,20 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
 package org.polarsys.capella.test.odesign.identifier;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.PropertyResourceBundle;
 import java.util.stream.Collectors;
 
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -23,14 +27,18 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.platform.sirius.ui.services.IElementIdentifierService;
+import org.polarsys.capella.core.sirius.analysis.activator.SiriusViewActivator;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 
 public class ToolAndLabelCoherenceTest extends BasicTestCase {
 
+  private static final String PLUGIN_PROPERTIES = "plugin.properties";
+
   @Override
   public void test() {
-    Collection<String> errors = new ArrayList<>();
+    PropertyResourceBundle pluginProperties = getPluginProperties();
 
+    Collection<String> errors = new ArrayList<>();
     IElementIdentifierService elementIdentifier = PlatformUI.getWorkbench().getService(IElementIdentifierService.class);
 
     for (Viewpoint viewpoint : ViewpointSelection.getViewpoints(CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION)) {
@@ -46,13 +54,18 @@ public class ToolAndLabelCoherenceTest extends BasicTestCase {
 
             } else {
               String[] tokens = toolLabel.split("%");
-              if (tokens.length != 1) {
+              if (tokens.length != 2) {
                 errors.add(NLS.bind("Element {0} is not internationalized.", element.getName()));
-
               } else {
-                String label = tokens[0];
+                String label = tokens[1];
                 if (!label.equals(toolIdentifier)) {
-                  errors.add(NLS.bind("Element {0} doesn't use the correct label identifier. {1} instead of {2}", new String[] {element.getName(), label, toolIdentifier}));
+                  errors.add(
+                      NLS.bind("Element {0} doesn't use the correct label identifier. {1} instead of {2}", new String[] { viewpoint.getName() + "::" + element.getLabel(), label, toolIdentifier }));
+                }
+
+                if (!pluginProperties.containsKey(label)) {
+                  errors.add(
+                      NLS.bind("Element {0} doesn't use a label identifier defined in the properties file {1}.", new String[] { viewpoint.getName() + "::" + element.getLabel(), PLUGIN_PROPERTIES }));
                 }
               }
             }
@@ -65,5 +78,15 @@ public class ToolAndLabelCoherenceTest extends BasicTestCase {
       assertTrue(errors.stream().collect(Collectors.joining("\n")), errors.isEmpty());
     }
 
+  }
+
+  private PropertyResourceBundle getPluginProperties() {
+    PropertyResourceBundle propertyBundle = null;
+    try {
+      propertyBundle = new PropertyResourceBundle(FileLocator.openStream(SiriusViewActivator.getInstance().getBundle(), new Path(PLUGIN_PROPERTIES), false));
+    } catch (IOException e) {
+      fail(NLS.bind("Property file {0} doesn't exist.", new String[] { PLUGIN_PROPERTIES }));
+    }
+    return propertyBundle;
   }
 }
