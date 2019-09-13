@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -12,10 +12,12 @@ package org.polarsys.capella.core.platform.sirius.ui.services;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 public class ElementIdentifierService implements IElementIdentifierService {
@@ -37,12 +39,17 @@ public class ElementIdentifierService implements IElementIdentifierService {
 
   @Override
   public String getIdentifier(DiagramDescription diagram, IdentifiedElement element) {
+    Objects.requireNonNull(diagram);
+    Objects.requireNonNull(element);
+
     EObject diagramContainer = diagram.eContainer();
 
     if (diagramContainer instanceof Viewpoint) {
       Viewpoint viewpoint = (Viewpoint) diagramContainer;
-      return getViewpointShortName(viewpoint) + SEPARATOR + getDiagramShortName(diagram) + SEPARATOR
-          + element.getName();
+      String id = getViewpointShortName(viewpoint);
+      id += SEPARATOR + getDiagramShortName(diagram);
+      id += SEPARATOR + element.getName();
+      return id;
     }
 
     return null;
@@ -52,8 +59,8 @@ public class ElementIdentifierService implements IElementIdentifierService {
     return viewpointShortNames.getOrDefault(viewpoint.getName(), viewpoint.getName());
   }
 
-  private String getDiagramShortName(DiagramDescription diagram) {
-    String titleExpression = diagram.getTitleExpression();
+  private String getDiagramShortName(RepresentationDescription representationDescription) {
+    String titleExpression = representationDescription.getTitleExpression();
     if (titleExpression != null) {
       titleExpression = titleExpression.replace("&", "n");
       String[] tokens = titleExpression.split("(\\[)|(\\])");
@@ -62,13 +69,30 @@ public class ElementIdentifierService implements IElementIdentifierService {
       }
     }
 
-    String[] tokens = diagram.getName().split(" ");
+    String[] tokens = representationDescription.getName().split(" ");
     StringBuilder result = new StringBuilder();
     for (String token : tokens) {
       char letter = Character.toLowerCase(token.charAt(0));
       result.append(letter);
     }
     return result.toString();
+  }
+
+  @Override
+  public String getIdentifier(RepresentationDescription representationDescription) {
+    if (representationDescription.eContainer() instanceof Viewpoint) {
+      String id = getViewpointShortName((Viewpoint) representationDescription.eContainer());
+      if (representationDescription != null) {
+        id += SEPARATOR + getDiagramShortName(representationDescription);
+      }
+      return id;
+    }
+    return null;
+  }
+
+  @Override
+  public String getIdentifier(Viewpoint viewpoint) {
+    return getViewpointShortName(viewpoint);
   }
 
 }
