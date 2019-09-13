@@ -137,9 +137,9 @@ public interface IToolNameConstants {
 
   // CCRI Tools - Contextual Capability Realization Involvement
   String TOOL_CCRI_CREATE_CAPABILITY_REALIZATION_NODE = "capability.realization";
-  String TOOL_CCRI_CREATE_ACTOR_NODE = "Actor";
-  String TOOL_CCRI_CREATE_COMPONENT_NODE = "Component";
-  String TOOL_CCRI_CREATE_CAPABILITY_REALIZATION_INVOLVEMENT_EDGE = "Involvement";
+  String TOOL_CCRI_CREATE_ACTOR_NODE = "actor";
+  String TOOL_CCRI_CREATE_COMPONENT_NODE = "component";
+  String TOOL_CCRI_CREATE_CAPABILITY_REALIZATION_INVOLVEMENT_EDGE = "involvement";
   String TOOL_CCRI_INSERT_CAPABILITY_REALIZATION_NODE = "capability.realizations";
   String TOOL_CCRI_INSERT_ACTOR_NODE = "actors";
   String TOOL_CCRI_INSERT_COMPONENT_NODE = "components";
@@ -923,7 +923,7 @@ public interface IToolNameConstants {
 
   // M&S fools - Modes and States
   String TOOL_MS_CREATE_MODE = "Mode";
-  String TOOL_MS_CREATE_STATE = "State";
+  String TOOL_MS_CREATE_STATE = "state";
   String TOOL_MS_REUSE_MODE_STATE = "reuse.mode.state";
   String TOOL_MS_CREATE_INITIAL = "Initial";
   String TOOL_MS_CREATE_JOIN = "Join";
@@ -1101,8 +1101,8 @@ public interface IToolNameConstants {
 
   // Operational Entity Blank Diagram Tools
   // Entities
-  String TOOL_OEB_CREATE_OE = "Operational Entity";
-  String TOOL_OEB_CREATE_OA = "Operational Actor";
+  String TOOL_OEB_CREATE_OE = "operational.entity";
+  String TOOL_OEB_CREATE_OA = "operational.actor";
   String TOOL_OEB_CREATE_COMMUNICATION_MEAN = "Communication Mean";
   String TOOL_OEB_INSERT_REMOVE_OPERATIONAL_ENTITIES = "Operational Entities";
   String TOOL_OEB_INSERT_REMOVE_OPERATIONAL_ACTORS = "Operational Actors";
@@ -1116,7 +1116,7 @@ public interface IToolNameConstants {
   String TOOL_OEB_INSERT_REMOVE_ALL_ALLOCATED_ROLES = "all.allocated.roles";
   String TOOL_OEB_INSERT_REMOVE_ALLOCATED_ROLES = "allocated.roles";
   // Activities
-  String TOOL_OEB_CREATE_OPERATIONAL_ACTIVITY = "Operational Activity";
+  String TOOL_OEB_CREATE_OPERATIONAL_ACTIVITY = "operational.activity";
   String TOOL_OEB_CREATE_INTERACTION = "Interaction";
   String TOOL_OEB_MANAGE_ACTIVITY_ALLOCATION = "Manage Activity Allocation";
   String TOOL_OEB_INSERT_REMOVE_INTERACTIONS = "Interactions";

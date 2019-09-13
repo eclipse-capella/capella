@@ -43,10 +43,14 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
 @SuppressWarnings("restriction")
 public class IdentifierHelper {
 
-  private static final Predicate<IdentifiedElement> toolFilter = tool -> tool instanceof ContainerCreationDescription || tool instanceof NodeCreationDescription || tool instanceof ToolDescription
-      || tool instanceof PopupMenu || tool instanceof OperationAction || tool instanceof EdgeCreationDescription;
+  private static final String IGNORED_MODEL_EXTENSION_FILTER = "ModelExtensionFilter";
 
-  private static final Predicate<IdentifiedElement> filterFilter = tool -> tool instanceof CompositeFilterDescription;
+  private static final Predicate<IdentifiedElement> toolFilter = tool -> tool instanceof ContainerCreationDescription
+      || tool instanceof NodeCreationDescription || tool instanceof ToolDescription || tool instanceof PopupMenu
+      || tool instanceof OperationAction || tool instanceof EdgeCreationDescription;
+
+  private static final Predicate<IdentifiedElement> filterFilter = tool -> tool instanceof CompositeFilterDescription
+      && !tool.getName().equals(IGNORED_MODEL_EXTENSION_FILTER);
 
   public static Stream<IdentifiedElement> getTools(DiagramDescription description) {
     // In case of reused popup menu, description.getAllTools() doesn't retrieve sub reused menus
@@ -100,7 +104,8 @@ public class IdentifierHelper {
       final EObject eObj = it.next();
       result.addAll(getTools(eObj));
     }
-    return new EcoreEList.UnmodifiableEList<AbstractToolDescription>((InternalEObject) layer.eContainer(), DescriptionPackage.eINSTANCE.getLayer_AllTools(), result.size(), result.toArray());
+    return new EcoreEList.UnmodifiableEList<AbstractToolDescription>((InternalEObject) layer.eContainer(),
+        DescriptionPackage.eINSTANCE.getLayer_AllTools(), result.size(), result.toArray());
   }
 
   private static Collection<AbstractToolDescription> getTools(final EObject eObj) {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="Logical Descriptions" version="12.0.0.2017041100">
-  <ownedViewpoints name="Logical Architecture" modelFileExtension="melodymodeller" icon="">
+  <ownedViewpoints name="Logical Architecture" label="%la" modelFileExtension="melodymodeller" icon="">
     <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Logical Functions - Requirements" domainClass="LogicalArchitecture">
       <ownedLineMappings name="Logical Functions 2" domainClass="AbstractFunction" semanticCandidatesExpression="aql:self.getTableRootAbstractFunctions()" headerLabelExpression="feature:name">
         <ownedSubLines name="Sub Logical Function 2" reusedSubLines="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Functions%20-%20Requirements']/@ownedLineMappings[name='Logical%20Functions%202']/@ownedSubLines[name='Sub%20Function%20Pkg'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Functions%20-%20Requirements']/@ownedLineMappings[name='Logical%20Functions%202']/@ownedSubLines[name='Sub%20Logical%20Function%202']" reusedInMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Functions%20-%20Requirements']/@ownedLineMappings[name='FunctionPkgs'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Functions%20-%20Requirements']/@ownedLineMappings[name='Logical%20Functions%202']/@ownedSubLines[name='Sub%20Function%20Pkg'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Functions%20-%20Requirements']/@ownedLineMappings[name='Logical%20Functions%202']/@ownedSubLines[name='Sub%20Logical%20Function%202']" domainClass="LogicalFunction" semanticCandidatesExpression="aql:self.getOwnedAbstractFunctions()" headerLabelExpression="feature:name">
@@ -365,7 +365,7 @@
         </create>
       </intersection>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Logical Component Breakdown" titleExpression="aql:'[LCBD] ' + self.name" domainClass="CapellaElement" preconditionExpression="aql:self.oclIsKindOf(la::LogicalComponent) or (self.oclIsKindOf(la::LogicalComponentPkg)">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Logical Component Breakdown" label="%la.lcbd" titleExpression="aql:'[LCBD] ' + self.name" domainClass="CapellaElement" preconditionExpression="aql:self.oclIsKindOf(la::LogicalComponent) or (self.oclIsKindOf(la::LogicalComponentPkg)">
       <dropDescriptions href="#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
       <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>
@@ -389,10 +389,10 @@
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.root.container.filter" label="Hide root container">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.root.container.filter" label="%la.lcbd.hide.root.container.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='LCB_LogicalComponent']" viewConditionExpression="aql:self.target != self.getParentDiagram().target"/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.property.values.filter" label="Hide Property Values">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.property.values.filter" label="%la.lcbd.hide.property.values.filter">
         <filters xsi:type="filter:MappingFilter">
           <mappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV']"/>
           <mappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
@@ -483,7 +483,7 @@
         <reusedMappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
         <toolSections name="Components">
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Logical Component in the target Logical Component" name="logical.component" label="Logical Component" precondition="aql:containerView.isValidCreationCBComponent()" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" inverseSelectionOrder="true" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='LCB_LogicalComponent']" extraMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='LCB_LogicalComponent']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Logical Component in the target Logical Component" name="logical.component" label="%la.lcbd.logical.component" precondition="aql:containerView.isValidCreationCBComponent()" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" inverseSelectionOrder="true" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='LCB_LogicalComponent']" extraMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='LCB_LogicalComponent']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -496,7 +496,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="actor" label="Logical Actor" precondition="aql:containerView.isValidCreationCBActor()" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" inverseSelectionOrder="true" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='LCB_LogicalComponent']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/LogicalActor.gif" extraMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='LCB_LogicalComponent']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="actor" label="%la.lcbd.actor" precondition="aql:containerView.isValidCreationCBActor()" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" inverseSelectionOrder="true" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='LCB_LogicalComponent']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/LogicalActor.gif" extraMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='LCB_LogicalComponent']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -521,7 +521,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="[Reusable Components] Creates a new Part typed by the source Logical Component in the target Logical Component" name="create.part" label="Create Part" precondition="aql:preSource.isValidDndCBComponent(preTargetView)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@edgeMappings[name='LCB_LogicalComponent_Part']" iconPath="/org.polarsys.capella.core.sirius.analysis/description/images/containedIn.png">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="[Reusable Components] Creates a new Part typed by the source Logical Component in the target Logical Component" name="create.part" label="%la.lcbd.create.part" precondition="aql:preSource.isValidDndCBComponent(preTargetView)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@edgeMappings[name='LCB_LogicalComponent_Part']" iconPath="/org.polarsys.capella.core.sirius.analysis/description/images/containedIn.png">
             <filters precondition="aql:not (self.isPreferenceEnabled('multipart.allowed'))" elementsToListen="aql:self.getPreferenceListener()">
               <listeners domainClass="org.polarsys.capella.core.preferences.Listener" featureName="multipart.allowed"/>
             </filters>
@@ -542,7 +542,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Sets the target Logical Component as the new container of the source Logical Component" name="contained.in" label="Contained In" precondition="aql:preSource.isValidDndCBComponent(preTargetView)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@edgeMappings[name='LCB_LogicalComponent_subComponents']" iconPath="/org.polarsys.capella.core.sirius.analysis/description/images/containedIn.png">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Sets the target Logical Component as the new container of the source Logical Component" name="contained.in" label="%la.lcbd.contained.in" precondition="aql:preSource.isValidDndCBComponent(preTargetView)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@edgeMappings[name='LCB_LogicalComponent_subComponents']" iconPath="/org.polarsys.capella.core.sirius.analysis/description/images/containedIn.png">
             <filters precondition="aql:self.isPreferenceEnabled('multipart.allowed')" elementsToListen="aql:self.getPreferenceListener()">
               <listeners domainClass="org.polarsys.capella.core.preferences.Listener" featureName="multipart.allowed"/>
             </filters>
@@ -643,7 +643,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Common">
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="Constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%la.lcbd.constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -657,7 +657,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Allocate a Source Constraint to an available Target Capella Element." name="constraint.element" label="ConstraintElement" precondition="aql:not (preSource.constrainedElements->includes(preTarget))" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ClassCarries.gif">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Allocate a Source Constraint to an available Target Capella Element." name="constraint.element" label="%la.lcbd.constraint.element" precondition="aql:not (preSource.constrainedElements->includes(preTarget))" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ClassCarries.gif">
             <edgeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
@@ -679,7 +679,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model." name="constraints" label="Constraints" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model." name="constraints" label="%la.lcbd.constraints" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView">
               <subVariables xsi:type="tool:AcceleoVariable" name="constraintsInDiagram" computationExpression="aql:self.void2Null(self.getExistingConstraintsFromDiagram(elementView.getDiagramContainer()))"/>
@@ -716,7 +716,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Logical Function Breakdown" titleExpression="aql:'[LFBD] ' + self.name" domainClass="LogicalFunction">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Logical Function Breakdown" label="%la.lfbd" titleExpression="aql:'[LFBD] ' + self.name" domainClass="LogicalFunction">
       <dropDescriptions href="#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
       <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/LogicalArchitecture.ecore#/"/>
@@ -734,10 +734,10 @@
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.control.nodes.filter" label="Hide Control Nodes">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.control.nodes.filter" label="%la.lfbd.hide.control.nodes.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']" semanticConditionExpression="aql:not (self.isControlNode())"/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.property.values.filter" label="Hide Property Values">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.property.values.filter" label="%la.lfbd.hide.property.values.filter">
         <filters xsi:type="filter:MappingFilter">
           <mappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV']"/>
           <mappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
@@ -796,7 +796,7 @@
         <reusedMappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
         <toolSections name="Functions">
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Logical Function in the target Function" name="logical.function" label="Logical Function" precondition="aql:containerView.isValidCreationDFFunction()" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']" extraMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Logical Function in the target Function" name="logical.function" label="%la.lfbd.logical.function" precondition="aql:containerView.isValidCreationDFFunction()" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']" extraMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']">
             <variable name="container">
               <subVariables xsi:type="tool:AcceleoVariable" name="tool" computationExpression="Logical Function"/>
             </variable>
@@ -812,7 +812,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="ControlNodes">
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Duplicate Function in the target Function" name="duplicate" label="Duplicate" precondition="aql:containerView.isValidCreationDFControlNode()" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Duplicate.gif" extraMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Duplicate Function in the target Function" name="duplicate" label="%la.lfbd.duplicate" precondition="aql:containerView.isValidCreationDFControlNode()" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Duplicate.gif" extraMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="tool" computationExpression="Fork"/>
               </variable>
@@ -827,7 +827,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Gather Function in the target Function" name="gather" label="Gather" precondition="aql:containerView.isValidCreationDFControlNode()" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Gather.gif" extraMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Gather Function in the target Function" name="gather" label="%la.lfbd.gather" precondition="aql:containerView.isValidCreationDFControlNode()" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Gather.gif" extraMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="tool" computationExpression="Fork"/>
               </variable>
@@ -842,7 +842,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Route Function in the target Function" name="route" label="Route" precondition="aql:containerView.isValidCreationDFControlNode()" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Route.gif" extraMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Route Function in the target Function" name="route" label="%la.lfbd.route" precondition="aql:containerView.isValidCreationDFControlNode()" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Route.gif" extraMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="tool" computationExpression="Fork"/>
               </variable>
@@ -857,7 +857,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Select Function in the target Function" name="select" label="Select" precondition="aql:containerView.isValidCreationDFControlNode()" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Select.gif" extraMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Select Function in the target Function" name="select" label="%la.lfbd.select" precondition="aql:containerView.isValidCreationDFControlNode()" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Select.gif" extraMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="tool" computationExpression="Fork"/>
               </variable>
@@ -872,7 +872,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Split Function in the target Function" name="split" label="Split" precondition="aql:containerView.isValidCreationDFControlNode()" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Split.gif" extraMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Split Function in the target Function" name="split" label="%la.lfbd.split" precondition="aql:containerView.isValidCreationDFControlNode()" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Split.gif" extraMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="tool" computationExpression="Fork"/>
               </variable>
@@ -888,7 +888,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Sets the target Function as the new container of the source Function" name="contained.in" label="Contained In" precondition="aql:preSource.isValidDndDFBAbstractFunction(preTargetView)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@edgeMappings[name='LFB_LogicalFunction_subFunctions']" iconPath="/org.polarsys.capella.core.sirius.analysis/description/images/containedIn.png">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Sets the target Function as the new container of the source Function" name="contained.in" label="%la.lfbd.contained.in" precondition="aql:preSource.isValidDndDFBAbstractFunction(preTargetView)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@edgeMappings[name='LFB_LogicalFunction_subFunctions']" iconPath="/org.polarsys.capella.core.sirius.analysis/description/images/containedIn.png">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -952,7 +952,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Common">
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="Constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%la.lfbd.constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -966,7 +966,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Allocate a Source Constraint to an available Target Capella Element." name="constraint.element" label="ConstraintElement" precondition="aql:not (preSource.constrainedElements->includes(preTarget))" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ClassCarries.gif">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Allocate a Source Constraint to an available Target Capella Element." name="constraint.element" label="%la.lfbd.constraint.element" precondition="aql:not (preSource.constrainedElements->includes(preTarget))" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ClassCarries.gif">
             <edgeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
@@ -988,7 +988,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model." name="constraints" label="Constraints" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model." name="constraints" label="%la.lfbd.constraints" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView">
               <subVariables xsi:type="tool:AcceleoVariable" name="constraintsInDiagram" computationExpression="aql:self.void2Null(self.getExistingConstraintsFromDiagram(elementView.getDiagramContainer()))"/>
@@ -1025,7 +1025,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Logical Data Flow Blank" titleExpression="aql:'[LDFB] ' + self.name" domainClass="AbstractFunctionalChainContainer" preconditionExpression="aql:self.oclIsKindOf(la::LogicalFunction) or (self.oclIsKindOf(la::CapabilityRealization) and self.eContainerOrSelf(cs::BlockArchitecture).oclIsKindOf(la::LogicalArchitecture))">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Logical Data Flow Blank" label="%la.ldfb" titleExpression="aql:'[LDFB] ' + self.name" domainClass="AbstractFunctionalChainContainer" preconditionExpression="aql:self.oclIsKindOf(la::LogicalFunction) or (self.oclIsKindOf(la::CapabilityRealization) and self.eContainerOrSelf(cs::BlockArchitecture).oclIsKindOf(la::LogicalArchitecture))">
       <dropDescriptions href="#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20DF%20AbstractFunction']"/>
       <dropDescriptions href="#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Function%20From%20Project%20Explorer']"/>
       <dropDescriptions href="#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
@@ -1045,49 +1045,49 @@
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
-      <filters xsi:type="filter:CompositeFilterDescription" name="collapse.ports.filter" label="Collapse Ports">
+      <filters xsi:type="filter:CompositeFilterDescription" name="collapse.ports.filter" label="%la.ldfb.collapse.ports.filter">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']/@borderedNodeMappings[name='LDFB_Pin'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']/@borderedNodeMappings[name='LDFB_InputPin%20by%20Categorie'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']/@borderedNodeMappings[name='LDFB_OutputPin%20by%20Categorie']"/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.functional.exchanges.filter" label="Hide Functional Exchanges">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.functional.exchanges.filter" label="%la.ldfb.hide.functional.exchanges.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='LDFB_Exchange'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='LDFB_Exchange%20by%20Categorie']"/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.function.ports.without.exchanges.filter" label="Hide Function Ports without Exchanges">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.function.ports.without.exchanges.filter" label="%la.ldfb.hide.function.ports.without.exchanges.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']/@borderedNodeMappings[name='LDFB_Pin']" semanticConditionExpression="" viewConditionExpression="aql:self.isFunctionPortWithoutExchanges(self.eContainerOrSelf(diagram::DDiagram))"/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.exchange.categories.filter" label="Hide Exchange Categories">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.exchange.categories.filter" label="%la.ldfb.hide.exchange.categories.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='LDFB_Exchange%20by%20Categorie']" semanticConditionExpression=""/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="show.exchange.items.filter" label="Show [EI1, EI2]">
+      <filters xsi:type="filter:CompositeFilterDescription" name="show.exchange.items.filter" label="%la.ldfb.show.exchange.items.filter">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" semanticConditionExpression="">
           <mappings xsi:type="description_2:NodeMapping" href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@nodeMappings[name='SDFB_Dummy']"/>
         </filters>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="show.exchange.items.parameters.filter" label="Show EI1(param1:type1, param2:type2), EI2(param3:type3)">
+      <filters xsi:type="filter:CompositeFilterDescription" name="show.exchange.items.parameters.filter" label="%la.ldfb.show.exchange.items.parameters.filter">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE">
           <mappings xsi:type="description_3:InstanceRoleMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='hideSequenceLabelDF']"/>
         </filters>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="show.functional.exchanges.exchange.items.filter" label="Show FE [EI1, EI2]">
+      <filters xsi:type="filter:CompositeFilterDescription" name="show.functional.exchanges.exchange.items.filter" label="%la.ldfb.show.functional.exchanges.exchange.items.filter">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE">
           <mappings xsi:type="description_3:InstanceRoleMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='hideSequenceLabelDF']"/>
         </filters>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="show.functional.exchanges.parameters.filter" label="Show FE (type1, type2, type3)">
+      <filters xsi:type="filter:CompositeFilterDescription" name="show.functional.exchanges.parameters.filter" label="%la.ldfb.show.functional.exchanges.parameters.filter">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE">
           <mappings xsi:type="description_3:InstanceRoleMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='hideSequenceLabelDF']"/>
         </filters>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="show.functional.exchanges.exchange.items.parameters.filter" label="Show FE [EI1(param1:type1, param2:type2), EI2(param3:type3)]">
+      <filters xsi:type="filter:CompositeFilterDescription" name="show.functional.exchanges.exchange.items.parameters.filter" label="%la.ldfb.show.functional.exchanges.exchange.items.parameters.filter">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE">
           <mappings xsi:type="description_3:InstanceRoleMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='hideSequenceLabelDF']"/>
         </filters>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.functional.exchanges.names.filter" label="Hide Functional Exchanges names">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.functional.exchanges.names.filter" label="%la.ldfb.hide.functional.exchanges.names.filter">
         <filters xsi:type="filter:MappingFilter">
           <mappings xsi:type="description_2:NodeMapping" href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='CA%20Dummy']"/>
         </filters>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.property.values.filter" label="Hide Property Values">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.property.values.filter" label="%la.ldfb.hide.property.values.filter">
         <filters xsi:type="filter:MappingFilter">
           <mappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV']"/>
           <mappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
@@ -1237,7 +1237,7 @@
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
         <toolSections name="Functions">
           <ownedTools xsi:type="tool_1:ToolGroup" name="FunctionCreation">
-            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Logical Function" name="function" label="Logical Function" precondition="aql:containerView.isValidCreationDFFunction() and (container.oclIsKindOf(la::CapabilityRealization) or container.allocationBlocks->filter(cs::Component)->select(c | v.isActor())->size() = 0)" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']">
+            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Logical Function" name="function" label="%la.ldfb.function" precondition="aql:containerView.isValidCreationDFFunction() and (container.oclIsKindOf(la::CapabilityRealization) or container.allocationBlocks->filter(cs::Component)->select(c | v.isActor())->size() = 0)" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -1254,7 +1254,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Duplicate" name="duplicate" label="Duplicate" precondition="aql:containerView.isValidCreationDFControlNode()" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Duplicate.gif">
+            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Duplicate" name="duplicate" label="%la.ldfb.duplicate" precondition="aql:containerView.isValidCreationDFControlNode()" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Duplicate.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -1271,7 +1271,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Gather" name="gather" label="Gather" precondition="aql:containerView.isValidCreationDFControlNode()" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Gather.gif">
+            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Gather" name="gather" label="%la.ldfb.gather" precondition="aql:containerView.isValidCreationDFControlNode()" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Gather.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -1288,7 +1288,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Route" name="route" label="Route" precondition="aql:containerView.isValidCreationDFControlNode()" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Route.gif">
+            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Route" name="route" label="%la.ldfb.route" precondition="aql:containerView.isValidCreationDFControlNode()" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Route.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -1305,7 +1305,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Select" name="select" label="Select" precondition="aql:containerView.isValidCreationDFControlNode()" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Select.gif">
+            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Select" name="select" label="%la.ldfb.select" precondition="aql:containerView.isValidCreationDFControlNode()" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Select.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -1322,7 +1322,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Split" name="split" label="Split" precondition="aql:containerView.isValidCreationDFControlNode()" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Split.gif">
+            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Split" name="split" label="%la.ldfb.split" precondition="aql:containerView.isValidCreationDFControlNode()" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Split.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -1340,7 +1340,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Logical Function allocated to a new Logical Actor" name="actor.function" label="Actor Function" precondition="aql:containerView.isValidCreationDFFunction() and containerView.oclIsKindOf(diagram::DDiagram)" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ActorLogicalFunction.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Logical Function allocated to a new Logical Actor" name="actor.function" label="%la.ldfb.actor.function" precondition="aql:containerView.isValidCreationDFFunction() and containerView.oclIsKindOf(diagram::DDiagram)" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ActorLogicalFunction.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -1359,7 +1359,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="FuntionalExchanges">
-            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Functional Exchange between the Source and Target Logical Functions. If necessary, Function Ports are created automatically. The Functional Exchange is created under the common parent Function of the Source and Target." name="functional.exchange" label="Functional Exchange" precondition="aql:self.isValidCreationFunctionalExchange(preSource,preTarget)" elementsToSelect="var:result" edgeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='LDFB_Exchange']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalExchange.gif" extraSourceMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']" extraTargetMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']" connectionStartPrecondition="aql:self.isValidCreationFunctionalExchange(preSource)">
+            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Functional Exchange between the Source and Target Logical Functions. If necessary, Function Ports are created automatically. The Functional Exchange is created under the common parent Function of the Source and Target." name="functional.exchange" label="%la.ldfb.functional.exchange" precondition="aql:self.isValidCreationFunctionalExchange(preSource,preTarget)" elementsToSelect="var:result" edgeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@edgeMappings[name='LDFB_Exchange']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalExchange.gif" extraSourceMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']" extraTargetMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']" connectionStartPrecondition="aql:self.isValidCreationFunctionalExchange(preSource)">
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
               <sourceViewVariable name="sourceView"/>
@@ -1368,7 +1368,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.createDFFunctionalExchange(sourceView,targetView)"/>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Input Port on the target Function" name="input.port" label="Input Port" precondition="aql:containerView.isValidCreationFunctionInputPort()" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']/@borderedNodeMappings[name='LDFB_Pin']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/InFlowPort.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Input Port on the target Function" name="input.port" label="%la.ldfb.input.port" precondition="aql:containerView.isValidCreationFunctionInputPort()" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']/@borderedNodeMappings[name='LDFB_Pin']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/InFlowPort.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -1379,7 +1379,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Output Port on the target Function" name="output.port" label="Output Port" precondition="aql:containerView.isValidCreationFunctionOutputPort()" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']/@borderedNodeMappings[name='LDFB_Pin']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/OutFlowPort.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Output Port on the target Function" name="output.port" label="%la.ldfb.output.port" precondition="aql:containerView.isValidCreationFunctionOutputPort()" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']/@borderedNodeMappings[name='LDFB_Pin']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/OutFlowPort.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -1391,7 +1391,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Insert/Remove Functions. Create or delete graphical objects corresponding to already existing Functions. Removing a Function graphical object from the diagram does not delete the Function from the model. This tool does not modify the semantic model." name="functions" label="Functions" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Insert/Remove Functions. Create or delete graphical objects corresponding to already existing Functions. Removing a Function graphical object from the diagram does not delete the Function from the model. This tool does not modify the semantic model." name="functions" label="%la.ldfb.functions" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView">
               <subVariables xsi:type="tool:AcceleoVariable" name="visibleFunctions" computationExpression="aql:self.void2Null(elementView.getDisplayedAbstractFunctions())"/>
@@ -1419,7 +1419,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="Show/Hide exchanges">
-            <tools xsi:type="tool:ToolDescription" documentation="Insert/Remove Functional Exchange. Create or delete graphical objects corresponding to already existing Functional Exchanges and the corresponding source/target Functions if they are not present on the diagram yet. Removing a Functional Exchange graphical object from the diagram does not delete the Functional Exchange from the model. This tool does not modify the semantic model." name="functional.exchanges" label="Functional Exchanges" precondition="aql:(elementView.target->filter(fa::AbstractFunction)->size() > 0) and (elementView->filter(diagram::DDiagram)->size() = 0)" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool:ToolDescription" documentation="Insert/Remove Functional Exchange. Create or delete graphical objects corresponding to already existing Functional Exchanges and the corresponding source/target Functions if they are not present on the diagram yet. Removing a Functional Exchange graphical object from the diagram does not delete the Functional Exchange from the model. This tool does not modify the semantic model." name="functional.exchanges" label="%la.ldfb.functional.exchanges" precondition="aql:(elementView.target->filter(fa::AbstractFunction)->size() > 0) and (elementView->filter(diagram::DDiagram)->size() = 0)" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <element name="element"/>
               <elementView name="elementView">
                 <subVariables xsi:type="tool:AcceleoVariable" name="displayedExchanges" computationExpression="aql:self.void2Null(elementView.getDisplayedFunctionalExchanges())"/>
@@ -1440,7 +1440,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ToolDescription" documentation="[Available only when the diagram is unsynchronized] Insert/Remove Function Ports. Create or delete graphical objects corresponding to already existing Function Ports. Removing a Function Port graphical object from the diagram does not delete the Function Port from the model. This tool does not modify the semantic model." name="function.ports" label="Function Ports" precondition="aql:(elementView->filter(diagram::DNodeContainer)->size() > 0) and (elementView.target->filter(fa::AbstractFunction)->size() > 0) and (not (elementView.getDiagramContainer().isSynchronized()))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool:ToolDescription" documentation="[Available only when the diagram is unsynchronized] Insert/Remove Function Ports. Create or delete graphical objects corresponding to already existing Function Ports. Removing a Function Port graphical object from the diagram does not delete the Function Port from the model. This tool does not modify the semantic model." name="function.ports" label="%la.ldfb.function.ports" precondition="aql:(elementView->filter(diagram::DNodeContainer)->size() > 0) and (elementView.target->filter(fa::AbstractFunction)->size() > 0) and (not (elementView.getDiagramContainer().isSynchronized()))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <filters precondition="feature:synchronized" elementsToListen="aql:self">
                 <listeners domainClass="DDiagram" featureName="synchronized"/>
               </filters>
@@ -1476,7 +1476,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ToolDescription" documentation="[Available only when the diagram is unsynchronized] Insert/Remove Categorized Exchanges. Create or delete graphical objects corresponding to already existing Categorized Exchanges and the corresponding source/target Functions if they are not present on the diagram yet. Removing a Categorized Exchange graphical object from the diagram does not delete the Exchange from the model. This tool does not modify the semantic model." name="exchange.categories" label="Exchange Categories" precondition="aql:(elementView->filter(diagram::DNodeContainer)->size() > 0) and (elementView.target->filter(fa::AbstractFunction)->size() > 0)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool:ToolDescription" documentation="[Available only when the diagram is unsynchronized] Insert/Remove Categorized Exchanges. Create or delete graphical objects corresponding to already existing Categorized Exchanges and the corresponding source/target Functions if they are not present on the diagram yet. Removing a Categorized Exchange graphical object from the diagram does not delete the Exchange from the model. This tool does not modify the semantic model." name="exchange.categories" label="%la.ldfb.exchange.categories" precondition="aql:(elementView->filter(diagram::DNodeContainer)->size() > 0) and (elementView.target->filter(fa::AbstractFunction)->size() > 0)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <filters precondition="feature:synchronized" elementsToListen="aql:self">
                 <listeners domainClass="DDiagram" featureName="synchronized"/>
               </filters>
@@ -1498,7 +1498,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Insert/Remove Functional Chain. Create or delete graphical objects corresponding to already existing Functional Chains. Removing a Functional Chain graphical object from the diagram does not delete the Functional Chain from the model. This tool does not modify the semantic model." name="functional.chains" label="Functional Chains" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@nodeMappings[name='LDFB_FunctionalChainEnd']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Insert/Remove Functional Chain. Create or delete graphical objects corresponding to already existing Functional Chains. Removing a Functional Chain graphical object from the diagram does not delete the Functional Chain from the model. This tool does not modify the semantic model." name="functional.chains" label="%la.ldfb.functional.chains" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@nodeMappings[name='LDFB_FunctionalChainEnd']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <variable name="container"/>
             <viewVariable name="containerView">
               <subVariables xsi:type="tool:AcceleoVariable" name="ownedElements" computationExpression="aql:containerView.getSetOfDiagramElements()"/>
@@ -1538,7 +1538,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Regroup all displayed Functional Exchanges matching the selected Category (ies) by simplified Category-based Exchanges. " name="switch.functional.exchanges.categories" label="Switch Functional Exchanges / Categories" precondition="aql:(elementView->filter(diagram::DDiagram)->size() > 0)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Regroup all displayed Functional Exchanges matching the selected Category (ies) by simplified Category-based Exchanges. " name="switch.functional.exchanges.categories" label="%la.ldfb.switch.functional.exchanges.categories" precondition="aql:(elementView->filter(diagram::DDiagram)->size() > 0)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1673,8 +1673,8 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:PopupMenu" name="functional.chain.menu" label="Functional Chain">
-            <menuItemDescription xsi:type="tool:OperationAction" name="functional.chain" label="Create a Functional Chain" precondition="aql:self.isValidFunctionalChainSelection(views)" forceRefresh="true">
+          <ownedTools xsi:type="tool:PopupMenu" name="functional.chain.menu" label="%la.ldfb.functional.chain.menu">
+            <menuItemDescription xsi:type="tool:OperationAction" name="functional.chain" label="%la.ldfb.functional.chain" precondition="aql:self.isValidFunctionalChainSelection(views)" forceRefresh="true">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createFunctionalChain(views)">
@@ -1687,7 +1687,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Accelerators">
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Insert all the Functions available in a given Mode / State. This tool does not modify the semantic model." name="functions.from.mode.state" label="Functions from Mode / State" precondition="aql:elementView.isValidDFInsertStateModes()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Mode.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Insert all the Functions available in a given Mode / State. This tool does not modify the semantic model." name="functions.from.mode.state" label="%la.ldfb.functions.from.mode.state" precondition="aql:elementView.isValidDFInsertStateModes()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Mode.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1705,7 +1705,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Insert all the Functions and Functional Exchanges contributing to a given Scenario. This tool does not modify the semantic model." name="elements.from.scenario" label="Elements from Scenario" precondition="aql:elementView.isValidDFInsertScenarios()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Scenario.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Insert all the Functions and Functional Exchanges contributing to a given Scenario. This tool does not modify the semantic model." name="elements.from.scenario" label="%la.ldfb.elements.from.scenario" precondition="aql:elementView.isValidDFInsertScenarios()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Scenario.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1723,7 +1723,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Insert all the Functions and Functional Exchanges contributing to a given Functional Chain. " name="functional.chain.elements" label="Functional Chain Elements" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChain.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Insert all the Functions and Functional Exchanges contributing to a given Functional Chain. " name="functional.chain.elements" label="%la.ldfb.functional.chain.elements" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChain.gif">
             <variable name="container"/>
             <viewVariable name="containerView">
               <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:containerView.getDiagramContainer()"/>
@@ -1760,7 +1760,7 @@
           <reusedTools xsi:type="tool:ToolDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.1/@ownedTools[name='initialization.from.existing.diagram']"/>
         </toolSections>
         <toolSections name="Common">
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="Constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%la.ldfb.constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -1774,7 +1774,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Allocate a Source Constraint to an available Target Capella Element." name="constraint.element" label="ConstraintElement" precondition="aql:not (preSource.constrainedElements->includes(preTarget))" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ClassCarries.gif">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Allocate a Source Constraint to an available Target Capella Element." name="constraint.element" label="%la.ldfb.constraint.element" precondition="aql:not (preSource.constrainedElements->includes(preTarget))" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ClassCarries.gif">
             <edgeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
@@ -1796,7 +1796,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model." name="constraints" label="Constraints" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model." name="constraints" label="%la.ldfb.constraints" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView">
               <subVariables xsi:type="tool:AcceleoVariable" name="constraintsInDiagram" computationExpression="aql:self.void2Null(self.getExistingConstraintsFromDiagram(elementView.getDiagramContainer()))"/>
@@ -1833,7 +1833,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Logical Architecture Blank" titleExpression="aql:'[LAB] ' + self.name" domainClass="NamedElement" preconditionExpression="aql:self.oclIsKindOf(la::LogicalComponentPkg) or self.oclIsKindOf(la::LogicalComponent) or (self.oclIsKindOf(cs::Part) and self.getComponentType().oclIsKindOf(la::LogicalComponent))" defaultConcern="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@concerns/@ownedConcernDescriptions.0">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Logical Architecture Blank" label="%la.lab" titleExpression="aql:'[LAB] ' + self.name" domainClass="NamedElement" preconditionExpression="aql:self.oclIsKindOf(la::LogicalComponentPkg) or self.oclIsKindOf(la::LogicalComponent) or (self.oclIsKindOf(cs::Part) and self.getComponentType().oclIsKindOf(la::LogicalComponent))" defaultConcern="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@concerns/@ownedConcernDescriptions.0">
       <dropDescriptions href="#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='DnD%20AB%20Component']"/>
       <dropDescriptions href="#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
       <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
@@ -1859,93 +1859,93 @@
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
-      <filters xsi:type="filter:CompositeFilterDescription" name="collapse.component.ports.filter" label="Collapse Component Ports">
+      <filters xsi:type="filter:CompositeFilterDescription" name="collapse.component.ports.filter" label="%la.lab.collapse.component.ports.filter">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB%20ComponentPort']"/>
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20PortRealization%20FlowPort%20to%20ComponentPort']"/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="collapse.function.ports.filter" label="Collapse Function Ports">
+      <filters xsi:type="filter:CompositeFilterDescription" name="collapse.function.ports.filter" label="%la.lab.collapse.function.ports.filter">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20Flow%20Port%20on%20Logical%20Function'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20InputPin%20by%20Categorie'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20OutputPin%20by%20Categorie']"/>
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20PortRealization%20FlowPort%20to%20ComponentPort']"/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.function.ports.without.exchanges.filter" label="Hide Function Ports without Exchanges">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.function.ports.without.exchanges.filter" label="%la.lab.hide.function.ports.without.exchanges.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20Flow%20Port%20on%20Logical%20Function']" semanticConditionExpression="" viewConditionExpression="aql:self.isFunctionPortWithoutExchanges(self.eContainerOrSelf(diagram::DDiagram))"/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.component.ports.without.exchanges.filter" label="Hide Component Ports without Exchanges">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.component.ports.without.exchanges.filter" label="%la.lab.hide.component.ports.without.exchanges.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB%20ComponentPort']" viewConditionExpression="aql:self.isComponentPortWithoutExchanges(self.eContainerOrSelf(diagram::DDiagram))"/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.allocated.functional.exchanges.filter" label="Hide Allocated Functional Exchanges">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.allocated.functional.exchanges.filter" label="%la.lab.hide.allocated.functional.exchanges.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Function']" semanticConditionExpression="aql:self.allocatingComponentExchanges->size() = 0"/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.functions.filter" label="Hide Functions">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.functions.filter" label="%la.lab.hide.functions.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']"/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.functional.exchanges.filter" label="Hide Functional Exchanges">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.functional.exchanges.filter" label="%la.lab.hide.functional.exchanges.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Function'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20by%20Categorie']"/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.connections.filter" label="Hide Component Exchanges">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.connections.filter" label="%la.lab.hide.connections.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Logical%20Components']" semanticConditionExpression="aql:self.kind = fa::ComponentExchangeKind::DELEGATION"/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.port.realizations.filter" label="Hide Port Allocations">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.port.realizations.filter" label="%la.lab.hide.port.realizations.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20PortRealization%20FlowPort%20to%20ComponentPort']"/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.port.delegations.filter" label="Hide Port Delegations">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.port.delegations.filter" label="%la.lab.hide.port.delegations.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Logical%20Components']" semanticConditionExpression="aql:self.kind != fa::ComponentExchangeKind::DELEGATION"/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.realized.ports.filter" label="Hide Allocated Function Ports">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.realized.ports.filter" label="%la.lab.hide.realized.ports.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20Flow%20Port%20on%20Logical%20Function'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20InputPin%20by%20Categorie'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20OutputPin%20by%20Categorie']" semanticConditionExpression="aql:self.incomingPortAllocations->size() = 0"/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="show.exchange.items.filter" label="Show Exchange Items on Functional Exchanges">
+      <filters xsi:type="filter:CompositeFilterDescription" name="show.exchange.items.filter" label="%la.lab.show.exchange.items.filter">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='LAB_Dummy']" semanticConditionExpression=""/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="show.exchange.items.on.component.exchanges.filter" label="Show Exchange Items on Component Exchanges">
+      <filters xsi:type="filter:CompositeFilterDescription" name="show.exchange.items.on.component.exchanges.filter" label="%la.lab.show.exchange.items.on.component.exchanges.filter">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='LAB_Dummy']" semanticConditionExpression=""/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="show.exchange.items.on.component.exchange.without.functional.exchanges.filter" label="Show Exchange Items on Component Exchange (without Functional Exchanges)">
+      <filters xsi:type="filter:CompositeFilterDescription" name="show.exchange.items.on.component.exchange.without.functional.exchanges.filter" label="%la.lab.show.exchange.items.on.component.exchange.without.functional.exchanges.filter">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='LAB_Dummy']" semanticConditionExpression=""/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="show.allocated.functional.exchanges.on.component.exchanges.filter" label="Show Allocated Functional Exchanges on Component Exchanges">
+      <filters xsi:type="filter:CompositeFilterDescription" name="show.allocated.functional.exchanges.on.component.exchanges.filter" label="%la.lab.show.allocated.functional.exchanges.on.component.exchanges.filter">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='LAB_Dummy']" semanticConditionExpression=""/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.cross.functional.exchanges.of.reusable.components.filter" label="Hide cross Functional Exchanges of reusable Components">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.cross.functional.exchanges.of.reusable.components.filter" label="%la.lab.hide.cross.functional.exchanges.of.reusable.components.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Function']" semanticConditionExpression="" viewConditionExpression="aql:self.target.isValidFunctionalExchangeEdge(self.sourceNode,self.targetNode)"/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.simplified.diagram.based.component.exchanges.filter" label="Hide Simplified Diagram Based Component Exchanges">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.simplified.diagram.based.component.exchanges.filter" label="%la.lab.hide.simplified.diagram.based.component.exchanges.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB_ComponentExchangeByDelegation']"/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.simplified.group.of.component.exchanges.filter" label="Hide Simplified Grouped Component Exchanges">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.simplified.group.of.component.exchanges.filter" label="%la.lab.hide.simplified.group.of.component.exchanges.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB_ComponentExchangeByGroup']"/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.simplified.oriented.grouped.component.exchanges.filter" label="Hide Simplified Oriented Grouped Component Exchanges">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.simplified.oriented.grouped.component.exchanges.filter" label="%la.lab.hide.simplified.oriented.grouped.component.exchanges.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB_ComponentExchangeByGroup_Oriented']"/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.functional.exchanges.names.filter" label="Hide Functional Exchanges names">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.functional.exchanges.names.filter" label="%la.lab.hide.functional.exchanges.names.filter">
         <filters xsi:type="filter:MappingFilter">
           <mappings xsi:type="description_2:NodeMapping" href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='CA%20Dummy']"/>
         </filters>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.component.exchanges.names.filter" label="Hide Component Exchanges names">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.component.exchanges.names.filter" label="%la.lab.hide.component.exchanges.names.filter">
         <filters xsi:type="filter:MappingFilter">
           <mappings xsi:type="description_2:NodeMapping" href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='CA%20Dummy']"/>
         </filters>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.physical.links.names.filter" label="Hide Physical Links names">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.physical.links.names.filter" label="%la.lab.hide.physical.links.names.filter">
         <filters xsi:type="filter:MappingFilter">
           <mappings xsi:type="description_2:NodeMapping" href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='CA%20Dummy']"/>
         </filters>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.computed.component.exchanges.filter" label="Hide Computed Component Exchanges">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.computed.component.exchanges.filter" label="%la.lab.hide.computed.component.exchanges.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB_ComputedComponentExchange']"/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.computed.physical.links.filter" label="Hide Computed Physical Links">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.computed.physical.links.filter" label="%la.lab.hide.computed.physical.links.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB_ComputedPhysicalLink']"/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.property.values.filter" label="Hide Property Values">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.property.values.filter" label="%la.lab.hide.property.values.filter">
         <filters xsi:type="filter:MappingFilter">
           <mappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV']"/>
           <mappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
         </filters>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.sequencing.information.filter" label="Hide Sequencing Information">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.sequencing.information.filter" label="%la.lab.hide.sequencing.information.filter">
         <filters xsi:type="filter:MappingFilter">
           <mappings xsi:type="description_2:NodeMapping" href="oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
           <mappings xsi:type="description_2:EdgeMapping" href="#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB_FC_SequenceLink']"/>
@@ -2370,7 +2370,7 @@
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
         <reusedMappings xsi:type="description_2:NodeMapping" href="oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
         <toolSections name="Components">
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Logical Component and a Part typed by this Logical Component. &#xD;&#xA;The Part is created in the Component target of the click." name="logical.component" label="Logical Component" precondition="aql:containerView.getABTarget().isValidCreationABComponent()" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/LogicalComponent.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Logical Component and a Part typed by this Logical Component. &#xD;&#xA;The Part is created in the Component target of the click." name="logical.component" label="%la.lab.logical.component" precondition="aql:containerView.getABTarget().isValidCreationABComponent()" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/LogicalComponent.gif">
             <variable name="container">
               <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
             </variable>
@@ -2395,7 +2395,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="[Reusable Components] Creates a new Part of an existing Logical Component into the targeted Component." name="reuse.logical.component" label="Reuse Logical Component" precondition="aql:not (containerView.oclIsKindOf(diagram::DDiagram) and containerView.getABTarget().oclIsKindOf(capellacore::ModellingArchitecture))" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Insert.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="[Reusable Components] Creates a new Part of an existing Logical Component into the targeted Component." name="reuse.logical.component" label="%la.lab.reuse.logical.component" precondition="aql:not (containerView.oclIsKindOf(diagram::DDiagram) and containerView.getABTarget().oclIsKindOf(capellacore::ModellingArchitecture))" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Insert.gif">
             <filters precondition="aql:not (self.isPreferenceEnabled('multipart.allowed'))" elementsToListen="aql:self.getPreferenceListener()">
               <listeners domainClass="org.polarsys.capella.core.preferences.Listener" featureName="multipart.allowed"/>
             </filters>
@@ -2436,7 +2436,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Logical Actor and a Part typed by this Logical Actor. &#xD;&#xA;The Part is created in the Logical Context." name="logical.actor" label="Logical Actor" precondition="aql:containerView.getABActorTarget().isValidCreationABActor()" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/LogicalActor.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Logical Actor and a Part typed by this Logical Actor. &#xD;&#xA;The Part is created in the Logical Context." name="logical.actor" label="%la.lab.logical.actor" precondition="aql:containerView.getABActorTarget().isValidCreationABActor()" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/LogicalActor.gif">
             <variable name="container">
               <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
             </variable>
@@ -2461,7 +2461,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="[Reusable Components] Creates a new Part of an existing Actor." name="reuse.logical.actor" label="Reuse Logical Actor" precondition="aql:containerView.oclIsKindOf(diagram::DDiagram)" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Insert.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="[Reusable Components] Creates a new Part of an existing Actor." name="reuse.logical.actor" label="%la.lab.reuse.logical.actor" precondition="aql:containerView.oclIsKindOf(diagram::DDiagram)" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Insert.gif">
             <filters precondition="aql:not (self.isPreferenceEnabled('multipart.allowed'))" elementsToListen="aql:self.getPreferenceListener()">
               <listeners domainClass="org.polarsys.capella.core.preferences.Listener" featureName="multipart.allowed"/>
             </filters>
@@ -2502,8 +2502,8 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:PopupMenu" name="physical.path.menu" label="Physical Path">
-            <menuItemDescription xsi:type="tool:OperationAction" name="physical.path" label="Create a Physical Path" precondition="aql:self.isValidPhysicalPathSelection(views)" forceRefresh="true">
+          <ownedTools xsi:type="tool:PopupMenu" name="physical.path.menu" label="%la.lab.physical.path.menu">
+            <menuItemDescription xsi:type="tool:OperationAction" name="physical.path" label="%la.lab.physical.path" precondition="aql:self.isValidPhysicalPathSelection(views)" forceRefresh="true">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views">
@@ -2518,7 +2518,7 @@
             </menuItemDescription>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="Connections" label="Component Exchanges">
-            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="[Singleton Components] Creates a Component Exchange of kind FLOW between the Source and Target Components. &#xD;&#xA;This tool can be used directly from / to Component or from / to Component Ports." name="component.exchange" label="Component Exchange" precondition="aql:self.isValidCreationABComponentExchange(preSourceView,preTargetView)" elementsToSelect="var:result" edgeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Logical%20Components']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Connection.gif" extraSourceMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" extraTargetMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']">
+            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="[Singleton Components] Creates a Component Exchange of kind FLOW between the Source and Target Components. &#xD;&#xA;This tool can be used directly from / to Component or from / to Component Ports." name="component.exchange" label="%la.lab.component.exchange" precondition="aql:self.isValidCreationABComponentExchange(preSourceView,preTargetView)" elementsToSelect="var:result" edgeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Logical%20Components']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Connection.gif" extraSourceMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" extraTargetMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']">
               <filters precondition="aql:self.isPreferenceEnabled('multipart.allowed')" elementsToListen="aql:self.getPreferenceListener()">
                 <listeners domainClass="org.polarsys.capella.core.preferences.Listener" featureName="multipart.allowed"/>
               </filters>
@@ -2530,7 +2530,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.createABComponentExchange(sourceView,targetView)"/>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="[Singleton Components] Creates a Component Exchange of kind FLOW between the Source and Target Components. When necessary (for example when used to relate two sub components), Delegation relationships are also created. This tool can be used directly from / to Component or from / to Component Ports." name="component.exchange.with.delegations" label="Component Exchange with Delegations" precondition="aql:self.isValidCreationABComponentExchange(preSourceView,preTargetView)" elementsToSelect="var:result" edgeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Logical%20Components']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Connection.gif" extraSourceMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" extraTargetMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']">
+            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="[Singleton Components] Creates a Component Exchange of kind FLOW between the Source and Target Components. When necessary (for example when used to relate two sub components), Delegation relationships are also created. This tool can be used directly from / to Component or from / to Component Ports." name="component.exchange.with.delegations" label="%la.lab.component.exchange.with.delegations" precondition="aql:self.isValidCreationABComponentExchange(preSourceView,preTargetView)" elementsToSelect="var:result" edgeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Logical%20Components']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Connection.gif" extraSourceMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" extraTargetMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']">
               <filters precondition="aql:self.isPreferenceEnabled('multipart.allowed')" elementsToListen="aql:self.getPreferenceListener()">
                 <listeners domainClass="org.polarsys.capella.core.preferences.Listener" featureName="multipart.allowed"/>
               </filters>
@@ -2542,7 +2542,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createABComponentExchangeThroughDelegation(sourceView,targetView)"/>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="[Reusable Components] Creates a Component Exchange of kind FLOW between the Source and Target Parts.&#xD;&#xA;Component Ports are created automatically if the Source and / or Target are Parts instead of Ports. " name="component.exchange.with.ports" label="Component Exchange with ports" precondition="aql:self.isValidCreationABComponentExchange(preSourceView,preTargetView)" elementsToSelect="var:result" edgeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Logical%20Components']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Connection.gif" extraSourceMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" extraTargetMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']">
+            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="[Reusable Components] Creates a Component Exchange of kind FLOW between the Source and Target Parts.&#xD;&#xA;Component Ports are created automatically if the Source and / or Target are Parts instead of Ports. " name="component.exchange.with.ports" label="%la.lab.component.exchange.with.ports" precondition="aql:self.isValidCreationABComponentExchange(preSourceView,preTargetView)" elementsToSelect="var:result" edgeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Logical%20Components']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Connection.gif" extraSourceMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" extraTargetMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']">
               <filters precondition="aql:not (self.isPreferenceEnabled('multipart.allowed'))" elementsToListen="aql:self.getPreferenceListener()">
                 <listeners domainClass="org.polarsys.capella.core.preferences.Listener" featureName="multipart.allowed"/>
               </filters>
@@ -2554,7 +2554,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.createABComponentExchange(sourceView,targetView)"/>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="[Reusable Components] Creates a Component Exchange of kind ASSEMBLY between the Source Part and Target Parts." name="component.exchange.without.ports" label="Component Exchange without ports" precondition="aql:self.isValidCreationABComponentExchangeWithoutPorts(preSourceView,preTargetView)" edgeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Logical%20Components']" extraSourceMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" extraTargetMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']">
+            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="[Reusable Components] Creates a Component Exchange of kind ASSEMBLY between the Source Part and Target Parts." name="component.exchange.without.ports" label="%la.lab.component.exchange.without.ports" precondition="aql:self.isValidCreationABComponentExchangeWithoutPorts(preSourceView,preTargetView)" edgeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Logical%20Components']" extraSourceMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" extraTargetMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']">
               <filters precondition="aql:not (self.isPreferenceEnabled('multipart.allowed'))" elementsToListen="aql:self.getPreferenceListener()">
                 <listeners domainClass="org.polarsys.capella.core.preferences.Listener" featureName="multipart.allowed"/>
               </filters>
@@ -2566,7 +2566,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.createABComponentExchangeWithoutPorts(sourceView,targetView)"/>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="[Singleton Components] Creates a Component Exchange of kind FLOW between the Source and Target Components. &#xD;&#xA;This tool can be used directly from / to Component or from / to Component Ports." name="component.exchange.between.types" label="Component Exchange between types" precondition="aql:self.isValidCreationABComponentExchange(preSourceView,preTargetView)" elementsToSelect="var:result" edgeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Logical%20Components']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Connection.gif" extraSourceMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" extraTargetMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']">
+            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="[Singleton Components] Creates a Component Exchange of kind FLOW between the Source and Target Components. &#xD;&#xA;This tool can be used directly from / to Component or from / to Component Ports." name="component.exchange.between.types" label="%la.lab.component.exchange.between.types" precondition="aql:self.isValidCreationABComponentExchange(preSourceView,preTargetView)" elementsToSelect="var:result" edgeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Logical%20Components']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Connection.gif" extraSourceMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" extraTargetMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']">
               <filters precondition="aql:not (self.isPreferenceEnabled('multipart.allowed'))" elementsToListen="aql:self.getPreferenceListener()">
                 <listeners domainClass="org.polarsys.capella.core.preferences.Listener" featureName="multipart.allowed"/>
               </filters>
@@ -2578,7 +2578,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.createABComponentExchange(sourceView,targetView,true)"/>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a Component Exchange of kind DELEGATION between a Port of the parent Component and a Port of a Sub Component.&#xD;&#xA;This delegation relationship is contextual to the parent Component. This tool can be used directly from / to Component or from / to Component Ports." name="delegation" label="Delegation" precondition="aql:self.isValidCreationABDelegationExchange(preSourceView,preTargetView)" elementsToSelect="var:result" edgeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Logical%20Components']">
+            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a Component Exchange of kind DELEGATION between a Port of the parent Component and a Port of a Sub Component.&#xD;&#xA;This delegation relationship is contextual to the parent Component. This tool can be used directly from / to Component or from / to Component Ports." name="delegation" label="%la.lab.delegation" precondition="aql:self.isValidCreationABDelegationExchange(preSourceView,preTargetView)" elementsToSelect="var:result" edgeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Logical%20Components']">
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
               <sourceViewVariable name="sourceView"/>
@@ -2587,7 +2587,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.createABDelegation(sourceView,targetView)"/>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Physical Link between the source and target Logicall Components or Actors." name="physical.link" label="Physical Link" precondition="aql:preTargetView.target.canBeInvolvedInPhysicalLink()" elementsToSelect="var:result" edgeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB_PhysicalLink']" extraSourceMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" extraTargetMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" connectionStartPrecondition="aql:preSourceView.target.canBeInvolvedInPhysicalLink()">
+            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Physical Link between the source and target Logicall Components or Actors." name="physical.link" label="%la.lab.physical.link" precondition="aql:preTargetView.target.canBeInvolvedInPhysicalLink()" elementsToSelect="var:result" edgeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB_PhysicalLink']" extraSourceMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" extraTargetMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" connectionStartPrecondition="aql:preSourceView.target.canBeInvolvedInPhysicalLink()">
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
               <sourceViewVariable name="sourceView"/>
@@ -2598,7 +2598,7 @@
             </tools>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="Ports">
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Component Port initialized with the Kind FLOW and the direction IN" name="in.flow.port" label="In Flow Port" precondition="aql:container.oclIsKindOf(cs::Part)" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB%20ComponentPort']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FlowPortIn.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Component Port initialized with the Kind FLOW and the direction IN" name="in.flow.port" label="%la.lab.in.flow.port" precondition="aql:container.oclIsKindOf(cs::Part)" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB%20ComponentPort']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FlowPortIn.gif">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
@@ -2613,7 +2613,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Component Port initialized with the Kind FLOW and the direction OUT" name="out.flow.port" label="Out Flow Port" precondition="aql:container.oclIsKindOf(cs::Part)" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB%20ComponentPort']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FlowPortOut.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Component Port initialized with the Kind FLOW and the direction OUT" name="out.flow.port" label="%la.lab.out.flow.port" precondition="aql:container.oclIsKindOf(cs::Part)" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB%20ComponentPort']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FlowPortOut.gif">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
@@ -2628,7 +2628,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Component Port initialized with the Kind FLOW and the direction INOUT" name="in.out.flow.port" label="InOut Flow Port" precondition="aql:container.oclIsKindOf(cs::Part)" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB%20ComponentPort']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FlowPort.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Component Port initialized with the Kind FLOW and the direction INOUT" name="in.out.flow.port" label="%la.lab.in.out.flow.port" precondition="aql:container.oclIsKindOf(cs::Part)" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB%20ComponentPort']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FlowPort.gif">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
@@ -2643,7 +2643,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Component Port initialized with the Kind FLOW and the direction UNSET" name="standard.port" label="Standard Port" precondition="aql:container.oclIsKindOf(cs::Part)" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB%20ComponentPort']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/StandardPort.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Component Port initialized with the Kind FLOW and the direction UNSET" name="standard.port" label="%la.lab.standard.port" precondition="aql:container.oclIsKindOf(cs::Part)" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB%20ComponentPort']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/StandardPort.gif">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
@@ -2657,7 +2657,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Physical Port on the target Logical Component or Actor." name="physical.port" label="Physical Port" precondition="aql:self.isValidPhysicalPort(container)" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB_PhysicalPort']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PhysicalPort.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Physical Port on the target Logical Component or Actor." name="physical.port" label="%la.lab.physical.port" precondition="aql:self.isValidPhysicalPort(container)" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@borderedNodeMappings[name='LAB_PhysicalPort']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PhysicalPort.gif">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.abstractType"/>
               </variable>
@@ -2671,7 +2671,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates or deletes graphical objects on the diagrams corresponding to existing Components. Removing a Component graphical object from the diagram does not delete the Component from the model. This tool does not modify the semantic model." name="components.monopart" label="Components" precondition="aql:not (containerView.oclIsKindOf(diagram::DDiagram)) or isMultipartMode()" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates or deletes graphical objects on the diagrams corresponding to existing Components. Removing a Component graphical object from the diagram does not delete the Component from the model. This tool does not modify the semantic model." name="components.monopart" label="%la.lab.components.monopart" precondition="aql:not (containerView.oclIsKindOf(diagram::DDiagram)) or isMultipartMode()" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <filters precondition="aql:not (self.isPreferenceEnabled('multipart.allowed'))" elementsToListen="aql:self.getPreferenceListener()">
               <listeners domainClass="org.polarsys.capella.core.preferences.Listener" featureName="multipart.allowed"/>
             </filters>
@@ -2719,7 +2719,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates or delete graphical objects on the diagrams corresponding to existing Components. Removing a Component graphical object from the diagram does not delete the Component from the model. This tool does not modify the semantic model." name="components.multipart" label="Components" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates or delete graphical objects on the diagrams corresponding to existing Components. Removing a Component graphical object from the diagram does not delete the Component from the model. This tool does not modify the semantic model." name="components.multipart" label="%la.lab.components.multipart" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <filters precondition="aql:self.isPreferenceEnabled('multipart.allowed')" elementsToListen="aql:self.getPreferenceListener()">
               <listeners domainClass="org.polarsys.capella.core.preferences.Listener" featureName="multipart.allowed"/>
             </filters>
@@ -2760,7 +2760,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create or delete graphical objects corresponding to existing Actors.&#xD;&#xA;Removing an Actor graphical object from the diagram does not delete the Actor from the model. &#xD;&#xA;This tool does not modify the semantic model." name="actors" label="Actors" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create or delete graphical objects corresponding to existing Actors.&#xD;&#xA;Removing an Actor graphical object from the diagram does not delete the Actor from the model. &#xD;&#xA;This tool does not modify the semantic model." name="actors" label="%la.lab.actors" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <variable name="container"/>
             <viewVariable name="containerView">
               <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:containerView.eContainerOrSelf(diagram::DDiagram)"/>
@@ -2800,7 +2800,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="Show/Hide ComponentExchanges and Categories">
-            <tools xsi:type="tool:ToolDescription" documentation="Create or delete graphical objects corresponding to existing Component Exchanges.&#xD;&#xA;The proposed Component Exchanges are the one incoming and outgoing from the Component target of the click.&#xD;&#xA;Opposite Components / Actors might be displayed on the diagram as well if they are not yet represented.&#xD;&#xA;This tool does not modify the semantic model." name="component.exchanges.delegations" label="Component Exchanges / Delegations" precondition="aql:(elementView.target.oclIsKindOf(cs::Part) and elementView.target.getComponentType().oclIsKindOf(cs::Component)) and (elementView->filter(diagram::DDiagram)->size() = 0)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool:ToolDescription" documentation="Create or delete graphical objects corresponding to existing Component Exchanges.&#xD;&#xA;The proposed Component Exchanges are the one incoming and outgoing from the Component target of the click.&#xD;&#xA;Opposite Components / Actors might be displayed on the diagram as well if they are not yet represented.&#xD;&#xA;This tool does not modify the semantic model." name="component.exchanges.delegations" label="%la.lab.component.exchanges.delegations" precondition="aql:(elementView.target.oclIsKindOf(cs::Part) and elementView.target.getComponentType().oclIsKindOf(cs::Component)) and (elementView->filter(diagram::DDiagram)->size() = 0)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -2866,7 +2866,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ToolDescription" documentation="[Available only when the diagram is unsynchronized] Insert/Remove Categorized Component Exchanges. Create or delete graphical objects corresponding to already existing Categorized Component Exchanges and the corresponding source/target Parts if they are not present on the diagram yet. Removing a Categorized Component Exchange graphical object from the diagram does not delete the Component Exchange from the model. This tool does not modify the semantic model." name="component.exchanges.categories" label="Categories" precondition="aql:self.isValidShowHideABComponentCategory(elementView)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool:ToolDescription" documentation="[Available only when the diagram is unsynchronized] Insert/Remove Categorized Component Exchanges. Create or delete graphical objects corresponding to already existing Categorized Component Exchanges and the corresponding source/target Parts if they are not present on the diagram yet. Removing a Categorized Component Exchange graphical object from the diagram does not delete the Component Exchange from the model. This tool does not modify the semantic model." name="component.exchanges.categories" label="%la.lab.component.exchanges.categories" precondition="aql:self.isValidShowHideABComponentCategory(elementView)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <filters precondition="feature:synchronized" elementsToListen="aql:self">
                 <listeners domainClass="DDiagram" featureName="synchronized"/>
               </filters>
@@ -2883,7 +2883,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ToolDescription" documentation="Switch between the representation of individual Component Exchanges and their representation as Category-based Component Exchanges." name="switch.component.exchanges.categories" label="Switch Component Exchanges / Categories" precondition="aql:self.isValidSwitchABComponentCategory(elementView)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool:ToolDescription" documentation="Switch between the representation of individual Component Exchanges and their representation as Category-based Component Exchanges." name="switch.component.exchanges.categories" label="%la.lab.switch.component.exchanges.categories" precondition="aql:self.isValidSwitchABComponentCategory(elementView)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -2913,7 +2913,7 @@
             </tools>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="Show/Hide PhysicalLinks and Categories">
-            <tools xsi:type="tool:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Physical Links. The proposed Physical Links are the one incoming and outgoing from the Component target of the click. Opposite Components / Actors might be displayed on the diagram as well if they are not yet represented. This tool does not modify the semantic model." name="physical.links" label="Physical Links" precondition="aql:(elementView.target.oclIsKindOf(cs::Part) and elementView.target.getComponentType().oclIsKindOf(cs::Component)) and (elementView->filter(diagram::DDiagram)->size() = 0)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Physical Links. The proposed Physical Links are the one incoming and outgoing from the Component target of the click. Opposite Components / Actors might be displayed on the diagram as well if they are not yet represented. This tool does not modify the semantic model." name="physical.links" label="%la.lab.physical.links" precondition="aql:(elementView.target.oclIsKindOf(cs::Part) and elementView.target.getComponentType().oclIsKindOf(cs::Component)) and (elementView->filter(diagram::DDiagram)->size() = 0)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -2979,7 +2979,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ToolDescription" documentation="Insert/Remove Physical Paths. Creates or delete graphical objects corresponding to existing Physical Paths. Removing a Physical Path graphical object from a diagram does not delete the Physical Path from the model. This tool does not modify the semantic model." name="physical.paths" label="Physical Paths" precondition="aql:elementView->filter(diagram::DDiagram)->size() > 0" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool:ToolDescription" documentation="Insert/Remove Physical Paths. Creates or delete graphical objects corresponding to existing Physical Paths. Removing a Physical Path graphical object from a diagram does not delete the Physical Path from the model. This tool does not modify the semantic model." name="physical.paths" label="%la.lab.physical.paths" precondition="aql:elementView->filter(diagram::DDiagram)->size() > 0" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -2998,7 +2998,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ToolDescription" documentation="[Available only when the diagram is unsynchronized] Insert/Remove Categorized Physical Links. Create or delete graphical objects corresponding to already existing Categorized Physical Links and the corresponding source/target Parts if they are not present on the diagram yet. Removing a Categorized Physical Link graphical object from the diagram does not delete the Physical Link from the model. This tool does not modify the semantic model." name="physical.links.categories" label="Categories" precondition="aql:self.isValidShowHideABPhysicalCategory(elementView)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool:ToolDescription" documentation="[Available only when the diagram is unsynchronized] Insert/Remove Categorized Physical Links. Create or delete graphical objects corresponding to already existing Categorized Physical Links and the corresponding source/target Parts if they are not present on the diagram yet. Removing a Categorized Physical Link graphical object from the diagram does not delete the Physical Link from the model. This tool does not modify the semantic model." name="physical.links.categories" label="%la.lab.physical.links.categories" precondition="aql:self.isValidShowHideABPhysicalCategory(elementView)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <filters precondition="feature:synchronized" elementsToListen="aql:self">
                 <listeners domainClass="DDiagram" featureName="synchronized"/>
               </filters>
@@ -3015,7 +3015,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ToolDescription" documentation="Switch between the representation of individual Physical Links and their representation as Category-based Physical Links." name="switch.physical.links.categories" label="Switch Physical Links / Categories" precondition="aql:self.isValidSwitchABPhysicalCategory(elementView)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool:ToolDescription" documentation="Switch between the representation of individual Physical Links and their representation as Category-based Physical Links." name="switch.physical.links.categories" label="%la.lab.switch.physical.links.categories" precondition="aql:self.isValidSwitchABPhysicalCategory(elementView)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -3045,7 +3045,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" documentation="[Unsynchronized diagrams only] Create or delete graphical objects corresponding to Component Ports.&#xD;&#xA;This tool does not modify the semantic model." name="ports" label="Ports" precondition="aql:(elementView->filter(diagram::DNodeContainer)->size() > 0) and (elementView.target->filter(cs::Part)->size() > 0)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="[Unsynchronized diagrams only] Create or delete graphical objects corresponding to Component Ports.&#xD;&#xA;This tool does not modify the semantic model." name="ports" label="%la.lab.ports" precondition="aql:(elementView->filter(diagram::DNodeContainer)->size() > 0) and (elementView.target->filter(cs::Part)->size() > 0)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <filters precondition="feature:synchronized" elementsToListen="aql:self">
               <listeners domainClass="DDiagram" featureName="synchronized"/>
             </filters>
@@ -3222,7 +3222,7 @@
         </toolSections>
         <toolSections name="Functions">
           <ownedTools xsi:type="tool_1:ToolGroup" name="FunctionCreation">
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Logical Function and allocates it to the target Logical Component / Actor." name="function" label="Logical Function" precondition="aql:self.getComponentType().oclIsKindOf(cs::Component) and containerView->filter(diagram::DNodeContainer)->size() != 0" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Logical Function and allocates it to the target Logical Component / Actor." name="function" label="%la.lab.function" precondition="aql:self.getComponentType().oclIsKindOf(cs::Component) and containerView->filter(diagram::DNodeContainer)->size() != 0" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
                 <subVariables xsi:type="tool:AcceleoVariable" name="tool" computationExpression="Logical Function"/>
@@ -3238,7 +3238,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Duplicate allocated to the component type of the selected part" name="duplicate" label="Duplicate" precondition="aql:self.getComponentType().oclIsKindOf(cs::Component) and containerView->filter(diagram::DNodeContainer)->size() != 0" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Duplicate.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Duplicate allocated to the component type of the selected part" name="duplicate" label="%la.lab.duplicate" precondition="aql:self.getComponentType().oclIsKindOf(cs::Component) and containerView->filter(diagram::DNodeContainer)->size() != 0" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Duplicate.gif">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
@@ -3253,7 +3253,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Gather allocated to the component type of the selected part" name="gather" label="Gather" precondition="aql:self.getComponentType().oclIsKindOf(cs::Component) and containerView->filter(diagram::DNodeContainer)->size() != 0" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Gather.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Gather allocated to the component type of the selected part" name="gather" label="%la.lab.gather" precondition="aql:self.getComponentType().oclIsKindOf(cs::Component) and containerView->filter(diagram::DNodeContainer)->size() != 0" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Gather.gif">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
@@ -3268,7 +3268,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Route allocated to the component type of the selected part" name="route" label="Route" precondition="aql:self.getComponentType().oclIsKindOf(cs::Component) and containerView->filter(diagram::DNodeContainer)->size() != 0" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Route.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Route allocated to the component type of the selected part" name="route" label="%la.lab.route" precondition="aql:self.getComponentType().oclIsKindOf(cs::Component) and containerView->filter(diagram::DNodeContainer)->size() != 0" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Route.gif">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
@@ -3283,7 +3283,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Select allocated to the component type of the selected part" name="select" label="Select" precondition="aql:self.getComponentType().oclIsKindOf(cs::Component) and containerView->filter(diagram::DNodeContainer)->size() != 0" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Select.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Select allocated to the component type of the selected part" name="select" label="%la.lab.select" precondition="aql:self.getComponentType().oclIsKindOf(cs::Component) and containerView->filter(diagram::DNodeContainer)->size() != 0" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Select.gif">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
@@ -3298,7 +3298,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Split allocated to the component type of the selected part" name="split" label="Split" precondition="aql:self.getComponentType().oclIsKindOf(cs::Component) and containerView->filter(diagram::DNodeContainer)->size() != 0" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Split.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Split allocated to the component type of the selected part" name="split" label="%la.lab.split" precondition="aql:self.getComponentType().oclIsKindOf(cs::Component) and containerView->filter(diagram::DNodeContainer)->size() != 0" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Split.gif">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
@@ -3315,7 +3315,7 @@
             </tools>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="FunctionalExchange">
-            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Functional Exchange between the Source and Target Logical Functions.&#xD;&#xA;If necessary, Function Ports are created automatically.&#xD;&#xA;The Functional Exchange is created under the common parent Function of the Source and Target." name="functional.exchange" label="Functional Exchange" precondition="aql:self.isValidCreationFunctionalExchange(preSource,preTarget)" elementsToSelect="var:result" edgeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalExchange.gif" extraSourceMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']" extraTargetMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']" connectionStartPrecondition="aql:self.isValidCreationFunctionalExchange(preSource)">
+            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Functional Exchange between the Source and Target Logical Functions.&#xD;&#xA;If necessary, Function Ports are created automatically.&#xD;&#xA;The Functional Exchange is created under the common parent Function of the Source and Target." name="functional.exchange" label="%la.lab.functional.exchange" precondition="aql:self.isValidCreationFunctionalExchange(preSource,preTarget)" elementsToSelect="var:result" edgeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20DataFlow%20between%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalExchange.gif" extraSourceMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']" extraTargetMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']" connectionStartPrecondition="aql:self.isValidCreationFunctionalExchange(preSource)">
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
               <sourceViewVariable name="sourceView"/>
@@ -3324,7 +3324,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.createABFunctionalExchange(sourceView,targetView)"/>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Function Input Port on the target Logical Function." name="input.port" label="Input Port" precondition="aql:containerView.isValidCreationFunctionInputPort()" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20Flow%20Port%20on%20Logical%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/InFlowPort.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Function Input Port on the target Logical Function." name="input.port" label="%la.lab.input.port" precondition="aql:containerView.isValidCreationFunctionInputPort()" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20Flow%20Port%20on%20Logical%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/InFlowPort.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -3335,7 +3335,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Function Input Port on the target Logical Function." name="output.port" label="Output Port" precondition="aql:containerView.isValidCreationFunctionOutputPort()" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20Flow%20Port%20on%20Logical%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/OutFlowPort.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Function Input Port on the target Logical Function." name="output.port" label="%la.lab.output.port" precondition="aql:containerView.isValidCreationFunctionOutputPort()" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20Flow%20Port%20on%20Logical%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/OutFlowPort.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -3347,7 +3347,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Port Allocation from the source Component Port to the target Function Port." name="port.allocation" label="Port Allocation" precondition="aql:preSourceView.eContainer().eAllContents()->filter(viewpoint::DSemanticDecorator)->includes(preTargetView)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20PortRealization%20FlowPort%20to%20ComponentPort']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PortAllocation.gif">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Port Allocation from the source Component Port to the target Function Port." name="port.allocation" label="%la.lab.port.allocation" precondition="aql:preSourceView.eContainer().eAllContents()->filter(viewpoint::DSemanticDecorator)->includes(preTargetView)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB%20PortRealization%20FlowPort%20to%20ComponentPort']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PortAllocation.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -3356,7 +3356,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.createABPortAllocation(sourceView,targetView)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates new allocation relationships between selected Logical Functions and the target Logical Component. &#xD;&#xA;The newly allocated logical Functions are automatically displayed on the target Logical Component. &#xD;&#xA;This tool modifies the semantic model." name="manage.function.allocation" label="Manage Function Allocation" precondition="aql:container.getComponentType().oclIsKindOf(cs::Component)" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Manage.gif">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates new allocation relationships between selected Logical Functions and the target Logical Component. &#xD;&#xA;The newly allocated logical Functions are automatically displayed on the target Logical Component. &#xD;&#xA;This tool modifies the semantic model." name="manage.function.allocation" label="%la.lab.manage.function.allocation" precondition="aql:container.getComponentType().oclIsKindOf(cs::Component)" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Manage.gif">
             <variable name="container">
               <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
             </variable>
@@ -3402,7 +3402,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="Show/Hide Functions">
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Insert/Remove Allocated Functions. Create or delete graphical objects corresponding to already allocated Logical Functions. Removing an Logical Function graphical object from a Logical Component does not delete the allocation relationship between this Component and the Logical Function. This tool does not modify the semantic model. " name="allocated.functions" label="Allocated Functions" precondition="aql:container.getComponentType().oclIsKindOf(cs::Component)" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Insert/Remove Allocated Functions. Create or delete graphical objects corresponding to already allocated Logical Functions. Removing an Logical Function graphical object from a Logical Component does not delete the allocation relationship between this Component and the Logical Function. This tool does not modify the semantic model. " name="allocated.functions" label="%la.lab.allocated.functions" precondition="aql:container.getComponentType().oclIsKindOf(cs::Component)" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
@@ -3424,7 +3424,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Insert all Allocated Functions. Create graphical objects for all Logical Functions already allocated to all Logical Components appearing on the diagram. This tool does not modify the semantic model. " name="all.allocated.functions" label="All Allocated Functions" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='LAB_Dummy']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Insert all Allocated Functions. Create graphical objects for all Logical Functions already allocated to all Logical Components appearing on the diagram. This tool does not modify the semantic model. " name="all.allocated.functions" label="%la.lab.all.allocated.functions" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='LAB_Dummy']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
@@ -3449,7 +3449,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Insert/Remove Functional Chains. Create or delete graphical objects corresponding to existing Functional Chains. Removing a Functional Chain graphical object from a diagram does not delete the Functional Chain from the model. This tool does not modify the semantic model. " name="functional.chains" label="Functional Chains" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='LAB_FunctionalChainEnd']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Insert/Remove Functional Chains. Create or delete graphical objects corresponding to existing Functional Chains. Removing a Functional Chain graphical object from a diagram does not delete the Functional Chain from the model. This tool does not modify the semantic model. " name="functional.chains" label="%la.lab.functional.chains" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='LAB_FunctionalChainEnd']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <variable name="container"/>
             <viewVariable name="containerView">
               <subVariables xsi:type="tool:AcceleoVariable" name="ownedElements" computationExpression="aql:containerView.getSetOfDiagramElements()"/>
@@ -3483,7 +3483,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="Show/Hide 1">
-            <tools xsi:type="tool:ToolDescription" documentation="Create or delete graphical objects corresponding to existing Functional Exchanges.&#xD;&#xA;The proposed Functional Exchanges are the one incoming and outgoing from the Logical Function target of the click. &#xD;&#xA;Opposite Functions and allocating Components / Actors might be displayed on the diagram as well if they are not yet represented. &#xD;&#xA;This tool does not modify the semantic model." name="functional.exchanges" label="Functional Exchanges" precondition="aql:(elementView.target->filter(fa::AbstractFunction)->size() > 0) and (elementView->filter(diagram::DDiagram)->size() = 0)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool:ToolDescription" documentation="Create or delete graphical objects corresponding to existing Functional Exchanges.&#xD;&#xA;The proposed Functional Exchanges are the one incoming and outgoing from the Logical Function target of the click. &#xD;&#xA;Opposite Functions and allocating Components / Actors might be displayed on the diagram as well if they are not yet represented. &#xD;&#xA;This tool does not modify the semantic model." name="functional.exchanges" label="%la.lab.functional.exchanges" precondition="aql:(elementView.target->filter(fa::AbstractFunction)->size() > 0) and (elementView->filter(diagram::DDiagram)->size() = 0)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <element name="element"/>
               <elementView name="elementView">
                 <subVariables xsi:type="tool:AcceleoVariable" name="displayedExchanges" computationExpression="aql:self.void2Null(elementView.getDisplayedFunctionalExchanges())"/>
@@ -3544,7 +3544,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ToolDescription" documentation="[Unsynchronized diagrams only] Create or delete graphical objects corresponding to Function Ports. &#xD;&#xA;This tool does not modify the semantic model." name="function.ports" label="Function Ports" precondition="aql:(elementView->filter(diagram::DNode)->size() > 0) and (elementView.target->filter(fa::AbstractFunction)->size() > 0)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool:ToolDescription" documentation="[Unsynchronized diagrams only] Create or delete graphical objects corresponding to Function Ports. &#xD;&#xA;This tool does not modify the semantic model." name="function.ports" label="%la.lab.function.ports" precondition="aql:(elementView->filter(diagram::DNode)->size() > 0) and (elementView.target->filter(fa::AbstractFunction)->size() > 0)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <filters precondition="feature:synchronized" elementsToListen="aql:self">
                 <listeners domainClass="DDiagram" featureName="synchronized"/>
               </filters>
@@ -3580,7 +3580,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ToolDescription" documentation="Regroup all displayed Functional Exchanges matching the selected Category (ies) by simplified Category-based Exchanges. " name="switch.functional.exchanges.categories" label="Switch Functional Exchanges / Categories" precondition="aql:(elementView->filter(diagram::DDiagram)->size() > 0)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool:ToolDescription" documentation="Regroup all displayed Functional Exchanges matching the selected Category (ies) by simplified Category-based Exchanges. " name="switch.functional.exchanges.categories" label="%la.lab.switch.functional.exchanges.categories" precondition="aql:(elementView->filter(diagram::DDiagram)->size() > 0)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -3707,8 +3707,8 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:PopupMenu" name="functional.chain.menu" label="Functional Chain">
-            <menuItemDescription xsi:type="tool:OperationAction" name="functional.chain" label="Create a Functional Chain" precondition="aql:self.isValidFunctionalChainSelection(views)" forceRefresh="true">
+          <ownedTools xsi:type="tool:PopupMenu" name="functional.chain.menu" label="%la.lab.functional.chain.menu">
+            <menuItemDescription xsi:type="tool:OperationAction" name="functional.chain" label="%la.lab.functional.chain" precondition="aql:self.isValidFunctionalChainSelection(views)" forceRefresh="true">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createFunctionalChain(views)">
@@ -3719,7 +3719,7 @@
               </initialOperation>
             </menuItemDescription>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Insert/Remove Port Allocations" name="port.allocations" label="Port Allocations" precondition="aql:not (self.isNode()) and container.getComponentType().oclIsKindOf(cs::Component)" inverseSelectionOrder="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Insert/Remove Port Allocations" name="port.allocations" label="%la.lab.port.allocations" precondition="aql:not (self.isNode()) and container.getComponentType().oclIsKindOf(cs::Component)" inverseSelectionOrder="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -3754,7 +3754,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Accelerators">
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Insert all the Functions available in a given Mode / State. This tool does not modify the semantic model." name="functions.from.mode.state" label="Functions from Mode / State" precondition="aql:elementView.isValidABInsertStateModes()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Mode.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Insert all the Functions available in a given Mode / State. This tool does not modify the semantic model." name="functions.from.mode.state" label="%la.lab.functions.from.mode.state" precondition="aql:elementView.isValidABInsertStateModes()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Mode.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -3772,7 +3772,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Insert all the related elements contributing to a given Scenario. &#xD;&#xA;Functions and allocating Components / Actors might be displayed on the diagram as well if they are not yet represented. &#xD;&#xA;This tool does not modify the semantic model." name="elements.from.scenario" label="Elements from Scenario" precondition="aql:elementView.isValidABInsertScenarios()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Scenario.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Insert all the related elements contributing to a given Scenario. &#xD;&#xA;Functions and allocating Components / Actors might be displayed on the diagram as well if they are not yet represented. &#xD;&#xA;This tool does not modify the semantic model." name="elements.from.scenario" label="%la.lab.elements.from.scenario" precondition="aql:elementView.isValidABInsertScenarios()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Scenario.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -3793,7 +3793,7 @@
           <reusedTools xsi:type="tool:ToolDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.1/@ownedTools[name='initialization.from.existing.diagram']"/>
         </toolSections>
         <toolSections name="Common">
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="Constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="constraint" label="%la.lab.constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
             <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -3807,7 +3807,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Allocate a Source Constraint to an available Target Capella Element." name="constraint.element" label="ConstraintElement" precondition="aql:not (preSource.constrainedElements->includes(preTarget))" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ClassCarries.gif">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Allocate a Source Constraint to an available Target Capella Element." name="constraint.element" label="%la.lab.constraint.element" precondition="aql:not (preSource.constrainedElements->includes(preTarget))" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ClassCarries.gif">
             <edgeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
@@ -3829,7 +3829,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model." name="constraints" label="Constraints" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model." name="constraints" label="%la.lab.constraints" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView">
               <subVariables xsi:type="tool:AcceleoVariable" name="constraintsInDiagram" computationExpression="aql:self.void2Null(self.getExistingConstraintsFromDiagram(elementView.getDiagramContainer()))"/>
@@ -3875,7 +3875,7 @@
       </defaultLayer>
       <reusedTools xsi:type="tool:ToolDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.1/@ownedTools[name='initialization.from.existing.diagram']"/>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Capability Realization Refinement" titleExpression="aql:'[CRR] ' + self.name" domainClass="CapabilityRealization" preconditionExpression="false">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Capability Realization Refinement" label="%la.crr" titleExpression="aql:'[CRR] ' + self.name" domainClass="CapabilityRealization" preconditionExpression="false">
       <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
@@ -3898,10 +3898,10 @@
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.actors.filter" label="Hide Actors">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.actors.filter" label="%la.crr.hide.actors.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@nodeMappings[name='CRI_Actors']"/>
       </filters>
-      <filters xsi:type="filter:CompositeFilterDescription" name="hide.property.values.filter" label="Hide Property Values">
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.property.values.filter" label="%la.crr.hide.property.values.filter">
         <filters xsi:type="filter:MappingFilter">
           <mappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV']"/>
           <mappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
