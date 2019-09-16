@@ -619,6 +619,7 @@
         <details key="comment/notes" value="none"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedCapabilityExploitations"
         upperBound="-1" eType="#//CapabilityExploitation" containment="true" resolveProxies="false">
