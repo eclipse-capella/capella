@@ -38,4 +38,10 @@ public interface IModelProvider {
   Resource getAirdResource(Session session);
 
   Resource getSemanticResource(Session session);
+  
+  /**
+   * 
+   * @return whether changes should be undone after each test case
+   */
+  boolean undoTestCaseChanges();
 }

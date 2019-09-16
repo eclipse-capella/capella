@@ -138,4 +138,9 @@ public class ModelProvider extends AbstractProvider {
     }
     return semanticResource;
   }
+
+  @Override
+  public boolean undoTestCaseChanges() {
+    return true;
+  }
 }
