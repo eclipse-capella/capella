@@ -35,7 +35,7 @@ import org.polarsys.capella.common.ui.massactions.core.shared.helper.container.C
 import org.polarsys.capella.common.ui.massactions.core.shared.messages.Messages;
 import org.polarsys.capella.core.ui.properties.helpers.DialogHelper;
 import org.polarsys.kitalpha.massactions.core.control.AbstractMAPrimitiveCellControl;
-import org.polarsys.kitalpha.massactions.core.helper.EObjectImageProviderHelper;
+import org.polarsys.kitalpha.massactions.core.helper.EObjectImageProvider;
 
 /**
  * A cell control handling single references.
@@ -143,7 +143,7 @@ public class SingleRefCellControl extends AbstractMAPrimitiveCellControl {
       Object editorValue = getDisplayConverterValue(canonicalValue);
       setEditorValue(editorValue);
 
-      Image image = EObjectImageProviderHelper.getImage(canonicalValue);
+      Image image = EObjectImageProvider.getInstance().getImage(canonicalValue);
       editorIconToolItem.setDisabledImage(image);
       editorIconToolItem.setImage(image);
     }
