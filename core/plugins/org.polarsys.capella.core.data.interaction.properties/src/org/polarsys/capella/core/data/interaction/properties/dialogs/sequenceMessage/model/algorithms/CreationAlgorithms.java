@@ -25,6 +25,7 @@ import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfaceImplementation;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
 import org.polarsys.capella.core.data.cs.InterfaceUse;
+import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
 import org.polarsys.capella.core.data.helpers.information.services.ExchangeMechanismExt;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.ExchangeItemInstance;
@@ -67,8 +68,11 @@ public class CreationAlgorithms {
 
     EObject container = null;
 
-    if ((src != null) && (tgt != null) && (src instanceof Component) && (tgt instanceof Component)) {
+    if (src instanceof Component && tgt instanceof Component) {
       container = ComponentExt.getFirstCommonComponentAncestor(src, tgt);
+    }
+    if(src instanceof SystemComponentPkg && tgt instanceof SystemComponentPkg) {
+      container = ComponentExt.getRootBlockArchitecture((SystemComponentPkg)src);
     }
     if (ComponentExt.isActor(src) || ComponentExt.isActor(tgt)) {
       if (sourceIR != null) {
