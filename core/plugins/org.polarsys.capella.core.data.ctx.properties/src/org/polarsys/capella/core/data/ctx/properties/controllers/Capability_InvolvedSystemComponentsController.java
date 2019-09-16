@@ -14,14 +14,17 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.data.capellacore.InvolvedElement;
+import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.CapabilityInvolvement;
 import org.polarsys.capella.core.data.ctx.CtxFactory;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.ui.properties.controllers.AbstractMultipleSemanticFieldController;
 
 /**
@@ -45,8 +48,8 @@ public class Capability_InvolvedSystemComponentsController extends AbstractMulti
     Object lst = semanticElement.eGet(semanticFeature);
     if (lst instanceof Collection<?>) {
       for (Object obj : (Collection<?>) lst) {
-        if (obj instanceof CapabilityInvolvement) {
-          values.add(((CapabilityInvolvement) obj).getInvolved());
+        if (obj instanceof SystemComponent) {
+          values.add((SystemComponent) obj);
         }
       }
     }
@@ -61,8 +64,11 @@ public class Capability_InvolvedSystemComponentsController extends AbstractMulti
   @Override
   protected void doAddOperationInWriteOpenValues(EObject semanticElement, EStructuralFeature semanticFeature, EObject object) {
     CapabilityInvolvement link = CtxFactory.eINSTANCE.createCapabilityInvolvement();
-    link.setInvolved((InvolvedElement) object);
-    ((List<EObject>) semanticElement.eGet(semanticFeature)).add(link);
+    if (semanticElement instanceof Capability) {
+      Capability capability = (Capability) semanticElement;
+      link.setInvolved((InvolvedElement) object);
+      capability.getOwnedCapabilityInvolvements().add(link);
+    }
   }
 
   /**
@@ -73,16 +79,24 @@ public class Capability_InvolvedSystemComponentsController extends AbstractMulti
    */
   @SuppressWarnings("unchecked")
   @Override
-  protected void doRemoveOperationInWriteOpenValues(EObject semanticElement, EStructuralFeature semanticFeature, EObject object) {
+  protected void doRemoveOperationInWriteOpenValues(EObject semanticElement, EStructuralFeature semanticFeature,
+      EObject object) {
     EObject linkToRemove = null;
-    for (EObject obj : (List<EObject>) semanticElement.eGet(semanticFeature)) {
-      if ((obj instanceof CapabilityInvolvement)
-        && ((CapabilityInvolvement) obj).getInvolved().equals(object))
-      {
-        linkToRemove = obj;
+
+    if (semanticElement instanceof Capability && object instanceof SystemComponent) {
+      SystemComponent component = (SystemComponent) object;
+      Capability capability = (Capability) semanticElement;
+      EList<CapabilityInvolvement> links = capability.getOwnedCapabilityInvolvements();
+      for (CapabilityInvolvement link : links) {
+        InvolvedElement involvedElem = link.getInvolved();
+        if (component.equals(involvedElem)) {
+          linkToRemove = link;
+        }
+      }
+
+      if (linkToRemove != null) {
+        capability.getOwnedCapabilityInvolvements().remove(linkToRemove);
       }
     }
-    if (linkToRemove != null)
-      super.doRemoveOperationInWriteOpenValues(semanticElement, semanticFeature, linkToRemove);
   }
 }
