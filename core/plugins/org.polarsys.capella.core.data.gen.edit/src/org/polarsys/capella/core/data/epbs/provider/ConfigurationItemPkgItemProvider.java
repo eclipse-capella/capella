@@ -19,7 +19,6 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.command.CopyCommand.Helper;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -32,9 +31,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.polarsys.capella.core.data.cs.provider.ComponentPkgItemProvider;
 import org.polarsys.capella.core.data.epbs.ConfigurationItemPkg;
-import org.polarsys.capella.core.data.epbs.EpbsFactory;
 import org.polarsys.capella.core.data.epbs.EpbsPackage;
-import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
 
 /**
  * This is the item provider adapter for a {@link org.polarsys.capella.core.data.epbs.ConfigurationItemPkg} object.
@@ -174,30 +171,6 @@ public class ConfigurationItemPkgItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (EpbsPackage.Literals.CONFIGURATION_ITEM_PKG__OWNED_CONFIGURATION_ITEMS,
-                         EpbsFactory.eINSTANCE.createConfigurationItem());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (EpbsPackage.Literals.CONFIGURATION_ITEM_PKG__OWNED_CONFIGURATION_ITEM_PKGS,
-                         EpbsFactory.eINSTANCE.createConfigurationItemPkg());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
 	}
 
 	// begin-capella-code

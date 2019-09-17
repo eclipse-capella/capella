@@ -63,7 +63,8 @@ public class GenerateGenModelsTask implements ITaskProduction {
 				genModelsP.addAll(genModels_p);
 			}
 
-			public void setGenModelParameters(GenModel genModel_p) {
+			@Override
+      public void setGenModelParameters(GenModel genModel_p) {
 				super.setGenModelParameters(genModel_p);
 				int year = Calendar.getInstance().get(Calendar.YEAR);
 				genModel_p.setCopyrightText(" Copyright (c) 2006, " + year
@@ -137,6 +138,24 @@ public class GenerateGenModelsTask implements ITaskProduction {
 								if ("PhysicalComponent".equals(className) || "PhysicalComponentPkg".equals(className)) {
 									for (GenFeature genFeature : genClass.getGenFeatures()) {
 										if ("ownedPhysicalComponents".equals(genFeature.getEcoreFeature().getName())) {
+											genFeature.setCreateChild(false);
+										}
+									}
+								}
+
+							}
+						}
+						
+						else if ("Epbs".equals(packPrefix)) {
+							for (GenClass genClass : pack.getGenClasses()) {
+								String className = genClass.getEcoreClass().getName();
+
+								if ("ConfigurationItem".equals(className) || "ConfigurationItemPkg".equals(className)) {
+									for (GenFeature genFeature : genClass.getGenFeatures()) {
+										if ("ownedConfigurationItems".equals(genFeature.getEcoreFeature().getName())) {
+											genFeature.setCreateChild(false);
+										} 
+                    else if ("ownedConfigurationItemPkgs".equals(genFeature.getEcoreFeature().getName())) {
 											genFeature.setCreateChild(false);
 										}
 									}

@@ -14,29 +14,30 @@ import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.AbstractCapellaNewDiagramHyperlinkAdapter;
-import org.polarsys.capella.core.model.helpers.ModelQueryHelper;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 
 /**
  * Create a new Component Breakdown diagram.
  */
 public class NewComponentBreakdownDiagramAdapter extends AbstractCapellaNewDiagramHyperlinkAdapter {
-	/**
-	 * Constructor.
-	 * @param rootSemanticModel
-	 * @param session
-	 */
-	public NewComponentBreakdownDiagramAdapter() {
-		super();
-	}
+  /**
+   * Constructor.
+   * 
+   * @param rootSemanticModel
+   * @param session
+   */
+  public NewComponentBreakdownDiagramAdapter() {
+    super();
+  }
 
-	@Override
-	public String getRepresentationName() {
-		return IDiagramNameConstants.CONFIGURATION_ITEMS_BREAKDOWN_DIAGRAM_NAME;
-	}
+  @Override
+  public String getRepresentationName() {
+    return IDiagramNameConstants.CONFIGURATION_ITEMS_BREAKDOWN_DIAGRAM_NAME;
+  }
 
-	@Override
-	protected ModelElement getModelElement(EObject rootSemanticModel) {
-		return ModelQueryHelper.getEpbsSystem((Project) rootSemanticModel);
-	}
+  @Override
+  protected ModelElement getModelElement(EObject rootSemanticModel) {
+    return org.polarsys.capella.core.model.helpers.ModelQueryHelper
+        .getRootConfigurationItemPkg((Project) rootSemanticModel);
+  }
 }

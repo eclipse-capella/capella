@@ -31,6 +31,7 @@ import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.ctx.SystemFunctionPkg;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
+import org.polarsys.capella.core.data.epbs.ConfigurationItemPkg;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.information.DataPkg;
@@ -270,6 +271,14 @@ public class ModelQueryHelper {
     EPBSArchitecture epbsArchitecture = getEPBSArchitecture(project);
     if (epbsArchitecture != null) {
       return (ConfigurationItem)epbsArchitecture.getSystem();
+    }
+    return null;
+  }
+
+  static public ConfigurationItemPkg getRootConfigurationItemPkg(Project project) {
+    EPBSArchitecture epbsArchitecture = getEPBSArchitecture(project);
+    if (epbsArchitecture != null) {
+      return epbsArchitecture.getOwnedConfigurationItemPkg();
     }
     return null;
   }

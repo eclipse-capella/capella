@@ -588,14 +588,14 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//EPBSArchitecture/allocatedPhysicalArchitectures"/>
     </genClasses>
     <genClasses ecoreClass="EPBSArchitecture.ecore#//ConfigurationItemPkg">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//ConfigurationItemPkg/ownedConfigurationItems"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//ConfigurationItemPkg/ownedConfigurationItemPkgs"/>
+      <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//ConfigurationItemPkg/ownedConfigurationItems"/>
+      <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//ConfigurationItemPkg/ownedConfigurationItemPkgs"/>
     </genClasses>
     <genClasses ecoreClass="EPBSArchitecture.ecore#//ConfigurationItem">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EPBSArchitecture.ecore#//ConfigurationItem/itemIdentifier"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EPBSArchitecture.ecore#//ConfigurationItem/kind"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//ConfigurationItem/ownedConfigurationItems"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//ConfigurationItem/ownedConfigurationItemPkgs"/>
+      <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//ConfigurationItem/ownedConfigurationItems"/>
+      <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//ConfigurationItem/ownedConfigurationItemPkgs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//ConfigurationItem/ownedPhysicalArtifactRealizations"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//ConfigurationItem/allocatedPhysicalArtifacts"/>
     </genClasses>

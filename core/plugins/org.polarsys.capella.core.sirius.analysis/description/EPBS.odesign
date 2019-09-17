@@ -141,7 +141,7 @@
         </create>
       </intersection>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="EPBS Architecture Blank" label="%epbs.eab" titleExpression="aql:'[EAB] ' + self.name" domainClass="ConfigurationItem">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="EPBS Architecture Blank" label="%epbs.eab" titleExpression="aql:'[EAB] ' + self.name" domainClass="NamedElement" preconditionExpression="aql:self.oclIsKindOf(epbs::ConfigurationItemPkg) or self.oclIsKindOf(epbs::ConfigurationItem)">
       <dropDescriptions href="#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20CI']"/>
       <dropDescriptions href="#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
       <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
@@ -633,7 +633,7 @@
       </defaultLayer>
       <reusedMappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Configuration Items Breakdown" label="%epbs.cibd" titleExpression="aql:'[CIBD] ' + self.name" domainClass="ConfigurationItem">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Configuration Items Breakdown" label="%epbs.cibd" titleExpression="aql:'[CIBD] ' + self.name" domainClass="NamedElement" preconditionExpression="aql:self.oclIsKindOf(epbs::ConfigurationItemPkg) or self.oclIsKindOf(epbs::ConfigurationItem)">
       <dropDescriptions href="#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
       <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
@@ -663,7 +663,7 @@
       </filters>
       <layout xsi:type="description_2:OrderedTreeLayout" childrenExpression="aql:self.ownedFeatures->filter(cs::Part).abstractType" nodeMapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']"/>
       <defaultLayer name="Default">
-        <nodeMappings name="CIBD_ConfigurationItem" deletionDescription="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20Configuration%20Item']" labelDirectEdit="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20CI']" semanticCandidatesExpression="aql:self.makeUnion(self->select(x | x.representingParts.eContainer()->filter(cs::ComponentPkg)->size() = 0), self.getAllDescendants())" synchronizationLock="true" domainClass="ConfigurationItem">
+        <nodeMappings name="CIBD_ConfigurationItem" deletionDescription="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20Configuration%20Item']" labelDirectEdit="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20CI']" semanticCandidatesExpression="service:self.getCBComponentSemanticCandidates()" synchronizationLock="true" domainClass="ConfigurationItem">
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Configuration%20Items%20BreakDown']"/>
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='EPBS%20Architecture%20Blank']"/>
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20Detailed%20Interfaces']"/>

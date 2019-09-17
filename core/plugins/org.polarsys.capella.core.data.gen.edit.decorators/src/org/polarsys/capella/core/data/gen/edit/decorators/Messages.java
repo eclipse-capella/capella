@@ -28,6 +28,9 @@ public class Messages extends NLS {
 
   public static String CreationMenuLabel_SystemComponentPkg;
 
+  public static String CreationMenuLabel_ConfigurationItem;
+  public static String CreationMenuLabel_ConfigurationItemPkg;
+
   public static String ActorRealization_Label;
   public static String ComponentRealization_Label;
 
