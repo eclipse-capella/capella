@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
+import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
@@ -36,10 +37,8 @@ public class PhysicalComponent_RealizedLogicalComponents extends AbstractValidat
         if (!actor.getRealizedLogicalComponents().isEmpty()) {
           return ctx.createSuccessStatus();
         }
-        String physicalActorClassName = ComponentExt.getComponentName(actor);
-        String logicalActorClassName = physicalActorClassName.replace("Physical", "Logical");
         return ctx.createFailureStatus(
-            actor.getName() + " (" + physicalActorClassName + ") does not realize any " + logicalActorClassName + "."); //$NON-NLS-1$ //$NON-NLS-2$
+            CapellaElementExt.getValidationRuleMessagePrefix(actor) + " does not realize any Logical Component.");
       }
     }
     return ctx.createSuccessStatus();

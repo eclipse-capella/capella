@@ -49,32 +49,13 @@
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0} ({1}) must be deployed only once.
+                  {0} must be deployed only once.
                </message>
                <target
                      class="PhysicalComponent">
                </target>
                <description>
                   This rule depends on the Preference option "Multiple deployment allowed". If this option is set to false, the rule checks that a Behavior Physical Component is not deployed on more than one Node Physical Component.
-               </description>
-            </constraint>
-            <constraint
-                  class="org.polarsys.capella.core.data.pa.validation.physicalComponent.MDCHK_PhysicalComponent_Deployment"
-                  id="DWF_DC_17"
-                  isEnabledByDefault="true"
-                  lang="Java"
-                  mode="Batch"
-                  name="DWF_DC_17 - Physical Component deployment check"
-                  severity="WARNING"
-                  statusCode="1">
-               <message>
-                  {0} (Behavior {2}) is deploying {1} (Node {3}).
-               </message>
-               <target
-                     class="PhysicalComponent">
-               </target>
-               <description>
-                  This rule ensures that a node physical component is not deployed on a behavior physical component.
                </description>
             </constraint>
              <constraint
@@ -152,7 +133,7 @@ BEHAVIOUR PC cannot be contained by a NODE PC
                    severity="WARNING"
                    statusCode="1">
                 <message>
-                   {0} ({1}) has an invalid nature UNSET.
+                   {0} has an invalid nature UNSET.
                 </message>
                 <description>
                    This rule ensures that a Physical Component is not of nature UNSET, with the exceptions below, in which UNSET is allowed:
@@ -173,7 +154,7 @@ BEHAVIOUR PC cannot be contained by a NODE PC
                    severity="ERROR"
                    statusCode="1">
                 <message>
-                   {0} ({1}) should be of nature UNSET.
+                   {0} should be of nature UNSET.
                 </message>
                 <description>
                    This rule ensures that the PhysicalSystem Component is of nature UNSET.
@@ -217,7 +198,7 @@ BEHAVIOUR PC cannot be contained by a NODE PC
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} ({2}) should not implement / use / require / provide [{1}]Interface(s) of logical level which is/are not implemented / used / provided / required  by any of its realized Logical Components.
+                  {0} should not implement / use / require / provide [{1}]Interface(s) of logical level which is/are not implemented / used / provided / required  by any of its realized Logical Components.
                </message>
                <description>
                   This rule ensures that a Physical Component implements / uses a logical interface which is used / implemented / provided / required by its realized Logical Components. 
@@ -238,7 +219,7 @@ This rule is only evaluated if the transition preference &quot;Transit Interface
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} ({1}) is not supposed to implement / use / provide / require an interface defined elsewhere than the physical architecture.
+                  {0} is not supposed to implement / use / provide / require an interface defined elsewhere than the physical architecture.
                </message>
                <description>
                   This rule checks that a Physical Component implements / uses / provides / requires an interface of its own level. 
@@ -259,7 +240,7 @@ This rule is only evaluated if the transition preference&quot;Transit Interfaces
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} (Physical Actor) does not realize any Logical Actor.
+                  {0}
                </message>
                <target
                      class="PhysicalComponent">

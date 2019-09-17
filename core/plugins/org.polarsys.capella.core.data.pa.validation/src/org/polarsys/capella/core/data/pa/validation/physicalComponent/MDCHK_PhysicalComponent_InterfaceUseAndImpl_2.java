@@ -17,12 +17,11 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
-
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.transition.system.topdown.preferences.PreferenceHelper;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
@@ -59,7 +58,7 @@ public class MDCHK_PhysicalComponent_InterfaceUseAndImpl_2 extends AbstractValid
             // filter physicalArchitecture 
             if (! EcoreUtil2.isContainedBy(myInterface, PaPackage.Literals.PHYSICAL_ARCHITECTURE)) {
               return ctx_p.createFailureStatus(ctx_p,
-                  new Object[] { physicalComponent.getName(), ComponentExt.getComponentName(physicalComponent) });
+                  new Object[] { CapellaElementExt.getValidationRuleMessagePrefix(physicalComponent) });
             }
           }
         } 

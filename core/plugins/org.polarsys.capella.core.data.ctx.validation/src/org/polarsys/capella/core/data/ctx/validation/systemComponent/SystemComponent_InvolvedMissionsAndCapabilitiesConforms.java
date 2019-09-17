@@ -18,7 +18,7 @@ import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.Mission;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
@@ -56,7 +56,7 @@ public class SystemComponent_InvolvedMissionsAndCapabilitiesConforms extends Abs
         }
         if (missionsNames.length() > 0)
           return ctx.createFailureStatus(
-              new Object[] { actor.getName(), missionsNames, ComponentExt.getComponentName(actor) });
+              new Object[] { CapellaElementExt.getValidationRuleMessagePrefix(actor), missionsNames });
       }
     }
     return ctx.createSuccessStatus();

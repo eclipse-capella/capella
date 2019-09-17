@@ -72,6 +72,10 @@
     <extension
          point="org.eclipse.ui.ide.markerResolution">
       <markerResolutionGenerator
+            class="org.polarsys.capella.core.data.pa.ui.quickfix.resolution.DWF_DC_21_Resolutions"
+            markerType="org.polarsys.capella.core.validation.markers">
+      </markerResolutionGenerator>
+            <markerResolutionGenerator
             class="org.polarsys.capella.core.data.pa.ui.quickfix.resolution.DWF_DC_22_Resolutions"
             markerType="org.polarsys.capella.core.validation.markers">
       </markerResolutionGenerator>

@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
@@ -36,8 +36,9 @@ public class SystemComponent_RealizingLogicalComponent extends AbstractValidatio
         if (!actor.getRealizingLogicalComponents().isEmpty()) {
           return ctx.createSuccessStatus();
         }
-        return ctx.createFailureStatus(
-            actor.getName() + " (" + ComponentExt.getComponentName(actor) + ") is not realized by any Logical Actor."); //$NON-NLS-1$ //$NON-NLS-2$
+
+        return ctx.createFailureStatus(CapellaElementExt.getValidationRuleMessagePrefix(actor)
+            + " is not realized by any Logical Component.");
       }
     }
 

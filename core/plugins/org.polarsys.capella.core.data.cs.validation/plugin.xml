@@ -326,8 +326,8 @@ If an ExchangeItemAllocation is on SystemArchitecture layer. It should not alloc
             	severity="ERROR" 
             	statusCode="1">
                <message>
-                  Part cycle: {0} ({3}) contains at a certain depth a part typed by {1} ({4}) and {1} ({4}) 
-contains the part {2} ({5}) typed by {0} ({3}).
+                  Part cycle: {0} {3} contains at a certain depth a part typed by {1} {4} and {1} {4}
+contains the part {2} {5} typed by {0} {3}.
                </message>
                <description>
                   This validation rule ensures that a partition of an element cannot have a partition typed by this element. Thus it avoids"partitions cycles".
@@ -345,7 +345,7 @@ contains the part {2} ({5}) typed by {0} ({3}).
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} (Part) is typed by inaccessible {1}({2}).
+                  {0} (Part) is typed by inaccessible {1}.
                </message>
                <target
                      class="Part">
@@ -364,7 +364,7 @@ contains the part {2} ({5}) typed by {0} ({3}).
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  The Part {2} of {0} ({1}) is typed by {4} ({3}) which does not belong to the same level.
+                  The Part {0} of {1} is typed by {2} which does not belong to the same level.
                </message>
                <target
                      class="Component">
@@ -520,7 +520,7 @@ BehaviourPC=Physical Component of nature BEHAVIOUR
             isEnabledByDefault="true" lang="Java" mode="Batch" 
             name="DWF_DC_36 - Component or Actor compositions checks" severity="ERROR" statusCode="1">
                <message>
-                  {0} ({1}) {2}.
+                  {0} {1}.
                </message>
                <description>
                   This rule checks Component or Actor composition following the rules below:
@@ -558,7 +558,7 @@ BehaviourPC=Physical Component of nature BEHAVIOUR
             isEnabledByDefault="true" lang="Java" mode="Batch" 
             name="DWF_DC_40 - This rule checks that an Operational Entity is not HUMAN" severity="WARNING" statusCode="1">
                <message>
-                  {0} ({1}) cannot be HUMAN.
+                  {0} cannot be HUMAN.
                </message>
                <description>
                   This rule checks that an Operational Entity is not HUMAN.
@@ -570,7 +570,7 @@ BehaviourPC=Physical Component of nature BEHAVIOUR
             isEnabledByDefault="true" lang="Java" mode="Batch" 
             name="DWF_DC_41 - This rule checks that an Operational Actor is HUMAN" severity="WARNING" statusCode="1">
                <message>
-                  {0} ({1}) should be HUMAN.
+                  {0} should be HUMAN.
                </message>
                <description>
                   This rule checks that an Operational Actor is HUMAN.
@@ -588,7 +588,7 @@ BehaviourPC=Physical Component of nature BEHAVIOUR
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0} ({1}) generalizes itself.
+                  {0} generalizes itself.
                </message>
                <target
                      class="Component">
@@ -610,7 +610,7 @@ BehaviourPC=Physical Component of nature BEHAVIOUR
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  Realization consistency error: the Component Realization with {0} ({1}) as source and {2} ({3}) as target is inconsistent.
+                  Realization consistency error: {0}.
                </message>
                <target
                      class="Component">
@@ -629,7 +629,7 @@ BehaviourPC=Physical Component of nature BEHAVIOUR
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0} ({3}) cannot {1} {2} (Interface) several times.
+                  {0} cannot {1} {2} (Interface) several times.
                </message>
                <description>
                   This rule allows to ensure that a component cannot implement the same interface several times or use the same interface several times.

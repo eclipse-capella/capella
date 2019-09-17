@@ -21,7 +21,7 @@ import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.emf.validation.model.ConstraintStatus;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Interface;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
@@ -61,9 +61,9 @@ public class MDCHK_Component_MultipleUseOrImplementationOfSameItfCheck extends A
               // If it not already in the list of the interfaces used several times, adds it to the list and creates a failure status
               interfacesUsedSeveralTimes.add(itf);
               IStatus failureStatus =
-                  ctx.createFailureStatus(new Object[] { cpnt.getName(),
+                  ctx.createFailureStatus(new Object[] { CapellaElementExt.getValidationRuleMessagePrefix(cpnt),
                       Messages.getString("MDCHK_Component_MultipleUseOrImplementationOfSameItfCheck.use"), //$NON-NLS-1$
-                      itf.getName(), ComponentExt.getComponentName(cpnt) });
+                      itf.getName() });
               statuses.add(failureStatus);
             }
           }
@@ -79,9 +79,9 @@ public class MDCHK_Component_MultipleUseOrImplementationOfSameItfCheck extends A
               // If it not already in the list of the interfaces implemented several times, adds it to the list and creates a failure status
               interfacesImplementedSeveralTimes.add(itf);
               IStatus failureStatus =
-                  ctx.createFailureStatus(new Object[] { cpnt.getName(),
+                  ctx.createFailureStatus(new Object[] { CapellaElementExt.getValidationRuleMessagePrefix(cpnt),
                       Messages.getString("MDCHK_Component_MultipleUseOrImplementationOfSameItfCheck.implement"), //$NON-NLS-1$
-                      itf.getName(), ComponentExt.getComponentName(cpnt) });
+                      itf.getName() });
               statuses.add(failureStatus);
             }
           }

@@ -22,7 +22,7 @@ import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
@@ -51,8 +51,8 @@ public class MDCHK_Component_PartTypeLevel extends AbstractValidationRule {
                 || (cpnt instanceof LogicalComponent && !(abstractType instanceof LogicalComponent))
                 || (cpnt instanceof PhysicalComponent && !(abstractType instanceof PhysicalComponent))
                 || (cpnt instanceof ConfigurationItem && !(abstractType instanceof ConfigurationItem))) {
-              return ctx.createFailureStatus(cpnt.getName(), ComponentExt.getComponentName(cpnt), part.getName(),
-                  ComponentExt.getComponentName(part), part.getAbstractType().getName());
+              return ctx.createFailureStatus(part.getName(), CapellaElementExt.getValidationRuleMessagePrefix(cpnt),
+                  CapellaElementExt.getValidationRuleMessagePrefix(part.getAbstractType()));
             }
           }
         }

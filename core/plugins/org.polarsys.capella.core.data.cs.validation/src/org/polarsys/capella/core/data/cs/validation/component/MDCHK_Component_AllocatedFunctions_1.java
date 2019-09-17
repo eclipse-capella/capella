@@ -25,7 +25,7 @@ import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
@@ -53,12 +53,12 @@ public class MDCHK_Component_AllocatedFunctions_1 extends AbstractValidationRule
     if (eType == EMFEventType.NULL) {
       if (eObj instanceof Component) {
         Component cpnt = (Component) eObj;
-        String componentType = ComponentExt.getComponentName(cpnt);
+        String componentInfo = CapellaElementExt.getValidationRuleMessagePrefix(cpnt);
 
         for (AbstractFunction fct : cpnt.getAllocatedFunctions()) {
           if (!FunctionExt.isLeaf(fct)) {
             return ctx
-                .createFailureStatus(new Object[] { cpnt.getName() + TYPE_PREFIX + componentType + TYPE_SUFFIX
+                .createFailureStatus(new Object[] { componentInfo + " "
                     + Messages.getString("MDCHK_Component_AllocatedFunctions_1.allocateNonLeafFunction") + fct.getName() //$NON-NLS-1$
                     + DOT });
           } else if ((cpnt instanceof Entity && !(fct instanceof OperationalActivity))
@@ -66,7 +66,7 @@ public class MDCHK_Component_AllocatedFunctions_1 extends AbstractValidationRule
               || (cpnt instanceof LogicalComponent && !(fct instanceof LogicalFunction))
               || (cpnt instanceof PhysicalComponent && !(fct instanceof PhysicalFunction))) {
             return ctx
-                .createFailureStatus(new Object[] { cpnt.getName() + TYPE_PREFIX + componentType + TYPE_SUFFIX
+                .createFailureStatus(new Object[] { componentInfo + " "
                     + Messages.getString("MDCHK_Component_AllocatedFunctions_1.allocatesFunction") + fct.getFullLabel() //$NON-NLS-1$
                     + TYPE_PREFIX + fct.eClass().getName() + TYPE_SUFFIX
                     + Messages.getString("MDCHK_Component_AllocatedFunctions_1.whichIsNotFromTheSameLevel") }); //$NON-NLS-1$

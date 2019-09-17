@@ -24,7 +24,8 @@ import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.Scenario;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
@@ -40,29 +41,31 @@ public class SystemComponent_CapabilityAndScenarioConforms extends AbstractValid
     EMFEventType eType = ctx.getEventType();
 
     java.util.Collection<IStatus> statuses = new ArrayList<IStatus>();
-    
+
     // In the case of batch mode.
     if (eType == EMFEventType.NULL) {
       if (eObj instanceof SystemComponent) {
         SystemComponent actor = (SystemComponent) eObj;
 
-        for (Capability capabilityReal : actor.getInvolvingCapabilities()) {
-          List<SystemComponent> lcomponentList = new ArrayList<SystemComponent>();
-          for (Scenario scenario : capabilityReal.getOwnedScenarios()) {
-            for (InstanceRole instRole : scenario.getOwnedInstanceRoles()) {
-              AbstractInstance inst = instRole.getRepresentedInstance();
-              if (inst != null) {
-                Type type = inst.getType();
-                if (type instanceof SystemComponent) {
-                  lcomponentList.add((SystemComponent) type);
+        if (!BlockArchitectureExt.isRootComponent(actor)) {
+          for (Capability capabilityReal : actor.getInvolvingCapabilities()) {
+            List<SystemComponent> lcomponentList = new ArrayList<SystemComponent>();
+            for (Scenario scenario : capabilityReal.getOwnedScenarios()) {
+              for (InstanceRole instRole : scenario.getOwnedInstanceRoles()) {
+                AbstractInstance inst = instRole.getRepresentedInstance();
+                if (inst != null) {
+                  Type type = inst.getType();
+                  if (type instanceof SystemComponent) {
+                    lcomponentList.add((SystemComponent) type);
+                  }
                 }
               }
             }
-          }
-          if (!lcomponentList.contains(actor)) {
-            IStatus status = ctx.createFailureStatus(
-                new Object[] { actor.getName(), capabilityReal.getName(), ComponentExt.getComponentName(actor) });
-            statuses.add(status);
+            if (!lcomponentList.contains(actor)) {
+              IStatus status = ctx.createFailureStatus(
+                  new Object[] { CapellaElementExt.getValidationRuleMessagePrefix(actor), capabilityReal.getName() });
+              statuses.add(status);
+            }
           }
         }
       }

@@ -17,7 +17,7 @@ import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
@@ -41,10 +41,9 @@ public class MDCHK_LogicalComponent_Realization_1 extends AbstractValidationRule
           if (!logCpnt.getRealizingPhysicalComponents().isEmpty()) {
             return ctx.createSuccessStatus();
           }
-          String logicalComponentName = ComponentExt.getComponentName(logCpnt);
-          String physicalComponentName = logicalComponentName.replace("Logical", "Physical");
           return ctx
-              .createFailureStatus(new Object[] { logCpnt.getName(), logicalComponentName, physicalComponentName });
+              .createFailureStatus(
+                  new Object[] { CapellaElementExt.getValidationRuleMessagePrefix(logCpnt), "Physical Component" });
         }
       }
     }
