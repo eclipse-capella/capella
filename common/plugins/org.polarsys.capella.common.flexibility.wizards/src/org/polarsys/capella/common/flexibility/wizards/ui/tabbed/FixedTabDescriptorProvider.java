@@ -21,8 +21,6 @@ import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.activities.IIdentifier;
 import org.eclipse.ui.internal.views.properties.tabbed.view.TabDescriptor;
 import org.eclipse.ui.internal.views.properties.tabbed.view.TabbedPropertyRegistry;
 import org.eclipse.ui.views.properties.tabbed.AbstractTabDescriptor;
@@ -32,11 +30,11 @@ import org.eclipse.ui.views.properties.tabbed.ITabDescriptorProvider;
 import org.osgi.framework.FrameworkUtil;
 
 /**
- * A ITabDescriptorProvider allowing to use both extension mechanism of
- * org.eclipse.ui.views.properties.tabbed.propertySections (java sections and section provided through extension points)
+ * A ITabDescriptorProvider allowing to use both extension mechanism of org.eclipse.ui.views.properties.tabbed.propertySections
+ * (java sections and section provided through extension points)
  * 
- * in default implementation, if you give a provider on propertySections extension point providing java-sections, you
- * can't benefit of other sections provided through extension point.
+ * in default implementation, if you give a provider on propertySections extension point providing java-sections, 
+ * you can't benefit of other sections provided through extension point.
  * 
  * This descriptorProvider allow to declare a provider, providing java-sections and sections from extension point.
  */
@@ -80,28 +78,8 @@ public abstract class FixedTabDescriptorProvider extends TabbedPropertyRegistry 
     if (!isExtensionsPrior()) {
       descs.addAll(Arrays.asList(super.getTabDescriptors(part, selection)));
     }
+
     return descs.toArray(new ITabDescriptor[0]);
-  }
-
-  @Override
-  protected ITabDescriptor adaptDescriptorFor(ITabDescriptor target, IWorkbenchPart part, ISelection selection) {
-    AbstractTabDescriptor result = (AbstractTabDescriptor) ((AbstractTabDescriptor) target).clone();
-    List<ISectionDescriptor> filteredSectionDescriptors = new ArrayList<>();
-    List<?> descriptors = target.getSectionDescriptors();
-
-    for (Object desc : descriptors) {
-      ISectionDescriptor descriptor = (ISectionDescriptor) desc;
-      if (descriptor.appliesTo(part, selection)) {
-        IIdentifier identifier = PlatformUI.getWorkbench().getActivitySupport().getActivityManager()
-            .getIdentifier(descriptor.getId());
-        if (!identifier.isEnabled()) {
-          continue;
-        }
-        filteredSectionDescriptors.add(descriptor);
-      }
-    }
-    result.setSectionDescriptors(filteredSectionDescriptors);
-    return result;
   }
 
   @Override
@@ -109,8 +87,8 @@ public abstract class FixedTabDescriptorProvider extends TabbedPropertyRegistry 
     if (contributorId == null) {
       return new IConfigurationElement[0];
     }
-    IExtensionPoint point = Platform.getExtensionRegistry()
-        .getExtensionPoint(FrameworkUtil.getBundle(TabDescriptor.class).getSymbolicName(), extensionPointId);
+    IExtensionPoint point =
+        Platform.getExtensionRegistry().getExtensionPoint(FrameworkUtil.getBundle(TabDescriptor.class).getSymbolicName(), extensionPointId);
     IConfigurationElement[] extensions = point.getConfigurationElements();
 
     List unordered = new ArrayList(extensions.length);

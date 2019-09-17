@@ -29,7 +29,7 @@ public class SendToTransferViewHandler extends AbstractHandler {
   @Override
   public Object execute(ExecutionEvent event) throws ExecutionException {
     IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
-    Collection<EObject> toAdd = CapellaAdapterHelper.resolveSemanticsObjects((HandlerUtil.getCurrentStructuredSelection(event)).toList());
+    Collection<EObject> toAdd = CapellaAdapterHelper.resolveBusinessObjects(HandlerUtil.getCurrentStructuredSelection(event).toList());
     EditingDomain domain = EcoreUtil2.getEditingDomain(toAdd);
     if (domain != null) {
       try {

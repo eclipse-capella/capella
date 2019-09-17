@@ -67,7 +67,7 @@ public class InitializeTransitionActivity
   @Override
   protected IStatus initializeTransitionSources(IContext context, ActivityParameters activityParams) {
     Collection<Object> selection = (Collection) context.get(ITransitionConstants.TRANSITION_SELECTION);
-    Collection<EObject> result = CapellaAdapterHelper.resolveSemanticsObjects(selection);
+    Collection<EObject> result = CapellaAdapterHelper.resolveSemanticObjects(selection);
     context.put(ITransitionConstants.TRANSITION_SOURCES, result);
     return Status.OK_STATUS;
   }
