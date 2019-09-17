@@ -144,7 +144,6 @@ import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.fa.SequenceLink;
 import org.polarsys.capella.core.data.fa.SequenceLinkEnd;
-import org.polarsys.capella.core.data.helpers.capellacore.services.GeneralizableElementExt;
 import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
 import org.polarsys.capella.core.data.helpers.information.services.CommunicationLinkExt;
 import org.polarsys.capella.core.data.helpers.information.services.ExchangeItemExt;
@@ -644,9 +643,7 @@ public class CsServices {
    * Returns the nearest semantic parent component of the element
    * 
    * @param current
-   *          the current element
-   *        isActorContext
-   *          whether we are looking the parent of an actor
+   *          the current element isActorContext whether we are looking the parent of an actor
    * @return the parent component or block architecture
    */
   public EObject getSemanticParentContainer(EObject current, boolean isActorContext) {
@@ -667,6 +664,7 @@ public class CsServices {
     }
     return null;
   }
+
   /**
    * Returns the list of parent component or block architecture of the element.
    * 
@@ -1064,12 +1062,13 @@ public class CsServices {
         .stream().filter(comp -> comp instanceof Component && !ComponentExt.isActor((Component) comp))
         .map(Component.class::cast).collect(Collectors.toList());
   }
-  
+
   public Collection<Component> getCCIIInsertActor(Component component) {
     return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_CCII_SHOW_HIDE_COMPONENTS_FOR_LIB, component)
         .stream().filter(comp -> comp instanceof Component && ComponentExt.isActor((Component) comp))
         .map(Component.class::cast).collect(Collectors.toList());
   }
+
   /**
    * Returns a sub-list of the given components which can be inserted into the given component.
    */
@@ -1250,7 +1249,7 @@ public class CsServices {
     EObject target = getCCIITarget(decorator);
     return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_CCII_SHOW_HIDE_ACTORS_FOR_LIB, target);
   }
-  
+
   public Collection<Component> getSubComponents(EObject target) {
     Collection<Component> components = new ArrayList<>();
     if (null == target) {
@@ -1268,7 +1267,7 @@ public class CsServices {
     components.remove(target);
     return filterNotActors(components);
   }
-  
+
   public Collection<Component> getSubActors(EObject target) {
     Collection<Component> components = new ArrayList<>();
     if (null == target) {
@@ -1288,9 +1287,10 @@ public class CsServices {
   }
 
   public Collection<? extends CapellaElement> getABShowHidePureComponent(DSemanticDecorator decorator) {
-    return getABShowHideComponent(decorator).stream()
-        .filter(part -> !ComponentExt.isActor(part)).collect(Collectors.toList());
+    return getABShowHideComponent(decorator).stream().filter(part -> !ComponentExt.isActor(part))
+        .collect(Collectors.toList());
   }
+
   /**
    * Returns available components which are accessible AB-Show-Hide-Component.
    */
@@ -1385,23 +1385,23 @@ public class CsServices {
           }
         }
       }
-      
+
       if (ABServices.getService().isValidCreationABComponent(decorator)) {
         return decorator.getTarget();
       }
-      
+
       // We find the nearest container to store the element
       EObject parent = getSemanticParentContainer(decorator.getTarget(), false);
       if (parent instanceof BlockArchitecture
           && ABServices.getService().isValidCreationABComponent(((BlockArchitecture) parent).getSystem())) {
         return ((BlockArchitecture) parent).getSystem();
       }
-      
+
       return parent;
     }
     return decorator.getTarget();
   }
-  
+
   /**
    * Gets the AB target to create an actor
    */
@@ -1424,19 +1424,19 @@ public class CsServices {
       if (ABServices.getService().isValidCreationABActor((decorator))) {
         return decorator.getTarget();
       }
-      
+
       // We find the nearest container to store the element
       EObject parent = getSemanticParentContainer(decorator.getTarget(), true);
       if (parent instanceof BlockArchitecture
           && ABServices.getService().isValidCreationABComponent(((BlockArchitecture) parent).getSystem())) {
         return ((BlockArchitecture) parent).getSystem();
       }
-      
+
       return parent;
     }
     return decorator.getTarget();
   }
-  
+
   /**
    * 
    * @param decorator
@@ -1460,7 +1460,7 @@ public class CsServices {
     }
     return false;
   }
-  
+
   /**
    * Gets the iB target (used for Interfaces, ExchangeItems, etc.).
    */
@@ -1491,21 +1491,23 @@ public class CsServices {
           return getSemanticParentContainer(decorator.getTarget(), isActorContext);
         }
       }
-      if (isActorContext ? ABServices.getService().isValidCreationABActor(decorator) : ABServices.getService().isValidCreationABComponent(decorator)) {
+      if (isActorContext ? ABServices.getService().isValidCreationABActor(decorator)
+          : ABServices.getService().isValidCreationABComponent(decorator)) {
         return decorator.getTarget();
       }
-      
+
       // We find the nearest container to store the element
       EObject parent = getSemanticParentContainer(decorator.getTarget(), isActorContext);
       if (parent instanceof BlockArchitecture
           && ABServices.getService().isValidCreationABComponent(((BlockArchitecture) parent).getSystem())) {
         return ((BlockArchitecture) parent).getSystem();
       }
-      
+
       return parent;
     }
     return decorator.getTarget();
   }
+
   /**
    * @param context
    * @param newSource
@@ -1841,7 +1843,7 @@ public class CsServices {
   public Collection<Interface> getSubDefinedInterfaces(Component component) {
     return InterfacePkgExt.getAllInterfaces(component.getOwnedInterfacePkg());
   }
-  
+
   /**
    * Returns the list of interfaces defined into the architecture.
    */
@@ -2715,7 +2717,7 @@ public class CsServices {
     component.setName(CapellaServices.getService().getUniqueName(component, createdElementPrefix));
     return component;
   }
-  
+
   private Component createComponentInternal(CapellaElement container, String nameVariable) {
     Component element = null;
     EStructuralFeature containerFeature = null;
@@ -2803,7 +2805,7 @@ public class CsServices {
     }
     return element;
   }
-  
+
   public Component createComponent(CapellaElement container, boolean creationService, String nameVariable) {
     Component component = createComponentInternal(container, nameVariable);
     if (creationService) {
@@ -2811,11 +2813,11 @@ public class CsServices {
     }
     return component;
   }
-  
+
   public Component createComponent(CapellaElement container) {
     return createComponent(container, true, null);
   }
-  
+
   /**
    * Create a logical actor into the container
    * 
@@ -2825,7 +2827,7 @@ public class CsServices {
   public Component createActor(CapellaElement container, String nameVariable) {
     return createActor(container, false, nameVariable);
   }
-  
+
   public Component createActor(CapellaElement container) {
     return createActor(container, true, null);
   }
@@ -2838,7 +2840,12 @@ public class CsServices {
    */
   public Component createActor(CapellaElement container, boolean creationService, String nameVariable) {
     Component component = createComponent(container, nameVariable);
+    if (component instanceof Entity) {
+      component.setHuman(true);
+    }
+
     component.setActor(true);
+
     if (creationService) {
       CapellaServices.getService().creationService(component);
     } else {
@@ -4642,11 +4649,13 @@ public class CsServices {
    * Returns components which can be inserted into the given component in the LAB Diagram
    */
   public Collection<? extends Component> getABInsertComponent(CapellaElement capellaElement) {
-    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_CCII_SHOW_HIDE_COMPONENTS_FOR_LIB, capellaElement);
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_CCII_SHOW_HIDE_COMPONENTS_FOR_LIB,
+        capellaElement);
   }
 
   public Collection<? extends CapellaElement> getABShowHideActor(DSemanticDecorator view) {
-    return getABShowHideComponent(view).stream().filter(comp -> ComponentExt.isActor(comp)).collect(Collectors.toList());
+    return getABShowHideComponent(view).stream().filter(comp -> ComponentExt.isActor(comp))
+        .collect(Collectors.toList());
   }
 
   /**
@@ -4663,7 +4672,7 @@ public class CsServices {
     for (Part part : subParts) {
       if ((part instanceof Part) && eClass.isInstance(part.getAbstractType())
           && (!((excludeEClass != null) && excludeEClass.isInstance(part.getAbstractType())))) {
-        parts.add((Part) part);
+        parts.add(part);
       }
     }
     return parts;
@@ -5578,7 +5587,8 @@ public class CsServices {
     // collect all the visible abstractActor element from the diagram
     for (DDiagramElement aNode : DiagramServices.getDiagramServices().getDiagramElements(diagram)) {
       EObject target = aNode.getTarget();
-      if ((aNode instanceof AbstractDNode) && (target != null) && (target instanceof Component && ((Component) target).isActor())) {
+      if ((aNode instanceof AbstractDNode) && (target != null)
+          && (target instanceof Component && ((Component) target).isActor())) {
         visibleElements.put((CapellaElement) target, (AbstractDNode) aNode);
       }
     }
@@ -6808,7 +6818,7 @@ public class CsServices {
     }
     return null;
   }
-  
+
   public boolean isActor(EObject context) {
     return ComponentExt.isActor(context);
   }
