@@ -37,11 +37,13 @@ public class EntitySection extends ComponentSection {
    * Default constructor.
    */
   public EntitySection() {
-    this(true, false, false, false, false, false, false);
+    this(false, false, false, false, false, false, false);
   }
 
-  public EntitySection(boolean showIsHuman, boolean showIsActor, boolean showImplementedInterfaces, boolean showUsedInterfaces, boolean showAllocatedFunctions, boolean showSuperTypes, boolean showIsAbstract) {
-    super(showIsHuman, showIsActor, showImplementedInterfaces, showUsedInterfaces, showAllocatedFunctions, showSuperTypes, showIsAbstract);
+  public EntitySection(boolean showIsHuman, boolean showIsActor, boolean showImplementedInterfaces,
+      boolean showUsedInterfaces, boolean showAllocatedFunctions, boolean showSuperTypes, boolean showIsAbstract) {
+    super(showIsHuman, showIsActor, showImplementedInterfaces, showUsedInterfaces, showAllocatedFunctions,
+        showSuperTypes, showIsAbstract);
   }
 
   /**
@@ -54,11 +56,13 @@ public class EntitySection extends ComponentSection {
     boolean displayedInWizard = isDisplayedInWizard();
 
     allocatedOperationalActivitiesField = new MultipleSemanticField(getReferencesGroup(),
-        Messages.getString("EntitySection_AllocatedActivities_Label"), getWidgetFactory(), new Entity_AllocatedActivitiesController()); //$NON-NLS-1$
+        Messages.getString("EntitySection_AllocatedActivities_Label"), getWidgetFactory(), //$NON-NLS-1$
+        new Entity_AllocatedActivitiesController());
     allocatedOperationalActivitiesField.setDisplayedInWizard(displayedInWizard);
 
     allocatedRolesField = new MultipleSemanticField(getReferencesGroup(),
-        Messages.getString("EntitySection_AllocatedRoles_Label"), getWidgetFactory(), new Entity_AllocatedRolesController()); //$NON-NLS-1$
+        Messages.getString("EntitySection_AllocatedRoles_Label"), getWidgetFactory(), //$NON-NLS-1$
+        new Entity_AllocatedRolesController());
     allocatedRolesField.setDisplayedInWizard(displayedInWizard);
   }
 
@@ -69,7 +73,8 @@ public class EntitySection extends ComponentSection {
   public void loadData(EObject capellaElement) {
     super.loadData(capellaElement);
 
-    allocatedOperationalActivitiesField.loadData(capellaElement, FaPackage.eINSTANCE.getAbstractFunctionalBlock_OwnedFunctionalAllocation());
+    allocatedOperationalActivitiesField.loadData(capellaElement,
+        FaPackage.eINSTANCE.getAbstractFunctionalBlock_OwnedFunctionalAllocation());
     allocatedRolesField.loadData(capellaElement, OaPackage.eINSTANCE.getEntity_OwnedRoleAllocations());
   }
 

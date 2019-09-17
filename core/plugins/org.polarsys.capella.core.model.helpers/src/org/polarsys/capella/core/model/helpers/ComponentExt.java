@@ -1624,7 +1624,7 @@ public class ComponentExt {
     }
     return elements;
   }
-  
+
   /**
    * Returns components defined into the component and its children.
    */
@@ -1641,7 +1641,7 @@ public class ComponentExt {
     }
     return comps;
   }
-  
+
   /**
    * Returns components defined into the component.
    */
@@ -1692,7 +1692,7 @@ public class ComponentExt {
     ComponentPkg componentPkg = BlockArchitectureExt.getComponentPkg(blockArchitecture, false);
     return ComponentPkgExt.getSubUsedComponents(componentPkg);
   }
-  
+
   /**
    * Returns sub components of the component which are used (have a part)
    */
@@ -1887,6 +1887,7 @@ public class ComponentExt {
   public static Entity createOperationalActor() {
     Entity operationalActor = createEntity();
     operationalActor.setActor(true);
+    operationalActor.setHuman(true);
 
     return operationalActor;
   }
@@ -2846,7 +2847,7 @@ public class ComponentExt {
     }
     return true;
   }
-  
+
   /**
    * 
    * @param component
@@ -2860,7 +2861,7 @@ public class ComponentExt {
     if (target instanceof Component) {
       Component targetComponent = (Component) target;
       return !targetComponent.isHuman() && (!(targetComponent instanceof SystemComponent) || isActor(targetComponent));
-    
+
     } else if (target instanceof ComponentPkg) {
       ComponentPkg targetComponentPkg = (ComponentPkg) target;
       Component parentComponent = ComponentPkgExt.getParentComponent(targetComponentPkg);
