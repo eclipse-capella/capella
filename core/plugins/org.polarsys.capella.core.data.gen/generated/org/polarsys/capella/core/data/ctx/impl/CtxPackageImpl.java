@@ -1813,6 +1813,11 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getMission_InvolvedSystemComponents(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getMission_ExploitedCapabilities(), 
 		   source, 
 		   new String[] {
