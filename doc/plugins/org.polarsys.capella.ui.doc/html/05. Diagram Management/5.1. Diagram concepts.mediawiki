@@ -149,29 +149,4 @@ In addition to the standard automatic layout, this specific action allows to arr
  
 [[Image:Images/5.1.%20Diagram%20concepts_html_m12b23fb.png|900x250px]]
 
- 
-<br>
-<br>
-
-         
-{| border="1"
-|-
-| 
-[[Image:Images/5.1.%20Diagram%20concepts_html_m1fd6c4f8.png|44x44px]]
-
- 
-| 
-<u>'''Diagram ergonomics:'''</u> 				Learn more with DoReMi Viewpoint online Help
-
- 
-Miscellaneous features improve the end user 				experience with diagrams. These features are documented in the 				included online help of Capella / DoReMi (available from 				the menu ''Help / Help Contents / 				ViewPoint User Guide''). Among these 				features:
-
- 
-[[Image:Images/5.1.%20Diagram%20concepts_html_m4244975a.png|818x589px]]
-
- 
-|}  
-<br>
-<br>
-
    

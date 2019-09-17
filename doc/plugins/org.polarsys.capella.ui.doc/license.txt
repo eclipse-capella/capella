@@ -127,8 +127,6 @@ logo_capella_big.png
 5.1. Diagram concepts_html_68c21683.png
 5.1. Diagram concepts_html_m12b23fb.png
 5.1. Diagram concepts_html_m17eb4be9.png
-5.1. Diagram concepts_html_m1fd6c4f8.png
-5.1. Diagram concepts_html_m4244975a.png
 5.1. Diagram concepts_html_m67259d01.png
 5.2. Advanced Managenement of Diagrams_html_20ac0b99.png
 5.2. Advanced Managenement of Diagrams_html_26d60da9.png
