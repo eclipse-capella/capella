@@ -13,6 +13,7 @@ package org.polarsys.capella.test.diagram.misc.ju.testsuites;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.polarsys.capella.test.diagram.misc.ju.testcases.BreakdownDiagramElements;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.Bug1006TestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.Bug1024TestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.Bug1512TestCase;
@@ -54,6 +55,7 @@ public class DiagramMiscTestSuite extends BasicTestSuite {
     tests.add(new Bug2145TestCase());
     tests.add(new CloneDiagramTestCase());
     tests.add(new Bug2579TestCase());
+    tests.add(new BreakdownDiagramElements());
     return tests;
   }
 }
