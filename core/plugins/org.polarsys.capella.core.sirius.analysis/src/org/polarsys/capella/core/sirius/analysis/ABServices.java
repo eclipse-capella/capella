@@ -282,7 +282,16 @@ public class ABServices {
     if (container instanceof ComponentPkg) {
       return ComponentPkgExt.getAllSubDefinedComponents((ComponentPkg) container);
     } else if (container instanceof Component) {
-      return ComponentExt.getAllSubDefinedComponents((Component) container);
+      Component containerComponent = (Component) container;
+      List<Component> allSubDefinedComponents = ComponentExt.getAllSubDefinedComponents(containerComponent);
+
+      BlockArchitecture rootBlockArchitecture = BlockArchitectureExt.getRootBlockArchitecture(containerComponent);
+      Component systemComponent = rootBlockArchitecture.getSystem();
+      if (containerComponent != systemComponent) {
+        allSubDefinedComponents.add(containerComponent);
+      }
+
+      return allSubDefinedComponents;
     }
     return Collections.emptyList();
   }
@@ -586,7 +595,7 @@ public class ABServices {
         return false;
       }
     }
-    if (!ComponentExt.canMoveInto((Component)source.getAbstractType(), target)) {
+    if (!ComponentExt.canMoveInto((Component) source.getAbstractType(), target)) {
       return false;
     }
     return true;
@@ -604,7 +613,7 @@ public class ABServices {
     if (parts.contains(source)) {
       return false;
     }
-    if (!ComponentExt.canMoveInto((Component)source.getAbstractType(), (Component)target.getAbstractType())) {
+    if (!ComponentExt.canMoveInto((Component) source.getAbstractType(), (Component) target.getAbstractType())) {
       return false;
     }
     return true;
@@ -627,7 +636,7 @@ public class ABServices {
     }
     return true;
   }
-  
+
   /**
    * Returns whether the given part can be drop into the target element view
    */

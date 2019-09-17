@@ -20099,7 +20099,7 @@
     <entries xsi:type="description:UserFixedColor" red="150" green="177" blue="218" name="_CAP_Component_Blue"/>
     <entries xsi:type="description:UserFixedColor" red="195" green="230" blue="255" name="_CAP_Component_Blue_min"/>
     <entries xsi:type="description:UserFixedColor" red="74" green="74" blue="151" name="_CAP_Component_Border_Blue"/>
-    <entries xsi:type="description:UserFixedColor" red="74" green="74" blue="151" name="_CAP_Component_Label_Blue"/>
+    <entries xsi:type="description:UserFixedColor" red="0" green="0" blue="0" name="_CAP_Component_Label_Blue"/>
     <entries xsi:type="description:UserFixedColor" red="197" green="255" blue="166" name="_CAP_xDFB_Function_Green"/>
     <entries xsi:type="description:UserFixedColor" red="77" green="137" blue="20" name="_CAP_xDFB_Function_Border_Green"/>
     <entries xsi:type="description:UserFixedColor" red="244" green="255" blue="224" name="_CAP_xDFB_Function_Green_min"/>
