@@ -50,7 +50,9 @@ public abstract class NonDirtyTestCase extends BasicTestCase {
 
   @Override
   protected void tearDown() throws Exception {
-    undoAllChanges();
+    if (ModelProviderHelper.getInstance().getModelProvider().undoTestCaseChanges()) {
+      undoAllChanges();
+    }
     super.tearDown();
   }
 
