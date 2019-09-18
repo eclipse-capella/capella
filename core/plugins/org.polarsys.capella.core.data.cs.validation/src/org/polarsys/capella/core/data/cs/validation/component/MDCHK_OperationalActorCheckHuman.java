@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.core.data.oa.Entity;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
@@ -35,7 +35,7 @@ public class MDCHK_OperationalActorCheckHuman extends AbstractValidationRule {
         Entity component = (Entity) eObj;
         if (component.isActor() && !component.isHuman()) {
           return ctx
-              .createFailureStatus(new Object[] { component.getName(), ComponentExt.getComponentName(component) });
+              .createFailureStatus(new Object[] { CapellaElementExt.getValidationRuleMessagePrefix(component) });
         }
       }
     }

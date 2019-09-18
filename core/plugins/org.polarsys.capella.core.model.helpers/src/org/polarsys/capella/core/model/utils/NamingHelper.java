@@ -66,6 +66,9 @@ public class NamingHelper {
     else{
       name = EObjectLabelProviderHelper.getText(modelElement);
     }
+    if (title.length() > 0 && name != null) {
+      title = title + " ";
+    }
     title = title + (name == null ? ICommonConstants.EMPTY_STRING : name);
     return title;
   }
@@ -88,9 +91,7 @@ public class NamingHelper {
       String nature = ((PhysicalComponent) modelElement).getNature().getName();
       builder.append("[" + capitalize(nature) + "]");
     }
-    if (builder.length() > 0) {
-      builder.append(" ");
-    }
+
     return builder.toString();
   }
   

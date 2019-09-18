@@ -24,7 +24,6 @@ import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.InterfaceExt;
 import org.polarsys.capella.core.model.helpers.InterfacePkgExt;
 import org.polarsys.capella.core.transition.system.topdown.preferences.PreferenceHelper;
@@ -99,8 +98,9 @@ public class MDCHK_PhysicalComponent_InterfaceUseAndImpl_1 extends AbstractValid
             // collect all the invalid interfaces and return the failure status
             if (failureStatus) {
               String inValidInterfacesName = CapellaElementExt.getElementNamesSeperatedByComma(inValidInterfaces);
-              return ctx_p.createFailureStatus(new Object[] { physicalComponent.getName(), inValidInterfacesName,
-                  ComponentExt.getComponentName(physicalComponent) });
+              return ctx_p.createFailureStatus(
+                  new Object[] { CapellaElementExt.getValidationRuleMessagePrefix(physicalComponent),
+                      inValidInterfacesName });
             }
           }
 

@@ -21,7 +21,7 @@ import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.utils.NamingHelper;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
@@ -89,9 +89,8 @@ public class MDCHK_ComponentCycle extends AbstractValidationRule {
               String alreadySawElemName = alreadySawElem.getName();
               // There is a cycle!!!
               return ctx.createFailureStatus(new Object[] { alreadySawElemName, partitionName,
-                  innerPartitionInnerPartitionName, ComponentExt.getComponentName(alreadySawElem),
-                  ComponentExt.getComponentName(inner),
-                  ComponentExt.getComponentName(innerPart) });
+                  innerPartitionInnerPartitionName, NamingHelper.getTitleLabel(alreadySawElem),
+                  NamingHelper.getTitleLabel(inner), NamingHelper.getTitleLabel(innerPart) });
             }
           }
         }

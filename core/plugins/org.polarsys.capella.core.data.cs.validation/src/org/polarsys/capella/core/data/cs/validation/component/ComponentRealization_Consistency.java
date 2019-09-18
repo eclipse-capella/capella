@@ -30,7 +30,8 @@ import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.pa.PaPackage;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
@@ -54,39 +55,41 @@ public class ComponentRealization_Consistency extends AbstractValidationRule {
       if (eObj instanceof Component) {
         List<IStatus> statuses = new ArrayList<IStatus>();
         Component actor = (Component) eObj;
-        EList<AbstractTrace> traces = actor.getOutgoingTraces();
-        // if no realization found, no consistency check needed
-        if (traces.size() < 1) {
-          return ctx.createSuccessStatus();
-        }
-        Iterator<AbstractTrace> iterator = traces.iterator();
-        while (iterator.hasNext()) {
-          AbstractTrace next = iterator.next();
-          if (next instanceof ComponentRealization) {
-            TraceableElement source = next.getSourceElement();
-            TraceableElement target = next.getTargetElement();
-            // if target is not actor create failure status message
-            String actorClassName = ComponentExt.getComponentName(actor);
-            if (null == source) {
-              statuses.add(ctx.createFailureStatus(actor.getName() + " (" + actorClassName //$NON-NLS-1$
-                  + ") contain realization with inconsistent Source (it should be not empty)")); //$NON-NLS-1$
-              continue;
-            }
-            if (null == target) {
-              statuses.add(ctx.createFailureStatus(actor.getName() + " (" + actorClassName //$NON-NLS-1$
-                  + ") contain realization with inconsistent Target (it should be not empty)")); //$NON-NLS-1$
-              continue;
-            }
-            if (valid.containsKey(source.eClass()) && !valid.get(source.eClass()).isInstance(target)) {
-              statuses.add(ctx.createFailureStatus(actor.getName() + " (" + actorClassName //$NON-NLS-1$
-                  + ") contain realization with inconsistent Target (it should be instance of " //$NON-NLS-1$
-                  + valid.get(source.eClass()).getName() + ")"));
-            }
+        if (!BlockArchitectureExt.isRootComponent(actor)) {
+          EList<AbstractTrace> traces = actor.getOutgoingTraces();
+          // if no realization found, no consistency check needed
+          if (traces.size() < 1) {
+            return ctx.createSuccessStatus();
+          }
+          Iterator<AbstractTrace> iterator = traces.iterator();
+          while (iterator.hasNext()) {
+            AbstractTrace next = iterator.next();
+            if (next instanceof ComponentRealization) {
+              TraceableElement source = next.getSourceElement();
+              TraceableElement target = next.getTargetElement();
+              // if target is not actor create failure status message
+              String actorInfo = CapellaElementExt.getValidationRuleMessagePrefix(actor);
+              if (null == source) {
+                statuses.add(ctx.createFailureStatus(actorInfo // $NON-NLS-1$
+                    + " contain realization with inconsistent Source (it should be not empty)")); //$NON-NLS-1$
+                continue;
+              }
+              if (null == target) {
+                statuses.add(ctx.createFailureStatus(actorInfo // $NON-NLS-1$
+                    + " contain realization with inconsistent Target (it should be not empty)")); //$NON-NLS-1$
+                continue;
+              }
+              if (valid.containsKey(source.eClass()) && !valid.get(source.eClass()).isInstance(target)) {
+                statuses.add(ctx.createFailureStatus(actorInfo // $NON-NLS-1$
+                    + " contain realization with inconsistent Target (it should be instance of " //$NON-NLS-1$
+                    + valid.get(source.eClass()).getName() + ")"));
+              }
 
-            if (valid.containsKey(target.eClass()) && !valid.get(target.eClass()).isInstance(source)) {
-              statuses.add(ctx.createFailureStatus(actor.getName() + " (" + actorClassName //$NON-NLS-1$
-                  + ") contain realization with inconsistent Source (it should be instance of " //$NON-NLS-1$
-                  + valid.get(target.eClass()).getName() + ")"));
+              if (valid.containsKey(target.eClass()) && !valid.get(target.eClass()).isInstance(source)) {
+                statuses.add(ctx.createFailureStatus(actorInfo // $NON-NLS-1$
+                    + " contain realization with inconsistent Source (it should be instance of " //$NON-NLS-1$
+                    + valid.get(target.eClass()).getName() + ")"));
+              }
             }
           }
         }

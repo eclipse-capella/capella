@@ -20,6 +20,7 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.oa.Entity;
+import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
@@ -54,7 +55,7 @@ public class MDCHK_ComponentHumanCheckNoSubComponents extends AbstractValidation
       if (message != null) {
         if (isDecomposed(component)) {
           return ctx.createFailureStatus(
-              new Object[] { component.getName(), ComponentExt.getComponentName(component), message });
+              new Object[] { CapellaElementExt.getValidationRuleMessagePrefix(component), message });
         }
       }
     }

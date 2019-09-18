@@ -17,7 +17,7 @@ import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
@@ -39,8 +39,7 @@ public class IsUnsetPhysicalComponentCheck extends AbstractValidationRule {
         PhysicalArchitecture architecture = SystemEngineeringExt.getPhysicalArchitecture(currentElement);
         if (currentElement == architecture.getSystem()) {
           if (currentElement.getNature() != PhysicalComponentNature.UNSET) {
-            return ctx.createFailureStatus(currentElement.getName(),
-                ComponentExt.getComponentName(currentElement));
+            return ctx.createFailureStatus(CapellaElementExt.getValidationRuleMessagePrefix(currentElement));
           }
         }
       }

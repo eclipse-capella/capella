@@ -71,6 +71,7 @@ import org.polarsys.capella.core.data.pa.LogicalInterfaceRealization;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
+import org.polarsys.capella.core.model.utils.NamingHelper;
 
 /**
  * CapellaElement helpers
@@ -448,11 +449,10 @@ public class CapellaElementExt {
 
   public static String getValidationRuleMessagePrefix(AbstractNamedElement ele) {
     if (null != ele) {
-      String className = ele.eClass().getName();
       if (ele instanceof Component) {
-        className = ComponentExt.getComponentName(ele);
+        return ele.getName() + " " + NamingHelper.getTitleLabel(ele);
       }
-      return ele.getName() + " (" + className + ") "; //$NON-NLS-1$//$NON-NLS-2$
+      return ele.getName() + " (" + ele.eClass().getName() + ") "; //$NON-NLS-1$//$NON-NLS-2$
     }
 
     return ICommonConstants.EMPTY_STRING;

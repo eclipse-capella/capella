@@ -43,8 +43,8 @@ public class DWF_DC_36_Generator extends AbstractMarkerResolutionGenerator {
         resolutions.add(new SwitchIsActorIsHumanFlag_ResolverAll(switch_OE, false, false));
       } else {
         // switch to non human
-        resolutions.add(new SwitchIsActorIsHumanFlag_Resolver(switch_non_human, false, false));
-        resolutions.add(new SwitchIsActorIsHumanFlag_ResolverAll(switch_non_human, false, false));
+        resolutions.add(new SwitchIsActorIsHumanFlag_Resolver(switch_non_human, component.isActor(), false));
+        resolutions.add(new SwitchIsActorIsHumanFlag_ResolverAll(switch_non_human, component.isActor(), false));
       }
     }
 

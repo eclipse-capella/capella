@@ -15,7 +15,7 @@ import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
@@ -43,7 +43,7 @@ public class MDCHK_Component_Deployment extends AbstractValidationRule {
 
     }
     if (nbDeploy > 1) {
-      return ctx.createFailureStatus(pc.getName(), ComponentExt.getComponentName(pc));
+      return ctx.createFailureStatus(CapellaElementExt.getValidationRuleMessagePrefix(pc));
     }
 
     return ctx.createSuccessStatus();

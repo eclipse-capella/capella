@@ -18,6 +18,7 @@ import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.ComponentPkg;
+import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
@@ -36,16 +37,17 @@ public class ComponentPkg_RootComponentPart extends AbstractValidationRule {
       if (eObj instanceof ComponentPkg) {
         ComponentPkg pkg = (ComponentPkg) eObj;
         BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(eObj);
-        if (BlockArchitectureExt.getComponentPkg(architecture, false) == eObj) {
+        if (!(architecture instanceof OperationalAnalysis)
+            && (BlockArchitectureExt.getComponentPkg(architecture, false) == eObj)) {
           ArrayList<EObject> parts = new ArrayList<EObject>();
           if (architecture.getSystem() != null) {
             parts.addAll(((ComponentPkg) eObj).getOwnedParts());
             parts.retainAll(architecture.getSystem().getRepresentingParts());
             if (parts.isEmpty()) {
-              return createFailureStatus(ctx, new Object[] { pkg.getName(), pkg.eClass().getName() });
+              return ctx.createFailureStatus(new Object[] { pkg.getName(), pkg.eClass().getName() });
             }
           } else {
-            return createFailureStatus(ctx, new Object[] { pkg.getName(), pkg.eClass().getName() });
+            return ctx.createFailureStatus(new Object[] { pkg.getName(), pkg.eClass().getName() });
           }
         }
       }

@@ -27,7 +27,7 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
 import org.polarsys.capella.core.model.helpers.AbstractCapabilityExt;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 public class MDCHK_Capability_Components_NotInvolved extends AbstractValidationRule {
@@ -73,8 +73,8 @@ public class MDCHK_Capability_Components_NotInvolved extends AbstractValidationR
   private void addCtxStatus(Collection<IStatus> statuses, IValidationContext ctx, EObject eObj,
       AbstractCapability capability, Component element) {
     Object[] msgArguments = new Object[] { capability.getName(),
-        EObjectLabelProviderHelper.getMetaclassLabel(capability, false), element.getName(),
-        ComponentExt.getComponentName(element),
+        EObjectLabelProviderHelper.getMetaclassLabel(capability, false),
+        CapellaElementExt.getValidationRuleMessagePrefix(element),
         getFunctionalChainType(capability) + " or Scenarios" };
     Collection<EObject> resultLocus = new ArrayList<EObject>();
     resultLocus.add(capability);

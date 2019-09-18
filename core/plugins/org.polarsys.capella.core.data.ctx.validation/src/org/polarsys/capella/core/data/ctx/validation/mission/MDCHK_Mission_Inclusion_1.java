@@ -21,7 +21,8 @@ import org.eclipse.emf.validation.model.ConstraintStatus;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.Mission;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 public class MDCHK_Mission_Inclusion_1 extends AbstractValidationRule {
@@ -39,10 +40,11 @@ public class MDCHK_Mission_Inclusion_1 extends AbstractValidationRule {
 
         for (Capability usecase : mission.getExploitedCapabilities()) {
           for (SystemComponent component : usecase.getInvolvedSystemComponents()) {
-            if (!mission.getInvolvedSystemComponents().contains(component)) {
+            if (!BlockArchitectureExt.isRootComponent(component)
+                && !mission.getInvolvedSystemComponents().contains(component)) {
               IStatus status = ctx
-                  .createFailureStatus(new Object[] { component.getName(), mission.getName(), usecase.getName(),
-                      ComponentExt.getComponentName(component) });
+                  .createFailureStatus(new Object[] { CapellaElementExt.getValidationRuleMessagePrefix(component),
+                      mission.getName(), usecase.getName() });
               statuses.add(status);
             }
           }
