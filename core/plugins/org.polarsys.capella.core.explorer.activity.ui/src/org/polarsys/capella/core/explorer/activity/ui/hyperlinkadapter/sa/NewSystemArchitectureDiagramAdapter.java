@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,9 +20,9 @@ import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 /**
  * Create Actors and manage allocations with a new System Architecture diagram.
  */
-public class NewActorsAllocationsDiagramAdapter extends AbstractCapellaNewDiagramHyperlinkAdapter {
+public class NewSystemArchitectureDiagramAdapter extends AbstractCapellaNewDiagramHyperlinkAdapter {
 
-	public NewActorsAllocationsDiagramAdapter() {
+	public NewSystemArchitectureDiagramAdapter() {
 		super();
 	}
 
@@ -33,6 +33,6 @@ public class NewActorsAllocationsDiagramAdapter extends AbstractCapellaNewDiagra
 
 	@Override
 	protected ModelElement getModelElement(EObject rootSemanticModel) {
-		return ModelQueryHelper.getSystem((Project) rootSemanticModel);
+    return (ModelElement) ModelQueryHelper.getSystem((Project) rootSemanticModel).eContainer();
 	}
 }
