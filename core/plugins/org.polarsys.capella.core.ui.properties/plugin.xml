@@ -26,6 +26,9 @@
             contributorId="org.polarsys.capella.core.data.capellamodeller.properties"
             labelProvider="org.polarsys.capella.core.ui.properties.TabbedPropertiesLabelProvider">
          <propertyCategory
+               category="beforeDefault">
+         </propertyCategory>
+         <propertyCategory
                category="default">
          </propertyCategory>
          <propertyCategory
