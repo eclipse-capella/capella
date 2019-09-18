@@ -28,8 +28,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.sirius.diagram.DEdge;
-import org.eclipse.sirius.diagram.description.IEdgeMapping;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
@@ -70,10 +68,10 @@ import org.polarsys.capella.core.data.oa.OperationalCapabilityPkg;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
+import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ModelElementExt;
-import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 
 /**
  * This class takes care of the migration of the Actor refactoring work. Here are some basic migration steps:
@@ -426,6 +424,9 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
     if (OLD_ACTOR_TYPES.contains(typeQName) && eObject instanceof Component) {
       ((Component) eObject).setActor(true);
       ((Component) eObject).setHuman(true);
+      if (typeQName.equals("org.polarsys.capella.core.data.pa:PhysicalActor") && eObject instanceof PhysicalComponent) {
+        ((PhysicalComponent) eObject).setNature(PhysicalComponentNature.NODE);
+      }
     }
     // Store old contexts' ids
     else if ("org.polarsys.capella.core.data.oa:OperationalContext".equals(typeQName) && eObject instanceof EntityPkg) {
