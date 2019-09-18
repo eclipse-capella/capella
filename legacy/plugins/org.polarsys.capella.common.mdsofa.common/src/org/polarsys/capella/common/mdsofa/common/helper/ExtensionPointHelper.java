@@ -223,7 +223,7 @@ public class ExtensionPointHelper {
     try {
       typeInstance = configurationElement_p.createExecutableExtension(attributeName_p);
     } catch (CoreException exception_p) {
-      StringBuffer loggerMessage = new StringBuffer("ExtensionPointHelper.createTypeInstance(..) _ "); //$NON-NLS-1$
+      StringBuffer loggerMessage = new StringBuffer("ExtensionPointHelper.createsInstance(..) _ "); //$NON-NLS-1$
       loggerMessage.append("Unable to instantiate class type:"); //$NON-NLS-1$
       loggerMessage.append(configurationElement_p.getAttribute(attributeName_p));
       _logger.error(loggerMessage.toString(), exception_p);
