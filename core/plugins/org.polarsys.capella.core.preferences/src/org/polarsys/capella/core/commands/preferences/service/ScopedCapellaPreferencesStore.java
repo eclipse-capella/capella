@@ -39,9 +39,6 @@ import org.polarsys.capella.core.preferences.Activator;
  */
 public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
 
-  private static final Logger __logger = ReportManagerRegistry.getInstance()
-      .subscribe(IReportManagerDefaultComponents.UI);
-
   private static ScopedCapellaPreferencesStore instance;
 
   public static Map<String, String> DEFAULT_OPTIONS_MAP;
@@ -330,6 +327,10 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
   public static Object getValueFromPresistentPropertyStore(IProject resource, String key) {
     return getProjectValue(resource, key);
   }
+  
+  private static Logger getLogger() {
+    return ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
+  }
 
   public static Object getProjectValue(IProject resource, String key) {
     
@@ -346,7 +347,7 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
       }
     } catch (CoreException exception_p1) {
       StringBuilder loggerMessage = new StringBuilder("Activator.initializePropertyStore(..) _ "); //$NON-NLS-1$
-      __logger.warn(loggerMessage.toString(), exception_p1);
+      getLogger().warn(loggerMessage.toString(), exception_p1);
     }
 
     return null;
@@ -407,7 +408,7 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
       Platform.getPreferencesService().getRootNode().flush();
     } catch (BackingStoreException exception_p) {
       StringBuilder loggerMessage = new StringBuilder("ScopedPreferenceManager.save(..) _ "); //$NON-NLS-1$
-      __logger.warn(loggerMessage.toString(), exception_p);
+      getLogger().warn(loggerMessage.toString(), exception_p);
     }
   }
 
@@ -420,7 +421,7 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
       node.flush();
     } catch (BackingStoreException exception_p) {
       StringBuilder loggerMessage = new StringBuilder("ScopedPreferenceManager.flushPreference(..) _ "); //$NON-NLS-1$
-      __logger.warn(loggerMessage.toString(), exception_p);
+      getLogger().warn(loggerMessage.toString(), exception_p);
     }
   }
 

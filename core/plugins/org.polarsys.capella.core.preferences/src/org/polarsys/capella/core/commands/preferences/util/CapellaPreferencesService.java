@@ -33,8 +33,6 @@ import org.polarsys.capella.core.preferences.Activator;
 
 public class CapellaPreferencesService {
 
-  private static final Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
-
   private static final char EXPORT_ROOT_PREFIX = '!';
   private static final char BUNDLE_VERSION_PREFIX = '@';
   private static final String VERSION_KEY = "file_export_version"; //$NON-NLS-1$
@@ -58,7 +56,7 @@ public class CapellaPreferencesService {
         try {
           applyPreferences(readEPFPreferencesFile(input));
         } catch (CoreException exception_p) {
-          logger.error(exception_p.getMessage());
+          getLogger().error(exception_p.getMessage());
         }
       }
     });
@@ -70,8 +68,8 @@ public class CapellaPreferencesService {
    */
   public static String getEPFPathFromApplicationArguments() {
 	
-    if (logger.isDebugEnabled()) {
-      logger.debug("Start Capella Preferences initialization From EPF File"); //$NON-NLS-1$
+    if (Platform.inDebugMode()) {
+      getLogger().debug("Start Capella Preferences initialization From EPF File"); //$NON-NLS-1$
     }
     String epfPath = ""; //$NON-NLS-1$
     String[] args = Platform.getApplicationArgs();
@@ -83,8 +81,8 @@ public class CapellaPreferencesService {
       }
     }
 
-    if (logger.isDebugEnabled()) {
-      logger.debug("funded EPF File : " + epfPath); //$NON-NLS-1$
+    if (Platform.inDebugMode()) {
+      getLogger().debug("funded EPF File : " + epfPath); //$NON-NLS-1$
     }
 
     return epfPath;
@@ -240,5 +238,8 @@ public class CapellaPreferencesService {
       throw new CoreException(createStatusError(PrefsMessages.preferences_applyProblems, e));
     }
   }
-
+  
+  private static Logger getLogger() {
+    return ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
+  }
 }
