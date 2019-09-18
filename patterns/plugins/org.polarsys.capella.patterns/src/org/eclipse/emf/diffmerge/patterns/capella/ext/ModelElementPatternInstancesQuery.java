@@ -32,7 +32,7 @@ public class ModelElementPatternInstancesQuery implements IQuery {
   }
   
   /**
-  * @see org.polarsys.capella.common.ui.toolkit.browser.query.IQuery#compute(java.lang.Object)
+   * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
   @SuppressWarnings({ "unchecked", "rawtypes" })
   public List<Object> compute(Object object_p) {

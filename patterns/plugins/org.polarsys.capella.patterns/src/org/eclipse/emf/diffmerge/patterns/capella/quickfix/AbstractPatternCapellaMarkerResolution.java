@@ -16,15 +16,26 @@ import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
 import org.polarsys.kitalpha.patterns.emde.gen.emdepatternsupport.EmdePatternInstanceSet;
 
+
+/**
+ * A base quick fix for pattern-related issues.
+ */
 public class AbstractPatternCapellaMarkerResolution extends AbstractCapellaMarkerResolution {
 
+  /**
+   * @see org.eclipse.ui.IMarkerResolution#run(org.eclipse.core.resources.IMarker)
+   */
   @Override
   public void run(IMarker marker) {
     // Do nothing
   }
 
+  /**
+   * Delete the given element if it is a useless pattern storage
+   * @param patternStorage a potentially null element 
+   */
   protected void deletePatternStorage(EObject patternStorage) {
-    // If pattern storage does not contain any patter instance, delete it as well
+    // If pattern storage does not contain any pattern instance, delete it as well
     if (patternStorage instanceof EmdePatternInstanceSet
         && ((EmdePatternInstanceSet) patternStorage).getOwnedInstances().isEmpty()) {
       EObject project = patternStorage.eContainer();

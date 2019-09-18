@@ -14,8 +14,15 @@ import org.eclipse.emf.diffmerge.patterns.core.gen.corepatterns.AbstractIdentifi
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.shared.id.handler.AbstractIdHandler;
 
+
+/**
+ * An ID handler for elements of patterns.
+ */
 public class PatternElementIdHandler extends AbstractIdHandler {
 
+  /**
+   * @see org.polarsys.capella.shared.id.handler.IIdHandler#getId(org.eclipse.emf.ecore.EObject)
+   */
   @Override
   public String getId(EObject object) {
     if(object instanceof AbstractIdentifiedElement){
@@ -23,4 +30,5 @@ public class PatternElementIdHandler extends AbstractIdHandler {
     }
     return null;
   }
+
 }

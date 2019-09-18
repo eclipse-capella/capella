@@ -12,9 +12,11 @@ package org.polarsys.capella.patterns.ui;
 
 import org.eclipse.osgi.util.NLS;
 
+
 /**
  * Utility class for the externalization mechanism
  */
+@SuppressWarnings("javadoc")
 public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.patterns.ui.messages"; //$NON-NLS-1$
   public static String CapellaSemanticMapping_ShowInExplorer;

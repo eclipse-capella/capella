@@ -21,4 +21,5 @@ Bundle-Activator: org.polarsys.capella.patterns.ui.PatternsUIPlugin
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: org.polarsys.capella.patterns.ui;singleton:=true
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: org.polarsys.capella.patterns.ui
 

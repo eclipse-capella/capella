@@ -19,7 +19,15 @@ import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 
+
+/**
+ * A quick fix for pattern instance issues that deletes the instances.
+ */
 public class DeletePatternInstanceResolution extends AbstractPatternCapellaMarkerResolution {
+
+  /**
+   * @see org.eclipse.emf.diffmerge.patterns.capella.quickfix.AbstractPatternCapellaMarkerResolution#run(org.eclipse.core.resources.IMarker)
+   */
   @Override
   public void run(IMarker marker) {
 
@@ -52,4 +60,5 @@ public class DeletePatternInstanceResolution extends AbstractPatternCapellaMarke
       }
     }
   }
+
 }

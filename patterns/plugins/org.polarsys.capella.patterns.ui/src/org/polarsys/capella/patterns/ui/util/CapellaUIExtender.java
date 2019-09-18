@@ -53,7 +53,7 @@ public class CapellaUIExtender extends SiriusUIExtender {
   }
 
   /**
-   * @see org.eclipse.emf.diffmerge.patterns.ui.sirius.util.DefaultUIExtender#createNavigationItems(org.eclipse.swt.widgets.Menu, org.eclipse.emf.diffmerge.patterns.ui.viewers.ModelSubsetViewer)
+   * @see org.eclipse.emf.diffmerge.patterns.ui.sirius.util.SiriusUIExtender#createNavigationItems(org.eclipse.swt.widgets.Menu, org.eclipse.emf.diffmerge.patterns.ui.viewers.ModelSubsetViewer)
    */
   @Override
   public boolean createNavigationItems(final Menu menu, final ModelSubsetViewer viewer) {

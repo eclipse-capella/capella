@@ -33,4 +33,5 @@ Bundle-Activator: org.eclipse.emf.diffmerge.patterns.capella.CapellaPatternsPlug
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: org.polarsys.capella.patterns;singleton:=true
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: org.polarsys.capella.patterns
 

@@ -28,17 +28,18 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
+import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.capellacore.TypedElement;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.DeployableElement;
 import org.polarsys.capella.core.data.cs.DeploymentTarget;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
-
-
 
 
 /**
@@ -53,6 +54,15 @@ public class CapellaSemanticMapping extends DefaultSemanticMapping {
           "lab sub components", "dt_datavalue", "ca dummy" //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
           ));
 
+  /** Lowercase names of allocated function mappings in architecture diagrams **/
+  @SuppressWarnings("nls")
+  private static final Collection<String> ALLOCATED_FUNCTION_MAPPING_NAMES =
+      Arrays.asList(
+          "oab_activity",
+          "ca system function",
+          "lab_function",
+          "pab_physicalfunction");
+
   /** Lowercase name of the physical component mapping in PAB **/
   private static final String PHYSICAL_COMPONENT_MAPPING_NAME = "pab_pc"; //$NON-NLS-1$
 
@@ -61,10 +71,9 @@ public class CapellaSemanticMapping extends DefaultSemanticMapping {
 
   /** Lowercase names of subcomponent mappings in architecture diagrams **/
   private static final Collection<String> SUBCOMPONENT_MAPPING_NAMES =
-      Collections.unmodifiableCollection(Arrays.asList(
+      Arrays.asList(
           "lab logical component", //$NON-NLS-1$
-          PHYSICAL_COMPONENT_MAPPING_NAME
-          ));
+          PHYSICAL_COMPONENT_MAPPING_NAME);
 
 
   /**
@@ -74,16 +83,16 @@ public class CapellaSemanticMapping extends DefaultSemanticMapping {
 	  // Do nothing
   }
 
-/**
- * 
- * @see org.eclipse.emf.diffmerge.patterns.diagram.sirius.extensions.DefaultSemanticMapping#conformsToMapping(org.eclipse.emf.ecore.EObject, org.eclipse.sirius.viewpoint.description.AbstractNodeMapping, boolean, boolean, org.eclipse.sirius.viewpoint.DContainer)
- */
+  /**
+   * @see org.eclipse.emf.diffmerge.patterns.diagrams.sirius.extensions.DefaultSemanticMapping#conformsToMapping(EObject, AbstractNodeMapping, boolean, boolean, Object)
+   */
   @Override
   public boolean conformsToMapping(EObject semanticElt, AbstractNodeMapping mapping,
       boolean considerPrecondition, boolean considerCandidates,
       Object containerView) {
     boolean businessOk = !isDummyMapping(mapping);
-    if (considerPrecondition && considerCandidates && ((containerView instanceof DDiagram)||(containerView instanceof DDiagramElementContainer))) {
+    if (considerPrecondition && considerCandidates &&
+        (containerView instanceof DDiagram || containerView instanceof DDiagramElementContainer)) {
       // If full verification, check for business criteria
       businessOk = businessOk && (!isSubcomponentMapping(mapping) ||
           checkSubcomponent(getSemanticElement(containerView), semanticElt));
@@ -91,6 +100,8 @@ public class CapellaSemanticMapping extends DefaultSemanticMapping {
           !isDeployed(semanticElt));
       businessOk = businessOk && (!isDeploymentMapping(mapping) ||
           checkDeployment(getSemanticElement(containerView), semanticElt));
+      businessOk = businessOk && (!isAllocatedFunctionMapping(mapping) ||
+          checkAllocation(getSemanticElement(containerView), semanticElt));
     }
     boolean checkPrecondition = considerPrecondition &&
         preconditionCanBeChecked(mapping);
@@ -100,13 +111,8 @@ public class CapellaSemanticMapping extends DefaultSemanticMapping {
         semanticElt, mapping, checkPrecondition, checkSemanticCandidates, containerView);
   }
 
-  
- 
-
-
   /**
-   * 
-   * @see org.eclipse.emf.diffmerge.patterns.diagram.sirius.extensions.DefaultSemanticMapping#getSemanticCandidatesForGraphicalStorage(org.eclipse.emf.ecore.EObject, fr.obeo.dsl.viewpoint.DDiagram)
+   * @see org.eclipse.emf.diffmerge.patterns.diagrams.sirius.extensions.DefaultSemanticMapping#getSemanticCandidatesForGraphicalStorage(EObject, Object)
    */
   @Override
   public Collection<EObject> getSemanticCandidatesForGraphicalStorage(
@@ -122,8 +128,9 @@ public class CapellaSemanticMapping extends DefaultSemanticMapping {
         if (component.getTypedElements().size() == 1) {
           TypedElement part = component.getTypedElements().get(0);
           result.add(part);
-          if (isLAB((DDiagram)diagram))
+          if (isLAB((DDiagram)diagram)) {
             result.remove(candidate1);
+          }
         }
       }
     }
@@ -131,8 +138,7 @@ public class CapellaSemanticMapping extends DefaultSemanticMapping {
   }
 
   /**
-   * 
-   * @see org.eclipse.emf.diffmerge.patterns.diagram.sirius.extensions.DefaultSemanticMapping#getSemanticSelection(fr.obeo.dsl.viewpoint.DSemanticDecorator)
+   * @see org.eclipse.emf.diffmerge.patterns.diagrams.sirius.extensions.DefaultSemanticMapping#getSemanticSelection(Object)
    */
   @Override
   public Collection<EObject> getSemanticSelection(Object decorator) {
@@ -143,28 +149,30 @@ public class CapellaSemanticMapping extends DefaultSemanticMapping {
       // Component comes with part
       Part part = (Part)current;
       AbstractType type = part.getAbstractType();
-      if (type instanceof Component)
+      if (type instanceof Component) {
         result.add(type);
+      }
     } else if (current instanceof Entity) {
       Entity entity = (Entity)current;
       List<TypedElement> typedElements = entity.getTypedElements();
-      if (typedElements.size() == 1)
+      if (typedElements.size() == 1) {
         result.add(typedElements.get(0));
+      }
     }
     return result;
   }
 
   /**
-   * 
-   * @see org.eclipse.emf.diffmerge.patterns.diagram.sirius.extensions.DefaultSemanticMapping#getSemanticStorage(fr.obeo.dsl.viewpoint.DSemanticDecorator)
+   * @see org.eclipse.emf.diffmerge.patterns.diagrams.sirius.extensions.DefaultSemanticMapping#getSemanticStorage(Object)
    */
   @Override
   public EObject getSemanticStorage(Object decorator) {
     // Semantic element by default
     EObject result = super.getSemanticStorage(decorator);
     // If Part, take its type
-    if (result instanceof Part)
+    if (result instanceof Part) {
       result = ((Part)result).getAbstractType();
+    }
     if (decorator instanceof DSemanticDiagram) {
       DSemanticDiagram diagram = (DSemanticDiagram)decorator;
       if (diagramTargetIsExplicitlyRepresented(diagram)) {
@@ -172,12 +180,39 @@ public class CapellaSemanticMapping extends DefaultSemanticMapping {
           // In a LAB, new elements in the diagram background are stored in the
           // root Logical Component
           EObject rootLc = getLogicalArchitecture(diagram.getTarget()).getSystem();
-          if (null != rootLc) result = rootLc;
+          if (null != rootLc) {
+            result = rootLc;
+          }
         } else {
           // The diagram's target is represented within the diagram:
           // take its container for storage
           result = result.eContainer();
         }
+      }
+    }
+    return result;
+  }
+
+  /**
+   * Return whether the given target can be represented as an allocated function within
+   * the given container
+   * @param container a potentially null element
+   * @param target a potentially null element
+   */
+  private boolean checkAllocation(EObject container, EObject target) {
+    boolean result = false;
+    if (target instanceof AbstractFunction) {
+      AbstractFunctionalBlock refinedContainer = null;
+      if (container instanceof Part) { // SA, LA, PA
+        Type type = ((Part)container).getType();
+        if (type instanceof AbstractFunctionalBlock) {
+          refinedContainer = (AbstractFunctionalBlock) type;
+        }
+      } else if (container instanceof AbstractFunctionalBlock) { // OA
+        refinedContainer = (AbstractFunctionalBlock) container;
+      }
+      if (refinedContainer != null) {
+        result = refinedContainer.getAllocatedFunctions().contains(target);
       }
     }
     return result;
@@ -192,23 +227,26 @@ public class CapellaSemanticMapping extends DefaultSemanticMapping {
   private boolean checkDeployment(EObject container, EObject target) {
     Part locationPart = null;
     PhysicalComponent locationType = null;
-    if (container instanceof Part)
+    if (container instanceof Part) {
       locationPart = (Part) container;
-
-    else
+    } else {
       return false;
+    }
     Part targetPart = null;
-    if (target instanceof Part)
+    if (target instanceof Part) {
       targetPart = (Part) target;
-    else
+    } else {
       return false;
+    }
     // Retrieve deployment links from target and check for a relevant one
     Collection<AbstractDeploymentLink> deployments = targetPart.getDeployingLinks();
     for (AbstractDeploymentLink deployment : deployments) {
       DeploymentTarget currentLocation = deployment.getLocation();
       if (currentLocation == locationPart
-          || currentLocation instanceof Part && ((Part) currentLocation).getAbstractType() == locationType)
+          || currentLocation instanceof Part &&
+            ((Part) currentLocation).getAbstractType() == locationType) {
         return true;
+      }
     }
     // None found
     return false;
@@ -222,17 +260,20 @@ public class CapellaSemanticMapping extends DefaultSemanticMapping {
    */
   private boolean checkSubcomponent(EObject container, EObject target) {
     if (!(container instanceof Component &&
-        (target instanceof AbstractType || target instanceof Part)))
+        (target instanceof AbstractType || target instanceof Part))) {
       return true;
+    }
     Component partitionableElement = (Component)container;
     AbstractType subComponentType;
-    if (target instanceof Part)
+    if (target instanceof Part) {
       subComponentType = ((Part)target).getAbstractType();
-    else
+    } else {
       subComponentType = (AbstractType)target;
+    }
     for (Part part : partitionableElement.getContainedParts()) {
-      if (part.getAbstractType() == subComponentType)
+      if (part.getAbstractType() == subComponentType) {
         return true;
+      }
     }
     return false;
   }
@@ -244,14 +285,17 @@ public class CapellaSemanticMapping extends DefaultSemanticMapping {
    */
   private boolean diagramTargetIsExplicitlyRepresented(DSemanticDiagram diagram) {
     final EObject diagramTarget = diagram.getTarget();
-    if (diagramTarget == null) return false;
+    if (diagramTarget == null) {
+      return false;
+    }
     Collection<AbstractDNode> subNodes = new ArrayList<>();
     subNodes.addAll(diagram.getContainers());
     subNodes.addAll(diagram.getNodeListElements());
     subNodes.addAll(diagram.getNodes());
     for (AbstractDNode currentNode : subNodes) {
-      if (diagramTarget == currentNode.getTarget())
+      if (diagramTarget == currentNode.getTarget()) {
         return true;
+      }
     }
     return false;
   }
@@ -262,11 +306,21 @@ public class CapellaSemanticMapping extends DefaultSemanticMapping {
    * @param current a potentially null element
    */
   private LogicalArchitecture getLogicalArchitecture(EObject current) {
-    if (null == current)
+    if (null == current) {
       return null;
-    if (current instanceof LogicalArchitecture)
+    }
+    if (current instanceof LogicalArchitecture) {
       return (LogicalArchitecture)current;
+    }
     return getLogicalArchitecture(current.eContainer());
+  }
+
+  /**
+   * Return whether the given mapping represents an allocated function in a PAB
+   * @param mapping a non-null mapping
+   */
+  private boolean isAllocatedFunctionMapping(AbstractNodeMapping mapping) {
+    return ALLOCATED_FUNCTION_MAPPING_NAMES.contains(getLowerCaseName(mapping));
   }
 
   /**
@@ -312,9 +366,10 @@ public class CapellaSemanticMapping extends DefaultSemanticMapping {
   private boolean isLAB(DDiagram diagram) {
     boolean result = false;
     String descName = diagram.getDescription().getName();
-    if (descName != null)
+    if (descName != null) {
       // Can't see a better criterion
       result = descName.toLowerCase().contains("logical architecture"); //$NON-NLS-1$
+    }
     return result;
   }
 
@@ -342,8 +397,9 @@ public class CapellaSemanticMapping extends DefaultSemanticMapping {
    */
   private String getLowerCaseName(AbstractNodeMapping mapping) {
     String result = null;
-    if (mapping != null && mapping.getName() != null)
+    if (mapping != null && mapping.getName() != null) {
       result = mapping.getName().toLowerCase();
+    }
     return result;
   }
 

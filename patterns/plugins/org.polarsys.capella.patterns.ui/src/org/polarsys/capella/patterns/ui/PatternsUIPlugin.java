@@ -22,7 +22,7 @@ public class PatternsUIPlugin extends AbstractUIPlugin {
   /** The shared instance */
   private static PatternsUIPlugin __plugin;
 
-  //The plug-in ID
+  /** The plug-in ID */
   public static final String PLUGIN_ID = "org.polarsys.capella.patterns.ui"; //$NON-NLS-1$
 
   /**
