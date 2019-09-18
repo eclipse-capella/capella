@@ -74,7 +74,7 @@ public class NewRepresentationAction extends BaseSelectionListenerAction {
     this.openRepresentation = openRepresentation;
 
     this.descriptionLabel = getDescriptionLabel(description);
-    if (StringUtil.isEmpty(descriptionLabel)) {
+    if (!StringUtil.isEmpty(descriptionLabel)) {
       setText(descriptionLabel);
     }
 
