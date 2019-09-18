@@ -79,14 +79,11 @@ public class PCBDScenario extends EmptyProject {
         diagram.getDiagramId());
 
     diagram.createCContainedIn(GenericModel.PA_1_1, GenericModel.PA_1);
-    diagram.createCContainedIn(GenericModel.PC_1, GenericModel.PA_1);
-    diagram.createCContainedIn(GenericModel.PC_2, GenericModel.PA_1);
+    diagram.createCContainedIn(GenericModel.PC_1, GenericModel.PA_1);    
 
-    diagram.createCContainedIn(GenericModel.PA_3, GenericModel.PC_1);
-    diagram.createCContainedIn(GenericModel.PA_3, GenericModel.PC_2);
+    diagram.createCContainedIn(GenericModel.PA_3, GenericModel.PC_1);    
 
-    diagram.createCContainedIn(GenericModel.PA_4, GenericModel.PC_1);
-    diagram.createCContainedIn(GenericModel.PA_4, GenericModel.PC_2);
+    diagram.createCContainedIn(GenericModel.PA_4, GenericModel.PC_1);    
 
   }
 

@@ -40,7 +40,7 @@ public class PhysicalComponentPkgItemProviderDecorator extends AbstractPhysicalC
 
     if (ComponentExt.canCreateABActor(container)) {
       PhysicalComponentNature nature = parentComponent != null ? parentComponent.getNature()
-          : PhysicalComponentNature.UNSET;
+          : PhysicalComponentNature.NODE;
 
       DynamicCommandParameter descriptor = createPhysicalActorDescriptor(
           PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS, nature);

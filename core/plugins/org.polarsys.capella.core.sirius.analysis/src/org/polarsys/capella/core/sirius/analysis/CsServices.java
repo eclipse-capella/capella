@@ -1403,9 +1403,19 @@ public class CsServices {
   }
 
   /**
-   * Gets the AB target to create an actor
+   * Gets the target to create an actor in a Architecture Blank diagram
    */
   public EObject getABActorTarget(DSemanticDecorator decorator) {
+    EObject target = decorator.getTarget();
+
+    if (decorator instanceof DDiagram) {
+      BlockArchitecture rootBlockArchitecture = BlockArchitectureExt.getRootBlockArchitecture(target);
+      return BlockArchitectureExt.getComponentPkg(rootBlockArchitecture);
+    }
+    return target;
+  }
+
+  public EObject getCBDActorTarget(DSemanticDecorator decorator) {
     if (decorator instanceof DDiagram) {
       ContainerMapping cMapping = FaServices.getFaServices().getMappingABComponent(decorator.getTarget(),
           (DDiagram) decorator);
@@ -1486,18 +1496,27 @@ public class CsServices {
    */
   public EObject getIBTarget(DSemanticDecorator decorator, boolean isActorContext) {
     if (decorator instanceof DDiagram) {
+
+      // actors are always created in root structure
+      if (isActorContext) {
+        EObject target = decorator.getTarget();
+        BlockArchitecture rootBlockArchitecture = BlockArchitectureExt.getRootBlockArchitecture(target);
+        return BlockArchitectureExt.getComponentPkg(rootBlockArchitecture);
+      }
+
+      // components are always created in the best container
       for (DDiagramElement element : ((DDiagram) decorator).getOwnedDiagramElements()) {
         if (element.getTarget() == decorator.getTarget()) {
-          return getSemanticParentContainer(decorator.getTarget(), isActorContext);
+          return getSemanticParentContainer(decorator.getTarget(), false);
         }
       }
-      if (isActorContext ? ABServices.getService().isValidCreationABActor(decorator)
-          : ABServices.getService().isValidCreationABComponent(decorator)) {
+
+      if (ABServices.getService().isValidCreationABComponent(decorator)) {
         return decorator.getTarget();
       }
 
       // We find the nearest container to store the element
-      EObject parent = getSemanticParentContainer(decorator.getTarget(), isActorContext);
+      EObject parent = getSemanticParentContainer(decorator.getTarget(), false);
       if (parent instanceof BlockArchitecture
           && ABServices.getService().isValidCreationABComponent(((BlockArchitecture) parent).getSystem())) {
         return ((BlockArchitecture) parent).getSystem();
@@ -2840,8 +2859,13 @@ public class CsServices {
    */
   public Component createActor(CapellaElement container, boolean creationService, String nameVariable) {
     Component component = createComponent(container, nameVariable);
+
     if (component instanceof Entity) {
       component.setHuman(true);
+    } else if (component instanceof PhysicalComponent) {
+      PhysicalComponent physicalComponent = (PhysicalComponent) component;
+      PhysicalComponentNature nature = computePhysicalActorNature(container);
+      physicalComponent.setNature(nature);
     }
 
     component.setActor(true);
@@ -2854,6 +2878,25 @@ public class CsServices {
       component.setName(CapellaServices.getService().getUniqueName(component, createdElementPrefix));
     }
     return component;
+  }
+
+  public PhysicalComponentNature computePhysicalActorNature(CapellaElement container) {
+
+    PhysicalComponentNature nature = PhysicalComponentNature.NODE;
+    PhysicalComponent parentComponent = null;
+
+    if (container instanceof PhysicalComponent) {
+      parentComponent = (PhysicalComponent) container;
+    } else if (container instanceof PhysicalComponentPkg) {
+      PhysicalComponentPkg pkg = (PhysicalComponentPkg) container;
+      parentComponent = (PhysicalComponent) ComponentPkgExt.getParentComponent(pkg);
+    }
+
+    if (parentComponent != null && parentComponent.getNature() != PhysicalComponentNature.UNSET) {
+      nature = parentComponent.getNature();
+    }
+
+    return nature;
   }
 
   /**

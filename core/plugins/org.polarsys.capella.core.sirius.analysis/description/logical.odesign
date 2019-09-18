@@ -500,7 +500,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getABActorTarget().getComponentType()">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getCBDActorTarget().getComponentType()">
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createActor('actor')"/>
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:actor != null">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(la::LogicalComponent)">

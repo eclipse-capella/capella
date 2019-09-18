@@ -1660,10 +1660,8 @@
               <subVariables xsi:type="tool:AcceleoVariable" name="nature" computationExpression="aql:containerView.getComponentNature()"/>
             </viewVariable>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getABActorTarget().getComponentType()">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createActor('actor')">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="nature" valueExpression="aql:nature"/>
-                </subModelOperations>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getCBDActorTarget().getComponentType()">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createActor('actor')"/>
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:actor != null">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponent)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
@@ -2619,9 +2617,7 @@
               </viewVariable>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getABActorTarget().getComponentType()">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createActor('actor')">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="nature" valueExpression="aql:nature"/>
-                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createActor('actor')"/>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:actor != null">
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponent)">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">

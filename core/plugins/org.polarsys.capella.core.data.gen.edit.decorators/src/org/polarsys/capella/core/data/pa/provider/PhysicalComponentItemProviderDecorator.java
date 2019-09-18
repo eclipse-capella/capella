@@ -69,9 +69,11 @@ public class PhysicalComponentItemProviderDecorator extends AbstractPhysicalComp
     PhysicalComponent container = (PhysicalComponent) object;
 
     if (ComponentExt.canCreateABActor(container)) {
+      PhysicalComponentNature nature = container.getNature() != PhysicalComponentNature.UNSET ? container.getNature()
+          : PhysicalComponentNature.NODE;
 
       DynamicCommandParameter descriptor = createPhysicalActorDescriptor(
-          PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_PHYSICAL_COMPONENTS, container.getNature());
+          PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_PHYSICAL_COMPONENTS, nature);
 
       newChildDescriptors.add(descriptor);
     }

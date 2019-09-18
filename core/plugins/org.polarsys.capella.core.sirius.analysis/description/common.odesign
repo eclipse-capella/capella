@@ -10236,7 +10236,6 @@
                   <parameters name="context" value="aql:self"/>
                   <parameters name="scope" value="aql:self"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="nature" valueExpression="aql:nature"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -14402,9 +14401,11 @@
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self->filter(pa::PhysicalArchitecture)->size() != 0">
+                    <subModelOperations xsi:type="tool_1:Let" variableName="parentContainer" valueExpression="aql:self"/>
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:ownedPhysicalComponentPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents" variableName="actor">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="nature" valueExpression="service:parentContainer.computePhysicalActorNature()"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -16271,9 +16272,11 @@
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self->filter(pa::PhysicalArchitecture)->size() != 0">
+                    <subModelOperations xsi:type="tool_1:Let" variableName="parentContainer" valueExpression="aql:self"/>
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:ownedPhysicalComponentPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents" variableName="actor">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="actor" valueExpression="true"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="nature" valueExpression="service:parentContainer.computePhysicalActorNature()"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
