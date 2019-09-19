@@ -27,6 +27,7 @@ import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 
 import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 
@@ -44,7 +45,7 @@ public class GetAvailable_AbstractFunctionalBlock_AllocatedFunctions extends Abs
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
     if (element instanceof AbstractFunctionalBlock) {
 
-      if (!(element instanceof PhysicalComponent && ((PhysicalComponent) element).getNature() == PhysicalComponentNature.NODE)) {
+      if (!(element instanceof PhysicalComponent && ((PhysicalComponent) element).getNature() == PhysicalComponentNature.NODE && !ComponentExt.isActor(element))) {
         availableElements.addAll(getRule_MQRY_Component_FunctionalAllocation_11((AbstractFunctionalBlock) element));
       }
 

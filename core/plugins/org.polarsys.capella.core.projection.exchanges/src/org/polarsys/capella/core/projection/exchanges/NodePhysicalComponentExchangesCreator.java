@@ -77,7 +77,7 @@ public class NodePhysicalComponentExchangesCreator extends DefaultExchangesCreat
     if (_component instanceof PhysicalComponent) {
       // Casts the component as a physical component
       PhysicalComponent node = (PhysicalComponent) _component;
-      createExchangesForDeployedPhysicalComponents(node);
+      createExchangesForPhysicalComponents(node);
       // Creates the exchanges for directly allocated functions
       super.createExchanges();
     }
@@ -113,10 +113,9 @@ public class NodePhysicalComponentExchangesCreator extends DefaultExchangesCreat
 
   /**
    * Creates the exchanges related to exchanges between deployed physical components.
-   * @param node the node physical component from which the search of deployed physical component will be done
+   * @param containerPC the node physical component from which the search of deployed physical component will be done
    */
-  protected void createExchangesForDeployedPhysicalComponents(PhysicalComponent node) {
-
+  protected void createExchangesForPhysicalComponents(PhysicalComponent containerPC) {
     // Gets the deployments of the node
     EList<AbstractDeploymentLink> deployments = part.getDeploymentLinks();
 
@@ -126,87 +125,87 @@ public class NodePhysicalComponentExchangesCreator extends DefaultExchangesCreat
         DeployableElement deployedElement = deploymentLink.getDeployedElement();
         if (deployedElement instanceof Part) {
           Part part = (Part) deployedElement;
-          Type type = part.getType();
-          if (null != type) {
-            createExchangesFromDeployedElement(node, type);
+          Type containedPC = part.getType();
+          if (null != containedPC) {
+            createExchangesForPhysicalComponents(containerPC, containedPC);
           }
         } else if (deployedElement instanceof PhysicalComponent) {
-          createExchangesFromDeployedElement(node, (PhysicalComponent) deployedElement);
+          createExchangesForPhysicalComponents(containerPC, (PhysicalComponent) deployedElement);
         }
       }
     }
+    // Process contained Physical Actors
+    containerPC.getOwnedPhysicalComponents().stream().filter(c -> ComponentExt.isActor(c)).forEach(actor -> {
+      createExchangesForPhysicalComponents(containerPC, actor);
+    });
   }
 
   /**
-   * @param node
-   * @param type
+   * @param sourceContainerPC
+   * @param sourceContainedPC
    */
-  private void createExchangesFromDeployedElement(PhysicalComponent node, Type type) {
-    if ((type != null) && (type instanceof PhysicalComponent)) {
-      // Process each deployed PC
-      // DeployableElement deployedElement =
-      // deployment.getDeployedElement();
-      PhysicalComponent deployedPhysicalComponent = (PhysicalComponent) type;
+  private void createExchangesForPhysicalComponents(PhysicalComponent sourceContainerPC, Type sourceContainedPC) {
+    if (sourceContainedPC instanceof PhysicalComponent) {
+      PhysicalComponent containedPhysicalComponent = (PhysicalComponent) sourceContainedPC;
       // This reference will allows to handle the processed connections
-      for (ComponentPort port : ComponentExt.getOwnedComponentPort(deployedPhysicalComponent)) {
-        // Process the flow ports of the deployed PC
-        // filter inValid port
-        //        if (PortExt.isOut(port)) {
-        // get all the connection of the port
+      for (ComponentPort port : ComponentExt.getOwnedComponentPort(containedPhysicalComponent)) {
+        // Get all the connection of the port
         for (ComponentExchange connection : port.getComponentExchanges()) {
           // filter delegation and unSet type of connection
-          if ((connection.getKind() != ComponentExchangeKind.DELEGATION) && (connection.getKind() != ComponentExchangeKind.UNSET)) {
-            // proceed only if port is a source of current
-            // Connection
-            //              if (connection.getSource().equals(port)) {
+          if ((connection.getKind() != ComponentExchangeKind.DELEGATION)
+              && (connection.getKind() != ComponentExchangeKind.UNSET)) {
             // check if physicalLink creation is necessary
-            if (!doesNodeAlreadyHaveAPhysicalLinkForComponentExchange(node, connection)) {
+            if (!doesNodeAlreadyHaveAPhysicalLinkForComponentExchange(sourceContainerPC, connection)) {
               // get the opposite port [which could be
               // source or target of the Connection]
               InformationsExchanger target = FunctionalExt.getOtherBound(connection, port);
               if (target instanceof ComponentPort) {
                 // get the container of the target port
-                EObject container = target.eContainer();
+                EObject targetContainedPC = target.eContainer();
                 // find the target Node
                 // [PhysicalComponent]
-                if (container instanceof PhysicalComponent) {
-
-                  //For all parts, find the deploying component
-                  for (Part partition : ((PhysicalComponent) container).getRepresentingParts()) {
-                    if (partition instanceof Part) {
-                      for (DeploymentTarget deploying : getCache(PartExt::getDeployingElements, (Part) partition)) {
-                        if (deploying instanceof Part) {
-                          Part deployingPart = (Part) deploying;
-                          if ((deployingPart.getAbstractType() != null) && (deployingPart.getAbstractType() instanceof PhysicalComponent)) {
-                            PhysicalComponent typeDeploying = (PhysicalComponent) deployingPart.getAbstractType();
-
-                            //Create an exchange if there is no connection created
-                            //TODO In multipart, create physical links with part related, not type
-                            if (isValidCreation(connection, node, typeDeploying) && !doesNodeAlreadyHaveAPhysicalLinkForComponentExchange(node, connection)) {
-                              if (connection.getSource().equals(port)) {
-                                doCreateExchange(connection, node, typeDeploying);
-                              } else {
-                                doCreateExchange(connection, typeDeploying, node);
-                              }
-                            }
-                          }
+                if (targetContainedPC instanceof PhysicalComponent) {
+                  // For all parts, find the deploying component
+                  for (Part partition : ((PhysicalComponent) targetContainedPC).getRepresentingParts()) {
+                    for (DeploymentTarget deploying : getCache(PartExt::getDeployingElements, (Part) partition)) {
+                      if (deploying instanceof Part) {
+                        Part deployingPart = (Part) deploying;
+                        if (deployingPart.getAbstractType() instanceof PhysicalComponent) {
+                          PhysicalComponent targetContainerPC = (PhysicalComponent) deployingPart.getAbstractType();
+                          createPhysicalLink(connection, sourceContainerPC, targetContainerPC, port);
                         }
                       }
                     }
                   }
-
+                  // Create the exchange if container is an Actor contained in a PhyscialComponent
+                  if (ComponentExt.isActor(targetContainedPC)
+                      && targetContainedPC.eContainer() instanceof PhysicalComponent) {
+                    PhysicalComponent targetContainerPC = (PhysicalComponent) targetContainedPC.eContainer();
+                    createPhysicalLink(connection, sourceContainerPC, targetContainerPC, port);
+                  }
                 }
               }
             }
-            //              }
           }
         }
-        //        }
       }
-
     }
   }
 
+  private void createPhysicalLink(ComponentExchange connection, PhysicalComponent sourceContainerPC,
+      PhysicalComponent targetContainerPC, ComponentPort sourcePort) {
+    // Create an exchange if there is no connection created
+    // TODO In multipart, create physical links with part related, not type
+    if (isValidCreation(connection, sourceContainerPC, targetContainerPC)
+        && !doesNodeAlreadyHaveAPhysicalLinkForComponentExchange(sourceContainerPC, connection)) {
+      if (connection.getSource().equals(sourcePort)) {
+        doCreateExchange(connection, sourceContainerPC, targetContainerPC);
+      } else {
+        doCreateExchange(connection, targetContainerPC, sourceContainerPC);
+      }
+    }
+  }
+  
   /**
    * This implementation creates physical links related to the given functional exchange.
    * @see org.polarsys.capella.core.projection.commands.utils.DefaultExchangesCreator#doCreatePhysicalLink(org.polarsys.capella.core.data.fa.FunctionalExchange,

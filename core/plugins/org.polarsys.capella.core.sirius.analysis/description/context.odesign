@@ -4833,7 +4833,7 @@
               </initialOperation>
             </menuItemDescription>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Port Allocations" name="port.allocations" label="%sa.sab.port.allocations" precondition="aql:not (self.isNode()) and container.getComponentType().oclIsKindOf(cs::Component)" inverseSelectionOrder="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Port Allocations" name="port.allocations" label="%sa.sab.port.allocations" precondition="aql:(not self.isNode() or self.isActor()) and container.getComponentType().oclIsKindOf(cs::Component)" inverseSelectionOrder="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>

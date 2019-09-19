@@ -84,8 +84,6 @@ public class CommandTester extends PropertyTester {
           } else if (value.equals("PhysicalLinks")) { //$NON-NLS-1$
             return TransitionHelper.getService().isPhysicalLinksGenerationAvailable(element);
 
-          } else if (value.equals("PhysicalLinksComponentExchanges")) { //$NON-NLS-1$
-            return TransitionHelper.getService().isPhysicalLinksComponentExchangesGenerationAvailable(element);
           }
 
         }

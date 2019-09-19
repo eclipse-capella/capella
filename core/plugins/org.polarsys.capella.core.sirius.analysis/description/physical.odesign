@@ -3911,7 +3911,7 @@
         </toolSections>
         <toolSections name="Functions">
           <ownedTools xsi:type="tool_1:ToolGroup" name="FunctionCreation">
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Physical Function and allocates it to the target Physical Component or Actor." name="function" label="%pa.pab.function" precondition="aql:not (self.isNode()) and self.getComponentType().oclIsKindOf(cs::Component) and containerView->filter(diagram::DNodeContainer)->size() != 0" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction']">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Physical Function and allocates it to the target Physical Component or Actor." name="function" label="%pa.pab.function" precondition="aql:(not self.isNode() or self.isActor()) and self.getComponentType().oclIsKindOf(cs::Component) and containerView->filter(diagram::DNodeContainer)->size() != 0" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction']">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
                 <subVariables xsi:type="tool:AcceleoVariable" name="tool" computationExpression="Physical Function"/>
@@ -3927,7 +3927,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Duplicate allocated to the component type of the selected part" name="duplicate" label="%pa.pab.duplicate" precondition="aql:not (self.isNode()) and self.getComponentType().oclIsKindOf(cs::Component) and containerView->filter(diagram::DNodeContainer)->size() != 0" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Duplicate.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Duplicate allocated to the component type of the selected part" name="duplicate" label="%pa.pab.duplicate" precondition="aql:(not self.isNode() or self.isActor()) and self.getComponentType().oclIsKindOf(cs::Component) and containerView->filter(diagram::DNodeContainer)->size() != 0" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Duplicate.gif">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
@@ -3942,7 +3942,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Gather allocated to the component type of the selected part" name="gather" label="%pa.pab.gather" precondition="aql:not (self.isNode()) and self.getComponentType().oclIsKindOf(cs::Component) and containerView->filter(diagram::DNodeContainer)->size() != 0" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Gather.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Gather allocated to the component type of the selected part" name="gather" label="%pa.pab.gather" precondition="aql:(not self.isNode() or self.isActor()) and self.getComponentType().oclIsKindOf(cs::Component) and containerView->filter(diagram::DNodeContainer)->size() != 0" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Gather.gif">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
@@ -3957,7 +3957,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Route allocated to the component type of the selected part" name="route" label="%pa.pab.route" precondition="aql:not (self.isNode()) and self.getComponentType().oclIsKindOf(cs::Component) and containerView->filter(diagram::DNodeContainer)->size() != 0" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Route.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Route allocated to the component type of the selected part" name="route" label="%pa.pab.route" precondition="aql:(not self.isNode() or self.isActor()) and self.getComponentType().oclIsKindOf(cs::Component) and containerView->filter(diagram::DNodeContainer)->size() != 0" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Route.gif">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
@@ -3972,7 +3972,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Select allocated to the component type of the selected part" name="select" label="%pa.pab.select" precondition="aql:not (self.isNode()) and self.getComponentType().oclIsKindOf(cs::Component) and containerView->filter(diagram::DNodeContainer)->size() != 0" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Select.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Select allocated to the component type of the selected part" name="select" label="%pa.pab.select" precondition="aql:(not self.isNode() or self.isActor()) and self.getComponentType().oclIsKindOf(cs::Component) and containerView->filter(diagram::DNodeContainer)->size() != 0" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Select.gif">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
@@ -3987,7 +3987,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Split allocated to the component type of the selected part" name="split" label="%pa.pab.split" precondition="aql:not (self.isNode()) and self.getComponentType().oclIsKindOf(cs::Component) and containerView->filter(diagram::DNodeContainer)->size() != 0" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Split.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Split allocated to the component type of the selected part" name="split" label="%pa.pab.split" precondition="aql:(not self.isNode() or self.isActor()) and self.getComponentType().oclIsKindOf(cs::Component) and containerView->filter(diagram::DNodeContainer)->size() != 0" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Split.gif">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
@@ -4045,7 +4045,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.createABPortAllocation(sourceView,targetView)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates new allocation relationships between the selected Functions and the target Physical Component or Actor. The newly allocated Functions are automatically displayed on the target Physical Component or Actor. This tool modifies the semantic model." name="manage.function.allocation" label="%pa.pab.manage.function.allocation" precondition="aql:not (self.isNode()) and container.getComponentType().oclIsKindOf(cs::Component)" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Manage.gif">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates new allocation relationships between the selected Functions and the target Physical Component or Actor. The newly allocated Functions are automatically displayed on the target Physical Component or Actor. This tool modifies the semantic model." name="manage.function.allocation" label="%pa.pab.manage.function.allocation" precondition="aql:(not self.isNode() or self.isActor()) and container.getComponentType().oclIsKindOf(cs::Component)" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Manage.gif">
             <variable name="container">
               <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
             </variable>
@@ -4093,7 +4093,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="Show/Hide Functions">
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Insert/Remove Allocated Functions. Creates or deletes graphical objects corresponding to already allocated Functions. Removing a Function graphical object from the Physical Component or Actor does not delete the allocation relationship towards the Function. This tool does not modify the semantic model." name="allocated.functions" label="%pa.pab.allocated.functions" precondition="aql:not (self.isNode()) and container.getComponentType().oclIsKindOf(cs::Component)" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_ControlFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Insert/Remove Allocated Functions. Creates or deletes graphical objects corresponding to already allocated Functions. Removing a Function graphical object from the Physical Component or Actor does not delete the allocation relationship towards the Function. This tool does not modify the semantic model." name="allocated.functions" label="%pa.pab.allocated.functions" precondition="aql:(not self.isNode() or self.isActor()) and container.getComponentType().oclIsKindOf(cs::Component)" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_ControlFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
@@ -4115,7 +4115,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Insert All Allocated Functions. Creates graphical objects for all Functions already allocated to all Physical Components and Actors appearing on the diagram. This tool does not modify the semantic model." name="all.allocated.functions" label="%pa.pab.all.allocated.functions" precondition="aql:not (self.isNode())" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_Dummy']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Insert All Allocated Functions. Creates graphical objects for all Functions already allocated to all Physical Components and Actors appearing on the diagram. This tool does not modify the semantic model." name="all.allocated.functions" label="%pa.pab.all.allocated.functions" precondition="aql:(not self.isNode() or self.isActor())" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_Dummy']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4299,7 +4299,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="DnD AB AbstractFunction Allocation" precondition="aql:not (newViewContainer.target.isNode())" mappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_ControlFunction']" moveEdges="true">
+          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="DnD AB AbstractFunction Allocation" precondition="aql:not newViewContainer.target.isNode() or newViewContainer.target.isActor()" mappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_ControlFunction']" moveEdges="true">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -4328,7 +4328,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="D&amp;D Function Allocation From Project Explorer" precondition="aql:not (newViewContainer.target.isNode()) and element.oclIsKindOf(fa::AbstractFunction) and (element.subFunctions->size() = 0)" forceRefresh="true" mappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="D&amp;D Function Allocation From Project Explorer" precondition="aql:(not newViewContainer.target.isNode() or newViewContainer.target.isActor()) and element.oclIsKindOf(fa::AbstractFunction) and (element.subFunctions->size() = 0)" forceRefresh="true" mappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element">
@@ -4363,7 +4363,7 @@
               </initialOperation>
             </menuItemDescription>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Insert/Remove Port Allocations" name="port.allocations" label="%pa.pab.port.allocations" precondition="aql:not (self.isNode()) and container.getComponentType().oclIsKindOf(cs::Component)" inverseSelectionOrder="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Insert/Remove Port Allocations" name="port.allocations" label="%pa.pab.port.allocations" precondition="aql:(not self.isNode() or self.isActor()) and container.getComponentType().oclIsKindOf(cs::Component)" inverseSelectionOrder="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>

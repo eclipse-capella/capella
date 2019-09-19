@@ -44,6 +44,7 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.model.helpers.AbstractFunctionExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.OperationalAnalysisExt;
 import org.polarsys.capella.core.model.helpers.PhysicalArchitectureExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
@@ -221,7 +222,7 @@ public class AllocationManagementData {
       }
       // filter ComponentContext from temp list... and add to result list
       for (CapellaElement capellaElement : temp) {
-        if (isNotNodePhysicalComponent(capellaElement)) {
+        if (isNotNodePhysicalComponent(capellaElement) || ComponentExt.isActor(capellaElement)) {
           result.add(capellaElement);
         }
       }

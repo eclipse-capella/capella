@@ -16,14 +16,17 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.properties.controllers.Component_RealizedComponentsController;
 import org.polarsys.capella.core.data.cs.properties.sections.ComponentSection;
 import org.polarsys.capella.core.data.pa.PaPackage;
+import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.data.pa.properties.Messages;
 import org.polarsys.capella.core.data.pa.properties.fields.PhysicalComponentKindGroup;
 import org.polarsys.capella.core.data.pa.properties.fields.PhysicalComponentNatureGroup;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
@@ -75,8 +78,9 @@ public class PhysicalComponentSection extends ComponentSection {
     pcKindGroup.loadData(capellaElement, PaPackage.eINSTANCE.getPhysicalComponent_Kind());
     pcNatureGroup.loadData(capellaElement, PaPackage.eINSTANCE.getPhysicalComponent_Nature());
     logicalComponentRealizations.loadData(capellaElement, CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS);
-
-    updateAllocatedFunctionsField((PhysicalComponentNature) capellaElement.eGet(PaPackage.eINSTANCE.getPhysicalComponent_Nature()));
+    if (capellaElement instanceof PhysicalComponent) {
+      updateAllocatedFunctionsField((PhysicalComponent) capellaElement);
+    }
     pcNatureGroup.setEnabled(CapellaModelPreferencesPlugin.getDefault().isChangePhysicalComponentNatureAllowed());
   }
 
@@ -104,8 +108,8 @@ public class PhysicalComponentSection extends ComponentSection {
     return fields;
   }
 
-  private void updateAllocatedFunctionsField(PhysicalComponentNature nature) {
-    if (PhysicalComponentNature.NODE.equals(nature)) {
+  private void updateAllocatedFunctionsField(PhysicalComponent pc) {
+    if (PhysicalComponentNature.NODE.equals(pc.getNature()) && !ComponentExt.isActor(pc)) {
       allocatedFunctions.enableOpenButton(false);
     } else {
       allocatedFunctions.enableOpenButton(true);

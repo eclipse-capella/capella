@@ -451,8 +451,10 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
     if (isPhysicalComponentSorceOrTarget && isPhysicalArchitecture) {
       PhysicalComponent sourcePhysicalComponent = (PhysicalComponent) sourceComponent;
       PhysicalComponent targetPhysicalComponent = (PhysicalComponent) targetComponent;
-      boolean isNodeSourceOrTarget =
-          sourcePhysicalComponent.getNature().equals(PhysicalComponentNature.NODE) || targetPhysicalComponent.getNature().equals(PhysicalComponentNature.NODE);
+      boolean isNodeSourceOrTarget = (sourcePhysicalComponent.getNature().equals(PhysicalComponentNature.NODE)
+          && !ComponentExt.isActor(sourcePhysicalComponent))
+          || (targetPhysicalComponent.getNature().equals(PhysicalComponentNature.NODE)
+              && !ComponentExt.isActor(targetPhysicalComponent));
       disableInputText(headerGroup, !isNodeSourceOrTarget);
 
     } else {

@@ -120,19 +120,6 @@
          
          
          
-         <command  commandId="org.polarsys.capella.core.transfo.commands.actions.generatePhysicalLinksComponentExchanges" >
-         <visibleWhen checkEnabled="false">
-            <with variable="selection">
-                <iterate ifEmpty="false">
-                        <test
-			                  forcePluginActivation="true"
-			                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
-			                  value="generatePhysicalLinksComponentExchanges">
-			            </test>
-                </iterate>
-            </with>
-         </visibleWhen> 
-         </command> 
     </menuContribution>
 </extension>
 

@@ -361,7 +361,8 @@ public class TransitionHelper {
       return true;
     }
     if (component instanceof PhysicalComponent) {
-      return ((PhysicalComponent) component).getNature() != PhysicalComponentNature.NODE && !(((PhysicalComponent) component).isActor());
+      return ((PhysicalComponent) component).getNature() != PhysicalComponentNature.NODE
+          || (((PhysicalComponent) component).isActor());
     }
     return false;
   }
@@ -373,15 +374,6 @@ public class TransitionHelper {
   public boolean isCommunicationMeansGenerationAvailable(EObject object) {
     EObject component = getComponent(object);
     return (component instanceof Entity);
-  }
-
-  /**
-   * @param element
-   * @return
-   */
-  public boolean isPhysicalLinksComponentExchangesGenerationAvailable(EObject object) {
-    EObject component = getComponent(object);
-    return (component instanceof PhysicalComponent && ((PhysicalComponent) component).isActor());
   }
 
   /**

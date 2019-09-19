@@ -2315,11 +2315,15 @@ public class CsServices {
 
     // Exclude PhysicalComponent nodes.
     if (sourceComponent instanceof PhysicalComponent) {
-      sourceValid = (sourceValid) ? ((PhysicalComponent) sourceComponent).getNature() != PhysicalComponentNature.NODE
+      sourceValid = (sourceValid)
+          ? (((PhysicalComponent) sourceComponent).getNature() != PhysicalComponentNature.NODE
+              || ComponentExt.isActor(sourceComponent))
           : false;
     }
     if (targetComponent instanceof PhysicalComponent) {
-      targetValid = (targetValid) ? ((PhysicalComponent) targetComponent).getNature() != PhysicalComponentNature.NODE
+      targetValid = (targetValid)
+          ? ((PhysicalComponent) targetComponent).getNature() != PhysicalComponentNature.NODE
+              || ComponentExt.isActor(targetComponent)
           : false;
     }
     return sourceValid && targetValid;
@@ -2478,20 +2482,20 @@ public class CsServices {
           && (source.eContainer() == target)) {
         return false;
       }
-      return isAbstractActorOrNodeComponent(source.eContainer()) && isAbstractActorOrNodeComponent(target);
+      return isNodeComponent(source.eContainer()) && isNodeComponent(target);
 
     } else if (target instanceof PhysicalPort) {
       if (TriStateBoolean.False.equals(CapellaProjectHelper.isReusableComponentsDriven(source))
           && (source == target.eContainer())) {
         return false;
       }
-      return isAbstractActorOrNodeComponent(source) && isAbstractActorOrNodeComponent(target.eContainer());
+      return isNodeComponent(source) && isNodeComponent(target.eContainer());
 
     } else {
       if (TriStateBoolean.False.equals(CapellaProjectHelper.isReusableComponentsDriven(source)) && (source == target)) {
         return false;
       }
-      return isAbstractActorOrNodeComponent(source) && isAbstractActorOrNodeComponent(target);
+      return isNodeComponent(source) && isNodeComponent(target);
     }
   }
 
@@ -2506,9 +2510,9 @@ public class CsServices {
   /**
    * Returns whether given element is an abstract actor or a node physical component
    */
-  protected boolean isAbstractActorOrNodeComponent(EObject source) {
-    return ((source instanceof Component && ((Component) source).isActor()) || ((source instanceof PhysicalComponent)
-        && (((PhysicalComponent) source).getNature() == PhysicalComponentNature.NODE)));
+  protected boolean isNodeComponent(EObject source) {
+    return source instanceof PhysicalComponent
+        && ((PhysicalComponent) source).getNature() == PhysicalComponentNature.NODE;
   }
 
   /**
