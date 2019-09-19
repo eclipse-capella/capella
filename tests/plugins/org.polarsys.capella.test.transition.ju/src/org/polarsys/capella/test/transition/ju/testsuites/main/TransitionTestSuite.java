@@ -11,7 +11,6 @@
 package org.polarsys.capella.test.transition.ju.testsuites.main;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
@@ -54,10 +53,5 @@ public class TransitionTestSuite extends BasicTestSuite {
     tests.add(new PartOwnedByPackage());
     tests.add(new LogicalActorTransition());
     return tests;
-  }
-
-  @Override
-  public List<String> getRequiredTestModels() {
-    return Arrays.asList("Transition");
   }
 }

@@ -15,7 +15,7 @@ import org.eclipse.osgi.util.NLS;
 /**
  */
 public class Messages extends NLS {
-  private static final String BUNDLE_NAME = "org.polarsys.capella.test.projection.ju.transitions.messages"; //$NON-NLS-1$
+  private static final String BUNDLE_NAME = "org.polarsys.capella.test.transition.ju.messages"; //$NON-NLS-1$
 
   public static String FunctionalChainInvolvmentsCapabilities_01;
   public static String FunctionalChainInvolvmentsCapabilities_01_Desc;

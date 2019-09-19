@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.pa;
 
-import java.util.Collections;
+import java.util.Collection;
 
 import org.eclipse.amalgam.explorer.activity.ui.api.manager.ActivityExplorerManager;
 import org.eclipse.emf.ecore.EObject;
@@ -18,7 +18,10 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.la.LogicalComponentPkg;
 import org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.AbstractCapellaHyperlinkAdapter;
+import org.polarsys.capella.core.model.helpers.ComponentPkgExt;
 import org.polarsys.capella.core.model.helpers.ModelQueryHelper;
 import org.polarsys.capella.core.transition.system.topdown.ui.commands.ITransitionCommandConstants;
 import org.polarsys.capella.core.transition.system.topdown.ui.commands.TransitionUICommandHelper;
@@ -37,9 +40,11 @@ public class PerformAutomatedTransitionOfLogicalActorsAdapter extends AbstractCa
   @Override
   protected void linkPressed(HyperlinkEvent event, EObject rootSemanticModel, Session session) {
     ModelElement modelElement = getModelElement(rootSemanticModel);
-    if (modelElement != null) {
+    if (modelElement instanceof LogicalComponentPkg) {
+      LogicalComponentPkg logicalCompPkg = (LogicalComponentPkg) modelElement;
+      Collection<Component> logicalActors = ComponentPkgExt.getAllActors(logicalCompPkg);
       TransitionUICommandHelper.getInstance().executeCommand(ITransitionCommandConstants.ActorTransition,
-          Collections.singleton((Object) modelElement));
+          logicalActors);
     }
   }
 
