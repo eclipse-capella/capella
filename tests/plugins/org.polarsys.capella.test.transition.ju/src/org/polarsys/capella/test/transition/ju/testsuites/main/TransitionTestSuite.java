@@ -11,6 +11,7 @@
 package org.polarsys.capella.test.transition.ju.testsuites.main;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
@@ -20,6 +21,7 @@ import org.polarsys.capella.test.transition.ju.model.functionalchain.FunctionalC
 import org.polarsys.capella.test.transition.ju.model.modestate.StateMachineTransitionTestCase;
 import org.polarsys.capella.test.transition.ju.testcases.FC2FSInitializationTestCase;
 import org.polarsys.capella.test.transition.ju.testcases.LcWithPropertyValueTestCase;
+import org.polarsys.capella.test.transition.ju.testcases.LogicalActorTransition;
 import org.polarsys.capella.test.transition.ju.testcases.PartOwnedByPackage;
 import org.polarsys.capella.test.transition.ju.testcases.ReconciliationCommunicationLinks;
 import org.polarsys.capella.test.transition.ju.testcases.ReconciliationInterfaceUsesImplements;
@@ -50,11 +52,12 @@ public class TransitionTestSuite extends BasicTestSuite {
     tests.add(new FunctionalChainTestCase());
     tests.add(new RootPropertyValueTestCase());
     tests.add(new PartOwnedByPackage());
+    tests.add(new LogicalActorTransition());
     return tests;
   }
 
   @Override
   public List<String> getRequiredTestModels() {
-    return null;
+    return Arrays.asList("Transition");
   }
 }

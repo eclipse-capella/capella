@@ -81,7 +81,7 @@ public class ComponentRule extends AbstractCapellaElementRule {
     }
     EObject result = super.transformDirectElement(element, context);
     if (result instanceof PhysicalComponent) {
-      ((PhysicalComponent) result).setNature(PhysicalComponentNature.BEHAVIOR);
+      ((PhysicalComponent) result).setNature(PhysicalComponentNature.NODE);
     }
     return result;
   }
