@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.validation.rules.ju.testcases.dwf_ca;
+package org.polarsys.capella.test.validation.rules.ju.testcases.dwf_dc;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,10 +19,10 @@ import org.polarsys.capella.test.framework.api.OracleDefinition;
 import org.polarsys.capella.test.validation.rules.ju.testcases.AbstractRulesOnDesignTest;
 
 /**
- * test on DWF_CA_05: This rule ensures that an actor cannot generalize itself.
+ * test on DWF_DC_17: This rule ensures that an actor cannot generalize itself.
  * @generated
  */
-public class Rule_DWF_CA_05 extends AbstractRulesOnDesignTest {
+public class Rule_DWF_DC_17 extends AbstractRulesOnDesignTest {
 
 	/**
 	 * @see org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRuleTestCase#getTargetedEClass()
@@ -37,7 +37,7 @@ public class Rule_DWF_CA_05 extends AbstractRulesOnDesignTest {
 	 * @generated
 	 */
 	protected String getRuleID() {
-		return "org.polarsys.capella.core.data.cs.validation.DWF_CA_05";
+		return "org.polarsys.capella.core.data.cs.validation.DWF_DC_17";
 	}
 
 	/**

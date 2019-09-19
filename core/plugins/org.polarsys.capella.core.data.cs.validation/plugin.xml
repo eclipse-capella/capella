@@ -599,11 +599,11 @@ BehaviourPC=Physical Component of nature BEHAVIOUR
             </constraint>
             <constraint
                   class="org.polarsys.capella.core.data.cs.validation.component.Component_GeneralizationItself"
-                  id="DWF_CA_05"
+                  id="DWF_DC_17"
                   isEnabledByDefault="true"
                   lang="java"
                   mode="Batch"
-                  name="DWF_CA_05 - Component self generalization"
+                  name="DWF_DC_17 - Component self generalization not allowed"
                   severity="ERROR"
                   statusCode="1">
                <message>

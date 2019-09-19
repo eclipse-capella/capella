@@ -16,6 +16,7 @@ import java.util.List;
 
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+import org.polarsys.capella.test.validation.rules.ju.testcases.dwf_dc.Rule_DWF_DC_17;
 
 import junit.framework.Test;
 
@@ -37,7 +38,6 @@ public class DWFCARulesTestSuite extends BasicTestSuite {
     tests.add(new Rule_DWF_CA_02());
     tests.add(new Rule_DWF_CA_03());
     tests.add(new Rule_DWF_CA_04());
-    tests.add(new Rule_DWF_CA_05());
     tests.add(new Rule_DWF_CA_06());
     tests.add(new Rule_DWF_CA_07());
     tests.add(new Rule_DWF_CA_08());

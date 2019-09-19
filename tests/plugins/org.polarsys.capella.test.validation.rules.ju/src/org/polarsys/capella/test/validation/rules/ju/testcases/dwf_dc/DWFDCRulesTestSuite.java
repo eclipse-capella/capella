@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -49,6 +49,7 @@ public class DWFDCRulesTestSuite extends BasicTestSuite {
     tests.add(new Rule_DWF_DC_14());
     tests.add(new Rule_DWF_DC_15());
     tests.add(new Rule_DWF_DC_16());
+    tests.add(new Rule_DWF_DC_17());
     tests.add(new Rule_DWF_DC_18());
     tests.add(new Rule_DWF_DC_19());
     tests.add(new Rule_DWF_DC_20());
