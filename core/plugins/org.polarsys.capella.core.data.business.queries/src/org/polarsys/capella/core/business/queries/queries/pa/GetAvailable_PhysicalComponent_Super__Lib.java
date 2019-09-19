@@ -30,6 +30,7 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.libraries.queries.QueryExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 
 @ExtendingQuery(extendingQuery = GetAvailable_PhysicalComponent_Super.class)
 public class GetAvailable_PhysicalComponent_Super__Lib extends AbstractQuery {
@@ -40,9 +41,8 @@ public class GetAvailable_PhysicalComponent_Super__Lib extends AbstractQuery {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
     if (input instanceof PhysicalComponent) {
       PhysicalComponent currentActor = (PhysicalComponent) input;
-      CapellaElement element = (CapellaElement) input;
-      BlockArchitecture blockArchitectureInProject = BlockArchitectureExt.getRootBlockArchitecture(element);
-      IModel currentProject = ILibraryManager.INSTANCE.getModel(element);
+      BlockArchitecture blockArchitectureInProject = BlockArchitectureExt.getRootBlockArchitecture(currentActor);
+      IModel currentProject = ILibraryManager.INSTANCE.getModel(currentActor);
       for (IModel library : LibraryManagerExt.getAllActivesReferences(currentProject)) {
         BlockArchitecture currentBlockArchitecture = QueryExt
             .getCorrespondingBlockArchitectureFromLibrary(blockArchitectureInProject, (CapellaModel) library);
@@ -50,7 +50,10 @@ public class GetAvailable_PhysicalComponent_Super__Lib extends AbstractQuery {
           PhysicalArchitecture pa = (PhysicalArchitecture) currentBlockArchitecture;
           for (Component component : BlockArchitectureExt.getAllComponents(pa)) {
             if (isGoodSupertypeCandidate(currentActor, component)) {
-              availableElements.add(component);
+              if (currentActor.isActor() == component.isActor()
+                  || CapellaModelPreferencesPlugin.getDefault().isComponentNonActorInheritanceAllowed()) {
+                availableElements.add(component);
+              }
             }
           }
         }

@@ -27,6 +27,7 @@ public class Messages extends NLS {
   public static String InheritancePreferencePage_Group_Title;
   public static String MultipleInheritancePreferencePage_Allowed_Title;
   public static String ComponentInheritancePreferencePage_Allowed_Title;
+  public static String ComponentNonActorInheritancePreferencePage_Allowed_Title;
 
   public static String DeploymentPreferencePage_Group_Title;
   public static String DeploymentPreferencePage_Allowed_Title;

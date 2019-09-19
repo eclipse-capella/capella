@@ -38,6 +38,7 @@ public class Messages extends NLS {
   public static String ComponentExchangeAllocatorSection_ComponentExchangeAllocations_Label;
   public static String Component_IsActor_Label;
   public static String Component_IsHuman_Label;
+  public static String GeneralizableComponentSection_Generalized_Label;
 
   static {
     // initialize resource bundle

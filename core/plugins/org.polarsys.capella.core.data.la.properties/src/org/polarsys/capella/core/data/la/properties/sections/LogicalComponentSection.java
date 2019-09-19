@@ -16,11 +16,13 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.properties.controllers.Component_RealizedComponentsController;
 import org.polarsys.capella.core.data.cs.properties.sections.ComponentSection;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.la.properties.Messages;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
 
@@ -69,6 +71,11 @@ public class LogicalComponentSection extends ComponentSection {
   public void loadData(EObject capellaElement) {
     super.loadData(capellaElement);
 
+    Component component = (Component) capellaElement;
+    // if capellaElement is a component but not an actor, disable super
+    if (null != systemComponentRealizations) {
+      systemComponentRealizations.setEnabled(component.isActor() || BlockArchitectureExt.isRootComponent(component));
+    }
     systemComponentRealizations.loadData(capellaElement, CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS);
   }
 

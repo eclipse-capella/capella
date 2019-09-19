@@ -21,9 +21,11 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
+import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
+import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 
 public class GetAvailable_LogicalComponent_Super extends AbstractQuery {
 
@@ -35,14 +37,19 @@ public class GetAvailable_LogicalComponent_Super extends AbstractQuery {
   @SuppressWarnings({ "rawtypes", "unchecked" })
   @Override
   public List<Object> execute(Object input, IQueryContext context) {
-    CapellaElement capellaElement = (CapellaElement) input;
-    SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries()
-        .getSystemEngineering(capellaElement);
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    LogicalArchitecture ca = SystemEngineeringExt.getOwnedLogicalArchitecture(systemEngineering);
-    for (Component actor : BlockArchitectureExt.getAllComponents(ca)) {
-      if (isGoodSupertypeCandidate((Component) capellaElement, actor)) {
-        availableElements.add(actor);
+    if (input instanceof LogicalComponent) {
+      LogicalComponent component = (LogicalComponent) input;
+      SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries()
+          .getSystemEngineering(component);
+      LogicalArchitecture ca = SystemEngineeringExt.getOwnedLogicalArchitecture(systemEngineering);
+      for (Component actor : BlockArchitectureExt.getAllComponents(ca)) {
+        if (isGoodSupertypeCandidate(component, actor)) {
+          if (component.isActor() == actor.isActor()
+              || CapellaModelPreferencesPlugin.getDefault().isComponentNonActorInheritanceAllowed()) {
+            availableElements.add(actor);
+          }
+        }
       }
     }
     return (List) availableElements;

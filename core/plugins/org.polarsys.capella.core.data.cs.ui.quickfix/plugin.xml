@@ -122,11 +122,21 @@
                ruleId="DWF_DC_40">
          </rules>
       </resolver>
-            <resolver
+      <resolver
             class="org.polarsys.capella.core.data.cs.ui.quickfix.resolver.SwitchIsHumanFlag_Resolver"
             label="Switch to HUMAN">
          <rules
                ruleId="DWF_DC_41">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.data.cs.ui.quickfix.resolver.SwitchIsHumanFlag_Resolver"
+            label="Switch is HUMAN">
+         <rules
+               ruleId="I_41">
+         </rules>
+         <rules
+               ruleId="I_42">
          </rules>
       </resolver>
    </extension>
