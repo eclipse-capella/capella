@@ -269,7 +269,7 @@
         <repositoryList
             name="2019-06">
           <repository
-              url="https://download.eclipse.org/sirius/updates/stable/6.3.0-S20190906-151817/2019-06/"/>
+              url="https://download.eclipse.org/sirius/updates/stable/6.3.0-S20190920-103515/2019-06/"/>
         </repositoryList>
       </targlet>
       <targlet
