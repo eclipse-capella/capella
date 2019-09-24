@@ -18,6 +18,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.kitalpha.massactions.shared.helper.MASelectionHelper;
 
@@ -28,7 +29,7 @@ import org.polarsys.kitalpha.massactions.shared.helper.MASelectionHelper;
  *
  */
 public class CapellaMASelectionHelper extends MASelectionHelper {
-  
+
   @Override
   public Collection<EObject> getElementsFromSelection(ISelection selection) {
     if (selection.isEmpty() || !(selection instanceof IStructuredSelection)) {
@@ -36,16 +37,19 @@ public class CapellaMASelectionHelper extends MASelectionHelper {
     }
 
     List<?> selectedElements = ((IStructuredSelection) selection).toList();
-    
-    List<EObject> semanticElements = new ArrayList<>();
+
+    List<EObject> elementsFromSelection = new ArrayList<>();
 
     for (Object selectedElement : selectedElements) {
-      EObject semanticElement = CapellaAdapterHelper.resolveEObject(selectedElement, false, true);
-
-      if (semanticElement != null) {
-        semanticElements.add(semanticElement);
+      if (selectedElement instanceof DRepresentationDescriptor) {
+        elementsFromSelection.add((DRepresentationDescriptor) selectedElement);
+      } else {
+        EObject semanticElement = CapellaAdapterHelper.resolveBusinessObject(selectedElement);
+        if (semanticElement != null) {
+          elementsFromSelection.add(semanticElement);
+        }
       }
     }
-    return semanticElements;
+    return elementsFromSelection;
   }
 }

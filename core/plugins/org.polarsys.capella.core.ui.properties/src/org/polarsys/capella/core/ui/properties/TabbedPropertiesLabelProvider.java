@@ -96,12 +96,12 @@ public class TabbedPropertiesLabelProvider extends MDEAdapterFactoryLabelProvide
   }
 
   /**
-	 *
-	 */
+   *
+   */
   private EObject getModel(Object element) {
     if (element instanceof StructuredSelection) {
       StructuredSelection selection = (StructuredSelection) element;
-      return CapellaAdapterHelper.resolveSemanticObject(selection.getFirstElement());
+      return CapellaAdapterHelper.resolveBusinessObject(selection.getFirstElement());
     }
     return null;
   }
