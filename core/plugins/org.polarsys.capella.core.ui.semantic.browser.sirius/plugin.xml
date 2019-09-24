@@ -70,7 +70,7 @@
 <extension
          point="org.eclipse.ui.menus">
       <menuContribution
-            locationURI="popup:org.eclipse.ui.popup.any?after=org.polarsys.capella.core.platform.sirius.ui.navigator.LocateInCapellaExplorer">
+            locationURI="popup:org.eclipse.ui.popup.any?after=org.polarsys.capella.core.platform.sirius.ui.navigator.locateInCapellaExplorerCommand">
             <!-- locationURI shall be org.eclipse.ui.popup.any?after=group.showIn, but we want ShowInSemanticBrowser right after the ShowInCapellaExplorer -->
          <command
                commandId="org.polarsys.capella.core.ui.semantic.browser.sirius.semanticBrowserSetSelectionCommand"
