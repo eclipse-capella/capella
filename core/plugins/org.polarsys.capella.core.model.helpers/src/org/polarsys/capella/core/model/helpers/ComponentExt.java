@@ -13,6 +13,7 @@ package org.polarsys.capella.core.model.helpers;
 import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Deque;
@@ -2043,7 +2044,7 @@ public class ComponentExt {
       if (element instanceof Part) {
         AbstractType type = ((Part) element).getAbstractType();
         if ((type instanceof PhysicalComponent)
-            && (((PhysicalComponent) type).getNature() == PhysicalComponentNature.NODE)) {
+            && (((PhysicalComponent) type).getNature() == PhysicalComponentNature.NODE) && !isActor(type)) {
           itElement.remove();
         }
       }
@@ -2065,25 +2066,25 @@ public class ComponentExt {
     deployingSource.addAll(getCache(PartExt::getDeployingElements, source));
 
     if (deployingSource.size() == 0) {
-      EObject sourceContainer = EcoreUtil2.getFirstContainer(source, CsPackage.Literals.COMPONENT);
-      if ((sourceContainer != null) && (sourceContainer instanceof Component)) {
-        EObject sourceContainer2 = EcoreUtil2.getFirstContainer(sourceContainer, CsPackage.Literals.COMPONENT);
-        if ((sourceContainer2 != null) && (sourceContainer2 instanceof Component)) {
+      EObject sourceContainer = EcoreUtil2.getFirstContainer(source,
+          Arrays.asList(CsPackage.Literals.COMPONENT, CsPackage.Literals.COMPONENT_PKG));
+        if (sourceContainer instanceof Component) {
           deployingSource.addAll(((Component) sourceContainer).getRepresentingParts());
+        } else if (sourceContainer instanceof ComponentPkg) {
+          deployingSource.add(sourceContainer);
         }
-      }
     }
 
     Collection<EObject> deployingTarget = new HashSet<EObject>();
     deployingTarget.addAll(PartExt.getDeployingElements(target));
 
     if (deployingTarget.size() == 0) {
-      EObject targetContainer = EcoreUtil2.getFirstContainer(target, CsPackage.Literals.COMPONENT);
-      if ((targetContainer != null) && (targetContainer instanceof Component)) {
-        EObject targetContainer2 = EcoreUtil2.getFirstContainer(targetContainer, CsPackage.Literals.COMPONENT);
-        if ((targetContainer2 != null) && (targetContainer2 instanceof Component)) {
-          deployingTarget.addAll(((Component) targetContainer).getRepresentingParts());
-        }
+      EObject targetContainer = EcoreUtil2.getFirstContainer(target,
+          Arrays.asList(CsPackage.Literals.COMPONENT, CsPackage.Literals.COMPONENT_PKG));
+      if (targetContainer instanceof Component) {
+        deployingTarget.addAll(((Component) targetContainer).getRepresentingParts());
+      } else if (targetContainer instanceof ComponentPkg) {
+        deployingTarget.add(targetContainer);
       }
     }
 
