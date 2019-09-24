@@ -65,6 +65,7 @@ import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.cs.AbstractPhysicalLinkEnd;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
@@ -72,6 +73,7 @@ import org.polarsys.capella.core.data.cs.PhysicalLinkEnd;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
+import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeEnd;
@@ -87,8 +89,11 @@ import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.la.LogicalComponent;
+import org.polarsys.capella.core.data.la.LogicalComponentPkg;
+import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
+import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
@@ -135,8 +140,7 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
    * @param scope a non-null scope
    * @return whether the scope was modified
    */
-  private boolean adjustScopeNonRec(FilteredModelScope scope,
-      boolean extend) {
+  private boolean adjustScopeNonRec(FilteredModelScope scope, boolean extend) {
     return extend? extendScopeNonRec(scope): reduceScopeNonRec(scope);
   }
 
@@ -148,10 +152,11 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
     boolean result = context instanceof CapellaElement;
     if (!result) {
       Resource resource = null;
-      if (context instanceof Resource)
+      if (context instanceof Resource) {
         resource = (Resource)context;
-      else if (context instanceof EObject)
+      } else if (context instanceof EObject) {
         resource = ((EObject)context).eResource();
+      }
       result = CapellaResourceHelper.isCapellaResource(resource);
     }
     return result;
@@ -168,8 +173,9 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
     EObject result = null;
     EObject sourceElement = getLinkDerivationReferenceElement(source);
     EObject targetElement = getLinkDerivationReferenceElement(target);
-    if (sourceElement != null && targetElement != null)
+    if (sourceElement != null && targetElement != null) {
       result = ModelsUtil.getCommonAncestor(sourceElement, targetElement);
+    }
     return result;
   }
 
@@ -187,16 +193,18 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
         ActivityEdge casted = (ActivityEdge)element;
         if (casted.getSource() != null && casted.getTarget() != null) {
           container = deriveLinkContainer(casted.getSource(), casted.getTarget());
-          if (container instanceof AbstractFunction)
+          if (container instanceof AbstractFunction) {
             containment = FaPackage.eINSTANCE.getAbstractFunction_OwnedFunctionalExchanges();
+          }
         }
       }
       // Connections
       else if (element instanceof ComponentExchange) {
         ComponentExchange casted = (ComponentExchange)element;
         container = deriveLinkContainer(casted.getSource(), casted.getTarget());
-        if (container instanceof Component)
+        if (container instanceof Component) {
           containment = FaPackage.eINSTANCE.getAbstractFunctionalBlock_OwnedComponentExchanges();
+        }
       }
       // PhysicalLinks
       else if (element instanceof PhysicalLink) {
@@ -204,8 +212,9 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
         List<? extends EObject> ends = exchange.getLinkEnds();
         if (2 == ends.size()) {
           container = deriveLinkContainer(ends.get(0), ends.get(1));
-          if (container instanceof Component)
+          if (container instanceof Component) {
             containment = CsPackage.eINSTANCE.getComponent_OwnedPhysicalLinks();
+          }
         }
       }
       // Association
@@ -244,8 +253,9 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
           container = typedElement.eContainer();
           List<EReference> containments =
               getReferencesForAddition(container, element.eClass(), true, true);
-          if (containments.size() == 1)
+          if (containments.size() == 1) {
             containment = containments.get(0);
+          }
         }
       }
       if (null != container && null != containment) {
@@ -270,21 +280,17 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
     // Prompt for ownership of non-derivables, remember derivables
     for (EObject root : roots) {
       if (root.eContainer() == null) {
-        if (ownershipMightBeDerived(root))
+        if (getOwnershipDerivationLevel(root) > 0) {
+          // Assume derivables are already ordered by derivation level
           derivables.add(root);
-        else {
+        } else {
           Boolean success = enforceOwnershipByPrompt(
               root, context, true, perTypeLocations, predefinedLocations);
-          if (!Boolean.TRUE.equals(success)) return success;
+          if (!Boolean.TRUE.equals(success)) {
+            return success;
+          }
         }
       }
-    }
-    // Put physical links last because they depend on types which
-    // may themselves be derived
-    int lastPos = derivables.size() - 1;
-    for (EObject derivable : new FArrayList<EObject>(derivables, null)) {
-      if (derivable instanceof PhysicalLink)
-        derivables.move(lastPos, derivable);
     }
     // Try and derive ownerships
     for (EObject derivable : derivables) {
@@ -292,7 +298,9 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
       if (!derived) {
         Boolean success = enforceOwnershipByPrompt(
             derivable, context, true, perTypeLocations, predefinedLocations);
-        if (!Boolean.TRUE.equals(success)) return success;
+        if (!Boolean.TRUE.equals(success)) {
+          return success;
+        }
       }
     }
     return Boolean.TRUE;
@@ -307,6 +315,7 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
    * @param predefinedLocations a non-null, modifiable collection of reference locations to be tried
    * @return whether the operation succeeded, or null for canceled
    */
+  @SuppressWarnings("hiding")
   private Boolean enforceOwnershipByPrompt(EObject element, Object context, boolean allowCancel,
       Map<EClass, IReferenceLocation> perTypeLocations,
       Collection<IReferenceLocation> predefinedLocations) {
@@ -369,8 +378,9 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
         }
       } else {
         // Canceled
-        if (allowCancel)
+        if (allowCancel) {
           return null;
+        }
       }
     }
     return result;
@@ -389,13 +399,15 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
       EObject value, boolean nonErasing, boolean containmentOnly) {
     List<EReference> result = new ArrayList<EReference>();
     List<EReference> candidates;
-    if (containmentOnly)
+    if (containmentOnly) {
       candidates = element.eClass().getEAllContainments();
-    else
+    } else {
       candidates = element.eClass().getEAllReferences();
+    }
     for (EReference candidate : candidates) {
-      if (supportsAdditionOf(element, candidate, value, nonErasing))
+      if (supportsAdditionOf(element, candidate, value, nonErasing)) {
         result.add(candidate);
+      }
     }
     return Collections.unmodifiableList(result);
   }
@@ -438,14 +450,16 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
     // AbstractTypedElement: type
     if (element instanceof AbstractTypedElement) {
       AbstractTypedElement casted = (AbstractTypedElement)element;
-      if (casted.getAbstractType() != null)
+      if (casted.getAbstractType() != null) {
         result.add(casted.getAbstractType());
+      }
     }
     // Allocation: target element
     if (element instanceof Allocation) {
       Allocation casted = (Allocation)element;
-      if (casted.getTargetElement() != null)
+      if (casted.getTargetElement() != null) {
         result.add(casted.getTargetElement());
+      }
     }
     // Association: navigable members
     if (element instanceof Association) {
@@ -457,21 +471,24 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
       ActivityNode casted = (ActivityNode)element;
       // Incoming
       for (ActivityEdge incoming : casted.getIncoming()) {
-        if (scope.covers(incoming.getSource()))
+        if (scope.covers(incoming.getSource())) {
           result.add(incoming);
+        }
       }
       // Outgoing
       for (ActivityEdge outgoing : casted.getOutgoing()) {
-        if (scope.covers(outgoing.getTarget()))
+        if (scope.covers(outgoing.getTarget())) {
           result.add(outgoing);
+        }
       }
     }
     // ComponentPort: connections within the scope
     if (element instanceof ComponentPort) {
       ComponentPort casted = (ComponentPort)element;
       for (AbstractInformationFlow flow : casted.getInformationFlows()) {
-        if (scope.covers(flow.getSource()) && scope.covers(flow.getTarget()))
+        if (scope.covers(flow.getSource()) && scope.covers(flow.getTarget())) {
           result.add(flow);
+        }
       }
     }
     // PhysicalPort: physical links within the scope
@@ -481,8 +498,9 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
         List<AbstractPhysicalLinkEnd> remaining =
             new FOrderedSet<AbstractPhysicalLinkEnd>(link.getLinkEnds(), null);
         remaining.remove(casted);
-        if (!remaining.isEmpty() && scope.covers(remaining.get(0)))
+        if (!remaining.isEmpty() && scope.covers(remaining.get(0))) {
           result.add(link);
+        }
       }
     }
     // SequenceMessage: ends
@@ -496,8 +514,9 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
     // InstanceRole: represented instance
     if (element instanceof InstanceRole) {
       InstanceRole casted = (InstanceRole)element;
-      if (casted.getRepresentedInstance() != null)
+      if (casted.getRepresentedInstance() != null) {
         result.add(casted.getRepresentedInstance());
+      }
     }
     return Collections.unmodifiableList(result);
   }
@@ -522,8 +541,9 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
         if (candidate instanceof Part) {
           Part part = (Part)candidate;
           AbstractType type = part.getAbstractType();
-          if (type instanceof Component && result.contains(type))
+          if (type instanceof Component && result.contains(type)) {
             result.remove(candidate);
+          }
         }
       }
     }
@@ -540,16 +560,18 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
     EObject result;
     if (element instanceof ComponentExchangeEnd) {
       ComponentExchangeEnd end = (ComponentExchangeEnd)element;
-      if (end.getPart() != null)
+      if (end.getPart() != null) {
         result = end.getPart();
-      else
+      } else {
         result = end.getPort();
+      }
     } else if (element instanceof PhysicalLinkEnd) {
       PhysicalLinkEnd end = (PhysicalLinkEnd)element;
-      if (end.getPart() != null)
+      if (end.getPart() != null) {
         result = end.getPart();
-      else
+      } else {
         result = end.getPort();
+      }
     } else {
       result = element;
     }
@@ -562,10 +584,11 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
   @Override
   public EAttribute getNameAttribute(EObject element) {
     EAttribute result;
-    if (element instanceof AbstractNamedElement)
+    if (element instanceof AbstractNamedElement) {
       result = ModellingcorePackage.eINSTANCE.getAbstractNamedElement_Name();
-    else
+    } else {
       result = super.getNameAttribute(element);
+    }
     return result;
   }
   
@@ -585,10 +608,11 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
   public Collection<EObject> getRootsForPatternInclusion(EObject context) {
     List<EObject> result = new FArrayList<EObject>();
     EObject root = EcoreUtil.getRootContainer(context);
-    if (root instanceof Project)
+    if (root instanceof Project) {
       result.addAll(((Project)root).getOwnedModelRoots());
-    else
+    } else {
       result.add(root);
+    }
     return Collections.unmodifiableCollection(result);
   }
   
@@ -599,8 +623,9 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
    * @param scope a non-null scope
    */
   private boolean isMeaningfulWithin(EObject element, IModelScope scope) {
-    if (element instanceof EnumerationPropertyValue)
+    if (element instanceof EnumerationPropertyValue) {
       return false;
+    }
     // Other cases
     Collection<EObject> mustBeIncluded = new FOrderedSet<EObject>();
     // AbstractTrace: requires source element, target element
@@ -646,8 +671,9 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
       }
     }
     for (EObject current : mustBeIncluded) {
-      if (current == null || !scope.covers(current))
+      if (current == null || !scope.covers(current)) {
         return false;
+      }
     }
     return true;
   }
@@ -665,23 +691,30 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
    */
   private boolean isSingletonComponentDriven(EObject element) {
     boolean result = false;
-    if (element instanceof ModelElement)
+    if (element instanceof ModelElement) {
       result = TriStateBoolean.True.equals(
           CapellaProjectHelper.isSingletonComponentsDriven(element));
+    }
     return result;
   }
   
   /**
-   * @see org.eclipse.emf.diffmerge.patterns.templates.engine.ext.SemanticRuleProvider#ownershipMightBeDerived(org.eclipse.emf.ecore.EObject)
+   * @see org.eclipse.emf.diffmerge.patterns.templates.engine.ext.ModellerSemanticRuleProvider#getOwnershipDerivationLevel(org.eclipse.emf.ecore.EObject)
    */
   @Override
-  public boolean ownershipMightBeDerived(EObject element) {
-    return super.ownershipMightBeDerived(element) ||
-        element instanceof ActivityEdge ||
-        element instanceof ComponentExchange ||
-        element instanceof PhysicalLink ||
+  public int getOwnershipDerivationLevel(EObject element) {
+    int result;
+    if (element instanceof PhysicalLink) {
+      result = 2; // Binds Ports, hence Components
+    } else if (element instanceof ActivityEdge ||
+        element instanceof ComponentExchange || // Binds Parts
         element instanceof Association ||
-        element instanceof Component;
+        element instanceof Component) { // Bound to a Part
+      result = 1;
+    } else {
+      result = super.getOwnershipDerivationLevel(element);
+    }
+    return result;
   }
   
   /**
@@ -725,12 +758,15 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
       // Parts
       Part part = (Part)value;
       Type type = part.getType();
-      if (type instanceof SystemComponent && ComponentExt.isActor(type)) {
-        result = element instanceof SystemComponent && ComponentExt.isActor(element);
+      if (type instanceof SystemComponent) {
+        result = element instanceof SystemComponent || element instanceof SystemComponentPkg;
       } else if (type instanceof LogicalComponent) {
-        result = element instanceof LogicalComponent;
+        result = element instanceof LogicalComponent || element instanceof LogicalComponentPkg;
       } else if (type instanceof PhysicalComponent) {
-        result = element instanceof PhysicalComponent;
+        result = element instanceof PhysicalComponent || element instanceof PhysicalComponentPkg;
+      }
+      if (result && ComponentExt.isActor(type)) {
+        result = element instanceof ComponentPkg || ComponentExt.isActor(element);
       }
     }
     return result;
@@ -742,18 +778,31 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
   @Override
   protected boolean supportsAdditionOf(EObject element, EReference reference,
       EClass valueType, boolean nonErasing) {
-    boolean result = super.supportsAdditionOf(element, reference, valueType, nonErasing);
+    boolean result = !(reference == // Ignore ownedMigratedElements completely
+        ModellingcorePackage.eINSTANCE.getModelElement_OwnedMigratedElements()) &&
+        super.supportsAdditionOf(element, reference, valueType, nonErasing);
     if (result) {
       EClass elementClass = element.eClass();
-      if (PaPackage.eINSTANCE.getPhysicalFunction().isSuperTypeOf(valueType))
-        result = PaPackage.eINSTANCE.getPhysicalFunction().isSuperTypeOf(elementClass) ||
-        PaPackage.eINSTANCE.getPhysicalFunctionPkg().isSuperTypeOf(elementClass);
-      else if (LaPackage.eINSTANCE.getLogicalFunction().isSuperTypeOf(valueType))
-        result = LaPackage.eINSTANCE.getLogicalFunction().isSuperTypeOf(elementClass) ||
-        LaPackage.eINSTANCE.getLogicalFunctionPkg().isSuperTypeOf(elementClass);
-      else if (CtxPackage.eINSTANCE.getSystemFunction().isSuperTypeOf(valueType))
-        result = CtxPackage.eINSTANCE.getSystemFunction().isSuperTypeOf(elementClass) ||
-        CtxPackage.eINSTANCE.getSystemFunctionPkg().isSuperTypeOf(elementClass);
+      if (FaPackage.eINSTANCE.getAbstractFunction().isSuperTypeOf(valueType)) {
+        // Function
+        if (PaPackage.eINSTANCE.getPhysicalFunction().isSuperTypeOf(valueType)) {
+          // Physical functions
+          result = PaPackage.eINSTANCE.getPhysicalFunction().isSuperTypeOf(elementClass) ||
+              PaPackage.eINSTANCE.getPhysicalFunctionPkg().isSuperTypeOf(elementClass);
+        } else if (LaPackage.eINSTANCE.getLogicalFunction().isSuperTypeOf(valueType)) {
+          // Logical functions
+          result = LaPackage.eINSTANCE.getLogicalFunction().isSuperTypeOf(elementClass) ||
+              LaPackage.eINSTANCE.getLogicalFunctionPkg().isSuperTypeOf(elementClass);
+        } else if (CtxPackage.eINSTANCE.getSystemFunction().isSuperTypeOf(valueType)) {
+          // System functions
+          result = CtxPackage.eINSTANCE.getSystemFunction().isSuperTypeOf(elementClass) ||
+              CtxPackage.eINSTANCE.getSystemFunctionPkg().isSuperTypeOf(elementClass);
+        } else if (OaPackage.eINSTANCE.getOperationalActivity().isSuperTypeOf(valueType)) {
+          // Operational activity
+          result = OaPackage.eINSTANCE.getOperationalActivity().isSuperTypeOf(elementClass) ||
+              OaPackage.eINSTANCE.getOperationalActivityPkg().isSuperTypeOf(elementClass);
+        }
+      }
     }
     return result;
   }
@@ -776,7 +825,7 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
   }
   
   /**
-   * @see org.eclipse.emf.diffmerge.patterns.templates.engine.ext.SemanticRuleProvider#isApplicableTo(org.eclipse.emf.ecore.EObject)
+   * @see org.eclipse.emf.diffmerge.patterns.templates.engine.ext.ModellerSemanticRuleProvider#isApplicableTo(org.eclipse.emf.ecore.EObject)
    */
   @Override
   public boolean isApplicableTo(EObject obj){
@@ -818,8 +867,9 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
    * @see org.eclipse.emf.diffmerge.patterns.templates.engine.ext.ISemanticRuleProvider#isAllowedToBeRoot(org.eclipse.emf.ecore.EObject)
    */
   public boolean isAllowedToBeRoot(EObject obj){
-    if(obj instanceof Project)
+    if (obj instanceof Project) {
       return true;
+    }
     return false;
   }
   

@@ -33,13 +33,25 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 
-public class PatternCapellaMarkerResolution extends AbstractPatternCapellaMarkerResolution {
-  Map<IMarker, Collection<IPatternInstance>> marker2InvalidPatternInstances = new HashMap<>();
 
+/**
+ * A quick fix for pattern instance issues.
+ */
+public class PatternCapellaMarkerResolution extends AbstractPatternCapellaMarkerResolution {
+
+  /** The map from markers to corresponding sets of concerned pattern instances */
+  protected Map<IMarker, Collection<IPatternInstance>> marker2InvalidPatternInstances = new HashMap<>();
+
+  /**
+   * Return whether pattern instance elements must be preserved during resolution
+   */
   protected boolean shouldKeepElements() {
     return false;
   }
 
+  /**
+   * @see org.eclipse.emf.diffmerge.patterns.capella.quickfix.AbstractPatternCapellaMarkerResolution#run(org.eclipse.core.resources.IMarker)
+   */
   @Override
   public void run(IMarker marker) {
 
@@ -80,6 +92,9 @@ public class PatternCapellaMarkerResolution extends AbstractPatternCapellaMarker
     }
   }
 
+  /**
+   * @see org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.ReportMarkerResolution#enabled(java.util.Collection)
+   */
   @Override
   protected boolean enabled(Collection<IMarker> markers) {
     for (IMarker marker : markers) {
@@ -116,8 +131,12 @@ public class PatternCapellaMarkerResolution extends AbstractPatternCapellaMarker
     return true;
   }
 
+  /**
+   * @see org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.ReportMarkerResolution#quickFixAllSimilarEnabled(java.util.Collection)
+   */
   @Override
   protected boolean quickFixAllSimilarEnabled(Collection<IMarker> markers) {
     return false;
   }
+  
 }

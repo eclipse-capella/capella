@@ -10,10 +10,18 @@
  *******************************************************************************/
 package org.eclipse.emf.diffmerge.patterns.capella.quickfix;
 
+
+/**
+ * A quick fix for pattern instance issues that preserves the model elements covered by the instances.
+ */
 public class SoftPatternCapellaMarkerResolution extends PatternCapellaMarkerResolution {
+
+  /**
+   * @see org.eclipse.emf.diffmerge.patterns.capella.quickfix.PatternCapellaMarkerResolution#shouldKeepElements()
+   */
   @Override
-  protected boolean shouldKeepElements()
-  {
+  protected boolean shouldKeepElements() {
     return true;
   }
+
 }

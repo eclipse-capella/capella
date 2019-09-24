@@ -33,7 +33,7 @@ import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteComman
 public class CapellaDeleteOperationProvider implements IDeleteOperationProvider {
   
   /**
-   * @see org.eclipse.emf.diffmerge.patterns.core.api.ext.IDeleteOperationProvider#getDeleteOperation(java.util.Collection, boolean)
+   * @see org.eclipse.emf.diffmerge.patterns.core.api.ext.IDeleteOperationProvider#getDeleteOperation(java.util.Collection, boolean, boolean, java.lang.Object)
    */
   public CapellaDeleteOperation getDeleteOperation(Collection<? extends EObject> toDelete_p,
       boolean skipConfirmation_p, boolean isExpensive_p,

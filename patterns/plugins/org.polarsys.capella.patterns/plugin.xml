@@ -96,7 +96,7 @@
          <constraints
                categories="capella.category/design/consistency">
             <constraint
-                  class="org.eclipse.emf.diffmerge.patterns.capella.validation.InvalidePatternInstanceConstraint"
+                  class="org.eclipse.emf.diffmerge.patterns.capella.validation.InvalidPatternInstanceConstraint"
                   id="DCON_03"
                   isEnabledByDefault="true"
                   lang="Java"

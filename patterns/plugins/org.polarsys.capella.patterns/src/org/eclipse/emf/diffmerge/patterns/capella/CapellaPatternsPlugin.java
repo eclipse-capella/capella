@@ -47,7 +47,7 @@ public class CapellaPatternsPlugin extends Plugin {
     /**
      * @see org.eclipse.core.runtime.IAdapterFactory#getAdapter(java.lang.Object, java.lang.Class)
      */
-    @SuppressWarnings("rawtypes")
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     public Object getAdapter(Object adaptableObject_p, Class adapterType_p) {
       Object result = null;
       if (adaptableObject_p instanceof CommonPatternInstance &&

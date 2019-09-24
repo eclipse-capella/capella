@@ -16,11 +16,18 @@ import org.eclipse.ui.IViewActionDelegate;
 import org.eclipse.ui.IViewPart;
 import org.polarsys.capella.common.ui.toolkit.browser.view.ISemanticBrowserViewPart;
 
+
+/**
+ * An action delegate that allows hiding/showing related pattern instances in the Semantic Browser view.
+ */
 public class ShowHidePatternInstances implements IViewActionDelegate {
 
-	protected ISemanticBrowserViewPart view;
-	protected boolean active = true;
-		
+	/** The Semantic Browser view */
+  protected ISemanticBrowserViewPart view;
+
+	/**
+	 * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
+	 */
 	@Override
 	public void run(IAction action) {
     view.getModel().setShowPatterns(action.isChecked());
@@ -28,13 +35,19 @@ public class ShowHidePatternInstances implements IViewActionDelegate {
     view.setInputOnViewers(input);
 	}
 
+	/**
+	 * @see org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.IAction, org.eclipse.jface.viewers.ISelection)
+	 */
 	@Override
 	public void selectionChanged(IAction action, ISelection selection) {
 		// nothing to do
 	}
 
+	/**
+	 * @see org.eclipse.ui.IViewActionDelegate#init(org.eclipse.ui.IViewPart)
+	 */
 	@Override
-	public void init(IViewPart view) {
+	public void init(@SuppressWarnings("hiding") IViewPart view) {
 		this.view = (ISemanticBrowserViewPart) view;
 	}
 

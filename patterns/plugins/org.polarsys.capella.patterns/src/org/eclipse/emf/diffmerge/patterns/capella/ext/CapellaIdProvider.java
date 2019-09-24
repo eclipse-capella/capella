@@ -28,14 +28,14 @@ import org.polarsys.capella.common.lib.IdGenerator;
 public class CapellaIdProvider implements IIdProvider {
 
   /**
-   * @see org.eclipse.emf.diffmerge.patterns.core.api.ext.IIdProvider#getNewId()
+   * @see org.eclipse.emf.diffmerge.patterns.core.api.ext.IIdProvider#getNewIdFor(org.eclipse.emf.ecore.EObject)
    */
   public String getNewIdFor(EObject element_p) {
     return IdGenerator.createId();
   }
 
   /**
-   * @see org.eclipse.emf.diffmerge.patterns.core.api.ext.IIdProvider#getId(org.eclipse.emf.ecore.EObject)
+   * @see org.eclipse.emf.diffmerge.patterns.core.api.ext.IIdProvider#getId(org.eclipse.emf.ecore.EObject, org.eclipse.emf.edit.domain.EditingDomain)
    */
   public String getId(EObject element_p, EditingDomain editingDomain_p) {
     String result = null;
