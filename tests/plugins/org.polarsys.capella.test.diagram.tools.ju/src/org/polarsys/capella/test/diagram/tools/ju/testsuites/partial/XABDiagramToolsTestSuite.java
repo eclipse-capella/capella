@@ -103,6 +103,7 @@ public class XABDiagramToolsTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+    tests.add(new CreateCEWithDelegations());
     tests.add(new ShowHideFunctionalChains());
     tests.add(new DragAndDropFunction());
     tests.add(new SwitchComponentExchangesCategories());
@@ -129,8 +130,7 @@ public class XABDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new CreateComponentExchangeGroup());
     tests.add(new CreateActor());
     tests.add(new CreateComponentPort());
-    tests.add(new CreateComponentPortAllocation());
-    tests.add(new CreateCEWithDelegations());
+    tests.add(new CreateComponentPortAllocation());    
     tests.add(new ReconnectComponentExchange());
     tests.add(new ManageBehaviorPCsDeployment());
     tests.add(new ReuseComponents());

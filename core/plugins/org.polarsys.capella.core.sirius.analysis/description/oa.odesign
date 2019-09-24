@@ -1999,7 +1999,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Operational Role Blank" label="%oa.orb" titleExpression="aql:'[ORB] ' + self.name" domainClass="Component" preconditionExpression="aql:(self.oclIsKindOf(oa::Entity) and not self.isActor()) or self.oclIsKindOf(oa::EntityPkg)">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Operational Role Blank" label="%oa.orb" titleExpression="aql:'[ORB] ' + self.name" domainClass="Namespace" preconditionExpression="aql:(self.oclIsKindOf(oa::Entity) and not self.isActor()) or self.oclIsKindOf(oa::EntityPkg)">
       <dropDescriptions href="#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
       <dropDescriptions href="#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Role%20From%20Project%20Explorer']"/>
       <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
