@@ -37,7 +37,7 @@ import org.polarsys.capella.common.ui.massactions.core.shared.helper.container.C
 import org.polarsys.capella.common.ui.massactions.core.shared.messages.Messages;
 import org.polarsys.capella.core.ui.properties.helpers.DialogHelper;
 import org.polarsys.kitalpha.massactions.core.control.AbstractMAPrimitiveCellControl;
-import org.polarsys.kitalpha.massactions.core.helper.EObjectImageProviderHelper;
+import org.polarsys.kitalpha.massactions.core.helper.EObjectImageProvider;
 
 /**
  * A cell control handling many (multiple) references.
@@ -180,7 +180,7 @@ public class ManyRefCellControl extends AbstractMAPrimitiveCellControl {
       setEditorValue(editorValue);
 
       if (!actualCanonicalValue.isEmpty()) {
-        Image image = EObjectImageProviderHelper.getImage(actualCanonicalValue.get(0));
+        Image image = EObjectImageProvider.getInstance().getImage(actualCanonicalValue.get(0));
         editorIconToolItem.setDisabledImage(image);
         editorIconToolItem.setImage(image);
       }

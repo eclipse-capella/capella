@@ -18,10 +18,12 @@ import org.eclipse.nebula.widgets.nattable.data.validate.IDataValidator;
 import org.eclipse.nebula.widgets.nattable.painter.cell.ICellPainter;
 import org.polarsys.capella.common.ui.massactions.core.shared.data.convert.SemanticBrowserDisplayConverter;
 import org.polarsys.capella.common.ui.massactions.core.shared.data.validate.SemanticBrowserDataValidator;
+import org.polarsys.capella.common.ui.massactions.core.shared.helper.SemanticBrowserImageProvider;
 import org.polarsys.capella.common.ui.toolkit.browser.category.ICategory;
 import org.polarsys.kitalpha.massactions.core.column.AbstractMAColumn;
 import org.polarsys.kitalpha.massactions.core.data.compare.MADisplayComparator;
 import org.polarsys.kitalpha.massactions.core.data.convert.MADisplayConverter;
+import org.polarsys.kitalpha.massactions.core.helper.ImageProvider;
 import org.polarsys.kitalpha.massactions.core.painter.cell.TextAndLabelImagePainter;
 
 /**
@@ -34,6 +36,7 @@ public class SemanticBrowserColumn extends AbstractMAColumn {
 
   private ICategory category;
   private MADisplayConverter displayConverter;
+  private ICellPainter cellPainter;
 
   public void setCategory(ICategory category) {
     this.category = category;
@@ -41,7 +44,13 @@ public class SemanticBrowserColumn extends AbstractMAColumn {
 
   @Override
   protected ICellPainter createCellPainter() {
-    return new TextAndLabelImagePainter();
+
+    if (cellPainter == null) {
+      ImageProvider imageProvider = SemanticBrowserImageProvider.getInstance();
+      cellPainter = new TextAndLabelImagePainter(imageProvider);
+    }
+
+    return cellPainter;
   }
 
   @Override
