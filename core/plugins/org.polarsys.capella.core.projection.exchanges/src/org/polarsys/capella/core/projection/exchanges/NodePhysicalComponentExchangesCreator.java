@@ -96,8 +96,6 @@ public class NodePhysicalComponentExchangesCreator extends DefaultExchangesCreat
       if ((cpnt instanceof PhysicalComponent) && (nature == PhysicalComponentNature.NODE)) {
         return true;
 
-      } else if (ComponentExt.isActor(cpnt)) {
-        return true;
       }
     }
     return false;

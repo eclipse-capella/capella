@@ -43,6 +43,7 @@ import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
 
 /**
@@ -399,8 +400,9 @@ public class TransitionHelper {
   }
 
   public boolean canHavePhysicalPort(EObject source) {
-    return (source instanceof PhysicalComponent) || (source instanceof Component && ((Component)source).isActor())
-        || (source instanceof SystemComponent);
+    return (source instanceof PhysicalComponent) || (source instanceof Component && ((Component) source).isActor())
+        || (source instanceof SystemComponent) || (source instanceof LogicalComponent
+            && source == ComponentExt.getRootBlockArchitecture((LogicalComponent) source).getSystem());
   }
 
   /**
