@@ -60,7 +60,9 @@ import org.polarsys.capella.test.semantic.queries.ju.testcases.FragmentAllocated
 import org.polarsys.capella.test.semantic.queries.ju.testcases.FragmentAllocatedState;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.InterfaceExchangedItems;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.InterfaceGeneralizedElements;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.GeneralizedComponents;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.InterfaceGeneralizingElements;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.GeneralizingComponents;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.InterfaceInheritedExchangedItems;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.PhysicalAllocatedComponentPorts;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.PropertyTypeElements;
@@ -112,6 +114,8 @@ public class SemanticQueriesTestSuite extends BasicTestSuite {
     tests.add(new ComponentAllocatingPhysicalPorts());
     tests.add(new InterfaceGeneralizedElements());
     tests.add(new InterfaceGeneralizingElements());
+    tests.add(new GeneralizedComponents());
+    tests.add(new GeneralizingComponents());
     tests.add(new InterfaceInheritedExchangedItems());
     tests.add(new InterfaceExchangedItems());
     tests.add(new RelationshipGeneralizationSource());

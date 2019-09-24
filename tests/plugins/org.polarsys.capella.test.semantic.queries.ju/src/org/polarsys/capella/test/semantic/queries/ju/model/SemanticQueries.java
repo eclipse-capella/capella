@@ -232,6 +232,9 @@ public abstract class SemanticQueries extends AbstractSemanticQueryTestCase {
   public static final String LA__SYSTEM_REALIZATION_TO_SYSTEM = "853e4c61-801a-48c9-891b-65a62f14f515";
   public static final String LA__LOGICAL_ACTORS = "faff0481-1105-49e9-9daf-9f6df45ddae2";
   public static final String LA__LOGICAL_ACTORS__LA_1 = "56afef9c-56e7-450c-912d-b9811275bf26";
+  public static final String LA__LOGICAL_ACTORS__LA_3 = "246d5902-8d11-4eac-ab70-909b4575871b";
+  public static final String LA__LOGICAL_ACTORS__LA_4 = "d908dd6d-1bcc-4512-87f5-581c3e661af2";
+  public static final String LA__LOGICAL_ACTORS__LA_5 = "bbb1fb19-0836-46e3-bcee-fda7b89b1bda"; 
   public static final String LA__LOGICAL_ACTORS__LA_1__COMPONENT_FUNCTIONAL_ALLOCATION_TO_LOGICALFUNCTION_1 = "164051ff-7008-49fc-8ba0-286a23b8dae2";
   public static final String LA__SYSTEM_ANALYSIS_REALIZATION_TO_SYSTEM_ANALYSIS = "198d7956-01f9-4acb-a7af-85be5958c0e3";
   public static final String LA__LOGICAL_INTERFACE_1 = "4b94444c-563b-48aa-8bfb-9e59615e973f";

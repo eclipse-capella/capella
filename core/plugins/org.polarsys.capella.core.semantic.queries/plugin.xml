@@ -131,6 +131,22 @@
        </categoryQuery>
     </category>
 	<category
+	      id="org.polarsys.capella.core.semantic.queries.GeneralizableElementAllSuperGC"
+	      isTopLevel="true"
+	      name="Generalized Components">
+	   <categoryQuery>
+	      <basicQuery
+	            class="org.polarsys.capella.core.semantic.queries.basic.queries.GeneralizableElementAllSuperGC">
+	      </basicQuery>
+	   </categoryQuery>
+	   <targetBrowserId
+	         id="ReferencedElementBrowser">
+	   </targetBrowserId>
+	   <availableForType
+	         class="org.polarsys.capella.core.data.cs.Component">
+	   </availableForType>
+	</category>
+	<category
 	      id="org.polarsys.capella.core.semantic.queries.GeneralizableElementAllSuperGE"
 	      isTopLevel="true"
 	      name="Generalized Elements">
@@ -146,6 +162,21 @@
 	         class="org.polarsys.capella.core.data.capellacore.GeneralizableElement">
 	   </availableForType>
 	</category>
+    <category
+          id="org.polarsys.capella.core.semantic.queries.GeneralizableElementAllSubGC"
+          isTopLevel="true"
+          name="Generalizing Components">
+       <targetBrowserId
+             id="ReferencingElementBrowser">
+       </targetBrowserId>
+       <availableForType
+             class="org.polarsys.capella.core.data.cs.Component">
+       </availableForType>
+       <categoryQuery>
+          <basicQuery
+                class="org.polarsys.capella.core.semantic.queries.basic.queries.GeneralizableElementAllSubGC"></basicQuery>
+       </categoryQuery>
+    </category>
     <category
           id="org.polarsys.capella.core.semantic.queries.GeneralizableElementAllSubGE"
           isTopLevel="true"
