@@ -16,11 +16,6 @@
   <extension-point id="MDEBusinessQueries" name="MDEBusinessQueries" schema="schema/MDEBusinessQueries.exsd" />
   
   <extension name="queries" point="org.polarsys.capella.core.data.business.queries.MDEBusinessQueries">
-    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.AbstractStateTransitionTriggerAndEffect" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.AbstractState_AbstractStateRealizations" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.AbstractState_Activities" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.AbstractState_Properties" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.AbstractState_ReferencedStates" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.ChangeEvent_Expression" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.ChoicePseudoState_StateRealizations" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.FinalState_Activity" />
@@ -48,7 +43,6 @@
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.State_StateRealizations" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.TerminatePseudoState_StateRealizations" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.TimeEvent_Expression" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacore.AbstractExchangeItem_RealizedInformations" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacore.CapellaElement_AppliedPropertyValueGroups" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacore.CapellaElement_AppliedPropertyValues" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacore.CapellaElement_OutgoingRequirement" />
@@ -100,10 +94,6 @@
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.epbs.ConfigurationItem_RealizedPhysicalArtifacts" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.epbs.ConfigurationItem_UsedInterfaces" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.epbs.EPBSArchitecture_AllocatedPhysicalArchitecture" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.AbstractAvailableInState" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.AbstractFunctionalBlock_AllocatedFunctions" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.AbstractFunction_AvailableInStates" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.AbstractFunction_RealizedFunctions" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.ComponentExchangeCategory_Exchanges" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.ComponentExchange_AllocatedFunctionalExchanges" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.ComponentExchange_Categories" />
@@ -134,21 +124,7 @@
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionOutputPort_ProvidedInterface" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionOutputPort_RealizedFunctionOutputPort" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionOutputPort_RequiredInterface" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.Port_AllocatedPort" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.Port_RealizedPort" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.SequenceLink_Links" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.AbstractClassInheritedClasses" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.AbstractExpression_Operand" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.AbstractExpression_Type" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.AbstractMultiplicityElement_DefaultValue" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.AbstractMultiplicityElement_MaxValue" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.AbstractMultiplicityElement_MinValue" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.AbstractMultiplicityElement_NullValue" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.AbstractProperty_Type" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.AbstractReference_ReferencedProperty" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.AbstractReference_ReferencedValue" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.AbstractStringType_Value" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.AbstractValue_Type" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.BinaryExpression_LeftOperand" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.BinaryExpression_RightOperand" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.BinaryExpression_Type" />
@@ -180,13 +156,11 @@
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.ComplexValueRefReferencedProperty" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.ComplexValueRefReferencedValue" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.ComplexValue_Type" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.DataTypeElement_RealizedInformation" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.EnumerationLiteralAbstractType" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.EnumerationLiteralDomainValue" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.EnumerationReference_AbstractType" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.EnumerationReference_ReferencedProperty" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.EnumerationReference_ReferencedValue" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Enumeration_AbstractValue" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Enumeration_DefaultValue" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Enumeration_DomainType" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Enumeration_InheritedEnumeration" />
@@ -201,17 +175,13 @@
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.ExchangeItemElement_Type" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.ExchangeItem_InheritedExchangeItem" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.ExchangeItem_RealizedInformations" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.GeneralizableElement_AbstractInheritedType" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.LiteralBooleanValue_AbstractType" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.LiteralNumericValue_AbstractType" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.LiteralNumericValue_Unit" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.LiteralStringValue_AbstractType" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Message_InheritedMessage" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.MultiplicityElement_AbstractValue" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.NumericReference_AbstractType" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.NumericReference_ReferencedProperty" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.NumericReference_ReferencedValue" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.NumericType_AbstractValue" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.NumericType_DefaultValue" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.NumericType_InheritedNumericType" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.NumericType_MaxValue" />
@@ -221,7 +191,6 @@
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.NumericType_RealizedNumericType" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.NumericValueReference_Unit" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.NumericValue_Type" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.NumericValue_Unit" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Parameter_DefaultValue" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Parameter_MaxCardinality" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Parameter_MaxValue" />
@@ -279,13 +248,6 @@
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Union_DiscriminantType" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Union_InheritedClasses" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.ValuePart_ReferencedProperty" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.interaction.AbstractCapabilityExtend_Extended" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.interaction.AbstractCapabilityGeneralization_Super" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.interaction.AbstractCapabilityInclude_Included" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.interaction.AbstractCapability_AvailableInStates" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.interaction.AbstractCapability_InvolvedAbstractFunctions" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.interaction.AbstractCapability_InvolvedFunctionalChains" />
-<MDEBusinessQueries class="org.polarsys.capella.core.business.queries.interaction.AbstractCapability_RealizedCapabilities" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.interaction.InstanceRole_RepresentedInstance" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.interaction.InteractionUse_ReferencedScenario" />
 <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.interaction.Scenario_RealizedScenario" />
