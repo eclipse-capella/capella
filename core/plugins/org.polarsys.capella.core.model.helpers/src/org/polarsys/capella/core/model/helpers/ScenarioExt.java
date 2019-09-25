@@ -852,7 +852,7 @@ public class ScenarioExt {
     if (component != null) {
       Component comp = (Component) component;
       getAllOwnedPart(result, comp, filter);
-      
+
     } else {
       EObject arch = EcoreUtil2.getFirstContainer(any, CsPackage.Literals.BLOCK_ARCHITECTURE);
       if (arch != null) {
@@ -924,12 +924,10 @@ public class ScenarioExt {
     ModellingArchitecture architecture = (ModellingArchitecture) EcoreUtil2.getFirstContainer(any,
         CapellacorePackage.Literals.MODELLING_ARCHITECTURE);
     Component rootComponent = null;
-    if (architecture instanceof LogicalArchitecture) {
-      rootComponent = ((LogicalArchitecture) architecture).getSystem();
+    if (architecture instanceof LogicalArchitecture || architecture instanceof PhysicalArchitecture) {
+      rootComponent = ((BlockArchitecture) architecture).getSystem();
     }
-    if (architecture instanceof PhysicalArchitecture) {
-      rootComponent = ((PhysicalArchitecture) architecture).getSystem();
-    }
+
     final List<Part> result = new LinkedList<>();
     if (architecture != null) {
       final Iterator<EObject> iterContents = architecture.eAllContents();
