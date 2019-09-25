@@ -21,7 +21,8 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.projection.scenario,
  org.polarsys.capella.core.projection.common,
  org.eclipse.emf.diffmerge.patterns.repositories.catalogs,
- org.eclipse.emf.diffmerge.patterns.core.gen
+ org.eclipse.emf.diffmerge.patterns.core.gen,
+ org.polarsys.capella.core.ui.semantic.browser.sirius
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName

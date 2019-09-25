@@ -36,7 +36,7 @@ public class SiriusSelectionHelper {
       if (selection instanceof IStructuredSelection) {
         IStructuredSelection selection_l = (IStructuredSelection) selection;
         Object firstElement = selection_l.getFirstElement();
-        result = CapellaAdapterHelper.resolveBusinessObject(firstElement);
+        result = CapellaAdapterHelper.resolveSemanticObject(firstElement, false);
       }
     }
     return result;
