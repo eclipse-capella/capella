@@ -62,6 +62,10 @@ public class IDBDiagram extends CommonDiagram {
     return createContainerElement(getDiagramId(), getCreateActorToolName());
   }
 
+  public String createSubActor(String containerId) {
+    return createContainerElement(containerId, getCreateActorToolName());
+  }
+
   @Deprecated
   public void createActor(String id) {
     new CreateContainerTool(this, getCreateActorToolName(), getDiagramId(), id).run();
@@ -76,8 +80,8 @@ public class IDBDiagram extends CommonDiagram {
   }
 
   @Deprecated
-  public String createComponent(String idContainer, String id) {
-    DDiagramElementContainer element = new CreateContainerTool(this, getCreateComponentToolName(), idContainer, id)
+  public String createComponent(String containerId, String id) {
+    DDiagramElementContainer element = new CreateContainerTool(this, getCreateComponentToolName(), containerId, id)
         .run();
 
     return ((CapellaElement) element.getTarget()).getId();
@@ -88,8 +92,8 @@ public class IDBDiagram extends CommonDiagram {
     createComponent(getDiagramId(), id);
   }
 
-  public void createEvent(String idContainer, String id) {
-    new CreateContainerTool(this, getCreateEventToolName(), idContainer, id).run();
+  public void createEvent(String containerId, String id) {
+    new CreateContainerTool(this, getCreateEventToolName(), containerId, id).run();
   }
 
   public void createEvent(String id) {
@@ -106,6 +110,20 @@ public class IDBDiagram extends CommonDiagram {
 
   public String createExchangeItemAllocation(String containerId, ExchangeMechanism type) {
     return createNodeListElement(containerId, getCreateExchangeItemName(type));
+  }
+
+  public String getToolInsertActors() {
+    String toolName = null;
+    if (IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME.equals(getType())) {
+      toolName = IToolNameConstants.TOOL_IDB_INSERT_REMOVE_ACTORS;
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME.equals(getType())) {
+      throw new UnsupportedOperationException();
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME.equals(getType())) {
+      toolName = IToolNameConstants.TOOL_CEI_INSERT_REMOVE_ACTORS;
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME.equals(getType())) {
+      toolName = IToolNameConstants.TOOL_LCCII_INSERT_REMOVE_ACTORS;
+    }
+    return toolName;
   }
 
   public String getToolInsertComponents() {
@@ -132,20 +150,36 @@ public class IDBDiagram extends CommonDiagram {
     return toolName;
   }
 
+  public void insertActors(String... id) {
+    new InsertRemoveTool(this, getToolInsertActors()).insert(id);
+  }
+
+  public void insertSubActors(String containerId, String... id) {
+    new InsertRemoveTool(this, getToolInsertActors(), containerId).insert(id);
+  }
+
   public void insertComponents(String... id) {
     new InsertRemoveTool(this, getToolInsertComponents()).insert(id);
   }
+  
+  public void insertSubComponents(String containerId, String... id) {
+    new InsertRemoveTool(this, getToolInsertComponents(), containerId).insert(id);
+  }
 
-  public void removeComponent(String... id) {
+  public void removeActors(String... id) {
+    new InsertRemoveTool(this, getToolInsertActors()).remove(id);
+  }
+
+  public void removeComponents(String... id) {
     new InsertRemoveTool(this, getToolInsertComponents()).remove(id);
   }
 
-  public void insertRelationship(String container, String... id) {
-    new InsertRemoveTool(this, getToolInsertRelationship(), container).insert(id);
+  public void insertRelationship(String containerId, String... id) {
+    new InsertRemoveTool(this, getToolInsertRelationship(), containerId).insert(id);
   }
 
-  public void removeRelationship(String container, String... id) {
-    new InsertRemoveTool(this, getToolInsertRelationship(), container).remove(id);
+  public void removeRelationship(String containerId, String... id) {
+    new InsertRemoveTool(this, getToolInsertRelationship(), containerId).remove(id);
   }
 
   public void createCommunicationLinkAcquire(String idSource, String idTarget, String id) {
@@ -176,7 +210,7 @@ public class IDBDiagram extends CommonDiagram {
     new CreateDEdgeTool(this, toolName, idSource, idTarget, id).run();
   }
 
-  public String createStandardPort(String idContainer, String id) {
+  public String createStandardPort(String containerId, String id) {
     String toolName = null;
     if (IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME.equals(getType())) {
       toolName = IToolNameConstants.TOOL_IDB_CREATE_STANDARD_PORT;
@@ -187,7 +221,7 @@ public class IDBDiagram extends CommonDiagram {
     } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME.equals(getType())) {
       toolName = IToolNameConstants.TOOL_LCCII_CREATE_STANDARD_PORT;
     }
-    DNode element = new CreateNodeTool(this, toolName, idContainer, id).run();
+    DNode element = new CreateNodeTool(this, toolName, containerId, id).run();
     return ((CapellaElement) element.getTarget()).getId();
   }
 
@@ -205,8 +239,8 @@ public class IDBDiagram extends CommonDiagram {
   }
 
   @Deprecated
-  public void createInterface(String idContainer, String id) {
-    new CreateContainerTool(this, getCreateInterfaceToolName(), idContainer, id).run();
+  public void createInterface(String containerId, String id) {
+    new CreateContainerTool(this, getCreateInterfaceToolName(), containerId, id).run();
   }
 
   public void createGeneralization(String idTarget, String idSource) {

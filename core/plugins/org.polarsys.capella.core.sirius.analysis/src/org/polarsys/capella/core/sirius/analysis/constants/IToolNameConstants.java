@@ -783,6 +783,7 @@ public interface IToolNameConstants {
   String TOOL_LCCII_CREATE_EXCHANGE_ITEM_ALLOCATION = "exchange.item.allocation";
   String TOOL_LCCII_CREATE_TRANSMIT = "transmit";
   String TOOL_LCCII_CREATE_ACQUIRE = "acquire";
+  String TOOL_LCCII_INSERT_REMOVE_ACTORS = "actors";
   String TOOL_LCCII_INSERT_REMOVE_COMPONENTS = "components";
   String TOOL_LCCII_INSERT_REMOVE_INTERFACES = "interfaces";
   String TOOL_LCCII_INSERT_REMOVE_EXCHANGE_ITEMS = "exchange.items";
