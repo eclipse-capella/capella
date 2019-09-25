@@ -22,6 +22,7 @@ import org.polarsys.capella.test.platform.ju.testcases.CapellaPlatformVersionNot
 import org.polarsys.capella.test.platform.ju.testcases.CapellaSiriusCustomisationEnabled;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaVersionConsistencyTest;
 import org.polarsys.capella.test.platform.ju.testcases.ExportCSVPreferencesTest;
+import org.polarsys.capella.test.platform.ju.testcases.InvalidPreferencesInitializer;
 import org.polarsys.capella.test.platform.ju.testcases.InvalidRepresentationDescriptorAdapterFactory;
 import org.polarsys.capella.test.platform.ju.testcases.PropertiesWizardIconTest;
 import org.polarsys.capella.test.platform.ju.testcases.ViatraSurrogateAllDerivedFeaturesImplemented;
@@ -56,6 +57,7 @@ public class PlatformTestSuite extends BasicTestSuite {
     tests.add(new CapellaCheckAcceleo2NotUsed());
     tests.add(new PropertiesWizardIconTest());
     tests.add(new ExportCSVPreferencesTest());
+    tests.add(new InvalidPreferencesInitializer());
 
     return tests;
   }

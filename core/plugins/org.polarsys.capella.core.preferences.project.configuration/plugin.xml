@@ -111,15 +111,6 @@
    </extension>
    
    <extension
-         point="org.eclipse.core.runtime.preferences">         
-         <scope name="project" class="org.eclipse.core.internal.resources.ProjectPreferences"/>
-      <initializer
-            class="org.polarsys.capella.core.preferences.project.configuration.preferences.CapellaModelPreferencesInitializer">
-      </initializer>
-   </extension>
-   
-   
-   <extension
          point="org.eclipse.ui.perspectiveExtensions">
       <perspectiveExtension
             targetID="capella.sirius.perspective">

@@ -19,10 +19,4 @@
             id="org.polarsys.capella.common.platform.eclipse.tools.report.ui.preferences.ReportManagerPrefPage">
       </page>
    </extension>
-	<extension
-         point="org.eclipse.core.runtime.preferences">
-      <initializer
-            class="org.polarsys.capella.common.platform.eclipse.tools.report.ui.pref.ReportManagerPrefPage">
-      </initializer>
-   </extension>
 </plugin>
