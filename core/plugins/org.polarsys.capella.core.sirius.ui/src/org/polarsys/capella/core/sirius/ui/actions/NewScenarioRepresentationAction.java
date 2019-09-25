@@ -15,8 +15,10 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
@@ -71,7 +73,7 @@ public class NewScenarioRepresentationAction extends NewRepresentationAction {
 
     if (!forceDefaultName) {
       
-      String label = description.getLabel();
+      String label = MessageTranslator.INSTANCE.getMessage(description, new IdentifiedElementQuery(description).getLabel());
       if (label == null || label.isEmpty()) {
         label = description.getName();
       }
