@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _d6NhQLEMEeiU1LYbc1uWDg
-Runtime-Version: 2.3.0.201806262310
-Save-Time: 4/26/19 11:36 AM
+Runtime-Version: 2.5.0.201906250740
+Save-Time: 9/25/19 1:21 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -29,7 +29,8 @@ with [get-view "Project Explorer" | get-tree] {
 }
 with [get-view "Semantic Browser"] {
     click
-    get-tree -after [get-label "Current Element"] | select "[LFBD] Root Logical Function - Logical Function Breakdown" 
+    get-tree -after [get-label "Current Element"] 
+        | select "Root Logical Function/All Related Diagrams/[LFBD] Root Logical Function - Logical Function Breakdown" 
         | click -default
 }
 get-editor "EOLE_AF" | click
@@ -37,13 +38,13 @@ get-editor "[LFBD] Root Logical Function - Logical Function Breakdown" | close
 get-view "Project Explorer" | get-tree 
     | select "EOLE_AF/EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical Components - Logical Functions"
 get-view "Semantic Browser" | get-tree -after [get-label "Current Element"] 
-    | select "Logical Components - Logical Functions" | click -default
+    | select "Logical Architecture/All Related Tables/Logical Components - Logical Functions" | click -default
 get-editor "EOLE_AF" | click
 get-editor "Logical Components - Logical Functions" | close
 get-view "Project Explorer" | get-tree 
     | select "EOLE_AF/EOLE_AF.aird/EOLE_AF/Logical Architecture/Capabilities/Distribute data/Scenario/[ES] Distribute data - Exchange Scenario"
 get-view "Semantic Browser" | get-tree -after [get-label "Current Element"] 
-    | select "[ES] Distribute data - Exchange Scenario" | click -default
+    | select "Scenario/All Related Diagrams/[ES] Distribute data - Exchange Scenario" | click -default
 get-editor "EOLE_AF" | click
 get-editor "[ES] Distribute data - Exchange Scenario" | close
 get-window "Save Resource" | get-button "Save" | click
