@@ -2467,15 +2467,6 @@
             <backgroundColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']"/>
             <foregroundColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </style>
-          <conditionnalStyles predicateExpression="aql:(self.getComponentType().nature = pa::PhysicalComponentNature::NODE)">
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="18" arcHeight="18" borderSizeComputationExpression="1" labelExpression="aql:self.computePartLabel()" roundedCorner="true" backgroundStyle="GradientTopToBottom">
-              <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Border']"/>
-              <labelFormat>italic</labelFormat>
-              <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Label']"/>
-              <backgroundColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_min']"/>
-              <foregroundColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']"/>
-            </style>
-          </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self.getComponentType()->filter(cs::Component)->select(c | c.isActor())->size() > 0)">
             <style xsi:type="style:FlatContainerStyleDescription" arcWidth="18" arcHeight="18" borderSizeComputationExpression="1" labelExpression="aql:self.computePartLabel()" roundedCorner="true" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']"/>
@@ -2483,6 +2474,15 @@
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']"/>
               <backgroundColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']"/>
               <foregroundColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:(self.getComponentType().nature = pa::PhysicalComponentNature::NODE)">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="18" arcHeight="18" borderSizeComputationExpression="1" labelExpression="aql:self.computePartLabel()" roundedCorner="true" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Border']"/>
+              <labelFormat>italic</labelFormat>
+              <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Label']"/>
+              <backgroundColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_min']"/>
+              <foregroundColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']"/>
             </style>
           </conditionnalStyles>
         </containerMappings>
