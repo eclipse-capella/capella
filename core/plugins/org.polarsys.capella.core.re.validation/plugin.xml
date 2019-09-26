@@ -39,7 +39,7 @@
                      class="CatalogElement">
                </target>
                <description>
-                  This rule check if a RPL is up to date compared to its origin REC.
+                  This rule checks if a RPL is up to date compared to its origin REC.
                </description>
             </constraint>
             <constraint
@@ -58,7 +58,7 @@
                      class="CatalogElement">
                </target>
                <description>
-                  This rule check if a RPL or REC_RPL has no REC.
+                  This rule checks if a RPL or REC_RPL has no REC.
                </description>
             </constraint>
             <constraint
@@ -77,7 +77,7 @@
                      class="CatalogElement">
                </target>
                <description>
-                  This rule check if a REC might not be utilised in a RPL.
+                  This rule checks if a REC might not be utilised in a RPL.
                </description>
             </constraint>
             <constraint
@@ -96,7 +96,26 @@
                      class="CatalogElement">
                </target>
                <description>
-                  This rule check if a REC_RPL might not be utilised in a RPL.
+                  This rule checks if a REC_RPL might not be utilised in a RPL.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.re.validation.design.consistency.DCON_07_RplLinkToRecElement"
+                  id="DCON_07"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DCON_07 - RPL shall not reference an element of its REC"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0} RPL shall not reference an element which is also referenced by its REC ({1})
+               </message>
+               <target
+                     class="CatalogElementLink">
+               </target>
+               <description>
+                  This rule checks if a RPL references an element which is also referenced by its REC
                </description>
             </constraint>
          </constraints>

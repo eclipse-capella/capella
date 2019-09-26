@@ -563,14 +563,14 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
    * @param context
    */
   public void cleanVirtualLinks(IContext context) {
-    Collection<EObject> links = ContextScopeHandlerHelper.getInstance(context).getCollection(IReConstants.CREATED_LINKS, context);
-    Collection<EObject> toRemove = new LinkedList<>();
-    for (EObject object : links) {
+    Collection<EObject> createdLinks = ContextScopeHandlerHelper.getInstance(context).getCollection(IReConstants.CREATED_LINKS, context);
+    Collection<EObject> toRemove = new HashSet<>();
+    for (EObject object : createdLinks) {
       if (!ContextScopeHandlerHelper.getInstance(context).contains(IReConstants.CREATED_LINKS_TO_KEEP, object, context)) {
         toRemove.add(object);
       }
     }
-
+    
     //Remove also invalid links in the target REC/RPL (elements can have been be removed)
     CatalogElement target = ReplicableElementHandlerHelper.getInstance(context).getTarget(context);
     if (target != null) {
@@ -586,6 +586,10 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
       }
     }
 
+    //Remove also all remaining virtual links that have not been merged (see org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandler.addLink)
+    Collection<EObject> virtualLinks = ContextScopeHandlerHelper.getInstance(context).getCollection(IReConstants.VIRTUAL_LINKS, context);
+    toRemove.addAll(virtualLinks);
+
     if (!toRemove.isEmpty()) {
       for (EObject link : toRemove) {
         if (link instanceof CatalogElementLink) {
@@ -596,9 +600,8 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
       AttachmentHelper.getInstance(context).removeElements(toRemove, context);
     }
 
-    links.clear();
-    links = ContextScopeHandlerHelper.getInstance(context).getCollection(IReConstants.VIRTUAL_LINKS, context);
-    links.removeAll(toRemove);
+    createdLinks.clear();
+    virtualLinks.clear();
   }
 
   /**

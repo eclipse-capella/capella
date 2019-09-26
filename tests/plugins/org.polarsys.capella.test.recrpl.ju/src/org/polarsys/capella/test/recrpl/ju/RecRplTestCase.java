@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.Session;
@@ -55,6 +56,7 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
  * <br>
  * - performTest()<br>
  * - getRequiredTestModels()<br>
+ * 
  * @author Erwan Brottier
  */
 public abstract class RecRplTestCase extends BasicTestCase {
@@ -154,7 +156,8 @@ public abstract class RecRplTestCase extends BasicTestCase {
     assertTrue(RPL.getOrigin().equals(REC));
 
     // All elements from REC should be newly created and linked to the RPL
-    for (Object element : QueryInterpretor.executeQuery(CatalogElement_UsedElements.class.getSimpleName(), REC, new QueryContext())) {
+    for (Object element : QueryInterpretor.executeQuery(CatalogElement_UsedElements.class.getSimpleName(), REC,
+        new QueryContext())) {
       EObject ref = ReplicableElementExt.getReferencingElement(RPL, (EObject) element);
       assertTrue((ref != null) && (ref != element));
     }
@@ -184,19 +187,39 @@ public abstract class RecRplTestCase extends BasicTestCase {
     assertFalse(command.isRolledBack());
   }
 
-  protected boolean updateReplica(Collection<EObject> elements, CatalogElement replica, final Collection<String> disabledCategoryFilters){
+  protected boolean updateReplica(Collection<EObject> elements, CatalogElement replica,
+      final Collection<String> disabledCategoryFilters) {
     UpdateReplicaCommand command = new UpdateReplicaCommand(elements, new NullProgressMonitor());
-    command.addSharedParameter(new GenericParameter<IHandler>(ITransitionConstants.MERGE_DIFFERENCES_HANDLER, new DefaultMergeHandler(true){
+    command.addSharedParameter(
+        new GenericParameter<IHandler>(ITransitionConstants.MERGE_DIFFERENCES_HANDLER, new DefaultMergeHandler(true) {
 
-              @Override
-              public void addCategory(ICategoryItem filter, IContext context) {
-                super.addCategory(filter, context);
-                if (disabledCategoryFilters.contains(filter.getId())){
-                  filter.setActive(false);
-                }
-              }
+          @Override
+          public void addCategory(ICategoryItem filter, IContext context) {
+            super.addCategory(filter, context);
+            if (disabledCategoryFilters.contains(filter.getId())) {
+              filter.setActive(false);
+            }
+          }
 
-            }, "Merge")); //$NON-NLS-1$
+        }, "Merge")); //$NON-NLS-1$
+
+    RecRplCommandManager.push(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET, replica);
+    executeCommand(command);
+    return !command.isRolledBack();
+  }
+
+  /**
+   * Trigger an update RPL and press OK without merging nothing
+   */
+  protected boolean updateReplicaWithoutUpdate(Collection<EObject> elements, CatalogElement replica) {
+    UpdateReplicaCommand command = new UpdateReplicaCommand(elements, new NullProgressMonitor());
+    command.addSharedParameter(
+        new GenericParameter<IHandler>(ITransitionConstants.MERGE_DIFFERENCES_HANDLER, new DefaultMergeHandler(true) {
+          @Override
+          public boolean isFiltered(IDifference difference) {
+            return true;
+          }
+        }, "Merge")); //$NON-NLS-1$
 
     RecRplCommandManager.push(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET, replica);
     executeCommand(command);
@@ -273,6 +296,7 @@ public abstract class RecRplTestCase extends BasicTestCase {
 
   /**
    * Executes the runnable in a read write command and returns the rollback status for the command
+   * 
    * @param r
    * @return true if the command wasn't rolled back, false if the command was rolled back
    */
