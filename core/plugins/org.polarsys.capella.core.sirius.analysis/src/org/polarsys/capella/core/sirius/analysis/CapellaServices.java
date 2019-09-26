@@ -1368,16 +1368,9 @@ public class CapellaServices {
     }
     if (container instanceof Component) {
       return container;
-    } else if (container instanceof LogicalArchitecture) {
-      LogicalArchitecture la = (LogicalArchitecture) container;
-      return la.getSystem();
-
-    } else if (container instanceof PhysicalArchitecture) {
-      PhysicalArchitecture pa = (PhysicalArchitecture) container;
-      return pa.getSystem();
-    } else if (container instanceof EPBSArchitecture) {
-      EPBSArchitecture ea = (EPBSArchitecture) container;
-      return ea.getSystem();
+    } else if (container instanceof LogicalArchitecture || container instanceof PhysicalArchitecture
+        || container instanceof EPBSArchitecture) {
+      return ((BlockArchitecture) container).getSystem();
     }
     return null;
   }

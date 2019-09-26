@@ -117,10 +117,10 @@ public class BreakdownDiagramElements extends BasicTestCase {
               diagramElementElement != null);
 
           BlockArchitecture rootBlockArchitecture = BlockArchitectureExt.getRootBlockArchitecture(diagramTarget);
+          Component system = rootBlockArchitecture.getSystem();
 
           // there is no system for Operational Analysis
-          if (!(rootBlockArchitecture instanceof OperationalAnalysis)) {
-            Component system = rootBlockArchitecture.getSystem();
+          if (system != null) {
             DDiagramElement systemElement = DiagramServices.getDiagramServices().getDiagramElement(diagram, system);
 
             assertEquals(name + " contains an error regarding the system element", expectedResult.containsSystem,
