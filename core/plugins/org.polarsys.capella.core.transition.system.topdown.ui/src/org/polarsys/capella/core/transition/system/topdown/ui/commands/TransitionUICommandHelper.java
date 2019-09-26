@@ -35,7 +35,7 @@ public class TransitionUICommandHelper
     return new TransitionUICommandHelper();
   }
 
-  public void executeCommand(String id, Collection<Object> list) {
+  public void executeCommand(String id, Collection<? extends Object> list) {
     IHandlerService handlerService = (IHandlerService) PlatformUI.getWorkbench().getService(IHandlerService.class);
     ICommandService commandService = (ICommandService) PlatformUI.getWorkbench().getService(ICommandService.class);
 

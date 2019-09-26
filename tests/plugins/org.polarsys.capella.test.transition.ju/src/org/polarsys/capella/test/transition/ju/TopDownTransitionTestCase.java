@@ -26,7 +26,7 @@ import org.polarsys.capella.core.projection.scenario.fs.transition.commands.FSto
  */
 public abstract class TopDownTransitionTestCase extends TransitionTestCase {
 
-  public void performActorTransition(Collection<EObject> elements) {
+  public void performActorTransition(Collection<? extends EObject> elements) {
     executeCommand(org.polarsys.capella.core.transition.system.topdown.commands.TransitionCommandHelper.getInstance().getActorTransitionCommand(
         (Collection) elements, new NullProgressMonitor()));
   }

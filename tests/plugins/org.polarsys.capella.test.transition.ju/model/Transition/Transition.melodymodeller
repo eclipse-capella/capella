@@ -212,11 +212,15 @@
             name="LA 2" abstractType="#0500ac88-7e78-4a9b-a1e3-91ab6e9d86ad"/>
         <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
             id="7949e1d0-760e-4aa9-b322-0d77042c0ec5" name="Logical System">
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="439f53c0-5278-478c-a7c8-d2ec85904d41"
+              name="LA 1" abstractType="#d233a040-94d0-4c84-8fa3-1568e298c4b4"/>
           <ownedComponentRealizations xsi:type="org.polarsys.capella.core.data.cs:ComponentRealization"
               id="f6154af7-18db-48c3-9a11-0a3db732ec3f" targetElement="#001ceaba-5eb7-4bab-8546-c05839f6ec6c"
               sourceElement="#7949e1d0-760e-4aa9-b322-0d77042c0ec5"/>
           <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
               id="10ead931-83d8-473d-8446-57516b037c93" name="LC 1"/>
+          <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+              id="d233a040-94d0-4c84-8fa3-1568e298c4b4" name="LA 1" actor="true"/>
           <ownedLogicalComponentPkgs xsi:type="org.polarsys.capella.core.data.la:LogicalComponentPkg"
               id="eb48fe97-d64f-4d49-976a-cb24b55adc01" name="LogicalComponentPkg 1">
             <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="d502379b-a675-494a-8b02-c2b3d0fe0c71"
