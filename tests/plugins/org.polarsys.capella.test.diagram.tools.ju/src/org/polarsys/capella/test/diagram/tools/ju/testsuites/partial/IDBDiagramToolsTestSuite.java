@@ -29,6 +29,7 @@ import org.polarsys.capella.test.diagram.tools.ju.idb.CreateRequires;
 import org.polarsys.capella.test.diagram.tools.ju.idb.CreateUses;
 import org.polarsys.capella.test.diagram.tools.ju.idb.DragAndDropTest;
 import org.polarsys.capella.test.diagram.tools.ju.idb.InsertRelationship;
+import org.polarsys.capella.test.diagram.tools.ju.idb.ShowHideActorsAndComponents;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
@@ -67,6 +68,7 @@ public class IDBDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new CreateRequires());
     tests.add(new CreateUses());
     tests.add(new InsertRelationship());
+    tests.add(new ShowHideActorsAndComponents());
     tests.add(new DragAndDropTest());
 
     return tests;
