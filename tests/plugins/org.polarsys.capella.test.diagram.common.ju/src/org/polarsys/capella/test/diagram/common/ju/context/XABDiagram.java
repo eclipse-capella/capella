@@ -305,6 +305,10 @@ public class XABDiagram extends CommonDiagram {
     new CreateDEdgeTool(this, IToolNameConstants.TOOL_XAB_CREATE_PHYSICAL_LINK, idSource, idTarget, id).run();
   }
 
+  public void cannotCreatePhysicalLink(String idSource, String idTarget, String id) {
+    new CreateDEdgeTool(this, IToolNameConstants.TOOL_XAB_CREATE_PHYSICAL_LINK, idSource, idTarget, id).cannotRun();
+  }
+
   public String getToolNameReconnectPhysicalLink(BlockArchitectureExt.LinkDirection direction) {
     String name = null;
     if (direction == LinkDirection.SOURCE) {
