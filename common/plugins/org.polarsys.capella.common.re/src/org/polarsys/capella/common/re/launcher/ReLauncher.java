@@ -26,16 +26,22 @@ public abstract class ReLauncher extends DefaultLauncher {
  
   protected void initializeParameters() {
     super.initializeParameters();
-    
-    addSharedParameter( new GenericParameter<IRulesHandler>(org.polarsys.capella.core.transition.common.activities.InitializeTransitionActivity.PARAMETER_RULE_HANDLER,
+   
+    addSharedParameter(new GenericParameter<IRulesHandler>(org.polarsys.capella.core.transition.common.activities.InitializeTransitionActivity.PARAMETER_RULE_HANDLER,
         getTransposer().getRulesHandler(), "Rule handler"));
 
-    addSharedParameter( new GenericParameter<String>(ITransitionConstants.OPTIONS_SCOPE, getScope(), "Transposer Rule handler")); //$NON-NLS-1$;
+    addSharedParameter(new GenericParameter<String>(ITransitionConstants.OPTIONS_SCOPE, getScope(), "Transposer Rule handler")); //$NON-NLS-1$;
 
     addSharedParameter(new GenericParameter<String>(IReConstants.COMMAND__CURRENT_VALUE, getKind(), "Transposer Rule handler")); //$NON-NLS-1$
 
     addSharedParameter(new GenericParameter<IMergeHandler>(ITransitionConstants.MERGE_DIFFERENCES_HANDLER, createMergeHandler() , "Re Merge handler")); //$NON-NLS-1$
 
+  }
+  
+  @Override
+  protected void dispose() {
+    super.dispose();
+    removeSharedParameter(org.polarsys.capella.core.transition.common.activities.InitializeTransitionActivity.PARAMETER_RULE_HANDLER);
   }
   
   @Override
