@@ -102,6 +102,18 @@ public class XABDiagram extends CommonDiagram {
   }
 
   public String createActor(String id) {
+    DDiagramElementContainer element = new CreateContainerTool(this, getCreateActorToolName(), getDiagramId(), id)
+        .run();
+    return ((CapellaElement) element.getTarget()).getId();
+  }
+
+  public String createActor(String id, String containerId) {
+
+    DDiagramElementContainer element = new CreateContainerTool(this, getCreateActorToolName(), containerId, id).run();
+    return ((CapellaElement) element.getTarget()).getId();
+  }
+
+  protected String getCreateActorToolName() {
     String name = null;
     if (type == Type.OA) {
       name = IToolNameConstants.TOOL_OAB_CREATE_OA;
@@ -112,8 +124,7 @@ public class XABDiagram extends CommonDiagram {
     } else if (type == Type.PA) {
       name = IToolNameConstants.TOOL_PAB_CREATE_PHYSICAL_ACTOR;
     }
-    DDiagramElementContainer element = new CreateContainerTool(this, name, getDiagramId(), id).run();
-    return ((CapellaElement) element.getTarget()).getId();
+    return name;
   }
 
   public String createFunction(String id, String containerId) {

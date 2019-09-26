@@ -11,6 +11,8 @@
 package org.polarsys.capella.test.diagram.common.ju.context;
 
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.Type;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IDNDToolNameConstants;
@@ -48,21 +50,30 @@ public class PABDiagram extends XABDiagram {
     }.run().open();
   }
 
-  public void createNodeComponent(String id, String containerId) {
-    new CreateContainerTool(this, IToolNameConstants.TOOL_PAB_CREATE_NODE_PHYSICAL_COMPONENT, containerId, id).run();
-  }
-
-  public void createBehaviorComponent(String id, String containerId) {
-    new CreateContainerTool(this, IToolNameConstants.TOOL_PAB_CREATE_BEHAVIOR_PHYSICAL_COMPONENT, containerId, id)
+  public String createNodeComponent(String id, String containerId) {
+    DDiagramElementContainer element = new CreateContainerTool(this, IToolNameConstants.TOOL_PAB_CREATE_NODE_PHYSICAL_COMPONENT, containerId, id)
         .run();
+    return ((CapellaElement) element.getTarget()).getId();
   }
 
-  public void createDeployedBehaviorComponent(String id, String containerId) {
-    new CreateContainerTool(this, IToolNameConstants.TOOL_PAB_DEPLOY_BEHAVIOR_PC, containerId, id).run();
+  public String createBehaviorComponent(String id, String containerId) {
+    DDiagramElementContainer element = new CreateContainerTool(this,
+        IToolNameConstants.TOOL_PAB_CREATE_BEHAVIOR_PHYSICAL_COMPONENT, containerId,
+        id)
+        .run();
+    return ((CapellaElement) element.getTarget()).getId();
   }
 
-  public void createDeployedNodeComponent(String id, String containerId) {
-    new CreateContainerTool(this, IToolNameConstants.TOOL_PAB_DEPLOY_NODE_PC, containerId, id).run();
+  public String createDeployedBehaviorComponent(String id, String containerId) {
+    DDiagramElementContainer element = new CreateContainerTool(this, IToolNameConstants.TOOL_PAB_DEPLOY_BEHAVIOR_PC,
+        containerId, id).run();
+    return ((CapellaElement) element.getTarget()).getId();
+  }
+
+  public String createDeployedNodeComponent(String id, String containerId) {
+    DDiagramElementContainer element = new CreateContainerTool(this, IToolNameConstants.TOOL_PAB_DEPLOY_NODE_PC,
+        containerId, id).run();
+    return ((CapellaElement) element.getTarget()).getId();
   }
 
   public void removeDeployedBehaviorComponent(String id, String containerId) {
