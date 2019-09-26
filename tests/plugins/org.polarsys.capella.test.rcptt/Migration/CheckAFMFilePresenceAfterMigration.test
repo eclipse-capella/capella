@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _g6DIAFpOEeaZtZLaGPKybA
-Runtime-Version: 2.5.0.M2
-Save-Time: 9/10/19 1:14 PM
+Runtime-Version: 2.5.0.201906250740
+Save-Time: 9/26/19 3:49 PM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -17,31 +17,11 @@ Entry-Name: .content
 // Check the model obsolescence (a popup with an error message ) 
 get-view "Project Explorer" | get-tree | select "previous_version/previous_version.aird"
 
-// FIXME This step is unstable. It causes the test failed because:
-// Sometime it is the dialog "Problem Occured".
-// Sometime it is the dialog "Multiple problems have occured"
-//exec-with-options {
-//    get-view "Project Explorer" | get-tree | get-menu "Open Session" | click
-//    get-window "Progress Information" | get-window "Problem Occurred" | get-control Any -index 1 
-//        | get-property "getChildren().Control[1].getText()" | contains "Please have a look at documentation about project migration." | verify-true
-//    get-window "Progress Information" | get-window "Problem Occurred" | get-button OK | click
-//} -allowStatusDialog
-
 // Migrate the model
 get-view "Project Explorer" | get-tree | select "previous_version" 
     | get-menu "Migration/Migrate Project toward current version" | click
 with [get-window "Migration of 'previous_version'"] {
     get-button "Backup models before the migration" | uncheck
-    get-button OK | click
-}
-
-// Unhide AFM resources
-get-view "Project Explorer" | get-tree | select "previous_version/previous_version.aird"
-get-button "View Menu" | click
-get-view "Project Explorer" | get-menu "Filters and Customization..." | click
-with [get-window "Filters and Customization"] {
-    get-tab-folder | get-tab-item "Pre-set filters" | click
-    get-table | get-item "\\*.afm resources" | uncheck
     get-button OK | click
 }
 
@@ -57,7 +37,4 @@ get-view "Project Explorer" | get-tree
     | double-click
 get-editor "[LAB] Logical System" | get-diagram -index 1 | get-edit-part -name "[LAB] Logical System" 
     | get-property childrenCount | equals 3 | verify-true
-    
-restart-aut
-wait-until-eclipse-is-ready
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
