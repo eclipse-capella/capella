@@ -1,4 +1,4 @@
-            
+
 = Model Preferences =
  
 Preferences are available from the '''Window / Preferences menu'''. A section is dedicated to Capella.
@@ -29,7 +29,7 @@ The AIRD Fragment File Extension option allows specifying the expected file suff
 
  
 | 
-It is strongly 				recommended to use &ldquo;airdfragment&rdquo;.
+It is strongly recommended to use &ldquo;airdfragment&rdquo;.
 
  
 |}  
@@ -38,8 +38,8 @@ It is strongly 				recommended to use &ldquo;airdfragment&rdquo;.
 On the sub section of '''Capella / Delete preferences''', it is possible to specify deletion options:
 
  
-* If &ldquo;'''Confirm deletions'''&rdquo; is activated, then a 	confirmation dialog will be prompted for each deletion attempt. This 	dialog show a live impact analysis of the deletion.
-* If &ldquo;'''If reusing components is allowed, synchronize &hellip;'''&rdquo; 	is activated, then when deleting a Component, all the Parts that are 	typed by this component will be deleted as well.
+* If &ldquo;'''Confirm deletions'''&rdquo; is activated, then a confirmation dialog will be prompted for each deletion attempt. This dialog show a live impact analysis of the deletion.
+* If &ldquo;'''If reusing components is allowed, synchronize &hellip;'''&rdquo; is activated, then when deleting a Component, all the Parts that are typed by this component will be deleted as well.
  
 '''Protected Elements''': It is possible to prohibit the deletion of certain critical elements. In that case, the deletion command will not be active for these elements.
 
@@ -114,7 +114,7 @@ On the sub section of '''Capella / Model Valdation preferences''', it is possibl
 
 On the sub section of '''Capella / Project Explorer preferences''', when the &ldquo;'''Project'''&rdquo; option is activated, the semantic element &ldquo;Project&rdquo; is displayed (see illustration below). By default, this option is not active.
 
-In order to modify configuration property values located on the 	Project element (reusable components or not, default values for 	progress monitoring, etc.).), you can activate temporary this option.
+In order to modify configuration property values located on the Project element (reusable components or not, default values for progress monitoring, etc.).), you can activate temporary this option.
  
 [[Image:Images/6.2_Model preferences.png|440x152px]]
 
@@ -157,7 +157,7 @@ This section '''Capella / SCM preferences''' is related to the behaviour of Cape
 
  
 | 
-Activating this 				configuration option is mandatory when working with Clearcase 				Dynamic Views, in order to be notified immediately of changes 				performed by other users.
+Activating this configuration option is mandatory when working with Clearcase Dynamic Views, in order to be notified immediately of changes performed by other users.
 
  
 |}  
@@ -179,15 +179,15 @@ If the preference is activated, the tree will be displayed. For significant mode
 On the sub section of '''Capella / Transitions/Generation preferences''', it is possible to specify the scope of automatic transitions.
 
  
-[[Image:Images/6.2.%20Model%20preferences_html_m73c38954.png|799x668px]]
+[[Image:Images/6.2.%20Model%20preferences_html_m73c38954.png|868x896px]]
 
-* The radio buttons &ldquo;'''Propagate logical component breakdown in 	physical architecture'''&rdquo; and &ldquo;'''Propagate only leaf 	logical components in physical architecture'''&rdquo; specifies 	whether the breakdown of Logical Components is kept at physical 	level or not.
-* The checkbox &ldquo;'''Transit interfaces handled by Components from 	context/logical layers to physical architecture'''&rdquo; specifies 	whether interfaces are duplicated from Logical architecture to 	Physical architecture when performing a Logical Component to 	Physical Component transition. If not activated, Physical Components 	will directly implement / use / provide / require interface located 	in the system analysis and logical architecture.
-* The checkbox &ldquo;'''Transit allocated Exchange Items while 	transition of Interfaces, Functions or Components'''&rdquo; 	specifies whether Interfaces, Functions or Components transition 	triggers transition of related Exchange Items (i.e. duplicates 	Exchange Items from one engineering phase to the following one). If 	not activated, Interface, Functions and Component Exchanges in the 	target engineering phase will still refer the Exchange Items located 	in the previous engineering phase.
-* The checkbox &ldquo;'''Transit Data Types handled by Exchange Items 	while transition of Exchange Items'''&rdquo; specifies whether 	Exchange Items transition triggers transition of related Data (i.e. 	duplicates Data from one engineering phase to the following one). If 	not activated, Exchange Items in the target engineering phase will 	still refer the Data elements located in the previous engineering 	phase.
-* The checkbox &ldquo;'''Transit State Machines owned by a Component 	while transition of Components'''&rdquo; specifies whether State 	Machines transition is triggered when performing a Component 	transition.
-* The checkbox &ldquo;'''Transit Functional elements allocated by an 	Operational Entity or Operational Actor while their transition'''&rdquo; 	specifies whether Operational Activities are transformed into System 	Functions when performing a transition of Operational Entities or 	Actors.
-* The checkbox '''&ldquo;Include involved elements&rdquo;''' on the 	Property Values section specifies whether involved elements will be 	propagated while a transition of Property Values
+* The radio buttons &ldquo;'''Propagate LC / LA breakdown in physical architecture'''&rdquo; and &ldquo;'''Propagate only leaf LC / LA in physical architecture'''&rdquo; specifies whether the breakdown of Logical Components is kept at physical level or not.
+* The checkbox &ldquo;'''Transit interfaces handled by Components from context/logical layers to physical architecture'''&rdquo; specifies whether interfaces are duplicated from Logical architecture to Physical architecture when performing a Logical Component to Physical Component transition. If not activated, Physical Components will directly implement / use / provide / require interface located in the system analysis and logical architecture.
+* The checkbox &ldquo;'''Transit allocated Exchange Items while transition of Interfaces, Functions or Components'''&rdquo; specifies whether Interfaces, Functions or Components transition triggers transition of related Exchange Items (i.e. duplicates Exchange Items from one engineering phase to the following one). If not activated, Interface, Functions and Component Exchanges in the target engineering phase will still refer the Exchange Items located in the previous engineering phase.
+* The checkbox &ldquo;'''Transit Data Types handled by Exchange Items while transition of Exchange Items'''&rdquo; specifies whether Exchange Items transition triggers transition of related Data (i.e. duplicates Data from one engineering phase to the following one). If not activated, Exchange Items in the target engineering phase will still refer the Data elements located in the previous engineering phase.
+* The checkbox &ldquo;'''Transit State Machines owned by a Component while transition of Components'''&rdquo; specifies whether State Machines transition is triggered when performing a Component transition.
+* The checkbox &ldquo;'''Transit Functional elements allocated by an Operational Entity or Operational Actor while their transition'''&rdquo; specifies whether Operational Activities are transformed into System Functions when performing a transition of Operational Entities or Actors.
+* The checkbox '''&ldquo;Include involved elements&rdquo;''' on the Property Values section specifies whether involved elements will be propagated while a transition of Property Values
 * The checkbox '''&ldquo;Propagate Exchange Items from Functional Exchanges to Function Ports&rdquo;''' specifies whether Exchange Items from Functional Exchanges should be propagated to their related Function Ports during Interface generation.
 * The checkbox '''&ldquo;Create Component Exchange Between provider/requirer ports&rdquo;''' specifies if the Interface generation should create a Component Exchange between each pair of Interface provider/requirer ports if such an exchange does not already exist.
 

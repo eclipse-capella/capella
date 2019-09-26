@@ -75,7 +75,7 @@ public class HeadlessIntramodelLauncher extends TransitionLauncher {
       return "Interface Transition";
 
     } else if (ITopDownConstants.TRANSITION_TOPDOWN_LC2PC.equals(kind)) {
-      return "Logical Component to Physical Component Transition";
+      return "LC / LA to PC / PA Transition";
 
     } else if (ITopDownConstants.TRANSITION_TOPDOWN_OA2SC.equals(kind)) {
       return "Operational Activity to System Capability Transition";

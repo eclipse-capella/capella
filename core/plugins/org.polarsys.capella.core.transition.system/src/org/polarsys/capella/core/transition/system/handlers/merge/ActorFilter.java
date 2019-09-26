@@ -13,12 +13,13 @@ package org.polarsys.capella.core.transition.system.handlers.merge;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.transition.system.preferences.PreferenceConstants;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 public class ActorFilter extends EObjectCategoryFilter {
 
   public ActorFilter(IContext context) {
-    super(context, CsPackage.Literals.COMPONENT);
+    super(context, CsPackage.Literals.COMPONENT, PreferenceConstants.P_Actor_TEXT);
   }
 
   @Override

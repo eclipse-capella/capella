@@ -724,11 +724,11 @@
 
 <extension
          id="org.polarsys.capella.core.transition.system.topdown.lc2pc"
-         name="Logical Component to Physical Component"
+         name="LC / LA to PC / PA"
          point="org.polarsys.kitalpha.transposer.rules.handler.mapping">
       <mapping
             context="org.polarsys.capella.core.transition.common.context.TransitionContext"
-            description="Logical Component to Physical Component - Leaf Strategy"
+            description="LC / LA to PC / PA - Leaf Strategy"
             domainHelper="org.polarsys.capella.core.transition.system.domain.CapellaTransitionDomainHelper"
             extendedMappingExtensionID="org.polarsys.capella.core.transition.system.topdown"
             mappingName="Leaf Strategy"
