@@ -35,6 +35,7 @@ import org.polarsys.capella.core.data.capellacore.KeyValue;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
@@ -58,6 +59,7 @@ import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
 
 /**
@@ -165,6 +167,7 @@ public class SkeletonMatchPolicy implements IMatchPolicy {
         PaPackage.Literals.PHYSICAL_ARCHITECTURE__OWNED_LOGICAL_ARCHITECTURE_REALIZATIONS,
         PaPackage.Literals.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG,
         EpbsPackage.Literals.EPBS_ARCHITECTURE,
+        EpbsPackage.Literals.EPBS_ARCHITECTURE__OWNED_CONFIGURATION_ITEM_PKG,
         EpbsPackage.Literals.EPBS_ARCHITECTURE__OWNED_PHYSICAL_ARCHITECTURE_REALIZATIONS,
         CapellamodellerPackage.Literals.PROJECT__OWNED_MODEL_ROOTS, LibrariesPackage.Literals.MODEL_INFORMATION);
 
@@ -191,6 +194,9 @@ public class SkeletonMatchPolicy implements IMatchPolicy {
       matchIDs.put(key, key.toString());
 
       key = new Key(c, FaPackage.Literals.ABSTRACT_FUNCTIONAL_ARCHITECTURE__OWNED_FUNCTION_PKG);
+      matchIDs.put(key, key.toString());
+
+      key = new Key(c, CsPackage.Literals.BLOCK_ARCHITECTURE__SYSTEM);
       matchIDs.put(key, key.toString());
     }
 
@@ -269,6 +275,11 @@ public class SkeletonMatchPolicy implements IMatchPolicy {
       result = matchIDs.get(PredefinedType.getPredefinedType(element_p));
     }
 
+    // or the root system
+    if (element_p instanceof Component && element_p.equals(BlockArchitectureExt.getRootBlockArchitecture(element_p).getSystem())) {
+      result = matchIDs.get(new Key(BlockArchitectureExt.getRootBlockArchitecture(element_p).eClass(), CsPackage.Literals.BLOCK_ARCHITECTURE__SYSTEM));
+    }
+    
     if ((result == null) && (element_p.eContainer() != null)) {
 
       if (element_p instanceof LiteralBooleanValue) {
