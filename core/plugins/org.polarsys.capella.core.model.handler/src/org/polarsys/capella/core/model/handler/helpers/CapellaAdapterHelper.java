@@ -190,10 +190,10 @@ public class CapellaAdapterHelper {
   @Deprecated
   public static EObject resolveSemanticObject(Object object, boolean onlySemantic) {
     EObject result = resolveEObject(object, false, false);
-    if (result instanceof DSemanticDecorator || result instanceof DRepresentationDescriptor) {
+    if (result instanceof DRepresentation || result instanceof DRepresentationDescriptor) {
       return resolveEObject(result, onlySemantic, false);
     }
-    return resolveEObject(result, onlySemantic, true);
+    return resolveEObject(result, true, true);
   }
   
 }
