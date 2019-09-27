@@ -865,6 +865,12 @@
             name="LA 1" abstractType="#56afef9c-56e7-450c-912d-b9811275bf26"/>
         <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="8013412e-f86f-4e7c-8f46-9954fa805d91"
             name="LA 2" abstractType="#37af6f3b-2a72-494f-928d-8ce375e1e957"/>
+        <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="7f0e409a-67d6-43a0-a37f-22e869720063"
+            name="LA 3" abstractType="#246d5902-8d11-4eac-ab70-909b4575871b"/>
+        <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="e5039d9f-acfb-4fba-a4a4-21f328457481"
+            name="LA 4" abstractType="#d908dd6d-1bcc-4512-87f5-581c3e661af2"/>
+        <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="d4f57caa-b537-4b0b-adb2-dcc3cdadec22"
+            name="LA 5" abstractType="#bbb1fb19-0836-46e3-bcee-fda7b89b1bda"/>
         <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
             id="56afef9c-56e7-450c-912d-b9811275bf26" name="LA 1" appliedPropertyValues="#6a119245-9324-4e6f-b380-76dcf22c9539"
             actor="true">
@@ -917,6 +923,23 @@
           <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
               id="e3c12d76-4afd-442e-96c5-d8b8be8cb0d9" name="LogicalComponent 1"/>
         </ownedLogicalComponents>
+        <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+            id="246d5902-8d11-4eac-ab70-909b4575871b" name="LA 3" summary="is referenced by the LA 4 and LA 5 for generalized Components"
+            actor="true">
+          <ownedGeneralizations xsi:type="org.polarsys.capella.core.data.capellacore:Generalization"
+              id="7c9a609a-7940-454d-8af0-7e2873a82dc0" super="#d908dd6d-1bcc-4512-87f5-581c3e661af2"
+              sub="#246d5902-8d11-4eac-ab70-909b4575871b"/>
+        </ownedLogicalComponents>
+        <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+            id="d908dd6d-1bcc-4512-87f5-581c3e661af2" name="LA 4" summary="between LA 3 and LA 5 for generalizing Components"
+            actor="true">
+          <ownedGeneralizations xsi:type="org.polarsys.capella.core.data.capellacore:Generalization"
+              id="e155354f-8066-48fe-9dfd-d50e8f808c93" super="#bbb1fb19-0836-46e3-bcee-fda7b89b1bda"
+              sub="#d908dd6d-1bcc-4512-87f5-581c3e661af2"/>
+        </ownedLogicalComponents>
+        <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+            id="bbb1fb19-0836-46e3-bcee-fda7b89b1bda" name="LA 5" summary="is gerneralized by bot LA 3 and LA 4"
+            actor="true"/>
       </ownedLogicalComponentPkg>
       <ownedSystemAnalysisRealizations xsi:type="org.polarsys.capella.core.data.la:SystemAnalysisRealization"
           id="198d7956-01f9-4acb-a7af-85be5958c0e3" targetElement="#32788d6f-df93-4444-ab9d-11a2b030227b"
