@@ -86,6 +86,10 @@ public class ModelPreferencePage extends AbstractDefaultPreferencePage {
     addField(new PreferenceField(IInheritancePreferences.PREFS_ALLOW_COMPONENT_INHERITANCE,
         Messages.ComponentInheritancePreferencePage_Allowed_Title, group1), UserProfileModeEnum.Expert, group1,
         ProjectScope.class);
+    addField(
+        new PreferenceField(IInheritancePreferences.PREFS_ALLOW_COMPONENT_NON_ACTOR_INHERITANCE,
+            Messages.ComponentNonActorInheritancePreferencePage_Allowed_Title, group1),
+        UserProfileModeEnum.Expert, group1, ProjectScope.class);
 
     addField(new SpacerFieldEditor(fieldEditorParent));
 

@@ -30,6 +30,7 @@ import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.libraries.queries.QueryExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 
 @ExtendingQuery (extendingQuery = GetAvailable_LogicalComponent_Super.class)
 public class GetAvailable_LogicalComponent_Super__Lib extends AbstractQuery {
@@ -40,16 +41,18 @@ public class GetAvailable_LogicalComponent_Super__Lib extends AbstractQuery {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
     if (input instanceof LogicalComponent) {
       LogicalComponent currentActor = (LogicalComponent) input;
-      CapellaElement element = (CapellaElement) input;
-      BlockArchitecture blockArchitectureInProject = BlockArchitectureExt.getRootBlockArchitecture(element);
-      IModel currentProject =  ILibraryManager.INSTANCE.getModel(element);
+      BlockArchitecture blockArchitectureInProject = BlockArchitectureExt.getRootBlockArchitecture(currentActor);
+      IModel currentProject = ILibraryManager.INSTANCE.getModel(currentActor);
       for (IModel library : LibraryManagerExt.getAllActivesReferences(currentProject)) {
         BlockArchitecture currentBlockArchitecture = QueryExt.getCorrespondingBlockArchitectureFromLibrary(blockArchitectureInProject, (CapellaModel) library);
         if (currentBlockArchitecture instanceof LogicalArchitecture) {
           LogicalArchitecture la = (LogicalArchitecture) currentBlockArchitecture;
           for (Component component : BlockArchitectureExt.getAllComponents(la)) {
             if (isGoodSupertypeCandidate(currentActor, component)) {
-              availableElements.add(component);
+              if (currentActor.isActor() == component.isActor()
+                  || CapellaModelPreferencesPlugin.getDefault().isComponentNonActorInheritanceAllowed()) {
+                availableElements.add(component);
+              }
             }
           }
         }

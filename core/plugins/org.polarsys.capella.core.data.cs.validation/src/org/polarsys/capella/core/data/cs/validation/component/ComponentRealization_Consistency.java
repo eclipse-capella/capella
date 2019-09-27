@@ -46,10 +46,15 @@ public class ComponentRealization_Consistency extends AbstractValidationRule {
     EObject eObj = ctx.getTarget();
     EMFEventType eType = ctx.getEventType();
 
-    HashMap<EClass, EClass> valid = new HashMap<>();
-    valid.put(OaPackage.Literals.ENTITY, CtxPackage.Literals.SYSTEM_COMPONENT);
-    valid.put(CtxPackage.Literals.SYSTEM_COMPONENT, LaPackage.Literals.LOGICAL_COMPONENT);
-    valid.put(LaPackage.Literals.LOGICAL_COMPONENT, PaPackage.Literals.PHYSICAL_COMPONENT);
+    HashMap<EClass, EClass> validTarget = new HashMap<>();
+    validTarget.put(CtxPackage.Literals.SYSTEM_COMPONENT, OaPackage.Literals.ENTITY);
+    validTarget.put(LaPackage.Literals.LOGICAL_COMPONENT, CtxPackage.Literals.SYSTEM_COMPONENT);
+    validTarget.put(PaPackage.Literals.PHYSICAL_COMPONENT, LaPackage.Literals.LOGICAL_COMPONENT);
+
+    HashMap<EClass, EClass> validSource = new HashMap<>();
+    validSource.put(OaPackage.Literals.ENTITY, CtxPackage.Literals.SYSTEM_COMPONENT);
+    validSource.put(CtxPackage.Literals.SYSTEM_COMPONENT, LaPackage.Literals.LOGICAL_COMPONENT);
+    validSource.put(LaPackage.Literals.LOGICAL_COMPONENT, PaPackage.Literals.PHYSICAL_COMPONENT);
 
     if (eType == EMFEventType.NULL) {
       if (eObj instanceof Component) {
@@ -79,16 +84,16 @@ public class ComponentRealization_Consistency extends AbstractValidationRule {
                     + " contain realization with inconsistent Target (it should be not empty)")); //$NON-NLS-1$
                 continue;
               }
-              if (valid.containsKey(source.eClass()) && !valid.get(source.eClass()).isInstance(target)) {
+              if (validTarget.containsKey(source.eClass()) && !validTarget.get(source.eClass()).isInstance(target)) {
                 statuses.add(ctx.createFailureStatus(actorInfo // $NON-NLS-1$
                     + " contain realization with inconsistent Target (it should be instance of " //$NON-NLS-1$
-                    + valid.get(source.eClass()).getName() + ")"));
+                    + validTarget.get(source.eClass()).getName() + ")"));
               }
 
-              if (valid.containsKey(target.eClass()) && !valid.get(target.eClass()).isInstance(source)) {
+              if (validSource.containsKey(target.eClass()) && !validSource.get(target.eClass()).isInstance(source)) {
                 statuses.add(ctx.createFailureStatus(actorInfo // $NON-NLS-1$
                     + " contain realization with inconsistent Source (it should be instance of " //$NON-NLS-1$
-                    + valid.get(target.eClass()).getName() + ")"));
+                    + validSource.get(target.eClass()).getName() + ")"));
               }
             }
           }

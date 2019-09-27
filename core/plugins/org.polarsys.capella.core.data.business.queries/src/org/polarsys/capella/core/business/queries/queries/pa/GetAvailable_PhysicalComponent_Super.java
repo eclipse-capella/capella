@@ -21,28 +21,35 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
+import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
+import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 
 public class GetAvailable_PhysicalComponent_Super extends AbstractQuery {
 
   /**
-   * Gets the available actors in the actor package and all the sub actor packages, 
-   * Except the current Actor itself, Actors that specialize the current Actor,
-   * and Actors that are indirect generalizations of the current Actor.
+   * Gets the available actors in the actor package and all the sub actor packages, Except the current Actor itself,
+   * Actors that specialize the current Actor, and Actors that are indirect generalizations of the current Actor.
    */
   @SuppressWarnings({ "rawtypes", "unchecked" })
   @Override
   public List<Object> execute(Object input, IQueryContext context) {
-    CapellaElement capellaElement = (CapellaElement) input;
-    SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries()
-        .getSystemEngineering(capellaElement);
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    PhysicalArchitecture ca = SystemEngineeringExt.getOwnedPhysicalArchitecture(systemEngineering);
-    for (Component actor : BlockArchitectureExt.getAllComponents(ca)) {
-      if (isGoodSupertypeCandidate((Component) capellaElement, actor)) {
-        availableElements.add(actor);
+    if (input instanceof PhysicalComponent) {
+      PhysicalComponent physicalComponent = (PhysicalComponent) input;
+      SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries()
+          .getSystemEngineering(physicalComponent);
+
+      PhysicalArchitecture ca = SystemEngineeringExt.getOwnedPhysicalArchitecture(systemEngineering);
+      for (Component actor : BlockArchitectureExt.getAllComponents(ca)) {
+        if (isGoodSupertypeCandidate(physicalComponent, actor)) {
+          if (physicalComponent.isActor() == actor.isActor()
+              || CapellaModelPreferencesPlugin.getDefault().isComponentNonActorInheritanceAllowed()) {
+            availableElements.add(actor);
+          }
+        }
       }
     }
     return (List) availableElements;

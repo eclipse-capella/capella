@@ -15,15 +15,15 @@ import java.util.List;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.IValidationContext;
-
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.core.data.cs.AbstractPhysicalArtifact;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.epbs.EpbsPackage;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
+import org.polarsys.capella.core.model.utils.NamingHelper;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 
 public class PhysicalArtifactAllocated extends AbstractValidationRule {
 
@@ -38,14 +38,16 @@ public class PhysicalArtifactAllocated extends AbstractValidationRule {
         return ctx.createSuccessStatus();
       }
       String name = null;
+      String className = "(" + artifact.eClass().getName() + ")";
       if (artifact instanceof PhysicalLink) {
         name = ((PhysicalLink) artifact).getName();
       } else if (artifact instanceof PhysicalComponent) {
         name = ((PhysicalComponent) artifact).getName();
+        className = NamingHelper.getTitleLabel(artifact);
       } else if (artifact instanceof PhysicalPort) {
         name = ((PhysicalPort) artifact).getName();
       }
-      return ctx.createFailureStatus(name, artifact.eClass().getName());
+      return ctx.createFailureStatus(name, className);
     }
     return null;
   }

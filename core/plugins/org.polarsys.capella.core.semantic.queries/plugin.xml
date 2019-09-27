@@ -747,7 +747,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.LogicalComponent_RealizedSystemComponent"
             isTopLevel="true"
-            name="Realized System">
+            name="Realized System Components">
          <targetBrowserId
                id="ReferencedElementBrowser">
          </targetBrowserId>

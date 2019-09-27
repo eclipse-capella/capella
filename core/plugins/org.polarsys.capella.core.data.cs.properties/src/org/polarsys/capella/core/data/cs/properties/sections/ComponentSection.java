@@ -125,6 +125,11 @@ public abstract class ComponentSection extends GeneralizableElementSection {
     Component component = (Component) capellaElement;
     BlockArchitecture block = BlockArchitectureExt.getRootBlockArchitecture(component);
 
+    // if capellaElement is a component but not an actor, disable super
+    if (null != superTypes) {
+      superTypes.setEnabled(component.isActor());
+    }
+
     // if the capellaElement is a component but not an actor, the IsAbstract checkbox must be disabled
     if (null != propertiesCheckbox) {
       propertiesCheckbox.setEnabled(component.isActor());
@@ -181,5 +186,10 @@ public abstract class ComponentSection extends GeneralizableElementSection {
     fields.add(usedInterfaces);
 
     return fields;
+  }
+
+  @Override
+  protected String getSuperLabel() {
+    return Messages.GeneralizableComponentSection_Generalized_Label;
   }
 }

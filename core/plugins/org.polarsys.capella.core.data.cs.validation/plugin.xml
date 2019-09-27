@@ -695,6 +695,44 @@ BehaviourPC=Physical Component of nature BEHAVIOUR
                      class="PhysicalPathInvolvement">
                </target>
             </constraint>
+         <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.component.GeneralizedComponents_Human"
+                  id="I_41"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_41 - Component generalizes other Components with HUMAN different by its own"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} is {1} but generalizes {2} Components.
+               </message>
+               <description>
+                  This rule checks if a Component generalizes other Components with HUMAN different by its own.
+               </description>
+               <target
+                     class="Component">
+               </target>
+         </constraint>
+         <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.component.RealizedComponents_Human"
+                  id="I_42"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_42 - Component realizes other Components with HUMAN different by its own"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} is {1} but realizes {2} Components.
+               </message>
+               <description>
+                  Checks if a Component realizes other Components with HUMAN different by its own.
+               </description>
+               <target
+                     class="Component">
+               </target>
+            </constraint>
          </constraints>
          <constraints
                categories="capella.category/transition/justification/physical_architecture">
@@ -727,7 +765,7 @@ BehaviourPC=Physical Component of nature BEHAVIOUR
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} ({1}) is not realized by any Configuration Item.
+                  {0} {1} is not realized by any Configuration Item.
                </message>
                <target
                      class="AbstractPhysicalArtifact">

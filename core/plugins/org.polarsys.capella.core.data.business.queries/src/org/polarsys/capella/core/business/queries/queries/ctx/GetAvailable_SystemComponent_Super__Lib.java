@@ -21,7 +21,6 @@ import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.ExtendingQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
-import org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_SystemComponent_Super;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
@@ -30,8 +29,9 @@ import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.libraries.queries.QueryExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 
-@ExtendingQuery (extendingQuery = GetAvailable_SystemComponent_Super.class)
+@ExtendingQuery(extendingQuery = GetAvailable_SystemComponent_Super.class)
 public class GetAvailable_SystemComponent_Super__Lib extends AbstractQuery {
 
   @SuppressWarnings({ "rawtypes", "unchecked" })
@@ -40,16 +40,19 @@ public class GetAvailable_SystemComponent_Super__Lib extends AbstractQuery {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
     if (input instanceof SystemComponent) {
       SystemComponent currentActor = (SystemComponent) input;
-      CapellaElement element = (CapellaElement) input;
-      BlockArchitecture blockArchitectureInProject = BlockArchitectureExt.getRootBlockArchitecture(element);
-      IModel currentProject =  ILibraryManager.INSTANCE.getModel(element);
+      BlockArchitecture blockArchitectureInProject = BlockArchitectureExt.getRootBlockArchitecture(currentActor);
+      IModel currentProject = ILibraryManager.INSTANCE.getModel(currentActor);
       for (IModel library : LibraryManagerExt.getAllActivesReferences(currentProject)) {
-        BlockArchitecture currentBlockArchitecture = QueryExt.getCorrespondingBlockArchitectureFromLibrary(blockArchitectureInProject, (CapellaModel) library);
+        BlockArchitecture currentBlockArchitecture = QueryExt
+            .getCorrespondingBlockArchitectureFromLibrary(blockArchitectureInProject, (CapellaModel) library);
         if (currentBlockArchitecture instanceof SystemAnalysis) {
           SystemAnalysis sa = (SystemAnalysis) currentBlockArchitecture;
           for (Component component : BlockArchitectureExt.getAllComponents(sa)) {
             if (isGoodSupertypeCandidate(currentActor, component)) {
-              availableElements.add(component);
+              if (currentActor.isActor() == component.isActor()
+                  || CapellaModelPreferencesPlugin.getDefault().isComponentNonActorInheritanceAllowed()) {
+                availableElements.add(component);
+              }
             }
           }
         }

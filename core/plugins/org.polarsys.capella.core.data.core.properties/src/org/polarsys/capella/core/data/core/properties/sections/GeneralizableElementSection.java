@@ -34,7 +34,7 @@ public abstract class GeneralizableElementSection extends NamedElementSection {
 
   private boolean showIsAbstract;
   private boolean showSuperTypes;
-  private CompositionMultipleSemanticField superTypes;
+  protected CompositionMultipleSemanticField superTypes;
   protected GeneralizableElementBooleanPropertiesCheckbox propertiesCheckbox;
 
   /**
@@ -69,7 +69,7 @@ public abstract class GeneralizableElementSection extends NamedElementSection {
 
     if (showSuperTypes) {
       superTypes = new CompositionMultipleSemanticField(getReferencesGroup(),
-          Messages.getString("GeneralizableElementSection_SuperType_Label"), getWidgetFactory(), //$NON-NLS-1$
+          getSuperLabel(), getWidgetFactory(),
           new GeneralizableElementController())
       {
         /**
@@ -120,5 +120,9 @@ public abstract class GeneralizableElementSection extends NamedElementSection {
     fields.add(superTypes);
 
     return fields;
+  }
+
+  protected String getSuperLabel() {
+    return Messages.getString("GeneralizableElementSection_SuperType_Label");
   }
 }
