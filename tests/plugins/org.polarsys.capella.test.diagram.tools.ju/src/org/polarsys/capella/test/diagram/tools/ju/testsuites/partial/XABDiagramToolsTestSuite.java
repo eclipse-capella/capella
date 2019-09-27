@@ -103,6 +103,8 @@ public class XABDiagramToolsTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+
+    tests.add(new CreatePhysicalLink());
     tests.add(new CreateCEWithDelegations());
     tests.add(new ShowHideFunctionalChains());
     tests.add(new DragAndDropFunction());
@@ -111,7 +113,6 @@ public class XABDiagramToolsTestSuite extends BasicTestSuite {
 
     tests.add(new CreateNodePCGroup());
     tests.add(new CreatePhysicalPath());
-    tests.add(new CreatePhysicalLink());
     tests.add(new CreatePhysicalPort());
     tests.add(new ReconnectPhysicalLink());
     tests.add(new ManageNodePCsDeployment());

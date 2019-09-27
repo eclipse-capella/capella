@@ -50,6 +50,7 @@ import org.eclipse.swt.graphics.RGB;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EObjectExt;
+import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.helpers.SimpleOrientedGraph;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
@@ -496,7 +497,7 @@ public class PhysicalServices {
       }
       Part sourcePath;
       if (canBeInvolvedInPhysicalPath(source)) {
-        sourcePath = (Part) ((Component) source).getRepresentingParts().get(0);
+        sourcePath = ((Component) source).getRepresentingParts().get(0);
       } else {
         sourcePath = (Part) source;
       }
@@ -513,8 +514,10 @@ public class PhysicalServices {
   }
 
   public boolean canHavePhysicalPort(EObject source) {
-    return ((source instanceof SystemComponent) || (source instanceof LogicalComponent)
-        || (source instanceof PhysicalComponent));
+    return (((source instanceof SystemComponent)
+        || (source instanceof PhysicalComponent)))
+        || ((source instanceof LogicalComponent)
+            && EcoreUtil2.getFirstContainer(source, CsPackage.Literals.COMPONENT) == null);
   }
 
   /**
