@@ -1145,26 +1145,7 @@
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.typedElements->first()">
-                <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:newContainerView.getOEBTarget()" featureName="ownedFeatures"/>
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:newContainerView.getOEBTarget()">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(oa::Entity)">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.void2Null(element)">
-                      <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:newContainerView.getOEBTarget()" featureName="ownedEntities"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(oa::EntityPkg)">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.void2Null(element)">
-                      <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:newContainerView.getOEBTarget()" featureName="ownedEntities"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (self.oclIsKindOf(oa::Entity)) and not (self.oclIsKindOf(oa::EntityPkg))">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.void2Null(element)">
-                      <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:self.getRootEntityPkg()" featureName="ownedEntities"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                </subModelOperations>
-              </firstModelOperations>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.dndABComponent(newContainerView)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ContainerDropDescription" name="D&amp;D Entities From Project Explorer" precondition="aql:element.oclIsKindOf(oa::Entity) and element.partitionableElementCanBeDropped(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']" dragSource="PROJECT_EXPLORER">

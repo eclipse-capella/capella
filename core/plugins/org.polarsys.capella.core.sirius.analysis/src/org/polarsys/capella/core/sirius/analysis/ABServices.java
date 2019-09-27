@@ -219,16 +219,71 @@ public class ABServices {
    * @return pcMoved
    */
   public EObject dndABComponent(NamedElement pcMoved, NamedElement oldContainer, NamedElement newContainer) {
+    return _dndABComponent(pcMoved, newContainer, newContainer);
+  }
 
-    EObject newOwner = newContainer;
+  /**
+   * Perform a dnd of a component.
+   * 
+   * @param pcMoved
+   *          the given namedElement
+   * @param targetContainerView
+   *          the new target
+   * @return pcMoved
+   */
+  public EObject dndABComponent(NamedElement pcMoved, DSemanticDecorator targetContainerView) {
 
+    EObject newOwner = null;
+    Component component = null;
+
+    if (pcMoved instanceof Part) {
+      component = (Component) ((Part) pcMoved).getType();
+    } else if (pcMoved instanceof Component) {
+      component = (Component) pcMoved;
+    }
+
+    if (component.isActor()) {
+      newOwner = CsServices.getService().getABActorTarget(targetContainerView);
+    } else {
+      newOwner = CsServices.getService().getABTarget(targetContainerView);
+    }
+
+    return _dndABComponent(pcMoved, newOwner, (NamedElement) targetContainerView.getTarget());
+  }
+
+  private EObject _dndABComponent(NamedElement pcMoved, EObject newOwner, NamedElement newContainer) {
     if (newOwner instanceof Part) {
       newOwner = CsServices.getService().getComponentType((Part) newContainer);
     }
 
-    if ((newOwner instanceof Component)) {
+    Component component = null;
+    if (newOwner instanceof ComponentPkg) {
+      ComponentPkg newComponentPkg = (ComponentPkg) newOwner;
+      component = null;
+
+      // Move part in the new container
+      if (pcMoved instanceof Part) {
+        newComponentPkg.getOwnedParts().add((Part) pcMoved);
+        component = (Component) ((Part) pcMoved).getType();
+      }
+      else if (pcMoved instanceof Component) {
+        for (Part part : getCache(ComponentExt::getRepresentingParts, (Component) pcMoved)) {
+          if (!newComponentPkg.equals(part.eContainer())) {
+            newComponentPkg.getOwnedParts().add(part);
+          }
+        }
+        component = (Component) pcMoved;
+      } else {
+        return pcMoved;
+      }
+      // move component type (avoid move if it is located in its part)
+      if (!CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE.equals(component.eContainingFeature())) {
+        FaServices.getFaServices().moveComponent(component, newComponentPkg);
+      }
+
+    } else if (newOwner instanceof Component) {
       Component newComponent = (Component) newOwner;
-      Component component = null;
+      component = null;
 
       // Move part in the new container
       if (pcMoved instanceof Part) {
@@ -249,7 +304,8 @@ public class ABServices {
       if (!CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE.equals(component.eContainingFeature())) {
         FaServices.getFaServices().moveComponent(component, newComponent);
       }
-
+    }
+    if (component != null) {
       // for all exchanges related to owned childs, move them to the ancestor (copied from odesign specification)
       List<Component> listChild = CapellaServices.getService().getAllDescendants(component);
       listChild.add(component);
@@ -641,15 +697,20 @@ public class ABServices {
    * Returns whether the given part can be drop into the target element view
    */
   public boolean isValidDndABComponent(Part semanticObjectToDrop, EObject targetContainerView) {
+    EObject context = null;
 
-    EObject context = CsServices.getService().getABTarget((DSemanticDecorator) targetContainerView);
+    Component component = (Component) semanticObjectToDrop.getAbstractType();
+    if (component.isActor()) {
+      context = CsServices.getService().getABActorTarget((DSemanticDecorator) targetContainerView);
+      return isValidCreationABActor(context);
+    }
 
+    context = CsServices.getService().getABTarget((DSemanticDecorator) targetContainerView);
     if (context instanceof BlockArchitecture) {
       return false;
 
     } else if (context instanceof Component) {
       return isValidDndComponent(semanticObjectToDrop, (Component) context);
-
     } else if (context instanceof Part) {
       return isValidDndComponent(semanticObjectToDrop, (Part) context);
     }

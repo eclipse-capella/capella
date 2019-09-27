@@ -3717,7 +3717,7 @@
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.dndABComponent(oldSemanticContainer,newSemanticContainer)"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.dndABComponent(newContainerView)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="LAB Reconnect Function Exchanges" precondition="aql:element.isFunctionalExchangeReconnectable(sourceView.getDiagramContainer(),source,target)" reconnectionKind="RECONNECT_BOTH">
