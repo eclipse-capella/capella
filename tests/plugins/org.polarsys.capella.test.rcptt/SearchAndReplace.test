@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _yFxMUJ6BEeWcU-ojRg-Rxw
-Runtime-Version: 2.1.0.201606221726
-Save-Time: 4/4/18 10:53 AM
+Runtime-Version: 2.5.0.201909172034
+Save-Time: 9/26/19 11:00 AM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -21,13 +21,15 @@ with [get-view "Project Explorer" | get-tree] {
 
 with [get-window "Selection Dialog"] {
     get-combo -after [get-label "Find:"] | set-text "a*"
+    get-group "Search for" | get-button Summary | uncheck
+    get-group "Search for" | get-button Description | uncheck
     get-group Options | get-button Wildcards | check
     get-button "Preview impact" | click
     with [get-window "Preview Impact"] {
         get-button OK | click
     }
 }
-get-window "Selection Dialog" | get-group Impacts | get-label 19 | get-property caption | equals 19 | verify-true
+get-window "Selection Dialog" | get-group Impacts | get-label 24 | get-property caption | equals 24 | verify-true
 
 with [get-window "Selection Dialog"] {
     get-group Scope | get-button "Whole model" | click
@@ -36,7 +38,7 @@ with [get-window "Selection Dialog"] {
         get-button OK | click
     }
 }
-get-window "Selection Dialog" | get-group Impacts | get-label 52 | get-property caption | equals 52 | verify-true
+get-window "Selection Dialog" | get-group Impacts | get-label 66 | get-property caption | equals 66 | verify-true
 
 with [get-window "Selection Dialog"] {
     get-group "Search for" | get-button Name | uncheck
@@ -54,7 +56,7 @@ with [get-window "Selection Dialog"] {
         get-button OK | click
     }
 }
-get-window "Selection Dialog" | get-group Impacts | get-label 5 | get-property caption | equals 5 | verify-true
+get-window "Selection Dialog" | get-group Impacts | get-label 12 | get-property caption | equals 12 | verify-true
 
 with [get-window "Selection Dialog"] {
     get-combo -after [get-label "Replace with:"] | set-text water
@@ -67,16 +69,20 @@ get-view Information | click
 
 with [get-view Information | get-tree] {
     get-property itemCount | equals 3 | verify-true
-    get-item "Impacted element names: 5" | get-property caption | equals "Impacted element names: 5" | verify-true
+    get-item "Impacted element names: 12" | get-property caption | equals "Impacted element names: 12" | verify-true
 }
 
 get-view "Project Explorer" | get-tree | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/System Analysis" 
     | key-type "M1+M2+f"
 with [get-window "Selection Dialog"] {
     get-combo -after [get-label "Find:"] | set-text "a*"
+    get-group "Search for" | get-button Summary | uncheck
+    get-group "Search for" | get-button Description | uncheck
     get-combo -after [get-label "Replace with:"] | set-text water
     get-button "Preview impact" | click
 }
 get-window "Search and replace" | get-label "No matching elements" | get-property caption 
     | equals "No matching elements" | verify-true
+get-window "Search and replace" | get-button OK | click
+get-window "Selection Dialog" | get-button OK | click
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
