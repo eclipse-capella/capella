@@ -28,29 +28,29 @@
                 </command> 
              </menuContribution>
        </extension>
-      
-      <extension
+       <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+		 <propertyTester
+    		class="org.polarsys.capella.core.common.ui.wizards.ActorIsHumanTester"
+            id="org.polarsys.capella.core.common.ui.wizards.ActorIsHumanTester"
+            namespace="org.polarsys.capella.core.common.ui.wizards"
+            properties="actorIsHumanTester"
+            type="org.polarsys.capella.common.data.modellingcore.ModelElement">
+		  </propertyTester>
+	   </extension>
+	   <extension
             point="org.eclipse.core.expressions.definitions">
          <definition
                id="org.polarsys.capella.core.platform.sirius.ui.command.LCDecompWizardActionPartOrLogicalComponent.expression">
-               
-               <with
+            <with
                   variable="selection">
-                  <iterate
-                        ifEmpty="false">
-                        <or>
-                         <test forcePluginActivation="true"
-				               property="org.polarsys.capella.core.platform.sirius.ui.classOf"
-				               value="LogicalComponent">
-				         </test>
-                         <test forcePluginActivation="true"
-				               property="org.polarsys.capella.core.platform.sirius.ui.classOf"
-				               value="Part">
-				         </test>
-				         </or>
-                  </iterate>
+                <iterate ifEmpty="false">
+	        		<test
+	                	forcePluginActivation="true"
+	                		property="org.polarsys.capella.core.common.ui.wizards.actorIsHumanTester">
+	          		</test>
+               </iterate>
             </with>
-            
          </definition>
       </extension>
       <extension

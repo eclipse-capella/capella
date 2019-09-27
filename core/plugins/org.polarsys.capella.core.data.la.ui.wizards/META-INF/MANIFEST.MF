@@ -9,7 +9,9 @@ Export-Package: org.polarsys.capella.core.common.ui.wizards,
  org.polarsys.capella.core.common.ui.wizards.action
 Require-Bundle: org.polarsys.capella.core.ui.toolkit,
  org.polarsys.capella.core.data.business.queries;visibility:=reexport,
- org.polarsys.capella.core.platform.sirius.ui.actions
+ org.polarsys.capella.core.platform.sirius.ui.actions,
+ org.eclipse.core.expressions,
+ org.polarsys.capella.core.data.gen
 Bundle-Version: 1.4.0.qualifier
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.polarsys.capella.core.common.ui.wizards.LCDWizardPlugin

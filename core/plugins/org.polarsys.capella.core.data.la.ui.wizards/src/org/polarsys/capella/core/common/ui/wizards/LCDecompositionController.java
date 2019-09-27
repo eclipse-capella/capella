@@ -18,6 +18,7 @@ import org.eclipse.jface.util.Util;
 import org.eclipse.swt.widgets.Display;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.information.ExchangeItem;
@@ -205,7 +206,8 @@ public class LCDecompositionController {
     Decomposition decomp = new Decomposition();
     decomp.setName(""); //$NON-NLS-1$
     decomp.setValue(Decomposition.DUMMY_VALUE);
-    for (LogicalComponent component : logicalComponent.getSubLogicalComponents()) {
+    for (Component tmpComp : ComponentExt.getSubUsedComponents(logicalComponent)) {
+      LogicalComponent component = (LogicalComponent) tmpComp;
       DecompositionComponent comp = createDecompositionComponent(component);
 
       boolean flag = false;
