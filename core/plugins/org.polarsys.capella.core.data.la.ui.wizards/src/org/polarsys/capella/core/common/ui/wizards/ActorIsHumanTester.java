@@ -11,24 +11,15 @@
 package org.polarsys.capella.core.common.ui.wizards;
 
 import org.eclipse.core.expressions.PropertyTester;
-import org.polarsys.capella.core.data.cs.Part;
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.data.la.LogicalComponent;
+import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 
 public class ActorIsHumanTester extends PropertyTester {
 
   @Override
   public boolean test(Object receiver, String property, Object[] args, Object expectedValue) {
-    LogicalComponent tempPart = null;
-    if (receiver instanceof LogicalComponent) {
-      tempPart = (LogicalComponent) receiver;
-    } else {
-      if (receiver instanceof Part) {
-        tempPart = (LogicalComponent) ((Part) receiver).getAbstractType();
-      }
-    }
-    if (tempPart.isHuman()) {
-      return false;
-    }
-    return true;
+    EObject business = CapellaAdapterHelper.resolveBusinessObject(receiver);
+    return (business instanceof LogicalComponent) && ((LogicalComponent) business).isHuman();
   }
 }
