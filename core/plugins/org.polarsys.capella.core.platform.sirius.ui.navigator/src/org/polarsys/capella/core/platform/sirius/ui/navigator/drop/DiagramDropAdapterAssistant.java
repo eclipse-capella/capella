@@ -78,7 +78,7 @@ public class DiagramDropAdapterAssistant extends AbstractCapellaDropAdapterAssis
   public IStatus validateDrop(Object target_p, int operation_p, TransferData transferType_p) {
     EObject targetElement = (EObject) target_p;
     IStructuredSelection selection = (IStructuredSelection) LocalSelectionTransfer.getTransfer().getSelection();
-    
+
     for (Object object : selection.toList()) {
       if (object instanceof DRepresentationDescriptor) {
         if (!isDroppable((DRepresentationDescriptor) object, targetElement)) {
@@ -106,7 +106,8 @@ public class DiagramDropAdapterAssistant extends AbstractCapellaDropAdapterAssis
         || IDiagramNameConstants.OPERATIONAL_ROLE_BLANK_DIAGRAM_NAME.equals(diagramId)
         || IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME.equals(diagramId)
         || IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME.equals(diagramId)
-        || IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME.equals(diagramId);
+        || IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME.equals(diagramId)
+        || IDiagramNameConstants.EPBS_ARCHITECTURE_BLANK_DIAGRAM_NAME.equals(diagramId);
 
     if (isValid && description instanceof DiagramDescription) {
       return DialectManager.INSTANCE.canCreate(targetElement, description);
