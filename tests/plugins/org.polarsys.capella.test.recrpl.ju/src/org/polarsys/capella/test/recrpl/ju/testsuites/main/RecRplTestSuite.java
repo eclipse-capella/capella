@@ -47,6 +47,7 @@ import org.polarsys.capella.test.recrpl.ju.testcases.UpdateDefREC_RemoveElement;
 import org.polarsys.capella.test.recrpl.ju.testcases.UpdateREC_WithSuffix;
 import org.polarsys.capella.test.recrpl.ju.testcases.UpdateRPL_AddElementWithSuffix;
 import org.polarsys.capella.test.recrpl.ju.testcases.UpdateRPL_Containment;
+import org.polarsys.capella.test.recrpl.ju.testcases.UpdateRPL_NoReferenceToRecElements;
 import org.polarsys.capella.test.recrpl.ju.testcases.UpdateRPL_RemoveElement;
 import org.polarsys.capella.test.recrpl.ju.testcases.UpdateRPL_RenameElementWithSuffix;
 import org.polarsys.capella.test.recrpl.ju.testcases.compliance.BatchBlackboxComplianceTest1;
@@ -94,6 +95,7 @@ public class RecRplTestSuite extends BasicTestSuite {
     tests.add(new UpdateRPL_Containment());
     tests.add(new UpdateRPL_RemoveElement());
     tests.add(new UpdateRPL_RenameElementWithSuffix());
+    tests.add(new UpdateRPL_NoReferenceToRecElements());
     tests.add(new BlackboxComplianceTest1());
     tests.add(new BlackboxComplianceTest2());
     tests.add(new BlackboxComplianceTest3());

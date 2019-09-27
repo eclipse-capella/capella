@@ -168,6 +168,10 @@ public class ActivitiesLauncher {
     this.parameters.addSharedParameter(parameter);
   }
   
+  public void removeSharedParameter(String parameterId) {
+    this.parameters.removeSharedParameter(parameterId);
+  }
+  
   protected Iterator<String> iteratorWorkflowElements(String workflowId) {
     return new StringArrayIterator(getWorkflowElements(workflowId));
   }

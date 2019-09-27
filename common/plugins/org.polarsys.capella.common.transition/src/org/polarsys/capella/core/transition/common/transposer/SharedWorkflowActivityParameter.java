@@ -11,6 +11,10 @@
 
 package org.polarsys.capella.core.transition.common.transposer;
 
+import java.util.Objects;
+
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.osgi.util.NLS;
 import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.kitalpha.cadence.core.api.parameter.GenericParameter;
 import org.polarsys.kitalpha.cadence.core.api.parameter.WorkflowActivityParameter;
@@ -22,12 +26,26 @@ public class SharedWorkflowActivityParameter extends WorkflowActivityParameter {
 
   protected ActivityParameters _sharedParameters = new ActivityParameters();
 
+  /**
+   * This method allows to add a shared parameter between all activities.
+   * 
+   * If the shared parameter is already defined, it is not overridden.
+   */
   public void addSharedParameter(GenericParameter<?> parameter) {
-    if (_sharedParameters.getParameter(parameter.getName()) == null) {
+    GenericParameter<?> currentParameter = _sharedParameters.getParameter(parameter.getName());
+    if (currentParameter == null) {
       _sharedParameters.addParameter(parameter);
+    } else if (!Objects.equals(currentParameter.getValue(), parameter.getValue())) {
+      if (Platform.inDevelopmentMode()) {
+        System.out.println(NLS.bind("Attempt to override shared parameter {0} by another value.", parameter.getName()));
+      }
     }
   }
 
+  public void removeSharedParameter(String parameterId) {
+    _sharedParameters.removeParameter(parameterId);
+  }
+  
   public void merge(SharedWorkflowActivityParameter sharedParameter) {
     for (String idActivity: sharedParameter.getActivitiesID()) {
       addParameter(idActivity, sharedParameter.getSpecificActivityParameters(idActivity));
@@ -52,4 +70,5 @@ public class SharedWorkflowActivityParameter extends WorkflowActivityParameter {
     }
     return activityParameter;
   }
+
 }

@@ -53,5 +53,15 @@
                ruleId="DCON_06">
          </rules>
       </resolver>
+      
+      <resolver
+            class="org.polarsys.capella.core.re.ui.quickfix.resolver.DCON_07_Resolver"
+            desc="%quickFix.DCON_07.desc"
+            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif"
+            label="%quickFix.DCON_07.label">
+         <rules
+               ruleId="DCON_07">
+         </rules>
+      </resolver>
    </extension>
 </plugin>
