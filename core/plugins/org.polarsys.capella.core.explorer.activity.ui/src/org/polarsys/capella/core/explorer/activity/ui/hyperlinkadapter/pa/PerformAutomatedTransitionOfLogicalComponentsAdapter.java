@@ -27,9 +27,7 @@ import org.polarsys.capella.core.transition.system.topdown.ui.commands.Transitio
  * Perform an automated transition of Logical Components.
  */
 public class PerformAutomatedTransitionOfLogicalComponentsAdapter extends AbstractCapellaHyperlinkAdapter {
-  /**
-   * Constructor.
-   */
+
   public PerformAutomatedTransitionOfLogicalComponentsAdapter() {
     super(ActivityExplorerManager.INSTANCE.getRootSemanticModel());
   }
@@ -46,7 +44,7 @@ public class PerformAutomatedTransitionOfLogicalComponentsAdapter extends Abstra
   @Override
   protected ModelElement getModelElement(EObject rootSemanticModel) {
     if (rootSemanticModel instanceof Project) {
-      return ModelQueryHelper.getLogicalArchitecture((Project) rootSemanticModel);
+      return ModelQueryHelper.getLogicalSystem((Project) rootSemanticModel);
     }
     return null;
   }

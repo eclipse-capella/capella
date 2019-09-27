@@ -26,8 +26,6 @@ import org.eclipse.ui.handlers.IHandlerService;
 import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
 
-/**
- */
 public class TransitionUICommandHelper
     extends org.polarsys.capella.core.transition.system.topdown.commands.TransitionCommandHelper {
 

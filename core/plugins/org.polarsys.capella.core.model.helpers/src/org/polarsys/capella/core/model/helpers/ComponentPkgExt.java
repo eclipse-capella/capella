@@ -59,7 +59,7 @@ public class ComponentPkgExt {
         components.addAll(getSubDefinedComponents(pkg));
       }
     }
-    
+
     return components;
   }
 
@@ -73,10 +73,25 @@ public class ComponentPkgExt {
     subDefinedComponents.stream().forEach(c -> components.addAll(ComponentExt.getAllSubDefinedComponents(c)));
     return components;
   }
-  
+
   public static List<Component> getAllActors(ComponentPkg componentPkg) {
-    return getAllSubDefinedComponents(componentPkg).stream().filter(comp -> ComponentExt.isActor(comp))
+    return getAllSubDefinedComponents(componentPkg).stream() //
+        .filter(ComponentExt::isActor) //
         .collect(Collectors.toList());
+  }
+
+  public static List<Component> getExternalActors(ComponentPkg componentPkg) {
+    List<Component> externalActors = new ArrayList<>();
+    componentPkg.eContents().stream() //
+        .forEach(e -> {
+          if (e instanceof ComponentPkg) {
+            externalActors.addAll(getExternalActors((ComponentPkg) e)); // recursive
+          }
+          if (e instanceof Component && ((Component) e).isActor()) {
+            externalActors.add((Component) e);
+          }
+        });
+    return externalActors;
   }
 
   public static List<Component> getSubUsedComponents(ComponentPkg componentPkg) {
@@ -87,7 +102,7 @@ public class ComponentPkgExt {
    * Returns sub parts of a component package
    */
   public static List<Part> getSubParts(ComponentPkg componentPkg) {
-    List<Part> result = new ArrayList<Part>();
+    List<Part> result = new ArrayList<>();
     result.addAll(componentPkg.getOwnedParts());
     getContainedComponentPkgs(componentPkg).stream().forEach(pkg -> result.addAll(ComponentPkgExt.getSubParts(pkg)));
     return result;
@@ -138,19 +153,20 @@ public class ComponentPkgExt {
     return (object instanceof ComponentPkg && object.eContainer() instanceof BlockArchitecture);
   }
 
-  public static ComponentPkg getRootComponentPkg(ComponentPkg componentPkg) {
-
-    ComponentPkg rootComponentPkg = componentPkg;
-
-    for (EObject parent = componentPkg.eContainer(); parent != null; parent = parent.eContainer()) {
-      if (parent instanceof ComponentPkg) {
-        rootComponentPkg = (ComponentPkg) parent;
-      } else if (parent instanceof BlockArchitecture) {
-        return rootComponentPkg;
-      }
+  public static ComponentPkg getRootComponentPkg(EObject object) {
+    EObject parent = object.eContainer();
+    if (parent instanceof BlockArchitecture && object instanceof ComponentPkg) {
+      // The object is already the root component pkg
+      return (ComponentPkg) object;
     }
-
-    return rootComponentPkg;
+    while (parent != null) {
+      EObject grandParent = parent.eContainer();
+      if (parent instanceof ComponentPkg && grandParent instanceof BlockArchitecture) {
+        return (ComponentPkg) parent;
+      }
+      parent = grandParent;
+    }
+    return null;
   }
 
   public static List<Component> getContainedComponents(ComponentPkg componentPkg) {

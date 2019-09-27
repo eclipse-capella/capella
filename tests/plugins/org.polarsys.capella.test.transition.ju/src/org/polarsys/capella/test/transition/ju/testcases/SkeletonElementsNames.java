@@ -32,6 +32,7 @@ import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
 import org.polarsys.capella.core.data.requirement.RequirementsPkg;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
+import org.polarsys.capella.core.transition.system.topdown.commands.TransitionCommandHelper;
 import org.polarsys.capella.test.framework.helpers.EObjectHelper;
 import org.polarsys.capella.test.framework.helpers.SkeletonHelper;
 import org.polarsys.capella.test.framework.model.GenericModel;
@@ -115,24 +116,8 @@ public class SkeletonElementsNames extends EmptySkeletonProject {
   }
 
   protected void checkActorPkg(String containerId) {
-
-    SkeletonHelper.createComponentPkg(containerId, GenericModel.ACTOR_PKG, context);
-
-    //Check default name
-    EObject result = null;
-    performActorTransition(getObjects(containerId));
-    result = mustBeTransitioned(GenericModel.ACTOR_PKG);
-    checkDefaultName(result);
-    EObjectHelper.removeElement(result);
-
-    //Check custom name
-    setName(GenericModel.ACTOR_PKG, CUSTOM_NAME);
-    performActorTransition(getObjects(containerId));
-    result = mustBeTransitioned(GenericModel.ACTOR_PKG);
-    mustBeNamed(result, CUSTOM_NAME);
-    EObjectHelper.removeElement(result);
-
-    EObjectHelper.removeElement(GenericModel.ACTOR_PKG, context);
+    boolean isTransitionable = TransitionCommandHelper.getInstance().isActorTransitionAvailable(getObject(containerId));
+    assertFalse("Can not perform actor transition on Architecture without any actor under it", isTransitionable);
   }
   
   protected void checkDataPkg(String containerId) {

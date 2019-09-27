@@ -1872,6 +1872,11 @@ public class ComponentExt {
   public static boolean isActor(Component component) {
     return component.isActor();
   }
+  
+  public static boolean isExternalActor(Component component) {
+    // if can not find the root component, it is external 
+    return component != null && component.isActor() && getRootComponent(component) == null;
+  }
 
   public static boolean isActorHuman(Component component) {
     return component.isActor() && component.isHuman();
