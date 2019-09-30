@@ -68,13 +68,18 @@ public class CreationAlgorithms {
 
     EObject container = null;
 
-    if (src instanceof Component && tgt instanceof Component) {
+    if (src instanceof Component && 
+        tgt instanceof Component &&
+        !((Component) src).isActor() &&
+        !((Component) tgt).isActor()) {
       container = ComponentExt.getFirstCommonComponentAncestor(src, tgt);
     }
     if(src instanceof SystemComponentPkg && tgt instanceof SystemComponentPkg) {
-      container = ComponentExt.getRootBlockArchitecture((SystemComponentPkg)src);
+      container = ComponentExt.getRootBlockArchitecture((SystemComponentPkg) src);
     }
-    if (ComponentExt.isActor(src) || ComponentExt.isActor(tgt)) {
+    if (sourceIR != null && targetIR != null &&
+        ComponentExt.isActor(sourceIR.getRepresentedInstance()) || 
+        ComponentExt.isActor(targetIR.getRepresentedInstance())) {
       if (sourceIR != null) {
         container = ComponentExt.getRootBlockArchitecture(sourceIR);
       } else {
