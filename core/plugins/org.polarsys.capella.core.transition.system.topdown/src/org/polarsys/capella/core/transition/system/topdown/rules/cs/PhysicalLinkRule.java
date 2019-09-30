@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
+import org.polarsys.capella.core.transition.common.constants.Messages;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.transformation.TransformationHandlerHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -72,21 +73,21 @@ public class PhysicalLinkRule extends org.polarsys.capella.core.transition.syste
         return result;
       }
       if (!ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.SOURCE_SCOPE, element_p, context_p)) {
-        return new Status(IStatus.WARNING, "ce", "not in scope");
+        return new Status(IStatus.WARNING, Messages.Activity_Transition, "not in scope");
       }
       if (org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getSource(element) == null) {
-        return new Status(IStatus.WARNING, "ce", "source null");
+        return new Status(IStatus.WARNING, Messages.Activity_Transition, "source null");
       }
       if (org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getTarget(element) == null) {
-        return new Status(IStatus.WARNING, "ce", "target null");
+        return new Status(IStatus.WARNING, Messages.Activity_Transition, "target null");
       }
       if (!TransformationHandlerHelper.getInstance(context_p)
           .isOrWillBeTransformed(org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getSource(element), context_p).isOK()) {
-        return new Status(IStatus.WARNING, "ce", "source");
+        return new Status(IStatus.WARNING, Messages.Activity_Transition, "source");
       }
       if (!TransformationHandlerHelper.getInstance(context_p)
           .isOrWillBeTransformed(org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getTarget(element), context_p).isOK()) {
-        return new Status(IStatus.WARNING, "ce", "target");
+        return new Status(IStatus.WARNING, Messages.Activity_Transition, "target");
       }
     }
     return result;

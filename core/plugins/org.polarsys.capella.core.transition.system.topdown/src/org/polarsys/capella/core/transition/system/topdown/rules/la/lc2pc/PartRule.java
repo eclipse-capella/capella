@@ -29,11 +29,10 @@ import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.ComponentPkgExt;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
-import org.polarsys.capella.core.transition.common.handlers.options.OptionsHandlerHelper;
+import org.polarsys.capella.core.transition.common.constants.Messages;
 import org.polarsys.capella.core.transition.common.handlers.selection.EClassSelectionContext;
 import org.polarsys.capella.core.transition.common.handlers.selection.SelectionContextHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.transformation.TransformationHandlerHelper;
-import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -46,51 +45,51 @@ public class PartRule extends org.polarsys.capella.core.transition.system.rules.
   }
 
   @Override
-  public IStatus transformRequired(EObject element_p, IContext context_p) {
+  public IStatus transformRequired(EObject element, IContext context) {
 
-    Part partSrc = (Part) element_p;
+    Part partSrc = (Part) element;
     boolean result =
-        CsPackage.Literals.COMPONENT.isSuperTypeOf(TransformationHandlerHelper.getInstance(context_p).getTargetType(partSrc.getAbstractType(), context_p));
+        CsPackage.Literals.COMPONENT.isSuperTypeOf(TransformationHandlerHelper.getInstance(context).getTargetType(partSrc.getAbstractType(), context));
     if (!result) {
-      return new Status(IStatus.WARNING, "a", "TypeTransitionedToPackage");
+      return new Status(IStatus.WARNING, Messages.Activity_Transition, "Type transitioned to ComponentPackage");
     }
 
     return Status.OK_STATUS;
   }
 
   @Override
-  protected EObject getDefaultContainer(EObject element_p, EObject result_p, IContext context_p) {
-    EObject root = TransformationHandlerHelper.getInstance(context_p).getLevelElement(element_p, context_p);
+  protected EObject getDefaultContainer(EObject element, EObject result, IContext context) {
+    EObject root = TransformationHandlerHelper.getInstance(context).getLevelElement(element, context);
     BlockArchitecture target =
-        (BlockArchitecture) TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(root, context_p, CsPackage.Literals.BLOCK_ARCHITECTURE,
-            element_p, result_p);
+        (BlockArchitecture) TransformationHandlerHelper.getInstance(context).getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE,
+            element, result);
 
-    if (!(ComponentPkgExt.isRootComponentPkg(element_p.eContainer()))) {
+    if (!(ComponentPkgExt.isRootComponentPkg(element.eContainer()))) {
       return BlockArchitectureExt.getOrCreateSystem(target);
     }
     return BlockArchitectureExt.getComponentPkg(target);
   }
 
   @Override
-  protected EObject transformDirectElement(EObject element_p, IContext context_p) {
-    Part part = (Part) element_p;
-    EClass targetType = TransformationHandlerHelper.getInstance(context_p).getTargetType(part.getAbstractType(), context_p);
+  protected EObject transformDirectElement(EObject element, IContext context) {
+    Part part = (Part) element;
+    EClass targetType = TransformationHandlerHelper.getInstance(context).getTargetType(part.getAbstractType(), context);
 
     boolean allowMultiplePart = TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(part));
 
     //Specific case for the part of the root component. Retrieve the existing part
-    if ((part.getAbstractType() != null) && (part.getAbstractType() instanceof Component)) {
+    if (part.getAbstractType() instanceof Component) {
       Component type = (Component) part.getAbstractType();
       if ((type != null) && (type.getRepresentingParts().size() == 1)) {
 
         EObject targetObject =
-            TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(
+            TransformationHandlerHelper.getInstance(context).getBestTracedElement(
                 type,
-                context_p,
-                new EClassSelectionContext(SelectionContextHandlerHelper.getHandler(context_p).getSelectionContext(context_p,
+                context,
+                new EClassSelectionContext(SelectionContextHandlerHelper.getHandler(context).getSelectionContext(context,
                     ITransitionConstants.SELECTION_CONTEXT__TRANSFORMATION), CsPackage.Literals.COMPONENT));
 
-        if ((targetObject != null) && (targetObject instanceof Component)) {
+        if (targetObject instanceof Component) {
           Component targetCps = (Component) targetObject;
           if ((targetCps.getRepresentingParts().size() == 1) && (targetCps.getRepresentingParts().get(0) instanceof Part)) {
             if ((part.getAbstractType().eContainer() instanceof BlockArchitecture) || !allowMultiplePart) {
@@ -103,10 +102,10 @@ public class PartRule extends org.polarsys.capella.core.transition.system.rules.
 
     if (CtxPackage.Literals.SYSTEM_COMPONENT.isSuperTypeOf(targetType) || (part.getAbstractType().eContainer() instanceof BlockArchitecture)) {
       // Retrieve the existing architecture if any
-      EObject root = TransformationHandlerHelper.getInstance(context_p).getLevelElement(element_p, context_p);
+      EObject root = TransformationHandlerHelper.getInstance(context).getLevelElement(element, context);
 
       BlockArchitecture target =
-          (BlockArchitecture) TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(root, context_p, CsPackage.Literals.BLOCK_ARCHITECTURE);
+          (BlockArchitecture) TransformationHandlerHelper.getInstance(context).getBestTracedElement(root, context, CsPackage.Literals.BLOCK_ARCHITECTURE);
       Component cps = BlockArchitectureExt.getOrCreateSystem(target);
       Collection<Part> parts = getCache(ComponentExt::getRepresentingParts, cps);
       if (!parts.isEmpty()) {
@@ -114,6 +113,6 @@ public class PartRule extends org.polarsys.capella.core.transition.system.rules.
       }
     }
 
-    return super.transformDirectElement(element_p, context_p);
+    return super.transformDirectElement(element, context);
   }
 }

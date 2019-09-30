@@ -32,14 +32,14 @@ public class LogicalComponentRule extends org.polarsys.capella.core.transition.s
   }
   
   @Override
-  public EClass getTargetType(EObject element_p, IContext context_p) {
+  public EClass getTargetType(EObject element, IContext context) {
 
     String value =
-        OptionsHandlerHelper.getInstance(context_p).getStringValue(context_p, ITopDownConstants.OPTIONS_SCOPE,
+        OptionsHandlerHelper.getInstance(context).getStringValue(context, ITopDownConstants.OPTIONS_SCOPE,
             ITopDownConstants.OPTIONS_TRANSITION__LCPC, ITopDownConstants.OPTIONS_TRANSITION__LCPC_DEFAULT);
 
     if (ITopDownConstants.OPTIONS_TRANSITION__LCPC_LEAF.equals(value)) {
-      LogicalComponent component = (LogicalComponent) element_p;
+      LogicalComponent component = (LogicalComponent) element;
       if (ComponentExt.isComposite(component) && !(BlockArchitectureExt.isRootComponent(component))) {
         return PaPackage.Literals.PHYSICAL_COMPONENT_PKG;
       }

@@ -15,6 +15,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 
 import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.capella.core.transition.common.constants.Messages;
 import org.polarsys.capella.core.transition.common.handlers.transformation.TransformationHandlerHelper;
 import org.polarsys.capella.core.transition.system.topdown.handlers.transformation.TopDownTransformationHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -46,7 +47,7 @@ public class PhysicalPortRule extends org.polarsys.capella.core.transition.syste
         }
       }
       if (!isValid) {
-        result = new Status(IStatus.WARNING, "oo", "ContainerNotTransitioned");
+        result = new Status(IStatus.WARNING, Messages.Activity_Transition, "Container not transitioned");
       } else {
         result = Status.OK_STATUS;
       }
