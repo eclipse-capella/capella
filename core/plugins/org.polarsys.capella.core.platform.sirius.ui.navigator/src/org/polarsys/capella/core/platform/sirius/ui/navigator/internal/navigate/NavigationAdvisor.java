@@ -15,6 +15,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -39,12 +40,12 @@ import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfaceImplementation;
 import org.polarsys.capella.core.data.cs.InterfaceUse;
+import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalPathInvolvement;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.Mission;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
-import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
 import org.polarsys.capella.core.data.fa.ExchangeCategory;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
@@ -119,7 +120,7 @@ public class NavigationAdvisor {
       navigableElements.addAll(MarkerViewHelper.getModelElementsFromMarker((IMarker) receiver));
 
     } else {
-      EObject element = CapellaAdapterHelper.resolveBusinessObject(receiver);
+      EObject element = CapellaAdapterHelper.resolveSemanticObject(receiver);
       if (element != null) {
         List<AbstractModelElementRunnable> navigationHandlers = getNavigationHandler(element);
         if (!navigationHandlers.isEmpty()) {
@@ -132,6 +133,7 @@ public class NavigationAdvisor {
             navigableElements.addAll(modelElementRunnable.getResult());
           }
         }
+        navigableElements.remove(element);
       }
     }
 
@@ -170,16 +172,6 @@ public class NavigationAdvisor {
       result.add(navigationHandler);
     }
     return result;
-  }
-
-  /**
-   * Handle {@link AbstractFunctionalBlock} navigation.
-   * 
-   * @param block
-   * @return a list mapped to {@link AbstractFunctionalBlock#getAllocatedFunctions()}.
-   */
-  List<EObject> handleAbstractFunctionalBlockNavigation(AbstractFunctionalBlock block) {
-    return new ArrayList<EObject>(block.getAllocatedFunctions());
   }
 
   /**
@@ -307,6 +299,8 @@ public class NavigationAdvisor {
     nagivations.addAll(component.getProvidedInterfaces());
     nagivations.addAll(component.getUsedInterfaces());
     nagivations.addAll(component.getRequiredInterfaces());
+    nagivations.addAll(component.getRepresentingParts());
+    nagivations.addAll(component.getAllocatedFunctions());
     if (component instanceof SystemComponent) {
       nagivations.addAll(((SystemComponent) component).getInvolvingCapabilities());
       nagivations.addAll(((SystemComponent) component).getInvolvingMissions());
@@ -317,6 +311,14 @@ public class NavigationAdvisor {
     return nagivations;
   }
 
+
+  List<EObject> handlePartNavigation(Part part) {
+    LinkedHashSet<EObject> nagivations = new LinkedHashSet<EObject>();
+    nagivations.addAll(handlePropertyNavigation(part));
+    nagivations.addAll(handleComponentNavigation((Component)part.getAbstractType()));
+    return new ArrayList<EObject>(nagivations);
+  }
+  
   /**
    * Handle {@link EnumerationReference} navigation.
    * 
@@ -721,6 +723,12 @@ public class NavigationAdvisor {
           setResult(handleInstanceRoleNavigation((InstanceRole) getElement()));
         }
       });
+      // Part.
+      __handledNavigations.put(Part.class, new AbstractModelElementRunnable() {
+        public void run() {
+          setResult(handlePartNavigation((Part) getElement()));
+        }
+      });
       // Property.
       __handledNavigations.put(Property.class, new AbstractModelElementRunnable() {
         public void run() {
@@ -749,12 +757,6 @@ public class NavigationAdvisor {
       __handledNavigations.put(AbstractFunction.class, new AbstractModelElementRunnable() {
         public void run() {
           setResult(handleAbstractFunctionNavigation((AbstractFunction) getElement()));
-        }
-      });
-      // Component navigations.
-      __handledNavigations.put(AbstractFunctionalBlock.class, new AbstractModelElementRunnable() {
-        public void run() {
-          setResult(handleAbstractFunctionalBlockNavigation((AbstractFunctionalBlock) getElement()));
         }
       });
       // Implemented Interfaces to Interface.

@@ -18,6 +18,7 @@ import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.navigator.ju.CancelCapellaWizardTest;
 import org.polarsys.capella.test.navigator.ju.DragDropTest;
 import org.polarsys.capella.test.navigator.ju.FinishCapellaWizardTest;
+import org.polarsys.capella.test.navigator.ju.NavigableElementsTest;
 import org.polarsys.capella.test.navigator.ju.NavigatorFilterClasses;
 import org.polarsys.capella.test.navigator.ju.NavigatorFilterInvalidRepresentation;
 import org.polarsys.capella.test.navigator.ju.NavigatorLabelProviderColors;
@@ -46,6 +47,7 @@ public class NavigatorUITestSuite extends BasicTestSuite {
     tests.add(new NavigatorStatusLineRepresentation());
     tests.add(new PartIcon());
     tests.add(new DragDropTest());
+    tests.add(new NavigableElementsTest());
 
     return tests;
   }

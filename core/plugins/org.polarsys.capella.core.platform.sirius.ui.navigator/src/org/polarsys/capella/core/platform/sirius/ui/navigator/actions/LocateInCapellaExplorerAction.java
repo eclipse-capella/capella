@@ -29,11 +29,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.IShowInTarget;
 import org.eclipse.ui.part.ShowInContext;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
-import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
-import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
-import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 
@@ -55,9 +51,8 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
 
       @Override
       public void run(IAction action) {
-        Object elementToSelectInCapellaExplorer = referenced;
         // Keep the double check here, as getSemanticElement can return an element not from the model.
-        selectElementInCapellaExplorer(new StructuredSelection(elementToSelectInCapellaExplorer));
+        selectElementInCapellaExplorer(new StructuredSelection(referenced));
       }
     };
 
@@ -182,16 +177,6 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
    * @return a semantic element or a {@link DRepresentation}.
    */
   public static Object getElement(Object uiSelectedElement) {
-    Object semanticElement = CapellaAdapterHelper.resolveBusinessObject(uiSelectedElement);
-    
-    if (semanticElement instanceof Part) {
-      boolean allowMultiplePart = TriStateBoolean.True
-          .equals(CapellaProjectHelper.isReusableComponentsDriven((Part) semanticElement));
-      if (!allowMultiplePart && !(((Part) semanticElement).getAbstractType() instanceof ConfigurationItem)) {
-        semanticElement = ((Part) semanticElement).getAbstractType();
-      }
-    }
-
-    return semanticElement;
+    return CapellaAdapterHelper.resolveSemanticObject(uiSelectedElement, false);
   }
 }
