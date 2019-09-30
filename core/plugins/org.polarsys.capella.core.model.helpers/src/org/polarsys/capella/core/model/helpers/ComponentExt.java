@@ -1589,6 +1589,14 @@ public class ComponentExt {
     return rootCpnt;
   }
 
+  public static Component getParentRootComponent(EObject component) {
+    Component rootCpnt = getRootComponent(component);
+    if (null != rootCpnt) {
+      return getParentRootComponent(rootCpnt);
+    }
+    return (Component) component;
+  }
+
   /**
    * Gets the root component architecture from the current component
    * 
