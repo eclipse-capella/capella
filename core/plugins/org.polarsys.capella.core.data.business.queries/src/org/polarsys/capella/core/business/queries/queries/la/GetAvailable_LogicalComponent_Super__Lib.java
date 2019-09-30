@@ -30,7 +30,6 @@ import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.libraries.queries.QueryExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 
 @ExtendingQuery (extendingQuery = GetAvailable_LogicalComponent_Super.class)
 public class GetAvailable_LogicalComponent_Super__Lib extends AbstractQuery {
@@ -49,8 +48,7 @@ public class GetAvailable_LogicalComponent_Super__Lib extends AbstractQuery {
           LogicalArchitecture la = (LogicalArchitecture) currentBlockArchitecture;
           for (Component component : BlockArchitectureExt.getAllComponents(la)) {
             if (isGoodSupertypeCandidate(currentActor, component)) {
-              if (currentActor.isActor() == component.isActor()
-                  || CapellaModelPreferencesPlugin.getDefault().isComponentNonActorInheritanceAllowed()) {
+              if (currentActor.isActor() == component.isActor()) {
                 availableElements.add(component);
               }
             }

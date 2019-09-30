@@ -24,7 +24,7 @@ public class HideCapabilitiesForMB extends FiltersForMB {
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { CAPABILITY_ID });
+    return Arrays.asList(new String[] { CAPABILITY_ID, CAPABILITY_10_ID });
   }
 
 }

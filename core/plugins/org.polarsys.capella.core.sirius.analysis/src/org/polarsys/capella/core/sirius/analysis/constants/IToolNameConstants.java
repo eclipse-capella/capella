@@ -118,8 +118,8 @@ public interface IToolNameConstants {
   String TOOL_CC_CREATE_INVOLVED_ACTOR = "involved.actor";
   String TOOL_CC_CREATE_EXTENDS = "extends";
   String TOOL_CC_CREATE_INCLUDES = "includes";
-  String TOOL_CC_CREATE_CAPABILITY_GENERALIZATION = "capability.generalization";
   String TOOL_CC_CREATE_ACTOR_GENERALIZATION = "actor.generalization";
+  String TOOL_CC_CREATE_CAPABILITY_GENERALIZATION = TOOL_CC_CREATE_ACTOR_GENERALIZATION;
   String TOOL_CC_INSERT_REMOVE_ACTORS = "actors";
   String TOOL_CC_INSERT_REMOVE_MISSIONS = "missions";
   String TOOL_CC_INSERT_REMOVE_CAPABILITIES = "capabilities";
@@ -364,8 +364,8 @@ public interface IToolNameConstants {
   String TOOL_CRB_CREATE_INVOLVEMENT = "involvement";
   String TOOL_CRB_CREATE_EXTENDS = "extends";
   String TOOL_CRB_CREATE_INCLUDES = "includes";
-  String TOOL_CRB_CREATE_CAPABILITY_GENERALIZATION = "capability.generalization";
   String TOOL_CRB_CREATE_ACTOR_GENERALIZATION = "actor.generalization";
+  String TOOL_CRB_CREATE_CAPABILITY_GENERALIZATION = TOOL_CRB_CREATE_ACTOR_GENERALIZATION;
   String TOOL_CRB_INSERT_REMOVE_CAPABILITY_REALIZATIONS = "capability.realizations";
   String TOOL_CRB_INSERT_REMOVE_COMPONENTS = "components";
   String TOOL_CRB_INSERT_REMOVE_ACTORS = "actors";
@@ -906,8 +906,8 @@ public interface IToolNameConstants {
   String TOOL_MCB_CREATE_INVOLVED_ACTOR = "involved.actor";
   String TOOL_MCB_CREATE_EXTENDS = "extends";
   String TOOL_MCB_CREATE_INCLUDES = "includes";
-  String TOOL_MCB_CREATE_CAPABILITY_GENERALIZATION = "capability.generalization";
   String TOOL_MCB_CREATE_ACTOR_GENERALIZATION = "actor.generalization";
+  String TOOL_MCB_CREATE_CAPABILITY_GENERALIZATION = TOOL_MCB_CREATE_ACTOR_GENERALIZATION;
   String TOOL_MCB_INSERT_REMOVE_ACTORS = "actors";
   String TOOL_MCB_INSERT_REMOVE_ACTORS_LABEL = "actors";
   String TOOL_MCB_INSERT_REMOVE_MISSIONS = "missions";

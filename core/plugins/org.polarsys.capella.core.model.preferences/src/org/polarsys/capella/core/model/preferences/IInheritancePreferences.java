@@ -24,16 +24,6 @@ public interface IInheritancePreferences {
   public static final Boolean PREFS_ALLOW_MULTIPLE_INHERITANCE_DEFAULT = Boolean.FALSE;
 
   /**
-   * Is multiple inheritance allowed or not
-   */
-  public static final String PREFS_ALLOW_COMPONENT_INHERITANCE = "componentInheritance.allowed"; //$NON-NLS-1$
-
-  /**
-   * Default value for multiple inheritance preference
-   */
-  public static final Boolean PREFS_ALLOW_COMPONENT_INHERITANCE_DEFAULT = Boolean.FALSE;
-
-  /**
    * Is non actor inheritance allowed or not
    */
   public static final String PREFS_ALLOW_COMPONENT_NON_ACTOR_INHERITANCE = "componentNonActorInheritance.allowed"; //$NON-NLS-1$

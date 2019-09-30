@@ -28,6 +28,7 @@ public class CCDiagramFiltersTestSuite extends BasicTestSuite {
     tests.add(new HideCapabilityExploitationsForCC());
     tests.add(new HideCapabilityExtendsForCC());
     tests.add(new HideCapabilityIncludesForCC());
+    tests.add(new HideCapabilityGeneralizationsForCC());
     tests.add(new HideMissionsForCC());
     tests.add(new HidePropertyValuesForCC());
     return tests;

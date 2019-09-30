@@ -25,7 +25,6 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 
 public class GetAvailable_PhysicalComponent_Super extends AbstractQuery {
 
@@ -45,8 +44,7 @@ public class GetAvailable_PhysicalComponent_Super extends AbstractQuery {
       PhysicalArchitecture ca = SystemEngineeringExt.getOwnedPhysicalArchitecture(systemEngineering);
       for (Component actor : BlockArchitectureExt.getAllComponents(ca)) {
         if (isGoodSupertypeCandidate(physicalComponent, actor)) {
-          if (physicalComponent.isActor() == actor.isActor()
-              || CapellaModelPreferencesPlugin.getDefault().isComponentNonActorInheritanceAllowed()) {
+          if (physicalComponent.isActor() == actor.isActor()) {
             availableElements.add(actor);
           }
         }

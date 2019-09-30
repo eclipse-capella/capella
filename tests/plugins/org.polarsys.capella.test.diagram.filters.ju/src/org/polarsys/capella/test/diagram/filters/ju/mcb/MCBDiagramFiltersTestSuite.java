@@ -29,6 +29,7 @@ public class MCBDiagramFiltersTestSuite extends BasicTestSuite {
     tests.add(new HideCapabilityExploitationsForMCB());
     tests.add(new HideCapabilityExtendsForMCB());
     tests.add(new HideCapabilityIncludesForMCB());
+    tests.add(new HideCapabilityGeneralizationsForMCB());
     tests.add(new HideMissionsForMCB());
     tests.add(new HidePropertyValuesForMCB());
     return tests;

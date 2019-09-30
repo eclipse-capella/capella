@@ -28,6 +28,7 @@ public interface IFilterNameConstants {
   String FILTER_CC_HIDE_CAPABILITY_EXPLOITATION = "hide.capability.exploitations.filter";
   String FILTER_CC_HIDE_CAPABILITY_EXTENDS = "hide.capability.extends.filter";
   String FILTER_CC_HIDE_CAPABILITY_INCLUDES = "hide.capability.includes.filter";
+  String FILTER_CC_HIDE_CAPABILITY_GENERALIZATIONS = "hide.capability.generalizations.filter";
   String FILTER_CC_HIDE_MISSIONS = "hide.missions.filter";
   String FILTER_CC_HIDE_ACTORS = "hide.actors.filter";
   String FILTER_CC_HIDE_ACTOR_INVOLVEMENTS = "hide.actor.involvements.filter";
@@ -311,6 +312,7 @@ public interface IFilterNameConstants {
   // MB filters - Missions Blank
   String FILTER_MB_HIDE_CAPABILITIES = "hide.capabilities.filter";
   String FILTER_MB_HIDE_CAPABILITY_EXPLOITATION = "hide.capability.exploitations.filter";
+  String FILTER_MB_HIDE_CAPABILITY_GENERALIZATIONS = "hide.capability.generalizations.filter";
   String FILTER_MB_HIDE_MISSIONS = "hide.missions.filter";
   String FILTER_MB_HIDE_ACTORS = "hide.actors.filter";
   String FILTER_MB_HIDE_ACTOR_INVOLVEMENTS = "hide.actor.involvements.filter";
@@ -322,6 +324,7 @@ public interface IFilterNameConstants {
   String FILTER_MCB_HIDE_CAPABILITY_EXPLOITATIONS = "hide.capability.exploitations.filter";
   String FILTER_MCB_HIDE_CAPABILITY_EXTENDS = "hide.capability.extends.filter";
   String FILTER_MCB_HIDE_CAPABILITY_INCLUDES = "hide.capability.includes.filter";
+  String FILTER_MCB_HIDE_CAPABILITY_GENERALIZATIONS = "hide.capability.generalizations.filter";
   String FILTER_MCB_HIDE_MISSIONS = "hide.missions.filter";
   String FILTER_MCB_HIDE_ACTORS = "hide.actors.filter";
   String FILTER_MCB_HIDE_ACTOR_MISSION_INVOLVEMENTS = "hide.actor.mission.involvements.filter";

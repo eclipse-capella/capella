@@ -22,7 +22,7 @@ public class CreateActorGeneralization extends EmptyProject {
   public void test() throws Exception {
     Session session = getSession(getRequiredTestModel());
     SessionContext context = new SessionContext(session);
-    context.setPreference(IInheritancePreferences.PREFS_ALLOW_COMPONENT_INHERITANCE, true);
+    context.setPreference(IInheritancePreferences.PREFS_ALLOW_COMPONENT_NON_ACTOR_INHERITANCE, true);
     CSADiagram csa = CSADiagram.createDiagram(context, SA__SYSTEM);
     String actor1 = csa.createActor();
     String actor2 = csa.createActor();

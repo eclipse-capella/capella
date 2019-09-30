@@ -30,7 +30,6 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.libraries.queries.QueryExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 
 @ExtendingQuery(extendingQuery = GetAvailable_PhysicalComponent_Super.class)
 public class GetAvailable_PhysicalComponent_Super__Lib extends AbstractQuery {
@@ -50,8 +49,7 @@ public class GetAvailable_PhysicalComponent_Super__Lib extends AbstractQuery {
           PhysicalArchitecture pa = (PhysicalArchitecture) currentBlockArchitecture;
           for (Component component : BlockArchitectureExt.getAllComponents(pa)) {
             if (isGoodSupertypeCandidate(currentActor, component)) {
-              if (currentActor.isActor() == component.isActor()
-                  || CapellaModelPreferencesPlugin.getDefault().isComponentNonActorInheritanceAllowed()) {
+              if (currentActor.isActor() == component.isActor()) {
                 availableElements.add(component);
               }
             }

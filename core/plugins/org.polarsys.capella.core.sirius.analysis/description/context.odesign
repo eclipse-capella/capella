@@ -458,6 +458,9 @@
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.capability.exploitations.filter" label="%sa.mb.hide.capability.exploitations.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@edgeMappings[name='CapExploitation2']"/>
       </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.capability.generalizations.filter" label="%sa.mb.hide.capability.generalizations.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@edgeMappings[name='MB_Cap_Generalization']"/>
+      </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.missions.filter" label="%sa.mb.hide.missions.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='MissionNode2']"/>
       </filters>
@@ -526,6 +529,14 @@
         </edgeMappings>
         <edgeMappings name="CapExploitation2" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticCandidatesExpression="service:diagram.getMBCapabilityExploitationSemanticCandidates" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='MissionNode2']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='CapNode2']" targetFinderExpression="feature:capability" sourceFinderExpression="feature:mission" domainClass="CapabilityExploitation" useDomainElement="true">
           <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="MB_Cap_Generalization" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticCandidatesExpression="service:diagram.getMBCapabilityGeneralizationSemanticCandidates" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='CapNode2']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='CapNode2']" targetFinderExpression="feature:super" sourceFinderExpression="feature:sub" domainClass="AbstractCapabilityGeneralization" useDomainElement="true">
+          <style lineStyle="dot">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -610,7 +621,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a new Involvement relationship between the source Mission / Capability and the target System Actor" name="actor.involvement" label="%sa.mb.actor.involvement" precondition="aql:preSource.eInverse('mission')->filter(ctx::MissionInvolvement)->select(x | x.systemComponent = preTarget)->size() = 0" edgeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@edgeMappings[name='ActMissInv2']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Use.gif">
+		  <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a new Involvement relationship between the source Mission / Capability and the target System Actor" name="actor.involvement" label="%sa.mb.actor.involvement" precondition="aql:preSource.eInverse('mission')->filter(ctx::MissionInvolvement)->select(x | x.systemComponent = preTarget)->size() = 0" edgeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@edgeMappings[name='ActMissInv2']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Use.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -623,17 +634,26 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a new Generalization relationship between the source and target System Actors" name="actor.generalization" label="%sa.mb.actor.generalization" precondition="aql:self.isGeneralizable(preSource,preTarget) and not (preSource.superGeneralizations.super->includes(preTarget))" edgeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@edgeMappings[name='actorGeneralization3']">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a new Generalization relationship between the source and target System Actors" name="actor.generalization" label="%sa.mb.actor.generalization" precondition="aql:self.canReconnectGeneralization(preSource,preTarget)" edgeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@edgeMappings[name='actorGeneralization3'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@edgeMappings[name='MB_Cap_Generalization']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Generalization.gif" connectionStartPrecondition="aql:self.preGeneralization(preSource)">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacore.Generalization" referenceName="ownedGeneralizations">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="aql:target"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="sub" valueExpression="aql:source"/>
-                </subModelOperations>
+              <firstModelOperations xsi:type="tool_1:Switch">
+                <cases conditionExpression="aql:source.oclIsKindOf(interaction::AbstractCapability)">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="AbstractCapabilityGeneralization" referenceName="superGeneralizations">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="aql:target"/>
+                  </subModelOperations>
+                </cases>
+                <cases conditionExpression="aql:source.oclIsKindOf(capellacore::GeneralizableElement)">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacore.Generalization" referenceName="ownedGeneralizations">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="aql:target"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="sub" valueExpression="aql:source"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </cases>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -901,6 +921,9 @@
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.capability.includes.filter" label="%sa.cc.hide.capability.includes.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@edgeMappings[name='AbsCapInclude3']"/>
       </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.capability.generalizations.filter" label="%sa.cc.hide.capability.generalizations.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@edgeMappings[name='Generalization3']"/>
+      </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.missions.filter" label="%sa.cc.hide.missions.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='MissionNode3']"/>
       </filters>
@@ -1116,28 +1139,26 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Create a new Capability Generalization relationship between the Source and Target Super Capabilities." name="capability.generalization" label="%sa.cc.capability.generalization" precondition="aql:not (self.getAllSuperCapabilities(preTarget)->includes(preSource)) and self.eAllContents()->filter(interaction::AbstractCapabilityGeneralization)->select(x | x.sub = preSource and x.super = preTarget)->size() = 0" edgeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@edgeMappings[name='Generalization3']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Generalization.gif">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Create a new Actor Generalization relationship between the Source and Target Super Actors." name="actor.generalization" label="%sa.cc.actor.generalization" precondition="aql:self.canReconnectGeneralization(preSource,preTarget)" edgeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@edgeMappings[name='actorGeneralization1'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@edgeMappings[name='Generalization3']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Generalization.gif" connectionStartPrecondition="aql:self.preGeneralization(preSource)">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="AbstractCapabilityGeneralization" referenceName="superGeneralizations">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="aql:target"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Create a new Actor Generalization relationship between the Source and Target Super Actors." name="actor.generalization" label="%sa.cc.actor.generalization" precondition="aql:self.isGeneralizable(preSource,preTarget) and not (preSource.superGeneralizations.super->includes(preTarget))" edgeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@edgeMappings[name='actorGeneralization1']">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable name="sourceView"/>
-            <targetViewVariable name="targetView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacore.Generalization" referenceName="ownedGeneralizations">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="aql:target"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="sub" valueExpression="aql:source"/>
-                </subModelOperations>
+              <firstModelOperations xsi:type="tool_1:Switch">
+                <cases conditionExpression="aql:source.oclIsKindOf(interaction::AbstractCapability)">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="AbstractCapabilityGeneralization" referenceName="superGeneralizations">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="aql:target"/>
+                  </subModelOperations>
+                </cases>
+                <cases conditionExpression="aql:source.oclIsKindOf(capellacore::GeneralizableElement)">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacore.Generalization" referenceName="ownedGeneralizations">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="aql:target"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="sub" valueExpression="aql:source"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </cases>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -1438,6 +1459,9 @@
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.capability.includes.filter" label="%sa.mcb.hide.capability.includes.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@edgeMappings[name='AbsCapInclude4int']"/>
       </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide.capability.generalizations.filter" label="%sa.mcb.hide.capability.generalizations.filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@edgeMappings[name='Generalization4int']"/>
+      </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="hide.missions.filter" label="%sa.mcb.hide.missions.filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='MissionNode4']"/>
       </filters>
@@ -1664,28 +1688,26 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a new Generalization relationship between the source and target Capabilities" name="capability.generalization" label="%sa.mcb.capability.generalization" precondition="aql:not (self.getAllSuperCapabilities(preTarget)->includes(preSource)) and self.eAllContents()->filter(interaction::AbstractCapabilityGeneralization)->select(x | x.sub = preSource and x.super = preTarget)->size() = 0" edgeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@edgeMappings[name='Generalization4int']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Generalization.gif">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a new Generalization relationship between the source and target System Actors" name="actor.generalization" label="%sa.mcb.actor.generalization" precondition="aql:self.canReconnectGeneralization(preSource,preTarget)" edgeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@edgeMappings[name='actorGeneralization2'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@edgeMappings[name='Generalization4int']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Generalization.gif" connectionStartPrecondition="aql:self.preGeneralization(preSource)">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="AbstractCapabilityGeneralization" referenceName="superGeneralizations">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="aql:target"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a new Generalization relationship between the source and target System Actors" name="actor.generalization" label="%sa.mcb.actor.generalization" precondition="aql:self.isGeneralizable(preSource,preTarget) and not (preSource.superGeneralizations.super->includes(preTarget))" edgeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@edgeMappings[name='actorGeneralization2']">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable name="sourceView"/>
-            <targetViewVariable name="targetView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacore.Generalization" referenceName="ownedGeneralizations">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="aql:target"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="sub" valueExpression="aql:source"/>
-                </subModelOperations>
+              <firstModelOperations xsi:type="tool_1:Switch">
+                <cases conditionExpression="aql:source.oclIsKindOf(interaction::AbstractCapability)">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="AbstractCapabilityGeneralization" referenceName="superGeneralizations">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="aql:target"/>
+                  </subModelOperations>
+                </cases>
+                <cases conditionExpression="aql:source.oclIsKindOf(capellacore::GeneralizableElement)">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="capellacore.Generalization" referenceName="ownedGeneralizations">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="aql:target"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="sub" valueExpression="aql:source"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </cases>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

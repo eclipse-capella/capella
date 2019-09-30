@@ -33,9 +33,6 @@ public class CapellaModelPreferencesInitializer extends AbstractPreferencesIniti
     putString(IInheritancePreferences.PREFS_ALLOW_MULTIPLE_INHERITANCE,
         IInheritancePreferences.PREFS_ALLOW_MULTIPLE_INHERITANCE_DEFAULT.toString(), ProjectScope.class);
 
-    putString(IInheritancePreferences.PREFS_ALLOW_COMPONENT_INHERITANCE,
-        IInheritancePreferences.PREFS_ALLOW_COMPONENT_INHERITANCE_DEFAULT.toString(), ProjectScope.class);
-
     putString(IInheritancePreferences.PREFS_ALLOW_COMPONENT_NON_ACTOR_INHERITANCE,
         IInheritancePreferences.PREFS_ALLOW_COMPONENT_NON_ACTOR_INHERITANCE_DEFAULT.toString(), ProjectScope.class);
 

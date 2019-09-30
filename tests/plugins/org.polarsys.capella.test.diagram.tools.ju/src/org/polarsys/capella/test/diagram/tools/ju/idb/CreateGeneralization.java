@@ -54,11 +54,11 @@ public class CreateGeneralization extends IDBProject {
     String component2 = idb.createComponent();
     String component3 = idb.createComponent();
 
-    sessionContext.setPreference(IInheritancePreferences.PREFS_ALLOW_COMPONENT_INHERITANCE, false);
+    sessionContext.setPreference(IInheritancePreferences.PREFS_ALLOW_COMPONENT_NON_ACTOR_INHERITANCE, false);
     sessionContext.setPreference(IInheritancePreferences.PREFS_ALLOW_MULTIPLE_INHERITANCE, false);
     idb.createGeneralizationNotEnabled(component1, component2);
 
-    sessionContext.setPreference(IInheritancePreferences.PREFS_ALLOW_COMPONENT_INHERITANCE, true);
+    sessionContext.setPreference(IInheritancePreferences.PREFS_ALLOW_COMPONENT_NON_ACTOR_INHERITANCE, true);
     idb.createGeneralization(component2, component1);
     idb.createGeneralizationNotEnabled(component1, component2);
 

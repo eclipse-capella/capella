@@ -1627,6 +1627,18 @@ public class CsServices {
         return existCycle;
       }
     }
+    
+    if (((newSource instanceof AbstractCapability) && (newTarget instanceof AbstractCapability))
+        && newSource.eClass().equals(newTarget.eClass())) {
+      boolean cond = !CapellaServices.getService().getAllSuperCapabilities(context, (AbstractCapability) newTarget)
+          .contains(newSource)
+          && !CapellaServices.getService().getAllSuperCapabilities(context, (AbstractCapability) newSource)
+              .contains(newTarget);
+      if (cond) {
+        return true;
+      }
+
+    }
 
     return false;
   }
@@ -1736,8 +1748,8 @@ public class CsServices {
    * @return true if newSource can be the source of generalization
    */
   public boolean preGeneralization(EObject generalization, EObject preSource) {
-    if (preSource instanceof Component) {
-      return CapellaModelPreferencesPlugin.getDefault().isComponentInheritanceAllowed();
+    if (preSource instanceof Component && !((Component) preSource).isActor()) {
+      return CapellaModelPreferencesPlugin.getDefault().isComponentNonActorInheritanceAllowed();
     }
     return true;
   }
@@ -1784,8 +1796,12 @@ public class CsServices {
       }
     }
 
-    if (CapellaModelPreferencesPlugin.getDefault().isComponentInheritanceAllowed() && (source instanceof Component)
-        && (target instanceof Component)) {
+    if ((source instanceof Component) && (target instanceof Component)) {
+      if (!(((Component) source).isActor() && ((Component) target).isActor())
+          && !CapellaModelPreferencesPlugin.getDefault().isComponentNonActorInheritanceAllowed()) {
+        return false;
+      }
+      
       if ((((Component) source).isActor()) && (((Component) target).isActor())) {
         return source.getClass().equals(target.getClass());
       } else if (!(((Component) source).isActor()) && !(((Component) target).isActor())) {
