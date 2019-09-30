@@ -53,14 +53,23 @@ public class PartIcon extends NavigatorEmptyProject {
     
     int style = b.getFont(part).getFontData()[0].getStyle();
     assertTrue("Part label is italic", style == SWT.ITALIC);
+    
+    removePartType(part);
+    assertTrue("Part icon shall be the default one", hasPartIcon(part));
+    
   }
   
   private CommonNavigator getNavigator() {
     return (CommonNavigator) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
         .findView(CapellaCommonNavigator.ID);
-    
   }
 
+  private boolean hasPartIcon(Part part) {
+    AdapterFactory adapterFactory = CapellaAdapterFactoryProvider.getInstance().getAdapterFactory();
+    IItemLabelProvider partProvider = (IItemLabelProvider)adapterFactory.adapt(part, IItemLabelProvider.class);
+    return partProvider.getImage(part) instanceof URL;
+  }
+  
   private boolean hasDecoratedComponentIcon(Part part) {
     AdapterFactory adapterFactory = CapellaAdapterFactoryProvider.getInstance().getAdapterFactory();
     IItemLabelProvider partProvider = (IItemLabelProvider)adapterFactory.adapt(part, IItemLabelProvider.class);
@@ -86,6 +95,16 @@ public class PartIcon extends NavigatorEmptyProject {
       public void run() {
         CapellaProjectHelper.setProjectWithApproach(ProjectExt.getProject(source), approach);
 
+      }
+    });
+  }
+  
+  private void removePartType(Part source) {
+    TransactionHelper.getExecutionManager(source).execute(new AbstractReadWriteCommand() {
+
+      @Override
+      public void run() {
+        source.setAbstractType(null);
       }
     });
   }
