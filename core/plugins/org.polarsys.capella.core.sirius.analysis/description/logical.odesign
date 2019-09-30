@@ -2370,137 +2370,141 @@
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
         <reusedMappings xsi:type="description_2:NodeMapping" href="oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
         <toolSections name="Components">
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Logical Component and a Part typed by this Logical Component. &#xD;&#xA;The Part is created in the Component target of the click." name="logical.component" label="%la.lab.logical.component" precondition="aql:containerView.getABTarget().isValidCreationABComponent()" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/LogicalComponent.gif">
-            <variable name="container">
-              <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
-            </variable>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getABTarget().getComponentType()">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createComponent('component')"/>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:component != null">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(la::LogicalComponent)">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:component"/>
+          <ownedTools xsi:type="tool_1:ToolGroup" name="Component">
+            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Logical Component and a Part typed by this Logical Component. &#xD;&#xA;The Part is created in the Component target of the click." name="logical.component" label="%la.lab.logical.component" precondition="aql:containerView.getABTarget().isValidCreationABComponent()" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/LogicalComponent.gif">
+              <variable name="container">
+                <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
+              </variable>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getABTarget().getComponentType()">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createComponent('component')"/>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:component != null">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(la::LogicalComponent)">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:component"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(la::LogicalComponentPkg)">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedParts" variableName="part">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:component"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(la::LogicalComponentPkg)">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedParts" variableName="part">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:component"/>
-                    </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="[Reusable Components] Creates a new Part of an existing Logical Component into the targeted Component." name="reuse.logical.component" label="%la.lab.reuse.logical.component" precondition="aql:not (containerView.oclIsKindOf(diagram::DDiagram) and containerView.getABTarget().oclIsKindOf(capellacore::ModellingArchitecture))" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Insert.gif">
+              <filters precondition="aql:not (self.isPreferenceEnabled('multipart.allowed'))" elementsToListen="aql:self.getPreferenceListener()">
+                <listeners domainClass="org.polarsys.capella.core.preferences.Listener" featureName="multipart.allowed"/>
+              </filters>
+              <variable name="container"/>
+              <viewVariable name="containerView">
+                <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:containerView.getDiagramContainer()"/>
+                <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:containerView.getABTarget().getComponentType()"/>
+                <subVariables xsi:type="tool:AcceleoVariable" name="containerTarget" computationExpression="aql:containerView.getABTarget()"/>
+              </viewVariable>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType">
+                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="select Components" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
+                    <parameters name="context" value="aql:containerType"/>
+                    <parameters name="scope" value="aql:containerType.getABInsertComponent()"/>
+                    <parameters name="multiple" value="true"/>
+                    <parameters name="resultVariable" value="components"/>
+                    <parameters name="wizardMessage" value="Select Components."/>
                   </subModelOperations>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:components != 'WIZARD_CANCELED'">
+                    <subModelOperations xsi:type="tool:For" expression="aql:components">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.eContainer()">
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(la::LogicalComponent)">
+                          <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
+                            <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:i"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(la::LogicalComponentPkg)">
+                          <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedParts" variableName="part">
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
+                            <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:i"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getDiagramContainer().forceRefresh()"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="[Reusable Components] Creates a new Part of an existing Logical Component into the targeted Component." name="reuse.logical.component" label="%la.lab.reuse.logical.component" precondition="aql:not (containerView.oclIsKindOf(diagram::DDiagram) and containerView.getABTarget().oclIsKindOf(capellacore::ModellingArchitecture))" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Insert.gif">
-            <filters precondition="aql:not (self.isPreferenceEnabled('multipart.allowed'))" elementsToListen="aql:self.getPreferenceListener()">
-              <listeners domainClass="org.polarsys.capella.core.preferences.Listener" featureName="multipart.allowed"/>
-            </filters>
-            <variable name="container"/>
-            <viewVariable name="containerView">
-              <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:containerView.getDiagramContainer()"/>
-              <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:containerView.getABTarget().getComponentType()"/>
-              <subVariables xsi:type="tool:AcceleoVariable" name="containerTarget" computationExpression="aql:containerView.getABTarget()"/>
-            </viewVariable>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType">
-                <subModelOperations xsi:type="tool:ExternalJavaAction" name="select Components" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
-                  <parameters name="context" value="aql:containerType"/>
-                  <parameters name="scope" value="aql:containerType.getABInsertComponent()"/>
-                  <parameters name="multiple" value="true"/>
-                  <parameters name="resultVariable" value="components"/>
-                  <parameters name="wizardMessage" value="Select Components."/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:components != 'WIZARD_CANCELED'">
-                  <subModelOperations xsi:type="tool:For" expression="aql:components">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.eContainer()">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(la::LogicalComponent)">
-                        <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
-                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
-                          <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:i"/>
-                        </subModelOperations>
+          <ownedTools xsi:type="tool_1:ToolGroup" name="Actor">
+            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Logical Actor and a Part typed by this Logical Actor. &#xD;&#xA;The Part is created in the Logical Context." name="logical.actor" label="%la.lab.logical.actor" precondition="aql:containerView.getABActorTarget().isValidCreationABActor()" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/LogicalActor.gif">
+              <variable name="container">
+                <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
+              </variable>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getABActorTarget().getComponentType()">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createActor('actor')"/>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:actor != null">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(la::LogicalComponent)">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:actor"/>
                       </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(la::LogicalComponentPkg)">
-                        <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedParts" variableName="part">
-                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
-                          <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:i"/>
-                        </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(la::LogicalComponentPkg)">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedParts" variableName="part">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:actor"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getDiagramContainer().forceRefresh()"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Logical Actor and a Part typed by this Logical Actor. &#xD;&#xA;The Part is created in the Logical Context." name="logical.actor" label="%la.lab.logical.actor" precondition="aql:containerView.getABActorTarget().isValidCreationABActor()" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/LogicalActor.gif">
-            <variable name="container">
-              <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
-            </variable>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getABActorTarget().getComponentType()">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createActor('actor')"/>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:actor != null">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(la::LogicalComponent)">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:actor"/>
-                    </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="[Reusable Components] Creates a new Part of an existing Actor." name="reuse.logical.actor" label="%la.lab.reuse.logical.actor" precondition="aql:containerView.oclIsKindOf(diagram::DDiagram)" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Insert.gif">
+              <filters precondition="aql:not (self.isPreferenceEnabled('multipart.allowed'))" elementsToListen="aql:self.getPreferenceListener()">
+                <listeners domainClass="org.polarsys.capella.core.preferences.Listener" featureName="multipart.allowed"/>
+              </filters>
+              <variable name="container">
+                <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
+              </variable>
+              <viewVariable name="containerView">
+                <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:containerView.getDiagramContainer()"/>
+              </viewVariable>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType">
+                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="select Components" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
+                    <parameters name="context" value="aql:containerType"/>
+                    <parameters name="scope" value="aql:containerType.getABInsertActor()"/>
+                    <parameters name="multiple" value="true"/>
+                    <parameters name="resultVariable" value="components"/>
+                    <parameters name="wizardMessage" value="Select Actors."/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(la::LogicalComponentPkg)">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedParts" variableName="part">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:actor"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="[Reusable Components] Creates a new Part of an existing Actor." name="reuse.logical.actor" label="%la.lab.reuse.logical.actor" precondition="aql:containerView.oclIsKindOf(diagram::DDiagram)" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Insert.gif">
-            <filters precondition="aql:not (self.isPreferenceEnabled('multipart.allowed'))" elementsToListen="aql:self.getPreferenceListener()">
-              <listeners domainClass="org.polarsys.capella.core.preferences.Listener" featureName="multipart.allowed"/>
-            </filters>
-            <variable name="container">
-              <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
-            </variable>
-            <viewVariable name="containerView">
-              <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:containerView.getDiagramContainer()"/>
-            </viewVariable>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType">
-                <subModelOperations xsi:type="tool:ExternalJavaAction" name="select Components" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
-                  <parameters name="context" value="aql:containerType"/>
-                  <parameters name="scope" value="aql:containerType.getABInsertActor()"/>
-                  <parameters name="multiple" value="true"/>
-                  <parameters name="resultVariable" value="components"/>
-                  <parameters name="wizardMessage" value="Select Actors."/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:components != 'WIZARD_CANCELED'">
-                  <subModelOperations xsi:type="tool:For" expression="aql:components">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.eContainer()">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(la::LogicalComponent)">
-                        <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
-                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
-                          <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:i"/>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:components != 'WIZARD_CANCELED'">
+                    <subModelOperations xsi:type="tool:For" expression="aql:components">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.eContainer()">
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(la::LogicalComponent)">
+                          <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
+                            <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:i"/>
+                          </subModelOperations>
                         </subModelOperations>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(la::LogicalComponentPkg)">
-                        <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedParts" variableName="part">
-                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
-                          <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:i"/>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(la::LogicalComponentPkg)">
+                          <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedParts" variableName="part">
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
+                            <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:i"/>
+                          </subModelOperations>
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getDiagramContainer().forceRefresh()"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getDiagramContainer().forceRefresh()"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
           </ownedTools>
           <ownedTools xsi:type="tool:PopupMenu" name="physical.path.menu" label="%la.lab.physical.path.menu">
             <menuItemDescription xsi:type="tool:OperationAction" name="physical.path" label="%la.lab.physical.path" precondition="aql:self.isValidPhysicalPathSelection(views)" forceRefresh="true">
