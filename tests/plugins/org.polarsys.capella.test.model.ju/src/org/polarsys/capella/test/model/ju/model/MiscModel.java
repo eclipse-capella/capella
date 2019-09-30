@@ -14,9 +14,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.core.libraries.model.CapellaModel;
-import org.polarsys.capella.test.framework.api.BasicTestCase;
+import org.polarsys.capella.test.framework.api.NonDirtyTestCase;
 
-public abstract class MiscModel extends BasicTestCase {
+public abstract class MiscModel extends NonDirtyTestCase {
 
   public static final String PROJECT_MISCMODEL = "794e6786-9355-4ae4-87a6-2734ede475dd";
   public static final String PROJECT_MISCMODEL__PROGRESSSTATUS = "2e2b64ad-e3dd-43bd-a416-ed7fc082ada6";
@@ -103,6 +103,9 @@ public abstract class MiscModel extends BasicTestCase {
   public static final String LA__SYSTEM_REALIZATION_TO_SYSTEM = "46c8ffc6-7028-441d-b48c-f394235c4823";
   public static final String LA__LOGICAL_ACTORS = "7e02489e-3d6b-44c0-954b-a8ddea0b2a5a";
   public static final String LA__SYSTEM_ANALYSIS_REALIZATION_TO_SYSTEM_ANALYSIS = "7a5bf2fa-7b10-4c4f-b993-e0b043c21f6b";
+  public static final String LC_1 = "5b6b9d5b-d024-4423-9271-bcb3d77469c2"; //$NON-NLS-1$
+  public static final String LC_2 = "a30cf2b5-48d1-407e-9967-1e20e64e8e88"; //$NON-NLS-1$
+  public static final String LOGICALCOMPONENTPKG_1 = "b1123d45-f6d3-411b-a3c6-ea2965a5da7b"; //$NON-NLS-1$
   public static final String PA = "93e72add-98f8-4f01-81d1-66b443275e2c";
   public static final String PA__PHYSICAL_FUNCTIONS = "433ac136-8085-441d-adfb-f1207ef04f80";
   public static final String PA__ROOT_PF = "82809bc0-4858-4da3-a239-7b7fb8532e6b";

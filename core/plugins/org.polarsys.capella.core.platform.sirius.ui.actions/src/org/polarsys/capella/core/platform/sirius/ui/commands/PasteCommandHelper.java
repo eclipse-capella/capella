@@ -12,10 +12,9 @@ package org.polarsys.capella.core.platform.sirius.ui.commands;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -36,11 +35,8 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.ctx.CtxPackage;
-import org.polarsys.capella.core.data.epbs.EpbsPackage;
-import org.polarsys.capella.core.data.la.LaPackage;
-import org.polarsys.capella.core.data.oa.OaPackage;
-import org.polarsys.capella.core.data.pa.PaPackage;
+import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
+import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
 import org.polarsys.capella.core.ui.toolkit.Activator;
 

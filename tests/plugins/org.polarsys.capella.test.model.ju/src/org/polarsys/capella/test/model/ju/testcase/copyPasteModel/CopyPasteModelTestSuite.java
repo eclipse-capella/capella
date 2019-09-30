@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.model.ju.testcases.delete;
+package org.polarsys.capella.test.model.ju.testcase.copyPasteModel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,7 +19,7 @@ import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
 import junit.framework.Test;
 
-public class DeleteElementTestSuite extends BasicTestSuite {
+public class CopyPasteModelTestSuite extends BasicTestSuite {
 
   @Override
   public List<String> getRequiredTestModels() {
@@ -27,20 +27,16 @@ public class DeleteElementTestSuite extends BasicTestSuite {
   }
   
   public static Test suite() {
-    return new DeleteElementTestSuite();
+    return new CopyPasteModelTestSuite();
   }
 
   @Override
   protected List<BasicTestArtefact> getTests() {
-    List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
-    tests.add(new DeleteChainInvolvmentFunction());
-    tests.add(new DeleteChainInvolvmentLink());
-    tests.add(new DeleteChainReferenceSourceHierarchy());
-    tests.add(new DeleteChainReferenceTargetHierarchy());
-    
-    tests.add(new DeleteExchangeItem());
-    tests.add(new DeleteGuard());
-
+    List<BasicTestArtefact> tests = new ArrayList<>();
+    tests.add(new CopyPasteModelWithAppliedPVGandPV());
+    tests.add(new CopyPasteModelWithFunctionalAllocation());
+    tests.add(new CopyPasteModelElementReferencingLibrary());
+    tests.add(new CopyPasteComponent());
     return tests;
   }
 
