@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _ouh_QGgCEem-1Zn8MbYLuw
-Runtime-Version: 2.5.0.201906250740
-Save-Time: 9/25/19 1:31 PM
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 4/26/19 11:30 AM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -45,11 +45,9 @@ get-view "Semantic Browser" | get-tree -after [get-label "Current Element"] | ge
 get-view "Project Explorer" | get-tree 
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Operational Analysis/Operational Activities/Root Operational Activity/[OABD] All Activities" 
     | key-type F9
-
-with [get-view "Semantic Browser" | get-tree -after [get-label "Current Element"]] {
-    get-item -path "Root Operational Activity/All Related Diagrams/\\[OABD\\] All Activities" 
-        | get-property "getText()" | equals "[OABD] All Activities" | verify-true
-}   
+get-view "Semantic Browser" | get-tree -after [get-label "Current Element"] | get-item 
+    -path "\\[OABD\\] All Activities" | get-property caption | equals "[OABD] All Activities" | verify-true
+    
     
 // empty the content
 get-view "Semantic Browser" | close
