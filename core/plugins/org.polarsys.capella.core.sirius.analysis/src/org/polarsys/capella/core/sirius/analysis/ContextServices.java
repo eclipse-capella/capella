@@ -12,6 +12,7 @@ package org.polarsys.capella.core.sirius.analysis;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -164,12 +165,12 @@ public class ContextServices {
   }
 
   public List<EObject> getMCBActors(DSemanticDecorator current) {
-    List<EObject> result = new ArrayList<EObject>();
     EObject target = current.getTarget();
     ComponentPkg componentPkg = BlockArchitectureExt
         .getComponentPkg(BlockArchitectureExt.getRootBlockArchitecture(target), false);
-    result.addAll(ComponentPkgExt.getAllActors(componentPkg));
-    return result;
+
+    return ComponentPkgExt.getAllActors(componentPkg).stream().filter(c -> !c.getRepresentingParts().isEmpty())
+        .collect(Collectors.toList());
   }
 
   public List<EObject> getMCBComponents(DSemanticDecorator current) {
@@ -224,29 +225,28 @@ public class ContextServices {
     return getCOCEntities(view);
   }
 
-  public List<EObject> getCRBComponents(DSemanticDecorator decorator) {
-    List<EObject> components = new ArrayList<EObject>();
+  public Collection<Component> getCRBComponents(DSemanticDecorator decorator) {
+    Collection<Component> components = Collections.emptyList();
 
-    if ((decorator.getTarget() instanceof Component)) {
-      components.addAll(CsServices.getService().getCCIIShowHideComponent(decorator));
-      return components;
-    }
-    EObject parentContainer = CsServices.getService().getParentContainer(decorator.getTarget());
-    if (null == parentContainer) {
-      return components;
-    }
+    if (decorator.getTarget() instanceof Component) {
+      components = CsServices.getService().getCCIIShowHideComponent(decorator);
 
-    if (parentContainer instanceof Component) {
-      components.addAll(CsServices.getService().getSubComponents(parentContainer));
-      return components;
-    } else if (parentContainer instanceof BlockArchitecture) {
-      Component firstComponent = BlockArchitectureExt.getOrCreateSystem((BlockArchitecture) parentContainer);
-      if (null != firstComponent) {
-        components.addAll(CsServices.getService().getSubComponents(firstComponent));
-        return components;
+    } else {
+      EObject parentContainer = CsServices.getService().getParentContainer(decorator.getTarget());
+
+      if (parentContainer instanceof Component) {
+        components = CsServices.getService().getSubComponents(parentContainer);
+
+      } else if (parentContainer instanceof BlockArchitecture) {
+        Component firstComponent = BlockArchitectureExt.getOrCreateSystem((BlockArchitecture) parentContainer);
+
+        if (null != firstComponent) {
+          components = CsServices.getService().getSubComponents(firstComponent);
+        }
       }
     }
-    return components;
+
+    return components.stream().filter(c -> !c.getRepresentingParts().isEmpty()).collect(Collectors.toList());
   }
 
   public Collection<EObject> getMBCapabilityInvolvementSemanticCandidates(DDiagram diagram) {
@@ -327,7 +327,8 @@ public class ContextServices {
     return result;
   }
 
-  public List<AbstractDNode> getDisplayedNodeViews(DSemanticDecorator view, Function<AbstractDNode, Boolean> filterFunc) {
+  public List<AbstractDNode> getDisplayedNodeViews(DSemanticDecorator view,
+      Function<AbstractDNode, Boolean> filterFunc) {
     List<AbstractDNode> returnedList = new ArrayList<AbstractDNode>();
     if (view instanceof DDiagram) {
       DDiagram diagram = (DDiagram) view;
@@ -346,9 +347,10 @@ public class ContextServices {
       }
     }
     return returnedList;
-  } 
-  
-  public List<AbstractDNode> getDisplayedContainerViews(DSemanticDecorator view, Function<AbstractDNode, Boolean> filterFunc) {
+  }
+
+  public List<AbstractDNode> getDisplayedContainerViews(DSemanticDecorator view,
+      Function<AbstractDNode, Boolean> filterFunc) {
     List<AbstractDNode> returnedList = new ArrayList<AbstractDNode>();
     if (view instanceof DDiagram) {
       DDiagram diagram = (DDiagram) view;
@@ -367,8 +369,8 @@ public class ContextServices {
       }
     }
     return returnedList;
-  } 
-  
+  }
+
   public List<AbstractDNode> getDisplayedActorNodeViews(DSemanticDecorator view) {
     return getDisplayedNodeViews(view, new Function<AbstractDNode, Boolean>() {
       @Override
@@ -378,7 +380,7 @@ public class ContextServices {
       }
     });
   }
-  
+
   public List<AbstractDNode> getDisplayedActorContainerViews(DSemanticDecorator view) {
     return getDisplayedContainerViews(view, new Function<AbstractDNode, Boolean>() {
       @Override
@@ -391,11 +393,11 @@ public class ContextServices {
   public List<EObject> getDisplayedNodeActors(DSemanticDecorator view) {
     return getDisplayedActorNodeViews(view).stream().map(v -> v.getTarget()).collect(Collectors.toList());
   }
-  
+
   public List<EObject> getDisplayedContainerActors(DSemanticDecorator view) {
     return getDisplayedActorContainerViews(view).stream().map(v -> v.getTarget()).collect(Collectors.toList());
   }
-  
+
   public List<AbstractDNode> getDisplayedComponentNodeViews(DSemanticDecorator view) {
     return getDisplayedNodeViews(view, new Function<AbstractDNode, Boolean>() {
       @Override
@@ -415,11 +417,11 @@ public class ContextServices {
       }
     });
   }
-  
+
   public List<EObject> getDisplayedNodeComponents(DSemanticDecorator view) {
     return getDisplayedComponentNodeViews(view).stream().map(v -> v.getTarget()).collect(Collectors.toList());
   }
-  
+
   public List<EObject> getDisplayedContainerComponents(DSemanticDecorator view) {
     return getDisplayedComponentContainerViews(view).stream().map(v -> v.getTarget()).collect(Collectors.toList());
   }

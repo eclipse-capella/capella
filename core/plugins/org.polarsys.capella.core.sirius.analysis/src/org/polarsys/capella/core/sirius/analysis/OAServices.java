@@ -20,6 +20,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -126,7 +127,7 @@ public class OAServices {
     }
     return decorator.getTarget();
   }
-  
+
   /**
    * Retrieve the root role pkg, create one if required
    */
@@ -253,11 +254,11 @@ public class OAServices {
     roots.addAll(new ScenarioService().getAllMultiInstanceRoleParts(scenario));
     BlockArchitecture analysis = BlockArchitectureExt.getRootBlockArchitecture(scenario);
     if (analysis instanceof OperationalAnalysis) {
-      roots.addAll(OperationalAnalysisExt.getAllRoles((OperationalAnalysis)analysis));
+      roots.addAll(OperationalAnalysisExt.getAllRoles((OperationalAnalysis) analysis));
     }
     return roots;
   }
-  
+
   /**
    * check if function is allocated in role used in oa.odesign
    * 
@@ -298,11 +299,11 @@ public class OAServices {
     return getOEBEntities(view);
   }
 
-  
-
-  
   public Collection<? extends Component> getOEBEntities(DSemanticDecorator view) {
     EObject target = view.getTarget();
+
+    Collection<Component> entities = Collections.emptyList();
+
     if ((target instanceof Entity) || (target instanceof EntityPkg)
         || (target instanceof Entity && ((Component) target).isActor())) {
       target = getOEBTarget(view);
@@ -313,11 +314,11 @@ public class OAServices {
         target = target.eContainer();
       }
 
-      if ((null != target) && (target instanceof Entity)) {
-        return ComponentExt.getAllSubUsedComponents((Entity) target);
+      if (target instanceof Entity) {
+        entities = ComponentExt.getAllSubUsedComponents((Entity) target);
 
-      } else if ((null != target) && (target instanceof EntityPkg)) {
-        return OperationalAnalysisExt.getAllEntity((EntityPkg) target);
+      } else if (target instanceof EntityPkg) {
+        entities = new ArrayList<>(OperationalAnalysisExt.getAllEntity((EntityPkg) target));
       }
 
     } else if ((target instanceof OperationalCapabilityPkg) || (target instanceof OperationalCapability)) {
@@ -325,10 +326,11 @@ public class OAServices {
       if (arch instanceof OperationalAnalysis) {
         OperationalAnalysis opAnalysis = (OperationalAnalysis) arch;
         EntityPkg pkg = opAnalysis.getOwnedEntityPkg();
-        return OperationalAnalysisExt.getAllEntity(pkg);
+        entities = new ArrayList<>(OperationalAnalysisExt.getAllEntity(pkg));
       }
     }
-    return Collections.emptyList();
+
+    return entities.stream().filter(c -> !c.getRepresentingParts().isEmpty()).collect(Collectors.toList());
   }
 
   public List<CommunicationMean> getAllCommunicationMeans(OperationalAnalysis arch) {

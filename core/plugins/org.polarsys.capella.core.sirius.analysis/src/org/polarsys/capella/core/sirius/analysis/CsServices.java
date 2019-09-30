@@ -1300,7 +1300,7 @@ public class CsServices {
     // In multipart mode or in EPBS Architecture Blank, we display parts
     if (isMultipartMode((ModelElement) target) || (getComponentType(decorator) instanceof ConfigurationItem)) {
 
-      Collection<Part> components = new ArrayList<>();
+      Collection<Part> parts = new ArrayList<>();
 
       Component targetComponent = null;
 
@@ -1313,40 +1313,43 @@ public class CsServices {
 
       if (decorator instanceof DDiagram) {
         if (targetComponent != null) {
-          components.addAll(getParts(targetComponent, CsPackage.Literals.COMPONENT, null));
-          components.addAll(targetComponent.getRepresentingParts());
+          parts.addAll(getParts(targetComponent, CsPackage.Literals.COMPONENT, null));
+          parts.addAll(targetComponent.getRepresentingParts());
         } else if (target instanceof BlockArchitecture) {
-          components.addAll(getParts(getContext((BlockArchitecture) target), CsPackage.Literals.COMPONENT,
+          parts.addAll(getParts(getContext((BlockArchitecture) target), CsPackage.Literals.COMPONENT,
               CsPackage.Literals.COMPONENT));
         }
       } else if (targetComponent != null) {
-        components.addAll(getParts(targetComponent, CsPackage.Literals.COMPONENT, CsPackage.Literals.COMPONENT));
+        parts.addAll(getParts(targetComponent, CsPackage.Literals.COMPONENT, CsPackage.Literals.COMPONENT));
       }
 
-      return components;
+      return parts;
     }
 
     // Mono part, we return all components contained in the part.
     ModelElement root = (ModelElement) getComponentType(decorator);
-    boolean fromDiagram = decorator instanceof DDiagram;
+    Collection<Component> components = new ArrayList<>();
 
-    if (fromDiagram) {
+    if (decorator instanceof DDiagram) {
       BlockArchitecture architecture = ComponentExt.getRootBlockArchitecture(root);
-      return CsServices.getService().getAllSubDefinedComponents(architecture);
+      components = CsServices.getService().getAllSubDefinedComponents(architecture);
+
     } else if (root instanceof Component) {
       Part part = (Part) decorator.getTarget();
-      Collection<Component> rsult = PartExt
-          .getComponentsOfParts(ComponentExt.getAllSubUsedParts((Component) root, false));
+      components = PartExt.getComponentsOfParts(ComponentExt.getAllSubUsedParts((Component) root, false));
+
       // Add all children of deployed components
       for (DeployableElement deployed : PartExt.getDeployedElements(part)) {
-        if ((deployed instanceof Part) && (((Part) deployed).getAbstractType() instanceof Component)) {
-          rsult.addAll(PartExt.getComponentsOfParts(
-              ComponentExt.getAllSubUsedParts((Component) ((Part) deployed).getAbstractType(), false)));
+        if (deployed instanceof Part && ((Part) deployed).getAbstractType() instanceof Component) {
+          Part deployedPart = (Part) deployed;
+          Component abstractType = (Component) deployedPart.getAbstractType();
+          Collection<Part> allSubUsedParts = ComponentExt.getAllSubUsedParts(abstractType, false);
+
+          components.addAll(PartExt.getComponentsOfParts(allSubUsedParts));
         }
       }
-      return rsult;
     }
-    return Collections.emptyList();
+    return components.stream().filter(c -> !c.getRepresentingParts().isEmpty()).collect(Collectors.toList());
   }
 
   /**

@@ -12,6 +12,7 @@ package org.polarsys.capella.core.sirius.analysis.queries.csServices;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.queries.AbstractQuery;
@@ -29,9 +30,8 @@ public class GetCCIIShowHideComponent extends AbstractQuery {
 
   @Override
   public List<Object> execute(Object input_p, IQueryContext context_p) throws QueryException {
-    List<Component> result = getSubComponents((EObject) input_p);
-    result = filter(result);
-    return (List) result;
+    return filter(getSubComponents((EObject) input_p)).stream().filter(c -> !c.getRepresentingParts().isEmpty())
+        .collect(Collectors.toList());
   }
 
   protected List<Component> filter(List<Component> result) {

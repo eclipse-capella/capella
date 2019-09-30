@@ -14,6 +14,7 @@ package org.polarsys.capella.core.sirius.analysis.queries.csServices;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -36,25 +37,29 @@ import org.polarsys.capella.core.libraries.queries.QueryExt;
 import org.polarsys.capella.core.model.helpers.queries.QueryIdentifierConstants;
 import org.polarsys.capella.core.model.helpers.queries.filters.RemoveActorsFilter;
 
-@ExtendingQuery (extendingQuery = GetIBShowHideComponent.class)
+@ExtendingQuery(extendingQuery = GetIBShowHideComponent.class)
 public class GetIBShowHideComponent__Lib extends AbstractQuery {
 
   @Override
   // has been extended to give all the components from this level and superior levels
   public List<Object> execute(Object input, IQueryContext context) throws QueryException {
-    List<Object> result = new ArrayList<Object>();
+    List<Component> result = new ArrayList<>();
     EObject target = getIBTarget((DSemanticDecorator) input);
-    IModel currentProject =  ILibraryManager.INSTANCE.getModel(target);
+    IModel currentProject = ILibraryManager.INSTANCE.getModel(target);
     Collection<IModel> libraries = LibraryManagerExt.getAllActivesReferences(currentProject);
+
     for (IModel library : libraries) {
       EObject correspondingInput = QueryExt.getCorrespondingElementInLibrary(target, (CapellaModel) library);
-      result.addAll(QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_COMPONENTS, correspondingInput, context, new RemoveActorsFilter()));
+      List<Component> components = QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_COMPONENTS,
+          correspondingInput, context);
+
+      result.addAll(components);
     }
-    List<Object> components = filter(result);
-    return components;
+
+    return filter(result).stream().filter(c -> !c.getRepresentingParts().isEmpty()).collect(Collectors.toList());
   }
 
-  protected List<Object> filter(List<Object> result) {
+  protected List<Component> filter(List<Component> result) {
     return QueryInterpretor.executeFilter(result, new MultiFilter(new IQueryFilter[] { new RemoveActorsFilter() }));
   }
 

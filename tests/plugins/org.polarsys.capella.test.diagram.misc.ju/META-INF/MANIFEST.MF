@@ -13,7 +13,8 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.ui.semantic.browser.sirius,
  org.eclipse.sirius.diagram,
  org.polarsys.capella.core.platform.sirius.ui.perspective,
- org.polarsys.capella.core.ui.properties
+ org.polarsys.capella.core.ui.properties,
+ org.polarsys.capella.core.data.gen
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName

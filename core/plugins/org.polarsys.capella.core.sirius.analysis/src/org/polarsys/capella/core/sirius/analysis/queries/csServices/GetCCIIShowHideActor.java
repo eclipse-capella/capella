@@ -13,13 +13,12 @@ package org.polarsys.capella.core.sirius.analysis.queries.csServices;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 
 public class GetCCIIShowHideActor extends GetCCIIShowHideComponent {
+  @Override
   protected List<Component> filter(List<Component> result) {
-    return result.stream().filter(o -> o instanceof EObject && ComponentExt.isActor((EObject) o))
-        .collect(Collectors.toList());
+    return result.stream().filter(ComponentExt::isActor).collect(Collectors.toList());
   }
 }
