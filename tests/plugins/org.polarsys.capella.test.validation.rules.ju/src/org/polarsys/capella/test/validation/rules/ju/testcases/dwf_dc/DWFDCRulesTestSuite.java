@@ -71,6 +71,7 @@ public class DWFDCRulesTestSuite extends BasicTestSuite {
     tests.add(new Rule_DWF_DC_39());
     tests.add(new Rule_DWF_DC_40());
     tests.add(new Rule_DWF_DC_41());
+    tests.add(new Rule_DWF_DC_42());
     return tests;
   }
 

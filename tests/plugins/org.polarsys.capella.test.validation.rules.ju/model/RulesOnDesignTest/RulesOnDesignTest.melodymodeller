@@ -30818,4 +30818,35 @@
           id="1de11f5c-55af-4b37-a0ac-76a47daef613" sourceElement="#c79dd7c1-656e-4803-8d56-88985a84817f"/>
     </ownedArchitectures>
   </ownedModelRoots>
+  <ownedModelRoots xsi:type="org.polarsys.capella.core.data.capellamodeller:SystemEngineering"
+      id="a292c20b-9900-4746-b535-dbe791d05bb7" name="DWF_DC_42">
+    <ownedArchitectures xsi:type="org.polarsys.capella.core.data.la:LogicalArchitecture"
+        id="7ece5c95-2d3b-4b3f-83d5-2288997c1ace" name="Logical Architecture">
+      <ownedFunctionPkg xsi:type="org.polarsys.capella.core.data.la:LogicalFunctionPkg"
+          id="fdd5d364-dad8-4b59-819f-78fb8a2ebd5d" name="Logical Functions">
+        <ownedLogicalFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
+            id="ac0837b8-e0b3-4eb6-91c0-f659e2238f04" name="Root Logical Function"/>
+      </ownedFunctionPkg>
+      <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
+          id="2ddac513-3835-4bca-978d-eb8522237b78" name="Capabilities"/>
+      <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
+          id="f399909e-4943-408a-9636-c532bef90c18" name="Interfaces"/>
+      <ownedDataPkg xsi:type="org.polarsys.capella.core.data.information:DataPkg"
+          id="c97cf52e-d67f-43f9-979f-8051666c2c6a" name="Data"/>
+      <ownedLogicalComponentPkg xsi:type="org.polarsys.capella.core.data.la:LogicalComponentPkg"
+          id="9a9f355e-d641-4dc4-a2a7-fe78386f4475" name="Structure">
+        <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="01557586-94e7-4e41-977e-77a41aa11639"
+            name="Logical System" abstractType="#05219fc5-c8a2-4d85-a54a-a5ffa92da7dd"/>
+        <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+            id="05219fc5-c8a2-4d85-a54a-a5ffa92da7dd" name="Logical System">
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="da8929e4-2b40-44ac-8859-bae5b7e7a65d"
+              name="LC 1" abstractType="#ba08f636-33eb-4062-aefa-822e8f5b3d4a"/>
+          <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+              id="ba08f636-33eb-4062-aefa-822e8f5b3d4a" name="LC 1"/>
+          <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+              id="e6823e29-6097-4a83-a3ab-0a29fcfb969c" name="LC 2"/>
+        </ownedLogicalComponents>
+      </ownedLogicalComponentPkg>
+    </ownedArchitectures>
+  </ownedModelRoots>
 </org.polarsys.capella.core.data.capellamodeller:Project>

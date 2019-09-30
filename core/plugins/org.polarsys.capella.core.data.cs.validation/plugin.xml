@@ -579,6 +579,25 @@ BehaviourPC=Physical Component of nature BEHAVIOUR
                </target>
             </constraint>
             <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.component.ComponentNoPart"
+                  id="DWF_DC_42"
+                  isEnabledByDefault="true"
+                  lang="java"
+                  mode="Batch"
+                  name="DWF_DC_42 - Component with parts"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0} is not referenced by any Part.
+               </message>
+               <target
+                     class="Component">
+               </target>
+               <description>
+                  This rule ensures that a component is always referenced by at least one part.
+               </description>
+            </constraint>
+            <constraint
                   class="org.polarsys.capella.core.data.cs.validation.component.Component_GeneralizationItself"
                   id="DWF_CA_05"
                   isEnabledByDefault="true"
