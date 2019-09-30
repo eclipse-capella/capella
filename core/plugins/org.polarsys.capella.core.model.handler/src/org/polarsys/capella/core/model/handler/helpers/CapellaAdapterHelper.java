@@ -84,7 +84,7 @@ public class CapellaAdapterHelper {
   public static Collection<EObject> resolveSemanticObjects(Collection<?> objects) {
     return resolveEObjects(objects, true, false);
   }
-  
+
   /**
    * This method returns the list of business objects from the given objects.
    * 
@@ -170,7 +170,7 @@ public class CapellaAdapterHelper {
     }
     return object;
   }
-  
+
   /**
    * Use resolveSemanticObjects instead
    */
@@ -178,7 +178,7 @@ public class CapellaAdapterHelper {
   public static Collection<EObject> resolveSemanticsObjects(Collection<?> objects) {
     return resolveSemanticObjects(objects);
   }
-  
+
   @Deprecated
   public static Collection<EObject> resolveSemanticObjects(Collection<?> objects, boolean onlySemantic) {
     return objects.stream() //
@@ -189,6 +189,10 @@ public class CapellaAdapterHelper {
 
   /**
    * Returns a DRepresentationDescriptor or the business element associated to the given object
+   * 
+   * resolveSemanticObject(object, true) is equivalent to resolveBusinessObject(object)
+   * 
+   * resolveSemanticObject(object, false) is equivalent to resolveDescriptorOrBusinessObject(object)
    */
   @Deprecated
   public static EObject resolveSemanticObject(Object object, boolean onlySemantic) {
@@ -198,5 +202,12 @@ public class CapellaAdapterHelper {
     }
     return resolveEObject(result, true, true);
   }
-  
+
+  /**
+   * Returns a DRepresentationDescriptor or the business element associated to the given object
+   */
+  public static EObject resolveDescriptorOrBusinessObject(Object object) {
+    return resolveSemanticObject(object, false);
+  }
+
 }

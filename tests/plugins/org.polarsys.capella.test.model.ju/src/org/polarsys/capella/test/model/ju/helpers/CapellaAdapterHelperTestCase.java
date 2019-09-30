@@ -110,6 +110,13 @@ public class CapellaAdapterHelperTestCase extends BasicTestCase {
     assertEquals("Legacy Semantic object (onlySemantic=true) of a diagram element should be the business element.", labPart.getAbstractType(),
         CapellaAdapterHelper.resolveSemanticObject(partView, true));
 
+    // Descriptor-Business Helper
+    assertEquals("DescriptorOrBusinessObject of a diagram should be the descriptor.", labDiagramDescriptor,
+        CapellaAdapterHelper.resolveDescriptorOrBusinessObject(labDiagram));
+
+    assertEquals("DescriptorOrBusinessObject of a diagram element should be the business element.", labPart.getAbstractType(),
+        CapellaAdapterHelper.resolveDescriptorOrBusinessObject(partView));
+
     // Semantic browser helper (DRD or business element)
     assertEquals("Semantic browser element of a diagram element should be the business element.", labPart.getAbstractType(),
         SiriusSelectionHelper.handleSelection(null, new StructuredSelection(partView)));

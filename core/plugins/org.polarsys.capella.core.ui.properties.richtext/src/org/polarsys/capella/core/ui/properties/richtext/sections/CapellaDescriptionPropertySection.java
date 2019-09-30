@@ -18,15 +18,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.IWorkbenchPart;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-import org.polarsys.capella.core.data.cs.CsPackage;
-import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
-import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
-import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 
 /**
  * @author Joao Barata
@@ -83,20 +77,8 @@ public class CapellaDescriptionPropertySection extends DescriptionPropertySectio
   @Override
   public void setInput(IWorkbenchPart part, ISelection selection) {
     if (selection instanceof StructuredSelection) {
-      EObject elt = CapellaAdapterHelper.resolveSemanticObject(((StructuredSelection) selection).getFirstElement());
+      EObject elt = CapellaAdapterHelper.resolveBusinessObject(((StructuredSelection) selection).getFirstElement());
       if (elt instanceof CapellaElement) {
-        if (elt.eClass().equals(CsPackage.eINSTANCE.getPart())) {
-          boolean allowMultiplePart = TriStateBoolean.True
-              .equals(CapellaProjectHelper.isReusableComponentsDriven((Part) elt));
-          if (!allowMultiplePart) {
-            AbstractType type = ((Part) elt).getAbstractType();
-            if ((type != null) && !(type instanceof ConfigurationItem)) {
-              super.setInput(part, new StructuredSelection(type));
-              loadData((CapellaElement) type);
-              return;
-            }
-          }
-        }
         loadData((CapellaElement) elt);
       }
     }
@@ -108,7 +90,7 @@ public class CapellaDescriptionPropertySection extends DescriptionPropertySectio
    */
   @Override
   public boolean select(Object toTest) {
-    EObject eObj = CapellaAdapterHelper.resolveSemanticObject(toTest);
+    EObject eObj = CapellaAdapterHelper.resolveDescriptorOrBusinessObject(toTest);
     return eObj instanceof CapellaElement;
   }
 }

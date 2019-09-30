@@ -897,7 +897,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
         image = ExtendedImageRegistry.getInstance().getImage(EObjectLabelProviderHelper.getImage(eObject));
       } else {
         // Handle then semantic element
-        EObject semanticElement = CapellaAdapterHelper.resolveSemanticObject(selectedElement, true);
+        EObject semanticElement = CapellaAdapterHelper.resolveBusinessObject(selectedElement);
         if (semanticElement != null) {
           text = EObjectLabelProviderHelper.getFullPathText(semanticElement);
           image = ExtendedImageRegistry.getInstance().getImage(EObjectLabelProviderHelper.getImage(semanticElement));

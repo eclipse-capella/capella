@@ -17,27 +17,17 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IFilter;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
-import org.polarsys.capella.core.data.cs.CsPackage;
-import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.epbs.ConfigurationItem;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
-import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
-import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.BooleanValueGroup;
 import org.polarsys.capella.core.ui.properties.fields.EnumerationValueGroup;
 import org.polarsys.capella.core.ui.properties.fields.TextAreaValueGroup;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 
 /**
  *
@@ -95,19 +85,8 @@ public class CapellaManagementPropertySection extends AbstractSection implements
   @Override
   public void setInput(IWorkbenchPart part, ISelection selection) {
     if (selection instanceof StructuredSelection) {
-      EObject selectedElt = CapellaAdapterHelper.resolveSemanticObject(((StructuredSelection) selection).getFirstElement());
+      EObject selectedElt = CapellaAdapterHelper.resolveBusinessObject(((StructuredSelection) selection).getFirstElement());
       if (selectedElt instanceof CapellaElement) {
-        if (selectedElt.eClass().equals(CsPackage.eINSTANCE.getPart())) {
-          boolean allowMultiplePart = TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven((Part) selectedElt));
-          if (!allowMultiplePart) {
-            AbstractType type = ((Part) selectedElt).getAbstractType();
-            if ((type != null) && !(type instanceof ConfigurationItem)) {
-              super.setInput(part, new StructuredSelection(type));
-              loadData((CapellaElement) type);
-              return;
-            }
-          }
-        }
         loadData((CapellaElement) selectedElt);
       }
     }
@@ -119,11 +98,8 @@ public class CapellaManagementPropertySection extends AbstractSection implements
    */
   @Override
   public boolean select(Object toTest) {
-    EObject eObj = CapellaAdapterHelper.resolveSemanticObject(toTest);
-    if (eObj instanceof CapellaElement) {
-      return true;
-    }
-    return false;
+    EObject eObj = CapellaAdapterHelper.resolveDescriptorOrBusinessObject(toTest);
+    return (eObj instanceof CapellaElement);
   }
 
   /**

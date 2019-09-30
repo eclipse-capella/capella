@@ -303,7 +303,7 @@ public abstract class AbstractSection extends AbstractPropertySection implements
   public abstract boolean select(Object toTest);
 
   protected EObject selection(Object toTest) {
-    return CapellaAdapterHelper.resolveBusinessObject(toTest);
+    return CapellaAdapterHelper.resolveDescriptorOrBusinessObject(toTest);
   }
 
   protected EObject setInputSelection(IWorkbenchPart part, ISelection selection) {
@@ -315,7 +315,7 @@ public abstract class AbstractSection extends AbstractPropertySection implements
     // return null;
     // }
     Object selectedElement = ((IStructuredSelection) selection).getFirstElement();
-    return CapellaAdapterHelper.resolveBusinessObject(selectedElement);
+    return CapellaAdapterHelper.resolveDescriptorOrBusinessObject(selectedElement);
   }
 
   /**
