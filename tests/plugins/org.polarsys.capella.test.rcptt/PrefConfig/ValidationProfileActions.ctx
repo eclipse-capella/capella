@@ -5,8 +5,8 @@ Element-Name: ValidationProfileActions
 Element-Type: context
 Element-Version: 2.0
 Id: _ZR3fQKKHEeaAAPJPtfviTA
-Runtime-Version: 2.5.0.M2
-Save-Time: 9/11/19 5:25 PM
+Runtime-Version: 2.5.0.201909172034
+Save-Time: 9/30/19 3:39 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -241,9 +241,9 @@ proc "checkDefaultPreferences" [val projectName] {
 	        checkPropertyButtonSelected "Propagate Property Values application" true
 	        checkPropertyButtonSelected "Include involved elements" false
 	    }
-	    with [get-group "Logical Components to Physical Components"] {
-	        checkPropertyButtonSelected "Propagate logical component breakdown in physical architecture" true
-	        checkPropertyButtonSelected "Propagate only leaf logical component in physical architecture" false
+	    with [get-group "LC \\/ LA to PC \\/ PA"] {
+	        checkPropertyButtonSelected "Propagate LC \\/ LA breakdown in physical architecture" true
+	        checkPropertyButtonSelected "Propagate only leaf LC \\/ LA in physical architecture" false
 	    }
 	    with [get-group "Interface Generation"] {
 	        checkPropertyButtonSelected "Propagate Exchange Items from Functional Exchange to Function Ports" true
@@ -316,8 +316,8 @@ proc "changePreferences" [val projectName] {
 	        get-button "Propagate Property Values application" | uncheck
 	        get-button "Include involved elements" | check
 	    }
-	    with [get-group "Logical Components to Physical Components"] {
-	        get-button "Propagate only leaf logical component in physical architecture" | click
+	    with [get-group "LC \\/ LA to PC \\/ PA"] {
+	        get-button "Propagate only leaf LC \\/ LA in physical architecture" | click
 	    }
 	    with [get-group "Interface Generation"] {
 	        get-button "Propagate Exchange Items from Functional Exchange to Function Ports" | uncheck
@@ -393,10 +393,10 @@ proc "checkChangedPreferences" [val projectName] {
 	        get-button "Propagate Property Values application" | get-property selected | equals false | verify-true
 	        get-button "Include involved elements" | get-property selected | equals true | verify-true
 	    }
-	    with [get-group "Logical Components to Physical Components"] {
-	        get-button "Propagate logical component breakdown in physical architecture" | get-property selected 
+	    with [get-group "LC \\/ LA to PC \\/ PA"] {
+	        get-button "Propagate LC \\/ LA breakdown in physical architecture" | get-property selected 
 	            | equals false | verify-true
-	        get-button "Propagate only leaf logical component in physical architecture" | get-property selected 
+	        get-button "Propagate only leaf LC \\/ LA in physical architecture" | get-property selected 
 	            | equals true | verify-true
 	    }
 	    with [get-group "Interface Generation"] {
@@ -476,10 +476,10 @@ proc "checkUnchangedPreferencesProject1" [val projectName] {
 	        get-button "Include involved elements" | get-property selected | equals true | verify-true
 	    }
 	    // CAUTION this option is the same as the default one !!!
-	    with [get-group "Logical Components to Physical Components"] {
-	        get-button "Propagate logical component breakdown in physical architecture" | get-property selected 
+	    with [get-group "LC \\/ LA to PC \\/ PA"] {
+	        get-button "Propagate LC \\/ LA breakdown in physical architecture" | get-property selected 
 	            | equals false | verify-true
-	        get-button "Propagate only leaf logical component in physical architecture" | get-property selected 
+	        get-button "Propagate only leaf LC \\/ LA in physical architecture" | get-property selected 
 	            | equals true | verify-true
 	    }
 	    with [get-group "Interface Generation"] {
