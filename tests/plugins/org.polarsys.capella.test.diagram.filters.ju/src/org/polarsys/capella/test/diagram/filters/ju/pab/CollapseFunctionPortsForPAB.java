@@ -12,8 +12,11 @@ package org.polarsys.capella.test.diagram.filters.ju.pab;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
+import org.polarsys.capella.test.diagram.filters.ju.DiagramFilterUtils;
 
 public class CollapseFunctionPortsForPAB extends FiltersForPAB {
 
@@ -24,9 +27,13 @@ public class CollapseFunctionPortsForPAB extends FiltersForPAB {
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { FUNCTION_INPUT_PORT_1_ID, FUNCTION_OUTPUT_PORT_1_ID, FUNCTION_INPUT_PORT_2_ID,
+    return Arrays.asList(FUNCTION_INPUT_PORT_1_ID, FUNCTION_OUTPUT_PORT_1_ID, FUNCTION_INPUT_PORT_2_ID,
         FUNCTION_OUTPUT_PORT_2_ID, FUNCTION_INPUT_PORT_WITHOUT_EXCHANGES_ID, PORT_ALLOCATION_TO_FIP_2_ID,
-        UNKNOWN_COMPONENT_2_ID, UNKNOWN_COMPONENT_3_ID });
+        UNKNOWN_COMPONENT_2_ID, UNKNOWN_COMPONENT_3_ID);
   }
-  // PORT_ALLOCATION_TO_FOP_1_ID, PORT_ALLOCATION_TO_FIP_1_ID
+
+  @Override
+  protected Predicate<DDiagramElement> getElementsToNotFilterExtraConditionPredicate() {
+    return DiagramFilterUtils.FUNCTIONAL_EXCHANGE_EDGE_DECORATOR_PREDICATE;
+  }
 }
