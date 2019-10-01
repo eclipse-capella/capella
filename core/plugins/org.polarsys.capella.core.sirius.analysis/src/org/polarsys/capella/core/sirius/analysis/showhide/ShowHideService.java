@@ -323,7 +323,7 @@ public class ShowHideService {
       if (InteractionPackage.Literals.ABSTRACT_CAPABILITY.equals(type)) {
         return ContextServices.getServices().getCRBCapabilities((DSemanticDecorator) diagram);
       } else if (CsPackage.Literals.COMPONENT.equals(type)) {
-        return ContextServices.getServices().getCRBComponents(view);
+        return new ArrayList<>(ContextServices.getServices().getCRBComponents(view));
       }
 
     } else if (IDiagramNameConstants.CONTEXTUAL_CAPABILITY_REALIZATION_INVOLVEMENT

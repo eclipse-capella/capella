@@ -42,18 +42,16 @@ public class GetIBShowHideComponent extends AbstractQuery {
     }
 
     ModelElement target = (ModelElement) decorator.getTarget();
-    boolean fromDiagram = decorator instanceof DDiagram;
+    List<Component> components = Collections.emptyList();
 
-    if (fromDiagram) {
+    if (decorator instanceof DDiagram) {
       BlockArchitecture architecture = ComponentExt.getRootBlockArchitecture(target);
-      return filter(CsServices.getService().getAllSubDefinedComponents(architecture)).stream()
-          .collect(Collectors.toList());
+      components = CsServices.getService().getAllSubDefinedComponents(architecture);
     } else if (target instanceof Component) {
-      return filter(PartExt.getComponentsOfParts(ComponentExt.getAllSubUsedParts((Component) target, false))).stream()
-          .collect(Collectors.toList());
+      components = PartExt.getComponentsOfParts(ComponentExt.getAllSubUsedParts((Component) target, false));
     }
 
-    return Collections.emptyList();
+    return filter(components).stream().filter(c -> !c.getRepresentingParts().isEmpty()).collect(Collectors.toList());
   }
 
   protected List<Component> filter(List<Component> components) {

@@ -13,6 +13,7 @@ package org.polarsys.capella.core.sirius.analysis.queries.csServices;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.libraries.ILibraryManager;
@@ -22,29 +23,33 @@ import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.ExtendingQuery;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.libraries.queries.QueryExt;
 import org.polarsys.capella.core.model.helpers.queries.QueryIdentifierConstants;
 
-@ExtendingQuery (extendingQuery = GetCCIIShowHideComponent.class)
+@ExtendingQuery(extendingQuery = GetCCIIShowHideComponent.class)
 public class GetCCIIShowHideComponent__Lib extends AbstractQuery {
 
   @Override
   public List<Object> execute(Object input, IQueryContext context) {
-    List<Object> result = new ArrayList<Object>();
+    List<Component> result = new ArrayList<>();
     EObject element = (EObject) input;
-    IModel currentProject =  ILibraryManager.INSTANCE.getModel(element);
+    IModel currentProject = ILibraryManager.INSTANCE.getModel(element);
     Collection<IModel> libraries = LibraryManagerExt.getAllActivesReferences(currentProject);
+
     for (IModel library : libraries) {
       EObject correspondingInput = QueryExt.getCorrespondingElementInLibrary(element, (CapellaModel) library);
-      List<Object> components = QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_COMPONENTS, correspondingInput, context);
-      components = filter(components);
+      List<Component> components = QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_COMPONENTS,
+          correspondingInput, context);
+
       result.addAll(components);
     }
-    return result;
+
+    return filter(result).stream().filter(c -> !c.getRepresentingParts().isEmpty()).collect(Collectors.toList());
   }
-  
-  protected List<Object> filter(List<Object> components) {
+
+  protected List<Component> filter(List<Component> components) {
     return components;
   }
 }

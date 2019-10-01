@@ -25,15 +25,10 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 
-/**
- * Test for Bug 1006 - Melody freezes when there is cycle with deployment links.
- *
- */
 public class BreakdownDiagramElements extends BasicTestCase {
 
   private static final String PROJECT_NAME = "component-breakdown";
