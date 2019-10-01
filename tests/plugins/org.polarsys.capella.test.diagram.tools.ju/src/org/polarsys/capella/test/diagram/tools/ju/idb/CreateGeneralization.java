@@ -12,22 +12,35 @@ package org.polarsys.capella.test.diagram.tools.ju.idb;
 
 import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.core.model.preferences.IInheritancePreferences;
+import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.context.IDBDiagram;
-import org.polarsys.capella.test.diagram.tools.ju.model.EmptyProject;
 import org.polarsys.capella.test.framework.context.SessionContext;
-import org.polarsys.capella.test.framework.model.GenericModel;
 
-public class CreateGeneralization extends EmptyProject {
+public class CreateGeneralization extends IDBProject {
 
   @Override
   public void test() throws Exception {
     Session session = getSession(getRequiredTestModel());
     SessionContext context = new SessionContext(session);
+    init(context);
+    testOnDiagram(context, IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME, LA__LOGICAL_SYSTEM);
+    testOnDiagram(context, IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME,
+        componentContext);
+    testOnDiagram(context, IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME,
+        componentContext);
+    testOnDiagram(context, IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME,
+        componentContext);
+  }
 
-    IDBDiagram idb = IDBDiagram.createDiagram(context, LA__LOGICAL_SYSTEM);
+  @Override
+  protected void testOnDiagram(SessionContext context, String diagramKind, String targetId) {
+    IDBDiagram idb = IDBDiagram.createDiagram(context, diagramKind, targetId);
 
     testInterfaces(idb);
-    testComponents(idb);
+
+    if (!IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME.equals(idb.getType())) {
+      testComponents(idb);
+    }
   }
 
   /**
@@ -37,22 +50,21 @@ public class CreateGeneralization extends EmptyProject {
 
     SessionContext sessionContext = idb.getSessionContext();
 
-    idb.createComponent(GenericModel.LC_1);
-    idb.createComponent(GenericModel.LC_2);
-    idb.createComponent(GenericModel.LC_3);
+    String component1 = idb.createComponent();
+    String component2 = idb.createComponent();
+    String component3 = idb.createComponent();
 
     sessionContext.setPreference(IInheritancePreferences.PREFS_ALLOW_COMPONENT_INHERITANCE, false);
     sessionContext.setPreference(IInheritancePreferences.PREFS_ALLOW_MULTIPLE_INHERITANCE, false);
-    idb.createGeneralizationNotEnabled(GenericModel.LC_1, GenericModel.LC_2);
+    idb.createGeneralizationNotEnabled(component1, component2);
 
     sessionContext.setPreference(IInheritancePreferences.PREFS_ALLOW_COMPONENT_INHERITANCE, true);
-    idb.createGeneralization(GenericModel.LC_2, GenericModel.LC_1);
-    idb.createGeneralizationNotEnabled(GenericModel.LC_1, GenericModel.LC_2);
-    idb.createGeneralizationNotEnabled(GenericModel.LC_1, GenericModel.LC_3);
+    idb.createGeneralization(component2, component1);
+    idb.createGeneralizationNotEnabled(component1, component2);
 
     sessionContext.setPreference(IInheritancePreferences.PREFS_ALLOW_MULTIPLE_INHERITANCE, true);
-    idb.createGeneralization(GenericModel.LC_3, GenericModel.LC_1);
-    idb.createGeneralizationNotEnabled(GenericModel.LC_1, GenericModel.LC_3);
+    idb.createGeneralization(component3, component1);
+    idb.createGeneralizationNotEnabled(component1, component3);
 
   }
 
@@ -61,16 +73,16 @@ public class CreateGeneralization extends EmptyProject {
    */
   private void testInterfaces(IDBDiagram idb) {
 
-    idb.createInterface(GenericModel.INTERFACE_1);
-    idb.createInterface(GenericModel.INTERFACE_2);
-    idb.createInterface(GenericModel.INTERFACE_3);
+    String interface1 = idb.createInterface();
+    String interface2 = idb.createInterface();
+    String interface3 = idb.createInterface();
 
-    idb.createGeneralization(GenericModel.INTERFACE_2, GenericModel.INTERFACE_1);
-    idb.createGeneralization(GenericModel.INTERFACE_3, GenericModel.INTERFACE_2);
+    idb.createGeneralization(interface2, interface1);
+    idb.createGeneralization(interface3, interface2);
 
-    idb.createGeneralizationNotEnabled(GenericModel.INTERFACE_3, GenericModel.INTERFACE_1);
-    idb.createGeneralizationNotEnabled(GenericModel.INTERFACE_1, GenericModel.INTERFACE_2);
-    idb.createGeneralizationNotEnabled(GenericModel.INTERFACE_2, GenericModel.INTERFACE_3);
+    idb.createGeneralizationNotEnabled(interface3, interface1);
+    idb.createGeneralizationNotEnabled(interface1, interface2);
+    idb.createGeneralizationNotEnabled(interface2, interface3);
 
   }
 }

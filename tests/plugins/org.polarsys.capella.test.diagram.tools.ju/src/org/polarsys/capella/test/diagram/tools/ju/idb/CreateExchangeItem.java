@@ -11,10 +11,10 @@
 package org.polarsys.capella.test.diagram.tools.ju.idb;
 
 import org.eclipse.sirius.business.api.session.Session;
+import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.context.IDBDiagram;
 import org.polarsys.capella.test.diagram.tools.ju.model.EmptyProject;
 import org.polarsys.capella.test.framework.context.SessionContext;
-import org.polarsys.capella.test.framework.model.GenericModel;
 
 public class CreateExchangeItem extends EmptyProject {
 
@@ -22,10 +22,19 @@ public class CreateExchangeItem extends EmptyProject {
   public void test() throws Exception {
     Session session = getSession(getRequiredTestModel());
     SessionContext context = new SessionContext(session);
+    testOnDiagram(context, IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME);
+    testOnDiagram(context, IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME);
+    testOnDiagram(context, IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME);
+    testOnDiagram(context, IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME);
+  }
 
-    IDBDiagram idb = IDBDiagram.createDiagram(context, LA__LOGICAL_SYSTEM);
+  private void testOnDiagram(SessionContext context, String diagramKind) {
+    IDBDiagram idb = IDBDiagram.createDiagram(context, diagramKind, LA__LOGICAL_SYSTEM);
 
-    idb.createEvent(GenericModel.EXCHANGE_ITEM_1);
+    idb.createEvent();
+    idb.createOperation();
+    idb.createFlow();
+    idb.createData();
   }
 
 }
