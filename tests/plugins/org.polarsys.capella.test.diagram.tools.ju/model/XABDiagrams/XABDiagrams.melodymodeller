@@ -950,6 +950,10 @@
             <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
                 id="f5838490-ddc0-4410-aa96-b850f49e2aa9" name="CP 2" orientation="IN"
                 kind="FLOW"/>
+            <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="1f6b0cc6-e789-4df0-836d-3130bd55e8c4"
+                name="LC 1_1" abstractType="#d4822e98-c68c-4e29-a795-3df5fa98cca9"/>
+            <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+                id="d4822e98-c68c-4e29-a795-3df5fa98cca9" name="LC 1_1"/>
           </ownedLogicalComponents>
         </ownedLogicalComponents>
         <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
@@ -1055,7 +1059,12 @@
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="f4e0c504-fc0c-4d0d-b10e-5227cfa0d28f"
               name="LA 7_1" abstractType="#09441ac0-4fa8-42c6-8c73-a27d6602b8ed"/>
           <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
-              id="09441ac0-4fa8-42c6-8c73-a27d6602b8ed" name="LA 7_1" actor="true"/>
+              id="09441ac0-4fa8-42c6-8c73-a27d6602b8ed" name="LA 7_1" actor="true">
+            <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="0ad59536-7a71-4698-acc6-527aeaccf49b"
+                name="LA 7_1_1" abstractType="#68df53da-c1cc-402c-b8ec-54080384ac5c"/>
+            <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+                id="68df53da-c1cc-402c-b8ec-54080384ac5c" name="LA 7_1_1" actor="true"/>
+          </ownedLogicalComponents>
         </ownedLogicalComponents>
       </ownedLogicalComponentPkg>
       <ownedSystemAnalysisRealizations xsi:type="org.polarsys.capella.core.data.la:SystemAnalysisRealization"

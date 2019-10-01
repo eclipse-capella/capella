@@ -58,6 +58,13 @@ public class CreatePhysicalLink extends XABDiagramsProject {
       validLinks.put(LA__LAB_A1, LA__LAB_A2);
       validLinks.put(LA__LAB_LOGICAL_SYSTEM_PART, LA__LAB_A1);
       validLinks.put(LA__LAB_A2, LA__LAB_LOGICAL_SYSTEM_PART);
+      validLinks.put(LA__LAB_A2, LA_7_1_PART);
+      validLinks.put(LA_7_1_PART, LA__LAB_A2);
+      validLinks.put(LA_7_1_PART, LA__LAB_LOGICAL_SYSTEM_PART);
+      validLinks.put(LA__LAB_LOGICAL_SYSTEM_PART, LA_7_1_PART);
+      validLinks.put(LA_7_1_PART, LA__LAB_A1);
+      validLinks.put(LA_LA_7_1_1, LA__LAB_A1);
+      validLinks.put(LA_LA_7_1_1, LA_7_1_PART);
       break;
     case PA:
       validLinks.put(PA__PAB_COMPONENT_PC1, PA__PAB_COMPONENT_PC2);
@@ -76,7 +83,10 @@ public class CreatePhysicalLink extends XABDiagramsProject {
       invalidLinks.put(LA__LAB_LC1_PART, LA__LAB_LOGICAL_SYSTEM_PART);
       invalidLinks.put(LA__LAB_LC1_PART, LA__LAB_A1);
       invalidLinks.put(LA__LAB_A2, LA__LAB_LC1_PART);
-      invalidLinks.put(LA_7_1_PART, LA__LAB_A1);
+      invalidLinks.put(LA_7_1_PART, LA__LAB_LC1_PART);
+      invalidLinks.put(LA_LC_1_1, LA__LAB_A2);
+      invalidLinks.put(LA_LC_1_1, LA__LAB_LC1_PART);
+      invalidLinks.put(LA__LAB_LOGICAL_SYSTEM_PART, LA_LC_1_1);
       break;
     default:
       break;

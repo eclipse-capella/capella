@@ -174,6 +174,8 @@ public abstract class XABDiagramsProject extends AbstractDiagramTestCase {
   public static final String LA_7_1_PART = "f4e0c504-fc0c-4d0d-b10e-5227cfa0d28f"; //$NON-NLS-1$
   public static final String LA_STRUCTURE = "f98a5409-24f8-4207-bb68-38b721762d2f"; //$NON-NLS-1$
   public static final String LA_7 = "a2673077-7c94-4e97-8261-a9c676aa4b79"; //$NON-NLS-1$
+  public static final String LA_LC_1_1 = "1f6b0cc6-e789-4df0-836d-3130bd55e8c4";
+  public static final String LA_LA_7_1_1 = "0ad59536-7a71-4698-acc6-527aeaccf49b";
 
   // pa
   public static final String PA__PAB_PHYSICAL_SYSTEM = "6117356a-8b31-480f-a1ed-07e8da164fbd";
