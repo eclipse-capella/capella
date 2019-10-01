@@ -31,9 +31,7 @@ import org.polarsys.capella.test.model.ju.testcase.LCDecomposition.LCDecompositi
 import org.polarsys.capella.test.model.ju.testcase.LCDecomposition.LCDecompositionWithInternalInterface;
 import org.polarsys.capella.test.model.ju.testcase.copyPasteLayout.CopyPasteLayout;
 import org.polarsys.capella.test.model.ju.testcase.copyPasteLayout.InvalidCapellaCopyPaste;
-import org.polarsys.capella.test.model.ju.testcase.copyPasteModel.CopyPasteModelElementReferencingLibrary;
-import org.polarsys.capella.test.model.ju.testcase.copyPasteModel.CopyPasteModelWithAppliedPVGandPV;
-import org.polarsys.capella.test.model.ju.testcase.copyPasteModel.CopyPasteModelWithFunctionalAllocation;
+import org.polarsys.capella.test.model.ju.testcase.copyPasteModel.CopyPasteModelTestSuite;
 import org.polarsys.capella.test.model.ju.testcase.dialoglabel.NewDiagramDialogLabel;
 import org.polarsys.capella.test.model.ju.testcases.datalisteners.DataListenerTestSuite;
 import org.polarsys.capella.test.model.ju.testcases.delete.DeleteElementTestSuite;
@@ -57,9 +55,7 @@ public class ModelTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
-    tests.add(new CopyPasteModelWithAppliedPVGandPV());
-    tests.add(new CopyPasteModelWithFunctionalAllocation());
-    tests.add(new CopyPasteModelElementReferencingLibrary());
+    tests.add(new CopyPasteModelTestSuite());
     tests.add(new LCDecompositionWithCommunicationLink());
     tests.add(new LCDecompositionWithInternalInterface());
     tests.add(new ISMessage());

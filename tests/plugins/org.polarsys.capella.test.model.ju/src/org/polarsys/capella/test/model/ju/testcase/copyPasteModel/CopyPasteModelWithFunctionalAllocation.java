@@ -64,7 +64,7 @@ public class CopyPasteModelWithFunctionalAllocation extends MiscModel {
     ICapellaModel model = getTestModel();
     Session session = getSessionForTestModel(getRequiredTestModels().get(0));
     TransactionalEditingDomain ted = session.getTransactionalEditingDomain();
-    final Project project = ((ICapellaModel) model).getProject(ted);
+    final Project project = model.getProject(ted);
     // Create an OperationalActivity and an OperationalActor allocating this OperationalActivity.
     final String actor1Name = "Actor1";
     final String activity1Name = "Activity1";
@@ -108,16 +108,16 @@ public class CopyPasteModelWithFunctionalAllocation extends MiscModel {
     ted.getCommandStack().execute(capellaCopyToClipboardCommand);
     // Paste
     ComponentPkg actorPkg = ModelQueryHelper.getSystemComponentPkg(project);
-    List<EObject> contentBeforePaste = new ArrayList<EObject>(actorPkg.eContents());
+    List<EObject> contentBeforePaste = new ArrayList<>(actorPkg.eContents());
     CapellaPasteCommand capellaPasteCommand = new CapellaPasteCommand(ted, actorPkg, null, CommandParameter.NO_INDEX);
     ted.getCommandStack().execute(capellaPasteCommand);
 
     //
     // Checks
     //
-    List<EObject> addedElements = new ArrayList<EObject>(actorPkg.eContents());
+    List<EObject> addedElements = new ArrayList<>(actorPkg.eContents());
     addedElements.removeAll(contentBeforePaste);
-    assertTrue("1 additional element of type Actor is expected in Actors package", addedElements.size() == 1);
+    assertTrue("2 additional elements (new Actor and its part) are expected in Actors package", addedElements.size() == 2);
     SystemComponent pastedActor = (SystemComponent) EcoreUtil.getObjectByType(addedElements,
         CtxPackage.Literals.SYSTEM_COMPONENT);
 
@@ -157,7 +157,7 @@ public class CopyPasteModelWithFunctionalAllocation extends MiscModel {
    * @return
    */
   public static Collection<EObject> getSourceElements(EObject object) {
-    List<EObject> result = new ArrayList<EObject>();
+    List<EObject> result = new ArrayList<>();
     if (object instanceof TraceableElement) {
       for (AbstractTrace trace : ((TraceableElement) object).getIncomingTraces()) {
         result.add(trace.getSourceElement());

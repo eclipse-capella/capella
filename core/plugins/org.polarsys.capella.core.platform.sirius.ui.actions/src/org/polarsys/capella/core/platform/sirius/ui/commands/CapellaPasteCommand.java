@@ -30,6 +30,7 @@ import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.command.CopyCommand;
 import org.eclipse.emf.edit.command.CopyCommand.Helper;
+import org.eclipse.emf.edit.command.CreateChildCommand;
 import org.eclipse.emf.edit.command.PasteFromClipboardCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.command.SetCommand;
@@ -45,7 +46,11 @@ import org.polarsys.capella.common.model.copypaste.SharedCutPasteClipboard;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.Involvement;
 import org.polarsys.capella.core.data.capellacore.InvolverElement;
+import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
+import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalPathInvolvement;
 import org.polarsys.capella.core.data.fa.AbstractFunctionAllocation;
 import org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation;
@@ -56,6 +61,8 @@ import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.datatype.Enumeration;
 import org.polarsys.capella.core.data.information.datavalue.EnumerationLiteral;
+import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
+import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 
 /**
  * The Capella command allowing to paste Capella elements. It generates a new object identifier each time the command is
@@ -167,6 +174,12 @@ public class CapellaPasteCommand extends PasteFromClipboardCommand {
             } else if (objectToCopy instanceof FunctionalChainInvolvement || objectToCopy instanceof PhysicalPathInvolvement) {
               final Involvement involvement = (Involvement) objectToCopy;
               prepareInvolvementPaste(involvement, compoundCommand);
+            } else if (objectToCopy instanceof Component) {
+              Component component = (Component) objectToCopy;
+              if (owner instanceof EObject
+                  && !TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven((EObject) owner))) {
+                prepareComponentPaste(component, compoundCommand);
+              }
             }
           }
           if (compoundCommand.isEmpty()) {
@@ -360,6 +373,41 @@ public class CapellaPasteCommand extends PasteFromClipboardCommand {
     }
   }
 
+  /**
+   * Extend the given preparation command for Component pasting to create a new Part that reference the component
+   * 
+   * @param component
+   * @param compoundCommand
+   */
+  private void prepareComponentPaste(Component component, CompoundCommand compoundCommand) {
+    EObject pastedComponent = _copyHelper.getCopy(component);
+    EStructuralFeature ownedPartFeature = null;
+    if (owner instanceof Component) {
+      ownedPartFeature = CapellacorePackage.Literals.CLASSIFIER__OWNED_FEATURES;
+    } else if (owner instanceof ComponentPkg) {
+      ownedPartFeature = CsPackage.Literals.COMPONENT_PKG__OWNED_PARTS;
+    }
+    if (pastedComponent instanceof Component && ownedPartFeature != null) {
+      // Creates the part.
+      final Command createPartCmd = CreateChildCommand.create(domain, owner,
+          new CommandParameter(owner, ownedPartFeature, CsFactory.eINSTANCE.createPart()), Collections.emptyList());
+      compoundCommand.append(createPartCmd);
+
+      Collection<?> result = createPartCmd.getResult();
+      if (result.size() == 1) {
+        Object createdPart = result.iterator().next();
+        if (createdPart instanceof Part) {
+          // Sets the part name.
+          compoundCommand.append(SetCommand.create(domain, createdPart,
+              ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME, ((Component) pastedComponent).getName()));
+          // Sets the part type.
+          compoundCommand.append(SetCommand.create(domain, createdPart,
+              ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, pastedComponent));
+        }
+      }
+    }
+  }
+  
   /**
    * Extend the given preparation command for properly pasting the given association
    * 
