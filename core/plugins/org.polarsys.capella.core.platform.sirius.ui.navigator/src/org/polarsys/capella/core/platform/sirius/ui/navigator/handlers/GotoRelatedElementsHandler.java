@@ -29,13 +29,14 @@ import org.eclipse.ui.actions.CompoundContributionItem;
 import org.eclipse.ui.menus.IWorkbenchContribution;
 import org.eclipse.ui.services.IServiceLocator;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.LocateInCapellaExplorerAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.internal.navigate.NavigationAdvisor;
 
 /**
- * Handler used to provide a Goto sub menu manager from Sirius diagram editor.
+ * Handler used to provide a Dynamic menu listing all navigable elements.
  */
 public class GotoRelatedElementsHandler extends CompoundContributionItem implements IWorkbenchContribution {
 
@@ -113,7 +114,7 @@ public class GotoRelatedElementsHandler extends CompoundContributionItem impleme
   }
   
   protected Collection<EObject> getRelatedElements(Object element) {
-    return  NavigationAdvisor.getInstance().getNavigableElements(element);
+    return NavigationAdvisor.getInstance().getNavigableElements(element);
   }
   
   /**
@@ -131,9 +132,7 @@ public class GotoRelatedElementsHandler extends CompoundContributionItem impleme
    * @return
    */
   protected Object getModelElement(Object uiSelectedElement) {
-    return LocateInCapellaExplorerAction.getElement(uiSelectedElement);
+    return CapellaAdapterHelper.resolveSemanticObject(uiSelectedElement);
   }
-
-
   
 }

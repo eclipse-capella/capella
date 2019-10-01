@@ -14,7 +14,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
@@ -25,6 +24,7 @@ import org.polarsys.capella.core.libraries.model.ICapellaModel;
 import org.polarsys.capella.core.libraries.utils.ScopeModelWrapper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.LocateInCapellaExplorerAction;
 import org.polarsys.capella.core.ui.semantic.browser.sirius.helpers.SiriusSelectionHelper;
 import org.polarsys.capella.shared.id.handler.IScope;
 import org.polarsys.capella.shared.id.handler.IdManager;
@@ -110,7 +110,7 @@ public class CapellaAdapterHelperTestCase extends BasicTestCase {
     assertEquals("Legacy Semantic object (onlySemantic=true) of a diagram element should be the business element.", labPart.getAbstractType(),
         CapellaAdapterHelper.resolveSemanticObject(partView, true));
 
-    // Semantic browser helper shall return DRD or business element
+    // Semantic browser helper (DRD or business element)
     assertEquals("Semantic browser element of a diagram element should be the business element.", labPart.getAbstractType(),
         SiriusSelectionHelper.handleSelection(null, new StructuredSelection(partView)));
     
@@ -122,6 +122,19 @@ public class CapellaAdapterHelperTestCase extends BasicTestCase {
 
     assertEquals("Semantic browser element of a part should be the component.", labPart.getAbstractType(),
         SiriusSelectionHelper.handleSelection(null, new StructuredSelection(labPart)));
+    
+    // Show in Project Explorer (use DRD or Business element)
+    assertEquals("Navigation of a diagram element should be the business element.", labPart.getAbstractType(),
+        LocateInCapellaExplorerAction.getElement(partView));
+    
+    assertEquals("Navigation of a diagram should be the descriptor.", labDiagramDescriptor,
+        LocateInCapellaExplorerAction.getElement(labDiagram));
+    
+    assertEquals("Navigation of a function should be the function.", function,
+        LocateInCapellaExplorerAction.getElement(function));
+
+    assertEquals("Navigation of a part should be the component.", labPart.getAbstractType(),
+        LocateInCapellaExplorerAction.getElement(labPart));
     
   }
 }

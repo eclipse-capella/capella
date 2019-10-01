@@ -14,7 +14,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.core.commands.ExecutionEvent;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -22,7 +21,6 @@ import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPart;
 import org.polarsys.capella.common.ui.services.commands.AbstractLocateInViewPartHandler;
 import org.polarsys.capella.common.ui.services.commands.ActionCommandDelegate;
-import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.LocateInCapellaExplorerAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 
@@ -59,7 +57,7 @@ public class LocateInCapellaExplorerHandler extends AbstractLocateInViewPartHand
     if (selection instanceof IStructuredSelection) {
       Object[] selectedElements = ((IStructuredSelection) selection).toArray();
       for (Object element : selectedElements) {
-        EObject semanticElement = CapellaAdapterHelper.resolveBusinessObject(element);
+        Object semanticElement = LocateInCapellaExplorerAction.getElement(element);
         if (semanticElement != null) {
           semanticElementsToSelect.add(semanticElement);
         }

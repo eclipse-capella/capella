@@ -187,6 +187,9 @@ public class CapellaAdapterHelper {
         .collect(Collectors.toList());
   }
 
+  /**
+   * Returns a DRepresentationDescriptor or the business element associated to the given object
+   */
   @Deprecated
   public static EObject resolveSemanticObject(Object object, boolean onlySemantic) {
     EObject result = resolveEObject(object, false, false);

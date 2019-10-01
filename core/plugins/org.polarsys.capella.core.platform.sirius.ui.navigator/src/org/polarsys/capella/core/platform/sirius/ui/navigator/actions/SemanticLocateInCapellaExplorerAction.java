@@ -19,7 +19,7 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.internal.navigate.NavigationAdvisor;
 
 /**
@@ -35,9 +35,9 @@ public class SemanticLocateInCapellaExplorerAction extends LocateInCapellaExplor
   protected boolean isEnabled(ISelection selection) {
     boolean result = false;
     if (!selection.isEmpty()) {
-      Object element = getElement(getFirstSelectedElement(selection));
+      Object element = CapellaAdapterHelper.resolveSemanticObject(getFirstSelectedElement(selection));
       if (null != element) {
-        Set<EObject> navigableElements = NavigationAdvisor.getInstance().getNavigableElements((ModelElement) element);
+        Set<EObject> navigableElements = NavigationAdvisor.getInstance().getNavigableElements(element);
         result = !navigableElements.isEmpty();
       }
     }

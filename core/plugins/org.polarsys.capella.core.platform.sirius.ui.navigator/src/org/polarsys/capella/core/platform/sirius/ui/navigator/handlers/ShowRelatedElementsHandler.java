@@ -18,7 +18,7 @@ import org.polarsys.capella.common.ui.services.commands.AbstractLocateInWorkbenc
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SemanticLocateInCapellaExplorerAction;
 
 /**
- * Handler that runs the actions that shows related elements from a diagram selection.
+ * Handler that runs the actions that shows All related elements from a diagram selection.
  */
 public class ShowRelatedElementsHandler extends AbstractLocateInWorkbenchPartHandler {
   /**
