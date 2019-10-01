@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.system.topdown.constants;
 
-/**
- */
 public class ITopDownConstants {
 
   public static final String CONTEXTUAL_IGNORED_ELEMENTS = "CONTEXTUAL_IGNORED_ELEMENTS"; //$NON-NLS-1$

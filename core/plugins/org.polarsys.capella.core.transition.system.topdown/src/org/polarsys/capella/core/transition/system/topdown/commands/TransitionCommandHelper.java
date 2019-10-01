@@ -28,6 +28,7 @@ import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
 import org.polarsys.capella.core.data.capellacore.PropertyValuePkg;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Interface;
@@ -61,13 +62,13 @@ import org.polarsys.capella.core.data.oa.OperationalActivityPkg;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
 import org.polarsys.capella.core.data.oa.OperationalCapabilityPkg;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.ComponentPkgExt;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
 import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
 
-/**
- */
 public class TransitionCommandHelper {
 
   public static TransitionCommandHelper getInstance() {
@@ -279,10 +280,10 @@ public class TransitionCommandHelper {
 
   public boolean isStateMachineTransitionAvailable(EObject object) {
     return ((object instanceof BlockArchitecture)
-        || ((object instanceof Component) && (((Component) object).getOwnedStateMachines().size() > 0))
+        || ((object instanceof Component) && !(((Component) object).getOwnedStateMachines().isEmpty()))
         || ((object instanceof Part) && (((Part) object).getAbstractType() != null)
             && (((Part) object).getAbstractType() instanceof Component)
-            && (((Component) ((Part) object).getAbstractType()).getOwnedStateMachines().size() > 0))
+            && !(((Component) ((Part) object).getAbstractType()).getOwnedStateMachines().isEmpty()))
         || (object instanceof StateMachine) || (object instanceof AbstractState) || (object instanceof StateTransition))
         && ((object instanceof CapellaElement) && !CapellaLayerCheckingExt.isAOrInEPBSLayer((CapellaElement) object)
             && !CapellaLayerCheckingExt.isAOrInPhysicalLayer((CapellaElement) object));
@@ -326,20 +327,23 @@ public class TransitionCommandHelper {
    */
   public boolean isActorTransitionAvailable(EObject object) {
     if (object instanceof SystemAnalysis || object instanceof LogicalArchitecture) {
-      return true;
+      ComponentPkg componentPkg = BlockArchitectureExt.getComponentPkg((BlockArchitecture) object);
+      if (componentPkg != null && !ComponentPkgExt.getExternalActors(componentPkg).isEmpty()) {
+        return true;
+      }
     }
     if (CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object)) {
       Component component = getComponent(object);
       if ((component instanceof SystemComponent && (ComponentExt.isActor(object))) || //
-          object instanceof SystemComponentPkg || //
+          object instanceof SystemComponentPkg && !ComponentPkgExt.getAllActors((ComponentPkg) object).isEmpty() || //
           (object instanceof ComponentExchange) && ComponentExchangeExt.isLinkToAnActor((ComponentExchange) object)) {
         return true;
       }
     }
     if (CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) object)) {
       Component component = getComponent(object);
-      if ((component instanceof LogicalComponent && (ComponentExt.isActor(object))) || //
-          object instanceof LogicalComponentPkg || //
+      if ((component instanceof LogicalComponent && (ComponentExt.isExternalActor(component))) || //
+          object instanceof LogicalComponentPkg && !ComponentPkgExt.getExternalActors((ComponentPkg) object).isEmpty() || //
           (object instanceof ComponentExchange) && ComponentExchangeExt.isLinkToAnActor((ComponentExchange) object)) {
         return true;
       }

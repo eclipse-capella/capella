@@ -17,19 +17,19 @@ import java.util.HashSet;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.model.helpers.AbstractCapabilityPkgExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.ComponentPkgExt;
 import org.polarsys.capella.core.transition.common.commands.LauncherCommand;
 import org.polarsys.capella.core.transition.common.launcher.DefaultLauncher;
 import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
 import org.polarsys.capella.core.transition.system.topdown.launcher.HeadlessIntramodelLauncher;
 
-/**
- */
 public class IntramodelTransitionCommand extends LauncherCommand {
 
   public IntramodelTransitionCommand(Collection<?> selection, IProgressMonitor progressMonitor) {
@@ -57,51 +57,22 @@ public class IntramodelTransitionCommand extends LauncherCommand {
 
     };
   }
-  
+
   protected String getTransitionMapping() {
-
-    String id = "org.polarsys.";
-
     String kind = getTransitionKind();
-    if (ITopDownConstants.TRANSITION_TOPDOWN_FUNCTIONAL.equals(kind)) {
 
-    } else if (ITopDownConstants.TRANSITION_TOPDOWN_INTERFACE.equals(kind)) {
+    switch (kind) {
+    case ITopDownConstants.TRANSITION_TOPDOWN_LC2PC:
+    case ITopDownConstants.TRANSITION_TOPDOWN_OE2ACTOR:
+    case ITopDownConstants.TRANSITION_TOPDOWN_OE2SYSTEM:
+    case ITopDownConstants.TRANSITION_TOPDOWN_OC2SM:
+    case ITopDownConstants.TRANSITION_TOPDOWN_OA2SC:
+    case ITopDownConstants.TRANSITION_TOPDOWN_OA2SM:
+      return "org.polarsys." + kind;
 
-    } else if (ITopDownConstants.TRANSITION_TOPDOWN_DATA.equals(kind)) {
-
-    } else if (ITopDownConstants.TRANSITION_TOPDOWN_STATEMACHINE.equals(kind)) {
-
-    } else if (ITopDownConstants.TRANSITION_TOPDOWN_PROPERTYVALUE.equals(kind)) {
-
-    } else if (ITopDownConstants.TRANSITION_TOPDOWN_EXCHANGEITEM.equals(kind)) {
-
-    } else if (ITopDownConstants.TRANSITION_TOPDOWN_ACTOR.equals(kind)) {
-
-    } else if (ITopDownConstants.TRANSITION_TOPDOWN_SYSTEM.equals(kind)) {
-
-    } else if (ITopDownConstants.TRANSITION_TOPDOWN_LC2PC.equals(kind)) {
-      return id + kind;
-
-    } else if (ITopDownConstants.TRANSITION_TOPDOWN_OE2ACTOR.equals(kind)) {
-      return id + kind;
-
-    } else if (ITopDownConstants.TRANSITION_TOPDOWN_OE2SYSTEM.equals(kind)) {
-      return id + kind;
-
-    } else if (ITopDownConstants.TRANSITION_TOPDOWN_CAPABILITY.equals(kind)) {
-
-    } else if (ITopDownConstants.TRANSITION_TOPDOWN_OC2SM.equals(kind)) {
-      return id + kind;
-
-    } else if (ITopDownConstants.TRANSITION_TOPDOWN_OA2SC.equals(kind)) {
-      return id + kind;
-
-    } else if (ITopDownConstants.TRANSITION_TOPDOWN_OA2SM.equals(kind)) {
-      return id + kind;
-
+    default:
+      return "org.polarsys.capella.core.transition.system.topdown";
     }
-
-    return "org.polarsys.capella.core.transition.system.topdown";
   }
 
   protected String getTransitionKind() {
@@ -116,12 +87,12 @@ public class IntramodelTransitionCommand extends LauncherCommand {
       rootElement = ((Part) rootElement).getAbstractType();
     }
 
-    String kind = getTransitionKind();
-    if (ITopDownConstants.TRANSITION_TOPDOWN_FUNCTIONAL.equals(kind)) {
+    switch (getTransitionKind()) {
+    case ITopDownConstants.TRANSITION_TOPDOWN_FUNCTIONAL:
       if (rootElement instanceof BlockArchitecture) {
-        Collection<Object> result = new HashSet<Object>();
-        for (AbstractCapability capability : AbstractCapabilityPkgExt.getAllAbstractCapabilities(BlockArchitectureExt.getAbstractCapabilityPkg(
-            (BlockArchitecture) rootElement, false))) {
+        Collection<Object> result = new HashSet<>();
+        for (AbstractCapability capability : AbstractCapabilityPkgExt.getAllAbstractCapabilities(
+            BlockArchitectureExt.getAbstractCapabilityPkg((BlockArchitecture) rootElement, false))) {
           result.addAll(capability.getOwnedFunctionalChains());
         }
 
@@ -130,85 +101,88 @@ public class IntramodelTransitionCommand extends LauncherCommand {
 
         return result;
       }
+      return Collections.singleton(rootElement);
 
-    } else if (ITopDownConstants.TRANSITION_TOPDOWN_INTERFACE.equals(kind)) {
+    case ITopDownConstants.TRANSITION_TOPDOWN_INTERFACE:
       if (rootElement instanceof BlockArchitecture) {
         rootElement = BlockArchitectureExt.getInterfacePkg((BlockArchitecture) rootElement, false);
 
       } else if (rootElement instanceof Component) {
         rootElement = ComponentExt.getInterfacePkg((Component) rootElement, false);
       }
-
-    } else if (ITopDownConstants.TRANSITION_TOPDOWN_DATA.equals(kind)) {
+      return Collections.singleton(rootElement);
+      
+    case ITopDownConstants.TRANSITION_TOPDOWN_DATA:
       if (rootElement instanceof BlockArchitecture) {
         rootElement = BlockArchitectureExt.getDataPkg((BlockArchitecture) rootElement, false);
 
       } else if (rootElement instanceof Component) {
         rootElement = ComponentExt.getDataPkg((Component) rootElement, false);
       }
-
-    } else if (ITopDownConstants.TRANSITION_TOPDOWN_STATEMACHINE.equals(kind)) {
+      return Collections.singleton(rootElement);
+      
+    case ITopDownConstants.TRANSITION_TOPDOWN_STATEMACHINE:
       if (rootElement instanceof BlockArchitecture) {
         rootElement = BlockArchitectureExt.getFirstComponent((BlockArchitecture) rootElement, false);
       }
       if (rootElement instanceof Component) {
-        Collection<Object> result = new HashSet<Object>();
+        Collection<Object> result = new HashSet<>();
         result.addAll(((Component) rootElement).getOwnedStateMachines());
         return result;
       }
-
-    } else if (ITopDownConstants.TRANSITION_TOPDOWN_PROPERTYVALUE.equals(kind)) {
-
-    } else if (ITopDownConstants.TRANSITION_TOPDOWN_EXCHANGEITEM.equals(kind)) {
-
-    } else if (ITopDownConstants.TRANSITION_TOPDOWN_ACTOR.equals(kind)) {
+      return Collections.singleton(rootElement);
+      
+    case ITopDownConstants.TRANSITION_TOPDOWN_ACTOR:
+      Collection<Object> result = new HashSet<>();
       if (rootElement instanceof BlockArchitecture) {
-        rootElement = BlockArchitectureExt.getActorPkg((BlockArchitecture) rootElement, false);
+        ComponentPkg actorPkg = BlockArchitectureExt.getActorPkg((BlockArchitecture) rootElement, false);
+        if (actorPkg != null) {
+          result.addAll(ComponentPkgExt.getExternalActors(actorPkg));
+        }
       }
-
-    } else if (ITopDownConstants.TRANSITION_TOPDOWN_SYSTEM.equals(kind)) {
-      if (rootElement instanceof BlockArchitecture) {
-        rootElement = BlockArchitectureExt.getFirstComponent((BlockArchitecture) rootElement, false);
+      if (rootElement instanceof ComponentPkg) {
+        result.addAll(ComponentPkgExt.getExternalActors((ComponentPkg) rootElement));
       }
-
-    } else if (ITopDownConstants.TRANSITION_TOPDOWN_LC2PC.equals(kind)) {
+      if (rootElement instanceof Component && ComponentExt.isExternalActor((Component) rootElement)) {
+        result.add(rootElement);
+      }
+      if (result.isEmpty()) {
+        result.add(rootElement);
+      }
+      return result;
+      
+    case ITopDownConstants.TRANSITION_TOPDOWN_SYSTEM:
+    case ITopDownConstants.TRANSITION_TOPDOWN_LC2PC:
       if (rootElement instanceof BlockArchitecture) {
         rootElement = BlockArchitectureExt.getComponentPkg((BlockArchitecture) rootElement, false);
       }
-
-    } else if (ITopDownConstants.TRANSITION_TOPDOWN_OE2ACTOR.equals(kind)) {
+      return Collections.singleton(rootElement);
+      
+    case ITopDownConstants.TRANSITION_TOPDOWN_OE2ACTOR:
+    case ITopDownConstants.TRANSITION_TOPDOWN_OE2SYSTEM:
       if (rootElement instanceof OperationalAnalysis) {
         rootElement = ((OperationalAnalysis) rootElement).getOwnedEntityPkg();
       }
-
-    } else if (ITopDownConstants.TRANSITION_TOPDOWN_OE2SYSTEM.equals(kind)) {
-      if (rootElement instanceof OperationalAnalysis) {
-        rootElement = ((OperationalAnalysis) rootElement).getOwnedEntityPkg();
-      }
-
-    } else if (ITopDownConstants.TRANSITION_TOPDOWN_CAPABILITY.equals(kind)) {
+      return Collections.singleton(rootElement);
+      
+    case ITopDownConstants.TRANSITION_TOPDOWN_CAPABILITY:
+    case ITopDownConstants.TRANSITION_TOPDOWN_OC2SM:
       if (rootElement instanceof BlockArchitecture) {
         rootElement = BlockArchitectureExt.getAbstractCapabilityPkg((BlockArchitecture) rootElement, false);
       }
-
-    } else if (ITopDownConstants.TRANSITION_TOPDOWN_OC2SM.equals(kind)) {
-      if (rootElement instanceof BlockArchitecture) {
-        rootElement = BlockArchitectureExt.getAbstractCapabilityPkg((BlockArchitecture) rootElement, false);
-      }
-
-    } else if (ITopDownConstants.TRANSITION_TOPDOWN_OA2SC.equals(kind)) {
+      return Collections.singleton(rootElement);
+      
+    case ITopDownConstants.TRANSITION_TOPDOWN_OA2SC:
+    case ITopDownConstants.TRANSITION_TOPDOWN_OA2SM:
       if (rootElement instanceof BlockArchitecture) {
         rootElement = BlockArchitectureExt.getFunctionPkg((BlockArchitecture) rootElement, false);
       }
-
-    } else if (ITopDownConstants.TRANSITION_TOPDOWN_OA2SM.equals(kind)) {
-      if (rootElement instanceof BlockArchitecture) {
-        rootElement = BlockArchitectureExt.getFunctionPkg((BlockArchitecture) rootElement, false);
-      }
-
+      return Collections.singleton(rootElement);
+      
+    case ITopDownConstants.TRANSITION_TOPDOWN_PROPERTYVALUE:
+    case ITopDownConstants.TRANSITION_TOPDOWN_EXCHANGEITEM:
+    default:
+      return Collections.singleton(rootElement);
     }
-
-    return Collections.singleton(rootElement);
   }
-
 }
