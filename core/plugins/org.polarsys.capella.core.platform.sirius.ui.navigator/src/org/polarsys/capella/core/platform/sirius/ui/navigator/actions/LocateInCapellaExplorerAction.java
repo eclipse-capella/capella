@@ -177,6 +177,6 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
    * @return a semantic element or a {@link DRepresentation}.
    */
   public static Object getElement(Object uiSelectedElement) {
-    return CapellaAdapterHelper.resolveSemanticObject(uiSelectedElement, false);
+    return CapellaAdapterHelper.resolveDescriptorOrBusinessObject(uiSelectedElement);
   }
 }

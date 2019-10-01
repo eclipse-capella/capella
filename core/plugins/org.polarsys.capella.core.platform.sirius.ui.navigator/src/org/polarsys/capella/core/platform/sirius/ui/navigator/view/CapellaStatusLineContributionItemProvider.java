@@ -49,7 +49,7 @@ public class CapellaStatusLineContributionItemProvider extends SiriusStatusLineC
       }
 
       // Handle for semantic element
-      EObject semanticElement = CapellaAdapterHelper.resolveSemanticObject(element, true);
+      EObject semanticElement = CapellaAdapterHelper.resolveBusinessObject(element);
       if (semanticElement != null) {
         return EObjectLabelProviderHelper.getFullPathText(semanticElement);
       }
@@ -61,7 +61,7 @@ public class CapellaStatusLineContributionItemProvider extends SiriusStatusLineC
       if (element instanceof IStructuredSelection) {
         element = ((IStructuredSelection) element).getFirstElement();
       }
-      element = CapellaAdapterHelper.resolveSemanticObject(element, true);
+      element = CapellaAdapterHelper.resolveBusinessObject(element);
       if (element instanceof EObject) {
         return ExtendedImageRegistry.getInstance().getImage(EObjectLabelProviderHelper.getImage((EObject) element));
       }

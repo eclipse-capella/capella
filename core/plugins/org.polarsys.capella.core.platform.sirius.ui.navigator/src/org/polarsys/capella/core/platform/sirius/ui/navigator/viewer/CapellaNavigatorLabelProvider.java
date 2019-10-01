@@ -228,7 +228,7 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
     }
 
     // Handle then for semantic element
-    EObject semanticElement = CapellaAdapterHelper.resolveSemanticObject(element, true);
+    EObject semanticElement = CapellaAdapterHelper.resolveBusinessObject(element);
     if (semanticElement != null) {
       return EObjectLabelProviderHelper.getFullPathText(semanticElement);
     }
