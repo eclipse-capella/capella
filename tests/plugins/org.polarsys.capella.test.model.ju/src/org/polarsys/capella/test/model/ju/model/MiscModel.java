@@ -106,6 +106,8 @@ public abstract class MiscModel extends NonDirtyTestCase {
   public static final String LC_1 = "5b6b9d5b-d024-4423-9271-bcb3d77469c2"; //$NON-NLS-1$
   public static final String LC_2 = "a30cf2b5-48d1-407e-9967-1e20e64e8e88"; //$NON-NLS-1$
   public static final String LOGICALCOMPONENTPKG_1 = "b1123d45-f6d3-411b-a3c6-ea2965a5da7b"; //$NON-NLS-1$
+  public static final String LC_1_PART = "1f8aefd5-6ce2-4d5c-a734-254d1ddde797"; //$NON-NLS-1$
+  public static final String LC_2_PART = "c52b2d75-afae-49bf-bc8f-835e2f684320"; //$NON-NLS-1$
   public static final String PA = "93e72add-98f8-4f01-81d1-66b443275e2c";
   public static final String PA__PHYSICAL_FUNCTIONS = "433ac136-8085-441d-adfb-f1207ef04f80";
   public static final String PA__ROOT_PF = "82809bc0-4858-4da3-a239-7b7fb8532e6b";
