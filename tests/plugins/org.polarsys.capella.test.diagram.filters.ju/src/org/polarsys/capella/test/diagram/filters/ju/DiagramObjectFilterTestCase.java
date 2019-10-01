@@ -16,6 +16,7 @@ import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.BasicEList;
@@ -191,22 +192,36 @@ public abstract class DiagramObjectFilterTestCase extends NonDirtyTestCase {
 
   protected void postRunTest() {
 
-    // Verify that all elements that should be filtered, are actually filtered by the specified filter
+    ensureAbsenceOfElementsToFilter();
+    ensurePresenceOfElementsToNotFilter();
+
+    checkElementsToFilterExtraConditions();
+    checkElementsToNotFilterExtraConditions();
+  }
+
+  /**
+   * Verifies that all elements that should NOT be filtered, are actually NOT filtered by the specified filter
+   */
+  protected void ensurePresenceOfElementsToNotFilter() {
+    Enumeration<DDiagramElement> elementsToNotFilter = notToFilter.keys();
+    while (elementsToNotFilter.hasMoreElements()) {
+      DDiagramElement currentElementToVerify = elementsToNotFilter.nextElement();
+      if (isFilteredByTestedFilter(currentElementToVerify)) {
+        fail("Element: " + ((CapellaElement) currentElementToVerify.getTarget()).getId() + " should not be filtered!");
+      }
+    }
+  }
+
+  /**
+   * Verifies that all elements that should be filtered, are actually filtered by the specified filter
+   */
+  protected void ensureAbsenceOfElementsToFilter() {
     Enumeration<DDiagramElement> elementsToFilter = toBeFiltered.keys();
     while (elementsToFilter.hasMoreElements()) {
       DDiagramElement currentElementToVerify = elementsToFilter.nextElement();
       currentElementToVerify.getGraphicalFilters();
       if (!isFilteredByTestedFilter(currentElementToVerify)) {
         fail("Element: " + ((CapellaElement) currentElementToVerify.getTarget()).getId() + " should be filtered!");
-      }
-    }
-
-    // Verify that no other element is filtered
-    Enumeration<DDiagramElement> elementsToNotFilter = notToFilter.keys();
-    while (elementsToNotFilter.hasMoreElements()) {
-      DDiagramElement currentElementToVerify = elementsToNotFilter.nextElement();
-      if (isFilteredByTestedFilter(currentElementToVerify)) {
-        fail("Element: " + ((CapellaElement) currentElementToVerify.getTarget()).getId() + " should not be filtered!");
       }
     }
   }
@@ -228,6 +243,48 @@ public abstract class DiagramObjectFilterTestCase extends NonDirtyTestCase {
       }
     }
     return false;
+  }
+
+  /**
+   * Returns a predicate that will be applied to each of the elements expected to be filtered. This enables a extension
+   * mechanism for tests that want to verify specific behaviors, and not only the absence of the element.
+   * 
+   * @return a predicate that will be applied to each of the elements expected to be filtered
+   */
+  protected Predicate<DDiagramElement> getElementsToFilterExtraConditionPredicate() {
+    return null;
+  }
+
+  /**
+   * Returns a predicate that will be applied to each of the elements expected to NOT be filtered. This enables a
+   * extension mechanism for tests that want to verify specific behaviors, and not only the presence of the element.
+   * 
+   * @return a predicate that will be applied to each of the elements expected to NOT be filtered
+   */
+  protected Predicate<DDiagramElement> getElementsToNotFilterExtraConditionPredicate() {
+    return null;
+  }
+
+  protected void checkElementsToFilterExtraConditions() {
+    Predicate<DDiagramElement> predicate = getElementsToFilterExtraConditionPredicate();
+    if (predicate != null) {
+
+      for (DDiagramElement diagramElement : toBeFiltered.keySet()) {
+        assertTrue("Element " + ((CapellaElement) diagramElement.getTarget()).getId() + " does not obey the predicate "
+            + predicate.toString(), predicate.test(diagramElement));
+      }
+    }
+  }
+
+  protected void checkElementsToNotFilterExtraConditions() {
+    Predicate<DDiagramElement> predicate = getElementsToNotFilterExtraConditionPredicate();
+    if (predicate != null) {
+
+      for (DDiagramElement diagramElement : notToFilter.keySet()) {
+        assertTrue("Element " + ((CapellaElement) diagramElement.getTarget()).getId() + " does not obey the predicate "
+            + predicate.toString(), predicate.test(diagramElement));
+      }
+    }
   }
 
   // This has been deprecated because it is not important that the element is filtered by something
