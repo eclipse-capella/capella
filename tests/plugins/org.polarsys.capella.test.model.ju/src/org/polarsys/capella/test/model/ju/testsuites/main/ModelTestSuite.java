@@ -20,6 +20,7 @@ import org.polarsys.capella.test.model.ju.crossreferencer.MoveElementToNewResour
 import org.polarsys.capella.test.model.ju.crossreferencer.TraceableElementDerivedFeaturesTest;
 import org.polarsys.capella.test.model.ju.crossreferencer.TypeDerivedFeaturesTest;
 import org.polarsys.capella.test.model.ju.derivedfeature.DerivedFeatureTestCase;
+import org.polarsys.capella.test.model.ju.dnd.DnDTestSuite;
 import org.polarsys.capella.test.model.ju.helpers.CapellaAdapterHelperTestCase;
 import org.polarsys.capella.test.model.ju.helpers.ChildrenFeaturesItemProviderTest;
 import org.polarsys.capella.test.model.ju.obfuscate.ObfuscateModelTestCase;
@@ -77,6 +78,7 @@ public class ModelTestSuite extends BasicTestSuite {
     tests.add(new TraceableElementDerivedFeaturesTest());
     tests.add(new DerivedFeatureTestCase());
     tests.add(new PatternsTestSuite());
+    tests.add(new DnDTestSuite());
     return tests;
   }
 

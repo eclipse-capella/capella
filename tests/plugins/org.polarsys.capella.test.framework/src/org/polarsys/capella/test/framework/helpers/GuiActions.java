@@ -36,6 +36,7 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
@@ -50,6 +51,7 @@ import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.progress.UIJob;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.explorer.activity.ui.actions.OpenActivityExplorerAction;
+import org.polarsys.capella.core.model.helpers.move.MoveHelper;
 import org.polarsys.capella.core.model.obfuscator.actions.ObfuscateSessionAction;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaCloneDiagramCommand;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaCopyToClipboardCommand;
@@ -57,6 +59,7 @@ import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaPasteCommand
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.RenameResourceAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SortContentAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SortSelectionAction;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.drop.CapellaDragAndDropCommand;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.DeleteHiddenElementsJob;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.RefreshDiagramsCommandHandler;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
@@ -507,5 +510,18 @@ public class GuiActions {
     action.selectionChanged(new StructuredSelection(element));
     action.setShouldUncontrolRepresentations(bShouldUncontrolRepresentations_p);
     action.run();
+  }
+  
+  public static boolean canDnD(EObject owner, List<EObject> elementsToDnD) {
+    MoveHelper moveHelper = new MoveHelper();
+    return moveHelper.checkSemanticRules(elementsToDnD, owner).isOK()
+        && moveHelper.checkEMFRules(elementsToDnD, owner).isOK();
+  }
+
+  public static void dragAndDrop(TransactionalEditingDomain domain, EObject owner, Collection<EObject> elementsToDnD) {
+    // Location must be between 0.20 & 0.80 to activate the command's prepareDropOn event
+    CapellaDragAndDropCommand dnDCommand = new CapellaDragAndDropCommand(domain, owner, 0.5F, DND.DROP_MOVE,
+        DND.DROP_MOVE, elementsToDnD);
+    domain.getCommandStack().execute(dnDCommand);
   }
 }

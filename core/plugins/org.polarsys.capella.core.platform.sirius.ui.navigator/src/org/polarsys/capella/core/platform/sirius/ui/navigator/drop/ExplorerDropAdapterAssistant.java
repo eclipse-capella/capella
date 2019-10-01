@@ -17,12 +17,7 @@ import java.util.List;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.common.command.CommandWrapper;
-import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edit.command.CommandParameter;
-import org.eclipse.emf.edit.command.DragAndDropCommand;
-import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.transaction.TransactionalCommandStack;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.util.LocalSelectionTransfer;
@@ -33,12 +28,8 @@ import org.eclipse.swt.dnd.DropTargetEvent;
 import org.eclipse.swt.dnd.TransferData;
 import org.eclipse.ui.statushandlers.StatusManager;
 import org.polarsys.capella.common.helpers.TransactionHelper;
-import org.polarsys.capella.common.model.copypaste.SharedCopyPasteElements;
 import org.polarsys.capella.common.ui.StatusManagerExceptionHandler;
 import org.polarsys.capella.core.model.helpers.move.MoveHelper;
-import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaCopyToClipboardCommand;
-import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaPasteCommand;
-import org.polarsys.capella.core.platform.sirius.ui.commands.PasteCommandHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
 
 /**
@@ -108,57 +99,7 @@ public class ExplorerDropAdapterAssistant extends AbstractCapellaDropAdapterAssi
     // Gets the editing domain.
     TransactionalEditingDomain editingDomain = TransactionHelper.getEditingDomain(nextContainer);
     // Create a drop command.
-    Command dropCommand = new DragAndDropCommand(editingDomain, nextContainer, getLocation(event_p), event_p.operations, event_p.detail, modelElements_p) {
-      /**
-       * {@inheritDoc}
-       */
-      @Override
-      protected boolean prepareDropMoveOn() {
-        dropCommand = new CompoundCommand();
-        PasteCommandHelper.createPasteCommands(collection, (CompoundCommand) dropCommand, (EObject) owner, null, domain, -1, true);
-        dragCommand = RemoveCommand.create(domain, collection);
-        boolean result = dragCommand.canExecute() && dropCommand.canExecute();
-        return result;
-      }
-
-      /**
-       * Prepare a drop copy on. We simply copy the selection to the clipboard, followed by
-       * an immediate paste. We also clean the clipboard after the operation completes.
-       *
-       * TODO: There's no real need to occupy the editing domain clipboard here. We
-       * could just use a CopyCommand and use its result for the drop. Unfortunately
-       * we're bound to the clipboard method because it incrusts does some semantic tuning
-       * (see for example CapellaPasteCommand.prepareAssociationPaste, which I won't touch)
-       */
-      @Override
-      protected boolean prepareDropCopyOn() {
-        boolean result = false;
-        dragCommand = new CapellaCopyToClipboardCommand(domain, collection, null);
-        if (dragCommand.canExecute()) {
-
-          dragCommand.execute();
-          isDragCommandExecuted = true;
-
-          dropCommand = new CommandWrapper(new CapellaPasteCommand(domain, owner, null, CommandParameter.NO_INDEX)) {
-            @SuppressWarnings("synthetic-access")
-            @Override
-            public void execute() {
-              super.execute();
-              domain.getClipboard().clear();
-              SharedCopyPasteElements.getInstance().clear();
-            }
-          };
-          if (dropCommand.canExecute()) {
-            result = true;
-          } else {
-            dragCommand.undo();
-            isDragCommandExecuted = false;
-          }
-        }
-        return result;
-      }
-    };
-
+    Command dropCommand = new CapellaDragAndDropCommand(editingDomain, nextContainer, getLocation(event_p), event_p.operations, event_p.detail, modelElements_p);
     new StatusManagerExceptionHandler(StatusManager.SHOW | StatusManager.LOG).installAndExecute(((TransactionalCommandStack)editingDomain.getCommandStack()), dropCommand);
     return Status.OK_STATUS;
   }
