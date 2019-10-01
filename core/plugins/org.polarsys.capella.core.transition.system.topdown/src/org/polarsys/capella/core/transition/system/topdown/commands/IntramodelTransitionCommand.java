@@ -173,7 +173,7 @@ public class IntramodelTransitionCommand extends LauncherCommand {
 
     } else if (ITopDownConstants.TRANSITION_TOPDOWN_LC2PC.equals(kind)) {
       if (rootElement instanceof BlockArchitecture) {
-        rootElement = BlockArchitectureExt.getFirstComponent((BlockArchitecture) rootElement, false);
+        rootElement = BlockArchitectureExt.getComponentPkg((BlockArchitecture) rootElement, false);
       }
 
     } else if (ITopDownConstants.TRANSITION_TOPDOWN_OE2ACTOR.equals(kind)) {

@@ -22,6 +22,7 @@ import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.PhysicalPath;
 import org.polarsys.capella.core.model.helpers.PhysicalPathExt;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
+import org.polarsys.capella.core.transition.common.constants.Messages;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.transformation.TransformationHandlerHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -59,14 +60,14 @@ public class PhysicalPathRule extends org.polarsys.capella.core.transition.syste
         return result;
       }
       if (!ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.SOURCE_SCOPE, element_p, context_p)) {
-        return new Status(IStatus.WARNING, "ce", "not in scope");
+        return new Status(IStatus.WARNING, Messages.Activity_Transition, "not in scope");
       }
       if (PhysicalPathExt.getInvolvedElements(element).isEmpty()) {
-        return new Status(IStatus.WARNING, "ce", "no involved elements");
+        return new Status(IStatus.WARNING, Messages.Activity_Transition, "no involved elements");
       }
       for (AbstractPathInvolvedElement involvedElt : PhysicalPathExt.getInvolvedElements(element)) {
         if (!TransformationHandlerHelper.getInstance(context_p).isOrWillBeTransformed(involvedElt, context_p).isOK()) {
-          return new Status(IStatus.WARNING, "ce", "involved element");
+          return new Status(IStatus.WARNING, Messages.Activity_Transition, "involved element");
 
         }
       }

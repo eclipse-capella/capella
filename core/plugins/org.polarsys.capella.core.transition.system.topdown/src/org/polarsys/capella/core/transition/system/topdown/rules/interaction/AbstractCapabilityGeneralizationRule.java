@@ -21,6 +21,7 @@ import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
+import org.polarsys.capella.core.transition.common.constants.Messages;
 import org.polarsys.capella.core.transition.common.handlers.attachment.AttachmentHelper;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.transformation.TransformationHandlerHelper;
@@ -44,18 +45,18 @@ public class AbstractCapabilityGeneralizationRule extends AbstractCapellaElement
       }
 
       if (ce.getSuper() == null) {
-        return new Status(IStatus.WARNING, "Activity_Transformation", "SourceNull");
+        return new Status(IStatus.WARNING, Messages.Activity_Transformation, "SourceNull");
       }
       if (ce.getSub() == null) {
-        return new Status(IStatus.WARNING, "Activity_Transformation", ".TargetNull");
+        return new Status(IStatus.WARNING, Messages.Activity_Transformation, ".TargetNull");
       }
 
       if (!TransformationHandlerHelper.getInstance(context_p).isOrWillBeTransformed(ce.getSuper(), context_p).isOK()) {
-        return new Status(IStatus.WARNING, "Activity_Transformation",
+        return new Status(IStatus.WARNING, Messages.Activity_Transformation,
             NLS.bind(".SourceBoundNotTransitioned", EObjectLabelProviderHelper.getText(ce.getSuper())));
       }
       if (!TransformationHandlerHelper.getInstance(context_p).isOrWillBeTransformed(ce.getSub(), context_p).isOK()) {
-        return new Status(IStatus.WARNING, "Activity_Transformation", NLS.bind(".TargetBoundNotTransitioned", EObjectLabelProviderHelper.getText(ce.getSub())));
+        return new Status(IStatus.WARNING, Messages.Activity_Transformation, NLS.bind(".Target bound not transitioned", EObjectLabelProviderHelper.getText(ce.getSub())));
       }
     }
     return result;

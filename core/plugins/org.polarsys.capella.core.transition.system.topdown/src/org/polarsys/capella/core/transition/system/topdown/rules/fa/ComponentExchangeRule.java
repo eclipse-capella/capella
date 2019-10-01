@@ -24,6 +24,7 @@ import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.model.helpers.PortExt;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
+import org.polarsys.capella.core.transition.common.constants.Messages;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.selection.SelectionContextHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.transformation.TransformationHandlerHelper;
@@ -81,19 +82,19 @@ public class ComponentExchangeRule extends org.polarsys.capella.core.transition.
         return result;
       }
       if (!ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.SOURCE_SCOPE, element_p, context_p)) {
-        return new Status(IStatus.WARNING, "ce", "not in scope");
+        return new Status(IStatus.WARNING, Messages.Activity_Transition, "not in scope");
       }
       if (element.getSource() == null) {
-        return new Status(IStatus.WARNING, "ce", "source null");
+        return new Status(IStatus.WARNING, Messages.Activity_Transition, "source null");
       }
       if (element.getTarget() == null) {
-        return new Status(IStatus.WARNING, "ce", "target null");
+        return new Status(IStatus.WARNING, Messages.Activity_Transition, "target null");
       }
       if (!TransformationHandlerHelper.getInstance(context_p).isOrWillBeTransformed(element.getSource(), context_p).isOK()) {
-        return new Status(IStatus.WARNING, "ce", "source");
+        return new Status(IStatus.WARNING, Messages.Activity_Transition, "source");
       }
       if (!TransformationHandlerHelper.getInstance(context_p).isOrWillBeTransformed(element.getTarget(), context_p).isOK()) {
-        return new Status(IStatus.WARNING, "ce", "target");
+        return new Status(IStatus.WARNING, Messages.Activity_Transition, "target");
       }
     }
     return result;
