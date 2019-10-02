@@ -172,8 +172,8 @@ public class CapellaDeleteAction extends AbstractCommandActionHandler implements
     if (specialElementProtectionAllowed) {
 
       if (element instanceof Component) {
-        BlockArchitecture rootBlockArchitecture = BlockArchitectureExt.getRootBlockArchitecture(element);
-        return element.equals(rootBlockArchitecture.getSystem());
+        BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(element);
+        return architecture != null && element.equals(architecture.getSystem());
       }
 
       if (element instanceof FunctionPkg || element instanceof AbstractCapabilityPkg || element instanceof ComponentPkg
