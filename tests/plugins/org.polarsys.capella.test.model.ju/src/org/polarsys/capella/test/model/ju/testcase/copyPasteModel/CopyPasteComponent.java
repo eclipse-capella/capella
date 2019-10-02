@@ -45,9 +45,10 @@ public class CopyPasteComponent extends MiscModel {
     assertTrue(lc2.getContainedParts().get(0).getAbstractType() == lc2.getOwnedLogicalComponents().get(0));
 
     // Copy paste to a component package must create the Component and the Part
+    int countOfLCBeforeCopyPaste = lcPkg1.getOwnedLogicalComponents().size();
+    int countOfPartsBeforeCopyPaste = lcPkg1.getOwnedParts().size();
     GuiActions.copyAndPaste(ted, Collections.singleton(lc1), lcPkg1);
-    assertTrue(lcPkg1.getOwnedLogicalComponents().size() == 1);
-    assertTrue(lcPkg1.getOwnedParts().size() == 1);
-    assertTrue(lcPkg1.getOwnedParts().get(0).getAbstractType() == lcPkg1.getOwnedLogicalComponents().get(0));
+    assertEquals("After Copy Paste, count of components increases by 1", countOfLCBeforeCopyPaste + 1, lcPkg1.getOwnedLogicalComponents().size());
+    assertEquals("After Copy Paste, count of parts increases by 1", countOfPartsBeforeCopyPaste + 1, lcPkg1.getOwnedParts().size());
   }
 }

@@ -23,6 +23,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.util.EList;
@@ -1872,10 +1873,22 @@ public class ComponentExt {
   public static boolean isActor(Component component) {
     return component.isActor();
   }
-  
+
+  /**
+   * Returns true if the component is an external actor, false otherwise. <b>Definition</b>: an external actor is an
+   * actor that is not a child of the system (direct or indirect child). In other words, the system is not contained in
+   * the actor's ancestry tree.
+   * 
+   * @param component
+   *          the component
+   * @return true if the component is an external actor, false otherwise.
+   */
   public static boolean isExternalActor(Component component) {
-    // if can not find the root component, it is external 
-    return component != null && component.isActor() && getRootComponent(component) == null;
+    if (component != null && component.isActor()) {
+      BlockArchitecture rootBlockArchitecture = BlockArchitectureExt.getRootBlockArchitecture(component);
+      return rootBlockArchitecture.getSystem() != getParentRootComponent(component);
+    }
+    return false;
   }
 
   public static boolean isActorHuman(Component component) {
@@ -2081,11 +2094,11 @@ public class ComponentExt {
     if (deployingSource.size() == 0) {
       EObject sourceContainer = EcoreUtil2.getFirstContainer(source,
           Arrays.asList(CsPackage.Literals.COMPONENT, CsPackage.Literals.COMPONENT_PKG));
-        if (sourceContainer instanceof Component) {
-          deployingSource.addAll(((Component) sourceContainer).getRepresentingParts());
-        } else if (sourceContainer instanceof ComponentPkg) {
-          deployingSource.add(sourceContainer);
-        }
+      if (sourceContainer instanceof Component) {
+        deployingSource.addAll(((Component) sourceContainer).getRepresentingParts());
+      } else if (sourceContainer instanceof ComponentPkg) {
+        deployingSource.add(sourceContainer);
+      }
     }
 
     Collection<EObject> deployingTarget = new HashSet<EObject>();
@@ -2884,5 +2897,11 @@ public class ComponentExt {
       return canCreateABActor(parentComponent);
     }
     return false;
+  }
+
+  public static List<Component> getAllActors(Component component) {
+    return getAllSubDefinedComponents(component).stream() //
+        .filter(ComponentExt::isActor) //
+        .collect(Collectors.toList());
   }
 }

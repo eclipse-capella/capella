@@ -81,17 +81,7 @@ public class ComponentPkgExt {
   }
 
   public static List<Component> getExternalActors(ComponentPkg componentPkg) {
-    List<Component> externalActors = new ArrayList<>();
-    componentPkg.eContents().stream() //
-        .forEach(e -> {
-          if (e instanceof ComponentPkg) {
-            externalActors.addAll(getExternalActors((ComponentPkg) e)); // recursive
-          }
-          if (e instanceof Component && ((Component) e).isActor()) {
-            externalActors.add((Component) e);
-          }
-        });
-    return externalActors;
+    return getAllActors(componentPkg).stream().filter(ComponentExt::isExternalActor).collect(Collectors.toList());
   }
 
   public static List<Component> getSubUsedComponents(ComponentPkg componentPkg) {

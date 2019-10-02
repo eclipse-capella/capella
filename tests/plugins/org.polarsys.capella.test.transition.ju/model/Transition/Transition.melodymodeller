@@ -221,7 +221,7 @@
         <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="4aa5d876-569b-44c9-a876-5100a005ec95"
             name="Logical System" abstractType="#7949e1d0-760e-4aa9-b322-0d77042c0ec5"/>
         <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="cde6c297-0543-4f1b-b4bf-a8715daedfe9"
-            name="LA 2" abstractType="#0500ac88-7e78-4a9b-a1e3-91ab6e9d86ad"/>
+            name="LA A" abstractType="#0500ac88-7e78-4a9b-a1e3-91ab6e9d86ad"/>
         <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
             id="7949e1d0-760e-4aa9-b322-0d77042c0ec5" name="Logical System">
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="439f53c0-5278-478c-a7c8-d2ec85904d41"
@@ -234,17 +234,49 @@
           <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
               id="d233a040-94d0-4c84-8fa3-1568e298c4b4" name="LA 1" actor="true"/>
           <ownedLogicalComponentPkgs xsi:type="org.polarsys.capella.core.data.la:LogicalComponentPkg"
-              id="eb48fe97-d64f-4d49-976a-cb24b55adc01" name="LogicalComponentPkg 1">
+              id="eb48fe97-d64f-4d49-976a-cb24b55adc01" name="LCP 1">
             <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="d502379b-a675-494a-8b02-c2b3d0fe0c71"
                 name="LC 1" abstractType="#10ead931-83d8-473d-8446-57516b037c93"/>
           </ownedLogicalComponentPkgs>
         </ownedLogicalComponents>
         <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
-            id="0500ac88-7e78-4a9b-a1e3-91ab6e9d86ad" name="LA 2" actor="true">
+            id="0500ac88-7e78-4a9b-a1e3-91ab6e9d86ad" name="LA A" actor="true">
           <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
               id="90fb0fc1-d3a9-45cf-a093-89aeef78d66e" targetElement="#1fcba955-aa85-46e0-bfa5-ff0f525bafee"
               sourceElement="#0500ac88-7e78-4a9b-a1e3-91ab6e9d86ad"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="9231210f-e615-4d7e-8b5a-6772259a0388"
+              name="LA B" abstractType="#9c1dadc3-9a75-40ca-b32f-da6550db2f86"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="db8bff5a-a0d8-499d-87d5-60d10c73a26c"
+              name="LC A" abstractType="#5bb813b3-44b2-4001-84df-f4f35cc86a3e"/>
+          <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+              id="9c1dadc3-9a75-40ca-b32f-da6550db2f86" name="LA B" actor="true">
+            <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="c0190299-b5a1-49d7-9a8b-5449b781fb80"
+                name="LA C" abstractType="#594b89a8-cd03-4cbc-bb80-6b874293781e"/>
+            <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+                id="594b89a8-cd03-4cbc-bb80-6b874293781e" name="LA C" actor="true"/>
+          </ownedLogicalComponents>
+          <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+              id="5bb813b3-44b2-4001-84df-f4f35cc86a3e" name="LC A">
+            <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="30802c33-c251-4aab-b100-5043c2697d18"
+                name="LA D" abstractType="#ee818e8a-7fe6-47aa-ab6a-13c0a404dd13"/>
+            <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+                id="ee818e8a-7fe6-47aa-ab6a-13c0a404dd13" name="LA D" actor="true"/>
+          </ownedLogicalComponents>
         </ownedLogicalComponents>
+        <ownedLogicalComponentPkgs xsi:type="org.polarsys.capella.core.data.la:LogicalComponentPkg"
+            id="83ef3f20-47b4-4b8c-9888-ef01ce16f6ee" name="LCP 2">
+          <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="2e4e1cc1-6e9b-464c-8aec-d75ebb54bd1d"
+              name="LA E" abstractType="#6a40ba49-bb00-4d88-bbd9-ffa4aeef98ae"/>
+          <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+              id="6a40ba49-bb00-4d88-bbd9-ffa4aeef98ae" name="LA E" actor="true">
+            <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="f2e72ade-40e6-4e99-bb7c-8b3d28761dc9"
+                name="LA F" abstractType="#1134db1a-6eb6-4cfb-a088-b7097eb7345c"/>
+            <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+                id="1134db1a-6eb6-4cfb-a088-b7097eb7345c" name="LA F" actor="true"/>
+          </ownedLogicalComponents>
+          <ownedLogicalComponentPkgs xsi:type="org.polarsys.capella.core.data.la:LogicalComponentPkg"
+              id="f113bb9b-b1d0-4f56-9b03-513b529b0975" name="LCP 3"/>
+        </ownedLogicalComponentPkgs>
       </ownedLogicalComponentPkg>
       <ownedSystemAnalysisRealizations xsi:type="org.polarsys.capella.core.data.la:SystemAnalysisRealization"
           id="26c32ea2-db88-410d-a1e7-ff4f3bb12dac" targetElement="#3484d77a-eb73-43ee-b70c-7c27a85b2280"

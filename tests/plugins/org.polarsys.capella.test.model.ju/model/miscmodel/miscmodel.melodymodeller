@@ -955,22 +955,88 @@
           id="64c920b7-afe6-4d7f-b993-986ab11b1de1" name="Structure">
         <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="7d43c14e-5d52-4902-a1a7-6e6cfe451ac3"
             name="Logical System" abstractType="#030e91dc-441e-4107-b0ea-0b08acaccf13"/>
+        <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="8084545c-2f01-4a48-a39b-857df89497fd"
+            name="External Actor 1" abstractType="#8ae1f1b4-0b84-457b-bc67-2aff89b87589"/>
+        <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="985ffea3-2de4-4230-97dc-14534606556b"
+            name="External Actor 3" abstractType="#51dc6471-52d0-416d-ad70-908e5f7fb087"/>
         <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
             id="030e91dc-441e-4107-b0ea-0b08acaccf13" name="Logical System">
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="1f8aefd5-6ce2-4d5c-a734-254d1ddde797"
-              name="LC 1" abstractType="#5b6b9d5b-d024-4423-9271-bcb3d77469c2"/>
+              name="Internal LC 1" abstractType="#5b6b9d5b-d024-4423-9271-bcb3d77469c2"/>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="c52b2d75-afae-49bf-bc8f-835e2f684320"
-              name="LC 2" abstractType="#a30cf2b5-48d1-407e-9967-1e20e64e8e88"/>
+              name="Internal LC 2" abstractType="#a30cf2b5-48d1-407e-9967-1e20e64e8e88"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="49a5f546-40b5-4fa7-86fb-a84bfffd0f5f"
+              name="Internal Actor 2" abstractType="#e2928bb7-f1a7-4429-9a87-0c8e79a5363f"/>
           <ownedComponentRealizations xsi:type="org.polarsys.capella.core.data.cs:ComponentRealization"
               id="46c8ffc6-7028-441d-b48c-f394235c4823" targetElement="#4630572f-7502-4263-a994-89ced76f21a8"
               sourceElement="#030e91dc-441e-4107-b0ea-0b08acaccf13"/>
           <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
-              id="5b6b9d5b-d024-4423-9271-bcb3d77469c2" name="LC 1"/>
+              id="5b6b9d5b-d024-4423-9271-bcb3d77469c2" name="Internal LC 1">
+            <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="590c56f1-b599-4eb9-b101-0f2ba6dfd2a8"
+                name="Internal Actor 1" abstractType="#aa969fee-8ba1-4159-9534-7a3c673ecb6c"/>
+            <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+                id="aa969fee-8ba1-4159-9534-7a3c673ecb6c" name="Internal Actor 1"
+                actor="true"/>
+          </ownedLogicalComponents>
           <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
-              id="a30cf2b5-48d1-407e-9967-1e20e64e8e88" name="LC 2"/>
+              id="a30cf2b5-48d1-407e-9967-1e20e64e8e88" name="Internal LC 2"/>
+          <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+              id="e2928bb7-f1a7-4429-9a87-0c8e79a5363f" name="Internal Actor 2" actor="true">
+            <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="bf81692d-5aec-4a68-8f72-dc7505ae211f"
+                name="Internal Actor 3" abstractType="#909071a7-a84b-4f6f-8ed7-7cfb65de0ec7"/>
+            <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+                id="909071a7-a84b-4f6f-8ed7-7cfb65de0ec7" name="Internal Actor 3"
+                actor="true"/>
+          </ownedLogicalComponents>
           <ownedLogicalComponentPkgs xsi:type="org.polarsys.capella.core.data.la:LogicalComponentPkg"
-              id="b1123d45-f6d3-411b-a3c6-ea2965a5da7b" name="LogicalComponentPkg 1"/>
+              id="b1123d45-f6d3-411b-a3c6-ea2965a5da7b" name="Internal Logical Component Pkg 1">
+            <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="06397280-2a68-4545-928d-fc13176986d3"
+                name="Internal Actor 4" abstractType="#5836f750-af83-446d-a5c3-e5da188f8940"/>
+            <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+                id="5836f750-af83-446d-a5c3-e5da188f8940" name="Internal Actor 4"
+                actor="true"/>
+          </ownedLogicalComponentPkgs>
         </ownedLogicalComponents>
+        <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+            id="8ae1f1b4-0b84-457b-bc67-2aff89b87589" name="External Actor 1" actor="true">
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="ff120bc3-2872-4bca-8abe-78b02e21311a"
+              name="External Actor 2" abstractType="#b406eba9-368e-4583-bfd4-64e00bf65288"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="2ebee29c-c01f-4a98-84f3-ce3671df97a1"
+              name="External LC 1" abstractType="#85825d12-d200-46f7-be30-6d29351293ee"/>
+          <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+              id="b406eba9-368e-4583-bfd4-64e00bf65288" name="External Actor 2" actor="true"/>
+          <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+              id="85825d12-d200-46f7-be30-6d29351293ee" name="External LC 1"/>
+          <ownedLogicalComponentPkgs xsi:type="org.polarsys.capella.core.data.la:LogicalComponentPkg"
+              id="379f621c-9326-4a29-a257-613abc3361e6" name="External LogicalComponentPkg 1"/>
+        </ownedLogicalComponents>
+        <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+            id="51dc6471-52d0-416d-ad70-908e5f7fb087" name="External Actor 3" actor="true"/>
+        <ownedLogicalComponentPkgs xsi:type="org.polarsys.capella.core.data.la:LogicalComponentPkg"
+            id="0e081fe7-60c4-4fdc-ac9b-f2c9c420f10a" name="External LogicalComponentPkg 2">
+          <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="efe27185-626e-45b5-bc99-cd1c0dcd7232"
+              name="External Actor 4" abstractType="#6040d11f-b504-449c-9f09-3cdf81008713"/>
+          <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+              id="6040d11f-b504-449c-9f09-3cdf81008713" name="External Actor 4" actor="true">
+            <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="4a38beab-be53-4c0c-9680-81fe3470c75c"
+                name="External Actor 5" abstractType="#d91ea798-c1be-40b4-b107-ea7c368e6a4e"/>
+            <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="43880ef9-93d1-47d5-8aea-15724b8c2293"
+                name="External LC 2" abstractType="#04e39155-3750-4817-8a50-658779096d3f"/>
+            <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+                id="d91ea798-c1be-40b4-b107-ea7c368e6a4e" name="External Actor 5"
+                actor="true"/>
+            <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+                id="04e39155-3750-4817-8a50-658779096d3f" name="External LC 2"/>
+          </ownedLogicalComponents>
+          <ownedLogicalComponentPkgs xsi:type="org.polarsys.capella.core.data.la:LogicalComponentPkg"
+              id="5c7a8ce8-8143-484f-a995-035c994b4ee1" name="External LogicalComponentPkg 3">
+            <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="fe7e59aa-b42c-4a9d-9b54-5b0faa97a6cc"
+                name="External Actor 6" abstractType="#152d75ac-4cc4-4255-ba3d-2de5facf2f69"/>
+            <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
+                id="152d75ac-4cc4-4255-ba3d-2de5facf2f69" name="External Actor 6"
+                actor="true"/>
+          </ownedLogicalComponentPkgs>
+        </ownedLogicalComponentPkgs>
       </ownedLogicalComponentPkg>
       <ownedSystemAnalysisRealizations xsi:type="org.polarsys.capella.core.data.la:SystemAnalysisRealization"
           id="7a5bf2fa-7b10-4c4f-b993-e0b043c21f6b" targetElement="#cfc9925e-c0f5-4b59-9abf-53e6a50cfc93"

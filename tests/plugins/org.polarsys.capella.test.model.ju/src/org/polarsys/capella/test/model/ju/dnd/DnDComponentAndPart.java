@@ -40,16 +40,20 @@ public class DnDComponentAndPart extends MiscModel {
     TransactionalEditingDomain ted = session.getTransactionalEditingDomain();
 
     // DnD LC1 to LCPkg1
+    assertFalse("Before DND, LC1 is not in LCPkg1", lcPkg1.getOwnedLogicalComponents().contains(lc1));
+    assertFalse("Before DND, LC1 part is not in LCPkg1", lcPkg1.getOwnedParts().contains(lc1Part));
     assertTrue(GuiActions.canDnD(lcPkg1, Arrays.asList(lc1)));
     GuiActions.dragAndDrop(ted, lcPkg1, Collections.singleton(lc1));
-    assertTrue(lcPkg1.getOwnedLogicalComponents().size() == 1 && lcPkg1.getOwnedLogicalComponents().get(0) == lc1);
-    assertTrue(lcPkg1.getOwnedParts().size() == 1 && lcPkg1.getOwnedParts().get(0) == lc1Part);
+    assertTrue("After DND, LC1 is in LCPkg1", lcPkg1.getOwnedLogicalComponents().contains(lc1));
+    assertTrue("After DND, LC1 part is in LCPkg1", lcPkg1.getOwnedParts().contains(lc1Part));
     
     // DnD LC2_Part to LC1
+    assertFalse("Before DND, LC2 is not in LC1", lc1.getOwnedLogicalComponents().contains(lc2));
+    assertFalse("Before DND, LC2_Part is not in LC1", lc1.getContainedParts().contains(lc2Part));
     assertTrue(GuiActions.canDnD(lc1, Arrays.asList(lc2Part)));
     GuiActions.dragAndDrop(ted, lc1, Collections.singleton(lc2Part));
-    assertTrue(lc1.getOwnedLogicalComponents().size() == 1 && lc1.getOwnedLogicalComponents().get(0) == lc2);
-    assertTrue(lc1.getContainedParts().size() == 1 && lc1.getContainedParts().get(0) == lc2Part);
+    assertTrue("After DND, LC2 is in LC1", lc1.getOwnedLogicalComponents().contains(lc2));
+    assertTrue("After DND, LC2_Part is in LC1", lc1.getContainedParts().contains(lc2Part));
     
   }
 }
