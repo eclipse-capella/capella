@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,7 +26,7 @@ import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
- * Model Validation shall check that an Exchange Item referenced by a Communication Link from a SubComponent is also referenced by a Communication Link from owning Components.
+ * Model Validationï¿½shall check that an Exchange Item referenced by a Communication Link from a SubComponent is also referenced by a Communication Link from owning Components.
  */
 public class CommunicationLinkForComponentIsDefinedInItsParent extends AbstractValidationRule {
 
