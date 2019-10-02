@@ -1,0 +1,139 @@
+= Metamodel changes =
+
+== From Capella 1.3.x to 1.4.x ==
+
+=== Modification of all NSURI ===
+
+* http://www.polarsys.org/capella/core/.../1.3.0 to http://www.polarsys.org/capella/core/.../1.4.0
+* http://www.polarsys.org/capella/common/.../1.3.0 to http://www.polarsys.org/capella/common/.../1.4.0
+
+=== [Bugzilla 2537][M2] Meta-model changes to make Actors as generic Components ===
+
+==== Deleted meta-classes ====
+* '''OperationalActor'''
+* '''AbstractActor'''
+* '''Actor'''
+* '''LogicalActor'''
+* '''PhysicalActor'''
+* '''System'''
+* '''OperationalContext'''
+* '''SystemContext'''
+* '''LogicalContext'''
+* '''PhysicalContext'''
+* '''EPBSContext'''
+* '''AbstractPhysicalComponent'''
+* '''PartitionableElement'''
+* '''Partition'''
+* '''AbstractFunctionalStructure'''
+* '''ComponentAllocation'''
+* '''OperationalActorRealization'''
+* '''OperationalEntityRealization'''
+* '''SystemRealization'''
+* '''SystemActorRealization'''
+* '''LogicalActorRealization'''
+* '''LogicalComponentRealization'''
+* '''ActorCapabilityInvolvement'''
+* '''SystemCapabilityInvolvement'''
+* '''SystemMissionInvolvement'''
+* '''ActorMissionInvolvement'''
+* '''ActorCapabilityRealizationInvolvement'''
+* '''SystemComponentCapabilityRealizationInvolvement'''
+
+==== Added meta-classes ====
+* '''ComponentPkg'''
+* '''SystemComponentPkg'''
+* '''ComponentRealization'''
+* '''CapabilityInvolvement'''
+* '''MissionInvolvement'''
+
+==== Deleted attributes/references ====
+* '''Entity.realizingSystems'''
+* '''Entity.realizingActors'''
+* '''SystemFunction.allocatorActors'''
+* '''SystemFunction.allocatorSystems'''
+* '''LogicalFunction.allocatorLogicalActors'''
+* '''LogicalFunction.allocatorLogicalComponents'''
+* '''PhysicalFunction.allocatorPhysicalActors'''
+* '''PhysicalFunction.allocatorPhysicalComponents'''
+* '''AbstractPhysicalComponent.kind'''
+* '''AbstractPhysicalComponent.nature'''
+* '''AbstractPhysicalComponent.ownedDeploymentLinks'''
+* '''AbstractPhysicalComponent.ownedDeploymentAspect'''
+* '''PartitionableElement.ownedPartitions'''
+* '''PartitionableElement.representingPartitions'''
+* '''Component.allocatedComponents'''
+* '''Component.allocatingComponents'''
+* '''Component.provisionedComponentAllocations'''
+* '''Component.provisioningComponentAllocations'''
+* '''SystemComponent.contributedCapabilities'''
+* '''SystemComponent.contributedMissions'''
+* '''Capability.ownedActorCapabilityInvolvements'''
+* '''Capability.ownedSystemCapabilityInvolvement'''
+* '''Capability.participatingActors'''
+* '''Capability.participatingSystem'''
+* '''Capability.involvedActors'''
+* '''Capability.involvedSystem'''
+* '''CapabilityInvolvement.actor'''
+* '''Mission.ownedActorMissionInvolvements'''
+* '''Mission.ownedSystemMissionInvolvement'''
+* '''Mission.participatingActors'''
+* '''Mission.participatingSystem'''
+* '''Mission.involvedActors'''
+* '''Mission.involvedSystem'''
+* '''MissionInvolvement.actor'''
+* '''CapabilityRealizationInvolvedElement.involvingCapabilityRealizationInvolvements'''
+* '''CapabilityRealization.ownedActorCapabilityRealizations'''
+* '''CapabilityRealization.ownedSystemComponentCapabilityRealizations'''
+* '''CapabilityRealization.participatingActors'''
+* '''CapabilityRealization.participatingSystemComponents'''
+* '''CapabilityRealization.involvedActors'''
+* '''CapabilityRealization.involvedSystemComponents'''
+
+==== Added attributes/references ====
+* '''Component.actor'''
+* '''Component.human'''
+* '''Component.realizedComponents'''
+* '''Component.realizingComponents'''
+*  '''Component.ownedComponentRealizations'''
+* '''SystemComponent.realizedEntities'''
+* '''SystemComponent.realizingLogicalComponents'''
+* '''SystemComponent.ownedSystemComponents'''
+* '''SystemComponent.ownedSystemComponentPkgs'''
+* '''LogicalComponent.realizedSystemComponents'''
+* '''SystemFunction.allocatingSystemComponents'''
+* '''LogicalFunction.allocatingLogicalComponents'''
+* '''PhysicalFunction.allocatingPhysicalComponents'''
+* '''BlockArchitecture.system'''
+* '''PhysicalComponent.kind'''
+* '''PhysicalComponent.nature'''
+* '''PhysicalComponent.ownedDeploymentLinks'''
+* '''Component.representingParts'''
+* '''ComponentPkg.ownedParts'''
+* '''PhysicalArtifactRealization.realizedPhysicalArtifact'''
+* '''PhysicalArtifactRealization.realizingConfigurationItem'''
+* '''SystemComponent.involvingCapabilities'''
+* '''SystemComponent.capabilityInvolvements'''
+* '''SystemComponent.involvingMissions'''
+* '''SystemComponent.missionInvolvements'''
+* '''Capability.ownedCapabilityInvolvements'''
+* '''Capability.involvedSystemComponents'''
+* '''CapabilityInvolvement.systemComponent'''
+* '''Mission.ownedMissionInvolvements'''
+* '''Mission.involvedSystemComponents'''
+* '''MissionInvolvement.systemComponent'''
+* '''CapabilityRealizationInvolvedElement.involvingCapabilityRealizations'''
+* '''CapabilityRealizationInvolvedElement.capabilityRealizationInvolvements'''
+* '''CapabilityRealization.ownedCapabilityRealizationInvolvements'''
+* '''CapabilityRealization.involvedComponents'''
+
+==== Changes in the structure of the meta-model ====
+* '''Entity''', '''SystemComponent''', '''LogicalComponent''', '''PhysicalComponent''', '''ConfigurationItem''' inherit '''Component'''.
+* '''SystemComponent''' represents now the Component at the System level. Thus, it's moved from the cs package to the ctx package.
+* '''Component''' inherits '''Classifier'''.
+* '''ComponentPort''', '''PhysicalPort''' inherit '''Property'''.
+* '''Part''' inherits '''AbstractInstance'''.
+* '''ComponentRealization''', '''PhysicalArtifactRealization''' inherit '''Allocation'''.
+* '''EntityPkg''', '''SystemComponentPkg''', '''LogicalComponentPkg''', '''PhysicalComponentPkg''', '''ConfigurationItemPkg''' inherit '''ComponentPkg'''.
+* '''LogicalComponent''', '''PhysicalComponent''', '''ConfigurationItem''' inherit '''CapabilityRealizationInvolvedElement'''.
+
+
