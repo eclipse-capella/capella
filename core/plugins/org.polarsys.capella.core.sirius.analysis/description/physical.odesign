@@ -2736,7 +2736,7 @@
             <variable name="container"/>
             <viewVariable name="containerView">
               <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:containerView.eContainerOrSelf(diagram::DDiagram)"/>
-              <subVariables xsi:type="tool:AcceleoVariable" name="scope" computationExpression="aql:containerView.getABShowHideComponent()->select(x | x.getComponentType().nature = pa::PhysicalComponentNature::NODE)"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="scope" computationExpression="aql:containerView.getABShowHidePureComponent()->select(x | x.getComponentType().nature = pa::PhysicalComponentNature::NODE)"/>
               <subVariables xsi:type="tool:AcceleoVariable" name="ownedNodeContainer" computationExpression="aql:self.void2Null(containerView.eAllContents()->filter(diagram::DNodeContainer)->select(x | x.actualMapping.name = 'PAB_PC'))"/>
             </viewVariable>
             <initialOperation>
@@ -2786,7 +2786,7 @@
             <viewVariable name="containerView">
               <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:containerView.eContainerOrSelf(diagram::DDiagram)"/>
               <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:containerView.target.getComponentType()"/>
-              <subVariables xsi:type="tool:AcceleoVariable" name="componentsInDiagram" computationExpression="aql:self.getIntersection(containerView.containers->select(container | container.visible and container.actualMapping.name = 'PAB_PC').target->filter(cs::Part).getComponentType(),containerView.getABShowHideComponent())->select(x | x.nature = pa::PhysicalComponentNature::NODE)"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="componentsInDiagram" computationExpression="aql:self.getIntersection(containerView.containers->select(container | container.visible and container.actualMapping.name = 'PAB_PC').target->filter(cs::Part).getComponentType(),containerView.getABShowHidePureComponent())->select(x | x.nature = pa::PhysicalComponentNature::NODE)"/>
             </viewVariable>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
@@ -2821,7 +2821,50 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Insert/Remove Actors. Creates or deletes graphical objects corresponding to existing Physical Actors. Removing an Actor graphical object from the diagram does not delete the Actor from the model. This tool does not modify the semantic model." name="actors" label="%pa.pab.actors" containerMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Insert/Remove Actors. Creates or deletes graphical objects corresponding to existing Physical Actors. Removing an Actor graphical object from the diagram does not delete the Actor from the model. This tool does not modify the semantic model." name="actors.multipart" label="%pa.pab.actors.multipart" containerMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <filters precondition="aql:not (self.isPreferenceEnabled('multipart.allowed'))" elementsToListen="aql:self.getPreferenceListener()">
+              <listeners domainClass="org.polarsys.capella.core.preferences.Listener" featureName="multipart.allowed"/>
+            </filters>
+            <variable name="container"/>
+            <viewVariable name="containerView">
+              <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:containerView.eContainerOrSelf(diagram::DDiagram)"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:containerView.target.getComponentType()"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="scope" computationExpression="aql:containerView.getABShowHideActor()"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="actorsInDiagram" computationExpression="aql:self.void2Null(self.getIntersection(containerView.containers->select(container | container.visible).target->filter(cs::Part),containerView.getABShowHideActor()))"/>
+            </viewVariable>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectSubComponent" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                  <parameters name="context" value="aql:container"/>
+                  <parameters name="scope" value="aql:scope"/>
+                  <parameters name="resultVariable" value="selection"/>
+                  <parameters name="wizardMessage" value="aql:'Select Sub Actors to show in ' + container.name + '.'"/>
+                  <parameters name="initialSelection" value="aql:actorsInDiagram"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection = 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
+                    <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(self.makeDiff(actorsInDiagram, containerView.target.getComponentType()))">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection->includes(i))">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.containers->select(container | (container.target.oclIsKindOf(cs::Part)) and (container.target = i))->first()">
+                          <subModelOperations xsi:type="tool:DeleteView"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selection)">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (actorsInDiagram->includes(i))">
+                        <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']" containerViewExpression="aql:containerView"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getDiagramContainer().forceRefresh()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Insert/Remove Actors. Creates or deletes graphical objects corresponding to existing Physical Actors. Removing an Actor graphical object from the diagram does not delete the Actor from the model. This tool does not modify the semantic model." name="actors.monopart" label="%pa.pab.actors.monopart" containerMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <filters precondition="aql:self.isPreferenceEnabled('multipart.allowed')" elementsToListen="aql:self.getPreferenceListener()">
+              <listeners domainClass="org.polarsys.capella.core.preferences.Listener" featureName="multipart.allowed"/>
+            </filters>
             <variable name="container"/>
             <viewVariable name="containerView">
               <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:containerView.eContainerOrSelf(diagram::DDiagram)"/>
