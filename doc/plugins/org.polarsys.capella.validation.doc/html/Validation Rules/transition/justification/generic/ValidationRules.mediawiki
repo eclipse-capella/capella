@@ -1,38 +1,37 @@
       
-= > Validation Rules > capella.category > transition > justification > generic =
-            
-<br> 
-   {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-! |[[Image:../../../../Images/warning.gif|WARNING]]
-|   TJ_G_01 - Component Port Realization 
+= Transition > Justification > Generic =
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|TJ_G_01 - Component Port Realization 
 |-
-| colspan="2" |This rule checks that an Component Port is realized by at least one Component Port. 
-|}            
-<br> 
-   {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-! |[[Image:../../../../Images/warning.gif|WARNING]]
-|  TJ_G_02 - ComponentExchange realization 
+| colspan="2"|This rule checks that an Component Port is realized by at least one Component Port.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|TJ_G_02 - ComponentExchange realization 
 |-
-| colspan="2" |This rule checks that a Component Exchange is realized by at least one Component Exchange 
-|}            
-<br> 
-   {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-! |[[Image:../../../../Images/warning.gif|WARNING]]
-|  TJ_G_03 - Functional Exchange Realization 
+| colspan="2"|This rule checks that a Component Exchange is realized by at least one Component Exchange
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|TJ_G_03 - Functional Exchange Realization 
 |-
-| colspan="2" |This rule checks that a Functional Exchange is realized by at least one Functional Exchange. 
-|}            
-<br> 
-   {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-! |[[Image:../../../../Images/warning.gif|WARNING]]
-|   TJ_G_04 - Functional Exchange Transitioned 
+| colspan="2"|This rule checks that a Functional Exchange is realized by at least one Functional Exchange.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|TJ_G_04 - Functional Exchange Transitioned 
 |-
-| colspan="2" |This rule checks that a Functional Exchange is transitioned from the upper Level. 
-|}            
-<br> 
-   {| cellpadding="6" style="max-width:100%; white-space:nowrap;"
-! |[[Image:../../../../Images/warning.gif|WARNING]]
-|   TJ_G_05 - Trace source and target naming 
+| colspan="2"|This rule checks that a Functional Exchange is transitioned from the upper Level.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|TJ_G_05 - Trace source and target naming 
 |-
-| colspan="2" |This rule ensures that abstract trace's source and target element names are same. 
-|}   
+| colspan="2"|This rule ensures that abstract trace's source and target element names are same.
+|}

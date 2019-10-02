@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+	<extension
+	      point="org.eclipse.ui.menus">
+	   <menuContribution 
+      		locationURI="popup:capella.project.explorer#PopupMenu?after=group.project">
+         <command
+               commandId="org.polarsys.capella.test.doc.validation">
+          </command>
+        </menuContribution>
+       
+	</extension>
+	
+	<extension
+	      point="org.eclipse.ui.commands">
+	      <command
+             id="org.polarsys.capella.test.doc.validation"
+             name="[DOC] Generate Validation Rules Doc"
+             defaultHandler="org.polarsys.capella.test.validation.rules.ju.handlers.GenerateDocValidation">
+	      </command>
+	</extension>
+</plugin>

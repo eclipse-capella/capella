@@ -1,51 +1,58 @@
       
-= > Validation Rules > capella.category > design > well-formedness > capabilities =
-            
-<br>         
+= Design > Well-formedness > Capabilities =
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_CA_01 - Capability location 
 |-
-| colspan="2"|This rule checks that an Capability can only be located in System Context. 
-|}     
-<br> 
-
+| colspan="2"|This rule checks that an Capability can only be located in System Context.
+|}
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
-|DWF_CA_02 - Capability self extension  
+|DWF_CA_02 - Capability self extension 
 |-
-| colspan="2"|This rule ensures that a capability cannot extend itself.  
-|}     
-<br> 
-
+| colspan="2"|This rule ensures that a capability cannot extend itself.
+|}
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_CA_03 - Capability self generalization 
 |-
-| colspan="2"|This rule ensures that a capability cannot generalize itself.  
-|}     
-<br> 
-
+| colspan="2"|This rule ensures that a capability cannot generalize itself.
+|}
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_CA_04 - Capability self inclusion 
 |-
-| colspan="2"|This rule ensures that a capability does not include itself.  
-|}     
-<br> 
-
-{| class="VALIDATION-RULE"
-!|[[Image:../../../../Images/error.gif|ERROR]]
-|DWF_CA_05 - Actor self generalization  
-|-
-| colspan="2"|This rule ensures that an actor cannot generalize itself.  
-|}     
-<br> 
-
+| colspan="2"|This rule ensures that a capability does not include itself.
+|}
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
-|DWF_CA_06 - Actor involvement in capabilities related to a mission in which it is involved check  
+|DWF_CA_06 - Actor involvement in capabilities related to a mission in which it is involved check 
 |-
-| colspan="2"|This rule checks that the current Actor is involved with the Mission, and then involved in any of its Capabilities. 
-|}     
-<br> 
+| colspan="2"|This rule checks that the current Actor is involved with the Mission, and then involved in any of its Capabilities.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|DWF_CA_07 - Capability check that all the involved Actors are present in at least one Operational Process or Functional Chain or Scenario related to the Capabilities it participates 
+|-
+| colspan="2"|This rule checks if the involved Actors in the current Capability are present in at least one Operational Process or Functional Chain or Scenario.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|DWF_CA_08 - Capability check if the current Capability has Actors that are not involved but are present in at least one Operational Process or Functional Chain or Scenario related to the Capability 
+|-
+| colspan="2"|This rule checks that if the current Capability has Actors that are not involved but are present in at least one Operational Process or Functional Chain or Scenario related to the Capability.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|DWF_CA_09 - Capability check if the current Capability has Functional Chains that are not involved but are related to the Capability 
+|-
+| colspan="2"|This rule checks that if the current Capability has related Operational Processes or Functionals Chains that are not involved with the Capability.
+|}

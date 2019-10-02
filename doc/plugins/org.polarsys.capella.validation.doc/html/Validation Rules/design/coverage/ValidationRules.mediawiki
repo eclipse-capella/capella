@@ -1,91 +1,79 @@
       
-= > Validation Rules > capella.category > design > coverage =
-            
-<br>         
+= Design > Coverage =
+<br>
 {| class="VALIDATION-RULE"
-![[Image:../../../Images/warning.gif|WARNING]]
+!|[[Image:../../../Images/warning.gif|WARNING]]
 |DCOV_01 - Interface used one component at least 
 |-
-| colspan="2"|This rule checks that an Interface is used by at least one Component.  
-|}     
-<br>  
-
+| colspan="2"|This rule checks that an Interface is used by at least one Component.
+|}
+<br>
 {| class="VALIDATION-RULE"
-![[Image:../../../Images/warning.gif|WARNING]]
+!|[[Image:../../../Images/warning.gif|WARNING]]
 |DCOV_02 - Capability exploitation check 
 |-
-| colspan="2"|This rule checks that a Capability is exploited by at least one Mission. 
-|}     
-<br>  
-
+| colspan="2"|This rule checks that a Capability is exploited by at least one Mission.
+|}
+<br>
 {| class="VALIDATION-RULE"
-![[Image:../../../Images/error.gif|ERROR]]
-|DCOV_03 - Mission capability exploitation test  
+!|[[Image:../../../Images/error.gif|ERROR]]
+|DCOV_03 - Mission capability exploitation test 
 |-
-| colspan="2"|This rule checks that a Mission exploit at least one Capability. 
-|}     
-<br>  
-
+| colspan="2"|This rule checks that a Mission exploit at least one Capability.
+|}
+<br>
 {| class="VALIDATION-RULE"
-![[Image:../../../Images/warning.gif|WARNING]]
-|DCOV_04 - Mission involves an actor check  
+!|[[Image:../../../Images/warning.gif|WARNING]]
+|DCOV_04 - Mission involves an actor check 
 |-
-| colspan="2"|This rule checks that a Mission involves at least one actor. 
-|}     
-<br>  
-
+| colspan="2"|This rule checks that a Mission involves at least one actor.
+|}
+<br>
 {| class="VALIDATION-RULE"
-![[Image:../../../Images/warning.gif|WARNING]]
-|DCOV_05 - Actor involvement in a mission check  
+!|[[Image:../../../Images/warning.gif|WARNING]]
+|DCOV_05 - System Component involvement in a mission check 
 |-
-| colspan="2"|This rule checks that an Actor is involved in at least one Mission.  
-|}     
-<br>  
-
+| colspan="2"|This rule checks that an System Component is involved in at least one Mission.
+|}
+<br>
 {| class="VALIDATION-RULE"
-![[Image:../../../Images/warning.gif|WARNING]]
-|DCOV_06 - Actor participation in capabilities minimal number 
+!|[[Image:../../../Images/warning.gif|WARNING]]
+|DCOV_06 - System Component participation in capabilities minimal number 
 |-
-| colspan="2"|This rule checks that the minimum number of participation from an Actor towards a Capability is one.  
-|}     
-<br>  
-
+| colspan="2"|This rule checks that the minimum number of participation from a Component towards a Capability is one.
+|}
+<br>
 {| class="VALIDATION-RULE"
-![[Image:../../../Images/warning.gif|WARNING]]
-|DCOV_07 - Capability interation with actors check  
+!|[[Image:../../../Images/warning.gif|WARNING]]
+|DCOV_07 - Capability interation with actors 
 |-
-| colspan="2"|This rule checks that a Capability is involved by at least one Actor. 
-|}     
-<br>  
-
+| colspan="2"|This rule checks that a Capability is involved by at least one Actor.
+|}
+<br>
 {| class="VALIDATION-RULE"
-![[Image:../../../Images/warning.gif|WARNING]]
-|DCOV_08 - Actor involvement in at least one scenario related to the capabilities it participates 
+!|[[Image:../../../Images/warning.gif|WARNING]]
+|DCOV_08 - System Component involvement in at least one scenario related to the capabilities it participates 
 |-
-| colspan="2"|This rule checks that the current Actor involved with capabilities appears in at least one scenario related to the capabilities it participates. 
-|}     
-<br>  
-
+| colspan="2"|This rule checks that the current Component involved with capabilities appears in at least one scenario related to the capabilities it participates.
+|}
+<br>
 {| class="VALIDATION-RULE"
-![[Image:../../../Images/warning.gif|WARNING]]
+!|[[Image:../../../Images/warning.gif|WARNING]]
 |DCOV_09 - Component port Component Exchanges check 
 |-
-| colspan="2"|This rule generates a warning if there is neither Component Exchanges using the target Component Port nor providing/requiring any Interface. 
-|}     
-<br>  
-
+| colspan="2"|This rule generates a warning if there is neither Component Exchanges using the target Component Port nor providing/requiring any Interface.
+|}
+<br>
 {| class="VALIDATION-RULE"
-![[Image:../../../Images/warning.gif|WARNING]]
+!|[[Image:../../../Images/warning.gif|WARNING]]
 |DCOV_10 - Function port exchanges check 
 |-
-| colspan="2"|This rule generates a warning if there is no functional exchange using the target Input/Output Function Port.
-|}     
-<br>  
-
+| colspan="2"|This rule generates a warning if there is no functional exchange using the target Input/Output Function Port
+|}
+<br>
 {| class="VALIDATION-RULE"
-![[Image:../../../Images/warning.gif|WARNING]]
+!|[[Image:../../../Images/warning.gif|WARNING]]
 |DCOV_11 - Physical port Physical Link check 
 |-
-| colspan="2"|This rule generates a warning if there is no Physical Links using the target Physical Port.  
-|}     
-<br>  
+| colspan="2"|This rule generates a warning if there is no Physical Links using the target Physical Port.
+|}

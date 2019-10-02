@@ -2,36 +2,107 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<link rel="stylesheet" type="text/css" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css" media="all" />
+		<title>ValidationRules</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
 	</head>
 	<body>
-		<h1 id=".3E_Validation_Rules_.3E_capella.category_.3E_design_.3E_consistency">&gt; Validation Rules &gt; capella.category &gt; design &gt; consistency</h1>
+		<h1 id="Design_.3E_Consistency">Design &gt; Consistency</h1>
 		<p>
-			<br/>         
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
 				<th>
 					<img title="WARNING" alt="WARNING" border="0" src="../../../Images/warning.gif"/>
 				</th>
-				<td>DCON_01 - Pattern Conformance  </td>
+				<td>DCON_01 - Pattern Conformance </td>
 			</tr>
 			<tr>
-				<td colspan="2">The rule checks that model elements which are bound to a pattern conform to the pattern.  </td>
+				<td colspan="2">The rule checks that model elements which are bound to a pattern conform to the pattern.</td>
 			</tr>
 		</table>
 		<p>
-			<br/>  
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
 				<th>
 					<img title="WARNING" alt="WARNING" border="0" src="../../../Images/warning.gif"/>
 				</th>
-				<td>DCON_02 - RPL to REC conformance  </td>
+				<td>DCON_02 - RPL to REC conformance </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule check if a RPL is up to date compared to its origin REC.  </td>
+				<td colspan="2">This rule checks if a RPL is up to date compared to its origin REC.</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+		</p>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th>
+					<img title="WARNING" alt="WARNING" border="0" src="../../../Images/warning.gif"/>
+				</th>
+				<td>DCON_03 - Invalid pattern instance </td>
+			</tr>
+			<tr>
+				<td colspan="2">The rule checks if pattern instances still point to existing Capella elements.</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+		</p>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th>
+					<img title="WARNING" alt="WARNING" border="0" src="../../../Images/warning.gif"/>
+				</th>
+				<td>DCON_04 - RPL/REC_RPL without REC </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks if a RPL or REC_RPL has no REC.</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+		</p>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th>
+					<img title="WARNING" alt="WARNING" border="0" src="../../../Images/warning.gif"/>
+				</th>
+				<td>DCON_05 - REC might not have any RPL instance </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks if a REC might not be utilised in a RPL.</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+		</p>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th>
+					<img title="WARNING" alt="WARNING" border="0" src="../../../Images/warning.gif"/>
+				</th>
+				<td>DCON_06 - REC_RPL might not have any RPL instance </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks if a REC_RPL might not be utilised in a RPL.</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+		</p>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../Images/error.gif"/>
+				</th>
+				<td>DCON_07 - RPL shall not reference an element of its REC </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks if a RPL references an element which is also referenced by its REC</td>
 			</tr>
 		</table>
 	</body>

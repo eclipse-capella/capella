@@ -2,12 +2,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<link rel="stylesheet" type="text/css" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css" media="all" />
+		<title>ValidationRules</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
 	</head>
 	<body>
-		<h1 id=".3E_Validation_Rules_.3E_capella.category_.3E_design_.3E_well-formedness_.3E_components">&gt; Validation Rules &gt; capella.category &gt; design &gt; well-formedness &gt; components</h1>
+		<h1 id="Design_.3E_Well-formedness_.3E_Components">Design &gt; Well-formedness &gt; Components</h1>
 		<p>
-			<br/>         
+			<br/>
+		</p>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../../Images/error.gif"/>
+				</th>
+				<td>DWF_CA_05 - Component self generalization </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule ensures that a Component cannot generalize itself.</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
@@ -17,11 +32,11 @@
 				<td>DWF_DC_01 - Partitions cycles check </td>
 			</tr>
 			<tr>
-				<td colspan="2">This validation rule ensures that a partition of an element cannot have a partition typed by this element. Thus it avoids"partitions cycles". </td>
+				<td colspan="2">This validation rule ensures that a partition of an element cannot have a partition typed by this element. Thus it avoids"partitions cycles".</td>
 			</tr>
 		</table>
 		<p>
-			<br/>    
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
@@ -31,25 +46,25 @@
 				<td>DWF_DC_02 - Role Allocation </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks the role allocations consistency between roles and entities.  </td>
+				<td colspan="2">This rule checks the role allocations consistency between roles and entities.</td>
 			</tr>
 		</table>
 		<p>
-			<br/>    
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
 				<th>
 					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
 				</th>
-				<td>DWF_DC_03 - Physical Path Involved Links check  </td>
+				<td>DWF_DC_03 - Physical Path Involved Links check </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks that a PhysicalPath is valid.   </td>
+				<td colspan="2">This rule checks that a PhysicalPath is valid.</td>
 			</tr>
 		</table>
 		<p>
-			<br/>    
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
@@ -59,11 +74,11 @@
 				<td>DWF_DC_04 - Check multiple deployment </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule depends on the Preference option "Multiple deployment allowed". If this option is set to false, the rule checks that a Behavior Physical Component is not deployed on more than one Node Physical Component.  </td>
+				<td colspan="2">This rule depends on the Preference option "Multiple deployment allowed". If this option is set to false, the rule checks that a Behavior Physical Component is not deployed on more than one Node Physical Component.</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
@@ -73,11 +88,11 @@
 				<td>DWF_DC_05 - Part type accessibility check </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule ensures that a part is typed by an accessible Component.    </td>
+				<td colspan="2">This rule ensures that a part is typed by an accessible Component.</td>
 			</tr>
 		</table>
 		<p>
-			<br/>  
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
@@ -87,25 +102,25 @@
 				<td>DWF_DC_06 - Component Parts type level check </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule ensures that each parts of a component have the same level (i.e context, logical, physical,...) that the component itself.   </td>
+				<td colspan="2">This rule ensures that each parts of a component have the same level (i.e context, logical, physical,...) that the component itself.</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
 				<th>
 					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
 				</th>
-				<td>DWF_DC_07 - Contexts Abstract Actor Parts Check </td>
+				<td>DWF_DC_07 - Part typed by an Abstract Type </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks that a Component Context cannot have a part typed by an abstract type.   </td>
+				<td colspan="2">This rule checks that a Part is typed by an abstract type.</td>
 			</tr>
 		</table>
 		<p>
-			<br/>  
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
@@ -115,11 +130,11 @@
 				<td>DWF_DC_08 - Part typed </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule ensures that a part has always a type.    </td>
+				<td colspan="2">This rule ensures that a part has always a type.</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
@@ -129,25 +144,11 @@
 				<td>DWF_DC_09 - Component allocated functions types check </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks that a Component allocates only leaf Functions of its own level.    </td>
+				<td colspan="2">This rule checks that a Component allocates only leaf Functions of its own level.</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
-		</p>
-		<table class="VALIDATION-RULE">
-			<tr>
-				<th>
-					<img title="ERROR" alt="ERROR" border="0" src="../../../../Images/error.gif"/>
-				</th>
-				<td>DWF_DC_10 - Actors Part Locations Check </td>
-			</tr>
-			<tr>
-				<td colspan="2">This rule checks the parts locations for actors and root components.   </td>
-			</tr>
-		</table>
-		<p>
-			<br/> 
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
@@ -157,39 +158,39 @@
 				<td>DWF_DC_11 - Component Functional Allocation </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks the allocation level consistency between functions and components to avoid allocations of system functions in logical architecture. </td>
+				<td colspan="2">This rule checks the allocation level consistency between functions and components to avoid allocations of system functions in logical architecture.</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
 				<th>
 					<img title="ERROR" alt="ERROR" border="0" src="../../../../Images/error.gif"/>
 				</th>
-				<td>DWF_DC_12 - Function Allocation Unicity</td>
+				<td>DWF_DC_12 - Function Allocation Unicity </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks that a function is allocated to only one component (including Actor) </td>
+				<td colspan="2">This rule checks that a function is allocated to only one component (including Actor)</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
 				<th>
 					<img title="ERROR" alt="ERROR" border="0" src="../../../../Images/error.gif"/>
 				</th>
-				<td>DWF_DC_13 - Component Exchange Functional Exchanges Realization</td>
+				<td>DWF_DC_13 - Component Exchange Functional Exchanges Realization </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks that the Functional Exchanges allocated to a Component Exchange come from the same level. </td>
+				<td colspan="2">This rule checks that the Functional Exchanges allocated to a Component Exchange come from the same level.</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
@@ -199,11 +200,11 @@
 				<td>DWF_DC_14 - Component Port Allocation </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks Ports Allocations consistency. </td>
+				<td colspan="2">This rule checks Ports Allocations consistency.</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
@@ -213,7 +214,7 @@
 				<td>DWF_DC_15 - Function Allocation Consistency </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks that only leaf functions are allocated. </td>
+				<td colspan="2">This rule checks that only leaf functions are allocated.</td>
 			</tr>
 		</table>
 		<p>
@@ -227,25 +228,11 @@
 				<td>DWF_DC_16 - Component Exchange encapsulation problem check </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule raises a warning if a Component Exchange is linked between two internal components. These components can be directly connected, only if the ports are delegated throughout the owning components which are connected by another Component Exchange. </td>
+				<td colspan="2">This rule raises a warning if a Component Exchange is linked between two internal components. These components can be directly connected, only if the ports are delegated throughout the owning components which are connected by another Component Exchange.</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
-		</p>
-		<table class="VALIDATION-RULE">
-			<tr>
-				<th>
-					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
-				</th>
-				<td>DWF_DC_17 - Physical Component deployment check </td>
-			</tr>
-			<tr>
-				<td colspan="2">This rule ensures that a node physical component is not deployed on a behavior physical component. </td>
-			</tr>
-		</table>
-		<p>
-			<br/> 
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
@@ -255,11 +242,11 @@
 				<td>DWF_DC_18 - Component Exchange location check </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule ensures that Component Exchange is located in the common ancestor between its source/target elements. </td>
+				<td colspan="2">This rule ensures that Component Exchange is located in the common ancestor between its source/target elements.</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
@@ -269,11 +256,11 @@
 				<td>DWF_DC_19 - Physical Link location check </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule ensures that Physical Link is located in the common ancestor between its source/target elements. </td>
+				<td colspan="2">This rule ensures that Physical Link is located in the common ancestor between its source/target elements.</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
@@ -283,7 +270,7 @@
 				<td>DWF_DC_20 - Physical Component Function Allocation check </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule ensures that Physical Component of nature NODE does not allocate any Function. </td>
+				<td colspan="2">This rule ensures that Physical Component of nature NODE does not allocate any Function.</td>
 			</tr>
 		</table>
 		<p>
@@ -294,24 +281,15 @@
 				<th>
 					<img title="ERROR" alt="ERROR" border="0" src="../../../../Images/error.gif"/>
 				</th>
-				<td>DWF_DC_21 - Containement check for node and behaviour </td>
+				<td>DWF_DC_21 - PhysicalComponent check deployment/containment of Sub-PhysicalComponents </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule ensures that NodePC is not contained in BehaviourPC and BehaviourPC is not contained in NodePC. NodePC=Physical Component of nature NODE BehaviourPC=Physical Component of nature BEHAVIOUR. </td>
-			</tr>
-		</table>
-		<p>
-			<br/>
-		</p>
-		<table class="VALIDATION-RULE">
-			<tr>
-				<th>
-					<img title="ERROR" alt="ERROR" border="0" src="../../../../Images/error.gif"/>
-				</th>
-				<td>DWF_DC_22 - NodeDeployment In BehaviourPC </td>
-			</tr>
-			<tr>
-				<td colspan="2">This rule ensures that NodePC is not deployed in BehaviourPC. NodePC=Physical Component of nature NODE BehaviourPC=Physical Component of nature BEHAVIOUR. </td>
+				<td colspan="2">This rule ensures that PC is correctly deploying/containing other child PC.
+					<p>Node Components (actor or not) can contain Node and deploy Node or Behavior.
+						Behavior Components (actor or not) can contain Behavior and deploy behavior.
+						NodePC=Physical Component of nature NODE
+						BehaviourPC=Physical Component of nature BEHAVIOUR</p>
+				</td>
 			</tr>
 		</table>
 		<p>
@@ -322,10 +300,13 @@
 				<th>
 					<img title="ERROR" alt="ERROR" border="0" src="../../../../Images/error.gif"/>
 				</th>
-				<td>DWF_DC_23 - NodeDeployment In PhysicalActor </td>
+				<td>DWF_DC_22 - PhysicalComponent check deployment/containment in Parent-PhysicalComponent </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule ensures that NodePC is not deployed in PhysicalActor. NodePC=Physical Component of nature NODE . </td>
+				<td colspan="2">This rule ensures that PC is correctly deployed/contained in parent PC.
+					<p>NODE PC cannot be deployed/contained by a  BEHAVIOUR PC
+						BEHAVIOUR PC cannot be contained by a NODE PC</p>
+				</td>
 			</tr>
 		</table>
 		<p>
@@ -339,25 +320,11 @@
 				<td>DWF_DC_24 - Physical Path involvement check involved element </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks that a Physical Path Involvement only involves an Part, a Physical Link or a Physical Path.  </td>
+				<td colspan="2">This rule checks that a Physical Path Involvement only involves an Part, a Physical Link or a Physical Path.</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
-		</p>
-		<table class="VALIDATION-RULE">
-			<tr>
-				<th>
-					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
-				</th>
-				<td>DWF_DC_25 - Physical Path involvement check involver element </td>
-			</tr>
-			<tr>
-				<td colspan="2">This rule checks that a Physical Path Involvement involver is its owning Physical Path.  </td>
-			</tr>
-		</table>
-		<p>
-			<br/> 
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
@@ -367,7 +334,7 @@
 				<td>DWF_DC_26 - Root Physical Component Ports Check </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule ensures that the Root Physical Component has no physical ports. </td>
+				<td colspan="2">This rule ensures that the Root Physical Component has no physical ports.</td>
 			</tr>
 		</table>
 		<p>
@@ -381,7 +348,7 @@
 				<td>DWF_DC_27 - Functional Exchange Component Exchange Allocation Unicity </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks that a functional exchange is allocated to only one component exchange. </td>
+				<td colspan="2">This rule checks that a functional exchange is allocated to only one component exchange.</td>
 			</tr>
 		</table>
 		<p>
@@ -395,7 +362,9 @@
 				<td>DWF_DC_28 - Delegation out of place check </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule check that Component Exchange of kind Delegation if not out of place and useless. It also make sure if Delegation source and target are not null. </td>
+				<td colspan="2">This rule check that Component Exchange of kind Delegation if not out of place and useless.
+					<p>It also make sure if Delegation source and target are not null.</p>
+				</td>
 			</tr>
 		</table>
 		<p>
@@ -409,11 +378,11 @@
 				<td>DWF_DC_29 - Component Exchange Functional Exchange consistency </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule ensures that Component Exchange allocates valid functional exchanges (regarding ports directions). </td>
+				<td colspan="2">This rule ensures that Component Exchange allocates valid functional exchanges (regarding ports directions).</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
@@ -423,25 +392,29 @@
 				<td>DWF_DC_30 - PhysicalPort on BehaviourPC </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule ensures that PhysicalPort is not contained in BehaviourPC. BehaviourPC=Physical Component of nature BEHAVIOUR. </td>
+				<td colspan="2">This rule ensures that PhysicalPort is not contained in BehaviourPC.
+					<p>BehaviourPC=Physical Component of nature BEHAVIOUR</p>
+				</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
 				<th>
 					<img title="ERROR" alt="ERROR" border="0" src="../../../../Images/error.gif"/>
 				</th>
-				<td>DWF_DC_31 - ComponentPort on NodePC  </td>
+				<td>DWF_DC_31 - ComponentPort on NodePC </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule ensures that ComponentPort is not contained in NodePC. NodePC=Physical Component of nature NODE.</td>
+				<td colspan="2">This rule ensures that ComponentPort is not contained in NodePC.
+					<p>NodePC=Physical Component of nature NODE</p>
+				</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
@@ -451,25 +424,158 @@
 				<td>DWF_DC_32 - Component Exchange with out port on NodePC </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule ensures that ComponentExchange with out port sourceEnd or target end is not NodePC. NodePC=Physical Component of nature NODE.</td>
+				<td colspan="2">This rule ensures that ComponentExchange with out port sourceEnd or target end is not NodePC.
+					<p>NodePC=Physical Component of nature NODE</p>
+				</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
 				<th>
 					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
 				</th>
-				<td>DWF_DC_33 - PhysicalPath allocated CE</td>
+				<td>DWF_DC_33 - PhysicalPath allocated CE </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks that a PhysicalPath should allocated component exchage between its path. </td>
+				<td colspan="2">This rule checks that a PhysicalPath should allocated component exchage between its path.</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
+			<br/>
 		</p>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th>
+					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
+				</th>
+				<td>DWF_DC_34 - PhysicalComponent of nature UNSET </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule ensures that a Physical Component is not of nature UNSET, with the exceptions below, in which UNSET is allowed:
+					<pre>                  1. Only root Actors (inside structure) can be nature UNSET
+                  2. The root Physical Component can be nature UNSET
+</pre>
+				</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+		</p>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th>
+					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
+				</th>
+				<td>DWF_DC_35 - Function is not available in at least one Mode/State allocated to a functional chain in which the function is involved </td>
+			</tr>
+			<tr>
+				<td colspan="2">Check that the function is available in all the Mode/State allocated to a functional chain in which the function is involved.</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+		</p>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../../Images/error.gif"/>
+				</th>
+				<td>DWF_DC_36 - Component or Actor compositions checks </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks Component or Actor composition following the rules below:
+					<pre>                 1. Component or Actor with the 'is Human' flag set on true cannot have sub Components, sub Actors, also no contained Parts or managing sub-packages.
+              	  2. An Operational Actor cannot be decomposed.
+</pre>
+				</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+		</p>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../../Images/error.gif"/>
+				</th>
+				<td>DWF_DC_37 - This rule checks that only one System Component is allowed at SystemAnalysis level </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks that only one System Component is allowed at SystemAnalysis level (cannot have parts inside a System nor component type)</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+		</p>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../../Images/error.gif"/>
+				</th>
+				<td>DWF_DC_38 - This rule checks that only a Root Component exists at System/Logical/Physical level </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks that only a Root Component exists at an Architectural level. Zero or more than one Root Components are not allowed.</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+		</p>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../../Images/error.gif"/>
+				</th>
+				<td>DWF_DC_39 - PhysicalSystem should be of nature UNSET </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule ensures that the PhysicalSystem Component is of nature UNSET.</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+		</p>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th>
+					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
+				</th>
+				<td>DWF_DC_40 - This rule checks that an Operational Entity is not HUMAN </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks that an Operational Entity is not HUMAN.</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+		</p>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th>
+					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
+				</th>
+				<td>DWF_DC_41 - This rule checks that an Operational Actor is HUMAN </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks that an Operational Actor is HUMAN.</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+		</p>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../../Images/error.gif"/>
+				</th>
+				<td>DWF_DC_42 - Component with parts </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule ensures that a component is always referenced by at least one part.</td>
+			</tr>
+		</table>
 	</body>
 </html>

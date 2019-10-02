@@ -1,145 +1,154 @@
       
-= > Validation Rules > capella.category > design > well-formedness > interfaces =
-            
+= Design > Well-formedness > Interfaces =
 <br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
-| DWF_I_01 - ExchangeItemParameter kind consistency 
+|DWF_I_01 - ExchangeItemParameter kind consistency 
 |-
-| colspan="2"| This rule checks whether the ExchangeItemElements of an ExchangeItem are consistent with applied exchange mechanism: - Elements of an ExchangeItem with exchange mechanism OPERATION must be of kind PARAMETER - For all other exchange mechanisms, elements must be of kind TYPE 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-!|[[Image:../../../../Images/error.gif|ERROR]]
-| DWF_I_03 - ExchangeItemElement Direction check 
-|-
-| colspan="2"| This rule checks that a component uses and implements only interface from valid architecture. 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-!|[[Image:../../../../Images/error.gif|ERROR]]
-| DWF_I_04 - Components must implements/uses accessible interfaces 
-|-
-| colspan="2"| This rule checks that the component cannot have the same kind of communication link targeting to the same exchange item with the same protocol. 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-!|[[Image:../../../../Images/error.gif|ERROR]]
-|  DWF_I_05 - No Equivalent Component Communication Links 
-|-
-| colspan="2"| This rule checks that no Interface is located in EPBS. 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-!|[[Image:../../../../Images/error.gif|ERROR]]
-| DWF_I_06 - Interface location check
-|-
-| colspan="2"| This rule checks that a component uses/implements interfaces from the same level or from an upper level. 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-!|[[Image:../../../../Images/warning.gif|WARNING]]
-|  DWF_I_07 - Interface location level 
-|-
-| colspan="2"| This rule checks that a Component port requires/provides the interfaces of its own level. 
-|}            
-<br>
- {| class="VALIDATION-RULE"
-!|[[Image:../../../../Images/warning.gif|WARNING]]
-|  DWF_I_08 - Component port required and provided interface check 
-|-
-| colspan="2"| This rule checks that a CommunicationLink kind is only used with  a specific CommunicatinLink protocol. 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
- !|[[Image:../../../../Images/warning.gif|WARNING]]
-|  DWF_I_09 - CommunicationLink kind and ExchangeItem kind 
-|-
-| colspan="2"| This rule checks that a CommunicationLink protocol are only used with a specific CommunicatinLink kind. 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
- !|[[Image:../../../../Images/error.gif|ERROR]]
-|   DWF_I_10 - CommunicationLink protocol and ExchangeItem kind  
-|-
-| colspan="2"| This rule checks that a ExchangeItemAllocation AllocatedItem value is not null. 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
- !|[[Image:../../../../Images/warning.gif|WARNING]]
-|    DWF_I_11 - ExchangeItemAllocation AllocatedItem Check   
-|-
-| colspan="2"| This rule ensures that an ExchangeItemAllocation from given layer should not allocate element of lower Architecture layer.  Exmaple: If an ExchangeItemAllocation is on SystemArchitecture layer. It should not allocate any element from Logical or Physical Layer. 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
- !|[[Image:../../../../Images/warning.gif|WARNING]]
-|     DWF_I_12 - Exchange item allocation layer consistency    
-|-
-| colspan="2"| This rule checks if a component is linked to interfaces and exchange items which are defined in a unavailable location (for instance a component should not be linked to an inner interface of another component) 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
- !|[[Image:../../../../Images/warning.gif|WARNING]]
-|    DWF_I_13 - Interface and Exchange item location check 
-|-
-| colspan="2"| This rule checks that an existing technical interface between two Components represent all the Communication Links with the same direction between those two components. 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
- !|[[Image:../../../../Images/warning.gif|WARNING]]
-|    DWF_I_14 - Technical interface represent all communication links    
-|-
-| colspan="2"| This rule checks that for each Exchange Item Allocation of a technical Interface, there is a Communication Link associated to it. 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-|-
- !|[[Image:../../../../Images/warning.gif|WARNING]]
-|    DWF_I_15 - Exchange Item Allocation For Technical Interface Has Communication Link
-|-
-| colspan="2"|This rule checks that for each Exchange Item Allocation of a technical Interface, there is a Communication 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
- !|[[Image:../../../../Images/warning.gif|WARNING]]
-|  DWF_I_16 - Technical interfaces are not provided or required 
-|-
-| colspan="2"| This rule checks that technical interfaces are not provided or required 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
- !|[[Image:../../../../Images/warning.gif|WARNING]]
-|     DWF_I_17 - At most one technical interface between two components 
-|-
-| colspan="2"| This rule checks that there is at most one technical Interfaces by couple of component (direction is meaningful). 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
- !|[[Image:../../../../Images/warning.gif|WARNING]]
-|    DWF_I_18 - Technical interfaces should not be used by more than one component    
-|-
-| colspan="2"| This rule checks that a technical interfaces should not be used by more than one component. 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
- !|[[Image:../../../../Images/warning.gif|WARNING]]
-|    DWF_I_19 - Technical interfaces should not be implemented by more than one component    
-|-
-| colspan="2"| This rule checks that a technical interfaces should not be implemented by more than one component 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
- !|[[Image:../../../../Images/warning.gif|WARNING]]
-|    DWF_I_20 - Interface does not contain similar Exchange Item Allocation     
-|-
-| colspan="2"| This rule checks that an interface does not contain similar Exchange Item Allocation (that target the same Exchange Item and have same protocols). 
-|}
-<br> 
-{| class="VALIDATION-RULE"
- !|[[Image:../../../../Images/error.gif|ERROR]]
-|DWF_I_23 - Missing/Unused Exchange Items on generated Interfaces
-|-
-| colspan="2"| This rule produces Errors for missing or unused Exchange Items on Interfaces generated by the&quot;Interfaces from allocated Functions&quot; modelling accelerator. In this context, an Exchange Item is unused on an Interface, if it is not allocated to any of the Interfaces related Functional or Component Exchanges. An Exchange Item is missing on an Interface if it is allocated on at least one of the Interfaces related Functional or Component Exchanges but not present on the Interface. 
+| colspan="2"|This rule checks whether the ExchangeItemElements of an ExchangeItem are consistent with applied exchange mechanism:
+- Elements of an ExchangeItem with exchange mechanism OPERATION must be of kind PARAMETER
+- For all other exchange mechanisms, elements must be of kind TYPE
 |}
 <br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/error.gif|ERROR]]
+|DWF_I_04 - Components must implements/uses accessible interfaces 
+|-
+| colspan="2"|This rule checks that a component uses and implements only interface from valid architecture.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/error.gif|ERROR]]
+|DWF_I_05 - No Equivalent Component Communication Links 
+|-
+| colspan="2"|This rule checks that the component cannot have the same kind of communication link targeting to the same exchange item with the same protocol.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/error.gif|ERROR]]
+|DWF_I_06 - Interface location check 
+|-
+| colspan="2"|This rule checks that no Interface is located in EPBS.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/error.gif|ERROR]]
+|DWF_I_07 - Interface location level 
+|-
+| colspan="2"|This rule checks that a component uses/implements interfaces from the same level or from an upper level.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|DWF_I_08 - Component port required and provided interface check 
+|-
+| colspan="2"|This rule checks that a Component port requires/provides the interfaces of its own level.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|DWF_I_09 - CommunicationLink kind and ExchangeItem kind 
+|-
+| colspan="2"|This rule checks that a CommunicationLink kind is only used with  a specific CommunicatinLink protocol.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|DWF_I_10 - CommunicationLink protocol and  ExchangeItem kind 
+|-
+| colspan="2"|This rule checks that a CommunicationLink protocol are only used with a specific CommunicatinLink kind.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/error.gif|ERROR]]
+|DWF_I_11 - ExchangeItemAllocation AllocatedItem Check 
+|-
+| colspan="2"|This rule checks that a ExchangeItemAllocation AllocatedItem value is not null.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|DWF_I_12 - Exchange item allocation layer consistency 
+|-
+| colspan="2"|This rule ensures that an ExchangeItemAllocation from given layer should not allocate element of lower Architecture layer.
+
+Exmaple:
+If an ExchangeItemAllocation is on SystemArchitecture layer. It should not allocate any element from Logical or Physical Layer.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|DWF_I_13 - Interface and Exchange item location check 
+|-
+| colspan="2"|This rule checks if a component is linked to interfaces and exchange items which are defined in a unavailable location (for instance a component should not be linked to an inner interface of another component)
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|DWF_I_14 -  Technical interface represent all communication links 
+|-
+| colspan="2"|This rule checks that an existing technical interface between two Components represent all the Communication Links with the same direction between those two components.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|DWF_I_15 -  Exchange Item Allocation For Technical Interface Has Communication Link 
+|-
+| colspan="2"|This rule checks that for each Exchange Item Allocation of a technical Interface, there is a Communication Link associated to it.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|DWF_I_16 -  Technical interfaces are not provided or required 
+|-
+| colspan="2"|This rule checks that technical interfaces are not provided or required
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|DWF_I_17 - At most one technical interface between two components 
+|-
+| colspan="2"|This rule checks that there is at most one technical Interfaces by couple of component (direction is meaningful).
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|DWF_I_18 - Technical interfaces should not be used by more than one component 
+|-
+| colspan="2"|This rule checks that a technical interfaces should not be used by more than one component.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|DWF_I_19 - Technical interfaces should not be implemented by more than one component 
+|-
+| colspan="2"|This rule checks that a technical interfaces should not be implemented by more than one component
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|DWF_I_20 - Interface does not contain similar Exchange Item Allocation 
+|-
+| colspan="2"|This rule checks that an interface does not contain similar Exchange Item Allocation (that target the same Exchange Item and have same protocols).
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/error.gif|ERROR]]
+|DWF_I_21 - Exchange Item Allocation Protocol consistency 
+|-
+| colspan="2"|This rule checks consistency between the allocated Exchange Item and Acquisition/Transmission protocols of Exchange Item Allocation
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|DWF_I_22 - Exchange Item Allocation Protocol used on Sequence Diagram consistency 
+|-
+| colspan="2"|This rule checks consistency between the Acquisition/Transmission protocols of Exchange Item Allocation and its usage through Sequence Message
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/error.gif|ERROR]]
+|DWF_I_23 - Missing/Unused Exchange Items on generated Interfaces 
+|-
+| colspan="2"|This rule produces Errors for missing or unused Exchange Items on Interfaces generated by the"Interfaces from allocated Functions" modelling accelerator. In this context, an Exchange Item is unused on an Interface, if it is not allocated to any of the Interfaces related Functional or Component Exchanges. An Exchange Item is missing on an Interface if it is allocated on at least one of the Interfaces related Functional or Component Exchanges but not present on the Interface.
+|}
