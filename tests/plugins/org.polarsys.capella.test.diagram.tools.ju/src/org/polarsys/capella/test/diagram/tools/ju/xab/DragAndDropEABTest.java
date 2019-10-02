@@ -30,9 +30,35 @@ public class DragAndDropEABTest extends XABDiagramsProject {
   public void testOnXAB(SessionContext context, String diagramName) {
     EABDiagram diagram = EABDiagram.openDiagram(context, diagramName);
 
+    String cots = diagram.createConfigurationItem("COTS", diagram.getDiagramId(), ConfigurationItemType.COTS);
+    diagram.removeConfigurationItems(diagram.getDiagramId(), cots);
+    diagram.dragAndDropConfigurationItemFromExplorer(cots, diagram.getDiagramId());
+
     String cs = diagram.createConfigurationItem("CS", diagram.getDiagramId(), ConfigurationItemType.CS);
     diagram.removeConfigurationItems(diagram.getDiagramId(), cs);
     diagram.dragAndDropConfigurationItemFromExplorer(cs, diagram.getDiagramId());
+
+    String hw = diagram.createConfigurationItem("HW", diagram.getDiagramId(), ConfigurationItemType.HW);
+    diagram.removeConfigurationItems(diagram.getDiagramId(), hw);
+    diagram.dragAndDropConfigurationItemFromExplorer(hw, diagram.getDiagramId());
+
+    String interf = diagram.createConfigurationItem("Interface", diagram.getDiagramId(),
+        ConfigurationItemType.INTERFACE);
+    diagram.removeConfigurationItems(diagram.getDiagramId(), interf);
+    diagram.dragAndDropConfigurationItemFromExplorer(interf, diagram.getDiagramId());
+
+    String ndi = diagram.createConfigurationItem("NDI", diagram.getDiagramId(), ConfigurationItemType.NDI);
+    diagram.removeConfigurationItems(diagram.getDiagramId(), ndi);
+    diagram.dragAndDropConfigurationItemFromExplorer(ndi, diagram.getDiagramId());
+
+    String primeItem = diagram.createConfigurationItem("Prime Item", diagram.getDiagramId(),
+        ConfigurationItemType.PRIME_ITEM);
+    diagram.removeConfigurationItems(diagram.getDiagramId(), primeItem);
+    diagram.dragAndDropConfigurationItemFromExplorer(primeItem, diagram.getDiagramId());
+
+    String system = diagram.createConfigurationItem("System", diagram.getDiagramId(), ConfigurationItemType.SYSTEM);
+    diagram.removeConfigurationItems(diagram.getDiagramId(), system);
+    diagram.dragAndDropConfigurationItemFromExplorer(system, diagram.getDiagramId());
 
     diagram.manageRealizedPhysicalArtifacts(EPBS__EAB_CONFIGURATION_ITEM1, PA__PAB_COMPONENT_PC6);
     diagram.dragAndDropPhysicalAtifacts(PA__PAB_COMPONENT_PC6, cs);
@@ -40,5 +66,6 @@ public class DragAndDropEABTest extends XABDiagramsProject {
     String constraint = diagram.createConstraint(GenericModel.CONSTRAINT_1);
     diagram.removeConstraint(constraint, diagram.getDiagramId());
     diagram.dragAndDropConstraintsFromExplorer(constraint, diagram.getDiagramId());
+
   }
 }
