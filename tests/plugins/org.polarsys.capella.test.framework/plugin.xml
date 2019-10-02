@@ -19,4 +19,10 @@
             kind="visualization">
       </columnProvider>
    </extension>
+   <extension
+         point="org.eclipse.sirius.runtimeLogger">
+      <logger
+            class="org.polarsys.capella.test.framework.odesign.error.detection.SiriusRuntimeLogger">
+      </logger>
+   </extension>
 </plugin>
