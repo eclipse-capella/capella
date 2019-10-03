@@ -115,3 +115,5 @@ IconSemanticBrowser.png
 IconShowInDiagram.gif
 IconShowInExplorer.png
 IconCreateEdgeView.gif
+CapellaCapabilitiesEPFFile.png
+CapellaCapabilitiesPreferencePage.png
