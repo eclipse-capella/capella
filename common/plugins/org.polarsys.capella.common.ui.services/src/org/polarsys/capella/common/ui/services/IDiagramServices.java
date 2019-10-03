@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 
+@Deprecated
 public interface IDiagramServices {
   public void openDiagram(ModelElement element);
   public void closeDiagram(ModelElement element);

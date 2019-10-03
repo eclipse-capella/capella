@@ -25,6 +25,7 @@ import org.polarsys.kitalpha.emde.model.Element;
 /**
  * The Capella adaptation.
  */
+@Deprecated
 public class ModelAdaptation {
 
   /**

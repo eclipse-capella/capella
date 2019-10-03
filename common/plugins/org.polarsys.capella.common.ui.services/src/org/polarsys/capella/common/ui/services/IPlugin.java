@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.common.ui.services;
 
+@Deprecated
 public interface IPlugin {
   public static final String ID = "org.polarsys.capella.common.ui.services"; //$NON-NLS-1$
   public static final String EXT_PT_SELECT_IN_PACKAGE_EXPLORER = "selectInPackageExplorer"; //$NON-NLS-1$
