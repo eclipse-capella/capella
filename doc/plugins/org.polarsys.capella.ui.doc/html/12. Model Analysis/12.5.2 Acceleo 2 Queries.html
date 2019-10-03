@@ -80,7 +80,7 @@
 			<tr>
 				<td>aird file (non fragmented model)</td>
 				<td>A diagram</td>
-				<td>ancestor.eClass().name = 'DAnalysis')-&gt;asSet())</td>
+				<td>aql:((self.makeUnion(self, self.eInverse(''))).ancestors()-&gt;select(ancestor &#124; ancestor.eClass().name = 'DAnalysis')-&gt;asSet())</td>
 			</tr>
 			<tr>
 				<td>All aird files (fragmented model)</td>
@@ -104,12 +104,16 @@
 			<tr>
 				<td>All diagrams from kind "Logical Data Flow"</td>
 				<td>A diagram</td>
-				<td>x.description.name.startsWith('Logical Data Flow Blank'))'''</td>
+				<td>aql: self.getAllDAnalysis().
+					<b>ownedViews.ownedRepresentationDescriptors-&gt;select(x &#124; x.description.name.startsWith('Logical Data Flow Blank'))</b>
+				</td>
 			</tr>
 			<tr>
 				<td>All diagrams except kind "Scenario"</td>
 				<td>A diagram</td>
-				<td>x.description.name.endsWith('Scenario') = false)'''</td>
+				<td>aql: self.getAllDAnalysis().
+					<b>ownedViews.ownedRepresentationDescriptors-&gt;select(x &#124; x.description.name.endsWith('Scenario') = false)</b>
+				</td>
 			</tr>
 			<tr>
 				<td>List of different viewpoints</td>
@@ -149,27 +153,37 @@
 			<tr>
 				<td>All element containing the "TODO" string in their 'Name' property</td>
 				<td>A model element</td>
-				<td>eAllContent.name.matches('.*TODO.*'))'''</td>
+				<td>aql:self.eAllContents()-&gt;
+					<b>select(eAllContent &#124; eAllContent.name.matches('.*TODO.*'))</b>
+				</td>
 			</tr>
 			<tr>
 				<td>All element containing the "TODO" string in their 'Summary' property</td>
 				<td>A model element</td>
-				<td>eAllContent.summary.matches('.*TODO.*'))'''</td>
+				<td>aql:self.eAllContents()-&gt;
+					<b>select(eAllContent &#124; eAllContent.summary.matches('.*TODO.*'))</b>
+				</td>
 			</tr>
 			<tr>
 				<td>All element containing the "TODO" string in their 'Description' property</td>
 				<td>A model element</td>
-				<td>eAllContent.description.matches('.*TODO.*'))'''</td>
+				<td>aql:self.eAllContents()-&gt;
+					<b>select(eAllContent &#124; eAllContent.description.matches('.*TODO.*'))</b>
+				</td>
 			</tr>
 			<tr>
 				<td>All diagrams containing a note containing the "TODO" string</td>
 				<td>A diagram</td>
-				<td>x.eInverse('element')-&gt;filter(notation::Diagram).eAllContents(notation::Node)-&gt;select(x | x.type = 'Note' and x.description.contains('TODO')))'''</td>
+				<td>aql: self.getAllDAnalysis().ownedViews.ownedRepresentationDescriptors.
+					<b>representation-&gt;select(x &#124; x.eInverse('element')-&gt;filter(notation::Diagram).eAllContents(notation::Node)-&gt;select(x &#124; x.type = 'Note' and x.description.contains('TODO')))</b>
+				</td>
 			</tr>
 			<tr>
 				<td>Number of diagrams containing a note containing the "TODO" string</td>
 				<td>A diagram</td>
-				<td>x.eInverse('element')-&gt;filter(notation::Diagram).eAllContents(notation::Node)-&gt;select(x | x.type = 'Note' and x.description.contains('TODO')))-&gt;size()'''</td>
+				<td>aql: self.getAllDAnalysis().ownedViews.ownedRepresentationDescriptors.
+					<b>representation-&gt;select(x &#124; x.eInverse('element')-&gt;filter(notation::Diagram).eAllContents(notation::Node)-&gt;select(x &#124; x.type = 'Note' and x.description.contains('TODO')))-&gt;size()</b>
+				</td>
 			</tr>
 		</table>
 		<h2 id="Requirements">Requirements</h2>
@@ -188,7 +202,9 @@
 			<tr>
 				<td>Query to retrieve the list of non-allocated requirements</td>
 				<td>Requirement Package</td>
-				<td>x.getRelatedCapellaElements()-&gt;isEmpty())'''</td>
+				<td>aql:self.
+					<b>eAllContents()-&gt;select(x &#124; x.getRelatedCapellaElements()-&gt;isEmpty())</b>
+				</td>
 			</tr>
 		</table>
 		<h2 id="Model_Navigation_Examples">Model Navigation Examples</h2>
@@ -221,7 +237,7 @@
 						- Which name starts with "Store"</p>
 				</td>
 				<td>Any Component</td>
-				<td>allocatedFunction.name.startsWith('Store') and allocatedFunction.eAllContents()-&gt;filter(fa::FunctionPort)-&gt;size() &gt; 3)</td>
+				<td>aql:self.allocatedFunctions-&gt;select(allocatedFunction &#124; allocatedFunction.name.startsWith('Store') and allocatedFunction.eAllContents()-&gt;filter(fa::FunctionPort)-&gt;size() &gt; 3)</td>
 			</tr>
 		</table>
 		<h2 id="Metrics">Metrics</h2>
@@ -277,12 +293,12 @@
 			<tr>
 				<td>Number of Operational Entities</td>
 				<td>OperationalAnalysis</td>
-				<td>aql:(self.eAllContents(oa::Entity) - self.eAllContents(oa::OperationalActor))-&gt;size()</td>
+				<td>aql:(self.eAllContents(oa::Entity)-&gt;select(e &#124; not e.isActor()))-&gt;size()</td>
 			</tr>
 			<tr>
 				<td>Number of Operational Actors</td>
 				<td>OperationalAnalysis</td>
-				<td>aql:self.eAllContents(oa::OperationalActor)-&gt;size()</td>
+				<td>aql:(self.eAllContents(oa::Entity)-&gt;select(e &#124; e.isActor()))-&gt;size()</td>
 			</tr>
 			<tr>
 				<td>Number of Operational Roles</td>
@@ -312,7 +328,7 @@
 			<tr>
 				<td>Number of System Actors</td>
 				<td>SystemAnalysis</td>
-				<td>aql:self.eAllContents(ctx::Actor)-&gt;size()</td>
+				<td>aql:(self.eAllContents(ctx::SystemComponent)-&gt;select(c &#124; c.isActor()))-&gt;size()</td>
 			</tr>
 			<tr>
 				<td>Number of Functional Chains in SA</td>
@@ -327,12 +343,12 @@
 			<tr>
 				<td>Number of Behaviour Components in PA</td>
 				<td>PhysicalArchitecture</td>
-				<td>eAllContent.nature = pa::PhysicalComponentNature::BEHAVIOR)-&gt;size()</td>
+				<td>aql:self.eAllContents(pa::PhysicalComponent)-&gt;select(eAllContent &#124; eAllContent.nature = pa::PhysicalComponentNature::BEHAVIOR)-&gt;size()</td>
 			</tr>
 			<tr>
 				<td>Number of Implementation PC (nodes) in PA</td>
 				<td>PhysicalArchitecture</td>
-				<td>eAllContent.nature = pa::PhysicalComponentNature::NODE)-&gt;size()</td>
+				<td>aql:self.eAllContents(pa::PhysicalComponent)-&gt;select(eAllContent &#124; eAllContent.nature = pa::PhysicalComponentNature::NODE)-&gt;size()</td>
 			</tr>
 			<tr>
 				<td>Number of Physical Links</td>
