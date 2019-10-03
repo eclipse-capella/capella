@@ -49,7 +49,7 @@
 |-
 | aird file (non fragmented model)
 | A diagram
-| aql:((self.makeUnion(self, self.eInverse(''))).ancestors()->select(ancestor | ancestor.eClass().name = 'DAnalysis')->asSet())
+| aql:((self.makeUnion(self, self.eInverse(''))).ancestors()->select(ancestor &#124; ancestor.eClass().name = 'DAnalysis')->asSet())
 
 |-
 | All aird files (fragmented model)
@@ -71,11 +71,11 @@
 |-
 | All diagrams from kind "Logical Data Flow"
 | A diagram
-| aql: self.getAllDAnalysis().'''ownedViews.ownedRepresentationDescriptors->select(x | x.description.name.startsWith('Logical Data Flow Blank'))'''
+| aql: self.getAllDAnalysis().'''ownedViews.ownedRepresentationDescriptors->select(x &#124; x.description.name.startsWith('Logical Data Flow Blank'))'''
 |-
 | All diagrams except kind "Scenario"
 | A diagram
-| aql: self.getAllDAnalysis().'''ownedViews.ownedRepresentationDescriptors->select(x | x.description.name.endsWith('Scenario') = false)'''
+| aql: self.getAllDAnalysis().'''ownedViews.ownedRepresentationDescriptors->select(x &#124; x.description.name.endsWith('Scenario') = false)'''
 
 |-
 | List of different viewpoints
@@ -102,27 +102,27 @@
 |-
 | All element containing the "TODO" string in their 'Name' property
 | A model element
-| aql:self.eAllContents()->'''select(eAllContent | eAllContent.name.matches('.*TODO.*'))'''
+| aql:self.eAllContents()->'''select(eAllContent &#124; eAllContent.name.matches('.*TODO.*'))'''
 
 |-
 | All element containing the "TODO" string in their 'Summary' property
 | A model element
-| aql:self.eAllContents()->'''select(eAllContent | eAllContent.summary.matches('.*TODO.*'))'''
+| aql:self.eAllContents()->'''select(eAllContent &#124; eAllContent.summary.matches('.*TODO.*'))'''
 
 |-
 | All element containing the "TODO" string in their 'Description' property
 | A model element
-| aql:self.eAllContents()->'''select(eAllContent | eAllContent.description.matches('.*TODO.*'))'''
+| aql:self.eAllContents()->'''select(eAllContent &#124; eAllContent.description.matches('.*TODO.*'))'''
 
 |-
 | All diagrams containing a note containing the "TODO" string
 | A diagram
-| aql: self.getAllDAnalysis().ownedViews.ownedRepresentationDescriptors.'''representation->select(x | x.eInverse('element')->filter(notation::Diagram).eAllContents(notation::Node)->select(x | x.type = 'Note' and x.description.contains('TODO')))'''
+| aql: self.getAllDAnalysis().ownedViews.ownedRepresentationDescriptors.'''representation->select(x &#124; x.eInverse('element')->filter(notation::Diagram).eAllContents(notation::Node)->select(x &#124; x.type = 'Note' and x.description.contains('TODO')))'''
 
 |-
 | Number of diagrams containing a note containing the "TODO" string
 | A diagram
-| aql: self.getAllDAnalysis().ownedViews.ownedRepresentationDescriptors.'''representation->select(x | x.eInverse('element')->filter(notation::Diagram).eAllContents(notation::Node)->select(x | x.type = 'Note' and x.description.contains('TODO')))->size()'''
+| aql: self.getAllDAnalysis().ownedViews.ownedRepresentationDescriptors.'''representation->select(x &#124; x.eInverse('element')->filter(notation::Diagram).eAllContents(notation::Node)->select(x &#124; x.type = 'Note' and x.description.contains('TODO')))->size()'''
 |}
 
 == Requirements ==
@@ -134,7 +134,7 @@
 |-
 | Query to retrieve the list of non-allocated requirements
 | Requirement Package
-| aql:self.'''eAllContents()->select(x | x.getRelatedCapellaElements()->isEmpty())'''
+| aql:self.'''eAllContents()->select(x &#124; x.getRelatedCapellaElements()->isEmpty())'''
 |}
 
 == Model Navigation Examples ==
@@ -157,7 +157,7 @@
 - allocated to one given component
 - Which name starts with "Store"
 | Any Component
-| aql:self.allocatedFunctions->select(allocatedFunction | allocatedFunction.name.startsWith('Store') and allocatedFunction.eAllContents()->filter(fa::FunctionPort)->size() > 3)
+| aql:self.allocatedFunctions->select(allocatedFunction &#124; allocatedFunction.name.startsWith('Store') and allocatedFunction.eAllContents()->filter(fa::FunctionPort)->size() > 3)
 |}
 
 == Metrics ==
@@ -166,87 +166,108 @@
 | '''Description'''
 | '''Workbench Selection'''
 | '''Syntax'''
+
 |-
 | Number of YYYY::XXXX owned by the selected element, where XXXX is the type of a model element (aql:self.eClass() ) and YYYY the last term of its package
 | A model element
 | aql:self.eAllContents(YYYY::XXXX)->size()
+
 |-
 | Number of Operational Activities
 | OperationalAnalysis
 | aql:self.eAllContents(oa::OperationalActivity)->size()
+
 |-
 | Number of Operational Interactions
 | OperationalAnalysis
 | aql:self.eAllContents(fa::FunctionalExchange)->size()
+
 |-
 | Number of Exchange Items in OA
 | OperationalAnalysis
 | aql:self.eAllContents(modellingcore::AbstractExchangeItem)->size()
+
 |-
 | Number of Types (Classes, Datatypes) in OA
 | OperationalAnalysis
 | aql:self.eAllContents(datatype::DataType)->size()
+
 |-
 | Number of Classes in OA
 | OperationalAnalysis
 | 
 aql:self.eAllContents(information::Class)->size()
+
 |-
 | Number of States or Modes in OA
 | OperationalAnalysis
 | aql:(self.eAllContents()->filter(capellacommon::State) - self.eAllContents()->filter(capellacommon::Mode))->size()
+
 |-
 | Number of Operational Entities
 | OperationalAnalysis
-| aql:(self.eAllContents(oa::Entity) - self.eAllContents(oa::OperationalActor))->size()
+| aql:(self.eAllContents(oa::Entity)->select(e &#124; not e.isActor()))->size()
+
 |-
 | Number of Operational Actors
 | OperationalAnalysis
-| aql:self.eAllContents(oa::OperationalActor)->size()
+| aql:(self.eAllContents(oa::Entity)->select(e &#124; e.isActor()))->size()
+
 |-
 | Number of Operational Roles
 | OperationalAnalysis
 | aql:self.eAllContents(oa::Role)->size()
+
 |-
 | Number of Communication Means
 | OperationalAnalysis
 | aql:self.eAllContents(oa::CommunicationMean)->size()
+
 |-
 | Number of System Functions
 | SystemAnalysis
 | aql:self.eAllContents(ctx::SystemFunction)->size()
+
 |-
 | Number of Functional Exchanges in SA
 | SystemAnalysis
 | aql:self.eAllContents(fa::FunctionalExchange)->size()
+
 |-
 | Number of Function Ports in SA
 | SystemAnalysis
 | aql:self.eAllContents()->filter(fa::FunctionPort)->size()
+
 |-
 | Number of System Actors
 | SystemAnalysis
-| aql:self.eAllContents(ctx::Actor)->size()
+| aql:(self.eAllContents(ctx::SystemComponent)->select(c &#124; c.isActor()))->size()
+
 |-
 | Number of Functional Chains in SA
 | SystemAnalysis
 | aql:self.eAllContents(fa::FunctionalChain)->size()
+
 |-
 | Number of Scenarios in SA
 | SystemAnalysis
 | aql:self.eAllContents(interaction::Scenario)->size()
+
 |-
 | Number of Behaviour Components in PA
 | PhysicalArchitecture
-| aql:self.eAllContents(pa::PhysicalComponent)->select(eAllContent | eAllContent.nature = pa::PhysicalComponentNature::BEHAVIOR)->size()
+| aql:self.eAllContents(pa::PhysicalComponent)->select(eAllContent &#124; eAllContent.nature = pa::PhysicalComponentNature::BEHAVIOR)->size()
+
 |-
 | Number of Implementation PC (nodes) in PA
 | PhysicalArchitecture
-| aql:self.eAllContents(pa::PhysicalComponent)->select(eAllContent | eAllContent.nature = pa::PhysicalComponentNature::NODE)->size()
+| aql:self.eAllContents(pa::PhysicalComponent)->select(eAllContent &#124; eAllContent.nature = pa::PhysicalComponentNature::NODE)->size()
+
 |-
 | Number of Physical Links
 | PhysicalArchitecture
 | aql:self.eAllContents(cs::PhysicalLink)->size()
+
 |-
 | Number of Physical Ports
 | PhysicalArchitecture
