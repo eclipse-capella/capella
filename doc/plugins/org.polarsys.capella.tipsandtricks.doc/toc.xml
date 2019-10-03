@@ -154,6 +154,12 @@
       </topic>
       <topic href="html/Tips and tricks/16_Mass Editing and Visualization/16_Mass Editing and Visualization.html" label="16. Mass Editing and Visualization">
       </topic>
+      <topic href="html/Tips and tricks/17_Filtering of Capella capabilities/17_Filtering of Capella capabilities.html" label="17. Filtering of Capella capabilities">
+         <topic href="html/Tips and tricks/17_Filtering of Capella capabilities/17_Filtering of Capella capabilities.html#Deactivating_Capella_capabilities_via_the_Capabilities_preference_page" label="17.1. Deactivating Capella capabilities via the Capabilities preference page">
+         </topic>
+         <topic href="html/Tips and tricks/17_Filtering of Capella capabilities/17_Filtering of Capella capabilities.html#Sharing_the_Capella_capabilities_configuration_with_other_users" label="17.2. Sharing the Capella capabilities configuration with other users">
+         </topic>
+      </topic>
       	
       </topic>
 </toc>

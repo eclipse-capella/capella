@@ -1,0 +1,29 @@
+=Filtering of Capella capabilities=
+
+==Deactivating Capella capabilities via the Capabilities preference page==
+Capabilities allow us to enable or disable certain components of Capella product. Some categories of Capella functionalities have been predefined in the Capabilities preference page are:
+* '''Capella Advanced Modeling''' includes functionalities for advanced users, for instance the Expert property view
+* '''Capella Concepts''' includes functionalities concerning Capella System Engineering concepts, for instance the behavior component concept
+* '''Capella Phases''' includes functionalities available in different Capella phases, for instance the Operational Analysis phase.
+* '''Capella Tools''' includes various Capella tools, for instance the Transitions tool
+
+[[File:../../Images/CapellaCapabilitiesPreferencePage.png|thumbnail|900px]]
+
+Applying the change has an immediate effect on the tool, Capella functionalities will be activated or deactivated accordingly.
+
+==Sharing the Capella capabilities configuration with other users==
+Capabilities configuration can be shared among users via preference file (.epf). To export an .epf file to share with other users:
+* 1. Open the menu File > Export
+* 2. Select General/Preferences item
+* 3. Give a valid path to the epf file
+
+We can observe in the exported file that the Transitions activity has been disabled as follows: 
+
+[[File:../../Images/CapellaCapabilitiesEPFFile.png|thumbnail|900px]]
+
+To import an .epf shared by other users:
+* 1. Open the menu File > Import
+* 2. Select General/Preferences item
+* 3. Give the path to the shared epf file
+
+We can then observe that, for instance, the Transitions contextual menu is not accessible any more on Project Explorer.
