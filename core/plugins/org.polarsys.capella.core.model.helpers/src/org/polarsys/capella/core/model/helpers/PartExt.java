@@ -38,6 +38,7 @@ import org.polarsys.capella.core.data.helpers.fa.services.FunctionalExt;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink;
+import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 
 /**
  * Part helpers
@@ -287,6 +288,13 @@ public class PartExt {
       parents.addAll((Collection) directParent.getRepresentingParts());
     }
     return parents;
+  }
+  
+  public static boolean isDeployable(Part part) {
+    if (CapellaModelPreferencesPlugin.getDefault().isMultipleDeploymentAllowed()) {
+      return true;
+    }
+    return part.getDeployingParts().isEmpty();
   }
 
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_1.4.0-->
+<!--Capella_Version_null-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:org.eclipse.emf.diffmerge.patterns.core="http://org.eclipse.com/emf/diffmerge/patterns/core/1.0.0"
@@ -19,6 +19,7 @@
     xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.4.0"
     xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.4.0"
     xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.4.0"
+    xmlns:org.polarsys.capella.core.data.pa.deployment="http://www.polarsys.org/capella/core/pa/deployment/1.4.0"
     xmlns:org.polarsys.kitalpha.patterns.emde="http://www.polarsys.org/kitalpha/patterns/emde/1.0.0"
     id="794e6786-9355-4ae4-87a6-2734ede475dd"
     name="miscmodel">
@@ -1063,12 +1064,66 @@
           id="3dbda056-db8d-40aa-b505-c0aa41c4f683" name="Structure">
         <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="bf3c1440-1e14-497b-8327-13634e41af70"
             name="Physical System" abstractType="#6649e0be-1e19-433c-93df-47a8f8918750"/>
+        <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="a8750d8b-306f-45cc-bdeb-f76b96b2edf0"
+            name="actor node 1" abstractType="#729bf141-4075-421f-a3bc-0af4f5e3ff67">
+          <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
+              id="c3c8e4dd-072a-4610-907b-4200c054addb" deployedElement="#fd732e5b-c97a-42ae-8f5a-728ae461dcd3"
+              location="#a8750d8b-306f-45cc-bdeb-f76b96b2edf0"/>
+        </ownedParts>
+        <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="0e44969f-c24c-4d17-9af1-7fe78f28095a"
+            name="actor node 2" abstractType="#c491989d-d8fb-447f-b4b8-29ea4190c2b5"/>
         <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
             id="6649e0be-1e19-433c-93df-47a8f8918750" name="Physical System">
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="cb2dc068-1ffe-4004-8a21-26a1666b3242"
+              name="pc node 1" abstractType="#58375267-b126-4d8e-b1ae-31f1cbddaf9e">
+            <ownedDeploymentLinks xsi:type="org.polarsys.capella.core.data.pa.deployment:PartDeploymentLink"
+                id="b31d809b-5ce5-4ee3-b689-8df5cfecb331" deployedElement="#2672859e-d59f-4257-a3ee-f54916b1757c"
+                location="#cb2dc068-1ffe-4004-8a21-26a1666b3242"/>
+          </ownedFeatures>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="46440b74-f74d-4d3c-b133-ba0de76ff7dc"
+              name="pc node 2" abstractType="#49b9d739-5ee5-414a-b233-d1b420020f20"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="ba994f68-6c45-4968-a94a-757cabe11f6f"
+              name="pc behavior 2" abstractType="#2af366ae-f8a2-4b7f-93d1-6e18fd59ad81"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="616ac93b-ea21-40d9-a7ee-2288d068d0b6"
+              name="actor behavior 1" abstractType="#10ed2342-8332-45ae-801b-43673c6f8c1e"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="1c69c326-38b4-4e6f-a01d-74f0d268d0d8"
+              name="pc behavior 1" abstractType="#c7efebbb-b9de-440a-a3af-1583e5cec664"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="f4c803ce-9f5f-4aa8-a74e-0c8cf8500f12"
+              name="actor behavior 2" abstractType="#3eea84a2-f2a3-4efc-93f2-cf44dfc2020b"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="fd732e5b-c97a-42ae-8f5a-728ae461dcd3"
+              name="deployed pc node 1" abstractType="#579dcdaa-98a1-4c79-a2d9-64adc202319e"/>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="2672859e-d59f-4257-a3ee-f54916b1757c"
+              name="deployed actor node 1" abstractType="#f0eb97d1-919c-453a-909c-f3db749bff04"/>
           <ownedComponentRealizations xsi:type="org.polarsys.capella.core.data.cs:ComponentRealization"
               id="a88f156f-f4b4-48df-9569-89b9312fbfaa" targetElement="#030e91dc-441e-4107-b0ea-0b08acaccf13"
               sourceElement="#6649e0be-1e19-433c-93df-47a8f8918750"/>
+          <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+              id="58375267-b126-4d8e-b1ae-31f1cbddaf9e" name="pc node 1" nature="NODE"/>
+          <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+              id="49b9d739-5ee5-414a-b233-d1b420020f20" name="pc node 2" nature="NODE"/>
+          <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+              id="2af366ae-f8a2-4b7f-93d1-6e18fd59ad81" name="pc behavior 2" nature="BEHAVIOR"/>
+          <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+              id="10ed2342-8332-45ae-801b-43673c6f8c1e" name="actor behavior 1" actor="true"
+              nature="BEHAVIOR"/>
+          <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+              id="c7efebbb-b9de-440a-a3af-1583e5cec664" name="pc behavior 1" nature="BEHAVIOR"/>
+          <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+              id="3eea84a2-f2a3-4efc-93f2-cf44dfc2020b" name="actor behavior 2" actor="true"
+              nature="BEHAVIOR"/>
+          <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+              id="579dcdaa-98a1-4c79-a2d9-64adc202319e" name="deployed pc node 1"
+              nature="NODE"/>
+          <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+              id="f0eb97d1-919c-453a-909c-f3db749bff04" name="deployed actor node 1"
+              actor="true" nature="NODE"/>
         </ownedPhysicalComponents>
+        <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+            id="729bf141-4075-421f-a3bc-0af4f5e3ff67" name="actor node 1" actor="true"
+            nature="NODE"/>
+        <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
+            id="c491989d-d8fb-447f-b4b8-29ea4190c2b5" name="actor node 2" actor="true"
+            nature="NODE"/>
       </ownedPhysicalComponentPkg>
       <ownedLogicalArchitectureRealizations xsi:type="org.polarsys.capella.core.data.pa:LogicalArchitectureRealization"
           id="65800a74-3da3-46d9-ac2e-dd2af59a25d7" targetElement="#6423fb82-eda3-42be-a0ad-bb121fee03ce"

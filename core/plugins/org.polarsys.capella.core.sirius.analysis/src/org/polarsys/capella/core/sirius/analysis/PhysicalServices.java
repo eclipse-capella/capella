@@ -160,7 +160,8 @@ public class PhysicalServices {
   public List<EObject> getAvailableComponentsToDeploy(Part context) {
     IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(CsPackage.Literals.PART,
         CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__DEPLOYED_ELEMENT);
-    return query.getAvailableElements(context);
+    List<EObject> availableElements = query.getAvailableElements(context);
+    return availableElements;
   }
 
   public List<EObject> getDeployedComponents(EObject context) {
