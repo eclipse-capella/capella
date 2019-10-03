@@ -223,6 +223,9 @@
       <activityPatternBinding pattern="org.polarsys.capella.core.platform.sirius.ui.*accelerator.*" activityId="org.polarsys.capella.activities.accelerator" />
       <activityPatternBinding pattern="org.polarsys.capella.core.transfo.*accelerator.*" activityId="org.polarsys.capella.activities.accelerator" />
       <activityPatternBinding pattern="org.polarsys.capella.core.sirius.*accelerator.*" activityId="org.polarsys.capella.activities.accelerator" />
+      <activityPatternBinding pattern=".*functions.from.mode.state.*" activityId="org.polarsys.capella.activities.accelerator" />
+      <activityPatternBinding pattern=".*elements.from.scenario.*" activityId="org.polarsys.capella.activities.accelerator" />
+      <activityPatternBinding pattern=".*initialization.from.existing.diagram.*" activityId="org.polarsys.capella.activities.accelerator" />
       
       
       
