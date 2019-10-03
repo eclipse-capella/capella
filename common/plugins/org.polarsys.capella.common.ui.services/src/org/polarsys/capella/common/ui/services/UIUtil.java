@@ -25,6 +25,7 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
 /**
  * 
  */
+@Deprecated
 public class UIUtil {
   private static IDiagramServices diagramServices = null;
 

@@ -13,6 +13,7 @@ package org.polarsys.capella.common.ui.services;
 
 import org.eclipse.emf.ecore.EObject;
 
+@Deprecated
 public interface ISelectorInPackageExplorer {
   public void selectInPackageExplorer(EObject element);
 }

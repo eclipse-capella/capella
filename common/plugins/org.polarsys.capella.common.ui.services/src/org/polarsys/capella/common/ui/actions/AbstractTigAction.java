@@ -29,6 +29,7 @@ import org.polarsys.capella.common.helpers.TransactionHelper;
 
 /**
  */
+@Deprecated
 public abstract class AbstractTigAction extends AbstractHandler implements IObjectActionDelegate {
   /**
    * Current _selection.
