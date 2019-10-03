@@ -279,7 +279,8 @@ These followings icons are made available under the terms of the Eclipse Public 
 /icons/full/obj16/ComplexValueReference.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/ComplexValueReference.gif
 /icons/full/obj16/Entity.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/Entity.gif
 /icons/full/obj16/MissionPkg.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/fldr_obj.gif
-/icons/full/obj16/PhysicalActor.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/PhysicalActor.gif
+/icons/full/obj16/PhysicalActorNode.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/PhysicalActorNode.gif
+/icons/full/obj16/PhysicalActorNode.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/PhysicalActorBehavior.gif
 /icons/full/obj16/PhysicalLink.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/PhysicalLink.gif
 /icons/full/obj16/ConfigurationItemPkg.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/fldr_obj.gif
 /icons/full/obj16/PhysicalPathRealization.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/PhysicalPathRealization.gif
@@ -318,4 +319,7 @@ These followings icons are made available under the terms of the Eclipse Public 
 /icons/full/obj16/PhysicalComponentHumanNode.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/PhysicalComponentHumanNode.gif
 /icons/full/obj16/SystemActor.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/SystemActor.gif
 /icons/full/obj16/SystemActorHuman.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/SystemActorHuman.gif
-/icons/full/obj16/PhysicalComponentHumanUnset.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/PhysicalComponentHumanUnset.gif 
+/icons/full/obj16/PhysicalComponentHumanUnset.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/PhysicalComponentHumanUnset.gif
+/icons/full/obj16/CapabilityInvolvement.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/CapabilityInvolvement.gif
+/icons/full/obj16/CapabilityRealizationInvolvement.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/CapabilityRealizationInvolvement.gif
+/icons/full/obj16/MissionInvolvement.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/MissionInvolvement.gif 

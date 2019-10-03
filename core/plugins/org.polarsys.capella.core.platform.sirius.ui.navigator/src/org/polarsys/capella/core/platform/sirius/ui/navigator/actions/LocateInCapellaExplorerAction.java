@@ -30,6 +30,7 @@ import org.eclipse.ui.part.IShowInTarget;
 import org.eclipse.ui.part.ShowInContext;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
+import org.polarsys.capella.core.model.utils.NamingHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 
@@ -67,11 +68,12 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
     goToAction.shouldIgnoreWorkbenchPartSite(true);
 
     if (useElementIcon) {
-      action.setImageDescriptor(ExtendedImageRegistry.getInstance().getImageDescriptor(EObjectLabelProviderHelper.getImage(referenced)));
+      action.setImageDescriptor(
+          ExtendedImageRegistry.getInstance().getImageDescriptor(EObjectLabelProviderHelper.getImage(referenced)));
     } else {
       action.setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor("capella_16.png"));
     }
-    action.setText(NLS.bind(message, EObjectLabelProviderHelper.getText(referenced)));
+    action.setText(NLS.bind(message, NamingHelper.getDefaultTitle(referenced)));
     return action;
   }
 
@@ -104,6 +106,7 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
    * 
    * @see org.eclipse.ui.IViewActionDelegate#init(org.eclipse.ui.IViewPart)
    */
+  @Override
   public void init(IViewPart view) {
     site = view.getSite();
   }
@@ -111,10 +114,11 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
   /**
    * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
    */
+  @Override
   public void run(IAction action) {
     if (ignoreWorkbenchPartSite || (null != site)) {
       if (selection instanceof IStructuredSelection) {
-          selectElementInCapellaExplorer(selection);
+        selectElementInCapellaExplorer(selection);
       }
     }
   }
@@ -127,7 +131,7 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
   protected void selectElementInCapellaExplorer(ISelection selection) {
     IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
     if (window != null) {
-      IViewPart part = window.getActivePage().findView(CapellaCommonNavigator.ID); //$NON-NLS-1$
+      IViewPart part = window.getActivePage().findView(CapellaCommonNavigator.ID); // $NON-NLS-1$
       if (part != null) {
         IShowInTarget showInTarget = part.getAdapter(IShowInTarget.class);
         showInTarget.show(new ShowInContext(null, selection));
@@ -139,6 +143,7 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
    * @see org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.IAction,
    *      org.eclipse.jface.viewers.ISelection)
    */
+  @Override
   public void selectionChanged(IAction action, ISelection selection) {
     // Do nothing here since we'd prefer getting the selection in a lazy way.
     this.selection = selection;
@@ -148,6 +153,7 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
    * @see org.eclipse.ui.IObjectActionDelegate#setActivePart(org.eclipse.jface.action.IAction,
    *      org.eclipse.ui.IWorkbenchPart)
    */
+  @Override
   public void setActivePart(IAction action, IWorkbenchPart targetPart) {
     this.site = targetPart.getSite();
   }

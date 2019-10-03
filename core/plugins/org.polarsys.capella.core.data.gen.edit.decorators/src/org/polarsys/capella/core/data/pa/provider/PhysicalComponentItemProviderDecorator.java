@@ -35,7 +35,11 @@ public class PhysicalComponentItemProviderDecorator extends AbstractPhysicalComp
       if (component.isHuman()) {
         imagePath = "full/obj16/PhysicalActorHuman";
       } else {
-        imagePath = "full/obj16/PhysicalActor";
+        if (component.getNature() == PhysicalComponentNature.BEHAVIOR) {
+          imagePath = "full/obj16/PhysicalActorBehavior";
+        } else {
+          imagePath = "full/obj16/PhysicalActorNode";
+        }
       }
     } else {
       if (component.getNature() == PhysicalComponentNature.NODE) {
