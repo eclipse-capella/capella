@@ -8,7 +8,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 | [[Image:Images/icons/full/obj16/Constraint.gif]]
 | 		Create a new Constraint.
 |-
-| 	ConstraintElementScenario
+| 	ConstraintElement
 | [[Image:Images/icons/full/obj16/ClassCarries.gif]]
 | 		Allocate a Source Constraint to an available Target Capella Element.
 |-
@@ -26,7 +26,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 |}
 
 
-== Activity Interaction Scenario ==
+== Activity Scenario ==
                                                                                                                                                                                                                                     
 {| border="1"
 |-
@@ -84,6 +84,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 |}
 === Sample ===
 [[Image:Images/diagrams/EOLE/OAS_Operational Activity Scenario.jpg|Sample will be available soon]]    
+
 == Capability Realization Blank ==
                                                                                                                                                                                                                                                                                                     
 {| border="1"
@@ -166,36 +167,9 @@ This section lists tools that are available on all Capella diagrams. These tools
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/CRB_Capability Realization Blank.jpg|Sample will be available soon]]    
-== Capability Realization Refinement ==
-            
-=== Sample ===
-[[Image:Images/diagrams/EOLE/CRR_Capability Realization Refinement.jpg|Sample will be available soon]]    
-== Capella Architecture ==
-                                                                                                                                                                                                         
-{| border="1"
-|-
-| 	Operational Analysis 	
-| [[Image:Images/icons/full/obj16/OperationalAnalysis.gif]] 
-| 
-|-
-| 	System Analysis 	
-| [[Image:Images/icons/full/obj16/SystemAnalysis.gif]] 
-| 
-|-
-| 	Logical Architecture 	
-| [[Image:Images/icons/full/obj16/LogicalArchitecture.gif]] 
-| 
-|-
-| 	Physical Architecture 	
-| [[Image:Images/icons/full/obj16/PhysicalArchitecture.gif]] 
-| 
-|-
-| 	EPBS Architecture 	
-| [[Image:Images/icons/full/obj16/EPBSArchitecture.gif]] 
-| 
-|}    
-=== Sample ===
-[[Image:Images/diagrams/EOLE/Capella Architecture.jpg|Sample will be available soon]]    
+
+== Capability Realization Refinement [DEPRECATED] ==
+   
 == Class Diagram Blank ==
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 {| border="1"
@@ -410,7 +384,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/CDB_Class Diagram Blank.jpg|Sample will be available soon]]    
-== Component Exchanges Scenario ==
+== Exchange Scenario ==
                                                                                                                                                                                                                                                                                                                                                                                                                               
 {| border="1"
 |-
@@ -530,7 +504,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/ES_Exchange Scenario.jpg|Sample will be available soon]]    
-== Component Interfaces Scenario ==
+== Interface Scenario ==
                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
 {| border="1"
 |-
@@ -975,7 +949,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 | 		Insert/Remove Exchange Items. Removing an Exchange Item graphical object from a diagram does not delete the Exchange Item from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
-[[Image:Images/diagrams/EOLE/CEI_ Contextual Component External Interfaces.jpg|Sample will be available soon]]    
+[[Image:Images/diagrams/EOLE/CEI_Contextual Component External Interfaces.jpg|Sample will be available soon]]    
 == Contextual Component Internal Interfaces ==
                                                                                                                                                                                                                                                                                                                                                                                                                             
 {| border="1"
@@ -1164,8 +1138,6 @@ This section lists tools that are available on all Capella diagrams. These tools
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		Insert/Remove Relationships 	
 |}    
-=== Sample ===
-[[Image:Images/diagrams/EOLE/COC_Contextual Operational Capabilty.jpg|Sample will be available soon]]    
 == Contextual System Actors ==
                                                                                         
 {| border="1"
@@ -1554,7 +1526,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 {| border="1"
 |-
 | 	Logical Component 	
-| [[Image:Images/icons/full/obj16/PhysicalObject.gif]] 
+| [[Image:Images/icons/full/obj16/LogicalActor.gif]] 
 | 		Creates a new Logical Component and a Part typed by this Logical Component.  The Part is created in the Component target of the click. 	
 |-
 | 	Reuse Logical Component 	
@@ -2628,11 +2600,11 @@ This section lists tools that are available on all Capella diagrams. These tools
 | 		&#91;Unsynchronized diagrams only&#93; Creates or deletes graphical objects corresponding to Physical Ports. This tool does not modify the semantic model. 	
 |-
 | 	Deploy Behavior PC 	
-| [[Image:Images/icons/full/obj16/PhysicalComponent.gif]] 
+| [[Image:Images/icons/full/obj16/PhysicalComponentBehavior.gif]] 
 | 		Creates a new Physlcal Component with a Kind BEHAVIOR and deployed on the target Physical Component. 	
 |-
 | 	Behavior PC 	
-| [[Image:Images/icons/full/obj16/PhysicalComponent.gif]] 
+| [[Image:Images/icons/full/obj16/PhysicalComponentBehavior.gif]] 
 | 		Creates a new Physical Component with a Kind BEHAVIOR and a Part typed by this Physical Component. The Part is created in the Component target of the click. 	
 |-
 | 	Reuse PC 	
@@ -2806,7 +2778,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 | 		Creates a new Node Physical Component in the target Physical Component 	
 |-
 | 	Behavior PC 	
-| [[Image:Images/icons/full/obj16/PhysicalComponent.gif]] 
+| [[Image:Images/icons/full/obj16/PhysicalComponentBehavior.gif]] 
 | 		Creates a new Behavior Physical Component in the target Physical Component 	
 |-
 | 	Contained In 	
@@ -2963,14 +2935,12 @@ This section lists tools that are available on all Capella diagrams. These tools
 | [[Image:Images/icons/full/obj16/PhysicalPathReference.gif]] 
 | 		Creates two new steps respectively referencing one existing outgoing Physical Link and a target Physical Path. 	
 |}    
-=== Sample ===
-[[Image:Images/diagrams/EOLE/PPD_Physical Path Description.jpg|Sample will be available soon]]    
 == System Architecture Blank ==
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
 {| border="1"
 |-
 | 	Actor 	
-| [[Image:Images/icons/full/obj16/PhysicalObject.gif]] 
+| [[Image:Images/icons/full/obj16/Actor.gif]] 
 | 		Create an Actor and its Part 	
 |-
 | 	Reuse Actor 	

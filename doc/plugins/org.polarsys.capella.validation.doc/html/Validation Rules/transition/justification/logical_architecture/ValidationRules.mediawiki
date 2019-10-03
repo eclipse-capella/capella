@@ -1,52 +1,37 @@
       
-= > Validation Rules > capella.category > transition > justification > logical_architecture =
-            
-<br> 
-   {| cellpadding="6" style="max-width:100%; white-space:nowrap;"|-
-! |[[Image:../../../../Images/warning.gif|WARNING]]
-|   TJ_LA_01 - Capability realization refinement check 1 
+= Transition > Justification > Logical Architecture =
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|TJ_LA_01 - Capability realization refinement check 1 
 |-
-| colspan="2" |This rule checks that a Capability Realization is linked from a source CapabilityRealization or Capability. 
-|}            
-<br> 
-   {| cellpadding="6" style="max-width:100%; white-space:nowrap;"|-
-! |[[Image:../../../../Images/warning.gif|WARNING]]
-|   TJ_LA_02 - Capability refinement check 
+| colspan="2"|This rule checks that a Capability Realization is linked from a source CapabilityRealization or Capability.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|TJ_LA_02 - Capability refinement check 
 |-
-| colspan="2" |This rule checks that a Capability is refined toward a CapabilityRealization in LogicalArchitecture layer. 
-|}            
-<br> 
-   {| cellpadding="6" style="max-width:100%; white-space:nowrap;"|-
-! |[[Image:../../../../Images/warning.gif|WARNING]]
-|   TJ_LA_03 - System Function Realization 
+| colspan="2"|This rule checks that a Capability is refined toward a CapabilityRealization in LogicalArchitecture layer.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|TJ_LA_03 - System Function Realization 
 |-
-| colspan="2" |This rule checks that a System Function is realized by at least one Logical Function. 
-|}            
-<br> 
-   {| cellpadding="6" style="max-width:100%; white-space:nowrap;"|-
-! |[[Image:../../../../Images/error.gif|ERROR]]
-|   TJ_LA_04 - System Realization 
+| colspan="2"|This rule checks that a System Function is realized by at least one Logical Function.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/error.gif|ERROR]]
+|TJ_LA_05 - System Analysis Realization 
 |-
-| colspan="2" |This rule checks the realization consistency between Logical Component and System. 
-|}            
-<br> 
-   {| cellpadding="6" style="max-width:100%; white-space:nowrap;"|-
-! |[[Image:../../../../Images/error.gif|ERROR]]
-|   TJ_LA_05 - System Analysis Realization 
+| colspan="2"|This rule checks the realization consistency between Logical Architecture and System Analysis.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|TJ_LA_06 - System Component Realized by Logical Component 
 |-
-| colspan="2" |This rule checks the realization consistency between Logical Architecture and System Analysis. 
-|}            
-<br> 
-   {| cellpadding="6" style="max-width:100%; white-space:nowrap;"|-
-! |[[Image:../../../../Images/warning.gif|WARNING]]
-|   TJ_LA_06 - System Actor Realized by Logical Actor 
-|-
-| colspan="2" |This rule ensures that an Actor is realized by at least one Logical Actor. 
-|}            
-<br> 
-   {| cellpadding="6" style="max-width:100%; white-space:nowrap;"|-
-! |[[Image:../../../../Images/warning.gif|WARNING]]
-|   TJ_LA_07 - Logical Actor to System Actor Realization 
-|-
-| colspan="2" |This rule ensures that a Logical Actor realizes at least one System Actor. 
-|}   
+| colspan="2"|This rule ensures that an System Component is realized by at least one Logical Component.
+|}

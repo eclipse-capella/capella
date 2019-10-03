@@ -1,60 +1,107 @@
       
-= > Validation Rules > capella.category > design > well-formedness > dataflows =
-            
-<br>         
+= Design > Well-formedness > Dataflows =
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
-| DWF_DF_01 - A duplicate or a split function must have only one incoming exchange 
+|DWF_DF_01 - A duplicate or a split function must have only one incoming exchange 
 |-
-| colspan="2" |This rule checks that a duplicate or a split function have only one incoming exchange. 
-|}            
-<br>         
+| colspan="2"|This rule checks that a duplicate or a split function have only one incoming exchange.
+|}
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
-| DWF_DF_02 - A gather function must have only one outgoing exchange 
+|DWF_DF_02 - A gather function must have only one outgoing exchange 
 |-
-| colspan="2" |This rule checks that a gather function must have only one outgoing exchange. 
-|}          
-<br>           
+| colspan="2"|This rule checks that a gather function must have only one outgoing exchange.
+|}
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
 |DWF_DF_03 - Functional chain check 
 |-
-| colspan="2"|This rule checks that a FunctionalChain is valid. 
-|}           
-<br>          
+| colspan="2"|This rule checks that a FunctionalChain is valid.
+|}
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
-| DWF_DF_04 - Functional chain involvement check 1 
+|DWF_DF_04 - Functional chain involvement check 1 
 |-
-| colspan="2"|This rule checks that a Functional Chain Involvement only involves an Abstract Function, a Functional Exchange or a Functional Chain. 
-|}      
-<br>         
+| colspan="2"|This rule checks that a Functional Chain Involvement only involves an Abstract Function, a Functional Exchange or a Functional Chain.
+|}
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
-| DWF_DF_05 - Functional chain involved functions active in state 
+|DWF_DF_05 - Functional chain involved functions active in state 
 |-
-| colspan="2"|This check ensures that all the functions involved in FunctionalChain are also active in modes and states as FunctionChain. 
-|}            
-<br>         
+| colspan="2"|This check ensures that all the functions involved in FunctionalChain are also active in modes and states as FunctionChain.
+|}
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
-| DWF_DF_06 - Functional Exchange location check 
+|DWF_DF_06 - Functional Exchange location check 
 |-
-| colspan="2"|This rule ensures that Functional Exchange is located in the common ancestor between its source/target elements. 
-|}       
-<br>              
-{| class="VALIDATION-RULE"
-|-
-!|[[Image:../../../../Images/error.gif|ERROR]]
-| DWF_DF_12 - A duplicate, a gather, a route, a select or a split function must be a leaf function 
-|-
-| colspan="2"|This rule check that a duplicate, a gather, a route, a select or a split function must be a leaf function. 
-|}       
-<br>              
+| colspan="2"|This rule ensures that Functional Exchange is located in the common ancestor between its source/target elements.
+|}
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
-|  DWF_DF_14 - Functional chain involvement allocated exchange items 
+|DWF_DF_12 - A duplicate, a gather, a route, a select or a split function must be a leaf function 
 |-
-| colspan="2"|This rule ensures that a functional chain involvement does not allocate exchange items which are not allocated by involved functional exchange. 
-|}   
+| colspan="2"|This rule check that a duplicate, a gather, a route, a select or a split function must be a leaf function.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/error.gif|ERROR]]
+|DWF_DF_14 - Functional chain involvement allocated exchange items 
+|-
+| colspan="2"|This rule ensures that a functional chain involvement does not allocate exchange items which are not allocated by involved functional exchange.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|DWF_DF_15 - SequenceLinks between the referenced Involvement Functions/OperationalActivities have no Involvement Links referencing them 
+|-
+| colspan="2"|This check ensures that SequenceLinks between the referenced Involvement Functions have Involvement Links referencing them.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|DWF_DF_16 - SequenceLink has empty condition 
+|-
+| colspan="2"|This rule checks if there is an empty condition on the SequenceLink.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|DWF_DF_17 - SequenceLink between two adjacent Control Nodes without a FunctionalChainInvolvementFunction 
+|-
+| colspan="2"|This rule checks if there is a Sequence Link between two adjacent ControlNodes without a FunctionalChainInvolvementFunction.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|DWF_DF_18 - SequenceLink with no associated FunctionalChainInvolvementLinks 
+|-
+| colspan="2"|This rule checks if a SequenceLink has associated FunctionalChainInvolvementLinks.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/error.gif|ERROR]]
+|DWF_DF_19 - SequenceLink with inconsistent associated FunctionalChainInvolvementLinks 
+|-
+| colspan="2"|This rule checks if a SequenceLink has inconsistent associated FunctionalChainInvolvementLinks.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/error.gif|ERROR]]
+|DWF_DF_20 - SequenceLink between the referenced Involvement Functions/OperationalActivities is in opposite direction to Involvement Links referencing them 
+|-
+| colspan="2"|This rule checks if a SequenceLink between the referenced Involvement Functions/OperationalActivities is in opposite direction to a Involvement Links referencing them.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|DWF_DF_21 - Control Nodes inconsistent operations 
+|-
+| colspan="2"|This rule checks the ControlNode construction inconsistencies. A ControlNode is valid if it has one IN and two OUT links or two IN and one OUT link.
+|}

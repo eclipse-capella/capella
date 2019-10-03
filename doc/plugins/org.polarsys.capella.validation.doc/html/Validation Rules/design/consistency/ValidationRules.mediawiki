@@ -1,18 +1,51 @@
       
-= > Validation Rules > capella.category > design > consistency =
-
-<br>         
+= Design > Consistency =
+<br>
 {| class="VALIDATION-RULE"
-![[Image:../../../Images/warning.gif|WARNING]]
-|DCON_01 - Pattern Conformance  
+!|[[Image:../../../Images/warning.gif|WARNING]]
+|DCON_01 - Pattern Conformance 
 |-
-| colspan="2"|The rule checks that model elements which are bound to a pattern conform to the pattern.  
-|}     
-<br>  
-
+| colspan="2"|The rule checks that model elements which are bound to a pattern conform to the pattern.
+|}
+<br>
 {| class="VALIDATION-RULE"
-![[Image:../../../Images/warning.gif|WARNING]]
-|DCON_02 - RPL to REC conformance  
+!|[[Image:../../../Images/warning.gif|WARNING]]
+|DCON_02 - RPL to REC conformance 
 |-
-| colspan="2"|This rule check if a RPL is up to date compared to its origin REC.  
-|} 
+| colspan="2"|This rule checks if a RPL is up to date compared to its origin REC.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../Images/warning.gif|WARNING]]
+|DCON_03 - Invalid pattern instance 
+|-
+| colspan="2"|The rule checks if pattern instances still point to existing Capella elements.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../Images/warning.gif|WARNING]]
+|DCON_04 - RPL/REC_RPL without REC 
+|-
+| colspan="2"|This rule checks if a RPL or REC_RPL has no REC.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../Images/warning.gif|WARNING]]
+|DCON_05 - REC might not have any RPL instance 
+|-
+| colspan="2"|This rule checks if a REC might not be utilised in a RPL.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../Images/warning.gif|WARNING]]
+|DCON_06 - REC_RPL might not have any RPL instance 
+|-
+| colspan="2"|This rule checks if a REC_RPL might not be utilised in a RPL.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../Images/error.gif|ERROR]]
+|DCON_07 - RPL shall not reference an element of its REC 
+|-
+| colspan="2"|This rule checks if a RPL references an element which is also referenced by its REC
+|}

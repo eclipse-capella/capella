@@ -2,12 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<link rel="stylesheet" type="text/css" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css" media="all" />
+		<title>ValidationRules</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
 	</head>
 	<body>
-		<h1 id=".3E_Validation_Rules_.3E_capella.category_.3E_design_.3E_well-formedness_.3E_dataflows">&gt; Validation Rules &gt; capella.category &gt; design &gt; well-formedness &gt; dataflows</h1>
+		<h1 id="Design_.3E_Well-formedness_.3E_Dataflows">Design &gt; Well-formedness &gt; Dataflows</h1>
 		<p>
-			<br/>         
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
@@ -17,11 +18,11 @@
 				<td>DWF_DF_01 - A duplicate or a split function must have only one incoming exchange </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks that a duplicate or a split function have only one incoming exchange. </td>
+				<td colspan="2">This rule checks that a duplicate or a split function have only one incoming exchange.</td>
 			</tr>
 		</table>
 		<p>
-			<br/>         
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
@@ -31,11 +32,11 @@
 				<td>DWF_DF_02 - A gather function must have only one outgoing exchange </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks that a gather function must have only one outgoing exchange. </td>
+				<td colspan="2">This rule checks that a gather function must have only one outgoing exchange.</td>
 			</tr>
 		</table>
 		<p>
-			<br/>           
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
@@ -45,11 +46,11 @@
 				<td>DWF_DF_03 - Functional chain check </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks that a FunctionalChain is valid. </td>
+				<td colspan="2">This rule checks that a FunctionalChain is valid.</td>
 			</tr>
 		</table>
 		<p>
-			<br/>          
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
@@ -59,11 +60,11 @@
 				<td>DWF_DF_04 - Functional chain involvement check 1 </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks that a Functional Chain Involvement only involves an Abstract Function, a Functional Exchange or a Functional Chain. </td>
+				<td colspan="2">This rule checks that a Functional Chain Involvement only involves an Abstract Function, a Functional Exchange or a Functional Chain.</td>
 			</tr>
 		</table>
 		<p>
-			<br/>         
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
@@ -73,11 +74,11 @@
 				<td>DWF_DF_05 - Functional chain involved functions active in state </td>
 			</tr>
 			<tr>
-				<td colspan="2">This check ensures that all the functions involved in FunctionalChain are also active in modes and states as FunctionChain. </td>
+				<td colspan="2">This check ensures that all the functions involved in FunctionalChain are also active in modes and states as FunctionChain.</td>
 			</tr>
 		</table>
 		<p>
-			<br/>         
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
@@ -87,11 +88,11 @@
 				<td>DWF_DF_06 - Functional Exchange location check </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule ensures that Functional Exchange is located in the common ancestor between its source/target elements. </td>
+				<td colspan="2">This rule ensures that Functional Exchange is located in the common ancestor between its source/target elements.</td>
 			</tr>
 		</table>
 		<p>
-			<br/>              
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
@@ -101,11 +102,11 @@
 				<td>DWF_DF_12 - A duplicate, a gather, a route, a select or a split function must be a leaf function </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule check that a duplicate, a gather, a route, a select or a split function must be a leaf function. </td>
+				<td colspan="2">This rule check that a duplicate, a gather, a route, a select or a split function must be a leaf function.</td>
 			</tr>
 		</table>
 		<p>
-			<br/>              
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
@@ -115,7 +116,105 @@
 				<td>DWF_DF_14 - Functional chain involvement allocated exchange items </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule ensures that a functional chain involvement does not allocate exchange items which are not allocated by involved functional exchange. </td>
+				<td colspan="2">This rule ensures that a functional chain involvement does not allocate exchange items which are not allocated by involved functional exchange.</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+		</p>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th>
+					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
+				</th>
+				<td>DWF_DF_15 - SequenceLinks between the referenced Involvement Functions/OperationalActivities have no Involvement Links referencing them </td>
+			</tr>
+			<tr>
+				<td colspan="2">This check ensures that SequenceLinks between the referenced Involvement Functions have Involvement Links referencing them.</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+		</p>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th>
+					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
+				</th>
+				<td>DWF_DF_16 - SequenceLink has empty condition </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks if there is an empty condition on the SequenceLink.</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+		</p>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th>
+					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
+				</th>
+				<td>DWF_DF_17 - SequenceLink between two adjacent Control Nodes without a FunctionalChainInvolvementFunction </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks if there is a Sequence Link between two adjacent ControlNodes without a FunctionalChainInvolvementFunction.</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+		</p>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th>
+					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
+				</th>
+				<td>DWF_DF_18 - SequenceLink with no associated FunctionalChainInvolvementLinks </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks if a SequenceLink has associated FunctionalChainInvolvementLinks.</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+		</p>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../../Images/error.gif"/>
+				</th>
+				<td>DWF_DF_19 - SequenceLink with inconsistent associated FunctionalChainInvolvementLinks </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks if a SequenceLink has inconsistent associated FunctionalChainInvolvementLinks.</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+		</p>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../../Images/error.gif"/>
+				</th>
+				<td>DWF_DF_20 - SequenceLink between the referenced Involvement Functions/OperationalActivities is in opposite direction to Involvement Links referencing them </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks if a SequenceLink between the referenced Involvement Functions/OperationalActivities is in opposite direction to a Involvement Links referencing them.</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+		</p>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th>
+					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
+				</th>
+				<td>DWF_DF_21 - Control Nodes inconsistent operations </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks the ControlNode construction inconsistencies. A ControlNode is valid if it has one IN and two OUT links or two IN and one OUT link.</td>
 			</tr>
 		</table>
 	</body>

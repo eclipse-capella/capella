@@ -1,25 +1,23 @@
       
-= > Validation Rules > capella.category > quality =
-            
-<br> 
-  {| class="VALIDATION-RULE"|-
-! |[[Image:../../Images/warning.gif|WARNING]]
-|   Q_01 - Mandatory summaries 
+= Quality =
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/warning.gif|WARNING]]
+|Q_01 - Mandatory summaries 
 |-
-| colspan="2" |This rule checks that Functions, Components, Actors, Functional Exchanges and Component Exchanges must have a summary. 
-|}            
-<br> 
-  {| class="VALIDATION-RULE"|-
-! |[[Image:../../Images/warning.gif|WARNING]]
-|    Q_02 - Mandatory descriptions 
+| colspan="2"|This rule checks that Functions, Components, Actors, Functional Exchanges and Component Exchanges must have a summary.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/warning.gif|WARNING]]
+|Q_02 - Mandatory descriptions 
 |-
-| colspan="2" |This rule checks that Functions, Components, Actors, Functional Exchanges and Component Exchanges have a description. 
-
-|}            
-<br> 
-  {| class="VALIDATION-RULE"|-
-! |[[Image:../../Images/warning.gif|WARNING]]
-|   Q_03 - Review Field Not Empty 
+| colspan="2"|This rule checks that Functions, Components, Actors, Functional Exchanges and Component Exchanges have a description.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/warning.gif|WARNING]]
+|Q_03 - Review Field Not Empty 
 |-
-| colspan="2" |This rule ensures that review field of an element is always empty. 
-|}   
+| colspan="2"|This rule ensures that review field of an element is always empty.
+|}

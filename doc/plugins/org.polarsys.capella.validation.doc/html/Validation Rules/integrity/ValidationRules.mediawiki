@@ -1,268 +1,270 @@
       
-= > Validation Rules > capella.category > integrity =
-            
-<br> 
+= Integrity =
+<br>
 {| class="VALIDATION-RULE"
-! |[[Image:../../Images/warning.gif|WARNING]]
-|   I_01 - Unnamed Association 
+!|[[Image:../../Images/warning.gif|WARNING]]
+|I_01 - Unnamed Association 
 |-
-| colspan="2" |This rule ensures that an association has a name. 
-|}            
-<br> 
+| colspan="2"|This rule ensures that an association has a name.
+|}
+<br>
 {| class="VALIDATION-RULE"
-! |[[Image:../../Images/warning.gif|WARNING]]
-| I_02 - Naming conflicts check 2 
+!|[[Image:../../Images/warning.gif|WARNING]]
+|I_02 - Naming conflicts check 2 
 |-
-|colspan="2" |NOTE: This constraint is replaced by "I_19 - Name conflict" and thus disabled by default.  This rule checks that an element doesn't contain a naming conflict between different types of elements in the same package. 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-! |[[Image:../../Images/warning.gif|WARNING]]
-|   I_03 - Logical Actor Realization 
-|-
-| colspan="2" |This rule Ensures that Logical Actor always realizes a Sytem Actor. 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-! |[[Image:../../Images/warning.gif|WARNING]]
-|   I_04 - System Actor Realizationtion 
-|-
-| colspan="2" |This rule Ensures that System Actor always realizes an Entity (that is aslo an Operational Actor). 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-|-
-! |[[Image:../../Images/error.gif|ERROR]]
-|   I_05 - Operational Entity Realization 
-|-
-| colspan="2" |This rule ensures that Operational Entities Realizations always have Actor or System instances as source and Operational Entity instances as target. 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-! |[[Image:../../Images/warning.gif|WARNING]]
-|  |   I_06 - Physical Actor Realization 
-|-
-| colspan="2" |This rule Ensures that Physical Actor always realizes a Logical Actor. 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-! |[[Image:../../Images/warning.gif|WARNING]]
-|   I_07 - Diagram Naming conflicts check 
-|-
-| colspan="2" |This rule checks  that a diagram doesn't contain a naming conflict. 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-! |[[Image:../../Images/warning.gif|WARNING]]
-|   I_08 - Naming conflicts check 1 
-|-
-| colspan="2" |NOTE: This constraint is replaced by "I_19 - Name conflict" and thus disabled by default.  This rule checks that an element doesn't contain a naming conflict. Usually this means that two elements in the same container cannot have the same name, e.g. one cannot create two classes in a package and assign them identical names. Below we list the special cases:  ExchangeItems Two exchange items that share a common container have conflicting names if both have the same name, and the order, number and type of their ExchangeItemElements is identical. 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-! |[[Image:../../Images/warning.gif|WARNING]]
-|  I_09 - Exchanges Naming conflicts check 1 
-|-
-| colspan="2" |This rule ensures that an element doesn't contain a naming conflict. This rule only applies to exchanges (Component Exchanges, Physical Links and Functional Exchanges) which have the same source (Component / function), the same target (Component / function) and the same name. 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-|-
-! |[[Image:../../Images/warning.gif|WARNING]]
-|   I_10 - Unnamed Element 
-|-
-| colspan="2" |This rule checks that an element has a name and does not contain a naming conflict. This rule does not check ExchangeItemAllocations and DataValues. 
+| colspan="2"|NOTE: This constraint is replaced by "I_19 - Name conflict" and thus disabled by default.
 
-|}            
-<br> 
+This rule checks that an element doesn't contain a naming conflict between different types of elements in the same package.
+|}
+<br>
 {| class="VALIDATION-RULE"
-! |[[Image:../../Images/error.gif|ERROR]]
-|   I_11 - Requirement ID check 
+!|[[Image:../../Images/error.gif|ERROR]]
+|I_05 - Component Realization consistency 
 |-
-| colspan="2" |This rule checks that all Requirements have a unique ID attribute. 
-|}            
-<br> 
+| colspan="2"|This rule ensures that Component Realization Realizations always have consistent Source and Target.
+|}
+<br>
 {| class="VALIDATION-RULE"
-! |[[Image:../../Images/error.gif|ERROR]]
-|   I_12 - Function Realization 
+!|[[Image:../../Images/warning.gif|WARNING]]
+|I_06 - Physical Component Realization 
 |-
-| colspan="2" |This test checks the realization consistency between functions. 
-|}            
-<br> 
+| colspan="2"|This rule Ensures that Physical Component always realizes a Logical Component.
+|}
+<br>
 {| class="VALIDATION-RULE"
-! |[[Image:../../Images/warning.gif|WARNING]]
-|   I_13 - Functional chain involvement check 2 
+!|[[Image:../../Images/warning.gif|WARNING]]
+|I_07 - Diagram Naming conflicts check 
 |-
-| colspan="2" |This rule checks that a Functional Chain Involvement involver is its owning Functional Chain. 
-|}            
-<br> 
+| colspan="2"|This rule checks  that a diagram doesn't contain naming conflict with other diagrams of the same type.
+|}
+<br>
 {| class="VALIDATION-RULE"
+!|[[Image:../../Images/warning.gif|WARNING]]
+|I_08 - Naming conflicts check 1 
 |-
-! |[[Image:../../Images/error.gif|ERROR]]
-|   I_14 - Functional Exchange Realization 
-|-
-| colspan="2" |This rule checks the realization consistency between functional exchanges. 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-! |[[Image:../../Images/error.gif|ERROR]]
-|   I_15 - Component Exchange Functional Exchange Realization 
-|-
-| colspan="2" |This rule checks the realization consistency between Functional Exchanges and Component Exchange. 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-! |[[Image:../../Images/error.gif|ERROR]]
-|  I_16 - Several Implementation/Use of the same interface by a component Check   
-|-
-| colspan="2" |This rule allows to ensure that a component cannot implement the same interface several times or use the same interface several times. 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-! |[[Image:../../Images/error.gif|ERROR]]
-|   I_17 - Contexts minimal content check 
-|-
-| colspan="2" |This rule checks that context packages contain at least one component (the root component) of the correct level. 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-! |[[Image:../../Images/error.gif|ERROR]]
-|   I_19 - Name conflict 
-|-
-| colspan="2" |This rule Finds name conflicts. NOTE: This constraint include all Naming conflict detection and it is enabled by default.  This rule checks that an capella element doesn't contain any naming conflict. Usually this means that two elements in the same container cannot have the same name 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-! |[[Image:../../Images/warning.gif|WARNING]]
-|   I_20 - ComponentExchange port orientation 
-|-
-| colspan="2" |This rule cheks that source and target port orientations of a ComponentExchange are consistent, i.e.  - A source port cannot have orientation'IN' - A target port cannot have orientation 'OUT'  In Case the ComponentExchange is of kind DELEGATION - "source port/target Port" can only have orientation 'IN/IN' or 'OUT/OUT' 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-! |[[Image:../../Images/error.gif|ERROR]]
-|   I_21 - Unique Model Element IDs 
-|-
-| colspan="2" |This rule checks that all capella elements have a unique ID. 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-! |[[Image:../../Images/error.gif|ERROR]]
-|   I_22 - HyperLink to capella element or diagram name check 
-|-
-| colspan="2" |This rule ensures that hyperLinks to capella elements or diagrams names are up to date. 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-! |[[Image:../../Images/error.gif|ERROR]]
-|   I_23 - HyperLink to capella element or diagram existance check 
-|-
-| colspan="2" |This rule ensures that hyperLinks to non existing capella element or diagram are removed from the description. 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-! |[[Image:../../Images/error.gif|ERROR]]
-|   I_24 - Operational Analysis Realization 
-|-
-| colspan="2" |This rule ensures that Operational Analysis Realization links targeting Operational Analysis instances have System Analysis instances as source. 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-! |[[Image:../../Images/warning.gif|WARNING]]
-|  I_25 - Description is well formed XML   
-|-
-| colspan="2" |This rule checks whether the description of a model element is well formed XML. 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-! |[[Image:../../Images/warning.gif|WARNING]]
-|   I_26 - Equivalent Trace Elements 
-|-
-| colspan="2" |Checks that there are no equivalent trace elements. Two trace elements are equivalent if they have identical types and identical source and target elements. 
-|}            
-<br> 
-  {| class="VALIDATION-RULE"
-! |[[Image:../../Images/warning.gif|WARNING]]
-|  I_27 - Functional chain involvement check 3   
-|-
-| colspan="2" |This rule checks that a Functional Chain Involvement has a valid next and/or previous involvement (not empty) 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-! |[[Image:../../Images/warning.gif|WARNING]]
-|  I_28 - Functional chain involvement check 4   
-|-
-| colspan="2" |This rule checks that a Functional Chain Involvement has a valid next and/or previous involvement (contained by the same functional chain) 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-|-
-! |[[Image:../../Images/warning.gif|WARNING]]
-|   I_29 - Physical path involvement check 1 
-|-
-| colspan="2" |This rule checks that a Physical Path Involvement has a valid next and/or previous involvement (not empty) 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-! |[[Image:../../Images/warning.gif|WARNING]]
-| I_30 - Physical path involvement check 2 
-|-
-| colspan="2" |This rule checks that a Physical Path Involvement has a valid next and/or previous involvement (contained by the same physical path) 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-! |[[Image:../../Images/warning.gif|WARNING]]
-|   I_31 - check Null Part 
-|-
-| colspan="2" |This rule checks that a Component Exchange / Physical Link End doesn't have a part Null. 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-! |[[Image:../../Images/warning.gif|WARNING]]
-|   I_32 - Check Component Exchange / Physical Link Ends in SingletonComponents mode 
-|-
-| colspan="2" |This rule ensures that Component Exchange / Physical Link Ends are restricted to reusable mode defined in Key Value"projectApproach". 
+| colspan="2"|NOTE: This constraint is replaced by "I_19 - Name conflict" and thus disabled by default.
 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-! |[[Image:../../Images/error.gif|ERROR]]
-|   I_33 - Check Reused Parts in SingletonComponents mode 
-|-
-| colspan="2" |This rule checks that reused parts are not used when the project approach is in default mode (not in reusable mode). 
-|}            
-<br> 
-{| class="VALIDATION-RULE"
-! |[[Image:../../Images/error.gif|ERROR]]
-|  I_34 - Inter-model inconsistency Detection
-|-
-| colspan="2" |This rule detects inter-model inconsistencies (dependency violations and inter-model cycles). 
+This rule checks that an element doesn't contain a naming conflict. Usually this means that two elements in the same container cannot have the same name, e.g. one cannot create two classes in a package and assign them identical names. Below we list the special cases:
+
+ExchangeItems
+Two exchange items that share a common container have conflicting names if both have the same name, and the order, number and type of their ExchangeItemElements is identical.
 |}
 <br>
 {| class="VALIDATION-RULE"
-! |[[Image:../../Images/warning.gif|WARNING]]
-|  I_35 - Related functional exchanges must have identical names
+!|[[Image:../../Images/warning.gif|WARNING]]
+|I_09 - Exchanges Naming conflicts check 1 
 |-
-| colspan="2" |This rule checks that Functional Exchanges connected to the same source and/or target port have identical names.
-|}
-<br> 
-{| class="VALIDATION-RULE"
-! |[[Image:../../Images/error.gif|ERROR]]
-|  I_37 - Validate referential constraints during move
-|-
-| colspan="2" |This rule detects forbidden references when elements are moved via the Move Staging View. For example, a Component in a Capella Project cannot allocate a Function from a Library. Moving a Project Function to a Library may introduce such a forbidden reference. If such a reference is detected,  the move operation is aborted.
+| colspan="2"|This rule ensures that an element doesn't contain a naming conflict. This rule only applies to exchanges (Component Exchanges, Physical Links and Functional Exchanges) which have the same source (Component / function), the same target (Component / function) and the same name.
 |}
 <br>
 {| class="VALIDATION-RULE"
-! |[[Image:../../Images/error.gif|ERROR]]
-|  I_38 - Validate referential constraints
+!|[[Image:../../Images/warning.gif|WARNING]]
+|I_10 - Unnamed Element 
 |-
-| colspan="2" |This rule detects forbidden references. For example, a Logical Architecture Class cannot extend a Physical Architecture Class.
+| colspan="2"|This rule checks that an element has a name and does not contain a naming conflict. This rule does not check ExchangeItemAllocations and DataValues.
 |}
 <br>
 {| class="VALIDATION-RULE"
-! |[[Image:../../Images/error.gif|ERROR]]
-|  I_39 - Validate inter-model references
+!|[[Image:../../Images/error.gif|ERROR]]
+|I_11 - Requirement ID check 
 |-
-| colspan="2" |This live validation rule detects illegal inter-model references: An element in model A can only reference an element in model B if A has declared a "Library Reference" to B. 
+| colspan="2"|This rule checks that all Requirements have a unique ID attribute.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/error.gif|ERROR]]
+|I_12 - Function Realization 
+|-
+| colspan="2"|This test checks the realization consistency between functions.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/error.gif|ERROR]]
+|I_14 - Functional Exchange Realization 
+|-
+| colspan="2"|This rule checks the realization consistency between functional exchanges.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/error.gif|ERROR]]
+|I_15 - Component Exchange Functional Exchange Realization 
+|-
+| colspan="2"|This rule checks the realization consistency between Functional Exchanges and Component Exchange.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/error.gif|ERROR]]
+|I_16 - Several Implementation/Use of the same interface by a component Check 
+|-
+| colspan="2"|This rule allows to ensure that a component cannot implement the same interface several times or use the same interface several times.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/error.gif|ERROR]]
+|I_17 - Contexts minimal content check 
+|-
+| colspan="2"|This rule checks that context packages contain at least one component (the root component) of the correct level.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/error.gif|ERROR]]
+|I_19 - Name conflict 
+|-
+| colspan="2"|This rule Finds name conflicts.
+                    NOTE: This constraint include all Naming conflict detection and it is enabled by default.
+
+This rule checks that an capella element doesn't contain any naming conflict. Usually this means that two elements in the same container cannot have the same name
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/warning.gif|WARNING]]
+|I_20 - ComponentExchange port orientation 
+|-
+| colspan="2"|This rule cheks that source and target port orientations of a ComponentExchange are consistent, i.e.
+
+- A source port cannot have orientation'IN'
+- A target port cannot have orientation 'OUT'
+
+In Case the ComponentExchange is of kind DELEGATION
+- "source port/target Port" can only have orientation 'IN/IN' or 'OUT/OUT'
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/error.gif|ERROR]]
+|I_21 - Unique Model Element IDs 
+|-
+| colspan="2"|This rule checks that all capella elements have a unique ID.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/error.gif|ERROR]]
+|I_22 - HyperLink to capella element or diagram name check 
+|-
+| colspan="2"|This rule ensures that hyperLinks to capella elements or diagrams names are up to date.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/error.gif|ERROR]]
+|I_23 - HyperLink to capella element or diagram existance check 
+|-
+| colspan="2"|This rule ensures that hyperLinks to non existing capella element or diagram are removed from the description.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/error.gif|ERROR]]
+|I_24 - Operational Analysis Realization 
+|-
+| colspan="2"|This rule ensures that Operational Analysis Realization links targeting Operational Analysis instances have System Analysis instances as source.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/warning.gif|WARNING]]
+|I_25 - Description is well formed XML 
+|-
+| colspan="2"|This rule checks whether the description of a model element is well formed XML.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/error.gif|ERROR]]
+|I_26 - Equivalent Trace Elements 
+|-
+| colspan="2"|Checks that there are no equivalent trace elements. Two trace elements are equivalent if they have identical types and identical source and target elements.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/warning.gif|WARNING]]
+|I_27 - Functional chain involvement check 3 
+|-
+| colspan="2"|This rule checks that a Functional Chain Involvement has a valid next and/or previous involvement (not empty)
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/warning.gif|WARNING]]
+|I_29 - Physical path involvement check 1 
+|-
+| colspan="2"|This rule checks that a Physical Path Involvement has a valid next and/or previous involvement (not empty)
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/warning.gif|WARNING]]
+|I_30 - Physical path involvement check 2 
+|-
+| colspan="2"|This rule checks that a Physical Path Involvement has a valid next and/or previous involvement (contained by the same physical path)
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/warning.gif|WARNING]]
+|I_31 - check Null Part 
+|-
+| colspan="2"|This rule checks that a Component Exchange / Physical Link End doesn't have a part Null.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/warning.gif|WARNING]]
+|I_32 - Check Component Exchange / Physical Link Ends in SingletonComponents mode 
+|-
+| colspan="2"|This rule ensures that Component Exchange / Physical Link Ends are restricted to reusable mode defined in Key Value"projectApproach".
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/error.gif|ERROR]]
+|I_33 - Check  Reused Parts in SingletonComponents mode 
+|-
+| colspan="2"|This rule checks that reused parts are not used when the project approach is in default mode (not in reusable mode).
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/error.gif|ERROR]]
+|I_34 - Inter-model inconsistency Detection 
+|-
+| colspan="2"|This rule detects inter-model inconsistencies (dependency violations and inter-model cycles).
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/warning.gif|WARNING]]
+|I_35 - Related functional exchanges must have identical names 
+|-
+| colspan="2"|This rule checks that Functional Exchanges connected to the same source and/or target port have identical names.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/warning.gif|WARNING]]
+|I_36 - Check whether a Constraint is not used 
+|-
+| colspan="2"|This rule checks that Constraints are used in the model.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/error.gif|ERROR]]
+|I_38 - Validate referential constraints 
+|-
+| colspan="2"|Verifies that an elements outgoing references are valid according to Capella business rules.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/error.gif|ERROR]]
+|I_39 [Live] - Validate inter-model references 
+|-
+| colspan="2"|An element in model A can only reference an element in model B if A has declared a "Library Reference" to B.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/error.gif|ERROR]]
+|I_40 - Equivalent Involvement Elements 
+|-
+| colspan="2"|Checks that there are no equivalent Involvement elements. Two Involvements elements are equivalent if they have identical types and identical source and target elements.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/warning.gif|WARNING]]
+|I_41 - Component generalizes other Components with HUMAN different by its own 
+|-
+| colspan="2"|This rule checks if a Component generalizes other Components with HUMAN different by its own.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/warning.gif|WARNING]]
+|I_42 - Component realizes other Components with HUMAN different by its own 
+|-
+| colspan="2"|Checks if a Component realizes other Components with HUMAN different by its own.
 |}

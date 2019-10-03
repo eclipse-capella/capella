@@ -18,5 +18,9 @@
             file="toc.xml"
             primary="false">
       </toc>
+      <toc
+            file="html/Diagrams/diagrams-toc.xml"
+            primary="false">
+      </toc>
    </extension>
 </plugin>

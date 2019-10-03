@@ -2,10 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<link rel="stylesheet" type="text/css" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css" media="all" />
+		<title>ValidationRules</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
 	</head>
 	<body>
-		<h1 id=".3E_Validation_Rules_.3E_capella.category_.3E_design_.3E_well-formedness_.3E_interfaces">&gt; Validation Rules &gt; capella.category &gt; design &gt; well-formedness &gt; interfaces</h1>
+		<h1 id="Design_.3E_Well-formedness_.3E_Interfaces">Design &gt; Well-formedness &gt; Interfaces</h1>
 		<p>
 			<br/>
 		</p>
@@ -17,25 +18,14 @@
 				<td>DWF_I_01 - ExchangeItemParameter kind consistency </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks whether the ExchangeItemElements of an ExchangeItem are consistent with applied exchange mechanism: - Elements of an ExchangeItem with exchange mechanism OPERATION must be of kind PARAMETER - For all other exchange mechanisms, elements must be of kind TYPE </td>
+				<td colspan="2">This rule checks whether the ExchangeItemElements of an ExchangeItem are consistent with applied exchange mechanism:
+					<p>- Elements of an ExchangeItem with exchange mechanism OPERATION must be of kind PARAMETER
+						- For all other exchange mechanisms, elements must be of kind TYPE</p>
+				</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
-		</p>
-		<table class="VALIDATION-RULE">
-			<tr>
-				<th>
-					<img title="ERROR" alt="ERROR" border="0" src="../../../../Images/error.gif"/>
-				</th>
-				<td>DWF_I_03 - ExchangeItemElement Direction check </td>
-			</tr>
-			<tr>
-				<td colspan="2">This rule checks that a component uses and implements only interface from valid architecture. </td>
-			</tr>
-		</table>
-		<p>
-			<br/> 
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
@@ -45,11 +35,11 @@
 				<td>DWF_I_04 - Components must implements/uses accessible interfaces </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks that the component cannot have the same kind of communication link targeting to the same exchange item with the same protocol. </td>
+				<td colspan="2">This rule checks that a component uses and implements only interface from valid architecture.</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
@@ -59,35 +49,35 @@
 				<td>DWF_I_05 - No Equivalent Component Communication Links </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks that no Interface is located in EPBS. </td>
+				<td colspan="2">This rule checks that the component cannot have the same kind of communication link targeting to the same exchange item with the same protocol.</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
 				<th>
 					<img title="ERROR" alt="ERROR" border="0" src="../../../../Images/error.gif"/>
 				</th>
-				<td>DWF_I_06 - Interface location check</td>
+				<td>DWF_I_06 - Interface location check </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks that a component uses/implements interfaces from the same level or from an upper level. </td>
+				<td colspan="2">This rule checks that no Interface is located in EPBS.</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
 				<th>
-					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../../Images/error.gif"/>
 				</th>
 				<td>DWF_I_07 - Interface location level </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks that a Component port requires/provides the interfaces of its own level. </td>
+				<td colspan="2">This rule checks that a component uses/implements interfaces from the same level or from an upper level.</td>
 			</tr>
 		</table>
 		<p>
@@ -101,11 +91,11 @@
 				<td>DWF_I_08 - Component port required and provided interface check </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks that a CommunicationLink kind is only used with  a specific CommunicatinLink protocol. </td>
+				<td colspan="2">This rule checks that a Component port requires/provides the interfaces of its own level.</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
@@ -115,53 +105,56 @@
 				<td>DWF_I_09 - CommunicationLink kind and ExchangeItem kind </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks that a CommunicationLink protocol are only used with a specific CommunicatinLink kind. </td>
+				<td colspan="2">This rule checks that a CommunicationLink kind is only used with  a specific CommunicatinLink protocol.</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
+			<br/>
+		</p>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th>
+					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
+				</th>
+				<td>DWF_I_10 - CommunicationLink protocol and  ExchangeItem kind </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks that a CommunicationLink protocol are only used with a specific CommunicatinLink kind.</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
 				<th>
 					<img title="ERROR" alt="ERROR" border="0" src="../../../../Images/error.gif"/>
 				</th>
-				<td>DWF_I_10 - CommunicationLink protocol and ExchangeItem kind  </td>
+				<td>DWF_I_11 - ExchangeItemAllocation AllocatedItem Check </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks that a ExchangeItemAllocation AllocatedItem value is not null. </td>
+				<td colspan="2">This rule checks that a ExchangeItemAllocation AllocatedItem value is not null.</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
 				<th>
 					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
 				</th>
-				<td>DWF_I_11 - ExchangeItemAllocation AllocatedItem Check   </td>
+				<td>DWF_I_12 - Exchange item allocation layer consistency </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule ensures that an ExchangeItemAllocation from given layer should not allocate element of lower Architecture layer.  Exmaple: If an ExchangeItemAllocation is on SystemArchitecture layer. It should not allocate any element from Logical or Physical Layer. </td>
+				<td colspan="2">This rule ensures that an ExchangeItemAllocation from given layer should not allocate element of lower Architecture layer.
+					<p>Exmaple:
+						If an ExchangeItemAllocation is on SystemArchitecture layer. It should not allocate any element from Logical or Physical Layer.</p>
+				</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
-		</p>
-		<table class="VALIDATION-RULE">
-			<tr>
-				<th>
-					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
-				</th>
-				<td>DWF_I_12 - Exchange item allocation layer consistency    </td>
-			</tr>
-			<tr>
-				<td colspan="2">This rule checks if a component is linked to interfaces and exchange items which are defined in a unavailable location (for instance a component should not be linked to an inner interface of another component) </td>
-			</tr>
-		</table>
-		<p>
-			<br/> 
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
@@ -171,53 +164,53 @@
 				<td>DWF_I_13 - Interface and Exchange item location check </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks that an existing technical interface between two Components represent all the Communication Links with the same direction between those two components. </td>
+				<td colspan="2">This rule checks if a component is linked to interfaces and exchange items which are defined in a unavailable location (for instance a component should not be linked to an inner interface of another component)</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
 				<th>
 					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
 				</th>
-				<td>DWF_I_14 - Technical interface represent all communication links    </td>
+				<td>DWF_I_14 -  Technical interface represent all communication links </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks that for each Exchange Item Allocation of a technical Interface, there is a Communication Link associated to it. </td>
+				<td colspan="2">This rule checks that an existing technical interface between two Components represent all the Communication Links with the same direction between those two components.</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
 				<th>
 					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
 				</th>
-				<td>DWF_I_15 - Exchange Item Allocation For Technical Interface Has Communication Link</td>
+				<td>DWF_I_15 -  Exchange Item Allocation For Technical Interface Has Communication Link </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks that for each Exchange Item Allocation of a technical Interface, there is a Communication </td>
+				<td colspan="2">This rule checks that for each Exchange Item Allocation of a technical Interface, there is a Communication Link associated to it.</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
 				<th>
 					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
 				</th>
-				<td>DWF_I_16 - Technical interfaces are not provided or required </td>
+				<td>DWF_I_16 -  Technical interfaces are not provided or required </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks that technical interfaces are not provided or required </td>
+				<td colspan="2">This rule checks that technical interfaces are not provided or required</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
@@ -227,67 +220,92 @@
 				<td>DWF_I_17 - At most one technical interface between two components </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks that there is at most one technical Interfaces by couple of component (direction is meaningful). </td>
+				<td colspan="2">This rule checks that there is at most one technical Interfaces by couple of component (direction is meaningful).</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
 				<th>
 					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
 				</th>
-				<td>DWF_I_18 - Technical interfaces should not be used by more than one component    </td>
+				<td>DWF_I_18 - Technical interfaces should not be used by more than one component </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks that a technical interfaces should not be used by more than one component. </td>
+				<td colspan="2">This rule checks that a technical interfaces should not be used by more than one component.</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
 				<th>
 					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
 				</th>
-				<td>DWF_I_19 - Technical interfaces should not be implemented by more than one component    </td>
+				<td>DWF_I_19 - Technical interfaces should not be implemented by more than one component </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks that a technical interfaces should not be implemented by more than one component </td>
+				<td colspan="2">This rule checks that a technical interfaces should not be implemented by more than one component</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
 				<th>
 					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
 				</th>
-				<td>DWF_I_20 - Interface does not contain similar Exchange Item Allocation     </td>
+				<td>DWF_I_20 - Interface does not contain similar Exchange Item Allocation </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule checks that an interface does not contain similar Exchange Item Allocation (that target the same Exchange Item and have same protocols). </td>
+				<td colspan="2">This rule checks that an interface does not contain similar Exchange Item Allocation (that target the same Exchange Item and have same protocols).</td>
 			</tr>
 		</table>
 		<p>
-			<br/> 
+			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
 			<tr>
 				<th>
 					<img title="ERROR" alt="ERROR" border="0" src="../../../../Images/error.gif"/>
 				</th>
-				<td>DWF_I_23 - Missing/Unused Exchange Items on generated Interfaces</td>
+				<td>DWF_I_21 - Exchange Item Allocation Protocol consistency </td>
 			</tr>
 			<tr>
-				<td colspan="2">This rule produces Errors for missing or unused Exchange Items on Interfaces generated by the&quot;Interfaces from allocated Functions&quot; modelling accelerator. In this context, an Exchange Item is unused on an Interface, if it is not allocated to any of the Interfaces related Functional or Component Exchanges. An Exchange Item is missing on an Interface if it is allocated on at least one of the Interfaces related Functional or Component Exchanges but not present on the Interface. </td>
+				<td colspan="2">This rule checks consistency between the allocated Exchange Item and Acquisition/Transmission protocols of Exchange Item Allocation</td>
 			</tr>
 		</table>
 		<p>
 			<br/>
 		</p>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th>
+					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
+				</th>
+				<td>DWF_I_22 - Exchange Item Allocation Protocol used on Sequence Diagram consistency </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule checks consistency between the Acquisition/Transmission protocols of Exchange Item Allocation and its usage through Sequence Message</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+		</p>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th>
+					<img title="ERROR" alt="ERROR" border="0" src="../../../../Images/error.gif"/>
+				</th>
+				<td>DWF_I_23 - Missing/Unused Exchange Items on generated Interfaces </td>
+			</tr>
+			<tr>
+				<td colspan="2">This rule produces Errors for missing or unused Exchange Items on Interfaces generated by the"Interfaces from allocated Functions" modelling accelerator. In this context, an Exchange Item is unused on an Interface, if it is not allocated to any of the Interfaces related Functional or Component Exchanges. An Exchange Item is missing on an Interface if it is allocated on at least one of the Interfaces related Functional or Component Exchanges but not present on the Interface.</td>
+			</tr>
+		</table>
 	</body>
 </html>

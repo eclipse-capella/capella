@@ -1,157 +1,160 @@
       
-= > Validation Rules > capella.category > design > well-formedness > scenarios =
-            
-<br> 
+= Design > Well-formedness > Scenarios =
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
-|   DWF_DS_01 - InteractionUse referenced scenario check 
+|DWF_DS_01 - InteractionUse referenced scenario check 
 |-
-| colspan="2"|This rule checks that an Interaction uses correctly references of a scenario. 
-|}            
-<br> 
+| colspan="2"|This rule checks that an Interaction uses correctly references of a scenario.
+|}
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
-|   DWF_DS_02 - Role instance type check 
+|DWF_DS_02 - Role instance type check 
 |-
-| colspan="2"|This rule checks that an Instance Role is correctly typed. 
-|}            
-<br> 
+| colspan="2"|This rule checks that an Instance Role is correctly typed.
+|}
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
-|   DWF_DS_03 - Scenario sequence message invoked operations check 1 
+|DWF_DS_03 - Scenario sequence message invoked operations check 1 
 |-
-| colspan="2"|This rule checks that sequence messages have an invoked operation. 
-|}            
-<br> 
+| colspan="2"|This rule checks that sequence messages have an invoked operation.
+|}
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
-|   DWF_DS_04 - Scenario sequence message invoked operations check 2 
+|DWF_DS_04 - Scenario sequence message invoked operations check 2 
 |-
-| colspan="2"|This rule checks that sequence messages have a correct invoked operation (sender shall use/require operation's interface and receiver shall implement/provide operation's interface). 
-|}            
-<br> 
+| colspan="2"|This rule checks that sequence messages have a correct invoked operation (sender shall use/require operation's interface and receiver shall implement/provide operation's interface).
+|}
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
-|   DWF_DS_05 - Scenario sequence messages justification check 1 
+|DWF_DS_05 - Scenario sequence messages justification check 1 
 |-
-| colspan="2"|This rule checks that sequence messages are justified in sender/receiver Components terms between scenarios from different levels. 
-|}            
-<br> 
+| colspan="2"|This rule checks that sequence messages are justified in sender/receiver Components terms between scenarios from different levels.
+|}
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
-|   DWF_DS_06 - Scenario sequence messages justification check 2 
+|DWF_DS_06 - Scenario sequence messages justification check 2 
 |-
-| colspan="2"|This rule checks that sequence messages are justified in Operation terms between scenarios from different levels. 
-|}            
-<br> 
+| colspan="2"|This rule checks that sequence messages are justified in Operation terms between scenarios from different levels.
+|}
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
-|   DWF_DS_07 - Sequence Messages not null invoked operation check 
+|DWF_DS_07 - Sequence Messages not null invoked operation check 
 |-
-| colspan="2"|This rule checks that Sequence Messages have a not null invoked operation. 
-|}            
-<br> 
+| colspan="2"|This rule checks that Sequence Messages have a not null invoked operation.
+|}
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
-|   DWF_DS_08 - Ordering of interaction fragments 
+|DWF_DS_08 - Ordering of interaction fragments 
 |-
-| colspan="2"|This rule checks that scenarios have a coherent ordering, i.e. finish of time lapses are after the corresponding beginning. 
-|}            
-<br> 
+| colspan="2"|This rule checks that scenarios have a coherent ordering, i.e. finish of time lapses are after the corresponding beginning.
+|}
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
-|   DWF_DS_09 - Sequence message allocated exchange items 
+|DWF_DS_09 - Sequence message allocated exchange items 
 |-
-| colspan="2"|This rule ensures that a sequence message does not allocate exchange items which are not allocated by invoked operation of sequence message. 
-|}            
-<br> 
+| colspan="2"|This rule ensures that a sequence message does not allocate exchange items which are not allocated by invoked operation of sequence message.
+|}
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
-|   DWF_DS_10 - Consistency of Scenario Kind vs level 
+|DWF_DS_10 - Consistency of Scenario Kind vs level 
 |-
-| colspan="2"|This rule checks the consistency between Scenario kind and Level: On OA level, only INTERACTION Scenarios are allowed, On SYS/LC/PC levels, only DATA_FLOW, INTERFACE and FUNCTIONAL Scenarii are allowed, On EPBS level, only INTERFACE Scenarios are allowed. Whatever the level, UNSET Scenarios raise an error. 
-|}            
-<br> 
+| colspan="2"|This rule checks the consistency between Scenario kind and Level:
+On OA level, only INTERACTION Scenarios are allowed,
+On SYS/LC/PC levels, only DATA_FLOW, INTERFACE and FUNCTIONAL Scenarii are allowed,
+On EPBS level, only INTERFACE Scenarios are allowed.
+Whatever the level, UNSET Scenarios raise an error.
+|}
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
-|   DWF_DS_11 - Scenario branchs sequence messages order check 
+|DWF_DS_11 - Scenario branchs sequence messages order check 
 |-
-| colspan="2"|This rule checks that sender and reply branches sequence messages are not inverted. 
-|}            
-<br> 
+| colspan="2"|This rule checks that sender and reply branches sequence messages are not inverted.
+|}
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
-|   DWF_DS_12 - Scenario sequence messages and operations / functional exchanges consistency 
+|DWF_DS_12 - Scenario sequence messages and operations / functional exchanges consistency 
 |-
-| colspan="2"|This rule checks name consistency between operations / functional exchanges and sequence messages. 
-|}            
-<br> 
+| colspan="2"|This rule checks name consistency between operations / functional exchanges and sequence messages.
+|}
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
-|   DWF_DS_13 - Timer must be a reflexive message 
+|DWF_DS_13 - Timer must be a reflexive message 
 |-
-| colspan="2"|This rule checks that an arm timer or cancel timer message is reflexive. 
-|}            
-<br> 
+| colspan="2"|This rule checks that an arm timer or cancel timer message is reflexive.
+|}
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
-|   DWF_DS_14 - A cancel timer must be within an arm timer 
+|DWF_DS_14 - A cancel timer must be within an arm timer 
 |-
-| colspan="2"|This rule checks that a cancel timer message is within an arm timer message. 
-|}            
-<br> 
+| colspan="2"|This rule checks that a cancel timer message is within an arm timer message.
+|}
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
-|   DWF_DS_15 - a shared data READ must be within an execution 
+|DWF_DS_15 - a shared data READ must be within an execution 
 |-
-| colspan="2"|This rule checks that a shared data READ is within an execution. 
-|}            
-<br> 
+| colspan="2"|This rule checks that a shared data READ is within an execution.
+|}
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
-|   DWF_DS_16 - Logical component scenario involvement decomposition check 
+|DWF_DS_16 - Logical component scenario involvement decomposition check 
 |-
-| colspan="2"|This rule checks the refinement needed for decomposed Logical components. 
-|}            
-<br> 
+| colspan="2"|This rule checks the refinement needed for decomposed Logical components.
+|}
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/warning.gif|WARNING]]
-|   DWF_DS_17 - A sequence message kind must be coherent with its transmission protocol 
+|DWF_DS_17 - A sequence message kind must be coherent with its transmission protocol 
 |-
-| colspan="2"|This rule checks that a sequence message kind is coherent with its transmission protocol. 
-|}            
-<br> 
+| colspan="2"|This rule checks that a sequence message kind is coherent with its transmission protocol.
+|}
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
-|   DWF_DS_18 - OES/ES Sequence Messages consistency check 
+|DWF_DS_18 - OES/ES Sequence Messages consistency check 
 |-
-| colspan="2"|This rule checks that Sequence Messages in OES or ES scenarios are consistent with their associated Component Exchange or Functional Exchange. 
-|}            
-<br> 
+| colspan="2"|This rule checks that Sequence Messages in OES or ES scenarios are consistent with their associated Component Exchange or Functional Exchange.
+|}
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
-|   DWF_DS_19 - OAS/FS Sequence Messages consistency check 
+|DWF_DS_19 - OAS/FS Sequence Messages consistency check 
 |-
-| colspan="2"|This rule checks that Sequence Messages in OAS or FS scenarios are consistent with their associated Functional Exchange. 
-|}            
-<br> 
+| colspan="2"|This rule checks that Sequence Messages in OAS or FS scenarios are consistent with their associated Functional Exchange.
+|}
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
-|   DWF_DS_20 - OES/ES State Fragments related function allocation consistency 
+|DWF_DS_20 - OES/ES State Fragments related function allocation consistency 
 |-
-| colspan="2"|Check that the AbstractFunction related to the current StateFragment is allocated by the Component (or a sub Component) associated to the instance role. 
-|}            
-<br> 
+| colspan="2"|Check that the AbstractFunction related to the current StateFragment is allocated by the Component (or a sub Component) associated to the instance role.
+|}
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
-|   DWF_DS_21 - OES/ES State Fragments related Mode/State consistency 
+|DWF_DS_21 - OES/ES State Fragments related Mode/State consistency 
 |-
-| colspan="2"|Check that the Mode/State related to the current StateFragment is contained by the Component associated to the instance role. 
-|}            
-<br> 
+| colspan="2"|Check that the Mode/State related to the current StateFragment is contained by the Component associated to the instance role.
+|}
+<br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
-|   DWF_DS_22 - OAS/FS AbstractFunction availability in Mode/State 
+|DWF_DS_22 - OAS/FS AbstractFunction availability in Mode/State 
 |-
-| colspan="2"|Check that the AbstractFunction associated to the instance role is available for the Mode/State related to the current StateFragment. 
-|}   
+| colspan="2"|Check that the AbstractFunction associated to the instance role is available for the Mode/State related to the current StateFragment.
+|}
