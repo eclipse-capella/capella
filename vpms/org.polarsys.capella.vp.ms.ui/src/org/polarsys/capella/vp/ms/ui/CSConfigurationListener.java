@@ -13,6 +13,9 @@ package org.polarsys.capella.vp.ms.ui;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ProjectScope;
@@ -26,32 +29,24 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
-import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
-import org.polarsys.capella.common.ef.domain.IEditingDomainListener;
+import org.polarsys.capella.common.ef.domain.AbstractEditingDomainResourceSetListenerImpl;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.vp.ms.CSConfiguration;
-import org.polarsys.capella.vp.ms.Comparison;
-import org.polarsys.capella.vp.ms.Result;
 import org.polarsys.capella.vp.ms.access_Type;
 import org.polarsys.capella.vp.ms.ui.preferences.InitializeConfigurationAccessDialog;
 import org.polarsys.capella.vp.ms.ui.preferences.MsPreferenceConstants;
 import org.polarsys.kitalpha.emde.model.EmdePackage;
 
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.Multimap;
-
-public class CSConfigurationListener extends ResourceSetListenerImpl implements IEditingDomainListener {
+public class CSConfigurationListener extends AbstractEditingDomainResourceSetListenerImpl {
 
   public CSConfigurationListener() {
     super(NotificationFilter.createFeatureFilter(CsPackage.Literals.COMPONENT,
@@ -61,27 +56,10 @@ public class CSConfigurationListener extends ResourceSetListenerImpl implements 
   @Override
   public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {
     Command result = null;
-    Collection<CSConfiguration> removedConfigurations = new ArrayList<CSConfiguration>();
     Collection<CSConfiguration> addedConfigurations = new ArrayList<CSConfiguration>();
 
     for (Notification notif : event.getNotifications()) {
-      if (notif.getEventType() == Notification.REMOVE) {
-        if (notif.getOldValue() instanceof Comparison) {
-          Comparison iObj = (Comparison) notif.getOldValue();
-          iObj.destroy();
-        } else if (notif.getOldValue() instanceof Result) {
-          Result iObj = (Result) notif.getOldValue();
-          iObj.destroy();
-        } else {
-          removedConfigurations.add((CSConfiguration) notif.getOldValue());
-        }
-      } else if (notif.getEventType() == Notification.REMOVE_MANY) {
-        for (Object o : ((Collection<?>) notif.getOldValue())) {
-          if (o instanceof CSConfiguration) {
-            removedConfigurations.add((CSConfiguration) o);
-          }
-        }
-      } else if (notif.getEventType() == Notification.ADD) {
+     if (notif.getEventType() == Notification.ADD) {
         if (notif.getNewValue() instanceof CSConfiguration) {
           addedConfigurations.add((CSConfiguration) notif.getNewValue());
         }
@@ -93,50 +71,45 @@ public class CSConfigurationListener extends ResourceSetListenerImpl implements 
         }
       }
     }
+    
+    Map<EObject, List<CSConfiguration>> rootToConfigs = 
+        addedConfigurations.stream().collect(Collectors.groupingBy(t -> EcoreUtil.getRootContainer(t)));
+    
+    // this might contain objects that were added and deleted during the same transaction
+    rootToConfigs.remove(null);
+    
+    result = new CompoundCommand();
 
-    addedConfigurations.removeAll(removedConfigurations);
+    for (EObject root : rootToConfigs.keySet()) {
 
-    if (addedConfigurations.size() > 0) {
-      Multimap<EObject, CSConfiguration> rootToConfigs = ArrayListMultimap.create();
-      for (CSConfiguration config : addedConfigurations) {
-        rootToConfigs.put(EcoreUtil.getRootContainer(config), config);
-      }
+      Session session = SessionManager.INSTANCE.getSession(root);
+      URI uri = session.getSessionResource().getURI();
+      IProject project = ResourcesPlugin.getWorkspace().getRoot().findMember(uri.toPlatformString(true)).getProject();
+      IPreferenceStore store = new ScopedPreferenceStore(new ProjectScope(project), Activator.PLUGIN_ID);
 
-      result = new CompoundCommand();
+      String accessLiteral = Platform.getPreferencesService().getString(org.polarsys.capella.vp.ms.ui.preferences.Activator.PLUGIN_ID,
+          MsPreferenceConstants.PREF_DEFAULT_CONFIGURATION_ACCESS, "", null); //$NON-NLS-1$
 
-      for (EObject root : rootToConfigs.keySet()) {
+      // String accessLiteral = store.getString(MsUIConstants.PREF_DEFAULT_CONFIGURATION_ACCESS);
 
-        Session session = SessionManager.INSTANCE.getSession(root);
-        URI uri = session.getSessionResource().getURI();
-        IProject project = ResourcesPlugin.getWorkspace().getRoot().findMember(uri.toPlatformString(true)).getProject();
-        IPreferenceStore store = new ScopedPreferenceStore(new ProjectScope(project), Activator.PLUGIN_ID);
 
-        String accessLiteral = Platform.getPreferencesService().getString(org.polarsys.capella.vp.ms.ui.preferences.Activator.PLUGIN_ID,
-            MsPreferenceConstants.PREF_DEFAULT_CONFIGURATION_ACCESS, "", null); //$NON-NLS-1$
-
-        // String accessLiteral = store.getString(MsUIConstants.PREF_DEFAULT_CONFIGURATION_ACCESS);
-
-        final Collection<CSConfiguration> added = rootToConfigs.get(root);
-
+      if (accessLiteral.isEmpty()) {
+        new InitializeConfigurationAccessDialog(Display.getCurrent().getActiveShell(), store).open();
+        accessLiteral = store.getString(MsPreferenceConstants.PREF_DEFAULT_CONFIGURATION_ACCESS);
         if (accessLiteral.isEmpty()) {
-          new InitializeConfigurationAccessDialog(Display.getCurrent().getActiveShell(), store).open();
-          accessLiteral = store.getString(MsPreferenceConstants.PREF_DEFAULT_CONFIGURATION_ACCESS);
-          if (accessLiteral.isEmpty()) {
-            throw new RollbackException(new Status(IStatus.CANCEL, Activator.PLUGIN_ID, "User canceled operation")); //$NON-NLS-1$
-          }
+          throw new RollbackException(new Status(IStatus.CANCEL, Activator.PLUGIN_ID, "User canceled operation")); //$NON-NLS-1$
         }
-
-        final access_Type access = access_Type.get(accessLiteral);
-
-        ((CompoundCommand) result).append(new RecordingCommand(event.getEditingDomain()) {
-          @Override
-          protected void doExecute() {
-            for (CSConfiguration cs : added) {
-              cs.setAccess(access);
-            }
-          }
-        });
       }
+      
+      access_Type access = access_Type.get(accessLiteral);
+      Collection<CSConfiguration> added = rootToConfigs.get(root);
+
+      ((CompoundCommand) result).append(new RecordingCommand(event.getEditingDomain()) {
+        @Override
+        protected void doExecute() {
+          added.forEach(conf -> conf.setAccess(access));
+        }
+      });
     }
     return result;
   }
@@ -144,17 +117,6 @@ public class CSConfigurationListener extends ResourceSetListenerImpl implements 
   @Override
   public boolean isPrecommitOnly() {
     return true;
-  }
-
-  @Override
-  public void createdEditingDomain(EditingDomain editingDomain) {
-    ((TransactionalEditingDomain) editingDomain).addResourceSetListener(this);
-
-  }
-
-  @Override
-  public void disposedEditingDomain(EditingDomain editingDomain) {
-    ((TransactionalEditingDomain) editingDomain).removeResourceSetListener(this);
   }
 
 }
