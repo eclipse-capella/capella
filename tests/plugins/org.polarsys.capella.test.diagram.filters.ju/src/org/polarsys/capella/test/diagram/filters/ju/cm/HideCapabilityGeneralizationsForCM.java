@@ -15,16 +15,16 @@ import java.util.List;
 
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 
-public class HideCapabilitiesForCM extends FiltersForCM {
+public class HideCapabilityGeneralizationsForCM extends FiltersForCM {
 
   @Override
   protected String getFilterName() {
-    return IFilterNameConstants.FILTER_CM_HIDE_CAPABILITIES;
+    return IFilterNameConstants.FILTER_CM_HIDE_CAPABILITY_GENERALIZATIONS;
   }
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { CAPABILITY_ID, CAPABILITY_12_ID });
+    return Arrays.asList(new String[] { CAPABILITY_GENERALIZATIONS_ID });
   }
 
 }
