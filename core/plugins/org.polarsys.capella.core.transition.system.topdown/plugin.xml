@@ -530,6 +530,17 @@
                      name="Entity">
                </defaultMappingPossibility>
             </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.oa.CommunicationMean"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.topdown.rules.oa.oe2actor.CommunicationMeanRule"
+                     enabled="true"
+                     incompleteRule="org.polarsys.capella.core.transition.system.topdown.rules.oa.oe2actor.CommunicationMeanRule"
+                     name="CommunicationMean">
+               </defaultMappingPossibility>
+            </mappingElement>
          </mappingPackage>
          
          <mappingPackage name="cs">
@@ -571,6 +582,17 @@
                      incompleteRule="org.polarsys.capella.core.transition.system.topdown.rules.oa.oe2system.EntityRule"
                      enabled="true"
                      name="Entity">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.oa.CommunicationMean"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.topdown.rules.oa.oe2system.CommunicationMeanRule"
+                     enabled="true"
+                     incompleteRule="org.polarsys.capella.core.transition.system.topdown.rules.oa.oe2system.CommunicationMeanRule"
+                     name="CommunicationMean">
                </defaultMappingPossibility>
             </mappingElement>
          </mappingPackage>

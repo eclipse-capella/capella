@@ -717,6 +717,25 @@ NodePC=Physical Component of nature NODE
                	  Check that the function is available in all the Mode/State allocated to a functional chain in which the function is involved.
                </description>
             </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.connection.ComponentExchange_UnsetKind"
+                  id="DWF_DC_43"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_DC_43 - Component Exchange has an UNSET Kind"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (ComponentExchange) has an UNSET kind.
+               </message>
+               <target
+                     class="ComponentExchange">
+               </target>
+               <description>
+                  Check if the Component Exchange has an UNSET kind.
+               </description>
+            </constraint>
          </constraints>
          <constraints categories="capella.category/transition/consistency/dataflows">
             <constraint class="org.polarsys.capella.core.data.fa.validation.connection.CN01_Connection_RealizingBound" id="TC_DF_01" isEnabledByDefault="true" lang="Java" mode="Batch" name="TC_DF_01 - Component Exchange realization consistency" severity="WARNING" statusCode="1">
