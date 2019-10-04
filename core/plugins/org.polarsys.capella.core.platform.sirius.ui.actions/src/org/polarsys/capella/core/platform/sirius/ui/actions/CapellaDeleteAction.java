@@ -182,32 +182,31 @@ public class CapellaDeleteAction extends AbstractCommandActionHandler implements
         return element.eContainer() instanceof BlockArchitecture;
       }
 
-      return element instanceof Project || element instanceof SystemEngineering || element instanceof BlockArchitecture;
-    }
+      if (element instanceof AbstractFunction) {
+        return (EcoreUtil2.isContainedBy(element, OaPackage.Literals.OPERATIONAL_ACTIVITY_PKG)
+            && !EcoreUtil2.isContainedBy(element, OaPackage.Literals.OPERATIONAL_ACTIVITY))
+            || (EcoreUtil2.isContainedBy(element, CtxPackage.Literals.SYSTEM_FUNCTION_PKG)
+                && !EcoreUtil2.isContainedBy(element, CtxPackage.Literals.SYSTEM_FUNCTION))
+            || (EcoreUtil2.isContainedBy(element, LaPackage.Literals.LOGICAL_FUNCTION_PKG)
+                && !EcoreUtil2.isContainedBy(element, LaPackage.Literals.LOGICAL_FUNCTION))
+            || (EcoreUtil2.isContainedBy(element, PaPackage.Literals.PHYSICAL_FUNCTION_PKG)
+                && !EcoreUtil2.isContainedBy(element, PaPackage.Literals.PHYSICAL_FUNCTION));
 
-    if (element instanceof AbstractFunction) {
-      return (EcoreUtil2.isContainedBy(element, OaPackage.Literals.OPERATIONAL_ACTIVITY_PKG)
-          && !EcoreUtil2.isContainedBy(element, OaPackage.Literals.OPERATIONAL_ACTIVITY))
-          || (EcoreUtil2.isContainedBy(element, CtxPackage.Literals.SYSTEM_FUNCTION_PKG)
-              && !EcoreUtil2.isContainedBy(element, CtxPackage.Literals.SYSTEM_FUNCTION))
-          || (EcoreUtil2.isContainedBy(element, LaPackage.Literals.LOGICAL_FUNCTION_PKG)
-              && !EcoreUtil2.isContainedBy(element, LaPackage.Literals.LOGICAL_FUNCTION))
-          || (EcoreUtil2.isContainedBy(element, PaPackage.Literals.PHYSICAL_FUNCTION_PKG)
-              && !EcoreUtil2.isContainedBy(element, PaPackage.Literals.PHYSICAL_FUNCTION));
-
-    } else if (element instanceof Part) {
-      AbstractType type = ((Part) element).getAbstractType();
-      if (type != null) {
-        return isElementProtected(type);
+      } else if (element instanceof Part) {
+        AbstractType type = ((Part) element).getAbstractType();
+        if (type != null) {
+          return isElementProtected(type);
+        }
+      } else if (element instanceof SequenceMessage) {
+        SequenceMessage msg = (SequenceMessage) element;
+        return !(msg.getReceivingEnd() == null || msg.getKind() == MessageKind.CREATE
+            || msg.getKind() == MessageKind.DELETE);
       }
-    } else if (element instanceof SequenceMessage) {
-      SequenceMessage msg = (SequenceMessage) element;
-      return !(msg.getReceivingEnd() == null || msg.getKind() == MessageKind.CREATE
-          || msg.getKind() == MessageKind.DELETE);
 
-    } else if (element instanceof ModelInformation) {
-      return true;
+      return element instanceof Project || element instanceof SystemEngineering || element instanceof BlockArchitecture
+          || element instanceof ModelInformation;
     }
+
     return false;
   }
 }

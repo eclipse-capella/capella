@@ -37,9 +37,11 @@ public abstract class MiscModel extends NonDirtyTestCase {
   public static final String OA__OPERATIONAL_CONTEXT = "f6daaca6-fee7-401b-b77c-a3880f335fd1";
   public static final String OA__ROLES = "0eae0d46-5721-4476-a3d5-5dff228ec9ae";
   public static final String OA__OPERATIONAL_ENTITIES = "27bd9112-bc96-45f7-8790-122c82880b19";
+  public static final String OA__SEQUENCE_MESSAGE_1 = "4bf5c805-13ce-4cbe-a7a9-6f5ff8bd9ea4";
+  public static final String OA__SEQUENCE_MESSAGE_2 = "de915338-63f2-4f44-9495-bb4d97868c67";
+
   public static final String SA = "cfc9925e-c0f5-4b59-9abf-53e6a50cfc93";
   public static final String SA__SYSTEM_FUNCTIONS = "8bfeccd2-6f68-4c4b-9c94-3163f79b695b";
-  
   public static final String SA__ROOT_SF = "c5bc9e6f-5878-4ce3-85ef-61d44ac0175c";
   public static final String SA__ROOT_SF__FC1 = "ce5d3e25-87ec-4cc2-9856-d7f12589af79";
   public static final String SA__ROOT_SF__FC1__FCI_TO_FE1 = "ab1d4f35-35f9-4471-be38-71b21969ed1e";
@@ -131,9 +133,7 @@ public abstract class MiscModel extends NonDirtyTestCase {
   public static final String METADATA__QFEJOHNGEEA0DF0HNIJFUA = "null";
   public static final String METADATA__QFEJOHNGEEA0DF0HNIJFUA__VIEWPOINT_REFERENCE__QFFXWHNGEEA0DF0HNIJFUA = "null";
 
-  
   public static final String MSM_DEFAULT_REGION = "[MSM] Default Region";
-
 
   public static String SA__SYSTEM__STATEMACHINE_1__DEFAULT_REGION__STATE_TRANSITION__CONSTRAINT = "be2b76aa-36bb-4243-861a-b968ad8133cb"; //$NON-NLS-1$
   public static String SA__SYSTEM__STATEMACHINE_1__DEFAULT_REGION__STATE_TRANSITION = "da8600e2-5df6-4ac2-b784-cb70e49c9fa7"; //$NON-NLS-1$
@@ -142,7 +142,7 @@ public abstract class MiscModel extends NonDirtyTestCase {
   public List<String> getRequiredTestModels() {
     return Arrays.asList("miscmodel");
   }
-  
+
   protected CapellaModel getTestModel() {
     return super.getTestModel(getRequiredTestModels().get(0));
   }

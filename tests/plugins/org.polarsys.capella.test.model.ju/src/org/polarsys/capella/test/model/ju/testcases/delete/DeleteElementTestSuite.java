@@ -25,7 +25,7 @@ public class DeleteElementTestSuite extends BasicTestSuite {
   public List<String> getRequiredTestModels() {
     return Arrays.asList("miscmodel");
   }
-  
+
   public static Test suite() {
     return new DeleteElementTestSuite();
   }
@@ -37,9 +37,11 @@ public class DeleteElementTestSuite extends BasicTestSuite {
     tests.add(new DeleteChainInvolvmentLink());
     tests.add(new DeleteChainReferenceSourceHierarchy());
     tests.add(new DeleteChainReferenceTargetHierarchy());
-    
+
     tests.add(new DeleteExchangeItem());
     tests.add(new DeleteGuard());
+
+    tests.add(new DeleteProtectedElements());
 
     return tests;
   }
