@@ -328,6 +328,8 @@
         </ownedCapabilities>
         <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
             id="01f73729-471d-4491-95b5-2611e75069d6" name="Capability 2">
+          <superGeneralizations xsi:type="org.polarsys.capella.core.data.interaction:AbstractCapabilityGeneralization"
+              id="94689ae3-4c0c-40c3-9e2e-492ceed550ea" super="#9ee08025-3704-46fe-88ff-7aed2eba6455"/>
           <ownedCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:CapabilityInvolvement"
               id="c680b9cf-1549-4927-9fd1-bff5024fcf69" involved="#42288bd8-38b0-43c2-811a-2652a9c5a4a6"/>
           <ownedCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:CapabilityInvolvement"
@@ -354,6 +356,8 @@
         </ownedCapabilities>
         <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
             id="fb7c17f9-56ae-47b3-8b39-0b0eb05dfdaa" name="Capability 6">
+          <superGeneralizations xsi:type="org.polarsys.capella.core.data.interaction:AbstractCapabilityGeneralization"
+              id="dac4dab4-c0ad-4421-b867-e3a7863fc606" super="#6badd673-0f64-4580-acd8-a207d60031c3"/>
           <ownedCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:CapabilityInvolvement"
               id="646760be-7550-4d08-a443-de5b7e545a4a" involved="#96b3fa3e-5d25-46ec-8ff6-41dbec8f749a"/>
           <ownedCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:CapabilityInvolvement"
@@ -366,8 +370,25 @@
         </ownedCapabilities>
         <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
             id="7e9fe16b-6cf9-4c5d-97e9-cf4ca0bf76b7" name="Capability 8">
+          <superGeneralizations xsi:type="org.polarsys.capella.core.data.interaction:AbstractCapabilityGeneralization"
+              id="fb5b10f4-8f18-4972-9b4e-32a5d5faa944" super="#3eccb3ab-6d13-44fa-9c33-67bbb0b7b96c"/>
           <ownedCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:CapabilityInvolvement"
               id="a740992a-08d4-4bb3-b59a-2808f0462010" involved="#a75d0bf9-5e02-4ffc-b583-5a1d0475cd86"/>
+        </ownedCapabilities>
+        <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
+            id="6badd673-0f64-4580-acd8-a207d60031c3" name="Capability 9">
+          <ownedCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:CapabilityInvolvement"
+              id="76573316-dbda-4e8e-94f4-9e2cb13fc06a" involved="#a75d0bf9-5e02-4ffc-b583-5a1d0475cd86"/>
+        </ownedCapabilities>
+        <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
+            id="3eccb3ab-6d13-44fa-9c33-67bbb0b7b96c" name="Capability 10">
+          <ownedCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:CapabilityInvolvement"
+              id="0cf35493-d877-4b03-a089-1947cbe85e60" involved="#a75d0bf9-5e02-4ffc-b583-5a1d0475cd86"/>
+        </ownedCapabilities>
+        <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
+            id="9ee08025-3704-46fe-88ff-7aed2eba6455" name="Capability 11">
+          <ownedCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:CapabilityInvolvement"
+              id="13185ba1-f9a1-427a-b96c-467a9d862199" involved="#a75d0bf9-5e02-4ffc-b583-5a1d0475cd86"/>
         </ownedCapabilities>
       </ownedAbstractCapabilityPkg>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"

@@ -126,18 +126,6 @@ public class CapellaModelPreferencesPlugin extends Plugin {
   }
 
   /**
-   * Get the Allowed Component Inheritance Strategy current preference value. <br>
-   * <br>
-   *
-   * @link {@link IInheritancePreferences#PREFS_ALLOW_COMPONENT_INHERITANCE} value <code>true or false</code>
-   * @return boolean value
-   */
-  public boolean isComponentInheritanceAllowed() {
-    return AbstractPreferencesInitializer.getBoolean(IInheritancePreferences.PREFS_ALLOW_COMPONENT_INHERITANCE, true);
-
-  }
-
-  /**
    * Get the Allowed Component Non Actor Inheritance Strategy current preference value. <br>
    * <br>
    *

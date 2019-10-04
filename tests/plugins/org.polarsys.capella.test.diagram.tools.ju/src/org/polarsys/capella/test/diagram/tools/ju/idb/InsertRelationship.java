@@ -112,7 +112,7 @@ public class InsertRelationship extends EmptyProject {
 
     SessionContext sessionContext = diagramContext.getSessionContext();
 
-    sessionContext.setPreference(IInheritancePreferences.PREFS_ALLOW_COMPONENT_INHERITANCE, true);
+    sessionContext.setPreference(IInheritancePreferences.PREFS_ALLOW_COMPONENT_NON_ACTOR_INHERITANCE, true);
     sessionContext.setPreference(IInheritancePreferences.PREFS_ALLOW_MULTIPLE_INHERITANCE, true);
 
     diagramContext.createGeneralization(GenericModel.LC_1, GenericModel.LC_2, GenericModel.GENERALIZATION_2);

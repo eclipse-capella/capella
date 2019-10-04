@@ -25,7 +25,6 @@ import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 
 public class GetAvailable_LogicalComponent_Super extends AbstractQuery {
 
@@ -45,8 +44,7 @@ public class GetAvailable_LogicalComponent_Super extends AbstractQuery {
       LogicalArchitecture ca = SystemEngineeringExt.getOwnedLogicalArchitecture(systemEngineering);
       for (Component actor : BlockArchitectureExt.getAllComponents(ca)) {
         if (isGoodSupertypeCandidate(component, actor)) {
-          if (component.isActor() == actor.isActor()
-              || CapellaModelPreferencesPlugin.getDefault().isComponentNonActorInheritanceAllowed()) {
+          if (component.isActor() == actor.isActor()) {
             availableElements.add(actor);
           }
         }

@@ -115,6 +115,11 @@ public class CapabilityDiagram extends CommonDiagram {
         targetId, id).run();
   }
 
+  public void cannotCreateActorCapabilityGeneralization(String sourceId, String targetId) {
+    new CreateDEdgeTool(this, ToolProviderHelper.getToolCreateActorGeneralization(this.getDiagram()), sourceId,
+        targetId).cannotRun();
+  }
+
   public void cannotCreateActorGeneralization(String sourceId, String targetId) {
     new CreateDEdgeTool(this, ToolProviderHelper.getToolCreateActorGeneralization(this.getDiagram()), sourceId,
         targetId).shouldFail();

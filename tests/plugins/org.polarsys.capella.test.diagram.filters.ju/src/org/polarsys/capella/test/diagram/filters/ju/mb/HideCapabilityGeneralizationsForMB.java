@@ -8,23 +8,23 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.filters.ju.cc;
+package org.polarsys.capella.test.diagram.filters.ju.mb;
 
 import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 
-public class HideCapabilitiesForCC extends FiltersForCC {
+public class HideCapabilityGeneralizationsForMB extends FiltersForMB {
 
   @Override
   protected String getFilterName() {
-    return IFilterNameConstants.FILTER_CC_HIDE_CAPABILITIES;
+    return IFilterNameConstants.FILTER_MB_HIDE_CAPABILITY_GENERALIZATIONS;
   }
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { CAPABILITY_1_ID, CAPABILITY_2_ID, CAPABILITY_3_ID, CAPABILITY_11_ID });
+    return Arrays.asList(new String[] { CAPABILITY_GENERALIZATIONS_ID });
   }
 
 }

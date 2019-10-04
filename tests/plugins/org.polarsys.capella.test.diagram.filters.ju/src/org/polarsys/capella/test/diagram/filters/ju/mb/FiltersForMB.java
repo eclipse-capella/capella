@@ -15,7 +15,9 @@ import org.polarsys.capella.test.diagram.filters.ju.DiagramObjectFilterTestCase;
 public abstract class FiltersForMB extends DiagramObjectFilterTestCase {
 
   protected final String CAPABILITY_ID = "7e9fe16b-6cf9-4c5d-97e9-cf4ca0bf76b7";
+  protected final String CAPABILITY_10_ID = "3eccb3ab-6d13-44fa-9c33-67bbb0b7b96c";
   protected final String CAPABILITY_EXPLOITATIONS_ID = "cdc7394c-ad29-4003-b67c-87d739446c66";
+  protected final String CAPABILITY_GENERALIZATIONS_ID = "fb5b10f4-8f18-4972-9b4e-32a5d5faa944";
   protected final String MISSION_ID = "68ac1423-b21e-4a22-9296-15bf33224c75";
   protected final String ACTOR_7_ID = "e830c43a-2144-4d9a-bb58-45c5426d2a49";
   protected final String ACTOR_8_ID = "a9875ba5-6ab3-49f5-bb96-88f8d73f78e0";

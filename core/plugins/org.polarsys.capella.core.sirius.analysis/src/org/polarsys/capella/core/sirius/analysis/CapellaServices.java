@@ -178,7 +178,6 @@ import org.polarsys.capella.core.model.helpers.AbstractFunctionExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
-import org.polarsys.capella.core.model.helpers.ComponentPkgExt;
 import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
 import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.model.helpers.ScenarioExt;
@@ -2416,6 +2415,17 @@ public class CapellaServices {
 
         }
       } else {
+        if (source instanceof Component) {
+          Component sourceComp = (Component) source;
+          if (!sourceComp.isActor()
+              && !CapellaModelPreferencesPlugin.getDefault().isComponentNonActorInheritanceAllowed()) {
+            return false;
+          }
+          if (target instanceof Component) {
+            Component targetComp = (Component) target;
+            return targetComp.isActor() == sourceComp.isActor();
+          }
+        }
         return (!getSuperClassifiers(sourceClass).contains(targetClass)
             && !getSuperClassifiers(targetClass).contains(sourceClass));
       }

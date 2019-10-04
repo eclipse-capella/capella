@@ -301,6 +301,12 @@ public class ContextServices {
     return result;
   }
 
+  public Collection<EObject> getMBGeneralizationSemanticCandidates(DDiagram diagram) {
+    Collection<EObject> compGeneralizations = getMBActorGeneralizationSemanticCandidates(diagram);
+    compGeneralizations.addAll(getMBCapabilityGeneralizationSemanticCandidates(diagram));
+    return compGeneralizations;
+  }
+
   public Collection<EObject> getMBActorGeneralizationSemanticCandidates(DDiagram diagram) {
     return InformationServices.getService().getCDBGeneralizationSemanticCandidates(diagram);
   }

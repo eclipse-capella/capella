@@ -72,7 +72,7 @@ public class MCBScenario extends EmptyProject {
     diagram.cannotCreateMissionInvolvement(capability2, mission1);
     diagram.cannotCreateMissionInvolvement(mission2, capability1);
 
-    diagram.cannotCreateActorGeneralization(actor1, capability1);
+    diagram.cannotCreateActorCapabilityGeneralization(actor1, capability1);
     diagram.cannotCreateActorGeneralization(actor1, mission1);
 
     DiagramHelper.setSynchronized(diagram.getDiagram(), false);
