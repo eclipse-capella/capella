@@ -35,7 +35,7 @@
             id="org.polarsys.capella.core.common.ui.wizards.ActorIsHumanTester"
             namespace="org.polarsys.capella.core.common.ui.wizards"
             properties="actorIsHumanTester"
-            type="org.polarsys.capella.common.data.modellingcore.ModelElement">
+            type="java.lang.Object">
 		  </propertyTester>
 	   </extension>
 	   <extension
