@@ -29,14 +29,11 @@ import "http://www.polarsys.org/capella/core/oa/1.4.0"
 pattern InvolverElement__involvedInvolvements(self : InvolverElement, target : Involvement) {
 	AbstractCapability.ownedAbstractFunctionAbstractCapabilityInvolvements(self, target);
 	} or {	AbstractCapability.ownedFunctionalChainAbstractCapabilityInvolvements(self, target);
-	} or {	Capability.ownedActorCapabilityInvolvements(self, target);
-	} or {	Capability.ownedSystemCapabilityInvolvement(self, target);
-	} or {	CapabilityRealization.ownedActorCapabilityRealizations(self, target);
-	} or {	CapabilityRealization.ownedSystemComponentCapabilityRealizations(self, target);
+	} or {	Capability.ownedCapabilityInvolvements(self, target);
+	} or {	CapabilityRealization.ownedCapabilityRealizationInvolvements(self, target);
 	} or {	OperationalCapability.ownedEntityOperationalCapabilityInvolvements(self, target);
 	} or {	FunctionalChain.ownedFunctionalChainInvolvements(self, target);
-	} or {	Mission.ownedActorMissionInvolvements(self, target);
-	} or {	Mission.ownedSystemMissionInvolvement(self, target);
+	} or {	Mission.ownedMissionInvolvements(self, target);
 	} or {	PhysicalPath.ownedPhysicalPathInvolvements(self, target);
 
 }

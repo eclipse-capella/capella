@@ -43,26 +43,6 @@ pattern Component__implementedInterfaces(self : Component, target : Interface) {
 	Component.implementedInterfaceLinks.implementedInterface(self, target);
 }
 
-@Surrogate(feature="provisionedComponentAllocations")
-pattern Component__provisionedComponentAllocations(self : Component, target : ComponentAllocation) {
-	Component.outgoingTraces(self, target);
-}
-
-@Surrogate(feature="provisioningComponentAllocations")
-pattern Component__provisioningComponentAllocations(self : Component, target : ComponentAllocation) {
-	Component.incomingTraces(self, target);
-}
-
-@Surrogate(feature="allocatedComponents")
-pattern Component__allocatedComponents(self : Component, target : Component) {
-	Component.provisionedComponentAllocations.allocatedComponent(self, target);
-}
-
-@Surrogate(feature="allocatingComponents")
-pattern Component__allocatingComponents(self : Component, target : Component) {
-	Component.provisioningComponentAllocations.allocatingComponent(self, target);
-}
-
 @Surrogate(feature="providedInterfaces")
 pattern Component__providedInterfaces(self : Component, target : Interface) {
 	Component.containedComponentPorts.providedInterfaces(self, target);

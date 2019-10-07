@@ -24,7 +24,7 @@ import "http://www.polarsys.org/capella/common/core/1.4.0"
 @Surrogate(feature="allocatorConfigurationItems")
 pattern AbstractPhysicalArtifact__allocatorConfigurationItems(self : AbstractPhysicalArtifact, target : ConfigurationItem) {
 	PhysicalArtifactRealization.targetElement(par, self);
-PhysicalArtifactRealization.allocatingComponent(par, target);
+PhysicalArtifactRealization.realizingConfigurationItem(par, target);
 }
 
 

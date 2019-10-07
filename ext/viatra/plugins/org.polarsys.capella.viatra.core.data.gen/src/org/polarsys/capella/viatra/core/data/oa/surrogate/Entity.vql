@@ -32,7 +32,7 @@ pattern Entity__roleAllocations(self : Entity, target : RoleAllocation) {
 
 @Surrogate(feature="subEntities")
 pattern Entity__subEntities(self : Entity, target : Entity) {
-	Entity.ownedPartitions.type(self, target);
+	Entity.containedParts.type(self, target);
 }
 
 @Surrogate(feature="allocatedOperationalActivities")
@@ -43,21 +43,6 @@ pattern Entity__allocatedOperationalActivities(self : Entity, target : Operation
 @Surrogate(feature="allocatedRoles")
 pattern Entity__allocatedRoles(self : Entity, target : Role) {
 	Entity.roleAllocations.role(self, target);
-}
-
-@Surrogate(feature="realizingSystems")
-pattern Entity__realizingSystems(self : Entity, target : System) {
-	Entity.incomingTraces(self, oer);
-	OperationalEntityRealization.allocatingComponent(oer, target);
-} or {
-	Entity.incomingTraces(self, oar);
-	OperationalActorRealization.allocatingComponent(oar, target);
-}
-
-@Surrogate(feature="realizingActors")
-pattern Entity__realizingActors(self : Entity, target : Actor) {
-	Entity.incomingTraces(self, oer);
-	OperationalEntityRealization.allocatingComponent(oer, target);
 }
 
 @Surrogate(feature="involvingOperationalCapabilities")

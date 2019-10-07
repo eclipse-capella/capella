@@ -23,18 +23,6 @@ import "http://www.polarsys.org/capella/core/la/1.4.0"
 
 // End of user code
 
-@Surrogate(feature="allocatorActors")
-pattern SystemFunction__allocatorActors(self : SystemFunction, target : Actor) {
-	ComponentFunctionalAllocation.targetElement(cfa, self);
-ComponentFunctionalAllocation.sourceElement(cfa, target);
-}
-
-@Surrogate(feature="allocatorSystems")
-pattern SystemFunction__allocatorSystems(self : SystemFunction, target : System) {
-	ComponentFunctionalAllocation.targetElement(cfa, self);
-ComponentFunctionalAllocation.sourceElement(cfa, target);
-}
-
 @Surrogate(feature="realizedOperationalActivities")
 pattern SystemFunction__realizedOperationalActivities(self : SystemFunction, target : OperationalActivity) {
 	SystemFunction.outFunctionRealizations.allocatedFunction(self, target);

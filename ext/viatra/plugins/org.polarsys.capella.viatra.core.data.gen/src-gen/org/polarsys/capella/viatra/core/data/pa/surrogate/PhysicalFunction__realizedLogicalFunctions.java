@@ -54,6 +54,8 @@ import org.polarsys.capella.core.data.pa.PhysicalFunction;
  * 
  * <p>Original source:
  *         <code><pre>
+ *         // End of user code
+ *         
  *         {@literal @}Surrogate(feature="realizedLogicalFunctions")
  *         pattern PhysicalFunction__realizedLogicalFunctions(self : PhysicalFunction, target : LogicalFunction) {
  *         	PhysicalFunction.outFunctionRealizations.allocatedFunction(self, target);
@@ -258,6 +260,8 @@ public final class PhysicalFunction__realizedLogicalFunctions extends BaseGenera
    * 
    * <p>Original source:
    * <code><pre>
+   * // End of user code
+   * 
    * {@literal @}Surrogate(feature="realizedLogicalFunctions")
    * pattern PhysicalFunction__realizedLogicalFunctions(self : PhysicalFunction, target : LogicalFunction) {
    * 	PhysicalFunction.outFunctionRealizations.allocatedFunction(self, target);

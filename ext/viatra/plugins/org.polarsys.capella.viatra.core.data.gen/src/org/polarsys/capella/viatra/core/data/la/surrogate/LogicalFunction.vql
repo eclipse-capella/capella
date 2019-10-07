@@ -23,18 +23,6 @@ import "http://www.polarsys.org/capella/core/pa/1.4.0"
 
 // End of user code
 
-@Surrogate(feature="allocatorLogicalActors")
-pattern LogicalFunction__allocatorLogicalActors(self : LogicalFunction, target : LogicalActor) {
-	LogicalFunction.incomingTraces(self, cfa);
-ComponentFunctionalAllocation.sourceElement(cfa, target);
-}
-
-@Surrogate(feature="allocatorLogicalComponents")
-pattern LogicalFunction__allocatorLogicalComponents(self : LogicalFunction, target : LogicalComponent) {
-	LogicalFunction.incomingTraces(self, cfa);
-ComponentFunctionalAllocation.sourceElement(cfa, target);
-}
-
 @Surrogate(feature="realizedSystemFunctions")
 pattern LogicalFunction__realizedSystemFunctions(self : LogicalFunction, target : SystemFunction) {
 	LogicalFunction.outFunctionRealizations.allocatedFunction(self, target);

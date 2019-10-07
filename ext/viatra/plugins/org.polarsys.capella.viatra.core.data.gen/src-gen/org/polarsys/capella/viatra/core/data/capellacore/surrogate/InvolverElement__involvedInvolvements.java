@@ -60,14 +60,11 @@ import org.polarsys.capella.core.data.capellacore.InvolverElement;
  *         pattern InvolverElement__involvedInvolvements(self : InvolverElement, target : Involvement) {
  *         	AbstractCapability.ownedAbstractFunctionAbstractCapabilityInvolvements(self, target);
  *         	} or {	AbstractCapability.ownedFunctionalChainAbstractCapabilityInvolvements(self, target);
- *         	} or {	Capability.ownedActorCapabilityInvolvements(self, target);
- *         	} or {	Capability.ownedSystemCapabilityInvolvement(self, target);
- *         	} or {	CapabilityRealization.ownedActorCapabilityRealizations(self, target);
- *         	} or {	CapabilityRealization.ownedSystemComponentCapabilityRealizations(self, target);
+ *         	} or {	Capability.ownedCapabilityInvolvements(self, target);
+ *         	} or {	CapabilityRealization.ownedCapabilityRealizationInvolvements(self, target);
  *         	} or {	OperationalCapability.ownedEntityOperationalCapabilityInvolvements(self, target);
  *         	} or {	FunctionalChain.ownedFunctionalChainInvolvements(self, target);
- *         	} or {	Mission.ownedActorMissionInvolvements(self, target);
- *         	} or {	Mission.ownedSystemMissionInvolvement(self, target);
+ *         	} or {	Mission.ownedMissionInvolvements(self, target);
  *         	} or {	PhysicalPath.ownedPhysicalPathInvolvements(self, target);
  *         
  *         }
@@ -277,14 +274,11 @@ public final class InvolverElement__involvedInvolvements extends BaseGeneratedEM
    * pattern InvolverElement__involvedInvolvements(self : InvolverElement, target : Involvement) {
    * 	AbstractCapability.ownedAbstractFunctionAbstractCapabilityInvolvements(self, target);
    * 	} or {	AbstractCapability.ownedFunctionalChainAbstractCapabilityInvolvements(self, target);
-   * 	} or {	Capability.ownedActorCapabilityInvolvements(self, target);
-   * 	} or {	Capability.ownedSystemCapabilityInvolvement(self, target);
-   * 	} or {	CapabilityRealization.ownedActorCapabilityRealizations(self, target);
-   * 	} or {	CapabilityRealization.ownedSystemComponentCapabilityRealizations(self, target);
+   * 	} or {	Capability.ownedCapabilityInvolvements(self, target);
+   * 	} or {	CapabilityRealization.ownedCapabilityRealizationInvolvements(self, target);
    * 	} or {	OperationalCapability.ownedEntityOperationalCapabilityInvolvements(self, target);
    * 	} or {	FunctionalChain.ownedFunctionalChainInvolvements(self, target);
-   * 	} or {	Mission.ownedActorMissionInvolvements(self, target);
-   * 	} or {	Mission.ownedSystemMissionInvolvement(self, target);
+   * 	} or {	Mission.ownedMissionInvolvements(self, target);
    * 	} or {	PhysicalPath.ownedPhysicalPathInvolvements(self, target);
    * 
    * }
@@ -754,11 +748,11 @@ public final class InvolverElement__involvedInvolvements extends BaseGeneratedEM
              new ExportedParameter(body, var_self, parameter_self),
              new ExportedParameter(body, var_target, parameter_target)
           ));
-          // 	Capability.ownedActorCapabilityInvolvements(self, target)
+          // 	Capability.ownedCapabilityInvolvements(self, target)
           new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/ctx/1.4.0", "Capability")));
           PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/ctx/1.4.0", "Capability", "ownedActorCapabilityInvolvements")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/ctx/1.4.0", "ActorCapabilityInvolvement")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/ctx/1.4.0", "Capability", "ownedCapabilityInvolvements")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/ctx/1.4.0", "CapabilityInvolvement")));
           new Equality(body, var__virtual_0_, var_target);
           bodies.add(body);
       }
@@ -772,47 +766,11 @@ public final class InvolverElement__involvedInvolvements extends BaseGeneratedEM
              new ExportedParameter(body, var_self, parameter_self),
              new ExportedParameter(body, var_target, parameter_target)
           ));
-          // 	Capability.ownedSystemCapabilityInvolvement(self, target)
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/ctx/1.4.0", "Capability")));
-          PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/ctx/1.4.0", "Capability", "ownedSystemCapabilityInvolvement")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/ctx/1.4.0", "SystemCapabilityInvolvement")));
-          new Equality(body, var__virtual_0_, var_target);
-          bodies.add(body);
-      }
-      {
-          PBody body = new PBody(this);
-          PVariable var_self = body.getOrCreateVariableByName("self");
-          PVariable var_target = body.getOrCreateVariableByName("target");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/core/1.4.0", "InvolverElement")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/core/1.4.0", "Involvement")));
-          body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
-             new ExportedParameter(body, var_self, parameter_self),
-             new ExportedParameter(body, var_target, parameter_target)
-          ));
-          // 	CapabilityRealization.ownedActorCapabilityRealizations(self, target)
+          // 	CapabilityRealization.ownedCapabilityRealizationInvolvements(self, target)
           new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/la/1.4.0", "CapabilityRealization")));
           PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/la/1.4.0", "CapabilityRealization", "ownedActorCapabilityRealizations")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/cs/1.4.0", "ActorCapabilityRealizationInvolvement")));
-          new Equality(body, var__virtual_0_, var_target);
-          bodies.add(body);
-      }
-      {
-          PBody body = new PBody(this);
-          PVariable var_self = body.getOrCreateVariableByName("self");
-          PVariable var_target = body.getOrCreateVariableByName("target");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/core/1.4.0", "InvolverElement")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/core/1.4.0", "Involvement")));
-          body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
-             new ExportedParameter(body, var_self, parameter_self),
-             new ExportedParameter(body, var_target, parameter_target)
-          ));
-          // 	CapabilityRealization.ownedSystemComponentCapabilityRealizations(self, target)
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/la/1.4.0", "CapabilityRealization")));
-          PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/la/1.4.0", "CapabilityRealization", "ownedSystemComponentCapabilityRealizations")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/cs/1.4.0", "SystemComponentCapabilityRealizationInvolvement")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/la/1.4.0", "CapabilityRealization", "ownedCapabilityRealizationInvolvements")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/common/1.4.0", "CapabilityRealizationInvolvement")));
           new Equality(body, var__virtual_0_, var_target);
           bodies.add(body);
       }
@@ -862,29 +820,11 @@ public final class InvolverElement__involvedInvolvements extends BaseGeneratedEM
              new ExportedParameter(body, var_self, parameter_self),
              new ExportedParameter(body, var_target, parameter_target)
           ));
-          // 	Mission.ownedActorMissionInvolvements(self, target)
+          // 	Mission.ownedMissionInvolvements(self, target)
           new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/ctx/1.4.0", "Mission")));
           PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/ctx/1.4.0", "Mission", "ownedActorMissionInvolvements")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/ctx/1.4.0", "ActorMissionInvolvement")));
-          new Equality(body, var__virtual_0_, var_target);
-          bodies.add(body);
-      }
-      {
-          PBody body = new PBody(this);
-          PVariable var_self = body.getOrCreateVariableByName("self");
-          PVariable var_target = body.getOrCreateVariableByName("target");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/core/1.4.0", "InvolverElement")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/core/1.4.0", "Involvement")));
-          body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
-             new ExportedParameter(body, var_self, parameter_self),
-             new ExportedParameter(body, var_target, parameter_target)
-          ));
-          // 	Mission.ownedSystemMissionInvolvement(self, target)
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/ctx/1.4.0", "Mission")));
-          PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/ctx/1.4.0", "Mission", "ownedSystemMissionInvolvement")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/ctx/1.4.0", "SystemMissionInvolvement")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/ctx/1.4.0", "Mission", "ownedMissionInvolvements")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/ctx/1.4.0", "MissionInvolvement")));
           new Equality(body, var__virtual_0_, var_target);
           bodies.add(body);
       }

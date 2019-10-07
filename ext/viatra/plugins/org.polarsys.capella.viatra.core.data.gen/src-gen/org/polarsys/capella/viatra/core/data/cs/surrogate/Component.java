@@ -14,16 +14,12 @@ package org.polarsys.capella.viatra.core.data.cs.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__allocatedComponents;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__allocatingComponents;
 import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__containedComponentPorts;
 import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__containedParts;
 import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__containedPhysicalPorts;
 import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__implementedInterfaceLinks;
 import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__implementedInterfaces;
 import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__providedInterfaces;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__provisionedComponentAllocations;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__provisioningComponentAllocations;
 import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__requiredInterfaces;
 import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__usedInterfaceLinks;
 import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__usedInterfaces;
@@ -40,10 +36,6 @@ import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__usedInterfa
  * <li>Component__usedInterfaces</li>
  * <li>Component__implementedInterfaceLinks</li>
  * <li>Component__implementedInterfaces</li>
- * <li>Component__provisionedComponentAllocations</li>
- * <li>Component__provisioningComponentAllocations</li>
- * <li>Component__allocatedComponents</li>
- * <li>Component__allocatingComponents</li>
  * <li>Component__providedInterfaces</li>
  * <li>Component__requiredInterfaces</li>
  * <li>Component__containedComponentPorts</li>
@@ -77,10 +69,6 @@ public final class Component extends BaseGeneratedPatternGroup {
     querySpecifications.add(Component__usedInterfaces.instance());
     querySpecifications.add(Component__implementedInterfaceLinks.instance());
     querySpecifications.add(Component__implementedInterfaces.instance());
-    querySpecifications.add(Component__provisionedComponentAllocations.instance());
-    querySpecifications.add(Component__provisioningComponentAllocations.instance());
-    querySpecifications.add(Component__allocatedComponents.instance());
-    querySpecifications.add(Component__allocatingComponents.instance());
     querySpecifications.add(Component__providedInterfaces.instance());
     querySpecifications.add(Component__requiredInterfaces.instance());
     querySpecifications.add(Component__containedComponentPorts.instance());
@@ -118,38 +106,6 @@ public final class Component extends BaseGeneratedPatternGroup {
   
   public Component__implementedInterfaces.Matcher getComponent__implementedInterfaces(final ViatraQueryEngine engine) {
     return Component__implementedInterfaces.Matcher.on(engine);
-  }
-  
-  public Component__provisionedComponentAllocations getComponent__provisionedComponentAllocations() {
-    return Component__provisionedComponentAllocations.instance();
-  }
-  
-  public Component__provisionedComponentAllocations.Matcher getComponent__provisionedComponentAllocations(final ViatraQueryEngine engine) {
-    return Component__provisionedComponentAllocations.Matcher.on(engine);
-  }
-  
-  public Component__provisioningComponentAllocations getComponent__provisioningComponentAllocations() {
-    return Component__provisioningComponentAllocations.instance();
-  }
-  
-  public Component__provisioningComponentAllocations.Matcher getComponent__provisioningComponentAllocations(final ViatraQueryEngine engine) {
-    return Component__provisioningComponentAllocations.Matcher.on(engine);
-  }
-  
-  public Component__allocatedComponents getComponent__allocatedComponents() {
-    return Component__allocatedComponents.instance();
-  }
-  
-  public Component__allocatedComponents.Matcher getComponent__allocatedComponents(final ViatraQueryEngine engine) {
-    return Component__allocatedComponents.Matcher.on(engine);
-  }
-  
-  public Component__allocatingComponents getComponent__allocatingComponents() {
-    return Component__allocatingComponents.instance();
-  }
-  
-  public Component__allocatingComponents.Matcher getComponent__allocatingComponents(final ViatraQueryEngine engine) {
-    return Component__allocatingComponents.Matcher.on(engine);
   }
   
   public Component__providedInterfaces getComponent__providedInterfaces() {

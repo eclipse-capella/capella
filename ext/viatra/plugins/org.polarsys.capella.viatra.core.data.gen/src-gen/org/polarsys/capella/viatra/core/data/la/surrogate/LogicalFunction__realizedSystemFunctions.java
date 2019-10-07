@@ -54,6 +54,8 @@ import org.polarsys.capella.core.data.la.LogicalFunction;
  * 
  * <p>Original source:
  *         <code><pre>
+ *         // End of user code
+ *         
  *         {@literal @}Surrogate(feature="realizedSystemFunctions")
  *         pattern LogicalFunction__realizedSystemFunctions(self : LogicalFunction, target : SystemFunction) {
  *         	LogicalFunction.outFunctionRealizations.allocatedFunction(self, target);
@@ -258,6 +260,8 @@ public final class LogicalFunction__realizedSystemFunctions extends BaseGenerate
    * 
    * <p>Original source:
    * <code><pre>
+   * // End of user code
+   * 
    * {@literal @}Surrogate(feature="realizedSystemFunctions")
    * pattern LogicalFunction__realizedSystemFunctions(self : LogicalFunction, target : SystemFunction) {
    * 	LogicalFunction.outFunctionRealizations.allocatedFunction(self, target);

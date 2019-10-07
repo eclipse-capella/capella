@@ -17,8 +17,6 @@ import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
 import org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__allocatedOperationalActivities;
 import org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__allocatedRoles;
 import org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__involvingOperationalCapabilities;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__realizingActors;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__realizingSystems;
 import org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__roleAllocations;
 import org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__subEntities;
 
@@ -34,8 +32,6 @@ import org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__subEntities;
  * <li>Entity__subEntities</li>
  * <li>Entity__allocatedOperationalActivities</li>
  * <li>Entity__allocatedRoles</li>
- * <li>Entity__realizingSystems</li>
- * <li>Entity__realizingActors</li>
  * <li>Entity__involvingOperationalCapabilities</li>
  * </ul>
  * 
@@ -65,8 +61,6 @@ public final class Entity extends BaseGeneratedPatternGroup {
     querySpecifications.add(Entity__subEntities.instance());
     querySpecifications.add(Entity__allocatedOperationalActivities.instance());
     querySpecifications.add(Entity__allocatedRoles.instance());
-    querySpecifications.add(Entity__realizingSystems.instance());
-    querySpecifications.add(Entity__realizingActors.instance());
     querySpecifications.add(Entity__involvingOperationalCapabilities.instance());
   }
   
@@ -100,22 +94,6 @@ public final class Entity extends BaseGeneratedPatternGroup {
   
   public Entity__allocatedRoles.Matcher getEntity__allocatedRoles(final ViatraQueryEngine engine) {
     return Entity__allocatedRoles.Matcher.on(engine);
-  }
-  
-  public Entity__realizingSystems getEntity__realizingSystems() {
-    return Entity__realizingSystems.instance();
-  }
-  
-  public Entity__realizingSystems.Matcher getEntity__realizingSystems(final ViatraQueryEngine engine) {
-    return Entity__realizingSystems.Matcher.on(engine);
-  }
-  
-  public Entity__realizingActors getEntity__realizingActors() {
-    return Entity__realizingActors.instance();
-  }
-  
-  public Entity__realizingActors.Matcher getEntity__realizingActors(final ViatraQueryEngine engine) {
-    return Entity__realizingActors.Matcher.on(engine);
   }
   
   public Entity__involvingOperationalCapabilities getEntity__involvingOperationalCapabilities() {

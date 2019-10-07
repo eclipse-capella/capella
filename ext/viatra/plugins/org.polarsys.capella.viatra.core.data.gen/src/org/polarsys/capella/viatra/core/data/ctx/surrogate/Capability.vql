@@ -24,26 +24,6 @@ import "http://www.polarsys.org/capella/core/la/1.4.0"
 
 // End of user code
 
-@Surrogate(feature="involvedActors")
-pattern Capability__involvedActors(self : Capability, target : ActorCapabilityInvolvement) {
-	Capability.involvedInvolvements(self, target);
-}
-
-@Surrogate(feature="involvedSystem")
-pattern Capability__involvedSystem(self : Capability, target : SystemCapabilityInvolvement) {
-	Capability.ownedSystemCapabilityInvolvement(self, target);
-}
-
-@Surrogate(feature="participatingActors")
-pattern Capability__participatingActors(self : Capability, target : Actor) {
-	Capability.involvedActors.actor(self, target);
-}
-
-@Surrogate(feature="participatingSystem")
-pattern Capability__participatingSystem(self : Capability, target : System) {
-	Capability.ownedSystemCapabilityInvolvement.system(self, target);
-}
-
 @Surrogate(feature="purposes")
 pattern Capability__purposes(self : Capability, target : CapabilityExploitation) {
 	CapabilityExploitation.capability(target, self);

@@ -57,7 +57,7 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
  *         {@literal @}Surrogate(feature="realizedLogicalComponents")
  *         pattern PhysicalComponent__realizedLogicalComponents(self : PhysicalComponent, target : LogicalComponent) {
  *         	PhysicalComponent.outgoingTraces(self, lcr);
- *         	LogicalComponentRealization.targetElement(lcr, target);
+ *         	ComponentRealization.targetElement(lcr, target);
  *         }
  * </pre></code>
  * 
@@ -262,7 +262,7 @@ public final class PhysicalComponent__realizedLogicalComponents extends BaseGene
    * {@literal @}Surrogate(feature="realizedLogicalComponents")
    * pattern PhysicalComponent__realizedLogicalComponents(self : PhysicalComponent, target : LogicalComponent) {
    * 	PhysicalComponent.outgoingTraces(self, lcr);
-   * 	LogicalComponentRealization.targetElement(lcr, target);
+   * 	ComponentRealization.targetElement(lcr, target);
    * }
    * </pre></code>
    * 
@@ -701,8 +701,8 @@ public final class PhysicalComponent__realizedLogicalComponents extends BaseGene
           new TypeConstraint(body, Tuples.flatTupleOf(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/common/core/1.4.0", "TraceableElement", "outgoingTraces")));
           new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/core/1.4.0", "AbstractTrace")));
           new Equality(body, var__virtual_0_, var_lcr);
-          // 	LogicalComponentRealization.targetElement(lcr, target)
-          new TypeConstraint(body, Tuples.flatTupleOf(var_lcr), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/pa/1.4.0", "LogicalComponentRealization")));
+          // 	ComponentRealization.targetElement(lcr, target)
+          new TypeConstraint(body, Tuples.flatTupleOf(var_lcr), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/cs/1.4.0", "ComponentRealization")));
           PVariable var__virtual_1_ = body.getOrCreateVariableByName(".virtual{1}");
           new TypeConstraint(body, Tuples.flatTupleOf(var_lcr, var__virtual_1_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/common/core/1.4.0", "AbstractTrace", "targetElement")));
           new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_1_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/core/1.4.0", "TraceableElement")));

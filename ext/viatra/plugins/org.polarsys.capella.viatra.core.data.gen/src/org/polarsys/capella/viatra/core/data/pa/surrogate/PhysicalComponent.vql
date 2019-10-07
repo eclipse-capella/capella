@@ -25,11 +25,6 @@ import "http://www.polarsys.org/capella/core/core/1.4.0"
 
 // End of user code
 
-@Surrogate(feature="logicalComponentRealizations")
-pattern PhysicalComponent__logicalComponentRealizations(self : PhysicalComponent, target : LogicalComponentRealization) {
-	PhysicalComponent.provisionedComponentAllocations(self, target);
-}
-
 @Surrogate(feature="logicalInterfaceRealizations")
 pattern PhysicalComponent__logicalInterfaceRealizations(self : PhysicalComponent, target : LogicalInterfaceRealization) {
 	PhysicalComponent.provisionedInterfaceAllocations(self, target);
@@ -37,13 +32,13 @@ pattern PhysicalComponent__logicalInterfaceRealizations(self : PhysicalComponent
 
 @Surrogate(feature="subPhysicalComponents")
 pattern PhysicalComponent__subPhysicalComponents(self : PhysicalComponent, target : PhysicalComponent) {
-	PhysicalComponent.ownedPartitions.type(self, target);
+	PhysicalComponent.containedParts.type(self, target);
 }
 
 @Surrogate(feature="realizedLogicalComponents")
 pattern PhysicalComponent__realizedLogicalComponents(self : PhysicalComponent, target : LogicalComponent) {
 	PhysicalComponent.outgoingTraces(self, lcr);
-	LogicalComponentRealization.targetElement(lcr, target);
+	ComponentRealization.targetElement(lcr, target);
 }
 
 @Surrogate(feature="allocatedPhysicalFunctions")
@@ -63,16 +58,6 @@ pattern PhysicalComponent__deployedPhysicalComponents(self : PhysicalComponent, 
 
 @Surrogate(feature="deployingPhysicalComponents")
 pattern PhysicalComponent__deployingPhysicalComponents(self : PhysicalComponent, target : PhysicalComponent) {
-	Part.abstractType(part, self);
-	Part.deployingLinks.location(part, deployedPart);
-	Part.abstractType(deployedPart, target);
-} or {
-	Part.abstractType(part, self);
-	Part.deploymentLinks.deployedElement(part, target);
-}
-
-@Surrogate(feature="deployingPhysicalActors")
-pattern PhysicalComponent__deployingPhysicalActors(self : PhysicalComponent, target : PhysicalActor) {
 	Part.abstractType(part, self);
 	Part.deployingLinks.location(part, deployedPart);
 	Part.abstractType(deployedPart, target);

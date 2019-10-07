@@ -14,8 +14,6 @@ package org.polarsys.capella.viatra.core.data.ctx.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction__allocatorActors;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction__allocatorSystems;
 import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction__childrenSystemFunctions;
 import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction__containedSystemFunctions;
 import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction__realizedOperationalActivities;
@@ -29,8 +27,6 @@ import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction__reali
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
  * <p> From package org.polarsys.capella.viatra.core.data.ctx.surrogate, the group contains the definition of the following patterns: <ul>
- * <li>SystemFunction__allocatorActors</li>
- * <li>SystemFunction__allocatorSystems</li>
  * <li>SystemFunction__realizedOperationalActivities</li>
  * <li>SystemFunction__realizingLogicalFunctions</li>
  * <li>SystemFunction__containedSystemFunctions</li>
@@ -59,28 +55,10 @@ public final class SystemFunction extends BaseGeneratedPatternGroup {
   private static SystemFunction INSTANCE;
   
   private SystemFunction() {
-    querySpecifications.add(SystemFunction__allocatorActors.instance());
-    querySpecifications.add(SystemFunction__allocatorSystems.instance());
     querySpecifications.add(SystemFunction__realizedOperationalActivities.instance());
     querySpecifications.add(SystemFunction__realizingLogicalFunctions.instance());
     querySpecifications.add(SystemFunction__containedSystemFunctions.instance());
     querySpecifications.add(SystemFunction__childrenSystemFunctions.instance());
-  }
-  
-  public SystemFunction__allocatorActors getSystemFunction__allocatorActors() {
-    return SystemFunction__allocatorActors.instance();
-  }
-  
-  public SystemFunction__allocatorActors.Matcher getSystemFunction__allocatorActors(final ViatraQueryEngine engine) {
-    return SystemFunction__allocatorActors.Matcher.on(engine);
-  }
-  
-  public SystemFunction__allocatorSystems getSystemFunction__allocatorSystems() {
-    return SystemFunction__allocatorSystems.instance();
-  }
-  
-  public SystemFunction__allocatorSystems.Matcher getSystemFunction__allocatorSystems(final ViatraQueryEngine engine) {
-    return SystemFunction__allocatorSystems.Matcher.on(engine);
   }
   
   public SystemFunction__realizedOperationalActivities getSystemFunction__realizedOperationalActivities() {

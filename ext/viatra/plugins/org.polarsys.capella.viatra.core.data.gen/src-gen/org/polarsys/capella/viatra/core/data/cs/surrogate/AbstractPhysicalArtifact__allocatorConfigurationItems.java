@@ -59,7 +59,7 @@ import org.polarsys.capella.core.data.epbs.ConfigurationItem;
  *         {@literal @}Surrogate(feature="allocatorConfigurationItems")
  *         pattern AbstractPhysicalArtifact__allocatorConfigurationItems(self : AbstractPhysicalArtifact, target : ConfigurationItem) {
  *         	PhysicalArtifactRealization.targetElement(par, self);
- *         PhysicalArtifactRealization.allocatingComponent(par, target);
+ *         PhysicalArtifactRealization.realizingConfigurationItem(par, target);
  *         }
  * </pre></code>
  * 
@@ -266,7 +266,7 @@ public final class AbstractPhysicalArtifact__allocatorConfigurationItems extends
    * {@literal @}Surrogate(feature="allocatorConfigurationItems")
    * pattern AbstractPhysicalArtifact__allocatorConfigurationItems(self : AbstractPhysicalArtifact, target : ConfigurationItem) {
    * 	PhysicalArtifactRealization.targetElement(par, self);
-   * PhysicalArtifactRealization.allocatingComponent(par, target);
+   * PhysicalArtifactRealization.realizingConfigurationItem(par, target);
    * }
    * </pre></code>
    * 
@@ -705,11 +705,11 @@ public final class AbstractPhysicalArtifact__allocatorConfigurationItems extends
           new TypeConstraint(body, Tuples.flatTupleOf(var_par, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/common/core/1.4.0", "AbstractTrace", "targetElement")));
           new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/core/1.4.0", "TraceableElement")));
           new Equality(body, var__virtual_0_, var_self);
-          // PhysicalArtifactRealization.allocatingComponent(par, target)
+          // PhysicalArtifactRealization.realizingConfigurationItem(par, target)
           new TypeConstraint(body, Tuples.flatTupleOf(var_par), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/epbs/1.4.0", "PhysicalArtifactRealization")));
           PVariable var__virtual_1_ = body.getOrCreateVariableByName(".virtual{1}");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_par, var__virtual_1_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/cs/1.4.0", "ComponentAllocation", "allocatingComponent")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_1_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/cs/1.4.0", "Component")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_par, var__virtual_1_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/epbs/1.4.0", "PhysicalArtifactRealization", "realizingConfigurationItem")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_1_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/epbs/1.4.0", "ConfigurationItem")));
           new Equality(body, var__virtual_1_, var_target);
           bodies.add(body);
       }

@@ -14,10 +14,6 @@ package org.polarsys.capella.viatra.core.data.ctx.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__involvedActors;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__involvedSystem;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__participatingActors;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__participatingSystem;
 import org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__purposeMissions;
 import org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__purposes;
 import org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__realizedOperationalCapabilities;
@@ -31,10 +27,6 @@ import org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__realizing
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
  * <p> From package org.polarsys.capella.viatra.core.data.ctx.surrogate, the group contains the definition of the following patterns: <ul>
- * <li>Capability__involvedActors</li>
- * <li>Capability__involvedSystem</li>
- * <li>Capability__participatingActors</li>
- * <li>Capability__participatingSystem</li>
  * <li>Capability__purposes</li>
  * <li>Capability__purposeMissions</li>
  * <li>Capability__realizedOperationalCapabilities</li>
@@ -63,46 +55,10 @@ public final class Capability extends BaseGeneratedPatternGroup {
   private static Capability INSTANCE;
   
   private Capability() {
-    querySpecifications.add(Capability__involvedActors.instance());
-    querySpecifications.add(Capability__involvedSystem.instance());
-    querySpecifications.add(Capability__participatingActors.instance());
-    querySpecifications.add(Capability__participatingSystem.instance());
     querySpecifications.add(Capability__purposes.instance());
     querySpecifications.add(Capability__purposeMissions.instance());
     querySpecifications.add(Capability__realizedOperationalCapabilities.instance());
     querySpecifications.add(Capability__realizingCapabilityRealizations.instance());
-  }
-  
-  public Capability__involvedActors getCapability__involvedActors() {
-    return Capability__involvedActors.instance();
-  }
-  
-  public Capability__involvedActors.Matcher getCapability__involvedActors(final ViatraQueryEngine engine) {
-    return Capability__involvedActors.Matcher.on(engine);
-  }
-  
-  public Capability__involvedSystem getCapability__involvedSystem() {
-    return Capability__involvedSystem.instance();
-  }
-  
-  public Capability__involvedSystem.Matcher getCapability__involvedSystem(final ViatraQueryEngine engine) {
-    return Capability__involvedSystem.Matcher.on(engine);
-  }
-  
-  public Capability__participatingActors getCapability__participatingActors() {
-    return Capability__participatingActors.instance();
-  }
-  
-  public Capability__participatingActors.Matcher getCapability__participatingActors(final ViatraQueryEngine engine) {
-    return Capability__participatingActors.Matcher.on(engine);
-  }
-  
-  public Capability__participatingSystem getCapability__participatingSystem() {
-    return Capability__participatingSystem.instance();
-  }
-  
-  public Capability__participatingSystem.Matcher getCapability__participatingSystem(final ViatraQueryEngine engine) {
-    return Capability__participatingSystem.Matcher.on(engine);
   }
   
   public Capability__purposes getCapability__purposes() {

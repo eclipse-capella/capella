@@ -54,6 +54,8 @@ import org.polarsys.capella.core.data.ctx.CapabilityExploitation;
  * 
  * <p>Original source:
  *         <code><pre>
+ *         // End of user code
+ *         
  *         {@literal @}Surrogate(feature="purposes")
  *         pattern Capability__purposes(self : Capability, target : CapabilityExploitation) {
  *         	CapabilityExploitation.capability(target, self);
@@ -258,6 +260,8 @@ public final class Capability__purposes extends BaseGeneratedEMFQuerySpecificati
    * 
    * <p>Original source:
    * <code><pre>
+   * // End of user code
+   * 
    * {@literal @}Surrogate(feature="purposes")
    * pattern Capability__purposes(self : Capability, target : CapabilityExploitation) {
    * 	CapabilityExploitation.capability(target, self);

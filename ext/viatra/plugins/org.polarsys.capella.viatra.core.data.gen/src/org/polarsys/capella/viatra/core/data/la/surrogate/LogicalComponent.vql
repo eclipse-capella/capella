@@ -25,14 +25,9 @@ import "http://www.polarsys.org/capella/core/core/1.4.0"
 
 // End of user code
 
-@Surrogate(feature="systemRealizations")
-pattern LogicalComponent__systemRealizations(self : LogicalComponent, target : SystemRealization) {
-	LogicalComponent.provisionedComponentAllocations(self, target);
-}
-
 @Surrogate(feature="subLogicalComponents")
 pattern LogicalComponent__subLogicalComponents(self : LogicalComponent, target : LogicalComponent) {
-	LogicalComponent.ownedPartitions.type(self, target);
+	LogicalComponent.containedParts.type(self, target);
 }
 
 @Surrogate(feature="allocatedLogicalFunctions")
@@ -42,12 +37,7 @@ pattern LogicalComponent__allocatedLogicalFunctions(self : LogicalComponent, tar
 
 @Surrogate(feature="realizingPhysicalComponents")
 pattern LogicalComponent__realizingPhysicalComponents(self : LogicalComponent, target : PhysicalComponent) {
-	LogicalComponent.allocatingComponents(self, target);
-}
-
-@Surrogate(feature="realizedSystems")
-pattern LogicalComponent__realizedSystems(self : LogicalComponent, target : System) {
-	LogicalComponent.allocatedComponents(self, target);
+	Component.realizingComponents(self, target);
 }
 
 
