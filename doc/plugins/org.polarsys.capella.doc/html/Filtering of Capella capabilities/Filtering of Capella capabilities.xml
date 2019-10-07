@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!--
+  Copyright (c) 2019 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<toc label="Filtering Capella capabilities" link_to="PLUGINS_ROOT/org.polarsys.capella.doc/toc.xml#contribution">
+ <topic href="html/Filtering of Capella capabilities/Filtering of Capella capabilities.html" label="Filtering Capella capabilities">
+	<topic href="html/Filtering of Capella capabilities/Filtering of Capella capabilities.html#Deactivating_Capella_capabilities_via_the_Capabilities_preference_page" label="Deactivating Capella capabilities via the Capabilities preference page">
+	</topic>
+	<topic href="html/Filtering of Capella capabilities/Filtering of Capella capabilities.html#Sharing_the_Capella_capabilities_configuration_with_other_users" label="Sharing the Capella capabilities configuration with other users">
+	</topic>
+ </topic>
+</toc>

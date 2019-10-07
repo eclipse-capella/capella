@@ -18,13 +18,13 @@ Double-clicking on the AIRD file opens the model. While the AIRD file technicall
 This hierarchy represents how the model elements are organized in terms of containment. Diagrams attached to a specific element are located under this element.
 
  
-<center>[[Image:Images/4.04.%20Project%20Explorer_html_m3aa67aa3.png|303x372px]]</center>
+<center>[[Image:Images/4.04.%20Project%20Explorer_html_m3aa67aa3.png]]</center>
 
  
 An additional folder shows all diagrams sorted by categories.
 
  
-<center>[[Image:Images/4.04.%20Project%20Explorer_html_301b63e9.png|346x421px]]</center>
+<center>[[Image:Images/4.04.%20Project%20Explorer_html_301b63e9.png]]</center>
 
  
 Optionally, another folder displaying diagrams sorted by resources is available. Viewing diagrams sorted by resources can be helpful when models are fragmented or when several AIRD files are referencing a unique semantic model. as a folder in which diagrams are sorted by categories.
@@ -108,7 +108,7 @@ It is possible to filter some of the elements displayed in the hierarchical view
 For example, when masking Trace elements, the difference is the following. The Project Explorer get clearer when &ldquo;technical&rdquo; elements are hidden. Dedicated Properties View and Diagrams usually allow to see in a more ergonomic way the same information.
 
  
-<center>[[Image:Images/4.04.%20Project%20Explorer_html_116eb088.png|691x342px]]</center>
+<center>[[Image:Images/4.04.%20Project%20Explorer_html_116eb088.png|900px]]</center>
 
 {| border="1"
 |-
@@ -159,15 +159,15 @@ The &ldquo;New Diagram / Table&rdquo; command creates new diagrams or matrices.
 <center>[[Image:Images/4.04.%20Project%20Explorer_html_40cc432b.png|570x150px]]</center>
 
  
-The &ldquo;Go To&rdquo; command provides a quick navigation shortcut towards related elements. For example, the type of a property, the allocated functions of a component, etc.
+The &ldquo;Show Related Element(s) in Project Explorer&rdquo; command provides a quick navigation shortcut towards related elements. For example, the type of a property, the allocated functions of a component, etc.
 
  
-<center>[[Image:Images/4.04_Project_Explorer5.png|600x150px]]</center>
+<center>[[Image:Images/4.04_Project_Explorer5.png|900px]]</center>
 
 <br>
 <br>
 
-<center>[[Image:Images/4.04_Project_Explorer6.png|600x200px]]</center>
+<center>[[Image:Images/4.04_Project_Explorer6.png|900px]]</center>
 
  
 The contextual menu on a diagram allows to rename or clone an existing diagram (a new diagram is initiated with the same content and layout, which can be very helpful).
