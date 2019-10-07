@@ -338,7 +338,7 @@
         <repositoryList
             name="2019-06">
           <repository
-              url="http://download.eclipse.org/modeling/amalgam/staging/nightly/1.11.0-N133/capella"/>
+              url="http://download.eclipse.org/modeling/amalgam/updates/stable/1.11.0-S20191007/capella"/>
         </repositoryList>
       </targlet>
       <targlet
