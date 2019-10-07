@@ -3913,7 +3913,50 @@
               </initialOperation>
             </menuItemDescription>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Insert/Remove Actors" name="actors" label="%sa.sab.actors" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Insert/Remove Actors" name="actors.multipart" label="%sa.sab.actors.multipart" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <filters precondition="aql:not (self.isPreferenceEnabled('multipart.allowed'))" elementsToListen="aql:self.getPreferenceListener()">
+              <listeners domainClass="org.polarsys.capella.core.preferences.Listener" featureName="multipart.allowed"/>
+            </filters>
+            <variable name="container"/>
+            <viewVariable name="containerView">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:containerView.eContainerOrSelf(diagram::DDiagram)"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="aql:containerView.target.getComponentType()"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="scope" computationExpression="aql:containerView.getABShowHideActor()"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="ownedNodeContainer" computationExpression="aql:self.void2Null(self.getIntersection(containerView.containers->select(container | container.visible).target->filter(cs::Part),containerView.getABShowHideActor()))"/>
+            </viewVariable>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerType">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectSubComponent" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                  <parameters name="context" value="aql:container"/>
+                  <parameters name="scope" value="aql:scope"/>
+                  <parameters name="resultVariable" value="selection"/>
+                  <parameters name="wizardMessage" value="aql:'Select Sub Actors to show in ' + container.name + '.'"/>
+                  <parameters name="initialSelection" value="aql:ownedNodeContainer"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selection = 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container">
+                    <subModelOperations xsi:type="tool_1:For" expression="aql:self.void2Null(self.makeDiff(ownedNodeContainer, containerView.target))">
+                      <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (selection->includes(i))">
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.containers->select(container | (container.target.oclIsKindOf(cs::Part)) and (container.target = i))->first()">
+                          <subModelOperations xsi:type="tool_1:DeleteView"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:For" expression="aql:self.void2Null(selection)">
+                      <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (ownedNodeContainer->includes(i))">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']" containerViewExpression="aql:containerView"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.getDiagramContainer().forceRefresh()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Insert/Remove Actors" name="actors.monopart" label="%sa.sab.actors.monopart" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <filters precondition="aql:self.isPreferenceEnabled('multipart.allowed')" elementsToListen="aql:self.getPreferenceListener()">
+              <listeners domainClass="org.polarsys.capella.core.preferences.Listener" featureName="multipart.allowed"/>
+            </filters>
             <variable name="container"/>
             <viewVariable name="containerView">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:containerView.eContainerOrSelf(diagram::DDiagram)"/>

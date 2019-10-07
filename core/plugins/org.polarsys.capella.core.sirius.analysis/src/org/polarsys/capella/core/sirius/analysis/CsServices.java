@@ -1296,6 +1296,21 @@ public class CsServices {
    */
   public Collection<? extends CapellaElement> getABShowHideComponent(DSemanticDecorator decorator) {
     EObject target = getABTarget(decorator);
+    return getABShowHideComponent(decorator, target);
+  }
+  
+  /**
+   * Returns available components which are accessible AB-Show-Hide-Actor.
+   */
+  public Collection<? extends CapellaElement> getABShowHideComponentForActor(DSemanticDecorator decorator) {
+    EObject target = getABActorTarget(decorator);
+    return getABShowHideComponent(decorator, target);
+  }
+  
+  /**
+   * Returns available Components/Actors which are accessible AB-Show-Hide-Component/Actor.
+   */
+  public Collection<? extends CapellaElement> getABShowHideComponent(DSemanticDecorator decorator, EObject target) {
 
     // In multipart mode or in EPBS Architecture Blank, we display parts
     if (isMultipartMode((ModelElement) target) || (getComponentType(decorator) instanceof ConfigurationItem)) {
@@ -1316,11 +1331,12 @@ public class CsServices {
           parts.addAll(getParts(targetComponent, CsPackage.Literals.COMPONENT, null));
           parts.addAll(targetComponent.getRepresentingParts());
         } else if (target instanceof BlockArchitecture) {
-          parts.addAll(getParts(getContext((BlockArchitecture) target), CsPackage.Literals.COMPONENT,
-              CsPackage.Literals.COMPONENT));
+          parts.addAll(getParts(getContext((BlockArchitecture) target), CsPackage.Literals.COMPONENT, null));
+        } else if (target instanceof ComponentPkg) {
+          parts.addAll(getParts((ComponentPkg) target, CsPackage.Literals.COMPONENT, null));
         }
       } else if (targetComponent != null) {
-        parts.addAll(getParts(targetComponent, CsPackage.Literals.COMPONENT, CsPackage.Literals.COMPONENT));
+        parts.addAll(getParts(targetComponent, CsPackage.Literals.COMPONENT, null));
       }
 
       return parts;
@@ -4720,8 +4736,7 @@ public class CsServices {
   }
 
   public Collection<? extends CapellaElement> getABShowHideActor(DSemanticDecorator view) {
-    return getABShowHideComponent(view).stream().filter(comp -> ComponentExt.isActor(comp))
-        .collect(Collectors.toList());
+    return getABShowHideComponentForActor(view).stream().filter(ComponentExt::isActor).collect(Collectors.toList());
   }
 
   /**

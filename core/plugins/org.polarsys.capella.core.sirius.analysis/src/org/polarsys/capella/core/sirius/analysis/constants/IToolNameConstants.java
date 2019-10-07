@@ -1577,7 +1577,8 @@ public interface IToolNameConstants {
   String TOOL_XAB_SHOW_ALL_ALLOCATED_FUNCTIONS = "show.all.allocated.functions";
   String TOOL_XAB_SHOW_HIDE_COMPONENTS = "show.hide.components";
 
-  String TOOL_XAB_INSERT_REMOVE_COMPONENTS_MONOPART = "components.multipart";
+  String TOOL_XAB_INSERT_REMOVE_COMPONENTS_MONOPART = "components.monopart";
+  String TOOL_XAB_INSERT_REMOVE_COMPONENTS_MULTIPART = "components.multipart";
   String TOOL_PAB_INSERT_REMOVE_NODE_COMPONENTS_MONOPART = "node.pcs.monopart";
   String TOOL_PAB_INSERT_REMOVE_BEHAVIOUR_COMPONENTS_MONOPART = "behavior.pcs.monopart";
   //
@@ -1630,7 +1631,8 @@ public interface IToolNameConstants {
   String TOOL_XAB_CREATE_OUTFLOW_PORT = "out.flow.port";
   String TOOL_XAB_CREATE_INOUT_FLOW_PORT = "in.out.flow.port";
   String TOOL_XAB_CREATE_STANDARD_PORT = "standard.port";
-  String TOOL_XAB_INSERT_ACTOR = "actors";
+  String TOOL_XAB_INSERT_ACTORS_MONOPART = "actors.monopart";
+  String TOOL_XAB_INSERT_ACTORS_MULTIPART = "actors.multipart";
   String TOOL_XAB_CREATE_FUNCTION_INPUT_PORT = "input.port";
   String TOOL_XAB_CREATE_FUNCTION_OUTPUT_PORT = "output.port";
   String TOOL_XAB_CREATE_PORT_ALLOCATION = "port.allocation";

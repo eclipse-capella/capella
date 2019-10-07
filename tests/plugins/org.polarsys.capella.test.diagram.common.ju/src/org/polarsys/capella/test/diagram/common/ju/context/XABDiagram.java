@@ -23,6 +23,8 @@ import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
+import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
+import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.ComponentPortType;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.FunctionPortType;
@@ -164,8 +166,10 @@ public class XABDiagram extends CommonDiagram {
     String name = null;
     if (type == Type.OA) {
       name = IToolNameConstants.TOOL_OAB_INSERT_REMOVE_OPERATIONAL_ENTITIES;
+    } else if (TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(getDiagramDescriptor().getTarget()))) {
+      name = IToolNameConstants.TOOL_XAB_INSERT_ACTORS_MULTIPART;
     } else {
-      name = IToolNameConstants.TOOL_XAB_INSERT_ACTOR;
+      name = IToolNameConstants.TOOL_XAB_INSERT_ACTORS_MONOPART;
     }
     return name;
   }
@@ -187,7 +191,11 @@ public class XABDiagram extends CommonDiagram {
     if (type == Type.OA) {
       name = IToolNameConstants.TOOL_OAB_INSERT_REMOVE_OPERATIONAL_ENTITIES;
     } else if (type == Type.LA) {
-      name = IToolNameConstants.TOOL_XAB_INSERT_REMOVE_COMPONENTS_MONOPART;
+      if (TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(getDiagramDescriptor().getTarget()))) {
+        name = IToolNameConstants.TOOL_XAB_INSERT_REMOVE_COMPONENTS_MULTIPART;
+      } else {
+        name = IToolNameConstants.TOOL_XAB_INSERT_REMOVE_COMPONENTS_MONOPART;
+      }
     } else if (type == Type.PA) {
       // Nothing here.. need to specify which kind of component
     }
@@ -205,8 +213,13 @@ public class XABDiagram extends CommonDiagram {
       name = IToolNameConstants.TOOL_OAB_INSERT_REMOVE_OPERATIONAL_ENTITIES;
       new InsertRemoveTool(this, name).remove(id);
     } else if (type == Type.LA) {
-      new InsertRemoveTool(this, new String[] { IToolNameConstants.TOOL_XAB_INSERT_REMOVE_COMPONENTS_MONOPART,
-          IToolNameConstants.TOOL_LAB_INSERT_REMOVE_COMPONENTS }, containerId).remove(id);
+      if (TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(getDiagramDescriptor().getTarget()))) {
+        new InsertRemoveTool(this, new String[] { IToolNameConstants.TOOL_XAB_INSERT_REMOVE_COMPONENTS_MULTIPART,
+            IToolNameConstants.TOOL_LAB_INSERT_REMOVE_COMPONENTS }, containerId).remove(id);
+      } else {
+        new InsertRemoveTool(this, new String[] { IToolNameConstants.TOOL_XAB_INSERT_REMOVE_COMPONENTS_MONOPART,
+            IToolNameConstants.TOOL_LAB_INSERT_REMOVE_COMPONENTS }, containerId).remove(id);
+      }
     }
   }
 

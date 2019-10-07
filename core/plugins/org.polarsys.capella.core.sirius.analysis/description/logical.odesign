@@ -2675,7 +2675,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates or deletes graphical objects on the diagrams corresponding to existing Components. Removing a Component graphical object from the diagram does not delete the Component from the model. This tool does not modify the semantic model." name="components.monopart" label="%la.lab.components.monopart" precondition="aql:not (containerView.oclIsKindOf(diagram::DDiagram)) or isMultipartMode()" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates or deletes graphical objects on the diagrams corresponding to existing Components. Removing a Component graphical object from the diagram does not delete the Component from the model. This tool does not modify the semantic model." name="components.multipart" label="%la.lab.components.multipart" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <filters precondition="aql:not (self.isPreferenceEnabled('multipart.allowed'))" elementsToListen="aql:self.getPreferenceListener()">
               <listeners domainClass="org.polarsys.capella.core.preferences.Listener" featureName="multipart.allowed"/>
             </filters>
@@ -2683,7 +2683,7 @@
             <viewVariable name="containerView">
               <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:containerView.eContainerOrSelf(diagram::DDiagram)"/>
               <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:containerView.target.getComponentType()"/>
-              <subVariables xsi:type="tool:AcceleoVariable" name="scope" computationExpression="aql:containerView.getABShowHideComponent()"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="scope" computationExpression="aql:containerView.getABShowHidePureComponent()"/>
               <subVariables xsi:type="tool:AcceleoVariable" name="ownedNodeContainer" computationExpression="aql:self.void2Null(containerView.eAllContents()->filter(diagram::DNodeContainer))"/>
             </viewVariable>
             <initialOperation>
@@ -2723,7 +2723,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates or delete graphical objects on the diagrams corresponding to existing Components. Removing a Component graphical object from the diagram does not delete the Component from the model. This tool does not modify the semantic model." name="components.multipart" label="%la.lab.components.multipart" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates or delete graphical objects on the diagrams corresponding to existing Components. Removing a Component graphical object from the diagram does not delete the Component from the model. This tool does not modify the semantic model." name="components.monopart" label="%la.lab.components.monopart" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <filters precondition="aql:self.isPreferenceEnabled('multipart.allowed')" elementsToListen="aql:self.getPreferenceListener()">
               <listeners domainClass="org.polarsys.capella.core.preferences.Listener" featureName="multipart.allowed"/>
             </filters>
@@ -2764,7 +2764,50 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create or delete graphical objects corresponding to existing Actors.&#xD;&#xA;Removing an Actor graphical object from the diagram does not delete the Actor from the model. &#xD;&#xA;This tool does not modify the semantic model." name="actors" label="%la.lab.actors" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create or delete graphical objects corresponding to existing Actors.&#xD;&#xA;Removing an Actor graphical object from the diagram does not delete the Actor from the model. &#xD;&#xA;This tool does not modify the semantic model." name="actors.multipart" label="%la.lab.actors.multipart" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <filters precondition="aql:not (self.isPreferenceEnabled('multipart.allowed'))" elementsToListen="aql:self.getPreferenceListener()">
+              <listeners domainClass="org.polarsys.capella.core.preferences.Listener" featureName="multipart.allowed"/>
+            </filters>
+            <variable name="container"/>
+            <viewVariable name="containerView">
+              <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:containerView.eContainerOrSelf(diagram::DDiagram)"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:containerView.target"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="scope" computationExpression="aql:containerView.getABShowHideActor()"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="actorsInDiagram" computationExpression="aql:self.void2Null(self.getIntersection(containerView.containers->select(container | container.visible).target->filter(cs::Part),containerView.getABShowHideActor()))"/>
+            </viewVariable>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectSubActor" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                  <parameters name="context" value="aql:container"/>
+                  <parameters name="scope" value="aql:scope"/>
+                  <parameters name="resultVariable" value="selection"/>
+                  <parameters name="wizardMessage" value="aql:'Select Sub Actors to show in ' + container.name + '.'"/>
+                  <parameters name="initialSelection" value="aql:actorsInDiagram"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection = 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
+                    <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(self.makeDiff(actorsInDiagram, containerView.target.getComponentType()))">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection->includes(i))">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.containers->select(container | (container.target.oclIsKindOf(cs::Part)) and (container.target = i))->first()">
+                          <subModelOperations xsi:type="tool:DeleteView"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selection)">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (actorsInDiagram->includes(i))">
+                        <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" containerViewExpression="aql:containerView"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getDiagramContainer().forceRefresh()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create or delete graphical objects corresponding to existing Actors.&#xD;&#xA;Removing an Actor graphical object from the diagram does not delete the Actor from the model. &#xD;&#xA;This tool does not modify the semantic model." name="actors.monopart" label="%la.lab.actors.monopart" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <filters precondition="aql:self.isPreferenceEnabled('multipart.allowed')" elementsToListen="aql:self.getPreferenceListener()">
+              <listeners domainClass="org.polarsys.capella.core.preferences.Listener" featureName="multipart.allowed"/>
+            </filters>
             <variable name="container"/>
             <viewVariable name="containerView">
               <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:containerView.eContainerOrSelf(diagram::DDiagram)"/>

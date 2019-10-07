@@ -56,12 +56,14 @@ import org.polarsys.capella.test.diagram.tools.ju.xab.ReuseActors;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ReuseComponents;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ReuseEABConfigurationItems;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ShowHideActors;
+import org.polarsys.capella.test.diagram.tools.ju.xab.ShowHideActorsMultipart;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ShowHideAllocatedRoles;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ShowHideAppliedPropertyValuesGroup;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ShowHideBehaviorPCGroup;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ShowHideComponentExchanges;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ShowHideComponentPortAllocations;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ShowHideComponents;
+import org.polarsys.capella.test.diagram.tools.ju.xab.ShowHideComponentsMultipart;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ShowHideConstraints;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ShowHideEABConfigurationItems;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ShowHideEABRealizedPhysicalArtifacts;
@@ -142,6 +144,9 @@ public class XABDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new ShowHideActors());
     tests.add(new ShowHideBehaviorPCGroup());
     tests.add(new ShowHidePorts());
+    
+    tests.add(new ShowHideComponentsMultipart());
+    tests.add(new ShowHideActorsMultipart());
 
     tests.add(new CreateRole());
     tests.add(new ShowHideAllocatedRoles());
