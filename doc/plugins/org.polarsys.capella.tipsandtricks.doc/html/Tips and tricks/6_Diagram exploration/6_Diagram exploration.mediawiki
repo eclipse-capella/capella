@@ -59,11 +59,16 @@ A new tool called '''Generic Connection Creation Tool''' is added to the palette
 
 [[File:../../Images/Tips84.png|thumbnail|]]
 
-==Organize diagrams in Project Explorer by packages==
+==Organize diagrams in Project Explorer==
+When the number of diagrams increases, it is necessary to organize them. 
 
-When the number of diagrams increases, it is necessary to organize them by packages. A package is just a label or a tag that represents why several diagrams can be grouped together.
+====Organize diagrams by drag and drop====
+Blank diagrams (for instance XAB and IDB) can be drag and dropped between Components or Component packages. For example, a sub-package can be created under the Logical System to group certain LAB diagrams as follows: 
 
-In the view '''Properties''' of a diagram, it is possible to:
+[[File:../../Images/DiagramsInPackage.png|thumbnail|]]
+
+====Organize diagrams via package tag====
+Another way to organize diagrams is via package tag. Several diagrams can be grouped together in a package tag. In the view '''Properties''' of a diagram, it is possible to:
 
 * Create a new package
 * Add a diagram to an existing package

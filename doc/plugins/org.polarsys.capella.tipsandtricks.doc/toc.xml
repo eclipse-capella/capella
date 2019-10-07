@@ -57,7 +57,11 @@
          </topic>
          <topic href="html/Tips and tricks/6_Diagram exploration/6_Diagram exploration.html#Generic_connection_creation_tool" label="6.5. Generic connection creation tool">
          </topic>
-         <topic href="html/Tips and tricks/6_Diagram exploration/6_Diagram exploration.html#Organize_diagrams_in_Project_Explorer_by_packages" label="6.6. Organize diagrams in Project Explorer by packages">
+         <topic href="html/Tips and tricks/6_Diagram exploration/6_Diagram exploration.html#Organize_diagrams_in_Project_Explorer" label="6.6. Organize diagrams in Project Explorer by packages">
+            <topic href="html/Tips and tricks/6_Diagram exploration/6_Diagram exploration.html#Organize_diagrams_by_drag_and_drop" label="By drag and drop">
+            </topic>
+            <topic href="html/Tips and tricks/6_Diagram exploration/6_Diagram exploration.html#Organize_diagrams_via_package_tag" label="Via package tag">
+            </topic>
          </topic>
          <topic href="html/Tips and tricks/6_Diagram exploration/6_Diagram exploration.html#Visibility_Mode_-_new_Sirius_layer_to_manage_hidden_graphical_elements" label="6.7. Visibility Mode - new Sirius layer to manage hidden graphical elements">
          </topic>
@@ -155,10 +159,6 @@
       <topic href="html/Tips and tricks/16_Mass Editing and Visualization/16_Mass Editing and Visualization.html" label="16. Mass Editing and Visualization">
       </topic>
       <topic href="html/Tips and tricks/17_Filtering of Capella capabilities/17_Filtering of Capella capabilities.html" label="17. Filtering of Capella capabilities">
-         <topic href="html/Tips and tricks/17_Filtering of Capella capabilities/17_Filtering of Capella capabilities.html#Deactivating_Capella_capabilities_via_the_Capabilities_preference_page" label="17.1. Deactivating Capella capabilities via the Capabilities preference page">
-         </topic>
-         <topic href="html/Tips and tricks/17_Filtering of Capella capabilities/17_Filtering of Capella capabilities.html#Sharing_the_Capella_capabilities_configuration_with_other_users" label="17.2. Sharing the Capella capabilities configuration with other users">
-         </topic>
       </topic>
       	
       </topic>

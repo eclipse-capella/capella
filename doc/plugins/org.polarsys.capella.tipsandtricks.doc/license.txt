@@ -117,3 +117,4 @@ IconShowInExplorer.png
 IconCreateEdgeView.gif
 CapellaCapabilitiesEPFFile.png
 CapellaCapabilitiesPreferencePage.png
+DiagramsInPackage.png

@@ -22,5 +22,9 @@
             file="html/Fragment management/Fragment management.xml"
             primary="false">
       </toc>
+      <toc
+            file="html/Filtering of Capella capabilities/Filtering of Capella capabilities.xml"
+            primary="false">
+      </toc>
    </extension>
 </plugin>
