@@ -51,6 +51,10 @@ public class DragAndDropTest extends XABDiagramsProject {
       String component1 = diagram.createComponent(GenericModel.COMPONENT_1, LA__LAB_LOGICAL_SYSTEM_PART);
       String component2 = diagram.createComponent(GenericModel.COMPONENT_2, LA__LAB_LOGICAL_SYSTEM_PART);
       diagram.dragAndDropComponent(component2, component1);
+
+      String targetviewId = LA__LAB_LOGICAL_SYSTEM_PART;
+      diagram.dragAndDropComponent(actor1, targetviewId);
+      diagram.dragAndDropComponent(actor1, diagram.getDiagramId());
     }
     // PA TOOL_PAB_DND_DEPLOYMENT
 
@@ -90,6 +94,12 @@ public class DragAndDropTest extends XABDiagramsProject {
       String constraint1 = pabDiagram.createConstraint(GenericModel.CONSTRAINT_1);
       diagram.dragAndDropConstraintsFromExplorer(constraint1, diagram.getDiagramId());
 
+      String targetviewId = pabDiagram.dragAndDropComponentsFromExplorer(targetId, pabDiagram.getDiagramId());
+      String pabactor1 = pabDiagram.createActor("actor1");
+      pabDiagram.dragAndDropComponent(pabactor1, targetviewId);
+      pabDiagram.dragAndDropComponent(pabactor1, pabDiagram.getDiagramId());
+      pabDiagram.dragAndDropComponent(pabactor1, targetviewId);
+
     } else {
       XABDiagram diagramSetup = XABDiagram.createDiagram(context, targetId);
       String constraint1 = diagramSetup.createConstraint(GenericModel.CONSTRAINT_1);
@@ -110,6 +120,10 @@ public class DragAndDropTest extends XABDiagramsProject {
     String entity1 = diagram.createComponent(GenericModel.ENTITY_1, containerId);
     String entity2 = diagram.createComponent(GenericModel.ENTITY_2, containerId);
     diagram.dragAndDropComponent(entity2, entity1);
+    diagram.dragAndDropComponent(actor1, entity1);
+    diagram.dragAndDropComponent(actor1, entity2);
+    diagram.dragAndDropComponent(actor1, diagram.getDiagramId());
+    diagram.dragAndDropComponent(actor1, entity2);
 
     String entity3 = diagramSetup.createComponent(GenericModel.ENTITY_3, diagramSetup.getDiagramId());
     String role1 = diagramSetup.createRole(GenericModel.ROLE_1_1_3, entity3);

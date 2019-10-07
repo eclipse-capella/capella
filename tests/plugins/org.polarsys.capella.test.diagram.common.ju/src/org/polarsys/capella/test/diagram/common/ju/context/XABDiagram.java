@@ -417,8 +417,9 @@ public class XABDiagram extends CommonDiagram {
     dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_XAB_DND_PHYSICALPORT);
   }
 
-  public void dragAndDropComponentsFromExplorer(String idDraggedElement, String containerId) {
-    dragAndDropFromExplorer(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_XAB_DND_COMPONENTS_FROM_EXPLORER);
+  public String dragAndDropComponentsFromExplorer(String idDraggedElement, String containerId) {
+    return dragAndDropFromExplorer(idDraggedElement, containerId,
+        IDNDToolNameConstants.TOOL_XAB_DND_COMPONENTS_FROM_EXPLORER);
   }
 
   public void dragAndDropComponent(String idDraggedElement, String containerId) {

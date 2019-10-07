@@ -31,7 +31,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.jface.viewers.ILabelDecorator;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -77,6 +76,7 @@ import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
@@ -123,9 +123,11 @@ import org.polarsys.capella.core.data.interaction.InteractionFactory;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.la.LaFactory;
 import org.polarsys.capella.core.data.la.LogicalComponent;
+import org.polarsys.capella.core.data.la.LogicalComponentPkg;
 import org.polarsys.capella.core.data.la.LogicalFunction;
 import org.polarsys.capella.core.data.oa.ActivityAllocation;
 import org.polarsys.capella.core.data.oa.Entity;
+import org.polarsys.capella.core.data.oa.EntityPkg;
 import org.polarsys.capella.core.data.oa.OaFactory;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.Role;
@@ -133,6 +135,7 @@ import org.polarsys.capella.core.data.pa.PaFactory;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
+import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.model.helpers.AbstractFunctionExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
@@ -439,7 +442,7 @@ public class FaServices {
       }
 
     }
-    
+
     for (ComponentExchange connection : allComponentExchanges) {
       // Add connection if is related to the current part if any
       if (!CsServices.getService().isMultipartMode(connection)
@@ -450,7 +453,7 @@ public class FaServices {
     }
     return returnedList;
   }
-  
+
   private boolean isBetweenTypes(ComponentExchange connection, EObject currentComponent) {
     return ComponentExchangeExt.isConnectionBetweenTypes(connection)
         && (connection.getSourcePort().eContainer() == currentComponent
@@ -2776,14 +2779,14 @@ public class FaServices {
       EObject sourceComponent = CsServices.getService().getComponentType(sourceView);
       if (sourceComponent instanceof Component && !((Component) sourceComponent).getRepresentingParts().isEmpty()
           && (((Component) sourceComponent).getRepresentingParts().get(0) instanceof Part)) {
-        sourcePart = (Part) ((Component) sourceComponent).getRepresentingParts().get(0);
+        sourcePart = ((Component) sourceComponent).getRepresentingParts().get(0);
       }
     }
     if (targetPart == null) {
       EObject targetComponent = CsServices.getService().getComponentType(targetView);
       if (targetComponent instanceof Component && !((Component) targetComponent).getRepresentingParts().isEmpty()
           && (((Component) targetComponent).getRepresentingParts().get(0) instanceof Part)) {
-        targetPart = (Part) ((Component) targetComponent).getRepresentingParts().get(0);
+        targetPart = ((Component) targetComponent).getRepresentingParts().get(0);
       }
     }
     if ((sourcePart == null) || (targetPart == null)) {
@@ -3172,11 +3175,44 @@ public class FaServices {
    *          the given container component
    */
   protected void moveComponent(Component component, Component container) {
-    if ((container instanceof LogicalComponent) && (component instanceof LogicalComponent)) {
+    if ((container instanceof Entity) && (component instanceof Entity)) {
+      ((Entity) container).getOwnedEntities().add((Entity) component);
+    } else if ((container instanceof LogicalComponent) && (component instanceof LogicalComponent)) {
       ((LogicalComponent) container).getOwnedLogicalComponents().add((LogicalComponent) component);
-
     } else if ((container instanceof PhysicalComponent) && (component instanceof PhysicalComponent)) {
       ((PhysicalComponent) container).getOwnedPhysicalComponents().add((PhysicalComponent) component);
+    }
+  }
+
+  /**
+   * Move a component in the new container component package
+   * 
+   * @param component
+   *          the given component
+   * @param container
+   *          the given container component package
+   */
+  protected void moveComponent(Component component, ComponentPkg container) {
+    if ((container instanceof EntityPkg) && (component instanceof Entity)) {
+      ((EntityPkg) container).getOwnedEntities().add((Entity) component);
+    } else if ((container instanceof LogicalComponentPkg) && (component instanceof LogicalComponent)) {
+      ((LogicalComponentPkg) container).getOwnedLogicalComponents().add((LogicalComponent) component);
+    } else if ((container instanceof PhysicalComponentPkg) && (component instanceof PhysicalComponent)) {
+      ((PhysicalComponentPkg) container).getOwnedPhysicalComponents().add((PhysicalComponent) component);
+    }
+  }
+
+  /**
+   * Move an entity in the new container component package
+   * 
+   * @param entity
+   *          the given entity
+   * @param container
+   *          the given container component package
+   */
+  protected void moveEntity(Entity entity, ComponentPkg container) {
+    if ((container instanceof EntityPkg) && (entity instanceof Entity)) {
+      ((EntityPkg) container).getOwnedEntities().add(entity);
     }
   }
 
@@ -4363,7 +4399,7 @@ public class FaServices {
 
     // Collect all physical artifacts
     List<CapellaElement> physicalArtifacts = new ArrayList<>(0);
-    List<PhysicalComponent> allPhysicalComponents = SystemEngineeringExt.getAllPhysicalComponents((PhysicalArchitecture) arch);
+    List<PhysicalComponent> allPhysicalComponents = SystemEngineeringExt.getAllPhysicalComponents(arch);
     for (PhysicalComponent physicalComponent : allPhysicalComponents) {
       physicalArtifacts.add(physicalComponent);
       // collect all physical links

@@ -104,6 +104,10 @@ public class CommonDiagram extends DiagramContext {
     dragAndDropFromExplorer(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_DND_CONSTRAINTS_FROM_EXPLORER);
   }
 
+  public void dragAndDropCComponentFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDropFromExplorer(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_DND_CONSTRAINT_FROM_EXPLORER);
+  }
+
   protected String createNodeElement(String containerId, String toolName) {
 
     DNode graphicalElement = new CreateAbstractDNodeTool<DNode>(this, toolName, containerId).run();
@@ -171,9 +175,11 @@ public class CommonDiagram extends DiagramContext {
     new DragAndDropTool(this, toolName, idDraggedElement, containerId).run();
   }
 
-  protected void dragAndDropFromExplorer(String idDraggedElement, String containerId, String toolName) {
+  protected String dragAndDropFromExplorer(String idDraggedElement, String containerId, String toolName) {
     EObject droppedElementSemantic = getSessionContext().getSemanticElement(idDraggedElement);
-    new DragAndDropFromProjectExplorerTool(this, toolName, droppedElementSemantic, containerId).run();
+    DDiagramElement elem = new DragAndDropFromProjectExplorerTool(this, toolName, droppedElementSemantic, containerId)
+        .run();
+    return getSemanticIdFromView(elem);
   }
 
   /*
