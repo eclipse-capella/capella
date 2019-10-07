@@ -44,14 +44,41 @@ public class ViatraSurrogateAllDerivedFeaturesImplemented extends BasicTestCase 
     File plugins = PlatformFilesHelper.getSubFolder(viatra, "plugins");
     List<File> pluginXmlFiles = PlatformFilesHelper.getPluginXmlFiles(plugins);
     List<SurrogateQuery> contributedSurrogateQueries = getContributedSurrogateQueries(pluginXmlFiles);
-    for (EReference eReference : TestHelper.getAllCapellaDerivedReferences()) {
-      if (!PlatformFilesHelper.isIgnored(eReference)) {
-        assertTrue(
-            "The derived feature " + eReference.getEContainingClass().getEPackage().getNsURI() + "/"
-                + eReference.getEContainingClass().getName() + "/" + eReference.getName()
-                + " does not have a corresponding Viatra surrogate query",
-            isReferenceCovered(eReference, contributedSurrogateQueries));
+
+		List<EReference> uncoveredReferences = new ArrayList<>();
+		for (EReference eReference : TestHelper.getAllCapellaDerivedReferences()) {
+			if (!PlatformFilesHelper.isIgnored(eReference)
+					&& !isReferenceCovered(eReference, contributedSurrogateQueries)) {
+				uncoveredReferences.add(eReference);
+			}
+		}
+		
+    List<SurrogateQuery> redundantReferences = new ArrayList<>();
+    for (SurrogateQuery query : contributedSurrogateQueries) {
+      boolean usefulQuery = TestHelper.getAllCapellaDerivedReferences().stream()
+          .anyMatch(r -> !PlatformFilesHelper.isIgnored(r) && query.corresponds(r));
+      if (!usefulQuery) {
+        redundantReferences.add(query);
       }
+    }
+
+    if (!uncoveredReferences.isEmpty() || !redundantReferences.isEmpty()) {
+      StringBuilder builder = new StringBuilder();
+      if (!uncoveredReferences.isEmpty()) {
+        builder.append("The following derived features do not have a corresponding Viatra surrogate query: \n");
+        for (EReference eRef : uncoveredReferences) {
+          builder.append(eRef.getEContainingClass().getEPackage().getNsURI() + "/"
+              + eRef.getEContainingClass().getName() + "/" + eRef.getName() + "\n");
+        }
+      }
+      builder.append("\n");
+      if (!redundantReferences.isEmpty()) {
+        builder.append("The following contributed Viatra queries are redundant: \n");
+        for (SurrogateQuery query : redundantReferences) {
+          builder.append(query.packageUri + "/" + query.eClassName + "/" + query.featureName + "\n");
+        }
+      }
+      fail(builder.toString());
     }
   }
 

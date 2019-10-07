@@ -52,7 +52,7 @@ public class PlatformFilesHelper {
    * @return whether the reference is ignored during the check of surrogate query
    */
   public static boolean isIgnored(EReference eReference) {
-    // A reference is ignored if it has the viagra.variant=unimplemented annotation
+    // A reference is ignored if it has the viatra.variant=unimplemented annotation
     Optional<EAnnotation> eAnnotation = eReference.getEAnnotations().stream().filter(new Predicate<EAnnotation>() {
       @Override
       public boolean test(EAnnotation eAnnotation) {
