@@ -502,14 +502,41 @@
       <activityPatternBinding pattern=".*manage.function.allocation.*" activityId="org.polarsys.capella.activities.fa"/>
       <activityPatternBinding pattern=".*allocated.function.*" activityId="org.polarsys.capella.activities.fa"/>
       <activityPatternBinding pattern=".*functional.chains.*" activityId="org.polarsys.capella.activities.fa"/>
+      <activity
+            description="Concepts related to Capella Configuration Projects"
+            id="org.polarsys.capella.activities.configurationProjects"
+            name="Configuration Projects">
+      </activity>
+      <categoryActivityBinding
+            activityId="org.polarsys.capella.activities.configurationProjects"
+            categoryId="org.polarsys.capella.activities.categories.capella">
+      </categoryActivityBinding>
+      <defaultEnablement
+            id="org.polarsys.capella.activities.configurationProjects">
+      </defaultEnablement>
+      <activityPatternBinding
+            activityId="org.polarsys.capella.activities.configurationProjects"
+            pattern="org\.polarsys\.capella\.core\.preferences\.project\.configuration/.*">
+      </activityPatternBinding>
       
       
-     
-      
-     
-
-
-
+      <activity
+            description="Concepts related to Capella Projects"
+            id="org.polarsys.capella.activities.capellaProjects"
+            name="Capella Projects">
+      </activity>
+      <categoryActivityBinding
+            activityId="org.polarsys.capella.activities.capellaProjects"
+            categoryId="org.polarsys.capella.activities.categories.capella">
+      </categoryActivityBinding>
+      <defaultEnablement
+            id="org.polarsys.capella.activities.capellaProjects">
+      </defaultEnablement>
+      <activityPatternBinding
+            activityId="org.polarsys.capella.activities.capellaProjects"
+            isEqualityPattern="true"
+            pattern="org.polarsys.capella.core.platform.sirius.ui.project/capella.project.wizard">
+      </activityPatternBinding>
 
 
 
