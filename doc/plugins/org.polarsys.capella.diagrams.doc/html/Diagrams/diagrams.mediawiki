@@ -141,13 +141,9 @@ This section lists tools that are available on all Capella diagrams. These tools
 | [[Image:Images/icons/full/obj16/Include.gif]] 
 | 		Creates a new Inclusion relationship between the source and target Capability Realizations. 	
 |-
-| 	Capability Generalization 	
+| 	Generalization 	
 | [[Image:Images/icons/full/obj16/Generalization.gif]] 
-| 		Creates a new Generalization relationship between the source and target Capability Realizations. 	
-|-
-| 	Actor Generalization 	
-| [[Image:Images/icons/full/obj16/Generalization.gif]] 
-| 		Creates a new Generalization relationship between the source and target Actors. 	
+| 		Creates a new Generalization relationship between the source and target Actors/Components/Capabilities. 	
 |-
 | 	Capability Realizations 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
@@ -710,13 +706,9 @@ This section lists tools that are available on all Capella diagrams. These tools
 | [[Image:Images/icons/full/obj16/Include.gif]] 
 | 		Create a new Capability Inclusion relationship between the Source and Target Capabilities. 	
 |-
-| 	Capability Generalization 	
+| 	Generalization 	
 | [[Image:Images/icons/full/obj16/Generalization.gif]] 
-| 		Create a new Capability Generalization relationship between the Source and Target Super Capabilities. 	
-|-
-| 	Actor Generalization 	
-| [[Image:Images/icons/full/obj16/Generalization.gif]] 
-| 		Create a new Actor Generalization relationship between the Source and Target Super Actors. 	
+| 		Create a new Generalization relationship between the Source and Target Super Actors/Capabilities. 	
 |-
 | 	Actors 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
@@ -1072,7 +1064,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 | [[Image:Images/icons/full/obj16/Use.gif]] 
 | 
 |-
-| 	Actor Generalization 	
+| 	Generalization 	
 | [[Image:Images/icons/full/obj16/Generalization.gif]] 
 | 
 |-
@@ -1146,7 +1138,7 @@ This section lists tools that are available on all Capella diagrams. These tools
 | [[Image:Images/icons/full/obj16/Actor.gif]] 
 | 
 |-
-| 	Actor Generalization 	
+| 	Generalization 	
 | [[Image:Images/icons/full/obj16/Generalization.gif]] 
 |}    
 === Sample ===
@@ -1873,9 +1865,9 @@ This section lists tools that are available on all Capella diagrams. These tools
 | [[Image:Images/icons/full/obj16/Use.gif]] 
 | 		Creates a new Involvement relationship between the source Mission / Capability and the target System Actor 	
 |-
-| 	Actor Generalization 	
+| 	Generalization 	
 | [[Image:Images/icons/full/obj16/Generalization.gif]] 
-| 		Creates a new Generalization relationship between the source and target System Actors 	
+| 		Creates a new Generalization relationship between the source and target System Actors/Capabilities 	
 |-
 | 	Actors 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
@@ -1927,13 +1919,9 @@ This section lists tools that are available on all Capella diagrams. These tools
 | [[Image:Images/icons/full/obj16/Include.gif]] 
 | 		Creates a new Inclusion relationship between the source and target Capabilities 	
 |-
-| 	Capability Generalization 	
+| 	Generalization 	
 | [[Image:Images/icons/full/obj16/Generalization.gif]] 
-| 		Creates a new Generalization relationship between the source and target Capabilities 	
-|-
-| 	Actor Generalization 	
-| [[Image:Images/icons/full/obj16/Generalization.gif]] 
-| 		Creates a new Generalization relationship between the source and target System Actors 	
+| 		Creates a new Generalization relationship between the source and target System Actors/Capabilities 	
 |-
 | 	Actors 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 

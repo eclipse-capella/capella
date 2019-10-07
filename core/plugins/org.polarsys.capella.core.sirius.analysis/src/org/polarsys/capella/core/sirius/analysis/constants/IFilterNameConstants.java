@@ -104,6 +104,7 @@ public interface IFilterNameConstants {
   // CM filters - Contextual Mission
   String FILTER_CM_HIDE_CAPABILITIES = "hide.capabilities.filter";
   String FILTER_CM_HIDE_CAPABILITY_EXPLOITATIONS = "hide.capability.exploitations.filter";
+  String FILTER_CM_HIDE_CAPABILITY_GENERALIZATIONS = "hide.capabilities.generalizations.filter";
   String FILTER_CM_HIDE_ACTORS = "hide.actors.filter";
   String FILTER_CM_HIDE_ACTOR_INVOLVEMENTS = "hide.actor.involvements.filter";
   String FILTER_CM_HIDE_ACTOR_GENERALIZATIONS = "hide.actor.generalizations.filter";
