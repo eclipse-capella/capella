@@ -70,6 +70,19 @@ org.polarsys.capella.core.projection.** have been refactored in the following wa
 * Capella's SemanticCrossReferencer was used to patch the Eclipse bug '''Bug 543340'''. This patch has been integrated in Eclipse 2019-06 version. Thus, Capella's SemanticCrossReferencer has been removed. Sirius's SiriusCrossReferenceAdapter is used instead.
 * Capella's CapellaECrossReferenceAdapter has been adapted to reuse the code already implemented in Sirius's SiriusCrossReferenceAdapter. This Capella's cross referencer is kept since it still contains specific implementations to support some Capella's use-cases.
 
+=== Replacement of some API classes ===
+
+{|
+!Old class
+!Replacement
+|-
+| org.polarsys.capella.core.ui.properties.helpers.NamingHelper
+| org.polarsys.capella.core.model.utils.NamingHelper
+|-
+| org.polarsys.capella.core.ui.toolkit.viewers.CapellaElementLabelProvider
+| org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider
+|-
+|}
 
 === Define basic activities for commands, diagram tools and activity explorer ===
 
