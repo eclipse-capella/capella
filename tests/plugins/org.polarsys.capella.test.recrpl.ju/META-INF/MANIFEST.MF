@@ -14,7 +14,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.diffmerge,
  org.polarsys.capella.core.validation,
  org.polarsys.capella.core.re.validation,
- com.google.guava
+ com.google.guava,
+ org.polarsys.capella.core.re.project
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName

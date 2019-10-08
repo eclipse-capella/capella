@@ -162,4 +162,63 @@ public class CapellaAdapterHelper {
     }
     return object;
   }
+  
+  /**
+   * This method returns the list of EObject from the given objects.
+   */
+  public static Collection<EObject> resolveEObjects(Collection<?> objects, boolean onlySemantic, boolean onlyBusiness) {
+    return objects.stream() //
+        .map(x -> resolveEObject(x, onlySemantic, onlyBusiness)) //
+        .filter(Objects::nonNull) //
+        .collect(Collectors.toList());
+  }
+  
+  /**
+   * Resolve EObject
+   * 
+   * @param onlySemantic:
+   *          if false, the element is a graphical element, return the related Sirius object, otherwise, return the
+   *          semantic element behind it
+   * @param onlyBusiness:
+   *          if true, if the returned element is a semantic element, retrieve the user most convenient one behind it.
+   */
+  public static EObject resolveEObject(Object object, boolean onlySemantic, boolean onlyBusiness) {
+    EObject result = null;
+    EObject adapt = null;
+    if (object instanceof DRepresentation) {
+      object = RepresentationHelper.getRepresentationDescriptor((DRepresentation) object);
+    }
+
+    adapt = Adapters.adapt(object, EObject.class, true);
+    if (adapt instanceof EObject) {
+      result = (EObject) adapt;
+    }
+    if (onlySemantic) {
+      if (result instanceof DSemanticDecorator) {
+        result = ((DSemanticDecorator) result).getTarget();
+
+      } else if (result instanceof DRepresentationDescriptor) {
+        result = ((DRepresentationDescriptor) result).getTarget();
+      }
+
+      adapt = Adapters.adapt(result, Element.class, true);
+      if (adapt instanceof Element) {
+        result = (Element) adapt;
+      }
+      if (result instanceof Element) {
+        // null can happen when we try to adapt a non semantic element (notes, text, ...)
+        if (!((object instanceof Project || null != ((EObject) result).eContainer())
+            && (null != ((EObject) result).eResource()))) {
+          // null can happen when a diagram shows a deleted element
+          return null;
+        }
+      }
+    }
+    if (onlyBusiness) {
+      if (result instanceof Element) {
+        result = getBusinessObject((Element) result);
+      }
+    }
+    return result;
+  }
 }
