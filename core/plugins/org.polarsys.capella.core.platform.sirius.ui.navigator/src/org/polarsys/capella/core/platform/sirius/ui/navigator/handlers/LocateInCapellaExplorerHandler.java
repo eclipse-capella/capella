@@ -59,7 +59,7 @@ public class LocateInCapellaExplorerHandler extends AbstractLocateInViewPartHand
     if (selection instanceof IStructuredSelection) {
       Object[] selectedElements = ((IStructuredSelection) selection).toArray();
       for (Object element : selectedElements) {
-        EObject semanticElement = CapellaAdapterHelper.resolveBusinessObject(element);
+        EObject semanticElement = CapellaAdapterHelper.resolveSemanticObject(element);
         if (semanticElement != null) {
           semanticElementsToSelect.add(semanticElement);
         }

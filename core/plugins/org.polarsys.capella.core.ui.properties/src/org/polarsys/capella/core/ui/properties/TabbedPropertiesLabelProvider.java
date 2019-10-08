@@ -127,12 +127,12 @@ public class TabbedPropertiesLabelProvider extends CapellaElementLabelProvider i
   }
 
   /**
-   *
-   */
+	 *
+	 */
   private EObject getModel(Object element) {
     if (element instanceof StructuredSelection) {
       StructuredSelection selection = (StructuredSelection) element;
-      return CapellaAdapterHelper.resolveBusinessObject(selection.getFirstElement());
+      return CapellaAdapterHelper.resolveSemanticObject(selection.getFirstElement());
     }
     return null;
   }
