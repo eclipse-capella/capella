@@ -164,7 +164,7 @@ public class DAnnotationDescriptorContribution extends AbstractMigrationContribu
 
           if (null != query) {
             Collection<EObject> statuses = query
-                .getAvailableElements((CapellaElement) CapellaAdapterHelper.resolveBusinessObject(descriptor));
+                .getAvailableElements((CapellaElement) CapellaAdapterHelper.resolveSemanticObject(descriptor, true));
             EnumerationPropertyLiteral literal = null;
             for (EObject review : statuses) {
               if (review instanceof EnumerationPropertyLiteral

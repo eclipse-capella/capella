@@ -102,7 +102,7 @@ public class ImpactAnalysisAction extends BaseSelectionListenerAction {
     IStructuredSelection selection = (IStructuredSelection) selection_p;
     boolean enabled = false;
     if (!selection.isEmpty()) {
-      EObject element = CapellaAdapterHelper.resolveBusinessObject(selection.getFirstElement());
+      EObject element = CapellaAdapterHelper.resolveSemanticObject(selection.getFirstElement(), true);
       if ((null != element) && (CapellaResourceHelper.isSemanticElement(element))) {
         enabled = true;
         // Forward the selection.

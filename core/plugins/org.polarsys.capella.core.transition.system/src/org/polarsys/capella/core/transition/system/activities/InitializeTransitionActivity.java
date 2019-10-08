@@ -89,7 +89,7 @@ public abstract class InitializeTransitionActivity
    * @return
    */
   protected Collection<EObject> adaptSelection(Collection<Object> selection) {
-    return CapellaAdapterHelper.resolveSemanticObjects(selection);
+    return CapellaAdapterHelper.resolveSemanticsObjects(selection);
   }
 
   /**

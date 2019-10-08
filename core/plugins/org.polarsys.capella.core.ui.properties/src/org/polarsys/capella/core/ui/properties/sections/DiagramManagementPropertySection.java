@@ -138,7 +138,7 @@ public class DiagramManagementPropertySection extends AbstractSection {
             BusinessQueriesProvider.getInstance().getContribution(CapellacorePackage.Literals.CAPELLA_ELEMENT,
                 CapellacorePackage.Literals.CAPELLA_ELEMENT__STATUS);
         if (null != query) {
-          result.addAll(query.getAvailableElements((CapellaElement) CapellaAdapterHelper.resolveBusinessObject(_descriptor.get())));
+          result.addAll(query.getAvailableElements((CapellaElement) CapellaAdapterHelper.resolveSemanticObject(_descriptor.get(), true)));
         }
         return result;
       }

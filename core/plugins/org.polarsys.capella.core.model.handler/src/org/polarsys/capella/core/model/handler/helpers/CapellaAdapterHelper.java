@@ -15,6 +15,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.Adapters;
+import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
@@ -24,6 +25,7 @@ import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.kitalpha.emde.model.Element;
 
@@ -33,124 +35,114 @@ import org.polarsys.kitalpha.emde.model.Element;
 public class CapellaAdapterHelper {
 
   /**
-   * Retrieve the related EObject (it is equivalent to resolveEObject(object, false, false))
+   * Returns the semantic element for the given object.
    * 
-   * - If the object is an EObject or can be adapted to EObject, return it. - For a graphical element (EditPart),
-   * retrieve the related Sirius EObject (DDiagramElement for instance)
+   * @see it is similar than resolveSemanticObject(object, false) It shall have be called resolveEObject.
+   * 
+   * @param object
+   *          must not be a list
+   */
+  @Deprecated
+  public static EObject resolveSemanticObject(Object object) {
+    return resolveEObject(object);
+  }
+
+  /**
+   * Returns the semantic element for the given object.
+   * 
+   * @see it is similar than resolveSemanticObject(object, false)
    * 
    * @param object
    *          must not be a list
    */
   public static EObject resolveEObject(Object object) {
-    return resolveEObject(object, false, false);
+    return resolveSemanticObject(object, false);
   }
 
   /**
-   * Retrieve the related Semantic element (ie EObject from a model, not a diagram) (it is equivalent to
-   * resolveEObject(object, true, false))
-   * 
-   * - If the object is an Element or can be adapted to Element, return it. - If the object is a graphical element
-   * (EditPart) or a Sirius element, returns DSemanticDecorator.getTarget, or DRepresentationDescriptor.getTarget
+   * Returns the semantic element for the given object. According to onlySemantic, if the element is a Sirius
+   * representation, it returns the semantic element associated.
    */
-  public static EObject resolveSemanticObject(Object object) {
-    return resolveEObject(object, true, false);
-  }
+  public static EObject resolveSemanticObject(Object object, boolean onlySemantic) {
+    if (object instanceof EObject) {
+      return resolveEObject(object, onlySemantic);
 
-  /**
-   * Retrieve the user semantic element related to the given object (it is equivalent to resolveEObject(object, true,
-   * true))
-   * 
-   * - Its the most convenient semantic element for an user (For instance, for a given graphical element related to a
-   * Part, it retrieve the Component, which is the main element used by the user)
-   */
-  public static EObject resolveBusinessObject(Object object) {
-    return resolveEObject(object, true, true);
+    } else if (object instanceof IAdaptable) {
+      EObject adapter = ((IAdaptable) object).getAdapter(EObject.class);
+      if (adapter == null) {
+        return resolveEObject(object, onlySemantic);
+      }
+      return resolveEObject(adapter, onlySemantic);
+    }
+
+    return null;
   }
 
   /**
    * This method returns the list of EObject from the given objects.
-   * 
-   * @see resolveEObject
    */
   public static Collection<EObject> resolveEObjects(Collection<?> objects) {
-    return resolveEObjects(objects, false, false);
+    return resolveSemanticObjects(objects, false);
   }
 
   /**
    * This method returns the list of semantic objects from the given objects.
-   * 
-   * @see resolveSemanticObject
    */
-  public static Collection<EObject> resolveSemanticObjects(Collection<?> objects) {
-    return resolveEObjects(objects, true, false);
-  }
-  
-  /**
-   * This method returns the list of business objects from the given objects.
-   * 
-   * @see resolveBusinessObject
-   */
-  public static Collection<EObject> resolveBusinessObjects(Collection<?> objects) {
-    return resolveEObjects(objects, true, true);
+  public static Collection<EObject> resolveSemanticsObjects(Collection<?> objects) {
+    return resolveSemanticObjects(objects, true);
   }
 
   /**
    * This method returns the list of EObject from the given objects.
    */
-  public static Collection<EObject> resolveEObjects(Collection<?> objects, boolean onlySemantic, boolean onlyBusiness) {
+  public static Collection<EObject> resolveSemanticObjects(Collection<?> objects, boolean onlySemantic) {
     return objects.stream() //
-        .map(x -> resolveEObject(x, onlySemantic, onlyBusiness)) //
+        .map(x -> resolveSemanticObject(x, onlySemantic)) //
         .filter(Objects::nonNull) //
         .collect(Collectors.toList());
   }
 
   /**
-   * You may rather use one of resolveEObject, resolveSemanticObject, resolveBusinessObject with no argument
-   * 
-   * @param onlySemantic:
-   *          if false, the element is a graphical element, return the related Sirius object, otherwise, return the
-   *          semantic element behind it
-   * @param onlyBusiness:
-   *          if true, if the returned element is a semantic element, retrieve the user most convenient one behind it.
+   * This method
    */
-  public static EObject resolveEObject(Object object, boolean onlySemantic, boolean onlyBusiness) {
-    EObject result = null;
-    EObject adapt = null;
-    if (object instanceof DRepresentation) {
-      object = RepresentationHelper.getRepresentationDescriptor((DRepresentation) object);
-    }
-
-    adapt = Adapters.adapt(object, EObject.class, true);
-    if (adapt instanceof EObject) {
-      result = (EObject) adapt;
-    }
-    if (onlySemantic) {
-      if (result instanceof DSemanticDecorator) {
-        result = ((DSemanticDecorator) result).getTarget();
-
-      } else if (result instanceof DRepresentationDescriptor) {
-        result = ((DRepresentationDescriptor) result).getTarget();
+  private static EObject resolveEObject(Object object, boolean onlySemantic) {
+    if ((object instanceof DRepresentationDescriptor) || (object instanceof DRepresentation)) {
+      if (onlySemantic) {
+        if (object instanceof DSemanticDecorator) {
+          return ((DSemanticDecorator) object).getTarget();
+        } else if (object instanceof DRepresentationDescriptor) {
+          return ((DRepresentationDescriptor) object).getTarget();
+        }
+      } else {
+        if (object instanceof DRepresentation) {
+          return RepresentationHelper.getRepresentationDescriptor((DRepresentation) object);
+        }
+        return (EObject) object;
       }
+    }
+    return getBusinessObject(object);
+  }
 
-      adapt = Adapters.adapt(result, Element.class, true);
-      if (adapt instanceof Element) {
-        result = (Element) adapt;
+  /**
+   * Business level adaptation
+   * 
+   * @param object
+   */
+  private static EObject getBusinessObject(Object object) {
+    if (object != null) {
+      if (CapellaResourceHelper.isSemanticElement(object)) {
+        return getRelatedSemanticObject((EObject) object);
       }
-      if (result instanceof Element) {
+      EObject obj = Adapters.adapt(object, Element.class, true);
+      if (obj != null) {
         // null can happen when we try to adapt a non semantic element (notes, text, ...)
-        if (!((object instanceof Project || null != ((EObject) result).eContainer())
-            && (null != ((EObject) result).eResource()))) {
+        if ((obj instanceof Project || null != obj.eContainer()) && (null != obj.eResource())) {
           // null can happen when a diagram shows a deleted element
-          return null;
+          return getRelatedSemanticObject(obj);
         }
       }
     }
-    if (onlyBusiness) {
-      if (result instanceof Element) {
-        result = getBusinessObject((Element) result);
-      }
-    }
-    return result;
+    return null;
   }
 
   /**
@@ -158,7 +150,7 @@ public class CapellaAdapterHelper {
    *          object to adapt
    * @return adapted object
    */
-  private static EObject getBusinessObject(Element object) {
+  private static EObject getRelatedSemanticObject(EObject object) {
     if (object.eClass().equals(CsPackage.eINSTANCE.getPart())) {
       boolean allowMultiplePart = TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(object));
       if (!allowMultiplePart) {
@@ -170,30 +162,4 @@ public class CapellaAdapterHelper {
     }
     return object;
   }
-  
-  /**
-   * Use resolveSemanticObjects instead
-   */
-  @Deprecated
-  public static Collection<EObject> resolveSemanticsObjects(Collection<?> objects) {
-    return resolveSemanticObjects(objects);
-  }
-  
-  @Deprecated
-  public static Collection<EObject> resolveSemanticObjects(Collection<?> objects, boolean onlySemantic) {
-    return objects.stream() //
-        .map(x -> resolveSemanticObject(x, onlySemantic)) //
-        .filter(Objects::nonNull) //
-        .collect(Collectors.toList());
-  }
-
-  @Deprecated
-  public static EObject resolveSemanticObject(Object object, boolean onlySemantic) {
-    EObject result = resolveEObject(object, false, false);
-    if (result instanceof DSemanticDecorator || result instanceof DRepresentationDescriptor) {
-      return resolveEObject(result, onlySemantic, false);
-    }
-    return resolveEObject(result, onlySemantic, true);
-  }
-  
 }

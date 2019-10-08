@@ -81,7 +81,7 @@ public class ShowInDiagramAction extends BaseSelectionListenerAction implements 
   public IStatus runWithStatus() {
 
     List<Object> selectedElements = getStructuredSelection().toList();
-    Collection<EObject> semanticElements = CapellaAdapterHelper.resolveBusinessObjects(selectedElements);
+    Collection<EObject> semanticElements = CapellaAdapterHelper.resolveSemanticsObjects(selectedElements);
     Set<DDiagramElement> viewsFromEditor = getViewsFromEditor(semanticElements);
 
     if (viewsFromEditor.isEmpty()) {

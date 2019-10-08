@@ -33,7 +33,7 @@ public abstract class CommandHandler extends AbstractHandler {
 
   protected Collection<?> getInitialSelection(Object evaluationContext) {
     IEvaluationContext context = (IEvaluationContext) evaluationContext;
-    return CapellaAdapterHelper.resolveSemanticObjects((Collection<?>) context.getDefaultVariable());
+    return CapellaAdapterHelper.resolveSemanticsObjects((Collection<?>) context.getDefaultVariable());
   }
   
   /**
@@ -41,7 +41,7 @@ public abstract class CommandHandler extends AbstractHandler {
    */
   @Deprecated
   public Collection<EObject> getSemanticObjects(Collection<?> elements) {
-    return CapellaAdapterHelper.resolveSemanticObjects(elements);
+    return CapellaAdapterHelper.resolveSemanticsObjects(elements);
   }
 
   /**
@@ -49,7 +49,7 @@ public abstract class CommandHandler extends AbstractHandler {
    */
   @Deprecated
   public EObject resolveSemanticObject(Object object) {
-    return CapellaAdapterHelper.resolveBusinessObject(object);
+    return CapellaAdapterHelper.resolveSemanticObject(object, true);
   }
 
   protected abstract ICommand createCommand(Collection<?> selection, IProgressMonitor progressMonitor);
@@ -67,7 +67,7 @@ public abstract class CommandHandler extends AbstractHandler {
   }
 
   public Object execute(Collection<?> selection, String name) throws ExecutionException {
-    Collection<? extends EObject> selectedSemanticObjects = CapellaAdapterHelper.resolveSemanticObjects(selection);
+    Collection<? extends EObject> selectedSemanticObjects = CapellaAdapterHelper.resolveSemanticsObjects(selection);
     
     if (!selectedSemanticObjects.isEmpty()) {
       ExecutionManager executionManager = TransactionHelper.getExecutionManager(selectedSemanticObjects);
