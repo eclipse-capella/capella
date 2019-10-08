@@ -59,7 +59,7 @@ public class GenericModel {
   public static String CONSTRAINT_2 = "CONSTRAINT 2";
   public static String CONSTRAINT_3 = "CONSTRAINT 3";
   public static String CONSTRAINT_4 = "CONSTRAINT 4";
-  
+
   public static String CONSTRAINT_LINK_1 = "CONSTRAINT LINK 1";
 
   public static String CAPABILITY_1 = "CAPABILITY 1";
@@ -127,9 +127,9 @@ public class GenericModel {
   public static String FUNCTION_5 = "Function 5";
   public static String FUNCTION_6 = "Function 6";
   public static String FUNCTION_7 = "Function 7";
-  
+
   public static String ACTOR_FUNCTION_1 = "Actor Function 1";
-  
+
   public static String DUPLICATE_1 = "Duplicate Function 1";
   public static String GATHER_1 = "Gather function 1";
   public static String ROUTE_1 = "Route function 1";
@@ -158,9 +158,12 @@ public class GenericModel {
   public static String FUNCTIONAL_EXCHANGE_4 = "Functional Exchange 4";
   public static String FUNCTIONAL_EXCHANGE_5 = "Functional Exchange 5";
   public static String FUNCTIONAL_EXCHANGE_6 = "Functional Exchange 6";
-  
+
   public static String EXCHANGE_CATEGORY_1 = "Exchange Category 1";
-  
+
+  public static String COMMUNICATION_MEAN_1 = "CommunicationMean 1";
+  public static String COMMUNICATION_MEAN_2 = "CommunicationMean 2";
+
   public static String EXCHANGE_ITEM_ALLOCATION_1 = "Exchange Item Allocation 1";
   public static String EXCHANGE_ITEM_ALLOCATION_2 = "Exchange Item Allocation 2";
 

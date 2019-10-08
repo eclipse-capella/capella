@@ -35,11 +35,10 @@ public class CreateMessage extends CreateSequenceMessage {
       ISDiagram isDiagram = (ISDiagram) diagram;
       isDiagram.createMessage(GenericModel.EXCHANGE_ITEM_ALLOCATION_1, actor1, actor2);
       isDiagram.createMessage(GenericModel.EXCHANGE_ITEM_ALLOCATION_2, actor2, actor1);
-    }
-    else if (diagram instanceof OA_ESDiagram) {
+    } else if (diagram instanceof OA_ESDiagram) {
       OA_ESDiagram oasDiagram = (OA_ESDiagram) diagram;
-      oasDiagram.createMessage(actor1, actor2);
-      oasDiagram.createMessage(actor2, actor1);
+      oasDiagram.createMessage(GenericModel.COMMUNICATION_MEAN_1, actor1, actor2);
+      oasDiagram.createMessage(GenericModel.COMMUNICATION_MEAN_2, actor2, actor1);
     }
   }
 }
