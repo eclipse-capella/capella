@@ -41,3 +41,10 @@ pattern LogicalComponent__realizingPhysicalComponents(self : LogicalComponent, t
 }
 
 
+@Surrogate(feature="realizedSystemComponents")
+pattern LogicalComponent__realizedSystemComponents(self : LogicalComponent, target : SystemComponent) {
+	LogicalComponent.realizedComponents(self, target);
+}
+
+
+

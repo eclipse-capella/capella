@@ -14,6 +14,7 @@ package org.polarsys.capella.viatra.core.data.la.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
+import org.polarsys.capella.viatra.core.data.la.surrogate.LogicalFunction__allocatingSystemComponents;
 import org.polarsys.capella.viatra.core.data.la.surrogate.LogicalFunction__childrenLogicalFunctions;
 import org.polarsys.capella.viatra.core.data.la.surrogate.LogicalFunction__containedLogicalFunctions;
 import org.polarsys.capella.viatra.core.data.la.surrogate.LogicalFunction__realizedSystemFunctions;
@@ -31,6 +32,7 @@ import org.polarsys.capella.viatra.core.data.la.surrogate.LogicalFunction__reali
  * <li>LogicalFunction__realizingPhysicalFunctions</li>
  * <li>LogicalFunction__containedLogicalFunctions</li>
  * <li>LogicalFunction__childrenLogicalFunctions</li>
+ * <li>LogicalFunction__allocatingSystemComponents</li>
  * </ul>
  * 
  * @see IQueryGroup
@@ -59,6 +61,7 @@ public final class LogicalFunction extends BaseGeneratedPatternGroup {
     querySpecifications.add(LogicalFunction__realizingPhysicalFunctions.instance());
     querySpecifications.add(LogicalFunction__containedLogicalFunctions.instance());
     querySpecifications.add(LogicalFunction__childrenLogicalFunctions.instance());
+    querySpecifications.add(LogicalFunction__allocatingSystemComponents.instance());
   }
   
   public LogicalFunction__realizedSystemFunctions getLogicalFunction__realizedSystemFunctions() {
@@ -91,5 +94,13 @@ public final class LogicalFunction extends BaseGeneratedPatternGroup {
   
   public LogicalFunction__childrenLogicalFunctions.Matcher getLogicalFunction__childrenLogicalFunctions(final ViatraQueryEngine engine) {
     return LogicalFunction__childrenLogicalFunctions.Matcher.on(engine);
+  }
+  
+  public LogicalFunction__allocatingSystemComponents getLogicalFunction__allocatingSystemComponents() {
+    return LogicalFunction__allocatingSystemComponents.instance();
+  }
+  
+  public LogicalFunction__allocatingSystemComponents.Matcher getLogicalFunction__allocatingSystemComponents(final ViatraQueryEngine engine) {
+    return LogicalFunction__allocatingSystemComponents.Matcher.on(engine);
   }
 }

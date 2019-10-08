@@ -18,6 +18,11 @@ import org.polarsys.capella.viatra.core.data.cs.surrogate.BlockArchitecture__all
 import org.polarsys.capella.viatra.core.data.cs.surrogate.BlockArchitecture__allocatingArchitectures;
 import org.polarsys.capella.viatra.core.data.cs.surrogate.BlockArchitecture__provisionedArchitectureAllocations;
 import org.polarsys.capella.viatra.core.data.cs.surrogate.BlockArchitecture__provisioningArchitectureAllocations;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.BlockArchitecture__system;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.EPBSArchitecture__system;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.LogicalArchitecture__system;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.PhysicalArchitecture__system;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.SystemAnalysis__system;
 
 /**
  * A pattern group formed of all public patterns defined in BlockArchitecture.vql.
@@ -31,6 +36,11 @@ import org.polarsys.capella.viatra.core.data.cs.surrogate.BlockArchitecture__pro
  * <li>BlockArchitecture__provisioningArchitectureAllocations</li>
  * <li>BlockArchitecture__allocatedArchitectures</li>
  * <li>BlockArchitecture__allocatingArchitectures</li>
+ * <li>BlockArchitecture__system</li>
+ * <li>SystemAnalysis__system</li>
+ * <li>LogicalArchitecture__system</li>
+ * <li>PhysicalArchitecture__system</li>
+ * <li>EPBSArchitecture__system</li>
  * </ul>
  * 
  * @see IQueryGroup
@@ -59,6 +69,11 @@ public final class BlockArchitecture extends BaseGeneratedPatternGroup {
     querySpecifications.add(BlockArchitecture__provisioningArchitectureAllocations.instance());
     querySpecifications.add(BlockArchitecture__allocatedArchitectures.instance());
     querySpecifications.add(BlockArchitecture__allocatingArchitectures.instance());
+    querySpecifications.add(BlockArchitecture__system.instance());
+    querySpecifications.add(SystemAnalysis__system.instance());
+    querySpecifications.add(LogicalArchitecture__system.instance());
+    querySpecifications.add(PhysicalArchitecture__system.instance());
+    querySpecifications.add(EPBSArchitecture__system.instance());
   }
   
   public BlockArchitecture__provisionedArchitectureAllocations getBlockArchitecture__provisionedArchitectureAllocations() {
@@ -91,5 +106,45 @@ public final class BlockArchitecture extends BaseGeneratedPatternGroup {
   
   public BlockArchitecture__allocatingArchitectures.Matcher getBlockArchitecture__allocatingArchitectures(final ViatraQueryEngine engine) {
     return BlockArchitecture__allocatingArchitectures.Matcher.on(engine);
+  }
+  
+  public BlockArchitecture__system getBlockArchitecture__system() {
+    return BlockArchitecture__system.instance();
+  }
+  
+  public BlockArchitecture__system.Matcher getBlockArchitecture__system(final ViatraQueryEngine engine) {
+    return BlockArchitecture__system.Matcher.on(engine);
+  }
+  
+  public SystemAnalysis__system getSystemAnalysis__system() {
+    return SystemAnalysis__system.instance();
+  }
+  
+  public SystemAnalysis__system.Matcher getSystemAnalysis__system(final ViatraQueryEngine engine) {
+    return SystemAnalysis__system.Matcher.on(engine);
+  }
+  
+  public LogicalArchitecture__system getLogicalArchitecture__system() {
+    return LogicalArchitecture__system.instance();
+  }
+  
+  public LogicalArchitecture__system.Matcher getLogicalArchitecture__system(final ViatraQueryEngine engine) {
+    return LogicalArchitecture__system.Matcher.on(engine);
+  }
+  
+  public PhysicalArchitecture__system getPhysicalArchitecture__system() {
+    return PhysicalArchitecture__system.instance();
+  }
+  
+  public PhysicalArchitecture__system.Matcher getPhysicalArchitecture__system(final ViatraQueryEngine engine) {
+    return PhysicalArchitecture__system.Matcher.on(engine);
+  }
+  
+  public EPBSArchitecture__system getEPBSArchitecture__system() {
+    return EPBSArchitecture__system.instance();
+  }
+  
+  public EPBSArchitecture__system.Matcher getEPBSArchitecture__system(final ViatraQueryEngine engine) {
+    return EPBSArchitecture__system.Matcher.on(engine);
   }
 }

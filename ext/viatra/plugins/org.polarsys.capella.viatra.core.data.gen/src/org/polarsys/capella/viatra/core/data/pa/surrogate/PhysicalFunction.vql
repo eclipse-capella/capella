@@ -37,4 +37,9 @@ pattern PhysicalFunction__childrenPhysicalFunctions(self : PhysicalFunction, tar
 	PhysicalFunction.subFunctions(self, target);
 }
 
+@Surrogate(feature="allocatingPhysicalComponents")
+pattern PhysicalFunction__allocatingPhysicalComponents(self : PhysicalFunction, target : PhysicalComponent) {
+	PhysicalFunction.incomingTraces(self, incomingTraces);
+	ComponentFunctionalAllocation.sourceElement(incomingTraces, target);
+}
 

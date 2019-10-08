@@ -20,6 +20,9 @@ import "http://www.polarsys.org/capella/common/core/1.4.0"
 import "http://www.polarsys.org/capella/core/information/1.4.0"
 import "http://www.polarsys.org/capella/core/core/1.4.0"
 import "http://www.polarsys.org/capella/core/fa/1.4.0"
+import "http://www.polarsys.org/capella/core/common/1.4.0"
+import "http://www.polarsys.org/capella/core/la/1.4.0"
+
 
 // End of user code
 
@@ -68,4 +71,25 @@ pattern Component__containedPhysicalPorts(self : Component, target : PhysicalPor
 	Component.ownedFeatures(self, target);
 }
 
+@Surrogate(feature="involvedComponents")
+pattern CapabilityRealization__involvedComponents(self : CapabilityRealization, target : CapabilityRealizationInvolvedElement) {
+	CapabilityRealization.ownedCapabilityRealizationInvolvements(self, involvements);
+	CapabilityRealizationInvolvement.involvedCapabilityRealizationInvolvedElement(involvements, target);
+}
 
+@Surrogate(feature="representingParts")
+pattern Component__representingParts(self : Component, target : Part) {
+	Component.typedElements(self, target);
+}
+
+@Surrogate(feature="realizingComponents")
+pattern Component__realizingComponents(self : Component, target : Component) {
+	Component.incomingTraces(self, incomingTraces);
+	ComponentRealization.realizingComponent(incomingTraces, target);
+}
+
+@Surrogate(feature="realizedComponents")
+pattern Component__realizedComponents(self : Component, target : Component) {
+	Component.outgoingTraces(self, outgoingTraces);
+	ComponentRealization.realizedComponent(outgoingTraces, target);
+}

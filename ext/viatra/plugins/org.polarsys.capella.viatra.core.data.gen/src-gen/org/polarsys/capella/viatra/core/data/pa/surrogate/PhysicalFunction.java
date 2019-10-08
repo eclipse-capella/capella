@@ -14,6 +14,7 @@ package org.polarsys.capella.viatra.core.data.pa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
+import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalFunction__allocatingPhysicalComponents;
 import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalFunction__childrenPhysicalFunctions;
 import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalFunction__containedPhysicalFunctions;
 import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalFunction__realizedLogicalFunctions;
@@ -29,6 +30,7 @@ import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalFunction__real
  * <li>PhysicalFunction__realizedLogicalFunctions</li>
  * <li>PhysicalFunction__containedPhysicalFunctions</li>
  * <li>PhysicalFunction__childrenPhysicalFunctions</li>
+ * <li>PhysicalFunction__allocatingPhysicalComponents</li>
  * </ul>
  * 
  * @see IQueryGroup
@@ -56,6 +58,7 @@ public final class PhysicalFunction extends BaseGeneratedPatternGroup {
     querySpecifications.add(PhysicalFunction__realizedLogicalFunctions.instance());
     querySpecifications.add(PhysicalFunction__containedPhysicalFunctions.instance());
     querySpecifications.add(PhysicalFunction__childrenPhysicalFunctions.instance());
+    querySpecifications.add(PhysicalFunction__allocatingPhysicalComponents.instance());
   }
   
   public PhysicalFunction__realizedLogicalFunctions getPhysicalFunction__realizedLogicalFunctions() {
@@ -80,5 +83,13 @@ public final class PhysicalFunction extends BaseGeneratedPatternGroup {
   
   public PhysicalFunction__childrenPhysicalFunctions.Matcher getPhysicalFunction__childrenPhysicalFunctions(final ViatraQueryEngine engine) {
     return PhysicalFunction__childrenPhysicalFunctions.Matcher.on(engine);
+  }
+  
+  public PhysicalFunction__allocatingPhysicalComponents getPhysicalFunction__allocatingPhysicalComponents() {
+    return PhysicalFunction__allocatingPhysicalComponents.instance();
+  }
+  
+  public PhysicalFunction__allocatingPhysicalComponents.Matcher getPhysicalFunction__allocatingPhysicalComponents(final ViatraQueryEngine engine) {
+    return PhysicalFunction__allocatingPhysicalComponents.Matcher.on(engine);
   }
 }

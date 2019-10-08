@@ -14,6 +14,8 @@ package org.polarsys.capella.viatra.core.data.la.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
+import org.polarsys.capella.viatra.core.data.la.surrogate.CapabilityInvolvement__capability;
+import org.polarsys.capella.viatra.core.data.la.surrogate.CapabilityInvolvement__systemComponent;
 import org.polarsys.capella.viatra.core.data.la.surrogate.CapabilityRealization__realizedCapabilities;
 import org.polarsys.capella.viatra.core.data.la.surrogate.CapabilityRealization__realizedCapabilityRealizations;
 import org.polarsys.capella.viatra.core.data.la.surrogate.CapabilityRealization__realizingCapabilityRealizations;
@@ -29,6 +31,8 @@ import org.polarsys.capella.viatra.core.data.la.surrogate.CapabilityRealization_
  * <li>CapabilityRealization__realizedCapabilities</li>
  * <li>CapabilityRealization__realizedCapabilityRealizations</li>
  * <li>CapabilityRealization__realizingCapabilityRealizations</li>
+ * <li>CapabilityInvolvement__systemComponent</li>
+ * <li>CapabilityInvolvement__capability</li>
  * </ul>
  * 
  * @see IQueryGroup
@@ -56,6 +60,8 @@ public final class CapabilityRealization extends BaseGeneratedPatternGroup {
     querySpecifications.add(CapabilityRealization__realizedCapabilities.instance());
     querySpecifications.add(CapabilityRealization__realizedCapabilityRealizations.instance());
     querySpecifications.add(CapabilityRealization__realizingCapabilityRealizations.instance());
+    querySpecifications.add(CapabilityInvolvement__systemComponent.instance());
+    querySpecifications.add(CapabilityInvolvement__capability.instance());
   }
   
   public CapabilityRealization__realizedCapabilities getCapabilityRealization__realizedCapabilities() {
@@ -80,5 +86,21 @@ public final class CapabilityRealization extends BaseGeneratedPatternGroup {
   
   public CapabilityRealization__realizingCapabilityRealizations.Matcher getCapabilityRealization__realizingCapabilityRealizations(final ViatraQueryEngine engine) {
     return CapabilityRealization__realizingCapabilityRealizations.Matcher.on(engine);
+  }
+  
+  public CapabilityInvolvement__systemComponent getCapabilityInvolvement__systemComponent() {
+    return CapabilityInvolvement__systemComponent.instance();
+  }
+  
+  public CapabilityInvolvement__systemComponent.Matcher getCapabilityInvolvement__systemComponent(final ViatraQueryEngine engine) {
+    return CapabilityInvolvement__systemComponent.Matcher.on(engine);
+  }
+  
+  public CapabilityInvolvement__capability getCapabilityInvolvement__capability() {
+    return CapabilityInvolvement__capability.instance();
+  }
+  
+  public CapabilityInvolvement__capability.Matcher getCapabilityInvolvement__capability(final ViatraQueryEngine engine) {
+    return CapabilityInvolvement__capability.Matcher.on(engine);
   }
 }

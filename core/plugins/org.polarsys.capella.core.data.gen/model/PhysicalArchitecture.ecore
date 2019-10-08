@@ -291,7 +291,7 @@
         transient="true" derived="true" eOpposite="#//PhysicalComponent/allocatedPhysicalFunctions">
       <eAnnotations source="http://www.polarsys.org/capella/derived">
         <details key="viatra.variant" value="patternbody"/>
-        <details key="viatra.expression" value="PhysicalFunction.incomingTraces(self, cfa);&#xD;&#xA;ComponentFunctionalAllocation.sourceElement(cfa, target);"/>
+        <details key="viatra.expression" value="PhysicalFunction.incomingTraces(self, incomingTraces);&#xD;&#xA;ComponentFunctionalAllocation.sourceElement(incomingTraces, target);"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="excludefrom" value="xmlpivot"/>

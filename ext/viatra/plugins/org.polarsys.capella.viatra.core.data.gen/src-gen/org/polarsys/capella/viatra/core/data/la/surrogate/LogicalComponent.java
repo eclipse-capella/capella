@@ -15,6 +15,7 @@ package org.polarsys.capella.viatra.core.data.la.surrogate;
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
 import org.polarsys.capella.viatra.core.data.la.surrogate.LogicalComponent__allocatedLogicalFunctions;
+import org.polarsys.capella.viatra.core.data.la.surrogate.LogicalComponent__realizedSystemComponents;
 import org.polarsys.capella.viatra.core.data.la.surrogate.LogicalComponent__realizingPhysicalComponents;
 import org.polarsys.capella.viatra.core.data.la.surrogate.LogicalComponent__subLogicalComponents;
 
@@ -29,6 +30,7 @@ import org.polarsys.capella.viatra.core.data.la.surrogate.LogicalComponent__subL
  * <li>LogicalComponent__subLogicalComponents</li>
  * <li>LogicalComponent__allocatedLogicalFunctions</li>
  * <li>LogicalComponent__realizingPhysicalComponents</li>
+ * <li>LogicalComponent__realizedSystemComponents</li>
  * </ul>
  * 
  * @see IQueryGroup
@@ -56,6 +58,7 @@ public final class LogicalComponent extends BaseGeneratedPatternGroup {
     querySpecifications.add(LogicalComponent__subLogicalComponents.instance());
     querySpecifications.add(LogicalComponent__allocatedLogicalFunctions.instance());
     querySpecifications.add(LogicalComponent__realizingPhysicalComponents.instance());
+    querySpecifications.add(LogicalComponent__realizedSystemComponents.instance());
   }
   
   public LogicalComponent__subLogicalComponents getLogicalComponent__subLogicalComponents() {
@@ -80,5 +83,13 @@ public final class LogicalComponent extends BaseGeneratedPatternGroup {
   
   public LogicalComponent__realizingPhysicalComponents.Matcher getLogicalComponent__realizingPhysicalComponents(final ViatraQueryEngine engine) {
     return LogicalComponent__realizingPhysicalComponents.Matcher.on(engine);
+  }
+  
+  public LogicalComponent__realizedSystemComponents getLogicalComponent__realizedSystemComponents() {
+    return LogicalComponent__realizedSystemComponents.instance();
+  }
+  
+  public LogicalComponent__realizedSystemComponents.Matcher getLogicalComponent__realizedSystemComponents(final ViatraQueryEngine engine) {
+    return LogicalComponent__realizedSystemComponents.Matcher.on(engine);
   }
 }

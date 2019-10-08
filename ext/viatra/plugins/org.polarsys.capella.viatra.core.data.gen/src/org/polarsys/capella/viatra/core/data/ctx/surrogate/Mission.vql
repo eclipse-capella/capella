@@ -25,4 +25,10 @@ pattern Mission__exploitedCapabilities(self : Mission, target : Capability) {
 	Mission.ownedCapabilityExploitations.capability(self, target);
 }
 
+@Surrogate(feature="involvedSystemComponents")
+pattern Mission__involvedSystemComponents(self : Mission, target : SystemComponent) {
+	Mission.ownedMissionInvolvements(self, missionInvolvements);
+	MissionInvolvement.systemComponent(missionInvolvements, target);
+}
+
 

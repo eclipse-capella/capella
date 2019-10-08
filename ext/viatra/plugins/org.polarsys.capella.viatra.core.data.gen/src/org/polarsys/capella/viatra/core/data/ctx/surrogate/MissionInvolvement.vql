@@ -1,0 +1,38 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2019 THALES DMS FRANCE.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+
+/* Generated file */
+
+
+/* Generated file */
+
+package org.polarsys.capella.viatra.core.data.ctx.surrogate
+
+import "http://www.polarsys.org/capella/core/ctx/1.4.0"
+
+// Start of user code for imports 
+import "http://www.polarsys.org/capella/core/core/1.4.0"
+
+// End of user code
+
+
+@Surrogate(feature="mission")
+pattern MissionInvolvement__mission(self : MissionInvolvement, target : Mission) {
+	MissionInvolvement.involver(self, target);
+}
+
+@Surrogate(feature="systemComponent")
+pattern MissionInvolvement__systemComponent(self : MissionInvolvement, target : SystemComponent) {
+	MissionInvolvement.involved(self, target);
+}
+
+
+

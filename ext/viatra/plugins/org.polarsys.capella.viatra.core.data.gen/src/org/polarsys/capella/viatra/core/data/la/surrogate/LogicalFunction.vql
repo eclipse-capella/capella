@@ -20,6 +20,8 @@ import "http://www.polarsys.org/capella/common/core/1.4.0"
 import "http://www.polarsys.org/capella/core/fa/1.4.0"
 import "http://www.polarsys.org/capella/core/ctx/1.4.0"
 import "http://www.polarsys.org/capella/core/pa/1.4.0"
+import "http://www.polarsys.org/capella/core/cs/1.4.0"
+
 
 // End of user code
 
@@ -42,5 +44,12 @@ pattern LogicalFunction__containedLogicalFunctions(self : LogicalFunction, targe
 pattern LogicalFunction__childrenLogicalFunctions(self : LogicalFunction, target : LogicalFunction) {
 	LogicalFunction.subFunctions(self, target);
 }
+
+@Surrogate(feature="allocatingLogicalComponents")
+pattern LogicalFunction__allocatingSystemComponents(self : LogicalFunction, target : LogicalComponent) {
+	LogicalFunction.incomingTraces(self, traces);
+	ComponentFunctionalAllocation.sourceElement(traces, target);
+}
+
 
 

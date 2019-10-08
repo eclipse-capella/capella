@@ -1153,8 +1153,8 @@
         <details key="comment/notes" value="none"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="patternbody"/>
-        <details key="viatra.expression" value="Entity.involvingInvolvements(self, eoci);&#xD;&#xA;EntityOperationalCapabilityInvolvement.capability(eoci, target);"/>
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="realizingComponents"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="excludefrom" value="xmlpivot"/>

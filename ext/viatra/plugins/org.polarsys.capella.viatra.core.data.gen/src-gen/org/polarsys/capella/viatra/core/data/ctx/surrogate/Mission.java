@@ -15,6 +15,7 @@ package org.polarsys.capella.viatra.core.data.ctx.surrogate;
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
 import org.polarsys.capella.viatra.core.data.ctx.surrogate.Mission__exploitedCapabilities;
+import org.polarsys.capella.viatra.core.data.ctx.surrogate.Mission__involvedSystemComponents;
 
 /**
  * A pattern group formed of all public patterns defined in Mission.vql.
@@ -25,6 +26,7 @@ import org.polarsys.capella.viatra.core.data.ctx.surrogate.Mission__exploitedCap
  * 
  * <p> From package org.polarsys.capella.viatra.core.data.ctx.surrogate, the group contains the definition of the following patterns: <ul>
  * <li>Mission__exploitedCapabilities</li>
+ * <li>Mission__involvedSystemComponents</li>
  * </ul>
  * 
  * @see IQueryGroup
@@ -50,6 +52,7 @@ public final class Mission extends BaseGeneratedPatternGroup {
   
   private Mission() {
     querySpecifications.add(Mission__exploitedCapabilities.instance());
+    querySpecifications.add(Mission__involvedSystemComponents.instance());
   }
   
   public Mission__exploitedCapabilities getMission__exploitedCapabilities() {
@@ -58,5 +61,13 @@ public final class Mission extends BaseGeneratedPatternGroup {
   
   public Mission__exploitedCapabilities.Matcher getMission__exploitedCapabilities(final ViatraQueryEngine engine) {
     return Mission__exploitedCapabilities.Matcher.on(engine);
+  }
+  
+  public Mission__involvedSystemComponents getMission__involvedSystemComponents() {
+    return Mission__involvedSystemComponents.instance();
+  }
+  
+  public Mission__involvedSystemComponents.Matcher getMission__involvedSystemComponents(final ViatraQueryEngine engine) {
+    return Mission__involvedSystemComponents.Matcher.on(engine);
   }
 }

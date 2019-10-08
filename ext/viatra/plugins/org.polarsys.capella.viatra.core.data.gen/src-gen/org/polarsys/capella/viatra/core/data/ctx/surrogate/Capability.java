@@ -14,6 +14,7 @@ package org.polarsys.capella.viatra.core.data.ctx.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
+import org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__involvedSystemComponents;
 import org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__purposeMissions;
 import org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__purposes;
 import org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__realizedOperationalCapabilities;
@@ -31,6 +32,7 @@ import org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__realizing
  * <li>Capability__purposeMissions</li>
  * <li>Capability__realizedOperationalCapabilities</li>
  * <li>Capability__realizingCapabilityRealizations</li>
+ * <li>Capability__involvedSystemComponents</li>
  * </ul>
  * 
  * @see IQueryGroup
@@ -59,6 +61,7 @@ public final class Capability extends BaseGeneratedPatternGroup {
     querySpecifications.add(Capability__purposeMissions.instance());
     querySpecifications.add(Capability__realizedOperationalCapabilities.instance());
     querySpecifications.add(Capability__realizingCapabilityRealizations.instance());
+    querySpecifications.add(Capability__involvedSystemComponents.instance());
   }
   
   public Capability__purposes getCapability__purposes() {
@@ -91,5 +94,13 @@ public final class Capability extends BaseGeneratedPatternGroup {
   
   public Capability__realizingCapabilityRealizations.Matcher getCapability__realizingCapabilityRealizations(final ViatraQueryEngine engine) {
     return Capability__realizingCapabilityRealizations.Matcher.on(engine);
+  }
+  
+  public Capability__involvedSystemComponents getCapability__involvedSystemComponents() {
+    return Capability__involvedSystemComponents.instance();
+  }
+  
+  public Capability__involvedSystemComponents.Matcher getCapability__involvedSystemComponents(final ViatraQueryEngine engine) {
+    return Capability__involvedSystemComponents.Matcher.on(engine);
   }
 }

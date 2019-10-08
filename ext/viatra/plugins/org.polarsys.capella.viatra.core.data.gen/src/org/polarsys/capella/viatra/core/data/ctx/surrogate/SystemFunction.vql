@@ -43,4 +43,10 @@ pattern SystemFunction__childrenSystemFunctions(self : SystemFunction, target : 
 	SystemFunction.subFunctions(self, target);
 }
 
+@Surrogate(feature="allocatingSystemComponents")
+pattern SystemFunction__allocatingSystemComponents(self : SystemFunction, target : SystemComponent) {
+	SystemFunction.incomingTraces(self, traces);
+	ComponentFunctionalAllocation.sourceElement(traces, target);
+}
+
 

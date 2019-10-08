@@ -17,6 +17,11 @@ import "http://www.polarsys.org/capella/core/cs/1.4.0"
 
 // Start of user code for imports 
 import "http://www.polarsys.org/capella/common/core/1.4.0"
+import "http://www.polarsys.org/capella/core/core/1.4.0"
+import "http://www.polarsys.org/capella/core/ctx/1.4.0"
+import "http://www.polarsys.org/capella/core/la/1.4.0"
+import "http://www.polarsys.org/capella/core/pa/1.4.0"
+import "http://www.polarsys.org/capella/core/epbs/1.4.0"
 
 // End of user code
 
@@ -39,5 +44,42 @@ pattern BlockArchitecture__allocatedArchitectures(self : BlockArchitecture, targ
 pattern BlockArchitecture__allocatingArchitectures(self : BlockArchitecture, target : BlockArchitecture) {
 	BlockArchitecture.provisioningArchitectureAllocations.allocatingArchitecture(self, target);
 }
+
+@Surrogate(feature="system")
+pattern BlockArchitecture__system(self : BlockArchitecture, target : Component) {
+	find SystemAnalysis__system(self, target);
+} or {
+	find LogicalArchitecture__system(self, target);
+} or {
+	find PhysicalArchitecture__system(self, target);
+} or {
+	find EPBSArchitecture__system(self, target);
+}
+
+pattern SystemAnalysis__system(self : SystemAnalysis, target : SystemComponent) {
+	SystemAnalysis.ownedSystemComponentPkg(self, pckg);
+	SystemComponentPkg.ownedSystemComponents(pckg, target);
+	Component.actor(target, false);
+}
+
+pattern LogicalArchitecture__system(self : LogicalArchitecture, target : LogicalComponent) {
+	LogicalArchitecture.ownedLogicalComponentPkg(self, pckg);
+	LogicalComponentPkg.ownedLogicalComponents(pckg, target);
+	Component.actor(target, false);
+}
+
+pattern PhysicalArchitecture__system(self : PhysicalArchitecture, target : PhysicalComponent) {
+	PhysicalArchitecture.ownedPhysicalComponentPkg(self, pckg);
+	PhysicalComponentPkg.ownedPhysicalComponents(pckg, target);
+	Component.actor(target, false);
+}
+
+pattern EPBSArchitecture__system(self : EPBSArchitecture, target : ConfigurationItem) {
+	EPBSArchitecture.ownedConfigurationItemPkg(self, pckg);
+	ConfigurationItemPkg.ownedConfigurationItems(pckg, target);
+	Component.actor(target, false);
+}
+
+
 
 

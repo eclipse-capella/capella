@@ -30,6 +30,12 @@
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.capellacommon.surrogate.AbstractState__realizingAbstractStates" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="AbstractState" feature-name="realizingAbstractStates" package-nsUri="http://www.polarsys.org/capella/core/common/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.capellacommon.surrogate.AbstractState__realizingAbstractStates" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.capellacommon.surrogate.AbstractState__realizingAbstractStates"/>
   </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.capellacommon.surrogate.CapabilityRealizationInvolvedElement__capabilityRealizationInvolvements" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="CapabilityRealizationInvolvedElement" feature-name="capabilityRealizationInvolvements" package-nsUri="http://www.polarsys.org/capella/core/common/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.capellacommon.surrogate.CapabilityRealizationInvolvedElement__capabilityRealizationInvolvements" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.capellacommon.surrogate.CapabilityRealizationInvolvedElement__capabilityRealizationInvolvements"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.capellacommon.surrogate.CapabilityRealizationInvolvedElement__involvingCapabilityRealizations" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="CapabilityRealizationInvolvedElement" feature-name="involvingCapabilityRealizations" package-nsUri="http://www.polarsys.org/capella/core/common/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.capellacommon.surrogate.CapabilityRealizationInvolvedElement__involvingCapabilityRealizations" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.capellacommon.surrogate.CapabilityRealizationInvolvedElement__involvingCapabilityRealizations"/>
+  </extension>
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.capellacommon.surrogate.CapabilityRealizationInvolvement__involvedCapabilityRealizationInvolvedElement" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="CapabilityRealizationInvolvement" feature-name="involvedCapabilityRealizationInvolvedElement" package-nsUri="http://www.polarsys.org/capella/core/common/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.capellacommon.surrogate.CapabilityRealizationInvolvement__involvedCapabilityRealizationInvolvedElement" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.capellacommon.surrogate.CapabilityRealizationInvolvement__involvedCapabilityRealizationInvolvedElement"/>
   </extension>
@@ -153,6 +159,18 @@
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.cs.surrogate.BlockArchitecture__provisioningArchitectureAllocations" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="BlockArchitecture" feature-name="provisioningArchitectureAllocations" package-nsUri="http://www.polarsys.org/capella/core/cs/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.cs.surrogate.BlockArchitecture__provisioningArchitectureAllocations" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.cs.surrogate.BlockArchitecture__provisioningArchitectureAllocations"/>
   </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.cs.surrogate.BlockArchitecture__system" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="BlockArchitecture" feature-name="system" package-nsUri="http://www.polarsys.org/capella/core/cs/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.cs.surrogate.BlockArchitecture__system" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.cs.surrogate.BlockArchitecture__system"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.cs.surrogate.CapabilityRealization__involvedComponents" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="CapabilityRealization" feature-name="involvedComponents" package-nsUri="http://www.polarsys.org/capella/core/la/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.cs.surrogate.CapabilityRealization__involvedComponents" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.cs.surrogate.CapabilityRealization__involvedComponents"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.cs.surrogate.ComponentRealization__realizedComponent" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="ComponentRealization" feature-name="realizedComponent" package-nsUri="http://www.polarsys.org/capella/core/cs/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.cs.surrogate.ComponentRealization__realizedComponent" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.cs.surrogate.ComponentRealization__realizedComponent"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.cs.surrogate.ComponentRealization__realizingComponent" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="ComponentRealization" feature-name="realizingComponent" package-nsUri="http://www.polarsys.org/capella/core/cs/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.cs.surrogate.ComponentRealization__realizingComponent" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.cs.surrogate.ComponentRealization__realizingComponent"/>
+  </extension>
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.cs.surrogate.Component__containedComponentPorts" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="Component" feature-name="containedComponentPorts" package-nsUri="http://www.polarsys.org/capella/core/cs/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.cs.surrogate.Component__containedComponentPorts" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.cs.surrogate.Component__containedComponentPorts"/>
   </extension>
@@ -170,6 +188,15 @@
   </extension>
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.cs.surrogate.Component__providedInterfaces" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="Component" feature-name="providedInterfaces" package-nsUri="http://www.polarsys.org/capella/core/cs/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.cs.surrogate.Component__providedInterfaces" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.cs.surrogate.Component__providedInterfaces"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.cs.surrogate.Component__realizedComponents" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="Component" feature-name="realizedComponents" package-nsUri="http://www.polarsys.org/capella/core/cs/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.cs.surrogate.Component__realizedComponents" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.cs.surrogate.Component__realizedComponents"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.cs.surrogate.Component__realizingComponents" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="Component" feature-name="realizingComponents" package-nsUri="http://www.polarsys.org/capella/core/cs/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.cs.surrogate.Component__realizingComponents" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.cs.surrogate.Component__realizingComponents"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.cs.surrogate.Component__representingParts" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="Component" feature-name="representingParts" package-nsUri="http://www.polarsys.org/capella/core/cs/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.cs.surrogate.Component__representingParts" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.cs.surrogate.Component__representingParts"/>
   </extension>
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.cs.surrogate.Component__requiredInterfaces" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="Component" feature-name="requiredInterfaces" package-nsUri="http://www.polarsys.org/capella/core/cs/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.cs.surrogate.Component__requiredInterfaces" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.cs.surrogate.Component__requiredInterfaces"/>
@@ -309,6 +336,15 @@
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.ctx.surrogate.CapabilityExploitation__mission" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="CapabilityExploitation" feature-name="mission" package-nsUri="http://www.polarsys.org/capella/core/ctx/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.CapabilityExploitation__mission" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.ctx.surrogate.CapabilityExploitation__mission"/>
   </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.ctx.surrogate.CapabilityInvolvement__capability" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="CapabilityInvolvement" feature-name="capability" package-nsUri="http://www.polarsys.org/capella/core/ctx/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.CapabilityInvolvement__capability" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.ctx.surrogate.CapabilityInvolvement__capability"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.ctx.surrogate.CapabilityInvolvement__systemComponent" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="CapabilityInvolvement" feature-name="systemComponent" package-nsUri="http://www.polarsys.org/capella/core/ctx/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.CapabilityInvolvement__systemComponent" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.ctx.surrogate.CapabilityInvolvement__systemComponent"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__involvedSystemComponents" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="Capability" feature-name="involvedSystemComponents" package-nsUri="http://www.polarsys.org/capella/core/ctx/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__involvedSystemComponents" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__involvedSystemComponents"/>
+  </extension>
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__purposeMissions" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="Capability" feature-name="purposeMissions" package-nsUri="http://www.polarsys.org/capella/core/ctx/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__purposeMissions" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__purposeMissions"/>
   </extension>
@@ -321,8 +357,17 @@
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__realizingCapabilityRealizations" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="Capability" feature-name="realizingCapabilityRealizations" package-nsUri="http://www.polarsys.org/capella/core/ctx/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__realizingCapabilityRealizations" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__realizingCapabilityRealizations"/>
   </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.ctx.surrogate.MissionInvolvement__mission" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="MissionInvolvement" feature-name="mission" package-nsUri="http://www.polarsys.org/capella/core/ctx/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.MissionInvolvement__mission" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.ctx.surrogate.MissionInvolvement__mission"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.ctx.surrogate.MissionInvolvement__systemComponent" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="MissionInvolvement" feature-name="systemComponent" package-nsUri="http://www.polarsys.org/capella/core/ctx/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.MissionInvolvement__systemComponent" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.ctx.surrogate.MissionInvolvement__systemComponent"/>
+  </extension>
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.ctx.surrogate.Mission__exploitedCapabilities" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="Mission" feature-name="exploitedCapabilities" package-nsUri="http://www.polarsys.org/capella/core/ctx/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.Mission__exploitedCapabilities" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.ctx.surrogate.Mission__exploitedCapabilities"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.ctx.surrogate.Mission__involvedSystemComponents" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="Mission" feature-name="involvedSystemComponents" package-nsUri="http://www.polarsys.org/capella/core/ctx/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.Mission__involvedSystemComponents" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.ctx.surrogate.Mission__involvedSystemComponents"/>
   </extension>
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemAnalysis__allocatedOperationalAnalyses" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="SystemAnalysis" feature-name="allocatedOperationalAnalyses" package-nsUri="http://www.polarsys.org/capella/core/ctx/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemAnalysis__allocatedOperationalAnalyses" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemAnalysis__allocatedOperationalAnalyses"/>
@@ -338,6 +383,27 @@
   </extension>
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemAnalysis__containedSystemFunctionPkg" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="SystemAnalysis" feature-name="containedSystemFunctionPkg" package-nsUri="http://www.polarsys.org/capella/core/ctx/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemAnalysis__containedSystemFunctionPkg" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemAnalysis__containedSystemFunctionPkg"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__capabilityInvolvements" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="SystemComponent" feature-name="capabilityInvolvements" package-nsUri="http://www.polarsys.org/capella/core/ctx/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__capabilityInvolvements" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__capabilityInvolvements"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__involvingCapabilities" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="SystemComponent" feature-name="involvingCapabilities" package-nsUri="http://www.polarsys.org/capella/core/ctx/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__involvingCapabilities" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__involvingCapabilities"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__involvingMissions" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="SystemComponent" feature-name="involvingMissions" package-nsUri="http://www.polarsys.org/capella/core/ctx/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__involvingMissions" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__involvingMissions"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__missionInvolvements" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="SystemComponent" feature-name="missionInvolvements" package-nsUri="http://www.polarsys.org/capella/core/ctx/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__missionInvolvements" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__missionInvolvements"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__realizedEntities" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="SystemComponent" feature-name="realizedEntities" package-nsUri="http://www.polarsys.org/capella/core/ctx/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__realizedEntities" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__realizedEntities"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__realizingLogicalComponents" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="SystemComponent" feature-name="realizingLogicalComponents" package-nsUri="http://www.polarsys.org/capella/core/ctx/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__realizingLogicalComponents" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__realizingLogicalComponents"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction__allocatingSystemComponents" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="SystemFunction" feature-name="allocatingSystemComponents" package-nsUri="http://www.polarsys.org/capella/core/ctx/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction__allocatingSystemComponents" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction__allocatingSystemComponents"/>
   </extension>
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction__childrenSystemFunctions" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="SystemFunction" feature-name="childrenSystemFunctions" package-nsUri="http://www.polarsys.org/capella/core/ctx/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction__childrenSystemFunctions" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction__childrenSystemFunctions"/>
@@ -362,6 +428,12 @@
   </extension>
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.epbs.surrogate.EPBSArchitecture__containedCapabilityRealizationPkg" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="EPBSArchitecture" feature-name="containedCapabilityRealizationPkg" package-nsUri="http://www.polarsys.org/capella/core/epbs/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.epbs.surrogate.EPBSArchitecture__containedCapabilityRealizationPkg" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.epbs.surrogate.EPBSArchitecture__containedCapabilityRealizationPkg"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.epbs.surrogate.PhysicalArtifactRealization__realizedPhysicalArtifact" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="PhysicalArtifactRealization" feature-name="realizedPhysicalArtifact" package-nsUri="http://www.polarsys.org/capella/core/epbs/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.epbs.surrogate.PhysicalArtifactRealization__realizedPhysicalArtifact" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.epbs.surrogate.PhysicalArtifactRealization__realizedPhysicalArtifact"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.epbs.surrogate.PhysicalArtifactRealization__realizingConfigurationItem" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="PhysicalArtifactRealization" feature-name="realizingConfigurationItem" package-nsUri="http://www.polarsys.org/capella/core/epbs/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.epbs.surrogate.PhysicalArtifactRealization__realizingConfigurationItem" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.epbs.surrogate.PhysicalArtifactRealization__realizingConfigurationItem"/>
   </extension>
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__allocationBlocks" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="AbstractFunction" feature-name="allocationBlocks" package-nsUri="http://www.polarsys.org/capella/core/fa/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__allocationBlocks" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__allocationBlocks"/>
@@ -903,6 +975,12 @@
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.interaction.surrogate.SequenceMessage__sendingPart" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="SequenceMessage" feature-name="sendingPart" package-nsUri="http://www.polarsys.org/capella/core/interaction/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.interaction.surrogate.SequenceMessage__sendingPart" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.interaction.surrogate.SequenceMessage__sendingPart"/>
   </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.la.surrogate.CapabilityInvolvement__capability" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="CapabilityInvolvement" feature-name="capability" package-nsUri="http://www.polarsys.org/capella/core/ctx/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.la.surrogate.CapabilityInvolvement__capability" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.la.surrogate.CapabilityInvolvement__capability"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.la.surrogate.CapabilityInvolvement__systemComponent" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="CapabilityInvolvement" feature-name="systemComponent" package-nsUri="http://www.polarsys.org/capella/core/ctx/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.la.surrogate.CapabilityInvolvement__systemComponent" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.la.surrogate.CapabilityInvolvement__systemComponent"/>
+  </extension>
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.la.surrogate.CapabilityRealization__realizedCapabilities" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="CapabilityRealization" feature-name="realizedCapabilities" package-nsUri="http://www.polarsys.org/capella/core/la/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.la.surrogate.CapabilityRealization__realizedCapabilities" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.la.surrogate.CapabilityRealization__realizedCapabilities"/>
   </extension>
@@ -930,11 +1008,17 @@
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.la.surrogate.LogicalComponent__allocatedLogicalFunctions" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="LogicalComponent" feature-name="allocatedLogicalFunctions" package-nsUri="http://www.polarsys.org/capella/core/la/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.la.surrogate.LogicalComponent__allocatedLogicalFunctions" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.la.surrogate.LogicalComponent__allocatedLogicalFunctions"/>
   </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.la.surrogate.LogicalComponent__realizedSystemComponents" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="LogicalComponent" feature-name="realizedSystemComponents" package-nsUri="http://www.polarsys.org/capella/core/la/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.la.surrogate.LogicalComponent__realizedSystemComponents" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.la.surrogate.LogicalComponent__realizedSystemComponents"/>
+  </extension>
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.la.surrogate.LogicalComponent__realizingPhysicalComponents" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="LogicalComponent" feature-name="realizingPhysicalComponents" package-nsUri="http://www.polarsys.org/capella/core/la/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.la.surrogate.LogicalComponent__realizingPhysicalComponents" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.la.surrogate.LogicalComponent__realizingPhysicalComponents"/>
   </extension>
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.la.surrogate.LogicalComponent__subLogicalComponents" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="LogicalComponent" feature-name="subLogicalComponents" package-nsUri="http://www.polarsys.org/capella/core/la/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.la.surrogate.LogicalComponent__subLogicalComponents" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.la.surrogate.LogicalComponent__subLogicalComponents"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.la.surrogate.LogicalFunction__allocatingSystemComponents" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="LogicalFunction" feature-name="allocatingLogicalComponents" package-nsUri="http://www.polarsys.org/capella/core/la/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.la.surrogate.LogicalFunction__allocatingSystemComponents" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.la.surrogate.LogicalFunction__allocatingSystemComponents"/>
   </extension>
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.la.surrogate.LogicalFunction__childrenLogicalFunctions" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="LogicalFunction" feature-name="childrenLogicalFunctions" package-nsUri="http://www.polarsys.org/capella/core/la/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.la.surrogate.LogicalFunction__childrenLogicalFunctions" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.la.surrogate.LogicalFunction__childrenLogicalFunctions"/>
@@ -953,6 +1037,9 @@
   </extension>
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.oa.surrogate.ActivityAllocation__role" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="ActivityAllocation" feature-name="role" package-nsUri="http://www.polarsys.org/capella/core/oa/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.oa.surrogate.ActivityAllocation__role" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.oa.surrogate.ActivityAllocation__role"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.oa.surrogate.CapabilityRealization__involvedComponents" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="CapabilityRealization" feature-name="involvedComponents" package-nsUri="http://www.polarsys.org/capella/core/la/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.oa.surrogate.CapabilityRealization__involvedComponents" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.oa.surrogate.CapabilityRealization__involvedComponents"/>
   </extension>
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.oa.surrogate.CommunicationMean__sourceEntity" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="CommunicationMean" feature-name="sourceEntity" package-nsUri="http://www.polarsys.org/capella/core/oa/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.oa.surrogate.CommunicationMean__sourceEntity" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.oa.surrogate.CommunicationMean__sourceEntity"/>
@@ -974,6 +1061,9 @@
   </extension>
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__involvingOperationalCapabilities" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="Entity" feature-name="involvingOperationalCapabilities" package-nsUri="http://www.polarsys.org/capella/core/oa/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__involvingOperationalCapabilities" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__involvingOperationalCapabilities"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__realizingSystemComponents" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="Entity" feature-name="realizingSystemComponents" package-nsUri="http://www.polarsys.org/capella/core/oa/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__realizingSystemComponents" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__realizingSystemComponents"/>
   </extension>
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__roleAllocations" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="Entity" feature-name="roleAllocations" package-nsUri="http://www.polarsys.org/capella/core/oa/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__roleAllocations" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__roleAllocations"/>
@@ -1101,6 +1191,9 @@
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalComponent__subPhysicalComponents" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="PhysicalComponent" feature-name="subPhysicalComponents" package-nsUri="http://www.polarsys.org/capella/core/pa/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalComponent__subPhysicalComponents" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalComponent__subPhysicalComponents"/>
   </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalFunction__allocatingPhysicalComponents" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="PhysicalFunction" feature-name="allocatingPhysicalComponents" package-nsUri="http://www.polarsys.org/capella/core/pa/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalFunction__allocatingPhysicalComponents" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalFunction__allocatingPhysicalComponents"/>
+  </extension>
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalFunction__allocatorPhysicalActors" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="PhysicalFunction" feature-name="allocatorPhysicalActors" package-nsUri="http://www.polarsys.org/capella/core/pa/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalFunction__allocatorPhysicalActors" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalFunction__allocatorPhysicalActors"/>
   </extension>
@@ -1141,6 +1234,12 @@
     <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.polarsys.capella.viatra.core.data.capellacommon.surrogate.AbstractStateRealization" id="org.polarsys.capella.viatra.core.data.capellacommon.surrogate.AbstractStateRealization">
       <query-specification fqn="org.polarsys.capella.viatra.core.data.capellacommon.surrogate.AbstractStateRealization__realizedAbstractState"/>
       <query-specification fqn="org.polarsys.capella.viatra.core.data.capellacommon.surrogate.AbstractStateRealization__realizingAbstractState"/>
+    </group>
+  </extension>
+  <extension id="org.polarsys.capella.viatra.core.data.capellacommon.surrogate.CapabilityRealizationInvolvedElement" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.polarsys.capella.viatra.core.data.capellacommon.surrogate.CapabilityRealizationInvolvedElement" id="org.polarsys.capella.viatra.core.data.capellacommon.surrogate.CapabilityRealizationInvolvedElement">
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.capellacommon.surrogate.CapabilityRealizationInvolvedElement__involvingCapabilityRealizations"/>
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.capellacommon.surrogate.CapabilityRealizationInvolvedElement__capabilityRealizationInvolvements"/>
     </group>
   </extension>
   <extension id="org.polarsys.capella.viatra.core.data.capellacommon.surrogate.CapabilityRealizationInvolvement" point="org.eclipse.viatra.query.runtime.queryspecification">
@@ -1274,6 +1373,11 @@
       <query-specification fqn="org.polarsys.capella.viatra.core.data.cs.surrogate.BlockArchitecture__provisioningArchitectureAllocations"/>
       <query-specification fqn="org.polarsys.capella.viatra.core.data.cs.surrogate.BlockArchitecture__allocatedArchitectures"/>
       <query-specification fqn="org.polarsys.capella.viatra.core.data.cs.surrogate.BlockArchitecture__allocatingArchitectures"/>
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.cs.surrogate.BlockArchitecture__system"/>
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.cs.surrogate.SystemAnalysis__system"/>
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.cs.surrogate.LogicalArchitecture__system"/>
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.cs.surrogate.PhysicalArchitecture__system"/>
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.cs.surrogate.EPBSArchitecture__system"/>
     </group>
   </extension>
   <extension id="org.polarsys.capella.viatra.core.data.cs.surrogate.Component" point="org.eclipse.viatra.query.runtime.queryspecification">
@@ -1287,6 +1391,16 @@
       <query-specification fqn="org.polarsys.capella.viatra.core.data.cs.surrogate.Component__containedComponentPorts"/>
       <query-specification fqn="org.polarsys.capella.viatra.core.data.cs.surrogate.Component__containedParts"/>
       <query-specification fqn="org.polarsys.capella.viatra.core.data.cs.surrogate.Component__containedPhysicalPorts"/>
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.cs.surrogate.CapabilityRealization__involvedComponents"/>
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.cs.surrogate.Component__representingParts"/>
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.cs.surrogate.Component__realizingComponents"/>
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.cs.surrogate.Component__realizedComponents"/>
+    </group>
+  </extension>
+  <extension id="org.polarsys.capella.viatra.core.data.cs.surrogate.ComponentRealization" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.polarsys.capella.viatra.core.data.cs.surrogate.ComponentRealization" id="org.polarsys.capella.viatra.core.data.cs.surrogate.ComponentRealization">
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.cs.surrogate.ComponentRealization__realizingComponent"/>
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.cs.surrogate.ComponentRealization__realizedComponent"/>
     </group>
   </extension>
   <extension id="org.polarsys.capella.viatra.core.data.cs.surrogate.DeployableElement" point="org.eclipse.viatra.query.runtime.queryspecification">
@@ -1393,6 +1507,7 @@
       <query-specification fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__purposeMissions"/>
       <query-specification fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__realizedOperationalCapabilities"/>
       <query-specification fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__realizingCapabilityRealizations"/>
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__involvedSystemComponents"/>
     </group>
   </extension>
   <extension id="org.polarsys.capella.viatra.core.data.ctx.surrogate.CapabilityExploitation" point="org.eclipse.viatra.query.runtime.queryspecification">
@@ -1400,9 +1515,22 @@
       <query-specification fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.CapabilityExploitation__mission"/>
     </group>
   </extension>
+  <extension id="org.polarsys.capella.viatra.core.data.ctx.surrogate.CapabilityInvolvement" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.polarsys.capella.viatra.core.data.ctx.surrogate.CapabilityInvolvement" id="org.polarsys.capella.viatra.core.data.ctx.surrogate.CapabilityInvolvement">
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.CapabilityInvolvement__systemComponent"/>
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.CapabilityInvolvement__capability"/>
+    </group>
+  </extension>
   <extension id="org.polarsys.capella.viatra.core.data.ctx.surrogate.Mission" point="org.eclipse.viatra.query.runtime.queryspecification">
     <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.polarsys.capella.viatra.core.data.ctx.surrogate.Mission" id="org.polarsys.capella.viatra.core.data.ctx.surrogate.Mission">
       <query-specification fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.Mission__exploitedCapabilities"/>
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.Mission__involvedSystemComponents"/>
+    </group>
+  </extension>
+  <extension id="org.polarsys.capella.viatra.core.data.ctx.surrogate.MissionInvolvement" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.polarsys.capella.viatra.core.data.ctx.surrogate.MissionInvolvement" id="org.polarsys.capella.viatra.core.data.ctx.surrogate.MissionInvolvement">
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.MissionInvolvement__mission"/>
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.MissionInvolvement__systemComponent"/>
     </group>
   </extension>
   <extension id="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemAnalysis" point="org.eclipse.viatra.query.runtime.queryspecification">
@@ -1414,12 +1542,23 @@
       <query-specification fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemAnalysis__allocatingLogicalArchitectures"/>
     </group>
   </extension>
+  <extension id="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent" id="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent">
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__involvingMissions"/>
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__involvingCapabilities"/>
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__missionInvolvements"/>
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__realizingLogicalComponents"/>
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__realizedEntities"/>
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__capabilityInvolvements"/>
+    </group>
+  </extension>
   <extension id="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction" point="org.eclipse.viatra.query.runtime.queryspecification">
     <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction" id="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction">
       <query-specification fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction__realizedOperationalActivities"/>
       <query-specification fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction__realizingLogicalFunctions"/>
       <query-specification fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction__containedSystemFunctions"/>
       <query-specification fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction__childrenSystemFunctions"/>
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction__allocatingSystemComponents"/>
     </group>
   </extension>
   <extension id="org.polarsys.capella.viatra.core.data.epbs.surrogate.ConfigurationItem" point="org.eclipse.viatra.query.runtime.queryspecification">
@@ -1432,6 +1571,12 @@
       <query-specification fqn="org.polarsys.capella.viatra.core.data.epbs.surrogate.EPBSArchitecture__containedCapabilityRealizationPkg"/>
       <query-specification fqn="org.polarsys.capella.viatra.core.data.epbs.surrogate.EPBSArchitecture__allocatedPhysicalArchitectureRealizations"/>
       <query-specification fqn="org.polarsys.capella.viatra.core.data.epbs.surrogate.EPBSArchitecture__allocatedPhysicalArchitectures"/>
+    </group>
+  </extension>
+  <extension id="org.polarsys.capella.viatra.core.data.epbs.surrogate.PhysicalArtifactRealization" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.polarsys.capella.viatra.core.data.epbs.surrogate.PhysicalArtifactRealization" id="org.polarsys.capella.viatra.core.data.epbs.surrogate.PhysicalArtifactRealization">
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.epbs.surrogate.PhysicalArtifactRealization__realizedPhysicalArtifact"/>
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.epbs.surrogate.PhysicalArtifactRealization__realizingConfigurationItem"/>
     </group>
   </extension>
   <extension id="org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction" point="org.eclipse.viatra.query.runtime.queryspecification">
@@ -1899,6 +2044,8 @@
       <query-specification fqn="org.polarsys.capella.viatra.core.data.la.surrogate.CapabilityRealization__realizedCapabilities"/>
       <query-specification fqn="org.polarsys.capella.viatra.core.data.la.surrogate.CapabilityRealization__realizedCapabilityRealizations"/>
       <query-specification fqn="org.polarsys.capella.viatra.core.data.la.surrogate.CapabilityRealization__realizingCapabilityRealizations"/>
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.la.surrogate.CapabilityInvolvement__systemComponent"/>
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.la.surrogate.CapabilityInvolvement__capability"/>
     </group>
   </extension>
   <extension id="org.polarsys.capella.viatra.core.data.la.surrogate.LogicalArchitecture" point="org.eclipse.viatra.query.runtime.queryspecification">
@@ -1915,6 +2062,7 @@
       <query-specification fqn="org.polarsys.capella.viatra.core.data.la.surrogate.LogicalComponent__subLogicalComponents"/>
       <query-specification fqn="org.polarsys.capella.viatra.core.data.la.surrogate.LogicalComponent__allocatedLogicalFunctions"/>
       <query-specification fqn="org.polarsys.capella.viatra.core.data.la.surrogate.LogicalComponent__realizingPhysicalComponents"/>
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.la.surrogate.LogicalComponent__realizedSystemComponents"/>
     </group>
   </extension>
   <extension id="org.polarsys.capella.viatra.core.data.la.surrogate.LogicalFunction" point="org.eclipse.viatra.query.runtime.queryspecification">
@@ -1923,6 +2071,7 @@
       <query-specification fqn="org.polarsys.capella.viatra.core.data.la.surrogate.LogicalFunction__realizingPhysicalFunctions"/>
       <query-specification fqn="org.polarsys.capella.viatra.core.data.la.surrogate.LogicalFunction__containedLogicalFunctions"/>
       <query-specification fqn="org.polarsys.capella.viatra.core.data.la.surrogate.LogicalFunction__childrenLogicalFunctions"/>
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.la.surrogate.LogicalFunction__allocatingSystemComponents"/>
     </group>
   </extension>
   <extension id="org.polarsys.capella.viatra.core.data.oa.surrogate.ActivityAllocation" point="org.eclipse.viatra.query.runtime.queryspecification">
@@ -1944,6 +2093,7 @@
       <query-specification fqn="org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__allocatedOperationalActivities"/>
       <query-specification fqn="org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__allocatedRoles"/>
       <query-specification fqn="org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__involvingOperationalCapabilities"/>
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__realizingSystemComponents"/>
     </group>
   </extension>
   <extension id="org.polarsys.capella.viatra.core.data.oa.surrogate.EntityOperationalCapabilityInvolvement" point="org.eclipse.viatra.query.runtime.queryspecification">
@@ -2034,6 +2184,7 @@
       <query-specification fqn="org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalFunction__realizedLogicalFunctions"/>
       <query-specification fqn="org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalFunction__containedPhysicalFunctions"/>
       <query-specification fqn="org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalFunction__childrenPhysicalFunctions"/>
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalFunction__allocatingPhysicalComponents"/>
     </group>
   </extension>
   <extension id="org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalNode" point="org.eclipse.viatra.query.runtime.queryspecification">

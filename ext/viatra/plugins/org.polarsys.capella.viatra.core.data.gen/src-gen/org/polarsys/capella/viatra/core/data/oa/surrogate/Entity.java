@@ -17,6 +17,7 @@ import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
 import org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__allocatedOperationalActivities;
 import org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__allocatedRoles;
 import org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__involvingOperationalCapabilities;
+import org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__realizingSystemComponents;
 import org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__roleAllocations;
 import org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__subEntities;
 
@@ -33,6 +34,7 @@ import org.polarsys.capella.viatra.core.data.oa.surrogate.Entity__subEntities;
  * <li>Entity__allocatedOperationalActivities</li>
  * <li>Entity__allocatedRoles</li>
  * <li>Entity__involvingOperationalCapabilities</li>
+ * <li>Entity__realizingSystemComponents</li>
  * </ul>
  * 
  * @see IQueryGroup
@@ -62,6 +64,7 @@ public final class Entity extends BaseGeneratedPatternGroup {
     querySpecifications.add(Entity__allocatedOperationalActivities.instance());
     querySpecifications.add(Entity__allocatedRoles.instance());
     querySpecifications.add(Entity__involvingOperationalCapabilities.instance());
+    querySpecifications.add(Entity__realizingSystemComponents.instance());
   }
   
   public Entity__roleAllocations getEntity__roleAllocations() {
@@ -102,5 +105,13 @@ public final class Entity extends BaseGeneratedPatternGroup {
   
   public Entity__involvingOperationalCapabilities.Matcher getEntity__involvingOperationalCapabilities(final ViatraQueryEngine engine) {
     return Entity__involvingOperationalCapabilities.Matcher.on(engine);
+  }
+  
+  public Entity__realizingSystemComponents getEntity__realizingSystemComponents() {
+    return Entity__realizingSystemComponents.instance();
+  }
+  
+  public Entity__realizingSystemComponents.Matcher getEntity__realizingSystemComponents(final ViatraQueryEngine engine) {
+    return Entity__realizingSystemComponents.Matcher.on(engine);
   }
 }

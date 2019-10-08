@@ -42,4 +42,14 @@ pattern CapabilityRealization__realizingCapabilityRealizations(self : Capability
 AbstractCapabilityRealization.realizingCapability(acr, target);
 }
 
+@Surrogate(feature="systemComponent")
+pattern CapabilityInvolvement__systemComponent(self :CapabilityInvolvement, target : SystemComponent) {
+	CapabilityInvolvement.involved(self, target);
+}
+
+@Surrogate(feature="capability")
+pattern CapabilityInvolvement__capability(self :CapabilityInvolvement, target : Capability) {
+	CapabilityInvolvement.involver(self, target);
+}
+
 
