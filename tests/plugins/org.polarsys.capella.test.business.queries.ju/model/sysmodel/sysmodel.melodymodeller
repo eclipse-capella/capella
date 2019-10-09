@@ -3980,7 +3980,7 @@
   </ownedExtensions>
   <ownedExtensions xsi:type="libraries:ModelInformation" id="4c8e4d9e-92bc-4dca-a6b4-6af23b11da71">
     <ownedReferences xsi:type="libraries:LibraryReference" id="360187a5-bc99-4497-9d11-c666c7f534cc"
-        library="libraries:ModelInformation platform:/resource/sysModelLib/sysModelLib.melodymodeller#3f2bb4a4-df07-42db-8b43-99a3c032582e"/>
+        library="libraries:ModelInformation ../sysModelLib/sysModelLib.melodymodeller#3f2bb4a4-df07-42db-8b43-99a3c032582e"/>
   </ownedExtensions>
   <ownedPropertyValues xsi:type="org.polarsys.capella.core.data.capellacore:BooleanPropertyValue"
       id="0f85368b-c99a-4a3c-b47f-9de703e99d6a" name="Project PV"/>
@@ -12092,7 +12092,7 @@ stop sequence</bodies>
               sourceElement="#e651b6a0-024f-4a1b-9d44-0ab60a934f4c"/>
         </ownedComponentExchanges>
         <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
-            id="d2f2b89e-e727-43e1-a83f-97af3850387c" name="OA1" actor="true">
+            id="d2f2b89e-e727-43e1-a83f-97af3850387c" name="OA1" actor="true" nature="NODE">
           <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
               id="906f6e5c-594f-4a68-8180-16108d6ddc1a" targetElement="#1f68f4d7-df7f-46fa-90d6-d6b6a2f3c510"
               sourceElement="#e5fa2df6-ef3a-4609-b9df-f27c4ba6c5e6">
@@ -12125,7 +12125,7 @@ stop sequence</bodies>
               sourceElement="#d2f2b89e-e727-43e1-a83f-97af3850387c"/>
         </ownedPhysicalComponents>
         <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
-            id="93e48ebb-c768-487d-ab87-dbae9a79308b" name="OE3" actor="true">
+            id="93e48ebb-c768-487d-ab87-dbae9a79308b" name="OE3" actor="true" nature="BEHAVIOR">
           <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
               id="2101ce4b-55e2-4d4b-87c4-e870fc53cda7" targetElement="#ebd8913c-80ec-4328-9aba-7af2ec8b3f63"
               sourceElement="#079a0465-17ed-4230-b4ca-5d6b97e92137">
@@ -12172,7 +12172,7 @@ stop sequence</bodies>
               sourceElement="#93e48ebb-c768-487d-ab87-dbae9a79308b"/>
         </ownedPhysicalComponents>
         <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
-            id="3d5a3608-0af2-4750-928a-6e13a676a07b" name="Actor3" actor="true">
+            id="3d5a3608-0af2-4750-928a-6e13a676a07b" name="Actor3" actor="true" nature="BEHAVIOR">
           <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
               id="98ef8948-181c-4fdb-b969-bb40b93029d5" targetElement="#652aa8a9-8c94-489e-af78-938372c7983b"
               sourceElement="#676c3aa7-9f78-4793-82bb-ae10bf34d3a2">
@@ -12212,7 +12212,7 @@ stop sequence</bodies>
               sourceElement="#3d5a3608-0af2-4750-928a-6e13a676a07b"/>
         </ownedPhysicalComponents>
         <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
-            id="ed542859-19dd-4d24-977c-6464e71b6d16" name="Actor4" actor="true">
+            id="ed542859-19dd-4d24-977c-6464e71b6d16" name="Actor4" actor="true" nature="NODE">
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
               id="325b2a96-7664-4316-94a1-ec071e918b29" name="PP 1"/>
           <ownedComponentRealizations xsi:type="org.polarsys.capella.core.data.cs:ComponentRealization"
@@ -12220,7 +12220,8 @@ stop sequence</bodies>
               sourceElement="#ed542859-19dd-4d24-977c-6464e71b6d16"/>
         </ownedPhysicalComponents>
         <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
-            id="a4917194-4c32-443f-bdaa-412950062088" name="User_bad_reuse" actor="true">
+            id="a4917194-4c32-443f-bdaa-412950062088" name="User_bad_reuse" actor="true"
+            nature="NODE">
           <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
               id="8b3aff03-fa5e-40a1-9634-72bf6069d628" targetElement="#6589a6eb-b788-41db-aeb6-950ef147a49e"
               sourceElement="#a4917194-4c32-443f-bdaa-412950062088"/>

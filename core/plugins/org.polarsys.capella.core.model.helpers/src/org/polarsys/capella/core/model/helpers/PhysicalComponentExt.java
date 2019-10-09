@@ -26,7 +26,6 @@ import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.Feature;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentRealization;
@@ -438,18 +437,30 @@ public class PhysicalComponentExt {
 
     return true;
   }
+  
+  public static boolean canDeploy(PhysicalComponent deployComponent, PhysicalComponent deployTargetComponent) {
+    if (deployComponent == deployTargetComponent) {
+      return false;
+    }
+    
+    PhysicalComponentNature deployTargetNature = deployTargetComponent.getNature();
+    PhysicalComponentNature deployNature = deployComponent.getNature();
+    
+    // hardware to hardware
+    boolean nodeToNode = PhysicalComponentNature.NODE.equals(deployNature) && PhysicalComponentNature.NODE.equals(deployTargetNature);
+    // software to hardware
+    boolean behaviorToNode = PhysicalComponentNature.BEHAVIOR.equals(deployNature) && PhysicalComponentNature.NODE.equals(deployTargetNature);
+    // software to software
+    boolean behaviorToBehavior = PhysicalComponentNature.BEHAVIOR.equals(deployNature) && PhysicalComponentNature.BEHAVIOR.equals(deployTargetNature);
+    
+    return nodeToNode || behaviorToNode || behaviorToBehavior ;
+  }
 
   public static boolean isNode(PhysicalComponent physicalComponent) {
-    if (PhysicalComponentNature.NODE == physicalComponent.getNature()) {
-      return true;
-    }
-    return false;
+    return PhysicalComponentNature.NODE == physicalComponent.getNature();
   }
 
   public static boolean isBehaviour(PhysicalComponent physicalComponent) {
-    if (PhysicalComponentNature.BEHAVIOR == physicalComponent.getNature()) {
-      return true;
-    }
-    return false;
+    return PhysicalComponentNature.BEHAVIOR == physicalComponent.getNature();
   }
 }

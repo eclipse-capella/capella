@@ -14,77 +14,49 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.emf.common.util.EList;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
-import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
-import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.PartExt;
+import org.polarsys.capella.core.model.helpers.PhysicalComponentExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 
 public class GetAvailable_Part_DeployedElements extends AbstractQuery {
 
-  @SuppressWarnings({ "rawtypes", "unchecked" })
   @Override
   public List<Object> execute(Object input, IQueryContext context) {
-    Part currentPart = (Part) input;
-    List<CapellaElement> availableElements = new ArrayList<>(1);
-    Collection<Part> parts = ComponentExt.getPartAncestors(currentPart);
-    AbstractType abstractType = currentPart.getAbstractType();
-    boolean isMultipleDeploymentAllowed = CapellaModelPreferencesPlugin.getDefault().isMultipleDeploymentAllowed();
-    if (abstractType instanceof PhysicalComponent) {
-      List<PhysicalComponent> behaviourComps = SystemEngineeringExt
-          .getAllPhysicalComponents((CapellaElement) abstractType);
-      if (!ComponentExt.isActor(abstractType)) {
-        for (PhysicalComponent physicalComponent : behaviourComps) {
-          PhysicalComponent currentPC = (PhysicalComponent) abstractType;
-          if (!(currentPC.getNature().equals(PhysicalComponentNature.BEHAVIOR)
-              && physicalComponent.getNature().equals(PhysicalComponentNature.NODE))
-              && !(currentPC.getNature().equals(PhysicalComponentNature.UNSET))
-              && !(physicalComponent.getNature().equals(PhysicalComponentNature.UNSET))
-              && !physicalComponent.equals(currentPC)) {
-            getValidDeployablePart(availableElements, parts, physicalComponent, currentPart,
-                isMultipleDeploymentAllowed);
-          }
-        }
-      } else {
-        for (PhysicalComponent physicalComponent : behaviourComps) {
-          if (!(physicalComponent.getNature().equals(PhysicalComponentNature.NODE))
-              && !(physicalComponent.getNature().equals(PhysicalComponentNature.UNSET))) {
-            getValidDeployablePart(availableElements, parts, physicalComponent, currentPart,
-                isMultipleDeploymentAllowed);
-          }
-        }
-      }
-    }
-    return (List) availableElements;
+    List<Object> availableParts = new ArrayList<>();
 
-  }
-
-  public static void getValidDeployablePart(List<CapellaElement> availableElements, Collection<Part> parts,
-      Component physicalComponent, Part currentPart, boolean isMultipleDeploymentAllowed) {
-    for (Part part : physicalComponent.getRepresentingParts()) {
-      if (!parts.contains(part)) {
-        if (isMultipleDeploymentAllowed) {
-          availableElements.add(part);
-        } else {
-          boolean alreadyDeployedElsewhere = false;
-          for (AbstractDeploymentLink link : part.getDeployingLinks()) {
-            if (link.getLocation() != currentPart) {
-              alreadyDeployedElsewhere = true;
-              break;
+    Part deployTargetPart = (Part) input;
+    AbstractType typeOfDeployTargetPart = deployTargetPart.getAbstractType();
+    
+    if (typeOfDeployTargetPart instanceof PhysicalComponent) {
+      PhysicalComponent deployTargetComponent = (PhysicalComponent) typeOfDeployTargetPart;
+      List<PhysicalComponent> allComponents = SystemEngineeringExt.getAllPhysicalComponents(deployTargetComponent);
+      
+      EList<Part> deployedPartsOnTarget = deployTargetPart.getDeployedParts();
+      Collection<Part> ancestorsOfTarget = ComponentExt.getPartAncestors(deployTargetPart);
+      
+      for (PhysicalComponent deployComponent : allComponents) {
+        if (PhysicalComponentExt.canDeploy(deployComponent, deployTargetComponent)) {
+          for (Part deployPart : deployComponent.getRepresentingParts()) {
+            boolean deployable = PartExt.isDeployable(deployPart);
+            boolean deployedInTarget = deployedPartsOnTarget.contains(deployPart);
+            boolean isNotAncestorOfTarget = !ancestorsOfTarget.contains(deployPart);
+            
+            if ((deployable || deployedInTarget) && isNotAncestorOfTarget) {
+              availableParts.add(deployPart);
             }
           }
-          if (!alreadyDeployedElsewhere) {
-            availableElements.add(part);
-          }
         }
       }
+
     }
+    
+    return availableParts;
   }
 }
