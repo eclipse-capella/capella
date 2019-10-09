@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _nT3sgLijEeaZHIVFFjGffQ
-Runtime-Version: 2.3.0.201712190725
-Save-Time: 1/23/18 2:28 PM
+Runtime-Version: 2.5.0.M2
+Save-Time: 10/9/19 10:30 AM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -77,6 +77,8 @@ selectSomeConstraints_step2
 
 // Import previous preferences
 importEPFFileFromDir [concat [get-workspace-location] "/../User1Prefs.epf"]
+
+get-window "Import Preferences" | get-window "Preference Import" | get-button Cancel | click
 
 delete-file [uri-from-path [concat [get-workspace-location] "/../User1Prefs.epf"]]
 

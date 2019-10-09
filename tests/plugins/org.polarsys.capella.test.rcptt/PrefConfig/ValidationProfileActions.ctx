@@ -5,8 +5,8 @@ Element-Name: ValidationProfileActions
 Element-Type: context
 Element-Version: 2.0
 Id: _ZR3fQKKHEeaAAPJPtfviTA
-Runtime-Version: 2.5.0.201909172034
-Save-Time: 9/30/19 3:39 PM
+Runtime-Version: 2.5.0.M2
+Save-Time: 10/8/19 5:44 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -210,7 +210,7 @@ proc "checkDefaultPreferences" [val projectName] {
 	    get-group "Reuse of components" | checkPropertyButtonSelected "Allow reuse of components" false
 	    with [get-group "Inheritance Management"] {
 	        checkPropertyButtonSelected "Multiple inheritance allowed" false
-	        checkPropertyButtonSelected "Component/Actor inheritance allowed in diagram" false
+	        checkPropertyButtonSelected "Component Non Actor inheritance allowed" false
 	    }
 	    get-group "Deployment Management" | checkPropertyButtonSelected "Multiple deployment allowed" false
 	    
@@ -278,7 +278,7 @@ proc "changePreferences" [val projectName] {
 	    get-group "Reuse of components" | get-button "Allow reuse of components" | check
 	    with [get-group "Inheritance Management"] {
 	        get-button "Multiple inheritance allowed" | check
-	        get-button "Component/Actor inheritance allowed in diagram" | check
+	        get-button "Component Non Actor inheritance allowed" | check
 	    }
 	    get-group "Deployment Management" | get-button "Multiple deployment allowed"  | check
 	    get-group "Data Management" | get-button "Delete related associations when a class becomes primitive" 
@@ -352,7 +352,7 @@ proc "checkChangedPreferences" [val projectName] {
 	        | verify-true
 	    with [get-group "Inheritance Management"] {
 	        get-button "Multiple inheritance allowed" | get-property selected | equals true | verify-true
-	        get-button "Component/Actor inheritance allowed in diagram" | get-property selected | equals true | verify-true
+	        get-button "Component Non Actor inheritance allowed" | get-property selected | equals true | verify-true
 	    }
 	    get-group "Deployment Management" | get-button "Multiple deployment allowed" | get-property selected | equals true 
 	        | verify-true
@@ -434,7 +434,7 @@ proc "checkUnchangedPreferencesProject1" [val projectName] {
 	        | verify-true
 	    with [get-group "Inheritance Management"] {
 	        get-button "Multiple inheritance allowed" | get-property selected | equals false | verify-true
-	        get-button "Component/Actor inheritance allowed in diagram" | get-property selected | equals false | verify-true
+	        get-button "Component Non Actor inheritance allowed" | get-property selected | equals false | verify-true
 	    }
 	    get-group "Deployment Management" | get-button "Multiple deployment allowed" | get-property selected | equals false 
 	        | verify-true
@@ -554,9 +554,9 @@ proc checkValidationProfile {
 	
 	with [get-view Information | get-tree] {
 	    get-column-header Message | click
-	    select "Capella \\(26 items\\)" | double-click
-	    get-item "Capella \\(26 items\\)" | get-property childCount | equals 1 | verify-true
-		get-item "Capella \\(26 items\\)" | get-property "getItems().TreeItem[0].getText()" | equals "Quality \\(26 items\\)" | verify-true
+	    select "Capella \\(16 items\\)" | double-click
+	    get-item "Capella \\(16 items\\)" | get-property childCount | equals 1 | verify-true
+		get-item "Capella \\(16 items\\)" | get-property "getItems().TreeItem[0].getText()" | equals "Quality \\(16 items\\)" | verify-true
 	}
 	
 	// Check config Validate Model
