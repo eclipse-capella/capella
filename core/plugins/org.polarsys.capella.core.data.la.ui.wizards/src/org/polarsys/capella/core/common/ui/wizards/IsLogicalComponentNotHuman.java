@@ -15,11 +15,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 
-public class ActorIsHumanTester extends PropertyTester {
+public class IsLogicalComponentNotHuman extends PropertyTester {
 
   @Override
   public boolean test(Object receiver, String property, Object[] args, Object expectedValue) {
     EObject business = CapellaAdapterHelper.resolveBusinessObject(receiver);
-    return (business instanceof LogicalComponent) && ((LogicalComponent) business).isHuman();
+    return (business instanceof LogicalComponent) && !((LogicalComponent) business).isHuman();
   }
 }

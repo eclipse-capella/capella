@@ -31,10 +31,10 @@
        <extension
          point="org.eclipse.core.expressions.propertyTesters">
 		 <propertyTester
-    		class="org.polarsys.capella.core.common.ui.wizards.ActorIsHumanTester"
-            id="org.polarsys.capella.core.common.ui.wizards.ActorIsHumanTester"
+    		class="org.polarsys.capella.core.common.ui.wizards.IsLogicalComponentNotHuman"
+            id="org.polarsys.capella.core.common.ui.wizards.IsLogicalComponentNotHuman"
             namespace="org.polarsys.capella.core.common.ui.wizards"
-            properties="actorIsHumanTester"
+            properties="isLogicalComponentNotHuman"
             type="java.lang.Object">
 		  </propertyTester>
 	   </extension>
@@ -47,7 +47,7 @@
                 <iterate ifEmpty="false">
 	        		<test
 	                	forcePluginActivation="true"
-	                		property="org.polarsys.capella.core.common.ui.wizards.actorIsHumanTester">
+	                		property="org.polarsys.capella.core.common.ui.wizards.isLogicalComponentNotHuman">
 	          		</test>
                </iterate>
             </with>
