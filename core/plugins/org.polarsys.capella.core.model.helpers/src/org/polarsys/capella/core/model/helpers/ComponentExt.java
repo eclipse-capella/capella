@@ -2856,8 +2856,18 @@ public class ComponentExt {
     return false;
   }
 
+  /**
+   * Returns whether component source can be moved into target component
+   * 
+   * @param source
+   * @param target
+   * @return
+   */
   public static boolean canMoveInto(Component source, Component target) {
     if (source.equals(target)) {
+      return false;
+    }
+    if (ComponentExt.getComponentAncestors(target).contains(source)) {
       return false;
     }
     if (source instanceof PhysicalComponent && target instanceof PhysicalComponent) {

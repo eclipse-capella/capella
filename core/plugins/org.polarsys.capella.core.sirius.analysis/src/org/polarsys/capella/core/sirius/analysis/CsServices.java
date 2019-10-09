@@ -4731,7 +4731,7 @@ public class CsServices {
    * Returns components which can be inserted into the given component in the LAB Diagram
    */
   public Collection<? extends Component> getABInsertComponent(CapellaElement capellaElement) {
-    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_CCII_SHOW_HIDE_COMPONENTS_FOR_LIB,
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_AB_INSERT_COMPONENT_FOR_LIB,
         capellaElement);
   }
 

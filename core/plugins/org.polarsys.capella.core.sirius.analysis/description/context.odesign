@@ -3753,10 +3753,9 @@
               <filters precondition="aql:not (self.isPreferenceEnabled('multipart.allowed'))" elementsToListen="aql:self.getPreferenceListener()">
                 <listeners domainClass="org.polarsys.capella.core.preferences.Listener" featureName="multipart.allowed"/>
               </filters>
-              <variable name="container">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
-              </variable>
+              <variable name="container"/>
               <viewVariable name="containerView">
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="aql:containerView.getABActorTarget().getComponentType()"/>
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:containerView.getDiagramContainer()"/>
               </viewVariable>
               <initialOperation>
@@ -3770,7 +3769,13 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:components != 'WIZARD_CANCELED'">
                     <subModelOperations xsi:type="tool_1:For" expression="aql:components">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.getABActorTarget().getComponentType()">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerType">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(ctx::SystemComponent)">
+                          <subModelOperations xsi:type="tool_1:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
+                            <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
+                            <subModelOperations xsi:type="tool_1:SetValue" featureName="abstractType" valueExpression="aql:i"/>
+                          </subModelOperations>
+                        </subModelOperations>
                         <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(ctx::SystemComponentPkg)">
                           <subModelOperations xsi:type="tool_1:CreateInstance" typeName="cs.Part" referenceName="ownedParts" variableName="part">
                             <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
