@@ -10,66 +10,55 @@
  *******************************************************************************/
 package org.polarsys.capella.common.ui.preferences;
 
-import org.eclipse.core.resources.ProjectScope;
+import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
-import org.polarsys.capella.core.preferences.Activator;
+import org.polarsys.capella.common.ui.MdeCommonUiActivator;
 
 /**
  */
-public class ExportCSVPreferences extends AbstractPreferencesInitializer implements IExportCSVPreferences {
-  /**
-   * @param pluginID
-   */
+public class ExportCSVPreferences extends AbstractPreferenceInitializer implements IExportCSVPreferences {
   public ExportCSVPreferences() {
-    super(CapellaModelPreferencesPlugin.PLUGIN_ID);
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public void initializeDefaultPreferences() {
-    putString(DELIMITER_NAME_CURRENT, DELIMITER_NAME_COMMA, ProjectScope.class);
-    putString(DELIMITER_VALUE_OTHER, DELIMITER_VALUE_OTHER_DEFAULT, ProjectScope.class);
-
-    IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
-    preferenceStore.setDefault(DELIMITER_NAME_CURRENT, IExportCSVPreferences.DELIMITER_NAME_COMMA);
-    preferenceStore.setDefault(DELIMITER_VALUE_OTHER, DELIMITER_VALUE_OTHER_DEFAULT);
+    IPreferenceStore preferenceStore = MdeCommonUiActivator.getDefault().getPreferenceStore();
+    preferenceStore.setDefault(DELIMITER_KEY, IExportCSVPreferences.DELIMITER_VALUE_DEFAULT);
+    preferenceStore.setDefault(OTHER_DELIMITER_KEY, OTHER_DELIMITER_VALUE_DEFAULT);
   }
 
   @Override
   public char getDelimiterCurrentValue() {
     String delimiterName = getDelimiterCurrentName();
     switch (delimiterName) {
-    case IExportCSVPreferences.DELIMITER_NAME_TAB:
+    case IExportCSVPreferences.DELIMITER_VALUE_TAB:
       return ICommonConstants.TAB_CHARACTER;
-    case IExportCSVPreferences.DELIMITER_NAME_SEMICOLON:
+    case IExportCSVPreferences.DELIMITER_VALUE_SEMICOLON:
       return ICommonConstants.SEMICOLON_CHARACTER;
-    case IExportCSVPreferences.DELIMITER_NAME_COMMA:
+    case IExportCSVPreferences.DELIMITER_VALUE_COMMA:
       return ICommonConstants.COMMA_CHARACTER;
-    case IExportCSVPreferences.DELIMITER_NAME_SPACE:
+    case IExportCSVPreferences.DELIMITER_VALUE_SPACE:
       return ICommonConstants.WHITE_SPACE_CHARACTER;
-    case IExportCSVPreferences.DELIMITER_NAME_OTHER:
-      String valueOther = Activator.getDefault().getPreferenceStore()
-          .getString(IExportCSVPreferences.DELIMITER_VALUE_OTHER);
-      if (valueOther != null) {
+    default:
+      String valueOther = MdeCommonUiActivator.getDefault().getPreferenceStore()
+          .getString(IExportCSVPreferences.OTHER_DELIMITER_KEY);
+      if (valueOther != null && !valueOther.isEmpty()) {
         return valueOther.charAt(0);
       }
-      return DELIMITER_VALUE_DEFAULT;
     }
-    return DELIMITER_VALUE_DEFAULT;
+    return ICommonConstants.COMMA_CHARACTER;
   }
 
   @Override
   public String getDelimiterOtherCurrentValue() {
-    return getString(IExportCSVPreferences.DELIMITER_VALUE_OTHER, false);
+    IPreferenceStore preferenceStore = MdeCommonUiActivator.getDefault().getPreferenceStore();
+    return preferenceStore.getString(IExportCSVPreferences.OTHER_DELIMITER_KEY);
   }
 
   @Override
   public String getDelimiterCurrentName() {
-    return getString(IExportCSVPreferences.DELIMITER_NAME_CURRENT, false);
+    IPreferenceStore preferenceStore = MdeCommonUiActivator.getDefault().getPreferenceStore();
+    return preferenceStore.getString(IExportCSVPreferences.DELIMITER_KEY);
   }
 }
