@@ -161,7 +161,7 @@
     <setupTask
         xsi:type="setup:EclipseIniTask"
         option="-Xmx"
-        value="1024m"
+        value="2048m"
         vm="true">
       <description>Set the heap space needed to work with the projects of ${scope.project.label}</description>
     </setupTask>
@@ -1006,7 +1006,7 @@
       <setupTask
           xsi:type="setup:EclipseIniTask"
           option="-Doomph.redirection.capella="
-          value="http://git.polarsys.org/c/capella/capella.git/plain/releng/plugins/org.polarsys.capella.settings/oomph/Capella.setup->${git.clone.capella.location|uri}/releng/plugins/org.polarsys.capella.settings/oomph/Capella.setup"
+          value="https://git.polarsys.org/c/capella/capella.git/plain/releng/plugins/org.polarsys.capella.settings/oomph/Capella.setup->${git.clone.capella.location|uri}/releng/plugins/org.polarsys.capella.settings/oomph/Capella.setup"
           vm="true">
         <description>Redirect to local setup file allows testing changes before pushing them back to git. Disabled atm because does not work with branches other than master.</description>
       </setupTask>
@@ -1376,6 +1376,8 @@
           url="https://dist.springsource.org/release/GRECLIPSE/e4.11/"/>
       <repository
           url="https://dist.springsource.org/snapshot/GRECLIPSE/e4.12/"/>
+      <repository
+          url="https://dist.springsource.org/snapshot/GRECLIPSE/e4.13/"/>
     </setupTask>
     <stream
         name="master">
