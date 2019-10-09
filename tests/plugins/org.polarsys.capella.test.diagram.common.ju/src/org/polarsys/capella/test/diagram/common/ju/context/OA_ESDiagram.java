@@ -22,21 +22,21 @@ public class OA_ESDiagram extends ESDiagram {
   public OA_ESDiagram(BlockArchitectureExt.Type type, SessionContext context, DDiagram diagram) {
     super(type, context, diagram);
   }
-  
+
   public String createRole() {
     return createNodeElement(getDiagramId(), IToolNameConstants.TOOL_OES_CREATE_ROLE);
   }
-  
-  public void createMessage(String source, String target) {
-    new MessageCreationTool(this, IToolNameConstants.TOOL_OES_CREATE_MESSAGE, source,
-        target, MessageKind.CREATE).run();
+
+  public void createMessage(String id, String source, String target) {
+    new MessageCreationTool(this, IToolNameConstants.TOOL_OES_CREATE_MESSAGE, id, source, target, MessageKind.CREATE)
+        .run();
   }
-  
-  public void deleteMessage(String source, String target) {
-    new MessageCreationTool(this, IToolNameConstants.TOOL_OES_DELETE_MESSAGE, source,
-        target, MessageKind.DELETE).run();
+
+  public void deleteMessage(String id, String source, String target) {
+    new MessageCreationTool(this, IToolNameConstants.TOOL_OES_DELETE_MESSAGE, id, source, target, MessageKind.DELETE)
+        .run();
   }
-  
+
   public static OA_ESDiagram openDiagram(SessionContext executionContext, String name,
       final BlockArchitectureExt.Type type) {
     return (OA_ESDiagram) new OpenDiagramStep(executionContext, name) {

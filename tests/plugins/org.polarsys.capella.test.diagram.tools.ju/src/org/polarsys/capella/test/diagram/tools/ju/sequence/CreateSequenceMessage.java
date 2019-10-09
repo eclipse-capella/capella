@@ -12,6 +12,7 @@ package org.polarsys.capella.test.diagram.tools.ju.sequence;
 
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.test.diagram.common.ju.context.ISDiagram;
+import org.polarsys.capella.test.diagram.common.ju.context.OA_ESDiagram;
 import org.polarsys.capella.test.diagram.common.ju.context.SequenceDiagram;
 import org.polarsys.capella.test.framework.helpers.SkeletonHelper;
 import org.polarsys.capella.test.framework.model.GenericModel;
@@ -49,6 +50,11 @@ public class CreateSequenceMessage extends SequenceTest {
           GenericModel.EXCHANGE_ITEM_1, context);
       SkeletonHelper.createExchangeItemAllocation(GenericModel.EXCHANGE_ITEM_ALLOCATION_2, GenericModel.INTERFACE_1,
           GenericModel.EXCHANGE_ITEM_1, context);
+
+    } else if (diagram instanceof OA_ESDiagram) {
+      BlockArchitectureExt.Type type = diagram.getDiagramBlockArchitecture();
+      SkeletonHelper.createCommunicationMean(getContextId(type), GenericModel.COMMUNICATION_MEAN_1, context);
+      SkeletonHelper.createCommunicationMean(getContextId(type), GenericModel.COMMUNICATION_MEAN_2, context);
     }
   }
 }

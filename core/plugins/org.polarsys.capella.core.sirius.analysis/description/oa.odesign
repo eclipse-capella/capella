@@ -3257,121 +3257,153 @@
             <startingEndPredecessor name="messageEndBefore"/>
             <finishingEndPredecessor name="messageEndAfter"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Create Sequence Message invoking an Operational Interaction or Communication Mean between the Source and Target Lifelines representing existing Operational Entities Parts. This tool opens a selection wizard to select an available existing Operational Interaction or Communication Mean." name="create.message" label="%oa.oes.create.message" precondition="aql:self.allowCreateMessageCreation2(preTargetView.target,preSourceView.target,messageEndBefore,messageEndAfter)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20OA']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/CreateSequenceMessage.gif">
-            <sourceVariable name="source">
-              <subVariables xsi:type="tool:AcceleoVariable" name="sourceIR" computationExpression="aql:if (self->filter(interaction::Execution)->size() > 0) then self.covered else self endif"/>
-            </sourceVariable>
-            <targetVariable name="target">
-              <subVariables xsi:type="tool:AcceleoVariable" name="targetIR" computationExpression="aql:if (self->filter(interaction::Execution)->size() > 0) then self.covered else self endif"/>
-            </targetVariable>
-            <sourceViewVariable name="sourceVIew"/>
-            <targetViewVariable name="targetView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:sourceIR.eContainerOrSelf(interaction::Scenario)">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.EventSentOperation" referenceName="ownedEvents" variableName="eventSentOperationCall"/>
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.EventReceiptOperation" referenceName="ownedEvents" variableName="eventReceiptOperationCall"/>
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.SequenceMessage" referenceName="ownedMessages" variableName="call">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="CREATE"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="create call"/>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore = null or messageEndBefore.semanticEnd.getPreviousMessageEnd() = null">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveMessageOnBegining()"/>
+          <ownedTools xsi:type="tool_1:ToolGroup" name="Sequence Messages">
+            <tools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Create Sequence Message invoking an Operational Interaction or Communication Mean between the Source and Target Lifelines representing existing Operational Entities Parts. This tool opens a selection wizard to select an available existing Operational Interaction or Communication Mean." name="create.message" label="%oa.oes.create.message" precondition="aql:self.allowCreateMessageCreation2(preTargetView.target,preSourceView.target,messageEndBefore,messageEndAfter)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20OA']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/CreateSequenceMessage.gif">
+              <sourceVariable name="source">
+                <subVariables xsi:type="tool:AcceleoVariable" name="sourceIR" computationExpression="aql:if (self->filter(interaction::Execution)->size() > 0) then self.covered else self endif"/>
+              </sourceVariable>
+              <targetVariable name="target">
+                <subVariables xsi:type="tool:AcceleoVariable" name="targetIR" computationExpression="aql:if (self->filter(interaction::Execution)->size() > 0) then self.covered else self endif"/>
+              </targetVariable>
+              <sourceViewVariable name="sourceVIew"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:sourceIR.eContainerOrSelf(interaction::Scenario)">
+                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="affectServiceDialogBox" id="org.polarsys.capella.core.sirius.analysis.affectToSequenceMessageDialogBox">
+                    <parameters name="message" value="aql:call"/>
+                    <parameters name="exchangeType" value="aql:if self.ownedEvents.operation->filter(fa::FunctionalExchange)->size() > 0 then 'FE' else 'CE' endif"/>
+                    <parameters name="sourceIR" value="aql:sourceIR"/>
+                    <parameters name="targetIR" value="aql:targetIR"/>
+                    <parameters name="messageKind" value="CREATE"/>
+                    <parameters name="resultVariable" value="result"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore != null and messageEndBefore.semanticEnd.getPreviousMessageEnd() != null">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveMessage(messageEndBefore.semanticEnd.getPreviousMessageEnd().message)"/>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:result != 'CANCELED_DIALOG'">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.EventSentOperation" referenceName="ownedEvents" variableName="eventSentOperationCall"/>
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.EventReceiptOperation" referenceName="ownedEvents" variableName="eventReceiptOperationCall"/>
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.SequenceMessage" referenceName="ownedMessages" variableName="call">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="CREATE"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="create call"/>
+                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore = null or messageEndBefore.semanticEnd.getPreviousMessageEnd() = null">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveMessageOnBegining()"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore != null and messageEndBefore.semanticEnd.getPreviousMessageEnd() != null">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveMessage(messageEndBefore.semanticEnd.getPreviousMessageEnd().message)"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingEnd">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Send Call ' + call.name"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
+                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore = null">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfInstanceRole()"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore != null">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(messageEndBefore.semanticEnd)"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnInstanceRole(messageEndBefore.semanticEnd)"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="event" valueExpression="aql:eventSentOperationCall"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:call">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="sendingEnd" valueExpression="aql:sendingEnd"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingEnd">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + call.name"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:targetIR"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(sendingEnd)"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnInstanceRole(sendingEnd)"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="event" valueExpression="aql:eventReceiptOperationCall"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:call">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="receivingEnd" valueExpression="aql:receivingEnd"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:call">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="sendingEnd" valueExpression="aql:sendingEnd"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="receivingEnd" valueExpression="aql:receivingEnd"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="affectService" id="org.polarsys.capella.core.sirius.analysis.affectToSequenceMessage">
+                      <parameters name="message" value="aql:call"/>
+                      <parameters name="affected" value="aql:self.void2Null(result)"/>
+                      <parameters name="portStrategy" value="aql:portStrategy"/>
+                    </subModelOperations>
                   </subModelOperations>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingEnd">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Send Call ' + call.name"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore = null">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfInstanceRole()"/>
+                </firstModelOperations>
+              </initialOperation>
+              <startingEndPredecessor name="messageEndBefore"/>
+              <finishingEndPredecessor name="messageEndAfter"/>
+            </tools>
+            <tools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Create Sequence Message invoking an Operational Interaction or Communication Mean between the Source and Target Lifelines representing existing Operational Entities Parts. This tool opens a selection wizard to select an available existing Operational Interaction or Communication Mean." name="delete.message" label="%oa.oes.delete.message" precondition="aql:self.allowDeleteMessageCreation2(preTargetView.target,preSourceView.target,messageEndBefore,messageEndAfter)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20OA']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/DeleteSequenceMessage.gif">
+              <sourceVariable name="source">
+                <subVariables xsi:type="tool:AcceleoVariable" name="sourceIR" computationExpression="aql:if (self->filter(interaction::Execution)->size() > 0) then self.covered else self endif"/>
+              </sourceVariable>
+              <targetVariable name="target">
+                <subVariables xsi:type="tool:AcceleoVariable" name="targetIR" computationExpression="aql:if (self->filter(interaction::Execution)->size() > 0) then self.covered else self endif"/>
+              </targetVariable>
+              <sourceViewVariable name="sourceVIew"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:sourceIR.eContainerOrSelf(interaction::Scenario)">
+                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="affectServiceDialogBox" id="org.polarsys.capella.core.sirius.analysis.affectToSequenceMessageDialogBox">
+                    <parameters name="message" value="aql:call"/>
+                    <parameters name="exchangeType" value="aql:if self.ownedEvents.operation->filter(fa::FunctionalExchange)->size() > 0 then 'FE' else 'CE' endif"/>
+                    <parameters name="sourceIR" value="aql:sourceIR"/>
+                    <parameters name="targetIR" value="aql:targetIR"/>
+                    <parameters name="messageKind" value="DELETE"/>
+                    <parameters name="resultVariable" value="result"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore != null">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(messageEndBefore.semanticEnd)"/>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnInstanceRole(messageEndBefore.semanticEnd)"/>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:result != 'CANCELED_DIALOG'">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.EventSentOperation" referenceName="ownedEvents" variableName="eventSentOperationCall"/>
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.EventReceiptOperation" referenceName="ownedEvents" variableName="eventReceiptOperationCall"/>
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.SequenceMessage" referenceName="ownedMessages" variableName="call">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="DELETE"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="delete call"/>
+                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore = null or messageEndBefore.semanticEnd.getPreviousMessageEnd() = null">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveMessageOnBegining()"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore != null and messageEndBefore.semanticEnd.getPreviousMessageEnd() != null">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveMessage(messageEndBefore.semanticEnd.getPreviousMessageEnd().message)"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingEnd">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Send Call ' + call.name"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
+                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore = null">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfInstanceRole()"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore != null">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(messageEndBefore.semanticEnd)"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnInstanceRole(messageEndBefore.semanticEnd)"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="event" valueExpression="aql:eventSentOperationCall"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:call">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="sendingEnd" valueExpression="aql:sendingEnd"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingEnd">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + call.name"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:targetIR"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(sendingEnd)"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnInstanceRole(sendingEnd)"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="event" valueExpression="aql:eventReceiptOperationCall"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:call">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="receivingEnd" valueExpression="aql:receivingEnd"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:call">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="sendingEnd" valueExpression="aql:sendingEnd"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="receivingEnd" valueExpression="aql:receivingEnd"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="affectService" id="org.polarsys.capella.core.sirius.analysis.affectToSequenceMessage">
+                      <parameters name="message" value="aql:call"/>
+                      <parameters name="affected" value="aql:self.void2Null(result)"/>
+                      <parameters name="portStrategy" value="aql:portStrategy"/>
+                    </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="event" valueExpression="aql:eventSentOperationCall"/>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:call">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="sendingEnd" valueExpression="aql:sendingEnd"/>
-                  </subModelOperations>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingEnd">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + call.name"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:targetIR"/>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(sendingEnd)"/>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnInstanceRole(sendingEnd)"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="event" valueExpression="aql:eventReceiptOperationCall"/>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:call">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="receivingEnd" valueExpression="aql:receivingEnd"/>
-                  </subModelOperations>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:call">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="sendingEnd" valueExpression="aql:sendingEnd"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="receivingEnd" valueExpression="aql:receivingEnd"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-            <startingEndPredecessor name="messageEndBefore"/>
-            <finishingEndPredecessor name="messageEndAfter"/>
-          </ownedTools>
-          <ownedTools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Create Sequence Message invoking an Operational Interaction or Communication Mean between the Source and Target Lifelines representing existing Operational Entities Parts. This tool opens a selection wizard to select an available existing Operational Interaction or Communication Mean." name="delete.message" label="%oa.oes.delete.message" precondition="aql:self.allowDeleteMessageCreation2(preTargetView.target,preSourceView.target,messageEndBefore,messageEndAfter)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20OA']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/DeleteSequenceMessage.gif">
-            <sourceVariable name="source">
-              <subVariables xsi:type="tool:AcceleoVariable" name="sourceIR" computationExpression="aql:if (self->filter(interaction::Execution)->size() > 0) then self.covered else self endif"/>
-            </sourceVariable>
-            <targetVariable name="target">
-              <subVariables xsi:type="tool:AcceleoVariable" name="targetIR" computationExpression="aql:if (self->filter(interaction::Execution)->size() > 0) then self.covered else self endif"/>
-            </targetVariable>
-            <sourceViewVariable name="sourceVIew"/>
-            <targetViewVariable name="targetView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:sourceIR.eContainerOrSelf(interaction::Scenario)">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.EventSentOperation" referenceName="ownedEvents" variableName="eventSentOperationCall"/>
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.EventReceiptOperation" referenceName="ownedEvents" variableName="eventReceiptOperationCall"/>
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.SequenceMessage" referenceName="ownedMessages" variableName="call">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="DELETE"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="delete call"/>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore = null or messageEndBefore.semanticEnd.getPreviousMessageEnd() = null">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveMessageOnBegining()"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore != null and messageEndBefore.semanticEnd.getPreviousMessageEnd() != null">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveMessage(messageEndBefore.semanticEnd.getPreviousMessageEnd().message)"/>
-                  </subModelOperations>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingEnd">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Send Call ' + call.name"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore = null">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfInstanceRole()"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore != null">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(messageEndBefore.semanticEnd)"/>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnInstanceRole(messageEndBefore.semanticEnd)"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="event" valueExpression="aql:eventSentOperationCall"/>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:call">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="sendingEnd" valueExpression="aql:sendingEnd"/>
-                  </subModelOperations>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingEnd">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + call.name"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:targetIR"/>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(sendingEnd)"/>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnInstanceRole(sendingEnd)"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="event" valueExpression="aql:eventReceiptOperationCall"/>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:call">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="receivingEnd" valueExpression="aql:receivingEnd"/>
-                  </subModelOperations>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:call">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="sendingEnd" valueExpression="aql:sendingEnd"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="receivingEnd" valueExpression="aql:receivingEnd"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-            <startingEndPredecessor name="messageEndBefore"/>
-            <finishingEndPredecessor name="messageEndAfter"/>
+                </firstModelOperations>
+              </initialOperation>
+              <startingEndPredecessor name="messageEndBefore"/>
+              <finishingEndPredecessor name="messageEndAfter"/>
+            </tools>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="Timers">
             <tools xsi:type="tool_2:MessageCreationTool" documentation="Create a new sequence message to arm a timer." name="arm.timer" label="%oa.oes.arm.timer" precondition="aql:preSource = preTarget" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@edgeMappings[name='Timer%20message%20mapping%20OA']">

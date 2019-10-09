@@ -33,9 +33,8 @@ public class DeleteMessage extends CreateSequenceMessage {
     setUpDiagram(diagram);
     if (diagram instanceof ISDiagram) {
       ((ISDiagram) diagram).deleteMessage(GenericModel.EXCHANGE_ITEM_ALLOCATION_1, actor1, actor2);
-    }
-    else if (diagram instanceof OA_ESDiagram){
-      ((OA_ESDiagram) diagram).deleteMessage(actor1, actor2);
+    } else if (diagram instanceof OA_ESDiagram) {
+      ((OA_ESDiagram) diagram).deleteMessage(GenericModel.COMMUNICATION_MEAN_1, actor1, actor2);
     }
   }
 }

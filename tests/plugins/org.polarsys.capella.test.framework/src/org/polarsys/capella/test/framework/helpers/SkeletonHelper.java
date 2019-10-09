@@ -151,7 +151,7 @@ public class SkeletonHelper {
     } else if (container instanceof PhysicalArchitecture) {
       createObject(elementId, containerId, PaPackage.Literals.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG,
           PaPackage.Literals.PHYSICAL_COMPONENT_PKG, NamingConstants.CreatePhysicalArchCmd_actors_pkg_name, context);
-    
+
     } else if (container instanceof LogicalComponent) {
       createObject(elementId, containerId, LaPackage.Literals.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_PKGS,
           LaPackage.Literals.LOGICAL_COMPONENT_PKG, NamingConstants.CreateLogicalArchCmd_actors_pkg_name, context);
@@ -159,7 +159,7 @@ public class SkeletonHelper {
     } else if (container instanceof PhysicalComponent) {
       createObject(elementId, containerId, PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_PHYSICAL_COMPONENT_PKGS,
           PaPackage.Literals.PHYSICAL_COMPONENT_PKG, NamingConstants.CreatePhysicalArchCmd_actors_pkg_name, context);
-    
+
     } else if (container instanceof LogicalComponentPkg) {
       createObject(elementId, containerId, LaPackage.Literals.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENT_PKGS,
           LaPackage.Literals.LOGICAL_COMPONENT_PKG, NamingConstants.CreateLogicalArchCmd_actors_pkg_name, context);
@@ -281,15 +281,15 @@ public class SkeletonHelper {
     EventSentOperation sendEvent = createObject("event", containerId,
         InteractionPackage.Literals.SCENARIO__OWNED_EVENTS, InteractionPackage.Literals.EVENT_SENT_OPERATION, "event",
         context);
-    
+
     MessageEnd receiveEnd = createObject("end", containerId,
         InteractionPackage.Literals.SCENARIO__OWNED_INTERACTION_FRAGMENTS, InteractionPackage.Literals.MESSAGE_END,
         "end", context);
 
     EventReceiptOperation receiveEvent = createObject("event", containerId,
-        InteractionPackage.Literals.SCENARIO__OWNED_EVENTS, InteractionPackage.Literals.EVENT_RECEIPT_OPERATION, "event",
-        context);
-    
+        InteractionPackage.Literals.SCENARIO__OWNED_EVENTS, InteractionPackage.Literals.EVENT_RECEIPT_OPERATION,
+        "event", context);
+
     setReference(message, sendEnd, InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_END, context);
     setReference(message, receiveEnd, InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_END, context);
     setReference(sendEnd, sendEvent, InteractionPackage.Literals.ABSTRACT_END__EVENT, context);
@@ -305,15 +305,20 @@ public class SkeletonHelper {
     SequenceMessage message = context.getSemanticElement(messageId);
     AbstractEventOperation operation = context.getSemanticElement(operationId);
 
-    setReference(((EventSentOperation) message.getSendingEnd().getEvent()), operation,
+    setReference((message.getSendingEnd().getEvent()), operation,
         InteractionPackage.Literals.EVENT_SENT_OPERATION__OPERATION, context);
-    setReference(((EventReceiptOperation) message.getReceivingEnd().getEvent()), operation,
+    setReference((message.getReceivingEnd().getEvent()), operation,
         InteractionPackage.Literals.EVENT_RECEIPT_OPERATION__OPERATION, context);
   }
 
   public static void createExchangeItem(String containerId, String elementId, SessionContext context) {
     createObject(elementId, containerId, CapellacorePackage.Literals.ABSTRACT_EXCHANGE_ITEM_PKG__OWNED_EXCHANGE_ITEMS,
         InformationPackage.Literals.EXCHANGE_ITEM, elementId, context);
+  }
+
+  public static void createCommunicationMean(String containerId, String elementId, SessionContext context) {
+    createObject(elementId, containerId, OaPackage.Literals.ENTITY_PKG__OWNED_COMMUNICATION_MEANS,
+        OaPackage.Literals.COMMUNICATION_MEAN, elementId, context);
   }
 
   public static void createExchangeItemElement(String containerId, String elementId, SessionContext context) {
@@ -372,8 +377,9 @@ public class SkeletonHelper {
     createObject(elementId, containerId, CapellacommonPackage.Literals.REGION__OWNED_STATES,
         CapellacommonPackage.Literals.STATE, elementId, context);
   }
-  
-  public static void createStateMachine(final String containerId, final String elementId, final SessionContext context) {
+
+  public static void createStateMachine(final String containerId, final String elementId,
+      final SessionContext context) {
     createObject(elementId, containerId, CapellacommonPackage.Literals.REGION__OWNED_STATES,
         CapellacommonPackage.Literals.STATE, elementId, context);
   }
@@ -385,10 +391,10 @@ public class SkeletonHelper {
 
   public static void createActor(final String containerId, final String elementId, String partId,
       final SessionContext context) {
-    createObject(elementId, containerId, CtxPackage.Literals.SYSTEM_COMPONENT_PKG__OWNED_SYSTEM_COMPONENTS, CtxPackage.Literals.SYSTEM_COMPONENT,
-        elementId, context);
+    createObject(elementId, containerId, CtxPackage.Literals.SYSTEM_COMPONENT_PKG__OWNED_SYSTEM_COMPONENTS,
+        CtxPackage.Literals.SYSTEM_COMPONENT, elementId, context);
 
-    Part part = (Part) ((SystemComponent) context.getSemanticElement(elementId)).getRepresentingParts().get(0);
+    Part part = ((SystemComponent) context.getSemanticElement(elementId)).getRepresentingParts().get(0);
     context.putSemanticElement(partId, part);
   }
 
@@ -428,14 +434,13 @@ public class SkeletonHelper {
   }
 
   public static void createInterface(String containerId, String elementId, SessionContext context) {
-    createObject(elementId, containerId,
-        CsPackage.Literals.INTERFACE_PKG__OWNED_INTERFACES,
+    createObject(elementId, containerId, CsPackage.Literals.INTERFACE_PKG__OWNED_INTERFACES,
         CsPackage.Literals.INTERFACE, elementId, context);
   }
 
-  public static void createExchangeItemAllocation(String linkId, String interfaceId, String itemId, SessionContext context) {
-    EObject source = createObject(linkId, interfaceId,
-        CsPackage.Literals.INTERFACE__OWNED_EXCHANGE_ITEM_ALLOCATIONS,
+  public static void createExchangeItemAllocation(String linkId, String interfaceId, String itemId,
+      SessionContext context) {
+    EObject source = createObject(linkId, interfaceId, CsPackage.Literals.INTERFACE__OWNED_EXCHANGE_ITEM_ALLOCATIONS,
         CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION, linkId, context);
 
     ExchangeItem item = context.getSemanticElement(itemId);
