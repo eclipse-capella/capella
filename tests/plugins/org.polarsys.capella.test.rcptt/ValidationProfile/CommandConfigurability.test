@@ -5,8 +5,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _GJay8KkbEee0yuaysMB3Rg
-Runtime-Version: 2.5.0.201909172034
-Save-Time: 9/30/19 3:36 PM
+Runtime-Version: 2.5.0.M2
+Save-Time: 10/8/19 4:40 PM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -42,7 +42,7 @@ get-window Preferences | get-tree | select "Capella/Model"
 with [get-window Preferences] {
     with [get-group "Inheritance Management"] {
         get-button "Multiple inheritance allowed" | get-property enablement | equals true | verify-true
-        get-button "Component/Actor inheritance allowed in diagram" | get-property enablement | equals true | verify-true
+        get-button "Component Non Actor inheritance allowed" | get-property enablement | equals true | verify-true
     }
     get-group "Deployment Management" | get-property enablement | equals true | verify-true
     get-group "Inheritance Management" | get-property enablement | equals true | verify-true
@@ -138,7 +138,7 @@ get-window Preferences | get-tree | select "Capella/Model"
 with [get-window Preferences] {
     with [get-group "Inheritance Management"] {
         get-button "Multiple inheritance allowed" | get-property enablement | equals false | verify-true
-        get-button "Component/Actor inheritance allowed in diagram" | get-property enablement | equals false | verify-true
+        get-button "Component Non Actor inheritance allowed" | get-property enablement | equals false | verify-true
     }
     get-group "Deployment Management" | get-property enablement | equals false | verify-true
     get-group "Inheritance Management" | get-property enablement | equals false | verify-true
