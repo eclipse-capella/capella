@@ -496,7 +496,12 @@
           queryIdentifier="GetABInsertActor">
        <queryAlgorithm
              algorithm="org.polarsys.capella.core.sirius.analysis.queries.csServices.GetABInsertActor"></queryAlgorithm>
-    </querySpecification>    
+    </querySpecification>
+    <querySpecification
+          queryIdentifier="GetABInsertComponent">
+       <queryAlgorithm
+             algorithm="org.polarsys.capella.core.sirius.analysis.queries.csServices.GetABInsertComponent"></queryAlgorithm>
+    </querySpecification> 
     <querySpecification
           queryIdentifier="GetISScopeInsertActors">
        <queryAlgorithm
@@ -536,6 +541,9 @@
     </querySpecification>
     <querySpecification queryIdentifier="GetABInsertActor__Lib" extendedQueryIdentifier="GetABInsertActor">
       <queryAlgorithm algorithm="org.polarsys.capella.core.sirius.analysis.queries.csServices.GetABInsertActor__Lib" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetABInsertComponent__Lib" extendedQueryIdentifier="GetABInsertComponent">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.sirius.analysis.queries.csServices.GetABInsertComponent__Lib" />
     </querySpecification>
     <querySpecification queryIdentifier="GetCCEIInsertInterfaceForLib" extendedQueryIdentifier="GetCCEIInsertInterface">
       <queryAlgorithm algorithm="org.polarsys.capella.core.sirius.analysis.queries.csServices.GetCCEIInsertInterfaceForLib" />

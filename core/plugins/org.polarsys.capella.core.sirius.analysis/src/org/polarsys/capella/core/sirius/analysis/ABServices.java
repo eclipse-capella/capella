@@ -683,14 +683,7 @@ public class ABServices {
    * @return
    */
   public boolean isValidDndComponent(Component source, Component target) {
-    Collection<Component> parts = ComponentExt.getComponentAncestors(target);
-    if (parts.contains(source)) {
-      return false;
-    }
-    if (!ComponentExt.canMoveInto(source, target)) {
-      return false;
-    }
-    return true;
+    return ComponentExt.canMoveInto(source, target);
   }
 
   /**

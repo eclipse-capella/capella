@@ -179,5 +179,23 @@ public class ComponentPkgExt {
 
     return components;
   }
+  
+  /**
+   * Returns whether component source can be moved into target component package
+   * 
+   * @param source
+   * @param target
+   * @return
+   */
+  public static boolean canMoveInto(Component source, ComponentPkg target) {
+    Component parentComponent = getParentComponent(target);
+    if (parentComponent != null) {
+      return ComponentExt.canMoveInto(source, parentComponent);
+    } else if ((ComponentExt.isActor(source) && !ComponentExt.canCreateABActor(target))
+        || (!ComponentExt.isActor(source) && !ComponentExt.canCreateABComponent(target))) {
+      return false;
+    }
+    return true;
+  }
 
 }

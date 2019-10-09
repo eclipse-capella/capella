@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,8 +28,8 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.libraries.queries.QueryExt;
 
-@ExtendingQuery(extendingQuery = GetABInsertActor.class)
-public class GetABInsertActor__Lib extends GetABInsertComponentActor {
+@ExtendingQuery(extendingQuery = GetABInsertComponent.class)
+public class GetABInsertComponent__Lib extends GetABInsertComponentActor {
 
   @Override
   public List<Object> execute(Object input, IQueryContext context) throws QueryException {
@@ -40,7 +40,7 @@ public class GetABInsertActor__Lib extends GetABInsertComponentActor {
     for (IModel library : libraries) {
       BlockArchitecture architecture = (BlockArchitecture) QueryExt.getCorrespondingElementInLibrary(in,
           (CapellaModel) library);
-      components.addAll(getActorsToInsertFromArchitecture(input, architecture));
+      components.addAll(getComponentsToInsertFromArchitecture(input, architecture));
     }
     return new ArrayList<>(components);
   }

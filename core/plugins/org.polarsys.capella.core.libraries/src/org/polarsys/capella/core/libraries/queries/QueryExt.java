@@ -161,9 +161,14 @@ public class QueryExt {
     return res;
   }
 
+  /**
+   * Get the corresponding BlockArchitecture in library
+   * @param input
+   * @param library
+   * @return the corresponding BlockArchitecture in library
+   */
   public static EObject getCorrespondingElementInLibrary(EObject input, CapellaModel library) {
     BlockArchitecture currentArchBlock = BlockArchitectureExt.getRootBlockArchitecture(input);
-    //return getCorrespondingBlockArchitectureFromLibrary(currentArchBlock, library);
     return getBlockArchitectureFromLibraryUpward(currentArchBlock, library);
   }
 }

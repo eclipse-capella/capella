@@ -2547,7 +2547,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:components != 'WIZARD_CANCELED'">
                     <subModelOperations xsi:type="tool:For" expression="aql:components">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.eContainer()">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType">
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponent)">
                           <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
                             <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
@@ -2635,14 +2635,13 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="[Reusable Components] Creates a new Part of an existing Physical Actor." name="reuse.physical.actor" label="%pa.pab.reuse.physical.actor" precondition="aql:containerView.oclIsKindOf(diagram::DDiagram)" containerMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Insert.gif">
+            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="[Reusable Components] Creates a new Part of an existing Physical Actor." name="reuse.physical.actor" label="%pa.pab.reuse.physical.actor" containerMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Insert.gif">
               <filters precondition="aql:not (self.isPreferenceEnabled('multipart.allowed'))" elementsToListen="aql:self.getPreferenceListener()">
                 <listeners domainClass="org.polarsys.capella.core.preferences.Listener" featureName="multipart.allowed"/>
               </filters>
-              <variable name="container">
-                <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
-              </variable>
+              <variable name="container"/>
               <viewVariable name="containerView">
+                <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:containerView.getABActorTarget().getComponentType()"/>
                 <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:containerView.getDiagramContainer()"/>
               </viewVariable>
               <initialOperation>
@@ -2656,7 +2655,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:components != 'WIZARD_CANCELED'">
                     <subModelOperations xsi:type="tool:For" expression="aql:components">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.eContainer()">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType">
                         <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponent)">
                           <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
                             <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
@@ -3474,17 +3473,15 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:components != 'WIZARD_CANCELED'">
                     <subModelOperations xsi:type="tool:For" expression="aql:components">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerTarget.oclIsKindOf(cs::BlockArchitecture)">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerTarget.getContext()">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType">
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponent)">
                           <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
                             <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                             <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:i"/>
                           </subModelOperations>
                         </subModelOperations>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (containerTarget.oclIsKindOf(cs::BlockArchitecture))">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType">
-                          <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalComponentPkg)">
+                          <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedParts" variableName="part">
                             <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                             <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:i"/>
                           </subModelOperations>
