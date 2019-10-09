@@ -11,7 +11,6 @@
 package org.polarsys.capella.common.ui;
 
 import org.osgi.framework.BundleContext;
-import org.polarsys.capella.common.ui.preferences.ExportCSVPreferences;
 import org.polarsys.capella.common.ui.services.AbstractUIActivator;
 
 /**
@@ -32,7 +31,6 @@ public class MdeCommonUiActivator extends AbstractUIActivator {
   public void start(BundleContext context) throws Exception {
     super.start(context);
     plugin = this;
-    new ExportCSVPreferences();
   }
 
   /**

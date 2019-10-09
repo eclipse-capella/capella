@@ -22,8 +22,8 @@ import org.polarsys.capella.common.helpers.export.CSVExporter;
 import org.polarsys.capella.common.helpers.export.DataExporter;
 import org.polarsys.capella.common.helpers.export.IExporterProvider;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.ui.MdeCommonUiActivator;
 import org.polarsys.capella.common.ui.preferences.IExportCSVPreferences;
-import org.polarsys.capella.core.preferences.Activator;
 import org.polarsys.capella.core.validation.export.RulesExporterProvider;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 
@@ -31,25 +31,25 @@ public class ExportCSVPreferencesTest extends BasicTestCase {
   private ScopedPreferenceStore preferenceStore;
 
   public ExportCSVPreferencesTest() {
-    preferenceStore = (ScopedPreferenceStore) Activator.getDefault().getPreferenceStore();
+    preferenceStore = (ScopedPreferenceStore) MdeCommonUiActivator.getDefault().getPreferenceStore();
   }
 
   @Override
   public void test() throws Exception {
-    updateExportCSVPreference(IExportCSVPreferences.DELIMITER_NAME_TAB);
-    exportWithCSVDelimiter(IExportCSVPreferences.DELIMITER_NAME_TAB, ICommonConstants.TAB_CHARACTER);
+    updateExportCSVPreference(IExportCSVPreferences.DELIMITER_VALUE_TAB);
+    exportWithCSVDelimiter(IExportCSVPreferences.DELIMITER_VALUE_TAB, ICommonConstants.TAB_CHARACTER);
 
-    updateExportCSVPreference(IExportCSVPreferences.DELIMITER_NAME_OTHER);
-    preferenceStore.putValue(IExportCSVPreferences.DELIMITER_VALUE_OTHER, "#");
-    exportWithCSVDelimiter(IExportCSVPreferences.DELIMITER_NAME_OTHER, '#');
+    updateExportCSVPreference(IExportCSVPreferences.DELIMITER_VALUE_OTHER);
+    preferenceStore.putValue(IExportCSVPreferences.OTHER_DELIMITER_KEY, "#");
+    exportWithCSVDelimiter(IExportCSVPreferences.DELIMITER_VALUE_OTHER, '#');
 
-    updateExportCSVPreference(IExportCSVPreferences.DELIMITER_NAME_COMMA);
-    exportWithCSVDelimiter(IExportCSVPreferences.DELIMITER_NAME_COMMA, ICommonConstants.COMMA_CHARACTER);
+    updateExportCSVPreference(IExportCSVPreferences.DELIMITER_VALUE_COMMA);
+    exportWithCSVDelimiter(IExportCSVPreferences.DELIMITER_VALUE_COMMA, ICommonConstants.COMMA_CHARACTER);
   }
 
   private void updateExportCSVPreference(String newPref) {
-    preferenceStore.putValue(IExportCSVPreferences.DELIMITER_NAME_CURRENT, newPref);
-    String pref = preferenceStore.getString(IExportCSVPreferences.DELIMITER_NAME_CURRENT);
+    preferenceStore.putValue(IExportCSVPreferences.DELIMITER_KEY, newPref);
+    String pref = preferenceStore.getString(IExportCSVPreferences.DELIMITER_KEY);
     assertTrue(pref == newPref);
   }
 

@@ -10,22 +10,21 @@
  *******************************************************************************/
 package org.polarsys.capella.common.ui.preferences;
 
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-
 public interface IExportCSVPreferences {
 
   public static final IExportCSVPreferences INSTANCE = new ExportCSVPreferences();
 
-  final String DELIMITER_NAME_TAB = "tab";
-  final String DELIMITER_NAME_SEMICOLON = "semicolon";
-  final String DELIMITER_NAME_COMMA = "comma";
-  final String DELIMITER_NAME_SPACE = "space";
-  final String DELIMITER_NAME_OTHER = "other";
+  final String DELIMITER_KEY = "delimiter";
+  
+  final String DELIMITER_VALUE_TAB = "tab";
+  final String DELIMITER_VALUE_SEMICOLON = "semicolon";
+  final String DELIMITER_VALUE_COMMA = "comma";
+  final String DELIMITER_VALUE_SPACE = "space";
+  final String DELIMITER_VALUE_OTHER = "other";
+  final String DELIMITER_VALUE_DEFAULT = DELIMITER_VALUE_COMMA;
 
-  final String DELIMITER_VALUE_OTHER = "";
-  final String DELIMITER_VALUE_OTHER_DEFAULT = "DEFAULT";
-  final char DELIMITER_VALUE_DEFAULT = ICommonConstants.COMMA_CHARACTER;
-  final String DELIMITER_NAME_CURRENT = DELIMITER_NAME_COMMA;
+  final String OTHER_DELIMITER_KEY = "other";
+  final String OTHER_DELIMITER_VALUE_DEFAULT = "";
 
   public char getDelimiterCurrentValue();
 

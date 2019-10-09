@@ -10,47 +10,27 @@
  *******************************************************************************/
 package org.polarsys.capella.common.ui.preferences;
 
+import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.RadioGroupFieldEditor;
 import org.eclipse.jface.preference.StringFieldEditor;
 import org.eclipse.swt.widgets.Composite;
-import org.polarsys.capella.core.commands.preferences.service.AbstractDefaultPreferencePage;
+import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchPreferencePage;
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.ui.MdeCommonUiActivator;
 
 /**
- * Delete preferences page.
+ * Export CSV preferences page.
  */
-public class ExportCSVPreferencePage extends AbstractDefaultPreferencePage {
+public class ExportCSVPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
-  public static final String PROPERTY_PAGE_ID = "org.polarsys.capella.common.ui.preferences.exportcsv";
+  private StringFieldEditor otherFieldEditor;
+  private boolean otherEnabled = false;
 
-  private StringFieldEditor _otherFieldEditor;
-  private boolean _otherEnabled = false;
-
-  public static final String Description = "Preferences related to export csv";
-  public static final String PageTitle = "Export csv";
-  public static final String Delimiters = "Delimiters";
-  public static final String ErrorMessage = "Please enter a character!";
-  /**
-   * @see org.polarsys.capella.core.commands.preferences.service.AbstractDefaultPreferencePage#getPageDescription()
-   */
-  @Override
-  protected String getPageDescription() {
-    return Description;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  protected String getPageId() {
-    return PROPERTY_PAGE_ID;
-  }
-
-  /**
-   * @see org.polarsys.capella.core.commands.preferences.service.AbstractDefaultPreferencePage#getPageTitle()
-   */
-  @Override
-  protected String getPageTitle() {
-    return PageTitle;
+  public ExportCSVPreferencePage() {
+    super(GRID);
+    setTitle(Messages.ExportCSVPreferencePage_Title);
+    setDescription(Messages.ExportCSVPreferencePage_Description);
   }
 
   /**
@@ -59,61 +39,58 @@ public class ExportCSVPreferencePage extends AbstractDefaultPreferencePage {
   @Override
   protected void createFieldEditors() {
     Composite parent = getFieldEditorParent();
-    _otherEnabled = doGetPreferenceStore()
-        .getString(IExportCSVPreferences.DELIMITER_NAME_CURRENT)
-        .toString().equals(IExportCSVPreferences.DELIMITER_NAME_OTHER);
 
-    RadioGroupFieldEditor groupRadios = new RadioGroupFieldEditor(IExportCSVPreferences.DELIMITER_NAME_CURRENT,
-        Delimiters, 1,
-        new String[][] { { IExportCSVPreferences.DELIMITER_NAME_TAB, IExportCSVPreferences.DELIMITER_NAME_TAB },
-            { IExportCSVPreferences.DELIMITER_NAME_SEMICOLON, IExportCSVPreferences.DELIMITER_NAME_SEMICOLON },
-            { IExportCSVPreferences.DELIMITER_NAME_COMMA, IExportCSVPreferences.DELIMITER_NAME_COMMA },
-            { IExportCSVPreferences.DELIMITER_NAME_SPACE, IExportCSVPreferences.DELIMITER_NAME_SPACE },
-            { IExportCSVPreferences.DELIMITER_NAME_OTHER, IExportCSVPreferences.DELIMITER_NAME_OTHER } },
+    otherEnabled = getPreferenceStore().getString(IExportCSVPreferences.DELIMITER_KEY)
+        .equals(IExportCSVPreferences.DELIMITER_VALUE_OTHER);
+
+    RadioGroupFieldEditor groupRadios = new RadioGroupFieldEditor(IExportCSVPreferences.DELIMITER_KEY, Messages.ExportCSVPreferencePage_Delimiters, 1,
+        new String[][] { { IExportCSVPreferences.DELIMITER_VALUE_TAB, IExportCSVPreferences.DELIMITER_VALUE_TAB },
+            { IExportCSVPreferences.DELIMITER_VALUE_SEMICOLON, IExportCSVPreferences.DELIMITER_VALUE_SEMICOLON },
+            { IExportCSVPreferences.DELIMITER_VALUE_COMMA, IExportCSVPreferences.DELIMITER_VALUE_COMMA },
+            { IExportCSVPreferences.DELIMITER_VALUE_SPACE, IExportCSVPreferences.DELIMITER_VALUE_SPACE },
+            { IExportCSVPreferences.DELIMITER_VALUE_OTHER, IExportCSVPreferences.DELIMITER_VALUE_OTHER } },
         parent, false) {
       @Override
       protected void fireValueChanged(String property, Object oldValue, Object newValue) {
         super.fireValueChanged(property, oldValue, newValue);
-        if (newValue.toString().equals(IExportCSVPreferences.DELIMITER_NAME_OTHER)) {
-          _otherFieldEditor.setEnabled(true, parent);
-          _otherEnabled = true;
-          _otherFieldEditor.setErrorMessage(ErrorMessage);
-          _otherFieldEditor.getTextControl(parent).setText("");
+        if (newValue.toString().equals(IExportCSVPreferences.DELIMITER_VALUE_OTHER)) {
+          otherFieldEditor.setEnabled(true, parent);
+          otherEnabled = true;
+          otherFieldEditor.setErrorMessage(Messages.ExportCSVPreferencePage_ErrorMessage);
+          otherFieldEditor.getTextControl(parent).setText(ICommonConstants.EMPTY_STRING);
         } else {
-          _otherFieldEditor.setEnabled(false, parent);
-          _otherEnabled = false;
-          _otherFieldEditor.loadDefault();
+          otherFieldEditor.setEnabled(false, parent);
+          otherEnabled = false;
+          otherFieldEditor.loadDefault();
         }
       }
     };
     addField(groupRadios);
 
-    _otherFieldEditor = new StringFieldEditor(IExportCSVPreferences.DELIMITER_VALUE_OTHER, "", 10, parent) {
+    otherFieldEditor = new StringFieldEditor(IExportCSVPreferences.OTHER_DELIMITER_KEY, ICommonConstants.EMPTY_STRING, 10, parent) {
       @Override
       protected boolean doCheckState() {
         String txt = getTextControl().getText();
-        boolean restoreDefaults = txt.equals(IExportCSVPreferences.DELIMITER_VALUE_OTHER_DEFAULT);
+        boolean restoreDefaults = txt.equals(IExportCSVPreferences.OTHER_DELIMITER_VALUE_DEFAULT);
         if (restoreDefaults) {
           setEnabled(false, parent);
-          _otherFieldEditor.getTextControl(parent).setText("");
-          _otherEnabled = false;
+          otherFieldEditor.getTextControl(parent).setText(ICommonConstants.EMPTY_STRING);
+          otherEnabled = false;
         }
-        return !_otherEnabled || restoreDefaults || (txt != null && txt.length() == 1);
+        return !otherEnabled || restoreDefaults || (txt != null && txt.length() == 1);
       }
     };
 
-    if (!_otherEnabled) {
-      _otherFieldEditor.setEnabled(false, parent);
-      _otherFieldEditor.loadDefault();
+    if (!otherEnabled) {
+      otherFieldEditor.setEnabled(false, parent);
+      otherFieldEditor.loadDefault();
     }
-
-    addField(_otherFieldEditor);
+    addField(otherFieldEditor);
   }
 
   @Override
-  protected void performDefaults() {
-    super.performDefaults();
-
-    return;
+  public void init(IWorkbench workbench) {
+    setPreferenceStore(MdeCommonUiActivator.getDefault().getPreferenceStore());
   }
+
 }
