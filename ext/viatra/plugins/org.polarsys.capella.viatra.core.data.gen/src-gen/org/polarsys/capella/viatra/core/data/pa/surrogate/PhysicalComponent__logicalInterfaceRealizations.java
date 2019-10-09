@@ -54,6 +54,8 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
  * 
  * <p>Original source:
  *         <code><pre>
+ *         // End of user code
+ *         
  *         {@literal @}Surrogate(feature="logicalInterfaceRealizations")
  *         pattern PhysicalComponent__logicalInterfaceRealizations(self : PhysicalComponent, target : LogicalInterfaceRealization) {
  *         	PhysicalComponent.provisionedInterfaceAllocations(self, target);
@@ -258,6 +260,8 @@ public final class PhysicalComponent__logicalInterfaceRealizations extends BaseG
    * 
    * <p>Original source:
    * <code><pre>
+   * // End of user code
+   * 
    * {@literal @}Surrogate(feature="logicalInterfaceRealizations")
    * pattern PhysicalComponent__logicalInterfaceRealizations(self : PhysicalComponent, target : LogicalInterfaceRealization) {
    * 	PhysicalComponent.provisionedInterfaceAllocations(self, target);

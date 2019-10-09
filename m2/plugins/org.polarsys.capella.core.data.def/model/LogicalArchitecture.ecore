@@ -261,7 +261,7 @@
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/derived">
         <details key="viatra.variant" value="patternbody"/>
-        <details key="viatra.expression" value="LogicalFunction.incomingTraces(self, cfa);&#xD;&#xA;ComponentFunctionalAllocation.sourceElement(cfa, target);"/>
+        <details key="viatra.expression" value="LogicalFunction.incomingTraces(self, traces);&#xD;&#xA;ComponentFunctionalAllocation.sourceElement(traces, target);"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizedSystemFunctions"
@@ -520,7 +520,7 @@
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/derived">
         <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="allocatingComponents"/>
+        <details key="viatra.expression" value="realizedComponents"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizingPhysicalComponents"
@@ -651,7 +651,10 @@
         <details key="comment/notes" value="none"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="CapabilityRealization.ownedCapabilityRealizationInvolvements(self, involvements);&#xD;&#xA;CapabilityRealizationInvolvement.involvedCapabilityRealizationInvolvedElement(involvements, target);"/>
+      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizedCapabilities" upperBound="-1"
         eType="ecore:EClass ContextArchitecture.ecore#//Capability" changeable="false"

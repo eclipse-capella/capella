@@ -16,12 +16,22 @@ package org.polarsys.capella.viatra.core.data.capellacommon.surrogate
 import "http://www.polarsys.org/capella/core/common/1.4.0"
 
 // Start of user code for imports 
+
+import "http://www.polarsys.org/capella/core/pa/1.4.0"
+import "http://www.polarsys.org/capella/core/fa/1.4.0"
 import "http://www.polarsys.org/capella/core/core/1.4.0"
+import "http://www.polarsys.org/capella/core/la/1.4.0"
 
-// End of user code
 
-@Surrogate(feature="involvingCapabilityRealizationInvolvements")
-pattern CapabilityRealizationInvolvedElement__involvingCapabilityRealizationInvolvements(self : CapabilityRealizationInvolvedElement, target : CapabilityRealizationInvolvement) {
+
+@Surrogate(feature="involvingCapabilityRealizations")
+pattern CapabilityRealizationInvolvedElement__involvingCapabilityRealizations(self : CapabilityRealizationInvolvedElement, target : CapabilityRealization) {
+	CapabilityRealizationInvolvedElement.capabilityRealizationInvolvements(self, involvements);
+	CapabilityRealizationInvolvement.involver(involvements, target);
+}
+
+@Surrogate(feature="capabilityRealizationInvolvements")
+pattern CapabilityRealizationInvolvedElement__capabilityRealizationInvolvements(self : CapabilityRealizationInvolvedElement, target : CapabilityRealizationInvolvement) {
 	CapabilityRealizationInvolvedElement.involvingInvolvements(self, target);
 }
 

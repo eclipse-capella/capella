@@ -23,18 +23,6 @@ import "http://www.polarsys.org/capella/core/la/1.4.0"
 
 // End of user code
 
-@Surrogate(feature="allocatorActors")
-pattern SystemFunction__allocatorActors(self : SystemFunction, target : Actor) {
-	ComponentFunctionalAllocation.targetElement(cfa, self);
-ComponentFunctionalAllocation.sourceElement(cfa, target);
-}
-
-@Surrogate(feature="allocatorSystems")
-pattern SystemFunction__allocatorSystems(self : SystemFunction, target : System) {
-	ComponentFunctionalAllocation.targetElement(cfa, self);
-ComponentFunctionalAllocation.sourceElement(cfa, target);
-}
-
 @Surrogate(feature="realizedOperationalActivities")
 pattern SystemFunction__realizedOperationalActivities(self : SystemFunction, target : OperationalActivity) {
 	SystemFunction.outFunctionRealizations.allocatedFunction(self, target);
@@ -53,6 +41,12 @@ pattern SystemFunction__containedSystemFunctions(self : SystemFunction, target :
 @Surrogate(feature="childrenSystemFunctions")
 pattern SystemFunction__childrenSystemFunctions(self : SystemFunction, target : SystemFunction) {
 	SystemFunction.subFunctions(self, target);
+}
+
+@Surrogate(feature="allocatingSystemComponents")
+pattern SystemFunction__allocatingSystemComponents(self : SystemFunction, target : SystemComponent) {
+	SystemFunction.incomingTraces(self, traces);
+	ComponentFunctionalAllocation.sourceElement(traces, target);
 }
 
 

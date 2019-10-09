@@ -22,6 +22,8 @@ import "http://www.polarsys.org/capella/core/fa/1.4.0"
 import "http://www.polarsys.org/capella/core/core/1.4.0"
 import "http://www.polarsys.org/capella/core/ctx/1.4.0"
 import "http://www.polarsys.org/capella/core/cs/1.4.0"
+import "http://www.polarsys.org/capella/core/common/1.4.0"
+import "http://www.polarsys.org/capella/core/la/1.4.0"
 
 // End of user code
 
@@ -32,7 +34,7 @@ pattern Entity__roleAllocations(self : Entity, target : RoleAllocation) {
 
 @Surrogate(feature="subEntities")
 pattern Entity__subEntities(self : Entity, target : Entity) {
-	Entity.ownedPartitions.type(self, target);
+	Entity.containedParts.type(self, target);
 }
 
 @Surrogate(feature="allocatedOperationalActivities")
@@ -45,25 +47,14 @@ pattern Entity__allocatedRoles(self : Entity, target : Role) {
 	Entity.roleAllocations.role(self, target);
 }
 
-@Surrogate(feature="realizingSystems")
-pattern Entity__realizingSystems(self : Entity, target : System) {
-	Entity.incomingTraces(self, oer);
-	OperationalEntityRealization.allocatingComponent(oer, target);
-} or {
-	Entity.incomingTraces(self, oar);
-	OperationalActorRealization.allocatingComponent(oar, target);
-}
-
-@Surrogate(feature="realizingActors")
-pattern Entity__realizingActors(self : Entity, target : Actor) {
-	Entity.incomingTraces(self, oer);
-	OperationalEntityRealization.allocatingComponent(oer, target);
-}
-
 @Surrogate(feature="involvingOperationalCapabilities")
 pattern Entity__involvingOperationalCapabilities(self : Entity, target : OperationalCapability) {
 	Entity.involvingInvolvements(self, eoci);
 EntityOperationalCapabilityInvolvement.capability(eoci, target);
 }
 
+@Surrogate(feature="realizingSystemComponents")
+pattern Entity__realizingSystemComponents(self : Entity, target : SystemComponent) {
+	Entity.realizingComponents(self, target);
+}
 

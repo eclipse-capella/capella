@@ -16,9 +16,7 @@ import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
 import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalComponent__allocatedPhysicalFunctions;
 import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalComponent__deployedPhysicalComponents;
-import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalComponent__deployingPhysicalActors;
 import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalComponent__deployingPhysicalComponents;
-import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalComponent__logicalComponentRealizations;
 import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalComponent__logicalInterfaceRealizations;
 import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalComponent__realizedLogicalComponents;
 import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalComponent__subPhysicalComponents;
@@ -31,14 +29,12 @@ import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalComponent__sub
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
  * <p> From package org.polarsys.capella.viatra.core.data.pa.surrogate, the group contains the definition of the following patterns: <ul>
- * <li>PhysicalComponent__logicalComponentRealizations</li>
  * <li>PhysicalComponent__logicalInterfaceRealizations</li>
  * <li>PhysicalComponent__subPhysicalComponents</li>
  * <li>PhysicalComponent__realizedLogicalComponents</li>
  * <li>PhysicalComponent__allocatedPhysicalFunctions</li>
  * <li>PhysicalComponent__deployedPhysicalComponents</li>
  * <li>PhysicalComponent__deployingPhysicalComponents</li>
- * <li>PhysicalComponent__deployingPhysicalActors</li>
  * </ul>
  * 
  * @see IQueryGroup
@@ -63,22 +59,12 @@ public final class PhysicalComponent extends BaseGeneratedPatternGroup {
   private static PhysicalComponent INSTANCE;
   
   private PhysicalComponent() {
-    querySpecifications.add(PhysicalComponent__logicalComponentRealizations.instance());
     querySpecifications.add(PhysicalComponent__logicalInterfaceRealizations.instance());
     querySpecifications.add(PhysicalComponent__subPhysicalComponents.instance());
     querySpecifications.add(PhysicalComponent__realizedLogicalComponents.instance());
     querySpecifications.add(PhysicalComponent__allocatedPhysicalFunctions.instance());
     querySpecifications.add(PhysicalComponent__deployedPhysicalComponents.instance());
     querySpecifications.add(PhysicalComponent__deployingPhysicalComponents.instance());
-    querySpecifications.add(PhysicalComponent__deployingPhysicalActors.instance());
-  }
-  
-  public PhysicalComponent__logicalComponentRealizations getPhysicalComponent__logicalComponentRealizations() {
-    return PhysicalComponent__logicalComponentRealizations.instance();
-  }
-  
-  public PhysicalComponent__logicalComponentRealizations.Matcher getPhysicalComponent__logicalComponentRealizations(final ViatraQueryEngine engine) {
-    return PhysicalComponent__logicalComponentRealizations.Matcher.on(engine);
   }
   
   public PhysicalComponent__logicalInterfaceRealizations getPhysicalComponent__logicalInterfaceRealizations() {
@@ -127,13 +113,5 @@ public final class PhysicalComponent extends BaseGeneratedPatternGroup {
   
   public PhysicalComponent__deployingPhysicalComponents.Matcher getPhysicalComponent__deployingPhysicalComponents(final ViatraQueryEngine engine) {
     return PhysicalComponent__deployingPhysicalComponents.Matcher.on(engine);
-  }
-  
-  public PhysicalComponent__deployingPhysicalActors getPhysicalComponent__deployingPhysicalActors() {
-    return PhysicalComponent__deployingPhysicalActors.instance();
-  }
-  
-  public PhysicalComponent__deployingPhysicalActors.Matcher getPhysicalComponent__deployingPhysicalActors(final ViatraQueryEngine engine) {
-    return PhysicalComponent__deployingPhysicalActors.Matcher.on(engine);
   }
 }

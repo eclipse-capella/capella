@@ -54,6 +54,8 @@ import org.polarsys.capella.core.data.la.CapabilityRealization;
  * 
  * <p>Original source:
  *         <code><pre>
+ *         // End of user code
+ *         
  *         {@literal @}Surrogate(feature="realizedCapabilities")
  *         pattern CapabilityRealization__realizedCapabilities(self : CapabilityRealization, target : Capability) {
  *         	CapabilityRealization.outgoingTraces(self, acr);
@@ -259,6 +261,8 @@ public final class CapabilityRealization__realizedCapabilities extends BaseGener
    * 
    * <p>Original source:
    * <code><pre>
+   * // End of user code
+   * 
    * {@literal @}Surrogate(feature="realizedCapabilities")
    * pattern CapabilityRealization__realizedCapabilities(self : CapabilityRealization, target : Capability) {
    * 	CapabilityRealization.outgoingTraces(self, acr);

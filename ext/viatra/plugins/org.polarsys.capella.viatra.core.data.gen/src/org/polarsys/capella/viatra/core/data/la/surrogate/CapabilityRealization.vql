@@ -24,26 +24,6 @@ import "http://www.polarsys.org/capella/core/ctx/1.4.0"
 
 // End of user code
 
-@Surrogate(feature="participatingActors")
-pattern CapabilityRealization__participatingActors(self : CapabilityRealization, target : AbstractActor) {
-	CapabilityRealization.involvedActors.involved(self, target);
-}
-
-@Surrogate(feature="participatingSystemComponents")
-pattern CapabilityRealization__participatingSystemComponents(self : CapabilityRealization, target : SystemComponent) {
-	CapabilityRealization.involvedSystemComponents.involved(self, target);
-}
-
-@Surrogate(feature="involvedActors")
-pattern CapabilityRealization__involvedActors(self : CapabilityRealization, target : ActorCapabilityRealizationInvolvement) {
-	CapabilityRealization.involvedInvolvements(self, target);
-}
-
-@Surrogate(feature="involvedSystemComponents")
-pattern CapabilityRealization__involvedSystemComponents(self : CapabilityRealization, target : SystemComponentCapabilityRealizationInvolvement) {
-	CapabilityRealization.involvedInvolvements(self, target);
-}
-
 @Surrogate(feature="realizedCapabilities")
 pattern CapabilityRealization__realizedCapabilities(self : CapabilityRealization, target : Capability) {
 	CapabilityRealization.outgoingTraces(self, acr);
@@ -60,6 +40,16 @@ AbstractCapabilityRealization.realizedCapability(acr, target);
 pattern CapabilityRealization__realizingCapabilityRealizations(self : CapabilityRealization, target : CapabilityRealization) {
 	CapabilityRealization.incomingTraces(self, acr);
 AbstractCapabilityRealization.realizingCapability(acr, target);
+}
+
+@Surrogate(feature="systemComponent")
+pattern CapabilityInvolvement__systemComponent(self :CapabilityInvolvement, target : SystemComponent) {
+	CapabilityInvolvement.involved(self, target);
+}
+
+@Surrogate(feature="capability")
+pattern CapabilityInvolvement__capability(self :CapabilityInvolvement, target : Capability) {
+	CapabilityInvolvement.involver(self, target);
 }
 
 

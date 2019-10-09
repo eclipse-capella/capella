@@ -15,10 +15,9 @@ package org.polarsys.capella.viatra.core.data.la.surrogate;
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
 import org.polarsys.capella.viatra.core.data.la.surrogate.LogicalComponent__allocatedLogicalFunctions;
-import org.polarsys.capella.viatra.core.data.la.surrogate.LogicalComponent__realizedSystems;
+import org.polarsys.capella.viatra.core.data.la.surrogate.LogicalComponent__realizedSystemComponents;
 import org.polarsys.capella.viatra.core.data.la.surrogate.LogicalComponent__realizingPhysicalComponents;
 import org.polarsys.capella.viatra.core.data.la.surrogate.LogicalComponent__subLogicalComponents;
-import org.polarsys.capella.viatra.core.data.la.surrogate.LogicalComponent__systemRealizations;
 
 /**
  * A pattern group formed of all public patterns defined in LogicalComponent.vql.
@@ -28,11 +27,10 @@ import org.polarsys.capella.viatra.core.data.la.surrogate.LogicalComponent__syst
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
  * <p> From package org.polarsys.capella.viatra.core.data.la.surrogate, the group contains the definition of the following patterns: <ul>
- * <li>LogicalComponent__systemRealizations</li>
  * <li>LogicalComponent__subLogicalComponents</li>
  * <li>LogicalComponent__allocatedLogicalFunctions</li>
  * <li>LogicalComponent__realizingPhysicalComponents</li>
- * <li>LogicalComponent__realizedSystems</li>
+ * <li>LogicalComponent__realizedSystemComponents</li>
  * </ul>
  * 
  * @see IQueryGroup
@@ -57,19 +55,10 @@ public final class LogicalComponent extends BaseGeneratedPatternGroup {
   private static LogicalComponent INSTANCE;
   
   private LogicalComponent() {
-    querySpecifications.add(LogicalComponent__systemRealizations.instance());
     querySpecifications.add(LogicalComponent__subLogicalComponents.instance());
     querySpecifications.add(LogicalComponent__allocatedLogicalFunctions.instance());
     querySpecifications.add(LogicalComponent__realizingPhysicalComponents.instance());
-    querySpecifications.add(LogicalComponent__realizedSystems.instance());
-  }
-  
-  public LogicalComponent__systemRealizations getLogicalComponent__systemRealizations() {
-    return LogicalComponent__systemRealizations.instance();
-  }
-  
-  public LogicalComponent__systemRealizations.Matcher getLogicalComponent__systemRealizations(final ViatraQueryEngine engine) {
-    return LogicalComponent__systemRealizations.Matcher.on(engine);
+    querySpecifications.add(LogicalComponent__realizedSystemComponents.instance());
   }
   
   public LogicalComponent__subLogicalComponents getLogicalComponent__subLogicalComponents() {
@@ -96,11 +85,11 @@ public final class LogicalComponent extends BaseGeneratedPatternGroup {
     return LogicalComponent__realizingPhysicalComponents.Matcher.on(engine);
   }
   
-  public LogicalComponent__realizedSystems getLogicalComponent__realizedSystems() {
-    return LogicalComponent__realizedSystems.instance();
+  public LogicalComponent__realizedSystemComponents getLogicalComponent__realizedSystemComponents() {
+    return LogicalComponent__realizedSystemComponents.instance();
   }
   
-  public LogicalComponent__realizedSystems.Matcher getLogicalComponent__realizedSystems(final ViatraQueryEngine engine) {
-    return LogicalComponent__realizedSystems.Matcher.on(engine);
+  public LogicalComponent__realizedSystemComponents.Matcher getLogicalComponent__realizedSystemComponents(final ViatraQueryEngine engine) {
+    return LogicalComponent__realizedSystemComponents.Matcher.on(engine);
   }
 }

@@ -14,16 +14,16 @@ package org.polarsys.capella.viatra.core.data.cs.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__allocatedComponents;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__allocatingComponents;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.CapabilityRealization__involvedComponents;
 import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__containedComponentPorts;
 import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__containedParts;
 import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__containedPhysicalPorts;
 import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__implementedInterfaceLinks;
 import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__implementedInterfaces;
 import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__providedInterfaces;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__provisionedComponentAllocations;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__provisioningComponentAllocations;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__realizedComponents;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__realizingComponents;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__representingParts;
 import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__requiredInterfaces;
 import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__usedInterfaceLinks;
 import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__usedInterfaces;
@@ -40,15 +40,15 @@ import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__usedInterfa
  * <li>Component__usedInterfaces</li>
  * <li>Component__implementedInterfaceLinks</li>
  * <li>Component__implementedInterfaces</li>
- * <li>Component__provisionedComponentAllocations</li>
- * <li>Component__provisioningComponentAllocations</li>
- * <li>Component__allocatedComponents</li>
- * <li>Component__allocatingComponents</li>
  * <li>Component__providedInterfaces</li>
  * <li>Component__requiredInterfaces</li>
  * <li>Component__containedComponentPorts</li>
  * <li>Component__containedParts</li>
  * <li>Component__containedPhysicalPorts</li>
+ * <li>CapabilityRealization__involvedComponents</li>
+ * <li>Component__representingParts</li>
+ * <li>Component__realizingComponents</li>
+ * <li>Component__realizedComponents</li>
  * </ul>
  * 
  * @see IQueryGroup
@@ -77,15 +77,15 @@ public final class Component extends BaseGeneratedPatternGroup {
     querySpecifications.add(Component__usedInterfaces.instance());
     querySpecifications.add(Component__implementedInterfaceLinks.instance());
     querySpecifications.add(Component__implementedInterfaces.instance());
-    querySpecifications.add(Component__provisionedComponentAllocations.instance());
-    querySpecifications.add(Component__provisioningComponentAllocations.instance());
-    querySpecifications.add(Component__allocatedComponents.instance());
-    querySpecifications.add(Component__allocatingComponents.instance());
     querySpecifications.add(Component__providedInterfaces.instance());
     querySpecifications.add(Component__requiredInterfaces.instance());
     querySpecifications.add(Component__containedComponentPorts.instance());
     querySpecifications.add(Component__containedParts.instance());
     querySpecifications.add(Component__containedPhysicalPorts.instance());
+    querySpecifications.add(CapabilityRealization__involvedComponents.instance());
+    querySpecifications.add(Component__representingParts.instance());
+    querySpecifications.add(Component__realizingComponents.instance());
+    querySpecifications.add(Component__realizedComponents.instance());
   }
   
   public Component__usedInterfaceLinks getComponent__usedInterfaceLinks() {
@@ -118,38 +118,6 @@ public final class Component extends BaseGeneratedPatternGroup {
   
   public Component__implementedInterfaces.Matcher getComponent__implementedInterfaces(final ViatraQueryEngine engine) {
     return Component__implementedInterfaces.Matcher.on(engine);
-  }
-  
-  public Component__provisionedComponentAllocations getComponent__provisionedComponentAllocations() {
-    return Component__provisionedComponentAllocations.instance();
-  }
-  
-  public Component__provisionedComponentAllocations.Matcher getComponent__provisionedComponentAllocations(final ViatraQueryEngine engine) {
-    return Component__provisionedComponentAllocations.Matcher.on(engine);
-  }
-  
-  public Component__provisioningComponentAllocations getComponent__provisioningComponentAllocations() {
-    return Component__provisioningComponentAllocations.instance();
-  }
-  
-  public Component__provisioningComponentAllocations.Matcher getComponent__provisioningComponentAllocations(final ViatraQueryEngine engine) {
-    return Component__provisioningComponentAllocations.Matcher.on(engine);
-  }
-  
-  public Component__allocatedComponents getComponent__allocatedComponents() {
-    return Component__allocatedComponents.instance();
-  }
-  
-  public Component__allocatedComponents.Matcher getComponent__allocatedComponents(final ViatraQueryEngine engine) {
-    return Component__allocatedComponents.Matcher.on(engine);
-  }
-  
-  public Component__allocatingComponents getComponent__allocatingComponents() {
-    return Component__allocatingComponents.instance();
-  }
-  
-  public Component__allocatingComponents.Matcher getComponent__allocatingComponents(final ViatraQueryEngine engine) {
-    return Component__allocatingComponents.Matcher.on(engine);
   }
   
   public Component__providedInterfaces getComponent__providedInterfaces() {
@@ -190,5 +158,37 @@ public final class Component extends BaseGeneratedPatternGroup {
   
   public Component__containedPhysicalPorts.Matcher getComponent__containedPhysicalPorts(final ViatraQueryEngine engine) {
     return Component__containedPhysicalPorts.Matcher.on(engine);
+  }
+  
+  public CapabilityRealization__involvedComponents getCapabilityRealization__involvedComponents() {
+    return CapabilityRealization__involvedComponents.instance();
+  }
+  
+  public CapabilityRealization__involvedComponents.Matcher getCapabilityRealization__involvedComponents(final ViatraQueryEngine engine) {
+    return CapabilityRealization__involvedComponents.Matcher.on(engine);
+  }
+  
+  public Component__representingParts getComponent__representingParts() {
+    return Component__representingParts.instance();
+  }
+  
+  public Component__representingParts.Matcher getComponent__representingParts(final ViatraQueryEngine engine) {
+    return Component__representingParts.Matcher.on(engine);
+  }
+  
+  public Component__realizingComponents getComponent__realizingComponents() {
+    return Component__realizingComponents.instance();
+  }
+  
+  public Component__realizingComponents.Matcher getComponent__realizingComponents(final ViatraQueryEngine engine) {
+    return Component__realizingComponents.Matcher.on(engine);
+  }
+  
+  public Component__realizedComponents getComponent__realizedComponents() {
+    return Component__realizedComponents.instance();
+  }
+  
+  public Component__realizedComponents.Matcher getComponent__realizedComponents(final ViatraQueryEngine engine) {
+    return Component__realizedComponents.Matcher.on(engine);
   }
 }

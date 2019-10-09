@@ -217,7 +217,10 @@
         <details key="constraints" value="none"/>
         <details key="comment/notes" value="none"/>
       </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="involvingInvolvements"/>
+      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="involvingCapabilityRealizations"
         upperBound="-1" eType="ecore:EClass LogicalArchitecture.ecore#//CapabilityRealization"
@@ -227,7 +230,10 @@
         <details key="constraints" value="none"/>
         <details key="comment/notes" value="none"/>
       </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="CapabilityRealizationInvolvedElement.capabilityRealizationInvolvements(self, involvements);&#xD;&#xA;CapabilityRealizationInvolvement.involver(involvements, target);"/>
+      </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StateMachine" eSuperTypes="CapellaCore.ecore#//CapellaElement ../../org.polarsys.capella.common.data.def/model/Behavior.ecore#//AbstractBehavior">

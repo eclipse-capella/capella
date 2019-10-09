@@ -22,18 +22,6 @@ import "http://www.polarsys.org/capella/core/la/1.4.0"
 
 // End of user code
 
-@Surrogate(feature="allocatorPhysicalActors")
-pattern PhysicalFunction__allocatorPhysicalActors(self : PhysicalFunction, target : PhysicalActor) {
-	PhysicalFunction.incomingTraces(self, cfa);
-ComponentFunctionalAllocation.sourceElement(cfa, target);
-}
-
-@Surrogate(feature="allocatorPhysicalComponents")
-pattern PhysicalFunction__allocatorPhysicalComponents(self : PhysicalFunction, target : PhysicalComponent) {
-	PhysicalFunction.incomingTraces(self, cfa);
-ComponentFunctionalAllocation.sourceElement(cfa, target);
-}
-
 @Surrogate(feature="realizedLogicalFunctions")
 pattern PhysicalFunction__realizedLogicalFunctions(self : PhysicalFunction, target : LogicalFunction) {
 	PhysicalFunction.outFunctionRealizations.allocatedFunction(self, target);
@@ -49,4 +37,9 @@ pattern PhysicalFunction__childrenPhysicalFunctions(self : PhysicalFunction, tar
 	PhysicalFunction.subFunctions(self, target);
 }
 
+@Surrogate(feature="allocatingPhysicalComponents")
+pattern PhysicalFunction__allocatingPhysicalComponents(self : PhysicalFunction, target : PhysicalComponent) {
+	PhysicalFunction.incomingTraces(self, incomingTraces);
+	ComponentFunctionalAllocation.sourceElement(incomingTraces, target);
+}
 

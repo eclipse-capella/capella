@@ -57,7 +57,7 @@ import org.polarsys.capella.core.data.pa.PhysicalNode;
  *         
  *         {@literal @}Surrogate(feature="subPhysicalNodes")
  *         pattern PhysicalNode__subPhysicalNodes(self : PhysicalNode, target : PhysicalNode) {
- *         	PhysicalNode.ownedPartitions.type(self, target);
+ *         	PhysicalNode.containedParts.type(self, target);
  *         }
  * </pre></code>
  * 
@@ -263,7 +263,7 @@ public final class PhysicalNode__subPhysicalNodes extends BaseGeneratedEMFQueryS
    * 
    * {@literal @}Surrogate(feature="subPhysicalNodes")
    * pattern PhysicalNode__subPhysicalNodes(self : PhysicalNode, target : PhysicalNode) {
-   * 	PhysicalNode.ownedPartitions.type(self, target);
+   * 	PhysicalNode.containedParts.type(self, target);
    * }
    * </pre></code>
    * 
@@ -695,11 +695,11 @@ public final class PhysicalNode__subPhysicalNodes extends BaseGeneratedEMFQueryS
              new ExportedParameter(body, var_self, parameter_self),
              new ExportedParameter(body, var_target, parameter_target)
           ));
-          // 	PhysicalNode.ownedPartitions.type(self, target)
+          // 	PhysicalNode.containedParts.type(self, target)
           new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/pa/1.4.0", "PhysicalNode")));
           PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/information/1.4.0", "PartitionableElement", "ownedPartitions")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/information/1.4.0", "Partition")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/cs/1.4.0", "Component", "containedParts")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/cs/1.4.0", "Part")));
           PVariable var__virtual_1_ = body.getOrCreateVariableByName(".virtual{1}");
           new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_, var__virtual_1_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/core/1.4.0", "TypedElement", "type")));
           new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_1_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/core/1.4.0", "Type")));

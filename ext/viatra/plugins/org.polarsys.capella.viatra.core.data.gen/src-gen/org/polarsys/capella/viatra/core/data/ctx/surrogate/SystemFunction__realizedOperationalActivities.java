@@ -54,6 +54,8 @@ import org.polarsys.capella.core.data.oa.OperationalActivity;
  * 
  * <p>Original source:
  *         <code><pre>
+ *         // End of user code
+ *         
  *         {@literal @}Surrogate(feature="realizedOperationalActivities")
  *         pattern SystemFunction__realizedOperationalActivities(self : SystemFunction, target : OperationalActivity) {
  *         	SystemFunction.outFunctionRealizations.allocatedFunction(self, target);
@@ -258,6 +260,8 @@ public final class SystemFunction__realizedOperationalActivities extends BaseGen
    * 
    * <p>Original source:
    * <code><pre>
+   * // End of user code
+   * 
    * {@literal @}Surrogate(feature="realizedOperationalActivities")
    * pattern SystemFunction__realizedOperationalActivities(self : SystemFunction, target : OperationalActivity) {
    * 	SystemFunction.outFunctionRealizations.allocatedFunction(self, target);

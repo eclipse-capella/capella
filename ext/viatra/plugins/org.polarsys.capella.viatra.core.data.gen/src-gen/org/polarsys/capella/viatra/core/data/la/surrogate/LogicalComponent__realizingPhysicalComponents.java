@@ -56,7 +56,7 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
  *         <code><pre>
  *         {@literal @}Surrogate(feature="realizingPhysicalComponents")
  *         pattern LogicalComponent__realizingPhysicalComponents(self : LogicalComponent, target : PhysicalComponent) {
- *         	LogicalComponent.allocatingComponents(self, target);
+ *         	Component.realizingComponents(self, target);
  *         }
  * </pre></code>
  * 
@@ -260,7 +260,7 @@ public final class LogicalComponent__realizingPhysicalComponents extends BaseGen
    * <code><pre>
    * {@literal @}Surrogate(feature="realizingPhysicalComponents")
    * pattern LogicalComponent__realizingPhysicalComponents(self : LogicalComponent, target : PhysicalComponent) {
-   * 	LogicalComponent.allocatingComponents(self, target);
+   * 	Component.realizingComponents(self, target);
    * }
    * </pre></code>
    * 
@@ -692,10 +692,10 @@ public final class LogicalComponent__realizingPhysicalComponents extends BaseGen
              new ExportedParameter(body, var_self, parameter_self),
              new ExportedParameter(body, var_target, parameter_target)
           ));
-          // 	LogicalComponent.allocatingComponents(self, target)
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/la/1.4.0", "LogicalComponent")));
+          // 	Component.realizingComponents(self, target)
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/cs/1.4.0", "Component")));
           PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/cs/1.4.0", "Component", "allocatingComponents")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/cs/1.4.0", "Component", "realizingComponents")));
           new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/cs/1.4.0", "Component")));
           new Equality(body, var__virtual_0_, var_target);
           bodies.add(body);
