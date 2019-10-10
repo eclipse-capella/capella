@@ -45,15 +45,16 @@ public class IdentifierHelper {
 
   private static final String IGNORED_MODEL_EXTENSION_FILTER = "ModelExtensionFilter";
 
-  private static final Predicate<IdentifiedElement> toolFilter = tool -> tool instanceof ContainerCreationDescription
+  public static final Predicate<IdentifiedElement> toolFilter = tool -> tool instanceof ContainerCreationDescription
       || tool instanceof NodeCreationDescription || tool instanceof ToolDescription || tool instanceof PopupMenu
       || tool instanceof OperationAction || tool instanceof EdgeCreationDescription;
 
-  private static final Predicate<IdentifiedElement> filterFilter = tool -> tool instanceof CompositeFilterDescription
+  public static final Predicate<IdentifiedElement> filterFilter = tool -> tool instanceof CompositeFilterDescription
       && !tool.getName().equals(IGNORED_MODEL_EXTENSION_FILTER);
 
   public static Stream<IdentifiedElement> getTools(DiagramDescription description) {
-    // In case of reused popup menu, description.getAllTools() doesn't retrieve sub reused menus
+    // In case of reused popup menu, description.getAllTools() doesn't retrieve sub
+    // reused menus
     return Stream.concat(getAllTools(description).stream().flatMap(x -> {
       if (x instanceof PopupMenu) {
         return Stream.concat(Stream.of(x), ((PopupMenu) x).getMenuItemDescription().stream());
