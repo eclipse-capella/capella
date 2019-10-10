@@ -65,6 +65,10 @@ public abstract class XABDiagramsProject extends AbstractDiagramTestCase {
   public static final String SA__SAB_A1 = "ff952c1b-4605-414e-892b-7fc1e0886826";
   public static final String SA__SAB_A2 = "325e94ec-99cd-47ef-b1f0-8fa15fb50ca2";
   public static final String SA__SAB_A3 = "f9e2c3c8-346c-4c9c-81d8-533897358ed0";
+  public static final String A_1 = "afe019b9-2e81-4363-b09c-1e106b7ca7b4"; //$NON-NLS-1$
+  public static final String A_2 = "fecd3e88-fe49-44b0-a6d2-cfc76af572a2"; //$NON-NLS-1$
+  public static final String A_3 = "ef5e2fd0-52eb-4dc2-a11e-4d669be1a396"; //$NON-NLS-1$
+  public static final String A_4 = "d2d00d4d-3eb6-4198-b7d7-55360f583e37"; //$NON-NLS-1$
   public static final String SA__SAB_FUNCTION_1 = "5eef3339-1e33-4cc4-9968-58b7b128f28a";
   public static final String SA__SAB_FUNCTION_2 = "7111133e-b516-48a4-9c03-93c25054c3b9";
   public static final String SA__SAB_FUNCTION_GATHER = "87d429f5-967e-4e67-97d2-39ff44308a9f";
@@ -124,6 +128,12 @@ public abstract class XABDiagramsProject extends AbstractDiagramTestCase {
   public static final String LA__LAB_LC1 = "f8d17c52-5dd0-412d-8f45-cebd58928da0";
   public static final String LA__LAB_A1 = "e7884bff-642d-44ac-bce6-c3cd20aa03b1";
   public static final String LA__LAB_A2 = "e671feb7-b6b3-40c0-8f2c-ff2b5ef349f0";
+  public static final String LA_1 = "dc2c6c0f-a55b-431c-a739-79fbd2d243c9"; //$NON-NLS-1$
+  public static final String LA_2 = "50574f2c-7b5f-4b8b-b0eb-37126f10dbc4"; //$NON-NLS-1$
+  public static final String LA_3 = "5a0a0053-6a38-40ef-a6a2-029062a6c5f8"; //$NON-NLS-1$
+  public static final String LA_4 = "4df2b99f-9a2a-4e5f-8a4c-a9a60804495e"; //$NON-NLS-1$
+  public static final String LA_5 = "9c86e140-d4f0-4321-b026-bc4effb6c5c2"; //$NON-NLS-1$
+  public static final String LA_7_1_1 = "68df53da-c1cc-402c-b8ec-54080384ac5c"; //$NON-NLS-1$
   public static final String LA__LAB_FUNCTION_1 = "02f0848d-2783-4079-b392-96b837442a54";
   public static final String LA__LAB_FUNCTION_2 = "c0f05ce7-ca4d-4994-aaee-5c767e482448";
   public static final String LA__LAB_FUNCTION_5 = "eb928208-79df-4373-ac5d-a207f4c495ff";
@@ -176,6 +186,14 @@ public abstract class XABDiagramsProject extends AbstractDiagramTestCase {
   public static final String LA_7 = "a2673077-7c94-4e97-8261-a9c676aa4b79"; //$NON-NLS-1$
   public static final String LA_LC_1_1 = "1f6b0cc6-e789-4df0-836d-3130bd55e8c4";
   public static final String LA_LA_7_1_1 = "0ad59536-7a71-4698-acc6-527aeaccf49b";
+  public static final String LC_1_1 = "d4822e98-c68c-4e29-a795-3df5fa98cca9"; //$NON-NLS-1$
+  public static final String LC_1_PART = "c30f774e-9dd2-406e-a611-14f59ebcb96c"; //$NON-NLS-1$
+  public static final String PC_3_PC_1_PART = "79a754d4-99a4-4c7f-857d-aec9c0388232"; //$NON-NLS-1$
+  public static final String PC_4 = "850157c3-5c8f-4c6a-a1bf-29bb146c03cc"; //$NON-NLS-1$
+  public static final String PC_4_PC_1 = "b8c583bc-5409-4891-9779-552839d3cc6f"; //$NON-NLS-1$
+  public static final String PC_3_1 = "630a2f89-79c9-4b00-8851-5f71ef48b740"; //$NON-NLS-1$
+  public static final String PC_7 = "e6934a0a-bc02-4b96-ae58-cf0fdd326e58"; //$NON-NLS-1$
+  public static final String PC_10 = "7af9dc10-385f-4b61-97b8-4f4a1a88e700"; //$NON-NLS-1$
 
   // pa
   public static final String PA__PAB_PHYSICAL_SYSTEM = "6117356a-8b31-480f-a1ed-07e8da164fbd";
