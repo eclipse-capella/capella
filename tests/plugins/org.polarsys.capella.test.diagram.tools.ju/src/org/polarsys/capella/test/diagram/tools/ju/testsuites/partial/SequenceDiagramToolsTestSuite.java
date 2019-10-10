@@ -31,7 +31,9 @@ import org.polarsys.capella.test.diagram.tools.ju.sequence.CreateOperand;
 import org.polarsys.capella.test.diagram.tools.ju.sequence.CreateReference;
 import org.polarsys.capella.test.diagram.tools.ju.sequence.CreateRole;
 import org.polarsys.capella.test.diagram.tools.ju.sequence.CreateSequenceMessage;
+import org.polarsys.capella.test.diagram.tools.ju.sequence.CreateSequenceMessageInteraction;
 import org.polarsys.capella.test.diagram.tools.ju.sequence.DeleteMessage;
+import org.polarsys.capella.test.diagram.tools.ju.sequence.DeleteSequenceMessageInteraction;
 import org.polarsys.capella.test.diagram.tools.ju.sequence.DragAndDropTest;
 import org.polarsys.capella.test.diagram.tools.ju.sequence.InsertAllocatedFunctions;
 import org.polarsys.capella.test.diagram.tools.ju.sequence.InsertInvolvedStatesAndModes;
@@ -55,10 +57,11 @@ public class SequenceDiagramToolsTestSuite extends BasicTestSuite {
     return new SequenceDiagramToolsTestSuite();
   }
 
+  @Override
   public List<String> getRequiredTestModels() {
     return Arrays.asList("SequenceDiagramProject");
   }
-  
+
   /**
    * @see org.polarsys.capella.test.framework.api.BasicTestSuite#getTests()
    */
@@ -74,6 +77,8 @@ public class SequenceDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new CreateSequenceMessage());
     tests.add(new CreateMessage());
     tests.add(new DeleteMessage());
+    tests.add(new CreateSequenceMessageInteraction());
+    tests.add(new DeleteSequenceMessageInteraction());
     tests.add(new LostAndFoundFunctionalExchange());
     tests.add(new CreateArmTimer());
     tests.add(new CancelArmTimer());

@@ -10,8 +10,16 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.common.ju.context;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
+
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DEdge;
+import org.polarsys.capella.core.data.information.AbstractEventOperation;
 import org.polarsys.capella.core.data.interaction.MessageKind;
+import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
@@ -28,13 +36,28 @@ public class OA_ESDiagram extends ESDiagram {
   }
 
   public void createMessage(String id, String source, String target) {
-    new MessageCreationTool(this, IToolNameConstants.TOOL_OES_CREATE_MESSAGE, id, source, target, MessageKind.CREATE)
-        .run();
+    DEdge edge = new MessageCreationTool(this, IToolNameConstants.TOOL_OES_CREATE_MESSAGE, id, source, target,
+        MessageKind.CREATE).run();
+
+    assertMessageCreationTarget(id, edge);
   }
 
   public void deleteMessage(String id, String source, String target) {
-    new MessageCreationTool(this, IToolNameConstants.TOOL_OES_DELETE_MESSAGE, id, source, target, MessageKind.DELETE)
-        .run();
+    DEdge edge = new MessageCreationTool(this, IToolNameConstants.TOOL_OES_DELETE_MESSAGE, id, source, target,
+        MessageKind.DELETE).run();
+
+    assertMessageCreationTarget(id, edge);
+  }
+
+  private void assertMessageCreationTarget(String id, DEdge edge) {
+    EObject edgeTarget = edge.getTarget();
+    assertTrue("The target of the edge should be a SequenceMessage", edgeTarget instanceof SequenceMessage);
+    SequenceMessage message = (SequenceMessage) edgeTarget;
+
+    AbstractEventOperation invokedOperation = message.getInvokedOperation();
+    assertNotEquals("The Sequence Message should have a Invoked Operation", invokedOperation, null);
+
+    assertEquals("The Invoked operation should have the name " + id, id, invokedOperation.getName());
   }
 
   public static OA_ESDiagram openDiagram(SessionContext executionContext, String name,

@@ -164,6 +164,9 @@ public class GenericModel {
   public static String COMMUNICATION_MEAN_1 = "CommunicationMean 1";
   public static String COMMUNICATION_MEAN_2 = "CommunicationMean 2";
 
+  public static String INTERACTION_1 = "Interaction 1";
+  public static String INTERACTION_2 = "Interaction 2";
+
   public static String EXCHANGE_ITEM_ALLOCATION_1 = "Exchange Item Allocation 1";
   public static String EXCHANGE_ITEM_ALLOCATION_2 = "Exchange Item Allocation 2";
 
