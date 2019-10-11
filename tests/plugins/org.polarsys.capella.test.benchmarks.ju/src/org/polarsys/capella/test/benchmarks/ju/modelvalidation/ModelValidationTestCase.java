@@ -12,8 +12,8 @@ package org.polarsys.capella.test.benchmarks.ju.modelvalidation;
 
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.session.Session;
-import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaValidateAction;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
+import org.polarsys.capella.core.validation.ui.actions.CapellaValidateAction;
 import org.polarsys.capella.test.benchmarks.ju.HeadlessBenchmarkCapellaValidateAction;
 import org.polarsys.capella.test.benchmarks.ju.testcases.AbstractBenchmarkTestCase;
 

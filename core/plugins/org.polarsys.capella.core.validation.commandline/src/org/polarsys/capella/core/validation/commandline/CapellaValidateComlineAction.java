@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.helpers.TransactionHelper;
-import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaValidateAction;
+import org.polarsys.capella.core.validation.ui.actions.CapellaValidateAction;
 
 /**
  */

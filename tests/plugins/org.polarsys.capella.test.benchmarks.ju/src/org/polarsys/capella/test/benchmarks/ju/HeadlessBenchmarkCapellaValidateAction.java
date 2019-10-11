@@ -22,7 +22,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.window.Window;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ISetSelectionTarget;
-import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaValidateAction;
+import org.polarsys.capella.core.validation.ui.actions.CapellaValidateAction;
 
 public class HeadlessBenchmarkCapellaValidateAction extends CapellaValidateAction {
   @SuppressWarnings("unused")

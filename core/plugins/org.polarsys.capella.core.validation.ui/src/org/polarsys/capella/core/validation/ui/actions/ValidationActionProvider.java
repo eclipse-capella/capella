@@ -30,7 +30,6 @@ import org.eclipse.ui.navigator.ICommonViewerSite;
 import org.eclipse.ui.navigator.ICommonViewerWorkbenchSite;
 
 import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
-import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaValidateAction;
 import org.polarsys.capella.core.validation.ui.CapellaValidationUIActivator;
 
 /**

@@ -9,7 +9,7 @@
  *    Thales - initial API and implementation
  *******************************************************************************/
 
-package org.polarsys.capella.core.platform.sirius.ui.actions;
+package org.polarsys.capella.core.validation.ui.actions;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -44,7 +44,8 @@ import org.polarsys.capella.common.tools.report.appenders.usage.UsageMonitoringL
 import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageMonitoring.EventStatus;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
 import org.polarsys.capella.core.model.handler.markers.ICapellaValidationConstants;
-import org.polarsys.capella.core.model.handler.validation.PluggableDiagnosticianProvider;
+import org.polarsys.capella.core.model.handler.validation.CapellaDiagnostician;
+import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaActionsActivator;
 import org.polarsys.capella.core.platform.sirius.ui.preferences.ICapellaValidationPreferences;
 
 /**
@@ -134,7 +135,7 @@ public class CapellaValidateAction extends ValidateAction {
 
   @Override
   protected Diagnostician createDiagnostician(AdapterFactory adapterFactory, IProgressMonitor progressMonitor) {
-    return new PluggableDiagnosticianProvider().getDiagnostician(adapterFactory, progressMonitor);
+    return new CapellaDiagnostician(adapterFactory, progressMonitor);
   }
 
   /**

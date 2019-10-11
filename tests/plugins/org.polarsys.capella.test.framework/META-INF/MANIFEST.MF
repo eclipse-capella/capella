@@ -24,7 +24,8 @@ Require-Bundle: com.google.guava;visibility:=reexport,
  org.polarsys.capella.core.preferences,
  org.polarsys.capella.core.model.obfuscator,
  org.eclipse.emf.ecore,
- org.polarsys.kitalpha.massactions.core
+ org.polarsys.kitalpha.massactions.core,
+ org.polarsys.capella.core.validation.ui
 Export-Package: org.polarsys.capella.test.framework,
  org.polarsys.capella.test.framework.actions.headless,
  org.polarsys.capella.test.framework.api,

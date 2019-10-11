@@ -23,7 +23,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.test.diagram.common.ju,
  org.polarsys.capella.test.diagram.tools.ju,
  org.eclipse.ui.workbench,
- org.polarsys.capella.core.transition.system.topdown
+ org.polarsys.capella.core.transition.system.topdown,
+ org.polarsys.capella.core.validation.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

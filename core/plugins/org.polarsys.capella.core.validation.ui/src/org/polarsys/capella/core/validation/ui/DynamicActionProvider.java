@@ -31,7 +31,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.navigator.ICommonMenuConstants;
 
 import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
-import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaValidateAction;
+import org.polarsys.capella.core.validation.ui.actions.CapellaValidateAction;
 import org.polarsys.capella.core.validation.ui.actions.EPFValidationAction;
 import org.polarsys.capella.common.menu.dynamic.contributions.ActionContributionProvider;
 import org.polarsys.capella.common.ui.menu.dynamic.AbstractActionProvider;
