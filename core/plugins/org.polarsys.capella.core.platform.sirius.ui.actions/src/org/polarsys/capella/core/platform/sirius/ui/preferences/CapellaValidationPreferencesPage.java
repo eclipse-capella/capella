@@ -11,7 +11,7 @@
 package org.polarsys.capella.core.platform.sirius.ui.preferences;
 
 import org.eclipse.jface.preference.BooleanFieldEditor;
-
+import org.eclipse.swt.widgets.Group;
 import org.polarsys.capella.core.commands.preferences.service.AbstractDefaultPreferencePage;
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaActionsActivator;
 
@@ -41,8 +41,15 @@ public class CapellaValidationPreferencesPage extends AbstractDefaultPreferenceP
    */
   @Override
   public void createFieldEditors() {
+    Group generalGroup = createGroup(Messages.CapellaValidationPreferencesPage_General_Group_Label, Messages.CapellaValidationPreferencesPage_General_Group_Tooltip, getFieldEditorParent());
     addField(new BooleanFieldEditor(ICapellaValidationPreferences.P_CLEAN_PREVIOUS_VALIDATION_RESULTS,
-        Messages.ModelValidationPreferencePage_DeletePreviousResults_Title, getFieldEditorParent()));
+        Messages.ModelValidationPreferencePage_DeletePreviousResults_Title, generalGroup));
+    
+    Group extenders = createGroup(Messages.CapellaValidationPreferencesPage_ValidationScope_Group_Label, Messages.CapellaValidationPreferencesPage_Validation_Scope_Group_Tooltip, getFieldEditorParent());
+
+    addField(new BooleanFieldEditor(ICapellaValidationPreferences.P_EXTENDED_VALIDATION_SCOPE,
+        Messages.CapellaValidationPreferencesPage_ExtendedValidation_Checkbox_Label, extenders));
+
   }
 
   /**

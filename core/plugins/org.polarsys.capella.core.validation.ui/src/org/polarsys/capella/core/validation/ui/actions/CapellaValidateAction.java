@@ -14,6 +14,7 @@ package org.polarsys.capella.core.validation.ui.actions;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
@@ -21,10 +22,15 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.util.Diagnostician;
+import org.eclipse.emf.ecore.util.EObjectValidator;
+import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.ui.EMFEditUIPlugin;
 import org.eclipse.emf.edit.ui.action.ValidateAction;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
@@ -44,9 +50,9 @@ import org.polarsys.capella.common.tools.report.appenders.usage.UsageMonitoringL
 import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageMonitoring.EventStatus;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
 import org.polarsys.capella.core.model.handler.markers.ICapellaValidationConstants;
-import org.polarsys.capella.core.model.handler.validation.CapellaDiagnostician;
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaActionsActivator;
 import org.polarsys.capella.core.platform.sirius.ui.preferences.ICapellaValidationPreferences;
+import org.polarsys.capella.core.validation.scope.ScopedDiagnostician;
 
 /**
  * The EMF edit validate action, with correct selection of the resource, while handling the resulting diagnostic.<br>
@@ -57,12 +63,18 @@ public class CapellaValidateAction extends ValidateAction {
    * Resource hosting the elements of the current diagnostic (see {@link #handleDiagnostic(Diagnostic)}).
    */
   protected Resource _currentResource;
+  private final String mapping;
 
-  /**
-   * Constructor.
-   */
+  public static final String LEGACY_MAPPING = "org.polarsys.capella.core.validation.legacy"; //$NON-NLS-1$
+  public static final String DEFAULT_MAPPING = "org.polarsys.capella.core.validation.default"; //$NON-NLS-1$
+
   public CapellaValidateAction() {
-    super();
+    this(AbstractPreferencesInitializer.getBoolean(ICapellaValidationPreferences.P_EXTENDED_VALIDATION_SCOPE, false) ?
+        DEFAULT_MAPPING : LEGACY_MAPPING);
+  }
+
+  public CapellaValidateAction(String mapping) {
+    this.mapping = mapping;
     eclipseResourcesUtil = new EclipseResourcesUtil() {
 
       /**
@@ -130,12 +142,23 @@ public class CapellaValidateAction extends ValidateAction {
       }
 
     };
-
   }
 
   @Override
-  protected Diagnostician createDiagnostician(AdapterFactory adapterFactory, IProgressMonitor progressMonitor) {
-    return new CapellaDiagnostician(adapterFactory, progressMonitor);
+  protected ScopedDiagnostician createDiagnostician(AdapterFactory adapterFactory, IProgressMonitor progressMonitor) {
+    return new ScopedDiagnostician(adapterFactory, mapping) {
+      @Override
+      protected boolean doValidate(EValidator eValidator, EClass eClass, EObject eObject, DiagnosticChain diagnostics,
+          Map<Object, Object> context) {
+        progressMonitor.worked(1);
+        return super.doValidate(eValidator, eClass, eObject, diagnostics, context);
+      }
+
+      @Override
+      protected void reportProgress() {
+        progressMonitor.worked(1);
+      }
+    };
   }
 
   /**
@@ -245,6 +268,26 @@ public class CapellaValidateAction extends ValidateAction {
       // Reset current resource, whatever its value may be.
       _currentResource = null;
     }
+  }
+
+
+  protected Diagnostic validate(IProgressMonitor progressMonitor) {
+    AdapterFactory adapterFactory =
+        domain instanceof AdapterFactoryEditingDomain ? ((AdapterFactoryEditingDomain)domain).getAdapterFactory() : null;
+
+        ScopedDiagnostician diagnostician = createDiagnostician(adapterFactory, progressMonitor);    
+        progressMonitor.beginTask("", IProgressMonitor.UNKNOWN);
+
+        BasicDiagnostic diagnostic =
+            new BasicDiagnostic
+            (EObjectValidator.DIAGNOSTIC_SOURCE,
+                0,
+                EMFEditUIPlugin.INSTANCE.getString("_UI_DiagnosisOfNObjects_message", new String[] { Integer.toString(selectedObjects.size()) }),
+                selectedObjects.toArray());
+
+        Map<Object, Object> context = diagnostician.createDefaultContext();
+        diagnostician.validate(selectedObjects, diagnostic, context);
+        return diagnostic;
   }
 
 }

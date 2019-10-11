@@ -13,8 +13,10 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.validation.ui,
  org.eclipse.emf.edit.ui,
  org.polarsys.capella.common.tools.report.appenders.reportlogview,
- org.eclipse.ui.ide
+ org.eclipse.ui.ide,
+ org.polarsys.capella.core.validation
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.validation.commandline
 Bundle-Localization: plugin
+Automatic-Module-Name: org.polarsys.capella.core.validation.commandline

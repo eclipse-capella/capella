@@ -25,6 +25,7 @@ Require-Bundle: com.google.guava;visibility:=reexport,
  org.polarsys.capella.core.model.obfuscator,
  org.eclipse.emf.ecore,
  org.polarsys.kitalpha.massactions.core,
+ org.polarsys.capella.core.validation,
  org.polarsys.capella.core.validation.ui
 Export-Package: org.polarsys.capella.test.framework,
  org.polarsys.capella.test.framework.actions.headless,
@@ -36,8 +37,10 @@ Export-Package: org.polarsys.capella.test.framework,
  org.polarsys.capella.test.framework.helpers.diffModel,
  org.polarsys.capella.test.framework.helpers.log,
  org.polarsys.capella.test.framework.model,
- org.polarsys.capella.test.framework.provider
+ org.polarsys.capella.test.framework.provider,
+ org.polarsys.capella.test.framework.tools
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Activator: org.polarsys.capella.test.framework.CapellaTestFrameworkPlugin
 Bundle-ClassPath: .
 Bundle-Localization: plugin
+Automatic-Module-Name: org.polarsys.capella.test.framework
