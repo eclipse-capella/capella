@@ -5,12 +5,14 @@ Bundle-SymbolicName: org.polarsys.capella.core.validation.commandline;singleton:
 Bundle-Version: 1.4.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.validation.commandline.Activator
 Bundle-Vendor: %providerName
-Require-Bundle: org.eclipse.core.runtime,
- org.polarsys.capella.core.platform.sirius.ui.actions,
- org.polarsys.capella.core.model.helpers,
+Require-Bundle: org.polarsys.capella.core.platform.sirius.ui.actions,
  org.polarsys.capella.core.platform.sirius.ui.project,
- org.polarsys.capella.core.model.handler,
- org.polarsys.capella.core.commandline.core.ui
+ org.polarsys.capella.core.commandline.core.ui,
+ org.polarsys.capella.core.validation.ui,
+ org.eclipse.emf.edit.ui,
+ org.polarsys.capella.common.tools.report.appenders.reportlogview,
+ org.eclipse.ui.ide,
+ org.polarsys.capella.core.validation
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.validation.commandline

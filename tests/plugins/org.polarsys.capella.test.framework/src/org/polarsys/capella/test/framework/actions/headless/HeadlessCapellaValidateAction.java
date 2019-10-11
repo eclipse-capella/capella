@@ -11,7 +11,7 @@
 package org.polarsys.capella.test.framework.actions.headless;
 
 import org.eclipse.emf.common.util.Diagnostic;
-import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaValidateAction;
+import org.polarsys.capella.core.validation.ui.actions.CapellaValidateAction;
 
 /**
  * @author Erwan Brottier

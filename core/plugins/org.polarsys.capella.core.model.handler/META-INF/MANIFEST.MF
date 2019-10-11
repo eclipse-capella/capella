@@ -26,7 +26,6 @@ Export-Package: org.polarsys.capella.core.model.handler,
  org.polarsys.capella.core.model.handler.markers,
  org.polarsys.capella.core.model.handler.post.commit.listener,
  org.polarsys.capella.core.model.handler.pre.condition,
- org.polarsys.capella.core.model.handler.provider,
- org.polarsys.capella.core.model.handler.validation
+ org.polarsys.capella.core.model.handler.provider
 Bundle-Activator: org.polarsys.capella.core.model.handler.ModelHandlerPlugin
 Bundle-Localization: plugin

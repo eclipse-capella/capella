@@ -13,6 +13,7 @@ package org.polarsys.capella.core.validation.ui;
 import org.osgi.framework.BundleContext;
 
 import org.polarsys.capella.common.ui.services.AbstractUIActivator;
+import org.polarsys.capella.core.validation.CapellaValidationActivator;
 import org.polarsys.capella.core.validation.service.EPFValidatorAdapter;
 
 /**
@@ -46,6 +47,7 @@ public class CapellaValidationUIActivator extends AbstractUIActivator {
   @Override
   public void start(BundleContext context) throws Exception {
     super.start(context);
+    CapellaValidationActivator.getDefault().getCapellaValidatorAdapter().initializeValidatorRegistry();
     efpValidatorAdapter = new EPFValidatorAdapter();
     // Add a constraints filter, to disable all constraints that are not capella ones, e.g GMF ones.
     // efpValidatorAdapter.getValidator().addConstraintFilter(new EPFConstraintFilter());

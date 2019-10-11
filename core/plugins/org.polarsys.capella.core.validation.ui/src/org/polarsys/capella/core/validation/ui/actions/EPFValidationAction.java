@@ -51,7 +51,6 @@ import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMar
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerView;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
 import org.polarsys.capella.core.model.handler.markers.ICapellaValidationConstants;
-import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaValidateAction;
 import org.polarsys.capella.core.platform.sirius.ui.preferences.ICapellaValidationPreferences;
 import org.polarsys.capella.core.validation.service.EPFConstraintFilter;
 import org.polarsys.capella.core.validation.service.EPFValidatorAdapter;

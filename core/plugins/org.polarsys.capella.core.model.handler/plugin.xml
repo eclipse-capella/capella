@@ -15,7 +15,6 @@
    <extension-point id="delegatedSemanticEditingDomainProviders" name="Delegated Semantic Editing Domain Providers" schema="schema/delegatedSemanticEditingDomainProviders.exsd"/>
    <extension-point id="delegatedCapellaResourceHelper" name="Delegated Capella Resource Helper" schema="schema/delegatedCapellaResourceHelper.exsd"/>
    <extension-point id="readOnlySectionHandler" name="Read Only Section Handler" schema="schema/readOnlySectionHandler.exsd"/>
-   <extension-point id="diagnosticianProviders" name="diagnosticianProviders" schema="schema/diagnosticianProviders.exsd"/>
    <extension-point id="delegateWorkbenchAdvisor" name="Delegate Application Advisor" schema="schema/delegateWorkbenchAdvisor.exsd"/>
    <extension-point id="deleteCommandProvider" name="Delete Command Provider" schema="schema/deleteCommandProvider.exsd"/>
    <extension-point id="decoratorAdapterFactory" name="Decorator Adapter Factory" schema="schema/decoratorAdapterFactory.exsd"/>

@@ -186,12 +186,6 @@ The difference between Completeness and Coverage can appear subtle. Completeness
            value="false">
      </persistent>
   </extension>
-  <extension
-        point="org.polarsys.capella.core.model.handler.diagnosticianProviders">
-     <provider
-           class="org.polarsys.capella.core.validation.DiagnosticianProvider">
-     </provider>
-  </extension>
   <extension point="org.eclipse.core.expressions.propertyTesters">
       <propertyTester
          id="org.polarsys.capella.core.validation.expressions.EObjectPropertyTester"
