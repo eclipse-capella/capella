@@ -195,4 +195,27 @@ The difference between Completeness and Coverage can appear subtle. Completeness
          class="org.polarsys.capella.core.validation.expressions.EObjectPropertyTester">
       </propertyTester>
   </extension>
+  <extension
+        point="org.polarsys.capella.core.transition.handlers">
+     <handlers
+           mapping="org.polarsys.capella.core.validation.default"
+           purpose="org.polarsys.capella.core.validation">
+        <scopeRetriever
+              class="org.polarsys.capella.core.validation.scope.DefaultValidationScopeRetriever"
+              id="default">
+        </scopeRetriever>
+        <scopeFilter
+              class="org.polarsys.capella.core.validation.scope.DefaultValidationScopeFilter"
+              id="defaultFilter">
+        </scopeFilter>
+     </handlers>
+     <handlers
+           mapping="org.polarsys.capella.core.validation.legacy"
+           purpose="org.polarsys.capella.core.validation">
+        <scopeRetriever
+              class="org.polarsys.capella.core.transition.system.retrievers.PartTypeRetriever"
+              id="legacy">
+        </scopeRetriever>
+     </handlers>
+  </extension>
 </plugin>

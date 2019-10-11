@@ -12,12 +12,12 @@ package org.polarsys.capella.test.validation.rules.ju.testcases.misc;
 
 import java.util.List;
 
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.util.Diagnostician;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.libraries.model.ICapellaModel;
 import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
-import org.polarsys.capella.core.model.handler.validation.CapellaDiagnostician;
+import org.polarsys.capella.core.validation.scope.ScopedDiagnostician;
 import org.polarsys.capella.test.framework.api.OracleDefinition;
 import org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRuleTestCase;
 
@@ -51,7 +51,7 @@ public class NoStackoverflowErrorOnValidation extends ValidationRuleTestCase {
     Project project = model.getProject(getSessionForTestModel(getRequiredTestModel()).getTransactionalEditingDomain());
     if (project != null) {
       // we only care about this call to complete normally.
-      CapellaDiagnostician md = new CapellaDiagnostician(CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(), new NullProgressMonitor());
+      Diagnostician md = new ScopedDiagnostician(CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
       md.validate(project);
     }
   }
