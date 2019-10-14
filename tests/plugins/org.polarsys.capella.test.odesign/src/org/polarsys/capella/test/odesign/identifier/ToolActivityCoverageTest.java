@@ -10,8 +10,13 @@
  *******************************************************************************/
 package org.polarsys.capella.test.odesign.identifier;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.EList;
@@ -33,6 +38,26 @@ public class ToolActivityCoverageTest extends BasicTestCase {
   public void test() {
     Collection<String> errors = new ArrayList<>();
 
+    List<String> toolsToCheck = getToolsListFromFile("src/org/polarsys/capella/test/odesign/identifier/toolsToCheck.txt");
+    for (String toolIdentifier : toolsToCheck) {
+      IActivityManager activityManager = PlatformUI.getWorkbench().getActivitySupport().getActivityManager();
+      IIdentifier id = activityManager.getIdentifier(toolIdentifier);
+
+      if (id.getActivityIds().isEmpty()) {
+        errors.add(NLS.bind("Tool {0} not covered by an activity.", toolIdentifier));
+      }
+    }
+
+    assertTrue(errors.stream().collect(Collectors.joining("\n")), errors.isEmpty());
+  }
+  
+  /**
+   * Returns all tool identifiers found in viewpoints
+   * @return
+   */
+  private List<String> getToolsListFromViewpoint() {
+    List<String> list = new ArrayList<>();
+    
     IElementIdentifierService elementIdentifier = PlatformUI.getWorkbench().getService(IElementIdentifierService.class);
 
     for (Viewpoint viewpoint : ViewpointSelection.getViewpoints(CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION)) {
@@ -42,19 +67,31 @@ public class ToolActivityCoverageTest extends BasicTestCase {
           DiagramDescription diagramDescription = (DiagramDescription) description;
           IdentifierHelper.getTools(diagramDescription).forEach(element -> {
             String toolIdentifier = elementIdentifier.getIdentifier(diagramDescription, element);
-
-            IActivityManager activityManager = PlatformUI.getWorkbench().getActivitySupport().getActivityManager();
-            IIdentifier id = activityManager.getIdentifier(toolIdentifier);
-
-            if (id.getActivityIds().isEmpty()) {
-              errors.add(NLS.bind("Tool {0} not covered by an activity.", element.getName()));
-            }
-
+            list.add(toolIdentifier);
           });
         }
       }
     }
+    
+    return list;
+  }
 
-    assertTrue(errors.stream().collect(Collectors.joining("\n")), errors.isEmpty());
+  /**
+   * Returns all tool identifiers found in a given file
+   * @param path the path of the file
+   * @return
+   */
+  private List<String> getToolsListFromFile(String path) {
+    List<String> list = new ArrayList<>();
+    
+    try(BufferedReader bufferedReader = new BufferedReader(new FileReader(new File(path)))) {
+      String line;
+      while ((line = bufferedReader.readLine()) != null) {
+        list.add(line);
+      }
+    } catch (IOException e) {
+      System.err.println("importToolsListFromFile failed!");
+    }
+    return list;
   }
 }

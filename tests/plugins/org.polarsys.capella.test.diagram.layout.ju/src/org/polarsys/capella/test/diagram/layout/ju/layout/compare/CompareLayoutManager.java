@@ -551,22 +551,22 @@ public class CompareLayoutManager {
             }
 
             if (source.eContainer() instanceof NodeLayout) {
-
               String sourceText = getText(factory, source.eContainer());
               String sourceBounds = getText(factory, source);
               String targetBounds = getText(factory, target);
               buffers.get(layout)
-                  .append(NLS.bind("{0}: {1} > {2}\n", new String[] { sourceText, sourceBounds, targetBounds }));
-            }
-
-            if (source.eContainer() instanceof EdgeLayout) {
+                  .append(NLS.bind("[NodeLayout] {0}: {1} > {2}\n", new String[] { sourceText, sourceBounds, targetBounds }));
+            } else if (source.eContainer() instanceof EdgeLayout) {
               String sourceText = getText(factory, source.eContainer());
               String sourcePoints = toString(factory, ((EdgeLayout) source.eContainer()).getBendpoints());
               String targetPoints = toString(factory, ((EdgeLayout) target.eContainer()).getBendpoints());
               buffers.get(layout)
-                  .append(NLS.bind("{0}: {1} > {2}\n", new String[] { sourceText, sourcePoints, targetPoints }));
+                  .append(NLS.bind("[EdgeLayout] {0}: {1} > {2}\n", new String[] { sourceText, sourcePoints, targetPoints }));
+            } else {
+              buffers.get(layout).append(NLS.bind("[!NodeLayout|EdgeLayout] {0}, {1}, {2}\n", new String[] { source.toString(), target.toString(), difference.toString() }));
             }
-
+          } else {
+            result.append(NLS.bind("[!BOUNDS|SIZE|LOCATION] {0}\n", new String[] { difference.toString() }));
           }
         }
       }
@@ -576,7 +576,7 @@ public class CompareLayoutManager {
         result.append(buffers.get(layout));
       }
 
-      Assert.assertTrue(result.toString(), false);
+      Assert.fail(result.toString());
     }
     // 2017/08/11 OFR code remove since I don't know what is it intended to do and triggers an error
     // for references modifications which are not taken into account during migration.
