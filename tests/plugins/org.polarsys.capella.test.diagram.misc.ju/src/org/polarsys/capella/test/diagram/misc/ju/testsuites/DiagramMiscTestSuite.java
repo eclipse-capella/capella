@@ -21,6 +21,7 @@ import org.polarsys.capella.test.diagram.misc.ju.testcases.Bug1917TestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.Bug2145TestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.Bug2579TestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.CheckDiagramDirtyStateOnOpeningTestCase;
+import org.polarsys.capella.test.diagram.misc.ju.testcases.CheckPhysCompNatureOptionTestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.CloneDiagramTestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.DDiagramEditorUndoRedoHandlerTest;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.DecompositionWizardTestCase;
@@ -62,6 +63,7 @@ public class DiagramMiscTestSuite extends BasicTestSuite {
     tests.add(new InsertRemoveComponentsWithNoParts());
     tests.add(new PABStyleChecksDiagramElements());
     tests.add(new DecompositionWizardTestCase());
+    tests.add(new CheckPhysCompNatureOptionTestCase());
     return tests;
   }
 }

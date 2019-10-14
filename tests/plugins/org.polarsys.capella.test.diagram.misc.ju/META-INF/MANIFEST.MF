@@ -15,7 +15,9 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.platform.sirius.ui.perspective,
  org.polarsys.capella.core.ui.properties,
  org.polarsys.capella.core.data.la.ui.wizards,
- org.polarsys.capella.core.data.gen
+ org.polarsys.capella.core.data.gen,
+ org.polarsys.capella.core.data.pa.properties,
+ org.eclipse.swt
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName
