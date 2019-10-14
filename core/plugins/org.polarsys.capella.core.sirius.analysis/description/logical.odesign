@@ -3142,7 +3142,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="D&amp;D Components From Project Explorer" precondition="aql:element.getComponentType().oclIsKindOf(cs::Component) and element.canBeDropped(newViewContainer)" forceRefresh="true" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="D&amp;D Components From Project Explorer" precondition="aql:element.getComponentType().oclIsKindOf(cs::Component)" forceRefresh="true" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -3150,6 +3150,20 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
                 <subModelOperations xsi:type="tool:Switch">
+                  <cases conditionExpression="aql:element.isActor()">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.dndABComponent(newContainerView)">
+                      <subModelOperations xsi:type="tool:Switch">
+                        <cases conditionExpression="aql:element.oclIsKindOf(cs::Part)">
+                          <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" containerViewExpression="var:newContainerView"/>
+                        </cases>
+                        <cases conditionExpression="aql:element.oclIsKindOf(cs::Component)">
+                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.representingParts->first()">
+                            <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" containerViewExpression="var:newContainerView"/>
+                          </subModelOperations>
+                        </cases>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </cases>
                   <cases conditionExpression="aql:element.oclIsKindOf(cs::Part)">
                     <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']" containerViewExpression="var:newContainerView"/>
                   </cases>
