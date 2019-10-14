@@ -3,13 +3,6 @@
 <br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
-|DWF_CA_05 - Component self generalization 
-|-
-| colspan="2"|This rule ensures that a Component cannot generalize itself.
-|}
-<br>
-{| class="VALIDATION-RULE"
-!|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_DC_01 - Partitions cycles check 
 |-
 | colspan="2"|This validation rule ensures that a partition of an element cannot have a partition typed by this element. Thus it avoids"partitions cycles".
@@ -111,6 +104,13 @@
 |DWF_DC_16 - Component Exchange encapsulation problem check 
 |-
 | colspan="2"|This rule raises a warning if a Component Exchange is linked between two internal components. These components can be directly connected, only if the ports are delegated throughout the owning components which are connected by another Component Exchange.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/error.gif|ERROR]]
+|DWF_DC_17 - Component self generalization 
+|-
+| colspan="2"|This rule ensures that a Component cannot generalize itself.
 |}
 <br>
 {| class="VALIDATION-RULE"
