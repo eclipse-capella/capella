@@ -159,14 +159,31 @@ public abstract class TransitionTestCase extends BasicCommandTestCase {
     return source;
   }
 
-  public EObject mustBeTransitionedAndLinkedTo(String id, String id2, EStructuralFeature feature) {
-    EObject source = getObject(id);
+  public EObject mustBeTransitionedAndLinkedTo(String element, String referencedElement, EStructuralFeature feature) {
+    EObject source = getObject(element);
     EObject tSource = getAllocatingElement(source);
-    EObject target = getObject(id2);
+    EObject target = getObject(referencedElement);
     testReferenceLinked(tSource, target, feature);
     return source;
   }
 
+  public EObject mustBeTransitionedAndContainedBy(String element, String referencedElement, EStructuralFeature feature) {
+    EObject source = getObject(element);
+    EObject tSource = getAllocatingElement(source);
+    EObject target = getObject(referencedElement);
+    testReferenceLinked(target, tSource, feature);
+    return source;
+  }
+
+  public EObject mustBeTransitionedAndContainedByTransitioned(String id, String id2, EStructuralFeature feature) {
+    EObject source = getObject(id);
+    EObject tSource = getAllocatingElement(source);
+    EObject target = getObject(id2);
+    EObject tTarget = getAllocatingElement(target);
+    testReferenceLinked(tTarget, tSource, feature);
+    return source;
+  }
+  
   public EObject mustBeTransitionedAndLinkedToTransitioned(String id, String id2, EStructuralFeature feature) {
     EObject source = getObject(id);
     EObject tSource = getAllocatingElement(source);
@@ -204,7 +221,6 @@ public abstract class TransitionTestCase extends BasicCommandTestCase {
     } else {
       assertTrue(source.eGet(feature).equals(target));
     }
-
   }
 
   public void testReferenceNotLinked(EObject source, EObject target, EStructuralFeature feature) {

@@ -16,7 +16,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentPort;
@@ -28,7 +28,6 @@ import org.polarsys.capella.core.transition.common.constants.Messages;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.selection.SelectionContextHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.transformation.TransformationHandlerHelper;
-import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -38,14 +37,6 @@ public class ComponentExchangeRule extends org.polarsys.capella.core.transition.
   @Override
   public EClass getTargetType(EObject element_p, IContext context_p) {
     return FaPackage.Literals.COMPONENT_EXCHANGE;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  protected void attachContainement(EObject element_p, EObject result_p, IContext context_p) {
-    super.attachContainement(element_p, result_p, context_p);
   }
 
   @Override
@@ -98,26 +89,6 @@ public class ComponentExchangeRule extends org.polarsys.capella.core.transition.
       }
     }
     return result;
-  }
-
-  /**
-   * @param source_p
-   * @param result_p
-   * @param context_p
-   */
-  @Override
-  protected void retrieveSource(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveSource(source_p, result_p, context_p);
-  }
-
-  /**
-   * @param source_p
-   * @param result_p
-   * @param context_p
-   */
-  @Override
-  protected void retrieveTarget(EObject source_p, List<EObject> result_p, IContext context_p) {
-    super.retrieveTarget(source_p, result_p, context_p);
   }
 
   @Override
