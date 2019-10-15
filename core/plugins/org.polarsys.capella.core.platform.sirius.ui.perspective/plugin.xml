@@ -59,15 +59,30 @@
    <extension
          point="org.eclipse.ui.activities">
          
-         
-     <activity id= "org.polarsys.capella.core.hidden.activity" description= "Capella Hidden Activities" name= "Capella Hidden Activities"/>
-     <activityPatternBinding activityId="org.polarsys.capella.core.hidden.activity" pattern="org\.eclipse\.debug\..*/.*"/>
-     <activityPatternBinding activityId="org.polarsys.capella.core.hidden.activity" pattern=".*/org.eclipse.sirius.ui.modelingproject.wizard"/>
-     <activityPatternBinding activityId="org.polarsys.capella.core.hidden.activity" pattern=".*/org.eclipse.sirius.ui.specificationproject.wizard"/>
+     <activity id="org.polarsys.capella.core.hidden.activity" 
+     			description="Cover some features from Eclipse, Sirius or Kitalpha such as Sirius Specifier Project, Sirius Modeling Project, unused Kitalpha Views" 
+     			name= "Platform Features"/>
      
-	 <!-- Declare the a specific activity for elements only hidden in Capella perspective -->
+     <categoryActivityBinding
+          activityId="org.polarsys.capella.core.hidden.activity"
+          categoryId="org.polarsys.capella.activities.categories.advanced">
+     </categoryActivityBinding>
+     
+	 <activityPatternBinding activityId="org.polarsys.capella.core.hidden.activity" pattern=".*/org.eclipse.sirius.ui.modelingproject.wizard"/>
+	 <activityPatternBinding activityId="org.polarsys.capella.core.hidden.activity" pattern=".*/org.eclipse.sirius.ui.specificationproject.wizard"/>
+     
+     <activityPatternBinding
+            activityId="org.polarsys.capella.core.hidden.activity"
+            pattern="org.polarsys.kitalpha.massactions/org.polarsys.kitalpha.massactions.edit.view">
+     </activityPatternBinding>
+     <activityPatternBinding
+            activityId="org.polarsys.capella.core.hidden.activity"
+            pattern="org.polarsys.kitalpha.massactions/org.polarsys.kitalpha.massactions.visualize.view">
+     </activityPatternBinding>
+   
+     <!-- Declare a specific activity for elements only hidden in Capella perspective -->
 	 <activity
-		description="Capella Hidden Activities Perspective"
+		description="Hide elements on Capella Perspective"
 		id="org.polarsys.capella.core.perspective.hidden.activity"
 		name="Capella Hidden Activities Perspective">
 		<enabledWhen>
@@ -81,11 +96,10 @@
 			</with>
 		</enabledWhen>
 	 </activity>
-	 <!-- This contribution is used to hide the Sirius's close contextual menu in Capella perspective -->
+	 
+     <!-- Hide Sirius close contextual menu in Capella perspective -->
 	 <activityPatternBinding activityId="org.polarsys.capella.core.perspective.hidden.activity" isEqualityPattern="true" pattern="org.eclipse.sirius.ui.editor/org.eclipse.sirius.ui.closeSessionMenuContribution"/>
-     
-         
-         
+       
     </extension>
     
     
@@ -107,13 +121,11 @@
             id="org.polarsys.capella.activities.categories.common"
             name="Capella Concepts">
       </category>
-      
       <category
             description="Platforrm"
             id="org.polarsys.capella.activities.categories.platform"
             name="Platform">
       </category>
-      
       <category
             description="Modeling Features for Advanced Users"
             id="org.polarsys.capella.activities.categories.advanced"
