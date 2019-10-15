@@ -18,9 +18,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
-import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
@@ -28,7 +26,6 @@ import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.attachment.AttachmentHelper;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
@@ -66,16 +63,6 @@ public class ComponentExchangeRule extends AbstractCapellaElementRule {
   @Override
   protected void retrieveContainer(EObject element, List<EObject> result, IContext context) {
     // Nothing here. We don't want to add container
-  }
-
-  @Override
-  protected EObject getBestContainer(EObject element, EObject result, IContext context) {
-    Component target =
-        (Component) TransformationHandlerHelper.getInstance(context).getBestTracedElement(element.eContainer(), context, CsPackage.Literals.COMPONENT);
-    if ((target == null) || (ComponentExt.isActor(target))) {
-      return null;
-    }
-    return super.getBestContainer(element, result, context);
   }
 
   @Override
