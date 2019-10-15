@@ -321,6 +321,10 @@ public class SkeletonHelper {
         OaPackage.Literals.COMMUNICATION_MEAN, elementId, context);
   }
 
+  public static void createInteraction(String containerId, String elementId, SessionContext context) {
+    createFunctionalExchange(containerId, elementId, context);
+  }
+
   public static void createExchangeItemElement(String containerId, String elementId, SessionContext context) {
     createObject(elementId, containerId, InformationPackage.Literals.EXCHANGE_ITEM__OWNED_ELEMENTS,
         InformationPackage.Literals.EXCHANGE_ITEM_ELEMENT, elementId, context);

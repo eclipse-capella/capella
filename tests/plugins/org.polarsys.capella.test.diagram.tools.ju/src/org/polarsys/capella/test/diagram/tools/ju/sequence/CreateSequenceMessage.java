@@ -53,8 +53,15 @@ public class CreateSequenceMessage extends SequenceTest {
 
     } else if (diagram instanceof OA_ESDiagram) {
       BlockArchitectureExt.Type type = diagram.getDiagramBlockArchitecture();
-      SkeletonHelper.createCommunicationMean(getContextId(type), GenericModel.COMMUNICATION_MEAN_1, context);
-      SkeletonHelper.createCommunicationMean(getContextId(type), GenericModel.COMMUNICATION_MEAN_2, context);
+      String contextId = getContextId(type);
+      String rootFunctionId = getRootFunctionId(type);
+
+      SkeletonHelper.createCommunicationMean(contextId, GenericModel.COMMUNICATION_MEAN_1, context);
+      SkeletonHelper.createCommunicationMean(contextId, GenericModel.COMMUNICATION_MEAN_2, context);
+
+      SkeletonHelper.createInteraction(rootFunctionId, GenericModel.INTERACTION_1, context);
+      SkeletonHelper.createInteraction(rootFunctionId, GenericModel.INTERACTION_2, context);
+
     }
   }
 }
