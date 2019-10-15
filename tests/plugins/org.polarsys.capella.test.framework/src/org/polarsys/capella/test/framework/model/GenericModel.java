@@ -21,6 +21,7 @@ public class GenericModel {
   public static String OBJECT_3 = "OBJECT 3";
   public static String OBJECT_4 = "OBJECT 4";
   public static String PATH_1 = "PATH_1";
+  public static String PATH_2 = "PATH_2";
 
   public static String FUNCTION_PKG = "FUNCTION_PKG";
   public static String CAPABILITY_PKG = "CAPABILITY_PKG";
@@ -254,6 +255,7 @@ public class GenericModel {
   public static String LA_1 = "LA 1";
   public static String LA_1_1 = "LA 1_1";
   public static String LA_1_2 = "LA 1_2";
+  public static String LA_1_3 = "LA 1_3";
   public static String LA_2 = "LA 2";
   public static String LA_3 = "LA 3";
   public static String LA_4 = "LA 4";

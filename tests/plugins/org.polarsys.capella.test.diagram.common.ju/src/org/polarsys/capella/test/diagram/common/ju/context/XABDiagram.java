@@ -17,11 +17,13 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.cs.PhysicalPath;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
@@ -548,8 +550,8 @@ public class XABDiagram extends CommonDiagram {
     new ReconnectTool(this, getToolNameReconnectFunctionalExchange(), id, oldTargetId, newTargetId).shouldFail();
   }
 
-  public void createPhysicalPath(final String path, final String... links) {
-    new CreatePathTool(this, IToolNameConstants.TOOL_CREATE_PHYSICAL_PATH, path, links).run();
+  public PhysicalPath createPhysicalPath(final String path, final String... links) {
+    return (PhysicalPath) ((DEdge)new CreatePathTool(this, IToolNameConstants.TOOL_CREATE_PHYSICAL_PATH, path, links).run()).getTarget();
   }
 
   public void insertPhysicalPath(String... path) {

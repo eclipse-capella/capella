@@ -1356,17 +1356,17 @@ public class CapellaServices {
    *          the context scenario
    * @return the parent logical component
    */
-  public EObject getComponentContainer(EObject object) {
+  public Component getComponentContainer(EObject object) {
     // Go back in "eContainer" until find a logical component or architecture.
     // If an architecture, search the root logical component architecture,
     // otherwise, it is the current logical component.
     EObject container = object;
 
-    while (!(container instanceof Component) && !(container instanceof ModellingArchitecture)) {
+    while (container != null && !(container instanceof Component) && !(container instanceof ModellingArchitecture)) {
       container = container.eContainer();
     }
     if (container instanceof Component) {
-      return container;
+      return (Component)container;
     } else if (container instanceof LogicalArchitecture || container instanceof PhysicalArchitecture
         || container instanceof EPBSArchitecture) {
       return ((BlockArchitecture) container).getSystem();

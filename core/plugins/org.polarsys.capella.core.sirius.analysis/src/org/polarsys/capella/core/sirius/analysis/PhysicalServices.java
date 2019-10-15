@@ -50,6 +50,7 @@ import org.eclipse.swt.graphics.RGB;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EObjectExt;
+import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.helpers.SimpleOrientedGraph;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
@@ -501,8 +502,13 @@ public class PhysicalServices {
       } else {
         sourcePath = (Part) source;
       }
-      EObject target = ((DSemanticDiagram) CapellaServices.getService().getDiagramContainer(views.get(0))).getTarget();
-      Component container = (Component) target;
+      
+      EObject ancestor = EcoreUtil2.getCommonAncestor(newList);
+      Component container = CapellaServices.getService().getComponentContainer(ancestor);
+      if (container == null) {
+        EObject target = ((DSemanticDiagram) CapellaServices.getService().getDiagramContainer(views.get(0))).getTarget();
+        container = CapellaServices.getService().getComponentContainer(target);
+      }
       return PhysicalPathExt.createPhysicalPath(container, newList, sourcePath);
 
     }
