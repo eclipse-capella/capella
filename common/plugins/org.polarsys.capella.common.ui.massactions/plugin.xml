@@ -210,17 +210,6 @@
        </menuContribution>
        
    </extension>
-   <extension
-         point="org.eclipse.ui.activities">
-      <activityPatternBinding
-            activityId="org.polarsys.capella.core.hidden.activity"
-            pattern="org.polarsys.kitalpha.massactions/org.polarsys.kitalpha.massactions.edit.view">
-      </activityPatternBinding>
-      <activityPatternBinding
-            activityId="org.polarsys.capella.core.hidden.activity"
-            pattern="org.polarsys.kitalpha.massactions/org.polarsys.kitalpha.massactions.visualize.view">
-      </activityPatternBinding>
-   </extension>
 
 </plugin>
 
