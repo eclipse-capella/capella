@@ -53,6 +53,7 @@ public interface CapabilityRealizationInvolvedElement extends InvolvedElement {
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getCapabilityRealizationInvolvedElement_CapabilityRealizationInvolvements()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the capability realization involvement relationships in which this element is referenced\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involvingInvolvements'"
 	 * @generated
 	 */
 
@@ -72,6 +73,7 @@ public interface CapabilityRealizationInvolvedElement extends InvolvedElement {
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getCapabilityRealizationInvolvedElement_InvolvingCapabilityRealizations()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Capability realizations that involve this element' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='CapabilityRealizationInvolvedElement.capabilityRealizationInvolvements(self, involvements);\r\nCapabilityRealizationInvolvement.involver(involvements, target);'"
 	 * @generated
 	 */
 

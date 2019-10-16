@@ -99,6 +99,7 @@
 * '''SystemComponent.realizingLogicalComponents'''
 * '''SystemComponent.ownedSystemComponents'''
 * '''SystemComponent.ownedSystemComponentPkgs'''
+* '''SystemComponent.allocatedSystemFunctions'''
 * '''LogicalComponent.realizedSystemComponents'''
 * '''SystemFunction.allocatingSystemComponents'''
 * '''LogicalFunction.allocatingLogicalComponents'''

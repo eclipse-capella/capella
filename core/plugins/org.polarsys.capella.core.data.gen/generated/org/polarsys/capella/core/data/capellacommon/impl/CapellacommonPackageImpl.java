@@ -3301,11 +3301,15 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		  (getCapabilityRealizationInvolvedElement_CapabilityRealizationInvolvements(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "involvingInvolvements" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getCapabilityRealizationInvolvedElement_InvolvingCapabilityRealizations(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "CapabilityRealizationInvolvedElement.capabilityRealizationInvolvements(self, involvements);\r\nCapabilityRealizationInvolvement.involver(involvements, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getState_AvailableAbstractFunctions(), 

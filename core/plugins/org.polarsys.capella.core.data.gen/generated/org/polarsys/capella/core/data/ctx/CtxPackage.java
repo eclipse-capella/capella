@@ -5711,13 +5711,22 @@ public interface CtxPackage extends EPackage {
 	int SYSTEM_COMPONENT__REALIZING_LOGICAL_COMPONENTS = CsPackage.COMPONENT_FEATURE_COUNT + 10;
 
 	/**
+	 * The feature id for the '<em><b>Allocated System Functions</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_COMPONENT__ALLOCATED_SYSTEM_FUNCTIONS = CsPackage.COMPONENT_FEATURE_COUNT + 11;
+
+	/**
 	 * The number of structural features of the '<em>System Component</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_COMPONENT_FEATURE_COUNT = CsPackage.COMPONENT_FEATURE_COUNT + 11;
+	int SYSTEM_COMPONENT_FEATURE_COUNT = CsPackage.COMPONENT_FEATURE_COUNT + 12;
 
 	/**
 	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.ctx.SystemAnalysis <em>System Analysis</em>}'.
@@ -6431,6 +6440,17 @@ public interface CtxPackage extends EPackage {
 	EReference getSystemComponent_RealizingLogicalComponents();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.polarsys.capella.core.data.ctx.SystemComponent#getAllocatedSystemFunctions <em>Allocated System Functions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Allocated System Functions</em>'.
+	 * @see org.polarsys.capella.core.data.ctx.SystemComponent#getAllocatedSystemFunctions()
+	 * @see #getSystemComponent()
+	 * @generated
+	 */
+	EReference getSystemComponent_AllocatedSystemFunctions();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7009,6 +7029,14 @@ public interface CtxPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SYSTEM_COMPONENT__REALIZING_LOGICAL_COMPONENTS = eINSTANCE.getSystemComponent_RealizingLogicalComponents();
+
+		/**
+		 * The meta object literal for the '<em><b>Allocated System Functions</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SYSTEM_COMPONENT__ALLOCATED_SYSTEM_FUNCTIONS = eINSTANCE.getSystemComponent_AllocatedSystemFunctions();
 
 	}
 

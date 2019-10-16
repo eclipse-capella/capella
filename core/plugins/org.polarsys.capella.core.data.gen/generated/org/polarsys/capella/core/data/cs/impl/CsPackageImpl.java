@@ -6029,6 +6029,8 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		  (getBlockArchitecture_System(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "freeform", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "pattern BlockArchitecture__system(self : BlockArchitecture, target : Component) {\r\n\tfind SystemAnalysis__system(self, target);\r\n} or {\r\n\tfind LogicalArchitecture__system(self, target);\r\n} or {\r\n\tfind PhysicalArchitecture__system(self, target);\r\n} or {\r\n\tfind EPBSArchitecture__system(self, target);\r\n}\r\n\r\npattern SystemAnalysis__system(self : SystemAnalysis, target : SystemComponent) {\r\n\tSystemAnalysis.ownedSystemComponentPkg(self, pckg);\r\n\tSystemComponentPkg.ownedSystemComponents(pckg, target);\r\n\tComponent.actor(target, false);\r\n}\r\n\r\npattern LogicalArchitecture__system(self : LogicalArchitecture, target : LogicalComponent) {\r\n\tLogicalArchitecture.ownedLogicalComponentPkg(self, pckg);\r\n\tLogicalComponentPkg.ownedLogicalComponents(pckg, target);\r\n\tComponent.actor(target, false);\r\n}\r\n\r\npattern PhysicalArchitecture__system(self : PhysicalArchitecture, target : PhysicalComponent) {\r\n\tPhysicalArchitecture.ownedPhysicalComponentPkg(self, pckg);\r\n\tPhysicalComponentPkg.ownedPhysicalComponents(pckg, target);\r\n\tComponent.actor(target, false);\r\n}\r\n\r\npattern EPBSArchitecture__system(self : EPBSArchitecture, target : ConfigurationItem) {\r\n\tEPBSArchitecture.ownedConfigurationItemPkg(self, pckg);\r\n\tConfigurationItemPkg.ownedConfigurationItems(pckg, target);\r\n\tComponent.actor(target, false);\r\n}" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponent_UsedInterfaceLinks(), 
@@ -6062,15 +6064,15 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		  (getComponent_RealizedComponents(), 
 		   source, 
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "provisionedComponentAllocations.allocatedComponent" //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "Component.outgoingTraces(self, outgoingTraces);\r\nComponentRealization.realizedComponent(outgoingTraces, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponent_RealizingComponents(), 
 		   source, 
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "provisioningComponentAllocations.allocatingComponent" //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "Component.incomingTraces(self, incomingTraces);\r\nComponentRealization.realizingComponent(incomingTraces, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponent_ProvidedInterfaces(), 
@@ -6111,6 +6113,8 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		  (getComponent_RepresentingParts(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "typedElements" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getPart_ProvidedInterfaces(), 

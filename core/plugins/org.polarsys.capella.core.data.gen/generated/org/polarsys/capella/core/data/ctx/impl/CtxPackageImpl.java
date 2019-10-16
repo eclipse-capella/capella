@@ -902,6 +902,15 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getSystemComponent_AllocatedSystemFunctions() {
+		return (EReference)systemComponentEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CtxFactory getCtxFactory() {
 		return (CtxFactory)getEFactoryInstance();
 	}
@@ -1005,6 +1014,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 		createEReference(systemComponentEClass, SYSTEM_COMPONENT__MISSION_INVOLVEMENTS);
 		createEReference(systemComponentEClass, SYSTEM_COMPONENT__REALIZED_ENTITIES);
 		createEReference(systemComponentEClass, SYSTEM_COMPONENT__REALIZING_LOGICAL_COMPONENTS);
+		createEReference(systemComponentEClass, SYSTEM_COMPONENT__ALLOCATED_SYSTEM_FUNCTIONS);
 	}
 
 	/**
@@ -1143,6 +1153,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 		initEReference(getSystemComponent_MissionInvolvements(), this.getMissionInvolvement(), null, "missionInvolvements", null, 0, -1, SystemComponent.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getSystemComponent_RealizedEntities(), theOaPackage.getEntity(), null, "realizedEntities", null, 0, -1, SystemComponent.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getSystemComponent_RealizingLogicalComponents(), theLaPackage.getLogicalComponent(), null, "realizingLogicalComponents", null, 0, -1, SystemComponent.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getSystemComponent_AllocatedSystemFunctions(), this.getSystemFunction(), null, "allocatedSystemFunctions", null, 0, -1, SystemComponent.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		// Create resource
 		createResource(eNS_URI);
@@ -1941,6 +1952,11 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 		   });	
 		addAnnotation
 		  (getSystemComponent_RealizingLogicalComponents(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getSystemComponent_AllocatedSystemFunctions(), 
 		   source, 
 		   new String[] {
 		   });
@@ -2772,6 +2788,14 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getSystemComponent_AllocatedSystemFunctions(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -2918,7 +2942,7 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 		   source, 
 		   new String[] {
 			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "ComponentFunctionalAllocation.targetElement(cfa, self);\r\nComponentFunctionalAllocation.sourceElement(cfa, target);" //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "SystemFunction.incomingTraces(self, traces);\r\nComponentFunctionalAllocation.sourceElement(traces, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getSystemFunction_RealizedOperationalActivities(), 
@@ -2980,6 +3004,8 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 		  (getMission_InvolvedSystemComponents(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "Mission.ownedMissionInvolvements(self, missionInvolvements);\r\nMissionInvolvement.systemComponent(missionInvolvements, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getMission_ExploitedCapabilities(), 
@@ -2992,6 +3018,8 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 		  (getCapability_InvolvedSystemComponents(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "Capability.ownedCapabilityInvolvements(self, involvements);\r\nCapabilityInvolvement.systemComponent(involvements, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getCapability_Purposes(), 
@@ -3032,6 +3060,8 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 		  (getSystemComponent_InvolvingCapabilities(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "SystemComponent.capabilityInvolvements(self, capabilityInvolvements);\r\nCapabilityInvolvement.involver(capabilityInvolvements, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getSystemComponent_CapabilityInvolvements(), 
@@ -3042,21 +3072,36 @@ public class CtxPackageImpl extends EPackageImpl implements CtxPackage {
 		  (getSystemComponent_InvolvingMissions(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "SystemComponent.missionInvolvements(self, missionInvolvements);\r\nMissionInvolvement.involver(missionInvolvements, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getSystemComponent_MissionInvolvements(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "involvingInvolvements" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getSystemComponent_RealizedEntities(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "realizingComponents" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getSystemComponent_RealizingLogicalComponents(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "realizingComponents" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getSystemComponent_AllocatedSystemFunctions(), 
+		   source, 
+		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "allocatedFunctions" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 

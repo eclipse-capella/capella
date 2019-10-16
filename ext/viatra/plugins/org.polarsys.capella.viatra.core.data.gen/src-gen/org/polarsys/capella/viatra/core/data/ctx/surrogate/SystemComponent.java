@@ -14,6 +14,7 @@ package org.polarsys.capella.viatra.core.data.ctx.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
+import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__allocatedSystemFunctions;
 import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__capabilityInvolvements;
 import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__involvingCapabilities;
 import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__involvingMissions;
@@ -35,6 +36,7 @@ import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__real
  * <li>SystemComponent__realizingLogicalComponents</li>
  * <li>SystemComponent__realizedEntities</li>
  * <li>SystemComponent__capabilityInvolvements</li>
+ * <li>SystemComponent__allocatedSystemFunctions</li>
  * </ul>
  * 
  * @see IQueryGroup
@@ -65,6 +67,7 @@ public final class SystemComponent extends BaseGeneratedPatternGroup {
     querySpecifications.add(SystemComponent__realizingLogicalComponents.instance());
     querySpecifications.add(SystemComponent__realizedEntities.instance());
     querySpecifications.add(SystemComponent__capabilityInvolvements.instance());
+    querySpecifications.add(SystemComponent__allocatedSystemFunctions.instance());
   }
   
   public SystemComponent__involvingMissions getSystemComponent__involvingMissions() {
@@ -113,5 +116,13 @@ public final class SystemComponent extends BaseGeneratedPatternGroup {
   
   public SystemComponent__capabilityInvolvements.Matcher getSystemComponent__capabilityInvolvements(final ViatraQueryEngine engine) {
     return SystemComponent__capabilityInvolvements.Matcher.on(engine);
+  }
+  
+  public SystemComponent__allocatedSystemFunctions getSystemComponent__allocatedSystemFunctions() {
+    return SystemComponent__allocatedSystemFunctions.instance();
+  }
+  
+  public SystemComponent__allocatedSystemFunctions.Matcher getSystemComponent__allocatedSystemFunctions(final ViatraQueryEngine engine) {
+    return SystemComponent__allocatedSystemFunctions.Matcher.on(engine);
   }
 }

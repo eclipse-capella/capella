@@ -84,7 +84,7 @@ public interface SystemFunction extends AbstractFunction {
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Components that allocate this System Function.' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='ComponentFunctionalAllocation.targetElement(cfa, self);\r\nComponentFunctionalAllocation.sourceElement(cfa, target);'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='SystemFunction.incomingTraces(self, traces);\r\nComponentFunctionalAllocation.sourceElement(traces, target);'"
 	 * @generated
 	 */
 

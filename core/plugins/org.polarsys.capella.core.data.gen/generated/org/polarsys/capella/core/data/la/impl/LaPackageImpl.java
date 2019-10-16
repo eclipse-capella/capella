@@ -2043,7 +2043,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 		   source, 
 		   new String[] {
 			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "LogicalFunction.incomingTraces(self, cfa);\r\nComponentFunctionalAllocation.sourceElement(cfa, target);" //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "LogicalFunction.incomingTraces(self, traces);\r\nComponentFunctionalAllocation.sourceElement(traces, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getLogicalFunction_RealizedSystemFunctions(), 
@@ -2092,7 +2092,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 		   source, 
 		   new String[] {
 			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "allocatingComponents" //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "realizedComponents" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getLogicalComponent_RealizingPhysicalComponents(), 
@@ -2105,6 +2105,8 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 		  (getCapabilityRealization_InvolvedComponents(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "CapabilityRealization.ownedCapabilityRealizationInvolvements(self, involvements);\r\nCapabilityRealizationInvolvement.involvedCapabilityRealizationInvolvedElement(involvements, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getCapabilityRealization_RealizedCapabilities(), 

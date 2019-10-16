@@ -705,7 +705,7 @@ public final class CommunicationLinkExchanger__send extends BaseGeneratedEMFQuer
           new Equality(body, var__virtual_0_, var_target);
           // CommunicationLink.kind(target, ::SEND)
           PVariable var__virtual_1_ = body.getOrCreateVariableByName(".virtual{1}");
-          new ConstantValue(body, var__virtual_1_, getEnumLiteral("http://www.polarsys.org/capella/core/information/communication/1.4.0", "CommunicationLinkKind", "SEND").getInstance());
+          new ConstantValue(body, var__virtual_1_, org.polarsys.capella.core.data.information.communication.CommunicationLinkKind.get("SEND"));
           new TypeConstraint(body, Tuples.flatTupleOf(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/information/communication/1.4.0", "CommunicationLink")));
           PVariable var__virtual_2_ = body.getOrCreateVariableByName(".virtual{2}");
           new TypeConstraint(body, Tuples.flatTupleOf(var_target, var__virtual_2_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/information/communication/1.4.0", "CommunicationLink", "kind")));

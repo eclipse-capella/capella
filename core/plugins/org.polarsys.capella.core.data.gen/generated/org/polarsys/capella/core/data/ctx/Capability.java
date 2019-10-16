@@ -84,6 +84,7 @@ public interface Capability extends AbstractCapability {
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getCapability_InvolvedSystemComponents()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='System Components that are involved in this Capability' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Capability.ownedCapabilityInvolvements(self, involvements);\r\nCapabilityInvolvement.systemComponent(involvements, target);'"
 	 * @generated
 	 */
 

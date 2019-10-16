@@ -707,7 +707,7 @@ public final class ComponentPort__delegatingComponentPorts extends BaseGenerated
           new Equality(body, var__virtual_0_, var_ce);
           // ComponentExchange.kind(ce, ::DELEGATION)
           PVariable var__virtual_1_ = body.getOrCreateVariableByName(".virtual{1}");
-          new ConstantValue(body, var__virtual_1_, getEnumLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "ComponentExchangeKind", "DELEGATION").getInstance());
+          new ConstantValue(body, var__virtual_1_, org.polarsys.capella.core.data.fa.ComponentExchangeKind.get("DELEGATION"));
           new TypeConstraint(body, Tuples.flatTupleOf(var_ce), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "ComponentExchange")));
           PVariable var__virtual_2_ = body.getOrCreateVariableByName(".virtual{2}");
           new TypeConstraint(body, Tuples.flatTupleOf(var_ce, var__virtual_2_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "ComponentExchange", "kind")));

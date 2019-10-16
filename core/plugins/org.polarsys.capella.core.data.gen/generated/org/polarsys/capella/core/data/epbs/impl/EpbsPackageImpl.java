@@ -1369,6 +1369,8 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 		  (getPhysicalArtifactRealization_RealizedPhysicalArtifact(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "targetElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getPhysicalArtifactRealization_RealizingConfigurationItem(), 

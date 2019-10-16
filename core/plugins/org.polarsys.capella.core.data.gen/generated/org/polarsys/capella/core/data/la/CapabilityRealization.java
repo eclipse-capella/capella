@@ -84,6 +84,7 @@ public interface CapabilityRealization extends AbstractCapability {
 	 * @see org.polarsys.capella.core.data.la.LaPackage#getCapabilityRealization_InvolvedComponents()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Components that are involved in this Capability Realization' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='CapabilityRealization.ownedCapabilityRealizationInvolvements(self, involvements);\r\nCapabilityRealizationInvolvement.involvedCapabilityRealizationInvolvedElement(involvements, target);'"
 	 * @generated
 	 */
 

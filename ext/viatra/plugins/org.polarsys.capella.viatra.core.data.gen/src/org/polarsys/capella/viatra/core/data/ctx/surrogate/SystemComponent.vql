@@ -21,6 +21,7 @@ import "http://www.polarsys.org/capella/core/la/1.4.0"
 import "http://www.polarsys.org/capella/core/core/1.4.0"
 import "http://www.polarsys.org/capella/core/cs/1.4.0"
 import "http://www.polarsys.org/capella/core/oa/1.4.0"
+import "http://www.polarsys.org/capella/core/fa/1.4.0"
 
 // End of user code
 
@@ -55,5 +56,10 @@ pattern SystemComponent__realizedEntities(self : SystemComponent, target : Entit
 @Surrogate(feature="capabilityInvolvements")
 pattern SystemComponent__capabilityInvolvements(self : SystemComponent, target : CapabilityInvolvement) {
 	SystemComponent.involvingInvolvements(self, target);
+}
+
+@Surrogate(feature="allocatedSystemFunctions")
+pattern SystemComponent__allocatedSystemFunctions(self : SystemComponent, target : SystemFunction) {
+	SystemComponent.allocatedFunctions(self, target);
 }
 

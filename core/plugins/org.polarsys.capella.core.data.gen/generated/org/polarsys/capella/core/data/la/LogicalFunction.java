@@ -87,7 +87,7 @@ public interface LogicalFunction extends AbstractFunction {
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Logical components that allocate this Logical Function' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='LogicalFunction.incomingTraces(self, cfa);\r\nComponentFunctionalAllocation.sourceElement(cfa, target);'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='LogicalFunction.incomingTraces(self, traces);\r\nComponentFunctionalAllocation.sourceElement(traces, target);'"
 	 * @generated
 	 */
 

@@ -81,6 +81,7 @@ public class SystemComponentItemProvider
 			addMissionInvolvementsPropertyDescriptor(object);
 			addRealizedEntitiesPropertyDescriptor(object);
 			addRealizingLogicalComponentsPropertyDescriptor(object);
+			addAllocatedSystemFunctionsPropertyDescriptor(object);
 		}
 		// begin-extension-code
 		checkChildCreationExtender(object);
@@ -321,6 +322,33 @@ public class SystemComponentItemProvider
 				 getString("_UI_SystemComponent_realizingLogicalComponents_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_SystemComponent_realizingLogicalComponents_feature", "_UI_SystemComponent_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 CtxPackage.Literals.SYSTEM_COMPONENT__REALIZING_LOGICAL_COMPONENTS,
+				 false,
+				 false,
+				 false,
+				 null,
+				 null,
+		// begin-extension-code
+				 null));
+		// end-extension-code
+	}
+
+	/**
+	 * This adds a property descriptor for the Allocated System Functions feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAllocatedSystemFunctionsPropertyDescriptor(Object object) {
+
+		// begin-extension-code
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SystemComponent_allocatedSystemFunctions_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_SystemComponent_allocatedSystemFunctions_feature", "_UI_SystemComponent_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 CtxPackage.Literals.SYSTEM_COMPONENT__ALLOCATED_SYSTEM_FUNCTIONS,
 				 false,
 				 false,
 				 false,

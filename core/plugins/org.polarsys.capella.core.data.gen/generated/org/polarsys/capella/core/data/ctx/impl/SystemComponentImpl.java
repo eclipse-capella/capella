@@ -42,6 +42,7 @@ import org.polarsys.capella.core.data.ctx.Mission;
 import org.polarsys.capella.core.data.ctx.MissionInvolvement;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
+import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.oa.Entity;
 
@@ -64,6 +65,7 @@ import org.polarsys.capella.core.data.oa.Entity;
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemComponentImpl#getMissionInvolvements <em>Mission Involvements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemComponentImpl#getRealizedEntities <em>Realized Entities</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemComponentImpl#getRealizingLogicalComponents <em>Realizing Logical Components</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemComponentImpl#getAllocatedSystemFunctions <em>Allocated System Functions</em>}</li>
  * </ul>
  *
  * @generated
@@ -566,6 +568,49 @@ public class SystemComponentImpl extends ComponentImpl implements SystemComponen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+
+	public EList<SystemFunction> getAllocatedSystemFunctions() {
+
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = CtxPackage.Literals.SYSTEM_COMPONENT__ALLOCATED_SYSTEM_FUNCTIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, CtxPackage.Literals.SYSTEM_COMPONENT__ALLOCATED_SYSTEM_FUNCTIONS, annotation);
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<SystemFunction> resultAsList = (Collection<SystemFunction>) result;
+		return new EcoreEList.UnmodifiableEList<SystemFunction>(this, CtxPackage.Literals.SYSTEM_COMPONENT__ALLOCATED_SYSTEM_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -607,6 +652,8 @@ public class SystemComponentImpl extends ComponentImpl implements SystemComponen
 				return getRealizedEntities();
 			case CtxPackage.SYSTEM_COMPONENT__REALIZING_LOGICAL_COMPONENTS:
 				return getRealizingLogicalComponents();
+			case CtxPackage.SYSTEM_COMPONENT__ALLOCATED_SYSTEM_FUNCTIONS:
+				return getAllocatedSystemFunctions();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -696,6 +743,8 @@ public class SystemComponentImpl extends ComponentImpl implements SystemComponen
 				return !getRealizedEntities().isEmpty();
 			case CtxPackage.SYSTEM_COMPONENT__REALIZING_LOGICAL_COMPONENTS:
 				return !getRealizingLogicalComponents().isEmpty();
+			case CtxPackage.SYSTEM_COMPONENT__ALLOCATED_SYSTEM_FUNCTIONS:
+				return !getAllocatedSystemFunctions().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

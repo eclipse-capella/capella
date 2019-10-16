@@ -81,6 +81,7 @@ public interface Mission extends NamedElement, InvolverElement {
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getMission_InvolvedSystemComponents()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='System Components that are involved in this Mission' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Mission.ownedMissionInvolvements(self, missionInvolvements);\r\nMissionInvolvement.systemComponent(missionInvolvements, target);'"
 	 * @generated
 	 */
 

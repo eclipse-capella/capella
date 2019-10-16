@@ -384,6 +384,9 @@
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemAnalysis__containedSystemFunctionPkg" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="SystemAnalysis" feature-name="containedSystemFunctionPkg" package-nsUri="http://www.polarsys.org/capella/core/ctx/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemAnalysis__containedSystemFunctionPkg" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemAnalysis__containedSystemFunctionPkg"/>
   </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__allocatedSystemFunctions" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="SystemComponent" feature-name="allocatedSystemFunctions" package-nsUri="http://www.polarsys.org/capella/core/ctx/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__allocatedSystemFunctions" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__allocatedSystemFunctions"/>
+  </extension>
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__capabilityInvolvements" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="SystemComponent" feature-name="capabilityInvolvements" package-nsUri="http://www.polarsys.org/capella/core/ctx/1.4.0" query-fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__capabilityInvolvements" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__capabilityInvolvements"/>
   </extension>
@@ -1523,6 +1526,7 @@
       <query-specification fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__realizingLogicalComponents"/>
       <query-specification fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__realizedEntities"/>
       <query-specification fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__capabilityInvolvements"/>
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemComponent__allocatedSystemFunctions"/>
     </group>
   </extension>
   <extension id="org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction" point="org.eclipse.viatra.query.runtime.queryspecification">

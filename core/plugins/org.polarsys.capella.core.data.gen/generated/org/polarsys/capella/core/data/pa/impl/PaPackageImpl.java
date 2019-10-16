@@ -2514,7 +2514,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 		   source, 
 		   new String[] {
 			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "PhysicalFunction.incomingTraces(self, cfa);\r\nComponentFunctionalAllocation.sourceElement(cfa, target);" //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "PhysicalFunction.incomingTraces(self, incomingTraces);\r\nComponentFunctionalAllocation.sourceElement(incomingTraces, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getPhysicalFunction_RealizedLogicalFunctions(), 

@@ -24,6 +24,8 @@ import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.Mission;
 import org.polarsys.capella.core.data.ctx.MissionInvolvement;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
+import org.polarsys.capella.core.data.ctx.SystemFunction;
+import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.InvolvedElementHelper;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.oa.Entity;
@@ -56,6 +58,8 @@ public class SystemComponentHelper {
       ret = getRealizedEntities(element);
     } else if (feature.equals(CtxPackage.Literals.SYSTEM_COMPONENT__REALIZING_LOGICAL_COMPONENTS)) {
       ret = getRealizingLogicalComponents(element);
+    } else if (feature.equals(CtxPackage.Literals.SYSTEM_COMPONENT__ALLOCATED_SYSTEM_FUNCTIONS)) {
+      ret = getAllocatedSystemFunctions(element);
     }
 
     // no helper found... searching in super classes...
@@ -117,5 +121,15 @@ public class SystemComponentHelper {
   protected List<LogicalComponent> getRealizingLogicalComponents(SystemComponent element) {
     return element.getRealizingComponents().stream().filter(LogicalComponent.class::isInstance)
         .map(LogicalComponent.class::cast).collect(Collectors.toList());
+  }
+  
+  protected List<SystemFunction> getAllocatedSystemFunctions(SystemComponent element) {
+    List<SystemFunction> ret = new ArrayList<>();
+    for (AbstractFunction function : element.getAllocatedFunctions()) {
+      if (function instanceof SystemFunction) {
+        ret.add((SystemFunction) function);
+      }
+    }
+    return ret;
   }
 }

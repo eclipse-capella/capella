@@ -398,6 +398,7 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemComponent/missionInvolvements"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemComponent/realizedEntities"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemComponent/realizingLogicalComponents"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemComponent/allocatedSystemFunctions"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="La" basePackage="org.polarsys.capella.core.data" resource="XMI"
@@ -594,8 +595,8 @@
     <genClasses ecoreClass="EPBSArchitecture.ecore#//ConfigurationItem">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EPBSArchitecture.ecore#//ConfigurationItem/itemIdentifier"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EPBSArchitecture.ecore#//ConfigurationItem/kind"/>
-      <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//ConfigurationItem/ownedConfigurationItems"/>
-      <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//ConfigurationItem/ownedConfigurationItemPkgs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//ConfigurationItem/ownedConfigurationItems"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//ConfigurationItem/ownedConfigurationItemPkgs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//ConfigurationItem/ownedPhysicalArtifactRealizations"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//ConfigurationItem/allocatedPhysicalArtifacts"/>
     </genClasses>

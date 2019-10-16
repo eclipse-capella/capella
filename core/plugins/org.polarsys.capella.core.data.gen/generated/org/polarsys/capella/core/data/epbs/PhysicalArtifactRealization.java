@@ -44,6 +44,7 @@ public interface PhysicalArtifactRealization extends Allocation {
 	 * @return the value of the '<em>Realized Physical Artifact</em>' reference.
 	 * @see org.polarsys.capella.core.data.epbs.EpbsPackage#getPhysicalArtifactRealization_RealizedPhysicalArtifact()
 	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='targetElement'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the allocated architecture\r\n[source: Capella study]\r\n\r\nSpecifies the targets of the DirectedRelationship.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 * @generated
 	 */

@@ -150,12 +150,13 @@ public class GenerateGenModelsTask implements ITaskProduction {
 							for (GenClass genClass : pack.getGenClasses()) {
 								String className = genClass.getEcoreClass().getName();
 
-								if ("ConfigurationItem".equals(className) || "ConfigurationItemPkg".equals(className)) {
+								if ("ConfigurationItemPkg".equals(className)) {
 									for (GenFeature genFeature : genClass.getGenFeatures()) {
 										if ("ownedConfigurationItems".equals(genFeature.getEcoreFeature().getName())) {
 											genFeature.setCreateChild(false);
 										} 
-                    else if ("ownedConfigurationItemPkgs".equals(genFeature.getEcoreFeature().getName())) {
+										else if ("ownedConfigurationItemPkgs"
+												.equals(genFeature.getEcoreFeature().getName())) {
 											genFeature.setCreateChild(false);
 										}
 									}

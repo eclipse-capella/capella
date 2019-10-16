@@ -343,7 +343,7 @@ public interface Entity extends AbstractConceptItem, InformationsExchanger, Invo
 	 * @see org.polarsys.capella.core.data.oa.OaPackage#getEntity_RealizingSystemComponents()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='System Components that realize this Entity' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Entity.involvingInvolvements(self, eoci);\r\nEntityOperationalCapabilityInvolvement.capability(eoci, target);'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='realizingComponents'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 * @generated
 	 */

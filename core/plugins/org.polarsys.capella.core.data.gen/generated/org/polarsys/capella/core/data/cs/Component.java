@@ -362,7 +362,7 @@ public interface Component extends Block, Classifier, InterfaceAllocator, Commun
 	 * @return the value of the '<em>Realized Components</em>' reference list.
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getComponent_RealizedComponents()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='provisionedComponentAllocations.allocatedComponent'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Component.outgoingTraces(self, outgoingTraces);\r\nComponentRealization.realizedComponent(outgoingTraces, target);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) direct references to the components being allocated from this component\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -389,7 +389,7 @@ public interface Component extends Block, Classifier, InterfaceAllocator, Commun
 	 * @return the value of the '<em>Realizing Components</em>' reference list.
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getComponent_RealizingComponents()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='provisioningComponentAllocations.allocatingComponent'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Component.incomingTraces(self, incomingTraces);\r\nComponentRealization.realizingComponent(incomingTraces, target);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) direct references to the components allocating this component\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
@@ -632,6 +632,7 @@ public interface Component extends Block, Classifier, InterfaceAllocator, Commun
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getComponent_RepresentingParts()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Parts that represent this Component' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='typedElements'"
 	 * @generated
 	 */
 

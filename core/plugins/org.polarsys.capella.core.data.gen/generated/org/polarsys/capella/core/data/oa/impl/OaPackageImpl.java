@@ -4041,8 +4041,8 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 		  (getEntity_RealizingSystemComponents(), 
 		   source, 
 		   new String[] {
-			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "Entity.involvingInvolvements(self, eoci);\r\nEntityOperationalCapabilityInvolvement.capability(eoci, target);" //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "realizingComponents" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getCommunicationMean_SourceEntity(), 

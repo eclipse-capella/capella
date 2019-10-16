@@ -39,6 +39,7 @@ import org.polarsys.capella.core.data.oa.Entity;
  *   <li>{@link org.polarsys.capella.core.data.ctx.SystemComponent#getMissionInvolvements <em>Mission Involvements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.SystemComponent#getRealizedEntities <em>Realized Entities</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.SystemComponent#getRealizingLogicalComponents <em>Realizing Logical Components</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.ctx.SystemComponent#getAllocatedSystemFunctions <em>Allocated System Functions</em>}</li>
  * </ul>
  *
  * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent()
@@ -180,6 +181,7 @@ public interface SystemComponent extends Component, InvolvedElement {
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_InvolvingCapabilities()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Capabilities that involve this System Component' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='SystemComponent.capabilityInvolvements(self, capabilityInvolvements);\r\nCapabilityInvolvement.involver(capabilityInvolvements, target);'"
 	 * @generated
 	 */
 
@@ -230,6 +232,7 @@ public interface SystemComponent extends Component, InvolvedElement {
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_InvolvingMissions()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Missions that involve this System Component' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='SystemComponent.missionInvolvements(self, missionInvolvements);\r\nMissionInvolvement.involver(missionInvolvements, target);'"
 	 * @generated
 	 */
 
@@ -255,6 +258,7 @@ public interface SystemComponent extends Component, InvolvedElement {
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_MissionInvolvements()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The Mission Involvement relationships in which this element is referenced' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involvingInvolvements'"
 	 * @generated
 	 */
 
@@ -277,6 +281,7 @@ public interface SystemComponent extends Component, InvolvedElement {
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_RealizedEntities()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Entities that are realized by this System Component' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='realizingComponents'"
 	 * @generated
 	 */
 
@@ -299,10 +304,34 @@ public interface SystemComponent extends Component, InvolvedElement {
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_RealizingLogicalComponents()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Logical Components that realize this System Components' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='realizingComponents'"
 	 * @generated
 	 */
 
 	EList<LogicalComponent> getRealizingLogicalComponents();
+
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Allocated System Functions</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.SystemFunction}.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Allocated System Functions</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Allocated System Functions</em>' reference list.
+	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemComponent_AllocatedSystemFunctions()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatedFunctions'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 * @generated
+	 */
+
+	EList<SystemFunction> getAllocatedSystemFunctions();
 
 
 
