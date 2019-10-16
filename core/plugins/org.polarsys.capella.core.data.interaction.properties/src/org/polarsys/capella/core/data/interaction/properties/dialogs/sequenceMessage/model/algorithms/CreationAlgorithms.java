@@ -72,7 +72,7 @@ public class CreationAlgorithms {
         tgt instanceof Component &&
         !((Component) src).isActor() &&
         !((Component) tgt).isActor()) {
-      container = ComponentExt.getFirstCommonComponentAncestor(src, tgt);
+      container = ComponentExt.getFirstCommonComponentOrPkgAncestor(src, tgt);
     }
     if(src instanceof SystemComponentPkg && tgt instanceof SystemComponentPkg) {
       container = ComponentExt.getRootBlockArchitecture((SystemComponentPkg) src);

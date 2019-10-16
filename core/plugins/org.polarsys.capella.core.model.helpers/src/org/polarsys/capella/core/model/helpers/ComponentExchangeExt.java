@@ -429,11 +429,12 @@ public final class ComponentExchangeExt {
    * @return a not null element
    */
   public static CapellaElement getDefaultContainer(CapellaElement sourcePart, CapellaElement targetPart) {
-    EObject container = ComponentExt.getFirstCommonComponentAncestor(sourcePart, targetPart);
-    if ((container != null) && !(container instanceof AbstractFunctionalBlock)) {
-      container = EcoreUtil2.getFirstContainer(container, FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK);
+    EObject container = ComponentExt.getFirstCommonComponentOrPkgAncestor(sourcePart, targetPart);
+
+    if ((container != null) && !(container instanceof AbstractFunctionalBlock) && !(container instanceof ComponentPkg)) {
+      container = EcoreUtil2.getFirstContainer(container, Arrays.asList(FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK, CsPackage.Literals.COMPONENT_PKG));
     }
-    if ((container == null) || !(container instanceof AbstractFunctionalBlock)) {
+    if (!(container instanceof AbstractFunctionalBlock) && !(container instanceof ComponentPkg)) {
       container = BlockArchitectureExt.getComponentPkg(ComponentExt.getRootBlockArchitecture(sourcePart), true);
     }
     return (CapellaElement) container;
@@ -459,46 +460,6 @@ public final class ComponentExchangeExt {
     }
 
     return getDefaultContainer(source, target);
-  }
-
-  /**
-   * The best container for storing a category for the given exchange
-   * @param exchange
-   * @return
-   */
-  public static AbstractFunctionalBlock getDefaultContainerForCategory(ComponentExchange exchange) {
-    CapellaElement source = ComponentExchangeExt.getSourceComponent(exchange);
-    Collection<Part> parts = ComponentExchangeExt.getSourceParts(exchange);
-    if (!parts.isEmpty()) {
-      source = parts.iterator().next();
-    }
-
-    CapellaElement target = ComponentExchangeExt.getTargetComponent(exchange);
-    parts = ComponentExchangeExt.getTargetParts(exchange);
-    if (!parts.isEmpty()) {
-      target = parts.iterator().next();
-    }
-
-    return getDefaultContainerForCategory(source, target);
-  }
-
-  /**
-   * Return the best container for storing a category for an exchange between both given elements
-   * @param sourcePart
-   * @param targetPart
-   * @return
-   */
-  public static AbstractFunctionalBlock getDefaultContainerForCategory(CapellaElement sourcePart, CapellaElement targetPart) {
-    EObject container = ComponentExt.getFirstCommonComponentAncestor(sourcePart, targetPart);
-    if ((container != null) && !(container instanceof AbstractFunctionalBlock)) {
-      container =
-          EcoreUtil2.getFirstContainer(container,
-              Arrays.asList(FaPackage.eINSTANCE.getAbstractFunctionalBlock(), CsPackage.eINSTANCE.getComponentPkg()));
-    }
-    if ((container == null) || !(container instanceof AbstractFunctionalBlock)) {
-      container = BlockArchitectureExt.getContext(ComponentExt.getRootBlockArchitecture(sourcePart));
-    }
-    return (AbstractFunctionalBlock) container;
   }
 
   public static Collection<? extends ComponentExchange> getDelegatedComponentExchanges(ComponentPort port, ComponentExchange delegation) {

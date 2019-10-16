@@ -12,6 +12,7 @@
 package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -26,9 +27,12 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.Feature;
+import org.polarsys.capella.core.data.capellacore.Namespace;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.AbstractPhysicalLinkEnd;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
+import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.DeployableElement;
 import org.polarsys.capella.core.data.cs.DeploymentTarget;
 import org.polarsys.capella.core.data.cs.Part;
@@ -49,9 +53,13 @@ import org.polarsys.capella.core.data.pa.PaPackage;
  */
 public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt {
 
-  public static boolean attachTo(PhysicalLink link, Component container) {
+  public static boolean attachTo(PhysicalLink link, CapellaElement container) {
     if ((container != null) && !container.equals(link.eContainer())) {
-      (container).getOwnedPhysicalLinks().add(link);
+      if (container instanceof Component) {
+        ((Component) container).getOwnedPhysicalLinks().add(link);
+      } else if (container instanceof ComponentPkg) {
+        ((ComponentPkg) container).getOwnedPhysicalLinks().add(link);
+      }
       return true;
     }
     return false;
@@ -72,15 +80,16 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
    * @param targetPart a part or a component
    * @return a not null element
    */
-  public static Component getDefaultContainer(CapellaElement sourcePart, CapellaElement targetPart) {
-    EObject container = ComponentExt.getFirstCommonComponentAncestor(sourcePart, targetPart);
-    if ((container != null) && !(container instanceof Component)) {
-      container = EcoreUtil2.getFirstContainer(container, PaPackage.Literals.PHYSICAL_COMPONENT);
+  public static Namespace getDefaultContainer(CapellaElement sourcePart, CapellaElement targetPart) {
+    EObject container = ComponentExt.getFirstCommonComponentOrPkgAncestor(sourcePart, targetPart);
+
+    if ((container != null) && !(container instanceof Component) && !(container instanceof ComponentPkg)) {
+      container = EcoreUtil2.getFirstContainer(container, Arrays.asList(PaPackage.Literals.PHYSICAL_COMPONENT, CsPackage.Literals.COMPONENT_PKG));
     }
-    if ((container == null) || !(container instanceof Component)) {
-      container = BlockArchitectureExt.getOrCreateSystem(ComponentExt.getRootBlockArchitecture(sourcePart));
+    if (!(container instanceof Component) && !(container instanceof ComponentPkg)) {
+      container = BlockArchitectureExt.getComponentPkg(ComponentExt.getRootBlockArchitecture(sourcePart), true);
     }
-    return (Component) container;
+    return (Namespace) container;
   }
 
   /**
@@ -89,7 +98,7 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
    * @param link
    * @return a not null element
    */
-  public static Component getDefaultContainer(PhysicalLink link) {
+  public static Namespace getDefaultContainer(PhysicalLink link) {
     CapellaElement source = org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getSourceComponent(link);
     Collection<Part> parts = org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getSourceParts(link);
     if (!parts.isEmpty()) {
@@ -112,12 +121,13 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
    * @return
    */
   public static AbstractFunctionalBlock getDefaultContainerForCategory(CapellaElement sourcePart, CapellaElement targetPart) {
-    EObject container = ComponentExt.getFirstCommonComponentAncestor(sourcePart, targetPart);
-    if ((container != null) && !(container instanceof AbstractFunctionalBlock)) {
-      container = EcoreUtil2.getFirstContainer(container, FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK);
+    EObject container = ComponentExt.getFirstCommonComponentOrPkgAncestor(sourcePart, targetPart);
+    if (!(container instanceof AbstractFunctionalBlock) && !(container instanceof ComponentPkg)) {
+      container = EcoreUtil2.getFirstContainer(container,
+          Arrays.asList(FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK, CsPackage.Literals.COMPONENT_PKG));
     }
-    if ((container == null) || !(container instanceof AbstractFunctionalBlock)) {
-      container = BlockArchitectureExt.getOrCreateSystem(ComponentExt.getRootBlockArchitecture(sourcePart));
+    if (!(container instanceof AbstractFunctionalBlock) && !(container instanceof ComponentPkg)) {
+      container = BlockArchitectureExt.getComponentPkg(ComponentExt.getRootBlockArchitecture(sourcePart), true);
     }
     return (AbstractFunctionalBlock) container;
   }

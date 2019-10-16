@@ -987,10 +987,10 @@ public class ComponentExt {
 
   /**
    * Retrieve the first common component ancestor for two elements with eClass = Port part or component return the
-   * common component ancestor between source and target if source is target, return the c1 unlike
+   * common Component or ComponentPkg ancestor between source and target if source is target, return the c1 unlike
    * getCommonComponentAncestor
    */
-  public static EObject getFirstCommonComponentAncestor(EObject source, EObject target, boolean useDeployementLinks) {
+  public static EObject getFirstCommonComponentOrPkgAncestor(EObject source, EObject target, boolean useDeployementLinks) {
     if ((source == null) || (target == null)) {
       return null;
     }
@@ -999,11 +999,11 @@ public class ComponentExt {
     EObject tgt = target;
     EObject result = null;
 
-    LinkedList<EObject> sourceList = new LinkedList<EObject>();
-    Collection<EObject> sourceListVisited = new HashSet<EObject>();
+    LinkedList<EObject> sourceList = new LinkedList<>();
+    Collection<EObject> sourceListVisited = new HashSet<>();
 
-    ArrayList<EObject> targetList = new ArrayList<EObject>();
-    Collection<EObject> targetListVisited = new HashSet<EObject>();
+    ArrayList<EObject> targetList = new ArrayList<>();
+    Collection<EObject> targetListVisited = new HashSet<>();
 
     // Retrieve ordonned list of containers for the target
     int i = 0;
@@ -1022,7 +1022,7 @@ public class ComponentExt {
 
     // Find for containers of source, if one is equals to one targetContainers
     sourceList.add(src);
-    while (sourceList.size() > 0) {
+    while (!sourceList.isEmpty()) {
       EObject sourceContainer = sourceList.removeFirst();
       if (sourceContainer == null) {
         continue;
@@ -1060,8 +1060,8 @@ public class ComponentExt {
     return result;
   }
 
-  public static EObject getFirstCommonComponentAncestor(EObject source, EObject target) {
-    return getFirstCommonComponentAncestor(source, target, false);
+  public static EObject getFirstCommonComponentOrPkgAncestor(EObject source, EObject target) {
+    return getFirstCommonComponentOrPkgAncestor(source, target, false);
   }
 
   /**
@@ -1074,14 +1074,18 @@ public class ComponentExt {
     if (components == null || components.isEmpty()) {
       return null;
     }
-    Component commonAncestor = components.get(0);
+    EObject commonAncestor = components.get(0);
     for (int i = 1; i < components.size(); ++i) {
-      commonAncestor = (Component) getFirstCommonComponentAncestor(commonAncestor, components.get(i), true);
+      commonAncestor = getFirstCommonComponentOrPkgAncestor(commonAncestor, components.get(i), true);
       if (commonAncestor == null) {
         return null;
       }
     }
-    return commonAncestor;
+    if (!(commonAncestor instanceof Component)) {
+      commonAncestor = EcoreUtil2.getFirstContainer(commonAncestor, CsPackage.Literals.COMPONENT);
+    }
+    
+    return (Component) commonAncestor;
   }
 
   /**
@@ -1474,9 +1478,11 @@ public class ComponentExt {
           result.add(e);
         }
       } else {
-        result.add(EcoreUtil2.getFirstContainer(eobject, CsPackage.Literals.COMPONENT));
+        result.add(EcoreUtil2.getFirstContainer(eobject, Arrays.asList(CsPackage.Literals.COMPONENT, CsPackage.Literals.COMPONENT_PKG)));
       }
 
+    } else if (eobject instanceof ComponentPkg) {
+      result.add(EcoreUtil2.getFirstContainer(eobject, Arrays.asList(CsPackage.Literals.COMPONENT, CsPackage.Literals.COMPONENT_PKG)));
     }
 
     return result;

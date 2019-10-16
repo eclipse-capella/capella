@@ -28,6 +28,7 @@ import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.Namespace;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.Part;
@@ -223,9 +224,13 @@ public class ConnectedCatalogElementsScope implements SparseModelScope.AttachHan
       PhysicalLink sourcePL = (PhysicalLink) source;
       EObject out = getRoleElement(targetRole, sourcePL.getSourcePhysicalPort(), mapping);
       EObject in = getRoleElement(targetRole, sourcePL.getTargetPhysicalPort(), mapping);
-      Component container = PhysicalLinkExt.getDefaultContainer((CapellaElement) out.eContainer(),
+      Namespace container = PhysicalLinkExt.getDefaultContainer((CapellaElement) out.eContainer(),
           (CapellaElement) in.eContainer());
-      container.getOwnedPhysicalLinks().add((PhysicalLink) toAttach);
+      if (container instanceof Component) {
+        ((Component) container).getOwnedPhysicalLinks().add((PhysicalLink) toAttach);
+      } else if (container instanceof ComponentPkg) {
+        ((ComponentPkg) container).getOwnedPhysicalLinks().add((PhysicalLink) toAttach);
+      }
     }
 
   }

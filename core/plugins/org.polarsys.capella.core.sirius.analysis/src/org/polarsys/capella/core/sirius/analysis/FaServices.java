@@ -3256,9 +3256,9 @@ public class FaServices {
       target = PhysicalLinkExt.getTargetPort(exchange);
     }
 
-    EObject container = ComponentExt.getFirstCommonComponentAncestor(source, target);
-    if ((container == null) || !(container instanceof PhysicalComponent)) {
-      container = BlockArchitectureExt.getOrCreateSystem(ComponentExt.getRootBlockArchitecture(exchange));
+    EObject container = ComponentExt.getFirstCommonComponentOrPkgAncestor(source, target);
+    if (!(container instanceof PhysicalComponent) && !(container instanceof ComponentPkg)) {
+      container = BlockArchitectureExt.getComponentPkg(ComponentExt.getRootBlockArchitecture(exchange), true);
     }
 
     if (container != exchange.eContainer()) {

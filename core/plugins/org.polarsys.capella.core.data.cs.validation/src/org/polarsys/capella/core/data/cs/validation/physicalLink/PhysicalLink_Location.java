@@ -14,11 +14,10 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.model.helpers.PhysicalLinkExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 
 /**
  * This rule ensures correct location for a physical link
@@ -34,12 +33,10 @@ public class PhysicalLink_Location extends AbstractValidationRule {
     EObject eObj = ctx.getTarget();
     EMFEventType eType = ctx.getEventType();
 
-    if (eType == EMFEventType.NULL) {
-      if (eObj instanceof PhysicalLink) {
-        AbstractNamedElement container = PhysicalLinkExt.getDefaultContainer((PhysicalLink) eObj);
-        if ((container != null) && !(container.equals(eObj.eContainer()))) {
-          return ctx.createFailureStatus(new Object[] { ((PhysicalLink) eObj).getName(), container.getName() });
-        }
+    if (eType == EMFEventType.NULL && eObj instanceof PhysicalLink) {
+      AbstractNamedElement container = PhysicalLinkExt.getDefaultContainer((PhysicalLink) eObj);
+      if ((container != null) && !(container.equals(eObj.eContainer()))) {
+        return ctx.createFailureStatus(((PhysicalLink) eObj).getName(), container.getName());
       }
     }
     return ctx.createSuccessStatus();
