@@ -499,9 +499,9 @@
         <repositoryList
             name="2019-06">
           <repository
-              url="http://download.eclipse.org/kitalpha/updates/nightly/runtimecore/1.4.0"/>
+              url="https://download.eclipse.org/kitalpha/updates/stable/runtimecore/1.4.0RC4"/>
           <repository
-              url="https://download.eclipse.org/kitalpha/updates/nightly/sdk/1.4.x"/>
+              url="https://download.eclipse.org/kitalpha/updates/stable/sdk/1.4.0RC4"/>
           <repository
               url="http://download.eclipse.org/egf/updates/1.6.1/2019-06"/>
         </repositoryList>
