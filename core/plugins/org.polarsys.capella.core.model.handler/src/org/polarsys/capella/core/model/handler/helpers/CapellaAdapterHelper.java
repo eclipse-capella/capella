@@ -132,7 +132,12 @@ public class CapellaAdapterHelper {
         result = ((DRepresentationDescriptor) result).getTarget();
       }
 
-      adapt = Adapters.adapt(result, Element.class, true);
+      if (result != null) {
+        adapt = Adapters.adapt(result, Element.class, true);
+      } else {
+        adapt = Adapters.adapt(object, Element.class, true);
+      }
+      
       if (adapt instanceof Element) {
         result = (Element) adapt;
       }
@@ -200,7 +205,10 @@ public class CapellaAdapterHelper {
     if (result instanceof DRepresentation || result instanceof DRepresentationDescriptor) {
       return resolveEObject(result, onlySemantic, false);
     }
-    return resolveEObject(result, true, true);
+    if (result != null) {
+      return resolveEObject(result, true, true);
+    }
+    return resolveEObject(object, true, true);
   }
 
   /**
@@ -209,5 +217,4 @@ public class CapellaAdapterHelper {
   public static EObject resolveDescriptorOrBusinessObject(Object object) {
     return resolveSemanticObject(object, false);
   }
-
 }

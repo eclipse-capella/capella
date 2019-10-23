@@ -11,14 +11,18 @@
 package org.polarsys.capella.test.model.ju.helpers;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMarkerRegistry;
+import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMarkerRegistry.LightMarker;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.libraries.model.ICapellaModel;
 import org.polarsys.capella.core.libraries.utils.ScopeModelWrapper;
@@ -143,5 +147,44 @@ public class CapellaAdapterHelperTestCase extends BasicTestCase {
     assertEquals("Navigation of a part should be the component.", labPart.getAbstractType(),
         LocateInCapellaExplorerAction.getElement(labPart));
     
+    // Test with Information view
+    Diagnostic fakeDiagnostic = new Diagnostic() {
+      @Override
+      public String getSource() {
+        return null;
+      }
+      @Override
+      public int getSeverity() {
+        return 0;
+      }
+      @Override
+      public String getMessage() {
+        return null;
+      }
+      @Override
+      public Throwable getException() {
+        return null;
+      }
+      @Override
+      public List<?> getData() {
+        return Collections.singletonList(labPart.getAbstractType());
+      }
+      @Override
+      public int getCode() {
+        return 0;
+      }
+      @Override
+      public List<Diagnostic> getChildren() {
+        return null;
+      }
+    };
+    LightMarkerRegistry registry = new LightMarkerRegistry();
+    LightMarker fakeMarker = registry.new LightMarker(null, null, fakeDiagnostic);
+    // Show in Project Explorer
+    assertEquals("Navigation of a component to the Project Explorer from Information view should be the component.",
+        labPart.getAbstractType(), LocateInCapellaExplorerAction.getElement(fakeMarker));
+    // Show in Semantic Browser
+    assertEquals("Navigation of a component to the Semantic Browser from Information view should be the component.\"",
+        labPart.getAbstractType(), SiriusSelectionHelper.handleSelection(null, new StructuredSelection(fakeMarker)));
   }
 }

@@ -197,7 +197,7 @@ public class LightMarkerRegistry implements IMarkerSource {
    * @see org.eclipse.sirius.common.tools.internal.resource.WorkspaceBackend
    */
   @SuppressWarnings("restriction")
-  private class LightMarker implements IMarker {
+  public class LightMarker implements IMarker {
 
     HashMap<String, Object> attributes;
 
@@ -208,7 +208,7 @@ public class LightMarkerRegistry implements IMarkerSource {
     IResource resource;
     private Diagnostic diagnostic;
 
-    LightMarker(IResource resource, String markerType, Diagnostic diagnostic) {
+    public LightMarker(IResource resource, String markerType, Diagnostic diagnostic) {
       attributes = new HashMap<String, Object>();
       this.resource = resource;
       this.diagnostic = diagnostic;
