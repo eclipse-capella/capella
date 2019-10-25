@@ -289,11 +289,10 @@
 				<module>doc/plugins</module>
 				
 				
-				<!-- TODO EPIC TO REACTIVATE WHEN VIATRA CODE IS COMPILED TO ADAPT TO ACTOR REFACTORING
 				<module>ext/viatra/features/org.polarsys.capella.viatra.core.feature</module> 
 				<module>ext/viatra/plugins/org.polarsys.capella.viatra.common.data.gen</module>
 				<module>ext/viatra/plugins/org.polarsys.capella.viatra.common.re.gen</module>
-				<module>ext/viatra/plugins/org.polarsys.capella.viatra.core.data.gen</module> -->
+				<module>ext/viatra/plugins/org.polarsys.capella.viatra.core.data.gen</module>
 				
 
 				<module>ext/detachment/features/org.polarsys.capella.detachment.feature</module>
