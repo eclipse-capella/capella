@@ -787,7 +787,7 @@
         <requirement
             name="org.polarsys.capella.core.egf.feature.feature.group"/>
         <requirement
-            name="org.polarsys.capella.core.advance.feature.feature.group"/>
+            name="org.polarsys.capella.rcp.feature.feature.group"/>
         <requirement
             name="org.polarsys.capella.core.data.def"/>
         <requirement
