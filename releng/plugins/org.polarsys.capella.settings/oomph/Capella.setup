@@ -195,6 +195,8 @@
           url="http://download.eclipse.org/sirius/updates/releases/6.2.1/2019-06"/>
       <repository
           url="http://download.eclipse.org/releases/2019-06"/>
+      <repository
+          url="http://download.eclipse.org/releases/2019-09"/>
     </setupTask>
     <setupTask
         xsi:type="setup.targlets:TargletTask"
