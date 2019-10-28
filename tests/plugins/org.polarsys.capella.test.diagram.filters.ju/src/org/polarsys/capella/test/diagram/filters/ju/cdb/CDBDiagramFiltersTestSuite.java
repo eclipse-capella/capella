@@ -13,7 +13,6 @@ package org.polarsys.capella.test.diagram.filters.ju.cdb;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.test.diagram.filters.ju.crb.HidePropertyValues;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 

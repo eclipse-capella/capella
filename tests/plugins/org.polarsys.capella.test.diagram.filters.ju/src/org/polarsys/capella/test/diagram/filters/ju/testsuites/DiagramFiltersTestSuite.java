@@ -70,7 +70,6 @@ public class DiagramFiltersTestSuite extends BasicTestSuite {
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
 
-    tests.add(new CEIDiagramFiltersTestSuite());
     tests.add(new CDBDiagramFiltersTestSuite());
     tests.add(new CRBDiagramFiltersTestSuite());
     tests.add(new XFCDDiagramFiltersTestSuite());

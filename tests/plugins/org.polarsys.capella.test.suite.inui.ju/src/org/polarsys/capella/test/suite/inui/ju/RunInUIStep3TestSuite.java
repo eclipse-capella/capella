@@ -16,7 +16,7 @@ import java.util.List;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.libraries.ju.testsuites.main.LibrariesTestSuite;
-import org.polarsys.capella.test.re.updateconnections.ju.UpdateConnectionsTest.UpdateConnectionsTestSuite;
+import org.polarsys.capella.test.re.updateconnections.ju.UpdateConnectionsTestSuite;
 import org.polarsys.capella.test.recrpl.ju.testsuites.main.RecRplTestSuite;
 
 import junit.framework.Test;

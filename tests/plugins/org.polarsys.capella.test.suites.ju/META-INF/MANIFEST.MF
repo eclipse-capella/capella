@@ -7,7 +7,8 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Require-Bundle: org.polarsys.capella.test.business.queries.ju;visibility:=reexport,
+Require-Bundle: org.apache.xerces,
+ org.polarsys.capella.test.business.queries.ju;visibility:=reexport,
  org.polarsys.capella.test.diagram.filters.ju;visibility:=reexport,
  org.polarsys.capella.test.diagram.tools.ju;visibility:=reexport,
  org.polarsys.capella.test.diagram.layout.ju;visibility:=reexport,
@@ -26,4 +27,9 @@ Require-Bundle: org.polarsys.capella.test.business.queries.ju;visibility:=reexpo
  org.polarsys.capella.test.commandline.ju;visibility:=reexport,
  org.polarsys.capella.test.migration.ju;visibility:=reexport,
  org.polarsys.capella.test.massactions.ju;visibility:=reexport,
- org.polarsys.capella.test.richtext.ju;visibility:=reexport
+ org.polarsys.capella.test.richtext.ju;visibility:=reexport,
+ org.polarsys.capella.test.platform.ju;visibility:=reexport,
+ org.polarsys.capella.test.benchmarks.ju;visibility:=reexport,
+ org.polarsys.capella.test.fragmentation;visibility:=reexport,
+ org.polarsys.capella.test.odesign;visibility:=reexport,
+ org.polarsys.capella.test.table;visibility:=reexport

@@ -33,7 +33,7 @@ public class HidePropertyValues extends DiagramObjectFilterTestCase {
 
   @Override
   protected String getFilterName() {
-    return IFilterNameConstants.FILTER_CDB_HIDE_PROPERTIES;
+    return IFilterNameConstants.FILTER_CDB_HIDE_PROPERTY_VALUES;
   }
 
   @Override

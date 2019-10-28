@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,22 +35,8 @@ import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.re.updateconnections.ui.DiffmergeHandler;
 import org.polarsys.capella.core.re.updateconnections.ui.SingleUsePortsMatcher;
 import org.polarsys.capella.test.framework.api.BasicCommandTestCase;
-import org.polarsys.capella.test.framework.api.BasicTestArtefact;
-import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
 public abstract class UpdateConnectionsTest extends BasicCommandTestCase {
-
-  public static class UpdateConnectionsTestSuite extends BasicTestSuite {
-
-    @Override
-    protected List<BasicTestArtefact> getTests() {
-      List<BasicTestArtefact> list = new ArrayList<BasicTestArtefact>();
-      list.add(new Simple());
-      list.add(new Library());
-      list.add(new Multipart());
-      return list;
-    }
-  }
 
   /**
    * The rpl1 name by convention
@@ -67,13 +53,6 @@ public abstract class UpdateConnectionsTest extends BasicCommandTestCase {
    */
   public static final String PRESENCE_PREFIX = "presence_"; //$NON-NLS-1$
 
-  protected CatalogElement rpl1;
-  protected CatalogElement rpl2;
-
-  /**
-   * The expected element presences, all found by convention: Name starts with presence_
-   */
-  protected Collection<EObject> expectedPresences = new ArrayList<EObject>();
 
   public static class Multipart extends UpdateConnectionsTest {
     @Override
@@ -95,6 +74,14 @@ public abstract class UpdateConnectionsTest extends BasicCommandTestCase {
       return Arrays.asList("updatelinksTest2", "updatelinksTest2Lib"); //$NON-NLS-1$//$NON-NLS-2$
     }
   }
+  
+  protected CatalogElement rpl1;
+  protected CatalogElement rpl2;
+
+  /**
+   * The expected element presences, all found by convention: Name starts with presence_
+   */
+  protected Collection<EObject> expectedPresences = new ArrayList<EObject>();
 
   public void setUp() throws Exception {
     super.setUp();
