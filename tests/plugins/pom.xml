@@ -63,6 +63,7 @@
         <module>org.polarsys.capella.test.validation.rules.ju</module>
         <module>org.polarsys.capella.test.richtext.ju</module>
         <module>org.polarsys.capella.test.doc.ju</module>
+        <module>org.polarsys.capella.test.run</module>
       </modules>
     </profile>
   </profiles>
