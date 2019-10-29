@@ -48,6 +48,7 @@ public interface IFilterNameConstants {
   String FILTER_CDB_HIDE_TECHNICALS_INTERFACES = "hide.technical.interfaces.filter";
   String FILTER_CDB_HIDE_ROLE_NAMES = "hide.role.names.filter";
   String FILTER_CDB_SHOW_MODIFIERS = "show.modifiers.filter";
+  String FILTER_CDB_HIDE_PROPERTY_VALUES = "hide.property.values.filter";
 
   // CDI filters - Contextual Component Detailed Interfaces
   String FILTER_CDI_HIDE_INTERFACE_CONTENTS = "hide.interface.contents.filter";
