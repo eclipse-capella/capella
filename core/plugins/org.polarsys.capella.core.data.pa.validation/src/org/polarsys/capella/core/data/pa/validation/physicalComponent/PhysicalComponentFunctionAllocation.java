@@ -19,6 +19,7 @@ import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
@@ -28,22 +29,20 @@ public class PhysicalComponentFunctionAllocation extends AbstractValidationRule 
    * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
    */
   @Override
-  public IStatus validate(IValidationContext ctx_p) {
-    EObject eObj = ctx_p.getTarget();
-    EMFEventType eType = ctx_p.getEventType();
+  public IStatus validate(IValidationContext ctx) {
+    EObject eObj = ctx.getTarget();
+    EMFEventType eType = ctx.getEventType();
 
-    if (eType == EMFEventType.NULL) {
-      if (eObj instanceof PhysicalComponent) {
-        PhysicalComponent physicalComponent = (PhysicalComponent) eObj;
-        if (physicalComponent.getNature() == PhysicalComponentNature.NODE) {
-          EList<AbstractFunction> allocatedFunctions = physicalComponent.getAllocatedFunctions();
-          if (!allocatedFunctions.isEmpty()) {
-            return ctx_p.createFailureStatus(physicalComponent.getName() + " (PhysicalComponent) of Nature NODE should not allocate any Function"); //$NON-NLS-1$
-          }
+    if (eType == EMFEventType.NULL && eObj instanceof PhysicalComponent) {
+      PhysicalComponent physicalComponent = (PhysicalComponent) eObj;
+      if (!ComponentExt.isActor(physicalComponent) && physicalComponent.getNature() == PhysicalComponentNature.NODE) {
+        EList<AbstractFunction> allocatedFunctions = physicalComponent.getAllocatedFunctions();
+        if (!allocatedFunctions.isEmpty()) {
+          return ctx.createFailureStatus(physicalComponent.getName() + " (PhysicalComponent) of Nature NODE should not allocate any Function"); //$NON-NLS-1$
         }
       }
     }
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 
 }

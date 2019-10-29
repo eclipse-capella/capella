@@ -3566,7 +3566,7 @@
             </tools>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="Ports">
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Component Port initialized with the Kind FLOW and the direction IN " name="in.flow.port" label="%pa.pab.in.flow.port" precondition="aql:container.oclIsKindOf(cs::Part) and container.getComponentType().nature != pa::PhysicalComponentNature::NODE" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@borderedNodeMappings[name='PAB_Port']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FlowPortIn.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Component Port initialized with the Kind FLOW and the direction IN " name="in.flow.port" label="%pa.pab.in.flow.port" precondition="aql:container.oclIsKindOf(cs::Part) and (container.getComponentType().nature != pa::PhysicalComponentNature::NODE or container.getComponentType().isActor())" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@borderedNodeMappings[name='PAB_Port']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FlowPortIn.gif">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
@@ -3581,7 +3581,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Component Port initialized with the Kind FLOW and the direction OUT " name="out.flow.port" label="%pa.pab.out.flow.port" precondition="aql:container.oclIsKindOf(cs::Part) and container.getComponentType().nature != pa::PhysicalComponentNature::NODE" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@borderedNodeMappings[name='PAB_Port']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FlowPortOut.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Component Port initialized with the Kind FLOW and the direction OUT " name="out.flow.port" label="%pa.pab.out.flow.port" precondition="aql:container.oclIsKindOf(cs::Part) and (container.getComponentType().nature != pa::PhysicalComponentNature::NODE or container.getComponentType().isActor())" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@borderedNodeMappings[name='PAB_Port']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FlowPortOut.gif">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
@@ -3596,7 +3596,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Component Port initialized with the Kind FLOW and the direction INOUT " name="in.out.flow.port" label="%pa.pab.in.out.flow.port" precondition="aql:container.oclIsKindOf(cs::Part) and container.getComponentType().nature != pa::PhysicalComponentNature::NODE" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@borderedNodeMappings[name='PAB_Port']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FlowPort.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Component Port initialized with the Kind FLOW and the direction INOUT " name="in.out.flow.port" label="%pa.pab.in.out.flow.port" precondition="aql:container.oclIsKindOf(cs::Part) and (container.getComponentType().nature != pa::PhysicalComponentNature::NODE or container.getComponentType().isActor())" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@borderedNodeMappings[name='PAB_Port']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FlowPort.gif">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
@@ -3611,7 +3611,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Component Port initialized with the Kind FLOW and the direction UNSET " name="standard.port" label="%pa.pab.standard.port" precondition="aql:container.oclIsKindOf(cs::Part) and container.getComponentType().nature != pa::PhysicalComponentNature::NODE" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@borderedNodeMappings[name='PAB_Port']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/StandardPort.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Component Port initialized with the Kind FLOW and the direction UNSET " name="standard.port" label="%pa.pab.standard.port" precondition="aql:container.oclIsKindOf(cs::Part) and (container.getComponentType().nature != pa::PhysicalComponentNature::NODE or container.getComponentType().isActor())" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@borderedNodeMappings[name='PAB_Port']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/StandardPort.gif">
               <variable name="container">
                 <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
