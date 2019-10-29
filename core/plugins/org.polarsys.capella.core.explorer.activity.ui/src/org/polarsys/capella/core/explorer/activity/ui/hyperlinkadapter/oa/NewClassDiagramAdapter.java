@@ -34,7 +34,7 @@ public class NewClassDiagramAdapter extends AbstractCapellaNewDiagramHyperlinkAd
 	}
 
 	@Override
-	protected EObject getModelElement(EObject rootSemanticModel) {
+	public EObject getModelElement(EObject rootSemanticModel) {
 		return ModelQueryHelper.getOADataPkg((Project)rootSemanticModel);
 	}
 

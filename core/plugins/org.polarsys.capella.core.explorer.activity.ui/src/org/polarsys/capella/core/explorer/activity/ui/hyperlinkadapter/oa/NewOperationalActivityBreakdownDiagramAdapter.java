@@ -34,7 +34,7 @@ public class NewOperationalActivityBreakdownDiagramAdapter extends AbstractCapel
 	}
 
 	@Override
-	protected EObject getModelElement(EObject rootSemanticModel) {
+  public EObject getModelElement(EObject rootSemanticModel) {
 		return ModelQueryHelper.getRootOperationalActivity((Project) rootSemanticModel);
 	}
 

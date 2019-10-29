@@ -35,7 +35,7 @@ public class NewOperationalInteractionBlankDiagramAdapter extends AbstractCapell
 	}
 
 	@Override
-	protected EObject getModelElement(EObject rootSemanticModel) {
+  public EObject getModelElement(EObject rootSemanticModel) {
 		return ModelQueryHelper.getRootOperationalActivity((Project) rootSemanticModel);
 	}
 }

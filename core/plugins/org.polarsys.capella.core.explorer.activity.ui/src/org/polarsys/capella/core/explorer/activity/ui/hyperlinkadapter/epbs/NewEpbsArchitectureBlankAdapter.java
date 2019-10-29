@@ -38,7 +38,7 @@ public class NewEpbsArchitectureBlankAdapter extends AbstractCapellaNewDiagramHy
   }
 
   @Override
-  protected ModelElement getModelElement(EObject rootSemanticModel) {
+  public ModelElement getModelElement(EObject rootSemanticModel) {
     return org.polarsys.capella.core.model.helpers.ModelQueryHelper
         .getRootConfigurationItemPkg((Project) rootSemanticModel);
   }

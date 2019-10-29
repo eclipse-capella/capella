@@ -34,7 +34,7 @@ public class NewFunctionalBreakdownDiagramAdapter extends AbstractCapellaNewDiag
 	}
 
 	@Override
-	protected ModelElement getModelElement(EObject rootSemanticModel) {
+  public ModelElement getModelElement(EObject rootSemanticModel) {
 		return ModelQueryHelper.getRootSystemFunction((Project) rootSemanticModel);
 	}
 }

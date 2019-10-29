@@ -37,6 +37,10 @@ public abstract class AbstractCapellaNewDiagramHyperlinkAdapter extends Abstract
     super(ActivityExplorerManager.INSTANCE.getRootSemanticModel());
   }
 
+  protected boolean useDefaultName() {
+      return false;
+  }
+  
   @Override
   public void linkActivated(HyperlinkEvent event) {
     Session session = ActivityExplorerManager.INSTANCE.getSession();
@@ -58,7 +62,7 @@ public abstract class AbstractCapellaNewDiagramHyperlinkAdapter extends Abstract
   }
 
   @Override
-  protected boolean createDiagram(EObject rootObj, Session session) {
+  public boolean createDiagram(EObject rootObj, Session session) {
     if (rootObj == null && session == null) {
       return false;
     }
@@ -72,10 +76,11 @@ public abstract class AbstractCapellaNewDiagramHyperlinkAdapter extends Abstract
     };
     TransactionUtil.getEditingDomain(rootObj).getCommandStack().execute(cmd);
     return true;
-  }
+  } 
+  
 
   protected NewRepresentationAction initNewRepresentationAction(EObject rootObj, Session session,
       RepresentationDescription representationDescription) {
-    return new NewRepresentationAction(representationDescription, rootObj, session, false, true);
+    return new NewRepresentationAction(representationDescription, rootObj, session, useDefaultName(), true);
   }
 }

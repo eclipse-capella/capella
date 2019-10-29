@@ -34,7 +34,7 @@ public class NewSystemArchitectureDiagramAdapter extends AbstractCapellaNewDiagr
 	}
 
 	@Override
-	protected ModelElement getModelElement(EObject rootSemanticModel) {
+	public ModelElement getModelElement(EObject rootSemanticModel) {
     return (ModelElement) ModelQueryHelper.getSystem((Project) rootSemanticModel).eContainer();
 	}
 }

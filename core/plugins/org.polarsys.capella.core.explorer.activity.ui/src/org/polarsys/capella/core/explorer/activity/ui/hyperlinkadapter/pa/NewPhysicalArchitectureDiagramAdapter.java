@@ -37,7 +37,7 @@ public class NewPhysicalArchitectureDiagramAdapter extends AbstractCapellaNewDia
 	}
 
 	@Override
-	protected ModelElement getModelElement(EObject rootSemanticModel) {
+  public ModelElement getModelElement(EObject rootSemanticModel) {
     return org.polarsys.capella.core.model.helpers.ModelQueryHelper
         .getPhysicalComponentPkg((Project) rootSemanticModel);
 	}
