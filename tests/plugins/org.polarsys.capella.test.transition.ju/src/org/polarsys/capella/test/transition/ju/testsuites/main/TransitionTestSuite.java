@@ -61,6 +61,11 @@ public class TransitionTestSuite extends BasicTestSuite {
     tests.add(new CommunicationMeanTestCase());
     tests.add(new TransitionsTestSuite());
 
+    tests.add(new OaTransitionTestSuite());
+    tests.add(new SaTransitionTestSuite());
+    tests.add(new LaTransitionTestSuite());
+    
     return tests;
   }
+
 }

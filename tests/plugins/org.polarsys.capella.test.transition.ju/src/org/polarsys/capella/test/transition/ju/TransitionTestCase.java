@@ -107,6 +107,11 @@ public abstract class TransitionTestCase extends BasicCommandTestCase {
     assertTrue(object.eContainer().equals(container));
   }
 
+  protected void mustBeContainedBy(String objectId, String containerId) {
+    assertTrue(objectId != null);
+    assertTrue(objectId.equals(containerId));
+  }
+
   protected EObject mustBeMonoTransitioned(String id) {
     EObject element = getObject(id);
     return mustBeMultiTransitioned(element, 1).get(0);
@@ -156,6 +161,44 @@ public abstract class TransitionTestCase extends BasicCommandTestCase {
     EObject source = getObject(sourceId);
     EObject target = getObject(targetId);
     return mustNotBeLinkedTo(source, target, feature);
+  }
+
+  protected EObject mustBeRealizedBy(String id, EClass clazz) {
+    EObject targetObj = getObject(id);
+    String origName = EObjectLabelProviderHelper.getText(targetObj);
+    assertNotNull(NLS.bind(Messages.NullElement, origName), targetObj);
+    String enrichName = origName + "X"; //$NON-NLS-1$
+    for (EObject allocatedElem : getAllocatedElements(targetObj)) {
+      if (clazz.isInstance(allocatedElem)) {
+        assertTrue(NLS.bind(Messages.ShouldBeInstanceof, enrichName), true);
+        return allocatedElem;
+      }
+    }
+    assertTrue(NLS.bind(Messages.ShouldBeInstanceof, enrichName), false);
+    return null;
+  }
+
+  protected EObject mustBeRealizedBy(String id, EClass clazz, EObject container) {
+    EObject targetObj = getObject(id);
+    String origName = EObjectLabelProviderHelper.getText(targetObj);
+    assertNotNull(NLS.bind(Messages.NullElement, origName), targetObj);
+    String enrichName = origName + "Q"; //$NON-NLS-1$
+    for (EObject allocatedElem : getAllocatedElements(targetObj)) {
+      if (clazz.isInstance(allocatedElem)) {
+        assertTrue(NLS.bind(Messages.ShouldBeInstanceof, enrichName), true);
+
+        String containerName = (container instanceof AbstractNamedElement ? ((AbstractNamedElement) container).getName()
+            : container.eClass().getName());
+        if (EcoreUtil2.isOrIsContainedBy(allocatedElem, container)) {
+          assertTrue(NLS.bind(Messages.ShouldBeContainedBy, enrichName, containerName), true);
+        }
+
+        return allocatedElem;
+      }
+    }
+
+    assertTrue(NLS.bind(Messages.ShouldBeInstanceof, enrichName), false);
+    return null;
   }
 
   protected EObject mustNotBeLinkedTo(EObject source, EObject target, EStructuralFeature feature) {
@@ -424,7 +467,6 @@ public abstract class TransitionTestCase extends BasicCommandTestCase {
 
     return null;
   }
-  
   protected boolean shouldAllocate(Interface itf, ExchangeItem item) {
 
     for (ExchangeItemAllocation a5t : itf.getOwnedExchangeItemAllocations()) {
@@ -448,6 +490,10 @@ public abstract class TransitionTestCase extends BasicCommandTestCase {
         : container.eClass().getName());
     assertTrue(NLS.bind(Messages.ShouldBeContainedBy, namet, containerName), a4t.eContainer() == container);
     return a4t;
+  }
+
+  public void mustNotBeNull(EObject object) {
+    assertNotNull("Element shall not be null", object);
   }
 
 }
