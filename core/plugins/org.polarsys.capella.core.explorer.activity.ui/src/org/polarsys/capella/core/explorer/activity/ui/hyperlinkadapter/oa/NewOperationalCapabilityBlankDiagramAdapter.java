@@ -33,7 +33,7 @@ public class NewOperationalCapabilityBlankDiagramAdapter extends AbstractCapella
 	}
 
 	@Override
-	protected EObject getModelElement(EObject rootSemanticModel) {
+  public EObject getModelElement(EObject rootSemanticModel) {
 		return ModelQueryHelper.getRootOperationalCapability((Project) rootSemanticModel);
 	}
 

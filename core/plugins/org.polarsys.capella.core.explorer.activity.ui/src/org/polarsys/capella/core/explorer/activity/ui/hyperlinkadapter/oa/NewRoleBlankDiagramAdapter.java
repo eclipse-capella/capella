@@ -34,7 +34,7 @@ public class NewRoleBlankDiagramAdapter extends AbstractCapellaNewDiagramHyperli
   }
 
   @Override
-  protected EObject getModelElement(EObject rootSemanticModel) {
+  public EObject getModelElement(EObject rootSemanticModel) {
     return BlockArchitectureExt.getComponentPkg(ModelQueryHelper.getOperationalAnalysis((Project) rootSemanticModel),
         true);
   }

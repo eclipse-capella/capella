@@ -37,7 +37,7 @@ public class NewComponentBreakdownDiagramAdapter extends AbstractCapellaNewDiagr
 	}
 
 	@Override
-	protected ModelElement getModelElement(EObject rootSemanticModel) {
+	public ModelElement getModelElement(EObject rootSemanticModel) {
     return org.polarsys.capella.core.model.helpers.ModelQueryHelper.getLogicalComponentPkg((Project) rootSemanticModel);
 	}
 }

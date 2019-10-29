@@ -10,7 +10,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.explorer.activity.ui,
  org.eclipse.sirius.diagram,
  org.polarsys.capella.core.data.gen,
- org.polarsys.capella.core.platform.sirius.ui.navigator
+ org.polarsys.capella.core.platform.sirius.ui.navigator,
+ org.polarsys.capella.core.transition.system.topdown,
+ org.polarsys.capella.test.diagram.common.ju
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName

@@ -27,7 +27,7 @@ import org.polarsys.capella.core.sirius.ui.actions.NewScenarioRepresentationActi
 
 public abstract class AbstractNewScenarioDiagramAdapter extends AbstractCapellaNewDiagramHyperlinkAdapter {
   @Override
-  protected boolean createDiagram(EObject rootObj, Session session) {
+  public boolean createDiagram(EObject rootObj, Session session) {
     if (rootObj == null && session == null) {
       return false;
     }
@@ -55,7 +55,6 @@ public abstract class AbstractNewScenarioDiagramAdapter extends AbstractCapellaN
 
   protected NewRepresentationAction initNewScenarioRepresentationAction(Session session, AbstractCapability capa,
       RepresentationDescription representationDescription) {
-    return new NewScenarioRepresentationAction(representationDescription, capa, session, false, true);
+    return new NewScenarioRepresentationAction(representationDescription, capa, session, useDefaultName(), true);
   }
-
 }

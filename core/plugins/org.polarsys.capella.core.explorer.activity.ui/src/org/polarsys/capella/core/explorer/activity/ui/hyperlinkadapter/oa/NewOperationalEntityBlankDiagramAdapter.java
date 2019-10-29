@@ -36,7 +36,7 @@ public class NewOperationalEntityBlankDiagramAdapter extends AbstractCapellaNewD
   }
 
   @Override
-  protected EObject getModelElement(EObject rootSemanticModel) {
+  public EObject getModelElement(EObject rootSemanticModel) {
     return BlockArchitectureExt.getComponentPkg(ModelQueryHelper.getOperationalAnalysis(ProjectExt.getProject(rootSemanticModel)), true);
   }
 

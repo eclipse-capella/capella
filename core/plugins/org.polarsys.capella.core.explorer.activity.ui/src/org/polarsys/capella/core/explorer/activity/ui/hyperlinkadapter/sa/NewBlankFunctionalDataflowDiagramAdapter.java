@@ -34,7 +34,7 @@ public class NewBlankFunctionalDataflowDiagramAdapter extends AbstractCapellaNew
 	}
 
 	@Override
-	protected ModelElement getModelElement(EObject rootSemanticModel) {
+  public ModelElement getModelElement(EObject rootSemanticModel) {
 		return ModelQueryHelper.getRootSystemFunction((Project) rootSemanticModel);
 	}
 }

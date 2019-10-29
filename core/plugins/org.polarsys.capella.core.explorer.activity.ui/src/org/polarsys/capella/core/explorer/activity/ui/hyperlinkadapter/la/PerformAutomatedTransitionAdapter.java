@@ -37,7 +37,7 @@ public class PerformAutomatedTransitionAdapter extends AbstractCapellaHyperlinkA
   }
 
   @Override
-  protected void linkPressed(HyperlinkEvent event, EObject rootSemanticModel, Session session) {
+  public void linkPressed(HyperlinkEvent event, EObject rootSemanticModel, Session session) {
     ModelElement modelElement = getModelElement(rootSemanticModel);
     if (modelElement != null) {
       TransitionUICommandHelper.getInstance().executeCommand(ITransitionCommandConstants.FunctionalTransition,
@@ -46,7 +46,7 @@ public class PerformAutomatedTransitionAdapter extends AbstractCapellaHyperlinkA
   }
 
   @Override
-  protected ModelElement getModelElement(EObject rootSemanticModel) {
+  public ModelElement getModelElement(EObject rootSemanticModel) {
     if (rootSemanticModel instanceof Project) {
       return ModelQueryHelper.getRootSystemFunction((Project) rootSemanticModel);
     }
