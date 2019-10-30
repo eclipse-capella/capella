@@ -84,6 +84,8 @@ import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalLinkEnd;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.ctx.CtxFactory;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
+import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.PhysicalArtifactRealization;
@@ -3177,6 +3179,8 @@ public class FaServices {
   protected void moveComponent(Component component, Component container) {
     if ((container instanceof Entity) && (component instanceof Entity)) {
       ((Entity) container).getOwnedEntities().add((Entity) component);
+    } else if ((container instanceof SystemComponent) && (component instanceof SystemComponent)) {
+      ((SystemComponent) container).getOwnedSystemComponents().add((SystemComponent) component);
     } else if ((container instanceof LogicalComponent) && (component instanceof LogicalComponent)) {
       ((LogicalComponent) container).getOwnedLogicalComponents().add((LogicalComponent) component);
     } else if ((container instanceof PhysicalComponent) && (component instanceof PhysicalComponent)) {
@@ -3195,6 +3199,8 @@ public class FaServices {
   protected void moveComponent(Component component, ComponentPkg container) {
     if ((container instanceof EntityPkg) && (component instanceof Entity)) {
       ((EntityPkg) container).getOwnedEntities().add((Entity) component);
+    } else if ((container instanceof SystemComponentPkg) && (component instanceof SystemComponent)) {
+      ((SystemComponentPkg) container).getOwnedSystemComponents().add((SystemComponent) component);
     } else if ((container instanceof LogicalComponentPkg) && (component instanceof LogicalComponent)) {
       ((LogicalComponentPkg) container).getOwnedLogicalComponents().add((LogicalComponent) component);
     } else if ((container instanceof PhysicalComponentPkg) && (component instanceof PhysicalComponent)) {

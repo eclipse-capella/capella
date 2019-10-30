@@ -105,6 +105,15 @@ public class DragAndDropTest extends XABDiagramsProject {
       String constraint1 = diagramSetup.createConstraint(GenericModel.CONSTRAINT_1);
       diagram.dragAndDropConstraintsFromExplorer(constraint1, diagram.getDiagramId());
     }
+
+    String actor4 = diagram.createActor(GenericModel.ACTOR_4);
+    String actor5 = diagram.createActor(GenericModel.ACTOR_5);
+    String actor6 = diagram.createActor(GenericModel.ACTOR_5, actor4);
+    diagram.dragAndDropComponent(actor5, actor4);
+    diagram.dragAndDropComponent(actor5, diagram.getDiagramId());
+    diagram.dragAndDropComponent(actor5, actor6);
+    diagram.dragAndDropComponent(actor5, actor4);
+    diagram.dragAndDropComponent(actor5, actor6);
   }
 
   public void testOnOAB(SessionContext context, String diagramName, BlockArchitectureExt.Type type, String targetId) {
