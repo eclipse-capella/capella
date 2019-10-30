@@ -75,8 +75,8 @@ public class LogicalComponentSection extends ComponentSection {
     // if capellaElement is a component but not an actor, disable super
     if (null != systemComponentRealizations) {
       systemComponentRealizations.setEnabled(component.isActor() || BlockArchitectureExt.isRootComponent(component));
+      systemComponentRealizations.loadData(capellaElement, CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS);
     }
-    systemComponentRealizations.loadData(capellaElement, CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS);
   }
 
   /**

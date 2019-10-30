@@ -242,7 +242,7 @@ public class ABServices {
       component = (Component) pcMoved;
     }
 
-    if (component.isActor()) {
+    if (component != null && component.isActor()) {
       newOwner = CsServices.getService().getABActorTarget(targetContainerView);
     } else {
       newOwner = CsServices.getService().getABTarget(targetContainerView);

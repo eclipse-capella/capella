@@ -158,7 +158,7 @@ public class ComponentExt {
         break;
       }
     }
-    if (null == stdPort) {
+    if (null == stdPort && component != null) {
       stdPort = PortExt.createStandardPort();
       component.getOwnedFeatures().add(stdPort);
     }

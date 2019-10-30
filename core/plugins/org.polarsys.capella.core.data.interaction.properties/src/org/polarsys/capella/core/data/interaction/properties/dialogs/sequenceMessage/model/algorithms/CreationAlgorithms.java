@@ -77,14 +77,10 @@ public class CreationAlgorithms {
     if(src instanceof SystemComponentPkg && tgt instanceof SystemComponentPkg) {
       container = ComponentExt.getRootBlockArchitecture((SystemComponentPkg) src);
     }
-    if (sourceIR != null && targetIR != null &&
-        ComponentExt.isActor(sourceIR.getRepresentedInstance()) || 
-        ComponentExt.isActor(targetIR.getRepresentedInstance())) {
-      if (sourceIR != null) {
-        container = ComponentExt.getRootBlockArchitecture(sourceIR);
-      } else {
-        container = ComponentExt.getRootBlockArchitecture(targetIR);
-      }
+    if (sourceIR != null && ComponentExt.isActor(sourceIR.getRepresentedInstance())) {
+      container = ComponentExt.getRootBlockArchitecture(sourceIR);
+    } else if (targetIR != null && ComponentExt.isActor(targetIR.getRepresentedInstance())) {
+      container = ComponentExt.getRootBlockArchitecture(targetIR);
     }
 
     // Retrieve or create an interface pkg into the container
@@ -95,14 +91,16 @@ public class CreationAlgorithms {
       referenceInterfacePkg = CsPackage.Literals.BLOCK__OWNED_INTERFACE_PKG;
     }
 
-    if (container.eGet(referenceInterfacePkg) == null) {
+    if (container != null && container.eGet(referenceInterfacePkg) == null) {
       container.eSet(referenceInterfacePkg,
           CsFactory.eINSTANCE.createInterfacePkg(Messages.SelectOperationDialog_InterfacePkgName8));
     }
 
     // Set the interface into the pkg
-    InterfacePkg pkg = (InterfacePkg) container.eGet(referenceInterfacePkg);
-    pkg.getOwnedInterfaces().add(result);
+    if(container !=  null) {
+      InterfacePkg pkg = (InterfacePkg) container.eGet(referenceInterfacePkg);
+      pkg.getOwnedInterfaces().add(result);      
+    }
 
     org.polarsys.capella.core.model.helpers.CapellaElementExt.creationService(result);
     result.setName(interfaceName);
