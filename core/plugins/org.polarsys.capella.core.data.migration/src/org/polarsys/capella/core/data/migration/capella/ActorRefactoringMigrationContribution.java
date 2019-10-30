@@ -72,6 +72,7 @@ import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ModelElementExt;
+import org.polarsys.capella.core.sirius.analysis.tool.StringUtil;
 
 /**
  * This class takes care of the migration of the Actor refactoring work. Here are some basic migration steps:
@@ -316,19 +317,20 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
   static {
     STYLES.put("CCRI%20SystemComponentCapabilityRealizationInvolvement", "CCRI%20involvement");
     STYLES.put("CCRI%20ActorCapabilityRealizationInvolvement", "CCRI%20involvement");
-    
+
     STYLES.put("[name='CCRI%20Actor']/@style", "[name='CCRI%20Component']/@conditionnalStyles.0/@style");
     STYLES.put("[name='SC_Actor']/@style", "[name='SC_System']/@conditionnalStyles.0/@style");
-    
+
     STYLES.put("[name='Logical%20Actors']/@style", "[name='LAB%20Logical%20Component']/@conditionnalStyles.0/@style");
-    STYLES.put("[name='Logical%20Actors']/@conditionnalStyles.0/@style", "[name='LAB%20Logical%20Component']/@conditionnalStyles.0/@style");
+    STYLES.put("[name='Logical%20Actors']/@conditionnalStyles.0/@style",
+        "[name='LAB%20Logical%20Component']/@conditionnalStyles.0/@style");
     STYLES.put("Logical%20Actors", "LAB%20Logical%20Component");
-    
+
     STYLES.put("[name='PAB_Actor']/@style", "[name='PAB_PC']/@conditionnalStyles.0/@style");
     STYLES.put("[name='PAB_Actor']/@conditionnalStyles.0/@style", "[name='PAB_PC']/@conditionnalStyles.0/@style");
     STYLES.put("[name='PAB_Actor']/@conditionnalStyles.1/@style", "[name='PAB_PC']/@conditionnalStyles.0/@style");
     STYLES.put("PAB_Actor", "PAB_PC");
-    
+
   }
   private static final List<String> OLD_ACTOR_TYPES = Arrays.asList( //
       "org.polarsys.capella.core.data.oa:OperationalActor", //
@@ -337,7 +339,11 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
       "org.polarsys.capella.core.data.pa:PhysicalActor" //
   );
 
-  private String operationalContextId, systemContextId, logicalContextId, physicalContextId, ePBSContextId;
+  /**
+   * This map is used to lock the Block Architecture Id to its former Context Id.
+   * These Ids will be used for the new ComponentPkg elements.
+   */
+  private Map<String, String> archToOldContextIdsMap = new HashMap<>();
 
   @Override
   public EStructuralFeature getFeature(EObject object, String prefix, String name, boolean isElement) {
@@ -362,12 +368,12 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
   @Override
   public void unaryMigrationExecute(EObject currentElement, MigrationContext context) {
     super.unaryMigrationExecute(currentElement, context);
-    
+
     if (currentElement instanceof DRepresentationElement) {
       EStructuralFeature feature = currentElement.eClass().getEStructuralFeature("actualMapping");
       if (feature != null) {
         Object reference = ((EObject) currentElement).eGet(feature);
-        if (reference != null && reference instanceof EObject && ((EObject)reference).eIsProxy()) {
+        if (reference != null && reference instanceof EObject && ((EObject) reference).eIsProxy()) {
           URI uri = migrateMappings(((InternalEObject) reference).eProxyURI());
           if (uri != null) {
             ((InternalEObject) reference).eSetProxyURI(uri);
@@ -376,7 +382,7 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
       }
     } else if (currentElement instanceof Style) {
       StyleDescription reference = ((Style) currentElement).getDescription();
-      if (reference != null && reference instanceof EObject && ((EObject)reference).eIsProxy()) {
+      if (reference != null && reference instanceof EObject && ((EObject) reference).eIsProxy()) {
         URI uri = ((InternalEObject) reference).eProxyURI();
         uri = migrateStyles(uri);
         if (uri != null) {
@@ -417,6 +423,7 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
     }
     return null;
   }
+
   @Override
   public void updateCreatedObject(EObject peekObject, EObject eObject, String typeQName, EStructuralFeature feature,
       XMLResource resource, XMLHelper helper, MigrationContext context) {
@@ -428,26 +435,53 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
         ((PhysicalComponent) eObject).setNature(PhysicalComponentNature.NODE);
       }
     }
-    // Store old contexts' ids
-    else if ("org.polarsys.capella.core.data.oa:OperationalContext".equals(typeQName) && eObject instanceof EntityPkg) {
-      operationalContextId = ((EntityPkg) eObject).getId();
-    } else if ("org.polarsys.capella.core.data.ctx:SystemContext".equals(typeQName)
-        && eObject instanceof SystemComponentPkg) {
-      systemContextId = ((SystemComponentPkg) eObject).getId();
-    } else if ("org.polarsys.capella.core.data.la:LogicalContext".equals(typeQName)
-        && eObject instanceof LogicalComponentPkg) {
-      logicalContextId = ((LogicalComponentPkg) eObject).getId();
-    } else if ("org.polarsys.capella.core.data.pa:PhysicalContext".equals(typeQName)
-        && eObject instanceof PhysicalComponentPkg) {
-      physicalContextId = ((PhysicalComponentPkg) eObject).getId();
-    } else if ("org.polarsys.capella.core.data.epbs:EPBSContext".equals(typeQName)
-        && eObject instanceof ConfigurationItemPkg) {
-      ePBSContextId = ((ConfigurationItemPkg) eObject).getId();
+
+    else if (eObject instanceof ComponentPkg) {
+      ComponentPkg componentPkg = (ComponentPkg) eObject;
+      String componentPkgId = null;
+
+      // Store old contexts' ids
+      if ("org.polarsys.capella.core.data.oa:OperationalContext".equals(typeQName)
+          && componentPkg instanceof EntityPkg) {
+        componentPkgId = ((EntityPkg) componentPkg).getId();
+
+      } else if ("org.polarsys.capella.core.data.ctx:SystemContext".equals(typeQName)
+          && componentPkg instanceof SystemComponentPkg) {
+        componentPkgId = ((SystemComponentPkg) componentPkg).getId();
+
+      } else if ("org.polarsys.capella.core.data.la:LogicalContext".equals(typeQName)
+          && componentPkg instanceof LogicalComponentPkg) {
+        componentPkgId = ((LogicalComponentPkg) componentPkg).getId();
+
+      } else if ("org.polarsys.capella.core.data.pa:PhysicalContext".equals(typeQName)
+          && componentPkg instanceof PhysicalComponentPkg) {
+        componentPkgId = ((PhysicalComponentPkg) componentPkg).getId();
+
+      } else if ("org.polarsys.capella.core.data.epbs:EPBSContext".equals(typeQName)
+          && componentPkg instanceof ConfigurationItemPkg) {
+        componentPkgId = ((ConfigurationItemPkg) componentPkg).getId();
+      }
+
+      if (!StringUtil.isNullOrEmpty(componentPkgId)) {
+        BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(componentPkg);
+        
+        if (architecture == null) {
+          System.err.println("Null Block Architecture for " + componentPkgId);
+          
+        } else {
+          String architectureId = architecture.getId();
+          archToOldContextIdsMap.put(architectureId, componentPkgId);
+        }
+
+      }
+
     }
+
     super.updateCreatedObject(peekObject, eObject, typeQName, feature, resource, helper, context);
   }
 
-  protected void fusionContainmentReferences(EObject source, EObject target, List<EStructuralFeature> excludedFeatures) {
+  protected void fusionContainmentReferences(EObject source, EObject target,
+      List<EStructuralFeature> excludedFeatures) {
     if (source.eClass() != target.eClass()) {
       return;
     }
@@ -505,6 +539,8 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
   protected void reorganizeEPBSArchitecture(EPBSArchitecture epbs) {
     if (!epbs.getOwnedMigratedElements().isEmpty()) {
       ComponentPkg componentPkg = BlockArchitectureExt.getComponentPkg(epbs, true);
+      String ePBSContextId = archToOldContextIdsMap.get(epbs.getId());
+
       if (ePBSContextId != null) {
         ModelElementExt.setObjectId(componentPkg, ePBSContextId);
       }
@@ -556,18 +592,23 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
   protected void reorganizePhysicalArchitecture(PhysicalArchitecture pa) {
     if (!pa.getOwnedMigratedElements().isEmpty()) {
       ComponentPkg componentPkg = BlockArchitectureExt.getComponentPkg(pa, true);
+      String physicalContextId = archToOldContextIdsMap.get(pa.getId());
+
       if (physicalContextId != null) {
         ModelElementExt.setObjectId(componentPkg, physicalContextId);
       }
 
-      List<ModelElement> migratedComponentPkgs = pa.getOwnedMigratedElements().stream().filter(PhysicalComponentPkg.class::isInstance).collect(Collectors.toList());
+      List<ModelElement> migratedComponentPkgs = pa.getOwnedMigratedElements().stream()
+          .filter(PhysicalComponentPkg.class::isInstance).collect(Collectors.toList());
       if (migratedComponentPkgs.size() == 2) {
         // We do not want CatalogElementLink's reference to old Context
-        fusionContainmentReferences(migratedComponentPkgs.get(0), pa.getOwnedPhysicalComponentPkg(), Arrays.asList(RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET));
+        fusionContainmentReferences(migratedComponentPkgs.get(0), pa.getOwnedPhysicalComponentPkg(),
+            Arrays.asList(RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET));
         // We want to conserve all references to old Physical Actors Pkg
-        fusionContainmentReferences(migratedComponentPkgs.get(1), pa.getOwnedPhysicalComponentPkg(), Collections.emptyList());
+        fusionContainmentReferences(migratedComponentPkgs.get(1), pa.getOwnedPhysicalComponentPkg(),
+            Collections.emptyList());
       }
-      
+
       List<PhysicalComponent> items = filter(pa.getOwnedMigratedElements(), PhysicalComponent.class);
       if (!items.isEmpty()) {
         pa.getOwnedPhysicalComponentPkg().getOwnedPhysicalComponents().addAll(0, items);
@@ -606,16 +647,21 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
   protected void reorganizeLogicalArchitecture(LogicalArchitecture la) {
     if (!la.getOwnedMigratedElements().isEmpty()) {
       ComponentPkg componentPkg = BlockArchitectureExt.getComponentPkg(la, true);
+      String logicalContextId = archToOldContextIdsMap.get(la.getId());
+
       if (logicalContextId != null) {
         ModelElementExt.setObjectId(componentPkg, logicalContextId);
       }
 
-      List<ModelElement> migratedComponentPkgs = la.getOwnedMigratedElements().stream().filter(LogicalComponentPkg.class::isInstance).collect(Collectors.toList());
+      List<ModelElement> migratedComponentPkgs = la.getOwnedMigratedElements().stream()
+          .filter(LogicalComponentPkg.class::isInstance).collect(Collectors.toList());
       if (migratedComponentPkgs.size() == 2) {
         // We do not want CatalogElementLink's reference to old Context
-        fusionContainmentReferences(migratedComponentPkgs.get(0), la.getOwnedLogicalComponentPkg(), Arrays.asList(RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET));
+        fusionContainmentReferences(migratedComponentPkgs.get(0), la.getOwnedLogicalComponentPkg(),
+            Arrays.asList(RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET));
         // We want to conserve all references to old Logical Actors Pkg
-        fusionContainmentReferences(migratedComponentPkgs.get(1), la.getOwnedLogicalComponentPkg(), Collections.emptyList());
+        fusionContainmentReferences(migratedComponentPkgs.get(1), la.getOwnedLogicalComponentPkg(),
+            Collections.emptyList());
       }
 
       List<LogicalComponent> items = filter(la.getOwnedMigratedElements(), LogicalComponent.class);
@@ -656,16 +702,21 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
   protected void reorganizeSystemAnalysis(SystemAnalysis sa) {
     if (!sa.getOwnedMigratedElements().isEmpty()) {
       ComponentPkg componentPkg = BlockArchitectureExt.getComponentPkg(sa, true);
+      String systemContextId = archToOldContextIdsMap.get(sa.getId());
+
       if (systemContextId != null) {
         ModelElementExt.setObjectId(componentPkg, systemContextId);
       }
 
-      List<ModelElement> migratedComponentPkgs = sa.getOwnedMigratedElements().stream().filter(SystemComponentPkg.class::isInstance).collect(Collectors.toList());
+      List<ModelElement> migratedComponentPkgs = sa.getOwnedMigratedElements().stream()
+          .filter(SystemComponentPkg.class::isInstance).collect(Collectors.toList());
       if (migratedComponentPkgs.size() == 2) {
         // We do not want CatalogElementLink's reference to old Context
-        fusionContainmentReferences(migratedComponentPkgs.get(0), sa.getOwnedSystemComponentPkg(), Arrays.asList(RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET));
+        fusionContainmentReferences(migratedComponentPkgs.get(0), sa.getOwnedSystemComponentPkg(),
+            Arrays.asList(RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET));
         // We want to conserve all references to old Actors Pkg
-        fusionContainmentReferences(migratedComponentPkgs.get(1), sa.getOwnedSystemComponentPkg(), Collections.emptyList());
+        fusionContainmentReferences(migratedComponentPkgs.get(1), sa.getOwnedSystemComponentPkg(),
+            Collections.emptyList());
       }
 
       List<SystemComponent> items = filter(sa.getOwnedMigratedElements(), SystemComponent.class);
@@ -702,14 +753,18 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
   protected void reorganizeOperationalAnalysis(OperationalAnalysis oa) {
     if (!oa.getOwnedMigratedElements().isEmpty()) {
       ComponentPkg componentPkg = BlockArchitectureExt.getComponentPkg(oa, true);
+      String operationalContextId = archToOldContextIdsMap.get(oa.getId());
+
       if (operationalContextId != null) {
         ModelElementExt.setObjectId(componentPkg, operationalContextId);
       }
 
-      List<ModelElement> migratedComponentPkgs = oa.getOwnedMigratedElements().stream().filter(EntityPkg.class::isInstance).collect(Collectors.toList());
+      List<ModelElement> migratedComponentPkgs = oa.getOwnedMigratedElements().stream()
+          .filter(EntityPkg.class::isInstance).collect(Collectors.toList());
       if (migratedComponentPkgs.size() == 1) {
         // We do not want CatalogElementLink's reference to old Context
-        fusionContainmentReferences(migratedComponentPkgs.get(0), oa.getOwnedEntityPkg(), Arrays.asList(RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET));
+        fusionContainmentReferences(migratedComponentPkgs.get(0), oa.getOwnedEntityPkg(),
+            Arrays.asList(RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET));
       }
 
       List<DataPkg> dataPkgs = filter(oa.getOwnedEntityPkg().getOwnedMigratedElements(), DataPkg.class);
@@ -786,11 +841,7 @@ public class ActorRefactoringMigrationContribution extends AbstractMigrationCont
 
   @Override
   public void dispose(MigrationContext context) {
-    operationalContextId = null;
-    systemContextId = null;
-    logicalContextId = null;
-    physicalContextId = null;
-    ePBSContextId = null;
+    archToOldContextIdsMap.clear();
     super.dispose(context);
   }
 }
