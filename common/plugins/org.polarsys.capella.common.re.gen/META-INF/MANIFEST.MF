@@ -6,17 +6,19 @@ Bundle-Vendor: %providerName
 Bundle-Version: 1.4.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.eclipse.core.runtime;visibility:=reexport,
- org.eclipse.emf.ecore;visibility:=reexport,
- org.eclipse.emf.ecore.xmi;visibility:=reexport,
- org.eclipse.emf.validation;visibility:=reexport,
- org.polarsys.capella.common.model;visibility:=reexport,
- org.polarsys.capella.shared.id.handler;visibility:=reexport,
- org.polarsys.kitalpha.emde;visibility:=reexport,
- org.polarsys.kitalpha.emde.xmi;visibility:=reexport,
- org.polarsys.kitalpha.emde.model;visibility:=reexport,
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.ecore.xmi,
+ org.eclipse.emf.validation,
+ org.polarsys.capella.common.model,
+ org.polarsys.capella.shared.id.handler,
+ org.polarsys.kitalpha.emde,
+ org.polarsys.kitalpha.emde.xmi,
+ org.polarsys.kitalpha.emde.model,
  org.polarsys.capella.common.model.helpers,
- org.polarsys.capella.common.data.core.gen
+ org.polarsys.capella.common.data.core.gen,
+ com.thalesgroup.mde.melody.collab.common,
+ org.polarsys.capella.common.mdsofa.common
 Export-Package: org.polarsys.capella.common.re,
  org.polarsys.capella.common.re.impl,
  org.polarsys.capella.common.re.util

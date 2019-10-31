@@ -7,16 +7,22 @@ Bundle-Activator: org.polarsys.capella.core.transition.system.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.polarsys.capella.common.transition;visibility:=reexport,
+ org.polarsys.capella.common.transition,
  org.eclipse.sirius,
- org.eclipse.emf.diffmerge;visibility:=reexport,
- org.polarsys.capella.core.data.helpers;visibility:=reexport,
- org.polarsys.capella.core.model.helpers;visibility:=reexport,
+ org.eclipse.emf.diffmerge,
+ org.polarsys.capella.core.data.helpers,
+ org.polarsys.capella.core.model.helpers,
  org.polarsys.capella.core.model.handler,
  org.polarsys.capella.core.preferences,
  org.polarsys.capella.common.queries,
  org.polarsys.capella.common.ui,
- org.polarsys.capella.common.libraries
+ org.polarsys.capella.common.libraries,
+ org.polarsys.kitalpha.transposer.core,
+ org.polarsys.capella.core.data.gen,
+ org.polarsys.capella.common.data.core.gen,
+ org.polarsys.capella.common.data.behavior.gen,
+ org.polarsys.capella.common.data.activity.gen,
+ org.polarsys.kitalpha.emde.model
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.transition.system,

@@ -16,11 +16,15 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.model.handler,
  org.polarsys.capella.common.ui,
  org.polarsys.capella.core.validation,
- org.polarsys.capella.core.libraries
+ org.polarsys.capella.core.libraries,
+ org.eclipse.emf.transaction,
+ org.polarsys.capella.core.data.gen,
+ org.polarsys.capella.core.model.helpers,
+ org.polarsys.capella.common.helpers,
+ com.google.guava,
+ org.polarsys.capella.common.menu.dynamic
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Import-Package: com.google.common.annotations;version="11.0.2",
- com.google.common.base;version="11.0.2"
 Export-Package: org.polarsys.capella.core.linkedtext.ui,
  org.polarsys.capella.core.linkedtext.ui.validation
 Bundle-Vendor: %providerName

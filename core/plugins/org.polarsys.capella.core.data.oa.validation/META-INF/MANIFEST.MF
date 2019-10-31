@@ -5,7 +5,12 @@ Bundle-SymbolicName: org.polarsys.capella.core.data.oa.validation;singleton:=tru
 Bundle-Version: 1.4.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Require-Bundle: org.polarsys.capella.core.validation
+Require-Bundle: org.polarsys.capella.core.validation,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.validation,
+ org.polarsys.capella.core.data.gen,
+ org.polarsys.capella.core.model.helpers,
+ org.eclipse.core.runtime
 Export-Package: org.polarsys.capella.core.data.oa.validation.operationalActivity,
  org.polarsys.capella.core.data.oa.validation.role
 Bundle-ActivationPolicy: lazy

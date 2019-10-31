@@ -7,14 +7,20 @@ Bundle-Activator: org.polarsys.capella.common.re.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.expressions,
- org.polarsys.kitalpha.emde;visibility:=reexport,
- org.polarsys.kitalpha.emde.model;visibility:=reexport,
+ org.polarsys.kitalpha.emde,
+ org.polarsys.kitalpha.emde.model,
  org.polarsys.capella.common.re.gen,
- org.polarsys.capella.common.queries;visibility:=reexport,
+ org.polarsys.capella.common.queries,
  org.polarsys.capella.common.libraries,
  org.polarsys.capella.common.model.helpers,
- org.polarsys.capella.common.transition;visibility:=reexport,
- com.google.guava;bundle-version="[15.0.0,16.0.0)"
+ org.polarsys.capella.common.transition,
+ com.google.guava;bundle-version="[15.0.0,16.0.0)",
+ org.polarsys.capella.core.data.gen,
+ org.eclipse.emf.diffmerge,
+ org.polarsys.capella.common.ef,
+ org.polarsys.kitalpha.cadence.core,
+ org.polarsys.kitalpha.transposer.rules.handler,
+ org.polarsys.kitalpha.transposer.core
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

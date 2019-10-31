@@ -10,12 +10,14 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.polarsys.capella.common.data.activity.util,
  org.polarsys.capella.common.data.activity.impl,
  org.polarsys.capella.common.data.activity
-Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.emf.ecore;visibility:=reexport,
- org.eclipse.emf.ecore.xmi;visibility:=reexport,
- org.polarsys.capella.common.data.behavior.gen;visibility:=reexport,
- org.polarsys.capella.common.data.core.gen;visibility:=reexport,
- org.eclipse.emf.validation;visibility:=reexport,
- org.polarsys.kitalpha.emde.model;visibility:=reexport,
- org.polarsys.kitalpha.emde.xmi
+Require-Bundle: org.polarsys.capella.common.data.behavior.gen,
+ org.eclipse.emf.ecore,
+ org.polarsys.capella.common.data.core.gen,
+ org.eclipse.emf.ecore.xmi,
+ org.polarsys.kitalpha.emde.xmi,
+ org.polarsys.kitalpha.emde.model,
+ org.eclipse.equinox.common,
+ org.polarsys.capella.common.model.helpers,
+ org.eclipse.core.runtime,
+ org.polarsys.capella.common.mdsofa.common
 Bundle-ActivationPolicy: lazy

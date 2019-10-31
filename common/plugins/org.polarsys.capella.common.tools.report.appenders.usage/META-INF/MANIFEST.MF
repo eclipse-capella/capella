@@ -5,9 +5,11 @@ Bundle-SymbolicName: org.polarsys.capella.common.tools.report.appenders.usage;si
 Bundle-Version: 1.4.0.qualifier
 Bundle-Activator: org.polarsys.capella.common.tools.report.appenders.usage.UsageAppenderPlugin
 Bundle-Vendor: %providerName
-Require-Bundle: org.polarsys.capella.common.tools.report;visibility:=reexport,
+Require-Bundle: org.polarsys.capella.common.tools.report,
  org.eclipse.core.runtime,
- org.polarsys.capella.core.preferences;visibility:=reexport
+ org.polarsys.capella.core.preferences,
+ org.apache.log4j,
+ org.polarsys.capella.common.mdsofa.common
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.tools.report.appenders.usage,
  org.polarsys.capella.common.tools.report.appenders.usage.preferences,

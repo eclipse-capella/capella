@@ -11,7 +11,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.validation.ui.ide,
  org.polarsys.capella.core.re,
  org.polarsys.capella.core.re.ui,
- org.polarsys.capella.common.re.ui
+ org.polarsys.capella.common.re.ui,
+ org.polarsys.capella.common.ui.massactions,
+ org.polarsys.capella.common.ui.massactions.core
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

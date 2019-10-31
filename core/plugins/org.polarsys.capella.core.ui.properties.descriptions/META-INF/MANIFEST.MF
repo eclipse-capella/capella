@@ -7,7 +7,10 @@ Bundle-Version: 1.4.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.sirius.diagram.ui,
- org.polarsys.capella.core.ui.properties
+ org.polarsys.capella.core.ui.properties,
+ org.eclipse.ui.views.properties.tabbed,
+ org.eclipse.gmf.runtime.notation,
+ org.polarsys.capella.common.ui
 Export-Package: org.polarsys.capella.core.ui.properties.descriptions,
  org.polarsys.capella.core.ui.properties.descriptions.fields,
  org.polarsys.capella.core.ui.properties.descriptions.sections

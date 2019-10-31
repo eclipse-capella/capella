@@ -4,19 +4,19 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.explorer.activity.ui;singleton:=true
 Bundle-Version: 1.4.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.explorer.activity.ui.CapellaActivityExplorerActivator
-Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.ui,
- org.eclipse.amalgam.explorer.activity.ui;visibility:=reexport,
+Require-Bundle: org.eclipse.amalgam.explorer.activity.ui,
  org.polarsys.capella.core.libraries,
  org.polarsys.capella.core.transition.system.topdown.ui,
- org.polarsys.capella.core.sirius.analysis;visibility:=reexport,
+ org.polarsys.capella.core.sirius.analysis,
  org.polarsys.capella.core.sirius.ui,
  org.polarsys.capella.core.platform.sirius.ui.navigator,
- org.eclipse.sirius.table.ui;visibility:=reexport,
- org.eclipse.sirius.common.ui,
+ org.eclipse.sirius.table.ui,
  org.polarsys.capella.core.ui.toolkit,
- org.polarsys.capella.common.tools.report.appenders.usage,
- org.eclipse.jface
+ org.polarsys.capella.core.diagram.helpers,
+ org.eclipse.ui.navigator,
+ org.eclipse.jface,
+ org.eclipse.core.resources,
+ org.polarsys.capella.core.model.handler
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName

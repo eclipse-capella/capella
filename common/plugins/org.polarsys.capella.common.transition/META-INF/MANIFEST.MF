@@ -5,15 +5,20 @@ Bundle-SymbolicName: org.polarsys.capella.common.transition;singleton:=true
 Bundle-Version: 1.4.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.transition.common.Activator
 Bundle-Vendor: %providerName
-Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.core.expressions,
+Require-Bundle: org.eclipse.core.expressions,
  org.eclipse.emf.diffmerge,
  org.eclipse.sirius,
- org.polarsys.capella.common.flexibility.properties;visibility:=reexport,
- org.polarsys.capella.common.helpers;visibility:=reexport,
+ org.polarsys.capella.common.flexibility.properties,
+ org.polarsys.kitalpha.transposer.transformation.emf,
+ org.polarsys.capella.common.tools.report.appenders.usage,
+ org.polarsys.capella.common.mdsofa.common,
+ org.eclipse.core.commands,
+ org.polarsys.capella.common.ef,
+ org.eclipse.emf.transaction,
+ org.polarsys.capella.common.helpers,
  org.polarsys.capella.common.tools.report,
- org.polarsys.kitalpha.transposer.transformation.emf;visibility:=reexport,
- org.polarsys.capella.common.tools.report.appenders.usage
+ org.polarsys.capella.core.model.handler,
+ org.polarsys.capella.core.data.gen
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.transition.common,

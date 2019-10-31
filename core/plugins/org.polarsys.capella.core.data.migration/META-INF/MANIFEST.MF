@@ -4,39 +4,28 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.data.migration;singleton:=true
 Bundle-Version: 1.4.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.data.migration.Activator
-Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime,
- org.eclipse.core.expressions,
- org.eclipse.core.resources,
- org.eclipse.draw2d,
- org.eclipse.gmf.runtime.notation,
+Require-Bundle: org.eclipse.core.expressions,
  org.eclipse.gmf.runtime.diagram.ui,
- org.eclipse.sirius,
  org.eclipse.sirius.diagram.ui,
- org.eclipse.sirius.ecore.extender,
- org.eclipse.sirius.diagram,
  org.eclipse.sirius.tree,
  org.eclipse.sirius.table,
- org.eclipse.gmf.runtime.emf.core,
  org.polarsys.capella.core.platform.sirius.ui.actions,
  org.polarsys.capella.core.model.handler,
  org.polarsys.capella.core.model.helpers,
  org.polarsys.capella.common.re.gen,
  org.eclipse.sirius.diagram.sequence,
- com.google.guava,
  org.eclipse.emf.diffmerge.patterns.templates.gen,
- org.eclipse.emf.diffmerge.patterns.support,
- org.eclipse.emf.diffmerge.patterns.support.gen,
- org.polarsys.kitalpha.patterns.emde,
  org.polarsys.kitalpha.patterns.emde.gen,
  org.polarsys.capella.core.commandline.core,
  org.polarsys.capella.core.af.integration,
- org.polarsys.capella.common.libraries,
  org.polarsys.capella.core.sirius.analysis,
  org.polarsys.capella.core.data.business.queries,
  org.polarsys.capella.core.data.gen,
- org.polarsys.capella.core.platform.sirius.clipboard,
- org.eclipse.emf.ecore
+ org.polarsys.capella.common.ef,
+ org.polarsys.capella.common,
+ org.polarsys.capella.common.platform.sirius.ted,
+ org.eclipse.sirius.common,
+ org.polarsys.capella.common.helpers
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

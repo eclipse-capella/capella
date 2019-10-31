@@ -4,11 +4,15 @@ Bundle-Name: Core
 Bundle-SymbolicName: org.polarsys.capella.common.ui.massactions.core;singleton:=true
 Bundle-Version: 1.4.0.qualifier
 Bundle-Activator: org.polarsys.capella.common.ui.massactions.core.activator.MECoreCapellaActivator
-Require-Bundle: org.polarsys.capella.core.ui.properties;visibility:=reexport,
+Require-Bundle: org.polarsys.capella.core.ui.properties,
+ org.polarsys.kitalpha.massactions.visualize,
+ org.polarsys.kitalpha.massactions.edit,
+ org.polarsys.capella.core.ui.semantic.browser,
+ org.polarsys.capella.core.data.business.queries,
+ org.polarsys.capella.common.data.core.gen,
+ org.polarsys.capella.common.helpers,
  org.polarsys.capella.common.ui.toolkit.browser,
- org.polarsys.kitalpha.massactions.edit;visibility:=reexport,
- org.polarsys.kitalpha.massactions.visualize;visibility:=reexport,
- org.polarsys.capella.core.ui.semantic.browser
+ org.polarsys.capella.common.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.ui.massactions.core.activator,

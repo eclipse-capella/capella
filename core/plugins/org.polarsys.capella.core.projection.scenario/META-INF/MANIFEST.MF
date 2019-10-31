@@ -10,11 +10,17 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.projection.common,
  org.polarsys.capella.core.projection.exchanges,
  org.polarsys.capella.core.projection.interfaces,
- org.polarsys.capella.core.transition.system.topdown;visibility:=reexport,
+ org.polarsys.capella.core.transition.system.topdown,
  org.eclipse.ui.workbench,
  org.eclipse.jface,
  org.polarsys.capella.core.ui.toolkit,
- org.polarsys.capella.core.diagram.helpers
+ org.polarsys.capella.core.diagram.helpers,
+ org.polarsys.capella.core.data.gen,
+ org.eclipse.sirius,
+ org.polarsys.capella.common.ef,
+ org.polarsys.capella.common.helpers,
+ org.polarsys.capella.core.model.helpers,
+ org.polarsys.capella.common.data.core.gen
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.projection.scenario,

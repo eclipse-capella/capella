@@ -11,12 +11,12 @@ Export-Package: org.polarsys.capella.common.data.core.gen.xmi.impl,
  org.polarsys.capella.common.data.modellingcore,
  org.polarsys.capella.common.data.modellingcore.impl,
  org.polarsys.capella.common.data.modellingcore.util
-Require-Bundle: org.polarsys.kitalpha.emde;visibility:=reexport,
- org.polarsys.capella.common.model;visibility:=reexport,
- org.polarsys.capella.common.mdsofa.common;visibility:=reexport,
- org.polarsys.capella.common.platform.sirius.ted;visibility:=reexport,
- org.polarsys.capella.common.ef;visibility:=reexport,
- org.polarsys.capella.common.model.helpers;visibility:=reexport,
- org.polarsys.kitalpha.emde.model;visibility:=reexport,
- org.polarsys.kitalpha.emde.xmi;visibility:=reexport
+Require-Bundle: org.polarsys.kitalpha.emde,
+ org.polarsys.capella.common.model,
+ org.polarsys.capella.common.mdsofa.common,
+ org.polarsys.capella.common.platform.sirius.ted,
+ org.polarsys.capella.common.ef,
+ org.polarsys.capella.common.model.helpers,
+ org.polarsys.kitalpha.emde.model,
+ org.polarsys.kitalpha.emde.xmi
 Bundle-ActivationPolicy: lazy

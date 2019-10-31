@@ -5,7 +5,12 @@ Bundle-SymbolicName: org.polarsys.capella.core.data.epbs.validation;singleton:=t
 Bundle-Version: 1.4.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Require-Bundle: org.polarsys.capella.core.validation
+Require-Bundle: org.polarsys.capella.core.validation,
+ org.eclipse.emf.validation,
+ org.polarsys.capella.core.data.gen,
+ org.eclipse.core.runtime,
+ org.polarsys.capella.common.data.core.gen,
+ org.polarsys.capella.core.model.helpers
 Export-Package: org.polarsys.capella.core.data.epbs.validation.configurationItem
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

@@ -7,9 +7,14 @@ Bundle-Activator: org.polarsys.capella.core.model.preferences.CapellaModelPrefer
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.data.helpers,
- org.polarsys.capella.core.model.handler;visibility:=reexport,
+ org.polarsys.capella.core.model.handler,
  org.apache.commons.lang,
- org.polarsys.capella.core.preferences
+ org.polarsys.capella.core.preferences,
+ org.polarsys.capella.core.data.gen,
+ org.eclipse.emf.ecore,
+ org.polarsys.capella.common.data.core.gen,
+ org.eclipse.emf.transaction,
+ org.polarsys.capella.common.helpers
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.model.preferences,
  org.polarsys.capella.core.model.preferences.helpers

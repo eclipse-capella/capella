@@ -5,8 +5,10 @@ Bundle-SymbolicName: org.polarsys.capella.core.model.links.helpers
 Bundle-Version: 1.4.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Require-Bundle: org.polarsys.capella.core.sirius.analysis;visibility:=reexport,
- org.polarsys.capella.core.data.business.queries;visibility:=reexport
+Require-Bundle: org.polarsys.capella.core.sirius.analysis,
+ org.polarsys.capella.core.data.business.queries,
+ org.eclipse.emf.ecore,
+ org.polarsys.capella.core.data.gen
 Export-Package: org.polarsys.capella.core.model.links.helpers,
  org.polarsys.capella.core.model.links.helpers.commands
 Bundle-ActivationPolicy: lazy

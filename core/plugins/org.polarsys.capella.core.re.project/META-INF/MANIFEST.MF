@@ -5,9 +5,8 @@ Bundle-SymbolicName: org.polarsys.capella.core.re.project;singleton:=true
 Bundle-Version: 1.4.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.re.project.ReProjectActivator
 Bundle-Vendor: Eclipse.org
-Require-Bundle: org.eclipse.osgi,
+Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.jface,
- org.eclipse.core.runtime,
  org.eclipse.sirius,
  org.polarsys.capella.core.platform.sirius.ui.project,
  org.eclipse.ui,
@@ -18,7 +17,13 @@ Require-Bundle: org.eclipse.osgi,
  org.polarsys.capella.core.re,
  org.polarsys.capella.common.re.ui,
  org.polarsys.capella.common.flexibility.wizards,
- org.polarsys.capella.core.libraries.ui
+ org.polarsys.capella.core.libraries.ui,
+ org.polarsys.capella.common.ef,
+ org.polarsys.capella.core.model.skeleton,
+ org.polarsys.capella.core.data.gen,
+ org.polarsys.capella.core.model.helpers,
+ org.polarsys.capella.common,
+ org.polarsys.capella.common.data.core.gen
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin
 Bundle-ActivationPolicy: lazy

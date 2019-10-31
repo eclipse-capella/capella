@@ -5,12 +5,14 @@ Bundle-SymbolicName: org.polarsys.capella.core.platform.sirius.ui.menu;singleton
 Bundle-Version: 1.4.0.qualifier
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.sirius.diagram,
- org.eclipse.gmf.runtime.diagram.ui.resources.editor;visibility:=reexport,
+ org.eclipse.gmf.runtime.diagram.ui.resources.editor,
  org.eclipse.core.expressions,
  org.polarsys.capella.core.model.helpers,
  org.polarsys.capella.core.preferences,
  org.polarsys.capella.common.ui.services,
- org.eclipse.gmf.runtime.diagram.ui
+ org.eclipse.gmf.runtime.diagram.ui,
+ org.polarsys.capella.core.data.gen,
+ org.polarsys.capella.common.data.core.gen
 Export-Package: org.polarsys.capella.core.platform.sirius.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy

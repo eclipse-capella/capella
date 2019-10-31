@@ -8,7 +8,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.polarsys.capella.common.ui.services,
  org.polarsys.capella.core.ui.toolkit,
- org.polarsys.capella.common.ui
+ org.polarsys.capella.common.ui,
+ org.polarsys.capella.common.data.core.gen,
+ org.polarsys.capella.common.ef
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.platform.eclipse.capella.ui.trace,
  org.polarsys.capella.core.platform.eclipse.capella.ui.trace.commands,

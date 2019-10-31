@@ -5,10 +5,11 @@ Bundle-SymbolicName: org.polarsys.capella.core.data.common.properties;singleton:
 Bundle-Version: 1.4.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.data.common.properties.CommonPropertiesPlugin
 Bundle-Vendor: %providerName
-Require-Bundle: org.polarsys.capella.core.data.core.properties;visibility:=reexport,
+Require-Bundle: org.polarsys.capella.core.data.core.properties,
  org.polarsys.capella.common.linkedtext.ui,
  org.polarsys.capella.core.linkedtext.ui,
- org.polarsys.capella.common.ui
+ org.polarsys.capella.common.ui,
+ org.eclipse.ui.views.properties.tabbed
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.data.common.properties,
  org.polarsys.capella.core.data.common.properties.controllers,

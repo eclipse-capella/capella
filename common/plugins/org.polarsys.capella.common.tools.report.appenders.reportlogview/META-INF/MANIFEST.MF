@@ -4,15 +4,22 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.common.tools.report.appenders.reportlogview;singleton:=true
 Bundle-Version: 1.4.0.qualifier
 Bundle-Vendor: %providerName
-Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.debug.ui,
- org.eclipse.ui,
+Require-Bundle: org.eclipse.debug.ui,
  org.eclipse.ui.ide,
  org.polarsys.capella.common.tools.report,
  org.polarsys.capella.common.ui.services,
  org.eclipse.help,
  org.apache.commons.lang,
- org.polarsys.capella.shared.id.handler
+ org.polarsys.capella.shared.id.handler,
+ org.polarsys.capella.common.helpers,
+ org.eclipse.sirius,
+ org.polarsys.kitalpha.emde.model,
+ org.eclipse.emf.workspace,
+ org.eclipse.jface,
+ org.apache.log4j,
+ org.polarsys.capella.common.mdsofa.common,
+ org.polarsys.capella.common.data.core.gen,
+ org.eclipse.emf.edit.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.tools.report.appenders.reportlogview,
@@ -20,6 +27,3 @@ Export-Package: org.polarsys.capella.common.tools.report.appenders.reportlogview
  org.polarsys.capella.common.tools.report.appenders.reportlogview.handler
 Bundle-Activator: org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewPlugin
 Bundle-Localization: plugin
-Import-Package: org.eclipse.sirius.diagram,
- org.polarsys.capella.core.model.handler.command,
- org.polarsys.capella.core.model.handler.helpers

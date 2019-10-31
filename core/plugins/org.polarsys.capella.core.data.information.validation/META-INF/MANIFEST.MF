@@ -6,7 +6,12 @@ Bundle-Version: 1.4.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.polarsys.capella.core.validation,
- org.polarsys.capella.core.model.preferences
+ org.polarsys.capella.core.model.preferences,
+ org.eclipse.emf.validation,
+ org.polarsys.capella.core.data.gen,
+ org.polarsys.capella.core.model.helpers,
+ org.polarsys.capella.common.mdsofa.common,
+ org.polarsys.capella.core.data.gen.edit
 Export-Package: org.polarsys.capella.core.data.information.validation.association,
  org.polarsys.capella.core.data.information.validation.class_,
  org.polarsys.capella.core.data.information.validation.classpkg,

@@ -5,17 +5,19 @@ Bundle-SymbolicName: org.polarsys.capella.core.validation.ui.ide;singleton:=true
 Bundle-Version: 1.4.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.validation.ui.ide.PluginActivator
 Bundle-Vendor: %providerName
-Require-Bundle: org.eclipse.ui;visibility:=reexport,
+Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.polarsys.capella.common.ui.services,
- org.eclipse.ui.ide;visibility:=reexport,
+ org.eclipse.ui.ide,
  org.polarsys.capella.core.validation,
  org.polarsys.capella.core.platform.sirius.ui.actions,
  org.polarsys.capella.core.ui.properties,
- org.polarsys.capella.common.tools.report.appenders.reportlogview;visibility:=reexport,
+ org.polarsys.capella.common.tools.report.appenders.reportlogview,
  org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.eclipse.emf.validation.ui,
- org.polarsys.capella.common.re.gen
+ org.polarsys.capella.common.re.gen,
+ org.eclipse.core.resources,
+ org.eclipse.emf.common
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

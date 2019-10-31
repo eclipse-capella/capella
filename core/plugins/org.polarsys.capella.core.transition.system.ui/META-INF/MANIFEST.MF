@@ -9,13 +9,17 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.ide,
  org.eclipse.core.runtime,
  org.eclipse.core.expressions,
- org.polarsys.capella.core.transition.common.ui;visibility:=reexport,
- org.polarsys.capella.core.transition.system;visibility:=reexport,
+ org.polarsys.capella.core.transition.common.ui,
+ org.polarsys.capella.core.transition.system,
  org.polarsys.capella.core.platform.sirius.ui.project,
- org.polarsys.capella.core.platform.sirius.ui.actions;visibility:=reexport,
- org.polarsys.capella.core.model.handler;visibility:=reexport,
+ org.polarsys.capella.core.platform.sirius.ui.actions,
+ org.polarsys.capella.core.model.handler,
  org.polarsys.capella.core.preferences,
- org.eclipse.sirius.diagram.ui;visibility:=reexport
+ org.eclipse.sirius.diagram.ui,
+ org.eclipse.core.resources,
+ org.polarsys.capella.common.flexibility.wizards,
+ org.polarsys.capella.common.flexibility.properties,
+ org.polarsys.capella.common.mdsofa.common
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.core.transition.system.ui,

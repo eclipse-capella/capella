@@ -11,9 +11,10 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.polarsys.capella.common.re.gen.provider,
  org.polarsys.capella.common.re.provider
 Require-Bundle: org.eclipse.core.runtime,
- org.polarsys.capella.common.data.core.gen;visibility:=reexport,
- org.polarsys.kitalpha.emde.model.edit;visibility:=reexport,
- org.polarsys.kitalpha.emde;visibility:=reexport,
- org.polarsys.kitalpha.emde.model;visibility:=reexport,
- org.polarsys.capella.common.re.gen
+ org.polarsys.capella.common.data.core.gen,
+ org.polarsys.kitalpha.emde.model.edit,
+ org.polarsys.kitalpha.emde,
+ org.polarsys.kitalpha.emde.model,
+ org.polarsys.capella.common.re.gen,
+ org.polarsys.capella.common.model
 Bundle-ActivationPolicy: lazy

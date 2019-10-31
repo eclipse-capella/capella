@@ -5,10 +5,17 @@ Bundle-SymbolicName: org.polarsys.capella.core.data.ctx.properties;singleton:=tr
 Bundle-Version: 1.4.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.data.ctx.properties.CtxPropertiesPlugin
 Bundle-Vendor: %providerName
-Require-Bundle: org.polarsys.capella.core.data.fa.properties;visibility:=reexport,
- org.polarsys.capella.core.data.interaction.properties;visibility:=reexport,
- org.polarsys.capella.core.data.cs.properties;visibility:=reexport,
- org.eclipse.sirius.diagram.ui;bundle-version="1.0.0"
+Require-Bundle: org.polarsys.capella.core.data.fa.properties,
+ org.polarsys.capella.core.data.interaction.properties,
+ org.polarsys.capella.core.data.cs.properties,
+ org.eclipse.sirius.diagram.ui,
+ org.eclipse.swt,
+ org.eclipse.ui.views.properties.tabbed,
+ org.polarsys.capella.core.ui.properties,
+ org.polarsys.capella.core.data.gen,
+ org.eclipse.core.runtime,
+ org.polarsys.capella.core.data.business.queries,
+ org.polarsys.capella.core.data.core.properties
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.data.ctx.properties,
  org.polarsys.capella.core.data.ctx.properties.controllers,

@@ -13,8 +13,8 @@ Export-Package: org.polarsys.capella.core.platform.sirius.ui,
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.ui.ide.application;visibility:=reexport,
- org.eclipse.ui.ide;visibility:=reexport,
+ org.eclipse.ui.ide.application,
+ org.eclipse.ui.ide,
  org.eclipse.help.ui,
  org.eclipse.pde.runtime,
  org.eclipse.sirius.ui,
@@ -27,5 +27,9 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.preferences,
  org.polarsys.capella.core.application,
  org.polarsys.capella.common.platform.sirius.customization,
- org.eclipse.sirius.diagram
+ org.eclipse.sirius.diagram,
+ org.polarsys.capella.core.model.handler,
+ org.polarsys.capella.common.tools.report.appenders.usage,
+ org.eclipse.emf.validation,
+ org.polarsys.capella.common.tools.report
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

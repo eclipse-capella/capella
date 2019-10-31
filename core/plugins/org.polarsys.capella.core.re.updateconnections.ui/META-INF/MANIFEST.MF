@@ -17,7 +17,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.diffmerge.ui,
  org.eclipse.sirius.diagram.ui,
  org.eclipse.jface,
- org.eclipse.gmf.runtime.diagram.ui
+ org.eclipse.gmf.runtime.diagram.ui,
+ org.polarsys.capella.common.data.core.gen,
+ org.polarsys.capella.common.helpers
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.re.updateconnections.ui,

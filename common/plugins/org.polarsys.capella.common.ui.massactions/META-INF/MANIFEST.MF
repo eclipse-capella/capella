@@ -3,9 +3,12 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Massediting
 Bundle-SymbolicName: org.polarsys.capella.common.ui.massactions;singleton:=true
 Bundle-Version: 1.4.0.qualifier
-Require-Bundle: org.polarsys.kitalpha.massactions;visibility:=reexport,
+Require-Bundle: org.polarsys.kitalpha.massactions,
  org.polarsys.capella.common.ui.massactions.core,
- org.eclipse.sirius.diagram.ui
+ org.eclipse.sirius.diagram.ui,
+ org.eclipse.ui.views.properties.tabbed,
+ org.polarsys.capella.core.model.handler,
+ org.eclipse.core.runtime
 Bundle-Activator: org.polarsys.capella.common.ui.massactions.activator.MACapellaActivator
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy

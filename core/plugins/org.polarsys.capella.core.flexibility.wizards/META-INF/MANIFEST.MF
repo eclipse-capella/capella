@@ -7,7 +7,7 @@ Bundle-Activator: org.polarsys.capella.core.flexibility.wizards.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.polarsys.capella.common.flexibility.properties;visibility:=reexport,
+ org.polarsys.capella.common.flexibility.properties,
  org.eclipse.ui.views.properties.tabbed,
  org.eclipse.emf,
  org.eclipse.emf.ecore,

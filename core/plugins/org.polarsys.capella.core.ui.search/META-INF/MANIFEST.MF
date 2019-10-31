@@ -13,7 +13,16 @@ Require-Bundle: com.google.guava,
  org.polarsys.capella.common.re.gen,
  org.eclipse.sirius,
  org.eclipse.core.expressions,
- org.eclipse.ui.ide
+ org.eclipse.ui.ide,
+ org.eclipse.core.runtime,
+ org.polarsys.capella.common.ui.toolkit,
+ org.eclipse.jface,
+ org.polarsys.kitalpha.emde.model,
+ org.polarsys.capella.core.data.gen,
+ org.polarsys.capella.common.data.core.gen,
+ org.polarsys.capella.common.ef,
+ org.polarsys.capella.common,
+ org.polarsys.capella.core.model.helpers
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.polarsys.capella.core.ui.search,
  org.polarsys.capella.core.ui.search.handler

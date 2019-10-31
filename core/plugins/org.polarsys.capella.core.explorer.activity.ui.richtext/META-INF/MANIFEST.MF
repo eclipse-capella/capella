@@ -11,7 +11,11 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.ui.properties,
  org.polarsys.kitalpha.richtext.widget,
  org.polarsys.kitalpha.richtext.common,
- org.polarsys.capella.core.model.handler
+ org.polarsys.capella.core.model.handler,
+ org.polarsys.capella.common.ef,
+ org.polarsys.capella.common.helpers,
+ org.eclipse.amalgam.explorer.activity.ui,
+ org.polarsys.capella.core.data.gen
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.polarsys.capella.core.explorer.activity.ui.richtext,

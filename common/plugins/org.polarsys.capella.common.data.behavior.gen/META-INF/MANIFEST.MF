@@ -11,10 +11,10 @@ Export-Package: org.polarsys.capella.common.data.behavior.impl,
  org.polarsys.capella.common.data.behavior.util,
  org.polarsys.capella.common.data.behavior
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.emf.ecore;visibility:=reexport,
- org.eclipse.emf.ecore.xmi;visibility:=reexport,
- org.polarsys.capella.common.data.core.gen;visibility:=reexport,
- org.eclipse.emf.validation;visibility:=reexport,
- org.polarsys.kitalpha.emde.model;visibility:=reexport,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.ecore.xmi,
+ org.polarsys.capella.common.data.core.gen,
+ org.eclipse.emf.validation,
+ org.polarsys.kitalpha.emde.model,
  org.polarsys.kitalpha.emde.xmi
 Bundle-ActivationPolicy: lazy

@@ -6,8 +6,8 @@ Bundle-Version: 1.4.0.qualifier
 Bundle-Activator: org.polarsys.capella.test.business.queries.ju.TestBusinessQueriesPlugin
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.runtime,
- org.polarsys.capella.core.data.business.queries;visibility:=reexport,
- org.polarsys.capella.test.framework;visibility:=reexport
+ org.polarsys.capella.core.data.business.queries,
+ org.polarsys.capella.test.framework
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.test.business.queries.ju,

@@ -41,8 +41,9 @@ Export-Package: org.polarsys.capella.core.data.helpers.cache,
  org.polarsys.capella.core.data.helpers.requirement,
  org.polarsys.capella.core.data.helpers.requirement.delegates,
  org.polarsys.capella.core.data.helpers.sharedmodel
-Require-Bundle: org.polarsys.capella.core.data.gen;visibility:=reexport,
- org.polarsys.capella.common.data.helpers;visibility:=reexport,
+Require-Bundle: org.polarsys.capella.core.data.gen,
+ org.polarsys.capella.common.data.helpers,
+ org.polarsys.capella.common.model.helpers,
  org.eclipse.emf.ecore
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

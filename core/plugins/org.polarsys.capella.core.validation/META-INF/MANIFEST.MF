@@ -7,12 +7,19 @@ Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.core.expressions,
- org.eclipse.emf.validation;visibility:=reexport,
- org.polarsys.capella.core.model.helpers;visibility:=reexport,
- org.polarsys.capella.core.model.handler;visibility:=reexport,
- org.polarsys.capella.core.model.preferences;visibility:=reexport,
+ org.eclipse.emf.validation,
+ org.polarsys.capella.core.model.helpers,
+ org.polarsys.capella.core.model.handler,
+ org.polarsys.capella.core.model.preferences,
  org.polarsys.capella.common.re.gen,
- org.polarsys.capella.common.ui
+ org.polarsys.capella.common.ui,
+ org.eclipse.core.runtime,
+ org.polarsys.capella.common.helpers,
+ org.polarsys.capella.core.data.gen,
+ org.polarsys.capella.common.data.behavior.gen,
+ org.polarsys.capella.common.data.activity.gen,
+ org.polarsys.capella.common.data.core.gen,
+ org.polarsys.capella.common.mdsofa.common
 Export-Package: org.polarsys.capella.core.validation,
  org.polarsys.capella.core.validation.export,
  org.polarsys.capella.core.validation.expressions,

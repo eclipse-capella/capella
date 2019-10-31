@@ -9,7 +9,10 @@ Require-Bundle: org.polarsys.capella.core.model.handler,
  org.polarsys.capella.core.model.helpers,
  org.eclipse.sirius.diagram,
  org.polarsys.capella.core.diagram.helpers,
- org.eclipse.sirius.table
+ org.eclipse.sirius.table,
+ org.polarsys.capella.core.data.gen,
+ org.polarsys.capella.common.data.core.gen,
+ org.polarsys.capella.common.helpers
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.semantic.queries,
  org.polarsys.capella.core.semantic.queries.basic.queries,

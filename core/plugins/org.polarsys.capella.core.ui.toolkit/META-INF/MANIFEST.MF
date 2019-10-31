@@ -4,11 +4,11 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.ui.toolkit;singleton:=true
 Bundle-Version: 1.4.0.qualifier
 Bundle-Vendor: %providerName
-Require-Bundle: org.polarsys.capella.common.ui.toolkit;visibility:=reexport,
- org.polarsys.capella.common.ui.resources;visibility:=reexport,
+Require-Bundle: org.polarsys.capella.common.ui.toolkit,
+ org.polarsys.capella.common.ui.resources,
  org.polarsys.capella.core.data.gen.edit,
- org.polarsys.capella.core.data.business.queries;visibility:=reexport,
- org.polarsys.capella.core.ui.resources;visibility:=reexport,
+ org.polarsys.capella.core.data.business.queries,
+ org.polarsys.capella.core.ui.resources,
  org.polarsys.capella.common.ui
 Export-Package: org.polarsys.capella.core.ui.toolkit,
  org.polarsys.capella.core.ui.toolkit.actions.move,

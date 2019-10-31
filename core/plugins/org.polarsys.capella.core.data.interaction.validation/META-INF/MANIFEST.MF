@@ -8,7 +8,13 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.polarsys.capella.core.validation,
  org.polarsys.capella.core.data.interaction.properties,
  org.apache.commons.lang,
- org.polarsys.capella.core.sirius.analysis
+ org.polarsys.capella.core.sirius.analysis,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.validation,
+ org.polarsys.capella.core.data.gen,
+ org.polarsys.capella.core.model.helpers,
+ org.polarsys.capella.common.data.core.gen,
+ org.eclipse.core.runtime
 Export-Package: org.polarsys.capella.core.data.interaction.validation.instanceRole,
  org.polarsys.capella.core.data.interaction.validation.interactionUse,
  org.polarsys.capella.core.data.interaction.validation.scenario,

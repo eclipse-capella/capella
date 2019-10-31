@@ -9,7 +9,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.ui.console,
  org.polarsys.capella.common.tools.report.appenders.console,
- org.eclipse.debug.ui
+ org.eclipse.debug.ui,
+ org.apache.log4j
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.platform.eclipse.tools.report.console
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

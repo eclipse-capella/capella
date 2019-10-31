@@ -5,15 +5,15 @@ Bundle-SymbolicName: org.polarsys.capella.core.projection.common;singleton:=true
 Bundle-Version: 1.4.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Require-Bundle: org.polarsys.capella.core.model.helpers,
- org.polarsys.capella.core.tiger;visibility:=reexport,
+Require-Bundle: org.polarsys.capella.core.tiger,
  org.polarsys.capella.core.model.preferences,
  org.polarsys.capella.core.transition.system.topdown,
- org.eclipse.ui.workbench,
- org.polarsys.capella.common.tools.report.appenders.reportlogview,
  org.polarsys.capella.core.platform.sirius.ui.actions,
  org.eclipse.core.expressions,
- org.polarsys.capella.common.tools.report.appenders.usage
+ org.polarsys.capella.common.tools.report.appenders.usage,
+ org.polarsys.capella.common.menu.dynamic,
+ org.eclipse.emf.ecore,
+ org.polarsys.capella.common
 Export-Package: org.polarsys.capella.core.projection.common,
  org.polarsys.capella.core.projection.common.constants,
  org.polarsys.capella.core.projection.common.context,

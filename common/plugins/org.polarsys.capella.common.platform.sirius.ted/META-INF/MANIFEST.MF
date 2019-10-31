@@ -6,11 +6,15 @@ Bundle-Version: 1.4.0.qualifier
 Bundle-Vendor: %providerName
 Export-Package: org.polarsys.capella.common.platform.sirius.ted,
  org.polarsys.capella.common.platform.sirius.ted.property.testers
-Require-Bundle: org.eclipse.sirius;visibility:=reexport,
- org.eclipse.sirius.common;visibility:=reexport,
- org.eclipse.sirius.ecore.extender;visibility:=reexport,
- org.polarsys.capella.common.ef;visibility:=reexport,
- org.eclipse.core.expressions
+Require-Bundle: org.eclipse.sirius,
+ org.eclipse.sirius.common,
+ org.eclipse.sirius.ecore.extender,
+ org.polarsys.capella.common.ef,
+ org.eclipse.core.expressions,
+ org.eclipse.emf.transaction,
+ org.eclipse.core.commands,
+ org.polarsys.capella.common.mdsofa.common,
+ org.eclipse.emf.workspace
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Activator: org.polarsys.capella.common.platform.sirius.ted.PlatformSiriusTedActivator

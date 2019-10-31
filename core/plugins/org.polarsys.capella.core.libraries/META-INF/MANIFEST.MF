@@ -6,11 +6,13 @@ Bundle-Version: 1.4.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.libraries.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.common.flexibility.properties,
- org.polarsys.capella.common.libraries;visibility:=reexport,
+ org.polarsys.capella.common.libraries,
  org.polarsys.capella.core.model.helpers,
  org.polarsys.capella.core.model.preferences,
  org.polarsys.kitalpha.ad.metadata,
- org.polarsys.capella.common.queries
+ org.polarsys.capella.common.queries,
+ org.eclipse.emf.transaction,
+ org.polarsys.capella.core.data.gen
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.libraries,

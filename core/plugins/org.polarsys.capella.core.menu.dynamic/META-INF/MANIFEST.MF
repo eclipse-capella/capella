@@ -4,12 +4,20 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.menu.dynamic;singleton:=true
 Bundle-Version: 1.4.0.qualifier
 Bundle-Vendor: %providerName
-Require-Bundle: org.polarsys.capella.common.ui.menu.dynamic;visibility:=reexport,
- org.polarsys.capella.core.model.skeleton;visibility:=reexport,
+Require-Bundle: org.polarsys.capella.common.ui.menu.dynamic,
+ org.polarsys.capella.core.model.skeleton,
  org.polarsys.capella.common.ui.services,
- org.polarsys.capella.core.data.gen;visibility:=reexport,
+ org.polarsys.capella.core.data.gen,
  org.polarsys.capella.core.preferences,
- org.eclipse.emf.edit.ui
+ org.eclipse.emf.edit.ui,
+ org.polarsys.capella.common.menu.dynamic,
+ org.eclipse.ui.navigator,
+ org.polarsys.capella.common,
+ org.polarsys.capella.core.model.helpers,
+ org.polarsys.kitalpha.emde.model,
+ org.polarsys.capella.core.model.handler,
+ org.polarsys.capella.common.helpers,
+ org.polarsys.capella.common.flexibility.properties
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.polarsys.capella.core.menu.dynamic

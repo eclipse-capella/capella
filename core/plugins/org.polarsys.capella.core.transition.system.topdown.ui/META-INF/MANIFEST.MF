@@ -8,11 +8,13 @@ Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.expressions,
- org.polarsys.capella.core.transition.system.ui;visibility:=reexport,
- org.polarsys.capella.core.transition.system.topdown;visibility:=reexport,
+ org.polarsys.capella.core.transition.system.ui,
+ org.polarsys.capella.core.transition.system.topdown,
  org.polarsys.capella.core.model.preferences,
  org.polarsys.capella.core.preferences,
- org.polarsys.capella.core.flexibility.wizards
+ org.polarsys.capella.core.flexibility.wizards,
+ org.polarsys.capella.common.ui.services,
+ org.polarsys.capella.common.data.core.gen
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.transition.system.topdown.ui,
  org.polarsys.capella.core.transition.system.topdown.ui.commands,

@@ -5,9 +5,10 @@ Bundle-SymbolicName: org.polarsys.capella.common.id.handler;singleton:=true
 Bundle-Version: 1.4.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Require-Bundle: org.eclipse.core.runtime,
- org.polarsys.capella.shared.id.handler,
- org.polarsys.capella.common.data.core.gen
+Require-Bundle: org.polarsys.capella.shared.id.handler,
+ org.polarsys.capella.common.data.core.gen,
+ org.polarsys.kitalpha.emde.model,
+ org.polarsys.capella.common.mdsofa.common
 Export-Package: org.polarsys.capella.common.id.handler
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.polarsys.capella.common.id.handler.SharedIdHandlerPlugin

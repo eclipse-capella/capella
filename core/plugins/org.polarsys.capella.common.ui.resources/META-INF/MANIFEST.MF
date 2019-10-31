@@ -5,13 +5,14 @@ Bundle-SymbolicName: org.polarsys.capella.common.ui.resources;singleton:=true
 Bundle-Version: 1.4.0.qualifier
 Bundle-Activator: org.polarsys.capella.common.ui.resources.ResourcePlugin
 Bundle-Vendor: %providerName
-Require-Bundle: org.eclipse.core.runtime;visibility:=reexport,
- org.eclipse.ui;visibility:=reexport,
- org.polarsys.capella.core.data.gen;visibility:=reexport,
- org.polarsys.capella.common.ui.services;visibility:=reexport,
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.ui,
+ org.polarsys.capella.core.data.gen,
+ org.polarsys.capella.common.ui.services,
  org.polarsys.capella.common.ui.toolkit,
- org.polarsys.capella.core.model.preferences;visibility:=reexport,
- org.polarsys.capella.core.preferences
+ org.polarsys.capella.core.model.preferences,
+ org.polarsys.capella.core.preferences,
+ org.eclipse.core.resources
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.ui.resources,
  org.polarsys.capella.common.ui.resources.prefs

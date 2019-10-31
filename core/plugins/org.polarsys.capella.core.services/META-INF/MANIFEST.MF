@@ -5,9 +5,13 @@ Bundle-SymbolicName: org.polarsys.capella.core.services;singleton:=true
 Bundle-Version: 1.4.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.eclipse.core.resources;visibility:=reexport,
- org.eclipse.emf.transaction;visibility:=reexport,
- org.polarsys.capella.core.model.helpers
+Require-Bundle: org.eclipse.core.resources,
+ org.eclipse.emf.transaction,
+ org.polarsys.capella.core.model.helpers,
+ org.polarsys.capella.common.data.core.gen,
+ org.polarsys.capella.common.ef,
+ org.polarsys.capella.common.mdsofa.common,
+ org.polarsys.capella.core.data.gen
 Export-Package: org.polarsys.capella.core.services
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin

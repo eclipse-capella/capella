@@ -5,7 +5,13 @@ Bundle-SymbolicName: org.polarsys.capella.core.data.requirement.properties;singl
 Bundle-Version: 1.4.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.data.requirement.properties.RequirementPropertiesPlugin
 Bundle-Vendor: %providerName
-Require-Bundle: org.polarsys.capella.core.data.core.properties;visibility:=reexport
+Require-Bundle: org.polarsys.capella.core.data.core.properties,
+ org.eclipse.swt,
+ org.eclipse.emf.ecore,
+ org.eclipse.ui.views.properties.tabbed,
+ org.polarsys.capella.core.data.gen,
+ org.polarsys.capella.core.ui.properties,
+ org.eclipse.core.runtime
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.data.requirement.properties,
  org.polarsys.capella.core.data.requirement.properties.fields,

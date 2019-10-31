@@ -6,7 +6,12 @@ Bundle-Version: 1.4.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.polarsys.capella.core.menu.dynamic,
- org.polarsys.capella.core.model.helpers
+ org.polarsys.capella.core.model.helpers,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.edit,
+ org.polarsys.capella.common.data.core.gen,
+ org.polarsys.capella.core.data.gen,
+ org.polarsys.capella.common.menu.dynamic
 Export-Package: org.polarsys.capella.core.data.menu.contributions.capellacommon,
  org.polarsys.capella.core.data.menu.contributions.capellacore,
  org.polarsys.capella.core.data.menu.contributions.capellamodeller,

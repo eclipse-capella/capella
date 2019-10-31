@@ -4,11 +4,15 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.common.ui.services;singleton:=true
 Bundle-Version: 1.4.0.qualifier
 Bundle-Vendor: %providerName
-Require-Bundle: org.polarsys.capella.common.data.core.gen;visibility:=reexport,
- org.eclipse.ui;visibility:=reexport,
- org.eclipse.emf.edit.ui;visibility:=reexport,
- org.polarsys.capella.common.ui;visibility:=reexport,
- org.eclipse.core.expressions;bundle-version="3.4.200"
+Require-Bundle: org.polarsys.capella.common.data.core.gen,
+ org.eclipse.ui,
+ org.eclipse.emf.edit.ui,
+ org.polarsys.capella.common.ui,
+ org.eclipse.core.expressions;bundle-version="3.4.200",
+ org.eclipse.core.runtime,
+ org.polarsys.kitalpha.emde.model,
+ org.polarsys.capella.common.ef,
+ org.polarsys.capella.common.helpers
 Export-Package: org.polarsys.capella.common.ui.actions,
  org.polarsys.capella.common.ui.services
 Bundle-ActivationPolicy: lazy

@@ -5,10 +5,15 @@ Bundle-SymbolicName: org.polarsys.capella.common.tools.report.appenders.console;
 Bundle-Version: 1.4.0.qualifier
 Bundle-Activator: org.polarsys.capella.common.tools.report.appenders.console.ConsoleAppenderActivator
 Bundle-Vendor: %providerName
-Require-Bundle: org.polarsys.capella.common.tools.report;visibility:=reexport,
+Require-Bundle: org.polarsys.capella.common.tools.report,
  org.polarsys.capella.common.helpers,
  org.eclipse.swt,
- org.eclipse.ui.console
+ org.eclipse.ui.console,
+ org.apache.log4j,
+ org.eclipse.core.jobs,
+ org.eclipse.equinox.common,
+ org.eclipse.emf.diffmerge,
+ org.polarsys.capella.common.mdsofa.common
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.tools.report.appenders.console
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

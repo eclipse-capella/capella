@@ -5,8 +5,11 @@ Bundle-SymbolicName: org.polarsys.capella.common.tools.report.appenders.file;sin
 Bundle-Version: 1.4.0.qualifier
 Bundle-Activator: org.polarsys.capella.common.tools.report.appenders.file.Activator
 Bundle-Vendor: %providerName
-Require-Bundle: org.polarsys.capella.common.tools.report;visibility:=reexport,
- org.eclipse.core.runtime
+Require-Bundle: org.polarsys.capella.common.tools.report,
+ org.eclipse.core.runtime,
+ org.polarsys.capella.common,
+ org.eclipse.core.resources,
+ org.apache.log4j
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.tools.report.appenders.file
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

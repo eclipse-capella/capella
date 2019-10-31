@@ -7,10 +7,19 @@ Bundle-Activator: org.polarsys.capella.core.transition.system.topdown.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.polarsys.capella.core.transition.system;visibility:=reexport,
+ org.polarsys.capella.core.transition.system,
  org.polarsys.capella.core.model.preferences,
  org.polarsys.capella.core.preferences,
- org.eclipse.emf.diffmerge.ui
+ org.eclipse.emf.diffmerge.ui,
+ org.polarsys.kitalpha.transposer.rules.handler,
+ org.polarsys.capella.common.transition,
+ org.polarsys.kitalpha.cadence.core,
+ org.polarsys.capella.core.model.helpers,
+ org.polarsys.capella.core.data.gen,
+ org.apache.log4j,
+ org.polarsys.capella.common.ef,
+ org.polarsys.capella.common.data.core.gen,
+ org.polarsys.capella.common
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.transition.system.topdown,

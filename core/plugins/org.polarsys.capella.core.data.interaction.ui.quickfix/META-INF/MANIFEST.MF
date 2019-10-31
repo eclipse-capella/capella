@@ -6,11 +6,11 @@ Bundle-Version: 1.4.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.data.interaction.ui.quickfix.InteractionQuickFixActivator
 Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.common.ui,
- org.polarsys.capella.core.model.handler,
- org.polarsys.capella.core.data.information.validation,
  org.polarsys.capella.core.validation.ui.ide,
  org.polarsys.capella.core.model.helpers,
- org.polarsys.capella.core.ui.resources
+ org.polarsys.capella.core.ui.resources,
+ org.polarsys.capella.common.ui.massactions,
+ org.eclipse.core.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

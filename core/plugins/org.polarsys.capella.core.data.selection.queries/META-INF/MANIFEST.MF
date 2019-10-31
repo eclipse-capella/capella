@@ -5,9 +5,15 @@ Bundle-SymbolicName: org.polarsys.capella.core.data.selection.queries;singleton:
 Bundle-Version: 1.4.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Require-Bundle: org.polarsys.capella.core.model.helpers;visibility:=reexport,
- org.polarsys.capella.core.model.preferences;visibility:=reexport,
- org.polarsys.capella.common.ui.services
+Require-Bundle: org.polarsys.capella.core.model.helpers,
+ org.polarsys.capella.core.model.preferences,
+ org.polarsys.capella.common.ui.services,
+ org.polarsys.capella.core.data.gen,
+ org.eclipse.emf.ecore,
+ org.polarsys.capella.common.helpers,
+ org.polarsys.capella.common.data.activity.gen,
+ org.polarsys.capella.core.data.helpers,
+ org.polarsys.capella.core.model.handler
 Export-Package: org.polarsys.capella.core.data.selection.queries.cs,
  org.polarsys.capella.core.data.selection.queries.fa,
  org.polarsys.capella.core.data.selection.queries.information,

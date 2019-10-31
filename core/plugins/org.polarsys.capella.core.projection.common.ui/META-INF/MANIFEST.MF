@@ -5,10 +5,16 @@ Bundle-SymbolicName: org.polarsys.capella.core.projection.common.ui;singleton:=t
 Bundle-Version: 1.4.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Require-Bundle: org.polarsys.capella.core.tiger;visibility:=reexport,
+Require-Bundle: org.polarsys.capella.core.tiger,
  org.polarsys.capella.core.projection.common,
  org.polarsys.capella.common.ui.toolkit,
- org.polarsys.capella.core.model.handler
+ org.polarsys.capella.core.model.handler,
+ org.eclipse.emf.ecore,
+ org.eclipse.ui.workbench,
+ org.eclipse.swt,
+ org.eclipse.jface,
+ org.eclipse.core.runtime,
+ org.polarsys.capella.common.ui
 Export-Package: org.polarsys.capella.core.projection.common.ui.resolver
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

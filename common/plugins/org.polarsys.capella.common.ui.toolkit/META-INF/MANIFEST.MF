@@ -12,9 +12,13 @@ Export-Package: org.polarsys.capella.common.ui.toolkit,
  org.polarsys.capella.common.ui.toolkit.provider,
  org.polarsys.capella.common.ui.toolkit.widgets
 Require-Bundle: org.polarsys.capella.common.ui.services,
- org.polarsys.capella.common.helpers;visibility:=reexport,
- org.eclipse.ui;visibility:=reexport,
- org.eclipse.core.databinding;visibility:=reexport
+ org.polarsys.capella.common.helpers,
+ org.eclipse.ui,
+ org.eclipse.core.databinding,
+ org.eclipse.emf.edit.ui,
+ org.eclipse.emf.transaction,
+ org.polarsys.capella.common.platform.sirius.ted,
+ org.polarsys.capella.common.data.core.gen
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin

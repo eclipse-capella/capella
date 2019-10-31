@@ -8,6 +8,6 @@ Bundle-Vendor: %providerName
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.model.helpers,
  org.polarsys.capella.common.model.helpers.internal
-Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
- org.polarsys.capella.common.mdsofa.common;visibility:=reexport
+Require-Bundle: org.eclipse.emf.ecore,
+ org.polarsys.capella.common.mdsofa.common
 Bundle-Localization: plugin

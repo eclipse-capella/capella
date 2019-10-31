@@ -5,7 +5,14 @@ Bundle-SymbolicName: org.polarsys.capella.core.data.information.properties;singl
 Bundle-Version: 1.4.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.data.information.properties.InformationPropertiesPlugin
 Bundle-Vendor: %providerName
-Require-Bundle: org.polarsys.capella.core.data.common.properties;visibility:=reexport
+Require-Bundle: org.polarsys.capella.core.data.common.properties,
+ org.eclipse.ui.views.properties.tabbed,
+ org.eclipse.core.runtime,
+ org.polarsys.capella.core.data.core.properties,
+ org.polarsys.capella.core.ui.properties,
+ org.eclipse.emf.ecore,
+ org.polarsys.capella.core.data.gen,
+ org.polarsys.capella.common.data.core.gen
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.polarsys.capella.core.data.information.properties,

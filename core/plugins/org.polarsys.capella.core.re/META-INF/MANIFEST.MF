@@ -7,16 +7,17 @@ Bundle-Activator: org.polarsys.capella.core.re.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.commands,
- org.polarsys.capella.common.re;visibility:=reexport,
- org.polarsys.capella.common.re.gen;visibility:=reexport,
- org.eclipse.core.expressions;visibility:=reexport,
- org.polarsys.capella.common.flexibility.properties;visibility:=reexport,
- org.polarsys.capella.common.transition;visibility:=reexport,
+ org.polarsys.capella.common.re,
+ org.polarsys.capella.common.re.gen,
+ org.eclipse.core.expressions,
+ org.polarsys.capella.common.flexibility.properties,
+ org.polarsys.capella.common.transition,
  org.eclipse.emf.diffmerge,
  org.polarsys.capella.core.transition.system,
  org.polarsys.capella.core.libraries,
  org.polarsys.capella.core.model.handler,
- org.polarsys.capella.core.ui.properties
+ org.polarsys.capella.core.ui.properties,
+ org.polarsys.kitalpha.transposer.rules.handler
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: 

@@ -5,12 +5,20 @@ Bundle-SymbolicName: org.polarsys.capella.core.data.core.properties;singleton:=t
 Bundle-Version: 1.4.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.data.core.properties.CorePropertiesPlugin
 Bundle-Vendor: %providerName
-Require-Bundle: org.polarsys.capella.core.ui.properties;visibility:=reexport,
- org.polarsys.capella.core.linkedtext.ui,
- org.polarsys.capella.common.linkedtext.ui,
+Require-Bundle: org.polarsys.capella.core.ui.properties,
  org.polarsys.capella.common.ui.menu.dynamic,
- org.eclipse.jface,
- org.polarsys.capella.core.platform.sirius.ui.actions
+ org.polarsys.capella.core.platform.sirius.ui.actions,
+ org.polarsys.capella.core.data.business.queries,
+ org.polarsys.capella.core.data.gen,
+ org.eclipse.emf.ecore,
+ org.polarsys.capella.core.data.helpers,
+ org.polarsys.capella.common.data.core.gen,
+ org.eclipse.swt,
+ org.eclipse.ui.views.properties.tabbed,
+ org.eclipse.core.runtime,
+ org.polarsys.capella.core.model.handler,
+ org.polarsys.capella.common.mdsofa.common,
+ org.polarsys.capella.core.model.preferences
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.data.core.properties,
  org.polarsys.capella.core.data.core.properties.controllers,

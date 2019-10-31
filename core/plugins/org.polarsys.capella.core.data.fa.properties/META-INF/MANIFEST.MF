@@ -11,5 +11,13 @@ Export-Package: org.polarsys.capella.core.data.fa.properties,
  org.polarsys.capella.core.data.fa.properties.controllers,
  org.polarsys.capella.core.data.fa.properties.fields,
  org.polarsys.capella.core.data.fa.properties.sections
-Require-Bundle: org.polarsys.capella.core.data.information.properties;visibility:=reexport,com.google.guava
+Require-Bundle: org.polarsys.capella.core.data.information.properties,
+ com.google.guava,
+ org.polarsys.capella.core.ui.properties,
+ org.eclipse.swt,
+ org.eclipse.ui.views.properties.tabbed,
+ org.polarsys.capella.core.data.gen,
+ org.eclipse.core.runtime,
+ org.polarsys.capella.core.data.business.queries,
+ org.eclipse.emf.ecore
 Bundle-Localization: plugin

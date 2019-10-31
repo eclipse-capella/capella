@@ -6,11 +6,14 @@ Bundle-Version: 1.4.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.polarsys.capella.core.data.business.queries,
- org.polarsys.capella.core.validation;visibility:=reexport,
+ org.polarsys.capella.core.validation,
  org.polarsys.capella.common.queries,
  org.polarsys.capella.core.transition.system.topdown,
  org.polarsys.capella.core.data.gen,
- org.polarsys.capella.core.model.helpers
+ org.polarsys.capella.core.model.helpers,
+ org.eclipse.emf.validation,
+ org.polarsys.capella.common.data.core.gen,
+ org.eclipse.core.runtime
 Export-Package: org.polarsys.capella.core.data.cs.validation.component,
  org.polarsys.capella.core.data.cs.validation.interfacePkg,
  org.polarsys.capella.core.data.cs.validation.interface_,

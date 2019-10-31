@@ -5,7 +5,7 @@ Bundle-SymbolicName: org.polarsys.capella.common.tools.report.ui;singleton:=true
 Bundle-Version: 1.4.0.qualifier
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.ui,
- org.polarsys.capella.common.tools.report;visibility:=reexport
+ org.polarsys.capella.common.tools.report
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.tools.report.ui.pref
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

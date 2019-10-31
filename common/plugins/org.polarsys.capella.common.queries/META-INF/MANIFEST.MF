@@ -8,7 +8,8 @@ Bundle-Vendor: %providerName
 Require-Bundle: org.apache.commons.lang,
  org.eclipse.core.runtime,
  org.eclipse.emf.ecore,
- org.polarsys.capella.common.tools.report
+ org.polarsys.capella.common.tools.report,
+ org.polarsys.capella.common.mdsofa.common
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.queries,

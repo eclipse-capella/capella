@@ -7,11 +7,11 @@ Bundle-Activator: org.polarsys.capella.core.ui.semantic.browser.CapellaBrowserAc
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.polarsys.capella.common.ui.toolkit.browser;visibility:=reexport,
- org.eclipse.gmf.runtime.diagram.ui;visibility:=reexport,
+Require-Bundle: org.polarsys.capella.common.ui.toolkit.browser,
  org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.polarsys.capella.core.ui.properties,
- org.eclipse.ui.workbench
+ org.eclipse.ui.views.properties.tabbed,
+ org.polarsys.capella.common.ui
 Export-Package: org.polarsys.capella.core.ui.semantic.browser,
  org.polarsys.capella.core.ui.semantic.browser.content.provider,
  org.polarsys.capella.core.ui.semantic.browser.internal,

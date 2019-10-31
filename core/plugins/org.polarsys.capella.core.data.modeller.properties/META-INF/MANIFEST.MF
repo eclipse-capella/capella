@@ -5,7 +5,11 @@ Bundle-SymbolicName: org.polarsys.capella.core.data.modeller.properties;singleto
 Bundle-Version: 1.4.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.data.modeller.properties.ModellerPropertiesPlugin
 Bundle-Vendor: %providerName
-Require-Bundle: org.polarsys.capella.core.data.core.properties;visibility:=reexport
+Require-Bundle: org.polarsys.capella.core.data.core.properties,
+ org.eclipse.ui.workbench,
+ org.eclipse.core.runtime,
+ org.polarsys.capella.core.data.gen,
+ org.eclipse.emf.ecore
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.data.modeller.properties,
  org.polarsys.capella.core.data.modeller.properties.sections

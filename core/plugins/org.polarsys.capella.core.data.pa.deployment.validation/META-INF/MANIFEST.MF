@@ -5,7 +5,12 @@ Bundle-SymbolicName: org.polarsys.capella.core.data.pa.deployment.validation;sin
 Bundle-Version: 1.4.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Require-Bundle: org.polarsys.capella.core.validation
+Require-Bundle: org.polarsys.capella.core.validation,
+ org.eclipse.emf.validation,
+ org.polarsys.capella.core.data.gen,
+ org.polarsys.capella.common,
+ org.eclipse.core.runtime,
+ org.polarsys.capella.core.model.helpers
 Export-Package: org.polarsys.capella.core.data.pa.validation.deploymentAspect,
  org.polarsys.capella.core.data.pa.validation.physicalComponent
 Bundle-ActivationPolicy: lazy

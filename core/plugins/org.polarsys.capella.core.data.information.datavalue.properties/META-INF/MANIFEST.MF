@@ -5,14 +5,19 @@ Bundle-SymbolicName: org.polarsys.capella.core.data.information.datavalue.proper
 Bundle-Version: 1.4.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.data.information.datavalue.properties.DataValuePropertiesPlugin
 Bundle-Vendor: %providerName
-Require-Bundle: org.polarsys.capella.core.data.information.properties;visibility:=reexport,
- org.eclipse.core.databinding.property,
- org.eclipse.core.databinding.beans,
+Require-Bundle: org.eclipse.core.databinding.beans,
  org.apache.commons.lang,
- org.polarsys.capella.common.linkedtext.ui,
  org.polarsys.capella.common.libraries.gen,
  org.polarsys.capella.core.linkedtext.ui,
- com.google.guava;bundle-version="11.0.2"
+ com.google.guava,
+ org.polarsys.capella.core.data.core.properties,
+ org.eclipse.ui.views.properties.tabbed,
+ org.eclipse.jface.text,
+ org.eclipse.core.runtime,
+ org.polarsys.capella.core.ui.properties,
+ org.eclipse.emf.ecore,
+ org.polarsys.capella.core.data.gen,
+ org.polarsys.capella.common.data.core.gen
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.data.information.datavalue.properties,
  org.polarsys.capella.core.data.information.datavalue.properties.controllers,

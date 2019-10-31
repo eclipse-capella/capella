@@ -7,8 +7,8 @@ Bundle-Activator: org.polarsys.capella.core.ui.resources.CapellaUIResourcesPlugi
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.polarsys.capella.common.ui;visibility:=reexport,
- org.polarsys.capella.core.data.gen;visibility:=reexport
+ org.polarsys.capella.common.ui,
+ org.polarsys.capella.core.data.gen
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.ui.resources

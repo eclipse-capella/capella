@@ -4,9 +4,11 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.common.data.helpers;singleton:=true
 Bundle-Version: 1.4.0.qualifier
 Bundle-Vendor: %providerName
-Require-Bundle: org.polarsys.capella.common.data.activity.gen;visibility:=reexport,
- org.polarsys.capella.common.data.behavior.gen;visibility:=reexport,
- org.polarsys.capella.common.data.core.gen;visibility:=reexport
+Require-Bundle: org.polarsys.capella.common.data.activity.gen,
+ org.eclipse.emf.ecore,
+ org.polarsys.capella.common.model.helpers,
+ org.polarsys.capella.common.data.core.gen,
+ org.polarsys.capella.common.helpers
 Export-Package: org.polarsys.capella.common.data.helpers.activity,
  org.polarsys.capella.common.data.helpers.activity.delegates,
  org.polarsys.capella.common.data.helpers.behavior,

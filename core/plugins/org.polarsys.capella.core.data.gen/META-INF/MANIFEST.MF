@@ -62,11 +62,15 @@ Export-Package: org.polarsys.capella.core.data.capellacommon,
  org.polarsys.capella.core.data.sharedmodel.impl,
  org.polarsys.capella.core.data.sharedmodel.util
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.emf.ecore;visibility:=reexport,
- org.eclipse.emf.ecore.xmi;visibility:=reexport,
- org.polarsys.capella.common.data.core.gen;visibility:=reexport,
- org.polarsys.capella.common.data.activity.gen;visibility:=reexport,
- org.polarsys.capella.common.data.behavior.gen;visibility:=reexport,
- org.eclipse.emf.validation;visibility:=reexport,
- org.polarsys.kitalpha.emde.xmi
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.ecore.xmi,
+ org.polarsys.capella.common.data.core.gen,
+ org.polarsys.capella.common.data.activity.gen,
+ org.polarsys.capella.common.data.behavior.gen,
+ org.eclipse.emf.validation,
+ org.polarsys.kitalpha.emde.xmi,
+ org.polarsys.kitalpha.emde.model,
+ org.polarsys.capella.common.model.helpers,
+ org.polarsys.capella.common.model,
+ org.polarsys.capella.common.mdsofa.common
 Bundle-ActivationPolicy: lazy

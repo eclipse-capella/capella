@@ -7,7 +7,9 @@ Bundle-Activator: org.polarsys.capella.common.platform.eclipse.tools.report.ui.R
 Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.common.tools.report.ui,
  org.eclipse.ui,
- org.eclipse.core.runtime
+ org.eclipse.core.runtime,
+ org.apache.log4j,
+ org.polarsys.capella.common.tools.report
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.platform.eclipse.tools.report.ui,
  org.polarsys.capella.common.platform.eclipse.tools.report.ui.pref

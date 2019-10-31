@@ -6,14 +6,17 @@ Bundle-Version: 1.4.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.polarsys.capella.core.validation.ui,
- org.polarsys.capella.core.validation.ui.ide;visibility:=reexport,
- org.eclipse.core.resources;visibility:=reexport,
- org.eclipse.ui;visibility:=reexport,
- org.eclipse.emf.ecore;visibility:=reexport,
- org.polarsys.capella.core.data.gen;visibility:=reexport,
+ org.polarsys.capella.core.validation.ui.ide,
+ org.eclipse.core.resources,
+ org.eclipse.ui,
+ org.eclipse.emf.ecore,
+ org.polarsys.capella.core.data.gen,
  org.polarsys.capella.core.sirius.analysis,
  org.polarsys.capella.common.ef,
- org.polarsys.capella.core.platform.sirius.ui.actions
+ org.polarsys.capella.core.platform.sirius.ui.actions,
+ org.polarsys.capella.common.data.core.gen,
+ org.polarsys.capella.common.helpers,
+ org.eclipse.core.runtime
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.core.data.common.ui.quickfix,
  org.polarsys.capella.core.data.common.ui.quickfix.resolver

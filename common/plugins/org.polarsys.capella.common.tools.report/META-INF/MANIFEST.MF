@@ -4,8 +4,12 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.common.tools.report;singleton:=true
 Bundle-Version: 1.4.0.qualifier
 Bundle-Vendor: %providerName
-Require-Bundle: org.polarsys.capella.common.helpers;visibility:=reexport,
- org.apache.log4j;visibility:=reexport
+Require-Bundle: org.polarsys.capella.common.helpers,
+ org.apache.log4j,
+ org.eclipse.core.runtime,
+ org.eclipse.equinox.common,
+ org.eclipse.emf.diffmerge,
+ org.polarsys.capella.common.mdsofa.common
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.tools.report,
  org.polarsys.capella.common.tools.report.appenders,

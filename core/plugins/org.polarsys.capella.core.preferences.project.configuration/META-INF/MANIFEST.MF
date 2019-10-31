@@ -10,7 +10,8 @@ Require-Bundle: org.eclipse.core.resources,
  org.eclipse.ui.ide,
  org.eclipse.core.filesystem,
  org.polarsys.capella.core.preferences,
- org.eclipse.ui
+ org.eclipse.ui,
+ org.polarsys.capella.core.model.handler
 Export-Package: org.polarsys.capella.core.preferences.configuration.project,
  org.polarsys.capella.core.preferences.configuration.project.actions,
  org.polarsys.capella.core.preferences.configuration.project.nature,

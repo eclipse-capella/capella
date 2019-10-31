@@ -7,12 +7,12 @@ Bundle-Activator: org.polarsys.capella.core.transition.diagram.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui,
- org.eclipse.sirius;visibility:=reexport,
+ org.eclipse.sirius,
  org.eclipse.sirius.common,
- org.eclipse.sirius.diagram;visibility:=reexport,
+ org.eclipse.sirius.diagram,
  org.eclipse.sirius.diagram.ui,
  org.eclipse.sirius.ecore.extender,
- org.polarsys.capella.common.helpers;visibility:=reexport,
+ org.polarsys.capella.common.helpers,
  org.polarsys.capella.common.ui.services,
  org.polarsys.capella.core.data.gen,
  org.polarsys.capella.core.diagram.helpers,
@@ -20,9 +20,12 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.model.handler,
  org.polarsys.capella.core.model.helpers,
  org.polarsys.capella.core.platform.sirius.ui.actions,
- org.polarsys.capella.core.projection.common;visibility:=reexport,
+ org.polarsys.capella.core.projection.common,
  org.polarsys.capella.core.sirius.analysis,
- org.polarsys.capella.core.transition.system;visibility:=reexport
+ org.polarsys.capella.core.transition.system,
+ org.polarsys.kitalpha.transposer.rules.handler,
+ org.polarsys.capella.common.ef,
+ org.polarsys.capella.common.transition
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.transition.diagram,

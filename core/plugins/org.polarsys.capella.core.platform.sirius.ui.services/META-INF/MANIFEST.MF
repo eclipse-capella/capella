@@ -13,7 +13,11 @@ Require-Bundle: org.polarsys.capella.core.data.gen,
  org.eclipse.sirius.common.ui,
  org.eclipse.sirius,
  org.eclipse.sirius.diagram.sequence.ui,
- org.eclipse.sirius.diagram
+ org.eclipse.sirius.diagram,
+ org.apache.log4j,
+ org.polarsys.capella.common.tools.report,
+ org.polarsys.capella.common.data.core.gen,
+ org.polarsys.capella.common
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.polarsys.capella.core.platform.sirius.ui.services
 Bundle-ActivationPolicy: lazy

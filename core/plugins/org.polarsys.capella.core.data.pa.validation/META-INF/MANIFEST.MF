@@ -9,7 +9,13 @@ Require-Bundle: org.polarsys.capella.core.validation,
  org.polarsys.capella.core.data.business.queries,
  org.polarsys.capella.core.transition.system.topdown,
  org.polarsys.capella.core.model.helpers,
- org.polarsys.capella.core.data.gen
+ org.polarsys.capella.core.data.gen,
+ org.eclipse.emf.validation,
+ org.polarsys.capella.common.data.core.gen,
+ org.eclipse.core.runtime,
+ org.polarsys.capella.common,
+ org.polarsys.capella.common.mdsofa.common,
+ org.polarsys.capella.core.model.preferences
 Export-Package: org.polarsys.capella.core.data.pa.validation.pa,
  org.polarsys.capella.core.data.pa.validation.physicalComponent,
  org.polarsys.capella.core.data.validation.function

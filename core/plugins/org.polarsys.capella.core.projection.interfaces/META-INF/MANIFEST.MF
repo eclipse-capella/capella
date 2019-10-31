@@ -9,7 +9,12 @@ Export-Package: org.polarsys.capella.core.projection.interfaces,
  org.polarsys.capella.core.projection.interfaces.validation
 Require-Bundle: org.polarsys.capella.core.projection.common,
  org.polarsys.capella.core.platform.sirius.ui.actions,
- org.polarsys.capella.core.transition.system.topdown
+ org.polarsys.capella.core.transition.system.topdown,
+ org.polarsys.capella.core.tiger,
+ org.polarsys.capella.core.data.gen,
+ org.eclipse.emf.ecore,
+ org.polarsys.capella.core.model.helpers,
+ org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.polarsys.capella.core.projection.interfaces.InterfaceGenerationActivator

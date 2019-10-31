@@ -9,7 +9,8 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.kitalpha.model.common.commands,
  org.polarsys.kitalpha.model.detachment.ui,
  org.polarsys.capella.common.libraries,
- org.polarsys.capella.core.libraries.ui
+ org.polarsys.capella.core.libraries.ui,
+ org.eclipse.emf.transaction
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName

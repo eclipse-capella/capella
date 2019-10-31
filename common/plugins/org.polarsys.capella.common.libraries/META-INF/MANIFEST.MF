@@ -9,11 +9,13 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources,
  org.eclipse.sirius,
  org.eclipse.emf.ecore.xmi,
- org.eclipse.emf.diffmerge;visibility:=reexport,
+ org.eclipse.emf.diffmerge,
  org.eclipse.emf.transaction,
- org.polarsys.capella.common.libraries.gen;visibility:=reexport,
+ org.polarsys.capella.common.libraries.gen,
  org.polarsys.capella.common.queries,
- org.polarsys.capella.common.tools.report
+ org.polarsys.capella.common.tools.report,
+ org.polarsys.capella.common.ef,
+ org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.libraries,

@@ -6,7 +6,7 @@ Bundle-Version: 1.4.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.compare.CapellaComparePlugin
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.emf.diffmerge.ui.sirius;visibility:=reexport,
+ org.eclipse.emf.diffmerge.ui.sirius,
  org.eclipse.team.core,
  org.eclipse.ui,
  org.polarsys.capella.core.data.gen,
@@ -17,7 +17,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.kitalpha.ad.services,
  org.polarsys.capella.common.libraries,
  org.eclipse.sirius,
- org.eclipse.emf.common
+ org.eclipse.emf.common,
+ org.polarsys.capella.common.data.core.gen
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.compare

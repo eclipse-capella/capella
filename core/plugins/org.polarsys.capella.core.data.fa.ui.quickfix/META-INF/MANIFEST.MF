@@ -18,7 +18,9 @@ Require-Bundle: org.eclipse.core.resources,
  org.polarsys.capella.core.platform.sirius.ui.actions,
  org.polarsys.capella.core.ui.properties,
  org.polarsys.capella.core.data.fa.properties,
- org.polarsys.capella.core.sirius.analysis
+ org.polarsys.capella.core.sirius.analysis,
+ org.eclipse.emf.edit.ui,
+ org.polarsys.capella.common.helpers
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

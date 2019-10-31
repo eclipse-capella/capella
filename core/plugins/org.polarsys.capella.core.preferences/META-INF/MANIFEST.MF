@@ -13,7 +13,12 @@ Require-Bundle: org.eclipse.core.expressions,
  org.eclipse.gmf.runtime.diagram.ui,
  org.eclipse.sirius.diagram.ui,
  org.eclipse.team.ui,
- org.polarsys.capella.core.model.handler;visibility:=reexport
+ org.polarsys.capella.core.model.handler,
+ org.apache.log4j,
+ org.polarsys.capella.core.data.gen,
+ org.polarsys.capella.common.tools.report,
+ org.polarsys.capella.common.helpers,
+ org.polarsys.capella.common.mdsofa.common
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.commands.preferences,

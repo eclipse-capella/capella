@@ -9,13 +9,17 @@ Require-Bundle: org.eclipse.core.resources,
  org.eclipse.core.runtime,
  org.eclipse.ui,
  org.polarsys.capella.common.ui,
- org.polarsys.capella.core.validation.ui.ide;visibility:=reexport,
+ org.polarsys.capella.core.validation.ui.ide,
  org.polarsys.capella.core.data.gen,
  org.polarsys.capella.core.data.core.validation,
- org.polarsys.capella.core.model.handler,
  org.polarsys.capella.core.model.helpers,
  org.polarsys.capella.core.platform.sirius.ui.navigator,
- org.polarsys.capella.core.ui.semantic.browser
+ org.apache.log4j,
+ org.polarsys.capella.common.tools.report,
+ org.eclipse.emf.ecore,
+ org.polarsys.capella.common.ef,
+ org.polarsys.capella.common.data.core.gen,
+ org.polarsys.capella.common.helpers
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
