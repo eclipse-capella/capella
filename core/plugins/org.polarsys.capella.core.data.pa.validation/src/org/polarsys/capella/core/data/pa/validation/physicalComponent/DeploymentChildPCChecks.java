@@ -27,8 +27,8 @@ import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
  * Check PhysicalComponent correct deployment, following the rules below:
- *    o Node Components can't be deployed/contained in BEHAVIOR PC.
- *    o Behavior Components can't be contained in NODE PC.
+ *    o Node Components/Actors can't be deployed/contained in BEHAVIOR PC.
+ *    o Behavior Components/Actors can't be contained in NODE PC.
 */
 public class DeploymentChildPCChecks extends AbstractValidationRule {
   /**
@@ -39,13 +39,13 @@ public class DeploymentChildPCChecks extends AbstractValidationRule {
     EObject eObj = ctx.getTarget();
     EMFEventType eType = ctx.getEventType();
 
-    // check that the child PC (given in ctx as parameter) is correctly deployed/contained by a parent container
+    // check that the child PC/PA (given in ctx as parameter) is correctly deployed/contained by a parent container
     if (eType == EMFEventType.NULL) {
-      // current component : assuming it could be deployed
+      // current component/actor : assuming it could be deployed
       if (eObj instanceof PhysicalComponent) {
         PhysicalComponent currentElement = (PhysicalComponent) eObj;
         if (PhysicalComponentExt.isNode(currentElement)) {
-          // 1. check that NODE PC can't be contained or deployed on BEHAVIOR PC
+          // 1. check that NODE PC/PA can't be contained or deployed on BEHAVIOR PC/PA
           PhysicalComponent deployingBehaviorPC = getDeployingComponent(currentElement,
               PhysicalComponentNature.BEHAVIOR);
           if (deployingBehaviorPC != null) {
@@ -58,7 +58,7 @@ public class DeploymentChildPCChecks extends AbstractValidationRule {
                 + "can't be contained in " + CapellaElementExt.getValidationRuleMessagePrefix(behaviorPC));
           }
         } else if (PhysicalComponentExt.isBehaviour(currentElement)) {
-          // 2. check that BEHAVIOR PC can't be contained on NODE PC
+          // 2. check that BEHAVIOR PC/PA can't be contained on NODE PC/PA
           PhysicalComponent nodePC = getContainingComponent(currentElement, PhysicalComponentNature.NODE);
           if (nodePC != null) {
             return ctx.createFailureStatus(CapellaElementExt.getValidationRuleMessagePrefix(currentElement)

@@ -48,7 +48,10 @@ public class Rule_DWF_DC_32 extends AbstractRulesOnDesignTest {
 		return Arrays.asList(new String[] {
 				"7dcdc078-6d45-426c-94d8-06eafa9cf637",
 				"fd4fa587-8d9a-4c0b-928e-175d654d20e6",
-				"fd19a528-cd7d-4cce-a4b2-28ebbf713385" });
+				"fd19a528-cd7d-4cce-a4b2-28ebbf713385",
+				"79a31ee9-2bd4-40fb-9709-533a8c38e3e1",
+				"68783610-0123-475c-999a-daa56f3d3adf",
+				"f547c7fc-0956-4ae0-8d74-fd795a250a52" });
 	}
 
 	/**
@@ -61,6 +64,8 @@ public class Rule_DWF_DC_32 extends AbstractRulesOnDesignTest {
 						new OracleDefinition(
 								"fd4fa587-8d9a-4c0b-928e-175d654d20e6", 1),
 						new OracleDefinition(
-								"fd19a528-cd7d-4cce-a4b2-28ebbf713385", 1) });
+								"fd19a528-cd7d-4cce-a4b2-28ebbf713385", 1),
+						new OracleDefinition(
+                "68783610-0123-475c-999a-daa56f3d3adf", 1)});
 	}
 }

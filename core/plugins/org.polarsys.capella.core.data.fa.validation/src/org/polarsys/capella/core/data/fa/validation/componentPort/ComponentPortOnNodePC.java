@@ -19,6 +19,7 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.PhysicalComponentExt;
 import org.polarsys.capella.core.model.helpers.PortExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
@@ -40,8 +41,9 @@ public class ComponentPortOnNodePC extends AbstractValidationRule {
       if (eObj instanceof ComponentPort) {
         ComponentPort currentElement = (ComponentPort) eObj;
         Component relatedComponent = PortExt.getRelatedComponent(currentElement);
-        if ((null != relatedComponent) && (relatedComponent instanceof PhysicalComponent)) {
-          if (PhysicalComponentExt.isNode((PhysicalComponent) relatedComponent)) {
+        if (relatedComponent instanceof PhysicalComponent) {
+          PhysicalComponent component = (PhysicalComponent) relatedComponent;
+          if (!ComponentExt.isActor(component) && PhysicalComponentExt.isNode(component)) {
             return ctx.createFailureStatus(CapellaElementExt.getValidationRuleMessagePrefix(currentElement)
                                            + "can't be contained in PhysicalComponent of nature NODE"); //$NON-NLS-1$
           }

@@ -47,7 +47,8 @@ public class Rule_DWF_DC_20 extends AbstractRulesOnDesignTest {
 	protected List<String> getScopeDefinition() {
 		return Arrays.asList(new String[] {
 				"afbb9e1d-9097-418d-b754-d27197b02e45",
-				"8898dfb9-3c6f-4897-a925-6d44b8e1e5df" });
+				"8898dfb9-3c6f-4897-a925-6d44b8e1e5df",
+				"a46276d1-c232-40ed-9280-8e916759111b" });
 	}
 
 	/**

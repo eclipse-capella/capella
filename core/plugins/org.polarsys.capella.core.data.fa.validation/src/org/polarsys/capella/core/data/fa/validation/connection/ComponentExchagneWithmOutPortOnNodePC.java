@@ -23,6 +23,7 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.PhysicalComponentExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
@@ -39,34 +40,34 @@ public class ComponentExchagneWithmOutPortOnNodePC extends AbstractValidationRul
     EObject eObj = ctx.getTarget();
     EMFEventType eType = ctx.getEventType();
 
-    if (eType == EMFEventType.NULL) {
-      if (eObj instanceof ComponentExchange) {
-        Collection<IStatus> statuses = new ArrayList<IStatus>();
+    if (eType == EMFEventType.NULL && eObj instanceof ComponentExchange) {
+      Collection<IStatus> statuses = new ArrayList<>();
 
-        ComponentExchange currentElement = (ComponentExchange) eObj;
-        // get source component
-        Component sourceComponent = ComponentExchangeExt.getSourceComponent(currentElement);
-        if ((null != sourceComponent) && (sourceComponent instanceof PhysicalComponent) && PhysicalComponentExt.isNode((PhysicalComponent) sourceComponent)) {
-          // if its nodePC return failure message
-          IStatus createFailureStatus =
-              ctx.createFailureStatus(CapellaElementExt.getValidationRuleMessagePrefix(currentElement)
-                                      + "source end should not be PhysicalComponent of nature NODE"); //$NON-NLS-1$
-          statuses.add(createFailureStatus);
-        }
-        // get target component
-        Component targetComponent = ComponentExchangeExt.getTargetComponent(currentElement);
-        if ((null != targetComponent) && (targetComponent instanceof PhysicalComponent) && PhysicalComponentExt.isNode((PhysicalComponent) targetComponent)) {
-          // if its nodePC return failure message
-          IStatus createFailureStatus =
-              ctx.createFailureStatus(CapellaElementExt.getValidationRuleMessagePrefix(currentElement)
-                                      + "target end should not be PhysicalComponent of nature NODE"); //$NON-NLS-1$
-          statuses.add(createFailureStatus);
-        }
+      ComponentExchange currentElement = (ComponentExchange) eObj;
+      // get source component
+      Component sourceComponent = ComponentExchangeExt.getSourceComponent(currentElement);
+      if (sourceComponent instanceof PhysicalComponent && !ComponentExt.isActor(sourceComponent)
+          && PhysicalComponentExt.isNode((PhysicalComponent) sourceComponent)) {
+        // if its nodePC return failure message
+        IStatus createFailureStatus =
+            ctx.createFailureStatus(CapellaElementExt.getValidationRuleMessagePrefix(currentElement)
+                                    + "source end should not be PhysicalComponent of nature NODE"); //$NON-NLS-1$
+        statuses.add(createFailureStatus);
+      }
+      // get target component
+      Component targetComponent = ComponentExchangeExt.getTargetComponent(currentElement);
+      if (targetComponent instanceof PhysicalComponent && !ComponentExt.isActor(targetComponent)
+          && PhysicalComponentExt.isNode((PhysicalComponent) targetComponent)) {
+        // if its nodePC return failure message
+        IStatus createFailureStatus =
+            ctx.createFailureStatus(CapellaElementExt.getValidationRuleMessagePrefix(currentElement)
+                                    + "target end should not be PhysicalComponent of nature NODE"); //$NON-NLS-1$
+        statuses.add(createFailureStatus);
+      }
 
-        // return multistatus message
-        if (!statuses.isEmpty()) {
-          return ConstraintStatus.createMultiStatus(ctx, statuses);
-        }
+      // return multistatus message
+      if (!statuses.isEmpty()) {
+        return ConstraintStatus.createMultiStatus(ctx, statuses);
       }
     }
     return ctx.createSuccessStatus();
