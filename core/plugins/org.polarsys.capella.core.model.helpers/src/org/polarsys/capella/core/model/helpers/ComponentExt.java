@@ -133,16 +133,8 @@ public class ComponentExt {
    * This method adds an provide interface. If the StandardPort doesn't exist, it will be create.
    */
   public static void addProvidedInterface(Component component, Interface interf) {
-    ComponentPort stdPort = null;
-    if ((component != null) && (interf != null)) {
-      for (ComponentPort componentPort : component.getContainedComponentPorts()) {
-        stdPort = componentPort;
-        break;
-      }
-      if (null == stdPort) {
-        stdPort = PortExt.createStandardPort();
-        component.getOwnedFeatures().add(stdPort);
-      }
+    if (component != null && interf != null) {
+      ComponentPort stdPort = getOrCreateFirstContainedComponentPort(component);
       stdPort.getProvidedInterfaces().add(interf);
     }
   }
@@ -151,20 +143,27 @@ public class ComponentExt {
    * This method adds an required interface. If the StandardPort doesn't exist, it will be create.
    */
   public static void addRequiredInterface(Component component, Interface interf) {
-    ComponentPort stdPort = null;
-    if ((component != null) && (interf != null)) {
-      for (ComponentPort componentPort : component.getContainedComponentPorts()) {
-        stdPort = componentPort;
-        break;
-      }
+    if (component != null && interf != null) {
+      ComponentPort stdPort = getOrCreateFirstContainedComponentPort(component);
+      stdPort.getRequiredInterfaces().add(interf);
     }
-    if (null == stdPort && component != null) {
-      stdPort = PortExt.createStandardPort();
-      component.getOwnedFeatures().add(stdPort);
-    }
-    stdPort.getRequiredInterfaces().add(interf);
   }
 
+  /**
+   * This method returns the first contained ComponentPort, or create a StandardPort otherwise
+   * 
+   * @param component
+   *          the component who contains the componentPort
+   * @return the componentPort
+   */
+  public static ComponentPort getOrCreateFirstContainedComponentPort(Component component) {
+    if (!component.getContainedComponentPorts().isEmpty()) {
+      return component.getContainedComponentPorts().get(0);
+    }
+    ComponentPort stdPort = PortExt.createStandardPort();
+    component.getOwnedFeatures().add(stdPort);
+    return stdPort;
+  }
   /**
    * This method adds an interface usage.
    * 
