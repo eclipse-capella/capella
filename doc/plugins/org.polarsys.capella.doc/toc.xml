@@ -15,16 +15,16 @@
       <topic label="API changes">
          <topic href="html/Release note/API_1.3.x_to_1.4.x.html" label="Capella 1.3.x to 1.4.x">
             <topic href="html/Release note/API_1.3.x_to_1.4.x.html#Major_changes" label="Major changes">
-               <topic href="html/Release note/API_1.3.x_to_1.4.x.html#Migration_from_Eclipse_Oxygen_to_Eclipse_2019-06" label="Migration from Eclipse Oxygen to Eclipse 2019-06">
-               </topic>
-               <topic href="html/Release note/API_1.3.x_to_1.4.x.html#New_implementation_for_filtered_trees" label="New implementation for filtered trees">
-               </topic>
-               <topic href="html/Release note/API_1.3.x_to_1.4.x.html#Changes_for_API_users_concerning_the_M2_modifications_to_make_actors_become_generic_components" label="Changes for API users concerning the M2 modifications to make actors become generic components">
-               </topic>
-               <topic href="html/Release note/API_1.3.x_to_1.4.x.html#Fusion_Capella_cross_referencer_and_Sirius_cross_referencer" label="Fusion Capella cross referencer and Sirius cross referencer">
-               </topic>
-               <topic href="html/Release note/API_1.3.x_to_1.4.x.html#Define_basic_activities_for_commands.2C_diagram_tools_and_activity_explorer" label="Define basic activities for commands, diagram tools and activity explorer">
-               </topic>
+                <topic href="html/Release note/API_1.3.x_to_1.4.x.html#Migration_from_Eclipse_Oxygen_to_Eclipse_2019-06" label="Migration from Eclipse Oxygen to Eclipse 2019-06"></topic>
+				<topic href="html/Release note/API_1.3.x_to_1.4.x.html#Project_Explorer" label="Project Explorer"></topic>
+				<topic href="html/Release note/API_1.3.x_to_1.4.x.html#New_implementation_for_filtered_trees" label="New implementation for filtered trees"></topic>
+				<topic href="html/Release note/API_1.3.x_to_1.4.x.html#Clarification_of_CapellaAdapterHelper" label="Clarification of CapellaAdapterHelper"></topic>
+				<topic href="html/Release note/API_1.3.x_to_1.4.x.html#Deprecation_of_org.polarsys.capella.common.ui.services" label="Deprecation of org.polarsys.capella.common.ui.services"></topic>
+				<topic href="html/Release note/API_1.3.x_to_1.4.x.html#Refinement_plug-ins_have_been_removed.3B_Projection_plug-ins_have_been_refactored" label="Refinement plug-ins have been removed; Projection plug-ins have been refactored"></topic>
+				<topic href="html/Release note/API_1.3.x_to_1.4.x.html#Changes_for_API_users_concerning_the_M2_modifications_to_make_actors_become_generic_components" label="Changes for API users concerning the M2 modifications to make actors become generic components"></topic>
+				<topic href="html/Release note/API_1.3.x_to_1.4.x.html#Fusion_Capella_cross_referencer_and_Sirius_cross_referencer" label="Fusion Capella cross referencer and Sirius cross referencer"></topic>
+				<topic href="html/Release note/API_1.3.x_to_1.4.x.html#Replacement_of_some_API_classes.2Fmethods" label="Replacement of some API classes/methods"></topic>
+				<topic href="html/Release note/API_1.3.x_to_1.4.x.html#Define_basic_activities_for_commands.2C_diagram_tools_and_activity_explorer" label="Define basic activities for commands, diagram tools and activity explorer"></topic>
             </topic>
             <topic href="html/Release note/API_1.3.x_to_1.4.x.html#Raw_API_changes_from_1.3.1_to_1.4.0" label="Raw API changes from 1.3.1 to 1.4.0">
 				<topic href="html/Release note/API_1.3.x_to_1.4.x.html#Changes_in_org.polarsys.capella.common.data.core.gen" label="Changes in org.polarsys.capella.common.data.core.gen"></topic>

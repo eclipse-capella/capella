@@ -70,10 +70,10 @@ org.polarsys.capella.core.projection.** have been refactored in the following wa
 * Capella's SemanticCrossReferencer was used to patch the Eclipse bug '''Bug 543340'''. This patch has been integrated in Eclipse 2019-06 version. Thus, Capella's SemanticCrossReferencer has been removed. Sirius's SiriusCrossReferenceAdapter is used instead.
 * Capella's CapellaECrossReferenceAdapter has been adapted to reuse the code already implemented in Sirius's SiriusCrossReferenceAdapter. This Capella's cross referencer is kept since it still contains specific implementations to support some Capella's use-cases.
 
-=== Replacement of some API classes ===
+=== Replacement of some API classes/methods ===
 
 {|
-!Old class
+!Old
 !Replacement
 |-
 | org.polarsys.capella.core.ui.properties.helpers.NamingHelper
@@ -81,6 +81,14 @@ org.polarsys.capella.core.projection.** have been refactored in the following wa
 |-
 | org.polarsys.capella.core.ui.toolkit.viewers.CapellaElementLabelProvider
 | org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider
+|-
+| org.polarsys.capella.common.ui.services.helper.EObjectImageProviderHelper
+| org.polarsys.capella.common.helpers.EObjectLabelProviderHelper
+
+getImage* methods are replaced by EMF method org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry#getImage* (for instance <code>ExtendedImageRegistry.getImageDescriptor(EObjectLabelProviderHelper.getImage(object)</code>)
+|-
+| org.polarsys.capella.core.ui.properties.sections.AbstractSection.rootParentComposite
+| If used in a overriden method createControls, it shall be replaced by parent parameter. You can also rename your createControls by createContents. Parent parameter of createContents is the deprecated field rootParentComposite.
 |-
 |}
 
