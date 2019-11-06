@@ -54,7 +54,8 @@ public class TransitionTestSuite extends BasicTestSuite {
     tests.add(new PartOwnedByPackage());
     tests.add(new LogicalActorTransition());
     tests.add(new CommunicationMeanTestCase());
-    
+    tests.add(new TransitionsTestSuite());
+
     return tests;
   }
 }

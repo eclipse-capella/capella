@@ -15,7 +15,8 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.transition.system.topdown,
  org.polarsys.capella.core.projection.scenario,
  org.polarsys.capella.core.projection.interfaces,
- org.polarsys.capella.core.projection.common
+ org.polarsys.capella.core.projection.common,
+ org.polarsys.capella.core.transition.system.topdown.ui
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName
