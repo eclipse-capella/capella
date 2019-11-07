@@ -22,7 +22,7 @@ import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
-import org.polarsys.capella.test.diagram.common.ju.step.tools.SelectFromListTool;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.xab.ReuseComponentTool;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
 public class EABDiagram extends XABDiagram {
@@ -86,8 +86,7 @@ public class EABDiagram extends XABDiagram {
   }
 
   public void reuseConfigurationItem(String containerId, String... ids) {
-    new SelectFromListTool(this, IToolNameConstants.TOOL_EAB_REUSE_CONFIGURATION_ITEM, containerId, new String[0])
-        .select(ids);
+    new ReuseComponentTool(this, IToolNameConstants.TOOL_EAB_REUSE_CONFIGURATION_ITEM, containerId).select(ids);
   }
 
   public void manageRealizedPhysicalArtifacts(String containerId, String... ids) {

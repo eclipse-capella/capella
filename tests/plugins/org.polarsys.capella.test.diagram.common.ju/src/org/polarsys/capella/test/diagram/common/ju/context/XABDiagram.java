@@ -196,7 +196,8 @@ public class XABDiagram extends CommonDiagram {
     String name = null;
     if (type == Type.OA) {
       name = IToolNameConstants.TOOL_OAB_INSERT_REMOVE_OPERATIONAL_ENTITIES;
-    } else if (TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(getDiagramDescriptor().getTarget()))) {
+    } else if (TriStateBoolean.True
+        .equals(CapellaProjectHelper.isReusableComponentsDriven(getDiagramDescriptor().getTarget()))) {
       name = IToolNameConstants.TOOL_XAB_INSERT_ACTORS_MULTIPART;
     } else {
       name = IToolNameConstants.TOOL_XAB_INSERT_ACTORS_MONOPART;
@@ -212,6 +213,14 @@ public class XABDiagram extends CommonDiagram {
     new InsertRemoveTool(this, getToolNameShowHideActor()).remove(id);
   }
 
+  public void insertActor(String containerId, String id) {
+    new InsertRemoveTool(this, getToolNameShowHideActor(), containerId).insert(id);
+  }
+
+  public void removeActor(String containerId, String id) {
+    new InsertRemoveTool(this, getToolNameShowHideActor(), containerId).remove(id);
+  }
+
   public void insertComponent(String id) {
     insertComponent(id, getDiagramId());
   }
@@ -221,13 +230,13 @@ public class XABDiagram extends CommonDiagram {
     if (type == Type.OA) {
       name = IToolNameConstants.TOOL_OAB_INSERT_REMOVE_OPERATIONAL_ENTITIES;
     } else if (type == Type.LA) {
-      if (TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(getDiagramDescriptor().getTarget()))) {
+      if (TriStateBoolean.True
+          .equals(CapellaProjectHelper.isReusableComponentsDriven(getDiagramDescriptor().getTarget()))) {
         name = IToolNameConstants.TOOL_XAB_INSERT_REMOVE_COMPONENTS_MULTIPART;
       } else {
         name = IToolNameConstants.TOOL_XAB_INSERT_REMOVE_COMPONENTS_MONOPART;
       }
     } else if (type == Type.PA) {
-      // Nothing here.. need to specify which kind of component
     }
 
     new InsertRemoveTool(this, name, containerId).insert(toInsertId);
@@ -243,7 +252,8 @@ public class XABDiagram extends CommonDiagram {
       name = IToolNameConstants.TOOL_OAB_INSERT_REMOVE_OPERATIONAL_ENTITIES;
       new InsertRemoveTool(this, name).remove(id);
     } else if (type == Type.LA) {
-      if (TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(getDiagramDescriptor().getTarget()))) {
+      if (TriStateBoolean.True
+          .equals(CapellaProjectHelper.isReusableComponentsDriven(getDiagramDescriptor().getTarget()))) {
         new InsertRemoveTool(this, new String[] { IToolNameConstants.TOOL_XAB_INSERT_REMOVE_COMPONENTS_MULTIPART,
             IToolNameConstants.TOOL_LAB_INSERT_REMOVE_COMPONENTS }, containerId).remove(id);
       } else {
@@ -591,7 +601,8 @@ public class XABDiagram extends CommonDiagram {
   }
 
   public PhysicalPath createPhysicalPath(final String path, final String... links) {
-    return (PhysicalPath) ((DEdge)new CreatePathTool(this, IToolNameConstants.TOOL_CREATE_PHYSICAL_PATH, path, links).run()).getTarget();
+    return (PhysicalPath) ((DEdge) new CreatePathTool(this, IToolNameConstants.TOOL_CREATE_PHYSICAL_PATH, path, links)
+        .run()).getTarget();
   }
 
   public void insertPhysicalPath(String... path) {
@@ -768,6 +779,8 @@ public class XABDiagram extends CommonDiagram {
       name = IToolNameConstants.TOOL_SAB_REUSE_ACTOR;
     } else if (type == Type.LA) {
       name = IToolNameConstants.TOOL_LAB_REUSE_LOGICAL_ACTOR;
+    } else if (type == Type.PA) {
+      name = IToolNameConstants.TOOL_PAB_REUSE_PHYSICAL_ACTOR;
     }
     new ReuseComponentTool(this, name, containerId).select(ids);
   }

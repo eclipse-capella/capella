@@ -13,6 +13,8 @@ package org.polarsys.capella.test.diagram.common.ju.context;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
+import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.Type;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IDNDToolNameConstants;
@@ -22,6 +24,7 @@ import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.xab.ReuseComponentTool;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
 public class PABDiagram extends XABDiagram {
@@ -118,26 +121,47 @@ public class PABDiagram extends XABDiagram {
   }
 
   public void removeNodeComponent(String id, String containerId) {
-    new InsertRemoveTool(this, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_NODE_COMPONENTS_MONOPART, containerId)
+    String toolName = IToolNameConstants.TOOL_PAB_INSERT_REMOVE_NODE_COMPONENTS_MONOPART;
+    if (TriStateBoolean.True
+        .equals(CapellaProjectHelper.isReusableComponentsDriven(getDiagramDescriptor().getTarget()))) {
+      toolName = IToolNameConstants.TOOL_PAB_INSERT_REMOVE_NODE_COMPONENTS_MULTIPART;
+    }
+    new InsertRemoveTool(this, toolName, containerId)
         .remove(id);
   }
 
   public void insertNodeComponent(String id, String containerId) {
-    new InsertRemoveTool(this, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_NODE_COMPONENTS_MONOPART, containerId)
+    String toolName = IToolNameConstants.TOOL_PAB_INSERT_REMOVE_NODE_COMPONENTS_MONOPART;
+    if (TriStateBoolean.True
+        .equals(CapellaProjectHelper.isReusableComponentsDriven(getDiagramDescriptor().getTarget()))) {
+      toolName = IToolNameConstants.TOOL_PAB_INSERT_REMOVE_NODE_COMPONENTS_MULTIPART;
+    }
+    new InsertRemoveTool(this, toolName, containerId)
         .insert(id);
   }
-
-  public void reuseBehaviorComponent(String id, String containerId) {
-    new InsertRemoveTool(this, new String[] { IToolNameConstants.TOOL_PAB_REUSE_BEHAVIOR_PC }, containerId).insert(id);
+  
+  public void reuseNodeComponent(String containerId, String... ids) {
+    new ReuseComponentTool(this, IToolNameConstants.TOOL_PAB_REUSE_NODE_PC, containerId).select(ids);
   }
 
   public void removeBehaviorComponent(String id, String containerId) {
-    new InsertRemoveTool(this, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_BEHAVIOUR_COMPONENTS_MONOPART, containerId)
+    String toolName = IToolNameConstants.TOOL_PAB_INSERT_REMOVE_BEHAVIOUR_COMPONENTS_MONOPART;
+    if (TriStateBoolean.True
+        .equals(CapellaProjectHelper.isReusableComponentsDriven(getDiagramDescriptor().getTarget()))) {
+      toolName = IToolNameConstants.TOOL_PAB_INSERT_REMOVE_BEHAVIOUR_COMPONENTS_MULTIPART;
+    }
+
+    new InsertRemoveTool(this, toolName, containerId)
         .remove(id);
   }
 
   public void insertBehaviorComponent(String id, String containerId) {
-    new InsertRemoveTool(this, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_BEHAVIOUR_COMPONENTS_MONOPART, containerId)
+    String toolName = IToolNameConstants.TOOL_PAB_INSERT_REMOVE_BEHAVIOUR_COMPONENTS_MONOPART;
+    if (TriStateBoolean.True
+        .equals(CapellaProjectHelper.isReusableComponentsDriven(getDiagramDescriptor().getTarget()))) {
+      toolName = IToolNameConstants.TOOL_PAB_INSERT_REMOVE_BEHAVIOUR_COMPONENTS_MULTIPART;
+    }
+    new InsertRemoveTool(this, toolName, containerId)
         .insert(id);
   }
 

@@ -1283,7 +1283,7 @@ public interface IToolNameConstants {
   String TOOL_PAB_INSERT_REMOVE_CATEGORIES = "node.categories";
   // multi parts tools
   String TOOL_PAB_REUSE_PC = "reuse.behaviour.pc";
-  String TOOL_PAB_REUSE_NODE_PC = "Reuse Node PC";
+  String TOOL_PAB_REUSE_NODE_PC = "reuse.node.pc";
   String TOOL_PAB_REUSE_BEHAVIOR_PC = "Reuse Behavior PC";
   String TOOL_PAB_REUSE_PHYSICAL_ACTOR = "reuse.physical.actor";
   String TOOL_PAB_CREATE_COMPONENT_EXCHANGE_WITH_PORTS = "component.exchange.with.ports";
@@ -1580,7 +1580,9 @@ public interface IToolNameConstants {
   String TOOL_XAB_INSERT_REMOVE_COMPONENTS_MONOPART = "components.monopart";
   String TOOL_XAB_INSERT_REMOVE_COMPONENTS_MULTIPART = "components.multipart";
   String TOOL_PAB_INSERT_REMOVE_NODE_COMPONENTS_MONOPART = "node.pcs.monopart";
+  String TOOL_PAB_INSERT_REMOVE_NODE_COMPONENTS_MULTIPART = "node.pcs.multipart";
   String TOOL_PAB_INSERT_REMOVE_BEHAVIOUR_COMPONENTS_MONOPART = "behavior.pcs.monopart";
+  String TOOL_PAB_INSERT_REMOVE_BEHAVIOUR_COMPONENTS_MULTIPART = "behavior.pcs.multipart";
   //
   // Representation Descriptions moved to IDiagramNameConstants
   //

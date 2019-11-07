@@ -17,6 +17,7 @@ import org.polarsys.capella.test.diagram.tools.ju.delete.DeleteTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.fcd.FCDDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.ORBDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.PDDiagramToolsTestSuite;
+import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.ReuseTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.SequenceDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.XABDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.XBDiagramToolsTestSuite;
@@ -49,6 +50,7 @@ public class DiagramToolsStep2TestSuite extends BasicTestSuite {
     tests.add(new FCDDiagramToolsTestSuite());
     tests.add(new XFCDDiagramToolsTestSuite());
     tests.add(new DeleteTestSuite());
+    tests.add(new ReuseTestSuite());
     return tests;
   }
 
