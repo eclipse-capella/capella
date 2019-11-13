@@ -56,6 +56,11 @@ public class PABDiagram extends XABDiagram {
     return ((CapellaElement) element.getTarget()).getId();
   }
 
+  public void cannotCreateNodeComponent(String id, String containerId) {
+    new CreateContainerTool(this, IToolNameConstants.TOOL_PAB_CREATE_NODE_PHYSICAL_COMPONENT, containerId, id)
+        .cannotRun();
+  }
+
   public String createBehaviorComponent(String id, String containerId) {
     DDiagramElementContainer element = new CreateContainerTool(this,
         IToolNameConstants.TOOL_PAB_CREATE_BEHAVIOR_PHYSICAL_COMPONENT, containerId,
@@ -64,16 +69,34 @@ public class PABDiagram extends XABDiagram {
     return ((CapellaElement) element.getTarget()).getId();
   }
 
+  public void cannotCreateBehaviorComponent(String id, String containerId) {
+    new CreateContainerTool(this, IToolNameConstants.TOOL_PAB_CREATE_BEHAVIOR_PHYSICAL_COMPONENT, containerId, id)
+        .cannotRun();
+  }
+
+  public void failedCreateBehaviorComponent(String id, String containerId) {
+    new CreateContainerTool(this, IToolNameConstants.TOOL_PAB_CREATE_BEHAVIOR_PHYSICAL_COMPONENT, containerId, id)
+        .shouldFail();
+  }
+
   public String createDeployedBehaviorComponent(String id, String containerId) {
     DDiagramElementContainer element = new CreateContainerTool(this, IToolNameConstants.TOOL_PAB_DEPLOY_BEHAVIOR_PC,
         containerId, id).run();
     return ((CapellaElement) element.getTarget()).getId();
   }
 
+  public void cannotCreateDeployedBehaviorComponent(String id, String containerId) {
+    new CreateContainerTool(this, IToolNameConstants.TOOL_PAB_DEPLOY_BEHAVIOR_PC, containerId, id).cannotRun();
+  }
+
   public String createDeployedNodeComponent(String id, String containerId) {
     DDiagramElementContainer element = new CreateContainerTool(this, IToolNameConstants.TOOL_PAB_DEPLOY_NODE_PC,
         containerId, id).run();
     return ((CapellaElement) element.getTarget()).getId();
+  }
+
+  public void cannotCreateDeployedNodeComponent(String id, String containerId) {
+    new CreateContainerTool(this, IToolNameConstants.TOOL_PAB_DEPLOY_NODE_PC, containerId, id).cannotRun();
   }
 
   public void removeDeployedBehaviorComponent(String id, String containerId) {

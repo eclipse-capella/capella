@@ -29,6 +29,7 @@ public abstract class MiscModel extends NonDirtyTestCase {
   public static final String PROJECT_MISCMODEL__PROJECTAPPROACH = "48adfcca-50a9-415c-81f3-ce75b5420dd1";
   public static final String MISCMODEL = "b3f7e50c-ce73-45c0-ac2a-38365b7d0e91";
   public static final String OA = "c7daf8d7-abf1-4ba8-bbc5-6acc83d55cfe";
+  public static final String OA_OPERATIONAL_ENTITIES = "f6daaca6-fee7-401b-b77c-a3880f335fd1";
   public static final String OA__OPERATIONAL_ACTIVITIES = "75261e4b-971c-4964-b4e2-9a312bd6ae50";
   public static final String OA__OPERATIONAL_ACTIVITIES__ROOT_OA = "bdb29a96-066a-4feb-97df-8949a15a69e0";
   public static final String OA__OPERATIONAL_CAPABILITIES = "3756abbb-cad4-440c-b8cc-75361d76c913";

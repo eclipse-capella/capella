@@ -21,11 +21,13 @@ import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
+import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
 import org.polarsys.capella.core.data.ctx.SystemFunctionPkg;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
@@ -45,6 +47,7 @@ import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalComponentPkg;
 import org.polarsys.capella.core.data.la.LogicalFunctionPkg;
+import org.polarsys.capella.core.data.oa.EntityPkg;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.oa.OperationalActivityPkg;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
@@ -53,6 +56,7 @@ import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
 import org.polarsys.capella.core.sirius.analysis.CapellaServices;
 import org.polarsys.capella.test.framework.context.SessionContext;
@@ -133,41 +137,55 @@ public class SkeletonHelper {
     }
   }
 
-  public static void createComponentPkg(String containerId, String elementId, SessionContext context) {
+  public static <T> T createComponentPkg(String containerId, String elementId, SessionContext context) {
     EObject container = context.getSemanticElement(containerId);
 
     if (container instanceof OperationalAnalysis) {
-      createObject(elementId, containerId, OaPackage.Literals.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG,
+      return createObject(elementId, containerId, OaPackage.Literals.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG,
           OaPackage.Literals.ENTITY_PKG, NamingConstants.CreateOpAnalysisCmd_operationalEntities_pkg_name, context);
 
     } else if (container instanceof SystemAnalysis) {
-      createObject(elementId, containerId, CtxPackage.Literals.SYSTEM_ANALYSIS__OWNED_SYSTEM_COMPONENT_PKG,
+      return createObject(elementId, containerId, CtxPackage.Literals.SYSTEM_ANALYSIS__OWNED_SYSTEM_COMPONENT_PKG,
           CtxPackage.Literals.SYSTEM_COMPONENT_PKG, NamingConstants.CreateSysAnalysisCmd_actors_pkg_name, context);
 
     } else if (container instanceof LogicalArchitecture) {
-      createObject(elementId, containerId, LaPackage.Literals.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT_PKG,
+      return createObject(elementId, containerId, LaPackage.Literals.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT_PKG,
           LaPackage.Literals.LOGICAL_COMPONENT_PKG, NamingConstants.CreateLogicalArchCmd_actors_pkg_name, context);
 
     } else if (container instanceof PhysicalArchitecture) {
-      createObject(elementId, containerId, PaPackage.Literals.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG,
+      return createObject(elementId, containerId,
+          PaPackage.Literals.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG,
           PaPackage.Literals.PHYSICAL_COMPONENT_PKG, NamingConstants.CreatePhysicalArchCmd_actors_pkg_name, context);
 
     } else if (container instanceof LogicalComponent) {
-      createObject(elementId, containerId, LaPackage.Literals.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_PKGS,
+      return createObject(elementId, containerId, LaPackage.Literals.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_PKGS,
           LaPackage.Literals.LOGICAL_COMPONENT_PKG, NamingConstants.CreateLogicalArchCmd_actors_pkg_name, context);
 
     } else if (container instanceof PhysicalComponent) {
-      createObject(elementId, containerId, PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_PHYSICAL_COMPONENT_PKGS,
+      return createObject(elementId, containerId, PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_PHYSICAL_COMPONENT_PKGS,
           PaPackage.Literals.PHYSICAL_COMPONENT_PKG, NamingConstants.CreatePhysicalArchCmd_actors_pkg_name, context);
 
+    } else if (container instanceof EntityPkg) {
+      return createObject(elementId, containerId,
+          OaPackage.Literals.ENTITY_PKG__OWNED_ENTITY_PKGS, OaPackage.Literals.ENTITY_PKG,
+          elementId, context);
+      
+    } else if (container instanceof SystemComponentPkg) {
+      return createObject(elementId, containerId,
+          CtxPackage.Literals.SYSTEM_COMPONENT_PKG__OWNED_SYSTEM_COMPONENT_PKGS,
+          CtxPackage.Literals.SYSTEM_COMPONENT_PKG, elementId, context);
+
     } else if (container instanceof LogicalComponentPkg) {
-      createObject(elementId, containerId, LaPackage.Literals.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENT_PKGS,
+      return createObject(elementId, containerId,
+          LaPackage.Literals.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENT_PKGS,
           LaPackage.Literals.LOGICAL_COMPONENT_PKG, NamingConstants.CreateLogicalArchCmd_actors_pkg_name, context);
 
     } else if (container instanceof PhysicalComponentPkg) {
-      createObject(elementId, containerId, PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENT_PKGS,
+      return createObject(elementId, containerId,
+          PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENT_PKGS,
           PaPackage.Literals.PHYSICAL_COMPONENT_PKG, NamingConstants.CreatePhysicalArchCmd_actors_pkg_name, context);
     }
+    return null;
   }
 
   public static void createDataPkg(String containerId, String elementId, SessionContext context) {
@@ -400,6 +418,85 @@ public class SkeletonHelper {
 
     Part part = ((SystemComponent) context.getSemanticElement(elementId)).getRepresentingParts().get(0);
     context.putSemanticElement(partId, part);
+  }
+
+  public static Object createComponent(final String containerId, final String elementId, String partId,
+      final SessionContext context, BlockArchitectureExt.Type type, boolean isActor) {
+    EStructuralFeature feature = null;
+    EClass clazz = null;
+    switch (type) {
+    case SA:
+      feature = CtxPackage.Literals.SYSTEM_COMPONENT_PKG__OWNED_SYSTEM_COMPONENTS;
+      clazz = CtxPackage.Literals.SYSTEM_COMPONENT;
+      break;
+    case LA:
+      feature = LaPackage.Literals.LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENTS;
+      clazz = LaPackage.Literals.LOGICAL_COMPONENT;
+      break;
+    case PA:
+      feature = PaPackage.Literals.PHYSICAL_COMPONENT_PKG__OWNED_PHYSICAL_COMPONENTS;
+      clazz = PaPackage.Literals.PHYSICAL_COMPONENT;
+      break;
+    default:
+    }
+    Component object = createObject(elementId, containerId, feature, clazz, elementId, context);
+    TestHelper.getExecutionManager(context.getSession()).execute(new AbstractReadWriteCommand() {
+      @Override
+      public void run() {
+        object.setActor(isActor);
+      }
+    });
+    Part part = ((Component) context.getSemanticElement(elementId)).getRepresentingParts().get(0);
+    context.putSemanticElement(partId, part);
+    return object;
+  }
+
+  public static Object createSubcomponent(final String containerId, final String elementId, String partId,
+      final SessionContext context, BlockArchitectureExt.Type type, boolean isActor) {
+    EStructuralFeature feature = null;
+    EClass clazz = null;
+    switch (type) {
+    case SA:
+      feature = CtxPackage.Literals.SYSTEM_COMPONENT__OWNED_SYSTEM_COMPONENTS;
+      clazz = CtxPackage.Literals.SYSTEM_COMPONENT;
+      break;
+    case LA:
+      feature = LaPackage.Literals.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENTS;
+      clazz = LaPackage.Literals.LOGICAL_COMPONENT;
+      break;
+    case PA:
+      feature = PaPackage.Literals.PHYSICAL_COMPONENT__OWNED_PHYSICAL_COMPONENTS;
+      clazz = PaPackage.Literals.PHYSICAL_COMPONENT;
+      break;
+    default:
+    }
+    Component object = createObject(elementId, containerId, feature, clazz, elementId, context);
+    TestHelper.getExecutionManager(context.getSession()).execute(new AbstractReadWriteCommand() {
+      @Override
+      public void run() {
+        object.setActor(isActor);
+      }
+    });
+
+    Part part = ((Component) context.getSemanticElement(elementId)).getRepresentingParts().get(0);
+    context.putSemanticElement(partId, part);
+    return object;
+  }
+
+  public static void moveComponent(final String containerId, final String elementId,
+      final SessionContext context) {
+    Component component = context.getSemanticElement(elementId);
+    Part part = component.getRepresentingParts().get(0);
+    SkeletonHelper.moveObject(part.getId(), containerId, context);
+    SkeletonHelper.moveObject(elementId, containerId, context);
+  }
+
+  public static void cannotMoveComponent(final String containerId, final String elementId,
+      final SessionContext context) {
+    Component component = context.getSemanticElement(elementId);
+    Part part = component.getRepresentingParts().get(0);
+    SkeletonHelper.moveObject(part.getId(), containerId, context);
+    SkeletonHelper.moveObject(elementId, containerId, context);
   }
 
   public static void createInstanceRole(final String containerId, final String elementId, final String instanceId,

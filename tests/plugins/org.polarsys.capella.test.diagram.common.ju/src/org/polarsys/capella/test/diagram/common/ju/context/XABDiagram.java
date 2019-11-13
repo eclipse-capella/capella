@@ -10,6 +10,9 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.common.ju.context;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
@@ -108,13 +111,38 @@ public class XABDiagram extends CommonDiagram {
   public String createActor(String id) {
     DDiagramElementContainer element = new CreateContainerTool(this, getCreateActorToolName(), getDiagramId(), id)
         .run();
+
+    assertTrue(getCreatedComponent(element).isActor());
     return ((CapellaElement) element.getTarget()).getId();
   }
 
   public String createActor(String id, String containerId) {
 
     DDiagramElementContainer element = new CreateContainerTool(this, getCreateActorToolName(), containerId, id).run();
+
+    assertTrue(getCreatedComponent(element).isActor());
     return ((CapellaElement) element.getTarget()).getId();
+  }
+
+  public void cannotCreateActor(String id, String containerId) {
+    new CreateContainerTool(this, getCreateActorToolName(), containerId, id)
+        .cannotRun();
+  }
+
+  public void failedPreconditionCreateActor(String id, String containerId) {
+    new CreateContainerTool(this, getCreateActorToolName(), containerId, id).shouldFail();
+  }
+
+  protected Component getCreatedComponent(DDiagramElementContainer element) {
+    Component component = null;
+    CapellaElement target = (CapellaElement) element.getTarget();
+    if (target instanceof Part) {
+      Part actorPart = (Part) element.getTarget();
+      component = (Component) (actorPart.getAbstractType());
+    } else {
+      component = (Component) target;
+    }
+    return component;
   }
 
   protected String getCreateActorToolName() {
@@ -234,7 +262,19 @@ public class XABDiagram extends CommonDiagram {
       name = IToolNameConstants.TOOL_LAB_CREATE_COMPONENT;
     }
     DDiagramElementContainer element = new CreateContainerTool(this, name, containerId, id).run();
+    assertFalse(getCreatedComponent(element).isActor());
     return ((CapellaElement) element.getTarget()).getId();
+  }
+
+  public void cannotCreateComponent(String id, String containerId) {
+    String name = null;
+    if (type == Type.OA) {
+      name = IToolNameConstants.TOOL_OAB_CREATE_OE;
+
+    } else if (type == Type.LA) {
+      name = IToolNameConstants.TOOL_LAB_CREATE_COMPONENT;
+    }
+    new CreateContainerTool(this, name, containerId, id).cannotRun();
   }
 
   public void createComponentExchange(String idSource, String idTarget, String id) {
