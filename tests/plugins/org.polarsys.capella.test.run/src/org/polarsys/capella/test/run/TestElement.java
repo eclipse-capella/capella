@@ -41,18 +41,21 @@ public class TestElement {
   @Override
   public String toString() {
     String result = "";
-    String classname = name.split("[\\(\\)]")[1];
-    String shortname = name.split("[\\(\\)]")[0];
-    result += "<testcase status=\"" + status + "\" name=\"" + encode(shortname) + "\" classname=\"" + encode(classname)
-        + "\" time=\"" + getEllapsedTime() + "\">";
-    if (isFailed()) {
-      result += "<failure message=\"" + encode(failureMessage) + "\">";
-      result += "<![CDATA[";
-      result += stack;
-      result += "]]>";
-      result += "</failure>";
+    String[] splitedNames = name.split("[\\(\\)]");
+    if (splitedNames.length > 1) {
+      String classname = splitedNames[1];
+      String shortname = splitedNames[0];
+      result += "<testcase status=\"" + status + "\" name=\"" + encode(shortname) + "\" classname=\"" + encode(classname)
+      + "\" time=\"" + getEllapsedTime() + "\">";
+      if (isFailed()) {
+        result += "<failure message=\"" + encode(failureMessage) + "\">";
+        result += "<![CDATA[";
+        result += stack;
+        result += "]]>";
+        result += "</failure>";
+      }
+      result += "</testcase>\r\n";
     }
-    result += "</testcase>\r\n";
     return result;
   }
 
