@@ -25,6 +25,7 @@ import org.polarsys.capella.test.diagram.misc.ju.testcases.CheckPhysCompNatureOp
 import org.polarsys.capella.test.diagram.misc.ju.testcases.CloneDiagramTestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.DDiagramEditorUndoRedoHandlerTest;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.DecompositionWizardTestCase;
+import org.polarsys.capella.test.diagram.misc.ju.testcases.DeleteFromModelContainerSemanticTarget;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.DeleteFromModelSemanticTarget;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.GraphTest;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.InsertRemoveComponentsWithNoParts;
@@ -66,6 +67,7 @@ public class DiagramMiscTestSuite extends BasicTestSuite {
         tests.add(new DecompositionWizardTestCase());
         tests.add(new CheckPhysCompNatureOptionTestCase());
         tests.add(new DeleteFromModelSemanticTarget());
+        tests.add(new DeleteFromModelContainerSemanticTarget());
         return tests;
     }
 }
