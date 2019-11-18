@@ -25,6 +25,7 @@ import org.polarsys.capella.test.diagram.misc.ju.testcases.CheckPhysCompNatureOp
 import org.polarsys.capella.test.diagram.misc.ju.testcases.CloneDiagramTestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.DDiagramEditorUndoRedoHandlerTest;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.DecompositionWizardTestCase;
+import org.polarsys.capella.test.diagram.misc.ju.testcases.DeleteFromModelSemanticTarget;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.GraphTest;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.InsertRemoveComponentsWithNoParts;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.InterfacePortSizeTestCase;
@@ -37,33 +38,34 @@ import junit.framework.Test;
 
 public class DiagramMiscTestSuite extends BasicTestSuite {
 
-  /**
-   * Returns the suite. This is required to unary launch this test.
-   */
-  public static Test suite() {
-    return new DiagramMiscTestSuite();
-  }
+    /**
+     * Returns the suite. This is required to unary launch this test.
+     */
+    public static Test suite() {
+        return new DiagramMiscTestSuite();
+    }
 
-  @Override
-  protected List<BasicTestArtefact> getTests() {
-    List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
-    tests.add(new DDiagramEditorUndoRedoHandlerTest());
-    tests.add(new GraphTest());
-    tests.add(new Bug1006TestCase());
-    tests.add(new Bug1024TestCase());
-    tests.add(new Bug1512TestCase());
-    tests.add(new InterfacePortSizeTestCase());
-    tests.add(new CheckDiagramDirtyStateOnOpeningTestCase());
-    tests.add(new StatusLineTestCase());
-    tests.add(new Bug1917TestCase());
-    tests.add(new Bug2145TestCase());
-    tests.add(new CloneDiagramTestCase());
-    tests.add(new Bug2579TestCase());
-    tests.add(new BreakdownDiagramElements());
-    tests.add(new InsertRemoveComponentsWithNoParts());
-    tests.add(new PABStyleChecksDiagramElements());
-    tests.add(new DecompositionWizardTestCase());
-    tests.add(new CheckPhysCompNatureOptionTestCase());
-    return tests;
-  }
+    @Override
+    protected List<BasicTestArtefact> getTests() {
+        List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+        tests.add(new DDiagramEditorUndoRedoHandlerTest());
+        tests.add(new GraphTest());
+        tests.add(new Bug1006TestCase());
+        tests.add(new Bug1024TestCase());
+        tests.add(new Bug1512TestCase());
+        tests.add(new InterfacePortSizeTestCase());
+        tests.add(new CheckDiagramDirtyStateOnOpeningTestCase());
+        tests.add(new StatusLineTestCase());
+        tests.add(new Bug1917TestCase());
+        tests.add(new Bug2145TestCase());
+        tests.add(new CloneDiagramTestCase());
+        tests.add(new Bug2579TestCase());
+        tests.add(new BreakdownDiagramElements());
+        tests.add(new InsertRemoveComponentsWithNoParts());
+        tests.add(new PABStyleChecksDiagramElements());
+        tests.add(new DecompositionWizardTestCase());
+        tests.add(new CheckPhysCompNatureOptionTestCase());
+        tests.add(new DeleteFromModelSemanticTarget());
+        return tests;
+    }
 }
