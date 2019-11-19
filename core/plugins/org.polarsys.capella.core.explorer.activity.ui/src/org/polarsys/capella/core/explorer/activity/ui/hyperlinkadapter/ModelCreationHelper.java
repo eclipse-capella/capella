@@ -173,7 +173,7 @@ public class ModelCreationHelper {
 
   @Deprecated
   public static Scenario selectPACapabilityRealizationAndCreateDataFlowScenario(final Project project) {
-    return selectCapabilityAndCreateScenario(project, ModelQueryHelper.getLogicalArchitecture(project), ScenarioKind.DATA_FLOW);
+    return selectCapabilityAndCreateScenario(project, ModelQueryHelper.getPhysicalArchitecture(project), ScenarioKind.DATA_FLOW);
   }
 
   /**
