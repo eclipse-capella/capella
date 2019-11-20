@@ -844,10 +844,6 @@ This section lists tools that are available on all Capella diagrams. These tools
 | [[Image:Images/icons/full/obj16/System.gif]] 
 | 		Creates a new Logical / Physical Component (and creates a Part in the selected Container Component) 	
 |-
-| 	Reuse Component 	
-| [[Image:Images/icons/full/obj16/Insert.gif]] 
-| 		&#91;Reusable Components&#93; Creates a new Part in the selected Container and type it by the selected Logical / Physical Component 	
-|-
 | 	Actor 	
 | [[Image:Images/icons/full/obj16/Actor.gif]] 
 | 		Creates a new System Actor / Logical Actor / Physical Actor (and creates a Part in the Context element of the current level) 	
@@ -949,10 +945,6 @@ This section lists tools that are available on all Capella diagrams. These tools
 | 	Component 	
 | [[Image:Images/icons/full/obj16/System.gif]] 
 | 		Creates a new Logical / Physical Component (and creates a Part in the selected Container Component) 	
-|-
-| 	Reuse Component 	
-| [[Image:Images/icons/full/obj16/Insert.gif]] 
-| 		&#91;Reusable Components&#93; Creates a new Part in the selected Container and type it by the selected Logical / Physical Component 	
 |-
 | 	In Flow Port 	
 | [[Image:Images/icons/full/obj16/FlowPortIn.gif]] 
@@ -1382,10 +1374,6 @@ This section lists tools that are available on all Capella diagrams. These tools
 | 	Component 	
 | [[Image:Images/icons/full/obj16/System.gif]] 
 | 		Creates a new Logical / Physical Component (and creates a Part in the selected Container Component) 	
-|-
-| 	Reuse Component 	
-| [[Image:Images/icons/full/obj16/Insert.gif]] 
-| 		&#91;Reusable Components&#93; Creates a new Part in the selected Container and type it by the selected Logical / Physical Component 	
 |-
 | 	Actor 	
 | [[Image:Images/icons/full/obj16/Actor.gif]] 
