@@ -10,9 +10,16 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.common.ju.context;
 
+import static org.junit.Assert.assertTrue;
+
+import java.util.List;
+
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.Type;
@@ -54,8 +61,8 @@ public class PABDiagram extends XABDiagram {
   }
 
   public String createNodeComponent(String id, String containerId) {
-    DDiagramElementContainer element = new CreateContainerTool(this, IToolNameConstants.TOOL_PAB_CREATE_NODE_PHYSICAL_COMPONENT, containerId, id)
-        .run();
+    DDiagramElementContainer element = new CreateContainerTool(this,
+        IToolNameConstants.TOOL_PAB_CREATE_NODE_PHYSICAL_COMPONENT, containerId, id).run();
     return ((CapellaElement) element.getTarget()).getId();
   }
 
@@ -64,17 +71,49 @@ public class PABDiagram extends XABDiagram {
         .cannotRun();
   }
 
+  public void cannotReuseNodeComponent(String containerId, String id) {
+    new ReuseComponentTool(this, IToolNameConstants.TOOL_PAB_REUSE_NODE_PC, containerId) {
+      @Override
+      protected void postRunTest() {
+        for (EObject component : getDiagramContext().getSessionContext().getSemanticElements(selectedElements)) {
+          if (component instanceof Component) {
+            List<Part> parts = ((Component) component).getRepresentingParts();
+            getDiagramContext().hasView(parts.get(parts.size() - 1).getId());
+
+            assertTrue("A new part referencing " + ((Component) component).getId() + " shouldn't have been created",
+                parts.size() == representingParts.get(component).size());
+          }
+        }
+      }
+    }.select(id);
+  }
+
   public String createBehaviorComponent(String id, String containerId) {
     DDiagramElementContainer element = new CreateContainerTool(this,
-        IToolNameConstants.TOOL_PAB_CREATE_BEHAVIOR_PHYSICAL_COMPONENT, containerId,
-        id)
-        .run();
+        IToolNameConstants.TOOL_PAB_CREATE_BEHAVIOR_PHYSICAL_COMPONENT, containerId, id).run();
     return ((CapellaElement) element.getTarget()).getId();
   }
 
   public void cannotCreateBehaviorComponent(String id, String containerId) {
     new CreateContainerTool(this, IToolNameConstants.TOOL_PAB_CREATE_BEHAVIOR_PHYSICAL_COMPONENT, containerId, id)
         .cannotRun();
+  }
+
+  public void cannotReuseBehaviourComponent(String containerId, String id) {
+    new ReuseComponentTool(this, IToolNameConstants.TOOL_PAB_REUSE_BEHAVIOR_PC, containerId) {
+      @Override
+      protected void postRunTest() {
+        for (EObject component : getDiagramContext().getSessionContext().getSemanticElements(selectedElements)) {
+          if (component instanceof Component) {
+            List<Part> parts = ((Component) component).getRepresentingParts();
+            getDiagramContext().hasView(parts.get(parts.size() - 1).getId());
+
+            assertTrue("A new part referencing " + ((Component) component).getId() + " shouldn't have been created",
+                parts.size() == representingParts.get(component).size());
+          }
+        }
+      }
+    }.select(id);
   }
 
   public void failedCreateBehaviorComponent(String id, String containerId) {
@@ -126,8 +165,7 @@ public class PABDiagram extends XABDiagram {
         .equals(CapellaProjectHelper.isReusableComponentsDriven(getDiagramDescriptor().getTarget()))) {
       toolName = IToolNameConstants.TOOL_PAB_INSERT_REMOVE_NODE_COMPONENTS_MULTIPART;
     }
-    new InsertRemoveTool(this, toolName, containerId)
-        .remove(id);
+    new InsertRemoveTool(this, toolName, containerId).remove(id);
   }
 
   public void insertNodeComponent(String id, String containerId) {
@@ -136,12 +174,15 @@ public class PABDiagram extends XABDiagram {
         .equals(CapellaProjectHelper.isReusableComponentsDriven(getDiagramDescriptor().getTarget()))) {
       toolName = IToolNameConstants.TOOL_PAB_INSERT_REMOVE_NODE_COMPONENTS_MULTIPART;
     }
-    new InsertRemoveTool(this, toolName, containerId)
-        .insert(id);
+    new InsertRemoveTool(this, toolName, containerId).insert(id);
   }
-  
+
   public void reuseNodeComponent(String containerId, String... ids) {
     new ReuseComponentTool(this, IToolNameConstants.TOOL_PAB_REUSE_NODE_PC, containerId).select(ids);
+  }
+
+  public void reuseBehaviourComponent(String containerId, String... ids) {
+    new ReuseComponentTool(this, IToolNameConstants.TOOL_PAB_REUSE_BEHAVIOR_PC, containerId).select(ids);
   }
 
   public void removeBehaviorComponent(String id, String containerId) {
@@ -151,8 +192,7 @@ public class PABDiagram extends XABDiagram {
       toolName = IToolNameConstants.TOOL_PAB_INSERT_REMOVE_BEHAVIOUR_COMPONENTS_MULTIPART;
     }
 
-    new InsertRemoveTool(this, toolName, containerId)
-        .remove(id);
+    new InsertRemoveTool(this, toolName, containerId).remove(id);
   }
 
   public void insertBehaviorComponent(String id, String containerId) {
@@ -161,8 +201,7 @@ public class PABDiagram extends XABDiagram {
         .equals(CapellaProjectHelper.isReusableComponentsDriven(getDiagramDescriptor().getTarget()))) {
       toolName = IToolNameConstants.TOOL_PAB_INSERT_REMOVE_BEHAVIOUR_COMPONENTS_MULTIPART;
     }
-    new InsertRemoveTool(this, toolName, containerId)
-        .insert(id);
+    new InsertRemoveTool(this, toolName, containerId).insert(id);
   }
 
   public void createComponentPortAllocation(String sourceId, String targetId) {

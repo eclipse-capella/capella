@@ -112,8 +112,7 @@ public class SelectFromListTool extends AbstractToolStep<Object> {
         SessionContext sessionContext = getExecutionContext();
         Collection<EObject> selected = diagramContext.adaptTool(SelectFromListTool.this, parameters,
             sessionContext.getSemanticElements(selectedElements));
-        objects.addAll(AbstractExternalJavaAction.getInitialSelection(parameters));
-        objects.addAll(selected);
+        objects.addAll(AbstractExternalJavaAction.getScope(parameters));
         return new ArrayList<EObject>(objects);
 
       }

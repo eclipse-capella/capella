@@ -2540,7 +2540,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType">
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="select Components" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
                     <parameters name="context" value="aql:containerType"/>
-                    <parameters name="scope" value="aql:containerType.getABInsertComponent()"/>
+                    <parameters name="scope" value="aql:containerType.getPABInsertNodeComponent()"/>
                     <parameters name="multiple" value="true"/>
                     <parameters name="resultVariable" value="components"/>
                     <parameters name="wizardMessage" value="Select Components."/>
@@ -3466,7 +3466,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType">
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="select Components" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
                     <parameters name="context" value="aql:containerType"/>
-                    <parameters name="scope" value="aql:containerType.getABInsertComponent()"/>
+                    <parameters name="scope" value="aql:containerType.getPABInsertBehaviourComponent()"/>
                     <parameters name="multiple" value="true"/>
                     <parameters name="resultVariable" value="components"/>
                     <parameters name="wizardMessage" value="Select Components."/>

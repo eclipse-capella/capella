@@ -39,9 +39,6 @@ public class ReuseLogicalComponentTestCase extends ReuseOfComponentsProject {
 
     diagram.reuseComponent(LA__PART_1_LC_1_1, LA__LC_2);
 
-    diagram.reuseComponent(LA__PART_2_LC_2, LA__LC_1_1);
-    diagram.reuseComponent(LA__PART_2_LC_2, LA__LC_1);
-
     diagram.reuseComponent(diagramId, LA__LC_3);
 
     // show/hide reused components

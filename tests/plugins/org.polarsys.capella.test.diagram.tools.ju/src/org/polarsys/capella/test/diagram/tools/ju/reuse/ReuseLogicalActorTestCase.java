@@ -38,9 +38,6 @@ public class ReuseLogicalActorTestCase extends ReuseOfComponentsProject {
 
     diagram.reuseActor(LA__PART_1_LA_1_1, LA__LA_2);
 
-    diagram.reuseActor(LA__PART_3_LA_2, LA__LA_1_1);
-    diagram.reuseActor(LA__PART_3_LA_2, LA__LA_1);
-
     diagram.reuseActor(diagramId, LA__LA_3);
 
     // show/hide reused actors
