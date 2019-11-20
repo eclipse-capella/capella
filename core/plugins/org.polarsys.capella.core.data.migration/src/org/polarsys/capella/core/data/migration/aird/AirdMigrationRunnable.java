@@ -159,7 +159,7 @@ public class AirdMigrationRunnable extends ModelMigrationRunnable {
 
           @Override
           public void setValue(EObject object, EStructuralFeature feature, Object value, int position) {
-              super.setValue(object, feature, value, position);
+              delegateXMLHelper.setValue(object, feature, value, position);
           }
 
           @Override
