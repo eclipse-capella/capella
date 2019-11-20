@@ -502,11 +502,12 @@ public class PhysicalServices {
       } else {
         sourcePath = (Part) source;
       }
-      
+
       EObject ancestor = EcoreUtil2.getCommonAncestor(newList);
       Component container = CapellaServices.getService().getComponentContainer(ancestor);
       if (container == null) {
-        EObject target = ((DSemanticDiagram) CapellaServices.getService().getDiagramContainer(views.get(0))).getTarget();
+        EObject target = ((DSemanticDiagram) CapellaServices.getService().getDiagramContainer(views.get(0)))
+            .getTarget();
         container = CapellaServices.getService().getComponentContainer(target);
       }
       return PhysicalPathExt.createPhysicalPath(container, newList, sourcePath);
@@ -528,8 +529,7 @@ public class PhysicalServices {
 
       return source.equals(system) || (container != null && !container.equals(system));
     }
-    return (((source instanceof SystemComponent)
-        || (source instanceof PhysicalComponent)));
+    return (((source instanceof SystemComponent) || (source instanceof PhysicalComponent)));
   }
 
   /**

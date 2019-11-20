@@ -11,6 +11,7 @@
 package org.polarsys.capella.test.diagram.common.ju.step.tools.xab;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.HashMap;
 import java.util.List;
@@ -41,6 +42,8 @@ public class ReuseComponentTool extends SelectFromListTool {
     for (EObject component : getDiagramContext().getSessionContext().getSemanticElements(selectedElements)) {
       if (component instanceof Component) {
         representingParts.put((Component) component, ((Component) component).getRepresentingParts());
+      } else if (component == null) {
+        fail("Invalid component");
       }
     }
   }
