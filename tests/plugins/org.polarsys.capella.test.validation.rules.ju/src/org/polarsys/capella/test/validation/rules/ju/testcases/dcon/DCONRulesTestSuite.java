@@ -41,6 +41,7 @@ public class DCONRulesTestSuite extends BasicTestSuite {
     tests.add(new Rule_DCON_05());
     tests.add(new Rule_DCON_06());
     tests.add(new Rule_DCON_07());
+    tests.add(new Rule_DCON_08());
     return tests;
   }
 
