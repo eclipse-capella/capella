@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.re.validation.integrity;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.core.runtime.IStatus;
@@ -22,11 +24,12 @@ import org.eclipse.emf.validation.model.ConstraintStatus;
 import org.eclipse.emf.validation.service.ConstraintRegistry;
 import org.eclipse.emf.validation.service.IConstraintDescriptor;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.core.model.utils.NamingHelper;
 import org.polarsys.kitalpha.emde.model.Element;
 
 /**
  * 
- * I_43 - Element shall not reference to aird element
+ * I_43 - Model Element shall not reference to aird element
  *
  */
 public class I_43_ReferencingToAnAirdElement extends AbstractModelConstraint {
@@ -37,29 +40,26 @@ public class I_43_ReferencingToAnAirdElement extends AbstractModelConstraint {
       EObject currentElement = ctx.getTarget();
       EList<EReference> allReferences = currentElement.eClass().getEAllReferences();
       if (allReferences != null) {
-        int nbOfAirdElement = 0;
+        Collection<IStatus> statuses = new ArrayList<>();
         for (EReference eReference : allReferences) {
           if (!eReference.isDerived()) {
             Object referencedObject = currentElement.eGet(eReference);
             // a reference can be EObject(one ref) or a List(multiple ref)
-            nbOfAirdElement = 0;
             if (referencedObject instanceof EObject) {
-              nbOfAirdElement += (CapellaResourceHelper.isAirdElement((EObject) referencedObject)) ? 1 : 0;
+              statuses.add(validateReference(ctx, currentElement, (EObject) referencedObject));
             } else if (referencedObject instanceof List<?>) {
               @SuppressWarnings("unchecked")
               List<Object> referencedObjectList = (List<Object>) referencedObject;
               for (Object element : referencedObjectList) {
                 if (element instanceof EObject) {
-                  nbOfAirdElement += (CapellaResourceHelper.isAirdElement((EObject) element)) ? 1 : 0;
+                  statuses.add(validateReference(ctx, currentElement, (EObject) element));
                 }
               }
             }
-            if (nbOfAirdElement == 1) {
-              return createFailureStatus(ctx, currentElement, "to aird element");
-            } else if (nbOfAirdElement > 2) {
-              return createFailureStatus(ctx, currentElement, "to " + nbOfAirdElement + " aird elements");
-            }
           }
+        }
+        if (!statuses.isEmpty()) {
+          return ConstraintStatus.createMultiStatus(ctx, statuses);
         }
       }
     }
@@ -71,5 +71,13 @@ public class I_43_ReferencingToAnAirdElement extends AbstractModelConstraint {
         .getDescriptor(ctx.getCurrentConstraintId());
     return ConstraintStatus.createStatus(ctx, target, ctx.getResultLocus(), constraintDescriptor.getMessagePattern(),
         messageArgs);
+  }
+
+  private IStatus validateReference(IValidationContext ctx, EObject currentElement, EObject targetElement) {
+    if (CapellaResourceHelper.isAirdElement(targetElement)) {
+      return createFailureStatus(ctx, currentElement, targetElement, NamingHelper.getTitleLabel(currentElement),
+          "to aird element");
+    }
+    return ctx.createSuccessStatus();
   }
 }

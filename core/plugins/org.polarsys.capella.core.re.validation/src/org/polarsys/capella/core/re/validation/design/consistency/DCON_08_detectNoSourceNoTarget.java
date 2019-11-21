@@ -18,6 +18,7 @@ import org.eclipse.emf.validation.model.ConstraintStatus;
 import org.eclipse.emf.validation.service.ConstraintRegistry;
 import org.eclipse.emf.validation.service.IConstraintDescriptor;
 import org.polarsys.capella.common.re.CatalogElementLink;
+import org.polarsys.capella.core.model.utils.NamingHelper;
 
 /**
  * DCON_08 - CatalogElementLink detect no source no target
@@ -40,8 +41,10 @@ public class DCON_08_detectNoSourceNoTarget extends AbstractModelConstraint {
           message = isFailure ? "neither source nor target" : "no target";
           isFailure = true;
         }
+
         if (isFailure) {
-          return createFailureStatus(ctx, catalogElementLink, catalogElementLink, message);
+          return createFailureStatus(ctx, catalogElementLink, catalogElementLink,
+              NamingHelper.getTitleLabel(catalogElementLink), message);
         }
       }
     }

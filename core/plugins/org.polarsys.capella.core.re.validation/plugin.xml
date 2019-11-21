@@ -128,13 +128,13 @@
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  Catalog Element Link has {1}
+                  {0} {1}has {2}.
                </message>
                <target
                      class="CatalogElementLink">
                </target>
                <description>
-                  REC_RPL no target or no source
+                  This rule checks if a Catalog Element Link has target and source
                </description>
             </constraint>
          </constraints>
@@ -146,16 +146,16 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="I_43 - Catalog Element Link shall not reference to aird element"
+                  name="I_43 - Model Element shall not reference to aird element"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  Element references {0}.
+                  {0} {1}references {2}.
                </message>
                <target
                      class="EObject"></target>
                <description>
-                  Element references aird element (e.g. gmf)
+                  This rule checks if a model Element references aird element (e.g. gmf)
                </description>
             </constraint>
          </constraints>
