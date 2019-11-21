@@ -35,17 +35,20 @@ import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.ElementTreeSelectionDialog;
 
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.utils.ReflectUtil;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.platform.sirius.ui.project.NewProjectWizard;
 
 public class ProjectSelectionDialog extends ElementTreeSelectionDialog implements IResourceChangeListener {
 
   private Button newButton;
+  private Label messageLabel;
 
   public ProjectSelectionDialog(Shell parent, ILabelProvider labelProvider, ITreeContentProvider contentProvider) {
     super(parent, labelProvider, contentProvider);
@@ -105,6 +108,12 @@ public class ProjectSelectionDialog extends ElementTreeSelectionDialog implement
     return super.close();
   }
 
+  @Override
+  protected Label createMessageArea(Composite composite) {
+    messageLabel = super.createMessageArea(composite);
+    return messageLabel;
+  }
+
   protected void createNewProject() {
     // Instantiates and initializes the wizard
     NewProjectWizard wizard = new NewProjectWizard();
@@ -137,14 +146,14 @@ public class ProjectSelectionDialog extends ElementTreeSelectionDialog implement
     return fileName.endsWith(CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION);
   }
 
-  public String getCapellaProjectFile(IResource resource_p) {
-    if (!resource_p.exists()) {
+  public String getCapellaProjectFile(IResource resource) {
+    if (!resource.exists()) {
       return null;
     }
 
-    if (resource_p instanceof IProject) {
-      if (((IProject) resource_p).isOpen()) {
-        IProject project = (IProject) resource_p;
+    if (resource instanceof IProject) {
+      if (((IProject) resource).isOpen()) {
+        IProject project = (IProject) resource;
 
         IFile file = project.getFile(project.getName() + ICommonConstants.POINT_CHARACTER + CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION);
         if (file.exists()) {
@@ -166,24 +175,43 @@ public class ProjectSelectionDialog extends ElementTreeSelectionDialog implement
       return null;
     }
 
-    if (isCapellaModellerFile(resource_p)) {
-      return resource_p.getFullPath().toString();
+    if (isCapellaModellerFile(resource)) {
+      return resource.getFullPath().toString();
     }
     return null;
   }
-
+  
   /**
    * {@inheritDoc}
    */
-  public void resourceChanged(IResourceChangeEvent event_p) {
+  public void resourceChanged(IResourceChangeEvent event) {
+    
+    // Enable the tree and the label
+    getTreeViewer().getTree().setEnabled(true);
+    messageLabel.setEnabled(true);
+    
+    // Set the isEmpty field to false
+    try {
+      ReflectUtil.setInvisibleFieldValue(this, "fIsEmpty", false);
+    } catch (NoSuchFieldException | IllegalArgumentException | IllegalAccessException e) {
+      e.printStackTrace();
+    }
+    
+    refreshDialog(event);
+  }
+
+  protected void refreshDialog(IResourceChangeEvent event) {
+    // Refresh the viewer
     getTreeViewer().refresh();
 
-    // select the newly created project
-    for (IResourceDelta delta : event_p.getDelta().getAffectedChildren()) {
+    // Select the newly created project
+    for (IResourceDelta delta : event.getDelta().getAffectedChildren()) {
       IResource resource = delta.getResource();
       getTreeViewer().setSelection(new StructuredSelection(resource));
       getButton(OK).forceFocus();
     }
+    
+    // Update
+    updateOKStatus();
   }
-
 }
