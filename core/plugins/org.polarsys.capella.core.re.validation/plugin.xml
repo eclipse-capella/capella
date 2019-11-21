@@ -118,6 +118,46 @@
                   This rule checks if a RPL references an element which is also referenced by its REC
                </description>
             </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.re.validation.design.consistency.DCON_08_detectNoSourceNoTarget"
+                  id="DCON_08"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DCON_08 - REC/RPL detect no source no target"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  Catalog Element Link has {1}
+               </message>
+               <target
+                     class="CatalogElementLink">
+               </target>
+               <description>
+                  REC_RPL no target or no source
+               </description>
+            </constraint>
+         </constraints>
+         <constraints
+               categories="capella.category/integrity">
+            <constraint
+                  class="org.polarsys.capella.core.re.validation.integrity.I_43_ReferencingToAnAirdElement"
+                  id="I_43"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_43 - Catalog Element Link shall not reference to aird element"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  Element references {0}.
+               </message>
+               <target
+                     class="EObject"></target>
+               <description>
+                  Element references aird element (e.g. gmf)
+               </description>
+            </constraint>
          </constraints>
       </constraintProvider>
       <constraintProvider>

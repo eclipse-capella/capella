@@ -15,9 +15,11 @@ import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractDeleteComman
 /**
  * Delete an Element, with confirmation also delete the marker (ok:yes, cancel:no)
  */
-public class DCON_05_Resolver extends AbstractDeleteCommandResolver {
+public class DeleteGivenElement extends AbstractDeleteCommandResolver {
+
   @Override
   public Object getElementToDelete(Object obj) {
     return obj;
   }
+
 }
