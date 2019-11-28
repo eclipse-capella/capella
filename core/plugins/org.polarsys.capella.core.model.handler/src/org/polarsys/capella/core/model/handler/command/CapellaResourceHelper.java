@@ -43,6 +43,8 @@ import org.polarsys.capella.common.mdsofa.common.activator.SolFaCommonActivator;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 
+import org.eclipse.gmf.runtime.notation.View;
+
 /**
  * Helper that deal with Capella resources.
  */
@@ -251,7 +253,7 @@ public class CapellaResourceHelper {
    * Returns whether an object is a Sirius element.
    */
   private static boolean isSiriusElement(Object object) {
-    return (object instanceof DRefreshable) || (object instanceof DRepresentationDescriptor);
+    return (object instanceof DRefreshable) || (object instanceof DRepresentationDescriptor) || (object instanceof View);
   }
 
   /**

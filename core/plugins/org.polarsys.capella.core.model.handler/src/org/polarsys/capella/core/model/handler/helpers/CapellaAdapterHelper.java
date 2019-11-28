@@ -24,6 +24,7 @@ import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.kitalpha.emde.model.Element;
 
@@ -148,6 +149,8 @@ public class CapellaAdapterHelper {
           // null can happen when a diagram shows a deleted element
           return null;
         }
+      }else if(!CapellaResourceHelper.isSemanticElement(result)){
+        return null;
       }
     }
     if (onlyBusiness) {
