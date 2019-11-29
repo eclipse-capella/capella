@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+<extension
+         point="org.polarsys.capella.core.tiger">
+      <resolver
+            class="org.polarsys.capella.test.transition.ju.common.SimpleResolver"
+            id="org.polarsys.capella.test.transition.ju.model.simpleResolver"
+            priority="high">
+      </resolver>
+   </extension>
+</plugin>

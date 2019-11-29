@@ -30,6 +30,13 @@ import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContex
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.core.data.capellacore.NamedElement;
+import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
+import org.polarsys.capella.core.data.cs.Interface;
+import org.polarsys.capella.core.data.fa.ComponentExchangeFunctionalExchangeAllocation;
+import org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation;
+import org.polarsys.capella.core.data.information.ExchangeItem;
+import org.polarsys.capella.core.data.information.PortAllocation;
 import org.polarsys.capella.core.data.interaction.InteractionFragment;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
@@ -75,7 +82,9 @@ public abstract class TransitionTestCase extends BasicCommandTestCase {
     List<EObject> result = new ArrayList<EObject>();
     if (object instanceof TraceableElement) {
       for (AbstractTrace trace : ((TraceableElement) object).getIncomingTraces()) {
-        result.add(trace.getSourceElement());
+        if (!(trace instanceof ComponentFunctionalAllocation || trace instanceof PortAllocation || trace instanceof ComponentExchangeFunctionalExchangeAllocation)) {
+          result.add(trace.getSourceElement());
+        }
       }
     }
     return result;
@@ -83,6 +92,14 @@ public abstract class TransitionTestCase extends BasicCommandTestCase {
 
   protected EObject getAllocatingElement(EObject object) {
     return mustBeMonoTransitioned(object);
+  }
+
+  protected EObject checkNoElementAllocated(EObject element) {
+    List<EObject> transitionedElements = mustBeMultiTransitioned(element, 0);
+    if (transitionedElements.size() == 0) {
+      return null;
+    }
+    return mustBeMultiTransitioned(element, 0).get(0);
   }
 
   protected void mustBeOwnedBy(EObject object, EObject container) {
@@ -98,9 +115,9 @@ public abstract class TransitionTestCase extends BasicCommandTestCase {
   protected EObject mustBeMonoTransitioned(EObject element) {
     return mustBeMultiTransitioned(element, 1).get(0);
   }
-  
+
   protected void mustBeNamed(EObject result, String name) {
-    assertTrue(((AbstractNamedElement)result).getName().equals(name));
+    assertTrue(((AbstractNamedElement) result).getName().equals(name));
   }
 
   protected List<EObject> mustBeMultiTransitioned(String id, int nb) {
@@ -123,14 +140,12 @@ public abstract class TransitionTestCase extends BasicCommandTestCase {
 
   protected EObject mustBeLinkedTo(EObject source, EObject target, EStructuralFeature feature) {
     if (feature.isMany()) {
-      assertTrue(
-          NLS.bind("''{0}'' should be linked to ''{1}'' by ''{2}''",
-              new Object[] { EObjectLabelProviderHelper.getText(source), EObjectLabelProviderHelper.getText(target), feature.getName() }),
+      assertTrue(NLS.bind("''{0}'' should be linked to ''{1}'' by ''{2}''", new Object[] {
+          EObjectLabelProviderHelper.getText(source), EObjectLabelProviderHelper.getText(target), feature.getName() }),
           ((EList) source.eGet(feature)).contains(target));
     } else {
-      assertTrue(
-          NLS.bind("''{0}'' should be linked to ''{1}'' by ''{2}''",
-              new Object[] { EObjectLabelProviderHelper.getText(source), EObjectLabelProviderHelper.getText(target), feature.getName() }),
+      assertTrue(NLS.bind("''{0}'' should be linked to ''{1}'' by ''{2}''", new Object[] {
+          EObjectLabelProviderHelper.getText(source), EObjectLabelProviderHelper.getText(target), feature.getName() }),
           target.equals(source.eGet(feature)));
     }
 
@@ -145,14 +160,12 @@ public abstract class TransitionTestCase extends BasicCommandTestCase {
 
   protected EObject mustNotBeLinkedTo(EObject source, EObject target, EStructuralFeature feature) {
     if (feature.isMany()) {
-      assertFalse(
-          NLS.bind("''{0}'' should be linked to ''{1}'' by ''{2}''",
-              new Object[] { EObjectLabelProviderHelper.getText(source), EObjectLabelProviderHelper.getText(target), feature.getName() }),
+      assertFalse(NLS.bind("''{0}'' should be linked to ''{1}'' by ''{2}''", new Object[] {
+          EObjectLabelProviderHelper.getText(source), EObjectLabelProviderHelper.getText(target), feature.getName() }),
           ((EList) source.eGet(feature)).contains(target));
     } else {
-      assertFalse(
-          NLS.bind("''{0}'' should be linked to ''{1}'' by ''{2}''",
-              new Object[] { EObjectLabelProviderHelper.getText(source), EObjectLabelProviderHelper.getText(target), feature.getName() }),
+      assertFalse(NLS.bind("''{0}'' should be linked to ''{1}'' by ''{2}''", new Object[] {
+          EObjectLabelProviderHelper.getText(source), EObjectLabelProviderHelper.getText(target), feature.getName() }),
           target.equals(source.eGet(feature)));
     }
 
@@ -167,7 +180,8 @@ public abstract class TransitionTestCase extends BasicCommandTestCase {
     return source;
   }
 
-  public EObject mustBeTransitionedAndContainedBy(String element, String referencedElement, EStructuralFeature feature) {
+  public EObject mustBeTransitionedAndContainedBy(String element, String referencedElement,
+      EStructuralFeature feature) {
     EObject source = getObject(element);
     EObject tSource = getAllocatingElement(source);
     EObject target = getObject(referencedElement);
@@ -183,7 +197,7 @@ public abstract class TransitionTestCase extends BasicCommandTestCase {
     testReferenceLinked(tTarget, tSource, feature);
     return source;
   }
-  
+
   public EObject mustBeTransitionedAndLinkedToTransitioned(String id, String id2, EStructuralFeature feature) {
     EObject source = getObject(id);
     EObject tSource = getAllocatingElement(source);
@@ -204,11 +218,11 @@ public abstract class TransitionTestCase extends BasicCommandTestCase {
   }
 
   public EObject mustBeTransitionedAndNotLinkedToTransitioned(String id, String id2, EStructuralFeature feature) {
-    EObject source = getObject(id);
-    EObject tSource = getAllocatingElement(source);
+    TraceableElement source = getObject(id);
+    EObject tSource = ProjectionTestUtils.getAllocatingElement(source);
 
-    EObject target = getObject(id2);
-    EObject tTarget = getAllocatingElement(target);
+    TraceableElement target = getObject(id2);
+    EObject tTarget = ProjectionTestUtils.getAllocatingElement(target);
 
     testReferenceNotLinked(tSource, tTarget, feature);
     return source;
@@ -251,6 +265,19 @@ public abstract class TransitionTestCase extends BasicCommandTestCase {
     return a4t;
   }
 
+  protected EObject mustBeTransitionedDirecltyContainedBy(String id, EObject container) {
+    TraceableElement a4 = getObject(id);
+    String name = EObjectLabelProviderHelper.getText(a4);
+    assertNotNull(NLS.bind(Messages.NullElement, name), a4);
+    EObject a4t = getAllocatingElement(a4);
+    String namet = a4 instanceof NamedElement ? ((NamedElement) a4).getName() : name + "t"; //$NON-NLS-1$
+    assertNotNull(NLS.bind(Messages.ShouldBeTransitioned, namet), a4t);
+    String containerName = (container instanceof AbstractNamedElement ? ((AbstractNamedElement) container).getName()
+        : container.eClass().getName());
+    assertTrue(NLS.bind(Messages.ShouldBeContainedBy, namet, containerName), a4t.eContainer() == container);
+    return a4t;
+  }
+
   protected EObject mustBeTransitionedIndirecltyContainedBy(String id, EObject container) {
     EObject a4 = getObject(id);
     String name = EObjectLabelProviderHelper.getText(a4);
@@ -258,8 +285,10 @@ public abstract class TransitionTestCase extends BasicCommandTestCase {
     EObject a4t = getAllocatingElement(a4);
     String namet = name + "t"; //$NON-NLS-1$
     assertNotNull(NLS.bind(Messages.ShouldBeTransitioned, namet), a4t);
-    String containerName = (container instanceof AbstractNamedElement ? ((AbstractNamedElement) container).getName() : container.eClass().getName());
-    assertTrue(NLS.bind(Messages.ShouldBeContainedBy, namet, containerName), EcoreUtil2.isOrIsContainedBy(a4t, container));
+    String containerName = (container instanceof AbstractNamedElement ? ((AbstractNamedElement) container).getName()
+        : container.eClass().getName());
+    assertTrue(NLS.bind(Messages.ShouldBeContainedBy, namet, containerName),
+        EcoreUtil2.isOrIsContainedBy(a4t, container));
     return a4t;
   }
 
@@ -270,7 +299,8 @@ public abstract class TransitionTestCase extends BasicCommandTestCase {
     EObject a4t = getAllocatingElement(a4);
     String namet = name + "t"; //$NON-NLS-1$
     assertNotNull(NLS.bind(Messages.ShouldBeTransitioned, namet), a4t);
-    String containerName = (container instanceof AbstractNamedElement ? ((AbstractNamedElement) container).getName() : container.eClass().getName());
+    String containerName = (container instanceof AbstractNamedElement ? ((AbstractNamedElement) container).getName()
+        : container.eClass().getName());
     assertTrue(NLS.bind(Messages.ShouldBeContainedBy, namet, containerName), a4t.eContainer() == container);
     return a4t;
   }
@@ -294,7 +324,9 @@ public abstract class TransitionTestCase extends BasicCommandTestCase {
         assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, reference.getName(), sourceRef), targetRef == null);
 
       } else if ((sourceRef instanceof List<?>) && (targetRef instanceof List<?>)) {
-        assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, reference.getName(), ICommonConstants.EMPTY_STRING + ((List<?>) sourceRef).size()),
+        assertTrue(
+            NLS.bind(Messages.ShouldBeEqualsTo, reference.getName(),
+                ICommonConstants.EMPTY_STRING + ((List<?>) sourceRef).size()),
             ((List<?>) sourceRef).size() == ((List<?>) targetRef).size());
 
       } else {
@@ -311,11 +343,11 @@ public abstract class TransitionTestCase extends BasicCommandTestCase {
     String namet = name + "t"; //$NON-NLS-1$
     for (EObject a4t : getAllocatingElements(lc1)) {
       if (clazz.isInstance(a4t)) {
-        assertTrue(NLS.bind(Messages.ShouldBeInstanceof, namet), true);
+        assertTrue(NLS.bind(Messages.ShouldBeInstanceof, namet, clazz.getName()), true);
         return a4t;
       }
     }
-    assertTrue(NLS.bind(Messages.ShouldBeInstanceof, namet), false);
+    assertTrue(NLS.bind(Messages.ShouldBeInstanceof, namet, clazz.getName()), false);
     return null;
   }
 
@@ -328,7 +360,8 @@ public abstract class TransitionTestCase extends BasicCommandTestCase {
       if (clazz.isInstance(a4t)) {
         assertTrue(NLS.bind(Messages.ShouldBeInstanceof, namet), true);
 
-        String containerName = (container instanceof AbstractNamedElement ? ((AbstractNamedElement) container).getName() : container.eClass().getName());
+        String containerName = (container instanceof AbstractNamedElement ? ((AbstractNamedElement) container).getName()
+            : container.eClass().getName());
         if (EcoreUtil2.isOrIsContainedBy(a4t, container)) {
           assertTrue(NLS.bind(Messages.ShouldBeContainedBy, namet, containerName), true);
         }
@@ -356,7 +389,7 @@ public abstract class TransitionTestCase extends BasicCommandTestCase {
     T a5 = getObject(id);
     String name = EObjectLabelProviderHelper.getText(a5);
     assertNotNull(NLS.bind(Messages.NullElement, name), a5);
-    EObject a5t = getAllocatingElement(a5);
+    EObject a5t = checkNoElementAllocated(a5);
     String namet = name + "t"; //$NON-NLS-1$
     assertNull(NLS.bind(Messages.ShouldNotBeTransitioned, namet), a5t);
     return a5;
@@ -383,12 +416,38 @@ public abstract class TransitionTestCase extends BasicCommandTestCase {
     assertNotNull(NLS.bind(Messages.NullElement, name), lc1);
     String namet = name + "t"; //$NON-NLS-1$
     for (EObject a4t : getAllocatingElements(lc1)) {
-      String containerName = (container instanceof AbstractNamedElement ? ((AbstractNamedElement) container).getName() : container.eClass().getName());
-      assertTrue(NLS.bind(Messages.ShouldNotBeTransitionedInto, namet, containerName), !EcoreUtil2.isOrIsContainedBy(a4t, container));
+      String containerName = (container instanceof AbstractNamedElement ? ((AbstractNamedElement) container).getName()
+          : container.eClass().getName());
+      assertTrue(NLS.bind(Messages.ShouldNotBeTransitionedInto, namet, containerName),
+          !EcoreUtil2.isOrIsContainedBy(a4t, container));
     }
 
     return null;
   }
   
+  protected boolean shouldAllocate(Interface itf, ExchangeItem item) {
+
+    for (ExchangeItemAllocation a5t : itf.getOwnedExchangeItemAllocations()) {
+      if (item.equals(a5t.getAllocatedItem())) {
+        assertTrue(NLS.bind(Messages.ShouldAllocateEI, item.getName()), true);
+        return true;
+      }
+    }
+
+    assertTrue(NLS.bind(Messages.ShouldAllocateEI, item.getName()), false);
+    return false;
+  }
+
+  protected EObject mustBeTransitionedDirecltyContainedBy(String name, String id, EObject container) {
+    TraceableElement a4 = getObject(id);
+    assertNotNull(NLS.bind(Messages.NullElement, name), a4);
+    EObject a4t = ProjectionTestUtils.getAllocatingElement(a4);
+    String namet = a4 instanceof NamedElement ? ((NamedElement) a4).getName() : name + "t"; //$NON-NLS-1$
+    assertNotNull(NLS.bind(Messages.ShouldBeTransitioned, namet), a4t);
+    String containerName = (container instanceof AbstractNamedElement ? ((AbstractNamedElement) container).getName()
+        : container.eClass().getName());
+    assertTrue(NLS.bind(Messages.ShouldBeContainedBy, namet, containerName), a4t.eContainer() == container);
+    return a4t;
+  }
 
 }
