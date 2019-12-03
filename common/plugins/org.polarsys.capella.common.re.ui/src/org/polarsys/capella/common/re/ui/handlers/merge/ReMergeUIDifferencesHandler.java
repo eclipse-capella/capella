@@ -13,6 +13,7 @@ package org.polarsys.capella.common.re.ui.handlers.merge;
 
 import org.eclipse.emf.diffmerge.ui.util.DiffMergeDialog;
 import org.eclipse.emf.diffmerge.ui.viewers.DefaultUserProperties;
+import org.eclipse.emf.diffmerge.ui.viewers.EMFDiffNode;
 import org.eclipse.swt.widgets.Display;
 import org.polarsys.capella.core.transition.common.ui.dialogs.TransitionDiffMergeDialog;
 import org.polarsys.capella.core.transition.common.ui.handlers.merge.MergeEMFDiffNode;
@@ -22,10 +23,9 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class ReMergeUIDifferencesHandler extends MergeUIDifferencesHandler {
 
   @Override
-  protected MergeEMFDiffNode createDiffNode(IContext context) {
-    MergeEMFDiffNode diffNode = super.createDiffNode(context);
+  protected void registerUserProperties(EMFDiffNode diffNode) {
+    super.registerUserProperties(diffNode);
     diffNode.setUserPropertyValue(DefaultUserProperties.P_DEFAULT_INCREMENTAL_MODE, false);
-    return diffNode;
   }
 
   @Override
