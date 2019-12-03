@@ -14,6 +14,7 @@ import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.ui.EMFDiffMergeUIPlugin;
 import org.eclipse.emf.diffmerge.ui.viewers.EMFDiffNode;
 import org.eclipse.emf.diffmerge.ui.viewers.IDifferenceCategory;
+import org.eclipse.emf.diffmerge.ui.viewers.IDifferenceCategorySet;
 import org.eclipse.emf.diffmerge.ui.viewers.categories.AbstractDifferenceCategory;
 import org.eclipse.emf.diffmerge.ui.viewers.categories.AbstractDifferenceCategoryItem;
 import org.eclipse.swt.graphics.Image;
@@ -27,6 +28,11 @@ public class DiffCategoryProxy extends AbstractDifferenceCategoryItem implements
     this.item = item;
   }
 
+  @Override
+  public void setParent(IDifferenceCategorySet parent_p) {
+    super.setParent(parent_p);
+  }
+  
   @Override
   public boolean covers(IDifference difference, EMFDiffNode node) {
     return item.covers(difference);
