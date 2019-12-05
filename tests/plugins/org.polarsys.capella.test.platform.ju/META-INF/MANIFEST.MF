@@ -15,6 +15,7 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.common.ui.toolkit.browser,
  org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.polarsys.capella.core.platform.sirius.ui.perspective,
+ org.polarsys.capella.core.transition.system.ui,
  org.eclipse.ui.workbench
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
