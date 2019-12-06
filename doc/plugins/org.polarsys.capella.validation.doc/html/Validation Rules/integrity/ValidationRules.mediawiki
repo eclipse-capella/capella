@@ -268,3 +268,31 @@ In Case the ComponentExchange is of kind DELEGATION
 |-
 | colspan="2"|Checks if a Component realizes other Components with HUMAN different by its own.
 |}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/warning.gif|WARNING]]
+|I_43 - Catalog Element Link shall not reference to aird element 
+|-
+| colspan="2"|Element references aird element (e.g. gmf)
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/warning.gif|WARNING]]
+|I_44 - Logical Actor Realization 
+|-
+| colspan="2"|This rule Ensures that Logical Actor always realizes a System Actor.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/error.gif|ERROR]]
+|I_45 - Function Realization 
+|-
+| colspan="2"|This test checks the realization consistency between root functions.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../Images/warning.gif|WARNING]]
+|I_46 - Logical Component Realization 
+|-
+| colspan="2"|This rule Ensures that Logical Component always realizes a System Component.
+|}

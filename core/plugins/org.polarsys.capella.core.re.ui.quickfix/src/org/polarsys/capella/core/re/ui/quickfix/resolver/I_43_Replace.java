@@ -54,14 +54,4 @@ public class I_43_Replace extends AbstractCapellaMarkerResolution {
     return !modelElements.isEmpty() ? modelElements.get(0) : null;
   }
 
-  private void deleteMarker(IMarker marker) {
-    // delete marker
-    try {
-      marker.delete();
-    } catch (CoreException exception) {
-      StatusManager.getManager().handle(
-          new Status(IStatus.ERROR, PluginActivator.getDefault().getPluginId(), exception.getMessage(), exception));
-    }
-  }
-
 }

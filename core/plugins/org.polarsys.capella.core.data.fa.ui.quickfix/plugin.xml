@@ -296,6 +296,14 @@
                     ruleId="I_26">
               </rules>
            </resolver>
+           <resolver
+                 class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.I_45_Resolver"
+                 desc="%quickFix.I_45.desc"
+                 label="%quickFix.I_45.label">
+              <rules
+                    ruleId="I_45">
+              </rules>
+           </resolver>
    </extension>
    <extension
          point="org.eclipse.ui.ide.markerResolution">
