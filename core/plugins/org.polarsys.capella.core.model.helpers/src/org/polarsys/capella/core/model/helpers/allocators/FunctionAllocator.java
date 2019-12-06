@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,10 +8,10 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.model.helpers;
+package org.polarsys.capella.core.model.helpers.allocators;
 
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
@@ -38,14 +38,12 @@ import org.polarsys.capella.core.data.fa.FaFactory;
  * if you want, but you don't want that.
  *
  *
- * @deprecated use {@link org.polarsys.capella.core.model.helpers.allocators.Allocators Allocators}
  */
-@Deprecated
 public class FunctionAllocator {
 
-  private final Collection<AbstractFunction> allocations;
+  private final Collection<? extends AbstractFunction> allocations;
 
-  private FunctionAllocator(Collection<AbstractFunction> eia){
+  FunctionAllocator(Collection<? extends AbstractFunction> eia){
     allocations = eia;
   }
 
@@ -61,12 +59,12 @@ public class FunctionAllocator {
     return this;
   }
 
-  public static FunctionAllocator allocate(AbstractFunction f){
-    return allocate(Collections.singleton(f));
+  public static FunctionAllocator allocate(Collection<? extends AbstractFunction> functs){
+    return new FunctionAllocator(functs);
   }
 
-  public static FunctionAllocator allocate(Collection<AbstractFunction> functions){
-    return new FunctionAllocator(functions);
+  public static FunctionAllocator allocate(AbstractFunction...abstractFunctions) {
+    return new FunctionAllocator(Arrays.asList(abstractFunctions));
   }
 
 }

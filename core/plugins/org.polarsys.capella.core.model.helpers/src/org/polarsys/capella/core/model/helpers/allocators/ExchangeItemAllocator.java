@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,9 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.model.helpers;
+package org.polarsys.capella.core.model.helpers.allocators;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -44,15 +45,13 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
  * are also allocated automagically on the connected function ports. This
  * can be turned off by using the two argument factory methods, passing <code>false</code>
  * as the second parameter.
- * @deprecated use {@link org.polarsys.capella.core.model.helpers.allocators.Allocators Allocators}
  */
-@Deprecated 
 public class ExchangeItemAllocator {
 
-  private final Collection<ExchangeItem> allocations;
+  private final Collection<? extends ExchangeItem> allocations;
   private final boolean propagateToFunctionPorts;
 
-  private ExchangeItemAllocator(Collection<ExchangeItem> eia, boolean propagateToFunctionPorts){
+  ExchangeItemAllocator(Collection<? extends ExchangeItem> eia, boolean propagateToFunctionPorts){
     allocations = eia;
     this.propagateToFunctionPorts = propagateToFunctionPorts;
   }
@@ -132,11 +131,15 @@ public class ExchangeItemAllocator {
     return this;
   }
 
-  public static ExchangeItemAllocator allocate(ExchangeItem exchangeItem){
-    return allocate(Collections.singleton(exchangeItem));
+  public static ExchangeItemAllocator allocate(ExchangeItem ei){
+    return allocate(Collections.singleton(ei));
   }
 
-  public static ExchangeItemAllocator allocate(Collection<ExchangeItem> exchangeItems){
+  public static ExchangeItemAllocator allocate(ExchangeItem ...exchangeItems) {
+    return allocate(Arrays.asList(exchangeItems), true);
+  }
+
+  public static ExchangeItemAllocator allocate(Collection<? extends ExchangeItem> exchangeItems){
     return allocate(exchangeItems, true);
   }
 
@@ -144,7 +147,7 @@ public class ExchangeItemAllocator {
     return allocate(Collections.singleton(exchangeItem), propagateToFunctionPorts);
   }
 
-  public static ExchangeItemAllocator allocate(Collection<ExchangeItem> exchangeItems, boolean propagateToFunctionPorts){
+  public static ExchangeItemAllocator allocate(Collection<? extends ExchangeItem> exchangeItems, boolean propagateToFunctionPorts){
     return new ExchangeItemAllocator(exchangeItems, propagateToFunctionPorts);
   }
 
