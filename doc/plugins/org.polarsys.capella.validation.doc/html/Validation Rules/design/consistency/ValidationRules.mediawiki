@@ -49,3 +49,10 @@
 |-
 | colspan="2"|This rule checks if a RPL references an element which is also referenced by its REC
 |}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../Images/error.gif|ERROR]]
+|DCON_08 - REC/RPL detect no source no target 
+|-
+| colspan="2"|REC_RPL no target or no source
+|}

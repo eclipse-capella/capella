@@ -31,6 +31,7 @@ public class TCDCRulesTestSuite extends BasicTestSuite {
   /**
    * @see org.polarsys.capella.test.framework.api.BasicTestSuite#getTests()
    */
+  @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new Rule_TC_DC_01());
@@ -41,11 +42,17 @@ public class TCDCRulesTestSuite extends BasicTestSuite {
     tests.add(new Rule_TC_DC_06());
     tests.add(new Rule_TC_DC_07());
     tests.add(new Rule_TC_DC_08());
+    tests.add(new Rule_TC_DC_09());
+    tests.add(new Rule_TC_DC_10());
+    tests.add(new Rule_TC_DC_11());
+    tests.add(new Rule_TC_DC_12());
+    tests.add(new Rule_TC_DC_13());
+    tests.add(new Rule_TC_DC_14());
     return tests;
   }
 
   @Override
-  public List<String> getRequiredTestModels() {   
-    return Arrays.asList(new String [] {"RulesOnTransitionTest"});  //$NON-NLS-1$
+  public List<String> getRequiredTestModels() {
+    return Arrays.asList(new String[] { "RulesOnTransitionTest" }); //$NON-NLS-1$
   }
 }

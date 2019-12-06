@@ -61,7 +61,8 @@ public class DWF_DF_16_Resolver extends AbstractCapellaMarkerResolution {
     }
   }
 
-  private void deleteMarker(IMarker marker) {
+  @Override
+  protected void deleteMarker(IMarker marker) {
     // delete marker
     try {
       marker.delete();

@@ -217,7 +217,7 @@
 				<td colspan="2">This rule raises a warning if a Component Exchange is linked between two internal components. These components can be directly connected, only if the ports are delegated throughout the owning components which are connected by another Component Exchange.</td>
 			</tr>
 		</table>
-	    <p>
+		<p>
 			<br/>
 		</p>
 		<table class="VALIDATION-RULE">
@@ -225,7 +225,7 @@
 				<th>
 					<img title="ERROR" alt="ERROR" border="0" src="../../../../Images/error.gif"/>
 				</th>
-				<td>DWF_DC_17 - Component self generalization </td>
+				<td>DWF_DC_17 - Component self generalization not allowed </td>
 			</tr>
 			<tr>
 				<td colspan="2">This rule ensures that a Component cannot generalize itself.</td>
@@ -575,6 +575,20 @@
 			</tr>
 			<tr>
 				<td colspan="2">This rule ensures that a component is always referenced by at least one part.</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+		</p>
+		<table class="VALIDATION-RULE">
+			<tr>
+				<th>
+					<img title="WARNING" alt="WARNING" border="0" src="../../../../Images/warning.gif"/>
+				</th>
+				<td>DWF_DC_43 - Component Exchange has an UNSET Kind </td>
+			</tr>
+			<tr>
+				<td colspan="2">Check if the Component Exchange has an UNSET kind.</td>
 			</tr>
 		</table>
 	</body>

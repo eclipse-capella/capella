@@ -17,12 +17,17 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.resources.IMarker;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.ui.statushandlers.StatusManager;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.ReportMarkerResolution;
+import org.polarsys.capella.core.validation.ui.ide.PluginActivator;
 import org.polarsys.capella.core.validation.ui.ide.internal.quickfix.MarkerResolutionCache;
 
 abstract public class AbstractCapellaMarkerResolution extends ReportMarkerResolution {
@@ -94,8 +99,8 @@ abstract public class AbstractCapellaMarkerResolution extends ReportMarkerResolu
 
   @Override
   /**
-   * Subclasses may override if the default mechanism via canResolve/getResolvableRuleIds is not applicable for this resolution.
-   * {@inheritDoc}
+   * Subclasses may override if the default mechanism via canResolve/getResolvableRuleIds is not applicable for this
+   * resolution. {@inheritDoc}
    */
   public IMarker[] findOtherMarkers(IMarker[] markers) {
 
@@ -167,5 +172,15 @@ abstract public class AbstractCapellaMarkerResolution extends ReportMarkerResolu
   public boolean isMultipleMarkersResolver() {
     return !(getResolvableRuleIds().length == noRuleIds.length);
 
+  }
+
+  protected void deleteMarker(IMarker marker) {
+    // delete marker
+    try {
+      marker.delete();
+    } catch (CoreException exception) {
+      StatusManager.getManager().handle(
+          new Status(IStatus.ERROR, PluginActivator.getDefault().getPluginId(), exception.getMessage(), exception));
+    }
   }
 }
