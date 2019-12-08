@@ -96,6 +96,19 @@ public class CapellaAdapterHelper {
   }
 
   /**
+   * This method returns the list of descriptor or business objects from the given objects.
+   * 
+   * @param objects
+   * @return
+   */
+  public static Collection<EObject> resolveDescriptorsOrBusinessObjects(Collection<?> objects) {
+    return objects.stream() //
+        .map(CapellaAdapterHelper::resolveDescriptorOrBusinessObject) //
+        .filter(Objects::nonNull) //
+        .collect(Collectors.toList());
+  }
+
+  /**
    * This method returns the list of EObject from the given objects.
    */
   public static Collection<EObject> resolveEObjects(Collection<?> objects, boolean onlySemantic, boolean onlyBusiness) {
@@ -123,7 +136,7 @@ public class CapellaAdapterHelper {
 
     adapt = Adapters.adapt(object, EObject.class, true);
     if (adapt instanceof EObject) {
-      result = (EObject) adapt;
+      result = adapt;
     }
     if (onlySemantic) {
       if (result instanceof DSemanticDecorator) {
@@ -138,14 +151,13 @@ public class CapellaAdapterHelper {
       } else {
         adapt = Adapters.adapt(object, Element.class, true);
       }
-      
+
       if (adapt instanceof Element) {
-        result = (Element) adapt;
+        result = adapt;
       }
       if (result instanceof Element) {
         // null can happen when we try to adapt a non semantic element (notes, text, ...)
-        if (!((object instanceof Project || null != ((EObject) result).eContainer())
-            && (null != ((EObject) result).eResource()))) {
+        if (!((object instanceof Project || null != result.eContainer()) && (null != result.eResource()))) {
           // null can happen when a diagram shows a deleted element
           return null;
         }

@@ -5,7 +5,9 @@ Bundle-SymbolicName: org.polarsys.capella.common.ui.massactions;singleton:=true
 Bundle-Version: 1.4.0.qualifier
 Require-Bundle: org.polarsys.kitalpha.massactions;visibility:=reexport,
  org.polarsys.capella.common.ui.massactions.core,
- org.eclipse.sirius.diagram.ui
+ org.eclipse.sirius.diagram.ui,
+ org.polarsys.capella.core.linkedtext.ui,
+ org.polarsys.capella.common.linkedtext.ui;bundle-version="1.4.0"
 Bundle-Activator: org.polarsys.capella.common.ui.massactions.activator.MACapellaActivator
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
