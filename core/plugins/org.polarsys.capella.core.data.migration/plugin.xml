@@ -172,6 +172,9 @@
        <migrationContribution
             class="org.polarsys.capella.core.data.migration.aird.FilterMigrationContribution">
       </migrationContribution>
+       <migrationContribution
+             class="org.polarsys.capella.core.data.migration.capella.InvalidAirdReferenceMigrationContribution">
+       </migrationContribution>
    </extension>
    
    
