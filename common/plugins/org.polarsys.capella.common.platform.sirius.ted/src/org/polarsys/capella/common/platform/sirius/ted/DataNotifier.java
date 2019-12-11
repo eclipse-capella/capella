@@ -18,18 +18,21 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.ResourceSetChangeEvent;
+import org.eclipse.emf.transaction.ResourceSetListenerImpl;
+import org.eclipse.emf.transaction.RollbackException;
 
 /**
  * Provides EMF model notification with an unique adapter.<br>
@@ -57,7 +60,27 @@ import org.eclipse.emf.edit.domain.IEditingDomainProvider;
  * That does not apply to adapters registered for a class (until DataNotifier is garbage collected).
  * </p>
  */
-public class DataNotifier extends EContentAdapter implements IEditingDomainProvider {
+public class DataNotifier extends ResourceSetListenerImpl implements IEditingDomainProvider {
+
+  @Override
+  public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {
+    // Must copy Notifications, see ResourceSetChangeEvent doc
+    final List<Notification> notifications = new ArrayList<>(event.getNotifications());
+    return new RecordingCommand(event.getEditingDomain()) {
+      @Override
+      protected void doExecute() {
+        for (Notification n : notifications) {
+          notifyChanged(n);
+        }
+      }
+    };
+  }
+
+  @Override
+  public boolean isPrecommitOnly() {
+    return true;
+  }
+
   /**
    * Model element class to adapters.
    */
@@ -123,22 +146,8 @@ public class DataNotifier extends EContentAdapter implements IEditingDomainProvi
     adapters.add(adapter);
   }
 
-  /**
-   * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
-   */
-  @Override
-  public void notifyChanged(Notification notification) {
-    try {
-      super.notifyChanged(notification);
-    } catch (Exception exception) {
-	  PlatformSiriusTedActivator.getDefault().getLog().log(
-          new Status(IStatus.ERROR, PlatformSiriusTedActivator.getDefault().getPluginId(), exception.getMessage(), exception));
-      // TODO: must handle this case, ie. provide a CDO version adapted to CDO of DataNotifier.
-      // DataNotifier is instantiated by our SemanticResourceSet. there is already an extension point that allows to override the capella cross referencer.
-      // Must do the same thing here.
-      // In this state, it seems to turn approximately but I do not know the impacts.
-      // it is a simple POC version, to improve.
-    }
+
+  private void notifyChanged(Notification notification) {
     Object notifier = notification.getNotifier();
     Object oldValue = notification.getOldValue();
     Object newValue = notification.getNewValue();
@@ -304,17 +313,7 @@ public class DataNotifier extends EContentAdapter implements IEditingDomainProvi
     }
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
-  protected boolean resolve() {
-    if (SiriusSessionListener.isClosingSession(_editingDomain.get())) {
-      return false;
-    }
-    return super.resolve();
-  }
-  
   public EditingDomain getEditingDomain(){
 	  return _editingDomain.get();
   }

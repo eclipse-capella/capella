@@ -529,7 +529,7 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
       }
       // Add the famous and useful data notifier.
       dataNotifier = new DataNotifier(getEditingDomain());
-      eAdapters().add(dataNotifier);
+      ((TransactionalEditingDomain)getEditingDomain()).addResourceSetListener(dataNotifier);
     }
 
     /**
