@@ -57,6 +57,10 @@ import org.polarsys.capella.common.data.activity.ActivityNode;
  *         {@literal @}Surrogate(feature="incoming")
  *         pattern ActivityNode__incoming(self : ActivityNode, target : ActivityEdge) {
  *         	ActivityEdge.target(target, self);
+ *         } or {
+ *         	AbstractAction(self);
+ *         	AbstractAction.inputs(self, InputPort);
+ *         	ActivityNode.incoming(InputPort, target);
  *         }
  * </pre></code>
  * 
@@ -261,6 +265,10 @@ public final class ActivityNode__incoming extends BaseGeneratedEMFQuerySpecifica
    * {@literal @}Surrogate(feature="incoming")
    * pattern ActivityNode__incoming(self : ActivityNode, target : ActivityEdge) {
    * 	ActivityEdge.target(target, self);
+   * } or {
+   * 	AbstractAction(self);
+   * 	AbstractAction.inputs(self, InputPort);
+   * 	ActivityNode.incoming(InputPort, target);
    * }
    * </pre></code>
    * 
@@ -698,6 +706,33 @@ public final class ActivityNode__incoming extends BaseGeneratedEMFQuerySpecifica
           new TypeConstraint(body, Tuples.flatTupleOf(var_target, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/common/activity/1.4.0", "ActivityEdge", "target")));
           new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/activity/1.4.0", "ActivityNode")));
           new Equality(body, var__virtual_0_, var_self);
+          bodies.add(body);
+      }
+      {
+          PBody body = new PBody(this);
+          PVariable var_self = body.getOrCreateVariableByName("self");
+          PVariable var_target = body.getOrCreateVariableByName("target");
+          PVariable var_InputPort = body.getOrCreateVariableByName("InputPort");
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/activity/1.4.0", "ActivityNode")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/activity/1.4.0", "ActivityEdge")));
+          body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
+             new ExportedParameter(body, var_self, parameter_self),
+             new ExportedParameter(body, var_target, parameter_target)
+          ));
+          // 	AbstractAction(self)
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/activity/1.4.0", "AbstractAction")));
+          // 	AbstractAction.inputs(self, InputPort)
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/activity/1.4.0", "AbstractAction")));
+          PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/common/activity/1.4.0", "AbstractAction", "inputs")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/activity/1.4.0", "InputPin")));
+          new Equality(body, var__virtual_0_, var_InputPort);
+          // 	ActivityNode.incoming(InputPort, target)
+          new TypeConstraint(body, Tuples.flatTupleOf(var_InputPort), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/activity/1.4.0", "ActivityNode")));
+          PVariable var__virtual_1_ = body.getOrCreateVariableByName(".virtual{1}");
+          new TypeConstraint(body, Tuples.flatTupleOf(var_InputPort, var__virtual_1_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/common/activity/1.4.0", "ActivityNode", "incoming")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_1_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/activity/1.4.0", "ActivityEdge")));
+          new Equality(body, var__virtual_1_, var_target);
           bodies.add(body);
       }
       {
