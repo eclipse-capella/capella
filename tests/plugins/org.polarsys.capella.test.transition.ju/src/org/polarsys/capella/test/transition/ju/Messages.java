@@ -17,6 +17,7 @@ import org.eclipse.osgi.util.NLS;
 public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.test.transition.ju.messages"; //$NON-NLS-1$
 
+
   public static String FunctionalChainInvolvmentsCapabilities_01;
   public static String FunctionalChainInvolvmentsCapabilities_01_Desc;
   public static String FunctionalChainInvolvmentsCapabilities_02;
@@ -267,6 +268,19 @@ public class Messages extends NLS {
 
   public static String PropertyValuesParameter_10_1;
   public static String PropertyValuesParameter_10_1_Desc;
+
+  public static String ProjectionSizeError;
+  public static String RealizationError;
+  
+  public static String NullError;
+
+  public static String WrongParent;
+  public static String WrongSize;
+  public static String WrongValue;
+  public static String WrongType;
+  public static String WrongAllocation;
+  public static String WrongRealization;
+  public static String ErrorMessage;
 
   static {
     // initialize resource bundle
