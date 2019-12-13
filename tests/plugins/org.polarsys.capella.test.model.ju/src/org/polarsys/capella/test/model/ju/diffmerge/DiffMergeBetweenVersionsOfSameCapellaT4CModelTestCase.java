@@ -41,11 +41,21 @@ public class DiffMergeBetweenVersionsOfSameCapellaT4CModelTestCase extends DiffM
   }
 
   @Override
+  protected List<String> getTargetNoDiffList() {
+    return new ArrayList<String>();
+  }
+
+  @Override
   protected List<String> getReferenceDiffList() {
     return Arrays.asList(t4cPhysicalFunction1Id, t4cPhysicalFunction2Id, t4cFOP1PhysicalFunction1Id,
         t4cFIP1PhysicalFunction2Id, t4cFunctionalExchange1Id, t4cFunctionalChain1Id,
         t4cFunctionalChainInvolvementLinkId, t4cFunctionalChainInvolvementFunction1Id,
         t4cFunctionalChainInvolvementFunction2Id);
+  }
+
+  @Override
+  protected List<String> getReferenceNoDiffList() {
+    return new ArrayList<String>();
   }
 
   @Override

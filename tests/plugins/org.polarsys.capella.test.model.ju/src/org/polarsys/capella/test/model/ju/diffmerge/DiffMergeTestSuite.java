@@ -23,8 +23,8 @@ public class DiffMergeTestSuite extends BasicTestSuite {
 
   @Override
   public List<String> getRequiredTestModels() {
-    return Arrays.asList("DiffMergeSourcePrj", "DiffMergeSourceV1Prj", "DiffMergeSourceT4CPrj", "DiffMergeTargetPrj",
-        "CopyPasteTestCase_Lib");
+    return Arrays.asList("DiffMergeSourcePrj", "DiffMergeSourceV1Prj", "DiffMergeSourceT4CPrj", "test_B", "test_C",
+        "DiffMergeTargetPrj", "CopyPasteTestCase_Lib");
   }
 
   public static Test suite() {
@@ -36,6 +36,7 @@ public class DiffMergeTestSuite extends BasicTestSuite {
     List<BasicTestArtefact> tests = new ArrayList<>();
     tests.add(new DiffMergeBetweenVersionsOfSameModelTestCase());
     tests.add(new DiffMergeBetweenVersionsOfSameCapellaT4CModelTestCase());
+    tests.add(new DiffMergeBetweenSubsystemModels());
     tests.add(new TransferBetweenModelsCreatedIndepentlyTestCase());
     tests.add(new TransferOfElementsBetweenCapellaProjectAndLibTestCase());
     return tests;
