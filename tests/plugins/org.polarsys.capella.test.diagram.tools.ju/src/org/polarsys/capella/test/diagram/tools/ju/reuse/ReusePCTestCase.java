@@ -32,18 +32,17 @@ public class ReusePCTestCase extends ReuseOfComponentsProject {
     // Reuse PC Node
     diagram.reuseNodeComponent(diagramId, PA__NODE_PC_1);
     diagram.reuseNodeComponent(diagramId, PA__NODE_PC_1, PA__NODE_PC_2, PA__NODE_PC_3, PA__NODE_PC_3_1);
-    diagram.reuseNodeComponent(diagramId, PA__NODE_PC_1, PA__BEHAVIOR_PC_5);
+    diagram.reuseNodeComponent(diagramId, PA__NODE_PC_1);
+    diagram.cannotReuseNodeComponent(diagramId, PA__BEHAVIOR_PC_5);
 
     diagram.reuseNodeComponent(PA__PART_1_NODE_PC_1, PA__NODE_PC_2, PA__NODE_PC_3, PA__NODE_PC_3_1);
     diagram.reuseNodeComponent(PA__PART_2_NODE_PC_2, PA__NODE_PC_3, PA__NODE_PC_3_1);
 
-    diagram.reuseNodeComponent(PA__PART_3_NODE_PC_3, PA__NODE_PC_1, PA__NODE_PC_2, PA__NODE_PC_3_1);
-    diagram.reuseNodeComponent(PA__PART_1_NODE_PC_3_1, PA__NODE_PC_1, PA__NODE_PC_2);
-
     // Reuse PC Behavior
-    diagram.reuseComponent(PA__PART_4_BEHAVIOR_PC_5, PA__BEHAVIOR_PC_5_1, PA__BEHAVIOR_PC_6);
-    diagram.reuseComponent(PA__PART_1_BEHAVIOR_PC_5_1, PA__BEHAVIOR_PC_6);
-    diagram.reuseComponent(PA__PART_6_BEHAVIOR_PC_6, PA__BEHAVIOR_PC_5, PA__BEHAVIOR_PC_5_1);
+    diagram.reuseBehaviourComponent(diagramId, PA__BEHAVIOR_PC_5_1, PA__BEHAVIOR_PC_6);
+    diagram.reuseBehaviourComponent(diagramId, PA__BEHAVIOR_PC_6);
+    diagram.reuseBehaviourComponent(diagramId, PA__BEHAVIOR_PC_5, PA__BEHAVIOR_PC_5_1);
+    diagram.cannotReuseBehaviourComponent(diagramId, PA__NODE_PC_1);
 
     // show/hide reused PC Node components
     diagram.removeDeployedNodeComponent(PA__PART_2_NODE_PC_2, PA__PART_1_NODE_PC_1);
