@@ -263,7 +263,7 @@
         <repositoryList
             name="Oxygen">
           <repository
-              url="http://download.eclipse.org/sirius/updates/stable/6.1.3-S20190506-061916/oxygen"/>
+              url="http://download.eclipse.org/sirius/updates/stable/6.1.4-S20191212-030534/oxygen"/>
         </repositoryList>
       </targlet>
       <targlet
