@@ -12,148 +12,72 @@
 -->
 <plugin>
    <extension
-         point="org.eclipse.ui.menus">
-      <menuContribution
-            locationURI="popup:capella.project.explorer#PopupMenu?after=group.edit">
-         <command
-               commandId="org.polarsys.capella.core.ui.search.findreplace"
-               icon="icons/search.gif"
-               label="Search and replace"
-               style="push">
-            <visibleWhen
-                  checkEnabled="false">
-               <reference
-                     definitionId="org.polarsys.capella.core.ui.search.enableExpression">
-               </reference>
-            </visibleWhen>
-         </command>
-      </menuContribution>
-      <menuContribution
-            allPopups="false"
-            locationURI="toolbar:org.eclipse.ui.workbench.navigate?after=additions">
-         <command
-               commandId="org.polarsys.capella.core.ui.search.findreplace"
-               icon="icons/search.gif"
-               label="Search and replace"
-               style="push">
-            <visibleWhen
-                  checkEnabled="false">
-               <reference
-                     definitionId="org.polarsys.capella.core.ui.search.enableExpression">
-               </reference>
-            </visibleWhen>
-         </command>
-      </menuContribution>
+         point="org.eclipse.search.searchPages">
+      <page
+            class="org.polarsys.capella.core.ui.search.CapellaSearchPage"
+            icon="icons/search.gif"
+            id="org.polarsys.capella.core.ui.search.page"
+            label="Capella Search"
+            showScopeSection="true">
+      </page>
    </extension>
    <extension
-         point="org.eclipse.ui.handlers">
-      <handler
-            class="org.polarsys.capella.core.ui.search.handler.FindReplaceHandler"
-            commandId="org.polarsys.capella.core.ui.search.findreplace">
-         <enabledWhen>
-            <reference
-                  definitionId="org.polarsys.capella.core.ui.search.enableExpression">
-            </reference>
-         </enabledWhen>
-      </handler>
+         point="org.eclipse.search.searchResultViewPages">
+      <viewPage
+            class="org.polarsys.capella.core.ui.search.CapellaSearchResultPage"
+            icon="icons/search.gif"
+            id="org.polarsys.capella.core.ui.search.resultViewPage"
+            label="Capella Search Result"
+            searchResultClass="org.polarsys.capella.core.ui.search.CapellaSearchResult">
+      </viewPage>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.search.ui.views.SearchView?after=additions">
+         <separator
+               name="group.replace"
+               visible="true">
+         </separator>
+         <command
+               commandId="org.polarsys.capella.core.ui.search.commands.replaceSelected"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="activePart">
+                  <instanceof
+                        value="org.eclipse.search.ui.ISearchResultViewPart">
+                  </instanceof>
+               </with>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="org.polarsys.capella.core.ui.search.commands.replaceAll"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="activePart">
+                  <instanceof
+                        value="org.eclipse.search.ui.ISearchResultViewPart">
+                  </instanceof>
+               </with>
+            </visibleWhen>
+         </command>
+      </menuContribution>   
    </extension>
    <extension
          point="org.eclipse.ui.commands">
       <command
-            id="org.polarsys.capella.core.ui.search.findreplace"
-            name="Find and replace">
+            defaultHandler="org.polarsys.capella.core.ui.search.CapellaSearchResultPageHandlerReplaceSelected"
+            id="org.polarsys.capella.core.ui.search.commands.replaceSelected"
+            name="Replace Selected...">
+      </command>
+      <command
+            defaultHandler="org.polarsys.capella.core.ui.search.CapellaSearchResultPageHandlerReplaceAll"
+            id="org.polarsys.capella.core.ui.search.commands.replaceAll"
+            name="Replace All...">
       </command>
    </extension>
-   <extension
-         point="org.eclipse.ui.bindings">
-      <key
-            commandId="org.polarsys.capella.core.ui.search.findreplace"
-            schemeId="org.polarsys.capella.core.defaultAcceleratorConfiguration"
-            sequence="M1+M2+F">
-      </key>
-   </extension>
-   <extension
-         point="org.eclipse.core.expressions.definitions">
-      <definition
-            id="org.polarsys.capella.core.ui.search.searchableElement">
-         <with
-               variable="selection">
-            <or>
-               <and>
-                  <count
-                        value="1">
-                  </count>
-                  <iterate>
-                     <or>
-                        <instanceof
-                              value="org.polarsys.capella.common.data.modellingcore.ModelElement">
-                        </instanceof>
-                     </or>
-                  </iterate>
-               </and>
-               <and>
-                  <count
-                        value="1">
-                  </count>
-                  <iterate>
-                     <or>
-                        <instanceof
-                              value="org.polarsys.capella.common.re.ReNamedElement">
-                        </instanceof>
-                     </or>
-                  </iterate>
-               </and>
-            </or>
-         </with>
-      </definition>
-      <definition
-            id="CapellaCommonNavigatorIsEnabled">
-         <with
-               variable="activePart">
-            <instanceof
-                  value="org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator">
-            </instanceof>
-         </with>
-      </definition>
-      <definition
-            id="org.polarsys.capella.core.ui.search.excludedElement">
-         <with
-               variable="selection">
-            <or>
-               <and>
-                  <count
-                        value="1">
-                  </count>
-                  <iterate>
-                     <or>
-                        <instanceof
-                              value="org.polarsys.capella.core.data.capellacore.EnumerationPropertyType">
-                        </instanceof>
-                        <instanceof
-                              value="org.polarsys.capella.core.data.capellacore.KeyValue">
-                        </instanceof>
-                     </or>
-                  </iterate>
-               </and>
-            </or>
-         </with>
-      </definition>
-      <definition
-            id="org.polarsys.capella.core.ui.search.enableExpression">
-         <and>
-            <reference
-                  definitionId="org.polarsys.capella.core.ui.search.searchableElement">
-            </reference>
-            <reference
-                  definitionId="CapellaCommonNavigatorIsEnabled">
-            </reference>
-            <not>
-               <reference
-                     definitionId="org.polarsys.capella.core.ui.search.excludedElement">
-               </reference>
-            </not>
-         </and>
-      </definition>
-   </extension>
-
 </plugin>

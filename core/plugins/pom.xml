@@ -144,7 +144,8 @@
         <module>org.polarsys.capella.core.ui.reportlog</module>
         <module>org.polarsys.capella.core.ui.resources</module>
         <module>org.polarsys.capella.core.ui.search</module>
-        <module>org.polarsys.capella.core.ui.semantic.browser</module>
+ 
+       <module>org.polarsys.capella.core.ui.semantic.browser</module>
         <module>org.polarsys.capella.core.ui.semantic.browser.sirius</module>
         <module>org.polarsys.capella.core.ui.toolkit</module>
         <module>org.polarsys.capella.core.validation</module>
