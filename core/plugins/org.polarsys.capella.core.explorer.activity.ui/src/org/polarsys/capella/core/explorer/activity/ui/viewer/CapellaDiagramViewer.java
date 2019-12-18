@@ -178,8 +178,7 @@ public class CapellaDiagramViewer extends DiagramViewer {
 
   @Override
   protected IContentProvider getContentProvider() {
-    return new CapellaArchitectureContentProvider(((AbstractCapellaPage) page).getHandledViewpoint(),
-        ((AbstractCapellaPage) page).getFilteringMetaClassForCommonViewpoint());
+    return new CapellaArchitectureContentProvider(((AbstractCapellaPage) page).getFilteringMetaClassForCommonViewpoint());
   }
 
   @Override
