@@ -271,9 +271,9 @@ In Case the ComponentExchange is of kind DELEGATION
 <br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../Images/warning.gif|WARNING]]
-|I_43 - Catalog Element Link shall not reference to aird element 
+|I_43 - Model Element shall not reference to aird element 
 |-
-| colspan="2"|Element references aird element (e.g. gmf)
+| colspan="2"|This rule checks if a model Element references aird element (e.g. gmf)
 |}
 <br>
 {| class="VALIDATION-RULE"
