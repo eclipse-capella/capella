@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?NLS TYPE="org.eclipse.help.toc"?>
 <!--
-  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -12,50 +12,76 @@
 -->
 <toc label="Validation Rules" link_to="PLUGINS_ROOT/org.polarsys.capella.doc/toc.xml#validation" sort="true">
       <topic label="Design">
+         <topic href="html/Validation Rules/design/completeness/ValidationRules.html" label="Completeness"></topic>
+         <topic label="Consistency">
+			<topic href="html/Validation Rules/design/consistency/ValidationRules.html" label="Consistency"></topic>
+			<topic href="html/Validation Rules/design/consistency/compliance/ValidationRules.html" label="Compliance"></topic>
+		 </topic>
+		 <topic href="html/Validation Rules/design/coverage/ValidationRules.html" label="Coverage"></topic>
          <anchor id="design"/>
          <topic label="Well-formedness">
+            <topic href="html/Validation Rules/design/well-formedness/capabilities/ValidationRules.html" label="Capabilities"></topic>
+            <topic href="html/Validation Rules/design/well-formedness/components/ValidationRules.html" label="Components"></topic>
+            <topic href="html/Validation Rules/design/well-formedness/data/ValidationRules.html" label="Data"></topic>
+            <topic href="html/Validation Rules/design/well-formedness/dataflows/ValidationRules.html" label="Dataflows"></topic>
+            <topic href="html/Validation Rules/design/well-formedness/interfaces/ValidationRules.html" label="Interfaces"></topic>
+            <topic href="html/Validation Rules/design/well-formedness/scenarios/ValidationRules.html" label="Scenarios"></topic>
+            <topic href="html/Validation Rules/design/well-formedness/state_machines/ValidationRules.html" label="State Machines"></topic>
+            <topic href="html/Validation Rules/design/well-formedness/use_cases/ValidationRules.html" label="Use Cases"></topic>
             <anchor id="design-well"/>
          </topic>
       </topic>
       <topic label="Integrity">
+      	 <topic href="html/Validation Rules/integrity/ValidationRules.html" label="Integrity"></topic>
          <anchor id="integrity"/>
       </topic>
       <topic label="Quality">
+         <topic href="html/Validation Rules/quality/ValidationRules.html" label="Quality"></topic>
          <anchor id="quality"/>
       </topic>
       <topic label="Transition">
          <topic label="Consistency">
             <topic label="Components">
+               <topic href="html/Validation Rules/transition/consistency/components/ValidationRules.html" label="Components"></topic>
                <anchor id="transition-c-components"/>
             </topic>
             <topic label="Dataflows">
+               <topic href="html/Validation Rules/transition/consistency/dataflows/ValidationRules.html" label="Dataflows"></topic>
                <anchor id="transition-c-dataflows"/>
             </topic>
             <topic label="Interfaces">
+               <topic href="html/Validation Rules/transition/consistency/interfaces/ValidationRules.html" label="Interfaces"></topic>
                <anchor id="transition-c-interfaces"/>
             </topic>
             <topic label="Scenarios">
+               <topic href="html/Validation Rules/transition/consistency/scenarios/ValidationRules.html" label="Scenarios"></topic>
                <anchor id="transition-c-scenarios"/>
             </topic>
             <topic label="State Machines">
+               <topic href="html/Validation Rules/transition/consistency/state_machines/ValidationRules.html" label="State Machines"></topic>
                <anchor id="transition-c-statemachines"/>
             </topic>
          </topic>
          <topic label="Justification">
-            <topic label="EPBS">
-               <anchor id="transition-j-epbs"/>
-            </topic>
             <topic label="Generic">
+               <topic href="html/Validation Rules/transition/justification/generic/ValidationRules.html" label="Generic"></topic>
                <anchor id="transition-j-generic"/>
             </topic>
+            <topic label="System Analysis">
+               <topic href="html/Validation Rules/transition/justification/system_analysis/ValidationRules.html" label="System Analysis"></topic>
+               <anchor id="transition-j-sa"/>
+            </topic>
             <topic label="Logical Architecture">
+               <topic href="html/Validation Rules/transition/justification/logical_architecture/ValidationRules.html" label="Logical Architecture"></topic>
                <anchor id="transition-j-la"/>
             </topic>
             <topic label="Physical Architecture">
+               <topic href="html/Validation Rules/transition/justification/physical_architecture/ValidationRules.html" label="Physical Architecture"></topic>
                <anchor id="transition-j-pa"/>
             </topic>
-            <topic label="System Analysis">
-               <anchor id="transition-j-sa"/>
+            <topic label="EPBS">
+               <topic href="html/Validation Rules/transition/justification/epbs/ValidationRules.html" label="EPBS"></topic>
+               <anchor id="transition-j-epbs"/>
             </topic>
          </topic>
       </topic>
