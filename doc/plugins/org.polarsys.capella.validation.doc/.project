@@ -25,4 +25,10 @@
 		<nature>org.eclipse.pde.PluginNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<variableList>
+		<variable>
+			<name>projects</name>
+			<value>org.polarsys.capella.core.data.common.validation;org.polarsys.capella.core.data.core.validation;org.polarsys.capella.core.data.cs.validation;org.polarsys.capella.core.data.ctx.validation;org.polarsys.capella.core.data.epbs.validation;org.polarsys.capella.core.data.fa.validation;org.polarsys.capella.core.data.information.communication.validation;org.polarsys.capella.core.data.information.datatype.validation;org.polarsys.capella.core.data.information.validation;org.polarsys.capella.core.data.interaction.validation;org.polarsys.capella.core.data.la.validation;org.polarsys.capella.core.data.oa.validation;org.polarsys.capella.core.data.pa.deployment.validation;org.polarsys.capella.core.data.pa.validation;org.polarsys.capella.core.linkedtext.ui;org.polarsys.capella.core.platform.sirius.sirius.validation;org.polarsys.capella.core.projection.interfaces;org.polarsys.capella.core.re.validation;org.polarsys.capella.patterns</value>
+		</variable>
+	</variableList>
 </projectDescription>
