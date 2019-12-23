@@ -138,28 +138,8 @@
                </description>
             </constraint>
          </constraints>
-         <constraints
-               categories="capella.category/integrity">
-            <constraint
-                  class="org.polarsys.capella.core.re.validation.integrity.I_43_ReferencingToAnAirdElement"
-                  id="I_43"
-                  isEnabledByDefault="true"
-                  lang="Java"
-                  mode="Batch"
-                  name="I_43 - Model Element shall not reference to aird element"
-                  severity="WARNING"
-                  statusCode="1">
-               <message>
-                  {0} {1}references {2}.
-               </message>
-               <target
-                     class="EObject"></target>
-               <description>
-                  This rule checks if a model Element references aird element (e.g. gmf)
-               </description>
-            </constraint>
-         </constraints>
       </constraintProvider>
+      
       <constraintProvider>
          <package
                namespaceUri="*">
@@ -180,6 +160,33 @@
                </message>
                <description>
                   In live validation mode, the rule prevents all non REC conformant modifications on a RPL, with the exception that it is allowed to add realization links to RPL elements. In batch mode the rule verifies Blackbox compliance partially by checking that no external content was added to any of the validated RPLs elements (with the above mentioned exception for realization links).
+               </description>
+            </constraint>
+         </constraints>
+      </constraintProvider>
+      
+      <constraintProvider>
+         <package
+               namespaceUri="http://www.polarsys.org/kitalpha/emde/1.0.0">
+         </package>
+         <constraints
+               categories="capella.category/integrity">
+            <constraint
+                  class="org.polarsys.capella.core.re.validation.integrity.I_43_ReferencingToAnAirdElement"
+                  id="I_43"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_43 - Model Element shall not reference to aird element"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} {1}references {2}.
+               </message>
+               <target
+                     class="Element"></target>
+               <description>
+                  This rule checks if a model Element references aird element (e.g. gmf)
                </description>
             </constraint>
          </constraints>
