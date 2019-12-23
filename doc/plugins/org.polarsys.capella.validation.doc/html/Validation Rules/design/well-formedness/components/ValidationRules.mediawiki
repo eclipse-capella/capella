@@ -108,7 +108,7 @@
 <br>
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
-|DWF_DC_17 - Component self generalization 
+|DWF_DC_17 - Component self generalization not allowed 
 |-
 | colspan="2"|This rule ensures that a Component cannot generalize itself.
 |}
@@ -291,4 +291,11 @@ NodePC=Physical Component of nature NODE
 |DWF_DC_42 - Component with parts 
 |-
 | colspan="2"|This rule ensures that a component is always referenced by at least one part.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|DWF_DC_43 - Component Exchange has an UNSET Kind 
+|-
+| colspan="2"|Check if the Component Exchange has an UNSET kind.
 |}

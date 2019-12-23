@@ -9,7 +9,13 @@ Require-Bundle: org.polarsys.capella.core.validation.ui.ide,
  org.polarsys.capella.core.model.helpers,
  org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.polarsys.capella.core.platform.sirius.ui.actions,
- org.polarsys.capella.core.ui.properties
+ org.polarsys.capella.core.ui.properties,
+ org.eclipse.amalgam.explorer.activity.ui,
+ org.polarsys.capella.common.libraries.gen,
+ org.eclipse.ui.ide,
+ org.eclipse.pde.core,
+ org.polarsys.capella.common.libraries,
+ org.polarsys.capella.core.libraries
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

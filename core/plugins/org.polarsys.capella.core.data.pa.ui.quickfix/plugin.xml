@@ -67,7 +67,22 @@
                ruleId="DWF_DC_39">
          </rules>
       </resolver>
-      
+      <resolver
+            class="org.polarsys.capella.core.data.pa.ui.quickfix.resolver.PhysicalComponentRealizedLogicalComponentsResolver"
+            desc="%quickFix.TC_DC_14.desc"
+            label="%quickFix.TC_DC_14.label">
+         <rules
+               ruleId="TC_DC_14">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.data.pa.ui.quickfix.resolver.PhysicalArchitectureRealizedLogicalArchitectureResolver"
+            desc="%quickFix.TC_DC_11.desc"
+            label="%quickFix.TC_DC_11.label">
+         <rules
+               ruleId="TC_DC_11">
+         </rules>
+      </resolver>      
     </extension>  
     <extension
          point="org.eclipse.ui.ide.markerResolution">

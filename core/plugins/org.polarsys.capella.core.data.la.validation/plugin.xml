@@ -140,6 +140,28 @@
                </target>
             </constraint>
          </constraints>
+                  <constraints
+               categories="capella.category/transition/consistency/components">
+            <constraint
+                  class="org.polarsys.capella.core.data.la.validation.la.MDCHK_LogicalArchitecture_LaToSaRealization"
+                  id="TC_DC_10"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="TC_DC_10 - Logical Architecture Realization"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  Realization consistency error for {0}.
+               </message>
+               <description>
+                  The rule checks the realization consistency between logical architecture and system analysis. 
+               </description>
+               <target
+                     class="LogicalArchitecture">
+               </target>
+            </constraint>
+         </constraints>
          <constraints
                categories="capella.category/design/completeness">
             <constraint
@@ -239,6 +261,72 @@
                <target
                      class="LogicalComponent">
                </target>
+            </constraint>
+         </constraints>
+         <constraints
+               categories="capella.category/transition/consistency/components">
+            <constraint
+                  class="org.polarsys.capella.core.data.la.validation.logicalComponent.LogicalSystem_RealizedSystemSystem"
+                  id="TC_DC_13"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="TC_DC_13 - Root Logical Component Realization"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <target
+                     class="LogicalComponent">
+               </target>
+               <description>
+                 This rule Ensures that Root Logical Component always realizes a Root System Component.
+               </description>
+            </constraint>
+         </constraints>
+         <constraints
+               categories="capella.category/integrity">
+            <constraint
+                  class="org.polarsys.capella.core.data.la.validation.logicalComponent.LogicalComponent_RealizedSystemComponents"
+                  id="I_46"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_46 - Logical Component Realization"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <target
+                     class="LogicalComponent">
+               </target>
+               <description>
+                 This rule Ensures that Logical Component always realizes a System Component.
+               </description>
+            </constraint>
+         </constraints>
+         <constraints
+               categories="capella.category/integrity">
+            <constraint
+                  class="org.polarsys.capella.core.data.la.validation.logicalComponent.LogicalActor_RealizedSystemActor"
+                  id="I_44"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_44 - Logical Actor Realization"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <target
+                     class="LogicalComponent">
+               </target>
+               <description>
+                 This rule Ensures that Logical Actor always realizes a System Actor.
+               </description>
             </constraint>
          </constraints>
          <constraints
