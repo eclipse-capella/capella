@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.test.run;
 
+import org.apache.commons.lang.StringEscapeUtils;
+
 public class TestElement {
 
   private static final double ONE_SECOND = 1000.0;
@@ -60,7 +62,7 @@ public class TestElement {
   }
 
   public static String encode(String value) {
-    return value.replaceAll("\"", "'");
+    return StringEscapeUtils.escapeXml(value);
   }
 
   public void setParent(TestSuiteElement newParent) {
