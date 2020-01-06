@@ -10,10 +10,10 @@
  *******************************************************************************/
 package org.polarsys.capella.test.platform.ju.testcases;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -25,34 +25,56 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EReference;
+import org.osgi.framework.FrameworkUtil;
+import org.osgi.framework.Version;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 import org.polarsys.capella.test.framework.helpers.TestHelper;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 public class ViatraSurrogateAllDerivedFeaturesImplemented extends BasicTestCase {
+  public String BUILD_KEY;
+
+  protected void parseArgs() {
+    String[] args = Platform.getApplicationArgs();
+    for (int i = 0; i < args.length; i++) {
+      String currentArg = args[i];
+      if ("-buildKey".equalsIgnoreCase(currentArg))
+        BUILD_KEY = args[++i];
+    }
+  }
+
+  protected String getPluginXmlFilePath(String buildKey, String qualifier, String pluginName) {
+    return "jar:http://download.eclipse.org/capella/core/updates/nightly/" + buildKey
+        + "/org.polarsys.capella.rcp.site/plugins/" + pluginName + "_" + qualifier + ".jar!/plugin.xml";
+  }
 
   @Override
   public void test() throws Exception {
-    File testPluginFolder = getPluginFolder();
-    File capella = PlatformFilesHelper.findRootFolder(testPluginFolder);
-    File ext = PlatformFilesHelper.getSubFolder(capella, "ext");
-    File viatra = PlatformFilesHelper.getSubFolder(ext, "viatra");
-    File plugins = PlatformFilesHelper.getSubFolder(viatra, "plugins");
-    List<File> pluginXmlFiles = PlatformFilesHelper.getPluginXmlFiles(plugins);
-    List<SurrogateQuery> contributedSurrogateQueries = getContributedSurrogateQueries(pluginXmlFiles);
+    parseArgs();
+    Version version = FrameworkUtil.getBundle(getClass()).getVersion();
+    String commonDataPluginXmlContent = PlatformFilesHelper.loadFileContentFromURL(getPluginXmlFilePath(
+        BUILD_KEY, version.toString(), "org.polarsys.capella.viatra.common.data.gen"));
+    String commonRePluginXmlContent = PlatformFilesHelper.loadFileContentFromURL(getPluginXmlFilePath(
+        BUILD_KEY, version.toString(), "org.polarsys.capella.viatra.common.re.gen"));
+    String coreDataPluginXmlContent = PlatformFilesHelper.loadFileContentFromURL(getPluginXmlFilePath(
+        BUILD_KEY, version.toString(), "org.polarsys.capella.viatra.core.data.gen"));
+    List<String> pluginXmlContents = Arrays.asList(commonDataPluginXmlContent, commonRePluginXmlContent,
+        coreDataPluginXmlContent);
+    List<SurrogateQuery> contributedSurrogateQueries = getContributedSurrogateQueries(pluginXmlContents);
 
-		List<EReference> uncoveredReferences = new ArrayList<>();
-		for (EReference eReference : TestHelper.getAllCapellaDerivedReferences()) {
-			if (!PlatformFilesHelper.isIgnored(eReference)
-					&& !isReferenceCovered(eReference, contributedSurrogateQueries)) {
-				uncoveredReferences.add(eReference);
-			}
-		}
-		
+    List<EReference> uncoveredReferences = new ArrayList<>();
+    for (EReference eReference : TestHelper.getAllCapellaDerivedReferences()) {
+      if (!PlatformFilesHelper.isIgnored(eReference) && !isReferenceCovered(eReference, contributedSurrogateQueries)) {
+        uncoveredReferences.add(eReference);
+      }
+    }
+
     List<SurrogateQuery> redundantReferences = new ArrayList<>();
     for (SurrogateQuery query : contributedSurrogateQueries) {
       boolean usefulQuery = TestHelper.getAllCapellaDerivedReferences().stream()
@@ -84,17 +106,17 @@ public class ViatraSurrogateAllDerivedFeaturesImplemented extends BasicTestCase 
 
   /**
    * 
-   * @param pluginXmlFiles
+   * @param pluginXmlContents
    * @return the list of surrogate queries contributed via extensions
    */
-  private List<SurrogateQuery> getContributedSurrogateQueries(List<File> pluginXmlFiles) {
+  protected List<SurrogateQuery> getContributedSurrogateQueries(List<String> pluginXmlContents) {
     List<SurrogateQuery> surrogateQueries = new ArrayList<>();
 
-    for (File pluginXml : pluginXmlFiles) {
+    for (String pluginXmlContent : pluginXmlContents) {
       try {
         DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-        FileInputStream fis = new FileInputStream(pluginXml);
-        Document doc = docBuilder.parse(fis);
+        InputSource is = new InputSource(new StringReader(pluginXmlContent));
+        Document doc = docBuilder.parse(is);
 
         XPathFactory xPathFactory = XPathFactory.newInstance();
         XPath xpath = xPathFactory.newXPath();
@@ -124,7 +146,7 @@ public class ViatraSurrogateAllDerivedFeaturesImplemented extends BasicTestCase 
    * @param contributedSurrogateQueries
    * @return whether the reference is covered by a surrogate query
    */
-  private boolean isReferenceCovered(EReference reference, List<SurrogateQuery> contributedSurrogateQueries) {
+  protected boolean isReferenceCovered(EReference reference, List<SurrogateQuery> contributedSurrogateQueries) {
     for (SurrogateQuery query : contributedSurrogateQueries) {
       if (query.corresponds(reference))
         return true;

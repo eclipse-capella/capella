@@ -11,9 +11,13 @@
 
 package org.polarsys.capella.test.platform.ju.testcases;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -22,6 +26,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
@@ -166,5 +171,16 @@ public class PlatformFilesHelper {
       }
     }
     return files;
+  }
+  
+  public static String loadFileContentFromURL(String urlPath) throws IOException {
+    URL url = new URL(urlPath);
+    StringBuilder sb = new StringBuilder();
+    try (InputStream is = url.openStream(); BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
+      for (String line : br.lines().collect(Collectors.toList())) {
+        sb.append(line + "\n");
+      }
+    }
+    return sb.toString();
   }
 }
