@@ -19,7 +19,16 @@ import org.polarsys.capella.test.re.updateconnections.ju.UpdateConnectionsTest.L
 import org.polarsys.capella.test.re.updateconnections.ju.UpdateConnectionsTest.Multipart;
 import org.polarsys.capella.test.re.updateconnections.ju.UpdateConnectionsTest.Simple;
 
+import junit.framework.Test;
+
 public class UpdateConnectionsTestSuite extends BasicTestSuite {
+
+    /**
+     * Returns the suite. This is required to unary launch this test.
+     */
+    public static Test suite() {
+      return new UpdateConnectionsTestSuite();
+    }
 
     @Override
     protected List<BasicTestArtefact> getTests() {
