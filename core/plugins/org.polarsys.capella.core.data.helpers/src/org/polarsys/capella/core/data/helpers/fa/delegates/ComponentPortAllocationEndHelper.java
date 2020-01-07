@@ -35,7 +35,7 @@ public class ComponentPortAllocationEndHelper {
     Object ret = null;
 
     if (feature.equals(FaPackage.Literals.COMPONENT_PORT_ALLOCATION_END__OWNING_COMPONENT_PORT_ALLOCATION)) {
-      ret = getAllocatingPortAllocation(element);
+      ret = getOwningComponentPortAllocation(element);
     }
 
     // no helper found... searching in super classes...
@@ -46,7 +46,7 @@ public class ComponentPortAllocationEndHelper {
     return ret;
   }
 
-  private ComponentPortAllocation getAllocatingPortAllocation(ComponentPortAllocationEnd element) {
+  private ComponentPortAllocation getOwningComponentPortAllocation(ComponentPortAllocationEnd element) {
     EObject parent = element.eContainer();
     if (parent instanceof ComponentPortAllocation) {
       return (ComponentPortAllocation)parent;

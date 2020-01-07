@@ -50,13 +50,13 @@ public class ComponentExchangeHelper {
     Object ret = null;
 
     if (feature.equals(FaPackage.Literals.COMPONENT_EXCHANGE__ALLOCATED_FUNCTIONAL_EXCHANGES)) {
-      ret = getFunctionalExchanges(element);
+      ret = getAllocatedFunctionalExchanges(element);
     } else if (feature.equals(FaPackage.Literals.COMPONENT_EXCHANGE__INCOMING_COMPONENT_EXCHANGE_REALIZATIONS)) {
       ret = getIncomingComponentExchangeRealizations(element);
     } else if (feature.equals(FaPackage.Literals.COMPONENT_EXCHANGE__OUTGOING_COMPONENT_EXCHANGE_REALIZATIONS)) {
       ret = getOutgoingComponentExchangeRealizations(element);
     } else if (feature.equals(FaPackage.Literals.COMPONENT_EXCHANGE__OUTGOING_COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATIONS)) {
-      ret = getOutgoingComponentExchangeFunctionalExchangeRealizations(element);
+      ret = getOutgoingComponentExchangeFunctionalExchangeAllocations(element);
     } else if (feature.equals(FaPackage.Literals.COMPONENT_EXCHANGE__SOURCE_PART)) {
       ret = getSourcePart(element);
     } else if (feature.equals(FaPackage.Literals.COMPONENT_EXCHANGE__SOURCE_PORT)) {
@@ -113,7 +113,7 @@ public class ComponentExchangeHelper {
     return ret;
   }
 
-  protected List<FunctionalExchange> getFunctionalExchanges(ComponentExchange element) {
+  protected List<FunctionalExchange> getAllocatedFunctionalExchanges(ComponentExchange element) {
     List<FunctionalExchange> ret = new ArrayList<>();
     for (ComponentExchangeFunctionalExchangeAllocation item : element.getOutgoingComponentExchangeFunctionalExchangeAllocations()) {
       FunctionalExchange allocatedFunctionalExchange = item.getAllocatedFunctionalExchange();
@@ -124,7 +124,7 @@ public class ComponentExchangeHelper {
     return ret;
   }
 
-  protected List<ComponentExchangeFunctionalExchangeAllocation> getOutgoingComponentExchangeFunctionalExchangeRealizations(ComponentExchange element) {
+  protected List<ComponentExchangeFunctionalExchangeAllocation> getOutgoingComponentExchangeFunctionalExchangeAllocations(ComponentExchange element) {
     List<ComponentExchangeFunctionalExchangeAllocation> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof ComponentExchangeFunctionalExchangeAllocation) {

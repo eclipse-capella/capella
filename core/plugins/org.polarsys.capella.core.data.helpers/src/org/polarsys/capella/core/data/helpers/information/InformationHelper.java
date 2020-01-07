@@ -28,7 +28,7 @@ import org.polarsys.capella.core.data.helpers.information.delegates.AbstractColl
 import org.polarsys.capella.core.data.helpers.information.delegates.AbstractComplexValueHelper;
 import org.polarsys.capella.core.data.helpers.information.delegates.AbstractEnumerationValueHelper;
 import org.polarsys.capella.core.data.helpers.information.delegates.AbstractInstanceHelper;
-import org.polarsys.capella.core.data.helpers.information.delegates.AbstractNumericValueHelper;
+import org.polarsys.capella.core.data.helpers.information.delegates.NumericValueHelper;
 import org.polarsys.capella.core.data.helpers.information.delegates.AbstractStringValueHelper;
 import org.polarsys.capella.core.data.helpers.information.delegates.BinaryExpressionHelper;
 import org.polarsys.capella.core.data.helpers.information.delegates.ClassHelper;
@@ -155,7 +155,7 @@ public class InformationHelper implements IHelper {
     } else if (object instanceof AbstractEnumerationValue) {
       ret = AbstractEnumerationValueHelper.getInstance().doSwitch((AbstractEnumerationValue) object, feature);
     } else if (object instanceof NumericValue) {
-      ret = AbstractNumericValueHelper.getInstance().doSwitch((NumericValue) object, feature);
+      ret = NumericValueHelper.getInstance().doSwitch((NumericValue) object, feature);
     } else if (object instanceof AbstractStringValue) {
       ret = AbstractStringValueHelper.getInstance().doSwitch((AbstractStringValue) object, feature);
     } else if (object instanceof DataType) {

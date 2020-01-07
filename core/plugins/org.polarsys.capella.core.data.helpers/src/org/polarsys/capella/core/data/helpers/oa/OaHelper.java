@@ -24,7 +24,7 @@ import org.polarsys.capella.core.data.helpers.oa.delegates.ActivityAllocationHel
 import org.polarsys.capella.core.data.helpers.oa.delegates.CommunicationMeanHelper;
 import org.polarsys.capella.core.data.helpers.oa.delegates.EntityHelper;
 import org.polarsys.capella.core.data.helpers.oa.delegates.EntityOperationalCapabilityInvolvementHelper;
-import org.polarsys.capella.core.data.helpers.oa.delegates.OpAnalysisHelper;
+import org.polarsys.capella.core.data.helpers.oa.delegates.OperationalAnalysisHelper;
 import org.polarsys.capella.core.data.helpers.oa.delegates.OperationalActivityHelper;
 import org.polarsys.capella.core.data.helpers.oa.delegates.OperationalCapabilityHelper;
 import org.polarsys.capella.core.data.helpers.oa.delegates.OperationalProcessHelper;
@@ -60,14 +60,14 @@ import org.polarsys.capella.core.data.oa.RolePkg;
 import org.polarsys.capella.core.data.oa.Swimlane;
 
 
-public class OperationalAnalysisHelper implements IHelper {
+public class OaHelper implements IHelper {
 
 	public Object getValue(EObject object, EStructuralFeature feature, EAnnotation annotation) {
 
 		Object ret = null;
 		
 		if (object instanceof OperationalAnalysis) {
-			ret = OpAnalysisHelper.getInstance().doSwitch((OperationalAnalysis) object, feature);
+			ret = OperationalAnalysisHelper.getInstance().doSwitch((OperationalAnalysis) object, feature);
 		}
 		else if(object instanceof OperationalActivity){
 			ret = OperationalActivityHelper.getInstance().doSwitch((OperationalActivity) object, feature);

@@ -38,16 +38,16 @@ import org.polarsys.capella.core.data.helpers.ctx.delegates.CapabilityInvolvemen
 import org.polarsys.capella.core.data.helpers.ctx.delegates.MissionHelper;
 import org.polarsys.capella.core.data.helpers.ctx.delegates.MissionInvolvementHelper;
 import org.polarsys.capella.core.data.helpers.ctx.delegates.OperationalAnalysisRealizationHelper;
-import org.polarsys.capella.core.data.helpers.ctx.delegates.SysAnalysisHelper;
+import org.polarsys.capella.core.data.helpers.ctx.delegates.SystemAnalysisHelper;
 import org.polarsys.capella.core.data.helpers.ctx.delegates.SystemFunctionHelper;
 
-public class SystemAnalysisHelper implements IHelper {
+public class CtxHelper implements IHelper {
 
 	public Object getValue(EObject object, EStructuralFeature feature, EAnnotation annotation) {
 		Object ret = null;
 		
 		if (object instanceof SystemAnalysis) {
-			ret = SysAnalysisHelper.getInstance().doSwitch((SystemAnalysis) object, feature);
+			ret = SystemAnalysisHelper.getInstance().doSwitch((SystemAnalysis) object, feature);
 		}
 		else if (object instanceof Capability) {
 			ret = CapabilityHelper.getInstance().doSwitch((Capability) object, feature); 

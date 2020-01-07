@@ -70,9 +70,9 @@ public class AbstractCapabilityHelper {
     } else if (feature.equals(InteractionPackage.Literals.ABSTRACT_CAPABILITY__INVOLVED_FUNCTIONAL_CHAINS)) {
       ret = getInvolvedFunctionalChains(element);
     }else if (feature.equals(InteractionPackage.Literals.ABSTRACT_CAPABILITY__EXTENDING)) {
-      ret = getExtendings(element);
+      ret = getExtending(element);
     }else if (feature.equals(InteractionPackage.Literals.ABSTRACT_CAPABILITY__INCLUDING)) {
-      ret = getIncludings(element);
+      ret = getIncluding(element);
     }else if (feature.equals(InteractionPackage.Literals.ABSTRACT_CAPABILITY__SUB_GENERALIZATIONS)) {
       ret = getSubGeneralizations(element);
     }
@@ -92,11 +92,11 @@ public class AbstractCapabilityHelper {
 	  return EObjectExt.getReferencers(element, InteractionPackage.Literals.ABSTRACT_CAPABILITY_GENERALIZATION__SUPER);
   }
   
-  protected List<AbstractCapabilityInclude> getIncludings(AbstractCapability element){
+  protected List<AbstractCapabilityInclude> getIncluding(AbstractCapability element){
 	  return EObjectExt.getReferencers(element, InteractionPackage.Literals.ABSTRACT_CAPABILITY_INCLUDE__INCLUDED);
   }
   
-  protected List<AbstractCapabilityExtend> getExtendings(AbstractCapability element){
+  protected List<AbstractCapabilityExtend> getExtending(AbstractCapability element){
 	  return EObjectExt.getReferencers(element, InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTEND__EXTENDED);
   }
 

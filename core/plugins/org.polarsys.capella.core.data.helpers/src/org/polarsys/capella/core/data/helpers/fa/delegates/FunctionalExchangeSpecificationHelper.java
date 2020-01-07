@@ -38,7 +38,7 @@ public class FunctionalExchangeSpecificationHelper {
     Object ret = null;
 
     if (feature.equals(FaPackage.Literals.FUNCTIONAL_EXCHANGE_SPECIFICATION__FUNCTIONAL_EXCHANGES)) {
-      ret = getTransitions(element);
+      ret = getFunctionalExchanges(element);
     }
 
     // no helper found... searching in super classes...
@@ -49,7 +49,7 @@ public class FunctionalExchangeSpecificationHelper {
     return ret;
   }
 
-  protected List<FunctionalExchange> getTransitions(FunctionalExchangeSpecification element) {
+  protected List<FunctionalExchange> getFunctionalExchanges(FunctionalExchangeSpecification element) {
     List<FunctionalExchange> ret = new ArrayList<>();
 
     for (AbstractRelationship item : element.getRealizations()) {

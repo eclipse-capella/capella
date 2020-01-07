@@ -29,16 +29,16 @@ import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 
-public class SysAnalysisHelper {
-  private static SysAnalysisHelper instance;
+public class SystemAnalysisHelper {
+  private static SystemAnalysisHelper instance;
 
-  private SysAnalysisHelper() {
+  private SystemAnalysisHelper() {
     // do nothing
   }
 
-  public static SysAnalysisHelper getInstance() {
+  public static SystemAnalysisHelper getInstance() {
     if (instance == null)
-      instance = new SysAnalysisHelper();
+      instance = new SystemAnalysisHelper();
     return instance;
   }
 
