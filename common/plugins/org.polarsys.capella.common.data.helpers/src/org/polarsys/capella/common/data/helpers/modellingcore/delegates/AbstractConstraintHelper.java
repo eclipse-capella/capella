@@ -11,6 +11,7 @@
 
 package org.polarsys.capella.common.data.helpers.modellingcore.delegates;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.common.data.modellingcore.AbstractConstraint;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
@@ -28,12 +29,16 @@ public class AbstractConstraintHelper {
     Object ret = null;
 
     if (feature.equals(ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__CONTEXT)) {
-      ret = element.eContainer();
+      ret = getContext(element);
     } else {
       ret = ModelElementHelper.getInstance().doSwitch(element, feature);
     }
 
     return ret;
+  }
+  
+  protected EObject getContext(AbstractConstraint element) {
+    return element.eContainer();
   }
 
 }

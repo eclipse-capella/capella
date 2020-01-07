@@ -40,7 +40,7 @@ public class EntityOperationalCapabilityInvolvementHelper {
     if (feature.equals(OaPackage.Literals.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__ENTITY)) {
       ret = getEntity(element);
     } else if (feature.equals(OaPackage.Literals.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__CAPABILITY)) {
-      ret = getOperationalCapability(element);
+      ret = getCapability(element);
     }
 
     // no helper found... searching in super classes...
@@ -58,7 +58,7 @@ public class EntityOperationalCapabilityInvolvementHelper {
     return null;
   }
 
-  protected OperationalCapability getOperationalCapability(EntityOperationalCapabilityInvolvement element) {
+  protected OperationalCapability getCapability(EntityOperationalCapabilityInvolvement element) {
     InvolverElement elt = element.getInvolver();
     if (elt instanceof OperationalCapability)
       return (OperationalCapability) elt;

@@ -24,16 +24,16 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 
-public class AbstractRequirementHelper {
-	private static AbstractRequirementHelper instance;
+public class RequirementHelper {
+	private static RequirementHelper instance;
 
-	private AbstractRequirementHelper() {
+	private RequirementHelper() {
     // do nothing
 	}
 
-	public static AbstractRequirementHelper getInstance() {
+	public static RequirementHelper getInstance() {
 		if (instance == null)
-			instance = new AbstractRequirementHelper();
+			instance = new RequirementHelper();
 		return instance;
 	}
 

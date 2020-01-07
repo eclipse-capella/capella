@@ -29,16 +29,16 @@ import org.polarsys.capella.core.data.la.SystemAnalysisRealization;
 import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 
-public class LaArchitectureHelper {
-  private static LaArchitectureHelper instance;
+public class LogicalArchitectureHelper {
+  private static LogicalArchitectureHelper instance;
 
-  private LaArchitectureHelper() {
+  private LogicalArchitectureHelper() {
     // do nothing
   }
 
-  public static LaArchitectureHelper getInstance() {
+  public static LogicalArchitectureHelper getInstance() {
     if (instance == null)
-      instance = new LaArchitectureHelper();
+      instance = new LogicalArchitectureHelper();
     return instance;
   }
 

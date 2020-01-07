@@ -18,17 +18,17 @@ import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
 import org.polarsys.capella.core.data.information.datavalue.NumericValue;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 
-public class AbstractNumericValueHelper {
+public class NumericValueHelper {
 
-  private static AbstractNumericValueHelper instance;
+  private static NumericValueHelper instance;
 
-  private AbstractNumericValueHelper() {
+  private NumericValueHelper() {
     // do nothing
   }
 
-  public static AbstractNumericValueHelper getInstance() {
+  public static NumericValueHelper getInstance() {
     if (instance == null) {
-    	instance = new AbstractNumericValueHelper();
+    	instance = new NumericValueHelper();
     }
     return instance;
   }

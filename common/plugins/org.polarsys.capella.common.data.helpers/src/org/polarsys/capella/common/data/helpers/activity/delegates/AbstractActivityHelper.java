@@ -40,7 +40,7 @@ public class AbstractActivityHelper {
 		Object ret = null;
 		
 		if (feature.equals(ActivityPackage.Literals.ABSTRACT_ACTIVITY__OWNED_STRUCTURED_NODES)) {
-			ret = getOwnedStructureNodes(element);
+			ret = getOwnedStructuredNodes(element);
 		}
 
     // no helper found... searching in super classes...
@@ -51,7 +51,7 @@ public class AbstractActivityHelper {
 		return ret;
 	}
 	
-	protected List<StructuredActivityNode> getOwnedStructureNodes (AbstractActivity element) {
+	protected List<StructuredActivityNode> getOwnedStructuredNodes (AbstractActivity element) {
 		List <ActivityGroup> groups = element.getOwnedGroups();
 		List <StructuredActivityNode> ret = new ArrayList<> ();
 

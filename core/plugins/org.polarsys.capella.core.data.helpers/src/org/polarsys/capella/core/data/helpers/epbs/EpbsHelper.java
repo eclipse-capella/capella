@@ -23,17 +23,17 @@ import org.polarsys.capella.core.data.epbs.PhysicalArchitectureRealization;
 import org.polarsys.capella.core.data.epbs.PhysicalArtifactRealization;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.StructureHelper;
 import org.polarsys.capella.core.data.helpers.epbs.delegates.ConfigurationItemHelper;
-import org.polarsys.capella.core.data.helpers.epbs.delegates.EpbsArchitectureHelper;
+import org.polarsys.capella.core.data.helpers.epbs.delegates.EPBSArchitectureHelper;
 import org.polarsys.capella.core.data.helpers.epbs.delegates.PhysicalArchitectureRealizationHelper;
 import org.polarsys.capella.core.data.helpers.epbs.delegates.PhysicalArtifactRealizationHelper;
 
-public class EPBSArchitectureHelper implements IHelper {
+public class EpbsHelper implements IHelper {
 
 	public Object getValue(EObject object, EStructuralFeature feature, EAnnotation annotation) {
 		Object ret = null;
 
 		if (object instanceof EPBSArchitecture) {
-			ret = EpbsArchitectureHelper.getInstance().doSwitch((EPBSArchitecture) object, feature);
+			ret = EPBSArchitectureHelper.getInstance().doSwitch((EPBSArchitecture) object, feature);
 		}
 		else if (object instanceof ConfigurationItem) {
 			ret = ConfigurationItemHelper.getInstance().doSwitch((ConfigurationItem) object, feature);

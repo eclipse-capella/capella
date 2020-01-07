@@ -40,7 +40,7 @@ public class FunctionalChainAbstractCapabilityInvolvementHelper {
     if (feature.equals(InteractionPackage.Literals.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__FUNCTIONAL_CHAIN)) {
       ret = getFunctionalChain(element);
     } else if (feature.equals(InteractionPackage.Literals.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__CAPABILITY)) {
-      ret = getAbstractCapability(element);
+      ret = getCapability(element);
     }
 
     // no helper found... searching in super classes...
@@ -58,7 +58,7 @@ public class FunctionalChainAbstractCapabilityInvolvementHelper {
     return null;
   }
 
-  protected AbstractCapability getAbstractCapability(FunctionalChainAbstractCapabilityInvolvement element) {
+  protected AbstractCapability getCapability(FunctionalChainAbstractCapabilityInvolvement element) {
     InvolverElement elt = element.getInvolver();
     if (elt instanceof AbstractCapability)
       return (AbstractCapability) elt;
