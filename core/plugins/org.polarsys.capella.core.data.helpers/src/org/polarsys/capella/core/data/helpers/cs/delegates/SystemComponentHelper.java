@@ -49,7 +49,7 @@ public class SystemComponentHelper {
     if (feature.equals(CtxPackage.Literals.SYSTEM_COMPONENT__CAPABILITY_INVOLVEMENTS)) {
       ret = getCapabilityInvolvements(element);
     } else if (feature.equals(CtxPackage.Literals.SYSTEM_COMPONENT__INVOLVING_CAPABILITIES)) {
-      ret = getInvolvingCapabilites(element);
+      ret = getInvolvingCapabilities(element);
     } else if (feature.equals(CtxPackage.Literals.SYSTEM_COMPONENT__MISSION_INVOLVEMENTS)) {
       ret = getMissionInvolvements(element);
     } else if (feature.equals(CtxPackage.Literals.SYSTEM_COMPONENT__INVOLVING_MISSIONS)) {
@@ -83,7 +83,7 @@ public class SystemComponentHelper {
     return ret;
   }
 
-  protected List<Capability> getInvolvingCapabilites(SystemComponent element) {
+  protected List<Capability> getInvolvingCapabilities(SystemComponent element) {
     List<Capability> ret = new ArrayList<>();
     for (CapabilityInvolvement involvement : element.getCapabilityInvolvements()) {
       InvolverElement involver = involvement.getInvolver();

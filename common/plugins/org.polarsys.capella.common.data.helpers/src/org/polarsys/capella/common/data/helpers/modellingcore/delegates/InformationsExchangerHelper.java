@@ -36,9 +36,9 @@ public class InformationsExchangerHelper {
     Object ret = null;
 
     if (feature.equals(ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__INCOMING_INFORMATION_FLOWS)) {
-      ret = getIncomingFlows(element);
+      ret = getIncomingInformationFlows(element);
     } else if (feature.equals(ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__OUTGOING_INFORMATION_FLOWS)) {
-      ret = getOutgoingFlows(element);
+      ret = getOutgoingInformationFlows(element);
     } else if (feature.equals(ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__INFORMATION_FLOWS)) {
       ret = getInformationFlows(element);
     }
@@ -51,11 +51,11 @@ public class InformationsExchangerHelper {
     return ret;
   }
 
-  protected List<AbstractInformationFlow> getIncomingFlows(InformationsExchanger element) {
+  protected List<AbstractInformationFlow> getIncomingInformationFlows(InformationsExchanger element) {
     return EObjectExt.getReferencers(element, ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__TARGET);
   }
 
-  protected List<AbstractInformationFlow> getOutgoingFlows(InformationsExchanger element) {
+  protected List<AbstractInformationFlow> getOutgoingInformationFlows(InformationsExchanger element) {
     return EObjectExt.getReferencers(element, ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__SOURCE);
   }
 
@@ -63,7 +63,7 @@ public class InformationsExchangerHelper {
    * @param element
    * @return
    */
-  private List<AbstractInformationFlow> getInformationFlows(InformationsExchanger element) {
+  protected List<AbstractInformationFlow> getInformationFlows(InformationsExchanger element) {
     List<AbstractInformationFlow> ret = new ArrayList<>();
 
     List<AbstractInformationFlow> sources = EObjectExt.getReferencers(element, ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__SOURCE);

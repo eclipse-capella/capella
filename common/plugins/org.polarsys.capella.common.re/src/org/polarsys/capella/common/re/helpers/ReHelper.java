@@ -15,11 +15,8 @@ import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.common.model.helpers.IHelper;
-import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
-import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.common.re.CatalogElement;
-import org.polarsys.capella.common.re.RePackage;
-import org.polarsys.capella.common.re.queries.QueryIdentifierConstants;
+import org.polarsys.capella.common.re.helpers.delegates.CatalogElementHelper;
 
 public class ReHelper implements IHelper {
 
@@ -29,19 +26,11 @@ public class ReHelper implements IHelper {
   @Override
   public Object getValue(EObject object, EStructuralFeature feature, EAnnotation annotation) {
     Object ret = null;
-
+    
     if (object instanceof CatalogElement) {
-
-      if (RePackage.Literals.CATALOG_ELEMENT__REFERENCED_ELEMENTS.equals(feature)) {
-        ret = QueryInterpretor.executeQuery(QueryIdentifierConstants.CatalogElement_UsedElements, object, new QueryContext());
-
-      } else if (RePackage.Literals.CATALOG_ELEMENT__REPLICATED_ELEMENTS.equals(feature)) {
-        ret = QueryInterpretor.executeQuery(QueryIdentifierConstants.CatalogElement_ReplicatedElements, object, new QueryContext());
-
-      }
-
+      ret = CatalogElementHelper.getInstance().doSwitch((CatalogElement)object, feature);
     }
-
+    
     return ret;
   }
 

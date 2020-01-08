@@ -85,9 +85,9 @@ public class AbstractFunctionHelper {
     } else if (feature.equals(FaPackage.Literals.ABSTRACT_FUNCTION__SUB_FUNCTIONS)) {
       ret = getSubFunctions(element);
     } else if (feature.equals(ActivityPackage.Literals.ACTIVITY_NODE__INCOMING)) {
-      ret = getIncomingEdges(element, feature);
+      ret = getIncoming(element, feature);
     } else if (feature.equals(ActivityPackage.Literals.ACTIVITY_NODE__OUTGOING)) {
-      ret = getOutgoingEdges(element, feature);
+      ret = getOutgoing(element, feature);
     }
 
     // no helper found... searching in super classes...
@@ -210,7 +210,7 @@ public class AbstractFunctionHelper {
   }
 
   @SuppressWarnings("unchecked")
-  protected List<ActivityEdge> getIncomingEdges(AbstractFunction element, EStructuralFeature feature) {
+  protected List<ActivityEdge> getIncoming(AbstractFunction element, EStructuralFeature feature) {
     List<ActivityEdge> res = new ArrayList<>();
 
     if (element.getInputs().isEmpty()) {
@@ -225,7 +225,7 @@ public class AbstractFunctionHelper {
   }
 
   @SuppressWarnings("unchecked")
-  protected List<ActivityEdge> getOutgoingEdges(AbstractFunction element, EStructuralFeature feature) {
+  protected List<ActivityEdge> getOutgoing(AbstractFunction element, EStructuralFeature feature) {
     List<ActivityEdge> res = new ArrayList<>();
 
     if (element.getOutputs().isEmpty()) {

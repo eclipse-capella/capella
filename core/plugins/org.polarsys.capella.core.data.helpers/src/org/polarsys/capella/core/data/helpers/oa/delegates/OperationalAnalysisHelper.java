@@ -26,16 +26,16 @@ import org.polarsys.capella.core.data.oa.OperationalActivityPkg;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.oa.OperationalCapabilityPkg;
 
-public class OpAnalysisHelper {
-  private static OpAnalysisHelper instance;
+public class OperationalAnalysisHelper {
+  private static OperationalAnalysisHelper instance;
 
-  private OpAnalysisHelper() {
+  private OperationalAnalysisHelper() {
     // do nothing
   }
 
-  public static OpAnalysisHelper getInstance() {
+  public static OperationalAnalysisHelper getInstance() {
     if (instance == null)
-      instance = new OpAnalysisHelper();
+      instance = new OperationalAnalysisHelper();
     return instance;
   }
 

@@ -23,7 +23,7 @@ import org.polarsys.capella.core.data.helpers.capellacore.delegates.StructureHel
 import org.polarsys.capella.core.data.helpers.pa.delegates.ComponentInstanceHelper;
 import org.polarsys.capella.core.data.helpers.pa.delegates.LogicalArchitectureRealizationHelper;
 import org.polarsys.capella.core.data.helpers.pa.delegates.LogicalInterfaceRealizationHelper;
-import org.polarsys.capella.core.data.helpers.pa.delegates.PaArchitectureHelper;
+import org.polarsys.capella.core.data.helpers.pa.delegates.PhysicalArchitectureHelper;
 import org.polarsys.capella.core.data.helpers.pa.delegates.PhysicalComponentHelper;
 import org.polarsys.capella.core.data.helpers.pa.delegates.PhysicalFunctionHelper;
 import org.polarsys.capella.core.data.helpers.pa.delegates.PhysicalNodeHelper;
@@ -46,13 +46,13 @@ import org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink;
 import org.polarsys.capella.core.data.pa.deployment.PortInstance;
 import org.polarsys.capella.core.data.pa.deployment.TypeDeploymentLink;
 
-public class PhysicalArchitectureHelper implements IHelper {
+public class PaHelper implements IHelper {
 
 	public Object getValue(EObject object, EStructuralFeature feature, EAnnotation annotation) {
 		Object ret = null;
 
 		if (object instanceof PhysicalArchitecture) {
-			ret = PaArchitectureHelper.getInstance().doSwitch((PhysicalArchitecture) object, feature);
+			ret = PhysicalArchitectureHelper.getInstance().doSwitch((PhysicalArchitecture) object, feature);
 		}
 		else if (object instanceof PhysicalNode) {
 			ret = PhysicalNodeHelper.getInstance().doSwitch((PhysicalNode) object, feature);

@@ -58,9 +58,9 @@ public class FunctionalExchangeHelper {
     if (feature.equals(FaPackage.Literals.FUNCTIONAL_EXCHANGE__INVOLVING_FUNCTIONAL_CHAINS)) {
       ret = getInvolvingFunctionalChains(element);
     } else if (feature.equals(FaPackage.Literals.FUNCTIONAL_EXCHANGE__ALLOCATING_COMPONENT_EXCHANGES)) {
-      ret = getComponentExchanges(element);
+      ret = getAllocatingComponentExchanges(element);
     } else if (feature.equals(FaPackage.Literals.FUNCTIONAL_EXCHANGE__INCOMING_COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_REALIZATIONS)) {
-      ret = getIncomingComponentExchangeFunctionalExchangeAllocations(element);
+      ret = getIncomingComponentExchangeFunctionalExchangeRealizations(element);
     } else if (feature.equals(FaPackage.Literals.FUNCTIONAL_EXCHANGE__INCOMING_FUNCTIONAL_EXCHANGE_REALIZATIONS)) {
       ret = getIncomingFunctionalExchangeRealizations(element);
     } else if (feature.equals(FaPackage.Literals.FUNCTIONAL_EXCHANGE__OUTGOING_FUNCTIONAL_EXCHANGE_REALIZATIONS)) {
@@ -114,7 +114,7 @@ public class FunctionalExchangeHelper {
     return ret;
   }
 
-  protected List<ComponentExchange> getComponentExchanges(FunctionalExchange element) {
+  protected List<ComponentExchange> getAllocatingComponentExchanges(FunctionalExchange element) {
     List<ComponentExchange> ret = new ArrayList<>();
     for (ComponentExchangeFunctionalExchangeAllocation item : element.getIncomingComponentExchangeFunctionalExchangeRealizations()) {
       ComponentExchange allocatingComponentExchange = item.getAllocatingComponentExchange();
@@ -125,7 +125,7 @@ public class FunctionalExchangeHelper {
     return ret;
   }
 
-  protected List<ComponentExchangeFunctionalExchangeAllocation> getIncomingComponentExchangeFunctionalExchangeAllocations(FunctionalExchange element) {
+  protected List<ComponentExchangeFunctionalExchangeAllocation> getIncomingComponentExchangeFunctionalExchangeRealizations(FunctionalExchange element) {
     List<ComponentExchangeFunctionalExchangeAllocation> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ComponentExchangeFunctionalExchangeAllocation) {

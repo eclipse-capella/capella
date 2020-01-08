@@ -29,16 +29,16 @@ import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
 
-public class PaArchitectureHelper {
-  private static PaArchitectureHelper instance;
+public class PhysicalArchitectureHelper {
+  private static PhysicalArchitectureHelper instance;
 
-  private PaArchitectureHelper() {
+  private PhysicalArchitectureHelper() {
     // do nothing
   }
 
-  public static PaArchitectureHelper getInstance() {
+  public static PhysicalArchitectureHelper getInstance() {
     if (instance == null)
-      instance = new PaArchitectureHelper();
+      instance = new PhysicalArchitectureHelper();
     return instance;
   }
 

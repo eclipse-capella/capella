@@ -21,7 +21,6 @@ import org.polarsys.capella.core.data.information.communication.CommunicationLin
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkKind;
 import org.polarsys.capella.core.data.information.communication.CommunicationPackage;
 
-
 /**
  *
  */
@@ -32,39 +31,78 @@ public class CommunicationLinkExchangerHelper {
     //
   }
 
-  public static CommunicationLinkExchangerHelper getInstance(){
-    if(instance == null)
+  public static CommunicationLinkExchangerHelper getInstance() {
+    if (instance == null)
       instance = new CommunicationLinkExchangerHelper();
     return instance;
   }
 
-  public Object doSwitch(CommunicationLinkExchanger element, EStructuralFeature feature){
+  public Object doSwitch(CommunicationLinkExchanger element, EStructuralFeature feature) {
     Object ret = null;
     if (feature.equals(CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__PRODUCE)) {
-      ret = getLinks(element, CommunicationLinkKind.PRODUCE);
+      ret = getProduce(element);
     } else if (feature.equals(CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__CONSUME)) {
-      ret = getLinks(element, CommunicationLinkKind.CONSUME);
+      ret = getConsume(element);
     } else if (feature.equals(CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__SEND)) {
-      ret = getLinks(element, CommunicationLinkKind.SEND);
+      ret = getSend(element);
     } else if (feature.equals(CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__RECEIVE)) {
-      ret = getLinks(element, CommunicationLinkKind.RECEIVE);
+      ret = getReceive(element);
     } else if (feature.equals(CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__CALL)) {
-      ret = getLinks(element, CommunicationLinkKind.CALL);
+      ret = getCall(element);
     } else if (feature.equals(CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__EXECUTE)) {
-      ret = getLinks(element, CommunicationLinkKind.EXECUTE);
+      ret = getExecute(element);
     } else if (feature.equals(CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__WRITE)) {
-      ret = getLinks(element, CommunicationLinkKind.WRITE);
+      ret = getWrite(element);
     } else if (feature.equals(CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__ACCESS)) {
-      ret = getLinks(element, CommunicationLinkKind.ACCESS);
+      ret = getAccess(element);
     } else if (feature.equals(CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__ACQUIRE)) {
-      ret = getLinks(element, CommunicationLinkKind.ACQUIRE);
+      ret = getAcquire(element);
     } else if (feature.equals(CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__TRANSMIT)) {
-      ret = getLinks(element, CommunicationLinkKind.TRANSMIT);
+      ret = getTransmit(element);
     }
-
     return ret;
   }
-  
+
+  protected List<CommunicationLink> getProduce(CommunicationLinkExchanger element) {
+    return getLinks(element, CommunicationLinkKind.PRODUCE);
+  }
+
+  protected List<CommunicationLink> getConsume(CommunicationLinkExchanger element) {
+    return getLinks(element, CommunicationLinkKind.CONSUME);
+  }
+
+  protected List<CommunicationLink> getSend(CommunicationLinkExchanger element) {
+    return getLinks(element, CommunicationLinkKind.SEND);
+  }
+
+  protected List<CommunicationLink> getReceive(CommunicationLinkExchanger element) {
+    return getLinks(element, CommunicationLinkKind.RECEIVE);
+  }
+
+  protected List<CommunicationLink> getCall(CommunicationLinkExchanger element) {
+    return getLinks(element, CommunicationLinkKind.CALL);
+  }
+
+  protected List<CommunicationLink> getExecute(CommunicationLinkExchanger element) {
+    return getLinks(element, CommunicationLinkKind.EXECUTE);
+  }
+
+  protected List<CommunicationLink> getWrite(CommunicationLinkExchanger element) {
+    return getLinks(element, CommunicationLinkKind.WRITE);
+  }
+
+  protected List<CommunicationLink> getAccess(CommunicationLinkExchanger element) {
+    return getLinks(element, CommunicationLinkKind.ACCESS);
+  }
+
+  protected List<CommunicationLink> getAcquire(CommunicationLinkExchanger element) {
+    return getLinks(element, CommunicationLinkKind.ACQUIRE);
+  }
+
+  protected List<CommunicationLink> getTransmit(CommunicationLinkExchanger element) {
+    return getLinks(element, CommunicationLinkKind.TRANSMIT);
+  }
+
   private List<CommunicationLink> getLinks(CommunicationLinkExchanger element, CommunicationLinkKind kind) {
     List<CommunicationLink> links = new ArrayList<>();
     for (CommunicationLink link : element.getOwnedCommunicationLinks()) {

@@ -20,7 +20,7 @@ import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.StructureHelper;
 import org.polarsys.capella.core.data.helpers.la.delegates.CapabilityRealizationHelper;
 import org.polarsys.capella.core.data.helpers.la.delegates.ContextInterfaceRealizationHelper;
-import org.polarsys.capella.core.data.helpers.la.delegates.LaArchitectureHelper;
+import org.polarsys.capella.core.data.helpers.la.delegates.LogicalArchitectureHelper;
 import org.polarsys.capella.core.data.helpers.la.delegates.LogicalComponentHelper;
 import org.polarsys.capella.core.data.helpers.la.delegates.LogicalFunctionHelper;
 import org.polarsys.capella.core.data.helpers.la.delegates.SystemAnalysisRealizationHelper;
@@ -31,13 +31,13 @@ import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalFunction;
 import org.polarsys.capella.core.data.la.SystemAnalysisRealization;
 
-public class LogicalArchitectureHelper implements IHelper {
+public class LaHelper implements IHelper {
 
 	public Object getValue(EObject object, EStructuralFeature feature, EAnnotation annotation) {
 		Object ret = null;
 
 		if (object instanceof LogicalArchitecture) {
-			ret = LaArchitectureHelper.getInstance().doSwitch((LogicalArchitecture) object, feature);
+			ret = LogicalArchitectureHelper.getInstance().doSwitch((LogicalArchitecture) object, feature);
 		}
 		else if (object instanceof LogicalComponent) {
 			ret = LogicalComponentHelper.getInstance().doSwitch((LogicalComponent) object, feature);
