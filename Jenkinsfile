@@ -72,14 +72,19 @@ pipeline {
             
         }
         
-        script { currentBuild.description = "${env.BUILD_KEY} - <a href=\"https://download.eclipse.org/capella/core/updates/nightly/${env.BUILD_KEY}\">site</a> - <a href=\"https://download.eclipse.org/capella/core/products/nightly/${env.BUILD_KEY}\">product</a>" } 
+        script { 
+          
+          currentBuild.description = "${env.BUILD_KEY} - <a href=\"https://download.eclipse.org/capella/core/updates/nightly/${env.BUILD_KEY}\">site</a> - <a href=\"https://download.eclipse.org/capella/core/products/nightly/${env.BUILD_KEY}\">product</a>" 
         
-        if (env.CHANGE_ID) {
-          pullRequest.createStatus(status: 'success',
-                         context: 'ci/build-product',
-                         description: 'Capella product is available',
-                         targetUrl: "https://download.eclipse.org/capella/core/products/nightly/${env.BUILD_KEY}")
-        }
+          if (env.CHANGE_ID) {
+            pullRequest.createStatus(status: 'success',
+                           context: 'ci/build-product',
+                           description: 'Capella product is available',
+                           targetUrl: "https://download.eclipse.org/capella/core/products/nightly/${env.BUILD_KEY}")
+          }
+          
+        } 
+        
         
         //if ("${env.FROM_PR}".contains("true")) {
         //   pullRequest.addLabel('Build OK')
@@ -153,13 +158,17 @@ pipeline {
     sh "$RUNNER -title Detach                   & $JUNIT -data ${env.WORKSPACE}/Detach                  -testpluginname org.polarsys.capella.test.suites.ju -classNames org.polarsys.capella.test.model.ju.testsuites.partial.DetachTestSuite"
     sh "$RUNNER -title NotUINavigator           & $HJUNIT -data ${env.WORKSPACE}/NotUINavigator         -testpluginname org.polarsys.capella.test.suites.ju -classNames org.polarsys.capella.test.navigator.ju.testsuites.main.NavigatorTestSuite"
 	
-    if (env.CHANGE_ID) {
-          pullRequest.createStatus(status: 'success',
-                         context: 'ci/build-test',
-                         description: 'Tests have ended',
-                         targetUrl: "${env.JOB_URL}/testResults")
-    }
-
+	
+        script { 
+        
+            if (env.CHANGE_ID) {
+                  pullRequest.createStatus(status: 'success',
+                                 context: 'ci/build-test',
+                                 description: 'Tests have ended',
+                                 targetUrl: "${env.JOB_URL}/testResults")
+            }
+        }
+        
 		    }
         }
     }
