@@ -29,7 +29,7 @@
             winMediumLow="../org.polarsys.capella.rcp/icons/Capella32x32_8bits.bmp"
             winLargeHigh="../org.polarsys.capella.rcp/icons/Capella48x48.bmp"
             winLargeLow="../org.polarsys.capella.rcp/icons/Capella48x48_8bits.bmp"
-            winExtraLargeHigh="../org.polarsys.capella.rcp/icons/Capella256x256.bmp"/>
+            winExtraLargeHigh="../org.polarsys.capella.rcp/icons/Capella256x256.bmp" />
       </win>
    </launcher>
 
