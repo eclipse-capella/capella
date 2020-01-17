@@ -91,6 +91,13 @@ A category is composed of :
                </documentation>
             </annotation>
          </attribute>
+         <attribute name="usedInShowRelated" type="boolean">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
       </complexType>
    </element>
 

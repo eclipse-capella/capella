@@ -53,16 +53,18 @@ import org.polarsys.capella.test.semantic.queries.ju.testcases.CapellaRelationsh
 import org.polarsys.capella.test.semantic.queries.ju.testcases.CapellaRelationshipsTraceSource;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.CapellaRelationshipsTraceTarget;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.ComponentAllocatingPhysicalPorts;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.ComponentRepresentingParts;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.DataValueRefReferencedProperty;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.EntryExitPoint_ParentRegionTest;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.ExchangeItem_realizedEI;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.ExchangeItem_realizingEI;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.FragmentAllocatedFunction;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.FragmentAllocatedState;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.GeneralizedComponents;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.GeneralizingComponents;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.InterfaceExchangedItems;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.InterfaceGeneralizedElements;
-import org.polarsys.capella.test.semantic.queries.ju.testcases.GeneralizedComponents;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.InterfaceGeneralizingElements;
-import org.polarsys.capella.test.semantic.queries.ju.testcases.GeneralizingComponents;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.InterfaceInheritedExchangedItems;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.PhysicalAllocatedComponentPorts;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.PropertyTypeElements;
@@ -144,6 +146,8 @@ public class SemanticQueriesTestSuite extends BasicTestSuite {
     tests.add(new SequenceMessagePartSource());
     tests.add(new SequenceMessagePartTarget());
     tests.add(new AbstractStateParentActiveElements());
+    tests.add(new ComponentRepresentingParts());
+    tests.add(new DataValueRefReferencedProperty());
 
     return tests;
   }
