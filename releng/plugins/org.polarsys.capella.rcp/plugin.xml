@@ -9,7 +9,7 @@
              name="Capella">
          <property name="aboutImage" value="icons/CapellaAbout.png"/>
          <property name="aboutText" value="%productBlurb"/>
-         <property name="windowImages" value="icons/Capella16x16.png,icons/Capella32x32.png,icons/Capella48x48.png,icons/Capella256x256.png"/>
+         <property name="windowImages" value="icons/Capella16x16.png,icons/Capella32x32.png,icons/Capella48x48.png,icons/Capella64x64.png,icons/Capella128x128.png,icons/Capella256x256.png"/>
          <property name="preferenceCustomization" value="plugin_customization.ini" /> 
          <property name="startupForegroundColor" value="000000" /> 
          <property name="startupMessageRect" value="24,200,421,20" /> 
