@@ -18,6 +18,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.emf.ecore.EObject;
@@ -29,40 +30,42 @@ import org.polarsys.capella.common.ui.toolkit.browser.content.provider.IBrowserC
  * Category Registry. Responsibility of initialize and cache all categories on loading. Gathering categories in session.
  */
 public class CategoryRegistry {
-  /**
-   * Singleton.
-   */
-  protected static CategoryRegistry _categoryRegistry = null;
+
   private static final String CONTENT_PROVIDER_CATEGORY = Messages.getString("CategoryRegistry.ContentProvider"); //$NON-NLS-1$
-  /**
-   * Cache of category
-   */
-  protected List<ICategory> categoriesCache = new ArrayList<ICategory>();
+
+  protected static CategoryRegistry categoryRegistry;
+
+  protected List<ICategory> categoriesCache;
+
   /**
    * CategoryMap<Category Id, Category>
    */
-  protected HashMap<String, ICategory> currentElementRegistry = null;
-  protected HashMap<String, ICategory> diagramElementRegistry = null;
-  protected HashMap<String, ICategory> referencedElementRegistry = null;
-  protected HashMap<String, ICategory> referencingElementRegistry = null;
+  protected HashMap<String, ICategory> currentElementRegistry;
+  protected HashMap<String, ICategory> diagramElementRegistry;
+  protected HashMap<String, ICategory> referencedElementRegistry;
+  protected HashMap<String, ICategory> referencingElementRegistry;
+  protected HashMap<String, ICategory> relatedElementsRegistry;
 
   private Collection<ExtensionClassDescriptor> availableForTypeClassDescriptors;
 
-  /**
-   * Singleton constructor.
-   */
   private CategoryRegistry() {
+    this.categoriesCache = new ArrayList<>();
+
     initRegistry();
   }
 
   /**
+   * Returns the available categories for the current element, that can be displayed in the view.
+   * 
    * @param viewerId
+   *          the view id.
    * @param currentElement
-   * @return
+   *          the current element.
+   * @return the available categories for the current element, that can be displayed in the view.
    */
   public Set<ICategory> gatherCategories(String viewerId, EObject currentElement) {
     HashMap<String, ICategory> elementRegistry = getRegistry(viewerId);
-    Set<ICategory> categories = new HashSet<ICategory>();
+    Set<ICategory> categories = new HashSet<>();
     Set<Entry<String, ICategory>> entrySet = elementRegistry.entrySet();
     for (Entry<String, ICategory> entry : entrySet) {
       ICategory category = entry.getValue();
@@ -75,9 +78,38 @@ public class CategoryRegistry {
   }
 
   /**
+   * Returns all the available categories for the current element.
+   * 
+   * @param currentElement
+   *          the current element.
+   * @return all the available categories for the current element.
+   */
+  public Set<ICategory> gatherCategories(EObject currentElement) {
+
+    Set<ICategory> referencedCategories = gatherCategories(IBrowserContentProvider.ID_REFERENCED_CP, currentElement);
+    Set<ICategory> referencingCategories = gatherCategories(IBrowserContentProvider.ID_REFERENCING_CP, currentElement);
+    Set<ICategory> currentCategories = gatherCategories(IBrowserContentProvider.ID_CURRENT_CP, currentElement);
+
+    Set<ICategory> categories = new HashSet<>();
+    categories.addAll(referencedCategories);
+    categories.addAll(referencingCategories);
+    categories.addAll(currentCategories);
+
+    return categories;
+  }
+
+  /**
+   * Returns the available sub-categories of the current category and current element, that can be displayed in the
+   * view.
+   * 
    * @param viewerId
+   *          the viewer id.
+   * @param currentElement
+   *          the current element.
    * @param category
-   * @return
+   *          the category.
+   * @return the available sub-categories of the current category and current element, that can be displayed in the
+   *         view.
    */
   public List<ICategory> gatherSubCategories(String viewerId, EObject currentElement, ICategory category) {
     HashMap<String, ICategory> elementRegistry = getRegistry(viewerId);
@@ -91,6 +123,23 @@ public class CategoryRegistry {
     return subCategories;
   }
 
+  /**
+   * Returns all the related elements categories for the current element.
+   * @param currentElement the current element.
+   * @return all the related elements categories for the current element.
+   */
+  public List<ICategory> gatherRelatedElementsCategories(EObject currentElement) {
+
+    return relatedElementsRegistry.values().stream() //
+        .filter(category -> category.isTopLevel() && category.isAvailableForType(currentElement)) //
+        .collect(Collectors.toList());
+  }
+
+  /**
+   * Returns the appropriate category registry, for the current viewerId.
+   * @param viewerId the viewer id.
+   * @return the appropriate category registry, for the current viewerId.
+   */
   protected HashMap<String, ICategory> getRegistry(String viewerId) {
     if (viewerId.equalsIgnoreCase(IBrowserContentProvider.ID_CURRENT_CP)) {
       return currentElementRegistry;
@@ -98,20 +147,47 @@ public class CategoryRegistry {
       return referencedElementRegistry;
     } else if (viewerId.equalsIgnoreCase(IBrowserContentProvider.ID_REFERENCING_CP)) {
       return referencingElementRegistry;
-    } else {// ID_DIAGRAM_CP Statement.
+    } else {
       return diagramElementRegistry;
     }
+  }
+
+  /**
+   * From a category identifier, request the registry to find the matching category object if exists
+   * 
+   * @param categoryId
+   *          the category identifier
+   * @return the category object if found, null otherwise
+   */
+  public ICategory getCategory(String categoryId) {
+    ICategory category = null;
+
+    // There are three maps in the semantic browser. Each corresponds to a
+    // particular view. Since the categories are sorted by view, we need to
+    // check in all maps where our category is.
+    if (getRegistry(IBrowserContentProvider.ID_REFERENCED_CP).containsKey(categoryId)) {
+      category = getRegistry(IBrowserContentProvider.ID_REFERENCED_CP).get(categoryId);
+
+    } else if (getRegistry(IBrowserContentProvider.ID_REFERENCING_CP).containsKey(categoryId)) {
+      category = getRegistry(IBrowserContentProvider.ID_REFERENCING_CP).get(categoryId);
+
+    } else if (getRegistry(IBrowserContentProvider.ID_CURRENT_CP).containsKey(categoryId)) {
+      category = getRegistry(IBrowserContentProvider.ID_CURRENT_CP).get(categoryId);
+    }
+
+    return category;
   }
 
   /**
    * Initialize Register. One shot initialization. Spread the categories among right register.
    */
   private void initRegistry() {
-    currentElementRegistry = new HashMap<String, ICategory>(0);
-    referencedElementRegistry = new HashMap<String, ICategory>(0);
-    referencingElementRegistry = new HashMap<String, ICategory>(0);
-    diagramElementRegistry = new HashMap<String, ICategory>(0);
-    availableForTypeClassDescriptors = new HashSet<ExtensionClassDescriptor>();
+    currentElementRegistry = new HashMap<>();
+    referencedElementRegistry = new HashMap<>();
+    referencingElementRegistry = new HashMap<>();
+    diagramElementRegistry = new HashMap<>();
+    relatedElementsRegistry = new HashMap<>();
+    availableForTypeClassDescriptors = new HashSet<>();
 
     IConfigurationElement[] categories = org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper
         .getConfigurationElements(BrowserActivator.PLUGIN_ID, CONTENT_PROVIDER_CATEGORY);
@@ -136,10 +212,25 @@ public class CategoryRegistry {
       // Retrieve isTopLevel attribute.
       String isTopLevelCategory = categoryConfigurationElement
           .getAttribute(Messages.getString("CategoryRegistry.TopLevel")); //$NON-NLS-1$
-      if ((isTopLevelCategory != null) && (isTopLevelCategory != "")) { //$NON-NLS-1$
+      if (isTopLevelCategory != null) {
         category.setIsTopLevel(Boolean.parseBoolean(isTopLevelCategory));
       } else {
         category.setIsTopLevel(false);
+      }
+
+      // Retrieve isusedInShowRelated attribute.
+      String usedInShowRelated = categoryConfigurationElement
+          .getAttribute(Messages.getString("CategoryRegistry.UsedInShowRelated")); //$NON-NLS-1$
+
+      if (usedInShowRelated != null) {
+        boolean isUsedInShowRelated = Boolean.parseBoolean(usedInShowRelated);
+        category.setIsUsedInShowRelated(isUsedInShowRelated);
+
+        if (isUsedInShowRelated) {
+          relatedElementsRegistry.put(categoryId, category);
+        }
+      } else {
+        category.setIsUsedInShowRelated(false);
       }
 
       // Retrieve sub categories ids.
@@ -227,47 +318,16 @@ public class CategoryRegistry {
   }
 
   /**
-   * From a category identifier, request the registry to find the matching category object if exists
-   * 
-   * @param categoryId
-   *          the category identifier
-   * @return the category object if found, null otherwise
-   */
-  public ICategory getCategory(String categoryId) {
-    ICategory category = null;
-
-    // There are three maps in the semantic browser. Each corresponds to a
-    // particular view. Since the categories are sorted by view, we need to
-    // check in all maps where our category is.
-    if (getRegistry(IBrowserContentProvider.ID_REFERENCED_CP).containsKey(categoryId)) {
-      category = getRegistry(IBrowserContentProvider.ID_REFERENCED_CP).get(categoryId);
-
-    } else if (getRegistry(IBrowserContentProvider.ID_REFERENCING_CP).containsKey(categoryId)) {
-      category = getRegistry(IBrowserContentProvider.ID_REFERENCING_CP).get(categoryId);
-
-    } else if (getRegistry(IBrowserContentProvider.ID_CURRENT_CP).containsKey(categoryId)) {
-      category = getRegistry(IBrowserContentProvider.ID_CURRENT_CP).get(categoryId);
-    }
-
-    return category;
-  }
-
-  /**
    * This method is added for testing purpose.
    */
   public Collection<ExtensionClassDescriptor> getAvailableForTypeClassDescriptors() {
     return availableForTypeClassDescriptors;
   }
 
-  /**
-   * Singleton accessor.
-   * 
-   * @return
-   */
   public static CategoryRegistry getInstance() {
-    if (_categoryRegistry == null) {
-      _categoryRegistry = new CategoryRegistry();
+    if (categoryRegistry == null) {
+      categoryRegistry = new CategoryRegistry();
     }
-    return _categoryRegistry;
+    return categoryRegistry;
   }
 }

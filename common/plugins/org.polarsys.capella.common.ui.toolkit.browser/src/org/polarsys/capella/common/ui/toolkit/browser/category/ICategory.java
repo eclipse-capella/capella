@@ -86,6 +86,18 @@ public interface ICategory {
   public boolean isTopLevel();
   
   /**
+   * usedInShowRelated setter.
+   * @param usedInShowRelated 
+   */
+  public void setIsUsedInShowRelated(boolean usedInShowRelated);
+  
+  /**
+   * @return true if the Category is used in the Show Related Elements menu.
+   */
+  public boolean isUsedInShowRelated();
+  
+  
+  /**
    * Get item queries.
    * @return
    */

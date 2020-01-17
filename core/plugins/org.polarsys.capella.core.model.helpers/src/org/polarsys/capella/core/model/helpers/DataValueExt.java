@@ -34,6 +34,7 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentArchitecture;
 import org.polarsys.capella.core.data.information.CollectionValueReference;
 import org.polarsys.capella.core.data.information.DataPkg;
+import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.datatype.BooleanType;
 import org.polarsys.capella.core.data.information.datatype.DataType;
 import org.polarsys.capella.core.data.information.datatype.Enumeration;
@@ -90,7 +91,8 @@ public class DataValueExt {
   }
 
   /**
-   * @param modelElement : any 'ModelElement'
+   * @param modelElement
+   *          : any 'ModelElement'
    * @return : 'BlockArchitecture', value can also be null
    */
   public static BlockArchitecture getRootBlockArchitecture(ModelElement modelElement) {
@@ -129,9 +131,11 @@ public class DataValueExt {
   }
 
   /**
-   * Gets all the DataPkgs from the Parent Hierarchy of the root component/component architecture of the current DataTypePkg according to layer visibility and
-   * multiple decomposition rules
-   * @param dataTypePkg the DataTypePkg
+   * Gets all the DataPkgs from the Parent Hierarchy of the root component/component architecture of the current
+   * DataTypePkg according to layer visibility and multiple decomposition rules
+   * 
+   * @param dataTypePkg
+   *          the DataTypePkg
    * @return list of DataPkgs
    */
   static public List<DataPkg> getDataPkgsFromParentHierarchy(ModelElement modelElement) {
@@ -163,6 +167,7 @@ public class DataValueExt {
 
   /**
    * check data value and data type consistency
+   * 
    * @param datValue
    * @param dataType
    * @return true if valid
@@ -214,15 +219,35 @@ public class DataValueExt {
     return referencedValue;
   }
 
+  public static Property getReferencedProperty(EObject eObj) {
+
+    if (eObj instanceof BooleanReference) {
+      return ((BooleanReference) eObj).getReferencedProperty();
+    } else if (eObj instanceof NumericReference) {
+      return ((NumericReference) eObj).getReferencedProperty();
+    } else if (eObj instanceof StringReference) {
+      return ((StringReference) eObj).getReferencedProperty();
+    } else if (eObj instanceof EnumerationReference) {
+      return ((EnumerationReference) eObj).getReferencedProperty();
+    } else if (eObj instanceof ComplexValueReference) {
+      return ((ComplexValueReference) eObj).getReferencedProperty();
+    } else if (eObj instanceof CollectionValueReference) {
+      return ((CollectionValueReference) eObj).getReferencedProperty();
+    }
+    return null;
+  }
+
   /**
    * Return if true dataValue is type reference
+   * 
    * @param eObj
    * @return
    */
   public static boolean isDataValueReferenceType(Object eObj) {
     if (null != eObj) {
       if ((eObj instanceof BooleanReference) || (eObj instanceof NumericReference) || (eObj instanceof StringReference)
-          || (eObj instanceof EnumerationReference) || (eObj instanceof ComplexValueReference) || (eObj instanceof CollectionValueReference)) {
+          || (eObj instanceof EnumerationReference) || (eObj instanceof ComplexValueReference)
+          || (eObj instanceof CollectionValueReference)) {
         return true;
       }
     }
@@ -231,10 +256,12 @@ public class DataValueExt {
 
   /**
    * Return appropriate dataValues from map of EObject with EReferences
+   * 
    * @param mapOfDataTypeWithFeatures
    * @return list of dataValue
    */
-  public static List<DataValue> getDataValuesFromMapOfEObjectAndEReferences(Map<EObject, List<EReference>> mapOfDataTypeWithFeatures) {
+  public static List<DataValue> getDataValuesFromMapOfEObjectAndEReferences(
+      Map<EObject, List<EReference>> mapOfDataTypeWithFeatures) {
     List<DataValue> result = new ArrayList<DataValue>(1);
     Set<EObject> keySet = mapOfDataTypeWithFeatures.keySet();
     if (null == keySet) {
@@ -269,6 +296,7 @@ public class DataValueExt {
 
   /**
    * Return true if dataValue is of kind (ownedDataValue)
+   * 
    * @param dataValue
    * @return
    */
@@ -292,6 +320,7 @@ public class DataValueExt {
 
   /**
    * Return true if dataValue is typed
+   * 
    * @param ownedDefaultValue
    * @return
    */
