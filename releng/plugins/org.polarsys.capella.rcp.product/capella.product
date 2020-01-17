@@ -3,6 +3,7 @@
 
 <product name="Capella" uid="org.polarsys.capella.rcp.product" id="org.polarsys.capella.rcp.product" application="org.polarsys.capella.core.platform.sirius.ui.perspective.id" version="1.4.0.qualifier" useFeatures="true" includeLaunchers="true">
 
+
    <configIni use="default">
    </configIni>
 
@@ -16,7 +17,7 @@
       </vmArgsMac>
    </launcherArgs>
 
-   <windowImages/>
+   <windowImages i16="/org.polarsys.capella.rcp/icons/Capella16x16.png" i32="/org.polarsys.capella.rcp/icons/Capella32x32.png" i48="/org.polarsys.capella.rcp/icons/Capella48x48.png"/>
 
    <splash
       location="org.polarsys.capella.core.platform.sirius.ui.perspective" />
@@ -29,7 +30,7 @@
             winMediumLow="../org.polarsys.capella.rcp/icons/Capella32x32_8bits.bmp"
             winLargeHigh="../org.polarsys.capella.rcp/icons/Capella48x48.bmp"
             winLargeLow="../org.polarsys.capella.rcp/icons/Capella48x48_8bits.bmp"
-            winExtraLargeHigh="../org.polarsys.capella.rcp/icons/Capella256x256.bmp" />
+            winExtraLargeHigh="../org.polarsys.capella.rcp/icons/Capella256x256.bmp"/>
       </win>
    </launcher>
 
