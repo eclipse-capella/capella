@@ -63,6 +63,7 @@ public class NavigationAdvisor {
 
       if (partType instanceof Component) {
         navigableElements.addAll(computeNavigableElements(partType));
+        navigableElements.remove(part);
       }
     }
 
