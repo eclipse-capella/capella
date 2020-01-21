@@ -24,7 +24,7 @@
 
    <splash
       location="org.polarsys.capella.core.platform.sirius.ui.perspective" />
-   <launcher name="Capella">
+   <launcher>
       <win useIco="false">
          <bmp
             winSmallHigh="../org.polarsys.capella.rcp/icons/Capella16x16.bmp"
