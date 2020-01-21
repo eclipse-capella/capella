@@ -20,7 +20,7 @@
       </vmArgsMac>
    </launcherArgs>
 
-   <windowImages i16="../org.polarsys.capella.rcp/icons/Capella16x16.png" i32="../org.polarsys.capella.rcp/icons/Capella32x32.png" i48="../org.polarsys.capella.rcp/icons/Capella48x48.png" i64="../org.polarsys.capella.rcp/icons/Capella64x64.png" i128="../org.polarsys.capella.rcp/icons/Capella128x128.png" i256="../org.polarsys.capella.rcp/icons/Capella256x256.png"/>
+   <windowImages i16="../org.polarsys.capella.rcp/icons/Capella16x16.gif"/>
 
    <splash
       location="org.polarsys.capella.core.platform.sirius.ui.perspective" />
@@ -45,6 +45,7 @@
       <solaris include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</solaris>
       <windows include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</windows>
    </vm>
+
 
    <plugins>
    </plugins>
