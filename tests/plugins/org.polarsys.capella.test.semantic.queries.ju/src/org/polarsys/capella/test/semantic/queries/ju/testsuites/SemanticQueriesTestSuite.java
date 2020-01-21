@@ -67,6 +67,7 @@ import org.polarsys.capella.test.semantic.queries.ju.testcases.InterfaceGenerali
 import org.polarsys.capella.test.semantic.queries.ju.testcases.InterfaceGeneralizingElements;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.InterfaceInheritedExchangedItems;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.PhysicalAllocatedComponentPorts;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.PropertyAssociation;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.PropertyTypeElements;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.PropertyValueGroup_applying_valued_element;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.PropertyValue_applying_valued_element;
@@ -124,6 +125,7 @@ public class SemanticQueriesTestSuite extends BasicTestSuite {
     tests.add(new RelationshipGeneralizationTarget());
     tests.add(new RelationshipAssociationRoles());
     tests.add(new AbstractTypeTypingElements());
+    tests.add(new PropertyAssociation());
     tests.add(new PropertyTypeElements());
     tests.add(new CapellaRelationshipsGeneralizationSource());
     tests.add(new CapellaRelationshipsGeneralizationTarget());
