@@ -47,8 +47,11 @@ public class MigrationContribution extends AbstractMigrationContribution {
         return URI.decode(ActorRefactoringMigrationContribution.MAPPINGS.get(mapping));
       }
     } else if (feature == LayoutPackage.Literals.ISEMANTIC_LAYOUT__APPLIED_FILTERS) {
-      if (!(excludedFilters.contains(value))) {
-        return FilterMigrationContribution.getValidFilterNameCandidate((String) value);
+      if (!(excludedFilters.contains(value)) && value instanceof String) {
+        String filterName = (String) value;
+        if (!filterName.endsWith(".filter")) {
+          return FilterMigrationContribution.getValidFilterNameCandidate(filterName);
+        }
       }
     }
     return super.getValue(peekObject, feature, value, position, resource, context);
