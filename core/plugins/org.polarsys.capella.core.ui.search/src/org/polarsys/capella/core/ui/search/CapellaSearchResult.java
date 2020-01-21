@@ -10,12 +10,21 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.search;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.eclipse.core.resources.IProject;
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.ETypedElement;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.search.ui.text.AbstractTextSearchResult;
 import org.eclipse.search.ui.text.IEditorMatchAdapter;
@@ -26,9 +35,15 @@ public class CapellaSearchResult extends AbstractTextSearchResult {
 
   private CapellaSearchQuery capellaSearchQuery;
 
+  /**
+   * Current Search Entries
+   */
+  private Map<Object, Collection<Object>> searchEntries;
+
   public CapellaSearchResult(CapellaSearchQuery capellaSearchQuery) {
     this.capellaSearchQuery = capellaSearchQuery;
     setActiveMatchFilters(new MatchFilter[] {}); // By default, no filter is activated
+    searchEntries = new HashMap<Object, Collection<Object>>();
   }
 
   @Override
@@ -310,4 +325,130 @@ public class CapellaSearchResult extends AbstractTextSearchResult {
         CapellaSearchMatchFilter.REPRESENTATION //
     };
   }
+
+  /////////
+
+  /**
+   * {@inheritDoc}
+   */
+  public AbstractCapellaSearchResultEntry insert(Object file, AbstractCapellaSearchResultEntry entry, boolean notify) {
+    if (searchEntries.get(file) == null) {
+      searchEntries.put(file, new ArrayList<Object>());
+    }
+    insert2(searchEntries.get(file), entry, notify);
+    return entry;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public AbstractCapellaSearchResultEntry insert(Object file, AbstractCapellaSearchResultEntry entry, Object eTypedElem, String valuation,
+      boolean notify) {
+    return insert5(entry, eTypedElem, valuation, notify);
+  }
+
+  /**
+   * Inserts & merges an entry sequence into an existing entry sequence hierarchy
+   * 
+   * @param currentEntrySubHierarchyCollection
+   * @param entryToInsert
+   * @param notify
+   */
+  private void insert2(Collection<Object> currentEntrySubHierarchyCollection, AbstractCapellaSearchResultEntry entryToInsert,
+      boolean notify) {
+
+      boolean alreadyExist = false;
+      for (Object currentEntrySubHierarchy : currentEntrySubHierarchyCollection) {
+        if (alreadyExist = currentEntrySubHierarchy.equals(entryToInsert)) {
+          updateInsertionPoint((AbstractCapellaSearchResultEntry) currentEntrySubHierarchy, (AbstractCapellaSearchResultEntry) entryToInsert);
+          insert3(currentEntrySubHierarchy, entryToInsert.getResults(), notify);
+          break;
+        }
+      }
+      if (!alreadyExist) {
+        currentEntrySubHierarchyCollection.add(entryToInsert);
+        if (notify) {
+          // fireItemAdded(entryToInsert);
+      }
+    }
+  }
+
+  /**
+   * Inserts & merges an entry into an existing entry sequence hierarchy
+   * 
+   * @param currentEntrySubHierarchy
+   * @param entrySubtreeToInsertCollection
+   * @param notify
+   */
+  private void insert3(Object currentEntrySubHierarchy, Collection<Object> entrySubtreeToInsertCollection,
+      boolean notify) {
+    for (Object e2i : entrySubtreeToInsertCollection) {
+      if (e2i instanceof AbstractCapellaSearchResultEntry && currentEntrySubHierarchy instanceof AbstractCapellaSearchResultEntry) {
+        if (currentEntrySubHierarchy.equals(e2i)) {
+          updateInsertionPoint((AbstractCapellaSearchResultEntry) currentEntrySubHierarchy, (AbstractCapellaSearchResultEntry) e2i);
+        }
+        insert2(((AbstractCapellaSearchResultEntry) currentEntrySubHierarchy).getResults(), (AbstractCapellaSearchResultEntry) e2i, notify);
+      }
+    }
+  }
+
+  /**
+   * Inserts & merges an entry sequence into an existing entry
+   * 
+   * @param compoundEntryToInsert
+   * @param entryToInsert
+   * @param notify
+   * 
+   * @return newly inserted occurence entry
+   */
+  private AbstractCapellaSearchResultEntry insert5(AbstractCapellaSearchResultEntry entryHierarchyIntoWhichInsert, Object eTypedElem, String text,
+      boolean notify) {
+    CapellaSearchResultOccurence occurence = null;
+    for (Object result : entryHierarchyIntoWhichInsert.getResults()) {
+      if (result instanceof CapellaSearchResultOccurence) {
+        AbstractCapellaSearchResultEntry oc = (AbstractCapellaSearchResultEntry) result;
+        if (isAnInvalidETypedElement(((EObject) oc.getSource()), (ETypedElement) eTypedElem)
+            || isAnAlreadyExistingOccurenceValuation(text, (ETypedElement) eTypedElem, (CapellaSearchResultOccurence) oc)) {
+          return occurence;
+        }
+      }
+    }
+    occurence = new CapellaSearchResultOccurence(entryHierarchyIntoWhichInsert,
+        entryHierarchyIntoWhichInsert.getSource(), eTypedElem, text, true);
+
+    entryHierarchyIntoWhichInsert.addChildren(occurence);
+
+    if (notify) {
+      // fireItemAdded(occurence);
+    }
+    return occurence;
+  }
+
+  private void updateInsertionPoint(AbstractCapellaSearchResultEntry oldEntry, AbstractCapellaSearchResultEntry newEntry) {
+    oldEntry.setMatchedOnce(!oldEntry.wasMatchedAtleastOnce() ? newEntry.wasMatchedAtleastOnce() : true);
+
+  }
+
+  private boolean isAnAlreadyExistingOccurenceValuation(String valuation, ETypedElement eTypedElem,
+      CapellaSearchResultOccurence oc) {
+    return eTypedElem.equals(oc.getTypedElement())
+        && valuation.equals(getTextFromETypedElement(((EObject) oc.getSource()), oc.getTypedElement()));
+  }
+
+  private boolean isAnInvalidETypedElement(EObject obj, ETypedElement eTypedElem) {
+    for (EAttribute attribute : obj.eClass().getEAllAttributes()) {
+      if (attribute.equals(eTypedElem)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  private String getTextFromETypedElement(EObject obj, ETypedElement elem) {
+    if (elem instanceof EAttribute) {
+      return EcoreUtil.convertToString(((EAttribute) elem).getEAttributeType(), obj.eGet((EStructuralFeature) elem));
+    }
+    return ""; //$NON-NLS-1$
+  }
+
 }
