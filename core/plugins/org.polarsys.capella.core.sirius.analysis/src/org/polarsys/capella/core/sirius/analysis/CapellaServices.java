@@ -1366,11 +1366,9 @@ public class CapellaServices {
       container = container.eContainer();
     }
     if (container instanceof Component) {
-      return (Component)container;
-    } else if (container instanceof SystemAnalysis 
-            || container instanceof LogicalArchitecture
-            || container instanceof PhysicalArchitecture
-            || container instanceof EPBSArchitecture) {
+      return (Component) container;
+    } else if (container instanceof SystemAnalysis || container instanceof LogicalArchitecture
+        || container instanceof PhysicalArchitecture || container instanceof EPBSArchitecture) {
       return ((BlockArchitecture) container).getSystem();
     }
     return null;
@@ -1435,11 +1433,12 @@ public class CapellaServices {
       EObject target = current;
       if ((current instanceof DSemanticDecorator) && (((DSemanticDecorator) current).getTarget() != null)) {
         target = ((DSemanticDecorator) current).getTarget();
+        Object oDiagram = CsServices.getService().getInterpreterVariable(target, IInterpreterSiriusVariables.DIAGRAM);
+        if (oDiagram instanceof DDiagram) {
+          return (DDiagram) oDiagram;
+        }
       }
-      Object oDiagram = CsServices.getService().getInterpreterVariable(target, IInterpreterSiriusVariables.DIAGRAM);
-      if (oDiagram instanceof DDiagram) {
-        return (DDiagram) oDiagram;
-      }
+
     }
 
     return parent;
