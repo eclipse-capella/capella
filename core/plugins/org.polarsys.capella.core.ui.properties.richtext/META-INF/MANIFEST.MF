@@ -17,6 +17,7 @@ Require-Bundle: org.eclipse.sirius.diagram.ui,
  org.polarsys.capella.core.model.handler,
  org.polarsys.kitalpha.richtext.widget.tools
 Export-Package: org.polarsys.capella.core.ui.properties.richtext,
+ org.polarsys.capella.core.ui.properties.richtext.clipboard,
  org.polarsys.capella.core.ui.properties.richtext.fields,
  org.polarsys.capella.core.ui.properties.richtext.navigation,
  org.polarsys.capella.core.ui.properties.richtext.propertysheet,
