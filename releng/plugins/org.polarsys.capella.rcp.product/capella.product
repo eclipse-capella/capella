@@ -22,14 +22,9 @@
    <splash
       location="org.polarsys.capella.core.platform.sirius.ui.perspective" />
    <launcher>
-      <win useIco="false">
-         <bmp
-            winSmallHigh="launch icons/Capella16x16.bmp"
-            winSmallLow="launch icons/Capella16x16_8bits.bmp"
-            winMediumHigh="launch icons/Capella32x32.bmp"
-            winMediumLow="launch icons/Capella32x32_8bits.bmp"
-            winLargeHigh="launch icons/Capella48x48.bmp"
-            winLargeLow="launch icons/Capella48x48_8bits.bmp"/>
+      <win useIco="true">
+         <ico path="launch icons/Capellatest.ico"/>
+         <bmp/>
       </win>
    </launcher>
 
