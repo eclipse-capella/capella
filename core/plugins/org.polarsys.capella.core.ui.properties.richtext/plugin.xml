@@ -88,7 +88,7 @@
             categoryId="org.polarsys.capella.core.platform.sirius.ui.navigator"
             defaultHandler="org.polarsys.capella.core.ui.properties.richtext.handlers.CopyAsDescriptionLinkHandler"
             id="org.polarsys.capella.core.ui.properties.richtext.CopyAsDescriptionLink"
-            name="%command.copyAsDescriptionLink.name ">
+            name="%command.copyAsDescriptionLink.name">
       </command>
    </extension>
    <extension
