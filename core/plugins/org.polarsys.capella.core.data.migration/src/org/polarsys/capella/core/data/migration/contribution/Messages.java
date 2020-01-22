@@ -18,6 +18,7 @@ import org.eclipse.osgi.util.NLS;
  */
 public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.core.data.migration.contribution.messages"; //$NON-NLS-1$
+  public static String MigrationAction_ConfirmationDialog_Title;
   public static String MigrationAction_ConfirmationDialog_Message;
   public static String MigrationAction_ConfirmationDialog_ToggleMessage;
   public static String MigrationAction_UidMigration;

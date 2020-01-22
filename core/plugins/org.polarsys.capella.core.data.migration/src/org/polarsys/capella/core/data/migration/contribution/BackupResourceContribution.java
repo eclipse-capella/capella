@@ -59,9 +59,9 @@ public class BackupResourceContribution extends AbstractMigrationContribution {
 
         @Override
         public void run() {
-          MessageDialogWithToggle dialog =
-              MessageDialogWithToggle.openOkCancelConfirm(context.getShell(), context.getName(),
-                  Messages.MigrationAction_ConfirmationDialog_Message, Messages.MigrationAction_ConfirmationDialog_ToggleMessage, true, null, null);
+          MessageDialogWithToggle dialog = MessageDialogWithToggle.openOkCancelConfirm(context.getShell(),
+              Messages.MigrationAction_ConfirmationDialog_Title, Messages.MigrationAction_ConfirmationDialog_Message,
+              Messages.MigrationAction_ConfirmationDialog_ToggleMessage, true, null, null);
           if (dialog.getReturnCode() != IDialogConstants.OK_ID) {
             result[0] = Status.CANCEL_STATUS;
           }

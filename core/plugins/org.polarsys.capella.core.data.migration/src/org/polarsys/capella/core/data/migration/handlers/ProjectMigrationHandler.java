@@ -17,6 +17,7 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.expressions.IEvaluationContext;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.ui.tools.internal.actions.repair.RepresentationFilesNeedCloseSessionValidator;
@@ -55,9 +56,33 @@ public class ProjectMigrationHandler extends AbstractMigrationHandler {
   }
 
   @Override
-  protected boolean isValidSelection(List<Object> selection) {
+  public boolean isValidSelection(List<Object> selection) {
+    // The selection is valid only if each element is an open project with a melodymodeller file inside.
     for (Object select : selection) {
-      if (!(select instanceof IProject)) {
+      if (select instanceof IProject) {
+        IProject project = (IProject) select;
+        if (!project.isOpen()) {
+          // One element is a closed project.
+          return false;
+        }
+          try {
+            boolean hasMelodymodellerFile = false;
+            for (IResource content : project.members()) {
+              if ("melodymodeller".equals(content.getFileExtension())) {
+                hasMelodymodellerFile = true;
+                break;
+              }
+            }
+            if (!hasMelodymodellerFile) {
+              // One element has no melodymodeller file.
+              return false;
+            }
+          } catch (CoreException e) {
+            // One element does not exist anymore or is not an open project.
+            return false;
+          }
+      } else {
+        // One element is not a project.
         return false;
       }
     }
