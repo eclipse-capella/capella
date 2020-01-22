@@ -24,13 +24,13 @@
    <launcher>
       <win useIco="false">
          <bmp
-            winSmallHigh="/org.polarsys.capella.rcp.product/launch icons/Capella16x16.bmp"
-            winSmallLow="/org.polarsys.capella.rcp.product/launch icons/Capella16x16_8bits.bmp"
-            winMediumHigh="/org.polarsys.capella.rcp.product/launch icons/Capella32x32.bmp"
-            winMediumLow="/org.polarsys.capella.rcp.product/launch icons/Capella32x32_8bits.bmp"
-            winLargeHigh="/org.polarsys.capella.rcp.product/launch icons/Capella48x48.bmp"
-            winLargeLow="/org.polarsys.capella.rcp.product/launch icons/Capella48x48_8bits.bmp"
-            winExtraLargeHigh="/org.polarsys.capella.rcp.product/launch icons/Capella256x256.bmp"/>
+            winSmallHigh="launch icons/Capella16x16.bmp"
+            winSmallLow="launch icons/Capella16x16_8bits.bmp"
+            winMediumHigh="launch icons/Capella32x32.bmp"
+            winMediumLow="launch icons/Capella32x32_8bits.bmp"
+            winLargeHigh="launch icons/Capella48x48.bmp"
+            winLargeLow="launch icons/Capella48x48_8bits.bmp"
+            winExtraLargeHigh="launch icons/Capella256x256.bmp"/>
       </win>
    </launcher>
 
