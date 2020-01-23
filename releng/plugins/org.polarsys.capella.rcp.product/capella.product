@@ -3,6 +3,7 @@
 
 <product name="Capella" uid="org.polarsys.capella.rcp.product" id="org.polarsys.capella.rcp.product" application="org.polarsys.capella.core.platform.sirius.ui.perspective.id" version="1.4.0.qualifier" useFeatures="true" includeLaunchers="true">
 
+
    <configIni use="default">
    </configIni>
 
@@ -22,7 +23,7 @@
       location="org.polarsys.capella.core.platform.sirius.ui.perspective" />
    <launcher>
       <win useIco="true">
-         <ico path="launch icons/Capella.ico"/>
+         <ico path="launch icons/Capella_launch_icon.ico"/>
          <bmp/>
       </win>
    </launcher>
