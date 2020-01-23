@@ -25,6 +25,7 @@ import org.eclipse.ui.handlers.HandlerUtil;
 import org.polarsys.capella.core.data.migration.Messages;
 import org.polarsys.capella.core.data.migration.MigrationConstants;
 import org.polarsys.capella.core.data.migration.MigrationHelpers;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 
 /**
  * 
@@ -57,7 +58,7 @@ public class ProjectMigrationHandler extends AbstractMigrationHandler {
 
   @Override
   public boolean isValidSelection(List<Object> selection) {
-    // The selection is valid only if each element is an open project with a melodymodeller file inside.
+    // The selection is valid only if each element is an open project with a capella model inside.
     for (Object select : selection) {
       if (select instanceof IProject) {
         IProject project = (IProject) select;
@@ -66,15 +67,15 @@ public class ProjectMigrationHandler extends AbstractMigrationHandler {
           return false;
         }
           try {
-            boolean hasMelodymodellerFile = false;
+            boolean hasCapellaModel = false;
             for (IResource content : project.members()) {
-              if ("melodymodeller".equals(content.getFileExtension())) {
-                hasMelodymodellerFile = true;
+              if (CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION.equals(content.getFileExtension())) {
+                hasCapellaModel = true;
                 break;
               }
             }
-            if (!hasMelodymodellerFile) {
-              // One element has no melodymodeller file.
+            if (!hasCapellaModel) {
+              // One element has no capella model.
               return false;
             }
           } catch (CoreException e) {
