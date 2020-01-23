@@ -1424,7 +1424,10 @@ public class CapellaServices {
    * used everywhere
    * 
    * @param current
-   * @return current if it is a diagram or the diagram that contains current if it is a DDiagramElement
+   * @return current if it is a diagram or the diagram that contains current if it is a DDiagramElement.
+   * 
+   *         May return null: If used in a style computation or a decoration, the expression will be called twice,
+   *         the first time, the view doesn't have yet a container nor a semantic element.
    */
   public DDiagram getDiagramContainer(EObject current) {
     DDiagram parent = DiagramHelper.getService().getDiagramContainer(current);
