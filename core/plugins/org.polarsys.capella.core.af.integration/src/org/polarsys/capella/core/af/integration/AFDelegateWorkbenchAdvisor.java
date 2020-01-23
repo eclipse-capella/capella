@@ -15,7 +15,7 @@ import org.polarsys.capella.core.model.handler.advisor.DefaultDelegateWorkbenchA
 /**
  * 
  */
-// test pull request
+// test pull request 2
 public class AFDelegateWorkbenchAdvisor extends DefaultDelegateWorkbenchAdvisor {
 
   public AFDelegateWorkbenchAdvisor() {
