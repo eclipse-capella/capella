@@ -14,8 +14,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 import org.polarsys.kitalpha.richtext.common.intf.MDERichTextWidget;
 import org.polarsys.kitalpha.richtext.nebula.widget.MDENebulaBasedRichTextWidget;
-import org.polarsys.kitalpha.richtext.nebula.widget.MDENebulaRichTextConfiguration;
-import org.polarsys.kitalpha.richtext.nebula.widget.MDERichTextConstants;
 import org.polarsys.kitalpha.richtext.widget.factory.MDERichTextFactory;
 
 /**
@@ -29,40 +27,34 @@ public class RichtextManager {
    * A temporary shell to contain the editor
    */
   private Shell invisibleShell;
-  
+
   private RichtextManager() {
     invisibleShell = new Shell();
   }
-  
+
   public static RichtextManager getInstance() {
     if (instance == null) {
       instance = new RichtextManager();
     }
     return instance;
   }
-  
+
   public MDERichTextWidget getRichtextWidget(Composite parent) {
     if (richtextWidget == null || richtextWidget.isEditorDisposed()) {
-      MDERichTextFactory f = new MDERichTextFactory() {
-        @Override
-        protected MDERichTextFactory initializeMDEMinimalToolbar() {
-          MDERichTextFactory factory = super.initializeMDEMinimalToolbar();
-          ((MDENebulaRichTextConfiguration) getConfiguration()).removeToolbarItems(MDERichTextConstants.SUBSCRIPT,
-              MDERichTextConstants.SUPERSCRIPT);
-          return factory;
-        }
-      };
-      MDERichTextWidget widget = f.createMinimalRichTextWidget(parent);
-      if (widget instanceof MDENebulaBasedRichTextWidget)
+      MDERichTextFactory factory = new CapellaMDERichTextFactory();
+      MDERichTextWidget widget = factory.createMinimalRichTextWidget(parent);
+
+      if (widget instanceof MDENebulaBasedRichTextWidget) {
         richtextWidget = (MDENebulaBasedRichTextWidget) widget;
-    }
-    else {
+      }
+
+    } else {
       richtextWidget.setParent(parent);
     }
-    
+
     return richtextWidget;
   }
-  
+
   /**
    * 
    * Remove the editor from its actual container and put it in the invisible shell
@@ -71,7 +63,7 @@ public class RichtextManager {
     if (!invisibleShell.isDisposed() && !richtextWidget.isEditorDisposed() && richtextWidget.getParent() == parent)
       richtextWidget.setParent(invisibleShell);
   }
-  
+
   /**
    * 
    * Move the editor to new container
@@ -81,18 +73,19 @@ public class RichtextManager {
       richtextWidget.setParent(parent);
     }
   }
-  
+
   /**
-   * Returns whether the nebula rich text is enable or disabled by the end-user.
-   * It's provided as a fallback solution is case of issues with richtext.
-   * By default richtext is enabled.
+   * Returns whether the nebula rich text is enable or disabled by the end-user. It's provided as a fallback solution is
+   * case of issues with richtext. By default richtext is enabled.
+   * 
    * @return
    */
   public boolean isRichTextEnabled() {
-      String property = System.getProperty("disable.nebula.richtext");
-      if(property != null) {
-          return !Boolean.valueOf(property);            
-      }
-      return true;
+    String property = System.getProperty("disable.nebula.richtext");
+    if (property != null) {
+      return !Boolean.valueOf(property);
+    }
+    return true;
   }
+
 }
