@@ -114,7 +114,6 @@ import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideFunction;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideFunctionalExchange;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
-// test commit githun
 /**
  * Shared helpers for Architecture Blank diagrams
  */
