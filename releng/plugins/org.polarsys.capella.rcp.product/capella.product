@@ -3,7 +3,6 @@
 
 <product name="Capella" uid="org.polarsys.capella.rcp.product" id="org.polarsys.capella.rcp.product" application="org.polarsys.capella.core.platform.sirius.ui.perspective.id" version="1.4.0.qualifier" useFeatures="true" includeLaunchers="true">
 
-
    <configIni use="default">
    </configIni>
 
@@ -23,7 +22,7 @@
       location="org.polarsys.capella.core.platform.sirius.ui.perspective" />
    <launcher>
       <win useIco="true">
-         <ico path="launch icons/Capellatest.ico"/>
+         <ico path="/org.polarsys.capella.rcp/icons/Capellatest.ico"/>
          <bmp/>
       </win>
    </launcher>
@@ -36,7 +35,6 @@
       <solaris include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</solaris>
       <windows include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</windows>
    </vm>
-
 
    <plugins>
    </plugins>
