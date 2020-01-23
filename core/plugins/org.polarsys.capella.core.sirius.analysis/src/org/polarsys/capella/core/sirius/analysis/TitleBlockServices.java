@@ -613,5 +613,4 @@ public class TitleBlockServices {
     URL url = FileLocator.find(SiriusViewActivator.getInstance().getBundle(), new Path(imagePath), null);
     return ImageDescriptor.createFromURL(url).createImage();
   }
-
 }
