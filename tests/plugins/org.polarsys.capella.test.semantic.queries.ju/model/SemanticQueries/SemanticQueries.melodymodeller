@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_1.4.0-->
+<!--Capella_Version_null-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:libraries="http://www.polarsys.org/capella/common/libraries/1.4.0"
     xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.4.0"
@@ -123,7 +123,32 @@
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
           id="47884688-6299-4e92-a91e-1e408833ad3d" name="Interfaces"/>
       <ownedDataPkg xsi:type="org.polarsys.capella.core.data.information:DataPkg"
-          id="08e5291e-06d7-4aff-bf68-c21a91d075dc" name="Data"/>
+          id="08e5291e-06d7-4aff-bf68-c21a91d075dc" name="Data">
+        <ownedDataValues xsi:type="org.polarsys.capella.core.data.information.datavalue:BooleanReference"
+            id="3fe8b5d4-5dc9-45a0-a319-fcc709cf5d03" name="BooleanReference 1" abstractType="#7eadc13e-efe1-4435-bbe2-ab983b2b2ff9"
+            referencedValue="#3a6df611-c401-4bef-b56f-3946866f5760" referencedProperty="#4ff8c716-cf61-4448-b286-3c7c0c0eafee"/>
+        <ownedClasses xsi:type="org.polarsys.capella.core.data.information:Class"
+            id="820de81a-ee78-459e-a958-b0e8c07e3c31" name="Class 1">
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.information:Property"
+              id="4ff8c716-cf61-4448-b286-3c7c0c0eafee" name="Property 1" abstractType="#7eadc13e-efe1-4435-bbe2-ab983b2b2ff9">
+            <ownedMinCard xsi:type="org.polarsys.capella.core.data.information.datavalue:LiteralNumericValue"
+                id="ea8dbca5-ad42-4ea1-acfc-6eabf6564bd2" value="1"/>
+            <ownedMaxCard xsi:type="org.polarsys.capella.core.data.information.datavalue:LiteralNumericValue"
+                id="ba7f0d61-ddb6-4e00-9273-209e4f335e44" value="1"/>
+          </ownedFeatures>
+        </ownedClasses>
+        <ownedDataTypes xsi:type="org.polarsys.capella.core.data.information.datatype:BooleanType"
+            id="7eadc13e-efe1-4435-bbe2-ab983b2b2ff9" name="BooleanType 1">
+          <ownedInformationRealizations xsi:type="org.polarsys.capella.core.data.information:InformationRealization"
+              id="dfe379c9-fefd-4a30-aff7-eb5b9343e687" targetElement="#0b7b759b-5501-4131-b0f3-b3b6cc44b592"/>
+          <ownedLiterals xsi:type="org.polarsys.capella.core.data.information.datavalue:LiteralBooleanValue"
+              id="3a6df611-c401-4bef-b56f-3946866f5760" name="LiteralBooleanValue 1"
+              abstractType="#7eadc13e-efe1-4435-bbe2-ab983b2b2ff9"/>
+          <ownedDefaultValue xsi:type="org.polarsys.capella.core.data.information.datavalue:BooleanReference"
+              id="44a2b080-f498-424c-967c-bd993a8c6e24" name="" abstractType="#7eadc13e-efe1-4435-bbe2-ab983b2b2ff9"
+              referencedValue="#3a6df611-c401-4bef-b56f-3946866f5760"/>
+        </ownedDataTypes>
+      </ownedDataPkg>
       <ownedRolePkg xsi:type="org.polarsys.capella.core.data.oa:RolePkg" id="2a0cd293-7315-48ed-85af-57c72ed5b105"
           name="Roles">
         <ownedRoles xsi:type="org.polarsys.capella.core.data.oa:Role" id="828e21b6-3046-4367-b30c-7ac521f0487f"
