@@ -23,7 +23,7 @@
       location="org.polarsys.capella.core.platform.sirius.ui.perspective" />
    <launcher>
       <win useIco="true">
-         <ico path="launch icons/Capella_launch_icon.ico"/>
+         <ico path="launch_icons/Capella_launch_icon.ico"/>
          <bmp/>
       </win>
    </launcher>
