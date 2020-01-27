@@ -71,6 +71,7 @@
 							<type>eclipse-feature</type>
 						</dependency>
 					</dependencies>
+					<executionEnvironment>JavaSE-1.8</executionEnvironment>
 				</configuration>
 				<executions>
 					<execution>
@@ -80,6 +81,7 @@
 							<applicationsArgs>
 								<args>-application ${converterApplication.name} ${targetPlatform.id}/${targetPlatform.name}</args>
 							</applicationsArgs>
+							<executionEnvironment>JavaSE-1.8</executionEnvironment>
 						</configuration>
 						<goals>
 							<goal>eclipse-run</goal>
