@@ -10,7 +10,7 @@ pipeline {
     
     FROM_PR = "${env.BRANCH_NAME}".contains("PR-");
     
-    PRODUCT_BRANCH = "master"
+    PRODUCT_BRANCH = "v1.4.x"
     PRODUCT_KEY = "${env.PRODUCT_BRANCH}".replaceFirst(/^v/, "");
 	
     BUILD_KEY = "${env.FROM_PR}".replace("true", "${env.PRODUCT_KEY}-${env.BRANCH_NAME}-${env.BUILD_ID}").replace("false", "${env.BRANCH_NAME}-${env.BUILD_ID}").replaceAll('/','-');
