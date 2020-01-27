@@ -250,24 +250,7 @@
 	      </propertyTester>
 	      
 	      
-   </extension>
-
-
-  <extension
-         point="org.eclipse.ui.navigator.navigatorContent">
-      <actionProvider
-            class="org.polarsys.capella.core.commands.preferences.model.TestActionProvider"
-            id="capella.preferences.actions.dynamic">
-         <enablement>
-		                  <test forcePluginActivation="true"
-					               property="org.polarsys.capella.core.commands.preferences.properties.capellaCommandsPreferences"
-					               value="org.polarsys.capella.core.patterns.ui.applyPattern">
-				       	  </test>
-           </enablement>
-         
-      </actionProvider>
-   </extension>
-   
+   </extension>   
    
    <!-- shall not be activated : not fully tested -->
    <!--extension

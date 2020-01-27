@@ -38,7 +38,6 @@
         <module>org.polarsys.capella.common.ui.massactions.doc</module>
         <module>org.polarsys.capella.core.re.updateconnections.doc</module>
         <module>org.polarsys.capella.diffmerge.doc</module>
-        <module>org.polarsys.capella.patterns.doc</module>
         <module>org.polarsys.capella.preferences.doc</module>
         <module>org.polarsys.capella.properties.doc</module>
         <module>org.polarsys.capella.re.doc</module>

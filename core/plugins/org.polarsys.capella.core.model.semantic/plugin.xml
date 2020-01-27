@@ -18,11 +18,4 @@
             class="org.polarsys.capella.core.model.semantic.prefs.SemanticModelPreferences">
       </initializer>
    </extension>
-   <extension
-         point="org.polarsys.capella.core.model.semantic.semanticMetadata">
-      <packageFilter
-            nsURI="http://www.polarsys.org/kitalpha/patterns/emde/1.0.0">
-      </packageFilter>
-   </extension>
-
 </plugin>

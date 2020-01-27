@@ -24,27 +24,6 @@
    </license>
 
    <plugin
-         id="org.eclipse.emf.diffmerge.patterns.core.gen.cdo"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.diffmerge.patterns.support.gen.cdo"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.diffmerge.patterns.templates.gen.cdo"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.polarsys.capella.common.data.activity.gen.cdo"
          download-size="0"
          install-size="0"
@@ -95,13 +74,6 @@
 
    <plugin
          id="org.polarsys.kitalpha.emde.model.cdo"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.polarsys.kitalpha.patterns.emde.gen.cdo"
          download-size="0"
          install-size="0"
          version="0.0.0"
