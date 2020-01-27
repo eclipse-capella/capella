@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,10 +15,13 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -48,7 +51,9 @@ import org.polarsys.capella.core.data.migration.MigrationHelpers;
 public class MigrationCommandLine extends AbstractCommandLine {
 
   private Display display;
-
+  private boolean initialValue_RefreshOnOpening;
+  private boolean initialValue_AutoRefresh;
+  
   @Override
   public boolean projectVersionIsCompliant() throws CommandLineException {
     // FIXME: 'filepath'and'outputfolder' are not used. Maybe they mustn'tbe mandatory in CommandLine
@@ -75,10 +80,10 @@ public class MigrationCommandLine extends AbstractCommandLine {
 
         setRefreshPrefs();
         migrateAllImportedProjects(display.getActiveShell());
-
+        resetRefreshPrefs();
+        
         PlatformUI.getWorkbench().close();
       }
-
     });
 
     return true;
@@ -104,15 +109,29 @@ public class MigrationCommandLine extends AbstractCommandLine {
    *
    */
   public void setRefreshPrefs() {
+      IPreferenceStore preferenceStore = SiriusEditPlugin.getPlugin().getPreferenceStore();
+      initialValue_RefreshOnOpening = preferenceStore.getBoolean(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name());
+      preferenceStore = SiriusEditPlugin.getPlugin().getCorePreferenceStore();
+      initialValue_AutoRefresh = preferenceStore.getBoolean(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name());
 
-    IPreferenceStore preferenceStore = SiriusEditPlugin.getPlugin().getPreferenceStore();
+      doSetSiriusPrefs(true, true);
 
-    preferenceStore.setValue(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
-    preferenceStore.setValue(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), true);
+      return;
+    }
+    
+    private void resetRefreshPrefs() {
+        doSetSiriusPrefs(initialValue_RefreshOnOpening, initialValue_AutoRefresh);
+    }
 
-    return;
-  }
-  
+    private void doSetSiriusPrefs(boolean refreshOnOpening, boolean autoRefresh) {
+      IEclipsePreferences siriusUIPluginPreferences = InstanceScope.INSTANCE.getNode(SiriusEditPlugin.ID);
+      siriusUIPluginPreferences.putBoolean(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), refreshOnOpening);
+      
+      IEclipsePreferences siriusPluginPreferences = InstanceScope.INSTANCE.getNode(SiriusPlugin.ID);
+      siriusPluginPreferences.putBoolean(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), autoRefresh);
+    }
+
+    
   @Override
   public void checkArgs(IApplicationContext context) throws CommandLineException {
     // refreshing the workspace needed in case of folders removed from outside the workbench
