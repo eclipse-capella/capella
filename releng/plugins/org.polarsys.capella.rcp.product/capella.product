@@ -20,7 +20,7 @@
 
    <splash
       location="org.polarsys.capella.core.platform.sirius.ui.perspective" />
-   <launcher>
+   <launcher name="capella">
       <win useIco="false">
          <bmp
             winSmallHigh="../org.polarsys.capella.rcp/icons/Capella16x16.bmp"
@@ -98,8 +98,8 @@
       <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="2" />
-      <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
       <plugin id="org.eclipse.equinox.p2.reconciler.dropins" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
       <plugin id="org.eclipse.update.configurator" autoStart="true" startLevel="4" />
    </configurations>
 
