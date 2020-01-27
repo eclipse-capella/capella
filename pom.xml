@@ -82,6 +82,7 @@
 							<classifier>releng/plugins/org.polarsys.capella.targets/${target-platform-path}/capella.target-definition</classifier>
 						</artifact>
 					</target>
+      				<targetDefinitionIncludeSource>honor</targetDefinitionIncludeSource>
 					<environments>
 						<environment>
 							<os>win32</os>
@@ -146,7 +147,6 @@
 						<plugin id="org.polarsys.capella.core.data.res.editor" />
                         <plugin id="org.polarsys.capella.ui.views" />
 						<feature id="org.eclipse.nebula.widgets.richtext.feature" />
-						<feature id="org.polarsys.kitalpha.richtext.mde.tools.sirius.feature" />
 						<feature id="org.polarsys.kitalpha.richtext.widget.feature" />
 						<feature id="org.polarsys.capella.core.mylyn.feature" />
 					</excludes>
