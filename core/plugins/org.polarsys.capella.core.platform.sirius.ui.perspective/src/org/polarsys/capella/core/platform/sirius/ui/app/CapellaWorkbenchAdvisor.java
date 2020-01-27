@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,6 +44,7 @@ import org.eclipse.ui.statushandlers.AbstractStatusHandler;
 import org.eclipse.ui.statushandlers.StatusAdapter;
 import org.eclipse.ui.statushandlers.WorkbenchStatusDialogManager;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.platform.sirius.customisation.SiriusCustomizationPlugin;
 import org.polarsys.capella.common.tools.report.appenders.usage.UsageMonitoringLogger;
 import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
 import org.polarsys.capella.core.model.handler.advisor.DelegateWorkbenchAdvisor;
@@ -114,7 +115,7 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
     super.preStartup();
 
     // Ensure that Sirius customization are properly overidden by loading customisation plugin
-    org.polarsys.capella.common.platform.sirius.customisation.SiriusPlugin.getDefault();
+    SiriusCustomizationPlugin.getDefault();
 
     // force all workspace operations to be undoable
     // That's the easiest way to avoid undo operation on a capella project creation from clipboard (copy/paste).
