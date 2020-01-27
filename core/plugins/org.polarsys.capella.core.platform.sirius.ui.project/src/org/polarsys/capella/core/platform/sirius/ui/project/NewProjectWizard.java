@@ -190,7 +190,7 @@ public class NewProjectWizard extends BasicNewResourceWizard {
   public void init(IWorkbench workbench, IStructuredSelection currentSelection) {
     super.init(workbench, currentSelection);
     setWindowTitle(Messages.getString("NewProjectWizard.window.title")); //$NON-NLS-1$
-    ImageDescriptor descriptor = CapellaProjectActivator.getDefault().getImageDescriptor("projectWizard.png"); //$NON-NLS-1$
+    ImageDescriptor descriptor = CapellaProjectActivator.getDefault().getImageDescriptor("projectWizard_1.png"); //$NON-NLS-1$
     if (null == descriptor) {
       descriptor = ImageDescriptor.getMissingImageDescriptor();
     }

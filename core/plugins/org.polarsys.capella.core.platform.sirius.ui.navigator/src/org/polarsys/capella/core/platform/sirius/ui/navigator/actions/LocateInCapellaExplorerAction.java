@@ -10,9 +10,10 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.sirius.ui.navigator.actions;
 
+import javax.swing.Action;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
-import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -71,7 +72,7 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
       action.setImageDescriptor(
           ExtendedImageRegistry.getInstance().getImageDescriptor(EObjectLabelProviderHelper.getImage(referenced)));
     } else {
-      action.setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor("capella_16.png"));
+      action.setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor("capella_16_1.png"));
     }
     action.setText(NLS.bind(message, NamingHelper.getDefaultTitle(referenced)));
     return action;

@@ -14,6 +14,8 @@ These followings icons are made available under the terms of the Eclipse Public 
 /icons/showInDiagram.gif - capella.platform.sirius.ui.navigator - capella.platform.sirius.ui.navigator/icons/showInDiagram.gif
 /icons/viewpoint.gif - org.eclipse.gmf.runtime.common.ui - org.eclipse.gmf.runtime.common.ui/icons/topic.gif
 
+/icons/capella_16_1.png - capella.platform.sirius.ui.navigator - capella.platform.sirius.ui.navigator/icons/capella_16_1.png
+
 /icons/QuickFiltersMenu.png - org.eclipse.ui.views - org.eclipse.ui.views/icons/full/elcl16/filter_ps.png
 /icons/SearchCaseSensitive.png - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/font.png
 /icons/SearchInDescription.gif - org.polarsys.capella.core.sirius.analysis - org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Description.gif

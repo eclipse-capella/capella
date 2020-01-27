@@ -25,7 +25,7 @@
    <extension
          point="org.eclipse.ui.ide.projectNatureImages">
       <image
-            icon="icons/capella_8x8.png"
+            icon="icons/capella_8x8_1.png"
             id="capella.project.nature.image"
             natureId="org.polarsys.capella.project.nature">
       </image>
@@ -36,7 +36,7 @@
       <wizard
             category="capella.sample"
             class="org.polarsys.capella.core.platform.sirius.ui.project.sample.SampleModelWizard"
-            icon="icons/capella_16.png"
+            icon="icons/capella_16_1.png"
             id="capella.project.wizard.sample"
             name="%CapellaSample">
          <description>
@@ -55,7 +55,7 @@
             category="org.polarsys.capella.wizards"
             class="org.polarsys.capella.core.platform.sirius.ui.project.NewProjectWizard"
             hasPages="true"
-            icon="icons/capella_16.png"
+            icon="icons/capella_16_1.png"
             id="capella.project.wizard"
             name="%CapellaProject"
             project="true">
