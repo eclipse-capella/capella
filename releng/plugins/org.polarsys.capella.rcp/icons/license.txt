@@ -4,14 +4,10 @@ These followings icons are made available under the terms of the Eclipse Public 
 
 <icon file path> - <original eclipse plug-in> - <original file path>
 
-/icons/Capella16x16_8bits.bmp - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella16x16_8bits.bmp
-/icons/Capella16x16.bmp - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella16x16.bmp
+
 /icons/Capella16x16.png - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella16x16.png
 /icons/Capella32x32.png - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella32x32.png
-/icons/Capella32x32_8bits.bmp - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella32x32_8bits.bmp
-/icons/Capella32x32.bmp - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella32x32.bmp
 /icons/Capella48x48.png - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella48x48.png
-/icons/Capella48x48_8bits.bmp - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella48x48_8bits.bmp
-/icons/Capella48x48.bmp - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella48x48.bmp
+/icons/Capella64x64.png - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella64x64.png
 /icons/intro-capella.png - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/intro-capella.png
 /icons/CapellaAbout.png - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/CapellaAbout.png
