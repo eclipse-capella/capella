@@ -13,5 +13,6 @@ These followings icons are made available under the terms of the Eclipse Public 
 /icons/Capella48x48.png - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella48x48.png
 /icons/Capella48x48_8bits.bmp - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella48x48_8bits.bmp
 /icons/Capella48x48.bmp - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella48x48.bmp
+/icons/Capella256x256.bmp - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/Capella256x256.bmp
 /icons/intro-capella.png - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/intro-capella.png
 /icons/CapellaAbout.png - org.polarsys.capella.rcp - org.polarsys.capella.rcp/icons/CapellaAbout.png
