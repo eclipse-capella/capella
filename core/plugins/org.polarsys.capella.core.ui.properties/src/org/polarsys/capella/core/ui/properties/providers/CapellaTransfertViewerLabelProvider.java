@@ -26,6 +26,7 @@ import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.DataLabelProvider;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
@@ -106,10 +107,22 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
     if ((object instanceof ComponentExchange) && !(object instanceof CommunicationMean)) {
       ComponentExchange connection = (ComponentExchange) object;
       if (TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(connection))) {
-        Collection<Part> sourceParts = ComponentExchangeExt.getSourceParts(connection);
-        Collection<Part> targetParts = ComponentExchangeExt.getTargetParts(connection);
-        sourceElement = (NamedElement) (sourceParts.size() > 0 ? sourceParts.toArray()[0] : null);
-        targetElement = (NamedElement) (targetParts.size() > 0 ? targetParts.toArray()[0] : null);
+        Component sourceComponent  = ComponentExchangeExt.getSourceComponent(connection);
+        Component targetComponent = ComponentExchangeExt.getTargetComponent(connection);
+        if(ComponentExchangeExt.isConnectionBetweenTypes(connection)) {
+          sourceElement =  sourceComponent; 
+          targetElement = targetComponent;
+        }else {
+          Collection<Part> sourceParts = ComponentExchangeExt.getSourceParts(connection);
+          Collection<Part> targetParts = ComponentExchangeExt.getTargetParts(connection);
+          sourceElement = (NamedElement) (!sourceParts.isEmpty() ? sourceParts.toArray()[0] : null);
+          targetElement = (NamedElement) (!targetParts.isEmpty() ? targetParts.toArray()[0] : null);
+          if(sourceElement != null && targetElement != null) {
+            sourceLabel = sourceElement.getName() + " : " + sourceComponent.getName();
+            targetLabel = targetElement.getName() +  " : " + targetElement.getName();
+            return super.getText(object) + MessageFormat.format(PATTERN1, sourceLabel, targetLabel, sufixLabel);
+          }
+        }
       } else {
         sourceElement = ComponentExchangeExt.getSourceComponent(connection);
         targetElement = ComponentExchangeExt.getTargetComponent(connection);
@@ -171,6 +184,6 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
     } else {
       targetLabel = targetElement.getName();
     }
-    return super.getText(object) + MessageFormat.format(PATTERN1, new Object[] { sourceLabel, targetLabel, sufixLabel });
+    return super.getText(object) + MessageFormat.format(PATTERN1, sourceLabel, targetLabel, sufixLabel);
   }
 }

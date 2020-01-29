@@ -14,7 +14,7 @@ Require-Bundle: org.eclipse.emf.diffmerge.ui,
  org.eclipse.emf.diffmerge.patterns.ui.sirius
 Bundle-Vendor: %providerName
 Bundle-ActivationPolicy: lazy
-Bundle-Version: 1.3.1.qualifier
+Bundle-Version: 1.3.2.qualifier
 Bundle-Localization: plugin
 Bundle-Name: %pluginName
 Bundle-Activator: org.polarsys.capella.patterns.ui.PatternsUIPlugin

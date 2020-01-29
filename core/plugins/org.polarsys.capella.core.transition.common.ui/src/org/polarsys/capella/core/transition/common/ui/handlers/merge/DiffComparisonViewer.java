@@ -227,7 +227,7 @@ public class DiffComparisonViewer extends ComparisonViewer {
     createItemDelete(toolbarManager, onLeft);
     toolbarManager.update(true);
   }
-
+  
   boolean mergeAll() {
     IEditableModelScope scope = getComparison().getScope(getInput().getRoleForSide(true));
     List<EObject> root = scope.getContents();

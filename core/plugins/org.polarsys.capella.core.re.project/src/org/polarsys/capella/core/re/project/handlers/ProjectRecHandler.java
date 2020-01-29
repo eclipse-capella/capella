@@ -108,17 +108,31 @@ public abstract class ProjectRecHandler extends CommandHandler {
 
   protected abstract ICommand createRecProjectCommand(Collection<EObject> elementsForRec);
 
+  public static class UICreate extends ProjectRecHandler {
+    @Override
+    protected ICommand createRecProjectCommand(Collection<EObject> elementsForRec) {
+      return customizeParameters(new CreateRecCommand(elementsForRec, new NullProgressMonitor()), true, false);
+    }
+  }
+  
   public static class Create extends ProjectRecHandler {
     @Override
     protected ICommand createRecProjectCommand(Collection<EObject> elementsForRec) {
-      return customizeParameters(new CreateRecCommand(elementsForRec, new NullProgressMonitor()), false);
+      return customizeParameters(new CreateRecCommand(elementsForRec, new NullProgressMonitor()), false, false);
     }
   }
 
+  public static class UIUpdate extends ProjectRecHandler {
+    @Override
+    protected ICommand createRecProjectCommand(Collection<EObject> elementsForRec) {
+      return customizeParameters(new UpdateCurCommand(elementsForRec, new NullProgressMonitor()), true, true);
+    }
+  }
+  
   public static class Update extends ProjectRecHandler {
     @Override
     protected ICommand createRecProjectCommand(Collection<EObject> elementsForRec) {
-      return customizeParameters(new UpdateCurCommand(elementsForRec, new NullProgressMonitor()), true);
+      return customizeParameters(new UpdateCurCommand(elementsForRec, new NullProgressMonitor()), false, true);
     }
   }
 
@@ -127,8 +141,8 @@ public abstract class ProjectRecHandler extends CommandHandler {
    * - During update also show diffmerge.
    * - Override dependencies handler to not include any other elements, since we already calculated all required elements
    */
-  protected final ICommand customizeParameters(DefaultCommand command, boolean showDiffmerge) {
-    SharedWorkflowActivityParameter param = new UIHeadHandler(showDiffmerge);
+  protected final DefaultCommand customizeParameters(DefaultCommand command, boolean showOptions, boolean showDiffmerge) {
+    SharedWorkflowActivityParameter param = new UIHeadHandler(showOptions, showDiffmerge);
     param.addSharedParameter(
         new GenericParameter<IHandler>(IReConstants.DEPENDENCIES_HANDLER, new DefaultDependenciesHandler() {
           @Override

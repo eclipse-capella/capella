@@ -12,24 +12,30 @@ package org.polarsys.capella.test.recrpl.ju;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 
+import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.ef.command.ICommand;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementKind;
 import org.polarsys.capella.common.re.CatalogElementLink;
+import org.polarsys.capella.common.re.CatalogElementPkg;
+import org.polarsys.capella.common.re.RePackage;
 import org.polarsys.capella.common.re.RecCatalog;
 import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.common.re.helpers.ReplicableElementExt;
 import org.polarsys.capella.common.re.queries.CatalogElement_UsedElements;
+import org.polarsys.capella.core.data.capellamodeller.Library;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
@@ -40,6 +46,7 @@ import org.polarsys.capella.core.re.commands.DeleteReplicaPreserveRelatedElement
 import org.polarsys.capella.core.re.commands.UpdateCurCommand;
 import org.polarsys.capella.core.re.commands.UpdateDefCommand;
 import org.polarsys.capella.core.re.commands.UpdateReplicaCommand;
+import org.polarsys.capella.core.re.project.handlers.ProjectRecHandler;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
 import org.polarsys.capella.core.transition.common.handlers.merge.DefaultMergeHandler;
@@ -104,14 +111,26 @@ public abstract class RecRplTestCase extends BasicTestCase {
   public void performTest() throws Exception {
     // this does nothing by default
   }
-
+  
+  
+  
+  protected CatalogElement createRECWholeContent(Library library) {
+    ProjectRecHandler handler = new ProjectRecHandler.Create();
+    try {
+      handler.execute(Collections.singletonList(library));
+    } catch (ExecutionException e) {
+      assertFalse(e.getMessage(), true);
+    }
+    
+    CatalogElementPkg pkg = (CatalogElementPkg)EObjectExt.getAll(library, RePackage.Literals.CATALOG_ELEMENT_PKG).iterator().next();
+    return pkg.getOwnedElements().get(pkg.getOwnedElements().size() - 1);
+    
+  }
+  
   protected CatalogElement createREC(Collection<? extends EObject> elements) {
     CreateRecCommand command = new CreateRecCommand(elements, new NullProgressMonitor());
     executeCommand(command);
     assertFalse(command.isRolledBack());
-    // for (EObject element : elements) {
-    // mustReference(REC, element);
-    // }
 
     // Check if a new REC is connected to all given elements
     CatalogElement newREC = null;
@@ -148,7 +167,7 @@ public abstract class RecRplTestCase extends BasicTestCase {
     RPLS2.removeAll(RPLS);
     assertTrue(RPLS2.size() == 1);
 
-    // CHeck Origin and Kind of the new RPL
+    // Check Origin and Kind of the new RPL
     CatalogElement RPL = RPLS2.iterator().next();
     assertTrue(RPL.getKind() == CatalogElementKind.RPL);
     assertTrue(RPL.getOrigin().equals(REC));

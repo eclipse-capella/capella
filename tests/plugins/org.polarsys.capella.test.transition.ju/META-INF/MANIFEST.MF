@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.test.transition.ju;singleton:=true
-Bundle-Version: 1.3.1.qualifier
+Bundle-Version: 1.3.2.qualifier
 Bundle-Activator: org.polarsys.capella.test.transition.ju.TransitionTestPlugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -13,7 +13,14 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.platform.sirius.ui.actions,
  org.eclipse.emf.diffmerge,
  org.polarsys.capella.core.transition.system.topdown,
- org.polarsys.capella.core.projection.commands
+ org.polarsys.capella.core.projection.scenario,
+ org.polarsys.capella.core.projection.interfaces,
+ org.polarsys.capella.core.projection.common,
+ org.polarsys.capella.core.projection.commands,
+ org.polarsys.capella.core.transition.system.topdown.ui,
+ org.eclipse.emf.diffmerge.ui,
+ org.polarsys.capella.core.re.ui,
+ org.polarsys.capella.common.re.ui
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName

@@ -23,14 +23,20 @@ import org.polarsys.kitalpha.cadence.core.api.parameter.GenericParameter;
  */
 public class UIHeadHandler extends SharedWorkflowActivityParameter {
 
-  public UIHeadHandler(boolean showDiffMergeUI) {
-    addSharedParameter(
-        new GenericParameter<IHandler>(ITransitionConstants.SCOPE_HANDLER, new ScopeUIHandler(), "Options handler"));
+  public UIHeadHandler(boolean showOptionsUI, boolean showDiffMergeUI) {
+    if (showOptionsUI) {
+      addSharedParameter(
+          new GenericParameter<IHandler>(ITransitionConstants.SCOPE_HANDLER, new ScopeUIHandler(), "Options handler"));
+    }
 
     if (showDiffMergeUI) {
       addSharedParameter(new GenericParameter<IHandler>(ITransitionConstants.MERGE_DIFFERENCES_HANDLER,
           new ReMergeUIDifferencesHandler(), "Filtering differences UI handler"));
     }
+  }
+
+  public UIHeadHandler(boolean showDiffMergeUI) {
+    this(true, showDiffMergeUI);
   }
 
 }

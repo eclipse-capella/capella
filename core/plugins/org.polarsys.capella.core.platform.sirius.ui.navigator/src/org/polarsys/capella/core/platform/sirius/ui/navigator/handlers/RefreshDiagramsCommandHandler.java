@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -68,10 +68,13 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
 
     @Override
     public IStatus runInWorkspace(IProgressMonitor monitor_p) throws CoreException {
-      monitor_p.beginTask(getName(), IProgressMonitor.UNKNOWN);
+      int repToRefreshNb = _representationsToRefresh.size();
+      monitor_p.beginTask(getName(), repToRefreshNb);
       if (_session != null) {
+        int counter = 0;
         for (final DRepresentationDescriptor dRepresentation : _representationsToRefresh) {
-          monitor_p.setTaskName(Messages.bind(Messages.RefreshRepresentation_6, dRepresentation.getName()));
+          counter++;
+          monitor_p.subTask(Messages.bind(Messages.RefreshRepresentation_6, new Object[] { dRepresentation.getName(), counter, repToRefreshNb }));
 
           DRepresentation representation = dRepresentation.getRepresentation();
           OpeningDiagramJob job_opening = new OpeningDiagramJob(Messages.RefreshRepresentation_7, _session,

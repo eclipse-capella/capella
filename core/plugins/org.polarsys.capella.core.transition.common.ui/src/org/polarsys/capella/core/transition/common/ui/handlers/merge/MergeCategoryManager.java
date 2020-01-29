@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,6 @@ package org.polarsys.capella.core.transition.common.ui.handlers.merge;
 
 import java.util.HashMap;
 
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.ui.viewers.CategoryManager;
 import org.eclipse.emf.diffmerge.ui.viewers.EMFDiffNode;
 import org.eclipse.emf.diffmerge.ui.viewers.IDifferenceCategory;
@@ -23,9 +22,15 @@ import org.polarsys.capella.core.preferences.Activator;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.merge.ICategoryItem;
 import org.polarsys.capella.core.transition.common.handlers.merge.ICategorySet;
-import org.polarsys.capella.core.transition.common.handlers.merge.IMergeHandler;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
+/**
+ * <pre>
+ * A category manager with:
+ * - A map allowing to retrieve CategorySets
+ * - A save/load of checked categories into preferences
+ * </pre>
+ */
 public class MergeCategoryManager extends CategoryManager {
 
   IContext context;
@@ -37,50 +42,53 @@ public class MergeCategoryManager extends CategoryManager {
     this.context = context;
   }
 
-  public boolean addCategory(ICategoryItem category) {
-    IDifferenceCategory squatter = getCategory(category.getId());
+  @Override
+  public boolean addCategory(IDifferenceCategory category) {
+    IDifferenceCategory squatter = getCategory(category.getID());
     if (squatter != null) {
       if (squatter.getParent() != null) {
         squatter.getParent().getChildren().remove(squatter);
       }
-      removeCategory(category.getId());
+      removeCategory(category.getID());
     }
-    IDifferenceCategory itemCategory = new DiffCategoryProxy(category);
-    if (category.getCategorySet() != null) {
-      IDifferenceCategorySet set = getCategorySet(category.getCategorySet());
-      set.getChildren().add(itemCategory);
+    IDifferenceCategorySet set = category.getParent();
+    if (set != null && !(set.getChildren().contains(category))) {
+      set.getChildren().add(category);
     }
-    return addCategory(itemCategory);
+    return super.addCategory(category);
   }
   
+  public boolean addCategories(IDifferenceCategorySet categorySet_p) {
+    if (!sets.containsKey(categorySet_p.getText(_node))) {
+      sets.put(categorySet_p.getText(_node), categorySet_p);
+    }
+    return super.addCategories(categorySet_p);
+  }
+  
+  public void addCategorySet(ICategorySet categorySet) {
+    DifferenceCategorySet category = new DifferenceCategorySet(categorySet.getId(), categorySet.getDescription());
+    addCategories(category);
+    category.setText(categorySet.getText());
+  }
+
+  public boolean addCategory(ICategoryItem category) {
+    String parent = category.getCategorySet();
+    DiffCategoryProxy cat = new DiffCategoryProxy(category);
+    if (parent != null) {
+      cat.setParent(getOrCreateCategorySet(parent));
+    }
+    return addCategory(cat);
+  }
+
   public IDifferenceCategorySet getCategorySet(String id) {
+    return sets.get(id);
+  }
+  
+  public IDifferenceCategorySet getOrCreateCategorySet(String id) {
     if (!sets.containsKey(id)) {
       sets.put(id, new DifferenceCategorySet(id));
     }
     return sets.get(id);
-  }
-  
-  public void initialize(IMergeHandler handler) {
-    
-    //Initialize Sets of Categories
-    for (IDifferenceCategory category : getCategories()) {
-      IDifferenceCategorySet set = category.getParent();
-      sets.put(set.getText(_node), set);
-    }
-    for (ICategorySet item : handler.getCategoriesSet(context)) {
-      sets.put(item.getId(), new DifferenceCategorySet(item.getText(), item.getDescription()));
-    }
-
-    //Initialize Categories
-    for (ICategoryItem item : handler.getCategories(context)) {
-      addCategory(item);
-    }
-
-    //Store the (real) default configuration
-    setDefaultConfiguration();
-    
-    //Load states from preferences
-    initializeFromPreferences();
   }
   
   public void setDefaultConfiguration() {
@@ -103,7 +111,7 @@ public class MergeCategoryManager extends CategoryManager {
       String purpose = (String) purposeValue;
       ScopedCapellaPreferencesStore scps = ScopedCapellaPreferencesStore.getInstance(Activator.PLUGIN_ID);
 
-      for (IDifferenceCategory category : this.getCategories()) {
+      for (IDifferenceCategory category : getCategories()) {
         String isActiveKey = getIsActiveKey(purpose, category);
         scps.setDefault(isActiveKey, category.isActive());
         if (scps.containsKey(isActiveKey)) {
@@ -154,4 +162,5 @@ public class MergeCategoryManager extends CategoryManager {
   public String getIsInFocusModeKey(String purpose, IDifferenceCategory category) {
     return purpose + "_" + category.getID() + ITransitionConstants.IS_IN_FOCUS_MODE;
   }
+
 }

@@ -28,7 +28,7 @@
    <extension
          point="org.eclipse.ui.handlers">
            <handler
-                 class="org.polarsys.capella.core.re.project.handlers.ProjectRecHandler$Create"
+                 class="org.polarsys.capella.core.re.project.handlers.ProjectRecHandler$UICreate"
                  commandId="org.polarsys.capella.core.re.project.createREC">
               <activeWhen>
                  <and>
@@ -50,7 +50,7 @@
               </activeWhen>
            </handler>
            <handler
-                 class="org.polarsys.capella.core.re.project.handlers.ProjectRecHandler$Update"
+                 class="org.polarsys.capella.core.re.project.handlers.ProjectRecHandler$UIUpdate"
                  commandId="org.polarsys.capella.core.re.project.updateREC">
               <activeWhen>
                  <and>

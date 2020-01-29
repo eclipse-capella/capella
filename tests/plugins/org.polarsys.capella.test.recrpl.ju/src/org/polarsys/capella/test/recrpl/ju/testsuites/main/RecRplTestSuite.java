@@ -22,6 +22,7 @@ import org.polarsys.capella.test.recrpl.ju.testcases.CreateREC_ContainedInCatalo
 import org.polarsys.capella.test.recrpl.ju.testcases.CreateREC_DeploymentLink;
 import org.polarsys.capella.test.recrpl.ju.testcases.CreateREC_FunctionalExchange;
 import org.polarsys.capella.test.recrpl.ju.testcases.CreateREC_Part;
+import org.polarsys.capella.test.recrpl.ju.testcases.CreateREC_WholeContent;
 import org.polarsys.capella.test.recrpl.ju.testcases.CreateRPL_ContainedInCatalog;
 import org.polarsys.capella.test.recrpl.ju.testcases.CreateRPL_Containment;
 import org.polarsys.capella.test.recrpl.ju.testcases.CreateRPL_ContainmentPart;
@@ -75,6 +76,7 @@ public class RecRplTestSuite extends BasicTestSuite {
     tests.add(new CreateREC_DeploymentLink());
     tests.add(new CreateREC_FunctionalExchange());
     tests.add(new CreateREC_Part());
+    tests.add(new CreateREC_WholeContent());
     tests.add(new CreateRPL_ContainedInCatalog());
     tests.add(new CreateRPL_Containment());
     tests.add(new CreateRPL_ContainmentPart());

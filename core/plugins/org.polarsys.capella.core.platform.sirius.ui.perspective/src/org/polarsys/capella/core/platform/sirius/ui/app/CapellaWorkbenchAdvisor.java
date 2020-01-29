@@ -16,6 +16,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
+import java.time.Year;
 import java.util.Properties;
 import org.eclipse.core.commands.operations.IUndoContext;
 import org.eclipse.core.commands.operations.OperationHistoryFactory;
@@ -80,6 +81,10 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
    * CapellaVersion Tag used in about.mappings.
    */
   private static final String BUILD_ID_TAG = "BuildId"; //$NON-NLS-1$
+  /**
+   * CurrentYear Tag used in about.mappings.
+   */
+  private static final String CURRENT_YEAR = "CurrentYear"; //$NON-NLS-1$
 
   private static final int limitLengthOfPath = 115;
   private static final int fileCharAdd = 6;
@@ -122,6 +127,7 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
     String bundleVersion = ((String) Platform.getProduct().getDefiningBundle().getHeaders().get("Bundle-version")); //$NON-NLS-1$
     System.setProperty(CAPELLA_VERSION_TAG, bundleVersion.substring(0, 5));
     System.setProperty(BUILD_ID_TAG, bundleVersion.substring(6));
+    System.setProperty(CURRENT_YEAR, Year.now().toString());
 
     DelegateWorkbenchAdvisor.INSTANCE.callPreStartup();
 

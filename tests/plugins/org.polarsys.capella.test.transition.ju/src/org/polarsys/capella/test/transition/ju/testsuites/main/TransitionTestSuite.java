@@ -24,6 +24,8 @@ import org.polarsys.capella.test.transition.ju.testcases.ReconciliationCommunica
 import org.polarsys.capella.test.transition.ju.testcases.ReconciliationInterfaceUsesImplements;
 import org.polarsys.capella.test.transition.ju.testcases.RootPropertyValueTestCase;
 import org.polarsys.capella.test.transition.ju.testcases.SkeletonElementsNames;
+import org.polarsys.capella.test.transition.ju.testcases.options.IncrementalModeTest;
+import org.polarsys.capella.test.transition.ju.testcases.options.MergeCategoryManagerTest;
 
 import junit.framework.Test;
 
@@ -39,6 +41,9 @@ public class TransitionTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+
+    tests.add(new MergeCategoryManagerTest());
+    tests.add(new IncrementalModeTest());
     tests.add(new ReconciliationCommunicationLinks());
     tests.add(new ReconciliationInterfaceUsesImplements());
     tests.add(new SkeletonElementsNames());

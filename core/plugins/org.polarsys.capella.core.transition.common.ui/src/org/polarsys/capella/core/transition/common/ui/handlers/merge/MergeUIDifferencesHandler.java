@@ -41,13 +41,13 @@ public class MergeUIDifferencesHandler extends DefaultMergeHandler {
   @Override
   public IStatus processDifferences(IContext context, Collection<IDifference> diffSource,
       Collection<IDifference> diffTarget) {
-    final MergeEMFDiffNode diffNode = createDiffNode(context);
+    MergeEMFDiffNode diffNode = createDiffNode(context);
     return displayDifferences(context, diffNode);
   }
 
   protected IStatus displayDifferences(final IContext context, final MergeEMFDiffNode diffNode) {
     final Integer[] result = new Integer[] { IDialogConstants.OK_ID };
-    final Display display = Display.getDefault();
+    Display display = Display.getDefault();
     display.syncExec(new Runnable() {
       public void run() {
         DiffMergeDialog dialog = createDiffDialog(context, display, diffNode);
@@ -71,16 +71,24 @@ public class MergeUIDifferencesHandler extends DefaultMergeHandler {
       @Override
       protected AbstractComparisonViewer createComparisonViewer(Composite parent) {
         viewer = new DiffComparisonViewer(parent) {
-
+          
           @Override
-          protected void registerCategories(EMFDiffNode node) {
-            super.registerCategories(node);
+          protected void registerCategories(EMFDiffNode node_p) {
+            super.registerCategories(node_p);
             initializeCategories(context, diffNode);
+          }
+          
+          @Override
+          protected void registerUserProperties(EMFDiffNode input) {
+            super.registerUserProperties(input);
+            MergeUIDifferencesHandler.this.registerUserProperties(input);
           }
         };
 
-        // the apply all changes button must be enable only if the right model is editable and there are differences to
-        // merge
+        viewer.setCategoryProvider(new MergeCategoryProvider(context, MergeUIDifferencesHandler.this));
+
+        // The apply all changes button must be enable only if the right model
+        // is editable and there are differences to merge
         viewer.addPropertyChangeListener(new IPropertyChangeListener() {
 
           @Override
@@ -116,20 +124,22 @@ public class MergeUIDifferencesHandler extends DefaultMergeHandler {
   protected MergeEMFDiffNode createDiffNode(IContext context) {
     TransactionalEditingDomain domain = (TransactionalEditingDomain) context
         .get(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN);
-
     MergeEMFDiffNode diffNode = new MergeEMFDiffNode(context, domain, true, false);
-    diffNode.setUserPropertyValue(DefaultUserProperties.P_DEFAULT_INCREMENTAL_MODE, true);
-    diffNode.setUserPropertyValue(DefaultUserProperties.P_DEFAULT_COVER_CHILDREN, true);
-    diffNode.setUserPropertyValue(DefaultUserProperties.P_DEFAULT_SHOW_MERGE_IMPACT, true);
-    diffNode.setUserPropertyValue(DefaultUserProperties.P_SUPPORT_UNDO_REDO, false);
     diffNode.setLeftRole(Role.REFERENCE);
     diffNode.setMergeAllOnLeft(true);
     diffNode.setMergeAllOnRight(false);
     return diffNode;
   }
-
+  
+  @Deprecated
   protected void initializeCategories(IContext context, MergeEMFDiffNode diffNode) {
-    diffNode.getCategoryManager().initialize(this);
+    //Nothing here
   }
 
+  protected void registerUserProperties(EMFDiffNode diffNode) {
+    diffNode.setUserPropertyValue(DefaultUserProperties.P_DEFAULT_INCREMENTAL_MODE, true);
+    diffNode.setUserPropertyValue(DefaultUserProperties.P_DEFAULT_COVER_CHILDREN, true);
+    diffNode.setUserPropertyValue(DefaultUserProperties.P_DEFAULT_SHOW_MERGE_IMPACT, false);
+    diffNode.setUserPropertyValue(DefaultUserProperties.P_SUPPORT_UNDO_REDO, false);
+  }
 }
