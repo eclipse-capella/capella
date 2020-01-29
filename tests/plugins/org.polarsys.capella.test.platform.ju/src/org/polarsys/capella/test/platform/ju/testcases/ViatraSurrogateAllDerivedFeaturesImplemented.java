@@ -38,20 +38,20 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 public class ViatraSurrogateAllDerivedFeaturesImplemented extends BasicTestCase {
-  public String BUILD_KEY;
+  public String WORKSPACE;
 
   protected void parseArgs() {
     String[] args = Platform.getApplicationArgs();
     for (int i = 0; i < args.length; i++) {
       String currentArg = args[i];
-      if ("-buildKey".equalsIgnoreCase(currentArg))
-        BUILD_KEY = args[++i];
+      if ("-workspacePath".equalsIgnoreCase(currentArg))
+        WORKSPACE = args[++i];
     }
   }
 
-  protected String getPluginXmlFilePath(String buildKey, String qualifier, String pluginName) {
-    return "jar:http://download.eclipse.org/capella/core/updates/nightly/" + buildKey
-        + "/org.polarsys.capella.rcp.site/plugins/" + pluginName + "_" + qualifier + ".jar!/plugin.xml";
+  protected String getPluginXmlFilePath(String workspacePath, String qualifier, String pluginName) {
+    return "jar:file:/" + workspacePath + "/releng/plugins/org.polarsys.capella.rcp.site/target/repository/plugins/"
+        + pluginName + "_" + qualifier + ".jar!/plugin.xml";
   }
 
   @Override
@@ -59,11 +59,11 @@ public class ViatraSurrogateAllDerivedFeaturesImplemented extends BasicTestCase 
     parseArgs();
     Version version = FrameworkUtil.getBundle(getClass()).getVersion();
     String commonDataPluginXmlContent = PlatformFilesHelper.loadFileContentFromURL(getPluginXmlFilePath(
-        BUILD_KEY, version.toString(), "org.polarsys.capella.viatra.common.data.gen"));
+        WORKSPACE, version.toString(), "org.polarsys.capella.viatra.common.data.gen"));
     String commonRePluginXmlContent = PlatformFilesHelper.loadFileContentFromURL(getPluginXmlFilePath(
-        BUILD_KEY, version.toString(), "org.polarsys.capella.viatra.common.re.gen"));
+        WORKSPACE, version.toString(), "org.polarsys.capella.viatra.common.re.gen"));
     String coreDataPluginXmlContent = PlatformFilesHelper.loadFileContentFromURL(getPluginXmlFilePath(
-        BUILD_KEY, version.toString(), "org.polarsys.capella.viatra.core.data.gen"));
+        WORKSPACE, version.toString(), "org.polarsys.capella.viatra.core.data.gen"));
     List<String> pluginXmlContents = Arrays.asList(commonDataPluginXmlContent, commonRePluginXmlContent,
         coreDataPluginXmlContent);
     List<SurrogateQuery> contributedSurrogateQueries = getContributedSurrogateQueries(pluginXmlContents);
