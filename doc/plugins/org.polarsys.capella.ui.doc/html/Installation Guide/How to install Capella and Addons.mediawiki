@@ -25,16 +25,29 @@ The Capella installation is successful  if the archive extraction finished witho
 *  The Capella folder should contain two folders:
 ** eclipse: the Capella modeling workbench with the .exe of Capella 
 ** samples: the sample models
+
 == Addons Installation ==
+
+The installation procedure is the same for all addons. 
+
+=== As Dropin ===
+
+For an end-user or for an administrator, and in case of shared installation, you need to have '''full control permissions on the Capella installation directory''' in order to correctly install addons.
+
+
 There are 3 ways to install addons :
-# Simple installation 
-** Install the addons directly in the dropins folder of Capella :
-## Unzip the archive of the addon in your Capella "dropins" directory
-# External installation 
+
+# '''Simple installation'''
+** Install the addons directly in the dropins folder of Capella (<CAPELLA_INSTALLATION_DIR>/eclipse/dropins) :
+### Unzip the archive of the addon in your Capella "dropins" directory
+### Check that the extraction process has finished without error.
+### Run Capella or run in a command line >> eclipsec.exe -initialize.
+# '''External installation'''
 ** Install the addons in an external directory and configure Capella to get them from this specific directory :
-## Unzip the archive of the addon in a directory
-## Add -Dorg.eclipse.equinox.p2.reconciler.dropins.directory=<myAddonsDirectory> at the end of the eclipse.ini file (after -vm)
-# Multiple contexts installation 
+### Unzip the archive of the addon in a directory
+### Add -Dorg.eclipse.equinox.p2.reconciler.dropins.directory=<myAddonsDirectory> at the end of the eclipse.ini file (after -vm)
+### Run Capella or run in a command line >> eclipsec.exe -initialize
+# '''Multiple contexts installation''' 
 ** Create several contexts with specific addons and allow users to launch Capella on one or another context :
 ### Create contexts directories (copy eclipse.ini from Capella and unzip the needed addons in a dropins folder). 
 ### For each context, change the eclipse.ini file as follows:
@@ -73,16 +86,6 @@ The extensions for Capella requires the installation of the following software:
 * Capella : For the Capella installation, please refer to this guide
 
 '''Note''':Make sure that the addon/extension is compatible with your current version of Capella.
-=== Addons ===
-The installation procedure is the same for all addons.   
-==== As Dropin ====
-To manually install your addon:
-
-*  Download the addon as a dropin
-*  Extract the contents of the downloaded archive into <CAPELLA_INSTALLATION_DIR>/eclipse/dropins directory
-Check that the extraction process has finished without error.
-*  Start Capella
-
 
 {| border="1"
 |-
@@ -99,7 +102,8 @@ Check that the extraction process has finished without error.
  
 |}
 
-==== As Update Site ====
+=== As Update Site ===
+
 *  Download the addon as an update site
 *  Start Capella
 *  Open Help using the menu toolbar
@@ -113,11 +117,16 @@ Check that the extraction process has finished without error.
 *  Agree and click on Finish
 *  Restart when prompted
 
-'''Verification''' 
+'''For a shared installation, we recommend to do the following:'''
+* The administrator install Capella in a read-only directory
+* The configurator will create a shared master configuration and populate it as needed (add/remove/update addons)
+* Users will use the shared installation and create their own local configuration which inherits from the master configuration
 
-The following procedure for verifying the successful installation of addons, assumes that Capella is well installed and fully functional.
+===Installation Verification=== 
 
-'''Plugins Verification'''
+The following procedure is to verify the successful installation of addons, it assumes that Capella is well installed and fully functional.
+
+'''Procedure'''
 *  Start Capella with the option '''-clean'''. It forces the application to clear the cached data and to rebuild its configuration after installing a plug-in.
 *  Open '''Help''' using the menu toolbar
 *  Select '''About Capella'''
@@ -140,6 +149,17 @@ The following procedure for verifying the successful installation of addons, ass
 - Do not forget to switch to a new workspace when the configuration is modified, since some information are cached by Eclipse (Java version, etc...).
  
 |}
+
+'''Workarround'''
+
+In case you have issue to see your installed dropins, you can try running Capella with the '''-checkConfiguration''' option. This will ensure that the cache is up to date with respect to the contents of the installed bundles.
+
+'''Recommendation'''
+
+Capella configuration area: It's either the configuration folder located under the Capella installation directory or the location specified by the -configuration option or the property set via osgi.configuration.area in the eclipse.ini file.
+ 
+It's recommended to clean your current Capella configuration area after changing the Capella version.
+
 == Restriction ==
 
 {| border="1"
