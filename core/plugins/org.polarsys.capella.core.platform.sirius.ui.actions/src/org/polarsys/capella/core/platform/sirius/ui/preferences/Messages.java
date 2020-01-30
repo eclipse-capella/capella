@@ -22,6 +22,7 @@ public class Messages extends NLS {
   public static String DeletePreferencePage_DeletePartsChoiceTitle;
   public static String DeletePreferencePage_Description;
   public static String DeletePreferencePage_Title;
+  public static String TitleBlockPreferencePage_Title;
   public static String CapellaPreferencePage_AirdFragmentFileExtension_Title;
   public static String CapellaPreferencePage_Description;
   public static String CapellaPreferencePage_DetectionVersion_Title;

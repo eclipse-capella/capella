@@ -28,3 +28,4 @@ Export-Package: org.polarsys.capella.core.platform.sirius.ui.actions,
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.polarsys.capella.core.platform.sirius.ui.actions.CapellaActionsActivator
 Bundle-Localization: plugin
+Import-Package: org.eclipse.help.ui.internal.preferences

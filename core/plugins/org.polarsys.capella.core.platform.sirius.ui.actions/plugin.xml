@@ -39,7 +39,19 @@
             </enabledWhen>
             
       </page>
-      
+     <!--
+      <page
+            category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+            class="org.polarsys.capella.core.platform.sirius.ui.preferences.TitleBlockPreferencePage"
+            id="org.polarsys.capella.core.platform.sirius.ui.actions.titleBlock.property.page"
+            objectClass="org.eclipse.core.resources.IProject"
+            name="%TitleBlock_Page_Name">
+            <enabledWhen>
+                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
+            </enabledWhen>
+            
+      </page>
+      -->
       <page
             category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
             class="org.polarsys.capella.core.platform.sirius.ui.preferences.CapellaValidationPreferencesPage"
@@ -85,6 +97,12 @@
             class="org.polarsys.capella.core.platform.sirius.ui.preferences.CapellaValidationPreferencesPage"
             id="org.polarsys.capella.core.platform.sirius.ui.actions.preferences.CapellaValidationPreferences"
             name="%ModelValidationPreferencePage_Name">
+      </page>
+      <page
+            category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+            class="org.polarsys.capella.core.platform.sirius.ui.preferences.TitleBlockPreferencePage"
+            id="org.polarsys.capella.core.platform.sirius.ui.actions.preferences.TitleBlockPage"
+            name="%TitleBlock_Page_Name">
       </page>
    </extension>
    <extension
