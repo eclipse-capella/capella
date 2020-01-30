@@ -90,10 +90,6 @@
          version="0.0.0"/>
 
    <includes
-         id="org.polarsys.capella.patterns.feature"
-         version="0.0.0"/>
-
-   <includes
          id="org.polarsys.capella.detachment.feature"
          version="0.0.0"/>
 

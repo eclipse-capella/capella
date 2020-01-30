@@ -1,7 +1,0 @@
-These followings icons are made available under the terms of the Eclipse Public License v1.0
- which accompanies this distribution, and is available at
- http://www.eclipse.org/legal/epl-v10.html
-
-<icon file path> - <original eclipse plug-in> - <original file path>
-
-/icons/full/etool16/patternInstance.png - org.eclipse.emf.diffmerge.patterns.ui - org.eclipse.emf.diffmerge.patterns.ui/icons/full/instance.gif

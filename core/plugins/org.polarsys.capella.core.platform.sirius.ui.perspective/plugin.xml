@@ -150,25 +150,7 @@
        <activityPatternBinding pattern="org.polarsys.capella.core.projection.scenario/.*" activityId="org.polarsys.capella.activities.transitions" />
        <activityPatternBinding pattern="org.polarsys.capella.core.projection.exchanges/.*" activityId="org.polarsys.capella.activities.transitions" />
        <activityPatternBinding pattern="org.polarsys.capella.core.projection.interfaces/.*" activityId="org.polarsys.capella.activities.transitions" />
-       
-       
-       
-       <activity
-             id="org.polarsys.capella.activities.patterns"
-             description="Concepts related to Paterns"
-             name="Patterns">
-       </activity>
-       <defaultEnablement
-             id="org.polarsys.capella.activities.patterns">
-       </defaultEnablement>
-       <categoryActivityBinding
-             activityId="org.polarsys.capella.activities.patterns"
-             categoryId="org.polarsys.capella.activities.categories.capella">
-       </categoryActivityBinding>
-       <activityPatternBinding pattern="org.polarsys.capella.patterns.ui/.*" activityId="org.polarsys.capella.activities.patterns" />
-       
-       
-       
+
        <activity
              id="org.polarsys.capella.activities.libraries"
              description="Concepts related to Libraries"
@@ -334,17 +316,6 @@
             categoryId="org.polarsys.capella.activities.categories.capella">
       </categoryActivityBinding>
       <activityPatternBinding pattern="org.polarsys.capella.core.data.migration/.*" activityId="org.polarsys.capella.activities.migration"/>
-      <activityPatternBinding pattern="org.polarsys.capella.patterns.migration/.*" activityId="org.polarsys.capella.activities.migration"/>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
       
       <activity
             id="org.polarsys.capella.activities.oa"
