@@ -40,6 +40,7 @@
 			</li>
 		</ul>
 		<h2 id="Addons_Installation">Addons Installation</h2>
+		<p>For an end user or for an administrator, and in case of shared installation, you need to have full control permissions on the Capella installation directory in order to correctly install addons.</p>
 		<p>There are 3 ways to install addons :</p>
 		<ol>
 			<li>Simple installation 
@@ -48,8 +49,11 @@
 				</ul>
 				<ol>
 					<li>Unzip the archive of the addon in your Capella "dropins" directory</li>
+					<li>Open a command prompt and run &gt;&gt; eclipsec.exe -initialize.</li>
 				</ol>
 			</li>
+		</ol>
+		<ol>
 			<li>External installation 
 				<ul>
 					<li>Install the addons in an external directory and configure Capella to get them from this specific directory :</li>
@@ -57,8 +61,11 @@
 				<ol>
 					<li>Unzip the archive of the addon in a directory</li>
 					<li>Add -Dorg.eclipse.equinox.p2.reconciler.dropins.directory=&lt;myAddonsDirectory&gt; at the end of the eclipse.ini file (after -vm)</li>
+					<li>Open a command prompt and run &gt;&gt; eclipsec.exe -initialize</li>
 				</ol>
 			</li>
+		</ol>
+		<ol>
 			<li>Multiple contexts installation 
 				<ul>
 					<li>Create several contexts with specific addons and allow users to launch Capella on one or another context :
@@ -135,14 +142,14 @@
 		<h3 id="Addons">Addons</h3>
 		<p>The installation procedure is the same for all addons.   </p>
 		<h4 id="As_Dropin">As Dropin</h4>
-		<p>To manually install your addon:</p>
+		<p>To manually install your addon, you should have full control permission on the Capella installation directory and do the following steps:</p>
 		<ul>
 			<li> Download the addon as a dropin</li>
 			<li> Extract the contents of the downloaded archive into &lt;CAPELLA_INSTALLATION_DIR&gt;/eclipse/dropins directory</li>
 		</ul>
 		<p>Check that the extraction process has finished without error.</p>
 		<ul>
-			<li> Start Capella</li>
+			<li> Start Capella or run in a command line eclipsec.exe -initialize</li>
 		</ul>
 		<table border="1">
 			<tr>
@@ -232,6 +239,17 @@
 				</td>
 			</tr>
 		</table>
+		<p>
+			<b>Workarround</b>
+		</p>
+		<p>In case you have issue to see your installed dropins, you can try running Capella with the 
+			<b>-checkConfiguration</b> option. This will ensure that the cache is up to date with respect to the contents of the installed bundles.
+		</p>
+		<p>
+			<b>Recommendation</b>
+		</p>
+		<p>Capella configuration area: It's either the configuration folder located under the Capella installation directory or the location specified by the option -configuration or the property set via osgi.configuration.area in the eclipse.ini file.</p>
+		<p>It's recommended to clean your current Capella configuration area after changing the Capella version.</p>
 		<h2 id="Restriction">Restriction</h2>
 		<table border="1">
 			<tr>
