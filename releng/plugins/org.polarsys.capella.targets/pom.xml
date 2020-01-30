@@ -34,8 +34,8 @@
 
 	<properties>
     	<sonar.skip>true</sonar.skip>
-		<tycho-version>0.25.0</tycho-version>
-		<tycho-extras-version>0.25.0</tycho-extras-version>
+		<tycho-version>1.6.0</tycho-version>
+		<tycho-extras-version>1.6.0</tycho-extras-version>
 		<targetPlatform.name>capella.target-definition.targetplatform</targetPlatform.name>
 		<converterApplication.name>fr.obeo.releng.targetplatform.targetPlatform.converter</converterApplication.name>
 		<targetPlatform.id>full</targetPlatform.id>
@@ -71,6 +71,7 @@
 							<type>eclipse-feature</type>
 						</dependency>
 					</dependencies>
+					<executionEnvironment>JavaSE-1.8</executionEnvironment>
 				</configuration>
 				<executions>
 					<execution>
@@ -80,6 +81,7 @@
 							<applicationsArgs>
 								<args>-application ${converterApplication.name} ${targetPlatform.id}/${targetPlatform.name}</args>
 							</applicationsArgs>
+							<executionEnvironment>JavaSE-1.8</executionEnvironment>
 						</configuration>
 						<goals>
 							<goal>eclipse-run</goal>
