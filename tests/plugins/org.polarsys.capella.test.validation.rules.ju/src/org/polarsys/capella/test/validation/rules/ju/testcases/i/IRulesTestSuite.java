@@ -67,6 +67,10 @@ public class IRulesTestSuite extends BasicTestSuite {
     tests.add(new Rule_I_37_38_ComponentFunctionalAllocation());
     tests.add(new Rule_I_40_OnCapability());
     tests.add(new Rule_I_40_OnMission());
+    tests.add(new Rule_I_43_ElementReferencesAirdOrProxyElement());
+    tests.add(new Rule_I_46());
+    tests.add(new Rule_I_44());
+    tests.add(new Rule_I_45());
 
     return tests;
   }

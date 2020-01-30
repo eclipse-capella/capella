@@ -874,8 +874,8 @@
         <details key="constraints" value="none"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="opposite"/>
-        <details key="viatra.expression" value="source"/>
+        <details key="viatra.variant" value="freeform"/>
+        <details key="viatra.expression" value="pattern ActivityNode__outgoing(self : ActivityNode, target : ActivityEdge) {&#xA;&#x9;ActivityEdge.source(target, self);&#xA;} or {&#xA;&#x9;AbstractAction(self);&#xA;&#x9;AbstractAction.outputs(self, OutputPort);&#xA;&#x9;ActivityNode.outgoing(OutputPort, target);&#xA;}"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
@@ -893,8 +893,8 @@
         <details key="constraints" value="none"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="opposite"/>
-        <details key="viatra.expression" value="target"/>
+        <details key="viatra.variant" value="freeform"/>
+        <details key="viatra.expression" value="pattern ActivityNode__incoming(self : ActivityNode, target : ActivityEdge) {&#xA;&#x9;ActivityEdge.target(target, self);&#xA;} or {&#xA;&#x9;AbstractAction(self);&#xA;&#x9;AbstractAction.inputs(self, InputPort);&#xA;&#x9;ActivityNode.incoming(InputPort, target);&#xA;}"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>

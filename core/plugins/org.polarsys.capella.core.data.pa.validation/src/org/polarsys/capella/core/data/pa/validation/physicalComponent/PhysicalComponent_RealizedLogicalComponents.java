@@ -15,12 +15,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
+import org.polarsys.capella.core.data.pa.impl.PhysicalComponentImpl;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
- * Ensures that the Component Realization targeting a Physical Component always realizes an Logical Component.
+ * Ensures that the Component Realization targeting a Physical Component always realizes a Logical Component.
  */
 public class PhysicalComponent_RealizedLogicalComponents extends AbstractValidationRule {
   /**
@@ -32,13 +33,15 @@ public class PhysicalComponent_RealizedLogicalComponents extends AbstractValidat
     EMFEventType eType = ctx.getEventType();
 
     if (eType == EMFEventType.NULL) {
-      if (eObj instanceof PhysicalComponent && ComponentExt.isActor(eObj)) {
-        PhysicalComponent actor = (PhysicalComponent) eObj;
-        if (!actor.getRealizedLogicalComponents().isEmpty()) {
-          return ctx.createSuccessStatus();
+      if (eObj instanceof PhysicalComponent && !ComponentExt.isActor(eObj)) {
+        PhysicalComponent component = (PhysicalComponent) eObj;
+        if (component.eContainer() instanceof PhysicalComponentImpl) {
+          if (!component.getRealizedLogicalComponents().isEmpty()) {
+            return ctx.createSuccessStatus();
+          }
+          return ctx.createFailureStatus(
+              CapellaElementExt.getValidationRuleMessagePrefix(component) + " does not realize any Logical Component.");
         }
-        return ctx.createFailureStatus(
-            CapellaElementExt.getValidationRuleMessagePrefix(actor) + " does not realize any Logical Component.");
       }
     }
     return ctx.createSuccessStatus();

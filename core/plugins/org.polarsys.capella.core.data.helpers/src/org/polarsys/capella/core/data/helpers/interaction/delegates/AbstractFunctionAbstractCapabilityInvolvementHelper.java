@@ -38,9 +38,9 @@ public class AbstractFunctionAbstractCapabilityInvolvementHelper {
     Object ret = null;
 
     if (feature.equals(InteractionPackage.Literals.ABSTRACT_FUNCTION_ABSTRACT_CAPABILITY_INVOLVEMENT__FUNCTION)) {
-      ret = getAbstractFunction(element);
+      ret = getFunction(element);
     } else if (feature.equals(InteractionPackage.Literals.ABSTRACT_FUNCTION_ABSTRACT_CAPABILITY_INVOLVEMENT__CAPABILITY)) {
-      ret = getAbstractCapability(element);
+      ret = getCapability(element);
     }
 
     // no helper found... searching in super classes...
@@ -51,14 +51,14 @@ public class AbstractFunctionAbstractCapabilityInvolvementHelper {
     return ret;
   }
 
-  protected AbstractFunction getAbstractFunction(AbstractFunctionAbstractCapabilityInvolvement element) {
+  protected AbstractFunction getFunction(AbstractFunctionAbstractCapabilityInvolvement element) {
     InvolvedElement elt = element.getInvolved();
     if (elt instanceof AbstractFunction)
       return (AbstractFunction) elt;
     return null;
   }
 
-  protected AbstractCapability getAbstractCapability(AbstractFunctionAbstractCapabilityInvolvement element) {
+  protected AbstractCapability getCapability(AbstractFunctionAbstractCapabilityInvolvement element) {
     InvolverElement elt = element.getInvolver();
     if (elt instanceof AbstractCapability)
       return (AbstractCapability) elt;

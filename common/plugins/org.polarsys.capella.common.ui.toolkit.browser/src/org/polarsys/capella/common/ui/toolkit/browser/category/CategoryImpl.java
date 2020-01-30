@@ -21,155 +21,123 @@ import org.polarsys.capella.common.ui.toolkit.browser.query.QueryAdapter;
  * Category implementation. POJO representing an entry in extension content.provider.category
  */
 public class CategoryImpl implements ICategory {
+
+  protected String id;
+
+  protected String name;
+
   /**
    * Qualified Name of type for which the category is enabled.
    */
-  protected String qualifiedName = null;
+  protected String typeQualifiedName;
+
+  protected List<String> subCategoriesIds;
+
+  protected Object categoryQuery;
   
-  /**
-   * This list contains ids of sub categories of this category.
-   */
-  protected List<String> subCategoriesIds = null;
-  
-  /**
-   * Query associated to this category.
-   */
-  protected Object categoryQuery = null;
-  
+  protected HashSet<Object> itemQueriesHashSet;
+
   /**
    * Item Queries associated to the upcoming content of this category.
    */
-  protected List<Object> itemQueries = null;
-  
-  /**
-   * Category ID.
-   */
-  protected String id = null;
-  
-  /**
-   * Category Name.
-   */
-  protected String name = null;
-  
+  protected List<Object> itemQueries;
+
   /**
    * If true, means category is a direct child of the root element.
    */
-  protected boolean isTopLevel = false;
+  protected boolean isTopLevel;
 
   /**
-   * Item Queries of the category.
+   * If true, means the category is used in the 'Show Related Elements' menu.
    */
-  protected HashSet<Object> itemQueriesHashSet = null;
+  protected boolean isUsedInShowRelated;  
 
-  /**
-   * Constructor.
-   */
   public CategoryImpl() {
-    subCategoriesIds = new ArrayList<String>(0);
-    itemQueries = new ArrayList<Object>(0);
+    subCategoriesIds = new ArrayList<>();
+    itemQueries = new ArrayList<>();
   }
 
-  /**
-   * @see org.polarsys.capella.common.ui.toolkit.browser.category.ICategory#isAvailableForType(java.lang.Object)
-   */
-  public boolean isAvailableForType(Object element) {
-    return TypeHelper.getInstance().isInstanceOf(element, qualifiedName);
+  @Override
+  public boolean isAvailableForType(Object toTestTypeQualifiedName) {
+    return TypeHelper.getInstance().isInstanceOf(toTestTypeQualifiedName, typeQualifiedName);
   }
 
-  /**
-   * @see org.polarsys.capella.common.ui.toolkit.browser.category.ICategory#setId(java.lang.String)
-   */
+  @Override
   public void setId(String pId) {
     this.id = pId;
   }
 
-  /**
-   * Add an id to the sub categories id list.
-   * @param id 
-   */
+  @Override
   public void addSubCategoryId(String pId) {
     if (pId != null && !pId.isEmpty())
       subCategoriesIds.add(pId);
   }
 
-  /**
-   * Add a category
-   */
+  @Override
   public void setQuery(Object query) {
     categoryQuery = query;
   }
 
-  /**
-   * @see org.polarsys.capella.common.ui.toolkit.browser.category.ICategory#setTypeFullyQualifiedName(java.lang.String)
-   */
-  public void setTypeFullyQualifiedName(String element) {
-    qualifiedName = element;
+  @Override
+  public void setTypeFullyQualifiedName(String typeQualifiedName) {
+    this.typeQualifiedName = typeQualifiedName;
   }
 
-  /**
-   * @see org.polarsys.capella.common.ui.toolkit.browser.category.ICategory#getSubCategoryIds()
-   */
+  @Override
   public List<String> getSubCategoryIds() {
     return subCategoriesIds;
   }
 
-  /**
-   * @see org.polarsys.capella.common.ui.toolkit.browser.category.ICategory#compute()
-   */
+  @Override
   public List<Object> compute(Object currentElement) {
     return QueryAdapter.getInstance().compute(currentElement, categoryQuery);
   }
 
-  /**
-   * @param name  the name to set
-   */
+  @Override
   public void setName(String pName) {
     name = pName;
   }
 
-  /**
-   * @see org.polarsys.capella.common.ui.toolkit.browser.category.ICategory#setIsTopLevel(boolean)
-   */
+  @Override
   public void setIsTopLevel(boolean isTopLevel) {
     // if redefined by different extensions, return (A or... Z)
     this.isTopLevel |= isTopLevel;
   }
 
-  /**
-   * Return true if Category is root category.
-   * @return
-   */
+  @Override
   public boolean isTopLevel() {
     return isTopLevel;
   }
 
-  /**
-   * @see org.polarsys.capella.common.ui.toolkit.browser.category.ICategory#getName()
-   */
+  @Override
+  public void setIsUsedInShowRelated(boolean usedInShowRelated) {
+    this.isUsedInShowRelated = usedInShowRelated;
+  }
+
+  @Override
+  public boolean isUsedInShowRelated() {
+    return isUsedInShowRelated;
+  }
+
+  @Override
   public String getName() {
     return name;
   }
 
-  /**
-   * @return the itemQueries
-   */
+  @Override
   public List<Object> getItemQueries() {
     return itemQueries;
   }
 
-  /**
-   * @param itemQueries  the itemQueries to set
-   */
+  @Override
   public void addItemQuery(Object query) {
     if (query != null)
       itemQueries.add(query);
   }
 
-  /**
-   * @return the category identifier
-   */
   @Override
   public String getCategoryId() {
-	return this.id;
+    return this.id;
   }
+
 }

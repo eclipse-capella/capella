@@ -11,7 +11,6 @@
 package org.polarsys.capella.test.diagram.tools.ju.reuse;
 
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.test.diagram.common.ju.context.PABDiagram;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
@@ -35,9 +34,6 @@ public class ReusePhysicalActorTestCase extends ReuseOfComponentsProject {
     diagram.reuseActor(diagramId, PA__ACTOR_PA_1, PA__ACTOR_PA_2, PA__ACTOR_PA_2_1);
 
     diagram.reuseActor(PA__PART_ACTOR_PA_1, PA__ACTOR_PA_2, PA__ACTOR_PA_2_1);
-    diagram.reuseActor(PA__PART_ACTOR_PA_2, PA__ACTOR_PA_1, PA__ACTOR_PA_2_1);
-
-    diagram.reuseActor(PA__PART_ACTOR_PA_2_1, PA__ACTOR_PA_1);
 
     diagram.reuseActor(diagramId, PA__ACTOR_PA_3);
     diagram.reuseActor(diagramId, PA__ACTOR_PA_3);

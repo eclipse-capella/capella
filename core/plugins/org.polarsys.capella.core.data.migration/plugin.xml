@@ -87,15 +87,7 @@
             <command
                   commandId="org.polarsys.capella.core.data.migration.project">
                <visibleWhen
-                     checkEnabled="false">
-                     <with
-		                  variable="selection">
-		                  <iterate
-		                        ifEmpty="false">
-		                        <instanceof value="org.eclipse.core.resources.IProject">
-		                        </instanceof>
-		                  </iterate>
-		            </with>
+                     checkEnabled="true">
                </visibleWhen>
             </command>
             <command
@@ -172,6 +164,9 @@
        <migrationContribution
             class="org.polarsys.capella.core.data.migration.aird.FilterMigrationContribution">
       </migrationContribution>
+       <migrationContribution
+             class="org.polarsys.capella.core.data.migration.capella.InvalidAirdReferenceMigrationContribution">
+       </migrationContribution>
    </extension>
    
    

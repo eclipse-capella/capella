@@ -35,9 +35,9 @@ import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
 import org.polarsys.capella.core.model.handler.provider.IReadOnlyListener;
 import org.polarsys.capella.core.model.handler.provider.IReadOnlySectionHandler;
 import org.polarsys.capella.core.ui.properties.helpers.NotificationHelper;
+import org.polarsys.capella.core.ui.properties.richtext.CapellaMDERichTextFactory;
 import org.polarsys.kitalpha.richtext.common.intf.MDERichTextWidget;
 import org.polarsys.kitalpha.richtext.common.intf.SaveStrategy;
-import org.polarsys.kitalpha.richtext.widget.factory.MDERichTextFactory;
 
 /**
  * Capella Documentation that allows end-user to enter HTML documentation related to the model.
@@ -83,7 +83,7 @@ public class CapellaDocumentationActivityExplorerPage extends CommonActivityExpl
    * @param parent
    */
   protected void createDocumentationText(Composite parent) {
-    documentationText = (new MDERichTextFactory()).createMinimalRichTextWidget(parent);
+    documentationText = new CapellaMDERichTextFactory().createMinimalRichTextWidget(parent);
     documentationText.setSaveStrategy(new SaveStrategy() {
       @Override
       public void save(final String editorText, final EObject owner, final EStructuralFeature feature) {

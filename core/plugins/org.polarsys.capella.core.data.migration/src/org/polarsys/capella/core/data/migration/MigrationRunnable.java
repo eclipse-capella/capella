@@ -225,6 +225,9 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
       public Resource.Factory delegatedGetFactory(URI uri) {
         Resource.Factory result = null;
         if (isHandledUri(uri)) {
+          if (!shallCreateResource(uri)) {
+            return null;
+          }
           if (null == _factory) {
             _factory = new ResourceFactoryImpl() {
               /**
@@ -236,7 +239,9 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
                 if (resource == null) {
                   resource = Resource.Factory.Registry.INSTANCE.getFactory(uri2).createResource(uri2);
                 }
-                newResource(resource, context);
+                if (resource != null) {
+                  newResource(resource, context);
+                }
                 return resource;
               }
             };
@@ -251,7 +256,24 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
     return localResourceFactoryRegistry;
   }
 
+  /**
+   * Returns whether the given resource shall be handled while this migration
+   * 
+   * In that case, we can create a resource through doCreateResource or it will be created by the default resource
+   * factory
+   */
   protected boolean isHandledUri(URI uri) {
+    return true;
+  }
+
+  /**
+   * Returns whether the given resource shall be created if required.
+   * 
+   * For instance, in a semantic migration we don't want to load aird resources.
+   * 
+   * In that case, there will be no resourceFactory for the given uri.
+   */
+  protected boolean shallCreateResource(URI uri) {
     return true;
   }
 

@@ -20,10 +20,12 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacommon.StateMachine;
+import org.polarsys.capella.core.data.capellacore.Feature;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfaceAllocation;
+import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.Mission;
 import org.polarsys.capella.core.data.ctx.SystemComponent;
@@ -260,6 +262,12 @@ public final class ProjectionTestUtils {
     return (ComponentPort) ((latest instanceof ComponentPort) ? latest : null);
   }
 
+  public static final ComponentPort getRecentlyAddedComponentPortInFeatures(PhysicalComponent parentElt_p) {
+    List<Feature> partitions = parentElt_p.getOwnedFeatures();
+    Feature latest = partitions.get(partitions.size() - 1);
+    return (ComponentPort) ((latest instanceof ComponentPort) ? latest : null);
+  }
+
   public static final AbstractFunction getRecentlyAddedFunction(AbstractFunction function_p) {
     List<AbstractFunction> functions = function_p.getOwnedFunctions();
     return functions.get(functions.size() - 1);
@@ -311,5 +319,4 @@ public final class ProjectionTestUtils {
     }
     return false;
   }
-
 }

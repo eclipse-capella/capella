@@ -12,6 +12,7 @@ package org.polarsys.capella.core.platform.sirius.ui.navigator.actions;
 
 import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -24,17 +25,15 @@ import java.util.stream.Stream;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.gef.EditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramGraphicalViewer;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
+import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
+import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
@@ -47,7 +46,6 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
-import org.polarsys.capella.core.platform.sirius.clipboard.util.LayerUtil;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 
@@ -82,7 +80,9 @@ public class ShowInDiagramAction extends BaseSelectionListenerAction implements 
 
     List<Object> selectedElements = getStructuredSelection().toList();
     Collection<EObject> semanticElements = CapellaAdapterHelper.resolveBusinessObjects(selectedElements);
-    Set<DDiagramElement> viewsFromEditor = getViewsFromEditor(semanticElements);
+    IEditorPart activeEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+
+    Set<DDiagramElement> viewsFromEditor = getViewsFromEditor(activeEditor, semanticElements);
 
     if (viewsFromEditor.isEmpty()) {
       return new Status(IStatus.INFO, CapellaNavigatorPlugin.PLUGIN_ID,
@@ -93,27 +93,22 @@ public class ShowInDiagramAction extends BaseSelectionListenerAction implements 
         .collect(Collectors.toList());
 
     if (availableElements.isEmpty()) {
-      // there are now available elements to display
+      // there are no available elements to display
       // return a status containing the reason
       DDiagramElement diagramElement = viewsFromEditor.iterator().next();
       String message = getUnavailableElementMessage(diagramElement);
       return new Status(IStatus.INFO, CapellaNavigatorPlugin.PLUGIN_ID, message);
     }
 
-    Set<EObject> availableSemanticElements = availableElements //
-        .stream() //
-        .map(DDiagramElement::getTarget) //
-        .collect(Collectors.toSet());
-
-    Set<IGraphicalEditPart> availableGraphicalParts = LayerUtil.getAllGraphicalParts(availableSemanticElements);
-    setSelection(availableGraphicalParts);
+    if (activeEditor instanceof DialectEditor) {
+      DialectUIManager.INSTANCE.selectAndReveal((DialectEditor) activeEditor, new ArrayList<>(availableElements));
+    }
 
     return Status.OK_STATUS;
   }
 
-  protected Set<DDiagramElement> getViewsFromEditor(Collection<EObject> semanticElements) {
+  protected Set<DDiagramElement> getViewsFromEditor(IEditorPart activeEditor, Collection<EObject> semanticElements) {
 
-    IEditorPart activeEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
     Set<DDiagramElement> allViewElements = new HashSet<>();
 
     if (activeEditor instanceof SiriusDiagramEditor) {
@@ -176,22 +171,6 @@ public class ShowInDiagramAction extends BaseSelectionListenerAction implements 
     }
 
     return message;
-  }
-
-  protected void setSelection(Collection<IGraphicalEditPart> elements) {
-    IEditorPart activeEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
-
-    if (activeEditor instanceof SiriusDiagramEditor) {
-      SiriusDiagramEditor diagramEditor = (SiriusDiagramEditor) activeEditor;
-      IDiagramGraphicalViewer diagramGraphicalViewer = diagramEditor.getDiagramGraphicalViewer();
-
-      List<IGraphicalEditPart> selectableElements = elements //
-          .stream() //
-          .filter(EditPart::isSelectable) //
-          .collect(Collectors.toList());
-
-      diagramGraphicalViewer.setSelection(new StructuredSelection(selectableElements));
-    }
   }
 
   /**

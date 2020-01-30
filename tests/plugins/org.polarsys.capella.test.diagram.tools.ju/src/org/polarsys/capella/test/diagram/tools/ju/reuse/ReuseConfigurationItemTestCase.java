@@ -35,11 +35,8 @@ public class ReuseConfigurationItemTestCase extends ReuseOfComponentsProject {
     diagram.reuseConfigurationItem(diagramId, EPBS__HWCI_CI, EPBS__INTERFACE_CI, EPBS__NDICI_CI, EPBS__PRIMEITEM_CI,
         EPBS__SYSTEM_CI);
 
-    diagram.reuseConfigurationItem(EPBS__PART_COTSCI_CI, EPBS__CSCI_CI, EPBS__INTERFACE_CI,
-        EPBS__NDICI_CI, EPBS__PRIMEITEM_CI, EPBS__SYSTEM_CI);
-
-    diagram.reuseConfigurationItem(EPBS__PART_CSCI_CI, EPBS__COTSCI_CI, EPBS__INTERFACE_CI,
-        EPBS__NDICI_CI, EPBS__PRIMEITEM_CI, EPBS__SYSTEM_CI);
+    diagram.reuseConfigurationItem(EPBS__PART_COTSCI_CI, EPBS__CSCI_CI, EPBS__INTERFACE_CI, EPBS__NDICI_CI,
+        EPBS__PRIMEITEM_CI, EPBS__SYSTEM_CI);
 
     diagram.reuseConfigurationItem(diagramId, EPBS__HWCI_CI);
 

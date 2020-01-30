@@ -1366,11 +1366,9 @@ public class CapellaServices {
       container = container.eContainer();
     }
     if (container instanceof Component) {
-      return (Component)container;
-    } else if (container instanceof SystemAnalysis 
-            || container instanceof LogicalArchitecture
-            || container instanceof PhysicalArchitecture
-            || container instanceof EPBSArchitecture) {
+      return (Component) container;
+    } else if (container instanceof SystemAnalysis || container instanceof LogicalArchitecture
+        || container instanceof PhysicalArchitecture || container instanceof EPBSArchitecture) {
       return ((BlockArchitecture) container).getSystem();
     }
     return null;
@@ -1426,7 +1424,10 @@ public class CapellaServices {
    * used everywhere
    * 
    * @param current
-   * @return current if it is a diagram or the diagram that contains current if it is a DDiagramElement
+   * @return current if it is a diagram or the diagram that contains current if it is a DDiagramElement.
+   * 
+   *         May return null: If used in a style computation or a decoration, the expression will be called twice,
+   *         the first time, the view doesn't have yet a container nor a semantic element.
    */
   public DDiagram getDiagramContainer(EObject current) {
     DDiagram parent = DiagramHelper.getService().getDiagramContainer(current);
@@ -1435,11 +1436,12 @@ public class CapellaServices {
       EObject target = current;
       if ((current instanceof DSemanticDecorator) && (((DSemanticDecorator) current).getTarget() != null)) {
         target = ((DSemanticDecorator) current).getTarget();
+        Object oDiagram = CsServices.getService().getInterpreterVariable(target, IInterpreterSiriusVariables.DIAGRAM);
+        if (oDiagram instanceof DDiagram) {
+          return (DDiagram) oDiagram;
+        }
       }
-      Object oDiagram = CsServices.getService().getInterpreterVariable(target, IInterpreterSiriusVariables.DIAGRAM);
-      if (oDiagram instanceof DDiagram) {
-        return (DDiagram) oDiagram;
-      }
+
     }
 
     return parent;

@@ -279,21 +279,26 @@ public abstract class SemanticQueries extends AbstractSemanticQueryTestCase {
   public static final String PA__CAPABILITIES__CAPABILITY_1 = "a51c707d-0591-43e7-8d87-3b49882745d9"; //$NON-NLS-1$
   public static final String LA__LOGICALCOMPONENT_1 = "e3c12d76-4afd-442e-96c5-d8b8be8cb0d9"; //$NON-NLS-1$
   public static final String LA__LOGICAL_ACTORS__LA_2 = "37af6f3b-2a72-494f-928d-8ce375e1e957"; //$NON-NLS-1$
+  public static final String LA__LOGICAL_ACTORS__LA_2_PART = "8013412e-f86f-4e7c-8f46-9954fa805d91"; //$NON-NLS-1$
   public static final String LA__INTERFACES__EI_LA_01 = "9dd91b9b-5880-4f25-a889-cd3998134f36"; //$NON-NLS-1$
   public static final String SA__INTERFACES__EI_SA_01 = "4491adad-bad5-43cb-b37b-c285dccc2602"; //$NON-NLS-1$
   public static final String SA__DATA__EI_SA_02 = "3581a5f9-10de-419e-b52c-0de9588d4941"; //$NON-NLS-1$
   public static final String PA__INTERFACES__EI_PA_01 = "705e2d94-f38e-4ea6-bfad-a9d143a72da0"; //$NON-NLS-1$
   public static final String PA__DATA__EI_PA_02 = "1bd1d591-0bea-4631-9dd9-30330ed53a5b"; //$NON-NLS-1$
   public static final String OA_GENERALIZATION_CAP2_CAP3 = "10e331d2-a035-4a73-b32c-c5aaa3438782";
-  public static final String OA_ABSTRACT_CAPABILITY_INCLUDE_CAP1_CAP3 = "c091c179-b6ff-415c-b647-106540ade86b";
+  public static final String OA_ABSTRACT_CAPABILITY_INCLUDE_CAP1_CAP3 = "c091c179-b6ff-415c-b647-106540ade86b"; //$NON-NLS-1$
   public static final String OA_ABSTRACT_CAPABILITY_EXTEND_CAP1_CAP4 = "0638550c-1efa-49da-bbc8-a43ba995b847";
-  public static final String OA_ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT_CAP3_ACTOR7 = "69885b0b-648e-44f2-8534-3e534e1ca6e5";
-  public static final String SA_CAPABILITY_EXPLOITATION_CAP1_MIS1 = "8ef15bb6-f299-4e79-b108-b3ccb6b684aa";
-  public static final String SA_INTERFACE_IMPLEMENTATION_SYSTEM_INTERFACE1 = "0d3f83eb-c1b8-467a-83d3-28433844c9f8";
-  public static final String SA_INTERFACE_USE_SYSTEM_INTERFACE2 = "bac09bd5-0999-4bd7-8bbb-903279613c80";
-  public static final String SA_SEQUENCEMESSAGE_SYSTEMFUNCTION5_SYSTEMFUNCTION6 = "91aafd4b-f4c6-4376-88ec-fcda95776f29";
-  public static final String SA_SEQUENCEMESSAGE_SYSTEM_A1 = "d5e5b6e7-a3f6-43a4-8351-5f7aa24c03e8";
-
+  public static final String OA_ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT_CAP3_ACTOR7 = "69885b0b-648e-44f2-8534-3e534e1ca6e5"; //$NON-NLS-1$
+  public static final String SA_CAPABILITY_EXPLOITATION_CAP1_MIS1 = "8ef15bb6-f299-4e79-b108-b3ccb6b684aa"; //$NON-NLS-1$
+  public static final String SA_INTERFACE_IMPLEMENTATION_SYSTEM_INTERFACE1 = "0d3f83eb-c1b8-467a-83d3-28433844c9f8"; //$NON-NLS-1$
+  public static final String SA_INTERFACE_USE_SYSTEM_INTERFACE2 = "bac09bd5-0999-4bd7-8bbb-903279613c80"; //$NON-NLS-1$
+  public static final String SA_SEQUENCEMESSAGE_SYSTEMFUNCTION5_SYSTEMFUNCTION6 = "91aafd4b-f4c6-4376-88ec-fcda95776f29"; //$NON-NLS-1$
+  public static final String SA_SEQUENCEMESSAGE_SYSTEM_A1 = "d5e5b6e7-a3f6-43a4-8351-5f7aa24c03e8"; //$NON-NLS-1$
+  public static final String BOOLEAN_REF_1 = "3fe8b5d4-5dc9-45a0-a319-fcc709cf5d03"; //$NON-NLS-1$
+  public static final String BOOLEAN_REF1_PROPERTY = "4ff8c716-cf61-4448-b286-3c7c0c0eafee"; //$NON-NLS-1$
+  public static final String ROLE_3 = "Ia32606de-335a-4794-b28f-40bed6da4c26"; //$NON-NLS-1$
+   
+  
   @Override
   public List<String> getRequiredTestModels() {
     return Collections.singletonList("SemanticQueries");

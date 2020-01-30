@@ -45,9 +45,9 @@ public class ActivityNodeHelper {
     } else if (feature.equals(ActivityPackage.Literals.ACTIVITY_NODE__IN_STRUCTURED_NODE)) {
       ret = getInStructuredNode(element);
     } else if (feature.equals(ActivityPackage.Literals.ACTIVITY_NODE__INCOMING)) {
-      ret = getIncomingEdges(element);
+      ret = getIncoming(element);
     } else if (feature.equals(ActivityPackage.Literals.ACTIVITY_NODE__OUTGOING)) {
-      ret = getOutgoingEdges(element);
+      ret = getOutgoing(element);
     }
 
     return ret;
@@ -77,11 +77,11 @@ public class ActivityNodeHelper {
     return null;
   }
 
-  protected List<ActivityEdge> getIncomingEdges(ActivityNode element) {
+  protected List<ActivityEdge> getIncoming(ActivityNode element) {
     return EObjectExt.getReferencers(element, ActivityPackage.Literals.ACTIVITY_EDGE__TARGET);
   }
 
-  protected List<ActivityEdge> getOutgoingEdges(ActivityNode element) {
+  protected List<ActivityEdge> getOutgoing(ActivityNode element) {
     return EObjectExt.getReferencers(element, ActivityPackage.Literals.ACTIVITY_EDGE__SOURCE);
   }
 }

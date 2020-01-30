@@ -201,6 +201,7 @@ import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
 import org.polarsys.capella.core.model.helpers.InterfaceExt;
 import org.polarsys.capella.core.model.helpers.InterfacePkgExt;
 import org.polarsys.capella.core.model.helpers.PartExt;
+import org.polarsys.capella.core.model.helpers.PhysicalComponentExt;
 import org.polarsys.capella.core.model.helpers.PhysicalLinkCategoryExt;
 import org.polarsys.capella.core.model.helpers.PortExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
@@ -1298,7 +1299,7 @@ public class CsServices {
     EObject target = getABTarget(decorator);
     return getABShowHideComponent(decorator, target);
   }
-  
+
   /**
    * Returns available components which are accessible AB-Show-Hide-Actor.
    */
@@ -1306,7 +1307,7 @@ public class CsServices {
     EObject target = getABActorTarget(decorator);
     return getABShowHideComponent(decorator, target);
   }
-  
+
   /**
    * Returns available Components/Actors which are accessible AB-Show-Hide-Component/Actor.
    */
@@ -1643,7 +1644,7 @@ public class CsServices {
         return existCycle;
       }
     }
-    
+
     if (((newSource instanceof AbstractCapability) && (newTarget instanceof AbstractCapability))
         && newSource.eClass().equals(newTarget.eClass())) {
       boolean cond = !CapellaServices.getService().getAllSuperCapabilities(context, (AbstractCapability) newTarget)
@@ -1817,7 +1818,7 @@ public class CsServices {
           && !CapellaModelPreferencesPlugin.getDefault().isComponentNonActorInheritanceAllowed()) {
         return false;
       }
-      
+
       if ((((Component) source).isActor()) && (((Component) target).isActor())) {
         return source.getClass().equals(target.getClass());
       } else if (!(((Component) source).isActor()) && !(((Component) target).isActor())) {
@@ -4731,8 +4732,25 @@ public class CsServices {
    * Returns components which can be inserted into the given component in the LAB Diagram
    */
   public Collection<? extends Component> getABInsertComponent(CapellaElement capellaElement) {
-    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_AB_INSERT_COMPONENT_FOR_LIB,
-        capellaElement);
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_AB_INSERT_COMPONENT_FOR_LIB, capellaElement);
+  }
+
+  /**
+   * Returns node components which can be inserted into the given component in the PAB Diagram
+   */
+  public Collection<PhysicalComponent> getPABInsertNodeComponent(CapellaElement capellaElement) {
+    Collection<PhysicalComponent> initialCollection = QueryInterpretor
+        .executeQuery(QueryIdentifierConstants.GET_AB_INSERT_COMPONENT_FOR_LIB, capellaElement);
+    return initialCollection.stream().filter(PhysicalComponentExt::isNode).collect(Collectors.toList());
+  }
+
+  /**
+   * Returns behaviour components which can be inserted into the given component in the PAB Diagram
+   */
+  public Collection<PhysicalComponent> getPABInsertBehaviourComponent(CapellaElement capellaElement) {
+    Collection<PhysicalComponent> initialCollection = QueryInterpretor
+        .executeQuery(QueryIdentifierConstants.GET_AB_INSERT_COMPONENT_FOR_LIB, capellaElement);
+    return initialCollection.stream().filter(PhysicalComponentExt::isBehaviour).collect(Collectors.toList());
   }
 
   public Collection<? extends CapellaElement> getABShowHideActor(DSemanticDecorator view) {

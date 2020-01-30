@@ -50,22 +50,14 @@ public class AirdMigrationRunnable extends ModelMigrationRunnable {
   }
 
   @Override
-  public String getName() {
-    return Messages.MigrationAction_DiagramMigration;
+  protected boolean shallBeLoaded(URI uri) {
+    // We want to load all kind of resources while this migration
+    return true;
   }
 
-  /**
-   * Checks if is aird file.
-   * 
-   * @param uri
-   *          the given URI
-   * @return true, if is aird file
-   */
-  static boolean isAirdFile(URI uri) {
-    boolean res = (uri != null)
-        && (CapellaResourceHelper.AIRD_FILE_EXTENSION.equals(uri.fileExtension()) || CapellaResourceHelper.AIRD_FRAGMENT_FILE_EXTENSION
-            .equals(uri.fileExtension()));
-    return res;
+  @Override
+  public String getName() {
+    return Messages.MigrationAction_DiagramMigration;
   }
 
   /*
@@ -77,10 +69,10 @@ public class AirdMigrationRunnable extends ModelMigrationRunnable {
    */
   @Override
   public XMLResource doCreateResource(URI uri, final MigrationContext context) {
-    if (isAirdFile(uri)) {
-      
+    if (CapellaResourceHelper.isAirdResource(uri)) {
+
       return (XMIResource) new AirDResourceFactory() {
-        
+
         @Override
         protected XMIResource doCreateAirdResourceImpl(URI uri) {
           return new AirDResourceImpl(uri) {
@@ -94,17 +86,18 @@ public class AirdMigrationRunnable extends ModelMigrationRunnable {
             protected XMLLoad createXMLLoad() {
               return createCustomizedHandler(createXMLHelper(), context);
             }
-            
+
             @Override
             protected XMLLoad createXMLLoad(Map<?, ?> options) {
               return createXMLLoad();
             }
-            
+
             @Override
             protected void init() {
               super.init();
 
-              //We want the loaded version information, even if there is no Sirius migration needed. maybe we have some too
+              // We want the loaded version information, even if there is no Sirius migration needed. maybe we have some
+              // too
               RepresentationsFileVersionSAXParser parser = new RepresentationsFileVersionSAXParser(getURI());
               String loadedVersion = parser.getVersion(new NullProgressMonitor());
               getDefaultLoadOptions().put(SiriusMigrationContribution.SIRIUS_VERSION, loadedVersion);
@@ -112,11 +105,11 @@ public class AirdMigrationRunnable extends ModelMigrationRunnable {
             }
           };
         }
-        
+
       }.createResource(uri);
-      
+
     } else if (CapellaResourceHelper.AFM_FILE_EXTENSION.equals(uri.fileExtension())) {
-      //we want to use the default resource for this one.
+      // we want to use the default resource for this one.
       return null;
     }
 
@@ -125,80 +118,80 @@ public class AirdMigrationRunnable extends ModelMigrationRunnable {
 
   @Override
   public XMIExtensionHelperImpl createCapellaXMLHelper(XMLResource resource) {
-      // Ideally, the XMLHelper used should be inherited from RepresentationsFileXMIHelper. But, as
-      // XMIExtensionHelperImpl and RepresentationsFileXMIHelper are not in the same inheritance branch we do
-      // inheritance by composition instantiating RepresentationsFileXMIHelper as delegate.
-      final RepresentationsFileXMIHelper delegateXMLHelper = new RepresentationsFileXMIHelper(resource);
-      XMIExtensionHelperImpl result = new XMIExtensionHelperImpl(resource) {
-          
-          @Override
-          public String getID(EObject obj) {
-              //[525261] Add technical id on Sirius meta-model
-              //getId on RepresentationsFileXMIHelper has been added to avoid save of xmi:id when an uid exist.
-              return  delegateXMLHelper.getID(obj);
+    // Ideally, the XMLHelper used should be inherited from RepresentationsFileXMIHelper. But, as
+    // XMIExtensionHelperImpl and RepresentationsFileXMIHelper are not in the same inheritance branch we do
+    // inheritance by composition instantiating RepresentationsFileXMIHelper as delegate.
+    final RepresentationsFileXMIHelper delegateXMLHelper = new RepresentationsFileXMIHelper(resource);
+    XMIExtensionHelperImpl result = new XMIExtensionHelperImpl(resource) {
+
+      @Override
+      public String getID(EObject obj) {
+        // [525261] Add technical id on Sirius meta-model
+        // getId on RepresentationsFileXMIHelper has been added to avoid save of xmi:id when an uid exist.
+        return delegateXMLHelper.getID(obj);
+      }
+
+      @Override
+      public EClassifier getType(EFactory eFactory, String typeName) {
+        EClassifier type = null;
+        if (eFactory != null) {
+          EPackage ePackage = eFactory.getEPackage();
+          if (extendedMetaData != null) {
+            type = extendedMetaData.getType(ePackage, typeName);
           }
-          
-          @Override
-          public EClassifier getType(EFactory eFactory, String typeName) {
-              EClassifier type = null;
-              if (eFactory != null) {
-                  EPackage ePackage = eFactory.getEPackage();
-                  if (extendedMetaData != null) {
-                      type = extendedMetaData.getType(ePackage, typeName);
-                  }
-                  if (type == null) {
-                      EClass eClass = (EClass) ePackage.getEClassifier(typeName);
-                      if ((eClass == null) && (xmlMap != null)) {
-                          return xmlMap.getClassifier(ePackage.getNsURI(), typeName);
-                      }
-                      return eClass;
-                  }
-              }
-              return type;
+          if (type == null) {
+            EClass eClass = (EClass) ePackage.getEClassifier(typeName);
+            if ((eClass == null) && (xmlMap != null)) {
+              return xmlMap.getClassifier(ePackage.getNsURI(), typeName);
+            }
+            return eClass;
           }
+        }
+        return type;
+      }
 
           @Override
           public void setValue(EObject object, EStructuralFeature feature, Object value, int position) {
               delegateXMLHelper.setValue(object, feature, value, position);
           }
 
-          @Override
-          public EObject createObject(EFactory eFactory, EClassifier type) {
-              return delegateXMLHelper.createObject(eFactory, type);
-          }
+      @Override
+      public EObject createObject(EFactory eFactory, EClassifier type) {
+        return delegateXMLHelper.createObject(eFactory, type);
+      }
 
-          @Override
-          public URI deresolve(URI uri) {
-              return delegateXMLHelper.deresolve(uri);
-          }
+      @Override
+      public URI deresolve(URI uri) {
+        return delegateXMLHelper.deresolve(uri);
+      }
 
-          @Override
-          public String convertToString(EFactory factory, EDataType dataType, Object value) {
-              return delegateXMLHelper.convertToString(factory, dataType, value);
-          }
+      @Override
+      public String convertToString(EFactory factory, EDataType dataType, Object value) {
+        return delegateXMLHelper.convertToString(factory, dataType, value);
+      }
 
-          /**
-           * Copied from
-           * org.eclipse.sirius.business.internal.resource.parser.RepresentationsFileXMIHelper.createFromString(EFactory,
-           * EDataType, String).
-           * 
-           * @see org.eclipse.emf.ecore.xmi.impl.XMLHelperImpl#createFromString(org.eclipse.emf.ecore.EFactory,
-           *      org.eclipse.emf.ecore.EDataType, java.lang.String)
-           */
-          @Override
-          protected Object createFromString(EFactory eFactory, EDataType eDataType, String value) {
-              if (value != null && eDataType.equals(ViewpointPackage.eINSTANCE.getResourceDescriptor())) {
-                  // ResourceDescriptor(String) constructor converts string into URI
-                  // That URI is used to get a relative URI
-                  URI resolvedURI = new ResourceDescriptor(value).getResourceURI().resolve(resourceURI);
-                  return new ResourceDescriptor(resolvedURI);
-              }
-              return super.createFromString(eFactory, eDataType, value);
-          }
+      /**
+       * Copied from
+       * org.eclipse.sirius.business.internal.resource.parser.RepresentationsFileXMIHelper.createFromString(EFactory,
+       * EDataType, String).
+       * 
+       * @see org.eclipse.emf.ecore.xmi.impl.XMLHelperImpl#createFromString(org.eclipse.emf.ecore.EFactory,
+       *      org.eclipse.emf.ecore.EDataType, java.lang.String)
+       */
+      @Override
+      protected Object createFromString(EFactory eFactory, EDataType eDataType, String value) {
+        if (value != null && eDataType.equals(ViewpointPackage.eINSTANCE.getResourceDescriptor())) {
+          // ResourceDescriptor(String) constructor converts string into URI
+          // That URI is used to get a relative URI
+          URI resolvedURI = new ResourceDescriptor(value).getResourceURI().resolve(resourceURI);
+          return new ResourceDescriptor(resolvedURI);
+        }
+        return super.createFromString(eFactory, eDataType, value);
+      }
 
-      };
+    };
 
-      return result;
+    return result;
   }
 
 }

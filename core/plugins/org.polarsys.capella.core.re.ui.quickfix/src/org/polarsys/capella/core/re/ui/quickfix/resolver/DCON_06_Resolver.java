@@ -51,7 +51,8 @@ public class DCON_06_Resolver extends AbstractCapellaMarkerResolution {
     return modelElements.size() > 0 ? (CatalogElement) modelElements.get(0) : null;
   }
 
-  private void deleteMarker(IMarker marker) {
+  @Override
+  protected void deleteMarker(IMarker marker) {
     // delete marker
     try {
       marker.delete();

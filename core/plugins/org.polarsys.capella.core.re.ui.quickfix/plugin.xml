@@ -35,7 +35,7 @@
       </resolver>
       
       <resolver
-            class="org.polarsys.capella.core.re.ui.quickfix.resolver.DCON_05_Resolver"
+            class="org.polarsys.capella.core.re.ui.quickfix.resolver.DeleteGivenElement"
             desc="%quickFix.DCON_05.desc"
             icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif"
             label="%quickFix.DCON_05.label">
@@ -55,12 +55,39 @@
       </resolver>
       
       <resolver
-            class="org.polarsys.capella.core.re.ui.quickfix.resolver.DCON_07_Resolver"
+            class="org.polarsys.capella.core.re.ui.quickfix.resolver.DeleteGivenElement"
             desc="%quickFix.DCON_07.desc"
             icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif"
             label="%quickFix.DCON_07.label">
          <rules
                ruleId="DCON_07">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.re.ui.quickfix.resolver.DeleteGivenElement"
+            desc="%quickFix.DCON_08.desc"
+            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif"
+            label="%quickFix.DCON_08.label">
+         <rules
+               ruleId="DCON_08">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.re.ui.quickfix.resolver.DeleteGivenElement"
+            desc="%quickFix.I_43_Delete.desc"
+            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif"
+            label="%quickFix.I_43_Delete.label">
+         <rules
+               ruleId="I_43">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.re.ui.quickfix.resolver.I_43_Replace"
+            desc="%quickFix.I_43_Replace.desc"
+            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+            label="%quickFix.I_43_Replace.label">
+         <rules
+               ruleId="I_43">
          </rules>
       </resolver>
    </extension>

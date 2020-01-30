@@ -62,3 +62,45 @@ component and function.
 from a previous level has its allocated Component Exchange and its allocating FunctionalExchange related to the realized
 ComponentExchangeFunctionalExchangeAllocation ComponentExchange and FunctionalExchange.
 |}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/error.gif|ERROR]]
+|TC_DC_09 - System Analysis Realization 
+|-
+| colspan="2"|The rule checks the realization consistency between system analysis and operational analysis.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/error.gif|ERROR]]
+|TC_DC_10 - Logical Architecture Realization 
+|-
+| colspan="2"|The rule checks the realization consistency between logical architecture and system analysis.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/error.gif|ERROR]]
+|TC_DC_11 - Physical Architecture Realization 
+|-
+| colspan="2"|The rule checks the realization consistency between physical architecture and logical architecture.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/error.gif|ERROR]]
+|TC_DC_12 - EPBS Architecture Realization 
+|-
+| colspan="2"|The rule checks the realization consistency between epbs architecture and physical architecture.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|TC_DC_13 - Root Logical Component Realization 
+|-
+| colspan="2"|This rule Ensures that Root Logical Component always realizes a Root System Component.
+|}
+<br>
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/warning.gif|WARNING]]
+|TC_DC_14 - Physical Root Component Realization 
+|-
+| colspan="2"|This rule Ensures that Root Physical Component always realizes a Root Logical Component.
+|}

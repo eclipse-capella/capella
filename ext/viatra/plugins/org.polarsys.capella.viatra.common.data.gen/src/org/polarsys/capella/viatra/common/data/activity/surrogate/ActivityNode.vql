@@ -37,11 +37,19 @@ pattern ActivityNode__inStructuredNode(self : ActivityNode, target : Interruptib
 @Surrogate(feature="outgoing")
 pattern ActivityNode__outgoing(self : ActivityNode, target : ActivityEdge) {
 	ActivityEdge.source(target, self);
+} or {
+	AbstractAction(self);
+	AbstractAction.outputs(self, OutputPort);
+	ActivityNode.outgoing(OutputPort, target);
 }
 
 @Surrogate(feature="incoming")
 pattern ActivityNode__incoming(self : ActivityNode, target : ActivityEdge) {
 	ActivityEdge.target(target, self);
+} or {
+	AbstractAction(self);
+	AbstractAction.inputs(self, InputPort);
+	ActivityNode.incoming(InputPort, target);
 }
 
 

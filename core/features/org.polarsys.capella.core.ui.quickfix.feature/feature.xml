@@ -54,9 +54,30 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+         
+   <plugin
+         id="org.polarsys.capella.core.data.ctx.ui.quickfix"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+         
+   <plugin
+         id="org.polarsys.capella.core.data.la.ui.quickfix"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
    <plugin
          id="org.polarsys.capella.core.data.pa.ui.quickfix"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+         
+   <plugin
+         id="org.polarsys.capella.core.data.epbs.ui.quickfix"
          download-size="0"
          install-size="0"
          version="0.0.0"

@@ -41,7 +41,7 @@ private static FunctionSpecificationHelper instance;
 		Object ret = null;
 		
 		if (feature.equals(FaPackage.Literals.FUNCTION_SPECIFICATION__SUB_FUNCTION_SPECIFICATIONS)) {
-			ret = getSubFunctions(element);
+			ret = getSubFunctionSpecifications(element);
 		}
 
 		// no helper found... searching in super classes...
@@ -55,7 +55,7 @@ private static FunctionSpecificationHelper instance;
 		return ret;
 	}
 
-	protected List<FunctionSpecification> getSubFunctions(FunctionSpecification element) {
+	protected List<FunctionSpecification> getSubFunctionSpecifications(FunctionSpecification element) {
 		List<ActivityNode> nodes = element.getOwnedNodes();
 		List<FunctionSpecification> ret = new ArrayList<>();
 		

@@ -20,16 +20,11 @@
 
    <splash
       location="org.polarsys.capella.core.platform.sirius.ui.perspective" />
-   <launcher>
-      <win useIco="false">
-         <bmp
-            winSmallHigh="../org.polarsys.capella.rcp/icons/Capella16x16.bmp"
-            winSmallLow="../org.polarsys.capella.rcp/icons/Capella16x16_8bits.bmp"
-            winMediumHigh="../org.polarsys.capella.rcp/icons/Capella32x32.bmp"
-            winMediumLow="../org.polarsys.capella.rcp/icons/Capella32x32_8bits.bmp"
-            winLargeHigh="../org.polarsys.capella.rcp/icons/Capella48x48.bmp"
-            winLargeLow="../org.polarsys.capella.rcp/icons/Capella48x48_8bits.bmp"/>
-      </win>
+   <launcher name="capella">
+		<win useIco="true">
+         	<ico path="launch_icons/Capella_launch_icon.ico"/>
+         	<bmp/>
+		</win>
    </launcher>
 
    <intro introId="org.eclipse.ui.intro.universal"/>
@@ -98,8 +93,8 @@
       <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="2" />
-      <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
       <plugin id="org.eclipse.equinox.p2.reconciler.dropins" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
       <plugin id="org.eclipse.update.configurator" autoStart="true" startLevel="4" />
    </configurations>
 

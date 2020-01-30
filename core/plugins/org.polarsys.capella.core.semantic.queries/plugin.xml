@@ -131,9 +131,10 @@
        </categoryQuery>
     </category>
 	<category
-	      id="org.polarsys.capella.core.semantic.queries.GeneralizableElementAllSuperGC"
-	      isTopLevel="true"
-	      name="Generalized Components">
+       id="org.polarsys.capella.core.semantic.queries.GeneralizableElementAllSuperGC"
+       isTopLevel="true"
+       name="Generalized Components"
+       usedInShowRelated="true">
 	   <categoryQuery>
 	      <basicQuery
 	            class="org.polarsys.capella.core.semantic.queries.basic.queries.GeneralizableElementAllSuperGC">
@@ -147,9 +148,10 @@
 	   </availableForType>
 	</category>
 	<category
-	      id="org.polarsys.capella.core.semantic.queries.GeneralizableElementAllSuperGE"
-	      isTopLevel="true"
-	      name="Generalized Elements">
+       id="org.polarsys.capella.core.semantic.queries.GeneralizableElementAllSuperGE"
+       isTopLevel="true"
+       name="Generalized Elements"
+       usedInShowRelated="true">
 	   <categoryQuery>
 	      <basicQuery
 	            class="org.polarsys.capella.core.semantic.queries.basic.queries.GeneralizableElementAllSuperGE">
@@ -165,7 +167,8 @@
     <category
           id="org.polarsys.capella.core.semantic.queries.GeneralizableElementAllSubGC"
           isTopLevel="true"
-          name="Generalizing Components">
+          name="Generalizing Components"
+          usedInShowRelated="true">
        <targetBrowserId
              id="ReferencingElementBrowser">
        </targetBrowserId>
@@ -180,7 +183,8 @@
     <category
           id="org.polarsys.capella.core.semantic.queries.GeneralizableElementAllSubGE"
           isTopLevel="true"
-          name="Generalizing Elements">
+          name="Generalizing Elements"
+          usedInShowRelated="true">
        <targetBrowserId
              id="ReferencingElementBrowser">
        </targetBrowserId>
@@ -198,7 +202,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsInterfaceUseTarget"
             isTopLevel="true"
-            name="Target">
+            name="Target"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.cs.InterfaceUse">
          </availableForType>
@@ -230,7 +235,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsInterfaceImplementationTarget"
             isTopLevel="true"
-            name="Target">
+            name="Target"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.cs.InterfaceImplementation">
          </availableForType>
@@ -262,6 +268,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsInvolvementTarget"
             isTopLevel="true"
+            usedInShowRelated="true"
             name="Involved Element">
          <availableForType
                class="org.polarsys.capella.core.data.capellacore.Involvement">
@@ -454,7 +461,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsAssociationRoles"
             isTopLevel="true"
-            name="Roles">
+            name="Roles"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.information.Association">
          </availableForType>
@@ -475,7 +483,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsAllocationTarget"
             isTopLevel="true"
-            name="Target">
+            name="Target"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.capellacore.Allocation">
          </availableForType>
@@ -507,7 +516,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsTraceTarget"
             isTopLevel="true"
-            name="Target">
+            name="Target"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.capellacore.Trace">
          </availableForType>
@@ -540,9 +550,10 @@
             id="------------- Component ----------------">
       </category>
        <category
-                  id="org.polarsys.capella.core.semantic.queries.ComponentRequiredInterfaces"
-                  isTopLevel="true"
-                  name="Required Interfaces">
+             id="org.polarsys.capella.core.semantic.queries.ComponentRequiredInterfaces"
+             isTopLevel="true"
+             name="Required Interfaces"
+             usedInShowRelated="true">
                <availableForType
                      class="org.polarsys.capella.core.data.cs.Component">
                </availableForType>
@@ -558,7 +569,8 @@
             <category
                   id="org.polarsys.capella.core.semantic.queries.ComponentProvidedInterfaces"
                   isTopLevel="true"
-                  name="Provided Interfaces">
+                  name="Provided Interfaces"
+                  usedInShowRelated="true">
                <availableForType
                      class="org.polarsys.capella.core.data.cs.Component">
                </availableForType>
@@ -571,9 +583,9 @@
                   </basicQuery></categoryQuery>
             </category>
        <category
-            id="org.polarsys.capella.core.semantic.queries.CommunicationLinkExchangeItem1"
-            isTopLevel="true"
-            name="Communication Link">
+             id="org.polarsys.capella.core.semantic.queries.CommunicationLinkExchangeItem1"
+             isTopLevel="true"
+             name="Communication Link">
          <availableForType
                class="org.polarsys.capella.core.data.cs.Component">
          </availableForType>
@@ -680,7 +692,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.Component_implementedInterfaces"
             isTopLevel="true"
-            name="Implemented Interfaces">
+            name="Implemented Interfaces"
+            usedInShowRelated="true">
          <targetBrowserId
                id="ReferencedElementBrowser">
          </targetBrowserId>
@@ -696,7 +709,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.Component_usedInterfaces"
             isTopLevel="true"
-            name="Used Interfaces">
+            name="Used Interfaces"
+            usedInShowRelated="true">
          <targetBrowserId
                id="ReferencedElementBrowser">
          </targetBrowserId>
@@ -706,6 +720,23 @@
          <categoryQuery>
             <basicQuery
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.Component_usedInterfaces">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.Component_representingParts"
+            isTopLevel="true"
+            name="Representing Parts"
+            usedInShowRelated="true">
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <availableForType
+               class="org.polarsys.capella.core.data.cs.Component">
+         </availableForType>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Component_representingParts">
             </basicQuery>
          </categoryQuery>
       </category>
@@ -731,7 +762,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.LogicalComponent_RealizingPhysicalComponents"
             isTopLevel="true"
-            name="Realizing Physical Components">
+            name="Realizing Physical Components"
+            usedInShowRelated="false">
          <targetBrowserId
                id="ReferencingElementBrowser">
          </targetBrowserId>
@@ -747,7 +779,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.LogicalComponent_RealizedSystemComponent"
             isTopLevel="true"
-            name="Realized System Components">
+            name="Realized System Components"
+            usedInShowRelated="true">
          <targetBrowserId
                id="ReferencedElementBrowser">
          </targetBrowserId>
@@ -978,7 +1011,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.PhysicalComponent_RealizedLogicalComponent"
             isTopLevel="true"
-            name="Realized Logical Component">
+            name="Realized Logical Component"
+            usedInShowRelated="true">
          <targetBrowserId
                id="ReferencedElementBrowser">
          </targetBrowserId>
@@ -1046,7 +1080,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.AbstractFunction_mother_function_allocation"
             isTopLevel="true"
-            name="Allocating Actor/Component (computed)">
+            name="Allocating Actor/Component (computed)"
+            usedInShowRelated="true">
          <targetBrowserId
                id="ReferencingElementBrowser">
          </targetBrowserId>
@@ -1062,7 +1097,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.AbstractFunction_mother_activity_allocation"
             isTopLevel="true"
-            name="Allocating Actor/Entity/Role (computed)">
+            name="Allocating Actor/Entity/Role (computed)"
+            usedInShowRelated="true">
          <targetBrowserId
                id="ReferencingElementBrowser">
          </targetBrowserId>
@@ -1313,7 +1349,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.FunctionalExchangeExchangesItems"
             isTopLevel="true"
-            name="Exchange Items">
+            name="Exchange Items"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.fa.FunctionalExchange">
          </availableForType>
@@ -1335,7 +1372,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.FunctionalExchangeCategory"
             isTopLevel="true"
-            name="Categories">
+            name="Categories"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.fa.FunctionalExchange">
          </availableForType>
@@ -1477,7 +1515,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.ComponentPort_realizedComponentPort"
             isTopLevel="true"
-            name="Realized Component Ports">
+            name="Realized Component Ports"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.fa.ComponentPort">
          </availableForType>
@@ -1498,7 +1537,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.ComponentPort_realizedFunctionPort"
             isTopLevel="true"
-            name="Allocated Function Ports">
+            name="Allocated Function Ports"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.fa.ComponentPort">
          </availableForType>
@@ -1535,7 +1575,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.ComponentPort_type"
             isTopLevel="true"
-            name="Type">
+            name="Type"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.fa.ComponentPort">
          </availableForType>
@@ -1551,6 +1592,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.ComponentPort_providedInterfaces"
             isTopLevel="true"
+            usedInShowRelated="true"
             name="Provided Interfaces">
          <availableForType
                class="org.polarsys.capella.core.data.fa.ComponentPort">
@@ -1566,6 +1608,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.ComponentPort_requiredInterfaces"
             isTopLevel="true"
+            usedInShowRelated="true"
             name="Required Interfaces">
          <availableForType
                class="org.polarsys.capella.core.data.fa.ComponentPort">
@@ -1616,7 +1659,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.Pin_type"
             isTopLevel="true"
-            name="Type">
+            name="Type"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.common.data.activity.Pin">
          </availableForType>
@@ -1694,7 +1738,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.basic.queries.SystemComponent_InvolvingMissions"
             isTopLevel="true"
-            name="Involving Missions">
+            name="Involving Missions"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.ctx.SystemComponent">
          </availableForType>
@@ -1711,7 +1756,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.basic.queries.SystemComponent_InvolvingCapabilities"
             isTopLevel="true"
-            name="Involving Capabilities">
+            name="Involving Capabilities"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.ctx.SystemComponent">
          </availableForType>
@@ -1828,7 +1874,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.Scenario_realizedScenarios"
             isTopLevel="true"
-            name="Realized Scenarios">
+            name="Realized Scenarios"
+            usedInShowRelated="true">
          <targetBrowserId
              id="ReferencedElementBrowser">
          </targetBrowserId>
@@ -2025,7 +2072,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.Part_type"
             isTopLevel="true"
-            name="Type">
+            name="Type"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.cs.Part">
          </availableForType>
@@ -2042,7 +2090,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.StateFragmentRelatedFunctions"
             isTopLevel="true"
-            name="Related Function">
+            name="Related Function"
+            usedInShowRelated="true">
          <targetBrowserId
                id="ReferencedElementBrowser">
          </targetBrowserId>
@@ -2058,7 +2107,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.StateFragmentRelatedStates"
             isTopLevel="true"
-            name="Related State">
+            name="Related State"
+            usedInShowRelated="true">
          <targetBrowserId
                id="ReferencedElementBrowser">
          </targetBrowserId>
@@ -2092,7 +2142,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.InstanceRole_representedInstance"
             isTopLevel="true"
-            name="Represented Instance">
+            name="Represented Instance"
+            usedInShowRelated="true">
          <targetBrowserId
                id="ReferencedElementBrowser">
          </targetBrowserId>
@@ -2109,7 +2160,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.InteractionUseReferencedScenario"
             isTopLevel="true"
-            name="Referenced Scenario">
+            name="Referenced Scenario"
+            usedInShowRelated="true">
          <targetBrowserId
                id="ReferencedElementBrowser">
          </targetBrowserId>
@@ -2146,7 +2198,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.Parameter_Type"
             isTopLevel="true"
-            name="Type">
+            name="Type"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.information.Parameter">
          </availableForType>
@@ -2253,7 +2306,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.ExchangesItemExchangeItemElements"
             isTopLevel="true"
-            name="ExchangeItemElements">
+            name="ExchangeItemElements"
+            usedInShowRelated="true">
          <targetBrowserId
                id="ReferencingElementBrowser">
          </targetBrowserId>
@@ -2412,6 +2466,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.CommunicationLinkExchangeItem"
             isTopLevel="true"
+            usedInShowRelated="true"
             name="Target">
          <targetBrowserId
                id="ReferencedElementBrowser">
@@ -2537,7 +2592,8 @@
             <category
                   id="org.polarsys.capella.core.semantic.queries.ExchangeItemAllocationExchangeItem"
                   isTopLevel="true"
-                  name="Exchange Item">
+                  name="Exchange Item"
+                  usedInShowRelated="true">
                <availableForType
                      class="org.polarsys.capella.core.data.cs.ExchangeItemAllocation">
                </availableForType>
@@ -2755,7 +2811,8 @@
             <category
                   id="org.polarsys.capella.core.semantic.queries.basic.queries.SequenceMessage_invokedOperation11"
                   isTopLevel="true"
-                  name="Invoked Operation">
+                  name="Invoked Operation"
+                  usedInShowRelated="true">
                <availableForType
                      class="org.polarsys.capella.core.data.interaction.SequenceMessage">
                </availableForType>
@@ -2771,7 +2828,8 @@
             <category
                   id="org.polarsys.capella.core.semantic.queries.basic.queries.SequenceMessageInvokedInteraction22"
                   isTopLevel="true"
-                  name="Invoked Interaction">
+                  name="Invoked Interaction"
+                  usedInShowRelated="true">
                <availableForType
                      class="org.polarsys.capella.core.data.interaction.SequenceMessage">
                </availableForType>
@@ -2792,7 +2850,8 @@
             <category
                   id="org.polarsys.capella.core.semantic.queries.basic.queries.SequenceMessage_AllocatedFunctionalExchange33"
                   isTopLevel="true"
-                  name="Invoked Functional Exchange">
+                  name="Invoked Functional Exchange"
+                  usedInShowRelated="true">
                <availableForType
                      class="org.polarsys.capella.core.data.interaction.SequenceMessage">
                </availableForType>
@@ -2813,7 +2872,8 @@
             <category
                   id="org.polarsys.capella.core.semantic.queries.basic.queries.SequenceMessageInvokedComponentExchange44"
                   isTopLevel="true"
-                  name="Invoked Component Exchange">
+                  name="Invoked Component Exchange"
+                  usedInShowRelated="true">
                <availableForType
                      class="org.polarsys.capella.core.data.interaction.SequenceMessage">
                </availableForType>
@@ -2834,7 +2894,8 @@
             <category
                   id="org.polarsys.capella.core.semantic.queries.basic.queries.SequenceMessageInvokedCommunicationMean55"
                   isTopLevel="true"
-                  name="Invoked Communication Mean">
+                  name="Invoked Communication Mean"
+                  usedInShowRelated="true">
                <availableForType
                      class="org.polarsys.capella.core.data.interaction.SequenceMessage">
                </availableForType>
@@ -2855,7 +2916,8 @@
             <category
                   id="org.polarsys.capella.core.semantic.queries.basic.queries.SequenceMessageInvokedExchangeItemAllocation66"
                   isTopLevel="true"
-                  name="Invoked Exchange Item Allocation">
+                  name="Invoked Exchange Item Allocation"
+                  usedInShowRelated="true">
                <availableForType
                      class="org.polarsys.capella.core.data.interaction.SequenceMessage">
                </availableForType>
@@ -3216,6 +3278,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.FunctionPortRealizedFunctionPort"
             isTopLevel="true"
+            usedInShowRelated="true"
             name="Realized Function Ports">
          <availableForType
                class="org.polarsys.capella.core.data.fa.FunctionPort">
@@ -3298,6 +3361,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.FunctionAllocatingComponent_pf"
             isTopLevel="true"
+            usedInShowRelated="true"
             name="Allocating Physical Component">
          <availableForType
                class="org.polarsys.capella.core.data.pa.PhysicalFunction">
@@ -3314,6 +3378,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.FunctionAllocatingActor_pf"
             isTopLevel="true"
+            usedInShowRelated="true"
             name="Allocating Physical Actor">
          <availableForType
                class="org.polarsys.capella.core.data.pa.PhysicalFunction">
@@ -3463,6 +3528,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.FunctionAllocatingComponent_lf"
             isTopLevel="true"
+            usedInShowRelated="true"
             name="Allocating Logical Component">
          <availableForType
                class="org.polarsys.capella.core.data.la.LogicalFunction">
@@ -3479,6 +3545,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.FunctionAllocatingActor_lf"
             isTopLevel="true"
+            usedInShowRelated="true"
             name="Allocating Logical Actor">
          <availableForType
                class="org.polarsys.capella.core.data.la.LogicalFunction">
@@ -3630,6 +3697,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.FunctionAllocatingComponent_sf"
             isTopLevel="true"
+            usedInShowRelated="true"
             name="Allocating System">
          <availableForType
                class="org.polarsys.capella.core.data.ctx.SystemFunction">
@@ -3646,7 +3714,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.FunctionAllocatingActor_sf"
             isTopLevel="true"
-            name="Allocating Actor">
+            name="Allocating Actor"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.ctx.SystemFunction">
          </availableForType>
@@ -3928,9 +3997,10 @@
             id="---------- Entity ----------NEW">
       </category>
             <category
-            id="org.polarsys.capella.core.semantic.queries.Entity_AllocatedFunction"
-            isTopLevel="true"
-            name="Allocated Operational Activities">
+                  id="org.polarsys.capella.core.semantic.queries.Entity_AllocatedFunction"
+                  isTopLevel="true"
+                  name="Allocated Operational Activities"
+                  usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.oa.Entity">
          </availableForType>
@@ -4027,13 +4097,15 @@
             </basicQuery>
          </categoryQuery>
       </category>
+      
       <category
             id="---------- System ----------NEW">
       </category>
       <category
             id="org.polarsys.capella.core.semantic.queries.basic.queries.Component_AllocatedFunctions"
             isTopLevel="true"
-            name="Allocated System Functions">
+            name="Allocated System Functions"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.ctx.SystemComponent">
          </availableForType>
@@ -4052,7 +4124,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.SystemComponent_RealizedComponents"
             isTopLevel="true"
-            name="Realized Operational Entities">
+            name="Realized Operational Entities"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.ctx.SystemComponent">
          </availableForType>
@@ -4071,7 +4144,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.LogicalComponent_AllocatedFunction"
             isTopLevel="true"
-            name="Allocated Logical Functions">
+            name="Allocated Logical Functions"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.la.LogicalComponent">
          </availableForType>
@@ -4091,7 +4165,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.PhysicalComponent_AllocatedFunction"
             isTopLevel="true"
-            name="Allocated Physical Functions">
+            name="Allocated Physical Functions"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.pa.PhysicalComponent">
          </availableForType>
@@ -4916,7 +4991,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalChain.Children"
             isTopLevel="true"
-            name="Involved Functional Chains">
+            name="Involved Functional Chains"
+            usedInShowRelated="true">
          <targetBrowserId
                id="ReferencedElementBrowser">
          </targetBrowserId>
@@ -5079,7 +5155,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.basic.queries.SequencLinkSourceInvolvementFunction"
             isTopLevel="true"
-            name="Source Involvement Function">
+            name="Source Involvement Function"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.fa.SequenceLink">
          </availableForType>
@@ -5164,7 +5241,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.basic.queries.SequencLinkTargetInvolvementFunction"
             isTopLevel="true"
-            name="Target Involvement Function">
+            name="Target Involvement Function"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.fa.SequenceLink">
          </availableForType>
@@ -5324,7 +5402,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.FunctionalChain_enactedFunctions_oa"
             isTopLevel="true"
-            name="Involved Operational Activities">
+            name="Involved Operational Activities"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.oa.OperationalProcess">
          </availableForType>
@@ -5345,7 +5424,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.OperationalProcessChildren"
             isTopLevel="true"
-            name="Involved Operational Processes">
+            name="Involved Operational Processes"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.oa.OperationalProcess">
          </availableForType>
@@ -5775,7 +5855,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.Capability_InvolvedComponents"
             isTopLevel="true"
-            name="Involved Components">
+            name="Involved Components"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.interaction.AbstractCapability">
          </availableForType>
@@ -5845,7 +5926,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.Capability_purposeMissions"
             isTopLevel="true"
-            name="Exploiting Missions">
+            name="Exploiting Missions"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.ctx.Capability">
          </availableForType>
@@ -5979,7 +6061,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.Mission_ExploitedCapabilities"
             isTopLevel="true"
-            name="Exploited Capabilities">
+            name="Exploited Capabilities"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.ctx.Mission">
          </availableForType>
@@ -5995,7 +6078,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.basic.queries.Mission_InvolvedSystemComponents"
             isTopLevel="true"
-            name="Involved System Components">
+            name="Involved System Components"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.ctx.Mission">
          </availableForType>
@@ -6060,7 +6144,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.basic.queries.PropertyType"
             isTopLevel="true"
-            name="Type">
+            name="Type"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.information.Property">
          </availableForType>
@@ -6073,9 +6158,26 @@
             </basicQuery></categoryQuery>
       </category>
       <category
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.PropertyAssociation"
+            isTopLevel="true"
+            name="Association"
+            usedInShowRelated="true">
+         <availableForType
+               class="org.polarsys.capella.core.data.information.Property">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.PropertyAssociation">
+            </basicQuery></categoryQuery>
+      </category>
+      <category
             id="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaElementOwnerProPatent"
             isTopLevel="true"
-            name="Parent">
+            name="Parent"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.information.Property">
          </availableForType>
@@ -6221,7 +6323,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.ModelElementGuard"
             isTopLevel="true"
-            name="Guard">
+            name="Guard"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.common.data.modellingcore.ModelElement">
          </availableForType>
@@ -6242,7 +6345,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.ModelElementExchangeContext"
             isTopLevel="true"
-            name="Exchange Context">
+            name="Exchange Context"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.common.data.modellingcore.ModelElement">
          </availableForType>
@@ -6340,7 +6444,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.basic.queries.ExchangeItemElementType12"
             isTopLevel="true"
-            name="Type">
+            name="Type"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.information.ExchangeItemElement">
          </availableForType>
@@ -6599,10 +6704,13 @@
             </basicQuery>
          </itemQueries>
       </category>
+      
+      
       <category
             id="org.polarsys.capella.core.semantic.queries.basic.queries.DataValueRefReferencedValue01"
             isTopLevel="true"
-            name="Referenced Value">
+            name="Referenced Value"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.information.datavalue.DataValue">
          </availableForType>
@@ -6620,6 +6728,31 @@
             </basicQuery>
          </itemQueries>
       </category>
+      
+      <category
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.DataValueRefReferencedProperty"
+            isTopLevel="true"
+            name="Referenced Property"
+            usedInShowRelated="true">
+         <availableForType
+               class="org.polarsys.capella.core.data.information.datavalue.DataValue">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.DataValueRefReferencedProperty">
+            </basicQuery>
+         </categoryQuery>
+         <itemQueries>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.PropertyValue_applying_valued_element_DataValue">
+            </basicQuery>
+         </itemQueries>
+      </category>
+      
+      
       <category
             id="org.polarsys.capella.core.semantic.queries.basic.queries.DataValueReferencingReferencedValue01"
             isTopLevel="true"
@@ -6837,7 +6970,8 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.CollectionType"
             isTopLevel="true"
-            name="Type">
+            name="Type"
+            usedInShowRelated="true">
          <availableForType
                class="org.polarsys.capella.core.data.information.Collection">
          </availableForType>

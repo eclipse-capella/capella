@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+import org.polarsys.capella.test.model.ju.activityExplorer.ActivityExplorerTestSuite;
 import org.polarsys.capella.test.model.ju.components.CompositionTestSuite;
 import org.polarsys.capella.test.model.ju.crossreferencer.InvolverInvolvedDerivedFeaturesTest;
 import org.polarsys.capella.test.model.ju.crossreferencer.MoveElementToNewResourceTest;
@@ -85,7 +86,7 @@ public class ModelTestSuite extends BasicTestSuite {
     tests.add(new DerivedFeatureTestCase());
     tests.add(new PatternsTestSuite());
     tests.add(new DnDTestSuite());
-    
+   
     tests.add(new ComponentExtTestCase());
     tests.add(new ComponentPkgExtTestCase());
     tests.add(new PartExtTestCase());
@@ -93,6 +94,7 @@ public class ModelTestSuite extends BasicTestSuite {
 
     tests.add(new DiffMergeTestSuite());
     tests.add(new CompositionTestSuite());
+    tests.add(new ActivityExplorerTestSuite());
     return tests;
   }
 
