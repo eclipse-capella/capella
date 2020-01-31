@@ -45,6 +45,8 @@
       <feature id="org.eclipse.emf.diffmerge.patterns.sdk.feature.source"/>
       <feature id="org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.source"/>
       <feature id="org.eclipse.emf.diffmerge.sirius.feature.source"/>
+      <feature id="org.eclipse.emf.diffmerge.gmf.feature.source"/>
+      <feature id="org.eclipse.emf.diffmerge.sdk.feature.source"/>
       <feature id="org.eclipse.emf.diffmerge.egit.feature.source"/>
       <feature id="org.eclipse.egit.source"/>
       <feature id="org.eclipse.jgit.source"/>
