@@ -3,18 +3,18 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.ui.search;singleton:=true
 Bundle-Version: 1.4.0.qualifier
-Bundle-Activator: org.polarsys.capella.core.ui.search.CapellaUISearchPlugin
+Bundle-Activator: org.polarsys.capella.core.ui.search.Activator
 Bundle-Vendor: %providerName
-Require-Bundle: com.google.guava,
- org.polarsys.capella.core.ui.toolkit,
- org.polarsys.capella.core.platform.sirius.ui.navigator,
- org.polarsys.capella.core.ui.semantic.browser,
- org.polarsys.capella.common.tools.report.appenders.reportlogview,
- org.polarsys.capella.common.re.gen,
- org.eclipse.sirius,
- org.eclipse.core.expressions,
- org.eclipse.ui.ide
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: org.polarsys.capella.core.ui.search,
- org.polarsys.capella.core.ui.search.handler
 Bundle-Localization: plugin
+Require-Bundle: org.eclipse.search,
+ org.eclipse.jface.text,
+ org.polarsys.capella.core.platform.sirius.ui.navigator,
+ org.polarsys.capella.common.ui.toolkit,
+ org.eclipse.sirius.common.ui,
+ org.polarsys.capella.core.sirius.ui,
+ org.eclipse.ui.workbench.texteditor
+Export-Package: org.polarsys.capella.core.ui.search
+Import-Package: org.polarsys.capella.common.ui.toolkit.viewers.data
+ 
+
