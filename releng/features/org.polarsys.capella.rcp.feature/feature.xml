@@ -109,8 +109,6 @@
       <import feature="org.eclipse.amalgam.explorer.activity.source"/>
       <import feature="org.eclipse.draw2d.source"/>
       <import feature="org.eclipse.emf.diffmerge.gmf.feature.source"/>
-      <import feature="org.eclipse.emf.diffmerge.patterns.sdk.feature.source"/>
-      <import feature="org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.source"/>
       <import feature="org.eclipse.emf.diffmerge.sdk.feature.source"/>
       <import feature="org.eclipse.emf.diffmerge.sirius.feature.source"/>
       <import feature="org.eclipse.emf.sdk"/>
@@ -147,7 +145,6 @@
       <import feature="org.polarsys.kitalpha.model.detachment.contrib.viewpoints.feature.source"/>
       <import feature="org.polarsys.kitalpha.model.detachment.feature.source"/>
       <import feature="org.polarsys.kitalpha.model.detachment.ui.feature.source"/>
-      <import feature="org.polarsys.kitalpha.patterns.feature.source"/>
       <import feature="org.polarsys.kitalpha.report.feature.source"/>
       <import feature="org.polarsys.kitalpha.report.ui.feature.source"/>
       <import feature="org.polarsys.kitalpha.resourcereuse.emfscheme.feature.source"/>
