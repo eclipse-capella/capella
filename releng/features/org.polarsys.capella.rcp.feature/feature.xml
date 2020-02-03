@@ -116,6 +116,7 @@
       <import feature="org.eclipse.emf.sdk"/>
       <import feature="org.eclipse.emf.transaction.source"/>
       <import feature="org.eclipse.emf.validation.source"/>
+      <import feature="org.eclipse.emf.workspace.source"/>
       <import feature="org.eclipse.gef.source"/>
       <import feature="org.eclipse.gmf.runtime.notation.source"/>
       <import feature="org.eclipse.gmf.runtime.thirdparty.source"/>

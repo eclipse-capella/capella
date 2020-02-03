@@ -21,6 +21,7 @@ location eclipse "http://download.eclipse.org/releases/2019-06" {
 	org.eclipse.emf.sdk.feature.group
 	org.eclipse.emf.validation.source.feature.group
 	org.eclipse.emf.transaction.source.feature.group
+	org.eclipse.emf.workspace.source.feature.group
 	org.eclipse.gef.source.feature.group
 	org.eclipse.equinox.executable.feature.group
 	com.ibm.icu
