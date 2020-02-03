@@ -30,71 +30,7 @@
    </license>
 
    <includes
-         id="org.polarsys.capella.common.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.polarsys.capella.core.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.polarsys.capella.core.advance.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.polarsys.capella.core.common.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.polarsys.capella.core.common.ui.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.polarsys.capella.core.libraries.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.polarsys.capella.core.properties.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.polarsys.capella.core.transfo.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.polarsys.capella.core.transition.common.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.polarsys.capella.core.transition.system.topdown.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.polarsys.capella.core.ui.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.polarsys.capella.core.ui.quickfix.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.polarsys.capella.core.ui.semantic.browser.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.polarsys.capella.core.ui.wizards.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.polarsys.capella.core.validation.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.polarsys.capella.common.ui.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.polarsys.capella.core.re.feature"
+         id="org.polarsys.capella.rcp.feature"
          version="0.0.0"/>
 
    <requires>
@@ -153,12 +89,5 @@
       <import feature="org.eclipse.sdk"/>
       <import feature="org.eclipse.platform"/>
    </requires>
-
-   <plugin
-         id="org.polarsys.capella.rcp"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
 
 </feature>
