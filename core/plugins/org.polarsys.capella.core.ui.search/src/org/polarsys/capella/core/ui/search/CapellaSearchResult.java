@@ -12,11 +12,14 @@ package org.polarsys.capella.core.ui.search;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -43,7 +46,7 @@ public class CapellaSearchResult extends AbstractTextSearchResult {
     setActiveMatchFilters(new MatchFilter[] {}); // By default, no filter is activated
     searchEntries = new HashMap<Object, Collection<Object>>();
   }
-
+  
   @Override
   public String getLabel() {
     int totalOccurrenceCount = getOccurrenceCount();
@@ -85,24 +88,6 @@ public class CapellaSearchResult extends AbstractTextSearchResult {
     return null;
   }
 
-  
-  /**
-   * Count all occurrences of matches
-   * 
-   * @return Assuming that integer is sufficient for this count
-   */
-  public int getOccurrenceCount() {
-    long count = getElements().length;
-    return Math.toIntExact(count);
-  }
-  
-  private Stream<AbstractCapellaSearchEntry> getCapellaSearchMatchesStream() {
-    return Stream.of(getElements()) //
-        .flatMap(e -> Stream.of(getMatches(e))) //
-        .filter(AbstractCapellaSearchEntry.class::isInstance) //
-        .map(AbstractCapellaSearchEntry.class::cast);
-  }
-
   /**
    * Get all projects from matches
    * 
@@ -140,7 +125,7 @@ public class CapellaSearchResult extends AbstractTextSearchResult {
    */
   public AbstractCapellaSearchEntry insert(Object file, AbstractCapellaSearchEntry entry, Object eTypedElem, String valuation,
       boolean notify) {
-    return insert5(entry, eTypedElem, valuation, notify);
+    return insert5(entry, eTypedElem, valuation, notify, file);
   }
 
   /**
@@ -198,7 +183,7 @@ public class CapellaSearchResult extends AbstractTextSearchResult {
    * @return newly inserted occurence entry
    */
   private AbstractCapellaSearchEntry insert5(AbstractCapellaSearchEntry entryHierarchyIntoWhichInsert, Object eTypedElem, String text,
-      boolean notify) {
+      boolean notify, Object file) {
     CapellaSearchMatchOccurence occurence = null;
     for (Object result : entryHierarchyIntoWhichInsert.getChildren()) {
       if (result instanceof CapellaSearchMatchOccurence) {
@@ -209,7 +194,8 @@ public class CapellaSearchResult extends AbstractTextSearchResult {
         }
       }
     }
-    occurence = new CapellaSearchMatchOccurence(entryHierarchyIntoWhichInsert, eTypedElem, text, true);
+    occurence = new CapellaSearchMatchOccurence(entryHierarchyIntoWhichInsert, eTypedElem, text,
+        true, (IProject)file);
     
     entryHierarchyIntoWhichInsert.addChildren(occurence);
 
@@ -274,5 +260,41 @@ public class CapellaSearchResult extends AbstractTextSearchResult {
         createEntries((AbstractCapellaSearchEntry) entry);
       }
     }
+  }
+
+  /**
+   * Count all occurrences of matches
+   * @return Assuming that integer is sufficient for this count
+   */
+  public int getOccurrenceCount() {
+    long count = getElements().length;
+    return Math.toIntExact(count);
+  }
+  
+  private Stream<AbstractCapellaSearchEntry> getCapellaSearchMatchesStream() {
+    return Stream.of(getElements()) //
+        .flatMap(e -> Stream.of(getMatches(e))) //
+        .filter(AbstractCapellaSearchEntry.class::isInstance) //
+        .map(AbstractCapellaSearchEntry.class::cast);
+  }
+  
+  public Set<AbstractCapellaSearchEntry> getDisplayedMatches() {
+    return getCapellaSearchMatchesStream()
+        .collect(Collectors.toSet());
+  }
+  
+  /**
+   * Get all matches belonging to the element
+   * 
+   * @param element
+   * @return empty set if element is null
+   */
+  public Set<AbstractCapellaSearchEntry> getDisplayedMatches(Object element) {
+    if (element == null) {
+      return Collections.emptySet();
+    }
+    return getCapellaSearchMatchesStream() //
+        .filter(m -> element.equals(m.getElement())) //
+        .collect(Collectors.toSet());
   }
 }

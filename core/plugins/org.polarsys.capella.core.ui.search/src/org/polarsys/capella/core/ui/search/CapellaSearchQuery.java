@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -75,7 +75,6 @@ public class CapellaSearchQuery implements ISearchQuery {
           String line = lines[i];
           if (isMatchOccurrences(pattern, line)) {
             AbstractCapellaSearchEntry result = buildSearchResultOccurenceHierarchy(project, element, searchField.getEAttribute(element), text, false);
-            capellaSearchResult.addMatch(result);
           }
         }
       }
@@ -99,40 +98,41 @@ public class CapellaSearchQuery implements ISearchQuery {
     return false;
   }
   
-  public AbstractCapellaSearchEntry buildSearchResultOccurenceHierarchy(Object resource, Object eObj, Object eTypedElem, String valuation, boolean notify) {
-    AbstractCapellaSearchEntry entry = buildSearchResultEntryHierarchy(resource, eObj);
+  public AbstractCapellaSearchEntry buildSearchResultOccurenceHierarchy(IProject project, Object eObj, Object eTypedElem, String valuation, boolean notify) {
+    AbstractCapellaSearchEntry entry = buildSearchResultEntryHierarchy(project, eObj);
     
-    capellaSearchResult.insert(resource, entry, notify);
+    capellaSearchResult.insert(project, entry, notify);
     AbstractCapellaSearchEntry entryIntoWhichInsert = getLeafEntryFromWantedEObject(entry, eObj);
+    capellaSearchResult.addMatch(entryIntoWhichInsert);
     
-    return capellaSearchResult.insert(resource, entryIntoWhichInsert, eTypedElem, valuation, notify);
+    return capellaSearchResult.insert(project, entryIntoWhichInsert, eTypedElem, valuation, notify);
   }
   
-  protected AbstractCapellaSearchEntry buildSearchResultHierarchy(Object resource, CapellaSearchMatchEntry intermediate, Object container) {
+  protected AbstractCapellaSearchEntry buildSearchResultHierarchy(IProject project, CapellaSearchMatchEntry intermediate, Object container) {
     if (container instanceof EObject ) {
-      CapellaSearchMatchEntry entryContainer = new CapellaSearchMatchEntry(null, container, false);
+      CapellaSearchMatchEntry entryContainer = new CapellaSearchMatchEntry(null, container, false, project);
       entryContainer.addChildren(intermediate);
       intermediate.setParent(entryContainer);
-      return buildSearchResultHierarchy(resource, entryContainer, ((EObject)container).eContainer());
+      return buildSearchResultHierarchy(project, entryContainer, ((EObject)container).eContainer());
     }
     return intermediate;
   }
 
-  public AbstractCapellaSearchEntry buildSearchResultEntryHierarchy(Object resource, Object o) {
-    AbstractCapellaSearchEntry e = new CapellaSearchMatchEntry(null, o, true);
+  public AbstractCapellaSearchEntry buildSearchResultEntryHierarchy(IProject project, Object o) {
+    AbstractCapellaSearchEntry e = new CapellaSearchMatchEntry(null, o, true, project);
     if (o instanceof EObject) {
-        return buildSearchResultEntryHierarchy(resource, e, ((EObject)o).eContainer());
+        return buildSearchResultEntryHierarchy(project, e, ((EObject)o).eContainer());
     }
     return e;
   }
   
   // Recursively build an EObject ascending containment hierarchy
-  protected AbstractCapellaSearchEntry buildSearchResultEntryHierarchy(Object resource, AbstractCapellaSearchEntry intermediate, Object container) {
+  protected AbstractCapellaSearchEntry buildSearchResultEntryHierarchy(IProject project, AbstractCapellaSearchEntry intermediate, Object container) {
     if (container instanceof EObject ) {
-      AbstractCapellaSearchEntry entryContainer = new CapellaSearchMatchEntry(null, container, false);
+      AbstractCapellaSearchEntry entryContainer = new CapellaSearchMatchEntry(null, container, false, project);
       entryContainer.addChildren(intermediate);
       intermediate.setParent(entryContainer);
-      return buildSearchResultEntryHierarchy(resource, entryContainer, ((EObject)container).eContainer());
+      return buildSearchResultEntryHierarchy(project, entryContainer, ((EObject)container).eContainer());
     }
     return intermediate;
   }

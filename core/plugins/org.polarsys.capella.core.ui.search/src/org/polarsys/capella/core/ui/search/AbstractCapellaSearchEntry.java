@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Stack;
 
+import org.eclipse.core.resources.IProject;
 import org.eclipse.search.ui.text.Match;
 
 /**
@@ -33,17 +34,20 @@ public abstract class AbstractCapellaSearchEntry extends Match {
   private Collection<Object> children;
   
   protected String text;
+  
+  private IProject project;
 
-  public AbstractCapellaSearchEntry(AbstractCapellaSearchEntry _parent, Object _source, boolean _matched) {
+  public AbstractCapellaSearchEntry(AbstractCapellaSearchEntry _parent, Object _source, boolean _matched, IProject _project) {
     super(_source, -1, -1);
     parent = _parent;
     children = new HashSet<Object>();
+    project = _project;
     setMatchedOnce(_matched);
   }
 
   public AbstractCapellaSearchEntry(AbstractCapellaSearchEntry _parent, Object _source,
-      String _valuation, boolean _matched) {
-    this(_parent, _source, _matched);
+      String _valuation, boolean _matched, IProject _project) {
+    this(_parent, _source, _matched, _project);
     text = _valuation;
   }
   
@@ -55,6 +59,10 @@ public abstract class AbstractCapellaSearchEntry extends Match {
     return children;
   }
 
+  public IProject getProject() {
+    return project;
+  }
+  
   /**
    * Adds AbstractCapellaSearchResultEntry child, potentially match itself or intermediary structural object(s) for
    * ordering purposes only.

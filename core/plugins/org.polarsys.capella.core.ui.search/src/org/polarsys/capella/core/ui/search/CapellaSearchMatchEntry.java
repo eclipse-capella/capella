@@ -10,9 +10,23 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.search;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import org.eclipse.core.resources.IProject;
+
 public final class CapellaSearchMatchEntry extends AbstractCapellaSearchEntry {
 
-	public CapellaSearchMatchEntry(AbstractCapellaSearchEntry parent, Object source, boolean matched) {
-		super(parent, source, matched);
+	public CapellaSearchMatchEntry(AbstractCapellaSearchEntry parent, Object source, boolean matched, IProject project) {
+		super(parent, source, matched, project);
+	}
+	
+	Set<CapellaSearchMatchOccurence> getMatchOccurrences() {
+	  Set<CapellaSearchMatchOccurence> occurences = new HashSet<CapellaSearchMatchOccurence>();
+	  for(Object childMatch : getChildren()) {
+      if(childMatch instanceof CapellaSearchMatchOccurence)
+        occurences.add((CapellaSearchMatchOccurence)childMatch);
+    }
+	  return occurences;
 	}
 }

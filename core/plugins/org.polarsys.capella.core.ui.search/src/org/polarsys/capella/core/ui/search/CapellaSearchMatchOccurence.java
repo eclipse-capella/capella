@@ -7,20 +7,23 @@
  *  
  * Contributors:
  *    Thales - initial API and implementation
- *******************************************************************************/package org.polarsys.capella.core.ui.search;
+ *******************************************************************************/
+package org.polarsys.capella.core.ui.search;
 
+import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.ecore.ETypedElement;
 
-public class CapellaSearchMatchOccurence extends AbstractCapellaSearchEntry  {
+public class CapellaSearchMatchOccurence extends AbstractCapellaSearchEntry {
   int lineNumber;
   String fullContent;
-	
-	 public CapellaSearchMatchOccurence(AbstractCapellaSearchEntry parent, Object object, String valuation, boolean matched) {
-	    super(parent, object, valuation, matched);
-	  }
+
+  public CapellaSearchMatchOccurence(AbstractCapellaSearchEntry parent, Object object, String valuation,
+      boolean matched, IProject project) {
+    super(parent, object, valuation, matched, project);
+  }
 
   public ETypedElement getTypedElement() {
-    return getElement() instanceof ETypedElement ?(ETypedElement) getElement() : null;
+    return getElement() instanceof ETypedElement ? (ETypedElement) getElement() : null;
   }
-  
+
 }
