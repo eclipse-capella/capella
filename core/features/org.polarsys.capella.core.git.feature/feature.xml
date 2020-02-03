@@ -28,9 +28,9 @@
    </license>
 
    <requires>
-      <import feature="org.eclipse.egit"/>
-      <import feature="org.eclipse.emf.diffmerge.egit.feature"/>
-      <import feature="org.eclipse.jgit"/>
+      <import feature="org.eclipse.egit.source"/>
+      <import feature="org.eclipse.emf.diffmerge.egit.feature.source"/>
+      <import feature="org.eclipse.jgit.source"/>
    </requires>
 
 </feature>

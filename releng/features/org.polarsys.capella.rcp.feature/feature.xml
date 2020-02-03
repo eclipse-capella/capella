@@ -134,9 +134,6 @@
       <import feature="org.eclipse.emf.diffmerge.sirius.feature.source"/>
       <import feature="org.eclipse.emf.diffmerge.sdk.feature.source"/>
       <import feature="org.eclipse.emf.diffmerge.gmf.feature.source"/>
-      <import feature="org.eclipse.emf.diffmerge.egit.feature.source"/>
-      <import feature="org.eclipse.egit.source"/>
-      <import feature="org.eclipse.jgit.source"/>
       <import feature="org.eclipse.emf.sdk"/>
       <import feature="org.eclipse.emf.validation.source"/>
       <import feature="org.eclipse.emf.transaction.source"/>
