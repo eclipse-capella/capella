@@ -40,62 +40,7 @@
    </plugins>
 
    <features>
-      <feature id="org.eclipse.amalgam.explorer.activity.source"/>
-      <feature id="org.eclipse.emf.diffmerge.patterns.sdk.feature.source"/>
-      <feature id="org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.source"/>
-      <feature id="org.eclipse.emf.diffmerge.sirius.feature.source"/>
-      <feature id="org.eclipse.emf.diffmerge.gmf.feature.source"/>
-      <feature id="org.eclipse.emf.diffmerge.sdk.feature.source"/>
-      <feature id="org.eclipse.emf.diffmerge.egit.feature.source"/>
-      <feature id="org.eclipse.egit.source"/>
-      <feature id="org.eclipse.jgit.source"/>
-      <feature id="org.eclipse.emf.sdk"/>
-      <feature id="org.eclipse.emf.validation.source"/>
-      <feature id="org.eclipse.emf.transaction.source"/>
-      <feature id="org.eclipse.gef.source"/>
-      <feature id="org.eclipse.gmf.source"/>
-      <feature id="org.eclipse.gmf.runtime.notation.source"/>
-      <feature id="org.eclipse.gmf.runtime.thirdparty.source"/>
-      <feature id="org.eclipse.draw2d.source"/>
-      <feature id="org.eclipse.platform"/>
-      <feature id="org.eclipse.sdk"/>
-      <feature id="org.eclipse.sirius.doc.feature.source"/>
-      <feature id="org.eclipse.sirius.query.legacy.feature.source"/>
-      <feature id="org.eclipse.sirius.runtime.source"/>
-      <feature id="org.eclipse.sirius.runtime.aql.source"/>
-      <feature id="org.eclipse.sirius.runtime.ide.ui.source"/>
-      <feature id="org.eclipse.sirius.interpreter.feature.source"/>
-      <feature id="org.eclipse.acceleo.ui.interpreter.source"/>
-      <feature id="org.eclipse.sirius.aql.source"/>
-      <feature id="org.eclipse.acceleo.query.source"/>
-      <feature id="org.eclipse.sirius.runtime.ide.ui.acceleo.source"/>
-      <feature id="org.eclipse.nebula.widgets.richtext.feature"/>
       <feature id="org.polarsys.capella.rcp.feature.source"/>
-      <feature id="org.polarsys.kitalpha.ad.feature.source"/>
-      <feature id="org.polarsys.kitalpha.ad.integration.emde.feature.source"/>
-      <feature id="org.polarsys.kitalpha.ad.integration.sirius.feature.source"/>
-      <feature id="org.polarsys.kitalpha.cadence.feature.source"/>
-      <feature id="org.polarsys.kitalpha.common.feature.source"/>
-      <feature id="org.polarsys.kitalpha.doc.feature"/>
-      <feature id="org.polarsys.kitalpha.emde.feature.source"/>
-      <feature id="org.polarsys.kitalpha.emde.ui.feature.source"/>
-      <feature id="org.polarsys.kitalpha.massactions.feature.source"/>
-      <feature id="org.polarsys.kitalpha.model.common.commands.feature.source"/>
-      <feature id="org.polarsys.kitalpha.model.common.scrutiny.feature.source"/>
-      <feature id="org.polarsys.kitalpha.model.common.share.feature.source"/>
-      <feature id="org.polarsys.kitalpha.model.detachment.feature.source"/>
-      <feature id="org.polarsys.kitalpha.model.detachment.contrib.viewpoints.feature.source"/>
-      <feature id="org.polarsys.kitalpha.model.detachment.ui.feature.source"/>
-      <feature id="org.polarsys.kitalpha.patterns.feature.source"/>
-      <feature id="org.polarsys.kitalpha.report.feature.source"/>
-      <feature id="org.polarsys.kitalpha.report.ui.feature.source"/>
-      <feature id="org.polarsys.kitalpha.resourcereuse.feature.source"/>
-      <feature id="org.polarsys.kitalpha.resourcereuse.emfscheme.feature.source"/>
-      <feature id="org.polarsys.kitalpha.resourcereuse.emfscheme.ui.feature.source"/>
-      <feature id="org.polarsys.kitalpha.resourcereuse.ui.feature.source"/>
-      <feature id="org.polarsys.kitalpha.richtext.widget.feature.source"/>
-      <feature id="org.polarsys.kitalpha.transposer.feature.source"/>
-      <feature id="org.polarsys.kitalpha.ad.runtime.feature.source"/>
    </features>
 
    <configurations>

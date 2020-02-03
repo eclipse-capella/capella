@@ -149,6 +149,7 @@
 						<feature id="org.eclipse.nebula.widgets.richtext.feature" />
 						<feature id="org.polarsys.kitalpha.richtext.widget.feature" />
 						<feature id="org.polarsys.capella.core.mylyn.feature" />
+						<feature id="org.polarsys.capella.rcp.feature" />
 					</excludes>
 				</configuration>
 			</plugin>
@@ -343,6 +344,7 @@
 				<module>legacy/plugins/org.polarsys.capella.common.mdsofa.common</module>
 				
 				<module>releng/features/org.polarsys.capella.rcp.feature</module>
+				<module>releng/features/org.polarsys.capella.rcp.feature.source</module>
 				<module>releng/plugins/org.polarsys.capella.rcp</module>
 				<module>releng/plugins/org.polarsys.capella.rcp.product</module>
 				<module>releng/plugins/org.polarsys.capella.rcp.site</module>
