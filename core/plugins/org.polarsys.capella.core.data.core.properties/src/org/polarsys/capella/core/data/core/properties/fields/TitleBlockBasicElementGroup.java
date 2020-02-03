@@ -10,8 +10,14 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.core.properties.fields;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -25,7 +31,7 @@ import org.polarsys.capella.core.data.core.properties.Messages;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.helpers.LockHelper;
 
-public class TitleBlockBasicElementGroup extends AbstractSemanticField {
+public class TitleBlockBasicElementGroup extends AbstractSemanticField implements ModifyListener {
   protected Text nameTextField;
   protected Text contentTextField;
 
@@ -73,6 +79,7 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
     Text textField = widgetFactory.createText(textGroup, ICommonConstants.EMPTY_STRING);
     textField.addFocusListener(this);
     textField.addKeyListener(this);
+    textField.addModifyListener(this);
     textField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
     return textField;
@@ -110,23 +117,35 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
   }
 
   private void setNameValue(EObject object, final Object value) {
-    AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
-      @Override
-      public void run() {
-        ((DAnnotation) object).getDetails().put("Name:", value.toString());
-      }
-    };
-    executeCommand(command);
+    if (!((DAnnotation) object).getDetails().get("Name:").equals(value.toString())) {
+      DDiagram diagram = (DDiagram) object.eContainer();
+      AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
+        @Override
+        public void run() {
+          ((DAnnotation) object).getDetails().put("Name:", value.toString());
+          RefreshRepresentationsCommand refreshCommand = new RefreshRepresentationsCommand(
+              TransactionUtil.getEditingDomain(diagram), new NullProgressMonitor(), diagram);
+          refreshCommand.execute();
+        }
+      };
+      executeCommand(command);
+    }
   }
 
   private void setContentValue(EObject object, final Object value) {
-    AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
-      @Override
-      public void run() {
-        ((DAnnotation) object).getDetails().put("Content:", value.toString());
-      }
-    };
-    executeCommand(command);
+    if (!((DAnnotation) object).getDetails().get("Content:").equals(value.toString())) {
+      DDiagram diagram = (DDiagram) object.eContainer();
+      AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
+        @Override
+        public void run() {
+          ((DAnnotation) object).getDetails().put("Content:", value.toString());
+          RefreshRepresentationsCommand refreshCommand = new RefreshRepresentationsCommand(
+              TransactionUtil.getEditingDomain(diagram), new NullProgressMonitor(), diagram);
+          refreshCommand.execute();
+        }
+      };
+      executeCommand(command);
+    }
   }
 
   /**
@@ -151,9 +170,9 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
 
   /**
    * @param enabled
-   *          whether or not the summary text field is enabled
+   *          whether or not the content text field is enabled
    */
-  public void enableSummaryField(boolean enabled) {
+  public void enableContentField(boolean enabled) {
     if (null != contentTextField && !contentTextField.isDisposed()) {
       contentTextField.setEnabled(enabled);
     }
@@ -171,5 +190,15 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
   @Override
   public void loadData(EObject semanticElement) {
     // TODO Auto-generated method stub
+  }
+
+  @Override
+  public void modifyText(ModifyEvent event) {
+    if (event != null) {
+      Object source = event.getSource();
+      if (source instanceof Text) {
+        fillTextField((Text) source);
+      }
+    }
   }
 }

@@ -64,6 +64,8 @@ public class TitleBlockCellSection extends AbstractSection {
   @Override
   public void setInput(IWorkbenchPart part, ISelection selection) {
     EObject newEObject = super.setInputSelection(part, selection);
-    loadData(newEObject);
+    if (newEObject instanceof DAnnotation && ((DAnnotation) newEObject).getSource().startsWith("TB")) {
+      loadData(newEObject);
+    }
   }
 }

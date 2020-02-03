@@ -196,7 +196,6 @@ public class TitleBlockServices {
 
   public List<Object> getTitleBlockCellContent(EObject diagram, EObject cell) {
     init();
-
     List<Object> list = new ArrayList<Object>();
     if ((diagram instanceof DRepresentation)) {
       if (cell instanceof DAnnotation) {
@@ -204,7 +203,8 @@ public class TitleBlockServices {
         String idCell = annotation.getSource();
         FeatureInterpreter interpreter = new FeatureInterpreter();
         try {
-          String feature = propertiesContent.get(idCell);
+          // String feature = propertiesContent.get(idCell);
+          String feature = annotation.getDetails().get("Content:");
           if (feature != null) {
             EObject objToEvaluate = diagram;
             if (!annotation.getReferences().isEmpty()) {
@@ -217,7 +217,7 @@ public class TitleBlockServices {
               } else if (obj instanceof String) {
                 DAnnotation annotationContent = DescriptionFactory.eINSTANCE.createDAnnotation();
                 annotationContent.setSource("abc");
-                annotationContent.getDetails().put("content", (String) obj);
+                annotationContent.getDetails().put("Content:", (String) obj);
                 DRepresentation representation = (DRepresentation) diagram;
                 representation.getEAnnotations().add(annotationContent);
                 list.add(annotationContent);
@@ -242,7 +242,8 @@ public class TitleBlockServices {
     if (cell instanceof DAnnotation) {
       DAnnotation annotation = (DAnnotation) cell;
       String idCell = annotation.getSource();
-      String name = propertiesName.get(idCell);
+      // String name = propertiesName.get(idCell);
+      String name = ((DAnnotation) cell).getDetails().get("Name:");
       if (name != null)
         return name;
     }
@@ -253,7 +254,7 @@ public class TitleBlockServices {
     // feature:name
     if (obj instanceof DAnnotation) {
       DAnnotation annotation = (DAnnotation) obj;
-      return annotation.getDetails().get("content");
+      return annotation.getDetails().get("Content:");
     }
     return "";
   }
