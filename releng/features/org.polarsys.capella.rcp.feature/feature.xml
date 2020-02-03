@@ -108,7 +108,7 @@
       <import feature="org.polarsys.kitalpha.ad.integration.sirius.feature.source"/>
       <import feature="org.polarsys.kitalpha.cadence.feature.source"/>
       <import feature="org.polarsys.kitalpha.common.feature.source"/>
-      <import feature="org.polarsys.kitalpha.doc.feature.source"/>
+      <import feature="org.polarsys.kitalpha.doc.feature"/>
       <import feature="org.polarsys.kitalpha.emde.feature.source"/>
       <import feature="org.polarsys.kitalpha.emde.ui.feature.source"/>
       <import feature="org.polarsys.kitalpha.massactions.feature.source"/>
