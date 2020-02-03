@@ -82,7 +82,6 @@
 							<classifier>releng/plugins/org.polarsys.capella.targets/${target-platform-path}/capella.target-definition</classifier>
 						</artifact>
 					</target>
-      				<targetDefinitionIncludeSource>honor</targetDefinitionIncludeSource>
 					<environments>
 						<environment>
 							<os>win32</os>
