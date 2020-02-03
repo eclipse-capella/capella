@@ -7,16 +7,22 @@ import org.eclipse.jface.viewers.ColumnLayoutData;
 import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.TableLayout;
 import org.eclipse.jface.viewers.TableViewer;
-import org.eclipse.jface.viewers.TableViewerColumn;
+import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.swt.widgets.TableItem;
 import org.polarsys.capella.core.commands.preferences.service.AbstractDefaultPreferencePage;
 import org.polarsys.capella.core.commands.preferences.service.UserProfileModeEnum;
 import org.polarsys.capella.core.preferences.Activator;
@@ -29,6 +35,9 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
 
   private TableViewer viewer;
   private Table table;
+
+  Button edit_button;
+  Button remove_button;
 
   public TitleBlockPreferencePage() {
     super(PAGE_ID);
@@ -125,6 +134,26 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
     viewer.setUseHashlookup(true);
     viewer.setColumnProperties(new String[] { "Nume_coloana", "Locatie coloana", "Status coloana" });
 
+    for (int loopIndex = 0; loopIndex < 24; loopIndex++) {
+      TableItem item = new TableItem(table, SWT.NULL);
+      item.setText("Item " + loopIndex);
+      item.setText(0, "Item " + loopIndex);
+      item.setText(1, "Feature " + loopIndex);
+    }
+    TableItem item = table.getItem(1);
+    System.out.println(item.getText(0));
+    System.out.println(item.getText(1));
+    table.addListener(SWT.Selection, new Listener() {
+      @Override
+      public void handleEvent(Event event) {
+        int index = table.getSelectionIndex();
+        if (index != -1) {
+
+          edit_button.setEnabled(true);
+          remove_button.setEnabled(true);
+        }
+      }
+    });
     Composite container = new Composite(top, SWT.NONE);
     GridLayout container_layout = new GridLayout();
     container_layout.marginHeight = 0;
@@ -138,87 +167,110 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
     add_button.setText("Add");
     // add_button.addSelectionListener(this);
     this.setButtonLayoutData(add_button);
-    Button edit_button = new Button(container, SWT.PUSH);
+    edit_button = new Button(container, SWT.PUSH);
     edit_button.setFont(top.getFont());
     edit_button.setText("Edit");
+    edit_button.setEnabled(false);
     this.setButtonLayoutData(edit_button);
-    Button remove_button = new Button(container, SWT.PUSH);
+    remove_button = new Button(container, SWT.PUSH);
     remove_button.setFont(top.getFont());
     remove_button.setText("Remove");
+    remove_button.setEnabled(false);
     this.setButtonLayoutData(remove_button);
 
-    // viewer.setContentProvider(new ICContentProvider());
-    // viewer.setLabelProvider(new ICLabelProvider());
+    add_button.addListener(SWT.Selection, new Listener() {
+      @Override
+      public void handleEvent(Event e) {
+        switch (e.type) {
+        case SWT.Selection:
+          TitleBlockDialog dialog = new TitleBlockDialog(getShell());
+          dialog.create();
+          if (dialog.open() == Window.OK) {
+            System.out.println(dialog.getFirstName());
+            System.out.println(dialog.getLastName());
 
-    /*
-     * Composite composite1 = new Composite(getFieldEditorParent(), SWT.NONE); GridLayout layout1 = new GridLayout();
-     * layout1.numColumns = 3; composite1.setLayout(layout1);
-     * 
-     * Composite composite2 = new Composite(composite1, SWT.FILL); GridLayout layout = new GridLayout();
-     * layout.numColumns = 2; layout.marginHeight = 2; layout.marginWidth = 2; composite2.setLayout(layout); GridData
-     * gridData_c1 = new GridData(); gridData_c1.horizontalAlignment = GridData.FILL; gridData_c1.horizontalSpan = 2;
-     * composite2.setLayoutData(gridData_c1);
-     * 
-     * Table table = new Table(composite2, SWT.MULTI | SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION);
-     * TableLayout tableLayout = new TableLayout(); table.setLayout(tableLayout); table.setHeaderVisible(true);
-     * table.setLinesVisible(true); table.setFont(composite2.getFont());
-     * 
-     * GridData gridData = new GridData(GridData.FILL_BOTH); gridData.grabExcessVerticalSpace = true;
-     * gridData.grabExcessHorizontalSpace = true; gridData.verticalAlignment = GridData.FILL;
-     * gridData.horizontalAlignment = GridData.FILL; gridData.widthHint = 200; gridData.heightHint =
-     * table.getItemHeight(); gridData.horizontalSpan = 2; table.setLayoutData(gridData);
-     * 
-     * ColumnLayoutData[] fTableColumnLayouts = { new ColumnWeightData(400), new ColumnWeightData(400) }; TableColumn
-     * column;
-     * 
-     * tableLayout.addColumnData(fTableColumnLayouts[0]); column = new TableColumn(table, SWT.NONE, 0);
-     * column.setResizable(fTableColumnLayouts[0].resizable); column.setText("Name");
-     * 
-     * tableLayout.addColumnData(fTableColumnLayouts[1]); column = new TableColumn(table, SWT.NONE, 1);
-     * column.setResizable(fTableColumnLayouts[1].resizable); column.setText("Feature");
-     * 
-     * Composite container3 = new Composite(composite1, SWT.NONE); GridLayout layout2 = new GridLayout();
-     * layout.marginHeight = 0; layout.marginWidth = 0; container3.setLayout(layout); container3.setLayoutData(new
-     * GridData(GridData.FILL_VERTICAL)); container3.setFont(composite1.getFont());
-     * 
-     * Button button = new Button(container3, SWT.PUSH); button.setFont(container3.getFont()); button.setText("Add");
-     * GridData data = new GridData(GridData.HORIZONTAL_ALIGN_FILL); int widthHint =
-     * convertHorizontalDLUsToPixels(IDialogConstants.BUTTON_WIDTH); Point minSize = button.computeSize(SWT.DEFAULT,
-     * SWT.DEFAULT, true); data.widthHint = Math.max(widthHint, minSize.x); button.setLayoutData(data);
-     * 
-     * 
-     */
+            TableItem item = new TableItem(table, SWT.NULL);
+            item.setText("Item ");
+            item.setText(0, dialog.getFirstName());
+            item.setText(1, dialog.getLastName());
+          }
+          break;
+        }
+      }
+    });
+    remove_button.addListener(SWT.Selection, new Listener() {
+      @Override
+      public void handleEvent(Event e) {
+        switch (e.type) {
+        case SWT.Selection:
+          table.remove(table.getSelectionIndices());
+          edit_button.setEnabled(false);
+          remove_button.setEnabled(false);
+          break;
+        }
+      }
+    });
 
-    /*
-     * GridLayout gridLayout = new GridLayout();
-     * 
-     * gridLayout.numColumns = 3;
-     * 
-     * composite2.setLayout(gridLayout);
-     * 
-     * viewer = new TableViewer(composite2, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION | SWT.BORDER);
-     * TableViewerColumn col = createTableViewerColumn("Nume", 20, 0); col = createTableViewerColumn("Feature", 20, 0);
-     * table = viewer.getTable(); table.setHeaderVisible(true); table.setLinesVisible(true);
-     * 
-     * GridData gridData = new GridData(); gridData.verticalAlignment = GridData.FILL; gridData.horizontalSpan = 2;
-     * gridData.grabExcessHorizontalSpace = true; gridData.grabExcessVerticalSpace = true; gridData.horizontalAlignment
-     * = GridData.FILL; viewer.getControl().setLayoutData(gridData);
-     * 
-     * new Button(composite2, SWT.PUSH).setText("Add");
-     * 
-     * new Button(composite2, SWT.PUSH).setText("Remove");
-     */
+    edit_button.addListener(SWT.Selection, new Listener() {
+      @Override
+      public void handleEvent(Event e) {
+        switch (e.type) {
+        case SWT.Selection:
+          try {
+            int index = table.getSelectionIndex();
+            if (index == -1) {
+              throw new Exception();
+            }
+            System.out.println(index);
 
-  }
+            TitleBlockDialog dialog = new TitleBlockDialog(getShell());
+            dialog.create();
+            if (dialog.open() == Window.OK) {
 
-  private TableViewerColumn createTableViewerColumn(String string, int i, int j) {
-    TableViewerColumn viewerColumn = new TableViewerColumn(viewer, SWT.NONE);
-    TableColumn column = viewerColumn.getColumn();
-    column.setText(string);
-    column.setWidth(i);
-    column.setResizable(true);
-    column.setMoveable(true);
-    return viewerColumn;
+              System.out.println(dialog.getFirstName());
+              System.out.println(dialog.getLastName());
+
+              table.getItem(index).setText(0, dialog.getFirstName());
+              table.getItem(index).setText(1, dialog.getLastName());
+              edit_button.setEnabled(false);
+              remove_button.setEnabled(false);
+            }
+          } catch (Exception ex) {
+            TitleBlockDialog dialog = new TitleBlockDialog(getShell()) {
+              @Override
+              protected Control createDialogArea(Composite parent) {
+                Composite area = (Composite) super.createDialogArea(parent);
+                Composite container = new Composite(area, SWT.NONE);
+                container.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+                GridLayout layout = new GridLayout(2, false);
+                container.setLayout(layout);
+                Label lbError = new Label(container, SWT.NONE);
+                lbError.setText("Select a raw first!");
+                return area;
+              }
+
+            };
+            dialog.create();
+          }
+
+          break;
+        }
+      }
+    });
+
+    Menu menu = new Menu(getShell(), SWT.POP_UP);
+    table.setMenu(menu);
+    MenuItem menu_item = new MenuItem(menu, SWT.PUSH);
+    menu_item.setText("Delete Selection");
+    menu_item.addListener(SWT.Selection, new Listener() {
+
+      @Override
+      public void handleEvent(Event event) {
+        table.remove(table.getSelectionIndices());
+      }
+
+    });
+
   }
 
 }

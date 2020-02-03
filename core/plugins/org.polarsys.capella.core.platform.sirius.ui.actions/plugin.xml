@@ -116,6 +116,9 @@
       <initializer
             class="org.polarsys.capella.core.model.preferences.DeletePreferences">
       </initializer>
+     <initializer 
+     		class="org.polarsys.capella.core.platform.sirius.ui.preferences.PreferencesInitilizer">
+     </initializer>
    </extension>
    <!-- shall not be activated : not fully tested -->
    <!--extension
