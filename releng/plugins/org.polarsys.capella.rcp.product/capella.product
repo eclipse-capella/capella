@@ -36,7 +36,6 @@
       <windows include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</windows>
    </vm>
 
-
    <plugins>
    </plugins>
 
@@ -55,6 +54,8 @@
       <feature id="org.eclipse.emf.transaction.source"/>
       <feature id="org.eclipse.gef.source"/>
       <feature id="org.eclipse.gmf.source"/>
+      <feature id="org.eclipse.gmf.runtime.notation.source"/>
+      <feature id="org.eclipse.gmf.runtime.thirdparty.source"/>
       <feature id="org.eclipse.draw2d.source"/>
       <feature id="org.eclipse.platform"/>
       <feature id="org.eclipse.sdk"/>
