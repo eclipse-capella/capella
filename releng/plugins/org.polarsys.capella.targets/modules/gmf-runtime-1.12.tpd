@@ -8,4 +8,5 @@ location GMF-Notation-1.12rc1 "http://download.eclipse.org/modeling/gmp/gmf-nota
 
 location GMF-Runtime-1.12rc3 "http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/milestones/S201806010809" {
     org.eclipse.gmf.source.feature.group lazy
+    org.eclipse.gmf.runtime.thirdparty.source.feature.group lazy
 }
