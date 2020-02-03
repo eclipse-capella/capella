@@ -147,7 +147,6 @@
       <import feature="org.eclipse.sirius.interpreter.feature"/>
       <import feature="org.eclipse.acceleo.ui.interpreter"/>
       <import feature="org.eclipse.sirius.aql"/>
-      <import plugin="org.polarsys.capella.core.platform.sirius.ui.perspective"/>
       <import feature="org.eclipse.acceleo.query"/>
       <import feature="org.eclipse.sirius.runtime.ide.ui.acceleo"/>
       <import feature="org.eclipse.nebula.widgets.richtext.feature"/>
