@@ -48,9 +48,13 @@
         <module>org.polarsys.capella.core.data.cs.validation</module>
         <module>org.polarsys.capella.core.data.ctx.properties</module>
         <module>org.polarsys.capella.core.data.ctx.validation</module>
-        <module>org.polarsys.capella.core.data.epbs.properties</module>
+ 
+<module>org.polarsys.capella.core.data.ctx.ui.quickfix</module>
+         <module>org.polarsys.capella.core.data.epbs.properties</module>
         <module>org.polarsys.capella.core.data.epbs.validation</module>
-        <module>org.polarsys.capella.core.data.fa.properties</module>
+
+<module>org.polarsys.capella.core.data.epbs.ui.quickfix</module>
+          <module>org.polarsys.capella.core.data.fa.properties</module>
         <module>org.polarsys.capella.core.data.fa.ui.quickfix</module>
         <module>org.polarsys.capella.core.data.fa.ui.wizards</module>
         <module>org.polarsys.capella.core.data.fa.validation</module>
@@ -73,7 +77,9 @@
         <module>org.polarsys.capella.core.data.la.properties</module>
         <module>org.polarsys.capella.core.data.la.ui.wizards</module>
         <module>org.polarsys.capella.core.data.la.validation</module>
-        <module>org.polarsys.capella.core.data.menu.contributions</module>
+
+<module>org.polarsys.capella.core.data.la.ui.quickfix</module>
+           <module>org.polarsys.capella.core.data.menu.contributions</module>
         <module>org.polarsys.capella.core.data.modeller.properties</module>
         <module>org.polarsys.capella.core.data.oa.properties</module>
         <module>org.polarsys.capella.core.data.oa.validation</module>

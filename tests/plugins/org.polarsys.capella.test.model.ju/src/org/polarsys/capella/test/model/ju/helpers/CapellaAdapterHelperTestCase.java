@@ -16,6 +16,11 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gmf.runtime.notation.DecorationNode;
+import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.gmf.runtime.notation.NotationFactory;
+import org.eclipse.gmf.runtime.notation.Shape;
+import org.eclipse.gmf.runtime.notation.TextStyle;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
@@ -100,6 +105,29 @@ public class CapellaAdapterHelperTestCase extends BasicTestCase {
 
     assertEquals("Business element of a diagram element of a Part should be its component.", labPart.getAbstractType(),
         CapellaAdapterHelper.resolveBusinessObject(partView));
+    
+    
+    //Test on filter aird element
+    DecorationNode decorationNode = NotationFactory.eINSTANCE.createDecorationNode();
+    
+    assertEquals("Semantic element of a DecorationNode should be null", null,
+        CapellaAdapterHelper.resolveSemanticObject(decorationNode));
+    
+    assertEquals("Business element of a DecorationNode should be null", null,
+        CapellaAdapterHelper.resolveBusinessObject(decorationNode));
+    
+    assertEquals("DescriptorOrBusinessObject of a DecorationNode element should be null", null,
+        CapellaAdapterHelper.resolveDescriptorOrBusinessObject(decorationNode));
+    
+    Node node = NotationFactory.eINSTANCE.createNode();
+    assertEquals("Semantic element of a Node should be null", null,
+        CapellaAdapterHelper.resolveSemanticObject(node));
+    
+    assertEquals("Business element of a Node should be null", null,
+        CapellaAdapterHelper.resolveBusinessObject(node));
+    
+    assertEquals("DescriptorOrBusinessObject of a Node element should be null", null,
+        CapellaAdapterHelper.resolveDescriptorOrBusinessObject(node));
     
     // Legacy helper
     assertEquals("Legacy Semantic object (onlySemantic=false) of a diagram should be the descriptor.", labDiagramDescriptor,

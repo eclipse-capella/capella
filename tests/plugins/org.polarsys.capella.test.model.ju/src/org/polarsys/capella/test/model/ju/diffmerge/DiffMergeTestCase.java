@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, THALES GLOBAL SERVICES.
+ * Copyright (c) 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,6 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.diffmerge.api.Role;
 import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.api.scopes.IEditableModelScope;
@@ -29,9 +28,6 @@ import org.eclipse.emf.diffmerge.diffdata.impl.EComparisonImpl;
 import org.eclipse.emf.diffmerge.diffdata.impl.EElementPresenceImpl;
 import org.eclipse.emf.diffmerge.ui.specification.IModelScopeDefinition;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.mdsofa.common.helper.FileHelper;
@@ -78,6 +74,10 @@ public abstract class DiffMergeTestCase extends NonDirtyTestCase {
   protected static final String capabilityRealization2Id = "20be556b-8ae3-432a-9e60-b0e5b2bfef71";
   protected static final String capabilityGeneralizationId = "7f926bf5-28aa-4ee0-a7c1-f0885cc49a49";
 
+  // model DiffMergeSourceV2Prj
+  protected static final String logicalActor4Id = "95a3219b-0a7f-4330-aec6-975e04d0e178";
+  protected static final String logicalPart4Id = "d38a8b8a-74d3-47d9-a9f8-7e58fe0948e4";
+
   // model DiffMergeTargetPrj
   protected static final String targetOperationalActivity1Id = "5998954a-ada1-4223-b1ed-e19a35732797";
   protected static final String targetSystemFunction1Id = "8089b61e-1fbf-49bf-bc4c-2e9baee8e3d5";
@@ -94,6 +94,18 @@ public abstract class DiffMergeTestCase extends NonDirtyTestCase {
   protected static final String t4cFunctionalChainInvolvementLinkId = "ea73cee0-d439-4f0f-b3f8-4478ecb10fdf";
   protected static final String t4cFunctionalChainInvolvementFunction2Id = "8d04f0b8-835b-496e-bd02-322fd3e61b89";
   protected static final String t4cFunctionalChainInvolvementFunction1Id = "409b227a-0869-47dd-bcaa-ba259bd6c793";
+
+  // model DiffMergeTest_B
+  protected static final String sourcePhysicalComponent01id = "e7dda460-cf90-48db-b11a-27a4af6ceb68";
+  protected static final String sourcePhysicalComponent02id = "f3b7ac91-07ef-478e-a15a-aeb589737181";
+  protected static final String sourcePhysicalComponent03id = "c4fba798-47f0-45ec-a353-915ea6f84f97";
+  protected static final String sourcePhysicalComponent13id = "1badeb2d-babb-49f0-9444-62610b052ca6";
+
+  // model DiffMergeTest_C
+  protected static final String targetPhysicalComponent01id = "c697426f-c0ee-4904-93a7-a5b6252d597a";
+  protected static final String targetPhysicalComponent02id = "ebe6e16f-d7b8-43ef-a0e1-18e3a9ff6a8d";
+  protected static final String targetPhysicalComponent13id = "11b346e3-2b47-4ac1-8319-c346be3d2a0b";
+  protected static final String targetPhysicalComponent04id = "154e4421-70db-4081-868f-1b925f72ee07";
 
   @Override
   protected void setUp() throws Exception {
@@ -150,27 +162,42 @@ public abstract class DiffMergeTestCase extends NonDirtyTestCase {
     return Arrays.asList(getSourcePrjName(), getTargetPrjName());
   }
 
-  private Resource getResourceToTest(IProject project, String fileName) {
-    IFile file = project.getFile(fileName);
-    URI fileURI = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
-    ResourceSet resourceSet = new ResourceSetImpl();
-
-    return resourceSet.getResource(fileURI, true);
-  }
-
-  public void assertCheckDifferences(EComparisonImpl comparison, Role role, List<ModelElement> elements) {
+  /**
+   * 
+   * @param elementsInDiff
+   *          list of elements that must be found in difference results
+   * @param elementsNotInDiff
+   *          list of elements that must not be found in difference results
+   * @param checkAllDiffResults
+   *          whether all elements in difference results must be checked
+   */
+  public void assertCheckDifferences(EComparisonImpl comparison, Role role, List<ModelElement> elementsInDiff,
+      List<ModelElement> elementsNotInDiff, boolean checkAllDiffResults) {
+    List<String> notFoundElements = new ArrayList<String>();
+    List<String> foundElements = new ArrayList<String>();
     List<IDifference> differences = comparison.getDifferences(role);
     List<ModelElement> diffModelElements = getModelElementsFromDiff(differences, role);
 
-    assertTrue("Not all the elements resulted in the diff operation are checked.",
-        diffModelElements.size() == elements.size());
-
-    List<String> notFoundElements = new ArrayList<String>();
-    for (ModelElement element : elements) {
+    for (ModelElement element : elementsInDiff) {
       if (!diffModelElements.contains(element)) {
-        notFoundElements.add("{ " + element.getId() + ": " + element.getClass() + " }");
+        notFoundElements.add("{ " + element.getLabel() + ": " + element.getId() + ": " + element.getClass() + " }");
       }
     }
+
+    for (ModelElement element : elementsNotInDiff) {
+      if (diffModelElements.contains(element)) {
+        foundElements.add("{ " + element.getLabel() + ": " + element.getId() + ": " + element.getClass() + " }");
+      }
+    }
+
+    if (checkAllDiffResults) {
+      assertTrue("Not all the elements resulted in the diff operation are checked.",
+          diffModelElements.size() == elementsInDiff.size());
+    }
+
+    assertTrue("The following elements should not be found in the diff result: " + foundElements,
+          foundElements.isEmpty());
+
     assertTrue("The following elements are not found in the diff result: " + notFoundElements,
         notFoundElements.isEmpty());
   }
@@ -196,15 +223,21 @@ public abstract class DiffMergeTestCase extends NonDirtyTestCase {
   }
 
   protected void checkDifferences(EComparisonImpl comparison) {
-    assertCheckDifferences(comparison, Role.TARGET, getModelElementsSourceProject(getTargetDiffList()));
-    assertCheckDifferences(comparison, Role.REFERENCE, getModelElementsTargetProject(getReferenceDiffList()));
+    assertCheckDifferences(comparison, Role.TARGET, getModelElementsSourceProject(getTargetDiffList()),
+        getModelElementsSourceProject(getTargetNoDiffList()), true);
+    assertCheckDifferences(comparison, Role.REFERENCE, getModelElementsTargetProject(getReferenceDiffList()),
+        getModelElementsSourceProject(getReferenceNoDiffList()), true);
   }
 
   protected abstract CapellaMatchPolicy getMatchPolicy();
 
   protected abstract List<String> getTargetDiffList();
 
+  protected abstract List<String> getTargetNoDiffList();
+
   protected abstract List<String> getReferenceDiffList();
+
+  protected abstract List<String> getReferenceNoDiffList();
 
   protected abstract String getSourcePrjName();
 

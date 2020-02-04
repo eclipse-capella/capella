@@ -11,7 +11,9 @@
 package org.polarsys.capella.test.platform.ju.testcases;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.zip.ZipFile;
 
 import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
@@ -26,18 +28,14 @@ public class CapellaCheckAcceleo2NotUsed extends BasicTestCase {
   @Override
   public void test() throws Exception {
 
-    File testPluginFolder = getPluginFolder();
-    File capella = PlatformFilesHelper.findRootFolder(testPluginFolder);
-    File core = PlatformFilesHelper.getSubFolder(capella, "core");
-    File plugins = PlatformFilesHelper.getSubFolder(core, "plugins");
-    File siriusAnalysis = PlatformFilesHelper.getSubFolder(plugins, pluginDir);
+    ZipFile siriusAnalysis = PlatformFilesHelper.getPluginJar(pluginDir);
 
     assertTrue("Plugin folder not found: " + pluginDir, siriusAnalysis != null);
 
-    List<File> manifestFiles = PlatformFilesHelper.getPluginFilesByNameEnding(siriusAnalysis, "MANIFEST.MF");
+    List<String> manifestFiles = PlatformFilesHelper.getJarFilesByNameEnding(siriusAnalysis, "MANIFEST.MF");
     assertTrue("Manifest not found for plugin: " + pluginDir, !manifestFiles.isEmpty());
 
-    List<File> odesignFiles = PlatformFilesHelper.getPluginFilesByNameEnding(siriusAnalysis, "odesign");
+    List<String> odesignFiles = PlatformFilesHelper.getJarFilesByNameEnding(siriusAnalysis, "odesign");
     assertTrue("Odesign files not found for plugin: " + pluginDir, !odesignFiles.isEmpty());
 
     // check that the manifest does not contain legacy sirius code
@@ -47,10 +45,11 @@ public class CapellaCheckAcceleo2NotUsed extends BasicTestCase {
     checkInFiles(odesignFiles, acceleo2Pattern, acceleo2PatternMsg);
   }
 
-  private void checkInFiles(List<File> files, String pattern, String message) {
-    for (File f : files) {
-      String line = PlatformFilesHelper.findInFile(f, pattern);
-      String printMessage = NLS.bind(message, new String[] { f.getName(), line });
+  private void checkInFiles(List<String> paths, String pattern, String message) throws IOException {
+    for (String path : paths) {
+      File file = File.createTempFile(path, null);
+      String line = PlatformFilesHelper.findInFile(file, pattern);
+      String printMessage = NLS.bind(message, new String[] { file.getName(), line });
       assertTrue(printMessage, line == null);
     }
   }

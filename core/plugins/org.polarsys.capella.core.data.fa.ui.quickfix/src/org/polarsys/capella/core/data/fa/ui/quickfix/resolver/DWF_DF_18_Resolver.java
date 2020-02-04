@@ -59,7 +59,7 @@ public class DWF_DF_18_Resolver extends AbstractCapellaMarkerResolution {
     }
   }
 
-  private void openSelectionDialog(SequenceLink semanticElement, IMarker marker) {
+  protected void openSelectionDialog(SequenceLink semanticElement, IMarker marker) {
     AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
       @Override
       public void run() {
@@ -89,7 +89,8 @@ public class DWF_DF_18_Resolver extends AbstractCapellaMarkerResolution {
     TransactionHelper.getExecutionManager(semanticElement).execute(command);
   }
 
-  private void deleteMarker(IMarker marker) {
+  @Override
+  protected void deleteMarker(IMarker marker) {
     // delete marker
     try {
       marker.delete();

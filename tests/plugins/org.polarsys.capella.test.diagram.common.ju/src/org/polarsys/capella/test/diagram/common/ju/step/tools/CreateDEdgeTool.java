@@ -15,10 +15,10 @@ import static org.junit.Assert.fail;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
@@ -138,7 +138,7 @@ public class CreateDEdgeTool extends AbstractToolStep<DEdge> {
   public DEdge getResult() {
 
     DEdge createdEdgeView = (DEdge) _newEdgesElements.iterator().next();
-    String edgeId = ((CapellaElement) createdEdgeView.getTarget()).getId();
+    String edgeId = EcoreUtil.getID(createdEdgeView.getTarget());
 
     if (_newIdentifier != null) {
       getExecutionContext().putSemanticElement(_newIdentifier, createdEdgeView.getTarget());

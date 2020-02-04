@@ -11,6 +11,7 @@ Require-Bundle: org.eclipse.jdt.core,
  org.eclipse.equinox.app,
  org.eclipse.core.runtime,
  org.eclipse.debug.core,
- org.junit
+ org.junit,
+ org.apache.commons.lang
 Export-Package: org.polarsys.capella.test.run,
  org.polarsys.capella.test.run.ju

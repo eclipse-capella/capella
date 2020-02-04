@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.common.model.helpers.HelperNotFoundException;
 import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.StructureHelper;
-import org.polarsys.capella.core.data.helpers.requirement.delegates.AbstractRequirementHelper;
 import org.polarsys.capella.core.data.helpers.requirement.delegates.RequirementsTraceHelper;
 import org.polarsys.capella.core.data.requirement.RequirementsPkg;
 import org.polarsys.capella.core.data.requirement.RequirementsTrace;
@@ -36,19 +35,19 @@ public class RequirementHelper implements IHelper {
 			ret = StructureHelper.getInstance().doSwitch((RequirementsPkg) object, feature);
 		}
     else if (object instanceof SystemFunctionalInterfaceRequirement) {
-      ret = AbstractRequirementHelper.getInstance().doSwitch((SystemFunctionalInterfaceRequirement) object, feature);
+      ret = org.polarsys.capella.core.data.helpers.requirement.delegates.RequirementHelper.getInstance().doSwitch((SystemFunctionalInterfaceRequirement) object, feature);
     }
     else if (object instanceof SystemFunctionalRequirement) {
-      ret = AbstractRequirementHelper.getInstance().doSwitch((SystemFunctionalRequirement) object, feature);
+      ret = org.polarsys.capella.core.data.helpers.requirement.delegates.RequirementHelper.getInstance().doSwitch((SystemFunctionalRequirement) object, feature);
     }
     else if (object instanceof SystemNonFunctionalInterfaceRequirement) {
-      ret = AbstractRequirementHelper.getInstance().doSwitch((SystemNonFunctionalInterfaceRequirement) object, feature);
+      ret = org.polarsys.capella.core.data.helpers.requirement.delegates.RequirementHelper.getInstance().doSwitch((SystemNonFunctionalInterfaceRequirement) object, feature);
     }
     else if (object instanceof SystemNonFunctionalRequirement) {
-      ret = AbstractRequirementHelper.getInstance().doSwitch((SystemNonFunctionalRequirement) object, feature);
+      ret = org.polarsys.capella.core.data.helpers.requirement.delegates.RequirementHelper.getInstance().doSwitch((SystemNonFunctionalRequirement) object, feature);
     }
 		else if (object instanceof SystemUserRequirement) {
-      ret = AbstractRequirementHelper.getInstance().doSwitch((SystemUserRequirement) object, feature);
+      ret = org.polarsys.capella.core.data.helpers.requirement.delegates.RequirementHelper.getInstance().doSwitch((SystemUserRequirement) object, feature);
     }
     else if (object instanceof RequirementsTrace) {
       ret = RequirementsTraceHelper.getInstance().doSwitch((RequirementsTrace) object, feature);

@@ -35,9 +35,9 @@ public class StateEventRealizationHelper {
     Object ret = null;
 
     if (feature.equals(CapellacommonPackage.Literals.STATE_EVENT_REALIZATION__REALIZED_EVENT)) {
-      ret = getRealizedStateEvent(element);
+      ret = getRealizedEvent(element);
     } else if (feature.equals(CapellacommonPackage.Literals.STATE_EVENT_REALIZATION__REALIZING_EVENT)) {
-      ret = getRealizingStateEvent(element);
+      ret = getRealizingEvent(element);
     }
 
     // no helper found... searching in super classes...
@@ -48,14 +48,14 @@ public class StateEventRealizationHelper {
     return ret;
   }
 
-  protected StateEvent getRealizedStateEvent(StateEventRealization element) {
+  protected StateEvent getRealizedEvent(StateEventRealization element) {
     if (element.getTargetElement() instanceof StateEvent) {
       return (StateEvent) element.getTargetElement();
     }
     return null;
   }
 
-  protected StateEvent getRealizingStateEvent(StateEventRealization element) {
+  protected StateEvent getRealizingEvent(StateEventRealization element) {
     if (element.getSourceElement() instanceof StateEvent) {
       return (StateEvent) element.getSourceElement();
     }

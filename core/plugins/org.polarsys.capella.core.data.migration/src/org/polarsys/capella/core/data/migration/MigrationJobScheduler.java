@@ -48,6 +48,11 @@ public class MigrationJobScheduler {
   public void run(LinkedList<AbstractMigrationRunnable> runnables, final MigrationContext context, final boolean runInJob, final boolean checkVersion) {
     _runnables = new LinkedList<AbstractMigrationRunnable>(runnables);
     
+    if (_runnables.isEmpty()) {
+      logStatus(context, Status.CANCEL_STATUS);
+      return;
+    }
+    
     IRunnableWithProgress op = new IRunnableWithProgress() {
 
       public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
@@ -58,7 +63,6 @@ public class MigrationJobScheduler {
 
         if (runInJob) {
           executeNextJob(Status.OK_STATUS, context, checkVersion);
-
         } else {
           IStatus status = Status.OK_STATUS;
           try {

@@ -17,6 +17,7 @@ import static org.eclipse.emf.diffmerge.impl.policies.ConfigurableMatchPolicy.Ma
 import static org.eclipse.emf.diffmerge.impl.policies.ConfigurableMatchPolicy.MatchCriterionKind.SEMANTICS;
 import static org.eclipse.emf.diffmerge.impl.policies.ConfigurableMatchPolicy.MatchCriterionKind.STRUCTURE;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -42,8 +43,18 @@ public class TransferBetweenModelsCreatedIndepentlyTestCase extends DiffMergeTes
   }
 
   @Override
+  protected List<String> getTargetNoDiffList() {
+    return new ArrayList<String>();
+  }
+
+  @Override
   protected List<String> getReferenceDiffList() {
     return Arrays.asList(targetOperationalActivity1Id, targetClassId, targetSystemFunction1Id);
+  }
+
+  @Override
+  protected List<String> getReferenceNoDiffList() {
+    return new ArrayList<String>();
   }
 
   @Override

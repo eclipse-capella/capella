@@ -1284,7 +1284,7 @@ public interface IToolNameConstants {
   // multi parts tools
   String TOOL_PAB_REUSE_PC = "reuse.behaviour.pc";
   String TOOL_PAB_REUSE_NODE_PC = "reuse.node.pc";
-  String TOOL_PAB_REUSE_BEHAVIOR_PC = "Reuse Behavior PC";
+  String TOOL_PAB_REUSE_BEHAVIOR_PC = "reuse.behaviour.pc";
   String TOOL_PAB_REUSE_PHYSICAL_ACTOR = "reuse.physical.actor";
   String TOOL_PAB_CREATE_COMPONENT_EXCHANGE_WITH_PORTS = "component.exchange.with.ports";
   String TOOL_PAB_CREATE_COMPONENT_EXCHANGE_WITHOUT_PORTS = "component.exchange.without.ports";

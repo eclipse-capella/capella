@@ -39,9 +39,19 @@ public class DiffMergeBetweenVersionsOfSameModelTestCase extends DiffMergeTestCa
   }
 
   @Override
+  protected List<String> getTargetNoDiffList() {
+    return new ArrayList<String>();
+  }
+
+  @Override
   protected List<String> getReferenceDiffList() {
     return Arrays.asList(refSystemFunction2Id, capabilityRealization1Id, capabilityRealization2Id,
         capabilityGeneralizationId, physicalComponentId, physicalPartId);
+  }
+
+  @Override
+  protected List<String> getReferenceNoDiffList() {
+    return new ArrayList<String>();
   }
 
   @Override

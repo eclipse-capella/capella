@@ -14,7 +14,8 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FunctionRealization;
@@ -22,8 +23,6 @@ import org.polarsys.capella.core.data.la.LogicalFunction;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 
 /**
  * Checks realization consistency between functions.
@@ -46,7 +45,8 @@ public class MDCHK_Function_FunctionRealization extends AbstractValidationRule {
 
           if (trace instanceof FunctionRealization) {
             if (!((function instanceof LogicalFunction && sourceElement instanceof PhysicalFunction)
-                  || (function instanceof SystemFunction && sourceElement instanceof LogicalFunction) || (function instanceof OperationalActivity && sourceElement instanceof SystemFunction))) {
+                || (function instanceof SystemFunction && sourceElement instanceof LogicalFunction)
+                || (function instanceof OperationalActivity && sourceElement instanceof SystemFunction))) {
               return createFailureStatus(ctx, new Object[] { function.getName() });
             }
           }

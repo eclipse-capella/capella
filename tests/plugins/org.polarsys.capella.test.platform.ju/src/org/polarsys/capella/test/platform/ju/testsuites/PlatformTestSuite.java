@@ -21,6 +21,8 @@ import org.polarsys.capella.test.platform.ju.testcases.CapellaDefaultEditorEnabl
 import org.polarsys.capella.test.platform.ju.testcases.CapellaPlatformVersionNotNull;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaSiriusCustomisationEnabled;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaVersionConsistencyTest;
+import org.polarsys.capella.test.platform.ju.testcases.DataNotifierBeforeTransactionRecorder;
+import org.polarsys.capella.test.platform.ju.testcases.DerivedFeaturesImplementation;
 import org.polarsys.capella.test.platform.ju.testcases.ExportCSVPreferencesTest;
 import org.polarsys.capella.test.platform.ju.testcases.InvalidPreferencesInitializer;
 import org.polarsys.capella.test.platform.ju.testcases.InvalidRepresentationDescriptorAdapterFactory;
@@ -51,6 +53,7 @@ public class PlatformTestSuite extends BasicTestSuite {
     tests.add(new CapellaVersionConsistencyTest());
     tests.add(new CapellaSiriusCustomisationEnabled());
     tests.add(new CapellaPlatformVersionNotNull());
+    tests.add(new DerivedFeaturesImplementation());
     tests.add(new CapellaDefaultEditorEnabled());
     tests.add(new InvalidRepresentationDescriptorAdapterFactory());
     tests.add(new CapellaCDOGenerationOfDerivedFeature());
@@ -60,6 +63,7 @@ public class PlatformTestSuite extends BasicTestSuite {
     tests.add(new ExportCSVPreferencesTest());
     tests.add(new InvalidPreferencesInitializer());
     tests.add(new ProjectSelectionDialogTest());
+    tests.add(new DataNotifierBeforeTransactionRecorder());
 
     return tests;
   }

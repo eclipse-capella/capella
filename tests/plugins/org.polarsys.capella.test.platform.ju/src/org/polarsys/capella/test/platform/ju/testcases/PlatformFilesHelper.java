@@ -16,14 +16,19 @@ import java.io.FileFilter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.pde.core.plugin.IPluginModelBase;
+import org.eclipse.pde.core.plugin.PluginRegistry;
 
 public class PlatformFilesHelper {
   private PlatformFilesHelper() {
@@ -127,5 +132,39 @@ public class PlatformFilesHelper {
       e.printStackTrace();
     }
     return firstMatch;
+  }
+  
+  /**
+   * Return the plugin jar
+   * @param pluginName
+   * @return
+   */
+  public static ZipFile getPluginJar(String pluginName) {
+    IPluginModelBase plugin = PluginRegistry.findModel(pluginName);
+    String pluginPath = plugin.getInstallLocation();
+    try {
+      return new ZipFile(pluginPath);
+    } catch (IOException e) {
+      e.printStackTrace();
+      return null;
+    }
+  }
+  
+  /**
+   * Return a path list of all elements inside a jar
+   * @param jarFile
+   * @param suffix
+   * @return
+   */
+  public static List<String> getJarFilesByNameEnding(ZipFile jarFile, String suffix) {
+    List<String> files = new ArrayList<>();
+    Enumeration<? extends ZipEntry> entries = jarFile.entries();
+    while (entries.hasMoreElements()) {
+      ZipEntry entry = entries.nextElement();
+      if (entry.getName().endsWith(suffix)) {
+        files.add(jarFile.getName()+"/"+entry.getName());
+      }
+    }
+    return files;
   }
 }

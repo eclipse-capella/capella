@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -41,6 +42,7 @@ import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.mdsofa.common.activator.SolFaCommonActivator;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
+import org.eclipse.gmf.runtime.notation.NotationPackage;
 
 /**
  * Helper that deal with Capella resources.
@@ -153,8 +155,8 @@ public class CapellaResourceHelper {
    * @see {@link #AIRD_FRAGMENT_FILE_EXTENSION}, {@link #AIRD_FILE_EXTENSION}
    */
   public static boolean isAirdResource(URI uri) {
-    return (uri != null)
-        && (AIRD_FILE_EXTENSION.equals(uri.fileExtension()) || AIRD_FRAGMENT_FILE_EXTENSION.equals(uri.fileExtension()));
+    return (uri != null) && (AIRD_FILE_EXTENSION.equals(uri.fileExtension())
+        || AIRD_FRAGMENT_FILE_EXTENSION.equals(uri.fileExtension()));
   }
 
   /**
@@ -233,8 +235,9 @@ public class CapellaResourceHelper {
     }
 
     // Call the delegation if any.
-    boolean isCapellaResource = (null != __delegatedCapellaResourceHelper) ? __delegatedCapellaResourceHelper
-        .isCapellaResource(uri) : false;
+    boolean isCapellaResource = (null != __delegatedCapellaResourceHelper)
+        ? __delegatedCapellaResourceHelper.isCapellaResource(uri)
+        : false;
     return isCapellaResource || CAPELLA_MODEL_FILE_EXTENSION.equals(uri.fileExtension()) || isCapellaFragment(uri);
   }
 
@@ -249,6 +252,14 @@ public class CapellaResourceHelper {
    * Returns whether an object is a Sirius element.
    */
   private static boolean isSiriusElement(Object object) {
+    if (object instanceof EObject) {
+      EObject o = (EObject) object;
+      // GMF
+      if (o.eClass().getEPackage() == NotationPackage.eINSTANCE) {
+        return true;
+      }
+    }
+
     return (object instanceof DRefreshable) || (object instanceof DRepresentationDescriptor);
   }
 
@@ -262,6 +273,29 @@ public class CapellaResourceHelper {
       }
     }
     return true;
+  }
+
+  /**
+   * 
+   * @param eObject
+   * @return Returns whether eObject is aird element
+   */
+  public static boolean isAirdElement(EObject eObject) {
+    if (eObject instanceof InternalEObject) {
+      InternalEObject internalEObject = (InternalEObject) eObject;
+      if (internalEObject.eIsProxy()) {
+        if (isAirdResource(internalEObject.eProxyURI())) {
+          return true;
+        }
+      }
+      Resource ressource = eObject.eResource();
+      if (ressource != null && ressource.getURI() != null) {
+        if (isAirdResource(ressource.getURI())) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
 
   /**
@@ -286,8 +320,8 @@ public class CapellaResourceHelper {
   private static ICapellaResourceHelper loadDelegatedCapellaResourceHelper() {
     ICapellaResourceHelper delegatedHelper = null;
     // Load SemanticEditingDomain providers if any.
-    IConfigurationElement[] configurationElements = ExtensionPointHelper.getConfigurationElements(
-        "org.polarsys.capella.core.model.handler", "delegatedCapellaResourceHelper"); //$NON-NLS-1$ //$NON-NLS-2$
+    IConfigurationElement[] configurationElements = ExtensionPointHelper
+        .getConfigurationElements("org.polarsys.capella.core.model.handler", "delegatedCapellaResourceHelper"); //$NON-NLS-1$ //$NON-NLS-2$
     // Loop over contributed SemanticEditingDomain providers, must be only
     // one.
     if (configurationElements.length > 0) {
@@ -365,6 +399,7 @@ public class CapellaResourceHelper {
 
     return false;
   }
+
   /**
    * @param eObject
    * @return the main model resource if eObject is in a fragmented resource
@@ -385,107 +420,109 @@ public class CapellaResourceHelper {
     }
     return null;
   }
-  
+
   /**
    * Check whether a {@link IProject} nature is of given type.
-   * @param project the target {@link IProject}
-   * @param natureIdsToMatch the nature to match ids.
+   * 
+   * @param project
+   *          the target {@link IProject}
+   * @param natureIdsToMatch
+   *          the nature to match ids.
    * @return <code>true</code> whether no nature was defined (e.g. empty or <code>null</code> value as argument.)
    */
   public static boolean isProjectOfType(final IProject project, final Collection<String> natureIdsToMatch) {
-    
+
     boolean result = false;
-    
+
     if ( // No filtering on nature
-        null == natureIdsToMatch ||
-        natureIdsToMatch.isEmpty()
-    ) {
+    null == natureIdsToMatch || natureIdsToMatch.isEmpty()) {
       return true;
     }
-    
+
     try {
       String[] projectNatures = project.getDescription().getNatureIds();
       result = matche(projectNatures, natureIdsToMatch);
     } catch (CoreException exception) {
       result = false;
     }
-    
+
     return result;
   }
-  
+
   /**
    * Check whether a {@link IProject} nature is of given type.
-   * @param project the target {@link IProject}
-   * @param natureIdToMatch the nature to match id.
+   * 
+   * @param project
+   *          the target {@link IProject}
+   * @param natureIdToMatch
+   *          the nature to match id.
    * @return <code>true</code> whether no nature was defined (e.g. empty or <code>null</code> value as argument.)
    */
   public static boolean isProjectOfType(final IProject project, final String natureIdToMatch) {
-    return 
-      null == natureIdToMatch || natureIdToMatch.equals(ICommonConstants.EMPTY_STRING) ?
-         true :
-         isProjectOfType(project, Collections.singleton(natureIdToMatch)
-    );
+    return null == natureIdToMatch || natureIdToMatch.equals(ICommonConstants.EMPTY_STRING) ? true
+        : isProjectOfType(project, Collections.singleton(natureIdToMatch));
   }
-   
+
   /**
-   * Get all accessible project projects on workspace of a given nature. 
-   * @param natureIdToMatch the type of project id (or <code>null</code>)
+   * Get all accessible project projects on workspace of a given nature.
+   * 
+   * @param natureIdToMatch
+   *          the type of project id (or <code>null</code>)
    * @return an empty {@link Collection} whether no result was found.
    */
   public static Collection<IProject> getAllProjectsOfType(String natureIdToMatch) {
     return getAllProjectsOfType(Collections.singleton(natureIdToMatch));
   }
-  
+
   /**
-   * Get all accessible project projects on workspace of a given nature. 
-   * @param natureIdsToMatch the type of project ids (or <code>null</code>)
+   * Get all accessible project projects on workspace of a given nature.
+   * 
+   * @param natureIdsToMatch
+   *          the type of project ids (or <code>null</code>)
    * @return an empty {@link Collection} whether no result was found.
    */
   public static Collection<IProject> getAllProjectsOfType(final Collection<String> natureIdsToMatch) {
-    
+
     Set<IProject> result = new HashSet<IProject>();
-    
+
     IWorkspace root = ResourcesPlugin.getWorkspace();
     IProject[] projects = root.getRoot().getProjects();
 
-    boolean shouldBeFilteredWithNature = 
-      null != natureIdsToMatch && 
-      !natureIdsToMatch.isEmpty()
-    ;
-    
+    boolean shouldBeFilteredWithNature = null != natureIdsToMatch && !natureIdsToMatch.isEmpty();
+
     IProject project = null;
     boolean keep = false;
-    for( int i =0; i < projects.length; i++) {
+    for (int i = 0; i < projects.length; i++) {
       keep = false;
       project = projects[i];
-      
+
       keep = project.isAccessible(); // Project open
-      
-      if ( keep && shouldBeFilteredWithNature ) { // Nature of the project ok.
-       keep = isProjectOfType(project, natureIdsToMatch);
+
+      if (keep && shouldBeFilteredWithNature) { // Nature of the project ok.
+        keep = isProjectOfType(project, natureIdsToMatch);
       }
-      
+
       // To conclude
       if (keep) {
         result.add(project);
       }
-      
+
     }
-   
+
     return result;
   }
-  
+
   /** for internal use */
   static private boolean matche(final String[] a, final Collection<String> b) {
     boolean result = false;
-    
-    for (String str: a) {
-      if ( b.contains(str)) {
+
+    for (String str : a) {
+      if (b.contains(str)) {
         result = true;
         break;
       }
     }
-    
+
     return result;
   }
 }
