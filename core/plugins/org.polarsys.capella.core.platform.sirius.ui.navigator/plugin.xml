@@ -1530,4 +1530,19 @@
          <Priority name="High"/>
       </statusLineContributionItemProvider>
    </extension>
+   <extension
+         point="org.polarsys.capella.core.commandline.core.commandline">
+      <CommandlineExtension
+            class="org.polarsys.capella.core.platform.sirius.ui.navigator.commandline.RefreshAirdCommandLine"
+            id="org.polarsys.capella.refreshRepresentations">
+      </CommandlineExtension>
+      <CommandlineExtension
+            class="org.polarsys.capella.core.platform.sirius.ui.navigator.commandline.RemoveHiddenElementsCommandLine"
+            id="org.polarsys.capella.removeHiddenElements">
+      </CommandlineExtension>
+      <CommandlineExtension
+            class="org.polarsys.capella.core.platform.sirius.ui.navigator.commandline.ExportRepresentationsCommandLine"
+            id="org.polarsys.capella.exportRepresentations">
+      </CommandlineExtension>
+   </extension>
 </plugin>

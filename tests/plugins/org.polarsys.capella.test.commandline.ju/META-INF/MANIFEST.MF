@@ -8,7 +8,8 @@ Require-Bundle: org.polarsys.capella.test.framework,
  org.polarsys.capella.core.validation.commandline,
  org.eclipse.equinox.app,
  org.polarsys.capella.core.commandline.core,
- org.polarsys.capella.core.data.migration
+ org.polarsys.capella.core.data.migration,
+ org.polarsys.capella.core.platform.sirius.ui.navigator
 Bundle-Vendor: Eclipse.org
 Export-Package: org.polarsys.capella.test.commandline.ju.testcases,
  org.polarsys.capella.test.commandline.ju.testsuites,

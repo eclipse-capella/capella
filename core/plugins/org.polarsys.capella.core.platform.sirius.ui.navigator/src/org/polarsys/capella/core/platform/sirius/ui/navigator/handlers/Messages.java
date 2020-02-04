@@ -37,6 +37,10 @@ public class Messages extends NLS {
   public static String RemoveHiddenElementsHandler_NoDiagramDialog_Text;
   public static String RemoveHiddenElementsHandler_ConfirmRefreshDialog_Title;
   public static String RemoveHiddenElementsHandler_ConfirmRefreshDialog_Text;
+
+  public static String resource_prefix;
+  public static String refreshResultsFileName;
+  public static String removeHiddenElementsResultsFileName;
   
   static {
     // initialize resource bundle
