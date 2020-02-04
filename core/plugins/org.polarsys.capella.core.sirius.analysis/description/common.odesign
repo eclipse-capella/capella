@@ -3150,7 +3150,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <containerMappings name="DT_TitleBlockContainer" preconditionExpression="service:isTitleBlockAllowed(containerView)" semanticCandidatesExpression="aql:diagram.checkIsTitleBlockContainer()" domainClass="DAnnotation" childrenPresentation="VerticalStack">
+        <containerMappings name="DT_TitleBlockContainer" preconditionExpression="service:isTitleBlockAllowed(containerView)" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20Title%20Block']" semanticCandidatesExpression="aql:diagram.checkIsTitleBlockContainer()" domainClass="DAnnotation" childrenPresentation="VerticalStack">
           <subContainerMappings name="DT_TitleBlockLineContainer" semanticCandidatesExpression="feature:references" domainClass="DAnnotation" childrenPresentation="HorizontalStack">
             <subContainerMappings name="DT_TitleBlockColumnContainer" semanticCandidatesExpression="feature:references" domainClass="DAnnotation" childrenPresentation="List">
               <subNodeMappings name="DT_TitleBlockCellNode" semanticCandidatesExpression="aql:diagram.getTitleBlockCellContent(self)" domainClass="EObject">
@@ -4365,6 +4365,17 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete Title Block">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="deleteCapellaElement" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteExternalAction"/>
+              </firstModelOperations>
+            </initialOperation>
+            <hook id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteActionHook"/>
           </ownedTools>
         </toolSections>
         <customization>
