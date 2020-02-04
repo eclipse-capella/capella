@@ -40,13 +40,6 @@
 							<goal>materialize-products</goal>
 						</goals>
 					</execution>
-					<execution>
-						<!-- create zip file with the installed product -->
-						<id>archive-products</id>
-						<goals>
-							<goal>archive-products</goal>
-						</goals>
-					</execution>
 				</executions>
 			</plugin>
 			<plugin>

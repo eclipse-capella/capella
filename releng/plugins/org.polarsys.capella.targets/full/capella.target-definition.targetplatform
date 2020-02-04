@@ -17,14 +17,16 @@ with source, requirements
 location eclipse "http://download.eclipse.org/releases/2019-06" {
 	org.eclipse.sdk.feature.group
 	org.eclipse.platform.feature.group
+	org.eclipse.draw2d.source.feature.group
 	org.eclipse.emf.sdk.feature.group
-	org.eclipse.emf.transaction.feature.group
+	org.eclipse.emf.validation.source.feature.group
+	org.eclipse.emf.transaction.source.feature.group
+	org.eclipse.emf.workspace.source.feature.group
+	org.eclipse.gef.source.feature.group
 	org.eclipse.equinox.executable.feature.group
 	com.ibm.icu
 	org.eclipse.viatra.query.sdk.feature.source.feature.group
-	org.eclipse.jgit.feature.group
 	org.eclipse.jgit.source.feature.group
-	org.eclipse.egit.feature.group
 	org.eclipse.egit.source.feature.group
 	org.eclipse.mylyn_feature.feature.group
 	org.eclipse.mylyn.commons.feature.group
@@ -37,90 +39,69 @@ location eclipse "http://download.eclipse.org/releases/2019-06" {
 }
 
 location sirius "https://download.eclipse.org/sirius/updates/milestones/6.3.0rc1/2019-06/" {
-	org.eclipse.sirius.doc.feature.feature.group
 	org.eclipse.sirius.doc.feature.source.feature.group
-	org.eclipse.sirius.runtime.feature.group
 	org.eclipse.sirius.runtime.source.feature.group
-	org.eclipse.sirius.runtime.aql.feature.group
 	org.eclipse.sirius.runtime.aql.source.feature.group
-	org.eclipse.sirius.runtime.ide.ui.feature.group
 	org.eclipse.sirius.runtime.ide.ui.source.feature.group
-	org.eclipse.sirius.interpreter.feature.feature.group
 	org.eclipse.sirius.interpreter.feature.source.feature.group
-	org.eclipse.acceleo.ui.interpreter.feature.group
 	org.eclipse.acceleo.ui.interpreter.source.feature.group
-	org.eclipse.sirius.aql.feature.group
 	org.eclipse.sirius.aql.source.feature.group
-	org.eclipse.acceleo.query.feature.group
 	org.eclipse.acceleo.query.source.feature.group
-	org.eclipse.sirius.runtime.ide.ui.acceleo.feature.group
 	org.eclipse.sirius.runtime.ide.ui.acceleo.source.feature.group
 }
 
-location kitalpha-runtime-core-master "https://download.eclipse.org/kitalpha/updates/stable/runtimecore/1.4.0.202001100637" {	
-	org.polarsys.kitalpha.ad.runtime.feature.feature.group
-	org.polarsys.kitalpha.cadence.feature.feature.group
-	org.polarsys.kitalpha.common.feature.feature.group
-	org.polarsys.kitalpha.emde.feature.feature.group
-	org.polarsys.kitalpha.emde.ui.feature.feature.group
-	org.polarsys.kitalpha.massactions.feature.feature.group
+location kitalpha-runtimecore "https://download.eclipse.org/kitalpha/updates/stable/runtimecore/1.4.0.202001100637" {	
+	org.polarsys.kitalpha.ad.runtime.feature.source.feature.group
+	org.polarsys.kitalpha.cadence.feature.source.feature.group
+	org.polarsys.kitalpha.common.feature.source.feature.group
+	org.polarsys.kitalpha.emde.feature.source.feature.group
+	org.polarsys.kitalpha.emde.ui.feature.source.feature.group
 	org.polarsys.kitalpha.massactions.feature.source.feature.group
-	org.polarsys.kitalpha.model.common.share.feature.feature.group
-	org.polarsys.kitalpha.model.common.commands.feature.feature.group
-	org.polarsys.kitalpha.model.common.scrutiny.feature.feature.group
-	org.polarsys.kitalpha.model.detachment.contrib.viewpoints.feature.feature.group
-	org.polarsys.kitalpha.model.detachment.feature.feature.group
-	org.polarsys.kitalpha.model.detachment.ui.feature.feature.group
-	org.polarsys.kitalpha.patterns.feature.feature.group
-	org.polarsys.kitalpha.report.feature.feature.group
-	org.polarsys.kitalpha.report.ui.feature.feature.group
-	org.polarsys.kitalpha.resourcereuse.emfscheme.feature.feature.group
-	org.polarsys.kitalpha.resourcereuse.emfscheme.ui.feature.feature.group
-	org.polarsys.kitalpha.resourcereuse.feature.feature.group
-	org.polarsys.kitalpha.resourcereuse.ui.feature.feature.group
-	org.polarsys.kitalpha.richtext.widget.feature.feature.group
+	org.polarsys.kitalpha.model.common.share.feature.source.feature.group
+	org.polarsys.kitalpha.model.common.commands.feature.source.feature.group
+	org.polarsys.kitalpha.model.common.scrutiny.feature.source.feature.group
+	org.polarsys.kitalpha.model.detachment.contrib.viewpoints.feature.source.feature.group
+	org.polarsys.kitalpha.model.detachment.feature.source.feature.group
+	org.polarsys.kitalpha.model.detachment.ui.feature.source.feature.group
+	org.polarsys.kitalpha.patterns.feature.source.feature.group
+	org.polarsys.kitalpha.report.feature.source.feature.group
+	org.polarsys.kitalpha.report.ui.feature.source.feature.group
+	org.polarsys.kitalpha.resourcereuse.emfscheme.feature.source.feature.group
+	org.polarsys.kitalpha.resourcereuse.emfscheme.ui.feature.source.feature.group
+	org.polarsys.kitalpha.resourcereuse.feature.source.feature.group
+	org.polarsys.kitalpha.resourcereuse.ui.feature.source.feature.group
 	org.polarsys.kitalpha.richtext.widget.feature.source.feature.group
-	org.polarsys.kitalpha.richtext.widget.ext.feature.feature.group
 	org.polarsys.kitalpha.richtext.widget.ext.feature.source.feature.group
-	org.polarsys.kitalpha.transposer.feature.feature.group
+	org.polarsys.kitalpha.transposer.feature.source.feature.group
 }
-location kitalpha-sdk-master "https://download.eclipse.org/kitalpha/updates/stable/sdk/1.4.0.202001100637/" {
+location kitalpha-sdk "https://download.eclipse.org/kitalpha/updates/stable/sdk/1.4.0.202001100637/" {
 	org.polarsys.kitalpha.doc.feature.feature.group
-	org.polarsys.kitalpha.emde.sdk.feature.feature.group
+	org.polarsys.kitalpha.emde.sdk.feature.source.feature.group
 }
 
-location diffmerge-core-master "https://download.eclipse.org/diffmerge/releases/0.12.0/emf-diffmerge-site" {
-	org.eclipse.emf.diffmerge.feature.feature.group
+location diffmerge-core "https://download.eclipse.org/diffmerge/releases/0.12.0/emf-diffmerge-site" {
 	org.eclipse.emf.diffmerge.feature.source.feature.group
-	org.eclipse.emf.diffmerge.sirius.feature.feature.group
 	org.eclipse.emf.diffmerge.sirius.feature.source.feature.group
-	org.eclipse.emf.diffmerge.gmf.feature.feature.group
 	org.eclipse.emf.diffmerge.gmf.feature.source.feature.group
-	org.eclipse.emf.diffmerge.sdk.feature.feature.group
-	org.eclipse.emf.diffmerge.egit.feature.feature.group
+	org.eclipse.emf.diffmerge.sdk.feature.source.feature.group
 	org.eclipse.emf.diffmerge.egit.feature.source.feature.group
-	
 }
 
-location diffmerge-patterns-master "https://download.eclipse.org/diffmerge/releases/0.12.0/edm-patterns-site" {
-	org.eclipse.emf.diffmerge.patterns.sdk.feature.feature.group
+location diffmerge-patterns "https://download.eclipse.org/diffmerge/releases/0.12.0/edm-patterns-site" {
 	org.eclipse.emf.diffmerge.patterns.sdk.feature.source.feature.group
-	org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.feature.group
 	org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.source.feature.group
 }
 
 location amalgam "https://download.eclipse.org/modeling/amalgam/updates/stable/1.11.0-S20191007/capella" {
-	org.eclipse.amalgam.explorer.activity.feature.group
 	org.eclipse.amalgam.explorer.activity.source.feature.group
 }
 
 location sirius-query-legacy "http://download.eclipse.org/sirius/updates/legacy/1.1.0" {
-	org.eclipse.sirius.query.legacy.feature.feature.group
 	org.eclipse.sirius.query.legacy.feature.source.feature.group
 }
 
 location egf "http://download.eclipse.org/egf/updates/1.6.1/2019-06/" {
-	org.eclipse.egf.sdk.feature.feature.group
+	org.eclipse.egf.sdk.feature.source.feature.group
 }
 
 location nebula "http://download.eclipse.org/nebula/releases/1.4.0/" {
@@ -131,13 +112,10 @@ location eclipse-shared-license "http://download.eclipse.org/cbi/updates/license
 	org.eclipse.license.feature.group lazy
 }
 
-location orbit-R20130827064939 "http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository" {
-	org.apache.log4j [1.2.15.v201012070815,1.2.15.v201012070815]
-	org.apache.commons.lang [2.4.0.v201005080502,2.4.0.v201005080502]
-	org.apache.commons.net [3.2.0.v201305141515,3.2.0.v201305141515]
-	org.jsoup [1.7.2.v201304221138,1.7.2.v201304221138]
-}
-
 location orbit-R20140525021250 "http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository" {
+	org.jsoup [1.7.2.v201304221138,1.7.2.v201304221138]
+	org.apache.commons.net [3.2.0.v201305141515,3.2.0.v201305141515]
+	org.apache.commons.lang [2.4.0.v201005080502,2.4.0.v201005080502]
+	org.apache.log4j [1.2.15.v201012070815,1.2.15.v201012070815]
 	com.google.guava [15.0.0.v201403281430,15.0.0.v201403281430]
 }

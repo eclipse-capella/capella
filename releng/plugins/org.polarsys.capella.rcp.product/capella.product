@@ -21,10 +21,10 @@
    <splash
       location="org.polarsys.capella.core.platform.sirius.ui.perspective" />
    <launcher name="capella">
-		<win useIco="true">
-         	<ico path="launch_icons/Capella_launch_icon.ico"/>
-         	<bmp/>
-		</win>
+      <win useIco="true">
+         <ico path="launch_icons/Capella_launch_icon.ico"/>
+         <bmp/>
+      </win>
    </launcher>
 
    <intro introId="org.eclipse.ui.intro.universal"/>
@@ -40,52 +40,7 @@
    </plugins>
 
    <features>
-      <feature id="org.eclipse.amalgam.explorer.activity"/>
-      <feature id="org.eclipse.emf.diffmerge.patterns.sdk.feature"/>
-      <feature id="org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature"/>
-      <feature id="org.eclipse.emf.diffmerge.sirius.feature"/>
-      <feature id="org.eclipse.emf.sdk"/>
-      <feature id="org.eclipse.emf.transaction"/>
-      <feature id="org.eclipse.gmf"/>
-      <feature id="org.eclipse.platform"/>
-      <feature id="org.eclipse.sdk"/>
-      <feature id="org.eclipse.sirius.doc.feature"/>
-      <feature id="org.eclipse.sirius.query.legacy.feature"/>
-      <feature id="org.eclipse.sirius.runtime"/>
-      <feature id="org.eclipse.sirius.runtime.source"/>
-      <feature id="org.eclipse.sirius.runtime.aql"/>
-      <feature id="org.eclipse.sirius.runtime.ide.ui"/>
-      <feature id="org.eclipse.sirius.interpreter.feature"/>
-      <feature id="org.eclipse.acceleo.ui.interpreter"/>
-      <feature id="org.eclipse.sirius.aql"/>
-      <feature id="org.eclipse.acceleo.query"/>
-      <feature id="org.eclipse.sirius.runtime.ide.ui.acceleo"/>
-      <feature id="org.eclipse.nebula.widgets.richtext.feature"/>
-      <feature id="org.polarsys.capella.rcp.feature"/>
-      <feature id="org.polarsys.kitalpha.ad.feature"/>
-      <feature id="org.polarsys.kitalpha.ad.integration.emde.feature"/>
-      <feature id="org.polarsys.kitalpha.ad.integration.sirius.feature"/>
-      <feature id="org.polarsys.kitalpha.cadence.feature"/>
-      <feature id="org.polarsys.kitalpha.common.feature"/>
-      <feature id="org.polarsys.kitalpha.doc.feature"/>
-      <feature id="org.polarsys.kitalpha.emde.feature"/>
-      <feature id="org.polarsys.kitalpha.emde.ui.feature"/>
-      <feature id="org.polarsys.kitalpha.model.common.commands.feature"/>
-      <feature id="org.polarsys.kitalpha.model.common.scrutiny.feature"/>
-      <feature id="org.polarsys.kitalpha.model.common.share.feature"/>
-      <feature id="org.polarsys.kitalpha.model.detachment.feature"/>
-      <feature id="org.polarsys.kitalpha.model.detachment.contrib.viewpoints.feature"/>
-      <feature id="org.polarsys.kitalpha.model.detachment.ui.feature"/>
-      <feature id="org.polarsys.kitalpha.patterns.feature"/>
-      <feature id="org.polarsys.kitalpha.report.feature"/>
-      <feature id="org.polarsys.kitalpha.report.ui.feature"/>
-      <feature id="org.polarsys.kitalpha.resourcereuse.feature"/>
-      <feature id="org.polarsys.kitalpha.resourcereuse.emfscheme.feature"/>
-      <feature id="org.polarsys.kitalpha.resourcereuse.emfscheme.ui.feature"/>
-      <feature id="org.polarsys.kitalpha.resourcereuse.ui.feature"/>
-      <feature id="org.polarsys.kitalpha.transposer.feature"/>
-      <feature id="org.polarsys.kitalpha.richtext.widget.feature"/>
-      <feature id="org.polarsys.kitalpha.ad.runtime.feature"/>
+      <feature id="org.polarsys.capella.rcp.feature.source"/>
    </features>
 
    <configurations>
