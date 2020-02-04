@@ -6,14 +6,12 @@ import org.eclipse.jface.preference.IntegerFieldEditor;
 import org.eclipse.jface.viewers.ColumnLayoutData;
 import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.TableLayout;
-import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
@@ -31,17 +29,16 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
 
   public static final String PAGE_ID = "org.polarsys.capella.core.platform.sirius.ui.actions.preferences.TitleBlockPage";
 
-  private IntegerFieldEditor _delayFieldEditor;
+  private IntegerFieldEditor _columnsFieldEditor;
 
-  private TableViewer viewer;
   private Table table;
 
+  Button add_button;
   Button edit_button;
   Button remove_button;
 
   public TitleBlockPreferencePage() {
     super(PAGE_ID);
-    // TODO Auto-generated constructor stub
   }
 
   @Override
@@ -51,57 +48,125 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
 
   @Override
   protected String getPageTitle() {
-    return "Title Block";
+    return Messages.TitleBlockPreferencePage_Title;
   }
 
   @Override
   protected String getPageDescription() {
     // TODO Auto-generated method stub
-    return "Description Title Block";
+    return Messages.TitleBlockPreferencePage_Description;
   }
 
   @Override
   protected void createFieldEditors() {
-    final Group scmGroup = createGroup("Titlu Grup", "Tooltip grup", getFieldEditorParent());
-    // Enable monitoring editor.
-    BooleanFieldEditor enableMonitoringFieldEditor = new BooleanFieldEditor("Enable Editor", "Enable title", scmGroup) {
-      /**
-       * {@inheritDoc}
-       */
-      @SuppressWarnings("synthetic-access")
-      @Override
-      protected void valueChanged(boolean oldValue_p, boolean newValue_p) {
-        super.valueChanged(oldValue_p, newValue_p);
-        _delayFieldEditor.setEnabled(newValue_p, scmGroup);
-      }
-    };
-    addField(enableMonitoringFieldEditor, UserProfileModeEnum.Expert, scmGroup);
-    _delayFieldEditor = new IntegerFieldEditor("delayField", "delayFieldTitle", scmGroup, 3);
-    _delayFieldEditor.setValidRange(1, 999);
-    addField(_delayFieldEditor, UserProfileModeEnum.Expert, scmGroup);
-    // Customize label layout data.
-    Label labelControl = _delayFieldEditor.getLabelControl(scmGroup);
-    GridData layoutData = new GridData(SWT.FILL, SWT.FILL, false, false);
-    labelControl.setLayoutData(layoutData);
-    layoutData.horizontalIndent = 15;
-    // Depending on enablement of enableMonitoring editor, the text is editable or not.
-    _delayFieldEditor.setEnabled(doGetPreferenceStore().getBoolean("EnableFileSyncMonitoring"), scmGroup);
-
-    // scmGroup.pack();
+    createGroupForNumberOfColumns();
 
     Composite top = new Composite(getFieldEditorParent(), SWT.NONE);
-    // Grid Layout for top
     GridLayout top_layout = new GridLayout();
     top_layout.numColumns = 2;
     top_layout.marginHeight = 2;
     top_layout.marginWidth = 2;
     top.setLayout(top_layout);
-
     top.setLayoutData(new GridData(GridData.FILL_BOTH));
 
+    createTable(top);
+    createButtons(top);
+  }
+
+  private Button createButton(Composite top, Composite container, String text, boolean enabled) {
+    Button button = new Button(container, SWT.PUSH);
+    button.setFont(top.getFont());
+    button.setText(text);
+    button.setEnabled(enabled);
+    this.setButtonLayoutData(button);
+    return button;
+  }
+
+  private void createButtons(Composite top) {
+
+    Composite container = new Composite(top, SWT.NONE);
+    GridLayout container_layout = new GridLayout();
+    container_layout.marginHeight = 0;
+    container_layout.marginWidth = 0;
+    container.setLayout(container_layout);
+    container.setLayoutData(new GridData(GridData.FILL_VERTICAL));
+    container.setFont(top.getFont());
+
+    add_button = createButton(top, container, "Add", true);
+
+    edit_button = createButton(top, container, "Edit", false);
+
+    remove_button = createButton(top, container, "Remove", false);
+
+    add_button.addListener(SWT.Selection, new Listener() {
+      @Override
+      public void handleEvent(Event e) {
+        switch (e.type) {
+        case SWT.Selection:
+          TitleBlockDialog dialog = new TitleBlockDialog(getShell());
+          dialog.create();
+          if (dialog.open() == Window.OK) {
+            System.out.println(dialog.getName());
+            System.out.println(dialog.getContent());
+
+            TableItem item = new TableItem(table, SWT.NULL);
+            item.setText("Item ");
+            item.setText(0, dialog.getName());
+            item.setText(1, dialog.getContent());
+          }
+          break;
+        }
+      }
+    });
+    remove_button.addListener(SWT.Selection, new Listener() {
+      @Override
+      public void handleEvent(Event e) {
+        switch (e.type) {
+        case SWT.Selection:
+          table.remove(table.getSelectionIndices());
+          edit_button.setEnabled(false);
+          remove_button.setEnabled(false);
+          break;
+        }
+      }
+    });
+
+    edit_button.addListener(SWT.Selection, new Listener() {
+      @Override
+      public void handleEvent(Event e) {
+        switch (e.type) {
+        case SWT.Selection:
+
+          int index = table.getSelectionIndex();
+          TitleBlockDialog dialog = new TitleBlockDialog(getShell());
+          dialog.create();
+          if (dialog.open() == Window.OK) {
+            table.getItem(index).setText(0, dialog.getName());
+            table.getItem(index).setText(1, dialog.getContent());
+            edit_button.setEnabled(false);
+            remove_button.setEnabled(false);
+          }
+        }
+      }
+    });
+
+    Menu menu = new Menu(getShell(), SWT.POP_UP);
+    table.setMenu(menu);
+    MenuItem menu_item = new MenuItem(menu, SWT.PUSH);
+    menu_item.setText("Delete Selection");
+    menu_item.addListener(SWT.Selection, new Listener() {
+
+      @Override
+      public void handleEvent(Event event) {
+        table.remove(table.getSelectionIndices());
+      }
+    });
+  }
+
+  private void createTable(Composite top) {
     TableLayout tableLayout = new TableLayout();
 
-    Table table = new Table(top, SWT.MULTI | SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION);
+    table = new Table(top, SWT.MULTI | SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION);
     table.setLayout(tableLayout);
     table.setHeaderVisible(true);
     table.setLinesVisible(true);
@@ -128,148 +193,40 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
     tableLayout.addColumnData(fTableColumnLayouts[1]);
     column = new TableColumn(table, SWT.NONE, 1);
     column.setResizable(fTableColumnLayouts[1].resizable);
-    column.setText("Feature");
+    column.setText("Content");
 
-    TableViewer viewer = new TableViewer(table);
-    viewer.setUseHashlookup(true);
-    viewer.setColumnProperties(new String[] { "Nume_coloana", "Locatie coloana", "Status coloana" });
-
-    for (int loopIndex = 0; loopIndex < 24; loopIndex++) {
-      TableItem item = new TableItem(table, SWT.NULL);
-      item.setText("Item " + loopIndex);
-      item.setText(0, "Item " + loopIndex);
-      item.setText(1, "Feature " + loopIndex);
-    }
-    TableItem item = table.getItem(1);
-    System.out.println(item.getText(0));
-    System.out.println(item.getText(1));
     table.addListener(SWT.Selection, new Listener() {
       @Override
       public void handleEvent(Event event) {
         int index = table.getSelectionIndex();
         if (index != -1) {
-
           edit_button.setEnabled(true);
           remove_button.setEnabled(true);
         }
       }
     });
-    Composite container = new Composite(top, SWT.NONE);
-    GridLayout container_layout = new GridLayout();
-    container_layout.marginHeight = 0;
-    container_layout.marginWidth = 0;
-    container.setLayout(container_layout);
-    container.setLayoutData(new GridData(GridData.FILL_VERTICAL));
-    container.setFont(top.getFont());
 
-    Button add_button = new Button(container, SWT.PUSH);
-    add_button.setFont(top.getFont());
-    add_button.setText("Add");
-    // add_button.addSelectionListener(this);
-    this.setButtonLayoutData(add_button);
-    edit_button = new Button(container, SWT.PUSH);
-    edit_button.setFont(top.getFont());
-    edit_button.setText("Edit");
-    edit_button.setEnabled(false);
-    this.setButtonLayoutData(edit_button);
-    remove_button = new Button(container, SWT.PUSH);
-    remove_button.setFont(top.getFont());
-    remove_button.setText("Remove");
-    remove_button.setEnabled(false);
-    this.setButtonLayoutData(remove_button);
+  }
 
-    add_button.addListener(SWT.Selection, new Listener() {
+  private void createGroupForNumberOfColumns() {
+    final Group group = createGroup("Number of columns in TitleBlock", "Tooltip grup", getFieldEditorParent());
+    BooleanFieldEditor enableMonitoringFieldEditor = new BooleanFieldEditor("Enable Editor", "Custom value", group) {
+      @SuppressWarnings("synthetic-access")
       @Override
-      public void handleEvent(Event e) {
-        switch (e.type) {
-        case SWT.Selection:
-          TitleBlockDialog dialog = new TitleBlockDialog(getShell());
-          dialog.create();
-          if (dialog.open() == Window.OK) {
-            System.out.println(dialog.getFirstName());
-            System.out.println(dialog.getLastName());
-
-            TableItem item = new TableItem(table, SWT.NULL);
-            item.setText("Item ");
-            item.setText(0, dialog.getFirstName());
-            item.setText(1, dialog.getLastName());
-          }
-          break;
-        }
+      protected void valueChanged(boolean oldValue_p, boolean newValue_p) {
+        super.valueChanged(oldValue_p, newValue_p);
+        _columnsFieldEditor.setEnabled(newValue_p, group);
       }
-    });
-    remove_button.addListener(SWT.Selection, new Listener() {
-      @Override
-      public void handleEvent(Event e) {
-        switch (e.type) {
-        case SWT.Selection:
-          table.remove(table.getSelectionIndices());
-          edit_button.setEnabled(false);
-          remove_button.setEnabled(false);
-          break;
-        }
-      }
-    });
-
-    edit_button.addListener(SWT.Selection, new Listener() {
-      @Override
-      public void handleEvent(Event e) {
-        switch (e.type) {
-        case SWT.Selection:
-          try {
-            int index = table.getSelectionIndex();
-            if (index == -1) {
-              throw new Exception();
-            }
-            System.out.println(index);
-
-            TitleBlockDialog dialog = new TitleBlockDialog(getShell());
-            dialog.create();
-            if (dialog.open() == Window.OK) {
-
-              System.out.println(dialog.getFirstName());
-              System.out.println(dialog.getLastName());
-
-              table.getItem(index).setText(0, dialog.getFirstName());
-              table.getItem(index).setText(1, dialog.getLastName());
-              edit_button.setEnabled(false);
-              remove_button.setEnabled(false);
-            }
-          } catch (Exception ex) {
-            TitleBlockDialog dialog = new TitleBlockDialog(getShell()) {
-              @Override
-              protected Control createDialogArea(Composite parent) {
-                Composite area = (Composite) super.createDialogArea(parent);
-                Composite container = new Composite(area, SWT.NONE);
-                container.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
-                GridLayout layout = new GridLayout(2, false);
-                container.setLayout(layout);
-                Label lbError = new Label(container, SWT.NONE);
-                lbError.setText("Select a raw first!");
-                return area;
-              }
-
-            };
-            dialog.create();
-          }
-
-          break;
-        }
-      }
-    });
-
-    Menu menu = new Menu(getShell(), SWT.POP_UP);
-    table.setMenu(menu);
-    MenuItem menu_item = new MenuItem(menu, SWT.PUSH);
-    menu_item.setText("Delete Selection");
-    menu_item.addListener(SWT.Selection, new Listener() {
-
-      @Override
-      public void handleEvent(Event event) {
-        table.remove(table.getSelectionIndices());
-      }
-
-    });
+    };
+    addField(enableMonitoringFieldEditor, UserProfileModeEnum.Expert, group);
+    _columnsFieldEditor = new IntegerFieldEditor("columnField", "NrOfColumns", group, 3);
+    _columnsFieldEditor.setValidRange(1, 50);
+    addField(_columnsFieldEditor, UserProfileModeEnum.Expert, group);
+    Label labelControl = _columnsFieldEditor.getLabelControl(group);
+    GridData layoutData = new GridData(SWT.FILL, SWT.FILL, false, false);
+    labelControl.setLayoutData(layoutData);
+    layoutData.horizontalIndent = 15;
+    _columnsFieldEditor.setEnabled(doGetPreferenceStore().getBoolean("EnableFileSyncMonitoring"), group);
 
   }
 

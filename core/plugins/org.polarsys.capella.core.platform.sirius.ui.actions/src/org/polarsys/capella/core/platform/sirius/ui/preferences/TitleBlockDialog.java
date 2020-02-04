@@ -13,10 +13,10 @@ import org.eclipse.swt.widgets.Text;
 public class TitleBlockDialog extends TitleAreaDialog {
 
   private Text txtName;
-  private Text txtFeature;
+  private Text txtContent;
 
   private String name;
-  private String feature;
+  private String content;
 
   public TitleBlockDialog(Shell parentShell) {
 
@@ -27,7 +27,7 @@ public class TitleBlockDialog extends TitleAreaDialog {
   @Override
   public void create() {
     super.create();
-    setTitle("Add name and feature");
+    setTitle("Add name and content");
   }
 
   @Override
@@ -38,15 +38,15 @@ public class TitleBlockDialog extends TitleAreaDialog {
     GridLayout layout = new GridLayout(2, false);
     container.setLayout(layout);
 
-    createFirstName(container);
-    createLastName(container);
+    createName(container);
+    createContent(container);
 
     return area;
   }
 
-  private void createFirstName(Composite container) {
-    Label lbtFirstName = new Label(container, SWT.NONE);
-    lbtFirstName.setText("First Name");
+  private void createName(Composite container) {
+    Label lbName = new Label(container, SWT.NONE);
+    lbName.setText("Name");
 
     GridData dataFirstName = new GridData();
     dataFirstName.grabExcessHorizontalSpace = true;
@@ -56,15 +56,15 @@ public class TitleBlockDialog extends TitleAreaDialog {
     txtName.setLayoutData(dataFirstName);
   }
 
-  private void createLastName(Composite container) {
-    Label lbtLastName = new Label(container, SWT.NONE);
-    lbtLastName.setText("Last Name");
+  private void createContent(Composite container) {
+    Label lbContent = new Label(container, SWT.NONE);
+    lbContent.setText("Content");
 
     GridData dataLastName = new GridData();
     dataLastName.grabExcessHorizontalSpace = true;
     dataLastName.horizontalAlignment = GridData.FILL;
-    txtFeature = new Text(container, SWT.BORDER);
-    txtFeature.setLayoutData(dataLastName);
+    txtContent = new Text(container, SWT.BORDER);
+    txtContent.setLayoutData(dataLastName);
   }
 
   @Override
@@ -74,7 +74,7 @@ public class TitleBlockDialog extends TitleAreaDialog {
 
   private void saveInput() {
     name = txtName.getText();
-    feature = txtFeature.getText();
+    content = txtContent.getText();
 
   }
 
@@ -84,11 +84,11 @@ public class TitleBlockDialog extends TitleAreaDialog {
     super.okPressed();
   }
 
-  public String getFirstName() {
+  public String getName() {
     return name;
   }
 
-  public String getLastName() {
-    return feature;
+  public String getContent() {
+    return content;
   }
 }

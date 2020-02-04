@@ -15,7 +15,7 @@ import org.polarsys.capella.common.ui.services.AbstractUIActivator;
 import org.polarsys.capella.core.model.preferences.DeletePreferences;
 import org.polarsys.capella.core.platform.sirius.ui.preferences.ActionsPreferenceInitializer;
 import org.polarsys.capella.core.platform.sirius.ui.preferences.CapellaValidationPreferencesInitializer;
-import org.polarsys.capella.core.platform.sirius.ui.preferences.PreferencesInitilizer;
+import org.polarsys.capella.core.platform.sirius.ui.preferences.TitleBlockPreferencesInitializer;
 
 /**
  * Nothing specific to implement here. There is just to take advantage of AbstractUIActivator services.
@@ -42,7 +42,7 @@ public class CapellaActionsActivator extends AbstractUIActivator {
     new DeletePreferences();
     new CapellaValidationPreferencesInitializer();
     new ActionsPreferenceInitializer();
-    new PreferencesInitilizer();
+    new TitleBlockPreferencesInitializer();
 
   }
 
