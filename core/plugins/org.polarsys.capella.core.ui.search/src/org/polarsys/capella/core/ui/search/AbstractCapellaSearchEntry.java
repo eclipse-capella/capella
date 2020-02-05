@@ -33,7 +33,7 @@ public abstract class AbstractCapellaSearchEntry extends Match {
    */
   private Collection<Object> children;
   
-  protected String text;
+  private String text;
   
   private IProject project;
 
@@ -53,6 +53,10 @@ public abstract class AbstractCapellaSearchEntry extends Match {
   
   public String getText() {
     return text;
+  }
+  
+  public void setText(String _text) {
+    text = _text;
   }
   
   public Collection<Object> getChildren() {

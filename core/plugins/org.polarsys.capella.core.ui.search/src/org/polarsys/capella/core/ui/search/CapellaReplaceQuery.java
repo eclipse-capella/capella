@@ -10,8 +10,11 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.search;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
@@ -63,17 +66,16 @@ public class CapellaReplaceQuery {
       for (Match match : allMatches) {
         if (match instanceof CapellaSearchMatchEntry) {
           CapellaSearchMatchEntry capellaMatch = (CapellaSearchMatchEntry) match;
-
           int countOccurrences = capellaMatch.getMatchOccurrences().size();
           String projectName = capellaMatch.getProject().getName();
-          subMonitor.subTask(String.format(Messages.ReplaceJob_SubTitle, countOccurrences, projectName));
-
-          for(Object childMatch : capellaMatch.getChildren()) {
-            if(childMatch instanceof CapellaSearchMatchOccurence)
-              replace((CapellaSearchMatchOccurence)childMatch, searchPattern, replacement);
-          }
-
-          subMonitor.split(countOccurrences);
+         
+          processMatches(subMonitor, capellaMatch.getChildren(), searchPattern, replacement, countOccurrences, projectName);
+        }
+        else if (match instanceof CapellaSearchMatchOccurence) {
+          CapellaSearchMatchOccurence capellaMatch = (CapellaSearchMatchOccurence) match;
+          Collection<Object> list = new ArrayList<Object>();
+          list.add(capellaMatch);
+          processMatches(subMonitor, list, searchPattern, replacement, 1, capellaMatch.getProject().getName());
         }
       }
       return Status.OK_STATUS;
@@ -85,6 +87,18 @@ public class CapellaReplaceQuery {
       }
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID, message);
     }
+  }
+  
+  protected void processMatches(SubMonitor subMonitor, Collection<Object> matches, 
+      Pattern searchPattern, String replacement, int countOccurrences, String projectName) {
+    subMonitor.subTask(String.format(Messages.ReplaceJob_SubTitle, countOccurrences, projectName));
+
+    for(Object childMatch : matches) {
+      if(childMatch instanceof CapellaSearchMatchOccurence)
+        replace((CapellaSearchMatchOccurence)childMatch, searchPattern, replacement);
+    }
+
+    subMonitor.split(countOccurrences);
   }
 
   public void replace(CapellaSearchMatchOccurence capellaMatch, Pattern searchPattern, String replacement) {
@@ -103,6 +117,7 @@ public class CapellaReplaceQuery {
         TransactionalEditingDomain domain = TransactionHelper.getEditingDomain(parentElement);
         Command setCommand = SetCommand.create(domain, parentElement, attribute, newContent);
         domain.getCommandStack().execute(setCommand);
+        capellaMatch.setText(newContent);
         replacedProjects.add(capellaMatch.getProject());
         replacedElements.add(parentElement);
         replacedOccurrenceCount += 1;
