@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_1.4.0-->
+<!--Capella_Version_1.3.1-->
 <org.polarsys.capella.core.data.ctx:Capability xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.4.0"
-    xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.4.0"
-    xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.4.0"
-    xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.4.0"
-    xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.4.0"
-    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.4.0"
-    xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/1.4.0"
-    xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/1.4.0"
-    xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/1.4.0"
-    xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.4.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.3.0"
+    xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.3.0"
+    xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.3.0"
+    xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.3.0"
+    xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.3.0"
+    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.3.0"
+    xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/1.3.0"
+    xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/1.3.0"
+    xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/1.3.0"
+    xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.3.0"
     id="9b2735da-e950-4ca7-b7d4-8aa4c0cafbb1"
     name="OC1">
   <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario" id="ace1a80f-ee24-45e8-8289-bcd5bb1f027c"
@@ -513,10 +513,10 @@
   <ownedAbstractCapabilityRealizations xsi:type="org.polarsys.capella.core.data.interaction:AbstractCapabilityRealization"
       id="d5a08823-3cff-4be2-bb0e-6d8d0086e179" targetElement="org.polarsys.capella.core.data.oa:OperationalCapability ../migration.sysmodel.melodymodeller#4b46f4a1-5bdf-4df4-8394-e3f4fb99a829"
       sourceElement="#9b2735da-e950-4ca7-b7d4-8aa4c0cafbb1"/>
-  <ownedCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:CapabilityInvolvement"
-      id="4ad68102-f6d9-41b0-a43e-c290f15c0141" involved="org.polarsys.capella.core.data.ctx:SystemComponent ../migration.sysmodel.melodymodeller#7b8aa28d-cd04-4e96-b580-609605af9143"/>
-  <ownedCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:CapabilityInvolvement"
-      id="8eee2500-4444-48dc-9427-2aa2e7eea1ae" involved="org.polarsys.capella.core.data.ctx:SystemComponent ../migration.sysmodel.melodymodeller#1f350ba9-d062-46ec-b85a-edc9d82b31b1"/>
-  <ownedCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:CapabilityInvolvement"
-      id="daf9b354-e50f-4cc5-aec8-7c6805d1e314" involved="org.polarsys.capella.core.data.ctx:SystemComponent ../migration.sysmodel.melodymodeller#d8c47314-238b-4bc6-a945-bd76c26b5a9b"/>
+  <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
+      id="4ad68102-f6d9-41b0-a43e-c290f15c0141" involved="org.polarsys.capella.core.data.ctx:Actor ../migration.sysmodel.melodymodeller#7b8aa28d-cd04-4e96-b580-609605af9143"/>
+  <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
+      id="8eee2500-4444-48dc-9427-2aa2e7eea1ae" involved="org.polarsys.capella.core.data.ctx:Actor ../migration.sysmodel.melodymodeller#1f350ba9-d062-46ec-b85a-edc9d82b31b1"/>
+  <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
+      id="daf9b354-e50f-4cc5-aec8-7c6805d1e314" involved="org.polarsys.capella.core.data.ctx:System ../migration.sysmodel.melodymodeller#d8c47314-238b-4bc6-a945-bd76c26b5a9b"/>
 </org.polarsys.capella.core.data.ctx:Capability>
