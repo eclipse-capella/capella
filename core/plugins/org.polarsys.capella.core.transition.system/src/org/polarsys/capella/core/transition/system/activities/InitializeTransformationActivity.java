@@ -13,6 +13,7 @@ package org.polarsys.capella.core.transition.system.activities;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.polarsys.capella.core.data.capellamodeller.CapellamodellerFactory;
+import org.polarsys.capella.core.data.capellamodeller.Library;
 import org.polarsys.capella.core.data.capellamodeller.ModelRoot;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
@@ -38,7 +39,13 @@ public abstract class InitializeTransformationActivity
 
     Project sourceProject = ContextHelper.getSourceProject(context);
     SystemEngineering sourceEngineering = ContextHelper.getSourceEngineering(context);
-    Project targetProject = CapellamodellerFactory.eINSTANCE.createProject(sourceProject.getName());
+    Project targetProject = null;
+    if(sourceProject instanceof Library) {
+      targetProject = CapellamodellerFactory.eINSTANCE.createLibrary(sourceProject.getName());
+    }else {
+      targetProject = CapellamodellerFactory.eINSTANCE.createProject(sourceProject.getName());
+    }
+  
     
     SystemEngineering targetEngineering = CapellamodellerFactory.eINSTANCE.createSystemEngineering(sourceEngineering.getName());
     targetEngineering.setId(sourceEngineering.getId());
