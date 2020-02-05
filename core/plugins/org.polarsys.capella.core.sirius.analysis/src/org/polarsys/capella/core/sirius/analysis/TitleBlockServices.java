@@ -21,6 +21,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.internal.interpreter.FeatureInterpreter;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
@@ -94,6 +96,18 @@ public class TitleBlockServices {
       annotation.getReferences().addAll(annotationLines);
       representation.getEAnnotations().add(annotation);
     }
+  }
+
+  public void reconnectTitleBlockEdgeTarget(EObject elementView, DAnnotation source, DAnnotation target) {
+    source.getReferences().remove(elementView);
+    target.getReferences().add(elementView);
+  }
+
+  public void reconnectTitleBlockEdgeSource(EObject elementView, EObject source, EObject target, DEdge edgeView) {
+    DNodeContainer targetNode = (DNodeContainer) edgeView.getTargetNode();
+    DAnnotation annotation = (DAnnotation) targetNode.getTarget();
+    annotation.getReferences().remove(source);
+    annotation.getReferences().add(target);
   }
 
   public void createTitleBlockLine(EObject titleBlock, EObject diagram) {
