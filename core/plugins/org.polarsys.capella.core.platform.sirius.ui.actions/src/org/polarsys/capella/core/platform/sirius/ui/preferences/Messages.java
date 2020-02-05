@@ -35,6 +35,9 @@ public class Messages extends NLS {
   public static String DeletePreferencePage_MultipartGroup_Title;
   public static String DeletePreferencePage_MultipartGroup_Description;
 
+  public static String TitleBlockPreferencePage_Title;
+  public static String TitleBlockPreferencePage_Description;
+
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);
