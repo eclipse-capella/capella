@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import org.polarsys.capella.common.ui.services.AbstractUIActivator;
 import org.polarsys.capella.core.model.preferences.DeletePreferences;
 import org.polarsys.capella.core.platform.sirius.ui.preferences.ActionsPreferenceInitializer;
 import org.polarsys.capella.core.platform.sirius.ui.preferences.CapellaValidationPreferencesInitializer;
+import org.polarsys.capella.core.platform.sirius.ui.preferences.TitleBlockPreferencesInitializer;
 
 /**
  * Nothing specific to implement here. There is just to take advantage of AbstractUIActivator services.
@@ -41,6 +42,7 @@ public class CapellaActionsActivator extends AbstractUIActivator {
     new DeletePreferences();
     new CapellaValidationPreferencesInitializer();
     new ActionsPreferenceInitializer();
+    new TitleBlockPreferencesInitializer();
 
   }
 
@@ -55,6 +57,7 @@ public class CapellaActionsActivator extends AbstractUIActivator {
 
   /**
    * Get shared instance.
+   * 
    * @return
    */
   public static CapellaActionsActivator getDefault() {
