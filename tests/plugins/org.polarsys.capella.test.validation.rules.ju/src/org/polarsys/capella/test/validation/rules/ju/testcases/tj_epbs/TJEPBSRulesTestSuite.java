@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,6 +36,7 @@ public class TJEPBSRulesTestSuite extends BasicTestSuite {
 		tests.add(new Rule_TJ_EPBS_01());
     tests.add(new Rule_TJ_EPBS_02());
 		tests.add(new Rule_TJ_EPBS_03());
+		tests.add(new Rule_TJ_EPBS_04());
 		return tests;
 	}
 

@@ -15,7 +15,8 @@ Require-Bundle: org.polarsys.capella.core.validation.ui.ide,
  org.eclipse.ui.ide,
  org.eclipse.pde.core,
  org.polarsys.capella.common.libraries,
- org.polarsys.capella.core.libraries
+ org.polarsys.capella.core.libraries,
+ org.polarsys.capella.core.model.skeleton
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
