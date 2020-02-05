@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2019, 2020 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -422,16 +422,6 @@
                </message>
                <description>
                   This test checks the realization consistency between functions.
-               </description>
-               <target class="AbstractFunction">
-               </target>
-            </constraint>
-            <constraint class="org.polarsys.capella.core.data.fa.validation.function.MDCHK_RootFunction_FunctionRealization" id="I_45" isEnabledByDefault="true" lang="Java" mode="Batch" name="I_45 - Function Realization" severity="ERROR" statusCode="1">
-               <message>
-                  Realization consistency error for {0}.
-               </message>
-               <description>
-                  This test checks the realization consistency between root functions.
                </description>
                <target class="AbstractFunction">
                </target>
@@ -1002,6 +992,25 @@ If E1 is carried by another Function Port P2 contained by a Function F2 and F2 r
                <description>
                   This rule verifies that a realization link exists between two functions containing a function port having a realization link.
                </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.function.MDCHK_RootFunction_FunctionRealization"
+                  id="TC_DF_15"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="TC_DF_15 - Root Function Realization"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0}.
+               </message>
+               <description>
+                  This rule ensures the realization consistency between Root Functions.
+               </description>
+               <target
+                     class="AbstractFunction">
+               </target>
             </constraint>
          </constraints>
          <constraints categories="capella.category/transition/consistency/components">

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2019, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,7 +35,6 @@ public class IRulesTestSuite extends BasicTestSuite {
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new Rule_I_01());
-    tests.add(new Rule_I_06());
     tests.add(new Rule_I_07());
     tests.add(new Rule_I_09());
     tests.add(new Rule_I_10());
@@ -68,10 +67,7 @@ public class IRulesTestSuite extends BasicTestSuite {
     tests.add(new Rule_I_40_OnCapability());
     tests.add(new Rule_I_40_OnMission());
     tests.add(new Rule_I_43_ElementReferencesAirdOrProxyElement());
-    tests.add(new Rule_I_46());
-    tests.add(new Rule_I_44());
-    tests.add(new Rule_I_45());
-
+    
     return tests;
   }
 
