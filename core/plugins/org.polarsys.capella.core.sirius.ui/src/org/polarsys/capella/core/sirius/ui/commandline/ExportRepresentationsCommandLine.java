@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.platform.sirius.ui.navigator.commandline;
+package org.polarsys.capella.core.sirius.ui.commandline;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
@@ -25,12 +25,11 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.resource.ImageFileFormat;
 import org.eclipse.sirius.ui.tools.api.actions.export.ExportAction;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.polarsys.capella.core.commandline.core.AbstractCommandLine;
 import org.polarsys.capella.core.commandline.core.CommandLineException;
+import org.polarsys.capella.core.commandline.core.ui.AbstractWorkbenchCommandLine;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.Messages;
 
-public class ExportRepresentationsCommandLine extends AbstractCommandLine {
+public class ExportRepresentationsCommandLine extends AbstractWorkbenchCommandLine {
 
   public ExportRepresentationsCommandLine() {
     argHelper = new ExportRepresentationsArgumentHelper();
@@ -38,7 +37,8 @@ public class ExportRepresentationsCommandLine extends AbstractCommandLine {
 
   @Override
   public boolean execute(IApplicationContext context) throws CommandLineException {
-
+    startWorkbench();
+    
     ExportRepresentationsArgumentHelper args = (ExportRepresentationsArgumentHelper) argHelper;
 
     String fileURI = Messages.resource_prefix + args.getFilePath();

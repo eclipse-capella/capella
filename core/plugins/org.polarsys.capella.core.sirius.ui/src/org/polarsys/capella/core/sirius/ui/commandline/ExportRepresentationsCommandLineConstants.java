@@ -8,12 +8,11 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.platform.sirius.ui.navigator.commandline;
+package org.polarsys.capella.core.sirius.ui.commandline;
 
-/**
- */
-public class RemoveHiddenElementsCommandLineConstants {
+public class ExportRepresentationsCommandLineConstants {
 
-  public static final String UNSYNC_DIAGS = "-unsyncDiags";//$NON-NLS-1$
-
+  public static final String IMAGE_FORMAT = "-imageFormat";//$NON-NLS-1$
+  public static final String EXPORT_TO_HTML = "-exportToHtml";//$NON-NLS-1$
+  public static final String EXPORT_DECORATIONS = "-exportDecorations";//$NON-NLS-1$
 }

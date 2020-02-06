@@ -42,8 +42,7 @@ Require-Bundle: org.eclipse.amalgam.explorer.activity.ui,
  org.polarsys.capella.common.tools.report.appenders.usage;visibility:=reexport,
  org.eclipse.jface,
  org.eclipse.ui.workbench,
- org.polarsys.capella.common,
- org.polarsys.capella.core.commandline.core
+ org.polarsys.capella.common
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.polarsys.capella.core.platform.sirius.ui.navigator.actions,
@@ -51,7 +50,6 @@ Export-Package: org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.handlers,
  org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.representation,
  org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers,
- org.polarsys.capella.core.platform.sirius.ui.navigator.commandline,
  org.polarsys.capella.core.platform.sirius.ui.navigator.decorator,
  org.polarsys.capella.core.platform.sirius.ui.navigator.drag,
  org.polarsys.capella.core.platform.sirius.ui.navigator.drop,

@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.platform.sirius.ui.navigator.commandline;
+package org.polarsys.capella.core.sirius.ui.commandline;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -26,26 +26,26 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.swt.widgets.Display;
-import org.polarsys.capella.core.commandline.core.AbstractCommandLine;
-import org.polarsys.capella.core.commandline.core.CommandLineArgumentHelper;
 import org.polarsys.capella.core.commandline.core.CommandLineException;
+import org.polarsys.capella.core.commandline.core.ui.AbstractWorkbenchCommandLine;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.Messages;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.RefreshDiagramsCommandHandler;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.RefreshDiagramsCommandHandler.RefreshDiagramsJob;
+import org.polarsys.capella.core.sirius.ui.handlers.DeleteHiddenElementsJob;
 
-public class RefreshAirdCommandLine extends AbstractCommandLine {
-
-  public RefreshAirdCommandLine() {
-    argHelper = new CommandLineArgumentHelper();
+public class RemoveHiddenElementsCommandLine extends AbstractWorkbenchCommandLine {
+  
+  public RemoveHiddenElementsCommandLine() {
+    argHelper = new RemoveHiddenElementsArgumentHelper();
   }
   
   @Override
   public boolean execute(IApplicationContext context) throws CommandLineException {
-
-    String outputFolder = argHelper.getOutputFolder();
-
+    startWorkbench();
+    
+    RemoveHiddenElementsArgumentHelper args = (RemoveHiddenElementsArgumentHelper) argHelper;
+    
+    String outputFolder = args.getOutputFolder();
+    boolean unsyncDiags = args.getUnsyncDiags();
+    
     String fileURI = Messages.resource_prefix + argHelper.getFilePath();
     URI uri = URI.createURI(fileURI);
 
@@ -59,17 +59,15 @@ public class RefreshAirdCommandLine extends AbstractCommandLine {
       Collection<DRepresentationDescriptor> representations = DialectManager.INSTANCE
           .getAllRepresentationDescriptors(session);
 
-      RefreshDiagramsCommandHandler handler = new RefreshDiagramsCommandHandler();
-      RefreshDiagramsJob job = handler.new RefreshDiagramsJob( //
-          Messages.RefreshRepresentation_0, representations, session, Display.getDefault());
+      DeleteHiddenElementsJob job = new DeleteHiddenElementsJob(representations, session, unsyncDiags);
       IStatus status = job.run(new NullProgressMonitor());
-      
+
       try {
         IFolder folder = ResourcesPlugin.getWorkspace().getRoot().getFolder(new Path(outputFolder));
         if (!folder.exists()) {
           folder.create(false, true, new NullProgressMonitor());
         }
-        String fileName = Messages.refreshResultsFileName;
+        String fileName = Messages.removeHiddenElementsResultsFileName;
         IFile file = folder.getFile(new Path(fileName));
         String result = toHTML(status, representations);
         InputStream outputContent = new ByteArrayInputStream(result.getBytes());
@@ -90,13 +88,13 @@ public class RefreshAirdCommandLine extends AbstractCommandLine {
     StringBuilder res = new StringBuilder();
     res.append("<html> \n"); //$NON-NLS-1$
     res.append("<head> \n"); //$NON-NLS-1$
-    res.append("<title>Refresh all representations on " + new java.util.Date() + "</title> \n"); //$NON-NLS-1$ //$NON-NLS-2$
+    res.append("<title>Remove Hidden Elements on " + new java.util.Date() + "</title> \n"); //$NON-NLS-1$ //$NON-NLS-2$
     res.append("<head> \n"); //$NON-NLS-1$
     res.append("<body> \n"); //$NON-NLS-1$
     if (status.getSeverity() == IStatus.OK) {
-      res.append("All "+representations.size()+" representations refreshed."); //$NON-NLS-1$
+      res.append("All hidden elements was removed from "+representations.size()+" representations."); //$NON-NLS-1$
     } else {
-      res.append("The refresh of all representations failed."); //$NON-NLS-1$
+      res.append("The removal of all hidden elements failed."); //$NON-NLS-1$
     }
     res.append("</body> \n"); //$NON-NLS-1$
     res.append("</html> \n"); //$NON-NLS-1$

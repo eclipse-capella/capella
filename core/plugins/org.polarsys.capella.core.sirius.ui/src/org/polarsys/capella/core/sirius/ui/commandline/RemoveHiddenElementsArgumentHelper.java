@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.platform.sirius.ui.navigator.commandline;
+package org.polarsys.capella.core.sirius.ui.commandline;
 
 import org.polarsys.capella.core.commandline.core.CommandLineArgumentHelper;
 

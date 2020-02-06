@@ -54,12 +54,13 @@ import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerVi
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.commandline.core.AbstractCommandLine;
 import org.polarsys.capella.core.commandline.core.CommandLineException;
+import org.polarsys.capella.core.commandline.core.ui.AbstractWorkbenchCommandLine;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.model.handler.markers.ICapellaValidationConstants;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 
-public class ValidationCommandLine extends AbstractCommandLine {
+public class ValidationCommandLine extends AbstractWorkbenchCommandLine {
   static final String CONSTRAINT_DISABLED_PREFIX = "org.eclipse.emf.validation//con.disabled/"; //$NON-NLS-1$
 
   public ValidationCommandLine() {
@@ -75,7 +76,6 @@ public class ValidationCommandLine extends AbstractCommandLine {
 
   @Override
   public boolean execute(IApplicationContext context) throws CommandLineException {
-    startFakeWorkbench();
     // load the AIRD
     String fileURI = Messages.resource_prefix + argHelper.getFilePath();
     URI uri = URI.createURI(fileURI);
@@ -98,7 +98,8 @@ public class ValidationCommandLine extends AbstractCommandLine {
   }
 
   private boolean execute(final URI uri, final String outputFolder) throws FileNotFoundException, CoreException, CommandLineException {
-
+    startWorkbench();
+    
     // Create the validate action.
     CapellaValidateComlineAction capellaValidateCLineAction = new CapellaValidateComlineAction();
 
@@ -270,32 +271,6 @@ public class ValidationCommandLine extends AbstractCommandLine {
       }
     }
     return result;
-  }
-
-  /**
-   * A workbench is needed by some Sirius plugins
-   */
-  public static void startFakeWorkbench() {
-    if (PlatformUI.isWorkbenchRunning()) {
-      return;
-    }
-    
-    Display display = PlatformUI.createDisplay();
-    PlatformUI.createAndRunWorkbench(display, new WorkbenchAdvisor() {
-
-      /**
-       * {@inheritDoc}
-       */
-      @Override
-      public boolean openWindows() {
-        return false;
-      }
-
-      @Override
-      public String getInitialWindowPerspectiveId() {
-        return null;
-      }
-    });
   }
 
   /**
