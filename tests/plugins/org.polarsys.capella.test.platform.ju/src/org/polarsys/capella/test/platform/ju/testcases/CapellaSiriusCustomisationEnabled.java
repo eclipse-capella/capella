@@ -10,7 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.test.platform.ju.testcases;
 
-import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.core.runtime.preferences.DefaultScope;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
@@ -27,30 +28,46 @@ public class CapellaSiriusCustomisationEnabled extends BasicTestCase {
 
     // Ensure that Sirius overridden preference values are the intended ones.
     // It can imply that loading plugin order is not the expected one or default values are re-overridden by Sirius
-
-    IPreferenceStore store = SiriusEditPlugin.getPlugin().getPreferenceStore();
-
-    assertTrue("Preference value for 'Prompt when saveable still open' is not the intended one", PlatformUI.getPreferenceStore()
-        .getBoolean(IWorkbenchPreferenceConstants.PROMPT_WHEN_SAVEABLE_STILL_OPEN) == false);
-
-    assertTrue("Preference value for 'Defensive edit validation' is not the intended one", SiriusTransPlugin.getPlugin().getPreferenceStore()
-        .getBoolean(CommonPreferencesConstants.PREF_DEFENSIVE_EDIT_VALIDATION) == false);
-
-    assertTrue("Preference value for 'Empty aird fragmentation' is not the intended one",
-        store.getBoolean(SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name()) == true);
-
-    assertTrue("Preference value for 'Save when no editor' is not the intended one",
-        store.getBoolean(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name()) == false);
     
-    assertTrue("Preference value for 'Reload on last editor close' is not the intended one",
-        store.getBoolean(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name()) == false);
+    assertEclipseDefaultPreferences();
+    assertSiriusPluginPreferences();
+    assertSiriusUIPluginPreferences();
+    assertSiriusCommonUIPluginPreferences();
+  }
+  
+  private void assertEclipseDefaultPreferences() {
+    assertFalse("Preference value for 'Prompt when saveable still open' is not the intended one",
+        PlatformUI.getPreferenceStore().getBoolean(IWorkbenchPreferenceConstants.PROMPT_WHEN_SAVEABLE_STILL_OPEN));
+  }
+
+  private void assertSiriusPluginPreferences() {
+    IEclipsePreferences defaultScope = DefaultScope.INSTANCE.getNode(org.eclipse.sirius.viewpoint.SiriusPlugin.ID);
+    
+    assertTrue("Preference value for 'Empty aird fragmentation' is not the intended one",
+        defaultScope.getBoolean(SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), false));
+  }
+
+  private void assertSiriusUIPluginPreferences() {
+    IEclipsePreferences defaultScope = DefaultScope.INSTANCE.getNode(SiriusEditPlugin.ID);
+
+    assertFalse("Preference value for 'Save when no editor' is not the intended one",
+        defaultScope.getBoolean(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), true));
+
+    assertFalse("Preference value for 'Reload on last editor close' is not the intended one",
+        defaultScope.getBoolean(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), true));
 
     assertTrue("Preference value for 'Scale level on diagram export' is not the intended one",
-        store.getInt(SiriusUIPreferencesKeys.PREF_SCALE_LEVEL_DIAGRAMS_ON_EXPORT.name()) == 2);
+        defaultScope.getInt(SiriusUIPreferencesKeys.PREF_SCALE_LEVEL_DIAGRAMS_ON_EXPORT.name(), 99) == 2);
 
-    assertTrue("Preference value for 'Use viewpoint colors' is not the intended one",
-        store.getBoolean(SiriusUIPreferencesKeys.PREF_DISPLAY_VSM_USER_FIXED_COLOR_IN_PALETTE.name()) == false);
+    assertFalse("Preference value for 'Use viewpoint colors' is not the intended one",
+        defaultScope.getBoolean(SiriusUIPreferencesKeys.PREF_DISPLAY_VSM_USER_FIXED_COLOR_IN_PALETTE.name(), true));
+  }
 
+  private void assertSiriusCommonUIPluginPreferences() {
+    IEclipsePreferences defaultScope = DefaultScope.INSTANCE.getNode(SiriusTransPlugin.PLUGIN_ID);
+
+    assertFalse("Preference value for 'Defensive edit validation' is not the intended one",
+        defaultScope.getBoolean(CommonPreferencesConstants.PREF_DEFENSIVE_EDIT_VALIDATION, true));
   }
 
 }
