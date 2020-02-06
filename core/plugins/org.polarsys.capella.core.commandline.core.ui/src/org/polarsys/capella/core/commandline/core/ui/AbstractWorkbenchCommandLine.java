@@ -1,10 +1,3 @@
-package org.polarsys.capella.core.commandline.core.ui;
-
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.application.WorkbenchAdvisor;
-import org.polarsys.capella.core.commandline.core.AbstractCommandLine;
-
 /*******************************************************************************
  * Copyright (c) 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
@@ -15,11 +8,15 @@ import org.polarsys.capella.core.commandline.core.AbstractCommandLine;
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+package org.polarsys.capella.core.commandline.core.ui;
+
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.application.WorkbenchAdvisor;
+import org.polarsys.capella.core.commandline.core.AbstractCommandLine;
+
 public class AbstractWorkbenchCommandLine extends AbstractCommandLine {
 
-  /**
-   * A workbench is needed by some Sirius plugins
-   */
   public static void startWorkbench() {
     if (PlatformUI.isWorkbenchRunning()) {
       return;
@@ -28,9 +25,6 @@ public class AbstractWorkbenchCommandLine extends AbstractCommandLine {
     Display display = PlatformUI.createDisplay();
     PlatformUI.createAndRunWorkbench(display, new WorkbenchAdvisor() {
 
-      /**
-       * {@inheritDoc}
-       */
       @Override
       public boolean openWindows() {
         return false;
