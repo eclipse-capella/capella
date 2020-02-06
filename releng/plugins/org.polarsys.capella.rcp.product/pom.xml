@@ -40,13 +40,6 @@
 							<goal>materialize-products</goal>
 						</goals>
 					</execution>
-					<execution>
-						<!-- create zip file with the installed product -->
-						<id>archive-products</id>
-						<goals>
-							<goal>archive-products</goal>
-						</goals>
-					</execution>
 				</executions>
 			</plugin>
 			<plugin>
@@ -66,6 +59,7 @@
 									<mkdir dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64/dropins"/>
 									<mkdir dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64/Eclipse.app/Contents/Eclipse/dropins"/>
 									<mkdir dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/win32/win32/x86_64/dropins"/>
+									
 									<!-- Modify Nebula Richtext's template to fix IE compatibility bug. To remove if Nebula patches this -->
 									<replace dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64/plugins">
 										<include name="org.eclipse.nebula.widgets.richtext_*/org/eclipse/nebula/widgets/richtext/resources/template.html"/>
@@ -90,24 +84,30 @@
 							</goals>
 							<configuration>
 								<target>
-									<!-- Create the Capella .zip with 2 folders (capella/eclipse + capella/samples) -->
+									<!-- Create the Capella .zip with 2 folders (capella + samples) -->
+									
 									<zip destfile="${project.build.directory}/products/capella-${unqualifiedVersion}.${buildQualifier}-linux-gtk-x86_64.zip">
-										<zipfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64" prefix="capella/eclipse"/>
-										<zipfileset dir="../../../samples" prefix="capella/samples">
+										<zipfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64" prefix="capella"/>
+										<zipfileset dir="../../../samples" prefix="samples">
 											<exclude name="target/**"/>
 											<exclude name="pom.xml"/>
 										</zipfileset>
 									</zip>
+									
 									<zip destfile="${project.build.directory}/products/capella-${unqualifiedVersion}.${buildQualifier}-macosx-cocoa-x86_64.zip">
 										<zipfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64" prefix="capella"/>
-										<zipfileset dir="../../../samples" prefix="capella/samples">
+										<zipfileset dir="../../../samples" prefix="samples">
 											<exclude name="target/**"/>
 											<exclude name="pom.xml"/>
 										</zipfileset>
 									</zip>
+									
+									<move file="${project.build.directory}/products/org.polarsys.capella.rcp.product/win32/win32/x86_64/eclipsec.exe" 
+										  tofile="${project.build.directory}/products/org.polarsys.capella.rcp.product/win32/win32/x86_64/capellac.exe"/>
+									
 									<zip destfile="${project.build.directory}/products/capella-${unqualifiedVersion}.${buildQualifier}-win32-win32-x86_64.zip">
-										<zipfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/win32/win32/x86_64" prefix="capella/eclipse"/>
-										<zipfileset dir="../../../samples" prefix="capella/samples">
+										<zipfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/win32/win32/x86_64" prefix="capella"/>
+										<zipfileset dir="../../../samples" prefix="samples">
 											<exclude name="target/**"/>
 											<exclude name="pom.xml"/>
 										</zipfileset>

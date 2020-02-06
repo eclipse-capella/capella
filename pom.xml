@@ -20,8 +20,8 @@
 	<packaging>pom</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<tycho-version>1.4.0</tycho-version>
-		<tycho-extras-version>1.4.0</tycho-extras-version>
+		<tycho-version>1.6.0</tycho-version>
+		<tycho-extras-version>1.6.0</tycho-extras-version>
 		<antrun-version>1.7</antrun-version>
 		<rcptt-version>2.1.0</rcptt-version>
 		<rcptt-runner-version>2.1.0</rcptt-runner-version>
@@ -146,7 +146,6 @@
 						<plugin id="org.polarsys.capella.core.data.res.editor" />
                         <plugin id="org.polarsys.capella.ui.views" />
 						<feature id="org.eclipse.nebula.widgets.richtext.feature" />
-						<feature id="org.polarsys.kitalpha.richtext.mde.tools.sirius.feature" />
 						<feature id="org.polarsys.kitalpha.richtext.widget.feature" />
 						<feature id="org.polarsys.capella.core.mylyn.feature" />
 					</excludes>
@@ -300,12 +299,6 @@
 				<module>ext/detachment/plugins/org.polarsys.capella.detachment.version.precondition</module>
 				<module>legacy/plugins/org.polarsys.capella.common.mdsofa.common</module>
 				
-				<module>patterns/features/org.polarsys.capella.patterns.feature</module>
-				<module>patterns/plugins/org.polarsys.capella.patterns</module>
-				<module>patterns/plugins/org.polarsys.capella.patterns.obfuscator</module>
-				<module>patterns/plugins/org.polarsys.capella.patterns.ui</module>
-				<module>patterns/plugins/org.polarsys.capella.patterns.migration</module>
-				
 				<module>releng/cdo/features</module>
 				<module>releng/cdo/plugins</module>
 				
@@ -347,12 +340,6 @@
 				<module>ext/detachment/plugins/org.polarsys.capella.detachment.propertyvalue</module>
 				<module>ext/detachment/plugins/org.polarsys.capella.detachment.version.precondition</module>
 				<module>legacy/plugins/org.polarsys.capella.common.mdsofa.common</module>
-				
-				<module>patterns/features/org.polarsys.capella.patterns.feature</module>
-				<module>patterns/plugins/org.polarsys.capella.patterns</module>
-				<module>patterns/plugins/org.polarsys.capella.patterns.obfuscator</module>
-				<module>patterns/plugins/org.polarsys.capella.patterns.ui</module>
-				<module>patterns/plugins/org.polarsys.capella.patterns.migration</module>
 				
 				<module>releng/features/org.polarsys.capella.rcp.feature</module>
 				<module>releng/plugins/org.polarsys.capella.rcp</module>

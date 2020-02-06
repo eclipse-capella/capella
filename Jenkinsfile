@@ -23,9 +23,9 @@ pipeline {
     MAVEN_SIGN = "${env.FROM_PR}".replace("true", " ").replace("false", "-Psign");
     MAVEN_SONAR = "${env.FROM_PR}".replace("true", "-DSKIP_SONAR=true").replace("false", " ");
     
-    RUNNER = "./capella/eclipse/eclipse -port 8081 -application org.polarsys.capella.test.run.application -data ${env.WORKSPACE}/runner >>${env.WORKSPACE}/capella/runner.log "
-    JUNIT = "sleep 10 && java -Xms1024m -Xmx3500m -XX:+CMSPermGenSweepingEnabled -XX:+CMSClassUnloadingEnabled -ea -Declipse.p2.data.area=@config.dir/../p2 -Dfile.encoding=Cp1252 -classpath `ls ${WORKSPACE}/capella/eclipse/plugins/org.eclipse.equinox.launcher_*` org.eclipse.equinox.launcher.Main -os linux -ws gtk -arch x86_64 -version 3 -port 8081 -testLoaderClass org.eclipse.jdt.internal.junit4.runner.JUnit4TestLoader -loaderpluginname org.eclipse.jdt.junit4.runtime -application org.eclipse.pde.junit.runtime.uitestapplication -product org.polarsys.capella.rcp.product -testApplication org.polarsys.capella.core.platform.sirius.ui.perspective.id -configuration file:${env.WORKSPACE}/capella/eclipse/configuration -buildKey ${BUILD_KEY}"
-    HJUNIT = "sleep 10 && java -Xms1024m -Xmx3500m -XX:+CMSPermGenSweepingEnabled -XX:+CMSClassUnloadingEnabled -ea -Declipse.p2.data.area=@config.dir/../p2 -Dfile.encoding=Cp1252 -classpath `ls ${WORKSPACE}/capella/eclipse/plugins/org.eclipse.equinox.launcher_*` org.eclipse.equinox.launcher.Main -os linux -ws gtk -arch x86_64 -version 3 -port 8081 -testLoaderClass org.eclipse.jdt.internal.junit4.runner.JUnit4TestLoader -loaderpluginname org.eclipse.jdt.junit4.runtime -application org.eclipse.pde.junit.runtime.nonuithreadtestapplication -product org.polarsys.capella.rcp.product -testApplication org.polarsys.capella.core.platform.sirius.ui.perspective.id -configuration file:${env.WORKSPACE}/capella/eclipse/configuration -buildKey ${BUILD_KEY}"
+    RUNNER = "./capella/capella -port 8081 -application org.polarsys.capella.test.run.application -data ${env.WORKSPACE}/runner >>${env.WORKSPACE}/capella/runner.log "
+    JUNIT = "sleep 10 && java -Xms1024m -Xmx3500m -XX:+CMSPermGenSweepingEnabled -XX:+CMSClassUnloadingEnabled -ea -Declipse.p2.data.area=@config.dir/../p2 -Dfile.encoding=Cp1252 -classpath `ls ${WORKSPACE}/capella/plugins/org.eclipse.equinox.launcher_*` org.eclipse.equinox.launcher.Main -os linux -ws gtk -arch x86_64 -version 3 -port 8081 -testLoaderClass org.eclipse.jdt.internal.junit4.runner.JUnit4TestLoader -loaderpluginname org.eclipse.jdt.junit4.runtime -application org.eclipse.pde.junit.runtime.uitestapplication -product org.polarsys.capella.rcp.product -testApplication org.polarsys.capella.core.platform.sirius.ui.perspective.id -configuration file:${env.WORKSPACE}/capella/configuration -buildKey ${BUILD_KEY}"
+    HJUNIT = "sleep 10 && java -Xms1024m -Xmx3500m -XX:+CMSPermGenSweepingEnabled -XX:+CMSClassUnloadingEnabled -ea -Declipse.p2.data.area=@config.dir/../p2 -Dfile.encoding=Cp1252 -classpath `ls ${WORKSPACE}/capella/plugins/org.eclipse.equinox.launcher_*` org.eclipse.equinox.launcher.Main -os linux -ws gtk -arch x86_64 -version 3 -port 8081 -testLoaderClass org.eclipse.jdt.internal.junit4.runner.JUnit4TestLoader -loaderpluginname org.eclipse.jdt.junit4.runtime -application org.eclipse.pde.junit.runtime.nonuithreadtestapplication -product org.polarsys.capella.rcp.product -testApplication org.polarsys.capella.core.platform.sirius.ui.perspective.id -configuration file:${env.WORKSPACE}/capella/configuration -buildKey ${BUILD_KEY}"
   
   }
   
@@ -47,7 +47,6 @@ pipeline {
     
     stage('Archive to download.eclipse') {
       steps {
-        //archiveArtifacts artifacts: 'releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.zip,releng/plugins/org.polarsys.capella.rcp.site/target/org.polarsys.capella.rcp-*.zip,releng/plugins/org.polarsys.capella.rcp.site/target/repository/**,releng/plugins/org.polarsys.capella.egf.site/target/repository/**,releng/plugins/org.polarsys.capella.richtext.site/target/repository/**,releng/plugins/org.polarsys.capella.test.site/target/org.polarsys.capella.test.site-*.zip,releng/plugins/org.polarsys.capella.test.site/target/repository/**,tests/plugins/org.polarsys.capella.test.suite.inui.ju/target/work/data/.metadata/.log'
         echo "${PRODUCT_DIR}/${BUILD_KEY}"
         
         sh "cd \"$WORKSPACE/releng/plugins/org.polarsys.capella.rcp.product/target/products/\"; ls -1 capella-*.zip | head -1 > $WORKSPACE/build.txt"
@@ -118,14 +117,14 @@ pipeline {
         steps {
             script { currentBuild.description = "${env.BUILD_KEY} - <a href=\"https://ci-staging.eclipse.org/capella/view/Capella/job/capella-product/\">build</a> - <a href=\"https://download.eclipse.org/capella/core/products/nightly/${env.BUILD_KEY}\">product</a>" } 
             sh "wget https://download.eclipse.org/capella/core/products/nightly/${BUILD_KEY}/build.txt"
-            sh "PRODUCT_ZIP=`head -n 1 $WORKSPACE/build.txt`; echo \$PRODUCT_ZIP; wget -q https://download.eclipse.org/capella/core/products/nightly/${BUILD_KEY}/\$PRODUCT_ZIP; unzip -q \$PRODUCT_ZIP -d ."
+            sh "PRODUCT_ZIP=`head -n 1 $WORKSPACE/build.txt`; echo \$PRODUCT_ZIP; wget -q https://download.eclipse.org/capella/core/products/nightly/${BUILD_KEY}/\$PRODUCT_ZIP; unzip -qo \$PRODUCT_ZIP -d ."
         }
     }
     stage('Tests: Install Tests on Capella') {
         steps {
-            sh "chmod 755 ./capella/eclipse/eclipse"
-            sh "./capella/eclipse/eclipse -application org.eclipse.equinox.p2.director -repository http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository -installIU org.jsoup -tag InitialState -noSplash || true"
-            sh "./capella/eclipse/eclipse -application org.eclipse.equinox.p2.director -repository https://download.eclipse.org/capella/core/updates/nightly/${BUILD_KEY}/org.polarsys.capella.test.site -installIU org.polarsys.capella.test.feature.feature.group -tag InitialState -noSplash"
+            sh "chmod 755 ./capella/capella"
+            sh "./capella/capella -application org.eclipse.equinox.p2.director -repository http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository -installIU org.jsoup -tag InitialState -noSplash || true"
+            sh "./capella/capella -application org.eclipse.equinox.p2.director -repository https://download.eclipse.org/capella/core/updates/nightly/${BUILD_KEY}/org.polarsys.capella.test.site -installIU org.polarsys.capella.test.feature.feature.group -tag InitialState -noSplash"
         }
     }
     

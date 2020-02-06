@@ -28,9 +28,6 @@
         <activeByDefault>true</activeByDefault>
       </activation>
       <modules>
-        <module>org.eclipse.emf.diffmerge.patterns.core.gen.cdo</module>
-        <module>org.eclipse.emf.diffmerge.patterns.support.gen.cdo</module>
-        <module>org.eclipse.emf.diffmerge.patterns.templates.gen.cdo</module>
         <module>org.polarsys.capella.common.data.activity.gen.cdo</module>
         <module>org.polarsys.capella.common.data.behavior.gen.cdo</module>
         <module>org.polarsys.capella.common.data.core.gen.cdo</module>
@@ -39,7 +36,6 @@
         <module>org.polarsys.capella.core.data.gen.cdo</module>
         <module>org.polarsys.kitalpha.ad.metadata.model.cdo</module>
         <module>org.polarsys.kitalpha.emde.model.cdo</module>
-        <module>org.polarsys.kitalpha.patterns.emde.gen.cdo</module>
       </modules>
     </profile>
   </profiles>
