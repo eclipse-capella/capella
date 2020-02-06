@@ -10,64 +10,43 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.search;
 
-import org.eclipse.osgi.util.NLS;
-
 public class Messages {
-  private static final String BUNDLE_NAME = "org.polarsys.capella.core.ui.search.messages"; //$NON-NLS-1$
-  public static String CapellaSearchRegexExplanation;
-  public static String CapellaSearchEmptyString;
-  public static String CapellaSearchContainingText;
-  public static String CapellaReplaceQuery_Validation_Replacement_Null;
-  public static String CapellaSearchDialog_ShowIn_NotFound_Message;
-  public static String CapellaSearchDialog_Title;
-  public static String CapellaSearchField_Description;
-  public static String CapellaSearchField_Name;
-  public static String CapellaSearchField_Summary;
-  public static String CapellaSearchMatchFilter_CapellaElement_Description;
-  public static String CapellaSearchMatchFilter_CapellaElement_Id;
-  public static String CapellaSearchMatchFilter_CapellaElement_Label;
-  public static String CapellaSearchMatchFilter_CapellaElement_Name;
-  public static String CapellaSearchMatchFilter_NotModifiable_Description;
-  public static String CapellaSearchMatchFilter_NotModifiable_Id;
-  public static String CapellaSearchMatchFilter_NotModifiable_Label;
-  public static String CapellaSearchMatchFilter_NotModifiable_Name;
-  public static String CapellaSearchMatchFilter_Representation_Description;
-  public static String CapellaSearchMatchFilter_Representation_Id;
-  public static String CapellaSearchMatchFilter_Representation_Label;
-  public static String CapellaSearchMatchFilter_Representation_Name;
-  public static String CapellaSearchPage_Checkbox_CaseSensitive_Label;
-  public static String CapellaSearchPage_Checkbox_Regex_Label;
-  public static String CapellaSearchPage_Checkbox_WholeWord_Label;
-  public static String CapellaSearchPage_Combo_Pattern_Label_Regex_Disabled;
-  public static String CapellaSearchPage_Combo_Pattern_Label_Regex_Enabled;
-  public static String CapellaSearchPage_ProjectsSelection_CheckedAll_Label;
-  public static String CapellaSearchPage_ProjectsSelection_Group_Label;
-  public static String CapellaSearchPage_ProjectsSelection_UnCheckedAll_Label;
-  public static String CapellaSearchPage_Scope_Group_Label;
-  public static String CapellaSearchPage_Validation_Message_OK;
-  public static String CapellaSearchPage_Validation_Message_Pattern_Empty;
-  public static String CapellaSearchPage_Validation_Message_Project_Selection;
-  public static String CapellaSearchPage_Validation_Message_SearchField_Selection;
-  public static String CapellaSearchQuery_Search_Pattern_Not_Validated_Message;
-  public static String CapellaSearchResult_Label;
-  public static String CapellaSearchResult_Label_With_Active_Filters;
-  public static String CapellaSearchResult_Occurrences_Count_Label;
-  public static String CapellaSearchResult_Occurrences_Count_Label_With_Active_Filters;
-  public static String ReplaceDialog_Finished_Or_Canceled_Message;
-  public static String ReplaceDialog_Label_Pattern;
-  public static String ReplaceDialog_Label_Replacement;
-  public static String ReplaceDialog_Label;
-  public static String ReplaceDialog_No_Match_Found_Message;
-  public static String ReplaceDialog_Title;
-  public static String ReplaceJob_SubTitle;
-  public static String ReplaceJob_Title;
-  public static String SearchJob_SubTitle;
-  public static String SearchJob_Title;
-  static {
-    // initialize resource bundle
-    NLS.initializeMessages(BUNDLE_NAME, Messages.class);
-  }
-
-  private Messages() {
-  }
+  public static final String CapellaSearchRegexExplanation = "(* = any string, ? = any character, \\\\ = escape for literals: * ? \\\\);";
+  public static final String CapellaSearchEmptyString = "";
+  public static final String CapellaSearchContainingText = "Containing text:";
+  public static final String CapellaReplaceQuery_Validation_Replacement_Null="The replacement must not be null";
+  public static final String CapellaSearchDialog_ShowIn_NotFound_Message = "The selected element is not present in the search result for pattern '%s'";
+  public static final String CapellaSearchDialog_Title = "Capella Search";
+  public static final String CapellaSearchField_Description = "Description";
+  public static final String CapellaSearchField_Name = "Name";
+  public static final String CapellaSearchField_Summary = "Summary";
+  public static final String CapellaSearchPage_Checkbox_CaseSensitive_Label = "Case sensitive";
+  public static final String CapellaSearchPage_Checkbox_Regex_Label = "Regular expression";
+  public static final String CapellaSearchPage_Checkbox_WholeWord_Label = "Whole word";
+  public static final String CapellaSearchPage_Combo_Pattern_Label_Regex_Disabled = "Containing text (* = any string, ? = any character, \\\\ = escape for literals: * ? \\\\\\\\):";
+  public static final String CapellaSearchPage_Combo_Pattern_Label_Regex_Enabled = "Matching the regular expression:";
+  public static final String CapellaSearchPage_Validation_Message_OK = "";
+  public static final String CapellaSearchPage_Validation_Message_Pattern_Empty = "Search pattern must not be empty";
+  public static final String CapellaSearchPage_Validation_Message_Project_Selection = "At least one project must be selected";
+  public static final String CapellaSearchPage_Validation_Message_SearchField_Selection = "At least one search field must be selected";
+  public static final String CapellaSearchQuery_Search_Pattern_Not_Validated_Message = "The search pattern '%s' is not validated because: %s";
+  public static final String CapellaSearchResult_Label = "'%s' - %d occurrence(s) in %d element(s) of %d project(s)";
+  public static final String CapellaSearchResult_Label_With_Active_Filters = "'%s' - %d occurrence(s) in %d element(s) of %d project(s) - %d occurrence(s) filtered by %d active filter(s)";
+  public static final String ReplaceDialog_Finished_Or_Canceled_Message = "Replaced '%s' by '%s' for: %d occurrence(s) of %d element(s) in %d project(s)";
+  public static final String ReplaceDialog_Label_Pattern = "Replace";
+  public static final String ReplaceDialog_Label_Replacement = "With:";
+  public static final String ReplaceDialog_Label = "Replace:";
+  public static final String ReplaceDialog_Title = "Capella Replace";
+  public static final String ReplaceJob_SubTitle = "Replace %d occurrence(s) in the project: %s";
+  public static final String ReplaceJob_Title = "Replacing occurrences by '%s'...";
+  public static final String SearchJob_SubTitle = "Scanning elements in the project: %s";
+  public static final String SearchJob_Title = "Searching for pattern '%s'...";
+  public static final String SelectAllButton_Name = "Select All";
+  public static final String DeselectAllButton_Name = "Deselect All";
+  public static final String Filters_Label = "Filters";
+  public static final String Abstract_Label = "Abstract";
+  public static final String Semantic_Label = "Semantic";
+  public static final String SearchFor_Label = "Search For";
+  public static final String ModelElements_Key = "Model Elements";
+  public static final String DiagramElements_Key = "Diagram Elements";
 }

@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.ui.search;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
@@ -20,10 +21,17 @@ import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import javax.swing.JTable;
+import org.eclipse.core.internal.resources.File;
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.DialogPage;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -38,20 +46,32 @@ import org.eclipse.search.ui.IReplacePage;
 import org.eclipse.search.ui.ISearchPage;
 import org.eclipse.search.ui.ISearchPageContainer;
 import org.eclipse.search.ui.NewSearchUI;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Table;
 import org.eclipse.ui.dialogs.PatternFilter;
 import org.eclipse.ui.fieldassist.ContentAssistCommandAdapter;
 import org.eclipse.ui.texteditor.ITextEditorActionDefinitionIds;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
+import org.polarsys.capella.core.ui.search.searchfor.CapellaLeftSearchForContainerArea;
+import org.polarsys.capella.core.ui.search.searchfor.CapellaRightSearchForContainerArea;
+import org.polarsys.capella.test.framework.helpers.TestHelper;
+import org.polarsys.capella.core.ui.search.searchfor.AbstractCapellaSearchForContainerArea;
 
 public class CapellaSearchPage extends DialogPage implements ISearchPage, IReplacePage {
 
@@ -97,6 +117,7 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
     GridLayoutFactory.swtDefaults().numColumns(2).applyTo(composite);
     createSearchPatternControls(composite);
     setControl(composite);
+    createSearchForGroup(composite);
     Dialog.applyDialogFont(composite);
   }
 
@@ -232,6 +253,40 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
         validate();
       }
     });
+  }
+  
+  private void createSearchForGroup(Composite parent) {
+    Group qGrp = new Group(parent, SWT.NONE);
+    qGrp.setLayout(new GridLayout(4, false));
+
+    GridData gdGrp = new GridData(GridData.FILL_BOTH);
+    gdGrp.heightHint = 250;
+
+    qGrp.setLayoutData(gdGrp);
+    qGrp.setText(Messages.SearchFor_Label);
+    CapellaLeftSearchForContainerArea leftCont = new CapellaLeftSearchForContainerArea(qGrp);
+    CapellaRightSearchForContainerArea rightCont = new CapellaRightSearchForContainerArea(qGrp, leftCont);
+    createFiltercontainer(qGrp);
+  }
+  
+  protected void createFiltercontainer(Group parentGroup) {
+    Group searchForSelectionGroup = new Group(parentGroup, SWT.NONE);
+    GridLayoutFactory.swtDefaults().numColumns(2).applyTo(searchForSelectionGroup);
+    
+    GridData gdGrp = new GridData(GridData.FILL_BOTH);
+    gdGrp.widthHint = 50;
+    searchForSelectionGroup.setLayoutData(gdGrp);
+    
+    searchForSelectionGroup.setText(Messages.Filters_Label);
+    createCheckboxRegex(searchForSelectionGroup, Messages.Abstract_Label);
+    createCheckboxRegex(searchForSelectionGroup, Messages.Semantic_Label);
+  }
+  
+  private void createCheckboxRegex(Composite group, String text) {
+    Button checkboxRegex = new Button(group, SWT.CHECK);
+    checkboxRegex.setText(text);
+    GridDataFactory.swtDefaults().align(SWT.FILL, SWT.CENTER).applyTo(checkboxRegex);
+    checkboxRegex.setFont(group.getFont());
   }
 
   protected void applySearchSettings(CapellaSearchSettings settings) {
