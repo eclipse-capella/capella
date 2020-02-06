@@ -128,4 +128,129 @@
          </enablement>
       </renameParticipant>
    </extension>
+   <extension
+         point="org.polarsys.capella.core.commandline.core.commandline">
+      <CommandlineExtension
+            class="org.polarsys.capella.core.sirius.ui.commandline.RefreshAirdCommandLine"
+            id="org.polarsys.capella.refreshRepresentations">
+      </CommandlineExtension>
+      <CommandlineExtension
+            class="org.polarsys.capella.core.sirius.ui.commandline.RemoveHiddenElementsCommandLine"
+            id="org.polarsys.capella.removeHiddenElements">
+      </CommandlineExtension>
+      <CommandlineExtension
+            class="org.polarsys.capella.core.sirius.ui.commandline.ExportRepresentationsCommandLine"
+            id="org.polarsys.capella.exportRepresentations">
+      </CommandlineExtension>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="org.polarsys.capella.core.sirius.ui"
+            name="%category.capella.name"
+            description="%category.capella.description">
+      </category>
+      <command
+            categoryId="org.polarsys.capella.core.sirius.ui"
+            defaultHandler="org.polarsys.capella.core.sirius.ui.handlers.RefreshDiagramsCommandHandler"
+            id="org.polarsys.capella.core.sirius.ui.refreshAird"
+            name="%command.refreshDiagrams"
+            description="%command.refreshDiagrams.description">
+      </command>
+      <command
+            categoryId="org.polarsys.capella.core.sirius.ui"
+            defaultHandler="org.polarsys.capella.core.sirius.ui.handlers.RemoveHiddenElementsHandler"
+            id="org.polarsys.capella.core.sirius.ui.refreshAird"
+            name="%command.removeHiddenElements"
+            description="%command.removeHiddenElements.description">
+      </command>
+      
+   </extension>
+   
+   
+   <extension
+         point="org.eclipse.ui.menus">
+         
+      <menuContribution 
+      		locationURI="popup:capella.project.explorer#PopupMenu?after=group.project">
+         <command
+               commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.refreshAird"
+               label="%command.refreshDiagrams"
+               style="push">
+            <visibleWhen checkEnabled="true">
+               <with variable="selection">
+                  <and>
+                     <iterate>
+                        <or>
+                           <and>
+                              <instanceof
+                                    value="org.eclipse.core.resources.IFile">
+                              </instanceof>
+                              <test
+                                    forcePluginActivation="true"
+                                    property="org.eclipse.core.resources.extension"
+                                    value="aird">
+                              </test>
+                           </and>
+                           <instanceof
+                                 value="org.polarsys.capella.common.data.modellingcore.ModelElement">
+                           </instanceof>
+                        </or>
+                     </iterate>
+                     <count value="1">
+                     </count>
+                  </and>
+               </with>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.removeHiddenElements"
+               label="%command.removeHiddenElements"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+               <with
+                     variable="selection">
+                  <and>
+                     <iterate>
+                        <or>
+                           <and>
+                              <instanceof
+                                    value="org.eclipse.core.resources.IFile">
+                              </instanceof>
+                              <test
+                                    forcePluginActivation="true"
+                                    property="org.eclipse.core.resources.extension"
+                                    value="aird">
+                              </test>
+                           </and>
+                           <instanceof
+                                 value="org.polarsys.capella.common.data.modellingcore.ModelElement">
+                           </instanceof>
+                        </or>
+                     </iterate>
+                     <count
+                           value="1">
+                     </count>
+                  </and>
+               </with>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+      
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.commandImages">
+      <image
+            commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.refreshAird"
+            icon="icons/viewpoint.gif">
+      </image>
+      <image
+            commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.removeHiddenElements"
+            icon="icons/viewpoint.gif">
+      </image>
+   </extension>
+   
 </plugin>

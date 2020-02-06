@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.platform.sirius.ui.navigator.handlers;
+package org.polarsys.capella.core.sirius.ui.handlers;
 
 import java.util.Collection;
 

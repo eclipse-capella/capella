@@ -5,3 +5,4 @@ These followings icons are made available under the terms of the Eclipse Public 
 <icon file path> - <original eclipse plug-in> - <original file path>
 
 /icons/newDiagram.png - capella.sirius.ui - capella.sirius.ui/icons/newDiagram.png
+/icons/viewpoint.gif - org.eclipse.gmf.runtime.common.ui - org.eclipse.gmf.runtime.common.ui/icons/topic.gif

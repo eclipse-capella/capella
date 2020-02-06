@@ -60,11 +60,11 @@ import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.RenameReso
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SortContentAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SortSelectionAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.drop.CapellaDragAndDropCommand;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.DeleteHiddenElementsJob;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.RefreshDiagramsCommandHandler;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 import org.polarsys.capella.core.platform.sirius.ui.project.NewProjectWizard;
 import org.polarsys.capella.core.sirius.ui.actions.OpenSessionAction;
+import org.polarsys.capella.core.sirius.ui.handlers.DeleteHiddenElementsJob;
+import org.polarsys.capella.core.sirius.ui.handlers.RefreshDiagramsCommandHandler;
 import org.polarsys.capella.test.framework.actions.headless.DesignerControlActionForTest;
 import org.polarsys.capella.test.framework.actions.headless.HeadlessCloseSessionAction;
 import org.polarsys.capella.test.framework.actions.headless.HeadlessNewProjectWizard;

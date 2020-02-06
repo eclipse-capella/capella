@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.platform.sirius.ui.navigator.handlers;
+package org.polarsys.capella.core.sirius.ui.handlers;
 
 import java.util.List;
 
@@ -22,9 +22,8 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-
-import org.polarsys.capella.common.ui.services.commands.AbstractUiHandler;
 import org.polarsys.capella.common.mdsofa.common.misc.Couple;
+import org.polarsys.capella.common.ui.services.commands.AbstractUiHandler;
 
 /**
  */
