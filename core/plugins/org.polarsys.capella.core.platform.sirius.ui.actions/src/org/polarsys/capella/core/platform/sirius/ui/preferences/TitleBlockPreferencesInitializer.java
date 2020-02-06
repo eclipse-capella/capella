@@ -25,7 +25,8 @@ public class TitleBlockPreferencesInitializer extends AbstractPreferencesInitial
   public void initializeDefaultPreferences() {
     IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
     preferenceStore.setDefault("columnField", 2);
-    preferenceStore.setDefault("EnableFileSyncMonitoring", false);
+    preferenceStore.setDefault("EnableCustomValue", false);
+
   }
 
 }

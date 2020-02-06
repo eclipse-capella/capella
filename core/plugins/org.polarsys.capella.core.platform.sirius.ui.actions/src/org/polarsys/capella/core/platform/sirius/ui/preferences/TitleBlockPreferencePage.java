@@ -113,13 +113,11 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
         switch (e.type) {
         case SWT.Selection:
           TitleBlockDialog dialog = new TitleBlockDialog(getShell());
+          dialog.setCurrentName("");
+          dialog.setCurrentContent("");
           dialog.create();
           if (dialog.open() == Window.OK) {
-            System.out.println(dialog.getName());
-            System.out.println(dialog.getContent());
-
             TableItem item = new TableItem(table, SWT.NULL);
-            item.setText("Item ");
             item.setText(0, dialog.getName());
             item.setText(1, dialog.getContent());
           }
@@ -147,7 +145,12 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
         case SWT.Selection:
 
           int index = table.getSelectionIndex();
+          String currentName = table.getItem(index).getText(0);
+          String currentContent = table.getItem(index).getText(1);
           TitleBlockDialog dialog = new TitleBlockDialog(getShell());
+
+          dialog.setCurrentName(currentName);
+          dialog.setCurrentContent(currentContent);
           dialog.create();
           if (dialog.open() == Window.OK) {
             table.getItem(index).setText(0, dialog.getName());
@@ -170,6 +173,7 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
         table.remove(table.getSelectionIndices());
       }
     });
+
   }
 
   private void createTable(Composite top) {
@@ -204,6 +208,15 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
     column.setResizable(fTableColumnLayouts[1].resizable);
     column.setText("Content");
 
+    String[] currentTableItems = doGetPreferenceStore().getString("tableTitleBlock").split("#");
+    if (currentTableItems.length >= 2) {
+      for (int i = 1; i < currentTableItems.length; i += 2) {
+        TableItem item = new TableItem(table, SWT.NULL);
+        item.setText(0, currentTableItems[i]);
+        item.setText(1, currentTableItems[i + 1]);
+      }
+    }
+
     table.addListener(SWT.Selection, new Listener() {
       @Override
       public void handleEvent(Event event) {
@@ -234,8 +247,19 @@ public class TitleBlockPreferencePage extends AbstractDefaultPreferencePage {
     GridData layoutData = new GridData(SWT.FILL, SWT.FILL, false, false);
     labelControl.setLayoutData(layoutData);
     layoutData.horizontalIndent = 15;
-    _columnsFieldEditor.setEnabled(doGetPreferenceStore().getBoolean("EnableFileSyncMonitoring"), group);
+    _columnsFieldEditor.setEnabled(doGetPreferenceStore().getBoolean("EnableCustomValue"), group);
 
+  }
+
+  @Override
+  public boolean performOk() {
+    doGetPreferenceStore().setValue("tableTitleBlock", "");
+    String tableValuesToString = new String("");
+    for (TableItem item : table.getItems()) {
+      tableValuesToString = tableValuesToString + "#" + item.getText(0) + "#" + item.getText(1);
+    }
+    doGetPreferenceStore().setValue("tableTitleBlock", tableValuesToString);
+    return super.performOk();
   }
 
 }
