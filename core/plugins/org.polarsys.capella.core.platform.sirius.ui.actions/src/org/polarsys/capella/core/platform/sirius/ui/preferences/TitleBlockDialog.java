@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.sirius.ui.preferences;
 
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -27,6 +28,9 @@ public class TitleBlockDialog extends TitleAreaDialog {
 
   private String name;
   private String content;
+
+  private String currentName;
+  private String currentContent;
 
   public TitleBlockDialog(Shell parentShell) {
 
@@ -57,23 +61,26 @@ public class TitleBlockDialog extends TitleAreaDialog {
     Label lbName = new Label(container, SWT.NONE);
     lbName.setText("Name");
 
-    GridData dataFirstName = new GridData();
-    dataFirstName.grabExcessHorizontalSpace = true;
-    dataFirstName.horizontalAlignment = GridData.FILL;
+    GridData dataName = new GridData();
+    dataName.grabExcessHorizontalSpace = true;
+    dataName.horizontalAlignment = GridData.FILL;
 
     txtName = new Text(container, SWT.BORDER);
-    txtName.setLayoutData(dataFirstName);
+    txtName.setText(currentName);
+    txtName.setLayoutData(dataName);
   }
 
   private void createContent(Composite container) {
     Label lbContent = new Label(container, SWT.NONE);
     lbContent.setText("Content");
 
-    GridData dataLastName = new GridData();
-    dataLastName.grabExcessHorizontalSpace = true;
-    dataLastName.horizontalAlignment = GridData.FILL;
+    GridData dataContent = new GridData();
+    dataContent.grabExcessHorizontalSpace = true;
+    dataContent.horizontalAlignment = GridData.FILL;
     txtContent = new Text(container, SWT.BORDER);
-    txtContent.setLayoutData(dataLastName);
+    txtContent.setText(currentContent);
+
+    txtContent.setLayoutData(dataContent);
   }
 
   @Override
@@ -81,16 +88,26 @@ public class TitleBlockDialog extends TitleAreaDialog {
     return true;
   }
 
-  private void saveInput() {
+  private boolean saveInput() {
     name = txtName.getText();
     content = txtContent.getText();
+    if (content.matches("feature:(.*)") || content.matches("aql:(.*)") || content.matches("capella:(.*)")) {
 
+      return true;
+    }
+    MessageDialog.openError(getParentShell(), "Error",
+        "The content of data fields can be customized via:\r\n" + "\r\n" + "      AQL query (aql:)\r\n"
+            + "      Name of feature (feature:)\r\n" + "      Predefined service (capella:)\r\n\r\n "
+            + "      Example: feature:name");
+    return false;
   }
 
   @Override
   protected void okPressed() {
-    saveInput();
-    super.okPressed();
+    if (saveInput()) {
+      super.okPressed();
+    }
+
   }
 
   public String getName() {
@@ -99,5 +116,13 @@ public class TitleBlockDialog extends TitleAreaDialog {
 
   public String getContent() {
     return content;
+  }
+
+  public void setCurrentName(String name) {
+    currentName = name;
+  }
+
+  public void setCurrentContent(String content) {
+    currentContent = content;
   }
 }
