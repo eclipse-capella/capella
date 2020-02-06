@@ -27,6 +27,9 @@ import org.polarsys.capella.core.ui.properties.sections.AbstractSection;
  * The PropertyValueGroup section.
  */
 public class TitleBlockCellSection extends AbstractSection {
+  private static final String CELL_PREFIX = "TB";
+  private static final String CELL_NAME = "Name:";
+  private static final String CELL_CONTENT = "Content:";
   protected TitleBlockBasicElementGroup titleBlockBasicElementGroup;
 
   /**
@@ -37,7 +40,7 @@ public class TitleBlockCellSection extends AbstractSection {
     EObject eObjectToTest = super.selection(toTest);
 
     return ((eObjectToTest != null) && (eObjectToTest instanceof DAnnotation)
-        && ((DAnnotation) eObjectToTest).getSource().startsWith("TB"));
+        && ((DAnnotation) eObjectToTest).getSource().startsWith(CELL_PREFIX));
   }
 
   @Override
@@ -56,15 +59,15 @@ public class TitleBlockCellSection extends AbstractSection {
   @Override
   public void loadData(EObject capellaElement) {
     super.loadData(capellaElement);
-    String name = ((DAnnotation) capellaElement).getDetails().get("Name:");
-    String content = ((DAnnotation) capellaElement).getDetails().get("Content:");
+    String name = ((DAnnotation) capellaElement).getDetails().get(CELL_NAME);
+    String content = ((DAnnotation) capellaElement).getDetails().get(CELL_CONTENT);
     titleBlockBasicElementGroup.loadData(capellaElement, name, content);
   }
 
   @Override
   public void setInput(IWorkbenchPart part, ISelection selection) {
     EObject newEObject = super.setInputSelection(part, selection);
-    if (newEObject instanceof DAnnotation && ((DAnnotation) newEObject).getSource().startsWith("TB")) {
+    if (newEObject instanceof DAnnotation && ((DAnnotation) newEObject).getSource().startsWith(CELL_PREFIX)) {
       loadData(newEObject);
     }
   }

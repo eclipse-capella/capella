@@ -24,7 +24,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.data.core.properties.Messages;
@@ -32,6 +31,8 @@ import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.helpers.LockHelper;
 
 public class TitleBlockBasicElementGroup extends AbstractSemanticField implements ModifyListener {
+  private static final String NAME = "Name:";
+  private static final String CONTENT = "Content:";
   protected Text nameTextField;
   protected Text contentTextField;
 
@@ -110,51 +111,25 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField implement
   @Override
   protected void fillTextField(Text textField) {
     if (textField.equals(nameTextField)) {
-      setNameValue(semanticElement, nameTextField.getText());
+      setFieldValue(semanticElement, NAME, nameTextField.getText());
     } else if (textField.equals(contentTextField)) {
-      setContentValue(semanticElement, contentTextField.getText());
+      setFieldValue(semanticElement, CONTENT, contentTextField.getText());
     }
   }
 
-  private void setNameValue(EObject object, final Object value) {
-    if (!((DAnnotation) object).getDetails().get("Name:").equals(value.toString())) {
+  private void setFieldValue(EObject object, String field, final Object value) {
+    if (!((DAnnotation) object).getDetails().get(field).equals(value.toString())) {
       DDiagram diagram = (DDiagram) object.eContainer();
       AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
         @Override
         public void run() {
-          ((DAnnotation) object).getDetails().put("Name:", value.toString());
+          ((DAnnotation) object).getDetails().put(field, value.toString());
           RefreshRepresentationsCommand refreshCommand = new RefreshRepresentationsCommand(
               TransactionUtil.getEditingDomain(diagram), new NullProgressMonitor(), diagram);
           refreshCommand.execute();
         }
       };
       executeCommand(command);
-    }
-  }
-
-  private void setContentValue(EObject object, final Object value) {
-    if (!((DAnnotation) object).getDetails().get("Content:").equals(value.toString())) {
-      DDiagram diagram = (DDiagram) object.eContainer();
-      AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
-        @Override
-        public void run() {
-          ((DAnnotation) object).getDetails().put("Content:", value.toString());
-          RefreshRepresentationsCommand refreshCommand = new RefreshRepresentationsCommand(
-              TransactionUtil.getEditingDomain(diagram), new NullProgressMonitor(), diagram);
-          refreshCommand.execute();
-        }
-      };
-      executeCommand(command);
-    }
-  }
-
-  /**
-   *
-   */
-  public void clearNameField() {
-    if (null != nameTextField) {
-      setDataValue(semanticElement, ModellingcorePackage.eINSTANCE.getAbstractNamedElement_Name(), "");
-      nameTextField.setText("");
     }
   }
 
