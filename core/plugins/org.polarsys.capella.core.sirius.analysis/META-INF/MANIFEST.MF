@@ -33,6 +33,7 @@ Require-Bundle: org.eclipse.core.expressions,
  org.polarsys.capella.core.diagram.helpers;visibility:=reexport,
  org.eclipse.core.expressions,
  org.polarsys.capella.common.queries,
+ org.polarsys.capella.core.platform.sirius.ui.actions,
  org.polarsys.capella.common.libraries,
  org.eclipse.sirius.diagram.ui,
  com.google.guava,
@@ -40,8 +41,7 @@ Require-Bundle: org.eclipse.core.expressions,
  org.polarsys.capella.core.preferences,
  org.polarsys.capella.core.data.gen.edit.decorators,
  org.polarsys.capella.core.libraries,
- org.polarsys.capella.core.data.gen,
- org.polarsys.capella.core.platform.sirius.ui.actions;visibility:=reexport
+ org.polarsys.capella.core.data.gen
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin
