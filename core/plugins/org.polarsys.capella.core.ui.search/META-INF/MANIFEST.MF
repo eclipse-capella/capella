@@ -14,7 +14,8 @@ Require-Bundle: org.eclipse.search,
  org.eclipse.sirius.common.ui,
  org.polarsys.capella.core.sirius.ui,
  org.eclipse.ui.workbench.texteditor,
- org.eclipse.jface
+ org.eclipse.jface,
+ org.polarsys.capella.common.ui
 Export-Package: org.polarsys.capella.core.ui.search
  
 

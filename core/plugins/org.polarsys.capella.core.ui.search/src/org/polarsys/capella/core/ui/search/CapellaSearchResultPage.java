@@ -40,14 +40,14 @@ public class CapellaSearchResultPage extends AbstractTextSearchViewPage {
   }
 
   @Override
-  public CapellaSearchResult getInput() {
-    return (CapellaSearchResult) super.getInput();
-  }
-
-  @Override
   protected void configureTableViewer(TableViewer viewer) {
     viewer.setContentProvider(new CapellaSearchResultListContentProvider(this));
     viewer.setLabelProvider(new DelegatingStyledCellLabelProvider(new CapellaSearchResultLabelProvider(this)));
+  }
+  
+  @Override
+  public CapellaSearchResult getInput() {
+    return (CapellaSearchResult) super.getInput();
   }
 
   public void setSelection(ISelection selection) {

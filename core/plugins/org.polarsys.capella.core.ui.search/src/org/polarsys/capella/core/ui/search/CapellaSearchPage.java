@@ -69,7 +69,6 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
   private Button checkboxCaseSensitive;
   private Button checkboxRegex;
   private Button checkboxWholeWord;
-  private PatternFilter patternFilter;
 
   private CheckboxTableViewer checkboxProjectsSelection;
 
@@ -101,6 +100,9 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
     Dialog.applyDialogFont(composite);
   }
 
+  /*
+   * Create the text search box and the check-boxes for the search preferences
+   */
   private void createSearchPatternControls(Composite group) {
     createLabelForComboSearchPattern(group);
     Composite column1 = new Composite(group, SWT.NONE);
@@ -109,7 +111,8 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
     GridDataFactory.fillDefaults().grab(true, false).applyTo(column1);
     createComboSearchPattern(column1);
     createLabelRegex(column1);
-
+    createLabelValidationStatus(column1);
+    
     Composite column2 = new Composite(group, SWT.NONE);
     column2.setFont(group.getFont());
     GridLayoutFactory.fillDefaults().applyTo(column2);
@@ -122,20 +125,19 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
   private void createLabelForComboSearchPattern(Composite group) {
     labelForComboSearchPattern = new Label(group, SWT.LEAD);
     labelForComboSearchPattern.setText(Messages.CapellaSearchContainingText);
-    GridDataFactory.swtDefaults() //
-        .align(SWT.FILL, SWT.CENTER) //
-        .span(2, 1) //
+    GridDataFactory.swtDefaults()
+        .align(SWT.FILL, SWT.CENTER)
+        .span(2, 1)
         .grab(true, true).applyTo(labelForComboSearchPattern);
     labelForComboSearchPattern.setFont(group.getFont());
   }
 
   private void createComboSearchPattern(Composite group) {
-    // Pattern combo
     comboSearchPattern = new Combo(group, SWT.SINGLE | SWT.BORDER);
     comboSearchPattern.setFont(group.getFont());
-    GridDataFactory.fillDefaults() //
-        .grab(true, false) //
-        .hint(convertWidthInCharsToPixels(50), SWT.DEFAULT) //
+    GridDataFactory.fillDefaults()
+        .grab(true, false)
+        .hint(convertWidthInCharsToPixels(50), SWT.DEFAULT)
         .applyTo(comboSearchPattern);
 
     comboSearchPattern.addSelectionListener(new SelectionAdapter() {
@@ -150,7 +152,6 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
         }
       }
     });
-    // add some listeners for regex syntax checking
     comboSearchPattern.addModifyListener(e -> validate());
     comboSearchPattern.setToolTipText(Messages.CapellaSearchPage_Combo_Pattern_Label_Regex_Enabled);
 
@@ -170,6 +171,9 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
     labelRegex.setAlignment(SWT.LEFT);
   }
 
+  /*
+   * Create a label to display a message if the search pattern is correctly formatted
+   */
   private void createLabelValidationStatus(Composite group) {
     labelValidationStatus = new CLabel(group, SWT.LEAD);
     GridDataFactory.fillDefaults().align(SWT.FILL, SWT.TOP).grab(true, false).applyTo(labelValidationStatus);
@@ -178,6 +182,10 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
     labelValidationStatus.setForeground(JFaceColors.getErrorText(labelValidationStatus.getDisplay()));
   }
 
+  
+  /*
+   * create a checkbox which will enable case sensitive search
+   */
   private void createCheckboxCaseSensitive(Composite group) {
     checkboxCaseSensitive = new Button(group, SWT.CHECK);
     checkboxCaseSensitive.setText(Messages.CapellaSearchPage_Checkbox_CaseSensitive_Label);
@@ -240,21 +248,7 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
       labelForComboSearchPattern.setText(Messages.CapellaSearchPage_Combo_Pattern_Label_Regex_Disabled);
     }
 
-    // Need to check whether previously selected projects are still available at the current moment before checking it
-    Set<IProject> projectsToCheck = settings.getProjects() //
-        .stream() //
-        .map(ResourcesPlugin.getWorkspace().getRoot()::getProject) //
-        .filter(IS_VALID_PROJECT) //
-        .collect(Collectors.toSet());
-
     validate();
-  }
-
-  private String getProjectSelectionsText() {
-    int countSelectedProjects = checkboxProjectsSelection.getCheckedElements().length;
-    int countAllProjects = checkboxProjectsSelection.getTable().getItemCount();
-    return String.format(Messages.CapellaSearchPage_ProjectsSelection_Group_Label, countSelectedProjects,
-        countAllProjects);
   }
 
   @Override
@@ -273,6 +267,9 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
     super.setVisible(visible);
   }
 
+  /*
+   * Validate the current search settings
+   */
   private void validate() {
     // Update the search settings from UI
     capellaSearchSettings.setTextPattern(comboSearchPattern.getText());
@@ -303,9 +300,9 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
     IStatus validateStatus = capellaSearchSettings.validate();
     if (validateStatus.isOK()) {
       searchPageContainer.setPerformActionEnabled(true);
-      // labelValidationStatus.setText(Messages.CapellaSearchPage_Validation_Message_OK);
+      labelValidationStatus.setText(Messages.CapellaSearchPage_Validation_Message_OK);
     } else {
-      // labelValidationStatus.setText(validateStatus.getMessage());
+      labelValidationStatus.setText(validateStatus.getMessage());
       searchPageContainer.setPerformActionEnabled(true);
     }
   }
@@ -320,8 +317,6 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
     // The action is enabled if only the form is validated.
     CapellaSearchQuery searchQuery = new CapellaSearchQuery(capellaSearchSettings);
     NewSearchUI.runQueryInBackground(searchQuery);
-    // If the action is enabled, that means the form is validated. We can save it in search history to propose it for
-    // next usages in future.
     CapellaSearchSettingsHistory.appendSearchSettings(capellaSearchSettings);
     return true;
   }

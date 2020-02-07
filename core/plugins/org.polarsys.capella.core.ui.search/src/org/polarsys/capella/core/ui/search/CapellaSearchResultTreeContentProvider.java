@@ -15,7 +15,6 @@ import java.util.Arrays;
 
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.search.ui.text.Match;
 
 public class CapellaSearchResultTreeContentProvider implements ITreeContentProvider { 
   private CapellaSearchResult searchResult;

@@ -87,7 +87,6 @@ public class CapellaSearchSettingsHistory {
         int currentHistoryCount = capellaSearchSection.getInt(SECTION_HISTORY_COUNT);
         if (currentHistoryCount == HISTORY_SIZE) {
           for (int i = 0; i < currentHistoryCount - 1; i++) {
-            // If reach the history size limit, we remove the oldest history point (the one at index 0)
             saveSearchSettingsToHistoryPoint(createSearchSettingsFromHistoryIndex(i + 1), i);
           }
           historyPointToAppend = HISTORY_SIZE - 1;
@@ -96,8 +95,6 @@ public class CapellaSearchSettingsHistory {
           historyPointToAppend = currentHistoryCount;
         }
       } catch (NumberFormatException e) {
-        // If the exception, that means the key history.count is not yet set and the history is empty
-        // So the history point to append is 0
       }
 
       saveSearchSettingsToHistoryPoint(capellaSearchSettings, historyPointToAppend);

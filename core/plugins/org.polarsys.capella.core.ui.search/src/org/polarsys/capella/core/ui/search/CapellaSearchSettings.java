@@ -102,8 +102,6 @@ public class CapellaSearchSettings {
   }
 
   public IStatus validate() {
-    // The order of validation for each field is important.
-    // We delay the validation of regex pattern till the last minute
     if (projects.isEmpty()) {
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID,
           Messages.CapellaSearchPage_Validation_Message_Project_Selection);
@@ -122,10 +120,6 @@ public class CapellaSearchSettings {
       }
     }
 
-    if (isWholeWord) {
-
-    }
-
     if (textPattern == null || textPattern.isEmpty()) {
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID,
           Messages.CapellaSearchPage_Validation_Message_Pattern_Empty);
@@ -135,8 +129,6 @@ public class CapellaSearchSettings {
 
   public static Pattern createPattern(String textPattern, boolean isCaseSensitive, boolean isRegExSearch,
       boolean isWholeWord) {
-    // TODO: ideally, should not rely on internal API of eclipse. However, it is used here to facilitate the work and to
-    // be coherent with other searches in the Eclipse workbench
     return PatternConstructor.createPattern(textPattern, isRegExSearch, false, isCaseSensitive, isWholeWord);
   }
 
