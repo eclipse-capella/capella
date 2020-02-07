@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.pa.ui.quickfix.resolver;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.core.resources.IMarker;
@@ -29,7 +30,7 @@ import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarke
 
 /**
  * 
- * TC_DC_13 - Add Component Realization to Logical Component
+ * TC_DC_13 - Add Component Realization to Root Logical Component
  *
  */
 public class PhysicalComponentRealizedLogicalComponentsResolver extends AbstractCapellaMarkerResolution {
@@ -47,21 +48,54 @@ public class PhysicalComponentRealizedLogicalComponentsResolver extends Abstract
           Project project = ProjectExt.getProject(modelElements.get(0));
           BlockArchitecture architecture = BlockArchitectureExt
               .getBlockArchitecture(LaPackage.Literals.LOGICAL_ARCHITECTURE, project);
-          logicalComponent = (LogicalComponent) architecture.getSystem();
-          for (EObject obj : modelElements) {
-            if (obj instanceof PhysicalComponent) {
-              physicalComponent = (PhysicalComponent) obj;
+          if (architecture != null) {
+            logicalComponent = (LogicalComponent) architecture.getSystem();
+            for (EObject obj : modelElements) {
+              if (obj instanceof PhysicalComponent) {
+                physicalComponent = (PhysicalComponent) obj;
+              }
             }
-          }
-          if (physicalComponent != null) {
-            ComponentRealization cr = CsFactory.eINSTANCE.createComponentRealization();
-            cr.setSourceElement(physicalComponent);
-            cr.setTargetElement(logicalComponent);
-            physicalComponent.getOwnedComponentRealizations().add(cr);
+            if (physicalComponent != null) {
+              List<ComponentRealization> componentRealizationList = physicalComponent.getOwnedComponentRealizations();
+              ComponentRealization cr = null;
+              if (componentRealizationList != null && !componentRealizationList.isEmpty()) {
+                cr = componentRealizationList.get(0);
+                if (cr.getSourceElement() != physicalComponent) {
+                  cr.setSourceElement(physicalComponent);
+                }
+                if (cr.getTargetElement() != logicalComponent) {
+                  cr.setTargetElement(logicalComponent);
+                }
+              } else {
+                cr = CsFactory.eINSTANCE.createComponentRealization();
+                cr.setSourceElement(physicalComponent);
+                cr.setTargetElement(logicalComponent);
+                physicalComponent.getOwnedComponentRealizations().add(cr);
+              }
+            }
           }
         }
       });
     }
     deleteMarker(marker);
+  }
+  
+  
+  
+  /**
+   * Disabled if System Architecture does not exist.
+   */
+  @Override
+  protected boolean enabled(Collection<IMarker> markers) {
+    for (IMarker iMarker : markers) {
+      final List<EObject> modelElements = getModelElements(iMarker);
+      Project project = ProjectExt.getProject(modelElements.get(0));
+      BlockArchitecture architecture = BlockArchitectureExt.getBlockArchitecture(LaPackage.Literals.LOGICAL_ARCHITECTURE,
+          project);
+      if (architecture == null) {
+        return false;
+      }
+    }
+    return super.enabled(markers);
   }
 }
