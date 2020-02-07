@@ -13,8 +13,8 @@ Require-Bundle: org.eclipse.search,
  org.polarsys.capella.common.ui.toolkit,
  org.eclipse.sirius.common.ui,
  org.polarsys.capella.core.sirius.ui,
- org.eclipse.ui.workbench.texteditor
+ org.eclipse.ui.workbench.texteditor,
+ org.eclipse.jface
 Export-Package: org.polarsys.capella.core.ui.search
-Import-Package: org.polarsys.capella.common.ui.toolkit.viewers.data
  
 

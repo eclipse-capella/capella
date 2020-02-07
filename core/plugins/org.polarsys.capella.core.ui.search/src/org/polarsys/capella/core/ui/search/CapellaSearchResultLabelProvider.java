@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.search;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.ETypedElement;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
@@ -47,9 +48,6 @@ public class CapellaSearchResultLabelProvider extends LabelProvider implements I
   @Override
   public Image getImage(Object element) {
     if (element instanceof CapellaSearchMatchEntry) {
-      return capellaNavigatorLabelProvider.getImage(((CapellaSearchMatchEntry) element).getElement());
-    }
-    if (element instanceof CapellaSearchMatchOccurence) {
       return Activator.getDefault().getImage("line_match.png");
     }
     return capellaNavigatorLabelProvider.getImage(element);
@@ -75,19 +73,12 @@ public class CapellaSearchResultLabelProvider extends LabelProvider implements I
     StyledString labelText = new StyledString(""); 
     if (element instanceof CapellaSearchMatchEntry) {
       CapellaSearchMatchEntry capellaSearchMatchEntry = (CapellaSearchMatchEntry) element;
-      Object source = capellaSearchMatchEntry.getElement();
-      StyledString lineContent = new StyledString(capellaNavigatorLabelProvider.getText(source));
-      labelText.append(lineContent);
-    }
-    else if(element instanceof CapellaSearchMatchOccurence) {
-      CapellaSearchMatchOccurence occurence = (CapellaSearchMatchOccurence) element;
-      ETypedElement attribute = occurence.getTypedElement();
+      EAttribute attribute = (EAttribute) capellaSearchMatchEntry.getAttribute();
       labelText.append(attribute.getName());
       labelText.append(": ");
-      labelText.append(occurence.getText());
+      labelText.append(capellaSearchMatchEntry.getText());
     }
     else {
-      String text = capellaNavigatorLabelProvider.getText(element);
       labelText.append(capellaNavigatorLabelProvider.getText(element));
     }
     return labelText;

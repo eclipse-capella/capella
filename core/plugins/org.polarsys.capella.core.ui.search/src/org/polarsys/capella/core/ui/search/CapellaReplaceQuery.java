@@ -44,7 +44,7 @@ public class CapellaReplaceQuery {
     this.capellaSearchSettings = capellaSearchSettings;
   }
 
-  public IStatus run(IProgressMonitor monitor, Set<AbstractCapellaSearchEntry> allMatches, String replacement) {
+  public IStatus run(IProgressMonitor monitor, Set<CapellaSearchMatchEntry> allMatches, String replacement) {
     replacedElements = new HashSet<>();
     replacedProjects = new HashSet<>();
     replacedOccurrenceCount = 0;
@@ -55,24 +55,19 @@ public class CapellaReplaceQuery {
     }
     try {
       Pattern searchPattern = capellaSearchSettings.createPattern();
-      int countTotalOccurrences = 0;
-      for (Match match : allMatches) {
-        if (match instanceof CapellaSearchMatchEntry) {
-          countTotalOccurrences += ((CapellaSearchMatchEntry) match).getMatchOccurrences().size();
-        }
-      }
+      int countTotalOccurrences = allMatches.size();
       SubMonitor subMonitor = SubMonitor.convert(monitor, countTotalOccurrences);
       subMonitor.setTaskName(String.format(Messages.ReplaceJob_Title, replacement));
       for (Match match : allMatches) {
         if (match instanceof CapellaSearchMatchEntry) {
           CapellaSearchMatchEntry capellaMatch = (CapellaSearchMatchEntry) match;
-          int countOccurrences = capellaMatch.getMatchOccurrences().size();
+          int countOccurrences = 1;
           String projectName = capellaMatch.getProject().getName();
          
           processMatches(subMonitor, capellaMatch.getChildren(), searchPattern, replacement, countOccurrences, projectName);
         }
-        else if (match instanceof CapellaSearchMatchOccurence) {
-          CapellaSearchMatchOccurence capellaMatch = (CapellaSearchMatchOccurence) match;
+        else if (match instanceof CapellaSearchMatchEntry) {
+          CapellaSearchMatchEntry capellaMatch = (CapellaSearchMatchEntry) match;
           Collection<Object> list = new ArrayList<Object>();
           list.add(capellaMatch);
           processMatches(subMonitor, list, searchPattern, replacement, 1, capellaMatch.getProject().getName());
@@ -94,34 +89,28 @@ public class CapellaReplaceQuery {
     subMonitor.subTask(String.format(Messages.ReplaceJob_SubTitle, countOccurrences, projectName));
 
     for(Object childMatch : matches) {
-      if(childMatch instanceof CapellaSearchMatchOccurence)
-        replace((CapellaSearchMatchOccurence)childMatch, searchPattern, replacement);
+        replace((CapellaSearchMatchEntry)childMatch, searchPattern, replacement);
     }
 
     subMonitor.split(countOccurrences);
   }
 
-  public void replace(CapellaSearchMatchOccurence capellaMatch, Pattern searchPattern, String replacement) {
-    Object element = capellaMatch.getElement();
+  public void replace(CapellaSearchMatchEntry capellaMatch, Pattern searchPattern, String replacement) {
+    EAttribute attribute = (EAttribute) capellaMatch.getAttribute();
 
-    if (element instanceof EAttribute) {
-      String oldLine = capellaMatch.getText();
-      String newContent = searchPattern.matcher(oldLine).replaceAll(replacement);
+    String oldLine = capellaMatch.getText();
+    String newContent = searchPattern.matcher(oldLine).replaceAll(replacement);
 
-      // Build the new content by replacing the oldLine by the newLine at exactly that line number
-      EAttribute attribute = (EAttribute) element;
-      if (attribute != null) {
-        AbstractCapellaSearchEntry parent = capellaMatch.getParent();
-        EObject parentElement = (EObject) parent.getElement();
-       
-        TransactionalEditingDomain domain = TransactionHelper.getEditingDomain(parentElement);
-        Command setCommand = SetCommand.create(domain, parentElement, attribute, newContent);
-        domain.getCommandStack().execute(setCommand);
-        capellaMatch.setText(newContent);
-        replacedProjects.add(capellaMatch.getProject());
-        replacedElements.add(parentElement);
-        replacedOccurrenceCount += 1;
-      }
+    if (attribute != null) {
+      Object element = capellaMatch.getElement();
+
+      TransactionalEditingDomain domain = TransactionHelper.getEditingDomain((EObject) element);
+      Command setCommand = SetCommand.create(domain, element, attribute, newContent);
+      domain.getCommandStack().execute(setCommand);
+      capellaMatch.setText(newContent);
+      replacedProjects.add(capellaMatch.getProject());
+      replacedElements.add((EObject) element);
+      replacedOccurrenceCount += 1;
     }
   }
 

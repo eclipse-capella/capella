@@ -31,7 +31,6 @@ public class CapellaReplaceHistory {
   private static final String SECTION_SEARCH_PROJECT_COUNT = "project.count.replace";
 
   private CapellaReplaceHistory() {
-    //
   }
 
   public static List<CapellaSearchSettings> getAllSearchSettings() {

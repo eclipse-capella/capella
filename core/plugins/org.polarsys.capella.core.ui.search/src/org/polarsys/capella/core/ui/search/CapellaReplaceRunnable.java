@@ -21,13 +21,13 @@ import org.eclipse.ui.PlatformUI;
 
 public class CapellaReplaceRunnable implements IRunnableWithProgress {
   private final CapellaSearchQuery searchQuery;
-  private final Set<AbstractCapellaSearchEntry> matches;
+  private final Set<CapellaSearchMatchEntry> matches;
   private String replacement = null;
   private final boolean rerunQueryAfterReplacement;
 
   private final CapellaReplaceQuery replaceQuery;
 
-  public CapellaReplaceRunnable(CapellaSearchQuery searchQuery, Set<AbstractCapellaSearchEntry> matches,
+  public CapellaReplaceRunnable(CapellaSearchQuery searchQuery, Set<CapellaSearchMatchEntry> matches,
       boolean rerunQueryAfterReplacement) {
     this.searchQuery = searchQuery;
     this.matches = matches;
@@ -44,10 +44,7 @@ public class CapellaReplaceRunnable implements IRunnableWithProgress {
   }
 
   public boolean askForReplacementText() {
-    int occurrencesCount = 0;
-    for (AbstractCapellaSearchEntry AbstractCapellaSearchEntry : matches) {
-      occurrencesCount += 1; //AbstractCapellaSearchEntry.getMatchOccurrences().size();
-    }
+    int occurrencesCount = matches.size();
 
     Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
     String pattern = searchQuery.getCapellaSearchSettings().getTextPattern();

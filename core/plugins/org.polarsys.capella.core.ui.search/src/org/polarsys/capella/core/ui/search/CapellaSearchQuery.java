@@ -25,6 +25,7 @@ import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.search.ui.ISearchQuery;
+import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.CapellaNavigatorContentProvider;
 
 public class CapellaSearchQuery implements ISearchQuery {
@@ -32,13 +33,12 @@ public class CapellaSearchQuery implements ISearchQuery {
   private final CapellaSearchResult capellaSearchResult = new CapellaSearchResult(this);
   private final CapellaSearchSettings capellaSearchSettings;
 
-  // TODO: is it possible to make it independently from ITreeContentProvider and CapellaNavigatorContentProvider?
   private final ITreeContentProvider contentProvider = new CapellaNavigatorContentProvider();
 
   public CapellaSearchQuery(CapellaSearchSettings capellaSearchSettings) {
     this.capellaSearchSettings = capellaSearchSettings;
   }
-
+  
   @Override
   public IStatus run(IProgressMonitor monitor) {
     capellaSearchResult.removeAll();
@@ -70,11 +70,13 @@ public class CapellaSearchQuery implements ISearchQuery {
     capellaSearchSettings.getSearchFields().forEach(searchField -> {
       String text = searchField.getText(element);
       if (text != null) {
-        String[] lines = text.split(System.lineSeparator()); // $NON-NLS-1$
+        String[] lines = text.split(System.lineSeparator());
         for (int i = 0; i < lines.length; i++) {
           String line = lines[i];
           if (isMatchOccurrences(pattern, line)) {
-            AbstractCapellaSearchEntry result = buildSearchResultOccurenceHierarchy(project, element, searchField.getEAttribute(element), text, false);
+            CapellaSearchMatchEntry result = new CapellaSearchMatchEntry(element, text, project, searchField.getEAttribute(element));
+            capellaSearchResult.addMatch(result);
+            capellaSearchResult.getTreeData().addElement(element);
           }
         }
       }
@@ -84,7 +86,6 @@ public class CapellaSearchQuery implements ISearchQuery {
     for (int i = 0; i < children.length; i++) {
       search(pattern, children[i], project);
     }
-    capellaSearchResult.updateMapElementsToMatches();
   }
 
   private boolean isMatchOccurrences(Pattern pattern, String text) {
@@ -96,60 +97,6 @@ public class CapellaSearchQuery implements ISearchQuery {
     }
 
     return false;
-  }
-  
-  public AbstractCapellaSearchEntry buildSearchResultOccurenceHierarchy(IProject project, Object eObj, Object eTypedElem, String valuation, boolean notify) {
-    AbstractCapellaSearchEntry entry = buildSearchResultEntryHierarchy(project, eObj);
-    
-    capellaSearchResult.insert(project, entry, notify);
-    AbstractCapellaSearchEntry entryIntoWhichInsert = getLeafEntryFromWantedEObject(entry, eObj);
-    capellaSearchResult.addMatch(entryIntoWhichInsert);
-    
-    return capellaSearchResult.insert(project, entryIntoWhichInsert, eTypedElem, valuation, notify);
-  }
-  
-  protected AbstractCapellaSearchEntry buildSearchResultHierarchy(IProject project, CapellaSearchMatchEntry intermediate, Object container) {
-    if (container instanceof EObject ) {
-      CapellaSearchMatchEntry entryContainer = new CapellaSearchMatchEntry(null, container, false, project);
-      entryContainer.addChildren(intermediate);
-      intermediate.setParent(entryContainer);
-      return buildSearchResultHierarchy(project, entryContainer, ((EObject)container).eContainer());
-    }
-    return intermediate;
-  }
-
-  public AbstractCapellaSearchEntry buildSearchResultEntryHierarchy(IProject project, Object o) {
-    AbstractCapellaSearchEntry e = new CapellaSearchMatchEntry(null, o, true, project);
-    if (o instanceof EObject) {
-        return buildSearchResultEntryHierarchy(project, e, ((EObject)o).eContainer());
-    }
-    return e;
-  }
-  
-  // Recursively build an EObject ascending containment hierarchy
-  protected AbstractCapellaSearchEntry buildSearchResultEntryHierarchy(IProject project, AbstractCapellaSearchEntry intermediate, Object container) {
-    if (container instanceof EObject ) {
-      AbstractCapellaSearchEntry entryContainer = new CapellaSearchMatchEntry(null, container, false, project);
-      entryContainer.addChildren(intermediate);
-      intermediate.setParent(entryContainer);
-      return buildSearchResultEntryHierarchy(project, entryContainer, ((EObject)container).eContainer());
-    }
-    return intermediate;
-  }
-  
-  private AbstractCapellaSearchEntry getLeafEntryFromWantedEObject(AbstractCapellaSearchEntry entry, Object eObj) {
-    if (entry instanceof AbstractCapellaSearchEntry) {
-      AbstractCapellaSearchEntry e = (AbstractCapellaSearchEntry) entry;
-      if (e.getElement().equals(eObj)) {
-        return e;
-      }
-      if (e.getChildren().size()==1) {
-        if (e.getChildren().toArray()[0] instanceof AbstractCapellaSearchEntry) {
-          return getLeafEntryFromWantedEObject((AbstractCapellaSearchEntry) e.getChildren().toArray()[0], eObj);
-        }
-      }
-    }
-    return null;
   }
 
   @Override

@@ -30,21 +30,17 @@ import org.eclipse.search.ui.text.AbstractTextSearchResult;
 import org.eclipse.search.ui.text.IEditorMatchAdapter;
 import org.eclipse.search.ui.text.IFileMatchAdapter;
 import org.eclipse.search.ui.text.MatchFilter;
+import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
 
 public class CapellaSearchResult extends AbstractTextSearchResult {
 
   private CapellaSearchQuery capellaSearchQuery;
-
-  /**
-   * Current Search Entries
-   */
-  private Map<Object, Collection<Object>> searchEntries;
-  private Map<Object, AbstractCapellaSearchEntry> elementToMatches = new HashMap();
+  private TreeData treeData;
   
   public CapellaSearchResult(CapellaSearchQuery capellaSearchQuery) {
     this.capellaSearchQuery = capellaSearchQuery;
     setActiveMatchFilters(new MatchFilter[] {}); // By default, no filter is activated
-    searchEntries = new HashMap<Object, Collection<Object>>();
+    treeData = new TreeData(new ArrayList(), null);
   }
   
   @Override
@@ -93,8 +89,11 @@ public class CapellaSearchResult extends AbstractTextSearchResult {
    * 
    * @return
    */
-  public Set<Object> getProjects() {
-    return searchEntries.keySet();
+  
+  public Set<IProject> getProjects() {
+    return getCapellaSearchMatchesStream() //
+        .map(CapellaSearchMatchEntry::getProject) //
+        .collect(Collectors.toSet());
   }
 
   @Override
@@ -106,160 +105,11 @@ public class CapellaSearchResult extends AbstractTextSearchResult {
     };
   }
 
-  /////////
-  
-  
-  /**
-   * {@inheritDoc}
-   */
-  public AbstractCapellaSearchEntry insert(Object file, AbstractCapellaSearchEntry entry, boolean notify) {
-    if (searchEntries.get(file) == null) {
-      searchEntries.put(file, new ArrayList<Object>());
-    }
-    insert2(searchEntries.get(file), entry, notify);
-    return entry;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  public AbstractCapellaSearchEntry insert(Object file, AbstractCapellaSearchEntry entry, Object eTypedElem, String valuation,
-      boolean notify) {
-    return insert5(entry, eTypedElem, valuation, notify, file);
-  }
-
-  /**
-   * Inserts & merges an entry sequence into an existing entry sequence hierarchy
-   * 
-   * @param currentEntrySubHierarchyCollection
-   * @param entryToInsert
-   * @param notify
-   */
-  private void insert2(Collection<Object> currentEntrySubHierarchyCollection, AbstractCapellaSearchEntry entryToInsert,
-      boolean notify) {
-
-      boolean alreadyExist = false;
-      for (Object currentEntrySubHierarchy : currentEntrySubHierarchyCollection) {
-        if (alreadyExist = currentEntrySubHierarchy.equals(entryToInsert)) {
-          updateInsertionPoint((AbstractCapellaSearchEntry) currentEntrySubHierarchy, (AbstractCapellaSearchEntry) entryToInsert);
-          insert3(currentEntrySubHierarchy, entryToInsert.getChildren(), notify);
-          break;
-        }
-      }
-      if (!alreadyExist) {
-        currentEntrySubHierarchyCollection.add(entryToInsert);
-        if (notify) {
-          // fireItemAdded(entryToInsert);
-      }
-    }
-  }
-
-  /**
-   * Inserts & merges an entry into an existing entry sequence hierarchy
-   * 
-   * @param currentEntrySubHierarchy
-   * @param entrySubtreeToInsertCollection
-   * @param notify
-   */
-  private void insert3(Object currentEntrySubHierarchy, Collection<Object> entrySubtreeToInsertCollection,
-      boolean notify) {
-    for (Object e2i : entrySubtreeToInsertCollection) {
-      if (e2i instanceof AbstractCapellaSearchEntry && currentEntrySubHierarchy instanceof AbstractCapellaSearchEntry) {
-        if (currentEntrySubHierarchy.equals(e2i)) {
-          updateInsertionPoint((AbstractCapellaSearchEntry) currentEntrySubHierarchy, (AbstractCapellaSearchEntry) e2i);
-        }
-        insert2(((AbstractCapellaSearchEntry) currentEntrySubHierarchy).getChildren(), (AbstractCapellaSearchEntry) e2i, notify);
-      }
-    }
-  }
-
-  /**
-   * Inserts & merges an entry sequence into an existing entry
-   * 
-   * @param compoundEntryToInsert
-   * @param entryToInsert
-   * @param notify
-   * 
-   * @return newly inserted occurence entry
-   */
-  private AbstractCapellaSearchEntry insert5(AbstractCapellaSearchEntry entryHierarchyIntoWhichInsert, Object eTypedElem, String text,
-      boolean notify, Object file) {
-    CapellaSearchMatchOccurence occurence = null;
-    for (Object result : entryHierarchyIntoWhichInsert.getChildren()) {
-      if (result instanceof CapellaSearchMatchOccurence) {
-        AbstractCapellaSearchEntry oc = (AbstractCapellaSearchEntry) result;
-        if (isAnInvalidETypedElement(((EObject) oc.getElement()), (ETypedElement) eTypedElem)
-            || isAnAlreadyExistingOccurenceValuation(text, (ETypedElement) eTypedElem, (CapellaSearchMatchOccurence) oc)) {
-          return occurence;
-        }
-      }
-    }
-    occurence = new CapellaSearchMatchOccurence(entryHierarchyIntoWhichInsert, eTypedElem, text,
-        true, (IProject)file);
-    
-    entryHierarchyIntoWhichInsert.addChildren(occurence);
-
-    if (notify) {
-      // fireItemAdded(occurence);
-    }
-    return occurence;
-  }
-
-  private void updateInsertionPoint(AbstractCapellaSearchEntry oldEntry, AbstractCapellaSearchEntry newEntry) {
-    oldEntry.setMatchedOnce(!oldEntry.wasMatchedAtleastOnce() ? newEntry.wasMatchedAtleastOnce() : true);
-
-  }
-
-  private boolean isAnAlreadyExistingOccurenceValuation(String valuation, ETypedElement eTypedElem,
-      CapellaSearchMatchOccurence oc) {
-    return eTypedElem.equals(oc.getTypedElement())
-        && valuation.equals(getTextFromETypedElement(((EObject) oc.getElement()), oc.getTypedElement()));
-  }
-
-  private boolean isAnInvalidETypedElement(EObject obj, ETypedElement eTypedElem) {
-    for (EAttribute attribute : obj.eClass().getEAllAttributes()) {
-      if (attribute.equals(eTypedElem)) {
-        return false;
-      }
-    }
-    return true;
-  }
-
   private String getTextFromETypedElement(EObject obj, ETypedElement elem) {
     if (elem instanceof EAttribute) {
       return EcoreUtil.convertToString(((EAttribute) elem).getEAttributeType(), obj.eGet((EStructuralFeature) elem));
     }
-    return ""; //$NON-NLS-1$
-  }
-
-  public Map<Object, Collection<Object>> getRootResultHierarchies() {
-    return searchEntries;
-  }
-  
-  public void addElementToMatches(AbstractCapellaSearchEntry match) {
-    elementToMatches.put(match.getElement(), match);
-  }
-  
-  public Map<Object, AbstractCapellaSearchEntry> getElementToMatches() {
-    return elementToMatches;
-  }
-
-  private void createEntries(AbstractCapellaSearchEntry entry) {
-    for (Object result : entry.getChildren()) {
-      AbstractCapellaSearchEntry resultEntry = (AbstractCapellaSearchEntry) result;
-      elementToMatches.put(resultEntry.getElement(), resultEntry);
-      createEntries(resultEntry);
-    }
-  }
-
-  public void updateMapElementsToMatches() {
-    for (Object key : searchEntries.keySet()) {
-      Collection<Object> entries = searchEntries.get(key);
-      for (Object entry : entries) {
-        elementToMatches.put(((AbstractCapellaSearchEntry) entry).getElement(), (AbstractCapellaSearchEntry) entry);
-        createEntries((AbstractCapellaSearchEntry) entry);
-      }
-    }
+    return "";
   }
 
   /**
@@ -271,30 +121,28 @@ public class CapellaSearchResult extends AbstractTextSearchResult {
     return Math.toIntExact(count);
   }
   
-  private Stream<AbstractCapellaSearchEntry> getCapellaSearchMatchesStream() {
+  private Stream<CapellaSearchMatchEntry> getCapellaSearchMatchesStream() {
     return Stream.of(getElements()) //
         .flatMap(e -> Stream.of(getMatches(e))) //
-        .filter(AbstractCapellaSearchEntry.class::isInstance) //
-        .map(AbstractCapellaSearchEntry.class::cast);
+        .filter(CapellaSearchMatchEntry.class::isInstance) //
+        .map(CapellaSearchMatchEntry.class::cast);
   }
   
-  public Set<AbstractCapellaSearchEntry> getDisplayedMatches() {
+  public Set<CapellaSearchMatchEntry> getDisplayedMatches() {
     return getCapellaSearchMatchesStream()
         .collect(Collectors.toSet());
   }
   
-  /**
-   * Get all matches belonging to the element
-   * 
-   * @param element
-   * @return empty set if element is null
-   */
-  public Set<AbstractCapellaSearchEntry> getDisplayedMatches(Object element) {
+  public Set<CapellaSearchMatchEntry> getDisplayedMatches(Object element) {
     if (element == null) {
       return Collections.emptySet();
     }
     return getCapellaSearchMatchesStream() //
         .filter(m -> element.equals(m.getElement())) //
         .collect(Collectors.toSet());
+  }
+  
+  public TreeData getTreeData() {
+    return treeData;
   }
 }

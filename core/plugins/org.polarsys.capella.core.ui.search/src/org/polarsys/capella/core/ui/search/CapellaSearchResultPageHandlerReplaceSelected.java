@@ -44,11 +44,11 @@ public class CapellaSearchResultPageHandlerReplaceSelected implements IHandler {
       CapellaSearchResult capellaSearchResult = capellaSearchResultPage.getInput();
       IStructuredSelection currentStructuredSelection = HandlerUtil.getCurrentStructuredSelection(event);
 
-      Set<AbstractCapellaSearchEntry> matches = new HashSet<>();
+      Set<CapellaSearchMatchEntry> matches = new HashSet<>();
       for (Iterator<?> iterator = currentStructuredSelection.iterator(); iterator.hasNext();) {
         Object selectedElement = iterator.next();
-        if (selectedElement instanceof AbstractCapellaSearchEntry) {
-          matches.add((AbstractCapellaSearchEntry) selectedElement);
+        if (selectedElement instanceof CapellaSearchMatchEntry) {
+          matches.add((CapellaSearchMatchEntry) selectedElement);
         } else if (selectedElement instanceof IProject) {
           matches.addAll(capellaSearchResult.getDisplayedMatches((IProject) selectedElement));
         } else {

@@ -92,9 +92,8 @@ public class CapellaReplaceDialog extends Dialog {
     inputReplacement = new Combo(container, SWT.BORDER);
     inputReplacement.setLayoutData(gridData);
     if (!previousSearchSettings.isEmpty()) {
-      String[] previousSearchPatterns = previousSearchSettings.stream() //
-          .map(CapellaSearchSettings::getReplaceTextPattern) //
-          .toArray(String[]::new);
+      String[] previousSearchPatterns = previousSearchSettings.stream()
+          .map(CapellaSearchSettings::getReplaceTextPattern).toArray(String[]::new);
       if (previousSearchPatterns != null) {
         inputReplacement.setItems(previousSearchPatterns);
         inputReplacement.select(0);

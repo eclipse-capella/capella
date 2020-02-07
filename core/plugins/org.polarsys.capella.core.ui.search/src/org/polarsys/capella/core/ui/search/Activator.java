@@ -16,7 +16,7 @@ import org.osgi.framework.BundleContext;
 public class Activator extends AbstractUIActivator {
 
   // The plug-in ID
-  public static final String PLUGIN_ID = "org.polarsys.capella.core.ui.search"; //$NON-NLS-1$
+  public static final String PLUGIN_ID = "org.polarsys.capella.core.ui.search";
 
   // The shared instance
   private static Activator plugin = new Activator();
