@@ -51,7 +51,7 @@ public class CapellaSearchResult extends AbstractTextSearchResult {
       return String.format(Messages.CapellaSearchResult_Label, queryLabel, totalOccurrenceCount, matchedElementsCount,
           matchedProjectsCount);
     }
-    int displayedOccurrenceCount = 0; //getDisplayedOccurrenceCount();
+    int displayedOccurrenceCount = getOccurrenceCount();
     return String.format(Messages.CapellaSearchResult_Label_With_Active_Filters, queryLabel, totalOccurrenceCount,
         matchedElementsCount, matchedProjectsCount, totalOccurrenceCount - displayedOccurrenceCount, activeFilterCount);
   }
@@ -91,22 +91,6 @@ public class CapellaSearchResult extends AbstractTextSearchResult {
     return getCapellaSearchMatchesStream() //
         .map(CapellaSearchMatchEntry::getProject) //
         .collect(Collectors.toSet());
-  }
-
-  @Override
-  public MatchFilter[] getAllMatchFilters() {
-    return new MatchFilter[] { //
-//        CapellaSearchMatchFilter.NOT_MODIFIABLE, //
-//        CapellaSearchMatchFilter.CAPELLA_ELEMENT, //
-//        CapellaSearchMatchFilter.REPRESENTATION //
-    };
-  }
-
-  private String getTextFromETypedElement(EObject obj, ETypedElement elem) {
-    if (elem instanceof EAttribute) {
-      return EcoreUtil.convertToString(((EAttribute) elem).getEAttributeType(), obj.eGet((EStructuralFeature) elem));
-    }
-    return "";
   }
 
   /**
