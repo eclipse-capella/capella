@@ -16,8 +16,6 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -30,7 +28,7 @@ import org.polarsys.capella.core.data.core.properties.Messages;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.helpers.LockHelper;
 
-public class TitleBlockBasicElementGroup extends AbstractSemanticField implements ModifyListener {
+public class TitleBlockBasicElementGroup extends AbstractSemanticField {
   private static final String NAME = "Name:";
   private static final String CONTENT = "Content:";
   protected Text nameTextField;
@@ -60,11 +58,9 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField implement
     gd.horizontalSpan = 2;
     textGroup.setLayoutData(gd);
 
-    // Name
     if (hasNameField) {
       nameTextField = createTextField(textGroup, Messages.getString("NamedElement.NameLabel"));
     }
-    // Content
     if (hasContentField) {
       contentTextField = createTextField(textGroup, Messages.getString("NamedElement.ContentLabel"));
     }
@@ -80,7 +76,6 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField implement
     Text textField = widgetFactory.createText(textGroup, ICommonConstants.EMPTY_STRING);
     textField.addFocusListener(this);
     textField.addKeyListener(this);
-    textField.addModifyListener(this);
     textField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
     return textField;
@@ -167,13 +162,4 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField implement
     // TODO Auto-generated method stub
   }
 
-  @Override
-  public void modifyText(ModifyEvent event) {
-    if (event != null) {
-      Object source = event.getSource();
-      if (source instanceof Text) {
-        fillTextField((Text) source);
-      }
-    }
-  }
 }

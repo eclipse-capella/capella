@@ -214,10 +214,8 @@ public class TitleBlockServices {
     if ((diagram instanceof DRepresentation)) {
       if (cell instanceof DAnnotation) {
         DAnnotation annotation = (DAnnotation) cell;
-        String idCell = annotation.getSource();
         FeatureInterpreter interpreter = new FeatureInterpreter();
         try {
-          // String feature = propertiesContent.get(idCell);
           String feature = annotation.getDetails().get("Content:");
           if (feature != null) {
             EObject objToEvaluate = diagram;
@@ -254,9 +252,6 @@ public class TitleBlockServices {
   public String getTitleBlockCellLabel(EObject diagram, EObject cell) {
     init();
     if (cell instanceof DAnnotation) {
-      DAnnotation annotation = (DAnnotation) cell;
-      String idCell = annotation.getSource();
-      // String name = propertiesName.get(idCell);
       String name = ((DAnnotation) cell).getDetails().get("Name:");
       if (name != null)
         return name;
@@ -265,7 +260,6 @@ public class TitleBlockServices {
   }
 
   public String getCellLabel(EObject obj) {
-    // feature:name
     if (obj instanceof DAnnotation) {
       DAnnotation annotation = (DAnnotation) obj;
       return annotation.getDetails().get("Content:");
