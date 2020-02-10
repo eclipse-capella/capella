@@ -52,7 +52,7 @@ public class TitleBlockCellSection extends AbstractSection {
 
   @Override
   public void createContents(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-    titleBlockBasicElementGroup = new TitleBlockBasicElementGroup(parent, getWidgetFactory(), true, true);
+    titleBlockBasicElementGroup = new TitleBlockBasicElementGroup(parent, getWidgetFactory());
     titleBlockBasicElementGroup.setDisplayedInWizard(isDisplayedInWizard());
   }
 

@@ -37,19 +37,10 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
   /**
    * @param parent
    * @param widgetFactory
-   */
-  public TitleBlockBasicElementGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
-    this(parent, widgetFactory, true, true);
-  }
-
-  /**
-   * @param parent
-   * @param widgetFactory
    * @param hasNameField
    * @param hasContentField
    */
-  public TitleBlockBasicElementGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory,
-      boolean hasNameField, boolean hasContentField) {
+  public TitleBlockBasicElementGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
     super(widgetFactory);
 
     Group textGroup = widgetFactory.createGroup(parent, ICommonConstants.EMPTY_STRING);
@@ -58,12 +49,8 @@ public class TitleBlockBasicElementGroup extends AbstractSemanticField {
     gd.horizontalSpan = 2;
     textGroup.setLayoutData(gd);
 
-    if (hasNameField) {
-      nameTextField = createTextField(textGroup, Messages.getString("NamedElement.NameLabel"));
-    }
-    if (hasContentField) {
-      contentTextField = createTextField(textGroup, Messages.getString("NamedElement.ContentLabel"));
-    }
+    nameTextField = createTextField(textGroup, Messages.getString("NamedElement.NameLabel"));
+    contentTextField = createTextField(textGroup, Messages.getString("NamedElement.ContentLabel"));
   }
 
   /**
