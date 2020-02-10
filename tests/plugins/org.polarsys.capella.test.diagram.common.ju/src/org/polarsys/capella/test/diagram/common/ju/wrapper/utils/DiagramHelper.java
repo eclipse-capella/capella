@@ -121,7 +121,7 @@ public class DiagramHelper {
    * @param value
    */
   public static void setPreferenceAutoRefresh(final boolean value) {
-    IPreferenceStore preferenceStore = SiriusEditPlugin.getPlugin().getPreferenceStore();
+    IPreferenceStore preferenceStore = SiriusEditPlugin.getPlugin().getCorePreferenceStore();
     preferenceStore.setValue(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), value);
   }
 
