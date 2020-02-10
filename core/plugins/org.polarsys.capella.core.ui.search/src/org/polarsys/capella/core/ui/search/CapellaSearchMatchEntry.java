@@ -10,10 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.search;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Stack;
-
 import org.eclipse.core.resources.IProject;
 import org.eclipse.search.ui.text.Match;
 
@@ -22,8 +18,6 @@ import org.eclipse.search.ui.text.Match;
  */
 public class CapellaSearchMatchEntry extends Match {
 
-  private Collection<Object> children;
-  
   private String text;
   
   private IProject project;
@@ -36,7 +30,6 @@ public class CapellaSearchMatchEntry extends Match {
     this.project = project;
     this.text = text;
     this.attribute = attribute;
-    children = new HashSet<Object>();
   }
 
   public String getText() {
@@ -47,10 +40,6 @@ public class CapellaSearchMatchEntry extends Match {
     text = _text;
   }
   
-  public Collection<Object> getChildren() {
-    return children;
-  }
-
   public IProject getProject() {
     return project;
   }
@@ -70,27 +59,8 @@ public class CapellaSearchMatchEntry extends Match {
   public Object getAttribute() {
     return attribute;
   }
-  
-  /**
-   * Overriding the equals method allows to apply a 1-1 comparison to all elements of a result hierarchy in a reverse
-   * order.
-   * 
-   * This is needed for result hierarchy sub tree insertion algorithms.
-   * 
-   * A simple example:
-   * 
-   * LEFT | RIGHT ========|======== A1 | A1 |-B1 | |-B1 |-C1 | |-C1 |-C2 | |-C3
-   * 
-   * Trying to insert A1->(B1->(C3)) into existing A1->(B1->(C1, C2)) hierarchy implies being able to evaluate until
-   * which point two elements of the same level are still equals or not.
-   * 
-   * Here, each comparison A1 <> A1, B1 <> B1, C1 <> C3 implies their ancestor to be compared back on a 1-1 basis.
-   * 
-   * This means that comparing left side A1.B1.C1 & right side A1.B1.C1 is something like: C1==C1 && B1==B1 && A1==A1
-   * (eg: a back comparison to the root).
-   * 
-   */
-  @Override
+
+   @Override
   public boolean equals(Object obj) {
     if (this == obj)
       return true;
@@ -103,6 +73,21 @@ public class CapellaSearchMatchEntry extends Match {
       if (other.getElement() != null)
         return false;
     } else if (!getElement().equals(other.getElement()))
+      return false;
+    if (getAttribute() == null) {
+      if (other.getAttribute() != null)
+        return false;
+    } else if (!getAttribute().equals(other.getAttribute()))
+      return false;
+    if (getText() == null) {
+      if (other.getText() != null)
+        return false;
+    } else if (!getText().equals(other.getText()))
+      return false;
+    if (getProject() == null) {
+      if (other.getProject() != null)
+        return false;
+    } else if (!getProject().equals(other.getProject()))
       return false;
     return true;
   }

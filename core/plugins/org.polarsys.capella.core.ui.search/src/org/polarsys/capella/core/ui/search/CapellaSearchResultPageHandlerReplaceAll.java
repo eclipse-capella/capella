@@ -37,7 +37,7 @@ public class CapellaSearchResultPageHandlerReplaceAll implements IHandler {
 
     if (capellaSearchResultPage != null) {
       CapellaSearchResult capellaSearchResult = capellaSearchResultPage.getInput();
-      // Only replace for all matches which are not filtered
+      
       Set<CapellaSearchMatchEntry> matches = capellaSearchResult.getDisplayedMatches();
 
       CapellaSearchQuery searchQuery = capellaSearchResult.getQuery();

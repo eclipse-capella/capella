@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.search;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -47,8 +45,6 @@ public class CapellaReplaceQuery {
     replacedProjects = new HashSet<>();
     replacedOccurrenceCount = 0;
     if (replacement == null) {
-      // Replacement can be empty if users want to remove those occurrences matching search pattern.
-      // But can not be null
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID, Messages.CapellaReplaceQuery_Validation_Replacement_Null);
     }
     try {
@@ -61,14 +57,9 @@ public class CapellaReplaceQuery {
           CapellaSearchMatchEntry capellaMatch = (CapellaSearchMatchEntry) match;
           int countOccurrences = 1;
           String projectName = capellaMatch.getProject().getName();
-         
-          processMatches(subMonitor, capellaMatch.getChildren(), searchPattern, replacement, countOccurrences, projectName);
-        }
-        else if (match instanceof CapellaSearchMatchEntry) {
-          CapellaSearchMatchEntry capellaMatch = (CapellaSearchMatchEntry) match;
-          Collection<Object> list = new ArrayList<Object>();
-          list.add(capellaMatch);
-          processMatches(subMonitor, list, searchPattern, replacement, 1, capellaMatch.getProject().getName());
+          subMonitor.subTask(String.format(Messages.ReplaceJob_SubTitle, countOccurrences, projectName));
+          replace(capellaMatch, searchPattern, replacement);
+          subMonitor.split(countOccurrences);
         }
       }
       return Status.OK_STATUS;
@@ -82,17 +73,6 @@ public class CapellaReplaceQuery {
     }
   }
   
-  protected void processMatches(SubMonitor subMonitor, Collection<Object> matches, 
-      Pattern searchPattern, String replacement, int countOccurrences, String projectName) {
-    subMonitor.subTask(String.format(Messages.ReplaceJob_SubTitle, countOccurrences, projectName));
-
-    for(Object childMatch : matches) {
-        replace((CapellaSearchMatchEntry)childMatch, searchPattern, replacement);
-    }
-
-    subMonitor.split(countOccurrences);
-  }
-
   public void replace(CapellaSearchMatchEntry capellaMatch, Pattern searchPattern, String replacement) {
     EAttribute attribute = (EAttribute) capellaMatch.getAttribute();
 

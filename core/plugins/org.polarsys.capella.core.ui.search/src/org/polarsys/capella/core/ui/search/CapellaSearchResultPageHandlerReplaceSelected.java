@@ -27,12 +27,10 @@ public class CapellaSearchResultPageHandlerReplaceSelected implements IHandler {
 
   @Override
   public void addHandlerListener(IHandlerListener handlerListener) {
-    // Nothing
   }
 
   @Override
   public void dispose() {
-    // Nothing
   }
 
   @Override
@@ -77,7 +75,6 @@ public class CapellaSearchResultPageHandlerReplaceSelected implements IHandler {
 
   @Override
   public void removeHandlerListener(IHandlerListener handlerListener) {
-    // Nothing
   }
 
 }
