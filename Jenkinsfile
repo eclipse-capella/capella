@@ -180,5 +180,13 @@ pipeline {
 	        	}
 	        }
 	    }
+	    
+	    aborted {
+	    	script {
+	    		if(changeRequest()){
+	        		github.buildAbortedComment()
+	        	}
+	        }
+	    }
 	}
 }
