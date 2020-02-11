@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.semantic.browser;
 
+import org.eclipse.core.runtime.preferences.DefaultScope;
 import org.osgi.framework.BundleContext;
 import org.polarsys.capella.common.ui.services.AbstractUIActivator;
 
@@ -27,7 +28,10 @@ public class CapellaBrowserActivator extends AbstractUIActivator {
   public void start(BundleContext context) throws Exception {
     super.start(context);
     __plugin = this;
-  }
+
+    // enable semantic browser synchronization by default
+    DefaultScope.INSTANCE.getNode(getPluginId()).putBoolean(CapellaBrowserPreferences.PREFS_DISABLE_SEMANTIC_BROWSER_SYNC_ON_STARTUP, false);
+}
 
   /**
    * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)

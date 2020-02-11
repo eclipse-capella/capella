@@ -38,7 +38,7 @@ location eclipse "http://download.eclipse.org/releases/2019-06" {
 	org.eclipse.mylyn.help.ui
 }
 
-location sirius "https://download.eclipse.org/sirius/updates/milestones/6.3.0rc1/2019-06/" {
+location sirius "https://download.eclipse.org/sirius/updates/stable/6.3.1-S20200114-102549/2019-06/" {
 	org.eclipse.sirius.doc.feature.source.feature.group
 	org.eclipse.sirius.runtime.source.feature.group
 	org.eclipse.sirius.runtime.aql.source.feature.group
@@ -63,7 +63,6 @@ location kitalpha-runtimecore "https://download.eclipse.org/kitalpha/updates/sta
 	org.polarsys.kitalpha.model.detachment.contrib.viewpoints.feature.source.feature.group
 	org.polarsys.kitalpha.model.detachment.feature.source.feature.group
 	org.polarsys.kitalpha.model.detachment.ui.feature.source.feature.group
-	org.polarsys.kitalpha.patterns.feature.source.feature.group
 	org.polarsys.kitalpha.report.feature.source.feature.group
 	org.polarsys.kitalpha.report.ui.feature.source.feature.group
 	org.polarsys.kitalpha.resourcereuse.emfscheme.feature.source.feature.group
@@ -87,17 +86,8 @@ location diffmerge-core "https://download.eclipse.org/diffmerge/releases/0.12.0/
 	org.eclipse.emf.diffmerge.egit.feature.source.feature.group
 }
 
-location diffmerge-patterns "https://download.eclipse.org/diffmerge/releases/0.12.0/edm-patterns-site" {
-	org.eclipse.emf.diffmerge.patterns.sdk.feature.source.feature.group
-	org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.source.feature.group
-}
-
 location amalgam "https://download.eclipse.org/modeling/amalgam/updates/stable/1.11.0-S20191007/capella" {
 	org.eclipse.amalgam.explorer.activity.source.feature.group
-}
-
-location sirius-query-legacy "http://download.eclipse.org/sirius/updates/legacy/1.1.0" {
-	org.eclipse.sirius.query.legacy.feature.source.feature.group
 }
 
 location egf "http://download.eclipse.org/egf/updates/1.6.1/2019-06/" {

@@ -77,6 +77,7 @@ public class MigrationConstants {
   //  public static final String MAPPING_FOLDER = "/" + OLD_VERSION + "_" + NEW_VERSION + "/"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 
   public static final String MIGRATION_KIND__SCF = "MIGRATION_KIND__SCF";
+  @Deprecated
   public static final String MIGRATION_KIND__PATTERN = "MIGRATION_KIND__PATTERN";
   public static final String MIGRATION_KIND__CHECK_MISSING_VP = "MIGRATION_KIND__CHECK_MISSING_VP";
   @Deprecated

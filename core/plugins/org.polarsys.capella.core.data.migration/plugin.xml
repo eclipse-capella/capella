@@ -167,6 +167,9 @@
        <migrationContribution
              class="org.polarsys.capella.core.data.migration.capella.InvalidAirdReferenceMigrationContribution">
        </migrationContribution>
+      <migrationContribution 
+            class="org.polarsys.capella.core.data.migration.contribution.PatternInstanceDeletionContribution">
+      </migrationContribution>
    </extension>
    
    
@@ -183,6 +186,9 @@
       </migrationContributor>
       <migrationContributor
          class="org.polarsys.capella.core.data.migration.af.ViewpointMigrationContributor"> 
+      </migrationContributor>
+      <migrationContributor
+         class="org.polarsys.capella.core.data.migration.contribution.PatternCatalogDeletionContributor"> 
       </migrationContributor>
       
    </extension>
