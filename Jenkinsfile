@@ -9,7 +9,7 @@ pipeline {
 	}
   
 	environment {
-		BUILD_KEY = (changeRequest() ? CHANGE_TARGET : BRANCH_NAME).replaceFirst(/^v/, "")
+		BUILD_KEY = (changeRequest() ? CHANGE_TARGET : BRANCH_NAME).replaceFirst(/^v/, '')
 		CAPELLA_PRODUCT_PATH = "${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64/eclipse"
   	}
   
