@@ -59,14 +59,14 @@ pipeline {
 	     	}
 	    }
     
-    	stage('Deploy to Nightly Root') {      		
-      		steps {
-      			when {
-	        		expression { 
-	        			!github.isPullRequest()
+    	stage('Deploy to Nightly Root') {      	
+    		when {
+	       		expression { 
+	        		!github.isPullRequest()
 	        		}
-      			}
+      		}
       			
+      		steps {      			
       			script {
 			        def deploymentDirName = BUILD_KEY		
 			
@@ -82,13 +82,13 @@ pipeline {
 		}
 
     	stage('Install test features') {
-        	steps {
-	      		when {
-	        		expression { 
-	        			github.isPullRequest()
-	        		}
-	      		}
-        	
+    		when {
+	        	expression { 
+	        		github.isPullRequest()
+	        	}
+	      	}
+    	
+        	steps {        	
         		script {
 	        		sh "chmod 755 ${CAPELLA_PRODUCT_PATH}"
 	        		
@@ -98,14 +98,14 @@ pipeline {
 	     	}
 	    }
 	    
-    	stage('Run tests') {
-        	steps {
-        		when {
-	        		expression { 
-	        			github.isPullRequest()
-	        		}
-	      		}
-        	
+    	stage('Run tests') {    		
+    		when {
+	          	expression { 
+	        		github.isPullRequest()
+	        	}
+	      	}
+    		
+        	steps {              	
         		script {
         			wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
 		        		
