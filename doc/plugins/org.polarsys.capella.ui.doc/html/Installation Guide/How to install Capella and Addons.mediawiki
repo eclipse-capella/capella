@@ -25,6 +25,28 @@ The Capella installation is successful  if the archive extraction finished witho
 *  The Capella folder should contain two folders:
 ** eclipse: the Capella modeling workbench with the .exe of Capella 
 ** samples: the sample models
+
+=== Multi-user installation ===
+Capella provides different strategies for supporting multi-user installs. Each strategy is deployed based on three important locations: the install area - where Capella is installed, the configuration area - where Capella stores runtime meta-data such as the set of installed plugins, instance area - where users store data.
+
+==== Strategy 1 - Private install ====
+Single user install. This is the most basic configuration. Nothing needs to be set up, the configuration area is by default the configuration directory found under Capella install location.
+
+==== Strategy 2 - Shared install ====
+Multi user install in which users share the same install area but manage themselves the configuration area. To set up this strategy, either in eclipse.ini or config.ini file, add the argument '''osgi.configuration.area=@user.home/path/to/user/configuration'''.
+Notice that using this strategy, users must clean their configuration area each time the set of plugins is modified.
+
+==== Strategy 3 - Shared configuration ====
+Multi user install in which users share the same install area and a common configuration area (called master configuration area). In this strategy, the system administrator initializes the master configuration area (which is by default the configuration directory found under Capella install location). Notice that i) the admin must do the operation with administrator right and ii) the install area and the configuration area are read-only to other users.
+To set up this strategy, in eclipse.ini add the argument '''osgi.configuration.area=@user.home/path/to/user/configuration''' for normal users. For admin, another .ini file must be used in which the osgi.configuration.area should not be present. This will help Capella to initialize the master configuration area.
+
+==== Strategy 4 - Multi-level shared configuration ====
+This is similar to Strategy 3 except that instead of sharing the master configuration area, we can share intermediate configuration areas, each configuration area is suitable for a specific working environment (e.g. with different plugins install). 
+To set up this strategy, the system administrator initializes the master configuration area (which is by default the configuration directory found under Capella install location). Next, the working environment administrators initialize their local shared configurations by adding the argument '''-Dosgi.configuration.area=path/to/shared/configuration''' to their own .ini file. Users configure their eclipse.ini to point to the shared configuration area of the working environment that they belong to, as follows:
+
+* '''-Dosgi.sharedConfiguration.area=path/to/shared/configuration'''
+* '''-Dosgi.configuration.cascaded=true'''
+
 == Addons Installation ==
 There are 3 ways to install addons :
 # Simple installation 

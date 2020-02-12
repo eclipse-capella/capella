@@ -13,6 +13,14 @@
 <toc label="User Interface" link_to="PLUGINS_ROOT/org.polarsys.capella.doc/toc.xml#main" sort="true">
    <topic href="html/Installation Guide/How to install Capella and Addons.html" label="Installation Guide">
       <topic href="html/Installation Guide/How to install Capella and Addons.html#Capella_Installation" label="Capella Installation">
+         <topic href="html/Installation Guide/How to install Capella and Addons.html#Prerequisites_Needed_for_Install" label="Prerequisites Needed for Install">
+         </topic>
+         <topic href="html/Installation Guide/How to install Capella and Addons.html#Capella_Installation_Procedure" label="Capella Installation Procedure">
+         </topic>
+         <topic href="html/Installation Guide/How to install Capella and Addons.html#Verification_Installation_Procedure" label="Verification Installation Procedure">
+         </topic>
+         <topic href="html/Installation Guide/How to install Capella and Addons.html#Multi-user_installation" label="Multi-user installation">
+         </topic>
       </topic>
       <topic href="html/Installation Guide/How to install Capella and Addons.html#Addons_Installation" label="Addons Installation">
       </topic>
