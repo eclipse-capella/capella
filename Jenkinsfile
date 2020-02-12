@@ -59,14 +59,14 @@ pipeline {
 	     	}
 	    }
     
-    	stage('Deploy to Nightly Root') {
-      		when {
-        		expression { 
-        			!github.isPullRequest()
-        		}
-      		}
-      		
+    	stage('Deploy to Nightly Root') {      		
       		steps {
+      			when {
+	        		expression { 
+	        			!github.isPullRequest()
+	        		}
+      			}
+      			
       			script {
 			        def deploymentDirName = BUILD_KEY		
 			
