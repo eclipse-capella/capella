@@ -32,6 +32,7 @@ import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 public class ExportRepresentationsCommandLine extends AbstractWorkbenchCommandLine {
 
   public ExportRepresentationsCommandLine() {
+    super();
     argHelper = new ExportRepresentationsArgumentHelper();
   }
 
@@ -65,6 +66,7 @@ public class ExportRepresentationsCommandLine extends AbstractWorkbenchCommandLi
       try {
         exportRepresentationsAction.run(new NullProgressMonitor());
       } catch (InvocationTargetException | InterruptedException e1) {
+        // TODO: handle exception
         e1.printStackTrace();
       }
     }

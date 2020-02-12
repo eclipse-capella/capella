@@ -17,6 +17,7 @@ import java.util.Collection;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
@@ -24,7 +25,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.api.session.factory.SessionFactory;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.core.commandline.core.CommandLineException;
 import org.polarsys.capella.core.commandline.core.ui.AbstractWorkbenchCommandLine;
@@ -34,6 +35,7 @@ import org.polarsys.capella.core.sirius.ui.handlers.DeleteHiddenElementsJob;
 public class RemoveHiddenElementsCommandLine extends AbstractWorkbenchCommandLine {
   
   public RemoveHiddenElementsCommandLine() {
+    super();
     argHelper = new RemoveHiddenElementsArgumentHelper();
   }
   
@@ -49,38 +51,47 @@ public class RemoveHiddenElementsCommandLine extends AbstractWorkbenchCommandLin
     String fileURI = Messages.resource_prefix + argHelper.getFilePath();
     URI uri = URI.createURI(fileURI);
 
-    Session session = SessionManager.INSTANCE.getSession(uri, new NullProgressMonitor());
+    try {
+      Session session = SessionFactory.INSTANCE.createSession(uri, new NullProgressMonitor());
 
-    if (session == null) {
-      throw new CommandLineException("No aird model found!"); //$NON-NLS-1$
-    }
-
-    if (CapellaResourceHelper.isAirdResource(uri)) {
-      Collection<DRepresentationDescriptor> representations = DialectManager.INSTANCE
-          .getAllRepresentationDescriptors(session);
-
-      DeleteHiddenElementsJob job = new DeleteHiddenElementsJob(representations, session, unsyncDiags);
-      IStatus status = job.run(new NullProgressMonitor());
-
-      try {
-        IFolder folder = ResourcesPlugin.getWorkspace().getRoot().getFolder(new Path(outputFolder));
-        if (!folder.exists()) {
-          folder.create(false, true, new NullProgressMonitor());
-        }
-        String fileName = Messages.removeHiddenElementsResultsFileName;
-        IFile file = folder.getFile(new Path(fileName));
-        String result = toHTML(status, representations);
-        InputStream outputContent = new ByteArrayInputStream(result.getBytes());
-        if (file.exists()) {
-          file.setContents(outputContent, true, false, null);
-        } else {
-          file.create(outputContent, false, null);
-        }
-      } catch (Exception e) {
-        // TODO: handle exception
+      if (session == null) {
+        throw new CommandLineException("No aird model found!"); //$NON-NLS-1$
       }
-    }
+      
+      session.open(new NullProgressMonitor());
+      
+      if (CapellaResourceHelper.isAirdResource(uri)) {
+        Collection<DRepresentationDescriptor> representations = DialectManager.INSTANCE
+            .getAllRepresentationDescriptors(session);
 
+        DeleteHiddenElementsJob job = new DeleteHiddenElementsJob(representations, session, unsyncDiags);
+        IStatus status = job.run(new NullProgressMonitor());
+        
+        session.save(new NullProgressMonitor());
+
+        try {
+          IFolder folder = ResourcesPlugin.getWorkspace().getRoot().getFolder(new Path(outputFolder));
+          if (!folder.exists()) {
+            folder.create(false, true, new NullProgressMonitor());
+          }
+          String fileName = Messages.removeHiddenElementsResultsFileName;
+          IFile file = folder.getFile(new Path(fileName));
+          String result = toHTML(status, representations);
+          InputStream outputContent = new ByteArrayInputStream(result.getBytes());
+          if (file.exists()) {
+            file.setContents(outputContent, true, false, null);
+          } else {
+            file.create(outputContent, false, null);
+          }
+        } catch (Exception e) {
+          // TODO: handle exception
+          e.printStackTrace();
+        }
+      }
+    } catch (CoreException e1) {
+      // TODO: handle exception
+      e1.printStackTrace();
+    }
     return false;
   }
   
@@ -92,7 +103,7 @@ public class RemoveHiddenElementsCommandLine extends AbstractWorkbenchCommandLin
     res.append("<head> \n"); //$NON-NLS-1$
     res.append("<body> \n"); //$NON-NLS-1$
     if (status.getSeverity() == IStatus.OK) {
-      res.append("All hidden elements was removed from "+representations.size()+" representations."); //$NON-NLS-1$
+      res.append("All hidden elements was removed from "+representations.size()+" representation(s)."); //$NON-NLS-1$
     } else {
       res.append("The removal of all hidden elements failed."); //$NON-NLS-1$
     }

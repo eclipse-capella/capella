@@ -13,7 +13,10 @@ package org.polarsys.capella.test.commandline.ju.testsuites;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.polarsys.capella.test.commandline.ju.testcases.CommandLineExportRepresentationsTest;
 import org.polarsys.capella.test.commandline.ju.testcases.CommandLineFolderMigrationTest;
+import org.polarsys.capella.test.commandline.ju.testcases.CommandLineRefreshAirdTest;
+import org.polarsys.capella.test.commandline.ju.testcases.CommandLineRemoveHiddenElementsTest;
 import org.polarsys.capella.test.commandline.ju.testcases.CommandLineValidationTest;
 import org.polarsys.capella.test.commandline.ju.testcases.CommandLineZipMigrationTest;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
@@ -29,6 +32,9 @@ public class CommandLineTestSuite extends BasicTestSuite {
     tests.add(new CommandLineValidationTest());
     tests.add(new CommandLineZipMigrationTest());
     tests.add(new CommandLineFolderMigrationTest());
+    tests.add(new CommandLineRefreshAirdTest());
+    tests.add(new CommandLineRemoveHiddenElementsTest());
+    tests.add(new CommandLineExportRepresentationsTest());
     return tests;
   }
   
