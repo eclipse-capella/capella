@@ -15,7 +15,7 @@ pipeline {
   
   	stages {
   	
-		stage('Generate target platform') {
+		stage('Generate Target Platform') {
 	    	steps {        
 	        	script { 
 		        	if(changeRequest()){
@@ -30,7 +30,7 @@ pipeline {
 	     	}
 	    }
 	    
-    	stage('Package') {
+    	stage('Build and Package') {
       		steps {
       			script {
       				def customParams = changeRequest() ? '-DSKIP_SONAR=true' : '-Psign'
@@ -40,7 +40,7 @@ pipeline {
 	     	}
 	    }
     
-		stage('Archive to download.eclipse') {
+		stage('Deploy to Nightly') {
       		steps {
 				script {		
 		    		def deploymentDirName = 
@@ -59,7 +59,7 @@ pipeline {
 	     	}
 	    }
     
-    	stage('Update nightly fixed url') {
+    	stage('Deploy to Nightly Root') {
       		when {
         		expression { 
         			!changeRequest() 
@@ -81,7 +81,7 @@ pipeline {
 			}
 		}
 
-    	stage('Tests: Install Tests on Capella') {
+    	stage('Install test features') {
         	steps {
         		script {
 	        		sh "chmod 755 ${CAPELLA_PRODUCT_PATH}"
@@ -92,7 +92,7 @@ pipeline {
 	     	}
 	    }
 	    
-    	stage('Tests: Run Tests on Capella') {
+    	stage('Run tests') {
         	steps {
         		script {
         			wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
@@ -105,8 +105,7 @@ pipeline {
 		        		tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'LibRecTransition', 'org.polarsys.capella.test.suites.ju', 
 		        			['org.polarsys.capella.test.libraries.ju.testsuites.main.LibrariesTestSuite',
 		        			  'org.polarsys.capella.test.recrpl.ju.testsuites.main.RecRplTestSuite',
-		        			  'org.polarsys.capella.test.transition.ju.testsuites.main.TransitionTestSuite',
-		        			  'org.polarsys.capella.test.re.updateconnections.ju.UpdateConnectionsTestSuite'])
+		        			  'org.polarsys.capella.test.transition.ju.testsuites.main.TransitionTestSuite'])
 		        		
 		        		tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'DiagramTools1', 'org.polarsys.capella.test.suites.ju', 
 		        			['org.polarsys.capella.test.diagram.tools.ju.testsuites.main.DiagramToolsStep1TestSuite'])
@@ -116,16 +115,11 @@ pipeline {
 		        			        			
 		        		tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'DiagramMiscFilters', 'org.polarsys.capella.test.suites.ju', 
 		        			['org.polarsys.capella.test.diagram.misc.ju.testsuites.DiagramMiscTestSuite',
-		        			  'org.polarsys.capella.test.diagram.filters.ju.testsuites.DiagramFiltersTestSuite',
-		        			  'org.polarsys.capella.test.table.ju.testsuite.TableTestSuite'])
-		        			    
-		        		tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'Fragmentation', 'org.polarsys.capella.test.suites.ju', 
-		        			['org.polarsys.capella.test.fragmentation.ju.testsuites.FragmentationTestSuite'])
+		        			  'org.polarsys.capella.test.diagram.filters.ju.testsuites.DiagramFiltersTestSuite'])		        			    
 		   
 		        		tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'Views', 'org.polarsys.capella.test.suites.ju', 
 		        			['org.polarsys.capella.test.model.ju.testsuites.main.ModelTestSuite', 
 		        			 'org.polarsys.capella.test.massactions.ju.testsuites.MassActionsTestSuite',
-		        			 'org.polarsys.capella.test.platform.ju.testsuites.PlatformTestSuite', 
 		        			 'org.polarsys.capella.test.richtext.ju.testsuites.RichtextTestSuite',
 		        			 'org.polarsys.capella.test.fastlinker.ju.testsuites.FastLinkerTestsSuite',
 		        			 'org.polarsys.capella.test.explorer.activity.ju.testsuites.ActivityExplorerTestsSuite',
@@ -135,10 +129,7 @@ pipeline {
 		        		tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'MigrationCommandLine', 'org.polarsys.capella.test.suites.ju', 
 		        			['org.polarsys.capella.test.migration.ju.testsuites.main.MigrationTestSuite',
 		        			 'org.polarsys.capella.test.diagram.layout.ju.testsuites.LayoutTestSuite',
-		        			 'org.polarsys.capella.test.commandline.ju.testsuites.CommandLineTestSuite'])
-		 	
-		        		tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'Benchmark', 'org.polarsys.capella.test.suites.ju', 
-		        			['org.polarsys.capella.test.benchmarks.ju.suites.AllBenchmarksTestSuite'])
+		        			 'org.polarsys.capella.test.commandline.ju.testsuites.CommandLineTestSuite'])		 	
 		   
 		  				tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'Detach', 'org.polarsys.capella.test.suites.ju', 
 		        			['org.polarsys.capella.test.model.ju.testsuites.partial.DetachTestSuite'])
