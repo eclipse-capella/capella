@@ -1,6 +1,6 @@
 pipeline {
 	agent {
-		label 'migration'
+		label 'ui-test'
 	}
   
 	tools {
@@ -86,8 +86,8 @@ pipeline {
         		script {
 	        		sh "chmod 755 ${CAPELLA_PRODUCT_PATH}"
 	        		
-	        		eclipse.installFeature("${CAPELLA_PRODUCT_PATH}", 'http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository', 'org.jsoup')
-	        		eclipse.installFeature("${CAPELLA_PRODUCT_PATH}", 'https://download.eclipse.org/capella/core/updates/nightly/${BUILD_KEY}/org.polarsys.capella.test.site', 'org.polarsys.capella.test.feature.feature.group')
+	        		eclipse.installFeature("${CAPELLA_PRODUCT_PATH}", 'http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository', 'org.jsoup')	        		
+	        		eclipse.installFeature("${CAPELLA_PRODUCT_PATH}", "file:/${WORKSPACE}/releng/plugins/org.polarsys.capella.test.site/target/repository".replace("\\", "/"), 'org.polarsys.capella.test.feature.feature.group')
 	       		}         
 	     	}
 	    }
@@ -119,9 +119,6 @@ pipeline {
 		        			  'org.polarsys.capella.test.diagram.filters.ju.testsuites.DiagramFiltersTestSuite',
 		        			  'org.polarsys.capella.test.table.ju.testsuite.TableTestSuite'])
 		        			    
-		        		tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'Odesign', 'org.polarsys.capella.test.suites.ju', 
-		        			['org.polarsys.capella.test.odesign.ju.maintestsuite.ODesignTestSuite'])
-		        			
 		        		tester.runUITests("${CAPELLA_PRODUCT_PATH}", 'Fragmentation', 'org.polarsys.capella.test.suites.ju', 
 		        			['org.polarsys.capella.test.fragmentation.ju.testsuites.FragmentationTestSuite'])
 		   
