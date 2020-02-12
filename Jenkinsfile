@@ -9,7 +9,7 @@ pipeline {
 	}
   
 	environment {
-		BUILD_KEY = (changeRequest() ? CHANGE_TARGET : BRANCH_NAME).replaceFirst(/^v/, '')
+		BUILD_KEY = (github.isPullRequest() ? CHANGE_TARGET : BRANCH_NAME).replaceFirst(/^v/, '')
 		CAPELLA_PRODUCT_PATH = "${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64/eclipse"
   	}
   
@@ -18,7 +18,7 @@ pipeline {
 		stage('Generate Target Platform') {
 	    	steps {        
 	        	script { 
-		        	if(changeRequest()){
+		        	if(github.isPullRequest()){
 		        	    github.buildStartedComment()
 		        	}
 		
@@ -33,7 +33,7 @@ pipeline {
     	stage('Build and Package') {
       		steps {
       			script {
-      				def customParams = changeRequest() ? '-DSKIP_SONAR=true' : '-Psign'
+      				def customParams = github.isPullRequest() ? '-DSKIP_SONAR=true' : '-Psign'
       	    
       	    		sh "mvn -Djacoco.skip=true -DjavaDocPhase=none -Pfull ${customParams} clean package -f pom.xml"
 	       		}         
@@ -44,7 +44,7 @@ pipeline {
       		steps {
 				script {		
 		    		def deploymentDirName = 
-		    			(changeRequest() ? "${BUILD_KEY}-${BRANCH_NAME}-${BUILD_ID}" : "${BRANCH_NAME}-${BUILD_ID}")
+		    			(github.isPullRequest() ? "${BUILD_KEY}-${BRANCH_NAME}-${BUILD_ID}" : "${BRANCH_NAME}-${BUILD_ID}")
 		    			.replaceAll('/','-')		
 		
 				    deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.zip", deploymentDirName)
@@ -62,7 +62,7 @@ pipeline {
     	stage('Deploy to Nightly Root') {
       		when {
         		expression { 
-        			!changeRequest() 
+        			!github.isPullRequest()
         		}
       		}
       		
@@ -83,6 +83,12 @@ pipeline {
 
     	stage('Install test features') {
         	steps {
+	      		when {
+	        		expression { 
+	        			github.isPullRequest()
+	        		}
+	      		}
+        	
         		script {
 	        		sh "chmod 755 ${CAPELLA_PRODUCT_PATH}"
 	        		
@@ -94,6 +100,12 @@ pipeline {
 	    
     	stage('Run tests') {
         	steps {
+        		when {
+	        		expression { 
+	        			github.isPullRequest()
+	        		}
+	      		}
+        	
         		script {
         			wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
 		        		
@@ -150,7 +162,7 @@ pipeline {
     	
     	success  {
     		script {
-    			if(changeRequest()){
+    			if(github.isPullRequest()){
         			github.buildSuccessfullComment()
         		}
         	}
@@ -158,7 +170,7 @@ pipeline {
     	
 	    unstable {
 	    	script {
-	    		if(changeRequest()){
+	    		if(github.isPullRequest()){
 	        		github.buildUnstableComment()
 	        	}
 	        }
@@ -166,7 +178,7 @@ pipeline {
     
 	    failure {
 	    	script {
-	    		if(changeRequest()){
+	    		if(github.isPullRequest()){
 	        		github.buildFailedComment()
 	        	}
 	        }
@@ -174,7 +186,7 @@ pipeline {
 	    
 	    aborted {
 	    	script {
-	    		if(changeRequest()){
+	    		if(github.isPullRequest()){
 	        		github.buildAbortedComment()
 	        	}
 	        }
