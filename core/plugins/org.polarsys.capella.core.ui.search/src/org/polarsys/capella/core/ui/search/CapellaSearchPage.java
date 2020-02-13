@@ -11,7 +11,6 @@
 package org.polarsys.capella.core.ui.search;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
@@ -19,38 +18,22 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
-import javax.swing.JTable;
-import org.eclipse.core.internal.resources.File;
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Path;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.DialogPage;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.fieldassist.ComboContentAdapter;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.jface.resource.JFaceColors;
 import org.eclipse.jface.text.FindReplaceDocumentAdapterContentProposalProvider;
-import org.eclipse.jface.viewers.CheckboxTableViewer;
-import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.search.ui.IReplacePage;
 import org.eclipse.search.ui.ISearchPage;
 import org.eclipse.search.ui.ISearchPageContainer;
 import org.eclipse.search.ui.NewSearchUI;
-import org.eclipse.sirius.business.api.dialect.DialectManager;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -62,16 +45,12 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Table;
-import org.eclipse.ui.dialogs.PatternFilter;
 import org.eclipse.ui.fieldassist.ContentAssistCommandAdapter;
 import org.eclipse.ui.texteditor.ITextEditorActionDefinitionIds;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 import org.polarsys.capella.core.ui.search.searchfor.CapellaLeftSearchForContainerArea;
 import org.polarsys.capella.core.ui.search.searchfor.CapellaRightSearchForContainerArea;
-import org.polarsys.capella.test.framework.helpers.TestHelper;
-import org.polarsys.capella.core.ui.search.searchfor.AbstractCapellaSearchForContainerArea;
 
 public class CapellaSearchPage extends DialogPage implements ISearchPage, IReplacePage {
 
@@ -89,18 +68,6 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
   private Button checkboxCaseSensitive;
   private Button checkboxRegex;
   private Button checkboxWholeWord;
-
-  private CheckboxTableViewer checkboxProjectsSelection;
-
-  private static final Predicate<IProject> IS_VALID_PROJECT = project -> {
-    if (!CapellaResourceHelper.isCapellaProject(project)) {
-      return false;
-    }
-    if (!project.isOpen()) {
-      return false;
-    }
-    return !SessionHelper.getExistingSessions(project).isEmpty();
-  };
 
   protected Map<EClass, Set<Object>> displayedElements = new HashMap<EClass, Set<Object>>();
   private ISearchPageContainer searchPageContainer;
@@ -145,7 +112,7 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
 
   private void createLabelForComboSearchPattern(Composite group) {
     labelForComboSearchPattern = new Label(group, SWT.LEAD);
-    labelForComboSearchPattern.setText(Messages.CapellaSearchContainingText);
+    labelForComboSearchPattern.setText(CapellaSearchConstants.CapellaSearchContainingText);
     GridDataFactory.swtDefaults()
         .align(SWT.FILL, SWT.CENTER)
         .span(2, 1)
@@ -174,7 +141,7 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
       }
     });
     comboSearchPattern.addModifyListener(e -> validate());
-    comboSearchPattern.setToolTipText(Messages.CapellaSearchPage_Combo_Pattern_Label_Regex_Enabled);
+    comboSearchPattern.setToolTipText(CapellaSearchConstants.CapellaSearchPage_Combo_Pattern_Label_Regex_Enabled);
 
     ComboContentAdapter contentAdapter = new ComboContentAdapter();
     FindReplaceDocumentAdapterContentProposalProvider findProposer = new FindReplaceDocumentAdapterContentProposalProvider(
@@ -186,7 +153,7 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
 
   private void createLabelRegex(Composite group) {
     labelRegex = new Label(group, SWT.LEAD);
-    labelRegex.setText(Messages.CapellaSearchRegexExplanation);
+    labelRegex.setText(CapellaSearchConstants.CapellaSearchRegexExplanation);
     GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL).applyTo(labelRegex);
     labelRegex.setFont(group.getFont());
     labelRegex.setAlignment(SWT.LEFT);
@@ -209,7 +176,7 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
    */
   private void createCheckboxCaseSensitive(Composite group) {
     checkboxCaseSensitive = new Button(group, SWT.CHECK);
-    checkboxCaseSensitive.setText(Messages.CapellaSearchPage_Checkbox_CaseSensitive_Label);
+    checkboxCaseSensitive.setText(CapellaSearchConstants.CapellaSearchPage_Checkbox_CaseSensitive_Label);
     GridDataFactory.fillDefaults().applyTo(checkboxCaseSensitive);
     checkboxCaseSensitive.setFont(group.getFont());
     checkboxCaseSensitive.addSelectionListener(new SelectionAdapter() {
@@ -222,7 +189,7 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
 
   private void createCheckboxRegex(Composite group) {
     checkboxRegex = new Button(group, SWT.CHECK);
-    checkboxRegex.setText(Messages.CapellaSearchPage_Checkbox_Regex_Label);
+    checkboxRegex.setText(CapellaSearchConstants.CapellaSearchPage_Checkbox_Regex_Label);
     GridDataFactory.fillDefaults().applyTo(checkboxRegex);
     checkboxRegex.setFont(group.getFont());
     checkboxRegex.addSelectionListener(new SelectionAdapter() {
@@ -231,10 +198,10 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
         boolean regexEnabled = checkboxRegex.getSelection();
         comboSearchPatternRegexContentAssist.setEnabled(regexEnabled);
         if (regexEnabled) {
-          labelRegex.setText(Messages.CapellaSearchEmptyString);
+          labelRegex.setText(CapellaSearchConstants.CapellaSearchEmptyString);
           checkboxWholeWord.setEnabled(false);
         } else {
-          labelRegex.setText(Messages.CapellaSearchRegexExplanation);
+          labelRegex.setText(CapellaSearchConstants.CapellaSearchRegexExplanation);
           checkboxWholeWord.setEnabled(true);
         }
         validate();
@@ -244,7 +211,7 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
 
   private void createCheckboxWholeWord(Composite group) {
     checkboxWholeWord = new Button(group, SWT.CHECK);
-    checkboxWholeWord.setText(Messages.CapellaSearchPage_Checkbox_WholeWord_Label);
+    checkboxWholeWord.setText(CapellaSearchConstants.CapellaSearchPage_Checkbox_WholeWord_Label);
     GridDataFactory.fillDefaults().applyTo(checkboxWholeWord);
     checkboxWholeWord.setFont(group.getFont());
     checkboxWholeWord.addSelectionListener(new SelectionAdapter() {
@@ -263,7 +230,7 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
     gdGrp.heightHint = 250;
 
     qGrp.setLayoutData(gdGrp);
-    qGrp.setText(Messages.SearchFor_Label);
+    qGrp.setText(CapellaSearchConstants.SearchFor_Label);
     CapellaLeftSearchForContainerArea leftCont = new CapellaLeftSearchForContainerArea(qGrp);
     CapellaRightSearchForContainerArea rightCont = new CapellaRightSearchForContainerArea(qGrp, leftCont);
     leftCont.setOtherSideArea(rightCont);
@@ -278,9 +245,9 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
     gdGrp.widthHint = 50;
     searchForSelectionGroup.setLayoutData(gdGrp);
     
-    searchForSelectionGroup.setText(Messages.Filters_Label);
-    createCheckboxRegex(searchForSelectionGroup, Messages.Abstract_Label);
-    createCheckboxRegex(searchForSelectionGroup, Messages.Semantic_Label);
+    searchForSelectionGroup.setText(CapellaSearchConstants.Filters_Label);
+    createCheckboxRegex(searchForSelectionGroup, CapellaSearchConstants.Abstract_Label);
+    createCheckboxRegex(searchForSelectionGroup, CapellaSearchConstants.Semantic_Label);
   }
   
   private void createCheckboxRegex(Composite group, String text) {
@@ -299,9 +266,9 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
     checkboxRegex.setSelection(regexEnabled);
     comboSearchPatternRegexContentAssist.setEnabled(regexEnabled);
     if (regexEnabled) {
-      labelForComboSearchPattern.setText(Messages.CapellaSearchPage_Combo_Pattern_Label_Regex_Enabled);
+      labelForComboSearchPattern.setText(CapellaSearchConstants.CapellaSearchPage_Combo_Pattern_Label_Regex_Enabled);
     } else {
-      labelForComboSearchPattern.setText(Messages.CapellaSearchPage_Combo_Pattern_Label_Regex_Disabled);
+      labelForComboSearchPattern.setText(CapellaSearchConstants.CapellaSearchPage_Combo_Pattern_Label_Regex_Disabled);
     }
 
     validate();
@@ -356,7 +323,7 @@ public class CapellaSearchPage extends DialogPage implements ISearchPage, IRepla
     IStatus validateStatus = capellaSearchSettings.validate();
     if (validateStatus.isOK()) {
       searchPageContainer.setPerformActionEnabled(true);
-      labelValidationStatus.setText(Messages.CapellaSearchPage_Validation_Message_OK);
+      labelValidationStatus.setText(CapellaSearchConstants.CapellaSearchPage_Validation_Message_OK);
     } else {
       labelValidationStatus.setText(validateStatus.getMessage());
       searchPageContainer.setPerformActionEnabled(true);

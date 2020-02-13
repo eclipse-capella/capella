@@ -46,7 +46,7 @@ public class CapellaReplaceDialog extends Dialog {
   @Override
   protected void configureShell(Shell newShell) {
     super.configureShell(newShell);
-    newShell.setText(Messages.ReplaceDialog_Title);
+    newShell.setText(CapellaSearchConstants.ReplaceDialog_Title);
   }
 
   @Override
@@ -69,7 +69,7 @@ public class CapellaReplaceDialog extends Dialog {
 
   private void createInputPattern(Composite container) {
     Label label = new Label(container, SWT.NONE);
-    label.setText(Messages.ReplaceDialog_Label_Pattern);
+    label.setText(CapellaSearchConstants.ReplaceDialog_Label_Pattern);
 
     GridData gridData = new GridData();
     gridData.grabExcessHorizontalSpace = true;
@@ -84,7 +84,7 @@ public class CapellaReplaceDialog extends Dialog {
   private void createInputReplacement(Composite container) {
     previousSearchSettings.addAll(CapellaReplaceHistory.getAllSearchSettings());
     Label label = new Label(container, SWT.NONE);
-    label.setText(Messages.ReplaceDialog_Label_Replacement);
+    label.setText(CapellaSearchConstants.ReplaceDialog_Label_Replacement);
 
     GridData gridData = new GridData();
     gridData.grabExcessHorizontalSpace = true;

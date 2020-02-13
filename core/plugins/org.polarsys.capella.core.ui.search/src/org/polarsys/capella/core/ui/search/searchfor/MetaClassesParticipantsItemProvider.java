@@ -29,7 +29,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
-import org.polarsys.capella.core.ui.search.Messages;
+import org.polarsys.capella.core.ui.search.CapellaSearchConstants;
 
 public class MetaClassesParticipantsItemProvider extends AbstractMetaModelParticipantsItemProvider {
   private AbstractCapellaSearchForContainerArea area = null;
@@ -44,8 +44,8 @@ public class MetaClassesParticipantsItemProvider extends AbstractMetaModelPartic
     eClassifierList = getEClassifiers();
     diagramElements = getDiagramElements();
     elements = new HashMap<String, Set<Object>>();
-    elements.put(Messages.ModelElements_Key, eClassifierList);
-    elements.put(Messages.DiagramElements_Key, diagramElements);
+    elements.put(CapellaSearchConstants.ModelElements_Key, eClassifierList);
+    elements.put(CapellaSearchConstants.DiagramElements_Key, diagramElements);
   }
 
   @Override
@@ -74,11 +74,11 @@ public class MetaClassesParticipantsItemProvider extends AbstractMetaModelPartic
   @Override
   public Object getParent(Object element) {
     if (element instanceof EClass) {
-      if (elements.get(Messages.ModelElements_Key).contains(element)) {
-        return Messages.ModelElements_Key;
+      if (elements.get(CapellaSearchConstants.ModelElements_Key).contains(element)) {
+        return CapellaSearchConstants.ModelElements_Key;
       }
-      if (elements.get(Messages.DiagramElements_Key).contains(element)) {
-        return Messages.DiagramElements_Key;
+      if (elements.get(CapellaSearchConstants.DiagramElements_Key).contains(element)) {
+        return CapellaSearchConstants.DiagramElements_Key;
       }
     }
     return null;

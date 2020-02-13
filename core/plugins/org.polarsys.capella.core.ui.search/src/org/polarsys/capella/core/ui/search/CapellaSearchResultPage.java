@@ -36,13 +36,13 @@ public class CapellaSearchResultPage extends AbstractTextSearchViewPage {
   @Override
   protected void configureTreeViewer(TreeViewer viewer) {
     viewer.setContentProvider(new CapellaSearchResultTreeContentProvider(this));
-    viewer.setLabelProvider(new DelegatingStyledCellLabelProvider(new CapellaSearchResultLabelProvider(this)));
+    viewer.setLabelProvider(new DelegatingStyledCellLabelProvider(new CapellaSearchResultLabelProvider()));
   }
 
   @Override
   protected void configureTableViewer(TableViewer viewer) {
-    viewer.setContentProvider(new CapellaSearchResultListContentProvider(this));
-    viewer.setLabelProvider(new DelegatingStyledCellLabelProvider(new CapellaSearchResultLabelProvider(this)));
+    viewer.setContentProvider(new CapellaSearchResultListContentProvider());
+    viewer.setLabelProvider(new DelegatingStyledCellLabelProvider(new CapellaSearchResultLabelProvider()));
   }
   
   @Override

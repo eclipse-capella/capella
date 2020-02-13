@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerSorter;
-import org.polarsys.capella.core.ui.search.Messages;
+import org.polarsys.capella.core.ui.search.CapellaSearchConstants;
 
 @SuppressWarnings("deprecation")
 public class ParticipantsViewerSorter extends ViewerSorter {
@@ -47,7 +47,7 @@ public class ParticipantsViewerSorter extends ViewerSorter {
     }
     else if(e1 instanceof String && e2 instanceof String) {
       String cat1 = (String) e1;
-      if(cat1.equals(Messages.ModelElements_Key))
+      if(cat1.equals(CapellaSearchConstants.ModelElements_Key))
         return -1;
       return 1;
     }

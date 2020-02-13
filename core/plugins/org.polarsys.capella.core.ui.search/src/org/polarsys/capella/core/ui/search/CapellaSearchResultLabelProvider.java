@@ -12,7 +12,6 @@ package org.polarsys.capella.core.ui.search;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.ETypedElement;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
@@ -30,11 +29,7 @@ public class CapellaSearchResultLabelProvider extends LabelProvider implements I
 
   private final ILabelProvider capellaNavigatorLabelProvider;
 
-  private final CapellaSearchResultPage capellaSearchResultPage;
-
-  public CapellaSearchResultLabelProvider(CapellaSearchResultPage capellaSearchResultPage) {
-    this.capellaSearchResultPage = capellaSearchResultPage;
-
+  public CapellaSearchResultLabelProvider() {
     INavigatorContentService capellaNavigatorContentService = NavigatorContentServiceFactory.INSTANCE
         .createContentService(CapellaCommonNavigator.ID);
     capellaNavigatorLabelProvider = capellaNavigatorContentService.createCommonLabelProvider();

@@ -37,7 +37,7 @@ public class CapellaReplaceRunnableWrapper {
         // Show error dialog if any
         String message = e.getMessage();
         if (message != null && !message.isEmpty()) {
-          MessageDialog.openError(shell, Messages.ReplaceDialog_Title, message);
+          MessageDialog.openError(shell, CapellaSearchConstants.ReplaceDialog_Title, message);
         }
       }
 
@@ -51,14 +51,14 @@ public class CapellaReplaceRunnableWrapper {
 
       // Inform how many replaces were done
       if (replacement != null) {
-        String message = String.format(Messages.ReplaceDialog_Finished_Or_Canceled_Message, //
+        String message = String.format(CapellaSearchConstants.ReplaceDialog_Finished_Or_Canceled_Message, //
             searchPattern, //
             replacement, //
             replacedOccurrenceCount, //
             replacedElementCount, //
             replacedProjectCount);
 
-        MessageDialog.openInformation(shell, Messages.ReplaceDialog_Title, message);
+        MessageDialog.openInformation(shell, CapellaSearchConstants.ReplaceDialog_Title, message);
       }
 
       // Re-run search query if required

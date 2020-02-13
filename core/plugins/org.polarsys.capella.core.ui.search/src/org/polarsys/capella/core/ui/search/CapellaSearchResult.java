@@ -17,11 +17,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.eclipse.core.resources.IProject;
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.ETypedElement;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.search.ui.text.AbstractTextSearchResult;
 import org.eclipse.search.ui.text.IEditorMatchAdapter;
@@ -36,8 +31,8 @@ public class CapellaSearchResult extends AbstractTextSearchResult {
   
   public CapellaSearchResult(CapellaSearchQuery capellaSearchQuery) {
     this.capellaSearchQuery = capellaSearchQuery;
-    setActiveMatchFilters(new MatchFilter[] {}); // By default, no filter is activated
-    treeData = new TreeData(new ArrayList(), null);
+    setActiveMatchFilters(new MatchFilter[] {});
+    treeData = new TreeData(new ArrayList<Object>(), null);
   }
   
   @Override
@@ -48,11 +43,11 @@ public class CapellaSearchResult extends AbstractTextSearchResult {
     String queryLabel = capellaSearchQuery.getLabel();
     int activeFilterCount = getActiveMatchFilters().length;
     if (activeFilterCount == 0) {
-      return String.format(Messages.CapellaSearchResult_Label, queryLabel, totalOccurrenceCount, matchedElementsCount,
+      return String.format(CapellaSearchConstants.CapellaSearchResult_Label, queryLabel, totalOccurrenceCount, matchedElementsCount,
           matchedProjectsCount);
     }
     int displayedOccurrenceCount = getOccurrenceCount();
-    return String.format(Messages.CapellaSearchResult_Label_With_Active_Filters, queryLabel, totalOccurrenceCount,
+    return String.format(CapellaSearchConstants.CapellaSearchResult_Label_With_Active_Filters, queryLabel, totalOccurrenceCount,
         matchedElementsCount, matchedProjectsCount, totalOccurrenceCount - displayedOccurrenceCount, activeFilterCount);
   }
 

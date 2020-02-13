@@ -22,10 +22,8 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubMonitor;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.search.ui.ISearchQuery;
-import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.CapellaNavigatorContentProvider;
 
 public class CapellaSearchQuery implements ISearchQuery {
@@ -48,16 +46,16 @@ public class CapellaSearchQuery implements ISearchQuery {
       Set<String> selectedProjects = capellaSearchSettings.getProjects();
 
       SubMonitor subMonitor = SubMonitor.convert(monitor, selectedProjects.size());
-      subMonitor.setTaskName(String.format(Messages.SearchJob_Title, capellaSearchSettings.getTextPattern()));
+      subMonitor.setTaskName(String.format(CapellaSearchConstants.SearchJob_Title, capellaSearchSettings.getTextPattern()));
       for (String projectName : selectedProjects) {
-        subMonitor.subTask(String.format(Messages.SearchJob_SubTitle, projectName));
+        subMonitor.subTask(String.format(CapellaSearchConstants.SearchJob_SubTitle, projectName));
         IProject project = workspaceRoot.getProject(projectName);
         search(pattern, project, project);
         subMonitor.split(1);
       }
       return Status.OK_STATUS;
     } catch (PatternSyntaxException e) {
-      String message = String.format(Messages.CapellaSearchQuery_Search_Pattern_Not_Validated_Message, e.getPattern(),
+      String message = String.format(CapellaSearchConstants.CapellaSearchQuery_Search_Pattern_Not_Validated_Message, e.getPattern(),
           e.getDescription());
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID, message);
     } catch (Exception e) {

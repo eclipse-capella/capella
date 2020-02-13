@@ -104,12 +104,12 @@ public class CapellaSearchSettings {
   public IStatus validate() {
     if (projects.isEmpty()) {
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID,
-          Messages.CapellaSearchPage_Validation_Message_Project_Selection);
+          CapellaSearchConstants.CapellaSearchPage_Validation_Message_Project_Selection);
     }
 
     if (capellaSearchFields.isEmpty()) {
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID,
-          Messages.CapellaSearchPage_Validation_Message_SearchField_Selection);
+          CapellaSearchConstants.CapellaSearchPage_Validation_Message_SearchField_Selection);
     }
 
     if (isRegExSearch) {
@@ -122,7 +122,7 @@ public class CapellaSearchSettings {
 
     if (textPattern == null || textPattern.isEmpty()) {
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID,
-          Messages.CapellaSearchPage_Validation_Message_Pattern_Empty);
+          CapellaSearchConstants.CapellaSearchPage_Validation_Message_Pattern_Empty);
     }
     return Status.OK_STATUS;
   }

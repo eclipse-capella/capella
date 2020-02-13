@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.search;
 
-public class Messages {
+public class CapellaSearchConstants {
   public static final String CapellaSearchRegexExplanation = "(* = any string, ? = any character, \\\\ = escape for literals: * ? \\\\);";
   public static final String CapellaSearchEmptyString = "";
   public static final String CapellaSearchContainingText = "Containing text:";

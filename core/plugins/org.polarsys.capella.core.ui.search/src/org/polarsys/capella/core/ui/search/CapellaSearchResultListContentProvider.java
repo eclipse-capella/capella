@@ -13,11 +13,7 @@ package org.polarsys.capella.core.ui.search;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 
 public class CapellaSearchResultListContentProvider implements IStructuredContentProvider {
-  private final CapellaSearchResultPage capellaSearchResultPage;
-
-  public CapellaSearchResultListContentProvider(CapellaSearchResultPage capellaSearchResultPage) {
-    this.capellaSearchResultPage = capellaSearchResultPage;
-  }
+  public CapellaSearchResultListContentProvider() {}
 
   @Override
   public Object[] getElements(Object inputElement) {

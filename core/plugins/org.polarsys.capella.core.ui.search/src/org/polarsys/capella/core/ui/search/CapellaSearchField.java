@@ -21,7 +21,7 @@ import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 
 public enum CapellaSearchField {
 
-  NAME(Messages.CapellaSearchField_Name) {
+  NAME(CapellaSearchConstants.CapellaSearchField_Name) {
     @Override
     public EAttribute getEAttribute(Object element) {
       if (element instanceof AbstractNamedElement) {
@@ -45,7 +45,7 @@ public enum CapellaSearchField {
     }
   },
 
-  SUMMARY(Messages.CapellaSearchField_Summary) {
+  SUMMARY(CapellaSearchConstants.CapellaSearchField_Summary) {
     @Override
     public EAttribute getEAttribute(Object element) {
       if (element instanceof CapellaElement) {
@@ -63,7 +63,7 @@ public enum CapellaSearchField {
     }
   },
 
-  DESCRIPTION(Messages.CapellaSearchField_Description) {
+  DESCRIPTION(CapellaSearchConstants.CapellaSearchField_Description) {
     @Override
     public EAttribute getEAttribute(Object element) {
       if (element instanceof CapellaElement) {

@@ -58,10 +58,10 @@ public class CapellaSearchResultPageHandlerSelect implements IHandler {
       if (!expectSelected.equals(actualSelected)) {
         // Show the information dialog if the current selected element is still not the wanted one.
         Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-        String title = Messages.CapellaSearchDialog_Title;
+        String title = CapellaSearchConstants.CapellaSearchDialog_Title;
 
         String pattern = capellaSearchResultPage.getInput().getQuery().getLabel();
-        String message = String.format(Messages.CapellaSearchDialog_ShowIn_NotFound_Message, pattern);
+        String message = String.format(CapellaSearchConstants.CapellaSearchDialog_ShowIn_NotFound_Message, pattern);
 
         MessageDialog.openInformation(shell, title, message);
       } else {

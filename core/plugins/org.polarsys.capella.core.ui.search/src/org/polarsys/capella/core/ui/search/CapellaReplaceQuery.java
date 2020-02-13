@@ -45,19 +45,19 @@ public class CapellaReplaceQuery {
     replacedProjects = new HashSet<>();
     replacedOccurrenceCount = 0;
     if (replacement == null) {
-      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, Messages.CapellaReplaceQuery_Validation_Replacement_Null);
+      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, CapellaSearchConstants.CapellaReplaceQuery_Validation_Replacement_Null);
     }
     try {
       Pattern searchPattern = capellaSearchSettings.createPattern();
       int countTotalOccurrences = allMatches.size();
       SubMonitor subMonitor = SubMonitor.convert(monitor, countTotalOccurrences);
-      subMonitor.setTaskName(String.format(Messages.ReplaceJob_Title, replacement));
+      subMonitor.setTaskName(String.format(CapellaSearchConstants.ReplaceJob_Title, replacement));
       for (Match match : allMatches) {
         if (match instanceof CapellaSearchMatchEntry) {
           CapellaSearchMatchEntry capellaMatch = (CapellaSearchMatchEntry) match;
           int countOccurrences = 1;
           String projectName = capellaMatch.getProject().getName();
-          subMonitor.subTask(String.format(Messages.ReplaceJob_SubTitle, countOccurrences, projectName));
+          subMonitor.subTask(String.format(CapellaSearchConstants.ReplaceJob_SubTitle, countOccurrences, projectName));
           replace(capellaMatch, searchPattern, replacement);
           subMonitor.split(countOccurrences);
         }
@@ -66,7 +66,7 @@ public class CapellaReplaceQuery {
     } catch (Exception e) {
       String message = e.getMessage();
       if (e instanceof PatternSyntaxException) {
-        message = String.format(Messages.CapellaSearchQuery_Search_Pattern_Not_Validated_Message,
+        message = String.format(CapellaSearchConstants.CapellaSearchQuery_Search_Pattern_Not_Validated_Message,
             ((PatternSyntaxException) e).getPattern(), ((PatternSyntaxException) e).getDescription());
       }
       return new Status(IStatus.ERROR, Activator.PLUGIN_ID, message);

@@ -55,7 +55,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.PatternFilter;
 import org.eclipse.ui.progress.IProgressService;
 import org.polarsys.capella.core.ui.search.Activator;
-import org.polarsys.capella.core.ui.search.Messages;
+import org.polarsys.capella.core.ui.search.CapellaSearchConstants;
 import org.polarsys.capella.core.data.capellamodeller.provider.CapellaModellerEditPlugin;
 
 public abstract class AbstractCapellaSearchForContainerArea {
@@ -141,7 +141,7 @@ public abstract class AbstractCapellaSearchForContainerArea {
     // Select All butons
     selectAllButton = new Button(rightPaneContainer, SWT.PUSH);
     selectAllButton.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-    selectAllButton.setText(Messages.SelectAllButton_Name);
+    selectAllButton.setText(CapellaSearchConstants.SelectAllButton_Name);
     // add listener
     selectAllButton.addSelectionListener(getSelectionListener(true));
     selectAllButton.setEnabled(SWT.MULTI == participantsCheckStrategy);
@@ -150,7 +150,7 @@ public abstract class AbstractCapellaSearchForContainerArea {
   protected void createDeselectAllButton(Composite rightPaneContainer) {
     deselectAllButton = new Button(rightPaneContainer, SWT.PUSH);
     deselectAllButton.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-    deselectAllButton.setText(Messages.DeselectAllButton_Name);
+    deselectAllButton.setText(CapellaSearchConstants.DeselectAllButton_Name);
     deselectAllButton.addSelectionListener(getSelectionListener(false));
 
     deselectAllButton.setEnabled(SWT.MULTI == participantsCheckStrategy);

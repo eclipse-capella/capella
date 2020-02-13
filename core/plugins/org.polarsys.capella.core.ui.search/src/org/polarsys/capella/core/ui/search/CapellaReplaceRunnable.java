@@ -48,7 +48,7 @@ public class CapellaReplaceRunnable implements IRunnableWithProgress {
 
     Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
     String pattern = searchQuery.getCapellaSearchSettings().getTextPattern();
-    String title = String.format(Messages.ReplaceDialog_Label, occurrencesCount);
+    String title = String.format(CapellaSearchConstants.ReplaceDialog_Label, occurrencesCount);
 
     CapellaReplaceDialog capellaReplaceDialog = new CapellaReplaceDialog(shell, pattern, title);
     if (capellaReplaceDialog.open() == Window.OK) {
