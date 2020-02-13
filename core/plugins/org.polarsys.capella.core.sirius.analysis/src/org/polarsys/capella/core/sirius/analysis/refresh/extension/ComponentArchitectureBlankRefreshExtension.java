@@ -20,21 +20,25 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ExchangeCategory;
 import org.polarsys.capella.core.diagram.helpers.ContextualDiagramHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
@@ -50,6 +54,7 @@ import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 import org.polarsys.capella.core.sirius.analysis.PhysicalServices;
 import org.polarsys.capella.core.sirius.analysis.cache.FunctionalChainCache;
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
+import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.helpers.FilterHelper;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
@@ -83,6 +88,20 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
     // -------------------------------------
 
     updateTargetDiagram(diagram, !contextualElements.isEmpty());
+
+    // -------------------------------------
+    // Remove all functions added directly on diagram.
+    // Fix for bug 560092, can be deleted in Capella 6.0
+    // -------------------------------------
+
+    String mappingName = MappingConstantsHelper.getMappingFunction(diagram);
+    NodeMapping mapping = DiagramServices.getDiagramServices().getNodeMapping(diagram, mappingName);
+    Collection<DDiagramElement> nodes = diagram.getOwnedDiagramElements().stream() //
+        .filter(AbstractDNode.class::isInstance) //
+        .filter(d -> d.getTarget() != null && d.getTarget() instanceof AbstractFunction) //
+        .filter(d -> mapping.equals(d.getDiagramElementMapping())) //
+        .collect(Collectors.toList());
+    nodes.stream().forEach(d -> DiagramServices.getDiagramServices().removeContainerView(d));
 
     // -------------------------------------
     // Show in diagram related contextual elements
