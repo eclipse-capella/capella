@@ -17,6 +17,7 @@ import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 
 public class AttributesParticipantsItemProvider extends AbstractMetaModelParticipantsItemProvider {
   private AbstractCapellaSearchForContainerArea leftArea = null;
@@ -32,9 +33,10 @@ public class AttributesParticipantsItemProvider extends AbstractMetaModelPartici
       if (obj instanceof EClass) {
         EList<EAttribute> attributes = ((EClass) obj).getEAllAttributes();
         for (EAttribute newAttr : attributes) {
-          boolean add = true;
+          EDataType type = newAttr.getEAttributeType();
+          boolean add = type.getInstanceClass().equals(java.lang.String.class);
           for (EAttribute attr : eAttributesList) {
-            if (newAttr.getName().equals(attr.getName())) {
+            if (add && newAttr.getName().equals(attr.getName())) {
               add = false;
               break;
             }

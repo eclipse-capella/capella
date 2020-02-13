@@ -13,10 +13,8 @@ package org.polarsys.capella.core.ui.search.searchfor;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.runtime.FileLocator;
@@ -24,20 +22,14 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.ENamedElement;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.operation.IRunnableWithProgress;
-import org.eclipse.jface.viewers.CheckStateChangedEvent;
 import org.eclipse.jface.viewers.CheckboxTreeViewer;
-import org.eclipse.jface.viewers.ICheckStateListener;
-import org.eclipse.jface.viewers.IStructuredContentProvider;
-import org.eclipse.jface.viewers.TreePath;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerComparator;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.swt.SWT;
@@ -48,7 +40,6 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
@@ -111,8 +102,6 @@ public abstract class AbstractCapellaSearchForContainerArea {
 
     filteredTree.getViewer().setInput("");
 
-    IStructuredContentProvider contentProvider = (IStructuredContentProvider) filteredTree.getViewer()
-        .getContentProvider();
     ((CheckboxTreeViewer) filteredTree.getViewer()).expandAll();
     filteredTree.getViewer().getTree().setLayout(new GridLayout());
 
@@ -120,7 +109,25 @@ public abstract class AbstractCapellaSearchForContainerArea {
     chechboxTreeViewerGridData.heightHint = 140;
 
     filteredTree.getViewer().getTree().setLayoutData(chechboxTreeViewerGridData);
-    filteredTree.getViewer().setSorter(new ParticipantsViewerSorter());
+    filteredTree.getViewer().setComparator(new ViewerComparator() {
+          @Override
+          public int compare(Viewer testViewer, Object e1, Object e2) {
+            if (e1 instanceof ENamedElement && e2 instanceof ENamedElement) {
+              ENamedElement eClass1 = (ENamedElement) e1;
+              ENamedElement eClass2 = (ENamedElement) e2;
+              String eClass1Name = eClass1.getName() == null ? "" : eClass1.getName();
+              String eClass2Name = eClass2.getName() == null ? "" : eClass2.getName();
+              return eClass1Name.compareTo(eClass2Name);
+            }
+            else if(e1 instanceof String && e2 instanceof String) {
+              String cat1 = (String) e1;
+              if(cat1.equals(CapellaSearchConstants.ModelElements_Key))
+                return -1;
+              return 1;
+            }
+            return 0;
+          }
+        });
     setCheckSubtree();
   }
 

@@ -28,6 +28,8 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.impl.DRepresentationDescriptorImpl;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 import org.polarsys.capella.core.ui.search.CapellaSearchConstants;
 
@@ -115,51 +117,10 @@ public class MetaClassesParticipantsItemProvider extends AbstractMetaModelPartic
     return allDerivedReferences;
   }
 
-  public Set<Object> getDRepresentations() {
-    IProject[] prjs = getProjectsFromWorkspace();
-    Set<Object> result = new HashSet();
-
-    for (IProject prj : prjs) {
-      Collection<Session> sessions = SessionHelper.getExistingSessions(prj);
-      Session session = sessions.iterator().next();
-      Collection<DRepresentationDescriptor> representations = DialectManager.INSTANCE
-          .getAllRepresentationDescriptors(session);
-      result.addAll(representations);
-    }
-    return result;
-  }
-
-  public Set<Object> getDRepresentationElements() {
-    IProject[] prjs = getProjectsFromWorkspace();
-    Set<Object> result = new HashSet();
-
-    for (IProject prj : prjs) {
-      Collection<Session> sessions = SessionHelper.getExistingSessions(prj);
-      Session session = sessions.iterator().next();
-      Collection<DRepresentationDescriptor> representations = DialectManager.INSTANCE
-          .getAllRepresentationDescriptors(session);
-      for (DRepresentationDescriptor representation : representations) {
-        EList<DRepresentationElement> els = representation.getRepresentation().getRepresentationElements();
-        result.addAll(els);
-      }
-    }
-    return result;
-  }
-
   public Set<Object> getDiagramElements() {
-    Set<Object> result = new HashSet();
-
-    EClass noteCls = DiagramPackage.eINSTANCE.getNote();
-    EClass diagCls = DiagramPackage.eINSTANCE.getDDiagram();
-    result.add(noteCls);
-    result.add(diagCls);
-
+    Set<Object> result = new HashSet<Object>();
+    result.add(DiagramPackage.eINSTANCE.getNote());
+    result.add(ViewpointPackage.eINSTANCE.getDRepresentationDescriptor());
     return result;
   }
-
-  private IProject[] getProjectsFromWorkspace() {
-    IProject[] projectsToCheck = ResourcesPlugin.getWorkspace().getRoot().getProjects();
-    return projectsToCheck;
-  }
-
 }

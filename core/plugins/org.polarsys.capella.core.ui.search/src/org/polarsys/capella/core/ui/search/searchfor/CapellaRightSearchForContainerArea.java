@@ -10,12 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.search.searchfor;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.jface.viewers.TreePath;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.dialogs.PatternFilter;

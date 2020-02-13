@@ -10,24 +10,13 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.search.searchfor;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.HashSet;
-import java.util.Set;
-
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.CheckStateChangedEvent;
 import org.eclipse.jface.viewers.CheckboxTreeViewer;
 import org.eclipse.jface.viewers.ICheckStateListener;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.widgets.Group;
-import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.PatternFilter;
-import org.eclipse.ui.progress.IProgressService;
 
 public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForContainerArea {
 
@@ -84,6 +73,7 @@ public class CapellaLeftSearchForContainerArea extends AbstractCapellaSearchForC
           checkedElements.add(parent);
         else
           checkedElements.remove(parent);
+        
         // handle the inheritance check propagation
         Object[] changedObjects = partictipantsItemProvider.getChildren(parent);
         for (Object obj : changedObjects) {
