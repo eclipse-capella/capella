@@ -70,6 +70,8 @@ pipeline {
       			script {
 			        def deploymentDirName = BUILD_KEY		
 			
+					deployer.cleanCapellaNightlyArtefacts(deploymentDirName)
+			
 					deployer.capellaNightlyProduct("${WORKSPACE}/releng/plugins/org.polarsys.capella.rcp.product/target/products/capella-*.zip", deploymentDirName)
 					    
 					deployer.capellaNightlyUpdateSite("${WORKSPACE}/releng/plugins/org.polarsys.capella.test.site/target/repository/**", "${deploymentDirName}/org.polarsys.capella.test.site")
@@ -161,6 +163,8 @@ pipeline {
 		        		tester.runNONUITests("${CAPELLA_PRODUCT_PATH}", 'NotUINavigator', 'org.polarsys.capella.test.suites.ju', 
 		        			['org.polarsys.capella.test.navigator.ju.testsuites.main.NavigatorTestSuite'])
 	        		}
+	        		
+	        		junit '*.xml'
 				}
 			}
 		}
@@ -169,7 +173,6 @@ pipeline {
 	post {
     	always {
        		archiveArtifacts artifacts: '**/*.log, *.log, *.xml, **/*.layout'
-       		junit '*.xml'
     	}
     	
     	success  {
